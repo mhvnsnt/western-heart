@@ -36,7 +36,7 @@ export class SoulSystems {
     if (!this.canRelease(a) || !d) return null;
     const v = pickVariant(a, 'release'); a.meter -= RELEASE_COST;
     hitFoe(d, a, Math.round(RELEASE_DMG * (v ? v.power : 1)), v, 'release');
-    this.lastSoulKill = a; return v || { id: 'release' };
+    this.lastSoulKill = a; this._glow('release'); return v || { id: 'release' };
   }
   claimRelease(a, d, queue) { return this.canRelease(a) && detectKindlePress(queue) ? !!this.release(a, d) : false; }
   canReihou(a, d) { return !!a && !!d && !!d._rageOn && (a.meter || 0) >= REIHOU_COST && (!a.canAct || a.canAct()); }
@@ -46,9 +46,10 @@ export class SoulSystems {
     d._rageOn = false; d._rageUsed = true; if (d.setRageAura) d.setRageAura(false);
     if (this.game && this.game.ui && this.game.ui.setRage) this.game.ui.setRage(d === this.game.p1 ? 'p1' : 'p2', false);
     a._spiritFlare = 1.0; if (a.setAuraFlare) a.setAuraFlare(1.0);
-    hitFoe(d, a, REIHOU_DMG, v, 'reihou'); return v || { id: 'reihou' };
+    hitFoe(d, a, REIHOU_DMG, v, 'reihou'); this._glow('reihou'); return v || { id: 'reihou' };
   }
-  /* Per step: meter-ready indicator when a meter first fills (no center text). */
+  /* Per step: SOUL RELEASE READY HUD flag when a meter first fills
+     (meter-wrap glow via setSoulReady, never a banner). */
   update() {
     const g = this.game; if (!g) return;
     for (const [f, k] of [[g.p1, 'p1'], [g.p2, 'p2']]) {
@@ -67,7 +68,12 @@ export class SoulSystems {
     if (!sealed) return null;
     this.seals[k]++; const v = pickVariant(w, 'seal');
     if (g.matchStats) g.matchStats.seals = { ...this.seals };
-    this._banner(LABELS.seal); return v || { id: 'seal' };
+    this._hudNote(LABELS.seal); return v || { id: 'seal' };
   }
-  _banner(t) { const ui = this.game && this.game.ui; if (ui && ui.banner) { try { ui.banner(t); } catch (e) { } } }
+  _hudNote(t) { const ui = this.game && this.game.ui; if (ui && ui.hudNote) { try { ui.hudNote(t); } catch (e) { } } }
+  /* Mid-fight system glow (popup fix 2026-10-24): Tekken rule — a glow,
+     never center-screen text. The seal goes to the HUD note (owner
+     immersion law, closed 2026-10-25: ROUND/FIGHT!/K.O. only stay
+     center-screen); the seal count still lives in this.seals + matchStats. */
+  _glow(kind) { const ui = this.game && this.game.ui; if (ui && ui.surgeFlash) { try { ui.surgeFlash(kind === 'reihou' ? 0x9fd8ff : 0xffd34d, 0xfff2b0); } catch (e) { } } }
 }

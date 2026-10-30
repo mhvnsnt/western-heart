@@ -305,7 +305,7 @@ export class EpisodesController {
       foe = buildShadowSelf(char); // they all face themselves
     } else { this._nextChapter(); return; }
     const label = spec ? `${ch.name} · ${spec.label}` : `${ch.name} · YOURSELF`;
-    this.ui.banner && this.ui.banner(label);
+    this.ui.hudNote && this.ui.hudNote(label);
     setModeTag('EPISODES · ' + ch.name);
     this.game.onMatchEnd = (won) => this._fightEnd(won);
     showLoading('THE STORY CONTINUES…');

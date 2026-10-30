@@ -1,0 +1,54 @@
+0x08acce14: a4820014  sh           $v0, 0x14($a0)
+0x08acce18: 8c850008  lw           $a1, 8($a0)
+0x08acce1c: 8c87000c  lw           $a3, 0xc($a0)
+0x08acce20: 3c02b000  lui          $v0, 0xb000
+0x08acce24: 7ca61e00  ext          $a2, $a1, 0x18, 4
+0x08acce28: 00063400  sll          $a2, $a2, 0x10
+0x08acce2c: 7c05fe04  ins          $a1, $zero, 0x18, 8
+0x08acce30: 3c03b100  lui          $v1, 0xb100
+0x08acce34: 00a22825  or           $a1, $a1, $v0
+0x08acce38: 00c33025  or           $a2, $a2, $v1
+0x08acce3c: ace50004  sw           $a1, 4($a3)
+0x08acce40: 00e02021  move         $a0, $a3
+0x08acce44: 24050020  addiu        $a1, $zero, 0x20
+0x08acce48: 0a2e23f2  j            0x8b88fc8
+0x08acce4c: ace60008  sw           $a2, 8($a3)
+0x08acce50: 8c820004  lw           $v0, 4($a0)
+0x08acce54: 8c860008  lw           $a2, 8($a0)
+0x08acce58: 8c88000c  lw           $t0, 0xc($a0)
+0x08acce5c: 94490008  lhu          $t1, 8($v0)
+0x08acce60: 7cc41e00  ext          $a0, $a2, 0x18, 4
+0x08acce64: 3c02b000  lui          $v0, 0xb000
+0x08acce68: 7c06fe04  ins          $a2, $zero, 0x18, 8
+0x08acce6c: 00c23025  or           $a2, $a2, $v0
+0x08acce70: 3c02c500  lui          $v0, 0xc500
+0x08acce74: 3442ff00  ori          $v0, $v0, 0xff00
+0x08acce78: 3c03b100  lui          $v1, 0xb100
+0x08acce7c: 01221025  or           $v0, $t1, $v0
+0x08acce80: 00042400  sll          $a0, $a0, 0x10
+0x08acce84: 00832025  or           $a0, $a0, $v1
+0x08acce88: ad020000  sw           $v0, ($t0)
+0x08acce8c: 00051902  srl          $v1, $a1, 4
+0x08acce90: 3c02c400  lui          $v0, 0xc400
+0x08acce94: 2d270003  sltiu        $a3, $t1, 3
+0x08acce98: 00621825  or           $v1, $v1, $v0
+0x08acce9c: ad060004  sw           $a2, 4($t0)
+0x08accea0: 14e0000b  bnez         $a3, 0x8acced0
+0x08accea4: ad040008  sw           $a0, 8($t0)
+0x08accea8: 000520c2  srl          $a0, $a1, 3
+0x08acceac: 3c03c400  lui          $v1, 0xc400
+0x08acceb0: 24020003  addiu        $v0, $zero, 3
+0x08acceb4: 11220006  beq          $t1, $v0, 0x8acced0
+0x08acceb8: 00831825  or           $v1, $a0, $v1
+0x08accebc: 3c020b00  lui          $v0, 0xb00
+0x08accec0: 01002021  move         $a0, $t0
+0x08accec4: 24050020  addiu        $a1, $zero, 0x20
+0x08accec8: 0a2e23f2  j            0x8b88fc8
+0x08accecc: ad020010  sw           $v0, 0x10($t0)
+0x08acced0: 3c020b00  lui          $v0, 0xb00
+0x08acced4: ad03000c  sw           $v1, 0xc($t0)
+0x08acced8: 01002021  move         $a0, $t0
+0x08accedc: 24050020  addiu        $a1, $zero, 0x20
+0x08accee0: 0a2e23f2  j            0x8b88fc8
+0x08accee4: ad020010  sw           $v0, 0x10($t0)
+0x08accee8: 03e00008  jr           $ra

@@ -1,0 +1,5554 @@
+{
+ "schema": "wh-t7-clipmap/1",
+ "motbin": "kinmot.json",
+ "arc": "kin.arc",
+ "clips_in_bank": 1138,
+ "summary": {
+  "common": {
+   "moves": 1628,
+   "attacks": 71
+  },
+  "inline": {
+   "moves": 122,
+   "attacks": 14
+  },
+  "rotsm": {
+   "moves": 1037,
+   "attacks": 467
+  }
+ },
+ "decode_errors": 0,
+ "moves": [
+  {
+   "move": "Kg_Item2E",
+   "anim": "kmkg_it_bridge_oki(DVD)",
+   "bank": "rotsm",
+   "clip": 18,
+   "damage": 10,
+   "active": [
+    37,
+    39
+   ],
+   "fmt": "0x64",
+   "frames": 70
+  },
+  {
+   "move": "Kg_Rol_lrk",
+   "anim": "Mkg_ghrs1(DVD)",
+   "bank": "rotsm",
+   "clip": 19,
+   "damage": 25,
+   "active": [
+    16,
+    28
+   ],
+   "fmt": "0x64",
+   "frames": 40
+  },
+  {
+   "move": "Kg_wDASH_dbp",
+   "anim": "mskg_walldb(DVD)",
+   "bank": "rotsm",
+   "clip": 129,
+   "damage": 16384,
+   "active": [
+    30,
+    35
+   ],
+   "fmt": "0x64",
+   "frames": 76
+  },
+  {
+   "move": "Kg_wDASH_dbpE",
+   "anim": "mskg_walldb(DVD)",
+   "bank": "rotsm",
+   "clip": 129,
+   "damage": 21,
+   "active": [
+    31,
+    50
+   ],
+   "fmt": "0x64",
+   "frames": 76
+  },
+  {
+   "move": "Co_INaginata",
+   "anim": "yoco_it_naginata2(DVD)",
+   "bank": "rotsm",
+   "clip": 133,
+   "damage": 20,
+   "active": [
+    81,
+    83
+   ],
+   "fmt": "0x64",
+   "frames": 155
+  },
+  {
+   "move": "Co_IBeamSpear",
+   "anim": "yoco_it_naginata2(DVD)",
+   "bank": "rotsm",
+   "clip": 133,
+   "damage": 20,
+   "active": [
+    81,
+    83
+   ],
+   "fmt": "0x64",
+   "frames": 155
+  },
+  {
+   "move": "Co_IHude_P",
+   "anim": "yoco_it_naginata2(DVD)",
+   "bank": "rotsm",
+   "clip": 133,
+   "damage": 10,
+   "active": [
+    81,
+    83
+   ],
+   "fmt": "0x64",
+   "frames": 155
+  },
+  {
+   "move": "Co_ISRed_P",
+   "anim": "yoco_it_naginata2(DVD)",
+   "bank": "rotsm",
+   "clip": 133,
+   "damage": 10,
+   "active": [
+    81,
+    83
+   ],
+   "fmt": "0x64",
+   "frames": 155
+  },
+  {
+   "move": "Co_ISGreen_P",
+   "anim": "yoco_it_naginata2(DVD)",
+   "bank": "rotsm",
+   "clip": 133,
+   "damage": 10,
+   "active": [
+    81,
+    83
+   ],
+   "fmt": "0x64",
+   "frames": 155
+  },
+  {
+   "move": "Co_ISBlue_P",
+   "anim": "yoco_it_naginata2(DVD)",
+   "bank": "rotsm",
+   "clip": 133,
+   "damage": 10,
+   "active": [
+    81,
+    83
+   ],
+   "fmt": "0x64",
+   "frames": 155
+  },
+  {
+   "move": "Co_IKugibat",
+   "anim": "yoco_it_kugibat(DVD)",
+   "bank": "rotsm",
+   "clip": 139,
+   "damage": 25,
+   "active": [
+    60,
+    62
+   ],
+   "fmt": "0x64",
+   "frames": 130
+  },
+  {
+   "move": "Co_IPac_Man",
+   "anim": "yoco_it_kugibat(DVD)",
+   "bank": "rotsm",
+   "clip": 139,
+   "damage": 25,
+   "active": [
+    60,
+    62
+   ],
+   "fmt": "0x64",
+   "frames": 130
+  },
+  {
+   "move": "Co_IPikoHan",
+   "anim": "yoco_it_picohammer(DVD)",
+   "bank": "rotsm",
+   "clip": 141,
+   "damage": 1,
+   "active": [
+    55,
+    58
+   ],
+   "fmt": "0x64",
+   "frames": 115
+  },
+  {
+   "move": "Co_IUchide",
+   "anim": "yoco_it_picohammer(DVD)",
+   "bank": "rotsm",
+   "clip": 141,
+   "damage": 1,
+   "active": [
+    55,
+    58
+   ],
+   "fmt": "0x64",
+   "frames": 115
+  },
+  {
+   "move": "Co_IHarisen",
+   "anim": "ozjn_item_hari2(DVD)",
+   "bank": "rotsm",
+   "clip": 143,
+   "damage": 10,
+   "active": [
+    34,
+    35
+   ],
+   "fmt": "0x64",
+   "frames": 101
+  },
+  {
+   "move": "Co_IHukuHari",
+   "anim": "ozjn_item_hari2(DVD)",
+   "bank": "rotsm",
+   "clip": 143,
+   "damage": 10,
+   "active": [
+    34,
+    35
+   ],
+   "fmt": "0x64",
+   "frames": 101
+  },
+  {
+   "move": "Co_IOgre",
+   "anim": "yoco_it_onibou(DVD)",
+   "bank": "rotsm",
+   "clip": 145,
+   "damage": 40,
+   "active": [
+    85,
+    86
+   ],
+   "fmt": "0x64",
+   "frames": 164
+  },
+  {
+   "move": "Co_IKatuo",
+   "anim": "yoco_it_onibou(DVD)",
+   "bank": "rotsm",
+   "clip": 145,
+   "damage": 20,
+   "active": [
+    85,
+    86
+   ],
+   "fmt": "0x64",
+   "frames": 164
+  },
+  {
+   "move": "Co_INunchaku",
+   "anim": "kmco_it_nun(DVD)",
+   "bank": "rotsm",
+   "clip": 147,
+   "damage": 5,
+   "active": [
+    57,
+    59
+   ],
+   "fmt": "0x64",
+   "frames": 265
+  },
+  {
+   "move": "Co_INunchaku_2",
+   "anim": "kmco_it_nun(DVD)",
+   "bank": "rotsm",
+   "clip": 147,
+   "damage": 5,
+   "active": [
+    66,
+    68
+   ],
+   "fmt": "0x64",
+   "frames": 265
+  },
+  {
+   "move": "Co_INunchaku_3",
+   "anim": "kmco_it_nun(DVD)",
+   "bank": "rotsm",
+   "clip": 147,
+   "damage": 5,
+   "active": [
+    90,
+    94
+   ],
+   "fmt": "0x64",
+   "frames": 265
+  },
+  {
+   "move": "Co_INunchaku_4",
+   "anim": "kmco_it_nun(DVD)",
+   "bank": "rotsm",
+   "clip": 147,
+   "damage": 5,
+   "active": [
+    114,
+    116
+   ],
+   "fmt": "0x64",
+   "frames": 265
+  },
+  {
+   "move": "Co_INunchaku_5",
+   "anim": "kmco_it_nun(DVD)",
+   "bank": "rotsm",
+   "clip": 147,
+   "damage": 10,
+   "active": [
+    154,
+    156
+   ],
+   "fmt": "0x64",
+   "frames": 265
+  },
+  {
+   "move": "Co_INunchaku_6",
+   "anim": "kmco_it_nun(DVD)",
+   "bank": "rotsm",
+   "clip": 147,
+   "damage": 5,
+   "active": [
+    172,
+    174
+   ],
+   "fmt": "0x64",
+   "frames": 265
+  },
+  {
+   "move": "Co_INunchaku_7",
+   "anim": "kmco_it_nun(DVD)",
+   "bank": "rotsm",
+   "clip": 147,
+   "damage": 5,
+   "active": [
+    181,
+    183
+   ],
+   "fmt": "0x64",
+   "frames": 265
+  },
+  {
+   "move": "Co_IHandGun_Fire",
+   "anim": "yoco_it_handgun_lp(DVD)",
+   "bank": "rotsm",
+   "clip": 155,
+   "damage": 8,
+   "active": [
+    10,
+    10
+   ],
+   "fmt": "0x64",
+   "frames": 43
+  },
+  {
+   "move": "Co_IHandGun_Fire2",
+   "anim": "yoco_it_handgun_lp(DVD)",
+   "bank": "rotsm",
+   "clip": 155,
+   "damage": 8,
+   "active": [
+    10,
+    10
+   ],
+   "fmt": "0x64",
+   "frames": 43
+  },
+  {
+   "move": "Co_IHandGun_Fire3",
+   "anim": "yoco_it_handgun_lp(DVD)",
+   "bank": "rotsm",
+   "clip": 155,
+   "damage": 8,
+   "active": [
+    10,
+    10
+   ],
+   "fmt": "0x64",
+   "frames": 43
+  },
+  {
+   "move": "Co_IHandGun_Fire4",
+   "anim": "yoco_it_handgun_lp(DVD)",
+   "bank": "rotsm",
+   "clip": 155,
+   "damage": 8,
+   "active": [
+    10,
+    10
+   ],
+   "fmt": "0x64",
+   "frames": 43
+  },
+  {
+   "move": "Co_IHandGun_Fire5",
+   "anim": "yoco_it_handgun_lp(DVD)",
+   "bank": "rotsm",
+   "clip": 155,
+   "damage": 8,
+   "active": [
+    10,
+    10
+   ],
+   "fmt": "0x64",
+   "frames": 43
+  },
+  {
+   "move": "Co_IModelGun_P_Fire",
+   "anim": "yoco_it_handgun_lp(DVD)",
+   "bank": "rotsm",
+   "clip": 155,
+   "damage": 4,
+   "active": [
+    10,
+    10
+   ],
+   "fmt": "0x64",
+   "frames": 43
+  },
+  {
+   "move": "Co_IModelGun_P_Fire2",
+   "anim": "yoco_it_handgun_lp(DVD)",
+   "bank": "rotsm",
+   "clip": 155,
+   "damage": 4,
+   "active": [
+    10,
+    10
+   ],
+   "fmt": "0x64",
+   "frames": 43
+  },
+  {
+   "move": "Co_IModelGun_P_Fire3",
+   "anim": "yoco_it_handgun_lp(DVD)",
+   "bank": "rotsm",
+   "clip": 155,
+   "damage": 4,
+   "active": [
+    10,
+    10
+   ],
+   "fmt": "0x64",
+   "frames": 43
+  },
+  {
+   "move": "Co_IModelGun_P_Fire4",
+   "anim": "yoco_it_handgun_lp(DVD)",
+   "bank": "rotsm",
+   "clip": 155,
+   "damage": 4,
+   "active": [
+    10,
+    10
+   ],
+   "fmt": "0x64",
+   "frames": 43
+  },
+  {
+   "move": "Co_IModelGun_P_Fire5",
+   "anim": "yoco_it_handgun_lp(DVD)",
+   "bank": "rotsm",
+   "clip": 155,
+   "damage": 4,
+   "active": [
+    10,
+    10
+   ],
+   "fmt": "0x64",
+   "frames": 43
+  },
+  {
+   "move": "Co_IShotgun",
+   "anim": "yoco_it_shotgun(DVD)",
+   "bank": "rotsm",
+   "clip": 168,
+   "damage": 25,
+   "active": [
+    21,
+    21
+   ],
+   "fmt": "0x64",
+   "frames": 130
+  },
+  {
+   "move": "Co_IShotgun_P",
+   "anim": "yoco_it_shotgun(DVD)",
+   "bank": "rotsm",
+   "clip": 168,
+   "damage": 12,
+   "active": [
+    21,
+    21
+   ],
+   "fmt": "0x64",
+   "frames": 130
+  },
+  {
+   "move": "Co_IGrenade",
+   "anim": "yoco_it_grenade(DVD)",
+   "bank": "rotsm",
+   "clip": 172,
+   "damage": 20,
+   "active": [
+    108,
+    255
+   ],
+   "fmt": "0x64",
+   "frames": 265
+  },
+  {
+   "move": "Co_IMedical_P",
+   "anim": "yoco_it_grenade(DVD)",
+   "bank": "rotsm",
+   "clip": 172,
+   "damage": 10,
+   "active": [
+    109,
+    255
+   ],
+   "fmt": "0x64",
+   "frames": 265
+  },
+  {
+   "move": "Co_IESword",
+   "anim": "yoco_it_silversword(DVD)",
+   "bank": "rotsm",
+   "clip": 176,
+   "damage": 20,
+   "active": [
+    64,
+    65
+   ],
+   "fmt": "0x64",
+   "frames": 132
+  },
+  {
+   "move": "Co_IBeamSaber",
+   "anim": "yoco_it_silversword(DVD)",
+   "bank": "rotsm",
+   "clip": 176,
+   "damage": 20,
+   "active": [
+    64,
+    65
+   ],
+   "fmt": "0x64",
+   "frames": 132
+  },
+  {
+   "move": "Co_IBRed_P",
+   "anim": "yoco_it_silversword(DVD)",
+   "bank": "rotsm",
+   "clip": 176,
+   "damage": 10,
+   "active": [
+    64,
+    65
+   ],
+   "fmt": "0x64",
+   "frames": 132
+  },
+  {
+   "move": "Co_IBGreen_P",
+   "anim": "yoco_it_silversword(DVD)",
+   "bank": "rotsm",
+   "clip": 176,
+   "damage": 10,
+   "active": [
+    64,
+    65
+   ],
+   "fmt": "0x64",
+   "frames": 132
+  },
+  {
+   "move": "Co_IBBlue_P",
+   "anim": "yoco_it_silversword(DVD)",
+   "bank": "rotsm",
+   "clip": 176,
+   "damage": 10,
+   "active": [
+    64,
+    65
+   ],
+   "fmt": "0x64",
+   "frames": 132
+  },
+  {
+   "move": "Co_IStunRod",
+   "anim": "yoco_it_stanrod(DVD)",
+   "bank": "rotsm",
+   "clip": 181,
+   "damage": 20,
+   "active": [
+    57,
+    60
+   ],
+   "fmt": "0x64",
+   "frames": 125
+  },
+  {
+   "move": "Co_ISoftCream",
+   "anim": "yoco_it_stanrod(DVD)",
+   "bank": "rotsm",
+   "clip": 181,
+   "damage": 10,
+   "active": [
+    57,
+    58
+   ],
+   "fmt": "0x64",
+   "frames": 125
+  },
+  {
+   "move": "Co_IChocoVanilla",
+   "anim": "yoco_it_stanrod(DVD)",
+   "bank": "rotsm",
+   "clip": 181,
+   "damage": 10,
+   "active": [
+    57,
+    58
+   ],
+   "fmt": "0x64",
+   "frames": 125
+  },
+  {
+   "move": "Co_I3xIceCream",
+   "anim": "yoco_it_stanrod(DVD)",
+   "bank": "rotsm",
+   "clip": 181,
+   "damage": 10,
+   "active": [
+    57,
+    58
+   ],
+   "fmt": "0x64",
+   "frames": 125
+  },
+  {
+   "move": "Co_ITonfur",
+   "anim": "yoco_it_tonfur(DVD)",
+   "bank": "rotsm",
+   "clip": 185,
+   "damage": 5,
+   "active": [
+    65,
+    67
+   ],
+   "fmt": "0x64",
+   "frames": 146
+  },
+  {
+   "move": "Co_ITonfur1_2",
+   "anim": "yoco_it_tonfur(DVD)",
+   "bank": "rotsm",
+   "clip": 185,
+   "damage": 5,
+   "active": [
+    72,
+    74
+   ],
+   "fmt": "0x64",
+   "frames": 146
+  },
+  {
+   "move": "Co_ITonfur1_3",
+   "anim": "yoco_it_tonfur(DVD)",
+   "bank": "rotsm",
+   "clip": 185,
+   "damage": 5,
+   "active": [
+    78,
+    80
+   ],
+   "fmt": "0x64",
+   "frames": 146
+  },
+  {
+   "move": "Co_ITonfur2",
+   "anim": "yoco_it_tonfur(DVD)",
+   "bank": "rotsm",
+   "clip": 185,
+   "damage": 5,
+   "active": [
+    96,
+    98
+   ],
+   "fmt": "0x64",
+   "frames": 146
+  },
+  {
+   "move": "Co_ITonfur2_2",
+   "anim": "yoco_it_tonfur(DVD)",
+   "bank": "rotsm",
+   "clip": 185,
+   "damage": 5,
+   "active": [
+    103,
+    105
+   ],
+   "fmt": "0x64",
+   "frames": 146
+  },
+  {
+   "move": "Co_ITonfur2_3",
+   "anim": "yoco_it_tonfur(DVD)",
+   "bank": "rotsm",
+   "clip": 185,
+   "damage": 5,
+   "active": [
+    109,
+    112
+   ],
+   "fmt": "0x64",
+   "frames": 146
+  },
+  {
+   "move": "Co_IAssaultRifle",
+   "anim": "yoco_it_assaultrifle(DVD)",
+   "bank": "rotsm",
+   "clip": 191,
+   "damage": 10,
+   "active": [
+    80,
+    80
+   ],
+   "fmt": "0x64",
+   "frames": 156
+  },
+  {
+   "move": "Co_ITrombone",
+   "anim": "yoco_it_assaultrifle(DVD)",
+   "bank": "rotsm",
+   "clip": 191,
+   "damage": 20,
+   "active": [
+    80,
+    80
+   ],
+   "fmt": "0x64",
+   "frames": 156
+  },
+  {
+   "move": "Co_jplp00",
+   "anim": "Bco_sjplp_n(DVD)",
+   "bank": "rotsm",
+   "clip": 244,
+   "damage": 12,
+   "active": [
+    18,
+    18
+   ],
+   "fmt": "0x64",
+   "frames": 52
+  },
+  {
+   "move": "Co_jplp00F",
+   "anim": "Bco_sjplp_n(DVD)",
+   "bank": "rotsm",
+   "clip": 244,
+   "damage": 12,
+   "active": [
+    18,
+    18
+   ],
+   "fmt": "0x64",
+   "frames": 52
+  },
+  {
+   "move": "Co_jplp00B",
+   "anim": "Bco_sjplp_n(DVD)",
+   "bank": "rotsm",
+   "clip": 244,
+   "damage": 12,
+   "active": [
+    18,
+    18
+   ],
+   "fmt": "0x64",
+   "frames": 52
+  },
+  {
+   "move": "Co_jplp01",
+   "anim": "Bco_jplp01n(DVD)",
+   "bank": "rotsm",
+   "clip": 247,
+   "damage": 12,
+   "active": [
+    11,
+    12
+   ],
+   "fmt": "0x64",
+   "frames": 39
+  },
+  {
+   "move": "Co_jplp01F",
+   "anim": "Bco_jplp01n(DVD)",
+   "bank": "rotsm",
+   "clip": 247,
+   "damage": 12,
+   "active": [
+    11,
+    12
+   ],
+   "fmt": "0x64",
+   "frames": 39
+  },
+  {
+   "move": "Co_jplp01B",
+   "anim": "Bco_jplp01n(DVD)",
+   "bank": "rotsm",
+   "clip": 247,
+   "damage": 12,
+   "active": [
+    11,
+    12
+   ],
+   "fmt": "0x64",
+   "frames": 39
+  },
+  {
+   "move": "Co_jplp02",
+   "anim": "Bco_jplp02n(DVD)",
+   "bank": "rotsm",
+   "clip": 250,
+   "damage": 15,
+   "active": [
+    9,
+    9
+   ],
+   "fmt": "0x64",
+   "frames": 37
+  },
+  {
+   "move": "Co_jplp02F",
+   "anim": "Bco_jplp02n(DVD)",
+   "bank": "rotsm",
+   "clip": 250,
+   "damage": 15,
+   "active": [
+    9,
+    9
+   ],
+   "fmt": "0x64",
+   "frames": 37
+  },
+  {
+   "move": "Co_jplp02B",
+   "anim": "Bco_jplp02n(DVD)",
+   "bank": "rotsm",
+   "clip": 250,
+   "damage": 15,
+   "active": [
+    9,
+    9
+   ],
+   "fmt": "0x64",
+   "frames": 37
+  },
+  {
+   "move": "Co_jplp03",
+   "anim": "Bco_jplp03n(DVD)",
+   "bank": "rotsm",
+   "clip": 253,
+   "damage": 18,
+   "active": [
+    7,
+    7
+   ],
+   "fmt": "0x64",
+   "frames": 35
+  },
+  {
+   "move": "Co_jplp03F",
+   "anim": "Bco_jplp03n(DVD)",
+   "bank": "rotsm",
+   "clip": 253,
+   "damage": 18,
+   "active": [
+    7,
+    7
+   ],
+   "fmt": "0x64",
+   "frames": 35
+  },
+  {
+   "move": "Co_jplp03B",
+   "anim": "Bco_jplp03n(DVD)",
+   "bank": "rotsm",
+   "clip": 253,
+   "damage": 18,
+   "active": [
+    7,
+    7
+   ],
+   "fmt": "0x64",
+   "frames": 35
+  },
+  {
+   "move": "Co_jpRlp00",
+   "anim": "Bco_sjplp_rn(DVD)",
+   "bank": "rotsm",
+   "clip": 256,
+   "damage": 12,
+   "active": [
+    18,
+    18
+   ],
+   "fmt": "0x64",
+   "frames": 52
+  },
+  {
+   "move": "Co_jpRlp00F",
+   "anim": "Bco_sjplp_rn(DVD)",
+   "bank": "rotsm",
+   "clip": 256,
+   "damage": 12,
+   "active": [
+    18,
+    18
+   ],
+   "fmt": "0x64",
+   "frames": 52
+  },
+  {
+   "move": "Co_jpRlp00B",
+   "anim": "Bco_sjplp_rn(DVD)",
+   "bank": "rotsm",
+   "clip": 256,
+   "damage": 12,
+   "active": [
+    18,
+    18
+   ],
+   "fmt": "0x64",
+   "frames": 52
+  },
+  {
+   "move": "Kg_jprp00",
+   "anim": "Bkg_jpre00(DVD)",
+   "bank": "rotsm",
+   "clip": 259,
+   "damage": 35,
+   "active": [
+    47,
+    53
+   ],
+   "fmt": "0x64",
+   "frames": 95
+  },
+  {
+   "move": "Kg_jprp00F",
+   "anim": "Bkg_jpre00(DVD)",
+   "bank": "rotsm",
+   "clip": 259,
+   "damage": 35,
+   "active": [
+    47,
+    53
+   ],
+   "fmt": "0x64",
+   "frames": 95
+  },
+  {
+   "move": "Kg_jprp00B",
+   "anim": "Bkg_jpre00(DVD)",
+   "bank": "rotsm",
+   "clip": 259,
+   "damage": 35,
+   "active": [
+    47,
+    53
+   ],
+   "fmt": "0x64",
+   "frames": 95
+  },
+  {
+   "move": "Co_jprp03",
+   "anim": "Bco_jprp03n(DVD)",
+   "bank": "rotsm",
+   "clip": 265,
+   "damage": 18,
+   "active": [
+    11,
+    13
+   ],
+   "fmt": "0x64",
+   "frames": 53
+  },
+  {
+   "move": "Co_jprp03F",
+   "anim": "Bco_jprp03n(DVD)",
+   "bank": "rotsm",
+   "clip": 265,
+   "damage": 18,
+   "active": [
+    11,
+    13
+   ],
+   "fmt": "0x64",
+   "frames": 53
+  },
+  {
+   "move": "Co_jprp03B",
+   "anim": "Bco_jprp03n(DVD)",
+   "bank": "rotsm",
+   "clip": 265,
+   "damage": 18,
+   "active": [
+    11,
+    13
+   ],
+   "fmt": "0x64",
+   "frames": 53
+  },
+  {
+   "move": "Co_jprp03H",
+   "anim": "Bco_jprp03n(DVD)",
+   "bank": "rotsm",
+   "clip": 265,
+   "damage": 18,
+   "active": [
+    11,
+    13
+   ],
+   "fmt": "0x64",
+   "frames": 53
+  },
+  {
+   "move": "Co_jpRlk00",
+   "anim": "Bco_sjpk_r(DVD)",
+   "bank": "rotsm",
+   "clip": 269,
+   "damage": 25,
+   "active": [
+    9,
+    9
+   ],
+   "fmt": "0x64",
+   "frames": 52
+  },
+  {
+   "move": "Co_jpRlk00F",
+   "anim": "Bco_sjpk_r(DVD)",
+   "bank": "rotsm",
+   "clip": 269,
+   "damage": 25,
+   "active": [
+    9,
+    9
+   ],
+   "fmt": "0x64",
+   "frames": 52
+  },
+  {
+   "move": "Co_jpRlk00B",
+   "anim": "Bco_sjpk_r(DVD)",
+   "bank": "rotsm",
+   "clip": 269,
+   "damage": 25,
+   "active": [
+    9,
+    9
+   ],
+   "fmt": "0x64",
+   "frames": 52
+  },
+  {
+   "move": "Co_jplk01",
+   "anim": "Bco_jplk01n(DVD)",
+   "bank": "rotsm",
+   "clip": 272,
+   "damage": 25,
+   "active": [
+    15,
+    15
+   ],
+   "fmt": "0x64",
+   "frames": 64
+  },
+  {
+   "move": "Co_jplk01F",
+   "anim": "Bco_jplk01n(DVD)",
+   "bank": "rotsm",
+   "clip": 272,
+   "damage": 25,
+   "active": [
+    15,
+    15
+   ],
+   "fmt": "0x64",
+   "frames": 64
+  },
+  {
+   "move": "Co_jplk01B",
+   "anim": "Bco_jplk01n(DVD)",
+   "bank": "rotsm",
+   "clip": 272,
+   "damage": 25,
+   "active": [
+    15,
+    15
+   ],
+   "fmt": "0x64",
+   "frames": 64
+  },
+  {
+   "move": "Co_jplk02",
+   "anim": "Bco_jplk02n(DVD)",
+   "bank": "rotsm",
+   "clip": 275,
+   "damage": 25,
+   "active": [
+    14,
+    14
+   ],
+   "fmt": "0x64",
+   "frames": 62
+  },
+  {
+   "move": "Co_jplk02F",
+   "anim": "Bco_jplk02n(DVD)",
+   "bank": "rotsm",
+   "clip": 275,
+   "damage": 25,
+   "active": [
+    14,
+    14
+   ],
+   "fmt": "0x64",
+   "frames": 62
+  },
+  {
+   "move": "Co_jplk02B",
+   "anim": "Bco_jplk02n(DVD)",
+   "bank": "rotsm",
+   "clip": 275,
+   "damage": 25,
+   "active": [
+    14,
+    14
+   ],
+   "fmt": "0x64",
+   "frames": 62
+  },
+  {
+   "move": "Co_jplk04",
+   "anim": "Bco_jplk04n(DVD)",
+   "bank": "rotsm",
+   "clip": 278,
+   "damage": 20,
+   "active": [
+    15,
+    15
+   ],
+   "fmt": "0x64",
+   "frames": 64
+  },
+  {
+   "move": "Co_jplk04F",
+   "anim": "Bco_jplk04n(DVD)",
+   "bank": "rotsm",
+   "clip": 278,
+   "damage": 15,
+   "active": [
+    15,
+    15
+   ],
+   "fmt": "0x64",
+   "frames": 64
+  },
+  {
+   "move": "Co_jplk04B",
+   "anim": "Bco_jplk04n(DVD)",
+   "bank": "rotsm",
+   "clip": 278,
+   "damage": 20,
+   "active": [
+    15,
+    15
+   ],
+   "fmt": "0x64",
+   "frames": 64
+  },
+  {
+   "move": "Kg_jplk00",
+   "anim": "k_sjprk00(DVD)",
+   "bank": "rotsm",
+   "clip": 281,
+   "damage": 25,
+   "active": [
+    23,
+    23
+   ],
+   "fmt": "0x64",
+   "frames": 72
+  },
+  {
+   "move": "Kg_jplk00F",
+   "anim": "mokg_fnkick(DVD)",
+   "bank": "rotsm",
+   "clip": 282,
+   "damage": 23,
+   "active": [
+    22,
+    29
+   ],
+   "fmt": "0x64",
+   "frames": 56
+  },
+  {
+   "move": "Kg_fneel2",
+   "anim": "mokg_fnkick(DVD)",
+   "bank": "rotsm",
+   "clip": 282,
+   "damage": 18,
+   "active": [
+    24,
+    29
+   ],
+   "fmt": "0x64",
+   "frames": 56
+  },
+  {
+   "move": "Kg_jplk00B",
+   "anim": "k_sjprk00(DVD)",
+   "bank": "rotsm",
+   "clip": 281,
+   "damage": 25,
+   "active": [
+    23,
+    23
+   ],
+   "fmt": "0x64",
+   "frames": 72
+  },
+  {
+   "move": "Kg_jprk00",
+   "anim": "mokg_jmprhiza00(DVD)",
+   "bank": "rotsm",
+   "clip": 287,
+   "damage": 15,
+   "active": [
+    15,
+    16
+   ],
+   "fmt": "0x64",
+   "frames": 54
+  },
+  {
+   "move": "Kg_jprk00F",
+   "anim": "mokg_jmprhiza01(DVD)",
+   "bank": "rotsm",
+   "clip": 289,
+   "damage": 13,
+   "active": [
+    15,
+    16
+   ],
+   "fmt": "0x64",
+   "frames": 55
+  },
+  {
+   "move": "Kg_jprk00B",
+   "anim": "mokg_jmprhiza00(DVD)",
+   "bank": "rotsm",
+   "clip": 287,
+   "damage": 11,
+   "active": [
+    15,
+    16
+   ],
+   "fmt": "0x64",
+   "frames": 54
+  },
+  {
+   "move": "Co_jprk01",
+   "anim": "Bco_jprk01n(DVD)",
+   "bank": "rotsm",
+   "clip": 292,
+   "damage": 25,
+   "active": [
+    8,
+    9
+   ],
+   "fmt": "0x64",
+   "frames": 46
+  },
+  {
+   "move": "Co_jprk01F",
+   "anim": "Bco_jprk01n(DVD)",
+   "bank": "rotsm",
+   "clip": 292,
+   "damage": 25,
+   "active": [
+    8,
+    9
+   ],
+   "fmt": "0x64",
+   "frames": 46
+  },
+  {
+   "move": "Co_jprk01B",
+   "anim": "Bco_jprk01n(DVD)",
+   "bank": "rotsm",
+   "clip": 292,
+   "damage": 25,
+   "active": [
+    8,
+    9
+   ],
+   "fmt": "0x64",
+   "frames": 46
+  },
+  {
+   "move": "Co_jprk02",
+   "anim": "Bco_jprk02n(DVD)",
+   "bank": "rotsm",
+   "clip": 295,
+   "damage": 25,
+   "active": [
+    9,
+    10
+   ],
+   "fmt": "0x64",
+   "frames": 47
+  },
+  {
+   "move": "Co_jprk02F",
+   "anim": "Bco_jprk02n(DVD)",
+   "bank": "rotsm",
+   "clip": 295,
+   "damage": 25,
+   "active": [
+    9,
+    10
+   ],
+   "fmt": "0x64",
+   "frames": 47
+  },
+  {
+   "move": "Co_jprk02B",
+   "anim": "Bco_jprk02n(DVD)",
+   "bank": "rotsm",
+   "clip": 295,
+   "damage": 25,
+   "active": [
+    9,
+    10
+   ],
+   "fmt": "0x64",
+   "frames": 47
+  },
+  {
+   "move": "Co_jprk04",
+   "anim": "Bco_jprk04n(DVD)",
+   "bank": "rotsm",
+   "clip": 298,
+   "damage": 15,
+   "active": [
+    9,
+    10
+   ],
+   "fmt": "0x64",
+   "frames": 44
+  },
+  {
+   "move": "Co_jprk04F",
+   "anim": "Bco_jprk04n(DVD)",
+   "bank": "rotsm",
+   "clip": 298,
+   "damage": 15,
+   "active": [
+    9,
+    10
+   ],
+   "fmt": "0x64",
+   "frames": 44
+  },
+  {
+   "move": "Co_jprk04B",
+   "anim": "Bco_jprk04n(DVD)",
+   "bank": "rotsm",
+   "clip": 298,
+   "damage": 15,
+   "active": [
+    9,
+    10
+   ],
+   "fmt": "0x64",
+   "frames": 44
+  },
+  {
+   "move": "Co_jpRrk00",
+   "anim": "Bco_sjprk_r(DVD)",
+   "bank": "rotsm",
+   "clip": 301,
+   "damage": 18,
+   "active": [
+    9,
+    9
+   ],
+   "fmt": "0x64",
+   "frames": 52
+  },
+  {
+   "move": "Co_jpRrk00F",
+   "anim": "Bco_sjprk_r(DVD)",
+   "bank": "rotsm",
+   "clip": 301,
+   "damage": 18,
+   "active": [
+    9,
+    9
+   ],
+   "fmt": "0x64",
+   "frames": 52
+  },
+  {
+   "move": "Co_jpRrk00B",
+   "anim": "Bco_sjprk_r(DVD)",
+   "bank": "rotsm",
+   "clip": 301,
+   "damage": 18,
+   "active": [
+    9,
+    9
+   ],
+   "fmt": "0x64",
+   "frames": 52
+  },
+  {
+   "move": "Kg_sjprp01F",
+   "anim": "k_sjplp01(DVD)",
+   "bank": "rotsm",
+   "clip": 304,
+   "damage": 15,
+   "active": [
+    23,
+    23
+   ],
+   "fmt": "0x64",
+   "frames": 53
+  },
+  {
+   "move": "Kg_sjprp02F",
+   "anim": "k_sjplp02(DVD)",
+   "bank": "rotsm",
+   "clip": 305,
+   "damage": 15,
+   "active": [
+    29,
+    29
+   ],
+   "fmt": "0x64",
+   "frames": 59
+  },
+  {
+   "move": "Kg_sjprp03F",
+   "anim": "k_sjplp03(DVD)",
+   "bank": "rotsm",
+   "clip": 306,
+   "damage": 15,
+   "active": [
+    35,
+    35
+   ],
+   "fmt": "0x64",
+   "frames": 65
+  },
+  {
+   "move": "Co_sjplk03D",
+   "anim": "sjprk13xy(DVD)",
+   "bank": "rotsm",
+   "clip": 307,
+   "damage": 15,
+   "active": [
+    43,
+    43
+   ],
+   "fmt": "0x64",
+   "frames": 92
+  },
+  {
+   "move": "Kg_sjplk01F",
+   "anim": "k_sjprk01(DVD)",
+   "bank": "rotsm",
+   "clip": 308,
+   "damage": 25,
+   "active": [
+    31,
+    31
+   ],
+   "fmt": "0x64",
+   "frames": 80
+  },
+  {
+   "move": "Kg_sjplk02F",
+   "anim": "k_sjprk02(DVD)",
+   "bank": "rotsm",
+   "clip": 309,
+   "damage": 25,
+   "active": [
+    37,
+    37
+   ],
+   "fmt": "0x64",
+   "frames": 86
+  },
+  {
+   "move": "Kg_sjplk03F",
+   "anim": "k_sjprk03(DVD)",
+   "bank": "rotsm",
+   "clip": 310,
+   "damage": 25,
+   "active": [
+    43,
+    43
+   ],
+   "fmt": "0x64",
+   "frames": 92
+  },
+  {
+   "move": "Kg_lprpF",
+   "anim": "ygkg_lprp(DVD)",
+   "bank": "rotsm",
+   "clip": 314,
+   "damage": 15,
+   "active": [
+    12,
+    12
+   ],
+   "fmt": "0x64",
+   "frames": 42
+  },
+  {
+   "move": "Kg_rp00",
+   "anim": "ygkg_rp00(DVD)",
+   "bank": "rotsm",
+   "clip": 315,
+   "damage": 10,
+   "active": [
+    10,
+    10
+   ],
+   "fmt": "0x64",
+   "frames": 40
+  },
+  {
+   "move": "Kg_rplu4t",
+   "anim": "ygkg_lprplp(DVD)",
+   "bank": "rotsm",
+   "clip": 316,
+   "damage": 15,
+   "active": [
+    23,
+    24
+   ],
+   "fmt": "0x64",
+   "frames": 57
+  },
+  {
+   "move": "Kg_lk00",
+   "anim": "ygvt_lk00(DVD)",
+   "bank": "rotsm",
+   "clip": 317,
+   "damage": 25,
+   "active": [
+    17,
+    17
+   ],
+   "fmt": "0x64",
+   "frames": 61
+  },
+  {
+   "move": "Kg_rk00",
+   "anim": "mokg_hrk(DVD)",
+   "bank": "rotsm",
+   "clip": 318,
+   "damage": 20,
+   "active": [
+    13,
+    13
+   ],
+   "fmt": "0x64",
+   "frames": 47
+  },
+  {
+   "move": "Co_R_lk00L",
+   "anim": "naco_lfurik(DVD)",
+   "bank": "rotsm",
+   "clip": 319,
+   "damage": 18,
+   "active": [
+    10,
+    10
+   ],
+   "fmt": "0x64",
+   "frames": 54
+  },
+  {
+   "move": "Kg_fs_LHook",
+   "anim": "ikkg_feste_lp(DVD)",
+   "bank": "rotsm",
+   "clip": 336,
+   "damage": 21,
+   "active": [
+    19,
+    20
+   ],
+   "fmt": "0x64",
+   "frames": 58
+  },
+  {
+   "move": "Kg_fs_LHook2",
+   "anim": "ikkg_feste_lp(DVD)",
+   "bank": "rotsm",
+   "clip": 336,
+   "damage": 25,
+   "active": [
+    19,
+    20
+   ],
+   "fmt": "0x64",
+   "frames": 58
+  },
+  {
+   "move": "Kg_fs_LHook3",
+   "anim": "ikkg_feste_lp(DVD)",
+   "bank": "rotsm",
+   "clip": 336,
+   "damage": 31,
+   "active": [
+    19,
+    20
+   ],
+   "fmt": "0x64",
+   "frames": 58
+  },
+  {
+   "move": "Kg_fs_chop",
+   "anim": "sukg_festechop(DVD)",
+   "bank": "rotsm",
+   "clip": 339,
+   "damage": 15,
+   "active": [
+    11,
+    12
+   ],
+   "fmt": "0x64",
+   "frames": 52
+  },
+  {
+   "move": "Kg_fs_chop2",
+   "anim": "sukg_festechop(DVD)",
+   "bank": "rotsm",
+   "clip": 339,
+   "damage": 18,
+   "active": [
+    11,
+    12
+   ],
+   "fmt": "0x64",
+   "frames": 52
+  },
+  {
+   "move": "Kg_fs_chop3",
+   "anim": "sukg_festechop(DVD)",
+   "bank": "rotsm",
+   "clip": 339,
+   "damage": 22,
+   "active": [
+    11,
+    12
+   ],
+   "fmt": "0x64",
+   "frames": 52
+  },
+  {
+   "move": "Kg_fs_Jkick",
+   "anim": "mbkg_jaguarlk(DVD)",
+   "bank": "rotsm",
+   "clip": 342,
+   "damage": 23,
+   "active": [
+    22,
+    23
+   ],
+   "fmt": "0x64",
+   "frames": 54
+  },
+  {
+   "move": "Kg_fs_Jkick2",
+   "anim": "mbkg_jaguarlk(DVD)",
+   "bank": "rotsm",
+   "clip": 342,
+   "damage": 27,
+   "active": [
+    22,
+    23
+   ],
+   "fmt": "0x64",
+   "frames": 54
+  },
+  {
+   "move": "Kg_fs_Jkick3",
+   "anim": "mbkg_jaguarlk(DVD)",
+   "bank": "rotsm",
+   "clip": 342,
+   "damage": 34,
+   "active": [
+    22,
+    23
+   ],
+   "fmt": "0x64",
+   "frames": 54
+  },
+  {
+   "move": "Kg_fs_hikick",
+   "anim": "sukg_festerhi(DVD)",
+   "bank": "rotsm",
+   "clip": 345,
+   "damage": 40,
+   "active": [
+    17,
+    18
+   ],
+   "fmt": "0x64",
+   "frames": 72
+  },
+  {
+   "move": "Kg_fs_hikick2",
+   "anim": "sukg_festerhi(DVD)",
+   "bank": "rotsm",
+   "clip": 345,
+   "damage": 42,
+   "active": [
+    17,
+    18
+   ],
+   "fmt": "0x64",
+   "frames": 72
+  },
+  {
+   "move": "Kg_fs_hikick3",
+   "anim": "sukg_festerhi(DVD)",
+   "bank": "rotsm",
+   "clip": 345,
+   "damage": 52,
+   "active": [
+    17,
+    18
+   ],
+   "fmt": "0x64",
+   "frames": 72
+  },
+  {
+   "move": "Kg_fs_midkick",
+   "anim": "sukg_festermd(DVD)",
+   "bank": "rotsm",
+   "clip": 348,
+   "damage": 30,
+   "active": [
+    17,
+    19
+   ],
+   "fmt": "0x64",
+   "frames": 70
+  },
+  {
+   "move": "Kg_fs_midkick2",
+   "anim": "sukg_festermd(DVD)",
+   "bank": "rotsm",
+   "clip": 348,
+   "damage": 36,
+   "active": [
+    17,
+    19
+   ],
+   "fmt": "0x64",
+   "frames": 70
+  },
+  {
+   "move": "Kg_fs_midkick3",
+   "anim": "sukg_festermd(DVD)",
+   "bank": "rotsm",
+   "clip": 348,
+   "damage": 45,
+   "active": [
+    17,
+    19
+   ],
+   "fmt": "0x64",
+   "frames": 70
+  },
+  {
+   "move": "Kg_BMSP00",
+   "anim": "Mkg_Bmsp(DVD)",
+   "bank": "rotsm",
+   "clip": 351,
+   "damage": 30,
+   "active": [
+    41,
+    47
+   ],
+   "fmt": "0x64",
+   "frames": 104
+  },
+  {
+   "move": "Kg_BMSP00A",
+   "anim": "Mkg_Bmsp(DVD)",
+   "bank": "rotsm",
+   "clip": 351,
+   "damage": 35,
+   "active": [
+    47,
+    47
+   ],
+   "fmt": "0x64",
+   "frames": 104
+  },
+  {
+   "move": "Kg_BMSP00B",
+   "anim": "Mkg_Bmsp(DVD)",
+   "bank": "rotsm",
+   "clip": 351,
+   "damage": 35,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 104
+  },
+  {
+   "move": "Kg_rp00F",
+   "anim": "kgke_ren1_ak6rp(DVD)",
+   "bank": "rotsm",
+   "clip": 356,
+   "damage": 12,
+   "active": [
+    15,
+    16
+   ],
+   "fmt": "0x64",
+   "frames": 55
+  },
+  {
+   "move": "Kg_6rplp",
+   "anim": "naak_6rplp(DVD)",
+   "bank": "rotsm",
+   "clip": 357,
+   "damage": 25,
+   "active": [
+    18,
+    19
+   ],
+   "fmt": "0x64",
+   "frames": 55
+  },
+  {
+   "move": "Kg_6rp2lp",
+   "anim": "kgke_ren2_lpoverhook(DVD)",
+   "bank": "rotsm",
+   "clip": 358,
+   "damage": 15,
+   "active": [
+    22,
+    22
+   ],
+   "fmt": "0x64",
+   "frames": 70
+  },
+  {
+   "move": "Kg_6rplprp",
+   "anim": "kgke_ren3_upprshoutei(DVD)",
+   "bank": "rotsm",
+   "clip": 359,
+   "damage": 16,
+   "active": [
+    22,
+    23
+   ],
+   "fmt": "0x64",
+   "frames": 60
+  },
+  {
+   "move": "Kg_rpspxk",
+   "anim": "Tkg_PSrpspxk(DVD)",
+   "bank": "rotsm",
+   "clip": 360,
+   "damage": 50,
+   "active": [
+    29,
+    32
+   ],
+   "fmt": "0x64",
+   "frames": 67
+  },
+  {
+   "move": "Kg_lk00F",
+   "anim": "nokg_ptk(DVD)",
+   "bank": "rotsm",
+   "clip": 361,
+   "damage": 18,
+   "active": [
+    15,
+    16
+   ],
+   "fmt": "0x64",
+   "frames": 45
+  },
+  {
+   "move": "Kg_ptk_n",
+   "anim": "nokg_ptkng_f(DVD)",
+   "bank": "rotsm",
+   "clip": 364,
+   "damage": 20,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 155
+  },
+  {
+   "move": "Kg_rsbt",
+   "anim": "kokg_sobatter(DVD)",
+   "bank": "rotsm",
+   "clip": 366,
+   "damage": 25,
+   "active": [
+    18,
+    20
+   ],
+   "fmt": "0x64",
+   "frames": 62
+  },
+  {
+   "move": "Kg_DASHdki",
+   "anim": "Bco_dash_f(DVD)",
+   "bank": "rotsm",
+   "clip": 367,
+   "damage": 25,
+   "active": [
+    11,
+    11
+   ],
+   "fmt": "0x64",
+   "frames": 30
+  },
+  {
+   "move": "Kg_turas",
+   "anim": "Bak_turasK(DVD)",
+   "bank": "rotsm",
+   "clip": 368,
+   "damage": 23,
+   "active": [
+    16,
+    18
+   ],
+   "fmt": "0x64",
+   "frames": 62
+  },
+  {
+   "move": "Kg_turasY",
+   "anim": "Bak_turasK(DVD)",
+   "bank": "rotsm",
+   "clip": 368,
+   "damage": 23,
+   "active": [
+    16,
+    18
+   ],
+   "fmt": "0x64",
+   "frames": 62
+  },
+  {
+   "move": "Kg_Yakuza",
+   "anim": "Bkg_yakuza_n(DVD)",
+   "bank": "rotsm",
+   "clip": 369,
+   "damage": 25,
+   "active": [
+    17,
+    21
+   ],
+   "fmt": "0x64",
+   "frames": 62
+  },
+  {
+   "move": "Kg_syalp00",
+   "anim": "kzco_sylp01_10f(DVD)",
+   "bank": "rotsm",
+   "clip": 372,
+   "damage": 5,
+   "active": [
+    10,
+    10
+   ],
+   "fmt": "0x64",
+   "frames": 39
+  },
+  {
+   "move": "Kg_syalp01",
+   "anim": "kzco_sylp01_10f(DVD)",
+   "bank": "rotsm",
+   "clip": 372,
+   "damage": 5,
+   "active": [
+    10,
+    10
+   ],
+   "fmt": "0x64",
+   "frames": 39
+  },
+  {
+   "move": "Kg_guriz",
+   "anim": "kgss_legbrk(DVD)",
+   "bank": "rotsm",
+   "clip": 375,
+   "damage": 20,
+   "active": [
+    32,
+    34
+   ],
+   "fmt": "0x64",
+   "frames": 72
+  },
+  {
+   "move": "Co_syarp00",
+   "anim": "naco_syrp(DVD)",
+   "bank": "rotsm",
+   "clip": 376,
+   "damage": 8,
+   "active": [
+    11,
+    11
+   ],
+   "fmt": "0x64",
+   "frames": 40
+  },
+  {
+   "move": "Kg_p02",
+   "anim": "sukg_dainaup(DVD)",
+   "bank": "rotsm",
+   "clip": 377,
+   "damage": 21,
+   "active": [
+    15,
+    15
+   ],
+   "fmt": "0x64",
+   "frames": 62
+  },
+  {
+   "move": "Co_R_crp00L",
+   "anim": "skco_r_sharp(DVD)",
+   "bank": "rotsm",
+   "clip": 378,
+   "damage": 10,
+   "active": [
+    10,
+    10
+   ],
+   "fmt": "0x64",
+   "frames": 37
+  },
+  {
+   "move": "Kg_syalk00",
+   "anim": "kin_syrk(DVD)",
+   "bank": "rotsm",
+   "clip": 379,
+   "damage": 12,
+   "active": [
+    18,
+    18
+   ],
+   "fmt": "0x64",
+   "frames": 62
+  },
+  {
+   "move": "Kg_syark00",
+   "anim": "kin_sylk(DVD)",
+   "bank": "rotsm",
+   "clip": 380,
+   "damage": 10,
+   "active": [
+    14,
+    14
+   ],
+   "fmt": "0x64",
+   "frames": 48
+  },
+  {
+   "move": "Kg_R_loDrop",
+   "anim": "mokg_bkdropk(DVD)",
+   "bank": "rotsm",
+   "clip": 381,
+   "damage": 20,
+   "active": [
+    22,
+    24
+   ],
+   "fmt": "0x64",
+   "frames": 58
+  },
+  {
+   "move": "tac02xk",
+   "anim": "naco_altimate(DVD)",
+   "bank": "rotsm",
+   "clip": 384,
+   "damage": 16384,
+   "active": [
+    26,
+    26
+   ],
+   "fmt": "0x64",
+   "frames": 70
+  },
+  {
+   "move": "Kg_syalkF",
+   "anim": "kin_syrkf(DVD)",
+   "bank": "rotsm",
+   "clip": 385,
+   "damage": 12,
+   "active": [
+    18,
+    18
+   ],
+   "fmt": "0x64",
+   "frames": 62
+  },
+  {
+   "move": "Kg_syarkF",
+   "anim": "kin_sylkf(DVD)",
+   "bank": "rotsm",
+   "clip": 386,
+   "damage": 10,
+   "active": [
+    14,
+    14
+   ],
+   "fmt": "0x64",
+   "frames": 48
+  },
+  {
+   "move": "Kg_t_slp00",
+   "anim": "kzco_sylp01_10f(DVD)",
+   "bank": "rotsm",
+   "clip": 372,
+   "damage": 5,
+   "active": [
+    10,
+    10
+   ],
+   "fmt": "0x64",
+   "frames": 39
+  },
+  {
+   "move": "Kg_t_slp01",
+   "anim": "kzco_sylp01_10f(DVD)",
+   "bank": "rotsm",
+   "clip": 372,
+   "damage": 5,
+   "active": [
+    10,
+    10
+   ],
+   "fmt": "0x64",
+   "frames": 39
+  },
+  {
+   "move": "Kg_t_slp00_EX",
+   "anim": "kzco_sylp01_10f(DVD)",
+   "bank": "rotsm",
+   "clip": 372,
+   "damage": 5,
+   "active": [
+    10,
+    10
+   ],
+   "fmt": "0x64",
+   "frames": 39
+  },
+  {
+   "move": "Co_t_srp00",
+   "anim": "naco_syrp(DVD)",
+   "bank": "rotsm",
+   "clip": 376,
+   "damage": 8,
+   "active": [
+    11,
+    11
+   ],
+   "fmt": "0x64",
+   "frames": 40
+  },
+  {
+   "move": "Kg_t_srp00B",
+   "anim": "kokg_thop(DVD)",
+   "bank": "rotsm",
+   "clip": 391,
+   "damage": 21,
+   "active": [
+    25,
+    26
+   ],
+   "fmt": "0x64",
+   "frames": 75
+  },
+  {
+   "move": "Kg_t_slk",
+   "anim": "naak_sune(DVD)",
+   "bank": "rotsm",
+   "clip": 392,
+   "damage": 12,
+   "active": [
+    17,
+    17
+   ],
+   "fmt": "0x64",
+   "frames": 58
+  },
+  {
+   "move": "Kg_gyakuAri",
+   "anim": "sukg_sitllw(DVD)",
+   "bank": "rotsm",
+   "clip": 393,
+   "damage": 17,
+   "active": [
+    23,
+    23
+   ],
+   "fmt": "0x64",
+   "frames": 73
+  },
+  {
+   "move": "Kg_t_srk",
+   "anim": "kin_tslk(DVD)",
+   "bank": "rotsm",
+   "clip": 394,
+   "damage": 7,
+   "active": [
+    14,
+    14
+   ],
+   "fmt": "0x64",
+   "frames": 48
+  },
+  {
+   "move": "Kg_loDropN",
+   "anim": "kgss_lowdpmiss(DVD)",
+   "bank": "rotsm",
+   "clip": 395,
+   "damage": 20,
+   "active": [
+    29,
+    31
+   ],
+   "fmt": "0x64",
+   "frames": 72
+  },
+  {
+   "move": "Kg_Ari_kick",
+   "anim": "sukg_ari1(DVD)",
+   "bank": "rotsm",
+   "clip": 398,
+   "damage": 14,
+   "active": [
+    16,
+    16
+   ],
+   "fmt": "0x64",
+   "frames": 70
+  },
+  {
+   "move": "Kg_Ari_kick_B",
+   "anim": "sukg_ari1(DVD)",
+   "bank": "rotsm",
+   "clip": 398,
+   "damage": 14,
+   "active": [
+    16,
+    16
+   ],
+   "fmt": "0x64",
+   "frames": 70
+  },
+  {
+   "move": "Kg_AriPunch",
+   "anim": "sukg_ariup(DVD)",
+   "bank": "rotsm",
+   "clip": 400,
+   "damage": 10,
+   "active": [
+    28,
+    28
+   ],
+   "fmt": "0x64",
+   "frames": 71
+  },
+  {
+   "move": "Kg_Ari_kick_D",
+   "anim": "sukg_ari1(DVD)",
+   "bank": "rotsm",
+   "clip": 398,
+   "damage": 14,
+   "active": [
+    16,
+    16
+   ],
+   "fmt": "0x64",
+   "frames": 70
+  },
+  {
+   "move": "Kg_cAri_kick",
+   "anim": "sukg_ari1(DVD)",
+   "bank": "rotsm",
+   "clip": 398,
+   "damage": 14,
+   "active": [
+    16,
+    16
+   ],
+   "fmt": "0x64",
+   "frames": 70
+  },
+  {
+   "move": "Kg_Ari_kick2",
+   "anim": "sukg_ari2(DVD)",
+   "bank": "rotsm",
+   "clip": 403,
+   "damage": 7,
+   "active": [
+    29,
+    29
+   ],
+   "fmt": "0x64",
+   "frames": 83
+  },
+  {
+   "move": "Kg_Ari_kick2C",
+   "anim": "sukg_ari2(DVD)",
+   "bank": "rotsm",
+   "clip": 403,
+   "damage": 7,
+   "active": [
+    29,
+    29
+   ],
+   "fmt": "0x64",
+   "frames": 83
+  },
+  {
+   "move": "Kg_Ari_kick3",
+   "anim": "sukg_ari2(DVD)",
+   "bank": "rotsm",
+   "clip": 403,
+   "damage": 7,
+   "active": [
+    29,
+    29
+   ],
+   "fmt": "0x64",
+   "frames": 83
+  },
+  {
+   "move": "Kg_Ari_kick3C",
+   "anim": "sukg_ari2(DVD)",
+   "bank": "rotsm",
+   "clip": 403,
+   "damage": 7,
+   "active": [
+    29,
+    29
+   ],
+   "fmt": "0x64",
+   "frames": 83
+  },
+  {
+   "move": "Kg_Ari_kick4",
+   "anim": "sukg_ari2(DVD)",
+   "bank": "rotsm",
+   "clip": 403,
+   "damage": 4,
+   "active": [
+    29,
+    29
+   ],
+   "fmt": "0x64",
+   "frames": 83
+  },
+  {
+   "move": "Kg_Ari_kick5",
+   "anim": "sukg_ari2(DVD)",
+   "bank": "rotsm",
+   "clip": 403,
+   "damage": 3,
+   "active": [
+    29,
+    29
+   ],
+   "fmt": "0x64",
+   "frames": 83
+  },
+  {
+   "move": "Kg_t_slpF03B",
+   "anim": "mokg_trelp00(DVD)",
+   "bank": "rotsm",
+   "clip": 410,
+   "damage": 15,
+   "active": [
+    18,
+    19
+   ],
+   "fmt": "0x64",
+   "frames": 47
+  },
+  {
+   "move": "Kg_t_srpF",
+   "anim": "sukg_dhook(DVD)",
+   "bank": "rotsm",
+   "clip": 411,
+   "damage": 12,
+   "active": [
+    13,
+    13
+   ],
+   "fmt": "0x64",
+   "frames": 45
+  },
+  {
+   "move": "Kg_dhook_lp00",
+   "anim": "ikkg_dhook_lp(DVD)",
+   "bank": "rotsm",
+   "clip": 412,
+   "damage": 15,
+   "active": [
+    16,
+    17
+   ],
+   "fmt": "0x64",
+   "frames": 55
+  },
+  {
+   "move": "Kg_dhook_lp01",
+   "anim": "ikkg_dhook_lp01(DVD)",
+   "bank": "rotsm",
+   "clip": 413,
+   "damage": 15,
+   "active": [
+    20,
+    21
+   ],
+   "fmt": "0x64",
+   "frames": 59
+  },
+  {
+   "move": "Kg_t_slkF",
+   "anim": "Bco_fslk00(DVD)",
+   "bank": "rotsm",
+   "clip": 414,
+   "damage": 17,
+   "active": [
+    14,
+    14
+   ],
+   "fmt": "0x64",
+   "frames": 55
+  },
+  {
+   "move": "Kg_t_slkFA",
+   "anim": "Bco_fslk00(DVD)",
+   "bank": "rotsm",
+   "clip": 414,
+   "damage": 17,
+   "active": [
+    14,
+    14
+   ],
+   "fmt": "0x64",
+   "frames": 55
+  },
+  {
+   "move": "Kg_lkEnzui00",
+   "anim": "takg_enzui(DVD)",
+   "bank": "rotsm",
+   "clip": 416,
+   "damage": 23,
+   "active": [
+    30,
+    30
+   ],
+   "fmt": "0x64",
+   "frames": 65
+  },
+  {
+   "move": "Kg_t_srkF",
+   "anim": "mokg_flwrk(DVD)",
+   "bank": "rotsm",
+   "clip": 417,
+   "damage": 10,
+   "active": [
+    14,
+    15
+   ],
+   "fmt": "0x64",
+   "frames": 48
+  },
+  {
+   "move": "Kg_t_srkF02",
+   "anim": "mokg_flwrkhlk(DVD)",
+   "bank": "rotsm",
+   "clip": 418,
+   "damage": 11,
+   "active": [
+    22,
+    22
+   ],
+   "fmt": "0x64",
+   "frames": 54
+  },
+  {
+   "move": "Kg_t_srkF03",
+   "anim": "kokg_lhk2sbk(DVD)",
+   "bank": "rotsm",
+   "clip": 419,
+   "damage": 27,
+   "active": [
+    28,
+    29
+   ],
+   "fmt": "0x64",
+   "frames": 72
+  },
+  {
+   "move": "Kg_t_srkF04",
+   "anim": "mokg_flwrkmdlklwdpk_miss(DVD)",
+   "bank": "rotsm",
+   "clip": 421,
+   "damage": 20,
+   "active": [
+    33,
+    35
+   ],
+   "fmt": "0x64",
+   "frames": 62
+  },
+  {
+   "move": "Kg_frank00",
+   "anim": "sdkg_frank00(DVD)",
+   "bank": "rotsm",
+   "clip": 424,
+   "damage": 15,
+   "active": [
+    28,
+    35
+   ],
+   "fmt": "0x64",
+   "frames": 65
+  },
+  {
+   "move": "Kg_s_trp00",
+   "anim": "kmkg_mox02(DVD)",
+   "bank": "rotsm",
+   "clip": 426,
+   "damage": 11,
+   "active": [
+    14,
+    14
+   ],
+   "fmt": "0x64",
+   "frames": 62
+  },
+  {
+   "move": "Kg_s_trp01",
+   "anim": "kghk_mox03(DVD)",
+   "bank": "rotsm",
+   "clip": 427,
+   "damage": 25,
+   "active": [
+    15,
+    16
+   ],
+   "fmt": "0x64",
+   "frames": 56
+  },
+  {
+   "move": "Ak_s_tlk00",
+   "anim": "koak_lfkick(DVD)",
+   "bank": "rotsm",
+   "clip": 429,
+   "damage": 28,
+   "active": [
+    16,
+    16
+   ],
+   "fmt": "0x64",
+   "frames": 60
+  },
+  {
+   "move": "Kg_s_trk00",
+   "anim": "mokg_strk(DVD)",
+   "bank": "rotsm",
+   "clip": 430,
+   "damage": 20,
+   "active": [
+    11,
+    12
+   ],
+   "fmt": "0x64",
+   "frames": 46
+  },
+  {
+   "move": "Co_runtac00",
+   "anim": "naco_altimate2(DVD)",
+   "bank": "rotsm",
+   "clip": 433,
+   "damage": 16384,
+   "active": [
+    16,
+    16
+   ],
+   "fmt": "0x64",
+   "frames": 60
+  },
+  {
+   "move": "Kg_runrk00",
+   "anim": "amkg_ari_kick(DVD)",
+   "bank": "rotsm",
+   "clip": 434,
+   "damage": 22,
+   "active": [
+    14,
+    14
+   ],
+   "fmt": "0x64",
+   "frames": 68
+  },
+  {
+   "move": "Kg_lygerlp00",
+   "anim": "kgss_66lp(DVD)",
+   "bank": "rotsm",
+   "clip": 439,
+   "damage": 21,
+   "active": [
+    22,
+    23
+   ],
+   "fmt": "0x64",
+   "frames": 64
+  },
+  {
+   "move": "Kg_rplu6",
+   "anim": "ygkg_lprplp(DVD)",
+   "bank": "rotsm",
+   "clip": 316,
+   "damage": 10,
+   "active": [
+    24,
+    25
+   ],
+   "fmt": "0x64",
+   "frames": 57
+  },
+  {
+   "move": "Kg_lpsru4u",
+   "anim": "rpslu4u(DVD)",
+   "bank": "rotsm",
+   "clip": 441,
+   "damage": 13,
+   "active": [
+    15,
+    17
+   ],
+   "fmt": "0x64",
+   "frames": 54
+  },
+  {
+   "move": "Kg_p00",
+   "anim": "sukg_falleru(DVD)",
+   "bank": "rotsm",
+   "clip": 442,
+   "damage": 19,
+   "active": [
+    31,
+    32
+   ],
+   "fmt": "0x64",
+   "frames": 71
+  },
+  {
+   "move": "Kg_p00Y",
+   "anim": "sukg_falleru(DVD)",
+   "bank": "rotsm",
+   "clip": 442,
+   "damage": 19,
+   "active": [
+    31,
+    32
+   ],
+   "fmt": "0x64",
+   "frames": 71
+  },
+  {
+   "move": "Kg_fallerurari",
+   "anim": "sukg_fallerurari(DVD)",
+   "bank": "rotsm",
+   "clip": 446,
+   "damage": 25,
+   "active": [
+    19,
+    19
+   ],
+   "fmt": "0x64",
+   "frames": 56
+  },
+  {
+   "move": "Kg_p01",
+   "anim": "k_p01(DVD)",
+   "bank": "rotsm",
+   "clip": 447,
+   "damage": 15,
+   "active": [
+    18,
+    18
+   ],
+   "fmt": "0x64",
+   "frames": 60
+  },
+  {
+   "move": "Kg_Rain_n",
+   "anim": "kghk_rain_f(DVD)",
+   "bank": "rotsm",
+   "clip": 450,
+   "damage": 35,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 150
+  },
+  {
+   "move": "Kg_Headbat",
+   "anim": "mokg_raphead(DVD)",
+   "bank": "rotsm",
+   "clip": 453,
+   "damage": 22,
+   "active": [
+    24,
+    25
+   ],
+   "fmt": "0x64",
+   "frames": 66
+  },
+  {
+   "move": "Kg_Olympics_n",
+   "anim": "mokg_tokorimpic_f(DVD)",
+   "bank": "rotsm",
+   "clip": 456,
+   "damage": 20,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 145
+  },
+  {
+   "move": "Kg_tkr01",
+   "anim": "mokg_tkr(DVD)",
+   "bank": "rotsm",
+   "clip": 458,
+   "damage": 25,
+   "active": [
+    15,
+    15
+   ],
+   "fmt": "0x64",
+   "frames": 54
+  },
+  {
+   "move": "Kg_tkrddt_n",
+   "anim": "takg_touddt_n(DVD)",
+   "bank": "rotsm",
+   "clip": 460,
+   "damage": 20,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 132
+  },
+  {
+   "move": "Kg_Inazuma",
+   "anim": "Hkg_inazuma_A(DVD)",
+   "bank": "rotsm",
+   "clip": 462,
+   "damage": 54,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 6
+  },
+  {
+   "move": "Kg_InazumaE",
+   "anim": "Hkg_inazuma_B(DVD)",
+   "bank": "rotsm",
+   "clip": 463,
+   "damage": 50,
+   "active": [
+    21,
+    25
+   ],
+   "fmt": "0x64",
+   "frames": 60
+  },
+  {
+   "move": "Kg_InazumaR",
+   "anim": "yakg_linazuma_A(DVD)",
+   "bank": "rotsm",
+   "clip": 465,
+   "damage": 54,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 6
+  },
+  {
+   "move": "Kg_InazumaRE",
+   "anim": "yakg_linazuma_B(DVD)",
+   "bank": "rotsm",
+   "clip": 466,
+   "damage": 50,
+   "active": [
+    21,
+    25
+   ],
+   "fmt": "0x64",
+   "frames": 60
+  },
+  {
+   "move": "Kg_p04",
+   "anim": "kzkg_flyp00(DVD)",
+   "bank": "rotsm",
+   "clip": 468,
+   "damage": 21,
+   "active": [
+    20,
+    39
+   ],
+   "fmt": "0x64",
+   "frames": 85
+  },
+  {
+   "move": "Kg_p04E",
+   "anim": "kzkg_flyp00(DVD)",
+   "bank": "rotsm",
+   "clip": 468,
+   "damage": 21,
+   "active": [
+    39,
+    45
+   ],
+   "fmt": "0x64",
+   "frames": 85
+  },
+  {
+   "move": "Kg_sjplrp",
+   "anim": "k_sjprl00(DVD)",
+   "bank": "rotsm",
+   "clip": 470,
+   "damage": 25,
+   "active": [
+    35,
+    36
+   ],
+   "fmt": "0x64",
+   "frames": 74
+  },
+  {
+   "move": "Kg_sjplrpE",
+   "anim": "k_sjprl00(DVD)",
+   "bank": "rotsm",
+   "clip": 470,
+   "damage": 25,
+   "active": [
+    35,
+    36
+   ],
+   "fmt": "0x64",
+   "frames": 74
+  },
+  {
+   "move": "Kg_hiziru",
+   "anim": "Mkg_hijiupA(DVD)",
+   "bank": "rotsm",
+   "clip": 472,
+   "damage": 18,
+   "active": [
+    18,
+    20
+   ],
+   "fmt": "0x64",
+   "frames": 28
+  },
+  {
+   "move": "Kg_hizilk",
+   "anim": "ikkg_hijiup_kawada(DVD)",
+   "bank": "rotsm",
+   "clip": 475,
+   "damage": 25,
+   "active": [
+    24,
+    25
+   ],
+   "fmt": "0x64",
+   "frames": 67
+  },
+  {
+   "move": "Kg_Tnrpsp",
+   "anim": "ozkg_brari02(DVD)",
+   "bank": "rotsm",
+   "clip": 476,
+   "damage": 50,
+   "active": [
+    26,
+    30
+   ],
+   "fmt": "0x64",
+   "frames": 66
+  },
+  {
+   "move": "Kg_dki10",
+   "anim": "kin_dki10(DVD)",
+   "bank": "rotsm",
+   "clip": 481,
+   "damage": 25,
+   "active": [
+    28,
+    30
+   ],
+   "fmt": "0x64",
+   "frames": 70
+  },
+  {
+   "move": "Kg_MSP00",
+   "anim": "kin_msp(DVD)",
+   "bank": "rotsm",
+   "clip": 486,
+   "damage": 23,
+   "active": [
+    50,
+    58
+   ],
+   "fmt": "0x64",
+   "frames": 115
+  },
+  {
+   "move": "Kg_MSP00_",
+   "anim": "kin_msp(DVD)",
+   "bank": "rotsm",
+   "clip": 486,
+   "damage": 23,
+   "active": [
+    52,
+    58
+   ],
+   "fmt": "0x64",
+   "frames": 115
+  },
+  {
+   "move": "Kg_MSP00A",
+   "anim": "kin_msp(DVD)",
+   "bank": "rotsm",
+   "clip": 486,
+   "damage": 23,
+   "active": [
+    58,
+    58
+   ],
+   "fmt": "0x64",
+   "frames": 115
+  },
+  {
+   "move": "Kg_MSP00B",
+   "anim": "kin_msp(DVD)",
+   "bank": "rotsm",
+   "clip": 486,
+   "damage": 25,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 115
+  },
+  {
+   "move": "Kg_Mpl_kataarm",
+   "anim": "kgyt_katacl(DVD)",
+   "bank": "rotsm",
+   "clip": 491,
+   "damage": 27,
+   "active": [
+    23,
+    30
+   ],
+   "fmt": "0x64",
+   "frames": 78
+  },
+  {
+   "move": "Kg_Mpl_kata",
+   "anim": "kgyt_katacl(DVD)",
+   "bank": "rotsm",
+   "clip": 491,
+   "damage": 27,
+   "active": [
+    23,
+    30
+   ],
+   "fmt": "0x64",
+   "frames": 78
+  },
+  {
+   "move": "Kg_near_kata00",
+   "anim": "sukg_neartc(DVD)",
+   "bank": "rotsm",
+   "clip": 493,
+   "damage": 21,
+   "active": [
+    17,
+    19
+   ],
+   "fmt": "0x64",
+   "frames": 60
+  },
+  {
+   "move": "Kg_kinlk00",
+   "anim": "Ckg_kin(DVD)",
+   "bank": "rotsm",
+   "clip": 496,
+   "damage": 18,
+   "active": [
+    13,
+    14
+   ],
+   "fmt": "0x64",
+   "frames": 60
+  },
+  {
+   "move": "Kg_kinlk00H",
+   "anim": "Ckg_kin(DVD)",
+   "bank": "rotsm",
+   "clip": 496,
+   "damage": 18,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 60
+  },
+  {
+   "move": "Kg_kinstn_n",
+   "anim": "ozkg_ki_stn_n(DVD)",
+   "bank": "rotsm",
+   "clip": 499,
+   "damage": 20,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 158
+  },
+  {
+   "move": "Kg_dosu",
+   "anim": "Zkg_dosu(DVD)",
+   "bank": "rotsm",
+   "clip": 501,
+   "damage": 20,
+   "active": [
+    21,
+    43
+   ],
+   "fmt": "0x64",
+   "frames": 70
+  },
+  {
+   "move": "Kg_frank_n",
+   "anim": "sukg_flank_f(DVD)",
+   "bank": "rotsm",
+   "clip": 504,
+   "damage": 30,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 138
+  },
+  {
+   "move": "Kg_back_n",
+   "anim": "V_kjbbz_n(DVD)",
+   "bank": "rotsm",
+   "clip": 506,
+   "damage": 35,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 218
+  },
+  {
+   "move": "Kg_bom_n",
+   "anim": "Pkg_jbom_n(DVD)",
+   "bank": "rotsm",
+   "clip": 510,
+   "damage": 50,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 141
+  },
+  {
+   "move": "Kg_dosuF_n",
+   "anim": "Zkg_dosuf_n(DVD)",
+   "bank": "rotsm",
+   "clip": 130,
+   "damage": 15,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 60
+  },
+  {
+   "move": "Kg_dosuB_n",
+   "anim": "Zkg_dosub_n(DVD)",
+   "bank": "rotsm",
+   "clip": 516,
+   "damage": 5,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 60
+  },
+  {
+   "move": "SPKgA_lulp",
+   "anim": "kg_ruterxm(DVD)",
+   "bank": "rotsm",
+   "clip": 518,
+   "damage": 6,
+   "active": [
+    24,
+    25
+   ],
+   "fmt": "0x64",
+   "frames": 62
+  },
+  {
+   "move": "SPKgA_lprp",
+   "anim": "kg_trelp00(DVD)",
+   "bank": "rotsm",
+   "clip": 519,
+   "damage": 6,
+   "active": [
+    17,
+    19
+   ],
+   "fmt": "0x64",
+   "frames": 47
+  },
+  {
+   "move": "SPKgA_rprk",
+   "anim": "kg_lpak01(DVD)",
+   "bank": "rotsm",
+   "clip": 520,
+   "damage": 5,
+   "active": [
+    21,
+    21
+   ],
+   "fmt": "0x64",
+   "frames": 76
+  },
+  {
+   "move": "SPKgA_rkrk",
+   "anim": "a_ki00(DVD)",
+   "bank": "rotsm",
+   "clip": 521,
+   "damage": 5,
+   "active": [
+    29,
+    29
+   ],
+   "fmt": "0x64",
+   "frames": 83
+  },
+  {
+   "move": "SPKgA_rkrk2",
+   "anim": "a_ki00(DVD)",
+   "bank": "rotsm",
+   "clip": 521,
+   "damage": 5,
+   "active": [
+    29,
+    29
+   ],
+   "fmt": "0x64",
+   "frames": 83
+  },
+  {
+   "move": "SPKgA_rklu",
+   "anim": "kg_akru00(DVD)",
+   "bank": "rotsm",
+   "clip": 523,
+   "damage": 7,
+   "active": [
+    20,
+    21
+   ],
+   "fmt": "0x64",
+   "frames": 51
+  },
+  {
+   "move": "SPKgA_lulk",
+   "anim": "kg_rujprk00(DVD)",
+   "bank": "rotsm",
+   "clip": 524,
+   "damage": 30,
+   "active": [
+    23,
+    23
+   ],
+   "fmt": "0x64",
+   "frames": 72
+  },
+  {
+   "move": "SPKgB_lplk",
+   "anim": "k_pstrkxm(DVD)",
+   "bank": "rotsm",
+   "clip": 525,
+   "damage": 8,
+   "active": [
+    26,
+    26
+   ],
+   "fmt": "0x64",
+   "frames": 70
+  },
+  {
+   "move": "SPKgB_lklk",
+   "anim": "k_sksjrkxm(DVD)",
+   "bank": "rotsm",
+   "clip": 526,
+   "damage": 10,
+   "active": [
+    27,
+    27
+   ],
+   "fmt": "0x64",
+   "frames": 76
+  },
+  {
+   "move": "SPKgB_lkrk",
+   "anim": "k_sjrka0xm(DVD)",
+   "bank": "rotsm",
+   "clip": 527,
+   "damage": 5,
+   "active": [
+    23,
+    24
+   ],
+   "fmt": "0x64",
+   "frames": 85
+  },
+  {
+   "move": "SPKgB_rklk",
+   "anim": "k_aksyrkxm(DVD)",
+   "bank": "rotsm",
+   "clip": 528,
+   "damage": 5,
+   "active": [
+    24,
+    24
+   ],
+   "fmt": "0x64",
+   "frames": 68
+  },
+  {
+   "move": "SPKgB_lkrp",
+   "anim": "k_syrkp1xm(DVD)",
+   "bank": "rotsm",
+   "clip": 529,
+   "damage": 6,
+   "active": [
+    27,
+    28
+   ],
+   "fmt": "0x64",
+   "frames": 71
+  },
+  {
+   "move": "SPKgB_lkrpE",
+   "anim": "k_syrkp1xm(DVD)",
+   "bank": "rotsm",
+   "clip": 529,
+   "damage": 6,
+   "active": [
+    27,
+    28
+   ],
+   "fmt": "0x64",
+   "frames": 71
+  },
+  {
+   "move": "SPKgB_bkbmn",
+   "anim": "k_bom_n(DVD)",
+   "bank": "rotsm",
+   "clip": 533,
+   "damage": 20,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 135
+  },
+  {
+   "move": "ThrmvRB2_00",
+   "anim": "msco_rtukami(DVD)",
+   "bank": "rotsm",
+   "clip": 534,
+   "damage": 16384,
+   "active": [
+    12,
+    14
+   ],
+   "fmt": "0x64",
+   "frames": 40
+  },
+  {
+   "move": "Kg_12ThrmvH",
+   "anim": "tgkg_12rtukami(DVD)",
+   "bank": "rotsm",
+   "clip": 535,
+   "damage": 16384,
+   "active": [
+    30,
+    30
+   ],
+   "fmt": "0x64",
+   "frames": 56
+  },
+  {
+   "move": "Kg_12ThrmvL",
+   "anim": "tgkg_12mtukami(DVD)",
+   "bank": "rotsm",
+   "clip": 536,
+   "damage": 16384,
+   "active": [
+    27,
+    27
+   ],
+   "fmt": "0x64",
+   "frames": 68
+  },
+  {
+   "move": "Kg_123ThrmvH",
+   "anim": "tgkg_123tukami(DVD)",
+   "bank": "rotsm",
+   "clip": 537,
+   "damage": 16384,
+   "active": [
+    26,
+    28
+   ],
+   "fmt": "0x64",
+   "frames": 54
+  },
+  {
+   "move": "Kg_123ThrmvL",
+   "anim": "tgkg_123mtukami(DVD)",
+   "bank": "rotsm",
+   "clip": 538,
+   "damage": 16384,
+   "active": [
+    28,
+    30
+   ],
+   "fmt": "0x64",
+   "frames": 71
+  },
+  {
+   "move": "ThrmvLOW_00",
+   "anim": "ytco_mdncatsh(DVD)",
+   "bank": "rotsm",
+   "clip": 539,
+   "damage": 16384,
+   "active": [
+    12,
+    13
+   ],
+   "fmt": "0x64",
+   "frames": 52
+  },
+  {
+   "move": "ThrmvLOW_01",
+   "anim": "ytco_mdncatsh(DVD)",
+   "bank": "rotsm",
+   "clip": 539,
+   "damage": 16384,
+   "active": [
+    12,
+    13
+   ],
+   "fmt": "0x64",
+   "frames": 52
+  },
+  {
+   "move": "ThrmvLOW_02",
+   "anim": "ytco_mdncatsh(DVD)",
+   "bank": "rotsm",
+   "clip": 539,
+   "damage": 16384,
+   "active": [
+    12,
+    13
+   ],
+   "fmt": "0x64",
+   "frames": 52
+  },
+  {
+   "move": "ThrmvLOW_03",
+   "anim": "ytco_mdncatsh(DVD)",
+   "bank": "rotsm",
+   "clip": 539,
+   "damage": 16384,
+   "active": [
+    12,
+    13
+   ],
+   "fmt": "0x64",
+   "frames": 52
+  },
+  {
+   "move": "ThrmvDWN_00",
+   "anim": "Yco_dwNcatch(DVD)",
+   "bank": "rotsm",
+   "clip": 543,
+   "damage": 16384,
+   "active": [
+    18,
+    20
+   ],
+   "fmt": "0x64",
+   "frames": 60
+  },
+  {
+   "move": "ThrmvDWN_01",
+   "anim": "Yco_dwNcatch(DVD)",
+   "bank": "rotsm",
+   "clip": 543,
+   "damage": 16384,
+   "active": [
+    18,
+    20
+   ],
+   "fmt": "0x64",
+   "frames": 60
+  },
+  {
+   "move": "Thrmv_WD_00",
+   "anim": "kzkg_wtukami(DVD)",
+   "bank": "rotsm",
+   "clip": 545,
+   "damage": 16384,
+   "active": [
+    12,
+    17
+   ],
+   "fmt": "0x64",
+   "frames": 40
+  },
+  {
+   "move": "Thrmv_B0_00",
+   "anim": "nage_sk(DVD)",
+   "bank": "rotsm",
+   "clip": 546,
+   "damage": 16384,
+   "active": [
+    10,
+    10
+   ],
+   "fmt": "0x64",
+   "frames": 40
+  },
+  {
+   "move": "Thrmv_B0_01",
+   "anim": "nage_sk(DVD)",
+   "bank": "rotsm",
+   "clip": 546,
+   "damage": 16384,
+   "active": [
+    10,
+    10
+   ],
+   "fmt": "0x64",
+   "frames": 40
+  },
+  {
+   "move": "Thrmv_B0_02",
+   "anim": "nage_sk(DVD)",
+   "bank": "rotsm",
+   "clip": 546,
+   "damage": 16384,
+   "active": [
+    10,
+    10
+   ],
+   "fmt": "0x64",
+   "frames": 40
+  },
+  {
+   "move": "Thrmv_B0_03",
+   "anim": "msco_rtukami(DVD)",
+   "bank": "rotsm",
+   "clip": 534,
+   "damage": 16384,
+   "active": [
+    12,
+    14
+   ],
+   "fmt": "0x64",
+   "frames": 40
+  },
+  {
+   "move": "Thrmv_B1_R0",
+   "anim": "msco_rtukami(DVD)",
+   "bank": "rotsm",
+   "clip": 534,
+   "damage": 16384,
+   "active": [
+    11,
+    11
+   ],
+   "fmt": "0x64",
+   "frames": 40
+  },
+  {
+   "move": "Thrmv_B1_00",
+   "anim": "Tco_ntukami(DVD)",
+   "bank": "rotsm",
+   "clip": 551,
+   "damage": 16384,
+   "active": [
+    11,
+    11
+   ],
+   "fmt": "0x64",
+   "frames": 40
+  },
+  {
+   "move": "Thrmv_B2_R0",
+   "anim": "msco_rtukami(DVD)",
+   "bank": "rotsm",
+   "clip": 534,
+   "damage": 16384,
+   "active": [
+    12,
+    12
+   ],
+   "fmt": "0x64",
+   "frames": 40
+  },
+  {
+   "move": "Thrmv_B2_00",
+   "anim": "Tco_ntukami(DVD)",
+   "bank": "rotsm",
+   "clip": 551,
+   "damage": 16384,
+   "active": [
+    12,
+    12
+   ],
+   "fmt": "0x64",
+   "frames": 40
+  },
+  {
+   "move": "Thrmv_B2_01",
+   "anim": "Tco_ntukami(DVD)",
+   "bank": "rotsm",
+   "clip": 551,
+   "damage": 16384,
+   "active": [
+    12,
+    12
+   ],
+   "fmt": "0x64",
+   "frames": 40
+  },
+  {
+   "move": "Thrmv_B2_02",
+   "anim": "Tco_ntukami(DVD)",
+   "bank": "rotsm",
+   "clip": 551,
+   "damage": 16384,
+   "active": [
+    12,
+    12
+   ],
+   "fmt": "0x64",
+   "frames": 40
+  },
+  {
+   "move": "Thrmv_B2_03",
+   "anim": "Tco_ntukami(DVD)",
+   "bank": "rotsm",
+   "clip": 551,
+   "damage": 16384,
+   "active": [
+    12,
+    12
+   ],
+   "fmt": "0x64",
+   "frames": 40
+  },
+  {
+   "move": "Thrmv_B2_04",
+   "anim": "Tco_ntukami(DVD)",
+   "bank": "rotsm",
+   "clip": 551,
+   "damage": 16384,
+   "active": [
+    12,
+    12
+   ],
+   "fmt": "0x64",
+   "frames": 40
+  },
+  {
+   "move": "Thrmv_B2_06",
+   "anim": "Tco_ntukami(DVD)",
+   "bank": "rotsm",
+   "clip": 551,
+   "damage": 16384,
+   "active": [
+    12,
+    12
+   ],
+   "fmt": "0x64",
+   "frames": 40
+  },
+  {
+   "move": "Thrmv_B2_07",
+   "anim": "Tco_ntukami(DVD)",
+   "bank": "rotsm",
+   "clip": 551,
+   "damage": 16384,
+   "active": [
+    12,
+    12
+   ],
+   "fmt": "0x64",
+   "frames": 40
+  },
+  {
+   "move": "Thrmv_B2_08",
+   "anim": "Tco_ntukami(DVD)",
+   "bank": "rotsm",
+   "clip": 551,
+   "damage": 16384,
+   "active": [
+    12,
+    12
+   ],
+   "fmt": "0x64",
+   "frames": 40
+  },
+  {
+   "move": "Thrmv_B3_00",
+   "anim": "Tco_ntukami(DVD)",
+   "bank": "rotsm",
+   "clip": 551,
+   "damage": 16384,
+   "active": [
+    12,
+    12
+   ],
+   "fmt": "0x64",
+   "frames": 40
+  },
+  {
+   "move": "Kg_Thrside1",
+   "anim": "Mkg_jnt(DVD)",
+   "bank": "rotsm",
+   "clip": 564,
+   "damage": 16384,
+   "active": [
+    13,
+    13
+   ],
+   "fmt": "0x64",
+   "frames": 50
+  },
+  {
+   "move": "Kg_ThrsideL",
+   "anim": "Mkg_jnt2(DVD)",
+   "bank": "rotsm",
+   "clip": 565,
+   "damage": 16384,
+   "active": [
+    13,
+    13
+   ],
+   "fmt": "0x64",
+   "frames": 50
+  },
+  {
+   "move": "Kg_FLnage00_n",
+   "anim": "nakg_nagexx0a_f(DVD)",
+   "bank": "rotsm",
+   "clip": 574,
+   "damage": 35,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 130
+  },
+  {
+   "move": "Kg_FRnage00_n",
+   "anim": "kjkg_brain_f(DVD)",
+   "bank": "rotsm",
+   "clip": 578,
+   "damage": 35,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 138
+  },
+  {
+   "move": "Kg_brain1_n",
+   "anim": "naak_taiku_f(DVD)",
+   "bank": "rotsm",
+   "clip": 580,
+   "damage": 40,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 230
+  },
+  {
+   "move": "Kg_Rnage_n",
+   "anim": "V_kgnc_n(DVD)",
+   "bank": "rotsm",
+   "clip": 590,
+   "damage": 42,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 160
+  },
+  {
+   "move": "Kg_BLnage_n",
+   "anim": "skkg_kebi_b(DVD)",
+   "bank": "rotsm",
+   "clip": 592,
+   "damage": 60,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 203
+  },
+  {
+   "move": "Kg_BRnage_n",
+   "anim": "bk_cob_n(DVD)",
+   "bank": "rotsm",
+   "clip": 594,
+   "damage": 60,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 240
+  },
+  {
+   "move": "Kg_BCnage_n",
+   "anim": "ozkg_nagexx00_b(DVD)",
+   "bank": "rotsm",
+   "clip": 596,
+   "damage": 75,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 165
+  },
+  {
+   "move": "Kg_tiger_n",
+   "anim": "V_kjdz_n(DVD)",
+   "bank": "rotsm",
+   "clip": 602,
+   "damage": 30,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 213
+  },
+  {
+   "move": "tigerEX_n",
+   "anim": "Fkg_tg2fb_n(DVD)",
+   "bank": "rotsm",
+   "clip": 606,
+   "damage": 35,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 10
+  },
+  {
+   "move": "tiger2_n",
+   "anim": "tiger2_n(DVD)",
+   "bank": "rotsm",
+   "clip": 608,
+   "damage": 35,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 120
+  },
+  {
+   "move": "nagexx1e_n",
+   "anim": "kjkg_nagexxle_f(DVD)",
+   "bank": "rotsm",
+   "clip": 614,
+   "damage": 50,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 244
+  },
+  {
+   "move": "Kg_td_n",
+   "anim": "sukg_tpail_f(DVD)",
+   "bank": "rotsm",
+   "clip": 620,
+   "damage": 58,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 214
+  },
+  {
+   "move": "jpddt_n",
+   "anim": "kjvt_rock_f(DVD)",
+   "bank": "rotsm",
+   "clip": 622,
+   "damage": 45,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 183
+  },
+  {
+   "move": "Esc_leg4_n",
+   "anim": "kgss_4legnuke3_n(DVD)",
+   "bank": "rotsm",
+   "clip": 628,
+   "damage": 26,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 280
+  },
+  {
+   "move": "Kg_kawazu_n",
+   "anim": "mokg_kawazu_f(DVD)",
+   "bank": "rotsm",
+   "clip": 630,
+   "damage": 30,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 134
+  },
+  {
+   "move": "Kg_Dbuster_n",
+   "anim": "mokg_downburst_f(DVD)",
+   "bank": "rotsm",
+   "clip": 632,
+   "damage": 45,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 215
+  },
+  {
+   "move": "Kg_coco_n",
+   "anim": "coco_n(DVD)",
+   "bank": "rotsm",
+   "clip": 634,
+   "damage": 40,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 130
+  },
+  {
+   "move": "Kg_shine_n",
+   "anim": "sukg_shining_f(DVD)",
+   "bank": "rotsm",
+   "clip": 584,
+   "damage": 40,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 114
+  },
+  {
+   "move": "Kg_rope1_n",
+   "anim": "kmkg_rope1_f(DVD)",
+   "bank": "rotsm",
+   "clip": 640,
+   "damage": 35,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 83
+  },
+  {
+   "move": "Esc_rope1_n",
+   "anim": "kmkg_rope1_nuke_f(DVD)",
+   "bank": "rotsm",
+   "clip": 642,
+   "damage": 35,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 66
+  },
+  {
+   "move": "Kg_rope2_n",
+   "anim": "kmkg_rope2_f(DVD)",
+   "bank": "rotsm",
+   "clip": 644,
+   "damage": 8,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 63
+  },
+  {
+   "move": "Esc_rope2_n",
+   "anim": "kmkg_rope2_nuke_f(DVD)",
+   "bank": "rotsm",
+   "clip": 646,
+   "damage": 35,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 55
+  },
+  {
+   "move": "Kg_rope3_n",
+   "anim": "kmkg_rope3_f(DVD)",
+   "bank": "rotsm",
+   "clip": 648,
+   "damage": 10,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 50
+  },
+  {
+   "move": "Esc_pope3_n",
+   "anim": "kokg_nuke3_n(DVD)",
+   "bank": "rotsm",
+   "clip": 650,
+   "damage": 35,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 67
+  },
+  {
+   "move": "Kg_bd_n",
+   "anim": "nokg_bd_f(DVD)",
+   "bank": "rotsm",
+   "clip": 654,
+   "damage": 45,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 165
+  },
+  {
+   "move": "Kg_Knuckle_n",
+   "anim": "mokg_knuckle_f(DVD)",
+   "bank": "rotsm",
+   "clip": 656,
+   "damage": 15,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 77
+  },
+  {
+   "move": "Kg_Knuckle2_n",
+   "anim": "mokg_kncobashir_f(DVD)",
+   "bank": "rotsm",
+   "clip": 658,
+   "damage": 30,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 95
+  },
+  {
+   "move": "Kg_DWstr_Ln",
+   "anim": "mokg_Mkg_DWstr_n(DVD)",
+   "bank": "rotsm",
+   "clip": 662,
+   "damage": 28,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 183
+  },
+  {
+   "move": "Kg_DWstr_Rn",
+   "anim": "mokg_Mkg_DWstr_n(DVD)",
+   "bank": "rotsm",
+   "clip": 662,
+   "damage": 28,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 183
+  },
+  {
+   "move": "Kg_DWgold_n",
+   "anim": "kjkg_kgkhb_f(DVD)",
+   "bank": "rotsm",
+   "clip": 670,
+   "damage": 25,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 127
+  },
+  {
+   "move": "Kg_DW4noj_n",
+   "anim": "kgkb_kgff_n_cs(DVD)",
+   "bank": "rotsm",
+   "clip": 672,
+   "damage": 28,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 221
+  },
+  {
+   "move": "Kg_DWUhea_Ln",
+   "anim": "cbkg_sbs_n(DVD)",
+   "bank": "rotsm",
+   "clip": 691,
+   "damage": 32,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 109
+  },
+  {
+   "move": "Kg_DWUhea_Rn",
+   "anim": "cbkg_sbs_n(DVD)",
+   "bank": "rotsm",
+   "clip": 691,
+   "damage": 32,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 109
+  },
+  {
+   "move": "Kg_DWULsi_Ln",
+   "anim": "mokg_V_kgcc_n(DVD)",
+   "bank": "rotsm",
+   "clip": 695,
+   "damage": 35,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 155
+  },
+  {
+   "move": "Kg_DWULsi_Rn",
+   "anim": "mokg_V_kgcc_n(DVD)",
+   "bank": "rotsm",
+   "clip": 695,
+   "damage": 35,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 155
+  },
+  {
+   "move": "Kg_DWURsi_Ln",
+   "anim": "yakg_ba_n(DVD)",
+   "bank": "rotsm",
+   "clip": 699,
+   "damage": 37,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 180
+  },
+  {
+   "move": "Kg_DWURsi_Rn",
+   "anim": "yakg_ba_n(DVD)",
+   "bank": "rotsm",
+   "clip": 699,
+   "damage": 37,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 180
+  },
+  {
+   "move": "Kg_DWUfoo_Ln",
+   "anim": "ykkg_hbc_n(DVD)",
+   "bank": "rotsm",
+   "clip": 703,
+   "damage": 30,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 165
+  },
+  {
+   "move": "Kg_DWUfoo_Rn",
+   "anim": "ykkg_hbc_n(DVD)",
+   "bank": "rotsm",
+   "clip": 703,
+   "damage": 30,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 165
+  },
+  {
+   "move": "Kg_AirHizaj_n",
+   "anim": "sukg_skyhizaj_n(DVD)",
+   "bank": "rotsm",
+   "clip": 718,
+   "damage": 30,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 155
+  },
+  {
+   "move": "Kg_AirRRbom_n2",
+   "anim": "sukg_skyrun_f(DVD)",
+   "bank": "rotsm",
+   "clip": 720,
+   "damage": 65,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 170
+  },
+  {
+   "move": "Kg_AirRollbom_n",
+   "anim": "ikkg_skynage_f(DVD)",
+   "bank": "rotsm",
+   "clip": 722,
+   "damage": 55,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 170
+  },
+  {
+   "move": "Kg_AirWaki_n",
+   "anim": "sukg_skywaki_n(DVD)",
+   "bank": "rotsm",
+   "clip": 724,
+   "damage": 15,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 125
+  },
+  {
+   "move": "Kg_AirFlap_n",
+   "anim": "sukg_skywakifu_n(DVD)",
+   "bank": "rotsm",
+   "clip": 726,
+   "damage": 15,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 140
+  },
+  {
+   "move": "nagexx01_n",
+   "anim": "nagexx01_n(DVD)",
+   "bank": "rotsm",
+   "clip": 734,
+   "damage": 100,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 106
+  },
+  {
+   "move": "nagexx01_n2",
+   "anim": "Yco_dwNcatch(DVD)",
+   "bank": "rotsm",
+   "clip": 543,
+   "damage": 16384,
+   "active": [
+    18,
+    20
+   ],
+   "fmt": "0x64",
+   "frames": 60
+  },
+  {
+   "move": "MINORU_n",
+   "anim": "V_kglla_n(DVD)",
+   "bank": "rotsm",
+   "clip": 737,
+   "damage": 50,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 251
+  },
+  {
+   "move": "Kg_armh_n",
+   "anim": "nokg_armh_f(DVD)",
+   "bank": "rotsm",
+   "clip": 739,
+   "damage": 35,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 65
+  },
+  {
+   "move": "Kg_Wgyak_n",
+   "anim": "gyaku_nxt(DVD)",
+   "bank": "rotsm",
+   "clip": 741,
+   "damage": 22,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 90
+  },
+  {
+   "move": "Kg_Wbd2_n",
+   "anim": "ki_bd2_nxt(DVD)",
+   "bank": "rotsm",
+   "clip": 743,
+   "damage": 15,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 218
+  },
+  {
+   "move": "Kg_Wgm3_n",
+   "anim": "Zkg_PSgm3_nxt(DVD)",
+   "bank": "rotsm",
+   "clip": 745,
+   "damage": 15,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 238
+  },
+  {
+   "move": "Kg_Wpb4_n",
+   "anim": "Zkg_PSpb4_n(DVD)",
+   "bank": "rotsm",
+   "clip": 747,
+   "damage": 22,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 240
+  },
+  {
+   "move": "Kg_Wgs5B_n",
+   "anim": "Zkg_PSgs5_n2xt(DVD)",
+   "bank": "rotsm",
+   "clip": 751,
+   "damage": 25,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 96
+  },
+  {
+   "move": "Kg_Wbus5_n",
+   "anim": "Zkg_PSoldpbkg_n(DVD)",
+   "bank": "rotsm",
+   "clip": 753,
+   "damage": 30,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 225
+  },
+  {
+   "move": "Kg_com01_n",
+   "anim": "V_kgab_n(DVD)",
+   "bank": "rotsm",
+   "clip": 763,
+   "damage": 20,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 130
+  },
+  {
+   "move": "Kg_com03_n",
+   "anim": "V_kgko_n(DVD)",
+   "bank": "rotsm",
+   "clip": 767,
+   "damage": 20,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 190
+  },
+  {
+   "move": "Kg_com05_n",
+   "anim": "V_kgcf_n(DVD)",
+   "bank": "rotsm",
+   "clip": 769,
+   "damage": 20,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 194
+  },
+  {
+   "move": "Kg_com04_n",
+   "anim": "V_kgsh_n(DVD)",
+   "bank": "rotsm",
+   "clip": 771,
+   "damage": 25,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 254
+  },
+  {
+   "move": "Kg_com06_n",
+   "anim": "V_kgds_n(DVD)",
+   "bank": "rotsm",
+   "clip": 773,
+   "damage": 30,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 170
+  },
+  {
+   "move": "Kg_com08_n",
+   "anim": "V_kgrc2_n(DVD)",
+   "bank": "rotsm",
+   "clip": 777,
+   "damage": 4,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 220
+  },
+  {
+   "move": "Kgnewco_1_n",
+   "anim": "V_kgrgz_n(DVD)",
+   "bank": "rotsm",
+   "clip": 783,
+   "damage": 25,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 242
+  },
+  {
+   "move": "KgnewcoL_1Bn",
+   "anim": "V_kgrgsz_n(DVD)",
+   "bank": "rotsm",
+   "clip": 785,
+   "damage": 25,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 229
+  },
+  {
+   "move": "KgnewcoR_1Bn",
+   "anim": "V_kgrgsz_n(DVD)",
+   "bank": "rotsm",
+   "clip": 785,
+   "damage": 25,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 229
+  },
+  {
+   "move": "Kgnewco_2_n",
+   "anim": "Zkg_PSkgcbt_n(DVD)",
+   "bank": "rotsm",
+   "clip": 789,
+   "damage": 15,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 202
+  },
+  {
+   "move": "Kgnewcok2Bn",
+   "anim": "V_kgmdz_n(DVD)",
+   "bank": "rotsm",
+   "clip": 791,
+   "damage": 15,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 215
+  },
+  {
+   "move": "Kgnewcok3_n",
+   "anim": "V_kgcbplz_n(DVD)",
+   "bank": "rotsm",
+   "clip": 793,
+   "damage": 22,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 185
+  },
+  {
+   "move": "Kgnewcok3Bn",
+   "anim": "P_smdb3_n(DVD)",
+   "bank": "rotsm",
+   "clip": 795,
+   "damage": 18,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 210
+  },
+  {
+   "move": "Kgnewcok5_n",
+   "anim": "V_kgpbglz2_n(DVD)",
+   "bank": "rotsm",
+   "clip": 799,
+   "damage": 25,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 87
+  },
+  {
+   "move": "Kgnewcok5Bn",
+   "anim": "V_kgcmdgz2_n(DVD)",
+   "bank": "rotsm",
+   "clip": 803,
+   "damage": 25,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 78
+  },
+  {
+   "move": "Kgnewco_6_n",
+   "anim": "J_rvpbbus_n(DVD)",
+   "bank": "rotsm",
+   "clip": 805,
+   "damage": 30,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 225
+  },
+  {
+   "move": "Kgnewcok6Bn",
+   "anim": "J_rvdrbkg_n(DVD)",
+   "bank": "rotsm",
+   "clip": 807,
+   "damage": 30,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 218
+  },
+  {
+   "move": "Kg_MEX2_1_n",
+   "anim": "V_kgbdc_n(DVD)",
+   "bank": "rotsm",
+   "clip": 833,
+   "damage": 15,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 204
+  },
+  {
+   "move": "Kg_MEX232_n",
+   "anim": "V_kgmdbz_n(DVD)",
+   "bank": "rotsm",
+   "clip": 835,
+   "damage": 15,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 215
+  },
+  {
+   "move": "Kg_MEX233_n",
+   "anim": "P_smdb2_n(DVD)",
+   "bank": "rotsm",
+   "clip": 837,
+   "damage": 18,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 210
+  },
+  {
+   "move": "Kg_MEX234_n",
+   "anim": "J_bddrbkg_n(DVD)",
+   "bank": "rotsm",
+   "clip": 839,
+   "damage": 30,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 218
+  },
+  {
+   "move": "Kg_MEX236_n",
+   "anim": "V_kgbdgz2_n(DVD)",
+   "bank": "rotsm",
+   "clip": 843,
+   "damage": 25,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 78
+  },
+  {
+   "move": "Kg_MEX331_n",
+   "anim": "V_kgcpbz_n(DVD)",
+   "bank": "rotsm",
+   "clip": 845,
+   "damage": 22,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 185
+  },
+  {
+   "move": "Kg_MEX332_n",
+   "anim": "J_bdpbkg_n(DVD)",
+   "bank": "rotsm",
+   "clip": 847,
+   "damage": 30,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 225
+  },
+  {
+   "move": "Kg_MEX334_n",
+   "anim": "V_kgbcpgz2_n(DVD)",
+   "bank": "rotsm",
+   "clip": 851,
+   "damage": 25,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 87
+  },
+  {
+   "move": "Kg_cbL_n",
+   "anim": "V_kgcbl_n(DVD)",
+   "bank": "rotsm",
+   "clip": 853,
+   "damage": 15,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 169
+  },
+  {
+   "move": "Kg_cbR_n",
+   "anim": "V_kgcbr_n(DVD)",
+   "bank": "rotsm",
+   "clip": 855,
+   "damage": 15,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 170
+  },
+  {
+   "move": "Kg_cbB_n",
+   "anim": "V_kgcbb_n(DVD)",
+   "bank": "rotsm",
+   "clip": 857,
+   "damage": 15,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 169
+  },
+  {
+   "move": "Kg_mdm3_n",
+   "anim": "V_kgmdmz_n(DVD)",
+   "bank": "rotsm",
+   "clip": 859,
+   "damage": 15,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 215
+  },
+  {
+   "move": "Kg_cbp3_n",
+   "anim": "V_kgcbpz_n(DVD)",
+   "bank": "rotsm",
+   "clip": 861,
+   "damage": 22,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 185
+  },
+  {
+   "move": "Kg_tdb13_n",
+   "anim": "P_smdb1_n(DVD)",
+   "bank": "rotsm",
+   "clip": 863,
+   "damage": 18,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 210
+  },
+  {
+   "move": "Kg_pbgB3_n",
+   "anim": "V_kgpbgz2_n(DVD)",
+   "bank": "rotsm",
+   "clip": 867,
+   "damage": 25,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 87
+  },
+  {
+   "move": "Kg_cbbus_n",
+   "anim": "J_cbpbbus_n(DVD)",
+   "bank": "rotsm",
+   "clip": 869,
+   "damage": 30,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 225
+  },
+  {
+   "move": "Kg_bus3_n",
+   "anim": "J_kgbuskg_n(DVD)",
+   "bank": "rotsm",
+   "clip": 871,
+   "damage": 30,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 218
+  },
+  {
+   "move": "Kg_dggA3_n",
+   "anim": "V_kgdggz1_n(DVD)",
+   "bank": "rotsm",
+   "clip": 873,
+   "damage": 27,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 200
+  },
+  {
+   "move": "Kg_dggB3_n",
+   "anim": "V_kgdggz2_n(DVD)",
+   "bank": "rotsm",
+   "clip": 875,
+   "damage": 25,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 78
+  },
+  {
+   "move": "akiresu_nxy",
+   "anim": "akiresu_nxy(DVD)",
+   "bank": "rotsm",
+   "clip": 877,
+   "damage": 25,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 230
+  },
+  {
+   "move": "indian_n1xy",
+   "anim": "indian_n1xy(DVD)",
+   "bank": "rotsm",
+   "clip": 880,
+   "damage": 25,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 190
+  },
+  {
+   "move": "romero_n1",
+   "anim": "romero_n1(DVD)",
+   "bank": "rotsm",
+   "clip": 884,
+   "damage": 45,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 250
+  },
+  {
+   "move": "romero_n2",
+   "anim": "romero_n2(DVD)",
+   "bank": "rotsm",
+   "clip": 886,
+   "damage": 45,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 255
+  },
+  {
+   "move": "stf_n1",
+   "anim": "stf_n1(DVD)",
+   "bank": "rotsm",
+   "clip": 888,
+   "damage": 35,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 206
+  },
+  {
+   "move": "stf_n2",
+   "anim": "stf_n2(DVD)",
+   "bank": "rotsm",
+   "clip": 890,
+   "damage": 40,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 150
+  },
+  {
+   "move": "sasori_n1",
+   "anim": "sasori_n1(DVD)",
+   "bank": "rotsm",
+   "clip": 892,
+   "damage": 40,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 200
+  },
+  {
+   "move": "sasori_n2",
+   "anim": "sasori_n2(DVD)",
+   "bank": "rotsm",
+   "clip": 894,
+   "damage": 40,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 167
+  },
+  {
+   "move": "akiresu_en",
+   "anim": "I_Faki_n(DVD)",
+   "bank": "rotsm",
+   "clip": 896,
+   "damage": 10,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 123
+  },
+  {
+   "move": "Kg_TTT1a_n",
+   "anim": "sukg_ncbnage1_n(DVD)",
+   "bank": "rotsm",
+   "clip": 898,
+   "damage": 20,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 175
+  },
+  {
+   "move": "Kg_TTT1b_n",
+   "anim": "sukg_ncbnage1_n(DVD)",
+   "bank": "rotsm",
+   "clip": 898,
+   "damage": 20,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 175
+  },
+  {
+   "move": "Kg_TTT2_n",
+   "anim": "sukg_ncbnage2_n(DVD)",
+   "bank": "rotsm",
+   "clip": 902,
+   "damage": 12,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 220
+  },
+  {
+   "move": "Kg_TTT3a_n",
+   "anim": "sukg_ncbnage3_n(DVD)",
+   "bank": "rotsm",
+   "clip": 904,
+   "damage": 13,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 190
+  },
+  {
+   "move": "Kg_TTT3b_n",
+   "anim": "sukg_ncbnage3_n(DVD)",
+   "bank": "rotsm",
+   "clip": 904,
+   "damage": 13,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 190
+  },
+  {
+   "move": "Kg_TTT4a_n",
+   "anim": "sukg_ncbnage4_n(DVD)",
+   "bank": "rotsm",
+   "clip": 908,
+   "damage": 16,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 250
+  },
+  {
+   "move": "Kg_TTT4b_n",
+   "anim": "sukg_ncbnage4_n(DVD)",
+   "bank": "rotsm",
+   "clip": 908,
+   "damage": 16,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 250
+  },
+  {
+   "move": "Kg_TTT4c_n",
+   "anim": "sukg_ncbsamu_n(DVD)",
+   "bank": "rotsm",
+   "clip": 912,
+   "damage": 24,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 255
+  },
+  {
+   "move": "Kg_TTT5a_n",
+   "anim": "sukg_ncbnage5_n(DVD)",
+   "bank": "rotsm",
+   "clip": 914,
+   "damage": 15,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 170
+  },
+  {
+   "move": "Kg_TTT5b_n",
+   "anim": "sukg_ncbcano_n(DVD)",
+   "bank": "rotsm",
+   "clip": 916,
+   "damage": 13,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 202
+  },
+  {
+   "move": "Kg_TTT6a_n",
+   "anim": "sukg_ncbnage6_n(DVD)",
+   "bank": "rotsm",
+   "clip": 918,
+   "damage": 18,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 238
+  },
+  {
+   "move": "Kg_TTT6b_n",
+   "anim": "sukg_ncbnage6_n(DVD)",
+   "bank": "rotsm",
+   "clip": 918,
+   "damage": 18,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 238
+  },
+  {
+   "move": "Kg_TTT7a_n",
+   "anim": "sukg_ncbnage7_n(DVD)",
+   "bank": "rotsm",
+   "clip": 924,
+   "damage": 32,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 284
+  },
+  {
+   "move": "Kg_TTT7b_n",
+   "anim": "sukg_ncbnage7_n(DVD)",
+   "bank": "rotsm",
+   "clip": 924,
+   "damage": 32,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 284
+  },
+  {
+   "move": "Kg_StSH2_n",
+   "anim": "sukg_amanagec2_n(DVD)",
+   "bank": "rotsm",
+   "clip": 943,
+   "damage": 25,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 157
+  },
+  {
+   "move": "Kg_StSH3_n",
+   "anim": "sukg_amanagec3_n(DVD)",
+   "bank": "rotsm",
+   "clip": 945,
+   "damage": 15,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 190
+  },
+  {
+   "move": "Kg_StSH5_n",
+   "anim": "sukg_amanagec5_n(DVD)",
+   "bank": "rotsm",
+   "clip": 949,
+   "damage": 23,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 196
+  },
+  {
+   "move": "Kg_TTTMHD_n",
+   "anim": "sukg_ncbman_n(DVD)",
+   "bank": "rotsm",
+   "clip": 959,
+   "damage": 12,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 215
+  },
+  {
+   "move": "Kg_MHDtoDOC_n",
+   "anim": "sukg_ncbdoc_n(DVD)",
+   "bank": "rotsm",
+   "clip": 961,
+   "damage": 15,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 210
+  },
+  {
+   "move": "Kg_DOCtoBUS_n",
+   "anim": "sukg_ncbdocmb_n(DVD)",
+   "bank": "rotsm",
+   "clip": 963,
+   "damage": 25,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 218
+  },
+  {
+   "move": "Kg_TTTPWB_n",
+   "anim": "sukg_ncbpaw_n(DVD)",
+   "bank": "rotsm",
+   "clip": 967,
+   "damage": 16,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 185
+  },
+  {
+   "move": "Kg_PWBtoBUS_n",
+   "anim": "sukg_ncbpawmb_n(DVD)",
+   "bank": "rotsm",
+   "clip": 969,
+   "damage": 25,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 225
+  },
+  {
+   "move": "Kg_enzui",
+   "anim": "Zak_enzuiK2(DVD)",
+   "bank": "rotsm",
+   "clip": 980,
+   "damage": 28,
+   "active": [
+    13,
+    14
+   ],
+   "fmt": "0x64",
+   "frames": 52
+  },
+  {
+   "move": "Kg_Aklp01m",
+   "anim": "sukg_chop(DVD)",
+   "bank": "rotsm",
+   "clip": 982,
+   "damage": 21,
+   "active": [
+    20,
+    23
+   ],
+   "fmt": "0x64",
+   "frames": 60
+  },
+  {
+   "move": "Kg_lp00B",
+   "anim": "skkg_flp(DVD)",
+   "bank": "rotsm",
+   "clip": 983,
+   "damage": 13,
+   "active": [
+    12,
+    12
+   ],
+   "fmt": "0x64",
+   "frames": 50
+  },
+  {
+   "move": "Kg_rpTap00",
+   "anim": "mokg_flprtuki(DVD)",
+   "bank": "rotsm",
+   "clip": 984,
+   "damage": 20,
+   "active": [
+    19,
+    19
+   ],
+   "fmt": "0x64",
+   "frames": 63
+  },
+  {
+   "move": "Kg_rpheel00",
+   "anim": "mokg_flprk(DVD)",
+   "bank": "rotsm",
+   "clip": 985,
+   "damage": 23,
+   "active": [
+    26,
+    28
+   ],
+   "fmt": "0x64",
+   "frames": 59
+  },
+  {
+   "move": "Kg_WHummer",
+   "anim": "kgyt_mox01_iwaki_s(DVD)",
+   "bank": "rotsm",
+   "clip": 988,
+   "damage": 21,
+   "active": [
+    23,
+    23
+   ],
+   "fmt": "0x64",
+   "frames": 79
+  },
+  {
+   "move": "Kg_Akelbow",
+   "anim": "Gkg_elbowR(DVD)",
+   "bank": "rotsm",
+   "clip": 989,
+   "damage": 25,
+   "active": [
+    30,
+    35
+   ],
+   "fmt": "0x64",
+   "frames": 79
+  },
+  {
+   "move": "Kg_Akelbow2",
+   "anim": "Gak_stelbw(DVD)",
+   "bank": "rotsm",
+   "clip": 991,
+   "damage": 20,
+   "active": [
+    18,
+    19
+   ],
+   "fmt": "0x64",
+   "frames": 56
+  },
+  {
+   "move": "Kg_Wii",
+   "anim": "mokg_yokorari(DVD)",
+   "bank": "rotsm",
+   "clip": 992,
+   "damage": 25,
+   "active": [
+    19,
+    20
+   ],
+   "fmt": "0x64",
+   "frames": 59
+  },
+  {
+   "move": "Kg_Akdslp",
+   "anim": "kzkg_rariat(DVD)",
+   "bank": "rotsm",
+   "clip": 993,
+   "damage": 23,
+   "active": [
+    18,
+    19
+   ],
+   "fmt": "0x64",
+   "frames": 56
+  },
+  {
+   "move": "Kg_knee",
+   "anim": "mokg_rhiza(DVD)",
+   "bank": "rotsm",
+   "clip": 996,
+   "damage": 21,
+   "active": [
+    15,
+    16
+   ],
+   "fmt": "0x64",
+   "frames": 55
+  },
+  {
+   "move": "Kg_666lk",
+   "anim": "kgss_bomaknee(DVD)",
+   "bank": "rotsm",
+   "clip": 997,
+   "damage": 25,
+   "active": [
+    20,
+    25
+   ],
+   "fmt": "0x64",
+   "frames": 67
+  },
+  {
+   "move": "Kg_Aknbom00",
+   "anim": "ak_nbom00(DVD)",
+   "bank": "rotsm",
+   "clip": 998,
+   "damage": 45,
+   "active": [
+    61,
+    62
+   ],
+   "fmt": "0x64",
+   "frames": 100
+  },
+  {
+   "move": "Kg_Aknbom01",
+   "anim": "Kak_nbom01(DVD)",
+   "bank": "rotsm",
+   "clip": 999,
+   "damage": 45,
+   "active": [
+    21,
+    22
+   ],
+   "fmt": "0x64",
+   "frames": 30
+  },
+  {
+   "move": "Ul_tacF_n",
+   "anim": "kmco_tac_takedown_f_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1001,
+   "damage": 5,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 103
+  },
+  {
+   "move": "Ul_tacUdeh_n",
+   "anim": "kmco_tacwp_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1003,
+   "damage": 25,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 172
+  },
+  {
+   "move": "Ul_tp_L_Udeh_n",
+   "anim": "kmco_taclrlw_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1005,
+   "damage": 25,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 158
+  },
+  {
+   "move": "Ul_tp_R_Udeh_n",
+   "anim": "kmco_tacrlrw_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1007,
+   "damage": 25,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 158
+  },
+  {
+   "move": "Ul_tacUdehEscThr_n",
+   "anim": "kmco_tacwp_gaesi_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1011,
+   "damage": 10,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 201
+  },
+  {
+   "move": "Ul_tacHiza_n",
+   "anim": "kmco_tacwk_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1013,
+   "damage": 20,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 170
+  },
+  {
+   "move": "Ul_tp_L_Hiza_n",
+   "anim": "kmco_taclrlwk_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1015,
+   "damage": 20,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 165
+  },
+  {
+   "move": "Ul_tp_R_Hiza_n",
+   "anim": "kmco_tacrlrwk_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1016,
+   "damage": 20,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 165
+  },
+  {
+   "move": "Ul_tacHizaEscThr_n",
+   "anim": "kmco_tacwk_gaesi_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1020,
+   "damage": 10,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 190
+  },
+  {
+   "move": "Ul_tacArml_n",
+   "anim": "kmco_tacwp_kgwp_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1022,
+   "damage": 10,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 206
+  },
+  {
+   "move": "Ul_tacArmf_n",
+   "anim": "kmco_tacwk_kgwp_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1024,
+   "damage": 15,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 298
+  },
+  {
+   "move": "Co_tacF_n",
+   "anim": "kmco_tac_takedown_f_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1001,
+   "damage": 5,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 103
+  },
+  {
+   "move": "Co_tp_Lxxxxn",
+   "anim": "kmco_taclxxx_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1028,
+   "damage": 5,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 100
+  },
+  {
+   "move": "Co_tp_LRxxxn",
+   "anim": "kmco_taclrxx_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1030,
+   "damage": 5,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 72
+  },
+  {
+   "move": "Co_tp_LLxxxn",
+   "anim": "kmco_tacllxx_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1031,
+   "damage": 5,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 72
+  },
+  {
+   "move": "Co_tp_xRLxn",
+   "anim": "kmco_taclrlx_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1032,
+   "damage": 5,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 70
+  },
+  {
+   "move": "Co_tp_xRRxn",
+   "anim": "kmco_tacxrrx_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1033,
+   "damage": 5,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 70
+  },
+  {
+   "move": "Co_tp_Rxxxxn",
+   "anim": "kmco_tacrxxx_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1034,
+   "damage": 5,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 100
+  },
+  {
+   "move": "Co_tp_RLxxxn",
+   "anim": "kmco_tacrlxx_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1036,
+   "damage": 5,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 72
+  },
+  {
+   "move": "Co_tp_RRxxxn",
+   "anim": "kmco_tacrrxx_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1037,
+   "damage": 5,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 72
+  },
+  {
+   "move": "Co_tp_xLRxn",
+   "anim": "kmco_tacrlrx_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1038,
+   "damage": 5,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 70
+  },
+  {
+   "move": "Co_tp_xLLxn",
+   "anim": "kmco_tacxllx_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1039,
+   "damage": 5,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 70
+  },
+  {
+   "move": "Co_tp_FinRLn",
+   "anim": "kmco_tacrlrl_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1040,
+   "damage": 15,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 79
+  },
+  {
+   "move": "Co_tp_FinRRn",
+   "anim": "kmco_tacxxrr_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1041,
+   "damage": 15,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 79
+  },
+  {
+   "move": "Co_tp_FinLRn",
+   "anim": "kmco_taclrlr_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1042,
+   "damage": 15,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 79
+  },
+  {
+   "move": "Co_tp_FinLLn",
+   "anim": "kmco_tacxxll_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1043,
+   "damage": 15,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 79
+  },
+  {
+   "move": "Co_btp_Rxxxxn",
+   "anim": "kmco_tacrxxx_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1034,
+   "damage": 5,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 100
+  },
+  {
+   "move": "Co_btp_RLxxxn",
+   "anim": "kmco_tacrlxx_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1036,
+   "damage": 5,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 72
+  },
+  {
+   "move": "Co_btp_RRxxxn",
+   "anim": "kmco_tacrrxx_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1037,
+   "damage": 5,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 72
+  },
+  {
+   "move": "Co_btp_Lxxxxn",
+   "anim": "kmco_taclxxx_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1028,
+   "damage": 5,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 100
+  },
+  {
+   "move": "Co_btp_LRxxxn",
+   "anim": "kmco_taclrxx_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1030,
+   "damage": 5,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 72
+  },
+  {
+   "move": "Co_btp_LLxxxn",
+   "anim": "kmco_tacllxx_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1031,
+   "damage": 5,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 72
+  },
+  {
+   "move": "Co_btp_xRLxn",
+   "anim": "kmco_taclrlx_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1032,
+   "damage": 5,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 70
+  },
+  {
+   "move": "Co_btp_xRRxn",
+   "anim": "kmco_tacxrrx_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1033,
+   "damage": 5,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 70
+  },
+  {
+   "move": "Co_btp_xLLxn",
+   "anim": "kmco_tacxllx_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1039,
+   "damage": 5,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 70
+  },
+  {
+   "move": "Co_btp_xLRxn",
+   "anim": "kmco_tacrlrx_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1038,
+   "damage": 5,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 70
+  },
+  {
+   "move": "Co_btp_FinLLn",
+   "anim": "kmco_tacxxll_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1043,
+   "damage": 15,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 79
+  },
+  {
+   "move": "Co_btp_FinLRn",
+   "anim": "kmco_taclrlr_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1042,
+   "damage": 15,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 79
+  },
+  {
+   "move": "Co_btp_FinRLn",
+   "anim": "kmco_tacrlrl_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1040,
+   "damage": 15,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 79
+  },
+  {
+   "move": "Co_btp_FinRRn",
+   "anim": "kmco_tacxxrr_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1041,
+   "damage": 15,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 79
+  },
+  {
+   "move": "Kg_RageArts02",
+   "anim": "kgss_ra_pre(DVD)",
+   "bank": "rotsm",
+   "clip": 1103,
+   "damage": 10,
+   "active": [
+    134,
+    135
+   ],
+   "fmt": "0x64",
+   "frames": 180
+  },
+  {
+   "move": "Kg_RageArts_n",
+   "anim": "kgsj_ra_finish_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1109,
+   "damage": 50,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 396
+  },
+  {
+   "move": "Kg_RageArts_n_km",
+   "anim": "kgsj_ra_finish_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1109,
+   "damage": 50,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 396
+  },
+  {
+   "move": "Kg_It_RageArts_n",
+   "anim": "kgss_it_ra_finish_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1113,
+   "damage": 50,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 430
+  },
+  {
+   "move": "Kg_IAirRRbom_n2",
+   "anim": "yokg_it_skyrunfall_f(DVD)",
+   "bank": "rotsm",
+   "clip": 1115,
+   "damage": 30,
+   "active": null,
+   "fmt": "0x64",
+   "frames": 481
+  },
+  {
+   "move": "Kg_IWrestlerChair",
+   "anim": "kgsj_it_chair(DVD)",
+   "bank": "rotsm",
+   "clip": 1118,
+   "damage": 25,
+   "active": [
+    75,
+    77
+   ],
+   "fmt": "0x64",
+   "frames": 152
+  }
+ ]
+}
