@@ -10,7 +10,13 @@
  * belongs to #1096's merge, not this PR.
  * Rules asserted here (all data-level, no THREE needed):
  *   1. burger.json still has 552 moves / 107 strings entries (plans are additive only).
- *   2. string_step_plans has exactly 88 keys (40 planned canonicals + 48 twins).
+ *   2. string_step_plans has exactly 155 keys (88 Batch 1 preserved + 67 Batch 2).
+ *      (Batch 2 update: this file's exact-88 / no-extra-keys assertions were
+ *      replaced by cumulative assertions below. Every Batch 1 CONTENT assertion
+ *      — flagships, verified-last-step set, row/button checks — is preserved
+ *      verbatim; only the total and the extra-keys set changed, because
+ *      Batch 2 keys now legitimately exist. See docs/movesets/
+ *      BURGER-BATCH2-STEP-PLANS-2026-10-25.md, test-evolution note.)
  *   3. Batch 1 verified steps always carry a row, and no verified row is 35 or 220;
  *      review/unmapped steps carry row null. No Batch 1 step carries a soft flag
  *      (Batch 1 wires zero SOFT fills — the only Job 3 fill, row 132, is exact
@@ -46,13 +52,16 @@ const VERIFIED_BUTTONS = {"172": 1, "132": 3, "152": 2, "153": 1, "151": 2, "146
 test('burger move/string counts unchanged by the additive plans block', () => {
   assert.equal(Object.keys(burger.moves).length, 552);
   assert.equal(burger.strings.length, 107);
-  assert.equal(Object.keys(plans).length, 88);
+  assert.equal(Object.keys(plans).length, 155);
 });
 
-test('Batch 1 keys are exactly the documented 88', () => {
+test('Batch 1 keys are all present; extra keys are exactly the documented Batch 2 67', () => {
   assert.equal(B1.length, 88);
   for (const key of B1) assert.ok(plans[key], `Batch 1 key ${key} missing`);
-  const extra = Object.keys(plans).filter((k) => !B1.includes(k));
+  const B2 = ["3+4,4", "3,3", "3,4", "3,4~t7.bob", "4,3", "4,3,3+4", "4,3,3+4~t7.bob", "4,3,3+4~t7.bob.2", "4,3,4", "4,3~t7.bob", "4,3~t7.bob.2", "4,4", "WS.3,3+4", "WS.3,3+4~t7.bob", "b+4,3", "b+4,4", "b+4,4~t7.bob", "b+4,4~t7.bob.2", "d+3,4", "d+3,4~t7.bob", "d+3,4~t7.bob.2", "d+4,3", "d+4,3,4", "d+4,3,4~t7.bob", "d+4,3,4~t7.bob.2", "d+4,3,4~t7.bob.3", "d+4,3~t7.bob", "d+4,3~t7.bob.2", "d/b+3+4,4", "d/b+3+4,4~t7.bob", "d/b+4,4", "d/b+4,4,3", "d/b+4,4,3,3", "d/b+4,4,3,3~t7.bob", "d/b+4,4,3,3~t7.bob.2", "d/b+4,4,3,3~t7.bob.3", "d/b+4,4,3~t7.bob", "d/b+4,4,3~t7.bob.2", "d/b+4,4,4", "d/b+4,4,4~t7.bob", "d/b+4,4,4~t7.bob.2", "d/b+4,4~t7.bob", "d/f+3+4,4", "d/f+3+4,4~t7.bob", "d/f+3+4,4~t7.bob.2", "d/f+3,4", "d/f+3,4,4", "d/f+3,4,4~t7.bob", "d/f+3,4,4~t7.bob.2", "d/f+3,4~t7.bob", "db+3+4,4", "db+4,4", "db+4,4,3", "db+4,4,3,3", "df+4,3", "df+4,4", "f+3,4", "f+3,4~t7.bob", "f+3,4~t7.bob.2", "u/f+3+4,4", "u/f+3+4,4~t7.bob", "u/f+3+4,4~t7.bob.2", "u/f+4,4", "u/f+4,4~t7.bob", "ub+3+4,4", "uf+3+4,4", "ws3,3+4"];
+  assert.equal(B2.length, 67);
+  for (const key of B2) assert.ok(plans[key], `Batch 2 key ${key} missing`);
+  const extra = Object.keys(plans).filter((k) => !B1.includes(k) && !B2.includes(k));
   assert.deepEqual(extra, []);
 });
 
