@@ -307,6 +307,12 @@ test('a fast qcf does not sidestep: d released under 200 ms while the stick is f
     NOW = 1120; inp.axisX = 1; inp._udStick(0.1);
     assert.deepEqual(inp.consume(), [], 'touch qcf: no sidestep');
     NOW = 2000; inp.axisX = 0; inp._udStick(0.9); NOW = 2090; inp._udStick(0);
-    assert.deepEqual(inp.consume(), ['ss-down'], 'touch d tap: sidestep');
+    // the tap waits SS_GRACE_MS (50 ms, 3 frames) for a next motion step before it sidesteps
+    assert.deepEqual(inp.consume(), [], 'touch d tap: pending inside the motion grace');
+    NOW = 2140; assert.deepEqual(inp.consume(), ['ss-down'], 'touch d tap: sidestep');
+    // motion in progress beats sidestep: d released, f pressed 2 frames later (key-by-key d/b,d,f)
+    NOW = 3000; inp._udStick(0.9); NOW = 3050; inp._udStick(0); NOW = 3083; inp.axisX = 1;
+    assert.deepEqual(inp.consume(), [], 'd then f inside the grace: motion, no sidestep');
+    NOW = 3200; assert.deepEqual(inp.consume(), [], 'still no sidestep later');
   } finally { simClock(false); }
 });

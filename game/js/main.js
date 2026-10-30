@@ -24,7 +24,9 @@ import { whUiEnabled, mountWhUi } from './ui-wh-bridge.js';
 import { getCustomFighter, customFighterToRoster } from './custom-fighter.js';
 import { resolveFighterAttire } from './attires.js';
 import { createSelectScreen } from './select-screen.js';
-import { STAGES, STAGE_TIERS, getStage, randomStageId } from './stages.js';
+import { applySoulSpirit } from './soul-spirit.js';
+import { STAGES, STAGE_TIERS, getStage, randomStageId, preloadStage } from './stages.js';
+import { stageVisible, CORE_STAGES, CORE_FIGHTERS, quickFightParams } from './core-set.js';
 // LOADSPEED: stages.js (82KB data) stays static — buildStageSelect runs in
 // the versus flow and getStage is needed by startFight; its parse cost is
 // small next to the deferred modules. Stage THUMBS are the real cost there
@@ -35,6 +37,9 @@ import './load-progress.js'; // real loading bar (owner pt134u)
 // LOADSPEED: the real Tekken moveset JSONs (~300KB) used to fetch at boot.
 // They are fight data — they load when a fight starts (startFight awaits
 // them alongside the fighter GLBs), not while the menu is painting.
+
+// Eastern Mind stage films: which stage introVideos already played this session.
+let _playedStageIntros = null;
 
 const screens = {
   menu:   document.getElementById('screen-menu'),
@@ -55,6 +60,8 @@ const screens = {
   sidegames: document.getElementById('screen-sidegames'),
   collection: document.getElementById('screen-collection'),
   daily: document.getElementById('screen-daily'),
+replays: document.getElementById('screen-replays'),
+
 };
 /* Tekken-style select screen controller (js/select-screen.js).
    Assigned once at bootstrap below; show() only runs on user
@@ -62,7 +69,8 @@ const screens = {
 let selectScreen = null;
 function show(name) {
   mark(name === 'select' ? 'select-open' : name === 'stage' ? 'stage-open' : `show:${name}`);
-  Object.values(screens).forEach(s => s.classList.remove('active'));
+  // Worker 29: null-safe — screen-stage-intro has no element on main yet.
+  Object.values(screens).forEach(s => { if (s) s.classList.remove('active'); });
   if (screens[name]) screens[name].classList.add('active');
   // Tekken 99s select timer: runs only on the select screen, and only once the
   // ~30MB assets are loaded — slow phones don't lose selection time to loading.
@@ -169,6 +177,19 @@ const ui = {
     b.classList.add('show');
     setTimeout(() => b.classList.remove('show'), 1400);
   },
+  hudNote(text) {
+    // HUD-side note (owner immersion law, closed 2026-10-25): transient
+    // info that used to be a center-screen banner now lands here — small
+    // text under the health bars, never the middle of the screen. Same
+    // 1400 ms beat as banner(). Guards a missing element: converted call
+    // sites run in modes whose UI object may be a stub.
+    const el = document.getElementById('hud-note');
+    if (!el) return;
+    el.textContent = text;
+    el.classList.remove('show'); void el.offsetWidth;
+    el.classList.add('show');
+    setTimeout(() => el.classList.remove('show'), 1400);
+  },
   surgeFlash(color, accent) {
     const el = document.getElementById('surge-flash');
     const c = '#' + color.toString(16).padStart(6, '0');
@@ -178,16 +199,16 @@ const ui = {
     el.classList.add('show');
     setTimeout(() => el.classList.remove('show'), 900);
   },
-  surgeName(name) {
-    const el = document.getElementById('surge-name');
-    el.textContent = 'SOUL SURGE — ' + name;
-    el.classList.remove('show'); void el.offsetWidth;
-    el.classList.add('show');
-    setTimeout(() => el.classList.remove('show'), 1600);
-  },
   setRage(id, on) {
     const el = document.getElementById(`${id}-rage`);
     if (el) el.classList.toggle('on', !!on);
+  },
+  setSoulReady(id, on) {
+    // Nine-Soul Release ready = HUD indicator only: the Nine-Soul Meter
+    // wrap glows gold (Tekken Heat-timer pattern: a bar under the health
+    // bar, never center-screen text). No banner, no text on screen.
+    const wrap = document.getElementById(`${id}-meter`);
+    if (wrap) wrap.classList.toggle('soul-ready', !!on);
   },
   rageArtFlash() {
     const el = document.getElementById('rage-flash');
@@ -238,8 +259,10 @@ const ui = {
     el.classList.add('show', 'escaped');
     this._throwT = setTimeout(() => el.classList.remove('show', 'escaped'), 900);
   },
-  /* V-System (owner 2026-10-22). All user-facing names are «name TBD»
-     placeholders pending user approval — flagged, not final. */
+  /* V-System (owner 2026-10-22; popup-fix 2026-10-24): no canon name
+     is assigned yet (NEEDS NAME) — so these triggers show NO text on
+     screen, only the color-coded glow (Tekken rule: mid-fight systems
+     are HUD indicators, never big center-screen text). */
   vTrigger() {
     this.surgeFlash(0xffd34d, 0xfff2b0);
   },
@@ -272,6 +295,11 @@ const game = new Game(canvas, input, ui);
 // fight. Loaded on demand; no-op until first toggled.
 import('./photomode.js').then(({ installPhotoMode }) => installPhotoMode(game))
   .catch(() => {});
+/* Free camera during scenes (2026-10-24): live orbit/pan/zoom while the
+   fight keeps playing — never pauses, never overwrites the authored
+   camera. Lazy import so a failure here cannot block the fight. */
+import('./free-camera.js').then(({ installFreeCamera }) => installFreeCamera(game))
+  .catch((e) => console.warn('[WH] free camera unavailable:', e?.message || e));
 ui._buildMeter('p1');
 ui._buildMeter('p2');
 
@@ -336,6 +364,10 @@ function startFightViaStage(p1, p2, opts = {}) {
   pendingFight = { p1, p2, opts };
   buildStageSelect();
   show('stage');
+  // Lane 5: warm the currently shown stage in the background while
+  // the player browses the arena screen — never awaited here, so a
+  // slow stage fetch can never block the screen itself.
+  preloadStage(selectedStage).catch(() => {});
   requestAnimationFrame(() => requestAnimationFrame(() => mark('stage-interactive')));
   const hint = document.getElementById('stage-hint');
   const s = getStage(selectedStage);
@@ -419,7 +451,7 @@ function buildStageSelect() {
   grid.innerHTML = '';
   const paint = (atlas) => {
     for (const tier of STAGE_TIERS) {
-      const stages = STAGES.filter(s => s.tier === tier);
+      const stages = STAGES.filter(s => s.tier === tier && stageVisible(s.id));
       if (!stages.length) continue;
       const tierHeader = document.createElement('div');
       tierHeader.className = 'tier-header';
@@ -612,6 +644,10 @@ function randomEnemy(excludeId) {
 }
 
 /* ---------------- Menu button wiring ---------------- */
+/* Audio (owner 2026-10-24): no tap-to-enable prompt. Sound resumes
+   silently on the first tap anywhere (mobile autoplay policy still
+   requires a gesture before AudioContext can start); the on/off
+   switch lives in SETTINGS (the howto screen) and persists. */
 function unlockAudio() {
   // TAP-FOR-AUDIO REMOVED (2026-10-24): no "TAP TO ENABLE SOUND" banner and
   // no dedicated audio tap. The first real interaction — a menu, mode or
@@ -629,6 +665,29 @@ function unlockAudio() {
 
 // Silent safety net (from #1037): first tap anywhere also unlocks audio, in case a path reaches audio without a menu, mode or fight tap.
 document.body.addEventListener('pointerdown', unlockAudio, { once: true });
+
+/* SETTINGS sound toggle: persists in localStorage, applies on boot
+   before any gesture, and gates both the procedural engine and the
+   file-music engine (which checks audio.enabled before playing). */
+let _audioOn = true;
+try { _audioOn = localStorage.getItem('wh-audio') !== 'off'; } catch (e) { /* private mode */ }
+function applyAudioPref() {
+  try { audio.setMuted(!_audioOn); } catch (e) { /* sound is optional */ }
+  try { music.setEnabled(_audioOn); } catch (e) { /* sound is optional */ }
+  const b = document.getElementById('opt-audio');
+  if (b) b.textContent = _audioOn ? 'ON' : 'OFF';
+}
+(function bindAudioToggle() {
+  const b = document.getElementById('opt-audio');
+  if (!b) return;
+  b.addEventListener('click', () => {
+    _audioOn = !_audioOn;
+    try { localStorage.setItem('wh-audio', _audioOn ? 'on' : 'off'); } catch (e) { /* private mode */ }
+    applyAudioPref();
+    try { audio.uiClick(); } catch (e) { /* sound is optional */ }
+  });
+})();
+applyAudioPref();
 
 /* Menu tap failure toast (2026-10-24, menu tap fix): a tap must NEVER
    die silently. Mode loads that reject surface here instead of leaving
@@ -711,6 +770,18 @@ document.addEventListener('click', (e) => {
     else if (a === 'mode-trader') {
       getModes().then(m => m.startMode('trader')).catch(() => menuFail('Could not load TRADER — tap again'));
     }
+    else if (a === 'mode-treasure') {
+      getModes().then(m => m.startMode('treasure')).catch(() => menuFail('Could not load TREASURE — tap again'));
+    }
+    else if (a === 'mode-gallery') {
+      import('./ui-gaps.js').then(m => m.openGallery()).catch(() => menuFail('Could not load GALLERY — tap again'));
+    }
+    else if (a === 'mode-jukebox') {
+      import('./ui-gaps.js').then(m => m.openJukebox()).catch(() => menuFail('Could not load JUKEBOX — tap again'));
+    }
+    else if (a === 'mode-replays') {
+      import('./ui-gaps.js').then(m => m.openReplays()).catch(() => menuFail('Could not load REPLAYS — tap again'));
+    }
     else if (a === 'mode-rankbattle') {
       rankBattleSelect = true;
       getRankBattle().then((rb) => rb.start()).catch(() => menuFail('Could not load RANKED — tap again'));
@@ -725,6 +796,7 @@ document.addEventListener('click', (e) => {
       window.location.href = '../customization/creation-suite-ui/index.html';
     }
     else if (a === 'howto') { show('howto'); }
+    else if (a === 'replays') { showReplays(); }
     else if (a === 'close-movelist') { toggleMovelist(false); }
     else if (a === 'back-menu') {
       // CLEAN-INIT: leaving fight → full state reset. No leaked fighters,
@@ -735,6 +807,7 @@ document.addEventListener('click', (e) => {
       getModes().then(m => m.clearState());
       show('menu');
       audio.stopMusic();
+      audio.playEMTrack('tong-nou-theme'); // the head-world theme, as-is
     }
     else if (a === 'back-select') {
       rankBattleSelect = false;
@@ -859,6 +932,8 @@ document.getElementById('confirm-stage').addEventListener('click', confirmStageF
 
 document.getElementById('random-stage').addEventListener('click', () => {
   audio.uiClick();
+  // All arenas are back on the stage select list (owner order
+  // 2026-10-29), so RANDOM picks from the full stage list again.
   selectedStage = randomStageId();
   const s = getStage(selectedStage);
   const card = document.querySelector(`.stage-card[data-id="${s.id}"]`);
@@ -872,10 +947,14 @@ document.getElementById('random-stage').addEventListener('click', () => {
 /* Training quit button (HUD, visible only in training mode) */
 document.getElementById('training-quit').addEventListener('click', () => {
   audio.uiClick();
+  // Worker 29: detach the Gungaku lab before the fighters are torn down.
+  try { if (window.__lab) window.__lab.detach(); } catch (e) {}
+  window.__lab = null;
   game.leaveFight();
   getModes().then(m => m.clearState());
   show('menu');
   audio.stopMusic();
+  audio.playEMTrack('tong-nou-theme'); // the head-world theme, as-is
 });
 
 /* Stream 6: per-fighter movelist (training mode HUD button + M key).
@@ -919,14 +998,16 @@ async function renderMovelist() {
     g.className = 'movelist-group';
     g.innerHTML = `<h3>${label} (${list.length})</h3>`;
     for (const [key, m] of list) {
-      const fr = Math.round((m.startup || 0) * 60);
+      // Worker 29: full frame data per move (T7 practice style) — startup /
+      // active / recovery in frames @60fps, pulled from the moveset data.
+      const f2f = (s) => Math.round((s || 0) * 60);
       const brk = m.throw_break
         ? `<span class="ml-break">break ${m.throw_break === '1' ? 'LP' : m.throw_break === '2' ? 'RP' : 'LP+RP'}</span>` : '';
       const row = document.createElement('div');
       row.className = 'movelist-row';
       row.innerHTML = `<span class="ml-input">${key}</span>` +
         `<span class="ml-name">${m.name || ''} ${brk}</span>` +
-        `<span class="ml-data">${m.damage}dmg ${fr}f</span>`;
+        `<span class="ml-data" title="startup / active / recovery (frames) · damage">${f2f(m.startup)}f/${f2f(m.active)}f/${f2f(m.recovery)}f · ${m.damage ?? '?'}dmg</span>`;
       g.appendChild(row);
     }
     groups.appendChild(g);
@@ -939,11 +1020,12 @@ async function renderMovelist() {
     g.className = 'movelist-group';
     g.innerHTML = '<h3>OTHER (' + rest.length + ')</h3>';
     for (const [key, m] of rest) {
+      const f2f = (s) => Math.round((s || 0) * 60);
       const row = document.createElement('div');
       row.className = 'movelist-row';
       row.innerHTML = `<span class="ml-input">${key}</span>` +
         `<span class="ml-name">${m.name || ''}</span>` +
-        `<span class="ml-data">${m.damage}dmg</span>`;
+        `<span class="ml-data">${f2f(m.startup)}f/${f2f(m.active)}f/${f2f(m.recovery)}f · ${m.damage ?? '?'}dmg</span>`;
       g.appendChild(row);
     }
     groups.appendChild(g);
@@ -958,6 +1040,164 @@ async function toggleMovelist(open) {
 document.getElementById('movelist-btn').addEventListener('click', () => {
   audio.uiClick(); toggleMovelist();
 });
+
+/* ============================================================
+   REPLAY THEATER (worker 29, 2026-10-22) — library UI + viewer
+   transport. Library lives in localStorage (wh_replays_v1);
+   watching re-enters startFight with opts.replayData so the
+   ReplayPlayer drives the same Game/arena code as a live fight.
+   ============================================================ */
+async function replayLib() {
+  const { listReplays } = await import('./replay.js');
+  return listReplays();
+}
+
+function fmtDate(iso) {
+  try {
+    const d = new Date(iso);
+    return d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  } catch (e) { return iso || ''; }
+}
+
+async function showReplays() {
+  const list = document.getElementById('replay-list');
+  list.innerHTML = '<p class="stage-sub">Loading…</p>';
+  show('replays');
+  const reps = await replayLib();
+  list.innerHTML = '';
+  if (!reps.length) {
+    list.innerHTML = '<p class="stage-sub">No replays yet — fight a versus or arcade match and it saves here automatically.</p>';
+    return;
+  }
+  for (const r of reps) {
+    const row = document.createElement('div');
+    row.className = 'replay-row';
+    const winTxt = r.winner === 'p1' ? `${r.p1name} wins` : r.winner === 'p2' ? `${r.p2name} wins` : 'draw';
+    row.innerHTML =
+      `<span class="rp-names">${r.p1name} <em>vs</em> ${r.p2name}</span>` +
+      `<span class="rp-meta">${r.stageName || ''} · ${r.mode || ''} · ${r.rounds}R · ${winTxt}<br>${fmtDate(r.date)} · ${(r.bytes / 1024).toFixed(0)}KB</span>` +
+      `<span class="rp-actions"><button class="btn-primary rp-watch">WATCH</button>` +
+      `<button class="btn-ghost rp-del">✕</button></span>`;
+    row.querySelector('.rp-watch').addEventListener('click', async () => {
+      audio.uiClick();
+      const { getReplay } = await import('./replay.js');
+      const entry = getReplay(r.id);
+      if (entry) watchReplay(entry);
+    });
+    row.querySelector('.rp-del').addEventListener('click', async (e) => {
+      e.stopPropagation();
+      audio.uiClick();
+      const { deleteReplay } = await import('./replay.js');
+      deleteReplay(r.id);
+      showReplays();
+    });
+    list.appendChild(row);
+  }
+}
+
+/* Watch a library entry: boot the same fighters/stage, then hand the
+   Game to the ReplayPlayer instead of live input. */
+async function watchReplay(entry) {
+  const d = entry.data;
+  const p1 = getCharacterWithCustom(d.meta.p1id) || ROSTER[0];
+  const p2 = getCharacterWithCustom(d.meta.p2id) || ROSTER[1];
+  if (d.meta.stageId && getStage(d.meta.stageId)) selectedStage = d.meta.stageId;
+  show('hud');
+  await startFight(p1.id, p2.id, {
+    mode: 'replay',
+    playerChar: p1,
+    enemyChar: { ...p2, ai: { aggression: 0, passive: true } },
+    stage: selectedStage,
+    skipIntroInteraction: true,
+    replayData: d,
+  });
+}
+
+/* Transport bar wiring (buttons live in #replay-bar in index.html). */
+function showReplayBar(player) {
+  const bar = document.getElementById('replay-bar');
+  if (!bar) return;
+  bar.style.display = 'flex';
+  player._bar = bar;
+  player._playBtn = document.getElementById('rp-play');
+  player._timeEl = document.getElementById('rp-time');
+  player._seekEl = document.getElementById('rp-seek');
+  const badge = document.getElementById('replay-badge');
+  if (badge) badge.style.display = 'block';
+  if (player._playBtn) player._playBtn.onclick = () => { audio.uiClick(); player.togglePause(); };
+  bar.querySelectorAll('[data-speed]').forEach((b) => {
+    b.onclick = () => { audio.uiClick(); player.setSpeed(parseFloat(b.dataset.speed)); };
+  });
+  const step = document.getElementById('rp-step');
+  if (step) step.onclick = () => { audio.uiClick(); player.stepFrames(1); };
+  const back = document.getElementById('rp-back');
+  if (back) back.onclick = () => { audio.uiClick(); player.stepFrames(-1); };
+  const restart = document.getElementById('rp-restart');
+  if (restart) restart.onclick = () => { audio.uiClick(); player.restart(); };
+  const cam = document.getElementById('rp-cam');
+  if (cam) cam.onclick = () => { audio.uiClick(); toggleReplayCam(player); };
+  const exit = document.getElementById('rp-exit');
+  if (exit) exit.onclick = () => { audio.uiClick(); exitReplay(); };
+  if (player._seekEl) {
+    player._seekEl.addEventListener('change', () => {
+      player.scrub(parseInt(player._seekEl.value, 10) || 0);
+    });
+  }
+  player.onReplayEnd = () => {
+    if (player._playBtn) player._playBtn.textContent = '↺';
+  };
+  player._updateSpeedBtns();
+  player._updatePlayBtn();
+}
+
+function hideReplayBar() {
+  const bar = document.getElementById('replay-bar');
+  if (bar) bar.style.display = 'none';
+  const badge = document.getElementById('replay-badge');
+  if (badge) badge.style.display = 'none';
+}
+
+function toggleReplayCam(player) {
+  const g = player.game;
+  if (!g) return;
+  if (!player._freecam) {
+    import('./replay.js').then(({ FreeCam }) => {
+      player._freecam = new FreeCam(g.arena);
+      player._freecam.setEnabled(true);
+      const b = document.getElementById('rp-cam');
+      if (b) { b.textContent = 'CAM: FREE'; b.classList.add('on'); }
+    });
+  } else {
+    const on = !player._freecam.enabled;
+    player._freecam.setEnabled(on);
+    const b = document.getElementById('rp-cam');
+    if (b) { b.textContent = on ? 'CAM: FREE' : 'CAM: FIGHT'; b.classList.toggle('on', on); }
+  }
+}
+
+/* Per-frame hook for the replay free camera (replays have no lab, so
+   main.js pumps it in _loop via rAF). */
+function pumpReplayCam() {
+  const rp = window.__replayPlayer;
+  if (rp && rp._freecam && rp._freecam.enabled && rp.game && rp.game.p1) {
+    rp._freecam.update(rp.game.p1, rp.game.p2);
+  }
+  requestAnimationFrame(pumpReplayCam);
+}
+requestAnimationFrame(pumpReplayCam);
+
+function exitReplay() {
+  const rp = window.__replayPlayer;
+  window.__replayPlayer = null;
+  hideReplayBar();
+  if (rp) {
+    if (rp._freecam) rp._freecam.setEnabled(false);
+    rp.detach();
+  }
+  game.leaveFight();
+  audio.stopMusic();
+  showReplays();
+}
 
 async function startFight(playerId, enemyId, opts = {}) {
   unlockAudio();
@@ -975,10 +1215,28 @@ async function startFight(playerId, enemyId, opts = {}) {
   let enemy = opts.enemyChar ||
     (typeof enemyId === 'string' && enemyId !== player.id ? resolveFighterAttire(getCharacterWithCustom(enemyId)) : randomEnemy(player.id));
   if (!enemy || enemy.modelPending || !enemy.model) enemy = randomEnemy(player.id);
+  // NINE SOULS REDESIGN (owner directive 2026-10-22 ~23:02 CDT): the
+  // select-screen soul-spirit toggle. Each side's locked pick applies to
+  // that side's entry — a vessel match empowers the fighter (buff baked
+  // into stats here) and stamps `soulSpirit` for the floating-spirit
+  // render (game.js reads it). Versus: both sides picked on the grid.
+  // Solo modes: only P1 picked, so the enemy side resolves to null.
+  if (selectScreen && selectScreen.soulSpiritLocked) {
+    player = applySoulSpirit(player, selectScreen.soulSpiritLocked('p1'));
+    enemy = applySoulSpirit(enemy, selectScreen.soulSpiritLocked('p2'));
+  }
   // On-demand: load only the 2 fighters for this fight (Tekken 3 pattern).
   // Models may already be prefetched from select-screen highlight.
+  // TTT2: tag battles need all 4 fighters' models up front.
+  const tagTeams = opts.tagTeams || null;
   const need = [...new Set([player.model, enemy.model].filter(Boolean))];
-  // Mid-match transform targets must be preloaded (createInstance is sync).
+  if (tagTeams) {
+    for (const side of ['p1', 'p2']) for (const id of tagTeams[side]) {
+      const c = getCharacterWithCustom(id);
+      if (c.model) need.push(c.model);
+      if (c.transform && c.transform.targetModel) need.push(c.transform.targetModel);
+    }
+  }  // Mid-match transform targets must be preloaded (createInstance is sync).
   for (const c of [player, enemy]) {
     if (c.transform && c.transform.targetModel) need.push(c.transform.targetModel);
     if (c.forms) for (const fk of Object.keys(c.forms)) {
@@ -987,6 +1245,10 @@ async function startFight(playerId, enemyId, opts = {}) {
       for (const t of tgts) if (t.target) need.push(t.target);
     }
   }
+  // Lane 5: stage assets stream IN PARALLEL with the fighter loads
+  // below (not after them). Fire-and-forget: the arena builder's
+  // own GLB/OBJ loads still apply as fallback if warming failed.
+  preloadStage(selectedStage).catch(() => {});
   const hint = document.getElementById('select-hint');
   const confirmBtn = document.getElementById('confirm-fighter');
   // FIGHT-LOAD FIX (2026-10-24): versus fights start from the STAGE screen,
@@ -1013,6 +1275,9 @@ async function startFight(playerId, enemyId, opts = {}) {
     // Show the TRANSFORM touch button only for fighters that can transform.
     const tBtn = document.querySelector('.act-btn.transform');
     if (tBtn) tBtn.style.display = (player.transform || player.forms) ? '' : 'none';
+    // TTT2: TAG touch button only in tag battles (2v2).
+    const tagBtn = document.getElementById('tag-btn');
+    if (tagBtn) tagBtn.hidden = !tagTeams;
     if (confirmBtn) confirmBtn.disabled = true;
     await assets.loadModels(need, (p, loaded, total, id) => {
       if (window.__whLoadProgress) window.__whLoadProgress(p, loaded, total);
@@ -1084,19 +1349,63 @@ async function startFight(playerId, enemyId, opts = {}) {
     return false;
   }
   if (confirmBtn) confirmBtn.disabled = false;
+  // Eastern Mind stage films: a stage carrying introVideo (the land's own
+  // footage, e.g. Palace of Dreaming's room films) plays it once per
+  // session before the fight. Skippable; failure never blocks the fight.
+  try {
+    const def = typeof getStage === 'function' ? getStage(selectedStage) : null;
+    _playedStageIntros = _playedStageIntros || new Set();
+    if (def && def.introVideo && !_playedStageIntros.has(def.id)) {
+      _playedStageIntros.add(def.id);
+      const { playCutscene } = await import('./cutscenes.js');
+      await playCutscene(def.introVideo, { label: def.name });
+    }
+  } catch (e) { console.warn('[WH] stage intro video skipped:', e.message || e); }
   show('hud');
   game.paused = false;
   // MUSIC (2026-10-24): rotating stage pool. The engine falls back to
   // the procedural loop internally when no file track is available, so
   // the old direct audio.startMusic() call is replaced, not doubled.
-  music.playBattle(selectedStage);
+  // JUKEBOX (Lane 4): pass the fight's UI mode through so the engine
+  // plays the player's per-mode Jukebox choice (wh_jukebox_v1, PR #1056)
+  // when one is stored; unknown modes fall back to engine rotation.
+  music.playBattle(selectedStage, { uiMode: ['versus', 'arcade', 'treasure'].includes(opts.mode) ? opts.mode : undefined });
   // FIGHT-LOOP REPAIR (worker 54, 2026-10-22): startMatch ran OUTSIDE the
   // load try/catch — a throw inside it (Fighter build, arena setStage, AI
   // wiring) was an unhandled rejection that stranded the player on the
   // stage screen with "Entering the arena…". Surface it like the load
   // failures above instead of dying silently.
+  audio.stopEMTrack(); // select-screen music yields to the battle loop
+  // TTT2: resolve tag-team char entries (full attire-resolved entries so
+  // game.js can build the benched partners with models + movesets).
+  if (tagTeams) {
+    opts.tagTeamEntries = {
+      p1: tagTeams.p1.map(id => resolveFighterAttire(getCharacterWithCustom(id))),
+      p2: tagTeams.p2.map(id => resolveFighterAttire(getCharacterWithCustom(id))),
+    };
+  }
   try {
     await game.startMatch(player, enemy, selectedStage, opts);
+  // Worker 29 (2026-10-22): Gungaku fight lab + deterministic replays.
+  // Dynamic imports keep them off the menu boot path (LOADSPEED).
+  try {
+    if (opts.replayData) {
+      const { ReplayPlayer } = await import('./replay.js');
+      opts.skipIntroInteraction = true;
+      const player = new ReplayPlayer(opts.replayData, ui);
+      player.attach(game);
+      window.__replayPlayer = player;
+      showReplayBar(player);
+    } else if (opts.mode === 'training') {
+      const { TrainingLab } = await import('./training.js');
+      const lab = TrainingLab.attach(game, ui);
+      window.__lab = TrainingLab;
+      void lab;
+    } else if (opts.mode === 'versus' || opts.mode === 'arcade' || game.demo) {
+      const { ReplayRecorder } = await import('./replay.js');
+      ReplayRecorder.attach(game, { mode: opts.mode || (game.demo ? 'demo' : 'versus') });
+    }
+  } catch (e) { console.warn('[WH] lab/replay attach failed:', e); }
   } catch (err) {
     console.error('[WH] startMatch failed:', err);
     const detail = (err && (err.message || err)) || 'unknown error';
@@ -1109,6 +1418,7 @@ async function startFight(playerId, enemyId, opts = {}) {
     show('stage');
     return false;
   }
+
   // Control hints: show for 6s at fight start, H toggles
   const hints = document.getElementById('control-hints');
   if (hints) {
@@ -1118,7 +1428,10 @@ async function startFight(playerId, enemyId, opts = {}) {
   }
   return true; // P0 (2026-10-22): stage-select handler needs to know the fight started
 }
-// H toggles control hints, M toggles the movelist (training)
+// H toggles control hints, M toggles the movelist (training).
+// Worker 29: T toggles the Gungaku lab panel, V the hitbox viewer,
+// R resets positions (training only). Replay viewer: Space = play/pause,
+// . = frame step, C = free camera, [ ] = speed.
 document.addEventListener('keydown', (e) => {
   if (e.code === 'KeyH') {
     const hints = document.getElementById('control-hints');
@@ -1128,15 +1441,49 @@ document.addEventListener('keydown', (e) => {
     const btn = document.getElementById('movelist-btn');
     if (btn && btn.style.display !== 'none') toggleMovelist();
   }
+  const lab = window.__lab && window.__lab.current;
+  if (lab && game.running) {
+    if (e.code === 'KeyT') {
+      const p = document.getElementById('gungaku');
+      if (p) p.style.display = p.style.display === 'none' ? 'block' : 'none';
+    }
+    if (e.code === 'KeyV') lab.toggleHitboxes();
+    if (e.code === 'KeyR') lab.resetPositions();
+  }
+  const rp = window.__replayPlayer;
+  if (rp && rp.game && game.running) {
+    if (e.code === 'Space') { e.preventDefault(); rp.togglePause(); }
+    if (e.code === 'Period') rp.stepFrames(1);
+    if (e.code === 'Comma') rp.stepFrames(-1);
+    if (e.code === 'KeyC') toggleReplayCam(rp);
+    if (e.code === 'BracketLeft') rp.setSpeed(Math.max(0.25, (rp.game.timeScale || 1) / 2));
+    if (e.code === 'BracketRight') rp.setSpeed(Math.min(2, (rp.game.timeScale || 1) * 2));
+    if (e.code === 'Escape') exitReplay();
+  }
 });
 
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) { game.paused = true; }
-  else if (game.running) { game.paused = false; }
+  // Brawler (worker 20): the descent also unpauses on return — game.running
+  // is false while the brawler owns the sim.
+  else if (game.running || game.brawler) { game.paused = false; }
 });
 
 // expose for debugging / verification
 window.__game = game;
+window.__startFight = (p1, p2, opts) => startFight(p1, p2, opts || {}); // QA hook (combat e2e)
+
+/* Milestone 1: ?quick=p1,p2,stage opens straight into a fight (testing).
+   p2 / stage optional: a missing p2 is a random core fighter, a missing
+   stage is a random core stage. */
+(function quickFight() {
+  const q = quickFightParams();
+  if (!q) return;
+  const p2 = q.p2 || CORE_FIGHTERS.filter(id => id !== q.p1)[(Math.random() * 7) | 0];
+  const stage = q.stage || CORE_STAGES[(Math.random() * CORE_STAGES.length) | 0];
+  setTimeout(() => { startFight(q.p1, p2, { stage }).catch(e => console.error('[quick]', e)); }, 0);
+})();
+
 window.__ui = ui;
 window.__stages = STAGES;
 
