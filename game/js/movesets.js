@@ -470,6 +470,13 @@ export function canonNotation(n) {
   s = s.replace(/,:/g, ':');
   s = s.replace(/([1-4])>(?=[udfbUDFB]?(?:\/[udfbUDFB])?\+?[1-4])/g, '$1,');
   s = s.replace(/^([A-Z][A-Z0-9_]{1,})\s+(?=[1-4udfbnUDFB(])/, '$1.');
+  /* DES.BT two-word stance (Cyborg X t7.alisa_235 'DES BT 1 (or 2)', sweep 2026-10-30):
+     the stance-space rule above dots only the first word, leaving 'DES.BT 1'
+     unparseable; join the second word before a button, as the existing DES.BT.1
+     row already spells it. That row is the same move (Hertz Blade - Flare,
+     6x4 multi-hit, startup 0.317, -9/KND), not a different row — the t7 row's
+     'damage 14' is the mod-source figure, its damage_raw is 24. */
+  s = s.replace(/^DES\.BT\s+(?=[1-4])/, 'DES.BT.');
   /* Batch 8 (core 8, TekkenDocs / wavu / T7 list spellings, sweep 2026-10-29):
      - positional throws: 'Left throw' / '(Left side throw)' / 'Right Throw' / 'Back throw' /
        '(Behind 2 throw)' / 'Back Throw.2+4' are the throw chord pressed from the opponent's
