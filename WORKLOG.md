@@ -3717,7 +3717,7 @@ No bucket exists yet — nothing uploaded to R2, no account created.
   end-to-end confirmation and has not been produced; this test proves the upgrade
   mechanism + hold duration, not a rendered fight. Deletions: none.
 
-## 2026-10-29 — Dio's 9 During-Jump failures: AIR. airborne prefix
+## 2026-10-29 — Dio's 9 During-Jump failures: AIR. airborne prefix (PR #1238)
 - What: T7 jump attacks now canonicalise to an `AIR.` prefix the input buffer resolves
   only while the fighter is airborne — the same pattern as `R.` for rage and `FC.` /
   `WS.` / `SS.` / `BT.` for their states. `game/js/movesets.js` canonNotation maps
