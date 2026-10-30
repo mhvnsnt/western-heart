@@ -16,25 +16,21 @@
    ============================================================ */
 
 import { getFighterMoveset } from './movesets.js';
+import { installAddedMoves, fullMoveList } from './full-movelist.js';
 
 /* Flatten a moveset into sorted, filterable rows. Pure. */
 export function movelistRows(fighterId) {
   const ms = getFighterMoveset(fighterId);
   if (!ms || !ms.moves) return [];
+  // pt217u: FULL list = base moves + EMWH additions (魂 ACTION, KESSHOU, 九魂解放, 霊放, 試練の封),
+  // canon-named through tools/canon, one row per reachable input.
+  installAddedMoves(fighterId, ms);
+  if (ms.slots) return fullMoveList(fighterId, ms).map(r => ({ ...r, notation: r.notation, knock: 0, heavy: false, limb: '' }));
   const rows = [];
   for (const [key, m] of Object.entries(ms.moves)) {
-    const startupF = m.startup != null ? Math.round(m.startup * 60) : null;
-    rows.push({
-      key,
-      notation: m.input || key,
-      name: m.name || key,
-      damage: m.damage || 0,
-      startupF,
-      moveClass: m.move_class || 'strike',
-      limb: m.limb || '',
-      heavy: !!m.heavy,
-      knock: m.knock || 0,
-    });
+    rows.push({ key, notation: m.input || key, name: m.name || key, damage: m.damage || 0,
+      startupF: m.startup != null ? Math.round(m.startup * 60) : null, moveClass: m.move_class || 'strike',
+      limb: m.limb || '', heavy: !!m.heavy, knock: m.knock || 0 });
   }
   return rows;
 }
@@ -90,7 +86,7 @@ export function renderMovelist(fighterId, fighterName) {
   const draw = (f) => {
     const list = filterMovelist(rows, f);
     ov.querySelector('.wh-ml-list').innerHTML = list.map(r =>
-      `<div class="wh-ml-row"><span class="wh-ml-not">${r.notation}</span><span class="wh-ml-name">${r.name}</span><span class="wh-ml-meta">${r.damage}dmg${r.startupF != null ? ' · ' + r.startupF + 'f' : ''}<br>${r.moveClass}</span></div>`
+      `<div class="wh-ml-row"><span class="wh-ml-not">${r.notation}</span><span class="wh-ml-name">${r.name}${r.ja ? ' <small>' + r.ja + '</small>' : ''}</span><span class="wh-ml-meta">${r.hitLevel ? r.hitLevel + ' · ' : ''}${r.damage}dmg${r.startupF != null ? ' · i' + r.startupF : ''}${r.activeF != null ? '/' + r.activeF + '/' + r.recoveryF : ''}${r.onBlock != null ? ' · B' + r.onBlock : ''}<br>${r.moveClass}${r.origin === 'added' ? ' · added' : ''}${r.routes && r.routes.length ? ' → ' + r.routes.map(x => x.type).join(',') : ''}</span></div>`
     ).join('') || '<div class="wh-ml-row">No techniques inscribed. The stones are silent.</div>';
   };
   const f = { query: '', cls: 'all', sort: 'notation' };
