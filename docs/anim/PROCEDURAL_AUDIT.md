@@ -584,3 +584,29 @@ CSV-audited only — planning them needs engine support for non-attack
 prefix steps. T8-sourced prefixes with no T3 row get their correct
 clips from #988 Step 2 (original T8 refs), never from a T3 row recorded
 as correct.
+
+## Phantom Batch 1 fallback (LP1/RP2-only strings, 2026-10-25)
+Verified rows 55/56/57/58/66/69/70/71/175/223/224/225/226/261 are FALLBACK
+(T3 yoshimitsu rows, bank yoshimitsu / native Yoshimitsu bank — NOT a
+fallback bank: phantom's T7/T8 base IS Yoshimitsu), to be re-matched to T7
+Yoshimitsu rows when extraction lands. Rejected rows are NOT fallback —
+rejected evidence, not wired or held. Yoshimitsu-bank rules, per-bank
+evidence (documented in
+docs/movesets/PHANTOM-BATCH1-STEP-PLANS-2026-10-25.md): rows 35 and 220 do
+NOT EXIST in this bank (absent from hit_frames AND Job 1) — no row-35 or
+row-220 rule applies at all; row 216 is a STANDING LP1 row here, NOT king
+row 216's dash Konvict Kick, NOT jin row 216's jump row; row 243 is a
+CHORD row (button 9 = LP1+RK4) failing every single-button gate.
+Phantom's own LP1 move 1 carries t3_row 62 (starts-airborne) and RP2 move
+2 carries t3_row 307 (crouch) on #1096 — both ALSO ROW-CHANGED on current
+main (62->None, 307->None), so all 10 Batch 1 steps with prefix 1 or 2 are
+SUSPENDED-DRIFT — never wired on stale data. Standing rows verified for
+crouch-context steps (d/f+1 family rows 223/224/225/226) follow the
+demonio Batch 1 precedent: the gate flags crouch rows for non-crouch
+steps, not standing rows for crouch steps. Job 3 fills wired: 0 (two
+exact+FULL row 160 candidates HELD at review under the stricter fill
+rule). Canonicalization is the CORRECTED rule (strip only a trailing
+~t[378] source-variant suffix): phantom Batch 1 contains ZERO input-~
+canonicals; the file's old-vs-corrected diffs are all outside Batch 1
+scope. T8-sourced prefixes with no T3 row get their correct clips from
+#988 Step 2 (original T8 refs), never from a T3 row recorded as correct.
