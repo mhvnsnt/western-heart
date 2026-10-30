@@ -36,6 +36,18 @@ rate/usage limit or API error), `PreCompact`, `SessionEnd`, and after `Write`/`E
 
 The autosave is a net, not the plan: still commit with real messages and open the PR yourself.
 
+## Checkpoints: survive container restarts (`tools/agent/checkpoint.sh` + `restore.sh`)
+A container restart resets the working tree to the last pushed commit AND wipes the session scratchpad
+(2026-10-25: six lanes of uncommitted agent work were lost that way). The same hooks also run
+`tools/agent/checkpoint.sh` (every 5 min while editing, every turn end, before compaction, at session end). It
+pushes a backup commit to `<branch>-checkpoints` with the uncommitted repo work (`repo/wip.patch` +
+`repo/untracked/`, even while HEAD is detached), the session scratchpad (files under 20 MB), and a manifest of
+the big re-downloadable tools. It never touches the working tree or index, never force-pushes, and is
+gitleaks-scanned. That ref is a backup: never merge or PR it. `tools/agent/restore.sh` runs at SessionStart: it
+writes missing scratchpad files back, re-applies the uncommitted work only onto a clean tree at the same base
+(never clobbers), and re-downloads Blender / the T3 research clone / node tools in the background. Off switch:
+`CHECKPOINT_DISABLE=1`; logs `.git/checkpoint.log`, `.git/restore-*.log`.
+
 
 ## Complete Wiring Law (owner 2026-10-23)
 
@@ -44,3 +56,5 @@ Read `docs/rules/COMPLETE-WIRING-LAW.md` and `docs/tech/SYSTEMS-COVERAGE.md`. Pu
 
 ## Main protection law (2026-10-23, after PR #498)
 main is branch-protected with required checks (pr-safety-guard, clobber-guard, deletion-guard, no-deletion-guard, instruction-gate), admins included. Never merge with pending or red checks, never resolve merges in a sparse checkout, never self-apply `owner-approved-deletion` / `owner-approved-stale`. Full rules: `docs/rules/MAIN-PROTECTION.md`.
+## Handoff playbook (2026-10-23)
+All agents (Claude Code, Muse, others): follow [docs/handoff/HOW-TO-WORK-LIKE-GROK.md](docs/handoff/HOW-TO-WORK-LIKE-GROK.md) and the lane table in [docs/handoff/HANDOFF-2026-10-23.md](docs/handoff/HANDOFF-2026-10-23.md).

@@ -1,0 +1,18 @@
+# Extends gitleaks' default rules. One narrow allowlist: moveset-sweep JSON
+# stores animation-bank move ids like "key": "t7.yoshimitsu_21", which the
+# generic-api-key rule misreads as secrets. Only that exact id shape is allowed.
+title = "western-heart gitleaks config"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Move ids in sweep output: t7.<name>_<n> and STANCE_NAME.<n>"
+regexTarget = "match"
+regexes = [
+  '''"?key"?\s*[:=]\s*"t7\.[a-z0-9]+(?:_[a-z0-9]+)*_\d+"''',
+  # stance-move ids in the same files, e.g. "key": "MANJI_SPIN_LOW_KICKS.4"
+  '''"?key"?\s*:\s*"[A-Z][A-Z0-9]*(?:_[A-Z0-9]+)+\.\d+"''',
+  # donor-bank move ids in the same files, e.g. "key": "donor.docfrank.bp_3"
+  '''"?key"?\s*:\s*"donor(?:\.[a-z0-9]+)+_[a-z0-9_]+"''',
+]

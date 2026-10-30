@@ -1,0 +1,33 @@
+{
+ "game": "TEKKEN 8",
+ "ownership_basis": "User word 2026-10-24: owned on disk; prior T8 ban LIFTED 2026-10-24. Absent from Steam snapshot — absence does NOT mean not owned. Disk itself NOT accessible from here (phone-only).",
+ "status": "spec-only — no game files were accessible from this VM (phone-only user, Steam remote download unreachable); this pack is the teardown path + conversion/wire schema, NOT extracted commercial assets",
+ "teardown_toolchain": [
+  "TekkenMods community moveset mods (TKMovesets format, e.g. Armor King Reimagined, T7 Kazuya-in-T8) — download via coordinator browser delegation",
+  "Kiloutre TekkenMovesetExtractor / TKMovesets2 (live-memory import; editor: movelist, frame data, transitions, cross-character anim import)",
+  "FModel / CUE4Parse for UE5 paks (AES key needed where encrypted; key is the blocker, not the tool)",
+  "TekkenMods moveset-structure docs (reactions, pushback, dialogue manager)"
+ ],
+ "extractable": [
+  "DLC / T8-only characters' movesets and animations missing from T7 data — the highest-value T8 pull",
+  "T8 reaction lists (hit type × position × blocked/landed) and pushback/rotation tables",
+  "Intro/win-pose dialogue-manager structure (3 intros, 3 win poses per character, standardized)"
+ ],
+ "wh_wire": {
+  "combat": "Fill DLC gaps in the Tekken base: convert T8 moveset → LP1/RP2/LK3/RK4 + strings, same as T7; T8-only mechanics are ADAPTED to T7 feel, not copied blindly",
+  "creation": "Outfit/attire reference only, back-slot",
+  "stages": "FactoryGround-style stage mods as arena reference",
+  "audio": "Voice-clip/dialogue-manager pattern for intro/outro VO",
+  "systems": "Reaction-list structure feeds hit-reaction lane"
+ },
+ "blocker": "No local game install is reachable from this VM and no game files were supplied with this task. Steam remote download previously reported 'Unable to reach your PC'; user rule is phone-only, no PC paths. T8 disk is not reachable from this VM, so no direct pak extraction is possible here.",
+ "unblock": "Coordinator browser delegation (GitHub mhvnsnt OR Google fmmg.mars@gmail.com tap-to-sign-in only; check login + sign-up flow for SSO before reporting no-SSO): download named TekkenMods TKMovesets mods + the extractor release; OR a machine with T8 installed runs the extractor and exports movesets. Then convert per this pack.",
+ "canon_rule": "Anything brought in with another game's name is renamed to Eastern Mind / Western Heart canon in user-facing writing. Tekken/proprietary names stay in technical files only. Game ships with NO famous names. All characters adults. User's own models (Tripo + SmutBase) display FIRST; Tekken models are back-slot attires. Sole exception: Pantera Attire 1 (user-customized King reskin).",
+ "combat_inputs": "LP1=Left Punch=Tekken 1, RP2=Right Punch=Tekken 2, LK3=Left Kick=Tekken 3, RK4=Right Kick=Tekken 4. Frame data / MOD damage: UNMAPPED unless a source file in this pack contains it — never estimated as measured.",
+ "community_sources": [
+  "https://tekkenmods.com/mod/6994/armor-king-reimagined-moveset-mod",
+  "https://tekkenmods.com/mod/2429/",
+  "https://tekkenmods.com/documentation/Tekken_8/Basic_Information/Overview/Moveset/",
+  "https://github.com/Kiloutre/TKMovesets"
+ ]
+}

@@ -90,3 +90,16 @@ boss builders consume them 1:1 — clone then proprietize, per the owner spec.
 - `game/js/menus.js` — `playStoryBeats` dialogue UI, mode buttons, select routing
 - `game/menus.css` — story card styles
 - `docs/modes/shots/` — visual proof
+
+## Shrine体系 at the Still Point (2026-10-24)
+
+Owner-directed 2026-10-24: the shrine terminal appears in the
+Heart and Mind Within at stage 5 (the Still Point,
+octagonal-shrine). Before the shadow-self fight, the terminal
+reads the descending soul — two beat lines, played for every
+fighter through `HeartmindController._runStage()` (the
+stillpoint branch), via `SHRINE_OS_SEGMENT` and `shrineOsBeat()`
+in `game/js/heartmind.js`. The same terminal is playable on its
+own in the side games (see the Shrine体系 prototype in
+`game/side-games.html`, engine in `game/js/shrine-os.js`).
+Canon: the Shrine体系 section of `CANON.md`.
