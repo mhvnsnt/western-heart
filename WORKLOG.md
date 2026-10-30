@@ -4138,7 +4138,7 @@ downstream witness/resolution, not canon). Deletions: none.
   gap); CLK(Two spins).3 (a different row from CLK.3, 22 dmg/+0 vs
   20 dmg/-9, deliberately untouched).
 
-## 2026-10-30 — Dio Rage string bare-direction-step resolver fix (PR #TBD)
+## 2026-10-30 — Dio Rage string bare-direction-step resolver fix (PR #1252)
 - Dio's Rage row '(During Rage) 1,1,f,3,2' (Wrath of the Raging Demon, r17 failing)
   failed in r16 as fired ["3"] (keys ["3~t7.akuma"]) only: the string broke at the
   bare 'f' step. The resolver's string-continuation candidates attached the held
