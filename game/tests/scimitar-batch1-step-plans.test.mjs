@@ -1,4 +1,9 @@
 /* Scimitar Batch 1 step plans (LP1/RP2-only strings, 2026-10-25) — data + engine-marker guard.
+ * Batch 2 update (2026-10-25): this file is now CUMULATIVE — it asserts 39 total plans
+ * (21 Batch 1 + 18 Batch 2 keys listed in B2 below); every Batch 1 content assertion is
+ * preserved verbatim; only the header note, the B2 const, the plan count, and the
+ * extra-keys assertion changed. Batch 2's own assertions live in
+ * game/tests/scimitar-batch2-step-plans.test.mjs.
  * Docs: docs/movesets/SCIMITAR-BATCH1-STEP-PLANS-2026-10-25.md.
  * Stack: this branch is stacked on #1096 (feat/batch1-step-plans-pantera-20261024,
  * the step-playback engine). It does NOT stack on the Pantera plan branches
@@ -43,7 +48,7 @@
  * Spelling quirks kept: d/b+2,1 vs db+2,1 are distinct canonicals, never merged.
  * Rules asserted here (all data-level, no THREE needed):
  *   1. scimitar.json still has 362 moves / 50 strings entries (plans are additive only).
- *   2. string_step_plans has exactly 21 keys (11 planned canonicals + 10 twins).
+ *   2. string_step_plans has exactly 39 keys (21 Batch 1 + 18 Batch 2: 12 planned canonicals + 6 twins).
  *   3. Batch 1 verified steps always carry a row whose jin hit_frames
  *      button equals the step bits and whose throw flag is 0; verified rows
  *      always exist in the jin hit_frames; review/unmapped steps carry row
@@ -78,6 +83,7 @@ const hf = JSON.parse(readFileSync(hfPath, 'utf8')).rows;
 
 const plans = scimitar.string_step_plans.plans;
 const B1 = ["1,2", "1,2,2", "1,2,2~t7.shaheen", "1,2,2~t7.shaheen.2", "1,2,2~t7.shaheen.3", "1,2~t7.shaheen", "1,2~t7.shaheen.2", "1,2~t8.shaheen", "2,1", "2,1,2", "2,1,2,2", "2,1~t7.shaheen", "2,1~t7.shaheen.2", "2,1~t8.shaheen", "SNK.df+1,2", "d+1+2,1", "d+1+2,1,2", "d+1+2,2", "d/b+2,1", "d/b+2,1~t7.shaheen", "db+2,1"];
+const B2 = ["4,3", "4,3~t7.shaheen", "4,3~t7.shaheen.2", "4,4", "4,4~t7.shaheen", "4,4~t7.shaheen.2", "WS.3,3", "WS.3,3~t7.shaheen", "d/b+3,4", "d/b+3,4~t7.shaheen", "d/f+4,4", "db+3,4", "df+4,3", "u/f+4,3", "u/f+4,4", "u/f+4,4,4", "u/f+4,4,4,4", "ws3,3"];
 const B1_VERIFIED_LAST = ["1,2", "1,2~t7.shaheen", "1,2~t7.shaheen.2", "1,2~t8.shaheen", "2,1", "2,1,2", "2,1,2,2", "2,1~t7.shaheen", "2,1~t7.shaheen.2", "2,1~t8.shaheen", "d+1+2,1,2", "d+1+2,2"];
 const VERIFIED_BUTTONS = {"92": 3, "93": 2, "183": 2, "186": 2, "220": 2, "221": 1, "222": 2, "223": 2};
 
@@ -91,14 +97,14 @@ function stepBits(step) {
 test('scimitar move/string counts unchanged by the additive plans block', () => {
   assert.equal(Object.keys(scimitar.moves).length, 362);
   assert.equal(scimitar.strings.length, 50);
-  assert.equal(Object.keys(plans).length, 21);
+  assert.equal(Object.keys(plans).length, 39);
 });
 
 test('Batch 1 keys are exactly the documented 21', () => {
   assert.equal(B1.length, 21);
   for (const key of B1) assert.ok(plans[key], `Batch 1 key ${key} missing`);
   const extra = Object.keys(plans).filter((k) => !B1.includes(k));
-  assert.deepEqual(extra, []);
+  assert.deepEqual(extra, B2);
 });
 
 test('Batch 1 verified steps carry rows (button == step bits, throw 0, row exists in jin hit_frames); review/unmapped carry row null; no soft flags', () => {

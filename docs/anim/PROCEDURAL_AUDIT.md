@@ -730,3 +730,37 @@ canonicals, and scimitar is INERT file-wide on this axis — every ~ in the
 file is a trailing source-variant suffix. T8-sourced prefixes with no T3 row
 get their correct clips from #988 Step 2 (original T8 refs), never from a
 T3 row recorded as correct.
+
+## Scimitar Batch 2 fallback (LK3/RK4-only strings, 2026-10-25)
+Verified rows 80/193/207/205 are FALLBACK
+(T3 jin rows, bank jin / FALLBACK bank: scimitar's T7/T8 base is Shaheen,
+which debuted in Tekken 7, so no shaheen dir exists under t3/ — the kinpo
+pattern, Asuka -> jin), to be re-matched to T7 Shaheen rows when extraction
+lands. Rejected rows are NOT fallback — rejected evidence, not wired or
+held. Jin-bank rules, per-bank evidence (documented in
+docs/movesets/SCIMITAR-BATCH2-STEP-PLANS-2026-10-25.md): row 35 EXISTS as a
+starts-airborne LP1 row (hit_frames [11,12,39,535,0,1]) — ground-rejected,
+jump-context only; row 220 is a STANDING RP2 row (hit_frames
+[12,12,41,1042,0,2], Job 1 standing) — NOT king's jumping chord row, NOT
+bryan's button-0 row, NOT heihachi's jump RK4 row; row 216 is a JUMP row
+(hit_frames [63,64,117,1543,0,0], button 0) — it fails every single-button
+gate; row 41 is a starts-airborne LP1 row. Jin duck-dip rows (16): 123, 189,
+192, 210, 211, 212, 213, 235, 257, 367, 377, 381, 385, 387, 389, 397 —
+handled like crouch: STANCE-SOFT (review) for non-crouch contexts. The
+file's ONLY row-changed move is 1 (184->None) — an LP1 move, NOT a Batch 2
+step prefix (Batch 2 strings are LK3/RK4-only), so Batch 2 has ZERO
+suspended-drift steps. Verified: u/f+4,3 [80,193] and u/f+4,4 [80,207]
+verified-all (jump context, SOFT waived); d/f+4,4 step 1 <- 205 (crouch row
+for crouch context, passes outright). Review holds: 4,3/4,4 step 1 cand 199
+SOFT fail; d/f+4,4 step 2 cand 212 SOFT fail; u/f+4,4,4 step 3 cand 210 +
+u/f+4,4,4,4 steps 3-4 cands 210/211 STANCE-SOFT (duck-dip for jump context).
+Unmapped: 12 steps, ALL no-candidate (zero rejected, zero suspended).
+Job 3: 0 report entries with pass-all rows (the only Batch 2 step prefixes
+with match_search entries — d/b+3,4, u/f+4,4,4, u/f+4,4,4,4 — all carry EMPTY
+pass-all lists); 0 fills wired. Job 4: 4 joins, all no-action, none
+promoting; 15 orphans (same bank-level set as Batch 1). Canonicalization is
+the CORRECTED rule (strip only a trailing ~t[378] source-variant suffix):
+ZERO input-~ canonicals in Batch 2 scope, and scimitar is INERT file-wide on
+this axis — every ~ in the file is a trailing source-variant suffix.
+T8-sourced prefixes with no T3 row get their correct clips from #988 Step 2
+(original T8 refs), never from a T3 row recorded as correct.
