@@ -247,3 +247,17 @@ Follow-up (2026-10-25, Batch 1 follow-up PR): rows 97 (reused for `b+2,1+2` step
 | Asset | T3 data | Status | Reason T3 was used (no T5/6/7/8/TTT2 source available) |
 |---|---|---|---|
 | `game/assets/movesets/burger.json` `string_step_plans` (15 new keys: 9 planned canonical triples/quads strings + 6 twins/variants; cumulative 219 with Batches 1–3) | Bryan T3 bank rows for verified steps only (rows 100, 153, 183) | fallback, to be replaced from T7 Bob extraction when clip bytes land | Burger's T7 base is Bob; no T7 Bob clip rows are decoded/wired in the repo (T7 animation 0 of 51, T6 encrypted, TTT2 not extracted, T5/T8 motion not acquired). Burger's T3 fallback bank is BRYAN (t3_source bryan, t3_bank moveset_bryan.json) — no bob T3 bank exists in the repo or in Job 1/2/4 data. T3 step rows stand in for verified steps only; review/unmapped steps play no bank row. Batch 4 wires zero Job 3 fills (the one exact+FULL candidate, row 119 for the rest-key f,n,d,d/f+4 family, is never wired because rest keys get no plan; soft candidates rows 41/42/43 for u/f+1+2 and rows 60/61/62/96 for u/f+2 are soft/row-only and never wired) and zero Job 4 promotions (no Batch 4 prefix carries a bryan Job 4 candidate as an own row). 0 steps are SUSPENDED-DRIFT (no Batch 4 string carries prefix 3 or b_c36_r65). 52 rest canonicals get NO plan at all: their non-attack prefix steps (dash/movement/stance sequences such as f,F+*, f,n,d,*, b,B+*, WALL.b,b,u/b) have no attack row, and planning them needs engine support for non-attack prefix steps (future work, named, not guessed). Re-match rows 100/153/183 against T7 Bob rows when extraction lands. Rows 35/220 appear in no Burger Batch 4 plan step (bryan row 35 is absent from Job 1 + hit_frames; bryan row 220 carries button 0, failing every strike button gate). |
+
+## Demonio Batch 1 fallback (LP1/RP2-only strings, 2026-10-25)
+Verified rows 220/221/222/223/180/92/93/94/181/183/35/36/37/47/48/49 and
+review candidate 129 are FALLBACK (T3 jin rows), to be re-matched to T7 Jin
+rows when extraction lands. Rejected rows are NOT fallback — rejected
+evidence, not wired or held. Jin-bank rule change (documented in
+docs/movesets/DEMONIO-BATCH1-STEP-PLANS-2026-10-25.md): jin row 220 is a
+standing RP2 row, not king's jumping chord row or bryan's button-0 row, so
+it is adjudicated by the normal gates and verifies for the 2,1 family step
+1; jin row 35 is starts-airborne and verifies only in jump context.
+5 steps SUSPENDED-DRIFT (prefix move 1 ROW-CHANGED 41->None) — never wired
+on stale data. T8-sourced prefixes with no T3 row get their correct clips
+from #988 Step 2 (original T8 refs), never from a T3 row recorded as
+correct.
