@@ -5,6 +5,10 @@
 // 2) same check with a boot module forced to fail (the owner's untappable case)
 // 3) real taps: VERSUS -> char select -> P1 + P2 -> stage -> fight HUD
 // 4) classic result-screen REMATCH (PR #1255 follow-up): a ?quick= fight runs
+//    Pairing is pantera vs phantom deliberately: both models are inside CI's
+//    sparse checkout (roster/pantera, and phantom BASE = roster/phantom/
+//    attires/attire1/model-rerig.glb). Bruno was the first pairing and failed
+//    in CI: bruno's default attire is attire2, whose GLB is outside checkout.
 //    outside modes, so its result screen takes the classic fallback. KO the foe
 //    twice via the __game hook (best of 3, 3s round lock), tap REMATCH, and check
 //    the replayed fight is the SAME pairing — the old bug replayed selectedChar
@@ -94,13 +98,13 @@ try {
 try {
   const rp = await b.newPage({ viewport: { width: 960, height: 540 } });
   rp.on('pageerror', (e) => console.log('REMATCH PAGEERROR:', String(e).slice(0, 300)));
-  await rp.goto(BASE + '/game/index.html?quick=pantera,bruno,shrine');
+  await rp.goto(BASE + '/game/index.html?quick=pantera,phantom,shrine');
   await rp.waitForFunction(() => { const g = window.__game; return g && g.roundState === 'fight' && g.p1 && g.p2; }, null, { timeout: 300000, polling: 500 });
   const pair = () => rp.evaluate(() => ({ p1: window.__game.p1.char.id, p2: window.__game.p2.char.id }));
   const resultVisible = () => rp.evaluate(() => { const e = document.getElementById('screen-result'); return e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden'); });
   const first = await pair();
   console.log('rematch: first fight', JSON.stringify(first));
-  if (first.p1 !== 'pantera' || first.p2 !== 'bruno') fails.push(`rematch: first fight resolved to ${first.p1} vs ${first.p2}, not pantera vs bruno (model fallback — no rematch verdict possible)`);
+  if (first.p1 !== 'pantera' || first.p2 !== 'phantom') fails.push(`rematch: first fight resolved to ${first.p1} vs ${first.p2}, not pantera vs phantom (model fallback — no rematch verdict possible)`);
   else {
     // KO loop: best of 3, so two KOs end the match. Zero the foe only while a
     // round is live; _endRound guards roundState === 'fight', and _startRound
@@ -122,7 +126,7 @@ try {
         return g && g.roundState === 'fight' && h && getComputedStyle(h).display !== 'none' && !h.classList.contains('hidden'); }, null, { timeout: 300000, polling: 500 });
       const second = await pair();
       console.log('rematch: replayed fight', JSON.stringify(second));
-      if (second.p1 !== 'pantera' || second.p2 !== 'bruno') fails.push(`rematch: replayed ${second.p1} vs ${second.p2}, not the pantera vs bruno just played`);
+      if (second.p1 !== 'pantera' || second.p2 !== 'phantom') fails.push(`rematch: replayed ${second.p1} vs ${second.p2}, not the pantera vs phantom just played`);
       await rp.screenshot({ path: `${SHOTS}/07-rematch-fight.png` });
       console.log('rematch: result -> REMATCH -> same pairing OK');
     }
