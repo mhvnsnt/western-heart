@@ -3929,7 +3929,7 @@ downstream witness/resolution, not canon). Deletions: none.
   game-unit-tests on the PR head). Test-only change: test/e2e/moveset-sweep.page.js +
   test/enemy-on-back.test.mjs + WORKLOG entry. No game/ change, so no Pages deploy follows.
 
-## 2026-10-30 — Pantera approach-crouching throws get a sweep setup (PR #TBD)
+## 2026-10-30 — Pantera approach-crouching throws get a sweep setup (PR #1245)
 
 - What: Pantera t7.king_229 'Approach crouching enemy... d+1+3' (Iron Lariat), t7.king_230
   '... d+2+4' (V Driver), t7.king_268 '... d/f, D/F+1+3 (or 2+4)' (Reverse Special Stretch
