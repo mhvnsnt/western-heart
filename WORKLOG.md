@@ -4037,3 +4037,37 @@ downstream witness/resolution, not canon). Deletions: none.
   king_158 'JGS, N' (stance+neutral, unclear), alisa_186 '(Clockwork Spring Middle) B'
   (phase-entry data not established), and the generic 'Time with enemy attack...' REV
   rows (input field already REV.b+1+3, absent from the r17 failing list).
+## 2026-10-30 — Pantera hit-from-front string gets a canon strip (PR #1249)
+- Pantera t7.king_110 'b+2, 4 (only during hit from front)' (Chupacabra to Olympia Slam)
+  left the r17 failing list as a parse error: canon stripped the parens to bare words
+  ('b+2,4 only during hit from front', via the final paren-to-words rule), so the sweep
+  parse-ERRed before any press ran. The honest treatment is a canon strip, not a new
+  setup case: the 4 follow-up fires only when b+2 hits the foe from the front, and the
+  sweep's default setup IS front-facing (foe standing facing the attacker), so the bare
+  input 'b+2,4' is the stated situation — unlike CROUCHFOE / TIMER* / WALLSTUN, where
+  the situation differs from the default and a setup case was needed.
+- game/js/movesets.js: a narrow trailing-only rule, placed right after the
+  '(first hit only)' strip and before the final paren-to-words rule, strips the literal
+  '(only during hit from front)' at end of string. Blast radius across the fresh-main
+  core-8 movesets is exactly this one row — pantera, cyborgx, dio, burger, chatur,
+  deathfang files hash-match main, demonio and bruno fresh, and the phrase appears
+  nowhere else in an input field (the f+3,1+2 Front Kick to DDT row carries
+  '(during hit from front)' only in its input_note metadata; its input field is
+  already clean 'f+3,1+2').
+- Proof: new test/hit-from-front.test.mjs (canon mapping, plain-string / Front Kick /
+  neighbouring-rule guards, mid-string-note guard proving the rule is trailing-only)
+  + updated guard in test/approach-crouch.test.mjs (it asserted the king_110 canon
+  stayed untouched — found by pre-scanning the other canon tests' guards before
+  pushing, the #1246 lesson) + updated comment in test/timing-attack.test.mjs (it
+  called king_110 deliberately NOT covered). The enemy-on-back test's notMatched list
+  still lists king_110 and is unaffected (no sweep-page change). Local: new + updated
+  tests pass against the exact edited files, the new test fails on unedited files (not
+  vacuous), and the real sweep-page parse() accepts 'b+2,4' (two hits: b+2, then 4)
+  while rejecting the old bare-words canon. CI game-unit-tests on the PR head is the
+  proof record.
+- Residual, stated plainly: mechanism proof (canon + parse), not a witnessed
+  full-fight pass — the next sweep attempts king_110 in the default front-facing setup,
+  and whether the engine's string machinery fires the conditional follow-up only on a
+  front hit is what that sweep reports. NOT in this chunk: king_150 'low*' (data gap),
+  king_158 'JGS, N' (stance+neutral, unclear), alisa_186 '(Clockwork Spring Middle) B'
+  (phase-entry data not established).
