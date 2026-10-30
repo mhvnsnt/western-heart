@@ -16,7 +16,9 @@ async function page(breakModule) {
   const ctx = await b.newContext({ ...devices['iPhone 13'], viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
   const p = await ctx.newPage();
   if (breakModule) await p.route('**/packages/creation-suite/src/parts.js', r => r.fulfill({ status: 404, body: '' }));
-  await p.goto(BASE + '/game/index.html');
+  // M1 core roster hides CI's checked-out light fighters; ?roster=all keeps
+  // the same cards this test has always tapped (core-set.js).
+  await p.goto(BASE + '/game/index.html?roster=all');
   await p.waitForSelector('#screen-menu [data-mm]', { state: 'visible', timeout: 30000 });
   await p.waitForTimeout(5000); // past the tap-hint and failsafe timers
   // Diagnostic: record every delegated data-action click so a dead tap can be
@@ -65,6 +67,10 @@ try {
   await step('[data-mm="versus"]', null, '02-versus-submenu');
   await step('.mm-card >> nth=0', 'screen-vssetup', '02b-vssetup');
   await step('#screen-vssetup [data-action="mode-versus"]', 'screen-select', '02-select', 180000);
+  // TTT2 team battle (worker 24, PR #668): versus now asks for a battle format
+  // INSIDE the select screen (1V1 FIGHT | TEAM BATTLE) before the grid is
+  // tappable — the submenu overlay covers the cards until a format is chosen.
+  await step('#vs-submenu [data-format="solo"]');
   await step('.char-card >> nth=0'); await step('#confirm-fighter');
   await step('.char-card >> nth=2'); await step('#confirm-fighter', 'screen-stage', '03-stage');
   await p.tap('#confirm-stage');

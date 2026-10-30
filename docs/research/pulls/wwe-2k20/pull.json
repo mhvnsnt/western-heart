@@ -1,0 +1,33 @@
+{
+ "game": "WWE 2K20",
+ "ownership_basis": "Steam snapshot / user word: 57.3h",
+ "status": "spec-only — no game files were accessible from this VM (phone-only user, Steam remote download unreachable); this pack is the teardown path + conversion/wire schema, NOT extracted commercial assets",
+ "teardown_toolchain": [
+  "2K19: Genesis (2KLive) — roster, character importer (.pac/.ch.pac incl. EMD/HSPC), Pofo editor, moveset editor (18 move categories), entrance editor, string editor, GFX importer, JSON portability",
+  "2K20/2K22: Caketools — bakedfile00.cak → Characters/charactermapping.jsfb; per-character folders across baked files; Data Editor (.pofo/.moveset) + Custom Character Tools (chunk0.def regen on 2K19-era flow)",
+  "2K26: Aurora Forge v1.7.5 — CAK Foundry (browse/extract/rebuild/bake/verify all 15 CAK archives incl. bakedfile100.cak, tested on release + v1.14), DataCtrlLink exact-build checks + backup/rollback; DDS conversion; 2K19 PAC + 2K20 CAK tools in same workspace",
+  "SmackTalks tutorials (charactermapping, Data Editor/CCT install flow)"
+ ],
+ "extractable": [
+  "CAW/creation structure: body/head/face/hair/attire parts, attributes, pofo (profile/flags), moveset (18 categories), entrances (music/motion/titantron/pyro/lighting)",
+  "Moveset catalogue: 2K26 adds 195+ new create-a-moveset entries (strikes, grapples, aerial/dives, ground/subs, combos, finishers) — catalogue names are a WIRE LIST, renamed to canon before any user-facing use",
+  "Arena parts: ring, apron, mat logos, titantron, crowd balance flags"
+ ],
+ "wh_wire": {
+  "combat": "Grapple chains + ground/sub systems feed WH grapplers (Pantera archetype) and KESSHOU grapple-chain finishers; strikes map to LP1/RP2/LK3/RK4",
+  "creation": "THIS IS THE CREATION-SUITE FIX INPUT: replace the Mixamo-soldier default with 2K-style CAW templates — see creation-suite template pack in this PR (no famous names, no real wrestler likenesses)",
+  "stages": "Ring/arena templates for wrestling arenas in WH",
+  "audio": "Entrance music/motion structure → entrance presentation in WH",
+  "systems": "Pofo attribute model (offense/defense by body region, style, speed, submission skill) → WH fighter-attribute schema reference"
+ },
+ "blocker": "No local game install is reachable from this VM and no game files were supplied with this task. Steam remote download previously reported 'Unable to reach your PC'; user rule is phone-only, no PC paths.",
+ "unblock": "On a machine with the owned game installed: run the toolchain below against the installed files, export to the WH schema in this pack, and drop converted (non-commercial-name) data under game/assets/pulls/<slug>/ as a follow-up PR. Raw commercial files go ONLY in the PRIVATE game-reverse-engineering repo, never in public western-heart. 2K26 note: Aurora Forge ships NO proprietary WWE files, Oodle DLLs, or extracted assets — run it against the owned install.",
+ "canon_rule": "Anything brought in with another game's name is renamed to Eastern Mind / Western Heart canon in user-facing writing. Tekken/proprietary names stay in technical files only. Game ships with NO famous names. All characters adults. User's own models (Tripo + SmutBase) display FIRST; Tekken models are back-slot attires. Sole exception: Pantera Attire 1 (user-customized King reskin).",
+ "combat_inputs": "LP1=Left Punch=Tekken 1, RP2=Right Punch=Tekken 2, LK3=Left Kick=Tekken 3, RK4=Right Kick=Tekken 4. Frame data / MOD damage: UNMAPPED unless a source file in this pack contains it — never estimated as measured.",
+ "community_sources": [
+  "https://github.com/2KLive/Genesis",
+  "https://www.patreon.com/dgranletmwo/posts/aurora-forge-v1-168374283",
+  "https://smacktalks.org/forums/topic/77748-tutorial-character-data-1-the-charactermapping-file-in-wwe-2k22/",
+  "https://www.operationsports.com/wwe-2k26-adds-over-195-new-moves-to-its-create-a-moveset-catalogue/"
+ ]
+}
