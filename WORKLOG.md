@@ -4230,7 +4230,7 @@ downstream witness/resolution, not canon). Deletions: none.
 - Deliberately untouched: no clipmap run, no bake, no wiring, no 0x64 fix in this chunk — inventory only. No game/ change, so no Pages deploy follows.
 - Deletions: none.
 
-## 2026-10-30 — Tekken 7 animation programme: King 0x8000 join tested against GRE common.arc (PR #TBD)
+## 2026-10-30 — Tekken 7 animation programme: King 0x8000 join tested against GRE common.arc (PR #1260)
 - What: `tools/anim/t7_clipmap.py` gains an optional 4th argument `common.arc` (`_decode_row` shared by the rotsm and common banks; 0x8000 rows decode from the common bank the same way rotsm rows decode from `<code>rotsm.arc`; exit non-zero on any rotsm/common decode failure; output gains `common_arc` + `clips_in_common_bank`; running without the 4th argument reproduces the old behaviour). New `docs/proof/t7-clipmap-king-common-20261030.md` records the run in the King coverage format.
 - Why: PR #1228 left 71 King attacks on the 0x8000 bank as a gap and the clipmap docstring called the common bank "not in the extracted data". The #1259 inventory corrected that: `common.arc` (5,049,396 bytes) IS held in the GRE tree at `teardown/tekken7-steam/tkdata/mothead/mask/common.arc`. This chunk tests the join instead of repeating the gap.
 - Result: King 467/552 -> 538/552 (97.5%). Rotsm baseline reproduced exactly (467 attacks, 0 errors); common bank: all 71 attacks in range of common.arc's 1,711 clips (indices 2-1647, 64 distinct, all type 0x64), full-frame decoded 71/71 with 0 errors (5,528 frames, 3-232 per clip); extended clipmap exit 0, decode_errors 0 over all 2,787 kinmot moves. The 14 inline attacks are the whole remaining King gap, named in the proof doc — not a partial count.
