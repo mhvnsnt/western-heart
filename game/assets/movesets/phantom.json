@@ -30601,7 +30601,7 @@
       "anim_t3": {
         "bank": "yoshimitsu",
         "row": 126,
-        "match": "same-notation"
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
       },
       "t7": {
         "damage": 13,
@@ -30615,7 +30615,13 @@
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "provenance_fix": {
+        "date": "2026-10-30",
+        "method": "branch-graph C",
+        "from_match": "same-notation",
+        "from_row": 126
+      }
     },
     "2,2~t8.yoshimitsu": {
       "name": "Mushibami",
@@ -30647,8 +30653,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 173,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 308,
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
       },
       "t7": {
         "damage": 13,
@@ -30663,7 +30669,13 @@
         "on_ch": "+5",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "provenance_fix": {
+        "date": "2026-10-30",
+        "method": "branch-graph S",
+        "from_match": "nearest limb/class/startup (approximate)",
+        "from_row": 173
+      }
     },
     "2+4~t8.yoshimitsu": {
       "name": "Sword Face Smash",
@@ -30781,7 +30793,7 @@
       "anim_t3": {
         "bank": "yoshimitsu",
         "row": 141,
-        "match": "same-notation"
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
       },
       "t7": {
         "damage": 22,
@@ -30795,7 +30807,13 @@
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "provenance_fix": {
+        "date": "2026-10-30",
+        "method": "branch-graph C",
+        "from_match": "same-notation",
+        "from_row": 141
+      }
     },
     "b+1~t8.yoshimitsu": {
       "name": "PHANTOM b+1",
@@ -31043,7 +31061,7 @@
       "anim_t3": {
         "bank": "yoshimitsu",
         "row": 126,
-        "match": "same-notation"
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
       },
       "t7": {
         "damage": 13,
@@ -31056,6 +31074,12 @@
         "id": "yoshimitsu_4",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "provenance_fix": {
+        "date": "2026-10-30",
+        "method": "branch-graph C",
+        "from_match": "same-notation",
+        "from_row": 126
       }
     },
     "2,1~t7.yoshimitsu": {
@@ -31264,8 +31288,8 @@
       },
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 116,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 308,
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
       },
       "t7": {
         "damage": 13,
@@ -31279,6 +31303,12 @@
         "mod_damage": "13,10",
         "on_ch": "+5",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "provenance_fix": {
+        "date": "2026-10-30",
+        "method": "branch-graph S",
+        "from_match": "nearest limb/class/startup (approximate)",
+        "from_row": 116
       }
     },
     "2,2~t7.yoshimitsu.2": {
@@ -31316,8 +31346,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 125,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 308,
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
       },
       "t7": {
         "damage": 13,
@@ -31331,6 +31361,12 @@
         "mod_damage": "13,10",
         "on_ch": "+5",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "provenance_fix": {
+        "date": "2026-10-30",
+        "method": "branch-graph S",
+        "from_match": "nearest limb/class/startup (approximate)",
+        "from_row": 125
       }
     },
     "2,3~t7.yoshimitsu": {
@@ -31713,7 +31749,7 @@
       "anim_t3": {
         "bank": "yoshimitsu",
         "row": 141,
-        "match": "same-notation"
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
       },
       "t7": {
         "damage": 22,
@@ -31726,6 +31762,12 @@
         "id": "yoshimitsu_16",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "provenance_fix": {
+        "date": "2026-10-30",
+        "method": "branch-graph C",
+        "from_match": "same-notation",
+        "from_row": 141
       }
     },
     "4,4~t7.yoshimitsu": {
@@ -32301,7 +32343,7 @@
       "anim_t3": {
         "bank": "yoshimitsu",
         "row": 291,
-        "match": "same-notation"
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
       },
       "t7": {
         "damage": 27,
@@ -32315,6 +32357,12 @@
         "id": "yoshimitsu_27",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "provenance_fix": {
+        "date": "2026-10-30",
+        "method": "branch-graph C",
+        "from_match": "same-notation",
+        "from_row": 291
       }
     },
     "u/f+3+4,3+4": {
@@ -33386,8 +33434,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 130,
-        "match": "same-notation"
+        "row": 275,
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
       },
       "t7": {
         "damage": 33,
@@ -33400,6 +33448,12 @@
         "id": "yoshimitsu_46",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "provenance_fix": {
+        "date": "2026-10-30",
+        "method": "branch-graph A",
+        "from_match": "same-notation",
+        "from_row": 130
       }
     },
     "f+1+2~t7.yoshimitsu": {
@@ -33439,7 +33493,7 @@
       "anim_t3": {
         "bank": "yoshimitsu",
         "row": 124,
-        "match": "same-notation"
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
       },
       "t7": {
         "damage": 29,
@@ -33452,6 +33506,12 @@
         "id": "yoshimitsu_47",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "provenance_fix": {
+        "date": "2026-10-30",
+        "method": "branch-graph C",
+        "from_match": "same-notation",
+        "from_row": 124
       }
     },
     "f,F+2~t7.yoshimitsu": {
@@ -34106,7 +34166,7 @@
       "anim_t3": {
         "bank": "yoshimitsu",
         "row": 223,
-        "match": "same-notation"
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
       },
       "t7": {
         "damage": 14,
@@ -34119,6 +34179,12 @@
         "id": "yoshimitsu_60",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "provenance_fix": {
+        "date": "2026-10-30",
+        "method": "branch-graph C",
+        "from_match": "same-notation",
+        "from_row": 223
       }
     },
     "d/f+1,2~t7.yoshimitsu": {
@@ -34380,7 +34446,7 @@
       "anim_t3": {
         "bank": "yoshimitsu",
         "row": 134,
-        "match": "same-notation"
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
       },
       "t7": {
         "damage": 17,
@@ -34393,6 +34459,12 @@
         "id": "yoshimitsu_65",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "provenance_fix": {
+        "date": "2026-10-30",
+        "method": "branch-graph C",
+        "from_match": "same-notation",
+        "from_row": 134
       }
     },
     "d/f+3~t7.yoshimitsu": {
@@ -34594,7 +34666,7 @@
       "anim_t3": {
         "bank": "yoshimitsu",
         "row": 133,
-        "match": "same-notation"
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
       },
       "t7": {
         "damage": 16,
@@ -34607,6 +34679,12 @@
         "id": "yoshimitsu_69",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "provenance_fix": {
+        "date": "2026-10-30",
+        "method": "branch-graph C",
+        "from_match": "same-notation",
+        "from_row": 133
       }
     },
     "d/f+1+2,2": {
@@ -34852,7 +34930,7 @@
       "anim_t3": {
         "bank": "yoshimitsu",
         "row": 147,
-        "match": "same-notation"
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
       },
       "t7": {
         "damage": 16,
@@ -34865,6 +34943,12 @@
         "id": "yoshimitsu_74",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "provenance_fix": {
+        "date": "2026-10-30",
+        "method": "branch-graph C",
+        "from_match": "same-notation",
+        "from_row": 147
       }
     },
     "d+2,1~t7.yoshimitsu": {
@@ -35461,7 +35545,7 @@
       "anim_t3": {
         "bank": "yoshimitsu",
         "row": 156,
-        "match": "same-notation"
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
       },
       "t7": {
         "damage": 21,
@@ -35474,6 +35558,12 @@
         "id": "yoshimitsu_85",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "provenance_fix": {
+        "date": "2026-10-30",
+        "method": "branch-graph C",
+        "from_match": "same-notation",
+        "from_row": 156
       }
     },
     "d/b+1,1": {
@@ -36372,7 +36462,7 @@
       "anim_t3": {
         "bank": "yoshimitsu",
         "row": 149,
-        "match": "same-notation"
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
       },
       "t7": {
         "damage": 18,
@@ -36385,6 +36475,12 @@
         "id": "yoshimitsu_101",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "provenance_fix": {
+        "date": "2026-10-30",
+        "method": "branch-graph C",
+        "from_match": "same-notation",
+        "from_row": 149
       }
     },
     "b+2~t7.yoshimitsu": {
@@ -36423,7 +36519,7 @@
       "anim_t3": {
         "bank": "yoshimitsu",
         "row": 116,
-        "match": "same-notation"
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
       },
       "t7": {
         "damage": 16,
@@ -36436,6 +36532,12 @@
         "id": "yoshimitsu_102",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "provenance_fix": {
+        "date": "2026-10-30",
+        "method": "branch-graph C",
+        "from_match": "same-notation",
+        "from_row": 116
       }
     },
     "b+2,1~t7.yoshimitsu": {
@@ -37150,7 +37252,7 @@
       "anim_t3": {
         "bank": "yoshimitsu",
         "row": 141,
-        "match": "same-notation"
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
       },
       "t7": {
         "damage": 22,
@@ -37163,6 +37265,12 @@
         "id": "yoshimitsu_16",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "provenance_fix": {
+        "date": "2026-10-30",
+        "method": "branch-graph C",
+        "from_match": "same-notation",
+        "from_row": 141
       }
     },
     "1+2~t7.yoshimitsu": {
@@ -37202,8 +37310,14 @@
       "input_note": "WR",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 115,
-        "match": "same-notation"
+        "row": 265,
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
+      },
+      "provenance_fix": {
+        "date": "2026-10-30",
+        "method": "branch-graph A",
+        "from_match": "same-notation",
+        "from_row": 115
       }
     },
     "WS.1": {
@@ -41568,8 +41682,14 @@
       "input_note": "(or FC 1+2)",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 115,
-        "match": "same-notation"
+        "row": 265,
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
+      },
+      "provenance_fix": {
+        "date": "2026-10-30",
+        "method": "branch-graph A",
+        "from_match": "same-notation",
+        "from_row": 115
       }
     },
     "t7.yoshimitsu_221": {
@@ -45514,7 +45634,7 @@
       "anim_t3": {
         "bank": "yoshimitsu",
         "row": 213,
-        "match": "same-notation"
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
       },
       "t7": {
         "damage": 12,
@@ -45528,6 +45648,12 @@
         "wired": true,
         "mod_damage": "12,10",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "provenance_fix": {
+        "date": "2026-10-30",
+        "method": "branch-graph C",
+        "from_match": "same-notation",
+        "from_row": 213
       }
     },
     "b+1,1,1~t7.yoshimitsu": {
@@ -45574,7 +45700,7 @@
       "anim_t3": {
         "bank": "yoshimitsu",
         "row": 214,
-        "match": "same-notation"
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
       },
       "t7": {
         "damage": 12,
@@ -45588,6 +45714,12 @@
         "mod_damage": "12,10,10",
         "hit_level": "high, high, high",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "provenance_fix": {
+        "date": "2026-10-30",
+        "method": "branch-graph C",
+        "from_match": "same-notation",
+        "from_row": 214
       }
     },
     "b+1,1,1,1~t7.yoshimitsu": {
@@ -45635,7 +45767,7 @@
       "anim_t3": {
         "bank": "yoshimitsu",
         "row": 215,
-        "match": "same-notation"
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
       },
       "t7": {
         "damage": 12,
@@ -45649,6 +45781,12 @@
         "mod_damage": "12,10,10,6",
         "hit_level": "high, high, high, high",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "provenance_fix": {
+        "date": "2026-10-30",
+        "method": "branch-graph C",
+        "from_match": "same-notation",
+        "from_row": 215
       }
     },
     "b+1,1,1,1,1~t7.yoshimitsu": {
@@ -45697,7 +45835,7 @@
       "anim_t3": {
         "bank": "yoshimitsu",
         "row": 216,
-        "match": "same-notation"
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
       },
       "t7": {
         "damage": 12,
@@ -45711,6 +45849,12 @@
         "mod_damage": "12,10,10,6,6",
         "hit_level": "high, high, high, high, high",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "provenance_fix": {
+        "date": "2026-10-30",
+        "method": "branch-graph C",
+        "from_match": "same-notation",
+        "from_row": 216
       }
     },
     "b+1,1,1,1,1,1~t7.yoshimitsu": {
@@ -45760,7 +45904,7 @@
       "anim_t3": {
         "bank": "yoshimitsu",
         "row": 217,
-        "match": "same-notation"
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
       },
       "t7": {
         "damage": 12,
@@ -45774,6 +45918,12 @@
         "mod_damage": "12,10,10,6,6,6",
         "on_ch": "-69",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "provenance_fix": {
+        "date": "2026-10-30",
+        "method": "branch-graph C",
+        "from_match": "same-notation",
+        "from_row": 217
       }
     },
     "SLAP_U_SILLY.d/b+3": {
@@ -46334,7 +46484,7 @@
       "anim_t3": {
         "bank": "yoshimitsu",
         "row": 261,
-        "match": "same-notation"
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
       },
       "t7": {
         "damage": 54,
@@ -46348,6 +46498,12 @@
         "wired": true,
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "provenance_fix": {
+        "date": "2026-10-30",
+        "method": "branch-graph C",
+        "from_match": "same-notation",
+        "from_row": 261
       }
     },
     "u/f+1+2,d": {
@@ -47231,7 +47387,7 @@
       "anim_t3": {
         "bank": "yoshimitsu",
         "row": 285,
-        "match": "same-notation"
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
       },
       "t7": {
         "on_block": "CS",
@@ -47245,6 +47401,12 @@
         "on_hit": "CS",
         "on_ch": "CS",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "provenance_fix": {
+        "date": "2026-10-30",
+        "method": "branch-graph C",
+        "from_match": "same-notation",
+        "from_row": 285
       }
     },
     "d+1+4,B+1~t7.yoshimitsu": {
@@ -204684,5 +204846,18 @@
       "b+1+4 (row 243 chord input)"
     ],
     "runtime_effect_of_unmapped_marking": "Marked entries carry no exact anim_ref/t3_row claim, so the runtime falls to donor/match/generic for those presses and the editor shows them as unmapped (not offered as swap targets) until a verified exact row lands. The former row is kept in t3_unmapped_former_row for audit trail only."
-  }
+  },
+  "provenance_fixes": [
+    {
+      "date": "2026-10-30",
+      "lane": "moveset-provenance phase 1",
+      "corrected": 27,
+      "by_proof": {
+        "A": 3,
+        "C": 21,
+        "S": 3
+      },
+      "remaining_guess_grade": 268
+    }
+  ]
 }
