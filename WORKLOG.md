@@ -1019,7 +1019,7 @@ Validation:
 
 Owner directive (verbatim): "As soon as a Tripo model comes in you need to get it rigged automatically ASAP to the character rig that it goes to."
 
-Built the intake the owner asked for (PR #1255):
+Built the intake the owner asked for (PR #TBD):
 
 - tools/tripo-intake/intake.py — orchestrator. `inbox/<fighter>/attire<N>.glb`
   (+ optional `attire<N>.json` sidecar) → env check → claim (fighter id must be
