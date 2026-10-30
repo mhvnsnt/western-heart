@@ -109,14 +109,22 @@ try {
     // KO loop: best of 3, so two KOs end the match. Zero the foe only while a
     // round is live; _endRound guards roundState === 'fight', and _startRound
     // restores hp, so a zero landing during intro/over would be lost, not harmful.
+    // Waits are 300s, not 120s: the sim step is capped at 0.05s per RAF frame,
+    // so on software GL the 3.0s round lock takes dozens of slow frames in
+    // wall time (the first version's 120s 'fight' wait timed out between
+    // rounds for exactly this reason). After each KO the loop waits for the
+    // NEXT round OR the result screen — never for 'fight' unconditionally,
+    // because the match-ending KO never starts another round.
     for (let round = 0; round < 3; round++) {
       if (await resultVisible()) break;
-      await rp.waitForFunction(() => window.__game && window.__game.roundState === 'fight', null, { timeout: 120000, polling: 500 });
+      await rp.waitForFunction(() => window.__game && window.__game.roundState === 'fight', null, { timeout: 300000, polling: 500 });
       await rp.evaluate(() => { window.__game.p2.hp = 0; });
       try {
         await rp.waitForFunction(() => { const g = window.__game; const e = document.getElementById('screen-result');
-          return g.roundState === 'over' || (e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden')); }, null, { timeout: 120000, polling: 500 });
-      } catch { fails.push(`rematch: round ${round + 1} did not end after KO`); break; }
+          return g.roundState === 'over' || (e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden')); }, null, { timeout: 300000, polling: 500 });
+        await rp.waitForFunction(() => { const g = window.__game; const e = document.getElementById('screen-result');
+          return g.roundState === 'fight' || (e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden')); }, null, { timeout: 300000, polling: 500 });
+      } catch { fails.push(`rematch: round ${round + 1} did not settle after KO`); break; }
     }
     if (!(await resultVisible())) fails.push('rematch: result screen never appeared after 2 KOs');
     else {
