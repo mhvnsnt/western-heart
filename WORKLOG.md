@@ -3808,7 +3808,7 @@ No bucket exists yet — nothing uploaded to R2, no account created.
   ('DEATHFANG_KIN_1211_SHIKI_YA_OTOME'), not 'YA_OTOME', so pressing Ya Otome itself does
   not set the YA_OTOME stance in real play — the sweep sets the stance directly. The
   real-play entry mapping is a follow-up, not hidden. Deletions: none.
-## 2026-10-30 — Cyborg X trailing spin-count annotations -> bare input (PR #TBD)
+## 2026-10-30 — Cyborg X trailing spin-count annotations -> bare input (PR #1241)
 
 **Why:** Three Cyborg X rows in docs/proof/moveset-sweep-20261028/r17-core8-failing.json
 were 'unparsed' in the sweep because their inputs end in a spin-count note in
