@@ -9,6 +9,7 @@ import './menu-t7-layout.js';
 import { Game } from './game.js';
 import { InputManager } from './input.js';
 import { audio } from './audio.js';
+import { voice } from './voice.js';
 import { music } from './music.js';
 import { assets } from './assets.js';
 import { ROSTER, getCharacter } from './characters.js';
@@ -282,6 +283,8 @@ const ui = {
       ? 'The multiverse remembers this one.'
       : 'The shrine is silent. Run it back.';
     try { music.playVictory(); } catch (e) {}
+    // ANNOUNCER (2026-10-30): classic-path win call only, alongside playVictory. Mode results consume via onMatchEnd and never reach this screen, so a loss announces nothing — no loss clip exists in the announcer manifest.
+    if (playerWon) { try { voice.announce('you-win'); } catch (e) {} }
     show('result');
   },
 };

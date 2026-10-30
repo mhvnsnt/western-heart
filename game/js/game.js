@@ -382,6 +382,8 @@ export class Game {
     this.p1.stun = this.p2.stun = 0;
     this.p1.vx = this.p2.vx = 0;
     this.input.enable(false);
+    // ANNOUNCER (2026-10-30): a guarded-out _endRound must never leak a timeout flag into a later round.
+    this._roundEndedByTimeout = false;
 
     this.roundState = 'intro';
     // MUSIC (2026-10-24): round-start intensity reset (Tekken rule) +
@@ -395,6 +397,8 @@ export class Game {
     if (this._musicFinal) music.playFinalRound();
     this._roundLockT = 1.6;
     this.ui.banner(`ROUND ${this.round}`);
+    // ANNOUNCER (2026-10-30): Tekken-style round call — the deciding round uses final-round, else round-N. Clips are subtitle-only placeholders (game/data/voices/announcer.json); voice.announce() no-ops when a trigger has no clip.
+    voice.announce(this._musicFinal ? 'final-round' : `round-${this.round}`);
     this.ui.updateHP(this.p1, this.p2);
     this.ui.updateMeter(this.p1, this.p2);
     // TTT2: tag-match round reset (re-park benched partners, clear rage).
@@ -404,6 +408,8 @@ export class Game {
       this.ui.banner('FIGHT!');
       music.setIntensity(this._musicFinal ? 0.85 : 0.7);
       audio.bell();
+      // ANNOUNCER (2026-10-30): FIGHT! call on the round open, alongside the bell.
+      voice.announce('fight');
       this.roundState = 'fight';
       this.input.enable(true);
     }, 1100);
@@ -886,20 +892,25 @@ export class Game {
     else if (this.p1.hp > this.p2.hp) this.p2.hp = 0;
     else if (this.p2.hp > this.p1.hp) this.p1.hp = 0;
     else { this.p1.hp = this.p2.hp = 0; }
+    // ANNOUNCER (2026-10-30): mark the timeout so _endRound announces 'time-up' instead of 'ko'.
+    this._roundEndedByTimeout = true;
     this._endRound();
   }
 
   _endRound() {
     if (this.roundState !== 'fight') return;
+    // ANNOUNCER (2026-10-30): consume the timeout flag here; _startRound also clears it.
+    const _timedOut = !!this._roundEndedByTimeout;
+    this._roundEndedByTimeout = false;
     this.roundState = 'over';
     music.setIntensity(0.3); // MUSIC: KO / time-up intensity drop (Tekken rule)
     this._roundLockT = 3.0;
     this.input.enable(false);
 
     const p1Down = this.p1.hp <= 0, p2Down = this.p2.hp <= 0;
-    if (p1Down && !p2Down) { this.wins.p2++; this.p1._knockout(-1); this.p2.victory(); this.ui.banner('K.O.'); }
-    else if (p2Down && !p1Down) { this.wins.p1++; this.p2._knockout(1); this.p1.victory(); this.ui.banner('K.O.'); }
-    else { this.wins.p1++; this.wins.p2++; this.ui.banner('DOUBLE K.O.'); }
+    if (p1Down && !p2Down) { this.wins.p2++; this.p1._knockout(-1); this.p2.victory(); this.ui.banner('K.O.'); voice.announce(_timedOut ? 'time-up' : 'ko'); }
+    else if (p2Down && !p1Down) { this.wins.p1++; this.p2._knockout(1); this.p1.victory(); this.ui.banner('K.O.'); voice.announce(_timedOut ? 'time-up' : 'ko'); }
+    else { this.wins.p1++; this.wins.p2++; this.ui.banner('DOUBLE K.O.'); voice.announce('double-ko'); }
 
     this.ui.setRounds(this.wins, this.roundsToWin);
     this.ui.updateHP(this.p1, this.p2);

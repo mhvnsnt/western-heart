@@ -13,6 +13,9 @@
 //    twice via the __game hook (best of 3, 3s round lock), tap REMATCH, and check
 //    the replayed fight is the SAME pairing — the old bug replayed selectedChar
 //    vs a random enemy.
+//    Announcer subtitle checks ride on the same fight: 'Fight!' after the
+//    round opens, 'K.O.' after a KO (subtitle text persists in the DOM after
+//    the 2200ms hold, so both waits are timing-safe).
 // Taps allow 90s: headless CI renders the live-3D select panes on software GL (~600ms frames).
 import { chromium, devices } from 'playwright';
 import fs from 'node:fs';
@@ -100,6 +103,10 @@ try {
   rp.on('pageerror', (e) => console.log('REMATCH PAGEERROR:', String(e).slice(0, 300)));
   await rp.goto(BASE + '/game/index.html?quick=pantera,phantom,shrine');
   await rp.waitForFunction(() => { const g = window.__game; return g && g.roundState === 'fight' && g.p1 && g.p2; }, null, { timeout: 300000, polling: 500 });
+  // ANNOUNCER: the FIGHT call fires on the intro -> fight transition; its
+  // subtitle arrives after the manifest fetch, so wait for the text, not a tick.
+  try { await rp.waitForFunction(() => { const l = document.querySelector('#wh-voice-sub .wh-voice-line'); return l && l.textContent === 'Fight!'; }, null, { timeout: 30000, polling: 500 }); console.log('announcer: Fight! subtitle OK'); }
+  catch { fails.push('announcer: Fight! subtitle never appeared after round start'); }
   const pair = () => rp.evaluate(() => ({ p1: window.__game.p1.char.id, p2: window.__game.p2.char.id }));
   const resultVisible = () => rp.evaluate(() => { const e = document.getElementById('screen-result'); return e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden'); });
   const first = await pair();
@@ -122,6 +129,13 @@ try {
       try {
         await rp.waitForFunction(() => { const g = window.__game; const e = document.getElementById('screen-result');
           return g.roundState === 'over' || (e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden')); }, null, { timeout: 300000, polling: 500 });
+        // ANNOUNCER: the KO call fires in _endRound, so check it only while the
+        // round is 'over' — once the result screen shows, matchOver's you-win
+        // call (playerWon) overwrites it.
+        if (await rp.evaluate(() => window.__game && window.__game.roundState === 'over')) {
+          try { await rp.waitForFunction(() => { const l = document.querySelector('#wh-voice-sub .wh-voice-line'); return l && l.textContent === 'K.O.'; }, null, { timeout: 30000, polling: 500 }); console.log(`announcer: K.O. subtitle OK (round ${round + 1})`); }
+          catch { fails.push(`announcer: K.O. subtitle never appeared after round ${round + 1} KO`); }
+        }
         await rp.waitForFunction(() => { const g = window.__game; const e = document.getElementById('screen-result');
           return g.roundState === 'fight' || (e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden')); }, null, { timeout: 300000, polling: 500 });
       } catch { fails.push(`rematch: round ${round + 1} did not settle after KO`); break; }
