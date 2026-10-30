@@ -473,6 +473,7 @@ export class Fighter {
     // stick = facing-relative direction (guard + posture), juggle = hits taken airborne.
     this.stance = null; this.stanceT = 0; this._risingT = 0; this._stickDir = 'n';
     this._juggle = 0; this._rageUsed = false; this._queuedNext = null; this._queuedAfter = null;
+    this._stepChain = null; // whole-string step chain (Batch 1 step plans): {key, steps, idx}
     this._stringGraceUntil = 0; // wall-clock end of the post-move string window (see _tryAttackFresh)
     this._rageOn = false;
     this._urgeOn = false; this._urgeUsed = false; this._urgeT = 0; this._urgePips = 0;
@@ -975,11 +976,68 @@ export class Fighter {
     }
     return null;
   }
+  /* Batch 1 step plan (2026-10-24, docs/movesets/BATCH1-STEP-PLANS-2026-10-24.md):
+     a string move carrying a moveset string_step_plans entry plays per-STEP rows,
+     never one row for the whole string. Only a step with status 'verified' plays
+     its row; a review/unmapped step plays NO bank row (null plan -> the existing
+     procedural fallback in _animate) and is flagged in plan.unmapped — never a
+     donor, match, or generic row. This branch runs BEFORE the own/notation/anim/
+     donor/match/generic tiers, so a planned string can never silently donor-fall-back.
+     Whole-string firing drives steps through _stepChain (see _tryAttackFresh):
+     while a chain is active, the current prefix move resolves to its plan step row.
+     The per-press (_pressV2) path uses the LAST step: the clip fired on the final
+     press must be the final step's clip, which is what the string move's own row
+     already meant for T3-generated moves. No blend is added here: pose continuity
+     between steps is UNPROVEN, and a blend ships only if play shows a snap. */
+  _resolveStepPlan(move, attackName, ms) {
+    if (!ms || !ms.string_step_plans || !ms.string_step_plans.plans) return null;
+    const plans = ms.string_step_plans.plans;
+    // Chain-active step: the prefix currently playing in a whole-string chain.
+    const ch = this._stepChain;
+    if (ch && ch.steps && ch.idx < ch.steps.length && move && move.moveKey === ch.steps[ch.idx].prefix) {
+      const st = ch.steps[ch.idx];
+      return { steps: ch.steps, unmapped: ch.steps.filter(s => s.status !== 'verified').map(s => s.prefix),
+        playName: (st.status === 'verified' && st.row != null) ? 'row:' + st.row : null,
+        why: `step-plan chain step ${ch.idx + 1}/${ch.steps.length} (${st.prefix})` };
+    }
+    const key = (move && move.moveKey) || attackName;
+    const plan = key && plans[key];
+    if (!plan || !Array.isArray(plan.steps) || plan.steps.length < 2) return null;
+    const last = plan.steps[plan.steps.length - 1];
+    return { steps: plan.steps, unmapped: plan.steps.filter(s => s.status !== 'verified').map(s => s.prefix),
+      playName: (last.status === 'verified' && last.row != null) ? 'row:' + last.row : null,
+      why: `step-plan last step (${last.prefix})` };
+  }
   _attackClipPlan(move, attackName) {
     if (!this._t3 || !this._t3.clips) return null;
     const { bank, clips } = this._t3;
     const ms = getFighterMoveset(this._movesetId);
     const raw = move && move.moveKey && ms && ms.moves ? ms.moves[move.moveKey] : null;
+    const sp = this._resolveStepPlan(move, attackName, ms);
+    if (sp) {
+      const limb0 = Fighter.attackLimb(move, attackName);
+      const level0 = Fighter.attackLevel(move, raw);
+      const grab0 = !!(move && move.isGrab) || /^(grab|1\+3|2\+4)$/.test(String(attackName || '')) || level0 === 't';
+      if (!sp.playName || !clips[sp.playName]) {
+        if (sp.unmapped.length) console.log(`[WH-STEP-PLAN] ${this._movesetId} ${move && move.moveKey}: UNMAPPED steps [${sp.unmapped.join(', ')}] — no bank row played, never donor fallback`);
+        return { kind: 'step-plan', name: null, steps: sp.steps, unmapped: sp.unmapped, limb: limb0, level: level0, grab: grab0, timing: null, rejected: [] };
+      }
+      // Timing for the step row, same rule as the single-row tail below:
+      // the row's hit window placed on the move's active frames.
+      const S0 = move && Number.isFinite(move.startup) ? move.startup : 0;
+      const A0 = move && Number.isFinite(move.active) ? move.active : 0;
+      const R0 = move && Number.isFinite(move.recovery) ? move.recovery : 0;
+      const src0 = clips[sp.playName];
+      let timing0 = null;
+      if (src0 && S0 + A0 + R0 > 0.05) {
+        const w0 = clipHitWindow(bank, src0, limb0);
+        const D0 = src0.duration;
+        const t0 = w0 ? Math.min(w0.t0, D0) : D0 * S0 / (S0 + A0 + R0);
+        const t1 = w0 ? Math.min(Math.max(w0.t1, t0), D0) : D0 * (S0 + A0) / (S0 + A0 + R0);
+        timing0 = { S: S0, A: A0, R: R0, t0, t1, D: D0, src: w0 ? w0.src : 'proportional' };
+      }
+      return { kind: 'step-plan', name: sp.playName, why: sp.why, steps: sp.steps, unmapped: sp.unmapped, limb: limb0, level: level0, grab: grab0, timing: timing0, rejected: [] };
+    }
     const limb = Fighter.attackLimb(move, attackName);
     const level = Fighter.attackLevel(move, raw);
     // Throw as the game treats it (_tryAttackFresh lunge / getHitbox grab sphere / canBeHitBy).
@@ -1081,7 +1139,8 @@ export class Fighter {
     }
     if (name && !this.t3actions[name]) name = null;
     this._atkPlan = { id: this._attackId, move, name, kind: plan && plan.kind, why: plan && plan.why,
-      limb: plan && plan.limb, timing: plan && plan.timing, rejected: plan && plan.rejected };
+      limb: plan && plan.limb, timing: plan && plan.timing, rejected: plan && plan.rejected,
+      steps: plan && plan.steps, unmapped: plan && plan.unmapped };
     return name;
   }
 
@@ -1262,6 +1321,7 @@ export class Fighter {
       sidestep: this.state === 'sidestep',
       crouching: this.state === 'crouch' || st === 'FC',
       rising: this._risingT > 0,
+      airborne: !this.onGround, // Tekken jump attacks resolve from AIR. while this holds
       rage: !this._rageUsed && this.hp > 0 && this.hp <= this.maxHp * 0.25,
       urgeOn: !!this._urgeOn,
       urgeAvailable: !this._urgeUsed && !this._urgeOn && this.hp > 0,
@@ -1350,7 +1410,7 @@ export class Fighter {
   _startVAttack(move, state, name) {
     this.attack = move; this.attackName = name; this.hasHit = false; this._prevHitPoint = null;
     this._attackId = (this._attackId || 0) + 1;
-    this._queuedNext = null; this._queuedAfter = null;
+    this._queuedNext = null; this._stepChain = null; this._queuedAfter = null;
     this.vx = 0; this._enter(state); this._attackPhase = 'startup';
     return true;
   }
@@ -1961,8 +2021,23 @@ export class Fighter {
     else this._sysVx = sgn * this.facing * (row.sys === 'dash' ? 7 : 6);
     return true;
   }
+  /* Advance a whole-string step chain: fire the next prefix step. Returns true
+     when a step fired; false when the chain is finished or broken (chain cleared).
+     A user-queued hit always wins over the chain: callers clear _stepChain first
+     when _queuedNext is set, so a pressed continuation replaces the auto-chain. */
+  _advanceStepChain() {
+    const ch = this._stepChain;
+    if (!ch || ch.idx + 1 >= ch.steps.length) { this._stepChain = null; return false; }
+    const next = ch.steps[ch.idx + 1].prefix;
+    ch.idx += 1;
+    this.attack = null; this.attackName = null;
+    if (this._fireNotation(next)) return true;
+    this._stepChain = null; return false;
+  }
   _tryAttackFresh(name) {
     if (!this.canAct() && !this.sidestepCancelable) return false;
+    // A fresh press cancels any auto step chain: the player is driving now.
+    this._stepChain = null;
     // Tekken notation resolution: strings (1,2), motion specials (qcf+2),
     // directionals (f+1), state/stance prefixes (WS. FC. SS. BT. R. SNK. ...)
     // via the fighter's TekkenBuffer + its moveset's notation table.
@@ -2057,6 +2132,24 @@ export class Fighter {
     }
     if (move.cost > 0 && this.meter < move.cost) return false;
     if (move.cost > 0) this.meter = Math.max(0, this.meter - move.cost);
+    // Batch 1 step plans: a whole-string key fired at once (AI / trials / movelist
+    // demo / buffered full notation) plays as a chain of its prefix steps through
+    // the existing _fireNotation path — never one row for the whole string. The
+    // chain needs every prefix to be a real move; when any prefix is missing
+    // (e.g. jumping strings have no standalone 'u+1' move) the string fires
+    // normally and _attackClipPlan's step-plan branch picks its clip instead.
+    // The per-press path never enters here: each press already fires one prefix.
+    {
+      const ms0 = getFighterMoveset(this._movesetId);
+      const raw0 = ms0 && ms0.moves ? ms0.moves[move.moveKey] : null;
+      const plan0 = ms0 && ms0.string_step_plans && ms0.string_step_plans.plans ? ms0.string_step_plans.plans[move.moveKey] : null;
+      if (plan0 && Array.isArray(plan0.steps) && plan0.steps.length >= 2 && raw0 && raw0.move_class === 'string'
+          && plan0.steps.every(s => getRealMove(this._movesetId, s.prefix))) {
+        this._stepChain = { key: move.moveKey, steps: plan0.steps, idx: 0 };
+        if (this._fireNotation(plan0.steps[0].prefix)) return true;
+        this._stepChain = null;
+      }
+    }
     // KOF system rows off their state: guard cancels need blockstun, throw escape needs a throw.
     if (move.system === 'guard' || move.system === 'throw_escape') return false;
     if (move.system === 'max') {
@@ -2068,7 +2161,7 @@ export class Fighter {
     this._preAtk = { state: this.state, stance: this.stance, stanceT: this.stanceT, risingT: this._risingT };
     this.attack = move; this.attackName = notation; this.hasHit = false; this._prevHitPoint = null;
     this._attackId = (this._attackId || 0) + 1;
-    this._queuedNext = null; this._queuedAfter = null;
+    this._queuedNext = null; this._queuedAfter = null; this._stepChain = null;
     if (/^(R|RD)\./.test(notation)) this._rageUsed = true; // rage art/drive: once per round
     // stance spin count (T7 JGS* (N spins)): re-entering the stance the move started from adds a spin
     this._spinNext = move.stanceAfter && this.stance === move.stanceAfter ? (this._stanceSpins || 1) + 1 : 1;
@@ -2374,7 +2467,7 @@ export class Fighter {
         const T = Math.min(1.6, Math.max(0.42, left + (move.launchAdv != null ? move.launchAdv : 30) / 60));
         this.vy = 4 * JUGGLE_PEAK / T; this._juggleG = 8 * JUGGLE_PEAK / (T * T);
       }
-      this._queuedNext = null; this._queuedAfter = null; this._stringGraceUntil = 0; // getting hit kills your string
+      this._queuedNext = null; this._queuedAfter = null; this._stepChain = null; this._stringGraceUntil = 0; // getting hit kills your string
       // Hit in the back (BT) the victim falls forward past its feet: it lands head towards the attacker.
       this._kdHeadTowards = this.stance === 'BT';
       this._enter('knockdown');
@@ -2382,7 +2475,7 @@ export class Fighter {
       const t8adv = move.t8 ? (counter && move.t8.ch != null ? move.t8.ch : move.t8.hit) : null;
       this.stun = t8adv != null ? stunFromAdvantage(t8adv, move)
         : 0.2 + move.damage * 0.012 + (counter ? 0.12 : 0);
-      this._queuedNext = null; this._queuedAfter = null; this._stringGraceUntil = 0; // getting hit kills your string
+      this._queuedNext = null; this._queuedAfter = null; this._stepChain = null; this._stringGraceUntil = 0; // getting hit kills your string
       this._enter('hitstun');
     }
     // GAP-FILL LANE 1: this unguarded, non-armor, non-grab hit
@@ -2607,7 +2700,7 @@ export class Fighter {
             bank: vDir, defenderDir: vDir, attackerDir: null, forState: 'ko' } : null;
       this._reactChainDepth = 0;
     } catch (e) { this._reactionSel = null; }
-    this._queuedNext = null; this._queuedAfter = null; this._stringGraceUntil = 0; // getting hit kills your string
+    this._queuedNext = null; this._queuedAfter = null; this._stepChain = null; this._stringGraceUntil = 0; // getting hit kills your string
     this._enter('ko'); this.stun = 999;
   }
   victory() { if (!this.dead) this._enter('victory'); }
@@ -2858,6 +2951,10 @@ export class Fighter {
           // fires on completion, not just during recovery — short moves can jump
           // active->done in one tick, skipping recovery and dropping the queued
           // hit, which broke 3+ hit strings (user: longest combo was 1-2).
+          // A user-queued hit cancels any auto step chain (player driving).
+          if (this._queuedNext) this._stepChain = null;
+          // Whole-string step chain advances on completion, like a queued hit.
+          if (this._advanceStepChain()) break;
           if (this._queuedNext) {
             const next = this._queuedNext; this._queuedNext = null;
             this.attack = null; this.attackName = null;
@@ -2878,9 +2975,21 @@ export class Fighter {
         }
         // Buffered string hit fires once this hit's active frames are over.
         if (this._queuedNext && this.state === 'attack' && this._attackPhase === 'recovery') {
+          this._stepChain = null; // user-queued hit replaces the auto chain
           const next = this._queuedNext; this._queuedNext = null;
           this.state = 'idle'; // release the current hit into the next one
           if (!this._fireNotation(next)) this.state = 'attack';
+        } else if (this._stepChain && this.state === 'attack' && this._attackPhase === 'recovery') {
+          // Whole-string step chain advances during recovery, like a queued hit.
+          // (Inline, not _advanceStepChain: on a failed fire the current attack
+          // must survive, so attack/attackName are only replaced by _fireNotation.)
+          const ch = this._stepChain;
+          if (ch.idx + 1 < ch.steps.length) {
+            const next = ch.steps[ch.idx + 1].prefix;
+            ch.idx += 1;
+            this.state = 'idle';
+            if (!this._fireNotation(next)) { this.state = 'attack'; this._stepChain = null; }
+          } else this._stepChain = null;
         }
         break;
       }
