@@ -3892,7 +3892,7 @@ invented); 'DFLIP N' (unclear, not invented); 'CLK(Two spins).3' (mid-string spi
 a different row from 'CLK.3'); and the Deathfang name-key rows (their playable inputs
 live in the moveset data, e.g. 'yaotome_a' -> 'qcf,hcb+1', so their failures are
 downstream witness/resolution, not canon). Deletions: none.
-## 2026-10-30 — DES.BT two-word stance join (PR #TBD)
+## 2026-10-30 — DES.BT two-word stance join (PR #1243)
 - Cyborg X t7.alisa_235 'DES BT 1 (or 2)' canonicalised to 'DES.BT 1' because the
   stance-space rule dots only the first word, and the sweep parse rejected it.
   A narrow join after that rule (`/^DES\.BT\s+(?=[1-4])/`) gives 'DES.BT.1',
