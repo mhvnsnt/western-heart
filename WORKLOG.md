@@ -4006,7 +4006,7 @@ downstream witness/resolution, not canon). Deletions: none.
   when #1245 landed, false now that this chunk covers it. That guard now asserts the new
   TIMERP/TIMELK mappings (wall-stun guard unchanged); no other canon test mentions the
   timing prose (scanned all canon-related test files on the branch head).
-## 2026-10-30 — Pantera wall-stun throw gets a sweep setup (WALLSTUN.) (PR #TBD)
+## 2026-10-30 — Pantera wall-stun throw gets a sweep setup (WALLSTUN.) (PR #1247)
 - Pantera t7.king_247 'During enemy wall stun... f, hcf+1' (Shining Torpedo) left the
   r17 failing list as a parse error: canon left the prose untouched, so the sweep
   parse-ERRed before any setup ran. The honest treatment is a setup, not an n/a and
