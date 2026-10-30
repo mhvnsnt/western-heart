@@ -1,0 +1,685 @@
+{
+ "bruno": [],
+ "burger": [
+  {
+   "key": "1+2+3+4*",
+   "why": "fired [] (keys []) not '1+2+3+4*'"
+  },
+  {
+   "key": "(back to wall).b,b,UB",
+   "why": "unparsed: token '(back to wall).b' is not a stick/button input"
+  },
+  {
+   "key": "BAL.1,H.4",
+   "why": "fired [\"BAL.1\"] (keys [\"BAL.1\"]) not 'BAL.1,H.4'"
+  },
+  {
+   "key": "f+2,H.1+2",
+   "why": "fired [\"f+2\"] (keys [\"f+2_t8\"]) not 'f+2,H.1+2'"
+  },
+  {
+   "key": "f+2,H.1+2,1",
+   "why": "fired [\"f+2\"] (keys [\"f+2_t8\"]) not 'f+2,H.1+2,1'"
+  },
+  {
+   "key": "FC.db+1+2:3",
+   "why": "fired [\"FC.d/b+1+2\"] (keys [\"FC.db+1+2\"]) not 'FC.db+1+2:3'"
+  },
+  {
+   "key": "f,n,d,DF+4",
+   "why": "fired [\"FC.d/f+4\"] (keys [\"FC.df+4\"]) not 'f,n,d,DF+4'"
+  },
+  {
+   "key": "f,n,d,DF+4,1+2",
+   "why": "fired [\"FC.d/f+4\"] (keys [\"FC.df+4\"]) not 'f,n,d,DF+4,1+2'"
+  },
+  {
+   "key": "H.2+3",
+   "why": "fired [\"UB.2+3\"] (keys [\"UB.2+3\"]) not 'H.2+3'"
+  },
+  {
+   "key": "uf+1,2,H.2",
+   "why": "fired [\"u/f+1\",\"u/f+1,2\"] (keys [\"uf+1\",\"uf+1,2\"]) not 'uf+1,2,H.2'"
+  },
+  {
+   "key": "b,B+3+4,D/B",
+   "why": "fired [\"b+3+4\"] (keys [\"b+3+4\"]) not 'b,B+3+4,D/B'"
+  }
+ ],
+ "chatur": [
+  {
+   "key": "d/f,d/f+2+4",
+   "why": "fired [\"n,d/f,n,d/f+2+4\"] (keys [\"n,d/f,n,d/f+2+4\"]) not 'd/f,d/f+2+4'"
+  },
+  {
+   "key": "WS+2+3",
+   "why": "fired [\"UB.2+3\"] (keys [\"UB.2+3\"]) not 'WS+2+3'"
+  },
+  {
+   "key": "u/b+1,1~t3.ogre.3",
+   "why": "fired but did not connect (root motion: active at 2.15 m, started 1.50 m)"
+  },
+  {
+   "key": "u/b+1,4~t3.ogre.3",
+   "why": "fired but did not connect (root motion: active at 2.15 m, started 1.50 m)"
+  },
+  {
+   "key": "d/f+3+4,3~t3.ogre.2",
+   "why": "fired [\"d/f+3+4\",\"d/f+3+4,3\"] (keys [\"d/f+3+4\",\"d/f+3+4,3~t3.ogre.2\"]) not 'd/f+3+4,3~t3.ogre.2'"
+  },
+  {
+   "key": "1+3,1",
+   "why": "fired [\"1+3\"] (keys [\"1+3\"]) not '1+3,1'"
+  },
+  {
+   "key": "1+3,1~t3.ogre",
+   "why": "fired [\"1+3\"] (keys [\"1+3\"]) not '1+3,1~t3.ogre'"
+  }
+ ],
+ "cyborgx": [
+  {
+   "key": "1,2,d+2*",
+   "why": "fired [\"1\",\"1,2\",\"1,2,d+2\"] (keys [\"1~t8.alisa\",\"1,2\",\"1,2,d+2\"]) not '1,2,d+2*'"
+  },
+  {
+   "key": "(Back to wall).b,\u200bb,\u200bUB",
+   "why": "unparsed: token '(Back to wall).b' is not a stick/button input"
+  },
+  {
+   "key": "CLK(Two spins).3",
+   "why": "unparsed: token 'CLK(Two spins).3' is not a stick/button input"
+  },
+  {
+   "key": "DBT.f+2",
+   "why": "fired but did not connect (root motion: active at 1.75 m, started 1.45 m)"
+  },
+  {
+   "key": "DES.BT.1",
+   "why": "fired [\"BT.1\"] (keys [\"BT.1\"]) not 'DES.BT.1'"
+  },
+  {
+   "key": "f,F+2,H.1+2",
+   "why": "fired [\"f,F+2\"] (keys [\"f,F+2\"]) not 'f,F+2,H.1+2'"
+  },
+  {
+   "key": "H.2+3",
+   "why": "fired [\"UB.2+3\"] (keys [\"UB.2+3\"]) not 'H.2+3'"
+  },
+  {
+   "key": "ub+4,1,1,2,1,1,3+4,3,2",
+   "why": "fired [\"u/b+4\",\"u/b+4,1\",\"u/b+4,1,1\",\"u/b+4,1,1,2\",\"u/b+4,1,1,2,1\",\"u/b+4,1,1,2,1,1\",\"u/b+4,1,1,2,1,1,3+4\",\"u/b+4,1,1,2,1,1,3+4,3\"] (keys [\"ub+4\",\"ub+4,1\",\"ub+4,1,1\",\"ub+4,1,1,2\",\"ub+4,1,1,2,1\",\"ub+4,1,1,2,1,1\",\"ub+4,1,1,2,1,1,3+4\",\"ub+4,1,1,2,1,1,3+4,3\"]) not 'ub+4,1,1,2,1,1,3+4,3,2'"
+  },
+  {
+   "key": "ub+4,1,1,2,1,1,3+4,3,2,2",
+   "why": "fired [\"u/b+4\",\"u/b+4,1\",\"u/b+4,1,1\",\"u/b+4,1,1,2\",\"u/b+4,1,1,2,1\",\"u/b+4,1,1,2,1,1\",\"u/b+4,1,1,2,1,1,3+4\",\"u/b+4,1,1,2,1,1,3+4,3\"] (keys [\"ub+4\",\"ub+4,1\",\"ub+4,1,1\",\"ub+4,1,1,2\",\"ub+4,1,1,2,1\",\"ub+4,1,1,2,1,1\",\"ub+4,1,1,2,1,1,3+4\",\"ub+4,1,1,2,1,1,3+4,3\"]) not 'ub+4,1,1,2,1,1,3+4,3,2,2'"
+  },
+  {
+   "key": "1,2,2*",
+   "why": "fired [\"1\",\"1,2\",\"1,2,2\"] (keys [\"1~t8.alisa\",\"1,2\",\"1,2,2\"]) not '1,2,2*'"
+  },
+  {
+   "key": "1,2,2*~t7.alisa",
+   "why": "fired [\"1\",\"1,2\",\"1,2,2\"] (keys [\"1~t8.alisa\",\"1,2\",\"1,2,2\"]) not '1,2,2*~t7.alisa'"
+  },
+  {
+   "key": "1,2,2*~t7.alisa.2",
+   "why": "fired [\"1\",\"1,2\",\"1,2,2\"] (keys [\"1~t8.alisa\",\"1,2\",\"1,2,2\"]) not '1,2,2*~t7.alisa.2'"
+  },
+  {
+   "key": "t7.alisa_141",
+   "why": "unparsed: token 'WS 1+2* (one spin)' is not a stick/button input"
+  },
+  {
+   "key": "t7.alisa_142",
+   "why": "unparsed: token 'WS 1+2 (two spins)' is not a stick/button input"
+  },
+  {
+   "key": "u/b+4,1,1,2,1,1,3+4,3,2,2",
+   "why": "fired [\"u/b+4\",\"u/b+4,1\",\"u/b+4,1,1\",\"u/b+4,1,1,2\",\"u/b+4,1,1,2,1\",\"u/b+4,1,1,2,1,1\",\"u/b+4,1,1,2,1,1,3+4\",\"u/b+4,1,1,2,1,1,3+4,3\"] (keys [\"ub+4\",\"ub+4,1\",\"ub+4,1,1\",\"ub+4,1,1,2\",\"ub+4,1,1,2,1\",\"ub+4,1,1,2,1,1\",\"ub+4,1,1,2,1,1,3+4\",\"ub+4,1,1,2,1,1,3+4,3\"]) not 'u/b+4,1,1,2,1,1,3+4,3,2,2'"
+  },
+  {
+   "key": "t7.alisa_185",
+   "why": "unparsed: token '(During Clockwork) 3 (more than a single spin)' is not a stick/button input"
+  },
+  {
+   "key": "t7.alisa_186",
+   "why": "unparsed: token '(Clockwork Spring Middle) B' is not a stick/button input"
+  },
+  {
+   "key": "FC.d/f+1+2,n,1+2",
+   "why": "fired [\"FC.d/f+1+2\"] (keys [\"FC.d/f+1+2\"]) not 'FC.d/f+1+2,n,1+2'"
+  },
+  {
+   "key": "DES.u+3+4,1",
+   "why": "fired but did not connect (range: closest 1.45 m during 8 active frames)"
+  },
+  {
+   "key": "t7.alisa_235",
+   "why": "unparsed: token 'DES BT 1 (or 2)' is not a stick/button input"
+  },
+  {
+   "key": "DES.2:1",
+   "why": "fired [\"DES.2\",\"DES.2,1\"] (keys [\"DES.2\",\"DES.2,1\"]) not 'DES.2:1'"
+  }
+ ],
+ "deathfang": [
+  {
+   "key": "20",
+   "why": "fired [\"dash\"] (keys [\"dash\"]) not '20'"
+  },
+  {
+   "key": "evade_fwd",
+   "why": "double tap f,f did not start 'evade_fwd'"
+  },
+  {
+   "key": "evade_back",
+   "why": "double tap b,b did not start 'evade_back'"
+  },
+  {
+   "key": "maxmode",
+   "why": "MAX timer did not start"
+  },
+  {
+   "key": "yaotome_a",
+   "why": "fired [\"dash\",\"b+1\"] (keys [\"dash\",\"9\"]) not 'yaotome_a'"
+  },
+  {
+   "key": "yaotome_c",
+   "why": "fired [\"dash\",\"b+2\"] (keys [\"dash\",\"10\"]) not 'yaotome_c'"
+  },
+  {
+   "key": "saika",
+   "why": "unparsed: token 'during Ya Otome' is not a stick/button input"
+  },
+  {
+   "key": "ya_sakazuki",
+   "why": "fired [\"backdash\"] (keys [\"backdash\"]) not 'ya_sakazuki'"
+  },
+  {
+   "key": "homurabotogi",
+   "why": "fired [\"backdash\",\"f+1\"] (keys [\"backdash\",\"5\"]) not 'homurabotogi'"
+  }
+ ],
+ "demonio": [
+  {
+   "key": "qcb+1+3",
+   "why": "fired [\"d,d/b,b+1+3\"] (keys [\"d,d/b,b+1+3\"]) not 'qcb+1+3'"
+  },
+  {
+   "key": "qcb+1+3__main",
+   "why": "fired [\"d,d/b,b+1+3\"] (keys [\"d,d/b,b+1+3\"]) not 'qcb+1+3__main'"
+  },
+  {
+   "key": "CD.df#1",
+   "why": "unparsed: token 'df#1' is not a stick/button input"
+  },
+  {
+   "key": "CD.df#2",
+   "why": "unparsed: token 'df#2' is not a stick/button input"
+  },
+  {
+   "key": "df+2,H.1+2",
+   "why": "fired [\"d/f+2\"] (keys [\"df+2\"]) not 'df+2,H.1+2'"
+  },
+  {
+   "key": "H.2+3",
+   "why": "fired [\"UB.2+3\"] (keys [\"UB.2+3\"]) not 'H.2+3'"
+  },
+  {
+   "key": "H.2+3,4",
+   "why": "fired [\"UB.2+3\"] (keys [\"UB.2+3\"]) not 'H.2+3,4'"
+  },
+  {
+   "key": "f,n,d,d/f:1",
+   "why": "fired [\"1\"] (keys [\"1~t8.jin\"]) not 'f,n,d,d/f:1'"
+  },
+  {
+   "key": "f,n,d,d/f:2",
+   "why": "fired [\"2\"] (keys [\"2~t8.jin\"]) not 'f,n,d,d/f:2'"
+  },
+  {
+   "key": "u/b+1+2,b,b",
+   "why": "fired [\"u/b+1+2\"] (keys [\"ub+1+2\"]) not 'u/b+1+2,b,b'"
+  },
+  {
+   "key": "qcb+1+3~t7.jin",
+   "why": "fired [\"d,d/b,b+1+3\"] (keys [\"d,d/b,b+1+3\"]) not 'qcb+1+3~t7.jin'"
+  },
+  {
+   "key": "u/b+1,1~t3.jin.3",
+   "why": "fired but did not connect (root motion: active at 2.15 m, started 1.50 m)"
+  },
+  {
+   "key": "u/b+1,4~t3.jin.3",
+   "why": "fired but did not connect (root motion: active at 2.15 m, started 1.50 m)"
+  },
+  {
+   "key": "1+2,2~t3.jin",
+   "why": "fired [\"1+2\",\"1+2,2\"] (keys [\"1+2\",\"1+2,2~t3.jin\"]) not '1+2,2~t3.jin'"
+  },
+  {
+   "key": "CD.d/f:1",
+   "why": "fired [\"1\"] (keys [\"1~t8.jin\"]) not 'CD.d/f:1'"
+  },
+  {
+   "key": "CD.d/f:2",
+   "why": "fired [\"2\"] (keys [\"2~t8.jin\"]) not 'CD.d/f:2'"
+  },
+  {
+   "key": "f,f+3,1,f,F",
+   "why": "fired [] (keys []) not 'f,f+3,1,f,F'"
+  },
+  {
+   "key": "d/f+1,2,f,F",
+   "why": "fired [\"d/f+1\",\"d/f+1,2\"] (keys [\"df+1\",\"d/f+1,2\"]) not 'd/f+1,2,f,F'"
+  },
+  {
+   "key": "b+2,1:u/f",
+   "why": "throw did not reach exec with victim clip"
+  },
+  {
+   "key": "f,n,d,d/f+1:u/f",
+   "why": "fired [] (keys []) not 'f,n,d,d/f+1:u/f'"
+  },
+  {
+   "key": "SS.2:u",
+   "why": "fired [\"SS.2\",\"SS.2,U\"] (keys [\"SS.2\",\"SS.2,U\"]) not 'SS.2:u'"
+  },
+  {
+   "key": "f,f+1+2",
+   "why": "fired [\"n,f,n,f+1+2\"] (keys [\"n,f,n,f+1+2\"]) not 'f,f+1+2'"
+  },
+  {
+   "key": "3,1,f,F",
+   "why": "fired [\"3\",\"3,1\",\"3,1,F\"] (keys [\"3~t8.jin\",\"3,1\",\"3,1,F\"]) not '3,1,f,F'"
+  },
+  {
+   "key": "4~3,H.1+2",
+   "why": "fired [\"4\",\"4~3\"] (keys [\"4~3\",\"4~3\"]) not '4~3,H.1+2'"
+  },
+  {
+   "key": "b,f+2,1,4,H.1+2",
+   "why": "fired [\"b,f+2\",\"b,f+2,1\",\"b,f+2,1,4\"] (keys [\"b,f+2\",\"b,f+2,1\",\"b,f+2,1,4\"]) not 'b,f+2,1,4,H.1+2'"
+  },
+  {
+   "key": "f,hcf+1+2",
+   "why": "fired [\"f,b,d/b,d,d/f,f+1+2\"] (keys [\"f,b,d/b,d,d/f,f+1+2\"]) not 'f,hcf+1+2'"
+  },
+  {
+   "key": "f,n,d,d/f+1+2,H.1+2",
+   "why": "fired [\"f,n,d,d/f+1+2\"] (keys [\"f,n,d,d/f+1+2\"]) not 'f,n,d,d/f+1+2,H.1+2'"
+  },
+  {
+   "key": "f,n,d,d/f+1,u/f",
+   "why": "fired [] (keys []) not 'f,n,d,d/f+1,u/f'"
+  },
+  {
+   "key": "f,n,d,d/f+4,H.3",
+   "why": "fired [\"f,n,d,d/f+4\"] (keys [\"f,n,d,d/f+4\"]) not 'f,n,d,d/f+4,H.3'"
+  },
+  {
+   "key": "H.MCR.1+2",
+   "why": "fired [\"MCR.1+2\"] (keys [\"MCR.1+2\"]) not 'H.MCR.1+2'"
+  },
+  {
+   "key": "u/f+3+4,H.1+2",
+   "why": "fired [\"u/f+3+4\"] (keys [\"u/f+3+4\"]) not 'u/f+3+4,H.1+2'"
+  }
+ ],
+ "dio": [
+  {
+   "key": "(During Forward or Backward Jump) 1",
+   "why": "unparsed: token '(During Forward or Backward Jump) 1' is not a stick/button input"
+  },
+  {
+   "key": "(During Forward or Backward Jump) 2",
+   "why": "unparsed: token '(During Forward or Backward Jump) 2' is not a stick/button input"
+  },
+  {
+   "key": "(During Forward or Backward Jump) 3",
+   "why": "unparsed: token '(During Forward or Backward Jump) 3' is not a stick/button input"
+  },
+  {
+   "key": "(During Forward or Backward Jump) 4",
+   "why": "unparsed: token '(During Forward or Backward Jump) 4' is not a stick/button input"
+  },
+  {
+   "key": "(During Forward Jump Peak) d+3",
+   "why": "unparsed: token '(During Forward Jump Peak) d+3' is not a stick/button input"
+  },
+  {
+   "key": "f,d,d/f+2,1+2,f,f (first hit only)",
+   "why": "fired [\"f,d,d/f+2\"] (keys [\"f,d,d/f+2\"]) not 'f,d,d/f+2,1+2,f,f (first hit only)'"
+  },
+  {
+   "key": "DFLIP N",
+   "why": "unparsed: token 'DFLIP N' is not a stick/button input"
+  },
+  {
+   "key": "(During Jump) qcf+1",
+   "why": "unparsed: token '(During Jump) qcf+1' is not a stick/button input"
+  },
+  {
+   "key": "(During Jump) qcb+3",
+   "why": "unparsed: token '(During Jump) qcb+3' is not a stick/button input"
+  },
+  {
+   "key": "(During Jump) qcf+1+2",
+   "why": "unparsed: token '(During Jump) qcf+1+2' is not a stick/button input"
+  },
+  {
+   "key": "(During Jump) qcb+3+4",
+   "why": "unparsed: token '(During Jump) qcb+3+4' is not a stick/button input"
+  },
+  {
+   "key": "1+2,f,f",
+   "why": "fired [\"1+2\"] (keys [\"1+2\"]) not '1+2,f,f'"
+  },
+  {
+   "key": "1+2,b,b",
+   "why": "fired [\"1+2\"] (keys [\"1+2\"]) not '1+2,b,b'"
+  },
+  {
+   "key": "1+2* (40f),f,f",
+   "why": "fired [\"1+2\",\"1+2*\"] (keys [\"1+2\",\"1+2* (40f)\"]) not '1+2* (40f),f,f'"
+  },
+  {
+   "key": "1+2* (40f),b,b",
+   "why": "fired [\"1+2\",\"1+2*\"] (keys [\"1+2\",\"1+2* (40f)\"]) not '1+2* (40f),b,b'"
+  },
+  {
+   "key": "(During Rage) 1,1,f,3,2",
+   "why": "fired [\"3\"] (keys [\"3~t7.akuma\"]) not '(During Rage) 1,1,f,3,2'"
+  },
+  {
+   "key": "1+2* (65f),f,f",
+   "why": "fired [\"1+2\",\"1+2*\"] (keys [\"1+2\",\"1+2* (40f)\"]) not '1+2* (65f),f,f'"
+  },
+  {
+   "key": "1+2* (65f),b,b",
+   "why": "fired [\"1+2\",\"1+2*\"] (keys [\"1+2\",\"1+2* (40f)\"]) not '1+2* (65f),b,b'"
+  }
+ ],
+ "pantera": [
+  {
+   "key": "P+K",
+   "why": "fired but did not connect (root motion: active at 2.00 m, started 1.45 m)"
+  },
+  {
+   "key": "1_c26_r235",
+   "why": "fired [\"1,1\"] (keys [\"1,1\"]) not '1_c26_r235'"
+  },
+  {
+   "key": "1_c26_r240",
+   "why": "fired [\"1,1\"] (keys [\"1,1\"]) not '1_c26_r240'"
+  },
+  {
+   "key": "1_c59_r469",
+   "why": "fired [\"1\"] (keys [\"1_c59_r469\"]) not '1_c59_r469'"
+  },
+  {
+   "key": "1_c6_r478",
+   "why": "fired but did not connect (posture: opponent posture rejects the hit word)"
+  },
+  {
+   "key": "1_c17_r507",
+   "why": "fired [\"1\"] (keys [\"1_c17_r507\"]) not '1_c17_r507'"
+  },
+  {
+   "key": "1_c16_r509",
+   "why": "fired [\"1\"] (keys [\"1_c16_r509\"]) not '1_c16_r509'"
+  },
+  {
+   "key": "1_c60_r650",
+   "why": "fired [\"1\"] (keys [\"1_c60_r650\"]) not '1_c60_r650'"
+  },
+  {
+   "key": "1_c59",
+   "why": "fired [\"1\"] (keys [\"1_c59\"]) not '1_c59'"
+  },
+  {
+   "key": "3,2,2*",
+   "why": "fired [\"3\",\"3,2\",\"3,2,2\"] (keys [\"3~t8.king\",\"3,2\",\"3,2,2\"]) not '3,2,2*'"
+  },
+  {
+   "key": "(back to wall).b,b,UB",
+   "why": "unparsed: token '(back to wall).b' is not a stick/button input"
+  },
+  {
+   "key": "H.2+3",
+   "why": "fired [\"UB.2+3\"] (keys [\"UB.2+3\"]) not 'H.2+3'"
+  },
+  {
+   "key": "MMD2.1,1+3/ MMD2.2,2+4",
+   "why": "fired [\"MMD1.1,4,2,3\"] (keys [\"MMD1.1,4,2,3\"]) not 'MMD2.1,1+3/ MMD2.2,2+4'"
+  },
+  {
+   "key": "MMD5.1+2,3,1+3/ MMD5.1+2,4,2+4",
+   "why": "fired [\"MMD4.3+4,1+2\"] (keys [\"MMD4.3+4,1+2\"]) not 'MMD5.1+2,3,1+3/ MMD5.1+2,4,2+4'"
+  },
+  {
+   "key": "MMD5.1+2,4,2,1+2",
+   "why": "fired [\"MMD4.3+4,1+2\"] (keys [\"MMD4.3+4,1+2\"]) not 'MMD5.1+2,4,2,1+2'"
+  },
+  {
+   "key": "PD.1+2,3,4,1+2",
+   "why": "fired [\"PD.1+2,1+2\"] (keys [\"PD.1+2,1+2\"]) not 'PD.1+2,3,4,1+2'"
+  },
+  {
+   "key": "qcf+1",
+   "why": "fired [\"n,d,d/f,f+1\"] (keys [\"n,d,d/f,f+1\"]) not 'qcf+1'"
+  },
+  {
+   "key": "ss2+4,b/db",
+   "why": "unparsed: token 'ss2+4' is not a stick/button input"
+  },
+  {
+   "key": "UT,1+2,1+2",
+   "why": "fired [\"UT.1+2\"] (keys [\"UT,1+2\"]) not 'UT,1+2,1+2'"
+  },
+  {
+   "key": "UT,3+4,&amp;#58;1+2",
+   "why": "fired [\"UT.3+4\"] (keys [\"UT,3+4\"]) not 'UT,3+4,&amp;#58;1+2'"
+  },
+  {
+   "key": "f,n,d,D/F+1",
+   "why": "fired [\"FC.d/f+1\"] (keys [\"FC.df+1\"]) not 'f,n,d,D/F+1'"
+  },
+  {
+   "key": "f,n,d,D/F+4",
+   "why": "fired [\"FC.d/f+4\"] (keys [\"FC.d/f+4\"]) not 'f,n,d,D/F+4'"
+  },
+  {
+   "key": "t7.king_110",
+   "why": "unparsed: token '4 (only during hit from front)' is not a stick/button input"
+  },
+  {
+   "key": "t7.king_150",
+   "why": "unparsed: token 'low*' is not a stick/button input"
+  },
+  {
+   "key": "t7.king_158",
+   "why": "unparsed: token 'JGS' is not a stick/button input"
+  },
+  {
+   "key": "t7.king_175",
+   "why": "fired [\"JGS.3\",\"JGS.3,2+3\"] (keys [\"JGS.3\",\"JGS.3,2+3\"]) not 't7.king_175'"
+  },
+  {
+   "key": "t7.king_176",
+   "why": "fired [\"JGS.3\",\"JGS.3,2+3\"] (keys [\"JGS.3\",\"JGS.3,2+3\"]) not 't7.king_176'"
+  },
+  {
+   "key": "qcf+1~t7.king",
+   "why": "fired [\"n,d,d/f,f+1\"] (keys [\"n,d,d/f,f+1\"]) not 'qcf+1~t7.king'"
+  },
+  {
+   "key": "PILE_DRIVER.1+2,1+2",
+   "why": "fired [\"n,d,d/f,f+1\",\"1+2\"] (keys [\"n,d,d/f,f+1\",\"1+2\"]) not 'PILE_DRIVER.1+2,1+2'"
+  },
+  {
+   "key": "PILE_DRIVER.1+2,3,4,1+2",
+   "why": "fired [\"n,d,d/f,f+1\",\"1+2\",\"1+2,3\"] (keys [\"n,d,d/f,f+1\",\"1+2\",\"1+2,3\"]) not 'PILE_DRIVER.1+2,3,4,1+2'"
+  },
+  {
+   "key": "t7.king_229",
+   "why": "unparsed: token 'Approach crouching enemy... d+1+3' is not a stick/button input"
+  },
+  {
+   "key": "t7.king_230",
+   "why": "unparsed: token 'Approach crouching enemy... d+2+4' is not a stick/button input"
+  },
+  {
+   "key": "t7.king_231",
+   "why": "unparsed: token '(Enemy on back) by the feet... d/b+1+3 (or d/b+2+4)' is not a stick/button input"
+  },
+  {
+   "key": "t7.king_232",
+   "why": "unparsed: token '(Enemy on back) by the feet... D/B+1+3' is not a stick/button input"
+  },
+  {
+   "key": "t7.king_233",
+   "why": "unparsed: token '(Enemy on back) by the feet... D/B+2+4' is not a stick/button input"
+  },
+  {
+   "key": "t7.king_234",
+   "why": "unparsed: token '(Enemy on back) by the head... d/b+1+3 (or d/b+2+4)' is not a stick/button input"
+  },
+  {
+   "key": "t7.king_235",
+   "why": "unparsed: token '(Enemy on back) by enemy's side... d/b+1+3 (or d/b+2+4)' is not a stick/button input"
+  },
+  {
+   "key": "t7.king_247",
+   "why": "unparsed: token 'During enemy wall stun... f' is not a stick/button input"
+  },
+  {
+   "key": "INDIAN_DEATH_LOCK.1,3,4,1+2,3+4",
+   "why": "fired [\"1+2\"] (keys [\"1+2\"]) not 'INDIAN_DEATH_LOCK.1,3,4,1+2,3+4'"
+  },
+  {
+   "key": "STANDING_HEEL_HOLD.1+2,3,1,1+3",
+   "why": "fired [\"f,n,d,D/F+2+3\"] (keys [\"f,n,d,D/F+2+3~t7.king\"]) not 'STANDING_HEEL_HOLD.1+2,3,1,1+3'"
+  },
+  {
+   "key": "HEAD_JAMMER.4,3,4,3+4,1+2",
+   "why": "fired [\"1\",\"1,2\",\"1,2,2+4\"] (keys [\"1~t8.king\",\"1,2\",\"1,2,2+4\"]) not 'HEAD_JAMMER.4,3,4,3+4,1+2'"
+  },
+  {
+   "key": "CHICKEN_WING_FACE_LOCK.1+3,3+4,2+4,1+2,1+2+3",
+   "why": "fired [\"3+4\"] (keys [\"3+4_t8\"]) not 'CHICKEN_WING_FACE_LOCK.1+3,3+4,2+4,1+2,1+2+3'"
+  },
+  {
+   "key": "REVERSE_ARM_SLAM.2,1,1+2",
+   "why": "fired [\"d/f+1+3\"] (keys [\"df+1+3\"]) not 'REVERSE_ARM_SLAM.2,1,1+2'"
+  },
+  {
+   "key": "POWER_BOMB.3,1,2,3+4,1+2+3+4",
+   "why": "fired [\"3+4\"] (keys [\"3+4_t8\"]) not 'POWER_BOMB.3,1,2,3+4,1+2+3+4'"
+  },
+  {
+   "key": "BLIND_KICK_HIT.BT.1+2",
+   "why": "fired [\"BT.1+2\"] (keys [\"BT.1+2\"]) not 'BLIND_KICK_HIT.BT.1+2'"
+  },
+  {
+   "key": "t7.king_268",
+   "why": "unparsed: token 'Approach crouching enemy... d/f' is not a stick/button input"
+  },
+  {
+   "key": "REVERSE_SPECIAL_STRETCH_BOMB.2,2,1+2",
+   "why": "fired [\"d/f+2+4\"] (keys [\"df+2+4\"]) not 'REVERSE_SPECIAL_STRETCH_BOMB.2,2,1+2'"
+  },
+  {
+   "key": "CANNONBALL_BUSTER.3+4,1+2,1+2+4",
+   "why": "fired [\"1+2\"] (keys [\"1+2\"]) not 'CANNONBALL_BUSTER.3+4,1+2,1+2+4'"
+  },
+  {
+   "key": "MANHATTAN_DROP.1,2,3+4,1+2",
+   "why": "fired [\"3+4\"] (keys [\"3+4_t8\"]) not 'MANHATTAN_DROP.1,2,3+4,1+2'"
+  },
+  {
+   "key": "VICTORY_BOMB.3,1,2,3+4,1+2+3+4",
+   "why": "fired [\"3+4\"] (keys [\"3+4_t8\"]) not 'VICTORY_BOMB.3,1,2,3+4,1+2+3+4'"
+  },
+  {
+   "key": "SLEEPER.3,4,1+2,3+4",
+   "why": "fired [\"1+2\"] (keys [\"1+2\"]) not 'SLEEPER.3,4,1+2,3+4'"
+  },
+  {
+   "key": "REVERSE_SPECIAL_STRETCH_BOMB.3+4,1+2",
+   "why": "fired [\"d/f+2+4\"] (keys [\"df+2+4\"]) not 'REVERSE_SPECIAL_STRETCH_BOMB.3+4,1+2'"
+  },
+  {
+   "key": "BACKDROP.1+2,4,1+2,1+2+3",
+   "why": "fired [] (keys []) not 'BACKDROP.1+2,4,1+2,1+2+3'"
+  },
+  {
+   "key": "BURNING_HAMMER.2+4,3+4,1+3,1+2,1+2+3",
+   "why": "fired [\"3+4\"] (keys [\"3+4_t8\"]) not 'BURNING_HAMMER.2+4,3+4,1+3,1+2,1+2+3'"
+  },
+  {
+   "key": "t7.king_295",
+   "why": "unparsed: token 'Time with enemy right punch... b+1+3' is not a stick/button input"
+  },
+  {
+   "key": "t7.king_296",
+   "why": "unparsed: token 'Time with enemy left kick... b+2+4' is not a stick/button input"
+  },
+  {
+   "key": "t7.king_297",
+   "why": "unparsed: token 'Time with enemy right kick... b+2+4' is not a stick/button input"
+  },
+  {
+   "key": "u/b+1,1~t3.king.3",
+   "why": "fired but did not connect (root motion: active at 2.15 m, started 1.50 m)"
+  },
+  {
+   "key": "u/b+1,4~t3.king.3",
+   "why": "fired but did not connect (root motion: active at 2.15 m, started 1.50 m)"
+  },
+  {
+   "key": "d+3+4,4,1~t3.king",
+   "why": "fired [\"d+3+4\",\"d+3+4,4\",\"d+3+4,4,1\"] (keys [\"d+3+4\",\"d+3+4,4\",\"d+3+4,4,1~t3.king\"]) not 'd+3+4,4,1~t3.king'"
+  },
+  {
+   "key": "d+3+4,4,1,4~t3.king",
+   "why": "fired [\"d+3+4\",\"d+3+4,4\",\"d+3+4,4,1\",\"d+3+4,4,1,4\"] (keys [\"d+3+4\",\"d+3+4,4\",\"d+3+4,4,1\",\"d+3+4,4,1,4~t3.king\"]) not 'd+3+4,4,1,4~t3.king'"
+  },
+  {
+   "key": "1+4,1~t3.king",
+   "why": "fired [\"BT.1+4\"] (keys [\"BT.1+4\"]) not '1+4,1~t3.king'"
+  },
+  {
+   "key": "1+4,1~t3.king.2",
+   "why": "fired [\"BT.1+4\"] (keys [\"BT.1+4\"]) not '1+4,1~t3.king.2'"
+  },
+  {
+   "key": "d,d/b,d,d/b+1+2~t3.king",
+   "why": "fired [\"FC.d/b,d,d/b+1+2\"] (keys [\"FC.db,d,db+1+2\"]) not 'd,d/b,d,d/b+1+2~t3.king'"
+  },
+  {
+   "key": "1~t3.king.7",
+   "why": "fired [\"1\"] (keys [\"1~t3.king.7\"]) not '1~t3.king.7'"
+  },
+  {
+   "key": "d,d/b,d,d/b+1+2,1",
+   "why": "fired [\"FC.d/b,d,d/b+1+2\"] (keys [\"FC.db,d,db+1+2\"]) not 'd,d/b,d,d/b+1+2,1'"
+  },
+  {
+   "key": "n,d/f,n,d/f+2+4,1",
+   "why": "fired [\"n,d/f,n,d/f+2+4\",\"1\"] (keys [\"n,d/f,n,d/f+2+4\",\"1~t8.king\"]) not 'n,d/f,n,d/f+2+4,1'"
+  },
+  {
+   "key": "1,1~t3.king",
+   "why": "fired [\"1\",\"1,1\"] (keys [\"1~t8.king\",\"1,1~t3.king\"]) not '1,1~t3.king'"
+  },
+  {
+   "key": "1,1~t3.king.2",
+   "why": "fired [\"1\",\"1,1\"] (keys [\"1~t8.king\",\"1,1~t3.king.2\"]) not '1,1~t3.king.2'"
+  },
+  {
+   "key": "1,1~t3.king.3",
+   "why": "fired [\"1\",\"1,1\"] (keys [\"1~t8.king\",\"1,1~t3.king.3\"]) not '1,1~t3.king.3'"
+  }
+ ]
+}

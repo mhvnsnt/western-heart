@@ -1,0 +1,296 @@
+{
+ "format": "wh-hitbox-status/1",
+ "headline": "Per-move hit LEVEL is now file-grounded for all 6,909 overlay moves (hit_level field from TheBigTuna / TekkenDocs). Per-move hitbox/hurtbox COORDINATES are UNMAPPED for every move: no source in this PR contains box coordinates, and none are invented here.",
+ "pantera_note": "Gap doc claims 165 Pantera moves default to mid. That figure could NOT be reproduced from pantera.json's own fields in-session (moves carry no hit_level field; their t7 blocks carry hit_level for 248 moves, 64 of them mid; 616/874 moves have no t7 block at all). The overlay supersedes defaults where a King notation matches: join on notation_lp, take overlay hit_level, and leave unmatched moves flagged \u2014 do not keep a mid default as if it were data.",
+ "per_fighter": {
+  "akuma": {
+   "overlay_file": "game/assets/movesets/t7/t7-akuma-lp-rp-lk-rk.json",
+   "moves": 120,
+   "with_hit_level": 120,
+   "null_hit_level": 0,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "alisa": {
+   "overlay_file": "game/assets/movesets/t7/t7-alisa-lp-rp-lk-rk.json",
+   "moves": 192,
+   "with_hit_level": 192,
+   "null_hit_level": 0,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "claudio": {
+   "overlay_file": "game/assets/movesets/t7/t7-claudio-lp-rp-lk-rk.json",
+   "moves": 98,
+   "with_hit_level": 95,
+   "null_hit_level": 3,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "dragunov": {
+   "overlay_file": "game/assets/movesets/t7/t7-dragunov-lp-rp-lk-rk.json",
+   "moves": 141,
+   "with_hit_level": 141,
+   "null_hit_level": 0,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "eddy": {
+   "overlay_file": "game/assets/movesets/t7/t7-eddy-lp-rp-lk-rk.json",
+   "moves": 224,
+   "with_hit_level": 224,
+   "null_hit_level": 0,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "eliza": {
+   "overlay_file": "game/assets/movesets/t7/t7-eliza-lp-rp-lk-rk.json",
+   "moves": 87,
+   "with_hit_level": 87,
+   "null_hit_level": 0,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "fahkumram": {
+   "overlay_file": "game/assets/movesets/t7/t7-fahkumram-lp-rp-lk-rk.json",
+   "moves": 137,
+   "with_hit_level": 137,
+   "null_hit_level": 0,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "feng": {
+   "overlay_file": "game/assets/movesets/t7/t7-feng-lp-rp-lk-rk.json",
+   "moves": 166,
+   "with_hit_level": 165,
+   "null_hit_level": 1,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "ganryu": {
+   "overlay_file": "game/assets/movesets/t7/t7-ganryu-lp-rp-lk-rk.json",
+   "moves": 139,
+   "with_hit_level": 139,
+   "null_hit_level": 0,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "geese": {
+   "overlay_file": "game/assets/movesets/t7/t7-geese-lp-rp-lk-rk.json",
+   "moves": 106,
+   "with_hit_level": 106,
+   "null_hit_level": 0,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "gigas": {
+   "overlay_file": "game/assets/movesets/t7/t7-gigas-lp-rp-lk-rk.json",
+   "moves": 103,
+   "with_hit_level": 103,
+   "null_hit_level": 0,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "hwoarang": {
+   "overlay_file": "game/assets/movesets/t7/t7-hwoarang-lp-rp-lk-rk.json",
+   "moves": 221,
+   "with_hit_level": 221,
+   "null_hit_level": 0,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "jack-7": {
+   "overlay_file": "game/assets/movesets/t7/t7-jack-7-lp-rp-lk-rk.json",
+   "moves": 182,
+   "with_hit_level": 182,
+   "null_hit_level": 0,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "josie": {
+   "overlay_file": "game/assets/movesets/t7/t7-josie-lp-rp-lk-rk.json",
+   "moves": 135,
+   "with_hit_level": 134,
+   "null_hit_level": 1,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "katarina": {
+   "overlay_file": "game/assets/movesets/t7/t7-katarina-lp-rp-lk-rk.json",
+   "moves": 109,
+   "with_hit_level": 109,
+   "null_hit_level": 0,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "kazumi": {
+   "overlay_file": "game/assets/movesets/t7/t7-kazumi-lp-rp-lk-rk.json",
+   "moves": 101,
+   "with_hit_level": 101,
+   "null_hit_level": 0,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "kazuya": {
+   "overlay_file": "game/assets/movesets/t7/t7-kazuya-lp-rp-lk-rk.json",
+   "moves": 125,
+   "with_hit_level": 125,
+   "null_hit_level": 0,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "kuma": {
+   "overlay_file": "game/assets/movesets/t7/t7-kuma-lp-rp-lk-rk.json",
+   "moves": 0,
+   "with_hit_level": 0,
+   "null_hit_level": 0,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "kunimitsu": {
+   "overlay_file": "game/assets/movesets/t7/t7-kunimitsu-lp-rp-lk-rk.json",
+   "moves": 185,
+   "with_hit_level": 182,
+   "null_hit_level": 3,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "lars": {
+   "overlay_file": "game/assets/movesets/t7/t7-lars-lp-rp-lk-rk.json",
+   "moves": 127,
+   "with_hit_level": 127,
+   "null_hit_level": 0,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "law": {
+   "overlay_file": "game/assets/movesets/t7/t7-law-lp-rp-lk-rk.json",
+   "moves": 225,
+   "with_hit_level": 222,
+   "null_hit_level": 3,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "lee": {
+   "overlay_file": "game/assets/movesets/t7/t7-lee-lp-rp-lk-rk.json",
+   "moves": 202,
+   "with_hit_level": 200,
+   "null_hit_level": 2,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "leo": {
+   "overlay_file": "game/assets/movesets/t7/t7-leo-lp-rp-lk-rk.json",
+   "moves": 167,
+   "with_hit_level": 167,
+   "null_hit_level": 0,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "leroy": {
+   "overlay_file": "game/assets/movesets/t7/t7-leroy-lp-rp-lk-rk.json",
+   "moves": 124,
+   "with_hit_level": 123,
+   "null_hit_level": 1,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "lidia": {
+   "overlay_file": "game/assets/movesets/t7/t7-lidia-lp-rp-lk-rk.json",
+   "moves": 157,
+   "with_hit_level": 157,
+   "null_hit_level": 0,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "lili": {
+   "overlay_file": "game/assets/movesets/t7/t7-lili-lp-rp-lk-rk.json",
+   "moves": 144,
+   "with_hit_level": 144,
+   "null_hit_level": 0,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "ling": {
+   "overlay_file": "game/assets/movesets/t7/t7-ling-lp-rp-lk-rk.json",
+   "moves": 220,
+   "with_hit_level": 220,
+   "null_hit_level": 0,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "lucky-chloe": {
+   "overlay_file": "game/assets/movesets/t7/t7-lucky-chloe-lp-rp-lk-rk.json",
+   "moves": 141,
+   "with_hit_level": 140,
+   "null_hit_level": 1,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "master-raven": {
+   "overlay_file": "game/assets/movesets/t7/t7-master-raven-lp-rp-lk-rk.json",
+   "moves": 191,
+   "with_hit_level": 191,
+   "null_hit_level": 0,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "miguel": {
+   "overlay_file": "game/assets/movesets/t7/t7-miguel-lp-rp-lk-rk.json",
+   "moves": 157,
+   "with_hit_level": 157,
+   "null_hit_level": 0,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "negan": {
+   "overlay_file": "game/assets/movesets/t7/t7-negan-lp-rp-lk-rk.json",
+   "moves": 119,
+   "with_hit_level": 118,
+   "null_hit_level": 1,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "nina": {
+   "overlay_file": "game/assets/movesets/t7/t7-nina-lp-rp-lk-rk.json",
+   "moves": 189,
+   "with_hit_level": 188,
+   "null_hit_level": 1,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "noctis": {
+   "overlay_file": "game/assets/movesets/t7/t7-noctis-lp-rp-lk-rk.json",
+   "moves": 106,
+   "with_hit_level": 103,
+   "null_hit_level": 3,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "paul": {
+   "overlay_file": "game/assets/movesets/t7/t7-paul-lp-rp-lk-rk.json",
+   "moves": 125,
+   "with_hit_level": 125,
+   "null_hit_level": 0,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "steve": {
+   "overlay_file": "game/assets/movesets/t7/t7-steve-lp-rp-lk-rk.json",
+   "moves": 239,
+   "with_hit_level": 239,
+   "null_hit_level": 0,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  },
+  "zafina": {
+   "overlay_file": "game/assets/movesets/t7/t7-zafina-lp-rp-lk-rk.json",
+   "moves": 188,
+   "with_hit_level": 186,
+   "null_hit_level": 2,
+   "boxes": "UNMAPPED \u2014 no coordinates in source",
+   "unblock": "mot.bin hit-condition decode (frv/dnc hit_conditions tables exist at move level in the merged JSONs; box geometry still needs the clip + skeleton pass) or live-game extraction. Engine side (hitbox.js / hitdetect.js, 14 swept capsules) is combat lane's, not this data PR's."
+  }
+ },
+ "reconciliation_handoff": "Hit-level rows for asuka, bob, bryan, devil-jin, heihachi, jin, king, shaheen, yoshimitsu are held for the reconciliation lane (see INDEX.json reconciliation_handoff) and are NOT in this PR."
+}
