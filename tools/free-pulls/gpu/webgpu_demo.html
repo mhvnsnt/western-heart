@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Western Heart — WebGPU Compute Demo (dependency-free)</title>
+<style>
+  body { font-family: system-ui, sans-serif; background:#111; color:#eee; margin:2rem auto; max-width:720px; padding:0 1rem; }
+  canvas { background:#1c1c28; border:1px solid #444; width:100%; height:auto; display:block; }
+  pre { background:#000; padding:1rem; white-space:pre-wrap; word-break:break-word; }
+  .pass { color:#7dff7d; } .fail { color:#ff7d7d; }
+  button { font-size:1rem; padding:.5rem 1rem; cursor:pointer; }
+</style>
+</head>
+<body>
+<h1>Western Heart — WebGPU compute demo</h1>
+<p>
+  Runs on the <b>player's own device GPU</b> — no cloud, no cost, no sign-in.
+  Two real compute jobs, verified by reading results back to the CPU:
+  (1) a <b>vector-add</b> (a + b = c, checked element-by-element), and
+  (2) a <b>particle update</b> (gravity + floor bounce, 4096 particles) drawn
+  every frame from the GPU buffer. This is the pattern a Three.js game would
+  use for hit-spark / dust particles, cloth-ish motion, and post-processing
+  passes — compute shaders replace per-particle JavaScript loops.
+  If WebGPU is unavailable, this page says so plainly and does <b>not</b>
+  pretend a CPU fallback is GPU compute (the canvas stays blank and the
+  message below explains why).
+</p>
+<button id="run">Run WebGPU compute test</button>
+<p id="status">Not run yet.</p>
+<pre id="log"></pre>
+<canvas id="cv" width="512" height="256"></canvas>
+<script>
+"use strict";
+const logEl = document.getElementById("log");
+const statusEl = document.getElementById("status");
+function log(s) { logEl.textContent += s + "\n"; }
+
+const N = 4096;              // particles
+const WORKGROUP = 64;        // must divide N
+const DT = 1 / 60;
+
+// WGSL: one compute shader, two jobs in one dispatch via a mode flag.
+const SHADER = /* wgsl */ `
+struct Params { mode: u32, dt: f32, n: u32, pad: u32 };
+@group(0) @binding(0) var<uniform> params: Params;
+@group(0) @binding(1) var<storage, read> a: array<f32>;
+@group(0) @binding(2) var<storage, read> b: array<f32>;
+@group(0) @binding(3) var<storage, read_write> c: array<f32>;
+@group(0) @binding(4) var<storage, read_write> pos: array<vec2<f32>>;
+@group(0) @binding(5) var<storage, read_write> vel: array<vec2<f32>>;
+
+@compute @workgroup_size(64)
+fn main(@builtin(global_invocation_id) gid: vec3<u32>) {
+  let i = gid.x;
+  if (i >= params.n) { return; }
+  if (params.mode == 0u) {
+    // Job 1: vector add, c[i] = a[i] + b[i]
+    c[i] = a[i] + b[i];
+  } else {
+    // Job 2: particle update — gravity, integrate, bounce off floor y=-0.9
+    var v = vel[i];
+    v.y = v.y - 1.8 * params.dt;
+    var p = pos[i] + v * params.dt;
+    if (p.y < -0.9) { p.y = -0.9; v.y = -v.y * 0.7; }
+    if (p.x < -1.0) { p.x = -1.0; v.x = -v.x; }
+    if (p.x >  1.0) { p.x =  1.0; v.x = -v.x; }
+    pos[i] = p;
+    vel[i] = v;
+  }
+}
+`;
+
+// Minimal 2D render of the particle buffer: read positions back each frame
+// (fine for a 4096-particle demo; a shipping game would render from the GPU
+// buffer directly instead of this readback).
+async function run() {
+  logEl.textContent = "";
+  if (!("gpu" in navigator)) {
+    statusEl.innerHTML = '<span class="fail">WebGPU is NOT available in this browser.</span> ' +
+      'This demo cannot run: it needs a browser with WebGPU enabled ' +
+      '(current Chrome/Edge, or Safari/Firefox with WebGPU support). ' +
+      'No CPU fallback is claimed as GPU compute — use the WebGL2 build of the game instead.';
+    return;
+  }
+  const adapter = await navigator.gpu.requestAdapter();
+  if (!adapter) {
+    statusEl.innerHTML = '<span class="fail">No WebGPU adapter found (no usable GPU).</span>';
+    return;
+  }
+  const device = await adapter.requestDevice();
+  const info = adapter.info || {};
+  log("Adapter: " + (info.device || info.description || "unknown") + " | arch=" + (info.architecture || "?"));
+
+  function makeBuffer(size, usage, data) {
+    const buf = device.createBuffer({ size, usage, mappedAtCreation: !!data });
+    if (data) { new Float32Array(buf.getMappedRange()).set(data); buf.unmap(); }
+    return buf;
+  }
+  const aData = new Float32Array(N), bData = new Float32Array(N);
+  for (let i = 0; i < N; i++) { aData[i] = i * 0.5; bData[i] = i * 0.25 + 1; }
+  const aBuf = makeBuffer(N * 4, GPUBufferUsage.STORAGE, aData);
+  const bBuf = makeBuffer(N * 4, GPUBufferUsage.STORAGE, bData);
+  const cBuf = makeBuffer(N * 4, GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_SRC);
+  const posData = new Float32Array(N * 2), velData = new Float32Array(N * 2);
+  for (let i = 0; i < N; i++) {
+    posData[i * 2] = Math.random() * 2 - 1; posData[i * 2 + 1] = Math.random();
+    velData[i * 2] = (Math.random() - 0.5) * 0.5; velData[i * 2 + 1] = Math.random() * 0.5;
+  }
+  const posBuf = makeBuffer(N * 8, GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_SRC, posData);
+  const velBuf = makeBuffer(N * 8, GPUBufferUsage.STORAGE, velData);
+  const paramBuf = makeBuffer(16, GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST);
+  const readBuf = makeBuffer(N * 4, GPUBufferUsage.MAP_READ | GPUBufferUsage.COPY_DST);
+  const posReadBuf = makeBuffer(N * 8, GPUBufferUsage.MAP_READ | GPUBufferUsage.COPY_DST);
+
+  const module = device.createShaderModule({ code: SHADER });
+  const pipeline = device.createComputePipeline({
+    layout: "auto", compute: { module, entryPoint: "main" }
+  });
+  const bindGroup = device.createBindGroup({
+    layout: pipeline.getBindGroupLayout(0),
+    entries: [
+      { binding: 0, resource: { buffer: paramBuf } },
+      { binding: 1, resource: { buffer: aBuf } },
+      { binding: 2, resource: { buffer: bBuf } },
+      { binding: 3, resource: { buffer: cBuf } },
+      { binding: 4, resource: { buffer: posBuf } },
+      { binding: 5, resource: { buffer: velBuf } },
+    ]
+  });
+  async function dispatch(mode) {
+    device.queue.writeBuffer(paramBuf, 0, new Uint32Array([mode, 0, N, 0]).buffer);
+    // dt is a float in the same 16-byte uniform: rewrite bytes 4..8 as f32.
+    device.queue.writeBuffer(paramBuf, 4, new Float32Array([DT]).buffer);
+    const enc = device.createCommandEncoder();
+    const pass = enc.beginComputePass();
+    pass.setPipeline(pipeline); pass.setBindGroup(0, bindGroup);
+    pass.dispatchWorkgroups(N / WORKGROUP); pass.end();
+    enc.copyBufferToBuffer(cBuf, 0, readBuf, 0, N * 4);
+    enc.copyBufferToBuffer(posBuf, 0, posReadBuf, 0, N * 8);
+    device.queue.submit([enc.finish()]);
+    await device.queue.onSubmittedWorkDone();
+  }
+
+  // --- Job 1: verify vector add on the GPU ---
+  await dispatch(0);
+  await readBuf.mapAsync(GPUMapMode.READ);
+  const c = new Float32Array(readBuf.getMappedRange().slice(0));
+  readBuf.unmap();
+  let bad = 0, firstBad = -1;
+  for (let i = 0; i < N; i++) {
+    const expect = aData[i] + bData[i];
+    if (Math.abs(c[i] - expect) > 1e-4) { bad++; if (firstBad < 0) firstBad = i; }
+  }
+  log("Vector-add: N=" + N + ", mismatches=" + bad + (bad ? " (first i=" + firstBad + ")" : "") +
+      ", sample c[0]=" + c[0] + " (expect 1), c[100]=" + c[100] + " (expect 76)");
+  const vecOk = bad === 0;
+
+  // --- Job 2: animate particles, reading positions back per frame ---
+  const canvas = document.getElementById("cv");
+  const ctx = canvas.getContext("2d");
+  let frames = 0;
+  async function frame() {
+    await dispatch(1);
+    await posReadBuf.mapAsync(GPUMapMode.READ);
+    const pos = new Float32Array(posReadBuf.getMappedRange().slice(0));
+    posReadBuf.unmap();
+    ctx.fillStyle = "#1c1c28"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#ffcc44";
+    for (let i = 0; i < N; i++) {
+      const x = (pos[i * 2] * 0.5 + 0.5) * canvas.width;
+      const y = (1 - (pos[i * 2 + 1] * 0.5 + 0.5)) * canvas.height;
+      ctx.fillRect(x, y, 2, 2);
+    }
+    if (++frames < 600) requestAnimationFrame(frame);
+  }
+  statusEl.innerHTML = vecOk
+    ? '<span class="pass">PASS — WebGPU compute verified: vector-add exact, particles animating below.</span>'
+    : '<span class="fail">FAIL — vector-add mismatches found; do not trust this device\'s compute path.</span>';
+  requestAnimationFrame(frame);
+}
+document.getElementById("run").addEventListener("click", () => {
+  run().catch((e) => {
+    statusEl.innerHTML = '<span class="fail">Error: ' + String(e && e.message || e) + '</span>';
+    log("Error: " + String(e && e.stack || e));
+  });
+});
+</script>
+</body>
+</html>
