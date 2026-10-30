@@ -3906,7 +3906,7 @@ downstream witness/resolution, not canon). Deletions: none.
   sweep's DES.BT stance setup is the same downstream question as DES.BT.1.
 - Proof: test/des-bt.test.mjs (2/2 local against the edited canon) + CI
   game-unit-tests on the PR head.
-## 2026-10-30 — Enemy-on-back ground throws n/a (PR #TBD)
+## 2026-10-30 — Enemy-on-back ground throws n/a (PR #1244)
 - Pantera t7.king_231-235 '(Enemy on back) by the feet/head/side... d/b+1+3 (or d/b+2+4)'
   (Swing Away, Head Bomber, Figure Four Leg Lock, Shoulder Cracker, Turn Over) are ground
   throws on a downed opponent lying on their back (face up) — the face-up mirror of
