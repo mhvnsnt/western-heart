@@ -23,6 +23,7 @@
    background/foreground; HOLD u/d (>=200ms) = jump/crouch. The game waits
    out the tap window before committing to jump/crouch — exactly like Tekken.
    COMMAND GRAB (legacy): press P+K together (touch) or J+K together / U (keyboard).
+   SIGNATURE 'S' (WH signature moves, moveset keys S / b+S / D+S): O (keyboard).
    ============================================================ */
 
 import { stickToDir } from './combat-core.js';
@@ -37,6 +38,10 @@ import { stickToDir } from './combat-core.js';
    one, so it stays a string. Touch HEAT (2+3) / RAGE (1+2) push their chord directly (_push), so
    this window does not apply to them. Test: test/input-timing.test.mjs. */
 export const CHORD_WINDOW_MS = 50;
+
+// Sidestep tap grace: 3 frames for the next motion step to arrive (key-by-key d,f rolls
+// release d before f goes down). Tekken reads a u/d tap that rolls into f/b as the motion.
+const SS_GRACE_MS = 50;
 
 export class InputManager {
   constructor() {
@@ -77,7 +82,7 @@ export class InputManager {
 
   reset() {
     this.axisX = 0; this.axisY = 0; this.joyY = 0;
-    this.up = false; this.down = false; this.held.block = false; this._queue.length = 0;
+    this.up = false; this.down = false; this.held.block = false; for (const b of '1234') this.held[b] = false; this._queue.length = 0; this._ssPending = null;
     this._keys = {};
     this._lastPunchT = 0; this._lastKickT = 0;
     this._lastT = { '1': 0, '2': 0, '3': 0, '4': 0 };
@@ -85,7 +90,17 @@ export class InputManager {
     this._resetJoyKnob();
   }
 
-  consume() { const q = this._queue.slice(); this._queue.length = 0; return q; }
+  consume() {
+    // Pending sidestep tap (see _udRelease): a horizontal arriving inside the grace window means
+    // the u/d tap was a step of a motion in progress (d/b,d,f / qcf rolled key-by-key), so the
+    // motion wins and no sidestep fires; otherwise the sidestep is emitted once the window ends.
+    const ss = this._ssPending;
+    if (ss) {
+      if (this.axisX !== 0) this._ssPending = null;
+      else if (performance.now() - ss.t >= SS_GRACE_MS) { this._ssPending = null; this._push(ss.act); }
+    }
+    const q = this._queue.slice(); this._queue.length = 0; return q;
+  }
 
   _push(action) {
     if (!this.enabled) return;
@@ -185,6 +200,14 @@ export class InputManager {
     this._udStick(verticalValue);
   }
 
+  /* Stick released: back to neutral. No latched direction, no pending sidestep drift. */
+  stickNeutral() {
+    this.axisX = 0;
+    this.stickDir = 'n';
+    this._udRelease(); // resolves a pending tap (sidestep) or clears a held crouch/jump
+    if (this._resetJoyKnob) this._resetJoyKnob();
+  }
+
   _tekken(btn, t) {
     const now = this._pressT(t); // e.timeStamp from the handler, else performance.now()
     if (this._udDir && !this._udHeld) this._udUsed = true; // the tap fed this attack's direction
@@ -192,10 +215,29 @@ export class InputManager {
                 : btn === '2' ? [['4', '2+4'], ['1', '1+2'], ['3', '2+3']]
                 : btn === '3' ? [['1', '1+3'], ['4', '3+4'], ['2', '2+3']]
                 : [['2', '2+4'], ['3', '3+4'], ['1', '1+4']];
+    /* 3- and 4-limb chords (moveset sweep 2026-10-28: 1+2+3 / 2+3+4 / 1+2+3+4 came out as the
+       first two limbs only). A limb landing inside the window of a chord just made joins it: the
+       queued chord is upgraded in place (or the bigger chord is queued if it was already read). */
+    const ch = this._chord;
+    if (ch && now - ch.t < CHORD_WINDOW_MS && !ch.btns.includes(btn)) {
+      const name = ch.btns.concat(btn).sort().join('+');
+      const i = this._queue.lastIndexOf(ch.name);
+      if (i >= 0) this._queue[i] = name; else this._push(name);
+      this._chord = { btns: ch.btns.concat(btn), t: ch.t, name };
+      this._lastT[btn] = 0;
+      return;
+    }
     for (const [pair, name] of pairs) {
       if (now - this._lastT[pair] < CHORD_WINDOW_MS) {
         this._lastT[pair] = 0; this._lastT[btn] = 0;
+        // Moveset sweep 2026-10-29: the partner limb was already queued as a single. If it
+        // has not been consumed yet (both limbs landed in the same frame), the chord replaces
+        // it; before, the frame fired the single AND the chord ('d/f+1+2' came out as
+        // 'd/f+1' then the string 'd/f+1,1+2').
+        const j = this._queue.lastIndexOf(pair);
+        if (j >= 0) this._queue.splice(j, 1);
         this._push(name);
+        this._chord = { btns: name.split('+'), t: now, name };
         return;
       }
     }
@@ -249,7 +291,7 @@ export class InputManager {
     // stick is still forward/back when u/d lets go, so no sidestep (a fast qcf used to sidestep).
     const rolled = this.axisX !== 0;
     if (this.up || this.down) { this.up = false; this.down = false; }
-    else if (!held && !used && !rolled) this._push(dir === 'up' ? 'ss-up' : 'ss-down');
+    else if (!held && !used && !rolled) this._ssPending = { act: dir === 'up' ? 'ss-up' : 'ss-down', t: performance.now() };
   }
 
   /* ---------------- Keyboard ---------------- */
@@ -271,13 +313,14 @@ export class InputManager {
         case 'KeyJ': this._strike('punch', e.timeStamp); break;
         case 'KeyK': this._strike('kick', e.timeStamp); break;
         case 'KeyU': this._push('grab'); break;
+        case 'KeyO': this._push('sig'); break; // WH SIGNATURE button 'S' (moveset key S / b+S / D+S)
         case 'KeyL': this._push('surge'); break;
         case 'KeyT': this._push('transform'); break; // brawler: Soul Surge form
         // e.timeStamp = when the key went down (chord gap; see _pressT)
-        case 'Digit1': this._tekken('1', e.timeStamp); break;
-        case 'Digit2': this._tekken('2', e.timeStamp); break;
-        case 'Digit3': this._tekken('3', e.timeStamp); break;
-        case 'Digit4': this._tekken('4', e.timeStamp); break;
+        case 'Digit1': this.held['1'] = true; this._tekken('1', e.timeStamp); break;
+        case 'Digit2': this.held['2'] = true; this._tekken('2', e.timeStamp); break;
+        case 'Digit3': this.held['3'] = true; this._tekken('3', e.timeStamp); break;
+        case 'Digit4': this.held['4'] = true; this._tekken('4', e.timeStamp); break;
         case 'Space': this.held.block = true; e.preventDefault(); break;
         case 'ShiftLeft': case 'ShiftRight': this._push('dodge'); break;
         case 'KeyV': this._push('vskill'); break; // V-System (owner 2026-10-22)
@@ -300,6 +343,8 @@ export class InputManager {
           }
           this._udRelease(); break;
         case 'Space': this.held.block = false; break;
+        // held limbs: Tekken 'button held' moves (d/b+1*), see Fighter.tryHoldUpgrade
+        case 'Digit1': case 'Digit2': case 'Digit3': case 'Digit4': this.held[this._remapCode(e.code).slice(5)] = false; break;
       }
     });
   }
@@ -357,11 +402,11 @@ export class InputManager {
         const nx = Math.max(-1, Math.min(1, data.vector.x || 0));
         this._stick8(nx, (data.vector.y || 0));
       });
-      manager.on('end', () => {
-        this.axisX = 0;
-        this._udRelease(); // resolve any pending tap/hold
-      });
+      manager.on('end', () => this.stickNeutral());
       this._joyManager = manager;
+      // Safety (stick-neutral fix 2026-10-23): a lost touchend (tab switch, OS gesture) must never leave the stick latched.
+      window.addEventListener('blur', () => this.stickNeutral());
+      document.addEventListener('visibilitychange', () => { if (document.hidden) this.stickNeutral(); });
       return;
     }
     this._bindJoystickLegacy(base, knob);
@@ -400,9 +445,8 @@ export class InputManager {
     };
     const end = () => {
       this._joyActive = false; this._joyId = null;
-      this.axisX = 0; this.joyY = 0;
-      this._udRelease(); // resolve any pending tap/hold
-      this._resetJoyKnob();
+      this.joyY = 0;
+      this.stickNeutral();
     };
 
     base.addEventListener('touchstart', (e) => {

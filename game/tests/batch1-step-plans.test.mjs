@@ -7,11 +7,15 @@
  *      never verified anywhere in this batch).
  *   3. 2,1: step 1 verified row 203; step 2 UNMAPPED with rejected candidate 220, row null;
  *      every 2,1 twin shares an unmapped last step (row 220 plays for no 2,1 key).
- *   4. The 11 verified-last-step keys are exactly the documented set, and every verified
+ *   4. The 14 verified-last-step keys are exactly the documented set, and every verified
  *      row exists in the repo King hit_frames.json with the step's button bits.
  *   5. The throw-class twin b+1+2,1+2~t7.king is NOT planned.
  *   6. fighter.js: the step-plan branch resolves before the donor tier, and the chain
  *      driver + unmapped flagging markers exist (static guard; behaviour is play-verified).
+ *   7. Follow-up Fill 1: b+2,1+2 family last step verified row 97 (Job 3 exact + full
+ *      provenance; d+1+2 caveat in the doc).
+ *   8. Follow-up Fill 2: u/b+1 steps verified-SOFT row 49 (soft flag + soft_note required;
+ *      the soft-verified set is exactly these two steps, never verified-exact).
  * Run: node --test game/tests/batch1-step-plans.test.mjs   (from repo root)
  */
 import test from 'node:test';
@@ -67,10 +71,49 @@ test('2,1 flagship: step 1 verified row 203, step 2 unmapped with rejected candi
   }
 });
 
-test('verified-last-step keys are exactly the documented 11', () => {
+test('verified-last-step keys are exactly the documented 14', () => {
   const got = Object.keys(plans).filter((k) => plans[k].last_step_status === 'verified').sort();
-  const want = ['b+1+2,2', 'd+1+2,2', 'd+1+2,2,1', 'd/b+1+2,2', 'f+2,1~t3.king', 'u+1,1', 'u+1,2', 'u/b+1,1', 'u/b+1,2', 'u/f+1,1', 'u/f+1,2'].sort();
+  const want = ['b+1+2,2', 'b+2,1+2', 'b+2,1+2~t7.king', 'b+2,1+2~t7.king.2', 'd+1+2,2', 'd+1+2,2,1', 'd/b+1+2,2', 'f+2,1~t3.king', 'u+1,1', 'u+1,2', 'u/b+1,1', 'u/b+1,2', 'u/f+1,1', 'u/f+1,2'].sort();
   assert.deepEqual(got, want);
+});
+
+test('Fill 1 (follow-up): b+2,1+2 family last step verified row 97', () => {
+  for (const key of ['b+2,1+2', 'b+2,1+2~t7.king', 'b+2,1+2~t7.king.2']) {
+    const p = plans[key];
+    assert.equal(p.steps[1].status, 'verified', `${key} step 1+2 must be verified`);
+    assert.equal(p.steps[1].row, 97, `${key} step 1+2 must play row 97`);
+    assert.equal(p.steps[1].candidate_source, 'job3-match_search');
+    assert.equal(p.last_step_status, 'verified');
+    assert.equal(p.last_step_row, 97);
+    assert.equal(p.string_status, 'partial');
+    assert.equal(p.steps[0].status, 'review', `${key} step b+2 carries the 2026-10-29 branch-graph REVIEW candidate (not the follow-up's older unmapped record)`);
+  }
+  // Row 97 is a standing LP1+RP2 chord row, never a jumping row.
+  const row97 = hf['97'];
+  assert.equal(row97[5], 3, 'row 97 button bits must be LP1+RP2 (3)');
+  assert.equal(row97[4], 0, 'row 97 must not be throw-flagged');
+});
+
+test('Fill 2 (follow-up): u/b+1 steps verified-SOFT row 49, never verified-exact', () => {
+  const softSteps = [];
+  for (const [key, plan] of Object.entries(plans)) {
+    for (const s of plan.steps) {
+      if (s.soft === true) softSteps.push(`${key} step ${s.step}`);
+    }
+  }
+  assert.deepEqual(softSteps.sort(), ['u/b+1,1 step u/b+1', 'u/b+1,2 step u/b+1'].sort());
+  for (const key of ['u/b+1,1', 'u/b+1,2']) {
+    const s = plans[key].steps[0];
+    assert.equal(s.status, 'verified');
+    assert.equal(s.row, 49);
+    assert.equal(s.soft, true);
+    assert.ok(typeof s.soft_note === 'string' && s.soft_note.length > 0, `${key} soft step must carry a soft_note`);
+    assert.equal(s.candidate_source, 'job3-match_search');
+    assert.equal(plans[key].string_status, 'verified-all');
+  }
+  const row49 = hf['49'];
+  assert.equal(row49[5], 1, 'row 49 button bits must be LP1 (1)');
+  assert.equal(row49[4], 0, 'row 49 must not be throw-flagged');
 });
 
 test('every verified row exists in the repo King hit_frames with the step button bits', () => {
