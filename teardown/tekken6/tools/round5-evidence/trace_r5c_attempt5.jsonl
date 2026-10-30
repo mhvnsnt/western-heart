@@ -1,0 +1,244 @@
+{"t": "launched", "xvfb_pid": 27455, "emu_pid": 27470, "wall": 1792606947.5}
+{"t": "version", "r": {"event": "version", "ticket": 1, "name": "PPSSPP", "version": "v1.20.4"}, "wall": 1792606949.9}
+{"t": "booted", "game": {"id": "ULES01376", "version": "1.00", "title": "TEKKEN 6"}, "pc": "0x8b78c50", "wait_s": 11.7, "wall": 1792606961.6}
+{"t": "pc_samples", "top": {"0x8ac6c74": 31, "0x8b57e88": 2, "0x8a7909c": 2, "0x8b0bb24": 1, "0x892e93c": 1, "0x8000000": 1}, "wall": 1792606982.1}
+{"t": "bp.add", "name": "loader", "addr": "0x89d27a0", "r": {"event": "cpu.breakpoint.add", "ticket": 52}, "wall": 1792606982.1}
+{"t": "bp.add", "name": "wrapper", "addr": "0x8b559c8", "r": {"event": "cpu.breakpoint.add", "ticket": 53}, "wall": 1792606982.1}
+{"t": "bp.add", "name": "ret", "addr": "0x89d27ec", "r": {"event": "cpu.breakpoint.add", "ticket": 54}, "wall": 1792606982.1}
+{"t": "bp.add", "name": "inflate", "addr": "0x8b55bf0", "r": {"event": "cpu.breakpoint.add", "ticket": 55}, "wall": 1792606982.1}
+{"t": "bp.add", "name": "control", "addr": "0x8ac6c74", "r": {"event": "cpu.breakpoint.add", "ticket": 56}, "wall": 1792606982.1}
+{"t": "bp.list", "r": "{'event': 'cpu.breakpoint.list', 'ticket': 57, 'breakpoints': [{'address': 144517024, 'enabled': True, 'log': False, 'condition': None, 'logFormat': None, 'symbol': 'z_un_089d27a0', 'code': 'addiu sp,sp,-0x10'}, {'address': 146102728, 'enabled': True, 'log': False, 'condition': None, 'logFormat': None, 'symbol': 'z_un_08b559c8', 'code': 'addiu sp,sp,-0x20'}, {'address': 144517100, 'enabled': True, 'log': False, 'condition': None, 'logFormat': None, 'symbol': None, 'code': 'bltz v0,0x089D27D0'}, {'address': 146103280, 'enabled': True, 'log': False, 'condition': None, 'logFormat': None, 'symbol'", "wall": 1792606982.1}
+{"t": "control_hit", "n": 1, "pc": "0x8ac6c74", "wall": 1792606982.7}
+{"t": "READY", "control_pc": "0x8ac6c74", "control_hits_after_wait": 1, "wall": 1792606988.8}
+{"t": "cmd", "line": "wait 60", "wall": 1792607187.1}
+{"t": "cmd", "line": "shot a3_boot60", "wall": 1792607253.5}
+{"t": "shot", "name": "a3_boot60", "wall": 1792607256.6}
+{"t": "cmd", "line": "press cross 4", "wall": 1792607256.6}
+{"t": "input", "button": "cross", "r": "None", "wall": 1792607262.7}
+{"t": "cmd", "line": "wait 90", "wall": 1792607262.7}
+{"t": "cmd", "line": "shot a3_x1", "wall": 1792607355.3}
+{"t": "shot", "name": "a3_x1", "wall": 1792607357.1}
+{"t": "cmd", "line": "press start 4", "wall": 1792607357.1}
+{"t": "input", "button": "start", "r": "None", "wall": 1792607363.1}
+{"t": "cmd", "line": "wait 90", "wall": 1792607363.1}
+{"t": "cmd", "line": "shot a3_s1", "wall": 1792607456.2}
+{"t": "shot", "name": "a3_s1", "wall": 1792607459.4}
+{"t": "cmd", "line": "press start 4", "wall": 1792607459.4}
+{"t": "input", "button": "start", "r": "None", "wall": 1792607465.5}
+{"t": "cmd", "line": "wait 60", "wall": 1792607465.5}
+{"t": "cmd", "line": "shot a3_menu1", "wall": 1792607531.9}
+{"t": "shot", "name": "a3_menu1", "wall": 1792607534.4}
+{"t": "cmd", "line": "status", "wall": 1792607534.4}
+{"t": "status", "game": {"event": "game.status", "ticket": 140, "game": {"id": "ULES01376", "version": "1.00", "title": "TEKKEN 6"}, "paused": false}, "cpu": {"event": "cpu.status", "ticket": 141, "stepping": true, "paused": false, "pc": 145517684, "ticks": 633170309}, "hits": {"loader": 0, "wrapper": 0, "inflate": 0, "ret": 0}, "control_hits": 79, "wall": 1792607534.4}
+{"t": "control_hit", "n": 101, "pc": "0x8ac6c74", "wall": 1792607674.2}
+{"t": "cmd", "line": "wait 120", "wall": 1792608329.0}
+{"t": "cmd", "line": "shot a3_nocontrol120", "wall": 1792608449.5}
+{"t": "shot", "name": "a3_nocontrol120", "wall": 1792608456.9}
+{"t": "cmd", "line": "status", "wall": 1792608456.9}
+{"t": "status", "game": {"event": "game.status", "ticket": 245, "game": {"id": "ULES01376", "version": "1.00", "title": "TEKKEN 6"}, "paused": false}, "cpu": {"event": "cpu.status", "ticket": 246, "stepping": false, "paused": false, "pc": 145517684, "ticks": 7629377563}, "hits": {"loader": 0, "wrapper": 0, "inflate": 0, "ret": 0}, "control_hits": 182, "wall": 1792608457.1}
+{"t": "cmd", "line": "press start 4", "wall": 1792608756.6}
+{"t": "input", "button": "start", "r": "{'event': 'input.buttons.press', 'ticket': 247}", "wall": 1792608758.1}
+{"t": "cmd", "line": "wait 45", "wall": 1792608758.1}
+{"t": "cmd", "line": "shot a3_title", "wall": 1792608803.5}
+{"t": "shot", "name": "a3_title", "wall": 1792608813.6}
+{"t": "cmd", "line": "press start 4", "wall": 1792608813.6}
+{"t": "input", "button": "start", "r": "{'event': 'input.buttons.press', 'ticket': 248}", "wall": 1792608814.8}
+{"t": "cmd", "line": "wait 75", "wall": 1792608814.8}
+{"t": "inflate_hit", "seq": 0, "wall": 1792608826.7}
+{"t": "inflate_hit", "seq": 0, "wall": 1792608833.3}
+{"t": "inflate_hit", "seq": 0, "wall": 1792608839.8}
+{"t": "inflate_hit", "seq": 0, "wall": 1792608846.4}
+{"t": "inflate_hit", "seq": 0, "wall": 1792608853.1}
+{"t": "inflate_hit", "seq": 0, "wall": 1792608859.8}
+{"t": "inflate_hit", "seq": 0, "wall": 1792608866.4}
+{"t": "cmd", "line": "shot a3_menu2", "wall": 1792608889.9}
+{"t": "shot", "name": "a3_menu2", "wall": 1792608894.4}
+{"t": "cmd", "line": "status", "wall": 1792608894.4}
+{"t": "status", "game": {"event": "game.status", "ticket": 256, "game": {"id": "ULES01376", "version": "1.00", "title": "TEKKEN 6"}, "paused": false}, "cpu": {"event": "cpu.status", "ticket": 257, "stepping": false, "paused": false, "pc": 145517684, "ticks": 17940476565}, "hits": {"loader": 0, "wrapper": 0, "inflate": 7, "ret": 0}, "control_hits": 182, "wall": 1792608894.4}
+{"t": "launched", "xvfb_pid": 3392, "emu_pid": 3400, "wall": 1792615293.7}
+{"t": "version", "r": {"event": "version", "ticket": 1, "name": "PPSSPP", "version": "v1.20.4"}, "wall": 1792615295.8}
+{"t": "booted", "game": {"id": "ULES01376", "version": "1.00", "title": "TEKKEN 6"}, "pc": "0x8b7c49c", "wait_s": 24.9, "wall": 1792615320.7}
+{"t": "pc_samples", "top": {"0x8ac6c74": 35, "0x8000000": 2, "0x8a7909c": 2, "0x8b0bb24": 1}, "wall": 1792615341.1}
+{"t": "bp.add", "name": "loader", "addr": "0x89d27a0", "r": {"event": "cpu.breakpoint.add", "ticket": 66}, "wall": 1792615341.1}
+{"t": "bp.add", "name": "wrapper", "addr": "0x8b559c8", "r": {"event": "cpu.breakpoint.add", "ticket": 67}, "wall": 1792615341.1}
+{"t": "bp.add", "name": "ret", "addr": "0x89d27ec", "r": {"event": "cpu.breakpoint.add", "ticket": 68}, "wall": 1792615341.1}
+{"t": "bp.add", "name": "inflate", "addr": "0x8b55bf0", "r": {"event": "cpu.breakpoint.add", "ticket": 69}, "wall": 1792615341.2}
+{"t": "bp.add", "name": "control", "addr": "0x8ac6c74", "r": {"event": "cpu.breakpoint.add", "ticket": 70}, "wall": 1792615341.2}
+{"t": "bp.list", "r": "{'event': 'cpu.breakpoint.list', 'ticket': 71, 'breakpoints': [{'address': 144517024, 'enabled': True, 'log': False, 'condition': None, 'logFormat': None, 'symbol': 'z_un_089d27a0', 'code': 'addiu sp,sp,-0x10'}, {'address': 146102728, 'enabled': True, 'log': False, 'condition': None, 'logFormat': None, 'symbol': 'z_un_08b559c8', 'code': 'addiu sp,sp,-0x20'}, {'address': 144517100, 'enabled': True, 'log': False, 'condition': None, 'logFormat': None, 'symbol': None, 'code': 'bltz v0,0x089D27D0'}, {'address': 146103280, 'enabled': True, 'log': False, 'condition': None, 'logFormat': None, 'symbol'", "wall": 1792615341.2}
+{"t": "control_hit", "n": 1, "pc": "0x8ac6c74", "wall": 1792615342.2}
+{"t": "READY", "control_pc": "0x8ac6c74", "control_hits_after_wait": 1, "wall": 1792615348.4}
+{"t": "cmd", "line": "status", "wall": 1792615654.3}
+{"t": "status", "game": {"event": "game.status", "ticket": 119, "game": {"id": "ULES01376", "version": "1.00", "title": "TEKKEN 6"}, "paused": false}, "cpu": {"event": "cpu.status", "ticket": 120, "stepping": true, "paused": false, "pc": 145517684, "ticks": 618355509}, "hits": {"loader": 0, "wrapper": 0, "inflate": 0, "ret": 0}, "control_hits": 47, "wall": 1792615654.3}
+{"t": "cmd", "line": "wait 20", "wall": 1792615833.1}
+{"t": "cmd", "line": "press start 4", "wall": 1792615859.6}
+{"t": "input", "button": "start", "r": "None", "wall": 1792615865.7}
+{"t": "cmd", "line": "wait 45", "wall": 1792615865.7}
+{"t": "cmd", "line": "shot a5_t1", "wall": 1792615912.2}
+{"t": "shot", "name": "a5_t1", "wall": 1792615914.4}
+{"t": "cmd", "line": "press cross 4", "wall": 1792615914.4}
+{"t": "input", "button": "cross", "r": "None", "wall": 1792615920.4}
+{"t": "cmd", "line": "wait 45", "wall": 1792615920.4}
+{"t": "cmd", "line": "shot a5_t2", "wall": 1792615966.8}
+{"t": "shot", "name": "a5_t2", "wall": 1792615968.3}
+{"t": "cmd", "line": "status", "wall": 1792615968.3}
+{"t": "status", "game": {"event": "game.status", "ticket": 168, "game": {"id": "ULES01376", "version": "1.00", "title": "TEKKEN 6"}, "paused": false}, "cpu": {"event": "cpu.status", "ticket": 169, "stepping": true, "paused": false, "pc": 145517684, "ticks": 785022009}, "hits": {"loader": 0, "wrapper": 0, "inflate": 0, "ret": 0}, "control_hits": 92, "wall": 1792615968.3}
+{"t": "control_hit", "n": 101, "pc": "0x8ac6c74", "wall": 1792616021.8}
+{"t": "cmd", "line": "press cross 4", "wall": 1792616263.2}
+{"t": "input", "button": "cross", "r": "None", "wall": 1792616269.4}
+{"t": "cmd", "line": "wait 40", "wall": 1792616269.4}
+{"t": "cmd", "line": "shot a5_t3", "wall": 1792616309.5}
+{"t": "shot", "name": "a5_t3", "wall": 1792616318.1}
+{"t": "cmd", "line": "press cross 4", "wall": 1792616318.1}
+{"t": "input", "button": "cross", "r": "None", "wall": 1792616324.2}
+{"t": "cmd", "line": "wait 40", "wall": 1792616324.2}
+{"t": "cmd", "line": "shot a5_t4", "wall": 1792616370.6}
+{"t": "shot", "name": "a5_t4", "wall": 1792616384.8}
+{"t": "cmd", "line": "status", "wall": 1792616384.8}
+{"t": "status", "game": {"event": "game.status", "ticket": 225, "game": {"id": "ULES01376", "version": "1.00", "title": "TEKKEN 6"}, "paused": false}, "cpu": {"event": "cpu.status", "ticket": 226, "stepping": true, "paused": false, "pc": 145517684, "ticks": 981318109}, "hits": {"loader": 0, "wrapper": 0, "inflate": 0, "ret": 0}, "control_hits": 145, "wall": 1792616384.8}
+{"t": "cmd", "line": "wait 60", "wall": 1792616530.7}
+{"t": "cmd", "line": "shot a5_t5", "wall": 1792616590.8}
+{"t": "shot", "name": "a5_t5", "wall": 1792616606.7}
+{"t": "cmd", "line": "status", "wall": 1792616606.7}
+{"t": "status", "game": {"event": "game.status", "ticket": 258, "game": {"id": "ULES01376", "version": "1.00", "title": "TEKKEN 6"}, "paused": false}, "cpu": {"event": "cpu.status", "ticket": 259, "stepping": true, "paused": false, "pc": 145517684, "ticks": 1096132809}, "hits": {"loader": 0, "wrapper": 0, "inflate": 0, "ret": 0}, "control_hits": 176, "wall": 1792616606.8}
+{"t": "control_hit", "n": 201, "pc": "0x8ac6c74", "wall": 1792616767.1}
+{"t": "cmd", "line": "press start 4", "wall": 1792617008.3}
+{"t": "input", "button": "start", "r": "None", "wall": 1792617014.4}
+{"t": "cmd", "line": "wait 30", "wall": 1792617014.5}
+{"t": "cmd", "line": "shot a5_t6", "wall": 1792617047.6}
+{"t": "shot", "name": "a5_t6", "wall": 1792617052.3}
+{"t": "cmd", "line": "press cross 4", "wall": 1792617052.3}
+{"t": "input", "button": "cross", "r": "None", "wall": 1792617058.4}
+{"t": "cmd", "line": "wait 30", "wall": 1792617058.4}
+{"t": "cmd", "line": "shot a5_t7", "wall": 1792617091.5}
+{"t": "shot", "name": "a5_t7", "wall": 1792617094.0}
+{"t": "cmd", "line": "status", "wall": 1792617094.0}
+{"t": "status", "game": {"event": "game.status", "ticket": 330, "game": {"id": "ULES01376", "version": "1.00", "title": "TEKKEN 6"}, "paused": false}, "cpu": {"event": "cpu.status", "ticket": 331, "stepping": true, "paused": false, "pc": 145517684, "ticks": 1347984409}, "hits": {"loader": 0, "wrapper": 0, "inflate": 0, "ret": 0}, "control_hits": 244, "wall": 1792617094.2}
+{"t": "cmd", "line": "wait 45", "wall": 1792617234.0}
+{"t": "cmd", "line": "shot a5_t8", "wall": 1792617280.5}
+{"t": "shot", "name": "a5_t8", "wall": 1792617284.0}
+{"t": "cmd", "line": "press start 4", "wall": 1792617284.0}
+{"t": "input", "button": "start", "r": "None", "wall": 1792617290.1}
+{"t": "cmd", "line": "wait 30", "wall": 1792617290.1}
+{"t": "cmd", "line": "shot a5_t9", "wall": 1792617323.1}
+{"t": "shot", "name": "a5_t9", "wall": 1792617326.4}
+{"t": "cmd", "line": "status", "wall": 1792617326.4}
+{"t": "status", "game": {"event": "game.status", "ticket": 366, "game": {"id": "ULES01376", "version": "1.00", "title": "TEKKEN 6"}, "paused": false}, "cpu": {"event": "cpu.status", "ticket": 367, "stepping": true, "paused": false, "pc": 145517684, "ticks": 1470206509}, "hits": {"loader": 0, "wrapper": 0, "inflate": 0, "ret": 0}, "control_hits": 277, "wall": 1792617326.8}
+{"t": "cmd", "line": "wait 60", "wall": 1792617446.2}
+{"t": "control_hit", "n": 301, "pc": "0x8ac6c74", "wall": 1792617479.8}
+{"t": "cmd", "line": "shot a5_t10", "wall": 1792617512.7}
+{"t": "shot", "name": "a5_t10", "wall": 1792617515.3}
+{"t": "cmd", "line": "press cross 4", "wall": 1792617515.3}
+{"t": "input", "button": "cross", "r": "None", "wall": 1792617521.4}
+{"t": "cmd", "line": "wait 30", "wall": 1792617521.4}
+{"t": "cmd", "line": "shot a5_t11", "wall": 1792617554.6}
+{"t": "shot", "name": "a5_t11", "wall": 1792617556.2}
+{"t": "cmd", "line": "status", "wall": 1792617556.2}
+{"t": "status", "game": {"event": "game.status", "ticket": 402, "game": {"id": "ULES01376", "version": "1.00", "title": "TEKKEN 6"}, "paused": false}, "cpu": {"event": "cpu.status", "ticket": 403, "stepping": true, "paused": false, "pc": 145517684, "ticks": 1592428609}, "hits": {"loader": 0, "wrapper": 0, "inflate": 0, "ret": 0}, "control_hits": 310, "wall": 1792617556.2}
+{"t": "cmd", "line": "wait 25", "wall": 1792617758.4}
+{"t": "cmd", "line": "shot a5_m1", "wall": 1792617783.6}
+{"t": "shot", "name": "a5_m1", "wall": 1792617786.6}
+{"t": "cmd", "line": "press start 4", "wall": 1792617786.6}
+{"t": "input", "button": "start", "r": "{'event': 'input.buttons.press', 'ticket': 428}", "wall": 1792617787.4}
+{"t": "cmd", "line": "wait 20", "wall": 1792617787.4}
+{"t": "cmd", "line": "shot a5_m2", "wall": 1792617807.4}
+{"t": "shot", "name": "a5_m2", "wall": 1792617809.4}
+{"t": "cmd", "line": "status", "wall": 1792617809.4}
+{"t": "status", "game": {"event": "game.status", "ticket": 429, "game": {"id": "ULES01376", "version": "1.00", "title": "TEKKEN 6"}, "paused": false}, "cpu": {"event": "cpu.status", "ticket": 430, "stepping": false, "paused": false, "pc": 145517684, "ticks": 6481230817}, "hits": {"loader": 0, "wrapper": 0, "inflate": 0, "ret": 0}, "control_hits": 334, "wall": 1792617809.4}
+{"t": "cmd", "line": "press start 4", "wall": 1792617912.0}
+{"t": "input", "button": "start", "r": "{'event': 'input.buttons.press', 'ticket': 431}", "wall": 1792617912.9}
+{"t": "cmd", "line": "wait 20", "wall": 1792617912.9}
+{"t": "cmd", "line": "shot a5_menu", "wall": 1792617933.1}
+{"t": "shot", "name": "a5_menu", "wall": 1792617938.3}
+{"t": "cmd", "line": "status", "wall": 1792617938.3}
+{"t": "status", "game": {"event": "game.status", "ticket": 432, "game": {"id": "ULES01376", "version": "1.00", "title": "TEKKEN 6"}, "paused": false}, "cpu": {"event": "cpu.status", "ticket": 433, "stepping": false, "paused": false, "pc": 145517684, "ticks": 11309002898}, "hits": {"loader": 0, "wrapper": 0, "inflate": 0, "ret": 0}, "control_hits": 334, "wall": 1792617938.5}
+{"t": "cmd", "line": "wait 20", "wall": 1792618077.5}
+{"t": "cmd", "line": "shot a5_menu2", "wall": 1792618097.8}
+{"t": "shot", "name": "a5_menu2", "wall": 1792618100.0}
+{"t": "cmd", "line": "status", "wall": 1792618100.0}
+{"t": "status", "game": {"event": "game.status", "ticket": 434, "game": {"id": "ULES01376", "version": "1.00", "title": "TEKKEN 6"}, "paused": false}, "cpu": {"event": "cpu.status", "ticket": 435, "stepping": false, "paused": false, "pc": 145517684, "ticks": 15431220256}, "hits": {"loader": 0, "wrapper": 0, "inflate": 0, "ret": 0}, "control_hits": 334, "wall": 1792618100.0}
+{"t": "regs_raw", "raw": "{'event': 'cpu.getAllRegs', 'ticket': 436, 'categories': [{'id': 0, 'name': 'GPR', 'registerNames': ['zero', 'at', 'v0', 'v1', 'a0', 'a1', 'a2', 'a3', 't0', 't1', 't2', 't3', 't4', 't5', 't6', 't7', 's0', 's1', 's2', 's3', 's4', 's5', 's6', 's7', 't8', 't9', 'k0', 'k1', 'gp', 'sp', 'fp', 'ra', 'pc', 'hi', 'lo'], 'uintValues': [0, 3735928559, 139670336, 139670336, 167767760, 139670336, 31072, 31072, 1, 3735928559, 3735928559, 3735928559, 3735928559, 3735928559, 3735928559, 3735928559, 147569536, 1, 0, 31072, 0, 0, 147569536, 159323440, 3735928559, 3735928559, 167770880, 3735928559, 146809520, 167767760, 5, 144550804, 144517024, 3735928559, 3735928559], 'floatValues': ['0.000000', '-6259853398707798016.000000', '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', '-6259853398707798016.000000', '-6259853398707798016.000000', '-6259853398707798016.000000', '-6259853398707798016.000000', '-6259853398707798016.000000', '-6259853398707798016.000000', '-6259853398707798016.000000', '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', '-6259853398707798016.000000', '-6259853398707798016.000000', '0.000000', '-6259853398707798016.000000', '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', '-6259853398707798016.000000', '-6259853398707798016.000000']}, {'id': 1, 'name': 'FPU', 'registerNames': ['f0', 'f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12', 'f13', 'f14', 'f15', 'f16', 'f1", "wall": 1792618150.0}
+{"t": "loader_hit", "seq": 0, "gpr": {}, "dest": null, "cap": null, "container": null, "w": null, "wall": 1792618150.0}
+{"t": "regs_raw", "raw": "{'event': 'cpu.getAllRegs', 'ticket': 438, 'categories': [{'id': 0, 'name': 'GPR', 'registerNames': ['zero', 'at', 'v0', 'v1', 'a0', 'a1', 'a2', 'a3', 't0', 't1', 't2', 't3', 't4', 't5', 't6', 't7', 's0', 's1', 's2', 's3', 's4', 's5', 's6', 's7', 't8', 't9', 'k0', 'k1', 'gp', 'sp', 'fp', 'ra', 'pc', 'hi', 'lo'], 'uintValues': [0, 3735928559, 1346984519, 1346984519, 139670336, 31072, 159323460, 0, 1, 3735928559, 3735928559, 3735928559, 3735928559, 3735928559, 3735928559, 3735928559, 147569536, 1, 0, 31072, 0, 0, 147569536, 159323440, 3735928559, 3735928559, 167770880, 3735928559, 146809520, 167767744, 5, 144517100, 146102728, 3735928559, 3735928559], 'floatValues': ['0.000000', '-6259853398707798016.000000', '13512547328.000000', '13512547328.000000', '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', '-6259853398707798016.000000', '-6259853398707798016.000000', '-6259853398707798016.000000', '-6259853398707798016.000000', '-6259853398707798016.000000', '-6259853398707798016.000000', '-6259853398707798016.000000', '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', '-6259853398707798016.000000', '-6259853398707798016.000000', '0.000000', '-6259853398707798016.000000', '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', '-6259853398707798016.000000', '-6259853398707798016.000000']}, {'id': 1, 'name': 'FPU', 'registerNames': ['f0', 'f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12', 'f13', 'f14',", "wall": 1792618156.7}
+{"t": "wrapper_hit", "seq": 0, "dest": null, "cap": null, "src": null, "src_head": null, "src_sha": null, "wall": 1792618156.7}
+{"t": "inflate_hit", "seq": 0, "wall": 1792618163.4}
+{"t": "load_done", "seq": 0, "v0": null, "state": {"seq": 0, "dest": null, "cap": null, "adlerp": null, "container": null, "w": null, "wdest": null, "wcap": null, "src": null, "wadlerp": null}, "wall": 1792618170.0}
+{"t": "cmd", "line": "press cross 4", "wall": 1792618176.1}
+{"t": "input", "button": "cross", "r": "None", "wall": 1792618182.2}
+{"t": "cmd", "line": "wait 25", "wall": 1792618182.2}
+{"t": "loader_hit", "seq": 1, "gpr": {}, "dest": null, "cap": null, "container": null, "w": null, "wall": 1792618182.7}
+{"t": "wrapper_hit", "seq": 1, "dest": null, "cap": null, "src": null, "src_head": null, "src_sha": null, "wall": 1792618189.9}
+{"t": "inflate_hit", "seq": 1, "wall": 1792618196.6}
+{"t": "load_done", "seq": 1, "v0": null, "state": {"seq": 1, "dest": null, "cap": null, "adlerp": null, "container": null, "w": null, "wdest": null, "wcap": null, "src": null, "wadlerp": null}, "wall": 1792618203.5}
+{"t": "cmd", "line": "shot a5_menu3", "wall": 1792618209.5}
+{"t": "shot", "name": "a5_menu3", "wall": 1792618216.2}
+{"t": "cmd", "line": "status", "wall": 1792618216.3}
+{"t": "status", "game": {"event": "game.status", "ticket": 451, "game": {"id": "ULES01376", "version": "1.00", "title": "TEKKEN 6"}, "paused": false}, "cpu": {"event": "cpu.status", "ticket": 452, "stepping": true, "paused": false, "pc": 144517024, "ticks": 17264843526}, "hits": {"loader": 2, "wrapper": 2, "inflate": 2, "ret": 2}, "control_hits": 334, "wall": 1792618216.8}
+{"t": "loader_hit", "seq": 2, "gpr": {}, "dest": null, "cap": null, "container": null, "w": null, "wall": 1792618217.3}
+{"t": "wrapper_hit", "seq": 2, "dest": null, "cap": null, "src": null, "src_head": null, "src_sha": null, "wall": 1792618224.2}
+{"t": "inflate_hit", "seq": 2, "wall": 1792618231.0}
+{"t": "load_done", "seq": 2, "v0": null, "state": {"seq": 2, "dest": null, "cap": null, "adlerp": null, "container": null, "w": null, "wdest": null, "wcap": null, "src": null, "wadlerp": null}, "wall": 1792618238.1}
+{"t": "loader_hit", "seq": 3, "gpr": {}, "dest": null, "cap": null, "container": null, "w": null, "wall": 1792618245.2}
+{"t": "wrapper_hit", "seq": 3, "dest": null, "cap": null, "src": null, "src_head": null, "src_sha": null, "wall": 1792618252.3}
+{"t": "inflate_hit", "seq": 3, "wall": 1792618259.0}
+{"t": "load_done", "seq": 3, "v0": null, "state": {"seq": 3, "dest": null, "cap": null, "adlerp": null, "container": null, "w": null, "wdest": null, "wcap": null, "src": null, "wadlerp": null}, "wall": 1792618266.0}
+{"t": "loader_hit", "seq": 4, "gpr": {}, "dest": null, "cap": null, "container": null, "w": null, "wall": 1792618273.2}
+{"t": "wrapper_hit", "seq": 4, "dest": null, "cap": null, "src": null, "src_head": null, "src_sha": null, "wall": 1792618280.4}
+{"t": "inflate_hit", "seq": 4, "wall": 1792618287.1}
+{"t": "load_done", "seq": 4, "v0": null, "state": {"seq": 4, "dest": null, "cap": null, "adlerp": null, "container": null, "w": null, "wdest": null, "wcap": null, "src": null, "wadlerp": null}, "wall": 1792618293.8}
+{"t": "loader_hit", "seq": 5, "gpr": {}, "dest": null, "cap": null, "container": null, "w": null, "wall": 1792618300.7}
+{"t": "wrapper_hit", "seq": 5, "dest": null, "cap": null, "src": null, "src_head": null, "src_sha": null, "wall": 1792618307.7}
+{"t": "inflate_hit", "seq": 5, "wall": 1792618314.4}
+{"t": "load_done", "seq": 5, "v0": null, "state": {"seq": 5, "dest": null, "cap": null, "adlerp": null, "container": null, "w": null, "wdest": null, "wcap": null, "src": null, "wadlerp": null}, "wall": 1792618321.5}
+{"t": "loader_hit", "seq": 6, "gpr": {}, "dest": null, "cap": null, "container": null, "w": null, "wall": 1792618328.1}
+{"t": "wrapper_hit", "seq": 6, "dest": null, "cap": null, "src": null, "src_head": null, "src_sha": null, "wall": 1792618335.0}
+{"t": "inflate_hit", "seq": 6, "wall": 1792618341.6}
+{"t": "load_done", "seq": 6, "v0": null, "state": {"seq": 6, "dest": null, "cap": null, "adlerp": null, "container": null, "w": null, "wdest": null, "wcap": null, "src": null, "wadlerp": null}, "wall": 1792618348.5}
+{"t": "loader_hit", "seq": 7, "gpr": {}, "dest": null, "cap": null, "container": null, "w": null, "wall": 1792618355.1}
+{"t": "wrapper_hit", "seq": 7, "dest": null, "cap": null, "src": null, "src_head": null, "src_sha": null, "wall": 1792618361.8}
+{"t": "inflate_hit", "seq": 7, "wall": 1792618368.4}
+{"t": "load_done", "seq": 7, "v0": null, "state": {"seq": 7, "dest": null, "cap": null, "adlerp": null, "container": null, "w": null, "wdest": null, "wcap": null, "src": null, "wadlerp": null}, "wall": 1792618375.1}
+{"t": "loader_hit", "seq": 8, "gpr": {}, "dest": null, "cap": null, "container": null, "w": null, "wall": 1792618381.9}
+{"t": "wrapper_hit", "seq": 8, "dest": null, "cap": null, "src": null, "src_head": null, "src_sha": null, "wall": 1792618388.5}
+{"t": "inflate_hit", "seq": 8, "wall": 1792618395.0}
+{"t": "load_done", "seq": 8, "v0": null, "state": {"seq": 8, "dest": null, "cap": null, "adlerp": null, "container": null, "w": null, "wdest": null, "wcap": null, "src": null, "wadlerp": null}, "wall": 1792618401.7}
+{"t": "loader_hit", "seq": 9, "gpr": {}, "dest": null, "cap": null, "container": null, "w": null, "wall": 1792618408.4}
+{"t": "wrapper_hit", "seq": 9, "dest": null, "cap": null, "src": null, "src_head": null, "src_sha": null, "wall": 1792618415.0}
+{"t": "inflate_hit", "seq": 9, "wall": 1792618421.6}
+{"t": "load_done", "seq": 9, "v0": null, "state": {"seq": 9, "dest": null, "cap": null, "adlerp": null, "container": null, "w": null, "wdest": null, "wcap": null, "src": null, "wadlerp": null}, "wall": 1792618428.3}
+{"t": "loader_hit", "seq": 10, "gpr": {}, "dest": null, "cap": null, "container": null, "w": null, "wall": 1792618435.0}
+{"t": "wrapper_hit", "seq": 10, "dest": null, "cap": null, "src": null, "src_head": null, "src_sha": null, "wall": 1792618441.7}
+{"t": "inflate_hit", "seq": 10, "wall": 1792618448.3}
+{"t": "load_done", "seq": 10, "v0": null, "state": {"seq": 10, "dest": null, "cap": null, "adlerp": null, "container": null, "w": null, "wdest": null, "wcap": null, "src": null, "wadlerp": null}, "wall": 1792618455.1}
+{"t": "loader_hit", "seq": 11, "gpr": {}, "dest": null, "cap": null, "container": null, "w": null, "wall": 1792618462.0}
+{"t": "wrapper_hit", "seq": 11, "dest": null, "cap": null, "src": null, "src_head": null, "src_sha": null, "wall": 1792618468.5}
+{"t": "inflate_hit", "seq": 11, "wall": 1792618475.2}
+{"t": "load_done", "seq": 11, "v0": null, "state": {"seq": 11, "dest": null, "cap": null, "adlerp": null, "container": null, "w": null, "wdest": null, "wcap": null, "src": null, "wadlerp": null}, "wall": 1792618482.1}
+{"t": "loader_hit", "seq": 12, "gpr": {}, "dest": null, "cap": null, "container": null, "w": null, "wall": 1792618489.0}
+{"t": "wrapper_hit", "seq": 12, "dest": null, "cap": null, "src": null, "src_head": null, "src_sha": null, "wall": 1792618495.8}
+{"t": "inflate_hit", "seq": 12, "wall": 1792618502.4}
+{"t": "load_done", "seq": 12, "v0": null, "state": {"seq": 12, "dest": null, "cap": null, "adlerp": null, "container": null, "w": null, "wdest": null, "wcap": null, "src": null, "wadlerp": null}, "wall": 1792618509.0}
+{"t": "loader_hit", "seq": 13, "gpr": {}, "dest": null, "cap": null, "container": null, "w": null, "wall": 1792618515.8}
+{"t": "wrapper_hit", "seq": 13, "dest": null, "cap": null, "src": null, "src_head": null, "src_sha": null, "wall": 1792618522.6}
+{"t": "inflate_hit", "seq": 13, "wall": 1792618529.3}
+{"t": "load_done", "seq": 13, "v0": null, "state": {"seq": 13, "dest": null, "cap": null, "adlerp": null, "container": null, "w": null, "wdest": null, "wcap": null, "src": null, "wadlerp": null}, "wall": 1792618536.2}
+{"t": "loader_hit", "seq": 14, "gpr": {}, "dest": null, "cap": null, "container": null, "w": null, "wall": 1792618558.9}
+{"t": "wrapper_hit", "seq": 14, "dest": null, "cap": null, "src": null, "src_head": null, "src_sha": null, "wall": 1792618566.2}
+{"t": "inflate_hit", "seq": 14, "wall": 1792618573.0}
+{"t": "load_done", "seq": 14, "v0": null, "state": {"seq": 14, "dest": null, "cap": null, "adlerp": null, "container": null, "w": null, "wdest": null, "wcap": null, "src": null, "wadlerp": null}, "wall": 1792618579.7}
+{"t": "loader_hit", "seq": 15, "gpr": {}, "dest": null, "cap": null, "container": null, "w": null, "wall": 1792618587.3}
+{"t": "wrapper_hit", "seq": 15, "dest": null, "cap": null, "src": null, "src_head": null, "src_sha": null, "wall": 1792618594.2}
+{"t": "inflate_hit", "seq": 15, "wall": 1792618600.8}
+{"t": "load_done", "seq": 15, "v0": null, "state": {"seq": 15, "dest": null, "cap": null, "adlerp": null, "container": null, "w": null, "wdest": null, "wcap": null, "src": null, "wadlerp": null}, "wall": 1792618607.6}
+{"t": "loader_hit", "seq": 16, "gpr": {}, "dest": null, "cap": null, "container": null, "w": null, "wall": 1792618614.1}
+{"t": "wrapper_hit", "seq": 16, "dest": null, "cap": null, "src": null, "src_head": null, "src_sha": null, "wall": 1792618620.9}
+{"t": "inflate_hit", "seq": 16, "wall": 1792618627.5}
+{"t": "load_done", "seq": 16, "v0": null, "state": {"seq": 16, "dest": null, "cap": null, "adlerp": null, "container": null, "w": null, "wdest": null, "wcap": null, "src": null, "wadlerp": null}, "wall": 1792618634.3}
+{"t": "loader_hit", "seq": 17, "gpr": {}, "dest": null, "cap": null, "container": null, "w": null, "wall": 1792618640.9}
+{"t": "wrapper_hit", "seq": 17, "dest": null, "cap": null, "src": null, "src_head": null, "src_sha": null, "wall": 1792618647.6}
+{"t": "inflate_hit", "seq": 17, "wall": 1792618654.1}
+{"t": "load_done", "seq": 17, "v0": null, "state": {"seq": 17, "dest": null, "cap": null, "adlerp": null, "container": null, "w": null, "wdest": null, "wcap": null, "src": null, "wadlerp": null}, "wall": 1792618660.8}
+{"t": "loader_hit", "seq": 18, "gpr": {}, "dest": null, "cap": null, "container": null, "w": null, "wall": 1792618667.3}
+{"t": "wrapper_hit", "seq": 18, "dest": null, "cap": null, "src": null, "src_head": null, "src_sha": null, "wall": 1792618674.0}
+{"t": "inflate_hit", "seq": 18, "wall": 1792618680.6}
+{"t": "load_done", "seq": 18, "v0": null, "state": {"seq": 18, "dest": null, "cap": null, "adlerp": null, "container": null, "w": null, "wdest": null, "wcap": null, "src": null, "wadlerp": null}, "wall": 1792618687.4}
+{"t": "loader_hit", "seq": 19, "gpr": {}, "dest": null, "cap": null, "container": null, "w": null, "wall": 1792618694.0}

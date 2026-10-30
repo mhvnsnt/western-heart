@@ -186,6 +186,33 @@
 #screen-select .pane-p2 .pane-attires { justify-content: flex-end; }
 #screen-select .pane-attires .attire-chip[disabled] { opacity: 0.55; cursor: default; }
 
+/* ---------- soul-spirit toggle (tertiary, NOT an attire — owner directive 2026-10-22) ---------- */
+#screen-select .soul-spirit-panel { pointer-events: auto; margin-top: 8px; display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+#screen-select .pane-p2 .soul-spirit-panel { align-items: flex-end; }
+#screen-select .spirit-toggle {
+  font-size: 10px; font-weight: 900; letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.85); background: rgba(20,10,32,0.8);
+  border: 1px solid rgba(159,216,255,0.45); border-radius: 999px;
+  padding: 6px 12px; cursor: pointer;
+}
+#screen-select .spirit-toggle.on { background: rgba(59,32,120,0.9); border-color: #9fd8ff; color: #fff; box-shadow: 0 0 10px rgba(159,216,255,0.5); }
+#screen-select .spirit-toggle[disabled] { opacity: 0.55; cursor: default; }
+#screen-select .spirit-souls { display: flex; flex-wrap: wrap; gap: 4px; max-width: 430px; }
+#screen-select .pane-p2 .spirit-souls { justify-content: flex-end; }
+#screen-select .spirit-soul {
+  font-size: 10px; font-weight: 800; letter-spacing: 0.5px;
+  color: rgba(255,255,255,0.8); background: rgba(20,10,32,0.7);
+  border: 1px solid rgba(255,255,255,0.25); border-radius: 6px;
+  padding: 4px 8px; cursor: pointer;
+}
+#screen-select .spirit-soul.on { border-color: #ffd60a; color: #ffd60a; background: rgba(60,45,5,0.85); }
+#screen-select .spirit-soul.vessel { border-style: double; border-color: rgba(159,216,255,0.7); }
+#screen-select .spirit-soul[disabled] { opacity: 0.55; cursor: default; }
+#screen-select .spirit-empowered {
+  font-size: 10px; font-weight: 900; letter-spacing: 1.5px; color: #ffd60a;
+  text-shadow: 0 0 8px rgba(255,214,10,0.8);
+}
+
 /* ---------- hints bar (T8 bottom-prompts fashion) ---------- */
 #screen-select .hints-bar {
   flex: 0 0 auto;
@@ -374,3 +401,41 @@
   #screen-select .hint-btn { padding: 8px 9px; font-size: 10px; }
   #screen-select .select-header h2 { font-size: 15px; }
 }
+
+/* ---------- procedural portrait fallback (worker 61, 2026-10-22) ----------
+   Deterministic SVG portraits (game/js/fighter-portraits.js, ported from the
+   owner's AshLane generator) sit UNDER the portrait <img>: a real portrait
+   PNG always wins; fighters without one yet get a personality portrait
+   instead of an empty plate. */
+.portrait .svg-fallback { position: absolute; inset: 0; display: block; }
+.portrait .svg-fallback svg { width: 100%; height: 100%; display: block; }
+.portrait img { position: relative; z-index: 1; }
+/* TTT2 versus submenu (worker 24) — lives INSIDE the select screen */
+#screen-select .vs-submenu { position: absolute; inset: 0; z-index: 30; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; background: rgba(8,6,16,.88); backdrop-filter: blur(3px); }
+#screen-select .vs-submenu[hidden] { display: none; }
+#screen-select .vs-submenu-title { font-size: 15px; letter-spacing: .18em; color: #ffd76a; font-weight: 700; }
+#screen-select .vs-submenu-row { display: flex; gap: 12px; align-items: center; justify-content: center; flex-wrap: wrap; max-width: 92%; }
+#screen-select .vs-submenu-row[hidden] { display: none; }
+#screen-select .vs-format-btn { display: flex; flex-direction: column; gap: 4px; padding: 14px 22px; background: #171226; border: 2px solid #6a5a9a; border-radius: 10px; color: #fff; cursor: pointer; min-width: 150px; }
+#screen-select .vs-format-btn b { font-size: 16px; letter-spacing: .1em; }
+#screen-select .vs-format-btn span { font-size: 11px; opacity: .65; }
+#screen-select .vs-format-btn:active { border-color: #ffd76a; }
+#screen-select .vs-size-label { width: 100%; text-align: center; font-size: 12px; letter-spacing: .2em; color: #cfc3ee; }
+#screen-select .vs-size-btns { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+#screen-select .vs-size-btn { width: 56px; height: 56px; border-radius: 10px; border: 2px solid #4a3f6a; background: #171226; color: #fff; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+#screen-select .vs-size-btn b { font-size: 18px; }
+#screen-select .vs-size-btn span { font-size: 9px; opacity: .6; letter-spacing: .08em; }
+#screen-select .vs-size-btn.on { border-color: #ffd76a; background: #2a2138; }
+#screen-select .vs-size-note { width: 100%; text-align: center; font-size: 11px; color: #9a8fc0; max-width: 340px; }
+#screen-select .vs-tray-head { width: 100%; text-align: center; font-size: 11px; letter-spacing: .22em; color: #ffd76a; margin-top: 6px; }
+#screen-select .vs-tray-row { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
+#screen-select .vs-slot { min-width: 64px; padding: 6px 10px; border-radius: 8px; border: 1px dashed #4a3f6a; background: #121020; color: #8a7fb0; font-size: 11px; text-align: center; }
+#screen-select .vs-slot.filled { border-style: solid; border-color: #6a5a9a; color: #fff; }
+#screen-select .vs-slot.next { border-color: #ffd76a; animation: vs-pulse 1s infinite; }
+#screen-select .vs-slot-n { opacity: .5; margin-right: 4px; }
+@keyframes vs-pulse { 50% { box-shadow: 0 0 12px rgba(255,215,106,.5); } }
+/* draft badges on cards */
+#screen-select .char-card.in-draft-p1 { outline: 2px solid #ff6a8a; }
+#screen-select .char-card.in-draft-p2 { outline: 2px solid #6aa8ff; }
+#screen-select .char-card.in-draft-p1::after { content: 'P1 TEAM'; position: absolute; top: 2px; left: 2px; font-size: 8px; background: #ff6a8a; color: #000; padding: 1px 4px; border-radius: 3px; font-weight: 700; }
+#screen-select .char-card.in-draft-p2::after { content: 'P2 TEAM'; position: absolute; top: 2px; left: 2px; font-size: 8px; background: #6aa8ff; color: #000; padding: 1px 4px; border-radius: 3px; font-weight: 700; }
