@@ -1,0 +1,345 @@
+{
+ "format": "wh-t7-anim-index/1",
+ "headline": "ZERO T7 clip banks exist in game/assets/anim/ (only t3/ + oss/ + made/). Every T7 move in the overlay therefore has anim_ref UNMAPPED with an exact lookup key. This index is the wiring map for the extraction lane; it is not a bank.",
+ "bank8000_rule": "PAKCHUNK0 RULED OUT (coordinator update 2026-10-24, completed pakchunk lane, proven exhaustively; full report ~/workspace/gapfill-20261024/pakchunk8000/PAKCHUNK8000_REPORT.md): teardown/pakchunk0/manifest.json (74,872 bytes) contains ONLY meshes (200) + textures (622) \u2014 zero anim/MOTA/clip/skeleton/uasset/pak entries (the 12 'motion' hits are the substring of 'promotion' in UI texture names). Tree: 1,734 entries, NO .uasset/.pak/.utoc/.bin/.arc. GLBs verified: no animations key, skeletons only \u2014 usable for retargeting, CANNOT supply clips. CONCLUSION: bank 0x8000 moves (frv 1,593 + dnc 1,527) stay CLIP-UNRESOLVED. Do NOT wait on pakchunk0, do NOT substitute another bank's clips. PRIMARY UNBLOCK (parent browser/live-game delegation): LIVE-MEMORY extraction \u2014 TKMovesets2 on a Windows box running owned T7: load Raven then Chloe in practice, export P1 each, confirm a ~1,702-entry MOTA before wiring anything. Join key stays exact: anim_ref minus 0x8000; any recovered clip must start 00 64 or 00 C8 before it is trusted.",
+ "merged_motbin_sources": {
+  "frv-pond": {
+   "repo": "mhvnsnt/game-reverse-engineering (PRIVATE)",
+   "pr": "PR #61 CLOSED + MERGED 2026-10-24T21:41:46Z",
+   "bank_file": "game/assets/anim/t7/frv-pond-motbin-bank.json",
+   "moves": 2338,
+   "bank8000_moves": 1593,
+   "bank8000_distinct_refs": 911
+  },
+  "dnc-ryusan": {
+   "repo": "mhvnsnt/game-reverse-engineering (PRIVATE)",
+   "pr": "PR #61 CLOSED + MERGED 2026-10-24T21:41:46Z",
+   "bank_file": "game/assets/anim/t7/dnc-ryusan-motbin-bank.json",
+   "moves": 2183,
+   "bank8000_moves": 1527,
+   "bank8000_distinct_refs": 910
+  }
+ },
+ "remaining_motbin": {
+  "job": "GPU lane Job 1 (already packaged, NOT redone here): 52 files, 169,262,344 bytes, from mhvnsnt/game-reverse-engineering teardown/tekken7-steam/tkdata/mothead/bin/. Outputs go to that PRIVATE repo's teardown/tekken7-steam/tkdata/mothead/json/ ONLY, never to public western-heart. Per-file table: ~/workspace/gapfill-20261024/gpu-extract/reports/PER_FILE_TABLE.md. Pre-existing extractions NOT in Job 1: asamot.json, bobmot.json, leemot.json (validation gold file, 2,303 moves, zero-diff gate), frv.json, dnc.json.",
+  "note": "Job 1 decodes MOVE TABLES (anim names/ids). It does not by itself deliver clip bytes \u2014 bank-0x8000 unblock above still applies. Frame data (TheBigTuna) and animation tables (mot.bin) are separate gaps; do not conflate them."
+ },
+ "per_fighter": {
+  "akuma": {
+   "overlay_file": "game/assets/movesets/t7/t7-akuma-lp-rp-lk-rk.json",
+   "moves": 120,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:akuma:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "alisa": {
+   "overlay_file": "game/assets/movesets/t7/t7-alisa-lp-rp-lk-rk.json",
+   "moves": 192,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:alisa:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "claudio": {
+   "overlay_file": "game/assets/movesets/t7/t7-claudio-lp-rp-lk-rk.json",
+   "moves": 98,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:claudio:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "dragunov": {
+   "overlay_file": "game/assets/movesets/t7/t7-dragunov-lp-rp-lk-rk.json",
+   "moves": 141,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:dragunov:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "eddy": {
+   "overlay_file": "game/assets/movesets/t7/t7-eddy-lp-rp-lk-rk.json",
+   "moves": 224,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:eddy:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "eliza": {
+   "overlay_file": "game/assets/movesets/t7/t7-eliza-lp-rp-lk-rk.json",
+   "moves": 87,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:eliza:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "fahkumram": {
+   "overlay_file": "game/assets/movesets/t7/t7-fahkumram-lp-rp-lk-rk.json",
+   "moves": 137,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:fahkumram:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "feng": {
+   "overlay_file": "game/assets/movesets/t7/t7-feng-lp-rp-lk-rk.json",
+   "moves": 166,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:feng:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "ganryu": {
+   "overlay_file": "game/assets/movesets/t7/t7-ganryu-lp-rp-lk-rk.json",
+   "moves": 139,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:ganryu:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "geese": {
+   "overlay_file": "game/assets/movesets/t7/t7-geese-lp-rp-lk-rk.json",
+   "moves": 106,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:geese:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "gigas": {
+   "overlay_file": "game/assets/movesets/t7/t7-gigas-lp-rp-lk-rk.json",
+   "moves": 103,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:gigas:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "hwoarang": {
+   "overlay_file": "game/assets/movesets/t7/t7-hwoarang-lp-rp-lk-rk.json",
+   "moves": 221,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:hwoarang:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "jack-7": {
+   "overlay_file": "game/assets/movesets/t7/t7-jack-7-lp-rp-lk-rk.json",
+   "moves": 182,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:jack-7:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "josie": {
+   "overlay_file": "game/assets/movesets/t7/t7-josie-lp-rp-lk-rk.json",
+   "moves": 135,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:josie:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "katarina": {
+   "overlay_file": "game/assets/movesets/t7/t7-katarina-lp-rp-lk-rk.json",
+   "moves": 109,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:katarina:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "kazumi": {
+   "overlay_file": "game/assets/movesets/t7/t7-kazumi-lp-rp-lk-rk.json",
+   "moves": 101,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:kazumi:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "kazuya": {
+   "overlay_file": "game/assets/movesets/t7/t7-kazuya-lp-rp-lk-rk.json",
+   "moves": 125,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:kazuya:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "kuma": {
+   "overlay_file": "game/assets/movesets/t7/t7-kuma-lp-rp-lk-rk.json",
+   "moves": 0,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:kuma:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "kunimitsu": {
+   "overlay_file": "game/assets/movesets/t7/t7-kunimitsu-lp-rp-lk-rk.json",
+   "moves": 185,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:kunimitsu:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "lars": {
+   "overlay_file": "game/assets/movesets/t7/t7-lars-lp-rp-lk-rk.json",
+   "moves": 127,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:lars:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "law": {
+   "overlay_file": "game/assets/movesets/t7/t7-law-lp-rp-lk-rk.json",
+   "moves": 225,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:law:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "lee": {
+   "overlay_file": "game/assets/movesets/t7/t7-lee-lp-rp-lk-rk.json",
+   "moves": 202,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:lee:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "leo": {
+   "overlay_file": "game/assets/movesets/t7/t7-leo-lp-rp-lk-rk.json",
+   "moves": 167,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:leo:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "leroy": {
+   "overlay_file": "game/assets/movesets/t7/t7-leroy-lp-rp-lk-rk.json",
+   "moves": 124,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:leroy:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "lidia": {
+   "overlay_file": "game/assets/movesets/t7/t7-lidia-lp-rp-lk-rk.json",
+   "moves": 157,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:lidia:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "lili": {
+   "overlay_file": "game/assets/movesets/t7/t7-lili-lp-rp-lk-rk.json",
+   "moves": 144,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:lili:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "ling": {
+   "overlay_file": "game/assets/movesets/t7/t7-ling-lp-rp-lk-rk.json",
+   "moves": 220,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:ling:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "lucky-chloe": {
+   "overlay_file": "game/assets/movesets/t7/t7-lucky-chloe-lp-rp-lk-rk.json",
+   "moves": 141,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:lucky-chloe:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "master-raven": {
+   "overlay_file": "game/assets/movesets/t7/t7-master-raven-lp-rp-lk-rk.json",
+   "moves": 191,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:master-raven:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "miguel": {
+   "overlay_file": "game/assets/movesets/t7/t7-miguel-lp-rp-lk-rk.json",
+   "moves": 157,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:miguel:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "negan": {
+   "overlay_file": "game/assets/movesets/t7/t7-negan-lp-rp-lk-rk.json",
+   "moves": 119,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:negan:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "nina": {
+   "overlay_file": "game/assets/movesets/t7/t7-nina-lp-rp-lk-rk.json",
+   "moves": 189,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:nina:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "noctis": {
+   "overlay_file": "game/assets/movesets/t7/t7-noctis-lp-rp-lk-rk.json",
+   "moves": 106,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:noctis:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "paul": {
+   "overlay_file": "game/assets/movesets/t7/t7-paul-lp-rp-lk-rk.json",
+   "moves": 125,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:paul:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "steve": {
+   "overlay_file": "game/assets/movesets/t7/t7-steve-lp-rp-lk-rk.json",
+   "moves": 239,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:steve:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  },
+  "zafina": {
+   "overlay_file": "game/assets/movesets/t7/t7-zafina-lp-rp-lk-rk.json",
+   "moves": 188,
+   "clips_available": false,
+   "anim_status": "UNMAPPED",
+   "lookup_key_format": "t7:zafina:<notation_lp> (frame overlay) and, where a mot.bin anim_id exists, anim_id - 0x8000 (bank extract)",
+   "unblock": "Job 2 pakchunk scan or live-memory TKMovesets extraction; never a closest-match clip."
+  }
+ },
+ "reconciliation_handoff": "Anim lookup keys for asuka, bob, bryan, devil-jin, heihachi, jin, king, shaheen, yoshimitsu are held for the reconciliation lane (see movesets INDEX.json) and are NOT in this PR. frv/dnc bank tables stay (pond/ryusan are not in PR #1039's scope).",
+ "pakchunk0_ruling": {
+  "verdict": "STILL_MISSING (proven, not guessed)",
+  "manifest": "teardown/pakchunk0/manifest.json, 74,872 bytes, meshes 200 + textures 622 only",
+  "tree": "1,734 entries, no .uasset/.pak/.utoc/.bin/.arc",
+  "glbs": "no animations key, skeletons only (retargeting targets, not clip sources)",
+  "report": "~/workspace/gapfill-20261024/pakchunk8000/PAKCHUNK8000_REPORT.md",
+  "live_memory_procedure": "TKMovesets2 on a Windows box running owned T7: load Raven then Chloe in practice, export P1 each, confirm ~1,702-entry MOTA before wiring; clip must start 00 64 or 00 C8."
+ },
+ "t7_clip_mapping_20261030": {
+ "status": "RESOLVED \u2014 bank-0x8000 mystery closed 2026-10-30 (STEAM-LIBRARY REAL-CODE lane)",
+ "what_was_wrong": "The clip banks were never in the pakchunks. They are the MOTA sections inside tkdata mothead/mask/<code>rotsm.arc in the owner-Steam extraction (GRE teardown/tekken7-steam). The earlier pakchunk0 ruling-out stands; the live-memory unblock is NO LONGER required for banks 0x4000/0x8000.",
+ "bank_map": {
+  "anim_id>=0x8000": "common.arc (bare MOTA, 1711 entries), key = anim_id - 0x8000",
+  "0x4000<=anim_id<0x8000": "character rotsm.arc section 0, key = anim_id - 0x4000",
+  "anim_id<0x4000": "file not in the pulled tkdata tree \u2014 31 mapped moves wait on it (bounded remainder)"
+ },
+ "format": "MOTA spec + parser: GRE teardown/tekken7-steam/tkdata/mothead/mask/MOTA-FORMAT.md and tools/mota_parse.py (PR mhvnsnt/game-reverse-engineering#74). Clip-start words 100/200; format-200 bodies fully decoded (f32 BE frames x tracks x vec3); format-100 bodies sliced/indexed, encoding open.",
+ "clips_storage": "GRE release t7-rotsm-clips-v1 (59,211,723 B, SHA256SUMS.txt) \u2014 distinct clips per bank; indexes in GRE mask/indexes/ and inside each clip-map JSON.",
+ "the_781": {
+  "clip_resolved": 450,
+  "mapped_bank0_no_clip": 31,
+  "honestly_unmapped": 300,
+  "supply_files": "game/assets/anim/t7/clip-maps/<fighter>-clip-map.json for pantera/phantom/skull/burger/kinpo/demonio/diablo/scimitar",
+  "doc": "docs/movesets/T7-CLIP-MAPPING-2026-10-30.md"
+ },
+ "still_open": "Wiring these clip-maps into fighter movesets is the provenance lane\u2019s step (per-character isolation). frv/dnc bank-0x8000 moves in the older motbin banks resolve through common.arc the same way (911 shared anim names verified key-identical kin/bry)."
+}
+}
