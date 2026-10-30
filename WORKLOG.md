@@ -4137,3 +4137,41 @@ downstream witness/resolution, not canon). Deletions: none.
   only the literal Clockwork Spring Middle phrase; king_150 'low*' (data
   gap); CLK(Two spins).3 (a different row from CLK.3, 22 dmg/+0 vs
   20 dmg/-9, deliberately untouched).
+
+## 2026-10-30 — Dio Rage string bare-direction-step resolver fix (PR #1252)
+- Dio's Rage row '(During Rage) 1,1,f,3,2' (Wrath of the Raging Demon, r17 failing)
+  failed in r16 as fired ["3"] (keys ["3~t7.akuma"]) only: the string broke at the
+  bare 'f' step. The resolver's string-continuation candidates attached the held
+  direction to the button ('R.1,1,f+3'), but the row's own input_slots carry
+  '...1,1,f' as its own comma step, so no candidate matched 'R.1,1,f,3' and the
+  '3' fell through to a standalone move.
+- game/js/movesets.js: in _pressV2's string-continuation block only, two additions,
+  both tried last so every string that resolves the old way is untouched: (1)
+  bare-direction-step candidates (lowercase and capital) after the
+  attached-direction candidates; (2) when the stick is neutral, the most recent
+  non-neutral direction within 10 neutral frames counts as the step direction —
+  the sweep releases to neutral before the button for motion-only steps, and pad
+  players do the same. Fix-A alone does not fix the sweep's sequence (verified:
+  released-cadence press still gave "3" on the A-only resolver); A+C resolves
+  1,1,f,3,2 -> 'R.1,1,f,3,2' in both the held and the released cadence.
+- Proof: new test/rage-dir-step.test.mjs (real Dio + Chatur data from the repo
+  tree, real TekkenBuffer resolver). Local: 4/4 against the exact edited files,
+  3 fail on unedited files (the guard test passes on both, as designed). Blast
+  radius across all eight fresh-main core-8 movesets (keys + slots): the only
+  real mid-string bare-direction-step strings are Dio 'R.1,1,f,3,2' and Chatur
+  'u/f+1+2,d/b,1' (now resolves, was d/b+1); Chatur 'b,3,d/b,3' is UNCHANGED (its
+  first step resolves as motion 'b+3', not the comma string). CI game-unit-tests
+  on the PR head is the proof record (it loops every test/*.test.mjs, including
+  the new test, and the input-determinism suite over every fighter moveset).
+- Residual, stated plainly: resolver-chain proof, not a witnessed full-fight
+  sweep pass (CI has no sweep job) — the next sweep should report the Rage row
+  fired, and throw-range at the sweep's 1.1 m gap is the remaining witness
+  question (the row is a high throw; the sweep retries closer gaps only on
+  'fired but did not connect'). _pressLegacy and the fighter.js buffered
+  continuation() carry the same candidate gap and are follow-ups, not bundled.
+- NOT in this chunk: Dio's 'DFLIP N' (real strike, Hyakkigozan, entry input not
+  established — the #1250 stance-neutral rule deliberately excludes it); the tail
+  string 'f,d,d/f+2,1+2,f,f (first hit only)' (r16: fired ["f,d,d/f+2"] only —
+  its trailing f,f are dirOnly steps with no button, a witness/data question, not
+  this mechanism); king_150 'low*' (data gap); CLK(Two spins).3 (a different row
+  from CLK.3, deliberately untouched).

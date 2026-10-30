@@ -1005,9 +1005,30 @@ export class TekkenBuffer {
     const strip = (b) => { const t = b ? b.indexOf('~') : -1; return t > 0 ? b.slice(0, t) : null; };
     if (pendingOk) { bases.push(this._strPath); const s = strip(this._strPath); if (s) bases.push(s); }
     if (this.lastMove && contOk) { bases.push(this.lastMove); const s = strip(this.lastMove); if (s) bases.push(s); }
+    // A direction tapped just before the press still counts as the string's direction step:
+    // the sweep releases to neutral before the button for motion-only steps, and pad players
+    // do the same. Only the most recent non-neutral direction within a few neutral frames
+    // counts, so a stale walk from seconds ago can never hijack a press.
+    let stepDir = dir;
+    if (!stepDir) {
+      let pos = this.hi, neutral = 0;
+      for (let n = 0; n < HIST_LEN; n++) {
+        const d = this.hist[pos];
+        if (d !== 'n') { stepDir = d; break; }
+        neutral += this.hdur[pos];
+        if (neutral > 10) break;
+        pos = this._prev(pos);
+      }
+    }
     for (const base of bases) {
       for (const sep of sepOrder(ctx)) {
+        // Bare direction step in a string ('R.1,1,f,3,2': the row's own input_slots carry
+        // '...1,1,f' as its own comma step, not f+3). The attached-direction candidates never
+        // match such a step, so the continuation broke at the direction and the button fell
+        // through to a standalone move (r16: the Rage row fired ["3"] only). Bare candidates
+        // are tried last, so every string that resolves the old way is untouched.
         const cands = dir ? [`${base}${sep}${withDir}`, `${base}${sep}${holdDir}`] : [`${base}${sep}${input}`];
+        if (stepDir) cands.push(`${base}${sep}${stepDir}${sep}${input}`, `${base}${sep}${stepDir.toUpperCase()}${sep}${input}`);
         for (const c of cands) if (has(c)) { this._strPath = null; return this._recordMove(c); }
         for (const c of cands) if (strPrefixesHas(this.fighterId, ms, c)) { this._strPath = c; this._strPathT = now; return null; }
       }
