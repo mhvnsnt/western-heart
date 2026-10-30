@@ -397,6 +397,16 @@ export function canonNotation(n) {
      failing list on the next sweep. Wall-position witnessing (press the motion with the
      back actually at the wall) is the recorded residual, not hidden. */
   s = s.replace(/^\(?back to wall\)?\s*\.\s*/i, 'WALL.');
+  /* Approach-crouching rows (sweep 2026-10-30, Pantera t7.king_229/230/268):
+     Tekken crouch throws, pressed only when the foe is crouching and the attacker has
+     closed in: 'Approach crouching enemy... d+1+3' -> 'CROUCHFOE.d+1+3'. The sweep's
+     setup('CROUCHFOE') plays exactly that situation (foe crouching, close), the way
+     condSetup already plays a crouching foe for T3 condition rows — not an n/a, because
+     the crouching-foe state exists and is playable, unlike the ground-orientation state
+     behind the enemy-on-back n/a. Timing rows ('Time with enemy...') and the wall-stun
+     row ('During enemy wall stun...') are deliberately NOT covered: they need a
+     timed-opponent-attack setup and a wall-stun state respectively, different chunks. */
+  s = s.replace(/^approach crouching enemy\.\.\.\s*(?=[udfbnUDFB1-4])/i, 'CROUCHFOE.');
   /* Running moves (TekkenDocs / wavu wiki 'WR', 'while running'): 'WR+2', 'WR 2', 'while running 2'
      -> 'WR.2'. T3's running rows carry the command '4/6+X' (any horizontal while in the run),
      imported as 'b/f+X' — never a real stick direction — so they are WR rows too (True Ogre / Chatur). */
