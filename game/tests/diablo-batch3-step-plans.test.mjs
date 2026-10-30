@@ -69,6 +69,10 @@
  *      hit_frames.json.
  *  12. fighter.js: the step-plan branch markers exist (static guard; the engine is
  *      inherited from #1096, not changed by this PR; behaviour is play-verified).
+ * Cumulative update (Diablo Batch 4, 2026-10-25): plan count 175 -> 217; earlier-keys
+ * count 132 -> 174 (111 Batch 1 + 21 Batch 2 + 42 Batch 4); all Batch 3 content
+ * assertions preserved verbatim (burger test-evolution rule; Pantera's latent break
+ * NOT copied).
  * Run: node --test game/tests/diablo-batch3-step-plans.test.mjs   (from repo root)
  */
 import test from 'node:test';
@@ -98,14 +102,14 @@ function stepBits(step) {
 test('diablo move/string counts unchanged by the additive plans block', () => {
   assert.equal(Object.keys(diablo.moves).length, 661);
   assert.equal(diablo.strings.length, 90);
-  assert.equal(Object.keys(plans).length, 175);
+  assert.equal(Object.keys(plans).length, 217);
 });
 
 test('Batch 3 keys are exactly the documented 43', () => {
   assert.equal(B3.length, 43);
   for (const key of B3) assert.ok(plans[key], `Batch 3 key ${key} missing`);
   const earlier = Object.keys(plans).filter((k) => !B3.includes(k));
-  assert.equal(earlier.length, 132);
+  assert.equal(earlier.length, 174);
 });
 
 test('Batch 3 verified steps carry rows (button == step bits, throw 0, never row 35 on ground); review/unmapped carry row null; no soft flags', () => {
