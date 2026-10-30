@@ -814,7 +814,7 @@ The shrine stones don't go silent on him, the way they do for SAM-UR-A1. They *c
 
 **Signature detail.** He has no win pose. He has a crime scene. The trial's cleaners refuse to work his arena.
 
-**Owner-locked:** Name DIO. Street Fighter's Akuma as he appears in Tekken 7 (not Kuma the bear — the bear, if ever pulled, is URSA). Master of the Satsui no Hado. Pure destructive force. Akuma base.
+**Owner-locked:** Name DIO. Street Fighter's Akuma as he appears in Tekken 7 (not Kuma the bear — the bear's name is locked: GASHADOKURO, owner name lock 2026-10-22). Master of the Satsui no Hado. Pure destructive force. Akuma base.
 
 ---
 
@@ -1556,8 +1556,7 @@ Hwoarang→GYOU, Julia→NIGHTWOLF / soul ZEN (a three-way doc conflict is flagg
 conversion record, unresolved), Lei→soul BYOU (vessel name pending the owner's Lei naming
 decision, as noted in §4 of this bible), Nina→AWA POP, Anna→TORCH, Dr. Bosconovitch→DOC
 FRANK. Law, Ogre, Gon, Panda, and Mokujin have **no** Western Heart mapping in canon —
-flagged for the owner's decision, never invented. The bear's reserved name, if ever pulled,
-is URSA (per §6, DIO).
+flagged for the owner's decision, never invented. The bear's name is now locked: GASHADOKURO (owner name lock 2026-10-22; internal ID remains `kuma` — plumbing only, never renamed; the game layer resolves the display name).
 
 Diablo is the one T3-sourced member of the Seven whose real animation bank is not yet
 decoded into the game: Heihachi's KMD carries empty vertex rows for parts 2/9/13 in both
@@ -1605,3 +1604,49 @@ wrestling repos).
   wrestler identities (`teardown/wwf-no-mercy/docs/wrestler-id-table.json`)
   have no WH mappings in RENAME-MAP.md — owner decision, flagged, not invented.
 <!-- END No Mercy / mat-kings section -->
+
+<!-- BEGIN Shrine体系 section (owner-directed 2026-10-24; in-universe only) -->
+## Shrine体系 — the shrine terminal (added 2026-10-24)
+
+`Shrine体系` (Shrine + 体系, "system") is the sacred computer-system
+kept in the Octagonal Shrine Par-fang at the Central Mountain —
+the Source, element Earth, where the trial ends. It lives in the
+shrine's room for arriving: the room where arriving souls are read
+before they are weighed. The weighing happens elsewhere; the
+terminal does not judge. It records, and it reads.
+
+The machine is deliberately narrow. It sees the world in sixteen
+colors and speaks with one voice at a time — that is not a
+limitation the shrine apologizes for, it is the shape of the
+shrine's attention: sixteen colors, one voice, three words.
+
+The Oracle is its oldest function. A soul consults the terminal
+and the terminal draws three words — from the kanji of the Nine
+Souls (凛病闘沙海刃烈禅行), from the trial inscription carved in
+stone (Fight. Die. Return. Claim the forces. Forge the katana.
+Become whole.), from the five lands and their elements. A reading
+is not a command and not a verdict. It is three words to carry.
+
+The terminal also keeps pastimes. On festival days, souls gather
+at the shrine machine and play: a descent game, dodging what the
+mountain puts in the way on the stairs that count the climber
+back; a drawing board in sixteen colors; hymns in a single voice.
+These are pastimes of the head-world, the way the other side
+games are — souls at play between trials, not trials themselves.
+
+In the Heart and Mind Within, the terminal appears at the Still
+Point: the last thing a descending soul meets before facing its
+shadow self is the shrine machine, reading it three words. The
+shadow is already listening.
+
+Nothing in the shrine is bought or sold. The terminal keeps no
+prices and takes no payment; the Phantom Marketplace is where
+trade happens, and the shrine is not the marketplace.
+
+Anchors (no prior canon contradicted): §1 Octagonal Shrine
+Par-fang, Central Mountain, Earth, the Source; §1 the trial
+inscription; §1 the shrine's rooms for arriving and being
+weighed; §4 the Nine Souls and their kanji; §1 the five lands.
+This section is additive connective tissue, per the canon rule:
+expand it, don't contradict it.
+<!-- END Shrine体系 section -->

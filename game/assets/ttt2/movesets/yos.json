@@ -1,0 +1,3151 @@
+{
+ "schema": "ttt2-moveset-v1",
+ "source_game": "Tekken Tag Tournament 2",
+ "character": "Yoshimitsu",
+ "bxml_prefix": "yos",
+ "bxml_doc": 4,
+ "mvlt_list": 5,
+ "provenance": {
+  "source_archive": "release ttt2-7z-v1 (mhvnsnt/western-heart)",
+  "pull_tool": "tools/ttt2_virtual_god.py --pull",
+  "pulled_file": "data018.bin",
+  "pulled_bytes": 557332,
+  "pulled_sha256": "7e06ad5336374973bf8f637b898c975585226fc7a260a730ad981365b2056db4",
+  "decoded_file": "decoded-data018.bin",
+  "decoded_bytes": 3027808,
+  "decoded_sha256": "54db09ebc63ee1a05a7b1c00cc2d7b5528d0d97c6ed1949da805daac7709293e",
+  "parser": "teardown/tekken-tag-tournament-2 tools: parse_mvlt_v4.py (authoritative; v1/v2/v3 superseded)",
+  "converter": "convert_mvlt_notation.py (empirical glyph map; see MVLT-GLYPH-MAP-20261030.md)",
+  "note": "Derived data only. No game binaries committed (western-heart AGENTS.md rule 8). Bins stay reproducible from release ttt2-7z-v1."
+ },
+ "counts": {
+  "records": 172,
+  "moves": 164,
+  "sample_combos": 7,
+  "separators": 1
+ },
+ "records": [
+  {
+   "row": 0,
+   "name": "Naguri Kabuto Wari",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 1",
+   "notation_std": "1, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:0",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 0
+  },
+  {
+   "row": 1,
+   "name": "Seiken Douharai",
+   "kind": "move",
+   "section": null,
+   "notation": "2, 1",
+   "notation_std": "2, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:1",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 1
+  },
+  {
+   "row": 2,
+   "name": "Flash Punch",
+   "kind": "move",
+   "section": null,
+   "notation": "2, 2",
+   "notation_std": "2, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:2",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 2
+  },
+  {
+   "row": 3,
+   "name": "Flash Attack",
+   "kind": "move",
+   "section": null,
+   "notation": "2, 3",
+   "notation_std": "2, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:yos:row:3",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 3
+  },
+  {
+   "row": 4,
+   "name": "Flash Punch Low Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "2, d+3",
+   "notation_std": "2, d+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe001",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:yos:row:4",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 4
+  },
+  {
+   "row": 5,
+   "name": "Tobi Ushiwaka",
+   "kind": "move",
+   "section": null,
+   "notation": "3, 4",
+   "notation_std": "3, 4",
+   "condition_text": "【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:yos:row:5",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 5
+  },
+  {
+   "row": 6,
+   "name": "Kangaroo Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "4, 3",
+   "notation_std": "4, 3",
+   "condition_text": "【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:yos:row:6",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 6
+  },
+  {
+   "row": 7,
+   "name": "Triple Roundhouse Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "4, 4, 4",
+   "notation_std": "4, 4, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:yos:row:7",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 7
+  },
+  {
+   "row": 8,
+   "name": "Kincho",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2, 1+2",
+   "notation_std": "1+2, 1+2",
+   "condition_text": "(or While crouching )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:yos:row:8",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 8
+  },
+  {
+   "row": 9,
+   "name": "Doushi Kiri",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 1",
+   "notation_std": "1, 1",
+   "condition_text": "During Kincho",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:9",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 9
+  },
+  {
+   "row": 10,
+   "name": "Tenshu Kuzushi",
+   "kind": "move",
+   "section": null,
+   "notation": "2, 1+2",
+   "notation_std": "2, 1+2",
+   "condition_text": "During Kincho",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:yos:row:10",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 10
+  },
+  {
+   "row": 11,
+   "name": "Shibakari",
+   "kind": "move",
+   "section": null,
+   "notation": "3",
+   "notation_std": "3",
+   "condition_text": "During Kincho",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:yos:row:11",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 11
+  },
+  {
+   "row": 12,
+   "name": "Whirlwind",
+   "kind": "move",
+   "section": null,
+   "notation": "4, 4",
+   "notation_std": "4, 4",
+   "condition_text": "During Kincho (or during side step )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:yos:row:12",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 12
+  },
+  {
+   "row": 13,
+   "name": "Ashura Blade",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "During Kincho",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:yos:row:13",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 13
+  },
+  {
+   "row": 14,
+   "name": "Ganto",
+   "kind": "move",
+   "section": null,
+   "notation": "f+2",
+   "notation_std": "f+2",
+   "condition_text": "During Kincho",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:14",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 14
+  },
+  {
+   "row": 15,
+   "name": "Mumyo Juji Ken",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1+2",
+   "notation_std": "b+1+2",
+   "condition_text": "During Kincho",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:yos:row:15",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 15
+  },
+  {
+   "row": 16,
+   "name": "Kincho Dragonfly",
+   "kind": "move",
+   "section": null,
+   "notation": "u+1+2",
+   "notation_std": "u+1+2",
+   "condition_text": "During Kincho",
+   "multi_part": false,
+   "glyphs": [
+    "0xe006",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:yos:row:16",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 16
+  },
+  {
+   "row": 17,
+   "name": "Meditation",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4, 3+4",
+   "notation_std": "3+4, 3+4",
+   "condition_text": "(or Back towards enemy )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:yos:row:17",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 17
+  },
+  {
+   "row": 18,
+   "name": "Back Handspring",
+   "kind": "move",
+   "section": null,
+   "notation": "3",
+   "notation_std": "3",
+   "condition_text": "During Meditation",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:yos:row:18",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 18
+  },
+  {
+   "row": 19,
+   "name": "Meditation Healing",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "During Meditation",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:yos:row:19",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 19
+  },
+  {
+   "row": 20,
+   "name": "Meditation Harakiri",
+   "kind": "move",
+   "section": null,
+   "notation": "1+4",
+   "notation_std": "1+4",
+   "condition_text": "During Meditation",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01d"
+   ],
+   "anim_ref": "ttt2:yos:row:20",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 20
+  },
+  {
+   "row": 21,
+   "name": "Soul Stealer",
+   "kind": "move",
+   "section": null,
+   "notation": "1+4",
+   "notation_std": "1+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01d"
+   ],
+   "anim_ref": "ttt2:yos:row:21",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 21
+  },
+  {
+   "row": 22,
+   "name": "Spirit Shield",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2+3",
+   "notation_std": "1+2+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01b"
+   ],
+   "anim_ref": "ttt2:yos:row:22",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 22
+  },
+  {
+   "row": 23,
+   "name": "Manji Backfist 1",
+   "kind": "move",
+   "section": null,
+   "notation": "f+2",
+   "notation_std": "f+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:23",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 23
+  },
+  {
+   "row": 24,
+   "name": "Backfist to Stone Fist",
+   "kind": "move",
+   "section": null,
+   "notation": "f+2, D/B+2, 2, 2, 2, 2, 2",
+   "notation_std": "f+2, d/b+2, 2, 2, 2, 2, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe016",
+    "0xe008",
+    "0xe016",
+    "0xe016",
+    "0xe016",
+    "0xe016",
+    "0xe016",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:24",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 24
+  },
+  {
+   "row": 25,
+   "name": "Oni Kick Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "f+3, 3",
+   "notation_std": "f+3, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe018",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:yos:row:25",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 25
+  },
+  {
+   "row": 26,
+   "name": "Zig Zag",
+   "kind": "move",
+   "section": null,
+   "notation": "f+3, 4",
+   "notation_std": "f+3, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:yos:row:26",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 26
+  },
+  {
+   "row": 27,
+   "name": "Toita Daoshi",
+   "kind": "move",
+   "section": null,
+   "notation": "f+4",
+   "notation_std": "f+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:yos:row:27",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 27
+  },
+  {
+   "row": 28,
+   "name": "Tsuka Splitter",
+   "kind": "move",
+   "section": null,
+   "notation": "f+1+2",
+   "notation_std": "f+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:yos:row:28",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 28
+  },
+  {
+   "row": 29,
+   "name": "Kamikaze",
+   "kind": "move",
+   "section": null,
+   "notation": "f+3+4",
+   "notation_std": "f+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:yos:row:29",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 29
+  },
+  {
+   "row": 30,
+   "name": "Kamikaze Feint",
+   "kind": "move",
+   "section": null,
+   "notation": "f+3+4, B",
+   "notation_std": "f+3+4, b",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe020",
+    "0xe00b"
+   ],
+   "anim_ref": "ttt2:yos:row:30",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 30
+  },
+  {
+   "row": 31,
+   "name": "Tsuka Atemi",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+1",
+   "notation_std": "d/f+1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:31",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 31
+  },
+  {
+   "row": 32,
+   "name": "Kasane Wakizashi",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+2, 2",
+   "notation_std": "d/f+2, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe016",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:32",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 32
+  },
+  {
+   "row": 33,
+   "name": "Wood Cutter",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+3, 1",
+   "notation_std": "d/f+3, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe018",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:33",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 33
+  },
+  {
+   "row": 34,
+   "name": "Nebular Burst",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+1+2, 2",
+   "notation_std": "d/f+1+2, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe017",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:34",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 34
+  },
+  {
+   "row": 35,
+   "name": "Quick Slash",
+   "kind": "move",
+   "section": null,
+   "notation": "d+1",
+   "notation_std": "d+1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:35",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 35
+  },
+  {
+   "row": 36,
+   "name": "Death Slash",
+   "kind": "move",
+   "section": null,
+   "notation": "d+1",
+   "notation_std": "d+1",
+   "condition_text": "Hold ☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:36",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 36
+  },
+  {
+   "row": 37,
+   "name": "Heshikirigari",
+   "kind": "move",
+   "section": null,
+   "notation": "d+2, 2",
+   "notation_std": "d+2, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe016",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:37",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 37
+  },
+  {
+   "row": 38,
+   "name": "Heshikiribarai",
+   "kind": "move",
+   "section": null,
+   "notation": "d+2, 2, 1",
+   "notation_std": "d+2, 2, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe016",
+    "0xe016",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:38",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 38
+  },
+  {
+   "row": 39,
+   "name": "Heshikirinagi",
+   "kind": "move",
+   "section": null,
+   "notation": "d+2, 2, d+1",
+   "notation_std": "d+2, 2, d+1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe016",
+    "0xe016",
+    "0xe001",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:39",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 39
+  },
+  {
+   "row": 40,
+   "name": "Heshikirimutou",
+   "kind": "move",
+   "section": null,
+   "notation": "d+2, 2, 2+3",
+   "notation_std": "d+2, 2, 2+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe016",
+    "0xe016",
+    "0xe01a"
+   ],
+   "anim_ref": "ttt2:yos:row:40",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 40
+  },
+  {
+   "row": 41,
+   "name": "Flea",
+   "kind": "move",
+   "section": null,
+   "notation": "d+1+2, b",
+   "notation_std": "d+1+2, b",
+   "condition_text": "( to cancel)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe017",
+    "0xe003"
+   ],
+   "anim_ref": "ttt2:yos:row:41",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 41
+  },
+  {
+   "row": 42,
+   "name": "Flea Roll",
+   "kind": "move",
+   "section": null,
+   "notation": "1",
+   "notation_std": "1",
+   "condition_text": "During Flea",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:42",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 42
+  },
+  {
+   "row": 43,
+   "name": "Flea to Sliding Headbutt",
+   "kind": "move",
+   "section": null,
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "During Flea",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:43",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 43
+  },
+  {
+   "row": 44,
+   "name": "Flea Dance",
+   "kind": "move",
+   "section": null,
+   "notation": "3, 4",
+   "notation_std": "3, 4",
+   "condition_text": "During Flea (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:yos:row:44",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 44
+  },
+  {
+   "row": 45,
+   "name": "Skull Splitter",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "During Flea",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:yos:row:45",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 45
+  },
+  {
+   "row": 46,
+   "name": "Flea to Kangaroo Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "During Flea",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:yos:row:46",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 46
+  },
+  {
+   "row": 47,
+   "name": "Flea Step",
+   "kind": "move",
+   "section": null,
+   "notation": "f",
+   "notation_std": "f",
+   "condition_text": "During Flea",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004"
+   ],
+   "anim_ref": "ttt2:yos:row:47",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 47
+  },
+  {
+   "row": 48,
+   "name": "Sakanobori",
+   "kind": "move",
+   "section": null,
+   "notation": "3",
+   "notation_std": "3",
+   "condition_text": "During Flea Step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:yos:row:48",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 48
+  },
+  {
+   "row": 49,
+   "name": "Tsurubebi",
+   "kind": "move",
+   "section": null,
+   "notation": "4",
+   "notation_std": "4",
+   "condition_text": "During Flea Step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:yos:row:49",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 49
+  },
+  {
+   "row": 50,
+   "name": "Running Flea",
+   "kind": "move",
+   "section": null,
+   "notation": "f, f",
+   "notation_std": "f, f",
+   "condition_text": "During Flea",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe004"
+   ],
+   "anim_ref": "ttt2:yos:row:50",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 50
+  },
+  {
+   "row": 51,
+   "name": "Flea Digger",
+   "kind": "move",
+   "section": null,
+   "notation": "d",
+   "notation_std": "d",
+   "condition_text": "During Flea",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001"
+   ],
+   "anim_ref": "ttt2:yos:row:51",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 51
+  },
+  {
+   "row": 52,
+   "name": "Flea Indian Stance",
+   "kind": "move",
+   "section": null,
+   "notation": "d+3+4",
+   "notation_std": "d+3+4",
+   "condition_text": "During Flea",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:yos:row:52",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 52
+  },
+  {
+   "row": 53,
+   "name": "Flea to Manji Dragonfly",
+   "kind": "move",
+   "section": null,
+   "notation": "u+1+2",
+   "notation_std": "u+1+2",
+   "condition_text": "During Flea",
+   "multi_part": false,
+   "glyphs": [
+    "0xe006",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:yos:row:53",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 53
+  },
+  {
+   "row": 54,
+   "name": "Flea to Dragonfly Feint",
+   "kind": "move",
+   "section": null,
+   "notation": "u+3+4",
+   "notation_std": "u+3+4",
+   "condition_text": "During Flea",
+   "multi_part": false,
+   "glyphs": [
+    "0xe006",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:yos:row:54",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 54
+  },
+  {
+   "row": 55,
+   "name": "Jumping Flea",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f",
+   "notation_std": "u/f",
+   "condition_text": "During Flea",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007"
+   ],
+   "anim_ref": "ttt2:yos:row:55",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 55
+  },
+  {
+   "row": 56,
+   "name": "Indian Stance",
+   "kind": "move",
+   "section": null,
+   "notation": "D+3+4",
+   "notation_std": "d+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe009",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:yos:row:56",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 56
+  },
+  {
+   "row": 57,
+   "name": "Indian Stance Healing",
+   "kind": "move",
+   "section": null,
+   "notation": "D+3+4",
+   "notation_std": "d+3+4",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe009",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:yos:row:57",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 57
+  },
+  {
+   "row": 58,
+   "name": "Indian Stance Storm",
+   "kind": "move",
+   "section": null,
+   "notation": "1",
+   "notation_std": "1",
+   "condition_text": "During Indian Stance Healing",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:58",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 58
+  },
+  {
+   "row": 59,
+   "name": "Indian Stance Stone Fists",
+   "kind": "move",
+   "section": null,
+   "notation": "2, D/B+2, 2, 2, 2",
+   "notation_std": "2, d/b+2, 2, 2, 2",
+   "condition_text": "During Indian Stance Healing",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe008",
+    "0xe016",
+    "0xe016",
+    "0xe016",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:59",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 59
+  },
+  {
+   "row": 60,
+   "name": "Indian Stance Cannon",
+   "kind": "move",
+   "section": null,
+   "notation": "3, 3+4",
+   "notation_std": "3, 3+4",
+   "condition_text": "During Indian Stance Healing",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:yos:row:60",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 60
+  },
+  {
+   "row": 61,
+   "name": "Indian Stance Kangaroo Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "4",
+   "notation_std": "4",
+   "condition_text": "During Indian Stance Healing",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:yos:row:61",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 61
+  },
+  {
+   "row": 62,
+   "name": "Indian Stance Vacuum Dance",
+   "kind": "move",
+   "section": null,
+   "notation": "b, f",
+   "notation_std": "b, f",
+   "condition_text": "During Indian Stance Healing (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe004"
+   ],
+   "anim_ref": "ttt2:yos:row:62",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 62
+  },
+  {
+   "row": 63,
+   "name": "Indian Levitation",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "During Indian Stance Healing Hold",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:yos:row:63",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 63
+  },
+  {
+   "row": 64,
+   "name": "Harakiri",
+   "kind": "move",
+   "section": null,
+   "notation": "d+1+4",
+   "notation_std": "d+1+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe01d"
+   ],
+   "anim_ref": "ttt2:yos:row:64",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 64
+  },
+  {
+   "row": 65,
+   "name": "Harakiri to Manji Blood Dance",
+   "kind": "move",
+   "section": null,
+   "notation": "d+1+4, B+1, 1, 1, 1, 1",
+   "notation_std": "d+1+4, b+1, 1, 1, 1, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe01d",
+    "0xe00b",
+    "0xe015",
+    "0xe015",
+    "0xe015",
+    "0xe015",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:65",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 65
+  },
+  {
+   "row": 66,
+   "name": "Nade Kujaku",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+1, 1",
+   "notation_std": "d/b+1, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe015",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:66",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 66
+  },
+  {
+   "row": 67,
+   "name": "Stone Fists",
+   "kind": "move",
+   "section": null,
+   "notation": "D/B+2, 2, 2, 2, 2, 2",
+   "notation_std": "d/b+2, 2, 2, 2, 2, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe008",
+    "0xe016",
+    "0xe016",
+    "0xe016",
+    "0xe016",
+    "0xe016",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:67",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 67
+  },
+  {
+   "row": 68,
+   "name": "Manji Spin Low Kicks",
+   "kind": "move",
+   "section": null,
+   "notation": "D/B+3, 3, 3, 3, 3, 3",
+   "notation_std": "d/b+3, 3, 3, 3, 3, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe008",
+    "0xe018",
+    "0xe018",
+    "0xe018",
+    "0xe018",
+    "0xe018",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:yos:row:68",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 68
+  },
+  {
+   "row": 69,
+   "name": "Manji Spin Low Kicks Front Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "4",
+   "notation_std": "4",
+   "condition_text": "During Manji Spin Low Kicks",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:yos:row:69",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 69
+  },
+  {
+   "row": 70,
+   "name": "Nozuchi Fumi",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+4",
+   "notation_std": "d/b+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:yos:row:70",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 70
+  },
+  {
+   "row": 71,
+   "name": "Bad Stomach",
+   "kind": "move",
+   "section": null,
+   "notation": "D/B+1+2",
+   "notation_std": "d/b+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe008",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:yos:row:71",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 71
+  },
+  {
+   "row": 72,
+   "name": "Poison Breath",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2",
+   "notation_std": "1, 2",
+   "condition_text": "During Bad Stomach (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:72",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 72
+  },
+  {
+   "row": 73,
+   "name": "Bad Stomach to Backflip Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "3, 4",
+   "notation_std": "3, 4",
+   "condition_text": "During Bad Stomach (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:yos:row:73",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 73
+  },
+  {
+   "row": 74,
+   "name": "Slap U Silly",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1, 1, 1, 1, 1, 1",
+   "notation_std": "b+1, 1, 1, 1, 1, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe015",
+    "0xe015",
+    "0xe015",
+    "0xe015",
+    "0xe015",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:74",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 74
+  },
+  {
+   "row": 75,
+   "name": "Slap U Silly to Side Spin",
+   "kind": "move",
+   "section": null,
+   "notation": "b+3, b+4",
+   "notation_std": "b+3, b+4",
+   "condition_text": "During Slap U Silly (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe018",
+    "0xe003",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:yos:row:75",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 75
+  },
+  {
+   "row": 76,
+   "name": "Oma Gehosen",
+   "kind": "move",
+   "section": null,
+   "notation": "b+2, 1",
+   "notation_std": "b+2, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe016",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:76",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 76
+  },
+  {
+   "row": 77,
+   "name": "Oma Kugiuchi",
+   "kind": "move",
+   "section": null,
+   "notation": "b+2, 2",
+   "notation_std": "b+2, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe016",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:77",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 77
+  },
+  {
+   "row": 78,
+   "name": "Oni Thrust",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1+2",
+   "notation_std": "b+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:yos:row:78",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 78
+  },
+  {
+   "row": 79,
+   "name": "Spinning Evade",
+   "kind": "move",
+   "section": null,
+   "notation": "B+3, 3, 3, 3, 3, 3, B+4, 4, 4, 4, 4, 4",
+   "notation_std": "b+3, 3, 3, 3, 3, 3, b+4, 4, 4, 4, 4, 4",
+   "condition_text": "(or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe00b",
+    "0xe018",
+    "0xe018",
+    "0xe018",
+    "0xe018",
+    "0xe018",
+    "0xe018",
+    "0xe00b",
+    "0xe01c",
+    "0xe01c",
+    "0xe01c",
+    "0xe01c",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:yos:row:79",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 79
+  },
+  {
+   "row": 80,
+   "name": "Sword Stab",
+   "kind": "move",
+   "section": null,
+   "notation": "u/b+1+2",
+   "notation_std": "u/b+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe005",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:yos:row:80",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 80
+  },
+  {
+   "row": 81,
+   "name": "Face Splitter",
+   "kind": "move",
+   "section": null,
+   "notation": "u/b+1+2, 1+2",
+   "notation_std": "u/b+1+2, 1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe005",
+    "0xe017",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:yos:row:81",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 81
+  },
+  {
+   "row": 82,
+   "name": "Sword Poke Windmill",
+   "kind": "move",
+   "section": null,
+   "notation": "u/b+1+2, 1",
+   "notation_std": "u/b+1+2, 1",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe005",
+    "0xe017",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:82",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 82
+  },
+  {
+   "row": 83,
+   "name": "Manji Dragonfly",
+   "kind": "move",
+   "section": null,
+   "notation": "u+1+2",
+   "notation_std": "u+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe006",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:yos:row:83",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 83
+  },
+  {
+   "row": 84,
+   "name": "Dragonfly Blade",
+   "kind": "move",
+   "section": null,
+   "notation": "1",
+   "notation_std": "1",
+   "condition_text": "During Manji Dragonfly",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:84",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 84
+  },
+  {
+   "row": 85,
+   "name": "Dragonfly Fist",
+   "kind": "move",
+   "section": null,
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "During Manji Dragonfly",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:85",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 85
+  },
+  {
+   "row": 86,
+   "name": "Dragonfly Sweep",
+   "kind": "move",
+   "section": null,
+   "notation": "3",
+   "notation_std": "3",
+   "condition_text": "During Manji Dragonfly",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:yos:row:86",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 86
+  },
+  {
+   "row": 87,
+   "name": "Dragonfly Twister",
+   "kind": "move",
+   "section": null,
+   "notation": "4",
+   "notation_std": "4",
+   "condition_text": "During Manji Dragonfly",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:yos:row:87",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 87
+  },
+  {
+   "row": 88,
+   "name": "Spirited Away",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "During Manji Dragonfly",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:yos:row:88",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 88
+  },
+  {
+   "row": 89,
+   "name": "Guillotine Crow Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "u+3+4",
+   "notation_std": "u+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe006",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:yos:row:89",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 89
+  },
+  {
+   "row": 90,
+   "name": "Kurama Itto",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+2",
+   "notation_std": "u/f+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:90",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 90
+  },
+  {
+   "row": 91,
+   "name": "Rising Knee",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3",
+   "notation_std": "u/f+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:yos:row:91",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 91
+  },
+  {
+   "row": 92,
+   "name": "Avoiding the Puddle",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+4",
+   "notation_std": "u/f+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:yos:row:92",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 92
+  },
+  {
+   "row": 93,
+   "name": "Death Copter",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+1+2",
+   "notation_std": "u/f+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:yos:row:93",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 93
+  },
+  {
+   "row": 94,
+   "name": "Death Copter to Manji Dragonfly",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+1+2, 1+2",
+   "notation_std": "u/f+1+2, 1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe017",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:yos:row:94",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 94
+  },
+  {
+   "row": 95,
+   "name": "Death Copter Slice",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+1+2, d",
+   "notation_std": "u/f+1+2, d",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe017",
+    "0xe001"
+   ],
+   "anim_ref": "ttt2:yos:row:95",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 95
+  },
+  {
+   "row": 96,
+   "name": "Death Copter Trick",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+1+2, b",
+   "notation_std": "u/f+1+2, b",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe017",
+    "0xe003"
+   ],
+   "anim_ref": "ttt2:yos:row:96",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 96
+  },
+  {
+   "row": 97,
+   "name": "Death Copter Trick to Manji Dragonfly",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+1+2, b+1+2",
+   "notation_std": "u/f+1+2, b+1+2",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe017",
+    "0xe003",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:yos:row:97",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 97
+  },
+  {
+   "row": 98,
+   "name": "Poison Wind",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3+4",
+   "notation_std": "u/f+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:yos:row:98",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 98
+  },
+  {
+   "row": 99,
+   "name": "Poison Wind to Manji Dragonfly",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3+4, 1+2",
+   "notation_std": "u/f+3+4, 1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe020",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:yos:row:99",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 99
+  },
+  {
+   "row": 100,
+   "name": "Poison Wind to Kangaroo Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3+4, 3+4",
+   "notation_std": "u/f+3+4, 3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe020",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:yos:row:100",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 100
+  },
+  {
+   "row": 101,
+   "name": "Poison Wind to Flea",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3+4, d+1+2",
+   "notation_std": "u/f+3+4, d+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe020",
+    "0xe001",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:yos:row:101",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 101
+  },
+  {
+   "row": 102,
+   "name": "Poison Wind to Indian Stance",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3+4, d+3+4",
+   "notation_std": "u/f+3+4, d+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe020",
+    "0xe001",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:yos:row:102",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 102
+  },
+  {
+   "row": 103,
+   "name": "Poison Wind Bronze Fist",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3+4, b+1",
+   "notation_std": "u/f+3+4, b+1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe020",
+    "0xe003",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:103",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 103
+  },
+  {
+   "row": 104,
+   "name": "Poison Wind Silver Fist",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3+4, b+1, 4",
+   "notation_std": "u/f+3+4, b+1, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe020",
+    "0xe003",
+    "0xe015",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:yos:row:104",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 104
+  },
+  {
+   "row": 105,
+   "name": "Poison Wind Gold Fist",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3+4, b+1, 4, d+1",
+   "notation_std": "u/f+3+4, b+1, 4, d+1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe020",
+    "0xe003",
+    "0xe015",
+    "0xe01c",
+    "0xe001",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:105",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 105
+  },
+  {
+   "row": 106,
+   "name": "Poison Wind Bronze Fist Steel Fist",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3+4, b+1, 3+4",
+   "notation_std": "u/f+3+4, b+1, 3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe020",
+    "0xe003",
+    "0xe015",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:yos:row:106",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 106
+  },
+  {
+   "row": 107,
+   "name": "Poison Wind Eclipse Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3+4, u+3+4",
+   "notation_std": "u/f+3+4, u+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe020",
+    "0xe006",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:yos:row:107",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 107
+  },
+  {
+   "row": 108,
+   "name": "Sword Smash",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+2",
+   "notation_std": "f, f+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:108",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 108
+  },
+  {
+   "row": 109,
+   "name": "Yomi Kakenuke",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+2",
+   "notation_std": "f, f+2",
+   "condition_text": "During Counter Hit",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:109",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 109
+  },
+  {
+   "row": 110,
+   "name": "Iwatsubute",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+3",
+   "notation_std": "f, f+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:yos:row:110",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 110
+  },
+  {
+   "row": 111,
+   "name": "Fubuki",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+4",
+   "notation_std": "f, f+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:yos:row:111",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 111
+  },
+  {
+   "row": 112,
+   "name": "Solar Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+1+2",
+   "notation_std": "f, f+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:yos:row:112",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 112
+  },
+  {
+   "row": 113,
+   "name": "Reverse Cartwheel",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+3+4",
+   "notation_std": "f, f+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:yos:row:113",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 113
+  },
+  {
+   "row": 114,
+   "name": "Reverse Cartwheel Shark Attack",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+3+4, 1+2",
+   "notation_std": "f, f+3+4, 1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe020",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:yos:row:114",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 114
+  },
+  {
+   "row": 115,
+   "name": "Solar Kick Shark Attack",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+3+4, 1+2, 3+4",
+   "notation_std": "f, f+3+4, 1+2, 3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe020",
+    "0xe017",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:yos:row:115",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 115
+  },
+  {
+   "row": 116,
+   "name": "Suicide",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+1+4",
+   "notation_std": "f, f+1+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe01d"
+   ],
+   "anim_ref": "ttt2:yos:row:116",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 116
+  },
+  {
+   "row": 117,
+   "name": "Confusion",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+1+4",
+   "notation_std": "f, f+1+4",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe01d"
+   ],
+   "anim_ref": "ttt2:yos:row:117",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 117
+  },
+  {
+   "row": 118,
+   "name": "Double Suicide",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+1+4, f, F",
+   "notation_std": "f, f+1+4, f, f",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe01d",
+    "0xe004",
+    "0xe00c"
+   ],
+   "anim_ref": "ttt2:yos:row:118",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 118
+  },
+  {
+   "row": 119,
+   "name": "Thunder Blade",
+   "kind": "move",
+   "section": null,
+   "notation": "b, B+1+2",
+   "notation_std": "b, b+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe00b",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:yos:row:119",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 119
+  },
+  {
+   "row": 120,
+   "name": "Gehosen",
+   "kind": "move",
+   "section": null,
+   "notation": "f, d, d/f+1",
+   "notation_std": "f, d, d/f+1",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe001",
+    "0xe002",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:120",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 120
+  },
+  {
+   "row": 121,
+   "name": "Moonsault Slayer",
+   "kind": "move",
+   "section": null,
+   "notation": "d, d/f, f+1",
+   "notation_std": "d, d/f, f+1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe002",
+    "0xe004",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:121",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 121
+  },
+  {
+   "row": 122,
+   "name": "Manji Spin Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "f, f, f+3",
+   "notation_std": "f, f, f+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe004",
+    "0xe004",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:yos:row:122",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 122
+  },
+  {
+   "row": 123,
+   "name": "Door Knocker",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 1, 1, 1",
+   "notation_std": "1, 1, 1, 1",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe015",
+    "0xe015",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:123",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 123
+  },
+  {
+   "row": 124,
+   "name": "Door Knocker to Back Knuckle",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2",
+   "notation_std": "1, 2",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:124",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 124
+  },
+  {
+   "row": 125,
+   "name": "Door Knocker to Back Knuckle Slap U Crazy",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2, D/B+2, 2, 2, 2, 2, 2",
+   "notation_std": "1, 2, d/b+2, 2, 2, 2, 2, 2",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe008",
+    "0xe016",
+    "0xe016",
+    "0xe016",
+    "0xe016",
+    "0xe016",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:125",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 125
+  },
+  {
+   "row": 126,
+   "name": "Exorcism Fist",
+   "kind": "move",
+   "section": null,
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:126",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 126
+  },
+  {
+   "row": 127,
+   "name": "Scowling Aratama",
+   "kind": "move",
+   "section": null,
+   "notation": "2, 1, 2",
+   "notation_std": "2, 1, 2",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:127",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 127
+  },
+  {
+   "row": 128,
+   "name": "Scowling Spirit",
+   "kind": "move",
+   "section": null,
+   "notation": "2, 1, 3",
+   "notation_std": "2, 1, 3",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe015",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:yos:row:128",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 128
+  },
+  {
+   "row": 129,
+   "name": "Kimon Matagi",
+   "kind": "move",
+   "section": null,
+   "notation": "3, 2",
+   "notation_std": "3, 2",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:129",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 129
+  },
+  {
+   "row": 130,
+   "name": "Knee Cap",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+4",
+   "notation_std": "d/f+4",
+   "condition_text": "While crouching",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:yos:row:130",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 130
+  },
+  {
+   "row": 131,
+   "name": "Samurai Cutter",
+   "kind": "move",
+   "section": null,
+   "notation": "D/F+1",
+   "notation_std": "d/f+1",
+   "condition_text": "While crouching",
+   "multi_part": false,
+   "glyphs": [
+    "0xe00a",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:131",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 131
+  },
+  {
+   "row": 132,
+   "name": "Inner Palm",
+   "kind": "move",
+   "section": null,
+   "notation": "1",
+   "notation_std": "1",
+   "condition_text": "During side step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:132",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 132
+  },
+  {
+   "row": 133,
+   "name": "Shrine",
+   "kind": "move",
+   "section": null,
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "During side step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:133",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 133
+  },
+  {
+   "row": 134,
+   "name": "Aratama",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2",
+   "notation_std": "1, 2",
+   "condition_text": "Back towards enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:134",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 134
+  },
+  {
+   "row": 135,
+   "name": "Magatama",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 3",
+   "notation_std": "1, 3",
+   "condition_text": "Back towards enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:yos:row:135",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 135
+  },
+  {
+   "row": 136,
+   "name": "Manji Backfist 2",
+   "kind": "move",
+   "section": null,
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "Back towards enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:136",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 136
+  },
+  {
+   "row": 137,
+   "name": "Perilous Spirit",
+   "kind": "move",
+   "section": null,
+   "notation": "3",
+   "notation_std": "3",
+   "condition_text": "Back towards enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:yos:row:137",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 137
+  },
+  {
+   "row": 138,
+   "name": "Shisetsu Genman",
+   "kind": "move",
+   "section": null,
+   "notation": "d+1",
+   "notation_std": "d+1",
+   "condition_text": "Back towards enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:138",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 138
+  },
+  {
+   "row": 139,
+   "name": "Indian Stance Healing",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "While down (facing up)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:yos:row:139",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 139
+  },
+  {
+   "row": 140,
+   "name": "Kaishaku",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+1",
+   "notation_std": "u/f+1",
+   "condition_text": "(While enemy is down)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:140",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 140
+  },
+  {
+   "row": 141,
+   "name": "■ Commands during Mutou no Kiwami ■",
+   "kind": "separator"
+  },
+  {
+   "row": 142,
+   "name": "Mutou no Kiwami",
+   "kind": "move",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "2+3",
+   "notation_std": "2+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01a"
+   ],
+   "anim_ref": "ttt2:yos:row:142",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 142
+  },
+  {
+   "row": 143,
+   "name": "Karakuri Uzumaki",
+   "kind": "move",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "2, 1",
+   "notation_std": "2, 1",
+   "condition_text": "During Mutou no Kiwami",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:143",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 143
+  },
+  {
+   "row": 144,
+   "name": "Utsusemi",
+   "kind": "move",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "1+2, 1",
+   "notation_std": "1+2, 1",
+   "condition_text": "During Mutou no Kiwami",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:144",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 144
+  },
+  {
+   "row": 145,
+   "name": "Battou",
+   "kind": "move",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "2+3",
+   "notation_std": "2+3",
+   "condition_text": "During Mutou no Kiwami",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01a"
+   ],
+   "anim_ref": "ttt2:yos:row:145",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 145
+  },
+  {
+   "row": 146,
+   "name": "Prison Gate",
+   "kind": "move",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "f+1+2",
+   "notation_std": "f+1+2",
+   "condition_text": "During Mutou no Kiwami",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:yos:row:146",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 146
+  },
+  {
+   "row": 147,
+   "name": "Ishiusu Tsubushi",
+   "kind": "move",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "u+1+2",
+   "notation_std": "u+1+2",
+   "condition_text": "During Mutou no Kiwami",
+   "multi_part": false,
+   "glyphs": [
+    "0xe006",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:yos:row:147",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 147
+  },
+  {
+   "row": 148,
+   "name": "Agonbaku",
+   "kind": "move",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "D/F+1, 2",
+   "notation_std": "d/f+1, 2",
+   "condition_text": "During Mutou no Kiwami (while crouching)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe00a",
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:148",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 148
+  },
+  {
+   "row": 149,
+   "name": "10 Hit Combo 1",
+   "kind": "move",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "1, 2, 1, 4, 4, 4, 1, 1, 1, 1",
+   "notation_std": "1, 2, 1, 4, 4, 4, 1, 1, 1, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe015",
+    "0xe01c",
+    "0xe01c",
+    "0xe01c",
+    "0xe015",
+    "0xe015",
+    "0xe015",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:149",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 149
+  },
+  {
+   "row": 150,
+   "name": "10 Hit Combo 2",
+   "kind": "move",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "1, 2, 1, 4, 2, 2, 2, 4, 1, 1",
+   "notation_std": "1, 2, 1, 4, 2, 2, 2, 4, 1, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe015",
+    "0xe01c",
+    "0xe016",
+    "0xe016",
+    "0xe016",
+    "0xe01c",
+    "0xe015",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:150",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 150
+  },
+  {
+   "row": 151,
+   "name": "10 Hit Combo 3",
+   "kind": "move",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "1, 2, 1, 4, 4, 4, 1, 3+4",
+   "notation_std": "1, 2, 1, 4, 4, 4, 1, 3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe015",
+    "0xe01c",
+    "0xe01c",
+    "0xe01c",
+    "0xe015",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:yos:row:151",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 151
+  },
+  {
+   "row": 152,
+   "name": "10 Hit Combo 4",
+   "kind": "move",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "4, 4, 2, 2, 4, 4, 1, 1, 1, 1",
+   "notation_std": "4, 4, 2, 2, 4, 4, 1, 1, 1, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe01c",
+    "0xe016",
+    "0xe016",
+    "0xe01c",
+    "0xe01c",
+    "0xe015",
+    "0xe015",
+    "0xe015",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:152",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 152
+  },
+  {
+   "row": 153,
+   "name": "10 Hit Combo 5",
+   "kind": "move",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "4, 4, 2, 2, 4, 4, 1, 3+4",
+   "notation_std": "4, 4, 2, 2, 4, 4, 1, 3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe01c",
+    "0xe016",
+    "0xe016",
+    "0xe01c",
+    "0xe01c",
+    "0xe015",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:yos:row:153",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 153
+  },
+  {
+   "row": 154,
+   "name": "10 Hit Combo 6",
+   "kind": "move",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "4, 4, 2, 2, 1",
+   "notation_std": "4, 4, 2, 2, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe01c",
+    "0xe016",
+    "0xe016",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:154",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 154
+  },
+  {
+   "row": 155,
+   "name": "Oni Killer",
+   "kind": "move",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "1+3",
+   "notation_std": "1+3",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019"
+   ],
+   "anim_ref": "ttt2:yos:row:155",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 155
+  },
+  {
+   "row": 156,
+   "name": "Oni Killer",
+   "kind": "move",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "f+1+3",
+   "notation_std": "f+1+3",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe019"
+   ],
+   "anim_ref": "ttt2:yos:row:156",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 156
+  },
+  {
+   "row": 157,
+   "name": "Sword Face Smash",
+   "kind": "move",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "2+4",
+   "notation_std": "2+4",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:yos:row:157",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 157
+  },
+  {
+   "row": 158,
+   "name": "Sword Face Smash",
+   "kind": "move",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "f+2+4",
+   "notation_std": "f+2+4",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:yos:row:158",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 158
+  },
+  {
+   "row": 159,
+   "name": "Wheels of Hell",
+   "kind": "move",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "1+3 or 2+4",
+   "notation_std": "1+3 or 2+4",
+   "condition_text": "Approach from left side (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:yos:row:159",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 159
+  },
+  {
+   "row": 160,
+   "name": "Neck Breaker",
+   "kind": "move",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "1+3 or 2+4",
+   "notation_std": "1+3 or 2+4",
+   "condition_text": "Approach from right side (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:yos:row:160",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 160
+  },
+  {
+   "row": 161,
+   "name": "Tornado Drop",
+   "kind": "move",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "1+3 or 2+4",
+   "notation_std": "1+3 or 2+4",
+   "condition_text": "Approach from behind (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:yos:row:161",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 161
+  },
+  {
+   "row": 162,
+   "name": "Soul Siphon",
+   "kind": "move",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "d, d/f, f+2",
+   "notation_std": "d, d/f, f+2",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe002",
+    "0xe004",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:162",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 162
+  },
+  {
+   "row": 163,
+   "name": "Rainbow Drop",
+   "kind": "move",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "d, d/b, b+1+2",
+   "notation_std": "d, d/b, b+1+2",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe000",
+    "0xe003",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:yos:row:163",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 163
+  },
+  {
+   "row": 164,
+   "name": "Soul Possession",
+   "kind": "move",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "d, d/b, b, f+2",
+   "notation_std": "d, d/b, b, f+2",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe000",
+    "0xe003",
+    "0xe004",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:164",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 164
+  },
+  {
+   "row": 165,
+   "name": "Sample Combo 1",
+   "kind": "sample_combo",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "u/f+3, 4, 4, 4",
+   "notation_std": "u/f+3, 4, 4, 4",
+   "condition_text": "",
+   "multi_part": true,
+   "glyphs": [
+    "0xe007",
+    "0xe018",
+    "0xe063",
+    "0xe01c",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:yos:row:165",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 165
+  },
+  {
+   "row": 166,
+   "name": "Sample Combo 2",
+   "kind": "sample_combo",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "d/f+4, 2, 1, 3",
+   "notation_std": "d/f+4, 2, 1, 3",
+   "condition_text": "While crouching (Counter)While rising",
+   "multi_part": true,
+   "glyphs": [
+    "0xe002",
+    "0xe01c",
+    "0xe063",
+    "0xe016",
+    "0xe015",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:yos:row:166",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 166
+  },
+  {
+   "row": 167,
+   "name": "Sample Combo 3",
+   "kind": "sample_combo",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "4, 3, f, F+3+4, 1+2, 3+4",
+   "notation_std": "4, 3, f, f+3+4, 1+2, 3+4",
+   "condition_text": "【】",
+   "multi_part": true,
+   "glyphs": [
+    "0xe01c",
+    "0xe018",
+    "0xe063",
+    "0xe004",
+    "0xe00c",
+    "0xe020",
+    "0xe017",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:yos:row:167",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 167
+  },
+  {
+   "row": 168,
+   "name": "Sample Combo 4",
+   "kind": "sample_combo",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "d/f+2, 2, f+1+2, b+2, 1, 1+2, f+2",
+   "notation_std": "d/f+2, 2, f+1+2, b+2, 1, 1+2, f+2",
+   "condition_text": "During Kincho",
+   "multi_part": true,
+   "glyphs": [
+    "0xe002",
+    "0xe016",
+    "0xe016",
+    "0xe063",
+    "0xe004",
+    "0xe017",
+    "0xe063",
+    "0xe003",
+    "0xe016",
+    "0xe015",
+    "0xe017",
+    "0xe063",
+    "0xe004",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:168",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 168
+  },
+  {
+   "row": 169,
+   "name": "Sample Combo 5",
+   "kind": "sample_combo",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "f, F+4, 1, d+2, 3, 2, b+2, 1",
+   "notation_std": "f, f+4, 1, d+2, 3, 2, b+2, 1",
+   "condition_text": "Back towards enemy Back towards enemy While rising",
+   "multi_part": true,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe01c",
+    "0xe063",
+    "0xe015",
+    "0xe063",
+    "0xe001",
+    "0xe016",
+    "0xe063",
+    "0xe018",
+    "0xe016",
+    "0xe063",
+    "0xe003",
+    "0xe016",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:yos:row:169",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 169
+  },
+  {
+   "row": 170,
+   "name": "Sample Combo 6",
+   "kind": "sample_combo",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "D/F+1, d+2, 2, d+1, f+3+4, 2",
+   "notation_std": "d/f+1, d+2, 2, d+1, f+3+4, 2",
+   "condition_text": "While crouching During Flea",
+   "multi_part": true,
+   "glyphs": [
+    "0xe00a",
+    "0xe015",
+    "0xe063",
+    "0xe001",
+    "0xe016",
+    "0xe016",
+    "0xe001",
+    "0xe015",
+    "0xe063",
+    "0xe004",
+    "0xe020",
+    "0xe063",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:yos:row:170",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 170
+  },
+  {
+   "row": 171,
+   "name": "Sample Combo 7",
+   "kind": "sample_combo",
+   "section": "■ Commands during Mutou no Kiwami ■",
+   "notation": "2+3, d/f+2, f+3+4, f+1, b+1, d+1, f+3+4, f+1+2",
+   "notation_std": "2+3, d/f+2, f+3+4, f+1, b+1, d+1, f+3+4, f+1+2",
+   "condition_text": "During Mutou no Kiwami During Mutou no Kiwami During Mutou no Kiwami During Mutou no Kiwami During Mutou no Kiwami During Mutou no Kiwami During Mutou no Kiwami",
+   "multi_part": true,
+   "glyphs": [
+    "0xe01a",
+    "0xe063",
+    "0xe002",
+    "0xe016",
+    "0xe063",
+    "0xe004",
+    "0xe020",
+    "0xe063",
+    "0xe004",
+    "0xe015",
+    "0xe063",
+    "0xe003",
+    "0xe015",
+    "0xe063",
+    "0xe001",
+    "0xe015",
+    "0xe063",
+    "0xe004",
+    "0xe020",
+    "0xe063",
+    "0xe004",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:yos:row:171",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 171
+  }
+ ]
+}

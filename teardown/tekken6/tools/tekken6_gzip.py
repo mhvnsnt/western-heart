@@ -76,6 +76,24 @@ STILL OPEN — main-loop length composition:
 Usage:
   tekken6_gzip.py <bulk_decrypted.bin> <manifest.json> <gzip_index>
 Prints size/adler verdict; exit 0 only on byte-exact decode.
+
+ROUND 5 RESOLUTION (2026-10-21, PR #446) — the "STILL OPEN" item above
+is CLOSED, and it was never in this decoder: the input bytes were
+corrupt. The round-3 bulk decryptor called the sector cipher once per
+2048-byte sector; the game calls it once per 1024-byte block. Every
+odd 1024-byte block of bulk_decrypted.bin was therefore garbage, and
+any stream spanning one desynced exactly as documented above (short
+output, too-far distances, apparent length-composition defect). With
+per-1024 decryption (tools/bulk_decrypt.py) this UNMODIFIED decoder
+scores 76/76 byte-exact (size + adler32), and tools/decode_all76.py
+reproduces the same 76/76 with plain zlib — the game's inflate is
+standard, as the live PPSSPP trace proved (game dest == zlib output,
+byte-for-byte). The EBOOT quirks documented above (symbol order,
+dist = std − 1 + 1) are real but mathematically equivalent to RFC1951.
+There is no custom DEFLATE variant and no encode context. See
+ROUND5-STATUS.md F12/F13. NOTE: this script reads a bulk file — only
+trust bulks produced by tools/bulk_decrypt.py, NOT the round-3
+bulk_decrypted.bin.
 """
 import json
 import struct

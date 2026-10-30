@@ -102,7 +102,7 @@ export function renderBracket(bracket) {
       const d = document.createElement('div');
       d.className = 'wh-bmatch';
       const p = (pl, slot) => {
-        if (!pl) return `<div class="p">TBD</div>`;
+        if (!pl) return `<div class="p">—</div>`;
         const cls = ['p'];
         if (pl.bye) cls.push('bye');
         if (m.winner && pl.id === m.winner) cls.push('win');
