@@ -3892,3 +3892,17 @@ invented); 'DFLIP N' (unclear, not invented); 'CLK(Two spins).3' (mid-string spi
 a different row from 'CLK.3'); and the Deathfang name-key rows (their playable inputs
 live in the moveset data, e.g. 'yaotome_a' -> 'qcf,hcb+1', so their failures are
 downstream witness/resolution, not canon). Deletions: none.
+## 2026-10-30 — DES.BT two-word stance join (PR #TBD)
+- Cyborg X t7.alisa_235 'DES BT 1 (or 2)' canonicalised to 'DES.BT 1' because the
+  stance-space rule dots only the first word, and the sweep parse rejected it.
+  A narrow join after that rule (`/^DES\.BT\s+(?=[1-4])/`) gives 'DES.BT.1',
+  the spelling the existing Hertz Blade - Flare row already carries — so the
+  row leaves the parse-error list on the next sweep. The existing DES.BT.1 row
+  is the same move (6x4 multi-hit, startup 0.317, -9/KND), not a different row:
+  the t7 row's 'damage 14' is the mod-source figure, its damage_raw is 24, and
+  the lone 'DES.BT 1' string in the moveset file is inside this row's own
+  input_note, not a separate row. Blast radius: exactly this one row.
+- Residual, stated plainly: parse reclassification, not a witnessed pass — the
+  sweep's DES.BT stance setup is the same downstream question as DES.BT.1.
+- Proof: test/des-bt.test.mjs (2/2 local against the edited canon) + CI
+  game-unit-tests on the PR head.
