@@ -291,7 +291,8 @@
     // state (WR), no face-up / face-down ground orientation moves, no tackle mount, no jump-landing
     // move window. Those rows are n/a WITH the missing state named, never a pass.
     { const t = `${m.key} ${m.input || ''}`; const NA = [[/\bWR\b/, 'running (WR)'], [/Face (Up|Down)|Roll(ing)? Forward/i, 'face-up/face-down ground'],
-        [/During Tackle/i, 'tackle mount'], [/Upon Landing/i, 'jump-landing window']];
+        [/During Tackle/i, 'tackle mount'], [/Upon Landing/i, 'jump-landing window'],
+        [/\(Enemy on back\)/i, 'face-up/face-down ground']];
       // batch 9: a '(wolf)' row is the transformed form's move: transforming swaps the played
       // moveset (fighter._movesetId -> the form's own set), so the base set never plays it
       if (/\(wolf\)\s*$/i.test(m.input || '') && (MS.playedMoveset(g.p1.char.id) || {}).transform) return { key: m.key, input: m.input, ok: null, why: 'n/a: transformed-form row (plays from the transform moveset once transformed)', via: 'transform form' };
