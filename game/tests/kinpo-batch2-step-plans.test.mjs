@@ -96,16 +96,17 @@ function stepBits(step) {
 test('kinpo move/string counts unchanged by the additive plans block', () => {
   assert.equal(Object.keys(kinpo.moves).length, 525);
   assert.equal(kinpo.strings.length, 101);
-  assert.equal(Object.keys(plans).length, 115); // 67 Batches 1-2 + 48 Batch 3 (cumulative)
+  assert.equal(Object.keys(plans).length, 177); // 115 Batches 1-3 + 62 Batch 4 (cumulative)
 });
 
-test('Batch 2 keys are exactly the documented 20; all Batch 1 keys present; extra keys exactly the documented Batch 3 keys (cumulative)', () => {
+test('Batch 2 keys are exactly the documented 20; all Batch 1 keys present; extra keys exactly the documented Batch 3 + Batch 4 keys (cumulative)', () => {
   assert.equal(B2.length, 20);
   for (const key of B2) assert.ok(plans[key], `Batch 2 key ${key} missing`);
   for (const key of B1) assert.ok(plans[key], `Batch 1 key ${key} missing`);
   const B3 = ["1,1,3", "1,3", "1,3~t7.asuka", "1,3~t7.asuka.2", "1,4", "1,4~t7.asuka", "2,3", "2,3~t7.asuka", "2,3~t7.asuka.2", "3,1", "3,1~t7.asuka", "3,1~t7.asuka.2", "4,1", "WS.1,4", "WS.1,4~t7.asuka", "b+1+4,4", "b+1+4,4~t7.asuka", "b+1+4,4~t7.asuka.2", "b+1+4,4~t7.asuka.3", "b+2,4", "b+2,4~t7.asuka", "b+2,4~t7.asuka.2", "b+3,2", "b+3,2~t7.asuka", "b+3,2~t7.asuka.2", "b+4,2", "b+4,2~t7.asuka", "b+4,2~t7.asuka.2", "d/f+1,3", "d/f+1,4", "d/f+1,4~t7.asuka", "d/f+1,4~t7.asuka.2", "db+1,4", "db+4,1+4", "df+1,4", "f+1,3", "f+1,3,1", "f+1,3,1~t7.asuka", "f+1,3,1~t7.asuka.2", "f+1,3~t7.asuka", "f+1,3~t7.asuka.2", "f+1,4", "f+1,4~t7.asuka", "f+1,4~t7.asuka.2", "f+1,4~t7.asuka.3", "f+1,d+4", "f+1,d+4~t7.asuka", "ws1,4"];
+const B4 = ["1+2+3+4,1+2", "1+4,2", "1+4,2,1", "1+4,2,1~t7.asuka", "1+4,2,1~t7.asuka.2", "1+4,2,1~t7.asuka.3", "1+4,2,4", "1+4,2,4~t7.asuka", "1+4,2,4~t7.asuka.2", "1+4,2,4~t7.asuka.3", "1+4,2,4~t7.asuka.4", "1+4,2,d+4", "1+4,2,d+4~t7.asuka", "1+4,2,d+4~t7.asuka.2", "1+4,2,d+4~t7.asuka.3", "1+4,2,d+4~t7.asuka.4", "1+4,2~t7.asuka", "1+4,2~t7.asuka.2", "1+4,2~t7.asuka.3", "1+4,3", "1+4,3~t7.asuka", "1+4,3~t7.asuka.2", "1+4,3~t7.asuka.3", "1,2,3", "1,2,3*", "1,2,3*~t7.asuka", "1,2,3~t7.asuka", "1,2,3~t7.asuka.2", "1,2,3~t7.asuka.3", "1,2,4", "1,2,4~t7.asuka", "1,2,4~t7.asuka.2", "1,2,4~t7.asuka.3", "2,1,2,2,3", "2,1,2,2,3,4", "2,1,4", "2,1,4,4", "2,1,4,4,2", "2,1,4,4,2,4", "4,1,2", "WS.2,1,1,1,2,1+4,1,3+4", "WS.2,1,1,1,2,1,4,3,3+4", "WS.2,1,1,3", "b+1+4,3", "b+1+4,3~t7.asuka", "b+1+4,3~t7.asuka.2", "b+1+4,3~t7.asuka.3", "b+2,1+2,4", "b+2,1+2,4~t7.asuka", "b+2,1+2,4~t7.asuka.2", "b+2,1+2,4~t7.asuka.3", "b+4,2,3", "b+4,2,3~t7.asuka", "b+4,2,3~t7.asuka.2", "b+4,2,3~t7.asuka.3", "ws2,1,1,1,2,1+4", "ws2,1,1,1,2,1+4,1", "ws2,1,1,1,2,1+4,1,3+4", "ws2,1,1,1,2,1,4", "ws2,1,1,1,2,1,4,3", "ws2,1,1,1,2,1,4,3,3+4", "ws2,1,1,3"];
   const extra = Object.keys(plans).filter((k) => !B1.includes(k) && !B2.includes(k));
-  assert.deepEqual(extra.sort(), B3.sort());
+  assert.deepEqual(extra.sort(), B3.concat(B4).sort());
 });
 
 test('Batch 2 verified steps carry rows (button == step bits, throw 0, never row 35 on ground); review/unmapped carry row null; no soft flags', () => {
