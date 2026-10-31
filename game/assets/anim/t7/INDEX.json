@@ -324,24 +324,24 @@
   "live_memory_procedure": "TKMovesets2 on a Windows box running owned T7: load Raven then Chloe in practice, export P1 each, confirm ~1,702-entry MOTA before wiring; clip must start 00 64 or 00 C8."
  },
  "t7_clip_mapping_20261030": {
- "status": "RESOLVED \u2014 bank-0x8000 mystery closed 2026-10-30 (STEAM-LIBRARY REAL-CODE lane)",
- "what_was_wrong": "The clip banks were never in the pakchunks. They are the MOTA sections inside tkdata mothead/mask/<code>rotsm.arc in the owner-Steam extraction (GRE teardown/tekken7-steam). The earlier pakchunk0 ruling-out stands; the live-memory unblock is NO LONGER required for banks 0x4000/0x8000.",
- "bank_map": {
-  "anim_id>=0x8000": "common.arc (bare MOTA, 1711 entries), key = anim_id - 0x8000",
-  "0x4000<=anim_id<0x8000": "character rotsm.arc section 0, key = anim_id - 0x4000",
-  "anim_id<0x4000": "file not in the pulled tkdata tree \u2014 31 mapped moves wait on it (bounded remainder)"
+  "status": "RESOLVED \u2014 bank-0x8000 mystery closed 2026-10-30 (STEAM-LIBRARY REAL-CODE lane)",
+  "what_was_wrong": "The clip banks were never in the pakchunks. They are the MOTA sections inside tkdata mothead/mask/<code>rotsm.arc in the owner-Steam extraction (GRE teardown/tekken7-steam). The earlier pakchunk0 ruling-out stands; the live-memory unblock is NO LONGER required for banks 0x4000/0x8000.",
+  "bank_map": {
+   "anim_id>=0x8000": "common.arc (bare MOTA, 1711 entries), key = anim_id - 0x8000",
+   "0x4000<=anim_id<0x8000": "character rotsm.arc section 0, key = anim_id - 0x4000",
+   "anim_id<0x4000": "file not in the pulled tkdata tree \u2014 31 mapped moves wait on it (bounded remainder)"
+  },
+  "format": "MOTA spec + parser: GRE teardown/tekken7-steam/tkdata/mothead/mask/MOTA-FORMAT.md and tools/mota_parse.py (PR mhvnsnt/game-reverse-engineering#74). Clip-start words 100/200; format-200 bodies fully decoded (f32 BE frames x tracks x vec3); format-100 bodies sliced/indexed, encoding open.",
+  "clips_storage": "GRE release t7-rotsm-clips-v1 (59,211,723 B, SHA256SUMS.txt) \u2014 distinct clips per bank; indexes in GRE mask/indexes/ and inside each clip-map JSON.",
+  "the_781": {
+   "clip_resolved": 450,
+   "mapped_bank0_no_clip": 31,
+   "honestly_unmapped": 300,
+   "supply_files": "game/assets/anim/t7/clip-maps/<fighter>-clip-map.json for pantera/phantom/skull/burger/kinpo/demonio/diablo/scimitar",
+   "doc": "docs/movesets/T7-CLIP-MAPPING-2026-10-30.md"
+  },
+  "still_open": "Wiring these clip-maps into fighter movesets is the provenance lane\u2019s step (per-character isolation). frv/dnc bank-0x8000 moves in the older motbin banks resolve through common.arc the same way (911 shared anim names verified key-identical kin/bry)."
  },
- "format": "MOTA spec + parser: GRE teardown/tekken7-steam/tkdata/mothead/mask/MOTA-FORMAT.md and tools/mota_parse.py (PR mhvnsnt/game-reverse-engineering#74). Clip-start words 100/200; format-200 bodies fully decoded (f32 BE frames x tracks x vec3); format-100 bodies sliced/indexed, encoding open.",
- "clips_storage": "GRE release t7-rotsm-clips-v1 (59,211,723 B, SHA256SUMS.txt) \u2014 distinct clips per bank; indexes in GRE mask/indexes/ and inside each clip-map JSON.",
- "the_781": {
-  "clip_resolved": 450,
-  "mapped_bank0_no_clip": 31,
-  "honestly_unmapped": 300,
-  "supply_files": "game/assets/anim/t7/clip-maps/<fighter>-clip-map.json for pantera/phantom/skull/burger/kinpo/demonio/diablo/scimitar",
-  "doc": "docs/movesets/T7-CLIP-MAPPING-2026-10-30.md"
- },
- "still_open": "Wiring these clip-maps into fighter movesets is the provenance lane\u2019s step (per-character isolation). frv/dnc bank-0x8000 moves in the older motbin banks resolve through common.arc the same way (911 shared anim names verified key-identical kin/bry)."
-},
  "baked_assets": {
   "pantera_king_t7_stance": {
    "status": "BAKED 2026-10-30 - direct-rig representation of King's T7 stance for Pantera (wh-anim/1, t3-bank layout). The canonical mannequin-skeleton representation of the same clip lives at game/assets/anim/t7/king/stance.json (commit c2d5155f) and is already wired into the game; this entry records the Pantera-rig bake + the independent 0xC8 control test behind both.",
@@ -357,5 +357,31 @@
    ],
    "scope": "stance only, from the verified 0xC8 (format-200) path; NOT a format-100 (0x64) result. Game wiring (pointing Pantera's stance slot at this bank) not included - provenance/wiring lane consumes."
   }
+ },
+ "t7_clip_mapping_b2bc_20261030": {
+  "lane": "B2b/c - T7 requirements-table decode + ambiguous-pool fingerprint pass (2026-10-30)",
+  "source_doc": "mhvnsnt/game-reverse-engineering teardown/tekken7-steam/tkdata/mothead/REQUIREMENTS-DECODE-2026-10-30.md",
+  "requirements_decode_verdict": "Requirements are a flat (condition u32, param u32) table; a cancel's requirements_idx is the index of a run terminated by condition 881 (list end - verified: every nonzero-idx cancel run in all 8 fighters terminates at 881; idx 0 = no requirements). The v1 graph gap was three stacked causes: (1) input-sequence cancel commands (direction 0x800D+k, plus dash 0x8001/0x8002 and tap 0x8003/0x8004) were dropped as hex strings - decoded here from raw.input_sequences/raw.inputs; (2) unconditional empty-input auto-cancels act as pass-through intermediates in string chains (cap10Eb, Newhakuro, 2RLpunc2, renda2R, FeSt_RPrv, haradadaP, karate01_R_C); (3) unique terminals in throw/pose/bound move classes (damage/startup carried in hit conditions or properties) were excluded by the v1 attack-class filter. Condition 0x81DC (33244) takes a move-id param (previous/related move). Validation: the v2 graph re-derived 479 of the 481 prior mappings to the identical motbin move; the 2 differences were adjudicated by hand and the prior mappings kept (diablo f,F+1+2 - a v2 sequence edge adds a same-tier throw-system competitor, original He_zutuki kept; pantera f,f,n,1+2 Lay Off - a v2 dash edge promotes Kg_BodyAt00 over the original Co_Fcross, flagged in the decode doc, original kept).",
+  "resolved_total": 33,
+  "resolved_from_requirement_pool_39": 29,
+  "resolved_from_other_pools": 4,
+  "still_unmapped_requirement_pool": 10,
+  "fingerprint_pass": "All 91 ambiguous-pool moves scored (damage + startup, the shared fields) against their candidate motbin records; 90 remain after 1 was resolved by the v2 graph (pantera f,f,F+3+4). Scores are recorded per entry in the fingerprint_pass field. NO mapping was promoted on fingerprint evidence alone: calibration on 132 known multi-candidate pools from the 481 showed a unique-exact damage+startup match would have been WRONG on 9 of 26 unique-exact cases (35%; startup-only unique-exact wrong on 9 of 55), because the WH frame-data blocks diverge systematically from T7 motbin values (WH damage >= motbin damage on 115/120 calibrated single moves). Fingerprint evidence was used only as corroboration where the graph already decided (diablo f,F+3 startup 20 == 20; skull d+1+2,3 finisher damage 20 from the WH per-hit damage list).",
+  "per_fighter_unmapped_after": {
+   "pantera": 32,
+   "phantom": 52,
+   "skull": 40,
+   "burger": 26,
+   "kinpo": 43,
+   "demonio": 30,
+   "diablo": 27,
+   "scimitar": 17
+  },
+  "totals_after": {
+   "mapped": 514,
+   "unmapped": 267,
+   "of_781": true
+  },
+  "held_requirement_pool_diagnoses": "Recorded per entry in the b2bc_diagnosis field of the 10 still-unmapped requirement-pool moves (burger Course Achuto + Quick Langouste, demonio Mental Alertness 2, kinpo Basho Oroshi + both 10-hit combos, phantom Thunder Blade + Confusion, skull Flying Knee Kick; plus kinpo ws2-prefixed 10-hit variant counted once per combo)."
  }
 }
