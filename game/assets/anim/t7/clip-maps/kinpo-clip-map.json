@@ -8,9 +8,9 @@
   "common_index": "clips-all/common_index.json"
  },
  "stats": {
-  "mapped_clip_resolved": 49,
+  "mapped_clip_resolved": 53,
   "mapped_bank0_noclip": 7,
-  "unmapped": 47
+  "unmapped": 43
  },
  "moves": [
   {
@@ -408,7 +408,93 @@
      "anim": "Z_ni_rlp_n(DVD)",
      "anim_id": 16984
     }
-   ]
+   ],
+   "fingerprint_pass": {
+    "method": "B2b/c fingerprint pass 2026-10-30: candidate motbin damage/startup scored against the WH moveset frame-data block (TheBigTuna-derived) on the shared fields damage + startup",
+    "wh_damage": 10,
+    "wh_startup_frames": 10,
+    "wh_hit_level": "high, mid",
+    "candidate_scores": [
+     {
+      "motbin_move_id": 1570,
+      "motbin_damage": 9,
+      "motbin_startup": 24,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1584,
+      "motbin_damage": 21,
+      "motbin_startup": 16,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1730,
+      "motbin_damage": 8,
+      "motbin_startup": 17,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2056,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2060,
+      "motbin_damage": 15,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2062,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2098,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2108,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2112,
+      "motbin_damage": 15,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2131,
+      "motbin_damage": 10,
+      "motbin_startup": null,
+      "damage_match": true,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2132,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     }
+    ],
+    "verdict": "held unmapped: no candidate is a unique exact match on both shared fields (or the WH block is absent); calibration on 132 known multi-candidate pools showed a unique-exact damage+startup rule would have been wrong on 9 of 26 (35%), so no mapping was promoted from fingerprint evidence alone"
+   }
   },
   {
    "wh_key": "1,2,3",
@@ -680,22 +766,44 @@
    "wh_input": "1+4,2,4",
    "t7_id": "asuka_47",
    "t7_notation": "1+4, 2, 4",
-   "status": "unmapped",
-   "motbin_move_id": null,
-   "motbin_move_name": null,
-   "anim_name": null,
-   "anim_id": null,
-   "bank_index": null,
-   "evidence": [],
-   "confidence": null,
-   "reason": "MVL row matched (MVL name+notation exact) but no attack-class motbin terminal found via cancel graph for notation '1+4,2,4' \u2014 graph gap (requirement-gated entry not decoded)",
-   "bank": null,
-   "motbin_startup": null,
-   "motbin_damage": null,
+   "status": "mapped",
+   "motbin_move_id": 1726,
+   "motbin_move_name": "Jn_cap10_C",
+   "anim_name": "asss_haku4md(DVD)",
+   "anim_id": 16798,
+   "bank_index": 414,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph (B2 requirements pass): 1+4 -> jn_cap10 (mapped base), 2 -> jn_cap10Eb, whose only non-alias exit is an unconditional empty-input auto-cancel to Jn_cap10_B (pass-through), then the plain 4 cancel lands on Jn_cap10_C (anim asss_haku4md - the White Heron mid finisher)"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 24,
+   "motbin_damage": 26,
    "mvl_row": 16,
    "mvl_name": "White Heron Dance",
    "mvl_notation": "1+4,2,4",
-   "motbin_candidates": []
+   "motbin_candidates": [
+    {
+     "id": 1726,
+     "name": "Jn_cap10_C",
+     "anim": "asss_haku4md(DVD)",
+     "anim_id": 16798
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "askrotsm.arc",
+    "section": 0,
+    "entry": 414,
+    "rel_offset": 2911424,
+    "size": 4932,
+    "format_word": 100,
+    "sha256": "25e248dd592aa1a1e19afceed92ffd2a2c5a0d623a40dcb7f1845b491c51cf8b",
+    "blob_file": "ask_clips.bin"
+   }
   },
   {
    "wh_key": "1+4,2,d+4",
@@ -703,22 +811,44 @@
    "wh_input": "1+4,2,d+4",
    "t7_id": "asuka_51",
    "t7_notation": "1+4, 2, d+4",
-   "status": "unmapped",
-   "motbin_move_id": null,
-   "motbin_move_name": null,
-   "anim_name": null,
-   "anim_id": null,
-   "bank_index": null,
-   "evidence": [],
-   "confidence": null,
-   "reason": "MVL row matched (MVL name+notation exact) but no attack-class motbin terminal found via cancel graph for notation '1+4,2,d+4' \u2014 graph gap (requirement-gated entry not decoded)",
-   "bank": null,
-   "motbin_startup": null,
-   "motbin_damage": null,
+   "status": "mapped",
+   "motbin_move_id": 1716,
+   "motbin_move_name": "Jn_cap10_CL",
+   "anim_name": "sujn_haku4lw(DVD)",
+   "anim_id": 16790,
+   "bank_index": 406,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph (B2 requirements pass): same chain as White Heron Dance to Jn_cap10_B (1+4 -> jn_cap10, 2 -> jn_cap10Eb, unconditional auto -> Jn_cap10_B), then Jn_cap10_B's down-direction-set cancel (direction bits D/B+D+D/F set = any down, +4) lands on Jn_cap10_CL (anim sujn_haku4lw - the low finisher)"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 24,
+   "motbin_damage": 15,
    "mvl_row": 17,
    "mvl_name": "White Heron Lower Dance",
    "mvl_notation": "1+4,2,d+4",
-   "motbin_candidates": []
+   "motbin_candidates": [
+    {
+     "id": 1716,
+     "name": "Jn_cap10_CL",
+     "anim": "sujn_haku4lw(DVD)",
+     "anim_id": 16790
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "askrotsm.arc",
+    "section": 0,
+    "entry": 406,
+    "rel_offset": 2898920,
+    "size": 3160,
+    "format_word": 100,
+    "sha256": "36c523a2df7aba49415341c4d52d6ca921be1520030a07c7ea478c0447c9bde8",
+    "blob_file": "ask_clips.bin"
+   }
   },
   {
    "wh_key": "1+4,3",
@@ -786,7 +916,8 @@
    "mvl_row": 9,
    "mvl_name": "Basho Oroshi",
    "mvl_notation": "2,1,d+1+2",
-   "motbin_candidates": []
+   "motbin_candidates": [],
+   "b2bc_diagnosis": "B2 diagnosis: the 2,1 chain reaches Jn_akkrp00, which has no d+1+2 exit (its only non-alias exits are requirement-gated auto rows, one into the White Heron stance jn_cap10 with latch req [(811,0),(361,202),(33005,203),(51,0),(33468,1)]); the only d+1+2 edges in askmot are a crouch-state edge back into Jn_akkrp00 and a GROUP entry to Jn_downp. Basho Oroshi's throw finisher edge is not reachable in the pulled data - stays unmapped."
   },
   {
    "wh_key": "2+3",
@@ -861,7 +992,30 @@
      "anim": "askw_s4_kousyu",
      "anim_id": 114
     }
-   ]
+   ],
+   "fingerprint_pass": {
+    "method": "B2b/c fingerprint pass 2026-10-30: candidate motbin damage/startup scored against the WH moveset frame-data block (TheBigTuna-derived) on the shared fields damage + startup",
+    "wh_damage": 12,
+    "wh_startup_frames": 12,
+    "wh_hit_level": "high, mid (TJ)",
+    "candidate_scores": [
+     {
+      "motbin_move_id": 1575,
+      "motbin_damage": 20,
+      "motbin_startup": 22,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1758,
+      "motbin_damage": 21,
+      "motbin_startup": 23,
+      "damage_match": false,
+      "startup_match": false
+     }
+    ],
+    "verdict": "held unmapped: no candidate is a unique exact match on both shared fields (or the WH block is absent); calibration on 132 known multi-candidate pools showed a unique-exact damage+startup rule would have been wrong on 9 of 26 (35%), so no mapping was promoted from fingerprint evidence alone"
+   }
   },
   {
    "wh_key": "3,1",
@@ -1089,7 +1243,30 @@
      "anim": "ozjn_atepose(DVD)",
      "anim_id": 16862
     }
-   ]
+   ],
+   "fingerprint_pass": {
+    "method": "B2b/c fingerprint pass 2026-10-30: candidate motbin damage/startup scored against the WH moveset frame-data block (TheBigTuna-derived) on the shared fields damage + startup",
+    "wh_damage": null,
+    "wh_startup_frames": null,
+    "wh_hit_level": null,
+    "candidate_scores": [
+     {
+      "motbin_move_id": 572,
+      "motbin_damage": 0,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1851,
+      "motbin_damage": 0,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     }
+    ],
+    "verdict": "held unmapped: no candidate is a unique exact match on both shared fields (or the WH block is absent); calibration on 132 known multi-candidate pools showed a unique-exact damage+startup rule would have been wrong on 9 of 26 (35%), so no mapping was promoted from fingerprint evidence alone"
+   }
   },
   {
    "wh_key": "b+1+3*",
@@ -1125,7 +1302,30 @@
      "anim": "ozjn_atepose(DVD)",
      "anim_id": 16862
     }
-   ]
+   ],
+   "fingerprint_pass": {
+    "method": "B2b/c fingerprint pass 2026-10-30: candidate motbin damage/startup scored against the WH moveset frame-data block (TheBigTuna-derived) on the shared fields damage + startup",
+    "wh_damage": null,
+    "wh_startup_frames": null,
+    "wh_hit_level": null,
+    "candidate_scores": [
+     {
+      "motbin_move_id": 572,
+      "motbin_damage": 0,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1851,
+      "motbin_damage": 0,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     }
+    ],
+    "verdict": "held unmapped: no candidate is a unique exact match on both shared fields (or the WH block is absent); calibration on 132 known multi-candidate pools showed a unique-exact damage+startup rule would have been wrong on 9 of 26 (35%), so no mapping was promoted from fingerprint evidence alone"
+   }
   },
   {
    "wh_key": "b+1+4",
@@ -1179,22 +1379,44 @@
    "wh_input": "b+1+4,3",
    "t7_id": "asuka_157",
    "t7_notation": "b+1+4, 3",
-   "status": "unmapped",
-   "motbin_move_id": null,
-   "motbin_move_name": null,
-   "anim_name": null,
-   "anim_id": null,
-   "bank_index": null,
-   "evidence": [],
-   "confidence": null,
-   "reason": "MVL row matched (MVL name+notation exact) but no attack-class motbin terminal found via cancel graph for notation 'b+1+4,3' \u2014 graph gap (requirement-gated entry not decoded)",
-   "bank": null,
-   "motbin_startup": null,
-   "motbin_damage": null,
+   "status": "mapped",
+   "motbin_move_id": 1744,
+   "motbin_move_name": "Jn_Newhakuro3low",
+   "anim_name": "najn_rehak2lk(DVD)",
+   "anim_id": 16807,
+   "bank_index": 423,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph (B2 requirements pass): b+1+4 -> Jn_Newhakuro (mapped base), unconditional empty-input auto-cancel to Jn_Newhakuro2 (pass-through), then the plain 3 cancel lands on Jn_Newhakuro3low (anim najn_rehak2lk; lk = left kick = button 3)"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 32,
+   "motbin_damage": 18,
    "mvl_row": 47,
    "mvl_name": "Reverse Narcissus",
    "mvl_notation": "b+1+4,3",
-   "motbin_candidates": []
+   "motbin_candidates": [
+    {
+     "id": 1744,
+     "name": "Jn_Newhakuro3low",
+     "anim": "najn_rehak2lk(DVD)",
+     "anim_id": 16807
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "askrotsm.arc",
+    "section": 0,
+    "entry": 423,
+    "rel_offset": 2930668,
+    "size": 3688,
+    "format_word": 100,
+    "sha256": "001957a99c5f58c1e85a4436055393fb41adef9e54599bfb36453868e15601eb",
+    "blob_file": "ask_clips.bin"
+   }
   },
   {
    "wh_key": "b+1+4,4",
@@ -1202,22 +1424,44 @@
    "wh_input": "b+1+4,4",
    "t7_id": "asuka_160",
    "t7_notation": "b+1+4, 4",
-   "status": "unmapped",
-   "motbin_move_id": null,
-   "motbin_move_name": null,
-   "anim_name": null,
-   "anim_id": null,
-   "bank_index": null,
-   "evidence": [],
-   "confidence": null,
-   "reason": "MVL row matched (MVL name+notation exact) but no attack-class motbin terminal found via cancel graph for notation 'b+1+4,4' \u2014 graph gap (requirement-gated entry not decoded)",
-   "bank": null,
-   "motbin_startup": null,
-   "motbin_damage": null,
+   "status": "mapped",
+   "motbin_move_id": 1740,
+   "motbin_move_name": "Jn_Newhakuro3mid",
+   "anim_name": "najn_rehak2rk(DVD)",
+   "anim_id": 16806,
+   "bank_index": 422,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph (B2 requirements pass): b+1+4 -> Jn_Newhakuro (mapped base), whose only non-alias exit is an unconditional empty-input auto-cancel to Jn_Newhakuro2 (pass-through, same anim), then the plain 4 cancel lands on Jn_Newhakuro3mid (anim najn_rehak2rk; rk = right kick = button 4)"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 25,
+   "motbin_damage": 23,
    "mvl_row": 48,
    "mvl_name": "Narcissus",
    "mvl_notation": "b+1+4,4",
-   "motbin_candidates": []
+   "motbin_candidates": [
+    {
+     "id": 1740,
+     "name": "Jn_Newhakuro3mid",
+     "anim": "najn_rehak2rk(DVD)",
+     "anim_id": 16806
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "askrotsm.arc",
+    "section": 0,
+    "entry": 422,
+    "rel_offset": 2926876,
+    "size": 3792,
+    "format_word": 100,
+    "sha256": "2a6fb627e616ca19770befeb82a66cf5d7df9a34349b776e1f9e21aa8fa03e41",
+    "blob_file": "ask_clips.bin"
+   }
   },
   {
    "wh_key": "b+2",
@@ -1351,7 +1595,30 @@
      "anim": "sujn_entuihiji(DVD)",
      "anim_id": 16812
     }
-   ]
+   ],
+   "fingerprint_pass": {
+    "method": "B2b/c fingerprint pass 2026-10-30: candidate motbin damage/startup scored against the WH moveset frame-data block (TheBigTuna-derived) on the shared fields damage + startup",
+    "wh_damage": 16,
+    "wh_startup_frames": 15,
+    "wh_hit_level": "mid, high",
+    "candidate_scores": [
+     {
+      "motbin_move_id": 1748,
+      "motbin_damage": 12,
+      "motbin_startup": 15,
+      "damage_match": false,
+      "startup_match": true
+     },
+     {
+      "motbin_move_id": 1749,
+      "motbin_damage": 7,
+      "motbin_startup": 21,
+      "damage_match": false,
+      "startup_match": false
+     }
+    ],
+    "verdict": "held unmapped: no candidate is a unique exact match on both shared fields (or the WH block is absent); calibration on 132 known multi-candidate pools showed a unique-exact damage+startup rule would have been wrong on 9 of 26 (35%), so no mapping was promoted from fingerprint evidence alone"
+   }
   },
   {
    "wh_key": "b+2,1+2,4",
@@ -1714,7 +1981,30 @@
      "anim": "ozjn_4rk_hiza_hiji(DVD)",
      "anim_id": 16714
     }
-   ]
+   ],
+   "fingerprint_pass": {
+    "method": "B2b/c fingerprint pass 2026-10-30: candidate motbin damage/startup scored against the WH moveset frame-data block (TheBigTuna-derived) on the shared fields damage + startup",
+    "wh_damage": 22,
+    "wh_startup_frames": 15,
+    "wh_hit_level": "mid, mid",
+    "candidate_scores": [
+     {
+      "motbin_move_id": 1600,
+      "motbin_damage": 17,
+      "motbin_startup": 15,
+      "damage_match": false,
+      "startup_match": true
+     },
+     {
+      "motbin_move_id": 1603,
+      "motbin_damage": 12,
+      "motbin_startup": 18,
+      "damage_match": false,
+      "startup_match": false
+     }
+    ],
+    "verdict": "held unmapped: no candidate is a unique exact match on both shared fields (or the WH block is absent); calibration on 132 known multi-candidate pools showed a unique-exact damage+startup rule would have been wrong on 9 of 26 (35%), so no mapping was promoted from fingerprint evidence alone"
+   }
   },
   {
    "wh_key": "b+4,2,3",
@@ -2408,7 +2698,37 @@
      "anim": "Kjn_sukui01(DVD)",
      "anim_id": 16825
     }
-   ]
+   ],
+   "fingerprint_pass": {
+    "method": "B2b/c fingerprint pass 2026-10-30: candidate motbin damage/startup scored against the WH moveset frame-data block (TheBigTuna-derived) on the shared fields damage + startup",
+    "wh_damage": null,
+    "wh_startup_frames": null,
+    "wh_hit_level": null,
+    "candidate_scores": [
+     {
+      "motbin_move_id": 1597,
+      "motbin_damage": 14,
+      "motbin_startup": 15,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1608,
+      "motbin_damage": 8,
+      "motbin_startup": 11,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1766,
+      "motbin_damage": 10,
+      "motbin_startup": 16,
+      "damage_match": false,
+      "startup_match": false
+     }
+    ],
+    "verdict": "held unmapped: no candidate is a unique exact match on both shared fields (or the WH block is absent); calibration on 132 known multi-candidate pools showed a unique-exact damage+startup rule would have been wrong on 9 of 26 (35%), so no mapping was promoted from fingerprint evidence alone"
+   }
   },
   {
    "wh_key": "df+3",
@@ -2450,7 +2770,37 @@
      "anim": "asss_3lk(DVD)",
      "anim_id": 16739
     }
-   ]
+   ],
+   "fingerprint_pass": {
+    "method": "B2b/c fingerprint pass 2026-10-30: candidate motbin damage/startup scored against the WH moveset frame-data block (TheBigTuna-derived) on the shared fields damage + startup",
+    "wh_damage": null,
+    "wh_startup_frames": null,
+    "wh_hit_level": null,
+    "candidate_scores": [
+     {
+      "motbin_move_id": 1615,
+      "motbin_damage": 20,
+      "motbin_startup": 17,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1616,
+      "motbin_damage": 12,
+      "motbin_startup": 16,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1649,
+      "motbin_damage": 23,
+      "motbin_startup": 20,
+      "damage_match": false,
+      "startup_match": false
+     }
+    ],
+    "verdict": "held unmapped: no candidate is a unique exact match on both shared fields (or the WH block is absent); calibration on 132 known multi-candidate pools showed a unique-exact damage+startup rule would have been wrong on 9 of 26 (35%), so no mapping was promoted from fingerprint evidence alone"
+   }
   },
   {
    "wh_key": "df+4",
@@ -3792,7 +4142,303 @@
      "anim": "Z_ni_rlp_n(DVD)",
      "anim_id": 16984
     }
-   ]
+   ],
+   "fingerprint_pass": {
+    "method": "B2b/c fingerprint pass 2026-10-30: candidate motbin damage/startup scored against the WH moveset frame-data block (TheBigTuna-derived) on the shared fields damage + startup",
+    "wh_damage": null,
+    "wh_startup_frames": null,
+    "wh_hit_level": null,
+    "candidate_scores": [
+     {
+      "motbin_move_id": 223,
+      "motbin_damage": 17,
+      "motbin_startup": 15,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1519,
+      "motbin_damage": 18,
+      "motbin_startup": 11,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1520,
+      "motbin_damage": 18,
+      "motbin_startup": 11,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1521,
+      "motbin_damage": 18,
+      "motbin_startup": 11,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1561,
+      "motbin_damage": 12,
+      "motbin_startup": 39,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1570,
+      "motbin_damage": 9,
+      "motbin_startup": 24,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1574,
+      "motbin_damage": 9,
+      "motbin_startup": 12,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1584,
+      "motbin_damage": 21,
+      "motbin_startup": 16,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1598,
+      "motbin_damage": 15,
+      "motbin_startup": 15,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1600,
+      "motbin_damage": 17,
+      "motbin_startup": 15,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1603,
+      "motbin_damage": 12,
+      "motbin_startup": 18,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1608,
+      "motbin_damage": 8,
+      "motbin_startup": 11,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1621,
+      "motbin_damage": 25,
+      "motbin_startup": 26,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1641,
+      "motbin_damage": 13,
+      "motbin_startup": 22,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1660,
+      "motbin_damage": 18,
+      "motbin_startup": 13,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1677,
+      "motbin_damage": 10,
+      "motbin_startup": 19,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1686,
+      "motbin_damage": 20,
+      "motbin_startup": 17,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1702,
+      "motbin_damage": 21,
+      "motbin_startup": 19,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1730,
+      "motbin_damage": 8,
+      "motbin_startup": 17,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1758,
+      "motbin_damage": 21,
+      "motbin_startup": 23,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1774,
+      "motbin_damage": 20,
+      "motbin_startup": 14,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1781,
+      "motbin_damage": 23,
+      "motbin_startup": 13,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1782,
+      "motbin_damage": 23,
+      "motbin_startup": 13,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1787,
+      "motbin_damage": 26,
+      "motbin_startup": 15,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2052,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2055,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2056,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2059,
+      "motbin_damage": 15,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2060,
+      "motbin_damage": 15,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2062,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2065,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2090,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2094,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2098,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2104,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2108,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2112,
+      "motbin_damage": 15,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2116,
+      "motbin_damage": 15,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2126,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2131,
+      "motbin_damage": 10,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2132,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     }
+    ],
+    "verdict": "held unmapped: no candidate is a unique exact match on both shared fields (or the WH block is absent); calibration on 132 known multi-candidate pools showed a unique-exact damage+startup rule would have been wrong on 9 of 26 (35%), so no mapping was promoted from fingerprint evidence alone"
+   }
   },
   {
    "wh_key": "SS.4",
@@ -4146,7 +4792,401 @@
      "anim": "amas_tetu2(DVD)",
      "anim_id": 16839
     }
-   ]
+   ],
+   "fingerprint_pass": {
+    "method": "B2b/c fingerprint pass 2026-10-30: candidate motbin damage/startup scored against the WH moveset frame-data block (TheBigTuna-derived) on the shared fields damage + startup",
+    "wh_damage": null,
+    "wh_startup_frames": null,
+    "wh_hit_level": null,
+    "candidate_scores": [
+     {
+      "motbin_move_id": 166,
+      "motbin_damage": 18,
+      "motbin_startup": 22,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 168,
+      "motbin_damage": 10,
+      "motbin_startup": 18,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 170,
+      "motbin_damage": 18,
+      "motbin_startup": 31,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 173,
+      "motbin_damage": 15,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 174,
+      "motbin_damage": 10,
+      "motbin_startup": 15,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 176,
+      "motbin_damage": 18,
+      "motbin_startup": 17,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 177,
+      "motbin_damage": 10,
+      "motbin_startup": 22,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 178,
+      "motbin_damage": 13,
+      "motbin_startup": 18,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 180,
+      "motbin_damage": 18,
+      "motbin_startup": 14,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 182,
+      "motbin_damage": 10,
+      "motbin_startup": 11,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 185,
+      "motbin_damage": 20,
+      "motbin_startup": 19,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 190,
+      "motbin_damage": 10,
+      "motbin_startup": 19,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 198,
+      "motbin_damage": 10,
+      "motbin_startup": 21,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1540,
+      "motbin_damage": 25,
+      "motbin_startup": 8,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1541,
+      "motbin_damage": 25,
+      "motbin_startup": 8,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1542,
+      "motbin_damage": 25,
+      "motbin_startup": 8,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1543,
+      "motbin_damage": 25,
+      "motbin_startup": 9,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1544,
+      "motbin_damage": 25,
+      "motbin_startup": 9,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1545,
+      "motbin_damage": 25,
+      "motbin_startup": 9,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1546,
+      "motbin_damage": 15,
+      "motbin_startup": 9,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1547,
+      "motbin_damage": 15,
+      "motbin_startup": 9,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1548,
+      "motbin_damage": 15,
+      "motbin_startup": 9,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1549,
+      "motbin_damage": 18,
+      "motbin_startup": 9,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1550,
+      "motbin_damage": 18,
+      "motbin_startup": 9,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1551,
+      "motbin_damage": 18,
+      "motbin_startup": 9,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1552,
+      "motbin_damage": 25,
+      "motbin_startup": 20,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1554,
+      "motbin_damage": 25,
+      "motbin_startup": 20,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1555,
+      "motbin_damage": 25,
+      "motbin_startup": 20,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1566,
+      "motbin_damage": 15,
+      "motbin_startup": 25,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1567,
+      "motbin_damage": 15,
+      "motbin_startup": 31,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1568,
+      "motbin_damage": 15,
+      "motbin_startup": 37,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1573,
+      "motbin_damage": 20,
+      "motbin_startup": 18,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1587,
+      "motbin_damage": 22,
+      "motbin_startup": 26,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1592,
+      "motbin_damage": 18,
+      "motbin_startup": 11,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1594,
+      "motbin_damage": 18,
+      "motbin_startup": 10,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1595,
+      "motbin_damage": 18,
+      "motbin_startup": 10,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1612,
+      "motbin_damage": 10,
+      "motbin_startup": 12,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1629,
+      "motbin_damage": 5,
+      "motbin_startup": 14,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1639,
+      "motbin_damage": 22,
+      "motbin_startup": 23,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1665,
+      "motbin_damage": 15,
+      "motbin_startup": 11,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1701,
+      "motbin_damage": 14,
+      "motbin_startup": 26,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1706,
+      "motbin_damage": 14,
+      "motbin_startup": 20,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1707,
+      "motbin_damage": 5,
+      "motbin_startup": 18,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1709,
+      "motbin_damage": 15,
+      "motbin_startup": 31,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1712,
+      "motbin_damage": 15,
+      "motbin_startup": 31,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1713,
+      "motbin_damage": 16,
+      "motbin_startup": 31,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1718,
+      "motbin_damage": 15,
+      "motbin_startup": 13,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1726,
+      "motbin_damage": 26,
+      "motbin_startup": 24,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1727,
+      "motbin_damage": 5,
+      "motbin_startup": 14,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1740,
+      "motbin_damage": 23,
+      "motbin_startup": 25,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1752,
+      "motbin_damage": 20,
+      "motbin_startup": 23,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1755,
+      "motbin_damage": 20,
+      "motbin_startup": 20,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1756,
+      "motbin_damage": 14,
+      "motbin_startup": 33,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1771,
+      "motbin_damage": 18,
+      "motbin_startup": 17,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1787,
+      "motbin_damage": 26,
+      "motbin_startup": 15,
+      "damage_match": false,
+      "startup_match": false
+     }
+    ],
+    "verdict": "held unmapped: no candidate is a unique exact match on both shared fields (or the WH block is absent); calibration on 132 known multi-candidate pools showed a unique-exact damage+startup rule would have been wrong on 9 of 26 (35%), so no mapping was promoted from fingerprint evidence alone"
+   }
   },
   {
    "wh_key": "ub+4",
@@ -4743,7 +5783,44 @@
      "anim": "najn_stlp2rk(DVD)",
      "anim_id": 16818
     }
-   ]
+   ],
+   "fingerprint_pass": {
+    "method": "B2b/c fingerprint pass 2026-10-30: candidate motbin damage/startup scored against the WH moveset frame-data block (TheBigTuna-derived) on the shared fields damage + startup",
+    "wh_damage": 22,
+    "wh_startup_frames": 15,
+    "wh_hit_level": "mid, high",
+    "candidate_scores": [
+     {
+      "motbin_move_id": 1701,
+      "motbin_damage": 14,
+      "motbin_startup": 26,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1707,
+      "motbin_damage": 5,
+      "motbin_startup": 18,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1727,
+      "motbin_damage": 5,
+      "motbin_startup": 14,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1755,
+      "motbin_damage": 20,
+      "motbin_startup": 20,
+      "damage_match": false,
+      "startup_match": false
+     }
+    ],
+    "verdict": "held unmapped: no candidate is a unique exact match on both shared fields (or the WH block is absent); calibration on 132 known multi-candidate pools showed a unique-exact damage+startup rule would have been wrong on 9 of 26 (35%), so no mapping was promoted from fingerprint evidence alone"
+   }
   },
   {
    "wh_key": "ws2",
@@ -5103,7 +6180,93 @@
      "anim": "Z_ni_lrp_n(DVD)",
      "anim_id": 16986
     }
-   ]
+   ],
+   "fingerprint_pass": {
+    "method": "B2b/c fingerprint pass 2026-10-30: candidate motbin damage/startup scored against the WH moveset frame-data block (TheBigTuna-derived) on the shared fields damage + startup",
+    "wh_damage": 18,
+    "wh_startup_frames": 13,
+    "wh_hit_level": "mid, high",
+    "candidate_scores": [
+     {
+      "motbin_move_id": 1576,
+      "motbin_damage": 10,
+      "motbin_startup": 18,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1584,
+      "motbin_damage": 21,
+      "motbin_startup": 16,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1684,
+      "motbin_damage": 12,
+      "motbin_startup": 21,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2054,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2058,
+      "motbin_damage": 15,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2064,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2092,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2102,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2114,
+      "motbin_damage": 15,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2128,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2134,
+      "motbin_damage": 10,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     }
+    ],
+    "verdict": "held unmapped: no candidate is a unique exact match on both shared fields (or the WH block is absent); calibration on 132 known multi-candidate pools showed a unique-exact damage+startup rule would have been wrong on 9 of 26 (35%), so no mapping was promoted from fingerprint evidence alone"
+   }
   },
   {
    "wh_key": "ws2,1,1",
@@ -5163,7 +6326,58 @@
      "anim": "Z_ntcllp_n(DVD)",
      "anim_id": 16987
     }
-   ]
+   ],
+   "fingerprint_pass": {
+    "method": "B2b/c fingerprint pass 2026-10-30: candidate motbin damage/startup scored against the WH moveset frame-data block (TheBigTuna-derived) on the shared fields damage + startup",
+    "wh_damage": null,
+    "wh_startup_frames": null,
+    "wh_hit_level": null,
+    "candidate_scores": [
+     {
+      "motbin_move_id": 1676,
+      "motbin_damage": 15,
+      "motbin_startup": 24,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2057,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2061,
+      "motbin_damage": 15,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2106,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2110,
+      "motbin_damage": 15,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2129,
+      "motbin_damage": 12,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     }
+    ],
+    "verdict": "held unmapped: no candidate is a unique exact match on both shared fields (or the WH block is absent); calibration on 132 known multi-candidate pools showed a unique-exact damage+startup rule would have been wrong on 9 of 26 (35%), so no mapping was promoted from fingerprint evidence alone"
+   }
   },
   {
    "wh_key": "ws2,1,1,1,2,1+4,1,3+4",
@@ -5186,7 +6400,8 @@
    "mvl_row": 78,
    "mvl_name": "10 Hit Combo 2",
    "mvl_notation": "2,1,1,1,2,1+4,1,3+4",
-   "motbin_candidates": []
+   "motbin_candidates": [],
+   "b2bc_diagnosis": "B2 diagnosis: the T7 10-hit chain head could not be located in askmot - walking from the standing 2 (Jn_rp00) consumes 1 into Jn_akkrp00, which has no 1 exit (only requirement-gated autos), so the MVL-listed 2,1,1,1,2,1+4,1,3+4 chain breaks at the third step; no 10hit-named moves exist in askmot - stays unmapped."
   },
   {
    "wh_key": "ws2,1,1,1,2,1,4,3,3+4",
@@ -5209,7 +6424,8 @@
    "mvl_row": 77,
    "mvl_name": "10 Hit Combo 1",
    "mvl_notation": "2,1,1,1,2,1,4,3,3+4",
-   "motbin_candidates": []
+   "motbin_candidates": [],
+   "b2bc_diagnosis": "B2 diagnosis: same break as 10 Hit Combo 2 - the chain from Jn_rp00 via Jn_akkrp00 has no third-step exit in askmot - stays unmapped."
   },
   {
    "wh_key": "ws2,1,1,3",
@@ -5613,7 +6829,373 @@
      "anim": "sujn_rotlplk(DVD)",
      "anim_id": 16776
     }
-   ]
+   ],
+   "fingerprint_pass": {
+    "method": "B2b/c fingerprint pass 2026-10-30: candidate motbin damage/startup scored against the WH moveset frame-data block (TheBigTuna-derived) on the shared fields damage + startup",
+    "wh_damage": 27,
+    "wh_startup_frames": 19,
+    "wh_hit_level": "mid",
+    "candidate_scores": [
+     {
+      "motbin_move_id": 165,
+      "motbin_damage": 10,
+      "motbin_startup": 22,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 167,
+      "motbin_damage": 10,
+      "motbin_startup": 19,
+      "damage_match": false,
+      "startup_match": true
+     },
+     {
+      "motbin_move_id": 169,
+      "motbin_damage": 10,
+      "motbin_startup": 31,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 171,
+      "motbin_damage": 8,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 172,
+      "motbin_damage": 10,
+      "motbin_startup": 25,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 175,
+      "motbin_damage": 10,
+      "motbin_startup": 19,
+      "damage_match": false,
+      "startup_match": true
+     },
+     {
+      "motbin_move_id": 177,
+      "motbin_damage": 10,
+      "motbin_startup": 22,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 179,
+      "motbin_damage": 10,
+      "motbin_startup": 14,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 181,
+      "motbin_damage": 10,
+      "motbin_startup": 14,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 185,
+      "motbin_damage": 20,
+      "motbin_startup": 19,
+      "damage_match": false,
+      "startup_match": true
+     },
+     {
+      "motbin_move_id": 188,
+      "motbin_damage": 7,
+      "motbin_startup": 19,
+      "damage_match": false,
+      "startup_match": true
+     },
+     {
+      "motbin_move_id": 192,
+      "motbin_damage": 10,
+      "motbin_startup": 21,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1523,
+      "motbin_damage": 17,
+      "motbin_startup": 20,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1526,
+      "motbin_damage": 17,
+      "motbin_startup": 20,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1527,
+      "motbin_damage": 17,
+      "motbin_startup": 20,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1528,
+      "motbin_damage": 25,
+      "motbin_startup": 9,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1529,
+      "motbin_damage": 25,
+      "motbin_startup": 9,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1530,
+      "motbin_damage": 25,
+      "motbin_startup": 9,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1531,
+      "motbin_damage": 25,
+      "motbin_startup": 15,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1532,
+      "motbin_damage": 25,
+      "motbin_startup": 15,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1533,
+      "motbin_damage": 25,
+      "motbin_startup": 15,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1534,
+      "motbin_damage": 25,
+      "motbin_startup": 14,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1535,
+      "motbin_damage": 25,
+      "motbin_startup": 14,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1536,
+      "motbin_damage": 25,
+      "motbin_startup": 14,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1537,
+      "motbin_damage": 20,
+      "motbin_startup": 15,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1538,
+      "motbin_damage": 15,
+      "motbin_startup": 15,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1539,
+      "motbin_damage": 20,
+      "motbin_startup": 15,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1562,
+      "motbin_damage": 20,
+      "motbin_startup": 27,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1563,
+      "motbin_damage": 20,
+      "motbin_startup": 33,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1564,
+      "motbin_damage": 20,
+      "motbin_startup": 39,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1575,
+      "motbin_damage": 20,
+      "motbin_startup": 22,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1585,
+      "motbin_damage": 17,
+      "motbin_startup": 14,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1594,
+      "motbin_damage": 18,
+      "motbin_startup": 10,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1595,
+      "motbin_damage": 18,
+      "motbin_startup": 10,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1596,
+      "motbin_damage": 10,
+      "motbin_startup": 23,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1611,
+      "motbin_damage": 12,
+      "motbin_startup": 16,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1629,
+      "motbin_damage": 5,
+      "motbin_startup": 14,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1675,
+      "motbin_damage": 20,
+      "motbin_startup": 18,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1687,
+      "motbin_damage": 10,
+      "motbin_startup": 21,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1698,
+      "motbin_damage": 17,
+      "motbin_startup": 21,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1700,
+      "motbin_damage": 21,
+      "motbin_startup": 17,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1711,
+      "motbin_damage": 15,
+      "motbin_startup": 31,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1715,
+      "motbin_damage": 16,
+      "motbin_startup": 31,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1718,
+      "motbin_damage": 15,
+      "motbin_startup": 13,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1721,
+      "motbin_damage": 10,
+      "motbin_startup": 23,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1722,
+      "motbin_damage": 10,
+      "motbin_startup": 30,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1731,
+      "motbin_damage": 8,
+      "motbin_startup": 17,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1744,
+      "motbin_damage": 18,
+      "motbin_startup": 32,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1758,
+      "motbin_damage": 21,
+      "motbin_startup": 23,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1776,
+      "motbin_damage": 22,
+      "motbin_startup": 27,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1800,
+      "motbin_damage": 10,
+      "motbin_startup": 21,
+      "damage_match": false,
+      "startup_match": false
+     }
+    ],
+    "verdict": "held unmapped: no candidate is a unique exact match on both shared fields (or the WH block is absent); calibration on 132 known multi-candidate pools showed a unique-exact damage+startup rule would have been wrong on 9 of 26 (35%), so no mapping was promoted from fingerprint evidence alone"
+   }
   },
   {
    "wh_key": "ws4",
@@ -5967,7 +7549,401 @@
      "anim": "amas_tetu2(DVD)",
      "anim_id": 16839
     }
-   ]
+   ],
+   "fingerprint_pass": {
+    "method": "B2b/c fingerprint pass 2026-10-30: candidate motbin damage/startup scored against the WH moveset frame-data block (TheBigTuna-derived) on the shared fields damage + startup",
+    "wh_damage": 20,
+    "wh_startup_frames": 11,
+    "wh_hit_level": "mid",
+    "candidate_scores": [
+     {
+      "motbin_move_id": 166,
+      "motbin_damage": 18,
+      "motbin_startup": 22,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 168,
+      "motbin_damage": 10,
+      "motbin_startup": 18,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 170,
+      "motbin_damage": 18,
+      "motbin_startup": 31,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 173,
+      "motbin_damage": 15,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 174,
+      "motbin_damage": 10,
+      "motbin_startup": 15,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 176,
+      "motbin_damage": 18,
+      "motbin_startup": 17,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 177,
+      "motbin_damage": 10,
+      "motbin_startup": 22,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 178,
+      "motbin_damage": 13,
+      "motbin_startup": 18,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 180,
+      "motbin_damage": 18,
+      "motbin_startup": 14,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 182,
+      "motbin_damage": 10,
+      "motbin_startup": 11,
+      "damage_match": false,
+      "startup_match": true
+     },
+     {
+      "motbin_move_id": 185,
+      "motbin_damage": 20,
+      "motbin_startup": 19,
+      "damage_match": true,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 190,
+      "motbin_damage": 10,
+      "motbin_startup": 19,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 198,
+      "motbin_damage": 10,
+      "motbin_startup": 21,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1540,
+      "motbin_damage": 25,
+      "motbin_startup": 8,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1541,
+      "motbin_damage": 25,
+      "motbin_startup": 8,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1542,
+      "motbin_damage": 25,
+      "motbin_startup": 8,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1543,
+      "motbin_damage": 25,
+      "motbin_startup": 9,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1544,
+      "motbin_damage": 25,
+      "motbin_startup": 9,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1545,
+      "motbin_damage": 25,
+      "motbin_startup": 9,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1546,
+      "motbin_damage": 15,
+      "motbin_startup": 9,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1547,
+      "motbin_damage": 15,
+      "motbin_startup": 9,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1548,
+      "motbin_damage": 15,
+      "motbin_startup": 9,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1549,
+      "motbin_damage": 18,
+      "motbin_startup": 9,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1550,
+      "motbin_damage": 18,
+      "motbin_startup": 9,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1551,
+      "motbin_damage": 18,
+      "motbin_startup": 9,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1552,
+      "motbin_damage": 25,
+      "motbin_startup": 20,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1554,
+      "motbin_damage": 25,
+      "motbin_startup": 20,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1555,
+      "motbin_damage": 25,
+      "motbin_startup": 20,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1566,
+      "motbin_damage": 15,
+      "motbin_startup": 25,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1567,
+      "motbin_damage": 15,
+      "motbin_startup": 31,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1568,
+      "motbin_damage": 15,
+      "motbin_startup": 37,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1573,
+      "motbin_damage": 20,
+      "motbin_startup": 18,
+      "damage_match": true,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1587,
+      "motbin_damage": 22,
+      "motbin_startup": 26,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1592,
+      "motbin_damage": 18,
+      "motbin_startup": 11,
+      "damage_match": false,
+      "startup_match": true
+     },
+     {
+      "motbin_move_id": 1594,
+      "motbin_damage": 18,
+      "motbin_startup": 10,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1595,
+      "motbin_damage": 18,
+      "motbin_startup": 10,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1612,
+      "motbin_damage": 10,
+      "motbin_startup": 12,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1629,
+      "motbin_damage": 5,
+      "motbin_startup": 14,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1639,
+      "motbin_damage": 22,
+      "motbin_startup": 23,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1665,
+      "motbin_damage": 15,
+      "motbin_startup": 11,
+      "damage_match": false,
+      "startup_match": true
+     },
+     {
+      "motbin_move_id": 1701,
+      "motbin_damage": 14,
+      "motbin_startup": 26,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1706,
+      "motbin_damage": 14,
+      "motbin_startup": 20,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1707,
+      "motbin_damage": 5,
+      "motbin_startup": 18,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1709,
+      "motbin_damage": 15,
+      "motbin_startup": 31,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1712,
+      "motbin_damage": 15,
+      "motbin_startup": 31,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1713,
+      "motbin_damage": 16,
+      "motbin_startup": 31,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1718,
+      "motbin_damage": 15,
+      "motbin_startup": 13,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1726,
+      "motbin_damage": 26,
+      "motbin_startup": 24,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1727,
+      "motbin_damage": 5,
+      "motbin_startup": 14,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1740,
+      "motbin_damage": 23,
+      "motbin_startup": 25,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1752,
+      "motbin_damage": 20,
+      "motbin_startup": 23,
+      "damage_match": true,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1755,
+      "motbin_damage": 20,
+      "motbin_startup": 20,
+      "damage_match": true,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1756,
+      "motbin_damage": 14,
+      "motbin_startup": 33,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1771,
+      "motbin_damage": 18,
+      "motbin_startup": 17,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1787,
+      "motbin_damage": 26,
+      "motbin_startup": 15,
+      "damage_match": false,
+      "startup_match": false
+     }
+    ],
+    "verdict": "held unmapped: no candidate is a unique exact match on both shared fields (or the WH block is absent); calibration on 132 known multi-candidate pools showed a unique-exact damage+startup rule would have been wrong on 9 of 26 (35%), so no mapping was promoted from fingerprint evidence alone"
+   }
   },
   {
    "wh_key": "1~t8.asuka",
@@ -6714,7 +8690,93 @@
      "anim": "Z_ni_lrp_n(DVD)",
      "anim_id": 16986
     }
-   ]
+   ],
+   "fingerprint_pass": {
+    "method": "B2b/c fingerprint pass 2026-10-30: candidate motbin damage/startup scored against the WH moveset frame-data block (TheBigTuna-derived) on the shared fields damage + startup",
+    "wh_damage": 12,
+    "wh_startup_frames": 12,
+    "wh_hit_level": "high, high",
+    "candidate_scores": [
+     {
+      "motbin_move_id": 1576,
+      "motbin_damage": 10,
+      "motbin_startup": 18,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1584,
+      "motbin_damage": 21,
+      "motbin_startup": 16,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 1684,
+      "motbin_damage": 12,
+      "motbin_startup": 21,
+      "damage_match": true,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2054,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2058,
+      "motbin_damage": 15,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2064,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2092,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2102,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2114,
+      "motbin_damage": 15,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2128,
+      "motbin_damage": 5,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     },
+     {
+      "motbin_move_id": 2134,
+      "motbin_damage": 10,
+      "motbin_startup": null,
+      "damage_match": false,
+      "startup_match": false
+     }
+    ],
+    "verdict": "held unmapped: no candidate is a unique exact match on both shared fields (or the WH block is absent); calibration on 132 known multi-candidate pools showed a unique-exact damage+startup rule would have been wrong on 9 of 26 (35%), so no mapping was promoted from fingerprint evidence alone"
+   }
   },
   {
    "wh_key": "2+4~t8.asuka",
