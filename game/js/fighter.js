@@ -435,6 +435,33 @@ export const KOF = {
   TAUNT_LOCK: 49 / 60,   // taunt cannot be cancelled for 49f; no gauge effect in XV
   ESCAPE_WINDOW: 11 / 60 // normal throw break: first 11 frames of the throw
 };
+
+/* The bound bank's own GENERIC action for a limb/throw — the same
+   last-resort tier _attackClipPlan's main path uses for a move with no
+   specific clip: 'grab' for a throw, else the bank's light/medium/heavy
+   action whose strike profile matches the limb (arm-preferring for arm
+   moves, leg moves fall to 'medium'). Generic actions are the bank's own
+   decoded attack motions — never another move's row, never another
+   bank's clip. Returns the action name or null when the bank has no
+   usable generic. */
+export function genericBankAction(bank, clips, limb, grab) {
+  if (!clips) return null;
+  const cands = (grab ? ['grab'] : []).concat(['light', 'medium', 'heavy'])
+    .filter((n) => clips[n] && clipIsThrow(clips[n]) === !!grab);
+  const limbOf = (n) => {
+    const h = clips[n].userData.hit;
+    const p = clipStrikeProfile(bank, clips[n]);
+    return BUTTON_LIMB[h && h[5]] || (p && p.dominant);
+  };
+  const arm = (l) => !!(l && l.startsWith('arm'));
+  let best = grab && clips.grab && clipIsThrow(clips.grab) ? 'grab' : null;
+  for (const want of [(d) => d === limb, (d) => arm(d) === arm(limb)]) {
+    if (best) break;
+    for (const n of cands) if (want(limbOf(n))) { best = n; break; }
+  }
+  best = best || (grab ? 'grab' : arm(limb) ? 'light' : 'medium');
+  return clips[best] ? best : null;
+}
 export class Fighter {
   constructor(charData, startX, facing, isPlayer) {
     this.char = charData;
@@ -1113,6 +1140,34 @@ export class Fighter {
       if (!sp.playName || !src0) {
         if (sp.unmapped.length) console.log(`[WH-STEP-PLAN] ${this._movesetId} ${move && move.moveKey}: UNMAPPED steps [${sp.unmapped.join(', ')}] — no bank row played, never donor fallback`);
         else if (sp.playBank !== bank) console.log(`[WH-STEP-PLAN] ${this._movesetId} ${move && move.moveKey}: override bank '${sp.playBank}' row ${sp.playRow} unavailable — no bank row played, never bound-bank fallback`);
+        // PRESENTATION FALLBACK (fight-freeze fix, 2026-10-31): the step-plan
+        // contract above stands — no bank ROW is ever substituted for an
+        // unmapped step. But returning name:null here used to leave the
+        // fighter standing in the previous move's finished pose for this
+        // move's whole duration: on the phone that reads as the input being
+        // ignored — "freezing up, not playing the animation" — and it kills
+        // combos, whose continuation steps are the most common unmapped
+        // plans. The move still owes the player motion, so it presents with
+        // the BOUND bank's own generic action for the limb (the identical
+        // last-resort tier the main path below uses for clip-less moves).
+        // The UNMAPPED log above stays: the data gap is reported, not hidden.
+        const boundClips = bank && this._t3 ? this._t3.clips[bank] : null;
+        const gname = genericBankAction(bank, boundClips, limb0, grab0);
+        if (gname) {
+          const srcG = boundClips[gname];
+          let timingG = null;
+          const SG = move && Number.isFinite(move.startup) ? move.startup : 0;
+          const AG = move && Number.isFinite(move.active) ? move.active : 0;
+          const RG = move && Number.isFinite(move.recovery) ? move.recovery : 0;
+          if (srcG && SG + AG + RG > 0.05) {
+            const wG = clipHitWindow(bank, srcG, limb0);
+            const DG = srcG.duration;
+            const t0 = wG ? Math.min(wG.t0, DG) : DG * SG / (SG + AG + RG);
+            const t1 = wG ? Math.min(Math.max(wG.t1, t0), DG) : DG * (SG + AG) / (SG + AG + RG);
+            timingG = { S: SG, A: AG, R: RG, t0, t1, D: DG, src: wG ? wG.src : 'proportional' };
+          }
+          return { kind: 'step-plan', name: gname, why: `step plan unmapped — generic ${gname} presentation (no row substituted)`, steps: sp.steps, unmapped: sp.unmapped, limb: limb0, level: level0, grab: grab0, timing: timingG, rejected: [], stepBank: sp.playBank, stepRow: sp.playRow };
+        }
         return { kind: 'step-plan', name: null, steps: sp.steps, unmapped: sp.unmapped, limb: limb0, level: level0, grab: grab0, timing: null, rejected: [], stepBank: sp.playBank, stepRow: sp.playRow };
       }
       // Timing for the step row, same rule as the single-row tail below:
@@ -3562,6 +3617,12 @@ export class Fighter {
           // Real T3 clip playing; add slight lean for body english
           this._leanT.x = -0.1;
         } else {
+          // No clip owns this attack: release the previous attack's
+          // finished T3 action first (fight-freeze fix, 2026-10-31), so
+          // the procedural fallback animates from a clean pose instead of
+          // the stale clip staying "current" for the move's whole
+          // duration — the visible freeze on clip-less moves.
+          this._stopT3();
           this._animAttack(); // procedural fallback
         }
         break;
