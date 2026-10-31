@@ -74,6 +74,16 @@ Spot-check one newly shipped file and one bundled model with `HEAD`
 requests (200 + the exact byte size from main's tree), e.g.
 `game/assets/models/pantera.glb` and the file your change touched.
 
+Also verify the deployed tree's module graph is complete — a delta
+deploy that ships a JS module without a file it imports breaks every
+fight until a follow-up deploy lands (2026-10-30: fighter.js shipped
+without step-plan-bank.js). Against a checkout of the deploy branch:
+
+```sh
+python3 tools/deploy/check_module_graph.py <deploy-branch-checkout>
+# must exit 0 (warnings are pre-existing guarded/dynamic references)
+```
+
 ## 4. itch.io trimmed build
 
 Local route (canonical, from `tools/deploy/build_pages.py`):
