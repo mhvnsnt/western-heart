@@ -15,6 +15,20 @@ the FREE CAMERA placement, or the T7 0x64 joint-frame problem. Owner directives 
 6. **Build like the real game, play like the player** (new law, see `AGENTS.md`): use real game code/teardowns as
    the template, no free-floating UI over menus/HUD, test by actually playing.
 
+## 1b. Work order (owner law 2026-10-31, AGENTS.md "work order")
+
+- **Short jobs first:** a T-pose model AND a moveset taken straight from ONE source character, with no extra canon moves. Finish each fighter to playable, then deploy it:
+  1. rig (no stretch or cone face, correct facing);
+  2. stance;
+  3. moves, animations and inputs;
+  4. a live check.
+- **Long jobs later:** A-pose models (fit the skeleton to the pose first), size/form transformations, and canon extra or mixed moves. Checkpoint them (push + merge + note) when they run long, then switch to a short job.
+- **Current sequence:**
+  1. Negativo (Negan, T-pose static) — re-rig to fix the cone face and arms, then wire his 26 real T7 attacks.
+  2. Universal cone-face audit of the other short-job fighters.
+  3. Pantera, Purple Rain and the rest of the single-source fighters' moves once the 0x64 joint frame lands.
+  4. Long jobs: Burger, then Deathfang, etc.
+
 ## 2. What shipped (all merged to main and deployed live)
 
 | PR | What | Live check |

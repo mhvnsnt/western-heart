@@ -10,6 +10,7 @@ Kept out on purpose (they keep their current animation):
   - rows whose T7 hit level lists more than one hit: the second hit can live in a follow-up motbin move, so one
     clip could show only half the move;
   - throws (moveset isGrab / throw, or a T7 throw hit level): throws have their own pair animation path.
+Each clip carries root_motion_fwd_m (forward travel per frame from the raw T7 root channel, metres).
 Every clip is tagged FIGHT (SHOW-ANIMATION LOCK, docs/anim/NEGAN-ANIM-GAP-20261023.md): these are the moves' own
 animations, never win/intro/taunt clips.
 
@@ -21,6 +22,8 @@ usage: python3 tools/anim/t7_move_bake.py --resolve resolve.json --mothead <GRE>
 import argparse, hashlib, json, os, re, subprocess, sys, tempfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+import t7_c8_stance_bake as B  # noqa: E402  (decode_c8: raw 0xC8 frames)
 
 
 def safe(name):
@@ -62,6 +65,15 @@ def main():
                 if not (data.get('fk_selfcheck_max_m', 1) <= 1e-5): raise SystemExit('%s: FK self-check %r' % (cname, data.get('fk_selfcheck_max_m')))
                 data['loop'] = False
                 data['anim_set'] = 'FIGHT'
+                # Root motion from the RAW T7 root channel (slot 0, mm; forward = +z in both clip formats: King's
+                # 0x64 jab root z 21 -> 555 -> 458 mm). The applier's posed hips track (root_t) carries this travel
+                # 90 deg off the body's facing (T7 z lands on glTF x), so the game must not read travel from
+                # root_t for these clips. Lateral travel is left at 0 until its sign is proven on a sidestep clip.
+                raw = B.decode_c8(arc, r['clip'])
+                z0 = raw[0][2]
+                data['root_motion_fwd_m'] = [round((f[2] - z0) / 1000.0, 5) for f in raw]
+                if len(data['root_motion_fwd_m']) != len(data['root_t']):
+                    raise SystemExit('%s: root motion has %d frames, clip %d' % (cname, len(data['root_motion_fwd_m']), len(data['root_t'])))
                 clips[cname] = data
                 print('baked %-30s %3d frames  FK %.6f m  (%s)' % (cname, len(data['root_t']), data['fk_selfcheck_max_m'], key))
             moves[key] = {'clip': cname, 'input': r['input'], 't7_command': r.get('t7_command'), 'motbin_move': r['motbin_move'],
