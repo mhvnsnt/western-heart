@@ -588,9 +588,29 @@ export function getT3Clips(bankId = 'king') { return _t3clipCache[bankId] || nul
    the community 0xC8 path (Kiloutre's applyRotationFromAnimdata on Koenji's TekkenMannequin). It ships as a
    wh-anim/1 clip on its own wh-anim-skel/1 skeleton (the T7 rest pose), so retargetT3Clips puts it on any rig
    exactly like a bank clip. It replaces the bank's T3 slot-3 'stance' for the fighters listed here only; every
-   other action and every move row stays the bank's own. Nothing authored. */
+   other action and every move row stays the bank's own. Nothing authored.
+   2026-10-31: every CANON base whose own T7 stance clip (its <code>_sKAM00_ move) is 0xC8 — the clips the
+   community path applies — for each fighter with a bound bank. `bank` is the fighter's bound bank (fighter.js
+   bankIdFor), `dir` the base character's baked stance. Not listed, by owner decision: zen (NOT Heihachi),
+   cyborgx + zui (keep their stances), jin_soul (identity on the decision list); menajerii (Roger Jr.) and
+   silvertongue (Lili) only borrow the kuma / xiaoyu banks. 0x64 stances (Jin, Law, Paul, Nina, Alisa, Miguel,
+   Eddy, Asuka, Katarina, Akuma, Jack-7, Raven, Anna, Lei, Lili, Zafina, Lucky Chloe) wait for the 0x64 joint
+   frame (docs/anim/T7-0x64-FRAME-RESEARCH-2026-10-30.md); fighters with no bank (Purple Rain, Chordz, Negativo)
+   need a stance-only binding first, since a missing action falls back to 'stance' (fighter.js). */
 export const T7_STANCES = {
   pantera: { bank: 'king', dir: 'assets/anim/t7/king/' },
+  diablo: { bank: 'heihachi', dir: 'assets/anim/t7/heihachi/' },
+  skull: { bank: 'bryan', dir: 'assets/anim/t7/bryan/' },
+  retsu: { bank: 'bryan', dir: 'assets/anim/t7/bryan/' },
+  burger: { bank: 'bryan', dir: 'assets/anim/t7/bob/' },
+  sakura: { bank: 'xiaoyu', dir: 'assets/anim/t7/xiaoyu/' },
+  sha: { bank: 'xiaoyu', dir: 'assets/anim/t7/xiaoyu/' },
+  phantom: { bank: 'yoshimitsu', dir: 'assets/anim/t7/yoshimitsu/' },
+  gyou: { bank: 'hwoarang', dir: 'assets/anim/t7/hwoarang/' },
+  tobi: { bank: 'hwoarang', dir: 'assets/anim/t7/hwoarang/' },
+  gashadokuro: { bank: 'kuma', dir: 'assets/anim/t7/kuma/' },
+  aotsuki: { bank: 'kuma', dir: 'assets/anim/t7/panda/' },
+  nightwolf: { bank: 'julia', dir: 'assets/anim/t7/julia/' },
 };
 const _t7stance = {}; // fighterId -> { bank, skelId, clip }
 async function loadT7Stance(fid, def, THREE) {
