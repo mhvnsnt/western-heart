@@ -1,0 +1,1215 @@
+{
+ "format": "wh-t3-condition-codes/1",
+ "generated_from": "teardown/tekken3/movesets/moveset_<bank>.json (20 banks) at western-heart main 24058f8a2273cdfe553c3598856ab2eaadb941be",
+ "doc": "docs/movesets/T3-CONDITION-CODE-DECODE-2026-10-31.md",
+ "total_branches": 27480,
+ "codes": {
+  "0": {
+   "branches": 18985,
+   "banks": 20,
+   "params": {
+    "0": 18985
+   },
+   "command_families": {
+    "button-first": 7242,
+    "directional-first": 5858,
+    "common": 4966,
+    "motion-seq": 919
+   },
+   "top_commands": {
+    "<common>": 4966,
+    "any-button": 1472,
+    "RK": 1051,
+    "RP": 1041,
+    "LP": 1039
+   },
+   "family": "unconditional",
+   "walk_rule": "pass",
+   "confidence": "proven",
+   "reading": "No condition. The branch fires on its input alone; param is always 0. This is the baseline every Phase-1 proof already relied on."
+  },
+  "2": {
+   "branches": 174,
+   "banks": 20,
+   "params": {
+    "1536": 169,
+    "1792": 5
+   },
+   "command_families": {
+    "button-first": 171,
+    "directional-first": 3
+   },
+   "top_commands": {
+    "any-button": 168,
+    "4+any-button": 2,
+    "LP+RP": 2,
+    "LP": 1,
+    "6+any-button": 1
+   },
+   "family": "dispatch-1536",
+   "walk_rule": "blocked_dispatch",
+   "confidence": "strongly_supported",
+   "reading": "Member of the param-1536 (0x600) dispatch family (codes 2-23): 'any-button' transitions concentrated off standing/state rows, including 4-way dispatch sites (bryan rows 209/210 carry codes 2,3,4,5 to four different targets with identical param). Params in this family are 0x580/0x600/0x700. Not a player-input string gate; individual code semantics unknown."
+  },
+  "3": {
+   "branches": 151,
+   "banks": 20,
+   "params": {
+    "1536": 151
+   },
+   "command_families": {
+    "button-first": 151
+   },
+   "top_commands": {
+    "any-button": 151
+   },
+   "family": "dispatch-1536",
+   "walk_rule": "blocked_dispatch",
+   "confidence": "strongly_supported",
+   "reading": "Member of the param-1536 (0x600) dispatch family (codes 2-23): 'any-button' transitions concentrated off standing/state rows, including 4-way dispatch sites (bryan rows 209/210 carry codes 2,3,4,5 to four different targets with identical param). Params in this family are 0x580/0x600/0x700. Not a player-input string gate; individual code semantics unknown."
+  },
+  "4": {
+   "branches": 151,
+   "banks": 20,
+   "params": {
+    "1536": 151
+   },
+   "command_families": {
+    "button-first": 151
+   },
+   "top_commands": {
+    "any-button": 151
+   },
+   "family": "dispatch-1536",
+   "walk_rule": "blocked_dispatch",
+   "confidence": "strongly_supported",
+   "reading": "Member of the param-1536 (0x600) dispatch family (codes 2-23): 'any-button' transitions concentrated off standing/state rows, including 4-way dispatch sites (bryan rows 209/210 carry codes 2,3,4,5 to four different targets with identical param). Params in this family are 0x580/0x600/0x700. Not a player-input string gate; individual code semantics unknown."
+  },
+  "5": {
+   "branches": 150,
+   "banks": 20,
+   "params": {
+    "1536": 150
+   },
+   "command_families": {
+    "button-first": 150
+   },
+   "top_commands": {
+    "any-button": 150
+   },
+   "family": "dispatch-1536",
+   "walk_rule": "blocked_dispatch",
+   "confidence": "strongly_supported",
+   "reading": "Member of the param-1536 (0x600) dispatch family (codes 2-23): 'any-button' transitions concentrated off standing/state rows, including 4-way dispatch sites (bryan rows 209/210 carry codes 2,3,4,5 to four different targets with identical param). Params in this family are 0x580/0x600/0x700. Not a player-input string gate; individual code semantics unknown."
+  },
+  "6": {
+   "branches": 3,
+   "banks": 2,
+   "params": {
+    "1536": 3
+   },
+   "command_families": {
+    "button-first": 3
+   },
+   "top_commands": {
+    "any-button": 3
+   },
+   "family": "dispatch-1536",
+   "walk_rule": "blocked_dispatch",
+   "confidence": "strongly_supported",
+   "reading": "Member of the param-1536 (0x600) dispatch family (codes 2-23): 'any-button' transitions concentrated off standing/state rows, including 4-way dispatch sites (bryan rows 209/210 carry codes 2,3,4,5 to four different targets with identical param). Params in this family are 0x580/0x600/0x700. Not a player-input string gate; individual code semantics unknown."
+  },
+  "10": {
+   "branches": 6,
+   "banks": 2,
+   "params": {
+    "1536": 6
+   },
+   "command_families": {
+    "button-first": 4,
+    "directional-first": 2
+   },
+   "top_commands": {
+    "any-button": 4,
+    "1+any-button": 2
+   },
+   "family": "dispatch-1536",
+   "walk_rule": "blocked_dispatch",
+   "confidence": "strongly_supported",
+   "reading": "Member of the param-1536 (0x600) dispatch family (codes 2-23): 'any-button' transitions concentrated off standing/state rows, including 4-way dispatch sites (bryan rows 209/210 carry codes 2,3,4,5 to four different targets with identical param). Params in this family are 0x580/0x600/0x700. Not a player-input string gate; individual code semantics unknown."
+  },
+  "11": {
+   "branches": 4,
+   "banks": 2,
+   "params": {
+    "1536": 4
+   },
+   "command_families": {
+    "button-first": 4
+   },
+   "top_commands": {
+    "any-button": 4
+   },
+   "family": "dispatch-1536",
+   "walk_rule": "blocked_dispatch",
+   "confidence": "strongly_supported",
+   "reading": "Member of the param-1536 (0x600) dispatch family (codes 2-23): 'any-button' transitions concentrated off standing/state rows, including 4-way dispatch sites (bryan rows 209/210 carry codes 2,3,4,5 to four different targets with identical param). Params in this family are 0x580/0x600/0x700. Not a player-input string gate; individual code semantics unknown."
+  },
+  "12": {
+   "branches": 4,
+   "banks": 2,
+   "params": {
+    "1536": 4
+   },
+   "command_families": {
+    "button-first": 4
+   },
+   "top_commands": {
+    "any-button": 4
+   },
+   "family": "dispatch-1536",
+   "walk_rule": "blocked_dispatch",
+   "confidence": "strongly_supported",
+   "reading": "Member of the param-1536 (0x600) dispatch family (codes 2-23): 'any-button' transitions concentrated off standing/state rows, including 4-way dispatch sites (bryan rows 209/210 carry codes 2,3,4,5 to four different targets with identical param). Params in this family are 0x580/0x600/0x700. Not a player-input string gate; individual code semantics unknown."
+  },
+  "13": {
+   "branches": 4,
+   "banks": 2,
+   "params": {
+    "1536": 4
+   },
+   "command_families": {
+    "button-first": 4
+   },
+   "top_commands": {
+    "any-button": 4
+   },
+   "family": "dispatch-1536",
+   "walk_rule": "blocked_dispatch",
+   "confidence": "strongly_supported",
+   "reading": "Member of the param-1536 (0x600) dispatch family (codes 2-23): 'any-button' transitions concentrated off standing/state rows, including 4-way dispatch sites (bryan rows 209/210 carry codes 2,3,4,5 to four different targets with identical param). Params in this family are 0x580/0x600/0x700. Not a player-input string gate; individual code semantics unknown."
+  },
+  "14": {
+   "branches": 4,
+   "banks": 2,
+   "params": {
+    "1536": 4
+   },
+   "command_families": {
+    "button-first": 4
+   },
+   "top_commands": {
+    "any-button": 4
+   },
+   "family": "dispatch-1536",
+   "walk_rule": "blocked_dispatch",
+   "confidence": "strongly_supported",
+   "reading": "Member of the param-1536 (0x600) dispatch family (codes 2-23): 'any-button' transitions concentrated off standing/state rows, including 4-way dispatch sites (bryan rows 209/210 carry codes 2,3,4,5 to four different targets with identical param). Params in this family are 0x580/0x600/0x700. Not a player-input string gate; individual code semantics unknown."
+  },
+  "15": {
+   "branches": 4,
+   "banks": 2,
+   "params": {
+    "1536": 4
+   },
+   "command_families": {
+    "button-first": 4
+   },
+   "top_commands": {
+    "any-button": 4
+   },
+   "family": "dispatch-1536",
+   "walk_rule": "blocked_dispatch",
+   "confidence": "strongly_supported",
+   "reading": "Member of the param-1536 (0x600) dispatch family (codes 2-23): 'any-button' transitions concentrated off standing/state rows, including 4-way dispatch sites (bryan rows 209/210 carry codes 2,3,4,5 to four different targets with identical param). Params in this family are 0x580/0x600/0x700. Not a player-input string gate; individual code semantics unknown."
+  },
+  "16": {
+   "branches": 4,
+   "banks": 2,
+   "params": {
+    "1536": 4
+   },
+   "command_families": {
+    "button-first": 4
+   },
+   "top_commands": {
+    "any-button": 4
+   },
+   "family": "dispatch-1536",
+   "walk_rule": "blocked_dispatch",
+   "confidence": "strongly_supported",
+   "reading": "Member of the param-1536 (0x600) dispatch family (codes 2-23): 'any-button' transitions concentrated off standing/state rows, including 4-way dispatch sites (bryan rows 209/210 carry codes 2,3,4,5 to four different targets with identical param). Params in this family are 0x580/0x600/0x700. Not a player-input string gate; individual code semantics unknown."
+  },
+  "17": {
+   "branches": 4,
+   "banks": 2,
+   "params": {
+    "1536": 4
+   },
+   "command_families": {
+    "button-first": 4
+   },
+   "top_commands": {
+    "any-button": 4
+   },
+   "family": "dispatch-1536",
+   "walk_rule": "blocked_dispatch",
+   "confidence": "strongly_supported",
+   "reading": "Member of the param-1536 (0x600) dispatch family (codes 2-23): 'any-button' transitions concentrated off standing/state rows, including 4-way dispatch sites (bryan rows 209/210 carry codes 2,3,4,5 to four different targets with identical param). Params in this family are 0x580/0x600/0x700. Not a player-input string gate; individual code semantics unknown."
+  },
+  "18": {
+   "branches": 4,
+   "banks": 1,
+   "params": {
+    "640": 4
+   },
+   "command_families": {
+    "button-first": 4
+   },
+   "top_commands": {
+    "any-button": 4
+   },
+   "family": "variant-pair",
+   "walk_rule": "pass_variant",
+   "confidence": "strongly_supported",
+   "reading": "Xiaoyu-only variant pair with 19 (4 branches each, same source row 324, param constant 640): paired targets row336/row338. The param's meaning is not identified."
+  },
+  "19": {
+   "branches": 4,
+   "banks": 1,
+   "params": {
+    "640": 4
+   },
+   "command_families": {
+    "button-first": 4
+   },
+   "top_commands": {
+    "any-button": 4
+   },
+   "family": "variant-pair",
+   "walk_rule": "pass_variant",
+   "confidence": "strongly_supported",
+   "reading": "Xiaoyu-only variant pair with 18 (see 18)."
+  },
+  "20": {
+   "branches": 23,
+   "banks": 18,
+   "params": {
+    "1408": 21,
+    "1536": 2
+   },
+   "command_families": {
+    "button-first": 23
+   },
+   "top_commands": {
+    "any-button": 22,
+    "LP": 1
+   },
+   "family": "dispatch-1536",
+   "walk_rule": "blocked_dispatch",
+   "confidence": "strongly_supported",
+   "reading": "Member of the param-1536 (0x600) dispatch family (codes 2-23): 'any-button' transitions concentrated off standing/state rows, including 4-way dispatch sites (bryan rows 209/210 carry codes 2,3,4,5 to four different targets with identical param). Params in this family are 0x580/0x600/0x700. Not a player-input string gate; individual code semantics unknown."
+  },
+  "21": {
+   "branches": 21,
+   "banks": 18,
+   "params": {
+    "1536": 21
+   },
+   "command_families": {
+    "button-first": 21
+   },
+   "top_commands": {
+    "any-button": 21
+   },
+   "family": "dispatch-1536",
+   "walk_rule": "blocked_dispatch",
+   "confidence": "strongly_supported",
+   "reading": "Member of the param-1536 (0x600) dispatch family (codes 2-23): 'any-button' transitions concentrated off standing/state rows, including 4-way dispatch sites (bryan rows 209/210 carry codes 2,3,4,5 to four different targets with identical param). Params in this family are 0x580/0x600/0x700. Not a player-input string gate; individual code semantics unknown."
+  },
+  "22": {
+   "branches": 18,
+   "banks": 18,
+   "params": {
+    "1536": 18
+   },
+   "command_families": {
+    "button-first": 18
+   },
+   "top_commands": {
+    "any-button": 18
+   },
+   "family": "dispatch-1536",
+   "walk_rule": "blocked_dispatch",
+   "confidence": "strongly_supported",
+   "reading": "Member of the param-1536 (0x600) dispatch family (codes 2-23): 'any-button' transitions concentrated off standing/state rows, including 4-way dispatch sites (bryan rows 209/210 carry codes 2,3,4,5 to four different targets with identical param). Params in this family are 0x580/0x600/0x700. Not a player-input string gate; individual code semantics unknown."
+  },
+  "23": {
+   "branches": 18,
+   "banks": 18,
+   "params": {
+    "1536": 18
+   },
+   "command_families": {
+    "button-first": 18
+   },
+   "top_commands": {
+    "any-button": 18
+   },
+   "family": "dispatch-1536",
+   "walk_rule": "blocked_dispatch",
+   "confidence": "strongly_supported",
+   "reading": "Member of the param-1536 (0x600) dispatch family (codes 2-23): 'any-button' transitions concentrated off standing/state rows, including 4-way dispatch sites (bryan rows 209/210 carry codes 2,3,4,5 to four different targets with identical param). Params in this family are 0x580/0x600/0x700. Not a player-input string gate; individual code semantics unknown."
+  },
+  "24": {
+   "branches": 4,
+   "banks": 2,
+   "params": {
+    "1800": 4
+   },
+   "command_families": {
+    "button-first": 4
+   },
+   "top_commands": {
+    "any-button": 4
+   },
+   "family": "distance-gate",
+   "walk_rule": "pass_distance_flagged",
+   "confidence": "strongly_supported",
+   "reading": "Distance-parameter gate, rare (gon/king, param 1800) \u2014 same family as 25."
+  },
+  "25": {
+   "branches": 196,
+   "banks": 20,
+   "params": {
+    "1800": 160,
+    "3800": 19,
+    "3072": 6,
+    "2200": 4,
+    "1201": 2,
+    "3000": 2,
+    "2000": 1,
+    "600": 1,
+    "1000": 1
+   },
+   "command_families": {
+    "motion-seq": 129,
+    "button-first": 36,
+    "directional-first": 31
+   },
+   "top_commands": {
+    "b,b": 129,
+    "4+any-button": 31,
+    "any-button": 30,
+    "RK": 6
+   },
+   "family": "distance-gate",
+   "walk_rule": "pass_distance_flagged",
+   "confidence": "strongly_supported",
+   "reading": "Distance-parameter gate: param is a round threshold (1800 on 160 of 196; also 600/1000/1201/2000/2200/3000/3072/3800), commands are motion-sequence heavy (129/196) and sources include the state_word 0x00400842 running-state rows. Reading: the branch is available at the param's range to the opponent (running/dash move activation family). Exact unit and comparison direction not decoded."
+  },
+  "26": {
+   "branches": 125,
+   "banks": 19,
+   "params": {
+    "0": 125
+   },
+   "command_families": {
+    "button-first": 123,
+    "directional-first": 2
+   },
+   "top_commands": {
+    "any-button": 106,
+    "LK": 7,
+    "RP": 5,
+    "RK": 3,
+    "LP": 2
+   },
+   "family": "state-continuation",
+   "walk_rule": "blocked_unknown",
+   "confidence": "strongly_supported",
+   "reading": "'any-button' state-continuation transitions: targets are the source row itself or the next state row (anna 162->163, bosconovitch 119->120, 124->125). Not an input-spelled string step."
+  },
+  "27": {
+   "branches": 73,
+   "banks": 15,
+   "params": {
+    "0": 72,
+    "1536": 1
+   },
+   "command_families": {
+    "button-first": 69,
+    "directional-first": 4
+   },
+   "top_commands": {
+    "any-button": 61,
+    "LP": 4,
+    "4+any-button": 3,
+    "RK": 3,
+    "8/9+LK": 1
+   },
+   "family": "state-continuation",
+   "walk_rule": "blocked_unknown",
+   "confidence": "strongly_supported",
+   "reading": "'any-button' stance self-loop marker: target is the source row itself (anna 165->165, 380->380)."
+  },
+  "28": {
+   "branches": 31,
+   "banks": 10,
+   "params": {
+    "0": 31
+   },
+   "command_families": {
+    "button-first": 26,
+    "directional-first": 5
+   },
+   "top_commands": {
+    "any-button": 22,
+    "3/6+RK": 4,
+    "RP": 2,
+    "LP+RP": 2,
+    "8/9+LK": 1
+   },
+   "family": "variant-selector",
+   "walk_rule": "pass_variant",
+   "confidence": "strongly_supported",
+   "reading": "Alternate-path variant selector: in splits its target coincides with the sibling branch's target row in 10 of 13 resolvable cases (e.g. bosconovitch 144 '3/6+RK' -> row146, the same row 145's any-button branch reaches). Rare (31 branches)."
+  },
+  "29": {
+   "branches": 2,
+   "banks": 1,
+   "params": {
+    "0": 2
+   },
+   "command_families": {
+    "button-first": 2
+   },
+   "top_commands": {
+    "LP+RP": 2
+   },
+   "family": "unknown",
+   "walk_rule": "blocked_unknown",
+   "confidence": "unknown",
+   "reading": "2 attested branches. Semantics unknown."
+  },
+  "34": {
+   "branches": 21,
+   "banks": 19,
+   "params": {
+    "0": 21
+   },
+   "command_families": {
+    "button-first": 21
+   },
+   "top_commands": {
+    "any-button": 21
+   },
+   "family": "state-continuation",
+   "walk_rule": "blocked_unknown",
+   "confidence": "unknown",
+   "reading": "'any-button' state-exit branches (21, in 19 banks); one attested target is the bank's idle row (anna 163 -> row325, the hub <end> target). Family reading only; per-code semantics unknown."
+  },
+  "35": {
+   "branches": 2,
+   "banks": 2,
+   "params": {
+    "0": 2
+   },
+   "command_families": {
+    "button-first": 2
+   },
+   "top_commands": {
+    "any-button": 2
+   },
+   "family": "state-continuation",
+   "walk_rule": "blocked_unknown",
+   "confidence": "unknown",
+   "reading": "'any-button' state-continuation, 2 attested branches (anna, nina). Semantics unknown."
+  },
+  "36": {
+   "branches": 1677,
+   "banks": 20,
+   "params": {
+    "0": 1677
+   },
+   "command_families": {
+    "directional-first": 845,
+    "button-first": 787,
+    "motion-seq": 45
+   },
+   "top_commands": {
+    "any-button": 190,
+    "RP": 123,
+    "LK": 116,
+    "RK": 114,
+    "6+any-button": 103
+   },
+   "family": "variant-selector",
+   "walk_rule": "pass_variant",
+   "confidence": "strongly_supported",
+   "reading": "Selects the parallel variant row of the same move from the same source row (target-row deltas cluster at +3/+6/+9/+12/-3 table offsets; cond-36 targets' branch sets match cond-0 targets far above chance, Jaccard 0.36 vs 0.02 random). Windows skew early ([1-8] on 803 of 1677) but the physical state it names is not yet identified; for notation->row mapping both targets are the same move."
+  },
+  "37": {
+   "branches": 495,
+   "banks": 20,
+   "params": {
+    "0": 495
+   },
+   "command_families": {
+    "directional-first": 353,
+    "button-first": 140,
+    "motion-seq": 2
+   },
+   "top_commands": {
+    "4+any-button": 100,
+    "6+any-button": 67,
+    "1+any-button": 64,
+    "3+any-button": 40,
+    "any+LP+RP": 37
+   },
+   "family": "variant-pair",
+   "walk_rule": "pass_variant",
+   "confidence": "strongly_supported",
+   "reading": "Binary variant selector, pair with 38: identical source profile to 38 (same rows, same state_words) and the two codes pick paired targets (consecutive common-table slots, e.g. common:22 vs common:24). Which physical value of the pair each code names is not identified."
+  },
+  "38": {
+   "branches": 497,
+   "banks": 20,
+   "params": {
+    "0": 497
+   },
+   "command_families": {
+    "directional-first": 353,
+    "button-first": 142,
+    "motion-seq": 2
+   },
+   "top_commands": {
+    "4+any-button": 100,
+    "6+any-button": 67,
+    "1+any-button": 64,
+    "3+any-button": 40,
+    "any+LP+RP": 37
+   },
+   "family": "variant-pair",
+   "walk_rule": "pass_variant",
+   "confidence": "strongly_supported",
+   "reading": "Binary variant selector, pair with 37 (see 37)."
+  },
+  "39": {
+   "branches": 834,
+   "banks": 20,
+   "params": {
+    "0": 834
+   },
+   "command_families": {
+    "directional-first": 817,
+    "button-first": 17
+   },
+   "top_commands": {
+    "1+LP+LK": 190,
+    "1+RP+RK": 190,
+    "2+LP+LK": 164,
+    "2+RP+RK": 164,
+    "1/2+LP+RK": 33
+   },
+   "family": "throw-gate",
+   "walk_rule": "pass_throw_gate",
+   "confidence": "strongly_supported",
+   "reading": "Throw gate: sits on throw inputs (directional two-button grabs) from hub and crouch rows in all 20 banks. The condition is constant while the restriction field varies over opponent-state values (3/6/7/13/2/11/4/18...) selecting the throw variant/target kind (local row vs common-table slot). For string walks the throw is terminal; the gate does not block the notation->row mapping."
+  },
+  "40": {
+   "branches": 12,
+   "banks": 1,
+   "params": {
+    "0": 12
+   },
+   "command_families": {
+    "directional-first": 12
+   },
+   "top_commands": {
+    "2/8+any-button": 4,
+    "4+any-button": 4,
+    "6+any-button": 4
+   },
+   "family": "variant-pair",
+   "walk_rule": "pass_variant",
+   "confidence": "strongly_supported",
+   "reading": "Bosconovitch-only variant pair with 41 (12 branches each, same source rows): paired targets on directional any-button branches."
+  },
+  "41": {
+   "branches": 12,
+   "banks": 1,
+   "params": {
+    "0": 12
+   },
+   "command_families": {
+    "directional-first": 12
+   },
+   "top_commands": {
+    "2/8+any-button": 4,
+    "4+any-button": 4,
+    "6+any-button": 4
+   },
+   "family": "variant-pair",
+   "walk_rule": "pass_variant",
+   "confidence": "strongly_supported",
+   "reading": "Bosconovitch-only variant pair with 40 (see 40)."
+  },
+  "42": {
+   "branches": 26,
+   "banks": 4,
+   "params": {
+    "0": 26
+   },
+   "command_families": {
+    "button-first": 20,
+    "directional-first": 6
+   },
+   "top_commands": {
+    "any-button": 19,
+    "2+LP+RK": 5,
+    "4/6+LP+RK": 1,
+    "LP+RK": 1
+   },
+   "family": "unknown",
+   "walk_rule": "blocked_unknown",
+   "confidence": "unknown",
+   "reading": "Attested in lei (15), xiaoyu (7), bosconovitch (2), forestlaw (2) on 'any-button' branches from stance_slot-3 rows. Semantics unknown."
+  },
+  "43": {
+   "branches": 1,
+   "banks": 1,
+   "params": {
+    "0": 1
+   },
+   "command_families": {
+    "button-first": 1
+   },
+   "top_commands": {
+    "LP+RP": 1
+   },
+   "family": "unknown",
+   "walk_rule": "blocked_unknown",
+   "confidence": "unknown",
+   "reading": "1 attested branch. Semantics unknown."
+  },
+  "44": {
+   "branches": 1,
+   "banks": 1,
+   "params": {
+    "0": 1
+   },
+   "command_families": {
+    "button-first": 1
+   },
+   "top_commands": {
+    "any-button": 1
+   },
+   "family": "unknown",
+   "walk_rule": "blocked_unknown",
+   "confidence": "unknown",
+   "reading": "1 attested branch. Semantics unknown."
+  },
+  "45": {
+   "branches": 1,
+   "banks": 1,
+   "params": {
+    "0": 1
+   },
+   "command_families": {
+    "button-first": 1
+   },
+   "top_commands": {
+    "any-button": 1
+   },
+   "family": "unknown",
+   "walk_rule": "blocked_unknown",
+   "confidence": "unknown",
+   "reading": "1 attested branch. Semantics unknown."
+  },
+  "46": {
+   "branches": 3,
+   "banks": 2,
+   "params": {
+    "0": 3
+   },
+   "command_families": {
+    "motion-seq": 2,
+    "button-first": 1
+   },
+   "top_commands": {
+    "[4 5 6+LP+RP](30f)": 2,
+    "any-button": 1
+   },
+   "family": "unknown",
+   "walk_rule": "blocked_unknown",
+   "confidence": "unknown",
+   "reading": "Attested only on the [4 5 6+LP+RP] motion branch in king (rows 0/1) and law (1). Semantics unknown."
+  },
+  "48": {
+   "branches": 639,
+   "banks": 20,
+   "params": {
+    "0": 639
+   },
+   "command_families": {
+    "directional-first": 638,
+    "button-first": 1
+   },
+   "top_commands": {
+    "1+any-button": 200,
+    "2+any-button": 200,
+    "3+any-button": 200,
+    "1/2/3+any-button": 36,
+    "4+LP+RP": 2
+   },
+   "family": "state-family-gate",
+   "walk_rule": "pass_state_family_crouch",
+   "confidence": "strongly_supported",
+   "reading": "Crouch-state family gate. Sources are exactly the crouch-cluster rows (stance_slot 40/54/57; state_words 0x00003129/0x00002021/0x00002829), and its branches come in window pairs that split at the family rows' durations ([1-59]+[60-60] x300, [1-37]+[38-38], [1-75]+[76-76]): the continuation edges of the crouch state family (FC/WS transition rows)."
+  },
+  "49": {
+   "branches": 4,
+   "banks": 2,
+   "params": {
+    "0": 4
+   },
+   "command_families": {
+    "button-first": 4
+   },
+   "top_commands": {
+    "any-button": 4
+   },
+   "family": "state-continuation",
+   "walk_rule": "blocked_unknown",
+   "confidence": "unknown",
+   "reading": "'any-button' state-continuation, 4 attested branches (gon, gunjack). Semantics unknown."
+  },
+  "51": {
+   "branches": 34,
+   "banks": 19,
+   "params": {
+    "0": 34
+   },
+   "command_families": {
+    "directional-first": 24,
+    "button-first": 10
+   },
+   "top_commands": {
+    "6+any-button": 24,
+    "any-button": 10
+   },
+   "family": "unknown",
+   "walk_rule": "blocked_unknown",
+   "confidence": "unknown",
+   "reading": "Sources cluster on stance_slot-21 rows (19 of 34) with state_words 0x00010842/0x00090842; targets include self-transitions. Semantics unknown."
+  },
+  "52": {
+   "branches": 1,
+   "banks": 1,
+   "params": {
+    "0": 1
+   },
+   "command_families": {
+    "button-first": 1
+   },
+   "top_commands": {
+    "any-button": 1
+   },
+   "family": "unknown",
+   "walk_rule": "blocked_unknown",
+   "confidence": "unknown",
+   "reading": "1 attested branch. Semantics unknown."
+  },
+  "53": {
+   "branches": 20,
+   "banks": 13,
+   "params": {
+    "0": 20
+   },
+   "command_families": {
+    "button-first": 18,
+    "directional-first": 2
+   },
+   "top_commands": {
+    "any-button": 14,
+    "RK": 3,
+    "2+any-button": 2,
+    "LK": 1
+   },
+   "family": "unknown",
+   "walk_rule": "blocked_unknown",
+   "confidence": "unknown",
+   "reading": "Rare per-bank gates on individual basic attacks (13 banks, 1-3 each; e.g. anna row388 'RK'/'LK'). Semantics unknown."
+  },
+  "55": {
+   "branches": 7,
+   "banks": 3,
+   "params": {
+    "1800": 3,
+    "1200": 2,
+    "1150": 2
+   },
+   "command_families": {
+    "button-first": 7
+   },
+   "top_commands": {
+    "any-button": 7
+   },
+   "family": "distance-gate",
+   "walk_rule": "pass_distance_flagged",
+   "confidence": "strongly_supported",
+   "reading": "Distance-parameter gate, rare (anna/gon/nina, params 1150/1200/1800) \u2014 same family as 25."
+  },
+  "57": {
+   "branches": 88,
+   "banks": 15,
+   "params": {
+    "0": 88
+   },
+   "command_families": {
+    "button-first": 81,
+    "directional-first": 7
+   },
+   "top_commands": {
+    "any-button": 50,
+    "LP": 13,
+    "RP": 11,
+    "3+RP": 4,
+    "LK": 3
+   },
+   "family": "state-family-gate",
+   "walk_rule": "pass_state_family_3884",
+   "confidence": "strongly_supported",
+   "reading": "Member of the 0x3884 state-family gate set (57-61): sources are the stance_slot 153/157/158/166/167/168 rows with state_words 0x00003884/0x00004284/0x00004c02. The family gate is established; what distinguishes 57 from 58/59/60/61 individually is not identified."
+  },
+  "58": {
+   "branches": 93,
+   "banks": 19,
+   "params": {
+    "0": 93
+   },
+   "command_families": {
+    "button-first": 93
+   },
+   "top_commands": {
+    "any-button": 93
+   },
+   "family": "state-family-gate",
+   "walk_rule": "pass_state_family_3884",
+   "confidence": "strongly_supported",
+   "reading": "0x3884 state-family gate set member (see 57)."
+  },
+  "59": {
+   "branches": 94,
+   "banks": 19,
+   "params": {
+    "0": 94
+   },
+   "command_families": {
+    "button-first": 94
+   },
+   "top_commands": {
+    "any-button": 94
+   },
+   "family": "state-family-gate",
+   "walk_rule": "pass_state_family_3884",
+   "confidence": "strongly_supported",
+   "reading": "0x3884 state-family gate set member (see 57)."
+  },
+  "60": {
+   "branches": 52,
+   "banks": 18,
+   "params": {
+    "0": 52
+   },
+   "command_families": {
+    "button-first": 52
+   },
+   "top_commands": {
+    "any-button": 52
+   },
+   "family": "state-family-gate",
+   "walk_rule": "pass_state_family_3884",
+   "confidence": "strongly_supported",
+   "reading": "0x3884 state-family gate set member (see 57)."
+  },
+  "61": {
+   "branches": 24,
+   "banks": 9,
+   "params": {
+    "0": 24
+   },
+   "command_families": {
+    "button-first": 24
+   },
+   "top_commands": {
+    "any-button": 22,
+    "any+LP+RP+LK+RK": 2
+   },
+   "family": "state-family-gate",
+   "walk_rule": "pass_state_family_3884",
+   "confidence": "strongly_supported",
+   "reading": "0x3884 state-family gate set member (see 57); its targets include common-table rows (common:42, common:51)."
+  },
+  "62": {
+   "branches": 428,
+   "banks": 20,
+   "params": {
+    "0": 428
+   },
+   "command_families": {
+    "directional-first": 296,
+    "motion-seq": 84,
+    "button-first": 48
+   },
+   "top_commands": {
+    "[5 8](2f)": 54,
+    "8+any-button": 45,
+    "2+any-button": 45,
+    "6+any-button": 40,
+    "7/8/9+any+LK+RK": 35
+   },
+   "family": "variant-pair",
+   "walk_rule": "pass_variant",
+   "confidence": "strongly_supported",
+   "reading": "Binary variant selector, pair with 63: identical source profile; on up-inputs 62->A/63->B while on down-inputs 62->B/63->A (anna rows 181/345), i.e. the pair tests a direction-relative state (facing), not the input. Targets are the paired movement rows (stance_slot 284-294 family)."
+  },
+  "63": {
+   "branches": 428,
+   "banks": 20,
+   "params": {
+    "0": 428
+   },
+   "command_families": {
+    "directional-first": 296,
+    "motion-seq": 84,
+    "button-first": 48
+   },
+   "top_commands": {
+    "[5 8](2f)": 54,
+    "8+any-button": 45,
+    "2+any-button": 45,
+    "6+any-button": 40,
+    "7/8/9+any+LK+RK": 35
+   },
+   "family": "variant-pair",
+   "walk_rule": "pass_variant",
+   "confidence": "strongly_supported",
+   "reading": "Binary variant selector, pair with 62 (see 62)."
+  },
+  "64": {
+   "branches": 209,
+   "banks": 20,
+   "params": {
+    "0": 209
+   },
+   "command_families": {
+    "directional-first": 88,
+    "motion-seq": 64,
+    "button-first": 57
+   },
+   "top_commands": {
+    "any-button": 44,
+    "[5 8](2f)": 35,
+    "8+any-button": 34,
+    "2+any-button": 32,
+    "[5 2 5](8f)": 26
+   },
+   "family": "variant-pair",
+   "walk_rule": "pass_variant",
+   "confidence": "strongly_supported",
+   "reading": "Binary variant selector, pair with 65: identical source profile; paired targets (consecutive common slots / stance_slot 288-290 rows) on stance-exit and any-button branches."
+  },
+  "65": {
+   "branches": 209,
+   "banks": 20,
+   "params": {
+    "0": 209
+   },
+   "command_families": {
+    "directional-first": 88,
+    "motion-seq": 64,
+    "button-first": 57
+   },
+   "top_commands": {
+    "any-button": 44,
+    "[5 8](2f)": 35,
+    "8+any-button": 34,
+    "2+any-button": 32,
+    "[5 2 5](8f)": 26
+   },
+   "family": "variant-pair",
+   "walk_rule": "pass_variant",
+   "confidence": "strongly_supported",
+   "reading": "Binary variant selector, pair with 64 (see 64)."
+  },
+  "67": {
+   "branches": 3,
+   "banks": 2,
+   "params": {
+    "0": 3
+   },
+   "command_families": {
+    "button-first": 3
+   },
+   "top_commands": {
+    "any-button": 3
+   },
+   "family": "unknown",
+   "walk_rule": "blocked_unknown",
+   "confidence": "unknown",
+   "reading": "3 attested 'any-button' branches (anna, bosconovitch). Semantics unknown."
+  },
+  "68": {
+   "branches": 1,
+   "banks": 1,
+   "params": {
+    "0": 1
+   },
+   "command_families": {
+    "button-first": 1
+   },
+   "top_commands": {
+    "any-button": 1
+   },
+   "family": "unknown",
+   "walk_rule": "blocked_unknown",
+   "confidence": "unknown",
+   "reading": "1 attested branch. Semantics unknown."
+  },
+  "72": {
+   "branches": 200,
+   "banks": 11,
+   "params": {
+    "14": 50,
+    "17": 50,
+    "10": 50,
+    "6": 50
+   },
+   "command_families": {
+    "button-first": 200
+   },
+   "top_commands": {
+    "any-button": 200
+   },
+   "family": "dispatch-param",
+   "walk_rule": "blocked_dispatch",
+   "confidence": "strongly_supported",
+   "reading": "Engine dispatch family: concentrated on the special dispatcher rows (stance_slot 3525, 93-branch rows in anna/jin/nina/paul; bosconovitch row 470) on 'any-button' branches; param in {6,10,14,17} shared with 73. Not a player-input string gate; individual semantics unknown."
+  },
+  "73": {
+   "branches": 107,
+   "banks": 10,
+   "params": {
+    "6": 28,
+    "10": 28,
+    "14": 26,
+    "17": 25
+   },
+   "command_families": {
+    "button-first": 107
+   },
+   "top_commands": {
+    "any-button": 107
+   },
+   "family": "dispatch-param",
+   "walk_rule": "blocked_dispatch",
+   "confidence": "strongly_supported",
+   "reading": "Engine dispatch family (see 72); param in {6,10,14,17}."
+  },
+  "74": {
+   "branches": 213,
+   "banks": 15,
+   "params": {
+    "247": 50,
+    "2141": 23,
+    "849": 19,
+    "879": 19,
+    "3898": 13,
+    "1002": 12,
+    "585": 7,
+    "301": 6,
+    "305": 6,
+    "310": 5,
+    "300": 5,
+    "304": 5
+   },
+   "command_families": {
+    "button-first": 213
+   },
+   "top_commands": {
+    "any-button": 213
+   },
+   "family": "dispatch-param",
+   "walk_rule": "blocked_dispatch",
+   "confidence": "strongly_supported",
+   "reading": "Engine dispatch family (see 72); param is a large slot-range integer (247..3898) \u2014 a move/slot reference whose referent is not resolved by the per-bank move_index."
+  },
+  "75": {
+   "branches": 877,
+   "banks": 14,
+   "params": {
+    "23": 50,
+    "24": 50,
+    "25": 50,
+    "26": 50,
+    "27": 50,
+    "28": 50,
+    "29": 50,
+    "30": 50,
+    "36": 50,
+    "37": 50,
+    "38": 50,
+    "42": 21
+   },
+   "command_families": {
+    "button-first": 877
+   },
+   "top_commands": {
+    "any-button": 877
+   },
+   "family": "dispatch-param",
+   "walk_rule": "blocked_dispatch",
+   "confidence": "strongly_supported",
+   "reading": "Engine dispatch family (see 72); at the anna/jin/nina/paul dispatcher row it appears 59 times with params 0..51 \u2014 a dispatch index over a ~52-entry table. Individual semantics unknown."
+  }
+ },
+ "restrictions": {
+  "reading": "Second gate axis on the same branch record. Evidence (throw-input table): under fixed condition 39 the restriction value selects the throw variant/target kind (local row vs common-table slot) \u2014 an opponent-state axis. Per-value semantics are NOT decoded; the condition walk does not evaluate restrictions.",
+  "values": {
+   "0": 23300,
+   "6": 638,
+   "4": 528,
+   "19": 454,
+   "13": 404,
+   "3": 343,
+   "18": 237,
+   "10": 234,
+   "1": 233,
+   "17": 218,
+   "14": 193,
+   "7": 160,
+   "2": 151,
+   "11": 95,
+   "90": 64,
+   "5": 62,
+   "107": 47,
+   "21": 28,
+   "8": 26,
+   "9": 21,
+   "20": 10,
+   "30": 8,
+   "15": 5,
+   "66": 4,
+   "60": 4,
+   "56": 2,
+   "58": 2,
+   "47": 2,
+   "49": 2,
+   "12": 2,
+   "84": 2,
+   "63": 1
+  }
+ }
+}
