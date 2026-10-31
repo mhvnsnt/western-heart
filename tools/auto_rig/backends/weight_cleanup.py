@@ -77,6 +77,19 @@ def joint_geometry(js, bdat):
                     break
     for i, c in child_joint.items():
         parent_joint.setdefault(c, i)
+    # Canonical chain mapping names ONE child per joint (Hips->Spine),
+    # so joints whose only incoming edge is a non-canonical node-tree
+    # child slot (LeftUpLeg/RightUpLeg: Hips' other children) end up
+    # with NO parent — and the dead-joint revival then has neither a
+    # parent territory nor the parent in its chain set, so a dead
+    # UpLeg can never be revived (demonio bloodline-ember, 2026-10-31:
+    # LeftLeg revived, LeftUpLeg stayed at zero mass). Fill missing
+    # parents from the full node tree; canonical parents win where
+    # both exist.
+    for i, n in enumerate(joint_nodes):
+        for c in nodes[n].get("children", []):
+            if c in node_to_joint:
+                parent_joint.setdefault(node_to_joint[c], i)
     seg_b = []
     for i in range(len(jpos)):
         if i in child_joint:
