@@ -129,7 +129,22 @@ sits in a T-pose while the mesh does not follow it -> broken bind/weights. Stati
   - k-NN weight transfer from a clean T-pose donor (`tools/auto_rig/reskin_pantera_weights.py` method, donor `steve-fox.glb`) after rotating Negativo to the donor's facing. Fit the skeleton with `refit_skeleton.py`, because the hair spikes break bbox height matching.
   - Treat hair spikes and props as rigid children of Head/Hips before weighting.
 - Burger is a long job (A-pose, forms, Bob + Kusaregedo). It is paused per the work-order law.
-- **Purple Rain** (owner 2026-10-31): his chest and spine collapse inward toward the spine, the pull reaches up the neck, and his right arm is affected. That is a skin-weight fix on `roster/purplerain/attires/attire1/model-rerig.glb`, a short job.
+- **Purple Rain** (owner 2026-10-31): his chest and spine collapse inward toward the spine, the pull reaches up the neck, and his right arm is affected. Two fixes landed on `roster/purplerain/attires/attire1/model-rerig.glb`:
+  - **Spine-chain fix** (another lane, 15:15 UTC, `97b4301ca`, doc `docs/handoffs/RIGFIX-PURPLERAIN-2026-10-31.md`): chest and head weight consolidated off the spine chain.
+  - **Clavicle rule** (`tools/auto_rig/fix_sternum_weights.py`): cuts central-chest clavicle weight from 38% to 12%. It is NOT shipped on the model.
+    - A valid local A/B (Worker blocked) showed no visible gain over the spine-chain fix (`docs/proof/2026-10-31/purplerain-clavicle/valid-ab-chainfix-vs-clavicle-front-side.png`).
+    - Both versions still show a stretched skin WEDGE under the chin in the side view, the "reaching up his neck toward his face" symptom. Next: neck/jaw territory, with chin and jaw verts on Head and a smooth Neck->Head blend on the neck skin.
+  - **Not live yet:** the Worker (B2) still serves the old 28,465,008 B model. Muse must re-upload that path (asked on #866).
+
+**Negativo, territory attempt 2026-10-31 (not shipped):**
+- His bind is consistent: every skin matrix is the same uniform transform at rest, so this is a weights problem.
+- Measured: 42% of his head (with the hair spikes) sits on the clavicles, which causes the cone face. The chest band carries 42% clavicle weight.
+- `fix_sternum_weights.py --head --arms` raised the head share to 97%. But its height cutoff splits the hair spikes that hang below the neck joint, and that tears a big flat sheet beside the head (`docs/proof/2026-10-31/negativo-territory/valid-ab-original-vs-headrule.png`).
+- Next: build the head territory from mesh connectivity (each hair spike stays whole on the head), or run the seam smoothing (`tools/auto_rig/backends/smooth_weights.py`) after the rule.
+  - Connectivity as-is does NOT work. The mesh has 67,349 connected pieces, almost all UV-seam fragments under 50 verts, and the big pieces straddle the neck line.
+  - Weld vertices by position first, then grow the head region geodesically from the skull and stop at the neck ring.
+  - Or mask the hair in Blender (vertex-group select above the shoulders), weight it 100% to Head, and smooth only the neck ring.
+  - One material and one primitive, so the hair cannot be isolated by material.
 
 **Cone face universal:** the owner wants it fixed for every fighter that has it. Audit every wired model with
 `anim_check.py` (stretch per region) and re-rig the offenders the same way.
@@ -161,6 +176,10 @@ Worker route handles that lane.
   an extra heading. Its workflow cancels concurrent runs; re-run one at a time.
 - `tools/gltfpack/fetch-gltfpack.sh` pinned a nonexistent tag and missed `-DMESHOPT_BUILD_GLTFPACK=ON` (fixed here).
 - Fighter close-ups: the fight camera is small; judge rigs only from close-ups (section 8).
+- **Remote-first model loading (since the B2 Worker went live, 2026-10-31).** `resolveAssetCandidates()` fetches every non-bundled model from `https://western-heart-assets.mhvnsnt.workers.dev` BEFORE the local file.
+  - A local test of a changed model silently shows the OLD B2 copy. Run the probes with `NO_REMOTE=1` (`tools/anim/t7_closeup_probe.mjs` blocks the Worker) to see the local file.
+  - Live players see whatever B2 holds, so a fixed model is live only after it is re-uploaded to the bucket under the same repo path. That upload is Muse's lane and needs the bucket credentials.
+  - Never claim a model fix is visible live until the Worker serves the new byte size.
 
 ## 10. Open items (next agent, in order)
 
