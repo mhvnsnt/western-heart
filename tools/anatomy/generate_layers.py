@@ -1380,6 +1380,37 @@ def pick_body_mesh(js):
     return best
 
 
+def load_body_mesh(js, blob):
+    """Merged body geometry: every skinned mesh concatenated
+    (2026-10-31, rig-continuation stage 3).
+
+    Some fighters' bodies are split across several skinned meshes
+    (armor-king: five ~1.1k-vert shells, 5,660 verts total). Building
+    the SDF body from only the largest piece produced partial
+    anatomy that still passed containment checks against itself.
+    The body is ALL skinned geometry; single-mesh rigs (pantera)
+    merge to exactly their one mesh, unchanged."""
+    used = []
+    for i, m in enumerate(js['meshes']):
+        if any('JOINTS_0' in p['attributes'] for p in m['primitives']):
+            used.append(i)
+    if not used:
+        used = [pick_body_mesh(js)]
+    if len(used) == 1:
+        pos, tris, dom, names = load_mesh(js, blob, used[0])
+        return pos, tris, dom, names, used
+    pos_l, tris_l, dom_l, names = [], [], [], None
+    voff = 0
+    for i in used:
+        p, t, d, names = load_mesh(js, blob, i)
+        pos_l.append(p)
+        tris_l.append(t + voff)
+        dom_l.append(d)
+        voff += len(p)
+    return (np.vstack(pos_l), np.vstack(tris_l),
+            np.concatenate(dom_l), names, used)
+
+
 def generate(glb_path, fighter, glb_relpath):
     js, blob = load_glb(glb_path)
     joints, parents = joint_bind_positions(js, blob)
@@ -1388,8 +1419,8 @@ def generate(glb_path, fighter, glb_relpath):
         joints = {name_map.get(k, k): v for k, v in joints.items()}
         parents = {name_map.get(k, k): (name_map.get(v) if v else None)
                    for k, v in parents.items()}
-    mesh_index = pick_body_mesh(js)
-    pos, tris, dom_joint, joint_names = load_mesh(js, blob, mesh_index)
+    pos, tris, dom_joint, joint_names, body_meshes = load_body_mesh(js, blob)
+    mesh_index = body_meshes[0] if len(body_meshes) == 1 else 'merged'
     pos, rect_angle, rig_front = rectify_mesh_frame(pos, joints)
     normals = vertex_normals(pos, tris)
 
@@ -1448,6 +1479,9 @@ def generate(glb_path, fighter, glb_relpath):
                                       organ['groups'])
     fat = build_fat_layer(body_scale)
     skin = build_skin_layer(glb_relpath, mesh_index)
+    if mesh_index == 'merged':
+        skin['mesh_ref'] = (f'{glb_relpath}#meshes'
+                            f'{",".join(str(i) for i in body_meshes)}-merged')
 
     layers = {
         '$schema': SCHEMA,

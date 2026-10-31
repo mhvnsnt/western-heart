@@ -7,7 +7,7 @@
  "units": "meters",
  "source": {
   "glb": "roster/jin/attires/bloodline-ember/jin-bloodline-ember.glb",
-  "mesh": 0,
+  "mesh": "merged",
   "skin": 0,
   "joint_name_map": {
    "Hips": "hips",
@@ -31,7 +31,7 @@
    "RightFoot": "foot.R"
   },
   "joints": 50,
-  "vertices": 4326,
+  "vertices": 14498,
   "mesh_rectification_y_deg": 0,
   "mesh_rectification_note": "mesh verts rotated about Y by this angle into skeleton space; 0 = already aligned",
   "rig_front": [
@@ -492,7 +492,7 @@
       0.0939,
       0.0008
      ],
-     "r": 0.0126,
+     "r": 0.0572,
      "id": "bone_shin.L",
      "joint": "shin.L",
      "morph": "bone_scale_limbs"
@@ -543,7 +543,7 @@
       0.0939,
       0.0008
      ],
-     "r": 0.0126,
+     "r": 0.0571,
      "id": "bone_shin.R",
      "joint": "shin.R",
      "morph": "bone_scale_limbs"
@@ -709,14 +709,14 @@
         -0.0038
        ],
        "radii": [
-        0.0132,
         0.016,
-        0.0132
+        0.0194,
+        0.016
        ]
       }
      ],
      "bulk_param": "muscle_deltoid_L",
-     "base_radius": 0.0141
+     "base_radius": 0.0171
     },
     {
      "id": "biceps.L",
@@ -728,18 +728,18 @@
        "a": [
         -0.1679,
         1.4324,
-        -0.0079
+        -0.0089
        ],
        "b": [
         -0.3789,
         1.4173,
-        -0.007
+        -0.0079
        ],
-       "r": 0.0098
+       "r": 0.0119
       }
      ],
      "bulk_param": "muscle_biceps_L",
-     "base_radius": 0.0098
+     "base_radius": 0.0119
     },
     {
      "id": "triceps.L",
@@ -751,18 +751,18 @@
        "a": [
         -0.1678,
         1.4324,
-        0.0005
+        0.0014
        ],
        "b": [
         -0.3789,
         1.4173,
-        0.0015
+        0.0024
        ],
-       "r": 0.0091
+       "r": 0.011
       }
      ],
      "bulk_param": "muscle_triceps_L",
-     "base_radius": 0.0091
+     "base_radius": 0.011
     },
     {
      "id": "forearm.L",
@@ -781,11 +781,11 @@
         1.3946,
         -0.0011
        ],
-       "r": 0.0079
+       "r": 0.0096
       }
      ],
      "bulk_param": "muscle_forearm_L",
-     "base_radius": 0.0079
+     "base_radius": 0.0096
     },
     {
      "id": "deltoid.R",
@@ -800,14 +800,14 @@
         -0.0038
        ],
        "radii": [
-        0.0132,
         0.016,
-        0.0132
+        0.0194,
+        0.016
        ]
       }
      ],
      "bulk_param": "muscle_deltoid_R",
-     "base_radius": 0.0141
+     "base_radius": 0.0171
     },
     {
      "id": "biceps.R",
@@ -819,18 +819,18 @@
        "a": [
         0.1679,
         1.4324,
-        -0.0079
+        -0.0089
        ],
        "b": [
         0.3789,
         1.4173,
-        -0.007
+        -0.0079
        ],
-       "r": 0.0098
+       "r": 0.0119
       }
      ],
      "bulk_param": "muscle_biceps_R",
-     "base_radius": 0.0098
+     "base_radius": 0.0119
     },
     {
      "id": "triceps.R",
@@ -842,18 +842,18 @@
        "a": [
         0.1678,
         1.4324,
-        0.0005
+        0.0014
        ],
        "b": [
         0.3789,
         1.4173,
-        0.0015
+        0.0024
        ],
-       "r": 0.0091
+       "r": 0.011
       }
      ],
      "bulk_param": "muscle_triceps_R",
-     "base_radius": 0.0091
+     "base_radius": 0.011
     },
     {
      "id": "forearm.R",
@@ -872,11 +872,11 @@
         1.3946,
         -0.0011
        ],
-       "r": 0.0079
+       "r": 0.0096
       }
      ],
      "bulk_param": "muscle_forearm_R",
-     "base_radius": 0.0079
+     "base_radius": 0.0096
     },
     {
      "id": "pectoralis.L",
@@ -1048,14 +1048,14 @@
         -0.0734
        ],
        "radii": [
-        0.0132,
-        0.0123,
-        0.0104
+        0.016,
+        0.0148,
+        0.0126
        ]
       }
      ],
      "bulk_param": "muscle_gluteus_L",
-     "base_radius": 0.0119
+     "base_radius": 0.0145
     },
     {
      "id": "gluteus.R",
@@ -1070,14 +1070,14 @@
         -0.0734
        ],
        "radii": [
-        0.0132,
-        0.0123,
-        0.0104
+        0.016,
+        0.0148,
+        0.0126
        ]
       }
      ],
      "bulk_param": "muscle_gluteus_R",
-     "base_radius": 0.0119
+     "base_radius": 0.0145
     },
     {
      "id": "quadriceps.L",
@@ -1088,19 +1088,19 @@
        "kind": "capsule",
        "a": [
         -0.0979,
-        0.9654,
-        -0.0086
+        0.9655,
+        -0.0098
        ],
        "b": [
         -0.0988,
-        0.6403,
-        -0.0185
+        0.6404,
+        -0.0197
        ],
-       "r": 0.0147
+       "r": 0.0178
       }
      ],
      "bulk_param": "muscle_quadriceps_L",
-     "base_radius": 0.0147
+     "base_radius": 0.0178
     },
     {
      "id": "hamstrings.L",
@@ -1112,18 +1112,18 @@
        "a": [
         -0.0979,
         0.9651,
-        0.0023
+        0.0033
        ],
        "b": [
         -0.0988,
         0.64,
-        -0.0076
+        -0.0066
        ],
-       "r": 0.0125
+       "r": 0.0151
       }
      ],
      "bulk_param": "muscle_hamstrings_L",
-     "base_radius": 0.0125
+     "base_radius": 0.0151
     },
     {
      "id": "calves.L",
@@ -1134,19 +1134,19 @@
        "kind": "capsule",
        "a": [
         -0.0991,
-        0.5175,
-        -0.0081
+        0.5176,
+        -0.0071
        ],
        "b": [
         -0.0997,
         0.2481,
-        0.0006
+        0.0015
        ],
-       "r": 0.0104
+       "r": 0.0126
       }
      ],
      "bulk_param": "muscle_calves_L",
-     "base_radius": 0.0104
+     "base_radius": 0.0126
     },
     {
      "id": "quadriceps.R",
@@ -1158,18 +1158,18 @@
        "a": [
         0.0979,
         0.9656,
-        -0.0073
+        -0.0085
        ],
        "b": [
         0.0987,
         0.6408,
-        -0.0225
+        -0.0237
        ],
-       "r": 0.0147
+       "r": 0.0178
       }
      ],
      "bulk_param": "muscle_quadriceps_R",
-     "base_radius": 0.0147
+     "base_radius": 0.0178
     },
     {
      "id": "hamstrings.R",
@@ -1181,18 +1181,18 @@
        "a": [
         0.0979,
         0.965,
-        0.0036
+        0.0046
        ],
        "b": [
         0.0987,
-        0.6403,
-        -0.0117
+        0.6402,
+        -0.0106
        ],
-       "r": 0.0125
+       "r": 0.0151
       }
      ],
      "bulk_param": "muscle_hamstrings_R",
-     "base_radius": 0.0125
+     "base_radius": 0.0151
     },
     {
      "id": "calves.R",
@@ -1203,19 +1203,19 @@
        "kind": "capsule",
        "a": [
         0.099,
-        0.5179,
-        -0.0125
+        0.518,
+        -0.0116
        ],
        "b": [
         0.0996,
         0.2483,
-        -0.0011
+        -0.0001
        ],
-       "r": 0.0104
+       "r": 0.0126
       }
      ],
      "bulk_param": "muscle_calves_R",
-     "base_radius": 0.0104
+     "base_radius": 0.0126
     }
    ]
   },
@@ -1241,7 +1241,7 @@
       }
      ],
      "bulk_param": "organ_heart",
-     "base_radius": 0.0095
+     "base_radius": 0.0115
     },
     {
      "id": "lung.L",
@@ -1380,30 +1380,30 @@
    ]
   },
   "fat": {
-   "baseline_global": 0.0019,
+   "baseline_global": 0.0023,
    "regions": {
     "head": {
-     "thickness": 0.0011,
+     "thickness": 0.0014,
      "param": "fat_head"
     },
     "torso": {
-     "thickness": 0.0023,
+     "thickness": 0.0027,
      "param": "fat_torso"
     },
     "arm.L": {
-     "thickness": 0.0015,
+     "thickness": 0.0018,
      "param": "fat_arm_L"
     },
     "arm.R": {
-     "thickness": 0.0015,
+     "thickness": 0.0018,
      "param": "fat_arm_R"
     },
     "leg.L": {
-     "thickness": 0.0019,
+     "thickness": 0.0023,
      "param": "fat_leg_L"
     },
     "leg.R": {
-     "thickness": 0.0019,
+     "thickness": 0.0023,
      "param": "fat_leg_R"
     }
    },
@@ -1411,7 +1411,7 @@
    "note": "Per-region subcutaneous fat thickness. Morph params scale these baselines; the skin rides muscle+fat via bake_displacement."
   },
   "skin": {
-   "mesh_ref": "roster/jin/attires/bloodline-ember/jin-bloodline-ember.glb#mesh0",
+   "mesh_ref": "roster/jin/attires/bloodline-ember/jin-bloodline-ember.glb#meshes0,1,2,3,4-merged",
    "morph_targets": [
     "MPFB_bulk",
     "MPFB_muscle",

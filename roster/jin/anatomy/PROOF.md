@@ -9,8 +9,8 @@ Renders in `renders/`: `layer_bone.png`, `layer_muscle.png`, `layer_organ.png`,
 `layer_fat.png`, `layer_skin.png`.
 
 ## Morph proof — `muscle_biceps_L`: 0.0 -> 1.0
-- biceps.L capsule radius: 0.0098 m -> 0.01519 m (delta 0.00539 m)
-- biceps.L volume: 6.8e-05 m^3 -> 0.000168 m^3 (+147.94%)
+- biceps.L capsule radius: 0.0119 m -> 0.01845 m (delta 0.00655 m)
+- biceps.L volume: 0.000101 m^3 -> 0.000253 m^3 (+149.61%)
 - baked skin displacement (whole mesh): mean 0.0 m, max 0.0 m
 - baked skin displacement (left arm region): mean 0.0 m, max 0.0 m
 - renders: `renders/morph_biceps_0.png` vs `renders/morph_biceps_1.png`

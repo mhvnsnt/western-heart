@@ -193,3 +193,61 @@ Named, still without anatomy after the fix-up pass (final list
 in the closing batch): blanka and king-tyrant (every roster GLB
 unskinned — no skeleton to build from), iori (only a 3,097-vert
 partial model resolves; gate landmarks 2/13).
+
+## Batch 4 (closing) — merged body meshes + 14 fighters
+
+One more generator correction: some bodies are split across
+several skinned meshes (armor plates, shells). The generator
+previously built the SDF body from the single largest skinned
+mesh — armor-king's anatomy was first generated from a
+1,102-vert shell of his 5,660-vert body and still passed its
+containment checks against itself. `load_body_mesh` now merges
+ALL skinned meshes into the body (single-mesh rigs merge to
+exactly their one mesh; Pantera regression re-verified
+byte-identical). Regenerated under the merged loader: armor-king
+(1,102 -> 5,660 verts), jin (4,326 -> 14,498; supersedes his
+batch-3 artifact), vega (a 1,991-vert fragment at 10 bone /
+17 muscle -> full 12/25/7 at 10,589 verts), zafina (2,970 ->
+22,462 verts).
+
+| fighter | source model (his own) | joints | vertices |
+|---|---|---|---|
+| armor-king | roster/armor-king/attires/attire1/model-rigged.glb | 49 | 5,660 |
+| jin | roster/jin/attires/bloodline-ember/jin-bloodline-ember.glb | 50 | 14,498 |
+| kronos | roster/kronos/attires/attire1/model-rigged.glb | 49 | 1,000,375 |
+| mariposa | roster/mariposa/attires/monarch/mariposa-monarch-rigged.glb | 49 | 1,013,363 |
+| michiko | roster/michiko/attires/attire1/model-rigged.glb | 73 | 1,395,522 |
+| mina-ashido | roster/mina-ashido/attires/attire1/model-rigged.glb | 52 | 123,772 |
+| miruko | roster/miruko/attires/attire1/model-rigged.glb | 52 | 129,834 |
+| panda | roster/panda/attires/attire1/source/aotsuki-a1-rigged.glb | 73 | 1,347,672 |
+| parvati | roster/parvati/attires/attire1/model-rigged.glb | 52 | 109,877 |
+| phantom | roster/phantom/attires/attire1/model-rigged.glb | 49 | 1,053,847 |
+| rahkasa | roster/rahkasa/attires/attire1/model-rigged-textured.glb | 52 | 174,504 |
+| ryuji-rock | roster/ryuji-rock/attires/attire1/model-rigged.glb | 73 | 1,454,471 |
+| vega | roster/vega/attires/attire1/model.glb | 364 | 10,589 |
+| zafina | roster/zafina/attires/butterfly-default/mariposa-butterfly-default.glb | 246 | 22,462 |
+
+## Stage 3 final accounting
+
+43 fighters carry C1 anatomy layers on main: Pantera
+(2026-10-23) plus 42 generated in this stage (batches 1-4).
+Every other fighter is named here with his reason:
+
+- Owner-gated / decision list (skipped by instruction): star,
+  charger, cain-elias, koreshi, gyou.
+- Sibling re-rig in flight (deferred, do not double-work):
+  burger, negativo, purplerain.
+- No roster model on main — docs/intake only, nothing to build
+  from: jin-eastern-mind, kiko-tanaka, purple-rain, rave,
+  saku-ra, sun-ra, tobi, wizard-gang.
+- Every GLB on main is unskinned (no skeleton to build from;
+  each was probe-verified across all his candidate files):
+  blanka, king-tyrant, kuma, kuma-replacement, lili, nightwolf,
+  scimitar, theory, torch.
+- Skeleton does not resolve to the canonical landmarks: iori
+  (his only model yields 2 of 13 landmarks even with merged
+  meshes; 1 bone primitive).
+
+Stage 3 is complete for every fighter the current roster models
+allow. The unskinned nine unblock the day rigged models land for
+them — the generator + driver handle them unchanged.
