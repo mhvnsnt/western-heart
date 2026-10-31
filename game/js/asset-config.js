@@ -37,13 +37,22 @@
 
 export const R2_PUBLIC_URL_PLACEHOLDER = '__WH_R2_PUBLIC_URL__';
 
-/* Fill in when the R2 bucket exists (owner step — see
- * tools/deploy/DEPLOY-SPLIT.md): the bucket's public URL, e.g.
- *   'https://pub-<account-hash>.r2.dev'
- * or a custom domain in front of the bucket. No trailing slash.
- * Do NOT point this at a bucket that does not exist yet. */
+/* LIVE since 2026-10-31 — owner no-card route (owner, 2026-10-31:
+ * "just move on and do it in a way where we don't have to spend the
+ * dollar right now"): the remote base is the PRIVATE Backblaze B2
+ * bucket western-heart-assets, served publicly through the Cloudflare
+ * Worker below. The Worker signs every request and sends
+ * Access-Control-Allow-Origin: *, so the private bucket never needs a
+ * public flip or a payment method. No trailing slash.
+ * The remote model set (tools/deploy/r2-upload-manifest.json) is
+ * uploaded to the bucket under repo-relative paths — the exact shape
+ * resolveAssetCandidates() requests. Verified live 2026-10-31 before
+ * this was pointed at it: test.txt, zen (29,237,496 B), rave /
+ * kiko-tanaka.glb (92,208,012 B, full body), Doc Frank attire4
+ * transformed (29,703,496 B) and cyborg-x (41,346,180 B) all return
+ * HTTP 200 at exact byte sizes with the CORS header. */
 export const ASSET_CONFIG = {
-  remoteBase: R2_PUBLIC_URL_PLACEHOLDER,
+  remoteBase: 'https://western-heart-assets.mhvnsnt.workers.dev',
   jsdelivrBase: 'https://cdn.jsdelivr.net/gh/mhvnsnt/western-heart@main',
 };
 
