@@ -1,12 +1,12 @@
 {
  "format": "wh-pages-deploy/1",
  "ref": "origin/main",
- "commit": "a3ef5e60a01ef057471a5b458624dbf598b14b0e",
+ "commit": "710d554a75aef59c3ded7a2833044a6a323a17ed",
  "files": 2082,
- "bytes": 961665599,
- "built": "2026-10-31T01:14:31Z",
+ "bytes": 961667470,
+ "built": "2026-10-31T04:54:03Z",
  "tool": "tools/deploy/build_pages.py",
  "mode": "shell-only",
- "source_pr": 1311,
- "delta_note": "Delta deploy (WH-100 lane, Git Data API) 8ef6237d..a3ef5e60: updated the 8 T7 clip-maps + anim/t7/INDEX.json (WH-100 B2b/c, PR #1311: requirements decode + v2 cancel graph \u2014 514/781 mapped) and game/assets/movesets/buffalo-bill.json (provenance Phase 1 Law group). Add/update-only."
+ "source_pr": 1334,
+ "delta_note": "Delta deploy (fight-load lane, Git Data API) a3ef5e60..710d554a: updated game/js/main.js only (PR #1334: reload-once recovery when a fight load dies on a failed module import + deploy module-graph checker on main). Add/update-only."
 }

@@ -1210,6 +1210,23 @@ function exitReplay() {
 }
 
 async function startFight(playerId, enemyId, opts = {}) {
+  // MODULE-RELOAD RECOVERY (2026-10-31): when a fight load dies on a
+  // failed dynamic import, the browser's module map caches that failure
+  // for the life of the page — re-running the import can never succeed,
+  // so the "tap CONFIRM to retry" path is dead and every fight bounces
+  // back to the stage screen until the player reloads by hand. The load
+  // catch below sets __whModuleReload for exactly that error class; the
+  // next startFight call then reloads the page ONCE (sessionStorage
+  // stops a reload loop if the deploy itself is still broken).
+  if (window.__whModuleReload) {
+    window.__whModuleReload = false;
+    let already = false;
+    try {
+      already = !!sessionStorage.getItem('wh_module_reload_once');
+      if (!already) sessionStorage.setItem('wh_module_reload_once', '1');
+    } catch (e) { /* storage unavailable: reload anyway, once per flag */ }
+    if (!already) { location.reload(); return false; }
+  }
   unlockAudio();
   if (typeof playerId === 'string') selectedChar = playerId;
   // Lane 4: stage-select may pass an explicit stage via opts.
@@ -1353,7 +1370,18 @@ async function startFight(playerId, enemyId, opts = {}) {
     // screen is where versus fights start, so the error must be visible
     // there, not only on the fighter-select hint.
     const detail = (err && (err.message || err)) || 'unknown error';
-    const msg = `Failed to load fighters: ${detail} — tap CONFIRM to retry.`;
+    // A dynamic-import failure (a deploy that shipped a module without
+    // one of its imports — 2026-10-30: fighter.js shipped without
+    // step-plan-bank.js, and every fight bounced to the stage screen)
+    // is cached by the browser's module map for the whole page session;
+    // a plain retry can never succeed. Flag it so the next startFight
+    // reloads the page (top of startFight), and tell the player the
+    // truth about what the next tap does.
+    const moduleFailed = /dynamically imported module|Importing a module script failed/i.test(String(detail));
+    if (moduleFailed) window.__whModuleReload = true;
+    const msg = moduleFailed
+      ? `Failed to load fighters: ${detail} — a game file failed to load; tap CONFIRM to reload the game.`
+      : `Failed to load fighters: ${detail} — tap CONFIRM to retry.`;
     if (hint) hint.textContent = msg;
     if (stageHintEl) stageHintEl.textContent = msg;
     hideLoadOverlay();
@@ -1440,6 +1468,8 @@ async function startFight(playerId, enemyId, opts = {}) {
     clearTimeout(hints._t);
     hints._t = setTimeout(() => hints.classList.add('fade'), 6000);
   }
+  // The fight started: a future module failure may reload once again.
+  try { sessionStorage.removeItem('wh_module_reload_once'); } catch (e) { /* noop */ }
   return true; // P0 (2026-10-22): stage-select handler needs to know the fight started
 }
 // H toggles control hints, M toggles the movelist (training).
