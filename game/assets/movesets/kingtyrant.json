@@ -1375,8 +1375,8 @@
       "isGrab": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 270,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 580,
+        "match": "F6 throw-repick (burn-down 2026-10-30): prior row xiaoyu 270 hit_frames throw=0; repicked same bank, same attack-class profile, playable (rows.pack), hit_frames throw=1"
       }
     },
     "1+2": {
@@ -1451,8 +1451,8 @@
       "throw_break": "1+2",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 232,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
+        "row": 580,
+        "match": "F6 throw-repick (burn-down 2026-10-30): prior row xiaoyu 232 hit_frames throw=0; group twin of P+K, same repicked row xiaoyu 580, hit_frames throw=1"
       }
     },
     "f+3": {
@@ -5200,12 +5200,12 @@
       "input_slots": [
         "Back throw"
       ],
-      "move_class": "strike",
+      "move_class": "throw",
       "note": "th(h)",
       "anim_t3": {
         "bank": "eddy",
-        "row": 26,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
+        "row": 148,
+        "match": "F6 throw-repick (burn-down 2026-10-30): prior row eddy 26 hit_frames throw=0; repicked same bank, same attack-class profile, playable (rows.pack), hit_frames throw=1; move_class strike->throw: input, name and T8 anim_ref all name this move as a throw"
       }
     },
     "(back to wall).b,b,UB": {
@@ -6879,12 +6879,12 @@
       "input_slots": [
         "Left throw"
       ],
-      "move_class": "strike",
+      "move_class": "throw",
       "note": "th(h); on block -3",
       "anim_t3": {
         "bank": "eddy",
-        "row": 26,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
+        "row": 148,
+        "match": "F6 throw-repick (burn-down 2026-10-30): prior row eddy 26 hit_frames throw=0; repicked same bank, same attack-class profile, playable (rows.pack), hit_frames throw=1; move_class strike->throw: input, name and T8 anim_ref all name this move as a throw"
       }
     },
     "MD1.HSP.3+4": {
@@ -7069,12 +7069,12 @@
       "input_slots": [
         "Right throw"
       ],
-      "move_class": "strike",
+      "move_class": "throw",
       "note": "th(h); on block -3",
       "anim_t3": {
         "bank": "eddy",
-        "row": 26,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
+        "row": 148,
+        "match": "F6 throw-repick (burn-down 2026-10-30): prior row eddy 26 hit_frames throw=0; repicked same bank, same attack-class profile, playable (rows.pack), hit_frames throw=1; move_class strike->throw: input, name and T8 anim_ref all name this move as a throw"
       }
     },
     "RLX.1": {
