@@ -27,6 +27,9 @@ const CLIPS = {
   kuma: [201, 'nakm_kam(DVD)', 'Km_sKAM00_'],
   panda: [201, 'nakm_kam(DVD)', 'Km_sKAM00_'],
   julia: [119, 'najl_jl2kam', 'Jl_sKAM00_'],
+  lee: [126, 'kole_kamae(DVD)', 'Le_sKAM00_'],
+  lars: [123, 'amla_kamae(DVD)', 'La_sKAM00_'],
+  negan: [131, 'nass_kamae', 'Na_sKAM00_'],
 };
 // Western Heart fighter -> [bound bank, character dir] (CANON base; FIGHTER_BANK / moveset index bank)
 const WIRED = {
@@ -34,6 +37,8 @@ const WIRED = {
   burger: ['bryan', 'bob'], sakura: ['xiaoyu', 'xiaoyu'], sha: ['xiaoyu', 'xiaoyu'], phantom: ['yoshimitsu', 'yoshimitsu'],
   gyou: ['hwoarang', 'hwoarang'], tobi: ['hwoarang', 'hwoarang'], gashadokuro: ['kuma', 'kuma'], aotsuki: ['kuma', 'panda'],
   nightwolf: ['julia', 'julia'],
+  // proxy-bank fighters (moveset t3_source jin / jin / bryan) on their own bases' stances
+  purplerain: ['jin', 'lee'], chordz: ['jin', 'lars'], negativo: ['bryan', 'negan'],
 };
 
 // the joints game/js/t3anims.js retargetT3Clips drives (RIG_REQUIRED + spine/neck + shoulders + toes)
@@ -80,7 +85,7 @@ for (const [dir, [idx, anim, move]] of Object.entries(CLIPS)) {
     assert.ok(clip.t7_source.moves.includes(move), `played by ${move}`);
     assert.equal(clip.t7_source.frames, N);
     assert.equal(clip.applier.commit, 'bebb3d8bc5c4c2c58778ac6af4f87f3dc80062b1');
-    assert.equal(clip.fk_selfcheck_max_m, 0, 'the bake reproduced the posed T7 joints exactly');
+    assert.ok(clip.fk_selfcheck_max_m <= 1e-5, `the bake reproduced the posed T7 joints (FK error ${clip.fk_selfcheck_max_m} m)`);
     for (const j of JOINTS) {
       assert.equal(clip.rot_xyzw[j].length, N, j);
       for (const q of clip.rot_xyzw[j]) assert.ok(Math.abs(Math.hypot(...q) - 1) < 1e-3, `${j} unit quaternion`);

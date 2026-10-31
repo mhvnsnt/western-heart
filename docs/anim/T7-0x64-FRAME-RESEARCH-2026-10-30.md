@@ -64,15 +64,32 @@ python3 tools/anim/t7_frame_probe.py hinge    <GRE>/teardown/pakchunk0/models/Ch
 - **Per-bone constant frames A·R·B** (24 × 24 cube rotations × 6 orders) fitted on the stance pair.
   - Only `Spine1` gives a distinct fit: 4.4°, next best 15.7°, order XYZ.
   - The other bones land at 7°–24° with no consensus. The pair is too noisy: T7 blends into attacks, and the stance is a breathing loop.
+- **Per-bone constant frames A·R·B fitted on many attack first frames** (2026-10-31).
+  - Tried: King's 0xC8 stance (the exact local rotations Kiloutre's applier writes on Koenji's mannequin) against the first frame of every damaging King attack whose clip is 0x64. Attacks start from the stance, so this gives far more samples than the stance pair alone.
+  - Search space: 6 orders × 8 sign patterns × 24 × 24 cube rotations per bone.
+  - Result: the best median error per bone is 10.3°–66.9°, and 0 of 18 bones come in under 10°.
+    - Worst: right thigh 66.9°, left foot 55.9°, neck 50.4°.
+    - Best: right hand 10.3°, left forearm 13.4°.
+  - Every bone's runner-up ties its best fit, so no candidate wins.
+  - Not decisive: attack first frames are already blended away from the stance.
+  - Re-run: `tools/anim/t7_bl_basis.py` (Blender side) then `tools/anim/t7_f11_fit.py`.
+- **Same-motion pairs across the two formats.** Across 30 characters' clip tables, no animation name is stored once as 0xC8 and once as 0x64. There is no same-motion pair that would pin the frame exactly.
 
 ## Next
 
-Either of these settles it exactly, without guessing:
+Either of the first two settles it exactly, without guessing. The third might:
 
 1. **The game's own code.**
    - Needs `TekkenGame-Win64-Shipping.exe` from the owner's Steam install (Steam → Tekken 7 → Manage → Browse local files → `TekkenGame/Binaries/Win64/`), stored privately, e.g. as a release asset in GRE.
    - In Ghidra, locate the routine TKMovesets ported (`sub_1407316F0` / `TK__Anim_64_sub_140733340`) by its byte pattern, then follow its caller's `pos_out` into the bone-matrix build.
 2. **A live capture on the owner's PC.** While King plays a 0x64 attack in practice mode, read the 23 decoded values and the bone matrices the game builds from them. TKMovesets2 / BlenderTekkenDirect already know the player-struct addresses. Two or three frames per bone pin every per-bone frame exactly.
+3. **Same-motion pairs from TTT2 (untested; needs the TTT2 lane's data).** Many of King's T7 attacks reuse Tag Tournament 2 motions. If TTT2 stores any of those motions as raw 0xC8 frames, each one pairs with its T7 0x64 copy across a full attack's range of poses, not just the near-constant stance, and the per-bone frames could be fitted exactly.
+   - The private research clone has only the TTT2 disc readers so far (`tekken-tag-tournament-2/tools/`), with no extracted motion data. Tekken 6 (PSP) is still encrypted.
+
+King's moves for Pantera, checked 2026-10-31 with every move in `kinmot.json` resolved to its bank and format (`tools/anim/t7_clip_formats.py`):
+- All 552 damaging moves are 0x64 (467 rotsm, 71 common, 14 inline).
+- The only 0xC8 clips are the stance (rotsm 132) and the 108 round-transition cinematics (86 common, 22 inline).
+- Every other clip (walks, dashes, sidesteps, throws, reactions, attacks) is 0x64, so they all wait on this fix. The stance is everything the 0xC8 path can give Pantera.
 
 Playable now, without solving 0x64:
 - King's real T7 **stance** is 0xC8, so it bakes through the 0xC8 path the crew already verified on Koenji's mannequin (BUILD-LOG 18:00 control).
@@ -116,6 +133,9 @@ Same tool, same path. Each fighter gets its CANON base's own T7 stance clip (the
 | Gashadokuro | Kuma | `nakm_kam` kumrotsm 201 | 120 |
 | Aotsuki | Panda | `nakm_kam` panrotsm 201 | 120 |
 | Nightwolf | Julia | `najl_jl2kam` julmot.bin inline 119 | 80 |
+| Purple Rain | Lee | `kole_kamae` leerotsm 126 | 53 |
+| Chordz | Lars | `amla_kamae` larrotsm 123 | 100 |
+| Negativo | Negan | `nass_kamae` nsamot.bin inline 131 | 1100 |
 
 Not given a stance:
 - **Owner decisions:** Zen is NOT Heihachi; Cyborg X and Zui keep their stances; `jin_soul` is on the decision list.
@@ -123,4 +143,4 @@ Not given a stance:
 
 Still waiting:
 - **0x64 stances** need the joint frame: Jin (Rin, Demonio), Law (Buffalo Bill), Paul, Nina (Awa Pop), Alisa, Miguel (Bruno), Eddy (Kai, King Tyrant), Asuka (Kinpo), Katarina (Michiko), Akuma (Dio), Jack-7 (Sam-UR-A1), Raven (Pond), Anna (Torch), Lei (Rave), Lili, Zafina (Mariposa), Lucky Chloe (Ryusan).
-- **No bank** needs a stance-only binding first (`fighter.js` falls back to `stance` for any missing action, which would freeze their walking): Purple Rain (Lee), Chordz (Lars) and Negativo (Negan). Their stances are 0xC8.
+- ~~**No bank:** Purple Rain (Lee), Chordz (Lars) and Negativo (Negan)~~. Corrected 2026-10-31: they do have a bound bank. Their moveset `t3_source` binds a proxy bank (jin / jin / bryan), so they shared Demonio's / Skull's stance. Their own bases' stances are 0xC8 and now ship in the table above. Negan's FK self-check is 0.000001 m over 1,100 frames, so the test tolerance is 10 µm.

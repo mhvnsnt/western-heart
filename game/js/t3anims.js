@@ -595,8 +595,11 @@ export function getT3Clips(bankId = 'king') { return _t3clipCache[bankId] || nul
    cyborgx + zui (keep their stances), jin_soul (identity on the decision list); menajerii (Roger Jr.) and
    silvertongue (Lili) only borrow the kuma / xiaoyu banks. 0x64 stances (Jin, Law, Paul, Nina, Alisa, Miguel,
    Eddy, Asuka, Katarina, Akuma, Jack-7, Raven, Anna, Lei, Lili, Zafina, Lucky Chloe) wait for the 0x64 joint
-   frame (docs/anim/T7-0x64-FRAME-RESEARCH-2026-10-30.md); fighters with no bank (Purple Rain, Chordz, Negativo)
-   need a stance-only binding first, since a missing action falls back to 'stance' (fighter.js). */
+   frame (docs/anim/T7-0x64-FRAME-RESEARCH-2026-10-30.md).
+   2026-10-31 (later): Purple Rain (Lee), Chordz (Lars) and Negativo (Negan). Their moveset data binds a proxy bank
+   (jin / jin / bryan, from each moveset's t3_source), so they shared Demonio's / Skull's stance; each now stands in
+   its own base's real T7 stance (owner 2026-10-23 for Chordz: "pull their animations ... and their stances and
+   poses"). Every other action stays the bound bank's. */
 export const T7_STANCES = {
   pantera: { bank: 'king', dir: 'assets/anim/t7/king/' },
   diablo: { bank: 'heihachi', dir: 'assets/anim/t7/heihachi/' },
@@ -611,6 +614,9 @@ export const T7_STANCES = {
   gashadokuro: { bank: 'kuma', dir: 'assets/anim/t7/kuma/' },
   aotsuki: { bank: 'kuma', dir: 'assets/anim/t7/panda/' },
   nightwolf: { bank: 'julia', dir: 'assets/anim/t7/julia/' },
+  purplerain: { bank: 'jin', dir: 'assets/anim/t7/lee/' },
+  chordz: { bank: 'jin', dir: 'assets/anim/t7/lars/' },
+  negativo: { bank: 'bryan', dir: 'assets/anim/t7/negan/' },
 };
 const _t7stance = {}; // fighterId -> { bank, skelId, clip }
 async function loadT7Stance(fid, def, THREE) {
