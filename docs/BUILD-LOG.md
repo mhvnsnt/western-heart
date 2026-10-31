@@ -2,6 +2,22 @@
 
 Lane ownership is claimed on #866. MoneyManBusch owns: Pantera and the core-8 chat-owned animation wiring, the Tekken 7 bank extraction (`tools/anim/t7_*`), and the PR queue. Muse owns #1096 and its stack, the moves audit, and `tools/auto_rig`.
 
+## 2026-10-31 — 12 more T7 stances live; Pantera's moves wait on 0x64 (Claude)
+
+- **Live:** #1368 merged (main `19f5ac0c4`) and deployed to the live Pages branch `gh-pages-m1-20261029` (`e3ce10739`).
+  - Manifest: commit `19f5ac0c4`, 2,101 files, 989.0 MB.
+  - Added the 18 stance files; updated 48 files that were on main but not yet live; removed 0.
+  - Module graph checked on the assembled tree; all new stance files serve 200.
+- **Model hosting gap:** on the live build, only Pantera and Burger have their fight models served. Diablo, Skull, Sakura, Phantom and Nightwolf models are on main but over 20 MB, so they 404 live (jsDelivr refuses them too). Their stances show up live when Muse's Backblaze + Worker model hosting lands.
+- **Pantera's moves past the stance:** King's moves resolved by `tools/anim/t7_clip_formats.py`:
+  - All 552 damaging moves are 0x64.
+  - The only 0xC8 clips are the stance and 108 round cinematics.
+  - So the stance is everything the 0xC8 path can give him. Walks, dashes, throws, reactions and attacks need the 0x64 joint frame.
+- **F11:** the per-bone fit on King's attack first frames is rejected (best median 10.3°–66.9° per bone, no winner; `tools/anim/t7_f11_fit.py`). Routes left (research doc, Next):
+  - the game exe;
+  - a live capture on the owner's PC;
+  - TTT2 same-motion pairs once the TTT2 lane extracts motion data.
+
 ## 2026-10-30 — King's real T7 stance on Pantera (Claude, owner-approved mannequin run)
 
 - **Shipped first real T7 clip in the game.** Pantera idles in King's actual Tekken 7 stance (kinrotsm clip 132 `nakg_kg2kam`, 0xC8), not the T3 slot-3 stance.
