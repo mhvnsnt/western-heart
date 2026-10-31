@@ -73,3 +73,77 @@ are in GRE `.../mothead/mask/indexes/` and repeated inside each clip-map JSON.
   (models/UI only). It needs the same DepotDownloader route on the owner's
   Steam TEKKEN 8 — the T7 lane's Steam credentials were session-supplied and
   never committed — or community TKMovesets2 outputs.
+
+## V2 re-run over the held "other" pool (2026-10-30, Worker C)
+
+The B2b/c lane resolved 4 moves incidentally from the 89-entry "other" pool
+(entries whose v1 reason read "motbin graph candidate exists but no MVL
+corroboration and/or non-unique — held as unmapped per no-guess rule"). This
+lane ran the v2 channels **systematically** over all 89.
+
+**Method.** Each entry's full input sequence was walked over the v2 cancel
+graph: v1 plain/group edges + input-sequence commands (0x800D+k, expanded
+from `raw.input_sequences`/`raw.inputs`), dash/tap/flag command edges,
+unconditional empty-input auto-cancels as pass-through intermediates, and
+bound/throw/pose-class terminals (damage/startup carried in hit conditions,
+not the move record). Direction-set chords (a cancel whose direction bits
+name a set of directions, GRE REQUIREMENTS-DECODE §2.2) were also checked —
+they could only veto a promotion, never create one. Promotion required the
+walk to terminate at **exactly one** motbin move **and** that move's anim to
+resolve to a concrete clip locator in the GRE bank indexes
+(`teardown/tekken7-steam/tkdata/mothead/mask/indexes/`). No fingerprint
+evidence was used as a basis for any promotion. The ambiguous pool (90),
+the requirement-held pool (10), the T8-only pool (81) and the flagged
+pantera f,f,n,1+2 "Lay Off" adjudication were not touched.
+
+**Graph source.** mhvnsnt/game-reverse-engineering main at
+967d5d85e47d6c392d56b6b80fd57c246f08691e (includes PR #76, merge 6c1a8c85e6a84be3d92844197d38cc14a499dc8b): `teardown/tekken7-steam/tkdata/mothead/t7_req_graph.py`
+(v2 steps + requirement runs) and `teardown/tekken7-steam/tkdata/mothead/REQUIREMENTS-DECODE-2026-10-30.md`;
+motbin JSONs under `teardown/tekken7-steam/tkdata/mothead/json/` — sha256-verified
+byte-identical to the clip lane's worker-B sources for all 8 fighters. The v1
+graph code (worker-B `join_engine.py`/`run_join.py` in
+`~/workspace/agent-ops/t7-clip-lane/`) was reused unmodified; the combined v2
+walk was rebuilt for this lane because the B2 lane saved only its results,
+not its walk code.
+
+**Sanity check (graph re-derivation).** Sample of 48 already-mapped entries
+(6 per fighter, spread across each clip-map): the v2 walk's terminal pool
+contains the mapped motbin move for **48/48**. Over all 514 mapped entries
+the same membership check gives **511/514**; the 3 misses are the B2 lane's
+hand-adjudicated special readings (diablo f,F+3 dash-state reading, kinpo
+1+4,2,d+4 direction-set finisher, phantom f,F+1+4,F hit-variant parent),
+not systematic walk failures. The clip-locator builder used for promotions
+reproduces the clip blocks of all 481 clip-resolved mapped entries exactly.
+
+**Results.** 11 promoted, 78 held with a `v2_rerun_20261030` record and an
+updated reason per entry (terminal ids + what the re-run found):
+
+| Fighter | Other pool | Promoted | Held |
+|---|---|---|---|
+| burger | 13 | 4 (f,F+4, f,n,d,df+1+2*, f,n,d,df+3, f,n,d,df+3,2) | 9 |
+| demonio | 9 | 1 (f,F+3,1) | 8 |
+| diablo | 12 | 1 (f,n,d,df+2) | 11 |
+| kinpo | 19 | 4 (f,F+1+2, f,F+2, f,F+2,3*, NWG.f,F+1+2) | 15 |
+| phantom | 10 | 1 (f,F+3+4,1+2) | 9 |
+| pantera | 12 | 0 | 12 |
+| skull | 8 | 0 | 8 |
+| scimitar | 6 | 0 | 6 |
+| **Total** | **89** | **11** | **78** |
+
+The v2 channels also *blocked* promotions the v1 graph had left as single
+candidates: pantera f,F+2 gains the bound-class sibling Kg_p00_2; phantom
+f,f,F+3 gains Ym_runlk00; diablo's f,n,d,df+3 pair gains He_sjk02; demonio
+f,n,d,d/f+1+2 gains Jz_shoryu_EX2; and the direction-set check adds a running
+kick terminal against skull f,F+3 (Co_runlk00), burger f,F+3 (Ft_runlk00)
+and a second string terminal against demonio f+3,1 (Jz_lk00_lp) — all held,
+with the competitor named in each entry's record as a lead for a future
+adjudication. The kinpo f+3 Spinning Heel Drop family stays held: its
+Jn_66LK terminal is bank-0x0000 (no located clip file) and the v2 walk adds
+further terminals.
+
+**New net totals (recounted from the clip-map files): 525 mapped /
+256 unmapped of 781.** Per fighter mapped/unmapped after this lane:
+burger 89/22, demonio 51/29, diablo 54/26, kinpo 64/39, pantera 77/32,
+phantom 76/51, scimitar 40/17, skull 74/40. No mapping here is claimed
+play-verified; clip-maps remain the supply layer for the wiring lane, and
+this lane did not run the PR #1282 republish.

@@ -383,5 +383,86 @@
    "of_781": true
   },
   "held_requirement_pool_diagnoses": "Recorded per entry in the b2bc_diagnosis field of the 10 still-unmapped requirement-pool moves (burger Course Achuto + Quick Langouste, demonio Mental Alertness 2, kinpo Basho Oroshi + both 10-hit combos, phantom Thunder Blade + Confusion, skull Flying Knee Kick; plus kinpo ws2-prefixed 10-hit variant counted once per combo)."
+ },
+ "t7_clip_mapping_v2_other_20261030": {
+  "lane": "T7 v2 re-run over the held 'other' pool (Worker C, 2026-10-30)",
+  "source_graph": "mhvnsnt/game-reverse-engineering main 967d5d85e47d6c392d56b6b80fd57c246f08691e (includes PR #76, merge 6c1a8c85e6a84be3d92844197d38cc14a499dc8b): teardown/tekken7-steam/tkdata/mothead/t7_req_graph.py + REQUIREMENTS-DECODE-2026-10-30.md; motbin JSONs under teardown/tekken7-steam/tkdata/mothead/json/ sha256-verified byte-identical to the clip lane's worker-B sources for all 8 fighters; v1 graph code (worker-B join_engine.py/run_join.py) reused unmodified; the combined v2 walk was rebuilt for this lane (the B2 lane saved only its results)",
+  "method": "Each of the 89 'other'-pool entries (v1 reason: 'motbin graph candidate exists but no MVL corroboration and/or non-unique') had its full input sequence walked over the v2 cancel graph: input-sequence/dash/tap/flag command edges + unconditional empty-input pass-through auto-cancels + bound/throw/pose-class terminals; direction-set chords checked as veto-only. Promotion required exactly ONE terminal motbin move AND a concrete clip locator (section/offset/size/format/sha256) in the GRE bank indexes. No promotion on fingerprint evidence. Ambiguous (90), requirement-held (10), T8-only (81) pools and the flagged pantera f,f,n,1+2 Lay Off entry were not touched.",
+  "sample_rederivation": "48/48 sampled already-mapped entries (6 per fighter, spread across each clip-map) re-derived: the mapped motbin move is inside the v2 walk's terminal pool for every sampled entry. Over all 514 mapped entries the same membership check gives 511/514; the 3 misses are the B2 lane's hand-adjudicated special readings (diablo f,F+3 dash-state reading, kinpo 1+4,2,d+4 direction-set finisher, phantom f,F+1+4,F hit-variant parent). The clip-locator builder reproduces the clip blocks of all 481 clip-resolved mapped entries exactly.",
+  "other_pool": 89,
+  "promoted_total": 11,
+  "held_total": 78,
+  "promoted": [
+   "burger f,F+4 -> 1789 Ft_Runjprk",
+   "burger f,n,d,df+1+2* -> 1638 Ft_Hadoh",
+   "burger f,n,d,df+3 -> 1613 Ft_Stlk",
+   "burger f,n,d,df+3,2 -> 1616 Ft_Stlk02",
+   "demonio f,F+3,1 -> 1794 Jz_ka_2_lp",
+   "diablo f,n,d,df+2 -> 1707 He_shoryu_S",
+   "kinpo f,F+1+2 -> 1681 Jn_66LRP_EX",
+   "kinpo f,F+2 -> 1775 Jn_66RP",
+   "kinpo f,F+2,3* -> 1776 Jn_66rplk",
+   "kinpo NWG.f,F+1+2 -> 1681 Jn_66LRP_EX",
+   "phantom f,F+3+4,1+2 -> 1932 Ym_rocket"
+  ],
+  "per_fighter": {
+   "burger": {
+    "other_pool": 13,
+    "promoted": 4,
+    "held": 9
+   },
+   "demonio": {
+    "other_pool": 9,
+    "promoted": 1,
+    "held": 8
+   },
+   "diablo": {
+    "other_pool": 12,
+    "promoted": 1,
+    "held": 11
+   },
+   "kinpo": {
+    "other_pool": 19,
+    "promoted": 4,
+    "held": 15
+   },
+   "pantera": {
+    "other_pool": 12,
+    "promoted": 0,
+    "held": 12
+   },
+   "phantom": {
+    "other_pool": 10,
+    "promoted": 1,
+    "held": 9
+   },
+   "scimitar": {
+    "other_pool": 6,
+    "promoted": 0,
+    "held": 6
+   },
+   "skull": {
+    "other_pool": 8,
+    "promoted": 0,
+    "held": 8
+   }
+  },
+  "per_fighter_unmapped_after": {
+   "pantera": 32,
+   "phantom": 51,
+   "skull": 40,
+   "burger": 22,
+   "kinpo": 39,
+   "demonio": 29,
+   "diablo": 26,
+   "scimitar": 17
+  },
+  "totals_after": {
+   "mapped": 525,
+   "unmapped": 256,
+   "of_781": true
+  },
+  "held_records": "The 78 still-unmapped 'other'-pool entries carry a v2_rerun_20261030 field (steps walked, terminal ids/names, direction-set pool, note) and an updated reason naming the v2 re-run and its terminal count. Notable v2 blocks: pantera f,F+2 gains bound-class Kg_p00_2 (1690); phantom f,f,F+3 gains Ym_runlk00 (1714); diablo f,n,d,df+3 forms gain He_sjk02 (1712); demonio f,n,d,d/f+1+2 gains Jz_shoryu_EX2 (1844); direction-set running-kick terminals block skull f,F+3 (Co_runlk00 1703) and burger f,F+3 (Ft_runlk00 1768); a GROUP direction-set string blocks demonio f+3,1 (Jz_lk00_lp 1619).",
+  "doc": "docs/movesets/T7-CLIP-MAPPING-2026-10-30.md (section 'V2 re-run over the held \"other\" pool')"
  }
 }
