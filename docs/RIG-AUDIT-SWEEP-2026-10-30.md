@@ -322,3 +322,64 @@ Files were fetched one at a time, audited, and deleted before the next fetch.
 7. Singular-IBM rigs (buffalo-bill attire3, chordz attire1): bind-pose repair stage.
 
 Next after Baek, per this order: demonio bloodline-ember (item 1).
+
+---
+
+## Stage 2 re-audit (2026-10-31) — the meshopt set, measured at last
+
+The meshopt decode stage is built into the audit path:
+`tools/auto_rig/backends/meshopt_decode.py` detects
+EXT_meshopt_compression from the GLB header and decodes with
+gltfpack `-noq` (plain float output); `skin_audit.py` calls it
+automatically before auditing (new reports carry
+`meshopt_decoded: true`). The audit's three full-triangle /
+full-vertex stages were also made exact-but-prefiltered (bounding-
+sphere candidate sets for point-mesh distance, Y/Z-bounds candidate
+sets for the ray-parity inside test, chunked contamination), which
+is what lets a decoded 1.6M-vert rig finish at all: verdicts are
+byte-identical to the previous audit on five control rigs
+(deathfang attire1 PASS, baek mw PASS, doc-frank pre-transform FAIL,
+demonio bloodline-ember-fixed FAIL, armor-king decoded FAIL), and
+the Baek audit below completed in ~368 s wall under heavy VM load
+(load avg ~25, three sibling Blender renders) at 1.3 GB peak RSS —
+the same file the 2026-10-30 sweep could only record as a timeout.
+
+Count correction: the sweep table above holds 19 AUDIT-ERROR rows.
+16 are the meshopt class (15 ValueError + the baek timeout) and are
+re-audited here; the other 3 (buffalo-bill attire3 model-rigged,
+chordz attire1 model-rigged, dio attire1 source
+dio-a1-jade-god-rigged — singular inverse-bind-matrix cases) are a
+different failure class and remain open for the bind-pose repair
+stage. Earlier notes that said "17 meshopt rigs" were off by one
+against this table.
+
+| file | verdict | failed checks | verts | joints |
+|---|---|---|---|---|
+| roster/armor-king/attires/attire1/model-rigged.glb | FAIL | no_dead_joints, no_contamination | 5,660 | 49 |
+| roster/awa-pop/attires/attire2/model-rigged.glb | **PASS** | — | 1,365,801 | 73 |
+| roster/baek/attires/attire1/model-rigged.glb | FAIL | no_dead_joints, no_contamination | 1,593,345 | 73 |
+| roster/bruno/attires/attire2/source/bruno-a2-sail-the-sea-rigged.glb | FAIL | no_dead_joints, joints_inside_mesh | 1,257,159 | 73 |
+| roster/burger/attires/attire1/model-rigged.glb | FAIL | no_dead_joints, joints_inside_mesh | 1,003,047 | 49 |
+| roster/charger/attires/attire1/model-rigged.glb | FAIL | no_dead_joints, no_contamination, joints_inside_mesh | 1,011,686 | 49 |
+| roster/charger/attires/attire2/model-rigged.glb | FAIL | no_dead_joints | 1,022,540 | 49 |
+| roster/chordz/attires/attire1/source/chordz-a1-rigged.glb | FAIL | no_dead_joints | 1,154,142 | 73 |
+| roster/demonio/attires/attire1/model.glb | FAIL | no_dead_joints, no_contamination, joints_inside_mesh | 1,286,272 | 73 |
+| roster/demonio/attires/human/model-rerig.glb | FAIL | no_dead_joints | 1,313,733 | 73 |
+| roster/demonio/attires/human/model-rigged.glb | FAIL | no_dead_joints | 1,008,360 | 49 |
+| roster/demonio/attires/winged-devil/model-rigged.glb | FAIL | no_dead_joints, no_contamination, joints_inside_mesh | 994,129 | 53 |
+| roster/diablo/attires/attire1/model-rigged.glb | FAIL | no_dead_joints, no_contamination | 989,471 | 53 |
+| roster/doc-frank/attires/attire1/post-transform/model-rigged.glb | FAIL | no_dead_joints, no_contamination, proportions_ok, joints_inside_mesh | 981,052 | 178 |
+| roster/doc-frank/attires/attire2/base/model-rerig.glb | FAIL | no_dead_joints, no_contamination | 1,369,965 | 73 |
+| roster/doc-frank/attires/attire2/base/model-rigged.glb | FAIL | no_dead_joints, joints_inside_mesh | 1,003,981 | 49 |
+
+Totals: **16 re-audited — 1 PASS, 15 FAIL, 0 AUDIT-ERROR.** The
+AUDIT-ERROR class for meshopt rigs is closed: every one of these
+rigs is now measurable. The dominant defect is `no_dead_joints`
+(all 15 FAILs): the template-family rigs carry helper/twist
+joints that never receive skin weight and are not covered by the
+audit's minor-joint exclusions — a rig-cleanup class, now sized
+exactly. `awa-pop attire2` is the set's one clean rig and the
+roster's second verified PASS overall. Full method, per-file
+measurements (contamination mass, dead-joint lists, outside-joint
+lists) and the equivalence proof live in
+`docs/handoffs/RIG-CONTINUATION-STAGE2-2026-10-31.md`.
