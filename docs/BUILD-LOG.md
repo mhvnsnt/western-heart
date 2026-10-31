@@ -2,6 +2,13 @@
 
 Lane ownership is claimed on #866. MoneyManBusch owns: Pantera and the core-8 chat-owned animation wiring, the Tekken 7 bank extraction (`tools/anim/t7_*`), and the PR queue. Muse owns #1096 and its stack, the moves audit, and `tools/auto_rig`.
 
+## 2026-10-30 — King's real T7 stance on Pantera (Claude, owner-approved mannequin run)
+
+- **Shipped first real T7 clip in the game.** Pantera idles in King's actual Tekken 7 stance (kinrotsm clip 132 `nakg_kg2kam`, 0xC8), not the T3 slot-3 stance.
+- **Bake path:** `tools/anim/t7_c8_stance_bake.py` runs Koenji's mannequin plus Kiloutre's `applyRotationFromAnimdata` (the 18:00 control path), then converts to `wh-anim/1`. FK self-check: 0.000000 m.
+- **Data:** `game/assets/anim/t7/king/`. **Wiring:** `game/js/t3anims.js` `T7_STANCES` / `applyT7Stance()`, Pantera only.
+- **Reusable for any 0xC8 clip.** 0x64 (all attacks) still needs the joint frame; see `docs/anim/T7-0x64-FRAME-RESEARCH-2026-10-30.md`.
+
 ## 2026-10-29 — T7 0x64 animation decoder (MoneyManBusch)
 
 - **What landed:** `tools/anim/t7_anim64.py` is a pure-Python decoder for Tekken 7 compressed (0x64) animations inside MOTA blocks, big- or little-endian.
