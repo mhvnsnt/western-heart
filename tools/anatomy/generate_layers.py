@@ -156,24 +156,28 @@ CANONICAL_LANDMARKS = ('hips', 'spine', 'chest', 'neck', 'head',
                        'shoulder.L', 'shoulder.R', 'thigh.L', 'thigh.R',
                        'shin.L', 'shin.R', 'foot.L', 'foot.R')
 
-_AXIAL_STEMS = {'hips': ('hips', 0), 'pelvis': ('hips', 1),
-                'hip': ('hips', 2),
+_AXIAL_STEMS = {'hips': ('hips', 0), 'pelvis': ('hips', 2),
+                'hip': ('hips', 3), 'waist': ('hips', 1),
+                'roothips': ('hips', 1),
                 'spine': ('spine', 0), 'spine01': ('spine', 1),
-                'spine1': ('spine', 2),
+                'spine1': ('spine', 2), 'stomach': ('spine', 1),
+                'spinelower': ('spine', 1),
                 'spine2': ('chest', 1), 'spine02': ('chest', 2),
                 'spine03': ('chest', 0), 'chest': ('chest', 0),
-                'thorax': ('chest', 2),
+                'thorax': ('chest', 2), 'spineupper': ('chest', 1),
                 'neck': ('neck', 0), 'neck01': ('neck', 1),
                 'neck1': ('neck', 1),
                 'head': ('head', 0)}
 _SIDED_STEMS = {'shoulder': ('shoulder', 0), 'clavicle': ('shoulder', 1),
                 'thigh': ('thigh', 0), 'upleg': ('thigh', 1),
                 'upperleg': ('thigh', 2),
-                'shin': ('shin', 0), 'leg': ('shin', 1),
-                'calf': ('shin', 2), 'lowerleg': ('shin', 3),
+                'shin': ('shin', 0), 'leg': ('shin', 2),
+                'knee': ('shin', 1),
+                'calf': ('shin', 3), 'lowerleg': ('shin', 4),
                 'foot': ('foot', 0), 'ankle': ('foot', 1),
                 'upperarm': ('upperarm', 0), 'arm': ('upperarm', 1),
                 'forearm': ('forearm', 0), 'lowerarm': ('forearm', 1),
+                'elbow': ('forearm', 1), 'hip': ('thigh', 2),
                 'hand': ('hand', 0), 'wrist': ('hand', 1)}
 
 
@@ -184,10 +188,16 @@ def _split_side(name):
         return 'L', name[4:]
     if low.startswith('right'):
         return 'R', name[5:]
+    if len(name) > 1 and name[0] in 'LR' and name[1].isupper():
+        return name[0], name[1:]
     if low.endswith('left'):
         return 'L', name[:-4]
     if low.endswith('right'):
         return 'R', name[:-5]
+    for tok, s in ((' left ', 'L'), (' right ', 'R')):
+        i = low.find(tok)
+        if i >= 0:
+            return s, name[:i] + ' ' + name[i + len(tok):]
     if low.endswith('.l') or low.endswith('_l'):
         return 'L', name[:-2]
     if low.endswith('.r') or low.endswith('_r'):
@@ -226,6 +236,38 @@ def canonicalize_joint_names(joint_names):
     names = list(joint_names)
     if all(n in names for n in CANONICAL_LANDMARKS):
         return {}
+    def claim_for(bare):
+        """(target, rank) for one name form, or None."""
+        side, rest = _split_side(bare)
+        st = _stem(rest)
+        if side is None and st in _AXIAL_STEMS:
+            base, rank = _AXIAL_STEMS[st]
+            return base, rank
+        if side is not None and st in _SIDED_STEMS:
+            base, rank = _SIDED_STEMS[st]
+            return f'{base}.{side}', rank
+        if 'finger' in st or 'toe' in st:
+            return None  # digits never claim a landmark
+        if side is not None:
+            # Verbose dialects ('arm right shoulder 1', 'leg left
+            # knee', VRoid chains): the anatomical keyword inside
+            # the stem decides, at the lowest claim rank.
+            for kw, base in (('shoulder', 'shoulder'),
+                             ('elbow', 'forearm'), ('wrist', 'hand'),
+                             ('hand', 'hand'), ('thigh', 'thigh'),
+                             ('knee', 'shin'), ('ankle', 'foot'),
+                             ('foot', 'foot')):
+                if kw in st:
+                    return f'{base}.{side}', 3
+            if st.startswith('arm'):
+                return f'upperarm.{side}', 3
+            return None
+        if 'neck' in st:
+            return 'neck', 3
+        if 'head' in st:
+            return 'head', 3
+        return None
+
     claims = {}
     for n in names:
         if n in CANONICAL_LANDMARKS:
@@ -236,14 +278,20 @@ def canonicalize_joint_names(joint_names):
             if bare.lower().startswith(pre):
                 bare = bare[len(pre):]
                 break
-        side, rest = _split_side(bare)
-        st = _stem(rest)
-        if side is None and st in _AXIAL_STEMS:
-            base, rank = _AXIAL_STEMS[st]
-            claims.setdefault(base, []).append((rank, n))
-        elif side is not None and st in _SIDED_STEMS:
-            base, rank = _SIDED_STEMS[st]
-            claims.setdefault(f'{base}.{side}', []).append((rank, n))
+        hit = claim_for(bare)
+        if hit is None:
+            # Numbered-suffix dialects (VRoid 'Waist_06',
+            # 'LShoulder_01', verbose 'arm right shoulder 1'):
+            # retry with the trailing index stripped. Only as a
+            # fallback - unstripped 'spine_02' must keep its own
+            # chest claim instead of collapsing into 'spine'.
+            stripped = re.sub(r'(_end)?_\d+$', '', bare)
+            stripped = re.sub(r' \d+$', '', stripped)
+            if stripped != bare:
+                hit = claim_for(stripped)
+        if hit is not None:
+            target, rank = hit
+            claims.setdefault(target, []).append((rank, n))
     mapping = {}
     for target, cands in claims.items():
         cands.sort(key=lambda rn: (rn[0], len(rn[1]), rn[1]))
