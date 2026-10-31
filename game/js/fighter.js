@@ -170,16 +170,16 @@ export function bankIdFor(charId, movesetId) {
   // (CANON.md appendix: Julia -> NIGHTWOLF / soul ZEN). Zen's base chain is Eleven/Twelve
   // (Street Fighter, 2D concept) -> Dural (Virtua Fighter 5, 3D implementation: the closest
   // 3D thing to Eleven/Twelve) -> Zen's own canon moves on top, with X.COPY as ONE super.
-  // No Dural bank exists in the repo (no game/assets/anim/vf5/, no 'dural' in SOURCE_TO_BANK)
-  // and no Twelve 2D->3D conversion exists, so zen maps to null (UNMAPPED) here: bankIdFor
-  // returns null and Zen falls back to embedded locomotion + procedural combat — never
-  // another character's clips. When VF5 Dural motion lands, bind 'dural' here.
+  // VF5 Dural motion LANDED 2026-10-22 (PR #713, game/assets/anim/vf5/dural/): zen binds to
+  // 'dural' here, exactly as the 2026-10-24 decision anticipated ("When VF5 Dural motion
+  // lands, bind 'dural' here"). No Twelve 2D->3D conversion exists yet.
+
   const FIGHTER_BANK = {
-    // zen: null = UNMAPPED (owner decision 2026-10-24). A null value is intentional:
-    // hasOwnProperty('zen') is true, so bankIdFor returns null before any Heihachi/Julia
-    // fallback can bind. Do NOT restore 'julia' or 'heihachi' here without a new owner decision.
+    // zen: 'dural' (owner decision 2026-10-24, bound when VF5 Dural motion landed in PR #713).
+    // Do NOT restore 'julia' or 'heihachi' here without a new owner decision.
     awapop: 'nina', torch: 'anna', kingtyrant: 'eddy', kai: 'eddy',
-    tou: 'paul', gyou: 'hwoarang', zen: null, rave: 'lei',
+tou: 'paul', gyou: 'hwoarang', zen: 'dural', rave: 'lei',
+
     yukihyo: 'armorking', nightwolf: 'julia',
     // 2026-10-23 (Claude session): the last decoded T3 banks (tools/anim/t3_bake_bank.py). These movesets
     // name their source as a teardown path or not at all, so bind each to its base's own bank here.
