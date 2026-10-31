@@ -16,6 +16,11 @@ Rules (every position comes from the model's own bind pose; nothing is hand-pain
      none moves beyond --outer, so the shoulders still follow the clavicles.
   2. NECK BLEED: Neck weight on vertices below the neck joint moves the same way. The move fades in over the top
      --neck-band of the Spine2 -> Neck span; the neck itself keeps its weights.
+  Optional (--head, --arms; Negativo 2026-10-31 cone face / crushed arms): everything above the neck rides the head;
+  chest weight on the upper arm (away from the armpit) moves to the arm bone.
+  KNOWN LIMIT (valid A/B 2026-10-31): the --head height cutoff splits long hair spikes that hang below the neck
+  joint and tears a sheet; use a connectivity-based head territory or seam smoothing after it. Neither result was
+  shipped on a model (see docs/handoff/HANDOFF-CLAUDE-2026-10-31.md section 6).
   3. Each vertex keeps its 4 largest influences, renormalized. They are written back into the same accessors
      (shapes and every other byte unchanged).
 
@@ -69,7 +74,7 @@ def smoothstep(e0, e1, x):
     return t * t * (3 - 2 * t)
 
 
-def fix(inp, outp, inner=0.35, outer=0.75, neck_band=0.35):
+def fix(inp, outp, inner=0.35, outer=0.75, neck_band=0.35, head=False, head_band=0.3, arms=False):
     js, binarr = read_glb(inp)
     skin = js['skins'][0]
     names = [js['nodes'][j].get('name', '') for j in skin['joints']]
@@ -100,7 +105,8 @@ def fix(inp, outp, inner=0.35, outer=0.75, neck_band=0.35):
             band = (y > yS2) & (y < yN) & (dx < outer)
             share = lambda Wm, Jm, js_: float(np.where(np.isin(Jm[band], js_), Wm[band], 0).sum() / max(Wm[band].sum(), 1e-9))
             before = {'clavicle_share_chest': share(W, J, [LS, RS]), 'spine2_share_chest': share(W, J, [S2]),
-                      'neck_bleed_verts': int(((np.where(J == NK, W, 0).sum(1) > 0.2) & (y < yN - 0.02 * (yN - yS2))).sum())}
+                      'neck_bleed_verts': int(((np.where(J == NK, W, 0).sum(1) > 0.2) & (y < yN - 0.02 * (yN - yS2))).sum()),
+                      'head_share_above_neck': float(np.where(np.isin(J, [names.index(n) for n in ('Head', 'HeadTop') if n in names]), W, 0)[y > yN].sum() / max(W[y > yN].sum(), 1e-9))}
             moved = np.zeros(len(W))
             for k in range(J.shape[1]):
                 for jidx, t in ((LS, t_st), (RS, t_st), (NK, t_nk)):
@@ -108,6 +114,46 @@ def fix(inp, outp, inner=0.35, outer=0.75, neck_band=0.35):
                     amt = W[:, k] * t * m
                     W[:, k] -= amt
                     moved += amt
+            # --head (Negativo 2026-10-31: 42% of the head on the clavicles -> "cone face"): everything above the neck
+            # rides the head. Weight on any other joint moves to Head, fading in over --head-band of Neck->Head above
+            # the neck joint (Head / HeadTop / face helper weights stay).
+            HD = names.index('Head')
+            head_set = [i for i, n in enumerate(names) if n in ('Head', 'HeadTop')]
+            if head:
+                yH = jpos['Head'][1]
+                t_hd = smoothstep(yN, yN + head_band * (yH - yN), y)
+                for k in range(J.shape[1]):
+                    m = ~np.isin(J[:, k], head_set)
+                    amt = W[:, k] * t_hd * m
+                    W[:, k] -= amt
+                    moved_head = amt
+                    for kk in range(J.shape[1]):     # into an existing Head slot
+                        mh = (J[:, kk] == HD) & (moved_head > 0)
+                        W[mh, kk] += moved_head[mh]; moved_head = np.where(mh, 0.0, moved_head)
+                    # no Head slot: the emptied slot becomes Head
+                    mz = moved_head > 0
+                    J[mz, k] = HD; W[mz, k] += moved_head[mz]
+            # --arms: chest weight (Breast / Spine*) on the upper arm, away from the armpit, moves to the arm's own bone
+            if arms:
+                chest_set = [i for i, n in enumerate(names) if n in ('LeftBreast', 'RightBreast', 'Spine', 'Spine1', 'Spine2')]
+                for side in ('Left', 'Right'):
+                    a, f = jpos[side + 'Arm'], jpos[side + 'ForeArm']
+                    d = f - a
+                    t = np.clip(((P - a) @ d) / (d @ d), 0.0, 1.0)
+                    dist = np.linalg.norm(P - (a + t[:, None] * d), axis=1)
+                    on_side = np.sign(P[:, 0] - mid) == np.sign(a[0] - mid)
+                    w_arm = smoothstep(0.15, 0.45, t) * (dist < 0.6 * np.linalg.norm(d)) * on_side
+                    AR = names.index(side + 'Arm')
+                    for k in range(J.shape[1]):
+                        m = np.isin(J[:, k], chest_set)
+                        amt = W[:, k] * w_arm * m
+                        W[:, k] -= amt
+                        moved_arm = amt
+                        for kk in range(J.shape[1]):
+                            ma = (J[:, kk] == AR) & (moved_arm > 0)
+                            W[ma, kk] += moved_arm[ma]; moved_arm = np.where(ma, 0.0, moved_arm)
+                        mz = moved_arm > 0
+                        J[mz, k] = AR; W[mz, k] += moved_arm[mz]
             changed = int((moved > 1e-4).sum())
             # Target bone: the same-side Breast bone where the rig has one (GameRig rigs; the territory the 2026-10-31
             # Purple Rain consolidation already uses: docs/handoffs/RIGFIX-PURPLERAIN-2026-10-31.md), else Spine2.
@@ -129,7 +175,8 @@ def fix(inp, outp, inner=0.35, outer=0.75, neck_band=0.35):
             J = J5[rows, order]; W = W5[rows, order]
             s = W.sum(1, keepdims=True); W = np.where(s > 1e-9, W / np.maximum(s, 1e-9), W)
             after = {'clavicle_share_chest': share(W, J, [LS, RS]), 'spine2_share_chest': share(W, J, [S2]),
-                     'neck_bleed_verts': int(((np.where(J == NK, W, 0).sum(1) > 0.2) & (y < yN - 0.02 * (yN - yS2))).sum())}
+                     'neck_bleed_verts': int(((np.where(J == NK, W, 0).sum(1) > 0.2) & (y < yN - 0.02 * (yN - yS2))).sum()),
+                     'head_share_above_neck': float(np.where(np.isin(J, [names.index(n) for n in ('Head', 'HeadTop') if n in names]), W, 0)[y > yN].sum() / max(W[y > yN].sum(), 1e-9))}
             # write back in the accessors' own formats
             if Wa.get('normalized'):
                 mx = np.iinfo(COMP[Wa['componentType']]).max
@@ -151,9 +198,12 @@ def main():
     ap.add_argument('--inner', type=float, default=0.35)
     ap.add_argument('--outer', type=float, default=0.75)
     ap.add_argument('--neck-band', type=float, default=0.35)
+    ap.add_argument('--head', action='store_true', help='everything above the neck rides the head (cone-face fix)')
+    ap.add_argument('--head-band', type=float, default=0.3)
+    ap.add_argument('--arms', action='store_true', help='chest weight on the upper arm moves to the arm bone')
     ap.add_argument('--report', default=None)
     a = ap.parse_args()
-    rep = fix(a.inp, a.out, a.inner, a.outer, a.neck_band)
+    rep = fix(a.inp, a.out, a.inner, a.outer, a.neck_band, a.head, a.head_band, a.arms)
     txt = json.dumps(rep, indent=1, default=float)
     print(txt)
     if a.report: open(a.report, 'w').write(txt)

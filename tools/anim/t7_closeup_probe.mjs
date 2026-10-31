@@ -10,6 +10,8 @@ const browser = await chromium.launch({ args: ['--use-gl=angle', '--use-angle=sw
 const page = await browser.newPage({ viewport: { width: 900, height: 900 } });
 if (process.env.BLOCK_T7) await page.route('**/anim/t7/' + process.env.BLOCK_T7 + '/**', r => r.abort());
 const logs = [];
+// NO_REMOTE=1: block the B2 Worker so models load from the local tree (asset-config tries the remote first)
+if (process.env.NO_REMOTE) await page.route(/workers\.dev/, r => r.abort());
 page.on('console', m => logs.push(`[${m.type()}] ${m.text()}`));
 page.on('pageerror', e => logs.push(`[pageerror] ${e.message}`));
 await page.goto(`${base}?quick=${p1},${p2},${stage}`, { waitUntil: 'load', timeout: 120000 });
