@@ -74,6 +74,12 @@ export const SHELL_BUNDLED_MODELS = [
   'roster/deathfang/attires/attire2/model.glb', // form: werewolf
   'roster/pantera/attires/leomon/model.glb', // select-pane attire 1
   'roster/dio/attires/attire1/source/dio-a1-jade-god-rigged.glb',
+  // Doc Frank: the deployed select carries the FULL roster (owner reversal
+  // 2026-10-29), and his default fight model (attire 1 transformed) is
+  // 25.2 MB — jsDelivr 403s files over 20 MiB and the R2 base is parked,
+  // so without bundling every Doc Frank fight fails model load on the
+  // live build (404 lane, 2026-10-31).
+  'roster/doc-frank/attires/attire1/post-transform/model-rigged.glb',
 ];
 
 export function isRemoteReady() {
