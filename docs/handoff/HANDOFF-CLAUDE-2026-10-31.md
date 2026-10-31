@@ -129,7 +129,10 @@ sits in a T-pose while the mesh does not follow it -> broken bind/weights. Stati
   - k-NN weight transfer from a clean T-pose donor (`tools/auto_rig/reskin_pantera_weights.py` method, donor `steve-fox.glb`) after rotating Negativo to the donor's facing. Fit the skeleton with `refit_skeleton.py`, because the hair spikes break bbox height matching.
   - Treat hair spikes and props as rigid children of Head/Hips before weighting.
 - Burger is a long job (A-pose, forms, Bob + Kusaregedo). It is paused per the work-order law.
-- **Purple Rain** (owner 2026-10-31): his chest and spine collapse inward toward the spine, the pull reaches up the neck, and his right arm is affected. That is a skin-weight fix on `roster/purplerain/attires/attire1/model-rerig.glb`, a short job.
+- **Purple Rain** (owner 2026-10-31): his chest and spine collapse inward toward the spine, the pull reaches up the neck, and his right arm is affected. Two fixes landed on `roster/purplerain/attires/attire1/model-rerig.glb`:
+  - **Spine-chain fix** (another lane, 15:15 UTC, `97b4301ca`, doc `docs/handoffs/RIGFIX-PURPLERAIN-2026-10-31.md`): chest and head weight consolidated off the spine chain.
+  - **Clavicle rule on top** (`tools/auto_rig/fix_sternum_weights.py`, PR after #1454): the real T7 stances roll the clavicles up to 35°. Central-chest clavicle weight goes 38% -> 12%, moved to the same-side Breast bone. Neck bleed below the neck is roughly halved. Visual A/B: `docs/proof/2026-10-31/purplerain-clavicle/`.
+  - **Not live yet:** the Worker (B2) still serves the old 28,465,008 B model. Muse must re-upload that path (asked on #866).
 
 **Cone face universal:** the owner wants it fixed for every fighter that has it. Audit every wired model with
 `anim_check.py` (stretch per region) and re-rig the offenders the same way.
