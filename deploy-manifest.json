@@ -2,11 +2,11 @@
  "format": "wh-pages-deploy/1",
  "ref": "origin/main",
  "commit": "5911000383d7566d08d96247dc844a522d5061c1",
- "files": 2070,
- "bytes": 960891429,
- "built": "2026-10-31T00:24:27Z",
+ "files": 2071,
+ "bytes": 960899922,
+ "built": "2026-10-31T00:35:16Z",
  "tool": "tools/deploy/build_pages.py",
  "mode": "shell-only",
  "source_pr": 1296,
- "delta_note": "Delta deploy (Claude, tools/deploy/REPUBLISH.md section 2 method via git plumbing) adf15d61..59110003: added game/assets/anim/t7/king/{skeleton,stance}.json (#1296 real T7 King stance for Pantera); updated game/js/{t3anims,fighter,select-screen}.js (#1296) + 17 moveset files (provenance phase 1 #1283-#1297). Add/update only, 0 removed."
+ "delta_note": "Delta deploy (Claude, tools/deploy/REPUBLISH.md section 2 method via git plumbing) adf15d61..59110003: added game/assets/anim/t7/king/{skeleton,stance}.json (#1296 real T7 King stance for Pantera); updated game/js/{t3anims,fighter,select-screen}.js (#1296) + 17 moveset files (provenance phase 1 #1283-#1297). Add/update only, 0 removed. FIX: added game/js/step-plan-bank.js, a static import of main's fighter.js that was missing on the deploy branch (its fighter.js had been older than the manifest commit); main import graph checked: 137 modules, 0 missing, 0 stale."
 }
