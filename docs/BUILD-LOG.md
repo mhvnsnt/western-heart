@@ -8,6 +8,10 @@ Lane ownership is claimed on #866. MoneyManBusch owns: Pantera and the core-8 ch
   - Manifest: commit `19f5ac0c4`, 2,101 files, 989.0 MB.
   - Added the 18 stance files; updated 48 files that were on main but not yet live; removed 0.
   - Module graph checked on the assembled tree; all new stance files serve 200.
+- **3 more stances (next PR):**
+  - Purple Rain on Lee (`kole_kamae`), Chordz on Lars (`amla_kamae`), Negativo on Negan (`nass_kamae`). All three are 0xC8 and baked with the same tool.
+  - They were never bank-less: their movesets bind proxy banks (jin / jin / bryan), so they shared Demonio's / Skull's T3 stance until now.
+- **Live check:** Burger (Bob stance) idles in `t7_burger_stance@burger` at weight 1 in a live fight, and Pantera's King stance is still bound.
 - **Model hosting gap:** on the live build, only Pantera and Burger have their fight models served. Diablo, Skull, Sakura, Phantom and Nightwolf models are on main but over 20 MB, so they 404 live (jsDelivr refuses them too). Their stances show up live when Muse's Backblaze + Worker model hosting lands.
 - **Pantera's moves past the stance:** King's moves resolved by `tools/anim/t7_clip_formats.py`:
   - All 552 damaging moves are 0x64.

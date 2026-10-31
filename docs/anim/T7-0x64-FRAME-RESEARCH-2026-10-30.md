@@ -133,6 +133,9 @@ Same tool, same path. Each fighter gets its CANON base's own T7 stance clip (the
 | Gashadokuro | Kuma | `nakm_kam` kumrotsm 201 | 120 |
 | Aotsuki | Panda | `nakm_kam` panrotsm 201 | 120 |
 | Nightwolf | Julia | `najl_jl2kam` julmot.bin inline 119 | 80 |
+| Purple Rain | Lee | `kole_kamae` leerotsm 126 | 53 |
+| Chordz | Lars | `amla_kamae` larrotsm 123 | 100 |
+| Negativo | Negan | `nass_kamae` nsamot.bin inline 131 | 1100 |
 
 Not given a stance:
 - **Owner decisions:** Zen is NOT Heihachi; Cyborg X and Zui keep their stances; `jin_soul` is on the decision list.
@@ -140,4 +143,4 @@ Not given a stance:
 
 Still waiting:
 - **0x64 stances** need the joint frame: Jin (Rin, Demonio), Law (Buffalo Bill), Paul, Nina (Awa Pop), Alisa, Miguel (Bruno), Eddy (Kai, King Tyrant), Asuka (Kinpo), Katarina (Michiko), Akuma (Dio), Jack-7 (Sam-UR-A1), Raven (Pond), Anna (Torch), Lei (Rave), Lili, Zafina (Mariposa), Lucky Chloe (Ryusan).
-- **No bank** needs a stance-only binding first (`fighter.js` falls back to `stance` for any missing action, which would freeze their walking): Purple Rain (Lee), Chordz (Lars) and Negativo (Negan). Their stances are 0xC8.
+- ~~**No bank:** Purple Rain (Lee), Chordz (Lars) and Negativo (Negan)~~. Corrected 2026-10-31: they do have a bound bank. Their moveset `t3_source` binds a proxy bank (jin / jin / bryan), so they shared Demonio's / Skull's stance. Their own bases' stances are 0xC8 and now ship in the table above. Negan's FK self-check is 0.000001 m over 1,100 frames, so the test tolerance is 10 µm.
