@@ -5152,9 +5152,10 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Jail from 1st block with 5F delay; Combo from 1st hit with 1F delay; Combo from 1st CH with 13f delay; &lt;/div&gt",
       "anim_t3": {
         "bank": "jin",
-        "row": 60,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+        "row": 217,
+        "match": "true-map branch-graph (provenance-fix 2026-10-31)"
+      },
+      "provenance_fix": {"old_row": 60, "new_row": 217, "proof": "B", "method": "true-map branch-graph (provenance-fix 2026-10-31)"}
     },
     "b+3": {
       "name": "Left Knee",
@@ -13637,9 +13638,10 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 60,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+        "row": 217,
+        "match": "true-map branch-graph (provenance-fix 2026-10-31)"
+      },
+      "provenance_fix": {"old_row": 60, "new_row": 217, "proof": "B", "method": "true-map branch-graph (provenance-fix 2026-10-31)"}
     },
     "b+3~t7.jin": {
       "name": "Left Knee",
@@ -24023,6 +24025,16 @@
       },
       "remaining_guess_grade": 213,
       "note": "Surgical text edit (file does not round-trip reserialization). Two proof-B corrections for b+2,1 (row 217) were reverted in this PR: row 217 is graph-proven but NOT baked into game/assets/anim/t3/jin/rows.pack.json, and the attack-anim baked-rows test must stay green. Landing them needs a rows.pack bake (tools/anim/t3_row_bake.py --merge --bank jin), a shared-bank step outside this file's isolation."
+  },
+  {
+      "date": "2026-10-31",
+      "lane": "moveset-provenance phase 1 continuation",
+      "corrected": 2,
+      "by_proof": {
+          "B": 2
+      },
+      "remaining_guess_grade": 211,
+      "note": "Surgical text edit (file does not round-trip reserialization)."
   }
   ]
 }
