@@ -1214,7 +1214,8 @@ class AssetManager {
   }
 
   /* One model: fetch (abort-aware, byte-progress) -> parseAsync ->
-     _ingest. Aborts never retry; other failures retry once. */
+     _ingest. Caller cancellations never retry; every other failure —
+     including our own stall watchdog's abort — retries once. */
   _loadOne(id, onProgress, total, opts) {
     if (this._inflight[id] && !opts.signal && !this._inflight[id].signal.aborted) return this._inflight[id].promise;
     const ctrl = new AbortController();
@@ -1227,9 +1228,34 @@ class AssetManager {
     // Split hosting: bundled models load from Pages exactly as before;
     // every other model tries the remote asset base first, then jsDelivr.
     const candidates = resolveAssetCandidates(url);
-    const LOAD_TIMEOUT_MS = 90000;
+    // STALL timeout, not a total deadline (fight-load fix, 2026-10-31): the
+    // old 90 s TOTAL deadline aborted any model whose bytes took longer
+    // than that to arrive — three transform forms of one fighter share the
+    // pipe with the fighters' own models, so on a phone connection the
+    // biggest model routinely crossed 90 s mid-body and the fight load
+    // rejected with "AbortError: BodyStreamBuffer was aborted" (owner:
+    // kicked back to stage select, retry identical). A load that is still
+    // RECEIVING bytes is alive, however slow: only a load that receives
+    // NOTHING for STALL_TIMEOUT_MS is treated as hung and aborted — and
+    // that abort is retried once (see run()), not fatal.
+    const STALL_TIMEOUT_MS = 45000;
     const attempt = async () => {
-      const signal = _anySignal([ctrl.signal, _timeoutSignal(LOAD_TIMEOUT_MS)]);
+      const stall = new AbortController();
+      let stallTimer = null;
+      const armStall = () => {
+        if (stallTimer) clearTimeout(stallTimer);
+        stallTimer = setTimeout(() => stall.abort(new Error(`no bytes received for ${STALL_TIMEOUT_MS}ms loading ${id}`)), STALL_TIMEOUT_MS);
+      };
+      const disarmStall = () => { if (stallTimer) { clearTimeout(stallTimer); stallTimer = null; } };
+      const signal = _anySignal([ctrl.signal, stall.signal]);
+      armStall();
+      try {
+        return await attemptBody(signal, armStall);
+      } finally {
+        disarmStall();
+      }
+    };
+    const attemptBody = async (signal, armStall) => {
       let firstErr = null;
       let lastErr = null;
       for (const cand of candidates) {
@@ -1272,6 +1298,7 @@ class AssetManager {
             if (done) break;
             chunks.push(value);
             loaded += value.byteLength;
+            armStall(); // bytes are flowing — the load is alive, re-arm the stall watchdog
             if (onProgress && totalBytes > 0) {
               onProgress(Math.min(loaded / totalBytes / Math.max(total, 1), 1), loaded, totalBytes, id);
             }
@@ -1306,7 +1333,13 @@ class AssetManager {
       try {
         gltf = await attempt();
       } catch (e1) {
-        if (e1 && (e1.name === 'AbortError' || ctrl.signal.aborted)) throw e1;
+        // Retry once — INCLUDING aborts, unless the CALLER cancelled.
+        // ctrl.signal.aborted means a real cancellation (preview tap
+        // superseded the load, idle-warm preemption): fail fast, never
+        // retry. Any other AbortError came from our own stall watchdog or
+        // the network stack (the old code rethrew those instantly, which
+        // is what turned one slow model into a bounced fight).
+        if (ctrl.signal.aborted) throw e1;
         console.warn(`[WH] ${id} load failed, retrying:`, e1.message || e1);
         gltf = await attempt(); // throws to caller on second failure
       }
