@@ -130,3 +130,66 @@ Running total: 21 of 73 fighters with C1 anatomy on main
 fix-up pass (dialect coverage extended to VRoid-numbered and
 verbose joint naming; unskinned-primary fighters retried against
 their rigged alternates) — results land as batch 3.
+
+## Batch 3 — generator hardening + 9 fighters
+
+The first batch run exposed three more dialect families and one
+tooling incident; all are fixed in the `generate_layers.py` update
+in this batch's PR:
+
+- Ranked canonical claims: when several joints claim one landmark
+  (production rigs carry adjunct chains — doc-frank has 178
+  joints), the most specific stem wins ('LeftLeg' over
+  'leg left'), with shortest-name then alphabetical tie-breaks.
+  Previously any collision silently disabled mapping for the
+  whole rig.
+- Dialect coverage: Mixamo prefixes (side token survives the
+  prefix strip), VRoid numbered rigs ('Waist_06' -> hips,
+  'Stomach_07' -> spine, L/R single-letter prefixes), and the
+  verbose family ('root hips', 'spine lower/upper',
+  'arm right shoulder 1', 'leg left knee') via internal side
+  tokens + anatomical keyword claims, with finger/toe joints
+  barred from claiming landmarks. Numbered-suffix stripping is a
+  fallback only, so 'spine_02' keeps its chest claim. Unit-verified
+  13/13 landmarks on seven dialect sets (canonical, template,
+  doc-frank real, Mixamo, Unreal, VRoid real, verbose real).
+- A span-replace during the ranked-claims edit briefly removed
+  the node-hierarchy fallback function; every identity-IBM
+  fighter generated in that window failed with a NameError. The
+  function is restored (smoke-verified on deathfang) and all
+  casualties were regenerated in this batch's fix-up pass.
+- Batch driver: candidates are now probed for skins and fall
+  through to rigged alternates (bruno's attire1 sources are
+  unskinned; his anatomy is built from his attire2 rigged model).
+
+Pantera regression re-run against the final generator: still
+byte-identical to the landed artifact (modulo date + the empty
+joint_name_map key).
+
+| fighter | source model (his own) | joints | vertices |
+|---|---|---|---|
+| awa-pop | roster/awa-pop/attires/attire2/model-rigged.glb | 73 | 1,365,801 |
+| baek | roster/baek/attires/attire1/model-rigged.glb | 73 | 1,593,345 |
+| bruno | roster/bruno/attires/attire2/source/bruno-a2-sail-the-sea-rigged.glb | 73 | 1,257,159 |
+| buffalo-bill | roster/buffalo-bill/attires/attire3/model-rigged.glb | 73 | 1,381,580 |
+| chordz | roster/chordz/attires/attire1/model-rigged.glb | 73 | 1,154,216 |
+| doc-frank | roster/doc-frank/attires/attire1/post-transform/model-rigged.glb | 178 | 981,052 |
+| dxmmii | roster/dxmmii/attires/attire1/model-rigged.glb | 73 | 1,303,667 |
+| jin | roster/jin/attires/bloodline-ember/jin-bloodline-ember.glb | 50 | 4,326 |
+| kinpo | roster/kinpo/attires/attire1/model-rigged.glb | 49 | 1,000,648 |
+
+All nine pass the gate (doc-frank carries 13 bone primitives —
+one extra axial capsule from his adjunct spine chain; the rest
+are the standard 12/25/7). Note buffalo-bill and chordz generate
+from the very files the rig audit records as singular-IBM
+AUDIT-ERRORs: the generator's bind-position path (with the
+hierarchy fallback) reads them, and the gate verifies the
+resulting layers geometrically.
+
+Running total: 30 of 73 fighters with C1 anatomy on main
+(Pantera + batches 1-3).
+
+Named, still without anatomy after the fix-up pass (final list
+in the closing batch): blanka and king-tyrant (every roster GLB
+unskinned — no skeleton to build from), iori (only a 3,097-vert
+partial model resolves; gate landmarks 2/13).
