@@ -2,6 +2,13 @@
 
 Lane ownership is claimed on #866. MoneyManBusch owns: Pantera and the core-8 chat-owned animation wiring, the Tekken 7 bank extraction (`tools/anim/t7_*`), and the PR queue. Muse owns #1096 and its stack, the moves audit, and `tools/auto_rig`.
 
+## 2026-10-31 (later) — rig triage, FREE CAMERA behind PAUSE, full handoff (Claude)
+
+- **Handoff (read first):** `docs/handoff/HANDOFF-CLAUDE-2026-10-31.md`.
+- **Burger's wired model is broken:** the skeleton is a T-pose facing -Z while the mesh is an A-pose facing +X, so every weight is wrong (`anim_check` edge stretch p99.9 = 42.6, gate 2.5). Re-rig running through `tools/auto_rig/rig_tripo_static.py`, which fits the skeleton to the A-pose and then applies bone heat.
+- **Negativo:** cone face and crushed arms, from a broken bind/weights in `negativo-a1-rigged.glb`. Same re-rig path next.
+- **FREE CAMERA** is now an entry of the fight PAUSE menu; there's no floating button over the menus/HUD.
+
 ## 2026-10-31 — 12 more T7 stances live; Pantera's moves wait on 0x64 (Claude)
 
 - **Live:** #1368 merged (main `19f5ac0c4`) and deployed to the live Pages branch `gh-pages-m1-20261029` (`e3ce10739`).

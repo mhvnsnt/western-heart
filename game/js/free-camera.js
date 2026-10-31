@@ -197,6 +197,9 @@ export class FreeCamera {
 
   _loop() {
     if (!this.active) return;
+    // Leaving the fight (quit, results, menus) ends the free camera: its bar must never sit over a menu.
+    const g = this.game;
+    if (g && !g.running && !g.brawler) { this.exit(); return; }
     this._apply();
     this._raf = requestAnimationFrame(() => this._loop());
   }
@@ -321,23 +324,16 @@ export class FreeCamera {
   }
 }
 
-/* One FreeCamera per game. Button-only entry: no key is hijacked, so
-   this can never collide with Photo Mode (P/F9) or fight inputs. */
+/* One FreeCamera per game. No key is hijacked, so it can never collide with Photo Mode (P/F9) or fight inputs.
+   ENTRY POINT (owner 2026-10-31: the button "is always covering up stuff ... the main menu and the character
+   select menu and in the fight in the arena select ... should only be there where it's appropriate"): there is
+   NO free-floating button any more. The camera is entered from the fight's PAUSE menu (menus.js, FREE CAMERA),
+   the way fighting games put camera/photo tools behind pause, and left with its own BACK TO AUTHORED button or
+   automatically when the fight ends. */
 export function installFreeCamera(game) {
   if (game.freeCamera) return game.freeCamera;
   const fc = new FreeCamera(game);
   game.freeCamera = fc;
-  const toggle = document.createElement('button');
-  toggle.id = 'free-cam-toggle';
-  toggle.textContent = 'FREE CAMERA';
-  toggle.setAttribute('aria-label', 'Toggle free camera during scene playback');
-  toggle.style.cssText = 'position:fixed;right:12px;top:12px;z-index:79;min-width:44px;min-height:44px;padding:8px 12px;'
-    + 'background:rgba(8,8,14,.85);color:#e8e4ff;border:1px solid #7a5cff;border-radius:8px;font:14px system-ui;';
-  toggle.addEventListener('click', () => {
-    fc.toggle();
-    toggle.textContent = fc.active ? 'BACK TO AUTHORED' : 'FREE CAMERA';
-  });
-  document.body.appendChild(toggle);
-  fc._toggle = toggle;
+  fc._toggle = null;
   return fc;
 }

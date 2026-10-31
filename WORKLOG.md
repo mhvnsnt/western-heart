@@ -4258,3 +4258,15 @@ downstream witness/resolution, not canon). Deletions: none.
 - Count note: `game/assets/movesets/t7/` on main at run time holds 36 `t7-*.json` overlay files, not the 33 the #1259 inventory text states — 10 are now measured (these five plus Akuma, Alisa, Jack-7, Ling Xiaoyu, Miguel from the earlier clipmaps), leaving 26.
 - Deliberately NOT claimed: the 0x64 joint-frame fix is still open (clips decode but 0x64 poses read crumpled per the BUILD-LOG 2026-10-29 finding), so nothing here is bake-ready; no T7 bank is built, no `anim_t7` refs are added, and no `_attackClipPlan` change is made in this chunk. No game/ change, so no Pages deploy follows.
 - Deletions: none.
+
+## 2026-10-31 — Claude: FREE CAMERA behind PAUSE, session handoff, T7 stance work
+
+- UI change (owner: the FREE CAMERA button "is always covering up stuff"): removed the always-on top-right button
+  (game/js/free-camera.js installFreeCamera) and added FREE CAMERA to the fight's PAUSE menu (game/js/menus.js);
+  the camera also exits itself when the fight ends. Teardown source (ui_sources law): Tekken 7 pause menu
+  `gre:tekken7/ui/flash/SW_UI_PauseMenu_Replay/` (the pause/replay sub-menu holds camera/replay options), already
+  the cited source of the screen-menu entry that lists game/js/menus.js in game/ui_sources.json.
+  Guard: test/free-camera-placement.test.mjs.
+- Session handoff with everything (T7 pipeline, deploys, rig triage, open items): docs/handoff/HANDOFF-CLAUDE-2026-10-31.md.
+- Tools committed for the crew: tools/deploy/deploy_delta.py, tools/anim/t7_stance_probe.mjs,
+  tools/anim/t7_closeup_probe.mjs; tools/gltfpack/fetch-gltfpack.sh fixed (real tag + gltfpack build flag).

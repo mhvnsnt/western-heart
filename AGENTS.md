@@ -81,6 +81,16 @@ Carve-outs (standing owner decisions, not overridden): never merge a DRAFT PR; n
 - The existing hand-built creation suite UI in `packages/creation-suite` is NON-COMPLIANT, pending a teardown-sourced rebuild. Do NOT delete it.
 - See `docs/RULES_NO_GUESSING.md` and `docs/HOW-TO-CONTINUE.md`.
 
+## OWNER LAW — build it like the real game, play it like the player (owner 2026-10-31)
+
+> "use the real game code to understand how to set stuff up and use the real game code to actually set a good template base and then build all the other stuff on top of it ... not like how the games that were inspired by its code would do it ... y'all start doing s*** like guessing not like an actual video game would do it and not like a user would enjoy ... you don't even try and play the game like the player or the user that's going to be enjoying the game so y'all don't even be making the interface user friendly"
+> (about the FREE CAMERA button) "that's always covering up stuff ... the main menu and the character select menu and in the fight in the arena select ... should only be there where it's appropriate or in the settings menu"
+
+1. **Real game code is the template.** Before building a screen, menu, camera, HUD element, input or system, find how the source games do it (Tekken 7/8/TTT2 teardowns in GRE, the vendored game code, teardown docs) and build on that structure. No invented flows, no guessed layouts (see also the ui_sources gate and RULES_NO_GUESSING).
+2. **Nothing free-floats over menus or the HUD.** Dev/extra tools (free camera, photo, debug, editors) live where real fighting games put them: behind PAUSE, in OPTIONS, or in a dedicated mode. A fixed overlay button that shows on every screen is a bug. Example fix: FREE CAMERA moved into the fight's pause menu (game/js/menus.js, free-camera.js, test/free-camera-placement.test.mjs).
+3. **Play it like the player before you call it done.** Open the build at phone size, go menu -> select -> stage -> fight -> pause -> results, and look at what you changed up close (tools/anim/t7_closeup_probe.mjs for fighters). If you would not enjoy it as a player, it is not done.
+4. **See what the owner sees.** Describe visual problems by their real cause (skin weights, bone weights, bind pose, facing, retarget), not as "hard to make out". Judge rigs from close-ups, never from a distant fight camera.
+
 ## NO-SPARSE-COMMIT LAW (owner 2026-10-23 — the cape-jones #219 main wipe)
 
 On 2026-10-23, cape-jones PR #219 wiped main: the merge was built from a sparse/partial checkout, so the commit carried only the partial tree and main lost everything outside it.
