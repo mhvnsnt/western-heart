@@ -511,6 +511,11 @@ export async function loadT3Clips(THREE, bankId = 'king') {
     // a fight with no throw attempt. The global cache guard means
     // whichever loader runs second is a no-op.
     jobs.push(ensureT3Reactions().then(R => mergeBankThrowTables(R, base)).catch(() => null));
+    // Real Tekken 7 stances baked for fighters on this bank (T7_STANCES): loaded with the bank so the
+    // fight and the select preview can swap them in synchronously (applyT7Stance).
+    for (const [fid, def] of Object.entries(T7_STANCES)) {
+      if (def.bank === bankId && !_t7stance[fid]) jobs.push(loadT7Stance(fid, def, THREE));
+    }
     // Decoded active window of every attack row (tools/anim/t3_hit_frames.py, lane D 2026-10-24):
     // { row: [active_first, active_last, stream_frames, attack_word, throw] } — fighter.js times the
     // clip on it and never plays a throw row for a strike (or a strike row for a throw).
@@ -576,6 +581,46 @@ export async function loadT3Clips(THREE, bankId = 'king') {
 
 /** Synchronous accessor for one bank's cached clips (null if not loaded). */
 export function getT3Clips(bankId = 'king') { return _t3clipCache[bankId] || null; }
+
+/* REAL TEKKEN 7 STANCES (2026-10-30; owner: Pantera's moves "come straight from King ... get that 100% done ...
+   the animations all for him"). King's actual T7 standing stance: kinrotsm.arc clip 132 'nakg_kg2kam', the 0xC8
+   clip his Kg_sKAM00_ / Kg_KAM / Kg_sKAM_WAIT moves play, converted by tools/anim/t7_c8_stance_bake.py through
+   the community 0xC8 path (Kiloutre's applyRotationFromAnimdata on Koenji's TekkenMannequin). It ships as a
+   wh-anim/1 clip on its own wh-anim-skel/1 skeleton (the T7 rest pose), so retargetT3Clips puts it on any rig
+   exactly like a bank clip. It replaces the bank's T3 slot-3 'stance' for the fighters listed here only; every
+   other action and every move row stays the bank's own. Nothing authored. */
+export const T7_STANCES = {
+  pantera: { bank: 'king', dir: 'assets/anim/t7/king/' },
+};
+const _t7stance = {}; // fighterId -> { bank, skelId, clip }
+async function loadT7Stance(fid, def, THREE) {
+  try {
+    const [skel, data] = await Promise.all(['skeleton.json', 'stance.json'].map(async (f) => {
+      const res = await fetch(def.dir + f);
+      if (!res.ok) throw new Error(`${f}: HTTP ${res.status}`);
+      return res.json();
+    }));
+    const skelId = 't7:' + def.dir;
+    _t3skelCache[skelId] = skel;
+    const clip = jsonToClip(`t7_${fid}_stance`, data, THREE);
+    if (!clip) return;
+    clip.userData.loop = true;
+    clip.userData.noRise = false;
+    clip.userData.t7 = data.t7_source || true;
+    _t7stance[fid] = { bank: def.bank, skelId, clip };
+  } catch (e) {
+    console.warn(`[WH-T7] ${fid}: real T7 stance unavailable, keeps the bank stance:`, e.message || e);
+  }
+}
+/** Swap a fighter's baked real-T7 stance (T7_STANCES) into its retargeted bank clips. `clips` is the map
+    retargetT3Clips returned for `model`; call it before createT3Actions, in the same rest-pose window. */
+export function applyT7Stance(fighterId, bankId, clips, model, THREE, instanceKey = null) {
+  const t7 = _t7stance[fighterId];
+  if (!t7 || t7.bank !== bankId || !clips) return clips;
+  const rc = retargetT3Clips({ stance: t7.clip }, t7.skelId, model, THREE, instanceKey, ['stance']);
+  if (rc && rc.stance) clips.stance = rc.stance;
+  return clips;
+}
 
 /* ============================================================
    REACTION PACKS (grapple lane, 2026-10-24) — the throw /

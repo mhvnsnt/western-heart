@@ -38,7 +38,9 @@ import * as THREE from 'three';
 import { assets } from './assets.js';
 import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK, T3_BANKS,
   clipStrikeProfile, clipHitWindow, bankAttackPool, attackLevelOfWord, attackClipTime, clipIsThrow, BUTTON_LIMB,
-  loadT3ReactionClip, getT3ReactionPackScale, loadReactionPack, getReactionPack, getReactionClip } from './t3anims.js';
+  loadT3Clips, loadT3ReactionClip, getT3ReactionPackScale, loadReactionPack, getReactionPack, getReactionClip,
+  applyT7Stance } from './t3anims.js';
+import { effectiveStepPlay, playableStepPlay, stepActionName, stepPlanBanksFor } from './step-plan-bank.js';
 import { selectThrow, resolveThrowClips, throwBreaks, throwDamageTimeSec, throwPairDurationSec,
   escapePairFor, anchorAt, sharedFramePos, throwQuadrant, attemptRowForInput, hexSlot, bankDirOf } from './t3-throw.js';
 import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove, resolveMoveKey, hasStrPrefix, variantBase, throwStageTag, throwStageKeys, systemRows, systemTagOf } from './movesets.js';
@@ -875,11 +877,31 @@ export class Fighter {
       console.log(`[WH-T3] ${this.char.id}: rig '${modelKey}' lacks core humanoid bones — bank '${bank}' not bound`);
       return;
     }
+    applyT7Stance(this.char.id, bank, clips, model, THREE, modelKey); // real T7 stance where baked (t3anims.js T7_STANCES)
     this.t3actions = createT3Actions(this.mixer, clips, THREE);
+    this._stepBankClips = {}; // per-step-bank source clips (see _attackClip)
     // Reaction pack prefetch (hit-reaction lane): the JSON arrives
     // in the background so the first hit's slot is usually decoded
     // already; decoding itself stays on demand, one slot at a time.
     try { loadReactionPack(THREE, bank); } catch (e) {}
+    // Per-step-bank preload (torch, 2026-10-25): a fighter whose step
+    // plans name another bank (torch plans name jin beside the bound
+    // anna) starts loading that bank now, fire-and-forget, so its
+    // override steps are cached by first use. Until a bank is cached,
+    // its steps fail safe to UNMAPPED (playableStepPlay) — they never
+    // play a bound-bank clip of the same number while loading.
+    try {
+      const msB = getFighterMoveset(movesetId);
+      for (const b of stepPlanBanksFor(msB, bank)) {
+        const pre = getT3Clips(b);
+        if (pre) { (this._stepBankClips || (this._stepBankClips = {}))[b] = pre; }
+        else {
+          const pr = loadT3Clips(THREE, b);
+          if (pr && pr.then) pr.then((cl) => { if (cl) (this._stepBankClips || (this._stepBankClips = {}))[b] = cl; }).catch(() => {});
+          else if (pr && pr.catch) pr.catch(() => {});
+        }
+      }
+    } catch (e) {}
     // Move rows retarget lazily on first use (same captured rest pose).
     // dir is the reactions.json banks key (the T3_BANKS folder name).
     this._t3 = { bank, clips: t3clips, model, modelKey, dir: bankDirOf(T3_BANKS[bank]) };
@@ -978,35 +1000,71 @@ export class Fighter {
   }
   /* Batch 1 step plan (2026-10-24, docs/movesets/BATCH1-STEP-PLANS-2026-10-24.md):
      a string move carrying a moveset string_step_plans entry plays per-STEP rows,
-     never one row for the whole string. Only a step with status 'verified' plays
-     its row; a review/unmapped step plays NO bank row (null plan -> the existing
-     procedural fallback in _animate) and is flagged in plan.unmapped — never a
-     donor, match, or generic row. This branch runs BEFORE the own/notation/anim/
-     donor/match/generic tiers, so a planned string can never silently donor-fall-back.
-     Whole-string firing drives steps through _stepChain (see _tryAttackFresh):
-     while a chain is active, the current prefix move resolves to its plan step row.
-     The per-press (_pressV2) path uses the LAST step: the clip fired on the final
-     press must be the final step's clip, which is what the string move's own row
-     already meant for T3-generated moves. No blend is added here: pose continuity
-     between steps is UNPROVEN, and a blend ships only if play shows a snap. */
+     never one row for the whole string. A step plays its row when it has an
+     EFFECTIVE play (step-plan-bank.js effectiveStepPlay): a verified step
+     plays its row, and a BANK-BLOCKED review step (bank_verified_row +
+     its own bank + a BANK-BLOCKED reason) plays that row FROM ITS OWN
+     BANK — the per-step-bank rule (torch, 2026-10-25). Any other
+     review/unmapped step plays NO bank row (null plan -> the existing
+     procedural fallback in _animate) and is flagged in plan.unmapped —
+     never a donor, match, or generic row. This branch runs BEFORE the
+     own/notation/anim/donor/match/generic tiers, so a planned string
+     can never silently donor-fall-back. A step whose play bank's clips
+     are not cached (override bank still loading, or no such row in
+     that bank) also plays NO row — UNMAPPED, never the bound bank's
+     clip of the same number. Bound-bank steps keep the #1096 action
+     name 'row:<row>' exactly; override steps use 'row:<bank>:<row>'
+     so they can never collide with a bound-bank action of the same
+     number on this fighter's mixer. Whole-string firing drives steps
+     through _stepChain (see _tryAttackFresh): while a chain is active,
+     the current prefix move resolves to its plan step row. The
+     per-press (_pressV2) path uses the LAST step: the clip fired on
+     the final press must be the final step's clip, which is what the
+     string move's own row already meant for T3-generated moves. No
+     blend is added here: pose continuity between steps is UNPROVEN,
+     and a blend ships only if play shows a snap. */
   _resolveStepPlan(move, attackName, ms) {
     if (!ms || !ms.string_step_plans || !ms.string_step_plans.plans) return null;
     const plans = ms.string_step_plans.plans;
+    const bound = this._t3 && this._t3.bank;
+    // Clip existence is checked in the PLAY bank's own cached clips:
+    // the bound bank's clips for bound steps; for an override step,
+    // THIS FIGHTER's per-step-bank cache (_stepBankClips, filled by
+    // the _bindT3 preload) — never the process-global bank cache, so
+    // one fighter's loaded bank can never make another fighter's
+    // BANK-BLOCKED step "playable" with a namespaced action name the
+    // bound bank's clip map cannot resolve. A bank this fighter has
+    // not preloaded fails safe here: the step is UNMAPPED.
+    const hasClip = (bank, row) => {
+      const c = (bank === bound) ? (this._t3 && this._t3.clips)
+        : (this._stepBankClips && this._stepBankClips[bank]);
+      return !!(c && c['row:' + row]);
+    };
+    const resolve = (step, why) => {
+      const play = playableStepPlay(step, bound, hasClip);
+      return { playBank: play ? play.bank : (step && step.bank) || bound, playRow: play ? play.row : null,
+        playName: play ? stepActionName(play, bound) : null, why };
+    };
+    // Unmapped means "plays no row for this fighter right now": the
+    // same playability gate playback uses, so a BANK-BLOCKED step
+    // whose bank this fighter has not cached is reported unmapped
+    // (the step-plan contract), not silently dropped from the list.
+    const unmappedFor = (steps) => steps.filter(s => !playableStepPlay(s, bound, hasClip)).map(s => s.prefix);
     // Chain-active step: the prefix currently playing in a whole-string chain.
     const ch = this._stepChain;
     if (ch && ch.steps && ch.idx < ch.steps.length && move && move.moveKey === ch.steps[ch.idx].prefix) {
       const st = ch.steps[ch.idx];
-      return { steps: ch.steps, unmapped: ch.steps.filter(s => s.status !== 'verified').map(s => s.prefix),
-        playName: (st.status === 'verified' && st.row != null) ? 'row:' + st.row : null,
-        why: `step-plan chain step ${ch.idx + 1}/${ch.steps.length} (${st.prefix})` };
+      const r = resolve(st, `step-plan chain step ${ch.idx + 1}/${ch.steps.length} (${st.prefix})`);
+      return { steps: ch.steps, unmapped: unmappedFor(ch.steps),
+        playName: r.playName, playBank: r.playBank, playRow: r.playRow, why: r.why };
     }
     const key = (move && move.moveKey) || attackName;
     const plan = key && plans[key];
     if (!plan || !Array.isArray(plan.steps) || plan.steps.length < 2) return null;
     const last = plan.steps[plan.steps.length - 1];
-    return { steps: plan.steps, unmapped: plan.steps.filter(s => s.status !== 'verified').map(s => s.prefix),
-      playName: (last.status === 'verified' && last.row != null) ? 'row:' + last.row : null,
-      why: `step-plan last step (${last.prefix})` };
+    const r = resolve(last, `step-plan last step (${last.prefix})`);
+    return { steps: plan.steps, unmapped: unmappedFor(plan.steps),
+      playName: r.playName, playBank: r.playBank, playRow: r.playRow, why: r.why };
   }
   _attackClipPlan(move, attackName) {
     if (!this._t3 || !this._t3.clips) return null;
@@ -1018,25 +1076,33 @@ export class Fighter {
       const limb0 = Fighter.attackLimb(move, attackName);
       const level0 = Fighter.attackLevel(move, raw);
       const grab0 = !!(move && move.isGrab) || /^(grab|1\+3|2\+4)$/.test(String(attackName || '')) || level0 === 't';
-      if (!sp.playName || !clips[sp.playName]) {
+      // The step's source clip lives in its PLAY bank, never assumed
+      // to be the bound bank: an override step's 'row:<bank>:<row>'
+      // action name is not a bound-bank clip name, and the bound
+      // bank's row of the same number must never stand in for it.
+      const srcClips = (sp.playBank === bank) ? clips : getT3Clips(sp.playBank);
+      const src0 = (sp.playName && sp.playRow != null && srcClips) ? srcClips['row:' + sp.playRow] : null;
+      if (!sp.playName || !src0) {
         if (sp.unmapped.length) console.log(`[WH-STEP-PLAN] ${this._movesetId} ${move && move.moveKey}: UNMAPPED steps [${sp.unmapped.join(', ')}] — no bank row played, never donor fallback`);
-        return { kind: 'step-plan', name: null, steps: sp.steps, unmapped: sp.unmapped, limb: limb0, level: level0, grab: grab0, timing: null, rejected: [] };
+        else if (sp.playBank !== bank) console.log(`[WH-STEP-PLAN] ${this._movesetId} ${move && move.moveKey}: override bank '${sp.playBank}' row ${sp.playRow} unavailable — no bank row played, never bound-bank fallback`);
+        return { kind: 'step-plan', name: null, steps: sp.steps, unmapped: sp.unmapped, limb: limb0, level: level0, grab: grab0, timing: null, rejected: [], stepBank: sp.playBank, stepRow: sp.playRow };
       }
       // Timing for the step row, same rule as the single-row tail below:
-      // the row's hit window placed on the move's active frames.
+      // the row's hit window placed on the move's active frames. The
+      // hit window is read from the PLAY bank (its decoded frames),
+      // not the bound bank's.
       const S0 = move && Number.isFinite(move.startup) ? move.startup : 0;
       const A0 = move && Number.isFinite(move.active) ? move.active : 0;
       const R0 = move && Number.isFinite(move.recovery) ? move.recovery : 0;
-      const src0 = clips[sp.playName];
       let timing0 = null;
       if (src0 && S0 + A0 + R0 > 0.05) {
-        const w0 = clipHitWindow(bank, src0, limb0);
+        const w0 = clipHitWindow(sp.playBank, src0, limb0);
         const D0 = src0.duration;
         const t0 = w0 ? Math.min(w0.t0, D0) : D0 * S0 / (S0 + A0 + R0);
         const t1 = w0 ? Math.min(Math.max(w0.t1, t0), D0) : D0 * (S0 + A0) / (S0 + A0 + R0);
         timing0 = { S: S0, A: A0, R: R0, t0, t1, D: D0, src: w0 ? w0.src : 'proportional' };
       }
-      return { kind: 'step-plan', name: sp.playName, why: sp.why, steps: sp.steps, unmapped: sp.unmapped, limb: limb0, level: level0, grab: grab0, timing: timing0, rejected: [] };
+      return { kind: 'step-plan', name: sp.playName, why: sp.why, steps: sp.steps, unmapped: sp.unmapped, limb: limb0, level: level0, grab: grab0, timing: timing0, rejected: [], stepBank: sp.playBank, stepRow: sp.playRow };
     }
     const limb = Fighter.attackLimb(move, attackName);
     const level = Fighter.attackLevel(move, raw);
@@ -1134,13 +1200,31 @@ export class Fighter {
     const plan = this._attackClipPlan(move, attackName);
     let name = plan ? plan.name : null;
     if (name && !this.t3actions[name] && name.startsWith('row:')) {
-      const rc = retargetT3Clips(this._t3.clips, this._t3.bank, this._t3.model, THREE, this._t3.modelKey, [name]);
-      if (rc && rc[name]) Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
+      if (plan.stepBank && plan.stepBank !== this._t3.bank && plan.stepRow != null) {
+        // Per-step-bank action: retarget the override bank's own
+        // 'row:<row>' source clip, then clone + rename it to the
+        // namespaced action name. The clone keeps the retarget cache
+        // untouched, and the namespace keeps this action from ever
+        // colliding with the bound bank's 'row:<row>' action.
+        const srcClips = getT3Clips(plan.stepBank);
+        const srcName = 'row:' + plan.stepRow;
+        const rc = srcClips && retargetT3Clips(srcClips, plan.stepBank, this._t3.model, THREE, this._t3.modelKey, [srcName]);
+        if (rc && rc[srcName]) {
+          const c = rc[srcName].clone ? rc[srcName].clone() : rc[srcName];
+          c.name = name;
+          Object.assign(this.t3actions, createT3Actions(this.mixer, { [name]: c }, THREE));
+          (this._stepBankClips || (this._stepBankClips = {}))[plan.stepBank] = srcClips;
+        }
+      } else {
+        const rc = retargetT3Clips(this._t3.clips, this._t3.bank, this._t3.model, THREE, this._t3.modelKey, [name]);
+        if (rc && rc[name]) Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
+      }
     }
     if (name && !this.t3actions[name]) name = null;
     this._atkPlan = { id: this._attackId, move, name, kind: plan && plan.kind, why: plan && plan.why,
       limb: plan && plan.limb, timing: plan && plan.timing, rejected: plan && plan.rejected,
-      steps: plan && plan.steps, unmapped: plan && plan.unmapped };
+      steps: plan && plan.steps, unmapped: plan && plan.unmapped,
+      stepBank: plan && plan.stepBank, stepRow: plan && plan.stepRow };
     return name;
   }
 
@@ -1205,7 +1289,13 @@ export class Fighter {
     // clip, their travel positions the thrown pair and belongs to the throw, not the attempt.
     const tc = this.attack && this.attack.t3Condition;
     if (tc >= 2 && tc <= 0x17) { this._rmPrev = null; return; }
-    const clip = this._t3 && this._t3.clips ? this._t3.clips[p.name] : null;
+    // Root motion reads the PLAY bank's source clip: an override step's
+    // travel is its own bank's row travel, never the bound bank's row.
+    let clip = null;
+    if (p.stepBank && this._t3 && p.stepBank !== this._t3.bank && p.stepRow != null) {
+      const oc = (this._stepBankClips && this._stepBankClips[p.stepBank]) || getT3Clips(p.stepBank);
+      clip = oc ? oc['row:' + p.stepRow] : null;
+    } else clip = this._t3 && this._t3.clips ? this._t3.clips[p.name] : null;
     const raw = clip && clip.userData && clip.userData.raw;
     const rt = raw && raw.root_t;
     if (!rt || rt.length < 2) { this._rmPrev = null; return; }
@@ -1537,7 +1627,11 @@ export class Fighter {
     if (!vDir) return { pair: null, reason: `no T3 bank for ${victim.char.id} (UNMAPPED)` };
     let attemptRow = null;
     const planName = this._atkPlan && this._atkPlan.name;
-    if (planName && planName.startsWith('row:')) attemptRow = parseInt(planName.slice(4), 10);
+    // A per-step-bank action name is 'row:<bank>:<row>', which
+    // parseInt cannot read ('jin:220' -> NaN); the plan's own stepRow
+    // is authoritative whenever the attack came from a step plan.
+    if (this._atkPlan && this._atkPlan.stepRow != null) attemptRow = this._atkPlan.stepRow;
+    else if (planName && planName.startsWith('row:')) attemptRow = parseInt(planName.slice(4), 10);
     if (attemptRow == null && (this.attackName === '1+3' || this.attackName === '2+4')) {
       attemptRow = attemptRowForInput(R, aDir, this.attackName, this.stance === 'FC', false);
     }

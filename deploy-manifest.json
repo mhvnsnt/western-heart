@@ -1,12 +1,12 @@
 {
  "format": "wh-pages-deploy/1",
  "ref": "origin/main",
- "commit": "adf15d61517daa81a8efaa67f2d99caad31b8846",
- "files": 2068,
- "bytes": 959002557,
- "built": "2026-10-30T23:11:03Z",
+ "commit": "5911000383d7566d08d96247dc844a522d5061c1",
+ "files": 2070,
+ "bytes": 960891429,
+ "built": "2026-10-31T00:24:27Z",
  "tool": "tools/deploy/build_pages.py",
  "mode": "shell-only",
- "source_pr": 1274,
- "delta_note": "Git Data API delta (deployable-build lane 2026-10-30): 781db7db..adf15d61 - added game/assets/anim/t7/INDEX.json + 8 T7 clip-maps; updated movesets aotsuki, demonio-human, gashadokuro, t3-kuma, demonio-bloodline-ember. Add/update only, 0 removed."
+ "source_pr": 1296,
+ "delta_note": "Delta deploy (Claude, tools/deploy/REPUBLISH.md section 2 method via git plumbing) adf15d61..59110003: added game/assets/anim/t7/king/{skeleton,stance}.json (#1296 real T7 King stance for Pantera); updated game/js/{t3anims,fighter,select-screen}.js (#1296) + 17 moveset files (provenance phase 1 #1283-#1297). Add/update only, 0 removed."
 }
