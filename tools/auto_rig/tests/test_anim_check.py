@@ -176,6 +176,9 @@ def test_tearing_flagged():
     r = run(p)
     assert not r["pass"]
     assert r["tearing"]["spikes"], r["tearing"]
+    # spikes name the vertex's OWN joints (only Child/GrandChild-weighted verts move), never skin slot 0
+    assert all(s["joints"] and set(s["joints"]) <= {"Child", "GrandChild"}
+               for s in r["tearing"]["spikes"]), r["tearing"]["spikes"]
 
 
 def test_wrong_node_flagged():

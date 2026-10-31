@@ -11,6 +11,11 @@ voxel-remesh proxy of gamerig_backend.heat_via_proxy) and exports a GLB. The inp
 
 Plain glTF in (decode meshopt first). No animations are exported: the game drives every fighter with the
 decoded Tekken 3 banks retargeted at runtime (game/js/t3anims.js).
+
+--donor BVH|GLB bakes ONE test clip (gamerig_backend.transfer_clip, world-space rotation deltas) so the repo's
+deformation gates can measure the skin: anim_check.py (edge stretch p99.9 <= 2.5) and smooth_weights.py need an
+embedded clip. rig_tripo_static.py uses the CMU 135_04 boxing window (--clip-start 240 --clip-frames 72
+--clip-step 4); strip the clip before shipping (the game never plays it).
 """
 import argparse
 import json
@@ -40,6 +45,11 @@ def main():
     ap.add_argument("--metrics-out", default=None)
     ap.add_argument("--voxel", type=float, default=G.HEAT_PROXY["voxel"])
     ap.add_argument("--proxy-faces", type=int, default=G.HEAT_PROXY["faces"])
+    ap.add_argument("--donor", default=None, help="BVH/GLB to bake one deformation test clip from (gate only)")
+    ap.add_argument("--clip", default="CMU135_04_boxing")
+    ap.add_argument("--clip-start", type=int, default=240)
+    ap.add_argument("--clip-frames", type=int, default=72)
+    ap.add_argument("--clip-step", type=int, default=4)
     a = ap.parse_args(argv)
     fit = json.load(open(a.fit))
     G.HEAT_PROXY["voxel"] = a.voxel
@@ -152,13 +162,20 @@ def main():
         bpy.ops.object.vertex_group_limit_total(group_select_mode="ALL", limit=4)
         bpy.ops.object.vertex_group_normalize_all(group_select_mode="ALL", lock_active=False)
 
-    # 5. export (skin, no animation)
+    # 4b. optional deformation test clip (the rig's joints already carry the canonical names transfer_clip maps to)
+    if a.donor:
+        G.DONOR_TO_DEF = {c: c for c in G.DONOR_TO_DEF}
+        name, nframes, npairs = G.transfer_clip(rig, a.donor, a.clip, clip_start=a.clip_start,
+                                                clip_frames=a.clip_frames, clip_step=a.clip_step)
+        metrics["test_clip"] = {"action": name, "frames": nframes, "bones": npairs, "donor": a.donor}
+
+    # 5. export (skin; animation only when a test clip was baked)
     bpy.ops.object.select_all(action="DESELECT")
     rig.select_set(True)
     for m in meshes:
         m.select_set(True)
     bpy.ops.export_scene.gltf(filepath=a.out, export_format="GLB", use_selection=True,
-                              export_skins=True, export_def_bones=False, export_animations=False,
+                              export_skins=True, export_def_bones=False, export_animations=bool(a.donor),
                               export_yup=True)
     metrics["out"] = a.out
     metrics["out_bytes"] = os.path.getsize(a.out)
