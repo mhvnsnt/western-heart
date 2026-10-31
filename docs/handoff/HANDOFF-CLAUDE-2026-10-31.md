@@ -141,6 +141,10 @@ sits in a T-pose while the mesh does not follow it -> broken bind/weights. Stati
 - Measured: 42% of his head (with the hair spikes) sits on the clavicles, which causes the cone face. The chest band carries 42% clavicle weight.
 - `fix_sternum_weights.py --head --arms` raised the head share to 97%. But its height cutoff splits the hair spikes that hang below the neck joint, and that tears a big flat sheet beside the head (`docs/proof/2026-10-31/negativo-territory/valid-ab-original-vs-headrule.png`).
 - Next: build the head territory from mesh connectivity (each hair spike stays whole on the head), or run the seam smoothing (`tools/auto_rig/backends/smooth_weights.py`) after the rule.
+  - Connectivity as-is does NOT work. The mesh has 67,349 connected pieces, almost all UV-seam fragments under 50 verts, and the big pieces straddle the neck line.
+  - Weld vertices by position first, then grow the head region geodesically from the skull and stop at the neck ring.
+  - Or mask the hair in Blender (vertex-group select above the shoulders), weight it 100% to Head, and smooth only the neck ring.
+  - One material and one primitive, so the hair cannot be isolated by material.
 
 **Cone face universal:** the owner wants it fixed for every fighter that has it. Audit every wired model with
 `anim_check.py` (stretch per region) and re-rig the offenders the same way.
