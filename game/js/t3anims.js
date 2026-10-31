@@ -648,6 +648,81 @@ export function applyT7Stance(fighterId, bankId, clips, model, THREE, instanceKe
   return clips;
 }
 
+/* REAL TEKKEN 7 MOVES (2026-10-31; owner work order: finish single-source fighters first). A fighter's per-move
+   clips from its own T7 base, for the moveset rows tools/anim/t7_move_resolve.py maps exactly: the row's input,
+   pressed from the T7 stance, reaches the motbin move through the game's own cancel graph AND the move's damage
+   + first active frame equal the row's T7 frame data. Baked by tools/anim/t7_move_bake.py through the same
+   community 0xC8 path as the stances into <dir>moves.pack.json (FIGHT-tagged), keyed by moveset row key (the row
+   the game actually plays). Loaded per fighter when it binds (never for other fighters on the same bank).
+   The moves share the stance's skeleton (same dir), so they retarget with the rest pose captured when the stance
+   was applied at bind time; a move is never retargeted for a model whose stance was not (t7MoveRetarget).
+   Root motion: each clip's root_motion_fwd_m (raw T7 root channel; the applier's posed hips track carries the
+   travel 90 deg off the body, so travel is never read from root_t for these clips). */
+export const T7_MOVES = {
+  negativo: { bank: 'bryan', dir: 'assets/anim/t7/negan/' },
+};
+const _t7moves = {}; // fighterId -> { bank, skelId, clips: { name: clip }, moves: { moveKey: { clip, active, motbin } } }
+const _t7movesLoading = {};
+export function ensureT7Moves(fid, THREE) {
+  const def = T7_MOVES[fid];
+  if (!def) return Promise.resolve(null);
+  if (_t7moves[fid]) return Promise.resolve(_t7moves[fid]);
+  if (_t7movesLoading[fid]) return _t7movesLoading[fid];
+  _t7movesLoading[fid] = (async () => {
+    try {
+      const res = await fetch(def.dir + 'moves.pack.json');
+      if (!res.ok) throw new Error(`moves.pack.json: HTTP ${res.status}`);
+      const pack = await res.json();
+      const skelId = 't7:' + def.dir;
+      if (!_t3skelCache[skelId]) {
+        const rs = await fetch(def.dir + (pack.skeleton || 'skeleton.json'));
+        if (!rs.ok) throw new Error(`skeleton: HTTP ${rs.status}`);
+        _t3skelCache[skelId] = await rs.json();
+      }
+      const clips = {};
+      for (const [cname, data] of Object.entries(pack.clips || {})) {
+        if (data.anim_set && data.anim_set !== 'FIGHT') continue; // SHOW-ANIMATION LOCK: fight moves only
+        const clip = jsonToClip(`t7_${fid}_${cname}`, data, THREE);
+        if (!clip) continue;
+        clip.userData.loop = false;
+        clip.userData.t7 = data.t7_source || true;
+        // [lateral, y, forward] per frame (60 fps), the shape fighter.js rootMotionSample reads; lateral stays 0
+        // until its sign is proven on a sidestep clip (tools/anim/t7_move_bake.py).
+        clip.userData.rootMotionT = Array.isArray(data.root_motion_fwd_m) ? data.root_motion_fwd_m.map(f => [0, 0, f]) : null;
+        clips[cname] = clip;
+      }
+      const moves = {};
+      for (const [key, m] of Object.entries(pack.moves || {})) {
+        if (clips[m.clip]) moves[key] = { clip: m.clip, active: m.active_frames, motbin: m.motbin_move };
+      }
+      _t7moves[fid] = { bank: def.bank, skelId, clips, moves };
+      console.log(`[WH-T7] ${fid}: ${Object.keys(moves).length} real T7 move clips (${def.dir}moves.pack.json)`);
+      return _t7moves[fid];
+    } catch (e) {
+      console.warn(`[WH-T7] ${fid}: real T7 move clips unavailable, moves keep their current clips:`, e.message || e);
+      return null;
+    }
+  })();
+  return _t7movesLoading[fid];
+}
+/** The real T7 clip for one moveset row of this fighter on its bound bank, or null. With `model`, also null
+    unless the stance's rest pose was captured for that model (so the move can be retargeted safely). */
+export function t7MoveClip(fid, bankId, moveKey, model = null) {
+  const t = _t7moves[fid];
+  if (!t || t.bank !== bankId || !moveKey) return null;
+  const m = t.moves[moveKey];
+  if (!m || !t.clips[m.clip]) return null;
+  if (model) { const pm = _retargetCache.get(model); if (!pm || !pm.get(t.skelId)) return null; }
+  return { name: 't7:' + moveKey, clip: t.clips[m.clip], skelId: t.skelId, active: m.active, motbin: m.motbin, anim: m.clip };
+}
+/** Retarget one real T7 move clip onto `model` as action `t7:<moveKey>`, reusing the rest pose the T7 stance
+    captured at bind time (same skeleton id). Returns { [name]: clip } or null (then the move keeps its clip). */
+export function t7MoveRetarget(fid, bankId, moveKey, model, THREE, instanceKey = null) {
+  const mc = t7MoveClip(fid, bankId, moveKey, model);
+  if (!mc) return null;
+  return retargetT3Clips({ [mc.name]: mc.clip }, mc.skelId, model, THREE, instanceKey, [mc.name]);
+}
+
 /* ============================================================
    REACTION PACKS (grapple lane, 2026-10-24) — the throw /
    victim / escape clips of docs/anim/T3-REACTIONS.md. These

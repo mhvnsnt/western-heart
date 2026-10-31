@@ -79,7 +79,15 @@ answer are in `docs/anim/T7-0x64-FRAME-RESEARCH-2026-10-30.md`. Routes:
 3. TTT2 same-motion pairs, once the TTT2 lane extracts motion data.
 Never ask the owner for passwords; he provides files himself.
 
-## 5. In progress: Negativo plays Negan's real T7 attacks
+## 5. Negativo plays Negan's real T7 attacks (wired 2026-10-31, PR after #1377)
+
+**Status:** 26 moves wired and verified in a local fight; the pack ships in the PR after #1377.
+- Example: b+2 plays `t7:b+2__main` = Negan's `Na_4rp` and travels 0.76 m.
+- Root motion comes from the raw T7 root channel (`root_motion_fwd_m`), not the applier's hips track.
+- Lateral travel stays 0 until its sign is proven on a sidestep clip.
+- His model is not hosted live yet, and his rig still needs the fix in section 6.
+
+**Background and design notes:**
 
 - `tools/anim/t7_move_resolve.py` maps moveset rows to Negan's motbin moves by the game's own cancel graph (group
   cancels: cmd `0x800B` -> `group_cancels[move_id..]`, ends at `0x800C`; command u64 = buttons<<32 | direction)
@@ -112,6 +120,16 @@ Never ask the owner for passwords; he provides files himself.
 cone face (head/neck verts pulled toward the pelvis) and shoulders/arms crushed across the chest; his skeleton
 sits in a T-pose while the mesh does not follow it -> broken bind/weights. Static source
 `negativo-a1.glb` (T-pose, faces +X). Same re-rig path as Burger.
+
+**Checkpoint 2026-10-31 (GameRig auto-rig, `tools/auto_rig/rig_tripo_static.py`; proof in `docs/proof/2026-10-31/auto-rig-{burger,negativo}/`):**
+- **Burger:** A-pose detected and the arms were fitted. Edge stretch p99.9 went 42.6 (shipped rig) -> 12.4 (anim_check) -> 15.3 after 12 smoothing rounds (smooth_weights sampling). Gate 2.5: NOT shipped.
+- **Negativo:** p99.9 4.96 (anim_check) and 9.45 after smoothing. Gate 2.5: NOT shipped.
+- GameRig adds non-canonical joints (Breast, Pelvis, `.001` twist bones), and the stress clip flags the Hips->Pelvis bones.
+- Next to try:
+  - k-NN weight transfer from a clean T-pose donor (`tools/auto_rig/reskin_pantera_weights.py` method, donor `steve-fox.glb`) after rotating Negativo to the donor's facing. Fit the skeleton with `refit_skeleton.py`, because the hair spikes break bbox height matching.
+  - Treat hair spikes and props as rigid children of Head/Hips before weighting.
+- Burger is a long job (A-pose, forms, Bob + Kusaregedo). It is paused per the work-order law.
+- **Purple Rain** (owner 2026-10-31): his chest and spine collapse inward toward the spine, the pull reaches up the neck, and his right arm is affected. That is a skin-weight fix on `roster/purplerain/attires/attire1/model-rerig.glb`, a short job.
 
 **Cone face universal:** the owner wants it fixed for every fighter that has it. Audit every wired model with
 `anim_check.py` (stretch per region) and re-rig the offenders the same way.

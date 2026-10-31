@@ -2,6 +2,15 @@
 
 Lane ownership is claimed on #866. MoneyManBusch owns: Pantera and the core-8 chat-owned animation wiring, the Tekken 7 bank extraction (`tools/anim/t7_*`), and the PR queue. Muse owns #1096 and its stack, the moves audit, and `tools/auto_rig`.
 
+## 2026-10-31 (evening) — Negativo plays Negan's real T7 attacks; rig checkpoint (Claude)
+
+- **First fighter with real Tekken 7 ATTACK animations:**
+  - Negativo's 26 single-input moves (1, 2, 3, 4, b+1–4, d/f+1–4, d+2–4, f+2/f+3, u/f+3/4, u+2, ...) play Negan's own 0xC8 clips (`game/assets/anim/t7/negan/moves.pack.json`).
+  - Each row was mapped by the game's cancel graph plus exact frame data (`tools/anim/t7_move_resolve.py`) and baked by `tools/anim/t7_move_bake.py`.
+  - Wiring: `T7_MOVES` / `ensureT7Moves` / `t7MoveClip` / `t7MoveRetarget` in t3anims.js, plus the `_attackClipPlan` t7 pick, `_attackClip` action and `_rootMotionApply` t7 track in fighter.js.
+  - Test: `test/t7-moves.test.mjs`.
+- **Rig checkpoint:** the GameRig re-rigs of Burger and Negativo did not reach the 2.5 stretch gate, so they were not shipped. Numbers and next steps are in the handoff, section 6.
+
 ## 2026-10-31 (later) — rig triage, FREE CAMERA behind PAUSE, full handoff (Claude)
 
 - **Handoff (read first):** `docs/handoff/HANDOFF-CLAUDE-2026-10-31.md`.
