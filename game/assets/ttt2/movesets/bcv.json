@@ -1,0 +1,1668 @@
+{
+ "schema": "ttt2-moveset-v1",
+ "source_game": "Tekken Tag Tournament 2",
+ "character": "Dr. Bosconovitch",
+ "bxml_prefix": "bcv",
+ "bxml_doc": 58,
+ "mvlt_list": 55,
+ "provenance": {
+  "source_archive": "release ttt2-7z-v1 (mhvnsnt/western-heart)",
+  "pull_tool": "tools/ttt2_virtual_god.py --pull",
+  "pulled_file": "data018.bin",
+  "pulled_bytes": 557332,
+  "pulled_sha256": "7e06ad5336374973bf8f637b898c975585226fc7a260a730ad981365b2056db4",
+  "decoded_file": "decoded-data018.bin",
+  "decoded_bytes": 3027808,
+  "decoded_sha256": "54db09ebc63ee1a05a7b1c00cc2d7b5528d0d97c6ed1949da805daac7709293e",
+  "parser": "teardown/tekken-tag-tournament-2 tools: parse_mvlt_v4.py (authoritative; v1/v2/v3 superseded)",
+  "converter": "convert_mvlt_notation.py (empirical glyph map; see MVLT-GLYPH-MAP-20261030.md)",
+  "note": "Derived data only. No game binaries committed (western-heart AGENTS.md rule 8). Bins stay reproducible from release ttt2-7z-v1."
+ },
+ "counts": {
+  "records": 91,
+  "moves": 84,
+  "sample_combos": 7,
+  "separators": 0
+ },
+ "records": [
+  {
+   "row": 0,
+   "name": "Left Right Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2",
+   "notation_std": "1, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:bcv:row:0",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 0
+  },
+  {
+   "row": 1,
+   "name": "Scared Combination",
+   "kind": "move",
+   "section": null,
+   "notation": "2, 4",
+   "notation_std": "2, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:bcv:row:1",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 1
+  },
+  {
+   "row": 2,
+   "name": "Scared Combination to Mad Pain",
+   "kind": "move",
+   "section": null,
+   "notation": "2, 4",
+   "notation_std": "2, 4",
+   "condition_text": "(must hit)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:bcv:row:2",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 2
+  },
+  {
+   "row": 3,
+   "name": "Panic Doctor",
+   "kind": "move",
+   "section": null,
+   "notation": "F, B",
+   "notation_std": "f, b",
+   "condition_text": "During Mad Pain (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe00c",
+    "0xe00b"
+   ],
+   "anim_ref": "ttt2:bcv:row:3",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 3
+  },
+  {
+   "row": 4,
+   "name": "Mosquito Thumbing",
+   "kind": "move",
+   "section": null,
+   "notation": "1",
+   "notation_std": "1",
+   "condition_text": "During Mad Pain",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:bcv:row:4",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 4
+  },
+  {
+   "row": 5,
+   "name": "Tumbling Doctor",
+   "kind": "move",
+   "section": null,
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "During Mad Pain",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:bcv:row:5",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 5
+  },
+  {
+   "row": 6,
+   "name": "Somersault Bomb",
+   "kind": "move",
+   "section": null,
+   "notation": "3",
+   "notation_std": "3",
+   "condition_text": "During Mad Pain",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:bcv:row:6",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 6
+  },
+  {
+   "row": 7,
+   "name": "Bomb Sweep",
+   "kind": "move",
+   "section": null,
+   "notation": "4",
+   "notation_std": "4",
+   "condition_text": "During Mad Pain",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:bcv:row:7",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 7
+  },
+  {
+   "row": 8,
+   "name": "Neutrino Blast",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "During Mad Pain",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:bcv:row:8",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 8
+  },
+  {
+   "row": 9,
+   "name": "Hyper Shake Off",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:bcv:row:9",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 9
+  },
+  {
+   "row": 10,
+   "name": "Electric Charge",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:bcv:row:10",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 10
+  },
+  {
+   "row": 11,
+   "name": "Bézier Spark",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4, 1",
+   "notation_std": "3+4, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:bcv:row:11",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 11
+  },
+  {
+   "row": 12,
+   "name": "Line Segment Spark",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4, 2",
+   "notation_std": "3+4, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:bcv:row:12",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 12
+  },
+  {
+   "row": 13,
+   "name": "Parallel Lightning Spark",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4, 1+2",
+   "notation_std": "3+4, 1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:bcv:row:13",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 13
+  },
+  {
+   "row": 14,
+   "name": "Single Hand Slap",
+   "kind": "move",
+   "section": null,
+   "notation": "f+2, 2",
+   "notation_std": "f+2, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe016",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:bcv:row:14",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 14
+  },
+  {
+   "row": 15,
+   "name": "Back Fire Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "f+3",
+   "notation_std": "f+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:bcv:row:15",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 15
+  },
+  {
+   "row": 16,
+   "name": "Critical Headbutt",
+   "kind": "move",
+   "section": null,
+   "notation": "f+1+2",
+   "notation_std": "f+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:bcv:row:16",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 16
+  },
+  {
+   "row": 17,
+   "name": "Critical Headbutt to Mad Pain",
+   "kind": "move",
+   "section": null,
+   "notation": "f+1+2",
+   "notation_std": "f+1+2",
+   "condition_text": "(must hit)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:bcv:row:17",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 17
+  },
+  {
+   "row": 18,
+   "name": "Panic Doctor",
+   "kind": "move",
+   "section": null,
+   "notation": "f+3+4",
+   "notation_std": "f+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:bcv:row:18",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 18
+  },
+  {
+   "row": 19,
+   "name": "Desperate Pressure",
+   "kind": "move",
+   "section": null,
+   "notation": "1",
+   "notation_std": "1",
+   "condition_text": "During Panic Doctor",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:bcv:row:19",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 19
+  },
+  {
+   "row": 20,
+   "name": "Doctor's Flick",
+   "kind": "move",
+   "section": null,
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "During Panic Doctor",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:bcv:row:20",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 20
+  },
+  {
+   "row": 21,
+   "name": "Poor Left Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "3",
+   "notation_std": "3",
+   "condition_text": "During Panic Doctor",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:bcv:row:21",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 21
+  },
+  {
+   "row": 22,
+   "name": "Poor Left Kick to Mad Pain",
+   "kind": "move",
+   "section": null,
+   "notation": "3",
+   "notation_std": "3",
+   "condition_text": "During Panic Doctor (must hit)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:bcv:row:22",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 22
+  },
+  {
+   "row": 23,
+   "name": "Burst Wave",
+   "kind": "move",
+   "section": null,
+   "notation": "4",
+   "notation_std": "4",
+   "condition_text": "During Panic Doctor",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:bcv:row:23",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 23
+  },
+  {
+   "row": 24,
+   "name": "Neutrino Blast",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "During Panic Doctor",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:bcv:row:24",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 24
+  },
+  {
+   "row": 25,
+   "name": "Panic Doctor to The Zen",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "During Panic Doctor",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:bcv:row:25",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 25
+  },
+  {
+   "row": 26,
+   "name": "Crash Test",
+   "kind": "move",
+   "section": null,
+   "notation": "f+1+4",
+   "notation_std": "f+1+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01d"
+   ],
+   "anim_ref": "ttt2:bcv:row:26",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 26
+  },
+  {
+   "row": 27,
+   "name": "Savage Slap",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+2",
+   "notation_std": "d/f+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:bcv:row:27",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 27
+  },
+  {
+   "row": 28,
+   "name": "Surprise Tumble",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+3+4",
+   "notation_std": "d/f+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:bcv:row:28",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 28
+  },
+  {
+   "row": 29,
+   "name": "Pull Over",
+   "kind": "move",
+   "section": null,
+   "notation": "d+1, 1+2",
+   "notation_std": "d+1, 1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe015",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:bcv:row:29",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 29
+  },
+  {
+   "row": 30,
+   "name": "Over Hand Maneuver",
+   "kind": "move",
+   "section": null,
+   "notation": "d+2",
+   "notation_std": "d+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:bcv:row:30",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 30
+  },
+  {
+   "row": 31,
+   "name": "Scared Left Low Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "d+3",
+   "notation_std": "d+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:bcv:row:31",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 31
+  },
+  {
+   "row": 32,
+   "name": "Poor Right Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "d+4",
+   "notation_std": "d+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:bcv:row:32",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 32
+  },
+  {
+   "row": 33,
+   "name": "Poor Right Kick to Mad Pain",
+   "kind": "move",
+   "section": null,
+   "notation": "d+4",
+   "notation_std": "d+4",
+   "condition_text": "(must hit)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:bcv:row:33",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 33
+  },
+  {
+   "row": 34,
+   "name": "Delete Pressure",
+   "kind": "move",
+   "section": null,
+   "notation": "d+1+2",
+   "notation_std": "d+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:bcv:row:34",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 34
+  },
+  {
+   "row": 35,
+   "name": "The Zen",
+   "kind": "move",
+   "section": null,
+   "notation": "d+3+4",
+   "notation_std": "d+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:bcv:row:35",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 35
+  },
+  {
+   "row": 36,
+   "name": "Front Roll Doctor",
+   "kind": "move",
+   "section": null,
+   "notation": "f",
+   "notation_std": "f",
+   "condition_text": "During The Zen",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004"
+   ],
+   "anim_ref": "ttt2:bcv:row:36",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 36
+  },
+  {
+   "row": 37,
+   "name": "Reverse Roll Doctor",
+   "kind": "move",
+   "section": null,
+   "notation": "b",
+   "notation_std": "b",
+   "condition_text": "During The Zen",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003"
+   ],
+   "anim_ref": "ttt2:bcv:row:37",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 37
+  },
+  {
+   "row": 38,
+   "name": "Hopping Doctor",
+   "kind": "move",
+   "section": null,
+   "notation": "u",
+   "notation_std": "u",
+   "condition_text": "During The Zen",
+   "multi_part": false,
+   "glyphs": [
+    "0xe006"
+   ],
+   "anim_ref": "ttt2:bcv:row:38",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 38
+  },
+  {
+   "row": 39,
+   "name": "Doctor Lift Off",
+   "kind": "move",
+   "section": null,
+   "notation": "1",
+   "notation_std": "1",
+   "condition_text": "During The Zen",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:bcv:row:39",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 39
+  },
+  {
+   "row": 40,
+   "name": "Doctor Ignition",
+   "kind": "move",
+   "section": null,
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "During The Zen",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:bcv:row:40",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 40
+  },
+  {
+   "row": 41,
+   "name": "Doctor Head Sliding",
+   "kind": "move",
+   "section": null,
+   "notation": "3",
+   "notation_std": "3",
+   "condition_text": "During The Zen",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:bcv:row:41",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 41
+  },
+  {
+   "row": 42,
+   "name": "Doctor Hover",
+   "kind": "move",
+   "section": null,
+   "notation": "4",
+   "notation_std": "4",
+   "condition_text": "During The Zen",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:bcv:row:42",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 42
+  },
+  {
+   "row": 43,
+   "name": "The Zen Turn",
+   "kind": "move",
+   "section": null,
+   "notation": "1",
+   "notation_std": "1",
+   "condition_text": "During The Zen (Back towards enemy)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:bcv:row:43",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 43
+  },
+  {
+   "row": 44,
+   "name": "Crouching Doctor One Two Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+1, 2",
+   "notation_std": "d/b+1, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:bcv:row:44",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 44
+  },
+  {
+   "row": 45,
+   "name": "Arch Uppercut",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+2",
+   "notation_std": "d/b+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:bcv:row:45",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 45
+  },
+  {
+   "row": 46,
+   "name": "Crouch Sweep Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+3",
+   "notation_std": "d/b+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:bcv:row:46",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 46
+  },
+  {
+   "row": 47,
+   "name": "Scared Right Low Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+4",
+   "notation_std": "d/b+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:bcv:row:47",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 47
+  },
+  {
+   "row": 48,
+   "name": "Trick Fall",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+3+4",
+   "notation_std": "d/b+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:bcv:row:48",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 48
+  },
+  {
+   "row": 49,
+   "name": "Unbalance Slap",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1",
+   "notation_std": "b+1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:bcv:row:49",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 49
+  },
+  {
+   "row": 50,
+   "name": "Mad Slap Combination",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1, 2",
+   "notation_std": "b+1, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:bcv:row:50",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 50
+  },
+  {
+   "row": 51,
+   "name": "Mad Slap Combination to Mad Pain",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1, 2",
+   "notation_std": "b+1, 2",
+   "condition_text": "(must hit)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:bcv:row:51",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 51
+  },
+  {
+   "row": 52,
+   "name": "Unbalance Combination",
+   "kind": "move",
+   "section": null,
+   "notation": "b+2, 4",
+   "notation_std": "b+2, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe016",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:bcv:row:52",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 52
+  },
+  {
+   "row": 53,
+   "name": "Unbalance Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "b+3",
+   "notation_std": "b+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:bcv:row:53",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 53
+  },
+  {
+   "row": 54,
+   "name": "Flying Bomber",
+   "kind": "move",
+   "section": null,
+   "notation": "b+4",
+   "notation_std": "b+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:bcv:row:54",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 54
+  },
+  {
+   "row": 55,
+   "name": "Doctor's Jump Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3",
+   "notation_std": "u/f+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:bcv:row:55",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 55
+  },
+  {
+   "row": 56,
+   "name": "Exciting Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+4",
+   "notation_std": "u/f+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:bcv:row:56",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 56
+  },
+  {
+   "row": 57,
+   "name": "Cossack Shower Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3+4",
+   "notation_std": "u/f+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:bcv:row:57",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 57
+  },
+  {
+   "row": 58,
+   "name": "Doctor Fall Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+2, 1",
+   "notation_std": "f, f+2, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe016",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:bcv:row:58",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 58
+  },
+  {
+   "row": 59,
+   "name": "Panic Smoker",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+3",
+   "notation_std": "f, f+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:bcv:row:59",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 59
+  },
+  {
+   "row": 60,
+   "name": "Panic Genome",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+4",
+   "notation_std": "f, f+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:bcv:row:60",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 60
+  },
+  {
+   "row": 61,
+   "name": "Flying Doctor",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+3+4",
+   "notation_std": "f, f+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:bcv:row:61",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 61
+  },
+  {
+   "row": 62,
+   "name": "Escapism Bomb",
+   "kind": "move",
+   "section": null,
+   "notation": "b, B+1+4",
+   "notation_std": "b, b+1+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe00b",
+    "0xe01d"
+   ],
+   "anim_ref": "ttt2:bcv:row:62",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 62
+  },
+  {
+   "row": 63,
+   "name": "Tumble Dive",
+   "kind": "move",
+   "section": null,
+   "notation": "f, f, f+1+2",
+   "notation_std": "f, f, f+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe004",
+    "0xe004",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:bcv:row:63",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 63
+  },
+  {
+   "row": 64,
+   "name": "Dynamic Doctor Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 1",
+   "notation_std": "1, 1",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:bcv:row:64",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 64
+  },
+  {
+   "row": 65,
+   "name": "Dynamic Doctor Combo to Mad Pain",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 1",
+   "notation_std": "1, 1",
+   "condition_text": "While rising (must hit)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:bcv:row:65",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 65
+  },
+  {
+   "row": 66,
+   "name": "Chandelle Manoeuvering Blow",
+   "kind": "move",
+   "section": null,
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:bcv:row:66",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 66
+  },
+  {
+   "row": 67,
+   "name": "Horse Back Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "3",
+   "notation_std": "3",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:bcv:row:67",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 67
+  },
+  {
+   "row": 68,
+   "name": "Bomb Mistake",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "Back towards enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:bcv:row:68",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 68
+  },
+  {
+   "row": 69,
+   "name": "Retake 1",
+   "kind": "move",
+   "section": null,
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "While down (facing up)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:bcv:row:69",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 69
+  },
+  {
+   "row": 70,
+   "name": "Retake 2",
+   "kind": "move",
+   "section": null,
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "While down (facing down)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:bcv:row:70",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 70
+  },
+  {
+   "row": 71,
+   "name": "Taunt 1",
+   "kind": "move",
+   "section": null,
+   "notation": "1+3+4",
+   "notation_std": "1+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe021"
+   ],
+   "anim_ref": "ttt2:bcv:row:71",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 71
+  },
+  {
+   "row": 72,
+   "name": "Taunt 2",
+   "kind": "move",
+   "section": null,
+   "notation": "2+3+4",
+   "notation_std": "2+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe022"
+   ],
+   "anim_ref": "ttt2:bcv:row:72",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 72
+  },
+  {
+   "row": 73,
+   "name": "10 Hit Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+3, 1, 4, 3, 4, 1, 1, 2, 3, 1+4",
+   "notation_std": "d/f+3, 1, 4, 3, 4, 1, 1, 2, 3, 1+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe018",
+    "0xe015",
+    "0xe01c",
+    "0xe018",
+    "0xe01c",
+    "0xe015",
+    "0xe015",
+    "0xe016",
+    "0xe018",
+    "0xe01d"
+   ],
+   "anim_ref": "ttt2:bcv:row:73",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 73
+  },
+  {
+   "row": 74,
+   "name": "Single Click Bomb",
+   "kind": "move",
+   "section": null,
+   "notation": "1+3",
+   "notation_std": "1+3",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019"
+   ],
+   "anim_ref": "ttt2:bcv:row:74",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 74
+  },
+  {
+   "row": 75,
+   "name": "Single Click Bomb",
+   "kind": "move",
+   "section": null,
+   "notation": "f+1+3",
+   "notation_std": "f+1+3",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe019"
+   ],
+   "anim_ref": "ttt2:bcv:row:75",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 75
+  },
+  {
+   "row": 76,
+   "name": "Bomb Ejection",
+   "kind": "move",
+   "section": null,
+   "notation": "2+4",
+   "notation_std": "2+4",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:bcv:row:76",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 76
+  },
+  {
+   "row": 77,
+   "name": "Bomb Ejection",
+   "kind": "move",
+   "section": null,
+   "notation": "f+2+4",
+   "notation_std": "f+2+4",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:bcv:row:77",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 77
+  },
+  {
+   "row": 78,
+   "name": "Analyze Bomb",
+   "kind": "move",
+   "section": null,
+   "notation": "1+3 or 2+4",
+   "notation_std": "1+3 or 2+4",
+   "condition_text": "Approach from left side (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:bcv:row:78",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 78
+  },
+  {
+   "row": 79,
+   "name": "Electrical Arm Lock",
+   "kind": "move",
+   "section": null,
+   "notation": "1+3 or 2+4",
+   "notation_std": "1+3 or 2+4",
+   "condition_text": "Approach from right side (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:bcv:row:79",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 79
+  },
+  {
+   "row": 80,
+   "name": "Piggyback Bomb",
+   "kind": "move",
+   "section": null,
+   "notation": "1+3 or 2+4",
+   "notation_std": "1+3 or 2+4",
+   "condition_text": "Approach from behind (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:bcv:row:80",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 80
+  },
+  {
+   "row": 81,
+   "name": "Brain Shaker",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+1+2, 1+4",
+   "notation_std": "f, f+1+2, 1+4",
+   "condition_text": "Approach enemy (or during Panic Doctor )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe017",
+    "0xe01d"
+   ],
+   "anim_ref": "ttt2:bcv:row:81",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 81
+  },
+  {
+   "row": 82,
+   "name": "Reflection Mist",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1+2",
+   "notation_std": "b+1+2",
+   "condition_text": "Time with enemy punch",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:bcv:row:82",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 82
+  },
+  {
+   "row": 83,
+   "name": "Fake Doctor",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1+3, b+2+4",
+   "notation_std": "b+1+3, b+2+4",
+   "condition_text": "Time with enemy punch (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe019",
+    "0xe003",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:bcv:row:83",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 83
+  },
+  {
+   "row": 84,
+   "name": "Sample Combo 1",
+   "kind": "sample_combo",
+   "section": null,
+   "notation": "f+3+4, 2, f, F+3+4",
+   "notation_std": "f+3+4, 2, f, f+3+4",
+   "condition_text": "During Panic Doctor",
+   "multi_part": true,
+   "glyphs": [
+    "0xe004",
+    "0xe020",
+    "0xe063",
+    "0xe016",
+    "0xe063",
+    "0xe004",
+    "0xe00c",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:bcv:row:84",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 84
+  },
+  {
+   "row": 85,
+   "name": "Sample Combo 2",
+   "kind": "sample_combo",
+   "section": null,
+   "notation": "d/b+3, 4, f+1, d+2, f+3",
+   "notation_std": "d/b+3, 4, f+1, d+2, f+3",
+   "condition_text": "(Counter)While rising",
+   "multi_part": true,
+   "glyphs": [
+    "0xe000",
+    "0xe018",
+    "0xe063",
+    "0xe01c",
+    "0xe063",
+    "0xe004",
+    "0xe015",
+    "0xe063",
+    "0xe001",
+    "0xe016",
+    "0xe063",
+    "0xe004",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:bcv:row:85",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 85
+  },
+  {
+   "row": 86,
+   "name": "Sample Combo 3",
+   "kind": "sample_combo",
+   "section": null,
+   "notation": "d/f+2, f+2, 2, f+1, 2, d+2, f+1+4",
+   "notation_std": "d/f+2, f+2, 2, f+1, 2, d+2, f+1+4",
+   "condition_text": "",
+   "multi_part": true,
+   "glyphs": [
+    "0xe002",
+    "0xe016",
+    "0xe063",
+    "0xe004",
+    "0xe016",
+    "0xe016",
+    "0xe063",
+    "0xe004",
+    "0xe015",
+    "0xe016",
+    "0xe063",
+    "0xe001",
+    "0xe016",
+    "0xe063",
+    "0xe004",
+    "0xe01d"
+   ],
+   "anim_ref": "ttt2:bcv:row:86",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 86
+  },
+  {
+   "row": 87,
+   "name": "Sample Combo 4",
+   "kind": "sample_combo",
+   "section": null,
+   "notation": "f+1+2, F, 1, d/f+1, f+1, f, F+2, 1",
+   "notation_std": "f+1+2, f, 1, d/f+1, f+1, f, f+2, 1",
+   "condition_text": "(Counter)During Mad Pain During Panic Doctor",
+   "multi_part": true,
+   "glyphs": [
+    "0xe004",
+    "0xe017",
+    "0xe063",
+    "0xe00c",
+    "0xe063",
+    "0xe015",
+    "0xe063",
+    "0xe002",
+    "0xe015",
+    "0xe063",
+    "0xe004",
+    "0xe015",
+    "0xe063",
+    "0xe004",
+    "0xe00c",
+    "0xe016",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:bcv:row:87",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 87
+  },
+  {
+   "row": 88,
+   "name": "Sample Combo 5",
+   "kind": "sample_combo",
+   "section": null,
+   "notation": "f, F+4, 2, 3, d/b+2, f+1+2, F, 3, 2",
+   "notation_std": "f, f+4, 2, 3, d/b+2, f+1+2, f, 3, 2",
+   "condition_text": "While down (facing down) During Mad Pain During Panic Doctor During Mad Pain",
+   "multi_part": true,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe01c",
+    "0xe063",
+    "0xe016",
+    "0xe063",
+    "0xe018",
+    "0xe063",
+    "0xe000",
+    "0xe016",
+    "0xe063",
+    "0xe004",
+    "0xe017",
+    "0xe063",
+    "0xe00c",
+    "0xe063",
+    "0xe018",
+    "0xe063",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:bcv:row:88",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 88
+  },
+  {
+   "row": 89,
+   "name": "Sample Combo 6",
+   "kind": "sample_combo",
+   "section": null,
+   "notation": "f+3+4, 1, b+1, 2, 1, d+2, 1, 1, 4",
+   "notation_std": "f+3+4, 1, b+1, 2, 1, d+2, 1, 1, 4",
+   "condition_text": "During Panic Doctor (Counter)During Mad Pain While rising During Mad Pain",
+   "multi_part": true,
+   "glyphs": [
+    "0xe004",
+    "0xe020",
+    "0xe063",
+    "0xe015",
+    "0xe063",
+    "0xe003",
+    "0xe015",
+    "0xe016",
+    "0xe063",
+    "0xe015",
+    "0xe063",
+    "0xe001",
+    "0xe016",
+    "0xe063",
+    "0xe015",
+    "0xe015",
+    "0xe063",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:bcv:row:89",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 89
+  },
+  {
+   "row": 90,
+   "name": "Sample Combo 7",
+   "kind": "sample_combo",
+   "section": null,
+   "notation": "3, d/b+2, f+2, 2, f+1, d+2, u/f+3, 4",
+   "notation_std": "3, d/b+2, f+2, 2, f+1, d+2, u/f+3, 4",
+   "condition_text": "While rising During The Zen",
+   "multi_part": true,
+   "glyphs": [
+    "0xe018",
+    "0xe063",
+    "0xe000",
+    "0xe016",
+    "0xe063",
+    "0xe004",
+    "0xe016",
+    "0xe016",
+    "0xe063",
+    "0xe004",
+    "0xe015",
+    "0xe063",
+    "0xe001",
+    "0xe016",
+    "0xe063",
+    "0xe007",
+    "0xe018",
+    "0xe063",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:bcv:row:90",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 90
+  }
+ ]
+}

@@ -1,0 +1,3323 @@
+{
+ "schema": "ttt2-moveset-v1",
+ "source_game": "Tekken Tag Tournament 2",
+ "character": "Lei Wulong",
+ "bxml_prefix": "lei",
+ "bxml_doc": 2,
+ "mvlt_list": 3,
+ "provenance": {
+  "source_archive": "release ttt2-7z-v1 (mhvnsnt/western-heart)",
+  "pull_tool": "tools/ttt2_virtual_god.py --pull",
+  "pulled_file": "data018.bin",
+  "pulled_bytes": 557332,
+  "pulled_sha256": "7e06ad5336374973bf8f637b898c975585226fc7a260a730ad981365b2056db4",
+  "decoded_file": "decoded-data018.bin",
+  "decoded_bytes": 3027808,
+  "decoded_sha256": "54db09ebc63ee1a05a7b1c00cc2d7b5528d0d97c6ed1949da805daac7709293e",
+  "parser": "teardown/tekken-tag-tournament-2 tools: parse_mvlt_v4.py (authoritative; v1/v2/v3 superseded)",
+  "converter": "convert_mvlt_notation.py (empirical glyph map; see MVLT-GLYPH-MAP-20261030.md)",
+  "note": "Derived data only. No game binaries committed (western-heart AGENTS.md rule 8). Bins stay reproducible from release ttt2-7z-v1."
+ },
+ "counts": {
+  "records": 182,
+  "moves": 175,
+  "sample_combos": 7,
+  "separators": 0
+ },
+ "records": [
+  {
+   "row": 0,
+   "name": "Serpent Strike",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 1",
+   "notation_std": "1, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:lei:row:0",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 0
+  },
+  {
+   "row": 1,
+   "name": "Left Right Punch",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2",
+   "notation_std": "1, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:1",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 1
+  },
+  {
+   "row": 2,
+   "name": "Yue Ya Cha Shou",
+   "kind": "move",
+   "section": null,
+   "notation": "2, 1",
+   "notation_std": "2, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:lei:row:2",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 2
+  },
+  {
+   "row": 3,
+   "name": "Yue Ya Lian Tui",
+   "kind": "move",
+   "section": null,
+   "notation": "2, 1, 3+4",
+   "notation_std": "2, 1, 3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe015",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:lei:row:3",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 3
+  },
+  {
+   "row": 4,
+   "name": "High and Low Kicks",
+   "kind": "move",
+   "section": null,
+   "notation": "3, 3",
+   "notation_std": "3, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:4",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 4
+  },
+  {
+   "row": 5,
+   "name": "Tornado Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "3, 4, 4, 4",
+   "notation_std": "3, 4, 4, 4",
+   "condition_text": "【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe01c",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:5",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 5
+  },
+  {
+   "row": 6,
+   "name": "Clean Sweep",
+   "kind": "move",
+   "section": null,
+   "notation": "4, 3",
+   "notation_std": "4, 3",
+   "condition_text": "【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:6",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 6
+  },
+  {
+   "row": 7,
+   "name": "Lift Up Cannon",
+   "kind": "move",
+   "section": null,
+   "notation": "4, 4, 3, 3",
+   "notation_std": "4, 4, 3, 3",
+   "condition_text": "【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe01c",
+    "0xe018",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:7",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 7
+  },
+  {
+   "row": 8,
+   "name": "Hook Punch to Spinning Back Blow",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2, 1",
+   "notation_std": "1+2, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:lei:row:8",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 8
+  },
+  {
+   "row": 9,
+   "name": "Hook Punch to Spiral Upper",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2, 2",
+   "notation_std": "1+2, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:9",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 9
+  },
+  {
+   "row": 10,
+   "name": "Five Gates Form - Snake",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:lei:row:10",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 10
+  },
+  {
+   "row": 11,
+   "name": "Five Gates Form - Dragon",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4, 1",
+   "notation_std": "3+4, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:lei:row:11",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 11
+  },
+  {
+   "row": 12,
+   "name": "Five Gates Form - Panther",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4, 2",
+   "notation_std": "3+4, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:12",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 12
+  },
+  {
+   "row": 13,
+   "name": "Five Gates Form - Tiger",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4, 3",
+   "notation_std": "3+4, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:13",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 13
+  },
+  {
+   "row": 14,
+   "name": "Five Gates Form - Crane",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4, 4",
+   "notation_std": "3+4, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:14",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 14
+  },
+  {
+   "row": 15,
+   "name": "Howling Dog",
+   "kind": "move",
+   "section": null,
+   "notation": "f+3, 1",
+   "notation_std": "f+3, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe018",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:lei:row:15",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 15
+  },
+  {
+   "row": 16,
+   "name": "Howling Dog Rush",
+   "kind": "move",
+   "section": null,
+   "notation": "f+3, 1, 2",
+   "notation_std": "f+3, 1, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe018",
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:16",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 16
+  },
+  {
+   "row": 17,
+   "name": "Beating Kick Low Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "f+4, 2, 1, 2, 3",
+   "notation_std": "f+4, 2, 1, 2, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01c",
+    "0xe016",
+    "0xe015",
+    "0xe016",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:17",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 17
+  },
+  {
+   "row": 18,
+   "name": "Beating Kick Mid Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "f+4, 2, 1, 2, 4",
+   "notation_std": "f+4, 2, 1, 2, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01c",
+    "0xe016",
+    "0xe015",
+    "0xe016",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:18",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 18
+  },
+  {
+   "row": 19,
+   "name": "Twin Snake Strikes",
+   "kind": "move",
+   "section": null,
+   "notation": "f+1+2",
+   "notation_std": "f+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:lei:row:19",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 19
+  },
+  {
+   "row": 20,
+   "name": "Drunken Master Walk",
+   "kind": "move",
+   "section": null,
+   "notation": "f+3+4",
+   "notation_std": "f+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:lei:row:20",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 20
+  },
+  {
+   "row": 21,
+   "name": "Drunken Tiger Lash",
+   "kind": "move",
+   "section": null,
+   "notation": "1",
+   "notation_std": "1",
+   "condition_text": "During Drunken Master Walk",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:lei:row:21",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 21
+  },
+  {
+   "row": 22,
+   "name": "Drunken Rapid Fists",
+   "kind": "move",
+   "section": null,
+   "notation": "2, 2, 2, 2",
+   "notation_std": "2, 2, 2, 2",
+   "condition_text": "During Drunken Master Walk (or during side step )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe016",
+    "0xe016",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:22",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 22
+  },
+  {
+   "row": 23,
+   "name": "Drunken Fox Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "3",
+   "notation_std": "3",
+   "condition_text": "During Drunken Master Walk",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:23",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 23
+  },
+  {
+   "row": 24,
+   "name": "Drunken Fox Combination",
+   "kind": "move",
+   "section": null,
+   "notation": "3, 2, 4",
+   "notation_std": "3, 2, 4",
+   "condition_text": "During Drunken Master Walk",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe016",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:24",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 24
+  },
+  {
+   "row": 25,
+   "name": "Drunken Tiger Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "4",
+   "notation_std": "4",
+   "condition_text": "During Drunken Master Walk",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:25",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 25
+  },
+  {
+   "row": 26,
+   "name": "Tiger Sip",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2, 1+2, 1+2",
+   "notation_std": "1+2, 1+2, 1+2",
+   "condition_text": "During Drunken Master Walk",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017",
+    "0xe017",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:lei:row:26",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 26
+  },
+  {
+   "row": 27,
+   "name": "Staggering Slide",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "During Drunken Master Walk",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:lei:row:27",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 27
+  },
+  {
+   "row": 28,
+   "name": "Out of Control",
+   "kind": "move",
+   "section": null,
+   "notation": "1+3 or 2+4",
+   "notation_std": "1+3 or 2+4",
+   "condition_text": "During Drunken Master Walk (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:lei:row:28",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 28
+  },
+  {
+   "row": 29,
+   "name": "Spinning Headbutt",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1+2",
+   "notation_std": "b+1+2",
+   "condition_text": "During Drunken Master Walk",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:lei:row:29",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 29
+  },
+  {
+   "row": 30,
+   "name": "Drunken Stupor",
+   "kind": "move",
+   "section": null,
+   "notation": "u/b+1+2",
+   "notation_std": "u/b+1+2",
+   "condition_text": "During Drunken Master Walk",
+   "multi_part": false,
+   "glyphs": [
+    "0xe005",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:lei:row:30",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 30
+  },
+  {
+   "row": 31,
+   "name": "Drunken Fake to Jab",
+   "kind": "move",
+   "section": null,
+   "notation": "u/b+1+2, 1",
+   "notation_std": "u/b+1+2, 1",
+   "condition_text": "During Drunken Master Walk",
+   "multi_part": false,
+   "glyphs": [
+    "0xe005",
+    "0xe017",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:lei:row:31",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 31
+  },
+  {
+   "row": 32,
+   "name": "Drunken Fall",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+1+2",
+   "notation_std": "u/f+1+2",
+   "condition_text": "During Drunken Master Walk",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:lei:row:32",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 32
+  },
+  {
+   "row": 33,
+   "name": "Dancing Cobra",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+1, 1, 1",
+   "notation_std": "d/f+1, 1, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe015",
+    "0xe015",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:lei:row:33",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 33
+  },
+  {
+   "row": 34,
+   "name": "Right Uppercut",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+2",
+   "notation_std": "d/f+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:34",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 34
+  },
+  {
+   "row": 35,
+   "name": "Spinning Side Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+3",
+   "notation_std": "d/f+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:35",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 35
+  },
+  {
+   "row": 36,
+   "name": "Tiger Fang",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+1+2",
+   "notation_std": "d/f+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:lei:row:36",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 36
+  },
+  {
+   "row": 37,
+   "name": "Iron Mace",
+   "kind": "move",
+   "section": null,
+   "notation": "d+2",
+   "notation_std": "d+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:37",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 37
+  },
+  {
+   "row": 38,
+   "name": "Lian Huan Tie Suo",
+   "kind": "move",
+   "section": null,
+   "notation": "d+2, 2",
+   "notation_std": "d+2, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe016",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:38",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 38
+  },
+  {
+   "row": 39,
+   "name": "Low Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "d+4",
+   "notation_std": "d+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:39",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 39
+  },
+  {
+   "row": 40,
+   "name": "Double Stab",
+   "kind": "move",
+   "section": null,
+   "notation": "d+4, 4",
+   "notation_std": "d+4, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:40",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 40
+  },
+  {
+   "row": 41,
+   "name": "Sidewind",
+   "kind": "move",
+   "section": null,
+   "notation": "d+1+2, d+1+4",
+   "notation_std": "d+1+2, d+1+4",
+   "condition_text": "(or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe017",
+    "0xe001",
+    "0xe01d"
+   ],
+   "anim_ref": "ttt2:lei:row:41",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 41
+  },
+  {
+   "row": 42,
+   "name": "Maelstrom Sweep",
+   "kind": "move",
+   "section": null,
+   "notation": "3",
+   "notation_std": "3",
+   "condition_text": "During Sidewind (Feet first)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:42",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 42
+  },
+  {
+   "row": 43,
+   "name": "Low Kick to Play Dead",
+   "kind": "move",
+   "section": null,
+   "notation": "3, 4",
+   "notation_std": "3, 4",
+   "condition_text": "During Sidewind (Feet first) 【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:43",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 43
+  },
+  {
+   "row": 44,
+   "name": "Clean Sweep",
+   "kind": "move",
+   "section": null,
+   "notation": "4, 3",
+   "notation_std": "4, 3",
+   "condition_text": "During Sidewind (Feet first) 【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:44",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 44
+  },
+  {
+   "row": 45,
+   "name": "Fu Qin Tian Jiao",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "During Sidewind (Feet first)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:lei:row:45",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 45
+  },
+  {
+   "row": 46,
+   "name": "Sliding Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "4, 3",
+   "notation_std": "4, 3",
+   "condition_text": "During Sidewind (Head first) 【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:46",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 46
+  },
+  {
+   "row": 47,
+   "name": "Bicycle Kicks",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "During Sidewind (Head first)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:lei:row:47",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 47
+  },
+  {
+   "row": 48,
+   "name": "Deadly Current",
+   "kind": "move",
+   "section": null,
+   "notation": "d+3+4",
+   "notation_std": "d+3+4",
+   "condition_text": "During Sidewind (Head first)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:lei:row:48",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 48
+  },
+  {
+   "row": 49,
+   "name": "Play Dead",
+   "kind": "move",
+   "section": null,
+   "notation": "d+3+4, d+2+3",
+   "notation_std": "d+3+4, d+2+3",
+   "condition_text": "(or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe020",
+    "0xe001",
+    "0xe01a"
+   ],
+   "anim_ref": "ttt2:lei:row:49",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 49
+  },
+  {
+   "row": 50,
+   "name": "Lotus Cutter",
+   "kind": "move",
+   "section": null,
+   "notation": "3",
+   "notation_std": "3",
+   "condition_text": "During Play Dead (Feet first)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:50",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 50
+  },
+  {
+   "row": 51,
+   "name": "Dan Jiao",
+   "kind": "move",
+   "section": null,
+   "notation": "4",
+   "notation_std": "4",
+   "condition_text": "During Play Dead (Feet first)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:51",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 51
+  },
+  {
+   "row": 52,
+   "name": "Kai She Shen",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "During Play Dead (Feet first)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:lei:row:52",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 52
+  },
+  {
+   "row": 53,
+   "name": "Leaping Double Slicer",
+   "kind": "move",
+   "section": null,
+   "notation": "3, 4",
+   "notation_std": "3, 4",
+   "condition_text": "During Play Dead (Head first)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:53",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 53
+  },
+  {
+   "row": 54,
+   "name": "Spring Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "4",
+   "notation_std": "4",
+   "condition_text": "During Play Dead (Head first)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:54",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 54
+  },
+  {
+   "row": 55,
+   "name": "Po Long Sheng Tui",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "During Play Dead (Head first)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:lei:row:55",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 55
+  },
+  {
+   "row": 56,
+   "name": "Hangover",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2+3",
+   "notation_std": "1+2+3",
+   "condition_text": "During Play Dead",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01b"
+   ],
+   "anim_ref": "ttt2:lei:row:56",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 56
+  },
+  {
+   "row": 57,
+   "name": "Turn Over",
+   "kind": "move",
+   "section": null,
+   "notation": "1, d+1",
+   "notation_std": "1, d+1",
+   "condition_text": "During Play Dead (or Sidewind) (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe001",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:lei:row:57",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 57
+  },
+  {
+   "row": 58,
+   "name": "Meng Xian",
+   "kind": "move",
+   "section": null,
+   "notation": "2, 2",
+   "notation_std": "2, 2",
+   "condition_text": "During Play Dead (or Sidewind) (or while down )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:58",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 58
+  },
+  {
+   "row": 59,
+   "name": "Startled Drunk",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "During Play Dead (or Sidewind)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:lei:row:59",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 59
+  },
+  {
+   "row": 60,
+   "name": "She Juan Rui Ya",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+1",
+   "notation_std": "d/b+1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:lei:row:60",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 60
+  },
+  {
+   "row": 61,
+   "name": "Rave Spin",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+4, 4",
+   "notation_std": "d/b+4, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:61",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 61
+  },
+  {
+   "row": 62,
+   "name": "Orchid Palm",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+1+2",
+   "notation_std": "d/b+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:lei:row:62",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 62
+  },
+  {
+   "row": 63,
+   "name": "Mule Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+3+4",
+   "notation_std": "d/b+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:lei:row:63",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 63
+  },
+  {
+   "row": 64,
+   "name": "Dragon Spear",
+   "kind": "move",
+   "section": null,
+   "notation": "b+2",
+   "notation_std": "b+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:64",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 64
+  },
+  {
+   "row": 65,
+   "name": "Lei Gong Elbow",
+   "kind": "move",
+   "section": null,
+   "notation": "b+4, 1",
+   "notation_std": "b+4, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe01c",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:lei:row:65",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 65
+  },
+  {
+   "row": 66,
+   "name": "Cannonball",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1+2",
+   "notation_std": "b+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:lei:row:66",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 66
+  },
+  {
+   "row": 67,
+   "name": "Back Turn",
+   "kind": "move",
+   "section": null,
+   "notation": "b+3+4",
+   "notation_std": "b+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:lei:row:67",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 67
+  },
+  {
+   "row": 68,
+   "name": "Dancing Spear",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 1, 3, 2",
+   "notation_std": "1, 1, 3, 2",
+   "condition_text": "Back towards enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe015",
+    "0xe018",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:68",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 68
+  },
+  {
+   "row": 69,
+   "name": "Spinning Heavy Hand",
+   "kind": "move",
+   "section": null,
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "Back towards enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:69",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 69
+  },
+  {
+   "row": 70,
+   "name": "Reverse Double Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "4, 3",
+   "notation_std": "4, 3",
+   "condition_text": "Back towards enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:70",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 70
+  },
+  {
+   "row": 71,
+   "name": "Reverse Watermill",
+   "kind": "move",
+   "section": null,
+   "notation": "4, 4",
+   "notation_std": "4, 4",
+   "condition_text": "Back towards enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:71",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 71
+  },
+  {
+   "row": 72,
+   "name": "Backfist Elbow Drop",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2, 2",
+   "notation_std": "1+2, 2",
+   "condition_text": "Back towards enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:72",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 72
+  },
+  {
+   "row": 73,
+   "name": "Flit Flip Flop",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4, 3+4, 3+4",
+   "notation_std": "3+4, 3+4, 3+4",
+   "condition_text": "Back towards enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020",
+    "0xe020",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:lei:row:73",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 73
+  },
+  {
+   "row": 74,
+   "name": "Low Back Spin",
+   "kind": "move",
+   "section": null,
+   "notation": "d+1",
+   "notation_std": "d+1",
+   "condition_text": "Back towards enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:lei:row:74",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 74
+  },
+  {
+   "row": 75,
+   "name": "Reverse Double Slicer",
+   "kind": "move",
+   "section": null,
+   "notation": "d+4, 4",
+   "notation_std": "d+4, 4",
+   "condition_text": "Back towards enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:75",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 75
+  },
+  {
+   "row": 76,
+   "name": "Falling Tree",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+2",
+   "notation_std": "u/f+2",
+   "condition_text": "Back towards enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:76",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 76
+  },
+  {
+   "row": 77,
+   "name": "Phoenix Illusion",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1+4",
+   "notation_std": "b+1+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe01d"
+   ],
+   "anim_ref": "ttt2:lei:row:77",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 77
+  },
+  {
+   "row": 78,
+   "name": "Phoenix Spear",
+   "kind": "move",
+   "section": null,
+   "notation": "1",
+   "notation_std": "1",
+   "condition_text": "During Phoenix Illusion",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:lei:row:78",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 78
+  },
+  {
+   "row": 79,
+   "name": "Phoenix Drunken Tiger Stumble",
+   "kind": "move",
+   "section": null,
+   "notation": "1, D+2",
+   "notation_std": "1, d+2",
+   "condition_text": "During Phoenix Illusion",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe009",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:79",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 79
+  },
+  {
+   "row": 80,
+   "name": "Phoenix Wrath",
+   "kind": "move",
+   "section": null,
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "During Phoenix Illusion",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:80",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 80
+  },
+  {
+   "row": 81,
+   "name": "Phoenix Sunder",
+   "kind": "move",
+   "section": null,
+   "notation": "3, 3",
+   "notation_std": "3, 3",
+   "condition_text": "During Phoenix Illusion",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:81",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 81
+  },
+  {
+   "row": 82,
+   "name": "Phoenix Cutter",
+   "kind": "move",
+   "section": null,
+   "notation": "4",
+   "notation_std": "4",
+   "condition_text": "During Phoenix Illusion",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:82",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 82
+  },
+  {
+   "row": 83,
+   "name": "Phoenix Illusion to Drunken Master Walk",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "During Phoenix Illusion",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:lei:row:83",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 83
+  },
+  {
+   "row": 84,
+   "name": "Phoenix Strike",
+   "kind": "move",
+   "section": null,
+   "notation": "f+4",
+   "notation_std": "f+4",
+   "condition_text": "During Phoenix Illusion",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:84",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 84
+  },
+  {
+   "row": 85,
+   "name": "Hopping Phoenix",
+   "kind": "move",
+   "section": null,
+   "notation": "B+3, 3",
+   "notation_std": "b+3, 3",
+   "condition_text": "During Phoenix Illusion ・・・",
+   "multi_part": false,
+   "glyphs": [
+    "0xe00b",
+    "0xe018",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:85",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 85
+  },
+  {
+   "row": 86,
+   "name": "Tornado Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "b+4, 4, 4",
+   "notation_std": "b+4, 4, 4",
+   "condition_text": "During Phoenix Illusion",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe01c",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:86",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 86
+  },
+  {
+   "row": 87,
+   "name": "Scythe Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "u/b+4",
+   "notation_std": "u/b+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe005",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:87",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 87
+  },
+  {
+   "row": 88,
+   "name": "Immortal Flight",
+   "kind": "move",
+   "section": null,
+   "notation": "u+1+2",
+   "notation_std": "u+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe006",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:lei:row:88",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 88
+  },
+  {
+   "row": 89,
+   "name": "Sonic Strike",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+1",
+   "notation_std": "u/f+1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:lei:row:89",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 89
+  },
+  {
+   "row": 90,
+   "name": "Falling Tree",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+2",
+   "notation_std": "u/f+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:90",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 90
+  },
+  {
+   "row": 91,
+   "name": "Hopping Crane Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3",
+   "notation_std": "u/f+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:91",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 91
+  },
+  {
+   "row": 92,
+   "name": "Comet Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3+4, 4",
+   "notation_std": "u/f+3+4, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe020",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:92",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 92
+  },
+  {
+   "row": 93,
+   "name": "Razor Rush Low Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "f+1, 2, 1, 2, 3",
+   "notation_std": "f+1, 2, 1, 2, 3",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe015",
+    "0xe016",
+    "0xe015",
+    "0xe016",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:93",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 93
+  },
+  {
+   "row": 94,
+   "name": "Razor Rush Mid Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "f+1, 2, 1, 2, 4",
+   "notation_std": "f+1, 2, 1, 2, 4",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe015",
+    "0xe016",
+    "0xe015",
+    "0xe016",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:94",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 94
+  },
+  {
+   "row": 95,
+   "name": "Defense Breaker",
+   "kind": "move",
+   "section": null,
+   "notation": "f+2, 1, 2, 1",
+   "notation_std": "f+2, 1, 2, 1",
+   "condition_text": "(While enemy is guarding) ☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe016",
+    "0xe015",
+    "0xe016",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:lei:row:95",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 95
+  },
+  {
+   "row": 96,
+   "name": "One Two Kick Mid",
+   "kind": "move",
+   "section": null,
+   "notation": "f+3, 4",
+   "notation_std": "f+3, 4",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:96",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 96
+  },
+  {
+   "row": 97,
+   "name": "One Two Kick Low",
+   "kind": "move",
+   "section": null,
+   "notation": "f+3, d+4",
+   "notation_std": "f+3, d+4",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe018",
+    "0xe001",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:97",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 97
+  },
+  {
+   "row": 98,
+   "name": "Wolf Strike",
+   "kind": "move",
+   "section": null,
+   "notation": "f+4, 1, 2, 2, 2",
+   "notation_std": "f+4, 1, 2, 2, 2",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01c",
+    "0xe015",
+    "0xe016",
+    "0xe016",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:98",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 98
+  },
+  {
+   "row": 99,
+   "name": "Wolf Strike to Snake Bite Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "f+4, 1, 2, 2, 4, 3, 3",
+   "notation_std": "f+4, 1, 2, 2, 4, 3, 3",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01c",
+    "0xe015",
+    "0xe016",
+    "0xe016",
+    "0xe01c",
+    "0xe018",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:99",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 99
+  },
+  {
+   "row": 100,
+   "name": "Rush Combo Mid Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "f+4, 1, 2, 3, 4",
+   "notation_std": "f+4, 1, 2, 3, 4",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01c",
+    "0xe015",
+    "0xe016",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:100",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 100
+  },
+  {
+   "row": 101,
+   "name": "Rush Combo Low Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "f+4, 1, 2, 3, d+4",
+   "notation_std": "f+4, 1, 2, 3, d+4",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01c",
+    "0xe015",
+    "0xe016",
+    "0xe018",
+    "0xe001",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:101",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 101
+  },
+  {
+   "row": 102,
+   "name": "Mauling Dragon",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+2",
+   "notation_std": "f, f+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:102",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 102
+  },
+  {
+   "row": 103,
+   "name": "Reverse Lotus",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+3",
+   "notation_std": "f, f+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:103",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 103
+  },
+  {
+   "row": 104,
+   "name": "Floating Lotus",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+3, 4",
+   "notation_std": "f, f+3, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:104",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 104
+  },
+  {
+   "row": 105,
+   "name": "Turbulent Winds",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+4, 3+4",
+   "notation_std": "f, f+4, 3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe01c",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:lei:row:105",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 105
+  },
+  {
+   "row": 106,
+   "name": "Dragon's Whip",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+3+4",
+   "notation_std": "f, f+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:lei:row:106",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 106
+  },
+  {
+   "row": 107,
+   "name": "Drunken Tiger Lash",
+   "kind": "move",
+   "section": null,
+   "notation": "b, B+1",
+   "notation_std": "b, b+1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe00b",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:lei:row:107",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 107
+  },
+  {
+   "row": 108,
+   "name": "Drunken Tiger Stumble",
+   "kind": "move",
+   "section": null,
+   "notation": "b, B+1, D+2",
+   "notation_std": "b, b+1, d+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe00b",
+    "0xe015",
+    "0xe009",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:108",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 108
+  },
+  {
+   "row": 109,
+   "name": "Jumping Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "f, f, f+3",
+   "notation_std": "f, f, f+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe004",
+    "0xe004",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:109",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 109
+  },
+  {
+   "row": 110,
+   "name": "Wild Upper",
+   "kind": "move",
+   "section": null,
+   "notation": "2, 1",
+   "notation_std": "2, 1",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:lei:row:110",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 110
+  },
+  {
+   "row": 111,
+   "name": "Di Gong Jiao",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:lei:row:111",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 111
+  },
+  {
+   "row": 112,
+   "name": "Ballroom Dance",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+2, 1, 4",
+   "notation_std": "d/f+2, 1, 4",
+   "condition_text": "While crouching",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe016",
+    "0xe015",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:112",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 112
+  },
+  {
+   "row": 113,
+   "name": "Snake Palm Fist",
+   "kind": "move",
+   "section": null,
+   "notation": "1",
+   "notation_std": "1",
+   "condition_text": "During side step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:lei:row:113",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 113
+  },
+  {
+   "row": 114,
+   "name": "Crane Cannon",
+   "kind": "move",
+   "section": null,
+   "notation": "4",
+   "notation_std": "4",
+   "condition_text": "During side step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:114",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 114
+  },
+  {
+   "row": 115,
+   "name": "Falling Blade",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "During side step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:lei:row:115",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 115
+  },
+  {
+   "row": 116,
+   "name": "Spring Up",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "While down (facing up)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:lei:row:116",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 116
+  },
+  {
+   "row": 117,
+   "name": "Razor Rush Snake",
+   "kind": "move",
+   "section": null,
+   "notation": "f+1, u, d",
+   "notation_std": "f+1, u, d",
+   "condition_text": "☆ (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe015",
+    "0xe006",
+    "0xe001"
+   ],
+   "anim_ref": "ttt2:lei:row:117",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 117
+  },
+  {
+   "row": 118,
+   "name": "Razor Rush Dragon",
+   "kind": "move",
+   "section": null,
+   "notation": "f+1, 2, u, d",
+   "notation_std": "f+1, 2, u, d",
+   "condition_text": "☆ (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe015",
+    "0xe016",
+    "0xe006",
+    "0xe001"
+   ],
+   "anim_ref": "ttt2:lei:row:118",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 118
+  },
+  {
+   "row": 119,
+   "name": "Razor Rush Panther",
+   "kind": "move",
+   "section": null,
+   "notation": "f+1, 2, 1, u, d",
+   "notation_std": "f+1, 2, 1, u, d",
+   "condition_text": "☆ (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe015",
+    "0xe016",
+    "0xe015",
+    "0xe006",
+    "0xe001"
+   ],
+   "anim_ref": "ttt2:lei:row:119",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 119
+  },
+  {
+   "row": 120,
+   "name": "Razor Rush Tiger",
+   "kind": "move",
+   "section": null,
+   "notation": "f+1, 2, 1, 2, u, d",
+   "notation_std": "f+1, 2, 1, 2, u, d",
+   "condition_text": "☆ (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe015",
+    "0xe016",
+    "0xe015",
+    "0xe016",
+    "0xe006",
+    "0xe001"
+   ],
+   "anim_ref": "ttt2:lei:row:120",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 120
+  },
+  {
+   "row": 121,
+   "name": "Razor Rush Mid Kick Crane",
+   "kind": "move",
+   "section": null,
+   "notation": "f+1, 2, 1, 2, 4, u, d",
+   "notation_std": "f+1, 2, 1, 2, 4, u, d",
+   "condition_text": "☆ (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe015",
+    "0xe016",
+    "0xe015",
+    "0xe016",
+    "0xe01c",
+    "0xe006",
+    "0xe001"
+   ],
+   "anim_ref": "ttt2:lei:row:121",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 121
+  },
+  {
+   "row": 122,
+   "name": "Beating Kick Mid Combo Crane",
+   "kind": "move",
+   "section": null,
+   "notation": "f+4, 2, 1, 2, 4, u, d",
+   "notation_std": "f+4, 2, 1, 2, 4, u, d",
+   "condition_text": "(or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01c",
+    "0xe016",
+    "0xe015",
+    "0xe016",
+    "0xe01c",
+    "0xe006",
+    "0xe001"
+   ],
+   "anim_ref": "ttt2:lei:row:122",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 122
+  },
+  {
+   "row": 123,
+   "name": "Snake",
+   "kind": "move",
+   "section": null,
+   "notation": "f+2+3, b+2+3",
+   "notation_std": "f+2+3, b+2+3",
+   "condition_text": "(or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01a",
+    "0xe003",
+    "0xe01a"
+   ],
+   "anim_ref": "ttt2:lei:row:123",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 123
+  },
+  {
+   "row": 124,
+   "name": "Rushing Snake",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 1, 1, 1, 1",
+   "notation_std": "1, 1, 1, 1, 1",
+   "condition_text": "During Snake",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe015",
+    "0xe015",
+    "0xe015",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:lei:row:124",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 124
+  },
+  {
+   "row": 125,
+   "name": "Snapping Snake",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2, 1, 2",
+   "notation_std": "1, 2, 1, 2",
+   "condition_text": "During Snake",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:125",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 125
+  },
+  {
+   "row": 126,
+   "name": "Snake Bites",
+   "kind": "move",
+   "section": null,
+   "notation": "2, 2, 2",
+   "notation_std": "2, 2, 2",
+   "condition_text": "During Snake",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe016",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:126",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 126
+  },
+  {
+   "row": 127,
+   "name": "Snake Bite Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "2, 2, 4, 3, 3",
+   "notation_std": "2, 2, 4, 3, 3",
+   "condition_text": "During Snake",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe016",
+    "0xe01c",
+    "0xe018",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:127",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 127
+  },
+  {
+   "row": 128,
+   "name": "Rattlesnake",
+   "kind": "move",
+   "section": null,
+   "notation": "3",
+   "notation_std": "3",
+   "condition_text": "During Snake",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:128",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 128
+  },
+  {
+   "row": 129,
+   "name": "Snake Low Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "4",
+   "notation_std": "4",
+   "condition_text": "During Snake",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:129",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 129
+  },
+  {
+   "row": 130,
+   "name": "Angry Viper",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "During Snake",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:lei:row:130",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 130
+  },
+  {
+   "row": 131,
+   "name": "Dragon",
+   "kind": "move",
+   "section": null,
+   "notation": "u",
+   "notation_std": "u",
+   "condition_text": "During Snake",
+   "multi_part": false,
+   "glyphs": [
+    "0xe006"
+   ],
+   "anim_ref": "ttt2:lei:row:131",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 131
+  },
+  {
+   "row": 132,
+   "name": "Dragon Neck Snap",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 1+3",
+   "notation_std": "1, 1+3",
+   "condition_text": "During Dragon (or during Snake )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe019"
+   ],
+   "anim_ref": "ttt2:lei:row:132",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 132
+  },
+  {
+   "row": 133,
+   "name": "Dragon Roar",
+   "kind": "move",
+   "section": null,
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "During Dragon",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:133",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 133
+  },
+  {
+   "row": 134,
+   "name": "Cuju Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "3",
+   "notation_std": "3",
+   "condition_text": "During Dragon",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:134",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 134
+  },
+  {
+   "row": 135,
+   "name": "Dragon's Fang Attack",
+   "kind": "move",
+   "section": null,
+   "notation": "4, 1, 2, 3",
+   "notation_std": "4, 1, 2, 3",
+   "condition_text": "During Dragon",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe015",
+    "0xe016",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:135",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 135
+  },
+  {
+   "row": 136,
+   "name": "Rush Combo Mid Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "4, 1, 2, 3, 4",
+   "notation_std": "4, 1, 2, 3, 4",
+   "condition_text": "During Dragon",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe015",
+    "0xe016",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:136",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 136
+  },
+  {
+   "row": 137,
+   "name": "Rush Combo Low Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "4, 1, 2, 3, d+4",
+   "notation_std": "4, 1, 2, 3, d+4",
+   "condition_text": "During Dragon",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe015",
+    "0xe016",
+    "0xe018",
+    "0xe001",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:137",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 137
+  },
+  {
+   "row": 138,
+   "name": "Dragon's Spite",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "During Dragon",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:lei:row:138",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 138
+  },
+  {
+   "row": 139,
+   "name": "Dragon Spark",
+   "kind": "move",
+   "section": null,
+   "notation": "f+1+2",
+   "notation_std": "f+1+2",
+   "condition_text": "During Dragon",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:lei:row:139",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 139
+  },
+  {
+   "row": 140,
+   "name": "Panther",
+   "kind": "move",
+   "section": null,
+   "notation": "d",
+   "notation_std": "d",
+   "condition_text": "During Snake",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001"
+   ],
+   "anim_ref": "ttt2:lei:row:140",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 140
+  },
+  {
+   "row": 141,
+   "name": "Panther's Scratch",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2",
+   "notation_std": "1, 2",
+   "condition_text": "During Panther 【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:141",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 141
+  },
+  {
+   "row": 142,
+   "name": "Panther's Paw",
+   "kind": "move",
+   "section": null,
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "During Panther",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:142",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 142
+  },
+  {
+   "row": 143,
+   "name": "Panther Pounce",
+   "kind": "move",
+   "section": null,
+   "notation": "3",
+   "notation_std": "3",
+   "condition_text": "During Panther",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:143",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 143
+  },
+  {
+   "row": 144,
+   "name": "Beating Kick Low Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "4, 2, 1, 2, 3",
+   "notation_std": "4, 2, 1, 2, 3",
+   "condition_text": "During Panther",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe016",
+    "0xe015",
+    "0xe016",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:144",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 144
+  },
+  {
+   "row": 145,
+   "name": "Beating Kick Mid Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "4, 2, 1, 2, 4",
+   "notation_std": "4, 2, 1, 2, 4",
+   "condition_text": "During Panther",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe016",
+    "0xe015",
+    "0xe016",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:145",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 145
+  },
+  {
+   "row": 146,
+   "name": "Tiger",
+   "kind": "move",
+   "section": null,
+   "notation": "u",
+   "notation_std": "u",
+   "condition_text": "During Dragon",
+   "multi_part": false,
+   "glyphs": [
+    "0xe006"
+   ],
+   "anim_ref": "ttt2:lei:row:146",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 146
+  },
+  {
+   "row": 147,
+   "name": "Tiger's Strike",
+   "kind": "move",
+   "section": null,
+   "notation": "1",
+   "notation_std": "1",
+   "condition_text": "During Tiger",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:lei:row:147",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 147
+  },
+  {
+   "row": 148,
+   "name": "Tiger's Claw",
+   "kind": "move",
+   "section": null,
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "During Tiger",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:148",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 148
+  },
+  {
+   "row": 149,
+   "name": "Leaping Tiger",
+   "kind": "move",
+   "section": null,
+   "notation": "3",
+   "notation_std": "3",
+   "condition_text": "During Tiger",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:149",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 149
+  },
+  {
+   "row": 150,
+   "name": "Leaping Tiger to Crouching Snake",
+   "kind": "move",
+   "section": null,
+   "notation": "3, f+1",
+   "notation_std": "3, f+1",
+   "condition_text": "During Tiger",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe004",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:lei:row:150",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 150
+  },
+  {
+   "row": 151,
+   "name": "Leaping Tiger to Coiled Snake",
+   "kind": "move",
+   "section": null,
+   "notation": "3, f+4",
+   "notation_std": "3, f+4",
+   "condition_text": "During Tiger",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe004",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:151",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 151
+  },
+  {
+   "row": 152,
+   "name": "Tiger's Tail",
+   "kind": "move",
+   "section": null,
+   "notation": "4",
+   "notation_std": "4",
+   "condition_text": "During Tiger",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:152",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 152
+  },
+  {
+   "row": 153,
+   "name": "Double Tiger Palm",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "During Tiger",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:lei:row:153",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 153
+  },
+  {
+   "row": 154,
+   "name": "Crane",
+   "kind": "move",
+   "section": null,
+   "notation": "d",
+   "notation_std": "d",
+   "condition_text": "During Panther",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001"
+   ],
+   "anim_ref": "ttt2:lei:row:154",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 154
+  },
+  {
+   "row": 155,
+   "name": "Crane's Bill",
+   "kind": "move",
+   "section": null,
+   "notation": "1",
+   "notation_std": "1",
+   "condition_text": "During Crane",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:lei:row:155",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 155
+  },
+  {
+   "row": 156,
+   "name": "Wing of Crane",
+   "kind": "move",
+   "section": null,
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "During Crane",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:156",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 156
+  },
+  {
+   "row": 157,
+   "name": "Crane Dance",
+   "kind": "move",
+   "section": null,
+   "notation": "3, 4, 2, 3",
+   "notation_std": "3, 4, 2, 3",
+   "condition_text": "During Crane",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe01c",
+    "0xe016",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:157",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 157
+  },
+  {
+   "row": 158,
+   "name": "Crane Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "4",
+   "notation_std": "4",
+   "condition_text": "During Crane",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:158",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 158
+  },
+  {
+   "row": 159,
+   "name": "Crane Smash",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "During Crane",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:lei:row:159",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 159
+  },
+  {
+   "row": 160,
+   "name": "Leaping Crane",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+4",
+   "notation_std": "u/f+4",
+   "condition_text": "During Crane",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:160",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 160
+  },
+  {
+   "row": 161,
+   "name": "Taunt 1",
+   "kind": "move",
+   "section": null,
+   "notation": "1+3+4",
+   "notation_std": "1+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe021"
+   ],
+   "anim_ref": "ttt2:lei:row:161",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 161
+  },
+  {
+   "row": 162,
+   "name": "Taunt 2",
+   "kind": "move",
+   "section": null,
+   "notation": "2+3+4",
+   "notation_std": "2+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe022"
+   ],
+   "anim_ref": "ttt2:lei:row:162",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 162
+  },
+  {
+   "row": 163,
+   "name": "10 Hit Combo 1",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1, 2, 1, 3+4, 2, 1, 4, 1, 2, 3",
+   "notation_std": "b+1, 2, 1, 3+4, 2, 1, 4, 1, 2, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe015",
+    "0xe016",
+    "0xe015",
+    "0xe020",
+    "0xe016",
+    "0xe015",
+    "0xe01c",
+    "0xe015",
+    "0xe016",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:163",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 163
+  },
+  {
+   "row": 164,
+   "name": "10 Hit Combo 2",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1, 2, 1, 3+4, 2, 1, 4, 1, 4, 4",
+   "notation_std": "b+1, 2, 1, 3+4, 2, 1, 4, 1, 4, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe015",
+    "0xe016",
+    "0xe015",
+    "0xe020",
+    "0xe016",
+    "0xe015",
+    "0xe01c",
+    "0xe015",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:164",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 164
+  },
+  {
+   "row": 165,
+   "name": "10 Hit Combo 3",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1, 2, 1, 3+4, 3+4, 3+4, 1, 1, 2",
+   "notation_std": "b+1, 2, 1, 3+4, 3+4, 3+4, 1, 1, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe015",
+    "0xe016",
+    "0xe015",
+    "0xe020",
+    "0xe020",
+    "0xe020",
+    "0xe015",
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:165",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 165
+  },
+  {
+   "row": 166,
+   "name": "Double Foot Stomp",
+   "kind": "move",
+   "section": null,
+   "notation": "1+3",
+   "notation_std": "1+3",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019"
+   ],
+   "anim_ref": "ttt2:lei:row:166",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 166
+  },
+  {
+   "row": 167,
+   "name": "Double Foot Stomp",
+   "kind": "move",
+   "section": null,
+   "notation": "f+1+3",
+   "notation_std": "f+1+3",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe019"
+   ],
+   "anim_ref": "ttt2:lei:row:167",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 167
+  },
+  {
+   "row": 168,
+   "name": "Sleeper Hold",
+   "kind": "move",
+   "section": null,
+   "notation": "2+4",
+   "notation_std": "2+4",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:lei:row:168",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 168
+  },
+  {
+   "row": 169,
+   "name": "Sleeper Hold",
+   "kind": "move",
+   "section": null,
+   "notation": "f+2+4",
+   "notation_std": "f+2+4",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:lei:row:169",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 169
+  },
+  {
+   "row": 170,
+   "name": "Sailboat Stretch",
+   "kind": "move",
+   "section": null,
+   "notation": "1+3 or 2+4",
+   "notation_std": "1+3 or 2+4",
+   "condition_text": "Approach from left side (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:lei:row:170",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 170
+  },
+  {
+   "row": 171,
+   "name": "Closing Fan",
+   "kind": "move",
+   "section": null,
+   "notation": "1+3 or 2+4",
+   "notation_std": "1+3 or 2+4",
+   "condition_text": "Approach from right side (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:lei:row:171",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 171
+  },
+  {
+   "row": 172,
+   "name": "Windmill",
+   "kind": "move",
+   "section": null,
+   "notation": "1+3 or 2+4",
+   "notation_std": "1+3 or 2+4",
+   "condition_text": "Approach from behind (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:lei:row:172",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 172
+  },
+  {
+   "row": 173,
+   "name": "Dragon Falls",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+1+2",
+   "notation_std": "u/f+1+2",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:lei:row:173",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 173
+  },
+  {
+   "row": 174,
+   "name": "Tripping",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+1+2",
+   "notation_std": "f, f+1+2",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:lei:row:174",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 174
+  },
+  {
+   "row": 175,
+   "name": "Sample Combo 1",
+   "kind": "sample_combo",
+   "section": null,
+   "notation": "u/f+4, f+1, f+4, 1, 2, 3",
+   "notation_std": "u/f+4, f+1, f+4, 1, 2, 3",
+   "condition_text": "☆",
+   "multi_part": true,
+   "glyphs": [
+    "0xe007",
+    "0xe01c",
+    "0xe063",
+    "0xe004",
+    "0xe015",
+    "0xe063",
+    "0xe004",
+    "0xe01c",
+    "0xe015",
+    "0xe016",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:175",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 175
+  },
+  {
+   "row": 176,
+   "name": "Sample Combo 2",
+   "kind": "sample_combo",
+   "section": null,
+   "notation": "d/f+2, f+1, 2, d/f+1+2, f, F+3, 4",
+   "notation_std": "d/f+2, f+1, 2, d/f+1+2, f, f+3, 4",
+   "condition_text": "",
+   "multi_part": true,
+   "glyphs": [
+    "0xe002",
+    "0xe016",
+    "0xe063",
+    "0xe004",
+    "0xe015",
+    "0xe016",
+    "0xe063",
+    "0xe002",
+    "0xe017",
+    "0xe063",
+    "0xe004",
+    "0xe00c",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:176",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 176
+  },
+  {
+   "row": 177,
+   "name": "Sample Combo 3",
+   "kind": "sample_combo",
+   "section": null,
+   "notation": "u/f+3+4, 4, 4, f+3, 1, 2",
+   "notation_std": "u/f+3+4, 4, 4, f+3, 1, 2",
+   "condition_text": "Back towards enemy",
+   "multi_part": true,
+   "glyphs": [
+    "0xe007",
+    "0xe020",
+    "0xe063",
+    "0xe01c",
+    "0xe01c",
+    "0xe063",
+    "0xe004",
+    "0xe018",
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:lei:row:177",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 177
+  },
+  {
+   "row": 178,
+   "name": "Sample Combo 4",
+   "kind": "sample_combo",
+   "section": null,
+   "notation": "u/f+4, f+4, 1, F, 1, f, F+4, 3+4",
+   "notation_std": "u/f+4, f+4, 1, f, 1, f, f+4, 3+4",
+   "condition_text": "☆During Tiger",
+   "multi_part": true,
+   "glyphs": [
+    "0xe007",
+    "0xe01c",
+    "0xe063",
+    "0xe004",
+    "0xe01c",
+    "0xe015",
+    "0xe00c",
+    "0xe063",
+    "0xe015",
+    "0xe063",
+    "0xe004",
+    "0xe00c",
+    "0xe01c",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:lei:row:178",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 178
+  },
+  {
+   "row": 179,
+   "name": "Sample Combo 5",
+   "kind": "sample_combo",
+   "section": null,
+   "notation": "4, d/f+2, 1, 4, 2, d/f+3",
+   "notation_std": "4, d/f+2, 1, 4, 2, d/f+3",
+   "condition_text": "During Tiger While crouching During Phoenix Illusion",
+   "multi_part": true,
+   "glyphs": [
+    "0xe01c",
+    "0xe063",
+    "0xe002",
+    "0xe016",
+    "0xe015",
+    "0xe01c",
+    "0xe063",
+    "0xe016",
+    "0xe063",
+    "0xe002",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:lei:row:179",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 179
+  },
+  {
+   "row": 180,
+   "name": "Sample Combo 6",
+   "kind": "sample_combo",
+   "section": null,
+   "notation": "d/b+4, F, 3, 2, f, F+3, B, 4, 4",
+   "notation_std": "d/b+4, f, 3, 2, f, f+3, b, 4, 4",
+   "condition_text": "During Drunken Master Walk Back towards enemy",
+   "multi_part": true,
+   "glyphs": [
+    "0xe000",
+    "0xe01c",
+    "0xe00c",
+    "0xe063",
+    "0xe018",
+    "0xe016",
+    "0xe063",
+    "0xe004",
+    "0xe00c",
+    "0xe018",
+    "0xe00b",
+    "0xe063",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:180",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 180
+  },
+  {
+   "row": 181,
+   "name": "Sample Combo 7",
+   "kind": "sample_combo",
+   "section": null,
+   "notation": "f, F+3, B, U/F+4, 1+2, 1, 4, 4, f, F+3, 4",
+   "notation_std": "f, f+3, b, u/f+4, 1+2, 1, 4, 4, f, f+3, 4",
+   "condition_text": "Back towards enemy Back towards enemy",
+   "multi_part": true,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe018",
+    "0xe00b",
+    "0xe063",
+    "0xe00f",
+    "0xe01c",
+    "0xe063",
+    "0xe017",
+    "0xe015",
+    "0xe063",
+    "0xe01c",
+    "0xe01c",
+    "0xe063",
+    "0xe004",
+    "0xe00c",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:lei:row:181",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 181
+  }
+ ]
+}

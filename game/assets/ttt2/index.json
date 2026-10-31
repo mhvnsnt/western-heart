@@ -1,0 +1,768 @@
+{
+ "schema": "ttt2-index-v1",
+ "source_game": "Tekken Tag Tournament 2",
+ "counts": {
+  "records": 6559,
+  "moves": 6122,
+  "sample_combos": 399,
+  "separators": 38
+ },
+ "characters": [
+  {
+   "mvlt_list": 1,
+   "prefix": "pau",
+   "display": "Paul Phoenix",
+   "bxml_doc": 0,
+   "file": "game/assets/ttt2/movesets/pau.json",
+   "counts": {
+    "records": 92,
+    "moves": 85,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 2,
+   "prefix": "law",
+   "display": "Marshall Law",
+   "bxml_doc": 1,
+   "file": "game/assets/ttt2/movesets/law.json",
+   "counts": {
+    "records": 134,
+    "moves": 127,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 3,
+   "prefix": "lei",
+   "display": "Lei Wulong",
+   "bxml_doc": 2,
+   "file": "game/assets/ttt2/movesets/lei.json",
+   "counts": {
+    "records": 182,
+    "moves": 175,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 4,
+   "prefix": "kin",
+   "display": "King",
+   "bxml_doc": 3,
+   "file": "game/assets/ttt2/movesets/kin.json",
+   "counts": {
+    "records": 194,
+    "moves": 181,
+    "sample_combos": 7,
+    "separators": 6
+   }
+  },
+  {
+   "mvlt_list": 5,
+   "prefix": "yos",
+   "display": "Yoshimitsu",
+   "bxml_doc": 4,
+   "file": "game/assets/ttt2/movesets/yos.json",
+   "counts": {
+    "records": 172,
+    "moves": 164,
+    "sample_combos": 7,
+    "separators": 1
+   }
+  },
+  {
+   "mvlt_list": 6,
+   "prefix": "nin",
+   "display": "Nina Williams",
+   "bxml_doc": 5,
+   "file": "game/assets/ttt2/movesets/nin.json",
+   "counts": {
+    "records": 144,
+    "moves": 135,
+    "sample_combos": 7,
+    "separators": 2
+   }
+  },
+  {
+   "mvlt_list": 7,
+   "prefix": "hwo",
+   "display": "Hwoarang",
+   "bxml_doc": 6,
+   "file": "game/assets/ttt2/movesets/hwo.json",
+   "counts": {
+    "records": 176,
+    "moves": 165,
+    "sample_combos": 7,
+    "separators": 4
+   }
+  },
+  {
+   "mvlt_list": 8,
+   "prefix": "xia",
+   "display": "Ling Xiaoyu",
+   "bxml_doc": 7,
+   "file": "game/assets/ttt2/movesets/xia.json",
+   "counts": {
+    "records": 146,
+    "moves": 139,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 9,
+   "prefix": "chr",
+   "display": "Christie Monteiro",
+   "bxml_doc": 8,
+   "file": "game/assets/ttt2/movesets/chr.json",
+   "counts": {
+    "records": 174,
+    "moves": 164,
+    "sample_combos": 7,
+    "separators": 3
+   }
+  },
+  {
+   "mvlt_list": 10,
+   "prefix": "jin",
+   "display": "Jin Kazama",
+   "bxml_doc": 9,
+   "file": "game/assets/ttt2/movesets/jin.json",
+   "counts": {
+    "records": 85,
+    "moves": 78,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 11,
+   "prefix": "jul",
+   "display": "Julia Chang",
+   "bxml_doc": 10,
+   "file": "game/assets/ttt2/movesets/jul.json",
+   "counts": {
+    "records": 129,
+    "moves": 122,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 12,
+   "prefix": "kum",
+   "display": "Kuma",
+   "bxml_doc": 11,
+   "file": "game/assets/ttt2/movesets/kum.json",
+   "counts": {
+    "records": 103,
+    "moves": 96,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 13,
+   "prefix": "bry",
+   "display": "Bryan Fury",
+   "bxml_doc": 12,
+   "file": "game/assets/ttt2/movesets/bry.json",
+   "counts": {
+    "records": 110,
+    "moves": 103,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 14,
+   "prefix": "hei",
+   "display": "Heihachi Mishima",
+   "bxml_doc": 13,
+   "file": "game/assets/ttt2/movesets/hei.json",
+   "counts": {
+    "records": 88,
+    "moves": 81,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 15,
+   "prefix": "kaz",
+   "display": "Kazuya Mishima",
+   "bxml_doc": 14,
+   "file": "game/assets/ttt2/movesets/kaz.json",
+   "counts": {
+    "records": 96,
+    "moves": 89,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 16,
+   "prefix": "lee",
+   "display": "Lee Chaolan",
+   "bxml_doc": 15,
+   "file": "game/assets/ttt2/movesets/lee.json",
+   "counts": {
+    "records": 102,
+    "moves": 95,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 17,
+   "prefix": "ste",
+   "display": "Steve Fox",
+   "bxml_doc": 16,
+   "file": "game/assets/ttt2/movesets/ste.json",
+   "counts": {
+    "records": 139,
+    "moves": 132,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 18,
+   "prefix": "mar",
+   "display": "Craig Marduk",
+   "bxml_doc": 17,
+   "file": "game/assets/ttt2/movesets/mar.json",
+   "counts": {
+    "records": 117,
+    "moves": 110,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 19,
+   "prefix": "jac",
+   "display": "Jack-6",
+   "bxml_doc": 19,
+   "file": "game/assets/ttt2/movesets/jac.json",
+   "counts": {
+    "records": 109,
+    "moves": 102,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 20,
+   "prefix": "rog",
+   "display": "Roger Jr.",
+   "bxml_doc": 20,
+   "file": "game/assets/ttt2/movesets/rog.json",
+   "counts": {
+    "records": 91,
+    "moves": 84,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 21,
+   "prefix": "ann",
+   "display": "Anna Williams",
+   "bxml_doc": 21,
+   "file": "game/assets/ttt2/movesets/ann.json",
+   "counts": {
+    "records": 139,
+    "moves": 131,
+    "sample_combos": 7,
+    "separators": 1
+   }
+  },
+  {
+   "mvlt_list": 22,
+   "prefix": "wan",
+   "display": "Wang Jinrei",
+   "bxml_doc": 22,
+   "file": "game/assets/ttt2/movesets/wan.json",
+   "counts": {
+    "records": 87,
+    "moves": 80,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 23,
+   "prefix": "gan",
+   "display": "Ganryu",
+   "bxml_doc": 23,
+   "file": "game/assets/ttt2/movesets/gan.json",
+   "counts": {
+    "records": 100,
+    "moves": 93,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 24,
+   "prefix": "ask",
+   "display": "Asuka Kazama",
+   "bxml_doc": 24,
+   "file": "game/assets/ttt2/movesets/ask.json",
+   "counts": {
+    "records": 103,
+    "moves": 94,
+    "sample_combos": 7,
+    "separators": 2
+   }
+  },
+  {
+   "mvlt_list": 25,
+   "prefix": "bru",
+   "display": "Bruce Irvin",
+   "bxml_doc": 25,
+   "file": "game/assets/ttt2/movesets/bru.json",
+   "counts": {
+    "records": 106,
+    "moves": 98,
+    "sample_combos": 7,
+    "separators": 1
+   }
+  },
+  {
+   "mvlt_list": 26,
+   "prefix": "bae",
+   "display": "Baek Doo San",
+   "bxml_doc": 26,
+   "file": "game/assets/ttt2/movesets/bae.json",
+   "counts": {
+    "records": 102,
+    "moves": 95,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 27,
+   "prefix": "dvj",
+   "display": "Devil Jin",
+   "bxml_doc": 27,
+   "file": "game/assets/ttt2/movesets/dvj.json",
+   "counts": {
+    "records": 96,
+    "moves": 89,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 28,
+   "prefix": "rav",
+   "display": "Raven",
+   "bxml_doc": 28,
+   "file": "game/assets/ttt2/movesets/rav.json",
+   "counts": {
+    "records": 132,
+    "moves": 125,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 29,
+   "prefix": "fen",
+   "display": "Feng Wei",
+   "bxml_doc": 29,
+   "file": "game/assets/ttt2/movesets/fen.json",
+   "counts": {
+    "records": 104,
+    "moves": 97,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 30,
+   "prefix": "aki",
+   "display": "Armor King II",
+   "bxml_doc": 30,
+   "file": "game/assets/ttt2/movesets/aki.json",
+   "counts": {
+    "records": 115,
+    "moves": 107,
+    "sample_combos": 7,
+    "separators": 1
+   }
+  },
+  {
+   "mvlt_list": 31,
+   "prefix": "lil",
+   "display": "Lili",
+   "bxml_doc": 31,
+   "file": "game/assets/ttt2/movesets/lil.json",
+   "counts": {
+    "records": 88,
+    "moves": 81,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 32,
+   "prefix": "dra",
+   "display": "Sergei Dragunov",
+   "bxml_doc": 32,
+   "file": "game/assets/ttt2/movesets/dra.json",
+   "counts": {
+    "records": 100,
+    "moves": 93,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 33,
+   "prefix": "pan",
+   "display": "Panda",
+   "bxml_doc": 43,
+   "file": "game/assets/ttt2/movesets/pan.json",
+   "counts": {
+    "records": 103,
+    "moves": 96,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 34,
+   "prefix": "edd",
+   "display": "Eddy Gordo",
+   "bxml_doc": 33,
+   "file": "game/assets/ttt2/movesets/edd.json",
+   "counts": {
+    "records": 174,
+    "moves": 164,
+    "sample_combos": 7,
+    "separators": 3
+   }
+  },
+  {
+   "mvlt_list": 35,
+   "prefix": "bob",
+   "display": "Bob",
+   "bxml_doc": 34,
+   "file": "game/assets/ttt2/movesets/bob.json",
+   "counts": {
+    "records": 102,
+    "moves": 95,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 36,
+   "prefix": "zaf",
+   "display": "Zafina",
+   "bxml_doc": 35,
+   "file": "game/assets/ttt2/movesets/zaf.json",
+   "counts": {
+    "records": 101,
+    "moves": 91,
+    "sample_combos": 7,
+    "separators": 3
+   }
+  },
+  {
+   "mvlt_list": 37,
+   "prefix": "mig",
+   "display": "Miguel",
+   "bxml_doc": 36,
+   "file": "game/assets/ttt2/movesets/mig.json",
+   "counts": {
+    "records": 118,
+    "moves": 110,
+    "sample_combos": 7,
+    "separators": 1
+   }
+  },
+  {
+   "mvlt_list": 38,
+   "prefix": "leo",
+   "display": "Leo Kliesen",
+   "bxml_doc": 37,
+   "file": "game/assets/ttt2/movesets/leo.json",
+   "counts": {
+    "records": 91,
+    "moves": 84,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 39,
+   "prefix": "lar",
+   "display": "Lars Alexandersson",
+   "bxml_doc": 38,
+   "file": "game/assets/ttt2/movesets/lar.json",
+   "counts": {
+    "records": 99,
+    "moves": 92,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 40,
+   "prefix": "asa",
+   "display": "Alisa Bosconovitch",
+   "bxml_doc": 39,
+   "file": "game/assets/ttt2/movesets/asa.json",
+   "counts": {
+    "records": 125,
+    "moves": 117,
+    "sample_combos": 7,
+    "separators": 1
+   }
+  },
+  {
+   "mvlt_list": 41,
+   "prefix": "ji8",
+   "display": "Jinpachi Mishima",
+   "bxml_doc": 40,
+   "file": "game/assets/ttt2/movesets/ji8.json",
+   "counts": {
+    "records": 87,
+    "moves": 78,
+    "sample_combos": 7,
+    "separators": 2
+   }
+  },
+  {
+   "mvlt_list": 42,
+   "prefix": "gre",
+   "display": "True Ogre",
+   "bxml_doc": 56,
+   "file": "game/assets/ttt2/movesets/gre.json",
+   "counts": {
+    "records": 82,
+    "moves": 75,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 43,
+   "prefix": "jun",
+   "display": "Jun Kazama",
+   "bxml_doc": 42,
+   "file": "game/assets/ttt2/movesets/jun.json",
+   "counts": {
+    "records": 110,
+    "moves": 101,
+    "sample_combos": 7,
+    "separators": 2
+   }
+  },
+  {
+   "mvlt_list": 44,
+   "prefix": "unk",
+   "display": "Unknown",
+   "bxml_doc": null,
+   "file": "game/assets/ttt2/movesets/unk.json",
+   "counts": {
+    "records": 119,
+    "moves": 110,
+    "sample_combos": 7,
+    "separators": 2
+   }
+  },
+  {
+   "mvlt_list": 45,
+   "prefix": "knm",
+   "display": "Kunimitsu",
+   "bxml_doc": 48,
+   "file": "game/assets/ttt2/movesets/knm.json",
+   "counts": {
+    "records": 97,
+    "moves": 90,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 46,
+   "prefix": "sli",
+   "display": "Slim Bob",
+   "bxml_doc": 50,
+   "file": "game/assets/ttt2/movesets/sli.json",
+   "counts": {
+    "records": 102,
+    "moves": 95,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 47,
+   "prefix": "flw",
+   "display": "Forest Law",
+   "bxml_doc": 47,
+   "file": "game/assets/ttt2/movesets/flw.json",
+   "counts": {
+    "records": 120,
+    "moves": 113,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 48,
+   "prefix": "mih",
+   "display": "Miharu Hirano",
+   "bxml_doc": 46,
+   "file": "game/assets/ttt2/movesets/mih.json",
+   "counts": {
+    "records": 149,
+    "moves": 142,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 49,
+   "prefix": "ang",
+   "display": "Angel",
+   "bxml_doc": 49,
+   "file": "game/assets/ttt2/movesets/ang.json",
+   "counts": {
+    "records": 78,
+    "moves": 71,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 50,
+   "prefix": "mic",
+   "display": "Michelle Chang",
+   "bxml_doc": 51,
+   "file": "game/assets/ttt2/movesets/mic.json",
+   "counts": {
+    "records": 109,
+    "moves": 102,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 51,
+   "prefix": "pja",
+   "display": "Prototype Jack",
+   "bxml_doc": 55,
+   "file": "game/assets/ttt2/movesets/pja.json",
+   "counts": {
+    "records": 110,
+    "moves": 103,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 52,
+   "prefix": "alx",
+   "display": "Alex",
+   "bxml_doc": 53,
+   "file": "game/assets/ttt2/movesets/alx.json",
+   "counts": {
+    "records": 91,
+    "moves": 84,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 53,
+   "prefix": "ogr",
+   "display": "Ancient Ogre",
+   "bxml_doc": 41,
+   "file": "game/assets/ttt2/movesets/ogr.json",
+   "counts": {
+    "records": 80,
+    "moves": 73,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 54,
+   "prefix": "vio",
+   "display": "Violet",
+   "bxml_doc": 54,
+   "file": "game/assets/ttt2/movesets/vio.json",
+   "counts": {
+    "records": 102,
+    "moves": 95,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 55,
+   "prefix": "bcv",
+   "display": "Dr. Bosconovitch",
+   "bxml_doc": 58,
+   "file": "game/assets/ttt2/movesets/bcv.json",
+   "counts": {
+    "records": 91,
+    "moves": 84,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 56,
+   "prefix": "seb",
+   "display": "Sebastian",
+   "bxml_doc": 57,
+   "file": "game/assets/ttt2/movesets/seb.json",
+   "counts": {
+    "records": 89,
+    "moves": 82,
+    "sample_combos": 7,
+    "separators": 0
+   }
+  },
+  {
+   "mvlt_list": 57,
+   "prefix": "tig",
+   "display": "Tiger Jackson",
+   "bxml_doc": 52,
+   "file": "game/assets/ttt2/movesets/tig.json",
+   "counts": {
+    "records": 175,
+    "moves": 165,
+    "sample_combos": 7,
+    "separators": 3
+   }
+  }
+ ],
+ "glyph_map_doc": "teardown/tekken-tag-tournament-2/MVLT-GLYPH-MAP-20261030.md",
+ "provenance": {
+  "source_archive": "release ttt2-7z-v1 (mhvnsnt/western-heart)",
+  "pull_tool": "tools/ttt2_virtual_god.py --pull",
+  "pulled_file": "data018.bin",
+  "pulled_bytes": 557332,
+  "pulled_sha256": "7e06ad5336374973bf8f637b898c975585226fc7a260a730ad981365b2056db4",
+  "decoded_file": "decoded-data018.bin",
+  "decoded_bytes": 3027808,
+  "decoded_sha256": "54db09ebc63ee1a05a7b1c00cc2d7b5528d0d97c6ed1949da805daac7709293e",
+  "parser": "teardown/tekken-tag-tournament-2 tools: parse_mvlt_v4.py (authoritative; v1/v2/v3 superseded)",
+  "converter": "convert_mvlt_notation.py (empirical glyph map; see MVLT-GLYPH-MAP-20261030.md)",
+  "note": "Derived data only. No game binaries committed (western-heart AGENTS.md rule 8). Bins stay reproducible from release ttt2-7z-v1."
+ },
+ "boundary": "Supply-only source data. This index and the moveset files do NOT modify any fighter moveset, step plan, or moveset-library file. Fighter integration is the Real-Moves lane's step; per its audit (docs/movesets/REAL-MOVES-AUDIT-2026-10-29.md) 0 steps currently wait on TTT2."
+}
