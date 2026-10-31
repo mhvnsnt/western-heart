@@ -17,7 +17,8 @@ Pipeline (nothing authored, nothing guessed):
      posed T7 joint positions (max error printed; the King stance bake measured 0.000000 m).
 
 Inputs you fetch once (raw game files stay in the private GRE repo; third-party tools are not vendored here):
-  --arc        GRE teardown/tekken7-steam/tkdata/mothead/mask/<code>rotsm.arc
+  --arc        GRE teardown/tekken7-steam/tkdata/mothead/mask/<code>rotsm.arc (0x4000 bank), or
+               .../mothead/bin/<code>mot.bin for a clip in the inline 0x0000 bank (first MOTA block = slot 0)
   --mannequin  TekkenMannequin_no_ik.blend by Koenji: https://mega.nz/folder/05pBGLAL#XPHcsgK2tBxT3RLMbZPaFw
                (the model Kiloutre's tools are written for; any MEGA client, e.g. npm megajs)
   --helper     TekkenAnimHelper.py from https://github.com/Kiloutre/BlenderTekkenDirect
@@ -55,6 +56,13 @@ def sha256(path):
         for chunk in iter(lambda: f.read(1 << 20), b''):
             h.update(chunk)
     return h.hexdigest()
+
+
+def gre_path(path):
+    """Path inside the GRE repo (teardown/...): rotsm.arc for the 0x4000 bank, <code>mot.bin for the inline 0x0000 bank."""
+    p = path.replace(os.sep, '/')
+    k = p.find('teardown/')
+    return p[k:] if k >= 0 else os.path.basename(path)
 
 
 def decode_c8(arc, idx):
@@ -156,8 +164,8 @@ def main():
     mannequin_meta = {'file': os.path.basename(a.mannequin), 'by': 'Koenji', 'sha256': sha256(a.mannequin),
                       'url': 'https://mega.nz/folder/05pBGLAL#XPHcsgK2tBxT3RLMbZPaFw'}
     provenance = {'character': a.character, 'for_fighter': a.fighter, 'loop': True,
-                  't7_source': {'file': 'teardown/tekken7-steam/tkdata/mothead/mask/' + os.path.basename(a.arc) +
-                                ' (private GRE repo)', 'sha256': sha256(a.arc), 'mota_block': 0, 'clip': a.clip,
+                  't7_source': {'file': gre_path(a.arc) + ' (private GRE repo)', 'sha256': sha256(a.arc),
+                                'mota_block': 0, 'clip': a.clip,
                                 'anim': a.anim, 'format': '0xC8', 'frames': len(frames),
                                 'moves': [m for m in a.moves.split(',') if m]},
                   'applier': {'function': 'applyRotationFromAnimdata', 'repo': 'https://github.com/Kiloutre/BlenderTekkenDirect',

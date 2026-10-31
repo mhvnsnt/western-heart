@@ -7,6 +7,7 @@ Lane ownership is claimed on #866. MoneyManBusch owns: Pantera and the core-8 ch
 - **Shipped first real T7 clip in the game.** Pantera idles in King's actual Tekken 7 stance (kinrotsm clip 132 `nakg_kg2kam`, 0xC8), not the T3 slot-3 stance.
 - **Bake path:** `tools/anim/t7_c8_stance_bake.py` runs Koenji's mannequin plus Kiloutre's `applyRotationFromAnimdata` (the 18:00 control path), then converts to `wh-anim/1`. FK self-check: 0.000000 m.
 - **Data:** `game/assets/anim/t7/king/`. **Wiring:** `game/js/t3anims.js` `T7_STANCES` / `applyT7Stance()`, Pantera only.
+- **2026-10-31:** 12 more fighters on their bases' real T7 stances (Diablo, Skull, Retsu, Burger, Saku Ra, Sha, Phantom, Gyou, Tobi, Gashadokuro, Aotsuki, Nightwolf). The table is in the research doc.
 - **Reusable for any 0xC8 clip.** 0x64 (all attacks) still needs the joint frame; see `docs/anim/T7-0x64-FRAME-RESEARCH-2026-10-30.md`.
 
 ## 2026-10-29 — T7 0x64 animation decoder (MoneyManBusch)

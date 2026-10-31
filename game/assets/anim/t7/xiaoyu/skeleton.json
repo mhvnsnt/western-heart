@@ -1,0 +1,205 @@
+{
+ "format": "wh-anim-skel/1",
+ "tool": "tools/anim/t7_c8_stance_bake.py",
+ "note": "Rest pose of the Tekken 7 skeleton (Koenji TekkenMannequin) the T7 clips here were converted on. All joint rest rotations are identity; rest = world joint positions (glTF space, meters, faces +Z, character left = +X).",
+ "source_skeleton": {
+  "file": "TekkenMannequin_no_ik.blend",
+  "by": "Koenji",
+  "sha256": "ce8171083d0c6da57ec2a938a1fdaf2f2b38a98e6fb31c2b6e71a4d38c1b2321",
+  "url": "https://mega.nz/folder/05pBGLAL#XPHcsgK2tBxT3RLMbZPaFw"
+ },
+ "root": "Hips",
+ "root_rest_y": 1.15,
+ "joints": [
+  {
+   "name": "Hips",
+   "parent": null,
+   "rest": [
+    0.0,
+    1.15,
+    0.0
+   ]
+  },
+  {
+   "name": "Spine",
+   "parent": "Hips",
+   "rest": [
+    0.0,
+    1.15,
+    0.0
+   ]
+  },
+  {
+   "name": "Chest",
+   "parent": "Spine",
+   "rest": [
+    0.0,
+    1.2865,
+    0.0
+   ]
+  },
+  {
+   "name": "Neck",
+   "parent": "Chest",
+   "rest": [
+    0.0,
+    1.5595,
+    0.0
+   ]
+  },
+  {
+   "name": "Head",
+   "parent": "Neck",
+   "rest": [
+    0.0,
+    1.70944,
+    0.0
+   ]
+  },
+  {
+   "name": "LeftShoulder",
+   "parent": "Chest",
+   "rest": [
+    0.105,
+    1.5175,
+    0.0
+   ]
+  },
+  {
+   "name": "LeftArm",
+   "parent": "LeftShoulder",
+   "rest": [
+    0.2373,
+    1.5175,
+    0.0
+   ]
+  },
+  {
+   "name": "LeftForeArm",
+   "parent": "LeftArm",
+   "rest": [
+    0.557655,
+    1.5175,
+    -2e-06
+   ]
+  },
+  {
+   "name": "LeftHand",
+   "parent": "LeftForeArm",
+   "rest": [
+    0.798348,
+    1.517496,
+    -3e-06
+   ]
+  },
+  {
+   "name": "LeftUpLeg",
+   "parent": "Hips",
+   "rest": [
+    0.1,
+    0.99,
+    0.0
+   ]
+  },
+  {
+   "name": "LeftLeg",
+   "parent": "LeftUpLeg",
+   "rest": [
+    0.1,
+    0.55,
+    2.7e-05
+   ]
+  },
+  {
+   "name": "LeftFoot",
+   "parent": "LeftLeg",
+   "rest": [
+    0.1,
+    0.13,
+    0.0
+   ]
+  },
+  {
+   "name": "LeftToeBase",
+   "parent": "LeftFoot",
+   "rest": [
+    0.1,
+    0.030193,
+    0.153041
+   ]
+  },
+  {
+   "name": "RightShoulder",
+   "parent": "Chest",
+   "rest": [
+    -0.105,
+    1.5175,
+    0.0
+   ]
+  },
+  {
+   "name": "RightArm",
+   "parent": "RightShoulder",
+   "rest": [
+    -0.2373,
+    1.5175,
+    0.0
+   ]
+  },
+  {
+   "name": "RightForeArm",
+   "parent": "RightArm",
+   "rest": [
+    -0.557655,
+    1.5175,
+    -2e-06
+   ]
+  },
+  {
+   "name": "RightHand",
+   "parent": "RightForeArm",
+   "rest": [
+    -0.798348,
+    1.517496,
+    -3e-06
+   ]
+  },
+  {
+   "name": "RightUpLeg",
+   "parent": "Hips",
+   "rest": [
+    -0.1,
+    0.99,
+    0.0
+   ]
+  },
+  {
+   "name": "RightLeg",
+   "parent": "RightUpLeg",
+   "rest": [
+    -0.1,
+    0.55,
+    3.1e-05
+   ]
+  },
+  {
+   "name": "RightFoot",
+   "parent": "RightLeg",
+   "rest": [
+    -0.1,
+    0.13,
+    0.0
+   ]
+  },
+  {
+   "name": "RightToeBase",
+   "parent": "RightFoot",
+   "rest": [
+    -0.099867,
+    0.030193,
+    0.153041
+   ]
+  }
+ ],
+ "foot_tip": {}
+}
