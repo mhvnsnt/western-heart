@@ -1,12 +1,12 @@
 {
  "format": "wh-pages-deploy/1",
  "ref": "origin/main",
- "commit": "576a435ff14e5243e4542ca3fdd9dfe6882750ed",
+ "commit": "8ef6237d6b32e744cfe9b17acd1cdc18c8be6eb5",
  "files": 2082,
- "bytes": 961320969,
- "built": "2026-10-31T00:52:28Z",
+ "bytes": 961357739,
+ "built": "2026-10-31T00:57:23Z",
  "tool": "tools/deploy/build_pages.py",
  "mode": "shell-only",
- "source_pr": 1300,
- "delta_note": "Delta deploy (WH-100 lane, Git Data API) 59110003..576a435f: added game/assets/anim/t7/king_on_pantera_leoman/{skeleton,t7_stance}.json (PR #1300 direct-rig copy of King's real T7 stance for Pantera; canonical king/stance.json shipped in the prior delta); added game/assets/anim/t8/INDEX.json + 8 t8 clip-maps (T8 community-pull lane); updated game/assets/anim/t7/INDEX.json, game/assets/movesets/{awapop,retsu}.json (provenance Phase 1). Docs/tools changes in range are not part of the shell and were not shipped. Add/update-only."
+ "source_pr": 1307,
+ "delta_note": "Delta deploy (WH-100 lane, Git Data API) 576a435f..8ef6237d: updated game/assets/movesets {megami,menajerii}.json (WH-100 B1 TTT2 integration, PRs #1306/#1307) and {kingtyrant,rin}.json (provenance Phase 1). Add/update-only."
 }
