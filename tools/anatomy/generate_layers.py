@@ -41,7 +41,7 @@ Usage:
   python3 generate_layers.py --glb <rigged.glb> --fighter <id> \\
       --glb-relpath <repo-relative path> --out <dir> [--render-proof]
 """
-import argparse, json, math, os, struct, sys, zlib
+import argparse, json, math, os, re, struct, sys, zlib
 from datetime import date
 
 import numpy as np
@@ -104,6 +104,15 @@ def joint_bind_positions(js, blob):
         name = js['nodes'][node_idx].get('name', f'joint{k}')
         m = ibm[k].reshape(4, 4).astype(np.float64)
         joints[name] = np.linalg.inv(m)[:3, 3]
+    if joints and max(float(np.linalg.norm(v)) for v in joints.values()) \
+            < 1e-9:
+        # Identity IBMs (bind pose carried in node TRS only): take the
+        # joint world positions from the node hierarchy instead.
+        world = _node_world_positions(js)
+        joints = {name: world[node_idx]
+                  for name, node_idx in
+                  ((js['nodes'][j].get('name', f'joint{k}'), j)
+                   for k, j in enumerate(skin['joints']))}
     node_parent = {}
     for i, n in enumerate(js['nodes']):
         for c in n.get('children', []):
@@ -122,6 +131,167 @@ def joint_bind_positions(js, blob):
                 break
         parents[name] = parent_name
     return joints, parents
+
+
+
+# ----------------------------------------------------------------------------
+# Joint-name canonicalization (2026-10-31, rig-continuation stage 3).
+#
+# The layer builders below key on the 13 canonical landmark names of the
+# template skeleton (hips, spine, chest, neck, head, shoulder.L/R,
+# thigh.L/R, shin.L/R, foot.L/R — exactly the skeleton of the proof
+# fighter, roster/pantera). Roster rigs arrive in several naming
+# dialects (repo template Title-Case, Mixamo, Unreal mannequin,
+# lowercase variants), and before this stage every non-template rig
+# silently produced empty bone/muscle/organ layers. This maps each
+# rig's landmarks onto the canonical names so the SAME builders work
+# on every rig. It renames only when the anatomical identity is
+# unambiguous, never guesses a side; competing claims to one
+# landmark resolve to the most specific stem (see below).
+# joints would collide on one canonical name. The mapping used is
+# recorded in the artifact under source.joint_name_map.
+# ----------------------------------------------------------------------------
+
+CANONICAL_LANDMARKS = ('hips', 'spine', 'chest', 'neck', 'head',
+                       'shoulder.L', 'shoulder.R', 'thigh.L', 'thigh.R',
+                       'shin.L', 'shin.R', 'foot.L', 'foot.R')
+
+_AXIAL_STEMS = {'hips': ('hips', 0), 'pelvis': ('hips', 1),
+                'hip': ('hips', 2),
+                'spine': ('spine', 0), 'spine01': ('spine', 1),
+                'spine1': ('spine', 2),
+                'spine2': ('chest', 1), 'spine02': ('chest', 2),
+                'spine03': ('chest', 0), 'chest': ('chest', 0),
+                'thorax': ('chest', 2),
+                'neck': ('neck', 0), 'neck01': ('neck', 1),
+                'neck1': ('neck', 1),
+                'head': ('head', 0)}
+_SIDED_STEMS = {'shoulder': ('shoulder', 0), 'clavicle': ('shoulder', 1),
+                'thigh': ('thigh', 0), 'upleg': ('thigh', 1),
+                'upperleg': ('thigh', 2),
+                'shin': ('shin', 0), 'leg': ('shin', 1),
+                'calf': ('shin', 2), 'lowerleg': ('shin', 3),
+                'foot': ('foot', 0), 'ankle': ('foot', 1),
+                'upperarm': ('upperarm', 0), 'arm': ('upperarm', 1),
+                'forearm': ('forearm', 0), 'lowerarm': ('forearm', 1),
+                'hand': ('hand', 0), 'wrist': ('hand', 1)}
+
+
+def _split_side(name):
+    """(side 'L'/'R' or None, remaining stem text)."""
+    low = name.lower()
+    if low.startswith('left'):
+        return 'L', name[4:]
+    if low.startswith('right'):
+        return 'R', name[5:]
+    if low.endswith('left'):
+        return 'L', name[:-4]
+    if low.endswith('right'):
+        return 'R', name[:-5]
+    if low.endswith('.l') or low.endswith('_l'):
+        return 'L', name[:-2]
+    if low.endswith('.r') or low.endswith('_r'):
+        return 'R', name[:-2]
+    if name.endswith(' l'):
+        return 'L', name[:-2]
+    if name.endswith(' r'):
+        return 'R', name[:-2]
+    return None, name
+
+
+def _stem(name):
+    s = name
+    low = s.lower()
+    for pre in ('mixamorig:', 'mixamorig1:', 'mixamorig'):
+        if low.startswith(pre):
+            s = s[len(pre):]
+            break
+    return re.sub(r'[^a-z0-9]', '', s.lower())
+
+
+def canonicalize_joint_names(joint_names):
+    """Map a rig's joint names onto the canonical landmarks.
+
+    Returns {original: canonical} for the joints that were renamed
+    ({} when the rig is already canonical). Only the 13 landmarks
+    plus the arm chain (upperarm/forearm/hand per side) are ever
+    renamed; every other joint keeps its authored name. When several
+    joints claim one landmark (production rigs carry adjunct chains
+    next to the template chain), the claim with the most specific
+    stem wins - exact 'spine' beats 'spine1', 'LeftLeg' beats
+    'leg left' - with shortest name, then alphabetical order, as
+    deterministic tie-breaks. Losing claimants keep their names.
+    A side is never guessed: sided landmarks require the side token
+    in the joint's own name."""
+    names = list(joint_names)
+    if all(n in names for n in CANONICAL_LANDMARKS):
+        return {}
+    claims = {}
+    for n in names:
+        if n in CANONICAL_LANDMARKS:
+            claims.setdefault(n, []).append((0, n))
+            continue
+        bare = n
+        for pre in ('mixamorig:', 'mixamorig1:', 'mixamorig'):
+            if bare.lower().startswith(pre):
+                bare = bare[len(pre):]
+                break
+        side, rest = _split_side(bare)
+        st = _stem(rest)
+        if side is None and st in _AXIAL_STEMS:
+            base, rank = _AXIAL_STEMS[st]
+            claims.setdefault(base, []).append((rank, n))
+        elif side is not None and st in _SIDED_STEMS:
+            base, rank = _SIDED_STEMS[st]
+            claims.setdefault(f'{base}.{side}', []).append((rank, n))
+    mapping = {}
+    for target, cands in claims.items():
+        cands.sort(key=lambda rn: (rn[0], len(rn[1]), rn[1]))
+        mapping[cands[0][1]] = target
+    return {k: v for k, v in mapping.items() if k != v}
+
+
+
+def _node_world_positions(js):
+    """Joint world positions from the node hierarchy (TRS composition
+    from the scene roots down). Used as a fallback when a rig's
+    inverse bind matrices are identity (several exporters write
+    identity IBMs and carry the bind pose purely in node TRS)."""
+    nodes = js['nodes']
+    parent = {}
+    for i, n in enumerate(nodes):
+        for c in n.get('children', []):
+            parent[c] = i
+
+    def local(n):
+        if 'matrix' in n:
+            return np.array(n['matrix'], dtype=np.float64).reshape(4, 4).T
+        t = n.get('translation', [0, 0, 0])
+        x, y, z, w = n.get('rotation', [0, 0, 0, 1])
+        s = n.get('scale', [1, 1, 1])
+        R = np.array([
+            [1 - 2 * (y * y + z * z), 2 * (x * y - z * w),
+             2 * (x * z + y * w)],
+            [2 * (x * y + z * w), 1 - 2 * (x * x + z * z),
+             2 * (y * z - x * w)],
+            [2 * (x * z - y * w), 2 * (y * z + x * w),
+             1 - 2 * (x * x + y * y)]], dtype=np.float64)
+        M = np.eye(4)
+        M[:3, :3] = R * np.array(s, dtype=np.float64)
+        M[:3, 3] = t
+        return M
+
+    cache = {}
+
+    def world(i):
+        if i not in cache:
+            m = local(nodes[i])
+            if i in parent:
+                m = world(parent[i]) @ m
+            cache[i] = m
+        return cache[i]
+
+    return {i: world(i)[:3, 3] for i in range(len(nodes))}
 
 
 def load_mesh(js, blob, mesh_index=0):
@@ -484,6 +654,32 @@ def fit_arm_frame_geometric(pos, joints, side):
     radius = max(min(radius, 0.12), 0.02)
     return {'origin': S, 'axis': axis, 'length': length, 'radius': radius,
             'count': int(len(pts)), 'method': 'geometric'}
+
+
+
+def fit_arm_frame_skeleton(pos, joints, side):
+    """Arm frame from the skeleton chain (shoulder -> hand): the leg
+    method applied to arms. Fallback for when the T-pose protrusion
+    fit fails — rigs whose bind pose is a fighting stance carry their
+    arms down, so there is no horizontal protrusion to detect. The
+    axis is the shoulder->hand line; the radius is measured
+    geometrically from the mesh around that segment and clamped to
+    the same range the geometric fit uses."""
+    sh, hd = f'shoulder.{side}', f'hand.{side}'
+    if sh not in joints or hd not in joints:
+        return None
+    A0, W = joints[sh], joints[hd]
+    axis = W - A0
+    L = float(np.linalg.norm(axis))
+    if L < 0.10:
+        return None
+    axis = axis / L
+    d, _ = _point_segment_distance(pos, A0, W)
+    near = pos[d < 0.20]
+    radius = chunk_radius(near, A0, axis)
+    radius = max(min(radius, 0.12), 0.02)
+    return {'origin': A0, 'axis': axis, 'length': L, 'radius': radius,
+            'count': int(len(near)), 'method': 'skeleton'}
 
 
 def find_face_dir_geometric(pos, joints):
@@ -1112,10 +1308,40 @@ def render_mesh_points(pos, normals, bounds, W=300, H=360, view=1):
 # PIPELINE DRIVER
 # ----------------------------------------------------------------------------
 
+
+def pick_body_mesh(js):
+    """Index of the mesh to build anatomy from: the skinned mesh with
+    the most vertices (2026-10-31, rig-continuation stage 3).
+
+    The generator originally hard-coded mesh 0; on multi-mesh rigs
+    mesh 0 can be a tiny attachment (armor-king's is 16 verts) and the
+    layers came out built on the prop instead of the body. Single-
+    mesh rigs (pantera) are unaffected: the only mesh is picked."""
+    best, best_key = 0, None
+    for i, m in enumerate(js['meshes']):
+        verts, skinned = 0, False
+        for prim in m['primitives']:
+            attrs = prim['attributes']
+            if 'POSITION' in attrs:
+                verts += js['accessors'][attrs['POSITION']]['count']
+            if 'JOINTS_0' in attrs:
+                skinned = True
+        key = (1 if skinned else 0, verts)
+        if best_key is None or key > best_key:
+            best, best_key = i, key
+    return best
+
+
 def generate(glb_path, fighter, glb_relpath):
     js, blob = load_glb(glb_path)
     joints, parents = joint_bind_positions(js, blob)
-    pos, tris, dom_joint, joint_names = load_mesh(js, blob, 0)
+    name_map = canonicalize_joint_names(joints.keys())
+    if name_map:
+        joints = {name_map.get(k, k): v for k, v in joints.items()}
+        parents = {name_map.get(k, k): (name_map.get(v) if v else None)
+                   for k, v in parents.items()}
+    mesh_index = pick_body_mesh(js)
+    pos, tris, dom_joint, joint_names = load_mesh(js, blob, mesh_index)
     pos, rect_angle, rig_front = rectify_mesh_frame(pos, joints)
     normals = vertex_normals(pos, tris)
 
@@ -1126,6 +1352,8 @@ def generate(glb_path, fighter, glb_relpath):
     frames = {}
     for side in ('L', 'R'):
         fr = fit_arm_frame_geometric(pos, joints, side)
+        if not fr:
+            fr = fit_arm_frame_skeleton(pos, joints, side)
         if fr:
             frames[f'shoulder.{side}'] = fr
         th, sn, ft = f'thigh.{side}', f'shin.{side}', f'foot.{side}'
@@ -1171,7 +1399,7 @@ def generate(glb_path, fighter, glb_relpath):
     morph_params = build_morph_params(muscle['groups'], bone['primitives'],
                                       organ['groups'])
     fat = build_fat_layer(body_scale)
-    skin = build_skin_layer(glb_relpath, 0)
+    skin = build_skin_layer(glb_relpath, mesh_index)
 
     layers = {
         '$schema': SCHEMA,
@@ -1181,7 +1409,8 @@ def generate(glb_path, fighter, glb_relpath):
         'generator': 'tools/anatomy/generate_layers.py',
         'units': 'meters',
         'source': {
-            'glb': glb_relpath, 'mesh': 0, 'skin': 0,
+            'glb': glb_relpath, 'mesh': mesh_index, 'skin': 0,
+            'joint_name_map': name_map,
             'joints': len(joints), 'vertices': int(len(pos)),
             'mesh_rectification_y_deg': int(rect_angle),
             'mesh_rectification_note': (
@@ -1310,66 +1539,73 @@ def main():
                   render_sdf_layer(muscle_primitives_flat(morphed['muscle']),
                                    bounds, view=view))
 
-        base_g = next(g for g in layers['layers']['muscle']['groups']
-                      if g['id'] == 'biceps.L')
-        new_g = next(g for g in morphed['muscle']['groups']
-                     if g['id'] == 'biceps.L')
-        r0 = base_g['primitives'][0]['r']
-        r1 = new_g['primitives'][0]['r']
-        v0 = sum(primitive_volume(p) for p in base_g['primitives'])
-        v1 = sum(primitive_volume(p) for p in new_g['primitives'])
-        disp, disp_s = bake_displacement(
-            aux['pos'], aux['normals'], aux['regions'],
-            layers['layers'], morphed)
-        arm = aux['regions'] == 'arm.L'
-        proof = {
-            'fighter': args.fighter,
-            'date': TODAY,
-            'rectification_deg': layers['source']['mesh_rectification_y_deg'],
-            'rig_front': layers['source']['rig_front'],
-            'biceps_L_radius_base': r0,
-            'biceps_L_radius_morphed': r1,
-            'biceps_L_radius_delta': round(r1 - r0, 5),
-            'biceps_L_volume_base_m3': round(v0, 6),
-            'biceps_L_volume_morphed_m3': round(v1, 6),
-            'biceps_L_volume_gain_pct': round(100 * (v1 - v0) / v0, 2),
-            'skin_vert_displacement_mean_m': round(float(disp_s.mean()), 5),
-            'skin_vert_displacement_max_m': round(float(disp_s.max()), 5),
-            'skin_vert_displacement_armL_mean_m':
-                round(float(disp_s[arm].mean()) if arm.sum() else 0.0, 5),
-            'skin_vert_displacement_armL_max_m':
-                round(float(disp_s[arm].max()) if arm.sum() else 0.0, 5),
-            'validation': {'joints_inside_bone_layer': None,
-                           'organs_inside_body': None,
-                           'morph_param_count': len(layers['morph_params'])},
-        }
-        J = np.stack([np.array(v['pos']) for v in layers['skeleton'].values()])
-        inside = (eval_layer_sdf(J, layers['layers']['bone']['primitives']) < 0).sum()
-        proof['validation']['joints_inside_bone_layer'] = f'{int(inside)}/{len(J)}'
-        ocenters = []
-        for g in layers['layers']['organ']['groups']:
-            for p in g['primitives']:
-                if p['kind'] == 'capsule':
-                    a, b = np.array(p['a']), np.array(p['b'])
-                    ocenters.append((a + b) / 2.0)
-                else:
-                    ocenters.append(np.array(p['center']))
-        ocenters = np.stack(ocenters)
-        # Organs nestle inside the body: either wrapped in muscle (thorax)
-        # or cradled by bone (intestines in the pelvic bowl). A center is
-        # valid if it is inside either union (small tolerance for SDF seams).
-        d_muscle = eval_layer_sdf(
-            ocenters, muscle_primitives_flat(layers['layers']['muscle']))
-        d_bone = eval_layer_sdf(
-            ocenters, layers['layers']['bone']['primitives'])
-        o_inside = (np.minimum(d_muscle, d_bone) < 0.02).sum()
-        proof['validation']['organs_inside_body'] = (
-            f'{int(o_inside)}/{len(ocenters)}')
-        with open(os.path.join(args.out, 'proof.json'), 'w') as f:
-            json.dump(proof, f, indent=1)
-        with open(os.path.join(args.out, 'PROOF.md'), 'w') as f:
-            f.write(proof_markdown(args.fighter, proof))
-        print(json.dumps(proof, indent=1))
+        base_g = next((g for g in layers['layers']['muscle']['groups']
+                       if g['id'] == 'biceps.L'), None)
+        if base_g is None:
+            print('WARNING: no biceps.L muscle group (arm frame '
+                  'unfit) - morph proof skipped; layers + renders '
+                  'still written.')
+        else:
+            base_g = next(g for g in layers['layers']['muscle']['groups']
+                          if g['id'] == 'biceps.L')
+            new_g = next(g for g in morphed['muscle']['groups']
+                         if g['id'] == 'biceps.L')
+            r0 = base_g['primitives'][0]['r']
+            r1 = new_g['primitives'][0]['r']
+            v0 = sum(primitive_volume(p) for p in base_g['primitives'])
+            v1 = sum(primitive_volume(p) for p in new_g['primitives'])
+            disp, disp_s = bake_displacement(
+                aux['pos'], aux['normals'], aux['regions'],
+                layers['layers'], morphed)
+            arm = aux['regions'] == 'arm.L'
+            proof = {
+                'fighter': args.fighter,
+                'date': TODAY,
+                'rectification_deg': layers['source']['mesh_rectification_y_deg'],
+                'rig_front': layers['source']['rig_front'],
+                'biceps_L_radius_base': r0,
+                'biceps_L_radius_morphed': r1,
+                'biceps_L_radius_delta': round(r1 - r0, 5),
+                'biceps_L_volume_base_m3': round(v0, 6),
+                'biceps_L_volume_morphed_m3': round(v1, 6),
+                'biceps_L_volume_gain_pct': round(100 * (v1 - v0) / v0, 2),
+                'skin_vert_displacement_mean_m': round(float(disp_s.mean()), 5),
+                'skin_vert_displacement_max_m': round(float(disp_s.max()), 5),
+                'skin_vert_displacement_armL_mean_m':
+                    round(float(disp_s[arm].mean()) if arm.sum() else 0.0, 5),
+                'skin_vert_displacement_armL_max_m':
+                    round(float(disp_s[arm].max()) if arm.sum() else 0.0, 5),
+                'validation': {'joints_inside_bone_layer': None,
+                               'organs_inside_body': None,
+                               'morph_param_count': len(layers['morph_params'])},
+            }
+            J = np.stack([np.array(v['pos']) for v in layers['skeleton'].values()])
+            inside = (eval_layer_sdf(J, layers['layers']['bone']['primitives']) < 0).sum()
+            proof['validation']['joints_inside_bone_layer'] = f'{int(inside)}/{len(J)}'
+            ocenters = []
+            for g in layers['layers']['organ']['groups']:
+                for p in g['primitives']:
+                    if p['kind'] == 'capsule':
+                        a, b = np.array(p['a']), np.array(p['b'])
+                        ocenters.append((a + b) / 2.0)
+                    else:
+                        ocenters.append(np.array(p['center']))
+            ocenters = np.stack(ocenters)
+            # Organs nestle inside the body: either wrapped in muscle (thorax)
+            # or cradled by bone (intestines in the pelvic bowl). A center is
+            # valid if it is inside either union (small tolerance for SDF seams).
+            d_muscle = eval_layer_sdf(
+                ocenters, muscle_primitives_flat(layers['layers']['muscle']))
+            d_bone = eval_layer_sdf(
+                ocenters, layers['layers']['bone']['primitives'])
+            o_inside = (np.minimum(d_muscle, d_bone) < 0.02).sum()
+            proof['validation']['organs_inside_body'] = (
+                f'{int(o_inside)}/{len(ocenters)}')
+            with open(os.path.join(args.out, 'proof.json'), 'w') as f:
+                json.dump(proof, f, indent=1)
+            with open(os.path.join(args.out, 'PROOF.md'), 'w') as f:
+                f.write(proof_markdown(args.fighter, proof))
+            print(json.dumps(proof, indent=1))
 
     if morph_values and not args.render_proof:
         morphed = apply_morphs(layers['layers'], morph_values)
