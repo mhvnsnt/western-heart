@@ -145,6 +145,18 @@ sits in a T-pose while the mesh does not follow it -> broken bind/weights. Stati
   - Weld vertices by position first, then grow the head region geodesically from the skull and stop at the neck ring.
   - Or mask the hair in Blender (vertex-group select above the shoulders), weight it 100% to Head, and smooth only the neck ring.
   - One material and one primitive, so the hair cannot be isolated by material.
+- **ROOT CAUSE (2026-10-31, later): skeleton misfit, same class as Burger.**
+  - The wired model's skeleton has horizontal T-pose arms (LeftHand joint y 0.559, mesh space).
+  - The mesh's hands hang at y 0.325, about 26° lower, and further forward.
+  - Bones sitting above the real arms crush the arms and drag the head.
+  - Weight rules on this rig can only patch symptoms.
+- **Recipe for the next pass:**
+  1. Use the GameRig fitted re-rig from the T-pose static `negativo-a1.glb` (`tools/auto_rig/rig_tripo_static.py --facing +X`). Its anim_check p99.9 before smoothing was 4.96.
+  2. Make the hair rigid to Head with a geodesic head territory. Weld the UV seams first: the welded mesh is one piece of 997,691 verts. Seed above the Head joint and grow along edges. Block: the neck cylinder (radius ~0.35 x half shoulder span) below the neck joint, the arm and clavicle flesh (~0.35 x upper-arm length), and anything below Spine2.
+  3. Run `smooth_weights.py`.
+  4. Pass the gate: `validate.py`, stretch < 2.5.
+  5. Do a `NO_REMOTE=1` close-up and attack check.
+  6. Commit, then have Muse re-upload the model to B2.
 
 **Cone face universal:** the owner wants it fixed for every fighter that has it. Audit every wired model with
 `anim_check.py` (stretch per region) and re-rig the offenders the same way.
