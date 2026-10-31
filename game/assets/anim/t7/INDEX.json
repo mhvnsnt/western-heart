@@ -324,22 +324,38 @@
   "live_memory_procedure": "TKMovesets2 on a Windows box running owned T7: load Raven then Chloe in practice, export P1 each, confirm ~1,702-entry MOTA before wiring; clip must start 00 64 or 00 C8."
  },
  "t7_clip_mapping_20261030": {
- "status": "RESOLVED \u2014 bank-0x8000 mystery closed 2026-10-30 (STEAM-LIBRARY REAL-CODE lane)",
- "what_was_wrong": "The clip banks were never in the pakchunks. They are the MOTA sections inside tkdata mothead/mask/<code>rotsm.arc in the owner-Steam extraction (GRE teardown/tekken7-steam). The earlier pakchunk0 ruling-out stands; the live-memory unblock is NO LONGER required for banks 0x4000/0x8000.",
- "bank_map": {
-  "anim_id>=0x8000": "common.arc (bare MOTA, 1711 entries), key = anim_id - 0x8000",
-  "0x4000<=anim_id<0x8000": "character rotsm.arc section 0, key = anim_id - 0x4000",
-  "anim_id<0x4000": "file not in the pulled tkdata tree \u2014 31 mapped moves wait on it (bounded remainder)"
+  "status": "RESOLVED \u2014 bank-0x8000 mystery closed 2026-10-30 (STEAM-LIBRARY REAL-CODE lane)",
+  "what_was_wrong": "The clip banks were never in the pakchunks. They are the MOTA sections inside tkdata mothead/mask/<code>rotsm.arc in the owner-Steam extraction (GRE teardown/tekken7-steam). The earlier pakchunk0 ruling-out stands; the live-memory unblock is NO LONGER required for banks 0x4000/0x8000.",
+  "bank_map": {
+   "anim_id>=0x8000": "common.arc (bare MOTA, 1711 entries), key = anim_id - 0x8000",
+   "0x4000<=anim_id<0x8000": "character rotsm.arc section 0, key = anim_id - 0x4000",
+   "anim_id<0x4000": "file not in the pulled tkdata tree \u2014 31 mapped moves wait on it (bounded remainder)"
+  },
+  "format": "MOTA spec + parser: GRE teardown/tekken7-steam/tkdata/mothead/mask/MOTA-FORMAT.md and tools/mota_parse.py (PR mhvnsnt/game-reverse-engineering#74). Clip-start words 100/200; format-200 bodies fully decoded (f32 BE frames x tracks x vec3); format-100 bodies sliced/indexed, encoding open.",
+  "clips_storage": "GRE release t7-rotsm-clips-v1 (59,211,723 B, SHA256SUMS.txt) \u2014 distinct clips per bank; indexes in GRE mask/indexes/ and inside each clip-map JSON.",
+  "the_781": {
+   "clip_resolved": 450,
+   "mapped_bank0_no_clip": 31,
+   "honestly_unmapped": 300,
+   "supply_files": "game/assets/anim/t7/clip-maps/<fighter>-clip-map.json for pantera/phantom/skull/burger/kinpo/demonio/diablo/scimitar",
+   "doc": "docs/movesets/T7-CLIP-MAPPING-2026-10-30.md"
+  },
+  "still_open": "Wiring these clip-maps into fighter movesets is the provenance lane\u2019s step (per-character isolation). frv/dnc bank-0x8000 moves in the older motbin banks resolve through common.arc the same way (911 shared anim names verified key-identical kin/bry)."
  },
- "format": "MOTA spec + parser: GRE teardown/tekken7-steam/tkdata/mothead/mask/MOTA-FORMAT.md and tools/mota_parse.py (PR mhvnsnt/game-reverse-engineering#74). Clip-start words 100/200; format-200 bodies fully decoded (f32 BE frames x tracks x vec3); format-100 bodies sliced/indexed, encoding open.",
- "clips_storage": "GRE release t7-rotsm-clips-v1 (59,211,723 B, SHA256SUMS.txt) \u2014 distinct clips per bank; indexes in GRE mask/indexes/ and inside each clip-map JSON.",
- "the_781": {
-  "clip_resolved": 450,
-  "mapped_bank0_no_clip": 31,
-  "honestly_unmapped": 300,
-  "supply_files": "game/assets/anim/t7/clip-maps/<fighter>-clip-map.json for pantera/phantom/skull/burger/kinpo/demonio/diablo/scimitar",
-  "doc": "docs/movesets/T7-CLIP-MAPPING-2026-10-30.md"
- },
- "still_open": "Wiring these clip-maps into fighter movesets is the provenance lane\u2019s step (per-character isolation). frv/dnc bank-0x8000 moves in the older motbin banks resolve through common.arc the same way (911 shared anim names verified key-identical kin/bry)."
-}
+ "baked_assets": {
+  "pantera_king_t7_stance": {
+   "status": "BAKED 2026-10-30 - first T7 clip bank asset in the repo (wh-anim/1)",
+   "asset": "game/assets/anim/t7/king_on_pantera_leoman/t7_stance.json",
+   "skeleton": "game/assets/anim/t7/king_on_pantera_leoman/skeleton.json",
+   "clip": "nakg_kg2kam (King guard stance / kamae), anim_id 0x4084, format-200 (0xC8), 60 frames @60fps stored as 30 @30fps",
+   "source": "owner Steam TEKKEN 7 kinrotsm.arc section 0 (GRE teardown/tekken7-steam), clip sha256 1e0c6b34ca537ee459edfd2d8313d47b09910a3be3c8767b32d6e7a99bb9aeb0",
+   "method": "Kiloutre BlenderTekkenAnimationImporter 0xC8 path, control test on Koenji T7 mannequin PASSED (ground contact -0.024..-0.004 m, knees forward, seamless loop), then world-orientation transfer onto pantera_leoman_t3real.glb (sha256 cd198916...); rotation solve max error 0.069 deg; rest export deviation 0.0 rad",
+   "doc": "docs/anim/T7-0xC8-CONTROL-TEST-2026-10-30.md",
+   "tools": [
+    "tools/anim/t7_c8_control_test.py",
+    "tools/anim/t7_c8_stance_bake.py"
+   ],
+   "scope": "stance only, from the verified 0xC8 (format-200) path; NOT a format-100 (0x64) result. Game wiring (pointing Pantera's stance slot at this bank) not included - provenance/wiring lane consumes."
+  }
+ }
 }
