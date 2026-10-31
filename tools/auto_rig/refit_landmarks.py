@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
-"""tools/auto_rig/refit_upper_body.py — re-fit a refit skeleton's upper body from the mesh's own landmarks.
+"""tools/auto_rig/refit_landmarks.py — re-fit a refit skeleton's joints from the mesh's own anatomical landmarks.
 
-Why (Negativo, 2026-10-31; the owner's "cone face" + "arms crushed like a steamroller"): refit_skeleton.py scales
-the template skeleton to the mesh's full height. A big hair mass (or a hat, horns, a crest) makes that height
-far taller than the body, so every upper joint lands too high. Negativo (fit space, height 0.98 incl. hair):
-arms at y 0.828 vs the mesh arm at 0.652; Spine1 at mouth height, Spine2 at the eyes, Neck/Head inside the
-hair. Bone heat then skins the face to chest bones (the face stretches toward the pelvis as soon as the chest
-moves = cone face) and the arms to bones 0.18 m above them (arms crush into the body, forearms poke out).
+Why (Negativo, 2026-10-31; the owner's "cone face", "head and neck weighted toward his pelvis", "arms crushed like a
+steamroller"): refit_skeleton.py scales the template skeleton to the mesh's FULL height. A big hair mass (or a hat,
+horns, a crest) makes that height far taller than the body, so the joints land too high. Negativo (fit space,
+height 0.98 incl. ~0.12 of hair):
+  * arms at y 0.828 vs the mesh arm at 0.653; Spine1 at mouth height, Spine2 at the eyes, Neck/Head in the hair
+    -> bone heat skins the face to chest bones (cone face) and the arms to bones 0.18 m above them (crushed arms);
+  * hip joints (UpLeg) at 0.565 and Hips at 0.594 while the legs split at 0.395 -> the thighs pivot inside the
+    belly and own the abdomen (every kick bends the belly).
 
 Method (every number is measured on the mesh, or is a fixed human proportion; nothing is placed by hand):
   arms, per side (T-pose, character's left = +x):
@@ -19,6 +21,14 @@ Method (every number is measured on the mesh, or is a fixed human proportion; no
     * wrist (Hand) = the thinnest arm cross-section 0.08-0.14 H in from the fingertip (human hand ~0.105 H);
     * elbow (ForeArm) at --elbow-frac of shoulder->wrist (upper arm : forearm ~ 1.15 : 1);
     * finger joints ride with the hand, offsets scaled so the fingertips stay inside the mesh.
+  hips and legs:
+    * crotch = the lowest point of the body on the mid-line (|x - cx| < 0.004 H), searched between the fitted
+      knee and hips; hip joints (UpLeg) at crotch + 0.16 x (arm line - crotch) (human hip joint ~0.53 H, crotch
+      ~0.47 H, shoulder ~0.82 H), on each thigh's centre just under the crotch (Negativo: crotch 0.38 vs
+      fitted hip joints 0.565);
+    * Hips keeps the template's offset above the hip joints; knees (Leg) keep the template's fraction of the
+      ankle -> hip span, re-centred in the leg's cross-section; ankles, feet and toes are untouched;
+    * skipped (template legs kept, reported) when no crotch is found in that window (skirts, long coats).
   spine / neck / head (front profile = front-most z of the mid-sagittal slab |x - cx| < 0.012 H):
     * neck base = first height above the arm line where the profile steps back from the chest by 0.02 H;
     * chin = first height above that where it steps forward again by 0.02 H; Neck joint at the neck base,
@@ -29,12 +39,11 @@ Method (every number is measured on the mesh, or is a fixed human proportion; no
       behind it in that slab (so hair hanging down the back cannot pull the spine backwards);
     * Left/RightShoulder (clavicles) keep their template offset above the arm line, z halfway between
       Spine2 and the arm; the Head bone's tail = 60% of the way from the Head joint to the mesh top.
-Hips and legs are untouched.
 
-usage: python3 tools/auto_rig/refit_upper_body.py --fit fit.json --out fit_upper.json
+usage: python3 tools/auto_rig/refit_landmarks.py --fit fit.json --out fit_landmarks.json [--no-legs]
        (fit.json from refit_skeleton.py, which also names the static mesh it wrote in "static_mesh")
 then:  blender -b --factory-startup --python tools/auto_rig/backends/heat_rebind.py -- \\
-           --in <static_mesh> --fit fit_upper.json --out MODEL-refit.glb
+           --in <static_mesh> --fit fit_landmarks.json --out MODEL-refit.glb [--donor <bvh> for the gate clip]
 """
 import argparse
 import json
@@ -83,7 +92,9 @@ def arm_slices(Q, sgn, H, step):
         while (x0 <= x_tip) if direction > 0 else (x0 > 0):
             m = (np.abs(X - x0) < step * 0.8) & (np.abs(Q[:, 1] - y_c) < 0.06 * H)
             if m.sum() < 8:
-                if direction > 0: x0 += step; continue
+                if direction > 0:
+                    x0 += step
+                    continue
                 break
             S = Q[m]
             r = (x0, S[:, 1].min(), S[:, 1].max(), S[:, 2].min(), S[:, 2].max())
@@ -144,11 +155,54 @@ def centre_z(Q, cx, y, H, fallback):
     return (f + b) / 2 if f is not None and b is not None else fallback
 
 
+def leg_centre(Q, cx, y, H, sgn):
+    """Centre (x, z) of one leg's horizontal cross-section at height y (the interval on that side of the mid-line)."""
+    m = (np.abs(Q[:, 1] - y) < 0.002 * H) & ((Q[:, 0] - cx) * sgn > 0.002 * H)
+    S = Q[m]
+    if len(S) < 8:
+        return None
+    x = np.sort((S[:, 0] - cx) * sgn)
+    g = np.nonzero(np.diff(x) > 0.01 * H)[0]
+    x_out = x[g[0]] if len(g) else x[-1]          # the leg's interval starts at the mid-line side
+    S = S[(S[:, 0] - cx) * sgn <= x_out + 1e-9]
+    return np.array([(S[:, 0].min() + S[:, 0].max()) / 2, (S[:, 2].min() + S[:, 2].max()) / 2])
+
+
+def fit_legs(Q, J0, H, cx, y_arm):
+    """Crotch-anchored hip joints, Hips and knees. Returns ({joint: pos}, report) or ({}, report) when skipped."""
+    y_lo, y_hi = min(J0['LeftLeg'][1], J0['RightLeg'][1]), max(J0['LeftUpLeg'][1], J0['RightUpLeg'][1])
+    mid = np.abs(Q[:, 0] - cx) < 0.004 * H
+    cand = Q[mid & (Q[:, 1] > y_lo) & (Q[:, 1] < y_hi + 0.1 * H), 1]
+    if not len(cand):
+        return {}, {'skipped': 'no body on the mid-line between the fitted knee and hips'}
+    y_crotch = float(cand.min())
+    if y_crotch <= y_lo + 0.005 * H:  # the mid-line is filled down to the knee: skirt / coat, can't see the crotch
+        return {}, {'skipped': 'mid-line filled down to the knee (skirt/coat?): crotch not measurable'}
+    y_hip = y_crotch + 0.16 * (y_arm - y_crotch)
+    out = {}
+    for side, sgn in (('Left', 1.0), ('Right', -1.0)):
+        c = leg_centre(Q, cx, y_crotch - 0.03 * H, H, sgn)
+        if c is None:
+            return {}, {'skipped': '%s thigh not found under the crotch' % side}
+        out[side + 'UpLeg'] = np.array([c[0], y_hip, c[1]])
+        ank = J0[side + 'Foot']
+        f = (J0[side + 'Leg'][1] - ank[1]) / max(J0[side + 'UpLeg'][1] - ank[1], 1e-6)
+        yk = ank[1] + f * (y_hip - ank[1])
+        ck = leg_centre(Q, cx, yk, H, sgn)
+        out[side + 'Leg'] = np.array([ck[0], yk, ck[1]]) if ck is not None else np.array([J0[side + 'Leg'][0], yk, J0[side + 'Leg'][2]])
+    up = (J0['Hips'][1] - (J0['LeftUpLeg'][1] + J0['RightUpLeg'][1]) / 2)
+    yh = y_hip + up
+    out['Hips'] = np.array([cx, yh, centre_z(Q, cx, yh, H, J0['Hips'][2])])
+    return out, {'crotch_y': round(y_crotch, 4), 'hip_joint_y': round(float(y_hip), 4),
+                 'template_hip_joint_y': round(float((J0['LeftUpLeg'][1] + J0['RightUpLeg'][1]) / 2), 4)}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--fit', required=True)
     ap.add_argument('--out', required=True)
     ap.add_argument('--elbow-frac', type=float, default=0.535, help='elbow position along shoulder->wrist')
+    ap.add_argument('--no-legs', action='store_true', help='keep the template hips/legs')
     a = ap.parse_args()
     fit = json.load(open(a.fit))
     joints = fit['joints']
@@ -157,7 +211,7 @@ def main():
     H = fit.get('height_m') or float(max(p[1] for p in J0.values()))
     cx = float(J0['Hips'][0])
     Q = mesh_in_fit_space(fit)
-    rep = {'tool': 'tools/auto_rig/refit_upper_body.py'}
+    rep = {'tool': 'tools/auto_rig/refit_landmarks.py'}
 
     # arms
     arms = {}
@@ -177,22 +231,30 @@ def main():
     y_arm_old = (J0['LeftArm'][1] + J0['RightArm'][1]) / 2
     y_arm = (arms['Left']['y_arm_line'] + arms['Right']['y_arm_line']) / 2
 
+    # hips + legs
+    if not a.no_legs:
+        legs, rep['legs'] = fit_legs(Q, J0, H, cx, y_arm)
+        J.update(legs)
+    else:
+        rep['legs'] = {'skipped': '--no-legs'}
+
     # neck base + chin from the front profile above the arm line
     ys = np.arange(y_arm - 0.01 * H, y_arm + 0.15 * H, 0.002 * H)
-    F = np.array([front_back(Q, cx, y, H)[0] if front_back(Q, cx, y, H)[0] is not None else np.nan for y in ys])
+    F = np.array([v if v is not None else np.nan for v in (front_back(Q, cx, y, H)[0] for y in ys)])
     f_chest = np.nanmax(F[ys <= y_arm]) if np.any(ys <= y_arm) else np.nan
     y_neck = y_chin = None
     if np.isfinite(f_chest):
         i = np.nonzero((ys > y_arm) & (F < f_chest - 0.02 * H))[0]
         if len(i):
             y_neck = float(ys[i[0]])
-            after = ys > y_neck
             f_min = np.inf
-            for y, f in zip(ys[after], F[after]):
-                if not np.isfinite(f): continue
+            for y, f in zip(ys[ys > y_neck], F[ys > y_neck]):
+                if not np.isfinite(f):
+                    continue
                 f_min = min(f_min, f)
                 if f > f_min + 0.02 * H:
-                    y_chin = float(y); break
+                    y_chin = float(y)
+                    break
     if y_neck is None or y_chin is None:  # no clear throat: keep the template's offsets from the arm line
         y_neck = J0['Neck'][1] - y_arm_old + y_arm
         y_chin = J0['Head'][1] - y_arm_old + y_arm
@@ -203,11 +265,11 @@ def main():
     z_throat = centre_z(Q, cx, (y_neck + y_chin) / 2, H, z_neck)
     J['Neck'] = np.array([cx, y_neck, z_neck])
     J['Head'] = np.array([cx, y_chin, z_throat])
-    # spine chain: template fractions of Hips->Neck, centred front-to-back
-    hy, ny0 = J0['Hips'][1], J0['Neck'][1]
+    # spine chain: template fractions of Hips->Neck (from the re-fitted Hips), centred front-to-back
+    hy0, ny0, hy = J0['Hips'][1], J0['Neck'][1], J['Hips'][1]
     for n in ('Spine', 'Spine1', 'Spine2'):
         if n in J0:
-            f = (J0[n][1] - hy) / max(ny0 - hy, 1e-6)
+            f = (J0[n][1] - hy0) / max(ny0 - hy0, 1e-6)
             y = hy + f * (y_neck - hy)
             J[n] = np.array([cx, y, centre_z(Q, cx, y, H, J0[n][2])])
     # clavicles: template offset above the arm line, z between Spine2 and the arm
@@ -229,7 +291,7 @@ def main():
             moved[n] = {'from': [round(float(v), 4) for v in J0[n]], 'to': j['pos'][:], 'moved_m': round(d, 4)}
     rep['arm_line_y'] = {'template_fit': round(float(y_arm_old), 4), 'mesh': round(float(y_arm), 4)}
     rep['moved'] = moved
-    fit.setdefault('notes', {})['upper_body_refit'] = rep
+    fit.setdefault('notes', {})['landmark_refit'] = rep
     json.dump(fit, open(a.out, 'w'), indent=1)
     print(json.dumps({k: v for k, v in rep.items() if k != 'moved'}, indent=1))
     for n, v in moved.items():
