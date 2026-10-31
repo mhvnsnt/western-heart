@@ -24861,8 +24861,9 @@
       "anim_t3": {
         "bank": "king",
         "row": 129,
-        "match": "same-notation"
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
       },
+      "provenance_fix": {"old_row": 129, "new_row": 129, "proof": "C", "method": "true-map branch-graph (provenance-fix 2026-10-30)"},
       "t7": {
         "damage": 22,
         "startup_frames": 14,
@@ -26148,8 +26149,9 @@
       "anim_t3": {
         "bank": "king",
         "row": 132,
-        "match": "same-notation"
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
       },
+      "provenance_fix": {"old_row": 132, "new_row": 132, "proof": "C", "method": "true-map branch-graph (provenance-fix 2026-10-30)"},
       "t7": {
         "damage": 28,
         "startup_frames": 25,
@@ -26252,8 +26254,9 @@
       "anim_t3": {
         "bank": "king",
         "row": 134,
-        "match": "same-notation"
+        "match": "true-map branch-graph (provenance-fix 2026-10-30)"
       },
+      "provenance_fix": {"old_row": 134, "new_row": 134, "proof": "C", "method": "true-map branch-graph (provenance-fix 2026-10-30)"},
       "t7": {
         "damage": 27,
         "startup_frames": 27,
@@ -189920,5 +189923,17 @@
     "amatsu_rinne": {
       "status": "EXCLUDED - future powered/transformed form of Rinne. Mechanic NOT designed. NO moveset or animation work in this change, by instruction."
     }
+  },
+  "provenance_fixes": [
+  {
+      "date": "2026-10-30",
+      "lane": "moveset-provenance phase 1",
+      "corrected": 3,
+      "by_proof": {
+          "C": 3
+      },
+      "remaining_guess_grade": 195,
+      "note": "Surgical text edit (file does not round-trip reserialization). Only T3-floor King keys were eligible: 3 proof-C confirmations applied (rows unchanged, labels upgraded). 69 T3-floor guesses remain unproven from the graph (stance/directional notation runs through branch condition codes, not yet decoded). 126 guesses sit on T7/T8-form keys (~t7/~t8 suffixes and t7.king_NNN motbin keys) and were NOT corrected against the T3 graph: their real source is the Steam Tekken 7/8 extraction named in the owner's 2026-10-30 addendum."
   }
+  ]
 }
