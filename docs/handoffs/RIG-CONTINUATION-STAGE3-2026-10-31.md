@@ -104,3 +104,29 @@ artifact's `source.glb` always names the ORIGINAL repo path.
 - Fighters whose only roster GLB is unskinned, and gate failures
   from the first batch run, are listed per batch below as their
   fix-up results land.
+
+## Batch 2 — 12 fighters
+
+Same gate, same 12 bone / 25 muscle / 7 organ counts, 13/13
+landmarks each.
+
+| fighter | source model (his own) | joints | vertices |
+|---|---|---|---|
+| silvertongue | roster/silvertongue/attires/attire1/model-rigged.glb | 73 | 1,387,339 |
+| skull | roster/skull/attires/attire1/model-rigged.glb | 49 | 1,009,636 |
+| slice | roster/slice/attires/attire1/model-rigged.glb | 73 | 1,455,593 |
+| thor | roster/thor/attires/attire1/model-rigged.glb | 49 | 1,023,358 |
+| tsuyu-asui | roster/tsuyu-asui/attires/attire1/model-rigged-textured.glb | 52 | 123,535 |
+| vainabel | roster/vainabel/attires/attire1/model-rigged.glb | 73 | 1,378,962 |
+| vixen | roster/vixen/attires/attire1/model-rigged-noplane.glb | 52 | 109,854 |
+| waterfall | roster/waterfall/attires/attire1/model-rigged.glb | 49 | 1,016,906 |
+| yukihyo | roster/yukihyo/attires/attire1/source/yukihyo-a1-rigged.glb | 73 | 1,461,745 |
+| zangief | roster/zangief/attires/attire1/model-rigged.glb | 49 | 362,385 |
+| zen | roster/zen/attires/attire1/model-rigged.glb | 73 | 1,406,973 |
+| zui | roster/zui/attires/attire1/model-rigged.glb | 73 | 1,542,135 |
+
+Running total: 21 of 73 fighters with C1 anatomy on main
+(Pantera + batches 1-2). The remaining candidates are in the
+fix-up pass (dialect coverage extended to VRoid-numbered and
+verbose joint naming; unskinned-primary fighters retried against
+their rigged alternates) — results land as batch 3.
