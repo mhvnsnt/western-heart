@@ -12150,10 +12150,16 @@
       "anim_t3": {
         "bank": "eddy",
         "row": 103,
-        "match": "same-notation"
+        "match": "true-map branch-graph (provenance-fix 2026-10-31)"
       },
       "mod_damage": "14,14",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "provenance_fix": {
+        "date": "2026-10-31",
+        "method": "branch-graph C (g2 conditions+common)",
+        "from_match": "same-notation",
+        "from_row": 103
+      }
     },
     "f+2,1~t7.eddy": {
       "name": "KAI f+2,1",
@@ -12191,10 +12197,16 @@
       "anim_t3": {
         "bank": "eddy",
         "row": 103,
-        "match": "same-notation"
+        "match": "true-map branch-graph (provenance-fix 2026-10-31)"
       },
       "mod_damage": "14,14",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "provenance_fix": {
+        "date": "2026-10-31",
+        "method": "branch-graph C (g2 conditions+common)",
+        "from_match": "same-notation",
+        "from_row": 103
+      }
     },
     "f+2,1,4": {
       "name": "Shin Cutter Combo",
@@ -31916,6 +31928,15 @@
         "C": 66
       },
       "remaining_guess_grade": 285
+    },
+    {
+      "date": "2026-10-31",
+      "lane": "moveset-provenance g2 (condition table + common bank)",
+      "corrected": 2,
+      "by_proof": {
+        "C": 2
+      },
+      "remaining_guess_grade": 283
     }
   ]
 }
