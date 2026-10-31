@@ -77,4 +77,26 @@ Either of these settles it exactly, without guessing:
 Playable now, without solving 0x64:
 - King's real T7 **stance** is 0xC8, so it bakes through the 0xC8 path the crew already verified on Koenji's mannequin (BUILD-LOG 18:00 control).
 - Bake `nakg_kg2kam` (kinrotsm clip 132) and Pantera stands in King's actual T7 stance in every fight.
-- This session could not run that path: opening the downloaded mannequin and the community helper in Blender needs the owner's explicit OK.
+- ~~This session could not run that path: opening the downloaded mannequin and the community helper in Blender needs the owner's explicit OK.~~ Done; see Shipped.
+
+## Shipped: King's real T7 stance on Pantera (2026-10-30, owner: "I approve u to run the mannequin")
+
+- **Tool:** `tools/anim/t7_c8_stance_bake.py` (with `tools/anim/t7_bl_pose.py`, the Blender side). It runs three steps:
+  1. decodes kinrotsm clip 132 (`nakg_kg2kam`, 0xC8, 60 frames);
+  2. poses Koenji's mannequin with Kiloutre's `applyRotationFromAnimdata` (BlenderTekkenDirect @ `bebb3d8`);
+  3. converts to the game's bank format.
+- **Self-check:** FK of the written skeleton reproduces every posed T7 joint, max error 0.000000 m. Re-running the tool reproduces the shipped files bit for bit.
+- **Data:** `game/assets/anim/t7/king/skeleton.json` (T7 rest pose, `wh-anim-skel/1`) and `game/assets/anim/t7/king/stance.json` (`wh-anim/1`, with provenance).
+- **Wiring:** `game/js/t3anims.js`
+  - `T7_STANCES` = Pantera only, loaded with the King bank.
+  - `applyT7Stance()` replaces the bank's T3 slot-3 `stance` in the fight (`game/js/fighter.js` `_bindT3`) and in the select preview (`game/js/select-screen.js`).
+  - Every other action and every move row is unchanged.
+- **In the game** (headless Chromium, `?quick=pantera,demonio,shrine`):
+  - Pantera idles in `t7_pantera_stance@pantera-leoman` (weight 1 while idle), hips 0.91–0.96 m, head 1.51–1.59 m.
+  - Demonio keeps `t3_jin_stance`.
+  - The live build before this change showed `t3_king_stance`.
+- **Test:** `test/t7-stance.test.mjs`.
+  - Format and provenance.
+  - Every frame is a standing guard: feet on the floor, upright, left foot forward, both hands up in front.
+  - Loop seam < 3 cm.
+  - Wiring is Pantera-only.

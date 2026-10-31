@@ -33,7 +33,7 @@ import * as THREE from 'three';
 import { assets } from './assets.js';
 import { loadGuardStance, createAimStance } from './stance-aim.js';
 import { attiresFor, selectableAttires, selectedAttireModel, setAttire, attireLabel, attireEyeGlow } from './attires.js';
-import { loadT3Clips, createT3Actions, retargetT3Clips } from './t3anims.js';
+import { loadT3Clips, createT3Actions, retargetT3Clips, applyT7Stance } from './t3anims.js';
 import { bankIdFor } from './fighter.js';
 import { getMovesetInfo } from './movesets.js';
 import { warmSelect, warmFight } from './preload.js';
@@ -195,7 +195,9 @@ export class PreviewPane {
         if (clips && clips.stance && inst.bones && inst.bones.Hips && inst.bones.RightArm && inst.bones.Head) {
           // Retargeted onto this rig (t3anims.js retargetT3Clips) — the
           // raw bank quaternions only fit the rig they were baked onto.
-          const t3 = createT3Actions(inst.mixer, retargetT3Clips(clips, bank, inst.model, THREE, modelId) || {}, THREE);
+          const rc = retargetT3Clips(clips, bank, inst.model, THREE, modelId) || {};
+          applyT7Stance(c.id, bank, rc, inst.model, THREE, modelId); // real T7 stance where baked, same as the fight
+          const t3 = createT3Actions(inst.mixer, rc, THREE);
           if (t3.stance) {
             if (inst.actions && inst.actions.Idle) inst.actions.Idle.setEffectiveWeight(0);
             t3.stance.setEffectiveWeight(1);

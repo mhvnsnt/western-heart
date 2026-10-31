@@ -38,7 +38,8 @@ import * as THREE from 'three';
 import { assets } from './assets.js';
 import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK, T3_BANKS,
   clipStrikeProfile, clipHitWindow, bankAttackPool, attackLevelOfWord, attackClipTime, clipIsThrow, BUTTON_LIMB,
-  loadT3Clips, loadT3ReactionClip, getT3ReactionPackScale, loadReactionPack, getReactionPack, getReactionClip } from './t3anims.js';
+  loadT3Clips, loadT3ReactionClip, getT3ReactionPackScale, loadReactionPack, getReactionPack, getReactionClip,
+  applyT7Stance } from './t3anims.js';
 import { effectiveStepPlay, playableStepPlay, stepActionName, stepPlanBanksFor } from './step-plan-bank.js';
 import { selectThrow, resolveThrowClips, throwBreaks, throwDamageTimeSec, throwPairDurationSec,
   escapePairFor, anchorAt, sharedFramePos, throwQuadrant, attemptRowForInput, hexSlot, bankDirOf } from './t3-throw.js';
@@ -876,6 +877,7 @@ export class Fighter {
       console.log(`[WH-T3] ${this.char.id}: rig '${modelKey}' lacks core humanoid bones — bank '${bank}' not bound`);
       return;
     }
+    applyT7Stance(this.char.id, bank, clips, model, THREE, modelKey); // real T7 stance where baked (t3anims.js T7_STANCES)
     this.t3actions = createT3Actions(this.mixer, clips, THREE);
     this._stepBankClips = {}; // per-step-bank source clips (see _attackClip)
     // Reaction pack prefetch (hit-reaction lane): the JSON arrives
