@@ -1,0 +1,154 @@
+{
+ "schema": "wh-t8-join-record/1",
+ "date": "2026-10-30",
+ "lane": "t8-community-pull",
+ "purpose": "Resolution record for the 300 moves left unmapped by the TEKKEN 7 pass (game/assets/anim/t7/INDEX.json), joined against TEKKEN 8 community data per the owner order of 2026-10-30 (community pull in pieces; no full-game download).",
+ "sources": {
+  "exports": "Kaiutzi21/Tekken8Movesets (CC BY-NC 4.0) + TekkenMods mod 6006 Asuka export; raw files in GRE release t8-community-pieces-v1",
+  "movelists": "wavu.wiki frame data via pbruvoll/tekkendocs (no license declared)",
+  "name_keys": "AliK3112/tekken-8-movesets-scripts name_keys.json (45,716 entries)",
+  "tkdata_package": "TekkenMods mod 7506 TKData King package (motbin/anmbin/mvl) in GRE release t8-community-pieces-v1"
+ },
+ "fighters": {
+  "pantera": {
+   "base": "King",
+   "base_code_tkdata": "PGN",
+   "clip_map": "game/assets/anim/t8/clip-maps/pantera-clip-map.json",
+   "stats": {
+    "mapped_high": 14,
+    "mapped_medium": 11,
+    "unmapped": 12
+   }
+  },
+  "phantom": {
+   "base": "Yoshimitsu",
+   "base_code_tkdata": "CML",
+   "clip_map": "game/assets/anim/t8/clip-maps/phantom-clip-map.json",
+   "stats": {
+    "mapped_medium": 22,
+    "mapped_high": 12,
+    "unmapped": 25
+   }
+  },
+  "skull": {
+   "base": "Bryan",
+   "base_code_tkdata": "CHT",
+   "clip_map": "game/assets/anim/t8/clip-maps/skull-clip-map.json",
+   "stats": {
+    "mapped_high": 9,
+    "mapped_medium": 13,
+    "unmapped": 23
+   }
+  },
+  "burger": {
+   "base": "Bob",
+   "base_code_tkdata": null,
+   "clip_map": "game/assets/anim/t8/clip-maps/burger-clip-map.json",
+   "stats": {
+    "movelist_only": 22,
+    "unmapped": 6
+   }
+  },
+  "kinpo": {
+   "base": "Asuka",
+   "base_code_tkdata": "DER",
+   "clip_map": "game/assets/anim/t8/clip-maps/kinpo-clip-map.json",
+   "stats": {
+    "mapped_medium": 15,
+    "unmapped": 17,
+    "mapped_high": 15
+   }
+  },
+  "demonio": {
+   "base": "Jin",
+   "base_code_tkdata": "ANT",
+   "clip_map": "game/assets/anim/t8/clip-maps/demonio-clip-map.json",
+   "stats": {
+    "mapped_medium": 10,
+    "unmapped": 12,
+    "mapped_high": 10
+   }
+  },
+  "diablo": {
+   "base": "Heihachi",
+   "base_code_tkdata": "BEE",
+   "clip_map": "game/assets/anim/t8/clip-maps/diablo-clip-map.json",
+   "stats": {
+    "unmapped": 16,
+    "mapped_high": 11,
+    "mapped_medium": 6
+   }
+  },
+  "scimitar": {
+   "base": "Shaheen",
+   "base_code_tkdata": "HRS",
+   "clip_map": "game/assets/anim/t8/clip-maps/scimitar-clip-map.json",
+   "stats": {
+    "mapped_medium": 6,
+    "mapped_high": 9,
+    "unmapped": 4
+   }
+  }
+ },
+ "class_rollup": {
+  "totals": {
+   "graph_only_held": 89,
+   "notation_differs": 20,
+   "no_evidence": 61,
+   "mvl_matched_graph_gap": 39,
+   "ambiguous_pool": 91
+  },
+  "resolution": {
+   "graph_only_held": {
+    "mapped_high": 48,
+    "mapped_medium": 11,
+    "unmapped": 19,
+    "movelist_only": 11
+   },
+   "notation_differs": {
+    "unmapped": 11,
+    "mapped_medium": 5,
+    "mapped_high": 4
+   },
+   "no_evidence": {
+    "unmapped": 43,
+    "mapped_medium": 16,
+    "mapped_high": 1,
+    "movelist_only": 1
+   },
+   "mvl_matched_graph_gap": {
+    "unmapped": 28,
+    "mapped_medium": 7,
+    "mapped_high": 1,
+    "movelist_only": 3
+   },
+   "ambiguous_pool": {
+    "mapped_medium": 44,
+    "unmapped": 14,
+    "mapped_high": 26,
+    "movelist_only": 7
+   },
+   "other": {}
+  }
+ },
+ "pool81_t8_only_candidates": {
+  "total": 81,
+  "resolved": 27
+ },
+ "totals": {
+  "targets": 300,
+  "resolved": 185,
+  "mapped_high": 80,
+  "mapped_medium": 83,
+  "movelist_only": 22,
+  "unmapped": 115
+ },
+ "notes": [
+  "Grades: high = export cancel-graph chain terminal corroborated by wavu (startup,damage) fingerprint; medium = unique attack-class graph terminal without fingerprint corroboration (16 carry a wavu_conflict flag where wavu frame data disagrees); movelist_only = wavu name/notation resolution without a moveset-export graph (Bob has no circulating export).",
+  "All 81 pool notations exist in T8 wavu data (Worker C coverage: 51 exact name+notation, 4 name-only, 26 notation-only, 0 absent). The 54 pool entries still unmapped here are graph-side gaps (mostly chain throws and requirement-gated entries), not absences: their T8 identity + frame data are proven by the movelist channel.",
+  "For all 20 notation_differs entries, the T8 wavu notation equals the WH notation; the T7 MVL notation was the outlier.",
+  "Bob IS in Tekken 8 (Season 3 DLC, 2026-08) \u2014 the older not-in-T8 premise is corrected.",
+  "Steam check: TEKKEN 8 (app 1778820) is NOT owned on the owner Steam account per docs/tech/STEAM-LIBRARY.md; the DepotDownloader route does not apply to T8. Community route carried this lane.",
+  "Fighter moveset files were NOT edited; the provenance lane consumes these maps."
+ ]
+}
