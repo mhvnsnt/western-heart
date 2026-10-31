@@ -11,6 +11,19 @@
  * the hit_frames hard gates for every promoted row, and guards the steps
  * that stay review (117/257/258) plus the all-plan tallies.
  * Run: node test/pantera-fk-promotion.test.mjs (from repo root, CI game-unit-tests)
+ *
+ * T7 CROSS-DECODE chunk (2026-10-31, lane B2): 19 further steps promoted on
+ * Tekken 7 evidence instead of FK — King's kinmot cancel graph was
+ * deciphered (alias table at motbin offset 0x28; GROUP delegation via
+ * direction 0x800B) and walked group-correct (docs/movesets/
+ * T7-CROSSDECODE-PANTERA-2026-10-31.md). PROMOTED_T7 below locks them:
+ * row 198 enders (1,2,1 step 2; f+2,1 step 1 — the walk reaches the
+ * clip-map-joined motbin moves 1685 Kg_rplu6 / 1594 Kg_6rplp at open tier)
+ * and row 135 step-0 (d/f+4 family — the step is the move itself, T7
+ * identity uniquely 1660 Kg_t_srkF). FK + play-verify remain owed for
+ * these (their evidence notes say so). Row 117 (d/f+1,2 step 0) is NOT
+ * among them: its T7 identity was confirmed (1652 Kg_t_slpF) but the
+ * recorded FK failure above (70%) still blocks it — it stays in GUARDS.
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -94,7 +107,7 @@ test('all-plan tallies after this promotion', () => {
   for (const plan of Object.values(plans)) {
     for (const s of plan.steps) counts[s.status] += 1;
   }
-  assert.deepEqual(counts, { verified: 155, review: 82, unmapped: 389 });
+  assert.deepEqual(counts, { verified: 174, review: 63, unmapped: 389 });
 });
 
 test('promoted keys carry consistent plan-level fields', () => {
@@ -106,4 +119,51 @@ test('promoted keys carry consistent plan-level fields', () => {
     assert.equal(plans[key].last_step_status, 'verified', `${key} last step must be verified`);
     assert.notEqual(plans[key].last_step_row, null, `${key} last step row must be set`);
   }
+});
+
+// [plan key, step index, step, row, candidate_source] — T7 cross-decode (19).
+const PROMOTED_T7 = [
+  ['1,2,1', 2, '1', 198, 't3-branch-graph'],
+  ['1,2,1~t7.king', 2, '1', 198, 't3-branch-graph'],
+  ['1,2,1~t7.king.2', 2, '1', 198, 't3-branch-graph'],
+  ['1,2,1~t7.king.3', 2, '1', 198, 't3-branch-graph'],
+  ['f+2,1', 1, '1', 198, 't3-branch-graph'],
+  ['f+2,1,1', 1, '1', 198, 't3-branch-graph'],
+  ['f+2,1,1,2', 1, '1', 198, 't3-branch-graph'],
+  ['f+2,1~t7.king', 1, '1', 198, 't3-branch-graph'],
+  ['f+2,1~t7.king.2', 1, '1', 198, 't3-branch-graph'],
+  ['d/f+4,2', 0, 'd/f+4', 135, 'prefix-move'],
+  ['d/f+4,3', 0, 'd/f+4', 135, 'prefix-move'],
+  ['d/f+4,3,4', 0, 'd/f+4', 135, 'prefix-move'],
+  ['d/f+4,3,4~t7.king', 0, 'd/f+4', 135, 'prefix-move'],
+  ['d/f+4,3,4~t7.king.2', 0, 'd/f+4', 135, 'prefix-move'],
+  ['d/f+4,3,d+4', 0, 'd/f+4', 135, 'prefix-move'],
+  ['d/f+4,3,d+4~t7.king', 0, 'd/f+4', 135, 'prefix-move'],
+  ['d/f+4,3,d+4~t7.king.2', 0, 'd/f+4', 135, 'prefix-move'],
+  ['d/f+4,3~t7.king', 0, 'd/f+4', 135, 'prefix-move'],
+  ['d/f+4,4', 0, 'd/f+4', 135, 'prefix-move'],
+];
+
+test('T7 cross-decode promoted steps are verified on their candidate row with the T7 note', () => {
+  assert.equal(PROMOTED_T7.length, 19);
+  for (const [key, idx, step, row, source] of PROMOTED_T7) {
+    const s = plans[key].steps[idx];
+    assert.equal(s.step, step, `${key} step ${idx}`);
+    assert.equal(s.status, 'verified', `${key} step ${step} must be verified`);
+    assert.equal(s.row, row, `${key} step ${step} must play row ${row}`);
+    assert.equal(s.candidate_row, row, `${key} step ${step} candidate must be row ${row}`);
+    assert.equal(s.candidate_source, source, `${key} step ${step} source`);
+    assert.ok(s.reasons.some((r) => r.startsWith('T7 CROSS-DECODE PROMOTION 2026-10-31')), `${key} step ${step} must carry the T7 evidence note`);
+  }
+});
+
+test('T7-promoted keys carry consistent plan-level fields', () => {
+  const VERIFIED_ALL_T7 = ['1,2,1', '1,2,1~t7.king', '1,2,1~t7.king.2', '1,2,1~t7.king.3',
+    'f+2,1', 'f+2,1~t7.king', 'f+2,1~t7.king.2', 'd/f+4,4'];
+  for (const key of VERIFIED_ALL_T7) {
+    assert.equal(plans[key].string_status, 'verified-all', `${key} must be verified-all`);
+    assert.equal(plans[key].last_step_status, 'verified', `${key} last step must be verified`);
+    assert.notEqual(plans[key].last_step_row, null, `${key} last step row must be set`);
+  }
+  assert.equal(plans['d/f+4,2'].string_status, 'partial', 'd/f+4,2 must be partial after its step-0 promotion');
 });
