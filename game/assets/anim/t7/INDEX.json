@@ -341,5 +341,21 @@
   "doc": "docs/movesets/T7-CLIP-MAPPING-2026-10-30.md"
  },
  "still_open": "Wiring these clip-maps into fighter movesets is the provenance lane\u2019s step (per-character isolation). frv/dnc bank-0x8000 moves in the older motbin banks resolve through common.arc the same way (911 shared anim names verified key-identical kin/bry)."
-}
+},
+ "baked_assets": {
+  "pantera_king_t7_stance": {
+   "status": "BAKED 2026-10-30 - direct-rig representation of King's T7 stance for Pantera (wh-anim/1, t3-bank layout). The canonical mannequin-skeleton representation of the same clip lives at game/assets/anim/t7/king/stance.json (commit c2d5155f) and is already wired into the game; this entry records the Pantera-rig bake + the independent 0xC8 control test behind both.",
+   "asset": "game/assets/anim/t7/king_on_pantera_leoman/t7_stance.json",
+   "skeleton": "game/assets/anim/t7/king_on_pantera_leoman/skeleton.json",
+   "clip": "nakg_kg2kam (King guard stance / kamae), anim_id 0x4084, format-200 (0xC8), 60 frames @60fps stored as 30 @30fps",
+   "source": "owner Steam TEKKEN 7 kinrotsm.arc section 0 (GRE teardown/tekken7-steam), clip sha256 1e0c6b34ca537ee459edfd2d8313d47b09910a3be3c8767b32d6e7a99bb9aeb0",
+   "method": "Kiloutre BlenderTekkenAnimationImporter 0xC8 path, control test on Koenji T7 mannequin PASSED (ground contact -0.024..-0.004 m, knees forward, seamless loop), then world-orientation transfer onto pantera_leoman_t3real.glb (sha256 cd198916...); rotation solve max error 0.069 deg; rest export deviation 0.0 rad",
+   "doc": "docs/anim/T7-0xC8-CONTROL-TEST-2026-10-30.md",
+   "tools": [
+    "tools/anim/t7_c8_control_test.py",
+    "tools/anim/t7_c8_pantera_stance_bake.py"
+   ],
+   "scope": "stance only, from the verified 0xC8 (format-200) path; NOT a format-100 (0x64) result. Game wiring (pointing Pantera's stance slot at this bank) not included - provenance/wiring lane consumes."
+  }
+ }
 }
