@@ -10468,8 +10468,9 @@
       "anim_t3": {
         "bank": "eddy",
         "row": 103,
-        "match": "same-notation"
+        "match": "true-map branch-graph (provenance-fix 2026-10-31)"
       },
+      "provenance_fix": {"old_row": 103, "new_row": 103, "proof": "C", "method": "true-map branch-graph (provenance-fix 2026-10-31) (g2 conditions+common)"},
       "mod_damage": "14,14",
       "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
@@ -10509,8 +10510,9 @@
       "anim_t3": {
         "bank": "eddy",
         "row": 103,
-        "match": "same-notation"
+        "match": "true-map branch-graph (provenance-fix 2026-10-31)"
       },
+      "provenance_fix": {"old_row": 103, "new_row": 103, "proof": "C", "method": "true-map branch-graph (provenance-fix 2026-10-31) (g2 conditions+common)"},
       "mod_damage": "14,14",
       "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
@@ -163855,6 +163857,16 @@
           "B": 5
       },
       "remaining_guess_grade": 200,
+      "note": "Surgical text edit (file does not round-trip reserialization)."
+  },
+  {
+      "date": "2026-10-31",
+      "lane": "moveset-provenance g2 (condition table + common bank)",
+      "corrected": 2,
+      "by_proof": {
+          "C": 2
+      },
+      "remaining_guess_grade": 198,
       "note": "Surgical text edit (file does not round-trip reserialization)."
   }
   ]
