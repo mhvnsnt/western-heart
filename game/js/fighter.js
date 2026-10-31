@@ -3220,6 +3220,19 @@ export class Fighter {
     // so physics must not integrate velocity or gravity here.
     const inThrowAnim = this.state === 'throwExec' || this.state === 'thrownExec';
     if (!inThrowAnim) {
+      // STAGE-BREAK GROUND DROP (owner playtest 2026-10-30: camera stuck
+      // mid-level after a floor/balcony break): _breakFloor /
+      // _breakBalcony lower GROUND_Y without touching fighter state, so
+      // a grounded fighter (onGround, vy 0, root at the old level) meets
+      // neither the gravity gate below (airborne only) nor the ground
+      // clamp (fires only from below) and floats at the old level forever
+      // while the launched defender lands below. Release a grounded
+      // fighter whose feet are above the current ground to gravity
+      // instead of teleporting: the clamp below re-grounds them on
+      // landing. Throw executions are excluded (positions are driven
+      // by _tickState, not physics). The camera is not touched: it
+      // already frames maxY of both roots correctly once both land.
+      if (this.onGround && this.root.position.y > GROUND_Y + 0.01) this.onGround = false;
       if (!this.onGround) this.vy -= ((this._juggleG && this.state === 'knockdown') ? this._juggleG : 22) * dt;
     }
     if (this.onGround && this.state !== 'walk' && this.state !== 'dodge' && this.state !== 'sidestep' && !(this.state === 'attack' && this.attackName === 'grab')) {
