@@ -335,3 +335,12 @@ Census definitions: 175 = entries with (throw:true or isGrab:true) and move_clas
 - slice.json PR #1357: speed-quality (hermetic tool gate: py_compile + Hypothesis property tests + pixelmatch self-test) failed on the first run, unrelated to moveset data; an empty retrigger commit re-ran CI, all checks passed, merged.
 - torch.json PR #1359: budgets check was CANCELLED on the first run; same empty-commit retrigger, all checks passed, merged.
 
+
+## 8. Addendum (2026-10-31) — section 3c resolved; final accounting
+
+The five scimitar.json entries held in section 3c landed in PR #1364 (merge df91c42e421179f1c505cf062c16eaed3b3194f0) via a moves-scoped pass of the same surgical editor. The F6 census pool is defined on the top-level moves object, so the editor was restricted to entry blocks inside that object and the identical edit specs applied cleanly: P+K anim_t3 jin 162 -> 370, 1+4 anim_t3 jin 215 -> 370, and Back throw / Left throw / Right throw move_class strike -> throw. The run verified every other top-level key of the file — the t8_quarantine_20261024 duplicates included — parse-identical after the edit. The quarantine copies were not edited: they are a quarantine record, not runtime moves, and were never part of the census pool.
+
+Final F6 accounting: **84 corrected + 46 settled-consistent + 37 held (11 repick-ambiguous + 26 bank-not-held) + 17 owner-gated = 184.** This supersedes the section 1 arithmetic line and the section 6 figures. Post-addendum census re-run against main at df91c42e:
+
+- 175-pool hit_frames throw distribution: throw=1: 88, throw=0: 23, no bank row / bank not held: 64. Every remaining throw=0 entry is owner-gated (cainelias.json x2, demonio-winged.json x10) or held-ambiguous (demonio-bloodline-ember.json x10, docfrank.json P+K x1).
+- 9-pool remainder: 3 entries, all star.json (owner-gated, Owner Decision List item 1).
