@@ -1,0 +1,1975 @@
+{
+ "schema": "wh-t8-clip-map/1",
+ "fighter": "diablo",
+ "base": "Heihachi",
+ "base_code_tkdata": "BEE",
+ "sources": {
+  "export": "kaiutzi21/Tekken8Movesets t8_HEIHACHI/t8_HEIHACHI.json (CC BY-NC 4.0)",
+  "movelist": "wavu.wiki via pbruvoll/tekkendocs json_movelist (unlicensed community frame data)",
+  "name_keys": "AliK3112/tekken-8-movesets-scripts name_keys.json (45,716 entries)",
+  "t7_record": "game/assets/anim/t7/clip-maps/diablo-clip-map.json"
+ },
+ "stats": {
+  "unmapped": 16,
+  "mapped_high": 11,
+  "mapped_medium": 6
+ },
+ "moves": [
+  {
+   "wh_key": "2+3+4",
+   "wh_name": "Auger",
+   "wh_input": "2+3+4",
+   "t7_id": "heihachi_182",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "mvl_matched_graph_gap",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "4*",
+   "wh_name": "Otoko Geri (charged)",
+   "wh_input": "4*",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "graph_only_held",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "df+1",
+   "wh_name": "Move df+1 (df+1)",
+   "wh_input": "df+1",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_HEIHACHI",
+   "t8_move_index": 1692,
+   "t8_move_name": "He_3LP",
+   "t8_anim_name": "beekw_at_3lp_hit",
+   "startup": 13,
+   "damage": 10,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1683,
+     "name": "Co_syalp00"
+    },
+    {
+     "move": 1763,
+     "name": "He_step_LP_just"
+    },
+    {
+     "move": 1764,
+     "name": "He_step_LP_FAST"
+    }
+   ]
+  },
+  {
+   "wh_key": "df+2",
+   "wh_name": "Move df+2 (df+2)",
+   "wh_input": "df+2",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_HEIHACHI",
+   "t8_move_index": 1680,
+   "t8_move_name": "He_Crh3RP",
+   "t8_anim_name": "beekw_at_sy3rp",
+   "startup": 15,
+   "damage": 17,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1699,
+     "name": "He_3RP"
+    },
+    {
+     "move": 1766,
+     "name": "He_step_RP_just"
+    },
+    {
+     "move": 1831,
+     "name": "Thrmv_B2_09"
+    }
+   ]
+  },
+  {
+   "wh_key": "df+3",
+   "wh_name": "Move df+3 (df+3)",
+   "wh_input": "df+3",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_HEIHACHI",
+   "t8_move_index": 1706,
+   "t8_move_name": "He_3LK",
+   "t8_anim_name": "beekw_at_3lk",
+   "startup": 15,
+   "damage": 10,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1688,
+     "name": "Co_syalk00"
+    },
+    {
+     "move": 1771,
+     "name": "He_step_LK"
+    }
+   ]
+  },
+  {
+   "wh_key": "f+2~1,1+2",
+   "wh_name": "Demon Shout Volley",
+   "wh_input": "f+2~1,1+2",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "no_evidence",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_HEIHACHI",
+   "t8_move_index": 1620,
+   "t8_move_name": "He_6RPsLPWP",
+   "t8_anim_name": "beeoz_at_wtyop",
+   "startup": 26,
+   "damage": 24,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   }
+  },
+  {
+   "wh_key": "f+2,2",
+   "wh_name": "Tensu Gekishin",
+   "wh_input": "f+2,2",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "no_evidence",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "f+3+4",
+   "wh_name": "Thunder God's Kamae",
+   "wh_input": "f+3+4",
+   "t7_id": "heihachi_150",
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "no_evidence",
+   "evidence": [
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_HEIHACHI",
+   "t8_move_index": 1535,
+   "t8_move_name": "He_9LK",
+   "t8_anim_name": "beekw_at_9lk",
+   "startup": 28,
+   "damage": 17,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "wavu_conflict": true
+  },
+  {
+   "wh_key": "FC.df+2",
+   "wh_name": "Ascension Upper",
+   "wh_input": "FC.df+2",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_HEIHACHI",
+   "t8_move_index": 1680,
+   "t8_move_name": "He_Crh3RP",
+   "t8_anim_name": "beekw_at_sy3rp",
+   "startup": 15,
+   "damage": 17,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1699,
+     "name": "He_3RP"
+    },
+    {
+     "move": 1766,
+     "name": "He_step_RP_just"
+    },
+    {
+     "move": 1831,
+     "name": "Thrmv_B2_09"
+    }
+   ]
+  },
+  {
+   "wh_key": "f,F+2",
+   "wh_name": "Demon God Fist",
+   "wh_input": "f,F+2",
+   "t7_id": "heihachi_50",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "no_evidence",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "f,F+3",
+   "wh_name": "Left Splits Kick",
+   "wh_input": "f,F+3",
+   "t7_id": "heihachi_51",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "mvl_matched_graph_gap",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "f,f,F+1+2",
+   "wh_name": "Roaring Stonehead",
+   "wh_input": "f,f,F+1+2",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "no_evidence",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "f,f,F+3",
+   "wh_name": "Leaping Side Kick",
+   "wh_input": "f,f,F+3",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "mvl_matched_graph_gap",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "f,n,d,df",
+   "wh_name": "Wind God Step",
+   "wh_input": "f,n,d,df",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "no_evidence",
+   "evidence": [
+    "wavu_notation_exists",
+    "export_cancel_graph_chain",
+    "graph_chain_motion_terminal"
+   ],
+   "source": "kaiutzi21-t8_HEIHACHI",
+   "t8_move_index": 1758,
+   "t8_move_name": "He_shoryu01",
+   "t8_anim_name": "beekw_co_fustep",
+   "startup": null,
+   "damage": 0,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "wavu_conflict": true
+  },
+  {
+   "wh_key": "f,n,d,df+2",
+   "wh_name": "Wind God Fist",
+   "wh_input": "f,n,d,df+2",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_HEIHACHI",
+   "t8_move_index": 1766,
+   "t8_move_name": "He_step_RP_just",
+   "t8_anim_name": "beekw_at_fu_shoryu24",
+   "startup": 11,
+   "damage": 23,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "wavu_conflict": true
+  },
+  {
+   "wh_key": "f,n,d,df+3",
+   "wh_name": "Bone Splinter Kick",
+   "wh_input": "f,n,d,df+3",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_HEIHACHI",
+   "t8_move_index": 1763,
+   "t8_move_name": "He_step_LP_just",
+   "t8_anim_name": "beekw_at_fu_newaorai",
+   "startup": 19,
+   "damage": 33,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "wavu_conflict": true,
+   "alternates": [
+    {
+     "move": 1771,
+     "name": "He_step_LK"
+    }
+   ]
+  },
+  {
+   "wh_key": "f,n,d,DF+4",
+   "wh_name": "Move f,n,d,DF+4 (f,n,d,DF+4)",
+   "wh_input": "f,n,d,DF+4",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "no_evidence",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "f,n,d,DF+4,4",
+   "wh_name": "Move 4 (4)",
+   "wh_input": "f,n,d,DF+4,4",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "no_evidence",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "f,n,d,DF+4,4,4",
+   "wh_name": "Spinning Demon",
+   "wh_input": "f,n,d,DF+4,4,4",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "notation_differs",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "qcf+2",
+   "wh_name": "Iron Hand",
+   "wh_input": "qcf+2",
+   "t7_id": "heihachi_114",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "mvl_matched_graph_gap",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "SS.2",
+   "wh_name": "Nail Beating",
+   "wh_input": "SS.2",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_HEIHACHI",
+   "t8_move_index": 1598,
+   "t8_move_name": "He_rp00",
+   "t8_anim_name": "beekw_at_rp",
+   "startup": 11,
+   "damage": 10,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1600,
+     "name": "He_Side_RP"
+    },
+    {
+     "move": 1515,
+     "name": "He_7RP"
+    },
+    {
+     "move": 1522,
+     "name": "Co_jprp03"
+    },
+    {
+     "move": 1523,
+     "name": "Co_jprp03F"
+    },
+    {
+     "move": 1524,
+     "name": "Co_jprp03B"
+    },
+    {
+     "move": 1556,
+     "name": "Co_sjprp03F"
+    },
+    {
+     "move": 1578,
+     "name": "He_LPLPRP"
+    },
+    {
+     "move": 1579,
+     "name": "He_LPLPRP_Kyouchi"
+    },
+    {
+     "move": 1590,
+     "name": "He_LP4RP_reserve_RP"
+    },
+    {
+     "move": 1599,
+     "name": "He_RPRP"
+    },
+    {
+     "move": 1601,
+     "name": "He_9RP"
+    },
+    {
+     "move": 1644,
+     "name": "He_Raijin_RP"
+    },
+    {
+     "move": 1647,
+     "name": "He_Raijin_LK_reserve_RP_Heat"
+    },
+    {
+     "move": 1664,
+     "name": "He_4LKLK_reserve_RP"
+    },
+    {
+     "move": 1670,
+     "name": "He_s_tRP"
+    },
+    {
+     "move": 1685,
+     "name": "Co_syarp00"
+    },
+    {
+     "move": 1715,
+     "name": "He_3RKRP"
+    },
+    {
+     "move": 1722,
+     "name": "He_2LPRP"
+    },
+    {
+     "move": 1731,
+     "name": "He_2LK_reserve_RP_Heat"
+    },
+    {
+     "move": 1738,
+     "name": "He_Fujin_LPRP"
+    },
+    {
+     "move": 1739,
+     "name": "He_Fujin_RP"
+    },
+    {
+     "move": 1740,
+     "name": "He_Fujin_RP_Kyouchi"
+    },
+    {
+     "move": 1766,
+     "name": "He_step_RP_just"
+    },
+    {
+     "move": 1767,
+     "name": "He_step_RP_just_Easy"
+    },
+    {
+     "move": 1804,
+     "name": "SPHeA_rpF"
+    },
+    {
+     "move": 1806,
+     "name": "SPHeA_lprp"
+    },
+    {
+     "move": 1807,
+     "name": "SPHeA_rprp"
+    },
+    {
+     "move": 1812,
+     "name": "SPHeA_lpru"
+    },
+    {
+     "move": 1814,
+     "name": "SPHeB_lkrp"
+    },
+    {
+     "move": 1815,
+     "name": "SPHeB_rprp"
+    },
+    {
+     "move": 1821,
+     "name": "SPHeB_lprp"
+    },
+    {
+     "move": 1823,
+     "name": "SPHeC_lurp"
+    },
+    {
+     "move": 1825,
+     "name": "SPHeC_luru"
+    },
+    {
+     "move": 2308,
+     "name": "He_3LPRP_shadow"
+    },
+    {
+     "move": 2314,
+     "name": "He_4LPRP_shadow"
+    },
+    {
+     "move": 2319,
+     "name": "He_6WK_RP_shadow"
+    },
+    {
+     "move": 2358,
+     "name": "He_9LPLKRP_Final"
+    },
+    {
+     "move": 2371,
+     "name": "He_9RPLPRP_Final"
+    },
+    {
+     "move": 2374,
+     "name": "He_4LKLK_reserve_RP_Final"
+    }
+   ]
+  },
+  {
+   "wh_key": "uf+3,4",
+   "wh_name": "Hell Axle",
+   "wh_input": "uf+3,4",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_HEIHACHI",
+   "t8_move_index": 1536,
+   "t8_move_name": "He_9LK_reserve_RK",
+   "t8_anim_name": "beekw_at_9lk",
+   "startup": 28,
+   "damage": 17,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1538,
+     "name": "He_9LKRK"
+    }
+   ]
+  },
+  {
+   "wh_key": "WAR.f,F+2",
+   "wh_name": "Ultimate Demon God Fist",
+   "wh_input": "WAR.f,F+2",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "no_evidence",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "WAR.f,F+3",
+   "wh_name": "Ultimate Splits Kick",
+   "wh_input": "WAR.f,F+3",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "no_evidence",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "WAR.f,f,F+1+2",
+   "wh_name": "Ultimate Roaring Stonehead",
+   "wh_input": "WAR.f,f,F+1+2",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "no_evidence",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "WAR.f,n,d,DF+4",
+   "wh_name": "Ultimate Spinning Demon",
+   "wh_input": "WAR.f,n,d,DF+4",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "no_evidence",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "ws3",
+   "wh_name": "Move ws3 (ws3)",
+   "wh_input": "ws3",
+   "t7_id": "heihachi_131",
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_HEIHACHI",
+   "t8_move_index": 1607,
+   "t8_move_name": "He_lk00",
+   "t8_anim_name": "beetb_at_lk",
+   "startup": 15,
+   "damage": 10,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 199,
+     "name": "Co_Aokilk00"
+    },
+    {
+     "move": 201,
+     "name": "Co_AokilkL0"
+    },
+    {
+     "move": 203,
+     "name": "Co_ADwSlk00"
+    },
+    {
+     "move": 206,
+     "name": "Co_ADwSlkR1"
+    },
+    {
+     "move": 209,
+     "name": "Co_FRollk00"
+    },
+    {
+     "move": 211,
+     "name": "Co_FRollkL0"
+    },
+    {
+     "move": 213,
+     "name": "Co_BRollk00"
+    },
+    {
+     "move": 215,
+     "name": "Co_BRollkL0"
+    },
+    {
+     "move": 220,
+     "name": "Co_Rol_lrk"
+    },
+    {
+     "move": 223,
+     "name": "Co_Uokilk01"
+    },
+    {
+     "move": 228,
+     "name": "Co_UokilkR1"
+    },
+    {
+     "move": 248,
+     "name": "Co_R_lk00L_"
+    },
+    {
+     "move": 254,
+     "name": "Co_jpRlk01"
+    },
+    {
+     "move": 255,
+     "name": "Co_jpRlk01F"
+    },
+    {
+     "move": 256,
+     "name": "Co_jpRlk01B"
+    },
+    {
+     "move": 1526,
+     "name": "Co_jplk01"
+    },
+    {
+     "move": 1527,
+     "name": "Co_jplk01F"
+    },
+    {
+     "move": 1528,
+     "name": "Co_jplk01B"
+    },
+    {
+     "move": 1529,
+     "name": "Co_jplk02"
+    },
+    {
+     "move": 1530,
+     "name": "Co_jplk02F"
+    },
+    {
+     "move": 1531,
+     "name": "Co_jplk02B"
+    },
+    {
+     "move": 1532,
+     "name": "Co_jplk04"
+    },
+    {
+     "move": 1533,
+     "name": "Co_jplk04F"
+    },
+    {
+     "move": 1534,
+     "name": "Co_jplk04B"
+    },
+    {
+     "move": 1535,
+     "name": "He_9LK"
+    },
+    {
+     "move": 1558,
+     "name": "Co_sjplk11F"
+    },
+    {
+     "move": 1559,
+     "name": "Co_sjplk12F"
+    },
+    {
+     "move": 1560,
+     "name": "Co_sjplk13F"
+    },
+    {
+     "move": 1611,
+     "name": "He_RKsLK"
+    },
+    {
+     "move": 1646,
+     "name": "He_Raijin_LK"
+    },
+    {
+     "move": 1647,
+     "name": "He_Raijin_LK_reserve_RP_Heat"
+    },
+    {
+     "move": 1663,
+     "name": "He_4LKLK"
+    },
+    {
+     "move": 1674,
+     "name": "He_s_tLK"
+    },
+    {
+     "move": 1688,
+     "name": "Co_syalk00"
+    },
+    {
+     "move": 1731,
+     "name": "He_2LK_reserve_RP_Heat"
+    },
+    {
+     "move": 1742,
+     "name": "He_Fujin_LK"
+    },
+    {
+     "move": 1771,
+     "name": "He_step_LK"
+    },
+    {
+     "move": 1808,
+     "name": "SPHeA_rplk"
+    },
+    {
+     "move": 2358,
+     "name": "He_9LPLKRP_Final"
+    },
+    {
+     "move": 2374,
+     "name": "He_4LKLK_reserve_RP_Final"
+    }
+   ]
+  },
+  {
+   "wh_key": "ws4",
+   "wh_name": "Move ws4 (ws4)",
+   "wh_input": "ws4",
+   "t7_id": "heihachi_134",
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_HEIHACHI",
+   "t8_move_index": 1610,
+   "t8_move_name": "He_rk00",
+   "t8_anim_name": "beekw_at_rk",
+   "startup": 15,
+   "damage": 21,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 200,
+     "name": "Co_Aokirk00"
+    },
+    {
+     "move": 202,
+     "name": "Co_AokirkL0"
+    },
+    {
+     "move": 204,
+     "name": "Co_ADwSrk00"
+    },
+    {
+     "move": 208,
+     "name": "Co_ADwSrkR1"
+    },
+    {
+     "move": 210,
+     "name": "Co_FRolrk00"
+    },
+    {
+     "move": 211,
+     "name": "Co_FRollkL0"
+    },
+    {
+     "move": 212,
+     "name": "Co_FRolrkL0"
+    },
+    {
+     "move": 214,
+     "name": "Co_BRolrk00"
+    },
+    {
+     "move": 216,
+     "name": "Co_BRolrkL0"
+    },
+    {
+     "move": 220,
+     "name": "Co_Rol_lrk"
+    },
+    {
+     "move": 226,
+     "name": "Co_Uokirk01"
+    },
+    {
+     "move": 234,
+     "name": "Co_UokirkR1"
+    },
+    {
+     "move": 249,
+     "name": "Co_R_rk00R_"
+    },
+    {
+     "move": 257,
+     "name": "Co_jpRrk01"
+    },
+    {
+     "move": 258,
+     "name": "Co_jpRrk01F"
+    },
+    {
+     "move": 259,
+     "name": "Co_jpRrk01B"
+    },
+    {
+     "move": 1536,
+     "name": "He_9LK_reserve_RK"
+    },
+    {
+     "move": 1538,
+     "name": "He_9LKRK"
+    },
+    {
+     "move": 1539,
+     "name": "Co_jprk01"
+    },
+    {
+     "move": 1540,
+     "name": "Co_jprk01F"
+    },
+    {
+     "move": 1541,
+     "name": "Co_jprk01B"
+    },
+    {
+     "move": 1542,
+     "name": "Co_jprk02"
+    },
+    {
+     "move": 1543,
+     "name": "Co_jprk02F"
+    },
+    {
+     "move": 1544,
+     "name": "Co_jprk02B"
+    },
+    {
+     "move": 1545,
+     "name": "Co_jprk04"
+    },
+    {
+     "move": 1546,
+     "name": "Co_jprk04F"
+    },
+    {
+     "move": 1547,
+     "name": "Co_jprk04B"
+    },
+    {
+     "move": 1548,
+     "name": "He_9RK"
+    },
+    {
+     "move": 1550,
+     "name": "He_9RK_reserve_LP_Heat"
+    },
+    {
+     "move": 1561,
+     "name": "Co_sjprk11F"
+    },
+    {
+     "move": 1562,
+     "name": "Co_sjprk12F"
+    },
+    {
+     "move": 1563,
+     "name": "Co_sjprk13F"
+    },
+    {
+     "move": 1593,
+     "name": "He_LP4RPRK"
+    },
+    {
+     "move": 1647,
+     "name": "He_Raijin_LK_reserve_RP_Heat"
+    },
+    {
+     "move": 1648,
+     "name": "He_Raijin_RK"
+    },
+    {
+     "move": 1649,
+     "name": "He_Raijin_RK_Kyouchi"
+    },
+    {
+     "move": 1651,
+     "name": "He_4LPRK"
+    },
+    {
+     "move": 1677,
+     "name": "He_s_tRK"
+    },
+    {
+     "move": 1678,
+     "name": "He_s_tRKRK"
+    },
+    {
+     "move": 1689,
+     "name": "He_syark00"
+    },
+    {
+     "move": 1743,
+     "name": "He_Fujin_RK"
+    },
+    {
+     "move": 1782,
+     "name": "He_step_RKnRKRK"
+    },
+    {
+     "move": 1809,
+     "name": "SPHeA_lkrk"
+    },
+    {
+     "move": 1810,
+     "name": "SPHeA_rkrkL"
+    },
+    {
+     "move": 1816,
+     "name": "SPHeB_rprk"
+    },
+    {
+     "move": 1817,
+     "name": "SPHeB_rkrk"
+    },
+    {
+     "move": 1819,
+     "name": "SPHeB_lurk"
+    },
+    {
+     "move": 1822,
+     "name": "SPHeB_rprk2"
+    },
+    {
+     "move": 2290,
+     "name": "He_Std_LP_RP_RK_saint"
+    },
+    {
+     "move": 2299,
+     "name": "He_LKRK_shadow"
+    },
+    {
+     "move": 2358,
+     "name": "He_9LPLKRP_Final"
+    }
+   ]
+  },
+  {
+   "wh_key": "1~t8.heihachi",
+   "wh_name": "Jab",
+   "wh_input": "1",
+   "t7_id": "heihachi_2",
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_HEIHACHI",
+   "t8_move_index": 1574,
+   "t8_move_name": "He_lp00F",
+   "t8_anim_name": "beekw_at_lp",
+   "startup": 10,
+   "damage": 5,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1683,
+     "name": "Co_syalp00"
+    },
+    {
+     "move": 1503,
+     "name": "Co_jplp01"
+    },
+    {
+     "move": 1504,
+     "name": "Co_jplp01F"
+    },
+    {
+     "move": 1505,
+     "name": "Co_jplp01B"
+    },
+    {
+     "move": 1506,
+     "name": "Co_jplp02"
+    },
+    {
+     "move": 1507,
+     "name": "Co_jplp02F"
+    },
+    {
+     "move": 1508,
+     "name": "Co_jplp02B"
+    },
+    {
+     "move": 1509,
+     "name": "Co_jplp03"
+    },
+    {
+     "move": 1510,
+     "name": "Co_jplp03F"
+    },
+    {
+     "move": 1511,
+     "name": "Co_jplp03B"
+    },
+    {
+     "move": 1512,
+     "name": "Co_jpRlp00"
+    },
+    {
+     "move": 1513,
+     "name": "Co_jpRlp00F"
+    },
+    {
+     "move": 1514,
+     "name": "Co_jpRlp00B"
+    },
+    {
+     "move": 1550,
+     "name": "He_9RK_reserve_LP_Heat"
+    },
+    {
+     "move": 1552,
+     "name": "He_9RKLP_Heat"
+    },
+    {
+     "move": 1553,
+     "name": "Co_sjplp01F"
+    },
+    {
+     "move": 1554,
+     "name": "Co_sjplp02F"
+    },
+    {
+     "move": 1555,
+     "name": "Co_sjplp03F"
+    },
+    {
+     "move": 1587,
+     "name": "He_LPRPRPsLP"
+    },
+    {
+     "move": 1592,
+     "name": "He_LP4RPLP"
+    },
+    {
+     "move": 1619,
+     "name": "He_6RPsLP"
+    },
+    {
+     "move": 1637,
+     "name": "He_Raijin_LP"
+    },
+    {
+     "move": 1638,
+     "name": "He_Raijin_LP_Kyouchi"
+    },
+    {
+     "move": 1668,
+     "name": "He_s_tLP"
+    },
+    {
+     "move": 1697,
+     "name": "He_3LP_reserve_LP"
+    },
+    {
+     "move": 1700,
+     "name": "He_3RPLP"
+    },
+    {
+     "move": 1701,
+     "name": "He_3RPLP_Kyouchi"
+    },
+    {
+     "move": 1702,
+     "name": "He_9LP"
+    },
+    {
+     "move": 1709,
+     "name": "He_3LKWP2_reserve_LP"
+    },
+    {
+     "move": 1711,
+     "name": "He_3LKWP3_reserve_LP"
+    },
+    {
+     "move": 1713,
+     "name": "He_3LKWP236LP"
+    },
+    {
+     "move": 1736,
+     "name": "He_Fujin_LP"
+    },
+    {
+     "move": 1737,
+     "name": "He_Fujin_LPLP"
+    },
+    {
+     "move": 1805,
+     "name": "SPHeA_rplp"
+    },
+    {
+     "move": 1811,
+     "name": "SPHeA_rklp"
+    },
+    {
+     "move": 1813,
+     "name": "SPHeA_rudlp"
+    },
+    {
+     "move": 1818,
+     "name": "SPHeB_rklu"
+    },
+    {
+     "move": 1820,
+     "name": "SPHeB_rklp"
+    },
+    {
+     "move": 1824,
+     "name": "SPHeC_rplu"
+    },
+    {
+     "move": 1826,
+     "name": "SPHeC_rulp"
+    },
+    {
+     "move": 2291,
+     "name": "He_LPLPLP_Saint"
+    },
+    {
+     "move": 2318,
+     "name": "He_6WK_LP_shadow"
+    },
+    {
+     "move": 2358,
+     "name": "He_9LPLKRP_Final"
+    },
+    {
+     "move": 2372,
+     "name": "He_9LKRKLP_Final"
+    }
+   ]
+  },
+  {
+   "wh_key": "2~t8.heihachi",
+   "wh_name": "DIABLO 2",
+   "wh_input": "2",
+   "t7_id": "heihachi_28",
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_HEIHACHI",
+   "t8_move_index": 1598,
+   "t8_move_name": "He_rp00",
+   "t8_anim_name": "beekw_at_rp",
+   "startup": 11,
+   "damage": 10,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1600,
+     "name": "He_Side_RP"
+    },
+    {
+     "move": 1515,
+     "name": "He_7RP"
+    },
+    {
+     "move": 1522,
+     "name": "Co_jprp03"
+    },
+    {
+     "move": 1523,
+     "name": "Co_jprp03F"
+    },
+    {
+     "move": 1524,
+     "name": "Co_jprp03B"
+    },
+    {
+     "move": 1556,
+     "name": "Co_sjprp03F"
+    },
+    {
+     "move": 1578,
+     "name": "He_LPLPRP"
+    },
+    {
+     "move": 1579,
+     "name": "He_LPLPRP_Kyouchi"
+    },
+    {
+     "move": 1590,
+     "name": "He_LP4RP_reserve_RP"
+    },
+    {
+     "move": 1599,
+     "name": "He_RPRP"
+    },
+    {
+     "move": 1601,
+     "name": "He_9RP"
+    },
+    {
+     "move": 1644,
+     "name": "He_Raijin_RP"
+    },
+    {
+     "move": 1647,
+     "name": "He_Raijin_LK_reserve_RP_Heat"
+    },
+    {
+     "move": 1664,
+     "name": "He_4LKLK_reserve_RP"
+    },
+    {
+     "move": 1670,
+     "name": "He_s_tRP"
+    },
+    {
+     "move": 1685,
+     "name": "Co_syarp00"
+    },
+    {
+     "move": 1715,
+     "name": "He_3RKRP"
+    },
+    {
+     "move": 1722,
+     "name": "He_2LPRP"
+    },
+    {
+     "move": 1731,
+     "name": "He_2LK_reserve_RP_Heat"
+    },
+    {
+     "move": 1738,
+     "name": "He_Fujin_LPRP"
+    },
+    {
+     "move": 1739,
+     "name": "He_Fujin_RP"
+    },
+    {
+     "move": 1740,
+     "name": "He_Fujin_RP_Kyouchi"
+    },
+    {
+     "move": 1766,
+     "name": "He_step_RP_just"
+    },
+    {
+     "move": 1767,
+     "name": "He_step_RP_just_Easy"
+    },
+    {
+     "move": 1804,
+     "name": "SPHeA_rpF"
+    },
+    {
+     "move": 1806,
+     "name": "SPHeA_lprp"
+    },
+    {
+     "move": 1807,
+     "name": "SPHeA_rprp"
+    },
+    {
+     "move": 1812,
+     "name": "SPHeA_lpru"
+    },
+    {
+     "move": 1814,
+     "name": "SPHeB_lkrp"
+    },
+    {
+     "move": 1815,
+     "name": "SPHeB_rprp"
+    },
+    {
+     "move": 1821,
+     "name": "SPHeB_lprp"
+    },
+    {
+     "move": 1823,
+     "name": "SPHeC_lurp"
+    },
+    {
+     "move": 1825,
+     "name": "SPHeC_luru"
+    },
+    {
+     "move": 2308,
+     "name": "He_3LPRP_shadow"
+    },
+    {
+     "move": 2314,
+     "name": "He_4LPRP_shadow"
+    },
+    {
+     "move": 2319,
+     "name": "He_6WK_RP_shadow"
+    },
+    {
+     "move": 2358,
+     "name": "He_9LPLKRP_Final"
+    },
+    {
+     "move": 2371,
+     "name": "He_9RPLPRP_Final"
+    },
+    {
+     "move": 2374,
+     "name": "He_4LKLK_reserve_RP_Final"
+    }
+   ]
+  },
+  {
+   "wh_key": "3~t8.heihachi",
+   "wh_name": "DIABLO 3",
+   "wh_input": "3",
+   "t7_id": "heihachi_34",
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_HEIHACHI",
+   "t8_move_index": 1607,
+   "t8_move_name": "He_lk00",
+   "t8_anim_name": "beetb_at_lk",
+   "startup": 15,
+   "damage": 10,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 199,
+     "name": "Co_Aokilk00"
+    },
+    {
+     "move": 201,
+     "name": "Co_AokilkL0"
+    },
+    {
+     "move": 203,
+     "name": "Co_ADwSlk00"
+    },
+    {
+     "move": 206,
+     "name": "Co_ADwSlkR1"
+    },
+    {
+     "move": 209,
+     "name": "Co_FRollk00"
+    },
+    {
+     "move": 211,
+     "name": "Co_FRollkL0"
+    },
+    {
+     "move": 213,
+     "name": "Co_BRollk00"
+    },
+    {
+     "move": 215,
+     "name": "Co_BRollkL0"
+    },
+    {
+     "move": 220,
+     "name": "Co_Rol_lrk"
+    },
+    {
+     "move": 223,
+     "name": "Co_Uokilk01"
+    },
+    {
+     "move": 228,
+     "name": "Co_UokilkR1"
+    },
+    {
+     "move": 248,
+     "name": "Co_R_lk00L_"
+    },
+    {
+     "move": 254,
+     "name": "Co_jpRlk01"
+    },
+    {
+     "move": 255,
+     "name": "Co_jpRlk01F"
+    },
+    {
+     "move": 256,
+     "name": "Co_jpRlk01B"
+    },
+    {
+     "move": 1526,
+     "name": "Co_jplk01"
+    },
+    {
+     "move": 1527,
+     "name": "Co_jplk01F"
+    },
+    {
+     "move": 1528,
+     "name": "Co_jplk01B"
+    },
+    {
+     "move": 1529,
+     "name": "Co_jplk02"
+    },
+    {
+     "move": 1530,
+     "name": "Co_jplk02F"
+    },
+    {
+     "move": 1531,
+     "name": "Co_jplk02B"
+    },
+    {
+     "move": 1532,
+     "name": "Co_jplk04"
+    },
+    {
+     "move": 1533,
+     "name": "Co_jplk04F"
+    },
+    {
+     "move": 1534,
+     "name": "Co_jplk04B"
+    },
+    {
+     "move": 1535,
+     "name": "He_9LK"
+    },
+    {
+     "move": 1558,
+     "name": "Co_sjplk11F"
+    },
+    {
+     "move": 1559,
+     "name": "Co_sjplk12F"
+    },
+    {
+     "move": 1560,
+     "name": "Co_sjplk13F"
+    },
+    {
+     "move": 1611,
+     "name": "He_RKsLK"
+    },
+    {
+     "move": 1646,
+     "name": "He_Raijin_LK"
+    },
+    {
+     "move": 1647,
+     "name": "He_Raijin_LK_reserve_RP_Heat"
+    },
+    {
+     "move": 1663,
+     "name": "He_4LKLK"
+    },
+    {
+     "move": 1674,
+     "name": "He_s_tLK"
+    },
+    {
+     "move": 1688,
+     "name": "Co_syalk00"
+    },
+    {
+     "move": 1731,
+     "name": "He_2LK_reserve_RP_Heat"
+    },
+    {
+     "move": 1742,
+     "name": "He_Fujin_LK"
+    },
+    {
+     "move": 1771,
+     "name": "He_step_LK"
+    },
+    {
+     "move": 1808,
+     "name": "SPHeA_rplk"
+    },
+    {
+     "move": 2358,
+     "name": "He_9LPLKRP_Final"
+    },
+    {
+     "move": 2374,
+     "name": "He_4LKLK_reserve_RP_Final"
+    }
+   ]
+  },
+  {
+   "wh_key": "4~t8.heihachi",
+   "wh_name": "Otoko Geri",
+   "wh_input": "4",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_HEIHACHI",
+   "t8_move_index": 1610,
+   "t8_move_name": "He_rk00",
+   "t8_anim_name": "beekw_at_rk",
+   "startup": 15,
+   "damage": 21,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 200,
+     "name": "Co_Aokirk00"
+    },
+    {
+     "move": 202,
+     "name": "Co_AokirkL0"
+    },
+    {
+     "move": 204,
+     "name": "Co_ADwSrk00"
+    },
+    {
+     "move": 208,
+     "name": "Co_ADwSrkR1"
+    },
+    {
+     "move": 210,
+     "name": "Co_FRolrk00"
+    },
+    {
+     "move": 211,
+     "name": "Co_FRollkL0"
+    },
+    {
+     "move": 212,
+     "name": "Co_FRolrkL0"
+    },
+    {
+     "move": 214,
+     "name": "Co_BRolrk00"
+    },
+    {
+     "move": 216,
+     "name": "Co_BRolrkL0"
+    },
+    {
+     "move": 220,
+     "name": "Co_Rol_lrk"
+    },
+    {
+     "move": 226,
+     "name": "Co_Uokirk01"
+    },
+    {
+     "move": 234,
+     "name": "Co_UokirkR1"
+    },
+    {
+     "move": 249,
+     "name": "Co_R_rk00R_"
+    },
+    {
+     "move": 257,
+     "name": "Co_jpRrk01"
+    },
+    {
+     "move": 258,
+     "name": "Co_jpRrk01F"
+    },
+    {
+     "move": 259,
+     "name": "Co_jpRrk01B"
+    },
+    {
+     "move": 1536,
+     "name": "He_9LK_reserve_RK"
+    },
+    {
+     "move": 1538,
+     "name": "He_9LKRK"
+    },
+    {
+     "move": 1539,
+     "name": "Co_jprk01"
+    },
+    {
+     "move": 1540,
+     "name": "Co_jprk01F"
+    },
+    {
+     "move": 1541,
+     "name": "Co_jprk01B"
+    },
+    {
+     "move": 1542,
+     "name": "Co_jprk02"
+    },
+    {
+     "move": 1543,
+     "name": "Co_jprk02F"
+    },
+    {
+     "move": 1544,
+     "name": "Co_jprk02B"
+    },
+    {
+     "move": 1545,
+     "name": "Co_jprk04"
+    },
+    {
+     "move": 1546,
+     "name": "Co_jprk04F"
+    },
+    {
+     "move": 1547,
+     "name": "Co_jprk04B"
+    },
+    {
+     "move": 1548,
+     "name": "He_9RK"
+    },
+    {
+     "move": 1550,
+     "name": "He_9RK_reserve_LP_Heat"
+    },
+    {
+     "move": 1561,
+     "name": "Co_sjprk11F"
+    },
+    {
+     "move": 1562,
+     "name": "Co_sjprk12F"
+    },
+    {
+     "move": 1563,
+     "name": "Co_sjprk13F"
+    },
+    {
+     "move": 1593,
+     "name": "He_LP4RPRK"
+    },
+    {
+     "move": 1647,
+     "name": "He_Raijin_LK_reserve_RP_Heat"
+    },
+    {
+     "move": 1648,
+     "name": "He_Raijin_RK"
+    },
+    {
+     "move": 1649,
+     "name": "He_Raijin_RK_Kyouchi"
+    },
+    {
+     "move": 1651,
+     "name": "He_4LPRK"
+    },
+    {
+     "move": 1677,
+     "name": "He_s_tRK"
+    },
+    {
+     "move": 1678,
+     "name": "He_s_tRKRK"
+    },
+    {
+     "move": 1689,
+     "name": "He_syark00"
+    },
+    {
+     "move": 1743,
+     "name": "He_Fujin_RK"
+    },
+    {
+     "move": 1782,
+     "name": "He_step_RKnRKRK"
+    },
+    {
+     "move": 1809,
+     "name": "SPHeA_lkrk"
+    },
+    {
+     "move": 1810,
+     "name": "SPHeA_rkrkL"
+    },
+    {
+     "move": 1816,
+     "name": "SPHeB_rprk"
+    },
+    {
+     "move": 1817,
+     "name": "SPHeB_rkrk"
+    },
+    {
+     "move": 1819,
+     "name": "SPHeB_lurk"
+    },
+    {
+     "move": 1822,
+     "name": "SPHeB_rprk2"
+    },
+    {
+     "move": 2290,
+     "name": "He_Std_LP_RP_RK_saint"
+    },
+    {
+     "move": 2299,
+     "name": "He_LKRK_shadow"
+    },
+    {
+     "move": 2358,
+     "name": "He_9LPLKRP_Final"
+    }
+   ]
+  },
+  {
+   "wh_key": "f,n,d,D/F+3",
+   "wh_name": "Earth Scraper Kick",
+   "wh_input": "f,n,d,D/F+3",
+   "t7_id": "heihachi_57",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "graph_only_held",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  }
+ ]
+}
