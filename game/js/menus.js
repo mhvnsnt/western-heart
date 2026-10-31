@@ -440,6 +440,7 @@ function buildOverlays() {
         <button class="btn-primary" data-wh="resume">RESUME</button>
         <button class="btn-ghost" data-wh="pause-clothing">CLOTHING</button>
         <button class="btn-ghost" data-wh="pause-options">OPTIONS</button>
+        <button class="btn-ghost" data-wh="pause-freecam">FREE CAMERA</button>
         <button class="btn-ghost" data-wh="quit">QUIT TO MENU</button>
       </div>
     </div>
@@ -499,6 +500,13 @@ function buildOverlays() {
   document.querySelector('[data-wh="pause-options"]').addEventListener('click', () => {
     document.getElementById('wh-pause').classList.remove('show');
     openOptions();
+  });
+  // Free camera lives behind PAUSE (owner 2026-10-31), never as a floating button over menus or the HUD.
+  // The fight keeps playing while the camera is free (free-camera.js contract), so this resumes first.
+  document.querySelector('[data-wh="pause-freecam"]').addEventListener('click', () => {
+    const g = window.__game;
+    resumeGame();
+    if (g && g.freeCamera && !g.freeCamera.active) g.freeCamera.enter();
   });
   document.querySelectorAll('#wh-options [data-wh="back"], #wh-records [data-wh="back"], #wh-clothing [data-wh="back"]')
     .forEach((b) => b.addEventListener('click', () => {

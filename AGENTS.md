@@ -81,6 +81,28 @@ Carve-outs (standing owner decisions, not overridden): never merge a DRAFT PR; n
 - The existing hand-built creation suite UI in `packages/creation-suite` is NON-COMPLIANT, pending a teardown-sourced rebuild. Do NOT delete it.
 - See `docs/RULES_NO_GUESSING.md` and `docs/HOW-TO-CONTINUE.md`.
 
+## OWNER LAW — work order: finish whole playable fighters, short jobs first (owner 2026-10-31)
+
+> "the ones that are T-pose and they have a simpler moveset that don't have extra added canon moves that just take their moves straight from the Tekken character or DOA character or KOF character or ... VF5 character or Urban Reign character straight from them ... those are the ones to go ahead and knock out first ... then do the long jobs later"
+> "step by step getting each playable thing done that the player would experience at a time so when I go play the deployable build it feels actually more complete than if we were doing a bunch of unrelated mechanics and unwired things at a time"
+> "if he starts taking too long you can get to a point where you can checkpoint where you can push it and merge it and then pause on him and then work on the ones that can get done more efficiently"
+
+1. **Short jobs first.** A fighter is a short job when its model is in a T-pose AND its moveset comes straight from ONE source character (Tekken, DOA, KOF, VF5, Urban Reign, ...) with no extra canon moves. Examples: Pantera (King), Purple Rain (Lee), Negativo (Negan).
+2. **Long jobs later.** These are long jobs: A-pose models (the skeleton must be fitted to the pose before weighting), size/form transformations, and canon extra moves or mixed movesets. Examples: Burger (Bob + Kusaregedo moves per form + many forms, A-pose model) and Deathfang (Iori + werewolf moves).
+3. **Finish one fighter to playable before starting the next.** For each one, cover the model/rig (no stretched skin, no cone face, faces the right way), stance, moves, animations, inputs, and the live deploy. Every step must be something the player sees in the deployed build. Don't ship unrelated mechanics or unwired pieces.
+4. **Checkpoint long jobs.** When a long job runs long, push and merge a clean checkpoint, write where it stands in the handoff, then switch to a short job. Return to the long job later.
+5. **Log the sequence.** Keep the per-fighter job order and status in `docs/handoff/` (current: `HANDOFF-CLAUDE-2026-10-31.md`, "Work order").
+
+## OWNER LAW — build it like the real game, play it like the player (owner 2026-10-31)
+
+> "use the real game code to understand how to set stuff up and use the real game code to actually set a good template base and then build all the other stuff on top of it ... not like how the games that were inspired by its code would do it ... y'all start doing s*** like guessing not like an actual video game would do it and not like a user would enjoy ... you don't even try and play the game like the player or the user that's going to be enjoying the game so y'all don't even be making the interface user friendly"
+> (about the FREE CAMERA button) "that's always covering up stuff ... the main menu and the character select menu and in the fight in the arena select ... should only be there where it's appropriate or in the settings menu"
+
+1. **Real game code is the template.** Before building a screen, menu, camera, HUD element, input or system, find how the source games do it (Tekken 7/8/TTT2 teardowns in GRE, the vendored game code, teardown docs) and build on that structure. No invented flows, no guessed layouts (see also the ui_sources gate and RULES_NO_GUESSING).
+2. **Nothing free-floats over menus or the HUD.** Dev/extra tools (free camera, photo, debug, editors) live where real fighting games put them: behind PAUSE, in OPTIONS, or in a dedicated mode. A fixed overlay button that shows on every screen is a bug. Example fix: FREE CAMERA moved into the fight's pause menu (game/js/menus.js, free-camera.js, test/free-camera-placement.test.mjs).
+3. **Play it like the player before you call it done.** Open the build at phone size, go menu -> select -> stage -> fight -> pause -> results, and look at what you changed up close (tools/anim/t7_closeup_probe.mjs for fighters). If you would not enjoy it as a player, it is not done.
+4. **See what the owner sees.** Describe visual problems by their real cause (skin weights, bone weights, bind pose, facing, retarget), not as "hard to make out". Judge rigs from close-ups, never from a distant fight camera.
+
 ## NO-SPARSE-COMMIT LAW (owner 2026-10-23 — the cape-jones #219 main wipe)
 
 On 2026-10-23, cape-jones PR #219 wiped main: the merge was built from a sparse/partial checkout, so the commit carried only the partial tree and main lost everything outside it.
