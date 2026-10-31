@@ -43,7 +43,17 @@ python + numpy (+ scipy when present):
 Every number is measured from the file; nothing is authored. Report is
 JSON on stdout; exit 0 = pass, 1 = fail.
 
-    python3 skin_audit.py --in MODEL.glb [--json-out R.json]
+MESHOPT (2026-10-31, rig-continuation stage 2): EXT_meshopt_compression
+files (gltfpack-style fallback buffers) crash the accessor reader with
+offset ValueErrors — 16 roster rigs were AUDIT-ERROR in the 2026-10-30
+sweep for exactly this reason. audit() now auto-decodes them through
+backends/meshopt_decode.py (gltfpack -noq) into a temp file and audits
+that; the report carries "meshopt_decoded": true. --no-decode restores
+the old behavior. The contamination and watertight computations are
+chunked/vectorized so decoded 1.6M-vert rigs (Baek attire1) finish:
+identical math, bounded memory.
+
+    python3 skin_audit.py --in MODEL.glb [--json-out R.json] [--no-decode]
 """
 
 import argparse
@@ -56,7 +66,14 @@ import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
+if HERE not in sys.path:
+    sys.path.insert(0, HERE)
 from validate import read_glb  # noqa: E402
+
+try:
+    import meshopt_decode  # noqa: E402
+except ImportError:  # decode stage unavailable — plain files still audit
+    meshopt_decode = None
 
 COMP = {5120: np.int8, 5121: np.uint8, 5122: np.int16,
         5123: np.uint16, 5125: np.uint32, 5126: np.float32}
@@ -195,80 +212,172 @@ def edges_tris(js, bdat):
     return np.concatenate(tris)
 
 
-def point_mesh_distance(points, verts, tris):
-    """Min distance from each point to the mesh surface (triangles when
-    available, else vertices). Vectorized per point over triangles in
-    chunks — joint counts are small (~80)."""
-    if tris is None:
-        return np.array([float(np.min(np.linalg.norm(verts - p, axis=1)))
-                         for p in points])
-    out = []
-    a = tris[:, 0]; b = tris[:, 1]; c = tris[:, 2]
+def edges_tris_idx(js, bdat):
+    """Index triples + concatenated positions for ALL mesh prims (same
+    coverage and order as edges_tris), for the vectorized watertight
+    test. Returns (positions, tris_idx) or (None, None)."""
+    pos_l, idx_l = [], []
+    voff = 0
+    for m in js.get("meshes", []):
+        for prim in m.get("primitives", []):
+            at = prim.get("attributes", {})
+            if "POSITION" not in at or "indices" not in prim:
+                continue
+            p = read_accessor(js, bdat, at["POSITION"]).astype(np.float64)
+            idx = read_accessor(js, bdat, prim["indices"]).astype(
+                np.int64).reshape(-1, 3)
+            pos_l.append(p)
+            idx_l.append(idx + voff)
+            voff += len(p)
+    if not idx_l:
+        return None, None
+    return np.concatenate(pos_l), np.concatenate(idx_l)
+
+
+def mesh_watertight(pos_all, tris_idx):
+    """Vectorized watertight test — numpy twin of the coordinate-key
+    Counter in points_inside_mesh: vertices keyed by coordinates
+    rounded to 5 decimals, watertight iff every undirected edge is
+    shared by exactly 2 triangles. The Counter version costs ~9M
+    pure-Python edge visits on a 1.6M-vert rig (the Baek timeout);
+    this is the same rule in numpy."""
+    if pos_all is None or tris_idx is None or len(tris_idx) == 0:
+        return False
+    q = np.round(pos_all * 1e5).astype(np.int64)
+    _, kid = np.unique(q, axis=0, return_inverse=True)
+    ck = kid[tris_idx]
+    e = np.concatenate([ck[:, [0, 1]], ck[:, [1, 2]], ck[:, [2, 0]]])
+    e = np.sort(e, axis=1)
+    _, counts = np.unique(e, axis=0, return_counts=True)
+    return bool(len(counts) and (counts == 2).all())
+
+
+def _point_tri_min_dist(p, a, b, c):
+    """Exact min distance from point p to a triangle set (a, b, c
+    arrays) — barycentric plane projection, edge fallback. This is
+    the per-point body of the original point_mesh_distance, factored
+    out so callers can run it on a prefiltered subset."""
     ab = b - a; ac = c - a
     nrm = np.cross(ab, ac)
     nl = np.linalg.norm(nrm, axis=1)
     nl[nl < 1e-12] = 1e-12
     nrm = nrm / nl[:, None]
+    ap = p - a
+    # barycentric projection onto each triangle plane
+    d = np.einsum('ij,ij->i', ap, nrm)
+    pp = p - d[:, None] * nrm
+    v0 = ab; v1 = ac; v2 = pp - a
+    d00 = np.einsum('ij,ij->i', v0, v0)
+    d01 = np.einsum('ij,ij->i', v0, v1)
+    d11 = np.einsum('ij,ij->i', v1, v1)
+    d20 = np.einsum('ij,ij->i', v2, v0)
+    d21 = np.einsum('ij,ij->i', v2, v1)
+    den = d00 * d11 - d01 * d01
+    den[np.abs(den) < 1e-14] = 1e-14
+    v = (d11 * d20 - d01 * d21) / den
+    w = (d00 * d21 - d01 * d20) / den
+    u = 1.0 - v - w
+    inside = (u >= 0) & (v >= 0) & (w >= 0)
+    dist = np.where(inside, np.abs(d), np.inf)
+    if not inside.all():
+        for (x, y) in ((a, b), (b, c), (c, a)):
+            xy = y - x
+            den = np.einsum('ij,ij->i', xy, xy)
+            den[den < 1e-14] = 1e-14
+            t = np.clip(np.einsum('ij,ij->i', p - x, xy) / den, 0, 1)
+            closest = x + t[:, None] * xy
+            dist = np.minimum(
+                dist, np.linalg.norm(p - closest, axis=1))
+    return float(dist.min())
+
+
+def point_mesh_distance(points, verts, tris):
+    """Min distance from each point to the mesh surface (triangles when
+    available, else vertices). Joint counts are small (~80).
+
+    Prefiltered (2026-10-31, stage 2): the exact per-triangle math
+    runs only on triangles whose bounding sphere can beat the
+    nearest-vertex upper bound for that point. A triangle outside
+    the candidate set has distance >= its sphere lower bound >= the
+    upper bound >= the true distance, so the min is unchanged —
+    identical results, but the (T, 3) temporaries shrink from the
+    full triangle list (~2M tris on decoded meshopt rigs) to a
+    handful of candidates, in time and in peak memory."""
+    if tris is None:
+        return np.array([float(np.min(np.linalg.norm(verts - p, axis=1)))
+                         for p in points])
+    a = tris[:, 0]; b = tris[:, 1]; c = tris[:, 2]
+    cent = (a + b + c) / 3.0
+    rad = np.maximum(
+        np.linalg.norm(a - cent, axis=1),
+        np.maximum(np.linalg.norm(b - cent, axis=1),
+                   np.linalg.norm(c - cent, axis=1)))
+    out = []
     for p in points:
-        ap = p - a
-        # barycentric projection onto each triangle plane
-        d = np.einsum('ij,ij->i', ap, nrm)
-        pp = p - d[:, None] * nrm
-        v0 = ab; v1 = ac; v2 = pp - a
-        d00 = np.einsum('ij,ij->i', v0, v0)
-        d01 = np.einsum('ij,ij->i', v0, v1)
-        d11 = np.einsum('ij,ij->i', v1, v1)
-        d20 = np.einsum('ij,ij->i', v2, v0)
-        d21 = np.einsum('ij,ij->i', v2, v1)
-        den = d00 * d11 - d01 * d01
-        den[np.abs(den) < 1e-14] = 1e-14
-        v = (d11 * d20 - d01 * d21) / den
-        w = (d00 * d21 - d01 * d20) / den
-        u = 1.0 - v - w
-        inside = (u >= 0) & (v >= 0) & (w >= 0)
-        dist = np.where(inside, np.abs(d), np.inf)
-        if not inside.all():
-            for (x, y) in ((a, b), (b, c), (c, a)):
-                xy = y - x
-                den = np.einsum('ij,ij->i', xy, xy)
-                den[den < 1e-14] = 1e-14
-                t = np.clip(np.einsum('ij,ij->i', p - x, xy) / den, 0, 1)
-                closest = x + t[:, None] * xy
-                dist = np.minimum(
-                    dist, np.linalg.norm(p - closest, axis=1))
-        out.append(float(dist.min()))
+        ub = np.inf
+        for lo in range(0, len(verts), 262144):
+            dv = np.linalg.norm(verts[lo:lo + 262144] - p, axis=1)
+            if len(dv):
+                ub = min(ub, float(dv.min()))
+        cand = (np.linalg.norm(cent - p, axis=1) - rad) < ub + 1e-12
+        best = ub
+        if cand.any():
+            best = min(ub, _point_tri_min_dist(
+                p, a[cand], b[cand], c[cand]))
+        out.append(float(best))
     return np.array(out)
 
 
-def points_inside_mesh(points, tris):
+def points_inside_mesh(points, tris, watertight_hint=None):
     """Ray-parity point-in-mesh test (+X rays, Moller-Trumbore).
     Returns bool array, or None when the mesh is not watertight
-    (parity is meaningless on open shells)."""
+    (parity is meaningless on open shells). watertight_hint (from
+    mesh_watertight) skips the pure-Python Counter check, which is
+    O(edges) with heavy per-edge tuple work and timed the audit out
+    on 1.6M-vert rigs; the hint applies the identical rule."""
     if tris is None or len(tris) == 0:
         return None
-    # watertight: every undirected edge shared by exactly 2 triangles
     a = tris[:, 0]; b = tris[:, 1]; c = tris[:, 2]
-    # use vertex positions quantized as edge keys via the tris' own
-    # vertex identity is unavailable here; use coordinate tuples
-    def key(p):
-        return (round(float(p[0]), 5), round(float(p[1]), 5),
-                round(float(p[2]), 5))
-    from collections import Counter
-    cnt = Counter()
-    for (x, y) in ((a, b), (b, c), (c, a)):
-        for i in range(len(tris)):
-            e = tuple(sorted((key(x[i]), key(y[i]))))
-            cnt[e] += 1
-    if any(v != 2 for v in cnt.values()):
+    if watertight_hint is None:
+        # watertight: every undirected edge shared by exactly 2 triangles
+        # use vertex positions quantized as edge keys via the tris' own
+        # vertex identity is unavailable here; use coordinate tuples
+        def key(p):
+            return (round(float(p[0]), 5), round(float(p[1]), 5),
+                    round(float(p[2]), 5))
+        from collections import Counter
+        cnt = Counter()
+        for (x, y) in ((a, b), (b, c), (c, a)):
+            for i in range(len(tris)):
+                e = tuple(sorted((key(x[i]), key(y[i]))))
+                cnt[e] += 1
+        if any(v != 2 for v in cnt.values()):
+            return None
+    elif not watertight_hint:
         return None
     inside = []
     d = np.array([1.0, 0.0, 0.0])
-    e1 = b - a; e2 = c - a
-    pv = np.cross(d, e2)
-    det = np.einsum('ij,ij->i', e1, pv)
-    ok = np.abs(det) > 1e-12
+    # YZ-bounds prefilter (2026-10-31, stage 2): a +X ray from p can
+    # only hit triangles whose Y and Z ranges contain p's Y and Z, so
+    # the Moller-Trumbore test runs on that subset per point. The hit
+    # count — and therefore the parity result — is identical; the
+    # full-triangle temporaries per joint are not.
+    ymin = np.minimum(np.minimum(a[:, 1], b[:, 1]), c[:, 1]) - 1e-12
+    ymax = np.maximum(np.maximum(a[:, 1], b[:, 1]), c[:, 1]) + 1e-12
+    zmin = np.minimum(np.minimum(a[:, 2], b[:, 2]), c[:, 2]) - 1e-12
+    zmax = np.maximum(np.maximum(a[:, 2], b[:, 2]), c[:, 2]) + 1e-12
     for p in points:
-        tv = p - a
+        m = (p[1] >= ymin) & (p[1] <= ymax) & \
+            (p[2] >= zmin) & (p[2] <= zmax)
+        if not m.any():
+            inside.append(False)
+            continue
+        sa, sb, sc = a[m], b[m], c[m]
+        e1 = sb - sa; e2 = sc - sa
+        pv = np.cross(d, e2)
+        det = np.einsum('ij,ij->i', e1, pv)
+        ok = np.abs(det) > 1e-12
+        tv = p - sa
         u = np.where(ok, np.einsum('ij,ij->i', tv, pv) /
                      np.where(ok, det, 1.0), -1)
         qv = np.cross(tv, e1)
@@ -280,7 +389,38 @@ def points_inside_mesh(points, tris):
     return np.array(inside)
 
 
-def audit(path):
+def audit(path, decode=True):
+    """Audit a GLB. EXT_meshopt_compression inputs are decoded to a
+    temp file first (backends/meshopt_decode.py, gltfpack -noq) —
+    their accessors address a compressed fallback buffer and the
+    reader below cannot read them physically. The report's "file"
+    stays the caller's path; "meshopt_decoded" marks the detour."""
+    if decode and meshopt_decode is not None:
+        try:
+            meshopt = meshopt_decode.is_meshopt(path)
+        except Exception:
+            meshopt = False
+        if meshopt:
+            import tempfile
+            fd, tmp = tempfile.mkstemp(suffix=".decoded.glb")
+            os.close(fd)
+            try:
+                meshopt_decode.decode(path, tmp)
+                rep = _audit_file(tmp)
+                rep["file"] = path
+                rep["meshopt_decoded"] = True
+                rep["decode_tool"] = ("gltfpack -noq via "
+                                      "backends/meshopt_decode.py")
+                return rep
+            finally:
+                try:
+                    os.remove(tmp)
+                except OSError:
+                    pass
+    return _audit_file(path)
+
+
+def _audit_file(path):
     js, bdat = read_glb(path)
     rep = {"file": path, "checks": {}, "measured": {}, "pass": False}
     skins = js.get("skins", [])
@@ -393,34 +533,50 @@ def audit(path):
     rep["measured"]["dead_major_joints"] = dead_major
     rep["checks"]["no_dead_joints"] = len(dead_major) == 0
 
-    # nearest segment distance per vertex + contamination
-    nearest = np.full(nverts, np.inf)
-    segd = np.empty((nverts, len(names)), dtype=np.float32)
-    for j in range(len(names)):
-        d = seg_dist(pos, jpos[j], seg_b[j]).astype(np.float32)
-        segd[:, j] = d
-        nearest = np.minimum(nearest, d)
+    # nearest segment distance per vertex + contamination.
+    # Chunked over vertices: the unchunked (verts x joints) float32
+    # distance matrix is ~470 MB at 1.6M verts x 73 joints (Baek
+    # attire1, the sweep's audit timeout). Per-vertex results are
+    # identical to the unchunked computation; only the peak memory
+    # and the worst-5 joint naming (recomputed per candidate vertex)
+    # differ in mechanics, not in values.
     import re as _re
     body_joint = np.array([bool(_re.search(
         r"^(Left|Right)?(Hips|Spine|Neck|Head|Shoulder|Arm|ForeArm|Hand|"
         r"UpLeg|Leg|Foot|ToeBase)|Tail\d", n)) for n in names])
-    margin = np.maximum(0.10 * height, 2.5 * nearest)
-    # per influence slot: distance from the vertex to the segment of the
-    # joint that slot actually weights it to
-    d_slot = segd[np.arange(nverts)[:, None], jj]          # (verts, 4)
-    far_slot = d_slot > (nearest + margin)[:, None]
-    contam_mask = far_slot & (ww >= 0.05) & \
-        body_joint[jj]
-    contam_mass = float(ww[contam_mask].sum() / max(ww.sum(), 1e-9))
-    contam_verts = int(np.sum(contam_mask.any(axis=1)))
+    per_vert = np.zeros(nverts, dtype=np.float64)
+    BLOCK = 65536
+    for lo in range(0, nverts, BLOCK):
+        hi = min(lo + BLOCK, nverts)
+        blk = pos[lo:hi]
+        segd = np.empty((hi - lo, len(names)), dtype=np.float32)
+        nearest = np.full(hi - lo, np.inf)
+        for j in range(len(names)):
+            d = seg_dist(blk, jpos[j], seg_b[j]).astype(np.float32)
+            segd[:, j] = d
+            nearest = np.minimum(nearest, d)
+        margin = np.maximum(0.10 * height, 2.5 * nearest)
+        # per influence slot: distance from the vertex to the segment
+        # of the joint that slot actually weights it to
+        d_slot = segd[np.arange(hi - lo)[:, None], jj[lo:hi]]
+        far_slot = d_slot > (nearest + margin)[:, None]
+        mask = far_slot & (ww[lo:hi] >= 0.05) & body_joint[jj[lo:hi]]
+        per_vert[lo:hi] = np.where(mask, ww[lo:hi], 0).sum(axis=1)
+    contam_mass = float(per_vert.sum() / max(ww.sum(), 1e-9))
+    contam_verts = int(np.sum(per_vert > 0))
     worst = []
     if contam_verts:
-        per_vert = np.where(contam_mask, ww, 0).sum(axis=1)
         for vi in np.argsort(per_vert)[-5:][::-1]:
             if per_vert[vi] <= 0:
                 continue
+            d_row = np.array([float(seg_dist(
+                pos[vi:vi + 1], jpos[j], seg_b[j])[0])
+                for j in range(len(names))], dtype=np.float32)
+            nearest_vi = float(d_row.min())
+            margin_vi = max(0.10 * height, 2.5 * nearest_vi)
             bad_js = [names[jj[vi, k]] for k in range(jj.shape[1])
-                      if contam_mask[vi, k]]
+                      if d_row[jj[vi, k]] > nearest_vi + margin_vi
+                      and ww[vi, k] >= 0.05 and body_joint[jj[vi, k]]]
             worst.append({"vert": int(vi),
                           "bad_weight": round(float(per_vert[vi]), 3),
                           "joints": bad_js[:4]})
@@ -497,7 +653,9 @@ def audit(path):
     # ---- skeleton: joints outside mesh ----
     tris_all = edges_tris(js, bdat)
     d_near = point_mesh_distance(jpos, pos, tris_all)
-    inside = points_inside_mesh(jpos, tris_all)
+    _allpos, _tidx = edges_tris_idx(js, bdat)
+    _wt = mesh_watertight(_allpos, _tidx) if _tidx is not None else None
+    inside = points_inside_mesh(jpos, tris_all, watertight_hint=_wt)
     tpl_names = set()
     if os.path.exists(tpl_path):
         tpl_names = {j["name"] for j in
@@ -553,8 +711,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--in", dest="inp", required=True)
     ap.add_argument("--json-out", default=None)
+    ap.add_argument("--no-decode", action="store_true",
+                    help="do not auto-decode EXT_meshopt_compression "
+                         "inputs (pre-stage-2 behavior)")
     a = ap.parse_args()
-    rep = audit(a.inp)
+    rep = audit(a.inp, decode=not a.no_decode)
     out = json.dumps(rep, indent=1)
     print(out)
     if a.json_out:
