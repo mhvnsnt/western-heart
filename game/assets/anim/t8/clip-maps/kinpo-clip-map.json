@@ -1,0 +1,2763 @@
+{
+ "schema": "wh-t8-clip-map/1",
+ "fighter": "kinpo",
+ "base": "Asuka",
+ "base_code_tkdata": "DER",
+ "sources": {
+  "export": "tekkenmods 6006 Screw Combos pack, t8_asukaEDIT/t8_ASUKA.json (JoydurnYup)",
+  "movelist": "wavu.wiki via pbruvoll/tekkendocs json_movelist (unlicensed community frame data)",
+  "name_keys": "AliK3112/tekken-8-movesets-scripts name_keys.json (45,716 entries)",
+  "t7_record": "game/assets/anim/t7/clip-maps/kinpo-clip-map.json"
+ },
+ "stats": {
+  "mapped_medium": 15,
+  "unmapped": 17,
+  "mapped_high": 15
+ },
+ "moves": [
+  {
+   "wh_key": "1,2",
+   "wh_name": "Jab Uppercut",
+   "wh_input": "1,2",
+   "t7_id": "asuka_5",
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 1571,
+   "t8_move_name": "Jn_lp00_reserve_RP",
+   "t8_anim_name": "jnsu_at_lp",
+   "startup": 10,
+   "damage": 5,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1573,
+     "name": "Jn_lprpF"
+    },
+    {
+     "move": 1574,
+     "name": "Jn_lprpF_counter"
+    },
+    {
+     "move": 1590,
+     "name": "Jn_upper"
+    },
+    {
+     "move": 1775,
+     "name": "jn_cap10Eb"
+    },
+    {
+     "move": 1859,
+     "name": "SPJnA_lprp0"
+    }
+   ]
+  },
+  {
+   "wh_key": "1,2,3",
+   "wh_name": "Spinning Heel Drop",
+   "wh_input": "1,2,3",
+   "t7_id": "asuka_7",
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "notation_differs",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 1575,
+   "t8_move_name": "jun_lprpc30",
+   "t8_anim_name": "jnsu_un_c30",
+   "startup": 31,
+   "damage": 0,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   }
+  },
+  {
+   "wh_key": "1,2,3*",
+   "wh_name": "Spinning Heel Drop (Hold)",
+   "wh_input": "1,2,3*",
+   "t7_id": "asuka_210",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "no_evidence",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "1+4,2,4",
+   "wh_name": "White Heron Dance",
+   "wh_input": "1+4,2,4",
+   "t7_id": "asuka_47",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "mvl_matched_graph_gap",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "1+4,2,d+4",
+   "wh_name": "White Heron Lower Dance",
+   "wh_input": "1+4,2,d+4",
+   "t7_id": "asuka_51",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "mvl_matched_graph_gap",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "2,1,d+1+2",
+   "wh_name": "Basho Oroshi",
+   "wh_input": "2,1,d+1+2",
+   "t7_id": "asuka_26",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "mvl_matched_graph_gap",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "2,3",
+   "wh_name": "Mizu Basho",
+   "wh_input": "2,3",
+   "t7_id": "asuka_29",
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 1575,
+   "t8_move_name": "jun_lprpc30",
+   "t8_anim_name": "jnsu_un_c30",
+   "startup": 31,
+   "damage": 0,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1579,
+     "name": "Jn_rpjpk"
+    }
+   ]
+  },
+  {
+   "wh_key": "3+4",
+   "wh_name": "Ryuuntsui",
+   "wh_input": "3+4",
+   "t7_id": "asuka_61",
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 1610,
+   "t8_move_name": "jun_mc03st",
+   "t8_anim_name": "jnsu_at_ryuun",
+   "startup": 23,
+   "damage": 10,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 215,
+     "name": "Co_Rol_lrk"
+    },
+    {
+     "move": 243,
+     "name": "Co_R_lk00L_"
+    },
+    {
+     "move": 249,
+     "name": "Co_R_crk00R_"
+    },
+    {
+     "move": 1530,
+     "name": "Co_jplk00"
+    },
+    {
+     "move": 1533,
+     "name": "Co_jplk00F"
+    },
+    {
+     "move": 1534,
+     "name": "Co_jplk00B"
+    },
+    {
+     "move": 1642,
+     "name": "jun_c20"
+    },
+    {
+     "move": 1761,
+     "name": "Jn_senshi00"
+    },
+    {
+     "move": 1863,
+     "name": "SPJnA_lkrk0"
+    },
+    {
+     "move": 1869,
+     "name": "SPJnB_lplk0"
+    }
+   ]
+  },
+  {
+   "wh_key": "b+1+3",
+   "wh_name": "Attack Reversal",
+   "wh_input": "b+1+3",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 1914,
+   "t8_move_name": "AteN_move_0",
+   "t8_anim_name": "jnoz_co_atepose",
+   "startup": 12,
+   "damage": 0,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "wavu_conflict": true
+  },
+  {
+   "wh_key": "b+1+3*",
+   "wh_name": "Attack Reversal (Hold)",
+   "wh_input": "b+1+3*",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "ambiguous_pool",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "b+1+4,3",
+   "wh_name": "Reverse Narcissus",
+   "wh_input": "b+1+4,3",
+   "t7_id": "asuka_157",
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "mvl_matched_graph_gap",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 1776,
+   "t8_move_name": "jn_cap10Ec",
+   "t8_anim_name": "jnsu_at_haku2",
+   "startup": 17,
+   "damage": 8,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   }
+  },
+  {
+   "wh_key": "b+1+4,4",
+   "wh_name": "Narcissus",
+   "wh_input": "b+1+4,4",
+   "t7_id": "asuka_160",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "mvl_matched_graph_gap",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "b+2,1+2",
+   "wh_name": "Swallow Mallet (1+2)",
+   "wh_input": "b+2,1+2",
+   "t7_id": "asuka_137",
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 1593,
+   "t8_move_name": "Jn_akkrp00",
+   "t8_anim_name": "derto_at_akkei",
+   "startup": 16,
+   "damage": 21,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1700,
+     "name": "Jn_s_trpWP"
+    },
+    {
+     "move": 1793,
+     "name": "Jn_rp01Rv"
+    },
+    {
+     "move": 1794,
+     "name": "Jn_hizi00"
+    }
+   ]
+  },
+  {
+   "wh_key": "b+4,2",
+   "wh_name": "Move 2 (2)",
+   "wh_input": "b+4,2",
+   "t7_id": "asuka_150",
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 1614,
+   "t8_move_name": "Jn_rk00B_R",
+   "t8_anim_name": "jnoz_at_4rk_hiza",
+   "startup": 15,
+   "damage": 17,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1617,
+     "name": "Jn_hizaelb"
+    }
+   ]
+  },
+  {
+   "wh_key": "b+4,2,3",
+   "wh_name": "Tsuyababuki",
+   "wh_input": "b+4,2,3",
+   "t7_id": "asuka_152",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "mvl_matched_graph_gap",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "df+1",
+   "wh_name": "Move df+1 (df+1)",
+   "wh_input": "df+1",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 1652,
+   "t8_move_name": "Jn_t_slpF",
+   "t8_anim_name": "jnsu_at_lup",
+   "startup": 13,
+   "damage": 10,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1620,
+     "name": "Jn_syalp00"
+    }
+   ]
+  },
+  {
+   "wh_key": "df+2",
+   "wh_name": "Rising Palm",
+   "wh_input": "df+2",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 1611,
+   "t8_move_name": "Jn_rp00F",
+   "t8_anim_name": "jnoz_at_3rp",
+   "startup": 15,
+   "damage": 14,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1815,
+     "name": "Jn_sukui00"
+    }
+   ]
+  },
+  {
+   "wh_key": "df+3",
+   "wh_name": "Kagamino",
+   "wh_input": "df+3",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 1667,
+   "t8_move_name": "Jn_t_slkF",
+   "t8_anim_name": "derss_at_3lk",
+   "startup": 20,
+   "damage": 23,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1629,
+     "name": "Jn_ebigeri"
+    }
+   ]
+  },
+  {
+   "wh_key": "df+4",
+   "wh_name": "Front Kick",
+   "wh_input": "df+4",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 1670,
+   "t8_move_name": "Co_t_srkF",
+   "t8_anim_name": "jnsu_at_rmaegeri",
+   "startup": 12,
+   "damage": 16,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 247,
+     "name": "Co_syarkF_"
+    }
+   ]
+  },
+  {
+   "wh_key": "f+3",
+   "wh_name": "Spinning Heel Drop (One Spin)",
+   "wh_input": "f+3",
+   "t7_id": "asuka_81",
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 251,
+   "t8_move_name": "Co_jpRlk01F",
+   "t8_anim_name": "cmnkz_at_8_t4_lk",
+   "startup": 9,
+   "damage": 18,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "wavu_conflict": true,
+   "alternates": [
+    {
+     "move": 1533,
+     "name": "Co_jplk00F"
+    },
+    {
+     "move": 1704,
+     "name": "Wn_runlk00"
+    },
+    {
+     "move": 1729,
+     "name": "jun_c30"
+    },
+    {
+     "move": 1823,
+     "name": "Jn_66LK"
+    }
+   ]
+  },
+  {
+   "wh_key": "f+3*",
+   "wh_name": "Spinning Heel Drop (Two Spins)",
+   "wh_input": "f+3*",
+   "t7_id": "asuka_211",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "graph_only_held",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "f+3**",
+   "wh_name": "Spinning Heel Drop (Three Spins)",
+   "wh_input": "f+3**",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "graph_only_held",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "f,F+1+2",
+   "wh_name": "Tenjin Upward Strike",
+   "wh_input": "f,F+1+2",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "graph_only_held",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "f,F+2",
+   "wh_name": "Move f,F+2 (f,F+2)",
+   "wh_input": "f,F+2",
+   "t7_id": "asuka_86",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "graph_only_held",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "f,F+2,3*",
+   "wh_name": "Yata Kagami (charged)",
+   "wh_input": "f,F+2,3*",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "graph_only_held",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "f,f,F+1+2",
+   "wh_name": "Aizen Swing",
+   "wh_input": "f,f,F+1+2",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "graph_only_held",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "f,f,F+3",
+   "wh_name": "Ame-no-Uzume",
+   "wh_input": "f,f,F+3",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "graph_only_held",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "NWG.f,F+1+2",
+   "wh_name": "Tenjin Festival Upward Strike",
+   "wh_input": "NWG.f,F+1+2",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "graph_only_held",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "NWG.f,f,F+1+2",
+   "wh_name": "Aizen Festival Swing",
+   "wh_input": "NWG.f,f,F+1+2",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "graph_only_held",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "SS.2",
+   "wh_name": "Mist Palm Thrust",
+   "wh_input": "SS.2",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 1578,
+   "t8_move_name": "Jn_rp00",
+   "t8_anim_name": "derb_at_new_rp",
+   "startup": 12,
+   "damage": 9,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 271,
+     "name": "Co_sJP_RP"
+    },
+    {
+     "move": 1526,
+     "name": "Co_jprp03"
+    },
+    {
+     "move": 1527,
+     "name": "Co_jprp03F"
+    },
+    {
+     "move": 1528,
+     "name": "Co_jprp03B"
+    },
+    {
+     "move": 1562,
+     "name": "Co_sjprp03F"
+    },
+    {
+     "move": 1571,
+     "name": "Jn_lp00_reserve_RP"
+    },
+    {
+     "move": 1573,
+     "name": "Jn_lprpF"
+    },
+    {
+     "move": 1574,
+     "name": "Jn_lprpF_counter"
+    },
+    {
+     "move": 1590,
+     "name": "Jn_upper"
+    },
+    {
+     "move": 1612,
+     "name": "Ni_bintrp"
+    },
+    {
+     "move": 1614,
+     "name": "Jn_rk00B_R"
+    },
+    {
+     "move": 1617,
+     "name": "Jn_hizaelb"
+    },
+    {
+     "move": 1622,
+     "name": "Co_syarp00"
+    },
+    {
+     "move": 1633,
+     "name": "Jn_1lprp"
+    },
+    {
+     "move": 1655,
+     "name": "Jn_apasyou"
+    },
+    {
+     "move": 1688,
+     "name": "Jn_s_trp"
+    },
+    {
+     "move": 1718,
+     "name": "Jn_cap10_B"
+    },
+    {
+     "move": 1727,
+     "name": "Jn_up03n"
+    },
+    {
+     "move": 1775,
+     "name": "jn_cap10Eb"
+    },
+    {
+     "move": 1824,
+     "name": "Jn_ganmen"
+    },
+    {
+     "move": 1825,
+     "name": "Jn_ganmen_8RP"
+    },
+    {
+     "move": 1826,
+     "name": "Jn_ganmen_7RP"
+    },
+    {
+     "move": 1837,
+     "name": "Jn_mvrp00m"
+    },
+    {
+     "move": 1838,
+     "name": "Jn_mvrp00mR"
+    },
+    {
+     "move": 1859,
+     "name": "SPJnA_lprp0"
+    },
+    {
+     "move": 2057,
+     "name": "Jn_hikiyose_p"
+    }
+   ]
+  },
+  {
+   "wh_key": "SS.4",
+   "wh_name": "Camellia",
+   "wh_input": "SS.4",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 1820,
+   "t8_move_name": "Jn_ikedaK",
+   "t8_anim_name": "Gjn_at_ikedaK",
+   "startup": 17,
+   "damage": 18,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 195,
+     "name": "Co_Aokirk00"
+    },
+    {
+     "move": 197,
+     "name": "Co_AokirkL0"
+    },
+    {
+     "move": 199,
+     "name": "Co_ADwSrk00"
+    },
+    {
+     "move": 203,
+     "name": "Co_ADwSrkR1"
+    },
+    {
+     "move": 205,
+     "name": "Co_FRolrk00"
+    },
+    {
+     "move": 206,
+     "name": "Co_FRollkL0"
+    },
+    {
+     "move": 207,
+     "name": "Co_FRolrkL0"
+    },
+    {
+     "move": 209,
+     "name": "Co_BRolrk00"
+    },
+    {
+     "move": 211,
+     "name": "Co_BRolrkL0"
+    },
+    {
+     "move": 215,
+     "name": "Co_Rol_lrk"
+    },
+    {
+     "move": 221,
+     "name": "Co_Uokirk01"
+    },
+    {
+     "move": 229,
+     "name": "Co_UokirkR1"
+    },
+    {
+     "move": 244,
+     "name": "Co_R_rk00R_"
+    },
+    {
+     "move": 253,
+     "name": "Co_jpRrk01"
+    },
+    {
+     "move": 254,
+     "name": "Co_jpRrk01F"
+    },
+    {
+     "move": 255,
+     "name": "Co_jpRrk01B"
+    },
+    {
+     "move": 1544,
+     "name": "Co_jprk01"
+    },
+    {
+     "move": 1545,
+     "name": "Co_jprk01F"
+    },
+    {
+     "move": 1546,
+     "name": "Co_jprk01B"
+    },
+    {
+     "move": 1547,
+     "name": "Co_jprk02"
+    },
+    {
+     "move": 1548,
+     "name": "Co_jprk02F"
+    },
+    {
+     "move": 1549,
+     "name": "Co_jprk02B"
+    },
+    {
+     "move": 1550,
+     "name": "Co_jprk04"
+    },
+    {
+     "move": 1551,
+     "name": "Co_jprk04F"
+    },
+    {
+     "move": 1552,
+     "name": "Co_jprk04B"
+    },
+    {
+     "move": 1553,
+     "name": "Jn_jprk00"
+    },
+    {
+     "move": 1555,
+     "name": "Jn_jprk00B"
+    },
+    {
+     "move": 1556,
+     "name": "Jn_jprk00F"
+    },
+    {
+     "move": 1567,
+     "name": "Ni_sjprk01F"
+    },
+    {
+     "move": 1568,
+     "name": "Ni_sjprk02F"
+    },
+    {
+     "move": 1569,
+     "name": "Ni_sjprk03F"
+    },
+    {
+     "move": 1576,
+     "name": "Jn_lprprk"
+    },
+    {
+     "move": 1599,
+     "name": "Jn_lksrklow"
+    },
+    {
+     "move": 1602,
+     "name": "Jn_kasumilow"
+    },
+    {
+     "move": 1604,
+     "name": "Jn_rk00"
+    },
+    {
+     "move": 1626,
+     "name": "Jn_syark00"
+    },
+    {
+     "move": 1638,
+     "name": "Jn_1lprk"
+    },
+    {
+     "move": 1653,
+     "name": "Jn_apaK"
+    },
+    {
+     "move": 1702,
+     "name": "Jn_s_trk"
+    },
+    {
+     "move": 1751,
+     "name": "Jn_mc02n0"
+    },
+    {
+     "move": 1752,
+     "name": "Jn_mc02d"
+    },
+    {
+     "move": 1755,
+     "name": "Jn_mc02d_R_D"
+    },
+    {
+     "move": 1756,
+     "name": "Jn_mc02dd"
+    },
+    {
+     "move": 1768,
+     "name": "Jn_cap10_C"
+    },
+    {
+     "move": 1785,
+     "name": "Jn_Newhakuro3mid"
+    },
+    {
+     "move": 1797,
+     "name": "Jn_hiziKick"
+    },
+    {
+     "move": 1800,
+     "name": "Jn_shikeiK"
+    },
+    {
+     "move": 1801,
+     "name": "Jn_rprk00"
+    },
+    {
+     "move": 1861,
+     "name": "SPJnA_lprk0"
+    },
+    {
+     "move": 2059,
+     "name": "Jn_hikiyose_k"
+    }
+   ]
+  },
+  {
+   "wh_key": "ub,b",
+   "wh_name": "Back Handspring",
+   "wh_input": "ub,b",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "no_evidence",
+   "evidence": [
+    "wavu_notation_exists",
+    "export_cancel_graph_chain",
+    "graph_chain_motion_terminal"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 129,
+   "t8_move_name": "sOKI_00",
+   "t8_anim_name": "Mcmn_co_aokam",
+   "startup": null,
+   "damage": 0,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "wavu_conflict": true,
+   "alternates": [
+    {
+     "move": 133,
+     "name": "sOKI_L0"
+    },
+    {
+     "move": 134,
+     "name": "sOKI_L1"
+    },
+    {
+     "move": 137,
+     "name": "sOKI_R0"
+    },
+    {
+     "move": 138,
+     "name": "sOKI_R1"
+    },
+    {
+     "move": 140,
+     "name": "Co_AOzen"
+    },
+    {
+     "move": 181,
+     "name": "Co_AOkoutk7"
+    },
+    {
+     "move": 183,
+     "name": "Co_AOzentk7"
+    },
+    {
+     "move": 1485,
+     "name": "sJBAC_W0B"
+    },
+    {
+     "move": 1500,
+     "name": "cr2st_00B"
+    },
+    {
+     "move": 2223,
+     "name": "sTRN_L00B"
+    },
+    {
+     "move": 2224,
+     "name": "sTRN_R00B"
+    }
+   ]
+  },
+  {
+   "wh_key": "ws1",
+   "wh_name": "Move ws1 (ws1)",
+   "wh_input": "ws1",
+   "t7_id": "asuka_185",
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 1570,
+   "t8_move_name": "Jn_lp00",
+   "t8_anim_name": "jnsu_at_lp",
+   "startup": 10,
+   "damage": 5,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1620,
+     "name": "Jn_syalp00"
+    },
+    {
+     "move": 1511,
+     "name": "Co_jplp01"
+    },
+    {
+     "move": 1512,
+     "name": "Co_jplp01F"
+    },
+    {
+     "move": 1513,
+     "name": "Co_jplp01B"
+    },
+    {
+     "move": 1514,
+     "name": "Co_jplp02"
+    },
+    {
+     "move": 1515,
+     "name": "Co_jplp02F"
+    },
+    {
+     "move": 1516,
+     "name": "Co_jplp02B"
+    },
+    {
+     "move": 1517,
+     "name": "Co_jplp03"
+    },
+    {
+     "move": 1518,
+     "name": "Co_jplp03F"
+    },
+    {
+     "move": 1519,
+     "name": "Co_jplp03B"
+    },
+    {
+     "move": 1520,
+     "name": "Co_jpRlp00"
+    },
+    {
+     "move": 1521,
+     "name": "Co_jpRlp00F"
+    },
+    {
+     "move": 1522,
+     "name": "Co_jpRlp00B"
+    },
+    {
+     "move": 1559,
+     "name": "Co_sjplp01F"
+    },
+    {
+     "move": 1560,
+     "name": "Co_sjplp02F"
+    },
+    {
+     "move": 1561,
+     "name": "Co_sjplp03F"
+    },
+    {
+     "move": 1580,
+     "name": "Jn_rphiji"
+    },
+    {
+     "move": 1595,
+     "name": "Jn_lklp"
+    },
+    {
+     "move": 1717,
+     "name": "jun_mc01"
+    },
+    {
+     "move": 1769,
+     "name": "jn_cap10"
+    },
+    {
+     "move": 1798,
+     "name": "Jn_rplp00"
+    },
+    {
+     "move": 1799,
+     "name": "Jn_shikeiP"
+    },
+    {
+     "move": 1832,
+     "name": "Jn_66RPLP"
+    },
+    {
+     "move": 1839,
+     "name": "Jn_9LP"
+    },
+    {
+     "move": 1855,
+     "name": "SPJnA_rplp0"
+    },
+    {
+     "move": 1856,
+     "name": "SPJnA_lplp0"
+    },
+    {
+     "move": 1858,
+     "name": "SPJnA_lplp1"
+    },
+    {
+     "move": 1860,
+     "name": "SPJnA_rplp1"
+    },
+    {
+     "move": 1868,
+     "name": "SPJnB_rplp0"
+    }
+   ]
+  },
+  {
+   "wh_key": "ws1,4",
+   "wh_name": "Shikeitai",
+   "wh_input": "ws1,4",
+   "t7_id": "asuka_186",
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 195,
+   "t8_move_name": "Co_Aokirk00",
+   "t8_anim_name": "cmnna_at_aomk1",
+   "startup": 22,
+   "damage": 8,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 197,
+     "name": "Co_AokirkL0"
+    },
+    {
+     "move": 1602,
+     "name": "Jn_kasumilow"
+    },
+    {
+     "move": 1800,
+     "name": "Jn_shikeiK"
+    },
+    {
+     "move": 1861,
+     "name": "SPJnA_lprk0"
+    }
+   ]
+  },
+  {
+   "wh_key": "ws2",
+   "wh_name": "Move ws2 (ws2)",
+   "wh_input": "ws2",
+   "t7_id": "asuka_188",
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 1578,
+   "t8_move_name": "Jn_rp00",
+   "t8_anim_name": "derb_at_new_rp",
+   "startup": 12,
+   "damage": 9,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 271,
+     "name": "Co_sJP_RP"
+    },
+    {
+     "move": 1526,
+     "name": "Co_jprp03"
+    },
+    {
+     "move": 1527,
+     "name": "Co_jprp03F"
+    },
+    {
+     "move": 1528,
+     "name": "Co_jprp03B"
+    },
+    {
+     "move": 1562,
+     "name": "Co_sjprp03F"
+    },
+    {
+     "move": 1571,
+     "name": "Jn_lp00_reserve_RP"
+    },
+    {
+     "move": 1573,
+     "name": "Jn_lprpF"
+    },
+    {
+     "move": 1574,
+     "name": "Jn_lprpF_counter"
+    },
+    {
+     "move": 1590,
+     "name": "Jn_upper"
+    },
+    {
+     "move": 1612,
+     "name": "Ni_bintrp"
+    },
+    {
+     "move": 1614,
+     "name": "Jn_rk00B_R"
+    },
+    {
+     "move": 1617,
+     "name": "Jn_hizaelb"
+    },
+    {
+     "move": 1622,
+     "name": "Co_syarp00"
+    },
+    {
+     "move": 1633,
+     "name": "Jn_1lprp"
+    },
+    {
+     "move": 1655,
+     "name": "Jn_apasyou"
+    },
+    {
+     "move": 1688,
+     "name": "Jn_s_trp"
+    },
+    {
+     "move": 1718,
+     "name": "Jn_cap10_B"
+    },
+    {
+     "move": 1727,
+     "name": "Jn_up03n"
+    },
+    {
+     "move": 1775,
+     "name": "jn_cap10Eb"
+    },
+    {
+     "move": 1824,
+     "name": "Jn_ganmen"
+    },
+    {
+     "move": 1825,
+     "name": "Jn_ganmen_8RP"
+    },
+    {
+     "move": 1826,
+     "name": "Jn_ganmen_7RP"
+    },
+    {
+     "move": 1837,
+     "name": "Jn_mvrp00m"
+    },
+    {
+     "move": 1838,
+     "name": "Jn_mvrp00mR"
+    },
+    {
+     "move": 1859,
+     "name": "SPJnA_lprp0"
+    },
+    {
+     "move": 2057,
+     "name": "Jn_hikiyose_p"
+    }
+   ]
+  },
+  {
+   "wh_key": "ws2,1",
+   "wh_name": "Move 1 (1)",
+   "wh_input": "ws2,1",
+   "t7_id": "asuka_189",
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 1580,
+   "t8_move_name": "Jn_rphiji",
+   "t8_anim_name": "jnoz_at_new_rp_hiji3",
+   "startup": 18,
+   "damage": 10,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1855,
+     "name": "SPJnA_rplp0"
+    },
+    {
+     "move": 1860,
+     "name": "SPJnA_rplp1"
+    }
+   ]
+  },
+  {
+   "wh_key": "ws2,1,1",
+   "wh_name": "3rd Hit",
+   "wh_input": "ws2,1,1",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 1856,
+   "t8_move_name": "SPJnA_lplp0",
+   "t8_anim_name": "jnsu_at_lprotlp",
+   "startup": 24,
+   "damage": 8,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   }
+  },
+  {
+   "wh_key": "ws2,1,1,1,2,1+4,1,3+4",
+   "wh_name": "10 Hit Combo 2",
+   "wh_input": "ws2,1,1,1,2,1+4,1,3+4",
+   "t7_id": "asuka_196",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "mvl_matched_graph_gap",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "ws2,1,1,1,2,1,4,3,3+4",
+   "wh_name": "10 Hit Combo 1",
+   "wh_input": "ws2,1,1,1,2,1,4,3,3+4",
+   "t7_id": "asuka_195",
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "mvl_matched_graph_gap",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 1863,
+   "t8_move_name": "SPJnA_lkrk0",
+   "t8_anim_name": "jnkm_at_10_lrk",
+   "startup": 28,
+   "damage": 25,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   }
+  },
+  {
+   "wh_key": "ws2,1+2",
+   "wh_name": "Kohaku",
+   "wh_input": "ws2,1+2",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "no_evidence",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 1593,
+   "t8_move_name": "Jn_akkrp00",
+   "t8_anim_name": "derto_at_akkei",
+   "startup": 16,
+   "damage": 21,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1700,
+     "name": "Jn_s_trpWP"
+    }
+   ]
+  },
+  {
+   "wh_key": "ws3",
+   "wh_name": "Moon Scent",
+   "wh_input": "ws3",
+   "t7_id": "asuka_191",
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 1594,
+   "t8_move_name": "Jn_lk00",
+   "t8_anim_name": "jnna_at_lk",
+   "startup": 14,
+   "damage": 17,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 194,
+     "name": "Co_Aokilk00"
+    },
+    {
+     "move": 196,
+     "name": "Co_AokilkL0"
+    },
+    {
+     "move": 198,
+     "name": "Co_ADwSlk00"
+    },
+    {
+     "move": 201,
+     "name": "Co_ADwSlkR1"
+    },
+    {
+     "move": 204,
+     "name": "Co_FRollk00"
+    },
+    {
+     "move": 206,
+     "name": "Co_FRollkL0"
+    },
+    {
+     "move": 208,
+     "name": "Co_BRollk00"
+    },
+    {
+     "move": 210,
+     "name": "Co_BRollkL0"
+    },
+    {
+     "move": 215,
+     "name": "Co_Rol_lrk"
+    },
+    {
+     "move": 218,
+     "name": "Co_Uokilk01"
+    },
+    {
+     "move": 223,
+     "name": "Co_UokilkR1"
+    },
+    {
+     "move": 243,
+     "name": "Co_R_lk00L_"
+    },
+    {
+     "move": 250,
+     "name": "Co_jpRlk01"
+    },
+    {
+     "move": 251,
+     "name": "Co_jpRlk01F"
+    },
+    {
+     "move": 252,
+     "name": "Co_jpRlk01B"
+    },
+    {
+     "move": 1530,
+     "name": "Co_jplk00"
+    },
+    {
+     "move": 1533,
+     "name": "Co_jplk00F"
+    },
+    {
+     "move": 1534,
+     "name": "Co_jplk00B"
+    },
+    {
+     "move": 1535,
+     "name": "Co_jplk01"
+    },
+    {
+     "move": 1536,
+     "name": "Co_jplk01F"
+    },
+    {
+     "move": 1537,
+     "name": "Co_jplk01B"
+    },
+    {
+     "move": 1538,
+     "name": "Co_jplk02"
+    },
+    {
+     "move": 1539,
+     "name": "Co_jplk02F"
+    },
+    {
+     "move": 1540,
+     "name": "Co_jplk02B"
+    },
+    {
+     "move": 1541,
+     "name": "Co_jplk04"
+    },
+    {
+     "move": 1542,
+     "name": "Co_jplk04F"
+    },
+    {
+     "move": 1543,
+     "name": "Co_jplk04B"
+    },
+    {
+     "move": 1563,
+     "name": "Co_sjplk01F"
+    },
+    {
+     "move": 1564,
+     "name": "Co_sjplk02F"
+    },
+    {
+     "move": 1565,
+     "name": "Co_sjplk03F"
+    },
+    {
+     "move": 1575,
+     "name": "jun_lprpc30"
+    },
+    {
+     "move": 1579,
+     "name": "Jn_rpjpk"
+    },
+    {
+     "move": 1625,
+     "name": "Jn_syalk00"
+    },
+    {
+     "move": 1716,
+     "name": "Jn_s_tlk_"
+    },
+    {
+     "move": 1728,
+     "name": "jun_lk01"
+    },
+    {
+     "move": 1742,
+     "name": "Jn_mk00"
+    },
+    {
+     "move": 1747,
+     "name": "Jn_mc03s"
+    },
+    {
+     "move": 1754,
+     "name": "Jn_mc02d_R_C"
+    },
+    {
+     "move": 1758,
+     "name": "Jn_mc02dd_C"
+    },
+    {
+     "move": 1764,
+     "name": "Jn_senshi03"
+    },
+    {
+     "move": 1765,
+     "name": "Jn_senshi04"
+    },
+    {
+     "move": 1774,
+     "name": "jn_cap10c30"
+    },
+    {
+     "move": 1776,
+     "name": "jn_cap10Ec"
+    },
+    {
+     "move": 1789,
+     "name": "Jn_Newhakuro3low"
+    },
+    {
+     "move": 1830,
+     "name": "Jn_66rplk"
+    },
+    {
+     "move": 1862,
+     "name": "SPJnA_rklk0"
+    },
+    {
+     "move": 1865,
+     "name": "SpJnB_lplk0"
+    }
+   ]
+  },
+  {
+   "wh_key": "ws4",
+   "wh_name": "Toe Smash",
+   "wh_input": "ws4",
+   "t7_id": "asuka_192",
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 1820,
+   "t8_move_name": "Jn_ikedaK",
+   "t8_anim_name": "Gjn_at_ikedaK",
+   "startup": 17,
+   "damage": 18,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 195,
+     "name": "Co_Aokirk00"
+    },
+    {
+     "move": 197,
+     "name": "Co_AokirkL0"
+    },
+    {
+     "move": 199,
+     "name": "Co_ADwSrk00"
+    },
+    {
+     "move": 203,
+     "name": "Co_ADwSrkR1"
+    },
+    {
+     "move": 205,
+     "name": "Co_FRolrk00"
+    },
+    {
+     "move": 206,
+     "name": "Co_FRollkL0"
+    },
+    {
+     "move": 207,
+     "name": "Co_FRolrkL0"
+    },
+    {
+     "move": 209,
+     "name": "Co_BRolrk00"
+    },
+    {
+     "move": 211,
+     "name": "Co_BRolrkL0"
+    },
+    {
+     "move": 215,
+     "name": "Co_Rol_lrk"
+    },
+    {
+     "move": 221,
+     "name": "Co_Uokirk01"
+    },
+    {
+     "move": 229,
+     "name": "Co_UokirkR1"
+    },
+    {
+     "move": 244,
+     "name": "Co_R_rk00R_"
+    },
+    {
+     "move": 253,
+     "name": "Co_jpRrk01"
+    },
+    {
+     "move": 254,
+     "name": "Co_jpRrk01F"
+    },
+    {
+     "move": 255,
+     "name": "Co_jpRrk01B"
+    },
+    {
+     "move": 1544,
+     "name": "Co_jprk01"
+    },
+    {
+     "move": 1545,
+     "name": "Co_jprk01F"
+    },
+    {
+     "move": 1546,
+     "name": "Co_jprk01B"
+    },
+    {
+     "move": 1547,
+     "name": "Co_jprk02"
+    },
+    {
+     "move": 1548,
+     "name": "Co_jprk02F"
+    },
+    {
+     "move": 1549,
+     "name": "Co_jprk02B"
+    },
+    {
+     "move": 1550,
+     "name": "Co_jprk04"
+    },
+    {
+     "move": 1551,
+     "name": "Co_jprk04F"
+    },
+    {
+     "move": 1552,
+     "name": "Co_jprk04B"
+    },
+    {
+     "move": 1553,
+     "name": "Jn_jprk00"
+    },
+    {
+     "move": 1555,
+     "name": "Jn_jprk00B"
+    },
+    {
+     "move": 1556,
+     "name": "Jn_jprk00F"
+    },
+    {
+     "move": 1567,
+     "name": "Ni_sjprk01F"
+    },
+    {
+     "move": 1568,
+     "name": "Ni_sjprk02F"
+    },
+    {
+     "move": 1569,
+     "name": "Ni_sjprk03F"
+    },
+    {
+     "move": 1576,
+     "name": "Jn_lprprk"
+    },
+    {
+     "move": 1599,
+     "name": "Jn_lksrklow"
+    },
+    {
+     "move": 1602,
+     "name": "Jn_kasumilow"
+    },
+    {
+     "move": 1604,
+     "name": "Jn_rk00"
+    },
+    {
+     "move": 1626,
+     "name": "Jn_syark00"
+    },
+    {
+     "move": 1638,
+     "name": "Jn_1lprk"
+    },
+    {
+     "move": 1653,
+     "name": "Jn_apaK"
+    },
+    {
+     "move": 1702,
+     "name": "Jn_s_trk"
+    },
+    {
+     "move": 1751,
+     "name": "Jn_mc02n0"
+    },
+    {
+     "move": 1752,
+     "name": "Jn_mc02d"
+    },
+    {
+     "move": 1755,
+     "name": "Jn_mc02d_R_D"
+    },
+    {
+     "move": 1756,
+     "name": "Jn_mc02dd"
+    },
+    {
+     "move": 1768,
+     "name": "Jn_cap10_C"
+    },
+    {
+     "move": 1785,
+     "name": "Jn_Newhakuro3mid"
+    },
+    {
+     "move": 1797,
+     "name": "Jn_hiziKick"
+    },
+    {
+     "move": 1800,
+     "name": "Jn_shikeiK"
+    },
+    {
+     "move": 1801,
+     "name": "Jn_rprk00"
+    },
+    {
+     "move": 1861,
+     "name": "SPJnA_lprk0"
+    },
+    {
+     "move": 2059,
+     "name": "Jn_hikiyose_k"
+    }
+   ]
+  },
+  {
+   "wh_key": "1~t8.asuka",
+   "wh_name": "Jab",
+   "wh_input": "1",
+   "t7_id": "asuka_2",
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 1570,
+   "t8_move_name": "Jn_lp00",
+   "t8_anim_name": "jnsu_at_lp",
+   "startup": 10,
+   "damage": 5,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1620,
+     "name": "Jn_syalp00"
+    },
+    {
+     "move": 1511,
+     "name": "Co_jplp01"
+    },
+    {
+     "move": 1512,
+     "name": "Co_jplp01F"
+    },
+    {
+     "move": 1513,
+     "name": "Co_jplp01B"
+    },
+    {
+     "move": 1514,
+     "name": "Co_jplp02"
+    },
+    {
+     "move": 1515,
+     "name": "Co_jplp02F"
+    },
+    {
+     "move": 1516,
+     "name": "Co_jplp02B"
+    },
+    {
+     "move": 1517,
+     "name": "Co_jplp03"
+    },
+    {
+     "move": 1518,
+     "name": "Co_jplp03F"
+    },
+    {
+     "move": 1519,
+     "name": "Co_jplp03B"
+    },
+    {
+     "move": 1520,
+     "name": "Co_jpRlp00"
+    },
+    {
+     "move": 1521,
+     "name": "Co_jpRlp00F"
+    },
+    {
+     "move": 1522,
+     "name": "Co_jpRlp00B"
+    },
+    {
+     "move": 1559,
+     "name": "Co_sjplp01F"
+    },
+    {
+     "move": 1560,
+     "name": "Co_sjplp02F"
+    },
+    {
+     "move": 1561,
+     "name": "Co_sjplp03F"
+    },
+    {
+     "move": 1580,
+     "name": "Jn_rphiji"
+    },
+    {
+     "move": 1595,
+     "name": "Jn_lklp"
+    },
+    {
+     "move": 1717,
+     "name": "jun_mc01"
+    },
+    {
+     "move": 1769,
+     "name": "jn_cap10"
+    },
+    {
+     "move": 1798,
+     "name": "Jn_rplp00"
+    },
+    {
+     "move": 1799,
+     "name": "Jn_shikeiP"
+    },
+    {
+     "move": 1832,
+     "name": "Jn_66RPLP"
+    },
+    {
+     "move": 1839,
+     "name": "Jn_9LP"
+    },
+    {
+     "move": 1855,
+     "name": "SPJnA_rplp0"
+    },
+    {
+     "move": 1856,
+     "name": "SPJnA_lplp0"
+    },
+    {
+     "move": 1858,
+     "name": "SPJnA_lplp1"
+    },
+    {
+     "move": 1860,
+     "name": "SPJnA_rplp1"
+    },
+    {
+     "move": 1868,
+     "name": "SPJnB_rplp0"
+    }
+   ]
+  },
+  {
+   "wh_key": "2~t8.asuka",
+   "wh_name": "KINPO 2",
+   "wh_input": "2",
+   "t7_id": "asuka_20",
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 1578,
+   "t8_move_name": "Jn_rp00",
+   "t8_anim_name": "derb_at_new_rp",
+   "startup": 12,
+   "damage": 9,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 271,
+     "name": "Co_sJP_RP"
+    },
+    {
+     "move": 1526,
+     "name": "Co_jprp03"
+    },
+    {
+     "move": 1527,
+     "name": "Co_jprp03F"
+    },
+    {
+     "move": 1528,
+     "name": "Co_jprp03B"
+    },
+    {
+     "move": 1562,
+     "name": "Co_sjprp03F"
+    },
+    {
+     "move": 1571,
+     "name": "Jn_lp00_reserve_RP"
+    },
+    {
+     "move": 1573,
+     "name": "Jn_lprpF"
+    },
+    {
+     "move": 1574,
+     "name": "Jn_lprpF_counter"
+    },
+    {
+     "move": 1590,
+     "name": "Jn_upper"
+    },
+    {
+     "move": 1612,
+     "name": "Ni_bintrp"
+    },
+    {
+     "move": 1614,
+     "name": "Jn_rk00B_R"
+    },
+    {
+     "move": 1617,
+     "name": "Jn_hizaelb"
+    },
+    {
+     "move": 1622,
+     "name": "Co_syarp00"
+    },
+    {
+     "move": 1633,
+     "name": "Jn_1lprp"
+    },
+    {
+     "move": 1655,
+     "name": "Jn_apasyou"
+    },
+    {
+     "move": 1688,
+     "name": "Jn_s_trp"
+    },
+    {
+     "move": 1718,
+     "name": "Jn_cap10_B"
+    },
+    {
+     "move": 1727,
+     "name": "Jn_up03n"
+    },
+    {
+     "move": 1775,
+     "name": "jn_cap10Eb"
+    },
+    {
+     "move": 1824,
+     "name": "Jn_ganmen"
+    },
+    {
+     "move": 1825,
+     "name": "Jn_ganmen_8RP"
+    },
+    {
+     "move": 1826,
+     "name": "Jn_ganmen_7RP"
+    },
+    {
+     "move": 1837,
+     "name": "Jn_mvrp00m"
+    },
+    {
+     "move": 1838,
+     "name": "Jn_mvrp00mR"
+    },
+    {
+     "move": 1859,
+     "name": "SPJnA_lprp0"
+    },
+    {
+     "move": 2057,
+     "name": "Jn_hikiyose_p"
+    }
+   ]
+  },
+  {
+   "wh_key": "2,1~t8.asuka",
+   "wh_name": "KINPO 2,1",
+   "wh_input": "2,1",
+   "t7_id": "asuka_21",
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 1580,
+   "t8_move_name": "Jn_rphiji",
+   "t8_anim_name": "jnoz_at_new_rp_hiji3",
+   "startup": 18,
+   "damage": 10,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1855,
+     "name": "SPJnA_rplp0"
+    },
+    {
+     "move": 1860,
+     "name": "SPJnA_rplp1"
+    }
+   ]
+  },
+  {
+   "wh_key": "3~t8.asuka",
+   "wh_name": "KINPO 3",
+   "wh_input": "3",
+   "t7_id": "asuka_31",
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 1594,
+   "t8_move_name": "Jn_lk00",
+   "t8_anim_name": "jnna_at_lk",
+   "startup": 14,
+   "damage": 17,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 194,
+     "name": "Co_Aokilk00"
+    },
+    {
+     "move": 196,
+     "name": "Co_AokilkL0"
+    },
+    {
+     "move": 198,
+     "name": "Co_ADwSlk00"
+    },
+    {
+     "move": 201,
+     "name": "Co_ADwSlkR1"
+    },
+    {
+     "move": 204,
+     "name": "Co_FRollk00"
+    },
+    {
+     "move": 206,
+     "name": "Co_FRollkL0"
+    },
+    {
+     "move": 208,
+     "name": "Co_BRollk00"
+    },
+    {
+     "move": 210,
+     "name": "Co_BRollkL0"
+    },
+    {
+     "move": 215,
+     "name": "Co_Rol_lrk"
+    },
+    {
+     "move": 218,
+     "name": "Co_Uokilk01"
+    },
+    {
+     "move": 223,
+     "name": "Co_UokilkR1"
+    },
+    {
+     "move": 243,
+     "name": "Co_R_lk00L_"
+    },
+    {
+     "move": 250,
+     "name": "Co_jpRlk01"
+    },
+    {
+     "move": 251,
+     "name": "Co_jpRlk01F"
+    },
+    {
+     "move": 252,
+     "name": "Co_jpRlk01B"
+    },
+    {
+     "move": 1530,
+     "name": "Co_jplk00"
+    },
+    {
+     "move": 1533,
+     "name": "Co_jplk00F"
+    },
+    {
+     "move": 1534,
+     "name": "Co_jplk00B"
+    },
+    {
+     "move": 1535,
+     "name": "Co_jplk01"
+    },
+    {
+     "move": 1536,
+     "name": "Co_jplk01F"
+    },
+    {
+     "move": 1537,
+     "name": "Co_jplk01B"
+    },
+    {
+     "move": 1538,
+     "name": "Co_jplk02"
+    },
+    {
+     "move": 1539,
+     "name": "Co_jplk02F"
+    },
+    {
+     "move": 1540,
+     "name": "Co_jplk02B"
+    },
+    {
+     "move": 1541,
+     "name": "Co_jplk04"
+    },
+    {
+     "move": 1542,
+     "name": "Co_jplk04F"
+    },
+    {
+     "move": 1543,
+     "name": "Co_jplk04B"
+    },
+    {
+     "move": 1563,
+     "name": "Co_sjplk01F"
+    },
+    {
+     "move": 1564,
+     "name": "Co_sjplk02F"
+    },
+    {
+     "move": 1565,
+     "name": "Co_sjplk03F"
+    },
+    {
+     "move": 1575,
+     "name": "jun_lprpc30"
+    },
+    {
+     "move": 1579,
+     "name": "Jn_rpjpk"
+    },
+    {
+     "move": 1625,
+     "name": "Jn_syalk00"
+    },
+    {
+     "move": 1716,
+     "name": "Jn_s_tlk_"
+    },
+    {
+     "move": 1728,
+     "name": "jun_lk01"
+    },
+    {
+     "move": 1742,
+     "name": "Jn_mk00"
+    },
+    {
+     "move": 1747,
+     "name": "Jn_mc03s"
+    },
+    {
+     "move": 1754,
+     "name": "Jn_mc02d_R_C"
+    },
+    {
+     "move": 1758,
+     "name": "Jn_mc02dd_C"
+    },
+    {
+     "move": 1764,
+     "name": "Jn_senshi03"
+    },
+    {
+     "move": 1765,
+     "name": "Jn_senshi04"
+    },
+    {
+     "move": 1774,
+     "name": "jn_cap10c30"
+    },
+    {
+     "move": 1776,
+     "name": "jn_cap10Ec"
+    },
+    {
+     "move": 1789,
+     "name": "Jn_Newhakuro3low"
+    },
+    {
+     "move": 1830,
+     "name": "Jn_66rplk"
+    },
+    {
+     "move": 1862,
+     "name": "SPJnA_rklk0"
+    },
+    {
+     "move": 1865,
+     "name": "SpJnB_lplk0"
+    }
+   ]
+  },
+  {
+   "wh_key": "4~t8.asuka",
+   "wh_name": "High Kick",
+   "wh_input": "4",
+   "t7_id": "asuka_36",
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "tekkenmods-6006-t8_ASUKA",
+   "t8_move_index": 1820,
+   "t8_move_name": "Jn_ikedaK",
+   "t8_anim_name": "Gjn_at_ikedaK",
+   "startup": 17,
+   "damage": 18,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 195,
+     "name": "Co_Aokirk00"
+    },
+    {
+     "move": 197,
+     "name": "Co_AokirkL0"
+    },
+    {
+     "move": 199,
+     "name": "Co_ADwSrk00"
+    },
+    {
+     "move": 203,
+     "name": "Co_ADwSrkR1"
+    },
+    {
+     "move": 205,
+     "name": "Co_FRolrk00"
+    },
+    {
+     "move": 206,
+     "name": "Co_FRollkL0"
+    },
+    {
+     "move": 207,
+     "name": "Co_FRolrkL0"
+    },
+    {
+     "move": 209,
+     "name": "Co_BRolrk00"
+    },
+    {
+     "move": 211,
+     "name": "Co_BRolrkL0"
+    },
+    {
+     "move": 215,
+     "name": "Co_Rol_lrk"
+    },
+    {
+     "move": 221,
+     "name": "Co_Uokirk01"
+    },
+    {
+     "move": 229,
+     "name": "Co_UokirkR1"
+    },
+    {
+     "move": 244,
+     "name": "Co_R_rk00R_"
+    },
+    {
+     "move": 253,
+     "name": "Co_jpRrk01"
+    },
+    {
+     "move": 254,
+     "name": "Co_jpRrk01F"
+    },
+    {
+     "move": 255,
+     "name": "Co_jpRrk01B"
+    },
+    {
+     "move": 1544,
+     "name": "Co_jprk01"
+    },
+    {
+     "move": 1545,
+     "name": "Co_jprk01F"
+    },
+    {
+     "move": 1546,
+     "name": "Co_jprk01B"
+    },
+    {
+     "move": 1547,
+     "name": "Co_jprk02"
+    },
+    {
+     "move": 1548,
+     "name": "Co_jprk02F"
+    },
+    {
+     "move": 1549,
+     "name": "Co_jprk02B"
+    },
+    {
+     "move": 1550,
+     "name": "Co_jprk04"
+    },
+    {
+     "move": 1551,
+     "name": "Co_jprk04F"
+    },
+    {
+     "move": 1552,
+     "name": "Co_jprk04B"
+    },
+    {
+     "move": 1553,
+     "name": "Jn_jprk00"
+    },
+    {
+     "move": 1555,
+     "name": "Jn_jprk00B"
+    },
+    {
+     "move": 1556,
+     "name": "Jn_jprk00F"
+    },
+    {
+     "move": 1567,
+     "name": "Ni_sjprk01F"
+    },
+    {
+     "move": 1568,
+     "name": "Ni_sjprk02F"
+    },
+    {
+     "move": 1569,
+     "name": "Ni_sjprk03F"
+    },
+    {
+     "move": 1576,
+     "name": "Jn_lprprk"
+    },
+    {
+     "move": 1599,
+     "name": "Jn_lksrklow"
+    },
+    {
+     "move": 1602,
+     "name": "Jn_kasumilow"
+    },
+    {
+     "move": 1604,
+     "name": "Jn_rk00"
+    },
+    {
+     "move": 1626,
+     "name": "Jn_syark00"
+    },
+    {
+     "move": 1638,
+     "name": "Jn_1lprk"
+    },
+    {
+     "move": 1653,
+     "name": "Jn_apaK"
+    },
+    {
+     "move": 1702,
+     "name": "Jn_s_trk"
+    },
+    {
+     "move": 1751,
+     "name": "Jn_mc02n0"
+    },
+    {
+     "move": 1752,
+     "name": "Jn_mc02d"
+    },
+    {
+     "move": 1755,
+     "name": "Jn_mc02d_R_D"
+    },
+    {
+     "move": 1756,
+     "name": "Jn_mc02dd"
+    },
+    {
+     "move": 1768,
+     "name": "Jn_cap10_C"
+    },
+    {
+     "move": 1785,
+     "name": "Jn_Newhakuro3mid"
+    },
+    {
+     "move": 1797,
+     "name": "Jn_hiziKick"
+    },
+    {
+     "move": 1800,
+     "name": "Jn_shikeiK"
+    },
+    {
+     "move": 1801,
+     "name": "Jn_rprk00"
+    },
+    {
+     "move": 1861,
+     "name": "SPJnA_lprk0"
+    },
+    {
+     "move": 2059,
+     "name": "Jn_hikiyose_k"
+    }
+   ]
+  }
+ ]
+}

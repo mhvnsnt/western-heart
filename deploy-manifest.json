@@ -1,12 +1,12 @@
 {
  "format": "wh-pages-deploy/1",
  "ref": "origin/main",
- "commit": "5911000383d7566d08d96247dc844a522d5061c1",
- "files": 2071,
- "bytes": 960899922,
- "built": "2026-10-31T00:35:16Z",
+ "commit": "576a435ff14e5243e4542ca3fdd9dfe6882750ed",
+ "files": 2082,
+ "bytes": 961320969,
+ "built": "2026-10-31T00:52:28Z",
  "tool": "tools/deploy/build_pages.py",
  "mode": "shell-only",
- "source_pr": 1296,
- "delta_note": "Delta deploy (Claude, tools/deploy/REPUBLISH.md section 2 method via git plumbing) adf15d61..59110003: added game/assets/anim/t7/king/{skeleton,stance}.json (#1296 real T7 King stance for Pantera); updated game/js/{t3anims,fighter,select-screen}.js (#1296) + 17 moveset files (provenance phase 1 #1283-#1297). Add/update only, 0 removed. FIX: added game/js/step-plan-bank.js, a static import of main's fighter.js that was missing on the deploy branch (its fighter.js had been older than the manifest commit); main import graph checked: 137 modules, 0 missing, 0 stale."
+ "source_pr": 1300,
+ "delta_note": "Delta deploy (WH-100 lane, Git Data API) 59110003..576a435f: added game/assets/anim/t7/king_on_pantera_leoman/{skeleton,t7_stance}.json (PR #1300 direct-rig copy of King's real T7 stance for Pantera; canonical king/stance.json shipped in the prior delta); added game/assets/anim/t8/INDEX.json + 8 t8 clip-maps (T8 community-pull lane); updated game/assets/anim/t7/INDEX.json, game/assets/movesets/{awapop,retsu}.json (provenance Phase 1). Docs/tools changes in range are not part of the shell and were not shipped. Add/update-only."
 }

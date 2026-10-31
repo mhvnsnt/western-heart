@@ -1,0 +1,5839 @@
+{
+ "schema": "wh-t8-clip-map/1",
+ "fighter": "phantom",
+ "base": "Yoshimitsu",
+ "base_code_tkdata": "CML",
+ "sources": {
+  "export": "kaiutzi21/Tekken8Movesets t8_YOSHIMITSURUGI/t8_YOSHIMITSU.json (CC BY-NC 4.0)",
+  "movelist": "wavu.wiki via pbruvoll/tekkendocs json_movelist (unlicensed community frame data)",
+  "name_keys": "AliK3112/tekken-8-movesets-scripts name_keys.json (45,716 entries)",
+  "t7_record": "game/assets/anim/t7/clip-maps/phantom-clip-map.json"
+ },
+ "stats": {
+  "mapped_medium": 22,
+  "mapped_high": 12,
+  "unmapped": 25
+ },
+ "moves": [
+  {
+   "wh_key": "1,1",
+   "wh_name": "Naguri Kabuto Wari",
+   "wh_input": "1,1",
+   "t7_id": "yoshimitsu_2",
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1572,
+   "t8_move_name": "Ym_LPLP",
+   "t8_anim_name": "cmlss_at_lplp",
+   "startup": 23,
+   "damage": 19,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1573,
+     "name": "Ym_LPLP_battou"
+    },
+    {
+     "move": 1625,
+     "name": "Ym_4LPLPLP"
+    },
+    {
+     "move": 1626,
+     "name": "Ym_4LPLPLPLP"
+    },
+    {
+     "move": 1627,
+     "name": "Ym_4LPLPLPLPLP"
+    },
+    {
+     "move": 1628,
+     "name": "Ym_4LPLPLPLPLPLP"
+    },
+    {
+     "move": 1728,
+     "name": "Ym_crst_LPLP"
+    },
+    {
+     "move": 1729,
+     "name": "Ym_crst_LPLPLP"
+    },
+    {
+     "move": 1730,
+     "name": "Ym_crst_LPLPLPLP"
+    },
+    {
+     "move": 1755,
+     "name": "Ym_ton_LP"
+    },
+    {
+     "move": 1756,
+     "name": "Ym_ton_LP_heat"
+    },
+    {
+     "move": 1849,
+     "name": "Ym_7LPLK_LP"
+    },
+    {
+     "move": 1851,
+     "name": "Ym_7LPLK_LP_mutou"
+    },
+    {
+     "move": 2055,
+     "name": "SPYmA_rulu_Ra"
+    },
+    {
+     "move": 2063,
+     "name": "SPYmA_ktn1"
+    },
+    {
+     "move": 2064,
+     "name": "SPYmA_Xktn1"
+    },
+    {
+     "move": 2065,
+     "name": "SPYmA_ktn2"
+    },
+    {
+     "move": 2066,
+     "name": "SPYmA_Xktn2"
+    },
+    {
+     "move": 2067,
+     "name": "SPYmA_ktn3"
+    },
+    {
+     "move": 2068,
+     "name": "SPYmA_Xktn3"
+    },
+    {
+     "move": 2079,
+     "name": "SPYmC_lplp"
+    },
+    {
+     "move": 2080,
+     "name": "SPYmC_Xlplp"
+    }
+   ]
+  },
+  {
+   "wh_key": "1+2+3",
+   "wh_name": "Spirit Shield",
+   "wh_input": "1+2+3",
+   "t7_id": "yoshimitsu_20",
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 2023,
+   "t8_move_name": "Ym_guard_0",
+   "t8_anim_name": "Ccml_at_guard",
+   "startup": 22,
+   "damage": 0,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 2024,
+     "name": "Ym_Xguard_0"
+    }
+   ]
+  },
+  {
+   "wh_key": "1+4",
+   "wh_name": "Soul Stealer",
+   "wh_input": "1+4",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1866,
+   "t8_move_name": "Ym_LPRK",
+   "t8_anim_name": "cmlhi_at_ymblade_plus15",
+   "startup": 6,
+   "damage": 24,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "wavu_conflict": true,
+   "alternates": [
+    {
+     "move": 1868,
+     "name": "Ym_kin_LPRK"
+    },
+    {
+     "move": 1870,
+     "name": "Ym_kin_LPRK_mutou"
+    },
+    {
+     "move": 1930,
+     "name": "Ym_LPRK_mutou"
+    },
+    {
+     "move": 1932,
+     "name": "SN_sabaki_0"
+    }
+   ]
+  },
+  {
+   "wh_key": "2,1",
+   "wh_name": "Seiken Douharai",
+   "wh_input": "2,1",
+   "t7_id": "yoshimitsu_5",
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1580,
+   "t8_move_name": "Ym_RPLP",
+   "t8_anim_name": "cmlkb_at_rplp",
+   "startup": 26,
+   "damage": 23,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1582,
+     "name": "Ym_RPLP_mutou"
+    },
+    {
+     "move": 2071,
+     "name": "SPYmB_rplp"
+    },
+    {
+     "move": 2072,
+     "name": "SPYmB_Xrplp"
+    }
+   ]
+  },
+  {
+   "wh_key": "2+3",
+   "wh_name": "Heat Burst",
+   "wh_input": "2+3",
+   "t7_id": "yoshimitsu_267",
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1943,
+   "t8_move_name": "Ym_HeatSmash",
+   "t8_anim_name": "cmlmx_at_zd",
+   "startup": 18,
+   "damage": 13,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "wavu_conflict": true,
+   "alternates": [
+    {
+     "move": 2464,
+     "name": "Ym_ZoneBurst00"
+    }
+   ]
+  },
+  {
+   "wh_key": "2,d+3",
+   "wh_name": "PDK Combo",
+   "wh_input": "2,d+3",
+   "t7_id": "yoshimitsu_12",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "no_evidence",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "4,4",
+   "wh_name": "Double Roundhouse",
+   "wh_input": "4,4",
+   "t7_id": "yoshimitsu_17",
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1601,
+   "t8_move_name": "Ym_rk00_reserve_RK",
+   "t8_anim_name": "cmlmx_at_rk",
+   "startup": 12,
+   "damage": 16,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1602,
+     "name": "Ym_RKRK"
+    },
+    {
+     "move": 1603,
+     "name": "Ym_RKRKRK"
+    },
+    {
+     "move": 2060,
+     "name": "SPYmA_k02"
+    },
+    {
+     "move": 2061,
+     "name": "SPYmA_k03"
+    }
+   ]
+  },
+  {
+   "wh_key": "4,4,2,2,1",
+   "wh_name": "Sword Stab",
+   "wh_input": "4,4,2,2,1",
+   "t7_id": "yoshimitsu_138",
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "notation_differs",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 2071,
+   "t8_move_name": "SPYmB_rplp",
+   "t8_anim_name": "cmlss_at_10a5",
+   "startup": 67,
+   "damage": 30,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 2072,
+     "name": "SPYmB_Xrplp"
+    }
+   ]
+  },
+  {
+   "wh_key": "b+1+2",
+   "wh_name": "No Sword Stance",
+   "wh_input": "b+1+2",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1586,
+   "t8_move_name": "Ym_back_LP",
+   "t8_anim_name": "cmlmb_at_haizi",
+   "startup": 15,
+   "damage": 16,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "wavu_conflict": true,
+   "alternates": [
+    {
+     "move": 1654,
+     "name": "Ym_7WP"
+    },
+    {
+     "move": 1655,
+     "name": "Ym_7WP_mutou"
+    },
+    {
+     "move": 1924,
+     "name": "Ym_kin_4WP_attack"
+    }
+   ]
+  },
+  {
+   "wh_key": "b+3",
+   "wh_name": "Move b+3 (b+3)",
+   "wh_input": "b+3",
+   "t7_id": "yoshimitsu_320",
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 247,
+   "t8_move_name": "Co_jpRlk01B",
+   "t8_anim_name": "cmnkz_at_8_t4_lk",
+   "startup": 9,
+   "damage": 18,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "wavu_conflict": true,
+   "alternates": [
+    {
+     "move": 1545,
+     "name": "Ym_9LK"
+    },
+    {
+     "move": 1590,
+     "name": "Ym_lk00"
+    },
+    {
+     "move": 1604,
+     "name": "Ym_back_LK"
+    },
+    {
+     "move": 1605,
+     "name": "Co_R_rk00R"
+    },
+    {
+     "move": 1739,
+     "name": "Ym_crst_LK"
+    }
+   ]
+  },
+  {
+   "wh_key": "b,B+1+4",
+   "wh_name": "Thunder Blade",
+   "wh_input": "b,B+1+4",
+   "t7_id": "yoshimitsu_356",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "mvl_matched_graph_gap",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "b,B+1+4,B",
+   "wh_name": "Thunder Blade Feint to Soul Stealer",
+   "wh_input": "b,B+1+4,B",
+   "t7_id": "yoshimitsu_107",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "no_evidence",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "BT.2",
+   "wh_name": "Manji Backfist 2",
+   "wh_input": "BT.2",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1574,
+   "t8_move_name": "Ym_rp00",
+   "t8_anim_name": "cmlmx_at_rp",
+   "startup": 11,
+   "damage": 10,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 2017,
+     "name": "Ym_side_RP"
+    },
+    {
+     "move": 1528,
+     "name": "Ym_9RP"
+    },
+    {
+     "move": 1532,
+     "name": "Co_jprp03"
+    },
+    {
+     "move": 1533,
+     "name": "Co_jprp03F"
+    },
+    {
+     "move": 1534,
+     "name": "Co_jprp03B"
+    },
+    {
+     "move": 1562,
+     "name": "Co_sjprp03F"
+    },
+    {
+     "move": 1575,
+     "name": "Ym_RPRP"
+    },
+    {
+     "move": 1587,
+     "name": "Ym_back_LPRP"
+    },
+    {
+     "move": 1591,
+     "name": "Ym_lk00_reserve_RP"
+    },
+    {
+     "move": 1633,
+     "name": "Ym_4RPRP"
+    },
+    {
+     "move": 1634,
+     "name": "Ym_4RPRP_mutou"
+    },
+    {
+     "move": 1664,
+     "name": "Co_syarp00"
+    },
+    {
+     "move": 1731,
+     "name": "Ym_crst_LPRP"
+    },
+    {
+     "move": 1734,
+     "name": "Ym_crst_RP"
+    },
+    {
+     "move": 1740,
+     "name": "Ym_crst_LKRP"
+    },
+    {
+     "move": 1758,
+     "name": "Ym_ton_RP"
+    },
+    {
+     "move": 1786,
+     "name": "Ym_jira_RP"
+    },
+    {
+     "move": 1813,
+     "name": "Ym_jira_6RP"
+    },
+    {
+     "move": 1819,
+     "name": "Ym_crh_3LPRP_mutou"
+    },
+    {
+     "move": 1825,
+     "name": "Ym_3LPRP"
+    },
+    {
+     "move": 1840,
+     "name": "Ym_kiku2"
+    },
+    {
+     "move": 1842,
+     "name": "Ym_kiku3"
+    },
+    {
+     "move": 1843,
+     "name": "Ym_kiku4"
+    },
+    {
+     "move": 1844,
+     "name": "Ym_kiku5"
+    },
+    {
+     "move": 1845,
+     "name": "Ym_kiku6"
+    },
+    {
+     "move": 1891,
+     "name": "Ym_kin_RP"
+    },
+    {
+     "move": 1942,
+     "name": "Ym_1LPRP"
+    },
+    {
+     "move": 2050,
+     "name": "Ym_LP_reserve_RP"
+    },
+    {
+     "move": 2052,
+     "name": "SPYmA_Xlpru00"
+    },
+    {
+     "move": 2055,
+     "name": "SPYmA_rulu_Ra"
+    },
+    {
+     "move": 2069,
+     "name": "SPYmB_rkrp"
+    },
+    {
+     "move": 2070,
+     "name": "SPYmB_rprp"
+    },
+    {
+     "move": 2073,
+     "name": "SPYmC_rkrp"
+    },
+    {
+     "move": 2074,
+     "name": "SPYmC_rprpA"
+    },
+    {
+     "move": 2075,
+     "name": "SPYmC_rprpB"
+    }
+   ]
+  },
+  {
+   "wh_key": "d+1+4,B+1,1",
+   "wh_name": "Harakiri (1)",
+   "wh_input": "d+1+4,B+1,1",
+   "t7_id": "yoshimitsu_351",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "no_evidence",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "d+1+4,B+1,1,1",
+   "wh_name": "Harakiri (1)",
+   "wh_input": "d+1+4,B+1,1,1",
+   "t7_id": "yoshimitsu_352",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "no_evidence",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "d+1+4,B+1,1,1,1",
+   "wh_name": "Harakiri (1)",
+   "wh_input": "d+1+4,B+1,1,1,1",
+   "t7_id": "yoshimitsu_353",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "no_evidence",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "d+1+4,B+1,1,1,1,1",
+   "wh_name": "Manji Blood Dance",
+   "wh_input": "d+1+4,B+1,1,1,1,1",
+   "t7_id": "yoshimitsu_354",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "no_evidence",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "d+2,2,1",
+   "wh_name": "Heshikiribarai",
+   "wh_input": "d+2,2,1",
+   "t7_id": "yoshimitsu_77",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "ambiguous_pool",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "d+2,2,d+1",
+   "wh_name": "Heshikirinagi",
+   "wh_input": "d+2,2,d+1",
+   "t7_id": "yoshimitsu_80",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "ambiguous_pool",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "db+2,2",
+   "wh_name": "Move 2 (2)",
+   "wh_input": "db+2,2",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "no_evidence",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1840,
+   "t8_move_name": "Ym_kiku2",
+   "t8_anim_name": "gur_at_02",
+   "startup": 10,
+   "damage": 7,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   }
+  },
+  {
+   "wh_key": "db+2,2,2",
+   "wh_name": "Move 2 (2)",
+   "wh_input": "db+2,2,2",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "no_evidence",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1842,
+   "t8_move_name": "Ym_kiku3",
+   "t8_anim_name": "gur_at_02",
+   "startup": 10,
+   "damage": 6,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   }
+  },
+  {
+   "wh_key": "db+2,2,2,2",
+   "wh_name": "Move 2 (2)",
+   "wh_input": "db+2,2,2,2",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "no_evidence",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1843,
+   "t8_move_name": "Ym_kiku4",
+   "t8_anim_name": "gur_at_02",
+   "startup": 10,
+   "damage": 5,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   }
+  },
+  {
+   "wh_key": "db+2,2,2,2,2",
+   "wh_name": "Move 2 (2)",
+   "wh_input": "db+2,2,2,2,2",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "no_evidence",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1844,
+   "t8_move_name": "Ym_kiku5",
+   "t8_anim_name": "gur_at_02",
+   "startup": 10,
+   "damage": 4,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   }
+  },
+  {
+   "wh_key": "db+2,2,2,2,2,2",
+   "wh_name": "Stone Fists",
+   "wh_input": "db+2,2,2,2,2,2",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "notation_differs",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1845,
+   "t8_move_name": "Ym_kiku6",
+   "t8_anim_name": "gur_at_02",
+   "startup": 10,
+   "damage": 3,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   }
+  },
+  {
+   "wh_key": "db+3,3",
+   "wh_name": "Move 3 (3)",
+   "wh_input": "db+3,3",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "no_evidence",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1935,
+   "t8_move_name": "Ym_1LKLK",
+   "t8_anim_name": "cmlmb_at_1lklk",
+   "startup": 15,
+   "damage": 7,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1938,
+     "name": "Ym_1LKLKLKLKLK"
+    }
+   ]
+  },
+  {
+   "wh_key": "db+3,3,3",
+   "wh_name": "Move 3 (3)",
+   "wh_input": "db+3,3,3",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "no_evidence",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1936,
+   "t8_move_name": "Ym_1LKLKLK",
+   "t8_anim_name": "cmlmb_at_1lklk",
+   "startup": 15,
+   "damage": 7,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1939,
+     "name": "Ym_1LKLKLKLKLKLK"
+    }
+   ]
+  },
+  {
+   "wh_key": "db+3,3,3,3",
+   "wh_name": "Move 3 (3)",
+   "wh_input": "db+3,3,3,3",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "no_evidence",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1937,
+   "t8_move_name": "Ym_1LKLKLKLK",
+   "t8_anim_name": "cmlmb_at_1lklk",
+   "startup": 15,
+   "damage": 5,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   }
+  },
+  {
+   "wh_key": "db+3,3,3,3,3",
+   "wh_name": "Move 3 (3)",
+   "wh_input": "db+3,3,3,3,3",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "no_evidence",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1938,
+   "t8_move_name": "Ym_1LKLKLKLKLK",
+   "t8_anim_name": "cmlmb_at_1lklk",
+   "startup": 15,
+   "damage": 5,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   }
+  },
+  {
+   "wh_key": "db+3,3,3,3,3,3",
+   "wh_name": "Manji Spin Low Kicks",
+   "wh_input": "db+3,3,3,3,3,3",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "notation_differs",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1939,
+   "t8_move_name": "Ym_1LKLKLKLKLKLK",
+   "t8_anim_name": "Bcml_at_yo_kdwn",
+   "startup": 9,
+   "damage": 5,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   }
+  },
+  {
+   "wh_key": "df+1",
+   "wh_name": "Tsuka Atemi",
+   "wh_input": "df+1",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1823,
+   "t8_move_name": "Ym_3LP",
+   "t8_anim_name": "cmlmb_at_3lp",
+   "startup": 13,
+   "damage": 14,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1662,
+     "name": "Co_syalp00"
+    },
+    {
+     "move": 1816,
+     "name": "Ym_crh_3LP"
+    },
+    {
+     "move": 1818,
+     "name": "Ym_crh_3LP_mutou"
+    }
+   ]
+  },
+  {
+   "wh_key": "df+4",
+   "wh_name": "Side Kick",
+   "wh_input": "df+4",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1721,
+   "t8_move_name": "Ym_3RK",
+   "t8_anim_name": "cmlmb_at_3rk",
+   "startup": 12,
+   "damage": 15,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1677,
+     "name": "Ym_crh_3RK"
+    }
+   ]
+  },
+  {
+   "wh_key": "f+2,db+2",
+   "wh_name": "Stone Fist",
+   "wh_input": "f+2,db+2",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "ambiguous_pool",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "FC.DF+1",
+   "wh_name": "Sword Sweep",
+   "wh_input": "FC.DF+1",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "no_evidence",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "f,F+1+4",
+   "wh_name": "Suicide",
+   "wh_input": "f,F+1+4",
+   "t7_id": "yoshimitsu_335",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "mvl_matched_graph_gap",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "f,F+1+4,F",
+   "wh_name": "Double Suicide",
+   "wh_input": "f,F+1+4,F",
+   "t7_id": "yoshimitsu_336",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "mvl_matched_graph_gap",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "f,F+1+4,n",
+   "wh_name": "Confusion",
+   "wh_input": "f,F+1+4,n",
+   "t7_id": "yoshimitsu_156",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "mvl_matched_graph_gap",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "f,F+2",
+   "wh_name": "Sword Smash",
+   "wh_input": "f,F+2",
+   "t7_id": "yoshimitsu_48",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "ambiguous_pool",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "f,F+3+4",
+   "wh_name": "Reverse Cartwheel",
+   "wh_input": "f,F+3+4",
+   "t7_id": "yoshimitsu_51",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "ambiguous_pool",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "f,F+3+4,1+2",
+   "wh_name": "Reverse Cartwheel (1+2)",
+   "wh_input": "f,F+3+4,1+2",
+   "t7_id": "yoshimitsu_52",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "graph_only_held",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "f,F+3+4,1+2,3+4",
+   "wh_name": "Solar Kick Shark Attack",
+   "wh_input": "f,F+3+4,1+2,3+4",
+   "t7_id": "yoshimitsu_54",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "ambiguous_pool",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "f,f,F+3",
+   "wh_name": "Manji Kick",
+   "wh_input": "f,f,F+3",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "graph_only_held",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "FLE.f,f",
+   "wh_name": "Running Flea",
+   "wh_input": "FLE.f,f",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "mvl_matched_graph_gap",
+   "evidence": [
+    "export_cancel_graph_chain",
+    "graph_chain_motion_terminal"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 83,
+   "t8_move_name": "sRUN__00F",
+   "t8_anim_name": "comss_co_run_00",
+   "startup": null,
+   "damage": 0,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 140,
+     "name": "Co_AOzen"
+    },
+    {
+     "move": 143,
+     "name": "Co_UTokiF"
+    },
+    {
+     "move": 181,
+     "name": "Co_AOkoutk7"
+    },
+    {
+     "move": 185,
+     "name": "Co_UTkouTK7"
+    },
+    {
+     "move": 807,
+     "name": "Co_Dummy_00"
+    },
+    {
+     "move": 808,
+     "name": "Co_Dummy_02"
+    },
+    {
+     "move": 809,
+     "name": "Co_Dummy_03"
+    },
+    {
+     "move": 810,
+     "name": "Co_Dummy_05"
+    },
+    {
+     "move": 811,
+     "name": "Co_Dummy_06"
+    },
+    {
+     "move": 812,
+     "name": "Co_Dummy_07"
+    },
+    {
+     "move": 813,
+     "name": "Co_Dummy_08"
+    },
+    {
+     "move": 814,
+     "name": "Co_Dummy_09"
+    },
+    {
+     "move": 815,
+     "name": "Co_Dummy_10"
+    },
+    {
+     "move": 816,
+     "name": "Co_Dummy_11"
+    },
+    {
+     "move": 817,
+     "name": "Co_Dummy_12"
+    },
+    {
+     "move": 818,
+     "name": "Co_Dummy_13"
+    },
+    {
+     "move": 819,
+     "name": "Co_Dummy_14"
+    },
+    {
+     "move": 820,
+     "name": "Co_Dummy_15"
+    },
+    {
+     "move": 821,
+     "name": "Co_Dummy_16"
+    },
+    {
+     "move": 822,
+     "name": "Co_Dummy_17"
+    },
+    {
+     "move": 823,
+     "name": "Co_Dummy_18"
+    },
+    {
+     "move": 824,
+     "name": "Co_Dummy_19"
+    },
+    {
+     "move": 825,
+     "name": "Co_Dummy_20"
+    },
+    {
+     "move": 826,
+     "name": "Co_Dummy_21"
+    },
+    {
+     "move": 827,
+     "name": "Co_Dummy_22"
+    },
+    {
+     "move": 828,
+     "name": "Co_Dummy_23"
+    },
+    {
+     "move": 829,
+     "name": "Co_Dummy_24"
+    },
+    {
+     "move": 830,
+     "name": "Co_Dummy_27"
+    },
+    {
+     "move": 831,
+     "name": "Co_Dummy_28"
+    },
+    {
+     "move": 832,
+     "name": "Co_Dummy_29"
+    },
+    {
+     "move": 833,
+     "name": "Co_Dummy_30"
+    },
+    {
+     "move": 834,
+     "name": "Co_Dummy_31"
+    },
+    {
+     "move": 835,
+     "name": "Co_Dummy_32"
+    },
+    {
+     "move": 836,
+     "name": "Co_Dummy_33"
+    },
+    {
+     "move": 837,
+     "name": "Co_Dummy_34"
+    },
+    {
+     "move": 838,
+     "name": "Co_Dummy_35"
+    },
+    {
+     "move": 839,
+     "name": "Co_Dummy_36"
+    },
+    {
+     "move": 840,
+     "name": "Co_Dummy_37"
+    },
+    {
+     "move": 841,
+     "name": "Co_Dummy_47"
+    },
+    {
+     "move": 842,
+     "name": "Co_Dummy_48"
+    },
+    {
+     "move": 843,
+     "name": "Co_Dummy_49"
+    },
+    {
+     "move": 844,
+     "name": "Co_Dummy_50"
+    },
+    {
+     "move": 845,
+     "name": "Co_Dummy_51"
+    },
+    {
+     "move": 846,
+     "name": "Co_Dummy_52"
+    },
+    {
+     "move": 847,
+     "name": "Co_Dummy_53"
+    },
+    {
+     "move": 848,
+     "name": "Co_Dummy_54"
+    },
+    {
+     "move": 849,
+     "name": "Co_Dummy_55"
+    },
+    {
+     "move": 850,
+     "name": "Co_Dummy_56"
+    },
+    {
+     "move": 851,
+     "name": "Co_Dummy_63"
+    },
+    {
+     "move": 852,
+     "name": "Co_Dummy_64"
+    },
+    {
+     "move": 853,
+     "name": "Co_Dummy_65"
+    },
+    {
+     "move": 854,
+     "name": "Co_Dummy_66"
+    },
+    {
+     "move": 855,
+     "name": "Co_Dummy_67"
+    },
+    {
+     "move": 856,
+     "name": "Co_Dummy_69"
+    },
+    {
+     "move": 857,
+     "name": "Co_Dummy_70"
+    },
+    {
+     "move": 858,
+     "name": "Co_Dummy_71"
+    },
+    {
+     "move": 859,
+     "name": "Co_Dummy_72"
+    },
+    {
+     "move": 860,
+     "name": "Co_Dummy_73"
+    },
+    {
+     "move": 861,
+     "name": "Co_Dummy_74"
+    },
+    {
+     "move": 862,
+     "name": "Co_Dummy_75"
+    },
+    {
+     "move": 863,
+     "name": "Co_Dummy_76"
+    },
+    {
+     "move": 864,
+     "name": "Co_Dummy_77"
+    },
+    {
+     "move": 865,
+     "name": "Co_Dummy_78"
+    },
+    {
+     "move": 866,
+     "name": "Co_Dummy_79"
+    },
+    {
+     "move": 867,
+     "name": "Co_Dummy_80"
+    },
+    {
+     "move": 868,
+     "name": "Co_Dummy_81"
+    },
+    {
+     "move": 869,
+     "name": "Co_Dummy_82"
+    },
+    {
+     "move": 870,
+     "name": "Co_Dummy_83"
+    },
+    {
+     "move": 871,
+     "name": "Co_Dummy_84"
+    },
+    {
+     "move": 872,
+     "name": "Co_Dummy_85"
+    },
+    {
+     "move": 873,
+     "name": "Co_Dummy_86"
+    },
+    {
+     "move": 874,
+     "name": "Co_Dummy_87"
+    },
+    {
+     "move": 875,
+     "name": "Co_Dummy_89"
+    },
+    {
+     "move": 876,
+     "name": "Co_Dummy_90"
+    },
+    {
+     "move": 877,
+     "name": "Co_Dummy_94"
+    },
+    {
+     "move": 878,
+     "name": "Co_Dummy_95"
+    },
+    {
+     "move": 879,
+     "name": "Co_Dummy_96"
+    },
+    {
+     "move": 880,
+     "name": "Co_Dummy_101"
+    },
+    {
+     "move": 881,
+     "name": "Co_Dummy_102"
+    },
+    {
+     "move": 882,
+     "name": "Co_Dummy_103"
+    },
+    {
+     "move": 883,
+     "name": "Co_Dummy_104"
+    },
+    {
+     "move": 884,
+     "name": "Co_Dummy_105"
+    },
+    {
+     "move": 885,
+     "name": "Co_Dummy_106"
+    },
+    {
+     "move": 886,
+     "name": "Co_Dummy_107"
+    },
+    {
+     "move": 887,
+     "name": "Co_Dummy_108"
+    },
+    {
+     "move": 888,
+     "name": "Co_Dummy_109"
+    },
+    {
+     "move": 889,
+     "name": "Co_Dummy_110"
+    },
+    {
+     "move": 890,
+     "name": "Co_Dummy_111"
+    },
+    {
+     "move": 891,
+     "name": "Co_Dummy_112"
+    },
+    {
+     "move": 892,
+     "name": "Co_Dummy_113"
+    },
+    {
+     "move": 893,
+     "name": "Co_Dummy_114"
+    },
+    {
+     "move": 894,
+     "name": "Co_Dummy_115"
+    },
+    {
+     "move": 895,
+     "name": "Co_Dummy_116"
+    },
+    {
+     "move": 896,
+     "name": "Co_Dummy_117"
+    },
+    {
+     "move": 897,
+     "name": "Co_Dummy_118"
+    },
+    {
+     "move": 898,
+     "name": "Co_Dummy_119"
+    },
+    {
+     "move": 899,
+     "name": "Co_Dummy_120"
+    },
+    {
+     "move": 900,
+     "name": "Co_Dummy_121"
+    },
+    {
+     "move": 901,
+     "name": "Co_Dummy_122"
+    },
+    {
+     "move": 902,
+     "name": "Co_Dummy_123"
+    },
+    {
+     "move": 903,
+     "name": "Co_Dummy_124"
+    },
+    {
+     "move": 904,
+     "name": "Co_Dummy_125"
+    },
+    {
+     "move": 905,
+     "name": "Co_Dummy_126"
+    },
+    {
+     "move": 906,
+     "name": "Co_Dummy_127"
+    },
+    {
+     "move": 907,
+     "name": "Co_Dummy_128"
+    },
+    {
+     "move": 908,
+     "name": "Co_Dummy_129"
+    },
+    {
+     "move": 909,
+     "name": "Co_Dummy_130"
+    },
+    {
+     "move": 910,
+     "name": "Co_Dummy_131"
+    },
+    {
+     "move": 911,
+     "name": "Co_Dummy_132"
+    },
+    {
+     "move": 912,
+     "name": "Co_Dummy_133"
+    },
+    {
+     "move": 913,
+     "name": "Co_Dummy_134"
+    },
+    {
+     "move": 914,
+     "name": "Co_Dummy_135"
+    },
+    {
+     "move": 915,
+     "name": "Co_Dummy_136"
+    },
+    {
+     "move": 916,
+     "name": "Co_Dummy_137"
+    },
+    {
+     "move": 917,
+     "name": "Co_Dummy_138"
+    },
+    {
+     "move": 918,
+     "name": "Co_Dummy_139"
+    },
+    {
+     "move": 919,
+     "name": "Co_Dummy_140"
+    },
+    {
+     "move": 920,
+     "name": "Co_Dummy_141"
+    },
+    {
+     "move": 921,
+     "name": "Co_Dummy_142"
+    },
+    {
+     "move": 922,
+     "name": "Co_Dummy_143"
+    },
+    {
+     "move": 923,
+     "name": "Co_Dummy_144"
+    },
+    {
+     "move": 924,
+     "name": "Co_Dummy_145"
+    },
+    {
+     "move": 925,
+     "name": "Co_Dummy_146"
+    },
+    {
+     "move": 926,
+     "name": "Co_Dummy_147"
+    },
+    {
+     "move": 927,
+     "name": "Co_Dummy_148"
+    },
+    {
+     "move": 928,
+     "name": "Co_Dummy_149"
+    },
+    {
+     "move": 929,
+     "name": "Co_Dummy_150"
+    },
+    {
+     "move": 930,
+     "name": "Co_Dummy_151"
+    },
+    {
+     "move": 931,
+     "name": "Co_Dummy_152"
+    },
+    {
+     "move": 932,
+     "name": "Co_Dummy_153"
+    },
+    {
+     "move": 933,
+     "name": "Co_Dummy_154"
+    },
+    {
+     "move": 934,
+     "name": "Co_Dummy_155"
+    },
+    {
+     "move": 935,
+     "name": "Co_Dummy_156"
+    },
+    {
+     "move": 936,
+     "name": "Co_Dummy_157"
+    },
+    {
+     "move": 937,
+     "name": "Co_Dummy_158"
+    },
+    {
+     "move": 938,
+     "name": "Co_Dummy_159"
+    },
+    {
+     "move": 939,
+     "name": "Co_Dummy_160"
+    },
+    {
+     "move": 940,
+     "name": "Co_Dummy_161"
+    },
+    {
+     "move": 941,
+     "name": "Co_Dummy_162"
+    },
+    {
+     "move": 942,
+     "name": "Co_Dummy_163"
+    },
+    {
+     "move": 943,
+     "name": "Co_Dummy_164"
+    },
+    {
+     "move": 944,
+     "name": "Co_Dummy_165"
+    },
+    {
+     "move": 945,
+     "name": "Co_Dummy_166"
+    },
+    {
+     "move": 946,
+     "name": "Co_Dummy_167"
+    },
+    {
+     "move": 947,
+     "name": "Co_Dummy_168"
+    },
+    {
+     "move": 948,
+     "name": "Co_Dummy_169"
+    },
+    {
+     "move": 949,
+     "name": "Co_Dummy_170"
+    },
+    {
+     "move": 950,
+     "name": "Co_Dummy_171"
+    },
+    {
+     "move": 951,
+     "name": "Co_Dummy_172"
+    },
+    {
+     "move": 952,
+     "name": "Co_Dummy_173"
+    },
+    {
+     "move": 953,
+     "name": "Co_Dummy_174"
+    },
+    {
+     "move": 954,
+     "name": "Co_Dummy_175"
+    },
+    {
+     "move": 955,
+     "name": "Co_Dummy_176"
+    },
+    {
+     "move": 956,
+     "name": "Co_Dummy_177"
+    },
+    {
+     "move": 957,
+     "name": "Co_Dummy_178"
+    },
+    {
+     "move": 958,
+     "name": "Co_Dummy_179"
+    },
+    {
+     "move": 959,
+     "name": "Co_Dummy_180"
+    },
+    {
+     "move": 960,
+     "name": "Co_Dummy_181"
+    },
+    {
+     "move": 961,
+     "name": "Co_Dummy_182"
+    },
+    {
+     "move": 962,
+     "name": "Co_Dummy_183"
+    },
+    {
+     "move": 963,
+     "name": "Co_Dummy_184"
+    },
+    {
+     "move": 964,
+     "name": "Co_Dummy_185"
+    },
+    {
+     "move": 965,
+     "name": "Co_Dummy_186"
+    },
+    {
+     "move": 966,
+     "name": "Co_Dummy_187"
+    },
+    {
+     "move": 967,
+     "name": "Co_Dummy_188"
+    },
+    {
+     "move": 968,
+     "name": "Co_Dummy_189"
+    },
+    {
+     "move": 969,
+     "name": "Co_Dummy_190"
+    },
+    {
+     "move": 970,
+     "name": "Co_Dummy_191"
+    },
+    {
+     "move": 971,
+     "name": "Co_Dummy_192"
+    },
+    {
+     "move": 972,
+     "name": "Co_Dummy_193"
+    },
+    {
+     "move": 973,
+     "name": "Co_Dummy_194"
+    },
+    {
+     "move": 974,
+     "name": "Co_Dummy_195"
+    },
+    {
+     "move": 975,
+     "name": "Co_Dummy_196"
+    },
+    {
+     "move": 976,
+     "name": "Co_Dummy_197"
+    },
+    {
+     "move": 977,
+     "name": "Co_Dummy_198"
+    },
+    {
+     "move": 978,
+     "name": "Co_Dummy_199"
+    },
+    {
+     "move": 979,
+     "name": "Co_Dummy_200"
+    },
+    {
+     "move": 980,
+     "name": "Co_Dummy_201"
+    },
+    {
+     "move": 981,
+     "name": "Co_Dummy_202"
+    },
+    {
+     "move": 982,
+     "name": "Co_Dummy_203"
+    },
+    {
+     "move": 983,
+     "name": "Co_Dummy_204"
+    },
+    {
+     "move": 984,
+     "name": "Co_Dummy_205"
+    },
+    {
+     "move": 985,
+     "name": "Co_Dummy_206"
+    },
+    {
+     "move": 986,
+     "name": "Co_Dummy_207"
+    },
+    {
+     "move": 987,
+     "name": "Co_Dummy_208"
+    },
+    {
+     "move": 988,
+     "name": "Co_Dummy_209"
+    },
+    {
+     "move": 989,
+     "name": "Co_Dummy_210"
+    },
+    {
+     "move": 990,
+     "name": "Co_Dummy_211"
+    },
+    {
+     "move": 991,
+     "name": "Co_Dummy_212"
+    },
+    {
+     "move": 992,
+     "name": "Co_Dummy_213"
+    },
+    {
+     "move": 993,
+     "name": "Co_Dummy_214"
+    },
+    {
+     "move": 994,
+     "name": "Co_Dummy_215"
+    },
+    {
+     "move": 995,
+     "name": "Co_Dummy_216"
+    },
+    {
+     "move": 996,
+     "name": "Co_Dummy_217"
+    },
+    {
+     "move": 997,
+     "name": "Co_Dummy_218"
+    },
+    {
+     "move": 998,
+     "name": "Co_Dummy_219"
+    },
+    {
+     "move": 999,
+     "name": "Co_Dummy_220"
+    },
+    {
+     "move": 1000,
+     "name": "Co_Dummy_221"
+    },
+    {
+     "move": 1001,
+     "name": "Co_Dummy_222"
+    },
+    {
+     "move": 1002,
+     "name": "Co_Dummy_223"
+    },
+    {
+     "move": 1003,
+     "name": "Co_Dummy_224"
+    },
+    {
+     "move": 1004,
+     "name": "Co_Dummy_225"
+    },
+    {
+     "move": 1005,
+     "name": "Co_Dummy_226"
+    },
+    {
+     "move": 1006,
+     "name": "Co_Dummy_227"
+    },
+    {
+     "move": 1007,
+     "name": "Co_Dummy_228"
+    },
+    {
+     "move": 1008,
+     "name": "Co_Dummy_229"
+    },
+    {
+     "move": 1009,
+     "name": "Co_Dummy_230"
+    },
+    {
+     "move": 1010,
+     "name": "Co_Dummy_231"
+    },
+    {
+     "move": 1011,
+     "name": "Co_Dummy_232"
+    },
+    {
+     "move": 1012,
+     "name": "Co_Dummy_233"
+    },
+    {
+     "move": 1013,
+     "name": "Co_Dummy_234"
+    },
+    {
+     "move": 1014,
+     "name": "Co_Dummy_235"
+    },
+    {
+     "move": 1015,
+     "name": "Co_Dummy_236"
+    },
+    {
+     "move": 1016,
+     "name": "Co_Dummy_237"
+    },
+    {
+     "move": 1017,
+     "name": "Co_Dummy_238"
+    },
+    {
+     "move": 1018,
+     "name": "Co_Dummy_239"
+    },
+    {
+     "move": 1019,
+     "name": "Co_Dummy_240"
+    },
+    {
+     "move": 1020,
+     "name": "Co_Dummy_241"
+    },
+    {
+     "move": 1021,
+     "name": "Co_Dummy_242"
+    },
+    {
+     "move": 1022,
+     "name": "Co_Dummy_243"
+    },
+    {
+     "move": 1023,
+     "name": "Co_Dummy_244"
+    },
+    {
+     "move": 1024,
+     "name": "Co_Dummy_245"
+    },
+    {
+     "move": 1025,
+     "name": "Co_Dummy_246"
+    },
+    {
+     "move": 1026,
+     "name": "Co_Dummy_247"
+    },
+    {
+     "move": 1027,
+     "name": "Co_Dummy_248"
+    },
+    {
+     "move": 1028,
+     "name": "Co_Dummy_249"
+    },
+    {
+     "move": 1029,
+     "name": "Co_Dummy_250"
+    },
+    {
+     "move": 1030,
+     "name": "Co_Dummy_251"
+    },
+    {
+     "move": 1031,
+     "name": "Co_Dummy_252"
+    },
+    {
+     "move": 1032,
+     "name": "Co_Dummy_253"
+    },
+    {
+     "move": 1033,
+     "name": "Co_Dummy_254"
+    },
+    {
+     "move": 1034,
+     "name": "Co_Dummy_255"
+    },
+    {
+     "move": 1035,
+     "name": "Co_Dummy_256"
+    },
+    {
+     "move": 1036,
+     "name": "Co_Dummy_257"
+    },
+    {
+     "move": 1037,
+     "name": "Co_Dummy_258"
+    },
+    {
+     "move": 1038,
+     "name": "Co_Dummy_259"
+    },
+    {
+     "move": 1039,
+     "name": "Co_Dummy_260"
+    },
+    {
+     "move": 1040,
+     "name": "Co_Dummy_261"
+    },
+    {
+     "move": 1041,
+     "name": "Co_Dummy_262"
+    },
+    {
+     "move": 1042,
+     "name": "Co_Dummy_263"
+    },
+    {
+     "move": 1043,
+     "name": "Co_Dummy_264"
+    },
+    {
+     "move": 1044,
+     "name": "Co_Dummy_265"
+    },
+    {
+     "move": 1045,
+     "name": "Co_Dummy_266"
+    },
+    {
+     "move": 1046,
+     "name": "Co_Dummy_267"
+    },
+    {
+     "move": 1047,
+     "name": "Co_Dummy_268"
+    },
+    {
+     "move": 1048,
+     "name": "Co_Dummy_269"
+    },
+    {
+     "move": 1049,
+     "name": "Co_Dummy_270"
+    },
+    {
+     "move": 1050,
+     "name": "Co_Dummy_271"
+    },
+    {
+     "move": 1051,
+     "name": "Co_Dummy_272"
+    },
+    {
+     "move": 1052,
+     "name": "Co_Dummy_273"
+    },
+    {
+     "move": 1053,
+     "name": "Co_Dummy_274"
+    },
+    {
+     "move": 1054,
+     "name": "Co_Dummy_275"
+    },
+    {
+     "move": 1055,
+     "name": "Co_Dummy_276"
+    },
+    {
+     "move": 1056,
+     "name": "Co_Dummy_277"
+    },
+    {
+     "move": 1057,
+     "name": "Co_Dummy_278"
+    },
+    {
+     "move": 1058,
+     "name": "Co_Dummy_279"
+    },
+    {
+     "move": 1059,
+     "name": "Co_Dummy_280"
+    },
+    {
+     "move": 1060,
+     "name": "Co_Dummy_281"
+    },
+    {
+     "move": 1061,
+     "name": "Co_Dummy_282"
+    },
+    {
+     "move": 1062,
+     "name": "Co_Dummy_283"
+    },
+    {
+     "move": 1063,
+     "name": "Co_Dummy_284"
+    },
+    {
+     "move": 1064,
+     "name": "Co_Dummy_285"
+    },
+    {
+     "move": 1065,
+     "name": "Co_Dummy_286"
+    },
+    {
+     "move": 1066,
+     "name": "Co_Dummy_287"
+    },
+    {
+     "move": 1067,
+     "name": "Co_Dummy_288"
+    },
+    {
+     "move": 1068,
+     "name": "Co_Dummy_289"
+    },
+    {
+     "move": 1069,
+     "name": "Co_Dummy_290"
+    },
+    {
+     "move": 1070,
+     "name": "Co_Dummy_291"
+    },
+    {
+     "move": 1071,
+     "name": "Co_Dummy_292"
+    },
+    {
+     "move": 1072,
+     "name": "Co_Dummy_293"
+    },
+    {
+     "move": 1073,
+     "name": "Co_Dummy_294"
+    },
+    {
+     "move": 1074,
+     "name": "Co_Dummy_295"
+    },
+    {
+     "move": 1075,
+     "name": "Co_Dummy_296"
+    },
+    {
+     "move": 1076,
+     "name": "Co_Dummy_297"
+    },
+    {
+     "move": 1077,
+     "name": "Co_Dummy_298"
+    },
+    {
+     "move": 1078,
+     "name": "Co_Dummy_299"
+    },
+    {
+     "move": 1079,
+     "name": "Co_Dummy_300"
+    },
+    {
+     "move": 1080,
+     "name": "Co_Dummy_301"
+    },
+    {
+     "move": 1081,
+     "name": "Co_Dummy_302"
+    },
+    {
+     "move": 1082,
+     "name": "Co_Dummy_303"
+    },
+    {
+     "move": 1083,
+     "name": "Co_Dummy_304"
+    },
+    {
+     "move": 1084,
+     "name": "Co_Dummy_305"
+    },
+    {
+     "move": 1085,
+     "name": "Co_Dummy_306"
+    },
+    {
+     "move": 1086,
+     "name": "Co_Dummy_307"
+    },
+    {
+     "move": 1087,
+     "name": "Co_Dummy_308"
+    },
+    {
+     "move": 1088,
+     "name": "Co_Dummy_309"
+    },
+    {
+     "move": 1089,
+     "name": "Co_Dummy_310"
+    },
+    {
+     "move": 1090,
+     "name": "Co_Dummy_311"
+    },
+    {
+     "move": 1091,
+     "name": "Co_Dummy_312"
+    },
+    {
+     "move": 1092,
+     "name": "Co_Dummy_313"
+    },
+    {
+     "move": 1093,
+     "name": "Co_Dummy_314"
+    },
+    {
+     "move": 1094,
+     "name": "Co_Dummy_315"
+    },
+    {
+     "move": 1095,
+     "name": "Co_Dummy_316"
+    },
+    {
+     "move": 1096,
+     "name": "Co_Dummy_317"
+    },
+    {
+     "move": 1097,
+     "name": "Co_Dummy_318"
+    },
+    {
+     "move": 1098,
+     "name": "Co_Dummy_319"
+    },
+    {
+     "move": 1099,
+     "name": "Co_Dummy_320"
+    },
+    {
+     "move": 1100,
+     "name": "Co_Dummy_321"
+    },
+    {
+     "move": 1101,
+     "name": "Co_Dummy_322"
+    },
+    {
+     "move": 1102,
+     "name": "Co_Dummy_323"
+    },
+    {
+     "move": 1103,
+     "name": "Co_Dummy_324"
+    },
+    {
+     "move": 1104,
+     "name": "Co_Dummy_325"
+    },
+    {
+     "move": 1105,
+     "name": "Co_Dummy_326"
+    },
+    {
+     "move": 1106,
+     "name": "Co_Dummy_327"
+    },
+    {
+     "move": 1107,
+     "name": "Co_Dummy_328"
+    },
+    {
+     "move": 1108,
+     "name": "Co_Dummy_329"
+    },
+    {
+     "move": 1109,
+     "name": "Co_Dummy_330"
+    },
+    {
+     "move": 1110,
+     "name": "Co_Dummy_331"
+    },
+    {
+     "move": 1111,
+     "name": "Co_Dummy_332"
+    },
+    {
+     "move": 1112,
+     "name": "Co_Dummy_333"
+    },
+    {
+     "move": 1113,
+     "name": "Co_Dummy_334"
+    },
+    {
+     "move": 1114,
+     "name": "Co_Dummy_335"
+    },
+    {
+     "move": 1115,
+     "name": "Co_Dummy_336"
+    },
+    {
+     "move": 1116,
+     "name": "Co_Dummy_337"
+    },
+    {
+     "move": 1117,
+     "name": "Co_Dummy_338"
+    },
+    {
+     "move": 1118,
+     "name": "Co_Dummy_339"
+    },
+    {
+     "move": 1119,
+     "name": "Co_Dummy_340"
+    },
+    {
+     "move": 1120,
+     "name": "Co_Dummy_341"
+    },
+    {
+     "move": 1121,
+     "name": "Co_Dummy_342"
+    },
+    {
+     "move": 1122,
+     "name": "Co_Dummy_343"
+    },
+    {
+     "move": 1123,
+     "name": "Co_Dummy_344"
+    },
+    {
+     "move": 1124,
+     "name": "Co_Dummy_345"
+    },
+    {
+     "move": 1125,
+     "name": "Co_Dummy_346"
+    },
+    {
+     "move": 1126,
+     "name": "Co_Dummy_347"
+    },
+    {
+     "move": 1127,
+     "name": "Co_Dummy_348"
+    },
+    {
+     "move": 1128,
+     "name": "Co_Dummy_349"
+    },
+    {
+     "move": 1129,
+     "name": "Co_Dummy_350"
+    },
+    {
+     "move": 1130,
+     "name": "Co_Dummy_351"
+    },
+    {
+     "move": 1131,
+     "name": "Co_Dummy_352"
+    },
+    {
+     "move": 1132,
+     "name": "Co_Dummy_353"
+    },
+    {
+     "move": 1133,
+     "name": "Co_Dummy_354"
+    },
+    {
+     "move": 1134,
+     "name": "Co_Dummy_355"
+    },
+    {
+     "move": 1135,
+     "name": "Co_Dummy_356"
+    },
+    {
+     "move": 1136,
+     "name": "Co_Dummy_357"
+    },
+    {
+     "move": 1137,
+     "name": "Co_Dummy_358"
+    },
+    {
+     "move": 1138,
+     "name": "Co_Dummy_359"
+    },
+    {
+     "move": 1139,
+     "name": "Co_Dummy_360"
+    },
+    {
+     "move": 1140,
+     "name": "Co_Dummy_361"
+    },
+    {
+     "move": 1141,
+     "name": "Co_Dummy_362"
+    },
+    {
+     "move": 1142,
+     "name": "Co_Dummy_363"
+    },
+    {
+     "move": 1143,
+     "name": "Co_Dummy_364"
+    },
+    {
+     "move": 1144,
+     "name": "Co_Dummy_365"
+    },
+    {
+     "move": 1145,
+     "name": "Co_Dummy_366"
+    },
+    {
+     "move": 1146,
+     "name": "Co_Dummy_367"
+    },
+    {
+     "move": 1147,
+     "name": "Co_Dummy_368"
+    },
+    {
+     "move": 1148,
+     "name": "Co_Dummy_369"
+    },
+    {
+     "move": 1149,
+     "name": "Co_Dummy_370"
+    },
+    {
+     "move": 1150,
+     "name": "Co_Dummy_371"
+    },
+    {
+     "move": 1151,
+     "name": "Co_Dummy_372"
+    },
+    {
+     "move": 1152,
+     "name": "Co_Dummy_373"
+    },
+    {
+     "move": 1153,
+     "name": "Co_Dummy_374"
+    },
+    {
+     "move": 1154,
+     "name": "Co_Dummy_375"
+    },
+    {
+     "move": 1155,
+     "name": "Co_Dummy_376"
+    },
+    {
+     "move": 1156,
+     "name": "Co_Dummy_377"
+    },
+    {
+     "move": 1157,
+     "name": "Co_Dummy_378"
+    },
+    {
+     "move": 1158,
+     "name": "Co_Dummy_379"
+    },
+    {
+     "move": 1159,
+     "name": "Co_Dummy_380"
+    },
+    {
+     "move": 1160,
+     "name": "Co_Dummy_381"
+    },
+    {
+     "move": 1161,
+     "name": "Co_Dummy_382"
+    },
+    {
+     "move": 1162,
+     "name": "Co_Dummy_383"
+    },
+    {
+     "move": 1163,
+     "name": "Co_Dummy_384"
+    },
+    {
+     "move": 1164,
+     "name": "Co_Dummy_385"
+    },
+    {
+     "move": 1165,
+     "name": "Co_Dummy_386"
+    },
+    {
+     "move": 1166,
+     "name": "Co_Dummy_387"
+    },
+    {
+     "move": 1167,
+     "name": "Co_Dummy_388"
+    },
+    {
+     "move": 1168,
+     "name": "Co_Dummy_389"
+    },
+    {
+     "move": 1169,
+     "name": "Co_Dummy_390"
+    },
+    {
+     "move": 1170,
+     "name": "Co_Dummy_391"
+    },
+    {
+     "move": 1171,
+     "name": "Co_Dummy_392"
+    },
+    {
+     "move": 1172,
+     "name": "Co_Dummy_393"
+    },
+    {
+     "move": 1173,
+     "name": "Co_Dummy_394"
+    },
+    {
+     "move": 1174,
+     "name": "Co_Dummy_395"
+    },
+    {
+     "move": 1175,
+     "name": "Co_Dummy_396"
+    },
+    {
+     "move": 1176,
+     "name": "Co_Dummy_397"
+    },
+    {
+     "move": 1177,
+     "name": "Co_Dummy_398"
+    },
+    {
+     "move": 1178,
+     "name": "Co_Dummy_399"
+    },
+    {
+     "move": 1179,
+     "name": "Co_Dummy_400"
+    },
+    {
+     "move": 1180,
+     "name": "Co_Dummy_401"
+    },
+    {
+     "move": 1181,
+     "name": "Co_Dummy_402"
+    },
+    {
+     "move": 1182,
+     "name": "Co_Dummy_403"
+    },
+    {
+     "move": 1183,
+     "name": "Co_Dummy_404"
+    },
+    {
+     "move": 1184,
+     "name": "Co_Dummy_405"
+    },
+    {
+     "move": 1185,
+     "name": "Co_Dummy_406"
+    },
+    {
+     "move": 1186,
+     "name": "Co_Dummy_407"
+    },
+    {
+     "move": 1187,
+     "name": "Co_Dummy_408"
+    },
+    {
+     "move": 1188,
+     "name": "Co_Dummy_409"
+    },
+    {
+     "move": 1189,
+     "name": "Co_Dummy_410"
+    },
+    {
+     "move": 1190,
+     "name": "Co_Dummy_411"
+    },
+    {
+     "move": 1191,
+     "name": "Co_Dummy_412"
+    },
+    {
+     "move": 1192,
+     "name": "Co_Dummy_413"
+    },
+    {
+     "move": 1193,
+     "name": "Co_Dummy_414"
+    },
+    {
+     "move": 1194,
+     "name": "Co_Dummy_415"
+    },
+    {
+     "move": 1195,
+     "name": "Co_Dummy_416"
+    },
+    {
+     "move": 1196,
+     "name": "Co_Dummy_417"
+    },
+    {
+     "move": 1197,
+     "name": "Co_Dummy_418"
+    },
+    {
+     "move": 1198,
+     "name": "Co_Dummy_419"
+    },
+    {
+     "move": 1199,
+     "name": "Co_Dummy_420"
+    },
+    {
+     "move": 1200,
+     "name": "Co_Dummy_421"
+    },
+    {
+     "move": 1201,
+     "name": "Co_Dummy_422"
+    },
+    {
+     "move": 1202,
+     "name": "Co_Dummy_423"
+    },
+    {
+     "move": 1203,
+     "name": "Co_Dummy_424"
+    },
+    {
+     "move": 1204,
+     "name": "Co_Dummy_425"
+    },
+    {
+     "move": 1205,
+     "name": "Co_Dummy_426"
+    },
+    {
+     "move": 1206,
+     "name": "Co_Dummy_427"
+    },
+    {
+     "move": 1207,
+     "name": "Co_Dummy_428"
+    },
+    {
+     "move": 1208,
+     "name": "Co_Dummy_429"
+    },
+    {
+     "move": 1209,
+     "name": "Co_Dummy_430"
+    },
+    {
+     "move": 1210,
+     "name": "Co_Dummy_431"
+    },
+    {
+     "move": 1211,
+     "name": "Co_Dummy_432"
+    },
+    {
+     "move": 1212,
+     "name": "Co_Dummy_433"
+    },
+    {
+     "move": 1213,
+     "name": "Co_Dummy_434"
+    },
+    {
+     "move": 1214,
+     "name": "Co_Dummy_435"
+    },
+    {
+     "move": 1215,
+     "name": "Co_Dummy_436"
+    },
+    {
+     "move": 1216,
+     "name": "Co_Dummy_437"
+    },
+    {
+     "move": 1217,
+     "name": "Co_Dummy_438"
+    },
+    {
+     "move": 1218,
+     "name": "Co_Dummy_439"
+    },
+    {
+     "move": 1219,
+     "name": "Co_Dummy_440"
+    },
+    {
+     "move": 1220,
+     "name": "Co_Dummy_441"
+    },
+    {
+     "move": 1221,
+     "name": "Co_Dummy_442"
+    },
+    {
+     "move": 1222,
+     "name": "Co_Dummy_443"
+    },
+    {
+     "move": 1223,
+     "name": "Co_Dummy_444"
+    },
+    {
+     "move": 1224,
+     "name": "Co_Dummy_445"
+    },
+    {
+     "move": 1225,
+     "name": "Co_Dummy_446"
+    },
+    {
+     "move": 1226,
+     "name": "Co_Dummy_447"
+    },
+    {
+     "move": 1227,
+     "name": "Co_Dummy_448"
+    },
+    {
+     "move": 1228,
+     "name": "Co_Dummy_449"
+    },
+    {
+     "move": 1229,
+     "name": "Co_Dummy_450"
+    },
+    {
+     "move": 1230,
+     "name": "Co_Dummy_451"
+    },
+    {
+     "move": 1231,
+     "name": "Co_Dummy_452"
+    },
+    {
+     "move": 1232,
+     "name": "Co_Dummy_453"
+    },
+    {
+     "move": 1233,
+     "name": "Co_Dummy_454"
+    },
+    {
+     "move": 1234,
+     "name": "Co_Dummy_455"
+    },
+    {
+     "move": 1235,
+     "name": "Co_Dummy_456"
+    },
+    {
+     "move": 1236,
+     "name": "Co_Dummy_457"
+    },
+    {
+     "move": 1237,
+     "name": "Co_Dummy_458"
+    },
+    {
+     "move": 1238,
+     "name": "Co_Dummy_459"
+    },
+    {
+     "move": 1239,
+     "name": "Co_Dummy_460"
+    },
+    {
+     "move": 1240,
+     "name": "Co_Dummy_461"
+    },
+    {
+     "move": 1241,
+     "name": "Co_Dummy_462"
+    },
+    {
+     "move": 1242,
+     "name": "Co_Dummy_463"
+    },
+    {
+     "move": 1243,
+     "name": "Co_Dummy_464"
+    },
+    {
+     "move": 1244,
+     "name": "Co_Dummy_465"
+    },
+    {
+     "move": 1245,
+     "name": "Co_Dummy_466"
+    },
+    {
+     "move": 1246,
+     "name": "Co_Dummy_467"
+    },
+    {
+     "move": 1247,
+     "name": "Co_Dummy_468"
+    },
+    {
+     "move": 1248,
+     "name": "Co_Dummy_469"
+    },
+    {
+     "move": 1249,
+     "name": "Co_Dummy_470"
+    },
+    {
+     "move": 1250,
+     "name": "Co_Dummy_471"
+    },
+    {
+     "move": 1251,
+     "name": "Co_Dummy_472"
+    },
+    {
+     "move": 1252,
+     "name": "Co_Dummy_473"
+    },
+    {
+     "move": 1253,
+     "name": "Co_Dummy_474"
+    },
+    {
+     "move": 1254,
+     "name": "Co_Dummy_475"
+    },
+    {
+     "move": 1255,
+     "name": "Co_Dummy_476"
+    },
+    {
+     "move": 1256,
+     "name": "Co_Dummy_477"
+    },
+    {
+     "move": 1257,
+     "name": "Co_Dummy_478"
+    },
+    {
+     "move": 1258,
+     "name": "Co_Dummy_479"
+    },
+    {
+     "move": 1259,
+     "name": "Co_Dummy_480"
+    },
+    {
+     "move": 1260,
+     "name": "Co_Dummy_481"
+    },
+    {
+     "move": 1261,
+     "name": "Co_Dummy_482"
+    },
+    {
+     "move": 1262,
+     "name": "Co_Dummy_483"
+    },
+    {
+     "move": 1263,
+     "name": "Co_Dummy_484"
+    },
+    {
+     "move": 1264,
+     "name": "Co_Dummy_485"
+    },
+    {
+     "move": 1265,
+     "name": "Co_Dummy_486"
+    },
+    {
+     "move": 1266,
+     "name": "Co_Dummy_487"
+    },
+    {
+     "move": 1267,
+     "name": "Co_Dummy_488"
+    },
+    {
+     "move": 1268,
+     "name": "Co_Dummy_489"
+    },
+    {
+     "move": 1269,
+     "name": "Co_Dummy_490"
+    },
+    {
+     "move": 1270,
+     "name": "Co_Dummy_491"
+    },
+    {
+     "move": 1271,
+     "name": "Co_Dummy_492"
+    },
+    {
+     "move": 1272,
+     "name": "Co_Dummy_493"
+    },
+    {
+     "move": 1273,
+     "name": "Co_Dummy_494"
+    },
+    {
+     "move": 1274,
+     "name": "Co_Dummy_495"
+    },
+    {
+     "move": 1275,
+     "name": "Co_Dummy_496"
+    },
+    {
+     "move": 1276,
+     "name": "Co_Dummy_497"
+    },
+    {
+     "move": 1277,
+     "name": "Co_Dummy_498"
+    },
+    {
+     "move": 1278,
+     "name": "Co_Dummy_499"
+    },
+    {
+     "move": 1279,
+     "name": "Co_Dummy_500"
+    },
+    {
+     "move": 1280,
+     "name": "Co_Dummy_501"
+    },
+    {
+     "move": 1281,
+     "name": "Co_Dummy_502"
+    },
+    {
+     "move": 1282,
+     "name": "Co_Dummy_503"
+    },
+    {
+     "move": 1283,
+     "name": "Co_Dummy_504"
+    },
+    {
+     "move": 1284,
+     "name": "Co_Dummy_505"
+    },
+    {
+     "move": 1285,
+     "name": "Co_Dummy_506"
+    },
+    {
+     "move": 1286,
+     "name": "Co_Dummy_507"
+    },
+    {
+     "move": 1287,
+     "name": "Co_Dummy_508"
+    },
+    {
+     "move": 1288,
+     "name": "Co_Dummy_509"
+    },
+    {
+     "move": 1289,
+     "name": "Co_Dummy_510"
+    },
+    {
+     "move": 1290,
+     "name": "Co_Dummy_511"
+    },
+    {
+     "move": 1291,
+     "name": "Co_Dummy_512"
+    },
+    {
+     "move": 1292,
+     "name": "Co_Dummy_513"
+    },
+    {
+     "move": 1293,
+     "name": "Co_Dummy_514"
+    },
+    {
+     "move": 1294,
+     "name": "Co_Dummy_515"
+    },
+    {
+     "move": 1295,
+     "name": "Co_Dummy_516"
+    },
+    {
+     "move": 1296,
+     "name": "Co_Dummy_517"
+    },
+    {
+     "move": 1297,
+     "name": "Co_Dummy_518"
+    },
+    {
+     "move": 1298,
+     "name": "Co_Dummy_519"
+    },
+    {
+     "move": 1299,
+     "name": "Co_Dummy_520"
+    },
+    {
+     "move": 1300,
+     "name": "Co_Dummy_521"
+    },
+    {
+     "move": 1301,
+     "name": "Co_Dummy_522"
+    },
+    {
+     "move": 1302,
+     "name": "Co_Dummy_523"
+    },
+    {
+     "move": 1303,
+     "name": "Co_Dummy_524"
+    },
+    {
+     "move": 1304,
+     "name": "Co_Dummy_525"
+    },
+    {
+     "move": 1305,
+     "name": "Co_Dummy_526"
+    },
+    {
+     "move": 1306,
+     "name": "Co_Dummy_527"
+    },
+    {
+     "move": 1307,
+     "name": "Co_Dummy_528"
+    },
+    {
+     "move": 1308,
+     "name": "Co_Dummy_529"
+    },
+    {
+     "move": 1309,
+     "name": "Co_Dummy_530"
+    },
+    {
+     "move": 1310,
+     "name": "Co_Dummy_531"
+    },
+    {
+     "move": 1311,
+     "name": "Co_Dummy_532"
+    },
+    {
+     "move": 1312,
+     "name": "Co_Dummy_533"
+    },
+    {
+     "move": 1313,
+     "name": "Co_Dummy_534"
+    },
+    {
+     "move": 1314,
+     "name": "Co_Dummy_535"
+    },
+    {
+     "move": 1315,
+     "name": "Co_Dummy_536"
+    },
+    {
+     "move": 1316,
+     "name": "Co_Dummy_537"
+    },
+    {
+     "move": 1317,
+     "name": "Co_Dummy_538"
+    },
+    {
+     "move": 1318,
+     "name": "Co_Dummy_539"
+    },
+    {
+     "move": 1319,
+     "name": "Co_Dummy_540"
+    },
+    {
+     "move": 1320,
+     "name": "Co_Dummy_541"
+    },
+    {
+     "move": 1321,
+     "name": "Co_Dummy_542"
+    },
+    {
+     "move": 1322,
+     "name": "Co_Dummy_543"
+    },
+    {
+     "move": 1323,
+     "name": "Co_Dummy_544"
+    },
+    {
+     "move": 1324,
+     "name": "Co_Dummy_545"
+    },
+    {
+     "move": 1325,
+     "name": "Co_Dummy_546"
+    },
+    {
+     "move": 1326,
+     "name": "Co_Dummy_547"
+    },
+    {
+     "move": 1327,
+     "name": "Co_Dummy_548"
+    },
+    {
+     "move": 1328,
+     "name": "Co_Dummy_549"
+    },
+    {
+     "move": 1329,
+     "name": "Co_Dummy_550"
+    },
+    {
+     "move": 1330,
+     "name": "Co_Dummy_551"
+    },
+    {
+     "move": 1331,
+     "name": "Co_Dummy_552"
+    },
+    {
+     "move": 1332,
+     "name": "Co_Dummy_553"
+    },
+    {
+     "move": 1333,
+     "name": "Co_Dummy_554"
+    },
+    {
+     "move": 1334,
+     "name": "Co_Dummy_555"
+    },
+    {
+     "move": 1335,
+     "name": "Co_Dummy_556"
+    },
+    {
+     "move": 1336,
+     "name": "Co_Dummy_557"
+    },
+    {
+     "move": 1337,
+     "name": "Co_Dummy_558"
+    },
+    {
+     "move": 1338,
+     "name": "Co_Dummy_559"
+    },
+    {
+     "move": 1339,
+     "name": "Co_Dummy_560"
+    },
+    {
+     "move": 1340,
+     "name": "Co_Dummy_561"
+    },
+    {
+     "move": 1341,
+     "name": "Co_Dummy_562"
+    },
+    {
+     "move": 1342,
+     "name": "Co_Dummy_563"
+    },
+    {
+     "move": 1343,
+     "name": "Co_Dummy_564"
+    },
+    {
+     "move": 1344,
+     "name": "Co_Dummy_565"
+    },
+    {
+     "move": 1345,
+     "name": "Co_Dummy_566"
+    },
+    {
+     "move": 1346,
+     "name": "Co_Dummy_567"
+    },
+    {
+     "move": 1347,
+     "name": "Co_Dummy_568"
+    },
+    {
+     "move": 1348,
+     "name": "Co_Dummy_569"
+    },
+    {
+     "move": 1349,
+     "name": "Co_Dummy_570"
+    },
+    {
+     "move": 1350,
+     "name": "Co_Dummy_571"
+    },
+    {
+     "move": 1351,
+     "name": "Co_Dummy_572"
+    },
+    {
+     "move": 1352,
+     "name": "Co_Dummy_573"
+    },
+    {
+     "move": 1353,
+     "name": "Co_Dummy_574"
+    },
+    {
+     "move": 1354,
+     "name": "Co_Dummy_575"
+    },
+    {
+     "move": 1355,
+     "name": "Co_Dummy_576"
+    },
+    {
+     "move": 1356,
+     "name": "Co_Dummy_577"
+    },
+    {
+     "move": 1357,
+     "name": "Co_Dummy_578"
+    },
+    {
+     "move": 1358,
+     "name": "Co_Dummy_579"
+    },
+    {
+     "move": 1359,
+     "name": "Co_Dummy_580"
+    },
+    {
+     "move": 1360,
+     "name": "Co_Dummy_581"
+    },
+    {
+     "move": 1361,
+     "name": "Co_Dummy_582"
+    },
+    {
+     "move": 1362,
+     "name": "Co_Dummy_583"
+    },
+    {
+     "move": 1363,
+     "name": "Co_Dummy_584"
+    },
+    {
+     "move": 1364,
+     "name": "Co_Dummy_585"
+    },
+    {
+     "move": 1365,
+     "name": "Co_Dummy_586"
+    },
+    {
+     "move": 1366,
+     "name": "Co_Dummy_587"
+    },
+    {
+     "move": 1367,
+     "name": "Co_Dummy_588"
+    },
+    {
+     "move": 1368,
+     "name": "Co_Dummy_589"
+    },
+    {
+     "move": 1369,
+     "name": "Co_Dummy_590"
+    },
+    {
+     "move": 1370,
+     "name": "Co_Dummy_591"
+    },
+    {
+     "move": 1371,
+     "name": "Co_Dummy_592"
+    },
+    {
+     "move": 1372,
+     "name": "Co_Dummy_593"
+    },
+    {
+     "move": 1373,
+     "name": "Co_Dummy_594"
+    },
+    {
+     "move": 1374,
+     "name": "Co_Dummy_595"
+    },
+    {
+     "move": 1375,
+     "name": "Co_Dummy_596"
+    },
+    {
+     "move": 1376,
+     "name": "Co_Dummy_597"
+    },
+    {
+     "move": 1377,
+     "name": "Co_Dummy_598"
+    },
+    {
+     "move": 1378,
+     "name": "Co_Dummy_599"
+    },
+    {
+     "move": 1379,
+     "name": "Co_Dummy_600"
+    },
+    {
+     "move": 1380,
+     "name": "Co_Dummy_601"
+    },
+    {
+     "move": 1381,
+     "name": "Co_Dummy_602"
+    },
+    {
+     "move": 1382,
+     "name": "Co_Dummy_603"
+    },
+    {
+     "move": 1383,
+     "name": "Co_Dummy_604"
+    },
+    {
+     "move": 1384,
+     "name": "Co_Dummy_605"
+    },
+    {
+     "move": 1385,
+     "name": "Co_Dummy_606"
+    },
+    {
+     "move": 1386,
+     "name": "Co_Dummy_607"
+    },
+    {
+     "move": 1387,
+     "name": "Co_Dummy_608"
+    },
+    {
+     "move": 1388,
+     "name": "Co_Dummy_609"
+    },
+    {
+     "move": 1389,
+     "name": "Co_Dummy_610"
+    },
+    {
+     "move": 1390,
+     "name": "Co_Dummy_611"
+    },
+    {
+     "move": 1391,
+     "name": "Co_Dummy_612"
+    },
+    {
+     "move": 1392,
+     "name": "Co_Dummy_614"
+    },
+    {
+     "move": 1393,
+     "name": "Co_Dummy_615"
+    },
+    {
+     "move": 1394,
+     "name": "Co_Dummy_616"
+    },
+    {
+     "move": 1395,
+     "name": "Co_Dummy_617"
+    },
+    {
+     "move": 1396,
+     "name": "Co_Dummy_618"
+    },
+    {
+     "move": 1397,
+     "name": "Co_Dummy_619"
+    },
+    {
+     "move": 1398,
+     "name": "Co_Dummy_620"
+    },
+    {
+     "move": 1399,
+     "name": "Co_Dummy_621"
+    },
+    {
+     "move": 1400,
+     "name": "Co_Dummy_622"
+    },
+    {
+     "move": 1401,
+     "name": "Co_Dummy_623"
+    },
+    {
+     "move": 1402,
+     "name": "Co_Dummy_624"
+    },
+    {
+     "move": 1403,
+     "name": "Co_Dummy_625"
+    },
+    {
+     "move": 1467,
+     "name": "Ym_sDASHF"
+    },
+    {
+     "move": 1744,
+     "name": "Ym_666LK"
+    },
+    {
+     "move": 1750,
+     "name": "Ym_ton_4"
+    },
+    {
+     "move": 1751,
+     "name": "Ym_ton_6"
+    },
+    {
+     "move": 1776,
+     "name": "Ym_aguraLp2"
+    },
+    {
+     "move": 1799,
+     "name": "Ym_takeumaBack2"
+    },
+    {
+     "move": 1800,
+     "name": "Ym_takeumaBack3"
+    },
+    {
+     "move": 1803,
+     "name": "Ym_takeuma02"
+    },
+    {
+     "move": 1804,
+     "name": "Ym_takeuma03"
+    },
+    {
+     "move": 1805,
+     "name": "Ym_takeDash"
+    },
+    {
+     "move": 1876,
+     "name": "Ym_kin_6"
+    },
+    {
+     "move": 2087,
+     "name": "Thrmv_Ym_2146RP"
+    }
+   ]
+  },
+  {
+   "wh_key": "f,n,d,df+1",
+   "wh_name": "Gehosen",
+   "wh_input": "f,n,d,df+1",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "mvl_matched_graph_gap",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "f,n,d,df+2",
+   "wh_name": "Flashing Steel",
+   "wh_input": "f,n,d,df+2",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "mvl_matched_graph_gap",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "NSS.b,B+1+4",
+   "wh_name": "Thunder Palm Strike",
+   "wh_input": "NSS.b,B+1+4",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "no_evidence",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "NSS.b,B+1+4,B",
+   "wh_name": "Thunder Palm Strike Feint to Soul Stealer",
+   "wh_input": "NSS.b,B+1+4,B",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "no_evidence",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "NSS.f,n,d,df+1",
+   "wh_name": "Moonlight",
+   "wh_input": "NSS.f,n,d,df+1",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "no_evidence",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "qcb,f+2",
+   "wh_name": "Soul Possession",
+   "wh_input": "qcb,f+2",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "no_evidence",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "qcf+1",
+   "wh_name": "Moonsault Slayer",
+   "wh_input": "qcf+1",
+   "t7_id": "yoshimitsu_355",
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "mvl_matched_graph_gap",
+   "evidence": [
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1855,
+   "t8_move_name": "Ym_44LPRK",
+   "t8_anim_name": "cmlsk_at_yokokiri",
+   "startup": 59,
+   "damage": 50,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "wavu_conflict": true,
+   "alternates": [
+    {
+     "move": 1858,
+     "name": "Ym_44LPRK_mutou"
+    }
+   ]
+  },
+  {
+   "wh_key": "SS.1",
+   "wh_name": "Inner Palm",
+   "wh_input": "SS.1",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1570,
+   "t8_move_name": "Ym_lp00F",
+   "t8_anim_name": "cmlmb_at_lp",
+   "startup": 10,
+   "damage": 5,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1662,
+     "name": "Co_syalp00"
+    },
+    {
+     "move": 2016,
+     "name": "Ym_side_LP"
+    },
+    {
+     "move": 1511,
+     "name": "Co_jplp01"
+    },
+    {
+     "move": 1512,
+     "name": "Co_jplp01F"
+    },
+    {
+     "move": 1513,
+     "name": "Co_jplp01B"
+    },
+    {
+     "move": 1514,
+     "name": "Co_jplp02"
+    },
+    {
+     "move": 1515,
+     "name": "Co_jplp02F"
+    },
+    {
+     "move": 1516,
+     "name": "Co_jplp02B"
+    },
+    {
+     "move": 1517,
+     "name": "Co_jplp03"
+    },
+    {
+     "move": 1518,
+     "name": "Co_jplp03F"
+    },
+    {
+     "move": 1519,
+     "name": "Co_jplp03B"
+    },
+    {
+     "move": 1520,
+     "name": "Co_jpRlp00"
+    },
+    {
+     "move": 1521,
+     "name": "Co_jpRlp00F"
+    },
+    {
+     "move": 1522,
+     "name": "Co_jpRlp00B"
+    },
+    {
+     "move": 1523,
+     "name": "Ym_9LP"
+    },
+    {
+     "move": 1525,
+     "name": "Ym_8LP"
+    },
+    {
+     "move": 1559,
+     "name": "Co_sjplp01F"
+    },
+    {
+     "move": 1560,
+     "name": "Co_sjplp02F"
+    },
+    {
+     "move": 1561,
+     "name": "Co_sjplp03F"
+    },
+    {
+     "move": 1572,
+     "name": "Ym_LPLP"
+    },
+    {
+     "move": 1573,
+     "name": "Ym_LPLP_battou"
+    },
+    {
+     "move": 1580,
+     "name": "Ym_RPLP"
+    },
+    {
+     "move": 1582,
+     "name": "Ym_RPLP_mutou"
+    },
+    {
+     "move": 1592,
+     "name": "Ym_LKLP"
+    },
+    {
+     "move": 1593,
+     "name": "Ym_LKLP_mutou"
+    },
+    {
+     "move": 1624,
+     "name": "Ym_4LPLP"
+    },
+    {
+     "move": 1625,
+     "name": "Ym_4LPLPLP"
+    },
+    {
+     "move": 1626,
+     "name": "Ym_4LPLPLPLP"
+    },
+    {
+     "move": 1627,
+     "name": "Ym_4LPLPLPLPLP"
+    },
+    {
+     "move": 1628,
+     "name": "Ym_4LPLPLPLPLPLP"
+    },
+    {
+     "move": 1635,
+     "name": "Ym_4RPLP"
+    },
+    {
+     "move": 1636,
+     "name": "Ym_4RPLP_mutou"
+    },
+    {
+     "move": 1665,
+     "name": "Ym_back_2LP"
+    },
+    {
+     "move": 1666,
+     "name": "Ym_back_2LP_mutou"
+    },
+    {
+     "move": 1667,
+     "name": "Ym_musou_2LP"
+    },
+    {
+     "move": 1668,
+     "name": "Ym_musou_2LP_mutou"
+    },
+    {
+     "move": 1698,
+     "name": "Ym_2RPRP_reserve_LP"
+    },
+    {
+     "move": 1699,
+     "name": "Ym_2RPRP_reserve_LP_mutou"
+    },
+    {
+     "move": 1704,
+     "name": "Ym_2RPRPLP"
+    },
+    {
+     "move": 1705,
+     "name": "Ym_2RPRPLP_mutou"
+    },
+    {
+     "move": 1727,
+     "name": "Ym_crst_LP"
+    },
+    {
+     "move": 1728,
+     "name": "Ym_crst_LPLP"
+    },
+    {
+     "move": 1729,
+     "name": "Ym_crst_LPLPLP"
+    },
+    {
+     "move": 1730,
+     "name": "Ym_crst_LPLPLPLP"
+    },
+    {
+     "move": 1755,
+     "name": "Ym_ton_LP"
+    },
+    {
+     "move": 1756,
+     "name": "Ym_ton_LP_heat"
+    },
+    {
+     "move": 1816,
+     "name": "Ym_crh_3LP"
+    },
+    {
+     "move": 1818,
+     "name": "Ym_crh_3LP_mutou"
+    },
+    {
+     "move": 1849,
+     "name": "Ym_7LPLK_LP"
+    },
+    {
+     "move": 1851,
+     "name": "Ym_7LPLK_LP_mutou"
+    },
+    {
+     "move": 1879,
+     "name": "Ym_kin_LP"
+    },
+    {
+     "move": 1882,
+     "name": "Ym_kin_LP_mutou"
+    },
+    {
+     "move": 1889,
+     "name": "Ym_kin_4RPLP"
+    },
+    {
+     "move": 1890,
+     "name": "Ym_kin_4RPLP_mutou"
+    },
+    {
+     "move": 2000,
+     "name": "Ym_6RPLK"
+    },
+    {
+     "move": 2032,
+     "name": "Ym_9WKLP"
+    },
+    {
+     "move": 2036,
+     "name": "Ym_9WKLPRKLP"
+    },
+    {
+     "move": 2054,
+     "name": "SPYmA_rulu"
+    },
+    {
+     "move": 2055,
+     "name": "SPYmA_rulu_Ra"
+    },
+    {
+     "move": 2057,
+     "name": "SPYmA_Xrulu"
+    },
+    {
+     "move": 2062,
+     "name": "SPYmA_rklu"
+    },
+    {
+     "move": 2063,
+     "name": "SPYmA_ktn1"
+    },
+    {
+     "move": 2064,
+     "name": "SPYmA_Xktn1"
+    },
+    {
+     "move": 2065,
+     "name": "SPYmA_ktn2"
+    },
+    {
+     "move": 2066,
+     "name": "SPYmA_Xktn2"
+    },
+    {
+     "move": 2067,
+     "name": "SPYmA_ktn3"
+    },
+    {
+     "move": 2068,
+     "name": "SPYmA_Xktn3"
+    },
+    {
+     "move": 2071,
+     "name": "SPYmB_rplp"
+    },
+    {
+     "move": 2072,
+     "name": "SPYmB_Xrplp"
+    },
+    {
+     "move": 2077,
+     "name": "SPYmC_rklp"
+    },
+    {
+     "move": 2078,
+     "name": "SPYmC_Xrklp"
+    },
+    {
+     "move": 2079,
+     "name": "SPYmC_lplp"
+    },
+    {
+     "move": 2080,
+     "name": "SPYmC_Xlplp"
+    }
+   ]
+  },
+  {
+   "wh_key": "SS.2",
+   "wh_name": "Shrine",
+   "wh_input": "SS.2",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1574,
+   "t8_move_name": "Ym_rp00",
+   "t8_anim_name": "cmlmx_at_rp",
+   "startup": 11,
+   "damage": 10,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 2017,
+     "name": "Ym_side_RP"
+    },
+    {
+     "move": 1528,
+     "name": "Ym_9RP"
+    },
+    {
+     "move": 1532,
+     "name": "Co_jprp03"
+    },
+    {
+     "move": 1533,
+     "name": "Co_jprp03F"
+    },
+    {
+     "move": 1534,
+     "name": "Co_jprp03B"
+    },
+    {
+     "move": 1562,
+     "name": "Co_sjprp03F"
+    },
+    {
+     "move": 1575,
+     "name": "Ym_RPRP"
+    },
+    {
+     "move": 1587,
+     "name": "Ym_back_LPRP"
+    },
+    {
+     "move": 1591,
+     "name": "Ym_lk00_reserve_RP"
+    },
+    {
+     "move": 1633,
+     "name": "Ym_4RPRP"
+    },
+    {
+     "move": 1634,
+     "name": "Ym_4RPRP_mutou"
+    },
+    {
+     "move": 1664,
+     "name": "Co_syarp00"
+    },
+    {
+     "move": 1731,
+     "name": "Ym_crst_LPRP"
+    },
+    {
+     "move": 1734,
+     "name": "Ym_crst_RP"
+    },
+    {
+     "move": 1740,
+     "name": "Ym_crst_LKRP"
+    },
+    {
+     "move": 1758,
+     "name": "Ym_ton_RP"
+    },
+    {
+     "move": 1786,
+     "name": "Ym_jira_RP"
+    },
+    {
+     "move": 1813,
+     "name": "Ym_jira_6RP"
+    },
+    {
+     "move": 1819,
+     "name": "Ym_crh_3LPRP_mutou"
+    },
+    {
+     "move": 1825,
+     "name": "Ym_3LPRP"
+    },
+    {
+     "move": 1840,
+     "name": "Ym_kiku2"
+    },
+    {
+     "move": 1842,
+     "name": "Ym_kiku3"
+    },
+    {
+     "move": 1843,
+     "name": "Ym_kiku4"
+    },
+    {
+     "move": 1844,
+     "name": "Ym_kiku5"
+    },
+    {
+     "move": 1845,
+     "name": "Ym_kiku6"
+    },
+    {
+     "move": 1891,
+     "name": "Ym_kin_RP"
+    },
+    {
+     "move": 1942,
+     "name": "Ym_1LPRP"
+    },
+    {
+     "move": 2050,
+     "name": "Ym_LP_reserve_RP"
+    },
+    {
+     "move": 2052,
+     "name": "SPYmA_Xlpru00"
+    },
+    {
+     "move": 2055,
+     "name": "SPYmA_rulu_Ra"
+    },
+    {
+     "move": 2069,
+     "name": "SPYmB_rkrp"
+    },
+    {
+     "move": 2070,
+     "name": "SPYmB_rprp"
+    },
+    {
+     "move": 2073,
+     "name": "SPYmC_rkrp"
+    },
+    {
+     "move": 2074,
+     "name": "SPYmC_rprpA"
+    },
+    {
+     "move": 2075,
+     "name": "SPYmC_rprpB"
+    }
+   ]
+  },
+  {
+   "wh_key": "ws1",
+   "wh_name": "Move ws1 (ws1)",
+   "wh_input": "ws1",
+   "t7_id": "yoshimitsu_120",
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1570,
+   "t8_move_name": "Ym_lp00F",
+   "t8_anim_name": "cmlmb_at_lp",
+   "startup": 10,
+   "damage": 5,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1662,
+     "name": "Co_syalp00"
+    },
+    {
+     "move": 2016,
+     "name": "Ym_side_LP"
+    },
+    {
+     "move": 1511,
+     "name": "Co_jplp01"
+    },
+    {
+     "move": 1512,
+     "name": "Co_jplp01F"
+    },
+    {
+     "move": 1513,
+     "name": "Co_jplp01B"
+    },
+    {
+     "move": 1514,
+     "name": "Co_jplp02"
+    },
+    {
+     "move": 1515,
+     "name": "Co_jplp02F"
+    },
+    {
+     "move": 1516,
+     "name": "Co_jplp02B"
+    },
+    {
+     "move": 1517,
+     "name": "Co_jplp03"
+    },
+    {
+     "move": 1518,
+     "name": "Co_jplp03F"
+    },
+    {
+     "move": 1519,
+     "name": "Co_jplp03B"
+    },
+    {
+     "move": 1520,
+     "name": "Co_jpRlp00"
+    },
+    {
+     "move": 1521,
+     "name": "Co_jpRlp00F"
+    },
+    {
+     "move": 1522,
+     "name": "Co_jpRlp00B"
+    },
+    {
+     "move": 1523,
+     "name": "Ym_9LP"
+    },
+    {
+     "move": 1525,
+     "name": "Ym_8LP"
+    },
+    {
+     "move": 1559,
+     "name": "Co_sjplp01F"
+    },
+    {
+     "move": 1560,
+     "name": "Co_sjplp02F"
+    },
+    {
+     "move": 1561,
+     "name": "Co_sjplp03F"
+    },
+    {
+     "move": 1572,
+     "name": "Ym_LPLP"
+    },
+    {
+     "move": 1573,
+     "name": "Ym_LPLP_battou"
+    },
+    {
+     "move": 1580,
+     "name": "Ym_RPLP"
+    },
+    {
+     "move": 1582,
+     "name": "Ym_RPLP_mutou"
+    },
+    {
+     "move": 1592,
+     "name": "Ym_LKLP"
+    },
+    {
+     "move": 1593,
+     "name": "Ym_LKLP_mutou"
+    },
+    {
+     "move": 1624,
+     "name": "Ym_4LPLP"
+    },
+    {
+     "move": 1625,
+     "name": "Ym_4LPLPLP"
+    },
+    {
+     "move": 1626,
+     "name": "Ym_4LPLPLPLP"
+    },
+    {
+     "move": 1627,
+     "name": "Ym_4LPLPLPLPLP"
+    },
+    {
+     "move": 1628,
+     "name": "Ym_4LPLPLPLPLPLP"
+    },
+    {
+     "move": 1635,
+     "name": "Ym_4RPLP"
+    },
+    {
+     "move": 1636,
+     "name": "Ym_4RPLP_mutou"
+    },
+    {
+     "move": 1665,
+     "name": "Ym_back_2LP"
+    },
+    {
+     "move": 1666,
+     "name": "Ym_back_2LP_mutou"
+    },
+    {
+     "move": 1667,
+     "name": "Ym_musou_2LP"
+    },
+    {
+     "move": 1668,
+     "name": "Ym_musou_2LP_mutou"
+    },
+    {
+     "move": 1698,
+     "name": "Ym_2RPRP_reserve_LP"
+    },
+    {
+     "move": 1699,
+     "name": "Ym_2RPRP_reserve_LP_mutou"
+    },
+    {
+     "move": 1704,
+     "name": "Ym_2RPRPLP"
+    },
+    {
+     "move": 1705,
+     "name": "Ym_2RPRPLP_mutou"
+    },
+    {
+     "move": 1727,
+     "name": "Ym_crst_LP"
+    },
+    {
+     "move": 1728,
+     "name": "Ym_crst_LPLP"
+    },
+    {
+     "move": 1729,
+     "name": "Ym_crst_LPLPLP"
+    },
+    {
+     "move": 1730,
+     "name": "Ym_crst_LPLPLPLP"
+    },
+    {
+     "move": 1755,
+     "name": "Ym_ton_LP"
+    },
+    {
+     "move": 1756,
+     "name": "Ym_ton_LP_heat"
+    },
+    {
+     "move": 1816,
+     "name": "Ym_crh_3LP"
+    },
+    {
+     "move": 1818,
+     "name": "Ym_crh_3LP_mutou"
+    },
+    {
+     "move": 1849,
+     "name": "Ym_7LPLK_LP"
+    },
+    {
+     "move": 1851,
+     "name": "Ym_7LPLK_LP_mutou"
+    },
+    {
+     "move": 1879,
+     "name": "Ym_kin_LP"
+    },
+    {
+     "move": 1882,
+     "name": "Ym_kin_LP_mutou"
+    },
+    {
+     "move": 1889,
+     "name": "Ym_kin_4RPLP"
+    },
+    {
+     "move": 1890,
+     "name": "Ym_kin_4RPLP_mutou"
+    },
+    {
+     "move": 2000,
+     "name": "Ym_6RPLK"
+    },
+    {
+     "move": 2032,
+     "name": "Ym_9WKLP"
+    },
+    {
+     "move": 2036,
+     "name": "Ym_9WKLPRKLP"
+    },
+    {
+     "move": 2054,
+     "name": "SPYmA_rulu"
+    },
+    {
+     "move": 2055,
+     "name": "SPYmA_rulu_Ra"
+    },
+    {
+     "move": 2057,
+     "name": "SPYmA_Xrulu"
+    },
+    {
+     "move": 2062,
+     "name": "SPYmA_rklu"
+    },
+    {
+     "move": 2063,
+     "name": "SPYmA_ktn1"
+    },
+    {
+     "move": 2064,
+     "name": "SPYmA_Xktn1"
+    },
+    {
+     "move": 2065,
+     "name": "SPYmA_ktn2"
+    },
+    {
+     "move": 2066,
+     "name": "SPYmA_Xktn2"
+    },
+    {
+     "move": 2067,
+     "name": "SPYmA_ktn3"
+    },
+    {
+     "move": 2068,
+     "name": "SPYmA_Xktn3"
+    },
+    {
+     "move": 2071,
+     "name": "SPYmB_rplp"
+    },
+    {
+     "move": 2072,
+     "name": "SPYmB_Xrplp"
+    },
+    {
+     "move": 2077,
+     "name": "SPYmC_rklp"
+    },
+    {
+     "move": 2078,
+     "name": "SPYmC_Xrklp"
+    },
+    {
+     "move": 2079,
+     "name": "SPYmC_lplp"
+    },
+    {
+     "move": 2080,
+     "name": "SPYmC_Xlplp"
+    }
+   ]
+  },
+  {
+   "wh_key": "ws1,1",
+   "wh_name": "Move 1 (1)",
+   "wh_input": "ws1,1",
+   "t7_id": "yoshimitsu_121",
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1572,
+   "t8_move_name": "Ym_LPLP",
+   "t8_anim_name": "cmlss_at_lplp",
+   "startup": 23,
+   "damage": 19,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1573,
+     "name": "Ym_LPLP_battou"
+    },
+    {
+     "move": 1625,
+     "name": "Ym_4LPLPLP"
+    },
+    {
+     "move": 1626,
+     "name": "Ym_4LPLPLPLP"
+    },
+    {
+     "move": 1627,
+     "name": "Ym_4LPLPLPLPLP"
+    },
+    {
+     "move": 1628,
+     "name": "Ym_4LPLPLPLPLPLP"
+    },
+    {
+     "move": 1728,
+     "name": "Ym_crst_LPLP"
+    },
+    {
+     "move": 1729,
+     "name": "Ym_crst_LPLPLP"
+    },
+    {
+     "move": 1730,
+     "name": "Ym_crst_LPLPLPLP"
+    },
+    {
+     "move": 1755,
+     "name": "Ym_ton_LP"
+    },
+    {
+     "move": 1756,
+     "name": "Ym_ton_LP_heat"
+    },
+    {
+     "move": 1849,
+     "name": "Ym_7LPLK_LP"
+    },
+    {
+     "move": 1851,
+     "name": "Ym_7LPLK_LP_mutou"
+    },
+    {
+     "move": 2055,
+     "name": "SPYmA_rulu_Ra"
+    },
+    {
+     "move": 2063,
+     "name": "SPYmA_ktn1"
+    },
+    {
+     "move": 2064,
+     "name": "SPYmA_Xktn1"
+    },
+    {
+     "move": 2065,
+     "name": "SPYmA_ktn2"
+    },
+    {
+     "move": 2066,
+     "name": "SPYmA_Xktn2"
+    },
+    {
+     "move": 2067,
+     "name": "SPYmA_ktn3"
+    },
+    {
+     "move": 2068,
+     "name": "SPYmA_Xktn3"
+    },
+    {
+     "move": 2079,
+     "name": "SPYmC_lplp"
+    },
+    {
+     "move": 2080,
+     "name": "SPYmC_Xlplp"
+    }
+   ]
+  },
+  {
+   "wh_key": "ws2",
+   "wh_name": "Exorcism Fist",
+   "wh_input": "ws2",
+   "t7_id": "yoshimitsu_157",
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1574,
+   "t8_move_name": "Ym_rp00",
+   "t8_anim_name": "cmlmx_at_rp",
+   "startup": 11,
+   "damage": 10,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 2017,
+     "name": "Ym_side_RP"
+    },
+    {
+     "move": 1528,
+     "name": "Ym_9RP"
+    },
+    {
+     "move": 1532,
+     "name": "Co_jprp03"
+    },
+    {
+     "move": 1533,
+     "name": "Co_jprp03F"
+    },
+    {
+     "move": 1534,
+     "name": "Co_jprp03B"
+    },
+    {
+     "move": 1562,
+     "name": "Co_sjprp03F"
+    },
+    {
+     "move": 1575,
+     "name": "Ym_RPRP"
+    },
+    {
+     "move": 1587,
+     "name": "Ym_back_LPRP"
+    },
+    {
+     "move": 1591,
+     "name": "Ym_lk00_reserve_RP"
+    },
+    {
+     "move": 1633,
+     "name": "Ym_4RPRP"
+    },
+    {
+     "move": 1634,
+     "name": "Ym_4RPRP_mutou"
+    },
+    {
+     "move": 1664,
+     "name": "Co_syarp00"
+    },
+    {
+     "move": 1731,
+     "name": "Ym_crst_LPRP"
+    },
+    {
+     "move": 1734,
+     "name": "Ym_crst_RP"
+    },
+    {
+     "move": 1740,
+     "name": "Ym_crst_LKRP"
+    },
+    {
+     "move": 1758,
+     "name": "Ym_ton_RP"
+    },
+    {
+     "move": 1786,
+     "name": "Ym_jira_RP"
+    },
+    {
+     "move": 1813,
+     "name": "Ym_jira_6RP"
+    },
+    {
+     "move": 1819,
+     "name": "Ym_crh_3LPRP_mutou"
+    },
+    {
+     "move": 1825,
+     "name": "Ym_3LPRP"
+    },
+    {
+     "move": 1840,
+     "name": "Ym_kiku2"
+    },
+    {
+     "move": 1842,
+     "name": "Ym_kiku3"
+    },
+    {
+     "move": 1843,
+     "name": "Ym_kiku4"
+    },
+    {
+     "move": 1844,
+     "name": "Ym_kiku5"
+    },
+    {
+     "move": 1845,
+     "name": "Ym_kiku6"
+    },
+    {
+     "move": 1891,
+     "name": "Ym_kin_RP"
+    },
+    {
+     "move": 1942,
+     "name": "Ym_1LPRP"
+    },
+    {
+     "move": 2050,
+     "name": "Ym_LP_reserve_RP"
+    },
+    {
+     "move": 2052,
+     "name": "SPYmA_Xlpru00"
+    },
+    {
+     "move": 2055,
+     "name": "SPYmA_rulu_Ra"
+    },
+    {
+     "move": 2069,
+     "name": "SPYmB_rkrp"
+    },
+    {
+     "move": 2070,
+     "name": "SPYmB_rprp"
+    },
+    {
+     "move": 2073,
+     "name": "SPYmC_rkrp"
+    },
+    {
+     "move": 2074,
+     "name": "SPYmC_rprpA"
+    },
+    {
+     "move": 2075,
+     "name": "SPYmC_rprpB"
+    }
+   ]
+  },
+  {
+   "wh_key": "ws2,1",
+   "wh_name": "Scowling Moon God",
+   "wh_input": "ws2,1",
+   "t7_id": "yoshimitsu_247",
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1580,
+   "t8_move_name": "Ym_RPLP",
+   "t8_anim_name": "cmlkb_at_rplp",
+   "startup": 26,
+   "damage": 23,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1582,
+     "name": "Ym_RPLP_mutou"
+    },
+    {
+     "move": 2071,
+     "name": "SPYmB_rplp"
+    },
+    {
+     "move": 2072,
+     "name": "SPYmB_Xrplp"
+    }
+   ]
+  },
+  {
+   "wh_key": "1~t8.yoshimitsu",
+   "wh_name": "Jab",
+   "wh_input": "1",
+   "t7_id": "yoshimitsu_1",
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1570,
+   "t8_move_name": "Ym_lp00F",
+   "t8_anim_name": "cmlmb_at_lp",
+   "startup": 10,
+   "damage": 5,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1662,
+     "name": "Co_syalp00"
+    },
+    {
+     "move": 2016,
+     "name": "Ym_side_LP"
+    },
+    {
+     "move": 1511,
+     "name": "Co_jplp01"
+    },
+    {
+     "move": 1512,
+     "name": "Co_jplp01F"
+    },
+    {
+     "move": 1513,
+     "name": "Co_jplp01B"
+    },
+    {
+     "move": 1514,
+     "name": "Co_jplp02"
+    },
+    {
+     "move": 1515,
+     "name": "Co_jplp02F"
+    },
+    {
+     "move": 1516,
+     "name": "Co_jplp02B"
+    },
+    {
+     "move": 1517,
+     "name": "Co_jplp03"
+    },
+    {
+     "move": 1518,
+     "name": "Co_jplp03F"
+    },
+    {
+     "move": 1519,
+     "name": "Co_jplp03B"
+    },
+    {
+     "move": 1520,
+     "name": "Co_jpRlp00"
+    },
+    {
+     "move": 1521,
+     "name": "Co_jpRlp00F"
+    },
+    {
+     "move": 1522,
+     "name": "Co_jpRlp00B"
+    },
+    {
+     "move": 1523,
+     "name": "Ym_9LP"
+    },
+    {
+     "move": 1525,
+     "name": "Ym_8LP"
+    },
+    {
+     "move": 1559,
+     "name": "Co_sjplp01F"
+    },
+    {
+     "move": 1560,
+     "name": "Co_sjplp02F"
+    },
+    {
+     "move": 1561,
+     "name": "Co_sjplp03F"
+    },
+    {
+     "move": 1572,
+     "name": "Ym_LPLP"
+    },
+    {
+     "move": 1573,
+     "name": "Ym_LPLP_battou"
+    },
+    {
+     "move": 1580,
+     "name": "Ym_RPLP"
+    },
+    {
+     "move": 1582,
+     "name": "Ym_RPLP_mutou"
+    },
+    {
+     "move": 1592,
+     "name": "Ym_LKLP"
+    },
+    {
+     "move": 1593,
+     "name": "Ym_LKLP_mutou"
+    },
+    {
+     "move": 1624,
+     "name": "Ym_4LPLP"
+    },
+    {
+     "move": 1625,
+     "name": "Ym_4LPLPLP"
+    },
+    {
+     "move": 1626,
+     "name": "Ym_4LPLPLPLP"
+    },
+    {
+     "move": 1627,
+     "name": "Ym_4LPLPLPLPLP"
+    },
+    {
+     "move": 1628,
+     "name": "Ym_4LPLPLPLPLPLP"
+    },
+    {
+     "move": 1635,
+     "name": "Ym_4RPLP"
+    },
+    {
+     "move": 1636,
+     "name": "Ym_4RPLP_mutou"
+    },
+    {
+     "move": 1665,
+     "name": "Ym_back_2LP"
+    },
+    {
+     "move": 1666,
+     "name": "Ym_back_2LP_mutou"
+    },
+    {
+     "move": 1667,
+     "name": "Ym_musou_2LP"
+    },
+    {
+     "move": 1668,
+     "name": "Ym_musou_2LP_mutou"
+    },
+    {
+     "move": 1698,
+     "name": "Ym_2RPRP_reserve_LP"
+    },
+    {
+     "move": 1699,
+     "name": "Ym_2RPRP_reserve_LP_mutou"
+    },
+    {
+     "move": 1704,
+     "name": "Ym_2RPRPLP"
+    },
+    {
+     "move": 1705,
+     "name": "Ym_2RPRPLP_mutou"
+    },
+    {
+     "move": 1727,
+     "name": "Ym_crst_LP"
+    },
+    {
+     "move": 1728,
+     "name": "Ym_crst_LPLP"
+    },
+    {
+     "move": 1729,
+     "name": "Ym_crst_LPLPLP"
+    },
+    {
+     "move": 1730,
+     "name": "Ym_crst_LPLPLPLP"
+    },
+    {
+     "move": 1755,
+     "name": "Ym_ton_LP"
+    },
+    {
+     "move": 1756,
+     "name": "Ym_ton_LP_heat"
+    },
+    {
+     "move": 1816,
+     "name": "Ym_crh_3LP"
+    },
+    {
+     "move": 1818,
+     "name": "Ym_crh_3LP_mutou"
+    },
+    {
+     "move": 1849,
+     "name": "Ym_7LPLK_LP"
+    },
+    {
+     "move": 1851,
+     "name": "Ym_7LPLK_LP_mutou"
+    },
+    {
+     "move": 1879,
+     "name": "Ym_kin_LP"
+    },
+    {
+     "move": 1882,
+     "name": "Ym_kin_LP_mutou"
+    },
+    {
+     "move": 1889,
+     "name": "Ym_kin_4RPLP"
+    },
+    {
+     "move": 1890,
+     "name": "Ym_kin_4RPLP_mutou"
+    },
+    {
+     "move": 2000,
+     "name": "Ym_6RPLK"
+    },
+    {
+     "move": 2032,
+     "name": "Ym_9WKLP"
+    },
+    {
+     "move": 2036,
+     "name": "Ym_9WKLPRKLP"
+    },
+    {
+     "move": 2054,
+     "name": "SPYmA_rulu"
+    },
+    {
+     "move": 2055,
+     "name": "SPYmA_rulu_Ra"
+    },
+    {
+     "move": 2057,
+     "name": "SPYmA_Xrulu"
+    },
+    {
+     "move": 2062,
+     "name": "SPYmA_rklu"
+    },
+    {
+     "move": 2063,
+     "name": "SPYmA_ktn1"
+    },
+    {
+     "move": 2064,
+     "name": "SPYmA_Xktn1"
+    },
+    {
+     "move": 2065,
+     "name": "SPYmA_ktn2"
+    },
+    {
+     "move": 2066,
+     "name": "SPYmA_Xktn2"
+    },
+    {
+     "move": 2067,
+     "name": "SPYmA_ktn3"
+    },
+    {
+     "move": 2068,
+     "name": "SPYmA_Xktn3"
+    },
+    {
+     "move": 2071,
+     "name": "SPYmB_rplp"
+    },
+    {
+     "move": 2072,
+     "name": "SPYmB_Xrplp"
+    },
+    {
+     "move": 2077,
+     "name": "SPYmC_rklp"
+    },
+    {
+     "move": 2078,
+     "name": "SPYmC_Xrklp"
+    },
+    {
+     "move": 2079,
+     "name": "SPYmC_lplp"
+    },
+    {
+     "move": 2080,
+     "name": "SPYmC_Xlplp"
+    }
+   ]
+  },
+  {
+   "wh_key": "2~t8.yoshimitsu",
+   "wh_name": "Right Jab",
+   "wh_input": "2",
+   "t7_id": "yoshimitsu_4",
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1574,
+   "t8_move_name": "Ym_rp00",
+   "t8_anim_name": "cmlmx_at_rp",
+   "startup": 11,
+   "damage": 10,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 2017,
+     "name": "Ym_side_RP"
+    },
+    {
+     "move": 1528,
+     "name": "Ym_9RP"
+    },
+    {
+     "move": 1532,
+     "name": "Co_jprp03"
+    },
+    {
+     "move": 1533,
+     "name": "Co_jprp03F"
+    },
+    {
+     "move": 1534,
+     "name": "Co_jprp03B"
+    },
+    {
+     "move": 1562,
+     "name": "Co_sjprp03F"
+    },
+    {
+     "move": 1575,
+     "name": "Ym_RPRP"
+    },
+    {
+     "move": 1587,
+     "name": "Ym_back_LPRP"
+    },
+    {
+     "move": 1591,
+     "name": "Ym_lk00_reserve_RP"
+    },
+    {
+     "move": 1633,
+     "name": "Ym_4RPRP"
+    },
+    {
+     "move": 1634,
+     "name": "Ym_4RPRP_mutou"
+    },
+    {
+     "move": 1664,
+     "name": "Co_syarp00"
+    },
+    {
+     "move": 1731,
+     "name": "Ym_crst_LPRP"
+    },
+    {
+     "move": 1734,
+     "name": "Ym_crst_RP"
+    },
+    {
+     "move": 1740,
+     "name": "Ym_crst_LKRP"
+    },
+    {
+     "move": 1758,
+     "name": "Ym_ton_RP"
+    },
+    {
+     "move": 1786,
+     "name": "Ym_jira_RP"
+    },
+    {
+     "move": 1813,
+     "name": "Ym_jira_6RP"
+    },
+    {
+     "move": 1819,
+     "name": "Ym_crh_3LPRP_mutou"
+    },
+    {
+     "move": 1825,
+     "name": "Ym_3LPRP"
+    },
+    {
+     "move": 1840,
+     "name": "Ym_kiku2"
+    },
+    {
+     "move": 1842,
+     "name": "Ym_kiku3"
+    },
+    {
+     "move": 1843,
+     "name": "Ym_kiku4"
+    },
+    {
+     "move": 1844,
+     "name": "Ym_kiku5"
+    },
+    {
+     "move": 1845,
+     "name": "Ym_kiku6"
+    },
+    {
+     "move": 1891,
+     "name": "Ym_kin_RP"
+    },
+    {
+     "move": 1942,
+     "name": "Ym_1LPRP"
+    },
+    {
+     "move": 2050,
+     "name": "Ym_LP_reserve_RP"
+    },
+    {
+     "move": 2052,
+     "name": "SPYmA_Xlpru00"
+    },
+    {
+     "move": 2055,
+     "name": "SPYmA_rulu_Ra"
+    },
+    {
+     "move": 2069,
+     "name": "SPYmB_rkrp"
+    },
+    {
+     "move": 2070,
+     "name": "SPYmB_rprp"
+    },
+    {
+     "move": 2073,
+     "name": "SPYmC_rkrp"
+    },
+    {
+     "move": 2074,
+     "name": "SPYmC_rprpA"
+    },
+    {
+     "move": 2075,
+     "name": "SPYmC_rprpB"
+    }
+   ]
+  },
+  {
+   "wh_key": "3~t8.yoshimitsu",
+   "wh_name": "Enma",
+   "wh_input": "3",
+   "t7_id": "yoshimitsu_14",
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1590,
+   "t8_move_name": "Ym_lk00",
+   "t8_anim_name": "cmlmx_at_lk",
+   "startup": 15,
+   "damage": 12,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1604,
+     "name": "Ym_back_LK"
+    },
+    {
+     "move": 194,
+     "name": "Co_Aokilk00"
+    },
+    {
+     "move": 196,
+     "name": "Co_AokilkL0"
+    },
+    {
+     "move": 198,
+     "name": "Co_ADwSlk00"
+    },
+    {
+     "move": 201,
+     "name": "Co_ADwSlkR1"
+    },
+    {
+     "move": 204,
+     "name": "Co_FRollk00"
+    },
+    {
+     "move": 206,
+     "name": "Co_FRollkL0"
+    },
+    {
+     "move": 208,
+     "name": "Co_BRollk00"
+    },
+    {
+     "move": 210,
+     "name": "Co_BRollkL0"
+    },
+    {
+     "move": 215,
+     "name": "Co_Rol_lrk"
+    },
+    {
+     "move": 218,
+     "name": "Co_Uokilk01"
+    },
+    {
+     "move": 223,
+     "name": "Co_UokilkR1"
+    },
+    {
+     "move": 245,
+     "name": "Co_jpRlk01"
+    },
+    {
+     "move": 246,
+     "name": "Co_jpRlk01F"
+    },
+    {
+     "move": 247,
+     "name": "Co_jpRlk01B"
+    },
+    {
+     "move": 1459,
+     "name": "Ym_musou_LK"
+    },
+    {
+     "move": 1536,
+     "name": "Co_jplk01"
+    },
+    {
+     "move": 1537,
+     "name": "Co_jplk01F"
+    },
+    {
+     "move": 1538,
+     "name": "Co_jplk01B"
+    },
+    {
+     "move": 1539,
+     "name": "Co_jplk02"
+    },
+    {
+     "move": 1540,
+     "name": "Co_jplk02F"
+    },
+    {
+     "move": 1541,
+     "name": "Co_jplk02B"
+    },
+    {
+     "move": 1542,
+     "name": "Co_jplk04"
+    },
+    {
+     "move": 1543,
+     "name": "Co_jplk04F"
+    },
+    {
+     "move": 1544,
+     "name": "Co_jplk04B"
+    },
+    {
+     "move": 1545,
+     "name": "Ym_9LK"
+    },
+    {
+     "move": 1563,
+     "name": "Ym_sjplk01F"
+    },
+    {
+     "move": 1564,
+     "name": "Ym_sjplk02F"
+    },
+    {
+     "move": 1565,
+     "name": "Ym_sjplk03F"
+    },
+    {
+     "move": 1578,
+     "name": "Ym_RPLK"
+    },
+    {
+     "move": 1588,
+     "name": "Ym_back_LPLK"
+    },
+    {
+     "move": 1670,
+     "name": "Ym_syalk00"
+    },
+    {
+     "move": 1739,
+     "name": "Ym_crst_LK"
+    },
+    {
+     "move": 1761,
+     "name": "Ym_ton_LK"
+    },
+    {
+     "move": 1810,
+     "name": "Ym_takeumaC"
+    },
+    {
+     "move": 1865,
+     "name": "Ym_muta_kick"
+    },
+    {
+     "move": 1898,
+     "name": "Ym_kin_LK"
+    },
+    {
+     "move": 1935,
+     "name": "Ym_1LKLK"
+    },
+    {
+     "move": 1936,
+     "name": "Ym_1LKLKLK"
+    },
+    {
+     "move": 1937,
+     "name": "Ym_1LKLKLKLK"
+    },
+    {
+     "move": 1938,
+     "name": "Ym_1LKLKLKLKLK"
+    },
+    {
+     "move": 1939,
+     "name": "Ym_1LKLKLKLKLKLK"
+    },
+    {
+     "move": 2037,
+     "name": "Ym_9WKLK"
+    },
+    {
+     "move": 2041,
+     "name": "Ym_9WKWK"
+    },
+    {
+     "move": 2055,
+     "name": "SPYmA_rulu_Ra"
+    }
+   ]
+  },
+  {
+   "wh_key": "4~t8.yoshimitsu",
+   "wh_name": "Magic 4",
+   "wh_input": "4",
+   "t7_id": "yoshimitsu_16",
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_YOSHIMITSU",
+   "t8_move_index": 1600,
+   "t8_move_name": "Ym_rk00",
+   "t8_anim_name": "cmlmx_at_rk",
+   "startup": 12,
+   "damage": 16,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1601,
+     "name": "Ym_rk00_reserve_RK"
+    },
+    {
+     "move": 195,
+     "name": "Co_Aokirk00"
+    },
+    {
+     "move": 197,
+     "name": "Co_AokirkL0"
+    },
+    {
+     "move": 199,
+     "name": "Co_ADwSrk00"
+    },
+    {
+     "move": 203,
+     "name": "Co_ADwSrkR1"
+    },
+    {
+     "move": 205,
+     "name": "Co_FRolrk00"
+    },
+    {
+     "move": 206,
+     "name": "Co_FRollkL0"
+    },
+    {
+     "move": 207,
+     "name": "Co_FRolrkL0"
+    },
+    {
+     "move": 209,
+     "name": "Co_BRolrk00"
+    },
+    {
+     "move": 211,
+     "name": "Co_BRolrkL0"
+    },
+    {
+     "move": 215,
+     "name": "Co_Rol_lrk"
+    },
+    {
+     "move": 221,
+     "name": "Co_Uokirk01"
+    },
+    {
+     "move": 229,
+     "name": "Co_UokirkR1"
+    },
+    {
+     "move": 241,
+     "name": "Co_R_rk00R_"
+    },
+    {
+     "move": 248,
+     "name": "Co_jpRrk01"
+    },
+    {
+     "move": 249,
+     "name": "Co_jpRrk01F"
+    },
+    {
+     "move": 250,
+     "name": "Co_jpRrk01B"
+    },
+    {
+     "move": 1547,
+     "name": "Co_jprk01"
+    },
+    {
+     "move": 1548,
+     "name": "Co_jprk01F"
+    },
+    {
+     "move": 1549,
+     "name": "Co_jprk01B"
+    },
+    {
+     "move": 1550,
+     "name": "Co_jprk02"
+    },
+    {
+     "move": 1551,
+     "name": "Co_jprk02F"
+    },
+    {
+     "move": 1552,
+     "name": "Co_jprk02B"
+    },
+    {
+     "move": 1553,
+     "name": "Co_jprk04"
+    },
+    {
+     "move": 1554,
+     "name": "Co_jprk04F"
+    },
+    {
+     "move": 1555,
+     "name": "Co_jprk04B"
+    },
+    {
+     "move": 1556,
+     "name": "Ym_8RK"
+    },
+    {
+     "move": 1557,
+     "name": "Ym_9RK"
+    },
+    {
+     "move": 1558,
+     "name": "Ym_7RK"
+    },
+    {
+     "move": 1567,
+     "name": "Ym_sjprk01F"
+    },
+    {
+     "move": 1568,
+     "name": "Ym_sjprk02F"
+    },
+    {
+     "move": 1569,
+     "name": "Ym_sjprk03F"
+    },
+    {
+     "move": 1597,
+     "name": "Ym_LKsRK"
+    },
+    {
+     "move": 1602,
+     "name": "Ym_RKRK"
+    },
+    {
+     "move": 1603,
+     "name": "Ym_RKRKRK"
+    },
+    {
+     "move": 1620,
+     "name": "Ym_6LKRK"
+    },
+    {
+     "move": 1671,
+     "name": "Ym_syark00"
+    },
+    {
+     "move": 1741,
+     "name": "Ym_crst_RK"
+    },
+    {
+     "move": 1759,
+     "name": "Ym_ton_RPRK"
+    },
+    {
+     "move": 1762,
+     "name": "Ym_ton_RK"
+    },
+    {
+     "move": 1811,
+     "name": "Ym_takeumaD"
+    },
+    {
+     "move": 1824,
+     "name": "Ym_3LP_RK"
+    },
+    {
+     "move": 1865,
+     "name": "Ym_muta_kick"
+    },
+    {
+     "move": 1899,
+     "name": "Ym_kin_RK"
+    },
+    {
+     "move": 1940,
+     "name": "Ym_1LKLKRK"
+    },
+    {
+     "move": 2018,
+     "name": "Ym_side_RK"
+    },
+    {
+     "move": 2033,
+     "name": "Ym_9WKLPRK"
+    },
+    {
+     "move": 2056,
+     "name": "SPYmA_rulu_R"
+    },
+    {
+     "move": 2058,
+     "name": "SPYmA_lurk"
+    },
+    {
+     "move": 2059,
+     "name": "SPYmA_Xlurk"
+    },
+    {
+     "move": 2060,
+     "name": "SPYmA_k02"
+    },
+    {
+     "move": 2061,
+     "name": "SPYmA_k03"
+    },
+    {
+     "move": 2076,
+     "name": "SPYmC_rprk"
+    }
+   ]
+  }
+ ]
+}
