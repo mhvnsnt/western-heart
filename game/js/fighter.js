@@ -39,7 +39,7 @@ import { assets } from './assets.js';
 import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK, T3_BANKS,
   clipStrikeProfile, clipHitWindow, bankAttackPool, attackLevelOfWord, attackClipTime, clipIsThrow, BUTTON_LIMB,
   loadT3Clips, loadT3ReactionClip, getT3ReactionPackScale, loadReactionPack, getReactionPack, getReactionClip,
-  applyT7Stance } from './t3anims.js';
+  applyT7Stance, ensureT7Moves, t7MoveClip, t7MoveRetarget } from './t3anims.js';
 import { effectiveStepPlay, playableStepPlay, stepActionName, stepPlanBanksFor } from './step-plan-bank.js';
 import { selectThrow, resolveThrowClips, throwBreaks, throwDamageTimeSec, throwPairDurationSec,
   escapePairFor, anchorAt, sharedFramePos, throwQuadrant, attemptRowForInput, hexSlot, bankDirOf } from './t3-throw.js';
@@ -878,6 +878,9 @@ export class Fighter {
       return;
     }
     applyT7Stance(this.char.id, bank, clips, model, THREE, modelKey); // real T7 stance where baked (t3anims.js T7_STANCES)
+    // Real T7 per-move clips (t3anims.js T7_MOVES), loaded per fighter in the background; until they arrive the
+    // moves keep their current clips. They retarget lazily with the stance's bind-time rest pose.
+    try { const p = ensureT7Moves(this.char.id, THREE); if (p && p.catch) p.catch(() => {}); } catch (e) { /* optional */ }
     this.t3actions = createT3Actions(this.mixer, clips, THREE);
     this._stepBankClips = {}; // per-step-bank source clips (see _attackClip)
     // Reaction pack prefetch (hit-reaction lane): the JSON arrives
@@ -1071,6 +1074,31 @@ export class Fighter {
     const { bank, clips } = this._t3;
     const ms = getFighterMoveset(this._movesetId);
     const raw = move && move.moveKey && ms && ms.moves ? ms.moves[move.moveKey] : null;
+    // REAL T7 MOVE (t3anims.js T7_MOVES): the row's own Tekken 7 clip, mapped exactly by
+    // tools/anim/t7_move_resolve.py (input path + exact T7 frame data), ahead of step plans, bank rows, donors
+    // and matches. Strikes only (the moves pack holds no throws; a throw keeps the throw path). Timed on the
+    // motbin move's own active frames.
+    const t7m = move && move.moveKey && !(this._t7skip && this._t7skip.has(move.moveKey))
+      ? t7MoveClip(this.char.id, bank, move.moveKey, this._t3.model) : null;
+    if (t7m) {
+      const limbT = Fighter.attackLimb(move, attackName);
+      const levelT = Fighter.attackLevel(move, raw);
+      const grabT = !!(move && move.isGrab) || /^(grab|1\+3|2\+4)$/.test(String(attackName || '')) || levelT === 't';
+      if (!grabT) {
+        const ST = move && Number.isFinite(move.startup) ? move.startup : 0;
+        const AT = move && Number.isFinite(move.active) ? move.active : 0;
+        const RT = move && Number.isFinite(move.recovery) ? move.recovery : 0;
+        let timingT = null;
+        if (ST + AT + RT > 0.05 && Array.isArray(t7m.active) && t7m.active.length === 2) {
+          const D = t7m.clip.duration;
+          const t0 = Math.min(Math.max(0, (t7m.active[0] - 1) / 60), D);
+          const t1 = Math.min(Math.max(t0, t7m.active[1] / 60), D);
+          timingT = { S: ST, A: AT, R: RT, t0, t1, D, src: 't7-active' };
+        }
+        return { name: t7m.name, kind: 't7', why: `real T7 ${t7m.motbin} (${t7m.anim})`, limb: limbT, level: levelT,
+          grab: false, timing: timingT, rejected: [] };
+      }
+    }
     const sp = this._resolveStepPlan(move, attackName, ms);
     if (sp) {
       const limb0 = Fighter.attackLimb(move, attackName);
@@ -1197,8 +1225,18 @@ export class Fighter {
     if (!this._t3) return null;
     const p = this._atkPlan;
     if (p && p.id === this._attackId && p.move === move) return p.name;
-    const plan = this._attackClipPlan(move, attackName);
+    let plan = this._attackClipPlan(move, attackName);
     let name = plan ? plan.name : null;
+    if (name && !this.t3actions[name] && name.startsWith('t7:')) {
+      const rc = t7MoveRetarget(this.char.id, this._t3.bank, name.slice(3), this._t3.model, THREE, this._t3.modelKey);
+      if (rc && rc[name]) Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
+      if (!this.t3actions[name]) {
+        // Could not retarget safely: this move keeps its previous clip choice from now on.
+        (this._t7skip || (this._t7skip = new Set())).add(name.slice(3));
+        plan = this._attackClipPlan(move, attackName);
+        name = plan ? plan.name : null;
+      }
+    }
     if (name && !this.t3actions[name] && name.startsWith('row:')) {
       if (plan.stepBank && plan.stepBank !== this._t3.bank && plan.stepRow != null) {
         // Per-step-bank action: retarget the override bank's own
@@ -1284,7 +1322,9 @@ export class Fighter {
     const attacking = this.state === 'attack' || this.state === 'vskill' || this.state === 'vreversal';
     if (!attacking) { this._rmPrev = null; return; }
     const p = this._atkPlan;
-    if (!p || p.id !== this._attackId || !p.name || !String(p.name).startsWith('row:')) { this._rmPrev = null; return; }
+    // Decoded move rows ('row:*') and real T7 move clips ('t7:*', raw T7 root channel) carry the move's travel.
+    const isT7 = !!(p && p.name && String(p.name).startsWith('t7:'));
+    if (!p || p.id !== this._attackId || !p.name || !(String(p.name).startsWith('row:') || isT7)) { this._rmPrev = null; return; }
     // T3 throw-situation rows (conditions 2-0x17) are throw executions: like the row-230
     // clip, their travel positions the thrown pair and belongs to the throw, not the attempt.
     const tc = this.attack && this.attack.t3Condition;
@@ -1295,21 +1335,25 @@ export class Fighter {
     if (p.stepBank && this._t3 && p.stepBank !== this._t3.bank && p.stepRow != null) {
       const oc = (this._stepBankClips && this._stepBankClips[p.stepBank]) || getT3Clips(p.stepBank);
       clip = oc ? oc['row:' + p.stepRow] : null;
+    } else if (isT7) {
+      const mc = t7MoveClip(this.char.id, this._t3 && this._t3.bank, String(p.name).slice(3));
+      clip = mc ? mc.clip : null;
     } else clip = this._t3 && this._t3.clips ? this._t3.clips[p.name] : null;
     const raw = clip && clip.userData && clip.userData.raw;
-    const rt = raw && raw.root_t;
+    const rt = isT7 ? (clip && clip.userData && clip.userData.rootMotionT) : (raw && raw.root_t);
+    const rfps = isT7 ? 60 : ((raw && raw.fps) || 30);
     if (!rt || rt.length < 2) { this._rmPrev = null; return; }
     let clipTime = null;
     if (p.timing) clipTime = attackClipTime(p.timing, this.stateT);
     else { const a = this.t3actions && this.t3actions[p.name]; if (a) clipTime = a.time; }
     if (!Number.isFinite(clipTime)) { this._rmPrev = null; return; }
-    const cur = rootMotionSample(rt, raw.fps || 30, clipTime);
+    const cur = rootMotionSample(rt, rfps, clipTime);
     let prev = this._rmPrev;
     if (!prev || prev.id !== this._attackId || prev.name !== p.name) {
       // First frame this attack's plan is visible (_animate builds the
       // plan after _physics on frame 1): anchor on the clip's frame 0
       // and apply the travel so far in this same call, so nothing is lost.
-      prev = { id: this._attackId, name: p.name, ...rootMotionSample(rt, raw.fps || 30, 0) }; prev.lat0 = prev.lat; prev.fwd0 = prev.fwd;
+      prev = { id: this._attackId, name: p.name, ...rootMotionSample(rt, rfps, 0) }; prev.lat0 = prev.lat; prev.fwd0 = prev.fwd;
     }
     // LATERAL CLAMP (moveset sweep 2026-10-28): some decoded T3 rows carry a metre-scale
     // sideways root track (bad frame-0 anchor in the source), which threw the attacker
