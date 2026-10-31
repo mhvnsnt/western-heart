@@ -43,7 +43,7 @@ It is updated as gaps close.
 | F9 | **Pantera step-plan REVIEW candidates (57) not promoted**; 41 step occurrences UNMAPPED by name | PR #1232 record: last-step verified 11 / review 25 / unmapped 24 across 60 keys; promotion requires the FK soft gate + play-verify video | T3 King branch graph (held) for data; video evidence from the play-verify lane | Play-verify lane (video, running) + provenance lane (data). Not this lane |
 | F10 | **TTT2 integration: megami + menajerii CONSUMED at lane close**; buffalo-bill application is the remaining step | Supply re-counted at current main: `game/assets/ttt2/` = 57 character files, **6,559 records exactly** (6,122 moves + 399 sample combos + 38 stance separators), each with `anim_ref` `ttt2:{char}:row:{n}`. B1 wired megami (15 fills) and menajerii (19 fills) from their own characters' records (PRs #1306/#1307, merged + deployed); the buffalo-bill join table (PR #1309) stands at 76 unique / 29 ambiguous / 22 unmatched-by-name, and the provenance Law-group correction it was sequenced behind has landed. APPLICATION LANDED 2026-10-31 (PR #1317): all 76 unique matches recorded in buffalo-bill.json as ttt2_ref cross-references on 206 entries plus a ttt2_integration section (no existing anim_ref displaced — every entry already carried one); the 29 ambiguous and 22 unmatched stay untouched and UNMAPPED by name. Disclosed overlap: TTT2 rows 82/83 share the same two entry keys; the entries carry row 82 and both rows are recorded in the integration section | The TTT2 layer itself (held, in-repo) | **DONE 2026-10-31 (continuation lane, PR #1317)** |
 | F11 | **T7 format-100 (0x64) clip bodies not yet convertible** — the 450 byte-exact-located clips cannot play in-engine until the rotation convention is solved; format-200 (0xC8) bodies ARE decoded | PR #1281 (merged): probe tool + findings — hinge axis solved (bind-local Y, sign flips between formats), per-bone basis fit not settled; King's stance is a 0xC8 clip (`nakg_kg2kam`) | Modding-community tooling (Kiloutre path) + the game's own skeleton data (held) | Claude Code session (research, running) + 0xC8 stance-bake lane (running). This lane consumes the result when it lands |
-| F12 | **Hit-reaction coverage: 15,380 of 47,987 damaging strikes (32.1%) can pick their own T3 hit reaction; the rest fall back to the generic hit/launch clips** — first reactions audit (owner I-lane, 2026-10-31); full record in the F12 detail section at the end of this doc | Re-parse of all 129 moves-bearing files (56,527 moves) against the engine's own rules (`game/js/fighter.js` `_pickReaction`, `game/js/t3-reaction-select.js`), classifier cross-verified 24/24 against the shipped `selectReactionSlot` run under node. Remainder: 30,024 strikes carry no `t3_row` at all (15,034 of them hold a pickable row in their own `anim_t3` — 2,098 at proven grades); 1,211 strikes' `t3_row` misses their bound bank's reaction table (zen 570 of 570 — bank UNMAPPED by owner decision); 21 chatur string moves carry list-valued `t3_row` the pick can never match; 1,317 picks read the bound bank's row at an index authored for another bank (proxy tables). Verified complete, NOT gaps: reaction packs baked 7,368/7,368 slots across all 22 banks; zero dangling reaction indexes among 18,371 referenced rows; zero picked slots undefined in any bank | Each fighter's own data first: wire `t3_row` from the fighter's own proven-grade `anim_t3` (provenance-lane standards); rebuild proxy-table rows on the bound bank (moveset lane); zen stays gated on the owner's Zen base call / the private Dural bank | Moveset/provenance lane (follow-ups logged in the F12 detail section). This audit changed no moveset data |
+| F12 | **Hit-reaction coverage: 17,500 of 47,987 damaging strikes (36.5%) can pick their own T3 hit reaction; the rest fall back to the generic hit/launch clips** — first reactions audit (owner I-lane, 2026-10-31); full record in the F12 detail section at the end of this doc | Re-parse of all 129 moves-bearing files (56,527 moves) against the engine's own rules (`game/js/fighter.js` `_pickReaction`, `game/js/t3-reaction-select.js`), classifier cross-verified 24/24 against the shipped `selectReactionSlot` run under node. Remainder: 27,904 strikes carry no `t3_row` at all (12,912 of them hold a pickable row in their own `anim_t3` — 0 at proven grades; the proven-grade slice was wired 2026-10-31, see follow-up 1 in the F12 detail section); 1,211 strikes' `t3_row` misses their bound bank's reaction table (zen 570 of 570 — bank UNMAPPED by owner decision); 21 chatur string moves carry list-valued `t3_row` the pick can never match; 1,807 picks read the bound bank's row at an index authored for another bank (proxy tables). Verified complete, NOT gaps: reaction packs baked 7,368/7,368 slots across all 22 banks; zero dangling reaction indexes among 18,371 referenced rows; zero picked slots undefined in any bank | Proven-grade `t3_row` wiring DONE 2026-10-31 (65 per-fighter PRs, #1380-#1456, 2,120 strikes, coverage 32.1% -> 36.5%); mid/guess grades stay in the F3 pool; rebuild proxy-table rows on the bound bank (moveset lane); zen stays gated on the owner's Zen base call / the private Dural bank | Moveset/provenance lane (follow-ups logged in the F12 detail section). This audit changed no moveset data; the follow-up wiring lane's 65 PRs did (F12 detail, follow-up 1) |
 
 ## CUSTOMIZATION gaps
 
@@ -210,6 +210,17 @@ commit that includes PR #1365.
 
 ## F12 detail — hit-reaction coverage audit (2026-10-31, owner I-lane "reactions")
 
+**Update (2026-10-31, I follow-up wiring lane):** follow-up 1 below is DONE —
+the proven-grade slice of G-R1 was wired (65 per-fighter PRs, #1380–#1456;
+2,120 strikes). All counts in this section were re-measured with
+`tools/audit_reactions.py` on main `104d9c9a`: damaging-strike picks
+15,380 (32.1%) -> **17,500 (36.5%)**; strikes with no `t3_row`
+30,024 -> 27,904; proven-grade fillable remainder 0. The closing re-run
+reproduced the audit's verified-complete results (reaction packs complete,
+zero dangling reaction indexes). G-R2/G-R3/G-R4 are unchanged; G-R5's
+proxy-pick count rose during the day from other lanes' merges and is
+restated as measured.
+
 ### What the engine actually requires (read from the shipped code, main `f2137c06`)
 
 A defender ALWAYS reacts at the state level: `receiveHit` in `game/js/fighter.js`
@@ -265,9 +276,9 @@ are not wired fighters in this engine).
 |---|---|
 | Moves total (129 files) | 56,527 |
 | Damaging strikes (damage > 0, not throw-class) | 47,987 |
-| Damaging strikes that pick their own T3 reaction | **15,380 (32.1%)** |
-| — of those, picks reading the bound bank's row at an index authored for a different source bank (proxy tables; a reaction plays, but it is T3's reaction for another move) | 1,317 |
-| Damaging strikes with no `t3_row` at all | 30,024 |
+| Damaging strikes that pick their own T3 reaction | **17,500 (36.5%)** |
+| — of those, picks reading the bound bank's row at an index authored for a different source bank (proxy tables; a reaction plays, but it is T3's reaction for another move) | 1,807 |
+| Damaging strikes with no `t3_row` at all | 27,904 |
 | Damaging strikes whose `t3_row` misses the bound bank table and `common_rows` | 1,211 |
 | Damaging strikes pointing at a throw-range reaction value (by T3 design — they act through the throw system, not the strike pick) | 1,338 |
 | Damaging strikes on never-react attack-class rows (by T3 design) | 34 |
@@ -291,20 +302,23 @@ are not wired fighters in this engine).
 
 ### The gaps, named
 
-**G-R1 — no `t3_row` (30,024 damaging strikes).** The move can land and the
+**G-R1 — no `t3_row` (27,904 damaging strikes).** The move can land and the
 defender plays the generic clip, but no move-specific reaction can ever be
 picked. Split by what the fighter's OWN data already holds (the move's
 `anim_t3` clip mapping, in the bound bank, pointing at a pickable row):
-2,098 strikes at proven grades (`true-map branch-graph` / `true-map exact` /
-`class-verified remap`); 4,517 at mid grades (`true-map class+limb`,
-`true-map class-only`, `true-map input+class`, `same-notation`); 8,419 at
+0 strikes remain at proven grades (`true-map branch-graph` / `true-map exact` /
+`class-verified remap`) — the audit found 2,098; re-measured at wiring time
+the slice was 2,120 (the G lane's pantera corrections had added 18 and 4
+late fills surfaced in kai/kingtyrant), and all 2,120 were wired
+2026-10-31 (follow-up 1 below); 4,500 at mid grades (`true-map class+limb`,
+`true-map class-only`, `true-map input+class`, `same-notation`); 8,412 at
 guess grade (`nearest limb/class/startup` — the F3 pool's standard applies:
 not landable without branch-walk proof); 9,985 whose `anim_t3` sits in a
 different bank than the bound bank (the pick reads the bound bank only);
-426 whose own anim row is itself not pickable; 4,579 with no `anim_t3` at
-all. Worst files by no-row strikes: kronos-attire2 1,295 of 1,412,
-koreshi 726 of 850, demonio-winged 621 of 937, gyou 593 of 901,
-phantom 590 of 883, jin_soul 572 of 864, byou 521 of 661, star 492 of 790.
+428 whose own anim row is itself not pickable; 4,579 with no `anim_t3` at
+all. Worst files by no-row strikes: kronos-attire2 1,292 of 1,412,
+koreshi 722 of 850, demonio-winged 613 of 937, gyou 512 of 901,
+phantom 552 of 883, jin_soul 570 of 864, byou 521 of 661, star 490 of 790.
 
 **G-R2 — `t3_row` misses the bound bank's table (1,410 moves / 1,211
 strikes).** The row index was authored against a different table than the
@@ -361,22 +375,27 @@ jannlee/kasumi/tina, sf-cammy/chunli/dhalsim/guile/mbison/sagat,
 vf-akira/elblaze/jeffry/kage/sarah/wolf — 18 files, 10-28 moves each;
 their home-game reaction data is not T3 data and no T3 bank binds them).
 
-**G-R5 — proxy-table picks (1,399 moves / 1,317 strikes).** For fighters
+**G-R5 — proxy-table picks (1,889 moves / 1,807 strikes).** For fighters
 whose moveset data was built on a proxy source's table but who bind a
 different canon bank (awapop, torch, kai, gyou, rave, koreshi and others),
 the pick reads the BOUND bank's row at the source bank's index: a reaction
 plays, but it is the reaction T3 assigned to a different move. Counted
 separately from missing coverage; the fix is the moveset lane's
 rebuild-on-true-base work already described in fighter.js's `bankIdFor`
-comments. Strike picks on the fighter's own table: 15,380 - 1,317 =
-14,063 (29.3%).
+comments. Strike picks on the fighter's own table: 17,500 - 1,807 =
+15,693 (32.7%).
 
 ### Follow-ups logged (own-data fillable; NOT fixed by this audit)
 
 1. **Wire `t3_row` from each fighter's own proven-grade `anim_t3`** —
-   2,098 damaging strikes (provenance-lane standards, per-fighter PRs).
-   Mid grades (4,517) after branch-walk proof; guess grades (8,419) stay
-   in the F3 pool until proven.
+   **DONE 2026-10-31** (I follow-up lane): 2,120 damaging strikes wired
+   across 65 per-fighter PRs (#1380-#1456), one file per PR, additions
+   only. Every wired row was verified pickable by the shipped
+   `selectReactionSlot` under node before landing (2,120/2,120).
+   Closing audit re-run (main `104d9c9a`): coverage 15,380 (32.1%) ->
+   17,500 (36.5%); proven-grade remainder 0. Mid grades (4,500) after
+   branch-walk proof; guess grades (8,412) stay in the F3 pool until
+   proven.
 2. **Chatur's 21 list-valued `t3_row`** — decide the reaction row per
    string (the clip convention is the last row; all 21 pickable) in the
    moveset lane, noting per-step picks are the full form under the
@@ -392,33 +411,33 @@ comments. Strike picks on the fighter's own table: 15,380 - 1,317 =
 
 | File | Bound bank | Moves | Damaging strikes | Picks | Pick % | Largest remainder |
 |---|---|---|---|---|---|---|
-| aotsuki | kuma | 530 | 473 | 152 | 32% | no t3_row 320 |
-| armor-king | armorking | 500 | 412 | 74 | 18% | no t3_row 308 |
-| awapop | nina | 909 | 813 | 224 | 28% | no t3_row 483 |
+| aotsuki | kuma | 530 | 473 | 229 | 48% | no t3_row 243 |
+| armor-king | armorking | 500 | 412 | 104 | 25% | no t3_row 278 |
+| awapop | nina | 909 | 813 | 310 | 38% | no t3_row 397 |
 | baek | bryan | 111 | 99 | 97 | 98% | no t3_row 2 |
 | baek-master-white | bryan | 291 | 116 | 104 | 90% | no t3_row 12 |
-| blanka | bryan | 199 | 166 | 82 | 49% | no t3_row 82 |
+| blanka | bryan | 199 | 166 | 84 | 51% | no t3_row 80 |
 | bob | jin | 557 | 519 | 86 | 17% | no t3_row 411 |
 | bruno | bryan | 328 | 306 | 97 | 32% | no t3_row 209 |
-| buffalo-bill | law | 796 | 728 | 254 | 35% | no t3_row 415 |
+| buffalo-bill | law | 796 | 728 | 332 | 46% | no t3_row 337 |
 | burger | bryan | 552 | 512 | 103 | 20% | no t3_row 409 |
 | burger-demon | — none | 466 | 431 | 0 | 0% | no t3_row 431 |
 | burger-speed-demon | — none | 454 | 422 | 0 | 0% | no t3_row 422 |
 | burger-the-mouth | — none | 454 | 423 | 0 | 0% | no t3_row 423 |
 | byou | jin | 728 | 661 | 123 | 19% | no t3_row 521 |
 | cainelias | king | 46 | 23 | 22 | 96% | no t3_row 1 |
-| charger | bryan | 203 | 170 | 82 | 48% | no t3_row 86 |
-| charger-attire2 | bryan | 199 | 166 | 82 | 49% | no t3_row 82 |
+| charger | bryan | 203 | 170 | 84 | 49% | no t3_row 84 |
+| charger-attire2 | bryan | 199 | 166 | 84 | 51% | no t3_row 80 |
 | chatur | ogre | 281 | 263 | 234 | 89% | row miss 21 |
-| chordz | jin | 469 | 415 | 112 | 27% | no t3_row 286 |
-| cyborgx | gunjack | 624 | 549 | 124 | 23% | no t3_row 424 |
-| deathfang | heihachi | 127 | 106 | 23 | 22% | no t3_row 81 |
-| deathfang-werewolf | heihachi | 127 | 106 | 23 | 22% | no t3_row 81 |
-| demonio | jin | 764 | 687 | 278 | 40% | no t3_row 389 |
-| demonio-bloodline-ember | jin | 686 | 608 | 281 | 46% | no t3_row 307 |
-| demonio-human | jin | 683 | 608 | 282 | 46% | no t3_row 306 |
-| demonio-winged | jin | 1063 | 937 | 296 | 32% | no t3_row 621 |
-| diablo | heihachi | 661 | 585 | 268 | 46% | no t3_row 310 |
+| chordz | jin | 469 | 415 | 113 | 27% | no t3_row 285 |
+| cyborgx | gunjack | 624 | 549 | 125 | 23% | no t3_row 423 |
+| deathfang | heihachi | 127 | 106 | 24 | 23% | no t3_row 80 |
+| deathfang-werewolf | heihachi | 127 | 106 | 24 | 23% | no t3_row 80 |
+| demonio | jin | 764 | 687 | 299 | 44% | no t3_row 368 |
+| demonio-bloodline-ember | jin | 686 | 608 | 313 | 51% | no t3_row 275 |
+| demonio-human | jin | 683 | 608 | 299 | 49% | no t3_row 289 |
+| demonio-winged | jin | 1063 | 937 | 304 | 32% | no t3_row 613 |
+| diablo | heihachi | 661 | 585 | 297 | 51% | no t3_row 281 |
 | dio | heihachi | 275 | 256 | 124 | 48% | no t3_row 130 |
 | doa-ayane | — none | 23 | 14 | 0 | 0% | no t3_row 14 |
 | doa-bass | — none | 22 | 17 | 0 | 0% | no t3_row 17 |
@@ -426,89 +445,89 @@ comments. Strike picks on the fighter's own table: 15,380 - 1,317 =
 | doa-jannlee | — none | 21 | 15 | 0 | 0% | no t3_row 15 |
 | doa-kasumi | — none | 20 | 18 | 0 | 0% | no t3_row 18 |
 | doa-tina | — none | 26 | 16 | 0 | 0% | no t3_row 16 |
-| doc-frank-frankenstein | bosconovitch | 788 | 589 | 286 | 49% | no t3_row 248 |
-| doc-frank-hood | bosconovitch | 892 | 651 | 286 | 44% | no t3_row 310 |
-| doc-frank-machine-shop | bosconovitch | 933 | 682 | 300 | 44% | no t3_row 312 |
-| doc-frank-wowomomo | bosconovitch | 892 | 651 | 286 | 44% | no t3_row 310 |
-| docfrank | bosconovitch | 380 | 316 | 231 | 73% | no t3_row 62 |
+| doc-frank-frankenstein | bosconovitch | 788 | 589 | 338 | 57% | no t3_row 196 |
+| doc-frank-hood | bosconovitch | 892 | 651 | 351 | 54% | no t3_row 245 |
+| doc-frank-machine-shop | bosconovitch | 933 | 682 | 365 | 54% | no t3_row 247 |
+| doc-frank-wowomomo | bosconovitch | 892 | 651 | 351 | 54% | no t3_row 245 |
+| docfrank | bosconovitch | 380 | 316 | 239 | 76% | no t3_row 54 |
 | dorowani | gon | 175 | 156 | 150 | 96% | throw-range value 6 |
 | dxmmii | jin | 150 | 135 | 116 | 86% | throw-range value 17 |
 | dxmmii-patchwork | jin | 170 | 145 | 116 | 80% | throw-range value 17 |
-| gashadokuro | kuma | 530 | 473 | 152 | 32% | no t3_row 320 |
-| gyou | hwoarang | 1005 | 901 | 249 | 28% | no t3_row 593 |
-| gyou-spirit-body | paul | 567 | 492 | 197 | 40% | no t3_row 272 |
+| gashadokuro | kuma | 530 | 473 | 229 | 48% | no t3_row 243 |
+| gyou | hwoarang | 1005 | 901 | 330 | 37% | no t3_row 512 |
+| gyou-spirit-body | paul | 567 | 492 | 198 | 40% | no t3_row 271 |
 | hugo | king | 130 | 108 | 73 | 68% | throw-range value 26 |
 | iori | heihachi | 196 | 175 | 95 | 54% | no t3_row 76 |
 | jin_soul | yoshimitsu | 1012 | 864 | 275 | 32% | no t3_row 572 |
-| kai | eddy | 877 | 796 | 271 | 34% | no t3_row 460 |
-| kingtyrant | eddy | 848 | 779 | 306 | 39% | no t3_row 446 |
-| kinpo | jin | 525 | 471 | 113 | 24% | no t3_row 341 |
-| koreshi | heihachi | 1080 | 850 | 77 | 9% | no t3_row 726 |
-| kronos | king | 900 | 525 | 88 | 17% | no t3_row 401 |
-| kronos-attire2 | king | 2600 | 1412 | 82 | 6% | no t3_row 1295 |
+| kai | eddy | 877 | 796 | 349 | 44% | no t3_row 382 |
+| kingtyrant | eddy | 848 | 779 | 363 | 47% | no t3_row 389 |
+| kinpo | jin | 525 | 471 | 114 | 24% | no t3_row 340 |
+| koreshi | heihachi | 1080 | 850 | 81 | 10% | no t3_row 722 |
+| kronos | king | 900 | 525 | 91 | 17% | no t3_row 398 |
+| kronos-attire2 | king | 2600 | 1412 | 85 | 6% | no t3_row 1292 |
 | kutz | king | 160 | 122 | 96 | 79% | throw-range value 24 |
 | lili | xiaoyu | 508 | 466 | 122 | 26% | no t3_row 344 |
 | marduk | king | 340 | 284 | 67 | 24% | no t3_row 177 |
 | mariposa | — none | 372 | 342 | 0 | 0% | no t3_row 342 |
-| mariposa-monarch | xiaoyu | 518 | 475 | 121 | 25% | no t3_row 354 |
+| mariposa-monarch | xiaoyu | 518 | 475 | 122 | 26% | no t3_row 353 |
 | megami | — none | 304 | 259 | 0 | 0% | no t3_row 259 |
 | menajerii | kuma | 193 | 137 | 3 | 2% | no t3_row 134 |
 | michiko | jin | 344 | 319 | 122 | 38% | no t3_row 180 |
 | negativo | bryan | 292 | 275 | 97 | 35% | no t3_row 178 |
-| nightwolf | julia | 567 | 528 | 204 | 39% | no t3_row 244 |
-| pantera | king | 874 | 634 | 221 | 35% | no t3_row 369 |
-| phantom | yoshimitsu | 1019 | 883 | 276 | 31% | no t3_row 590 |
+| nightwolf | julia | 567 | 528 | 233 | 44% | no t3_row 215 |
+| pantera | king | 874 | 634 | 249 | 39% | no t3_row 341 |
+| phantom | yoshimitsu | 1019 | 883 | 314 | 36% | no t3_row 552 |
 | pond | — none | 620 | 552 | 0 | 0% | no t3_row 552 |
 | purplerain | jin | 569 | 514 | 115 | 22% | no t3_row 382 |
 | raiden | gunjack | 114 | 100 | 95 | 95% | row miss 4 |
 | rave | lei | 1086 | 991 | 418 | 42% | no t3_row 484 |
 | realizzt | jin | 156 | 141 | 122 | 87% | throw-range value 17 |
-| retsu | bryan | 739 | 625 | 221 | 35% | no t3_row 399 |
-| rin | jin | 710 | 592 | 283 | 48% | no t3_row 289 |
+| retsu | bryan | 739 | 625 | 260 | 42% | no t3_row 360 |
+| rin | jin | 710 | 592 | 316 | 53% | no t3_row 256 |
 | ryuji | — none | 127 | 94 | 0 | 0% | no t3_row 83 |
-| ryuji-rock | king | 129 | 94 | 11 | 12% | no t3_row 83 |
+| ryuji-rock | king | 129 | 94 | 13 | 14% | no t3_row 81 |
 | ryusan | — none | 211 | 197 | 0 | 0% | no t3_row 197 |
-| sakura | xiaoyu | 764 | 655 | 269 | 41% | no t3_row 359 |
-| samura1 | gunjack | 860 | 741 | 302 | 41% | no t3_row 436 |
+| sakura | xiaoyu | 764 | 655 | 290 | 44% | no t3_row 338 |
+| samura1 | gunjack | 860 | 741 | 329 | 44% | no t3_row 409 |
 | scimitar | jin | 362 | 323 | 112 | 35% | no t3_row 194 |
-| sf-akuma | heihachi | 168 | 156 | 0 | 0% | no t3_row 156 |
-| sf-blanka | bryan | 37 | 34 | 0 | 0% | no t3_row 34 |
+| sf-akuma | heihachi | 168 | 156 | 8 | 5% | no t3_row 148 |
+| sf-blanka | bryan | 37 | 34 | 11 | 32% | no t3_row 23 |
 | sf-cammy | — none | 10 | 9 | 0 | 0% | no t3_row 9 |
 | sf-chunli | — none | 10 | 9 | 0 | 0% | no t3_row 9 |
 | sf-dhalsim | — none | 10 | 8 | 0 | 0% | no t3_row 8 |
 | sf-guile | — none | 11 | 10 | 0 | 0% | no t3_row 10 |
-| sf-ken | jin | 32 | 30 | 0 | 0% | no t3_row 30 |
+| sf-ken | jin | 32 | 30 | 9 | 30% | no t3_row 21 |
 | sf-mbison | — none | 12 | 10 | 0 | 0% | no t3_row 10 |
-| sf-ryu | jin | 34 | 33 | 0 | 0% | no t3_row 33 |
+| sf-ryu | jin | 34 | 33 | 9 | 27% | no t3_row 24 |
 | sf-sagat | — none | 10 | 9 | 0 | 0% | no t3_row 9 |
-| sf-vega | xiaoyu | 36 | 28 | 0 | 0% | no t3_row 28 |
-| sf-zangief | king | 36 | 25 | 0 | 0% | no t3_row 25 |
-| sha | xiaoyu | 785 | 674 | 269 | 40% | no t3_row 378 |
+| sf-vega | xiaoyu | 36 | 28 | 9 | 32% | no t3_row 19 |
+| sf-zangief | king | 36 | 25 | 9 | 36% | no t3_row 16 |
+| sha | xiaoyu | 785 | 674 | 291 | 43% | no t3_row 356 |
 | silvertongue | xiaoyu | 508 | 466 | 122 | 26% | no t3_row 344 |
-| skull | bryan | 688 | 632 | 222 | 35% | no t3_row 405 |
+| skull | bryan | 688 | 632 | 251 | 40% | no t3_row 376 |
 | slice | bryan | 486 | 415 | 97 | 23% | no t3_row 318 |
-| star | xiaoyu | 908 | 790 | 271 | 34% | no t3_row 492 |
+| star | xiaoyu | 908 | 790 | 273 | 35% | no t3_row 490 |
 | street-reign | — none | 5 | 4 | 0 | 0% | no t3_row 4 |
 | sunra | heihachi | 139 | 130 | 124 | 95% | no t3_row 4 |
-| t3-anna | anna | 743 | 679 | 166 | 24% | no t3_row 471 |
+| t3-anna | anna | 743 | 679 | 248 | 37% | no t3_row 389 |
 | t3-bosconovitch | bosconovitch | 266 | 250 | 229 | 92% | throw-range value 21 |
-| t3-eddy | eddy | 707 | 644 | 201 | 31% | no t3_row 437 |
-| t3-forestlaw | forestlaw | 102 | 98 | 98 | 100% | — |
+| t3-eddy | eddy | 707 | 644 | 282 | 44% | no t3_row 356 |
+| t3-forestlaw | forestlaw | 102 | 98 | 98 | 100% | no t3_row 0 |
 | t3-gon | gon | 151 | 134 | 130 | 97% | throw-range value 4 |
-| t3-hwoarang | hwoarang | 723 | 658 | 163 | 25% | no t3_row 482 |
-| t3-julia | julia | 419 | 390 | 148 | 38% | no t3_row 227 |
-| t3-kuma | kuma | 530 | 473 | 152 | 32% | no t3_row 320 |
-| t3-law | law | 693 | 629 | 188 | 30% | no t3_row 415 |
-| t3-lei | lei | 790 | 719 | 222 | 31% | no t3_row 470 |
-| t3-nina | nina | 754 | 671 | 153 | 23% | no t3_row 481 |
+| t3-hwoarang | hwoarang | 723 | 658 | 251 | 38% | no t3_row 394 |
+| t3-julia | julia | 419 | 390 | 179 | 46% | no t3_row 196 |
+| t3-kuma | kuma | 530 | 473 | 229 | 48% | no t3_row 243 |
+| t3-law | law | 693 | 629 | 269 | 43% | no t3_row 334 |
+| t3-lei | lei | 790 | 719 | 254 | 35% | no t3_row 438 |
+| t3-nina | nina | 754 | 671 | 260 | 39% | no t3_row 374 |
 | t3-ogre | ogre | 161 | 153 | 146 | 95% | throw-range value 7 |
-| t3-paul | paul | 497 | 425 | 136 | 32% | no t3_row 272 |
+| t3-paul | paul | 497 | 425 | 181 | 43% | no t3_row 227 |
 | thor | bryan | 322 | 225 | 97 | 43% | no t3_row 128 |
-| tobi | hwoarang | 729 | 664 | 163 | 25% | no t3_row 488 |
-| torch | anna | 892 | 824 | 262 | 32% | no t3_row 485 |
-| tou | paul | 681 | 583 | 230 | 39% | no t3_row 303 |
+| tobi | hwoarang | 729 | 664 | 251 | 38% | no t3_row 400 |
+| torch | anna | 892 | 824 | 326 | 40% | no t3_row 421 |
+| tou | paul | 681 | 583 | 275 | 47% | no t3_row 258 |
 | vainabel | — none | 60 | 42 | 0 | 0% | no t3_row 38 |
-| vega | xiaoyu | 207 | 174 | 106 | 61% | no t3_row 66 |
+| vega | xiaoyu | 207 | 174 | 109 | 63% | no t3_row 63 |
 | vf-akira | — none | 20 | 17 | 0 | 0% | no t3_row 17 |
 | vf-elblaze | — none | 28 | 25 | 0 | 0% | no t3_row 25 |
 | vf-jeffry | — none | 25 | 23 | 0 | 0% | no t3_row 23 |
@@ -517,7 +536,7 @@ comments. Strike picks on the fighter's own table: 15,380 - 1,317 =
 | vf-sarah | — none | 14 | 12 | 0 | 0% | no t3_row 12 |
 | vf-wolf | — none | 21 | 18 | 0 | 0% | no t3_row 18 |
 | waterfall | jin | 365 | 338 | 115 | 34% | no t3_row 206 |
-| yukihyo | armorking | 560 | 445 | 95 | 21% | no t3_row 326 |
+| yukihyo | armorking | 560 | 445 | 115 | 26% | no t3_row 306 |
 | zangief | king | 217 | 150 | 77 | 51% | no t3_row 46 |
 | zen | — none | 644 | 570 | 0 | 0% | row miss 570 |
 | zui | jin | 654 | 562 | 123 | 22% | no t3_row 422 |
