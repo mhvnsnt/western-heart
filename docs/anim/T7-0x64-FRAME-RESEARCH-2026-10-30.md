@@ -100,3 +100,27 @@ Playable now, without solving 0x64:
   - Every frame is a standing guard: feet on the floor, upright, left foot forward, both hands up in front.
   - Loop seam < 3 cm.
   - Wiring is Pantera-only.
+
+## Shipped: real T7 stances for 12 more fighters (2026-10-31)
+
+Same tool, same path. Each fighter gets its CANON base's own T7 stance clip (the clip the base's `<code>_sKAM00_` move plays) wherever that clip is 0xC8 and the fighter has a bound bank. Every bake's FK self-check is 0.000000 m, and the stances are distinct (frame-1 joints differ by 0.17–0.43 m between characters).
+
+| Fighter(s) | T7 base | Clip | Frames |
+|---|---|---|---:|
+| Diablo | Heihachi | `nahe_he2kam` heirotsm 126 | 90 |
+| Skull, Retsu | Bryan | `nabx_bx2kam` bryrotsm 126 | 80 |
+| Burger | Bob | `ikfa_kamae` bobrotsm 128 | 386 |
+| Saku Ra, Sha | Xiaoyu | `kmfu_kamae` xiarotsm 126 | 110 |
+| Phantom | Yoshimitsu | `mbym_kamae` yosrotsm 117 | 111 |
+| Gyou, Tobi | Hwoarang | `kmhw_kamae_L` hworotsm 126 | 50 |
+| Gashadokuro | Kuma | `nakm_kam` kumrotsm 201 | 120 |
+| Aotsuki | Panda | `nakm_kam` panrotsm 201 | 120 |
+| Nightwolf | Julia | `najl_jl2kam` julmot.bin inline 119 | 80 |
+
+Not given a stance:
+- **Owner decisions:** Zen is NOT Heihachi; Cyborg X and Zui keep their stances; `jin_soul` is on the decision list.
+- **Only borrow the bank:** Menajerii (Roger Jr., on the kuma bank) and Silvertongue (Lili, on the xiaoyu bank).
+
+Still waiting:
+- **0x64 stances** need the joint frame: Jin (Rin, Demonio), Law (Buffalo Bill), Paul, Nina (Awa Pop), Alisa, Miguel (Bruno), Eddy (Kai, King Tyrant), Asuka (Kinpo), Katarina (Michiko), Akuma (Dio), Jack-7 (Sam-UR-A1), Raven (Pond), Anna (Torch), Lei (Rave), Lili, Zafina (Mariposa), Lucky Chloe (Ryusan).
+- **No bank** needs a stance-only binding first (`fighter.js` falls back to `stance` for any missing action, which would freeze their walking): Purple Rain (Lee), Chordz (Lars) and Negativo (Negan). Their stances are 0xC8.
