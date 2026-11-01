@@ -13,6 +13,8 @@ if (process.env.BLOCK_T7) await page.route('**/anim/t7/' + process.env.BLOCK_T7 
 const logs = [];
 // NO_REMOTE=1: block the B2 Worker so models load from the local tree (asset-config tries the remote first)
 if (process.env.NO_REMOTE) await page.route(/workers\.dev/, r => r.abort());
+// ATTIRES='{"negativo":"negativo-attire2"}' seeds the saved attire choice (game/js/attires.js wh_attires_v1) before load
+if (process.env.ATTIRES) await page.addInitScript((v) => { try { localStorage.setItem('wh_attires_v1', v); } catch (e) { /* none */ } }, process.env.ATTIRES);
 page.on('console', m => logs.push(`[${m.type()}] ${m.text()}`));
 // LOG_MODELS=1: record every .glb request and its status (which host actually served each fighter on a live build)
 if (process.env.LOG_MODELS) page.on('response', r => { if (/\.glb(\?|$)/.test(r.url())) { const l = `MODEL ${r.status()} ${r.url()}`; logs.push(l); console.log(l); } });
