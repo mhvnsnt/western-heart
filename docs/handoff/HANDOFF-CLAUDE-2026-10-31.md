@@ -236,3 +236,21 @@ Worker route handles that lane.
    of every public repo/bucket (private teardown source; put downloads in their own new folder; never run it).
 5. Model hosting for >20 MB fighters (Muse's lane) so the new stances show live for Diablo, Skull, Sakura, Phantom,
    Nightwolf, Aotsuki, Purple Rain, Chordz, Negativo.
+
+---
+
+**Status note — Claude report, 2026-10-31 (recorded by Muse lane at the owner's order):**
+
+> All 13 checks are green. It merges cleanly into the current main, deletes nothing, and changes only the handoff doc. Merging:
+>
+> PR #1461 is merged (e090c0f) and its check-in is cancelled. It only updated the handoff doc, so the live game is unchanged. That doc now records what's wrong with Negativo's rig and the step-by-step fix, so the next agent can pick it up.
+>
+> Nothing new is live since my last update. Three things are still open:
+>
+> 1. Negativo's rig: the fix (re-fit his skeleton, then make his hair follow his head) still has to pass the repo's stretch check before it ships.
+> 2. Model re-uploads: Purple Rain's chest fix only shows in the live game after Muse re-uploads his model to the B2 bucket. I've asked her on #866.
+> 3. Pantera's real King moves: I still need the TekkenGame-Win64-Shipping.exe file from your Steam folder, put somewhere private.
+>
+> That notification just confirms #1461's merge, which I already handled. There are no open PRs left to watch.
+>
+> Background command stopped — "Serve the repo locally for the Purple Rain A/B": The local test server I'd started for the Purple Rain comparisons hit its 2-hour limit and was stopped. Those comparisons finished long ago, so I haven't restarted it.
