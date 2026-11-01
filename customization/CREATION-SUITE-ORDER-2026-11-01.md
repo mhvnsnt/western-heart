@@ -1,6 +1,7 @@
 # Creation suite — owner order and build plan (2026-11-01)
 
-**Status:** in progress (Claude Code, branch `claude/amazing-keller-p8644u`; TASKBOARD row 18). Every agent working on
+**Status:** in progress (Claude Code, branch `claude/amazing-keller-p8644u`; TASKBOARD row 18). Phase 1 done on branch `claude/cs-phase1-template-create`
+(draft PR, 2026-11-01; see "Phase status" below); Phase 2 next. Every agent working on
 the creation suite reads this first. Names law applies to everything a player sees: no Tekken / WWE / teardown
 character names in the UI (the source games are named only in docs about pulling their data).
 
@@ -86,3 +87,14 @@ character names in the UI (the source games are named only in docs about pulling
 6. **WWE / Tekken-style menus**: CAW-editor menu tree (Create / Edit / Template / Body / Face / Hair / Attire layers /
    Paint / Moveset / Profile / Pose & Picture) with sub-windows, laid out from the T7 layout rules and the WWE CAW
    flow; phone portrait + landscape proof shots for every screen.
+
+## Phase status
+
+| Phase | State | Where |
+|---|---|---|
+| 1. Template-first CREATE | **done, in draft PR** (2026-11-01). TEMPLATE SELECT of the 9 base bodies replaced the Soldier default on main (`ed19257b`); this branch makes the template names and body types generic in `customization/templates/body-templates.json` (names law), moves the item / context panel to a left sliding panel per `customization/UNIFIED-UI-SPEC.md` §1 (`css/suite-t7.css`, `js/suite.js` `setTab` + viewer safe-area), and fixes the landscape-phone top bar overlap. Playwright probe: 0 overlapping text boxes at 390x844 portrait and 844x390 landscape. Same PR also fixes the game select screen's attire switch on phones (tap now cycles attires; loading / unavailable state; see WORKLOG 2026-11-01). | branch `claude/cs-phase1-template-create` |
+| 2. Tool audit | not started | `customization/CREATION-TOOLS-AUDIT-2026-11-01.md` (to write) |
+| 3. Real body + face morph targets | not started (needs Blender on the VM) | |
+| 4. Edit existing fighters -> save attire / version | not started | |
+| 5. Pose + TAKE PICTURE | not started | |
+| 6. WWE / Tekken-style menus | not started | |

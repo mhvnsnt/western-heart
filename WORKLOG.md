@@ -4270,3 +4270,46 @@ downstream witness/resolution, not canon). Deletions: none.
 - Session handoff with everything (T7 pipeline, deploys, rig triage, open items): docs/handoff/HANDOFF-CLAUDE-2026-10-31.md.
 - Tools committed for the crew: tools/deploy/deploy_delta.py, tools/anim/t7_stance_probe.mjs,
   tools/anim/t7_closeup_probe.mjs; tools/gltfpack/fetch-gltfpack.sh fixed (real tag + gltfpack build flag).
+
+## 2026-11-01 — Claude: creation suite Phase 1 (generic templates, left sliding panel) + select-screen attire switch fix
+
+Branch `claude/cs-phase1-template-create` (cut from main `d2cd6e20`), draft PR. Order + plan:
+`customization/CREATION-SUITE-ORDER-2026-11-01.md` (Phase status table added).
+
+- **Creation suite Phase 1.** `customization/templates/body-templates.json`: the 9 base-body templates carry generic
+  names and body types (names law). `customization/creation-suite-ui/css/suite-t7.css` + `js/suite.js`: item / context
+  panel is a left sliding panel per `customization/UNIFIED-UI-SPEC.md` §1 (slides in on every category change; the 3D
+  viewer's safe area now accounts for a left-side panel); landscape-phone top bar no longer overlaps. Teardown source:
+  T7 customization layout (`teardown/tekken7-steam-ui/T7-UI-LAYOUT.md`, `packages/creation-suite/src/t7layout.js`).
+  Proof: Playwright text-overlap probe, 0 overlaps at 390x844 portrait and 844x390 landscape.
+- **Select-screen attire switch (owner on a phone: "it reacts but the outfit does not change").** Measured causes:
+  1. The △ button called `punchAttire`, which always returns to attire 1, so on attire 1 a tap did nothing. It now
+     calls `cycleAttire` (next attire, wraps n -> 1) and its label reads "Attire N/M". Keyboard J/K unchanged.
+  2. `showOnSide` covered the stage with the fighter's portrait (the same image for every attire) while each new
+     attire streamed in and again when it failed, so a slow or failed attire looked identical to the old one. Now the
+     current 3D fighter stays up while the next attire loads; pane + △ button carry `data-attire-state`
+     (loading = spinner glyph + stage pulse; unavailable = greyed, hatched portrait + struck-through label). No
+     on-stage text (owner law in `select-t7.css`). A superseded attire load can no longer clobber the newer one's state.
+  3. Remote attire GLBs (Pantera attire 2 `leopard-king/model-refit.glb`, Kevin `baek/attires/attire1`) are NOT broken:
+     the "CORS error" in the earlier probe came from the sandbox's authenticated egress proxy, which rejected the headless
+     browser (no proxy credentials) with a header-less response that Chrome reports as CORS. With the proxy credentials
+     the Worker serves `leopard-king/model-refit.glb` 200, 32,679,076 B, `access-control-allow-origin: *`, `model/gltf-binary`
+     in ~2.4 s, and the game loads it. (Probe note: Playwright forces loopback through a configured proxy; set
+     `PLAYWRIGHT_DISABLE_FORCED_CHROMIUM_PROXIED_LOOPBACK=1`.)
+  4. `game/js/asset-config.js`: shell-bundled models (Pantera attire 1 `leomon/model.glb`) had a single local candidate,
+     so any build missing the file (itch caps, sparse checkout) failed outright; they now fall back to the remote base.
+  - Bucket gap found: `roster/pantera/attires/snow-leopard/pantera-snow-leopard.glb` is 404 on the Worker (jsDelivr serves
+    it, so it still loads). Not fixed here (needs an upload to the B2 bucket).
+  - Names law: Pantera attire 3 `ATTIRE 3 · T7 KING P1 RESKIN` -> `ATTIRE 3 · CLASSIC`; attire 6 `ATTIRE 6 · T7 P2` ->
+    `ATTIRE 6 · CLASSIC ALT` (`game/js/attires.js`). Other ladders still show source-game names (Doc Frank, Mariposa,
+    Deathfang, Charger, Phantom, Slice ...): left for a names-law sweep.
+  - Teardown source (ui_sources law): `screen-select` entry in `game/ui_sources.json` (T8 CHARACTER-SELECT.md,
+    "Customized Slots" attire choice; T7-UI-LAYOUT.md); no new files.
+  - Proof (Playwright, phone 390x844 with taps, WebGL draws stubbed for the software renderer): △ taps 1 -> 2 -> 3 -> 4
+    load four different models (different mesh sets), label 1/6 -> 4/6, loading state shown mid-load and cleared after;
+    forced failure (leopard-king blocked) shows the unavailable state. Landscape 844x390: same. Shots in the PR.
+- Tests: `node --test` on test/no-wrong-body, owner-model-first, canon-sizing, game/tests/ui-gaps, preload pass.
+  test/creation-suite-templates (1 of 6), portraits, game/tests/model-key-guard (1 of 3) and fighter-completeness (1 of 4)
+  fail identically before and after these changes on this sparse checkout (missing tools/anim, game/assets, roster files);
+  CI on the PR runs them on a full checkout.
+- Deletions: none.
