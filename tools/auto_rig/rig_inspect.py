@@ -11,6 +11,10 @@ The diagnostics behind the Negativo re-rig (2026-10-31), kept so any agent can r
             side, plus the Head weight along the mid-line. Shows faces on chest bones, bellies on thigh bones.
   shares    skinned GLB: weight share per bone inside named body regions (face, chin, neck, arms, chest, ...),
             using the GLB's own joint positions (regions are relative to Head/Neck/Spine2/Arm joints).
+  compare   two skinned GLBs of the SAME source mesh (different pipelines / skeletons): body regions are cut once,
+            from the first GLB's joints, in height-normalized coordinates, and both rigs' weights are summed per
+            bone GROUP there (Head / Neck / Torso / Clavicle / Arm / Leg; GameRig's Breast/Pelvis count as Torso).
+            Shows which rig really keeps the face on the head and the arms on the arm bones.
   seams     skinned GLB: do the copies of every UV-seam vertex (same position) carry the same weights? If not, the
             seam opens into a crack under animation; no edge-stretch metric can see it (no triangle edge spans a
             seam). smooth_weights.py left 6,688 such copies on Negativo (2026-11-01).
@@ -24,6 +28,7 @@ usage:
   python3 tools/auto_rig/rig_inspect.py sections --fit A.json --out sections.png
   python3 tools/auto_rig/rig_inspect.py weights  --glb RIG.glb --out weights.png [--min-y 0.3]
   python3 tools/auto_rig/rig_inspect.py shares   --glb RIG.glb
+  python3 tools/auto_rig/rig_inspect.py compare  --glb REF_RIG.glb --glb2 OTHER_RIG.glb
   python3 tools/auto_rig/rig_inspect.py seams    --glb RIG.glb
   python3 tools/auto_rig/rig_inspect.py stretch  --glb RIG_WITH_CLIP.glb [--frames 10]
 Plain glTF (decode meshopt first). The plotting modes need matplotlib (pip install matplotlib).
@@ -61,20 +66,38 @@ def _plt():
 
 def load_skinned(path):
     """(positions, JOINTS_0, WEIGHTS_0, triangle indices, joint names, joint bind positions) of the first skinned
-    primitive, positions in the mesh's bind space."""
-    import rig_qa
-    js, blob = rig_qa.read_glb(path)
-    nd = next(n for n in js['nodes'] if 'mesh' in n and n.get('skin') is not None)
-    sk = js['skins'][nd['skin']]
-    names = [js['nodes'][j].get('name', '') for j in sk['joints']]
-    pr = next(p for p in js['meshes'][nd['mesh']]['primitives'] if 'JOINTS_0' in p['attributes'])
-    at = pr['attributes']
-    P = rig_qa.accessor(js, blob, at['POSITION']).astype(np.float64)
-    Jn = rig_qa.accessor(js, blob, at['JOINTS_0']).astype(int)
-    W = rig_qa.accessor(js, blob, at['WEIGHTS_0']).astype(np.float64)
-    T = rig_qa.accessor(js, blob, pr['indices']).reshape(-1, 3).astype(np.int64) if 'indices' in pr else None
-    ibm = rig_qa.accessor(js, blob, sk['inverseBindMatrices']).reshape(-1, 4, 4).transpose(0, 2, 1)
-    jp = {n: np.linalg.inv(m)[:3, 3] for n, m in zip(names, ibm)}
+    primitive, in the SKINNED REST POSE (world space: joint bind world x inverse bind x vertex, so gltfpack's
+    quantized positions / dequantizing IBMs come out in metres), turned so the model faces +Z with Left* on +X
+    (toes decide), like refit_skeleton's fit space. Comparable across rigs from different pipelines."""
+    import anim_check as ac
+    from smooth_weights import _skin_fast
+    m = ac.AnimModel(path)
+    pr = m.prims[0]
+    jidx = np.array(m.joint_nodes)
+    bind = m.bind_world()
+    bs = np.stack([bind[int(j)] @ m.ibm[k] for k, j in enumerate(jidx)])
+    P = _skin_fast(bs, pr, np.c_[pr['pos'], np.ones(len(pr['pos']))])
+    names = [m.nodes[int(j)].get('name', '') for j in jidx]
+    jp = {n: np.asarray(bind[int(j)])[:3, 3].astype(np.float64) for n, j in zip(names, jidx)}
+    # face +Z: toes ahead of the ankles; Left* on +X
+    R = np.eye(3)
+    if all(k in jp for k in ('LeftFoot', 'LeftToeBase', 'RightFoot', 'RightToeBase')):
+        fwd = (jp['LeftToeBase'] - jp['LeftFoot'] + jp['RightToeBase'] - jp['RightFoot'])[[0, 2]]
+        ang = np.arctan2(fwd[0], fwd[1])                      # heading of the toes from +Z, about +Y
+        c, s_ = np.cos(-ang), np.sin(-ang)
+        R = np.array([[c, 0, s_], [0, 1, 0], [-s_, 0, c]])
+    P = P @ R.T
+    jp = {n: R @ v for n, v in jp.items()}
+    y0 = P[:, 1].min()
+    P[:, 1] -= y0
+    for n in jp:
+        jp[n] = jp[n] - np.array([0, y0, 0])
+    if 'LeftArm' in jp and 'RightArm' in jp and jp['LeftArm'][0] < jp['RightArm'][0]:
+        P[:, 0] *= -1                                          # mirrored naming: keep Left* on +X
+        jp = {n: v * np.array([-1, 1, 1]) for n, v in jp.items()}
+    Jn = pr['joints'].astype(int)
+    W = pr['weights'].astype(np.float64)
+    T = pr['idx'].reshape(-1, 3).astype(np.int64) if pr['idx'] is not None else None
     return P, Jn, W, T, names, jp
 
 
@@ -200,6 +223,67 @@ def cmd_shares(a):
         print('%-34s n=%8d  %s' % (label, m.sum(), '  '.join('%s %.1f%%' % (names[i], 100 * acc[i]) for i in top if acc[i] > 0.005)))
 
 
+def bone_group(name):
+    n = name.split(':')[-1]
+    if n.startswith('Head'):
+        return 'Head'
+    if n.startswith('Neck'):
+        return 'Neck'
+    if n in ('LeftShoulder', 'RightShoulder') or n.startswith(('DEF-shoulder', 'Clavicle')):
+        return 'Clav'
+    if n.startswith(('LeftArm', 'RightArm', 'LeftForeArm', 'RightForeArm', 'LeftHand', 'RightHand')):
+        return 'Arm'
+    if n.startswith(('LeftUpLeg', 'RightUpLeg', 'LeftLeg', 'RightLeg', 'LeftFoot', 'RightFoot', 'LeftToe', 'RightToe')):
+        return 'Leg'
+    if n.startswith(('Hips', 'Spine', 'Chest', 'Pelvis', 'LeftBreast', 'RightBreast', 'LeftPelvis', 'RightPelvis')):
+        return 'Torso'
+    return 'other'
+
+
+def cmd_compare(a):
+    from scipy.spatial import cKDTree
+    rigs = []
+    for path in (a.glb, a.glb2):
+        P, Jn, W, _, names, jp = load_skinned(path)
+        lo, H = P.min(0), P[:, 1].max() - P[:, 1].min()
+        rigs.append({'path': path, 'Pn': (P - lo) / H, 'Jn': Jn, 'W': W, 'names': names,
+                     'jpn': {n: (v - lo) / H for n, v in jp.items()}, 'H': H})
+    ref = rigs[0]
+    J = ref['jpn']
+    x, y, z = ref['Pn'].T
+    cx, hz, hy, ny = J['Hips'][0], J['Head'][2], J['Head'][1], J['Neck'][1]
+    ya = (J['LeftArm'][1] + J['RightArm'][1]) / 2
+    regions = {
+        'face (front of head)': (y > hy) & (y < hy + 0.15) & (z > hz + 0.04) & (np.abs(x - cx) < 0.08),
+        'head + hair': y > hy,
+        'chin / jaw underside': (y > hy - 0.015) & (y < hy) & (z > hz + 0.03) & (np.abs(x - cx) < 0.04),
+        'neck': (y > ny - 0.01) & (y < hy) & (np.abs(x - cx) < 0.035),
+        'upper arms': ((x > J['LeftArm'][0] + 0.01) & (x < J['LeftForeArm'][0]) | (x < J['RightArm'][0] - 0.01) & (x > J['RightForeArm'][0])) & (np.abs(y - ya) < 0.06),
+        'forearms': ((x > J['LeftForeArm'][0]) & (x < J['LeftHand'][0]) | (x < J['RightForeArm'][0]) & (x > J['RightHand'][0])) & (np.abs(y - ya) < 0.06),
+        'abdomen': (y > J['Hips'][1]) & (y < J['Spine1'][1]) & (np.abs(x - cx) < 0.06),
+        'chest': (y > J['Spine1'][1]) & (y < ya) & (np.abs(x - cx) < 0.08),
+    }
+    want = {'face (front of head)': 'Head', 'head + hair': 'Head', 'chin / jaw underside': 'Head+Neck',
+            'neck': 'Head+Neck+Torso', 'upper arms': 'Arm', 'forearms': 'Arm', 'abdomen': 'Torso', 'chest': 'Torso'}
+    out = {'reference_regions_from': a.glb, 'rigs': [r['path'] for r in rigs], 'regions': {}}
+    for r in rigs:
+        if r is ref:
+            idx = np.arange(len(r['Pn']))
+        else:  # same source mesh: map the reference's vertices to this rig's nearest vertex
+            idx = cKDTree(r['Pn']).query(ref['Pn'], k=1)[1]
+        grp = np.array([bone_group(n) for n in r['names']], dtype=object)
+        for label, m in regions.items():
+            J4, W4 = r['Jn'][idx[m]], r['W'][idx[m]]
+            g = grp[J4]
+            tot = {k: float(W4[g == k].sum()) for k in ('Head', 'Neck', 'Torso', 'Clav', 'Arm', 'Leg', 'other')}
+            s_ = sum(tot.values()) or 1.0
+            share = {k: round(100 * v / s_, 1) for k, v in tot.items() if v / s_ > 0.005}
+            good = sum(share.get(k, 0) for k in want[label].split('+'))
+            out['regions'].setdefault(label, {'should_be': want[label], 'verts': int(m.sum())})[os.path.basename(r['path'])] = {
+                'share_%': share, 'on_the_right_bones_%': round(good, 1)}
+    print(json.dumps(out, indent=1))
+
+
 def cmd_seams(a):
     P, Jn, W, _, names, _ = load_skinned(a.glb)
     key = np.round(P / 1e-6).astype(np.int64)
@@ -271,10 +355,12 @@ def main():
     p = sub.add_parser('weights'); p.add_argument('--glb', required=True); p.add_argument('--out', required=True)
     p.add_argument('--min-y', type=float, default=0.3)
     p = sub.add_parser('shares'); p.add_argument('--glb', required=True)
+    p = sub.add_parser('compare'); p.add_argument('--glb', required=True); p.add_argument('--glb2', required=True)
     p = sub.add_parser('seams'); p.add_argument('--glb', required=True)
     p = sub.add_parser('stretch'); p.add_argument('--glb', required=True); p.add_argument('--frames', type=int, default=10)
     a = ap.parse_args()
     {'fit': cmd_fit, 'sections': cmd_sections, 'weights': cmd_weights, 'shares': cmd_shares, 'seams': cmd_seams,
+     'compare': cmd_compare,
      'stretch': cmd_stretch}[a.mode](a)
 
 

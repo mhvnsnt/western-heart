@@ -1,7 +1,7 @@
 {
  "tool": "tools/auto_rig/refit_rig.py",
  "input": "roster/negativo/attires/attire1/source/negativo-a1.glb",
- "output": "roster/negativo/attires/attire1/source/negativo-a1-rigged.glb",
+ "output": "roster/negativo/attires/attire1/source/negativo-a1-refit.glb (via tools/deploy/fit_cdn_budget.py: 18,874,032 B)",
  "height_m": 2.0,
  "facing_in": "+X",
  "verdict": {
@@ -41,5 +41,14 @@
   "sections.png",
   "weights.png"
  ],
- "note": "tearing spikes are listed with the joints of the moving vertices; the CMU boxing window swings the feet with the root pinned (every rig in docs/proof shows 30-80 foot spikes). A spike on a vertex that rides one limb rigidly is motion, not a tear; read the stretch report in mm."
+ "note": "tearing spikes are listed with the joints of the moving vertices; the CMU boxing window swings the feet with the root pinned (every rig in docs/proof shows 30-80 foot spikes). A spike on a vertex that rides one limb rigidly is motion, not a tear; read the stretch report in mm.",
+ "packed_file_gates": {
+  "seams_pass": true,
+  "official_anim_check_p999": 1.188,
+  "strict_stretch_p999_8bit_weights": 2.621,
+  "strict_stretch_p999_before_quantization": 2.496,
+  "max_edge_elongation_mm": 19.81,
+  "edges_elongated_over_20mm": 0,
+  "note": "8-bit WEIGHTS_0 (every shipped model, #1465 included) adds 1/255 steps between neighbours; the rig measured 2.496 before storage quantization"
+ }
 }
