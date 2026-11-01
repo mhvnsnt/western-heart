@@ -1,9 +1,9 @@
 {
- "_comment": "Western Heart creation-suite BODY TEMPLATES (data-driven). New templates drop in here \u2014 no code changes. Body types, skin tones, head shapes and face pools are pulled from the WWE teardown extractions (WWF No Mercy CAW: 14 male + 9 female body types, 8 skin tones, 7M+3F head shapes \u2014 see teardown/wwf-no-mercy/re-docs/docs/ui/menus/edit-a-superstar.md). base_mesh GLBs are generated from these specs by the MB-Lab headless job (tools/mb-lab/run_mblab_job.py); the spec that reproduces each mesh 1:1 is in specs/. Generated meshes are AGPL-3.0 (MB-Lab database) \u2014 see README.md.",
+ "_comment": "Western Heart creation-suite BODY TEMPLATES (data-driven). New templates drop in here \u2014 no code changes. Body types, skin tones, head shapes and face pools are pulled from the WWE teardown extractions (WWF No Mercy CAW: 14 male + 9 female body types, 8 skin tones, 7M+3F head shapes \u2014 see teardown/wwf-no-mercy/re-docs/docs/ui/menus/edit-a-superstar.md). base_mesh GLBs are generated from these specs by the MB-Lab headless job (tools/mb-lab/run_mblab_job.py); the spec that reproduces each mesh 1:1 is in specs/. Generated meshes are AGPL-3.0 (MB-Lab database) \u2014 see README.md. Template names and body_type labels are generic (names law, AGENTS.md: no real wrestlers / source fighters on screen); the teardown class each body came from is recorded only in source (provenance).",
  "templates": [
   {
    "base_mesh": "customization/templates/meshes/super-heavyweight.glb",
-   "body_type": "Rikishi",
+   "body_type": "Super Heavy",
    "desc": "The immovable object. Sumo-crushing mass, huge belly and hips.",
    "division": "Heavyweight",
    "gender": "male",
@@ -28,7 +28,7 @@
   },
   {
    "base_mesh": "customization/templates/meshes/powerhouse.glb",
-   "body_type": "Austin",
+   "body_type": "Brawler",
    "desc": "Brawler heavyweight. Thick torso, heavy arms, mean streak.",
    "division": "Heavyweight",
    "gender": "male",
@@ -42,7 +42,7 @@
      "Tone": 0.75
     }
    },
-   "name": "Texas Powerhouse",
+   "name": "Brawler",
    "proportions": {
     "height": 1.0,
     "muscle": 1.15,
@@ -53,7 +53,7 @@
   },
   {
    "base_mesh": "customization/templates/meshes/showman.glb",
-   "body_type": "Rock",
+   "body_type": "Icon",
    "desc": "Charismatic powerhouse. Broad shoulders, tapered waist, movie-muscle.",
    "division": "Heavyweight",
    "gender": "male",
@@ -103,7 +103,7 @@
   },
   {
    "base_mesh": "customization/templates/meshes/highflyer.glb",
-   "body_type": "HBK",
+   "body_type": "Showman",
    "desc": "Lean and cut. Built to leave the mat.",
    "division": "Cruiserweight",
    "gender": "male",
@@ -153,8 +153,8 @@
   },
   {
    "base_mesh": "customization/templates/meshes/powerhouse-w.glb",
-   "body_type": "Chyna",
-   "desc": "The ninth wonder. Towering, jacked, undeniable.",
+   "body_type": "Athletic F",
+   "desc": "Towering, jacked, undeniable. Heavyweight power in a women's frame.",
    "division": "Women's",
    "gender": "female",
    "head_shape": "female_1",
@@ -178,7 +178,7 @@
   },
   {
    "base_mesh": "customization/templates/meshes/athletic-w.glb",
-   "body_type": "Fit 2",
+   "body_type": "Athletic F",
    "desc": "Strong, fast, all-terrain. The modern prototype.",
    "division": "Women's",
    "gender": "female",
@@ -203,7 +203,7 @@
   },
   {
    "base_mesh": "customization/templates/meshes/striker-w.glb",
-   "body_type": "Petit 1",
+   "body_type": "Petite F",
    "desc": "Small, fast, furious. Precision over power.",
    "division": "Women's",
    "gender": "female",
