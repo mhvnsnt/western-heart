@@ -314,14 +314,18 @@ def conv_t7(row, label, display, t8_recv):
 
 
 # ---------------------------------------------------------------- per-move facts on existing entries
-VARIANT_SUFFIX = re.compile(r"(?:_[cr]\d+)+(?:_\d+)?$|__\w+$|_t[378]$|~[\w.]+$")
+# '~<src>.<id>' tags a source variant ('d/f+1~t7.lei', '4~t7.jin.2', '3~donor.byou'); a bare '~4' / '~D' is the
+# INPUT ('3~4', '4~3', 'f+3~1', 'SCR 3,3,4~D'). Stripping every '~...' (before 2026-11-01) read '3~4' as '3' and
+# slotted it on plain 3 (Phantom, Rave, Diablo, Demonio, Purple Rain '3~3'; tools/moveset-merge/tests/test_notation_slots.py).
+VARIANT_SUFFIX = re.compile(r"(?:_[cr]\d+)+(?:_\d+)?$|__\w+$|_t[378]$|~(?:t\d|donor)\.[\w.]+$")
 
 
 def notation_of(key, m):
     """The input a move answers to. `input` first (input_slots[0] is the FIRST HIT of a string in
     schema-v2 files, and t8_input is only the last segment), variant suffixes stripped
-    ('1+3_c36', 'f+3__main', '1_t8', 'd/f+1~t7.lei'), then input_slots[0], then the key."""
-    for cand in (m.get("input"), key, (m.get("input_slots") or [None])[0], m.get("t7_command")):
+    ('1+3_c36', 'f+3__main', '1_t8', 'd/f+1~t7.lei'), then the key, then the LAST input_slots entry (the
+    whole input: input_slots[0] slotted unparsed strings such as '1,2,&amp;#58;4' on their first hit '1')."""
+    for cand in (m.get("input"), key, (m.get("input_slots") or [None])[-1], m.get("t7_command")):
         if not cand:
             continue
         nt, _ = N.canon(VARIANT_SUFFIX.sub("", str(cand)))
