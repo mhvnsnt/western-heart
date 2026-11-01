@@ -65,6 +65,13 @@ def gre_path(path):
     return p[k:] if k >= 0 else os.path.basename(path)
 
 
+def clip_format(arc, idx):
+    d = open(arc, 'rb').read()
+    m0 = re.search(b'MOTA', d).start()
+    o = m0 + mota_anims(d, m0)[idx]
+    return '0x%X' % (d[o + 1] if d[o] == 0 else d[o])
+
+
 def decode_c8(arc, idx):
     d = open(arc, 'rb').read()
     m0 = re.search(b'MOTA', d).start()
@@ -163,6 +170,7 @@ def main():
     ap.add_argument('--name', default='stance', help='output clip file name (without .json)')
     a = ap.parse_args()
 
+    fmt = clip_format(a.arc, a.clip)
     frames = decode_c8(a.arc, a.clip)
     with tempfile.TemporaryDirectory() as tmp:
         fpath, ppath = os.path.join(tmp, 'frames.json'), os.path.join(tmp, 'posed.json')
@@ -177,8 +185,14 @@ def main():
     provenance = {'character': a.character, 'for_fighter': a.fighter, 'loop': True,
                   't7_source': {'file': gre_path(a.arc) + ' (private GRE repo)', 'sha256': sha256(a.arc),
                                 'mota_block': 0, 'clip': a.clip,
-                                'anim': a.anim, 'format': '0xC8', 'frames': len(frames),
-                                'moves': [m for m in a.moves.split(',') if m]},
+                                'anim': a.anim, 'format': fmt.replace('0XC8', '0xC8').replace('0X64', '0x64'),
+                                'frames': len(frames), 'moves': [m for m in a.moves.split(',') if m],
+                                **({'conversion': {
+                                    'tool': 'tools/anim/t7_anim64_to_c8.py',
+                                    'method': "the game's own sampler (TekkenGame-Win64-Shipping.exe RVA 0x73ea30, CPU-emulated) "
+                                              'sampled at frames 0..n-1, each rotation re-expressed as the 0xC8 Euler triple '
+                                              '(round trip through the game 0xC8 path exact to 3.6e-7)',
+                                    'exe_sha256': sha256(os.environ['T7_EXE'])}} if fmt.upper() == '0X64' else {})},
                   'applier': {'function': 'applyRotationFromAnimdata', 'repo': 'https://github.com/Kiloutre/BlenderTekkenDirect',
                               'commit': HELPER_COMMIT, 'file': 'TekkenAnimHelper.py', 'sha256': sha256(a.helper)}}
     skel, clip, worst = convert(posed, provenance, mannequin_meta)

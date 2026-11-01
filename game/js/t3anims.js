@@ -657,9 +657,13 @@ export function applyT7Stance(fighterId, bankId, clips, model, THREE, instanceKe
    The moves share the stance's skeleton (same dir), so they retarget with the rest pose captured when the stance
    was applied at bind time; a move is never retargeted for a model whose stance was not (t7MoveRetarget).
    Root motion: each clip's root_motion_fwd_m (raw T7 root channel; the applier's posed hips track carries the
-   travel 90 deg off the body, so travel is never read from root_t for these clips). */
+   travel 90 deg off the body, so travel is never read from root_t for these clips).
+   Pantera <- King (2026-11-01): King's attacks are 0x64 clips; tools/anim/t7_anim64_to_c8.py converts them with the
+   game's own sampler (read from TekkenGame-Win64-Shipping.exe, docs/anim/T7-0x64-FRAME-RESEARCH-2026-10-30.md) into
+   0xC8 values, then they take the same proven 0xC8 bake as every stance. */
 export const T7_MOVES = {
   negativo: { bank: 'bryan', dir: 'assets/anim/t7/negan/' },
+  pantera: { bank: 'king', dir: 'assets/anim/t7/king/' },
 };
 const _t7moves = {}; // fighterId -> { bank, skelId, clips: { name: clip }, moves: { moveKey: { clip, active, motbin } } }
 const _t7movesLoading = {};
