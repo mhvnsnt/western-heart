@@ -12,7 +12,12 @@
  * layer — placeholder/personality portraits until the portrait-pose pipeline
  * produces real renders. Not a parallel system: it feeds the existing
  * select-screen portrait slots.
+ *
+ * A portrait the player took in the Creation Suite (POSE & PICTURE) lives
+ * on-device in game/js/user-portraits.js and wins over this procedural
+ * layer in renderPortrait — the suite picture is the real card.
  */
+import { getPortrait } from './user-portraits.js';
 
 var SKIN_TONES = ["#f5d0b0", "#e8b88a", "#c98e5e", "#a06a3c", "#7a4e28", "#5a3820", "#3e2616"];
 var HAIR_COLORS = ["#1a1a1a", "#2e2018", "#4a3220", "#6e4a28", "#8a6a3a", "#b8b8b8", "#e8e8e8", "#a83215", "#1f2a44"];
@@ -203,6 +208,12 @@ function fighterPortraitSVG(fighterId, name, faction, size) {
    */
 function renderPortrait(el, fighterId, name, faction, size) {
     if (!el) return;
+    var user = getPortrait(fighterId);
+    if (user) {
+      var escName = String(name == null ? '' : name).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+      el.innerHTML = '<img src="' + user + '" alt="' + escName + '" style="width:100%;height:100%;object-fit:cover;border-radius:8px">';
+      return;
+    }
     el.innerHTML = fighterPortraitSVG(fighterId, name, faction, size);
 }
 
