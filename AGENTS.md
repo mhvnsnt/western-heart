@@ -115,6 +115,17 @@ Carve-outs (standing owner decisions, not overridden): never merge a DRAFT PR; n
 6. **Judge a rig in motion**: `tools/anim/t7_attack_probe.mjs` freezes real moves at their active frames (front + side) with `NO_REMOTE=1`, because the live game loads models from B2 first; a model fix is live only after the B2 copy is replaced.
 7. **Every tool, probe and diagnostic used to fix the game is committed under `tools/`** (with its findings in the tool's docstring / README and the handoff doc) in the same PR as the fix. Nothing used once and thrown away.
 
+## OWNER LAW — no source-game character names; fighters by their Western Heart names (owner 2026-11-01)
+
+> "Bryan Fury should not appear in our game ... you got to stop calling them the names of their models from the Tekken games ... log that into the repo and the agents MD so everyone stops getting confused" / "there is a j i n character, Jin, he's one of the nine Soul Spirit characters, he's just not Jin Kazama"
+
+1. No Tekken / teardown character name anywhere a player can see it (menus, select, roster, HUD, move names, bios, banter).
+2. Our fighters are called by their Western Heart names only: never "Bryan" for Skull, "Lee" for Purple Rain, "King" for Pantera, in UI, docs, PRs, commits or chat. Name a source character ONLY when the topic is getting its data over (extraction / conversion); recorded provenance cites the source DATA (`brymot.json`, T7 code `bry`), never as the fighter's identity.
+3. A teardown model is a placeholder to build on until it is completely re-skinned and recreated through our customization / creation suites so it no longer looks like the source character (why almost every fighter has a GLB replacement model).
+4. JIN is one of the nine Soul Spirit characters (`jin_soul`), NOT Jin Kazama. Jin Kazama does not exist in Western Heart; the fighter built on his data is DEMONIO. Never call Demonio "Jin".
+
+Full rule: `docs/rules/NO-SOURCE-CHARACTER-NAMES.md`.
+
 ## NO-SPARSE-COMMIT LAW (owner 2026-10-23 — the cape-jones #219 main wipe)
 
 On 2026-10-23, cape-jones PR #219 wiped main: the merge was built from a sparse/partial checkout, so the commit carried only the partial tree and main lost everything outside it.

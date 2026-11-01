@@ -16,9 +16,13 @@ Every clip is tagged FIGHT (SHOW-ANIMATION LOCK, docs/anim/NEGAN-ANIM-GAP-202610
 animations, never win/intro/taunt clips.
 
 usage: python3 tools/anim/t7_move_bake.py --resolve resolve.json --mothead <GRE>/.../tkdata/mothead --code nsa \\
-         --moveset game/assets/movesets/negativo.json --fighter negativo --character 'Negan (Tekken 7)' \\
+         --moveset game/assets/movesets/negativo.json --fighter negativo --character 'T7 source set nsa (nsamot.json)' \\
          --mannequin TekkenMannequin_no_ik.blend --helper TekkenAnimHelper.py --blender blender \\
          --out-dir game/assets/anim/t7/negan
+Every clip passes the in-game plausibility gate (gate(); same guard as test/t7-moves-0x64.test.mjs) or stays out
+with the reason in `skipped`; `--regate PACK ...` applies the gate to packs baked before it existed.
+Two fighters on one base share its skeleton dir: give each its own pack with --out-name moves.<fighter>.pack.json and
+the same name as `pack` in its T7_MOVES entry (game/js/t3anims.js), e.g. Skull and Retsu on Bryan.
 """
 import argparse, hashlib, json, os, re, subprocess, sys, tempfile
 
@@ -31,11 +35,96 @@ def safe(name):
     return re.sub(r'[^A-Za-z0-9_]+', '_', name).strip('_')
 
 
+# ---- in-game plausibility gate (the same guard as test/t7-moves-0x64.test.mjs; 2026-11-01) ----
+# Real T7 moves flip, drop to the floor and snap in 1-2 frames, so the gate checks only what reads as broken in the
+# game: an upright start, no joint more than FLOOR_TOL below the floor (Bryan's d/f+3 put a knee 15 cm into it on the
+# mannequin), and no joint jumping JUMP_TOL relative to the hips in one frame (a limb flip).
+FLOOR_TOL, JUMP_TOL = -0.08, 1.5
+
+
+def _qmul(a, b):
+    return [a[3] * b[0] + a[0] * b[3] + a[1] * b[2] - a[2] * b[1], a[3] * b[1] - a[0] * b[2] + a[1] * b[3] + a[2] * b[0],
+            a[3] * b[2] + a[0] * b[1] - a[1] * b[0] + a[2] * b[3], a[3] * b[3] - a[0] * b[0] - a[1] * b[1] - a[2] * b[2]]
+
+
+def _qrot(q, v):
+    x, y, z, w = q
+    tx, ty, tz = 2 * (y * v[2] - z * v[1]), 2 * (z * v[0] - x * v[2]), 2 * (x * v[1] - y * v[0])
+    return [v[0] + w * tx + (y * tz - z * ty), v[1] + w * ty + (z * tx - x * tz), v[2] + w * tz + (x * ty - y * tx)]
+
+
+def fk_frames(clip, skel):
+    """World joint positions per frame (rest offsets rotated down the chain), as the game's FK places them."""
+    rest = {j['name']: j['rest'] for j in skel['joints']}
+    par = {j['name']: j['parent'] for j in skel['joints']}
+    out = []
+    for f in range(len(clip['root_t'])):
+        G, X = {}, {}
+        for j in skel['joints']:
+            n, p = j['name'], j['parent']
+            q = clip['rot_xyzw'][n][f]
+            if not p:
+                G[n], X[n] = q, list(clip['root_t'][f])
+                continue
+            G[n] = _qmul(G[p], q)
+            o = _qrot(G[p], [rest[n][i] - rest[p][i] for i in range(3)])
+            X[n] = [X[p][i] + o[i] for i in range(3)]
+        out.append(X)
+    return out
+
+
+def implausible(clip, skel):
+    """None when the clip passes the gate, else the reason."""
+    fr = fk_frames(clip, skel)
+    if not fr or not fr[0]['Head'][1] > fr[0]['Hips'][1] + 0.2:
+        return 'does not start upright'
+    prev = None
+    for f, X in enumerate(fr):
+        j, p = min(X.items(), key=lambda kv: kv[1][1])
+        if p[1] <= FLOOR_TOL:
+            return '%s %.2f m below the floor on frame %d (mannequin proportions)' % (j, -p[1], f)
+        if prev:
+            for n, q in X.items():
+                if n == 'Hips': continue
+                d = sum((q[i] - X['Hips'][i] - (prev[n][i] - prev['Hips'][i])) ** 2 for i in range(3)) ** 0.5
+                if d >= JUMP_TOL:
+                    return '%s jumps %.2f m on frame %d' % (n, d, f)
+        prev = X
+    return None
+
+
+def gate(clips, moves, skipped, skel):
+    """Drop clips the gate rejects (and the moves that play them); the moves keep their current animation."""
+    for cname in sorted(clips):
+        why = implausible(clips[cname], skel)
+        if not why: continue
+        del clips[cname]
+        for key in [k for k, m in moves.items() if m['clip'] == cname]:
+            del moves[key]
+            skipped[key] = 'in-game plausibility gate: ' + why
+        print('gated %-30s %s' % (cname, why))
+
+
+def regate(pack_path):
+    """Apply the gate to an already baked pack (its dir holds the shared skeleton); rewrite it only if a clip goes."""
+    pack = json.load(open(pack_path))
+    skel = json.load(open(os.path.join(os.path.dirname(pack_path), pack.get('skeleton', 'skeleton.json'))))
+    n = len(pack['clips'])
+    gate(pack['clips'], pack['moves'], pack['skipped'], skel)
+    if len(pack['clips']) != n:
+        json.dump(pack, open(pack_path, 'w'), separators=(',', ':'))
+    print('%s: %d clips, %d gated' % (pack_path, len(pack['clips']), n - len(pack['clips'])))
+
+
 def main():
+    if len(sys.argv) > 2 and sys.argv[1] == '--regate':  # python3 tools/anim/t7_move_bake.py --regate PACK [PACK ...]
+        for p in sys.argv[2:]: regate(p)
+        return
     ap = argparse.ArgumentParser()
     for a in ('--resolve', '--mothead', '--code', '--moveset', '--fighter', '--character', '--mannequin', '--helper',
               '--blender', '--out-dir'):
         ap.add_argument(a, required=True)
+    ap.add_argument('--out-name', default='moves.pack.json')
     args = ap.parse_args()
     res = json.load(open(args.resolve))
     moveset = json.load(open(args.moveset))['moves']
@@ -88,6 +177,7 @@ def main():
     if os.path.exists(sk_path) and json.load(open(sk_path)) != skel:
         raise SystemExit('%s differs from the bake skeleton: the moves must share the stance skeleton' % sk_path)
     if not os.path.exists(sk_path): json.dump(skel, open(sk_path, 'w'))
+    gate(clips, moves, skipped, skel)
     mot = G + 'json/' + next(n for n in ('%smot.json' % args.code, '%s.json' % args.code) if os.path.exists(G + 'json/' + n))
     pack = {'format': 'wh-t7-moves/1', 'fps': 60, 'fighter': args.fighter, 'character': args.character, 'anim_set': 'FIGHT',
             'skeleton': 'skeleton.json',
@@ -95,7 +185,7 @@ def main():
                        'motbin_sha256': hashlib.sha256(open(mot, 'rb').read()).hexdigest(),
                        'resolver': 'tools/anim/t7_move_resolve.py', 'baker': 'tools/anim/t7_c8_stance_bake.py (per clip)'},
             'skipped': skipped, 'moves': moves, 'clips': clips}
-    out = os.path.join(args.out_dir, 'moves.pack.json')
+    out = os.path.join(args.out_dir, args.out_name)
     json.dump(pack, open(out, 'w'), separators=(',', ':'))
     print('wrote %s: %d moves, %d clips, %d skipped, %.0f KB' % (out, len(moves), len(clips), len(skipped), os.path.getsize(out) / 1024))
 

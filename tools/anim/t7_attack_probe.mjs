@@ -8,7 +8,8 @@
 // usage: NO_REMOTE=1 node tools/anim/t7_attack_probe.mjs <game-url> <outdir> <p1> <p2> <move,move,...> [stage]
 //   e.g. NO_REMOTE=1 node tools/anim/t7_attack_probe.mjs http://127.0.0.1:8765/game/index.html out negativo pantera "b+2,d/f+1,1,3,4"
 //   NO_REMOTE=1 blocks the B2 Worker so models load from this checkout (asset-config tries the remote first:
-//   without it you photograph the LIVE model, not your change). Needs playwright (pre-installed Chromium).
+//   without it you photograph the LIVE model, not your change). NO_SHOTS=1 logs the plans only (no photos), for a
+//   fast sweep of many fighters. Needs playwright (pre-installed Chromium).
 import { createRequire } from 'module';
 import fs from 'fs';
 const { chromium } = createRequire(import.meta.url)('playwright');
@@ -65,7 +66,7 @@ for (const mv of list.split(',')) {
     return { mv, ok, state: f.state, moveKey: f.attack && f.attack.moveKey, plan: { name: p.name, kind: p.kind, why: p.why, src: tm.src, t0: tm.t0, t1: tm.t1 },
              frozenAt: act ? +act.time.toFixed(3) : null, actW: act ? +act.getEffectiveWeight().toFixed(2) : null, x0 };
   }, mv);
-  for (const view of ['front', 'side']) {
+  for (const view of (process.env.NO_SHOTS ? [] : ['front', 'side'])) {  // NO_SHOTS=1: plans only (fast wiring sweep)
     await page.evaluate(([view]) => {
       const g = window.__game, f = g.p1, cam = g.arena.camera;
       const V = f.root.position.constructor, rp = new V();
