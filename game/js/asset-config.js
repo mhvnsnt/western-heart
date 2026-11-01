@@ -28,11 +28,14 @@
  * game loads remotely. Until then the placeholder below stays in place
  * and remoteBase is NOT ready — see isRemoteReady().
  *
- * Known limitation (asset-cache.js): the persistent Cache API only
- * stores same-origin or relative URLs, so cross-origin remote loads
- * (R2/jsDelivr) are NOT persistently cached — they re-download each
- * session until served same-origin. R2 egress is $0, so this costs
- * time, not money. Documented, not hidden.
+ * Persistent caching (asset-cache.js): downloaded model bytes are
+ * stored in the browser Cache API — same-origin AND remote-base
+ * loads alike (the cache only stores buffers the game already
+ * fetched; see asset-cache.js). Entries carry a 48 h freshness
+ * bound, because model files are replaced in place at the same URL
+ * when a rig is re-done. Before the 2026-11-01 load-times fix,
+ * cross-origin loads were refused by the cache and re-downloaded
+ * every session.
  */
 
 export const R2_PUBLIC_URL_PLACEHOLDER = '__WH_R2_PUBLIC_URL__';
