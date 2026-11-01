@@ -1,0 +1,65 @@
+{
+ "url": "http://127.0.0.1:8765/game/index.html",
+ "p1": "pantera",
+ "p2": "negativo",
+ "stage": "shrine",
+ "results": [
+  {
+   "scenario": "module",
+   "outcome": "FIGHT",
+   "seconds": 59.6,
+   "pageLoads": 2,
+   "failedLoads": 0,
+   "abortedRequests": 0,
+   "events": [
+    "3.9s [load] page load #1",
+    "5.9s [error] Failed to load resource: the server responded with a status of 404 (File not found)",
+    "6.8s [error] Failed to load resource: net::ERR_FAILED",
+    "24.5s [error] [WH] startMatch failed: Error: Failed to fetch dynamically imported module: http://127.0.0.1:8765/game/js/fighter.js\n    at g.startMatch (eval at evaluate (:311:30), <anonymous>:4:66)\n    at startFigh",
+    "35.8s [load] page load #2",
+    "35.8s [error] Failed to load resource: the server responded with a status of 404 (File not found)",
+    "39.2s [error] Failed to load resource: net::ERR_FAILED",
+    "53s [error] Failed to load resource: the server responded with a status of 404 (File not found)",
+    "53.6s [error] Failed to load resource: the server responded with a status of 404 (File not found)",
+    "68.4s [error] Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  {
+   "scenario": "build",
+   "outcome": "FIGHT",
+   "seconds": 33.4,
+   "pageLoads": 1,
+   "failedLoads": 0,
+   "abortedRequests": 0,
+   "events": [
+    "2.1s [load] page load #1",
+    "4.2s [error] Failed to load resource: the server responded with a status of 404 (File not found)",
+    "4.8s [error] Failed to load resource: net::ERR_FAILED",
+    "18.2s [error] [WH] startMatch failed: Error: probe: simulated fight build failure\n    at g.startMatch (eval at evaluate (:311:30), <anonymous>:4:66)\n    at startFight (http://127.0.0.1:8765/game/js/main.js:1480:16)",
+    "36.8s [error] Failed to load resource: the server responded with a status of 404 (File not found)",
+    "37s [error] Failed to load resource: the server responded with a status of 404 (File not found)",
+    "39s [error] Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  {
+   "scenario": "model",
+   "outcome": "FIGHT",
+   "seconds": 47,
+   "pageLoads": 1,
+   "failedLoads": 1,
+   "abortedRequests": 2,
+   "events": [
+    "1.7s [load] page load #1",
+    "4s [error] Failed to load resource: the server responded with a status of 404 (File not found)",
+    "4.7s [error] Failed to load resource: net::ERR_FAILED",
+    "4.7s [error] Failed to load resource: net::ERR_CONNECTION_RESET",
+    "4.7s [warning] [WH] pantera-leoman load failed, retrying: Failed to fetch",
+    "4.7s [error] Failed to load resource: net::ERR_CONNECTION_RESET",
+    "4.7s [error] [WH] fight load failed: TypeError: Failed to fetch\n    at attemptBody (http://127.0.0.1:8765/game/js/assets.js:1283:23)\n    at async attempt (http://127.0.0.1:8765/game/js/assets.js:1260:16)\n    at as",
+    "49.8s [error] Failed to load resource: the server responded with a status of 404 (File not found)",
+    "50.4s [error] Failed to load resource: the server responded with a status of 404 (File not found)",
+    "52.7s [error] Failed to load resource: net::ERR_FAILED"
+   ]
+  }
+ ]
+}

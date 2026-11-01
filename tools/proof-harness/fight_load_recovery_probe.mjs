@@ -5,8 +5,11 @@
 // Scenarios (each in a fresh browser context):
 //   model   the player's fighter model fails to download (every request aborted) until the first failed fight load:
 //           startFight must retry on its own (FIGHT-LOAD RECOVERY v2: retry, then SAFE LOAD) -> FIGHT, 0 reloads.
-//   module  a game module fails to import (js/fighter.js aborted, as when a deploy lands while the tab is open) until
-//           the page reloads: startFight must reload straight back into the same versus fight -> FIGHT, 1 reload.
+//   module  the fight start fails with the browser's failed-module-import error ("Failed to fetch dynamically imported
+//           module", as when a deploy lands while the tab is open; the module map keeps that failure for the life of the
+//           page): startFight must reload straight back into the same versus fight -> FIGHT, 1 reload. (Simulated on
+//           game.startMatch: fighter.js / movesets.js / t3anims.js are static imports of select-screen.js, so blocking
+//           one of them breaks the boot itself, not a fight.)
 //   build   the fight fails to BUILD once (game.startMatch throws): one clean rebuild -> FIGHT, 0 reloads.
 // Fights start through the versus controller (window.__modes.resumeVersus: the same _beginVersus path a stage-screen
 // CONFIRM ends in), so the resumed fight keeps its rules / result screen.
@@ -40,17 +43,16 @@ async function scenario(name) {
     await page.route((u) => new RegExp(`/${p1}[^/]*\\.glb(\\?|$)`).test(u.pathname + u.search) || new RegExp(`/roster/${p1}/`).test(u.pathname) && /\.glb$/.test(u.pathname),
       (r) => { if (broken) { aborted++; return r.abort('connectionreset'); } return r.continue(); });
   }
-  if (name === 'module') {
-    await page.route(/\/js\/fighter\.js(\?|$)/, (r) => { if (broken) { aborted++; return r.abort('connectionreset'); } return r.continue(); });
-  }
   await page.goto(url, { waitUntil: 'load', timeout: 180000 });
   await page.waitForFunction(() => !!(window.__modes && window.__game), null, { timeout: 180000, polling: 250 });
-  if (name === 'build') {
-    await page.evaluate(() => {
+  if (name === 'build' || name === 'module') {
+    await page.evaluate((msg) => {
       const g = window.__game, orig = g.startMatch.bind(g);
       let n = 0;
-      g.startMatch = (...a) => { if (!n++) return Promise.reject(new Error('probe: simulated fight build failure')); return orig(...a); };
-    });
+      g.startMatch = (...a) => { if (!n++) return Promise.reject(new Error(msg)); return orig(...a); };
+    }, name === 'module'
+      ? `Failed to fetch dynamically imported module: ${new URL('js/fighter.js', url).href}`
+      : 'probe: simulated fight build failure');
   }
   const tStart = at();
   await page.evaluate(({ p1, p2, stage }) => { window.__modes.resumeVersus(p1, p2, stage); }, { p1, p2, stage });
