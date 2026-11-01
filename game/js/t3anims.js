@@ -695,11 +695,14 @@ export function ensureT7Moves(fid, THREE) {
         clip.userData.rootMotionT = Array.isArray(data.root_motion_fwd_m) ? data.root_motion_fwd_m.map(f => [0, 0, f]) : null;
         clips[cname] = clip;
       }
-      const moves = {};
+      const moves = {}, byInput = {};
       for (const [key, m] of Object.entries(pack.moves || {})) {
-        if (clips[m.clip]) moves[key] = { clip: m.clip, active: m.active_frames, motbin: m.motbin_move };
+        if (!clips[m.clip]) continue;
+        moves[key] = { clip: m.clip, active: m.active_frames, motbin: m.motbin_move };
+        const ni = t7NormInput(m.input);
+        if (ni && !byInput[ni]) byInput[ni] = key;
       }
-      _t7moves[fid] = { bank: def.bank, skelId, clips, moves };
+      _t7moves[fid] = { bank: def.bank, skelId, clips, moves, byInput };
       console.log(`[WH-T7] ${fid}: ${Object.keys(moves).length} real T7 move clips (${def.dir}moves.pack.json)`);
       return _t7moves[fid];
     } catch (e) {
@@ -711,13 +714,24 @@ export function ensureT7Moves(fid, THREE) {
 }
 /** The real T7 clip for one moveset row of this fighter on its bound bank, or null. With `model`, also null
     unless the stance's rest pose was captured for that model (so the move can be retargeted safely). */
-export function t7MoveClip(fid, bankId, moveKey, model = null) {
+/** Single-input notation in one spelling: 'df+1' / 'D/F+1' -> 'd/f+1'. Strings (',') are not single inputs. */
+export function t7NormInput(input) {
+  const s = String(input || '').toLowerCase().replace(/\s+/g, '');
+  if (!s || s.includes(',')) return null;
+  return s.replace(/(^|[^a-z/])([du])([fb])(?=\+|$)/g, '$1$2/$3');
+}
+/* A fighter's moveset can hold several rows for one input (Pantera: '1~t7.king' with T7 frame data, '1~t8.king',
+   '1'); the game plays its preferred row, the resolver mapped the T7 row. Same input from the same neutral stance
+   = the same move, so a row not in the pack plays the pack's clip for its input (`input`, single inputs only);
+   the played row's own frame data still times it. The action is named after the PACK key. */
+export function t7MoveClip(fid, bankId, moveKey, model = null, input = null) {
   const t = _t7moves[fid];
   if (!t || t.bank !== bankId || !moveKey) return null;
-  const m = t.moves[moveKey];
+  const key = t.moves[moveKey] ? moveKey : (input && t.byInput ? t.byInput[t7NormInput(input)] : null);
+  const m = key ? t.moves[key] : null;
   if (!m || !t.clips[m.clip]) return null;
   if (model) { const pm = _retargetCache.get(model); if (!pm || !pm.get(t.skelId)) return null; }
-  return { name: 't7:' + moveKey, clip: t.clips[m.clip], skelId: t.skelId, active: m.active, motbin: m.motbin, anim: m.clip };
+  return { name: 't7:' + key, clip: t.clips[m.clip], skelId: t.skelId, active: m.active, motbin: m.motbin, anim: m.clip };
 }
 /** Retarget one real T7 move clip onto `model` as action `t7:<moveKey>`, reusing the rest pose the T7 stance
     captured at bind time (same skeleton id). Returns { [name]: clip } or null (then the move keeps its clip). */

@@ -119,4 +119,13 @@ test('the real loader builds King move clips for Pantera only', async () => {
   assert.ok(Array.isArray(mc.clip.userData.rootMotionT), 'root motion track');
   assert.equal(T.t7MoveClip('pantera', 'bryan', key), null, 'only on its own bound bank');
   assert.equal(T.t7MoveClip('negativo', 'king', key), null, 'never for another fighter');
+  // the rows the game actually plays for these inputs (probe 2026-11-01) reach King's T7 clips by their input
+  for (const [played, input, packKey] of [['1~t8.king', '1', '1~t7.king'], ['df+1', 'df+1', 'd/f+1~t7.king'],
+    ['uf+3', 'uf+3', 'u/f+3~t7.king'], ['f+4', 'f+4', 'f+4~t7.king'], ['b+2', 'b+2', 'b+2~t7.king']]) {
+    if (!pack.moves[packKey]) continue;
+    const m = T.t7MoveClip('pantera', 'king', played, null, input);
+    assert.ok(m, `${played} (${input}) -> ${packKey}`);
+    assert.equal(m.name, 't7:' + packKey);
+  }
+  assert.equal(T.t7MoveClip('pantera', 'king', '1,2', null, '1,2'), null, 'strings never take a single-input clip');
 });

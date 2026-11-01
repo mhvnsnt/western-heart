@@ -1106,7 +1106,7 @@ export class Fighter {
     // and matches. Strikes only (the moves pack holds no throws; a throw keeps the throw path). Timed on the
     // motbin move's own active frames.
     const t7m = move && move.moveKey && !(this._t7skip && this._t7skip.has(move.moveKey))
-      ? t7MoveClip(this.char.id, bank, move.moveKey, this._t3.model) : null;
+      ? t7MoveClip(this.char.id, bank, move.moveKey, this._t3.model, (raw && raw.input) || move.input) : null;
     if (t7m) {
       const limbT = Fighter.attackLimb(move, attackName);
       const levelT = Fighter.attackLevel(move, raw);
