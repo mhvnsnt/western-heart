@@ -158,8 +158,36 @@ sits in a T-pose while the mesh does not follow it -> broken bind/weights. Stati
   5. Do a `NO_REMOTE=1` close-up and attack check.
   6. Commit, then have Muse re-upload the model to B2.
 
+**Negativo — FIXED 2026-11-01 (PR #1463; live once B2 serves the new file):**
+- **Real root cause (measured, beyond the arm misfit above):** `refit_skeleton.py` / GameRig scale the template by
+  the FULL mesh height, and his hair adds ~0.12 m. Every joint landed high: arm line 0.828 vs the mesh arm 0.653
+  (fit space, H 0.98); Spine1 at mouth height, Spine2 at the eyes, Neck/Head in the hair; hip joints at 0.565
+  (belly-button height) while his legs split at 0.367; knees 0.08 above the knee. So bone heat put his face on
+  chest bones (cone face), his arms on bones above them (crushed) and his abdomen on the thighs.
+- **Fix:** `tools/auto_rig/refit_rig.py` (one command, any T-pose fighter) = refit_skeleton -> **refit_landmarks**
+  (arms from clean arm slices, armpit, thinnest wrist; hips/knees from the crotch; neck base + chin from the
+  mid-line front profile; spine centred between front and back surfaces) -> heat_rebind (bone heat, `--height 2.0`
+  to match the wired model: the game renders a GLB at its own size) -> **head_territory** (hair rigid on Head by
+  mesh connectivity, geodesic fade where it touches the shoulders) -> **seam_safe_smooth** (welded + continuous
+  4-bone limit) -> validate / anim_check / `rig_inspect.py` seams + stretch -> encode.
+- **Result:** face 99.4% Head, head + hair 97.3%, arms 74-86% on their own bones, abdomen on Hips/Spine. validate
+  PASS; strict every-edge stretch p99.9 2.496 (gate 2.5); official anim_check 1.306; seam copies identical.
+  In game (NO_REMOTE): `docs/proof/2026-11-01/refit-negativo/before_after_{1,2,3}.jpg` (b+2, 1, 3, d/f+1 frozen
+  at their T7 active frames + Negan's idle). Face, hair, chest emblem and arms are intact in every pose.
+- **Not live yet:** the live game loads non-bundled models from B2 FIRST (`asset-config.js`), and Pages is at
+  993.9 MB of the 1 GB cap, so this file cannot be bundled. Muse's upload lane must re-upload
+  `roster/negativo/attires/attire1/source/negativo-a1-rigged.glb` (sha256 in `model_sha256.txt` of the proof dir).
+- **Bugs found on the way, fixed for every rig:** (1) the hard top-4 bone cut flips the 4th bone between
+  neighbours (7-9 mm tears on every kick) -> continuous limit; (2) `smooth_weights.py` let UV-seam copies drift
+  apart (6,688 on Negativo -> cracks no metric sees) -> seam copies now updated together (test added);
+  (3) `anim_check.py` named skin joints 0-3 ("Hips, Spine") for every tearing spike -> now the vertex's own joints;
+  (4) a hard head territory tears hair resting on the shoulders (2,157 edges > 20 mm) -> geodesic fade.
+  Full list: `tools/auto_rig/README.md` "Landmark re-fit pipeline".
+
 **Cone face universal:** the owner wants it fixed for every fighter that has it. Audit every wired model with
-`anim_check.py` (stretch per region) and re-rig the offenders the same way.
+`python3 tools/auto_rig/rig_inspect.py shares --glb <decoded rig>` (face / chin / neck shares on Head) and
+`rig_inspect.py seams`; re-rig the T-pose offenders with `tools/auto_rig/refit_rig.py` (A-pose models such as
+Burger need the arm fit bent down first: refit_landmarks assumes T-pose arms).
 
 ## 7. Deploy (how the live build is updated)
 
@@ -195,10 +223,17 @@ Worker route handles that lane.
 
 ## 10. Open items (next agent, in order)
 
-1. Burger re-rig (section 6), then Negativo, then the universal cone-face audit.
-2. Negativo T7 attacks (section 5) after his rig is fixed.
+1. Negativo: DONE in PR #1463 (re-rig) — needs the B2 re-upload to show live. Then the universal cone-face audit
+   (rig_inspect shares/seams on every wired fighter; refit_rig.py for T-pose offenders). Burger (A-pose) after.
+2. Negativo T7 attacks (section 5): already wired; they now play on a correct rig.
 3. Bob's 0xC8 crouch for Burger; other 0xC8 crouch stances.
-4. 0x64 joint frame (section 4) — needs the exe or a capture from the owner.
+4. 0x64 joint frame (section 4): the exe now exists (2026-10-31, Muse pulled it from the owner's Steam library:
+   private release `t7-shipping-exe-20261031` in mhvnsnt/game-reverse-engineering, 58,439,680 B, sha256
+   7f2b6872...). Download it (and every other private GRE release asset: Muse is storing the owner's whole Steam
+   library there) through the API, which the session proxy authenticates; the browser_download_url 404s:
+   `curl -sSL -H "Accept: application/octet-stream" -o FILE https://api.github.com/repos/mhvnsnt/game-reverse-engineering/releases/assets/<asset id>`
+   (asset ids: `mcp__github__get_release_by_tag`). Verified 2026-11-01: 58,439,680 B, sha256 matches. Keep it out
+   of every public repo/bucket (private teardown source; put downloads in their own new folder; never run it).
 5. Model hosting for >20 MB fighters (Muse's lane) so the new stances show live for Diablo, Skull, Sakura, Phantom,
    Nightwolf, Aotsuki, Purple Rain, Chordz, Negativo.
 

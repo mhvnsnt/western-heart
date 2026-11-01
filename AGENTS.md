@@ -103,6 +103,18 @@ Carve-outs (standing owner decisions, not overridden): never merge a DRAFT PR; n
 3. **Play it like the player before you call it done.** Open the build at phone size, go menu -> select -> stage -> fight -> pause -> results, and look at what you changed up close (tools/anim/t7_closeup_probe.mjs for fighters). If you would not enjoy it as a player, it is not done.
 4. **See what the owner sees.** Describe visual problems by their real cause (skin weights, bone weights, bind pose, facing, retarget), not as "hard to make out". Judge rigs from close-ups, never from a distant fight camera.
 
+## OWNER LAW — rigs fit the body, tools land in the repo (owner 2026-10-31 / 11-01, Negativo re-rig)
+
+> "you got to get that cone face fixed fixed universally" / "make sure all those tools like the heat mapping and everything ... is getting put into the repo don't just use it and keep it to yourself and hold it hostage put everything in document everything into the repo"
+
+1. **Fit the skeleton to the body's landmarks, never to the mesh's total height.** Hair, hats, horns and crests make a mesh taller than its body; a height-scaled template then puts the chest bones in the face (cone face), the arms above the arms (crushed arms) and the hip joints in the belly. Use `tools/auto_rig/refit_rig.py` (T-pose models): arms, armpits, wrists, crotch, knees, throat and chin are measured on the mesh.
+2. **Never hard-cut skin weights to 4 bones.** Neighbouring vertices then keep different 4th bones and tear on every move. Use the continuous limit (`seam_safe_smooth.top4`, `smooth_weights.limit4`).
+3. **UV-seam copies of a vertex must carry identical weights**, or the seam cracks open in motion (no stretch metric sees it). Check with `tools/auto_rig/rig_inspect.py seams`.
+4. **Hair and anything resting on the shoulders fades onto the Head bone geodesically** (`tools/auto_rig/head_territory.py`); a hard head region tears it.
+5. **A replacement model keeps the replaced model's height**: the game renders a GLB at its own size (`bodyScale` defaults to 1). `heat_rebind.py --height`.
+6. **Judge a rig in motion**: `tools/anim/t7_attack_probe.mjs` freezes real moves at their active frames (front + side) with `NO_REMOTE=1`, because the live game loads models from B2 first; a model fix is live only after the B2 copy is replaced.
+7. **Every tool, probe and diagnostic used to fix the game is committed under `tools/`** (with its findings in the tool's docstring / README and the handoff doc) in the same PR as the fix. Nothing used once and thrown away.
+
 ## NO-SPARSE-COMMIT LAW (owner 2026-10-23 — the cape-jones #219 main wipe)
 
 On 2026-10-23, cape-jones PR #219 wiped main: the merge was built from a sparse/partial checkout, so the commit carried only the partial tree and main lost everything outside it.

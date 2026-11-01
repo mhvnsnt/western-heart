@@ -532,8 +532,11 @@ def check_animation(model, anim, args):
                             "vertex": int(v),
                             "disp_m": round(float(disp[v]), 4),
                             "frame_median_m": round(med, 5),
-                            "joints": [model.nodes[int(jidx[k])].get(
-                                "name", f"j{int(jidx[k])}")
+                            # the vertex's own joints: JOINTS_0 slot -> skin joint -> node
+                            # (indexing jidx by the SLOT number named skin joints 0-3, i.e.
+                            # "Hips, Spine" for every vertex; fixed 2026-10-31)
+                            "joints": [model.nodes[int(jidx[int(prim["joints"][v][k])])].get(
+                                "name", f"j{int(jidx[int(prim['joints'][v][k])])}")
                                 for k in np.nonzero(
                                     prim["weights"][v] > 1e-4)[0][:4]],
                             "weights": [round(float(x), 3) for x in
