@@ -229,7 +229,10 @@ Worker route handles that lane.
 3. Bob's 0xC8 crouch for Burger; other 0xC8 crouch stances.
 4. 0x64 joint frame (section 4): the exe now exists (2026-10-31, Muse pulled it from the owner's Steam library:
    private release `t7-shipping-exe-20261031` in mhvnsnt/game-reverse-engineering, 58,439,680 B, sha256
-   7f2b6872...). A session without a GitHub token cannot download release assets (404); it needs the exe
-   committed into the GRE tree (e.g. `teardown/tekken7-steam/binaries/`, 58 MB < GitHub's 100 MB limit).
+   7f2b6872...). Download it (and every other private GRE release asset: Muse is storing the owner's whole Steam
+   library there) through the API, which the session proxy authenticates; the browser_download_url 404s:
+   `curl -sSL -H "Accept: application/octet-stream" -o FILE https://api.github.com/repos/mhvnsnt/game-reverse-engineering/releases/assets/<asset id>`
+   (asset ids: `mcp__github__get_release_by_tag`). Verified 2026-11-01: 58,439,680 B, sha256 matches. Keep it out
+   of every public repo/bucket (private teardown source; put downloads in their own new folder; never run it).
 5. Model hosting for >20 MB fighters (Muse's lane) so the new stances show live for Diablo, Skull, Sakura, Phantom,
    Nightwolf, Aotsuki, Purple Rain, Chordz, Negativo.
