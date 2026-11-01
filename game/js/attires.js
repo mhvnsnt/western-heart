@@ -275,10 +275,10 @@ export const ATTIRE_VARIANTS = {
   'pantera': [
     { model: 'pantera-leoman', label: 'ATTIRE 1 · LEO MAN (TRIPO)' },
     { model: 'pantera-leopard-king', label: 'ATTIRE 2 · LEOPARD KING (TRIPO)' },
-    { model: 'pantera', label: 'ATTIRE 3 · T7 KING P1 RESKIN' },
+    { model: 'pantera', label: 'ATTIRE 3 · CLASSIC' },
     { model: 'pantera-snow-leopard', label: 'ATTIRE 4 · SNOW LEOPARD' },
     { model: 'pantera-crimson-rage', label: 'ATTIRE 5 · CRIMSON RAGE' },
-    { model: 'pantera-p2', label: 'ATTIRE 6 · T7 P2' },
+    { model: 'pantera-p2', label: 'ATTIRE 6 · CLASSIC ALT' },
   ],
   /* SLICE's ladder (owner 2026-10-21 ~08:42 CDT): A1 = the owner's own Tripo
      (DEFAULT — skull mask, jagged chrome arm blades), A2 = our Dragunov build

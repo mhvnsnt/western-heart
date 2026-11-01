@@ -130,7 +130,13 @@ function isModelUrl(url) {
 export function resolveAssetCandidates(url) {
   if (!isModelUrl(url)) return [url];
   const repoPath = repoPathForModelUrl(url);
-  if (SHELL_BUNDLED_MODELS.includes(repoPath)) return [url];
+  // Bundled models still load local-first, but a build that trimmed one
+  // out (itch caps, a sparse dev checkout) falls through to the remote
+  // base instead of failing outright (select attire fix, 2026-11-01:
+  // Pantera attire 1 'leomon' 404'd locally with no other candidate).
+  if (SHELL_BUNDLED_MODELS.includes(repoPath)) {
+    return isRemoteReady() ? [url, `${ASSET_CONFIG.remoteBase}/${repoPath}`] : [url];
+  }
   const out = [];
   if (isRemoteReady()) out.push(`${ASSET_CONFIG.remoteBase}/${repoPath}`);
   out.push(url);
