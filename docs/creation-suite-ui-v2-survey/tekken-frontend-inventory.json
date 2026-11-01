@@ -1,0 +1,282 @@
+[
+ {
+  "path": "~/workspace/_t6r4-work/wh/teardown/tekken6/ui/psp_ICON0.png",
+  "game": "T6PSP",
+  "category": "icons",
+  "format": "PNG 144x80",
+  "status": "extracted"
+ },
+ {
+  "path": "~/workspace/_t6r4-work/wh/teardown/tekken6/ui/psp_PIC1.png",
+  "game": "T6PSP",
+  "category": "panel/frame art",
+  "format": "PNG 480x272",
+  "status": "extracted"
+ },
+ {
+  "path": "~/workspace/_t6r4-work/wh/teardown/tekken6/ui/README.md",
+  "game": "T6PSP",
+  "category": "docs",
+  "format": "Markdown",
+  "status": "extracted"
+ },
+ {
+  "path": "~/workspace/_t6r4-work/iso/tekken6-psp.iso :: /PSP_GAME/ICON0.PNG (LBA 55344, 17590 B)",
+  "game": "T6PSP",
+  "category": "icons",
+  "format": "PNG",
+  "status": "in-iso"
+ },
+ {
+  "path": "~/workspace/_t6r4-work/iso/tekken6-psp.iso :: /PSP_GAME/PIC1.PNG (LBA 55360, 251946 B)",
+  "game": "T6PSP",
+  "category": "panel/frame art",
+  "format": "PNG",
+  "status": "in-iso"
+ },
+ {
+  "path": "~/workspace/_t6r4-work/iso/tekken6-psp.iso :: /PSP_GAME/ICON1.PMF (LBA 55488, 221184 B)",
+  "game": "T6PSP",
+  "category": "panel/frame art",
+  "format": "PMF video icon",
+  "status": "in-iso"
+ },
+ {
+  "path": "~/workspace/_t6r4-work/iso/tekken6-psp.iso :: /PSP_GAME/USRDIR/DATA401.IDX (LBA 230240, 26028 B)",
+  "game": "T6PSP",
+  "category": "layout data",
+  "format": "IDX (decrypted form: 813x32B entries)",
+  "status": "in-iso"
+ },
+ {
+  "path": "~/workspace/_t6r4-work/iso/tekken6-psp.iso :: /PSP_GAME/USRDIR/DINF_400.BIN (LBA 230192, 120 B)",
+  "game": "T6PSP",
+  "category": "layout data",
+  "format": "BIN",
+  "status": "in-iso"
+ },
+ {
+  "path": "~/workspace/_t6r4-work/iso/tekken6-psp.iso :: raw-sector tail sectors 230256-417792 (~384 MB, no ISO9660 file)",
+  "game": "T6PSP",
+  "category": "panel/frame art",
+  "format": "sector-cipher bulk (see bulk_decrypted.bin)",
+  "status": "in-iso"
+ },
+ {
+  "path": "~/workspace/_t6r4-work/recon/x/tekken6/work/decrypt3/bulk_decrypted.bin (367M on disk; manifest total_bytes 195578491 across 478 files; full bulk 384073728 B per item-names source note)",
+  "game": "T6PSP",
+  "category": "panel/frame art",
+  "format": "decrypted bulk container (NTPP/NDPP/GZIP/bin)",
+  "status": "extracted"
+ },
+ {
+  "path": "~/workspace/_t6r4-work/recon/x/tekken6/work/decrypt3/manifest.json (478 files)",
+  "game": "T6PSP",
+  "category": "layout data",
+  "format": "JSON manifest",
+  "status": "extracted"
+ },
+ {
+  "path": "~/workspace/_t6r4-work/recon/x/tekken6/work/decrypt3/IDX-FORMAT.md",
+  "game": "T6PSP",
+  "category": "docs",
+  "format": "Markdown",
+  "status": "extracted"
+ },
+ {
+  "path": "~/workspace/_t6r4-work/recon/x/tekken6/work/decrypt3/GZIP-FORMAT.md",
+  "game": "T6PSP",
+  "category": "docs",
+  "format": "Markdown",
+  "status": "extracted"
+ },
+ {
+  "path": "~/workspace/_w7a-work/extract/tekken6/work/decrypt3/bulk_decrypted.bin (duplicate copy)",
+  "game": "T6PSP",
+  "category": "panel/frame art",
+  "format": "decrypted bulk container",
+  "status": "extracted"
+ },
+ {
+  "path": "~/workspace/_t6r4-work/wh/teardown/tekken6/decrypted/EBOOT.DECRYPTED.ELF (4158144 B)",
+  "game": "T6PSP",
+  "category": "layout data",
+  "format": "ELF MIPS32 (strings: owfont_fnt_t/owfont_ntx_t, CUSTOMIZEPACK, tcb_customize_mode_t, O2Menu)",
+  "status": "extracted"
+ },
+ {
+  "path": "~/workspace/_t6r4-work/wh/teardown/tekken6/TEARDOWN.md",
+  "game": "T6PSP",
+  "category": "docs",
+  "format": "Markdown",
+  "status": "extracted"
+ },
+ {
+  "path": "~/workspace/_t6r4-work/wh/teardown/tekken6/WIRING-INVENTORY.md",
+  "game": "T6PSP",
+  "category": "docs",
+  "format": "Markdown",
+  "status": "extracted"
+ },
+ {
+  "path": "~/workspace/_t6r4-work/wh/teardown/tekken6/DATA401-RE-NOTES.md",
+  "game": "T6PSP",
+  "category": "docs",
+  "format": "Markdown",
+  "status": "extracted"
+ },
+ {
+  "path": "~/workspace/_t6r4-work/wh/teardown/tekken6/models/NDPP-FORMAT.md",
+  "game": "T6PSP",
+  "category": "docs",
+  "format": "Markdown",
+  "status": "extracted"
+ },
+ {
+  "path": "~/workspace/_t6r4-work/wh/teardown/tekken6/ref_frames/ (42 JPG, 480x272, ending_*.jpg)",
+  "game": "T6PSP",
+  "category": "panel/frame art",
+  "format": "JPG (video frames, NOT UI sprites)",
+  "status": "extracted"
+ },
+ {
+  "path": "~/workspace/_t6r4-work/ (shot*.png + shotP*.png, 51 files) + auto_shots/stage*.png (20 files)",
+  "game": "T6PSP",
+  "category": "panel/frame art",
+  "format": "PNG PPSSPP screenshots (in-game/stage frames, NOT extracted UI sprites)",
+  "status": "extracted"
+ },
+ {
+  "path": "~/workspace/_w7b-wh/customization/parts/tekken/tekken6-item-names.json (9440 records in runs>=4; 11053 valid starts)",
+  "game": "T6PSP",
+  "category": "layout data",
+  "format": "JSON (item name records from bulk)",
+  "status": "extracted"
+ },
+ {
+  "path": "~/workspace/_w7b-wh/customization/parts/tekken/tekken6-item-catalog.json",
+  "game": "T6PSP",
+  "category": "layout data",
+  "format": "JSON (NTXL strings + pack formats + gap note)",
+  "status": "extracted"
+ },
+ {
+  "path": "~/workspace/_w7b-wh/customization/parts/tekken/tekken6-slot-catalog.json",
+  "game": "T6PSP",
+  "category": "layout data",
+  "format": "JSON (4 slots, from public docs)",
+  "status": "extracted"
+ },
+ {
+  "path": "~/workspace/_w7b-wh/customization/parts/tekken/TEKKEN6-ITEM-TABLE-SEARCH-2026-10-20.md",
+  "game": "T6PSP",
+  "category": "docs",
+  "format": "Markdown",
+  "status": "extracted"
+ },
+ {
+  "path": "~/workspace/_fighter-completeness/main/customization/parts/tekken7/CATALOG.json (parts: [])",
+  "game": "T7docs",
+  "category": "layout data",
+  "format": "JSON (empty catalog + named_gaps)",
+  "status": "extracted"
+ },
+ {
+  "path": "~/workspace/_fighter-completeness/main/customization/parts/tekken7/T7-CUSTOMIZATION-PARTS-SURVEY-2026-10-21.md",
+  "game": "T7docs",
+  "category": "docs",
+  "format": "Markdown",
+  "status": "extracted"
+ },
+ {
+  "path": "~/workspace/_fighter-completeness/main/customization/parts/tekken7/README.md",
+  "game": "T7docs",
+  "category": "docs",
+  "format": "Markdown",
+  "status": "extracted"
+ },
+ {
+  "path": "~/workspace/_fighter-completeness/main/game/js/menus.js (WH-original menus, not Tekken)",
+  "game": "T7docs",
+  "category": "docs",
+  "format": "JS",
+  "status": "doc-only"
+ },
+ {
+  "path": "~/workspace/_fighter-completeness/main/game/js/select-screen.js (WH-original, not Tekken)",
+  "game": "T7docs",
+  "category": "docs",
+  "format": "JS",
+  "status": "doc-only"
+ },
+ {
+  "path": "~/workspace/tekken-customization-extraction/REPORT.md",
+  "game": "T7docs",
+  "category": "docs",
+  "format": "Markdown (TKDataPatcher schema summary)",
+  "status": "extracted"
+ },
+ {
+  "path": "~/workspace/_w7b-wh/customization/parts/tekken/tekken7-slot-catalog.json",
+  "game": "T7docs",
+  "category": "layout data",
+  "format": "JSON (16 slots, 21-field CSV spec, asset prefixes)",
+  "status": "extracted"
+ },
+ {
+  "path": "~/workspace/agent-ops/w1-allstars-work/gre/tekken7/tekkenmods-docs/ (EMPTY directory, 0 files)",
+  "game": "T7docs",
+  "category": "docs",
+  "format": "directory (empty)",
+  "status": "doc-only"
+ },
+ {
+  "path": "~/workspace/agent-ops/w1-allstars-work/gre/tekken7/king/ (King costume PNG textures D/N/S, e.g. King_MaskFur1_D.png - character costume, NOT UI)",
+  "game": "T7docs",
+  "category": "icons",
+  "format": "PNG textures",
+  "status": "extracted"
+ },
+ {
+  "path": "~/workspace/wh-ttt2/teardown/tekken-tag-tournament-2/INVENTORY.md + HEADER-LISTING.txt (13.36 GB 7z, STFS Data0000-Data0051, no UI extracted)",
+  "game": "TTT2",
+  "category": "docs",
+  "format": "Markdown/txt inventory",
+  "status": "in-archive"
+ },
+ {
+  "path": "~/workspace/wh-ttt2/teardown/tekken-tag-tournament-2/extracted-small/ (13 files, STFS blobs 45KB-340KB, unnamed hex)",
+  "game": "TTT2",
+  "category": "layout data",
+  "format": "STFS blobs (undecoded)",
+  "status": "in-archive"
+ },
+ {
+  "path": "~/workspace/_w7b-wh/customization/parts/tekken/ttt2-slot-catalog.json",
+  "game": "TTT2",
+  "category": "layout data",
+  "format": "JSON (from public docs)",
+  "status": "extracted"
+ },
+ {
+  "path": "~/workspace/agent-ops/w1-allstars-work/gre/tekken5/TEARDOWN-STATUS.md (E7 = 72-file UI/video archive in TK5DATA5, format cracked, files on release tekken5-tk5data5-v1)",
+  "game": "T5",
+  "category": "docs",
+  "format": "Markdown",
+  "status": "extracted"
+ },
+ {
+  "path": "~/workspace/tk5-lanes/research/proofs/NAMCO.ipu + char00.ipu + sedat.bin (E7 samples held locally)",
+  "game": "T5",
+  "category": "panel/frame art",
+  "format": "IPU video / BIN",
+  "status": "extracted"
+ },
+ {
+  "path": "~/workspace/tk5-lanes/research/proofs/e5_embedded.tm2 (288 B fragment only)",
+  "game": "T5",
+  "category": "icons",
+  "format": "TM2 fragment",
+  "status": "extracted"
+ }
+]
