@@ -35,6 +35,15 @@ const WHIntegration = {
   failed: {},    // name -> error message
 };
 
+/* Fight nameplates over the fighters and floating damage numbers are OPT-IN (2026-11-01): Tekken shows names and
+   damage in the HUD, never over the fighters (owner law "build it like the real game", AGENTS.md: UI extras "only
+   where it's appropriate or in the settings menu"). The labels system itself stays on (cutscene banners).
+   Turn them on with ?labels=1 or localStorage wh_fight_labels = '1'. */
+const FIGHT_LABELS = (() => {
+  try { return new URLSearchParams(location.search).get('labels') === '1' || localStorage.getItem('wh_fight_labels') === '1'; }
+  catch (e) { return false; }
+})();
+
 async function tryInit(name, path, initFn) {
   try {
     const mod = await import(path);
@@ -291,7 +300,7 @@ async function boot() {
             const n = S.springbones.autoDiscover(f.root);
             if (n) console.info(`[WHIntegration] ${n} spring chain(s) on ${f.char && f.char.id}`);
           }
-          if (S.labels && f.char) {
+          if (S.labels && f.char && FIGHT_LABELS) {
             S.labels.nameplate(f.root, f.char.name || f.char.id || key.toUpperCase());
           }
         }
@@ -351,7 +360,7 @@ async function boot() {
                   move: attacker.attackName, dealt,
                 });
               }
-              if (S.labels && dealt > 0) {
+              if (S.labels && dealt > 0 && FIGHT_LABELS) {
                 const p = defender.root.position;
                 S.labels.damageNumber(p.x, p.y + 1.8, p.z, Math.round(dealt));
               }
