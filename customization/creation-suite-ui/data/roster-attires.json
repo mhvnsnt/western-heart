@@ -6,14 +6,17 @@
   {
    "fighter": "armor-king",
    "fighter_name": "Armor King",
+   "display_name": "YUKIHY\u014c",
+   "unassigned": false,
    "slots_md": null,
    "attires": [
     {
      "attire_id": "attire1",
      "attire_name": "Attire1",
      "dir": "roster/armor-king/attires/attire1",
-     "glb": "roster/armor-king/attires/attire1/model.glb",
+     "glb": "roster/armor-king/attires/attire1/model-rigged.glb",
      "variants": [
+      "roster/armor-king/attires/attire1/model-rigged.glb",
       "roster/armor-king/attires/attire1/model.glb"
      ],
      "customization_json": null
@@ -23,14 +26,17 @@
   {
    "fighter": "awa-pop",
    "fighter_name": "Awa Pop",
+   "display_name": "AWA POP",
+   "unassigned": false,
    "slots_md": "roster/awa-pop/ATTIRE-SLOTS.md",
    "attires": [
     {
      "attire_id": "attire2",
      "attire_name": "(Tripo)",
      "dir": "roster/awa-pop/attires/attire2",
-     "glb": "roster/awa-pop/attires/attire2/model.glb",
+     "glb": "roster/awa-pop/attires/attire2/model-rigged.glb",
      "variants": [
+      "roster/awa-pop/attires/attire2/model-rigged.glb",
       "roster/awa-pop/attires/attire2/model.glb"
      ],
      "customization_json": null
@@ -40,14 +46,17 @@
   {
    "fighter": "baek",
    "fighter_name": "Baek",
+   "display_name": "KEVIN",
+   "unassigned": false,
    "slots_md": "roster/baek/ATTIRE-SLOTS.md",
    "attires": [
     {
      "attire_id": "attire1",
      "attire_name": "(DEFAULT)",
      "dir": "roster/baek/attires/attire1",
-     "glb": "roster/baek/attires/attire1/model.glb",
+     "glb": "roster/baek/attires/attire1/model-rigged.glb",
      "variants": [
+      "roster/baek/attires/attire1/model-rigged.glb",
       "roster/baek/attires/attire1/model.glb"
      ],
      "customization_json": null
@@ -59,7 +68,9 @@
      "glb": "roster/baek/attires/master-white/baek-master-white-rigged.glb",
      "variants": [
       "roster/baek/attires/master-white/baek-master-white-rigged.glb",
-      "roster/baek/attires/master-white/baek-master-white.glb"
+      "roster/baek/attires/master-white/baek-master-white.glb",
+      "roster/baek/attires/master-white/model-custom.glb",
+      "roster/baek/attires/master-white/model-kevin-diff.glb"
      ],
      "customization_json": "roster/baek/attires/master-white/customization.json"
     }
@@ -68,6 +79,8 @@
   {
    "fighter": "blanka",
    "fighter_name": "Blanka",
+   "display_name": "CHARGER",
+   "unassigned": false,
    "slots_md": null,
    "attires": [
     {
@@ -83,16 +96,93 @@
    ]
   },
   {
+   "fighter": "bruno",
+   "fighter_name": "Bruno",
+   "display_name": "BRUNO",
+   "unassigned": false,
+   "slots_md": null,
+   "attires": [
+    {
+     "attire_id": "attire1",
+     "attire_name": "Attire1",
+     "dir": "roster/bruno/attires/attire1",
+     "glb": "roster/bruno/attires/attire1/source/bruno-a1.glb",
+     "variants": [
+      "roster/bruno/attires/attire1/source/bruno-a1-jack-sparrow.glb",
+      "roster/bruno/attires/attire1/source/bruno-a1.glb"
+     ],
+     "customization_json": null
+    },
+    {
+     "attire_id": "attire2",
+     "attire_name": "Attire2",
+     "dir": "roster/bruno/attires/attire2",
+     "glb": "roster/bruno/attires/attire2/source/bruno-a2-sail-the-sea-rigged.glb",
+     "variants": [
+      "roster/bruno/attires/attire2/source/bruno-a2-dreadlocked-warrior.glb",
+      "roster/bruno/attires/attire2/source/bruno-a2-sail-the-sea-rigged.glb",
+      "roster/bruno/attires/attire2/source/bruno-a2-sail-the-sea.glb"
+     ],
+     "customization_json": null
+    }
+   ]
+  },
+  {
+   "fighter": "buffalo-bill",
+   "fighter_name": "Buffalo Bill",
+   "display_name": "BUFFALO BILL",
+   "unassigned": false,
+   "slots_md": null,
+   "attires": [
+    {
+     "attire_id": "attire1",
+     "attire_name": "Attire1",
+     "dir": "roster/buffalo-bill/attires/attire1",
+     "glb": "roster/buffalo-bill/attires/attire1/source/buffalo-bill-a1-render.glb",
+     "variants": [
+      "roster/buffalo-bill/attires/attire1/source/buffalo-bill-a1-render.glb",
+      "roster/buffalo-bill/attires/attire1/source/buffalo-bill-a1.glb"
+     ],
+     "customization_json": null
+    },
+    {
+     "attire_id": "attire2",
+     "attire_name": "Attire2",
+     "dir": "roster/buffalo-bill/attires/attire2",
+     "glb": "roster/buffalo-bill/attires/attire2/source/buffalo-bill-a2-render.glb",
+     "variants": [
+      "roster/buffalo-bill/attires/attire2/source/buffalo-bill-a2-render.glb",
+      "roster/buffalo-bill/attires/attire2/source/buffalo-bill-a2.glb"
+     ],
+     "customization_json": null
+    },
+    {
+     "attire_id": "attire3",
+     "attire_name": "Attire3",
+     "dir": "roster/buffalo-bill/attires/attire3",
+     "glb": "roster/buffalo-bill/attires/attire3/model-rigged.glb",
+     "variants": [
+      "roster/buffalo-bill/attires/attire3/model-rigged.glb",
+      "roster/buffalo-bill/attires/attire3/model.glb"
+     ],
+     "customization_json": null
+    }
+   ]
+  },
+  {
    "fighter": "burger",
    "fighter_name": "Burger",
+   "display_name": "BURGER",
+   "unassigned": false,
    "slots_md": "roster/burger/ATTIRE-SLOTS.md",
    "attires": [
     {
      "attire_id": "attire1",
      "attire_name": "Attire1",
      "dir": "roster/burger/attires/attire1",
-     "glb": "roster/burger/attires/attire1/model.glb",
+     "glb": "roster/burger/attires/attire1/model-rigged.glb",
      "variants": [
+      "roster/burger/attires/attire1/model-rigged.glb",
       "roster/burger/attires/attire1/model.glb"
      ],
      "customization_json": null
@@ -162,6 +252,8 @@
   {
    "fighter": "cain-elias",
    "fighter_name": "Cain Elias",
+   "display_name": "CAIN ELIAS",
+   "unassigned": false,
    "slots_md": "roster/cain-elias/ATTIRE-SLOTS.md",
    "attires": [
     {
@@ -187,8 +279,81 @@
    ]
   },
   {
+   "fighter": "charger",
+   "fighter_name": "Charger",
+   "display_name": "CHARGER",
+   "unassigned": false,
+   "slots_md": null,
+   "attires": [
+    {
+     "attire_id": "attire1",
+     "attire_name": "Attire1",
+     "dir": "roster/charger/attires/attire1",
+     "glb": "roster/charger/attires/attire1/model-rigged.glb",
+     "variants": [
+      "roster/charger/attires/attire1/model-rigged.glb",
+      "roster/charger/attires/attire1/model.glb"
+     ],
+     "customization_json": null
+    },
+    {
+     "attire_id": "attire2",
+     "attire_name": "Attire2",
+     "dir": "roster/charger/attires/attire2",
+     "glb": "roster/charger/attires/attire2/model-rigged.glb",
+     "variants": [
+      "roster/charger/attires/attire2/model-rigged.glb",
+      "roster/charger/attires/attire2/model.glb"
+     ],
+     "customization_json": null
+    }
+   ]
+  },
+  {
+   "fighter": "chordz",
+   "fighter_name": "Chordz",
+   "display_name": "CHORDZ",
+   "unassigned": false,
+   "slots_md": null,
+   "attires": [
+    {
+     "attire_id": "attire1",
+     "attire_name": "Attire1",
+     "dir": "roster/chordz/attires/attire1",
+     "glb": "roster/chordz/attires/attire1/model-rigged.glb",
+     "variants": [
+      "roster/chordz/attires/attire1/model-rigged.glb",
+      "roster/chordz/attires/attire1/source/chordz-a1-rigged.glb",
+      "roster/chordz/attires/attire1/source/chordz-a1.glb"
+     ],
+     "customization_json": null
+    }
+   ]
+  },
+  {
+   "fighter": "cyborg-x",
+   "fighter_name": "Cyborg X",
+   "display_name": "CAPE JONES",
+   "unassigned": false,
+   "slots_md": "roster/cyborg-x/ATTIRE-SLOTS.md",
+   "attires": [
+    {
+     "attire_id": "attire1",
+     "attire_name": "per canon 2026-10-16.",
+     "dir": "roster/cyborg-x/attires/attire1",
+     "glb": "roster/cyborg-x/attires/attire1/model-rigged.glb",
+     "variants": [
+      "roster/cyborg-x/attires/attire1/model-rigged.glb"
+     ],
+     "customization_json": null
+    }
+   ]
+  },
+  {
    "fighter": "deathfang",
    "fighter_name": "Deathfang",
+   "display_name": "DEATHFANG",
+   "unassigned": false,
    "slots_md": "roster/deathfang/ATTIRE-SLOTS.md",
    "attires": [
     {
@@ -200,12 +365,34 @@
       "roster/deathfang/attires/attire1/model.glb"
      ],
      "customization_json": null
+    },
+    {
+     "attire_id": "attire2",
+     "attire_name": "Attire2",
+     "dir": "roster/deathfang/attires/attire2",
+     "glb": "roster/deathfang/attires/attire2/model.glb",
+     "variants": [
+      "roster/deathfang/attires/attire2/model.glb"
+     ],
+     "customization_json": null
+    },
+    {
+     "attire_id": "attire3",
+     "attire_name": "Attire3",
+     "dir": "roster/deathfang/attires/attire3",
+     "glb": "roster/deathfang/attires/attire3/model.glb",
+     "variants": [
+      "roster/deathfang/attires/attire3/model.glb"
+     ],
+     "customization_json": null
     }
    ]
   },
   {
    "fighter": "demonio",
    "fighter_name": "Demonio",
+   "display_name": "DEMONIO",
+   "unassigned": false,
    "slots_md": "roster/demonio/ATTIRE-SLOTS.md",
    "attires": [
     {
@@ -232,8 +419,10 @@
      "attire_id": "human",
      "attire_name": "Demonio attire 1 (unwinged demon, normal Jin moveset)",
      "dir": "roster/demonio/attires/human",
-     "glb": "roster/demonio/attires/human/model.glb",
+     "glb": "roster/demonio/attires/human/model-rerig.glb",
      "variants": [
+      "roster/demonio/attires/human/model-rerig.glb",
+      "roster/demonio/attires/human/model-rigged.glb",
       "roster/demonio/attires/human/model.glb"
      ],
      "customization_json": null
@@ -242,9 +431,61 @@
      "attire_id": "winged-devil",
      "attire_name": "+ human: standard auto_rig pass (dense Tripo statics \u2192 `knn`",
      "dir": "roster/demonio/attires/winged-devil",
-     "glb": "roster/demonio/attires/winged-devil/model.glb",
+     "glb": "roster/demonio/attires/winged-devil/model-rigged.glb",
      "variants": [
+      "roster/demonio/attires/winged-devil/model-rigged.glb",
       "roster/demonio/attires/winged-devil/model.glb"
+     ],
+     "customization_json": null
+    }
+   ]
+  },
+  {
+   "fighter": "diablo",
+   "fighter_name": "Diablo",
+   "display_name": "DIABLO",
+   "unassigned": false,
+   "slots_md": "roster/diablo/ATTIRE-SLOTS.md",
+   "attires": [
+    {
+     "attire_id": "attire1",
+     "attire_name": "Tripo wired 2026-10-20.",
+     "dir": "roster/diablo/attires/attire1",
+     "glb": "roster/diablo/attires/attire1/model-rigged.glb",
+     "variants": [
+      "roster/diablo/attires/attire1/model-rigged.glb",
+      "roster/diablo/attires/attire1/model.glb"
+     ],
+     "customization_json": null
+    },
+    {
+     "attire_id": "attire2",
+     "attire_name": "Devil God",
+     "dir": "roster/diablo/attires/attire2",
+     "glb": "roster/diablo/attires/attire2/model.glb",
+     "variants": [
+      "roster/diablo/attires/attire2/model.glb"
+     ],
+     "customization_json": null
+    }
+   ]
+  },
+  {
+   "fighter": "dio",
+   "fighter_name": "Dio",
+   "display_name": "DIO",
+   "unassigned": false,
+   "slots_md": null,
+   "attires": [
+    {
+     "attire_id": "attire1",
+     "attire_name": "Attire1",
+     "dir": "roster/dio/attires/attire1",
+     "glb": "roster/dio/attires/attire1/source/dio-a1-jade-god-rigged.glb",
+     "variants": [
+      "roster/dio/attires/attire1/source/dio-a1-fantasy-demon.glb",
+      "roster/dio/attires/attire1/source/dio-a1-jade-god-rigged.glb",
+      "roster/dio/attires/attire1/source/dio-a1-jade-god.glb"
      ],
      "customization_json": null
     }
@@ -253,14 +494,17 @@
   {
    "fighter": "doc-frank",
    "fighter_name": "Doc Frank",
+   "display_name": "DOC FRANK",
+   "unassigned": false,
    "slots_md": "roster/doc-frank/ATTIRE-SLOTS.md",
    "attires": [
     {
      "attire_id": "attire1",
-     "attire_name": "= Tripo default (owner law 2026-10-18). The post-transform T",
+     "attire_name": "\u00b7 Transformed",
      "dir": "roster/doc-frank/attires/attire1",
-     "glb": "roster/doc-frank/attires/attire1/post-transform/model.glb",
+     "glb": "roster/doc-frank/attires/attire1/post-transform/model-rigged.glb",
      "variants": [
+      "roster/doc-frank/attires/attire1/post-transform/model-rigged.glb",
       "roster/doc-frank/attires/attire1/post-transform/model.glb",
       "roster/doc-frank/attires/attire1/pre-transform/model.glb"
      ],
@@ -268,44 +512,52 @@
     },
     {
      "attire_id": "attire2",
-     "attire_name": "+ generic transform mechanic implemented in `game/js/`.",
+     "attire_name": "\u00b7 Wowomomo",
      "dir": "roster/doc-frank/attires/attire2",
-     "glb": "roster/doc-frank/attires/attire2/base/model.glb",
+     "glb": "roster/doc-frank/attires/attire2/transformed/model-rigged.glb",
      "variants": [
+      "roster/doc-frank/attires/attire2/base/model-rerig.glb",
+      "roster/doc-frank/attires/attire2/base/model-rigged.glb",
       "roster/doc-frank/attires/attire2/base/model.glb",
       "roster/doc-frank/attires/attire2/dome-fix/model-dome-glass-v1-thindisc.glb",
       "roster/doc-frank/attires/attire2/dome-fix/model-dome-glass-v4.glb",
       "roster/doc-frank/attires/attire2/dome-fix/model-dome-glass-v5.glb",
       "roster/doc-frank/attires/attire2/dome-fix/model-dome-glass.glb",
+      "roster/doc-frank/attires/attire2/transformed/model-rigged.glb",
       "roster/doc-frank/attires/attire2/transformed/model.glb"
      ],
      "customization_json": null
     },
     {
      "attire_id": "attire3",
-     "attire_name": "Wowomomo",
+     "attire_name": "\u00b7 Wowomomo XL",
      "dir": "roster/doc-frank/attires/attire3",
-     "glb": "roster/doc-frank/attires/attire3/base/model.glb",
+     "glb": "roster/doc-frank/attires/attire3/transformed/model-rigged.glb",
      "variants": [
       "roster/doc-frank/attires/attire3/base/model.glb",
+      "roster/doc-frank/attires/attire3/transformed/model-rigged.glb",
       "roster/doc-frank/attires/attire3/transformed/model.glb"
      ],
      "customization_json": null
     },
     {
      "attire_id": "attire4",
-     "attire_name": "Attire4",
+     "attire_name": "\u00b7 Hood Scientist",
      "dir": "roster/doc-frank/attires/attire4",
-     "glb": "roster/doc-frank/attires/attire4/base/model.glb",
+     "glb": "roster/doc-frank/attires/attire4/base/model-rerig.glb",
      "variants": [
+      "roster/doc-frank/attires/attire4/base/model-rerig.glb",
+      "roster/doc-frank/attires/attire4/base/model-rigged.glb",
       "roster/doc-frank/attires/attire4/base/model.glb",
+      "roster/doc-frank/attires/attire4/transformed/model-rerig.glb",
+      "roster/doc-frank/attires/attire4/transformed/model-rigged.glb",
       "roster/doc-frank/attires/attire4/transformed/model.glb"
      ],
      "customization_json": null
     },
     {
      "attire_id": "machine-shop",
-     "attire_name": "Machine Shop",
+     "attire_name": "\u00b7 Hood XL",
      "dir": "roster/doc-frank/attires/machine-shop",
      "glb": "roster/doc-frank/attires/machine-shop/doc-frank-machine-shop-rigged.glb",
      "variants": [
@@ -317,16 +569,39 @@
    ]
   },
   {
+   "fighter": "dorowani",
+   "fighter_name": "Dorowani",
+   "display_name": "DOROWANI",
+   "unassigned": false,
+   "slots_md": null,
+   "attires": [
+    {
+     "attire_id": "attire1",
+     "attire_name": "Attire1",
+     "dir": "roster/dorowani/attires/attire1",
+     "glb": "roster/dorowani/attires/attire1/source/dorowani-a1-crimson-cheeks-rigged.glb",
+     "variants": [
+      "roster/dorowani/attires/attire1/source/dorowani-a1-crimson-cheeks-rigged.glb",
+      "roster/dorowani/attires/attire1/source/dorowani-a1-crimson-cheeks.glb"
+     ],
+     "customization_json": null
+    }
+   ]
+  },
+  {
    "fighter": "dxmmii",
    "fighter_name": "Dxmmii",
+   "display_name": "DXMMII",
+   "unassigned": false,
    "slots_md": "roster/dxmmii/ATTIRE-SLOTS.md",
    "attires": [
     {
      "attire_id": "attire1",
      "attire_name": "per owner 2026-10-19.",
      "dir": "roster/dxmmii/attires/attire1",
-     "glb": "roster/dxmmii/attires/attire1/model.glb",
+     "glb": "roster/dxmmii/attires/attire1/model-rigged.glb",
      "variants": [
+      "roster/dxmmii/attires/attire1/model-rigged.glb",
       "roster/dxmmii/attires/attire1/model.glb"
      ],
      "customization_json": null
@@ -357,6 +632,8 @@
   {
    "fighter": "gyou",
    "fighter_name": "Gyou",
+   "display_name": "GYOU",
+   "unassigned": false,
    "slots_md": "roster/gyou/ATTIRE-SLOTS.md",
    "attires": [
     {
@@ -374,6 +651,8 @@
   {
    "fighter": "iori",
    "fighter_name": "Iori",
+   "display_name": "DEATHFANG",
+   "unassigned": false,
    "slots_md": null,
    "attires": [
     {
@@ -391,6 +670,8 @@
   {
    "fighter": "jin",
    "fighter_name": "Jin",
+   "display_name": "PHANTOM",
+   "unassigned": false,
    "slots_md": null,
    "attires": [
     {
@@ -408,6 +689,8 @@
   {
    "fighter": "king-tyrant",
    "fighter_name": "King Tyrant",
+   "display_name": "KING TYRANT",
+   "unassigned": false,
    "slots_md": "roster/king-tyrant/attires/ATTIRE-SLOTS.md",
    "attires": [
     {
@@ -453,16 +736,50 @@
    ]
   },
   {
+   "fighter": "kinpo",
+   "fighter_name": "Kinpo",
+   "display_name": "KINPO",
+   "unassigned": false,
+   "slots_md": "roster/kinpo/ATTIRE-SLOTS.md",
+   "attires": [
+    {
+     "attire_id": "attire1",
+     "attire_name": "Goth Sport",
+     "dir": "roster/kinpo/attires/attire1",
+     "glb": "roster/kinpo/attires/attire1/model-intake.glb",
+     "variants": [
+      "roster/kinpo/attires/attire1/model-intake.glb",
+      "roster/kinpo/attires/attire1/model-rigged.glb",
+      "roster/kinpo/attires/attire1/model.glb"
+     ],
+     "customization_json": null
+    },
+    {
+     "attire_id": "attire2",
+     "attire_name": "Attire2",
+     "dir": "roster/kinpo/attires/attire2",
+     "glb": "roster/kinpo/attires/attire2/model.glb",
+     "variants": [
+      "roster/kinpo/attires/attire2/model.glb"
+     ],
+     "customization_json": null
+    }
+   ]
+  },
+  {
    "fighter": "koreshi",
    "fighter_name": "Koreshi",
+   "display_name": "KORESHI",
+   "unassigned": false,
    "slots_md": "roster/koreshi/ATTIRE-SLOTS.md",
    "attires": [
     {
      "attire_id": "attire1",
      "attire_name": "Tripo pull 034bb96f-eb5a-4c5b-a3f7-563287603c09 (ninja actio",
      "dir": "roster/koreshi/attires/attire1",
-     "glb": "roster/koreshi/attires/attire1/model.glb",
+     "glb": "roster/koreshi/attires/attire1/model-rigged.glb",
      "variants": [
+      "roster/koreshi/attires/attire1/model-rigged.glb",
       "roster/koreshi/attires/attire1/model.glb"
      ],
      "customization_json": null
@@ -472,14 +789,18 @@
   {
    "fighter": "kronos",
    "fighter_name": "Kronos",
+   "display_name": "KRONOS",
+   "unassigned": false,
    "slots_md": "roster/kronos/ATTIRE-SLOTS.md",
    "attires": [
     {
      "attire_id": "attire1",
      "attire_name": "Attire1",
      "dir": "roster/kronos/attires/attire1",
-     "glb": "roster/kronos/attires/attire1/model.glb",
+     "glb": "roster/kronos/attires/attire1/model-rerig.glb",
      "variants": [
+      "roster/kronos/attires/attire1/model-rerig.glb",
+      "roster/kronos/attires/attire1/model-rigged.glb",
       "roster/kronos/attires/attire1/model.glb"
      ],
      "customization_json": null
@@ -488,9 +809,59 @@
      "attire_id": "attire2",
      "attire_name": "Attire2",
      "dir": "roster/kronos/attires/attire2",
-     "glb": "roster/kronos/attires/attire2/model.glb",
+     "glb": "roster/kronos/attires/attire2/model-rerig.glb",
      "variants": [
+      "roster/kronos/attires/attire2/model-rerig.glb",
+      "roster/kronos/attires/attire2/model-rigged.glb",
       "roster/kronos/attires/attire2/model.glb"
+     ],
+     "customization_json": null
+    },
+    {
+     "attire_id": "attire3",
+     "attire_name": "Attire3",
+     "dir": "roster/kronos/attires/attire3",
+     "glb": "roster/kronos/attires/attire3/model.glb",
+     "variants": [
+      "roster/kronos/attires/attire3/model.glb"
+     ],
+     "customization_json": null
+    }
+   ]
+  },
+  {
+   "fighter": "kuma",
+   "fighter_name": "Kuma",
+   "display_name": "GASHADOKURO",
+   "unassigned": false,
+   "slots_md": null,
+   "attires": [
+    {
+     "attire_id": "attire1",
+     "attire_name": "Attire1",
+     "dir": "roster/kuma/attires/attire1",
+     "glb": "roster/kuma/attires/attire1/source/kuma-a1.glb",
+     "variants": [
+      "roster/kuma/attires/attire1/source/kuma-a1.glb"
+     ],
+     "customization_json": null
+    }
+   ]
+  },
+  {
+   "fighter": "kuma-replacement",
+   "fighter_name": "Kuma Replacement",
+   "display_name": "GASHADOKURO",
+   "unassigned": false,
+   "slots_md": null,
+   "attires": [
+    {
+     "attire_id": "attire1",
+     "attire_name": "Attire1",
+     "dir": "roster/kuma-replacement/attires/attire1",
+     "glb": "roster/kuma-replacement/attires/attire1/source/kuma-replacement-a1.glb",
+     "variants": [
+      "roster/kuma-replacement/attires/attire1/source/kuma-replacement-a1.glb"
      ],
      "customization_json": null
     }
@@ -499,6 +870,8 @@
   {
    "fighter": "lili",
    "fighter_name": "Lili",
+   "display_name": "SILVERTONGUE",
+   "unassigned": false,
    "slots_md": "roster/lili/ATTIRE-SLOTS.md",
    "attires": [
     {
@@ -516,6 +889,8 @@
   {
    "fighter": "mariposa",
    "fighter_name": "Mariposa",
+   "display_name": "MARIPOSA",
+   "unassigned": false,
    "slots_md": "roster/mariposa/ATTIRE-SLOTS.md",
    "attires": [
     {
@@ -542,16 +917,48 @@
    ]
   },
   {
+   "fighter": "michiko",
+   "fighter_name": "Michiko",
+   "display_name": "MICHIKO",
+   "unassigned": false,
+   "slots_md": "roster/michiko/ATTIRE-SLOTS.md",
+   "attires": [
+    {
+     "attire_id": "attire1",
+     "attire_name": "(default)",
+     "dir": "roster/michiko/attires/attire1",
+     "glb": "roster/michiko/attires/attire1/model-rigged.glb",
+     "variants": [
+      "roster/michiko/attires/attire1/model-rigged.glb"
+     ],
+     "customization_json": null
+    },
+    {
+     "attire_id": "attire2",
+     "attire_name": "Biker Chick",
+     "dir": "roster/michiko/attires/attire2",
+     "glb": "roster/michiko/attires/attire2/model-rigged.glb",
+     "variants": [
+      "roster/michiko/attires/attire2/model-rigged.glb"
+     ],
+     "customization_json": null
+    }
+   ]
+  },
+  {
    "fighter": "mina-ashido",
-   "fighter_name": "Ryusan",
+   "fighter_name": "Mina Ashido",
+   "display_name": "RYUSAN",
+   "unassigned": false,
    "slots_md": null,
    "attires": [
     {
      "attire_id": "attire1",
      "attire_name": "Attire1",
      "dir": "roster/mina-ashido/attires/attire1",
-     "glb": "roster/mina-ashido/attires/attire1/model-rigged.glb",
+     "glb": "roster/mina-ashido/attires/attire1/model-rerig.glb",
      "variants": [
+      "roster/mina-ashido/attires/attire1/model-rerig.glb",
       "roster/mina-ashido/attires/attire1/model-rigged.glb",
       "roster/mina-ashido/attires/attire1/model.glb"
      ],
@@ -561,15 +968,19 @@
   },
   {
    "fighter": "miruko",
-   "fighter_name": "Tobi",
+   "fighter_name": "Miruko",
+   "display_name": "TOBI",
+   "unassigned": false,
    "slots_md": null,
    "attires": [
     {
      "attire_id": "attire1",
      "attire_name": "Attire1",
      "dir": "roster/miruko/attires/attire1",
-     "glb": "roster/miruko/attires/attire1/model-rigged.glb",
+     "glb": "roster/miruko/attires/attire1/model-rerig-textured.glb",
      "variants": [
+      "roster/miruko/attires/attire1/model-rerig-textured.glb",
+      "roster/miruko/attires/attire1/model-rerig.glb",
       "roster/miruko/attires/attire1/model-rigged.glb",
       "roster/miruko/attires/attire1/model.glb"
      ],
@@ -578,8 +989,45 @@
    ]
   },
   {
+   "fighter": "negativo",
+   "fighter_name": "Negativo",
+   "display_name": "N3G\u0394TIV0",
+   "unassigned": false,
+   "slots_md": null,
+   "attires": [
+    {
+     "attire_id": "attire1",
+     "attire_name": "Attire1",
+     "dir": "roster/negativo/attires/attire1",
+     "glb": "roster/negativo/attires/attire1/source/negativo-a1-refit.glb",
+     "variants": [
+      "roster/negativo/attires/attire1/source/negativo-a1-futuristic-superhero.glb",
+      "roster/negativo/attires/attire1/source/negativo-a1-refit.glb",
+      "roster/negativo/attires/attire1/source/negativo-a1-rigged.glb",
+      "roster/negativo/attires/attire1/source/negativo-a1.glb"
+     ],
+     "customization_json": null
+    },
+    {
+     "attire_id": "attire2",
+     "attire_name": "Attire2",
+     "dir": "roster/negativo/attires/attire2",
+     "glb": "roster/negativo/attires/attire2/source/negativo-a2-refit.glb",
+     "variants": [
+      "roster/negativo/attires/attire2/source/negativo-a2-refit.glb",
+      "roster/negativo/attires/attire2/source/negativo-a2-rigged.glb",
+      "roster/negativo/attires/attire2/source/negativo-a2-sci-fi-armored-suit.glb",
+      "roster/negativo/attires/attire2/source/negativo-a2.glb"
+     ],
+     "customization_json": null
+    }
+   ]
+  },
+  {
    "fighter": "nightwolf",
    "fighter_name": "Nightwolf",
+   "display_name": "NIGHTWOLF",
+   "unassigned": false,
    "slots_md": "roster/nightwolf/attires/ATTIRE-SLOTS.md",
    "attires": [
     {
@@ -595,13 +1043,35 @@
    ]
   },
   {
+   "fighter": "panda",
+   "fighter_name": "Panda",
+   "display_name": "AOTSUKI",
+   "unassigned": false,
+   "slots_md": null,
+   "attires": [
+    {
+     "attire_id": "attire1",
+     "attire_name": "Attire1",
+     "dir": "roster/panda/attires/attire1",
+     "glb": "roster/panda/attires/attire1/source/aotsuki-a1-rigged.glb",
+     "variants": [
+      "roster/panda/attires/attire1/source/aotsuki-a1-rigged.glb",
+      "roster/panda/attires/attire1/source/aotsuki-a1.glb"
+     ],
+     "customization_json": null
+    }
+   ]
+  },
+  {
    "fighter": "pantera",
    "fighter_name": "Pantera",
+   "display_name": "PANTERA",
+   "unassigned": false,
    "slots_md": "roster/pantera/attires/ATTIRE-SLOTS.md",
    "attires": [
     {
      "attire_id": "classic",
-     "attire_name": "(not Attire 1",
+     "attire_name": ") and the",
      "dir": "roster/pantera/attires/classic",
      "glb": "roster/pantera/attires/classic/pantera-classic.glb",
      "variants": [
@@ -611,7 +1081,7 @@
     },
     {
      "attire_id": "crimson-rage",
-     "attire_name": "base GLB (P2 diffuse pack at `attires/p2/`): black tights wi",
+     "attire_name": "until the 2026-10-21 reorder moved it to Slot 1.",
      "dir": "roster/pantera/attires/crimson-rage",
      "glb": "roster/pantera/attires/crimson-rage/pantera-attire5-crimson.glb",
      "variants": [
@@ -621,27 +1091,30 @@
     },
     {
      "attire_id": "leomon",
-     "attire_name": "'s source is T7 King P1.",
+     "attire_name": "until the 2026-10-21 reorder moved it to Slot 2.",
      "dir": "roster/pantera/attires/leomon",
-     "glb": "roster/pantera/attires/leomon/tail/pantera_tail.glb",
+     "glb": "roster/pantera/attires/leomon/model.glb",
      "variants": [
+      "roster/pantera/attires/leomon/model.glb",
       "roster/pantera/attires/leomon/tail/pantera_tail.glb"
      ],
      "customization_json": null
     },
     {
      "attire_id": "leopard-king",
-     "attire_name": "reskinned to Snow Leopard colorway (blue tights / white rose",
+     "attire_name": "; moved to Slot 6 on 2026-10-20;",
      "dir": "roster/pantera/attires/leopard-king",
-     "glb": "roster/pantera/attires/leopard-king/model.glb",
+     "glb": "roster/pantera/attires/leopard-king/model-refit.glb",
      "variants": [
+      "roster/pantera/attires/leopard-king/model-refit.glb",
+      "roster/pantera/attires/leopard-king/model-rigged.glb",
       "roster/pantera/attires/leopard-king/model.glb"
      ],
      "customization_json": null
     },
     {
      "attire_id": "p2-wired",
-     "attire_name": "(T7 P2 scheme) + Slot 5 (Crimson Rage, custom Creation Suite",
+     "attire_name": "'s source is T7 King P1.",
      "dir": "roster/pantera/attires/p2-wired",
      "glb": "roster/pantera/attires/p2-wired/pantera-attire4-p2.glb",
      "variants": [
@@ -651,7 +1124,7 @@
     },
     {
      "attire_id": "snow-leopard",
-     "attire_name": "Leo man",
+     "attire_name": "reskinned to Snow Leopard colorway (blue tights / white rose",
      "dir": "roster/pantera/attires/snow-leopard",
      "glb": "roster/pantera/attires/snow-leopard/pantera-snow-leopard.glb",
      "variants": [
@@ -663,7 +1136,9 @@
   },
   {
    "fighter": "parvati",
-   "fighter_name": "Megami",
+   "fighter_name": "Parvati",
+   "display_name": "MEGAMI",
+   "unassigned": false,
    "slots_md": "roster/parvati/ATTIRE-SLOTS.md",
    "attires": [
     {
@@ -682,14 +1157,18 @@
   {
    "fighter": "phantom",
    "fighter_name": "Phantom",
+   "display_name": "PHANTOM",
+   "unassigned": false,
    "slots_md": "roster/phantom/attires/ATTIRE-SLOTS.md",
    "attires": [
     {
      "attire_id": "attire1",
      "attire_name": "(DEFAULT)",
      "dir": "roster/phantom/attires/attire1",
-     "glb": "roster/phantom/attires/attire1/model.glb",
+     "glb": "roster/phantom/attires/attire1/model-rerig.glb",
      "variants": [
+      "roster/phantom/attires/attire1/model-rerig.glb",
+      "roster/phantom/attires/attire1/model-rigged.glb",
       "roster/phantom/attires/attire1/model.glb"
      ],
      "customization_json": null
@@ -699,14 +1178,18 @@
   {
    "fighter": "purplerain",
    "fighter_name": "Purplerain",
+   "display_name": "PURPLE RAIN",
+   "unassigned": false,
    "slots_md": null,
    "attires": [
     {
      "attire_id": "attire1",
      "attire_name": "Attire1",
      "dir": "roster/purplerain/attires/attire1",
-     "glb": "roster/purplerain/attires/attire1/model.glb",
+     "glb": "roster/purplerain/attires/attire1/model-rerig.glb",
      "variants": [
+      "roster/purplerain/attires/attire1/model-rerig.glb",
+      "roster/purplerain/attires/attire1/model-rigged.glb",
       "roster/purplerain/attires/attire1/model.glb"
      ],
      "customization_json": null
@@ -715,15 +1198,18 @@
   },
   {
    "fighter": "rahkasa",
-   "fighter_name": "Chatur",
+   "fighter_name": "Rahkasa",
+   "display_name": "CHATUR",
+   "unassigned": false,
    "slots_md": null,
    "attires": [
     {
      "attire_id": "attire1",
      "attire_name": "Attire1",
      "dir": "roster/rahkasa/attires/attire1",
-     "glb": "roster/rahkasa/attires/attire1/model-rigged.glb",
+     "glb": "roster/rahkasa/attires/attire1/model-rigged-textured.glb",
      "variants": [
+      "roster/rahkasa/attires/attire1/model-rigged-textured.glb",
       "roster/rahkasa/attires/attire1/model-rigged.glb",
       "roster/rahkasa/attires/attire1/model.glb"
      ],
@@ -732,16 +1218,42 @@
    ]
   },
   {
+   "fighter": "ryuji-rock",
+   "fighter_name": "Ryuji Rock",
+   "display_name": "CORNERSTONE",
+   "unassigned": false,
+   "slots_md": null,
+   "attires": [
+    {
+     "attire_id": "attire1",
+     "attire_name": "Attire1",
+     "dir": "roster/ryuji-rock/attires/attire1",
+     "glb": "roster/ryuji-rock/attires/attire1/model-rigged.glb",
+     "variants": [
+      "roster/ryuji-rock/attires/attire1/model-rigged.glb",
+      "roster/ryuji-rock/attires/attire1/model.glb",
+      "roster/ryuji-rock/attires/attire1/source/cornerstone-a1.glb",
+      "roster/ryuji-rock/attires/attire1/source/ryuji-rock-a1-tattooed-man.glb"
+     ],
+     "customization_json": null
+    }
+   ]
+  },
+  {
    "fighter": "sakura",
    "fighter_name": "Sakura",
+   "display_name": "SAKU RA",
+   "unassigned": false,
    "slots_md": null,
    "attires": [
     {
      "attire_id": "attire1",
      "attire_name": "Attire1",
      "dir": "roster/sakura/attires/attire1",
-     "glb": "roster/sakura/attires/attire1/model.glb",
+     "glb": "roster/sakura/attires/attire1/model-rerig.glb",
      "variants": [
+      "roster/sakura/attires/attire1/model-rerig.glb",
+      "roster/sakura/attires/attire1/model-rigged.glb",
       "roster/sakura/attires/attire1/model.glb"
      ],
      "customization_json": null
@@ -751,15 +1263,38 @@
   {
    "fighter": "sam-ur-a1",
    "fighter_name": "Sam Ur A1",
+   "display_name": "SAM-UR-A1",
+   "unassigned": false,
    "slots_md": "roster/sam-ur-a1/ATTIRE-SLOTS.md",
    "attires": [
     {
      "attire_id": "attire1",
      "attire_name": "= Tripo default (owner law 2026-10-18).",
      "dir": "roster/sam-ur-a1/attires/attire1",
-     "glb": "roster/sam-ur-a1/attires/attire1/model.glb",
+     "glb": "roster/sam-ur-a1/attires/attire1/model-rerig.glb",
      "variants": [
+      "roster/sam-ur-a1/attires/attire1/model-rerig.glb",
+      "roster/sam-ur-a1/attires/attire1/model-rigged.glb",
       "roster/sam-ur-a1/attires/attire1/model.glb"
+     ],
+     "customization_json": null
+    }
+   ]
+  },
+  {
+   "fighter": "scimitar",
+   "fighter_name": "Scimitar",
+   "display_name": "SCIMITAR",
+   "unassigned": false,
+   "slots_md": null,
+   "attires": [
+    {
+     "attire_id": "attire1",
+     "attire_name": "Attire1",
+     "dir": "roster/scimitar/attires/attire1",
+     "glb": "roster/scimitar/attires/attire1/source/scimitar-a1.glb",
+     "variants": [
+      "roster/scimitar/attires/attire1/source/scimitar-a1.glb"
      ],
      "customization_json": null
     }
@@ -768,14 +1303,17 @@
   {
    "fighter": "silvertongue",
    "fighter_name": "Silvertongue",
+   "display_name": "SILVERTONGUE",
+   "unassigned": false,
    "slots_md": "roster/silvertongue/ATTIRE-SLOTS.md",
    "attires": [
     {
      "attire_id": "attire1",
      "attire_name": "per the reserved-row rule) `roster/silvertongue/attires/spy",
      "dir": "roster/silvertongue/attires/attire1",
-     "glb": "roster/silvertongue/attires/attire1/model.glb",
+     "glb": "roster/silvertongue/attires/attire1/model-rigged.glb",
      "variants": [
+      "roster/silvertongue/attires/attire1/model-rigged.glb",
       "roster/silvertongue/attires/attire1/model.glb"
      ],
      "customization_json": null
@@ -806,6 +1344,8 @@
   {
    "fighter": "skull",
    "fighter_name": "Skull",
+   "display_name": "SKULL",
+   "unassigned": false,
    "slots_md": "roster/skull/attires/ATTIRE-SLOTS.md",
    "attires": [
     {
@@ -814,7 +1354,39 @@
      "dir": "roster/skull/attires/attire1",
      "glb": "roster/skull/attires/attire1/model.glb",
      "variants": [
+      "roster/skull/attires/attire1/model-rerig.glb",
+      "roster/skull/attires/attire1/model-rigged.glb",
       "roster/skull/attires/attire1/model.glb"
+     ],
+     "customization_json": null
+    }
+   ]
+  },
+  {
+   "fighter": "slice",
+   "fighter_name": "Slice",
+   "display_name": "SLICE",
+   "unassigned": false,
+   "slots_md": "roster/slice/ATTIRE-SLOTS.md",
+   "attires": [
+    {
+     "attire_id": "attire1",
+     "attire_name": "(default)",
+     "dir": "roster/slice/attires/attire1",
+     "glb": "roster/slice/attires/attire1/model-rigged.glb",
+     "variants": [
+      "roster/slice/attires/attire1/model-rigged.glb",
+      "roster/slice/attires/attire1/model.glb"
+     ],
+     "customization_json": null
+    },
+    {
+     "attire_id": "attire2",
+     "attire_name": ", laddered back)",
+     "dir": "roster/slice/attires/attire2",
+     "glb": "roster/slice/attires/attire2/model.glb",
+     "variants": [
+      "roster/slice/attires/attire2/model.glb"
      ],
      "customization_json": null
     }
@@ -823,6 +1395,8 @@
   {
    "fighter": "star",
    "fighter_name": "Star",
+   "display_name": "STAR",
+   "unassigned": false,
    "slots_md": "roster/star/ATTIRE-SLOTS.md",
    "attires": [
     {
@@ -859,7 +1433,7 @@
      "attire_id": "attire5",
      "attire_name": "Attire5",
      "dir": "roster/star/attires/attire5",
-     "glb": "roster/star/attires/attire5/model.glb",
+     "glb": "roster/star/attires/attire5/model-improved.glb",
      "variants": [
       "roster/star/attires/attire5/model-improved.glb",
       "roster/star/attires/attire5/model.glb"
@@ -869,16 +1443,73 @@
    ]
   },
   {
+   "fighter": "theory",
+   "fighter_name": "Theory",
+   "display_name": "THEORY",
+   "unassigned": false,
+   "slots_md": null,
+   "attires": [
+    {
+     "attire_id": "attire1",
+     "attire_name": "Attire1",
+     "dir": "roster/theory/attires/attire1",
+     "glb": "roster/theory/attires/attire1/source/theory-a1-render.glb",
+     "variants": [
+      "roster/theory/attires/attire1/source/theory-a1-render.glb",
+      "roster/theory/attires/attire1/source/theory-a1.glb"
+     ],
+     "customization_json": null
+    },
+    {
+     "attire_id": "attire2",
+     "attire_name": "Attire2",
+     "dir": "roster/theory/attires/attire2",
+     "glb": "roster/theory/attires/attire2/source/theory-a2-render.glb",
+     "variants": [
+      "roster/theory/attires/attire2/source/theory-a2-render.glb",
+      "roster/theory/attires/attire2/source/theory-a2.glb"
+     ],
+     "customization_json": null
+    },
+    {
+     "attire_id": "attire3",
+     "attire_name": "Attire3",
+     "dir": "roster/theory/attires/attire3",
+     "glb": "roster/theory/attires/attire3/source/theory-a3-render.glb",
+     "variants": [
+      "roster/theory/attires/attire3/source/theory-a3-render.glb",
+      "roster/theory/attires/attire3/source/theory-a3.glb"
+     ],
+     "customization_json": null
+    },
+    {
+     "attire_id": "attire4",
+     "attire_name": "Attire4",
+     "dir": "roster/theory/attires/attire4",
+     "glb": "roster/theory/attires/attire4/source/theory-a4-render.glb",
+     "variants": [
+      "roster/theory/attires/attire4/source/theory-a4-render.glb",
+      "roster/theory/attires/attire4/source/theory-a4.glb"
+     ],
+     "customization_json": null
+    }
+   ]
+  },
+  {
    "fighter": "thor",
    "fighter_name": "Thor",
+   "display_name": "THOR",
+   "unassigned": false,
    "slots_md": "roster/thor/ATTIRE-SLOTS.md",
    "attires": [
     {
      "attire_id": "attire1",
      "attire_name": "phantom mimic attire oni mask",
      "dir": "roster/thor/attires/attire1",
-     "glb": "roster/thor/attires/attire1/model.glb",
+     "glb": "roster/thor/attires/attire1/model-rerig.glb",
      "variants": [
+      "roster/thor/attires/attire1/model-rerig.glb",
+      "roster/thor/attires/attire1/model-rigged.glb",
       "roster/thor/attires/attire1/model.glb"
      ],
      "customization_json": null
@@ -896,16 +1527,38 @@
    ]
   },
   {
+   "fighter": "torch",
+   "fighter_name": "Torch",
+   "display_name": "TORCH",
+   "unassigned": false,
+   "slots_md": "roster/torch/ATTIRE-SLOTS.md",
+   "attires": [
+    {
+     "attire_id": "attire3",
+     "attire_name": "at the FOREFRONT",
+     "dir": "roster/torch/attires/attire3",
+     "glb": "roster/torch/attires/attire3/source/torch-a3-bald-eagle.glb",
+     "variants": [
+      "roster/torch/attires/attire3/source/torch-a3-bald-eagle.glb"
+     ],
+     "customization_json": null
+    }
+   ]
+  },
+  {
    "fighter": "tsuyu-asui",
-   "fighter_name": "Pond",
+   "fighter_name": "Tsuyu Asui",
+   "display_name": "POND",
+   "unassigned": false,
    "slots_md": null,
    "attires": [
     {
      "attire_id": "attire1",
      "attire_name": "Attire1",
      "dir": "roster/tsuyu-asui/attires/attire1",
-     "glb": "roster/tsuyu-asui/attires/attire1/model-rigged.glb",
+     "glb": "roster/tsuyu-asui/attires/attire1/model-rigged-textured.glb",
      "variants": [
+      "roster/tsuyu-asui/attires/attire1/model-rigged-textured.glb",
       "roster/tsuyu-asui/attires/attire1/model-rigged.glb",
       "roster/tsuyu-asui/attires/attire1/model.glb"
      ],
@@ -914,8 +1567,63 @@
    ]
   },
   {
+   "fighter": "vainabel",
+   "fighter_name": "Vainabel",
+   "display_name": "VAIN ABEL",
+   "unassigned": false,
+   "slots_md": "roster/vainabel/ATTIRE-SLOTS.md",
+   "attires": [
+    {
+     "attire_id": "attire1",
+     "attire_name": "is his",
+     "dir": "roster/vainabel/attires/attire1",
+     "glb": "roster/vainabel/attires/attire1/model-rigged.glb",
+     "variants": [
+      "roster/vainabel/attires/attire1/model-rigged.glb",
+      "roster/vainabel/attires/attire1/model.glb"
+     ],
+     "customization_json": null
+    },
+    {
+     "attire_id": "attire2",
+     "attire_name": "'s ear-less sculpt (owner-noted). `roster/vainabel/attires/a",
+     "dir": "roster/vainabel/attires/attire2",
+     "glb": "roster/vainabel/attires/attire2/model-rigged.glb",
+     "variants": [
+      "roster/vainabel/attires/attire2/model-rigged.glb",
+      "roster/vainabel/attires/attire2/model.glb"
+     ],
+     "customization_json": null
+    },
+    {
+     "attire_id": "attire3",
+     "attire_name": "Attire3",
+     "dir": "roster/vainabel/attires/attire3",
+     "glb": "roster/vainabel/attires/attire3/model-rigged.glb",
+     "variants": [
+      "roster/vainabel/attires/attire3/model-rigged.glb",
+      "roster/vainabel/attires/attire3/model.glb"
+     ],
+     "customization_json": null
+    },
+    {
+     "attire_id": "attire4",
+     "attire_name": "Attire4",
+     "dir": "roster/vainabel/attires/attire4",
+     "glb": "roster/vainabel/attires/attire4/model-rigged.glb",
+     "variants": [
+      "roster/vainabel/attires/attire4/model-rigged.glb",
+      "roster/vainabel/attires/attire4/model.glb"
+     ],
+     "customization_json": null
+    }
+   ]
+  },
+  {
    "fighter": "vega",
    "fighter_name": "Vega",
+   "display_name": "KORESHI",
+   "unassigned": false,
    "slots_md": null,
    "attires": [
     {
@@ -932,15 +1640,18 @@
   },
   {
    "fighter": "vixen",
-   "fighter_name": "Menajerii",
+   "fighter_name": "Vixen",
+   "display_name": "MENAJERII",
+   "unassigned": false,
    "slots_md": "roster/vixen/ATTIRE-SLOTS.md",
    "attires": [
     {
      "attire_id": "attire1",
      "attire_name": "Attire1",
      "dir": "roster/vixen/attires/attire1",
-     "glb": "roster/vixen/attires/attire1/model-rigged.glb",
+     "glb": "roster/vixen/attires/attire1/model-rigged-noplane.glb",
      "variants": [
+      "roster/vixen/attires/attire1/model-rigged-noplane.glb",
       "roster/vixen/attires/attire1/model-rigged.glb",
       "roster/vixen/attires/attire1/model.glb"
      ],
@@ -951,15 +1662,60 @@
   {
    "fighter": "waterfall",
    "fighter_name": "Waterfall",
+   "display_name": "WATERFALL",
+   "unassigned": false,
    "slots_md": "roster/waterfall/ATTIRE-SLOTS.md",
    "attires": [
     {
      "attire_id": "attire1",
      "attire_name": "Attire1",
      "dir": "roster/waterfall/attires/attire1",
-     "glb": "roster/waterfall/attires/attire1/model.glb",
+     "glb": "roster/waterfall/attires/attire1/model-rigged.glb",
      "variants": [
+      "roster/waterfall/attires/attire1/model-rigged.glb",
       "roster/waterfall/attires/attire1/model.glb"
+     ],
+     "customization_json": null
+    }
+   ]
+  },
+  {
+   "fighter": "yukihyo",
+   "fighter_name": "Yukihyo",
+   "display_name": "YUKIHY\u014c",
+   "unassigned": false,
+   "slots_md": null,
+   "attires": [
+    {
+     "attire_id": "attire1",
+     "attire_name": "Attire1",
+     "dir": "roster/yukihyo/attires/attire1",
+     "glb": "roster/yukihyo/attires/attire1/source/yukihyo-a1-rigged.glb",
+     "variants": [
+      "roster/yukihyo/attires/attire1/source/yukihyo-a1-rigged.glb",
+      "roster/yukihyo/attires/attire1/source/yukihyo-a1.glb"
+     ],
+     "customization_json": null
+    },
+    {
+     "attire_id": "attire2",
+     "attire_name": "Attire2",
+     "dir": "roster/yukihyo/attires/attire2",
+     "glb": "roster/yukihyo/attires/attire2/source/yukihyo-a2-bobcat-pride-rigged.glb",
+     "variants": [
+      "roster/yukihyo/attires/attire2/source/yukihyo-a2-bobcat-pride-rigged.glb",
+      "roster/yukihyo/attires/attire2/source/yukihyo-a2-bobcat-pride.glb"
+     ],
+     "customization_json": null
+    },
+    {
+     "attire_id": "attire3",
+     "attire_name": "Attire3",
+     "dir": "roster/yukihyo/attires/attire3",
+     "glb": "roster/yukihyo/attires/attire3/source/yukihyo-a3-tiger-king-rigged.glb",
+     "variants": [
+      "roster/yukihyo/attires/attire3/source/yukihyo-a3-tiger-king-rigged.glb",
+      "roster/yukihyo/attires/attire3/source/yukihyo-a3-tiger-king.glb"
      ],
      "customization_json": null
     }
@@ -968,6 +1724,8 @@
   {
    "fighter": "zafina",
    "fighter_name": "Zafina",
+   "display_name": "MARIPOSA",
+   "unassigned": false,
    "slots_md": "roster/zafina/ATTIRE-SLOTS.md",
    "attires": [
     {
@@ -995,15 +1753,38 @@
   {
    "fighter": "zangief",
    "fighter_name": "Zangief",
+   "display_name": "KRONOS",
+   "unassigned": false,
    "slots_md": null,
    "attires": [
     {
      "attire_id": "attire1",
      "attire_name": "Attire1",
      "dir": "roster/zangief/attires/attire1",
-     "glb": "roster/zangief/attires/attire1/model.glb",
+     "glb": "roster/zangief/attires/attire1/model-rigged.glb",
      "variants": [
+      "roster/zangief/attires/attire1/model-rigged.glb",
       "roster/zangief/attires/attire1/model.glb"
+     ],
+     "customization_json": null
+    }
+   ]
+  },
+  {
+   "fighter": "zen",
+   "fighter_name": "Zen",
+   "display_name": "ZEN",
+   "unassigned": false,
+   "slots_md": "roster/zen/ATTIRE-SLOTS.md",
+   "attires": [
+    {
+     "attire_id": "attire1",
+     "attire_name": "(default)",
+     "dir": "roster/zen/attires/attire1",
+     "glb": "roster/zen/attires/attire1/model-rigged.glb",
+     "variants": [
+      "roster/zen/attires/attire1/model-rigged.glb",
+      "roster/zen/attires/attire1/model.glb"
      ],
      "customization_json": null
     }
@@ -1012,21 +1793,24 @@
   {
    "fighter": "zui",
    "fighter_name": "Zui",
+   "display_name": "ZUI",
+   "unassigned": false,
    "slots_md": "roster/zui/ATTIRE-SLOTS.md",
    "attires": [
     {
      "attire_id": "attire1",
-     "attire_name": "needs T-pose render \u2192 owner generative-AI transform.",
+     "attire_name": "T-pose render at `docs/tpose-refs/zui/a1_front.png` (2026-10",
      "dir": "roster/zui/attires/attire1",
-     "glb": "roster/zui/attires/attire1/model.glb",
+     "glb": "roster/zui/attires/attire1/model-rigged.glb",
      "variants": [
+      "roster/zui/attires/attire1/model-rigged.glb",
       "roster/zui/attires/attire1/model.glb"
      ],
      "customization_json": null
     },
     {
      "attire_id": "attire2",
-     "attire_name": "Attire2",
+     "attire_name": "= default), and roster `model:` = `zui-attire1` so the enemy",
      "dir": "roster/zui/attires/attire2",
      "glb": "roster/zui/attires/attire2/model.glb",
      "variants": [

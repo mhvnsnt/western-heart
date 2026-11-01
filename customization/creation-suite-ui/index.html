@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>Western Heart — Creation Suite</title>
 <link rel="stylesheet" href="css/suite.css">
+<link rel="stylesheet" href="css/suite-t7.css">
 </head>
 <body>
 <!-- ============ FULL-SCREEN 3D FIGHTER (never covered — UNIFIED-UI-SPEC §1) ============ -->
@@ -24,11 +25,11 @@
   </div>
   <div class="tb-right">
     <div id="wallet" class="wallet" title="Fight Money">💰 <span id="wallet-amt">12,400</span>G</div>
-    <button id="btn-save" class="btn btn-green">💾 SAVE</button>
-    <button id="btn-save-attire" class="btn btn-blue" title="Write customization.json for this fighter + attire">🎽 SAVE TO ATTIRE</button>
-    <button id="btn-export" class="btn">⤓ EXPORT</button>
+    <button id="btn-save" class="btn btn-green" title="Save"><span class="ico">💾</span><span class="lbl">SAVE</span></button>
+    <button id="btn-save-attire" class="btn btn-blue" title="Save this attire"><span class="ico">🎽</span><span class="lbl">SAVE ATTIRE</span></button>
+    <button id="btn-export" class="btn" title="Export"><span class="ico">⤓</span><span class="lbl">EXPORT</span></button>
     <!-- Stream 4: in-game wiring — return to the game menu. -->
-    <button id="btn-back-game" class="btn btn-gold" title="Back to game menu">🏠 GAME</button>
+    <button id="btn-back-game" class="btn btn-gold" title="Back to game menu"><span class="ico">🏠</span><span class="lbl">GAME</span></button>
   </div>
 </header>
 
@@ -81,8 +82,8 @@
 <!-- ============ BOTTOM BAR ============ -->
 <footer id="bottombar">
   <div class="bb-left">
-    <button id="btn-roster" class="btn">🧍 FIGHTER SELECT</button>
-    <span id="slot-status" class="bb-hint">Tap slot → scroll library → tap to assign · No drag-and-drop</span>
+    <button id="btn-roster" class="btn"><span class="ico">🧍</span><span class="lbl">CREATE / EDIT</span></button>
+    <span id="slot-status" class="bb-hint">Tap a slot, then tap a part to equip it</span>
   </div>
   <div class="bb-right"><span class="bb-hint" id="src-note"></span></div>
 </footer>

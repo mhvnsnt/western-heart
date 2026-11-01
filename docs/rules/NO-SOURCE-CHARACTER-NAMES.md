@@ -40,3 +40,13 @@ docs and UI strings and confused the team. Source data stays internal; the game 
   source-game name. Its denylist does not yet hold the Tekken roster: whole-word terms like `king`, `lee`, `jin` also
   match internal identifiers (`bank: 'king'`, `jin_soul`), so the Tekken names get a dedicated player-facing field scan
   (move `name`, display names, bios) with a guard test instead. Tracked in `docs/team/TASKBOARD.md`.
+
+## Roster folders named after source models (2026-11-01)
+Many `roster/<folder>/` directories are named after the source-game model they hold. On screen they are ALWAYS the WH
+fighter: `tools/canon/roster-folder-wh-names.json` is the map (owner-confirmed: blanka = CHARGER, zangief = KRONOS,
+iori = DEATHFANG, vega = KORESHI, ryuji-rock = CORNERSTONE (a wrestler + KOF blend); derived from the game's own
+model map: armor-king = YUKIHYŌ, jin = PHANTOM, zafina = MARIPOSA, sakura = SAKU RA, lili = SILVERTONGUE,
+cyborg-x = CAPE JONES, kuma / kuma-replacement = GASHADOKURO, panda = AOTSUKI; the generator also derives every folder
+from the `base:` field in `game/js/roster-full.js`). A folder nothing names yet shows as "UNASSIGNED BODY n", never
+under its folder name. `customization/build_roster_attires.py` applies the map for the
+creation suite; extend the JSON when the owner names more.

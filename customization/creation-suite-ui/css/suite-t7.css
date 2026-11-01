@@ -1,0 +1,99 @@
+/* Creation Suite skin — Tekken 7 menu look + WWE 2K CAW editor layout (2026-11-01, owner: "use the Tekken code ...
+   any of the WWE games ... to make those menus ... look way better ... user friendly in portrait or landscape ...
+   smart to my screen in my safety boundaries").
+   Colours, panel gradient, notched corners and the red selection bar are the measured Tekken 7 UI rules
+   (teardown/tekken7-steam-ui/T7-UI-LAYOUT.md, the same values game/t7-skin.css draws the game's menus with: no
+   Namco pixels ship). Layout follows the WWE 2K Create-A-Superstar editor (customization/wwe2k-caw/
+   CAW-SUITE-BREAKDOWN.md): category column, sub-menu list, item grid, fighter preview always visible, a button
+   prompt bar along the bottom. Safe areas: env(safe-area-inset-*) on every edge (notch, home bar, rounded corners). */
+:root{
+  --t7-red:#e0182a; --t7-red-glow:rgba(255,40,50,.55); --t7-blue:#1a8cff; --t7-blue-glow:rgba(40,150,255,.5);
+  --t7-panel:linear-gradient(180deg,#1b2740 0%,#0d1322 55%,#04060a 100%);
+  --t7-row:linear-gradient(90deg,rgba(18,26,44,.94),rgba(5,7,12,.82));
+  --gold:#f2c14e; --txt:#f2f4f8; --dim:#9aa3b8; --line:rgba(120,140,180,.24);
+  --panel:rgba(8,11,20,.94); --panel2:rgba(20,28,46,.92);
+  --sa-t:env(safe-area-inset-top,0px); --sa-b:env(safe-area-inset-bottom,0px);
+  --sa-l:env(safe-area-inset-left,0px); --sa-r:env(safe-area-inset-right,0px);
+  --display:"Arial Narrow","Helvetica Neue Condensed","Roboto Condensed","Trebuchet MS",system-ui,sans-serif;
+}
+html,body{background:#05070c;}
+body{font-family:var(--display);}
+
+/* ---- top bar: T7 header strip (red underline, navy glass) ---- */
+#topbar{background:linear-gradient(180deg,rgba(14,20,36,.97),rgba(5,7,12,.9));border-bottom:2px solid var(--t7-red);
+  box-shadow:0 2px 18px rgba(224,24,42,.18);padding-top:var(--sa-t);height:calc(var(--top-h) + var(--sa-t));
+  padding-left:calc(10px + var(--sa-l));padding-right:calc(10px + var(--sa-r));}
+.tb-title{color:#fff;text-shadow:0 0 12px var(--t7-red-glow);font-style:italic;font-weight:900;letter-spacing:3px;}
+.tb-fighter{text-transform:uppercase;letter-spacing:2px;font-weight:900;}
+.attire-tab{background:var(--t7-row);border:1px solid var(--line);border-left:3px solid transparent;border-radius:2px;
+  clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%);text-transform:uppercase;letter-spacing:1px;font-weight:800;}
+.attire-tab.active{border-color:var(--line);border-left-color:var(--t7-red);color:#fff;
+  background:linear-gradient(90deg,rgba(224,24,42,.6),rgba(224,24,42,.1) 75%,transparent);box-shadow:0 0 14px var(--t7-red-glow);}
+.wallet{color:var(--gold);font-weight:900;letter-spacing:1px;}
+
+/* ---- buttons: T7 slanted plates ---- */
+.btn{border-radius:2px;background:var(--t7-row);border:1px solid var(--line);text-transform:uppercase;letter-spacing:1px;
+  font-weight:800;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);padding-left:16px;padding-right:16px;}
+.btn-gold{background:linear-gradient(180deg,#ff3344,#a00c18);border-color:#ff5a66;color:#fff;text-shadow:0 1px 0 rgba(0,0,0,.4);}
+.btn-green{background:linear-gradient(180deg,#1f6b3a,#0e3a1d);border-color:#4fd27a;color:#eafff0;}
+.btn-blue{background:linear-gradient(180deg,#1a5fb0,#0b2f5c);border-color:var(--t7-blue);color:#eaf4ff;}
+.btn-red{background:linear-gradient(180deg,#5a1218,#2a080b);border-color:var(--t7-red);color:#ffd9dc;}
+
+/* ---- left rail: WWE 2K category column, T7 selection ---- */
+#left-rail{background:linear-gradient(180deg,rgba(10,14,26,.95),rgba(4,6,10,.92));border-right:1px solid var(--line);
+  padding-left:calc(6px + var(--sa-l));width:calc(var(--rail-w) + var(--sa-l));top:calc(var(--top-h) + var(--sa-t));}
+.rail-btn{border-radius:2px;border:1px solid transparent;border-left:3px solid transparent;text-transform:uppercase;}
+.rail-btn.active{background:linear-gradient(90deg,rgba(224,24,42,.55),rgba(224,24,42,.08));border-color:var(--line);
+  border-left-color:var(--t7-red);color:#fff;box-shadow:0 0 14px var(--t7-red-glow);}
+
+/* ---- right rail / bottom sheet: T7 InfoRed panel (navy -> black, red rim, notched corner) ---- */
+#right-rail{background:var(--t7-panel);border-left:1px solid rgba(224,24,42,.55);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.03),-6px 0 24px rgba(0,0,0,.45);
+  top:calc(var(--top-h) + var(--sa-t));padding-right:var(--sa-r);
+  clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,0 100%);}
+#panel-title{color:#fff;font-weight:900;font-style:italic;letter-spacing:3px;text-transform:uppercase;
+  border-bottom:2px solid var(--t7-red);padding-bottom:4px;display:inline-block;}
+#panel-sub{color:var(--dim);}
+.sect{color:#fff;border-left:4px solid var(--t7-red);padding-left:8px;letter-spacing:2px;text-transform:uppercase;font-weight:900;}
+
+/* ---- item cards / rows: T7 roster-card + WWE CAW item grid ---- */
+.roster-card,.tpl-card,.of-row,.ms-row,.move-row,.tpl-current{background:var(--t7-row);border:1px solid var(--line);border-radius:2px;}
+.roster-card{text-transform:uppercase;letter-spacing:1px;font-weight:800;clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%);}
+.roster-card.active,.tpl-card.active,.roster-card:hover,.tpl-card:hover{border-color:var(--t7-red);color:#fff;
+  background:linear-gradient(180deg,rgba(224,24,42,.0),rgba(224,24,42,.42)),var(--t7-panel);box-shadow:0 0 14px var(--t7-red-glow);}
+.tpl-card{clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,0 100%);}
+.tpl-name{color:#fff;font-style:italic;font-weight:900;letter-spacing:1px;text-transform:uppercase;}
+.tpl-meta{color:var(--t7-blue);}
+.swatch.active{outline:2px solid var(--t7-red);box-shadow:0 0 12px var(--t7-red-glow);}
+.ctl label{text-transform:uppercase;letter-spacing:1px;font-weight:800;}
+.ctl input[type=range]{accent-color:var(--t7-red);}
+
+/* ---- modal: T7 RedPanel_Base window ---- */
+#modal{background:var(--t7-panel);border:1px solid var(--t7-red);border-radius:2px;
+  box-shadow:0 0 0 1px rgba(255,255,255,.04),0 0 30px rgba(224,24,42,.3);
+  clip-path:polygon(0 0,calc(100% - 22px) 0,100% 22px,100% 100%,22px 100%,0 calc(100% - 22px));
+  max-height:calc(100dvh - var(--sa-t) - var(--sa-b) - 24px);}
+#modal-title{color:#fff;font-style:italic;font-weight:900;letter-spacing:2px;text-transform:uppercase;
+  border-bottom:2px solid var(--t7-red);padding-bottom:6px;}
+#modal-scrim{background:rgba(2,3,8,.72);backdrop-filter:blur(2px);}
+
+/* ---- bottom bar: WWE 2K button-prompt strip ---- */
+#bottombar{background:linear-gradient(0deg,rgba(5,7,12,.97),rgba(14,20,36,.9));border-top:1px solid var(--line);
+  padding-bottom:var(--sa-b);height:calc(var(--bottom-h) + var(--sa-b));
+  padding-left:calc(10px + var(--sa-l));padding-right:calc(10px + var(--sa-r));}
+.bb-hint{color:var(--dim);letter-spacing:1px;text-transform:uppercase;font-size:11px;}
+
+/* ---- portrait phone: fighter on top, menus in a bottom sheet (owner plays in portrait) ---- */
+@media (max-width:720px) and (orientation:portrait){
+  #right-rail{top:auto;bottom:calc(var(--bottom-h) + var(--sa-b));left:calc(var(--rail-w) + var(--sa-l));
+    height:min(48vh,calc(100dvh - var(--top-h) - var(--sa-t) - var(--bottom-h) - var(--sa-b) - 220px));min-height:38vh;
+    border-left:none;border-top:2px solid var(--t7-red);clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,0 100%);}
+  #left-rail{bottom:calc(var(--bottom-h) + var(--sa-b));}
+}
+/* ---- landscape phone: keep the panel narrow so the fighter keeps the middle ---- */
+@media (max-height:500px) and (orientation:landscape){
+  #right-rail{width:min(320px,42vw);bottom:calc(var(--bottom-h) + var(--sa-b));}
+  #left-rail{bottom:calc(var(--bottom-h) + var(--sa-b));}
+  .rail-btn{min-height:52px;padding:6px 2px;}
+  .rail-ico{font-size:20px;}
+}

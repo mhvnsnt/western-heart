@@ -1,0 +1,27 @@
+{
+  "_doc": "Roster folders named after the source-game model they hold -> the WH fighter it is (owner confirmations, 2026-11-01). Player-facing UI shows ONLY the WH name (AGENTS.md names law, docs/rules/NO-SOURCE-CHARACTER-NAMES.md). Used by customization/build_roster_attires.py; extend it as the owner names more. Values are WH display names.",
+  "owner_confirmed": {
+    "blanka": "CHARGER",
+    "zangief": "KRONOS",
+    "iori": "DEATHFANG",
+    "vega": "KORESHI",
+    "ryuji-rock": "CORNERSTONE"
+  },
+  "derived_from_game_models": {
+    "armor-king": "YUKIHYŌ",
+    "jin": "PHANTOM",
+    "zafina": "MARIPOSA",
+    "sakura": "SAKU RA",
+    "lili": "SILVERTONGUE",
+    "cyborg-x": "CAPE JONES",
+    "kuma": "GASHADOKURO",
+    "kuma-replacement": "GASHADOKURO",
+    "panda": "AOTSUKI"
+  },
+  "_notes": {
+    "ryuji-rock": "CornerStone is a mix of a wrestler (WWE) and a KOF fighter (owner 2026-11-01)",
+    "lili": "MODEL_URLS silvertongue-noir-gala lives in this folder",
+    "cyborg-x": "MODEL_URLS cape-jones-attire1 lives in this folder",
+    "kuma / kuma-replacement / panda": "game/js/roster-full.js base: 'Kuma' = GASHADOKURO, base: 'Panda' = AOTSUKI (build_roster_attires.py also derives every folder from base:)"
+  }
+}

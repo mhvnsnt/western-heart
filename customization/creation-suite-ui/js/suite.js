@@ -17,9 +17,20 @@ const LS_KEY = 'wh_creation_suite_v1';
 const START_MONEY = 12400;
 const $ = s=>document.querySelector(s);
 
+/* Body types: the 16 male + 9 female CAW body classes of the wrestling teardowns, with GENERIC names (names law,
+   AGENTS.md: no real wrestlers or source-game fighters on screen). Saved fighters with the old labels migrate
+   through BODY_TYPE_ALIAS. */
 const BODY_TYPES = ['Skinny 1','Skinny 2','Medium 1','Medium 2','Thick 1','Thick 2','Fat 1','Fat 2',
-  'Austin','HBK','Rikishi','Rock','Hairy 1','Hairy 2','King Frame','Ganryu Frame',
+  'Brawler','Showman','Super Heavy','Icon','Hairy 1','Hairy 2','Monarch Frame','Sumo Frame',
   'Skinny F','Medium F','Thick F','Fat F','Athletic F','Curvy F','Petite F','Tall F','Dancer F'];
+const BODY_TYPE_ALIAS = { Austin:'Brawler', HBK:'Showman', Rikishi:'Super Heavy', Rock:'Icon',
+  'King Frame':'Monarch Frame', 'Ganryu Frame':'Sumo Frame', Chyna:'Athletic F', 'Fit 2':'Athletic F', 'Petit 1':'Petite F' };
+/* CREATE starts from a WWE-style base body (customization/templates/body-templates.json: Heavyweight /
+   Cruiserweight / Women's divisions), never the stock "Soldier" model (owner 2026-11-01). */
+const LEGACY_SOLDIER_GLB = 'customization/create-fighter/assets/Soldier.glb';
+const DEFAULT_TEMPLATE_ID = 'technician';
+const templateGlb = id => `customization/templates/meshes/${id}.glb`;
+let TEMPLATES = [];   // customization/templates/body-templates.json templates[]
 const SKIN_TONES = ['#f1c9a5','#e8b48a','#dba06e','#c98d5e','#a06a42','#7c4a2d','#5a3420','#3f2417'];
 const PROPS = [['height','Height',0.85,1.15],['weight','Weight',0.85,1.3],['muscle','Muscle',0.85,1.3],
   ['shoulder','Shoulders',0.85,1.25],['chest','Chest',0.85,1.3],['waist','Waist',0.85,1.25],
@@ -57,7 +68,7 @@ function blankFighter(){
        per-attire records live in records[], keyed 'fighter::attire_id'
        ('blank' for the blank fighter). */
     mode:'blank', rosterRef:null, records:{},
-    baseGlb:'customization/create-fighter/assets/Soldier.glb' };
+    template:DEFAULT_TEMPLATE_ID, baseGlb:templateGlb(DEFAULT_TEMPLATE_ID) };
 }
 let F = blankFighter();
 let PARTS = [];       // parts-catalog.json parts[] (unified catalog v2)
@@ -74,7 +85,7 @@ const attire = ()=>F.attires[F.attireIndex];
    pick fighter -> pick attire -> hub, loading THAT attire's real GLB.
    Working state stays in the top-level F fields; switching stashes the
    current state into F.records[key] and restores the target's record. */
-const BLANK_GLB = 'customization/create-fighter/assets/Soldier.glb';
+const BLANK_GLB = templateGlb(DEFAULT_TEMPLATE_ID);
 const currentKey = ()=> F.mode==='roster' && F.rosterRef ? `${F.rosterRef.fighter}::${F.rosterRef.attire}` : 'blank';
 function snapshotWorking(){
   return JSON.parse(JSON.stringify({
@@ -89,13 +100,15 @@ function applySnapshot(s){
 }
 function stashCurrent(){ F.records = F.records||{}; F.records[currentKey()] = snapshotWorking(); }
 function rosterFighter(slug){ return ROSTER && ROSTER.fighters.find(f=>f.fighter===slug); }
+/* WH display name (build_roster_attires.py display_name); never the source-model folder name */
+function rosterName(f){ return (f && (f.display_name || (f.unassigned ? 'UNASSIGNED BODY' : f.fighter_name))) || ''; }
 function rosterAttire(slug, attireId){
   const f = rosterFighter(slug); if(!f) return null;
   return f.attires.find(a=>a.attire_id===attireId) || null;
 }
 async function loadBaseModel(){
   if(!viewer) return;
-  const url = F.baseGlb===BLANK_GLB ? '../create-fighter/assets/Soldier.glb' : '../../'+F.baseGlb;
+  const url = '../../'+F.baseGlb;
   try{ await viewer.loadBase(url); }
   catch(e){ console.warn('[WH] base model failed', F.baseGlb, e); toast('Model failed to load: '+F.baseGlb); }
   renderAll();
@@ -118,8 +131,8 @@ async function selectRosterAttire(fighter, attireId){
       const keep=F.records;
       Object.assign(F, blankFighter()); F.records=keep;
       F.mode='roster'; F.rosterRef={ fighter, attire:attireId };
-      F.profile.name = rf.fighter_name.toUpperCase();
-      F.profile.short_name = rf.fighter_name.slice(0,4).toUpperCase();
+      F.profile.name = rosterName(rf).toUpperCase();
+      F.profile.short_name = rosterName(rf).replace(/[^A-Z0-9]/gi,'').slice(0,4).toUpperCase();
       F.attires = rf.attires.map(a=>{ const b=blankAttire(); b.name=a.attire_name; return b; });
       F.attireIndex = Math.max(0, rf.attires.findIndex(a=>a.attire_id===attireId));
       F.baseGlb = ra.glb;
@@ -291,6 +304,7 @@ function syncParts3D(){
 function syncPreview(){
   if(!viewer) return;
   viewer.setProportions(F.body.proportions);
+  if(F.mode==='blank') viewer.setSkinTone(F.body.skin_tone);
   syncMorphs();
   syncParts3D();
   // texture parts: live swap first (packages parts.js semantics — match the
@@ -508,15 +522,19 @@ function renderPanel(){
 
 /* ================= BODY ================= */
 function renderBody(el){
-  $('#panel-sub').textContent='Wrestling CAW — No Mercy body types, WMXIX proportions';
+  $('#panel-sub').textContent='Base body, build, skin and face';
+  const tpl = F.mode==='blank' ? templateById(F.template) : null;
   el.innerHTML=`
-    <div class="sect">BODY TYPE — 14M + 9F (No Mercy)</div><div class="roster-grid" id="btypes"></div>
-    <div class="sect">SKIN TONE — 8 tones</div><div class="swatches" id="stones"></div>
-    <div class="sect">PROPORTIONS — WMXIX parametric (live)</div><div id="psl"></div>
-    <div class="sect">MORPHS — FRAME (packages morphs.js)</div><div id="mframe"></div>
-    <div class="sect">MORPHS — MASS</div><div id="mmass"></div>
-    <div class="sect">MORPHS — FACE SHAPE</div><div id="mface"></div>
-    <div class="note">Morph sliders are the real packages/creation-suite catalog (BODY_MORPHS + FACE_SHAPE_MORPHS), driven live through packages dna.js/body.js on the loaded model. Values save into this attire's customization record. Face values also record for the MPFB bake (shape keys are the ground truth).</div>`;
+    ${F.mode==='blank' ? `<div class="sect">BASE BODY</div>
+    <div class="tpl-current"><div><b>${esc(tpl ? tpl.name : 'Custom body')}</b><br><small>${esc(tpl ? `${tpl.division} · ${tpl.gender==='female'?'Women':'Men'}` : '')}</small></div>
+      <button class="btn btn-gold btn-sm" id="tpl-change">CHANGE</button></div>` : ''}
+    <div class="sect">BODY TYPE</div><div class="roster-grid" id="btypes"></div>
+    <div class="sect">SKIN TONE</div><div class="swatches" id="stones"></div>
+    <div class="sect">PROPORTIONS</div><div id="psl"></div>
+    <div class="sect">FRAME</div><div id="mframe"></div>
+    <div class="sect">MASS</div><div id="mmass"></div>
+    <div class="sect">FACE SHAPE</div><div id="mface"></div>`;
+  const tc = el.querySelector('#tpl-change'); if(tc) tc.onclick=()=>openTemplateSelect();
   const bt=el.querySelector('#btypes');
   BODY_TYPES.forEach(t=>{ const b=document.createElement('button');
     b.className='roster-card'+(F.body.body_type===t?' active':''); b.textContent=t;
@@ -1128,24 +1146,85 @@ async function renderDome(el){
   drawDomePreview(cv, domeParams);
 }
 
+/* ---------- CREATE: base-body templates (WWE 2K-style template select) ---------- */
+function templateById(id){ return TEMPLATES.find(t=>t.id===id) || null; }
+/* Saved fighters from before 2026-11-01: the stock Soldier base becomes the default template body, and body types
+   named after real people take their generic names. */
+function migrateLegacy(){
+  const fix = o => { if(!o) return;
+    if(!o.baseGlb || o.baseGlb===LEGACY_SOLDIER_GLB){ o.baseGlb = BLANK_GLB; if(o===F) F.template = F.template || DEFAULT_TEMPLATE_ID; }
+    if(o.body && BODY_TYPE_ALIAS[o.body.body_type]) o.body.body_type = BODY_TYPE_ALIAS[o.body.body_type]; };
+  fix(F);
+  for(const k of Object.keys(F.records||{})) fix(F.records[k]);
+  if(F.mode==='blank' && !F.template) F.template = DEFAULT_TEMPLATE_ID;
+}
+function bodyTypeForTemplate(t){
+  const bt = BODY_TYPE_ALIAS[t.body_type] || t.body_type;
+  return BODY_TYPES.includes(bt) ? bt : (t.gender==='female' ? 'Medium F' : 'Medium 1');
+}
+/* Start a NEW fighter from template t: base mesh, body class, build, skin, jiggle family. */
+async function applyTemplate(t){
+  if(F.mode!=='blank') stashCurrent();   // keep the roster attire being edited; the new fighter is the blank slot
+  const keep = F.records;
+  Object.assign(F, blankFighter()); F.records = keep;
+  F.template = t.id; F.baseGlb = t.base_mesh || templateGlb(t.id);
+  F.body.body_type = bodyTypeForTemplate(t);
+  if(t.skin_tone) F.body.skin_tone = t.skin_tone;
+  const pr = t.proportions || {};
+  for(const k of ['height','weight','muscle']) if(typeof pr[k]==='number') F.body.proportions[k] = pr[k];
+  F.jiggle.family = t.gender==='female' ? 'female' : 'male';
+  ui.selPart=null; hidePlaceDock(); setTab('body');
+  persistQuiet();
+  await loadBaseModel();
+  toast(`${t.name} — now make them yours`);
+}
+function openTemplateSelect(){
+  if(!TEMPLATES.length){ modal('CREATE A FIGHTER','<p>Base bodies failed to load (customization/templates/body-templates.json).</p>',[{label:'CLOSE',cls:'btn-gold'}]); return; }
+  const groups = {};
+  for(const t of TEMPLATES) (groups[t.division] = groups[t.division] || []).push(t);
+  const html = Object.entries(groups).map(([div, list])=>`<div class="sect">${esc(div).toUpperCase()}</div>
+    <div class="tpl-grid">${list.map(t=>`<button class="tpl-card${F.mode==='blank'&&F.template===t.id?' active':''}" data-t="${esc(t.id)}">
+      <span class="tpl-name">${esc(t.name)}</span><span class="tpl-meta">${t.gender==='female'?'Women':'Men'} · ${esc(bodyTypeForTemplate(t))}</span>
+      <span class="tpl-desc">${esc(t.desc||'')}</span></button>`).join('')}</div>`).join('');
+  modal('CREATE A FIGHTER — CHOOSE A BASE BODY', html, [{label:'CANCEL',cls:''}]);
+  document.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{ const t=templateById(b.dataset.t); closeModal(); if(t) applyTemplate(t); });
+}
+
 /* ---------- roster / save / export ---------- */
 $('#btn-roster').onclick=()=>{
   if(!ROSTER){ modal('FIGHTER SELECT','<p>Roster data (data/roster-attires.json) failed to load.</p>',[{label:'CLOSE',cls:'btn-gold'}]); return; }
-  const fighters = ROSTER.fighters.map(f=>
-    `<button class="roster-card${F.rosterRef&&F.rosterRef.fighter===f.fighter?' active':''}" data-f="${esc(f.fighter)}">${esc(f.fighter_name)}<br><small style="color:var(--dim)">${f.attires.length} attire${f.attires.length===1?'':'s'}</small></button>`).join('');
-  modal('FIGHTER SELECT',`<div class="sect">EDIT FIGHTER — pick fighter, then attire (UNIFIED-UI-SPEC §2)</div>
-    <div class="roster-grid"><button class="roster-card${F.mode==='blank'?' active':''}" data-f="">🧍 NEW FIGHTER<br><small style="color:var(--dim)">blank CAW base</small></button>${fighters}</div>
-    <div id="roster-attires"></div>
-    <div class="note">Entry flow (verbatim T7): pick fighter → pick attire slot → customize. Selecting loads that attire's real GLB. Blank-fighter mode stays intact.</div>`,
+  /* One card per WH fighter (names law: the WH name, never the source model's folder name); folders that hold the
+     same fighter merge their attires. Unassigned base bodies get their own section: start a new fighter from one. */
+  const groups = new Map();
+  for(const f of ROSTER.fighters){
+    const name = rosterName(f), key = f.unassigned ? 'u:'+f.fighter : 'n:'+name;
+    if(!groups.has(key)) groups.set(key, { name, unassigned:!!f.unassigned, folders:[] });
+    groups.get(key).folders.push(f);
+  }
+  const card = (g, i)=>{ const n = g.folders.reduce((a,f)=>a+f.attires.length,0);
+    const on = F.rosterRef && g.folders.some(f=>f.fighter===F.rosterRef.fighter);
+    return `<button class="roster-card${on?' active':''}" data-g="${i}">${esc(g.name)}<br><small style="color:var(--dim)">${n} attire${n===1?'':'s'}</small></button>`; };
+  const list = [...groups.values()];
+  const named = list.map((g,i)=>[g,i]).filter(([g])=>!g.unassigned).sort((a,b)=>a[0].name.localeCompare(b[0].name));
+  const unassigned = list.map((g,i)=>[g,i]).filter(([g])=>g.unassigned);
+  const fighters = named.map(([g,i])=>card(g,i)).join('');
+  const bodies = unassigned.map(([g,i])=>card(g,i)).join('');
+  modal('FIGHTER SELECT',`<div class="sect">CREATE</div>
+    <div class="roster-grid"><button class="roster-card${F.mode==='blank'?' active':''}" data-f="">＋ CREATE A FIGHTER<br><small style="color:var(--dim)">start from a base body</small></button></div>
+    <div class="sect">EDIT A FIGHTER — pick the fighter, then the attire</div>
+    <div class="roster-grid">${fighters}</div>
+    ${bodies ? `<div class="sect">UNASSIGNED BASE BODIES — make one into a new fighter</div><div class="roster-grid">${bodies}</div>` : ''}
+    <div id="roster-attires"></div>`,
     [{label:'CLOSE',cls:'btn-gold'}]);
-  document.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{
-    const slug=b.dataset.f;
-    if(!slug){ closeModal(); selectRosterAttire(null); return; }
-    const rf=rosterFighter(slug); if(!rf) return;
+  { const cb=document.querySelector('[data-f=""]'); if(cb) cb.onclick=()=>{ closeModal(); openTemplateSelect(); }; }
+  document.querySelectorAll('[data-g]').forEach(b=>b.onclick=()=>{
+    const g=list[+b.dataset.g]; if(!g) return;
     const host=document.querySelector('#roster-attires');
-    host.innerHTML=`<div class="sect">${esc(rf.fighter_name).toUpperCase()} — ATTIRE</div><div class="roster-grid">${
-      rf.attires.map(a=>`<button class="roster-card" data-a="${esc(a.attire_id)}">${esc(a.attire_name)}<br><small style="color:var(--dim)">${esc(a.glb.split('/').pop())}</small></button>`).join('')}</div>`;
-    host.querySelectorAll('[data-a]').forEach(ab=>ab.onclick=()=>{ closeModal(); selectRosterAttire(slug, ab.dataset.a); });
+    const items=[]; for(const f of g.folders) for(const a of f.attires) items.push({ f:f.fighter, a });
+    host.innerHTML=`<div class="sect">${esc(g.name)} — ATTIRE</div><div class="roster-grid">${
+      items.map((it,k)=>`<button class="roster-card" data-k="${k}">${esc(it.a.attire_name)}<br><small style="color:var(--dim)">ATTIRE ${k+1}</small></button>`).join('')}</div>`;
+    host.querySelectorAll('[data-k]').forEach(ab=>ab.onclick=()=>{ const it=items[+ab.dataset.k]; closeModal(); selectRosterAttire(it.f, it.a.attire_id); });
+    host.scrollIntoView({ block:'nearest' });
   });
 };
 $('#btn-save').onclick=persist;
@@ -1160,14 +1239,16 @@ $('#btn-export').onclick=()=>{
 
 /* ---------- boot ---------- */
 async function boot(){
-  try{ const s=localStorage.getItem(LS_KEY); if(s) F=Object.assign(blankFighter(), JSON.parse(s)); }catch(e){}
+  let firstVisit = true;
+  try{ const s=localStorage.getItem(LS_KEY); if(s){ F=Object.assign(blankFighter(), JSON.parse(s)); firstVisit=false; } }catch(e){}
   try{
     const [parts, jig, roster, fparts] = await Promise.all([
       fetch('data/parts-catalog.json').then(r=>r.json()),
       fetch('data/jiggle-schema.json').then(r=>r.json()),
       fetch('data/roster-attires.json').then(r=>r.ok?r.json():null).catch(()=>null),
       fetch('data/fighter-parts.json').then(r=>r.ok?r.json():null).catch(()=>null),
-    ]);
+      fetch('../templates/body-templates.json').then(r=>r.ok?r.json():null).catch(()=>null),
+    ]).then(([parts, jig, roster, fparts, tpls])=>{ TEMPLATES = (tpls && tpls.templates) || []; return [parts, jig, roster, fparts]; });
     PARTS = Array.isArray(parts) ? parts : (parts.parts||[]);
     PARTS_META = Array.isArray(parts) ? null : parts;
     // normalize legacy curated entries (pre-unified catalogs) to the v2 shape
@@ -1180,14 +1261,23 @@ async function boot(){
   }
   if(!Array.isArray(F.records)) F.records = F.records||{};
   if(F.mode==='roster' && (!F.rosterRef || !rosterAttire(F.rosterRef.fighter, F.rosterRef.attire))){ F.mode='blank'; F.rosterRef=null; F.baseGlb=BLANK_GLB; }
+  migrateLegacy();
   viewer=new SuiteViewer($('#stage3d'));
+  // frame the fighter in the area the top bar, rails, side panel / bottom sheet and bottom bar leave free
+  viewer.setInsets(()=>{
+    const r = id => { const e=document.getElementById(id); return e && !e.hidden ? e.getBoundingClientRect() : null; };
+    const W=innerWidth, H=innerHeight, tb=r('topbar'), lr=r('left-rail'), rr=r('right-rail'), bb=r('bottombar');
+    let right=0, bottom = bb ? Math.max(0, H-bb.top) : 0;
+    if(rr){ if(rr.top > H*0.3) bottom = Math.max(bottom, H-rr.top); else right = Math.max(0, W-rr.left); }
+    return { left: lr ? lr.right : 0, right, top: tb ? tb.bottom : 0, bottom };
+  });
   window.__suite={ viewer, get F(){return F;}, ui, setTab, selectRosterAttire, customizationRecord, currentKey, get ROSTER(){return ROSTER;}, get PARTS(){return PARTS;}, get FPARTS(){return FPARTS;} };
   viewer.onReady=()=>{ renderAll(); };
   await loadBaseModel();
   renderAll();
   $('#loader').classList.add('done');
-  $('#src-note').textContent='Menus: T7 slots verbatim · WWE 2K CAW flows · No Mercy/WMXIX/DOA — see UI-EXTRACTION-LOG.md';
-  if(!localStorage.getItem(LS_KEY)) toast('Tap PARTS → Masks → tap the mask to equip it');
+  // first visit: CREATE opens on the base-body select (WWE 2K flow), not on a default model
+  if(firstVisit && F.mode==='blank') openTemplateSelect();
 }
 boot();
 
