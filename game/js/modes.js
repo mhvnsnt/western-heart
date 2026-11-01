@@ -610,7 +610,7 @@ export class ModeController {
      T7 GAME OPTION <VS GAME>: fight count, round time, guard damage
      ride the fight opts into game.js; stage RANDOM skips the arena
      screen entirely. */
-  _beginVersus(p1id, p2id) {
+  _beginVersus(p1id, p2id, resume = null) {
     const p1 = this.getChar(p1id), p2 = this.getChar(p2id);
     if (!p1 || !p2) return;
     const r = getRules();
@@ -630,7 +630,19 @@ export class ModeController {
         opts.skipStage = true; // startFightViaStage goes straight in
       }
     }
+    // FIGHT-LOAD RECOVERY v2 (2026-11-01): a fight resumed after an automatic reload (main.js reloadIntoFight) goes
+    // straight into its arena with the soul-spirit picks it was started with.
+    if (resume && resume.stage) { opts.stage = resume.stage; opts.skipStage = true; }
+    if (resume && resume.spirit) opts._spirit = resume.spirit;
     this.startFight(p1id, p2id, opts);
+  }
+  /* FIGHT-LOAD RECOVERY v2 (2026-11-01): main.js reloads the page when a fight's game files fail to load (the
+     owner was bounced back to the arena screen until a manual reload) and resumes the same versus fight here, so it
+     keeps its VERSUS SETUP rules, result screen and REMATCH. */
+  resumeVersus(p1id, p2id, stage, spirit = null) {
+    this.clearState();
+    this.mode = 'versus';
+    this._beginVersus(p1id, p2id, { stage, spirit });
   }
   /* TTT2 TEAM BATTLE (worker 24): read the completed draft from the
      select screen. Returns { p1:[ids], p2:[ids], size } or null. */

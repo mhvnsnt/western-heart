@@ -823,6 +823,15 @@ export class Fighter {
     const t = this._resolveTransform(direction);
     if (!t || !this.canAct()) return false;
     if (this.meter < this.maxMeter) return false; // gauge must be full
+    // LOADSPEED (2026-11-01): form models stream in after the fight starts (main.js startFight). One that has not
+    // landed yet cannot be instanced (createInstance is sync): ask for it and keep the gauge until it is ready.
+    if (t.target && assets.gltfs && !assets.gltfs[t.target]) {
+      if (!this._formLoadKick) {
+        this._formLoadKick = true;
+        assets.loadModels([t.target]).catch(() => {}).finally(() => { this._formLoadKick = false; });
+      }
+      return false;
+    }
     if (this._cinematic && !this._cinematic.done) return false; // already transforming
     this.meter = 0; // spend the gauge
     // Start the personalized cinematic timeline. The model swap happens
