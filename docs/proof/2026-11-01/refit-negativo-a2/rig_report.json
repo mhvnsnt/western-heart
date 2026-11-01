@@ -1,0 +1,61 @@
+{
+ "tool": "tools/auto_rig/refit_rig.py",
+ "input": "roster/negativo/attires/attire2/source/negativo-a2.glb",
+ "output": "roster/negativo/attires/attire2/source/negativo-a2-refit.glb",
+ "height_m": 1.8,
+ "facing_in": "+X",
+ "verdict": {
+  "validate_pass": true,
+  "strict_stretch_p999": 2.5,
+  "strict_gate": 2.5,
+  "strict_stretch_pass": true,
+  "official_anim_check_p999": 1.491,
+  "official_stretch_pass": true,
+  "seams_pass": true,
+  "tearing_spikes": 40,
+  "tearing_spike_joints": [
+   "RightFoot + RightToeBase"
+  ],
+  "max_edge_elongation_mm": 15.89,
+  "PASS": true
+ },
+ "validate": {
+  "file": "/tmp/wh-refit-a4rgdu1l/rig_s.glb",
+  "checks": {
+   "valid_gltf": true,
+   "skinned_mesh": true,
+   "bones_present": true,
+   "height_ok": true,
+   "fingers_symmetric": true,
+   "stretch_ok": "unknown (no clips supplied)"
+  },
+  "pass": true,
+  "missing_bones": [],
+  "unmapped_bones": [],
+  "height_m": 1.8,
+  "foot_y": 0.0,
+  "finger_asymmetry": []
+ },
+ "pngs": [
+  "fit_template_vs_landmarks.png",
+  "sections.png",
+  "weights.png"
+ ],
+ "note": "tearing spikes are listed with the joints of the moving vertices; the CMU boxing window swings the feet with the root pinned (every rig in docs/proof shows 30-80 foot spikes). A spike on a vertex that rides one limb rigidly is motion, not a tear; read the stretch report in mm.",
+ "continued_smoothing": {
+  "tool": "tools/auto_rig/backends/seam_safe_smooth.py",
+  "rounds": 13,
+  "final_strict_p999": 2.5,
+  "note": "the pipeline stopped at 2.532 after 24 rounds; 13 more rounds on its output reached the 2.5 gate"
+ },
+ "packed_file_gates": {
+  "seams_pass": true,
+  "official_anim_check_p999": 1.496,
+  "bytes": 19458736,
+  "normal_map_jpeg_q": 86,
+  "normal_angle_err_deg": {
+   "mean": 0.805,
+   "p99": 5.645
+  }
+ }
+}

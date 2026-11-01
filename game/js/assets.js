@@ -471,7 +471,10 @@ export const MODEL_URLS = {
   // Own path + 18.9 MB (tools/deploy/fit_cdn_budget.py) so the live build loads it from jsDelivr
   // until the B2 bucket carries it. negativo-a1-rigged.glb (#1465) stays on main beside it.
   'negativo-attire1': '../roster/negativo/attires/attire1/source/negativo-a1-refit.glb',
-  'negativo-attire2': '../roster/negativo/attires/attire2/source/negativo-a2-rigged.glb',
+  // Negativo attire 2 = the same landmark re-fit (tools/auto_rig/refit_rig.py; proof
+  // docs/proof/2026-11-01/refit-negativo-a2/), 1.8 m like the rig it replaces, 19.5 MB so jsDelivr serves it.
+  // negativo-a2-rigged.glb stays on main beside it.
+  'negativo-attire2': '../roster/negativo/attires/attire2/source/negativo-a2-refit.glb',
   'skull-tripo': '../roster/skull/attires/attire1/model.glb',
   'skull-base': 'assets/models/skull.glb',
   'waterfall-attire1': '../roster/waterfall/attires/attire1/model.glb',

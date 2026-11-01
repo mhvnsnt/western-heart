@@ -19,6 +19,8 @@ const browser = await chromium.launch({ args: ['--use-gl=angle', '--use-angle=sw
 const page = await browser.newPage({ viewport: { width: 900, height: 900 } });
 const logs = [];
 if (process.env.NO_REMOTE) await page.route(/workers\.dev/, r => r.abort());
+// ATTIRES='{"negativo":"negativo-attire2"}' seeds the saved attire choice (game/js/attires.js wh_attires_v1) before load
+if (process.env.ATTIRES) await page.addInitScript((v) => { try { localStorage.setItem('wh_attires_v1', v); } catch (e) { /* none */ } }, process.env.ATTIRES);
 page.on('console', m => { const t = m.text(); if (/WH-T7|pageerror|Error|fight load failed/.test(t)) logs.push(`[${m.type()}] ${t}`); });
 page.on('pageerror', e => logs.push(`[pageerror] ${e.message}`));
 await page.goto(`${base}?quick=${p1},${p2},${stage}`, { waitUntil: 'load', timeout: 120000 });
