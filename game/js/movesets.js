@@ -1270,6 +1270,25 @@ export class TekkenBuffer {
    * the first, so chord resolution ignored ctx, the slots table, loadouts and
    * __base movesets. There is exactly one pressChord now.)
    */
+  /** No dead chords (owner 2026-11-01: "all the different combinations of button inputs ... so I'm not limited or
+      blocked"): the chord's own move first (unchanged); else its best two-button sub-chord (strikes before the 1+3 /
+      2+4 throws); else its first button that resolves (direction included); else its first button, whose neutral
+      move fires. Extra buttons never block a move, as in Tekken. tools/input-verify/input_matrix_audit.mjs. */
+  pressChordLenient(chord, ctx = {}) {
+    const own = this.pressChord(chord, ctx);
+    if (own) return own;
+    const b = chord.split('+');
+    if (b.length > 2) {
+      const subs = [];
+      for (let i = 0; i < b.length; i++) for (let j = i + 1; j < b.length; j++) subs.push(b[i] + '+' + b[j]);
+      const throwChord = (x) => (/^(1\+3|2\+4)$/.test(x) ? 1 : 0);
+      subs.sort((x, y) => throwChord(x) - throwChord(y));
+      for (const sc of subs) { const r = this.pressChord(sc, ctx); if (r) return r; }
+    }
+    for (const x of b) { const r = this.pressButton(x, ctx); if (r) return r; }
+    return b[0];
+  }
+
   pressChord(chord, ctx = {}) {
     const ms = playedMoveset(this.fighterId);
     if (!ms || !ms.moves) return chord; // no data — raw passthrough
