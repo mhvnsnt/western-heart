@@ -39,7 +39,7 @@ export const ATTIRE_TREE = [
   { slot:"2",  label:"Hairstyle",      icon:"💇", src:"T7_SLOTS", note:"mirrors BODY > Hair" },
   { slot:"3",  label:"Full Head",      icon:"🎭", src:"T7_SLOTS", note:"masks/helmets — CONFLICTS with Face Paint" },
   { slot:"4",  label:"Hair Accessory", icon:"🎀", src:"T7_SLOTS" },
-  { slot:"5",  label:"Glasses",        icon:"👓", src:"T7_SLOTS", note:"DOA glasses live here too" },
+  { slot:"5",  label:"Glasses",        icon:"👓", src:"T7_SLOTS", note:"glasses and eyewear" },
   { slot:"6",  label:"Face",           icon:"😐", src:"T7_SLOTS" },
   { slot:"7",  label:"Facial Hair",    icon:"🧔", src:"T7_SLOTS" },
   { slot:"8",  label:"Face Paint",     icon:"🎨", src:"T7_SLOTS", note:"texture class, not mesh" },

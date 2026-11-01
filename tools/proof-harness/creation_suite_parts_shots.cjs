@@ -1,0 +1,23 @@
+const { chromium } = require('playwright');
+(async () => {
+  const out = process.argv[3];
+  const b = await chromium.launch({ args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
+  const ctx = await b.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
+  const p = await ctx.newPage();
+  const errs = [];
+  p.on('pageerror', (e) => errs.push('pageerror ' + e.message.slice(0, 200)));
+  p.on('console', (m) => { if (m.type() === 'error') errs.push(m.text().slice(0, 200)); });
+  await p.goto(process.argv[2], { waitUntil: 'load', timeout: 120000 });
+  await p.waitForFunction(() => document.querySelector('#loader.done') && window.__suite && window.__suite.viewer.ready, null, { timeout: 180000, polling: 500 });
+  await p.evaluate(() => { const c = document.querySelector('#modal-actions button'); if (c) c.click(); });
+  await p.evaluate(() => window.__suite.setTab('parts'));
+  await p.waitForTimeout(800);
+  await p.screenshot({ path: out + '/6_parts_home_portrait.png' });
+  await p.evaluate(() => { const b = document.querySelector('#pcats .subcat'); if (b) b.click(); });
+  await p.waitForTimeout(800);
+  const names = await p.evaluate(() => [...document.querySelectorAll('.item-name')].slice(0, 12).map((e) => e.textContent));
+  console.log('NAMES', JSON.stringify(names));
+  await p.screenshot({ path: out + '/7_parts_grid_portrait.png' });
+  console.log('ERRORS', JSON.stringify(errs.slice(0, 8)));
+  await b.close();
+})();

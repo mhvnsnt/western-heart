@@ -284,3 +284,33 @@ Worker route handles that lane.
 > That notification just confirms #1461's merge, which I already handled. There are no open PRs left to watch.
 >
 > Background command stopped — "Serve the repo locally for the Purple Rain A/B": The local test server I'd started for the Purple Rain comparisons hit its 2-hour limit and was stopped. Those comparisons finished long ago, so I haven't restarted it.
+
+## 11. 2026-11-01 evening (Claude Code)
+
+**Live:** PR #1472, the fight-load fix (deployed `b750b5444`).
+- Picking an arena no longer bounces back to stage select. Every failure path is covered:
+  - a failed load retries, then retries once more in SAFE LOAD (default outfits, no transform models);
+  - a failed build is rebuilt once;
+  - a failed module import, or any failure the retries didn't fix, reloads straight back into the same versus fight (resume token, one automatic reload per 60 s);
+  - the loading overlay stays up while a load is still running.
+- Transform / form models load after the fight starts.
+- Rules: `game/js/fight-recovery.js`. Test: `test/fight-load-recovery.test.mjs`. Browser proof: `tools/proof-harness/fight_load_recovery_probe.mjs` and `docs/proof/2026-11-01/fight-load-recovery/`.
+- Select-screen cards: draft 1 is archived in `game/assets/portraits/draft1/`. Negativo's card is re-captured from his fixed model.
+
+**In review:** creation suite phase 1, from the owner's new order in `customization/CREATION-SUITE-ORDER-2026-11-01.md`.
+- CREATE opens on a select of the 9 WWE-style base bodies, never the stock Soldier.
+- Tekken 7-style skin, portrait-first bottom sheet, safe-area insets.
+- Skin tone is real (it was an empty stub).
+- Bodies stand relaxed instead of in a T-pose.
+- MB-Lab bone aliases in `packages/creation-suite/src/body.js`.
+- Only WH names on screen, from the `tools/canon/roster-folder-wh-names.json` map.
+
+**Found and documented:**
+- `docs/movesets/STANCE-REACHABILITY-AUDIT-2026-11-01.md`: 2,237 of 5,577 stance-prefixed move inputs can never fire, because nothing enters BT, TACKLE, Heat (H.), FDFA, hFC, SIDE_/BACK throws, or many character stances. The fix is next, universally.
+- WWE 2K19 CAW data (6 YOBJ models, CAW part tables, 597 textures) and 200 Tekken 7 customization item GLBs are in the private `game-reverse-engineering` repo. YOBJ → glTF conversion is still to do.
+
+**Next (in order):**
+1. Creation suite phase 2: TAKE PICTURE → select card, save attire / version → game, real morph targets (needs Blender).
+2. Make the unreachable stance moves reachable.
+3. T-pose soak test (`tools/anim/tpose_soak_probe.mjs`) per fighter, easiest first.
+4. Rig batch.

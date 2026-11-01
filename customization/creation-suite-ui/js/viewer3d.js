@@ -3,6 +3,12 @@
    Phone-first orbit: drag to rotate, pinch/wheel to zoom. Fighter stays full-screen, never covered. */
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+/* MB-Lab game skeleton (WWE-style CREATE templates) -> the Mixamo bone names SOCKET_BONES and framing use (2026-11-01) */
+const MBLAB_ALIASES = { Hips:['pelvis'], Spine:['spine01'], Spine1:['spine02'], Spine2:['spine03'], Neck:['neck'], Head:['head'],
+  LeftShoulder:['clavicle_L'], RightShoulder:['clavicle_R'], LeftArm:['upperarm_L'], RightArm:['upperarm_R'],
+  LeftForeArm:['lowerarm_L'], RightForeArm:['lowerarm_R'], LeftHand:['hand_L'], RightHand:['hand_R'],
+  LeftUpLeg:['thigh_L'], RightUpLeg:['thigh_R'], LeftLeg:['calf_L'], RightLeg:['calf_R'],
+  LeftFoot:['foot_L'], RightFoot:['foot_R'], LeftToeBase:['toes_L'], RightToeBase:['toes_R'] };
 
 /* suite socket -> bone names (bone world positions are exact under skinning scale) */
 const SOCKET_BONES = {
@@ -53,7 +59,17 @@ export class SuiteViewer {
   _resize(){
     const w = innerWidth, h = innerHeight;
     this.renderer.setSize(w, h, false);
-    this.camera.aspect = w/h; this.camera.updateProjectionMatrix();
+    this.camera.aspect = w/h;
+    const ins = this.insets ? this.insets() : null;
+    if(ins){
+      const fw = Math.max(1, w - ins.left - ins.right), fh = Math.max(1, h - ins.top - ins.bottom);
+      const cx = ins.left + fw/2, cy = ins.top + fh/2;
+      // shift the projection so the scene centre lands on the centre of the free area
+      this.camera.setViewOffset(w, h, w/2 - cx, h/2 - cy, w, h);
+      this.freeFrac = Math.min(fh/h, (fw/w) * (w/h) / 0.62);
+    } else { this.camera.clearViewOffset(); this.freeFrac = 1; }
+    this.camera.updateProjectionMatrix();
+    if(this.fitDist && !this.userZoom) this.camDist = this.fitDist / Math.max(0.4, Math.min(1, this.freeFrac || 1));
   }
   _bindInput(){
     let drag=null, pinch=0;
@@ -67,11 +83,11 @@ export class SuiteViewer {
     });
     el.addEventListener('pointerup', ()=>drag=null);
     el.addEventListener('pointercancel', ()=>drag=null);
-    el.addEventListener('wheel', e=>{ this.camDist=Math.min(8,Math.max(1.2,this.camDist+e.deltaY*0.002)); }, {passive:true});
+    el.addEventListener('wheel', e=>{ this.userZoom=true; this.camDist=Math.min(8,Math.max(1.2,this.camDist+e.deltaY*0.002)); }, {passive:true});
     el.addEventListener('touchmove', e=>{
       if(e.touches.length===2){
         const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[0].clientY-e.touches[1].clientY);
-        if(pinch) this.camDist=Math.min(8,Math.max(1.2,this.camDist-(d-pinch)*0.008));
+        if(pinch){ this.userZoom=true; this.camDist=Math.min(8,Math.max(1.2,this.camDist-(d-pinch)*0.008)); }
         pinch=d;
       }
     }, {passive:true});
@@ -194,11 +210,17 @@ export class SuiteViewer {
         // bone lookup (mixamorig:/mixamorig prefixes stripped) — exact under skinning scale
         this.bones = {};
         this.model.traverse(o=>{ if(o.isBone) this.bones[o.name.replace(/^mixamorig:?/, '')] = o; });
+        // MB-Lab game skeleton (the WWE-style CREATE templates) -> the Mixamo names sockets / framing use
+        for(const [mix, alts] of Object.entries(MBLAB_ALIASES)) if(!this.bones[mix]) for(const a of alts) if(this.bones[a]){ this.bones[mix] = this.bones[a]; break; }
+        // a body with no animation of its own stands relaxed, not in its T-pose bind pose
+        if(!(gltf.animations && gltf.animations.length)) this.relaxPose();
         // frame from the Head bone (bind-pose geometry bbox lies under bone scale)
         const headY = this.boneY('Head', 1.7);
         this.camTarget.set(0, headY*0.55, 0);
-        this.camDist = headY*2.6;
+        this.fitDist = headY*2.6; this.userZoom = false;
+        this.camDist = this.fitDist / Math.max(0.4, Math.min(1, this.freeFrac || 1));
         this.headHeight = headY;
+        this.isTemplate = /\/templates\/meshes\//.test(url);
         // ground the fighter under the feet, sized to the model
         this.disc.position.y = 0.002; this.ring.position.y = 0.003;
         const dr = Math.max(headY*0.35, 0.3);
@@ -208,6 +230,36 @@ export class SuiteViewer {
         res(this.model);
       }, undefined, rej);
     });
+  }
+  /* Relaxed standing pose for a body with no animation (the CREATE templates are baked in a T-pose): each upper arm
+     swings down to ~18 deg off the body, forearms bend a little. Pure bone rotations in world space, so it works on
+     any rig orientation; a template's real stance / idle clip replaces it when one is played. */
+  relaxPose(){
+    const B = this.bones || {};
+    const v1 = new THREE.Vector3(), v2 = new THREE.Vector3(), q = new THREE.Quaternion(), pq = new THREE.Quaternion();
+    const aim = (bone, child, target) => {
+      if(!bone || !child) return;
+      this.model.updateMatrixWorld(true);
+      bone.getWorldPosition(v1); child.getWorldPosition(v2);
+      const cur = v2.sub(v1).normalize();
+      q.setFromUnitVectors(cur, target.clone().normalize());           // world-space delta
+      bone.getWorldQuaternion(pq);
+      const parentQ = new THREE.Quaternion(); if(bone.parent) bone.parent.getWorldQuaternion(parentQ);
+      const worldNew = q.multiply(pq);                                  // delta * current world rotation
+      bone.quaternion.copy(parentQ.invert().multiply(worldNew));        // back to parent space
+    };
+    for(const side of ['Left', 'Right']){
+      const sx = side==='Left' ? 1 : -1;
+      const arm = B[side+'Arm'], fore = B[side+'ForeArm'], hand = B[side+'Hand'];
+      if(!arm || !fore) continue;
+      this.model.updateMatrixWorld(true);
+      const sh = new THREE.Vector3(); arm.getWorldPosition(sh);
+      const el = new THREE.Vector3(); fore.getWorldPosition(el);
+      const out = Math.sign(el.x - sh.x) || sx;                         // which way this arm points in bind space
+      aim(arm, fore, new THREE.Vector3(out*0.32, -1, 0.04));
+      if(hand) aim(fore, hand, new THREE.Vector3(out*0.22, -1, 0.22));
+    }
+    this.model.updateMatrixWorld(true);
   }
   boneY(name, fallback){
     const b = this.bones && this.bones[name];
@@ -327,7 +379,48 @@ export class SuiteViewer {
     for(const t of s.targets){ t.material.map=t.original; t.material.needsUpdate=true; }
     this.texSwaps.delete(partId);
   }
-  setSkinTone(hex){ /* parametric preview: tint exposed materials */ }
+  /* Skin tone on a CREATE template body (MB-Lab bake, 2026-11-01; was an empty stub). The body's skin material has
+     no texture in the glTF (MB-Lab's Cycles skin shader does not export), so the body's own albedo image (exported on
+     the tongue material) becomes the skin map, tinted so its mean colour lands exactly on the chosen tone; nails
+     follow the tone. Only template bodies: textured roster fighters keep their own skin. */
+  setSkinTone(hex){
+    if(!this.model || !this.isTemplate || !hex) return;
+    const mats = []; let albedo = null;
+    this.model.traverse(o=>{ if(!o.isMesh) return;
+      for(const m of (Array.isArray(o.material) ? o.material : [o.material])){
+        if(!m) continue;
+        if(/skin|nails/i.test(m.name || '')) mats.push(m);
+        if(!albedo && m.map && /albedo/i.test(m.map.name || '')) albedo = m.map;
+      } });
+    if(!mats.length) return;
+    const tone = new THREE.Color(hex);
+    const mean = albedo ? this._meanColor(albedo) : null;
+    for(const m of mats){
+      const skin = /skin/i.test(m.name || '');
+      if(skin && albedo && m.map !== albedo){ m.map = albedo; m.needsUpdate = true; }
+      const c = tone.clone();
+      if(skin && mean) c.setRGB(Math.min(4, c.r/Math.max(mean.r, 1e-3)), Math.min(4, c.g/Math.max(mean.g, 1e-3)), Math.min(4, c.b/Math.max(mean.b, 1e-3)));
+      m.color.copy(c);
+      if('roughness' in m) m.roughness = skin ? 0.62 : 0.4;
+      if('metalness' in m) m.metalness = 0;
+    }
+    this.skinTone = hex;
+  }
+  _meanColor(tex){
+    if(tex.userData.whMean) return tex.userData.whMean;
+    let c = null;
+    try{
+      const cv = document.createElement('canvas'); cv.width = cv.height = 32;
+      const ctx = cv.getContext('2d'); ctx.drawImage(tex.image, 0, 0, 32, 32);
+      const d = ctx.getImageData(0, 0, 32, 32).data; let r=0, g=0, b=0, n=0;
+      for(let i=0;i<d.length;i+=4){ if(d[i+3] < 128) continue; r+=d[i]; g+=d[i+1]; b+=d[i+2]; n++; }
+      if(n) c = new THREE.Color().setRGB(r/n/255, g/n/255, b/n/255, THREE.SRGBColorSpace);
+    }catch(e){ c = null; }
+    tex.userData.whMean = c; return c;
+  }
+  /* Frame the fighter inside the screen area the UI leaves free (2026-11-01: on a phone the head sat under the top
+     bar and the side panel / bottom sheet covered the body). insetsFn() -> {left, right, top, bottom} in px. */
+  setInsets(fn){ this.insets = fn; this._resize(); }
   setProportions(p){
     if(!this.model) return;
     this.model.scale.set(0.92+0.16*(p.weight||1), 0.9+0.2*(p.height||1), 0.92+0.16*(p.weight||1));
