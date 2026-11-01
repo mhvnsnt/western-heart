@@ -13,6 +13,7 @@ This tool samples each 0x64 clip with the game's sampler (tools/anim/exe_re/emul
 rotation as the 0xC8 Euler triple that rebuilds the same quaternion, and each position bone as (x, y, z).
 
     python3 -I tools/anim/t7_anim64_to_c8.py EXE ARC --check 8      # round-trip 8 clips through the 0xC8 path
+    python3 -I tools/anim/t7_anim64_to_c8.py EXE ARC --dump IDX     # one clip as JSON {frames, desc}
     library: frames = convert(arc_path, clip_index, exe)            # [[69 floats] per frame], like decode_c8
 The exe stays private (GRE release t7-shipping-exe-20261031); never commit it or anything copied out of it.
 """
@@ -117,6 +118,12 @@ def check(exe, arc, n):
 
 
 if __name__ == '__main__':
+    if len(sys.argv) >= 5 and sys.argv[3] == '--dump':   # JSON {frames, desc} for one clip index (used by decode_c8)
+        import json
+        fr, de = convert_bytes(open(sys.argv[2], 'rb').read(), clip_offsets(open(sys.argv[2], 'rb').read())[int(sys.argv[4])],
+                               sys.argv[1], nbones=10_000)
+        print(json.dumps({'frames': fr, 'desc': de}))
+        sys.exit(0)
     if len(sys.argv) >= 5 and sys.argv[3] == '--check':
         sys.exit(0 if check(sys.argv[1], sys.argv[2], int(sys.argv[4])) < 1e-4 else 1)
     print(__doc__)

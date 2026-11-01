@@ -70,9 +70,20 @@ def decode_c8(arc, idx):
     m0 = re.search(b'MOTA', d).start()
     o = m0 + mota_anims(d, m0)[idx]
     t = d[o + 1] if d[o] == 0 else d[o]
+    if t == 0x64 and os.environ.get('T7_EXE'):
+        # 0x64 (every attack): converted to 0xC8 values by the game's own sampler (tools/anim/t7_anim64_to_c8.py,
+        # round trip exact to 3.6e-7). The exe-reading code runs isolated (python3 -I) in its own process.
+        p = subprocess.run([sys.executable, '-I', os.path.join(HERE, 't7_anim64_to_c8.py'), os.environ['T7_EXE'], arc,
+                            '--dump', str(idx)], capture_output=True, text=True)
+        if p.returncode:
+            sys.exit('0x64 conversion failed for clip %d: %s' % (idx, p.stderr[-1500:]))
+        r = json.loads(p.stdout)
+        if len(r['desc']) < 23:
+            sys.exit('clip %d has %d bones, not a 23-bone body clip' % (idx, len(r['desc'])))
+        return [f[:69] for f in r['frames']]
     if t != 0xC8:
-        sys.exit('clip %d is format %#x, not 0xC8 (0x64 clips need the joint frame first: '
-                 'docs/anim/T7-0x64-FRAME-RESEARCH-2026-10-30.md)' % (idx, t))
+        sys.exit('clip %d is format %#x, not 0xC8 (a 0x64 clip needs T7_EXE=<TekkenGame-Win64-Shipping.exe> for the '
+                 'conversion: docs/anim/T7-0x64-FRAME-RESEARCH-2026-10-30.md)' % (idx, t))
     e = '<' if d[o] != 0 else '>'
     nb = struct.unpack_from(e + 'H', d, o + 2)[0]
     n = struct.unpack_from(e + 'I', d, o + 4)[0]
