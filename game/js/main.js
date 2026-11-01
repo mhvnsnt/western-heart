@@ -1343,6 +1343,58 @@ async function startFight(playerId, enemyId, opts = {}) {
     const tagBtn = document.getElementById('tag-btn');
     if (tagBtn) tagBtn.hidden = !tagTeams;
     if (confirmBtn) confirmBtn.disabled = true;
+    // LOADSPEED (2026-11-01): the full-moveset / T3-bank / throw-table
+    // loads below depend only on the two fighter ids, NOT on the models
+    // — run them CONCURRENTLY with the model downloads instead of after
+    // them. On a cold cache the model bytes dominate and this data chain
+    // hides underneath them; the fight previously paid both, back to
+    // back. Error semantics unchanged: ensureMovesets still rejects into
+    // the same catch as before (models are awaited first, exactly as
+    // before, then dataP), and the extra .catch(() => {}) branch only
+    // keeps a data failure from surfacing as an unhandled rejection
+    // when the model load fails first and the catch runs instead. The
+    // T3-clip and throw steps keep their own fail-soft try/catch.
+    const dataP = (async () => {
+      // Load the REAL T3 animation banks for THIS match's two fighters —
+      // each fighter's own moveset-source bank (per-bank wiring 2026-10-19).
+      // Fighters whose source has no decoded bank are skipped here and
+      // fall back to embedded locomotion + procedural combat. (Heihachi
+      // source fighters have their own real bank since 2026-10-20.)
+      // Full movesets for this fight (lazy since 2026-10-21; boot loads only the index).
+      // Transform forms may switch moveset mid-fight, so theirs load too.
+      setPhase('Loading move lists…');
+      const msIds = [player.id, enemy.id];
+      for (const c of [player, enemy]) {
+        if (c.forms) for (const fk of Object.keys(c.forms)) {
+          const fe = c.forms[fk];
+          for (const t of (fe.target ? [fe] : [fe.up, fe.down].filter(Boolean))) if (t.moveset) msIds.push(t.moveset);
+        }
+      }
+      await ensureMovesets(msIds);
+      setPhase('Loading real fight motion…');
+      try {
+        const banks = [...new Set([bankIdFor(player.id), bankIdFor(enemy.id)].filter(Boolean))];
+        await Promise.all(banks.map(b => loadT3Clips(THREE, b)));
+      } catch (e) {
+        console.warn('[WH] T3 clips failed, using procedural fallback:', e.message || e);
+      }
+      // TEKKEN GRAPPLE (2026-10-24): load the throw tables
+      // (reactions.json) and this match's two reaction packs BEFORE
+      // the fight starts, so a connecting grab can bind its file
+      // pair immediately instead of falling back to the legacy
+      // lock. A failure here is NOT fatal: throws keep the legacy
+      // lock path and are logged UNMAPPED at connect time.
+      setPhase('Loading throw pairs…');
+      try {
+        const { loadReactionPack } = T3;
+        await loadThrowTables();
+        const banks = [...new Set([bankIdFor(player.id), bankIdFor(enemy.id)].filter(Boolean))];
+        await Promise.all(banks.map(b => loadReactionPack(THREE, b)));
+      } catch (e) {
+        console.warn('[WH] throw pairs unavailable, legacy throw lock:', e.message || e);
+      }
+    })();
+    dataP.catch(() => {});
     await assets.loadModels(need, (p, loaded, total, id) => {
       if (window.__whLoadProgress) window.__whLoadProgress(p, loaded, total);
       keepLoading();  // bytes are flowing: the overlay stays up (FIGHT-LOAD RECOVERY v2)
@@ -1357,44 +1409,7 @@ async function startFight(playerId, enemyId, opts = {}) {
       if (hint) hint.textContent = t;
       if (stageHintEl) stageHintEl.textContent = t;
     });
-    // Load the REAL T3 animation banks for THIS match's two fighters —
-    // each fighter's own moveset-source bank (per-bank wiring 2026-10-19).
-    // Fighters whose source has no decoded bank are skipped here and
-    // fall back to embedded locomotion + procedural combat. (Heihachi
-    // source fighters have their own real bank since 2026-10-20.)
-    // Full movesets for this fight (lazy since 2026-10-21; boot loads only the index).
-    // Transform forms may switch moveset mid-fight, so theirs load too.
-    setPhase('Loading move lists…');
-    const msIds = [player.id, enemy.id];
-    for (const c of [player, enemy]) {
-      if (c.forms) for (const fk of Object.keys(c.forms)) {
-        const fe = c.forms[fk];
-        for (const t of (fe.target ? [fe] : [fe.up, fe.down].filter(Boolean))) if (t.moveset) msIds.push(t.moveset);
-      }
-    }
-    await ensureMovesets(msIds);
-    setPhase('Loading real fight motion…');
-    try {
-      const banks = [...new Set([bankIdFor(player.id), bankIdFor(enemy.id)].filter(Boolean))];
-      await Promise.all(banks.map(b => loadT3Clips(THREE, b)));
-    } catch (e) {
-      console.warn('[WH] T3 clips failed, using procedural fallback:', e.message || e);
-    }
-    // TEKKEN GRAPPLE (2026-10-24): load the throw tables
-    // (reactions.json) and this match's two reaction packs BEFORE
-    // the fight starts, so a connecting grab can bind its file
-    // pair immediately instead of falling back to the legacy
-    // lock. A failure here is NOT fatal: throws keep the legacy
-    // lock path and are logged UNMAPPED at connect time.
-    setPhase('Loading throw pairs…');
-    try {
-      const { loadReactionPack } = T3;
-      await loadThrowTables();
-      const banks = [...new Set([bankIdFor(player.id), bankIdFor(enemy.id)].filter(Boolean))];
-      await Promise.all(banks.map(b => loadReactionPack(THREE, b)));
-    } catch (e) {
-      console.warn('[WH] throw pairs unavailable, legacy throw lock:', e.message || e);
-    }
+    await dataP;
   } catch (err) {
     console.error('[WH] fight load failed:', err);
     // Name the failing asset: a bare "check connection" hides a 404 for a
