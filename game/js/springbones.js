@@ -33,6 +33,13 @@ export class SpringChain {
     this.gravityDir = opts.gravityDir ?? new THREE.Vector3(0, -1, 0);
     this.hitRadius = opts.hitRadius ?? 0.06;
     this.scale = opts.scale ?? 1.0;            // global jiggle amplitude scale
+    // Production hair / cloth (2026-11-01, TressFX-style): stiffness falls from the root (holds the style) to the tip
+    // (flows); fixed substeps keep fast moves stable; body colliders (spheres / capsules on the fighter's own bones)
+    // keep strands and cloth outside the head, neck, chest, shoulders, arms and thighs. Defaults reproduce the old
+    // single-step, collider-free behaviour, so existing jiggle chains (breast / glutes) are unchanged.
+    this.stiffnessTip = opts.stiffnessTip ?? this.stiffness;
+    this.substeps = Math.max(1, opts.substeps ?? 1);
+    this.colliders = opts.colliders || [];     // [{ bone, radius, up?: m along the bone's +Y, tailBone? (capsule) }]
     this._tails = [];                          // verlet state per joint
     this._restLocal = [];
     this._init();
@@ -66,30 +73,75 @@ export class SpringChain {
   }
 
   update(dt, time) {
-    const dtc = Math.min(dt, 1 / 30);
-    const damp = Math.max(0, 1 - this.dragForce);
-    for (let i = 0; i < this.bones.length; i++) {
-      const b = this.bones[i], t = this._tails[i];
-      b.updateWorldMatrix(true, false);
-      const head = new THREE.Vector3();
-      b.getWorldPosition(head);
-      t.head.copy(head);
-      // Verlet: velocity = (cur - prev) * damping
-      const vel = t.cur.clone().sub(t.prev).multiplyScalar(damp);
-      t.prev.copy(t.cur);
-      t.cur.add(vel);
-      // Stiffness: pull toward rest offset from head
-      const restOffset = this._restOffset(i);
-      const target = t.head.clone().add(restOffset);
-      t.cur.lerp(target, 1 - Math.exp(-this.stiffness * 8 * dtc));
-      // Gravity
-      t.cur.addScaledVector(this.gravityDir, this.gravityPower * dtc * dtc * 60 * 0.02 * this.scale);
-      // Length constraint: keep segment length
-      const dir = t.cur.clone().sub(t.head);
-      const d = dir.length() || 1e-6;
-      t.cur.copy(t.head).addScaledVector(dir.normalize(), t.len);
-      // Solve bone rotation to aim at the simulated tail
-      this._aimBone(b, t.head, t.cur, i);
+    const frame = Math.min(dt, 1 / 30), n = this.substeps, dtc = frame / n;
+    const damp = Math.pow(Math.max(0, 1 - this.dragForce), 1 / n);
+    const g = this.gravityPower * frame * frame * 60 * 0.02 * this.scale / n; // same pull per frame for any substeps
+    const cols = this.colliders.length ? this._colliderShapes() : null;
+    for (let s = 0; s < n; s++) {
+      for (let i = 0; i < this.bones.length; i++) {
+        const b = this.bones[i], t = this._tails[i];
+        b.updateWorldMatrix(true, false);
+        const head = new THREE.Vector3();
+        b.getWorldPosition(head);
+        t.head.copy(head);
+        // Verlet: velocity = (cur - prev) * damping
+        const vel = t.cur.clone().sub(t.prev).multiplyScalar(damp);
+        t.prev.copy(t.cur);
+        t.cur.add(vel);
+        // Stiffness: pull toward rest offset from head (root -> tip falloff)
+        const k = this.bones.length > 1 ? i / (this.bones.length - 1) : 0;
+        const stiff = this.stiffness + (this.stiffnessTip - this.stiffness) * k;
+        const target = t.head.clone().add(this._restOffset(i));
+        t.cur.lerp(target, 1 - Math.exp(-stiff * 8 * dtc));
+        // Gravity
+        t.cur.addScaledVector(this.gravityDir, g);
+        this._keepLength(t);
+        // collide <-> length, ending on length: strands never stretch; any residual contact is millimetres
+        if (cols) for (let it = 0; it < 3; it++) { this._collide(t.cur, cols); this._keepLength(t); }
+        // Solve bone rotation to aim at the simulated tail
+        this._aimBone(b, t.head, t.cur, i);
+      }
+    }
+  }
+
+  _keepLength(t) {
+    const dir = t.cur.clone().sub(t.head);
+    if (dir.lengthSq() < 1e-12) dir.set(0, -1, 0);
+    t.cur.copy(t.head).addScaledVector(dir.normalize(), t.len);
+  }
+
+  /** World spheres / capsules of this chain's colliders for the current pose: [{a, b, r}] (b === a: sphere). */
+  _colliderShapes() {
+    const out = [];
+    for (const c of this.colliders) {
+      if (!c.bone) continue;
+      c.bone.updateWorldMatrix(true, false);
+      const a = new THREE.Vector3();
+      c.bone.getWorldPosition(a);
+      if (c.up) {
+        const q = new THREE.Quaternion();
+        c.bone.getWorldQuaternion(q);
+        a.addScaledVector(new THREE.Vector3(0, 1, 0).applyQuaternion(q), c.up);
+      }
+      let b = a;
+      if (c.tailBone) {
+        c.tailBone.updateWorldMatrix(true, false);
+        b = new THREE.Vector3();
+        c.tailBone.getWorldPosition(b);
+      }
+      out.push({ a, b, r: c.radius });
+    }
+    return out;
+  }
+
+  _collide(p, cols) {
+    const r0 = this.hitRadius * this.scale;
+    for (const c of cols) {
+      const ab = c.b.clone().sub(c.a), L = ab.lengthSq();
+      const u = L > 1e-12 ? Math.min(1, Math.max(0, p.clone().sub(c.a).dot(ab) / L)) : 0;
+      const q = c.a.clone().addScaledVector(ab, u);
+      const d = p.clone().sub(q), dist = d.length(), min = c.r + r0;
+      if (dist < min) p.copy(q).addScaledVector(dist > 1e-9 ? d.divideScalar(dist) : new THREE.Vector3(0, 0, -1), min);
     }
   }
 
@@ -129,6 +181,41 @@ export class SpringChain {
   }
 }
 
+/* Per-family defaults (2026-11-01). Hair: TressFX-style global shape stiffness falling root -> tip, light gravity.
+   Cloth (capes, robes, coat tails, straps): the cape-cloth.js tuning (stiffness 0.95 -> 0.5, heavier drag). */
+const FAMILY = {
+  hair: { stiffness: 0.92, stiffnessTip: 0.3, dragForce: 0.3, gravityPower: 0.45, hitRadius: 0.012, substeps: 3 },
+  cloth: { stiffness: 0.95, stiffnessTip: 0.5, dragForce: 0.35, gravityPower: 0.6, hitRadius: 0.02, substeps: 3 },
+};
+
+const _bone = (root, n) => {
+  let hit = null;
+  root.traverse((o) => { if (!hit && o.isBone && o.name.split(':').pop() === n) hit = o; });
+  return hit;
+};
+
+/** Body colliders from the fighter's own skeleton, sized by its height (Hips -> Head x 2.9): head sphere, neck,
+    chest, shoulder and upper-arm capsules, and thigh capsules (`leg`, used by cloth only). */
+export function bodyColliders(root) {
+  const B = (n) => _bone(root, n);
+  const hips = B('Hips'), head = B('Head');
+  if (!hips || !head) return [];
+  const a = new THREE.Vector3(), b = new THREE.Vector3();
+  hips.getWorldPosition(a); head.getWorldPosition(b);
+  const H = a.distanceTo(b) * 2.9; // hips -> head joint is ~1/3 of standing height
+  const out = [];
+  const add = (bone, radius, extra = {}) => { if (bone) out.push(Object.assign({ bone, radius }, extra)); };
+  add(head, 0.065 * H, { up: 0.055 * H });
+  add(B('Neck'), 0.035 * H, { tailBone: head });
+  add(B('Spine1') || B('Spine'), 0.09 * H, { tailBone: B('Spine2') || B('Neck') });
+  for (const s of ['Left', 'Right']) {
+    add(B(s + 'Shoulder'), 0.04 * H, { tailBone: B(s + 'Arm') });
+    add(B(s + 'Arm'), 0.032 * H, { tailBone: B(s + 'ForeArm') });
+    add(B(s + 'UpLeg'), 0.055 * H, { tailBone: B(s + 'Leg'), leg: true });
+  }
+  return out;
+}
+
 export class WHSpringBones {
   constructor() {
     this.chains = [];
@@ -139,6 +226,7 @@ export class WHSpringBones {
   /** Scan a skinned mesh / skeleton for jiggle chains and build solvers.
       Returns the number of chains found. */
   autoDiscover(root, opts = {}) {
+    let colliders = null;
     const bones = [];
     root.traverse((o) => { if (o.isBone) bones.push(o); });
     const byName = new Map(bones.map((b) => [b.name, b]));
@@ -173,13 +261,18 @@ export class WHSpringBones {
         const fam = /breast|bust|mammary/i.test(chainRoot.name) ? 'mammary'
           : /butt|glute/i.test(chainRoot.name) ? 'glutes'
           : /belly|stomach/i.test(chainRoot.name) ? 'belly'
-          : /hair|ponytail/i.test(chainRoot.name) ? 'hair' : 'generic';
-        const preset = (opts.presets && opts.presets[fam]) || {};
+          : /hair|ponytail/i.test(chainRoot.name) ? 'hair'
+          : /cape|cloak|robe|coat|skirt|strap|tassel/i.test(chainRoot.name) ? 'cloth' : 'generic';
+        const preset = Object.assign({}, FAMILY[fam] || {}, (opts.presets && opts.presets[fam]) || {});
+        const body = (fam === 'hair' || fam === 'cloth') ? (colliders || (colliders = bodyColliders(root))) : [];
         this.chains.push(new SpringChain(chain, {
           stiffness: preset.stiffness ?? 0.9,
+          stiffnessTip: preset.stiffnessTip,
           dragForce: preset.dragForce ?? 0.35,
           gravityPower: preset.gravityPower ?? (fam === 'hair' ? 0.35 : 0.6),
           hitRadius: preset.hitRadius ?? 0.06,
+          substeps: preset.substeps,
+          colliders: fam === 'cloth' ? body : body.filter((c) => !c.leg),
           scale: (opts.scale ?? 1) * this.globalScale,
         }));
         found++;
