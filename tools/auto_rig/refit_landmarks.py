@@ -119,6 +119,45 @@ def contiguous_half_width(Q, cx, y, H, sgn):
     return float(v[g[0]] if len(g) else v[-1])
 
 
+def raise_arm(Q, pivot, deg, sgn):
+    """Rotate side `sgn`'s points about the shoulder pivot in the frontal (X-Y) plane, raising an arm that hangs `deg`
+    below horizontal to horizontal (A-pose -> virtual T-pose). Points across the mid-line stay put."""
+    th = np.radians(deg) * sgn
+    c, s = np.cos(th), np.sin(th)
+    out = Q.copy()
+    m = (Q[:, 0] - pivot[0]) * sgn > -0.02
+    d = Q[m] - pivot
+    out[m, 0] = pivot[0] + c * d[:, 0] - s * d[:, 1]
+    out[m, 1] = pivot[1] + s * d[:, 0] + c * d[:, 1]
+    return out
+
+
+def arm_score(Q, sgn, H, step=0.005):
+    """Long, thin, clean arm cylinder = the arm lies along X. None if no arm is found."""
+    try:
+        R, x_tip = arm_slices(Q, sgn, H, step)
+    except SystemExit:
+        return None
+    if len(R) < 10:
+        return None
+    ext = np.maximum(R[:, 2] - R[:, 1], R[:, 4] - R[:, 3])
+    return float((x_tip - R[:, 0].min()) / max(float(np.median(ext)), 1e-6))
+
+
+def arm_angle(Q, sgn, H, pivot, margin=1.2):
+    """Degrees the arm hangs below horizontal (0 = T-pose). A raised fit replaces the T-pose fit only when it scores
+    clearly better, so T-pose models keep the unchanged path."""
+    s0 = arm_score(Q, sgn, H)
+    best, sb = 0, s0
+    for deg in range(5, 65, 5):
+        sc = arm_score(raise_arm(Q, pivot, deg, sgn), sgn, H)
+        if sc is not None and (sb is None or sc > sb):
+            best, sb = deg, sc
+    if best and s0 is not None and sb < margin * s0:
+        return 0
+    return best
+
+
 def fit_arm(Q, sgn, H, cx, elbow_frac, step=0.005):
     R, x_tip = arm_slices(Q, sgn, H, step)
     x, ylo, yhi, zlo, zhi = R.T
@@ -217,18 +256,28 @@ def main():
     # arms
     arms = {}
     for side, sgn in (('Left', 1.0), ('Right', -1.0)):
-        r = fit_arm(Q, sgn, H, cx, a.elbow_frac)
-        arms[side] = r
-        J[side + 'Arm'], J[side + 'ForeArm'], J[side + 'Hand'] = r['arm'], r['elbow'], r['wrist']
+        # A-pose arms (Burger, most Tripo statics) are raised into a virtual T-pose about the shoulder, fitted with
+        # the same T-pose slicing, then the arm joints are lowered back: the rig keeps the model's own A-pose.
+        pivot = np.array(J0[side + 'Arm'], dtype=float)
+        deg = arm_angle(Q, sgn, H, pivot)
+        Qa = raise_arm(Q, pivot, deg, sgn) if deg else Q
+        r = fit_arm(Qa, sgn, H, cx, a.elbow_frac)
         fingers = [n for n in J0 if n.startswith(side + 'Hand') and n != side + 'Hand']
         old_reach = max([abs(J0[n][0] - J0[side + 'Hand'][0]) for n in fingers] + [1e-6])
         new_reach = max(r['x_tip'] - abs(r['wrist'][0] - cx), 1e-6) * 0.92
         k = min(1.0, new_reach / old_reach)
-        for n in fingers:
-            J[n] = r['wrist'] + (J0[n] - J0[side + 'Hand']) * k
+        Jf = {n: r['wrist'] + (J0[n] - J0[side + 'Hand']) * k for n in fingers}
+        if deg:  # lower the fitted arm (and its fingers) back into the model's pose
+            lower = lambda v: raise_arm(np.asarray(v, dtype=float)[None], pivot, -deg, sgn)[0]
+            r['arm'], r['elbow'], r['wrist'] = lower(r['arm']), lower(r['elbow']), lower(r['wrist'])
+            Jf = {n: lower(v) for n, v in Jf.items()}
+            r['y_arm_line'] = float(r['arm'][1])
+        arms[side] = r
+        J[side + 'Arm'], J[side + 'ForeArm'], J[side + 'Hand'] = r['arm'], r['elbow'], r['wrist']
+        J.update(Jf)
         rep[side + '_arm'] = {'armpit_x': None if r['x_armpit'] is None else round(r['x_armpit'], 4),
                               'clean_from_x': round(r['x_clean0'], 4), 'fingertip_x': round(r['x_tip'], 4),
-                              'finger_scale': round(float(k), 3)}
+                              'finger_scale': round(float(k), 3), 'arm_angle_below_horizontal_deg': deg}
     y_arm_old = (J0['LeftArm'][1] + J0['RightArm'][1]) / 2
     y_arm = (arms['Left']['y_arm_line'] + arms['Right']['y_arm_line']) / 2
 

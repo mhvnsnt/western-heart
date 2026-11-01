@@ -69,9 +69,12 @@ def facing_and_height(path, cdir):
 
 
 def static_facing_height_pose(path, cdir):
-    """Static mesh (no skeleton): (facing, height m, 'T'|'A'). Facing: the toes reach further past the ankles than the
-    heels do; ambiguous feet (a robe on the floor) fall back to +Z, and a wrong guess cannot ship (the refit's gates
-    and the re-audit reject it). Pose: arm span across the facing at shoulder height ~ body height = T-pose."""
+    """Static mesh (no skeleton): (facing, height m, 'T'|'A', confidence). The arms span ACROSS the facing: at
+    shoulder height the wider horizontal axis is the arm axis (Gashadokuro's kaiju model faces +X with its arms along
+    Z; a feet-only test read its floor tail as heels). The sign along the facing axis comes from the feet: toes
+    reach further past the ankles than heels do, using only floor points near each ankle (a tail or cape on the
+    floor is ignored). Confidence < 1.3 means ambiguous: batch_refit reports it for a fit-plot review instead of
+    guessing; a wrong facing cannot ship anyway (the refit's gates and the re-audit reject it)."""
     import refit_skeleton as RS
     work = tempfile.mkdtemp(prefix='face_')
     try:
@@ -82,18 +85,24 @@ def static_facing_height_pose(path, cdir):
     finally:
         shutil.rmtree(work, ignore_errors=True)
     y0, H = V[:, 1].min(), V[:, 1].max() - V[:, 1].min()
-    floor, ankle = V[V[:, 1] < y0 + 0.03 * H], V[(V[:, 1] > y0 + 0.06 * H) & (V[:, 1] < y0 + 0.10 * H)]
-    best, ratio = '+Z', 0.0
-    if len(floor) > 20 and len(ankle) > 20:
-        for name, u in (('+X', [1, 0]), ('-X', [-1, 0]), ('+Z', [0, 1]), ('-Z', [0, -1])):
-            f, a = floor[:, [0, 2]] @ np.array(u, float), ankle[:, [0, 2]] @ np.array(u, float)
-            ahead, behind = f.max() - a.mean(), a.mean() - f.min()
-            if behind > 0 and ahead / behind > ratio: best, ratio = name, ahead / behind
-    facing = best if ratio >= 1.3 else '+Z'
-    side = 0 if facing in ('+Z', '-Z') else 2  # arms run across the facing
-    band = V[(V[:, 1] > y0 + 0.70 * H) & (V[:, 1] < y0 + 0.90 * H)]
-    span = (band[:, side].max() - band[:, side].min()) if len(band) else 0.0
-    return facing, round(float(H), 3), ('T' if span > 0.80 * H else 'A')
+    band = V[(V[:, 1] > y0 + 0.65 * H) & (V[:, 1] < y0 + 0.92 * H)]
+    ext = [band[:, 0].max() - band[:, 0].min(), band[:, 2].max() - band[:, 2].min()] if len(band) else [0.0, 0.0]
+    arm_ax = 0 if ext[0] >= ext[1] else 2               # arms along X -> facing along Z, and vice versa
+    f_ax = 2 if arm_ax == 0 else 0
+    pose = 'T' if max(ext) > 0.80 * H else 'A'
+    ankle = V[(V[:, 1] > y0 + 0.06 * H) & (V[:, 1] < y0 + 0.10 * H)]
+    floor = V[V[:, 1] < y0 + 0.03 * H]
+    sign, conf = +1, 0.0
+    if len(ankle) > 20 and len(floor) > 20:
+        c = ankle[:, [0, 2]].mean(0)
+        near = floor[np.hypot(floor[:, 0] - c[0], floor[:, 2] - c[1]) < 0.18 * H]  # the feet, not a tail
+        if len(near) > 20:
+            a = ankle[:, f_ax].mean()
+            ahead, behind = near[:, f_ax].max() - a, a - near[:, f_ax].min()
+            if min(ahead, behind) > 0:
+                sign, conf = (1, ahead / behind) if ahead >= behind else (-1, behind / ahead)
+    facing = ('+' if sign > 0 else '-') + ('Z' if f_ax == 2 else 'X')
+    return facing, round(float(H), 3), pose, round(float(conf), 2)
 
 
 def refit_one(row, report_root, cdir, dry):
@@ -108,10 +117,10 @@ def refit_one(row, report_root, cdir, dry):
         if row.get('skinned'):
             facing, height = facing_and_height(src, cdir)
         else:
-            facing, height, pose = static_facing_height_pose(src, cdir)
-            res['static_pose'] = pose
-            if pose != 'T':
-                return dict(res, facing=facing, height_m=height, status='SKIPPED (static A-pose: A-pose path)')
+            facing, height, pose, conf = static_facing_height_pose(src, cdir)
+            res.update(static_pose=pose, facing_confidence=conf)
+            if conf < 1.3:
+                return dict(res, facing=facing, height_m=height, status='REVIEW (static facing ambiguous: check the fit plot)')
         res.update(facing=facing, height_m=height)
         if dry: return dict(res, status='DRY RUN')
         env = dict(os.environ)
