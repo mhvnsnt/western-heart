@@ -65,14 +65,20 @@ def _plt():
 
 
 def load_skinned(path):
-    """(positions, JOINTS_0, WEIGHTS_0, triangle indices, joint names, joint bind positions) of the first skinned
-    primitive, in the SKINNED REST POSE (world space: joint bind world x inverse bind x vertex, so gltfpack's
+    """(positions, JOINTS_0, WEIGHTS_0, triangle indices, joint names, joint bind positions) of ALL skinned primitives
+    merged (multi-part exports such as pantera.glb hold ~18 parts; the first one alone was a 202-vertex accessory, so
+    every body region read empty: fixed 2026-11-01 for tools/auto_rig/batch_audit.py), in the SKINNED REST POSE (world space: joint bind world x inverse bind x vertex, so gltfpack's
     quantized positions / dequantizing IBMs come out in metres), turned so the model faces +Z with Left* on +X
     (toes decide), like refit_skeleton's fit space. Comparable across rigs from different pipelines."""
     import anim_check as ac
     from smooth_weights import _skin_fast
     m = ac.AnimModel(path)
-    pr = m.prims[0]
+    off, idxs = 0, []
+    for q in m.prims:  # non-indexed primitives are consecutive triangles
+        idxs.append((q['idx'] if q['idx'] is not None else np.arange(len(q['pos']))) + off)
+        off += len(q['pos'])
+    pr = {'pos': np.concatenate([q['pos'] for q in m.prims]), 'joints': np.concatenate([q['joints'] for q in m.prims]),
+          'weights': np.concatenate([q['weights'] for q in m.prims]), 'idx': np.concatenate(idxs)}
     jidx = np.array(m.joint_nodes)
     bind = m.bind_world()
     bs = np.stack([bind[int(j)] @ m.ibm[k] for k, j in enumerate(jidx)])
@@ -194,8 +200,9 @@ def cmd_weights(a):
     print('wrote', a.out)
 
 
-def cmd_shares(a):
-    P, Jn, W, _, names, jp = load_skinned(a.glb)
+def region_shares(P, Jn, W, names, jp):
+    """[(region label, vertex count, {bone name: weight share})] for the named body regions (cut from the GLB's own
+    Head / Neck / Spine2 / Arm joints, T-pose arms). Shared by `shares` and tools/auto_rig/batch_audit.py."""
     x, y, z = P[:, 0], P[:, 1], P[:, 2]
     hy, ny, s2 = jp['Head'][1], jp['Neck'][1], jp['Spine2'][1]
     hz = jp['Head'][2]
@@ -215,12 +222,20 @@ def cmd_shares(a):
         ('R upper arm', (x < rax - 0.01 * H) & (x > jp['RightForeArm'][0]) & (np.abs(y - ya) < 0.06 * H)),
         ('abdomen (Hips..Spine1)', (y > jp['Hips'][1]) & (y < jp['Spine1'][1]) & (np.abs(x) < 0.06 * H)),
     ]
+    out = []
     for label, m in regions:
         acc = np.zeros(len(names))
         np.add.at(acc, Jn[m].ravel(), W[m].ravel())
         acc /= max(acc.sum(), 1e-9)
-        top = np.argsort(-acc)[:6]
-        print('%-34s n=%8d  %s' % (label, m.sum(), '  '.join('%s %.1f%%' % (names[i], 100 * acc[i]) for i in top if acc[i] > 0.005)))
+        out.append((label, int(m.sum()), {names[i]: float(acc[i]) for i in np.nonzero(acc > 1e-4)[0]}))
+    return out
+
+
+def cmd_shares(a):
+    P, Jn, W, _, names, jp = load_skinned(a.glb)
+    for label, n, sh in region_shares(P, Jn, W, names, jp):
+        top = sorted(sh.items(), key=lambda kv: -kv[1])[:6]
+        print('%-34s n=%8d  %s' % (label, n, '  '.join('%s %.1f%%' % (b, 100 * v) for b, v in top if v > 0.005)))
 
 
 def bone_group(name):
@@ -284,18 +299,24 @@ def cmd_compare(a):
     print(json.dumps(out, indent=1))
 
 
-def cmd_seams(a):
-    P, Jn, W, _, names, _ = load_skinned(a.glb)
+def seam_stats(P, Jn, W, names):
+    """Do the copies of every UV-seam vertex (same position) carry the same weights? (counts; pass = none differ)"""
     key = np.round(P / 1e-6).astype(np.int64)
     _, first, inv, cnt = np.unique(key, axis=0, return_index=True, return_inverse=True, return_counts=True)
     inv = inv.reshape(-1)
     D = np.zeros((len(P), len(names)), np.float32)
     np.add.at(D, (np.repeat(np.arange(len(P)), 4), Jn.ravel()), W.ravel())
     diff = np.abs(D - D[first[inv]]).sum(1)
-    out = {'glb': a.glb, 'seam_copy_verts': int((cnt[inv] > 1).sum()),
+    out = {'seam_copy_verts': int((cnt[inv] > 1).sum()),
            'copies_disagreeing_over_0.01': int((diff > 0.01).sum()), 'copies_disagreeing_over_0.1': int((diff > 0.1).sum()),
            'max_l1_disagreement': round(float(diff.max()), 4)}
     out['pass'] = out['copies_disagreeing_over_0.01'] == 0
+    return out
+
+
+def cmd_seams(a):
+    P, Jn, W, _, names, _ = load_skinned(a.glb)
+    out = dict({'glb': a.glb}, **seam_stats(P, Jn, W, names))
     print(json.dumps(out, indent=1))
     return out
 

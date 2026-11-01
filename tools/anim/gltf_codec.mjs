@@ -13,7 +13,7 @@
 //         @gltf-transform/functions@4.1.1 meshoptimizer@0.22.0
 import { NodeIO } from '@gltf-transform/core';
 import { ALL_EXTENSIONS } from '@gltf-transform/extensions';
-import { dequantize, meshopt, prune } from '@gltf-transform/functions';
+import { dequantize, meshopt, prune, unpartition } from '@gltf-transform/functions';
 import { MeshoptDecoder, MeshoptEncoder } from 'meshoptimizer';
 
 const [, , mode, inp, out] = process.argv;
@@ -32,6 +32,9 @@ if (mode === 'decode') {
   for (const ext of doc.getRoot().listExtensionsUsed()) {
     if (['EXT_meshopt_compression', 'KHR_mesh_quantization'].includes(ext.extensionName)) ext.dispose();
   }
+  // a meshopt GLB carries a fallback buffer next to the main one; GLB holds one buffer, so merge them (Diablo's
+  // model-rigged.glb failed with "GLB must have 0-1 buffers", 2026-11-01 rig audit)
+  await doc.transform(unpartition());
 } else {
   // keepSolidTextures: prune() otherwise folds a one-colour texture into the material factor, and a solid WHITE
   // texture (Rahkasa's hair, 2026-10-24) becomes the default factor, which the material gate reads as "no colour
