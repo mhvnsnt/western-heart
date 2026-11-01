@@ -1,0 +1,138 @@
+[
+ {
+  "mv": "1",
+  "ok": true,
+  "state": "attack",
+  "moveKey": "1~t8.king",
+  "plan": {
+   "name": "t7:1~t7.king",
+   "kind": "t7",
+   "why": "real T7 Kg_lp00F (kgkb_s3_lp00)",
+   "src": "t7-active",
+   "t0": 0.15,
+   "t1": 0.16666666666666666
+  },
+  "frozenAt": 0.166,
+  "actW": 1,
+  "travel": 0.62
+ },
+ {
+  "mv": "2",
+  "ok": true,
+  "state": "attack",
+  "moveKey": "1,2",
+  "plan": {
+   "name": "row:98",
+   "kind": "step-plan",
+   "why": "step-plan last step (1,2)",
+   "src": "decoded",
+   "t0": 0.2,
+   "t1": 0.2
+  },
+  "frozenAt": 0.2,
+  "actW": 1,
+  "travel": 0.3
+ },
+ {
+  "mv": "3",
+  "ok": true,
+  "state": "attack",
+  "moveKey": "3~t8.king",
+  "plan": {
+   "name": "t7:3~t7.king",
+   "kind": "t7",
+   "why": "real T7 Kg_lk00 (ygvt_lk00_DVD)",
+   "src": "t7-active",
+   "t0": 0.26666666666666666,
+   "t1": 0.2833333333333333
+  },
+  "frozenAt": 0.275,
+  "actW": 1,
+  "travel": 0.21
+ },
+ {
+  "mv": "4",
+  "ok": true,
+  "state": "attack",
+  "moveKey": "4~t8.king",
+  "plan": {
+   "name": "t7:4~t7.king",
+   "kind": "t7",
+   "why": "real T7 Kg_rk00 (mokg_hrk_DVD)",
+   "src": "t7-active",
+   "t0": 0.2,
+   "t1": 0.21666666666666667
+  },
+  "frozenAt": 0.216,
+  "actW": 1,
+  "travel": 0.35
+ },
+ {
+  "mv": "b+2",
+  "ok": true,
+  "state": "attack",
+  "moveKey": "b+2",
+  "plan": {
+   "name": "t7:b+2~t7.king",
+   "kind": "t7",
+   "why": "real T7 Kg_rp00B (kgkb_s3_rap)",
+   "src": "t7-active",
+   "t0": 0.21666666666666667,
+   "t1": 0.23333333333333334
+  },
+  "frozenAt": 0.225,
+  "actW": 1,
+  "travel": 0.75
+ },
+ {
+  "mv": "d/f+1",
+  "ok": true,
+  "state": "attack",
+  "moveKey": "df+1",
+  "plan": {
+   "name": "t7:d/f+1~t7.king",
+   "kind": "t7",
+   "why": "real T7 Kg_t_slpF (kgkb_s3_3lp)",
+   "src": "t7-active",
+   "t0": 0.21666666666666667,
+   "t1": 0.25
+  },
+  "frozenAt": 0.234,
+  "actW": 1,
+  "travel": 0.52
+ },
+ {
+  "mv": "f+4",
+  "ok": true,
+  "state": "attack",
+  "moveKey": "f+4",
+  "plan": {
+   "name": "t7:f+4~t7.king",
+   "kind": "t7",
+   "why": "real T7 Kg_rsbt (kokg_sobatter_DVD)",
+   "src": "t7-active",
+   "t0": 0.2833333333333333,
+   "t1": 0.3333333333333333
+  },
+  "frozenAt": 0.356,
+  "actW": 1,
+  "travel": 1.36
+ },
+ {
+  "mv": "u/f+3",
+  "ok": true,
+  "state": "attack",
+  "moveKey": "uf+3",
+  "plan": {
+   "name": "t7:u/f+3~t7.king",
+   "kind": "t7",
+   "why": "real T7 Kg_jplk00F (mokg_fnkick_DVD)",
+   "src": "t7-active",
+   "t0": 0.35,
+   "t1": 0.48333333333333334
+  },
+  "frozenAt": 0.483,
+  "actW": 1,
+  "travel": 1.7
+ }
+]

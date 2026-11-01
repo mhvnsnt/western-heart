@@ -170,6 +170,8 @@ def main():
         bpy.ops.object.select_all(action="DESELECT")
         m.select_set(True)
         bpy.context.view_layer.objects.active = m
+        metrics.setdefault("continuous_limit_verts", 0)
+        metrics["continuous_limit_verts"] += G.continuous_limit(m, 4)  # light meshes (dense ones: in heat_via_proxy)
         bpy.ops.object.vertex_group_limit_total(group_select_mode="ALL", limit=4)
         bpy.ops.object.vertex_group_normalize_all(group_select_mode="ALL", lock_active=False)
 

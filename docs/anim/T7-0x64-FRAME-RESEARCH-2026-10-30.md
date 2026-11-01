@@ -4,7 +4,7 @@
 
 **Why it matters:** this is the one gap between Pantera and his real King animations. It blocks every T7-based fighter for the same reason (owner order 2026-10-30: Pantera 100% from King first, then the other single-source fighters).
 
-**Status:** partly solved. The proven facts and the rejected hypotheses are below; the full fix still needs one of the two sources in [Next](#next).
+**Status:** the rotation encoding is SOLVED from the exe (next section); validation and the bake are next. Earlier status: partly solved. The proven facts and the rejected hypotheses are below; the full fix still needs one of the two sources in [Next](#next).
 
 **Lane:** decode research only (claim on #866). Bake, wiring and `tools/anim/t7_*` stay in MoneyManBusch's lane.
 
@@ -15,6 +15,41 @@ python3 tools/anim/t7_frame_probe.py channels <GRE>/teardown/tekken7-steam/tkdat
 python3 tools/anim/t7_frame_probe.py stance   <GRE>/.../json/kinmot.json <GRE>/.../mask/kinrotsm.arc
 python3 tools/anim/t7_frame_probe.py hinge    <GRE>/teardown/pakchunk0/models/Character/Item/Meshes/kin/Upper/kin_bdu_1p/Meshes/SK_CH_kin_bdu_1p.glb
 ```
+
+## SOLVED IN THE EXE (2026-11-01): 0x64 rotation channels are AXIS-ANGLE, not Euler
+
+Source: `TekkenGame-Win64-Shipping.exe` from the owner's Steam library (private GRE release
+`t7-shipping-exe-20261031`, 58,439,680 B, sha256 `7f2b68727023ce9f4554b47f5442dad9dfb38c8a9b778f2aa758469e2c2d60ed`).
+Static disassembly only (capstone); the binary is never run and never leaves private storage.
+
+- **The sampler** (RVA `0x73ea30`, image base `0x140000000`) is the only code in the exe that tests a clip header
+  against both `0x64` and `0xC8` (three functions in 189,693 compare against both; all sit in `0x7307xx-0x73f5xx`):
+  - header byte must be 0x64 or 0xC8 (else an assert write to address 0);
+  - 0xC8: frame count = u32 at +4, evaluated by `0x729b10`;
+  - 0x64: bone count n = u16 at +2, n u16 descriptors at +4, frame count = the u16 after them; n < 256;
+  - a bone is a ROTATION bone when its descriptor is 4..7 (`(d - 4) <= 3`); others are positions;
+  - `modff` splits the time; `0x7418e0` decodes one frame into 3 floats per bone (X, Y, Z);
+    a fraction >= 1e-5 decodes the next frame too and blends.
+- **Per rotation bone** (single-frame path `0x73ec4e-0x73ed5c`, constants read from .rdata: 1.0, sign mask, 0.5):
+  ```
+  axis = R_y(Y) * R_x(X) * (0, 0, 1) = (cos X * sin Y, -sin X, cos X * cos Y)
+  q    = (axis * sin(Z / 2), cos(Z / 2))          # (x, y, z, w)
+  ```
+  X and Y are the elevation and azimuth of the rotation AXIS; Z is the ANGLE about it. Only Z is halved.
+- **Position bones** are written as (x, y, z, 1.0).
+
+This is why every Euler order failed (see Rejected) and why the four hinge bones move only in Z
+(fixed axis, varying angle) with opposite signs between the formats (the axis can point either way).
+**Verified by running the game's own sampler** (`tools/anim/exe_re/emulate_sampler.py`: Unicorn CPU emulation of
+RVA 0x73ea30 with the CRT math imports stubbed; nothing of the game runs as a program):
+- **0xC8 rotations:** `q = q_X(-X) * q_Y(-Y) * q_Z(-Z)` (Hamilton, x y z w); fits random probes to 7.4e-8.
+- **0x64 formula above:** matches the sampler exactly on frames 0 and 2+. The community decoder's frame 1 differs from
+  the game's (its first sub-step special case); `tools/anim/t7_anim64_to_c8.py` therefore samples with the game itself.
+- **Same bone space:** King's 0xC8 stance vs the first frame of 120 of his 0x64 attacks, per bone through the game's
+  sampler: forearms 2-4 deg, neck 6, feet 5, knees 4-12, all within the attacks' own start spread (wrists differ:
+  the attacks start with neutral wrists, see point 7 below).
+- **Round trip exact:** 0x64 clip -> `t7_anim64_to_c8.py` 0xC8 values -> the game's 0xC8 sampler gives the game's 0x64
+  quaternions back to 3.6e-7 on 8 of King's clips (`--check`). Every 0x64 attack can now take the proven 0xC8 bake path.
 
 ## Proven
 

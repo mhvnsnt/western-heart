@@ -3,8 +3,9 @@
 exactly) into one pack the game loads: game/assets/anim/t7/<base>/moves.pack.json.
 
 Each clip goes through tools/anim/t7_c8_stance_bake.py, the same community 0xC8 path as the stances
-(Kiloutre's applyRotationFromAnimdata on Koenji's TekkenMannequin, FK self-check). Only 0xC8 clips are baked
-(0x64 waits on the joint frame, docs/anim/T7-0x64-FRAME-RESEARCH-2026-10-30.md).
+(Kiloutre's applyRotationFromAnimdata on Koenji's TekkenMannequin, FK self-check). 0xC8 clips bake directly; 0x64
+clips (every attack) bake too when T7_EXE points at TekkenGame-Win64-Shipping.exe: tools/anim/t7_anim64_to_c8.py turns
+them into 0xC8 values with the game's own sampler (docs/anim/T7-0x64-FRAME-RESEARCH-2026-10-30.md).
 
 Kept out on purpose (they keep their current animation):
   - rows whose T7 hit level lists more than one hit: the second hit can live in a follow-up motbin move, so one
@@ -43,7 +44,8 @@ def main():
     for key, r in res['rows'].items():
         if r.get('status') != 'mapped': continue
         row = moveset.get(key) or {}
-        if r.get('fmt') != '0xC8': skipped[key] = 'clip is %s (waits on the 0x64 joint frame)' % r.get('fmt'); continue
+        if r.get('fmt') != '0xC8' and not (r.get('fmt') == '0x64' and os.environ.get('T7_EXE')):
+            skipped[key] = 'clip is %s (0x64 needs T7_EXE for the game-sampler conversion)' % r.get('fmt'); continue
         levels = [x for x in str(row.get('t7_hit_level') or '').split(',') if x.strip()]
         if len(levels) > 1: skipped[key] = 'multi-hit (%s): one clip could show only the first hit' % row.get('t7_hit_level'); continue
         if row.get('isGrab') or row.get('throw') or re.match(r'\s*t', str(row.get('t7_hit_level') or ''), re.I):
