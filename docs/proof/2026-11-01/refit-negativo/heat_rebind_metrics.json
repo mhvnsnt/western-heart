@@ -1,0 +1,55 @@
+{
+ "input": "/tmp/wh-refit-jcjufxee/static.glb",
+ "fit": "docs/proof/2026-11-01/refit-negativo/fit_landmarks.json",
+ "mesh_bbox_blender": [
+  [
+   -0.393310546875,
+   -0.1713714599609375,
+   0.0
+  ],
+  [
+   0.39312744140625,
+   0.171722412109375,
+   0.979461669921875
+  ]
+ ],
+ "scaled_to_height_m": 2.0,
+ "scale_factor": 2.041937996572675,
+ "bones": 50,
+ "unweighted_fixed": 0,
+ "heat_proxy": [
+  {
+   "voxel_m": 0.008,
+   "faces_remeshed": 76128,
+   "faces_proxy_after_decimate": 46500,
+   "proxy_verts": 23984,
+   "unweighted_proxy_verts": 0,
+   "mesh_scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "mesh_dims": [
+    1.6058576107025146,
+    0.7005764245986938,
+    2.0
+   ],
+   "proxy_groups": 50,
+   "attempts": [
+    {
+     "tri_target": 48000,
+     "proxy_verts": 23984,
+     "unweighted": 0
+    }
+   ]
+  }
+ ],
+ "test_clip": {
+  "action": "CMU135_04_boxing",
+  "frames": 72,
+  "bones": 26,
+  "donor": "/home/user/western-heart/assets/free-pull-1/cmu-mocap/fighting/135_04.bvh"
+ },
+ "out": "/tmp/wh-refit-jcjufxee/rig.glb",
+ "out_bytes": 100950536
+}

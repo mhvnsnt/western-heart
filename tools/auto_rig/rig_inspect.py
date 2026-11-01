@@ -176,6 +176,7 @@ def cmd_shares(a):
     x, y, z = P[:, 0], P[:, 1], P[:, 2]
     hy, ny, s2 = jp['Head'][1], jp['Neck'][1], jp['Spine2'][1]
     hz = jp['Head'][2]
+    cx = jp['Hips'][0]
     lax, rax = jp['LeftArm'][0], jp['RightArm'][0]
     lfx, lhx = jp['LeftForeArm'][0], jp['LeftHand'][0]
     ya = jp['LeftArm'][1]
@@ -183,8 +184,8 @@ def cmd_shares(a):
     regions = [
         ('head + hair above the Head joint', (y > hy)),
         ('face (front of head)', (y > hy) & (y < hy + 0.15 * H) & (z > hz + 0.04 * H) & (np.abs(x) < 0.08 * H)),
-        ('chin / jaw underside', (y > hy - 0.015 * H) & (y < hy) & (z > hz + 0.03 * H)),
-        ('neck', (y > ny - 0.01 * H) & (y < hy) & (np.abs(x) < 0.05 * H)),
+        ('chin / jaw underside', (y > hy - 0.015 * H) & (y < hy) & (z > hz + 0.03 * H) & (np.abs(x - cx) < 0.04 * H)),
+        ('neck', (y > ny - 0.01 * H) & (y < hy) & (np.abs(x - cx) < 0.035 * H)),
         ('chest front', (y > s2 - 0.05 * H) & (y < ya) & (np.abs(x) < 0.08 * H) & (z > jp['Spine2'][2] + 0.02 * H)),
         ('L upper arm', (x > lax + 0.01 * H) & (x < lfx) & (np.abs(y - ya) < 0.06 * H)),
         ('L forearm', (x > lfx) & (x < lhx) & (np.abs(y - ya) < 0.06 * H)),
