@@ -25,7 +25,11 @@
 3. **A model that came from a teardown game is a placeholder**, there to build on until it is completely re-skinned
    and recreated through our customization / character customization / creation suites so it no longer looks like the
    source character. That is why almost every fighter has a GLB replacement model.
-4. **The only Jin in the game is the Jin soul** (the spirit-soul system). There is no Jin fighter.
+4. **JIN is one of the nine Soul Spirit characters** (`jin_soul`, display "JIN") and he is NOT Jin Kazama. Jin Kazama
+   does not exist in Western Heart: the fighter built on his data is DEMONIO (`roster/jin/CANON.md`). Never confuse the
+   two, and never call Demonio "Jin".
+   > "there is a j i n character, Jin, he's one of the nine Soul Spirit characters, he's just not Jin Kazama, you got to
+   > remember that" (owner, 2026-11-01)
 
 ## Why it is written down
 Agents kept naming our fighters after their move/animation sources ("Skull <- Bryan"), which spread into file names,
