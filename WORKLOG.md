@@ -4307,7 +4307,7 @@ Branch `claude/cs-phase1-template-create` (cut from main `d2cd6e20`), draft PR. 
     "Customized Slots" attire choice; T7-UI-LAYOUT.md); no new files.
   - Proof (Playwright, phone 390x844 with taps, WebGL draws stubbed for the software renderer): △ taps 1 -> 2 -> 3 -> 4
     load four different models (different mesh sets), label 1/6 -> 4/6, loading state shown mid-load and cleared after;
-    forced failure (leopard-king blocked) shows the unavailable state. Landscape 844x390: same. Shots in the PR.
+    forced failure (leopard-king blocked) shows the unavailable state. Landscape 844x390: same. (Shots kept off-repo.)
 - Tests: `node --test` on test/no-wrong-body, owner-model-first, canon-sizing, game/tests/ui-gaps, preload pass.
   test/creation-suite-templates (1 of 6), portraits, game/tests/model-key-guard (1 of 3) and fighter-completeness (1 of 4)
   fail identically before and after these changes on this sparse checkout (missing tools/anim, game/assets, roster files);
