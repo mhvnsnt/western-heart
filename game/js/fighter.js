@@ -2293,8 +2293,9 @@ export class Fighter {
         if (ctx.urgeOn && this._fireNotation('US.2+3')) return true;
         if (ctx.urgeAvailable && this._fireNotation('UB.2+3')) return true;
       }
-      const resolved = this.tekken.pressChord(notation, ctx);
-      if (!resolved) return false; // chord with no matching move: whiff, no action
+      // no dead chords (2026-11-01): the chord's own move, else its best sub-chord, else its first button's move
+      const resolved = this.tekken.pressChordLenient(notation, ctx);
+      if (!resolved) return false;
       notation = resolved;
     }
     // Use REAL per-fighter T3 moveset data when available, fallback to base MOVES
