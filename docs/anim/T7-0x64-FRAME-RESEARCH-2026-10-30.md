@@ -40,8 +40,16 @@ Static disassembly only (capstone); the binary is never run and never leaves pri
 
 This is why every Euler order failed (see Rejected) and why the four hinge bones move only in Z
 (fixed axis, varying angle) with opposite signs between the formats (the axis can point either way).
-Next: read the 0xC8 conversion in `0x729b10` the same way, so 0x64 clips can be converted into values the
-proven 0xC8 path (Kiloutre's applier, `tools/anim/t7_*`) already plays; then validate on King's stance pair.
+**Verified by running the game's own sampler** (`tools/anim/exe_re/emulate_sampler.py`: Unicorn CPU emulation of
+RVA 0x73ea30 with the CRT math imports stubbed; nothing of the game runs as a program):
+- **0xC8 rotations:** `q = q_X(-X) * q_Y(-Y) * q_Z(-Z)` (Hamilton, x y z w); fits random probes to 7.4e-8.
+- **0x64 formula above:** matches the sampler exactly on frames 0 and 2+. The community decoder's frame 1 differs from
+  the game's (its first sub-step special case); `tools/anim/t7_anim64_to_c8.py` therefore samples with the game itself.
+- **Same bone space:** King's 0xC8 stance vs the first frame of 120 of his 0x64 attacks, per bone through the game's
+  sampler: forearms 2-4 deg, neck 6, feet 5, knees 4-12, all within the attacks' own start spread (wrists differ:
+  the attacks start with neutral wrists, see point 7 below).
+- **Round trip exact:** 0x64 clip -> `t7_anim64_to_c8.py` 0xC8 values -> the game's 0xC8 sampler gives the game's 0x64
+  quaternions back to 3.6e-7 on 8 of King's clips (`--check`). Every 0x64 attack can now take the proven 0xC8 bake path.
 
 ## Proven
 
