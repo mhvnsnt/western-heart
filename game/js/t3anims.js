@@ -660,10 +660,13 @@ export function applyT7Stance(fighterId, bankId, clips, model, THREE, instanceKe
    travel 90 deg off the body, so travel is never read from root_t for these clips).
    Pantera <- King (2026-11-01): King's attacks are 0x64 clips; tools/anim/t7_anim64_to_c8.py converts them with the
    game's own sampler (read from TekkenGame-Win64-Shipping.exe, docs/anim/T7-0x64-FRAME-RESEARCH-2026-10-30.md) into
-   0xC8 values, then they take the same proven 0xC8 bake as every stance. */
+   0xC8 values, then they take the same proven 0xC8 bake as every stance. Purple Rain <- Lee and Chordz <- Lars the
+   same way (2026-11-01). */
 export const T7_MOVES = {
   negativo: { bank: 'bryan', dir: 'assets/anim/t7/negan/' },
   pantera: { bank: 'king', dir: 'assets/anim/t7/king/' },
+  purplerain: { bank: 'jin', dir: 'assets/anim/t7/lee/' },
+  chordz: { bank: 'jin', dir: 'assets/anim/t7/lars/' },
 };
 const _t7moves = {}; // fighterId -> { bank, skelId, clips: { name: clip }, moves: { moveKey: { clip, active, motbin } } }
 const _t7movesLoading = {};
