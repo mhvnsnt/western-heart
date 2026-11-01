@@ -1,6 +1,7 @@
 // Close-up pose probe: open ?quick=P1,P2,STAGE, stop the AI, take over the camera and photograph each fighter's idle
 // stance from the front and the side (large, so arms / hands / face are judgeable), and log arm + head geometry.
 // node closeup_probe.mjs <base-url> <outdir> <p1> <p2> [stage]     env BLOCK_T7=<dir> aborts assets/anim/t7/<dir>/
+// env LOG_MODELS=1 prints MODEL <status> <url> for every .glb fetched (verify a live build's model source)
 import { createRequire } from 'module';
 const { chromium } = createRequire(import.meta.url)('playwright');
 import fs from 'fs';
@@ -13,6 +14,8 @@ const logs = [];
 // NO_REMOTE=1: block the B2 Worker so models load from the local tree (asset-config tries the remote first)
 if (process.env.NO_REMOTE) await page.route(/workers\.dev/, r => r.abort());
 page.on('console', m => logs.push(`[${m.type()}] ${m.text()}`));
+// LOG_MODELS=1: record every .glb request and its status (which host actually served each fighter on a live build)
+if (process.env.LOG_MODELS) page.on('response', r => { if (/\.glb(\?|$)/.test(r.url())) { const l = `MODEL ${r.status()} ${r.url()}`; logs.push(l); console.log(l); } });
 page.on('pageerror', e => logs.push(`[pageerror] ${e.message}`));
 await page.goto(`${base}?quick=${p1},${p2},${stage}`, { waitUntil: 'load', timeout: 120000 });
 const t0 = Date.now();
