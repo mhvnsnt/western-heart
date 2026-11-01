@@ -27,6 +27,10 @@ installs them. The method write-ups are in `docs/handoffs/CLAUDE_TO_MUSE_FIXES_2
 | `game/poselab.html` | close-up pose lab: any model × bank × clip × frame, rest view, per-fighter view (`window.__poselab`) |
 | `tools/anim/repair_sleeve_weights.py` | k-NN weight transfer inside one GLB (fixed the steve-fox / demonio shirt weighted to the spine) |
 | `tools/anim/gltf_codec.mjs` | meshopt/quantization decode for Blender, re-encode after rigging (@gltf-transform 4.1.1, meshoptimizer 0.22.0) |
+| `tools/anim/t7_move_resolve.py` | maps a fighter's moveset rows to its T7 base's motbin moves exactly (input path from the base stance + exact T7 damage / first active frame) |
+| `tools/anim/t7_move_bake.py` | bakes the resolved rows' real T7 clips (`game/assets/anim/t7/<base>/moves.pack.json`) through the proven 0xC8 path; 0x64 clips when `T7_EXE` is set |
+| `tools/anim/t7_anim64_to_c8.py` + `tools/anim/exe_re/` | 0x64 (compressed) clips -> 0xC8 values through Tekken 7's own sampler (Unicorn emulation; `exe_re/README.md`); the exe stays private |
+| `tools/anim/t7_attack_probe.mjs` | plays moves by notation in the real game and photographs each one frozen at its active frames, logging the plan (`t7:` = real T7 clip) |
 
 ## 3. Rigging (Tripo statics → skinned)
 
@@ -61,6 +65,7 @@ Every image cited in a PR was opened and looked at before it was cited.
 | tool | does |
 |---|---|
 | `tools/moveset-restore/restore_sweep_338.py` | restored 49 movesets wiped by merge commit 8ebdc527 from its parent 4cc6b41b |
+| `tools/moveset-merge/repair_slots.py` | re-points slots the old notation reading hijacked (Purple Rain 1 -> string 1,2,:4, Phantom 3 -> 3~4, Negativo 4 -> WR 4); report mode exits 1 while any remain (`docs/movesets/SLOT-HIJACK-FIX-2026-11-01.md`) |
 
 ## 7. Safety
 - `tools/git-merge/git_merge.py` merges a PR as a real merge commit via the Git
