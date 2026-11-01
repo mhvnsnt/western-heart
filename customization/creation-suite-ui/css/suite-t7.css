@@ -97,3 +97,40 @@ body{font-family:var(--display);}
   .rail-btn{min-height:52px;padding:6px 2px;}
   .rail-ico{font-size:20px;}
 }
+
+/* ---- Tekken 7 customization layout (UNIFIED-UI-SPEC §1, 2026-11-01 phase 1) ----
+   T7 (teardown/tekken7-steam-ui/T7-UI-LAYOUT.md + UNIFIED-UI-SPEC §1): the fighter fills the right ~2/3 of the
+   screen; the slim category column sits on the left edge and the item grid / context panel slides in from the
+   left beside it, never over the fighter's torso. viewer.setInsets (js/suite.js) frames the body in what is left.
+   Portrait phones keep the bottom sheet below (the fighter stands above it). */
+#right-rail{left:calc(var(--rail-w) + var(--sa-l));right:auto;width:min(360px,34vw);
+  border-left:none;border-right:1px solid rgba(224,24,42,.55);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.03),6px 0 24px rgba(0,0,0,.45);}
+#right-rail.slide-in{animation:cs-slide-in .22s cubic-bezier(.2,.8,.2,1);}
+@keyframes cs-slide-in{from{transform:translateX(-100%);opacity:.2;}to{transform:none;opacity:1;}}
+@media (prefers-reduced-motion:reduce){#right-rail.slide-in{animation:none;}}
+#part-layer-note{left:auto;right:calc(12px + var(--sa-r));text-align:right;}
+@media (max-height:500px) and (orientation:landscape){
+  #right-rail{width:min(300px,36vw);}
+}
+@media (max-width:720px) and (orientation:portrait){
+  #right-rail{left:calc(var(--rail-w) + var(--sa-l));right:0;width:auto;border-right:none;}
+  #right-rail.slide-in{animation-name:cs-sheet-in;}
+  @keyframes cs-sheet-in{from{transform:translateY(40%);opacity:.2;}to{transform:none;opacity:1;}}
+}
+
+/* ---- top bar never overlaps itself (phone landscape 844x390 had the attire tabs drawn under the buttons) ----
+   The attire tab strip may shrink and scrolls sideways; on short landscape phones the title gives way to the
+   fighter's name and the secondary actions collapse to icon plates (labels stay as aria-label / title). */
+.tb-mid{min-width:0;overflow:hidden;}
+.attire-tabs{min-width:0;flex:1 1 auto;}
+@media (max-height:500px) and (orientation:landscape){
+  #topbar{gap:8px;}
+  .tb-left{display:none;}
+  #fighter-name{display:block;flex:0 1 auto;max-width:150px;overflow:hidden;text-overflow:ellipsis;font-size:13px;}
+  .tb-right{flex:0 0 auto;gap:4px;}
+  #btn-save-attire .lbl,#btn-export .lbl,#btn-back-game .lbl{display:none;}
+  #btn-save-attire .ico,#btn-export .ico,#btn-back-game .ico{margin-right:0;font-size:16px;}
+  #btn-save-attire,#btn-export,#btn-back-game{min-width:44px;justify-content:center;padding-left:12px;padding-right:12px;}
+  .wallet{font-size:12px;}
+}

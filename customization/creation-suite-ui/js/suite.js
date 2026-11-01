@@ -508,6 +508,8 @@ function setTab(t){
   document.querySelectorAll('.rail-btn').forEach(x=>x.classList.toggle('active',x.dataset.tab===t));
   if(t!=='parts') hidePlaceDock();
   renderAll();
+  // T7: the item grid / context panel slides in from the left edge on every category change
+  const rr=$('#right-rail'); rr.classList.remove('slide-in'); void rr.offsetWidth; rr.classList.add('slide-in');
 }
 document.querySelectorAll('.rail-btn').forEach(b=>b.onclick=()=>setTab(b.dataset.tab));
 
@@ -1284,8 +1286,12 @@ async function boot(){
     const r = id => { const e=document.getElementById(id); return e && !e.hidden ? e.getBoundingClientRect() : null; };
     const W=innerWidth, H=innerHeight, tb=r('topbar'), lr=r('left-rail'), rr=r('right-rail'), bb=r('bottombar');
     let right=0, bottom = bb ? Math.max(0, H-bb.top) : 0;
-    if(rr){ if(rr.top > H*0.3) bottom = Math.max(bottom, H-rr.top); else right = Math.max(0, W-rr.left); }
-    return { left: lr ? lr.right : 0, right, top: tb ? tb.bottom : 0, bottom };
+    let left = lr ? lr.right : 0;
+    // panel below (portrait bottom sheet), beside the rail on the left (T7 layout) or on the right
+    if(rr){ if(rr.top > H*0.3) bottom = Math.max(bottom, H-rr.top);
+            else if(rr.left < W*0.5) left = Math.max(left, rr.right);
+            else right = Math.max(0, W-rr.left); }
+    return { left, right, top: tb ? tb.bottom : 0, bottom };
   });
   window.__suite={ viewer, get F(){return F;}, ui, setTab, selectRosterAttire, customizationRecord, currentKey, get ROSTER(){return ROSTER;}, get PARTS(){return PARTS;}, get FPARTS(){return FPARTS;} };
   viewer.onReady=()=>{ renderAll(); };
