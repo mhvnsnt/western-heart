@@ -89,6 +89,17 @@ own sampler (`TekkenGame-Win64-Shipping.exe`, private GRE release `t7-shipping-e
   agree), so the King test checks upright starts, floor contact and limb flips instead of Negan's "never inverted".
 - Re-run for any character: resolve (`t7_move_resolve.py <GRE>/.../mothead <code> <moveset> out.json`), then
   `T7_EXE=... t7_move_bake.py ...` (see its docstring). Download the exe with the API asset endpoint (section 10).
+- **Purple Rain <- Lee** (24 moves, `game/assets/anim/t7/lee/moves.pack.json`) and **Chordz <- Lars** (23 moves,
+  `game/assets/anim/t7/lars/moves.pack.json`), 2026-11-01, same pipeline (codes `lee` / `lar`, stances
+  Le_sKAM00_ / La_sKAM00_; both bound to the jin bank). `test/t7-moves-0x64.test.mjs` covers them (add the next
+  fighter as one FIGHTERS row). In game (`tools/anim/t7_attack_probe.mjs`), 1 2 3 4 d/f+1 u/f+4 (Purple Rain) and
+  1 2 3 4 d/f+2 b+1 (Chordz) all play `t7:` clips: `docs/proof/2026-11-01/purplerain-chordz-t7/`.
+- **Slot hijack fixed on the way (19 slots, 14 movesets):** Purple Rain's 1 fired the 3-hit string 1,2,:4, its 3
+  fired 3~3, its 4 fired 4,4,:4; Phantom 3/4 fired 3~4 / 4~3; Negativo, Bruno, Dio and Michiko's 4 fired WR 4. Cause:
+  `tools/moveset-merge/merge_sources.py` notation_of read '3~4' as '3', 'WR 4' as '4', and slotted unparsed strings
+  on their first hit. Fixed in the tool (and its `notation.py` twin now matches the game's canonNotation); the data
+  was re-pointed by `tools/moveset-merge/repair_slots.py`; guard: `test/moveset-slot-hijack.test.mjs`. See
+  `docs/movesets/SLOT-HIJACK-FIX-2026-11-01.md`.
 
 ## 5. Negativo plays Negan's real T7 attacks (wired 2026-10-31, PR after #1377)
 
@@ -238,9 +249,10 @@ Worker route handles that lane.
    (rig_inspect shares/seams on every wired fighter; refit_rig.py for T-pose offenders). Burger (A-pose) after.
 2. Negativo T7 attacks (section 5): already wired; they now play on a correct rig.
 3. Bob's 0xC8 crouch for Burger; other 0xC8 crouch stances.
-4. 0x64: SOLVED (section 4); Pantera plays King's real attacks. Next: the same resolve + `T7_EXE` bake for every
-   other single-source T7 fighter (Purple Rain <- Lee, Chordz <- Lars, Diablo, Skull, Saku Ra, ... each base code in
-   GRE `tkdata/mothead`), then strings / stance moves (resolver scope v2). The exe is downloadable from the private
+4. 0x64: SOLVED (section 4); Pantera, Purple Rain and Chordz play their bases' real attacks. Next: the same
+   resolve + `T7_EXE` bake for the other single-source T7 fighters (Diablo, Skull, Retsu, Saku Ra, Sha, Phantom, Gyou,
+   Tobi, Gashadokuro, Aotsuki, Nightwolf; each base code in GRE `tkdata/mothead`), then strings / stance moves
+   (resolver scope v2). The exe is downloadable from the private
    GRE release through the API (the session proxy authenticates it; the browser_download_url 404s):
    `curl -sSL -H "Accept: application/octet-stream" -o FILE https://api.github.com/repos/mhvnsnt/game-reverse-engineering/releases/assets/<asset id>`
    (asset ids: `mcp__github__get_release_by_tag`). Keep it out of every public repo/bucket; never run it.

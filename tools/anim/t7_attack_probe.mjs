@@ -48,6 +48,9 @@ for (const mv of list.split(',')) {
     // software WebGL runs the game far below 60 fps: wait on GAME state with real-time budgets, never by loop count
     const until = async (cond, ms) => { const tEnd = Date.now() + ms; while (!cond() && Date.now() < tEnd) await new Promise(res => setTimeout(res, 20)); };
     await until(() => f.state === 'idle', 40000);
+    // a press inside the post-move string grace (fighter._stringGraceUntil, 500 ms) continues the last string:
+    // wait it out so each listed notation is pressed fresh, the way a player starts a new move
+    await until(() => performance.now() > (f._stringGraceUntil || 0) + 50, 3000);
     const x0 = f.root.position.x;
     const oldId = f._atkPlan && f._atkPlan.id;
     const ok = f.tryAttack(mv);

@@ -52,7 +52,7 @@ DESCR = [
     (r"^held jump\s*\+?", "JUMP."),
     (r"^jump,\s*", "JUMP."),
     (r"^wr\s*\+", "WR."),
-    (r"^wr\s+", ""),
+    (r"^wr\s+", "WR."),  # 'WR 4' is while-running 4, never plain 4 (game canonNotation: 'WR.4'; 2026-11-01)
 ]
 # wavu ids that name a throw by side instead of an input
 NAMED = {"left throw": "SIDE_L.1+3", "right throw": "SIDE_R.2+4", "back throw": "BACK.1+3"}
@@ -102,7 +102,14 @@ def canon(raw):
     """-> (notation | None, note). See module docstring."""
     if raw is None:
         return None, "empty"
-    s = html.unescape(str(raw)).strip()
+    # scraped rows can be escaped twice ('1,2,&amp;#58;4' is '1,2,:4'): unescape until stable
+    s = str(raw)
+    for _ in range(3):
+        u = html.unescape(s)
+        if u == s:
+            break
+        s = u
+    s = s.strip()
     note = ""
     prefix = ""
     low = s.lower()
@@ -141,6 +148,8 @@ def canon(raw):
     if re.search(r"[a-z]{3,}", s.replace("qcf", "").replace("qcb", "").replace("hcf", "").replace("hcb", "")):
         return None, (note + " descriptive: " + s).strip()
     s = s.replace(", ", ",").replace(" ,", ",")
+    # a just-frame / immediate link written after the comma ('1,2,:4', '3,~4') belongs to the hit before it
+    s = re.sub(r",([:~])", r"\1", s)
     # 'f, F+2' dash / 'f,f,F+3' run stay as motion tokens
     toks = [x for x in s.split(",")]
     out = []
