@@ -150,3 +150,44 @@ checks (contamination 0.003%). Rest and posed renders before/after
 are unchanged in envelope — no new tearing; two pre-existing defects
 were noted, not hidden: a wrist seam gap under hard bends and a stray
 flat bar prim at belt height, both present in the shipped original.
+
+## Landmark re-fit pipeline (`refit_rig.py`, 2026-11-01 — Negativo)
+
+For a T-pose model whose skeleton lands in the wrong place (hair / hats / horns make the mesh taller than the
+body, so a height-scaled template puts the chest bones in the face, the arms above the arms, the hip joints in
+the belly — the owner's "cone face", "arms crushed like a steamroller", "head and neck weighted toward the
+pelvis"):
+
+```bash
+export WH_BLENDER=/path/to/blender-4.0.2-linux-x64/blender NODE_PATH=/path/to/node_modules
+python3 tools/auto_rig/refit_rig.py --in roster/X/attires/attire1/source/x-a1.glb \
+    --out roster/X/attires/attire1/source/x-a1-rigged.glb \
+    --report-dir docs/proof/<date>/refit-X --facing +X --height 2.0
+```
+
+| Step | Tool | What it does |
+|---|---|---|
+| 1 | `refit_skeleton.py` | template joints (pantera.glb, King's 49) fitted inside the mesh + static bind copy |
+| 2 | `refit_landmarks.py` | arms from clean arm slices (armpit, thinnest wrist), hips/knees from the crotch, neck base + chin from the mid-line front profile, spine centred between front and back surfaces; mirror-completes one-sided chains |
+| 3 | `backends/heat_rebind.py` | Blender bone heat via voxel proxy; `--height` (the game renders a GLB at its own size: match the model you replace); `--donor` bakes the CMU 135_04 boxing gate clip |
+| 4 | `head_territory.py` | head + every hair spike on the Head bone by mesh connectivity (no height cut), faded in by geodesic distance from where hair touches the shoulders; neck cylinder blends Neck -> Head |
+| 5 | `backends/seam_safe_smooth.py` | stretch-masked Laplacian on WELDED vertices + continuous 4-bone limit, until strict p99.9 <= 2.5 |
+| 6 | gates | `validate.py`, `anim_check.py` (official), `rig_inspect.py seams / stretch / shares` (+ fit / sections / weights PNGs) -> `rig_report.json` |
+
+Lessons that apply to EVERY rig (all measured on Negativo):
+- **Hard 4-bone truncation tears dense meshes.** Neighbours whose 4th/5th bones swap rank keep different bones
+  (RightUpLeg 0.05 vs Spine2 0.04 on 0.5 mm apart) -> 7-9 mm tears on every kick. Limit continuously: subtract
+  the 5th-largest weight from the top 4 (`seam_safe_smooth.top4`, `smooth_weights.limit4`).
+- **UV-seam copies must carry identical weights.** `smooth_weights.py` used to update one copy only (6,688
+  drifted copies, up to 0.546) -> the seam cracks open in motion and no edge metric sees it. Fixed
+  2026-11-01; check any rig with `rig_inspect.py seams`.
+- **A hard "head territory" tears hair that rests on the shoulders** (2,157 edges > 20 mm, up to 127 mm). Fade
+  it in geodesically.
+- **Stretch ratios on 1 mm edges measure noise.** `anim_check.py` keeps only edges >= 0.5% of the height (it
+  read 1.42 when every-edge p99.9 was 4.73); `smooth_weights` / `seam_safe_smooth` keep edges >= half the
+  median. Read `rig_inspect.py stretch`: it also gives the elongation in mm.
+- **`anim_check` tearing spikes on the boxing clip are mostly the feet** (the clip swings them with the root
+  pinned; every rig in docs/proof shows 30-80). The spike report now names the moving vertex's own joints
+  (it used to print skin joints 0-3, i.e. "Hips, Spine", for every vertex).
+
+Diagnostics for any fighter: `python3 tools/auto_rig/rig_inspect.py {fit,sections,weights,shares,seams,stretch} ...`
