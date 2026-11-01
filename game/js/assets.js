@@ -466,7 +466,11 @@ export const MODEL_URLS = {
   'bruno-attire2': '../roster/bruno/attires/attire2/source/bruno-a2-sail-the-sea-rigged.glb',
   'dio-attire1': '../roster/dio/attires/attire1/source/dio-a1-jade-god-rigged.glb',
   'koreshi-attire1': '../roster/koreshi/attires/attire1/model.glb',
-  'negativo-attire1': '../roster/negativo/attires/attire1/source/negativo-a1-rigged.glb',
+  // Negativo attire 1 = the landmark re-fit (PR #1463, tools/auto_rig/refit_rig.py; proof
+  // docs/proof/2026-11-01/refit-negativo/): face/hair on Head, arms on the arm bones, hips at the hips.
+  // Own path + 18.9 MB (tools/deploy/fit_cdn_budget.py) so the live build loads it from jsDelivr
+  // until the B2 bucket carries it. negativo-a1-rigged.glb (#1465) stays on main beside it.
+  'negativo-attire1': '../roster/negativo/attires/attire1/source/negativo-a1-refit.glb',
   'negativo-attire2': '../roster/negativo/attires/attire2/source/negativo-a2-rigged.glb',
   'skull-tripo': '../roster/skull/attires/attire1/model.glb',
   'skull-base': 'assets/models/skull.glb',
