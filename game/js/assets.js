@@ -1269,8 +1269,10 @@ class AssetManager {
         // Lane 5: persistent-cache hit — report full byte progress once
         // (the bar must move on real bytes, not stall), then parse the
         // cached buffer on the identical path as a network download.
-        // Cross-origin remote URLs are not cacheable (asset-cache.js),
-        // so remote loads skip this and go to the network every session.
+        // Remote-base URLs are cacheable too (asset-cache.js,
+        // 2026-11-01: buffer-based puts, 48 h freshness bound), so a
+        // warmed remote model skips the network on later sessions
+        // exactly like a bundled one.
         if (!signal.aborted) {
           const cached = await getCachedBuffer(cand);
           if (cached && !signal.aborted) {
