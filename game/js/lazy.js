@@ -16,7 +16,10 @@
 const _cache = {};
 function _cached(name, path) {
   return () => {
-    if (!_cache[name]) _cache[name] = import(path);
+    // A FAILED import is not cached here (2026-11-01): the idle warm-up's rejected promise used to stay in _cache for
+    // the life of the page, so one dropped request at boot failed every later fight until a manual reload. A retry now
+    // imports again; where the browser's own module map also kept the failure, main.js reloadIntoFight takes over.
+    if (!_cache[name]) _cache[name] = import(path).catch((e) => { delete _cache[name]; throw e; });
     return _cache[name];
   };
 }
