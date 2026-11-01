@@ -11,6 +11,9 @@ The diagnostics behind the Negativo re-rig (2026-10-31), kept so any agent can r
             side, plus the Head weight along the mid-line. Shows faces on chest bones, bellies on thigh bones.
   shares    skinned GLB: weight share per bone inside named body regions (face, chin, neck, arms, chest, ...),
             using the GLB's own joint positions (regions are relative to Head/Neck/Spine2/Arm joints).
+  seams     skinned GLB: do the copies of every UV-seam vertex (same position) carry the same weights? If not, the
+            seam opens into a crack under animation; no edge-stretch metric can see it (no triangle edge spans a
+            seam). smooth_weights.py left 6,688 such copies on Negativo (2026-11-01).
   stretch   skinned GLB with an embedded clip: per-edge stretch with smooth_weights.py's own edge filter (keeps
             the dense-mesh edges anim_check.py's 0.5%-of-height filter drops), plus the ABSOLUTE elongation in mm
             and where the stretched edges sit (dominant-bone pairs, height bands). Ratio alone on a 1M-vertex
@@ -21,6 +24,7 @@ usage:
   python3 tools/auto_rig/rig_inspect.py sections --fit A.json --out sections.png
   python3 tools/auto_rig/rig_inspect.py weights  --glb RIG.glb --out weights.png [--min-y 0.3]
   python3 tools/auto_rig/rig_inspect.py shares   --glb RIG.glb
+  python3 tools/auto_rig/rig_inspect.py seams    --glb RIG.glb
   python3 tools/auto_rig/rig_inspect.py stretch  --glb RIG_WITH_CLIP.glb [--frames 10]
 Plain glTF (decode meshopt first). The plotting modes need matplotlib (pip install matplotlib).
 """
@@ -195,6 +199,22 @@ def cmd_shares(a):
         print('%-34s n=%8d  %s' % (label, m.sum(), '  '.join('%s %.1f%%' % (names[i], 100 * acc[i]) for i in top if acc[i] > 0.005)))
 
 
+def cmd_seams(a):
+    P, Jn, W, _, names, _ = load_skinned(a.glb)
+    key = np.round(P / 1e-6).astype(np.int64)
+    _, first, inv, cnt = np.unique(key, axis=0, return_index=True, return_inverse=True, return_counts=True)
+    inv = inv.reshape(-1)
+    D = np.zeros((len(P), len(names)), np.float32)
+    np.add.at(D, (np.repeat(np.arange(len(P)), 4), Jn.ravel()), W.ravel())
+    diff = np.abs(D - D[first[inv]]).sum(1)
+    out = {'glb': a.glb, 'seam_copy_verts': int((cnt[inv] > 1).sum()),
+           'copies_disagreeing_over_0.01': int((diff > 0.01).sum()), 'copies_disagreeing_over_0.1': int((diff > 0.1).sum()),
+           'max_l1_disagreement': round(float(diff.max()), 4)}
+    out['pass'] = out['copies_disagreeing_over_0.01'] == 0
+    print(json.dumps(out, indent=1))
+    return out
+
+
 def cmd_stretch(a):
     import anim_check as ac
     from smooth_weights import _skin_fast, prim_edges
@@ -250,9 +270,11 @@ def main():
     p = sub.add_parser('weights'); p.add_argument('--glb', required=True); p.add_argument('--out', required=True)
     p.add_argument('--min-y', type=float, default=0.3)
     p = sub.add_parser('shares'); p.add_argument('--glb', required=True)
+    p = sub.add_parser('seams'); p.add_argument('--glb', required=True)
     p = sub.add_parser('stretch'); p.add_argument('--glb', required=True); p.add_argument('--frames', type=int, default=10)
     a = ap.parse_args()
-    {'fit': cmd_fit, 'sections': cmd_sections, 'weights': cmd_weights, 'shares': cmd_shares, 'stretch': cmd_stretch}[a.mode](a)
+    {'fit': cmd_fit, 'sections': cmd_sections, 'weights': cmd_weights, 'shares': cmd_shares, 'seams': cmd_seams,
+     'stretch': cmd_stretch}[a.mode](a)
 
 
 if __name__ == '__main__':

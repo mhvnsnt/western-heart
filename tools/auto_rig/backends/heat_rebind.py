@@ -7,7 +7,7 @@ character's left), skins the mesh with Blender bone heat (automatic weights; den
 voxel-remesh proxy of gamerig_backend.heat_via_proxy) and exports a GLB. The input file is never modified.
 
     xvfb-run -a env -u PYTHONPATH blender -b --factory-startup --python heat_rebind.py -- \\
-        --in MODEL.glb --fit fit.json --out MODEL-refit.glb [--metrics-out m.json]
+        --in MODEL.glb --fit fit.json --out MODEL-refit.glb [--metrics-out m.json] [--height 2.0] [--donor BVH]
 
 Plain glTF in (decode meshopt first). No animations are exported: the game drives every fighter with the
 decoded Tekken 3 banks retargeted at runtime (game/js/t3anims.js).
@@ -45,6 +45,9 @@ def main():
     ap.add_argument("--metrics-out", default=None)
     ap.add_argument("--voxel", type=float, default=G.HEAT_PROXY["voxel"])
     ap.add_argument("--proxy-faces", type=int, default=G.HEAT_PROXY["faces"])
+    ap.add_argument("--height", type=float, default=None,
+                    help="scale mesh + skeleton uniformly so the mesh is this tall (m). The game renders a fighter at "
+                         "its GLB's own size (bodyScale defaults to 1): match the model being replaced")
     ap.add_argument("--donor", default=None, help="BVH/GLB to bake one deformation test clip from (gate only)")
     ap.add_argument("--clip", default="CMU135_04_boxing")
     ap.add_argument("--clip-start", type=int, default=240)
@@ -96,6 +99,14 @@ def main():
     if abs(mx[2] - fit["height_m"]) > 0.01:
         raise RuntimeError("mesh height %.3f != fit height %.3f — fit made from a different mesh/orientation"
                            % (mx[2], fit["height_m"]))
+    k = 1.0
+    if a.height:  # uniform scale of the mesh AND every fitted position (the fit is in the unscaled mesh's metres)
+        k = a.height / mx[2]
+        for m in meshes:
+            m.data.transform(Matrix.Scale(k, 4))
+            m.data.update()
+        metrics["scaled_to_height_m"] = a.height
+        metrics["scale_factor"] = k
 
     # 3. armature from the fit
     J = {j["name"]: j for j in fit["joints"]}
@@ -115,24 +126,24 @@ def main():
     eb = {}
     for j in fit["joints"]:
         b = arm_data.edit_bones.new(j["name"])
-        b.head = gl2bl(j["pos"])
+        b.head = gl2bl(j["pos"]) * k
         eb[j["name"]] = b
     for j in fit["joints"]:
         n, b = j["name"], eb[j["name"]]
         ch = [c for c in kids.get(n, []) if c in J]
         if n in fit.get("leaf_tail", {}):
-            tail = gl2bl(fit["leaf_tail"][n])
+            tail = gl2bl(fit["leaf_tail"][n]) * k
         elif MAIN.get(n) in J:
-            tail = gl2bl(J[MAIN[n]]["pos"])
+            tail = gl2bl(J[MAIN[n]]["pos"]) * k
         elif len(ch) == 1:
-            tail = gl2bl(J[ch[0]]["pos"])
+            tail = gl2bl(J[ch[0]]["pos"]) * k
         elif ch:
-            tail = sum((gl2bl(J[c]["pos"]) for c in ch), Vector()) / len(ch)
+            tail = sum((gl2bl(J[c]["pos"]) for c in ch), Vector()) * k / len(ch)
         elif n == "Head":
-            tail = b.head + Vector((0, 0, 0.1 * H))
+            tail = b.head + Vector((0, 0, 0.1 * H * k))
         else:  # leaf: continue the parent's direction for half its length
             p = J[j["parent"]]["pos"]
-            d = b.head - gl2bl(p)
+            d = b.head - gl2bl(p) * k
             tail = b.head + d * 0.5
         if (tail - b.head).length < 0.005:
             tail = b.head + Vector((0, 0, 0.02))

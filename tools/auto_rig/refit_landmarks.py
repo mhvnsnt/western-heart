@@ -39,6 +39,7 @@ Method (every number is measured on the mesh, or is a fixed human proportion; no
       behind it in that slab (so hair hanging down the back cannot pull the spine backwards);
     * Left/RightShoulder (clavicles) keep their template offset above the arm line, z halfway between
       Spine2 and the arm; the Head bone's tail = 60% of the way from the Head joint to the mesh top.
+  one-sided chains (the template has RightHandThumb3 but no LeftHandThumb3) get the missing mirror joint.
 
 usage: python3 tools/auto_rig/refit_landmarks.py --fit fit.json --out fit_landmarks.json [--no-legs]
        (fit.json from refit_skeleton.py, which also names the static mesh it wrote in "static_mesh")
@@ -281,6 +282,27 @@ def main():
     y_top = float(Q[np.abs(Q[:, 0] - cx) < 0.05 * H, 1].max())
     fit.setdefault('leaf_tail', {})['Head'] = [round(cx, 5), round(J['Head'][1] + 0.6 * (y_top - J['Head'][1]), 5),
                                                round(float(J['Head'][2]), 5)]
+
+    # mirror-complete one-sided chains (pantera.glb's template has RightHandThumb3 but no LeftHandThumb3;
+    # validate.py's finger-symmetry gate rejects that): the missing joint = its mirror across the mid-plane
+    added = []
+    have = {j['name'] for j in joints}
+    for j in list(joints):
+        n = j['name']
+        for a_, b_ in (('Left', 'Right'), ('Right', 'Left')):
+            if n.startswith(a_):
+                m_name = b_ + n[len(a_):]
+                par = j['parent']
+                m_par = (b_ + par[len(a_):]) if par and par.startswith(a_) else par
+                if m_name not in have and m_par in have:
+                    J[m_name] = np.array([2 * cx - J[n][0], J[n][1], J[n][2]])
+                    J0[m_name] = J[m_name].copy()
+                    pos = next(i for i, q in enumerate(joints) if q['name'] == m_par)
+                    joints.insert(pos + 1, {'name': m_name, 'parent': m_par, 'pos': [0, 0, 0]})
+                    have.add(m_name)
+                    added.append(m_name)
+    if added:
+        rep['mirrored_missing_joints'] = added
 
     moved = {}
     for j in joints:
