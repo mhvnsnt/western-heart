@@ -27,6 +27,15 @@ Weights are only ever averaged between verts that share a mesh edge —
 surface topology is respected (a tail hanging near a leg does not
 bleed leg weights; the two surfaces share no edges).
 
+2026-11-01 (Negativo re-rig): every averaged vertex now writes the SAME
+weights to all of its UV-seam copies (vertices at the same position).
+Before, only the copy on the stretched edge changed, so seam copies
+drifted apart (6,688 on Negativo, up to 0.546 L1) and the seam opened
+into a crack under animation — invisible to every edge metric, since no
+triangle edge spans a seam. The 4-influence limit is now CONTINUOUS
+(5th-largest weight subtracted from the top 4): the hard top-4 cut kept
+different 4th bones on neighbouring verts and itself caused stretch.
+
 Usage:
     python3 smooth_weights.py --in MODEL.glb [--threshold 2.0]
         [--rounds 12] [--frames-per-clip 10] [--gate 2.5]
@@ -44,6 +53,32 @@ import anim_check as ac  # noqa: E402
 from validate import read_glb  # noqa: E402
 
 COMP = {5121: ('B', 1), 5123: ('H', 2), 5125: ('I', 4), 5126: ('f', 4)}
+
+
+def seam_groups(pos):
+    """(order, start, gid): the copies of vertex v (same position, i.e. UV-seam duplicates, v included) are
+    order[start[gid[v]]:start[gid[v] + 1]]."""
+    key = np.round(np.asarray(pos, dtype=np.float64) / 1e-6).astype(np.int64)
+    _, gid = np.unique(key, axis=0, return_inverse=True)
+    gid = gid.reshape(-1)
+    order = np.argsort(gid, kind='stable')
+    start = np.r_[0, np.cumsum(np.bincount(gid))]
+    return order, start, gid
+
+
+def limit4(avg):
+    """{joint: weight} -> (4 joints, 4 weights): CONTINUOUS 4-influence limit (the 5th-largest weight is
+    subtracted from the top 4, renormalized), so a bone fades to 0 exactly where it leaves the top 4."""
+    items = sorted(avg.items(), key=lambda kv: -kv[1])
+    t = items[4][1] if len(items) > 4 else 0.0
+    top = [(k, max(0.0, v - t)) for k, v in items[:4]]
+    tot = sum(v for _, v in top)
+    if tot <= 1e-12:  # 5+ exactly tied: fall back to the plain top 4
+        top = items[:4]
+        tot = sum(v for _, v in top) or 1.0
+    jj = [k for k, _ in top] + [0] * (4 - len(top))
+    ww = [v / tot for _, v in top] + [0.0] * (4 - len(top))
+    return jj, ww
 
 
 def bin_offset(raw):
@@ -154,6 +189,7 @@ def smooth(path, threshold=2.0, rounds=12, frames_per_clip=10, gate=2.5):
     dev = np.abs(_skin_fast(bind_skin, prim, pos_h) - prim['pos']).max()
     print(f'bind-consistency max dev: {dev:.2e} m')
 
+    seams = {mi: seam_groups(p['pos']) for mi, p in enumerate(model.prims)}
     for rnd in range(rounds):
         bad_all, p999 = evaluate(model, clip_frames)
         nbad = {mi: int((mr > threshold).sum())
@@ -169,6 +205,7 @@ def smooth(path, threshold=2.0, rounds=12, frames_per_clip=10, gate=2.5):
             J = prim['joints'].copy()
             W = prim['weights'].copy()
             updates = {}
+            s_order, s_start, s_gid = seams[mi]
 
             def vec(v):
                 d = {}
@@ -187,14 +224,14 @@ def smooth(path, threshold=2.0, rounds=12, frames_per_clip=10, gate=2.5):
                     continue
                 avg = {k: (da.get(k, 0.0) + db.get(k, 0.0)) / 2.0
                        for k in set(da) | set(db)}
-                top = sorted(avg.items(), key=lambda kv: -kv[1])[:4]
-                tot = sum(v for _, v in top)
-                jj = [k for k, _ in top] + [0] * (4 - len(top))
-                ww = [v / tot for _, v in top] + [0.0] * (4 - len(top))
+                jj, ww = limit4(avg)
                 for v in (a, b):
-                    J[v] = jj
-                    W[v] = ww
-                    updates[v] = (jj, ww)
+                    g = s_gid[v]
+                    for u in s_order[s_start[g]:s_start[g + 1]]:  # v and its UV-seam copies
+                        u = int(u)
+                        J[u] = jj
+                        W[u] = ww
+                        updates[u] = (jj, ww)
             if updates:
                 changed = True
                 prim['joints'][:] = J

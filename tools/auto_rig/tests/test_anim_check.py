@@ -41,18 +41,20 @@ def _acc(arrays, types, comp=5126):
     return buf, views, accs
 
 
-def make_glb(anim_channels):
-    """3-joint chain Root->Child->GrandChild + deco node; 6 verts, 2 tris.
+def make_glb(anim_channels, pos=None, joints=None, weights=None, idx=None):
+    """3-joint chain Root->Child->GrandChild + deco node; default 6 verts, 4 tris
+    (pos/joints/weights/idx override the mesh; test_smooth_weights.py plants a UV seam).
 
     anim_channels: list of (node, path, times, values) LINEAR channels.
     Returns path to a temp .glb.
     """
-    pos = [[-0.1, 0.05, 0], [0.1, 0.05, 0], [-0.1, 0.95, 0], [0.1, 0.95, 0],
-           [-0.1, 1.45, 0], [0.1, 1.45, 0]]
-    joints = [[0, 0, 0, 0], [0, 0, 0, 0], [1, 0, 0, 0], [1, 0, 0, 0],
-              [2, 0, 0, 0], [2, 0, 0, 0]]
-    weights = [[1, 0, 0, 0]] * 6
-    idx = [0, 1, 2, 2, 1, 3, 2, 3, 4, 4, 3, 5]
+    if pos is None:
+        pos = [[-0.1, 0.05, 0], [0.1, 0.05, 0], [-0.1, 0.95, 0], [0.1, 0.95, 0],
+               [-0.1, 1.45, 0], [0.1, 1.45, 0]]
+        joints = [[0, 0, 0, 0], [0, 0, 0, 0], [1, 0, 0, 0], [1, 0, 0, 0],
+                  [2, 0, 0, 0], [2, 0, 0, 0]]
+        weights = [[1, 0, 0, 0]] * 6
+        idx = [0, 1, 2, 2, 1, 3, 2, 3, 4, 4, 3, 5]
     ibm = []
     for t in ([0, 0, 0], [0, -1, 0], [0, -1.5, 0]):
         m = np.eye(4)
@@ -67,7 +69,7 @@ def make_glb(anim_channels):
     buf += b"\x00" * pad
     views[1] = {"buffer": 0, "byteOffset": len(buf), "byteLength": len(jbuf)}
     buf += jbuf
-    accs[1] = {"bufferView": 1, "componentType": 5123, "count": 6, "type": "VEC4"}
+    accs[1] = {"bufferView": 1, "componentType": 5123, "count": len(pos), "type": "VEC4"}
     ibuf = np.asarray(idx, dtype=np.uint16).tobytes()
     pad = (-len(buf)) % 4
     buf += b"\x00" * pad
