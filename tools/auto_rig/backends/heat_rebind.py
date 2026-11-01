@@ -26,39 +26,6 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 
 
-def continuous_limit(mesh_obj, limit=4):
-    """Limit every vertex to `limit` influences CONTINUOUSLY: subtract the (limit+1)-th largest weight from the top
-    `limit`, renormalize. Blender's vertex_group_limit_total drops the 5th bone outright, so neighbours whose 4th/5th
-    bones swap rank keep different bones and tear (measured on Negativo 2026-11-01: the whole strict-stretch plateau;
-    attire 2 started smoothing at p99.9 9.39). Here a bone reaches 0 exactly where it leaves the top `limit`.
-    Returns how many vertices had more than `limit` influences."""
-    import bmesh
-    bm = bmesh.new()
-    bm.from_mesh(mesh_obj.data)
-    dl = bm.verts.layers.deform.active
-    n = 0
-    if dl is not None:
-        for v in bm.verts:
-            d = v[dl]
-            if len(d) <= limit:
-                continue
-            items = sorted(d.items(), key=lambda kv: -kv[1])
-            t = items[limit][1]
-            top = [(g, w - t) for g, w in items[:limit]]
-            s = sum(w for _, w in top)
-            if s <= 1e-9:
-                top, s = items[:limit], sum(w for _, w in items[:limit]) or 1.0
-            d.clear()
-            for g, w in top:
-                if w > 0:
-                    d[g] = w / s
-            n += 1
-    bm.to_mesh(mesh_obj.data)
-    bm.free()
-    mesh_obj.data.update()
-    return n
-
-
 def gl2bl(p):
     """glTF (Y-up) -> Blender (Z-up) coordinates."""
     from mathutils import Vector
@@ -204,7 +171,7 @@ def main():
         m.select_set(True)
         bpy.context.view_layer.objects.active = m
         metrics.setdefault("continuous_limit_verts", 0)
-        metrics["continuous_limit_verts"] += continuous_limit(m, 4)  # before Blender's hard cut (now a no-op)
+        metrics["continuous_limit_verts"] += G.continuous_limit(m, 4)  # light meshes (dense ones: in heat_via_proxy)
         bpy.ops.object.vertex_group_limit_total(group_select_mode="ALL", limit=4)
         bpy.ops.object.vertex_group_normalize_all(group_select_mode="ALL", lock_active=False)
 

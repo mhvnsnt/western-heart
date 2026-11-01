@@ -618,6 +618,39 @@ def drop_micro_components(obj, min_verts=32):
     return len(doomed)
 
 
+def continuous_limit(mesh_obj, limit=4):
+    """Limit every vertex to `limit` influences CONTINUOUSLY: subtract the (limit+1)-th largest weight from the top
+    `limit`, renormalize. Blender's vertex_group_limit_total drops the 5th bone outright, so neighbours whose 4th/5th
+    bones swap rank keep different bones and tear (measured on Negativo 2026-11-01: the whole strict-stretch plateau;
+    attire 2 started smoothing at p99.9 9.39). Here a bone reaches 0 exactly where it leaves the top `limit`.
+    Returns how many vertices had more than `limit` influences."""
+    import bmesh
+    bm = bmesh.new()
+    bm.from_mesh(mesh_obj.data)
+    dl = bm.verts.layers.deform.active
+    n = 0
+    if dl is not None:
+        for v in bm.verts:
+            d = v[dl]
+            if len(d) <= limit:
+                continue
+            items = sorted(d.items(), key=lambda kv: -kv[1])
+            t = items[limit][1]
+            top = [(g, w - t) for g, w in items[:limit]]
+            s = sum(w for _, w in top)
+            if s <= 1e-9:
+                top, s = items[:limit], sum(w for _, w in items[:limit]) or 1.0
+            d.clear()
+            for g, w in top:
+                if w > 0:
+                    d[g] = w / s
+            n += 1
+    bm.to_mesh(mesh_obj.data)
+    bm.free()
+    mesh_obj.data.update()
+    return n
+
+
 def heat_via_proxy(rig, m, voxel, target_faces):
     """Bone heat on a watertight decimated proxy, transferred to `m`.
 
@@ -716,10 +749,13 @@ def heat_via_proxy(rig, m, voxel, target_faces):
     m.matrix_world = mw
     am = m.modifiers.new("Armature", "ARMATURE")
     am.object = rig
-    # keep at most 4 influences, normalized (what glTF/three.js skin with)
+    # keep at most 4 influences, normalized (what glTF/three.js skin with): CONTINUOUSLY first (the data transfer
+    # leaves 5-8 influences in blend zones; a hard cut flips the 4th bone between neighbours and tears them),
+    # so the hard cut below only guards
+    limited = continuous_limit(m, 4)
     bpy.ops.object.vertex_group_limit_total(group_select_mode="ALL", limit=4)
     bpy.ops.object.vertex_group_normalize_all(group_select_mode="ALL", lock_active=False)
-    return {"voxel_m": voxel, "faces_remeshed": faces_remeshed, "faces_proxy_after_decimate": proxy_faces,
+    return {"voxel_m": voxel, "continuous_limit_verts": limited, "faces_remeshed": faces_remeshed, "faces_proxy_after_decimate": proxy_faces,
             "proxy_verts": len(proxy_verts_n), "unweighted_proxy_verts": unweighted_proxy,
             "mesh_scale": list(m.scale), "mesh_dims": list(m.dimensions),
             "proxy_groups": proxy_groups, "attempts": attempts}
