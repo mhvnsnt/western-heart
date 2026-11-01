@@ -32,7 +32,8 @@ import { stageVisible, CORE_STAGES, CORE_FIGHTERS, quickFightParams } from './co
 // the versus flow and getStage is needed by startFight; its parse cost is
 // small next to the deferred modules. Stage THUMBS are the real cost there
 // (see the thumb atlas, assets/stages/thumbs/atlas.png + thumbs.json).
-import { initMenus } from './menus.js';
+import { initMenus, keepLoading } from './menus.js';
+import { isModuleLoadError, claimReload, resumable, saveResume, takeResume, fightStarted, nextStep } from './fight-recovery.js';
 import './load-progress.js'; // real loading bar (owner pt134u)
 
 // LOADSPEED: the real Tekken moveset JSONs (~300KB) used to fetch at boot.
@@ -1209,23 +1210,34 @@ function exitReplay() {
   showReplays();
 }
 
+/* FIGHT-LOAD RECOVERY v2 (2026-11-01, owner: "it keeps kicking me back out to the arena select menu ... over and
+   over ... I have to end up reloading the game"). The rules live in fight-recovery.js (unit-tested): retry, SAFE LOAD,
+   then reload straight back into the same fight (resume token, read at boot by resumeFight below), and only then the
+   stage screen. No reload loop: at most one automatic reload per 60 s. */
+function session() { try { return window.sessionStorage; } catch (e) { return null; } }
+
+function reloadIntoFight(p1, p2, opts = {}) {
+  const ss = session();
+  if (!ss || !claimReload(ss)) return false;
+  if (resumable(p1, p2, opts)) {
+    const spirit = opts._spirit || (selectScreen && selectScreen.soulSpiritLocked
+      ? { p1: selectScreen.soulSpiritLocked('p1'), p2: selectScreen.soulSpiritLocked('p2') } : null);
+    saveResume(ss, { p1, p2, stage: opts.stage || selectedStage, mode: opts.mode, spirit });
+  }
+  location.reload();
+  return true;
+}
+
 async function startFight(playerId, enemyId, opts = {}) {
-  // MODULE-RELOAD RECOVERY (2026-10-31): when a fight load dies on a
+  // MODULE-RELOAD RECOVERY (2026-10-31, v2 2026-11-01): when a fight load dies on a
   // failed dynamic import, the browser's module map caches that failure
-  // for the life of the page — re-running the import can never succeed,
-  // so the "tap CONFIRM to retry" path is dead and every fight bounces
-  // back to the stage screen until the player reloads by hand. The load
-  // catch below sets __whModuleReload for exactly that error class; the
-  // next startFight call then reloads the page ONCE (sessionStorage
-  // stops a reload loop if the deploy itself is still broken).
+  // for the life of the page — re-running the import can never succeed.
+  // The load catch reloads straight back into the fight (reloadIntoFight);
+  // if its 60 s guard held that reload back, it sets __whModuleReload and
+  // the player's next CONFIRM reloads here instead.
   if (window.__whModuleReload) {
     window.__whModuleReload = false;
-    let already = false;
-    try {
-      already = !!sessionStorage.getItem('wh_module_reload_once');
-      if (!already) sessionStorage.setItem('wh_module_reload_once', '1');
-    } catch (e) { /* storage unavailable: reload anyway, once per flag */ }
-    if (!already) { location.reload(); return false; }
+    if (reloadIntoFight(playerId, enemyId, opts)) return false;
   }
   unlockAudio();
   if (typeof playerId === 'string') selectedChar = playerId;
@@ -1252,28 +1264,48 @@ async function startFight(playerId, enemyId, opts = {}) {
   // into stats here) and stamps `soulSpirit` for the floating-spirit
   // render (game.js reads it). Versus: both sides picked on the grid.
   // Solo modes: only P1 picked, so the enemy side resolves to null.
-  if (selectScreen && selectScreen.soulSpiritLocked) {
+  if (opts._spirit) {  // a fight resumed after an automatic reload carries its locked picks (reloadIntoFight)
+    player = applySoulSpirit(player, opts._spirit.p1);
+    enemy = applySoulSpirit(enemy, opts._spirit.p2);
+  } else if (selectScreen && selectScreen.soulSpiritLocked) {
     player = applySoulSpirit(player, selectScreen.soulSpiritLocked('p1'));
     enemy = applySoulSpirit(enemy, selectScreen.soulSpiritLocked('p2'));
+  }
+  // SAFE LOAD (2026-11-01): the second automatic retry of a failed fight load starts the fight with each fighter's
+  // default model and no transform / form models (those are 1-3 extra 20-90 MB downloads), so one model that will
+  // not load can no longer keep the player out of the fight.
+  if (opts._safe) {
+    const safe = (c) => {
+      if (!c) return c;
+      const base = getCharacterWithCustom(c.id);
+      return { ...c, model: (base && base.model) || c.model, transform: null, forms: null };
+    };
+    player = safe(player);
+    enemy = safe(enemy);
   }
   // On-demand: load only the 2 fighters for this fight (Tekken 3 pattern).
   // Models may already be prefetched from select-screen highlight.
   // TTT2: tag battles need all 4 fighters' models up front.
   const tagTeams = opts.tagTeams || null;
   const need = [...new Set([player.model, enemy.model].filter(Boolean))];
+  // LOADSPEED (2026-11-01, owner: "all the loading screens take too long"): transform / form models (Zen, Demonio,
+  // Burger, Doc Frank, Deathfang: 1-3 extra 20-90 MB files each) no longer hold the fight start. They stream in right
+  // after the fight starts, long before a full gauge can trigger a transform, and Fighter.tryTransform waits for a
+  // form model that has not landed yet (createInstance is sync).
+  const formModels = [];
   if (tagTeams) {
     for (const side of ['p1', 'p2']) for (const id of tagTeams[side]) {
       const c = getCharacterWithCustom(id);
       if (c.model) need.push(c.model);
-      if (c.transform && c.transform.targetModel) need.push(c.transform.targetModel);
+      if (c.transform && c.transform.targetModel) formModels.push(c.transform.targetModel);
     }
-  }  // Mid-match transform targets must be preloaded (createInstance is sync).
+  }
   for (const c of [player, enemy]) {
-    if (c.transform && c.transform.targetModel) need.push(c.transform.targetModel);
+    if (c.transform && c.transform.targetModel) formModels.push(c.transform.targetModel);
     if (c.forms) for (const fk of Object.keys(c.forms)) {
       const fe = c.forms[fk];
       const tgts = fe.target ? [fe] : [fe.up, fe.down].filter(Boolean);
-      for (const t of tgts) if (t.target) need.push(t.target);
+      for (const t of tgts) if (t.target) formModels.push(t.target);
     }
   }
   // Lane 5: stage assets stream IN PARALLEL with the fighter loads
@@ -1289,8 +1321,9 @@ async function startFight(playerId, enemyId, opts = {}) {
   // failed instead of a generic message. pendingFight is kept so CONFIRM
   // retries the same fight.
   const stageHintEl = document.getElementById('stage-hint');
-  const setPhase = (t) => { if (hint) hint.textContent = t; if (stageHintEl) stageHintEl.textContent = t; };
-  const hideLoadOverlay = () => { const o = document.getElementById('wh-loading'); if (o) o.classList.remove('show'); };
+  const setPhase = (t) => { if (hint) hint.textContent = t; if (stageHintEl) stageHintEl.textContent = t; keepLoading(t); };
+  const hideLoadOverlay = () => { window.__whFightLoading = 0; const o = document.getElementById('wh-loading'); if (o) o.classList.remove('show'); };
+  window.__whFightLoading = window.__whFightLoading || Date.now();  // menus.js keeps the overlay up while this is set
   try {
     setPhase('Entering the arena…');
     // LOADSPEED: fight-only modules (fighter/movesets/t3anims) stream in
@@ -1312,6 +1345,7 @@ async function startFight(playerId, enemyId, opts = {}) {
     if (confirmBtn) confirmBtn.disabled = true;
     await assets.loadModels(need, (p, loaded, total, id) => {
       if (window.__whLoadProgress) window.__whLoadProgress(p, loaded, total);
+      keepLoading();  // bytes are flowing: the overlay stays up (FIGHT-LOAD RECOVERY v2)
       let t;
       if (loaded && total) {
         const mbL = (loaded / 1048576).toFixed(1);
@@ -1377,7 +1411,22 @@ async function startFight(playerId, enemyId, opts = {}) {
     // a plain retry can never succeed. Flag it so the next startFight
     // reloads the page (top of startFight), and tell the player the
     // truth about what the next tap does.
-    const moduleFailed = /dynamically imported module|Importing a module script failed/i.test(String(detail));
+    // (also the link errors of a page whose cached modules no longer match the deployed ones: Chrome "does not provide
+    // an export named", Safari "Importing binding name ... is not found")
+    const moduleFailed = isModuleLoadError(detail);
+    // AUTO-RETRY (FIGHT-LOAD RECOVERY v2): the same fight again (a dropped connection, a stalled host), then once more
+    // in SAFE LOAD (default outfits, no transform models), then a reload straight back into it (fight-recovery.js
+    // nextStep), before the stage screen ever shows an error.
+    const step = nextStep({ moduleFailed, retry: opts._retry || 0 });
+    if (step === 'retry' || step === 'safe') {
+      setPhase(step === 'retry' ? 'Connection hiccup, retrying…' : 'Retrying with default outfits…');
+      await new Promise((r) => setTimeout(r, 1200));
+      return startFight(playerId, enemyId, { ...opts, _retry: (opts._retry || 0) + 1, _safe: !!opts._safe || step === 'safe' });
+    }
+    if (reloadIntoFight(playerId, enemyId, opts)) {
+      setPhase(moduleFailed ? 'Updating the game files… reloading straight into your fight' : 'Reloading straight into your fight…');
+      return false;
+    }
     if (moduleFailed) window.__whModuleReload = true;
     const msg = moduleFailed
       ? `Failed to load fighters: ${detail} — a game file failed to load; tap CONFIRM to reload the game.`
@@ -1403,6 +1452,7 @@ async function startFight(playerId, enemyId, opts = {}) {
       await playCutscene(def.introVideo, { label: def.name });
     }
   } catch (e) { console.warn('[WH] stage intro video skipped:', e.message || e); }
+  window.__whFightLoading = 0;
   show('hud');
   game.paused = false;
   // MUSIC (2026-10-24): rotating stage pool. The engine falls back to
@@ -1428,6 +1478,10 @@ async function startFight(playerId, enemyId, opts = {}) {
   }
   try {
     await game.startMatch(player, enemy, selectedStage, opts);
+    // LOADSPEED: the deferred transform / form models stream in now that the fight is running (fail-silent: a form
+    // whose model is still missing just waits in Fighter.tryTransform).
+    const forms = [...new Set(formModels)].filter((id) => id && !need.includes(id));
+    if (forms.length) assets.loadModels(forms, null, { lane: 'forms' }).catch((e) => console.warn('[WH] form models deferred load failed:', e.message || e));
   // Worker 29 (2026-10-22): Gungaku fight lab + deterministic replays.
   // Dynamic imports keep them off the menu boot path (LOADSPEED).
   try {
@@ -1451,6 +1505,19 @@ async function startFight(playerId, enemyId, opts = {}) {
   } catch (err) {
     console.error('[WH] startMatch failed:', err);
     const detail = (err && (err.message || err)) || 'unknown error';
+    // FIGHT-LOAD RECOVERY v2 (2026-11-01): a fight that fails to BUILD (fighter rig, arena) no longer drops the player
+    // on the stage screen first. One clean rebuild in SAFE LOAD (default outfits, no transform models), then an
+    // automatic reload straight back into the same fight (the owner found that a manual reload always got them in),
+    // and only then the stage screen with the real error.
+    if (!isModuleLoadError(detail) && !opts._buildRetry) {
+      setPhase('Rebuilding the fight…');
+      await new Promise((r) => setTimeout(r, 600));
+      return startFight(playerId, enemyId, { ...opts, _buildRetry: 1, _safe: true });
+    }
+    if (reloadIntoFight(playerId, enemyId, opts)) {
+      setPhase('Reloading straight into your fight…');
+      return false;
+    }
     const msg = `Failed to start the fight: ${detail} — try again or pick different fighters.`;
     if (hint) hint.textContent = msg;
     if (stageHintEl) stageHintEl.textContent = msg;
@@ -1468,8 +1535,8 @@ async function startFight(playerId, enemyId, opts = {}) {
     clearTimeout(hints._t);
     hints._t = setTimeout(() => hints.classList.add('fade'), 6000);
   }
-  // The fight started: a future module failure may reload once again.
-  try { sessionStorage.removeItem('wh_module_reload_once'); } catch (e) { /* noop */ }
+  // The fight started: a future failure may reload straight into its fight again (reloadIntoFight's 60 s guard).
+  { const ss = session(); if (ss) fightStarted(ss); }
   return true; // P0 (2026-10-22): stage-select handler needs to know the fight started
 }
 // H toggles control hints, M toggles the movelist (training).
@@ -1520,6 +1587,21 @@ window.__startFight = (p1, p2, opts) => startFight(p1, p2, opts || {}); // QA ho
 /* Milestone 1: ?quick=p1,p2,stage opens straight into a fight (testing).
    p2 / stage optional: a missing p2 is a random core fighter, a missing
    stage is a random core stage. */
+/* FIGHT-LOAD RECOVERY v2: a reload made by reloadIntoFight resumes straight into the fight it was starting. */
+(function resumeFight() {
+  const ss = session();
+  const r = ss ? takeResume(ss) : null;
+  if (!r || quickFightParams()) return;
+  const plain = () => startFight(r.p1, r.p2, { stage: r.stage, _spirit: r.spirit || undefined }).catch((e) => console.error('[resume]', e));
+  // versus fights resume through the mode controller (rules, result screen, REMATCH); others start directly
+  if (r.mode === 'versus' && r.p2) {
+    getModes().then((modes) => {
+      if (modes && typeof modes.resumeVersus === 'function') modes.resumeVersus(r.p1, r.p2, r.stage, r.spirit || null);
+      else plain();
+    }).catch(plain);
+  } else setTimeout(plain, 0);
+})();
+
 (function quickFight() {
   const q = quickFightParams();
   if (!q) return;

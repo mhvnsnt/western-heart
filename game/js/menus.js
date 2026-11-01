@@ -97,8 +97,26 @@ export function showLoading(status) {
   const fill = o.querySelector('.wh-load-fill');
   fill.style.width = '8%';
   o.classList.add('show');
+  armLoadingSafety();
+}
+/* Safety: never trap the player on the overlay. FIGHT-LOAD RECOVERY v2 (2026-11-01): while main.js startFight is still
+   loading (window.__whFightLoading = its start time; a slow phone download, an automatic retry) the overlay stays up,
+   up to 4 minutes: hiding it at 45 s uncovered the arena screen mid-load, which read as "kicked back to arena select". */
+function armLoadingSafety() {
   clearTimeout(loadTimer);
-  loadTimer = setTimeout(hideLoading, 45000); // safety: never trap the player
+  loadTimer = setTimeout(function safety() {
+    const t0 = (typeof window !== 'undefined' && window.__whFightLoading) || 0;
+    if (t0 && Date.now() - t0 < 240000) { loadTimer = setTimeout(safety, 15000); return; }
+    hideLoading();
+  }, 45000);
+}
+/* The fight load's current phase on the overlay ("Retrying…"), re-arming the safety timer (FIGHT-LOAD RECOVERY v2). */
+export function keepLoading(status) {
+  const o = document.getElementById('wh-loading');
+  if (!o || !o.classList.contains('show')) return;
+  const s = status && o.querySelector('.wh-load-status');
+  if (s) s.textContent = status;
+  armLoadingSafety();
 }
 export function setLoadingProgress(p) {
   const f = document.querySelector('#wh-loading .wh-load-fill');
