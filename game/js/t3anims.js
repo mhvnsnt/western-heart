@@ -121,6 +121,13 @@ export const T3_BANKS = {
   law:        'assets/anim/t3/law/',
   // Forest Law's own divmot20 motion posed on Law's body (his KMDs do not fit; heihachi_on_jin pattern).
   forestlaw:  'assets/anim/t3/forestlaw_on_law/',
+// VF5 motion banks (2026-10-22, VF5 motion pipeline): Dural's motion
+  // decoded from VF5 PS3 mot_DUR.bin. Per INTEGRATION LAW, VF5 motion
+  // wires into the existing Tekken bank system (same wh-anim/1 format,
+  // same loadT3Clips path, same retargetT3Clips) — no parallel subsystem.
+  // dural -> Zen's stance (owner 2026-10-22: "Dural's stance is Zen's stance").
+  dural:      'assets/anim/vf5/dural/',
+
 };
 /* PRIVATE VF5 Dural bank (Zen, 2026-10-28). Decoded from VF5 (PS3 BLES00029)
    mot_DUR.bin in the private mhvnsnt/game-reverse-engineering repo
