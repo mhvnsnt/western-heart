@@ -68,16 +68,27 @@ Menajerii/Silvertongue only borrow banks.
 - **Negan is the exception: 126 of 336 attacks are 0xC8** -> Negativo can get real T7 attacks now (section 5).
 - 0xC8 crouch stances exist for Bob, Eddy, Lili, Xiaoyu, Yoshimitsu, Zafina (not wired yet).
 
-## 4. The 0x64 joint-frame problem (blocks every T7 attack except Negan's)
+## 4. The 0x64 problem — SOLVED 2026-11-01 from the exe; Pantera plays King's real T7 attacks
 
-`tools/anim/t7_anim64.py` decodes 0x64 faithfully (port of TKMovesets2 `ParseAnimation0x64`), but the decoded
-per-bone values live in an unknown per-bone frame. Proven facts, rejected hypotheses and the routes to the exact
-answer are in `docs/anim/T7-0x64-FRAME-RESEARCH-2026-10-30.md`. Routes:
-1. The game exe (`TekkenGame-Win64-Shipping.exe`, owner's Steam install, stored PRIVATELY) -> Ghidra the routine after
-   `TK__Anim_64_sub_140733340`.
-2. A live capture on the owner's PC (TKMovesets2/BlenderTekkenDirect know the player-struct addresses).
-3. TTT2 same-motion pairs, once the TTT2 lane extracts motion data.
-Never ask the owner for passwords; he provides files himself.
+Every T7 attack is a 0x64 (compressed) clip and the community had no 0x64 -> pose path. Solved by reading Tekken 7's
+own sampler (`TekkenGame-Win64-Shipping.exe`, private GRE release `t7-shipping-exe-20261031`, sha256 7f2b6872...):
+- **0x64 rotation bones are axis-angle**, not Euler: axis = R_y(Y) R_x(X) (0,0,1), q = (axis sin(Z/2), cos(Z/2)).
+  **0xC8** rotation bones are Euler: q = q_X(-X) q_Y(-Y) q_Z(-Z). Both land in the same bone space.
+- `tools/anim/exe_re/emulate_sampler.py` runs the game's sampler (RVA 0x73ea30) in a Unicorn CPU emulator (CRT
+  math stubbed; nothing of the game runs as a program). `tools/anim/t7_anim64_to_c8.py` samples each 0x64 clip with
+  it and writes the 0xC8 triple that rebuilds every rotation: re-sampled through the game's 0xC8 path it reproduces
+  the game's 0x64 rotations to 3.6e-7. The community decoder differs from the game on frame 1 only.
+- `tools/anim/t7_move_bake.py` / `t7_c8_stance_bake.py` take 0x64 clips when `T7_EXE=<exe>` is set; provenance
+  records `t7_source.format: 0x64` + the conversion tool + the exe sha256.
+- **Pantera <- King:** 29 of 35 rows map exactly (input path from Kg_sKAM00_ + exact T7 damage / first active frame),
+  all 0x64, baked into `game/assets/anim/t7/king/moves.pack.json` (FK <= 0.000001 m); `T7_MOVES.pantera` in
+  `game/js/t3anims.js`; `test/t7-moves-king.test.mjs`. The game plays its preferred row per input ('1~t8.king',
+  'df+1', 'uf+3'), so `t7MoveClip` falls back to the pack clip for the same single input (`t7NormInput`).
+- King's moves are acrobatic (flip kick, drop kick to the floor) and Tekken impacts snap in 1-2 frames (kick 3:
+  knee chambered 108 deg on frames 13-15, fully extended on frame 16; the game's sampler and the community decoder
+  agree), so the King test checks upright starts, floor contact and limb flips instead of Negan's "never inverted".
+- Re-run for any character: resolve (`t7_move_resolve.py <GRE>/.../mothead <code> <moveset> out.json`), then
+  `T7_EXE=... t7_move_bake.py ...` (see its docstring). Download the exe with the API asset endpoint (section 10).
 
 ## 5. Negativo plays Negan's real T7 attacks (wired 2026-10-31, PR after #1377)
 
@@ -227,13 +238,12 @@ Worker route handles that lane.
    (rig_inspect shares/seams on every wired fighter; refit_rig.py for T-pose offenders). Burger (A-pose) after.
 2. Negativo T7 attacks (section 5): already wired; they now play on a correct rig.
 3. Bob's 0xC8 crouch for Burger; other 0xC8 crouch stances.
-4. 0x64 joint frame (section 4): the exe now exists (2026-10-31, Muse pulled it from the owner's Steam library:
-   private release `t7-shipping-exe-20261031` in mhvnsnt/game-reverse-engineering, 58,439,680 B, sha256
-   7f2b6872...). Download it (and every other private GRE release asset: Muse is storing the owner's whole Steam
-   library there) through the API, which the session proxy authenticates; the browser_download_url 404s:
+4. 0x64: SOLVED (section 4); Pantera plays King's real attacks. Next: the same resolve + `T7_EXE` bake for every
+   other single-source T7 fighter (Purple Rain <- Lee, Chordz <- Lars, Diablo, Skull, Saku Ra, ... each base code in
+   GRE `tkdata/mothead`), then strings / stance moves (resolver scope v2). The exe is downloadable from the private
+   GRE release through the API (the session proxy authenticates it; the browser_download_url 404s):
    `curl -sSL -H "Accept: application/octet-stream" -o FILE https://api.github.com/repos/mhvnsnt/game-reverse-engineering/releases/assets/<asset id>`
-   (asset ids: `mcp__github__get_release_by_tag`). Verified 2026-11-01: 58,439,680 B, sha256 matches. Keep it out
-   of every public repo/bucket (private teardown source; put downloads in their own new folder; never run it).
+   (asset ids: `mcp__github__get_release_by_tag`). Keep it out of every public repo/bucket; never run it.
 5. Model hosting for >20 MB fighters (Muse's lane) so the new stances show live for Diablo, Skull, Sakura, Phantom,
    Nightwolf, Aotsuki, Purple Rain, Chordz, Negativo.
 
