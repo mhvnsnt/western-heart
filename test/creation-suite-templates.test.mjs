@@ -4,18 +4,29 @@
 // "smart to my screen in my safety boundaries ... no matter the orientation". Plan: customization/CREATION-SUITE-ORDER-2026-11-01.md.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { tmpdir } from 'node:os';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const src = (rel) => readFileSync(join(ROOT, rel), 'utf8');
+// CI's unit-test job is a sparse checkout without customization/ and packages/: a file that is not on disk is read
+// from git's object store (the commit under test), like test/importmap-integrations.test.mjs does with git ls-files.
+const bytes = (rel) => existsSync(join(ROOT, rel)) ? readFileSync(join(ROOT, rel))
+  : execFileSync('git', ['show', `HEAD:${rel}`], { cwd: ROOT, maxBuffer: 1 << 28 });
+const src = (rel) => bytes(rel).toString('utf8');
+// a module (and its relative imports) that may be missing on disk: written to a temp dir from git, then imported
+function materialize(rels) {
+  const base = join(tmpdir(), 'wh-sparse-' + process.pid);
+  for (const rel of rels) { const out = join(base, rel); mkdirSync(dirname(out), { recursive: true }); writeFileSync(out, bytes(rel)); }
+  return (rel) => pathToFileURL(join(base, rel)).href;
+}
 const TRACKED = new Set(execFileSync('git', ['ls-files', '--', 'customization', 'packages'], { cwd: ROOT, maxBuffer: 1 << 28 }).toString().split('\n'));
 const shipped = (rel) => TRACKED.has(rel) || existsSync(join(ROOT, rel));
 
 function glbJson(rel) {
-  const b = readFileSync(join(ROOT, rel));
+  const b = bytes(rel);
   assert.equal(b.toString('latin1', 0, 4), 'glTF', rel + ' is a GLB');
   const len = b.readUInt32LE(12);
   return JSON.parse(b.toString('utf8', 20, 20 + len));
@@ -72,7 +83,8 @@ test('skin tone is real (not an empty stub) and the fighter is framed inside the
 
 test('MB-Lab template skeletons resolve to the names the body sliders and part sockets use', async () => {
   await import('../tools/anim/node_game_env.mjs');
-  const { boneByName, BONE_ALIASES } = await import('../packages/creation-suite/src/body.js');
+  const at = materialize(['packages/creation-suite/src/body.js', 'packages/creation-suite/src/regions.js', 'packages/creation-suite/src/dna.js']);
+  const { boneByName, BONE_ALIASES } = await import(at('packages/creation-suite/src/body.js'));
   for (const t of TEMPLATES) {
     const g = glbJson(t.base_mesh);
     const bones = g.skins[0].joints.map((i) => ({ name: g.nodes[i].name }));
