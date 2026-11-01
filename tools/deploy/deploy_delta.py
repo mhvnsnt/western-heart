@@ -45,10 +45,12 @@ def main():
     blk = _re.search(r'export const T7_STANCES = \{(.*?)\n\};', t3, _re.S)
     dirs = sorted(set(_re.findall(r"dir:\s*'(assets/anim/t7/[\w-]+/)'", blk.group(1)))) if blk else []
     want = ['game/' + d + f for d in dirs for f in ('skeleton.json', 'stance.json')]
-    # ... and each fighter's real T7 per-move pack (T7_MOVES dirs: moves.pack.json + the shared skeleton)
+    # ... and the skeleton each fighter's real T7 per-move pack uses (T7_MOVES dirs). The packs themselves are NOT
+    # added (2026-11-01): the site is at its 1 GB cap, so new packs load from jsDelivr (game/js/t3anims.js
+    # fetchT7Json: page first, then cdn.jsdelivr.net @main). Packs already live (king, negan) stay updated above.
     mblk = _re.search(r'export const T7_MOVES = \{(.*?)\n\};', t3, _re.S)
     mdirs = sorted(set(_re.findall(r"dir:\s*'(assets/anim/t7/[\w-]+/)'", mblk.group(1)))) if mblk else []
-    want += ['game/' + d + f for d in mdirs for f in ('skeleton.json', 'moves.pack.json')]
+    want += ['game/' + d + 'skeleton.json' for d in mdirs]
     add = sorted(p for p in want if p in M and p not in L)
     env = dict(os.environ, GIT_INDEX_FILE=tempfile.mktemp(prefix='deploy.index.'))
     git('read-tree', tip, env=env)

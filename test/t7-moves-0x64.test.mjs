@@ -4,8 +4,8 @@
 // TekkenGame-Win64-Shipping.exe; docs/anim/T7-0x64-FRAME-RESEARCH-2026-10-30.md) into 0xC8 values, then
 // tools/anim/t7_move_bake.py bakes it through the same proven 0xC8 path as the stances, for the rows
 // tools/anim/t7_move_resolve.py maps exactly (input path from the base's stance AND exact T7 frame data).
-// One block per fighter: Purple Rain <- Lee, Chordz <- Lars (Pantera <- King: test/t7-moves-king.test.mjs). Add the next
-// single-source fighter by adding its row to FIGHTERS once its pack is baked and wired in T7_MOVES.
+// One block per single-source fighter (Pantera: test/t7-moves-king.test.mjs). `base` is the T7 source-set DATA dir. Fighters sharing a base dir have
+// their own pack (`pack`). Add the next fighter as one FIGHTERS row once its pack is baked and wired in T7_MOVES.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
@@ -19,6 +19,17 @@ const EXE_SHA = '7f2b68727023ce9f4554b47f5442dad9dfb38c8a9b778f2aa758469e2c2d60e
 const FIGHTERS = [
   { fighter: 'purplerain', base: 'lee', bank: 'jin', moveset: 'purplerain', stance: 'Le_sKAM00_' },
   { fighter: 'chordz', base: 'lars', bank: 'jin', moveset: 'chordz', stance: 'La_sKAM00_' },
+  { fighter: 'diablo', base: 'heihachi', bank: 'heihachi', moveset: 'diablo', stance: 'He_sKAM00_' },
+  { fighter: 'skull', base: 'bryan', bank: 'bryan', moveset: 'skull', stance: 'Bx_sKAM00_', pack: 'moves.skull.pack.json' },
+  { fighter: 'retsu', base: 'bryan', bank: 'bryan', moveset: 'retsu', stance: 'Bx_sKAM00_', pack: 'moves.retsu.pack.json' },
+  { fighter: 'sakura', base: 'xiaoyu', bank: 'xiaoyu', moveset: 'sakura', stance: 'Fu_sKAM00_', pack: 'moves.sakura.pack.json' },
+  { fighter: 'sha', base: 'xiaoyu', bank: 'xiaoyu', moveset: 'sha', stance: 'Fu_sKAM00_', pack: 'moves.sha.pack.json' },
+  { fighter: 'phantom', base: 'yoshimitsu', bank: 'yoshimitsu', moveset: 'phantom', stance: 'Ym_sKAM00_' },
+  { fighter: 'gyou', base: 'hwoarang', bank: 'hwoarang', moveset: 'gyou', stance: 'Hw_sKAM00_', pack: 'moves.gyou.pack.json' },
+  { fighter: 'tobi', base: 'hwoarang', bank: 'hwoarang', moveset: 'tobi', stance: 'Hw_sKAM00_', pack: 'moves.tobi.pack.json' },
+  { fighter: 'gashadokuro', base: 'kuma', bank: 'kuma', moveset: 'gashadokuro', stance: 'Km_sKAM00_' },
+  { fighter: 'aotsuki', base: 'panda', bank: 'kuma', moveset: 'aotsuki', stance: 'Km_sKAM00_' },
+  { fighter: 'nightwolf', base: 'julia', bank: 'julia', moveset: 'nightwolf', stance: 'Jl_sKAM00_' },
 ];
 
 const qmul = (a, b) => [a[3] * b[0] + a[0] * b[3] + a[1] * b[2] - a[2] * b[1], a[3] * b[1] - a[0] * b[2] + a[1] * b[3] + a[2] * b[0],
@@ -42,17 +53,17 @@ const poser = (skel) => {
 };
 
 for (const F of FIGHTERS) {
-  const DIR = `game/assets/anim/t7/${F.base}/`;
-  if (!existsSync(join(ROOT, DIR, 'moves.pack.json'))) {
-    test(`${F.fighter}: moves pack present`, () => assert.fail(`${DIR}moves.pack.json missing`));
+  const DIR = `game/assets/anim/t7/${F.base}/`, PACK = F.pack || 'moves.pack.json';
+  if (!existsSync(join(ROOT, DIR, PACK))) {
+    test(`${F.fighter}: moves pack present`, () => assert.fail(`${DIR}${PACK} missing`));
     continue;
   }
-  const pack = JSON.parse(src(DIR + 'moves.pack.json'));
+  const pack = JSON.parse(src(DIR + PACK));
   const skel = JSON.parse(src(DIR + 'skeleton.json'));
   const moveset = JSON.parse(src(`game/assets/movesets/${F.moveset}.json`)).moves;
   const pose = poser(skel);
 
-  test(`${F.fighter} <- ${F.base}: FIGHT-only pack, 0x64 clips converted by the game sampler, FK exact`, () => {
+  test(`${F.fighter}: FIGHT-only pack, 0x64 clips converted by the game sampler, FK exact`, () => {
     assert.equal(pack.format, 'wh-t7-moves/1');
     assert.equal(pack.fighter, F.fighter);
     assert.equal(pack.anim_set, 'FIGHT');
@@ -63,9 +74,11 @@ for (const F of FIGHTERS) {
       assert.equal(c.fps, 60, cname);
       assert.equal(c.anim_set, 'FIGHT', cname);
       assert.equal(c.loop, false, cname);
-      assert.equal(c.t7_source.format, '0x64', cname);
-      assert.equal(c.t7_source.conversion.tool, 'tools/anim/t7_anim64_to_c8.py', cname);
-      assert.equal(c.t7_source.conversion.exe_sha256, EXE_SHA, cname);
+      assert.ok(['0x64', '0xC8'].includes(c.t7_source.format), `${cname} format ${c.t7_source.format}`);
+      if (c.t7_source.format === '0x64') {  // converted by the game's own sampler (0xC8 clips bake directly)
+        assert.equal(c.t7_source.conversion.tool, 'tools/anim/t7_anim64_to_c8.py', cname);
+        assert.equal(c.t7_source.conversion.exe_sha256, EXE_SHA, cname);
+      }
       assert.ok(c.fk_selfcheck_max_m <= 1e-5, `${cname} FK ${c.fk_selfcheck_max_m}`);
       assert.equal(c.applier.commit, 'bebb3d8bc5c4c2c58778ac6af4f87f3dc80062b1');
       assert.equal(c.root_motion_fwd_m.length, c.root_t.length, `${cname} root motion per frame`);
@@ -115,10 +128,10 @@ for (const F of FIGHTERS) {
     const t3 = src('game/js/t3anims.js');
     const mv = t3.match(/export const T7_MOVES = \{([\s\S]*?)\n\};/);
     assert.ok(mv, 'T7_MOVES');
-    const line = `${F.fighter}: { bank: '${F.bank}', dir: 'assets/anim/t7/${F.base}/' }`;
-    assert.ok(mv[1].includes(line), `T7_MOVES has ${line}`);
+    const line = `${F.fighter}: { bank: '${F.bank}', dir: 'assets/anim/t7/${F.base}/'`;
+    assert.ok(mv[1].includes(line + (F.pack ? `, pack: '${F.pack}' }` : ' }')), `T7_MOVES has ${line}${F.pack ? ', pack: ' + F.pack : ''}`);
     const st = t3.match(/export const T7_STANCES = \{([\s\S]*?)\n\};/);
-    assert.ok(st && st[1].includes(line), 'stance and moves share the skeleton dir');
+    assert.ok(st && st[1].includes(line + ' }'), 'stance and moves share the skeleton dir');
   });
 
   test(`${F.fighter}: the real loader builds its move clips, for itself only`, async () => {
@@ -144,15 +157,15 @@ for (const F of FIGHTERS) {
     assert.equal(T.t7MoveClip(F.fighter, F.bank, '1,2', null, '1,2'), null, 'strings never take a single-input clip');
   });
 
-  test(`${F.fighter}: the rows its 1-4 slots fire reach ${F.base}'s T7 clips by their input (probe 2026-11-01)`, async () => {
+  test(`${F.fighter}: the rows its 1-4 slots fire reach its T7 clips by their input (probe 2026-11-01)`, async () => {
     await import(join(ROOT, 'tools/anim/node_game_env.mjs'));
     const THREE = await import('three');
     const T = await import(join(ROOT, 'game/js/t3anims.js'));
     await T.ensureT7Moves(F.fighter, THREE);
     const ms = JSON.parse(src(`game/assets/movesets/${F.moveset}.json`));
     for (const b of ['1', '2', '3', '4']) {
-      const played = ms.slots[b], packKey = `${b}~t7.${F.base}`;
-      if (!pack.moves[packKey]) continue;
+      const played = ms.slots[b], [packKey] = Object.entries(pack.moves).find(([, m]) => m.input === b) || [];
+      if (!packKey || !played) continue;
       const m = T.t7MoveClip(F.fighter, F.bank, played, null, ms.moves[played].input);
       assert.ok(m, `${b}: slot row ${played} (input ${ms.moves[played].input}) -> ${packKey}`);
       assert.equal(m.name, 't7:' + packKey);

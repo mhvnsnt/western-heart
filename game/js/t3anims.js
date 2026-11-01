@@ -73,6 +73,7 @@ const T3_BONES = ['Root','Hips','Spine','Chest','Neck','Head',
 // '../assets/anim/...' base resolved ABOVE the game and 404'd every
 // clip in production — the banks must live under game/assets/anim/.
 import { checkClip, CTX } from './anim-gate.js';
+import { ASSET_CONFIG, repoPathForModelUrl } from './asset-config.js';
 export const T3_BANKS = {
   king:       'assets/anim/t3/king_on_pantera_leoman/',
   jin:        'assets/anim/t3/jin/',
@@ -660,16 +661,45 @@ export function applyT7Stance(fighterId, bankId, clips, model, THREE, instanceKe
    travel 90 deg off the body, so travel is never read from root_t for these clips).
    Pantera <- King (2026-11-01): King's attacks are 0x64 clips; tools/anim/t7_anim64_to_c8.py converts them with the
    game's own sampler (read from TekkenGame-Win64-Shipping.exe, docs/anim/T7-0x64-FRAME-RESEARCH-2026-10-30.md) into
-   0xC8 values, then they take the same proven 0xC8 bake as every stance. Purple Rain <- Lee and Chordz <- Lars the
-   same way (2026-11-01). */
+   0xC8 values, then they take the same proven 0xC8 bake as every stance. Purple Rain and Chordz the same way
+   (2026-11-01). */
 export const T7_MOVES = {
   negativo: { bank: 'bryan', dir: 'assets/anim/t7/negan/' },
   pantera: { bank: 'king', dir: 'assets/anim/t7/king/' },
   purplerain: { bank: 'jin', dir: 'assets/anim/t7/lee/' },
   chordz: { bank: 'jin', dir: 'assets/anim/t7/lars/' },
+  // 2026-11-01: the rest of the single-source fighters (same pipeline). Fighters sharing a base dir each have their
+  // own pack (`pack`); every pack loads page first, then jsDelivr (fetchT7Json).
+  diablo: { bank: 'heihachi', dir: 'assets/anim/t7/heihachi/' },
+  skull: { bank: 'bryan', dir: 'assets/anim/t7/bryan/', pack: 'moves.skull.pack.json' },
+  retsu: { bank: 'bryan', dir: 'assets/anim/t7/bryan/', pack: 'moves.retsu.pack.json' },
+  sakura: { bank: 'xiaoyu', dir: 'assets/anim/t7/xiaoyu/', pack: 'moves.sakura.pack.json' },
+  sha: { bank: 'xiaoyu', dir: 'assets/anim/t7/xiaoyu/', pack: 'moves.sha.pack.json' },
+  phantom: { bank: 'yoshimitsu', dir: 'assets/anim/t7/yoshimitsu/' },
+  gyou: { bank: 'hwoarang', dir: 'assets/anim/t7/hwoarang/', pack: 'moves.gyou.pack.json' },
+  tobi: { bank: 'hwoarang', dir: 'assets/anim/t7/hwoarang/', pack: 'moves.tobi.pack.json' },
+  gashadokuro: { bank: 'kuma', dir: 'assets/anim/t7/kuma/' },
+  aotsuki: { bank: 'kuma', dir: 'assets/anim/t7/panda/' },
+  nightwolf: { bank: 'julia', dir: 'assets/anim/t7/julia/' },
 };
 const _t7moves = {}; // fighterId -> { bank, skelId, clips: { name: clip }, moves: { moveKey: { clip, active, motbin } } }
 const _t7movesLoading = {};
+/* A T7 move pack (and its skeleton) from the page first, then jsDelivr (2026-11-01). The Pages site is at its
+   1 GB cap, so new packs ship on main only and load from cdn.jsdelivr.net/gh/<repo>@main/game/... (public repo,
+   files under 20 MB; tools/deploy/deploy_delta.py no longer adds move packs to Pages). Same order as models
+   (asset-config.js resolveAssetCandidates: local, then jsDelivr). */
+async function fetchT7Json(rel) {
+  let firstErr = null;
+  for (const url of [rel, `${ASSET_CONFIG.jsdelivrBase}/${repoPathForModelUrl(rel)}`]) {
+    try {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
+      return await res.json();
+    } catch (e) { if (!firstErr) firstErr = e; }
+  }
+  throw firstErr;
+}
+
 export function ensureT7Moves(fid, THREE) {
   const def = T7_MOVES[fid];
   if (!def) return Promise.resolve(null);
@@ -677,15 +707,10 @@ export function ensureT7Moves(fid, THREE) {
   if (_t7movesLoading[fid]) return _t7movesLoading[fid];
   _t7movesLoading[fid] = (async () => {
     try {
-      const res = await fetch(def.dir + 'moves.pack.json');
-      if (!res.ok) throw new Error(`moves.pack.json: HTTP ${res.status}`);
-      const pack = await res.json();
+      const packFile = def.pack || 'moves.pack.json'; // fighters sharing a base dir each have their own pack
+      const pack = await fetchT7Json(def.dir + packFile);
       const skelId = 't7:' + def.dir;
-      if (!_t3skelCache[skelId]) {
-        const rs = await fetch(def.dir + (pack.skeleton || 'skeleton.json'));
-        if (!rs.ok) throw new Error(`skeleton: HTTP ${rs.status}`);
-        _t3skelCache[skelId] = await rs.json();
-      }
+      if (!_t3skelCache[skelId]) _t3skelCache[skelId] = await fetchT7Json(def.dir + (pack.skeleton || 'skeleton.json'));
       const clips = {};
       for (const [cname, data] of Object.entries(pack.clips || {})) {
         if (data.anim_set && data.anim_set !== 'FIGHT') continue; // SHOW-ANIMATION LOCK: fight moves only
@@ -706,7 +731,7 @@ export function ensureT7Moves(fid, THREE) {
         if (ni && !byInput[ni]) byInput[ni] = key;
       }
       _t7moves[fid] = { bank: def.bank, skelId, clips, moves, byInput };
-      console.log(`[WH-T7] ${fid}: ${Object.keys(moves).length} real T7 move clips (${def.dir}moves.pack.json)`);
+      console.log(`[WH-T7] ${fid}: ${Object.keys(moves).length} real T7 move clips (${def.dir}${packFile})`);
       return _t7moves[fid];
     } catch (e) {
       console.warn(`[WH-T7] ${fid}: real T7 move clips unavailable, moves keep their current clips:`, e.message || e);

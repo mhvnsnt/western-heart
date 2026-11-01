@@ -5,7 +5,7 @@ Pressing a basic button fired a different move:
 
 | fighter | button | fired (before) | fires now |
 |---|---|---|---|
-| Purple Rain | 1 | `1,2,&amp;#58;4` (3-hit string Left Right Mid Kick) | `1~t8.lee` Jab (plays Lee's real T7 jab) |
+| Purple Rain | 1 | `1,2,&amp;#58;4` (3-hit string Left Right Mid Kick) | `1~t8.lee` Jab (plays its real T7 jab) |
 | Purple Rain | 3 | `3~3` (Mist Trap / Trick Kick) | `3~t8.lee` Mist Kick |
 | Purple Rain | 4 | `4,4,&amp;#58;4` (Machinegun Kicks Cardinal) | `4~t8.lee` Head Kick |
 | Phantom | 3 / 4 | `3~4` / `4~3` | `3~t8.yoshimitsu` / `4~t8.yoshimitsu` |
