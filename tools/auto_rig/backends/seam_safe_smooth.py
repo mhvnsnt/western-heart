@@ -59,8 +59,11 @@ def run(inp, outp, threshold=2.0, gate=2.5, rounds=8, rings=2, iters=10, lam=0.5
     model = ac.AnimModel(inp)
     if not model.js.get('animations'):
         raise SystemExit('no embedded clip to evaluate against (bake one: heat_rebind.py --donor ...)')
-    if len(model.prims) != 1:
-        raise SystemExit('expects one skinned primitive (got %d)' % len(model.prims))
+    if not model.prims:
+        raise SystemExit('no skinned primitive')
+    # multi-part exports (2026-11-01): all skinned primitives are smoothed as ONE welded mesh (they share the
+    # skeleton's bind space), so seams between parts also get identical weights; each part's slice is written back.
+    offs = np.cumsum([0] + [len(q['pos']) for q in model.prims])
     jidx = np.array(model.joint_nodes)
     bind = model.bind_world()
     bind_skin = np.stack([bind[int(j)] @ model.ibm[k] for k, j in enumerate(jidx)])
@@ -70,7 +73,11 @@ def run(inp, outp, threshold=2.0, gate=2.5, rounds=8, rings=2, iters=10, lam=0.5
         for t in times:
             w = model.eval_world(chans, t)
             frame_skins.append(np.stack([w[int(j)] @ model.ibm[k] for k, j in enumerate(jidx)]))
-    prim = model.prims[0]
+    prim = {'pos': np.concatenate([q['pos'] for q in model.prims]),
+            'joints': np.concatenate([q['joints'] for q in model.prims]),
+            'weights': np.concatenate([q['weights'] for q in model.prims]),
+            'idx': np.concatenate([(q['idx'] if q['idx'] is not None else np.arange(len(q['pos']))) + o
+                                   for q, o in zip(model.prims, offs[:-1])])}
     P = prim['pos']
     pos_h = np.c_[P, np.ones(len(P))]
     E = prim_edges(prim)
@@ -128,23 +135,24 @@ def run(inp, outp, threshold=2.0, gate=2.5, rounds=8, rings=2, iters=10, lam=0.5
         print('round %d: smoothed %d welded verts -> p99.9 %.3f, edges > %.1f: %d'
               % (rnd, mark.sum(), p999, threshold, (maxr > threshold).sum()), flush=True)
     # write back (top-4 of the welded weights, identical on every seam copy)
+    # same primitive order as anim_check.AnimModel._load_skin_data (meshes, then their skinned primitives)
     js, binarr = read_glb(inp)
-    done = False
-    for nd in js['nodes']:
-        if done or 'mesh' not in nd or nd.get('skin') is None:
-            continue
-        for pr in js['meshes'][nd['mesh']]['primitives']:
+    k = 0
+    for mesh in js.get('meshes', []):
+        for pr in mesh.get('primitives', []):
             at = pr['attributes']
-            if 'JOINTS_0' not in at:
+            if 'JOINTS_0' not in at or 'POSITION' not in at:
                 continue
             Jv, _ = view(js, binarr, at['JOINTS_0'])
             Wv, wacc = view(js, binarr, at['WEIGHTS_0'])
             if wacc['componentType'] != 5126:
                 raise SystemExit('WEIGHTS_0 must be float')
-            Jv[:] = J4.astype(Jv.dtype)
-            Wv[:] = W4.astype(Wv.dtype)
-            done = True
-            break
+            sl = slice(offs[k], offs[k + 1])
+            Jv[:] = J4[sl].astype(Jv.dtype)
+            Wv[:] = W4[sl].astype(Wv.dtype)
+            k += 1
+    if k != len(model.prims):
+        raise SystemExit('wrote %d primitives, read %d' % (k, len(model.prims)))
     write_glb(outp, js, binarr)
     rep = {'input': inp, 'output': outp, 'tool': 'tools/auto_rig/backends/seam_safe_smooth.py', 'gate': gate,
            'threshold': threshold, 'rings': rings, 'iters': iters, 'lam': lam, 'frames_per_clip': frames,

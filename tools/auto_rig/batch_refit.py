@@ -125,7 +125,7 @@ def refit_one(row, report_root, cdir, dry):
         if dry: return dict(res, status='DRY RUN')
         env = dict(os.environ)
         r = subprocess.run([sys.executable, os.path.join(HERE, 'refit_rig.py'), '--in', src, '--out', out, '--report-dir', rep,
-                            '--facing', facing, '--height', str(height)], capture_output=True, text=True, env=env)
+                            '--facing=' + facing, '--height=' + str(height)], capture_output=True, text=True, env=env)  # '=': '-Z' is a value
         res['seconds'] = round(time.time() - t0)
         if r.returncode or not os.path.exists(out):
             return dict(res, status='REFIT FAILED', error=(r.stderr or r.stdout)[-400:])
@@ -161,6 +161,11 @@ def main():
     ap.add_argument('--report-root', required=True)
     ap.add_argument('--jobs', type=int, default=2)
     ap.add_argument('--only', default='')
+    ap.add_argument('--exclude', default='', help='comma list of keys / path substrings to leave out')
+    ap.add_argument('--max-prims', type=int, default=0,
+                    help='only models with at most this many primitives (multi-part support in head_territory / seam_safe_smooth pending)')
+    ap.add_argument('--kind', choices=('all', 'rigged', 'static'), default='all',
+                    help='rigged = re-rig skinned models (the proven Negativo path); static = rig the unrigged ones')
     ap.add_argument('--limit', type=int, default=0)
     ap.add_argument('--dry-run', action='store_true')
     a = ap.parse_args()
@@ -171,6 +176,9 @@ def main():
         if not (any(f in v for f in FIX) or v.startswith('STATIC')): continue
         if 'A-POSE' in v: skipped.append((r['path'], 'A-pose: needs the A-pose path')); continue
         if a.only and not any(s in ' '.join(r['used_by']) + r['path'] for s in a.only.split(',')): continue
+        if a.exclude and any(s in ' '.join(r['used_by']) + r['path'] for s in a.exclude.split(',')): continue
+        if (a.kind == 'rigged' and not r.get('skinned')) or (a.kind == 'static' and r.get('skinned')): continue
+        if a.max_prims and r.get('primitives', 1) > a.max_prims: continue
         want.append(r)
     # a fighter's default model first (what a player sees first; a static default cannot animate at all), then attires
     want.sort(key=lambda r: (0 if any(re.fullmatch(r'[a-z0-9_-]+', k) and 'attire' not in k for k in r['used_by']) else 1,

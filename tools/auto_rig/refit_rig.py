@@ -12,6 +12,7 @@ in his face, the arms 0.18 m above his arms and the hip joints in his belly. Eve
   4. tools/auto_rig/backends/heat_rebind.py     Blender bone heat (voxel proxy), scaled to --height, CMU 135_04
                                                 boxing window baked as the deformation gate clip
   5. tools/auto_rig/head_territory.py           head + hair rigid on Head (geodesic fade at the shoulders), neck blend
+  5b. tools/auto_rig/secondary_chains.py        long hair below the neck -> hair_jiggle chains (production hair physics)
   6. tools/auto_rig/backends/seam_safe_smooth.py welded Laplacian + continuous top-4 until strict p99.9 <= --gate
   7. gates: validate.py, anim_check.py (official), rig_inspect.py seams / stretch / shares (+ PNGs with matplotlib)
   8. tools/anim/gltf_codec.mjs encode           -> --out
@@ -108,7 +109,7 @@ def main():
         run(['node', codec, 'decode', a.inp, dec], log)
     else:
         shutil.copy(a.inp, dec)
-    cmd = py + [os.path.join(HERE, 'refit_skeleton.py'), '--mesh', dec, '--out', W('fit.json'), '--facing', a.facing,
+    cmd = py + [os.path.join(HERE, 'refit_skeleton.py'), '--mesh', dec, '--out', W('fit.json'), '--facing=' + a.facing,
                 '--static-out', W('static.glb')]
     if a.template:
         cmd += ['--template', a.template]
@@ -125,7 +126,13 @@ def main():
     # 5-6
     run(py + [os.path.join(HERE, 'head_territory.py'), '--in', W('rig.glb'), '--out', W('rig_t.glb'),
               '--report', R('head_territory.json')], log)
-    sm = run(py + [os.path.join(HERE, 'backends', 'seam_safe_smooth.py'), '--in', W('rig_t.glb'), '--out', W('rig_s.glb'),
+    # long hair hanging below the neck gets its own hair_jiggle chains (game springbones simulates them) instead of
+    # riding the spine / thighs (Phantom: p99.9 7.3 from waist-length hair on his legs); no long hair: unchanged copy
+    run(py + [os.path.join(HERE, 'secondary_chains.py'), '--in', W('rig_t.glb'), '--out', W('rig_h.glb'),
+              '--report', R('secondary_chains.json')], log, ok=(0, 1))
+    if not os.path.exists(W('rig_h.glb')):  # fail-safe: an error here never blocks the refit
+        shutil.copy(W('rig_t.glb'), W('rig_h.glb'))
+    sm = run(py + [os.path.join(HERE, 'backends', 'seam_safe_smooth.py'), '--in', W('rig_h.glb'), '--out', W('rig_s.glb'),
                    '--gate', str(a.gate), '--rounds', str(a.rounds), '--report', R('seam_safe_smooth.json')], log, ok=(0, 1))
     final = W('rig_s.glb')
     # 7

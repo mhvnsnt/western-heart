@@ -83,6 +83,10 @@ def territory(P, tris, jp, H, arm_r_frac=0.35, band_m=0.08):
     else:
         ring = np.abs(Pw[:, 1] - y_mid) < 0.004 * H
         neck_r = 1.15 * float(np.percentile(dh[ring], 20)) if ring.sum() > 10 else 0.05 * H
+    # anatomical clamp (2026-11-01): hair or a collar around the throat makes the slab read the hair mass as neck
+    # (Phantom: 0.32 m = 18% of his height, so the Neck -> Head blend spread over his shoulders and chest). Clamp to
+    # 2-6% of standing height (Negativo's passing refits measured 5.0-5.3%: unchanged)
+    neck_r = float(np.clip(neck_r, 0.02 * H, 0.06 * H))
     b_neck = (Pw[:, 1] < head[1]) & (dh < neck_r)
     arm_len = np.mean([np.linalg.norm(jp[s + 'ForeArm'] - jp[s + 'Arm']) for s in ('Left', 'Right')])
     arm_r = arm_r_frac * arm_len
@@ -136,68 +140,88 @@ def territory(P, tris, jp, H, arm_r_frac=0.35, band_m=0.08):
 
 
 def apply(inp, outp, report=None, arm_r=0.35, band=0.08):
+    """All skinned primitives are processed as ONE mesh (2026-11-01): multi-part exports (Awa Pop: 31 parts) were
+    handled part by part, each with its own height and connectivity, so a 54-vertex part decided the head territory.
+    Positions of skinned primitives share the skeleton's bind space, so they merge directly; every part's slice of
+    the result is written back to its own accessors."""
     js, binarr = read_glb(inp)
     out = {'input': inp, 'tool': 'tools/auto_rig/head_territory.py'}
-    done = set()
-    for ni, nd in enumerate(js['nodes']):
+    parts, skin_i = [], None
+    seen = set()
+    for nd in js['nodes']:
         if 'mesh' not in nd or nd.get('skin') is None:
             continue
-        skin = js['skins'][nd['skin']]
-        names, jp = joint_positions(js, binarr, skin)
-        need = ['Head', 'Neck', 'Spine2', 'LeftShoulder', 'RightShoulder', 'LeftArm', 'RightArm', 'LeftForeArm', 'RightForeArm']
-        miss = [n for n in need if n not in jp]
-        if miss:
-            raise SystemExit('missing canonical joints: %s' % miss)
-        ih, ink = names.index('Head'), names.index('Neck')
+        if skin_i is None:
+            skin_i = nd['skin']
+        elif nd['skin'] != skin_i:
+            raise SystemExit('more than one skin: head_territory expects one skeleton')
         for pi, prim in enumerate(js['meshes'][nd['mesh']]['primitives']):
             at = prim['attributes']
-            if (nd['mesh'], pi) in done or 'JOINTS_0' not in at:
+            if (nd['mesh'], pi) in seen or 'JOINTS_0' not in at:
                 continue
-            done.add((nd['mesh'], pi))
-            P = np.asarray(view(js, binarr, at['POSITION'])[0], dtype=np.float64)
-            tris = np.asarray(view(js, binarr, prim['indices'])[0]).reshape(-1, 3).astype(np.int64)
+            seen.add((nd['mesh'], pi))
             Jv, _ = view(js, binarr, at['JOINTS_0'])
             Wv, wacc = view(js, binarr, at['WEIGHTS_0'])
             if wacc['componentType'] != 5126:
                 raise SystemExit('WEIGHTS_0 must be float (got componentType %d)' % wacc['componentType'])
-            Jn = np.asarray(Jv).astype(np.int64)
-            W = np.asarray(Wv, dtype=np.float64)
-            H = float(P[:, 1].max() - P[:, 1].min())
-            terr, dh, geo, neck_r, diag = territory(P, tris, jp, H, arm_r, band * H)
-            nb = len(names)
-            dense = np.zeros((len(P), nb))
-            np.add.at(dense, (np.repeat(np.arange(len(P)), 4), Jn.ravel()), W.ravel())
-            before_head = dense[:, ih].copy()
-            # 4. neck band
-            yn, yh, ys2 = jp['Neck'][1], jp['Head'][1], jp['Spine2'][1]
-            neckm = (dh < neck_r) & (P[:, 1] >= yn - 0.5 * (yn - ys2)) & (P[:, 1] < yh) & ~terr
-            s = smoothstep(yn, yh, P[neckm, 1])
-            yb = P[neckm, 1]
-            # fade in under the Neck joint, and radially at the cylinder's rim there (torso outside it); above the
-            # Neck joint the outside is the head territory, so no radial fade (it would split chin from throat)
-            a = smoothstep(yn - 0.5 * (yn - ys2), yn, yb) * np.where(
-                yb < yn, 1 - smoothstep(0.75 * neck_r, neck_r, dh[neckm]), 1.0)
-            tgt = np.zeros((neckm.sum(), nb))
-            tgt[:, ink] = 1 - s
-            tgt[:, ih] = s
-            dense[neckm] = (1 - a)[:, None] * dense[neckm] + a[:, None] * tgt
-            # 3. territory, faded in from the arm/torso contact
-            f = np.where(np.isfinite(geo[terr]), smoothstep(0.0, band * H, geo[terr]), 1.0)
-            tgt = np.zeros((terr.sum(), nb))
-            tgt[:, ih] = 1
-            dense[terr] = (1 - f)[:, None] * dense[terr] + f[:, None] * tgt
-            changed = terr | neckm
-            # 5. top-4, renormalize, write back
-            idx = np.argsort(-dense[changed], axis=1)[:, :4]
-            w4 = np.take_along_axis(dense[changed], idx, 1)
-            w4 /= np.maximum(w4.sum(1, keepdims=True), 1e-12)
-            Jv[changed] = idx.astype(Jv.dtype)
-            Wv[changed] = w4.astype(Wv.dtype)
-            diag.update({'mesh': nd['mesh'], 'primitive': pi, 'verts': len(P),
-                         'territory_verts': int(terr.sum()), 'neck_band_verts': int(neckm.sum()), 'territory_faded_verts': int((terr & np.isfinite(geo)).sum()),
-                         'head_weight_mean_in_territory_before': round(float(before_head[terr].mean()), 3) if terr.any() else None,
-                         'territory_verts_that_had_head_below_0.5': int((terr & (before_head < 0.5)).sum())})
-            out.setdefault('primitives', []).append(diag)
+            P = np.asarray(view(js, binarr, at['POSITION'])[0], dtype=np.float64)
+            T = (np.asarray(view(js, binarr, prim['indices'])[0]).reshape(-1, 3).astype(np.int64) if 'indices' in prim
+                 else np.arange(len(P)).reshape(-1, 3))
+            parts.append({'mesh': nd['mesh'], 'primitive': pi, 'P': P, 'T': T, 'Jv': Jv, 'Wv': Wv})
+    if not parts:
+        raise SystemExit('no skinned primitive')
+    skin = js['skins'][skin_i]
+    names, jp = joint_positions(js, binarr, skin)
+    need = ['Head', 'Neck', 'Spine2', 'LeftShoulder', 'RightShoulder', 'LeftArm', 'RightArm', 'LeftForeArm', 'RightForeArm']
+    miss = [n for n in need if n not in jp]
+    if miss:
+        raise SystemExit('missing canonical joints: %s' % miss)
+    ih, ink = names.index('Head'), names.index('Neck')
+    offs = np.cumsum([0] + [len(q['P']) for q in parts])
+    P = np.concatenate([q['P'] for q in parts])
+    tris = np.concatenate([q['T'] + o for q, o in zip(parts, offs[:-1])])
+    Jn = np.concatenate([np.asarray(q['Jv']).astype(np.int64) for q in parts])
+    W = np.concatenate([np.asarray(q['Wv'], dtype=np.float64) for q in parts])
+    H = float(P[:, 1].max() - P[:, 1].min())
+    terr, dh, geo, neck_r, diag = territory(P, tris, jp, H, arm_r, band * H)
+    nb = len(names)
+    dense = np.zeros((len(P), nb))
+    np.add.at(dense, (np.repeat(np.arange(len(P)), 4), Jn.ravel()), W.ravel())
+    before_head = dense[:, ih].copy()
+    # 4. neck band
+    yn, yh, ys2 = jp['Neck'][1], jp['Head'][1], jp['Spine2'][1]
+    neckm = (dh < neck_r) & (P[:, 1] >= yn - 0.5 * (yn - ys2)) & (P[:, 1] < yh) & ~terr
+    s = smoothstep(yn, yh, P[neckm, 1])
+    yb = P[neckm, 1]
+    # fade in under the Neck joint, and radially at the cylinder's rim there (torso outside it); above the
+    # Neck joint the outside is the head territory, so no radial fade (it would split chin from throat)
+    a = smoothstep(yn - 0.5 * (yn - ys2), yn, yb) * np.where(
+        yb < yn, 1 - smoothstep(0.75 * neck_r, neck_r, dh[neckm]), 1.0)
+    tgt = np.zeros((neckm.sum(), nb))
+    tgt[:, ink] = 1 - s
+    tgt[:, ih] = s
+    dense[neckm] = (1 - a)[:, None] * dense[neckm] + a[:, None] * tgt
+    # 3. territory, faded in from the arm/torso contact
+    f = np.where(np.isfinite(geo[terr]), smoothstep(0.0, band * H, geo[terr]), 1.0)
+    tgt = np.zeros((terr.sum(), nb))
+    tgt[:, ih] = 1
+    dense[terr] = (1 - f)[:, None] * dense[terr] + f[:, None] * tgt
+    changed = terr | neckm
+    # 5. top-4, renormalize, write back to every part's own accessors
+    idx = np.argsort(-dense, axis=1)[:, :4]
+    w4 = np.take_along_axis(dense, idx, 1)
+    w4 /= np.maximum(w4.sum(1, keepdims=True), 1e-12)
+    for q, o in zip(parts, offs[:-1]):
+        sl = slice(o, o + len(q['P']))
+        ch = changed[sl]
+        q['Jv'][ch] = idx[sl][ch].astype(q['Jv'].dtype)
+        q['Wv'][ch] = w4[sl][ch].astype(q['Wv'].dtype)
+    diag.update({'parts': len(parts), 'verts': len(P),
+                 'territory_verts': int(terr.sum()), 'neck_band_verts': int(neckm.sum()),
+                 'territory_faded_verts': int((terr & np.isfinite(geo)).sum()),
+                 'head_weight_mean_in_territory_before': round(float(before_head[terr].mean()), 3) if terr.any() else None,
+                 'territory_verts_that_had_head_below_0.5': int((terr & (before_head < 0.5)).sum())})
+    out['primitives'] = [diag]
     write_glb(outp, js, binarr)
     if report:
         json.dump(out, open(report, 'w'), indent=1)
