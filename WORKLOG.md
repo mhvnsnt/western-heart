@@ -4259,6 +4259,34 @@ downstream witness/resolution, not canon). Deletions: none.
 - Deliberately NOT claimed: the 0x64 joint-frame fix is still open (clips decode but 0x64 poses read crumpled per the BUILD-LOG 2026-10-29 finding), so nothing here is bake-ready; no T7 bank is built, no `anim_t7` refs are added, and no `_attackClipPlan` change is made in this chunk. No game/ change, so no Pages deploy follows.
 - Deletions: none.
 
+## 2026-11-01 — Claude: select-screen sweep (names law + favorites band layout)
+
+Branch `claude/select-screen-sweep` (draft PR, not merged). Kept compatible with draft PR #1486
+(`claude/cs-phase1-template-create`): the two Pantera attire labels use the exact same text as #1486
+(`ATTIRE 3 · CLASSIC`, `ATTIRE 6 · CLASSIC ALT`) so both branches merge cleanly; no other overlap.
+- Names law (docs/rules/NO-SOURCE-CHARACTER-NAMES.md): every player-facing attire `label` in game/js/attires.js
+  that named a source game/character (Tekken/T7/T8, KOF, Street Fighter: Anna, Iori, Bosconovitch, Zafina, Baek,
+  Jin Kazama, Blanka, Katarina, Nina, King, Dragunov, Steve, Vega, Armor King, Miguel, Akuma, Negan, Bryan Fury,
+  Zangief) is now generic (`ATTIRE n · CLASSIC` etc.); the source moved into a new internal `src` provenance
+  field that nothing renders. Roster fighting-style text on the select plate: Mishima Karate / Mishima ->
+  Karate, Kazama Style -> Traditional Martial Arts (game/js/roster-full.js). Versus format picker text drops
+  "TTT2" (game/js/select-screen.js). Favorites caption "FAVORITES · T7 5.10" -> "FAVORITES" (game/js/ui-gaps.js).
+  Left as-is on purpose: RAVE `ATTIRE 3 · MUTA` (owner-locked Great Muta tribute in CANON.md, not a source-game
+  character). Note: favorites saved before this change store the old label text, so their attire recall falls
+  back to the fighter's current attire.
+- Layout (game/select-t7.css): the favorites bar (ui-gaps.js appends it after the hint bar) fell to the top of
+  the absolutely-positioned T8 select and sat on BACK / the P1 tag / the timer. It is now its own band directly
+  above the hint bar (T7 bottom prompt band, teardown/tekken7-steam-ui/T7-UI-LAYOUT.md, already cited for
+  screen-select); roster band + stage move up by `--fav-h` (set only when the bar is mounted, via `:has`);
+  caption hidden in portrait so SAVE + 3 FAV slots fit; P1 side tag moved to 100px so it clears BACK.
+  Proof: Playwright overlap probe (WebGL draws stubbed), 0 overlapping controls at 390x844 and 844x390, with and
+  without 3 saved favorites (before: BACK x FAVORITES label, timer x SAVE FAVORITE, BACK x P1 tag).
+- Asset note (not fixed): roster/pantera/attires/snow-leopard/pantera-snow-leopard.glb is in the repo and in
+  tools/deploy/r2-upload-manifest.json but the Worker (western-heart-assets.mhvnsnt.workers.dev) returns 404 for
+  it (crimson-rage returns 200). No repo workflow uploads to the B2 bucket (upload is a local, credentialed step),
+  so it needs a re-upload by whoever holds the B2 key.
+- Deletions: none.
+
 ## 2026-10-31 — Claude: FREE CAMERA behind PAUSE, session handoff, T7 stance work
 
 - UI change (owner: the FREE CAMERA button "is always covering up stuff"): removed the always-on top-right button
