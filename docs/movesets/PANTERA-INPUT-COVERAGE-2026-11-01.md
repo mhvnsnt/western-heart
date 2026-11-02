@@ -18,24 +18,40 @@ the same measurement as `tools/anim/move_coverage_probe.mjs`).
   is `verified` with a finite row — so the attack fired and no clip
   played; the body stayed in bind pose for the whole move.
 - **The fix (this PR):** `tools/input-verify/promote_step_plans.py`
-  promoted 72 steps across 31 plans in `game/assets/movesets/pantera.json`.
+  promoted 55 steps across 29 plans in `game/assets/movesets/pantera.json`.
   A step was promoted only when two places in the same moveset agree on
   the row: the plan's `candidate_row` AND the prefix move's own record
   (its name cites the row, or a t3_row field) — and the row exists in the
-  bound bank's `rows.pack.json`. Nothing was promoted on one source alone.
-- **After the fix (re-measured with the same probe): 229 OK, 9 TPOSE,
+  bound bank's `rows.pack.json`. Two recorded exclusions were applied
+  (below). Nothing was promoted on one source alone.
+- **After the fix (re-measured with the same probe): 227 OK, 11 TPOSE,
   0 NOFIRE, 0 ERROR** — the per-input table below is the after-fix run.
-  The repo's strike/throw unit test (`test/attack-anim.test.mjs`) passes
-  against the fixed data.
+  The repo's promotion tests pass against the fixed data
+  (`test/pantera-fk-promotion.test.mjs`, extended with this wave's lock;
+  `test/attack-anim.test.mjs` strike/throw test).
 
-## Still dead (9) — no honest promotion available
+## Exclusions — where agreement was NOT enough
 
-- `1+3,1` and `2+4,1`: their records cite rows 415 / 417, and the plans
-  agree — but the bank's hit data (`hit_frames.json`) classifies both
-  rows as throws while the slots are strikes. The repo's strike/throw
-  test rejects the pairing and the engine's runtime gate would too, so
-  the promotions are vetoed in the tool and the steps stay unmapped
-  until the conflict is adjudicated.
+- **Recorded FK failures stay unmapped.** Steps whose (step, row) pair
+  carries a recorded FK soft-gate failure in the plan data ("stays
+  REVIEW until adjudication + play-verify") were excluded everywhere
+  they appear — rows 257 / 258 in the `f+2,1,1` family (17 instances;
+  257 failed wrong-limb, 258 at 4% of peak). Their slots `f+2,1,1` and
+  `f+2,1,1,2` therefore stay dead until the FK adjudication happens;
+  the longer f+2 strings still play (their later steps are promoted),
+  with those two steps silent mid-string.
+- **Strike/throw conflicts stay unmapped.** `1+3,1` and `2+4,1`: their
+  records cite rows 415 / 417, and the plans agree — but the bank's hit
+  data (`hit_frames.json`) classifies both rows as throws while the
+  slots are strikes. The repo's strike/throw test rejects the pairing
+  and the engine's runtime gate would too, so the promotions are
+  vetoed in the tool (`--veto`) until adjudicated.
+
+## Still dead (11)
+
+- `1+3,1`, `2+4,1` — strike/throw conflict (above).
+- `f+2,1,1`, `f+2,1,1,2` — final steps are the FK-failed rows 257 / 258
+  (above).
 - `1,2,1,1,2,4,4,4,1,3` and `1,2,1,1,3,3,4,3,2,1+2` (the 10-hit combos):
   plans exist, but every step after the first has no candidate row
   anywhere in the moveset data.
@@ -68,7 +84,7 @@ not need the option.
 
 Tool: `tools/input-verify/input_coverage_probe.mjs` (game time stepped directly, FIXED_DT 1/120; no wall-clock waits).
 
-**Tally: OK 229, TPOSE 9**; plan kinds: t7 65, anim 42, notation 12, step-plan 58, match 7, own 34, donor 20
+**Tally: OK 227, TPOSE 11**; plan kinds: t7 65, anim 42, notation 12, step-plan 58, match 7, own 34, donor 20
 
 Outcomes: OK = fired and an animation played from neutral. TPOSE = fired but the body stayed in bind pose (no animation). CHAIN-OK = a string continuation that stays in bind pose when fed cold from neutral but animates when the string is chained the way a player inputs it (chain pass: prefixes fed in turn, game time stepped between them). NOFIRE = the input layer rejected it. ERROR = probe-side failure.
 
@@ -83,6 +99,8 @@ Outcomes: OK = fired and an animation played from neutral. TPOSE = fired but the
 | `b+1+2,1+2` | yes |  | step-plan | TPOSE | Back Swing — chained replay: NOFIRE |
 | `d+1,2` | yes |  | step-plan | TPOSE | Move d+1 (d+1) — chained replay: NOFIRE |
 | `d/b+1+2,3+4` | yes |  | step-plan | TPOSE | Jaguar Sprint — chained replay: NOFIRE |
+| `f+2,1,1` | yes |  | step-plan | TPOSE | KING f+2,1,1_r4 (T3 king r257) — chained replay: NOFIRE |
+| `f+2,1,1,2` | yes |  | step-plan | TPOSE | KING f+2,1,1,2_r4 (T3 king r258) — chained replay: TPOSE |
 | `3+4,3,2+3` | yes |  | step-plan | TPOSE | Sobat — chained replay: NOFIRE |
 | `WS+2,2` | yes |  | step-plan | TPOSE | Move ws2 (ws2) — chained replay: TPOSE |
 
@@ -230,8 +248,8 @@ Outcomes: OK = fired and an animation played from neutral. TPOSE = fired but the
 | `f+2+3` | yes | t7:f+2+3~t7.king | t7 | OK | real T7 Kg_Mpl_kata (kgyt_katacl_DVD) |
 | `f+2+4` | yes | row:128 | donor | OK | donor row 128 |
 | `f+2,1` | yes | t7:f+2~t7.king | t7 | OK | real T7 Kg_rp00F (kgke_ren1_ak6rp_DVD) |
-| `f+2,1,1` | yes | row:257 | step-plan | OK | step-plan last step (f+2,1,1) |
-| `f+2,1,1,2` | yes | row:258 | step-plan | OK | step-plan last step (f+2,1,1,2) |
+| `f+2,1,1` | yes |  | step-plan | TPOSE | KING f+2,1,1_r4 (T3 king r257) — chained replay: NOFIRE |
+| `f+2,1,1,2` | yes |  | step-plan | TPOSE | KING f+2,1,1,2_r4 (T3 king r258) — chained replay: TPOSE |
 | `f+2,1,1,2,4` | yes | row:259 | step-plan | OK | step-plan last step (f+2,1,1,2,4) |
 | `f+2,1,1,2,4,4` | yes | row:260 | step-plan | OK | step-plan last step (f+2,1,1,2,4,4) |
 | `f+2,1,1,2,4,4,4` | yes | row:261 | step-plan | OK | step-plan last step (f+2,1,1,2,4,4,4) |

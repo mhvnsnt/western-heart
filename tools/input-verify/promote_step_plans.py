@@ -17,6 +17,17 @@ sources disagree is a conflict, not evidence (Pantera's f+2: the record
 cites row 230 while a verified plan step plays 111 — left alone). Steps
 with no candidate stay unmapped and are printed.
 
+FK exclusion (from the data itself): a step whose reasons record an
+FK soft-gate failure ("FK soft gate already run by Batch 1 and failed
+narrowly - stays REVIEW until adjudication + play-verify") is NEVER
+promoted — the recorded failures include wrong-limb and near-zero-peak
+rows whose records agree but whose motion is wrong (rows 257 / 258 in
+the f+2,1,1 family; row 117 for d/f+1). The verdict belongs to the
+(step, row) pair, so the failed pairs are collected from every plan
+first and applied to every instance, including the copies inside
+longer strings that do not repeat the note.
+test/pantera-fk-promotion.test.mjs guards instances of these steps.
+
 Adjudication vetoes (--veto prefix=row, repeatable): a step whose pairing
 the repo's own strike/throw test (test/attack-anim.test.mjs, "no strike
 plays a throw row") rejects is NOT promoted, however well the moveset's
@@ -64,6 +75,15 @@ def main():
     moves = ms.get('moves', {})
     slots = ms.get('slots', {})
 
+    # Recorded FK soft-gate failures, keyed by (step, candidate row) —
+    # collected across ALL plans before any promotion (see docstring).
+    fk_failed = set()
+    for plan in plans.values():
+        for st in plan['steps']:
+            rs = ' | '.join(st.get('reasons') or [])
+            if 'FK soft gate' in rs and 'failed' in rs and st.get('candidate_row'):
+                fk_failed.add((st['step'], int(st['candidate_row'])))
+
     def move_row(key):
         m = moves.get(key) or slots.get(key) or {}
         if isinstance(m, dict):
@@ -90,6 +110,9 @@ def main():
                 continue
             cand = s.get('candidate_row')
             prow = move_row(s['prefix'])
+            if cand and (s['step'], int(cand)) in fk_failed:
+                print(f'{n}: step {s["prefix"]} FK-FAILED (recorded for step {s["step"]} row {cand}) — stays {s.get("status")}')
+                continue
             if cand and (s['prefix'], int(cand)) in vetoes:
                 print(f'{n}: step {s["prefix"]} VETOED (adjudicated strike/throw conflict, row {cand}); stays {s.get("status")}')
                 continue

@@ -1424,14 +1424,13 @@
      {
       "step": "1",
       "prefix": "f+2,1,1",
-      "row": 257,
-      "status": "verified",
+      "row": null,
+      "status": "review",
       "candidate_row": 257,
       "candidate_source": "t3-branch-graph",
       "reasons": [
        "identity branch-proven: GRE tekken3/movesets/moveset_king.json branch graph (see research doc)",
-       "FK soft gate already run by Batch 1 and failed narrowly - stays REVIEW until adjudication + play-verify",
-       "promoted 2026-11-01: row confirmed by the prefix move's own record in this same moveset (probe docs/movesets/PANTERA-INPUT-COVERAGE-2026-11-01.md)"
+       "FK soft gate already run by Batch 1 and failed narrowly - stays REVIEW until adjudication + play-verify"
       ]
      }
     ],
@@ -1474,27 +1473,25 @@
      {
       "step": "1",
       "prefix": "f+2,1,1",
-      "row": 257,
-      "status": "verified",
+      "row": null,
+      "status": "review",
       "candidate_row": 257,
       "candidate_source": "t3-branch-graph",
       "reasons": [
        "identity branch-proven: GRE tekken3/movesets/moveset_king.json branch graph (see research doc)",
-       "FK soft gate already run by Batch 1 and failed narrowly - stays REVIEW until adjudication + play-verify",
-       "promoted 2026-11-01: row confirmed by the prefix move's own record in this same moveset (probe docs/movesets/PANTERA-INPUT-COVERAGE-2026-11-01.md)"
+       "FK soft gate already run by Batch 1 and failed narrowly - stays REVIEW until adjudication + play-verify"
       ]
      },
      {
       "step": "2",
       "prefix": "f+2,1,1,2",
-      "row": 258,
-      "status": "verified",
+      "row": null,
+      "status": "review",
       "candidate_row": 258,
       "candidate_source": "t3-branch-graph",
       "reasons": [
        "identity branch-proven: GRE tekken3/movesets/moveset_king.json branch graph (see research doc)",
-       "FK soft gate already run by Batch 1 and failed narrowly - stays REVIEW until adjudication + play-verify",
-       "promoted 2026-11-01: row confirmed by the prefix move's own record in this same moveset (probe docs/movesets/PANTERA-INPUT-COVERAGE-2026-11-01.md)"
+       "FK soft gate already run by Batch 1 and failed narrowly - stays REVIEW until adjudication + play-verify"
       ]
      }
     ],
@@ -8440,25 +8437,23 @@
      {
       "step": "1",
       "prefix": "f+2,1,1",
-      "row": 257,
-      "status": "verified",
+      "row": null,
+      "status": "review",
       "candidate_row": 257,
       "candidate_source": "prefix-move",
       "reasons": [
-       "SOFT limb-peak proxy fail: window [11.0,15.0] peaks {'armL': 9}",
-       "promoted 2026-11-01: row confirmed by the prefix move's own record in this same moveset (probe docs/movesets/PANTERA-INPUT-COVERAGE-2026-11-01.md)"
+       "SOFT limb-peak proxy fail: window [11.0,15.0] peaks {'armL': 9}"
       ]
      },
      {
       "step": "2",
       "prefix": "f+2,1,1,2",
-      "row": 258,
-      "status": "verified",
+      "row": null,
+      "status": "review",
       "candidate_row": 258,
       "candidate_source": "prefix-move",
       "reasons": [
-       "SOFT limb-peak proxy fail: window [6.5,11.5] peaks {'armR': 5}",
-       "promoted 2026-11-01: row confirmed by the prefix move's own record in this same moveset (probe docs/movesets/PANTERA-INPUT-COVERAGE-2026-11-01.md)"
+       "SOFT limb-peak proxy fail: window [6.5,11.5] peaks {'armR': 5}"
       ]
      },
      {
@@ -8507,25 +8502,23 @@
      {
       "step": "1",
       "prefix": "f+2,1,1",
-      "row": 257,
-      "status": "verified",
+      "row": null,
+      "status": "review",
       "candidate_row": 257,
       "candidate_source": "prefix-move",
       "reasons": [
-       "SOFT limb-peak proxy fail: window [11.0,15.0] peaks {'armL': 9}",
-       "promoted 2026-11-01: row confirmed by the prefix move's own record in this same moveset (probe docs/movesets/PANTERA-INPUT-COVERAGE-2026-11-01.md)"
+       "SOFT limb-peak proxy fail: window [11.0,15.0] peaks {'armL': 9}"
       ]
      },
      {
       "step": "2",
       "prefix": "f+2,1,1,2",
-      "row": 258,
-      "status": "verified",
+      "row": null,
+      "status": "review",
       "candidate_row": 258,
       "candidate_source": "prefix-move",
       "reasons": [
-       "SOFT limb-peak proxy fail: window [6.5,11.5] peaks {'armR': 5}",
-       "promoted 2026-11-01: row confirmed by the prefix move's own record in this same moveset (probe docs/movesets/PANTERA-INPUT-COVERAGE-2026-11-01.md)"
+       "SOFT limb-peak proxy fail: window [6.5,11.5] peaks {'armR': 5}"
       ]
      },
      {
@@ -8586,25 +8579,23 @@
      {
       "step": "1",
       "prefix": "f+2,1,1",
-      "row": 257,
-      "status": "verified",
+      "row": null,
+      "status": "review",
       "candidate_row": 257,
       "candidate_source": "prefix-move",
       "reasons": [
-       "SOFT limb-peak proxy fail: window [11.0,15.0] peaks {'armL': 9}",
-       "promoted 2026-11-01: row confirmed by the prefix move's own record in this same moveset (probe docs/movesets/PANTERA-INPUT-COVERAGE-2026-11-01.md)"
+       "SOFT limb-peak proxy fail: window [11.0,15.0] peaks {'armL': 9}"
       ]
      },
      {
       "step": "2",
       "prefix": "f+2,1,1,2",
-      "row": 258,
-      "status": "verified",
+      "row": null,
+      "status": "review",
       "candidate_row": 258,
       "candidate_source": "prefix-move",
       "reasons": [
-       "SOFT limb-peak proxy fail: window [6.5,11.5] peaks {'armR': 5}",
-       "promoted 2026-11-01: row confirmed by the prefix move's own record in this same moveset (probe docs/movesets/PANTERA-INPUT-COVERAGE-2026-11-01.md)"
+       "SOFT limb-peak proxy fail: window [6.5,11.5] peaks {'armR': 5}"
       ]
      },
      {
@@ -8772,25 +8763,23 @@
      {
       "step": "1",
       "prefix": "f+2,1,1",
-      "row": 257,
-      "status": "verified",
+      "row": null,
+      "status": "review",
       "candidate_row": 257,
       "candidate_source": "prefix-move",
       "reasons": [
-       "SOFT limb-peak proxy fail: window [11.0,15.0] peaks {'armL': 9}",
-       "promoted 2026-11-01: row confirmed by the prefix move's own record in this same moveset (probe docs/movesets/PANTERA-INPUT-COVERAGE-2026-11-01.md)"
+       "SOFT limb-peak proxy fail: window [11.0,15.0] peaks {'armL': 9}"
       ]
      },
      {
       "step": "2",
       "prefix": "f+2,1,1,2",
-      "row": 258,
-      "status": "verified",
+      "row": null,
+      "status": "review",
       "candidate_row": 258,
       "candidate_source": "prefix-move",
       "reasons": [
-       "SOFT limb-peak proxy fail: window [6.5,11.5] peaks {'armR': 5}",
-       "promoted 2026-11-01: row confirmed by the prefix move's own record in this same moveset (probe docs/movesets/PANTERA-INPUT-COVERAGE-2026-11-01.md)"
+       "SOFT limb-peak proxy fail: window [6.5,11.5] peaks {'armR': 5}"
       ]
      },
      {
@@ -8884,25 +8873,23 @@
      {
       "step": "1",
       "prefix": "f+2,1,1",
-      "row": 257,
-      "status": "verified",
+      "row": null,
+      "status": "review",
       "candidate_row": 257,
       "candidate_source": "prefix-move",
       "reasons": [
-       "SOFT limb-peak proxy fail: window [11.0,15.0] peaks {'armL': 9}",
-       "promoted 2026-11-01: row confirmed by the prefix move's own record in this same moveset (probe docs/movesets/PANTERA-INPUT-COVERAGE-2026-11-01.md)"
+       "SOFT limb-peak proxy fail: window [11.0,15.0] peaks {'armL': 9}"
       ]
      },
      {
       "step": "2",
       "prefix": "f+2,1,1,2",
-      "row": 258,
-      "status": "verified",
+      "row": null,
+      "status": "review",
       "candidate_row": 258,
       "candidate_source": "prefix-move",
       "reasons": [
-       "SOFT limb-peak proxy fail: window [6.5,11.5] peaks {'armR': 5}",
-       "promoted 2026-11-01: row confirmed by the prefix move's own record in this same moveset (probe docs/movesets/PANTERA-INPUT-COVERAGE-2026-11-01.md)"
+       "SOFT limb-peak proxy fail: window [6.5,11.5] peaks {'armR': 5}"
       ]
      },
      {
@@ -9047,13 +9034,12 @@
      {
       "step": "1",
       "prefix": "f+2,1,1",
-      "row": 257,
-      "status": "verified",
+      "row": null,
+      "status": "review",
       "candidate_row": 257,
       "candidate_source": "prefix-move",
       "reasons": [
-       "SOFT limb-peak proxy fail: window [11.0,15.0] peaks {'armL': 9}",
-       "promoted 2026-11-01: row confirmed by the prefix move's own record in this same moveset (probe docs/movesets/PANTERA-INPUT-COVERAGE-2026-11-01.md)"
+       "SOFT limb-peak proxy fail: window [11.0,15.0] peaks {'armL': 9}"
       ]
      },
      {
@@ -9111,13 +9097,12 @@
      {
       "step": "1",
       "prefix": "f+2,1,1",
-      "row": 257,
-      "status": "verified",
+      "row": null,
+      "status": "review",
       "candidate_row": 257,
       "candidate_source": "prefix-move",
       "reasons": [
-       "SOFT limb-peak proxy fail: window [11.0,15.0] peaks {'armL': 9}",
-       "promoted 2026-11-01: row confirmed by the prefix move's own record in this same moveset (probe docs/movesets/PANTERA-INPUT-COVERAGE-2026-11-01.md)"
+       "SOFT limb-peak proxy fail: window [11.0,15.0] peaks {'armL': 9}"
       ]
      },
      {
@@ -9187,13 +9172,12 @@
      {
       "step": "1",
       "prefix": "f+2,1,1",
-      "row": 257,
-      "status": "verified",
+      "row": null,
+      "status": "review",
       "candidate_row": 257,
       "candidate_source": "prefix-move",
       "reasons": [
-       "SOFT limb-peak proxy fail: window [11.0,15.0] peaks {'armL': 9}",
-       "promoted 2026-11-01: row confirmed by the prefix move's own record in this same moveset (probe docs/movesets/PANTERA-INPUT-COVERAGE-2026-11-01.md)"
+       "SOFT limb-peak proxy fail: window [11.0,15.0] peaks {'armL': 9}"
       ]
      },
      {
@@ -9574,13 +9558,12 @@
      {
       "step": "1",
       "prefix": "f+2,1,1",
-      "row": 257,
-      "status": "verified",
+      "row": null,
+      "status": "review",
       "candidate_row": 257,
       "candidate_source": "prefix-move",
       "reasons": [
-       "SOFT limb-peak proxy fail: window [11.0,15.0] peaks {'armL': 9}",
-       "promoted 2026-11-01: row confirmed by the prefix move's own record in this same moveset (probe docs/movesets/PANTERA-INPUT-COVERAGE-2026-11-01.md)"
+       "SOFT limb-peak proxy fail: window [11.0,15.0] peaks {'armL': 9}"
       ]
      },
      {
