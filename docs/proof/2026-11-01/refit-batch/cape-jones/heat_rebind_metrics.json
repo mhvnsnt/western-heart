@@ -1,0 +1,57 @@
+{
+ "input": "/tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-qh3lhozq/static.glb",
+ "fit": "/home/user/western-heart/docs/proof/2026-11-01/refit-batch/cape-jones/fit_landmarks.json",
+ "mesh_bbox_blender": [
+  [
+   -0.9272845983505249,
+   -0.2520941197872162,
+   0.0
+  ],
+  [
+   0.9280480146408081,
+   0.2337699681520462,
+   1.75
+  ]
+ ],
+ "scaled_to_height_m": 1.75,
+ "scale_factor": 1.0,
+ "bones": 50,
+ "unweighted_fixed": 0,
+ "heat_proxy": [
+  {
+   "voxel_m": 0.008,
+   "continuous_limit_verts": 474622,
+   "faces_remeshed": 97424,
+   "faces_proxy_after_decimate": 46334,
+   "proxy_verts": 24002,
+   "unweighted_proxy_verts": 0,
+   "mesh_scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "mesh_dims": [
+    1.855332612991333,
+    0.4858640730381012,
+    1.75
+   ],
+   "proxy_groups": 50,
+   "attempts": [
+    {
+     "tri_target": 48000,
+     "proxy_verts": 24002,
+     "unweighted": 0
+    }
+   ]
+  }
+ ],
+ "continuous_limit_verts": 0,
+ "test_clip": {
+  "action": "CMU135_04_boxing",
+  "frames": 72,
+  "bones": 26,
+  "donor": "/home/user/western-heart/assets/free-pull-1/cmu-mocap/fighting/135_04.bvh"
+ },
+ "out": "/tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-qh3lhozq/rig.glb",
+ "out_bytes": 82436176
+}
