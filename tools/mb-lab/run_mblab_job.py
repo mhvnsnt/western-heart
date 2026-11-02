@@ -49,6 +49,13 @@ def load_mblab(mblab_dir):
         os.symlink(mblab_dir, link)
     except OSError:
         pass  # already fine
+    # A user addons dir created during this run (fresh box / --factory-startup)
+    # is not on sys.path yet, so the enable below would fail with
+    # "No module named 'mblab'" (seen on Blender 4.3.2, 2026-11-01).
+    if addons_dir not in sys.path:
+        sys.path.append(addons_dir)
+    import addon_utils
+    addon_utils.modules_refresh()
     bpy.ops.preferences.addon_enable(module="mblab")
     import mblab as mod  # noqa: E402
     return mod
