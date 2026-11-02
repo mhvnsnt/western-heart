@@ -49,6 +49,9 @@ import { V, vskillDispatch, vshiftTap } from './v-system.js';
 // Restored 2026-10-22 (worker 54): the file + wiring were lost to a
 // stale-base clobber; this is the #616 wiring, re-applied surgically.
 import { HitFX } from './hitfx.js';
+// FRAME-STEP (2026-11-02, lag fix): cap fixed-step catch-up per render
+// frame so a hitch cannot spiral into extra sim steps (see frame-step.js).
+import { drainFixedSteps } from './frame-step.js';
 // LIGHTING RIG (worker 27): per-fighter character light rig — SFV/T7-style
 // character-vs-stage lighting separation + bible soul glow. Fail-silent.
 import { attachCharacterRig } from './lighting-rig.js';
@@ -433,9 +436,15 @@ export class Game {
         // V-System: V-Shift slow-mo dilates the sim (arena/camera stay live).
         if (this._slowMo > 0) this._slowMo -= frameDt;
         this._acc += frameDt * (this._slowMo > 0 ? V.SLOWMO_SCALE : 1);
-        while (this._acc >= FIXED_DT) {
-          this._update(FIXED_DT);
-          this._acc -= FIXED_DT;
+        // FRAME-STEP (2026-11-02): capped drain — at most MAX_FIXED_STEPS
+        // (4) sim steps per render frame; excess accumulator is dropped
+        // instead of carried over, so a hitch frame cannot spiral into
+        // extra fighter/hitbox/DOM work on the next frame. Hitstop
+        // itself is unchanged (it skips this drain while frozen).
+        {
+          const drained = drainFixedSteps(this._acc, FIXED_DT);
+          for (let i = 0; i < drained.steps; i++) this._update(FIXED_DT);
+          this._acc = drained.acc;
         }
       }
     }
