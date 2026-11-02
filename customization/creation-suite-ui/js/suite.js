@@ -112,11 +112,23 @@ function rosterAttire(slug, attireId){
   const f = rosterFighter(slug); if(!f) return null;
   return f.attires.find(a=>a.attire_id===attireId) || null;
 }
+/* LIVE BUILD (2026-11-02): GitHub Pages is at its 1 GB cap, so the 80 MB of template bodies (and newer data / model
+   files) are not on Pages. A file the page cannot serve loads from jsDelivr (the repo @main): the same fallback the
+   game uses for its real T7 move packs (game/js/t3anims.js fetchT7Json). */
+const CDN = 'https://cdn.jsdelivr.net/gh/mhvnsnt/western-heart@main/';
+async function fetchRepoJson(repoPath){
+  for(const u of ['../../'+repoPath, CDN+repoPath]){
+    try{ const r = await fetch(u); if(r.ok) return await r.json(); }catch(e){ /* next host */ }
+  }
+  return null;
+}
 async function loadBaseModel(){
   if(!viewer) return;
-  const url = '../../'+F.baseGlb;
-  try{ await viewer.loadBase(url); }
-  catch(e){ console.warn('[WH] base model failed', F.baseGlb, e); toast('Model failed to load: '+F.baseGlb); }
+  let err = null;
+  for(const url of ['../../'+F.baseGlb, CDN+F.baseGlb]){
+    try{ await viewer.loadBase(url); err = null; break; }catch(e){ err = e; }
+  }
+  if(err){ console.warn('[WH] base model failed', F.baseGlb, err); toast('Model failed to load'); }
   renderAll();
 }
 /* Select a roster fighter+attire: stash current, restore (or seed) its
@@ -1442,7 +1454,7 @@ async function boot(){
       fetch('data/jiggle-schema.json').then(r=>r.json()),
       fetch('data/roster-attires.json').then(r=>r.ok?r.json():null).catch(()=>null),
       fetch('data/fighter-parts.json').then(r=>r.ok?r.json():null).catch(()=>null),
-      fetch('../templates/body-templates.json').then(r=>r.ok?r.json():null).catch(()=>null),
+      fetchRepoJson('customization/templates/body-templates.json'),
     ]).then(([parts, jig, roster, fparts, tpls])=>{ TEMPLATES = (tpls && tpls.templates) || []; return [parts, jig, roster, fparts]; });
     PARTS = Array.isArray(parts) ? parts : (parts.parts||[]);
     PARTS_META = Array.isArray(parts) ? null : parts;

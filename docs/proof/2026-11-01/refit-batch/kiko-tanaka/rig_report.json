@@ -1,0 +1,46 @@
+{
+ "tool": "tools/auto_rig/refit_rig.py",
+ "input": "/home/user/western-heart/game/assets/models/kiko-tanaka.glb",
+ "output": "/home/user/western-heart/game/assets/models/kiko-tanaka-refit.glb",
+ "height_m": 1.75,
+ "facing_in": "-Z",
+ "verdict": {
+  "validate_pass": true,
+  "strict_stretch_p999": 9.323,
+  "strict_gate": 2.5,
+  "strict_stretch_pass": false,
+  "official_anim_check_p999": 3.147,
+  "official_stretch_pass": false,
+  "seams_pass": true,
+  "tearing_spikes": 40,
+  "tearing_spike_joints": [
+   "RightLeg",
+   "RightUpLeg + RightLeg + LeftUpLeg + RightHandThumb3"
+  ],
+  "max_edge_elongation_mm": 106.47,
+  "PASS": false
+ },
+ "validate": {
+  "file": "/tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-he3a3e16/rig_s.glb",
+  "checks": {
+   "valid_gltf": true,
+   "skinned_mesh": true,
+   "bones_present": true,
+   "height_ok": true,
+   "fingers_symmetric": true,
+   "stretch_ok": "unknown (no clips supplied)"
+  },
+  "pass": true,
+  "missing_bones": [],
+  "unmapped_bones": [],
+  "height_m": 1.75,
+  "foot_y": 0.0,
+  "finger_asymmetry": []
+ },
+ "pngs": [
+  "fit_template_vs_landmarks.png",
+  "sections.png",
+  "weights.png"
+ ],
+ "note": "tearing spikes are listed with the joints of the moving vertices; the CMU boxing window swings the feet with the root pinned (every rig in docs/proof shows 30-80 foot spikes). A spike on a vertex that rides one limb rigidly is motion, not a tear; read the stretch report in mm."
+}

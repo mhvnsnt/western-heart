@@ -1,0 +1,55 @@
+{
+ "audit": "docs/rigs/RIG-AUDIT-2026-11-01.json",
+ "skipped": [
+  [
+   "game/assets/models/kinpo-t8.glb",
+   "A-pose: needs the A-pose path"
+  ],
+  [
+   "roster/doc-frank/attires/attire2/base/model-rerig.glb",
+   "A-pose: needs the A-pose path"
+  ],
+  [
+   "roster/doc-frank/attires/attire4/transformed/model-rerig.glb",
+   "A-pose: needs the A-pose path"
+  ],
+  [
+   "roster/dorowani/attires/attire1/source/dorowani-a1-crimson-cheeks-rigged.glb",
+   "A-pose: needs the A-pose path"
+  ],
+  [
+   "roster/panda/attires/attire1/source/aotsuki-a1-rigged.glb",
+   "A-pose: needs the A-pose path"
+  ]
+ ],
+ "results": [
+  {
+   "key": "cape-jones",
+   "used_by": [
+    "cape-jones"
+   ],
+   "src": "game/assets/models/cape-jones.glb",
+   "out": "game/assets/models/cape-jones-refit.glb",
+   "audit": "CONE FACE",
+   "facing": "-Z",
+   "height_m": 1.75,
+   "seconds": 1649,
+   "status": "REFIT FAILED",
+   "error": "inger_asymmetry\": []\n },\n \"pngs\": [\n  \"fit_template_vs_landmarks.png\",\n  \"sections.png\",\n  \"weights.png\"\n ],\n \"note\": \"tearing spikes are listed with the joints of the moving vertices; the CMU boxing window swings the feet with the root pinned (every rig in docs/proof shows 30-80 foot spikes). A spike on a vertex that rides one limb rigidly is motion, not a tear; read the stretch report in mm.\"\n}\n"
+  },
+  {
+   "key": "kiko-tanaka",
+   "used_by": [
+    "kiko-tanaka"
+   ],
+   "src": "game/assets/models/kiko-tanaka.glb",
+   "out": "game/assets/models/kiko-tanaka-refit.glb",
+   "audit": "CONE FACE",
+   "facing": "-Z",
+   "height_m": 1.75,
+   "seconds": 1786,
+   "status": "REFIT FAILED",
+   "error": "inger_asymmetry\": []\n },\n \"pngs\": [\n  \"fit_template_vs_landmarks.png\",\n  \"sections.png\",\n  \"weights.png\"\n ],\n \"note\": \"tearing spikes are listed with the joints of the moving vertices; the CMU boxing window swings the feet with the root pinned (every rig in docs/proof shows 30-80 foot spikes). A spike on a vertex that rides one limb rigidly is motion, not a tear; read the stretch report in mm.\"\n}\n"
+  }
+ ]
+}

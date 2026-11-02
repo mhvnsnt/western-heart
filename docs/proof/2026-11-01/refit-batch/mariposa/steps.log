@@ -1,0 +1,87 @@
+$ /usr/bin/python3 /home/user/western-heart/tools/auto_rig/refit_skeleton.py --mesh /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-8dz8jnk7/decoded.glb --out /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-8dz8jnk7/fit.json --facing=-Z --static-out /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-8dz8jnk7/static.glb
+{
+ "height_m": 1.75,
+ "notes": {
+  "template_turned_180": true,
+  "template_relabelled_LR": false,
+  "scale": 1.0,
+  "start_offset_z_m": 0.0374,
+  "Hips": 6840,
+  "Spine": 9577,
+  "Spine1": 10538,
+  "Spine2": 7691,
+  "Neck": 10710,
+  "Head": 11258,
+  "LeftUpLeg": 3781,
+  "LeftLeg": 2945,
+  "LeftFoot": 2245,
+  "LeftToeBase": {
+   "heel_z": 0.014,
+   "tip_z": 0.265
+  },
+  "RightUpLeg": 4201,
+  "RightLeg": 2984,
+  "RightFoot": 789,
+  "RightToeBase": {
+   "heel_z": 0.015,
+   "tip_z": 0.265
+  },
+  "LeftArm": 6040,
+  "LeftForeArm": 3338,
+  "LeftHand": 1490,
+  "RightArm": 3556,
+  "RightForeArm": 3461,
+  "RightHand": 3051
+ }
+}
+
+$ /usr/bin/python3 /home/user/western-heart/tools/auto_rig/refit_landmarks.py --fit /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-8dz8jnk7/fit.json --out /home/user/western-heart/docs/proof/2026-11-01/refit-batch/mariposa/fit_landmarks.json
+{
+ "tool": "tools/auto_rig/refit_landmarks.py",
+ "Left_arm": {
+  "armpit_x": 0.1865,
+  "clean_from_x": 1.2271,
+  "fingertip_x": 1.5878,
+  "finger_scale": 1.0,
+  "arm_angle_below_horizontal_deg": 60
+ },
+ "Right_arm": {
+  "armpit_x": 0.1901,
+  "clean_from_x": 1.2322,
+  "fingertip_x": 1.5928,
+  "finger_scale": 1.0,
+  "arm_angle_below_horizontal_deg": 60
+ },
+ "legs": {
+  "crotch_y": 0.7184,
+  "hip_joint_y": 0.8196,
+  "template_hip_joint_y": 1.0086
+ },
+ "neck_head_from": "front profile: neck base y 1.3790, chin y 1.4630",
+ "mirrored_missing_joints": [
+  "LeftHandThumb3"
+ ],
+ "arm_line_y": {
+  "template_fit": 1.4487,
+  "mesh": 1.351
+ }
+}
+Hips           [-0.0009, 1.0613, 0.0479] -> [-0.00091, 0.87231, 0.0998]  (0.196 m)
+Spine          [-0.0009, 1.1562, 0.0465] -> [-0.00091, 0.97364, 0.12665]  (0.199 m)
+Spine1         [-0.0009, 1.2669, 0.0597] -> [-0.00091, 1.09188, 0.23958]  (0.251 m)
+Spine2         [-0.0009, 1.3935, 0.0168] -> [-0.00091, 1.22699, 0.14438]  (0.210 m)
+Neck           [-0.0009, 1.5358, 0.0584] -> [-0.00091, 1.379, 0.02428]  (0.161 m)
+Head           [-0.0009, 1.5686, 0.0639] -> [-0.00091, 1.463, 0.02004]  (0.114 m)
+LeftShoulder   [0.065, 1.4799, 0.02] -> [0.06505, 1.38317, 0.01568]  (0.097 m)
+LeftArm        [0.206, 1.4481, 0.0231] -> [0.05012, 1.35138, -0.11301]  (0.228 m)
+LeftForeArm    [0.4376, 1.4792, -0.0083] -> [0.31982, 0.8063, -0.15055]  (0.698 m)
+LeftHand       [0.6783, 1.4776, -0.0276] -> [0.55424, 0.33253, -0.18317]  (1.162 m)
+RightShoulder  [-0.0705, 1.4811, 0.02] -> [-0.07047, 1.38246, 0.01526]  (0.099 m)
+RightArm       [-0.211, 1.4493, 0.0232] -> [-0.05265, 1.35062, -0.11385]  (0.232 m)
+RightForeArm   [-0.4426, 1.4792, -0.0108] -> [-0.32309, 0.80512, -0.15078]  (0.699 m)
+RightHand      [-0.6841, 1.4779, -0.0265] -> [-0.55815, 0.33099, -0.18288]  (1.164 m)
+LeftUpLeg      [0.0951, 1.0086, 0.0391] -> [0.32304, 0.81958, 0.00956]  (0.297 m)
+LeftLeg        [0.0527, 0.5751, 0.1257] -> [0.08074, 0.47962, 0.09845]  (0.103 m)
+RightUpLeg     [-0.1003, 1.0086, 0.0369] -> [-0.32654, 0.81958, 0.00953]  (0.296 m)
+RightLeg       [-0.0559, 0.5755, 0.1257] -> [-0.08408, 0.47992, 0.0981]  (0.103 m)
+

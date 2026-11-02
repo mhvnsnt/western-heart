@@ -1,0 +1,48 @@
+{
+ "tool": "tools/auto_rig/refit_rig.py",
+ "input": "roster/phantom/attires/attire1/model-rerig.glb",
+ "output": "roster/phantom/attires/attire1/model-refit.glb",
+ "height_m": 1.8,
+ "facing_in": "+Z",
+ "verdict": {
+  "validate_pass": true,
+  "strict_stretch_p999": 7.289,
+  "strict_gate": 2.5,
+  "strict_stretch_pass": false,
+  "official_anim_check_p999": 3.097,
+  "official_stretch_pass": false,
+  "seams_pass": true,
+  "tearing_spikes": 40,
+  "tearing_spike_joints": [
+   "RightUpLeg",
+   "RightUpLeg + Hips + Spine2 + Spine1",
+   "RightUpLeg + LeftUpLeg + RightLeg",
+   "RightUpLeg + RightLeg + LeftUpLeg"
+  ],
+  "max_edge_elongation_mm": 79.84,
+  "PASS": false
+ },
+ "validate": {
+  "file": "/tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/tmp/wh-refit-493dumpy/rig_s.glb",
+  "checks": {
+   "valid_gltf": true,
+   "skinned_mesh": true,
+   "bones_present": true,
+   "height_ok": true,
+   "fingers_symmetric": true,
+   "stretch_ok": "unknown (no clips supplied)"
+  },
+  "pass": true,
+  "missing_bones": [],
+  "unmapped_bones": [],
+  "height_m": 1.8,
+  "foot_y": 0.0,
+  "finger_asymmetry": []
+ },
+ "pngs": [
+  "fit_template_vs_landmarks.png",
+  "sections.png",
+  "weights.png"
+ ],
+ "note": "tearing spikes are listed with the joints of the moving vertices; the CMU boxing window swings the feet with the root pinned (every rig in docs/proof shows 30-80 foot spikes). A spike on a vertex that rides one limb rigidly is motion, not a tear; read the stretch report in mm."
+}

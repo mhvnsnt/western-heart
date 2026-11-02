@@ -1,0 +1,164 @@
+{
+ "input": "/tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-he3a3e16/rig_t.glb",
+ "output": "/tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-he3a3e16/rig_s.glb",
+ "tool": "tools/auto_rig/backends/seam_safe_smooth.py",
+ "gate": 2.5,
+ "threshold": 2.0,
+ "rings": 2,
+ "iters": 10,
+ "lam": 0.5,
+ "frames_per_clip": 10,
+ "welded_verts": 982131,
+ "rounds": [
+  {
+   "round": 0,
+   "p999": 8.578,
+   "over_threshold": 231749
+  },
+  {
+   "round": 1,
+   "p999": 10.018,
+   "over_threshold": 209553,
+   "smoothed_welded_verts": 184157
+  },
+  {
+   "round": 2,
+   "p999": 9.986,
+   "over_threshold": 206609,
+   "smoothed_welded_verts": 182294
+  },
+  {
+   "round": 3,
+   "p999": 9.936,
+   "over_threshold": 204732,
+   "smoothed_welded_verts": 185587
+  },
+  {
+   "round": 4,
+   "p999": 9.881,
+   "over_threshold": 203527,
+   "smoothed_welded_verts": 187590
+  },
+  {
+   "round": 5,
+   "p999": 9.832,
+   "over_threshold": 202358,
+   "smoothed_welded_verts": 189943
+  },
+  {
+   "round": 6,
+   "p999": 9.8,
+   "over_threshold": 201290,
+   "smoothed_welded_verts": 190913
+  },
+  {
+   "round": 7,
+   "p999": 9.794,
+   "over_threshold": 200404,
+   "smoothed_welded_verts": 192401
+  },
+  {
+   "round": 8,
+   "p999": 9.78,
+   "over_threshold": 199622,
+   "smoothed_welded_verts": 193487
+  },
+  {
+   "round": 9,
+   "p999": 9.754,
+   "over_threshold": 198873,
+   "smoothed_welded_verts": 194322
+  },
+  {
+   "round": 10,
+   "p999": 9.72,
+   "over_threshold": 198212,
+   "smoothed_welded_verts": 194986
+  },
+  {
+   "round": 11,
+   "p999": 9.693,
+   "over_threshold": 197613,
+   "smoothed_welded_verts": 195578
+  },
+  {
+   "round": 12,
+   "p999": 9.656,
+   "over_threshold": 197085,
+   "smoothed_welded_verts": 196307
+  },
+  {
+   "round": 13,
+   "p999": 9.625,
+   "over_threshold": 196424,
+   "smoothed_welded_verts": 196826
+  },
+  {
+   "round": 14,
+   "p999": 9.604,
+   "over_threshold": 195882,
+   "smoothed_welded_verts": 197289
+  },
+  {
+   "round": 15,
+   "p999": 9.581,
+   "over_threshold": 195360,
+   "smoothed_welded_verts": 197709
+  },
+  {
+   "round": 16,
+   "p999": 9.548,
+   "over_threshold": 194940,
+   "smoothed_welded_verts": 198027
+  },
+  {
+   "round": 17,
+   "p999": 9.53,
+   "over_threshold": 194413,
+   "smoothed_welded_verts": 198459
+  },
+  {
+   "round": 18,
+   "p999": 9.511,
+   "over_threshold": 193956,
+   "smoothed_welded_verts": 198934
+  },
+  {
+   "round": 19,
+   "p999": 9.486,
+   "over_threshold": 193521,
+   "smoothed_welded_verts": 199360
+  },
+  {
+   "round": 20,
+   "p999": 9.449,
+   "over_threshold": 193052,
+   "smoothed_welded_verts": 199903
+  },
+  {
+   "round": 21,
+   "p999": 9.421,
+   "over_threshold": 192629,
+   "smoothed_welded_verts": 200286
+  },
+  {
+   "round": 22,
+   "p999": 9.39,
+   "over_threshold": 192266,
+   "smoothed_welded_verts": 200675
+  },
+  {
+   "round": 23,
+   "p999": 9.355,
+   "over_threshold": 191893,
+   "smoothed_welded_verts": 201059
+  },
+  {
+   "round": 24,
+   "p999": 9.323,
+   "over_threshold": 191487,
+   "smoothed_welded_verts": 201448
+  }
+ ],
+ "pass": false
+}

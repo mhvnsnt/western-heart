@@ -39,7 +39,12 @@ while (Date.now() - t0 < 420000) {
 console.log('READY', ready);
 // no AI, no KO and NO ROUND CLOCK (game.js counts g.timer down from rules.roundTime = 60 s and times the round out;
 // after that nothing can act, which read as every later input "NOFIRE")
-await page.evaluate(() => { const g = window.__game; g.ai = { update() {}, reset() {} }; g.p1.hp = g.p1.maxHp = 1e6; g.p2.hp = g.p2.maxHp = 1e6; g.roundTime = 0; g.timer = Infinity; });
+await page.evaluate(() => { const g = window.__game; g.ai = { update() {}, reset() {} }; g.p1.hp = g.p1.maxHp = 1e6; g.p2.hp = g.p2.maxHp = 1e6; g.roundTime = 0; g.timer = Infinity;
+  // GAME-TIME STEPPING (2026-11-01): the render loop caps a frame at 0.05 s of game time, so under a software
+  // renderer (~5 fps) the fight runs at ~1/4 speed and a 3 s throw took 12+ wall seconds: every later input read as
+  // NOFIRE (state 'attack' / 'throwing'). The probe pauses the loop's sim and advances game time itself with the
+  // game's own fixed step (Game._update(1/120)); rendering keeps drawing the current pose.
+  g.paused = true; });
 const notations = await page.evaluate(async ({ fid, onlyNeutral }) => {
   const M = await import('./js/movesets.js');
   const ms = M.getFighterMoveset(fid);
@@ -55,9 +60,14 @@ for (const n of list) {
     const g = window.__game, f = g.p1;
     g.timer = Infinity; f.hp = f.maxHp; g.p2.hp = g.p2.maxHp;
     if (g.roundState !== 'fight') return { n, ok: false, error: 'round not in fight: ' + g.roundState };
-    const until = async (c, ms) => { const e = Date.now() + ms; while (!c() && Date.now() < e) await new Promise((r) => setTimeout(r, 15)); };
+    const DT = 1 / 120;
+    // step game time until c() holds (at most ms of GAME time)
+    const until = async (c, ms) => { const steps = Math.ceil(ms / 1000 / DT); for (let i = 0; i < steps && !c(); i++) g._update(DT); };
     await until(() => (typeof f.canAct === 'function' ? f.canAct() : f.state === 'idle'), 12000);
-    await until(() => performance.now() > (f._stringGraceUntil || 0) + 40, 2000);
+    // a fresh input from neutral: no string continuation from the previous probe input (the grace window is wall-clock)
+    f._stringGraceUntil = 0; f._queuedNext = null; f._queuedAfter = null; f._stepChain = null;
+    if (f.tekken) { f.tekken.lastMove = null; f.tekken._strPath = null; f.tekken._strPending = null; }
+    for (let i = 0; i < 12; i++) g._update(DT);   // 0.1 s of neutral
     f.root.position.x = g.p2.root.position.x - (f.facing || 1) * 1.1;  // keep a fixed spacing (throws need range)
     const oldId = f._atkPlan && f._atkPlan.id;
     let ok = false;
@@ -69,7 +79,7 @@ for (const n of list) {
     const act = p.name && f.t3actions && f.t3actions[p.name];
     const tMid = Number.isFinite(tm.t0) ? tm.t0 : 0.15;
     if (act) await until(() => act.time >= tMid || f.state === 'idle', 5000);
-    else await new Promise((r) => setTimeout(r, 250));
+    else await until(() => false, 250);
     // every ENABLED action with weight poses the body (a finished, clamped one-shot is paused, not running, but still
     // holds its pose); none at all = the skinned model shows its bind pose (T-pose)
     let weight = 0, running = 0;
