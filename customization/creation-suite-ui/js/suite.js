@@ -6,9 +6,12 @@ import { ATTIRE_TREE, BODY_TREE, PARTS_TREE, JIGGLE_AREAS, JIGGLE_PARAMS, JIGGLE
 /* Real morph catalog + DNA/body engine from packages/creation-suite
    (importmap: wh-creation-suite/ -> ../../packages/creation-suite/src/).
    Thin adapter below maps morph ids onto DNA sliders — logic is NOT forked. */
-import { BODY_MORPHS, FACE_SHAPE_MORPHS, applyMorphProxies } from 'wh-creation-suite/morphs.js';
+import { BODY_MORPHS, applyMorphProxies } from 'wh-creation-suite/morphs.js';
 import { SLIDERS as DNA_SLIDERS } from 'wh-creation-suite/dna.js';
 import { applySliders as applyBodySliders } from 'wh-creation-suite/body.js';
+/* REAL body + face morphing: glTF morph targets baked into the template bodies (tools/mb-lab/bake_morph_templates.py),
+   slider catalog customization/templates/morph-sliders.json (WWE 2K22 Body Morphing / Face Deformation windows). */
+import { flattenCatalog, wiredSliderIds, applyMorphTargets, cleanValues, displayValue, loadMorphCatalog } from './morph-targets.js';
 /* The game's own moveset engine (same module the fight runs): notation tables, slots, loadouts. */
 import * as MS from '../../../game/js/movesets.js';
 MS.setMovesetBase('../../game/assets/movesets/');
@@ -35,6 +38,11 @@ const SKIN_TONES = ['#f1c9a5','#e8b48a','#dba06e','#c98d5e','#a06a42','#7c4a2d',
 const PROPS = [['height','Height',0.85,1.15],['weight','Weight',0.85,1.3],['muscle','Muscle',0.85,1.3],
   ['shoulder','Shoulders',0.85,1.25],['chest','Chest',0.85,1.3],['waist','Waist',0.85,1.25],
   ['hips','Hips',0.85,1.3],['arms','Arms',0.85,1.3],['legs','Legs',0.85,1.3]];
+/* Height & Frame window (template bodies): skeleton sliders, kept beside the mesh morphs — WWE 2K: height/weight scale
+   the skeleton (customization/wwe2k-caw/CAW-SUITE-BREAKDOWN.md §3); lengths are the WMXIX FIGURE length axis.
+   Each drives packages/creation-suite body.js BONE_MAP (MB-Lab bone aliases). */
+const FRAME_BONES = [['armLen','Arm Length'],['legLen','Leg Length'],['torsoLen','Torso Length']];
+let MORPH_CAT = null, MORPH_SLIDERS = [];
 const SOULS=['—','TOU','SHA','YIN','YANG','KAMI','ONI','RYU','TEN'];
 const TITLE_A=['RAGING','SILENT','GOLDEN','BROKEN','HOWLING','IRON','CRIMSON','LONE'];
 const TITLE_B=['BEAST','PANTHER','KING','GHOST','STORM','WOLF','TIGER','DEMON'];
@@ -56,7 +64,8 @@ function blankFighter(){
   return { version:1, app:'wh-creation-suite',
     profile:{ name:'NEW FIGHTER', short_name:'NEWF', soul:'—', title:['',''] },
     body:{ body_type:'Medium 1', skin_tone:'#c98d5e',
-      proportions:{ height:1, weight:1, muscle:1, shoulder:1, chest:1, waist:1, hips:1, arms:1, legs:1 } },
+      proportions:{ height:1, weight:1, muscle:1, shoulder:1, chest:1, waist:1, hips:1, arms:1, legs:1 },
+      morph_targets:{}, frame:{} },
     morphs:{},
     jiggle:{ family:'female', areas:{} },
     attireIndex:0, attires:[blankAttire(),blankAttire(),blankAttire(),blankAttire()],
@@ -187,13 +196,20 @@ function customizationRecord(){
     fighter: F.mode==='roster' ? F.rosterRef.fighter : 'blank',
     attire: F.mode==='roster' ? F.rosterRef.attire : `attire${F.attireIndex+1}`,
     base_glb: F.baseGlb, out_glb: null,
-    body:{ body_type:F.body.body_type, skin_tone:F.body.skin_tone },
+    body:{ body_type:F.body.body_type, skin_tone:F.body.skin_tone,
+      template: F.mode==='blank' ? (F.template||null) : null,
+      height: F.body.proportions ? F.body.proportions.height : 1,
+      morph_targets: cleanValues(F.body.morph_targets, MORPH_SLIDERS),
+      frame: Object.fromEntries(Object.entries(F.body.frame||{}).filter(([,v])=>v)) },
     morphs, parts, textures, part_states,
     colors:{ hair:(a.colors&&a.colors.hair)||null, skin:F.body.skin_tone } };
 }
 function applyCustomizationRecord(rec){
   if(rec.body){ if(rec.body.body_type) F.body.body_type=rec.body.body_type;
-    if(rec.body.skin_tone) F.body.skin_tone=rec.body.skin_tone; }
+    if(rec.body.skin_tone) F.body.skin_tone=rec.body.skin_tone;
+    F.body.morph_targets = Object.assign({}, rec.body.morph_targets||{});
+    F.body.frame = Object.assign({}, rec.body.frame||{});
+    if(typeof rec.body.height==='number' && F.body.proportions) F.body.proportions.height = rec.body.height; }
   F.morphs = rec.morphs||{};
   const a = attire();
   a.equipped={}; a.placements={};
@@ -273,11 +289,26 @@ function morphsToDnaSliders(morphs){
   }
   return out;
 }
+/* Slider ids whose '+' and '-' targets exist on the loaded model (cached per model). Template bodies carry all of
+   them; roster GLBs carry none, so they keep the legacy bone / proxy sliders. */
+function wiredMorphs(){
+  if(!viewer || !viewer.model || !MORPH_SLIDERS.length) return new Set();
+  const ud = viewer.model.userData;
+  if(!ud._whWired) ud._whWired = wiredSliderIds(viewer.model, MORPH_SLIDERS);
+  return ud._whWired;
+}
+function frameSliders(){
+  const out = {};
+  for(const [k] of FRAME_BONES){ const v = (F.body.frame||{})[k]; if(v){ const r = DNA_SLIDERS[k].range; out[k] = Math.min(r[1], Math.max(r[0], v)); } }
+  return out;
+}
 function syncMorphs(){
   if(!viewer || !viewer.model) return;
-  const sliders = morphsToDnaSliders(F.morphs);
+  const sliders = Object.assign(morphsToDnaSliders(F.morphs), frameSliders());
   try{ if(Object.keys(sliders).length || viewer.model.userData._csPrepared) { applyBodySliders(viewer.model, sliders); viewer.model.userData._csPrepared=true; } }catch(e){ console.warn('[WH] body sliders failed', e); }
   try{ applyMorphProxies(viewer.model, F.morphs||{}); }catch(e){}
+  // real blend shapes last: body.js prepareBody() rebuilds influence arrays when it first runs
+  try{ applyMorphTargets(viewer.model, F.body.morph_targets||{}); }catch(e){ console.warn('[WH] morph targets failed', e); }
 }
 
 /* ---------- 3D sync ---------- */
@@ -487,7 +518,7 @@ function openSwapLibrary(p){
 /* ---------- topbar ---------- */
 function renderTopbar(){
   $('#fighter-name').textContent = F.profile.name||'NEW FIGHTER';
-  $('#breadcrumb').textContent = `${F.profile.name||'New Fighter'} > Attire ${F.attireIndex+1} > ${ui.tab.toUpperCase()}${ui.attireCat?' > '+ui.attireCat.label:''}${ui.partsCat?' > '+ui.partsCat.label:''}`;
+  $('#breadcrumb').textContent = `${F.profile.name||'New Fighter'} > Attire ${F.attireIndex+1} > ${ui.tab.toUpperCase()}${ui.attireCat?' > '+ui.attireCat.label:''}${ui.partsCat?' > '+ui.partsCat.label:''}${ui.tab==='body'&&ui.bodyWin?' > '+bodyWinLabel(ui.bodyWin):''}${ui.tab==='body'&&ui.bodyGroup?' > '+ui.bodyGroup.label:''}`;
   $('#wallet-amt').textContent = F.wallet.toLocaleString();
   const tabs=$('#attire-tabs'); tabs.innerHTML='';
   F.attires.forEach((a,i)=>{
@@ -504,7 +535,7 @@ function renderTopbar(){
 
 /* ---------- rail ---------- */
 function setTab(t){
-  ui.tab=t; ui.attireCat=null; ui.partsCat=null; ui.selPart=null;
+  ui.tab=t; ui.attireCat=null; ui.partsCat=null; ui.selPart=null; ui.bodyWin=null; ui.bodyGroup=null;
   document.querySelectorAll('.rail-btn').forEach(x=>x.classList.toggle('active',x.dataset.tab===t));
   if(t!=='parts') hidePlaceDock();
   renderAll();
@@ -523,7 +554,142 @@ function renderPanel(){
 }
 
 /* ================= BODY ================= */
+/* Template bodies (real morph targets) open the WWE 2K22 Create-A-Superstar APPEARANCE structure as Tekken-style
+   category list -> sub-window: Body Type / Skin Tone / Height & Frame / Body Morphing (regions) / Face Deformation
+   (facial parts). Sources: menu-data.js MENU_SRC.WWE_FACEBODY + WMXIX_CAW (FIGURE regions), T7 category list
+   (teardown/tekken7-steam-ui/T7-UI-LAYOUT.md, packages/creation-suite/src/t7layout.js T7_FLOW region -> slot -> item).
+   Roster GLBs carry no morph targets, so they keep the one-page legacy layout (only sliders that do something). */
+const BODY_WINS = { type:'Body Type', skin:'Skin Tone', frame:'Height & Frame' };
+function bodyWinLabel(k){
+  if(BODY_WINS[k]) return BODY_WINS[k];
+  const w = MORPH_CAT && MORPH_CAT.windows.find(x=>x.key===k); return w ? w.label : k;
+}
+const isFemale = ()=>{ const t = F.mode==='blank' ? templateById(F.template) : null; return !!(t && t.gender==='female'); };
+const sliderLabel = s => (isFemale() && s.label_female) || s.label;
 function renderBody(el){
+  const real = wiredMorphs();
+  if(!real.size) return renderBodyLegacy(el);
+  if(ui.bodyWin) return renderBodyWindow(el, real);
+  $('#panel-sub').textContent='Appearance — body and face';
+  const tpl = F.mode==='blank' ? templateById(F.template) : null;
+  const mt = F.body.morph_targets||{};
+  const edited = key => MORPH_SLIDERS.filter(s=>s.window===key && real.has(s.id) && mt[s.id]).length;
+  const count = key => MORPH_SLIDERS.filter(s=>s.window===key && real.has(s.id)).length;
+  el.innerHTML=`
+    ${tpl ? `<div class="sect">BASE BODY</div>
+    <div class="tpl-current"><div><b>${esc(tpl.name)}</b><br><small>${esc(`${tpl.division} · ${tpl.gender==='female'?'Women':'Men'}`)}</small></div>
+      <button class="btn btn-gold btn-sm" id="tpl-change">CHANGE</button></div>` : ''}
+    <div class="sect">BODY</div><div id="bw-body"></div>
+    <div class="sect">FACE</div><div id="bw-face"></div>`;
+  const tc = el.querySelector('#tpl-change'); if(tc) tc.onclick=()=>openTemplateSelect();
+  const add = (host, key, ico, sub)=>{
+    const b=document.createElement('button'); b.className='subcat'; b.id='bw-'+key;
+    b.innerHTML=`<span class="sc-ico">${ico}</span><span>${esc(bodyWinLabel(key))}</span><span class="sc-count">${esc(sub)}</span>`;
+    b.onclick=()=>{ ui.bodyWin=key; ui.bodyGroup=null; renderAll(); };
+    host.appendChild(b);
+  };
+  const hb=el.querySelector('#bw-body'), hf=el.querySelector('#bw-face');
+  add(hb,'type','🧍',F.body.body_type||'');
+  add(hb,'skin','🎨','');
+  add(hb,'frame','📏',`${1+FRAME_BONES.length} sliders`);
+  for(const w of MORPH_CAT.windows){
+    const n=count(w.key); if(!n) continue;
+    const e=edited(w.key);
+    add(w.key==='face-morph'?hf:hb, w.key, w.key==='face-morph'?'🙂':'💪', e?`${e} edited`:`${n} sliders`);
+  }
+}
+function morphSliderCtl(host, s){
+  const v=(F.body.morph_targets||{})[s.id]||0;
+  const label=sliderLabel(s);
+  const d=document.createElement('div'); d.className='ctl'; d.id='mt-'+s.id;
+  d.innerHTML=`<label>${esc(label)}<span class="val">${displayValue(v)}</span></label>
+    <input type="range" min="-100" max="100" step="1" value="${displayValue(v)}" data-mt="${esc(s.id)}" aria-label="${esc(label)}">`;
+  const inp=d.querySelector('input');
+  inp.oninput=()=>{ F.body.morph_targets=F.body.morph_targets||{};
+    const x=(+inp.value)/100; if(x) F.body.morph_targets[s.id]=x; else delete F.body.morph_targets[s.id];
+    d.querySelector('.val').textContent=String(+inp.value);
+    if(viewer && viewer.model) applyMorphTargets(viewer.model, F.body.morph_targets); persistQuiet(); };
+  host.appendChild(d);
+}
+function renderBodyWindow(el, real){
+  const win = ui.bodyWin;
+  const back = (label, fn)=>{ const r=document.createElement('div'); r.className='back-row';
+    r.innerHTML=`<button class="btn back-btn" id="btn-back">← ${esc(label)}</button>`; r.querySelector('button').onclick=fn; el.appendChild(r); };
+  el.innerHTML='';
+  if(win==='type' || win==='skin' || win==='frame'){
+    back('APPEARANCE', ()=>{ ui.bodyWin=null; renderAll(); });
+    $('#panel-sub').textContent=bodyWinLabel(win);
+    const host=document.createElement('div'); el.appendChild(host);
+    if(win==='type'){
+      host.className='roster-grid';
+      BODY_TYPES.forEach(t=>{ const b=document.createElement('button');
+        b.className='roster-card'+(F.body.body_type===t?' active':''); b.textContent=t;
+        b.onclick=()=>{ F.body.body_type=t; renderAll(); }; host.appendChild(b); });
+    } else if(win==='skin'){
+      host.className='swatches';
+      SKIN_TONES.forEach(h=>{ const s=document.createElement('div');
+        s.className='swatch'+(F.body.skin_tone===h?' active':''); s.style.background=h; s.title=h;
+        s.onclick=()=>{ F.body.skin_tone=h; renderAll(); }; host.appendChild(s); });
+    } else {
+      const ph=PROPS.find(p=>p[0]==='height');
+      const hd=document.createElement('div'); hd.className='ctl'; hd.id='prop-height';
+      hd.innerHTML=`<label>${ph[1]}<span class="val">${F.body.proportions.height.toFixed(2)}</span></label>
+        <input type="range" min="${ph[2]}" max="${ph[3]}" step="0.01" value="${F.body.proportions.height}" aria-label="${ph[1]}">`;
+      const hi=hd.querySelector('input');
+      hi.oninput=()=>{ F.body.proportions.height=+hi.value; hd.querySelector('.val').textContent=(+hi.value).toFixed(2); syncPreview(); persistQuiet(); };
+      host.appendChild(hd);
+      F.body.frame=F.body.frame||{};
+      for(const [k,label] of FRAME_BONES){
+        const r=DNA_SLIDERS[k].range, v=F.body.frame[k]||0;
+        const d=document.createElement('div'); d.className='ctl'; d.id='frame-'+k;
+        d.innerHTML=`<label>${label}<span class="val">${Math.round(v/r[1]*100)}</span></label>
+          <input type="range" min="${r[0]}" max="${r[1]}" step="0.005" value="${v}" aria-label="${label}">`;
+        const inp=d.querySelector('input');
+        inp.oninput=()=>{ F.body.frame[k]=+inp.value; d.querySelector('.val').textContent=String(Math.round((+inp.value)/r[1]*100)); syncMorphs(); persistQuiet(); };
+        host.appendChild(d);
+      }
+    }
+    return;
+  }
+  const w = MORPH_CAT.windows.find(x=>x.key===win);
+  if(!w){ ui.bodyWin=null; return renderBody(el); }
+  const groups = w.groups.map(g=>({ ...g, sliders:g.sliders.filter(s=>real.has(s.id)) })).filter(g=>g.sliders.length);
+  const mt = F.body.morph_targets||{};
+  if(!ui.bodyGroup){
+    back('APPEARANCE', ()=>{ ui.bodyWin=null; renderAll(); });
+    $('#panel-sub').textContent=`${w.label} — pick a ${win==='face-morph'?'facial part':'body region'}`;
+    const host=document.createElement('div'); el.appendChild(host);
+    for(const g of groups){
+      const e=g.sliders.filter(s=>mt[s.id]).length;
+      const b=document.createElement('button'); b.className='subcat'+(e?' equipped':''); b.id='mg-'+g.key;
+      b.innerHTML=`<span>${esc(g.label)}</span><span class="sc-count">${e?`${e} edited`:`${g.sliders.length} sliders`}</span>`;
+      b.onclick=()=>{ ui.bodyGroup={ key:g.key, label:g.label }; renderAll(); };
+      host.appendChild(b);
+    }
+    const row=document.createElement('div'); row.className='btn-row';
+    row.innerHTML=`<button class="btn btn-sm" id="mw-reset">RESET ${esc(w.label.toUpperCase())}</button>`;
+    row.querySelector('button').onclick=()=>{ for(const g of groups) for(const s of g.sliders) delete F.body.morph_targets[s.id]; renderAll(); toast(`${w.label} reset`); };
+    el.appendChild(row);
+    return;
+  }
+  const g = groups.find(x=>x.key===ui.bodyGroup.key);
+  if(!g){ ui.bodyGroup=null; return renderBodyWindow(el, real); }
+  back(w.label.toUpperCase(), ()=>{ ui.bodyGroup=null; renderAll(); });
+  $('#panel-sub').textContent=`${w.label} — ${g.label}`;
+  const host=document.createElement('div'); el.appendChild(host);
+  g.sliders.forEach(s=>morphSliderCtl(host, s));
+  const row=document.createElement('div'); row.className='btn-row';
+  row.innerHTML=`<button class="btn btn-sm" id="mg-reset">RESET ${esc(g.label.toUpperCase())}</button>`;
+  row.querySelector('button').onclick=()=>{ for(const s of g.sliders) delete F.body.morph_targets[s.id]; renderAll(); };
+  el.appendChild(row);
+}
+/* Roster GLBs (no morph targets): only sliders that do something on them — Height / Weight scale the model
+   (viewer.setProportions), FRAME / MASS go through body.js bones + procedural regions, FACE SHAPE through the
+   morphs.js bone proxies. Proportion keys the viewer never reads, FRAME Hands / Feet (no DNA mapping) and the old
+   FACE SHAPE list (morphs.js applyMorphProxies handles no face id) are not shown on them (no stubs); real face
+   shaping is the template bodies' Face Deformation window. */
+const LIVE_PROPS = ['height','weight'];
+function renderBodyLegacy(el){
   $('#panel-sub').textContent='Base body, build, skin and face';
   const tpl = F.mode==='blank' ? templateById(F.template) : null;
   el.innerHTML=`
@@ -534,8 +700,7 @@ function renderBody(el){
     <div class="sect">SKIN TONE</div><div class="swatches" id="stones"></div>
     <div class="sect">PROPORTIONS</div><div id="psl"></div>
     <div class="sect">FRAME</div><div id="mframe"></div>
-    <div class="sect">MASS</div><div id="mmass"></div>
-    <div class="sect">FACE SHAPE</div><div id="mface"></div>`;
+    <div class="sect">MASS</div><div id="mmass"></div>`;
   const tc = el.querySelector('#tpl-change'); if(tc) tc.onclick=()=>openTemplateSelect();
   const bt=el.querySelector('#btypes');
   BODY_TYPES.forEach(t=>{ const b=document.createElement('button');
@@ -546,7 +711,7 @@ function renderBody(el){
     s.className='swatch'+(F.body.skin_tone===h?' active':''); s.style.background=h; s.title=h;
     s.onclick=()=>{ F.body.skin_tone=h; renderAll(); }; st.appendChild(s); });
   const sl=el.querySelector('#psl');
-  PROPS.forEach(([k,label,lo,hi])=>{
+  PROPS.filter(([k])=>LIVE_PROPS.includes(k)).forEach(([k,label,lo,hi])=>{
     const d=document.createElement('div'); d.className='ctl'; d.id='prop-'+k;
     d.innerHTML=`<label>${label}<span class="val">${F.body.proportions[k].toFixed(2)}</span></label>
       <input type="range" min="${lo}" max="${hi}" step="0.01" value="${F.body.proportions[k]}" aria-label="${label}">`;
@@ -565,9 +730,8 @@ function renderBody(el){
       d.querySelector('.val').textContent=(+inp.value).toFixed(2); syncMorphs(); persistQuiet(); };
     host.appendChild(d);
   };
-  const hf=el.querySelector('#mframe'), hm=el.querySelector('#mmass'), hface=el.querySelector('#mface');
-  BODY_MORPHS.forEach(m=> addMorph(FRAME_IDS.includes(m.id)?hf:hm, m));
-  FACE_SHAPE_MORPHS.forEach(m=> addMorph(hface, m));
+  const hf=el.querySelector('#mframe'), hm=el.querySelector('#mmass');
+  BODY_MORPHS.filter(m=>(MORPH2DNA[m.id]||[]).length).forEach(m=> addMorph(FRAME_IDS.includes(m.id)?hf:hm, m));
 }
 
 /* ================= ATTIRE (T7 spine) ================= */
@@ -1175,6 +1339,8 @@ function migrateLegacy(){
   fix(F);
   for(const k of Object.keys(F.records||{})) fix(F.records[k]);
   if(F.mode==='blank' && !F.template) F.template = DEFAULT_TEMPLATE_ID;
+  const bodyKeys = o => { if(o && o.body){ o.body.morph_targets = o.body.morph_targets || {}; o.body.frame = o.body.frame || {}; } };
+  bodyKeys(F); for(const k of Object.keys(F.records||{})) bodyKeys(F.records[k]);
 }
 function bodyTypeForTemplate(t){
   const bt = BODY_TYPE_ALIAS[t.body_type] || t.body_type;
@@ -1191,7 +1357,7 @@ async function applyTemplate(t){
   const pr = t.proportions || {};
   for(const k of ['height','weight','muscle']) if(typeof pr[k]==='number') F.body.proportions[k] = pr[k];
   F.jiggle.family = t.gender==='female' ? 'female' : 'male';
-  ui.selPart=null; hidePlaceDock(); setTab('body');
+  ui.selPart=null; ui.bodyWin=null; ui.bodyGroup=null; hidePlaceDock(); setTab('body');
   persistQuiet();
   await loadBaseModel();
   toast(`${t.name} — now make them yours`);
@@ -1266,7 +1432,9 @@ async function boot(){
       fetch('data/roster-attires.json').then(r=>r.ok?r.json():null).catch(()=>null),
       fetch('data/fighter-parts.json').then(r=>r.ok?r.json():null).catch(()=>null),
       fetch('../templates/body-templates.json').then(r=>r.ok?r.json():null).catch(()=>null),
-    ]).then(([parts, jig, roster, fparts, tpls])=>{ TEMPLATES = (tpls && tpls.templates) || []; return [parts, jig, roster, fparts]; });
+      loadMorphCatalog().catch(e=>{ console.warn('[WH] morph-sliders.json failed', e); return null; }),
+    ]).then(([parts, jig, roster, fparts, tpls, mcat])=>{ TEMPLATES = (tpls && tpls.templates) || [];
+      MORPH_CAT = mcat; MORPH_SLIDERS = flattenCatalog(mcat); return [parts, jig, roster, fparts]; });
     PARTS = Array.isArray(parts) ? parts : (parts.parts||[]);
     PARTS_META = Array.isArray(parts) ? null : parts;
     // normalize legacy curated entries (pre-unified catalogs) to the v2 shape
@@ -1293,7 +1461,7 @@ async function boot(){
             else right = Math.max(0, W-rr.left); }
     return { left, right, top: tb ? tb.bottom : 0, bottom };
   });
-  window.__suite={ viewer, get F(){return F;}, ui, setTab, selectRosterAttire, customizationRecord, currentKey, get ROSTER(){return ROSTER;}, get PARTS(){return PARTS;}, get FPARTS(){return FPARTS;} };
+  window.__suite={ viewer, get F(){return F;}, ui, setTab, wiredMorphs, get MORPH_SLIDERS(){return MORPH_SLIDERS;}, renderAll, selectRosterAttire, customizationRecord, currentKey, get ROSTER(){return ROSTER;}, get PARTS(){return PARTS;}, get FPARTS(){return FPARTS;} };
   viewer.onReady=()=>{ renderAll(); };
   await loadBaseModel();
   renderAll();
