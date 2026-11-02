@@ -83,6 +83,15 @@ SHELL_BUNDLED_MODELS = (
     "game/assets/models/pantera.glb",
     "game/assets/models/awa-pop.glb",
     "game/assets/models/baek.glb",
+    # Snow Leopard routing fix (2026-11-02): same three repo files as
+    # game/js/asset-config.js SHELL_BUNDLED_MODELS (bucket 404; see
+    # that file). NOTE: this fallback list is already stale (4 entries
+    # vs 19 in the JS source of truth); it only matters if
+    # asset-config.js cannot be read at deploy time. A full re-sync is
+    # a separate cleanup, not this fix.
+    "roster/pantera/attires/snow-leopard/pantera-snow-leopard.glb",
+    "roster/yukihyo/attires/attire2/source/yukihyo-a2-bobcat-pride-rigged.glb",
+    "roster/yukihyo/attires/attire3/source/yukihyo-a3-tiger-king-rigged.glb",
 )
 # In shell-only mode a single file over this size never belongs in the shell:
 # the remote base serves it instead. 25 MiB matches the Cloudflare Pages
@@ -625,3 +634,4 @@ def plumbing(a, sha, files, sizes, total):
 
 if __name__ == "__main__":
     main()
+
