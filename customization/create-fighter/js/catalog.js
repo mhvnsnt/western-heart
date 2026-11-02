@@ -1,7 +1,7 @@
 /* catalog.js — processes PARTS-INDEX.json into UI-ready categories.
-   Real part ids/names from the 3,372-part teardown index. Geometry status is
-   honest: no .obj/.glb mesh is wired yet, so every part carries geometryPending:true
-   and the preview shows a labeled socket-proxy marker, never a fake mesh. */
+   Real part ids/names from the 7,960-part index (customization/create-fighter/data/PARTS-INDEX.json).
+   Geometry status is honest: parts with real geometry carry geometryPending:false; pending
+   parts carry geometryPending:true and the preview shows a labeled socket-proxy marker, never a fake mesh. */
 
 export const CATEGORIES = [
   { key:'upper_body',  icon:'🥋', label:'Upper Body',  slotId:'9',  anchor:'Spine2'   },
