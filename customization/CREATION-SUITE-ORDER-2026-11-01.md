@@ -86,3 +86,14 @@ character names in the UI (the source games are named only in docs about pulling
 6. **WWE / Tekken-style menus**: CAW-editor menu tree (Create / Edit / Template / Body / Face / Hair / Attire layers /
    Paint / Moveset / Profile / Pose & Picture) with sub-windows, laid out from the T7 layout rules and the WWE CAW
    flow; phone portrait + landscape proof shots for every screen.
+
+## Phase status
+
+| Phase | State | Where |
+|---|---|---|
+| 1. Template-first CREATE | **done**. TEMPLATE SELECT of the 9 base bodies replaced the Soldier default on main (#1475). The remainder of Claude's draft PR #1486 (generic template names/body types in `customization/templates/body-templates.json`, the left sliding panel per `customization/UNIFIED-UI-SPEC.md` §1 in `css/suite-t7.css` + `js/suite.js`, the landscape-phone top bar fix, and the select-screen attire-cycling fix) was salvaged onto current main by the Claude-WIP completion lane (2026-11-02) after a hunk-by-hunk supersession audit — see `docs/handoffs/CLAUDE-WIP-COMPLETION-2026-11-02.md`. | main (#1475 + salvage PR) |
+| 2. Tool audit | not started | `customization/CREATION-TOOLS-AUDIT-2026-11-01.md` (to write) |
+| 3. Real body + face morph targets | templates re-baked with 168 morph targets each in draft PR #1489; suite preview applies them (`js/morph-targets.js`); completion lane (2026-11-02) is landing #1489 and wiring the values into the main game scene (`game/js/custom-fighter.js`) | main (via #1489 completion) |
+| 4. Edit existing fighters -> save attire / version | not started | |
+| 5. Pose + TAKE PICTURE | **LANDED** (#1490, 2026-11-01) — see Status line above | main |
+| 6. WWE / Tekken-style menus | not started | |
