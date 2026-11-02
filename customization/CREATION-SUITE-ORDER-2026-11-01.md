@@ -61,7 +61,7 @@ character names in the UI (the source games are named only in docs about pulling
 | Older prototype with the WWE template flow | `customization/create-fighter/` (`js/creation-flow.js` TEMPLATE SELECT, TOOLS tab job specs) | not linked from the game menu |
 | WWE-style base bodies | `customization/templates/body-templates.json` + `meshes/*.glb` (9 templates: 3 Heavyweight, 3 Cruiserweight, 3 Women's; MB-Lab bake, 71-joint MB-Lab skeleton) | exist; **no morph targets** (shape keys applied at bake), so body / face sliders cannot be real blend shapes yet |
 | Morph catalogs, DNA sliders, face morphs, layering, slot map, T7 layout / material, WWE 2K22 move slots | `packages/creation-suite/src/` (`morphs.js`, `dna.js`, `facemorphs.js`, `layering.js`, `slotmap.js`, `t7layout.js`, `t7material.js`, `wwe2k22-caw-slots.js`, `rigpose.js`, `rigswap.js`, `secondary.js`) | partly wired into the suite (sliders drive bone proportions + morph proxies) |
-| Parts | `customization/creation-suite-ui/data/parts-catalog.json` (4,523), `customization/create-fighter/data/PARTS-INDEX.json` (7,920) | real meshes for No Mercy (303) + DOA4 (272) + hair; most WMXIX / Def Jam parts still GEOMETRY PENDING |
+| Parts | `customization/creation-suite-ui/data/parts-catalog.json` (7,523 after the 2026-11-02 tattoo batch), `customization/create-fighter/data/PARTS-INDEX.json` (7,960) | real meshes for No Mercy + DOA4 + hair (20/332 hair wired) + 99 No Mercy tattoos; most WMXIX / Def Jam parts still GEOMETRY PENDING (audited 2026-11-02, see the batch section at the end of this doc) |
 | WWE CAW structure | `customization/wwe2k-caw/CAW-SUITE-BREAKDOWN.md`, `CAW-STRUCTURE-2026-10-19.md`, `COMBINED-CREATION-SUITE.md` | documented (WWE 2K19 / 2K22 menus, layers, sliders) |
 | WWE 2K raw files | `teardown/wwe2k19`, `wwe2k20`, `wwe2k22` | **not pulled**: those releases are delisted and the pull needs the owner's Steam login (agents never log into Steam); work from the documented structure |
 | Tekken customization structure | `teardown/tekken7-steam-ui/T7-UI-LAYOUT.md`, `teardown/ttt2-customization-research.md`, `teardown/tekken6-customization-research.md`, `packages/creation-suite/src/t7layout.js` | documented + partly in code |
@@ -111,3 +111,79 @@ customization, built from their game code and the repo's teardowns** (not hand-i
 Structure sources to start from: `customization/wwe2k-caw/CAW-SUITE-BREAKDOWN.md`, `CAW-STRUCTURE-2026-10-19.md`,
 `COMBINED-CREATION-SUITE.md`, `customization/PARTS-CLOTHING-SYSTEM-SPEC.md`, `teardown/tekken7-steam-ui/T7-UI-LAYOUT.md`,
 `teardown/ttt2-customization-research.md`, `teardown/tekken6-customization-research.md`.
+
+## Lag + parts batch — 2026-11-02 (after #1498; lag #1504 + tattoos #1505 merged)
+
+Owner report 2026-11-02: fights lag and buffer slowly, and every landed strike
+freezes momentarily, with visual and input lag. Universal and game-wide, not
+character-specific; Pantera was the test case (closest to a complete
+moveset/animations — his animation correctness is a separate owed item).
+
+### Lag: root cause, separated honestly
+- DESIGNED freeze, NOT changed: `game.js` `_hitStop` on every connect —
+  light 0.08 s, heavy 0.11 s, counter 0.14 s, KO 0.18 s, then `Math.max` with
+  `combat-systems.js` `feelFor` stopSec: hit 6f = 0.10 s, stagger 9f = 0.15 s,
+  crumple/launch 12f = 0.20 s, wall-splat 14f = 0.233 s (+3f on counter).
+  Every landed strike freezes the sim 100–233 ms by design (Tekken-style
+  hitstop). Tuning that is a separate owner decision — not in #1504.
+- REAL BUG fixed in #1504: the fight loop ran
+  `while (acc >= FIXED_DT) _update(FIXED_DT)` with NO cap
+  (`FIXED_DT` = 1/120). A 50 ms hitch frame ran 6 sim steps, a 100 ms hitch
+  ran 12 — each step doing fighter updates, swept hitbox tests and DOM
+  HP/meter writes — making the next frame longer still (spiral of death).
+  On a phone that turns a designed hitstop freeze into multi-frame visual
+  + input lag, because inputs are only read inside `_update`.
+  Fix: new pure helper `game/js/frame-step.js` (`drainFixedSteps`, max 4
+  steps per render frame, excess accumulator dropped, held input state
+  persists so no button press is lost); `game.js` `_loop` uses it.
+  Proof: `test/frame-step.test.mjs` 5/5 (normal 16.7 ms frame = 2 steps +
+  remainder kept; 50 ms hitch: before 6, after 4; 100 ms hitch: before 12,
+  after 4). Hitstop handling untouched. Morphs ruled out
+  (`fighter.js` `_applyCharMorphs` runs only at `_build` and model swap).
+- Ruled out on the hit path: hit audio (synthesized, `audio.js`),
+  voice (fire-and-forget, `voice.js`), reaction-pack fetch (prefetched at
+  `_bindT3`, `fighter.js`).
+- Still owed on lag (not claimed): hitstop tuning as a draft (owner
+  decision), HitFX per-hit sprite/material allocations, and the mobile
+  render baseline (pixelRatio up to 2 + PCFSoft shadows + UnrealBloom
+  composer in `game/js/scene.js`) — all measured as amplifiers, not
+  landed fixes. No deploy: rides the held republish.
+
+### Parts: audited against the current catalogs (2026-11-02)
+Suite catalog `customization/creation-suite-ui/data/parts-catalog.json`:
+7,523 entries after this batch (7,424 before tattoos). Geometry pending
+overall: 4,939 / 7,424 before tattoos (66.5%); tattoos add 99 non-pending.
+- Hair: 332 total, 20 wired (6.0%), 312 pending (94.0%). Pending = 156
+  WMXIX hair from the converted catalog (92 `blocked_ymg_decode` + 61
+  `blocked_dumy_placeholder` + 3 not converted) + 156 registry entries.
+  Wired: 11 CC0 + 1 toon + 2 mariposa/silvertongue + 5 AshLane (#1499)
+  + 1 more non-pending entry.
+- Tattoos: LANDED in this batch — 99 No Mercy tattoo PNGs
+  (`teardown/wwf-no-mercy/textures/rom/tattoo/`, previously 0 in the
+  catalog) as `decal_logo` texture parts, `geometry_pending` false.
+  They surface under Decals; `PARTS_TREE` has no dedicated tattoo
+  category yet, and placement is null, so the suite preview falls back
+  to its chest-socket marker until a placement is authored.
+- Clothing: attire 457 (456 with asset) and fullbody 272 (all with glb)
+  are already wired. Upper body 1,175 (1,174 pending) and lower body 330
+  (330 pending) are bulk-blocked: non-Def-Jam upper/lower entries are
+  WMXIX YMG entries (952 + 240) with no converted mesh; the glb-carrying
+  upper/lower entries are Def Jam POINTS (see below).
+- Accessories: 2,739 accessory-slot entries, 2,705 pending. 34 No Mercy
+  weapon GLBs are already wired (non-pending); the rest are WMXIX
+  (366 non-Def-Jam) and Def Jam POINTS.
+- Def Jam: 2,624 entries, ALL `geometry_pending`. Its 1,201 converted
+  GLBs are POINTS primitives with unproven vertex order (~14–15 KB
+  each), not wearable mesh — so they are NOT claimed as wired.
+  Conversion to real mesh topology is still owed.
+- Eyes: eye slot 13 total, 6 pending, 3 real placeable meshes
+  (spidergirl lenses + 2 CC0 brows) + 3 eye-library textures. Real
+  `customization/parts/eyes/eyeball.glb` (sclera/iris/pupil) and
+  `eyelash.glb` exist but are NOT wired: no left/right placement or
+  socket offsets are authored, and a single eyeball at the face-center
+  socket would be wrong. Still owed, with that reason.
+- Scars: 0 entries, 0 scar-labeled assets found in the repo (WMXIX
+  MAKE_UP names are opaque `ty2_*` texture ids, no scar labels).
+  Still owed: create or cut, owner decision.
+- Face: face slot 1,828, 1,673 non-pending (mostly WMXIX MAKE_UP
+  textures, 1,477 converted), 48 with glb, 155 pending.
