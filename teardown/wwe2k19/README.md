@@ -1,7 +1,7 @@
 # WWE 2K19 Teardown — Pull Plan
 
 **Game:** WWE 2K19 | **Steam App ID:** 846350 | **Owned:** YES (vil3m, 113 min)
-**Status:** Awaiting extraction via DepotDownloader
+**Status:** Batch 1 landed (PRs #1480/#1481/#1483, 1,677 files, merged 2026-11-01); YOBJ→glTF conversion, YANM motion decode, and further batches still owed (see PULL.md)
 
 ## What we're pulling
 
