@@ -83,7 +83,10 @@ function show(name) {
     // user's first preview taps needed. Now the screen paints first and the
     // bases warm during idle; a highlight always preempts them (assets.js).
     // The custom-fighter base only matters when a custom fighter exists.
-    assets.preloadBaseIdle(!!getCustomFighter());
+    // Phase 4b: warm that fighter's TEMPLATE model, not the legacy
+    // Soldier key (assets.js preloadBaseIdle takes the resolved model).
+    const _cf = getCustomFighter();
+    assets.preloadBaseIdle(!!_cf, _cf ? customFighterToRoster(_cf)?.model : null);
     if (selectScreen) selectScreen.onShow(modes ? modes.mode : null);
     requestAnimationFrame(() => requestAnimationFrame(() => mark('select-interactive')));
   }
