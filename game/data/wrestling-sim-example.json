@@ -1,0 +1,47 @@
+{
+  "schema": "wh-wrestling-fighter/1",
+  "note": "WH-authored example record only. No source-game wrestler, promotion, part, move or tuning value is copied here; ids, trait names and weights are WH examples that exercise game/js/ai/cpu-logic-tables.js. The five sections are the documented edit-record shape (profile, appearance, parameters, moveset, cpuLogic).",
+  "profile": { "id": "wh-example-wrestler", "style": "grappler" },
+  "appearance": { "parts": [{ "slot": "torso", "id": "wh-torso-1", "scale": 100 }, { "slot": "hair", "id": "wh-hair-1", "scale": 100 }] },
+  "parameters": {
+    "throw": { "offense": 8, "defense": 6 },
+    "punch": { "offense": 5, "defense": 5 },
+    "power": { "offense": 7, "defense": 7 }
+  },
+  "moveset": {
+    "standing": "wh-jab",
+    "frontGrappleSmall": "wh-arm-drag",
+    "frontGrappleMedium": "wh-suplex",
+    "frontGrappleBig": "wh-powerbomb",
+    "backGrapple": "wh-back-suplex",
+    "groundHead": "wh-ground-stomp",
+    "groundLegs": "wh-leg-lock",
+    "corner": "wh-corner-splash",
+    "diving": "wh-diving-elbow",
+    "running": "wh-running-clothesline",
+    "counter": "wh-reversal-toss",
+    "finisher": "wh-finisher-slam"
+  },
+  "cpuLogic": {
+    "table": {
+      "frontGrappleSmall": {
+        "small": { "wh-arm-drag": 70, "wh-jab": 30 },
+        "medium": { "wh-arm-drag": 50, "wh-suplex": 50 },
+        "large": { "wh-suplex": 60, "wh-powerbomb": 40 },
+        "critical": { "wh-finisher-slam": 80, "wh-suplex": 20 }
+      },
+      "groundHead": {
+        "small": { "wh-ground-stomp": 80, "taunt": 20 },
+        "large": { "wh-ground-stomp": 60, "wh-leg-lock": 40 },
+        "critical": { "wh-finisher-slam": 90, "wh-ground-stomp": 10 }
+      }
+    },
+    "sliders": { "showmanship": 70, "discretion": 40, "flexibility": 60, "ukemi": 55 },
+    "priority": [
+      { "trigger": "wh-suplex", "followUp": "wh-ground-stomp", "perPhase": { "small": 20, "medium": 50, "large": 80, "critical": 100 } }
+    ],
+    "traits": [
+      { "id": "wh-second-wind", "trigger": "low-stamina", "effect": "rise-faster", "cost": 20 }
+    ]
+  }
+}
