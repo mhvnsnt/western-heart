@@ -46,6 +46,10 @@ test('the 99 No Mercy tattoos are wired, unique, and not pending', () => {
 });
 
 test('decal_logo totals after tattoos: 111 entries', () => {
+  // Updated 2026-11-02 by the face-decals lane: 111 + 179 WMXIX face
+  // decals (Face_op 140 + MAKE_UP 39) = 290. The face-decals test
+  // (test/parts-face-decals.test.mjs) owns the 290 assertion; this
+  // test keeps the tattoo counts it was written for.
   const decals = CATALOG.parts.filter((p) => p.suite_slot === 'decal_logo');
-  assert.equal(decals.length, 111, 'decal_logo entries (12 before + 99 tattoos)');
+  assert.equal(decals.length, 290, 'decal_logo entries (12 before + 99 tattoos + 179 face decals)');
 });

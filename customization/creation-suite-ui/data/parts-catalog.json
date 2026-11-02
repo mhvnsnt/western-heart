@@ -11,9 +11,11 @@
   "parts-converted/defjam/CATALOG.json (new)": 2624,
   "teardown/dead-or-alive-4/models (rglob, new)": 272,
   "ashlane": 5,
-  "teardown/wwf-no-mercy/textures/rom/tattoo": 99
+  "teardown/wwf-no-mercy/textures/rom/tattoo": 99,
+  "customization/parts-converted/wmxix-textures/TEX/Face_op": 140,
+  "customization/parts-converted/wmxix-textures/TEX/64gara": 39
  },
- "total": 7523,
+ "total": 7702,
  "notes": "parts-converted/CATALOG.json is a REAL source since PR #398 merged (run #3 absence finding was true at check time; the merge landed after). Eyes: mesh eye/brow parts are placeable (eye_kind=placeable_part); eye texture entries are legacy variants (eye_kind=texture_variant) per the owner 2026-10-20 eye verdict. No eyelash mesh exists in-repo yet. Def Jam CAW library wired 2026-10-22 (worker 33, fight-lab lane): 2,624 conversion entries, all geometry_pending (POINTS topology until the mesh conversion pass lands). Worker 38 (2026-10-22): +272 DOA4 costume GLBs (full-body, real meshes). AshLane hair wired 2026-11-02: +5 real GLBs from the owner's AshLane parts library (INDEX geometryReady), listed in the suite catalog with head socket, offset 0, scale 1 (per customization/parts/ashlane/hair/manifest.json). No Mercy tattoos wired 2026-11-02: 99 tattoo PNGs from teardown/wwf-no-mercy/textures/rom/tattoo/ as decal_logo texture parts (geometry_pending false, chest-socket marker fallback in the suite preview until a placement is authored; they surface under Decals, since PARTS_TREE has no dedicated tattoo category yet).",
  "parts": [
   {
@@ -233672,6 +233674,5913 @@
    "source": "teardown/wwf-no-mercy/textures/rom/tattoo",
    "glb": null,
    "asset": "teardown/wwf-no-mercy/textures/rom/tattoo/Tattoo_2CA0.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta0_000",
+   "name": "ta0_000",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta0_000.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta0_002",
+   "name": "ta0_002",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta0_002.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta0_003",
+   "name": "ta0_003",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta0_003.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta0_004",
+   "name": "ta0_004",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta0_004.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta0_005",
+   "name": "ta0_005",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta0_005.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta0_006",
+   "name": "ta0_006",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta0_006.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta0_007",
+   "name": "ta0_007",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta0_007.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta0_008",
+   "name": "ta0_008",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta0_008.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta0_009",
+   "name": "ta0_009",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta0_009.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta0_010",
+   "name": "ta0_010",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta0_010.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta0_011",
+   "name": "ta0_011",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta0_011.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta0_012",
+   "name": "ta0_012",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta0_012.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta0_013",
+   "name": "ta0_013",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta0_013.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta0_014",
+   "name": "ta0_014",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta0_014.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta0_015",
+   "name": "ta0_015",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta0_015.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta0_016",
+   "name": "ta0_016",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta0_016.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta0_017",
+   "name": "ta0_017",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta0_017.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta0_019",
+   "name": "ta0_019",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta0_019.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta0_020",
+   "name": "ta0_020",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta0_020.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta0_023",
+   "name": "ta0_023",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta0_023.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta1_000",
+   "name": "ta1_000",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta1_000.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta1_001",
+   "name": "ta1_001",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta1_001.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta1_002",
+   "name": "ta1_002",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta1_002.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta1_003",
+   "name": "ta1_003",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta1_003.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta1_004",
+   "name": "ta1_004",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta1_004.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta1_005",
+   "name": "ta1_005",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta1_005.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta1_006",
+   "name": "ta1_006",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta1_006.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta1_007",
+   "name": "ta1_007",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta1_007.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta1_008",
+   "name": "ta1_008",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta1_008.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta1_009",
+   "name": "ta1_009",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta1_009.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta1_010",
+   "name": "ta1_010",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta1_010.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta1_011",
+   "name": "ta1_011",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta1_011.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta1_012",
+   "name": "ta1_012",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta1_012.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta1_013",
+   "name": "ta1_013",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta1_013.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta1_014",
+   "name": "ta1_014",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta1_014.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta1_015",
+   "name": "ta1_015",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta1_015.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta1_016",
+   "name": "ta1_016",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta1_016.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta1_017",
+   "name": "ta1_017",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta1_017.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta1_018",
+   "name": "ta1_018",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta1_018.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta1_019",
+   "name": "ta1_019",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta1_019.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta1_020",
+   "name": "ta1_020",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta1_020.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta1_021",
+   "name": "ta1_021",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta1_021.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta1_022",
+   "name": "ta1_022",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta1_022.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta3_005",
+   "name": "ta3_005",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta3_005.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_000",
+   "name": "ta4_000",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_000.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_001",
+   "name": "ta4_001",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_001.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_002",
+   "name": "ta4_002",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_002.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_003",
+   "name": "ta4_003",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_003.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_004",
+   "name": "ta4_004",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_004.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_005",
+   "name": "ta4_005",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_005.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_007",
+   "name": "ta4_007",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_007.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_008",
+   "name": "ta4_008",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_008.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_010",
+   "name": "ta4_010",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_010.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_011",
+   "name": "ta4_011",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_011.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_012",
+   "name": "ta4_012",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_012.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_013",
+   "name": "ta4_013",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_013.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_014",
+   "name": "ta4_014",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_014.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_015",
+   "name": "ta4_015",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_015.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_016",
+   "name": "ta4_016",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_016.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_017",
+   "name": "ta4_017",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_017.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_018",
+   "name": "ta4_018",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_018.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_019",
+   "name": "ta4_019",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_019.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_020",
+   "name": "ta4_020",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_020.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_021",
+   "name": "ta4_021",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_021.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_022",
+   "name": "ta4_022",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_022.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_023",
+   "name": "ta4_023",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_023.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_024",
+   "name": "ta4_024",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_024.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_025",
+   "name": "ta4_025",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_025.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_026",
+   "name": "ta4_026",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_026.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_027",
+   "name": "ta4_027",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_027.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_028",
+   "name": "ta4_028",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_028.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_029",
+   "name": "ta4_029",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_029.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_030",
+   "name": "ta4_030",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_030.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_031",
+   "name": "ta4_031",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_031.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_032",
+   "name": "ta4_032",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_032.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_033",
+   "name": "ta4_033",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_033.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_034",
+   "name": "ta4_034",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_034.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_035",
+   "name": "ta4_035",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_035.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_036",
+   "name": "ta4_036",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_036.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_037",
+   "name": "ta4_037",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_037.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_038",
+   "name": "ta4_038",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_038.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_039",
+   "name": "ta4_039",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_039.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_040",
+   "name": "ta4_040",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_040.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_041",
+   "name": "ta4_041",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_041.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_042",
+   "name": "ta4_042",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_042.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_043",
+   "name": "ta4_043",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_043.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_044",
+   "name": "ta4_044",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_044.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_045",
+   "name": "ta4_045",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_045.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_046",
+   "name": "ta4_046",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_046.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_047",
+   "name": "ta4_047",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_047.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_048",
+   "name": "ta4_048",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_048.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_049",
+   "name": "ta4_049",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_049.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_050",
+   "name": "ta4_050",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_050.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_051",
+   "name": "ta4_051",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_051.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_052",
+   "name": "ta4_052",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_052.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_053",
+   "name": "ta4_053",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_053.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_054",
+   "name": "ta4_054",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_054.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_055",
+   "name": "ta4_055",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_055.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta4_056",
+   "name": "ta4_056",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta4_056.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_000",
+   "name": "ta5_000",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_000.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_001",
+   "name": "ta5_001",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_001.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_002",
+   "name": "ta5_002",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_002.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_003",
+   "name": "ta5_003",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_003.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_004",
+   "name": "ta5_004",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_004.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_005",
+   "name": "ta5_005",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_005.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_006",
+   "name": "ta5_006",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_006.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_007",
+   "name": "ta5_007",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_007.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_008",
+   "name": "ta5_008",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_008.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_009",
+   "name": "ta5_009",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_009.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_010",
+   "name": "ta5_010",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_010.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_011",
+   "name": "ta5_011",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_011.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_012",
+   "name": "ta5_012",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_012.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_013",
+   "name": "ta5_013",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_013.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_014",
+   "name": "ta5_014",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_014.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_015",
+   "name": "ta5_015",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_015.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_016",
+   "name": "ta5_016",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_016.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_017",
+   "name": "ta5_017",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_017.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_018",
+   "name": "ta5_018",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_018.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_019",
+   "name": "ta5_019",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_019.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_020",
+   "name": "ta5_020",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_020.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_021",
+   "name": "ta5_021",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_021.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_022",
+   "name": "ta5_022",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_022.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_023",
+   "name": "ta5_023",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_023.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_024",
+   "name": "ta5_024",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_024.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_025",
+   "name": "ta5_025",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_025.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_026",
+   "name": "ta5_026",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_026.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_027",
+   "name": "ta5_027",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_027.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_028",
+   "name": "ta5_028",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_028.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_029",
+   "name": "ta5_029",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_029.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_030",
+   "name": "ta5_030",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_030.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_031",
+   "name": "ta5_031",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_031.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_032",
+   "name": "ta5_032",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_032.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_033",
+   "name": "ta5_033",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_033.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_034",
+   "name": "ta5_034",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_034.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_035",
+   "name": "ta5_035",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_035.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_036",
+   "name": "ta5_036",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_036.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_037",
+   "name": "ta5_037",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_037.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_038",
+   "name": "ta5_038",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_038.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_039",
+   "name": "ta5_039",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_039.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-faceop-ta5_040",
+   "name": "ta5_040",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/Face_op",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/Face_op/ta5_040.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_000",
+   "name": "ty2_000",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_000.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_001",
+   "name": "ty2_001",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_001.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_002",
+   "name": "ty2_002",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_002.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_003",
+   "name": "ty2_003",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_003.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_004",
+   "name": "ty2_004",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_004.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_005",
+   "name": "ty2_005",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_005.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_006",
+   "name": "ty2_006",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_006.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_007",
+   "name": "ty2_007",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_007.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_008",
+   "name": "ty2_008",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_008.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_009",
+   "name": "ty2_009",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_009.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_010",
+   "name": "ty2_010",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_010.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_011",
+   "name": "ty2_011",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_011.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_012",
+   "name": "ty2_012",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_012.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_013",
+   "name": "ty2_013",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_013.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_014",
+   "name": "ty2_014",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_014.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_015",
+   "name": "ty2_015",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_015.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_016",
+   "name": "ty2_016",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_016.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_017",
+   "name": "ty2_017",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_017.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_018",
+   "name": "ty2_018",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_018.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_019",
+   "name": "ty2_019",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_019.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_022",
+   "name": "ty2_022",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_022.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_023",
+   "name": "ty2_023",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_023.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_024",
+   "name": "ty2_024",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_024.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_025",
+   "name": "ty2_025",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_025.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_026",
+   "name": "ty2_026",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_026.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_027",
+   "name": "ty2_027",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_027.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_028",
+   "name": "ty2_028",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_028.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_029",
+   "name": "ty2_029",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_029.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_030",
+   "name": "ty2_030",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_030.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_031",
+   "name": "ty2_031",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_031.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_032",
+   "name": "ty2_032",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_032.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_033",
+   "name": "ty2_033",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_033.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_034",
+   "name": "ty2_034",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_034.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_035",
+   "name": "ty2_035",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_035.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_036",
+   "name": "ty2_036",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_036.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_037",
+   "name": "ty2_037",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_037.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_038",
+   "name": "ty2_038",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_038.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_039",
+   "name": "ty2_039",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_039.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "decal_logo",
+   "placement": null,
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ]
+  },
+  {
+   "id": "wmxix-decal-makeup-ty2_040",
+   "name": "ty2_040",
+   "part_class": "texture_part",
+   "suite_slot": "decal_logo",
+   "t7_slot": "8",
+   "library": "wmxix",
+   "source": "customization/parts-converted/wmxix-textures/TEX/64gara",
+   "glb": null,
+   "asset": "customization/parts-converted/wmxix-textures/TEX/64gara/ty2_040.png",
    "socket": null,
    "offset": [
     0,
