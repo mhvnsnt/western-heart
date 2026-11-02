@@ -31,6 +31,8 @@ export const ENGINE = {
   WS: 'while rising (release down)', FC: 'full crouch (hold down)', SS: 'sidestep', AIR: 'airborne (jump)',
   WR: 'while running (f,f,F)', R: 'rage (25% health)', RD: 'rage drive', FUFT: 'on the ground after a knockdown',
   FLANK_L: "at the foe's left side", FLANK_R: "at the foe's right side", FLANK_B: "at the foe's back",
+  SIDE_L: "at the foe's left side (FLANK_KEYS)", SIDE_R: "at the foe's right side (FLANK_KEYS)", BACK: "at the foe's back (FLANK_KEYS)",
+  H: 'Soul Urge on (the heat state)',
 };
 for (const s of FML.SOUL_SYSTEMS) ENGINE[s.prefix] = `soul system: ${s.en}`;
 
@@ -47,11 +49,15 @@ function audit(fid) {
   const moves = data.moves || {};
   const keys = Object.keys(data.slots || moves);
   const stances = new Set(Object.values(data.stance_after || {}).filter(Boolean));
+  // fighter.js backTurnAfter: a "(BT)" frame-advantage note enters BT (2026-11-02)
+  const btNote = Object.entries(moves).some(([k, m]) => m && !/^BT\./.test(k) && [m.on_block, m.on_hit, m.on_ch, m.t7_on_block, m.t7_on_hit, m.t7_on_ch,
+    (m.t7 || {}).on_block, (m.t7 || {}).on_hit, (m.t7 || {}).on_ch, (m.t8 || {}).on_block, (m.t8 || {}).on_hit, (m.t8 || {}).on_ch].some((x) => /\(BT\)/.test(String(x || ''))));
+  if (btNote) stances.add('BT');
   // FUHT is set by the knockdown only when the moveset has it (fighter.js _hasGroundMoves)
   const throwTags = new Set();
   for (const [k, m] of Object.entries(moves)) {
     const grab = m && (m.isGrab || m.move_class === 'throw' || /throw/i.test(String(m.hit_level || m.note || '')));
-    if (grab) { const t = M.throwStageTag(m.name); if (t) throwTags.add(t); }
+    if (grab) { const t = M.throwStageTag(m.name); if (t) throwTags.add(t); if (/tackle/i.test(m.name || '')) throwTags.add('TACKLE'); }
     void k;
   }
   const by = {};
