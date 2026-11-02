@@ -1,0 +1,71 @@
+{
+  "format": "cape-rig-map/1",
+  "source": "cape-jones/tools/rigging/ (BlenRig fit/setup/warp, joint_detect, weight cage) + cape-jones/blender523-rig-fixed-20261101 + blender523-rig-refined-20261101",
+  "target": "western-heart tools/retarget/ — WH-Canonical-22 (lab/skeleton/canonical_skeleton.json) + Mixamo49 finger/toe extension (tools/retarget/tekken-bonemap.json)",
+  "location_justification": "tools/retarget/ is WH's existing retarget home (README, tekken-bonemap.json, tekken_skeleton_base.json, tests/). tools/auto_rig/ is the GameRig creation backend, tools/rig-guard/ is only a MODEL_URLS guard, and tools/rig-repair/ is repair — none of them is a fit/retarget library. This subdir keeps all retarget wiring in one place and touches no existing file.",
+  "skeleton_differences": [
+    "Scale/proportion: Cape Jones toon is 0.9248 m; BlenRig fit shrinks the 1.70 m default biped by 0.544. WH characters are realistic-proportioned: cape_rig.fit_guides() defaults rest_scale=1.0 and fits in target space; the 0.544 factor is opt-in only.",
+    "Axis/space: Cape Jones joint detection is Z-up, faces -Y, L=+X, feet at z=0. WH-Canonical-22 is Y-up, faces +Z, left=+X, bind pose is a fighting stance with identity rest rotations. Convert with cape_rig.to_wh_space() before feeding WH data; do not feed CJ-space joints straight into a WH rig.",
+    "Bone count/shape: Cape Jones show rig is 94 bones (asserted in retarget_idle_cape.py) plus BlenRig *_str guides and pole bones, plus cape bones. WH-Canonical-22 has 22 core bones and no cape, guide or pole bones. The Mixamo49 extension adds full finger chains and toes.",
+    "Spine: Cape Jones uses spine_1..spine_4 + chest (5 segments). WH-Canonical-22 has Spine + Chest only, so CJ spine_1/spine_2 collapse to Spine and spine_3/spine_4/chest collapse to Chest (see show-retarget bonemap for the motion-averaging rule).",
+    "Fingers: Cape Jones guides build 4 fingers x 5 segments + thumb x 4 per side. WH-Canonical-22 drops fingers entirely (see tekken-bonemap.json 'drop'); Mixamo49 targets keep thumb/index/middle/ring/pinky x 3. Map by finger name, not by segment count — extra CJ finger segments are averaged onto the 3-segment WH chain, never invented as new WH bones.",
+    "MB-Lab 71-joint note (honest gap): the wiring brief names a 71-joint MB-Lab skeleton, but no 71-name list was found in tools/retarget/ or tools/mb-lab/ at the base head — those dirs carry the 22-bone canonical rig, the 60-bone base skeleton and the MB-Lab generator (tools/mb-lab/README.md: MB-Lab skeleton -> retargeted to the WH canonical rig). cape_rig.py is therefore skeleton-agnostic: pass a caller-supplied target joint list (e.g. exported from a generated MB-Lab GLB) and unmapped joints hold rest and are reported by QA, rather than inventing 71 names here.",
+    "Cape: Cape Jones cape/collar are rigged pieces, not skeleton bones in the WH sense. They map to the WH cape accessory system (tools/cape/), not to WH skeleton joints. See seating rules below."
+  ],
+  "guide_to_wh_canonical": {
+    "master_torso_str": "Hips (guide only; not a WH bone)",
+    "pelvis_str": "Hips",
+    "spine_ctrl_1_str": "Spine",
+    "spine_ctrl_2_str": "Spine",
+    "spine_ctrl_3_str": "Chest",
+    "spine_ctrl_4_str": "Chest",
+    "neck_ctrl_2_str": "Neck",
+    "neck_ctrl_3_str": "Neck",
+    "neck_ctrl_4_str": "Neck",
+    "head_str": "Head",
+    "clavi_str_L": "LeftShoulder",
+    "shoulder_str_L": "LeftArm",
+    "elbow_str_L": "LeftForeArm",
+    "wrist_str_L": "LeftHand",
+    "hand_str_L": "LeftHand",
+    "pelvis_str_L": "LeftUpLeg",
+    "knee_str_L": "LeftLeg",
+    "ankle_str_L": "LeftFoot",
+    "foot_str_L": "LeftFoot",
+    "toe_str_1_L": "LeftToeBase",
+    "clavi_str_R": "RightShoulder",
+    "shoulder_str_R": "RightArm",
+    "elbow_str_R": "RightForeArm",
+    "wrist_str_R": "RightHand",
+    "hand_str_R": "RightHand",
+    "pelvis_str_R": "RightUpLeg",
+    "knee_str_R": "RightLeg",
+    "ankle_str_R": "RightFoot",
+    "foot_str_R": "RightFoot",
+    "toe_str_1_R": "RightToeBase"
+  },
+  "dropped_from_skeleton": [
+    "All *_str guides and *_pole_str bones (BlenRig fitting scaffolding, not deform bones).",
+    "face_mstr_str (BlenRig face guide; WH face work lives in the creation-suite FACE panel, not in this rig fit).",
+    "Cape/collar bones and pegs (cape-jones cape pieces) — routed to tools/cape/, not to skeleton joints.",
+    "Extra finger segments beyond the Mixamo49 3-per-finger chain (averaged, see above).",
+    "debug*.py, debug_pose*.py, debug_prop.py, model_probe.py, export_verts.py, inspect_*.py, iterative_fix.py, test_min.py, test_poses.py, clean_cage.py, make_clean.py, finalize.py, bind_all.py, direct_bind.py, fix_bind.py, paint_direct.py, find_cape.py, cape_setup.py, build_custom_rig.py scratch/debug variants in cape-jones/tools/rigging/ — one-off debug and CJ-specific bind scripts, not portable rigging logic. Their reusable ideas (zone weights, deform verification) are already in cape_rig.py."
+  ],
+  "blender523_seating_gate": {
+    "note": "2D toon peg rules from blender523-rig-fixed/refined reports, carried as a POSE/SEATING gate only. The refined build is 17 pegs + 11 drawings + FK 6/6, gate PASS_WITH_KNOWN_LIMITS; it is NOT a 3D skeleton and no .blend is copied here.",
+    "arm_identity": "ARM1 = viewer-left = Arm_Front, ARM2 = viewer-right = Arm_Back; LEG1 = viewer-left = Leg_Front, LEG2 = viewer-right = Leg_Back. 'Front/Back' in filenames is limb identity, not body-facing. A swapped build was wrong and was corrected in the fixed build — do not re-swap.",
+    "cape_parent": "Cape_Back_Main is Torso-parented, top at shoulder level, bottom above the feet; never Root-parented towering above the head.",
+    "collar_z": "Cape_Collar Z below Torso Z (fixed: collar 0.05, torso 0.08) so only the shoulder band shows, not a chest-covering bib.",
+    "head_neck": "Head base sits on the neck (head base 2.89, neck centre 2.98, overlap 0.31 in fixed-build units); head centre pivot is wrong.",
+    "crossed_snap_z": "Crossed arms at Z 0.11, above torso 0.08, below head 0.12.",
+    "flex": "Flex is a 120 deg wide-out spread, NOT arms-up (whole pieces cannot do arms-up without a wrist cut, which is banned in that rig).",
+    "known_limits": "Whole-piece limbs cannot match cut-limb elbow/knee bends exactly (refined report: worst rows still off by tens of px at fist/toe); true arms-up flex and a 48-frame EEVEE animation are not claimed."
+  },
+  "locked_bones_for_cage_weights": ["head", "chest", "hand_L", "hand_R", "foot_L", "foot_R", "Head", "Chest", "LeftHand", "RightHand", "LeftFoot", "RightFoot"],
+  "still_owed": [
+    "BlenRig 6 addon install + biped add + MDEF cage bind inside Blender 5.2.3 (blender_steps in cape_rig.py) — needs a Blender binary + the addon; not run here, not faked.",
+    "MB-Lab on Blender 5.2.3 verification — WH pins 4.0.2 for MB-Lab; use 4.0.2 for MB-Lab generation, 5.2.3 for this fit, until a headless run proves otherwise.",
+    "EEVEE QA renders of a real fitted WH character — the CI proof here is the dependency-free fit/detect/cage test rig; a GPU/Blender render of a real character is owed.",
+    "Full 71-joint MB-Lab name list wired as a checked-in target skeleton — owed until a generated MB-Lab GLB is exported and its joint list is landed (see skeleton_differences)."
+  ]
+}
