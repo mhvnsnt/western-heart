@@ -515,7 +515,8 @@ export function mountSelect510Bar() {
   const bar = document.createElement('div');
   bar.id = 'wh-favbar';
   bar.className = 'wh-favbar';
-  bar.innerHTML = '<span class="wh-fav-label">FAVORITES · T7 5.10</span>';
+  // Names law (2026-11-01): no source-game/version tag on screen (was 'FAVORITES · T7 5.10').
+  bar.innerHTML = '<span class="wh-fav-label">FAVORITES</span>';
   const save = gapBtn('★ SAVE FAVORITE', 'Current fighter + attire');
   tap(save, () => {
     if (isTournamentLocked(readJson(ls(), 'wh_settings_v1', {}))) { gapToast('TOURNAMENT LOCK — favorites are off.'); return; }
@@ -545,6 +546,7 @@ export function mountSelect510Bar() {
     }
     loadFavorites(ls()).forEach((f, i) => {
       const b = gapBtn(`FAV ${i + 1}`, f.fighterId);
+      b.title = f.attireLabel ? `${f.fighterId} · ${f.attireLabel}` : f.fighterId; // the subtitle is hidden in the select band on phones
       tap(b, () => {
         const sel = (typeof window !== 'undefined' && window.__selectScreen) || null;
         if (sel && sel.selectById) sel.selectById(f.fighterId);

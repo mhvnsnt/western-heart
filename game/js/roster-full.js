@@ -11,7 +11,7 @@
 export const FULL_ROSTER = [
   // ——— THE NINE SOULS ———
   { id: 'rin', name: 'RIN', title: 'The Protagonist Soul', base: 'Jin Kazama', moveset: 'demonio', model: null, modelPending: true, tintStrength: 0.6,
-    colors: { suit: 0x1a3a6b, trim: 0x9fd8ff }, style: 'Mishima Karate', archetype: 'Balanced' },
+    colors: { suit: 0x1a3a6b, trim: 0x9fd8ff }, style: 'Karate', archetype: 'Balanced' },
   { id: 'byou', name: 'BYOU', title: 'The Sick Soul', base: 'Lei Wulong', moveset: 'demonio', model: null, modelPending: true, tintStrength: 0.6,
     colors: { suit: 0x4a5a1a, trim: 0x8a9a3a }, style: 'Five Animals', archetype: 'Trickster' },
   { id: 'tou', name: 'TOU', title: 'The Fighting Soul', base: 'Paul Phoenix', moveset: 'heihachi', model: null, modelPending: true, tintStrength: 0.25,
@@ -23,7 +23,7 @@ export const FULL_ROSTER = [
   { id: 'retsu', name: 'RETSU', title: 'The Violent Soul', base: 'Bryan Fury', moveset: 'bryan', model: null, modelPending: true, tintStrength: 0.25,
     colors: { suit: 0x3a1a1a, trim: 0xcc2222 }, style: 'Kickboxing', archetype: 'Rushdown' },
   { id: 'zen', name: 'ZEN', title: 'The Still Soul', base: 'Heihachi', moveset: 'heihachi', model: 'zen', tintStrength: 0.6,
-    colors: { suit: 0xd0d0d0, trim: 0x8a8a8a }, style: 'Mishima', archetype: 'Defensive',
+    colors: { suit: 0xd0d0d0, trim: 0x8a8a8a }, style: 'Karate', archetype: 'Defensive',
     // ZEN TRANSFORMATION MODES (owner canon 2026-10-21, roster/zen/CANON.md):
     // ALL of Zen's versions are modes WITHIN Attire 1 — not separate
     // attires. Spiritual/celestial class (Oversoul/Susanoo x JoJo Stand).
@@ -62,7 +62,7 @@ export const FULL_ROSTER = [
     stats: { speed: 4.0, jump: 6.8, power: 1.3, defense: 1.2 },
     ai: { aggression: 0.85, grabBias: 0.45, reaction: 0.55 } },
   { id: 'demonio', name: 'DEMONIO', title: 'The Demon Soul', base: 'Jin Kazama', moveset: 'demonio', model: 'demonio-a1', tintStrength: 0.25,
-    colors: { suit: 0x1a3a6b, trim: 0x9fd8ff }, style: 'Mishima Karate',
+    colors: { suit: 0x1a3a6b, trim: 0x9fd8ff }, style: 'Karate',
     surge: { name: 'COLD FLAME', color: 0x9fd8ff, accent: 0xffffff },
     // Attire 1 = Tripo unwinged demon (owner 2026-10-19). Three forms, transform both directions (Roshi-style).
     // TRANSFORM touch button = up, tap while crouching = down (rare). Full meter required.
@@ -91,7 +91,7 @@ export const FULL_ROSTER = [
   { id: 'phantom', name: 'PHANTOM', title: 'The Ghost Blade Soul', base: 'Yoshimitsu', moveset: 'yoshimitsu', model: 'phantom', tintStrength: 0.6,
     colors: { suit: 0x1a1a2a, trim: 0x00ffcc }, style: 'Sword Style', archetype: 'Tricky' },
   { id: 'diablo', name: 'DIABLO', title: 'The Devil Soul', base: 'Heihachi', moveset: 'heihachi', model: 'diablo', tintStrength: 0.6,
-    colors: { suit: 0x5a0a0a, trim: 0xff4400 }, style: 'Mishima', archetype: 'Boss' },
+    colors: { suit: 0x5a0a0a, trim: 0xff4400 }, style: 'Karate', archetype: 'Boss' },
   { id: 'skull', name: 'SKULL', title: 'The Punisher Soul', base: 'Bryan Fury', moveset: 'bryan', model: 'skull', tintStrength: 0.25,
     colors: { suit: 0x2a2a2a, trim: 0xcccccc }, style: 'Kickboxing', archetype: 'Rushdown' },
   { id: 'samura1', name: 'SAM-UR-A1', title: 'The Mech Soul', base: 'Jack-7', moveset: 'gunjack', model: 'sam-ur-a1', tintStrength: 0.25,
@@ -104,7 +104,7 @@ export const FULL_ROSTER = [
   { id: 'zui', name: 'ZUI', title: 'Drunken Master', base: 'Steve Fox', moveset: 'demonio', model: 'zui-attire1', tintStrength: 0.6,
     colors: { suit: 0x2a4a2a, trim: 0x6acc3a }, style: 'Boxing/Drunken', archetype: 'Tricky' },
   { id: 'kinpo', name: 'KINPO', title: 'Splinter of SHA', base: 'Asuka', moveset: 'demonio', model: 'kinpo', tintStrength: 0.6,
-    colors: { suit: 0xd44d8a, trim: 0xffd700 }, style: 'Kazama Style', archetype: 'Counter' },
+    colors: { suit: 0xd44d8a, trim: 0xffd700 }, style: 'Traditional Martial Arts', archetype: 'Counter' },
   { id: 'waterfall', name: 'WATERFALL', title: "Grief of Nine", base: 'Josie', moveset: 'demonio', model: 'waterfall', tintStrength: 0.6,
     colors: { suit: 0x3a6acc, trim: 0x9fd8ff }, style: 'Eskrima', archetype: 'Rushdown' },
   { id: 'kingtyrant', name: 'KING TYRANT', title: 'Showman King', base: 'Eddy Gordo', moveset: 'xiaoyu', model: 'king-tyrant', tintStrength: 0.25,

@@ -960,7 +960,7 @@ if (fb) {
           <b>1V1 FIGHT</b><span>classic versus</span>
         </button>
         <button type="button" class="vs-format-btn" data-format="team">
-          <b>TEAM BATTLE</b><span>TTT2 tag &amp; elimination</span>
+          <b>TEAM BATTLE</b><span>tag &amp; elimination</span>
         </button>
       </div>
       <div class="vs-submenu-row" id="vs-size-row" hidden>
@@ -989,8 +989,8 @@ if (fb) {
   function setSizeNote(n) {
     const note = $('vs-size-note');
     if (note) note.textContent = n === 2
-      ? '2v2 — TTT2 tag rules: tag in/out, red health, rage, tag combos.'
-      : `${n}v${n} — TTT2 Team Battle elimination: KO a fighter, the next steps in.`;
+      ? '2v2 — tag rules: tag in/out, red health, rage, tag combos.'
+      : `${n}v${n} — Team Battle elimination: KO a fighter, the next steps in.`;
   }
   function chooseVsFormat(fmt) {
     audio.uiClick();
