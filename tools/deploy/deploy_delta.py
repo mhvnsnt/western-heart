@@ -12,6 +12,13 @@ REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 LIVE, MAIN, BRANCH = 'origin/gh-pages-m1-20261029', 'origin/main', 'gh-pages-m1-20261029'
 ROOTS = ('game/', 'customization/', 'packages/', 'roster/')
 ADD_PREFIXES = ('game/assets/anim/t7/',)
+# NEW small runtime files the shipped pages load by URL (a <link> stylesheet, fetched JSON), which the module-graph
+# check cannot see (2026-11-02: the creation suite's suite-t7.css and the template list were never added, so the live
+# suite lost its skin and its base bodies). Code/data/style only, never models (the template GLBs load from jsDelivr:
+# the site is at its 1 GB cap), each file at most SMALL_MAX, all of them together at most SMALL_TOTAL.
+SMALL_ADD_PREFIXES = ('customization/creation-suite-ui/', 'customization/templates/', 'game/js/', 'game/data/', 'game/css/')
+SMALL_EXT = ('.js', '.mjs', '.json', '.css', '.html')
+SMALL_MAX, SMALL_TOTAL = 256 * 1024, 2_500_000
 CAP = 1_000_000_000
 CODE_EXT = ('.js', '.mjs', '.html', '.json', '.css')
 
@@ -52,6 +59,12 @@ def main():
     mdirs = sorted(set(_re.findall(r"dir:\s*'(assets/anim/t7/[\w-]+/)'", mblk.group(1)))) if mblk else []
     want += ['game/' + d + 'skeleton.json' for d in mdirs]
     add = sorted(p for p in want if p in M and p not in L)
+    small = sorted(p for p in M if p not in L and p.startswith(SMALL_ADD_PREFIXES) and p.endswith(SMALL_EXT)
+                   and '/tests/' not in p and '/proof' not in p and M[p][1] <= SMALL_MAX)
+    budget = SMALL_TOTAL
+    for p in small:
+        if M[p][1] <= budget and p not in add:
+            add.append(p); budget -= M[p][1]
     env = dict(os.environ, GIT_INDEX_FILE=tempfile.mktemp(prefix='deploy.index.'))
     git('read-tree', tip, env=env)
     for p in upd + add:
