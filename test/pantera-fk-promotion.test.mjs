@@ -107,7 +107,7 @@ test('all-plan tallies after this promotion', () => {
   for (const plan of Object.values(plans)) {
     for (const s of plan.steps) counts[s.status] += 1;
   }
-  assert.deepEqual(counts, { verified: 174, review: 63, unmapped: 389 });
+  assert.deepEqual(counts, { verified: 229, review: 44, unmapped: 353 });
 });
 
 test('promoted keys carry consistent plan-level fields', () => {
@@ -166,4 +166,58 @@ test('T7-promoted keys carry consistent plan-level fields', () => {
     assert.notEqual(plans[key].last_step_row, null, `${key} last step row must be set`);
   }
   assert.equal(plans['d/f+4,2'].string_status, 'partial', 'd/f+4,2 must be partial after its step-0 promotion');
+});
+/* PROBE-WAVE chunk (2026-11-01, finish-Claude lane): 55 further steps
+ * promoted on dual-source agreement inside the moveset itself — the plan's
+ * candidate_row AND the prefix move's own record name the same row
+ * (tools/input-verify/promote_step_plans.py; probe report
+ * docs/movesets/PANTERA-INPUT-COVERAGE-2026-11-01.md). Recorded FK
+ * soft-gate failures (the GUARDS above, incl. rows 257 / 258 everywhere
+ * they appear) and the strike/throw-conflicted 1+3,1 -> 415 /
+ * 2+4,1 -> 417 pairings are excluded by the tool. The all-plan tallies
+ * above now read { verified: 229, review: 44, unmapped: 353 } including
+ * this wave. PROMOTED_PROBE below locks the set. */
+
+// [plan key, step index, step, row] — probe-wave promotions (55).
+const PROMOTED_PROBE = [
+  ['1,1', 1, '1', 584], ['b+1+2,1+2', 0, 'b+1+2', 279],
+  ['1+3,1', 0, '1+3', 127], ['1+4,1', 1, '1', 233],
+  ['1+4,1,1', 1, '1', 233], ['1+4,1,1', 2, '1', 234],
+  ['d+1+3,1', 1, '1', 478], ['d/b+1+3,1', 0, 'd/b+1+3', 277],
+  ['d/b+1+3,1', 1, '1', 482], ['2+3,1', 0, '2+3', 288],
+  ['2+3,1', 1, '1', 632], ['2+4,1', 0, '2+4', 128],
+  ['b+1+2,1,1+3', 0, 'b+1+2', 279], ['b+1+2,1,1+3', 2, '1+3', 463],
+  ['b+1+2,1,2+4', 0, 'b+1+2', 279], ['b+1+2,1,2+4', 2, '2+4', 467],
+  ['b+1+2,1,3+4', 0, 'b+1+2', 279], ['b+1+2,1,3+4', 2, '3+4', 471],
+  ['d+3+4,2', 1, '2', 196], ['d+3+4,2,1', 1, '2', 196],
+  ['d+3+4,2,1', 2, '1', 201], ['d+3+4,4,1', 2, '1', 210],
+  ['d+3+4,4,1,4,4,1', 2, '1', 210], ['d+3+4,4,1,4,4,1', 5, '1', 215],
+  ['d/b+2+4,1', 0, 'd/b+2+4', 278], ['d/b+2+4,1', 1, '1', 486],
+  ['d/b+2+4,d/b+1', 0, 'd/b+2+4', 278], ['d/b+2+4,d/b+1', 1, 'd/b+1', 488],
+  ['d/f+2+3,1', 0, 'd/f+2+3', 285], ['d/f+2+3,1', 1, '1', 457],
+  ['d/f+3+4,1', 1, '1', 247], ['f+2,1,1,2,4', 4, '4', 259],
+  ['f+2,1,1,2,4,4', 4, '4', 259], ['f+2,1,1,2,4,4', 5, '4', 260],
+  ['f+2,1,1,2,4,4,4', 4, '4', 259], ['f+2,1,1,2,4,4,4', 5, '4', 260],
+  ['f+2,1,1,2,4,4,4', 6, '4', 261], ['f+2,1,1,2,4,4,4,1,1', 4, '4', 259],
+  ['f+2,1,1,2,4,4,4,1,1', 5, '4', 260], ['f+2,1,1,2,4,4,4,1,1', 6, '4', 261],
+  ['f+2,1,1,2,4,4,4,1,1', 8, '1', 272], ['f+2,1,1,2,4,4,4,1,3', 4, '4', 259],
+  ['f+2,1,1,2,4,4,4,1,3', 5, '4', 260], ['f+2,1,1,2,4,4,4,1,3', 6, '4', 261],
+  ['f+2,1,1,2,4,4,4,1,3', 8, '3', 263], ['f+2,1,1,3,3', 4, '3', 265],
+  ['f+2,1,1,3,3,4', 4, '3', 265], ['f+2,1,1,3,3,4', 5, '4', 266],
+  ['f+2,1,1,3,3,4,3', 4, '3', 265], ['f+2,1,1,3,3,4,3', 5, '4', 266],
+  ['f+2,1,1,3,3,4,3', 6, '3', 267], ['f+2,1,1,3,3,4,3,2,1+2,1', 4, '3', 265],
+  ['f+2,1,1,3,3,4,3,2,1+2,1', 5, '4', 266], ['f+2,1,1,3,3,4,3,2,1+2,1', 6, '3', 267],
+  ['f+2,1,1,3,3,4,3,2,1+2,1', 9, '1', 271],
+];
+
+test('probe-wave promoted steps are verified on their candidate row with the probe note', () => {
+  assert.equal(PROMOTED_PROBE.length, 55);
+  for (const [key, idx, step, row] of PROMOTED_PROBE) {
+    const s = plans[key].steps[idx];
+    assert.equal(s.step, step, `${key} step ${idx}`);
+    assert.equal(s.status, 'verified', `${key} step ${step} must be verified`);
+    assert.equal(s.row, row, `${key} step ${step} must play row ${row}`);
+    assert.equal(s.candidate_row, row, `${key} step ${step} candidate must be row ${row}`);
+    assert.ok(s.reasons.some((r) => r.startsWith('promoted 2026-11-01')), `${key} step ${step} must carry the probe evidence note`);
+  }
 });
