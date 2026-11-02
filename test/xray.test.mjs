@@ -250,5 +250,41 @@ step(3);
 x.cancel();
 ok(!x.active && skinMat.opacity === 1, 'cancel() restores skin mid-sequence');
 
+// ================= live build: anatomy JSON from jsDelivr when the page lacks it =================
+// 2026-11-02: GitHub Pages (1 GB cap) does not ship roster/<fighter>/anatomy/, so the live X-ray reveal had no layers.
+{
+  const realFetch = globalThis.fetch;
+  const seen = [];
+  globalThis.fetch = async (url) => {
+    seen.push(url);
+    if (url.startsWith('../')) return { ok: false, status: 404, json: async () => null };
+    return { ok: true, status: 200, json: async () => fixture };
+  };
+  const xf = new XraySystem(game, Tstub);
+  await xf.prefetch('pantera');
+  ok(seen[0] === '../roster/pantera/anatomy/anatomy-layers.json', `page URL tried first (got ${seen[0]})`);
+  ok(seen[1] === 'https://cdn.jsdelivr.net/gh/mhvnsnt/western-heart@main/roster/pantera/anatomy/anatomy-layers.json',
+    `then jsDelivr (got ${seen[1]})`);
+  ok(xf._cache.pantera && xf._cache.pantera.bone.length === 2, 'layers parsed from the jsDelivr copy');
+  ok(xf._fetching.pantera === undefined, 'fetch flag cleared');
+  // the page copy wins when it is there (dev / CI / full deploys): one request, no CDN
+  seen.length = 0;
+  globalThis.fetch = async (url) => { seen.push(url); return { ok: true, status: 200, json: async () => fixture }; };
+  const xl = new XraySystem(game, Tstub);
+  await xl.prefetch('pantera');
+  ok(seen.length === 1 && seen[0].startsWith('../'), `page copy used without a CDN request (${seen.join(', ')})`);
+  // nothing anywhere: null (skin / camera beat only), no throw
+  globalThis.fetch = async () => ({ ok: false, status: 404, json: async () => null });
+  const xn = new XraySystem(game, Tstub);
+  await xn.prefetch('nobody');
+  ok(xn._cache.nobody === null, 'no file anywhere -> null');
+  // network error on the page URL also falls through to the CDN
+  globalThis.fetch = async (url) => { if (url.startsWith('../')) throw new TypeError('Failed to fetch'); return { ok: true, status: 200, json: async () => fixture }; };
+  const xe = new XraySystem(game, Tstub);
+  await xe.prefetch('pantera');
+  ok(xe._cache.pantera && xe._cache.pantera.bone.length === 2, 'network error on the page URL -> jsDelivr copy');
+  globalThis.fetch = realFetch;
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
