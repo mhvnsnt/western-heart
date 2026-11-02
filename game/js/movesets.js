@@ -1090,7 +1090,9 @@ export class TekkenBuffer {
     if (ctx.rage) prefixes.push('RD.');
     if (ctx.backturned) prefixes.push('BT.');
     if (ctx.sidestep) prefixes.push('SS.');
-    if (ctx.crouching) prefixes.push('FC.');
+    if (ctx.crouching) prefixes.push('FC.', 'hFC.'); // T8 'hFC' rows are crouch moves too (stance audit: 130 rows)
+    if (ctx.foeDown) prefixes.push('OTG.');          // on the grounded foe
+    if (ctx.wallBehind) prefixes.push('WALL.');      // own back to the wall
     if (ctx.rising) prefixes.push('WS.');
     if (ctx.airborne) prefixes.push('AIR.'); // Tekken jump attacks: an AIR. move outranks its ground namesake while airborne
     prefixes.push('');
@@ -1236,7 +1238,9 @@ export class TekkenBuffer {
     if (ctx.rage) prefixes.push('RD.');
     if (ctx.backturned) prefixes.push('BT.');
     if (ctx.sidestep) prefixes.push('SS.');
-    if (ctx.crouching) prefixes.push('FC.');
+    if (ctx.crouching) prefixes.push('FC.', 'hFC.'); // T8 'hFC' rows are crouch moves too (stance audit: 130 rows)
+    if (ctx.foeDown) prefixes.push('OTG.');          // on the grounded foe
+    if (ctx.wallBehind) prefixes.push('WALL.');      // own back to the wall
     if (ctx.rising) prefixes.push('WS.');
     if (ctx.airborne) prefixes.push('AIR.'); // Tekken jump attacks: an AIR. move outranks its ground namesake while airborne
     prefixes.push('');

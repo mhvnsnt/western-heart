@@ -33,6 +33,10 @@ export const ENGINE = {
   FLANK_L: "at the foe's left side", FLANK_R: "at the foe's right side", FLANK_B: "at the foe's back",
   SIDE_L: "at the foe's left side (FLANK_KEYS)", SIDE_R: "at the foe's right side (FLANK_KEYS)", BACK: "at the foe's back (FLANK_KEYS)",
   H: 'Soul Urge on (the heat state)',
+  // 2026-11-02: ground states by how the fighter fell (fighter.js knockdown), the grounded foe, the wall behind, T8 hFC
+  FDFA: 'on the ground, face down, head towards (hit in the back / screw)', FUFA: 'on the ground, face up, head towards',
+  FDFT: 'on the ground, face down, feet towards', FUHT: 'on the ground, head towards',
+  OTG: 'the opponent is on the ground', WALL: 'own back to the wall', hFC: 'crouching (T8 hFC)',
 };
 for (const s of FML.SOUL_SYSTEMS) ENGINE[s.prefix] = `soul system: ${s.en}`;
 
@@ -49,10 +53,19 @@ function audit(fid) {
   const moves = data.moves || {};
   const keys = Object.keys(data.slots || moves);
   const stances = new Set(Object.values(data.stance_after || {}).filter(Boolean));
-  // fighter.js backTurnAfter: a "(BT)" frame-advantage note enters BT (2026-11-02)
-  const btNote = Object.entries(moves).some(([k, m]) => m && !/^BT\./.test(k) && [m.on_block, m.on_hit, m.on_ch, m.t7_on_block, m.t7_on_hit, m.t7_on_ch,
-    (m.t7 || {}).on_block, (m.t7 || {}).on_hit, (m.t7 || {}).on_ch, (m.t8 || {}).on_block, (m.t8 || {}).on_hit, (m.t8 || {}).on_ch].some((x) => /\(BT\)/.test(String(x || ''))));
-  if (btNote) stances.add('BT');
+  // fighter.js stanceAfterFromNotes (2026-11-02): a frame-data / note mention of a stance this moveset has moves for
+  // ('-5 (BT)', '+3 (MNT)', 'Transition to NSS', '> DEW') enters it
+  const prefixesHere = new Set([...Object.keys(moves), ...Object.keys(data.slots || {})].map((k) => (/^([A-Za-z_][A-Za-z0-9_]*)\./.exec(k) || [])[1]).filter(Boolean));
+  for (const [k, m] of Object.entries(moves)) {
+    if (!m) continue;
+    const texts = [];
+    for (const f of ['on_block', 'on_hit', 'on_ch', 't7_on_block', 't7_on_hit', 't7_on_ch', 'note', 'notes'])
+      for (const x of [m[f], m.t7 && m.t7[f], m.t8 && m.t8[f]]) if (x) texts.push(String(x));
+    for (const t of texts) {
+      for (const mm of [...t.matchAll(/\(([A-Z][A-Za-z0-9_]{1,6})\)/g), ...t.matchAll(/(?:[Tt]ransitions? (?:to|into)|[Ee]nters?|[Gg]o(?:es)? (?:to|into)|>)\s*([A-Z][A-Z0-9_]{1,6})\b/g)])
+        if (prefixesHere.has(mm[1]) && !(k.startsWith('BT.') && mm[1] === 'BT')) stances.add(mm[1]);
+    }
+  }
   // FUHT is set by the knockdown only when the moveset has it (fighter.js _hasGroundMoves)
   const throwTags = new Set();
   for (const [k, m] of Object.entries(moves)) {
@@ -70,7 +83,7 @@ function audit(fid) {
   }
   for (const e of Object.values(by)) {
     const p = e.prefix;
-    e.way = ENGINE[p] || (p === 'FUHT' ? 'ground (head towards)' : null) ? 'engine'
+    e.way = ENGINE[p] ? 'engine'
       : stances.has(p) ? 'stance'
         : throwTags.has(p) ? 'throw'
           : 'NO ENTRY';

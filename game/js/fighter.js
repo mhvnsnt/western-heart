@@ -261,20 +261,29 @@ export function rowDonorKeys(input, limb) {
   return keys;
 }
 const LEGACY_TO_TEKKEN = { punch: '1', kick: '4', grab: '1+3' };
-/* BACK-TURNED ENTRIES from the frame data (2026-11-02, stance audit): a T7 / T8 frame-advantage note "(BT)"
-   (on_block / on_hit / on_ch '-5 (BT)', the frame-data convention for "the attacker ends back-turned") enters BT when
-   the moveset has BT. moves. Before, nothing put a fighter back-turned unless stance_after said so: 399 BT moves across
-   48 fighters (King's Jaguar Step BT, Lei's BT kicks ...) could never fire. */
-function backTurnAfter(ms, key, mv) {
-  if (!ms || !mv || !key || /^BT\./.test(key)) return undefined;
-  if (ms._hasBT === undefined) ms._hasBT = Object.keys(ms.moves || {}).some((k) => k.startsWith('BT.'));
-  if (!ms._hasBT) return undefined;
-  const t7 = mv.t7 || {}, t8 = mv.t8 || {};
-  const notes = [mv.on_block, mv.on_hit, mv.on_ch, mv.t7_on_block, mv.t7_on_hit, mv.t7_on_ch,
-    t7.on_block, t7.on_hit, t7.on_ch, t8.on_block, t8.on_hit, t8.on_ch];
-  return notes.some((x) => /\(BT\)/.test(String(x || ''))) ? 'BT' : undefined;
+/* STANCE ENTRIES from the frame data (2026-11-02, stance audit). A T7 / T8 frame-advantage note naming a stance
+   ('-5 (BT)', '+3 (MNT)': the frame-data convention for "the attacker ends in that stance") or a note saying so
+   ('Transition to NSS', 'Enter KIN', '> DEW') enters that stance when this moveset has moves for it. Before, only an
+   explicit stance_after entry put a fighter in a stance: 399 BT moves across 48 fighters and ~315 character-stance
+   rows (NSS, MNT, KIN, DEW, HAM ...) could never fire. */
+const STANCE_NOTE_FIELDS = ['on_block', 'on_hit', 'on_ch', 't7_on_block', 't7_on_hit', 't7_on_ch', 'note', 'notes'];
+function stanceAfterFromNotes(ms, key, mv) {
+  if (!ms || !mv || !key) return undefined;
+  if (!ms._stancePrefixes) {
+    const set = new Set();
+    for (const k of [...Object.keys(ms.moves || {}), ...Object.keys(ms.slots || {})]) { const m = /^([A-Za-z_][A-Za-z0-9_]*)\./.exec(k); if (m) set.add(m[1]); }
+    for (const sys of ['FC', 'WS', 'SS', 'AIR', 'WR', 'R', 'RD', 'H', 'OTG', 'WALL', 'CH', 'SIDE_L', 'SIDE_R', 'BACK']) set.delete(sys);
+    ms._stancePrefixes = set;
+  }
+  const own = /^([A-Za-z_][A-Za-z0-9_]*)\./.exec(key);
+  const texts = [];
+  for (const f of STANCE_NOTE_FIELDS) for (const x of [mv[f], mv.t7 && mv.t7[f], mv.t8 && mv.t8[f]]) if (x) texts.push(String(x));
+  for (const t of texts) {
+    const cands = [...t.matchAll(/\(([A-Z][A-Za-z0-9_]{1,6})\)/g), ...t.matchAll(/(?:[Tt]ransitions? (?:to|into)|[Ee]nters?|[Gg]o(?:es)? (?:to|into)|>)\s*([A-Z][A-Z0-9_]{1,6})\b/g)].map((m) => m[1]);
+    for (const c of cands) if (ms._stancePrefixes.has(c) && !(own && own[1] === c && c === 'BT')) return c;
+  }
+  return undefined;
 }
-
 export function getRealMove(charId, moveType, opts) {
   const tekken = LEGACY_TO_TEKKEN[moveType] || moveType;
   const res = resolveMove(charId, tekken, opts);
@@ -320,7 +329,7 @@ export function getRealMove(charId, moveType, opts) {
           hitLevel: mv.hit_level,
           // T3 situation follow-ups engage on contact: reach covers own hit + pushback.
           reach: (Number(mv.reach) > 0) ? mv.reach : (mv.t3_condition >= 2 && mv.t3_condition <= 0x17) ? 2.0 : mv.reach,
-          stanceAfter: (ms.stance_after && ms.stance_after[key]) || backTurnAfter(ms, key, mv),
+          stanceAfter: (ms.stance_after && ms.stance_after[key]) || stanceAfterFromNotes(ms, key, mv),
           launch: !!mv.launch, knockdown: !!mv.knockdown,
           // T8 launcher frame advantage on hit, e.g. '+34a (+24)' (airborne): sets the juggle airtime
           launchAdv: (() => { const m = /\+(\d+)a/.exec(String(mv.on_hit || '')); return m ? +m[1] : null; })(),
@@ -776,7 +785,8 @@ export class Fighter {
   _hasGroundMoves(p = 'FUFT') {
     if (this._groundMovesFor !== this._movesetId) { this._groundMovesFor = this._movesetId; this._groundMoves = {}; }
     if (this._groundMoves[p] == null) {
-      this._groundMoves[p] = ['3', '4', '3,3', '1', '2', '1+2', '3+4'].some((b) => !!resolveMoveKey(this._movesetId, p + '.' + b));
+      this._groundMoves[p] = ['3', '4', '3,3', '1', '2', '1+2', '3+4', 'd+3', 'd+4', 'd/b+1+3', 'u+3+4', 'b+3+4', '1+3', '2+4']
+        .some((b) => !!resolveMoveKey(this._movesetId, p + '.' + b));
     }
     return this._groundMoves[p];
   }
@@ -1591,6 +1601,9 @@ export class Fighter {
       dist: this._opp && this._opp.root && this.root ? Math.hypot(this._opp.root.position.x - this.root.position.x, this._opp.root.position.z - this.root.position.z) : null,
       stanceSpins: this.stance ? (this._stanceSpins || 1) : 0,
       foeFlank: this._foeFlank(), // batch 8: 'L' / 'R' / 'B' when at the opponent's side or back
+      // stance audit 2026-11-02: OTG. rows (the foe on the ground) and WALL. rows (own back to the wall) had no way in
+      foeDown: !!(this._opp && /^(down|knockdown)$/.test(this._opp.state || '')),
+      wallBehind: !!(this.root && (this.root.position.x * -(this.facing || 1)) > ARENA_LIMIT - 1.1),
       soulStates: soulStates(this), // pt217u: 魂 ACTION / KESSHOU / 九魂解放 / 霊放 / 試練の封 gates
     };
   }
@@ -2737,6 +2750,7 @@ export class Fighter {
       this._queuedNext = null; this._queuedAfter = null; this._stepChain = null; this._stringGraceUntil = 0; // getting hit kills your string
       // Hit in the back (BT) the victim falls forward past its feet: it lands head towards the attacker.
       this._kdHeadTowards = this.stance === 'BT';
+      this._kdFaceDown = this.stance === 'BT';   // falls forward: face down (FDFA ground state)
       this._enter('knockdown');
     } else {
       const t8adv = move.t8 ? (counter && move.t8.ch != null ? move.t8.ch : move.t8.hit) : null;
@@ -2773,6 +2787,7 @@ export class Fighter {
       }
       this.vx = dir * (move.knock || 2) * 0.5; this.onGround = false;
       this._kdHeadTowards = true; // screw/tornado spins the body round: lands head towards
+      this._kdFaceDown = true;    // ... and face down (Tekken screw / tailspin lands FDFA)
       this._enter('knockdown');
     }
     // Wall-splat follow-up (distinct from wall break): a splatted
@@ -3268,9 +3283,15 @@ export class Fighter {
         /* Tekken ground state (sweep 2026-10-29): leaving a knockdown the fighter is still on
            its back for a short window; moves listed 'while on back[, feet towards opponent]'
            (FUFT.) are pressed from it, like any stance prefix. Only when the moveset has them. */
-        const gs = this._kdHeadTowards && this._hasGroundMoves('FUHT') ? 'FUHT' : 'FUFT';
-        if (this._hasGroundMoves(gs)) { this.stance = gs; this.stanceT = 0.6; }
-        this._kdHeadTowards = false;
+        /* Ground state by how the fighter fell (stance audit 2026-11-02: 141 FDFA rows across 39 fighters were
+           unreachable): head towards the attacker + face down = FDFA (hit in the back, screw), head towards = FUHT /
+           FUFA, otherwise face up feet towards = FUFT; the first state this moveset has moves for. */
+        const order = this._kdHeadTowards
+          ? (this._kdFaceDown ? ['FDFA', 'FUHT', 'FUFA', 'FUFT'] : ['FUHT', 'FUFA', 'FDFA', 'FUFT'])
+          : (this._kdFaceDown ? ['FDFT', 'FUFT'] : ['FUFT', 'FDFT']);
+        const gs = order.find((g) => this._hasGroundMoves(g));
+        if (gs) { this.stance = gs; this.stanceT = 0.6; }
+        this._kdHeadTowards = false; this._kdFaceDown = false;
       } break;
       // GAP-FILL LANE 1: wall splat sticks the victim to the
       // wall for its stun window; expiry returns to neutral and
