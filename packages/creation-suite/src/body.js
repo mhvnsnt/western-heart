@@ -13,8 +13,25 @@ export function findSkinned(root) {
   const out = []; root.traverse(o => { if (o.isSkinnedMesh) out.push(o); }); return out;
 }
 
+/* Mixamo-style names (the regions / sliders use them) -> the same bone in other rigs the suite loads: the MB-Lab
+   game skeleton of the WWE-style CREATE templates (customization/templates/meshes/*.glb: pelvis, spine01-03,
+   clavicle_L, upperarm_L, thigh_L ...) and Mixamo's own Spine2 for 'Chest' (2026-11-01). */
+export const BONE_ALIASES = Object.freeze({
+  Hips: ['pelvis'], Spine: ['spine01'], Spine1: ['spine02'], Spine2: ['spine03'], Chest: ['Spine2', 'spine03'],
+  Neck: ['neck'], Head: ['head'],
+  LeftShoulder: ['clavicle_L'], RightShoulder: ['clavicle_R'],
+  LeftArm: ['upperarm_L'], RightArm: ['upperarm_R'], LeftForeArm: ['lowerarm_L'], RightForeArm: ['lowerarm_R'],
+  LeftHand: ['hand_L'], RightHand: ['hand_R'],
+  LeftUpLeg: ['thigh_L'], RightUpLeg: ['thigh_R'], LeftLeg: ['calf_L'], RightLeg: ['calf_R'],
+  LeftFoot: ['foot_L'], RightFoot: ['foot_R'], LeftToeBase: ['toes_L'], RightToeBase: ['toes_R'],
+});
+
 export function boneByName(skeleton, name) {
-  return skeleton.bones.find(b => b.name === name || b.name === `mixamorig:${name}` || b.name.toLowerCase() === name.toLowerCase());
+  const hit = (n) => skeleton.bones.find(b => b.name === n || b.name === `mixamorig:${n}` || b.name.toLowerCase() === n.toLowerCase());
+  const b = hit(name);
+  if (b) return b;
+  for (const a of BONE_ALIASES[name] || []) { const x = hit(a); if (x) return x; }
+  return undefined;
 }
 
 // bind-space position of a bone (inverse of its inverse bind matrix)

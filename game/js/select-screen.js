@@ -39,6 +39,18 @@ import { getMovesetInfo } from './movesets.js';
 import { warmSelect, warmFight } from './preload.js';
 import { NINE_SOULS, newSoulSpiritPick, vesselMatch, soulSpiritLabel } from './soul-spirit.js';
 import { fighterPortraitSVG } from './fighter-portraits.js';
+import { portraitSrcFor } from './user-portraits.js';
+
+// Select-screen card for a fighter: a portrait the player took in the
+// Creation Suite (POSE & PICTURE) is stored on-device keyed by fighter +
+// attire and wins over the repo card; the repo card is the fallback.
+// The attire is the fighter's currently selected one, so the card shows
+// the attire the player actually posed.
+function selectPortraitSrc(c) {
+  const list = selectableAttires(c);
+  const idx = Math.max(0, list.findIndex(a => a.model === selectedAttireModel(c)));
+  return portraitSrcFor(c.id, 'attire' + (idx + 1), `assets/portraits/${c.id}.png`);
+}
 
 
 
@@ -392,7 +404,7 @@ export function createSelectScreen(deps) {
     // stays as the last-resort fallback — never another fighter's face
     // (the old repeated-placeholder bug).
     const svgFallback = fighterPortraitSVG(c.id, c.name, c.faction);
-    return `<div class="portrait"><span class="svg-fallback" aria-hidden="true">${svgFallback}</span><img src="assets/portraits/${c.id}.png" alt="${c.name}" loading="lazy"
+    return `<div class="portrait"><span class="svg-fallback" aria-hidden="true">${svgFallback}</span><img src="${selectPortraitSrc(c)}" alt="${c.name}" loading="lazy"
       onerror="this.parentElement.classList.add('no-portrait');this.remove();">
       <span class="mono">${(c.name || '?').slice(0, 2)}</span></div>
       <div class="cname">${c.name}</div><div class="cstyle">${c.style}</div>`;
@@ -524,7 +536,7 @@ renderSoulSpirit(side, null, false);
       return;
     }
     els.name.textContent = c.name || '—';
-    { const aw = els.root.querySelector('.pane-artwash img'); if (aw) aw.src = `assets/portraits/${c.id}.png`; }
+    { const aw = els.root.querySelector('.pane-artwash img'); if (aw) aw.src = selectPortraitSrc(c); }
     els.title.textContent = c.title || '';
     const modelId = selectedAttireModel(c);
     els.style.textContent = [c.style, c.archetype, attireLabel(c, modelId)]
@@ -658,7 +670,7 @@ renderSoulSpirit(side, null, false);
     // GLB streams in, then hides only when the 3D model is ready — the
     // preview is never a blank wait. (Fallback handling below already
     // hides it on success and keeps it on failure.)
-    if (fb) { fb.src = `assets/portraits/${c.id}.png`; fb.hidden = false; }
+    if (fb) { fb.src = selectPortraitSrc(c); fb.hidden = false; }
     const ok = await panes[side].show(c, modelId);
     if (state.highlight[side]?.id !== c.id && state.locked[side]?.id !== c.id) return;
     if (panes[side].failed) {
@@ -666,7 +678,7 @@ renderSoulSpirit(side, null, false);
       // instead of the live model, and say so honestly.
 if (fb) {
         fb.onerror = () => { fb.onerror = null; fb.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(fighterPortraitSVG(c.id, c.name, c.faction, 256)); };
-        fb.src = `assets/portraits/${c.id}.png`; fb.hidden = false;
+        fb.src = selectPortraitSrc(c); fb.hidden = false;
       }
       els.note.hidden = false;
       els.note.textContent = '3D UNAVAILABLE';
@@ -675,7 +687,7 @@ if (fb) {
     }
     // A model that fails to load shows the fighter's own portrait plate,
     // never a message, a T-pose or another fighter.
-    if (fb) { if (!ok) fb.src = `assets/portraits/${c.id}.png`; fb.hidden = !!ok; }
+    if (fb) { if (!ok) fb.src = selectPortraitSrc(c); fb.hidden = !!ok; }
     els.note.hidden = true;
   }
 

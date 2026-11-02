@@ -39,7 +39,7 @@ export const ATTIRE_TREE = [
   { slot:"2",  label:"Hairstyle",      icon:"💇", src:"T7_SLOTS", note:"mirrors BODY > Hair" },
   { slot:"3",  label:"Full Head",      icon:"🎭", src:"T7_SLOTS", note:"masks/helmets — CONFLICTS with Face Paint" },
   { slot:"4",  label:"Hair Accessory", icon:"🎀", src:"T7_SLOTS" },
-  { slot:"5",  label:"Glasses",        icon:"👓", src:"T7_SLOTS", note:"DOA glasses live here too" },
+  { slot:"5",  label:"Glasses",        icon:"👓", src:"T7_SLOTS", note:"glasses and eyewear" },
   { slot:"6",  label:"Face",           icon:"😐", src:"T7_SLOTS" },
   { slot:"7",  label:"Facial Hair",    icon:"🧔", src:"T7_SLOTS" },
   { slot:"8",  label:"Face Paint",     icon:"🎨", src:"T7_SLOTS", note:"texture class, not mesh" },
@@ -164,6 +164,20 @@ export const WWE_PROFILE_TREE = [
   { key:"signs",     label:"Crowd Signs",     sub:"billboards the crowd holds", icon:"🪧", src:"WWE_PROFILE" },
   { key:"pose",      label:"Menu Screen Pose",sub:"facial anim + hand signs + body pose (templates or individual)", icon:"🧍", src:"WWE_PROFILE" },
   { key:"traits",    label:"Personality Traits", sub:"egotistical/prideful/disrespectful/respectful/desperate/perseverant/treacherous/loyal/cowardly/bold/aggressive/disciplined", icon:"🎭", src:"WWE_PROFILE" },
+];
+
+/* ---- POSE & PICTURE tab (suite phase 2, CREATION-SUITE-ORDER phase 5) ----
+   The pose library is the fighter's OWN animation bank: every entry names a
+   clip file in that fighter's T3 bank (the same files the fight plays —
+   stance/idle/victory per the game's clip table). Labels are generic: no
+   source-game or real-person names on screen (names law). */
+export const POSE_TREE = [
+  { key:"stance",  label:"Stance",  sub:"the fighter's own fighting stance", clip:"stance",     icon:"🧍" },
+  { key:"idle",    label:"Idle",    sub:"standing guard, breathing",        clip:"block",      icon:"🌬️" },
+  { key:"victory", label:"Victory", sub:"the fighter's own win pose",       clip:"win",        icon:"🏆" },
+  { key:"intro",   label:"Intro",   sub:"round-start show pose",            clip:"intro",      icon:"🎬" },
+  { key:"crouch",  label:"Crouch",  sub:"crouching guard",                  clip:"crouchHold", icon:"🐈" },
+  { key:"walk",    label:"Walk",    sub:"walk cycle",                       clip:"walkFwd",    icon:"🚶" },
 ];
 
 /* ---- WWE Performance tab (entrance/victory/taunts — repurposed per owner: cutscene + taunt creation) ---- */
