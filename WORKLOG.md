@@ -4313,3 +4313,29 @@ Branch `claude/cs-phase1-template-create` (cut from main `d2cd6e20`), draft PR. 
   fail identically before and after these changes on this sparse checkout (missing tools/anim, game/assets, roster files);
   CI on the PR runs them on a full checkout.
 - Deletions: none.
+
+## 2026-11-01 — Claude: creation suite Phase 3 (real body + face morph targets on the 9 template bodies)
+
+Branch `claude/cs-phase3-morph-targets`, draft PR #1489 (stacked on #1486). Order: `customization/CREATION-SUITE-ORDER-2026-11-01.md`.
+
+- **Bake.** Blender 4.3.2 headless + MB-Lab 1.8.1. `tools/mb-lab/bake_morph_templates.py` (one MB-Lab session per template,
+  template body applied through MB-Lab's AGE / FAT / MUSCLE transformations, every slider in
+  `customization/templates/morph-sliders.json` captured as `<id>+` / `<id>-` shape keys at +-0.5 MB-Lab units, finalize fits
+  the 71-joint skeleton, GLB export with morph targets); `tools/mb-lab/bake_all_templates.sh` runs it for all 9 and packs with
+  `gltfpack -cc -kn -km -ke -vp 16` into `customization/templates/meshes/` (2.03-2.10 MB each, 168 targets; old bakes were
+  8.68-9.09 MB with none, and every male / female bake was byte-identical because the old job passed unknown property names).
+  `tools/mb-lab/run_mblab_job.py`: fresh-box loader fix ("No module named mblab" under `--factory-startup`).
+- **Suite.** `customization/creation-suite-ui/js/morph-targets.js` maps slider value -> `morphTargetInfluences`; `suite.js`
+  BODY tab on a template body: Body Type / Skin Tone / Height & Frame / Body Morphing (10 regions) / Face Deformation
+  (12 parts) sub-windows (WWE 2K22 Appearance structure, T7 category list; regions from the WMXIX Figure editor teardown).
+  Values saved in `body.morph_targets`, `body.frame`, `body.template`, `body.height` (fighter state, localStorage
+  `wh_creation_suite_v1`, customization.json record). `viewer3d.js` + `customization/create-fighter/js/preview3d.js` decode
+  meshopt / quantized GLBs (`game/vendor/addons/libs/meshopt_decoder.js`).
+- **Proof.** `customization/creation-suite-ui/proof-pass/phase3-morphs/` (Blender renders; Playwright 390x844 + 844x390
+  probe `tools/creation-suite/morph_probe.cjs`: weights match sliders, vertices move, 0 overlaps, no page errors).
+  Tests: `packages/creation-suite/test/morph-targets.test.js` (7 pass).
+- **Owner direction recorded** (order doc, new section): the parts / clothing phases follow the WWE 2K CAW + Tekken
+  customization structure from their game code / teardowns.
+- Follow-ups: fights still load the stock model (next: Phase 4 branch `claude/cs-phase4-custom-fighter-in-game`);
+  168 targets ~50 MB GPU on the main mesh.
+- Deletions: none.

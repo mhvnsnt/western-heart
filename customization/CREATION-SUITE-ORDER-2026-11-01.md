@@ -94,7 +94,21 @@ character names in the UI (the source games are named only in docs about pulling
 |---|---|---|
 | 1. Template-first CREATE | **done, in draft PR** (2026-11-01). TEMPLATE SELECT of the 9 base bodies replaced the Soldier default on main (`ed19257b`); this branch makes the template names and body types generic in `customization/templates/body-templates.json` (names law), moves the item / context panel to a left sliding panel per `customization/UNIFIED-UI-SPEC.md` §1 (`css/suite-t7.css`, `js/suite.js` `setTab` + viewer safe-area), and fixes the landscape-phone top bar overlap. Playwright probe: 0 overlapping text boxes at 390x844 portrait and 844x390 landscape. Same PR also fixes the game select screen's attire switch on phones (tap now cycles attires; loading / unavailable state; see WORKLOG 2026-11-01). | branch `claude/cs-phase1-template-create` |
 | 2. Tool audit | not started | `customization/CREATION-TOOLS-AUDIT-2026-11-01.md` (to write) |
-| 3. Real body + face morph targets | not started (needs Blender on the VM) | |
+| 3. Real body + face morph targets | **done, in draft PR #1489** (2026-11-01). The 9 template GLBs are re-baked with Blender 4.3.2 + MB-Lab (`tools/mb-lab/bake_all_templates.sh`): each template's real body settings applied (the old bakes were six identical male and three identical female meshes), 84 sliders exported as 168 glTF morph targets (`customization/templates/morph-sliders.json`: Body Morphing 32 sliders in 10 regions, Face Deformation 52 sliders in 12 parts), same 71-joint MB-Lab skeleton, gltfpack 2.03-2.10 MB each. Suite BODY tab on a template body follows the WWE 2K22 Appearance window structure as a T7 category list; values save to `body.morph_targets` (+ `frame`, `template`, `height`). Proof: `customization/creation-suite-ui/proof-pass/phase3-morphs/`. Not yet in fights: Phase 4b below. | branch `claude/cs-phase3-morph-targets` |
+| 4b. Created fighters in the game (template body + morphs on select screen and in fights) | in progress (Phase 4 order step, stacked on #1489) | branch `claude/cs-phase4-custom-fighter-in-game` |
 | 4. Edit existing fighters -> save attire / version | not started | |
 | 5. Pose + TAKE PICTURE | not started | |
 | 6. WWE / Tekken-style menus | not started | |
+
+## Owner direction for the parts / clothing phases (2026-11-01)
+
+The owner's direction for everything after body + face (parts, hair, clothing, accessories, tattoos, scars, eyes):
+the menus, windows, options and the part / clothing structure follow **WWE 2K Create-A-Superstar and Tekken
+customization, built from their game code and the repo's teardowns** (not hand-invented). Verbatim:
+
+> pretty much everything that WWE has and everything that Tekken has, use their game code to build it and fir how it
+> looks UI and hud and menu and window and option wise and for parts and clothing etc
+
+Structure sources to start from: `customization/wwe2k-caw/CAW-SUITE-BREAKDOWN.md`, `CAW-STRUCTURE-2026-10-19.md`,
+`COMBINED-CREATION-SUITE.md`, `customization/PARTS-CLOTHING-SYSTEM-SPEC.md`, `teardown/tekken7-steam-ui/T7-UI-LAYOUT.md`,
+`teardown/ttt2-customization-research.md`, `teardown/tekken6-customization-research.md`.
