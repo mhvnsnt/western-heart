@@ -267,6 +267,207 @@
    "selector": "tools/mb-lab/select_base.py",
    "tool": "mb-lab",
    "upstream": "github.com/animate1978/MB-Lab"
+  },
+  {
+   "bases": [
+    {
+     "base_mesh": "customization/templates/meshes/mpfb2-super-heavyweight.glb",
+     "gender": "male",
+     "id": "mpfb2-super-heavyweight",
+     "job": {
+      "out": "customization/templates/meshes/mpfb2-super-heavyweight.glb",
+      "params": {
+       "macro": {
+        "age": 0.6,
+        "gender": 1.0,
+        "height": 0.65,
+        "muscle": 0.7,
+        "proportions": 0.6,
+        "weight": 0.9
+       },
+       "rig": "game_engine"
+      },
+      "tool": "mpfb2-live"
+     },
+     "mpfb2": {
+      "macro": {
+       "age": 0.6,
+       "gender": 1.0,
+       "height": 0.65,
+       "muscle": 0.7,
+       "proportions": 0.6,
+       "weight": 0.9
+      }
+     },
+     "name": "Super Heavyweight (MPFB2)"
+    },
+    {
+     "base_mesh": "customization/templates/meshes/mpfb2-powerhouse.glb",
+     "gender": "male",
+     "id": "mpfb2-powerhouse",
+     "job": {
+      "out": "customization/templates/meshes/mpfb2-powerhouse.glb",
+      "params": {
+       "macro": {
+        "age": 0.5,
+        "gender": 1.0,
+        "height": 0.6,
+        "muscle": 0.85,
+        "proportions": 0.6,
+        "weight": 0.7
+       },
+       "rig": "game_engine"
+      },
+      "tool": "mpfb2-live"
+     },
+     "mpfb2": {
+      "macro": {
+       "age": 0.5,
+       "gender": 1.0,
+       "height": 0.6,
+       "muscle": 0.85,
+       "proportions": 0.6,
+       "weight": 0.7
+      }
+     },
+     "name": "Powerhouse (MPFB2)"
+    },
+    {
+     "base_mesh": "customization/templates/meshes/mpfb2-technician.glb",
+     "gender": "male",
+     "id": "mpfb2-technician",
+     "job": {
+      "out": "customization/templates/meshes/mpfb2-technician.glb",
+      "params": {
+       "macro": {
+        "age": 0.5,
+        "gender": 1.0,
+        "height": 0.5,
+        "muscle": 0.5,
+        "proportions": 0.5,
+        "weight": 0.5
+       },
+       "rig": "game_engine"
+      },
+      "tool": "mpfb2-live"
+     },
+     "mpfb2": {
+      "macro": {
+       "age": 0.5,
+       "gender": 1.0,
+       "height": 0.5,
+       "muscle": 0.5,
+       "proportions": 0.5,
+       "weight": 0.5
+      }
+     },
+     "name": "Technician (MPFB2)"
+    },
+    {
+     "base_mesh": "customization/templates/meshes/mpfb2-highflyer.glb",
+     "gender": "male",
+     "id": "mpfb2-highflyer",
+     "job": {
+      "out": "customization/templates/meshes/mpfb2-highflyer.glb",
+      "params": {
+       "macro": {
+        "age": 0.4,
+        "gender": 1.0,
+        "height": 0.55,
+        "muscle": 0.6,
+        "proportions": 0.5,
+        "weight": 0.3
+       },
+       "rig": "game_engine"
+      },
+      "tool": "mpfb2-live"
+     },
+     "mpfb2": {
+      "macro": {
+       "age": 0.4,
+       "gender": 1.0,
+       "height": 0.55,
+       "muscle": 0.6,
+       "proportions": 0.5,
+       "weight": 0.3
+      }
+     },
+     "name": "High-Flyer (MPFB2)"
+    },
+    {
+     "base_mesh": "customization/templates/meshes/mpfb2-powerhouse-w.glb",
+     "gender": "female",
+     "id": "mpfb2-powerhouse-w",
+     "job": {
+      "out": "customization/templates/meshes/mpfb2-powerhouse-w.glb",
+      "params": {
+       "macro": {
+        "age": 0.5,
+        "gender": 0.0,
+        "height": 0.55,
+        "muscle": 0.8,
+        "proportions": 0.4,
+        "weight": 0.65
+       },
+       "rig": "game_engine"
+      },
+      "tool": "mpfb2-live"
+     },
+     "mpfb2": {
+      "macro": {
+       "age": 0.5,
+       "gender": 0.0,
+       "height": 0.55,
+       "muscle": 0.8,
+       "proportions": 0.4,
+       "weight": 0.65
+      }
+     },
+     "name": "Powerhouse (Women's, MPFB2)"
+    },
+    {
+     "base_mesh": "customization/templates/meshes/mpfb2-striker-w.glb",
+     "gender": "female",
+     "id": "mpfb2-striker-w",
+     "job": {
+      "out": "customization/templates/meshes/mpfb2-striker-w.glb",
+      "params": {
+       "macro": {
+        "age": 0.4,
+        "gender": 0.0,
+        "height": 0.5,
+        "muscle": 0.6,
+        "proportions": 0.4,
+        "weight": 0.35
+       },
+       "rig": "game_engine"
+      },
+      "tool": "mpfb2-live"
+     },
+     "mpfb2": {
+      "macro": {
+       "age": 0.4,
+       "gender": 0.0,
+       "height": 0.5,
+       "muscle": 0.6,
+       "proportions": 0.4,
+       "weight": 0.35
+      }
+     },
+     "name": "Striker (Women's, MPFB2)"
+    }
+   ],
+   "blender": "4.2+ for the live path (MPFB2 needs Blender >= 4.2); the data path (MPFB morph targets baked as shape keys) works on the 4.0.2 pipeline standard \u2014 see tools/mpfb2/README.md",
+   "fetch": "bash tools/mpfb2/fetch-mpfb2.sh [--with-blender]",
+   "id": "mpfb2",
+   "license_base_data": "CC0",
+   "license_code": "GPL-3.0",
+   "license_note": "MPFB2 addon code is GPL-3.0; bundled core assets (targets, skins, clothes) are CC0. Bases below are generated from those CC0 assets, so the base meshes carry no copyleft \u2014 this is the licence-clean alternative to MB-Lab's AGPL bases. The CC0 label is for base data only, never for the addon code, and never for MB-Lab bases.",
+   "name": "MPFB 2",
+   "runner": "tools/mpfb2/run_mpfb2_job.py",
+   "selector": "tools/mpfb2/select_base.py",
+   "tool": "mpfb2-live",
+   "upstream": "github.com/makehumancommunity/mpfb2"
   }
  ],
  "version": 1
