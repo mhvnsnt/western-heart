@@ -9,6 +9,26 @@
 //   * material-status.json is stale (lists a model that now passes / misses one that fails).
 // Quarantined keys are never offered at character select or loaded into a
 // fight (game/js/material-quarantine.js); they go back in by fixing the model.
+// RUNTIME-TINTED TEMPLATE EXEMPTION (owner decision 2026-11-02, option A:
+// "Narrow the gate rule for runtime-tinted template bodies" — NOT a rebake):
+// the 9 Creation Suite template bodies below ship MB-Lab materials with no
+// baked base-colour texture; their skin colour is applied at runtime by
+// createInstance (custom fighter, colorize: true, tintStrength 0.3). An
+// "untextured"-only failure on exactly these keys, at exactly their
+// customization/templates/meshes/*.glb URLs, is therefore expected, not
+// broken. Missing or placeholder verdicts are NEVER exempted, and no other
+// key or URL is exempted.
+const RUNTIME_TINTED_TEMPLATES = new Map([
+  ['custom-template-super-heavyweight', '../customization/templates/meshes/super-heavyweight.glb'],
+  ['custom-template-powerhouse', '../customization/templates/meshes/powerhouse.glb'],
+  ['custom-template-showman', '../customization/templates/meshes/showman.glb'],
+  ['custom-template-technician', '../customization/templates/meshes/technician.glb'],
+  ['custom-template-highflyer', '../customization/templates/meshes/highflyer.glb'],
+  ['custom-template-luchador', '../customization/templates/meshes/luchador.glb'],
+  ['custom-template-powerhouse-w', '../customization/templates/meshes/powerhouse-w.glb'],
+  ['custom-template-athletic-w', '../customization/templates/meshes/athletic-w.glb'],
+  ['custom-template-striker-w', '../customization/templates/meshes/striker-w.glb'],
+]);
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
@@ -56,6 +76,18 @@ for (const key of Object.keys(results).filter(k => !results[k].ok && !results[k]
   }
   if (best) { resolve[key] = best; results[key].ok = true; results[key].resolvedFrom = best.donor; }
 }
+// Runtime-tinted templates: untextured-only failures at their exact template
+// URLs pass the gate (see RUNTIME_TINTED_TEMPLATES above). Missing or
+// placeholder verdicts still fail, as does any other key.
+const runtimeTinted = [];
+for (const [key, url] of RUNTIME_TINTED_TEMPLATES) {
+  const r = results[key];
+  if (!r || r.ok || r.error) continue;
+  if (r.url !== url) continue;
+  if (r.counts.missing === 0 && r.counts.placeholder === 0 && r.counts.untextured > 0) {
+    r.ok = true; r.runtimeTinted = true; runtimeTinted.push(key);
+  }
+}
 const failing = Object.keys(results).filter(k => !results[k].ok).sort();
 const statusPath = path.join(root, 'game/js/material-status.js');
 const readStatus = () => { const t = fs.readFileSync(statusPath, 'utf8'); return JSON.parse(t.slice(t.indexOf('{'), t.lastIndexOf('}') + 1)); };
@@ -74,7 +106,7 @@ const resolveStale = JSON.stringify(statusFile.resolve || {}) !== JSON.stringify
 if (resolveStale) console.log('::error::material-status.json resolve plans are stale — rerun with --write-status');
 const leak = failing.filter(k => !(k in status));
 const stale = Object.keys(status).filter(k => !failing.includes(k));
-console.log(`material gate: ${keys.length} keys, ${keys.length - failing.length - Object.keys(resolve).length} pass as-is, ${Object.keys(resolve).length} resolved from a same-model donor, ${failing.length} quarantined`);
+console.log(`material gate: ${keys.length} keys, ${keys.length - failing.length - Object.keys(resolve).length - runtimeTinted.length} pass as-is, ${Object.keys(resolve).length} resolved from a same-model donor, ${runtimeTinted.length} runtime-tinted templates exempted (untextured-only), ${failing.length} quarantined`);
 for (const k of leak) console.log(`::error::${k} (${results[k].url}) has broken materials and is NOT quarantined: ${results[k].error || results[k].findings.join(' | ')}`);
 for (const k of stale) console.log(`::error::${k} is quarantined but now passes or is gone — rerun with --write-status`);
 process.exit(leak.length || stale.length || resolveStale ? 1 : 0);
