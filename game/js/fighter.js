@@ -261,7 +261,29 @@ export function rowDonorKeys(input, limb) {
   return keys;
 }
 const LEGACY_TO_TEKKEN = { punch: '1', kick: '4', grab: '1+3' };
-
+/* STANCE ENTRIES from the frame data (2026-11-02, stance audit). A T7 / T8 frame-advantage note naming a stance
+   ('-5 (BT)', '+3 (MNT)': the frame-data convention for "the attacker ends in that stance") or a note saying so
+   ('Transition to NSS', 'Enter KIN', '> DEW') enters that stance when this moveset has moves for it. Before, only an
+   explicit stance_after entry put a fighter in a stance: 399 BT moves across 48 fighters and ~315 character-stance
+   rows (NSS, MNT, KIN, DEW, HAM ...) could never fire. */
+const STANCE_NOTE_FIELDS = ['on_block', 'on_hit', 'on_ch', 't7_on_block', 't7_on_hit', 't7_on_ch', 'note', 'notes'];
+function stanceAfterFromNotes(ms, key, mv) {
+  if (!ms || !mv || !key) return undefined;
+  if (!ms._stancePrefixes) {
+    const set = new Set();
+    for (const k of [...Object.keys(ms.moves || {}), ...Object.keys(ms.slots || {})]) { const m = /^([A-Za-z_][A-Za-z0-9_]*)\./.exec(k); if (m) set.add(m[1]); }
+    for (const sys of ['FC', 'WS', 'SS', 'AIR', 'WR', 'R', 'RD', 'H', 'OTG', 'WALL', 'CH', 'SIDE_L', 'SIDE_R', 'BACK']) set.delete(sys);
+    ms._stancePrefixes = set;
+  }
+  const own = /^([A-Za-z_][A-Za-z0-9_]*)\./.exec(key);
+  const texts = [];
+  for (const f of STANCE_NOTE_FIELDS) for (const x of [mv[f], mv.t7 && mv.t7[f], mv.t8 && mv.t8[f]]) if (x) texts.push(String(x));
+  for (const t of texts) {
+    const cands = [...t.matchAll(/\(([A-Z][A-Za-z0-9_]{1,6})\)/g), ...t.matchAll(/(?:[Tt]ransitions? (?:to|into)|[Ee]nters?|[Gg]o(?:es)? (?:to|into)|>)\s*([A-Z][A-Z0-9_]{1,6})\b/g)].map((m) => m[1]);
+    for (const c of cands) if (ms._stancePrefixes.has(c) && !(own && own[1] === c && c === 'BT')) return c;
+  }
+  return undefined;
+}
 export function getRealMove(charId, moveType, opts) {
   const tekken = LEGACY_TO_TEKKEN[moveType] || moveType;
   const res = resolveMove(charId, tekken, opts);
@@ -307,7 +329,7 @@ export function getRealMove(charId, moveType, opts) {
           hitLevel: mv.hit_level,
           // T3 situation follow-ups engage on contact: reach covers own hit + pushback.
           reach: (Number(mv.reach) > 0) ? mv.reach : (mv.t3_condition >= 2 && mv.t3_condition <= 0x17) ? 2.0 : mv.reach,
-          stanceAfter: ms.stance_after ? ms.stance_after[key] : undefined,
+          stanceAfter: (ms.stance_after && ms.stance_after[key]) || stanceAfterFromNotes(ms, key, mv),
           launch: !!mv.launch, knockdown: !!mv.knockdown,
           // T8 launcher frame advantage on hit, e.g. '+34a (+24)' (airborne): sets the juggle airtime
           launchAdv: (() => { const m = /\+(\d+)a/.exec(String(mv.on_hit || '')); return m ? +m[1] : null; })(),
@@ -763,7 +785,8 @@ export class Fighter {
   _hasGroundMoves(p = 'FUFT') {
     if (this._groundMovesFor !== this._movesetId) { this._groundMovesFor = this._movesetId; this._groundMoves = {}; }
     if (this._groundMoves[p] == null) {
-      this._groundMoves[p] = ['3', '4', '3,3', '1', '2', '1+2', '3+4'].some((b) => !!resolveMoveKey(this._movesetId, p + '.' + b));
+      this._groundMoves[p] = ['3', '4', '3,3', '1', '2', '1+2', '3+4', 'd+3', 'd+4', 'd/b+1+3', 'u+3+4', 'b+3+4', '1+3', '2+4']
+        .some((b) => !!resolveMoveKey(this._movesetId, p + '.' + b));
     }
     return this._groundMoves[p];
   }
@@ -1105,6 +1128,46 @@ export class Fighter {
     return { steps: plan.steps, unmapped: unmappedFor(plan.steps),
       playName: r.playName, playBank: r.playBank, playRow: r.playRow, why: r.why };
   }
+  /* Last-resort clip for a string step that has none (the T-pose case): THIS fighter's own clip for, in order,
+     the final step's button(s) pressed on their own ('f+2,1,1' -> its '1') and then the string's own earlier steps,
+     longest first ('b+1+2,1+2' -> 'b+1+2'), through the normal plan tiers: always its own animation. The clip must be
+     the step's class (the strike / throw guard of test/attack-anim.test.mjs): a strike step never borrows a throw
+     clip, a throw step never a strike clip. Timed on the STEP's own frame data when it has any. */
+  _ownButtonPlan(attackName, stepMove, wantGrab) {
+    if (this._ownBtnGuard) return null;   // never recurse through another step plan
+    const name = String(attackName || '');
+    const steps = name.split(',');
+    const last = steps[steps.length - 1].replace(/^[A-Za-z_][A-Za-z0-9_]*\./, '');
+    const btn = ((last.match(/[1-4](?:\+[1-4])*\*?$/) || [])[0] || '').replace(/\*$/, '');
+    const cands = [];
+    if (btn) cands.push(btn);
+    for (let i = steps.length - 1; i >= 1; i--) cands.push(steps.slice(0, i).join(','));
+    // final resort, always the step's class: the fighter's own standard throws for a throw step, its own jabs for a strike
+    cands.push(...(wantGrab ? ['1+3', '2+4'] : ['1', '2']));
+    const clips = this._t3 && this._t3.clips;
+    const classOk = (p) => {
+      const c = clips && clips[p.name];
+      if (!c) return !!p.grab === !!wantGrab;
+      const h = c.userData && c.userData.hit;
+      return wantGrab ? !(h && h[0] > 0 && !h[4]) : !clipIsThrow(c);
+    };
+    for (const cand of cands) {
+      const key = resolveMoveKey(this._movesetId, cand);
+      if (!key || key === name) continue;
+      const m = getRealMove(this._movesetId, key);
+      if (!m) continue;
+      this._ownBtnGuard = true;
+      let p = null;
+      try { p = this._attackClipPlan(m, key); } finally { this._ownBtnGuard = false; }
+      if (!p || !p.name || !classOk(p)) continue;
+      const S = stepMove && Number.isFinite(stepMove.startup) ? stepMove.startup : 0;
+      const A = stepMove && Number.isFinite(stepMove.active) ? stepMove.active : 0;
+      const R = stepMove && Number.isFinite(stepMove.recovery) ? stepMove.recovery : 0;
+      const timing = p.timing && S + A + R > 0.05 ? { ...p.timing, S, A, R } : p.timing;
+      return { ...p, timing, from: key };
+    }
+    return null;
+  }
   _attackClipPlan(move, attackName) {
     if (!this._t3 || !this._t3.clips) return null;
     const { bank, clips } = this._t3;
@@ -1177,6 +1240,14 @@ export class Fighter {
           }
           return { kind: 'step-plan', name: gname, why: `step plan unmapped — generic ${gname} presentation (no row substituted)`, steps: sp.steps, unmapped: sp.unmapped, limb: limb0, level: level0, grab: grab0, timing: timingG, rejected: [], stepBank: sp.playBank, stepRow: sp.playRow };
         }
+        // LAST RESORT (2026-11-02, owner: "his animations are falling back to T pose"): no generic bank action either
+        // (a fighter that runs on real T7 clips, e.g. Pantera, has no generic action under its bound bank), and
+        // name:null drew the BIND POSE for the whole step: every unmapped string follow-up and CPU string was a T-pose.
+        // The step now presents with THIS FIGHTER's own clip for the step's button(s) pressed on their own
+        // ('f+2,1,1' -> its '1', 'b+1+2,1+2' -> its '1+2'), resolved through the normal tiers: a real clip of its own
+        // moveset, never authored, never another fighter's. The UNMAPPED log above still reports the data gap.
+        const own = this._ownButtonPlan(attackName, move, grab0);
+        if (own) return { ...own, kind: 'step-plan', why: `step plan unmapped — own '${own.from}' clip (no row substituted)`, steps: sp.steps, unmapped: sp.unmapped, limb: limb0, level: level0, grab: grab0, rejected: [], stepBank: sp.playBank, stepRow: sp.playRow };
         return { kind: 'step-plan', name: null, steps: sp.steps, unmapped: sp.unmapped, limb: limb0, level: level0, grab: grab0, timing: null, rejected: [], stepBank: sp.playBank, stepRow: sp.playRow };
       }
       // Timing for the step row, same rule as the single-row tail below:
@@ -1530,6 +1601,9 @@ export class Fighter {
       dist: this._opp && this._opp.root && this.root ? Math.hypot(this._opp.root.position.x - this.root.position.x, this._opp.root.position.z - this.root.position.z) : null,
       stanceSpins: this.stance ? (this._stanceSpins || 1) : 0,
       foeFlank: this._foeFlank(), // batch 8: 'L' / 'R' / 'B' when at the opponent's side or back
+      // stance audit 2026-11-02: OTG. rows (the foe on the ground) and WALL. rows (own back to the wall) had no way in
+      foeDown: !!(this._opp && /^(down|knockdown)$/.test(this._opp.state || '')),
+      wallBehind: !!(this.root && (this.root.position.x * -(this.facing || 1)) > ARENA_LIMIT - 1.1),
       soulStates: soulStates(this), // pt217u: 魂 ACTION / KESSHOU / 九魂解放 / 霊放 / 試練の封 gates
     };
   }
@@ -2376,7 +2450,7 @@ export class Fighter {
     // batch 11: a side / back throw (FLANK_L/R/B, T7 'Left throw' / 'Back throw') is taken from
     // off the fight line: turn at the opponent and close the z gap through the grab (the
     // sidestep re-align path), lunging at them rather than along our own facing.
-    if (/^FLANK_[LRB]\./.test(notation) && this._opp && this._opp.root) {
+    if (/^(FLANK_[LRB]|SIDE_[LR]|BACK)\./.test(notation) && this._opp && this._opp.root) {
       this._ssAlign = true;
       this.vx = (Math.sign(this._opp.root.position.x - this.root.position.x) || this.facing) * 2.5;
     }
@@ -2391,7 +2465,10 @@ export class Fighter {
     const ms = getFighterMoveset(this._movesetId);
     const an = this._chainFrom || this.attackName;
     const cur = ms && (ms.moves[resolveMoveKey(this._movesetId, an) || an] || ms.moves[an]);
-    const tag = cur && throwStageTag(cur.name); let keys = tag ? throwStageKeys(this._movesetId, tag) : [];
+    let tag = cur && throwStageTag(cur.name); let keys = tag ? throwStageKeys(this._movesetId, tag) : [];
+    // A tackle (Ultimate / Ambush Tackle ...) takes the TACKLE. mount follow-ups (stance audit 2026-11-01: 150 rows
+    // across 37 fighters were keyed TACKLE. while the throw's own tag is ULTIMATE_TACKLE / UT, so none could fire).
+    if (!keys.length && cur && /tackle/i.test(cur.name || '')) { const tk = throwStageKeys(this._movesetId, 'TACKLE'); if (tk.length) { tag = 'TACKLE'; keys = tk; } }
     /* Throw follow-ups written as a plain string ('2+4,2', '2+4,1,2,1', '1+3,1'; TekkenDocs / wavu
        wiki notation) have no stage tag: the throw's own key is the stage. Before (moveset sweep
        2026-10-29), only tagged chain throws ('AB1.1,1+2') could be continued, so every untagged
@@ -2673,6 +2750,7 @@ export class Fighter {
       this._queuedNext = null; this._queuedAfter = null; this._stepChain = null; this._stringGraceUntil = 0; // getting hit kills your string
       // Hit in the back (BT) the victim falls forward past its feet: it lands head towards the attacker.
       this._kdHeadTowards = this.stance === 'BT';
+      this._kdFaceDown = this.stance === 'BT';   // falls forward: face down (FDFA ground state)
       this._enter('knockdown');
     } else {
       const t8adv = move.t8 ? (counter && move.t8.ch != null ? move.t8.ch : move.t8.hit) : null;
@@ -2709,6 +2787,7 @@ export class Fighter {
       }
       this.vx = dir * (move.knock || 2) * 0.5; this.onGround = false;
       this._kdHeadTowards = true; // screw/tornado spins the body round: lands head towards
+      this._kdFaceDown = true;    // ... and face down (Tekken screw / tailspin lands FDFA)
       this._enter('knockdown');
     }
     // Wall-splat follow-up (distinct from wall break): a splatted
@@ -3204,9 +3283,15 @@ export class Fighter {
         /* Tekken ground state (sweep 2026-10-29): leaving a knockdown the fighter is still on
            its back for a short window; moves listed 'while on back[, feet towards opponent]'
            (FUFT.) are pressed from it, like any stance prefix. Only when the moveset has them. */
-        const gs = this._kdHeadTowards && this._hasGroundMoves('FUHT') ? 'FUHT' : 'FUFT';
-        if (this._hasGroundMoves(gs)) { this.stance = gs; this.stanceT = 0.6; }
-        this._kdHeadTowards = false;
+        /* Ground state by how the fighter fell (stance audit 2026-11-02: 141 FDFA rows across 39 fighters were
+           unreachable): head towards the attacker + face down = FDFA (hit in the back, screw), head towards = FUHT /
+           FUFA, otherwise face up feet towards = FUFT; the first state this moveset has moves for. */
+        const order = this._kdHeadTowards
+          ? (this._kdFaceDown ? ['FDFA', 'FUHT', 'FUFA', 'FUFT'] : ['FUHT', 'FUFA', 'FDFA', 'FUFT'])
+          : (this._kdFaceDown ? ['FDFT', 'FUFT'] : ['FUFT', 'FDFT']);
+        const gs = order.find((g) => this._hasGroundMoves(g));
+        if (gs) { this.stance = gs; this.stanceT = 0.6; }
+        this._kdHeadTowards = false; this._kdFaceDown = false;
       } break;
       // GAP-FILL LANE 1: wall splat sticks the victim to the
       // wall for its stun window; expiry returns to neutral and

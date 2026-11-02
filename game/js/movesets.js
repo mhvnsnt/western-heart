@@ -346,6 +346,8 @@ export function legacyAlias(key) {
    input too (when nothing else owns it). Returns the input unchanged if nothing applies. */
 const _DIAG = { df: 'd/f', db: 'd/b', uf: 'u/f', ub: 'u/b', DF: 'D/F', DB: 'D/B', UF: 'U/F', UB: 'U/B' };
 /** Named move state ('Bad Stomach') -> stance code ('BAD_STOMACH'). */
+/** Side / back throw prefixes per foe flank (fighter._foeFlank): canonNotation's FLANK_* and the T8 lists' SIDE_* / BACK. */
+export const FLANK_KEYS = Object.freeze({ L: ['FLANK_L.', 'SIDE_L.'], R: ['FLANK_R.', 'SIDE_R.'], B: ['FLANK_B.', 'BACK.'] });
 export function stateCode(name) { return String(name).trim().toUpperCase().replace(/[^A-Z0-9]+/g, '_').replace(/^_|_$/g, ''); }
 const TILDE_WINDOW = 0.1; // s (6 frames): '~' = pressed immediately after the previous input
 // Separator order for a follow-up: inside TILDE_WINDOW the '~' branch wins over ',' (wavu wiki).
@@ -1068,9 +1070,12 @@ export class TekkenBuffer {
     // (a T3 situation row on 2+4,1) keeps the chord: its own condition decides.
     const eqChord = Object.keys(getLoadout(this.fighterId) || {}).some((n) => n === input || n.startsWith(input + ','));
     if (ctx.foeFlank && !dir && (input === '1+3' || input === '2+4') && !eqChord) {
-      const fl = 'FLANK_' + ctx.foeFlank + '.';
-      const k = has(fl + input) || has(fl + (input === '1+3' ? '2+4' : '1+3'));
-      if (k) return this._recordMove(k);
+      // Movesets merged from the T8 lists key the same throws SIDE_L / SIDE_R / BACK (stance audit 2026-11-01:
+      // 154 side / back throws across 40 fighters could never fire): both spellings are the same situation.
+      for (const fl of FLANK_KEYS[ctx.foeFlank] || []) {
+        const k = has(fl + input) || has(fl + (input === '1+3' ? '2+4' : '1+3'));
+        if (k) return this._recordMove(k);
+      }
     }
     // Opening step of a string that has no standalone move: open the string cursor, fire nothing.
     const opener = (c) => (strPrefixesHas(this.fighterId, ms, c) ? (this._strPath = c, this._strPathT = now, true) : false);
@@ -1079,11 +1084,15 @@ export class TekkenBuffer {
     for (const sp of ctx.soulStates || []) prefixes.push(sp + '.'); // pt217u soul systems
     if (ctx.stance) prefixes.push(ctx.stance + '.');
     if (ctx.rage) prefixes.push('R.');
+    // T8 Heat moves ('H.2+3', 'f,f,F+2,H.1+2'): the WH heat state is Soul Urge (stance audit 2026-11-01: 99 rows, 33 fighters)
+    if (ctx.urgeOn) prefixes.push('H.');
     // Rage lane (T7), as in _pressLegacy: the rage drive lives on 3+4 while raging (synthesized RD.).
     if (ctx.rage) prefixes.push('RD.');
     if (ctx.backturned) prefixes.push('BT.');
     if (ctx.sidestep) prefixes.push('SS.');
-    if (ctx.crouching) prefixes.push('FC.');
+    if (ctx.crouching) prefixes.push('FC.', 'hFC.'); // T8 'hFC' rows are crouch moves too (stance audit: 130 rows)
+    if (ctx.foeDown) prefixes.push('OTG.');          // on the grounded foe
+    if (ctx.wallBehind) prefixes.push('WALL.');      // own back to the wall
     if (ctx.rising) prefixes.push('WS.');
     if (ctx.airborne) prefixes.push('AIR.'); // Tekken jump attacks: an AIR. move outranks its ground namesake while airborne
     prefixes.push('');
@@ -1223,11 +1232,15 @@ export class TekkenBuffer {
     for (const sp of ctx.soulStates || []) prefixes.push(sp + '.'); // pt217u soul systems
     if (ctx.stance) prefixes.push(ctx.stance + '.');
     if (ctx.rage) prefixes.push('R.');
+    // T8 Heat moves ('H.2+3', 'f,f,F+2,H.1+2'): the WH heat state is Soul Urge (stance audit 2026-11-01: 99 rows, 33 fighters)
+    if (ctx.urgeOn) prefixes.push('H.');
     // Rage lane (T7): rage drive lives on 3+4 while raging (synthesized RD.).
     if (ctx.rage) prefixes.push('RD.');
     if (ctx.backturned) prefixes.push('BT.');
     if (ctx.sidestep) prefixes.push('SS.');
-    if (ctx.crouching) prefixes.push('FC.');
+    if (ctx.crouching) prefixes.push('FC.', 'hFC.'); // T8 'hFC' rows are crouch moves too (stance audit: 130 rows)
+    if (ctx.foeDown) prefixes.push('OTG.');          // on the grounded foe
+    if (ctx.wallBehind) prefixes.push('WALL.');      // own back to the wall
     if (ctx.rising) prefixes.push('WS.');
     if (ctx.airborne) prefixes.push('AIR.'); // Tekken jump attacks: an AIR. move outranks its ground namesake while airborne
     prefixes.push('');
