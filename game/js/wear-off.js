@@ -2,19 +2,19 @@
    WESTERN HEART — decal wear-off (tattoos / scars / face paint)
    (2026-11-02, scars + tattoos + face-paint lane)
 
-   WHAT THE WWE DATA ACTUALLY SHOWS (do not over-claim):
-   - Western Heart's WWE teardown data holds NO scar-labeled asset
-     and NO wear-off mechanism. WMXIX face overlays (Face_op, 208
+   WHAT THE LEGACY DATA ACTUALLY SHOWS (do not over-claim):
+   - Western Heart's legacy wrestling teardown data holds NO scar-labeled asset
+     and NO wear-off mechanism. Legacy face overlays (Face_op, 208
      files) are static layered textures — masks, face-paint patterns
-     and facial marks — and WMXIX MAKE_UP (64gara, ty2_*) are static
-     logo/tattoo decals. WWE 2K19's 597 DDS textures are hash-named
+     and facial marks — and legacy MAKE_UP (64gara, ty2_*) are static
+     logo/tattoo decals. A legacy title's 597 DDS textures are hash-named
      with no scar/face-paint labels. Nothing in the repo data fades,
      rubs off, or wears away during a match.
    - So wear-off here is a NEW Western Heart system, modeled on the
      layered-decal idea the data does show (a decal layer on top of
      a base face/body texture, with an editable opacity — the
      catalog's tattoo entries already list "opacity" as editable),
-     NOT a copied WWE feature. The rates below are WH design
+     NOT a copied legacy feature. The rates below are WH design
      defaults, chosen so the three kinds behave differently:
      face paint sits ON the skin and disappears; tattoos and scars
      are IN the skin and only fade to a floor, never vanish.
