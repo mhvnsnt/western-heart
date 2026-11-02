@@ -102,3 +102,20 @@ these jobs and polls status; no dead buttons.
 
 Full parameter list: MB-Lab's own `data/` morph JSONs after fetch
 (`vendor/MB-Lab/data/*.json`). The suite's BODY sliders map 1:1 onto these.
+
+
+## Base family registry — selectable bases (2026-11-02)
+
+The 9 MB-Lab template bases are a selectable family in the creation
+suite, not just loose template rows:
+
+- Registry: `tools/creation-suite/bases.json` (family `mb-lab`).
+- Selector: `python3 tools/mb-lab/select_base.py list|show|job|fighter <id>`
+  — `job` writes a suite job spec (`tool: "mb-lab"`) runnable with
+  `python3 tools/suite-jobs/run_job.py --spec <spec>`; `fighter` writes
+  the `F.mb_lab` fighter fragment.
+- Proof: `python3 tools/mb-lab/test_select_base.py` (pure Python, no
+  Blender; see `tools/mb-lab/BASES-PROOF-20261102.md`).
+
+Licence reminder: MB-Lab code GPL-3.0, base data AGPL-3.0. These bases
+are AGPL-3.0, NOT CC0.
