@@ -87,6 +87,17 @@ export function customFighterToRoster(F) {
       grabBias: 0.15,
       reaction: 0.55,
     },
+    // Phase 3 completion (2026-11-02): the suite's saved morph slider
+    // values ride along instead of being silently dropped — Fighter._build
+    // applies them to the built model via game/js/morph-apply.js.
+    morphTargets: { ...(F.body?.morph_targets || {}) },
+    // Which template body this fighter was created from (null for legacy
+    // saves). The in-fight model still resolves through the 'custom' slot;
+    // swapping it to the template GLB is tracked in
+    // docs/handoffs/CLAUDE-WIP-COMPLETION-2026-11-02.md (needs fight
+    // animation proof on the MB-Lab rig first).
+    template: F.template || null,
+    baseGlb: F.baseGlb || null,
     // Raw CAW data for appearance application
     _caw: F,
   };

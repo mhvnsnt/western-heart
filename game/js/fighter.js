@@ -50,6 +50,7 @@ import { JiggleRig } from './jiggle.js';
 import { SoftBody } from './softbody.js';
 import { MpmTissue } from './mpm-tissue.js';
 import { FaceRig } from './faceRig.js';
+import { applyMorphTargets } from './morph-apply.js';
 import { HandPoseBlender } from './handPoses.js';
 import { canonRootScale } from './canon-sizing.js';
 import { t8Frame, stunFromAdvantage } from './frame-tables.js';
@@ -652,6 +653,7 @@ export class Fighter {
     this.lean.add(inst.model);
     this.root.add(this.lean);
     this.model = inst.model;
+    this._applyCharMorphs();
     // ?debug=1 → on-page fighter diagnostics (no devtools needed)
     if (new URLSearchParams(location.search).has('debug')) {
       let sm = 0, bones = 0, vis = true;
@@ -872,6 +874,21 @@ export class Fighter {
     return true;
   }
 
+  /* Creation-suite morphs (Phase 3 completion, 2026-11-02): apply this
+     fighter's saved slider values (char.morphTargets, passed through by
+     game/js/custom-fighter.js) to the built model. Models without morph
+     targets (e.g. the legacy Soldier base) are a no-op; the number of
+     live influences is kept on model.userData for diagnostics. */
+  _applyCharMorphs() {
+    const values = this.char && this.char.morphTargets;
+    if (!values || !Object.keys(values).length || !this.model) return 0;
+    try {
+      const n = applyMorphTargets(this.model, values);
+      this.model.userData.morphInfluencesApplied = n;
+      return n;
+    } catch (e) { console.warn('[WH] morph apply failed', e); return 0; }
+  }
+
   /* The actual model swap — called by the cinematic at the climax.
      (Was inline in tryTransform; extracted so the cinematic owns timing.) */
   _doModelSwap(t, direction='up') {
@@ -891,6 +908,7 @@ export class Fighter {
     this.lean.remove(this.model);
     this.lean.add(inst.model);
     this.model = inst.model;
+    this._applyCharMorphs();
     this.bones = inst.bones;
     this.mixer = inst.mixer;
     this.actions = inst.actions;
