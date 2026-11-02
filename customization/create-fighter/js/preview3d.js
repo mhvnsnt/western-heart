@@ -10,6 +10,9 @@
    meshes are not wired yet). */
 import * as THREE from 'three';
 import { GLTFLoader } from '../vendor/addons/loaders/GLTFLoader.js';
+/* template bodies ship gltfpack -cc (meshopt): same vendored decoder the game uses (2026-11-01, Phase 3 re-bake) */
+import { MeshoptDecoder } from '../../../game/vendor/addons/libs/meshopt_decoder.js';
+const newLoader = () => new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
 import { clone as skeletonClone } from '../vendor/addons/utils/SkeletonUtils.js';
 
 const SKIN_TONES = ['#f7c2a1','#e8a87c','#c98d5e','#a06a42','#7c4a2d','#5d3320','#3d2114','#2a150c'];
@@ -144,7 +147,7 @@ export class Preview3D {
     this.clearAllProxies();
     this.clearAllPartMeshes();
     this.mixers = [];
-    new GLTFLoader().load(url, glb=>{
+    newLoader().load(url, glb=>{
       this.fighter = glb.scene;
       this.fighter.position.set(-0.35, 0, 0);
       this.fighter.traverse(o=>{ if(o.isMesh){ o.castShadow = true; } });
@@ -264,7 +267,7 @@ export class Preview3D {
      show GEOMETRY PENDING for anything without a real mesh. */
   setPartMesh(slotId, glbUrl, anchorName, label, catKey){
     this.clearPartMesh(slotId); this.clearProxy(slotId);
-    new GLTFLoader().load(glbUrl,
+    newLoader().load(glbUrl,
       g=>{
         const grp = g.scene;
         const anchor = this.fighter && this.fighter.getObjectByName(anchorName);
@@ -328,7 +331,7 @@ export class Preview3D {
       return;
     }
     this._disposeDome();
-    const loader = new GLTFLoader();
+    const loader = newLoader();
     try{
       const [base, domeGlb] = await Promise.all([
         loader.loadAsync(baseUrl), loader.loadAsync(domeUrl) ]);
