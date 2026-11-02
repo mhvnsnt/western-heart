@@ -41,6 +41,8 @@ morphs sit behind the unified FACE panel next to GNM.
 | Pipeline standard | Blender 4.0.2 (`~/workspace/tools/blender/blender-4.0.2-linux-x64/blender`) |
 | MB-Lab requirement | **Blender 4.0+** — MB-Lab 1.8.0 introduced Blender 4.0 support; 1.8.1 is the final release |
 | Verdict | ✅ Compatible — fetch-mb-lab.sh pins the 1.8.x line and the job runner was tested headless on 4.0.2 |
+| Blender 5.2.3 LTS (2026-11-02) | ✅ Verified — MB-Lab 1.8.1 (upstream tag `1_8_1`) ran headless on Blender 5.2.3 LTS and GLB-exported a character; see `docs/handoffs/BLENDER-PIN-20261102.md` for the log, sizes and SHA. Blender 5.2.3 LTS is now the Western Heart Blender standard, including MB-Lab. |
+| Fetch tag note | `fetch-mb-lab.sh` pins tag `1_8_1` (upstream name; `v1.8.1` does not exist upstream) |
 
 ## License
 
