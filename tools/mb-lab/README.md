@@ -143,3 +143,36 @@ suite, not just loose template rows:
 
 Licence reminder: MB-Lab code GPL-3.0, base data AGPL-3.0. These bases
 are AGPL-3.0, NOT CC0.
+
+
+## Blender version split (2026-11-02)
+
+MB-Lab's verified path stays Blender 4.0.2. Blender 5.2.3 is the
+Western Heart rig/render standard, but MB-Lab on 5.x is NOT verified
+— the audit's alternative branch (document the split, don't claim
+5.x) is what this section does:
+
+| Job | Blender |
+|---|---|
+| MB-Lab generation (`run_mblab_job.py`, this tool) | 4.0.2 (verified path) |
+| Rig / render (WH standard) | 5.2.3 (not MB-Lab; see lane-1 Blender pin) |
+
+Do not run MB-Lab jobs on 5.2.3 and call the result verified until
+both of these pass on 5.2.3: (1) `check_blender_compat.py --try-enable`
+reports `addon-enabled`, and (2) `run_mblab_job.py` produces a GLB
+from a spec on that Blender. The compat tool below reports honestly
+at each step and never upgrades a "candidate" to a compatibility claim.
+
+Compat check (pure Python, no bake):
+
+```bash
+python3 tools/mb-lab/check_blender_compat.py --blender <path-to-blender> [--try-enable] [--json]
+# verdicts: "unverified: vendor missing" | "incompatible: blender < 4.0"
+#           | "candidate: vendor present" | "addon-enabled" / "addon-enable-failed"
+# Proof: python3 tools/mb-lab/test_check_blender_compat.py
+#        (see tools/mb-lab/BLENDER-SPLIT-PROOF-20261102.md)
+```
+
+Licence reminder (unchanged): MB-Lab code GPL-3.0, base data
+AGPL-3.0. These bases are AGPL-3.0, NOT CC0. For a licence-clean base
+use the mpfb2 or charmorph-vitruvian family.
