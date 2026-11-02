@@ -18,16 +18,24 @@ the same measurement as `tools/anim/move_coverage_probe.mjs`).
   is `verified` with a finite row — so the attack fired and no clip
   played; the body stayed in bind pose for the whole move.
 - **The fix (this PR):** `tools/input-verify/promote_step_plans.py`
-  promoted 74 steps across 31 plans in `game/assets/movesets/pantera.json`.
+  promoted 72 steps across 31 plans in `game/assets/movesets/pantera.json`.
   A step was promoted only when two places in the same moveset agree on
   the row: the plan's `candidate_row` AND the prefix move's own record
   (its name cites the row, or a t3_row field) — and the row exists in the
   bound bank's `rows.pack.json`. Nothing was promoted on one source alone.
-- **After the fix (re-measured with the same probe): 231 OK, 7 TPOSE,
+- **After the fix (re-measured with the same probe): 229 OK, 9 TPOSE,
   0 NOFIRE, 0 ERROR** — the per-input table below is the after-fix run.
+  The repo's strike/throw unit test (`test/attack-anim.test.mjs`) passes
+  against the fixed data.
 
-## Still dead (7) — no honest promotion available
+## Still dead (9) — no honest promotion available
 
+- `1+3,1` and `2+4,1`: their records cite rows 415 / 417, and the plans
+  agree — but the bank's hit data (`hit_frames.json`) classifies both
+  rows as throws while the slots are strikes. The repo's strike/throw
+  test rejects the pairing and the engine's runtime gate would too, so
+  the promotions are vetoed in the tool and the steps stay unmapped
+  until the conflict is adjudicated.
 - `1,2,1,1,2,4,4,4,1,3` and `1,2,1,1,3,3,4,3,2,1+2` (the 10-hit combos):
   plans exist, but every step after the first has no candidate row
   anywhere in the moveset data.
@@ -37,7 +45,7 @@ the same measurement as `tools/anim/move_coverage_probe.mjs`).
 - `d/b+1+2,3+4`, `3+4,3,2+3`, `WS+2,2`: no step plan exists for these
   slots at all.
 
-## One data conflict found, NOT resolved by guessing
+## One more data conflict found, NOT resolved by guessing
 
 The prefix `f+2` is cited as row 230 by its move record, while an
 already-verified plan step for the same prefix plays row 111. Both
@@ -60,7 +68,7 @@ not need the option.
 
 Tool: `tools/input-verify/input_coverage_probe.mjs` (game time stepped directly, FIXED_DT 1/120; no wall-clock waits).
 
-**Tally: OK 231, TPOSE 7**; plan kinds: t7 65, anim 42, notation 12, step-plan 58, match 7, own 34, donor 20
+**Tally: OK 229, TPOSE 9**; plan kinds: t7 65, anim 42, notation 12, step-plan 58, match 7, own 34, donor 20
 
 Outcomes: OK = fired and an animation played from neutral. TPOSE = fired but the body stayed in bind pose (no animation). CHAIN-OK = a string continuation that stays in bind pose when fed cold from neutral but animates when the string is chained the way a player inputs it (chain pass: prefixes fed in turn, game time stepped between them). NOFIRE = the input layer rejected it. ERROR = probe-side failure.
 
@@ -68,8 +76,10 @@ Outcomes: OK = fired and an animation played from neutral. TPOSE = fired but the
 
 | input | fired | animation / clip | kind | outcome | notes |
 |---|---|---|---|---|---|
+| `1+3,1` | yes |  | step-plan | TPOSE | KING 1+3,1_c36 (T3 king r415) — chained replay: NOFIRE |
 | `1,2,1,1,2,4,4,4,1,3` | yes |  | step-plan | TPOSE | 10 Hit Combo 1 — chained replay: TPOSE |
 | `1,2,1,1,3,3,4,3,2,1+2` | yes |  | step-plan | TPOSE | 10 Hit Combo 2 — chained replay: TPOSE |
+| `2+4,1` | yes |  | step-plan | TPOSE | KING 2+4,1_c36 (T3 king r417) — chained replay: NOFIRE |
 | `b+1+2,1+2` | yes |  | step-plan | TPOSE | Back Swing — chained replay: NOFIRE |
 | `d+1,2` | yes |  | step-plan | TPOSE | Move d+1 (d+1) — chained replay: NOFIRE |
 | `d/b+1+2,3+4` | yes |  | step-plan | TPOSE | Jaguar Sprint — chained replay: NOFIRE |
@@ -89,7 +99,7 @@ Outcomes: OK = fired and an animation played from neutral. TPOSE = fired but the
 | `1+2,1` | yes | t7:1+2~t7.king | t7 | OK | real T7 Kg_hiziru (Mkg_hijiupA_DVD) |
 | `1+2,3` | yes | t7:1+2~t7.king | t7 | OK | real T7 Kg_hiziru (Mkg_hijiupA_DVD) |
 | `1+3` | yes | row:127 | notation | OK | same input '1+3' |
-| `1+3,1` | yes | row:415 | step-plan | OK | step-plan last step (1+3,1) |
+| `1+3,1` | yes |  | step-plan | TPOSE | KING 1+3,1_c36 (T3 king r415) — chained replay: NOFIRE |
 | `1+4` | yes | row:153 | anim | OK | Honest Hold [WH SIGNATURE] |
 | `1+4,1` | yes | row:233 | step-plan | OK | step-plan last step (1+4,1) |
 | `1+4,1,1` | yes | row:234 | step-plan | OK | step-plan last step (1+4,1,1) |
@@ -105,7 +115,7 @@ Outcomes: OK = fired and an animation played from neutral. TPOSE = fired but the
 | `2+3` | yes | row:237 | match | OK | btn 6 null m hit@25f |
 | `2+3,1` | yes | row:632 | step-plan | OK | step-plan last step (2+3,1) |
 | `2+4` | yes | row:128 | notation | OK | same input '2+4' |
-| `2+4,1` | yes | row:417 | step-plan | OK | step-plan last step (2+4,1) |
+| `2+4,1` | yes |  | step-plan | TPOSE | KING 2+4,1_c36 (T3 king r417) — chained replay: NOFIRE |
 | `2,1` | yes | t7:2~t7.king | t7 | OK | real T7 Kg_rp00 (ygkg_rp00_DVD) |
 | `3+4` | yes | row:66 | anim | OK | Jaguar Step |
 | `3+4,1+4` | yes | row:289 | match | OK | throw btn 9 null t hit@12f |

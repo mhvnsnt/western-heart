@@ -17,8 +17,20 @@ sources disagree is a conflict, not evidence (Pantera's f+2: the record
 cites row 230 while a verified plan step plays 111 — left alone). Steps
 with no candidate stay unmapped and are printed.
 
+Adjudication vetoes (--veto prefix=row, repeatable): a step whose pairing
+the repo's own strike/throw test (test/attack-anim.test.mjs, "no strike
+plays a throw row") rejects is NOT promoted, however well the moveset's
+own records agree — the bank's hit classification (hit_frames.json: rows
+415 / 417 carry the throw flag) conflicts with the slots' strike nature,
+and the engine's runtime gate rejects the pairing too. Pantera's vetoed
+pairs, found by running that test against the promoted file:
+  1+3,1=415, 2+4,1=417
+They stay unmapped until the conflict is adjudicated. (The engine's grab
+classification is deeper than any single record field, so vetoes are
+taken from the test's verdict, never guessed from fields.)
+
 Usage:
-  promote_step_plans.py <moveset.json> <bank-rows.pack.json> <coverage.json> [--apply]
+  promote_step_plans.py <moveset.json> <bank-rows.pack.json> <coverage.json> [--veto prefix=row ...] [--apply]
 
 coverage.json is a probe report; only its TPOSE rows are considered.
 Without --apply the tool only prints what it would change.
@@ -31,6 +43,11 @@ def main():
         return 2
     ms_path, pack_path, cov_path = sys.argv[1:4]
     apply = '--apply' in sys.argv
+    vetoes = set()
+    for i, a in enumerate(sys.argv):
+        if a == '--veto' and i + 1 < len(sys.argv):
+            pfx, _, row = sys.argv[i + 1].rpartition('=')
+            vetoes.add((pfx, int(row)))
     ms = json.load(open(ms_path))
 
     pack = json.load(open(pack_path))
@@ -73,6 +90,9 @@ def main():
                 continue
             cand = s.get('candidate_row')
             prow = move_row(s['prefix'])
+            if cand and (s['prefix'], int(cand)) in vetoes:
+                print(f'{n}: step {s["prefix"]} VETOED (adjudicated strike/throw conflict, row {cand}); stays {s.get("status")}')
+                continue
             if cand and prow and int(cand) == prow and int(cand) in pack_rows:
                 print(f'{n}: step {s["prefix"]} {s.get("status")} -> verified row {cand}')
                 if apply:
