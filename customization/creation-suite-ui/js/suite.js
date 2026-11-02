@@ -2,7 +2,7 @@
    Laws: tap slot → scroll library → tap to assign. NO drag-and-drop anywhere. Phone-first.
    Menu trees verbatim from teardown games (see menu-data.js + UI-EXTRACTION-LOG.md). */
 import { SuiteViewer } from './viewer3d.js';
-import { ATTIRE_TREE, BODY_TREE, PARTS_TREE, JIGGLE_AREAS, JIGGLE_PARAMS, JIGGLE_FAMILIES, PLACE_AXES, MENU_SRC, WWE_ATTIRE_TREE } from './menu-data.js';
+import { ATTIRE_TREE, BODY_TREE, PARTS_TREE, JIGGLE_AREAS, JIGGLE_PARAMS, JIGGLE_FAMILIES, PLACE_AXES, MENU_SRC, WWE_ATTIRE_TREE, POSE_TREE } from './menu-data.js';
 /* Real morph catalog + DNA/body engine from packages/creation-suite
    (importmap: wh-creation-suite/ -> ../../packages/creation-suite/src/).
    Thin adapter below maps morph ids onto DNA sliders — logic is NOT forked. */
@@ -12,6 +12,12 @@ import { applySliders as applyBodySliders } from 'wh-creation-suite/body.js';
 /* The game's own moveset engine (same module the fight runs): notation tables, slots, loadouts. */
 import * as MS from '../../../game/js/movesets.js';
 MS.setMovesetBase('../../game/assets/movesets/');
+/* POSE & PICTURE (phase 2): the game's own T3 bank table (which bank a
+   fighter's stance/idle/victory clips live in) and the on-device portrait
+   store the select screen reads — one writer, one key scheme. */
+import * as THREE from 'three';
+import { T3_BANKS, T7_STANCES, loadT3Clips, retargetT3Clips, applyT7Stance } from '../../../game/js/t3anims.js';
+import { savePortrait, getPortrait, clearPortrait } from '../../../game/js/user-portraits.js';
 
 const LS_KEY = 'wh_creation_suite_v1';
 const START_MONEY = 12400;
@@ -507,6 +513,7 @@ function setTab(t){
   ui.tab=t; ui.attireCat=null; ui.partsCat=null; ui.selPart=null;
   document.querySelectorAll('.rail-btn').forEach(x=>x.classList.toggle('active',x.dataset.tab===t));
   if(t!=='parts') hidePlaceDock();
+  if(t!=='pose') stopPose();
   renderAll();
 }
 document.querySelectorAll('.rail-btn').forEach(b=>b.onclick=()=>setTab(b.dataset.tab));
@@ -517,7 +524,7 @@ function renderPanel(){
   $('#panel-title').textContent=ui.tab.toUpperCase(); $('#panel-sub').textContent='';
   body.innerHTML='';
   ({body:renderBody,attire:renderAttire,parts:renderParts,outfit:renderOutfit,jiggle:renderJiggle,
-    wardrobe:renderWardrobe,profile:renderProfile,moveset:renderMoveset,dome:renderDome})[ui.tab](body);
+    wardrobe:renderWardrobe,profile:renderProfile,pose:renderPose,moveset:renderMoveset,dome:renderDome})[ui.tab](body);
 }
 
 /* ================= BODY ================= */
@@ -905,6 +912,178 @@ function renderJiggle(el){
     });
     host.appendChild(w);
   });
+}
+
+/* ================= POSE & PICTURE =================
+   Suite phase 2 (CREATION-SUITE-ORDER phase 5). The pose library is the
+   fighter's OWN animation bank — the same stance / idle / victory clips
+   the fight plays — loaded and retargeted onto the preview body by the
+   game's own pipeline (game/js/t3anims.js: loadT3Clips +
+   retargetT3Clips, the same path a fighter's _bindT3 uses; raw bank
+   tracks only bind correctly on an identity-rest rig, so the retarget
+   is not optional) and played through the viewer's animation mixer.
+   TAKE PICTURE captures the posed preview and stores it on this device
+   through game/js/user-portraits.js, so it becomes the fighter's
+   select-screen card here (the repo card stays the fallback).
+   Everything lives in the right rail — the preview is never covered. */
+const poseUi = { key:null, url:null, actions:null, current:null, loading:false, failed:false };
+function stopPose(){
+  if(viewer) viewer.stopActions();
+  poseUi.current = null;
+}
+/* Resolve the fighter's bank, load its clips and retarget them onto the
+   displayed body, once per body. Returns true when it did the work (the
+   caller re-renders so availability shows), false on a cache hit. */
+async function ensurePoseActions(){
+  if(!viewer || !viewer.model || !viewer.mixer) return false;
+  if(poseUi.url === viewer.currentUrl) return false;
+  poseUi.url = viewer.currentUrl; poseUi.actions = null; poseUi.failed = false; poseUi.current = null; poseUi.key = null;
+  poseUi.loading = true;
+  try{
+    let fid = null;
+    if(F.mode === 'roster') fid = gameIdFor(F.rosterRef && F.rosterRef.fighter);
+    if(!fid){ const lo = MS.getLoadout('custom') || {}; fid = lo.__base || null; }
+    if(!fid) fid = 'pantera';
+    await MS.ensureMovesets([fid]);
+    const ms = MS.getFighterMoveset(fid);
+    const bankId = ms && ms.t3_source;
+    if(!bankId || !T3_BANKS[bankId]){ poseUi.failed = true; return true; }
+    // T3_BANKS / T7_STANCES paths are game-root relative; this page lives
+    // two levels up, so point them at the same folders from here while the
+    // bank loads (the T7 stance override rides the same load, so the
+    // suite's stance is the same one the fight and select preview use).
+    const orig = T3_BANKS[bankId];
+    const t7orig = {};
+    for(const [k, def] of Object.entries(T7_STANCES)) if(def.bank === bankId){ t7orig[k] = def.dir; def.dir = '../../game/' + def.dir; }
+    let clips = null;
+    try{ T3_BANKS[bankId] = '../../game/' + orig; clips = await loadT3Clips(THREE, bankId); }
+    finally{ T3_BANKS[bankId] = orig; for(const [k, dir] of Object.entries(t7orig)) T7_STANCES[k].dir = dir; }
+    if(!clips){ poseUi.failed = true; return true; }
+    const retargeted = retargetT3Clips(clips, bankId, viewer.model, THREE, 'suite');
+    if(!retargeted){ poseUi.failed = true; return true; }
+    // His real T7 stance replaces the bank stance, exactly as _bindT3 does.
+    try{
+      const rc = applyT7Stance(fid, bankId, clips, viewer.model, THREE, 'suite');
+      if(rc && rc.stance) retargeted.stance = rc.stance;
+    }catch(e){ /* no T7 stance for this fighter — the bank stance stands */ }
+    const actions = {};
+    for(const def of POSE_TREE){
+      const clip = retargeted[def.clip];
+      if(!clip) continue;
+      const a = viewer.mixer.clipAction(clip);
+      const loop = !!(clip.userData && clip.userData.loop);
+      a.setLoop(loop ? THREE.LoopRepeat : THREE.LoopOnce, Infinity);
+      a.clampWhenFinished = !loop;
+      a.enabled = true; a.setEffectiveWeight(0);
+      actions[def.key] = a;
+    }
+    poseUi.actions = actions;
+    if(!Object.keys(actions).length) poseUi.failed = true;
+    return true;
+  }catch(e){ poseUi.failed = true; return true; }
+  finally{ poseUi.loading = false; }
+}
+async function playPose(def){
+  if(poseUi.loading){ toast('Loading his poses…'); return; }
+  if(!poseUi.actions) await ensurePoseActions();
+  const a = poseUi.actions && poseUi.actions[def.key];
+  if(!a){ toast(poseUi.failed ? 'His poses could not be loaded for this body' : 'That pose is not in his set'); return; }
+  if(poseUi.current && poseUi.current !== a){ poseUi.current.stop(); poseUi.current.setEffectiveWeight(0); }
+  a.reset(); a.setEffectiveWeight(1); a.play();
+  poseUi.current = a; poseUi.key = def.key;
+  document.querySelectorAll('.pose-card').forEach(b=>b.classList.toggle('active', b.dataset.pose === def.key));
+}
+function portraitTargetId(){
+  if(F.mode === 'roster'){
+    const g = gameIdFor(F.rosterRef && F.rosterRef.fighter);
+    if(g) return g;
+    if(F.rosterRef && F.rosterRef.fighter) return String(F.rosterRef.fighter);
+  }
+  const nm = String((F.profile && F.profile.name) || 'custom').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  return 'custom-' + (nm || 'fighter');
+}
+function squareCropPortrait(dataUrl, fx){
+  return new Promise(res=>{
+    const img = new Image();
+    img.onload = ()=>{
+      const S = 512, c = document.createElement('canvas'); c.width = S; c.height = S;
+      const side = Math.min(img.width, img.height);
+      const cx = (typeof fx === 'number' ? fx : 0.5) * img.width;
+      const sx = Math.max(0, Math.min(img.width - side, cx - side / 2));
+      c.getContext('2d').drawImage(img, sx, (img.height - side) / 2, side, side, 0, 0, S, S);
+      res(c.toDataURL('image/png'));
+    };
+    img.onerror = ()=>res(dataUrl);
+    img.src = dataUrl;
+  });
+}
+async function takePicture(){
+  if(!viewer || !viewer.ready){ toast('The fighter is still loading'); return; }
+  const fc = viewer.freeCenterFrac ? viewer.freeCenterFrac() : { fx:0.5 };
+  const sq = await squareCropPortrait(viewer.snapshot(), fc.fx);
+  const attire = 'attire' + (F.attireIndex + 1);
+  if(savePortrait(portraitTargetId(), attire, sq)){
+    toast('Picture saved — it is now the select-screen card on this device ✓');
+  } else {
+    toast('Could not save the picture on this device');
+  }
+  renderPanel();   // shows the saved thumbnail; renderPose never stops a playing pose (setTab does, on exit)
+}
+async function renderPose(el){
+  $('#panel-sub').textContent = 'His own poses — and his select-screen picture';
+  // No stopPose() here: the panel re-renders for framing changes and for
+  // the post-picture thumbnail, and neither may kill the playing pose.
+  // Playback stops when the POSE tab is left (setTab) or the body swaps.
+  const target = portraitTargetId();
+  const attire = 'attire' + (F.attireIndex + 1);
+  const current = getPortrait(target, attire);
+  el.innerHTML = `
+    <div class="sect">POSES — HIS OWN MOVES</div>
+    <div class="roster-grid" id="pose-grid"></div>
+    ${poseUi.loading ? `<div class="hint">Loading his poses…</div>`
+      : poseUi.failed ? `<div class="hint">His poses could not be loaded for this body — framing and picture still work.</div>` : ''}
+    <div class="sect">CAMERA</div><div id="pose-cam"></div>
+    <button class="btn btn-sm" id="pose-cardframe">🎞️ CARD FRAMING</button>
+    <div class="sect">SELECT-SCREEN PICTURE</div>
+    <button class="btn btn-gold" id="pose-take">📸 TAKE PICTURE</button>
+    <div class="hint">The picture is saved on this device and becomes his card on the character select screen.</div>
+    ${current ? `<div class="sect">ON THIS DEVICE</div>
+      <img class="pose-current" src="${current}" alt="Current select-screen picture">
+      <button class="btn btn-sm btn-red" id="pose-clear">REMOVE DEVICE PICTURE</button>` : ''}`;
+  const grid = el.querySelector('#pose-grid');
+  if(grid){
+    for(const def of POSE_TREE){
+      const b = document.createElement('button');
+      b.className = 'roster-card pose-card' + (poseUi.key === def.key ? ' active' : '');
+      if(poseUi.actions && !poseUi.actions[def.key]) b.classList.add('off');
+      b.dataset.pose = def.key;
+      b.innerHTML = `${def.icon} ${esc(def.label)}<br><small>${esc(def.sub)}</small>`;
+      b.onclick = ()=>playPose(def);
+      grid.appendChild(b);
+    }
+  }
+  ensurePoseActions().then(fresh=>{ if(fresh && ui.tab === 'pose') renderPanel(); });
+  const cam = el.querySelector('#pose-cam');
+  const slider = (label, min, max, step, val, fn)=>{
+    const row = document.createElement('div'); row.className = 'ctl';
+    const lab = document.createElement('label'); lab.textContent = label; row.appendChild(lab);
+    const inp = document.createElement('input'); inp.type = 'range'; inp.min = min; inp.max = max; inp.step = step; inp.value = val;
+    inp.oninput = ()=>fn(parseFloat(inp.value));
+    row.appendChild(inp); cam.appendChild(row);
+  };
+  slider('Distance', 1.2, 6, 0.05, viewer.camDist, v=>{ viewer.userZoom = true; viewer.camDist = v; });
+  slider('Turn', -3.14, 3.14, 0.02, viewer.theta, v=>{ viewer.theta = v; });
+  slider('Height', 0.55, 1.65, 0.01, viewer.phi, v=>{ viewer.phi = v; });
+  el.querySelector('#pose-cardframe').onclick = ()=>{
+    viewer.userZoom = true;
+    viewer.theta = 0.25; viewer.phi = 1.22;
+    viewer.camDist = Math.max(1.3, (viewer.fitDist || 3.4) * 0.85);
+    if(viewer.camTarget) viewer.camTarget.y = (viewer.headHeight || 1.7) * 0.78;
+    renderPanel();
+  };
+  el.querySelector('#pose-take').onclick = takePicture;
+  const clr = el.querySelector('#pose-clear');
+  if(clr) clr.onclick = ()=>{ clearPortrait(target, attire); toast('Device picture removed — the standard card is back'); renderPanel(); };
 }
 
 /* ================= WARDROBE / PROFILE / MOVESET ================= */

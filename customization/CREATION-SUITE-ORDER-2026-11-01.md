@@ -1,6 +1,6 @@
 # Creation suite — owner order and build plan (2026-11-01)
 
-**Status:** in progress (Claude Code, branch `claude/amazing-keller-p8644u`; TASKBOARD row 18). Every agent working on
+**Status:** in progress. Phase 5 (POSE & PICTURE) LANDED 2026-11-01: the suite's POSE tab plays the fighter's own bank clips (retargeted by the game's own pipeline) and TAKE PICTURE saves the posed preview to the on-device portrait store the select screen reads. Every agent working on
 the creation suite reads this first. Names law applies to everything a player sees: no Tekken / WWE / teardown
 character names in the UI (the source games are named only in docs about pulling their data).
 
@@ -66,7 +66,7 @@ character names in the UI (the source games are named only in docs about pulling
 | WWE 2K raw files | `teardown/wwe2k19`, `wwe2k20`, `wwe2k22` | **not pulled**: those releases are delisted and the pull needs the owner's Steam login (agents never log into Steam); work from the documented structure |
 | Tekken customization structure | `teardown/tekken7-steam-ui/T7-UI-LAYOUT.md`, `teardown/ttt2-customization-research.md`, `teardown/tekken6-customization-research.md`, `packages/creation-suite/src/t7layout.js` | documented + partly in code |
 | Body tools | `tools/mb-lab` (MB-Lab headless bake), `tools/mpfb2` (MPFB2 / MakeHuman, CC0), `customization/body-morphs/apply_mpfb_morphs.py`, `game/js/creation-tool-map.js` | need Blender (not on the cloud VM by default) |
-| Select-screen portraits | `tools/portraits/capture.mjs` + `game/portrait-capture.html` | works for repo fighters; no in-suite TAKE PICTURE yet |
+| Select-screen portraits | `tools/portraits/capture.mjs` + `game/portrait-capture.html`; suite POSE tab TAKE PICTURE → `game/js/user-portraits.js` | works for repo fighters; in-suite TAKE PICTURE landed 2026-11-01 (phase 5) — a suite picture becomes the fighter's select-screen card on that device, repo card stays the fallback |
 
 ## Build plan (each phase merges + deploys when it lands)
 

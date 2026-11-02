@@ -99,6 +99,12 @@ export class SuiteViewer {
     this._frame();
   }
   _frame(){
+    if(this.mixer){
+      const now = performance.now();
+      const dt = this._mt ? Math.min(0.05, (now - this._mt) / 1000) : 0.016;
+      this._mt = now;
+      this.mixer.update(dt);
+    }
     const t=this.camTarget;
     this.camera.position.set(
       t.x + this.camDist*Math.sin(this.phi)*Math.sin(this.theta),
@@ -212,8 +218,16 @@ export class SuiteViewer {
         this.model.traverse(o=>{ if(o.isBone) this.bones[o.name.replace(/^mixamorig:?/, '')] = o; });
         // MB-Lab game skeleton (the WWE-style CREATE templates) -> the Mixamo names sockets / framing use
         for(const [mix, alts] of Object.entries(MBLAB_ALIASES)) if(!this.bones[mix]) for(const a of alts) if(this.bones[a]){ this.bones[mix] = this.bones[a]; break; }
+        // bind-pose quaternions: the POSE mixer drives bone rotations while
+        // a pose plays, and clearPose() hands the body back exactly as it
+        // loaded. The mixer is rebuilt with every body (POSE & PICTURE
+        // actions are created against it by the suite).
+        this.bindQuats = {}; for(const [n,b] of Object.entries(this.bones)) this.bindQuats[n] = b.quaternion.clone();
+        this.mixer = new THREE.AnimationMixer(this.model);
+        this._mt = 0;
         // a body with no animation of its own stands relaxed, not in its T-pose bind pose
-        if(!(gltf.animations && gltf.animations.length)) this.relaxPose();
+        this._relaxedBind = !(gltf.animations && gltf.animations.length);
+        if(this._relaxedBind) this.relaxPose();
         // frame from the Head bone (bind-pose geometry bbox lies under bone scale)
         const headY = this.boneY('Head', 1.7);
         this.camTarget.set(0, headY*0.55, 0);
@@ -425,8 +439,42 @@ export class SuiteViewer {
     if(!this.model) return;
     this.model.scale.set(0.92+0.16*(p.weight||1), 0.9+0.2*(p.height||1), 0.92+0.16*(p.weight||1));
   }
+  /* POSE playback (suite phase 2 — POSE & PICTURE): the suite creates
+     actions on this.mixer from the fighter's bank clips retargeted onto
+     this body by the game's own pipeline (game/js/t3anims.js); _frame()
+     advances the mixer. stopActions() ends playback and hands the body
+     back to its loaded pose. */
+  stopActions(){
+    if(this.mixer) this.mixer.stopAllAction();
+    this.clearPose();
+  }
+  /* Hand the body back: bind pose exactly as loaded, re-relaxed when the
+     loaded body was a relaxed template. */
+  clearPose(){
+    if(!this.bones || !this.bindQuats) return;
+    for(const [n, b] of Object.entries(this.bones)){
+      const q = this.bindQuats[n];
+      if(q) b.quaternion.copy(q);
+    }
+    if(this._relaxedBind) this.relaxPose();
+    if(this.model) this.model.updateMatrixWorld(true);
+  }
   snapshot(){
     this.renderer.render(this.scene, this.camera);
     return this.canvas.toDataURL('image/png');
+  }
+  /* Center of the screen area the UI leaves free, as fractions of the
+     canvas — where the fighter actually stands in the frame. TAKE
+     PICTURE centers its square crop here, not on the raw canvas center
+     (the canvas extends under the side panel). */
+  freeCenterFrac(){
+    const w = this.canvas.clientWidth || 1, h = this.canvas.clientHeight || 1;
+    if(this.insets){
+      try{
+        const i = this.insets();
+        return { fx:(i.left + (w - i.left - i.right) / 2) / w, fy:(i.top + (h - i.top - i.bottom) / 2) / h };
+      }catch(e){ /* fall through to canvas center */ }
+    }
+    return { fx:0.5, fy:0.5 };
   }
 }
