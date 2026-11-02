@@ -97,3 +97,8 @@ body{font-family:var(--display);}
   .rail-btn{min-height:52px;padding:6px 2px;}
   .rail-ico{font-size:20px;}
 }
+
+/* POSE & PICTURE (suite phase 2): the device-card preview in the pose panel.
+   The pose buttons reuse .roster-card; the grid reuses .roster-grid. */
+.pose-current{display:block;width:100%;max-width:220px;margin:6px 0 8px;border-radius:10px;border:1px solid rgba(255,255,255,.18);}
+.roster-card.off{opacity:.45;}

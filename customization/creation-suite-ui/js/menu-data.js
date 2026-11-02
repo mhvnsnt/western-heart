@@ -166,6 +166,20 @@ export const WWE_PROFILE_TREE = [
   { key:"traits",    label:"Personality Traits", sub:"egotistical/prideful/disrespectful/respectful/desperate/perseverant/treacherous/loyal/cowardly/bold/aggressive/disciplined", icon:"🎭", src:"WWE_PROFILE" },
 ];
 
+/* ---- POSE & PICTURE tab (suite phase 2, CREATION-SUITE-ORDER phase 5) ----
+   The pose library is the fighter's OWN animation bank: every entry names a
+   clip file in that fighter's T3 bank (the same files the fight plays —
+   stance/idle/victory per the game's clip table). Labels are generic: no
+   source-game or real-person names on screen (names law). */
+export const POSE_TREE = [
+  { key:"stance",  label:"Stance",  sub:"the fighter's own fighting stance", clip:"stance",     icon:"🧍" },
+  { key:"idle",    label:"Idle",    sub:"standing guard, breathing",        clip:"block",      icon:"🌬️" },
+  { key:"victory", label:"Victory", sub:"the fighter's own win pose",       clip:"win",        icon:"🏆" },
+  { key:"intro",   label:"Intro",   sub:"round-start show pose",            clip:"intro",      icon:"🎬" },
+  { key:"crouch",  label:"Crouch",  sub:"crouching guard",                  clip:"crouchHold", icon:"🐈" },
+  { key:"walk",    label:"Walk",    sub:"walk cycle",                       clip:"walkFwd",    icon:"🚶" },
+];
+
 /* ---- WWE Performance tab (entrance/victory/taunts — repurposed per owner: cutscene + taunt creation) ---- */
 export const WWE_PERFORMANCE_TREE = [
   { key:"entrance",  label:"Entrance",  sub:"motion + lighting + pyro + titantron (→ cutscene creator)", icon:"🎆", src:"WWE_PERF" },
