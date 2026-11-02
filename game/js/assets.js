@@ -363,6 +363,23 @@ export const MODEL_URLS = {
   // Created fighters use the Soldier.glb base from the CAW suite.
   // Relative path works on GitHub Pages (game/ -> customization/).
   custom: '../customization/create-fighter/assets/Soldier.glb',
+  // Phase 4b (2026-11-02): created fighters built on a Creation Suite
+  // template body fight on THAT template's GLB, not on Soldier.
+  // game/js/custom-fighter.js resolves a saved fighter's template to
+  // one of these keys; the legacy 'custom' key above stays (rig guard:
+  // MODEL_URLS keys are never removed) for template-less saves that
+  // have not migrated yet and for roster-mode edits (see custom-fighter.js).
+  // Paths are the template bodies in customization/templates/meshes/
+  // (body-templates.json base_mesh, same 9 ids, same order).
+  'custom-template-super-heavyweight': '../customization/templates/meshes/super-heavyweight.glb',
+  'custom-template-powerhouse': '../customization/templates/meshes/powerhouse.glb',
+  'custom-template-showman': '../customization/templates/meshes/showman.glb',
+  'custom-template-technician': '../customization/templates/meshes/technician.glb',
+  'custom-template-highflyer': '../customization/templates/meshes/highflyer.glb',
+  'custom-template-luchador': '../customization/templates/meshes/luchador.glb',
+  'custom-template-powerhouse-w': '../customization/templates/meshes/powerhouse-w.glb',
+  'custom-template-athletic-w': '../customization/templates/meshes/athletic-w.glb',
+  'custom-template-striker-w': '../customization/templates/meshes/striker-w.glb',
   // Reskin wave (2026-10-19): first custom attires, wired as selectable fighters.
   // Jin Bloodline Ember + Doc Frank Machine Shop are rigged drop-ins from their
   // lanes; Baek/Mariposa/Dxmmii are texture-transplants onto their rigged bases
@@ -1070,6 +1087,104 @@ function remapSliceBones(fighterId, model) {
   return true;
 }
 
+/* ===========================================================
+   MB-LAB TEMPLATE REMAP — created fighters only (Phase 4b,
+   2026-11-02). Same contract as the Vega and Slice remaps:
+   rename the cloned instance's core joints to the T3 names
+   BEFORE the bones dict and mixer are built from it, so T3
+   clips + procedural IK bind. The source gltf is untouched.
+
+   Why this exists: the 9 Creation Suite template GLBs
+   (customization/templates/meshes/*.glb, Blender + MB-Lab,
+   71 joints each) name their bones the MB-Lab way
+   (pelvis, spine01/02/03, clavicle_L, upperarm_L, lowerarm_L,
+   hand_L, thigh_L, calf_L, foot_L, toes_L, ...). None of those
+   matches the game's canonical T3 names, and the templates
+   ship ZERO embedded animation clips — so a template body
+   loaded without this remap gets no T3 bank (t3anims.js
+   analyzeRig returns null: RIG_REQUIRED unmet) and no
+   embedded Idle, and stands in its bind pose: the T-pose
+   the handoff doc describes. With the remap, the same
+   hierarchy-adaptive retarget every other fighter uses
+   (t3anims.js analyzeRig: chest = lowest common ancestor
+   of the arms = spine03; spine01/02 take slerp drivers
+   between hips and chest; neck takes the chest driver)
+   binds the jin fallback bank (fighter.js bankIdFor) onto
+   the template rig, and the fighter animates.
+
+   Mapping, derived from the GLB itself (hierarchy +
+   measured rest positions, technician.glb): pelvis is the
+   sole parent of both thighs and the spine chain; spine03
+   is the parent of both clavicles and the neck; the left
+   hand sits at +X and the toes point +Z, so the rig is
+   already in the game's canonical side/facing (no side
+   swap, no facing flip — analyzeRig measures both and
+   agrees: swapLR false, feet cue +Z). Twist bones
+   (thigh_twist_*, calf_twist_*, upperarm_twist_*,
+   lowerarm_twist_*) and breast bones are left unrenamed:
+   they are children of driven bones, so they ride their
+   parent's motion at rest local rotation, exactly like
+   Vega's unrenamed intermediates.
+
+   No bind-frame conversion (unlike Vega/Slice): the T3
+   retarget rebuilds every clip from the decoded frames +
+   BOTH rest poses, so it adapts to MB-Lab's authored
+   rest locals; the bind pose is already upright, Y-up,
+   feet at y~0 (pelvis rest y 0.889, head 1.652), so no
+   origin lift is needed either (groundY in _ingest
+   still lifts the instance if a re-export ever sinks it).
+
+   Scope, same signature guard as Vega/Slice: applies
+   ONLY when the model URL is a Creation Suite template
+   mesh AND every MB-Lab source name is present AND none
+   of the T3 target names already exists (a model that
+   is already T3-named, or a different rig, is never
+   touched). Exported for the fight proof test.
+   =========================================================== */
+export const MB_LAB_T3_BONE_REMAP = {
+  root: 'Root',
+  pelvis: 'Hips',
+  spine01: 'Spine',
+  spine02: 'Spine1',
+  spine03: 'Chest',
+  neck: 'Neck',
+  head: 'Head',
+  clavicle_L: 'LeftShoulder',
+  upperarm_L: 'LeftArm',
+  lowerarm_L: 'LeftForeArm',
+  hand_L: 'LeftHand',
+  thigh_L: 'LeftUpLeg',
+  calf_L: 'LeftLeg',
+  foot_L: 'LeftFoot',
+  toes_L: 'LeftToeBase',
+  clavicle_R: 'RightShoulder',
+  upperarm_R: 'RightArm',
+  lowerarm_R: 'RightForeArm',
+  hand_R: 'RightHand',
+  thigh_R: 'RightUpLeg',
+  calf_R: 'RightLeg',
+  foot_R: 'RightFoot',
+  toes_R: 'RightToeBase',
+};
+
+export function remapMblabBones(fighterId, model) {
+  const url = MODEL_URLS[fighterId];
+  if (!url || !url.startsWith('../customization/templates/meshes/')) return false;
+  const byName = {};
+  model.traverse((o) => { if (o.isBone) byName[o.name] = o; });
+  for (const src of Object.keys(MB_LAB_T3_BONE_REMAP)) {
+    if (!byName[src]) return false;
+  }
+  for (const dst of Object.values(MB_LAB_T3_BONE_REMAP)) {
+    if (byName[dst]) return false;
+  }
+  for (const [src, dst] of Object.entries(MB_LAB_T3_BONE_REMAP)) {
+    byName[src].name = dst;
+  }
+  console.log(`[WH] ${fighterId}: MB-Lab rig remapped to T3 bone names (23 joints renamed)`);
+  return true;
+}
+
 // Creation Suite Pass: let baked customizations override base model URLs
 // before anything loads them. Guarded — any registry problem leaves
 // MODEL_URLS exactly as authored above.
@@ -1112,7 +1227,7 @@ function feetFacingCue(root) {
     if (!feet.length && o.skeleton) {
       for (const b of o.skeleton.bones) {
         const n = b.name.replace(/^mixamorig:?/, '').replace(/_\d+$/, '');
-        if (/^(Left|Right)Foot$|^Bip0*1_[LR]_Foot$|^[LR]_Foot$/.test(n)) {
+        if (/^(Left|Right)Foot$|^Bip0*1_[LR]_Foot$|^[LR]_Foot$|^foot_[LR]$/.test(n)) {
           feet.push(new THREE.Vector3().setFromMatrixPosition(new THREE.Matrix4().multiplyMatrices(inv, b.matrixWorld)));
         }
       }
@@ -1461,9 +1576,13 @@ class AssetManager {
      priority lane — any user-initiated load aborts them and takes the pipe.
      'custom' only warms when a custom fighter actually exists (main.js
      passes hasCustom) — 2.2MB most sessions never need. */
-  preloadBaseIdle(hasCustom = false) {
+  preloadBaseIdle(hasCustom = false, customModelId = null) {
     const ids = ['pantera', 'demonio']; // steve-fox removed: no fighter falls back to it (owner 2026-10-23)
-    if (hasCustom) ids.push('custom');
+    // Phase 4b: warm the created fighter's TEMPLATE model, not the
+    // legacy Soldier key — warming the wrong 2 MB body wastes the
+    // phone connection the fight load then needs. Falls back to
+    // 'custom' when the caller has no resolved template model.
+    if (hasCustom) ids.push(customModelId || 'custom');
     const ric = (typeof window !== 'undefined' && window.requestIdleCallback)
       ? window.requestIdleCallback.bind(window)
       : (fn) => setTimeout(fn, 1200);
@@ -1510,6 +1629,11 @@ class AssetManager {
     // dict and mixer are built from it, so T3 clips +
     // procedural IK bind. The source gltf is untouched.
     const sliceRemapped = remapSliceBones(fighterId, inner);
+    // FOREIGN-RIG REMAP (MB-Lab templates only, see MB_LAB_T3_BONE_REMAP
+    // above): same contract as the Vega/Slice remaps — rename the
+    // cloned instance's core joints to the T3 names BEFORE the bones
+    // dict and mixer are built from it. The source gltf is untouched.
+    const mblabRemapped = remapMblabBones(fighterId, inner);
     if ((this.facing[fighterId] || 1) < 0) inner.rotation.y = Math.PI;
     const gy = this.groundY[fighterId] || 0;
     if (Math.abs(gy) > 0.03) inner.position.y = -gy; // feet on the floor
@@ -1564,15 +1688,19 @@ class AssetManager {
     model.traverse((o) => {
       if (o.isBone) bones[o.name.replace(/^mixamorig:?/, '')] = o;
     });
-    if (vegaRemapped || sliceRemapped) {
+    if (vegaRemapped || sliceRemapped || mblabRemapped) {
       // Mixamo-spelling aliases for fighter.js's procedural layer,
       // which reads bones.Spine1 (hurt capsule) and bones.Spine2
       // (attack origin) — Vega's and Slice's 3-bone torsos have no
       // separate Spine1/Spine2 joints. Dict aliases ONLY: node
       // names (and therefore mixer binding + skinning) are
-      // unaffected.
-      if (bones.Spine) bones.Spine1 = bones.Spine;
-      if (bones.Chest) bones.Spine2 = bones.Chest;
+      // unaffected. Aliases fill ONLY missing entries: the MB-Lab
+      // remap already provides a real Spine1 (spine02), and
+      // overwriting it with Spine (spine01) would collapse the
+      // torso chain — the pre-Phase-4b unguarded form did exactly
+      // that for any rig that carried its own Spine1.
+      if (!bones.Spine1 && bones.Spine) bones.Spine1 = bones.Spine;
+      if (!bones.Spine2 && bones.Chest) bones.Spine2 = bones.Chest;
     }
 
     const mixer = new THREE.AnimationMixer(model);
