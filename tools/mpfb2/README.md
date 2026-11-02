@@ -75,3 +75,35 @@ portable Blender 4.2+ for the live path. Nothing large is committed.
   honestly and offers the data-path bake instead).
 - Every option works: sliders drive the preview today; the live job runs
   the real plugin where installed.
+
+
+## Base family registry — selectable bases (2026-11-02)
+
+The 6 MPFB2 macro bases are a selectable family in the creation
+suite, not just slider values:
+
+- Registry: `tools/creation-suite/bases.json` (family `mpfb2`).
+- Selector: `python3 tools/mpfb2/select_base.py list|show|job|fighter <id>`
+  — `job` writes a suite job spec (`tool: "mpfb2-live"`) runnable with
+  `python3 tools/suite-jobs/run_job.py --spec <spec>`; `fighter` writes
+  the `F.mpfb2` fighter fragment.
+- Live runner: `tools/mpfb2/run_mpfb2_job.py`. Before this PR,
+  `tools/suite-jobs/run_job.py` already dispatched `tool: "mpfb2-live"`
+  to that path, but the file did not exist — the dispatch was broken.
+  This PR creates it, following MPFB2's own `script_samples/`
+  (HumanService.create_human, HumanObjectProperties macro values,
+  TargetService.reapply_macro_details, optional game_engine /
+  rigify.human rig). Macro values are 0..1; gender 0.0 = female,
+  1.0 = male (MPFB2 docs/entities/objectproperties.md).
+- Proof: `python3 tools/mpfb2/test_select_base.py` (pure Python, no
+  Blender; see `tools/mpfb2/MPFB2-PROOF-20261102.md`).
+
+What is NOT shipped here: no baked MPFB2 meshes. The `base_mesh`
+paths in bases.json are the jobs' output paths, not existing files.
+A bake needs the vendor checkout (`bash tools/mpfb2/fetch-mpfb2.sh
+--with-blender`) and Blender 4.2+, and is the next run — not claimed
+in this PR.
+
+Licence reminder: MPFB2 code GPL-3.0, core base assets CC0. These
+bases are the licence-clean alternative to MB-Lab's AGPL bases. The
+CC0 label is for base data only.
