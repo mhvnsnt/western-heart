@@ -117,3 +117,15 @@ test('EDIT lists WH fighters by their WH names, never the source model folder na
   assert.match(s, /function rosterName\(f\)/);
   assert.ok(!/\$\{esc\(f\.fighter_name\)\}/.test(s), 'roster cards never print the folder name');
 });
+
+test('the live suite imports three.js from the game\'s own vendor folder (the one the live build ships)', () => {
+  // 2026-11-02: the import map pointed at customization/create-fighter/vendor/, which the size-capped live build
+  // never shipped (GLTFLoader 404), so the live suite failed before it started. The game's vendor copy is the same r160.
+  const html = src('customization/creation-suite-ui/index.html');
+  const map = JSON.parse(/<script type="importmap">([\s\S]*?)<\/script>/.exec(html)[1]).imports;
+  assert.equal(map.three, '../../game/vendor/three.module.js');
+  assert.equal(map['three/addons/'], '../../game/vendor/addons/');
+  for (const f of ['game/vendor/three.module.js', 'game/vendor/addons/loaders/GLTFLoader.js']) {
+    assert.ok(bytes(f).length > 1000, f + ' is in the repo');
+  }
+});
