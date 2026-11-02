@@ -4,6 +4,38 @@
   {
    "bases": [
     {
+     "base_mesh": "customization/templates/meshes/charmorph-vitruvian.glb",
+     "charmorph": {
+      "character": "vitruvian",
+      "rig": "rigify"
+     },
+     "gender": "unspecified",
+     "id": "vitruvian",
+     "job": {
+      "out": "customization/templates/meshes/charmorph-vitruvian.glb",
+      "params": {
+       "character": "vitruvian"
+      },
+      "tool": "charmorph"
+     },
+     "name": "Vitruvian"
+    }
+   ],
+   "blender": "not pinned \u2014 CharMorph 0.4 targets Blender 4.4 per upstream; WH 4.0.2 compatibility is NOT verified; the job fails at addon/character lookup if it does not run \u2014 see tools/charmorph/README.md",
+   "fetch": "bash tools/charmorph/fetch-charmorph.sh (then download Vitruvian in Blender \u2014 see README)",
+   "id": "charmorph",
+   "license_base_data": "CC0",
+   "license_code": "see license.txt in the CharMorph checkout (per-base licences differ)",
+   "license_note": "Only the Vitruvian base is wired in this family, and it is CC0. CharMorph's other bases are CC-BY (Antonia, Reom) or AGPL (MB-Lab base) and are NOT in this family \u2014 do not use this family's CC0 label for them, and do not select them through this family's selector (it rejects non-Vitruvian characters).",
+   "name": "CharMorph \u2014 Vitruvian",
+   "runner": "tools/charmorph/run_charmorph_job.py",
+   "selector": "tools/charmorph/select_base.py",
+   "tool": "charmorph",
+   "upstream": "github.com/Upliner/CharMorph"
+  },
+  {
+   "bases": [
+    {
      "base_mesh": "customization/templates/meshes/super-heavyweight.glb",
      "gender": "male",
      "id": "super-heavyweight",
