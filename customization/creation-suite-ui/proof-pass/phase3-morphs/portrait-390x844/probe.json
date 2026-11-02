@@ -1,0 +1,328 @@
+{
+ "viewport": [
+  390,
+  844
+ ],
+ "template": "powerhouse",
+ "steps": [
+  {
+   "name": "template-loaded",
+   "url": "../../customization/templates/meshes/powerhouse.glb",
+   "wired": 84,
+   "catalog": 84
+  },
+  {
+   "name": "layout:01-appearance",
+   "crumb": "NEW FIGHTER > Attire 1 > BODY",
+   "sub": "Appearance — body and face",
+   "overlaps": [],
+   "offscreen": [],
+   "smallTargets": []
+  },
+  {
+   "name": "layout:02-body-chest",
+   "crumb": "NEW FIGHTER > Attire 1 > BODY > Body Morphing > Chest",
+   "sub": "Body Morphing — Chest",
+   "overlaps": [],
+   "offscreen": [],
+   "smallTargets": []
+  },
+  {
+   "name": "layout:03-face-jaw",
+   "crumb": "NEW FIGHTER > Attire 1 > BODY > Face Deformation > Jaw",
+   "sub": "Face Deformation — Jaw",
+   "overlaps": [],
+   "offscreen": [],
+   "smallTargets": []
+  },
+  {
+   "name": "layout:04-face-ears",
+   "crumb": "NEW FIGHTER > Attire 1 > BODY > Face Deformation > Ears",
+   "sub": "Face Deformation — Ears",
+   "overlaps": [],
+   "offscreen": [],
+   "smallTargets": []
+  },
+  {
+   "name": "slider-checks",
+   "checks": [
+    {
+     "id": "b_chest",
+     "value": 1,
+     "shown": "100",
+     "influences": [
+      [
+       1,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     "vertex": 2621,
+     "moved_m": 0.02725
+    },
+    {
+     "id": "b_belly",
+     "value": 0.8,
+     "shown": "80",
+     "influences": [
+      [
+       0.8,
+       0
+      ],
+      [
+       0.8,
+       0
+      ],
+      [
+       0.8,
+       0
+      ],
+      [
+       0.8,
+       0
+      ],
+      [
+       0.8,
+       0
+      ],
+      [
+       0.8,
+       0
+      ],
+      [
+       0.8,
+       0
+      ],
+      [
+       0.8,
+       0
+      ],
+      [
+       0.8,
+       0
+      ],
+      [
+       0.8,
+       0
+      ]
+     ],
+     "vertex": 4103,
+     "moved_m": 0.10063
+    },
+    {
+     "id": "f_jaw_w",
+     "value": 1,
+     "shown": "100",
+     "influences": [
+      [
+       1,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     "vertex": 425,
+     "moved_m": 0.0093
+    },
+    {
+     "id": "f_nose_w",
+     "value": -1,
+     "shown": "-100",
+     "influences": [
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       1
+      ]
+     ],
+     "vertex": 498,
+     "moved_m": 0.00567
+    },
+    {
+     "id": "f_ear_angle",
+     "value": 0.6,
+     "shown": "60",
+     "influences": [
+      [
+       0.6,
+       0
+      ],
+      [
+       0.6,
+       0
+      ],
+      [
+       0.6,
+       0
+      ],
+      [
+       0.6,
+       0
+      ],
+      [
+       0.6,
+       0
+      ],
+      [
+       0.6,
+       0
+      ],
+      [
+       0.6,
+       0
+      ],
+      [
+       0.6,
+       0
+      ],
+      [
+       0.6,
+       0
+      ],
+      [
+       0.6,
+       0
+      ]
+     ],
+     "vertex": 1485,
+     "moved_m": 0.00341
+    }
+   ]
+  },
+  {
+   "name": "saved",
+   "record": {
+    "body_type": "Brawler",
+    "skin_tone": "#c98d5e",
+    "template": "powerhouse",
+    "height": 1,
+    "morph_targets": {
+     "b_chest": 1,
+     "b_belly": 0.8,
+     "f_jaw_w": 1,
+     "f_nose_w": -1,
+     "f_ear_angle": 0.6
+    },
+    "frame": {}
+   },
+   "stored": {
+    "b_chest": 1,
+    "b_belly": 0.8,
+    "f_jaw_w": 1,
+    "f_nose_w": -1,
+    "f_ear_angle": 0.6
+   }
+  }
+ ],
+ "errors": [],
+ "pass": {
+  "sliders": true,
+  "layout": true,
+  "save": true,
+  "noPageErrors": true
+ }
+}
