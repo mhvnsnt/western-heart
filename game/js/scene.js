@@ -17,6 +17,8 @@ import { fightCameraY } from './fight-camera-math.js';
 // "luminous darkness" — each land gets its own grade.
 import { applyGrade } from './lighting-rig.js';
 
+const NEAR_CLIP_M = 2.5; // floor rings closer than this in front of the camera are not drawn (see the constructor)
+
 export class Arena {
   constructor(canvas, stageId = 'shrine') {
     this.isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
@@ -28,6 +30,14 @@ export class Arena {
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1.45;
+    /* NEAR-CAMERA CLIP for decorative floor rings (2026-11-02): in portrait the fight camera pulls back to fit both
+       fighters and ends up right over the near side of a stage's glowing edge ring, which then filled the bottom of the
+       phone screen behind the touch controls as a thick orange band. Meshes the stage builders flag userData.nearClip
+       are cut by a plane NEAR_CLIP_M in front of the camera (updated every render), so only the stretch between the
+       camera and the fight disappears and the far edge keeps glowing behind the fighters. */
+    this.renderer.localClippingEnabled = true;
+    this._nearClip = new THREE.Plane(new THREE.Vector3(0, 0, -1), 0);
+    this._nearClipOn = false;
 
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(45, 1, 0.1, 200);
@@ -88,6 +98,12 @@ export class Arena {
         if (this._stage.skyTex) this._stage.skyTex.dispose();
       }
       this._stage = built;
+      this._nearClipOn = false;
+      built.group.traverse((o) => {
+        if (!o.userData || !o.userData.nearClip || !o.material) return;
+        for (const m of [].concat(o.material)) m.clippingPlanes = [this._nearClip];
+        this._nearClipOn = true;
+      });
       this.scene.add(built.group);
       this.scene.background = built.skyTex;
       this.scene.fog = built.fog;
@@ -234,5 +250,16 @@ export class Arena {
     this.camera.aspect = w / h; this.camera.updateProjectionMatrix();
   }
 
-  render() { this.composer.render(); }
+  render() {
+    if (this._nearClipOn) {
+      const f = this._ncF || (this._ncF = new THREE.Vector3()), p = this._ncP || (this._ncP = new THREE.Vector3());
+      this.camera.getWorldDirection(f); f.y = 0;
+      if (f.lengthSq() > 1e-6) {
+        f.normalize();
+        p.copy(this.camera.position).addScaledVector(f, NEAR_CLIP_M);
+        this._nearClip.setFromNormalAndCoplanarPoint(f, p);
+      }
+    }
+    this.composer.render();
+  }
 }
