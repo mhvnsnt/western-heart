@@ -17,6 +17,23 @@ import { PLACEHOLDER_RE, authoredFlat } from './material-resolve.js';
 const broken = new Set(Object.keys(MATERIAL_STATUS.quarantine || {}));
 const reasons = { ...(MATERIAL_STATUS.quarantine || {}) };
 
+// RUNTIME-TINTED TEMPLATE EXEMPTION (owner decision 2026-11-02, option A:
+// "Narrow the gate rule for runtime-tinted template bodies" — NOT a rebake).
+// Mirrors tools/assets/material_gate.mjs: the 9 Creation Suite template
+// bodies (customization/templates/meshes/*.glb) ship MB-Lab materials with
+// no baked base-colour texture; their skin colour is applied at runtime by
+// createInstance (custom fighter, colorize: true, tintStrength 0.3). An
+// "untextured"-only verdict on exactly these keys is therefore usable, not
+// broken. Missing or placeholder verdicts are NEVER exempted, and no other
+// key is exempted.
+const RUNTIME_TINTED_TEMPLATES = new Set([
+  'custom-template-super-heavyweight', 'custom-template-powerhouse',
+  'custom-template-showman', 'custom-template-technician',
+  'custom-template-highflyer', 'custom-template-luchador',
+  'custom-template-powerhouse-w', 'custom-template-athletic-w',
+  'custom-template-striker-w',
+]);
+
 export function isModelUsable(key) { return !broken.has(key); }
 export function materialReason(key) { return reasons[key] || null; }
 export function donorFor(key) { return (MATERIAL_STATUS.resolve || {})[key] || null; }
@@ -73,10 +90,12 @@ export async function resolveModelMaterials(key, gltf, getDonorGltf) {
     }
   });
   const bad = counts.missing + counts.placeholder + counts.untextured;
-  if (bad) {
+  const runtimeTinted = RUNTIME_TINTED_TEMPLATES.has(key) &&
+    counts.missing === 0 && counts.placeholder === 0 && counts.untextured > 0;
+  if (bad && !runtimeTinted) {
     broken.add(key);
     reasons[key] = reasons[key] || Object.entries(counts).filter(([k, n]) => k !== 'ok' && n).map(([k, n]) => `${n} ${k}`).join(', ');
     console.error(`[WH] material gate: ${key} blocked (${reasons[key]})`);
   }
-  return { key, counts, resolvedFrom: plan ? plan.donor : null, usable: !bad };
+  return { key, counts, resolvedFrom: plan ? plan.donor : null, usable: !bad || runtimeTinted, runtimeTinted };
 }
