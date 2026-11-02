@@ -971,7 +971,7 @@ function buildShrine(g, def, api) {
   // ember trim ring
   const trim = new THREE.Mesh(new THREE.TorusGeometry(8.9, 0.09, 12, 8),
     new THREE.MeshBasicMaterial({ color: 0xff7a3c }));
-  trim.rotation.x = Math.PI / 2; trim.rotation.z = Math.PI / 8; trim.position.y = 0.02; g.add(trim);
+  trim.rotation.x = Math.PI / 2; trim.rotation.z = Math.PI / 8; trim.position.y = 0.02; trim.userData.nearClip = true; g.add(trim);
   // dark wood temple panels
   const woodTex = makeWoodTexture();
   const woodMat = new THREE.MeshStandardMaterial({ map: woodTex, roughness: 0.9, metalness: 0, color: 0x9a7a62 });
@@ -1221,7 +1221,7 @@ function buildParFang(g, def, api) {
   }
   const ring = new THREE.Mesh(new THREE.TorusGeometry(7.6, 0.07, 8, 64),
     new THREE.MeshBasicMaterial({ color: 0xc0a060 }));
-  ring.rotation.x = Math.PI / 2; ring.position.y = 0.03; g.add(ring);
+  ring.rotation.x = Math.PI / 2; ring.position.y = 0.03; ring.userData.nearClip = true; g.add(ring);
   const N = api.isMobile ? 30 : 60;
   const dust = new THREE.InstancedMesh(new THREE.SphereGeometry(0.05, 6, 4),
     new THREE.MeshBasicMaterial({ color: 0xa09ab0, transparent: true, opacity: 0.5 }), N);
@@ -1439,7 +1439,7 @@ async function buildT3Retro(g, def, api) {
   // arena edge markers in the stage palette
   const edge = new THREE.Mesh(new THREE.TorusGeometry(8.9, 0.08, 10, 48),
     new THREE.MeshBasicMaterial({ color: _hex(def.lighting.sun[0]) }));
-  edge.rotation.x = Math.PI / 2; edge.position.y = 0.02; g.add(edge);
+  edge.rotation.x = Math.PI / 2; edge.position.y = 0.02; edge.userData.nearClip = true; g.add(edge);
   return { updaters, skyTex, fog };
 }
 
@@ -1548,7 +1548,7 @@ async function buildNoMercy(g, def, api) {
       // arena edge marker in the stage palette
       const edge = new THREE.Mesh(new THREE.TorusGeometry(def.dims.wallDistance, 0.07, 10, 48),
         new THREE.MeshBasicMaterial({ color: _hex(def.lighting.sun[0]) }));
-      edge.rotation.x = Math.PI / 2; edge.position.y = 0.02; g.add(edge);
+      edge.rotation.x = Math.PI / 2; edge.position.y = 0.02; edge.userData.nearClip = true; g.add(edge);
   } else if (def.obj) {
     /* WWF No Mercy arenas (teardown-integration 2026-10-19): real assembled
        arena geometry from teardown/wwf-no-mercy/arenas/ (AkiModel pieces grouped
