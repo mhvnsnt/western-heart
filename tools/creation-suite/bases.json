@@ -256,7 +256,7 @@
      "template_id": "striker-w"
     }
    ],
-   "blender": "4.0.2 (pipeline standard; MB-Lab 1.8.1 needs Blender 4.0+; 5.x compatibility is NOT verified \u2014 see tools/mb-lab/README.md)",
+   "blender": "4.0.2 for MB-Lab jobs (verified path); 5.2.3 is the WH rig/render standard, NOT verified for MB-Lab \u2014 see tools/mb-lab/README.md (split documented 2026-11-02)",
    "fetch": "bash tools/mb-lab/fetch-mb-lab.sh",
    "id": "mb-lab",
    "license_base_data": "AGPL-3.0",
