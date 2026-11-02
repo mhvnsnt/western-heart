@@ -1132,6 +1132,8 @@ export class Fighter {
     const cands = [];
     if (btn) cands.push(btn);
     for (let i = steps.length - 1; i >= 1; i--) cands.push(steps.slice(0, i).join(','));
+    // final resort, always the step's class: the fighter's own standard throws for a throw step, its own jabs for a strike
+    cands.push(...(wantGrab ? ['1+3', '2+4'] : ['1', '2']));
     const clips = this._t3 && this._t3.clips;
     const classOk = (p) => {
       const c = clips && clips[p.name];
