@@ -1118,28 +1118,43 @@ export class Fighter {
     return { steps: plan.steps, unmapped: unmappedFor(plan.steps),
       playName: r.playName, playBank: r.playBank, playRow: r.playRow, why: r.why };
   }
-  /* The clip this fighter plays for the final step's button(s) pressed on their own ('f+2,1,1' -> '1',
-     'd+3+4,4,1,4,4,1' -> '1', 'b+1+2,1+2' -> '1+2', 'WS+2,2' -> '2'), through the normal plan tiers for that
-     standalone move (its real T7 clip, bank row ...): always this fighter's own animation. Timed on the STEP's own
-     frame data when it has any. Used only when a string step has no clip at all (the T-pose case). */
-  _ownButtonPlan(attackName, stepMove) {
+  /* Last-resort clip for a string step that has none (the T-pose case): THIS fighter's own clip for, in order,
+     the final step's button(s) pressed on their own ('f+2,1,1' -> its '1') and then the string's own earlier steps,
+     longest first ('b+1+2,1+2' -> 'b+1+2'), through the normal plan tiers: always its own animation. The clip must be
+     the step's class (the strike / throw guard of test/attack-anim.test.mjs): a strike step never borrows a throw
+     clip, a throw step never a strike clip. Timed on the STEP's own frame data when it has any. */
+  _ownButtonPlan(attackName, stepMove, wantGrab) {
     if (this._ownBtnGuard) return null;   // never recurse through another step plan
-    const last = String(attackName || '').split(/[,~:]/).pop().replace(/^[A-Za-z_][A-Za-z0-9_]*\./, '');
+    const name = String(attackName || '');
+    const steps = name.split(',');
+    const last = steps[steps.length - 1].replace(/^[A-Za-z_][A-Za-z0-9_]*\./, '');
     const btn = ((last.match(/[1-4](?:\+[1-4])*\*?$/) || [])[0] || '').replace(/\*$/, '');
-    if (!btn) return null;
-    const key = resolveMoveKey(this._movesetId, btn);
-    if (!key || key === attackName) return null;
-    const m = getRealMove(this._movesetId, key);
-    if (!m) return null;
-    this._ownBtnGuard = true;
-    let p = null;
-    try { p = this._attackClipPlan(m, key); } finally { this._ownBtnGuard = false; }
-    if (!p || !p.name) return null;
-    const S = stepMove && Number.isFinite(stepMove.startup) ? stepMove.startup : 0;
-    const A = stepMove && Number.isFinite(stepMove.active) ? stepMove.active : 0;
-    const R = stepMove && Number.isFinite(stepMove.recovery) ? stepMove.recovery : 0;
-    const timing = p.timing && S + A + R > 0.05 ? { ...p.timing, S, A, R } : p.timing;
-    return { ...p, timing, from: key };
+    const cands = [];
+    if (btn) cands.push(btn);
+    for (let i = steps.length - 1; i >= 1; i--) cands.push(steps.slice(0, i).join(','));
+    const clips = this._t3 && this._t3.clips;
+    const classOk = (p) => {
+      const c = clips && clips[p.name];
+      if (!c) return !!p.grab === !!wantGrab;
+      const h = c.userData && c.userData.hit;
+      return wantGrab ? !(h && h[0] > 0 && !h[4]) : !clipIsThrow(c);
+    };
+    for (const cand of cands) {
+      const key = resolveMoveKey(this._movesetId, cand);
+      if (!key || key === name) continue;
+      const m = getRealMove(this._movesetId, key);
+      if (!m) continue;
+      this._ownBtnGuard = true;
+      let p = null;
+      try { p = this._attackClipPlan(m, key); } finally { this._ownBtnGuard = false; }
+      if (!p || !p.name || !classOk(p)) continue;
+      const S = stepMove && Number.isFinite(stepMove.startup) ? stepMove.startup : 0;
+      const A = stepMove && Number.isFinite(stepMove.active) ? stepMove.active : 0;
+      const R = stepMove && Number.isFinite(stepMove.recovery) ? stepMove.recovery : 0;
+      const timing = p.timing && S + A + R > 0.05 ? { ...p.timing, S, A, R } : p.timing;
+      return { ...p, timing, from: key };
+    }
+    return null;
   }
   _attackClipPlan(move, attackName) {
     if (!this._t3 || !this._t3.clips) return null;
@@ -1219,7 +1234,7 @@ export class Fighter {
         // The step now presents with THIS FIGHTER's own clip for the step's button(s) pressed on their own
         // ('f+2,1,1' -> its '1', 'b+1+2,1+2' -> its '1+2'), resolved through the normal tiers: a real clip of its own
         // moveset, never authored, never another fighter's. The UNMAPPED log above still reports the data gap.
-        const own = this._ownButtonPlan(attackName, move);
+        const own = this._ownButtonPlan(attackName, move, grab0);
         if (own) return { ...own, kind: 'step-plan', why: `step plan unmapped — own '${own.from}' clip (no row substituted)`, steps: sp.steps, unmapped: sp.unmapped, limb: limb0, level: level0, grab: grab0, rejected: [], stepBank: sp.playBank, stepRow: sp.playRow };
         return { kind: 'step-plan', name: null, steps: sp.steps, unmapped: sp.unmapped, limb: limb0, level: level0, grab: grab0, timing: null, rejected: [], stepBank: sp.playBank, stepRow: sp.playRow };
       }
