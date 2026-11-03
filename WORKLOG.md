@@ -4391,3 +4391,24 @@ Branch `claude/cs-phase3-morph-targets`, draft PR #1489 (stacked on #1486). Orde
   `tools/mpfb2/hair/proof/proof_face.png`, `proof_long.png`. Hair totals: 332 legacy (20 wired) + 10 fitted.
 - Not proven: textures/look in a browser (Node cannot decode images; WebGL draws stall here). Long hair is rigid on
   the head bone (clips shoulders on big head turns). Deletions: none.
+
+## 2026-11-02 — Creation suite EYES phase: fitted left/right eyes on the 9 templates (draft PR #1526, stacked on #1525)
+
+**Owner instruction (verbatim):** "find a way to use blender, show me it all, and do all the rest"
+
+- **Sockets measured, not guessed.** Templates have no eye bones; each carries MB-Lab's own eyeball primitives with the
+  eye-slider morphs baked in. `tools/eyes/build_eye_sockets.mjs` measures sclera centre/radius, iris gaze axis and
+  per-slider deltas (head-bone-local) through the game's instance path -> `customization/parts/eyes/eye-sockets.json`.
+- **Runtime.** `game/js/fitted-eyes.js` (shared suite + game): eyeball.glb cloned per side onto the Head bone, scaled
+  to the socket, turned to the gaze axis; body eyes hidden; iris colour / sclera tint / pupil size / lens texture
+  (eye-library PNGs, planar iris UVs). eyeball.glb's iris + pupil discs sit inside the sclera cap (found in the proof
+  render) — lifted 0.9 / 0.5 mm at attach.
+- **Suite.** PARTS > Eyes > "EYES — fitted to every body" (4 generic-named types), IRIS COLOR / SCLERA / PUPIL SIZE
+  rows, saved per attire + in customization.json; eyes re-place on the eye sliders live.
+- **Game.** `custom-fighter.js` `fittedEyes`; `fighter.js _attachFittedEyes` on created fighters (custom-template path).
+- **Proof.** `node --test test/fitted-eyes.test.mjs` 11/11: on all 9 templates both eyes load on Head, mirror-symmetric
+  (< 0.5 mm), centred in the body's own sockets (0.00-0.01 mm), sclera within 4 % of the socket radius, rigid head-follow
+  error < 1e-15 m (35 deg yaw + 20 deg pitch), slider follow error <= 0.01 mm, styling applied. Software renders:
+  `tools/eyes/proof/` (6 scenes). `test/fitted-parts.test.mjs` still 6/6.
+- **Blender:** not available on this box (aarch64; no Blender / bpy build) — measured on the same MB-Lab bake data in
+  three.js and rendered in software; see tools/eyes/README.md. Deletions: none.

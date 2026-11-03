@@ -180,6 +180,11 @@ overall: 4,939 / 7,424 before tattoos (66.5%); tattoos add 99 non-pending.
   GLBs are POINTS primitives with unproven vertex order (~14–15 KB
   each), not wearable mesh — so they are NOT claimed as wired.
   Conversion to real mesh topology is still owed.
+- Eyes (UPDATE 2026-11-02, EYES phase PR): `eyeball.glb` is now WIRED as fitted left + right eyes on all 9
+  template bodies (measured sockets, Head bone, follow the eye sliders), 4 non-pending eye types, iris / sclera /
+  pupil options saved per attire, applied on created fighters in game. See "EYES phase" section below.
+  `eyelash.glb` stays unwired (superseded by the fitted lashes of the HAIR phase). Legacy figures that follow
+  are unchanged:
 - Eyes: eye slot 13 total, 6 pending, 3 real placeable meshes
   (spidergirl lenses + 2 CC0 brows) + 3 eye-library textures. Real
   `customization/parts/eyes/eyeball.glb` (sclera/iris/pupil) and
@@ -209,3 +214,23 @@ hair shells (cut from the CC0 MakeHuman base mesh; the pack has no beards). One 
   must be checked — only CC0 system assets used here); browser look check of the textures; long-hair secondary
   motion (rigid on the head bone today); fitted parts for MPFB2 bases (no baked MPFB2 mesh ships yet) and for
   roster-mode bodies (they fall back to the static head-socket attach).
+
+## EYES phase — 2026-11-02 (draft PR #1526, branch `claude/cs-eyes`, stacked on the HAIR phase PR #1525)
+
+Status: **wired (draft, not merged)**. WWE 2K Create-A-Superstar Face > Eyes options ("Eyes (color, shape)",
+`customization/wwe2k-caw/CAW-SUITE-BREAKDOWN.md`) on the Tekken 7 EYES slot:
+
+- Eye type (catalog, `library: wh-fitted-eyes`): Natural Eyes, Gold Iris, Ice Blue Iris, Amber Striated Iris (the
+  three lens types use the eye-library iris textures already in the repo). Iris colour (12 swatches; lens tint on
+  lens types), sclera tint (6), pupil size (60-140 %). Eye shape / position = the `f_eye_*` face sliders.
+- Placement: `customization/parts/eyes/eye-sockets.json` — per template, per side, measured from the template's own
+  eyeball geometry + eye-slider morph deltas (`tools/eyes/build_eye_sockets.mjs`), head-bone-local. One
+  `eyeball.glb` clone per side on the Head bone, scaled to the socket, turned to the measured gaze axis; the body's
+  own eye primitives are hidden under it.
+- Suite: PARTS > Eyes > "EYES — fitted to every body"; detail panel IRIS COLOR / SCLERA / PUPIL SIZE rows; saved per
+  attire (`equipped.EYES`, `colors.iris`, `colors.sclera`, `eyes.pupil`) and in customization.json.
+- Game: `custom-fighter.js` -> `fittedEyes`; `fighter.js _attachFittedEyes` (Phase 4b custom-template path).
+- Proof: `test/fitted-eyes.test.mjs` (numeric probe on all 9 templates), `tools/eyes/proof/` (software render).
+- Still owed: browser look check of the lens textures (Node cannot decode images; WebGL draws stall on the agent box);
+  eye glow / heterochromia (separate L/R colours) not offered; roster-mode bodies keep their own eyes; the 6
+  pending legacy eye rows and the legacy entries with source-character names in their catalog names are untouched.
