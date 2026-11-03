@@ -4367,3 +4367,27 @@ Branch `claude/cs-phase3-morph-targets`, draft PR #1489 (stacked on #1486). Orde
 - Follow-ups: fights still load the stock model (next: Phase 4 branch `claude/cs-phase4-custom-fighter-in-game`);
   168 targets ~50 MB GPU on the main mesh.
 - Deletions: none.
+
+## 2026-11-02 — Creation suite HAIR phase: 21 template-fitted CC0 hair / brows / lashes / beards (HAIR LANE)
+
+**Owner instruction (verbatim):** "body and face sliders first, then faces/parts, hair, morphing (MPFB, Google GNM), clothing, accessories, tattoos, scars, eyes, and finally movesets" + "update urself on the work and continue".
+
+- **Assets (CC0).** MakeHuman system assets pack (`makehuman_system_assets_cc0.zip`, every entry `"license": "CC0"`):
+  10 hair (short01-04, bob01-02, long01, ponytail01, braid01, afro01), 4 eyebrows (001/003/006/010), 2 eyelashes
+  (01/02); plus 5 facial-hair shells cut from the CC0 hm08 base mesh face region (full beard, goatee, moustache,
+  chin strap, stubble — the pack has no beards). Licence record: `customization/parts/hair/mpfb2/LICENSE-CC0.txt`.
+- **Fit.** `tools/mpfb2/hair/` — MakeHuman `.mhclo` fit on hm08, then onto each of the 9 template heads (eye landmarks +
+  ICP + surface-relative height + scalp push-out), written in head-bone-local space; template face/head slider deltas
+  resampled onto each part under the same target names. 189 GLBs (gltfpack -cc, max 233 KB, 13.9 MB total incl.
+  21 shared textures). No Blender on this box (aarch64, no official Blender build): numpy/scipy + gltf-transform.
+- **Wiring.** `game/js/fitted-parts.js` (shared): suite `viewer3d.attachFitted` parents the part to the Head bone,
+  tints it, hides the template's own eyelash strip under fitted lashes; face sliders drive the parts via the same
+  `applyMorphTargets` pass. Catalog: 21 non-pending entries (`library: wh-fitted-hair`, WWE 2K Face categories
+  Hairstyle / Facial Hair / Eyebrows / Eyelashes, T7 slots 2 / 7 / 6) + PARTS tab collections + colour swatches.
+  Game: `custom-fighter.js` carries `fittedParts` (+ tints) from the saved attire; `fighter.js _attachFittedParts`
+  loads them onto the created fighter's template body at build.
+- **Proof.** `test/fitted-parts.test.mjs` 6/6 (numeric probe: every part loads, parent = Head, offsets from the eye
+  midpoint within tolerance, rigid head-follow error < 1e-15 m, `f_brow_h` moves fitted brows 2.0–3.3 mm).
+  `tools/mpfb2/hair/proof/proof_face.png`, `proof_long.png`. Hair totals: 332 legacy (20 wired) + 10 fitted.
+- Not proven: textures/look in a browser (Node cannot decode images; WebGL draws stall here). Long hair is rigid on
+  the head bone (clips shoulders on big head turns). Deletions: none.

@@ -153,6 +153,10 @@ moveset/animations — his animation correctness is a separate owed item).
 Suite catalog `customization/creation-suite-ui/data/parts-catalog.json`:
 7,523 entries after this batch (7,424 before tattoos). Geometry pending
 overall: 4,939 / 7,424 before tattoos (66.5%); tattoos add 99 non-pending.
+- Hair (UPDATE 2026-11-02, HAIR phase PR): +21 template-fitted CC0 parts, all non-pending — 10 hair, 4
+  eyebrows, 2 eyelashes, 5 facial hair — fitted to all 9 template bodies, parented to the Head bone, driven by
+  the face sliders, tintable; suite preview + created fighters in game. See "HAIR phase" section below.
+  Legacy figures that follow are unchanged:
 - Hair: 332 total, 20 wired (6.0%), 312 pending (94.0%). Pending = 156
   WMXIX hair from the converted catalog (92 `blocked_ymg_decode` + 61
   `blocked_dumy_placeholder` + 3 not converted) + 156 registry entries.
@@ -187,3 +191,21 @@ overall: 4,939 / 7,424 before tattoos (66.5%); tattoos add 99 non-pending.
   Still owed: create or cut, owner decision.
 - Face: face slot 1,828, 1,673 non-pending (mostly WMXIX MAKE_UP
   textures, 1,477 converted), 48 with glb, 155 pending.
+
+## HAIR phase — 2026-11-02 (draft PR, branch `creation-suite/hair-mpfb2-cc0-20261102`)
+
+Status: **wired (draft, not merged)**. 21 template-fitted CC0 parts in `customization/parts/hair/mpfb2/`
+(MANIFEST.json, LICENSE-CC0.txt): 10 hair, 4 eyebrows, 2 eyelashes (MakeHuman system assets, CC0) and 5 facial
+hair shells (cut from the CC0 MakeHuman base mesh; the pack has no beards). One GLB per template (9) per part.
+
+- Suite: PARTS tab collections Hairstyle / Facial Hair / Eyebrows / Eyelashes (WWE 2K22 Face-tab categories);
+  ATTIRE Tekken slots 2 HAIR, 7 FACE_HAIR, 6 FACE and the WWE "Face & Hair" region list them too. Equip ->
+  `viewer3d.attachFitted` (Head bone, identity transform), colour swatches -> `attire.colors.{hair,facial_hair,brows,lashes}`.
+  Fitted lashes hide the template's own eyelash strip.
+- Game: `custom-fighter.js` -> `fittedParts`; `fighter.js _attachFittedParts` (load at build, morphs re-applied once).
+- Tools: `tools/mpfb2/hair/` (fit_proxies.py, build_glb.mjs, catalog_entries.py; build_suite_catalog.py keeps them on
+  a rebuild). Proof: `test/fitted-parts.test.mjs`, `tools/mpfb2/hair/proof/`.
+- Still owed: the 312 legacy pending hair (WMXIX YMG decode); more MakeHuman community hair (per-asset licences
+  must be checked — only CC0 system assets used here); browser look check of the textures; long-hair secondary
+  motion (rigid on the head bone today); fitted parts for MPFB2 bases (no baked MPFB2 mesh ships yet) and for
+  roster-mode bodies (they fall back to the static head-socket attach).
