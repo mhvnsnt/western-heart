@@ -1,0 +1,6618 @@
+{
+ "schema": "wh-frame-row/1",
+ "fps": 60,
+ "fighter": "menajerii",
+ "purpose": "Exact source move list + frame data for this fighter's kit. Data table only: nothing here is shown to the player and the moveset file is not modified. Applying these numbers to the moveset is a follow-up (damage-source decision owed, docs/movesets/ROGER-BANK-AUDIT-2026-11-02.md).",
+ "animation": "pending - no source motion bank exists yet; no other character's clips are bound by this table",
+ "provenance": {
+  "primary": {
+   "name": "wavu.wiki TTT2 movelist",
+   "url": "https://wavu.wiki/t/Roger_Jr._movelist_(Tag_2)",
+   "permalink": "https://wavu.wiki/w/index.php?title=Roger_Jr._movelist_%28Tag_2%29&oldid=63304",
+   "revid": 63304,
+   "license": "CC0-1.0 (wavu.wiki)",
+   "file": "docs/t7t8-reference/frame-data-ttt2/roger_jr.wavu.json"
+  },
+  "cross_check": [
+   {
+    "name": "RBNorway TTT2 frame data via harounb/tekken-frame-data",
+    "url": "https://github.com/harounb/tekken-frame-data/tree/070fa2ceb46712c741fb3dc1ab8df0690c9a69dd/ttt2",
+    "license": "MIT (harounb/tekken-frame-data). Data originally from rbnorway.org TTT2 frame data (MadCow; translation of inatekken), which asks for credit to RBNorway.org.",
+    "file": "docs/t7t8-reference/frame-data-ttt2/roger_jr.rbnorway.json"
+   },
+   {
+    "name": "wavu.wiki Tekken 5/DR movelist (lineage)",
+    "url": "https://wavu.wiki/t/Roger_Jr._movelist_(Tekken_5)",
+    "permalink": "https://wavu.wiki/w/index.php?title=Roger_Jr._movelist_%28Tekken_5%29&oldid=63231",
+    "license": "CC0-1.0 (wavu.wiki)",
+    "file": "docs/t7t8-reference/frame-data-t5/roger_jr.wavu.json"
+   },
+   {
+    "name": "in-repo TTT2 MVLT decode (in-game move list)",
+    "file": "game/assets/ttt2/movesets/rog.json"
+   },
+   {
+    "name": "in-repo Tekken 6 PSP COM decode (command list)",
+    "file": "teardown/tekken6/movesets/t6psp-roger-moveset-v3.json",
+    "present": true
+   }
+  ],
+  "generator": "tools/frame-data/build_menajerii_source_table.py"
+ },
+ "counts": {
+  "source_rows": 114,
+  "same_move": 90,
+  "input_conflict": 12,
+  "absent": 12,
+  "rows_with_startup": 78,
+  "rows_with_block": 109,
+  "rbnorway_cross_checked": 98,
+  "ttt2_mvlt_cross_checked": 66,
+  "menajerii_moves_total": 193,
+  "menajerii_moves_not_in_source": 92,
+  "menajerii_moves_kuma_sourced": 65,
+  "conflicts_with_kuma_sourced_move": 12
+ },
+ "rows": [
+  {
+   "command": "1",
+   "hit_level": "h",
+   "damage": "9",
+   "startup": "i10",
+   "on_block": "+1",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "tags": "",
+   "transitions": [],
+   "name": "Jab",
+   "source_id": "Roger Jr-1",
+   "source_values": {
+    "input": "1",
+    "target": "h",
+    "damage": "9",
+    "startup": "i10",
+    "block": "+1",
+    "hit": "+8",
+    "ch": "+8"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "1",
+     "damage": "9",
+     "speed": "10",
+     "on_block": "+1",
+     "on_hit": "+8",
+     "on_ch": "+8"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-1",
+     "damage": "6",
+     "startup": "i8",
+     "block": "+2",
+     "hit": "+7"
+    },
+    "t6psp_com_name_present": false
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "1",
+    "current": {
+     "name": "Jab",
+     "damage": 7,
+     "startup_s": 0.167,
+     "hit_range": "high",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "1,2",
+   "hit_level": "h,h",
+   "damage": "9,13",
+   "on_block": "-1",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "tags": "",
+   "transitions": [],
+   "name": "Left Right Combo",
+   "source_id": "Roger Jr-1,2",
+   "source_values": {
+    "input": ",2",
+    "target": ",h",
+    "damage": ",13",
+    "block": "-1",
+    "hit": "+6",
+    "ch": "+6",
+    "notes": "Natural combo from 1st hit; Jail on block; Can transition to ROC with b+1+2"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "1, 2",
+     "damage": "9,13",
+     "speed": "10",
+     "on_block": "-1",
+     "on_hit": "+6",
+     "on_ch": "+6"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-1,2",
+     "damage": "6,10",
+     "startup": "",
+     "block": "-1",
+     "hit": "+6"
+    },
+    "ttt2_mvlt": {
+     "row": 0,
+     "name": "Left Right Combo",
+     "anim_ref": "ttt2:rog:row:0"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "1,2",
+    "current": {
+     "name": "Left Right Combo",
+     "damage": 10,
+     "startup_s": 0.2,
+     "hit_range": "high",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "1,2,1",
+   "hit_level": "h,h,m",
+   "damage": "9,13,24",
+   "on_block": "-7",
+   "on_hit": "+5",
+   "tags": "",
+   "transitions": [],
+   "name": "Left Right Body Blow",
+   "source_id": "Roger Jr-1,2,1",
+   "source_values": {
+    "input": ",1",
+    "target": ",m",
+    "damage": ",24",
+    "block": "-7",
+    "hit": "+5",
+    "ch": "JG",
+    "notes": "Natural combo from 1st CH; Can be delayed"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "1, 2, 1",
+     "damage": "9,13,24",
+     "speed": "10",
+     "on_block": "-7",
+     "on_hit": "+5",
+     "on_ch": "CS"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-1,2,1",
+     "damage": "6,10,10",
+     "startup": "",
+     "block": "-4",
+     "hit": "+5"
+    },
+    "ttt2_mvlt": {
+     "row": 1,
+     "name": "Left Right Body Blow",
+     "anim_ref": "ttt2:rog:row:1"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "1,2,1",
+    "current": {
+     "name": "Left Right Body Blow",
+     "damage": 18,
+     "startup_s": 0.267,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "1,2,2",
+   "hit_level": "h,h,h",
+   "damage": "9,13,32",
+   "on_block": "-7",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": "Left Right Arrow",
+   "source_id": "Roger Jr-1,2,2",
+   "source_values": {
+    "input": ",2",
+    "target": ",h",
+    "damage": ",32",
+    "block": "-7",
+    "hit": "KND",
+    "ch": "KND",
+    "notes": "Balcony Break; Natural combo from 1st CH"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "1, 2, 2",
+     "damage": "9,13,32",
+     "speed": "10",
+     "on_block": "-7",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 2,
+     "name": "Left Right Arrow",
+     "anim_ref": "ttt2:rog:row:2"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "1,2,2",
+    "current": {
+     "name": "Left Right Arrow",
+     "damage": 23,
+     "startup_s": 0.3,
+     "hit_range": "high",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "1,2,3",
+   "hit_level": "h,h,m",
+   "damage": "9,13,32",
+   "on_block": "-9",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": "One Two Kangaroo Combo",
+   "source_id": "Roger Jr-1,2,3",
+   "source_values": {
+    "input": ",3",
+    "target": ",m",
+    "damage": ",32",
+    "block": "-9",
+    "hit": "KND",
+    "ch": "KND",
+    "notes": "Balcony Break; Natural combo from 1st CH; Can be delayed"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "1, 2, 3",
+     "damage": "9,13,32",
+     "speed": "10",
+     "on_block": "-9",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-1,2,3",
+     "damage": "6,10,28",
+     "startup": "",
+     "block": "-12",
+     "hit": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 3,
+     "name": "One Two Kangaroo Combo",
+     "anim_ref": "ttt2:rog:row:3"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "1,2,3",
+    "current": {
+     "name": "One Two Kangaroo Combo",
+     "damage": 23,
+     "startup_s": 0.3,
+     "hit_range": "high",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "2",
+   "hit_level": "h",
+   "damage": "16",
+   "startup": "i10",
+   "on_block": "+0",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "tags": "",
+   "transitions": [],
+   "name": null,
+   "source_id": "Roger Jr-2",
+   "source_values": {
+    "input": "2",
+    "alt": "f+2",
+    "target": "h",
+    "damage": "16",
+    "startup": "i10",
+    "block": "+0",
+    "hit": "+6",
+    "ch": "+6",
+    "notes": "f+2 is i12, 20 damage"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "2",
+     "damage": "18",
+     "speed": "10",
+     "on_block": "0",
+     "on_hit": "+6",
+     "on_ch": "+6"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-2",
+     "damage": "12",
+     "startup": "i10",
+     "block": "+0",
+     "hit": "+6"
+    }
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "2",
+    "current": {
+     "name": "Right Punch",
+     "damage": 12,
+     "startup_s": 0.2,
+     "hit_range": "high",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "2,1",
+   "hit_level": "h,m",
+   "damage": "16,16",
+   "on_block": "-2",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "tags": "",
+   "transitions": [],
+   "name": "Jab Uppercut",
+   "source_id": "Roger Jr-2,1",
+   "source_values": {
+    "input": ",1",
+    "target": ",m",
+    "damage": ",16",
+    "block": "-2",
+    "hit": "+4",
+    "ch": "+4",
+    "notes": "Natural combo from 1st hit"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "2, 1",
+     "damage": "16,16",
+     "speed": "12",
+     "on_block": "-2",
+     "on_hit": "+4",
+     "on_ch": "+4"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-2,1",
+     "damage": "12,12",
+     "startup": "",
+     "block": "+0",
+     "hit": "+5"
+    },
+    "ttt2_mvlt": {
+     "row": 5,
+     "name": "Jab Uppercut",
+     "anim_ref": "ttt2:rog:row:5"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "2,1",
+    "current": {
+     "name": "Jab Uppercut",
+     "damage": 12,
+     "startup_s": 0.233,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "3",
+   "hit_level": "h",
+   "damage": "32",
+   "startup": "i16",
+   "on_block": "-9",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": null,
+   "source_id": "Roger Jr-3",
+   "source_values": {
+    "input": "3",
+    "target": "h",
+    "damage": "32",
+    "startup": "i16",
+    "block": "-9",
+    "hit": "KND",
+    "ch": "KND",
+    "notes": "Balcony Break"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "3",
+     "damage": "32",
+     "speed": "16",
+     "on_block": "-9",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-3",
+     "damage": "24",
+     "startup": "i16",
+     "block": "-15",
+     "hit": "KND"
+    }
+   },
+   "menajerii": {
+    "status": "input_conflict",
+    "key": "3",
+    "current": {
+     "name": "Heavy Paw",
+     "damage": 25,
+     "startup_s": 0.3,
+     "hit_range": "high",
+     "tekken_base": "Kuma (Tekken 7)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "3~4",
+   "hit_level": "m,m",
+   "damage": "10,21",
+   "startup": "i28~29,i33~34",
+   "on_block": "-3~-2",
+   "tags": "js",
+   "transitions": [],
+   "name": "Spinning Tail Whip",
+   "source_id": "Roger Jr-3~4",
+   "source_values": {
+    "input": "3~4",
+    "target": "m,m",
+    "damage": "10,21",
+    "startup": "i28~29,i33~34(29~)",
+    "block": "-3~-2",
+    "hit": "JG",
+    "ch": "JG",
+    "crush": "js",
+    "notes": "Tag Buffer; Spike"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "3~4",
+     "damage": "10,21",
+     "speed": "28~29, 33~34 (29~)",
+     "on_block": "-3~-2",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-3~4",
+     "damage": "8,18",
+     "startup": "i28",
+     "block": "-2",
+     "hit": "+?a"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "3~4",
+    "current": {
+     "name": "Spinning Tail Whip",
+     "damage": 16,
+     "startup_s": 0.3,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "4",
+   "hit_level": "h",
+   "damage": "27",
+   "startup": "i13",
+   "on_block": "-5",
+   "on_hit": "+6",
+   "tags": "",
+   "transitions": [],
+   "name": null,
+   "source_id": "Roger Jr-4",
+   "source_values": {
+    "input": "4",
+    "target": "h",
+    "damage": "27",
+    "startup": "i13",
+    "block": "-5",
+    "hit": "+6",
+    "ch": "JG",
+    "notes": "Balcony Break on CH"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "4",
+     "damage": "27",
+     "speed": "13",
+     "on_block": "-5",
+     "on_hit": "+6",
+     "on_ch": "Launch (JG?)"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-4",
+     "damage": "20",
+     "startup": "i13",
+     "block": "-5",
+     "hit": "+4"
+    },
+    "ttt2_mvlt": {
+     "row": 66,
+     "name": "Toe Smash",
+     "anim_ref": "ttt2:rog:row:66"
+    }
+   },
+   "menajerii": {
+    "status": "input_conflict",
+    "key": "4",
+    "current": {
+     "name": "Backhand Claw",
+     "damage": 20,
+     "startup_s": 0.233,
+     "hit_range": "high",
+     "tekken_base": "Kuma (Tekken 7)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "1+2",
+   "hit_level": "h,h",
+   "damage": "13,18",
+   "startup": "i13,i20~21",
+   "on_block": "+1~+2",
+   "on_hit": "+5~+6",
+   "on_ch": "+5~+6",
+   "tags": "",
+   "transitions": [],
+   "name": "Double Spin",
+   "source_id": "Roger Jr-1+2",
+   "source_values": {
+    "input": "1+2",
+    "target": "h,h",
+    "damage": "13,18",
+    "startup": "i13,i20~21",
+    "block": "+1~+2",
+    "hit": "+5~+6",
+    "ch": "+5~+6",
+    "notes": "Jail on block"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "1+2",
+     "damage": "13,18",
+     "speed": "13, 20~21",
+     "on_block": "+1~+2",
+     "on_hit": "+5~+6",
+     "on_ch": "+5~+6"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-1+2",
+     "damage": "8,13",
+     "startup": "i13",
+     "block": "+0",
+     "hit": "+5"
+    },
+    "t6psp_com_name_present": false
+   },
+   "menajerii": {
+    "status": "input_conflict",
+    "key": "1+2",
+    "current": {
+     "name": "Double Paw Slam",
+     "damage": 17,
+     "startup_s": 0.283,
+     "hit_range": "mid",
+     "tekken_base": "Kuma (Tekken 7)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "1+2,3",
+   "hit_level": "h,h,m",
+   "damage": "13,18,32",
+   "on_block": "-14",
+   "tags": "js",
+   "transitions": [],
+   "name": "Double Spin Castanet Kick",
+   "source_id": "Roger Jr-1+2,3",
+   "source_values": {
+    "input": ",3",
+    "target": ",m",
+    "damage": ",32",
+    "block": "-14",
+    "hit": "JG",
+    "ch": "JG",
+    "crush": "js"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "1+2, 3",
+     "damage": "13,18,32",
+     "speed": "13, 20~21",
+     "on_block": "-14",
+     "on_hit": "CS",
+     "on_ch": "CS"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-1+2,3",
+     "damage": "8,13,21",
+     "startup": "",
+     "block": "-11",
+     "hit": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 7,
+     "name": "Double Spin Castanet Kick",
+     "anim_ref": "ttt2:rog:row:7"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "1+2,3",
+    "current": {
+     "name": "Double Spin Castanet Kick",
+     "damage": 23,
+     "startup_s": 0.367,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "1+2,4",
+   "hit_level": "h,h,L",
+   "damage": "13,18,22",
+   "on_block": "-37",
+   "on_hit": "KND",
+   "tags": "js",
+   "transitions": [],
+   "name": "Double Spin Animal Sweep",
+   "source_id": "Roger Jr-1+2,4",
+   "source_values": {
+    "input": ",4",
+    "target": ",L",
+    "damage": ",22",
+    "block": "-37",
+    "hit": "KND",
+    "ch": "JG",
+    "crush": "js"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "1+2, 4",
+     "damage": "13,18,22",
+     "speed": "13, 20~21",
+     "on_block": "-37",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-1+2,4",
+     "damage": "8,13,17",
+     "startup": "",
+     "block": "-37c?",
+     "hit": "KND (FUFA)"
+    },
+    "ttt2_mvlt": {
+     "row": 8,
+     "name": "Double Spin Animal Sweep",
+     "anim_ref": "ttt2:rog:row:8"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "1+2,4",
+    "current": {
+     "name": "Double Spin Animal Sweep",
+     "damage": 17,
+     "startup_s": 0.367,
+     "hit_range": "low",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "3+4",
+   "hit_level": "m",
+   "damage": "32",
+   "startup": "i22",
+   "on_block": "-14",
+   "tags": "js",
+   "transitions": [],
+   "name": "Castanet Kick",
+   "source_id": "Roger Jr-3+4",
+   "source_values": {
+    "input": "3+4",
+    "target": "m",
+    "damage": "32",
+    "startup": "i22",
+    "block": "-14",
+    "hit": "JG",
+    "ch": "JG",
+    "crush": "js",
+    "notes": "Cannot be reversed"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "3+4",
+     "damage": "32",
+     "speed": "22",
+     "on_block": "-14",
+     "on_hit": "CS",
+     "on_ch": "CS"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-3+4",
+     "damage": "21",
+     "startup": "i22",
+     "block": "-11",
+     "hit": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 9,
+     "name": "Castanet Kick",
+     "anim_ref": "ttt2:rog:row:9"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "3+4",
+    "current": {
+     "name": "Castanet Kick",
+     "damage": 23,
+     "startup_s": 0.4,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "f+3",
+   "hit_level": "m",
+   "damage": "27",
+   "startup": "i26",
+   "on_block": "-3",
+   "on_hit": "+4",
+   "tags": "js",
+   "transitions": [],
+   "name": "Outback Stomp",
+   "source_id": "Roger Jr-f+3",
+   "source_values": {
+    "input": "f+3",
+    "target": "m",
+    "damage": "27",
+    "startup": "i26",
+    "block": "-3",
+    "hit": "+4",
+    "ch": "JG",
+    "crush": "js"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "f+3",
+     "damage": "27",
+     "speed": "26",
+     "on_block": "-3",
+     "on_hit": "+4",
+     "on_ch": "CS"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-f+3",
+     "damage": "25",
+     "startup": "i26",
+     "block": "-5",
+     "hit": "+7"
+    },
+    "ttt2_mvlt": {
+     "row": 10,
+     "name": "Outback Stomp",
+     "anim_ref": "ttt2:rog:row:10"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "f+3",
+    "current": {
+     "name": "Outback Stomp",
+     "damage": 20,
+     "startup_s": 0.3,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "f+4",
+   "hit_level": "m",
+   "damage": "10",
+   "startup": "i16~17",
+   "on_block": "-2~-1",
+   "on_hit": "-1~+0",
+   "on_ch": "-1~+0",
+   "tags": "",
+   "transitions": [
+    "BT"
+   ],
+   "name": null,
+   "source_id": "Roger Jr-f+4",
+   "source_values": {
+    "input": "f+4",
+    "target": "m",
+    "damage": "10",
+    "startup": "i16~17",
+    "block": "-2~-1",
+    "hit": "-1~+0",
+    "ch": "-1~+0",
+    "recv": "BT"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "f+4",
+     "damage": "10",
+     "speed": "16~17 RBT",
+     "on_block": "-2~-1",
+     "on_hit": "-1~0",
+     "on_ch": "-1~0"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-f+4",
+     "damage": "8",
+     "startup": "i16",
+     "block": "-2",
+     "hit": "-1"
+    }
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "f+4",
+    "current": {
+     "name": "Twisting Roo, (BT)",
+     "damage": null,
+     "startup_s": null,
+     "hit_range": null,
+     "tekken_base": null,
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "f+4,3",
+   "hit_level": "m,m",
+   "damage": "10,20",
+   "on_block": "-18",
+   "tags": "",
+   "transitions": [],
+   "name": null,
+   "source_id": "Roger Jr-f+4,3",
+   "source_values": {
+    "input": ",3",
+    "target": ",m",
+    "damage": ",20",
+    "block": "-18",
+    "hit": "JG",
+    "ch": "JG",
+    "notes": "Tag Buffer; Natural combo from 1st hit"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "f+4, 3",
+     "damage": "10,20",
+     "speed": "16~17 Air",
+     "on_block": "-18",
+     "on_hit": "Launch (JG?)",
+     "on_ch": "Launch (JG?)"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-f+4,3",
+     "damage": "8,16",
+     "startup": "",
+     "block": "-16",
+     "hit": "+?a"
+    }
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "f+4,3",
+    "current": {
+     "name": "Roo Rage",
+     "damage": null,
+     "startup_s": null,
+     "hit_range": null,
+     "tekken_base": null,
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "f+4,3,2",
+   "hit_level": "m,m,m",
+   "damage": "10,20,27",
+   "on_block": "-16~-15",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": "Ayer's rock",
+   "source_id": "Roger Jr-f+4,3,2",
+   "source_values": {
+    "input": ",2",
+    "target": ",m",
+    "damage": ",27",
+    "block": "-16~-15",
+    "hit": "KND",
+    "ch": "KND",
+    "notes": "Bound"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "f+4, 3, 2",
+     "damage": "10,20,27",
+     "speed": "16~17",
+     "on_block": "-16~-15",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-f+4,3,2",
+     "damage": "8,16,30",
+     "startup": "",
+     "block": "-20",
+     "hit": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 11,
+     "name": "Ayer's Rock",
+     "anim_ref": "ttt2:rog:row:11"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "f+4,3,2",
+    "current": {
+     "name": "Ayer's Rock",
+     "damage": 23,
+     "startup_s": 0.367,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "f+1+2",
+   "hit_level": "m",
+   "damage": "21",
+   "startup": "i24~25",
+   "on_block": "-7~-6",
+   "on_hit": "+4~+5",
+   "on_ch": "+4~+5",
+   "tags": "",
+   "transitions": [],
+   "name": null,
+   "source_id": "Roger Jr-f+1+2",
+   "source_values": {
+    "input": "f+1+2",
+    "target": "m",
+    "damage": "21",
+    "startup": "i24~25",
+    "block": "-7~-6",
+    "hit": "+4~+5",
+    "ch": "+4~+5",
+    "notes": "Balcony Break"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "f+1+2",
+     "damage": "21",
+     "speed": "24~25",
+     "on_block": "-7~-6",
+     "on_hit": "+4~+5",
+     "on_ch": "+4~+5"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-f+1+2",
+     "damage": "25",
+     "startup": "i24",
+     "block": "-10",
+     "hit": "KND"
+    }
+   },
+   "menajerii": {
+    "status": "input_conflict",
+    "key": "f+1+2",
+    "current": {
+     "name": "Savage Mauling",
+     "damage": 25,
+     "startup_s": 0.283,
+     "hit_range": "mid",
+     "tekken_base": "Kuma (Tekken 7)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "f+1+2,2",
+   "hit_level": "m,m",
+   "damage": "21,29",
+   "on_block": "-12~-11",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": "Animal Gigaton punch",
+   "source_id": "Roger Jr-f+1+2,2",
+   "source_values": {
+    "input": ",2",
+    "target": ",m",
+    "damage": ",29",
+    "block": "-12~-11",
+    "hit": "KND",
+    "ch": "KND",
+    "notes": "Balcony Break; Natural combo from 1st hit; Can be delayed"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "f+1+2, 2",
+     "damage": "21,29",
+     "speed": "24~25",
+     "on_block": "-12~-11",
+     "on_hit": "KND",
+     "on_ch": "CS (14~15)"
+    },
+    "ttt2_mvlt": {
+     "row": 12,
+     "name": "Animal Gigaton Punch",
+     "anim_ref": "ttt2:rog:row:12"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "f+1+2,2",
+    "current": {
+     "name": "Animal Gigaton Punch",
+     "damage": 22,
+     "startup_s": 0.367,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "f+3+4",
+   "hit_level": "m,sp",
+   "damage": "40",
+   "startup": "i25",
+   "on_block": "-13(-55)",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "js",
+   "transitions": [
+    "AKS"
+   ],
+   "name": "Animal Drop Kick",
+   "source_id": "Roger Jr-f+3+4",
+   "source_values": {
+    "input": "f+3+4",
+    "target": "m,sp",
+    "damage": "40",
+    "startup": "i25",
+    "block": "-13(-55)",
+    "hit": "KND",
+    "ch": "KND",
+    "crush": "js",
+    "recv": "AKS",
+    "notes": "Balcony Break; Transition to AKS"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "f+3+4",
+     "damage": "40",
+     "speed": "25 Air",
+     "on_block": "-13(-55)",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-f+3+4",
+     "damage": "25",
+     "startup": "i38",
+     "block": "+7",
+     "hit": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 13,
+     "name": "Animal Drop Kick",
+     "anim_ref": "ttt2:rog:row:13"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "f+3+4",
+    "current": {
+     "name": "Animal Drop Kick",
+     "damage": 30,
+     "startup_s": 0.467,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "df+1",
+   "hit_level": "m",
+   "damage": "20",
+   "startup": "i14~15",
+   "on_block": "-1~+0",
+   "on_hit": "+1c~+2c",
+   "on_ch": "+1c~+2c",
+   "tags": "",
+   "transitions": [],
+   "name": null,
+   "source_id": "Roger Jr-df+1",
+   "source_values": {
+    "input": "df+1",
+    "target": "m",
+    "damage": "20",
+    "startup": "i14~15",
+    "block": "-1~+0",
+    "hit": "+1c~+2c",
+    "ch": "+1c~+2c",
+    "notes": "Elbow"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "d/f+1",
+     "damage": "20",
+     "speed": "14~15",
+     "on_block": "-1~0 OC",
+     "on_hit": "+1~+2 OC",
+     "on_ch": "+1~+2 OC"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-df+1",
+     "damage": "15",
+     "startup": "i14",
+     "block": "-1",
+     "hit": "+1"
+    }
+   },
+   "menajerii": {
+    "status": "input_conflict",
+    "key": "d/f+1",
+    "current": {
+     "name": "Quick Scratch",
+     "damage": 6,
+     "startup_s": 0.25,
+     "hit_range": "mid",
+     "tekken_base": "Kuma (Tekken 7)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "df+1,2",
+   "hit_level": "m,m",
+   "damage": "20,16",
+   "on_block": "-11~-10",
+   "on_hit": "+2~+3",
+   "on_ch": "+2~+3",
+   "tags": "",
+   "transitions": [],
+   "name": "Elbow Slap Combo",
+   "source_id": "Roger Jr-df+1,2",
+   "source_values": {
+    "input": ",2",
+    "target": ",m",
+    "damage": ",16",
+    "block": "-11~-10",
+    "hit": "+2~+3",
+    "ch": "+2~+3",
+    "notes": "Natural combo from 1st hit; Can be delayed; Better framedata on max delay(-7~-6/+6~+7/+6~+7)"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "d/f+1, 2",
+     "damage": "20,16",
+     "speed": "14~15",
+     "on_block": "-11~-10",
+     "on_hit": "+2~+3",
+     "on_ch": "+2~+3"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-df+1,2",
+     "damage": "15,12",
+     "startup": "",
+     "block": "-11",
+     "hit": "+0"
+    },
+    "ttt2_mvlt": {
+     "row": 14,
+     "name": "Elbow Slap Combo",
+     "anim_ref": "ttt2:rog:row:14"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "d/f+1,2",
+    "current": {
+     "name": "Elbow Slap Combo",
+     "damage": 12,
+     "startup_s": 0.267,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "df+2",
+   "hit_level": "m",
+   "damage": "20",
+   "startup": "i15",
+   "on_block": "-7",
+   "on_hit": "+3",
+   "tags": "",
+   "transitions": [],
+   "name": "Bandicoot Bomb",
+   "source_id": "Roger Jr-df+2",
+   "source_values": {
+    "input": "df+2",
+    "target": "m",
+    "damage": "20",
+    "startup": "i15",
+    "block": "-7",
+    "hit": "+3",
+    "ch": "JG"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "d/f+2",
+     "damage": "20",
+     "speed": "15",
+     "on_block": "-7",
+     "on_hit": "+3",
+     "on_ch": "CS"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-df+2",
+     "damage": "12",
+     "startup": "i14",
+     "block": "-5",
+     "hit": "+6"
+    },
+    "ttt2_mvlt": {
+     "row": 15,
+     "name": "Bandicoot Bomb",
+     "anim_ref": "ttt2:rog:row:15"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "d/f+2",
+    "current": {
+     "name": "Bandicoot Bomb",
+     "damage": 15,
+     "startup_s": 0.267,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "df+3",
+   "hit_level": "m",
+   "damage": "20",
+   "startup": "i19~21",
+   "on_block": "-8~-6",
+   "on_hit": "+2~+4",
+   "on_ch": "+2~+4",
+   "tags": "hb",
+   "transitions": [],
+   "name": "Tail Flail",
+   "source_id": "Roger Jr-df+3",
+   "source_values": {
+    "input": "df+3",
+    "target": "m",
+    "damage": "20",
+    "startup": "i19~21",
+    "block": "-8~-6",
+    "hit": "+2~+4",
+    "ch": "+2~+4",
+    "notes": "Homing; Balcony Break; Cannot be reversed"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "d/f+3",
+     "damage": "20",
+     "speed": "19~21",
+     "on_block": "-8~-6",
+     "on_hit": "+2~+4",
+     "on_ch": "+2~+4"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-df+3",
+     "damage": "17",
+     "startup": "i16",
+     "block": "-12",
+     "hit": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 16,
+     "name": "Tail Flail",
+     "anim_ref": "ttt2:rog:row:16"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "d/f+3",
+    "current": {
+     "name": "Tail Flail",
+     "damage": 15,
+     "startup_s": 0.267,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "df+3,3",
+   "hit_level": "m,h",
+   "damage": "20,27",
+   "on_block": "-6",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "hb",
+   "transitions": [],
+   "name": "Double Tail Flail",
+   "source_id": "Roger Jr-df+3,3",
+   "source_values": {
+    "input": ",3",
+    "target": ",h",
+    "damage": ",27",
+    "block": "-6",
+    "hit": "KND",
+    "ch": "KND",
+    "notes": "Homing; Balcony Break; Natural combo from 1st hit; Cannot be reversed"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "d/f+3, 3",
+     "damage": "20,27",
+     "speed": "19~21",
+     "on_block": "-6",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 17,
+     "name": "Double Tail Flail",
+     "anim_ref": "ttt2:rog:row:17"
+    },
+    "t6psp_com_name_present": false
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "d/f+3,3",
+    "current": {
+     "name": "Double Tail Flail",
+     "damage": 20,
+     "startup_s": 0.333,
+     "hit_range": "high",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "df+4",
+   "hit_level": "m",
+   "damage": "18",
+   "startup": "i12",
+   "on_block": "-4",
+   "on_hit": "+7",
+   "on_ch": "+7",
+   "tags": "",
+   "transitions": [],
+   "name": "Right Cross Kick",
+   "source_id": "Roger Jr-df+4",
+   "source_values": {
+    "input": "df+4",
+    "target": "m",
+    "damage": "18",
+    "startup": "i12",
+    "block": "-4",
+    "hit": "+7",
+    "ch": "+7"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "d/f+4",
+     "damage": "18",
+     "speed": "12",
+     "on_block": "-4",
+     "on_hit": "+7",
+     "on_ch": "+7"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-df+4",
+     "damage": "15",
+     "startup": "i12",
+     "block": "-4",
+     "hit": "+7"
+    },
+    "ttt2_mvlt": {
+     "row": 18,
+     "name": "Right Cross Kick",
+     "anim_ref": "ttt2:rog:row:18"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "d/f+4",
+    "current": {
+     "name": "Right Cross Kick",
+     "damage": 13,
+     "startup_s": 0.233,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "df+1+2",
+   "hit_level": "m",
+   "damage": "20",
+   "startup": "i15",
+   "on_block": "-5c",
+   "on_hit": "+5c",
+   "on_ch": "+5c",
+   "tags": "",
+   "transitions": [],
+   "name": "Animal Headbutt",
+   "source_id": "Roger Jr-df+1+2",
+   "source_values": {
+    "input": "df+1+2",
+    "target": "m",
+    "damage": "20",
+    "startup": "i15",
+    "block": "-5c",
+    "hit": "+5c",
+    "ch": "+5c",
+    "notes": "Head; Bound"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "d/f+1+2",
+     "damage": "20",
+     "speed": "15",
+     "on_block": "-5 OC",
+     "on_hit": "+5 OC",
+     "on_ch": "+5 OC"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-df+1+2",
+     "damage": "21",
+     "startup": "i14~i15",
+     "block": "-3",
+     "hit": "+4c"
+    },
+    "ttt2_mvlt": {
+     "row": 19,
+     "name": "Animal Headbutt",
+     "anim_ref": "ttt2:rog:row:19"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "d/f+1+2",
+    "current": {
+     "name": "Animal Headbutt",
+     "damage": 15,
+     "startup_s": 0.3,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "df+3+4 (close)",
+   "hit_level": "SM,t",
+   "damage": "20,30",
+   "startup": "i28",
+   "on_block": "-17",
+   "on_hit": "KND",
+   "tags": "js",
+   "transitions": [],
+   "name": "Animal Rampage",
+   "source_id": "Roger Jr-df+3+4 (close)",
+   "source_values": {
+    "input": "df+3+4 (close)",
+    "target": "SM,t",
+    "damage": "20,30",
+    "startup": "i28",
+    "block": "-17",
+    "hit": "KND",
+    "crush": "js",
+    "notes": "Spike; Tag Buffer; Block low to avoid the throw follow-up"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "d/f+3+4",
+     "damage": "20(,30)",
+     "speed": "28( RG)",
+     "on_block": "Throw",
+     "on_hit": "Throw",
+     "on_ch": "Throw"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-df+3+4",
+     "damage": "15,30",
+     "startup": "i28",
+     "block": "FUFT",
+     "hit": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 20,
+     "name": "Animal Rampage",
+     "anim_ref": "ttt2:rog:row:20"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "d/f+3+4",
+    "current": {
+     "name": "Animal Rampage",
+     "damage": 30,
+     "startup_s": 0.4,
+     "hit_range": "throw",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "df+3+4 (far)",
+   "hit_level": "SM",
+   "damage": "20",
+   "startup": "i29~35",
+   "on_block": "-17~-11",
+   "on_hit": "-6c~+0c",
+   "on_ch": "-6c~+0c",
+   "tags": "js",
+   "transitions": [
+    "FUFT"
+   ],
+   "name": "Animal Rampage",
+   "source_id": "Roger Jr-df+3+4 (far)",
+   "source_values": {
+    "input": "df+3+4 (far)",
+    "target": "SM",
+    "damage": "20",
+    "startup": "i29~35",
+    "block": "-17~-11",
+    "hit": "-6c~+0c",
+    "ch": "-6c~+0c",
+    "crush": "js",
+    "recv": "FUFT",
+    "notes": "Spike"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "d/f+3+4",
+     "damage": "20(,30)",
+     "speed": "28( RG)",
+     "on_block": "Throw",
+     "on_hit": "Throw",
+     "on_ch": "Throw"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-df+3+4",
+     "damage": "15,30",
+     "startup": "i28",
+     "block": "FUFT",
+     "hit": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 20,
+     "name": "Animal Rampage",
+     "anim_ref": "ttt2:rog:row:20"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "d/f+3+4",
+    "current": {
+     "name": "Animal Rampage",
+     "damage": 30,
+     "startup_s": 0.4,
+     "hit_range": "throw",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "d+1",
+   "hit_level": "sm",
+   "damage": "6",
+   "startup": "i10",
+   "on_block": "-5",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "tags": "cs",
+   "transitions": [
+    "FC"
+   ],
+   "name": null,
+   "source_id": "Roger Jr-d+1",
+   "source_values": {
+    "input": "d+1",
+    "alt": "db+1; FC.1",
+    "target": "sm",
+    "damage": "6",
+    "startup": "i10",
+    "block": "-5",
+    "hit": "+6",
+    "ch": "+6",
+    "crush": "cs",
+    "recv": "FC"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "d/b or d+1",
+     "damage": "6",
+     "speed": "10 RC",
+     "on_block": "-5",
+     "on_hit": "+6",
+     "on_ch": "+6"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-d+1",
+     "damage": "5",
+     "startup": "i10",
+     "block": "-5",
+     "hit": "+6"
+    }
+   },
+   "menajerii": {
+    "status": "input_conflict",
+    "key": "d/b+1",
+    "current": {
+     "name": "Rising Maul",
+     "damage": 14,
+     "startup_s": 0.2,
+     "hit_range": "high",
+     "tekken_base": "Kuma (Tekken 7)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "d+1,n,2",
+   "hit_level": "sm,m",
+   "damage": "6,17",
+   "on_block": "-11~-10",
+   "on_hit": "+0~+1",
+   "on_ch": "+0~+1",
+   "tags": "",
+   "transitions": [],
+   "name": "Jab Uppercut",
+   "source_id": "Roger Jr-d+1,n,2",
+   "source_values": {
+    "input": ",n,2",
+    "target": ",m",
+    "damage": ",17",
+    "block": "-11~-10",
+    "hit": "+0~+1",
+    "ch": "+0~+1",
+    "notes": "Natural combo from 1st CH"
+   },
+   "cross_check": {
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "d+1,N,2",
+    "current": {
+     "name": "Jab Uppercut (crouch)",
+     "damage": 13,
+     "startup_s": 0.267,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "d+2",
+   "hit_level": "L",
+   "damage": "22",
+   "startup": "i18",
+   "on_block": "-13",
+   "on_hit": "+3c",
+   "on_ch": "+6c",
+   "tags": "cs",
+   "transitions": [],
+   "name": "Diving Low punch",
+   "source_id": "Roger Jr-d+2",
+   "source_values": {
+    "input": "d+2",
+    "target": "L",
+    "damage": "22",
+    "startup": "i18",
+    "block": "-13",
+    "hit": "+3c",
+    "ch": "+6c",
+    "crush": "cs"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "d+2",
+     "damage": "22",
+     "speed": "18",
+     "on_block": "-13",
+     "on_hit": "+3 OC",
+     "on_ch": "+6 OC"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-d+2",
+     "damage": "10",
+     "startup": "i18",
+     "block": "-13",
+     "hit": "+2"
+    },
+    "ttt2_mvlt": {
+     "row": 22,
+     "name": "Diving Low Punch",
+     "anim_ref": "ttt2:rog:row:22"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "d+2",
+    "current": {
+     "name": "Diving Low Punch",
+     "damage": 17,
+     "startup_s": 0.3,
+     "hit_range": "low",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "d+1+2",
+   "hit_level": "h,h",
+   "damage": "17,17",
+   "startup": "i17,i23",
+   "on_block": "-12",
+   "on_hit": "-8",
+   "on_ch": "-8",
+   "tags": "",
+   "transitions": [],
+   "name": null,
+   "source_id": "Roger Jr-d+1+2",
+   "source_values": {
+    "input": "d+1+2",
+    "target": "h,h",
+    "damage": "17,17",
+    "startup": "i17,i23",
+    "block": "-12",
+    "hit": "-8",
+    "ch": "-8",
+    "notes": "Can recover BT with B(-1/+3/+3); Natural combo from 1st hit; Jail on block"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "d+1+2",
+     "damage": "17,17",
+     "speed": "17,23",
+     "on_block": "-12",
+     "on_hit": "-8",
+     "on_ch": "-8"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-d+1+2",
+     "damage": "13,13",
+     "startup": "i17",
+     "block": "-11",
+     "hit": "+?"
+    }
+   },
+   "menajerii": {
+    "status": "input_conflict",
+    "key": "d+1+2",
+    "current": {
+     "name": "Ground Pound",
+     "damage": 28,
+     "startup_s": 0.233,
+     "hit_range": "mid",
+     "tekken_base": "Kuma (Tekken 7)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "d+1+2,1+2",
+   "hit_level": "h,h,h,h",
+   "damage": "17,17,10,10",
+   "on_block": "-11",
+   "on_hit": "-7",
+   "on_ch": "-7",
+   "tags": "",
+   "transitions": [],
+   "name": null,
+   "source_id": "Roger Jr-d+1+2,1+2",
+   "source_values": {
+    "input": ",1+2",
+    "target": ",h,h",
+    "damage": ",10,10",
+    "block": "-11",
+    "hit": "-7",
+    "ch": "-7",
+    "notes": "Can recover BT with B(-1/+3/+3); Natural combo from 1st hit; Jail from 3rd block"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "d+1+2, 1+2",
+     "damage": "17,17,10,10",
+     "speed": "17,23",
+     "on_block": "-11",
+     "on_hit": "-7",
+     "on_ch": "-7"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-d+1+2,1+2",
+     "damage": "13,13,8,8",
+     "startup": "",
+     "block": "-11",
+     "hit": "+?"
+    }
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "d+1+2,1+2",
+    "current": {
+     "name": "Second Storm",
+     "damage": null,
+     "startup_s": null,
+     "hit_range": null,
+     "tekken_base": null,
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "d+1+2,1+2,2",
+   "hit_level": "h,h,h,h,m",
+   "damage": "17,17,10,10,48",
+   "on_block": "-13~-12",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": "Animal Roundhouse",
+   "source_id": "Roger Jr-d+1+2,1+2,2",
+   "source_values": {
+    "input": ",2",
+    "target": ",m",
+    "damage": ",48",
+    "block": "-13~-12",
+    "hit": "KND",
+    "ch": "KND",
+    "notes": "Balcony Break; Natural combo from 4th CH"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "d+1+2, 1+2, 2",
+     "damage": "17,17,10,10,48",
+     "speed": "17,23",
+     "on_block": "-13~-12",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-d+1+2,1+2,2",
+     "damage": "13,13,8,8,36",
+     "startup": "",
+     "block": "-13",
+     "hit": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 23,
+     "name": "Animal Roundhouse",
+     "anim_ref": "ttt2:rog:row:23"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "d+1+2,1+2,2",
+    "current": {
+     "name": "Animal Roundhouse",
+     "damage": 36,
+     "startup_s": 0.433,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "d+3+4",
+   "hit_level": "L",
+   "damage": "17",
+   "startup": "i16",
+   "on_block": "-17",
+   "on_hit": "-3",
+   "on_ch": "-3",
+   "tags": "cs",
+   "transitions": [
+    "FC"
+   ],
+   "name": "Tail Mopping",
+   "source_id": "Roger Jr-d+3+4",
+   "source_values": {
+    "input": "d+3+4",
+    "target": "L",
+    "damage": "17",
+    "startup": "i16",
+    "block": "-17",
+    "hit": "-3",
+    "ch": "-3",
+    "crush": "cs",
+    "recv": "FC",
+    "notes": "Cannot be low parried"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "d+3+4",
+     "damage": "17",
+     "speed": "16 RC",
+     "on_block": "-17",
+     "on_hit": "-3",
+     "on_ch": "-3"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-d+3+4",
+     "damage": "14",
+     "startup": "i16",
+     "block": "-29",
+     "hit": "-13"
+    },
+    "ttt2_mvlt": {
+     "row": 24,
+     "name": "Tail Mopping",
+     "anim_ref": "ttt2:rog:row:24"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "d+3+4",
+    "current": {
+     "name": "Tail Mopping",
+     "damage": 13,
+     "startup_s": 0.3,
+     "hit_range": "low",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "db+3",
+   "hit_level": "L",
+   "damage": "16",
+   "startup": "i20",
+   "on_block": "-27",
+   "tags": "",
+   "transitions": [],
+   "name": "Tail Tripper",
+   "source_id": "Roger Jr-db+3",
+   "source_values": {
+    "input": "db+3",
+    "target": "L",
+    "damage": "16",
+    "startup": "i20",
+    "block": "-27",
+    "hit": "JG",
+    "ch": "JG",
+    "notes": "Cannot be low parried"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "d/b+3",
+     "damage": "16",
+     "speed": "20",
+     "on_block": "-27",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-db+3",
+     "damage": "14",
+     "startup": "i20~i21",
+     "block": "-15~-16",
+     "hit": "+?a"
+    },
+    "ttt2_mvlt": {
+     "row": 25,
+     "name": "Tail Tripper",
+     "anim_ref": "ttt2:rog:row:25"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "d/b+3",
+    "current": {
+     "name": "Tail Tripper",
+     "damage": 12,
+     "startup_s": 0.3,
+     "hit_range": "low",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "db+1+2",
+   "hit_level": "m",
+   "damage": "43",
+   "startup": "i23~33",
+   "on_block": "-23~-13",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": "Kangaroo Attack",
+   "source_id": "Roger Jr-db+1+2",
+   "source_values": {
+    "input": "db+1+2",
+    "target": "m",
+    "damage": "43",
+    "startup": "i23~33",
+    "block": "-23~-13",
+    "hit": "KND",
+    "ch": "KND",
+    "notes": "Head; Balcony Break"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "d/b+1+2",
+     "damage": "43",
+     "speed": "23~33 Air",
+     "on_block": "-23~-13 (-11~-22)",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-db+1+2",
+     "damage": "28",
+     "startup": "i23",
+     "block": "-23",
+     "hit": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 27,
+     "name": "Kangaroo Attack",
+     "anim_ref": "ttt2:rog:row:27"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "d/b+1+2",
+    "current": {
+     "name": "Kangaroo Attack",
+     "damage": 32,
+     "startup_s": 0.433,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "db+3+4",
+   "hit_level": "m",
+   "damage": "33",
+   "startup": "i30",
+   "on_block": "+4",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": "Generation Uppercut",
+   "source_id": "Roger Jr-db+3+4",
+   "source_values": {
+    "input": "db+3+4",
+    "target": "m",
+    "damage": "33",
+    "startup": "i30",
+    "block": "+4",
+    "hit": "KND",
+    "ch": "KND",
+    "notes": "Head"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "d/b+3+4",
+     "damage": "33",
+     "speed": "30",
+     "on_block": "+4",
+     "on_hit": "Launch",
+     "on_ch": "Launch"
+    },
+    "ttt2_mvlt": {
+     "row": 28,
+     "name": "Generation Uppercut",
+     "anim_ref": "ttt2:rog:row:28"
+    },
+    "t6psp_com_name_present": false
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "d/b+3+4",
+    "current": {
+     "name": "Generation Uppercut",
+     "damage": 40,
+     "startup_s": 0.4,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "b+2",
+   "hit_level": "h",
+   "damage": "20",
+   "startup": "i14",
+   "on_block": "-6",
+   "on_hit": "+5",
+   "on_ch": "+5",
+   "tags": "",
+   "transitions": [],
+   "name": null,
+   "source_id": "Roger Jr-b+2",
+   "source_values": {
+    "input": "b+2",
+    "target": "h",
+    "damage": "20",
+    "startup": "i14",
+    "block": "-6",
+    "hit": "+5",
+    "ch": "+5"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "b+2",
+     "damage": "20",
+     "speed": "14",
+     "on_block": "-6",
+     "on_hit": "+5",
+     "on_ch": "+5"
+    }
+   },
+   "menajerii": {
+    "status": "input_conflict",
+    "key": "b+2",
+    "current": {
+     "name": "Retreating Swipe",
+     "damage": 12,
+     "startup_s": 0.25,
+     "hit_range": "mid",
+     "tekken_base": "Kuma (Tekken 7)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "b+2,3",
+   "hit_level": "h,L",
+   "damage": "20,18",
+   "on_block": "-26",
+   "on_hit": "+3",
+   "on_ch": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": null,
+   "source_id": "Roger Jr-b+2,3",
+   "source_values": {
+    "input": ",3",
+    "target": ",L",
+    "damage": ",18",
+    "block": "-26",
+    "hit": "+3",
+    "ch": "KND",
+    "notes": "Natural combo from 1st CH; Cannot be low parried; Opponent recovers FUFA on CH"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "b+2, 3",
+     "damage": "20,18",
+     "speed": "14",
+     "on_block": "-26",
+     "on_hit": "+3(KND)",
+     "on_ch": "KND"
+    }
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "b+2,3",
+    "current": {
+     "name": "Space Comet start",
+     "damage": 13,
+     "startup_s": 0.3,
+     "hit_range": "low",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "b+2,3,3+4",
+   "hit_level": "h,L,m",
+   "damage": "20,18,22",
+   "on_block": "-10c",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "js",
+   "transitions": [],
+   "name": "Space Comet",
+   "source_id": "Roger Jr-b+2,3,3+4",
+   "source_values": {
+    "input": ",3+4",
+    "target": ",m",
+    "damage": ",22",
+    "block": "-10c",
+    "hit": "KND",
+    "ch": "KND",
+    "crush": "js",
+    "notes": "Spike; Natural combo from 2nd hit when the player inputs the whole string; Cannot be reversed"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "b+2, 3, 3+4",
+     "damage": "20,18,27",
+     "speed": "14",
+     "on_block": "-10 OC",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 29,
+     "name": "Space Comet",
+     "anim_ref": "ttt2:rog:row:29"
+    },
+    "t6psp_com_name_present": false
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "b+2,3,3+4",
+    "current": {
+     "name": "Space Comet",
+     "damage": 20,
+     "startup_s": 0.4,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "b+2,4",
+   "hit_level": "h,h",
+   "damage": "20,27",
+   "on_block": "-8",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "js",
+   "transitions": [],
+   "name": "Space Walk",
+   "source_id": "Roger Jr-b+2,4",
+   "source_values": {
+    "input": ",4",
+    "target": ",h",
+    "damage": ",27",
+    "block": "-8",
+    "hit": "KND",
+    "ch": "KND",
+    "crush": "js",
+    "notes": "Balcony Break; Natural combo from 1st hit"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "b+2, 4",
+     "damage": "20,27",
+     "speed": "14",
+     "on_block": "-8",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 30,
+     "name": "Space Walk",
+     "anim_ref": "ttt2:rog:row:30"
+    },
+    "t6psp_com_name_present": false
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "b+2,4",
+    "current": {
+     "name": "Space Walk",
+     "damage": 20,
+     "startup_s": 0.367,
+     "hit_range": "high",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "b+3",
+   "hit_level": "M",
+   "damage": "22",
+   "startup": "i16",
+   "on_block": "-8",
+   "on_hit": "+5",
+   "on_ch": "+7",
+   "tags": "",
+   "transitions": [
+    "BT"
+   ],
+   "name": "Reverse Bycicle Kick",
+   "source_id": "Roger Jr-b+3",
+   "source_values": {
+    "input": "b+3",
+    "target": "M",
+    "damage": "22",
+    "startup": "i16",
+    "block": "-8",
+    "hit": "+5",
+    "ch": "+7",
+    "recv": "BT"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "b+3",
+     "damage": "22",
+     "speed": "16 RBT",
+     "on_block": "-8",
+     "on_hit": "+5",
+     "on_ch": "+7"
+    },
+    "ttt2_mvlt": {
+     "row": 31,
+     "name": "Reverse Bicycle Kick",
+     "anim_ref": "ttt2:rog:row:31"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "b+3",
+    "current": {
+     "name": "Reverse Bicycle Kick",
+     "damage": 17,
+     "startup_s": 0.333,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "b+4",
+   "hit_level": "L",
+   "damage": "27",
+   "startup": "i27~28",
+   "on_block": "-12~-11",
+   "on_hit": "+5c~+6c",
+   "tags": "",
+   "transitions": [],
+   "name": "Spinning Snap Kick",
+   "source_id": "Roger Jr-b+4",
+   "source_values": {
+    "input": "b+4",
+    "target": "L",
+    "damage": "27",
+    "startup": "i27~28",
+    "block": "-12~-11",
+    "hit": "+5c~+6c",
+    "ch": "JG"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "b+4",
+     "damage": "26",
+     "speed": "27~28",
+     "on_block": "-12~-11",
+     "on_hit": "+5~+6 OC",
+     "on_ch": "KND"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-b+4",
+     "damage": "18",
+     "startup": "i28",
+     "block": "-12",
+     "hit": "+5"
+    },
+    "ttt2_mvlt": {
+     "row": 32,
+     "name": "Spinning Snap Kick",
+     "anim_ref": "ttt2:rog:row:32"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "b+4",
+    "current": {
+     "name": "Spinning Snap Kick",
+     "damage": 20,
+     "startup_s": 0.3,
+     "hit_range": "low",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "b+1+4",
+   "hit_level": "m!",
+   "damage": "81",
+   "startup": "i69",
+   "on_block": "KND",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": "Wind Up Punch",
+   "source_id": "Roger Jr-b+1+4",
+   "source_values": {
+    "input": "b+1+4",
+    "target": "m!",
+    "damage": "81",
+    "startup": "i69",
+    "block": "KND",
+    "hit": "KND",
+    "ch": "KND",
+    "notes": "Balcony Break"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "b+1+4",
+     "damage": "81",
+     "speed": "69",
+     "on_block": "KND",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-b+1+4",
+     "damage": "100",
+     "startup": "i69",
+     "block": "!",
+     "hit": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 45,
+     "name": "Wind Up Punch",
+     "anim_ref": "ttt2:rog:row:45"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "b+1+4",
+    "current": {
+     "name": "Wind Up Punch",
+     "damage": 60,
+     "startup_s": 0.75,
+     "hit_range": "unblockable",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "ub+3",
+   "hit_level": "m,m,m,sp",
+   "damage": "13,27,16",
+   "startup": "i16,i31,i72",
+   "on_block": "-11(-32)",
+   "on_hit": "+0",
+   "on_ch": "+0",
+   "tags": "js",
+   "transitions": [
+    "AKS"
+   ],
+   "name": "Animal Yo-Yo",
+   "source_id": "Roger Jr-ub+3",
+   "source_values": {
+    "input": "ub+3",
+    "target": "m,m,m,sp",
+    "damage": "13,27,16",
+    "startup": "i16,i31,i72",
+    "block": "-11(-32)",
+    "hit": "+0",
+    "ch": "+0",
+    "crush": "js",
+    "recv": "AKS",
+    "notes": "Transition to AKS"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "u/b+3",
+     "damage": "13,27,16",
+     "speed": "16,31,72( Air)",
+     "on_block": "-11(-32)",
+     "on_hit": "0",
+     "on_ch": "0"
+    },
+    "ttt2_mvlt": {
+     "row": 46,
+     "name": "Animal Yo-Yo",
+     "anim_ref": "ttt2:rog:row:46"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "u/b+3",
+    "current": {
+     "name": "Animal Yo-Yo",
+     "damage": 20,
+     "startup_s": 0.367,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "uf+2",
+   "hit_level": "M",
+   "damage": "47",
+   "startup": "i47~52",
+   "on_block": "-19c~-14c",
+   "on_hit": "-6c~-1c",
+   "on_ch": "KND",
+   "tags": "js",
+   "transitions": [
+    "FUFA"
+   ],
+   "name": "Elbow drop",
+   "source_id": "Roger Jr-uf+2",
+   "source_values": {
+    "input": "uf+2",
+    "alt": "ub+2; u+2",
+    "target": "M",
+    "damage": "47",
+    "startup": "i47~52",
+    "block": "-19c~-14c",
+    "hit": "-6c~-1c",
+    "ch": "KND",
+    "crush": "js",
+    "recv": "FUFA",
+    "notes": "Elbow; Spike"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "u/b or u or u/f+2",
+     "damage": "47",
+     "speed": "47~52 RG",
+     "on_block": "-19~-14 OC",
+     "on_hit": "-6~-1 OC",
+     "on_ch": "KND"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-uf+2",
+     "damage": "35",
+     "startup": "i46",
+     "block": "FUFA",
+     "hit": "+?c"
+    },
+    "ttt2_mvlt": {
+     "row": 47,
+     "name": "Elbow Drop",
+     "anim_ref": "ttt2:rog:row:47"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "u+2",
+    "current": {
+     "name": "Elbow Drop",
+     "damage": 35,
+     "startup_s": 0.433,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "uf+3",
+   "hit_level": "m",
+   "damage": "27",
+   "startup": "i25~26",
+   "on_block": "-8~-7",
+   "on_hit": "+3~+4",
+   "on_ch": "+3~+4",
+   "tags": "",
+   "transitions": [],
+   "name": "Helicopter Kick",
+   "source_id": "Roger Jr-uf+3",
+   "source_values": {
+    "input": "uf+3",
+    "alt": "u+3",
+    "target": "m",
+    "damage": "27",
+    "startup": "i25~26",
+    "block": "-8~-7",
+    "hit": "+3~+4",
+    "ch": "+3~+4",
+    "notes": "Balcony Break"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "u or u/f+3",
+     "damage": "27",
+     "speed": "25~26",
+     "on_block": "-8~-7",
+     "on_hit": "+3~+4",
+     "on_ch": "+3~+4"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-uf+3",
+     "damage": "25",
+     "startup": "i25",
+     "block": "-10",
+     "hit": "+0"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "input_conflict",
+    "key": "u/f+3",
+    "current": {
+     "name": "Rising Fang",
+     "damage": 13,
+     "startup_s": 0.267,
+     "hit_range": "mid",
+     "tekken_base": "Kuma (Tekken 7)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "uf+3,3",
+   "hit_level": "m,h",
+   "damage": "27,27",
+   "on_block": "-11",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "js",
+   "transitions": [],
+   "name": "Helicopter Kick",
+   "source_id": "Roger Jr-uf+3,3",
+   "source_values": {
+    "input": ",3",
+    "target": ",h",
+    "damage": ",27",
+    "block": "-11",
+    "hit": "KND",
+    "ch": "KND",
+    "crush": "js",
+    "notes": "Balcony Break; Natural combo from 1st hit"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "u or u/f+3, 3",
+     "damage": "27,27",
+     "speed": "25~26",
+     "on_block": "-11",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-uf+3,3",
+     "damage": "25,25",
+     "startup": "",
+     "block": "-7",
+     "hit": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 48,
+     "name": "Helicopter Kick",
+     "anim_ref": "ttt2:rog:row:48"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "u+3,3",
+    "current": {
+     "name": "Helicopter Kick",
+     "damage": 20,
+     "startup_s": 0.4,
+     "hit_range": "high",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "uf+4",
+   "hit_level": "m",
+   "damage": "17",
+   "startup": "i15~16",
+   "on_block": "-13~-12",
+   "tags": "js",
+   "transitions": [],
+   "name": "Rising Toe Kick",
+   "source_id": "Roger Jr-uf+4",
+   "source_values": {
+    "input": "uf+4",
+    "alt": "ub+4; u+4",
+    "target": "m",
+    "damage": "17",
+    "startup": "i15~16",
+    "block": "-13~-12",
+    "hit": "JG",
+    "ch": "JG",
+    "crush": "js",
+    "notes": "ub+4 does 14 damage(-19~-18/-8~-7/-8~-7); u+4 does 20 damage(-13~-12/KND/JG), balcony break"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "u/f+4",
+     "damage": "17",
+     "speed": "15~16",
+     "on_block": "-13~-12",
+     "on_hit": "Launch (JG?)",
+     "on_ch": "Launch (JG?)"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-uf+4",
+     "damage": "13",
+     "startup": "i15",
+     "block": "-12",
+     "hit": "+?a"
+    },
+    "ttt2_mvlt": {
+     "row": 49,
+     "name": "Rising Toe Kick",
+     "anim_ref": "ttt2:rog:row:49"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "u+4",
+    "current": {
+     "name": "Rising Toe Kick",
+     "damage": 13,
+     "startup_s": 0.333,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "uf+1+2",
+   "hit_level": "m",
+   "damage": "33",
+   "startup": "i35~36",
+   "on_block": "+2c~+3c",
+   "tags": "js",
+   "transitions": [],
+   "name": "Capital Punishment",
+   "source_id": "Roger Jr-uf+1+2",
+   "source_values": {
+    "input": "uf+1+2",
+    "target": "m",
+    "damage": "33",
+    "startup": "i35~36",
+    "block": "+2c~+3c",
+    "hit": "JG",
+    "ch": "JG",
+    "crush": "js",
+    "notes": "Spike"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "u/f+1+2",
+     "damage": "33",
+     "speed": "35~36",
+     "on_block": "+2~+3 OC",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-uf+1+2",
+     "damage": "35",
+     "startup": "i28",
+     "block": "+2c",
+     "hit": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 50,
+     "name": "Capital Punishment",
+     "anim_ref": "ttt2:rog:row:50"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "u/f+1+2",
+    "current": {
+     "name": "Capital Punishment",
+     "damage": 25,
+     "startup_s": 0.4,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "uf+3+4",
+   "hit_level": "M",
+   "damage": "33",
+   "startup": "i31~34",
+   "on_block": "-3c~+0c",
+   "on_hit": "+7c~+10c",
+   "on_ch": "KND",
+   "tags": "js",
+   "transitions": [],
+   "name": "Kangaroo Stomp",
+   "source_id": "Roger Jr-uf+3+4",
+   "source_values": {
+    "input": "uf+3+4",
+    "alt": "ub+3+4; u+3+4",
+    "target": "M",
+    "damage": "33",
+    "startup": "i31~34",
+    "block": "-3c~+0c",
+    "hit": "+7c~+10c",
+    "ch": "KND",
+    "crush": "js",
+    "notes": "Spike"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "u/b or u or u/f+3+4",
+     "damage": "33",
+     "speed": "31~34",
+     "on_block": "-3~0 OC",
+     "on_hit": "+7~+10 OC",
+     "on_ch": "KND"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-uf+3+4",
+     "damage": "25",
+     "startup": "i31",
+     "block": "-4c?",
+     "hit": "+7c?(+10c?)"
+    },
+    "ttt2_mvlt": {
+     "row": 51,
+     "name": "Kangaroo Stomp",
+     "anim_ref": "ttt2:rog:row:51"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "u+3+4",
+    "current": {
+     "name": "Kangaroo Stomp",
+     "damage": 25,
+     "startup_s": 0.433,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "f,F+2",
+   "hit_level": "m",
+   "damage": "33",
+   "startup": "i15",
+   "on_block": "-12",
+   "on_hit": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": "Sliding Hook",
+   "source_id": "Roger Jr-f,F+2",
+   "source_values": {
+    "input": "f,F+2",
+    "target": "m",
+    "damage": "33",
+    "startup": "i15(16~)",
+    "block": "-12",
+    "hit": "KND",
+    "ch": "JG",
+    "notes": "Balcony Break"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "f, F+2",
+     "damage": "33",
+     "speed": "15(16~)",
+     "on_block": "-12",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-f,F+2",
+     "damage": "25",
+     "startup": "i15",
+     "block": "-12",
+     "hit": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 52,
+     "name": "Sliding Hook",
+     "anim_ref": "ttt2:rog:row:52"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "f,f+2",
+    "current": {
+     "name": "Sliding Hook",
+     "damage": 25,
+     "startup_s": 0.333,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "f,F+4",
+   "hit_level": "m",
+   "damage": "33",
+   "startup": "i15",
+   "on_block": "-15",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": "Konvict Kick",
+   "source_id": "Roger Jr-f,F+4",
+   "source_values": {
+    "input": "f,F+4",
+    "target": "m",
+    "damage": "33",
+    "startup": "i15(16~)",
+    "block": "-15",
+    "hit": "KND",
+    "ch": "KND",
+    "notes": "Balcony Break"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "f, F+4",
+     "damage": "33",
+     "speed": "15(16~)",
+     "on_block": "-15",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-f,F+4",
+     "damage": "24",
+     "startup": "i15",
+     "block": "-20",
+     "hit": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 53,
+     "name": "Konvict Kick",
+     "anim_ref": "ttt2:rog:row:53"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "f,f+4",
+    "current": {
+     "name": "Konvict Kick",
+     "damage": 25,
+     "startup_s": 0.333,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "f,F+1+2",
+   "hit_level": "h",
+   "damage": "20",
+   "startup": "i20~39",
+   "on_block": "-5~+13",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "js",
+   "transitions": [],
+   "name": "Head First Lunge",
+   "source_id": "Roger Jr-f,F+1+2",
+   "source_values": {
+    "input": "f,F+1+2",
+    "target": "h",
+    "damage": "20",
+    "startup": "i20~39(21~)",
+    "block": "-5~+13",
+    "hit": "KND",
+    "ch": "KND",
+    "crush": "js",
+    "notes": "Balcony Break; Becomes L on later active frames, i40~43(41~), -25~-22 on block"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "f, F+1+2",
+     "damage": "20",
+     "speed": "20~39 (21~)",
+     "on_block": "-5~+13",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-f,F+1+2",
+     "damage": "15",
+     "startup": "i20",
+     "block": "-5~+13",
+     "hit": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 54,
+     "name": "Head First Lunge",
+     "anim_ref": "ttt2:rog:row:54"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "f,f+1+2",
+    "current": {
+     "name": "Head First Lunge",
+     "damage": 15,
+     "startup_s": 0.3,
+     "hit_range": "high",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "f,F+3+4",
+   "hit_level": "h",
+   "damage": "33",
+   "startup": "i28~30",
+   "on_block": "+7~+9",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "js",
+   "transitions": [],
+   "name": "Exploder",
+   "source_id": "Roger Jr-f,F+3+4",
+   "source_values": {
+    "input": "f,F+3+4",
+    "target": "h",
+    "damage": "33",
+    "startup": "i28~30(29~)",
+    "block": "+7~+9",
+    "hit": "KND",
+    "ch": "KND",
+    "crush": "js",
+    "notes": "Balcony Break; Becomes SM on later active frames, i45~46(46~), -6~-5/+3~+4/+3~+4, recovers FDFT"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "f, F+3+4",
+     "damage": "33",
+     "speed": "28~30 (29~)",
+     "on_block": "+7",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 55,
+     "name": "Exploder",
+     "anim_ref": "ttt2:rog:row:55"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "f,f+3+4",
+    "current": {
+     "name": "Exploder",
+     "damage": 25,
+     "startup_s": 0.4,
+     "hit_range": "high",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "b,B+4",
+   "hit_level": "M",
+   "damage": "40",
+   "startup": "i37~38",
+   "on_block": "+4c+5c",
+   "on_hit": "+8c~+9c",
+   "tags": "js",
+   "transitions": [],
+   "name": "Rolling Toe Drop",
+   "source_id": "Roger Jr-b,B+4",
+   "source_values": {
+    "input": "b,B+4",
+    "target": "M",
+    "damage": "40",
+    "startup": "i37~38(38~)",
+    "block": "+4c+5c",
+    "hit": "+8c~+9c",
+    "ch": "JG",
+    "crush": "js",
+    "notes": "Spike"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "b, B+4",
+     "damage": "40",
+     "speed": "37~38 (38~)",
+     "on_block": "+4~+5 OC",
+     "on_hit": "+8~+9 OC",
+     "on_ch": "KND"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-b,B+4",
+     "damage": "30",
+     "startup": "i37",
+     "block": "+4c",
+     "hit": "+4c"
+    },
+    "ttt2_mvlt": {
+     "row": 56,
+     "name": "Rolling Toe Drop",
+     "anim_ref": "ttt2:rog:row:56"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "b,b+4",
+    "current": {
+     "name": "Rolling Torpedo",
+     "damage": null,
+     "startup_s": null,
+     "hit_range": null,
+     "tekken_base": null,
+     "anim_ref": "ttt2:rog:row:56"
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "f,f,F+3",
+   "hit_level": "m",
+   "damage": "40",
+   "startup": "i23",
+   "on_block": "+10g",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "js",
+   "transitions": [],
+   "name": "Baiame's Spear",
+   "source_id": "Roger Jr-f,f,F+3",
+   "source_values": {
+    "input": "f,f,F+3",
+    "target": "m",
+    "damage": "40",
+    "startup": "i23(26~)",
+    "block": "+10g",
+    "hit": "KND",
+    "ch": "KND",
+    "crush": "js",
+    "notes": "Balcony Break"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "f, f, f+3 or WR+3",
+     "damage": "40",
+     "speed": "23(26~)",
+     "on_block": "+10 GB",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 59,
+     "name": "Baiame's Spear",
+     "anim_ref": "ttt2:rog:row:59"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "f,f,f+3",
+    "current": {
+     "name": "Baiame's Spear",
+     "damage": 30,
+     "startup_s": 0.367,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "f,f,F+3+4",
+   "hit_level": "m",
+   "damage": "54",
+   "startup": "i28~29",
+   "on_block": "+17g~+18g",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "js",
+   "transitions": [],
+   "name": "Running Exploder",
+   "source_id": "Roger Jr-f,f,F+3+4",
+   "source_values": {
+    "input": "f,f,F+3+4",
+    "target": "m",
+    "damage": "54",
+    "startup": "i28~29(31~)",
+    "block": "+17g~+18g",
+    "hit": "KND",
+    "ch": "KND",
+    "crush": "js",
+    "notes": "Balcony Break"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "f, f, f+3+4 or WR+3+4",
+     "damage": "54",
+     "speed": "28~29 RG (31~)",
+     "on_block": "+17~+18 GB",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-f,f,F+3+4",
+     "damage": "40",
+     "startup": "i28",
+     "block": "FUFT",
+     "hit": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 60,
+     "name": "Running Exploder",
+     "anim_ref": "ttt2:rog:row:60"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "f,f,f+3+4",
+    "current": {
+     "name": "Running Exploder",
+     "damage": 40,
+     "startup_s": 0.433,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "FC.df+2",
+   "hit_level": "m",
+   "damage": "31",
+   "startup": "i16",
+   "on_block": "-12",
+   "tags": "",
+   "transitions": [],
+   "name": "Crouching Uppercut",
+   "source_id": "Roger Jr-FC.df+2",
+   "source_values": {
+    "input": "FC.df+2",
+    "target": "m",
+    "damage": "31",
+    "startup": "i16",
+    "block": "-12",
+    "hit": "JG",
+    "ch": "JG",
+    "notes": "Tag Buffer"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "FC+d/f+2",
+     "damage": "31",
+     "speed": "16",
+     "on_block": "-12",
+     "on_hit": "Launch (JG?)",
+     "on_ch": "Launch (JG?)"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-FC.df+2",
+     "damage": "23",
+     "startup": "i16",
+     "block": "-12",
+     "hit": "+?a"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "FC,d/f+2",
+    "current": {
+     "name": "Crouching Uppercut",
+     "damage": 23,
+     "startup_s": 0.267,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "FC.df+4",
+   "hit_level": "L",
+   "damage": "27",
+   "startup": "i21",
+   "on_block": "-17",
+   "on_hit": "-3",
+   "on_ch": "-3",
+   "tags": "cs",
+   "transitions": [
+    "FC"
+   ],
+   "name": "Tail Mopping",
+   "source_id": "Roger Jr-FC.df+4",
+   "source_values": {
+    "input": "FC.df+4",
+    "alt": "FC.df+3+4; FC.d+3+4",
+    "target": "L",
+    "damage": "27",
+    "startup": "i21",
+    "block": "-17",
+    "hit": "-3",
+    "ch": "-3",
+    "crush": "cs",
+    "recv": "FC",
+    "notes": "Cannot be low parried"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "FC+d/f+4 or d+3+4",
+     "damage": "27",
+     "speed": "21 RC",
+     "on_block": "-17",
+     "on_hit": "-3",
+     "on_ch": "-3"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "FC,d/f+4",
+    "current": {
+     "name": "Tail Mopping",
+     "damage": null,
+     "startup_s": null,
+     "hit_range": null,
+     "tekken_base": null,
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "ws1",
+   "hit_level": "m",
+   "damage": "16",
+   "startup": "i12",
+   "on_block": "-2",
+   "on_hit": "+9",
+   "on_ch": "+9",
+   "tags": "",
+   "transitions": [],
+   "name": null,
+   "source_id": "Roger Jr-ws1",
+   "source_values": {
+    "input": "ws1",
+    "target": "m",
+    "damage": "16",
+    "startup": "i12",
+    "block": "-2",
+    "hit": "+9",
+    "ch": "+9"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "WS+1",
+     "damage": "16",
+     "speed": "12~13",
+     "on_block": "-2~-1",
+     "on_hit": "+9~+10",
+     "on_ch": "+9~+10"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-ws1",
+     "damage": "12",
+     "startup": "i12",
+     "block": "-2",
+     "hit": "+9"
+    }
+   },
+   "menajerii": {
+    "status": "input_conflict",
+    "key": "WS 1",
+    "current": {
+     "name": "Rising Claw",
+     "damage": 14,
+     "startup_s": 0.217,
+     "hit_range": "mid",
+     "tekken_base": "Kuma (Tekken 7)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "ws2",
+   "hit_level": "m",
+   "damage": "16",
+   "startup": "i14",
+   "on_block": "-7",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "tags": "",
+   "transitions": [],
+   "name": null,
+   "source_id": "Roger Jr-ws2",
+   "source_values": {
+    "input": "ws2",
+    "target": "m",
+    "damage": "16",
+    "startup": "i14",
+    "block": "-7",
+    "hit": "+4",
+    "ch": "+4"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "WS+2",
+     "damage": "16",
+     "speed": "14",
+     "on_block": "-7",
+     "on_hit": "+4",
+     "on_ch": "+4"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-ws2",
+     "damage": "15",
+     "startup": "i14",
+     "block": "-7",
+     "hit": "+3"
+    }
+   },
+   "menajerii": {
+    "status": "input_conflict",
+    "key": "WS 2",
+    "current": {
+     "name": "Rising Maul Uppercut",
+     "damage": 20,
+     "startup_s": 0.25,
+     "hit_range": "mid",
+     "tekken_base": "Kuma (Tekken 7)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "ws2,2",
+   "hit_level": "m,m",
+   "damage": "16,31",
+   "on_block": "-13c",
+   "on_hit": "+3c",
+   "on_ch": "+3c",
+   "tags": "",
+   "transitions": [],
+   "name": "Boomerang Punch",
+   "source_id": "Roger Jr-ws2,2",
+   "source_values": {
+    "input": ",2",
+    "target": ",m",
+    "damage": ",31",
+    "block": "-13c",
+    "hit": "+3c",
+    "ch": "+3c",
+    "notes": "Bound; Natural combo from 1st hit"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "WS+2, 2",
+     "damage": "16,31",
+     "speed": "14",
+     "on_block": "-13 OC",
+     "on_hit": "+3 OC",
+     "on_ch": "+3 OC"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "WS+2,2",
+    "current": {
+     "name": "Boomerang Punch",
+     "damage": 23,
+     "startup_s": 0.3,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "ws3",
+   "hit_level": "m",
+   "damage": "17",
+   "startup": "i15~16",
+   "on_block": "-20~-19",
+   "on_hit": "-9~-8",
+   "on_ch": "-4~-3",
+   "tags": "",
+   "transitions": [],
+   "name": null,
+   "source_id": "Roger Jr-ws3",
+   "source_values": {
+    "input": "ws3",
+    "target": "m",
+    "damage": "17",
+    "startup": "i15~16",
+    "block": "-20~-19",
+    "hit": "-9~-8",
+    "ch": "-4~-3"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "WS+3",
+     "damage": "17",
+     "speed": "15~16",
+     "on_block": "-20~-19",
+     "on_hit": "-9~-8",
+     "on_ch": "-4~-3"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-ws3",
+     "damage": "18",
+     "startup": "i15~i16",
+     "block": "-16?",
+     "hit": "-4?"
+    }
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "WS+3",
+    "current": {
+     "name": "Rising Foot",
+     "damage": null,
+     "startup_s": null,
+     "hit_range": null,
+     "tekken_base": null,
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "ws3,3",
+   "hit_level": "m,h",
+   "damage": "17,16",
+   "on_block": "-8~-7",
+   "on_hit": "+3~+4",
+   "on_ch": "+3~+4",
+   "tags": "",
+   "transitions": [],
+   "name": "Spring Stomp Kick",
+   "source_id": "Roger Jr-ws3,3",
+   "source_values": {
+    "input": ",3",
+    "target": ",h",
+    "damage": ",16",
+    "block": "-8~-7",
+    "hit": "+3~+4",
+    "ch": "+3~+4",
+    "notes": "Natural combo from 1st hit"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "WS+3, 3",
+     "damage": "17,16",
+     "speed": "15~16",
+     "on_block": "-8~-7",
+     "on_hit": "+3~+4",
+     "on_ch": "+3~+4"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-ws3,3",
+     "damage": "18,12",
+     "startup": "",
+     "block": "-8",
+     "hit": "+4"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "WS+3,3",
+    "current": {
+     "name": "Spring Stomp Kick",
+     "damage": 12,
+     "startup_s": 0.3,
+     "hit_range": "high",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "ws3,3*",
+   "hit_level": "m,M",
+   "damage": "17,33",
+   "on_block": "-5c~-3c",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": "Charged Stomp Kick",
+   "source_id": "Roger Jr-ws3,3*",
+   "source_values": {
+    "input": ",3*",
+    "target": ",M",
+    "damage": ",33",
+    "block": "-5c~-3c",
+    "hit": "KND",
+    "ch": "KND",
+    "notes": "Bound"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "WS+3, 3 *",
+     "damage": "17,33",
+     "speed": "15~16",
+     "on_block": "-5~-3 OC",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-ws3,3*",
+     "damage": "18,21",
+     "startup": "",
+     "block": "+0",
+     "hit": "KND (FDFA)"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "WS+3,3~hold",
+    "current": {
+     "name": "Charge Stomp Kick",
+     "damage": 25,
+     "startup_s": 0.4,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "ws4",
+   "hit_level": "m",
+   "damage": "27",
+   "startup": "i11~12",
+   "on_block": "-6~-5",
+   "on_hit": "+5~+6",
+   "on_ch": "+5~+6",
+   "tags": "",
+   "transitions": [],
+   "name": "Toe Smash",
+   "source_id": "Roger Jr-ws4",
+   "source_values": {
+    "input": "ws4",
+    "target": "m",
+    "damage": "27",
+    "startup": "i11~12",
+    "block": "-6~-5",
+    "hit": "+5~+6",
+    "ch": "+5~+6"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "WS+4",
+     "damage": "27",
+     "speed": "11~12",
+     "on_block": "-6~-5",
+     "on_hit": "+5~+6",
+     "on_ch": "+5~+6"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-ws4",
+     "damage": "20",
+     "startup": "i11",
+     "block": "-6",
+     "hit": "+5"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "WS+4",
+    "current": {
+     "name": "Toe Smash",
+     "damage": 20,
+     "startup_s": 0.267,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "db+4",
+   "hit_level": "m",
+   "damage": "13",
+   "startup": "i21",
+   "on_block": "-19",
+   "on_hit": "-8",
+   "on_ch": "-8",
+   "tags": "cs",
+   "transitions": [
+    "AKS"
+   ],
+   "name": "Animal Kick Stance",
+   "source_id": "Roger Jr-db+4",
+   "source_values": {
+    "input": "db+4",
+    "target": "m",
+    "damage": "13",
+    "startup": "i21",
+    "block": "-19",
+    "hit": "-8",
+    "ch": "-8",
+    "crush": "cs",
+    "recv": "AKS",
+    "notes": "Transition to AKS"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "d/b+4",
+     "damage": "13",
+     "speed": "21",
+     "on_block": "-19",
+     "on_hit": "-8",
+     "on_ch": "-8"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-db+4",
+     "damage": "14",
+     "startup": "i21",
+     "block": "-?",
+     "hit": "+?"
+    },
+    "t6psp_com_name_present": false
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "d/b+4",
+    "current": {
+     "name": "Animal Kick Rush start",
+     "damage": 12,
+     "startup_s": 0.267,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "db+4,1",
+   "hit_level": "m,sp",
+   "damage": "13",
+   "on_block": "-11",
+   "on_hit": "+0",
+   "on_ch": "+0",
+   "tags": "cs",
+   "transitions": [
+    "AKS"
+   ],
+   "name": null,
+   "source_id": "Roger Jr-db+4,1",
+   "source_values": {
+    "input": ",1",
+    "target": ",sp",
+    "block": "-11",
+    "hit": "+0",
+    "ch": "+0",
+    "crush": "cs",
+    "recv": "AKS",
+    "notes": "Side roll; Can restart the Animal Kick Rush"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "d/b+4, 1",
+     "damage": "13",
+     "speed": "21",
+     "on_block": "-11",
+     "on_hit": "0",
+     "on_ch": "0"
+    }
+   },
+   "menajerii": {
+    "status": "absent",
+    "key": null
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "db+4,3",
+   "hit_level": "m,m",
+   "damage": "13,12",
+   "on_block": "-19",
+   "on_hit": "-8",
+   "on_ch": "-8",
+   "tags": "cs",
+   "transitions": [],
+   "name": null,
+   "source_id": "Roger Jr-db+4,3",
+   "source_values": {
+    "input": ",3",
+    "target": ",m",
+    "damage": ",12",
+    "block": "-19",
+    "hit": "-8",
+    "ch": "-8",
+    "crush": "cs",
+    "notes": "Natural combo from 1st hit"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "d/b+4, 3",
+     "damage": "13,12",
+     "speed": "21",
+     "on_block": "-19",
+     "on_hit": "-8",
+     "on_ch": "-8"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-db+4,3",
+     "damage": "14,14",
+     "startup": "",
+     "block": "-?",
+     "hit": "+?"
+    }
+   },
+   "menajerii": {
+    "status": "absent",
+    "key": null
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "db+4,3,4",
+   "hit_level": "m,m,m",
+   "damage": "13,12,10",
+   "on_block": "-19",
+   "on_hit": "-8",
+   "on_ch": "-8",
+   "tags": "cs",
+   "transitions": [],
+   "name": null,
+   "source_id": "Roger Jr-db+4,3,4",
+   "source_values": {
+    "input": ",4",
+    "target": ",m",
+    "damage": ",10",
+    "block": "-19",
+    "hit": "-8",
+    "ch": "-8",
+    "crush": "cs",
+    "notes": "Natural combo from 2nd CH"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "d/b+4, 3, 4",
+     "damage": "13,12,10",
+     "speed": "21",
+     "on_block": "-19",
+     "on_hit": "-8",
+     "on_ch": "-8"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-db+4,3,4",
+     "damage": "14,14,14",
+     "startup": "",
+     "block": "-29",
+     "hit": "-18"
+    }
+   },
+   "menajerii": {
+    "status": "absent",
+    "key": null
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "db+4,3,4,1",
+   "hit_level": "m,m,m,sp",
+   "damage": "13,12,10",
+   "on_block": "-11",
+   "on_hit": "+0",
+   "on_ch": "+0",
+   "tags": "cs",
+   "transitions": [
+    "AKS"
+   ],
+   "name": null,
+   "source_id": "Roger Jr-db+4,3,4,1",
+   "source_values": {
+    "input": ",1",
+    "target": ",sp",
+    "block": "-11",
+    "hit": "+0",
+    "ch": "+0",
+    "crush": "cs",
+    "recv": "AKS",
+    "notes": "Side roll; Can restart the Animal Kick Rush"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "d/b+4, 3, 4, 1",
+     "damage": "13,12,10",
+     "speed": "21",
+     "on_block": "-11",
+     "on_hit": "0",
+     "on_ch": "0"
+    }
+   },
+   "menajerii": {
+    "status": "absent",
+    "key": null
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "db+4,3,4,3",
+   "hit_level": "m,m,m,m",
+   "damage": "13,12,10,9",
+   "on_block": "-19",
+   "on_hit": "-8",
+   "on_ch": "-8",
+   "tags": "cs",
+   "transitions": [],
+   "name": null,
+   "source_id": "Roger Jr-db+4,3,4,3",
+   "source_values": {
+    "input": ",3",
+    "target": ",m",
+    "damage": ",9",
+    "block": "-19",
+    "hit": "-8",
+    "ch": "-8",
+    "crush": "cs",
+    "notes": "Natural combo from 3rd hit; Natural combo from 2nd CH"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "d/b+4, 3, 4, 3",
+     "damage": "13,12,10,9",
+     "speed": "21",
+     "on_block": "-19",
+     "on_hit": "-8",
+     "on_ch": "-8"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-db+4,3,4,3",
+     "damage": "14,14,14,14",
+     "startup": "",
+     "block": "-?",
+     "hit": "+?"
+    }
+   },
+   "menajerii": {
+    "status": "absent",
+    "key": null
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "db+4,3,4,b",
+   "hit_level": "m,m,m",
+   "damage": "13,12,10",
+   "on_block": "-17",
+   "on_hit": "-6",
+   "on_ch": "-6",
+   "tags": "",
+   "transitions": [],
+   "name": null,
+   "source_id": "Roger Jr-db+4,3,4,b",
+   "source_values": {
+    "input": ",b",
+    "block": "-17",
+    "hit": "-6",
+    "ch": "-6",
+    "notes": "Backroll"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "d/b+4, 3, 4, b",
+     "damage": "13,12,10",
+     "speed": "21",
+     "on_block": "-17",
+     "on_hit": "-6",
+     "on_ch": "-6"
+    }
+   },
+   "menajerii": {
+    "status": "absent",
+    "key": null
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "db+4,3,4,3,4",
+   "hit_level": "m,m,m,m,m",
+   "damage": "13,12,10,9,8",
+   "on_block": "-29",
+   "on_hit": "-18",
+   "on_ch": "-18",
+   "tags": "cs",
+   "transitions": [],
+   "name": "Animal Kick Rush",
+   "source_id": "Roger Jr-db+4,3,4,3,4",
+   "source_values": {
+    "input": ",4",
+    "target": ",m",
+    "damage": ",8",
+    "block": "-29",
+    "hit": "-18",
+    "ch": "-18",
+    "crush": "cs"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "d/b+4, 3, 4, 3, 4",
+     "damage": "13,12,10,9,8",
+     "speed": "21",
+     "on_block": "-29",
+     "on_hit": "-18",
+     "on_ch": "-18"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-db+4,3,4,3,4",
+     "damage": "14,14,14,14,14",
+     "startup": "",
+     "block": "-29",
+     "hit": "-18"
+    },
+    "ttt2_mvlt": {
+     "row": 26,
+     "name": "Animal Kick Rush",
+     "anim_ref": "ttt2:rog:row:26"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "d/b+4,3,4,3,4",
+    "current": {
+     "name": "Animal Kick Rush",
+     "damage": 8,
+     "startup_s": 0.367,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "db+4,3,4,3,4,b",
+   "hit_level": "m,m,m,m,m",
+   "damage": "13,12,10,9,8",
+   "on_block": "-17",
+   "on_hit": "-6",
+   "on_ch": "-6",
+   "tags": "",
+   "transitions": [],
+   "name": null,
+   "source_id": "Roger Jr-db+4,3,4,3,4,b",
+   "source_values": {
+    "input": ",b",
+    "block": "-17",
+    "hit": "-6",
+    "ch": "-6",
+    "notes": "Backroll"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "d/b+4, 3, 4, 3, 4, b",
+     "damage": "13,12,10,9,8",
+     "speed": "21",
+     "on_block": "-17",
+     "on_hit": "-6",
+     "on_ch": "-6"
+    }
+   },
+   "menajerii": {
+    "status": "absent",
+    "key": null
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "b+3+4",
+   "hit_level": "sp",
+   "tags": "",
+   "transitions": [
+    "BOB"
+   ],
+   "name": "Bobbing Dance",
+   "source_id": "Roger Jr-b+3+4",
+   "source_values": {
+    "input": "b+3+4",
+    "target": "sp",
+    "recv": "BOB",
+    "notes": "Transition to BOB"
+   },
+   "cross_check": {
+    "wavu_t5": {
+     "id": "Roger Jr-b+3+4",
+     "damage": "30",
+     "startup": "i25",
+     "block": "-50?",
+     "hit": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 42,
+     "name": "Bobbin Dance",
+     "anim_ref": "ttt2:rog:row:42"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "b+3+4",
+    "current": {
+     "name": "Bobbin Dance",
+     "damage": 0,
+     "startup_s": 0.3,
+     "hit_range": "none",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "BOB.1",
+   "hit_level": "h",
+   "damage": "33",
+   "startup": "i10",
+   "on_block": "+7",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": "Windmill Punch",
+   "source_id": "Roger Jr-BOB.1",
+   "source_values": {
+    "input": "BOB.1",
+    "target": "h",
+    "damage": "33",
+    "startup": "i10(20~)",
+    "block": "+7",
+    "hit": "KND",
+    "ch": "KND",
+    "notes": "Balcony Break"
+   },
+   "cross_check": {
+    "ttt2_mvlt": {
+     "row": 43,
+     "name": "Windmill Punch",
+     "anim_ref": "ttt2:rog:row:43"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "BOB 1",
+    "current": {
+     "name": "Windmill Punch",
+     "damage": 26,
+     "startup_s": 0.3,
+     "hit_range": "high",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "BOB.1 (after charge)",
+   "hit_level": "h",
+   "damage": "39",
+   "startup": "i10",
+   "on_block": "+41",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": "Windmill Punch",
+   "source_id": "Roger Jr-BOB.1 (after charge)",
+   "source_values": {
+    "input": "BOB.1 (after charge)",
+    "target": "h",
+    "damage": "39",
+    "startup": "i10(90~)",
+    "block": "+41",
+    "hit": "KND",
+    "ch": "KND",
+    "notes": "Balcony Break"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "b+3+4, 1 (After charge)",
+     "damage": "39",
+     "speed": "10(90~)",
+     "on_block": "+41",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "absent",
+    "key": null
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "BOB.2",
+   "hit_level": "m",
+   "damage": "35",
+   "startup": "i18",
+   "on_block": "-25",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": "Galaxy Uppercut",
+   "source_id": "Roger Jr-BOB.2",
+   "source_values": {
+    "input": "BOB.2",
+    "target": "m",
+    "damage": "35",
+    "startup": "i18(28~)",
+    "block": "-25",
+    "hit": "KND",
+    "ch": "KND",
+    "notes": "Balcony Break"
+   },
+   "cross_check": {
+    "ttt2_mvlt": {
+     "row": 44,
+     "name": "Galaxy Uppercut",
+     "anim_ref": "ttt2:rog:row:44"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "BOB 2",
+    "current": {
+     "name": "Galaxy Uppercut",
+     "damage": 26,
+     "startup_s": 0.333,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "BOB.2 (after charge)",
+   "hit_level": "m",
+   "damage": "42,3",
+   "startup": "i18",
+   "on_block": "-25",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": "Galaxy Uppercut",
+   "source_id": "Roger Jr-BOB.2 (after charge)",
+   "source_values": {
+    "input": "BOB.2 (after charge)",
+    "target": "m",
+    "damage": "42,3",
+    "startup": "i18(108~)",
+    "block": "-25",
+    "hit": "KND",
+    "ch": "KND",
+    "notes": "Balcony Break"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "b+3+4, 2 (After charge)",
+     "damage": "42(,3)",
+     "speed": "18(108~)",
+     "on_block": "-25",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "absent",
+    "key": null
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "f,n,d,df",
+   "tags": "",
+   "transitions": [],
+   "name": "Crouch Dash",
+   "source_id": "Roger Jr-f,n,d,df",
+   "source_values": {
+    "input": "f,n,d,df",
+    "notes": "Transition to CD; Cannot be buffered; Cancel to sidestep with u/d; Cancel to block with b"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "f, n, d, D/F",
+     "damage": null,
+     "speed": "+4F~",
+     "on_block": null,
+     "on_hit": null,
+     "on_ch": null
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-f,n,d,df",
+     "damage": "",
+     "startup": "",
+     "block": "",
+     "hit": ""
+    },
+    "t6psp_com_name_present": false
+   },
+   "menajerii": {
+    "status": "absent",
+    "key": null
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "f,n,d,df+1",
+   "hit_level": "m",
+   "damage": "54",
+   "startup": "i21",
+   "on_block": "-16",
+   "tags": "",
+   "transitions": [],
+   "name": "Animal Uppercut",
+   "source_id": "Roger Jr-f,n,d,df+1",
+   "source_values": {
+    "input": "f,n,d,df+1",
+    "target": "m",
+    "damage": "54",
+    "startup": "i21(24~)",
+    "block": "-16",
+    "hit": "JG",
+    "ch": "JG",
+    "notes": "Balcony Break"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "f, n, d, d/f+1",
+     "damage": "54",
+     "speed": "21 (24~)",
+     "on_block": "-16",
+     "on_hit": "Launch",
+     "on_ch": "Launch"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "f,N,d,d/f+1",
+    "current": {
+     "name": "Animal Uppercut",
+     "damage": 40,
+     "startup_s": 0.267,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "f,n,d,df+1+2",
+   "hit_level": "M",
+   "damage": "31",
+   "startup": "i16",
+   "on_block": "-15",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "cs",
+   "transitions": [],
+   "name": "Animal Smash",
+   "source_id": "Roger Jr-f,n,d,df+1+2",
+   "source_values": {
+    "input": "f,n,d,df+1+2",
+    "alt": "FC.d+1+2; FC.db+1+2",
+    "target": "M",
+    "damage": "31",
+    "startup": "i16(19~)",
+    "block": "-15",
+    "hit": "KND",
+    "ch": "KND",
+    "crush": "cs",
+    "notes": "Balcony Break"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "f, n, d, d/f+1+2",
+     "damage": "31",
+     "speed": "16(19~)",
+     "on_block": "-13",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "f,N,d,d/f+1+2",
+    "current": {
+     "name": "Animal Smash",
+     "damage": 23,
+     "startup_s": 0.333,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "b+1+2",
+   "hit_level": "sp",
+   "tags": "",
+   "transitions": [
+    "ROC"
+   ],
+   "name": "Rocket Stance",
+   "source_id": "Roger Jr-b+1+2",
+   "source_values": {
+    "input": "b+1+2",
+    "target": "sp",
+    "recv": "ROC",
+    "notes": "Transition to ROC"
+   },
+   "cross_check": {
+    "wavu_t5": {
+     "id": "Roger Jr-b+1+2",
+     "damage": "",
+     "startup": "",
+     "block": "",
+     "hit": ""
+    },
+    "ttt2_mvlt": {
+     "row": 33,
+     "name": "Rocket Stance",
+     "anim_ref": "ttt2:rog:row:33"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "b+1+2",
+    "current": {
+     "name": "Rocket Stance",
+     "damage": 0,
+     "startup_s": 0.333,
+     "hit_range": "none",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "ROC.1",
+   "hit_level": "m",
+   "damage": "35",
+   "startup": "i28~29",
+   "on_block": "-2c~-1c",
+   "tags": "",
+   "transitions": [],
+   "name": "Wind-up Hook",
+   "source_id": "Roger Jr-ROC.1",
+   "source_values": {
+    "input": "ROC.1",
+    "target": "m",
+    "damage": "35",
+    "startup": "i28~29(40~)",
+    "block": "-2c~-1c",
+    "hit": "JG",
+    "ch": "JG",
+    "notes": "Tag Buffer; Spike"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "b+1+2, 1",
+     "damage": "35",
+     "speed": "28~29 (40~)",
+     "on_block": "-2~-1 OC",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-ROC.1",
+     "damage": "26",
+     "startup": "i?",
+     "block": "-2c",
+     "hit": "+?a"
+    },
+    "ttt2_mvlt": {
+     "row": 36,
+     "name": "Wind-up Hook",
+     "anim_ref": "ttt2:rog:row:36"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "ROS 1",
+    "current": {
+     "name": "Wind-up Hook",
+     "damage": 26,
+     "startup_s": 0.3,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "ROC.2",
+   "hit_level": "h",
+   "damage": "40",
+   "startup": "i16",
+   "on_block": "-7",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": "Wind-up Straight",
+   "source_id": "Roger Jr-ROC.2",
+   "source_values": {
+    "input": "ROC.2",
+    "target": "h",
+    "damage": "40",
+    "startup": "i16(28~)",
+    "block": "-7",
+    "hit": "KND",
+    "ch": "KND",
+    "notes": "Balcony Break"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "b+1+2, 2",
+     "damage": "40",
+     "speed": "16(28~)",
+     "on_block": "-7",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-ROC.2",
+     "damage": "22",
+     "startup": "i22",
+     "block": "-6",
+     "hit": "+?a"
+    },
+    "ttt2_mvlt": {
+     "row": 37,
+     "name": "Wind-up Straight",
+     "anim_ref": "ttt2:rog:row:37"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "ROS 2",
+    "current": {
+     "name": "Wind-up Straight",
+     "damage": 30,
+     "startup_s": 0.333,
+     "hit_range": "high",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "ROC.3",
+   "hit_level": "L",
+   "damage": "21",
+   "startup": "i18",
+   "on_block": "-6",
+   "on_hit": "+5",
+   "on_ch": "+5",
+   "tags": "",
+   "transitions": [],
+   "name": "Wind-up Low Kick",
+   "source_id": "Roger Jr-ROC.3",
+   "source_values": {
+    "input": "ROC.3",
+    "target": "L",
+    "damage": "21",
+    "startup": "i18(30~)",
+    "block": "-6",
+    "hit": "+5",
+    "ch": "+5"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "b+1+2, 3",
+     "damage": "21",
+     "speed": "18(30~)",
+     "on_block": "-6",
+     "on_hit": "+5",
+     "on_ch": "+5"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-ROC.3",
+     "damage": "12",
+     "startup": "i18",
+     "block": "-9",
+     "hit": "+5"
+    },
+    "ttt2_mvlt": {
+     "row": 38,
+     "name": "Wind-up Low Kick",
+     "anim_ref": "ttt2:rog:row:38"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "ROS 3",
+    "current": {
+     "name": "Wind-up Low Kick",
+     "damage": 16,
+     "startup_s": 0.267,
+     "hit_range": "low",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "ROC.4",
+   "hit_level": "m",
+   "damage": "20",
+   "startup": "i17",
+   "on_block": "-4",
+   "on_hit": "+7",
+   "on_ch": "+7",
+   "tags": "",
+   "transitions": [],
+   "name": "Wind-up Middle Kick",
+   "source_id": "Roger Jr-ROC.4",
+   "source_values": {
+    "input": "ROC.4",
+    "target": "m",
+    "damage": "20",
+    "startup": "i17(29~)",
+    "block": "-4",
+    "hit": "+7",
+    "ch": "+7"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "b+1+2, 4",
+     "damage": "20",
+     "speed": "17(29~)",
+     "on_block": "-4",
+     "on_hit": "+7",
+     "on_ch": "+7"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-ROC.4",
+     "damage": "15",
+     "startup": "i17",
+     "block": "-4",
+     "hit": "+7"
+    },
+    "ttt2_mvlt": {
+     "row": 39,
+     "name": "Wind-up Middle Kick",
+     "anim_ref": "ttt2:rog:row:39"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "ROS 4",
+    "current": {
+     "name": "Wind-up Middle Kick",
+     "damage": 15,
+     "startup_s": 0.3,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "ROC.1+2",
+   "hit_level": "M,M,M",
+   "damage": "14,16,27",
+   "startup": "i18~19,i35~36,i51~52",
+   "on_block": "-14",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "",
+   "transitions": [
+    "FC"
+   ],
+   "name": "Road Roller",
+   "source_id": "Roger Jr-ROC.1+2",
+   "source_values": {
+    "input": "ROC.1+2",
+    "target": "M,M,M",
+    "damage": "14,16,27",
+    "startup": "i18~19(30~),i35~36,i51~52",
+    "block": "-14",
+    "hit": "KND",
+    "ch": "KND",
+    "recv": "FC",
+    "notes": "Spike; Can transition to AKS with 3+4 after the first hit(-11/+0/+0) or second(-27/KND/KND), cancels last hit; Cannot be reversed"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "b+1+2, 1+2",
+     "damage": "14,16,27",
+     "speed": "18~19, 35~36, 51~52 RC (30~)",
+     "on_block": "-14",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 40,
+     "name": "Road Roller",
+     "anim_ref": "ttt2:rog:row:40"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "ROS 1+2",
+    "current": {
+     "name": "Road Roller",
+     "damage": 14,
+     "startup_s": 0.367,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "ROC.3+4",
+   "hit_level": "m",
+   "damage": "29",
+   "startup": "i14~15",
+   "on_block": "+4~+5",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": "Wind-up Hip Press",
+   "source_id": "Roger Jr-ROC.3+4",
+   "source_values": {
+    "input": "ROC.3+4",
+    "target": "m",
+    "damage": "29",
+    "startup": "i14~15(26~)",
+    "block": "+4~+5",
+    "hit": "KND",
+    "ch": "KND",
+    "notes": "Balcony Break; Cannot be reversed"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "b+1+2, 3+4",
+     "damage": "29",
+     "speed": "14~15 (26~)",
+     "on_block": "+4~+5",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-ROC.3+4",
+     "damage": "22",
+     "startup": "i14",
+     "block": "+4",
+     "hit": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 41,
+     "name": "Wind-up Hip Press",
+     "anim_ref": "ttt2:rog:row:41"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "ROS 3+4",
+    "current": {
+     "name": "Wind-up Hip Press",
+     "damage": 22,
+     "startup_s": 0.4,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "ROC.f",
+   "hit_level": "m",
+   "damage": "40",
+   "startup": "i42~52",
+   "on_block": "+5~+15g",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": "Road Runner",
+   "source_id": "Roger Jr-ROC.f",
+   "source_values": {
+    "input": "ROC.f",
+    "target": "m",
+    "damage": "40",
+    "startup": "i42~52(54~)",
+    "block": "+5~+15g",
+    "hit": "KND",
+    "ch": "KND",
+    "notes": "Shoulder; Balcony Break"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "b+1+2, f",
+     "damage": "40",
+     "speed": "42~52 (54~)",
+     "on_block": "+5~+15 GB",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 34,
+     "name": "Road Runner",
+     "anim_ref": "ttt2:rog:row:34"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "ROS F",
+    "current": {
+     "name": "Road Runner",
+     "damage": 30,
+     "startup_s": 0.333,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "ROC.df",
+   "hit_level": "sp",
+   "startup": "i48",
+   "tags": "",
+   "transitions": [
+    "CD"
+   ],
+   "name": "Running Start",
+   "source_id": "Roger Jr-ROC.df",
+   "source_values": {
+    "input": "ROC.df",
+    "target": "sp",
+    "startup": "i48",
+    "recv": "CD",
+    "notes": "Transition to CD"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "b+1+2, d/f",
+     "damage": null,
+     "speed": "+48~( RC)",
+     "on_block": null,
+     "on_hit": null,
+     "on_ch": null
+    },
+    "ttt2_mvlt": {
+     "row": 35,
+     "name": "Running Start",
+     "anim_ref": "ttt2:rog:row:35"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "ROS D/F",
+    "current": {
+     "name": "Running Start",
+     "damage": 0,
+     "startup_s": 0.2,
+     "hit_range": "none",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "SS.4",
+   "hit_level": "L",
+   "damage": "22",
+   "startup": "i22~23",
+   "on_block": "-37c",
+   "on_hit": "KND",
+   "tags": "cs",
+   "transitions": [],
+   "name": "Animal Sweep",
+   "source_id": "Roger Jr-SS.4",
+   "source_values": {
+    "input": "SS.4",
+    "target": "L",
+    "damage": "22",
+    "startup": "i22~23(31~)",
+    "block": "-37c",
+    "hit": "KND",
+    "ch": "JG",
+    "crush": "cs"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "SS+4",
+     "damage": "22",
+     "speed": "22~23 (31~)",
+     "on_block": "-37 OC",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-SS.4",
+     "damage": "19",
+     "startup": "i22~i24",
+     "block": "-37c?",
+     "hit": "+?a"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "SS+4",
+    "current": {
+     "name": "Animal Sweep",
+     "damage": 17,
+     "startup_s": 0.333,
+     "hit_range": "low",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "BT.3+4",
+   "hit_level": "m",
+   "damage": "33",
+   "startup": "i14~15",
+   "on_block": "-16~-15",
+   "tags": "js",
+   "transitions": [],
+   "name": "Shrimp Kick",
+   "source_id": "Roger Jr-BT.3+4",
+   "source_values": {
+    "input": "BT.3+4",
+    "target": "m",
+    "damage": "33",
+    "startup": "i14~15",
+    "block": "-16~-15",
+    "hit": "JG",
+    "ch": "JG",
+    "crush": "js"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "BT 3+4",
+     "damage": "33",
+     "speed": "14~15",
+     "on_block": "-16~-15",
+     "on_hit": "Launch (JG?)",
+     "on_ch": "Launch (JG?)"
+    },
+    "wavu_t5": {
+     "id": "Roger Jr-BT.3+4",
+     "damage": "25",
+     "startup": "i14",
+     "block": "-16",
+     "hit": "+?a"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "BT 3+4",
+    "current": {
+     "name": "Shrimp Kick",
+     "damage": 25,
+     "startup_s": 0.4,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "BT.d+3",
+   "hit_level": "L",
+   "damage": "21",
+   "startup": "i17~18",
+   "on_block": "-11~-10",
+   "on_hit": "+4c~+5c",
+   "on_ch": "KND",
+   "tags": "",
+   "transitions": [
+    "BT"
+   ],
+   "name": "Dingo Kick",
+   "source_id": "Roger Jr-BT.d+3",
+   "source_values": {
+    "input": "BT.d+3",
+    "target": "L",
+    "damage": "21",
+    "startup": "i17~18",
+    "block": "-11~-10",
+    "hit": "+4c~+5c",
+    "ch": "KND",
+    "recv": "BT"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "BT d+3",
+     "damage": "21",
+     "speed": "17~18 RBT",
+     "on_block": "-11~-10",
+     "on_hit": "+4~+5 OC",
+     "on_ch": "KND"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "BT d+3",
+    "current": {
+     "name": "Dingo Kick",
+     "damage": 16,
+     "startup_s": 0.3,
+     "hit_range": "low",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "WR.4",
+   "hit_level": "L",
+   "damage": "29",
+   "startup": "i14",
+   "on_block": "-25",
+   "on_hit": "-9",
+   "on_ch": "-9",
+   "tags": "cs",
+   "transitions": [
+    "FC"
+   ],
+   "name": null,
+   "source_id": "Roger Jr-WR.4",
+   "source_values": {
+    "input": "WR.4",
+    "target": "L",
+    "damage": "29",
+    "startup": "i14",
+    "block": "-25",
+    "hit": "-9",
+    "ch": "-9",
+    "crush": "cs",
+    "recv": "FC",
+    "notes": "Needs 3 steps beforehand"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "WR+4",
+     "damage": "29",
+     "speed": "14 RC",
+     "on_block": "-25",
+     "on_hit": "-9",
+     "on_ch": "-9"
+    }
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "RN 4",
+    "current": {
+     "name": "Ali Kick",
+     "damage": null,
+     "startup_s": null,
+     "hit_range": null,
+     "tekken_base": null,
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "WR.4,2",
+   "hit_level": "L,m",
+   "damage": "29,13",
+   "on_block": "-17",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": "Spinning Uppercut",
+   "source_id": "Roger Jr-WR.4,2",
+   "source_values": {
+    "input": ",2",
+    "target": ",m",
+    "damage": ",13",
+    "block": "-17",
+    "hit": "KND",
+    "ch": "KND",
+    "notes": "Balcony Break; Natural combo from 1st CH; Needs 3 steps beforehand"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "WR+4, 2",
+     "damage": "29,13",
+     "speed": "14",
+     "on_block": "-17",
+     "on_hit": "KND",
+     "on_ch": "KND"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "WR 4,2",
+    "current": {
+     "name": "Spinning Uppercut",
+     "damage": 22,
+     "startup_s": 0.367,
+     "hit_range": "mid",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "WR.4,4",
+   "hit_level": "L,L",
+   "damage": "29,9",
+   "on_block": "-25",
+   "on_hit": "-9",
+   "on_ch": "-9",
+   "tags": "cs",
+   "transitions": [
+    "FC"
+   ],
+   "name": null,
+   "source_id": "Roger Jr-WR.4,4",
+   "source_values": {
+    "input": ",4",
+    "target": ",L",
+    "damage": ",9",
+    "block": "-25",
+    "hit": "-9",
+    "ch": "-9",
+    "crush": "cs",
+    "recv": "FC",
+    "notes": "Natural combo from 1st CH; Needs 3 steps beforehand"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "WR+4, 4",
+     "damage": "29,9",
+     "speed": "14 RC",
+     "on_block": "-25",
+     "on_hit": "-9",
+     "on_ch": "-9"
+    }
+   },
+   "menajerii": {
+    "status": "absent",
+    "key": null
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "WR.4,4,4",
+   "hit_level": "L,L,L",
+   "damage": "29,9,9",
+   "on_block": "-35",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "tags": "cs",
+   "transitions": [
+    "FC"
+   ],
+   "name": "Stagger Kicks",
+   "source_id": "Roger Jr-WR.4,4,4",
+   "source_values": {
+    "input": ",4",
+    "target": ",L",
+    "damage": ",9",
+    "block": "-35",
+    "hit": "+6",
+    "ch": "+6",
+    "crush": "cs",
+    "recv": "FC",
+    "notes": "Natural combo from 2nd CH; Needs 3 steps beforehand"
+   },
+   "cross_check": {
+    "rbnorway_ttt2": {
+     "notation": "WR+4, 4, 4",
+     "damage": "29,9,9",
+     "speed": "14 RC",
+     "on_block": "-35",
+     "on_hit": "+6",
+     "on_ch": "+6"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "WR 4,4,4",
+    "current": {
+     "name": "Stagger Kicks",
+     "damage": 7,
+     "startup_s": 0.4,
+     "hit_range": "low",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "1+3",
+   "hit_level": "t",
+   "damage": "35",
+   "startup": "i12~14",
+   "on_block": "-3",
+   "on_hit": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": "Head Stomp",
+   "source_id": "Roger Jr-1+3",
+   "source_values": {
+    "input": "1+3",
+    "target": "t",
+    "damage": "35",
+    "startup": "i12~14",
+    "block": "-3",
+    "hit": "KND",
+    "notes": "Floor Break; Throw break 1; Opponent recovers FDFA"
+   },
+   "cross_check": {
+    "wavu_t5": {
+     "id": "Roger Jr-1+3",
+     "damage": "35",
+     "startup": "",
+     "block": "",
+     "hit": "KND (FDFA)"
+    },
+    "ttt2_mvlt": {
+     "row": 73,
+     "name": "Head Stomp",
+     "anim_ref": "ttt2:rog:row:73"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "1+3",
+    "current": {
+     "name": "Head Stomp",
+     "damage": 35,
+     "startup_s": 0.2,
+     "hit_range": "throw",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": "ttt2:rog:row:73"
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "2+4",
+   "hit_level": "t",
+   "damage": "35",
+   "startup": "i12~14",
+   "on_block": "-3",
+   "on_hit": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": "Tasmanian Doormant",
+   "source_id": "Roger Jr-2+4",
+   "source_values": {
+    "input": "2+4",
+    "target": "t",
+    "damage": "35",
+    "startup": "i12~14",
+    "block": "-3",
+    "hit": "KND",
+    "notes": "Throw break 2; Side switch"
+   },
+   "cross_check": {
+    "wavu_t5": {
+     "id": "Roger Jr-2+4",
+     "damage": "35",
+     "startup": "",
+     "block": "",
+     "hit": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 75,
+     "name": "Tasmanian Doormat",
+     "anim_ref": "ttt2:rog:row:75"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "2+4",
+    "current": {
+     "name": "Tasmanian Doormat",
+     "damage": 35,
+     "startup_s": 0.2,
+     "hit_range": "throw",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": "ttt2:rog:row:75"
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "f+1+3",
+   "hit_level": "t",
+   "damage": "35",
+   "startup": "i15~17",
+   "on_block": "-3",
+   "on_hit": "KND",
+   "tags": "hb",
+   "transitions": [],
+   "name": "Head Stomp",
+   "source_id": "Roger Jr-f+1+3",
+   "source_values": {
+    "input": "f+1+3",
+    "target": "t",
+    "damage": "35",
+    "startup": "i15~17",
+    "block": "-3",
+    "hit": "KND",
+    "notes": "Homing; Floor Break; Throw break 1; Opponent recovers FDFA"
+   },
+   "cross_check": {
+    "ttt2_mvlt": {
+     "row": 74,
+     "name": "Head Stomp",
+     "anim_ref": "ttt2:rog:row:74"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "input_conflict",
+    "key": "f+1+3",
+    "current": {
+     "name": "Mauling Grab",
+     "damage": 35,
+     "startup_s": 0.25,
+     "hit_range": "throw",
+     "tekken_base": "Kuma (Tekken 7)",
+     "anim_ref": null
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "f+2+4",
+   "hit_level": "t",
+   "damage": "35",
+   "startup": "i15~17",
+   "on_block": "-3",
+   "on_hit": "KND",
+   "tags": "hb",
+   "transitions": [],
+   "name": "Tasmanian Doormant",
+   "source_id": "Roger Jr-f+2+4",
+   "source_values": {
+    "input": "f+2+4",
+    "target": "t",
+    "damage": "35",
+    "startup": "i15~17",
+    "block": "-3",
+    "hit": "KND",
+    "notes": "Homing; Throw break 2; Side switch"
+   },
+   "cross_check": {
+    "ttt2_mvlt": {
+     "row": 76,
+     "name": "Tasmanian Doormat",
+     "anim_ref": "ttt2:rog:row:76"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "absent",
+    "key": null
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "Left Throw",
+   "hit_level": "t",
+   "damage": "40",
+   "startup": "i12~14",
+   "on_block": "-3",
+   "on_hit": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": "Animal Face Crusher",
+   "source_id": "Roger Jr-Left Throw",
+   "source_values": {
+    "input": "Left Throw",
+    "alt": "1+3; 2+4",
+    "target": "t",
+    "damage": "40",
+    "startup": "i12~14",
+    "block": "-3",
+    "hit": "KND",
+    "notes": "Floor Break; Throw break 1; Opponent recovers FDFA"
+   },
+   "cross_check": {
+    "wavu_t5": {
+     "id": "Roger Jr-Left Throw",
+     "damage": "40",
+     "startup": "",
+     "block": "",
+     "hit": "KND (FDFA)"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "1+3~L",
+    "current": {
+     "name": "Animal Face Crusher",
+     "damage": 40,
+     "startup_s": 0.2,
+     "hit_range": "throw",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": "ttt2:rog:row:77"
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "Right Throw",
+   "hit_level": "t",
+   "damage": "40",
+   "startup": "i12~14",
+   "on_block": "-3",
+   "on_hit": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": "Animal Rolling Arm Lock",
+   "source_id": "Roger Jr-Right Throw",
+   "source_values": {
+    "input": "Right Throw",
+    "alt": "1+3; 2+4",
+    "target": "t",
+    "damage": "40",
+    "startup": "i12~14",
+    "block": "-3",
+    "hit": "KND",
+    "notes": "Throw break 2; Side switch; Opponent recovers FUFA"
+   },
+   "cross_check": {
+    "wavu_t5": {
+     "id": "Roger Jr-Right Throw",
+     "damage": "40",
+     "startup": "",
+     "block": "",
+     "hit": "KND (FUFA)"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "2+4~R",
+    "current": {
+     "name": "Animal Rolling Arm Lock",
+     "damage": 40,
+     "startup_s": 0.2,
+     "hit_range": "throw",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": "ttt2:rog:row:78"
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "Back Throw",
+   "hit_level": "t",
+   "damage": "50",
+   "startup": "i12~14",
+   "on_hit": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": "Reverse Neck Throw",
+   "source_id": "Roger Jr-Back Throw",
+   "source_values": {
+    "input": "Back Throw",
+    "alt": "1+3; 2+4",
+    "target": "t",
+    "damage": "50",
+    "startup": "i12~14",
+    "hit": "KND",
+    "notes": "Unbreakable throw; Side switch; Opponent recovers FUFA"
+   },
+   "cross_check": {
+    "wavu_t5": {
+     "id": "Roger Jr-Back Throw",
+     "damage": "50",
+     "startup": "",
+     "block": "",
+     "hit": "KND (FUFA)"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "BT 1+3",
+    "current": {
+     "name": "Reverse Neck Throw",
+     "damage": 50,
+     "startup_s": 0.2,
+     "hit_range": "throw",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": "ttt2:rog:row:79"
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "db,f+2+4",
+   "hit_level": "t",
+   "damage": "58",
+   "startup": "i11",
+   "on_block": "-2",
+   "on_hit": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": "Tombstone Pile Driver",
+   "source_id": "Roger Jr-db,f+2+4",
+   "source_values": {
+    "input": "db,f+2+4",
+    "target": "t",
+    "damage": "58",
+    "startup": "i11",
+    "block": "-2",
+    "hit": "KND",
+    "notes": "Floor Break; Throw break 2; Opponent recovers FUFA"
+   },
+   "cross_check": {
+    "wavu_t5": {
+     "id": "Roger Jr-db,F+2+4",
+     "damage": "58",
+     "startup": "",
+     "block": "",
+     "hit": "KND (FUFA)"
+    },
+    "ttt2_mvlt": {
+     "row": 80,
+     "name": "Tombstone Pile Driver",
+     "anim_ref": "ttt2:rog:row:80"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "d/b,f+2+4",
+    "current": {
+     "name": "Tombstone Pile Driver",
+     "damage": 58,
+     "startup_s": 0.267,
+     "hit_range": "throw",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": "ttt2:rog:row:80"
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "db,db+1+2",
+   "hit_level": "t",
+   "damage": "45",
+   "startup": "i11",
+   "on_block": "-6",
+   "on_hit": "KND",
+   "tags": "",
+   "transitions": [
+    "FUFA"
+   ],
+   "name": "DDT",
+   "source_id": "Roger Jr-db,db+1+2",
+   "source_values": {
+    "input": "db,db+1+2",
+    "target": "t",
+    "damage": "45",
+    "startup": "i11",
+    "block": "-6",
+    "hit": "KND",
+    "recv": "FUFA",
+    "notes": "Throw break 1+2; Opponent recovers FUFA"
+   },
+   "cross_check": {
+    "wavu_t5": {
+     "id": "Roger Jr-db,db+1+2",
+     "damage": "45",
+     "startup": "",
+     "block": "",
+     "hit": "KND (FUFA)"
+    },
+    "ttt2_mvlt": {
+     "row": 81,
+     "name": "DDT",
+     "anim_ref": "ttt2:rog:row:81"
+    },
+    "t6psp_com_name_present": false
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "d/b,d/b+1+2",
+    "current": {
+     "name": "DDT",
+     "damage": 45,
+     "startup_s": 0.3,
+     "hit_range": "throw",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": "ttt2:rog:row:81"
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "qcf+1",
+   "hit_level": "t",
+   "damage": "40",
+   "startup": "i11",
+   "on_block": "-2",
+   "on_hit": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": "Pile Driver",
+   "source_id": "Roger Jr-qcf+1",
+   "source_values": {
+    "input": "qcf+1",
+    "target": "t",
+    "damage": "40",
+    "startup": "i11",
+    "block": "-2",
+    "hit": "KND",
+    "notes": "Floor Break; Throw break 1"
+   },
+   "cross_check": {
+    "wavu_t5": {
+     "id": "Roger Jr-qcf+1",
+     "damage": "40",
+     "startup": "",
+     "block": "",
+     "hit": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 82,
+     "name": "Pile Driver",
+     "anim_ref": "ttt2:rog:row:82"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "d,d/f,f+1",
+    "current": {
+     "name": "Pile Driver",
+     "damage": 40,
+     "startup_s": 0.267,
+     "hit_range": "throw",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": "ttt2:rog:row:82"
+    }
+   },
+   "animation": "pending"
+  },
+  {
+   "command": "f,hcf+1",
+   "hit_level": "t",
+   "damage": "45,20",
+   "startup": "i10",
+   "on_block": "-13",
+   "on_hit": "KND",
+   "tags": "",
+   "transitions": [],
+   "name": "Giant Swing",
+   "source_id": "Roger Jr-f,hcf+1",
+   "source_values": {
+    "input": "f,hcf+1",
+    "target": "t",
+    "damage": "45,20",
+    "startup": "i10",
+    "block": "-13",
+    "hit": "KND",
+    "notes": "Throw break 1; Side switch; Opponent can techroll to reduce damage(3f input window); 70 damage on wall splat"
+   },
+   "cross_check": {
+    "wavu_t5": {
+     "id": "Roger Jr-f,hcf+1",
+     "damage": "40",
+     "startup": "",
+     "block": "",
+     "hit": "KND"
+    },
+    "ttt2_mvlt": {
+     "row": 83,
+     "name": "Giant Swing",
+     "anim_ref": "ttt2:rog:row:83"
+    },
+    "t6psp_com_name_present": true
+   },
+   "menajerii": {
+    "status": "same_move",
+    "key": "f,b,d/b,d,d/f,f+1",
+    "current": {
+     "name": "Giant Swing",
+     "damage": 65,
+     "startup_s": 0.333,
+     "hit_range": "throw",
+     "tekken_base": "Roger Jr. (TTT2)",
+     "anim_ref": "ttt2:rog:row:83"
+    }
+   },
+   "animation": "pending"
+  }
+ ],
+ "menajerii_moves_not_in_source": [
+  {
+   "key": "1,2,b+1+2",
+   "name": "Left Right Rocket Stance",
+   "tekken_base": "Roger Jr. (TTT2)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "10hit-a",
+   "name": "Tenstring A (10-hit)",
+   "tekken_base": "Roger Jr. (TTT2)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "10hit-b",
+   "name": "Tenstring B (10-hit)",
+   "tekken_base": "Roger Jr. (TTT2)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "b+1+3",
+   "name": "Heron's Patience",
+   "tekken_base": "Roger Jr. (TTT2)",
+   "merge_source": null,
+   "anim_ref": "wh:menajerii:heron-s-patience"
+  },
+  {
+   "key": "HRN 1",
+   "name": "Heron Strike",
+   "tekken_base": "Roger Jr. (TTT2)",
+   "merge_source": null,
+   "anim_ref": "wh:menajerii:heron-strike"
+  },
+  {
+   "key": "f+2+3",
+   "name": "Boar's Commit",
+   "tekken_base": "Roger Jr. (TTT2)",
+   "merge_source": null,
+   "anim_ref": "wh:menajerii:boar-s-commit"
+  },
+  {
+   "key": "d/b+2+3",
+   "name": "Serpent's Economy",
+   "tekken_base": "Roger Jr. (TTT2)",
+   "merge_source": null,
+   "anim_ref": "wh:menajerii:serpent-s-economy"
+  },
+  {
+   "key": "1+2,1+2",
+   "name": "Double Paw Echo",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "1+2,1+2,1+2",
+   "name": "Triple Paw Slam",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "f+1",
+   "name": "Spirit Claw Jab",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "f+1,1",
+   "name": "Claw Flurry",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "f+2",
+   "name": "Raking Swipe",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "f+2,1",
+   "name": "Rake and Gnaw",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "2,1,2",
+   "name": "Pack Hunt Cross",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "2,1,3",
+   "name": "Pack Hunt Sweep",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "b+2,1",
+   "name": "Swipe and Snap",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "b+2,1,1+2",
+   "name": "Savage Combination",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "b+3~4",
+   "name": "Stalker Stomp",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "b,f+2",
+   "name": "Leaping Mauling",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "b,f+2+3",
+   "name": "Burrowing Claws",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "b,d/b,d,d/f+2",
+   "name": "Spiraling Pounce",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "b,d/b,d,d/f+2,1",
+   "name": "Pounce Fang",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "b,d/b,d,d/f+2,2",
+   "name": "Pounce Rip",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "d/f+3,2",
+   "name": "Scratch and Slam",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "d/f+1,2,1",
+   "name": "Claw Dance",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "d/f+1,2,1,2",
+   "name": "Claw Dance Finale",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "d/b+1,2",
+   "name": "Rising Maul Pair",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "d/b+2",
+   "name": "Paw Trip",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "u/f+1",
+   "name": "Leaping Claw",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "u/f+3,4",
+   "name": "Fang and Slam",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "u+1+2",
+   "name": "Sky Drop Mauling",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "SS 1+2",
+   "name": "Sidestep Maul",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "WR 3",
+   "name": "Charging Maul",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "WR 1+2",
+   "name": "Rushing Tackle",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "WR 4",
+   "name": "Charging Low Bite",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "WS 1,1",
+   "name": "Rising Claw Pair",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "WS 1,2",
+   "name": "Rising Claw Cross",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "WS 3",
+   "name": "Rising Stomp",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "WS 1+2",
+   "name": "Rising Double Maul",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "FC 1",
+   "name": "Crouch Scratch",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "FC 1,1",
+   "name": "Crouch Claw Pair",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "FC 2",
+   "name": "Crouch Gut Maul",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "FC 3",
+   "name": "Crouch Ankle Rake",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "FC 4",
+   "name": "Crouch Trip",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "FC d/f+1",
+   "name": "Crouch Rise Claw",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "FC d/f+2",
+   "name": "Crouch Heavy Maul",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "FC d/f+2,n,1",
+   "name": "Crouch Maul Snap",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "hcb,f+1+2",
+   "name": "Spirit Bear Hug",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "HBS 1",
+   "name": "Hunting Scratch",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "HBS 1,2",
+   "name": "Hunting Claw Pair",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "HBS 2",
+   "name": "Hunting Bite",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "HBS 1+2",
+   "name": "Hunting Maul",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "HBS d/f+1",
+   "name": "Hunting Rise",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "HBS d/f+2",
+   "name": "Hunting Launcher",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "HBS b+1+2",
+   "name": "Hunting Low Maul",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "HBS 3+4",
+   "name": "Hunting Spin",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "HBS f+1+2",
+   "name": "Hunting Grab",
+   "tekken_base": "Kuma (Tekken 7)",
+   "merge_source": null,
+   "anim_ref": null
+  },
+  {
+   "key": "b+1",
+   "name": "Backhand Maul",
+   "tekken_base": "Kuma (Tekken 3)",
+   "merge_source": null,
+   "anim_ref": "t3:kuma:row:48"
+  },
+  {
+   "key": "b,f,d,d/b,b,u,u/f",
+   "name": "Spirit Maelstrom",
+   "tekken_base": "Kuma (Tekken 3)",
+   "merge_source": null,
+   "anim_ref": "t3:kuma:row:155"
+  },
+  {
+   "key": "b,n,f+2+3",
+   "name": "Grizzly Charge",
+   "tekken_base": "Kuma (Tekken 3)",
+   "merge_source": null,
+   "anim_ref": "t3:kuma:row:205"
+  },
+  {
+   "key": "d/f+1>2",
+   "name": "Sidesweep",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": "ttt2:rog:row:14"
+  },
+  {
+   "key": "FC+1+2",
+   "name": "Animal Smash",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": null
+  },
+  {
+   "key": "d+1~N+2",
+   "name": "Low Jab, Uppercut",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": "ttt2:rog:row:21"
+  },
+  {
+   "key": "f+1,2,1",
+   "name": "Animal Rush",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": null
+  },
+  {
+   "key": "b+1,2,1",
+   "name": "Animal Hush",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": null
+  },
+  {
+   "key": "d+1+2~b",
+   "name": "(BT)",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": null
+  },
+  {
+   "key": "d+1+2,1+2~b",
+   "name": "(BT)",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": null
+  },
+  {
+   "key": "BT d/f+1+2",
+   "name": "Kangaroo Dasher",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": null
+  },
+  {
+   "key": "u/b+2",
+   "name": "Elbow Drop",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": null
+  },
+  {
+   "key": "u/f+2",
+   "name": "Elbow Drop",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": "ttt2:rog:row:47"
+  },
+  {
+   "key": "u/f+3,3",
+   "name": "Helicopter Kicks",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": "ttt2:rog:row:48"
+  },
+  {
+   "key": "u/b+3,3>4",
+   "name": "Kick Rushes (Side Roll)",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": null
+  },
+  {
+   "key": "WS+3,3#",
+   "name": "Power Stomper",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": null
+  },
+  {
+   "key": "u/b+3+4",
+   "name": "Bomb Stomp",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": null
+  },
+  {
+   "key": "u/f+3+4",
+   "name": "Bomb Stomp",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": "ttt2:rog:row:51"
+  },
+  {
+   "key": "RN 3",
+   "name": "Baiame's Spear",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": null
+  },
+  {
+   "key": "f+3+4,3>4",
+   "name": "Kick Rushes (Side Roll)",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": null
+  },
+  {
+   "key": "b+3+4,N",
+   "name": "Charge-Up",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": null
+  },
+  {
+   "key": "b+3+4,1",
+   "name": "Windmill Punch",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": "ttt2:rog:row:43"
+  },
+  {
+   "key": "b+3+4,2",
+   "name": "Galaxy Uppercut",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": "ttt2:rog:row:44"
+  },
+  {
+   "key": "RN+3+4",
+   "name": "Satellite Dropkick",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": null
+  },
+  {
+   "key": "d/b+4,3>4",
+   "name": "Kick Rushes (Side Roll)",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": null
+  },
+  {
+   "key": "RN 4,2",
+   "name": "Mid Smash",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": "ttt2:rog:row:61"
+  },
+  {
+   "key": "RN 4,4,4",
+   "name": "Ali Kicks",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": "ttt2:rog:row:62"
+  },
+  {
+   "key": "u~u/b",
+   "name": "Leaping Body Splash",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": null
+  },
+  {
+   "key": "ROS D/F,1",
+   "name": "Animal Godfist",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": null
+  },
+  {
+   "key": "ROS 1+2,3+4,3>4",
+   "name": "Kick Rushes (Side Roll)",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": null
+  },
+  {
+   "key": "u/b+3,1,3>4,3>4,B",
+   "name": "Kick Rushes, Roll Back",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": null
+  },
+  {
+   "key": "f+3+4,1,3>4,3>4,B",
+   "name": "Kick Rushes, Roll Back",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": null
+  },
+  {
+   "key": "d/b+4,1,3>4,3>4,B",
+   "name": "Kick Rushes, Roll Back",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": null
+  },
+  {
+   "key": "ROS 1+2,3+4,1",
+   "name": "Animal Kick, (Side Roll)",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": null
+  },
+  {
+   "key": "ROS 1+2,3+4,1,3>4,3>4,B",
+   "name": "Kick Rushes, Roll Back",
+   "tekken_base": null,
+   "merge_source": "ttt2:roger",
+   "anim_ref": null
+  }
+ ]
+}
