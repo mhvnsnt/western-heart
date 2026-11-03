@@ -23,6 +23,10 @@ export const EYEBALL_GLB = 'customization/parts/eyes/eyeball.glb';
 export const EYE_SOCKETS_JSON = 'customization/parts/eyes/eye-sockets.json';
 export const EYEBALL_RADIUS = 0.012;                  // eyeball.glb sclera radius
 export const IRIS_RADIUS = 0.0055;                    // eyeball.glb iris disc radius (planar UV for lens textures)
+/* eyeball.glb authors the iris disc at z 0.0113 and the pupil at 0.0119, both INSIDE the sclera sphere's front cap
+   (radius 0.012): the opaque sclera then shows through the middle of the iris as a white ring + dot (seen in the
+   EYES proof render, tools/eyes/proof/). Lift both discs just past the cap (a 0.2-0.4 mm corneal bulge). */
+export const IRIS_LIFT = 0.0009, PUPIL_LIFT = 0.0005;
 
 /* Eye types (catalog entries, suite_slot 'eye', fitted_eyes). lens = iris texture from the eye library (repo path). */
 export const EYE_TYPES = {
@@ -174,6 +178,9 @@ export function attachEyes(root, eyeballScene, sockets, cfg, { morphValues = {},
       if (o.material) o.material = o.material.clone();
       if (o.geometry) o.geometry = o.geometry.clone();
     });
+    const pm = partMeshes(g);
+    if (pm.iris) pm.iris.position.z += IRIS_LIFT;
+    if (pm.pupil) pm.pupil.position.z += PUPIL_LIFT;
     g.userData.whFitted = { partId: cfg.id, slot: 'eyes', side, template: cfg.template };
     setSidePose(g, eyeSocketPose(ts, side, morphValues));
     styleEye(g, cfg, { makeTexture, urlPrefix });

@@ -170,6 +170,11 @@ for (const tid of FP.FITTED_TEMPLATES) {
     assert.equal('#' + meshNamed(R, /sclera/i).material.color.getHexString(), '#efe6d2');
     assert.ok(Math.abs(meshNamed(L, /pupil/i).scale.x - 1.2) < 1e-9);
     assert.notEqual(meshNamed(L, /iris/i).material, meshNamed(R, /iris/i).material, 'materials cloned per eye');
+    // iris + pupil discs sit in front of the sclera cap (eyeball.glb authors them inside it; fitted-eyes lifts them)
+    const zMax = (m) => { const pos = m.geometry.attributes.position; let z = -1; for (let i = 0; i < pos.count; i++) z = Math.max(z, pos.getZ(i)); return z; };
+    const sclZ = zMax(meshNamed(L, /sclera/i));
+    assert.ok(zMax(meshNamed(L, /iris/i)) + meshNamed(L, /iris/i).position.z > sclZ, 'iris in front of the sclera cap');
+    assert.ok(zMax(meshNamed(L, /pupil/i)) + meshNamed(L, /pupil/i).position.z > zMax(meshNamed(L, /iris/i)) + meshNamed(L, /iris/i).position.z, 'pupil in front of the iris');
     // body's own eye primitives hidden under the fitted eyes, restored on clear
     let hidden = 0; model.traverse((o) => { if (o.isMesh && !o.visible && FE.EYE_HIDES.test((o.material && o.material.name) || '')) hidden++; });
     assert.ok(hidden >= 2, 'own sclera + iris hidden: ' + hidden);
