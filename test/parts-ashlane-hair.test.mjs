@@ -51,7 +51,8 @@ test('the 5 AshLane hair entries are wired, unique, and not pending', () => {
 });
 
 test('hair totals after wiring: 332 entries, 20 wired, 17 with a glb', () => {
-  const hair = CATALOG.parts.filter((p) => p.suite_slot === 'hair');
+  // template-fitted hair (HAIR phase 2026-11-02, library wh-fitted-hair) is counted by test/fitted-parts.test.mjs
+  const hair = CATALOG.parts.filter((p) => p.suite_slot === 'hair' && p.library !== 'wh-fitted-hair');
   assert.equal(hair.length, 332, 'hair entries');
   assert.equal(hair.filter((p) => !p.geometry_pending).length, 20, 'hair wired');
   assert.equal(hair.filter((p) => p.glb).length, 17, 'hair with glb');

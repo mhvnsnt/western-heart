@@ -6,6 +6,8 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 /* The template bodies ship gltfpack -cc (meshopt + quantized morph targets): same decoder the game's assets.js uses
    (game/vendor/addons/libs/meshopt_decoder.js via the suite importmap). */
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.js';
+/* template-fitted hair / facial hair / brows / lashes: head-bone parenting shared with the game (HAIR phase 2026-11-02) */
+import { findHeadBone, attachFittedScene, setFittedTint, setBaseHidden } from '../../../game/js/fitted-parts.js';
 /* MB-Lab game skeleton (WWE-style CREATE templates) -> the Mixamo bone names SOCKET_BONES and framing use (2026-11-01) */
 const MBLAB_ALIASES = { Hips:['pelvis'], Spine:['spine01'], Spine1:['spine02'], Spine2:['spine03'], Neck:['neck'], Head:['head'],
   LeftShoulder:['clavicle_L'], RightShoulder:['clavicle_R'], LeftArm:['upperarm_L'], RightArm:['upperarm_R'],
@@ -347,14 +349,38 @@ export class SuiteViewer {
     group.scale.setScalar(s);
   }
   updatePlacement(partId, placement){
-    const e = this.parts.get(partId); if(!e) return;
+    const e = this.parts.get(partId); if(!e || e.fitted) return;
     e.placement = {...placement};
     this._applyPlacement(e.group, e.def, e.placement);
   }
   detachPart(partId){
     const e = this.parts.get(partId);
-    if(e){ this.scene.remove(e.group); this.parts.delete(partId); }
+    if(e){
+      if(e.fitted && this.model) setBaseHidden(this.model, e.def && e.def.suite_slot, false);
+      if(e.group.parent) e.group.parent.remove(e.group); else this.scene.remove(e.group);
+      this.parts.delete(partId);
+    }
   }
+  /* template-fitted part: the GLB is authored in head-bone-local space for THIS template body, so it is parented to
+     the head bone with an identity transform (follows head animation + POSE clips); its morph targets share the
+     body's face slider names, so syncMorphs (applyMorphTargets over this.model) drives them with the body. */
+  attachFitted(partId, glbUrl, def, tint){
+    return new Promise((res, rej)=>{
+      const head = findHeadBone(this.model);
+      if(!head) return rej(new Error('no head bone'));
+      const model = this.model;
+      this.loader.load(glbUrl, gltf=>{
+        if(this.model !== model) return rej(new Error('body changed'));
+        this.detachPart(partId);
+        const g = attachFittedScene(head, gltf.scene, { partId, slot: def && def.suite_slot, tint });
+        setBaseHidden(this.model, def && def.suite_slot, true);
+        this.parts.set(partId, { group:g, def, placement:{}, fitted:true });
+        this.onFittedAttached && this.onFittedAttached(partId);
+        res(g);
+      }, undefined, rej);
+    });
+  }
+  setFittedTint(partId, tint){ const e=this.parts.get(partId); if(e && e.fitted) setFittedTint(e.group, tint); }
   getPlacement(partId){ const e=this.parts.get(partId); return e?{...e.placement}:null; }
   /* texture-part marker: shows where a texture part applies (honest: geometry-pending parts) */
   setMarker(key, socket, color, label){

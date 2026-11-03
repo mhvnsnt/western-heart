@@ -73,7 +73,10 @@ export const PARTS_TREE = [
   { key:"eyes",   label:"Eyes",   icon:"👁️", src:"WH_PARTS", note:"PLACEABLE mesh eye parts first (Spider-Girl lenses, CC0 eyebrows — owner verdict 2026-10-20: eyes are parts, not decals); eye-library textures are legacy variants, listed separately" },
   { key:"decals", label:"Decals", icon:"🏷️", src:"WH_PARTS", note:"customization/decal-library/pantera/ — logo/tights/pants texture swaps at parameterized placements" },
   { key:"masks",  label:"Masks",  icon:"🦸", src:"WH_PARTS", note:"customization/parts/superhero/ — spidergirl eyes, batgirl mask+gauntlets, spaceghost cowl; mesh parts on head/hand sockets" },
-  { key:"hair",   label:"Hair",   icon:"💇‍♀️", src:"WH_PARTS", note:"mesh + texture hair parts (silvertongue drills, mariposa ponytail restore)" },
+  { key:"hair",   label:"Hairstyle",   icon:"💇‍♀️", src:"WWE_FACEBODY", note:"WWE 2K Face > Hairstyle: fitted CC0 hair on every base body + mesh/texture hair parts" },
+  { key:"facial-hair", label:"Facial Hair", icon:"🧔", src:"WWE_FACEBODY", note:"WWE 2K Face > Facial Hair: fitted beard / goatee / moustache / chin strap / stubble" },
+  { key:"brows",  label:"Eyebrows",    icon:"🤨", src:"WWE_FACEBODY", note:"WWE 2K Face > Eyebrows: fitted CC0 brows that follow the brow sliders" },
+  { key:"lashes", label:"Eyelashes",   icon:"👁️", src:"WWE_FACEBODY", note:"WWE 2K Face > Eyes: fitted CC0 lashes (replace the base body's own strip)" },
 ];
 MENU_SRC.WH_PARTS = "Western Heart PARTS-REGISTRY.json — 34 parts, suite_slot + placement socket schema (customization/PARTS-REGISTRY.json)";
 

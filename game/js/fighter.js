@@ -51,6 +51,7 @@ import { SoftBody } from './softbody.js';
 import { MpmTissue } from './mpm-tissue.js';
 import { FaceRig } from './faceRig.js';
 import { applyMorphTargets } from './morph-apply.js';
+import { loadFittedParts, clearFittedParts } from './fitted-parts.js';
 import { HandPoseBlender } from './handPoses.js';
 import { canonRootScale } from './canon-sizing.js';
 import { t8Frame, stunFromAdvantage } from './frame-tables.js';
@@ -680,6 +681,7 @@ export class Fighter {
     this.root.add(this.lean);
     this.model = inst.model;
     this._applyCharMorphs();
+    this._attachFittedParts();
     // ?debug=1 → on-page fighter diagnostics (no devtools needed)
     if (new URLSearchParams(location.search).has('debug')) {
       let sm = 0, bones = 0, vis = true;
@@ -913,6 +915,34 @@ export class Fighter {
       this.model.userData.morphInfluencesApplied = n;
       return n;
     } catch (e) { console.warn('[WH] morph apply failed', e); return 0; }
+  }
+
+  /* HAIR phase (2026-11-02): created fighters wear their suite-chosen
+     template-fitted hair / facial hair / brows / lashes (char.fittedParts,
+     from game/js/custom-fighter.js). Each GLB is authored in the template's
+     head-bone-local space, so it is parented to the Head bone with an
+     identity transform and follows every animation; its morph targets use
+     the body's slider names, so the saved face morphs are re-applied once
+     the parts land (load-time only, never per frame). Async: the fighter
+     is playable while the few small GLBs load. */
+  _attachFittedParts() {
+    const list = this.char && this.char.fittedParts;
+    if (!list || !list.length || !this.model) return null;
+    const model = this.model;
+    clearFittedParts(model);
+    this._fittedReady = (async () => {
+      const [{ GLTFLoader }, { MeshoptDecoder }] = await Promise.all([
+        import('three/addons/loaders/GLTFLoader.js'), import('three/addons/libs/meshopt_decoder.js')]);
+      const loader = new GLTFLoader(); loader.setMeshoptDecoder(MeshoptDecoder);
+      const groups = await loadFittedParts(model, list, {
+        loadScene: (url) => loader.loadAsync(url).then((g) => g.scene),
+        urlPrefix: '../',
+        afterAttach: () => this._applyCharMorphs(),
+      });
+      model.userData.fittedParts = groups.map((g) => g.userData.whFitted.partId);
+      return groups;
+    })().catch((e) => { console.warn('[WH] fitted parts failed', e); return []; });
+    return this._fittedReady;
   }
 
   /* The actual model swap — called by the cinematic at the climax.

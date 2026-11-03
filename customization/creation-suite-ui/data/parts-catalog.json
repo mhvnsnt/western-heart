@@ -13,9 +13,10 @@
   "ashlane": 5,
   "teardown/wwf-no-mercy/textures/rom/tattoo": 99,
   "customization/parts-converted/wmxix-textures/TEX/Face_op": 140,
-  "customization/parts-converted/wmxix-textures/TEX/64gara": 39
+  "customization/parts-converted/wmxix-textures/TEX/64gara": 39,
+  "customization/parts/hair/mpfb2 (fitted CC0 hair, 2026-11-02)": 21
  },
- "total": 7702,
+ "total": 7723,
  "notes": "parts-converted/CATALOG.json is a REAL source since PR #398 merged (run #3 absence finding was true at check time; the merge landed after). Eyes: mesh eye/brow parts are placeable (eye_kind=placeable_part); eye texture entries are legacy variants (eye_kind=texture_variant) per the owner 2026-10-20 eye verdict. No eyelash mesh exists in-repo yet. Def Jam CAW library wired 2026-10-22 (worker 33, fight-lab lane): 2,624 conversion entries, all geometry_pending (POINTS topology until the mesh conversion pass lands). Worker 38 (2026-10-22): +272 DOA4 costume GLBs (full-body, real meshes). AshLane hair wired 2026-11-02: +5 real GLBs from the owner's AshLane parts library (INDEX geometryReady), listed in the suite catalog with head socket, offset 0, scale 1 (per customization/parts/ashlane/hair/manifest.json). No Mercy tattoos wired 2026-11-02: 99 tattoo PNGs from teardown/wwf-no-mercy/textures/rom/tattoo/ as decal_logo texture parts (geometry_pending false, chest-socket marker fallback in the suite preview until a placement is authored; they surface under Decals, since PARTS_TREE has no dedicated tattoo category yet).",
  "parts": [
   {
@@ -239603,6 +239604,1350 @@
     "rotation",
     "opacity"
    ]
+  },
+  {
+   "id": "mh-hair-short01",
+   "name": "Short Crop",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "equip_slot": "2",
+   "wwe_category": "Hairstyle",
+   "library": "wh-fitted-hair",
+   "source": "customization/parts/hair/mpfb2/MANIFEST.json",
+   "glb": "customization/parts/hair/mpfb2/mh-hair-short01/technician.glb",
+   "asset": "customization/parts/hair/mpfb2/mh-hair-short01/technician.glb",
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/hair/mpfb2/mh-hair-short01",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "head-bone-local",
+    "texture": "customization/parts/hair/mpfb2/mh-hair-short01/texture.png"
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "mh-hair-short02",
+   "name": "Textured Short",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "equip_slot": "2",
+   "wwe_category": "Hairstyle",
+   "library": "wh-fitted-hair",
+   "source": "customization/parts/hair/mpfb2/MANIFEST.json",
+   "glb": "customization/parts/hair/mpfb2/mh-hair-short02/technician.glb",
+   "asset": "customization/parts/hair/mpfb2/mh-hair-short02/technician.glb",
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/hair/mpfb2/mh-hair-short02",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "head-bone-local",
+    "texture": "customization/parts/hair/mpfb2/mh-hair-short02/texture.png"
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "mh-hair-short03",
+   "name": "Side Part",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "equip_slot": "2",
+   "wwe_category": "Hairstyle",
+   "library": "wh-fitted-hair",
+   "source": "customization/parts/hair/mpfb2/MANIFEST.json",
+   "glb": "customization/parts/hair/mpfb2/mh-hair-short03/technician.glb",
+   "asset": "customization/parts/hair/mpfb2/mh-hair-short03/technician.glb",
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/hair/mpfb2/mh-hair-short03",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "head-bone-local",
+    "texture": "customization/parts/hair/mpfb2/mh-hair-short03/texture.png"
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "mh-hair-short04",
+   "name": "Slick Back",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "equip_slot": "2",
+   "wwe_category": "Hairstyle",
+   "library": "wh-fitted-hair",
+   "source": "customization/parts/hair/mpfb2/MANIFEST.json",
+   "glb": "customization/parts/hair/mpfb2/mh-hair-short04/technician.glb",
+   "asset": "customization/parts/hair/mpfb2/mh-hair-short04/technician.glb",
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/hair/mpfb2/mh-hair-short04",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "head-bone-local",
+    "texture": "customization/parts/hair/mpfb2/mh-hair-short04/texture.png"
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "mh-hair-bob01",
+   "name": "Bob",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "equip_slot": "2",
+   "wwe_category": "Hairstyle",
+   "library": "wh-fitted-hair",
+   "source": "customization/parts/hair/mpfb2/MANIFEST.json",
+   "glb": "customization/parts/hair/mpfb2/mh-hair-bob01/technician.glb",
+   "asset": "customization/parts/hair/mpfb2/mh-hair-bob01/technician.glb",
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/hair/mpfb2/mh-hair-bob01",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "head-bone-local",
+    "texture": "customization/parts/hair/mpfb2/mh-hair-bob01/texture.png"
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "mh-hair-bob02",
+   "name": "Layered Bob",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "equip_slot": "2",
+   "wwe_category": "Hairstyle",
+   "library": "wh-fitted-hair",
+   "source": "customization/parts/hair/mpfb2/MANIFEST.json",
+   "glb": "customization/parts/hair/mpfb2/mh-hair-bob02/technician.glb",
+   "asset": "customization/parts/hair/mpfb2/mh-hair-bob02/technician.glb",
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/hair/mpfb2/mh-hair-bob02",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "head-bone-local",
+    "texture": "customization/parts/hair/mpfb2/mh-hair-bob02/texture.png"
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "mh-hair-long01",
+   "name": "Long Straight",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "equip_slot": "2",
+   "wwe_category": "Hairstyle",
+   "library": "wh-fitted-hair",
+   "source": "customization/parts/hair/mpfb2/MANIFEST.json",
+   "glb": "customization/parts/hair/mpfb2/mh-hair-long01/technician.glb",
+   "asset": "customization/parts/hair/mpfb2/mh-hair-long01/technician.glb",
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/hair/mpfb2/mh-hair-long01",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "head-bone-local",
+    "texture": "customization/parts/hair/mpfb2/mh-hair-long01/texture.png"
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "mh-hair-ponytail01",
+   "name": "High Ponytail",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "equip_slot": "2",
+   "wwe_category": "Hairstyle",
+   "library": "wh-fitted-hair",
+   "source": "customization/parts/hair/mpfb2/MANIFEST.json",
+   "glb": "customization/parts/hair/mpfb2/mh-hair-ponytail01/technician.glb",
+   "asset": "customization/parts/hair/mpfb2/mh-hair-ponytail01/technician.glb",
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/hair/mpfb2/mh-hair-ponytail01",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "head-bone-local",
+    "texture": "customization/parts/hair/mpfb2/mh-hair-ponytail01/texture.png"
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "mh-hair-braid01",
+   "name": "Single Braid",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "equip_slot": "2",
+   "wwe_category": "Hairstyle",
+   "library": "wh-fitted-hair",
+   "source": "customization/parts/hair/mpfb2/MANIFEST.json",
+   "glb": "customization/parts/hair/mpfb2/mh-hair-braid01/technician.glb",
+   "asset": "customization/parts/hair/mpfb2/mh-hair-braid01/technician.glb",
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/hair/mpfb2/mh-hair-braid01",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "head-bone-local",
+    "texture": "customization/parts/hair/mpfb2/mh-hair-braid01/texture.png"
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "mh-hair-afro01",
+   "name": "Rounded Afro",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "equip_slot": "2",
+   "wwe_category": "Hairstyle",
+   "library": "wh-fitted-hair",
+   "source": "customization/parts/hair/mpfb2/MANIFEST.json",
+   "glb": "customization/parts/hair/mpfb2/mh-hair-afro01/technician.glb",
+   "asset": "customization/parts/hair/mpfb2/mh-hair-afro01/technician.glb",
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/hair/mpfb2/mh-hair-afro01",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "head-bone-local",
+    "texture": "customization/parts/hair/mpfb2/mh-hair-afro01/texture.png"
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "mh-brows-001",
+   "name": "Natural Brows",
+   "part_class": "mesh_part",
+   "suite_slot": "eyebrows",
+   "t7_slot": "6",
+   "equip_slot": "6",
+   "wwe_category": "Eyebrows",
+   "library": "wh-fitted-hair",
+   "source": "customization/parts/hair/mpfb2/MANIFEST.json",
+   "glb": "customization/parts/hair/mpfb2/mh-brows-001/technician.glb",
+   "asset": "customization/parts/hair/mpfb2/mh-brows-001/technician.glb",
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "eyebrows",
+   "placement": {
+    "socket": "head",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/hair/mpfb2/mh-brows-001",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "head-bone-local",
+    "texture": "customization/parts/hair/mpfb2/mh-brows-001/texture.png"
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "mh-brows-003",
+   "name": "Thick Brows",
+   "part_class": "mesh_part",
+   "suite_slot": "eyebrows",
+   "t7_slot": "6",
+   "equip_slot": "6",
+   "wwe_category": "Eyebrows",
+   "library": "wh-fitted-hair",
+   "source": "customization/parts/hair/mpfb2/MANIFEST.json",
+   "glb": "customization/parts/hair/mpfb2/mh-brows-003/technician.glb",
+   "asset": "customization/parts/hair/mpfb2/mh-brows-003/technician.glb",
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "eyebrows",
+   "placement": {
+    "socket": "head",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/hair/mpfb2/mh-brows-003",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "head-bone-local",
+    "texture": "customization/parts/hair/mpfb2/mh-brows-003/texture.png"
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "mh-brows-006",
+   "name": "Arched Brows",
+   "part_class": "mesh_part",
+   "suite_slot": "eyebrows",
+   "t7_slot": "6",
+   "equip_slot": "6",
+   "wwe_category": "Eyebrows",
+   "library": "wh-fitted-hair",
+   "source": "customization/parts/hair/mpfb2/MANIFEST.json",
+   "glb": "customization/parts/hair/mpfb2/mh-brows-006/technician.glb",
+   "asset": "customization/parts/hair/mpfb2/mh-brows-006/technician.glb",
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "eyebrows",
+   "placement": {
+    "socket": "head",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/hair/mpfb2/mh-brows-006",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "head-bone-local",
+    "texture": "customization/parts/hair/mpfb2/mh-brows-006/texture.png"
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "mh-brows-010",
+   "name": "Thin Brows",
+   "part_class": "mesh_part",
+   "suite_slot": "eyebrows",
+   "t7_slot": "6",
+   "equip_slot": "6",
+   "wwe_category": "Eyebrows",
+   "library": "wh-fitted-hair",
+   "source": "customization/parts/hair/mpfb2/MANIFEST.json",
+   "glb": "customization/parts/hair/mpfb2/mh-brows-010/technician.glb",
+   "asset": "customization/parts/hair/mpfb2/mh-brows-010/technician.glb",
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "eyebrows",
+   "placement": {
+    "socket": "head",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/hair/mpfb2/mh-brows-010",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "head-bone-local",
+    "texture": "customization/parts/hair/mpfb2/mh-brows-010/texture.png"
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "mh-lashes-01",
+   "name": "Natural Lashes",
+   "part_class": "mesh_part",
+   "suite_slot": "eyelashes",
+   "t7_slot": "6",
+   "equip_slot": "6L",
+   "wwe_category": "Eyelashes",
+   "library": "wh-fitted-hair",
+   "source": "customization/parts/hair/mpfb2/MANIFEST.json",
+   "glb": "customization/parts/hair/mpfb2/mh-lashes-01/technician.glb",
+   "asset": "customization/parts/hair/mpfb2/mh-lashes-01/technician.glb",
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "eyelashes",
+   "placement": {
+    "socket": "head",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/hair/mpfb2/mh-lashes-01",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "head-bone-local",
+    "texture": "customization/parts/hair/mpfb2/mh-lashes-01/texture.png"
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "mh-lashes-02",
+   "name": "Long Lashes",
+   "part_class": "mesh_part",
+   "suite_slot": "eyelashes",
+   "t7_slot": "6",
+   "equip_slot": "6L",
+   "wwe_category": "Eyelashes",
+   "library": "wh-fitted-hair",
+   "source": "customization/parts/hair/mpfb2/MANIFEST.json",
+   "glb": "customization/parts/hair/mpfb2/mh-lashes-02/technician.glb",
+   "asset": "customization/parts/hair/mpfb2/mh-lashes-02/technician.glb",
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "eyelashes",
+   "placement": {
+    "socket": "head",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/hair/mpfb2/mh-lashes-02",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "head-bone-local",
+    "texture": "customization/parts/hair/mpfb2/mh-lashes-02/texture.png"
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-beard-full",
+   "name": "Full Beard",
+   "part_class": "mesh_part",
+   "suite_slot": "facial_hair",
+   "t7_slot": "7",
+   "equip_slot": "7",
+   "wwe_category": "Facial Hair",
+   "library": "wh-fitted-hair",
+   "source": "customization/parts/hair/mpfb2/MANIFEST.json",
+   "glb": "customization/parts/hair/mpfb2/wh-beard-full/technician.glb",
+   "asset": "customization/parts/hair/mpfb2/wh-beard-full/technician.glb",
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "facial_hair",
+   "placement": {
+    "socket": "head",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/hair/mpfb2/wh-beard-full",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "head-bone-local",
+    "texture": "customization/parts/hair/mpfb2/wh-beard-full/texture.png"
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-beard-goatee",
+   "name": "Goatee",
+   "part_class": "mesh_part",
+   "suite_slot": "facial_hair",
+   "t7_slot": "7",
+   "equip_slot": "7",
+   "wwe_category": "Facial Hair",
+   "library": "wh-fitted-hair",
+   "source": "customization/parts/hair/mpfb2/MANIFEST.json",
+   "glb": "customization/parts/hair/mpfb2/wh-beard-goatee/technician.glb",
+   "asset": "customization/parts/hair/mpfb2/wh-beard-goatee/technician.glb",
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "facial_hair",
+   "placement": {
+    "socket": "head",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/hair/mpfb2/wh-beard-goatee",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "head-bone-local",
+    "texture": "customization/parts/hair/mpfb2/wh-beard-goatee/texture.png"
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-beard-moustache",
+   "name": "Moustache",
+   "part_class": "mesh_part",
+   "suite_slot": "facial_hair",
+   "t7_slot": "7",
+   "equip_slot": "7",
+   "wwe_category": "Facial Hair",
+   "library": "wh-fitted-hair",
+   "source": "customization/parts/hair/mpfb2/MANIFEST.json",
+   "glb": "customization/parts/hair/mpfb2/wh-beard-moustache/technician.glb",
+   "asset": "customization/parts/hair/mpfb2/wh-beard-moustache/technician.glb",
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "facial_hair",
+   "placement": {
+    "socket": "head",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/hair/mpfb2/wh-beard-moustache",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "head-bone-local",
+    "texture": "customization/parts/hair/mpfb2/wh-beard-moustache/texture.png"
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-beard-chinstrap",
+   "name": "Chin Strap",
+   "part_class": "mesh_part",
+   "suite_slot": "facial_hair",
+   "t7_slot": "7",
+   "equip_slot": "7",
+   "wwe_category": "Facial Hair",
+   "library": "wh-fitted-hair",
+   "source": "customization/parts/hair/mpfb2/MANIFEST.json",
+   "glb": "customization/parts/hair/mpfb2/wh-beard-chinstrap/technician.glb",
+   "asset": "customization/parts/hair/mpfb2/wh-beard-chinstrap/technician.glb",
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "facial_hair",
+   "placement": {
+    "socket": "head",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/hair/mpfb2/wh-beard-chinstrap",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "head-bone-local",
+    "texture": "customization/parts/hair/mpfb2/wh-beard-chinstrap/texture.png"
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-beard-stubble",
+   "name": "Stubble",
+   "part_class": "mesh_part",
+   "suite_slot": "facial_hair",
+   "t7_slot": "7",
+   "equip_slot": "7",
+   "wwe_category": "Facial Hair",
+   "library": "wh-fitted-hair",
+   "source": "customization/parts/hair/mpfb2/MANIFEST.json",
+   "glb": "customization/parts/hair/mpfb2/wh-beard-stubble/technician.glb",
+   "asset": "customization/parts/hair/mpfb2/wh-beard-stubble/technician.glb",
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "facial_hair",
+   "placement": {
+    "socket": "head",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/hair/mpfb2/wh-beard-stubble",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "head-bone-local",
+    "texture": "customization/parts/hair/mpfb2/wh-beard-stubble/texture.png"
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
   }
  ]
 }

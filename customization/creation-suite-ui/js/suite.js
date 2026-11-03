@@ -21,6 +21,8 @@ MS.setMovesetBase('../../game/assets/movesets/');
 import * as THREE from 'three';
 import { T3_BANKS, T7_STANCES, loadT3Clips, retargetT3Clips, applyT7Stance } from '../../../game/js/t3anims.js';
 import { savePortrait, getPortrait, clearPortrait } from '../../../game/js/user-portraits.js';
+/* template-fitted hair / facial hair / brows / lashes (HAIR phase 2026-11-02): one module shared with the game */
+import { FITTED_COLOR_KEY, fittedPartPath } from '../../../game/js/fitted-parts.js';
 
 const LS_KEY = 'wh_creation_suite_v1';
 const START_MONEY = 12400;
@@ -59,7 +61,7 @@ const TITLE_B=['BEAST','PANTHER','KING','GHOST','STORM','WOLF','TIGER','DEMON'];
 const SLOT2CAT = { mask:'3', eye_lenses:'6', cowl:'3', gauntlets:'H', hair:'2',
   decal_logo:'8', eye:'EYES', tights:'11', pants:'11', top:'9', outfit:'9', scarf:'12', face:'8',
   upper_body:'9', lower_body:'11', gloves:'H', shoes:'F', gear:'12', accessory:'12', attire:'10',
-  eyebrows:'6', fullbody:'11' };
+  eyebrows:'6', fullbody:'11', facial_hair:'7', eyelashes:'6' };
 /* suite_slot -> fallback 3D socket for texture-part markers (registry has no placement block for texture parts) */
 const SLOT2SOCKET = { eye:'face', face:'face', decal_logo:'chest', top:'chest', outfit:'chest',
   scarf:'chest', tights:'waist', pants:'waist', hair:'head', mask:'face', eye_lenses:'face', cowl:'head', gauntlets:'hands' };
@@ -220,7 +222,8 @@ function customizationRecord(){
       morph_targets: cleanValues(F.body.morph_targets, MORPH_SLIDERS),
       frame: Object.fromEntries(Object.entries(F.body.frame||{}).filter(([,v])=>v)) },
     morphs, parts, textures, part_states,
-    colors:{ hair:(a.colors&&a.colors.hair)||null, skin:F.body.skin_tone } };
+    colors:{ hair:(a.colors&&a.colors.hair)||null, facial_hair:(a.colors&&a.colors.facial_hair)||null,
+      brows:(a.colors&&a.colors.brows)||null, lashes:(a.colors&&a.colors.lashes)||null, skin:F.body.skin_tone } };
 }
 function applyCustomizationRecord(rec){
   if(rec.body){ if(rec.body.body_type) F.body.body_type=rec.body.body_type;
@@ -242,7 +245,8 @@ function applyCustomizationRecord(rec){
     const p = PARTS.find(x=>x.id===t.part_id);
     a.equipped[(p&&p.suite_slot)||'face']=t.part_id;
   }
-  if(rec.colors && rec.colors.hair){ a.colors=a.colors||{}; a.colors.hair=rec.colors.hair; }
+  for(const ck of ['hair','facial_hair','brows','lashes'])
+    if(rec.colors && rec.colors[ck]){ a.colors=a.colors||{}; a.colors[ck]=rec.colors[ck]; }
   // Phase 1: per-part toggles on the fighter's own meshes (OUTFIT tab)
   a.partStates = rec.part_states ? JSON.parse(JSON.stringify(rec.part_states)) : {};
 }
@@ -341,6 +345,14 @@ function syncParts3D(){
     const p = PARTS.find(x=>x.id===partId);
     if(!p || p.part_class!=='mesh_part' || !p.glb){ continue; }
     seen.add(partId);
+    // template-fitted parts (hair / facial hair / brows / lashes): parented to the head bone, fitted per template
+    const fitUrl = p.fitted && viewer.isTemplate && fittedPartPath(p.id, F.template);
+    if(fitUrl){
+      const tint = (attire().colors||{})[FITTED_COLOR_KEY[p.suite_slot]] || null;
+      if(!viewer.parts.has(partId)) viewer.attachFitted(partId, '../../'+fitUrl, p, tint).catch(()=>{});
+      else viewer.setFittedTint(partId, tint);
+      continue;
+    }
     const place = Object.assign(defaultPlacement(p), attire().placements[partId]||{});
     if(!viewer.parts.has(partId))
       viewer.attachPart(partId, '../../'+p.glb, p, place).catch(()=>{});
@@ -853,6 +865,9 @@ function renderParts(el){
       }
       const list = c.key==='decals' ? PARTS.filter(p=>['decal_logo','tights','pants'].includes(p.suite_slot))
         : c.key==='masks' ? PARTS.filter(p=>['mask','eye_lenses','cowl','gauntlets'].includes(p.suite_slot))
+        : c.key==='facial-hair' ? PARTS.filter(p=>p.suite_slot==='facial_hair')
+        : c.key==='brows' ? PARTS.filter(p=>p.suite_slot==='eyebrows')
+        : c.key==='lashes' ? PARTS.filter(p=>p.suite_slot==='eyelashes')
         : PARTS.filter(p=>p.suite_slot==='hair');
       const b=document.createElement('button'); b.className='subcat'; b.id='pcat-'+c.key;
       b.innerHTML=`<span class="sc-ico">${c.icon}</span><span>${c.label}</span><span class="sc-count">${ready(list)} parts</span>`;
@@ -873,7 +888,7 @@ const LIB_NAMES = { wmxix:'Classic', 'no-mercy':'Retro', defjam:'Street', doa4:'
 const SLOT_NAMES = { hair:'Hair', mask:'Mask', face:'Face', eye:'Eyes', eyebrows:'Brows', eye_lenses:'Lenses', top:'Top',
   outfit:'Outfit', upper_body:'Upper Body', lower_body:'Lower Body', pants:'Pants', tights:'Tights', gloves:'Gloves',
   gauntlets:'Gauntlets', shoes:'Boots', fullbody:'Full Body', attire:'Attire', accessory:'Accessory', gear:'Gear',
-  scarf:'Scarf', decal_logo:'Logo', cowl:'Cowl' };
+  scarf:'Scarf', decal_logo:'Logo', cowl:'Cowl', facial_hair:'Facial Hair', eyelashes:'Lashes' };
 let _partNo = null;
 function partCollection(p){ return OWN_LIBS.test((p && p.library) || '') ? 'Western Heart' : (LIB_NAMES[p && p.library] || 'Collection'); }
 function partLabel(p){
@@ -934,7 +949,9 @@ function renderPartGrid(el, cat, list, backKey){
   if(ui.selPart && list.includes(ui.selPart)) renderPartDetail(el.querySelector('#pdetail'), ui.selPart,
     (cat.slotFor && ui.selPart) ? cat.slotFor(ui.selPart) : slotKey);
 }
+const HAIR_COLORS = ['#1a1410','#3b2a1e','#5a3a22','#8a5a32','#b07a45','#d8b878','#e8e0d0','#8f8f8f','#7a1e1e','#c2410c','#1e3a8a','#6b21a8'];
 function renderPartDetail(el, p, slotKey){
+  if(p.fitted && p.equip_slot) slotKey = p.equip_slot; // brows and lashes share T7 slot 6 but are separate fitted slots
   const owned = attire().owned.includes(p.id);
   const eqd = Object.values(attire().equipped).includes(p.id);
   el.innerHTML=`
@@ -943,7 +960,18 @@ function renderPartDetail(el, p, slotKey){
     <div class="kv"><span>Slot</span><b>${esc(SLOT_NAMES[p.suite_slot] || p.suite_slot || '—')}</b></div>
     ${p.eye_kind==='placeable_part'?'<div class="note">👁️ A real eye part: equip it, then use <b>PLACEMENT</b> to set its position, rotation and scale.</div>':''}
     ${p.geometry_pending?'<div class="note">This part is coming soon: equipping it saves it on the attire and marks where it goes.</div>':''}
+    ${p.fitted?'<div class="note">Fitted to every base body: follows the head and the face sliders.</div><div class="sect">COLOR</div><div class="btn-row" id="p-colors"></div>':''}
     <div class="btn-row" id="p-actions"></div>`;
+  if(p.fitted){
+    const ck = FITTED_COLOR_KEY[p.suite_slot], row = el.querySelector('#p-colors');
+    HAIR_COLORS.forEach(hex=>{
+      const b=document.createElement('button'); b.className='swatch'+(((attire().colors||{})[ck])===hex?' on':'');
+      b.style.cssText=`background:${hex};width:28px;height:28px;border-radius:50%;border:2px solid ${((attire().colors||{})[ck])===hex?'#e8b64c':'#333'}`;
+      b.setAttribute('aria-label', 'color '+hex); b.dataset.color=hex;
+      b.onclick=()=>{ attire().colors=attire().colors||{}; attire().colors[ck]=hex; persistQuiet(); syncParts3D(); renderPanel(); };
+      row.appendChild(b);
+    });
+  }
   const box=el.querySelector('#p-actions');
   if(p.part_class==='mesh_part' && !p.glb){
     // geometry-pending registry part: record + socket marker, no fake mesh
@@ -964,7 +992,7 @@ function renderPartDetail(el, p, slotKey){
           F.wallet-=500; attire().owned.push(p.id); }
         attire().equipped[slotKey]=p.id;
         if(!attire().placements[p.id]){ const def=PARTS.find(x=>x.id===p.id); attire().placements[p.id]=defaultPlacement(def||{}); }
-        renderAll(); showPlaceDock(p); toast('Equipped ✓ — nudge it into place'); };
+        renderAll(); if(p.fitted){ toast('Equipped ✓'); return; } showPlaceDock(p); toast('Equipped ✓ — nudge it into place'); };
       box.appendChild(b);
     } else {
       const b1=document.createElement('button'); b1.className='btn btn-blue'; b1.id='btn-place-part'; b1.textContent='⌖ PLACEMENT';
@@ -1640,6 +1668,7 @@ async function boot(){
   if(F.mode==='roster' && (!F.rosterRef || !rosterAttire(F.rosterRef.fighter, F.rosterRef.attire))){ F.mode='blank'; F.rosterRef=null; F.baseGlb=BLANK_GLB; }
   migrateLegacy();
   viewer=new SuiteViewer($('#stage3d'));
+  viewer.onFittedAttached = ()=>syncMorphs(); // a fitted part takes the body's face sliders the moment it lands
   // frame the fighter in the area the top bar, rails, side panel / bottom sheet and bottom bar leave free
   viewer.setInsets(()=>{
     const r = id => { const e=document.getElementById(id); return e && !e.hidden ? e.getBoundingClientRect() : null; };

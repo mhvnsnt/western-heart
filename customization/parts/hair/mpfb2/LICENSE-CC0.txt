@@ -1,0 +1,37 @@
+Fitted hair / eyebrows / eyelashes / facial hair in this folder — licence record (2026-11-02)
+
+1. Hair (mh-hair-*), eyebrows (mh-brows-*), eyelashes (mh-lashes-*):
+   MakeHuman system assets, from makehuman_system_assets_cc0.zip
+   https://files.makehumancommunity.org/asset_packs/makehuman_system_assets/
+   The pack's own index (packs/makehuman_system_assets.json) lists every one of
+   these assets with "license": "CC0", "author": "makehuman_system". Each .mhclo
+   in the pack carries this header (verbatim):
+
+     # This asset was explicitly released as CC0 in september 2020. The license
+     # text for CC0 can be found in the root of this repository.
+     # The copyright holders at the point of the release to CC0 were:
+     # Copyright (C) 2020 Data Collection AB, https://www.datacollection.se
+     # Copyright (C) 2020 Joel Palmius
+     # Copyright (C) 2020 Jonas Hauquier
+
+   MakeHuman / MPFB licence: "These assets have been released under CC0 1.0
+   Universal" — base mesh and proxies, targets, textures, clothes (any
+   MHCLO-based asset). https://github.com/makehumancommunity/mpfb2/blob/master/LICENSE.md
+   https://static.makehumancommunity.org/about/license.html
+   ("All core assets are shared under Creative Commons, CC0.")
+
+2. Fitting base: MakeHuman base mesh hm08 (MPFB2 src/mpfb/data/3dobjs/base.obj),
+   header: "This asset was explicitly released as CC0 in september 2020."
+
+3. Facial hair (wh-beard-*): original Western Heart work — shells cut from the
+   CC0 hm08 base-mesh face region and a procedurally generated strand texture
+   (tools/mpfb2/hair/fit_proxies.py BEARDS, build_glb.mjs makeTexture).
+   Released CC0-1.0.
+
+No MB-Lab (AGPL) data is copied into these files: the template bodies are read
+only for fitting (head joint matrix, skin surface, slider deltas resampled onto
+the part). The resampled morph deltas are derived from the AGPL template bake —
+flagged here so the licence review of the template bodies (customization/templates/README.md)
+covers them too.
+
+CC0 1.0 legal code: https://creativecommons.org/publicdomain/zero/1.0/legalcode
