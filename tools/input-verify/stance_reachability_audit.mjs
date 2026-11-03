@@ -69,9 +69,28 @@ function audit(fid) {
   // FUHT is set by the knockdown only when the moveset has it (fighter.js _hasGroundMoves)
   const throwTags = new Set();
   for (const [k, m] of Object.entries(moves)) {
-    const grab = m && (m.isGrab || m.move_class === 'throw' || /throw/i.test(String(m.hit_level || m.note || '')));
+    // engine grab test (fighter.js getRealMove isGrab): isGrab / move_class 'throw' / a T3 throw-situation
+    // condition (2..0x17); the audit's older note-text test is kept as a superset for the seed set.
+    const grab = m && (m.isGrab || m.move_class === 'throw' || (m.t3_condition >= 2 && m.t3_condition <= 0x17) || /throw/i.test(String(m.hit_level || m.note || '')));
     if (grab) { const t = M.throwStageTag(m.name); if (t) throwTags.add(t); if (/tackle/i.test(m.name || '')) throwTags.add('TACKLE'); }
     void k;
+  }
+  // Chain-throw stage graph (fighter.js _throwChainPress / _startThrowChain, 2026-11-02 audit close-out):
+  // a stage row that executes becomes the current throw (its attack is forced isGrab), so the NEXT stage is
+  // opened by that row's own name tag — reachability is the closure over rows keyed by a reachable tag,
+  // not just the tags of raw-data grab-flagged moves. Before this pass the audit undercounted every
+  // mid-chain stage (e.g. King's BACKDROP / POWER_BOMB stages, reached from inside ARM_BREAKER chains).
+  let grew = true;
+  while (grew) {
+    grew = false;
+    for (const [k, m] of Object.entries(moves)) {
+      if (!m) continue;
+      const p = prefixOf(k);
+      if (!p || !throwTags.has(p)) continue;
+      const t = M.throwStageTag(m.name);
+      if (t && !throwTags.has(t)) { throwTags.add(t); grew = true; }
+      if (/tackle/i.test(m.name || '') && !throwTags.has('TACKLE')) { throwTags.add('TACKLE'); grew = true; }
+    }
   }
   const by = {};
   for (const k of keys) {
