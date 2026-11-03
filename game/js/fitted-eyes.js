@@ -1,6 +1,6 @@
 /* fitted-eyes.js — template-FITTED left / right eyeballs (creation suite EYES phase, 2026-11-02).
 
-   Options follow the WWE 2K Create-A-Superstar Face > Eyes window (customization/wwe2k-caw/CAW-SUITE-BREAKDOWN.md
+   Options follow the source CAW editor's Face > Eyes window (customization/wwe2k-caw/CAW-SUITE-BREAKDOWN.md
    "Eyes (color, shape)": eye type, iris colour, sclera tint, pupil size; eye SHAPE / position stays on the face
    sliders, f_eye_*), filed on the Tekken 7 EYES slot (teardown/tekken7-steam-ui/T7-UI-LAYOUT.md).
 
@@ -37,7 +37,7 @@ export const EYE_TYPES = {
 };
 export const DEFAULT_EYE = 'wh-eye-natural';
 
-/* swatch rows the suite shows (WWE 2K Eyes > Color). hex strings; first = default */
+/* swatch rows the suite shows (CAW Eyes > Color). hex strings; first = default */
 export const IRIS_COLORS = ['#3b2414', '#5a3a22', '#8a5a32', '#b07a2a', '#6b7a3a', '#3f6e4a', '#2f5d8a', '#6f8fb0',
   '#7d8a91', '#3a3a3a', '#8a2a2a', '#c9a227'];
 export const SCLERA_TINTS = ['#f5f2ec', '#ffffff', '#efe6d2', '#f0d8d0', '#e8c0b8', '#1a1a1a'];
