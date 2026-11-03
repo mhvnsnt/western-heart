@@ -1,0 +1,11 @@
+{
+  "schema": "wh-frame-row/1",
+  "note": "WH-authored example rows only. No per-character table, move name or numeric tuning from any source game is copied here; values are WH tuning examples that exercise the schema in game/js/frame-data-schema.js. Player-facing UI must use WH move names, not source-game names.",
+  "fps": 60,
+  "rows": [
+    { "command": "1", "hit_level": "h", "damage": "7", "startup": "i10", "on_block": "+1", "on_hit": "+8", "on_ch": "+8", "tags": "", "transitions": [], "recovery": "r19" },
+    { "command": "2", "hit_level": "m", "damage": "12", "startup": "i13", "on_block": "-4", "on_hit": "+5", "on_ch": "+5", "tags": "", "transitions": [], "recovery": "r22" },
+    { "command": "d/f+2", "hit_level": "m", "damage": "15", "startup": "i16", "on_block": "-9", "on_hit": "KND", "on_ch": "KND", "tags": "pc7~16", "transitions": [], "recovery": "r34" },
+    { "command": "SS+3", "hit_level": "l", "damage": "18,20", "startup": "i30~31", "on_block": "-12", "on_hit": "+46a", "on_ch": "+46a", "tags": "hb js21~29 screw", "transitions": ["crouch"], "recovery": "r38" }
+  ]
+}

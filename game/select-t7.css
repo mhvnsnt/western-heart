@@ -9,13 +9,14 @@
    ============================================================ */
 #screen-select.t8 {
   --hint-h: 48px;
+  --fav-h: 0px; /* height of the favorites row; set below only when ui-gaps.js mounted it */
   --sa-l: env(safe-area-inset-left, 0px); --sa-r: env(safe-area-inset-right, 0px);
   --sa-b: env(safe-area-inset-bottom, 0px); --sa-t: env(safe-area-inset-top, 0px);
 }
 /* roster band: full width (T7), fitted, never scrolls */
 #screen-select.t8 .grid-wrap {
   left: calc(var(--sa-l) + 6px); right: calc(var(--sa-r) + 6px); width: auto; transform: none;
-  bottom: calc(var(--hint-h) + var(--sa-b) + 4px); top: auto; height: 34vh; max-height: none;
+  bottom: calc(var(--hint-h) + var(--fav-h) + var(--sa-b) + 4px); top: auto; height: 34vh; max-height: none;
   overflow: hidden; padding: 0; display: flex; align-items: flex-end; justify-content: center;
 }
 #screen-select.t8 #char-grid.card-grid {
@@ -31,14 +32,15 @@
 #screen-select.t8 .card-grid .char-card.locked-p1::after { content: '1P'; background: var(--t8-p1); }
 #screen-select.t8 .card-grid .char-card.locked-p2::after { content: '2P'; background: var(--t8-p2); left: auto; right: 1px; }
 /* stage: renders fill everything above the band */
-#screen-select.t8 .fighters-zone { bottom: calc(34vh + var(--hint-h) + var(--sa-b)); top: 0; }
+#screen-select.t8 .fighters-zone { bottom: calc(34vh + var(--hint-h) + var(--fav-h) + var(--sa-b)); top: 0; }
 #screen-select.t8 .pane-canvas { height: 100%; }
 /* T7 name plates: top outer corners, big steep italic */
 #screen-select.t8 .pane-plate { top: calc(var(--sa-t) + 44px); left: calc(var(--sa-l) + 10px); max-width: 40%; }
 #screen-select.t8 .pane-p2 .pane-plate { right: calc(var(--sa-r) + 10px); left: auto; }
 #screen-select.t8 .pane-name { font-size: clamp(22px, 6.2vh, 64px); }
 #screen-select.t8 .pane-note { display: none !important; } /* never an error/loading message on screen */
-#screen-select.t8 .side-tag { top: calc(var(--sa-t) + 10px); left: calc(var(--sa-l) + 76px); }
+/* P1 tag clears the header BACK button (83px wide at x=10; the old 76px left overlapped it, select sweep 2026-11-01) */
+#screen-select.t8 .side-tag { top: calc(var(--sa-t) + 10px); left: calc(var(--sa-l) + 100px); }
 #screen-select.t8 .pane-p2 .side-tag { left: auto; right: calc(var(--sa-r) + 76px); }
 /* hint bar + CONFIRM: always on screen */
 #screen-select.t8 .hints-bar { height: var(--hint-h); bottom: 0; padding: 0 calc(var(--sa-r) + 8px) var(--sa-b) calc(var(--sa-l) + 8px); box-sizing: content-box; }
@@ -53,7 +55,7 @@
 /* portrait phones: stage on top, roster block under it (Brutal Fist stacking) */
 @media (orientation: portrait) {
   #screen-select.t8 .grid-wrap { top: auto; height: 40vh; }
-  #screen-select.t8 .fighters-zone { bottom: calc(40vh + var(--hint-h) + var(--sa-b)); }
+  #screen-select.t8 .fighters-zone { bottom: calc(40vh + var(--hint-h) + var(--fav-h) + var(--sa-b)); }
   #screen-select.t8 .pane-plate { top: auto; bottom: 6px; max-width: 48%; }
   #screen-select.t8 .pane-name { font-size: clamp(20px, 6vw, 34px); }
   #screen-select.t8 .pane-facts .fact:nth-child(n+3) { display: none; }
@@ -64,7 +66,7 @@
   /* bigger fighters on landscape phones (owner, PR #901 follow-up): T7's
      renders stand full-height behind the roster band, so the stage runs
      down to the hint bar instead of stopping above the cards. */
-  #screen-select.t8 .fighters-zone { bottom: calc(var(--hint-h) + var(--sa-b)); }
+  #screen-select.t8 .fighters-zone { bottom: calc(var(--hint-h) + var(--fav-h) + var(--sa-b)); }
   #screen-select.t8 .grid-wrap { z-index: 3; }
   #screen-select.t8 .pane-facts { display: none; }
 }
@@ -72,5 +74,34 @@
 #screen-select.t8 .pane-plate { overflow: visible !important; }
 @media (orientation: portrait) {
   #screen-select.t8 .pane-name { font-size: clamp(15px, 4.8vw, 26px); }
-  #screen-select.t8 .side-tag { left: calc(var(--sa-l) + 84px); }
+  #screen-select.t8 .pane-p1 .side-tag { left: calc(var(--sa-l) + 100px); }
+}
+
+/* FAVORITES row (select sweep, 2026-11-01). ui-gaps.js appends #wh-favbar
+   after the hint bar; in this absolutely-positioned layout it fell to the
+   top of the screen, on top of BACK / the P1 tag / the timer (probe at
+   390x844 + 844x390: BACK x FAVORITES label, timer x SAVE FAVORITE). It
+   now sits as its own band directly above the hint bar — the same bottom
+   control band T7 keeps its button prompts in (teardown/tekken7-steam-ui/
+   T7-UI-LAYOUT.md) — and the roster band / stage move up by its height
+   (--fav-h), so nothing overlaps in portrait or landscape. */
+#screen-select.t8:has(> .wh-favbar) { --fav-h: 52px; } /* 46px row + 6px clearance: hint buttons are 44px tall and overhang the 42px landscape bar */
+#screen-select.t8 > .wh-favbar {
+  position: absolute; z-index: 20; left: calc(var(--sa-l) + 6px); right: calc(var(--sa-r) + 6px);
+  bottom: calc(var(--hint-h) + var(--sa-b) + 5px); height: 46px; box-sizing: border-box;
+  flex-wrap: nowrap; gap: 6px; padding: 1px 2px; border-top: 0; overflow-x: auto; overflow-y: hidden;
+  scrollbar-width: none;
+}
+#screen-select.t8 > .wh-favbar .wh-fav-label { flex: 0 0 auto; font-size: 10px; }
+#screen-select.t8 > .wh-favbar .wh-fav-slots { flex-wrap: nowrap; gap: 6px; }
+#screen-select.t8 > .wh-favbar .wh-gap-btn {
+  flex: 0 0 auto; min-height: 44px; padding: 0 12px; flex-direction: row; align-items: center;
+  font-size: 12px; font-weight: 700; white-space: nowrap; background: rgba(29, 26, 22, 0.88);
+}
+#screen-select.t8 > .wh-favbar .wh-gap-btn small { display: none; } /* "Current fighter + attire" subtitle: too tall for the band */
+/* portrait phones: three FAV slots + SAVE need the full row, so the
+   FAVORITES caption drops (the ★ SAVE FAVORITE button already names it) */
+@media (orientation: portrait) {
+  #screen-select.t8 > .wh-favbar .wh-fav-label { display: none; }
+  #screen-select.t8 > .wh-favbar .wh-gap-btn { padding: 0 10px; }
 }

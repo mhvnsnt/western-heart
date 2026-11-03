@@ -3,6 +3,9 @@
    Phone-first orbit: drag to rotate, pinch/wheel to zoom. Fighter stays full-screen, never covered. */
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+/* The template bodies ship gltfpack -cc (meshopt + quantized morph targets): same decoder the game's assets.js uses
+   (game/vendor/addons/libs/meshopt_decoder.js via the suite importmap). */
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.js';
 /* MB-Lab game skeleton (WWE-style CREATE templates) -> the Mixamo bone names SOCKET_BONES and framing use (2026-11-01) */
 const MBLAB_ALIASES = { Hips:['pelvis'], Spine:['spine01'], Spine1:['spine02'], Spine2:['spine03'], Neck:['neck'], Head:['head'],
   LeftShoulder:['clavicle_L'], RightShoulder:['clavicle_R'], LeftArm:['upperarm_L'], RightArm:['upperarm_R'],
@@ -30,6 +33,7 @@ export class SuiteViewer {
     this.camTarget = new THREE.Vector3(0, 1.0, 0);
     this.camDist = 3.4; this.theta = 0.35; this.phi = 1.35;
     this.loader = new GLTFLoader();
+    this.loader.setMeshoptDecoder(MeshoptDecoder);
     this.model = null; this.modelBox = null;
     this.parts = new Map(); // partId -> { group, def, placement }
     this.markers = new Map();

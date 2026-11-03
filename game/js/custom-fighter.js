@@ -22,6 +22,48 @@ const LS_KEY = 'wh_create_fighter_v1';
 // saves under its own key with a compatible profile/body shape.
 const LS_KEY_SUITE = 'wh_creation_suite_v1';
 
+// Phase 4b (2026-11-02): the 9 template ids in
+// customization/templates/body-templates.json. The game-side allowlist
+// mirrors that file; a template id outside this list is never trusted
+// into a model key (it would 404 the fight load).
+const TEMPLATE_IDS = [
+  'super-heavyweight', 'powerhouse', 'showman',
+  'technician', 'highflyer', 'luchador',
+  'powerhouse-w', 'athletic-w', 'striker-w',
+];
+// The suite's default template (customization/creation-suite-ui/js/suite.js
+// DEFAULT_TEMPLATE_ID), also the suite's own migration target for saved
+// fighters that still sit on the legacy Soldier base (migrateLegacy).
+const DEFAULT_TEMPLATE_ID = 'technician';
+
+/**
+ * Resolve a saved fighter to its in-fight model key (Phase 4b).
+ * Blank-mode saves (the CREATE flow) carry `template` + `baseGlb`
+ * (customization/templates/meshes/<id>.glb); either field resolves
+ * to `custom-template-<id>` (game/js/assets.js MODEL_URLS), so the
+ * fighter fights on its own template body with its morphs, never
+ * on the stock Soldier model. A save with neither field (legacy
+ * create-fighter format) follows the suite's own migration and
+ * defaults to the technician template.
+ * Roster-mode saves (editing an existing fighter) are NOT remapped
+ * here: their baseGlb is that roster fighter's attire GLB, which
+ * has no MODEL_URLS key of its own, so they keep the legacy
+ * 'custom' (Soldier) slot until the edit-existing-fighters phase
+ * (ORDER doc Phase 4) wires roster attire models into fights.
+ * That remainder is still owed, stated here rather than papered
+ * over with a wrong body.
+ */
+function templateModelFor(F) {
+  if (F.mode === 'roster') return { template: F.template || null, model: 'custom' };
+  let id = F.template || null;
+  if (!id && typeof F.baseGlb === 'string') {
+    const m = /customization\/templates\/meshes\/([a-z0-9-]+)\.glb$/.exec(F.baseGlb);
+    if (m) id = m[1];
+  }
+  if (!id || !TEMPLATE_IDS.includes(id)) id = DEFAULT_TEMPLATE_ID;
+  return { template: id, model: 'custom-template-' + id };
+}
+
 /**
  * Load the saved custom fighter from localStorage.
  * Reads the flagship Creation Suite format first (`wh_creation_suite_v1`),
@@ -44,10 +86,15 @@ export function getCustomFighter() {
 
 /**
  * Convert CAW fighter JSON to a roster-compatible fighter object.
- * Uses Soldier.glb base model with saved appearance applied.
+ * Phase 4b: the fighter fights on its chosen template body
+ * (templateModelFor, above), with its saved morphs applied once
+ * at build by Fighter._build (game/js/fighter.js _applyCharMorphs
+ * runs in _build and after a transform model swap only — never
+ * per-frame, so fights stay light on a phone).
  */
 export function customFighterToRoster(F) {
   if (!F || !F.profile) return null;
+  const { template, model } = templateModelFor(F);
 
   const bodyType = BODY_TYPES[F.body?.body_type] || BODY_TYPES['Medium 1'];
   const skinTone = F.body?.skin_tone || '#c98d5e';
@@ -65,8 +112,15 @@ export function customFighterToRoster(F) {
     name: name,
     title: title,
     base: 'Custom',
-    moveset: 'jin', // Default; TODO: wire custom moveset slots
-    model: 'custom',
+    // MOVESET FALLBACK, explicit (Phase 4b): no custom moveset slots
+    // are wired yet, so a created fighter falls back to the jin
+    // bank for animation (fighter.js bankIdFor logs this fallback
+    // once) and to the generic move table for frame data. Custom
+    // moveset slots are still TODO — this placeholder is named
+    // here and in bankIdFor, not hidden behind a silent default.
+    moveset: 'jin',
+    movesetFallback: 'jin',
+    model: model,
     tintStrength: 0.3,
     colorize: true, // the CAW skin tone is applied as a tint (player's choice)
     colors: { suit: suitColor, trim: 0xe8b64c },
@@ -87,6 +141,20 @@ export function customFighterToRoster(F) {
       grabBias: 0.15,
       reaction: 0.55,
     },
+    // Phase 3 completion (2026-11-02): the suite's saved morph slider
+    // values ride along instead of being silently dropped — Fighter._build
+    // applies them to the built model via game/js/morph-apply.js.
+    // Phase 4b: the template body itself now rides along too (the
+    // `model` key above resolves to the template GLB), and morphs
+    // are baked onto that instance once at build — the built
+    // template carries real morph targets, so the values land.
+    morphTargets: { ...(F.body?.morph_targets || {}) },
+    // Which template body this fighter was created from (the
+    // resolved template id; 'technician' for template-less legacy
+    // saves, null only for roster-mode saves whose template field
+    // was never set — see templateModelFor).
+    template: template,
+    baseGlb: F.baseGlb || null,
     // Raw CAW data for appearance application
     _caw: F,
   };

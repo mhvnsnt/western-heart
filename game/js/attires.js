@@ -16,8 +16,13 @@ const LS_KEY = 'wh_attires_v1';
 // Fighter ids: a model key that is another fighter's own id is that fighter's body.
 const FIGHTER_IDS = new Set(FULL_ROSTER.map(f => f.id));
 
-/* model base -> [{ model, label }]. Labels from owner notes / CANON.md.
-   Fighters not listed here get a single default (their base model). */
+/* model base -> [{ model, label, src? }]. Labels from owner notes / CANON.md.
+   Fighters not listed here get a single default (their base model).
+   NAMES LAW (owner 2026-11-01, docs/rules/NO-SOURCE-CHARACTER-NAMES.md):
+   `label` is player-facing (select pane, △ button, favorites) and never
+   carries a source-game character/game name — a teardown/base model is
+   shown as 'ATTIRE n · CLASSIC'. `src` is internal provenance (which
+   source data the slot came from) and is never rendered. */
 export const ATTIRE_VARIANTS = {
   // RAVE / Kiko Tanaka — roster/TRIPO-REGISTRY.md slot order
   'kiko-tanaka': [
@@ -55,7 +60,7 @@ export const ATTIRE_VARIANTS = {
   'torch': [
     { model: 'torch-tripo-a1', label: 'ATTIRE 1 · VALKYRIE OF FLAME (TRIPO)' },
     { model: 'torch-tripo-a2', label: 'ATTIRE 2 · RED DEMON (TRIPO)' },
-    { model: 'torch', label: 'ANNA BASE (TEKKEN BASE)' },
+    { model: 'torch', label: 'ATTIRE 3 · CLASSIC', src: 'T7 base model (anna)' },
   ],
   'demonio': [
     // t133u: attire 1 = the owner's own Demonio (roster model demonio-a1);
@@ -71,7 +76,7 @@ export const ATTIRE_VARIANTS = {
     { model: 'deathfang-werewolf', label: 'ATTIRE 2 · WEREWOLF' },
     // OBSOLETE-ORIGINALS rule (2026-10-23): the Iori model ladders here,
     // behind Deathfang's own attires — never a standalone fighter.
-    { model: 'iori', label: 'IORI · ORIGINAL MODEL (KOF)' },
+    { model: 'iori', label: 'ATTIRE 3 · CLASSIC', src: 'KOF source model (iori)' },
   ],
   /* DOC FRANK's ladder — keyed by fighter id ('docfrank'), same pattern as
      Kevin's ladder below: attiresFor() looks up fighter.model, then
@@ -99,9 +104,9 @@ export const ATTIRE_VARIANTS = {
     { model: 'doc-frank-hood-big', label: 'ATTIRE 3 · HOOD XL (TRIPO)' },
     { model: 'doc-frank-frankenstein', label: "ATTIRE 4 · FRANKENSTEIN'S CYBORG (TRIPO)" },
     { model: 'doc-frank-frankenstein-big', label: 'ATTIRE 4 · FRANKENSTEIN XL (TRIPO)' },
-    { model: 'doc-frank-a1', label: 'ATTIRE 1 · OLD MAN (TEKKEN RESKIN)' },
-    { model: 'doc-frank', label: 'BOSCONOVITCH BASE (TEKKEN CANON)' },
-    { model: 'doc-frank-machine-shop', label: 'MACHINE SHOP (TEKKEN RESKIN)' },
+    { model: 'doc-frank-a1', label: 'ATTIRE 5 · OLD MAN', src: 'T7 base reskin (bosconovitch, PR #263)' },
+    { model: 'doc-frank', label: 'ATTIRE 6 · CLASSIC', src: 'T7 base model (bosconovitch)' },
+    { model: 'doc-frank-machine-shop', label: 'ATTIRE 7 · MACHINE SHOP', src: 'T7 base reskin (bosconovitch)' },
   ],
   /* MARIPOSA's ladder — re-keyed 2026-10-22 to her roster card id
      ('mariposa-monarch'): the old 'mariposa' key matched no fighter id or
@@ -120,8 +125,8 @@ export const ATTIRE_VARIANTS = {
     { model: 'mariposa-butterfly-default', label: 'SLOT 1 · BUTTERFLY DEFAULT' },
     { model: 'mariposa', label: 'SLOT 2 · TRIPO' },
     { model: 'mariposa-monarch', label: 'SLOT 3 · MONARCH' },
-    { model: 'zafina-golden-pharaoh', label: 'GOLDEN PHARAOH (WH RESKIN)' },
-    { model: 'zafina', label: 'SLOT 6+ · TEKKEN ZAFINA' },
+    { model: 'zafina-golden-pharaoh', label: 'SLOT 4 · GOLDEN PHARAOH', src: 'WH reskin of T7 base model (zafina)' },
+    { model: 'zafina', label: 'SLOT 5 · CLASSIC', src: 'T7 base model (zafina)' },
   ],
   'burger': [
     { model: 'burger', label: 'ATTIRE 1 · DEMON' },
@@ -159,9 +164,9 @@ export const ATTIRE_VARIANTS = {
      rig/wiring), A2 = original Baek model, A3 = Master White (PARKED).
      Keyed by fighter id so Kevin's entry finds it. */
   'baek-master-white': [
-    { model: 'kevin-tripo', label: 'KEVIN · A1 TRIPO (DEFAULT)' },
-    { model: 'baek', label: 'KEVIN · A2 BAEK MODEL' },
-    { model: 'baek-master-white', label: 'MASTER WHITE (PARKED)' },
+    { model: 'kevin-tripo', label: 'ATTIRE 1 · TRIPO (DEFAULT)' },
+    { model: 'baek', label: 'ATTIRE 2 · CLASSIC', src: 'T7 base model (baek)' },
+    { model: 'baek-master-white', label: 'ATTIRE 3 · MASTER WHITE (PARKED)' },
   ],
   'purple-rain': [
     { model: 'purple-rain', label: 'BASE' },
@@ -178,8 +183,8 @@ export const ATTIRE_VARIANTS = {
      card. */
   'phantom': [
     { model: 'phantom', label: 'BASE' },
-    { model: 'phantom-t8', label: 'T8' },
-    { model: 'jin-bloodline-ember', label: 'JIN KAZAMA · BLOODLINE EMBER (TEKKEN RESKIN)' },
+    { model: 'phantom-t8', label: 'CLASSIC ALT', src: 'T8 base model (yoshimitsu)' },
+    { model: 'jin-bloodline-ember', label: 'BLOODLINE EMBER', src: 'T7 base reskin (jin)' },
   ],
   /* CHARGER's ladder (dedup 2026-10-22): the standalone 'charger-attire2'
      card folded in (owner rule: attires ladder into their fighter). Without
@@ -190,7 +195,7 @@ export const ATTIRE_VARIANTS = {
     { model: 'charger-attire2', label: 'ATTIRE 2 · WILD CURRENT' },
     // OBSOLETE-ORIGINALS rule (2026-10-23): the Blanka model is NOT a
     // fighter — it ladders here, behind Charger's own attires.
-    { model: 'blanka', label: 'BLANKA · ORIGINAL MODEL (STREET FIGHTER)' },
+    { model: 'blanka', label: 'ATTIRE 3 · CLASSIC', src: 'Street Fighter source model (blanka)' },
   ],
   /* KINPO's ladder — slot order per roster/kinpo/ATTIRE-SLOTS.md (owner 2026-10-20):
      Slot 1 = Tripo main, Slot 2 = "Goth Sport" Tripo (was wired as a MODEL_URLS
@@ -198,7 +203,7 @@ export const ATTIRE_VARIANTS = {
   'kinpo': [
     { model: 'kinpo', label: 'ATTIRE 1 · TRIPO' },
     { model: 'kinpo-attire2', label: 'ATTIRE 2 · GOTH SPORT (TRIPO)' },
-    { model: 'kinpo-t8', label: 'T8' },
+    { model: 'kinpo-t8', label: 'ATTIRE 3 · CLASSIC', src: 'T8 base model (asuka)' },
   ],
   /* KING TYRANT's ladder (wire-up 2026-10-22): his four owner Tripo originals
      (roster/king-tyrant/attires/ATTIRE-SLOTS.md) were on disk with no MODEL_URLS
@@ -209,14 +214,14 @@ export const ATTIRE_VARIANTS = {
     { model: 'king-tyrant-attire2', label: 'ATTIRE 2 · TYRANT KING (TRIPO)' },
     { model: 'king-tyrant-attire3', label: 'ATTIRE 3 · BLACK SNOW (TRIPO)' },
     { model: 'king-tyrant-attire4', label: 'ATTIRE 4 · FIGHT GEAR (TRIPO)' },
-    { model: 'king-tyrant', label: 'BASE BUILD (TEKKEN BASE)' },
+    { model: 'king-tyrant', label: 'ATTIRE 5 · CLASSIC', src: 'T7 base build' },
   ],
   /* NIGHTWOLF's ladder (wire-up 2026-10-22): his Tripo "tribal warrior" DEFAULT
      (roster/nightwolf/attires/ATTIRE-SLOTS.md, tribute to Serena Misae Brown)
      was on disk with no key. Tripo first per the display law; base ladders back. */
   'nightwolf': [
     { model: 'nightwolf-attire1', label: 'ATTIRE 1 · TRIBAL WARRIOR (TRIPO)' },
-    { model: 'nightwolf', label: 'BASE BUILD (TEKKEN BASE)' },
+    { model: 'nightwolf', label: 'ATTIRE 2 · CLASSIC', src: 'T7 base build' },
   ],
   /* DIABLO's ladder (fighter-completeness audit 2026-10-21): Attire 2
      "Devil God" was wired as a MODEL_URLS key + GLB (PR #419) but had no
@@ -236,8 +241,8 @@ export const ATTIRE_VARIANTS = {
     { model: 'kronos-attire3', label: 'ATTIRE 3 · TIMBERWOLF FULLY SUITED' },
     // OBSOLETE-ORIGINALS rule (2026-10-23): the Zangief models ladder here,
     // behind Kronos's own attires — never a standalone fighter.
-    { model: 'zangief', label: 'ZANGIEF · ORIGINAL MODEL (STREET FIGHTER)' },
-    { model: 'zangief-attire1', label: 'ZANGIEF · SOURCE MODEL (UNRIGGED)' },
+    { model: 'zangief', label: 'ATTIRE 4 · CLASSIC', src: 'Street Fighter source model (zangief)' },
+    { model: 'zangief-attire1', label: 'ATTIRE 5 · CLASSIC (UNRIGGED)', src: 'Street Fighter source model (zangief)' },
   ],
   /* MICHIKO's ladder (owner 2026-10-21, Tripo-first rule): her two Tripo
      originals lead — Attire 1 "bone goddess amazonian M rated nude attire
@@ -248,7 +253,7 @@ export const ATTIRE_VARIANTS = {
   'michiko': [
     { model: 'michiko-attire1', label: 'ATTIRE 1 · BONE GODDESS (TRIPO)' },
     { model: 'michiko-attire2', label: 'ATTIRE 2 · BIKER CHICK (TRIPO)' },
-    { model: 'michiko', label: 'KATARINA BASE (TEKKEN BASE)' },
+    { model: 'michiko', label: 'ATTIRE 3 · CLASSIC', src: 'T7 base model (katarina)' },
   ],
   /* AWA POP's ladder (fighter-completeness audit 2026-10-21): Attire 2's
      GLB sat in roster/awa-pop/attires/attire2/ with no MODEL_URLS key and
@@ -257,7 +262,7 @@ export const ATTIRE_VARIANTS = {
   // awa-pop.glb (T7-style Nina port, b94aa61c) ladders back. Her slot-1 Tripo GLB is not on main (see audit doc).
   'awapop': [ // keyed by fighter id (roster model is now 'awa-pop-attire2')
     { model: 'awa-pop-attire2', label: 'ATTIRE 1 · TRIPO' },
-    { model: 'awa-pop', label: 'NINA BASE (T7-STYLE PORT)' },
+    { model: 'awa-pop', label: 'ATTIRE 2 · CLASSIC', src: 'T7-style port (nina)' },
   ],
   /* PANTERA's ladder — owner reorder 2026-10-21: his TRIPO ORIGINALS at
      the forefront (slots 1-2), the Tekken-version reskins ladder BACK
@@ -275,10 +280,10 @@ export const ATTIRE_VARIANTS = {
   'pantera': [
     { model: 'pantera-leoman', label: 'ATTIRE 1 · LEO MAN (TRIPO)' },
     { model: 'pantera-leopard-king', label: 'ATTIRE 2 · LEOPARD KING (TRIPO)' },
-    { model: 'pantera', label: 'ATTIRE 3 · T7 KING P1 RESKIN' },
+    { model: 'pantera', label: 'ATTIRE 3 · CLASSIC' },
     { model: 'pantera-snow-leopard', label: 'ATTIRE 4 · SNOW LEOPARD' },
     { model: 'pantera-crimson-rage', label: 'ATTIRE 5 · CRIMSON RAGE' },
-    { model: 'pantera-p2', label: 'ATTIRE 6 · T7 P2' },
+    { model: 'pantera-p2', label: 'ATTIRE 6 · CLASSIC ALT' },
   ],
   /* SLICE's ladder (owner 2026-10-21 ~08:42 CDT): A1 = the owner's own Tripo
      (DEFAULT — skull mask, jagged chrome arm blades), A2 = our Dragunov build
@@ -286,7 +291,7 @@ export const ATTIRE_VARIANTS = {
      his roster model id 'slice' — attiresFor finds it on the model lookup. */
   'slice': [
     { model: 'slice-attire1', label: 'ATTIRE 1 · SKULL MASK (OWNER TRIPO)' },
-    { model: 'slice-attire2', label: 'ATTIRE 2 · T7 DEFAULT — BERET (DRAGUNOV BUILD)' },
+    { model: 'slice-attire2', label: 'ATTIRE 2 · BERET', src: 'T7 default build (dragunov, PR #433)' },
   ],
   /* STAR's ladder (wire-up 2026-10-22): her Tripo main + colorways
      (roster/star/ATTIRE-SLOTS.md, Tripo ea73eeb3) sat in roster/star/attires/
@@ -331,8 +336,8 @@ export const ATTIRE_VARIANTS = {
   'zui': [
     { model: 'zui-attire1', label: 'ATTIRE 1 · DRUNKEN MONK (TRIPO)' },
     { model: 'zui-attire2', label: 'ATTIRE 2 · REWORK V2' },
-    { model: 'zui_alt1', label: 'ALT 1 · T7 STEVE RESKIN' },
-    { model: 'zui_alt2', label: 'ALT 2 · T7 STEVE RESKIN' },
+    { model: 'zui_alt1', label: 'ALT 1 · CLASSIC', src: 'T7 base reskin (steve)' },
+    { model: 'zui_alt2', label: 'ALT 2 · CLASSIC', src: 'T7 base reskin (steve)' },
   ],
   /* ——— LANDING WAVE 1 ladders (2026-10-23, docs/CATCHUP-AUDIT-2026-10-23.md):
      fighters whose on-main attire GLBs had keys (or get them in assets.js
@@ -343,16 +348,16 @@ export const ATTIRE_VARIANTS = {
   'koreshi': [
     { model: 'koreshi', label: 'ATTIRE 1' },
     { model: 'koreshi-attire1', label: 'ATTIRE 1 · TRIPO SOURCE (UNRIGGED)' },
-    { model: 'vega', label: 'VEGA · ORIGINAL MODEL (STREET FIGHTER)' },
+    { model: 'vega', label: 'ATTIRE 3 · CLASSIC', src: 'Street Fighter source model (vega)' },
   ],
   // OWNER-MODEL-FIRST (t213u): owner Tripo models lead; the T8 Armor King port (yukihyo.glb) ladders back.
   'yukihyo': [
     { model: 'yukihyo-attire1', label: 'ATTIRE 1 (TRIPO)' },
     { model: 'yukihyo-attire2', label: 'ATTIRE 2 · BOBCAT PRIDE (TRIPO)' },
     { model: 'yukihyo-attire3', label: 'ATTIRE 3 · TIGER KING (TRIPO)' },
-    { model: 'yukihyo', label: 'ARMOR KING T8 PORT' },
-    { model: 'armor-king', label: 'ARMOR KING · ORIGINAL MODEL (TEKKEN)' },
-    { model: 'armor-king-attire1', label: 'ARMOR KING · SOURCE MODEL (UNRIGGED)' },
+    { model: 'yukihyo', label: 'ATTIRE 4 · CLASSIC', src: 'T8 port (armor king)' },
+    { model: 'armor-king', label: 'ATTIRE 5 · CLASSIC ALT', src: 'T7 source model (armor king)' },
+    { model: 'armor-king-attire1', label: 'ATTIRE 6 · CLASSIC (UNRIGGED)', src: 'T7 source model (armor king)' },
   ],
   // OWNER-MODEL-FIRST (t213u): owner Tripo models lead. Sail the Sea is the
   // rigged one so it is the playable default; his unrigged Tripo A1 stays next
@@ -360,12 +365,12 @@ export const ATTIRE_VARIANTS = {
   'bruno': [
     { model: 'bruno-attire2', label: 'ATTIRE 1 · SAIL THE SEA (TRIPO)' },
     { model: 'bruno-attire1', label: 'ATTIRE 2 · TRIPO (UNRIGGED)' },
-    { model: 'bruno', label: 'MIGUEL BASE (SOURCE PORT)' },
+    { model: 'bruno', label: 'ATTIRE 3 · CLASSIC', src: 'source port (miguel)' },
   ],
   // OWNER-MODEL-FIRST (t213u): owner Tripo Jade God leads; the Akuma-source dio.glb ladders back.
   'dio': [
     { model: 'dio-attire1', label: 'ATTIRE 1 · JADE GOD (TRIPO)' },
-    { model: 'dio', label: 'AKUMA BASE (SOURCE PORT)' },
+    { model: 'dio', label: 'ATTIRE 2 · CLASSIC', src: 'source port (akuma)' },
   ],
   /* OWNER-MODEL-FIRST (owner t213u, 2026-10-23): NEGATIVO's own tribal
      Tripo models lead (roster/negativo/attires/attire{1,2}/source/manifest.json,
@@ -375,7 +380,7 @@ export const ATTIRE_VARIANTS = {
   'negativo': [
     { model: 'negativo-attire1', label: 'ATTIRE 1 · RED EYES (TRIPO)' },
     { model: 'negativo-attire2', label: 'ATTIRE 2 · BEFORE THE TRIALS (TRIPO)' },
-    { model: 'n3g4tiv0', label: 'NEGAN BASE (TEKKEN RESKIN)' },
+    { model: 'n3g4tiv0', label: 'ATTIRE 3 · CLASSIC', src: 'T7 base reskin (negan)' },
   ],
   /* SKULL (roster/skull/attires/ATTIRE-SLOTS.md): A1 = his Tripo; the live
      default stays the rigged build of it (the default swap rides the rig
@@ -383,7 +388,7 @@ export const ATTIRE_VARIANTS = {
   'skull': [
     { model: 'skull', label: 'ATTIRE 1 · RIGGED BUILD' },
     { model: 'skull-tripo', label: 'ATTIRE 1 · SKULL (TRIPO, UNRIGGED)' },
-    { model: 'skull-base', label: 'BRYAN FURY BASE (TEKKEN)' },
+    { model: 'skull-base', label: 'ATTIRE 2 · CLASSIC', src: 'T7 base model (bry)' },
   ],
   'waterfall': [
     { model: 'waterfall', label: 'ATTIRE 1' },

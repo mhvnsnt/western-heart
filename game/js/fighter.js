@@ -50,6 +50,7 @@ import { JiggleRig } from './jiggle.js';
 import { SoftBody } from './softbody.js';
 import { MpmTissue } from './mpm-tissue.js';
 import { FaceRig } from './faceRig.js';
+import { applyMorphTargets } from './morph-apply.js';
 import { HandPoseBlender } from './handPoses.js';
 import { canonRootScale } from './canon-sizing.js';
 import { t8Frame, stunFromAdvantage } from './frame-tables.js';
@@ -131,6 +132,32 @@ export function bankIdFor(charId, movesetId) {
   // Armor King's King-proportioned model. Every other king-source
   // fighter keeps the king_on_pantera_leoman bank untouched.
   if (charId === 'armor-king') return 'armorking';
+  // Phase 4b (2026-11-02) — CREATED-FIGHTER MOVESET FALLBACK, explicit:
+  // a created fighter has no custom moveset wired yet (custom moveset
+  // slots are TODO in game/js/custom-fighter.js), so its animation
+  // bank falls back to 'jin' and its frame data to the generic move
+  // table (getRealMove's MOVES fallback). This is the placeholder
+  // the roster object already named (moveset: 'jin'); making it
+  // explicit here is what lets the template body animate at all —
+  // without a bound bank the template's zero embedded clips leave
+  // it in its bind pose. Logged once, not per call. The fallback
+  // lifts automatically the moment a real 'custom' moveset is
+  // registered (registerMoveset / moveset index entry), so wiring
+  // custom movesets later needs no change here. T3-use note: the
+  // jin bank is a Tekken 3 decoded bank, used because no
+  // T5/T6/T7/T8/TTT2 custom-moveset bank exists for a created
+  // fighter yet; logged in the Phase 4b handoff note.
+  if (charId === 'custom') {
+    let hasCustomMoveset = false;
+    try { hasCustomMoveset = !!getMovesetInfo('custom'); } catch (e) { /* movesets not loaded yet */ }
+    if (!hasCustomMoveset) {
+      if (!bankIdFor._customFallbackLogged) {
+        bankIdFor._customFallbackLogged = true;
+        console.log('[WH] custom fighter: no custom moveset wired yet — falling back to the jin bank (placeholder) for animation; custom moveset slots are still TODO');
+      }
+      return 'jin';
+    }
+  }
   // Per-fighter bank overrides (2026-10-20, anim-bank wiring lane; owner
   // order: every fighter animates on THEIR OWN base character's clips).
   // These fighters' moveset DATA was built on a proxy source's move table
@@ -652,6 +679,7 @@ export class Fighter {
     this.lean.add(inst.model);
     this.root.add(this.lean);
     this.model = inst.model;
+    this._applyCharMorphs();
     // ?debug=1 → on-page fighter diagnostics (no devtools needed)
     if (new URLSearchParams(location.search).has('debug')) {
       let sm = 0, bones = 0, vis = true;
@@ -872,6 +900,21 @@ export class Fighter {
     return true;
   }
 
+  /* Creation-suite morphs (Phase 3 completion, 2026-11-02): apply this
+     fighter's saved slider values (char.morphTargets, passed through by
+     game/js/custom-fighter.js) to the built model. Models without morph
+     targets (e.g. the legacy Soldier base) are a no-op; the number of
+     live influences is kept on model.userData for diagnostics. */
+  _applyCharMorphs() {
+    const values = this.char && this.char.morphTargets;
+    if (!values || !Object.keys(values).length || !this.model) return 0;
+    try {
+      const n = applyMorphTargets(this.model, values);
+      this.model.userData.morphInfluencesApplied = n;
+      return n;
+    } catch (e) { console.warn('[WH] morph apply failed', e); return 0; }
+  }
+
   /* The actual model swap — called by the cinematic at the climax.
      (Was inline in tryTransform; extracted so the cinematic owns timing.) */
   _doModelSwap(t, direction='up') {
@@ -891,6 +934,7 @@ export class Fighter {
     this.lean.remove(this.model);
     this.lean.add(inst.model);
     this.model = inst.model;
+    this._applyCharMorphs();
     this.bones = inst.bones;
     this.mixer = inst.mixer;
     this.actions = inst.actions;

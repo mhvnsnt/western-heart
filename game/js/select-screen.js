@@ -350,6 +350,8 @@ export function createSelectScreen(deps) {
   const strip = $('char-grid');
   const hint = $('select-hint');
   const confirmBtn = $('confirm-fighter');
+  const pBtn = $('attire-punch'); // △ — tap cycles attires (cycleAttire)
+  const kBtn = $('attire-kick');  // ▢ — classic K stepping (kickAttire)
 
   const panes = {
     p1: new PreviewPane($('pane-canvas-p1'), 'p1'),
@@ -516,6 +518,7 @@ export function createSelectScreen(deps) {
 
   function renderPlate(side) {
     const els = plateEls(side);
+    queueMicrotask(updateAttireButton); // △ label follows the active side's fighter + attire
     const locked = state.locked[side];
     const c = locked || state.highlight[side];
     const isActive = state.activeSide === side && !locked;
@@ -666,13 +669,25 @@ renderSoulSpirit(side, null, false);
     const els = plateEls(side);
     const fb = els.root.querySelector('.pane-fallback');
     els.note.hidden = true;
+    // ATTIRE STATE (select attire fix, 2026-11-01): the pane says which
+    // state the picked attire is in — 'loading' while its GLB streams,
+    // 'unavailable' when it could not load — through data-attire-state
+    // (select.css styles it, and the △ attire button mirrors it). The
+    // old flow covered the stage with the same fighter portrait for
+    // every attire, so a slow or failed attire looked like "tap did
+    // nothing".
+    const hadModel = !!panes[side].model;
+    setAttireState(side, 'loading');
     // PRELOAD (2026-10-24): the portrait plate shows instantly while the
-    // GLB streams in, then hides only when the 3D model is ready — the
-    // preview is never a blank wait. (Fallback handling below already
-    // hides it on success and keeps it on failure.)
-    if (fb) { fb.src = selectPortraitSrc(c); fb.hidden = false; }
+    // GLB streams in — but only when nothing is on stage yet. Switching
+    // attire keeps the current 3D fighter up (with the loading state)
+    // until the new model is ready, instead of hiding it behind a
+    // portrait identical for every attire.
+    if (fb && !hadModel) { fb.src = selectPortraitSrc(c); fb.hidden = false; }
     const ok = await panes[side].show(c, modelId);
     if (state.highlight[side]?.id !== c.id && state.locked[side]?.id !== c.id) return;
+    // A newer attire tap superseded this load: that call owns the pane.
+    if (selectedAttireModel(c) !== modelId) return;
     if (panes[side].failed) {
       // No WebGL on this device: show the posed portrait plate
       // instead of the live model, and say so honestly.
@@ -682,13 +697,39 @@ if (fb) {
       }
       els.note.hidden = false;
       els.note.textContent = '3D UNAVAILABLE';
-
+      setAttireState(side, '');
       return;
     }
-    // A model that fails to load shows the fighter's own portrait plate,
-    // never a message, a T-pose or another fighter.
+    // A model that fails to load shows the fighter's own portrait plate
+    // (never a T-pose or another fighter), marked UNAVAILABLE so the
+    // player sees the attire they picked is not the one on screen.
     if (fb) { if (!ok) fb.src = selectPortraitSrc(c); fb.hidden = !!ok; }
     els.note.hidden = true;
+    setAttireState(side, ok ? '' : 'unavailable');
+  }
+
+  function setAttireState(side, st) {
+    const els = plateEls(side);
+    if (st) els.root.dataset.attireState = st; else delete els.root.dataset.attireState;
+    if (side === state.activeSide) updateAttireButton();
+  }
+
+  /* The △ button names the attire on screen ("Attire 2/6") and carries
+     the pane's loading / unavailable state, so a tap always shows a
+     visible change on a phone (where the chip list is hidden). */
+  function updateAttireButton() {
+    if (!pBtn) return;
+    const side = state.activeSide;
+    const c = state.locked[side] || state.highlight[side];
+    const list = c ? selectableAttires(c) : [];
+    const lbl = pBtn.querySelector('.lbl');
+    const st = plateEls(side).root.dataset.attireState || '';
+    if (st) pBtn.dataset.attireState = st; else delete pBtn.dataset.attireState;
+    pBtn.disabled = list.length < 2;
+    if (!lbl) return;
+    if (list.length < 2) { lbl.textContent = 'Attire'; return; }
+    const i = Math.max(0, list.findIndex(a => a.model === selectedAttireModel(c)));
+    lbl.textContent = `Attire ${i + 1}/${list.length}`;
   }
 
   function applyAttire(side, c, modelId) {
@@ -698,6 +739,23 @@ if (fb) {
     showOnSide(side, c);
     assets.prefetch(modelId);
     if (hint) hint.textContent = `${c.name} — ${attireLabel(c, modelId)}`;
+    updateAttireButton();
+  }
+
+  /* TAP CYCLE (owner on a phone, 2026-11-01: "it reacts but the outfit
+     does not change"): the △ attire button used to call punchAttire,
+     which always returns to attire 1 — so on attire 1 a tap did
+     nothing. A tap now steps to the NEXT attire and wraps (1 -> 2 ->
+     ... -> n -> 1), the same stepping as the controller's attire
+     button; keyboard J / K keep the classic punch / kick scheme. */
+  function cycleAttire() {
+    const c = state.highlight[state.activeSide];
+    if (!c || state.locked[state.activeSide]) return;
+    const list = selectableAttires(c);
+    if (list.length < 2) return;
+    audio.uiClick();
+    const cur = Math.max(0, list.findIndex(a => a.model === selectedAttireModel(c)));
+    applyAttire(state.activeSide, c, list[(cur + 1) % list.length].model);
   }
 
   /* Owner's classic scheme (Tekken 1 manual): PUNCH = attire 1,
@@ -914,9 +972,7 @@ if (fb) {
     else if (e.key === 'k' || e.key === 'K') { kickAttire(); }
   });
 
-  const pBtn = $('attire-punch');
-  const kBtn = $('attire-kick');
-  if (pBtn) pBtn.addEventListener('click', punchAttire);
+  if (pBtn) pBtn.addEventListener('click', cycleAttire);
   if (kBtn) kBtn.addEventListener('click', kickAttire);
 
   /* The fight (main.js startFight) reads each side's locked soul-spirit
@@ -960,7 +1016,7 @@ if (fb) {
           <b>1V1 FIGHT</b><span>classic versus</span>
         </button>
         <button type="button" class="vs-format-btn" data-format="team">
-          <b>TEAM BATTLE</b><span>TTT2 tag &amp; elimination</span>
+          <b>TEAM BATTLE</b><span>tag &amp; elimination</span>
         </button>
       </div>
       <div class="vs-submenu-row" id="vs-size-row" hidden>
@@ -989,8 +1045,8 @@ if (fb) {
   function setSizeNote(n) {
     const note = $('vs-size-note');
     if (note) note.textContent = n === 2
-      ? '2v2 — TTT2 tag rules: tag in/out, red health, rage, tag combos.'
-      : `${n}v${n} — TTT2 Team Battle elimination: KO a fighter, the next steps in.`;
+      ? '2v2 — tag rules: tag in/out, red health, rage, tag combos.'
+      : `${n}v${n} — Team Battle elimination: KO a fighter, the next steps in.`;
   }
   function chooseVsFormat(fmt) {
     audio.uiClick();

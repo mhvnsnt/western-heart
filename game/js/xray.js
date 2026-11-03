@@ -51,6 +51,7 @@
    physics/visuals can never crash the fight.
    ============================================================ */
 import { SoftBody } from './softbody.js';
+import { ASSET_CONFIG } from './asset-config.js';
 
 /* Timeline (real seconds — the sequence runs on wall clock, not the
    rage slow-mo time scale, so it stays a quick ~1.9 s beat). */
@@ -187,14 +188,24 @@ export class XraySystem {
   }
 
   /* Background prefetch of a fighter's anatomy JSON. Fail-silent:
-     a missing file just means no layer reveal for that fighter. */
+     a missing file just means no layer reveal for that fighter.
+     Page first, then jsDelivr (2026-11-02): the live build (GitHub Pages,
+     at its 1 GB cap) does not ship roster/<fighter>/anatomy/, so on the
+     live site every X-ray KO played the skin / camera beat only. Same
+     order as asset-config.js resolveAssetCandidates and t3anims.js
+     fetchT7Json. Returns the fetch promise (callers may ignore it). */
   prefetch(fighterId) {
-    if (!fighterId || this._cache[fighterId] !== undefined || this._fetching[fighterId]) return;
-    if (typeof fetch === 'undefined') return;
+    if (!fighterId || this._cache[fighterId] !== undefined || this._fetching[fighterId]) return undefined;
+    if (typeof fetch === 'undefined') return undefined;
     this._fetching[fighterId] = true;
     // game/ is the page base (game/index.html); roster/ sits at repo root.
-    fetch('../roster/' + fighterId + '/anatomy/anatomy-layers.json')
-      .then((r) => (r && r.ok ? r.json() : null))
+    const rel = 'roster/' + fighterId + '/anatomy/anatomy-layers.json';
+    const get = (url) => fetch(url).then((r) => {
+      if (!r || !r.ok) throw new Error('HTTP ' + (r && r.status) + ' for ' + url);
+      return r.json();
+    });
+    return get('../' + rel)
+      .catch(() => get(ASSET_CONFIG.jsdelivrBase + '/' + rel))
       .then((j) => { this._cache[fighterId] = parseAnatomyLayers(j); })
       .catch(() => { this._cache[fighterId] = null; })
       .finally(() => { delete this._fetching[fighterId]; });

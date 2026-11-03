@@ -1,14 +1,14 @@
 {
  "format": "wh-pages-deploy/1",
  "ref": "0306417fd2adfc7ab3af9bb928d3958508c8d8d4",
- "commit": "212e7fb6e64f70a4ded7c527a8eebbbeb580fa32",
- "files": 2139,
- "bytes": 996714080,
- "built": "2026-11-02T03:32:55Z",
+ "commit": "e15815709919aea34f78957522708c56a0f0375b",
+ "files": 2150,
+ "bytes": 997773216,
+ "built": "2026-11-03T11:12:14Z",
  "tool": "tools/deploy/build_pages.py",
  "mode": "shell-only",
  "excluded_files": 5648,
  "excluded_bytes": 5068817600,
- "delta_note": "Delta deploy (Claude, git plumbing, REPUBLISH.md section 2 logic) live 80680c96 -> main 212e7fb6: 3 updated, 0 added, 0 removed; module graph checked.",
+ "delta_note": "Delta deploy (everything-else lane 2026-11-02, Git Data API, guarded-delta semantics of tools/deploy/deploy_delta.py) live 094d23a4 -> main e1581570: 40 updated, 11 added, 0 removed; module graph exit 0 on the build tree (tools/deploy/check_module_graph.py) + delta coverage audit clean. Ships the consolidated bundle: Claude-WIP completion (#1488/#1494/#1495/#1496/#1497), Phase 4B proof (#1538), no-bank evidence (#1534), stance NO-ENTRY fixes (#1535/#1536).",
  "source_pr": 1492
 }

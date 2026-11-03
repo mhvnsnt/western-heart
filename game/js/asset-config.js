@@ -92,6 +92,19 @@ export const SHELL_BUNDLED_MODELS = [
   // so without bundling every Doc Frank fight fails model load on the
   // live build (404 lane, 2026-10-31).
   'roster/doc-frank/attires/attire1/post-transform/model-rigged.glb',
+  // Snow Leopard routing fix (2026-11-02): these three repo files are
+  // missing from the remote bucket (bucket 404, verified live) although
+  // the R2 upload manifest lists them, so the game must load the repo
+  // copy from the shell instead of depending on the bucket. Pantera
+  // Snow Leopard (7.4 MB) loads today only via the jsDelivr fallback;
+  // the two Yukihyo Tripo attires (32-33 MB each) fail outright
+  // because jsDelivr 403s files over 20 MB. Bundling them makes the
+  // shell 462 MB of models, still under the 1 GB Pages cap, and each
+  // file is under the 100 MB per-file cap. Yukihyo attire 1 is NOT
+  // bundled: its bucket copy returns 200, so it loads via remote.
+  'roster/pantera/attires/snow-leopard/pantera-snow-leopard.glb',
+  'roster/yukihyo/attires/attire2/source/yukihyo-a2-bobcat-pride-rigged.glb',
+  'roster/yukihyo/attires/attire3/source/yukihyo-a3-tiger-king-rigged.glb',
 ];
 
 export function isRemoteReady() {
@@ -133,7 +146,13 @@ function isModelUrl(url) {
 export function resolveAssetCandidates(url) {
   if (!isModelUrl(url)) return [url];
   const repoPath = repoPathForModelUrl(url);
-  if (SHELL_BUNDLED_MODELS.includes(repoPath)) return [url];
+  // Bundled models still load local-first, but a build that trimmed one
+  // out (itch caps, a sparse dev checkout) falls through to the remote
+  // base instead of failing outright (select attire fix, 2026-11-01:
+  // Pantera attire 1 'leomon' 404'd locally with no other candidate).
+  if (SHELL_BUNDLED_MODELS.includes(repoPath)) {
+    return isRemoteReady() ? [url, `${ASSET_CONFIG.remoteBase}/${repoPath}`] : [url];
+  }
   const out = [];
   if (isRemoteReady()) out.push(`${ASSET_CONFIG.remoteBase}/${repoPath}`);
   out.push(url);
@@ -173,3 +192,4 @@ export async function loadGlbCandidates(loader, url, base) {
   }
   throw lastErr || new Error(`no candidate loaded for ${url}`);
 }
+
