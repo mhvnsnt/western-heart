@@ -1,0 +1,518 @@
+[
+ {
+  "template": "super-heavyweight",
+  "items": [
+   "wh-top-tank",
+   "wh-shorts-fight",
+   "wh-boots-ankle"
+  ],
+  "tints": {
+   "wh-top-tank": [
+    0.85,
+    0.85,
+    0.85
+   ]
+  },
+  "aim": [
+   [
+    "upperarm_L",
+    {
+     "dir": [
+      0.42,
+      0.05,
+      -1
+     ]
+    }
+   ],
+   [
+    "upperarm_R",
+    {
+     "dir": [
+      -0.42,
+      0.05,
+      -1
+     ]
+    }
+   ]
+  ],
+  "skin": [
+   0.45,
+   0.27,
+   0.17
+  ],
+  "res": 560,
+  "out_prefix": "/workspace/work/renders/cloth/07_super-heavyweight",
+  "views": [
+   {
+    "name": "front",
+    "kind": "body",
+    "yaw": 0
+   },
+   {
+    "name": "back",
+    "kind": "body",
+    "yaw": 180
+   }
+  ]
+ },
+ {
+  "template": "powerhouse",
+  "items": [
+   "wh-singlet",
+   "wh-boots-knee",
+   "wh-gloves-full"
+  ],
+  "tints": {
+   "wh-singlet": [
+    0.08,
+    0.3,
+    0.15
+   ]
+  },
+  "aim": [
+   [
+    "upperarm_L",
+    {
+     "dir": [
+      0.42,
+      0.05,
+      -1
+     ]
+    }
+   ],
+   [
+    "upperarm_R",
+    {
+     "dir": [
+      -0.42,
+      0.05,
+      -1
+     ]
+    }
+   ]
+  ],
+  "skin": [
+   0.3,
+   0.18,
+   0.11
+  ],
+  "res": 560,
+  "out_prefix": "/workspace/work/renders/cloth/07_powerhouse",
+  "views": [
+   {
+    "name": "front",
+    "kind": "body",
+    "yaw": 0
+   },
+   {
+    "name": "back",
+    "kind": "body",
+    "yaw": 180
+   }
+  ]
+ },
+ {
+  "template": "showman",
+  "items": [
+   "wh-top-tee",
+   "wh-tights-long",
+   "wh-boots-knee"
+  ],
+  "tints": {
+   "wh-tights-long": [
+    0.1,
+    0.25,
+    0.6
+   ]
+  },
+  "aim": [
+   [
+    "upperarm_L",
+    {
+     "dir": [
+      0.42,
+      0.05,
+      -1
+     ]
+    }
+   ],
+   [
+    "upperarm_R",
+    {
+     "dir": [
+      -0.42,
+      0.05,
+      -1
+     ]
+    }
+   ]
+  ],
+  "skin": [
+   0.62,
+   0.42,
+   0.3
+  ],
+  "res": 560,
+  "out_prefix": "/workspace/work/renders/cloth/07_showman",
+  "views": [
+   {
+    "name": "front",
+    "kind": "body",
+    "yaw": 0
+   },
+   {
+    "name": "back",
+    "kind": "body",
+    "yaw": 180
+   }
+  ]
+ },
+ {
+  "template": "technician",
+  "items": [
+   "wh-top-compression",
+   "wh-trunks",
+   "wh-boots-knee",
+   "wh-gloves-mma"
+  ],
+  "tints": {
+   "wh-trunks": [
+    0.6,
+    0.07,
+    0.07
+   ]
+  },
+  "aim": [
+   [
+    "upperarm_L",
+    {
+     "dir": [
+      0.42,
+      0.05,
+      -1
+     ]
+    }
+   ],
+   [
+    "upperarm_R",
+    {
+     "dir": [
+      -0.42,
+      0.05,
+      -1
+     ]
+    }
+   ]
+  ],
+  "skin": [
+   0.55,
+   0.33,
+   0.21
+  ],
+  "res": 560,
+  "out_prefix": "/workspace/work/renders/cloth/07_technician",
+  "views": [
+   {
+    "name": "front",
+    "kind": "body",
+    "yaw": 0
+   },
+   {
+    "name": "back",
+    "kind": "body",
+    "yaw": 180
+   }
+  ]
+ },
+ {
+  "template": "highflyer",
+  "items": [
+   "wh-top-tank",
+   "wh-tights-long",
+   "wh-boots-ankle"
+  ],
+  "tints": {
+   "wh-top-tank": [
+    0.1,
+    0.45,
+    0.2
+   ],
+   "wh-tights-long": [
+    0.75,
+    0.6,
+    0.1
+   ]
+  },
+  "aim": [
+   [
+    "upperarm_L",
+    {
+     "dir": [
+      0.42,
+      0.05,
+      -1
+     ]
+    }
+   ],
+   [
+    "upperarm_R",
+    {
+     "dir": [
+      -0.42,
+      0.05,
+      -1
+     ]
+    }
+   ]
+  ],
+  "skin": [
+   0.5,
+   0.32,
+   0.2
+  ],
+  "res": 560,
+  "out_prefix": "/workspace/work/renders/cloth/07_highflyer",
+  "views": [
+   {
+    "name": "front",
+    "kind": "body",
+    "yaw": 0
+   },
+   {
+    "name": "back",
+    "kind": "body",
+    "yaw": 180
+   }
+  ]
+ },
+ {
+  "template": "luchador",
+  "items": [
+   "wh-top-compression",
+   "wh-trunks",
+   "wh-boots-ankle",
+   "wh-gloves-full"
+  ],
+  "tints": {
+   "wh-top-compression": [
+    0.1,
+    0.15,
+    0.45
+   ],
+   "wh-trunks": [
+    0.75,
+    0.6,
+    0.1
+   ]
+  },
+  "aim": [
+   [
+    "upperarm_L",
+    {
+     "dir": [
+      0.42,
+      0.05,
+      -1
+     ]
+    }
+   ],
+   [
+    "upperarm_R",
+    {
+     "dir": [
+      -0.42,
+      0.05,
+      -1
+     ]
+    }
+   ]
+  ],
+  "skin": [
+   0.42,
+   0.25,
+   0.15
+  ],
+  "res": 560,
+  "out_prefix": "/workspace/work/renders/cloth/07_luchador",
+  "views": [
+   {
+    "name": "front",
+    "kind": "body",
+    "yaw": 0
+   },
+   {
+    "name": "back",
+    "kind": "body",
+    "yaw": 180
+   }
+  ]
+ },
+ {
+  "template": "powerhouse-w",
+  "items": [
+   "wh-top-crop",
+   "wh-shorts-fight",
+   "wh-boots-ankle",
+   "wh-gloves-mma"
+  ],
+  "tints": {},
+  "aim": [
+   [
+    "upperarm_L",
+    {
+     "dir": [
+      0.42,
+      0.05,
+      -1
+     ]
+    }
+   ],
+   [
+    "upperarm_R",
+    {
+     "dir": [
+      -0.42,
+      0.05,
+      -1
+     ]
+    }
+   ]
+  ],
+  "skin": [
+   0.36,
+   0.21,
+   0.13
+  ],
+  "res": 560,
+  "out_prefix": "/workspace/work/renders/cloth/07_powerhouse-w",
+  "views": [
+   {
+    "name": "front",
+    "kind": "body",
+    "yaw": 0
+   },
+   {
+    "name": "back",
+    "kind": "body",
+    "yaw": 180
+   }
+  ]
+ },
+ {
+  "template": "athletic-w",
+  "items": [
+   "wh-singlet",
+   "wh-boots-knee"
+  ],
+  "tints": {
+   "wh-singlet": [
+    0.6,
+    0.08,
+    0.12
+   ]
+  },
+  "aim": [
+   [
+    "upperarm_L",
+    {
+     "dir": [
+      0.42,
+      0.05,
+      -1
+     ]
+    }
+   ],
+   [
+    "upperarm_R",
+    {
+     "dir": [
+      -0.42,
+      0.05,
+      -1
+     ]
+    }
+   ]
+  ],
+  "skin": [
+   0.66,
+   0.45,
+   0.33
+  ],
+  "res": 560,
+  "out_prefix": "/workspace/work/renders/cloth/07_athletic-w",
+  "views": [
+   {
+    "name": "front",
+    "kind": "body",
+    "yaw": 0
+   },
+   {
+    "name": "back",
+    "kind": "body",
+    "yaw": 180
+   }
+  ]
+ },
+ {
+  "template": "striker-w",
+  "items": [
+   "wh-top-crop",
+   "wh-tights-long",
+   "wh-gloves-mma",
+   "wh-boots-ankle"
+  ],
+  "tints": {
+   "wh-tights-long": [
+    0.08,
+    0.08,
+    0.09
+   ],
+   "wh-top-crop": [
+    0.6,
+    0.08,
+    0.12
+   ]
+  },
+  "aim": [
+   [
+    "upperarm_L",
+    {
+     "dir": [
+      0.42,
+      0.05,
+      -1
+     ]
+    }
+   ],
+   [
+    "upperarm_R",
+    {
+     "dir": [
+      -0.42,
+      0.05,
+      -1
+     ]
+    }
+   ]
+  ],
+  "skin": [
+   0.52,
+   0.33,
+   0.22
+  ],
+  "res": 560,
+  "out_prefix": "/workspace/work/renders/cloth/07_striker-w",
+  "views": [
+   {
+    "name": "front",
+    "kind": "body",
+    "yaw": 0
+   },
+   {
+    "name": "back",
+    "kind": "body",
+    "yaw": 180
+   }
+  ]
+ }
+]

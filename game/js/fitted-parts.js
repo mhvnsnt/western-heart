@@ -23,6 +23,7 @@ export const FITTED_TEMPLATES = ['super-heavyweight', 'powerhouse', 'showman', '
 
 /* id -> { slot, name } for every fitted part shipped (mirrors customization/parts/hair/mpfb2/MANIFEST.json;
    test/fitted-parts.test.mjs keeps the two in step). slot = the fitted equip slot. */
+export const CLOTHING_DIR = 'customization/parts/clothing/generated';
 export const FITTED_PARTS = {
   'mh-hair-short01': { slot: 'hair', name: 'Short Crop' },
   'mh-hair-short02': { slot: 'hair', name: 'Textured Short' },
@@ -45,6 +46,27 @@ export const FITTED_PARTS = {
   'wh-beard-moustache': { slot: 'facial_hair', name: 'Moustache' },
   'wh-beard-chinstrap': { slot: 'facial_hair', name: 'Chin Strap' },
   'wh-beard-stubble': { slot: 'facial_hair', name: 'Stubble' },
+  /* CLOTHING + ACCESSORIES phase (2026-11-03): original CC0 garments generated in Blender on each template body
+     (tools/mpfb2/clothing/shell_fit.py), mirrors customization/parts/clothing/generated/MANIFEST.json. slot = the
+     attire equip key (Tekken slot spine: 9 upper, 10 full body, 11 lower, H hands, F feet, 12x/13x/4 accessories). */
+  'wh-top-compression': { slot: '9', name: 'Compression Shirt', dir: CLOTHING_DIR, kind: 'clothing' },
+  'wh-top-tee': { slot: '9', name: 'Fitted Tee', dir: CLOTHING_DIR, kind: 'clothing' },
+  'wh-top-tank': { slot: '9', name: 'Tank Top', dir: CLOTHING_DIR, kind: 'clothing' },
+  'wh-top-crop': { slot: '9', name: 'Sports Top', dir: CLOTHING_DIR, kind: 'clothing' },
+  'wh-singlet': { slot: '10', name: 'Singlet', dir: CLOTHING_DIR, kind: 'clothing' },
+  'wh-trunks': { slot: '11', name: 'Wrestling Trunks', dir: CLOTHING_DIR, kind: 'clothing' },
+  'wh-tights-long': { slot: '11', name: 'Long Tights', dir: CLOTHING_DIR, kind: 'clothing' },
+  'wh-shorts-fight': { slot: '11', name: 'Fight Shorts', dir: CLOTHING_DIR, kind: 'clothing' },
+  'wh-gloves-mma': { slot: 'H', name: 'Open-Finger Gloves', dir: CLOTHING_DIR, kind: 'clothing' },
+  'wh-gloves-full': { slot: 'H', name: 'Full Gloves', dir: CLOTHING_DIR, kind: 'clothing' },
+  'wh-boots-knee': { slot: 'F', name: 'Knee-High Boots', dir: CLOTHING_DIR, kind: 'clothing' },
+  'wh-boots-ankle': { slot: 'F', name: 'Ankle Boots', dir: CLOTHING_DIR, kind: 'clothing' },
+  'wh-kneepads': { slot: '13K', name: 'Knee Pads', dir: CLOTHING_DIR, kind: 'accessories' },
+  'wh-elbowpads': { slot: '12E', name: 'Elbow Pads', dir: CLOTHING_DIR, kind: 'accessories' },
+  'wh-wrist-tape': { slot: '12W', name: 'Wrist Tape', dir: CLOTHING_DIR, kind: 'accessories' },
+  'wh-armbands': { slot: '12A', name: 'Arm Bands', dir: CLOTHING_DIR, kind: 'accessories' },
+  'wh-headband': { slot: '4', name: 'Headband', dir: CLOTHING_DIR, kind: 'accessories' },
+  'wh-belt': { slot: '13B', name: 'Waist Belt', dir: CLOTHING_DIR, kind: 'accessories' },
 };
 
 /* fitted slot -> attire colour key the suite saves the tint under (attire.colors[key]) */
@@ -54,11 +76,19 @@ export const FITTED_HIDES = { eyelashes: /eyelash/i };
 export const FITTED_DIR = 'customization/parts/hair/mpfb2';
 
 export const isFittedPart = id => Object.prototype.hasOwnProperty.call(FITTED_PARTS, id);
+export const isFittedClothing = id => isFittedPart(id) && FITTED_PARTS[id].dir === CLOTHING_DIR;
+
+/** Attire colour key a fitted part's tint is saved under: hair-phase parts share their slot key (hair, brows, ...);
+    each clothing / accessory slot has its own ('cloth_9', 'cloth_12E', ...). */
+export function fittedColorKey(partId, suiteSlot) {
+  if (isFittedClothing(partId)) return 'cloth_' + FITTED_PARTS[partId].slot;
+  return FITTED_COLOR_KEY[suiteSlot || (isFittedPart(partId) && FITTED_PARTS[partId].slot)] || null;
+}
 
 /** Repo-relative GLB path of a fitted part on a template; null when either is unknown. */
 export function fittedPartPath(partId, templateId) {
   if (!isFittedPart(partId) || !FITTED_TEMPLATES.includes(templateId)) return null;
-  return `${FITTED_DIR}/${partId}/${templateId}.glb`;
+  return `${FITTED_PARTS[partId].dir || FITTED_DIR}/${partId}/${templateId}.glb`;
 }
 
 /** From a saved attire ({ equipped:{slotKey:partId}, colors:{} }) pick the fitted parts to show on `templateId`.
@@ -69,7 +99,7 @@ export function selectFittedParts(attire, templateId) {
   for (const partId of Object.values(attire.equipped)) {
     if (!isFittedPart(partId)) continue;
     const slot = FITTED_PARTS[partId].slot;
-    const tint = (attire.colors && attire.colors[FITTED_COLOR_KEY[slot]]) || null;
+    const tint = (attire.colors && attire.colors[fittedColorKey(partId, slot)]) || null;
     out.set(slot, { id: partId, slot, path: fittedPartPath(partId, templateId), tint });
   }
   return [...out.values()];
@@ -156,8 +186,10 @@ function insideFitted(o) {
 
 /** Hide (or restore) base-body primitives a fitted slot replaces. Returns how many meshes changed. */
 export function setBaseHidden(root, slot, hidden) {
+  if (!root) return 0;
+  applyBodyHide(root);  // clothing: drop / restore the body triangles under every attached garment
   const re = FITTED_HIDES[slot];
-  if (!re || !root) return 0;
+  if (!re) return 0;
   let n = 0;
   root.traverse((o) => {
     if (!o.isMesh || insideFitted(o)) return;
@@ -172,7 +204,8 @@ export function clearFittedParts(root) {
   if (!root) return 0;
   const found = [];
   root.traverse((o) => { if (o.userData && o.userData.whFitted) found.push(o); });
-  for (const g of found) { setBaseHidden(root, g.userData.whFitted.slot, false); if (g.parent) g.parent.remove(g); }
+  for (const g of found) { if (g.parent) g.parent.remove(g); setBaseHidden(root, g.userData.whFitted.slot, false); }
+  applyBodyHide(root);
   return found.length;
 }
 
@@ -195,4 +228,83 @@ export async function loadFittedParts(root, list, { loadScene, urlPrefix = '', a
   }
   if (groups.length && afterAttach) { try { afterAttach(root); } catch (e) { /* morph re-apply is best effort */ } }
   return groups;
+}
+
+/* ---------------- body-triangle hiding under fitted clothing (CLOTHING phase, 2026-11-03) ----------------
+   Each clothing GLB carries mesh extras wh_hide = { skin | generic | nails: run-length [start, count, ...] } — the
+   template body vertices the garment covers (>= 4 mm inside its region, measured in Blender), indexed in the template
+   GLB's own per-primitive vertex order. The body primitive is recognised by its material name (skin / nails /
+   generic, same rule as tools/mpfb2/clothing/dump_prims.mjs). A body triangle is dropped when ALL 3 of its vertices
+   are hidden, so the cut stays inside the garment and the body can't poke through at bends. The original index
+   buffer is kept on the geometry (userData.whOrigIndex) and restored when nothing covers it. */
+
+/** run-length [start, count, ...] -> Set of vertex indices */
+export function expandRuns(runs) {
+  const out = new Set();
+  if (!Array.isArray(runs)) return out;
+  for (let i = 0; i + 1 < runs.length; i += 2) for (let k = 0; k < runs[i + 1]; k++) out.add(runs[i] + k);
+  return out;
+}
+
+/** body primitive key from its material name, or null */
+export function bodyPrimKey(materialName) {
+  const m = materialName || '';
+  return /skin/i.test(m) ? 'skin' : /nails/i.test(m) ? 'nails' : /generic/i.test(m) ? 'generic' : null;
+}
+
+/** Index array with every triangle whose 3 vertices are all in `hidden` removed (pure; node-testable). */
+export function filterTriangles(index, hidden) {
+  if (!hidden || !hidden.size) return index;
+  const out = [];
+  for (let f = 0; f + 2 < index.length; f += 3) {
+    const a = index[f], b = index[f + 1], c = index[f + 2];
+    if (hidden.has(a) && hidden.has(b) && hidden.has(c)) continue;
+    out.push(a, b, c);
+  }
+  return out;
+}
+
+/** Union of the wh_hide lists of every fitted group attached under `root`, per body primitive key. */
+export function collectBodyHide(root) {
+  const out = {};
+  if (!root || typeof root.traverse !== 'function') return out;
+  root.traverse((o) => {
+    if (!o.userData || !o.userData.wh_hide) return;
+    let inside = false; for (let a = o; a && !inside; a = a.parent) if (a.userData && a.userData.whFitted) inside = true;
+    if (!inside) return;
+    for (const [k, runs] of Object.entries(o.userData.wh_hide)) {
+      const set = out[k] || (out[k] = new Set());
+      for (const v of expandRuns(runs)) set.add(v);
+    }
+  });
+  return out;
+}
+
+/** Re-apply body-triangle hiding on a body instance from the garments currently attached. Returns triangles hidden. */
+export function applyBodyHide(root) {
+  if (!root || typeof root.traverse !== 'function') return 0;
+  const hide = collectBodyHide(root);
+  let dropped = 0;
+  root.traverse((o) => {
+    if (!o.isMesh || !o.geometry || insideFitted(o)) return;
+    const mat = Array.isArray(o.material) ? o.material[0] : o.material;
+    const key = bodyPrimKey(mat && mat.name);
+    if (!key) return;
+    const set0 = hide[key];
+    if (!o.userData.whOwnGeom) {
+      // instances (SkeletonUtils.clone) share one geometry: take a private copy before the first cut
+      if (!(set0 && set0.size) || !o.geometry.index) return;
+      o.geometry = o.geometry.clone(); o.userData.whOwnGeom = true;
+    }
+    const g = o.geometry, idx = g.index;
+    if (!g.userData.whOrigIndex) g.userData.whOrigIndex = idx.array.slice();
+    const orig = g.userData.whOrigIndex;
+    const set = hide[key];
+    const next = set && set.size ? filterTriangles(orig, set) : orig;
+    if (next === orig && idx.array.length === orig.length) return;
+    const Arr = orig.constructor;
+    g.setIndex(new idx.constructor(next instanceof Arr ? next : Arr.from(next), 1));
+    dropped += (orig.length - next.length) / 3;
+  });
+  return dropped;
 }

@@ -61,7 +61,8 @@ const parse = (rel) => quiet(() => { const b = stripTextures(bytes(rel)); return
 
 test('manifest, game list, catalog and files agree; files small; licence CC0', () => {
   const ids = MAN.entries.map((e) => e.id).sort();
-  assert.deepEqual(ids, Object.keys(FP.FITTED_PARTS).sort());
+  // the HAIR-phase parts (clothing / accessories are proven in test/fitted-clothing.test.mjs)
+  assert.deepEqual(ids, Object.keys(FP.FITTED_PARTS).filter((id) => !FP.isFittedClothing(id)).sort());
   const bySlot = {};
   for (const e of MAN.entries) {
     bySlot[e.slot] = (bySlot[e.slot] || 0) + 1;
@@ -174,7 +175,7 @@ for (const tid of PROBE_TEMPLATES) {
     const eyeMid = eyeL.clone().add(eyeR).multiplyScalar(0.5);
     const skull = skinnedPoints(model, /skin/i).filter((p) => p.y > eyeMid.y);
     const top = Math.max(...skull.map((p) => p.y));
-    const list = Object.keys(FP.FITTED_PARTS).map((id) => ({ id, slot: FP.FITTED_PARTS[id].slot, path: FP.fittedPartPath(id, tid), tint: '#3b2a1e' }));
+    const list = Object.keys(FP.FITTED_PARTS).filter((id) => !FP.isFittedClothing(id)).map((id) => ({ id, slot: FP.FITTED_PARTS[id].slot, path: FP.fittedPartPath(id, tid), tint: '#3b2a1e' }));
     const groups = await FP.loadFittedParts(model, list, { loadScene: (url) => parse(url).then((g) => g.scene) });
     assert.equal(groups.length, list.length, 'all parts loaded');
     const lash = model.getObjectByProperty('isSkinnedMesh', true);

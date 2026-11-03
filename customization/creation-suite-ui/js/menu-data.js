@@ -77,6 +77,8 @@ export const PARTS_TREE = [
   { key:"facial-hair", label:"Facial Hair", icon:"🧔", src:"WWE_FACEBODY", note:"WWE 2K Face > Facial Hair: fitted beard / goatee / moustache / chin strap / stubble" },
   { key:"brows",  label:"Eyebrows",    icon:"🤨", src:"WWE_FACEBODY", note:"WWE 2K Face > Eyebrows: fitted CC0 brows that follow the brow sliders" },
   { key:"lashes", label:"Eyelashes",   icon:"👁️", src:"WWE_FACEBODY", note:"WWE 2K Face > Eyes: fitted CC0 lashes (replace the base body's own strip)" },
+  { key:"clothing",    label:"Clothing",    icon:"👕", src:"WWE_ATTIRE", note:"WWE 2K Attire > Upper / Lower / Hands / Feet: CC0 garments generated on every base body (follow the body + its sliders; body hidden under them)" },
+  { key:"accessories", label:"Accessories", icon:"📿", src:"WWE_ATTIRE", note:"WWE 2K Attire > Accessories: knee / elbow pads, wrist tape, arm bands, headband, belt — fitted on every base body" },
 ];
 MENU_SRC.WH_PARTS = "Western Heart PARTS-REGISTRY.json — 34 parts, suite_slot + placement socket schema (customization/PARTS-REGISTRY.json)";
 
