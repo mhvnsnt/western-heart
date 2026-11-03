@@ -88,8 +88,6 @@ export const MATERIAL_STATUS = {
   "kinpo_alt1": "17 untextured",
   "megami": "20 untextured",
   "megami-attire1": "20 untextured",
-  "menajerii": "55 untextured",
-  "menajerii-attire1": "55 untextured",
   "michiko": "1 placeholder",
   "nightwolf": "2 untextured",
   "saku-ra_alt1": "31 untextured",
