@@ -112,10 +112,21 @@ test('decal patch: non-empty, UVs in 0..1, on the skin near the anchor', { skip:
   }
 });
 
+test('a placement over a skin hole (women\'s bra band) searches to the nearest region skin', { skip: !readSkinMesh && 'tools/ not in this checkout' }, async () => {
+  for (const t of ['powerhouse-w', 'athletic-w', 'striker-w']) {
+    const m = await mesh(t);
+    for (const [region, u] of [['chest', 0], ['back', 0.5]]) {
+      const a = resolveAnchor(m, region, u, 0.5);
+      assert.ok(a, `${t}/${region} v=0.5 still lands`);
+      assert.ok(REGION_BY_KEY[region].bones.includes(a.bone), `${t}/${region} lands on region skin (${a.bone})`);
+    }
+  }
+});
+
 test('layer stack saves and restores per attire (JSON round trip)', () => {
   const attires = [{ equipped: {}, decals: [] }, { equipped: {}, decals: [] }];
   const a = createLayer({ part_id: 'nm-tattoo-2b18', kind: 'tattoo', region: 'upper_arm_R', u: 0.1, v: 0.4, scaleX: 1.5, rotation: 30, opacity: 0.8, color: '#22AA44' });
-  const b = createLayer({ part_id: 'wh-scar-cheek-slash', kind: 'scar', region: 'face', u: 0.1, v: 0.12 });
+  const b = createLayer({ part_id: 'wh-scar-cheek-slash', kind: 'scar', region: 'face', u: 0.1, v: 0.12, asset: 'customization/decal-library/scars/cheek-slash.png' });
   addLayer(attires[0].decals, a); addLayer(attires[0].decals, b);
   addLayer(attires[1].decals, mirrorLayer(a));
   const saved = JSON.stringify({ attires });
@@ -125,6 +136,8 @@ test('layer stack saves and restores per attire (JSON round trip)', () => {
   assert.equal(back[1][0].region, 'upper_arm_L', 'mirror moves R -> L');
   assert.equal(back[1][0].rotation, -30);
   assert.equal(a.color, '#22aa44');
+  assert.equal(back[0][1].asset, 'customization/decal-library/scars/cheek-slash.png', 'texture path saved with the layer');
+  assert.equal(normalizeLayers([{ part_id: 'x', asset: '../../etc/x.png' }])[0].asset, undefined, 'no path escapes');
   assert.ok(moveLayer(back[0], b.id, -1)); assert.equal(back[0][0].id, b.id, 'layer order moves');
   assert.ok(removeLayer(back[0], a.id)); assert.equal(back[0].length, 1);
   const junk = normalizeLayers([null, { part_id: 'x', region: 'nowhere', u: 7.25, v: 9, opacity: -1, scaleX: 99 }, { nope: 1 }]);

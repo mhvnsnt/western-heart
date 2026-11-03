@@ -206,8 +206,8 @@ def render_proof(tid, regs):
         bsdf.inputs['Emission Color'].default_value = (*COLORS[i % len(COLORS)], 1)
         bsdf.inputs['Emission Strength'].default_value = 2.0
         s.data.materials.append(m)
-    bpy.ops.object.light_add(type='SUN', location=(2, -4, 4)); bpy.context.active_object.data.energy = 3.5
-    bpy.ops.object.light_add(type='SUN', location=(-2, 4, 3)); bpy.context.active_object.data.energy = 2.0
+    bpy.ops.object.light_add(type='SUN', rotation=(math.radians(60), 0, math.radians(20))); bpy.context.active_object.data.energy = 3.5
+    bpy.ops.object.light_add(type='SUN', rotation=(math.radians(-60), 0, math.radians(-20))); bpy.context.active_object.data.energy = 2.5
     cam_data = bpy.data.cameras.new('cam'); cam = bpy.data.objects.new('cam', cam_data)
     scn.collection.objects.link(cam); scn.camera = cam
     cam_data.type = 'ORTHO'; cam_data.ortho_scale = 2.05

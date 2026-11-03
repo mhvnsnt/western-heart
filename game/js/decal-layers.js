@@ -207,6 +207,14 @@ export function resolveAnchor(mesh, regionKey, u, v, opts = {}) {
     // the region's own skin was missed (e.g. a slider pushed the point off it):
     // land on whatever skin is there, flagged, rather than dropping the layer
     if (!opts.anyTriangle && opts.fallback !== false) {
+      // 1) nearest v on the region's own skin (the women's templates have no skin under the
+      //    underwear mesh at the bra band — Blender authoring searches the same way)
+      for (const dv of [0.04, -0.04, 0.08, -0.08, 0.12, -0.12, 0.16, -0.16, 0.2, -0.2]) {
+        const vv = clamp(v + dv, 0, 1); if (vv === v) continue;
+        const near = resolveAnchor(mesh, regionKey, u, vv, { fallback: false });
+        if (near) { near.searchedV = vv; return near; }
+      }
+      // 2) any skin straight out from the axis
       const any = resolveAnchor(mesh, regionKey, u, v, { anyTriangle: true });
       if (any) any.inRegion = false;
       return any;
