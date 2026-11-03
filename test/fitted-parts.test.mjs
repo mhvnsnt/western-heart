@@ -15,12 +15,17 @@
 
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, existsSync, statSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const bytes = (p) => readFileSync(join(ROOT, p));
+// CI's unit-test job is a sparse checkout without customization/: a file not on disk is read from git's object
+// store (same approach as test/custom-template-fight.test.mjs).
+const bytes = (rel) => existsSync(join(ROOT, rel)) ? readFileSync(join(ROOT, rel))
+  : execFileSync('git', ['show', `HEAD:${rel}`], { cwd: ROOT, maxBuffer: 1 << 28 });
+const has = (rel) => { try { bytes(rel); return true; } catch (e) { return false; } };
 await import(join(ROOT, 'tools/anim/node_game_env.mjs'));
 const THREE = await import('three');
 const { GLTFLoader } = await import('three/addons/loaders/GLTFLoader.js');
@@ -61,15 +66,14 @@ test('manifest, game list, catalog and files agree; files small; licence CC0', (
     assert.match(e.license, /^CC0/, e.id);
     assert.equal(FP.FITTED_PARTS[e.id].slot, e.slot, e.id);
     assert.deepEqual(e.templates, FP.FITTED_TEMPLATES, e.id);
-    assert.ok(existsSync(join(ROOT, 'customization/parts/hair/mpfb2', e.texture)), e.id + ' texture');
+    assert.ok(has('customization/parts/hair/mpfb2/' + e.texture), e.id + ' texture');
     for (const t of FP.FITTED_TEMPLATES) {
       const p = FP.fittedPartPath(e.id, t);
-      assert.ok(existsSync(join(ROOT, p)), p);
-      assert.ok(statSync(join(ROOT, p)).size < 300 * 1024, p + ' < 300 KB');
+      assert.ok(bytes(p).length < 300 * 1024, p + ' < 300 KB');
     }
   }
   assert.ok(bySlot.hair >= 6 && bySlot.eyebrows >= 1 && bySlot.eyelashes >= 1 && bySlot.facial_hair >= 3, JSON.stringify(bySlot));
-  assert.ok(readFileSync(join(ROOT, 'customization/parts/hair/mpfb2/LICENSE-CC0.txt'), 'utf8').includes('"license": "CC0"'));
+  assert.ok(bytes('customization/parts/hair/mpfb2/LICENSE-CC0.txt').toString('utf8').includes('"license": "CC0"'));
   const cat = new Map(CAT.parts.map((p) => [p.id, p]));
   const SOURCE_NAMES = /tekken|wwe|makehuman|mpfb|quaternius|mb-?lab/i;
   for (const e of MAN.entries) {
