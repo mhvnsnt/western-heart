@@ -330,12 +330,22 @@ export function getRealMove(charId, moveType, opts) {
           soulGain: mv.soulGain ?? 8, cost: 0,
           limb: mv.limb || 'armR', heavy: !!mv.heavy,
           unblockable: !!mv.unblockable,
-          // T3 throw-situation rows (branch conditions 2-0x17) are the throw executions a
-          // connecting grab branches into by the opponent's posture / side (moves.md SituationClassify)
           // moveset sweep 2026-10-29: a move the moveset classes as a throw (move_class 'throw',
           // e.g. pantera d/f+1+2) is a grab too; before, it played as a strike (knockdown, no
           // thrower/victim exec clips).
-          isGrab: !!mv.isGrab || mv.move_class === 'throw' || (mv.t3_condition >= 2 && mv.t3_condition <= 0x17),
+          // PANTERA WIRING FIX 2026-11-03: the t3_condition range term is GONE. Branch
+          // conditions 2-0x17 mark throw-SITUATION rows — the executions a CONNECTED grab
+          // branches into by the opponent's posture/side (moves.md SituationClassify) — not
+          // standalone grabs. Deriving isGrab from the condition turned every slotted
+          // situation variant into a grab: pantera's plain '1,1' jab string (move
+          // 'KING 1,1_c2', move_class 'strike', t3_condition 2) executed a throw on connect
+          // instead of a jab hit, and 955 moves repo-wide were grabs by this term alone —
+          // every one of them classed 'strike' or 'special' in its own moveset data, zero
+          // classed 'throw'. A move is a grab only when its own data says so (isGrab flag
+          // or move_class 'throw'); situation executions stay reachable through the throw
+          // pair/branch system (selectThrow branches by situation code), and t3Condition
+          // below still gates when a situation row may fire.
+          isGrab: !!mv.isGrab || mv.move_class === 'throw',
           tekkenInput: tekken, moveKey: key,
           system: systemTagOf(mv.input), // KOF XV system row (fighter.js KOF)
           // T3 branch-row condition (t3-conditions.js): the row only fires while it holds
@@ -508,8 +518,18 @@ export function genericBankAction(bank, clips, limb, grab) {
     if (best) break;
     for (const n of cands) if (want(limbOf(n))) { best = n; break; }
   }
-  best = best || (grab ? 'grab' : arm(limb) ? 'light' : 'medium');
-  return clips[best] ? best : null;
+  // The last-resort name must pass the same class filter as the candidates:
+  // the old unconditional fallback could return a generic whose decoded type
+  // contradicts the move (pantera wiring fix 2026-11-03 — the king bank's
+  // 'grab' generic carries a strike-typed hit record, so a throw step fell
+  // back to a strike-typed clip; and a throw-flagged 'light'/'medium' could
+  // serve a strike). No class-matching generic -> null, and the caller
+  // presents the fighter's own-button clip instead.
+  if (!best) {
+    const fb = grab ? 'grab' : arm(limb) ? 'light' : 'medium';
+    if (clips[fb] && clipIsThrow(clips[fb]) === !!grab) best = fb;
+  }
+  return best && clips[best] ? best : null;
 }
 export class Fighter {
   constructor(charData, startX, facing, isPlayer) {
@@ -1253,7 +1273,18 @@ export class Fighter {
       // bank's row of the same number must never stand in for it.
       const srcClips = (sp.playBank === bank) ? clips : getT3Clips(sp.playBank);
       const src0 = (sp.playName && sp.playRow != null && srcClips) ? srcClips['row:' + sp.playRow] : null;
-      if (!sp.playName || !src0) {
+      // STRIKE/THROW CLASS GUARD (pantera wiring fix 2026-11-03): the main tiers below
+      // reject a candidate row whose decoded type disagrees with the move (fits());
+      // this branch returned the verified step row unchecked, so a verified step whose
+      // row is a throw row played a grapple clip as a string hit (e.g. pantera '1,1'
+      // step row 584, throw-flagged in the bank's own hit_frames). A class-conflicting
+      // step row is rejected exactly like an unmapped step: logged, recorded in
+      // plan.rejected, and presented through the same generic/own-button fallback —
+      // never played.
+      const srcRejected = src0 && clipIsThrow(src0) !== grab0
+        ? [`step row ${sp.playRow} is a ${clipIsThrow(src0) ? 'throw' : 'strike'} row`] : null;
+      if (!sp.playName || !src0 || srcRejected) {
+        if (srcRejected) console.log(`[WH-STEP-PLAN] ${this._movesetId} ${move && move.moveKey}: step row ${sp.playRow} rejected — ${srcRejected[0]} for a ${grab0 ? 'throw' : 'strike'} move, never played`);
         if (sp.unmapped.length) console.log(`[WH-STEP-PLAN] ${this._movesetId} ${move && move.moveKey}: UNMAPPED steps [${sp.unmapped.join(', ')}] — no bank row played, never donor fallback`);
         else if (sp.playBank !== bank) console.log(`[WH-STEP-PLAN] ${this._movesetId} ${move && move.moveKey}: override bank '${sp.playBank}' row ${sp.playRow} unavailable — no bank row played, never bound-bank fallback`);
         // PRESENTATION FALLBACK (fight-freeze fix, 2026-10-31): the step-plan
@@ -1267,7 +1298,10 @@ export class Fighter {
         // the BOUND bank's own generic action for the limb (the identical
         // last-resort tier the main path below uses for clip-less moves).
         // The UNMAPPED log above stays: the data gap is reported, not hidden.
-        const boundClips = bank && this._t3 ? this._t3.clips[bank] : null;
+        // this._t3.clips IS the bound bank's flat action map (t3anims.js: bankId ->
+        // { actionName: clip }); indexing it by bank name again made boundClips always
+        // null and this generic tier dead code since PR #1458 (fixed 2026-11-03).
+        const boundClips = bank && this._t3 ? this._t3.clips : null;
         const gname = genericBankAction(bank, boundClips, limb0, grab0);
         if (gname) {
           const srcG = boundClips[gname];
@@ -1282,7 +1316,7 @@ export class Fighter {
             const t1 = wG ? Math.min(Math.max(wG.t1, t0), DG) : DG * (SG + AG) / (SG + AG + RG);
             timingG = { S: SG, A: AG, R: RG, t0, t1, D: DG, src: wG ? wG.src : 'proportional' };
           }
-          return { kind: 'step-plan', name: gname, why: `step plan unmapped — generic ${gname} presentation (no row substituted)`, steps: sp.steps, unmapped: sp.unmapped, limb: limb0, level: level0, grab: grab0, timing: timingG, rejected: [], stepBank: sp.playBank, stepRow: sp.playRow };
+          return { kind: 'step-plan', name: gname, why: `step plan unmapped — generic ${gname} presentation (no row substituted)`, steps: sp.steps, unmapped: sp.unmapped, limb: limb0, level: level0, grab: grab0, timing: timingG, rejected: srcRejected || [], stepBank: sp.playBank, stepRow: sp.playRow };
         }
         // LAST RESORT (2026-11-02, owner: "his animations are falling back to T pose"): no generic bank action either
         // (a fighter that runs on real T7 clips, e.g. Pantera, has no generic action under its bound bank), and
@@ -1291,8 +1325,8 @@ export class Fighter {
         // ('f+2,1,1' -> its '1', 'b+1+2,1+2' -> its '1+2'), resolved through the normal tiers: a real clip of its own
         // moveset, never authored, never another fighter's. The UNMAPPED log above still reports the data gap.
         const own = this._ownButtonPlan(attackName, move, grab0);
-        if (own) return { ...own, kind: 'step-plan', why: `step plan unmapped — own '${own.from}' clip (no row substituted)`, steps: sp.steps, unmapped: sp.unmapped, limb: limb0, level: level0, grab: grab0, rejected: [], stepBank: sp.playBank, stepRow: sp.playRow };
-        return { kind: 'step-plan', name: null, steps: sp.steps, unmapped: sp.unmapped, limb: limb0, level: level0, grab: grab0, timing: null, rejected: [], stepBank: sp.playBank, stepRow: sp.playRow };
+        if (own) return { ...own, kind: 'step-plan', why: `step plan unmapped — own '${own.from}' clip (no row substituted)`, steps: sp.steps, unmapped: sp.unmapped, limb: limb0, level: level0, grab: grab0, rejected: srcRejected || [], stepBank: sp.playBank, stepRow: sp.playRow };
+        return { kind: 'step-plan', name: null, steps: sp.steps, unmapped: sp.unmapped, limb: limb0, level: level0, grab: grab0, timing: null, rejected: srcRejected || [], stepBank: sp.playBank, stepRow: sp.playRow };
       }
       // Timing for the step row, same rule as the single-row tail below:
       // the row's hit window placed on the move's active frames. The
@@ -2144,6 +2178,34 @@ export class Fighter {
       const cont = this.tekken.continuation(name, this._inputCtx());
       if (cont) { this._queuedNext = cont; this._queuedPressT = this._clock || 0; return true; }
       if (this.tekken._strPending) { this._stringGraceUntil = Math.max(this._stringGraceUntil || 0, performance.now() + 500); return true; } // extends an open partial string; fires at its full step
+      // Two-finger chord rescue (pantera wiring fix 2026-11-03): input.js merges two
+      // limb taps into a chord only inside a strict 50 ms window, so a deliberate
+      // throw on touch (two thumbs, typically 50-140 ms apart) arrives as two singles:
+      // the first starts its strike, the second lands here as a plain button with no
+      // continuation — and the throw never happens (the owner: "I can't make him do a
+      // grapple on purpose"). When the just-started attack is a single-button move
+      // still in its first 0.14 s of startup with no hit yet, and this press completes
+      // a chord that exists in the fighter's own moveset, the pair was one chord:
+      // re-resolve it from the pre-attack state, exactly like the chord upgrade below.
+      // Real strings are never stolen: this point is only reached when the press has
+      // no continuation and opens no partial string (both checks above returned).
+      if (/^[1234]$/.test(name) && this.stateT <= 0.14 && this._attackPhase === 'startup' && !this.hasHit) {
+        const seg = String(variantBase(this._movesetId, this.attackName) || this.attackName || '').split(/[,.]/).pop();
+        const digits = seg.match(/[1234]/g) || [];
+        if (digits.length === 1 && digits[0] !== name) {
+          const chord = [digits[0], name].sort().join('+');
+          if (resolveMoveKey(this.tekken.fighterId, chord)) {
+            this.tekken.lastMove = this._chordBase || null;
+            const saved = { state: this.state, attack: this.attack, attackName: this.attackName, stateT: this.stateT,
+              stance: this.stance, stanceT: this.stanceT, _risingT: this._risingT };
+            const pre = this._preAtk || {};
+            this.state = pre.state === 'crouch' ? 'crouch' : 'idle';
+            this.stance = pre.stance || null; this.stanceT = pre.stanceT || 0; this._risingT = pre.risingT || 0;
+            if (this._tryAttackFresh(chord)) return true;
+            Object.assign(this, saved);
+          }
+        }
+      }
       // Chord upgrade: input.js emits the first button at once and the chord when the second
       // lands inside its 140 ms window, so '1' then '1+3' means the player pressed 1+3. If the
       // single that just started is part of this chord, the chord replaces it.
