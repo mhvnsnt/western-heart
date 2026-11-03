@@ -1,0 +1,25 @@
+{
+ "fighter": "megami",
+ "ready": false,
+ "error": "fight never reached roundState=fight",
+ "logs": [
+  "[http 404] http://127.0.0.1:8766/game/assets/anim/t7/king/skeleton.json",
+  "[warning] [WH-T7] pantera: real T7 stance unavailable, keeps the bank stance: skeleton.json: HTTP 404",
+  "[http 404] http://127.0.0.1:8766/game/assets/anim/t7/king/stance.json",
+  "[log] [WH-T3] bank 'king': 256 move-row clips",
+  "[log] [WH-T3] bank 'king': loaded 278 real T3 clips",
+  "[log] [WH-T3] bank 'king': reaction pack loaded (568 slots)",
+  "[log] [WH-T3] no decoded anim bank for zen (source has none yet) \u2014 embedded/procedural fallback",
+  "[log] [WH] Fighter pantera: 22 real T3 actions from bank 'king' (retargeted onto pantera-leoman)",
+  "[http 404] http://127.0.0.1:8766/game/assets/anim/t7/king/moves.pack.json",
+  "[http 404] http://127.0.0.1:8766/roster/zen/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8766/roster/pantera/anatomy/anatomy-layers.json",
+  "[warning] [WH-T7] pantera: real T7 move clips unavailable, moves keep their current clips: HTTP 404 for assets/anim/t7/king/moves.pack.json",
+  "[http 404] http://127.0.0.1:8766/game/js/intro-interactions.js",
+  "[http 404] http://127.0.0.1:8766/customization/parts/no-mercy/glb/body_parts/model_1171.glb",
+  "[warning] [WH-CS] pantera part FAILED upper_body:no-mercy:0x1171:body_parts/model_1171.obj: Failed to fetch (fallback also failed: Failed to fetch)",
+  "[log] [WH-STEP-PLAN] pantera 3,2: UNMAPPED steps [3,2, 3,2,2] \u2014 no bank row played, never donor fallback",
+  "[warning] [WHHitDetect] verify failed, keeping sphere result TypeError: baked.computeBoundsTree is not a function\n    at WHHitDetect.buildFighterBVH (http://127.0.0.1:8766/game/js/hitdetect.js:81:11)\n    at async WHHitDetect.testLimbVsBody (http://12",
+  "[log] [WH-STEP-PLAN] pantera 3,2,2: UNMAPPED steps [3,2, 3,2,2] \u2014 no bank row played, never donor fallback"
+ ]
+}
