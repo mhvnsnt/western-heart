@@ -4391,3 +4391,29 @@ Branch `claude/cs-phase3-morph-targets`, draft PR #1489 (stacked on #1486). Orde
   `tools/mpfb2/hair/proof/proof_face.png`, `proof_long.png`. Hair totals: 332 legacy (20 wired) + 10 fitted.
 - Not proven: textures/look in a browser (Node cannot decode images; WebGL draws stall here). Long hair is rigid on
   the head bone (clips shoulders on big head turns). Deletions: none.
+
+## 2026-11-02 — HAIR phase redo in Blender 4.3: skinned hair (head/neck/upper spine), transferred shape keys, shoulder clearance, renders (HAIR LANE, PR #1525)
+
+**Owner instruction (verbatim, lane brief):** "fitted to the 9 template bodies in Blender headless, parented/skinned to the head bone" — the first pass could not run Blender (aarch64); this pass does.
+
+- **Blender on aarch64.** Debian 13 ships an arm64 `blender` 4.3.2 package: `apt-get install blender python3-numpy`
+  (+ xvfb/mesa only tried for GL). Cycles CPU renders (denoise off — no OIDN in the Debian build); EEVEE/Workbench
+  die without GL (EGL_BAD_MATCH headless, `Illegal instruction` under Xvfb/llvmpipe). Template GLBs are meshopt
+  compressed, which Blender's importer can't read → `tools/mpfb2/hair/decode.mjs`. MB-Lab master (bl_info 1.8.1;
+  upstream has no `v1.8.1` tag) enables under 4.3.2 (88 `mbast` operators).
+- **Blender stage** `tools/mpfb2/hair/blender_fit.py` (after the numpy .mhclo + head-transfer placement):
+  hair Shrinkwrap (OUTSIDE, 5 mm, push spread along strands + 2nd pass) against the template skin → long hair no
+  longer sits inside neck/shoulders/back at bind (max push 5.7–20 cm per template on long styles, see
+  `blender-fit-report-20261102.json`); Data Transfer vertex-group weights from the template skin, limited to
+  head/neck/spine03/spine02/clavicles (hair), head/neck (beards), 100 % head (brows/lashes); Surface Deform bound to
+  the skin, every body shape key read back → part morph targets under the same names.
+- **Runtime.** GLBs are now model-bind-space skinned meshes (small glTF skin + extras `wh_joint_index`/`wh_joint_ibm`);
+  `game/js/fitted-parts.js skinToBody` re-binds them to the body's live skeleton (correcting for re-derived body
+  inverses and gltfpack dequantisation). Group still sits under the Head bone; catalog `fitted.space: model-bind,
+  skinned: true`. Files: 189 GLBs, max 251 KB (`-vp 12` on hair).
+- **Proof.** `test/fitted-parts.test.mjs` 6/6: every part skinned, bind offsets from the eyes unchanged in tolerance,
+  head-weighted vertices follow a 30° head turn with error ~1e-15 m, long-hair tips move ≤ 1 mm vs 27–31 cm if rigid,
+  `f_brow_h+` moves brows 2.4–3.6 mm. Renders: `tools/mpfb2/hair/proof/blender/` (9 bodies, body + face slider
+  extremes, all 21 parts, 3 created fighters in a stance) + 6 contact sheets in `proof/blender/sheets/`.
+- Not done: jin-bank clip on the created fighter (T3 bank JSON → MB-Lab retarget not built; stance is hand-posed
+  bones), hair physics/secondary motion, browser look check. Deletions: none.

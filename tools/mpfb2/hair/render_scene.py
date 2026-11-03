@@ -14,7 +14,7 @@ from mathutils import Vector, Euler
 HERE = os.path.dirname(os.path.abspath(__file__))
 jobs = json.load(open(sys.argv[sys.argv.index('--') + 1]))
 assets = {a['id']: a for a in json.load(open(os.path.join(HERE, 'assets.json')))}
-COL = {'hair': (0.16, 0.10, 0.06), 'eyebrows': (0.10, 0.07, 0.05), 'eyelashes': (0.03, 0.025, 0.02), 'beard': (0.14, 0.09, 0.06)}
+COL = {'hair': (0.22, 0.13, 0.07), 'eyebrows': (0.035, 0.025, 0.018), 'eyelashes': (0.02, 0.015, 0.012), 'beard': (0.10, 0.065, 0.04)}
 
 
 def gl2bl(P):
@@ -22,8 +22,8 @@ def gl2bl(P):
 
 
 def mh_texture(a):
-    if a['kind'] == 'beard':
-        return None
+    if a['kind'] == 'beard':  # the shipped procedural strand mask (build_glb.mjs), same texture the game uses
+        return os.path.join(os.environ.get('WH_REPO', '/tmp/wh-bl'), 'customization/parts/hair/mpfb2', a['id'], 'texture.png')
     d = os.path.join(HERE, 'mh', a['src']); nm = os.path.basename(a['src'])
     for line in open(os.path.join(d, nm + '.mhmat')):
         if line.startswith('diffuseTexture'):
@@ -51,7 +51,8 @@ def part_material(a, tint=None):
             nt.links.new(gain.outputs[0], cr.inputs[k])
         nt.links.new(cr.outputs[0], mix.inputs[2])
         nt.links.new(mix.outputs[0], bs.inputs['Base Color'])
-        nt.links.new(im.outputs['Alpha'], bs.inputs['Alpha'])
+        ap = nt.nodes.new('ShaderNodeMath'); ap.operation = 'POWER'; ap.inputs[1].default_value = 0.35 if a['kind'] != 'hair' else 0.8
+        nt.links.new(im.outputs['Alpha'], ap.inputs[0]); nt.links.new(ap.outputs[0], bs.inputs['Alpha'])
     elif a['kind'] == 'beard':
         noise = nt.nodes.new('ShaderNodeTexNoise'); noise.inputs['Scale'].default_value = 900.0
         ramp = nt.nodes.new('ShaderNodeValToRGB')
@@ -97,7 +98,7 @@ def build_part(pid, tpl, arm, tint=None):
 
 def setup_scene(res):
     sc = bpy.context.scene
-    sc.render.engine = 'CYCLES'; sc.cycles.device = 'CPU'; sc.cycles.samples = 24
+    sc.render.engine = 'CYCLES'; sc.cycles.device = 'CPU'; sc.cycles.samples = int(os.environ.get('WH_SAMPLES', 20))
     sc.cycles.use_denoising = False; sc.cycles.max_bounces = 4; sc.cycles.transparent_max_bounces = 16
     sc.render.resolution_x = res; sc.render.resolution_y = res; sc.render.film_transparent = False
     sc.view_settings.view_transform = 'Standard'
@@ -140,7 +141,7 @@ for job in jobs:
             bpy.data.objects.remove(o)
     for i, m in enumerate(body.data.materials):  # the game tints the untextured MB-Lab skin with the skin tone
         if 'skin' in m.name.lower() and m.use_nodes and 'Principled BSDF' in m.node_tree.nodes:
-            m.node_tree.nodes['Principled BSDF'].inputs['Base Color'].default_value = tuple(job.get('skin', (0.58, 0.27, 0.11))) + (1,)
+            m.node_tree.nodes['Principled BSDF'].inputs['Base Color'].default_value = tuple(job.get('skin', (0.55, 0.33, 0.21))) + (1,)
     tint = tuple(job['tint']) if job.get('tint') else None
     parts = [build_part(pid, job['template'], arm, tint) for pid in job.get('parts', [])]
     if job.get('parts'):  # fitted lashes replace the template's own eyelash strip (same rule as the runtime)
@@ -161,6 +162,24 @@ for job in jobs:
         acts = [a for a in bpy.data.actions if a.name.startswith(job.get('clip_action', ''))]
         arm.animation_data_create(); arm.animation_data.action = acts[0]
         bpy.context.scene.frame_set(job.get('frame', 1))
+    if job.get('aim'):  # fight stance: point bones along armature-space directions, parents first
+        from mathutils import Matrix
+        for bn, spec in job['aim']:
+            pb = arm.pose.bones.get(bn)
+            if not pb:
+                continue
+            bpy.context.view_layer.update()
+            M = pb.matrix.copy()
+            if 'dir' in spec:
+                cur = (M.to_3x3() @ Vector((0, 1, 0))).normalized()
+                q = cur.rotation_difference(Vector(spec['dir']).normalized())
+            else:  # turn: rotate about an armature axis by degrees
+                q = Matrix.Rotation(math.radians(spec['deg']), 4, spec['axis']).to_quaternion()
+            R = q.to_matrix().to_4x4()
+            loc = M.to_translation()
+            NM = R @ M; NM.translation = loc
+            pb.matrix = NM
+        bpy.context.view_layer.update()
     if job.get('pose'):
         for bn, rot in job['pose'].items():
             pb = arm.pose.bones.get(bn)
