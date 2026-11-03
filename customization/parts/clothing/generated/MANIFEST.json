@@ -1,0 +1,731 @@
+{
+ "library": "wh-generated-clothing",
+ "created": "2026-11-03",
+ "source": "original CC0 garments generated on each template body in Blender 4.3.2 (tools/mpfb2/clothing/shell_fit.py)",
+ "space": "model-bind, skinned to the template skeleton (JOINTS_0 = template skin joints, extras.wh_joint_index)",
+ "morphs": "targets named like the template body sliders (b_*/f_*); apply the same slider values as the body",
+ "hide": "mesh.extras.wh_hide {skin|generic|nails: run-length [start,count,...]} = template body vertices under the garment; game/js/fitted-parts.js drops body triangles whose 3 vertices are hidden",
+ "tool": "tools/mpfb2/clothing/ (shell_fit.py -> build_glb.mjs, gltfpack -cc -kn -km -ke)",
+ "entries": [
+  {
+   "id": "wh-top-compression",
+   "name": "Compression Shirt",
+   "family": "clothing",
+   "wwe_region": "Upper Body",
+   "wwe_type": "Shirts",
+   "t7_slot": "9",
+   "equip_slot": "9",
+   "layer_offset_m": 0.0035,
+   "default_color": [
+    0.06,
+    0.06,
+    0.07
+   ],
+   "roughness": 0.45,
+   "license": "CC0-1.0",
+   "author": "Western Heart (original geometry generated in Blender on each template body)",
+   "templates": [
+    "super-heavyweight",
+    "powerhouse",
+    "showman",
+    "technician",
+    "highflyer",
+    "luchador",
+    "powerhouse-w",
+    "athletic-w",
+    "striker-w"
+   ],
+   "files": {
+    "super-heavyweight": "wh-top-compression/super-heavyweight.glb",
+    "powerhouse": "wh-top-compression/powerhouse.glb",
+    "showman": "wh-top-compression/showman.glb",
+    "technician": "wh-top-compression/technician.glb",
+    "highflyer": "wh-top-compression/highflyer.glb",
+    "luchador": "wh-top-compression/luchador.glb",
+    "powerhouse-w": "wh-top-compression/powerhouse-w.glb",
+    "athletic-w": "wh-top-compression/athletic-w.glb",
+    "striker-w": "wh-top-compression/striker-w.glb"
+   }
+  },
+  {
+   "id": "wh-top-tee",
+   "name": "Fitted Tee",
+   "family": "clothing",
+   "wwe_region": "Upper Body",
+   "wwe_type": "Shirts",
+   "t7_slot": "9",
+   "equip_slot": "9",
+   "layer_offset_m": 0.008,
+   "default_color": [
+    0.85,
+    0.85,
+    0.85
+   ],
+   "roughness": 0.8,
+   "license": "CC0-1.0",
+   "author": "Western Heart (original geometry generated in Blender on each template body)",
+   "templates": [
+    "super-heavyweight",
+    "powerhouse",
+    "showman",
+    "technician",
+    "highflyer",
+    "luchador",
+    "powerhouse-w",
+    "athletic-w",
+    "striker-w"
+   ],
+   "files": {
+    "super-heavyweight": "wh-top-tee/super-heavyweight.glb",
+    "powerhouse": "wh-top-tee/powerhouse.glb",
+    "showman": "wh-top-tee/showman.glb",
+    "technician": "wh-top-tee/technician.glb",
+    "highflyer": "wh-top-tee/highflyer.glb",
+    "luchador": "wh-top-tee/luchador.glb",
+    "powerhouse-w": "wh-top-tee/powerhouse-w.glb",
+    "athletic-w": "wh-top-tee/athletic-w.glb",
+    "striker-w": "wh-top-tee/striker-w.glb"
+   }
+  },
+  {
+   "id": "wh-top-tank",
+   "name": "Tank Top",
+   "family": "clothing",
+   "wwe_region": "Upper Body",
+   "wwe_type": "Vests",
+   "t7_slot": "9",
+   "equip_slot": "9",
+   "layer_offset_m": 0.0065,
+   "default_color": [
+    0.75,
+    0.1,
+    0.1
+   ],
+   "roughness": 0.75,
+   "license": "CC0-1.0",
+   "author": "Western Heart (original geometry generated in Blender on each template body)",
+   "templates": [
+    "super-heavyweight",
+    "powerhouse",
+    "showman",
+    "technician",
+    "highflyer",
+    "luchador",
+    "powerhouse-w",
+    "athletic-w",
+    "striker-w"
+   ],
+   "files": {
+    "super-heavyweight": "wh-top-tank/super-heavyweight.glb",
+    "powerhouse": "wh-top-tank/powerhouse.glb",
+    "showman": "wh-top-tank/showman.glb",
+    "technician": "wh-top-tank/technician.glb",
+    "highflyer": "wh-top-tank/highflyer.glb",
+    "luchador": "wh-top-tank/luchador.glb",
+    "powerhouse-w": "wh-top-tank/powerhouse-w.glb",
+    "athletic-w": "wh-top-tank/athletic-w.glb",
+    "striker-w": "wh-top-tank/striker-w.glb"
+   }
+  },
+  {
+   "id": "wh-top-crop",
+   "name": "Sports Top",
+   "family": "clothing",
+   "wwe_region": "Upper Body",
+   "wwe_type": "Shirts",
+   "t7_slot": "9",
+   "equip_slot": "9",
+   "layer_offset_m": 0.0065,
+   "default_color": [
+    0.1,
+    0.2,
+    0.55
+   ],
+   "roughness": 0.5,
+   "license": "CC0-1.0",
+   "author": "Western Heart (original geometry generated in Blender on each template body)",
+   "templates": [
+    "super-heavyweight",
+    "powerhouse",
+    "showman",
+    "technician",
+    "highflyer",
+    "luchador",
+    "powerhouse-w",
+    "athletic-w",
+    "striker-w"
+   ],
+   "files": {
+    "super-heavyweight": "wh-top-crop/super-heavyweight.glb",
+    "powerhouse": "wh-top-crop/powerhouse.glb",
+    "showman": "wh-top-crop/showman.glb",
+    "technician": "wh-top-crop/technician.glb",
+    "highflyer": "wh-top-crop/highflyer.glb",
+    "luchador": "wh-top-crop/luchador.glb",
+    "powerhouse-w": "wh-top-crop/powerhouse-w.glb",
+    "athletic-w": "wh-top-crop/athletic-w.glb",
+    "striker-w": "wh-top-crop/striker-w.glb"
+   }
+  },
+  {
+   "id": "wh-singlet",
+   "name": "Singlet",
+   "family": "clothing",
+   "wwe_region": "Upper Body",
+   "wwe_type": "Singlets",
+   "t7_slot": "10",
+   "equip_slot": "10",
+   "layer_offset_m": 0.005,
+   "default_color": [
+    0.1,
+    0.12,
+    0.45
+   ],
+   "roughness": 0.4,
+   "license": "CC0-1.0",
+   "author": "Western Heart (original geometry generated in Blender on each template body)",
+   "templates": [
+    "super-heavyweight",
+    "powerhouse",
+    "showman",
+    "technician",
+    "highflyer",
+    "luchador",
+    "powerhouse-w",
+    "athletic-w",
+    "striker-w"
+   ],
+   "files": {
+    "super-heavyweight": "wh-singlet/super-heavyweight.glb",
+    "powerhouse": "wh-singlet/powerhouse.glb",
+    "showman": "wh-singlet/showman.glb",
+    "technician": "wh-singlet/technician.glb",
+    "highflyer": "wh-singlet/highflyer.glb",
+    "luchador": "wh-singlet/luchador.glb",
+    "powerhouse-w": "wh-singlet/powerhouse-w.glb",
+    "athletic-w": "wh-singlet/athletic-w.glb",
+    "striker-w": "wh-singlet/striker-w.glb"
+   }
+  },
+  {
+   "id": "wh-trunks",
+   "name": "Wrestling Trunks",
+   "family": "clothing",
+   "wwe_region": "Lower Body",
+   "wwe_type": "Trunks",
+   "t7_slot": "11",
+   "equip_slot": "11",
+   "layer_offset_m": 0.005,
+   "default_color": [
+    0.08,
+    0.08,
+    0.08
+   ],
+   "roughness": 0.35,
+   "license": "CC0-1.0",
+   "author": "Western Heart (original geometry generated in Blender on each template body)",
+   "templates": [
+    "super-heavyweight",
+    "powerhouse",
+    "showman",
+    "technician",
+    "highflyer",
+    "luchador",
+    "powerhouse-w",
+    "athletic-w",
+    "striker-w"
+   ],
+   "files": {
+    "super-heavyweight": "wh-trunks/super-heavyweight.glb",
+    "powerhouse": "wh-trunks/powerhouse.glb",
+    "showman": "wh-trunks/showman.glb",
+    "technician": "wh-trunks/technician.glb",
+    "highflyer": "wh-trunks/highflyer.glb",
+    "luchador": "wh-trunks/luchador.glb",
+    "powerhouse-w": "wh-trunks/powerhouse-w.glb",
+    "athletic-w": "wh-trunks/athletic-w.glb",
+    "striker-w": "wh-trunks/striker-w.glb"
+   }
+  },
+  {
+   "id": "wh-tights-long",
+   "name": "Long Tights",
+   "family": "clothing",
+   "wwe_region": "Lower Body",
+   "wwe_type": "Tights",
+   "t7_slot": "11",
+   "equip_slot": "11",
+   "layer_offset_m": 0.002,
+   "default_color": [
+    0.55,
+    0.08,
+    0.08
+   ],
+   "roughness": 0.35,
+   "license": "CC0-1.0",
+   "author": "Western Heart (original geometry generated in Blender on each template body)",
+   "templates": [
+    "super-heavyweight",
+    "powerhouse",
+    "showman",
+    "technician",
+    "highflyer",
+    "luchador",
+    "powerhouse-w",
+    "athletic-w",
+    "striker-w"
+   ],
+   "files": {
+    "super-heavyweight": "wh-tights-long/super-heavyweight.glb",
+    "powerhouse": "wh-tights-long/powerhouse.glb",
+    "showman": "wh-tights-long/showman.glb",
+    "technician": "wh-tights-long/technician.glb",
+    "highflyer": "wh-tights-long/highflyer.glb",
+    "luchador": "wh-tights-long/luchador.glb",
+    "powerhouse-w": "wh-tights-long/powerhouse-w.glb",
+    "athletic-w": "wh-tights-long/athletic-w.glb",
+    "striker-w": "wh-tights-long/striker-w.glb"
+   }
+  },
+  {
+   "id": "wh-shorts-fight",
+   "name": "Fight Shorts",
+   "family": "clothing",
+   "wwe_region": "Lower Body",
+   "wwe_type": "Bottoms",
+   "t7_slot": "11",
+   "equip_slot": "11",
+   "layer_offset_m": 0.011,
+   "default_color": [
+    0.12,
+    0.12,
+    0.14
+   ],
+   "roughness": 0.8,
+   "license": "CC0-1.0",
+   "author": "Western Heart (original geometry generated in Blender on each template body)",
+   "templates": [
+    "super-heavyweight",
+    "powerhouse",
+    "showman",
+    "technician",
+    "highflyer",
+    "luchador",
+    "powerhouse-w",
+    "athletic-w",
+    "striker-w"
+   ],
+   "files": {
+    "super-heavyweight": "wh-shorts-fight/super-heavyweight.glb",
+    "powerhouse": "wh-shorts-fight/powerhouse.glb",
+    "showman": "wh-shorts-fight/showman.glb",
+    "technician": "wh-shorts-fight/technician.glb",
+    "highflyer": "wh-shorts-fight/highflyer.glb",
+    "luchador": "wh-shorts-fight/luchador.glb",
+    "powerhouse-w": "wh-shorts-fight/powerhouse-w.glb",
+    "athletic-w": "wh-shorts-fight/athletic-w.glb",
+    "striker-w": "wh-shorts-fight/striker-w.glb"
+   }
+  },
+  {
+   "id": "wh-gloves-mma",
+   "name": "Open-Finger Gloves",
+   "family": "clothing",
+   "wwe_region": "Arms & Hands",
+   "wwe_type": "Gloves",
+   "t7_slot": "H",
+   "equip_slot": "H",
+   "layer_offset_m": 0.0045,
+   "default_color": [
+    0.08,
+    0.08,
+    0.08
+   ],
+   "roughness": 0.35,
+   "license": "CC0-1.0",
+   "author": "Western Heart (original geometry generated in Blender on each template body)",
+   "templates": [
+    "super-heavyweight",
+    "powerhouse",
+    "showman",
+    "technician",
+    "highflyer",
+    "luchador",
+    "powerhouse-w",
+    "athletic-w",
+    "striker-w"
+   ],
+   "files": {
+    "super-heavyweight": "wh-gloves-mma/super-heavyweight.glb",
+    "powerhouse": "wh-gloves-mma/powerhouse.glb",
+    "showman": "wh-gloves-mma/showman.glb",
+    "technician": "wh-gloves-mma/technician.glb",
+    "highflyer": "wh-gloves-mma/highflyer.glb",
+    "luchador": "wh-gloves-mma/luchador.glb",
+    "powerhouse-w": "wh-gloves-mma/powerhouse-w.glb",
+    "athletic-w": "wh-gloves-mma/athletic-w.glb",
+    "striker-w": "wh-gloves-mma/striker-w.glb"
+   }
+  },
+  {
+   "id": "wh-gloves-full",
+   "name": "Full Gloves",
+   "family": "clothing",
+   "wwe_region": "Arms & Hands",
+   "wwe_type": "Gloves",
+   "t7_slot": "H",
+   "equip_slot": "H",
+   "layer_offset_m": 0.0035,
+   "default_color": [
+    0.12,
+    0.08,
+    0.06
+   ],
+   "roughness": 0.45,
+   "license": "CC0-1.0",
+   "author": "Western Heart (original geometry generated in Blender on each template body)",
+   "templates": [
+    "super-heavyweight",
+    "powerhouse",
+    "showman",
+    "technician",
+    "highflyer",
+    "luchador",
+    "powerhouse-w",
+    "athletic-w",
+    "striker-w"
+   ],
+   "files": {
+    "super-heavyweight": "wh-gloves-full/super-heavyweight.glb",
+    "powerhouse": "wh-gloves-full/powerhouse.glb",
+    "showman": "wh-gloves-full/showman.glb",
+    "technician": "wh-gloves-full/technician.glb",
+    "highflyer": "wh-gloves-full/highflyer.glb",
+    "luchador": "wh-gloves-full/luchador.glb",
+    "powerhouse-w": "wh-gloves-full/powerhouse-w.glb",
+    "athletic-w": "wh-gloves-full/athletic-w.glb",
+    "striker-w": "wh-gloves-full/striker-w.glb"
+   }
+  },
+  {
+   "id": "wh-boots-knee",
+   "name": "Knee-High Boots",
+   "family": "clothing",
+   "wwe_region": "Legs & Feet",
+   "wwe_type": "Boots",
+   "t7_slot": "F",
+   "equip_slot": "F",
+   "layer_offset_m": 0.009,
+   "default_color": [
+    0.06,
+    0.06,
+    0.06
+   ],
+   "roughness": 0.3,
+   "license": "CC0-1.0",
+   "author": "Western Heart (original geometry generated in Blender on each template body)",
+   "templates": [
+    "super-heavyweight",
+    "powerhouse",
+    "showman",
+    "technician",
+    "highflyer",
+    "luchador",
+    "powerhouse-w",
+    "athletic-w",
+    "striker-w"
+   ],
+   "files": {
+    "super-heavyweight": "wh-boots-knee/super-heavyweight.glb",
+    "powerhouse": "wh-boots-knee/powerhouse.glb",
+    "showman": "wh-boots-knee/showman.glb",
+    "technician": "wh-boots-knee/technician.glb",
+    "highflyer": "wh-boots-knee/highflyer.glb",
+    "luchador": "wh-boots-knee/luchador.glb",
+    "powerhouse-w": "wh-boots-knee/powerhouse-w.glb",
+    "athletic-w": "wh-boots-knee/athletic-w.glb",
+    "striker-w": "wh-boots-knee/striker-w.glb"
+   }
+  },
+  {
+   "id": "wh-boots-ankle",
+   "name": "Ankle Boots",
+   "family": "clothing",
+   "wwe_region": "Legs & Feet",
+   "wwe_type": "Boots",
+   "t7_slot": "F",
+   "equip_slot": "F",
+   "layer_offset_m": 0.008,
+   "default_color": [
+    0.22,
+    0.13,
+    0.07
+   ],
+   "roughness": 0.4,
+   "license": "CC0-1.0",
+   "author": "Western Heart (original geometry generated in Blender on each template body)",
+   "templates": [
+    "super-heavyweight",
+    "powerhouse",
+    "showman",
+    "technician",
+    "highflyer",
+    "luchador",
+    "powerhouse-w",
+    "athletic-w",
+    "striker-w"
+   ],
+   "files": {
+    "super-heavyweight": "wh-boots-ankle/super-heavyweight.glb",
+    "powerhouse": "wh-boots-ankle/powerhouse.glb",
+    "showman": "wh-boots-ankle/showman.glb",
+    "technician": "wh-boots-ankle/technician.glb",
+    "highflyer": "wh-boots-ankle/highflyer.glb",
+    "luchador": "wh-boots-ankle/luchador.glb",
+    "powerhouse-w": "wh-boots-ankle/powerhouse-w.glb",
+    "athletic-w": "wh-boots-ankle/athletic-w.glb",
+    "striker-w": "wh-boots-ankle/striker-w.glb"
+   }
+  },
+  {
+   "id": "wh-kneepads",
+   "name": "Knee Pads",
+   "family": "accessories",
+   "wwe_region": "Legs & Feet",
+   "wwe_type": "Knee Pads",
+   "t7_slot": "13",
+   "equip_slot": "13K",
+   "layer_offset_m": 0.0115,
+   "default_color": [
+    0.08,
+    0.08,
+    0.08
+   ],
+   "roughness": 0.4,
+   "license": "CC0-1.0",
+   "author": "Western Heart (original geometry generated in Blender on each template body)",
+   "templates": [
+    "super-heavyweight",
+    "powerhouse",
+    "showman",
+    "technician",
+    "highflyer",
+    "luchador",
+    "powerhouse-w",
+    "athletic-w",
+    "striker-w"
+   ],
+   "files": {
+    "super-heavyweight": "wh-kneepads/super-heavyweight.glb",
+    "powerhouse": "wh-kneepads/powerhouse.glb",
+    "showman": "wh-kneepads/showman.glb",
+    "technician": "wh-kneepads/technician.glb",
+    "highflyer": "wh-kneepads/highflyer.glb",
+    "luchador": "wh-kneepads/luchador.glb",
+    "powerhouse-w": "wh-kneepads/powerhouse-w.glb",
+    "athletic-w": "wh-kneepads/athletic-w.glb",
+    "striker-w": "wh-kneepads/striker-w.glb"
+   }
+  },
+  {
+   "id": "wh-elbowpads",
+   "name": "Elbow Pads",
+   "family": "accessories",
+   "wwe_region": "Arms & Hands",
+   "wwe_type": "Elbow Pads",
+   "t7_slot": "12",
+   "equip_slot": "12E",
+   "layer_offset_m": 0.008,
+   "default_color": [
+    0.08,
+    0.08,
+    0.08
+   ],
+   "roughness": 0.4,
+   "license": "CC0-1.0",
+   "author": "Western Heart (original geometry generated in Blender on each template body)",
+   "templates": [
+    "super-heavyweight",
+    "powerhouse",
+    "showman",
+    "technician",
+    "highflyer",
+    "luchador",
+    "powerhouse-w",
+    "athletic-w",
+    "striker-w"
+   ],
+   "files": {
+    "super-heavyweight": "wh-elbowpads/super-heavyweight.glb",
+    "powerhouse": "wh-elbowpads/powerhouse.glb",
+    "showman": "wh-elbowpads/showman.glb",
+    "technician": "wh-elbowpads/technician.glb",
+    "highflyer": "wh-elbowpads/highflyer.glb",
+    "luchador": "wh-elbowpads/luchador.glb",
+    "powerhouse-w": "wh-elbowpads/powerhouse-w.glb",
+    "athletic-w": "wh-elbowpads/athletic-w.glb",
+    "striker-w": "wh-elbowpads/striker-w.glb"
+   }
+  },
+  {
+   "id": "wh-wrist-tape",
+   "name": "Wrist Tape",
+   "family": "accessories",
+   "wwe_region": "Arms & Hands",
+   "wwe_type": "Wrist Tape",
+   "t7_slot": "12",
+   "equip_slot": "12W",
+   "layer_offset_m": 0.007,
+   "default_color": [
+    0.92,
+    0.92,
+    0.9
+   ],
+   "roughness": 0.85,
+   "license": "CC0-1.0",
+   "author": "Western Heart (original geometry generated in Blender on each template body)",
+   "templates": [
+    "super-heavyweight",
+    "powerhouse",
+    "showman",
+    "technician",
+    "highflyer",
+    "luchador",
+    "powerhouse-w",
+    "athletic-w",
+    "striker-w"
+   ],
+   "files": {
+    "super-heavyweight": "wh-wrist-tape/super-heavyweight.glb",
+    "powerhouse": "wh-wrist-tape/powerhouse.glb",
+    "showman": "wh-wrist-tape/showman.glb",
+    "technician": "wh-wrist-tape/technician.glb",
+    "highflyer": "wh-wrist-tape/highflyer.glb",
+    "luchador": "wh-wrist-tape/luchador.glb",
+    "powerhouse-w": "wh-wrist-tape/powerhouse-w.glb",
+    "athletic-w": "wh-wrist-tape/athletic-w.glb",
+    "striker-w": "wh-wrist-tape/striker-w.glb"
+   }
+  },
+  {
+   "id": "wh-armbands",
+   "name": "Arm Bands",
+   "family": "accessories",
+   "wwe_region": "Arms & Hands",
+   "wwe_type": "Arm Bands",
+   "t7_slot": "12",
+   "equip_slot": "12A",
+   "layer_offset_m": 0.006,
+   "default_color": [
+    0.75,
+    0.6,
+    0.1
+   ],
+   "roughness": 0.4,
+   "license": "CC0-1.0",
+   "author": "Western Heart (original geometry generated in Blender on each template body)",
+   "templates": [
+    "super-heavyweight",
+    "powerhouse",
+    "showman",
+    "technician",
+    "highflyer",
+    "luchador",
+    "powerhouse-w",
+    "athletic-w",
+    "striker-w"
+   ],
+   "files": {
+    "super-heavyweight": "wh-armbands/super-heavyweight.glb",
+    "powerhouse": "wh-armbands/powerhouse.glb",
+    "showman": "wh-armbands/showman.glb",
+    "technician": "wh-armbands/technician.glb",
+    "highflyer": "wh-armbands/highflyer.glb",
+    "luchador": "wh-armbands/luchador.glb",
+    "powerhouse-w": "wh-armbands/powerhouse-w.glb",
+    "athletic-w": "wh-armbands/athletic-w.glb",
+    "striker-w": "wh-armbands/striker-w.glb"
+   }
+  },
+  {
+   "id": "wh-headband",
+   "name": "Headband",
+   "family": "accessories",
+   "wwe_region": "Headgear",
+   "wwe_type": "Head Accessories",
+   "t7_slot": "4",
+   "equip_slot": "4",
+   "layer_offset_m": 0.004,
+   "default_color": [
+    0.75,
+    0.1,
+    0.1
+   ],
+   "roughness": 0.8,
+   "license": "CC0-1.0",
+   "author": "Western Heart (original geometry generated in Blender on each template body)",
+   "templates": [
+    "super-heavyweight",
+    "powerhouse",
+    "showman",
+    "technician",
+    "highflyer",
+    "luchador",
+    "powerhouse-w",
+    "athletic-w",
+    "striker-w"
+   ],
+   "files": {
+    "super-heavyweight": "wh-headband/super-heavyweight.glb",
+    "powerhouse": "wh-headband/powerhouse.glb",
+    "showman": "wh-headband/showman.glb",
+    "technician": "wh-headband/technician.glb",
+    "highflyer": "wh-headband/highflyer.glb",
+    "luchador": "wh-headband/luchador.glb",
+    "powerhouse-w": "wh-headband/powerhouse-w.glb",
+    "athletic-w": "wh-headband/athletic-w.glb",
+    "striker-w": "wh-headband/striker-w.glb"
+   }
+  },
+  {
+   "id": "wh-belt",
+   "name": "Waist Belt",
+   "family": "accessories",
+   "wwe_region": "Lower Body",
+   "wwe_type": "Belts",
+   "t7_slot": "13",
+   "equip_slot": "13B",
+   "layer_offset_m": 0.013,
+   "default_color": [
+    0.12,
+    0.08,
+    0.05
+   ],
+   "roughness": 0.35,
+   "license": "CC0-1.0",
+   "author": "Western Heart (original geometry generated in Blender on each template body)",
+   "templates": [
+    "super-heavyweight",
+    "powerhouse",
+    "showman",
+    "technician",
+    "highflyer",
+    "luchador",
+    "powerhouse-w",
+    "athletic-w",
+    "striker-w"
+   ],
+   "files": {
+    "super-heavyweight": "wh-belt/super-heavyweight.glb",
+    "powerhouse": "wh-belt/powerhouse.glb",
+    "showman": "wh-belt/showman.glb",
+    "technician": "wh-belt/technician.glb",
+    "highflyer": "wh-belt/highflyer.glb",
+    "luchador": "wh-belt/luchador.glb",
+    "powerhouse-w": "wh-belt/powerhouse-w.glb",
+    "athletic-w": "wh-belt/athletic-w.glb",
+    "striker-w": "wh-belt/striker-w.glb"
+   }
+  }
+ ]
+}
