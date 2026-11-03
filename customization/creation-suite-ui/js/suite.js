@@ -23,6 +23,8 @@ import { T3_BANKS, T7_STANCES, loadT3Clips, retargetT3Clips, applyT7Stance } fro
 import { savePortrait, getPortrait, clearPortrait } from '../../../game/js/user-portraits.js';
 /* template-fitted hair / facial hair / brows / lashes (HAIR phase 2026-11-02): one module shared with the game */
 import { FITTED_COLOR_KEY, fittedPartPath } from '../../../game/js/fitted-parts.js';
+/* template-fitted left / right eyes (EYES phase 2026-11-02): WWE 2K Face > Eyes options, shared with the game */
+import { selectEyes, EYE_SLOT, IRIS_COLORS, SCLERA_TINTS, PUPIL_SIZES, clampPupil } from '../../../game/js/fitted-eyes.js';
 
 const LS_KEY = 'wh_creation_suite_v1';
 const START_MONEY = 12400;
@@ -223,7 +225,9 @@ function customizationRecord(){
       frame: Object.fromEntries(Object.entries(F.body.frame||{}).filter(([,v])=>v)) },
     morphs, parts, textures, part_states,
     colors:{ hair:(a.colors&&a.colors.hair)||null, facial_hair:(a.colors&&a.colors.facial_hair)||null,
-      brows:(a.colors&&a.colors.brows)||null, lashes:(a.colors&&a.colors.lashes)||null, skin:F.body.skin_tone } };
+      brows:(a.colors&&a.colors.brows)||null, lashes:(a.colors&&a.colors.lashes)||null,
+      iris:(a.colors&&a.colors.iris)||null, sclera:(a.colors&&a.colors.sclera)||null, skin:F.body.skin_tone },
+    eyes:{ type:(a.equipped&&a.equipped[EYE_SLOT])||null, pupil:(a.eyes&&a.eyes.pupil!=null)?clampPupil(a.eyes.pupil):null } };
 }
 function applyCustomizationRecord(rec){
   if(rec.body){ if(rec.body.body_type) F.body.body_type=rec.body.body_type;
@@ -245,8 +249,9 @@ function applyCustomizationRecord(rec){
     const p = PARTS.find(x=>x.id===t.part_id);
     a.equipped[(p&&p.suite_slot)||'face']=t.part_id;
   }
-  for(const ck of ['hair','facial_hair','brows','lashes'])
+  for(const ck of ['hair','facial_hair','brows','lashes','iris','sclera'])
     if(rec.colors && rec.colors[ck]){ a.colors=a.colors||{}; a.colors[ck]=rec.colors[ck]; }
+  if(rec.eyes){ if(rec.eyes.type) a.equipped[EYE_SLOT]=rec.eyes.type; if(rec.eyes.pupil!=null) a.eyes={ pupil:clampPupil(rec.eyes.pupil) }; }
   // Phase 1: per-part toggles on the fighter's own meshes (OUTFIT tab)
   a.partStates = rec.part_states ? JSON.parse(JSON.stringify(rec.part_states)) : {};
 }
@@ -331,6 +336,13 @@ function syncMorphs(){
   try{ applyMorphProxies(viewer.model, F.morphs||{}); }catch(e){}
   // real blend shapes last: body.js prepareBody() rebuilds influence arrays when it first runs
   try{ applyMorphTargets(viewer.model, F.body.morph_targets||{}); }catch(e){ console.warn('[WH] morph targets failed', e); }
+  try{ viewer.updateEyes && viewer.updateEyes(F.body.morph_targets||{}); }catch(e){} // fitted eyes follow eye size / spacing / height
+}
+/* fitted eyes on the template body (WWE 2K Face > Eyes): type, iris colour, sclera tint, pupil size, per attire */
+function syncEyes(){
+  if(!viewer || !viewer.setEyes) return;
+  const cfg = viewer.isTemplate ? selectEyes(attire(), F.template) : null;
+  viewer.setEyes(cfg, F.body.morph_targets||{}).catch(e=>console.warn('[WH] fitted eyes failed', e));
 }
 
 /* ---------- 3D sync ---------- */
@@ -345,6 +357,7 @@ function syncParts3D(){
     const p = PARTS.find(x=>x.id===partId);
     if(!p || p.part_class!=='mesh_part' || !p.glb){ continue; }
     seen.add(partId);
+    if(p.fitted_eyes) continue; // fitted eyes: syncEyes() places both sides on the head bone
     // template-fitted parts (hair / facial hair / brows / lashes): parented to the head bone, fitted per template
     const fitUrl = p.fitted && viewer.isTemplate && fittedPartPath(p.id, F.template);
     if(fitUrl){
@@ -361,6 +374,7 @@ function syncParts3D(){
   }
   for(const pid of [...viewer.parts.keys()])
     if(!seen.has(pid) && !pid.startsWith('swap:')) viewer.detachPart(pid); // swap: keys are owned by applyPartStates3D
+  syncEyes();
 }
 function syncPreview(){
   if(!viewer) return;
@@ -852,9 +866,11 @@ function renderParts(el){
       if(c.key==='eyes'){
         // Owner eye verdict (2026-10-20): eyes are REAL PLACEABLE MESH PARTS.
         // Placeable eye/brow parts and legacy texture variants are SEPARATE lists.
+        const fittedEyes = PARTS.filter(p=>p.eye_kind==='fitted_eye');
         const placeable = PARTS.filter(p=>p.eye_kind==='placeable_part');
         const variants = PARTS.filter(p=>p.eye_kind==='texture_variant');
-        [['EYE PARTS — place them yourself', placeable, 'eyes-placeable'],
+        [['EYES — fitted to every body', fittedEyes, 'eyes-fitted'],
+         ['EYE PARTS — place them yourself', placeable, 'eyes-placeable'],
          ['EYE TEXTURES', variants, 'eyes-textures']].forEach(([label, list, key])=>{
           const b=document.createElement('button'); b.className='subcat'; b.id='pcat-'+key;
           b.innerHTML=`<span class="sc-ico">👁️</span><span>${label}</span><span class="sc-count">${ready(list)} parts</span>`;
@@ -951,7 +967,7 @@ function renderPartGrid(el, cat, list, backKey){
 }
 const HAIR_COLORS = ['#1a1410','#3b2a1e','#5a3a22','#8a5a32','#b07a45','#d8b878','#e8e0d0','#8f8f8f','#7a1e1e','#c2410c','#1e3a8a','#6b21a8'];
 function renderPartDetail(el, p, slotKey){
-  if(p.fitted && p.equip_slot) slotKey = p.equip_slot; // brows and lashes share T7 slot 6 but are separate fitted slots
+  if((p.fitted || p.fitted_eyes) && p.equip_slot) slotKey = p.equip_slot; // brows and lashes share T7 slot 6 but are separate fitted slots
   const owned = attire().owned.includes(p.id);
   const eqd = Object.values(attire().equipped).includes(p.id);
   el.innerHTML=`
@@ -961,6 +977,10 @@ function renderPartDetail(el, p, slotKey){
     ${p.eye_kind==='placeable_part'?'<div class="note">👁️ A real eye part: equip it, then use <b>PLACEMENT</b> to set its position, rotation and scale.</div>':''}
     ${p.geometry_pending?'<div class="note">This part is coming soon: equipping it saves it on the attire and marks where it goes.</div>':''}
     ${p.fitted?'<div class="note">Fitted to every base body: follows the head and the face sliders.</div><div class="sect">COLOR</div><div class="btn-row" id="p-colors"></div>':''}
+    ${p.fitted_eyes?`<div class="note">Both eyes, fitted to every base body: they follow the head and the Eye Size / Spacing / Height sliders.</div>
+      <div class="sect">${p.fitted_eyes.lens?'LENS TINT':'IRIS COLOR'}</div><div class="btn-row" id="eye-iris"></div>
+      <div class="sect">SCLERA</div><div class="btn-row" id="eye-sclera"></div>
+      <div class="sect">PUPIL SIZE</div><div class="btn-row" id="eye-pupil"></div>`:''}
     <div class="btn-row" id="p-actions"></div>`;
   if(p.fitted){
     const ck = FITTED_COLOR_KEY[p.suite_slot], row = el.querySelector('#p-colors');
@@ -971,6 +991,22 @@ function renderPartDetail(el, p, slotKey){
       b.onclick=()=>{ attire().colors=attire().colors||{}; attire().colors[ck]=hex; persistQuiet(); syncParts3D(); renderPanel(); };
       row.appendChild(b);
     });
+  }
+  if(p.fitted_eyes){
+    const cols = attire().colors||{}, sw = (row, list, key)=>list.forEach(hex=>{
+      const on = cols[key]===hex, b=document.createElement('button'); b.className='swatch'+(on?' on':'');
+      b.style.cssText=`background:${hex};width:28px;height:28px;border-radius:50%;border:2px solid ${on?'#e8b64c':'#333'}`;
+      b.setAttribute('aria-label', key+' '+hex); b.dataset.color=hex;
+      b.onclick=()=>{ attire().colors=attire().colors||{}; attire().colors[key]=hex; persistQuiet(); syncEyes(); renderPanel(); };
+      row.appendChild(b);
+    });
+    sw(el.querySelector('#eye-iris'), p.fitted_eyes.lens?['#ffffff', ...IRIS_COLORS.slice(0, 7)]:IRIS_COLORS, 'iris');
+    sw(el.querySelector('#eye-sclera'), SCLERA_TINTS, 'sclera');
+    const cur = clampPupil(attire().eyes && attire().eyes.pupil), prow = el.querySelector('#eye-pupil');
+    PUPIL_SIZES.forEach(v=>{ const b=document.createElement('button'); b.className='btn'+(Math.abs(cur-v)<1e-6?' btn-gold':''); b.id='eye-pupil-'+v;
+      b.textContent=Math.round(v*100)+'%';
+      b.onclick=()=>{ attire().eyes={ ...(attire().eyes||{}), pupil:v }; persistQuiet(); syncEyes(); renderPanel(); };
+      prow.appendChild(b); });
   }
   const box=el.querySelector('#p-actions');
   if(p.part_class==='mesh_part' && !p.glb){
@@ -992,11 +1028,12 @@ function renderPartDetail(el, p, slotKey){
           F.wallet-=500; attire().owned.push(p.id); }
         attire().equipped[slotKey]=p.id;
         if(!attire().placements[p.id]){ const def=PARTS.find(x=>x.id===p.id); attire().placements[p.id]=defaultPlacement(def||{}); }
-        renderAll(); if(p.fitted){ toast('Equipped ✓'); return; } showPlaceDock(p); toast('Equipped ✓ — nudge it into place'); };
+        renderAll(); if(p.fitted || p.fitted_eyes){ toast('Equipped ✓'); return; } showPlaceDock(p); toast('Equipped ✓ — nudge it into place'); };
       box.appendChild(b);
     } else {
-      const b1=document.createElement('button'); b1.className='btn btn-blue'; b1.id='btn-place-part'; b1.textContent='⌖ PLACEMENT';
-      b1.onclick=()=>showPlaceDock(p); box.appendChild(b1);
+      if(!p.fitted_eyes){ // fitted eyes sit in the measured sockets: no free placement
+        const b1=document.createElement('button'); b1.className='btn btn-blue'; b1.id='btn-place-part'; b1.textContent='⌖ PLACEMENT';
+        b1.onclick=()=>showPlaceDock(p); box.appendChild(b1); }
       const b2=document.createElement('button'); b2.className='btn btn-red'; b2.id='btn-unequip-part'; b2.textContent='UNEQUIP';
       b2.onclick=()=>{ for(const k of Object.keys(attire().equipped)) if(attire().equipped[k]===p.id) delete attire().equipped[k];
         hidePlaceDock(); renderAll(); }; box.appendChild(b2);

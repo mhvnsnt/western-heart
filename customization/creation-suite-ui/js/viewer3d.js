@@ -8,6 +8,8 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.js';
 /* template-fitted hair / facial hair / brows / lashes: head-bone parenting shared with the game (HAIR phase 2026-11-02) */
 import { findHeadBone, attachFittedScene, setFittedTint, setBaseHidden } from '../../../game/js/fitted-parts.js';
+/* template-fitted left / right eyes (EYES phase 2026-11-02): same placement module as the game */
+import { attachEyes, clearEyes, restyleEyes, updateEyeSockets, EYEBALL_GLB, EYE_SOCKETS_JSON } from '../../../game/js/fitted-eyes.js';
 /* MB-Lab game skeleton (WWE-style CREATE templates) -> the Mixamo bone names SOCKET_BONES and framing use (2026-11-01) */
 const MBLAB_ALIASES = { Hips:['pelvis'], Spine:['spine01'], Spine1:['spine02'], Spine2:['spine03'], Neck:['neck'], Head:['head'],
   LeftShoulder:['clavicle_L'], RightShoulder:['clavicle_R'], LeftArm:['upperarm_L'], RightArm:['upperarm_R'],
@@ -380,6 +382,26 @@ export class SuiteViewer {
       }, undefined, rej);
     });
   }
+  /* fitted eyes: one eyeball.glb per side on the head bone at the template's measured sockets
+     (customization/parts/eyes/eye-sockets.json); cfg = selectEyes(attire, template) or null for the body's own eyes */
+  async setEyes(cfg, morphValues, urlPrefix='../../'){
+    const model = this.model;
+    if(!cfg || !model || !this.isTemplate){ if(model) clearEyes(model); this._eyeKey=null; return []; }
+    const key = cfg.template+'|'+cfg.id+'|'+cfg.lens;
+    const opts = { makeTexture: (url)=>{ const t=new THREE.TextureLoader().load(url); t.colorSpace=THREE.SRGBColorSpace; return t; }, urlPrefix };
+    if(this._eyeKey===key && model.userData._eyesOn){ restyleEyes(model, cfg, opts); return []; }
+    this._eyeKey = key;
+    if(!this._eyeAssets) this._eyeAssets = Promise.all([
+      new Promise((res, rej)=>this.loader.load(urlPrefix+EYEBALL_GLB, g=>res(g.scene), undefined, rej)),
+      fetch(urlPrefix+EYE_SOCKETS_JSON).then(r=>{ if(!r.ok) throw new Error('eye sockets '+r.status); return r.json(); })]);
+    const [ball, sockets] = await this._eyeAssets;
+    this._eyeSockets = sockets;
+    if(this.model!==model || this._eyeKey!==key) return [];
+    const g = attachEyes(model, ball, sockets, cfg, { ...opts, morphValues: morphValues||{} });
+    model.userData._eyesOn = g.length===2;
+    return g;
+  }
+  updateEyes(morphValues){ if(this.model && this._eyeSockets) updateEyeSockets(this.model, this._eyeSockets, morphValues||{}); }
   setFittedTint(partId, tint){ const e=this.parts.get(partId); if(e && e.fitted) setFittedTint(e.group, tint); }
   getPlacement(partId){ const e=this.parts.get(partId); return e?{...e.placement}:null; }
   /* texture-part marker: shows where a texture part applies (honest: geometry-pending parts) */
