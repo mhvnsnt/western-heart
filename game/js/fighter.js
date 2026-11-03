@@ -52,6 +52,7 @@ import { MpmTissue } from './mpm-tissue.js';
 import { FaceRig } from './faceRig.js';
 import { applyMorphTargets } from './morph-apply.js';
 import { loadFittedParts, clearFittedParts } from './fitted-parts.js';
+import { attachEyes, clearEyes, EYEBALL_GLB, EYE_SOCKETS_JSON } from './fitted-eyes.js';
 import { HandPoseBlender } from './handPoses.js';
 import { canonRootScale } from './canon-sizing.js';
 import { t8Frame, stunFromAdvantage } from './frame-tables.js';
@@ -682,6 +683,7 @@ export class Fighter {
     this.model = inst.model;
     this._applyCharMorphs();
     this._attachFittedParts();
+    this._attachFittedEyes();
     // ?debug=1 → on-page fighter diagnostics (no devtools needed)
     if (new URLSearchParams(location.search).has('debug')) {
       let sm = 0, bones = 0, vis = true;
@@ -943,6 +945,35 @@ export class Fighter {
       return groups;
     })().catch((e) => { console.warn('[WH] fitted parts failed', e); return []; });
     return this._fittedReady;
+  }
+
+  /* EYES phase (2026-11-02): created fighters get the suite's fitted eyes
+     (char.fittedEyes from game/js/custom-fighter.js): one eyeball.glb per
+     side, parented to the Head bone at the template's measured socket
+     (customization/parts/eyes/eye-sockets.json), placed for the saved
+     eye-size / spacing / height sliders, tinted / lens-textured, with the
+     body's own eye primitives hidden. Load-time only; async like the hair. */
+  _attachFittedEyes() {
+    const cfg = this.char && this.char.fittedEyes;
+    if (!cfg || !this.model) return null;
+    const model = this.model;
+    this._eyesReady = (async () => {
+      const [{ GLTFLoader }, sockets] = await Promise.all([
+        import('three/addons/loaders/GLTFLoader.js'),
+        fetch('../' + EYE_SOCKETS_JSON).then((r) => { if (!r.ok) throw new Error('eye sockets ' + r.status); return r.json(); })]);
+      const gltf = await new GLTFLoader().loadAsync('../' + EYEBALL_GLB);
+      if (this.model !== model) return [];
+      clearEyes(model);
+      const texLoader = new THREE.TextureLoader();
+      const groups = attachEyes(model, gltf.scene, sockets, cfg, {
+        morphValues: this.char.morphTargets || {}, urlPrefix: '../',
+        // planar iris UVs are GL-style, so the loader's default flipY is right
+        makeTexture: (url) => { const t = texLoader.load(url); t.colorSpace = THREE.SRGBColorSpace; return t; },
+      });
+      model.userData.fittedEyes = groups.length ? cfg.id : null;
+      return groups;
+    })().catch((e) => { console.warn('[WH] fitted eyes failed', e); return []; });
+    return this._eyesReady;
   }
 
   /* The actual model swap — called by the cinematic at the climax.

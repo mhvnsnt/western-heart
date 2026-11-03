@@ -45,7 +45,9 @@ export const FITTED_PARTS = {
 /* fitted slot -> attire colour key the suite saves the tint under (attire.colors[key]) */
 export const FITTED_COLOR_KEY = { hair: 'hair', facial_hair: 'facial_hair', eyebrows: 'brows', eyelashes: 'lashes' };
 /* base-body primitives a fitted slot replaces (the template's own MB-Lab eyelash strip hides under fitted lashes) */
-export const FITTED_HIDES = { eyelashes: /eyelash/i };
+export const FITTED_HIDES = { eyelashes: /eyelash/i,
+  // EYES phase (2026-11-02, game/js/fitted-eyes.js): fitted eyeballs replace the body's own eye primitives
+  eyes: /human_eyes|iris|pupil|cornea/i };
 export const FITTED_DIR = 'customization/parts/hair/mpfb2';
 
 export const isFittedPart = id => Object.prototype.hasOwnProperty.call(FITTED_PARTS, id);

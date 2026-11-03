@@ -284,6 +284,20 @@ def main() -> int:
     except FileNotFoundError:
         pass
 
+    # Template-fitted eyes (EYES phase 2026-11-02): tools/eyes/catalog_entries.py (eye types on eyeball.glb at
+    # customization/parts/eyes/eye-sockets.json).
+    try:
+        import importlib.util as _ilu
+        _spec = _ilu.spec_from_file_location("wh_fitted_eyes", ROOT / "tools" / "eyes" / "catalog_entries.py")
+        _mod = _ilu.module_from_spec(_spec); _spec.loader.exec_module(_mod)
+        _fitted = [e for e in _mod.fitted_entries(ROOT) if e["id"] not in seen]
+        for e in _fitted:
+            seen.add(e["id"])
+        parts.extend(_fitted)
+        counts[_mod.COUNT_KEY] = len(_fitted)
+    except FileNotFoundError:
+        pass
+
     # Eye library: every PNG in customization/eye-library not already registered.
     eye_added = 0
     if EYE_DIR.is_dir():
