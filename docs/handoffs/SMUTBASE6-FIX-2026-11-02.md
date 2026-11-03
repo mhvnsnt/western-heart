@@ -60,3 +60,13 @@ No renders were produced this lane: Blender 4.0.2's render path crashes (libEGL.
 ## Execution notes
 - The lane ran through the 2026-11-02 disk-write storm (exec writes EPERM/0-byte for ~1 h; it zeroed ~/MEMORY.md at 05:38 CST). The storm cleared mid-run (~12:25 UTC); all PRs were still landed via the Git Data API (the standing preferred path), gitleaks clean on all five model files.
 - Merge SHAs for PRs #1528-#1532 are appended by a follow-up amendment once the merges verify on main.
+
+## Amendment (2026-11-02, lane close) — merges verified on main
+- PR #1528 Megami pack — MERGED, squash sha 11b2ab387d3b4381659f60f64bf6a23b83547169; main blob b79bda9260, 19,511,432 B.
+- PR #1529 Tobi fix — MERGED, squash sha 598823872d6599f6d9d7a35459f2742eb7454b05; main blob f46f8c4427, 4,823,088 B.
+- PR #1530 Pond fix — MERGED, squash sha f90f161cc0c2d91f05ba219b133f954c8ae2f6d9; main blob 26e8e53aaf, 9,467,192 B.
+- PR #1531 Menajerii fix — MERGED, squash sha 6c5a7094e9ccb94ca482e75cdf0eaa80f12fb3a4; main blob e03b212923, 3,164,796 B.
+- PR #1532 Ryusan part 1 — MERGED, squash sha 0d0129cd9b963e81c4ecd2dcd2986cf00b0bcbc3; main blob 1a818241cc, 2,259,084 B.
+- PR #1533 this handoff — MERGED, squash sha 559acff3bdce693e279e1c13a6567fe9309669e9.
+- Chatur: no change; loaded file on main untouched (blob a23c514f68, 2,361,776 B).
+- All merges were squash merges after full CI green (incl. instruction-gate, deletion-guard, rig-guard) and gitleaks-clean file sets. Still owed (unchanged): the visual gate renders for the five landed models, Ryusan texture bake part 2, Menajerii palette bake, Menajerii's Roger Jr. bank from the TTT2/GRE holdings, and browser play-verification of pond/ryusan/megami motbin wiring.
