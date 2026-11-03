@@ -56,6 +56,8 @@ export const REGION_BY_KEY = Object.freeze(Object.fromEntries(BODY_REGIONS.map((
 export const MAX_LAYERS = 40;
 export const LAYER_KINDS = Object.freeze(['tattoo', 'scar']);
 
+import { createLayer as createWearLayer, applyHit, setMaterialOpacity } from './wear-off.js';
+
 const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
 const num = (v, d) => (typeof v === 'number' && Number.isFinite(v) ? v : d);
 const sub = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
@@ -76,7 +78,7 @@ export function createLayer(opts = {}) {
     id: opts.id || `L${Date.now().toString(36)}${(_seq++).toString(36)}`,
     part_id: opts.part_id, kind, region,
     u: opts.u, v: opts.v, scaleX: opts.scaleX, scaleY: opts.scaleY,
-    rotation: opts.rotation, opacity: opts.opacity, color: opts.color, mirror: opts.mirror,
+    rotation: opts.rotation, opacity: opts.opacity, color: opts.color, mirror: opts.mirror, asset: opts.asset,
   });
 }
 export function normalizeLayer(l) {
@@ -93,6 +95,8 @@ export function normalizeLayer(l) {
     opacity: clamp(num(l.opacity, 1), 0, 1),
     color: /^#[0-9a-f]{6}$/i.test(l.color || '') ? l.color.toLowerCase() : '#ffffff',
     mirror: !!l.mirror,
+    // repo-relative texture path, carried so the fight needs no 5 MB parts catalog to draw the layer
+    ...(typeof l.asset === 'string' && /^[\w\-./]+\.png$/i.test(l.asset) && !l.asset.includes('..') && !l.asset.startsWith('/') ? { asset: l.asset } : {}),
   };
 }
 /** Sanitize a saved layer stack (drops junk, caps at MAX_LAYERS, keeps order = draw order bottom->top). */
@@ -217,7 +221,10 @@ export function resolveAnchor(mesh, regionKey, u, v, opts = {}) {
   const I = mesh.indices;
   const w = [1 - best.u - best.v, best.u, best.v];
   const vi = I[best.tri * 3 + w.indexOf(Math.max(...w))];
-  return { point, normal, dir, up: f.axis, tri: best.tri, bone: dominantBone(mesh, vi), distance: best.t, origin, windingSign, inRegion: !opts.anyTriangle };
+  // decal 'up' = the region axis turned to point UP the body (limbs run downward: shoulder->hand, hip->foot),
+  // so a design's top edge faces the head on every region
+  const up = f.axis[1] < -0.2 ? mul(f.axis, -1) : f.axis;
+  return { point, normal, dir, up, tri: best.tri, bone: dominantBone(mesh, vi), distance: best.t, origin, windingSign, inRegion: !opts.anyTriangle };
 }
 
 /* ---------------- decal patch (DecalGeometry method) ---------------- */
@@ -396,4 +403,32 @@ export function findBodySkin(root) {
     if (nv > bestN) { bestN = nv; best = o; }
   });
   return best;
+}
+
+/* ---------------- in-fight wear-off hook (game/js/wear-off.js) ----------------
+   Each built decal registers a wear layer on model.userData.whDecals; a landed hit
+   (fighter.js receiveHit) wears the layers in the hit's zone: face paint would vanish,
+   tattoos fade to 0.55 of their set opacity, scars to 0.85 (wear-off.js floors). */
+export function registerDecalWear(model, mesh, layer) {
+  if (!model || !mesh) return null;
+  const wear = createWearLayer({ id: layer.id, kind: layer.kind === 'scar' ? 'scar' : 'tattoo', zone: (REGION_BY_KEY[layer.region] || {}).zone || 'any' });
+  const entry = { mesh, wear, base: layer.opacity };
+  (model.userData.whDecals = model.userData.whDecals || []).push(entry);
+  return entry;
+}
+export function zoneForMove(move) {
+  const lv = String((move && (move.level || move.hitLevel || move.height)) || '').toLowerCase();
+  return /low/.test(lv) ? 'lower' : /high/.test(lv) ? 'face' : /mid/.test(lv) ? 'upper' : 'any';
+}
+export function wearBodyDecals(model, move, dmg = 10) {
+  const list = model && model.userData && model.userData.whDecals;
+  if (!list || !list.length) return 0;
+  const zone = zoneForMove(move), strength = clamp(num(dmg, 10) / 20, 0, 2);
+  let n = 0;
+  for (const e of list) {
+    const before = e.wear.opacity;
+    applyHit(e.wear, { zone, strength });
+    if (e.wear.opacity !== before) { setMaterialOpacity(e.mesh.material, e.base * e.wear.opacity); n++; }
+  }
+  return n;
 }

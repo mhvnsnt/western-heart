@@ -74,7 +74,14 @@ export const PARTS_TREE = [
   { key:"decals", label:"Decals", icon:"🏷️", src:"WH_PARTS", note:"customization/decal-library/pantera/ — logo/tights/pants texture swaps at parameterized placements" },
   { key:"masks",  label:"Masks",  icon:"🦸", src:"WH_PARTS", note:"customization/parts/superhero/ — spidergirl eyes, batgirl mask+gauntlets, spaceghost cowl; mesh parts on head/hand sockets" },
   { key:"hair",   label:"Hair",   icon:"💇‍♀️", src:"WH_PARTS", note:"mesh + texture hair parts (silvertongue drills, mariposa ponytail restore)" },
+  /* TATTOOS + SCARS phase (2026-11-02): WWE 2K Tattoos / Logos layer system inside the Tekken list —
+     pick a design, ADD AS LAYER, then place it on a body region (position around/along, scale X/Y,
+     rotate, opacity, colour, mirror, order). Layers save per attire (game/js/decal-layers.js). */
+  { key:"tattoos", label:"Tattoos", icon:"🐉", src:"WWE_TATTOO", note:"99 tattoo designs → body-region decal layers (chest, back, neck, face, arms, forearms, thighs, calves; L/R)" },
+  { key:"scars",   label:"Scars",   icon:"🩹", src:"WWE_TATTOO", note:"Western Heart CC0 scar set → movable decal layers (WWE 2K22: movable scars)" },
+  { key:"layers",  label:"Body Layers", icon:"🧷", src:"WWE_TATTOO", note:"this attire's tattoo + scar layer stack — edit, reorder, mirror, remove (40 max)" },
 ];
+MENU_SRC.WWE_TATTOO = "WWE 2K Create-A-Superstar Tattoos / Logos — layered, placeable, scalable, rotatable, full-body canvas (customization/wwe2k-caw/CAW-SUITE-BREAKDOWN.md §2.2), decal layers position/scale/rotation/opacity (COMBINED-CREATION-SUITE.md §3.5), 40 body/head layers (WWE_ATTIRE), movable scars (WWE_FACEBODY); decals apply after attire layering (CAW-STRUCTURE-2026-10-19.md §4.4). Listed as Tekken-style categories (Tekken 7 slot 8 Face Paint = CharacterItemTex, teardown/tekken7/facepaint-reference.json)";
 MENU_SRC.WH_PARTS = "Western Heart PARTS-REGISTRY.json — 34 parts, suite_slot + placement socket schema (customization/PARTS-REGISTRY.json)";
 
 /* ---- JIGGLE tab: per-area scales (schema from jiggle lane) ---- */

@@ -21,6 +21,9 @@ MS.setMovesetBase('../../game/assets/movesets/');
 import * as THREE from 'three';
 import { T3_BANKS, T7_STANCES, loadT3Clips, retargetT3Clips, applyT7Stance } from '../../../game/js/t3anims.js';
 import { savePortrait, getPortrait, clearPortrait } from '../../../game/js/user-portraits.js';
+/* TATTOOS + SCARS (2026-11-02): WWE 2K Tattoos / Logos layer system on body regions — the SAME module the fight
+   uses to put the layers on a created fighter (game/js/customization-consumer.js), never forked. */
+import * as DL from '../../../game/js/decal-layers.js';
 
 const LS_KEY = 'wh_creation_suite_v1';
 const START_MONEY = 12400;
@@ -65,7 +68,7 @@ const SLOT2SOCKET = { eye:'face', face:'face', decal_logo:'chest', top:'chest', 
   scarf:'chest', tights:'waist', pants:'waist', hair:'head', mask:'face', eye_lenses:'face', cowl:'head', gauntlets:'hands' };
 const partSocket = p => p.socket || SLOT2SOCKET[p.suite_slot] || 'chest';
 
-function blankAttire(){ return { name:'', thumb:'', equipped:{}, owned:[], colors:{}, placements:{} }; }
+function blankAttire(){ return { name:'', thumb:'', equipped:{}, owned:[], colors:{}, placements:{}, decals:[] }; }
 function blankFighter(){
   return { version:1, app:'wh-creation-suite',
     profile:{ name:'NEW FIGHTER', short_name:'NEWF', soul:'—', title:['',''] },
@@ -91,6 +94,7 @@ let PARTS_META = null; // parts-catalog.json header (counts/sources)
 let ROSTER = null;    // data/roster-attires.json (build_roster_attires.py)
 let JIGGLE = null;    // jiggle-schema.json
 let FPARTS = null;    // data/fighter-parts.json (Phase 1: SmutBase-6 own-mesh parts)
+let DECAL_TABLE = null; // customization/templates/decal-placements.json (Blender-authored region defaults per template)
 let viewer = null;
 let ui = { tab:'body', attireMode:'tekken', attireCat:null, partsCat:null, selPart:null, wardSel:0, nudgeStep:0.001, page:0, query:'' };
 
@@ -220,6 +224,8 @@ function customizationRecord(){
       morph_targets: cleanValues(F.body.morph_targets, MORPH_SLIDERS),
       frame: Object.fromEntries(Object.entries(F.body.frame||{}).filter(([,v])=>v)) },
     morphs, parts, textures, part_states,
+    // TATTOOS + SCARS: this attire's body-region decal layers, bottom -> top (game/js/decal-layers.js)
+    decals: DL.normalizeLayers(a.decals),
     colors:{ hair:(a.colors&&a.colors.hair)||null, skin:F.body.skin_tone } };
 }
 function applyCustomizationRecord(rec){
@@ -231,6 +237,7 @@ function applyCustomizationRecord(rec){
   F.morphs = rec.morphs||{};
   const a = attire();
   a.equipped={}; a.placements={};
+  a.decals = DL.normalizeLayers(rec.decals);
   for(const [slot, entry] of Object.entries(rec.parts||{})){
     if(!entry || !entry.part_id) continue;
     a.equipped[slot]=entry.part_id;
@@ -350,12 +357,23 @@ function syncParts3D(){
   for(const pid of [...viewer.parts.keys()])
     if(!seen.has(pid) && !pid.startsWith('swap:')) viewer.detachPart(pid); // swap: keys are owned by applyPartStates3D
 }
+/* ---- TATTOOS + SCARS: body-region decal layers in the live preview (template bodies) ---- */
+const decalTemplateId = ()=> F.mode==='blank' ? (F.template||DEFAULT_TEMPLATE_ID) : null;
+function decalSize(l){ const d = DL.defaultPlacement(DECAL_TABLE, decalTemplateId(), l.region); return d.size; }
+function decalUrl(l){ const p = PARTS.find(x=>x.id===l.part_id); return p && p.asset ? '../../'+p.asset : null; }
+function syncDecals3D(){
+  if(!viewer || !viewer.ready || !viewer.syncDecals) return;
+  const a = attire(); a.decals = a.decals || [];
+  // decal layers project onto the CREATE template skin (MB-Lab skeleton); roster bodies are not wired yet
+  viewer.syncDecals(viewer.isTemplate ? a.decals : [], decalUrl, decalSize);
+}
 function syncPreview(){
   if(!viewer) return;
   viewer.setProportions(F.body.proportions);
   if(F.mode==='blank') viewer.setSkinTone(F.body.skin_tone);
   syncMorphs();
   syncParts3D();
+  syncDecals3D();
   // texture parts: live swap first (packages parts.js semantics — match the
   // registry placement's material/texture on the loaded model); when no
   // material matches this model, fall back to the socket marker (honest:
@@ -851,7 +869,16 @@ function renderParts(el){
         });
         return;
       }
-      const list = c.key==='decals' ? PARTS.filter(p=>['decal_logo','tights','pants'].includes(p.suite_slot))
+      if(c.key==='layers'){
+        const n=(attire().decals||[]).length;
+        const b=document.createElement('button'); b.className='subcat'+(n?' equipped':''); b.id='pcat-layers';
+        b.innerHTML=`<span class="sc-ico">${c.icon}</span><span>${c.label}<br><small style="color:var(--dim)">this attire</small></span><span class="sc-count">${n} / ${DL.MAX_LAYERS}</span>`;
+        b.onclick=()=>{ ui.partsCat={...c, layers:true}; ui.selPart=null; renderAll(); };
+        libs.appendChild(b); return;
+      }
+      const list = c.key==='tattoos' ? PARTS.filter(p=>p.decal_kind==='tattoo')
+        : c.key==='scars' ? PARTS.filter(p=>p.suite_slot==='scar')
+        : c.key==='decals' ? PARTS.filter(p=>['decal_logo','tights','pants'].includes(p.suite_slot) && p.decal_kind!=='tattoo')
         : c.key==='masks' ? PARTS.filter(p=>['mask','eye_lenses','cowl','gauntlets'].includes(p.suite_slot))
         : PARTS.filter(p=>p.suite_slot==='hair');
       const b=document.createElement('button'); b.className='subcat'; b.id='pcat-'+c.key;
@@ -861,7 +888,90 @@ function renderParts(el){
     });
     return;
   }
+  if(ui.partsCat.layers) return renderDecalLayers(el);
   renderPartGrid(el, ui.partsCat, ui.partsCat.list, 'partsCat');
+}
+
+/* ================= TATTOOS + SCARS: body-region layer editor =================
+   WWE 2K Create-A-Superstar Tattoos / Logos (menu-data.js MENU_SRC.WWE_TATTOO): a stack of layers, each one a
+   design placed on a body region with position (around / along the region), scale X/Y, rotation, opacity, colour and
+   mirror; layers reorder, copy to the other side (WWE Mirror), and save on THIS attire. Tekken-style list + tap. */
+function addDecalLayer(p){
+  const a = attire(); a.decals = a.decals || [];
+  const region = (ui.lastRegion && p.decal_kind==='tattoo') ? ui.lastRegion : ((p.placement && p.placement.region) || 'chest');
+  const def = DL.defaultPlacement(DECAL_TABLE, decalTemplateId(), region);
+  const pl = p.placement || {};
+  const useHint = pl.region===region && typeof pl.u==='number';
+  const layer = DL.createLayer({ part_id:p.id, kind:p.decal_kind||p.kind||'tattoo', region, asset:p.asset,
+    u: useHint ? pl.u : def.u, v: useHint ? pl.v : def.v });
+  if(!DL.addLayer(a.decals, layer)){ modal('LAYER LIMIT', `<p>An attire holds up to <b>${DL.MAX_LAYERS}</b> body layers.</p>`); return null; }
+  ui.selLayer = layer.id;
+  return layer;
+}
+function renderDecalLayers(el){
+  const a = attire(); a.decals = a.decals || [];
+  $('#panel-sub').textContent=`Body layers — ${a.decals.length} / ${DL.MAX_LAYERS}`;
+  const sel = a.decals.find(l=>l.id===ui.selLayer) || a.decals[a.decals.length-1] || null;
+  if(sel) ui.selLayer = sel.id;
+  const nameOf = l => { const p = PARTS.find(x=>x.id===l.part_id); return p ? partLabel(p) : l.part_id; };
+  el.innerHTML=`
+    <div class="back-row"><button class="btn back-btn" id="btn-back">← SLOTS / LIBRARIES</button></div>
+    ${viewer && !viewer.isTemplate ? '<div class="note">Body layers preview on CREATE base bodies; this body saves them but cannot show them yet.</div>' : ''}
+    <div class="sect">LAYERS — top is drawn last</div><div id="dl-list"></div>
+    <div class="btn-row"><button class="btn btn-sm" id="dl-add-tat">+ TATTOO</button><button class="btn btn-sm" id="dl-add-scar">+ SCAR</button></div>
+    <div id="dl-edit"></div>`;
+  el.querySelector('#btn-back').onclick=()=>{ ui.partsCat=null; renderAll(); };
+  const goLib = key => { const c = PARTS_TREE.find(x=>x.key===key);
+    ui.partsCat = { ...c, list: key==='tattoos' ? PARTS.filter(p=>p.decal_kind==='tattoo') : PARTS.filter(p=>p.suite_slot==='scar') };
+    ui.selPart=null; ui.page=0; ui.query=''; renderAll(); };
+  el.querySelector('#dl-add-tat').onclick=()=>goLib('tattoos');
+  el.querySelector('#dl-add-scar').onclick=()=>goLib('scars');
+  const list = el.querySelector('#dl-list');
+  if(!a.decals.length) list.innerHTML='<div class="note">No layers yet — pick a tattoo or scar and tap ADD AS LAYER.</div>';
+  [...a.decals].reverse().forEach(l=>{
+    const row=document.createElement('div'); row.className='subcat'+(sel&&sel.id===l.id?' equipped':''); row.id='dl-'+l.id;
+    row.innerHTML=`<span class="sc-ico">${l.kind==='scar'?'🩹':'🐉'}</span><span>${esc(nameOf(l))}<br><small style="color:var(--dim)">${esc(DL.REGION_BY_KEY[l.region].label)}</small></span>
+      <span class="sc-count"><button class="btn btn-sm" data-a="up" aria-label="Move up">▲</button><button class="btn btn-sm" data-a="down" aria-label="Move down">▼</button><button class="btn btn-sm btn-red" data-a="del" aria-label="Remove">✕</button></span>`;
+    row.onclick=(e)=>{ const act = e.target && e.target.dataset && e.target.dataset.a;
+      if(act==='up') DL.moveLayer(a.decals, l.id, +1);
+      else if(act==='down') DL.moveLayer(a.decals, l.id, -1);
+      else if(act==='del'){ DL.removeLayer(a.decals, l.id); if(ui.selLayer===l.id) ui.selLayer=null; }
+      else ui.selLayer = l.id;
+      renderAll(); };
+    list.appendChild(row);
+  });
+  if(sel) renderLayerEditor(el.querySelector('#dl-edit'), sel);
+}
+const LAYER_AXES = [
+  ['u','Position — around', 0, 1, 0.005], ['v','Position — along', 0, 1, 0.005],
+  ['scaleX','Scale X', 0.1, 4, 0.01], ['scaleY','Scale Y', 0.1, 4, 0.01],
+  ['rotation','Rotation', -180, 180, 1], ['opacity','Opacity', 0, 1, 0.01] ];
+function renderLayerEditor(el, l){
+  el.innerHTML=`<div class="sect">REGION</div><div id="dl-regions">${DL.BODY_REGIONS.map(r=>
+      `<button class="chip${r.key===l.region?' on':''}" data-r="${r.key}">${esc(r.label)}</button>`).join('')}</div>
+    <div class="sect">PLACE</div><div id="dl-axes"></div>
+    <div class="kv"><span>Colour</span><input type="color" id="dl-color" value="${esc(l.color)}" aria-label="Layer colour"></div>
+    <div class="btn-row"><button class="chip${l.mirror?' on':''}" id="dl-flip">FLIP</button>
+      <button class="btn btn-sm" id="dl-mirror">COPY TO OTHER SIDE</button>
+      <button class="btn btn-sm" id="dl-reset">RESET PLACE</button></div>`;
+  el.querySelectorAll('#dl-regions .chip').forEach(b=>b.onclick=()=>{
+    const d = DL.defaultPlacement(DECAL_TABLE, decalTemplateId(), b.dataset.r);
+    Object.assign(l, { region:b.dataset.r, u:d.u, v:d.v }); ui.lastRegion=b.dataset.r; renderAll(); });
+  const host = el.querySelector('#dl-axes');
+  LAYER_AXES.forEach(([k,label,min,max,step])=>{
+    const row=document.createElement('div'); row.className='ctl'; row.id='dlc-'+k;
+    row.innerHTML=`<label>${label}<span class="val">${(+l[k]).toFixed(k==='rotation'?0:2)}</span></label>
+      <input type="range" id="dl-${k}" min="${min}" max="${max}" step="${step}" value="${l[k]}" aria-label="${label}">`;
+    const inp=row.querySelector('input'), val=row.querySelector('.val');
+    inp.oninput=()=>{ l[k]=+inp.value; Object.assign(l, DL.normalizeLayer(l)); val.textContent=(+l[k]).toFixed(k==='rotation'?0:2); syncDecals3D(); persistQuiet(); };
+    host.appendChild(row);
+  });
+  el.querySelector('#dl-color').oninput=(e)=>{ l.color=e.target.value; Object.assign(l, DL.normalizeLayer(l)); syncDecals3D(); persistQuiet(); };
+  el.querySelector('#dl-flip').onclick=()=>{ l.mirror=!l.mirror; renderAll(); };
+  el.querySelector('#dl-mirror').onclick=()=>{ const m = DL.mirrorLayer(l); m.id = l.id+'m'+Date.now().toString(36);
+    if(DL.addLayer(attire().decals, m)){ ui.selLayer=m.id; renderAll(); toast('Copied to the other side ✓'); } };
+  el.querySelector('#dl-reset').onclick=()=>{ const d = DL.defaultPlacement(DECAL_TABLE, decalTemplateId(), l.region);
+    Object.assign(l, { u:d.u, v:d.v, scaleX:1, scaleY:1, rotation:0 }); renderAll(); };
 }
 
 /* ---- part names on screen (names law, 2026-11-01) ----
@@ -873,7 +983,7 @@ const LIB_NAMES = { wmxix:'Classic', 'no-mercy':'Retro', defjam:'Street', doa4:'
 const SLOT_NAMES = { hair:'Hair', mask:'Mask', face:'Face', eye:'Eyes', eyebrows:'Brows', eye_lenses:'Lenses', top:'Top',
   outfit:'Outfit', upper_body:'Upper Body', lower_body:'Lower Body', pants:'Pants', tights:'Tights', gloves:'Gloves',
   gauntlets:'Gauntlets', shoes:'Boots', fullbody:'Full Body', attire:'Attire', accessory:'Accessory', gear:'Gear',
-  scarf:'Scarf', decal_logo:'Logo', cowl:'Cowl' };
+  scarf:'Scarf', decal_logo:'Logo', cowl:'Cowl', scar:'Scar' };
 let _partNo = null;
 function partCollection(p){ return OWN_LIBS.test((p && p.library) || '') ? 'Western Heart' : (LIB_NAMES[p && p.library] || 'Collection'); }
 function partLabel(p){
@@ -881,7 +991,7 @@ function partLabel(p){
   if(OWN_LIBS.test(p.library || '')) return p.name;
   if(!_partNo){ _partNo = new Map(); const cnt = {};
     for(const x of PARTS){ const k = (x.library||'') + '|' + (x.suite_slot||''); cnt[k] = (cnt[k]||0) + 1; _partNo.set(x.id, cnt[k]); } }
-  const slot = SLOT_NAMES[p.suite_slot] || String(p.suite_slot || 'Part').replace(/_/g, ' ');
+  const slot = (p.decal_kind==='tattoo' ? 'Tattoo' : null) || SLOT_NAMES[p.suite_slot] || String(p.suite_slot || 'Part').replace(/_/g, ' ');
   return `${partCollection(p)} ${slot} ${_partNo.get(p.id) || ''}`.trim();
 }
 
@@ -945,6 +1055,20 @@ function renderPartDetail(el, p, slotKey){
     ${p.geometry_pending?'<div class="note">This part is coming soon: equipping it saves it on the attire and marks where it goes.</div>':''}
     <div class="btn-row" id="p-actions"></div>`;
   const box=el.querySelector('#p-actions');
+  if(p.placement && p.placement.kind==='body_region_decal'){
+    // TATTOOS + SCARS: a design becomes a layer on a body region (WWE 2K layer system), not a slot swap
+    const n = (attire().decals||[]).filter(l=>l.part_id===p.id).length;
+    if(p.reference_only || p.geometry_pending){
+      box.innerHTML='<div class="note">Reference only — the texture is not in the game yet.</div>'; return;
+    }
+    const b=document.createElement('button'); b.className='btn btn-green'; b.id='btn-add-layer';
+    b.textContent = n ? `ADD ANOTHER LAYER (${n} on)` : 'ADD AS LAYER';
+    b.onclick=()=>{ const l = addDecalLayer(p); if(!l) return;
+      ui.partsCat = { ...PARTS_TREE.find(c=>c.key==='layers'), layers:true }; ui.selPart=null;
+      renderAll(); toast('Layer added ✓ — place it on the body'); };
+    box.appendChild(b);
+    return;
+  }
   if(p.part_class==='mesh_part' && !p.glb){
     // geometry-pending registry part: record + socket marker, no fake mesh
     if(!eqd){
@@ -1624,7 +1748,8 @@ async function boot(){
       fetch('data/fighter-parts.json').then(r=>r.ok?r.json():null).catch(()=>null),
       fetchRepoJson('customization/templates/body-templates.json'),
       loadMorphCatalog().catch(e=>{ console.warn('[WH] morph-sliders.json failed', e); return null; }),
-    ]).then(([parts, jig, roster, fparts, tpls, mcat])=>{ TEMPLATES = (tpls && tpls.templates) || [];
+      fetchRepoJson('customization/templates/decal-placements.json'),
+    ]).then(([parts, jig, roster, fparts, tpls, mcat, dtab])=>{ TEMPLATES = (tpls && tpls.templates) || []; DECAL_TABLE = dtab;
       MORPH_CAT = mcat; MORPH_SLIDERS = flattenCatalog(mcat); return [parts, jig, roster, fparts]; });
     PARTS = Array.isArray(parts) ? parts : (parts.parts||[]);
     PARTS_META = Array.isArray(parts) ? null : parts;
@@ -1639,6 +1764,8 @@ async function boot(){
   if(!Array.isArray(F.records)) F.records = F.records||{};
   if(F.mode==='roster' && (!F.rosterRef || !rosterAttire(F.rosterRef.fighter, F.rosterRef.attire))){ F.mode='blank'; F.rosterRef=null; F.baseGlb=BLANK_GLB; }
   migrateLegacy();
+  (F.attires||[]).forEach(a=>{ if(!a) return; a.decals = DL.normalizeLayers(a.decals);
+    a.decals.forEach(l=>{ if(!l.asset){ const p=PARTS.find(x=>x.id===l.part_id); if(p && p.asset) l.asset=p.asset; } }); });
   viewer=new SuiteViewer($('#stage3d'));
   // frame the fighter in the area the top bar, rails, side panel / bottom sheet and bottom bar leave free
   viewer.setInsets(()=>{
