@@ -13,10 +13,12 @@
   "ashlane": 5,
   "teardown/wwf-no-mercy/textures/rom/tattoo": 99,
   "customization/parts-converted/wmxix-textures/TEX/Face_op": 140,
-  "customization/parts-converted/wmxix-textures/TEX/64gara": 39
+  "customization/parts-converted/wmxix-textures/TEX/64gara": 39,
+  "customization/decal-library/scars": 11,
+  "teardown/tekken7/facepaint-reference.json": 1
  },
- "total": 7702,
- "notes": "parts-converted/CATALOG.json is a REAL source since PR #398 merged (run #3 absence finding was true at check time; the merge landed after). Eyes: mesh eye/brow parts are placeable (eye_kind=placeable_part); eye texture entries are legacy variants (eye_kind=texture_variant) per the owner 2026-10-20 eye verdict. No eyelash mesh exists in-repo yet. Def Jam CAW library wired 2026-10-22 (worker 33, fight-lab lane): 2,624 conversion entries, all geometry_pending (POINTS topology until the mesh conversion pass lands). Worker 38 (2026-10-22): +272 DOA4 costume GLBs (full-body, real meshes). AshLane hair wired 2026-11-02: +5 real GLBs from the owner's AshLane parts library (INDEX geometryReady), listed in the suite catalog with head socket, offset 0, scale 1 (per customization/parts/ashlane/hair/manifest.json). No Mercy tattoos wired 2026-11-02: 99 tattoo PNGs from teardown/wwf-no-mercy/textures/rom/tattoo/ as decal_logo texture parts (geometry_pending false, chest-socket marker fallback in the suite preview until a placement is authored; they surface under Decals, since PARTS_TREE has no dedicated tattoo category yet).",
+ "total": 7714,
+ "notes": "parts-converted/CATALOG.json is a REAL source since PR #398 merged (run #3 absence finding was true at check time; the merge landed after). Eyes: mesh eye/brow parts are placeable (eye_kind=placeable_part); eye texture entries are legacy variants (eye_kind=texture_variant) per the owner 2026-10-20 eye verdict. No eyelash mesh exists in-repo yet. Def Jam CAW library wired 2026-10-22 (worker 33, fight-lab lane): 2,624 conversion entries, all geometry_pending (POINTS topology until the mesh conversion pass lands). Worker 38 (2026-10-22): +272 DOA4 costume GLBs (full-body, real meshes). AshLane hair wired 2026-11-02: +5 real GLBs from the owner's AshLane parts library (INDEX geometryReady), listed in the suite catalog with head socket, offset 0, scale 1 (per customization/parts/ashlane/hair/manifest.json). No Mercy tattoos wired 2026-11-02: 99 tattoo PNGs from teardown/wwf-no-mercy/textures/rom/tattoo/ as decal_logo texture parts (geometry_pending false, chest-socket marker fallback in the suite preview until a placement is authored; they surface under Decals, since PARTS_TREE has no dedicated tattoo category yet). Tattoos + scars as body-region decal LAYERS wired 2026-11-02 (creation suite TATTOOS + SCARS phase): the 99 tattoos carry a body_region_decal placement (default region chest, 12 regions selectable, per-template defaults in customization/templates/decal-placements.json), +11 Western Heart CC0 scars (suite_slot scar, customization/decal-library/scars/), +1 reference-only scar row for the one scar-named Tekken 7 face-paint item (texture not in repo, geometry_pending).",
  "parts": [
   {
    "id": "no-mercy-0x12ba-attire-parts-model-12ba-obj",
@@ -230455,13 +230457,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b1c",
@@ -230488,13 +230498,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b20",
@@ -230521,13 +230539,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b24",
@@ -230554,13 +230580,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b28",
@@ -230587,13 +230621,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b2c",
@@ -230620,13 +230662,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b30",
@@ -230653,13 +230703,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b34",
@@ -230686,13 +230744,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b38",
@@ -230719,13 +230785,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b3c",
@@ -230752,13 +230826,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b40",
@@ -230785,13 +230867,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b44",
@@ -230818,13 +230908,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b48",
@@ -230851,13 +230949,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b4c",
@@ -230884,13 +230990,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b50",
@@ -230917,13 +231031,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b54",
@@ -230950,13 +231072,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b58",
@@ -230983,13 +231113,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b5c",
@@ -231016,13 +231154,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b60",
@@ -231049,13 +231195,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b64",
@@ -231082,13 +231236,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b68",
@@ -231115,13 +231277,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b6c",
@@ -231148,13 +231318,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b70",
@@ -231181,13 +231359,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b74",
@@ -231214,13 +231400,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b78",
@@ -231247,13 +231441,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b7c",
@@ -231280,13 +231482,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b80",
@@ -231313,13 +231523,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b84",
@@ -231346,13 +231564,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b88",
@@ -231379,13 +231605,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b8c",
@@ -231412,13 +231646,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b90",
@@ -231445,13 +231687,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b94",
@@ -231478,13 +231728,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b98",
@@ -231511,13 +231769,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2b9c",
@@ -231544,13 +231810,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2ba0",
@@ -231577,13 +231851,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2ba4",
@@ -231610,13 +231892,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2ba8",
@@ -231643,13 +231933,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2bac",
@@ -231676,13 +231974,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2bb0",
@@ -231709,13 +232015,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2bb4",
@@ -231742,13 +232056,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2bb8",
@@ -231775,13 +232097,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2bbc",
@@ -231808,13 +232138,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2bc0",
@@ -231841,13 +232179,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2bc4",
@@ -231874,13 +232220,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2bc8",
@@ -231907,13 +232261,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2bcc",
@@ -231940,13 +232302,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2bd0",
@@ -231973,13 +232343,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2bd4",
@@ -232006,13 +232384,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2bd8",
@@ -232039,13 +232425,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2bdc",
@@ -232072,13 +232466,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2be0",
@@ -232105,13 +232507,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2be4",
@@ -232138,13 +232548,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2be8",
@@ -232171,13 +232589,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2bec",
@@ -232204,13 +232630,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2bf0",
@@ -232237,13 +232671,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2bf4",
@@ -232270,13 +232712,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2bf8",
@@ -232303,13 +232753,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2bfc",
@@ -232336,13 +232794,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c00",
@@ -232369,13 +232835,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c04",
@@ -232402,13 +232876,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c08",
@@ -232435,13 +232917,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c0c",
@@ -232468,13 +232958,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c10",
@@ -232501,13 +232999,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c14",
@@ -232534,13 +233040,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c18",
@@ -232567,13 +233081,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c1c",
@@ -232600,13 +233122,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c20",
@@ -232633,13 +233163,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c24",
@@ -232666,13 +233204,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c28",
@@ -232699,13 +233245,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c2c",
@@ -232732,13 +233286,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c30",
@@ -232765,13 +233327,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c34",
@@ -232798,13 +233368,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c38",
@@ -232831,13 +233409,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c3c",
@@ -232864,13 +233450,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c40",
@@ -232897,13 +233491,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c44",
@@ -232930,13 +233532,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c48",
@@ -232963,13 +233573,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c4c",
@@ -232996,13 +233614,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c50",
@@ -233029,13 +233655,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c54",
@@ -233062,13 +233696,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c58",
@@ -233095,13 +233737,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c5c",
@@ -233128,13 +233778,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c60",
@@ -233161,13 +233819,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c64",
@@ -233194,13 +233860,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c68",
@@ -233227,13 +233901,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c6c",
@@ -233260,13 +233942,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c70",
@@ -233293,13 +233983,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c74",
@@ -233326,13 +234024,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c78",
@@ -233359,13 +234065,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c7c",
@@ -233392,13 +234106,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c80",
@@ -233425,13 +234147,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c84",
@@ -233458,13 +234188,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c88",
@@ -233491,13 +234229,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c8c",
@@ -233524,13 +234270,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c90",
@@ -233557,13 +234311,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c94",
@@ -233590,13 +234352,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c98",
@@ -233623,13 +234393,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2c9c",
@@ -233656,13 +234434,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "nm-tattoo-2ca0",
@@ -233689,13 +234475,21 @@
    "modeled_in_place_for": null,
    "geometry_pending": false,
    "kind": "decal_logo",
-   "placement": null,
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest"
+   },
    "editable": [
+    "region",
     "position",
     "size",
     "rotation",
-    "opacity"
-   ]
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "decal_kind": "tattoo"
   },
   {
    "id": "wmxix-decal-faceop-ta0_000",
@@ -239603,6 +240397,539 @@
     "rotation",
     "opacity"
    ]
+  },
+  {
+   "id": "wh-scar-cheek-slash",
+   "name": "Cheek Slash",
+   "part_class": "texture_part",
+   "suite_slot": "scar",
+   "t7_slot": "8",
+   "library": "western-heart",
+   "source": "customization/decal-library/scars",
+   "glb": null,
+   "asset": "customization/decal-library/scars/cheek-slash.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "scar",
+   "decal_kind": "scar",
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "face",
+    "u": 0.1,
+    "v": 0.12
+   },
+   "editable": [
+    "region",
+    "position",
+    "size",
+    "rotation",
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-scar-brow-cut",
+   "name": "Brow Cut",
+   "part_class": "texture_part",
+   "suite_slot": "scar",
+   "t7_slot": "8",
+   "library": "western-heart",
+   "source": "customization/decal-library/scars",
+   "glb": null,
+   "asset": "customization/decal-library/scars/brow-cut.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "scar",
+   "decal_kind": "scar",
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "face",
+    "u": 0.06,
+    "v": 0.4
+   },
+   "editable": [
+    "region",
+    "position",
+    "size",
+    "rotation",
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-scar-lip-split",
+   "name": "Lip Split",
+   "part_class": "texture_part",
+   "suite_slot": "scar",
+   "t7_slot": "8",
+   "library": "western-heart",
+   "source": "customization/decal-library/scars",
+   "glb": null,
+   "asset": "customization/decal-library/scars/lip-split.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "scar",
+   "decal_kind": "scar",
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "face",
+    "u": 0.02,
+    "v": 0.0
+   },
+   "editable": [
+    "region",
+    "position",
+    "size",
+    "rotation",
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-scar-nose-bridge",
+   "name": "Nose Bridge",
+   "part_class": "texture_part",
+   "suite_slot": "scar",
+   "t7_slot": "8",
+   "library": "western-heart",
+   "source": "customization/decal-library/scars",
+   "glb": null,
+   "asset": "customization/decal-library/scars/nose-bridge.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "scar",
+   "decal_kind": "scar",
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "face",
+    "u": 0.0,
+    "v": 0.3
+   },
+   "editable": [
+    "region",
+    "position",
+    "size",
+    "rotation",
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-scar-eye-cross",
+   "name": "Eye Cross",
+   "part_class": "texture_part",
+   "suite_slot": "scar",
+   "t7_slot": "8",
+   "library": "western-heart",
+   "source": "customization/decal-library/scars",
+   "glb": null,
+   "asset": "customization/decal-library/scars/eye-cross.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "scar",
+   "decal_kind": "scar",
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "face",
+    "u": 0.07,
+    "v": 0.32
+   },
+   "editable": [
+    "region",
+    "position",
+    "size",
+    "rotation",
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-scar-chin-nick",
+   "name": "Chin Nick",
+   "part_class": "texture_part",
+   "suite_slot": "scar",
+   "t7_slot": "8",
+   "library": "western-heart",
+   "source": "customization/decal-library/scars",
+   "glb": null,
+   "asset": "customization/decal-library/scars/chin-nick.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "scar",
+   "decal_kind": "scar",
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "face",
+    "u": 0.02,
+    "v": 0.0
+   },
+   "editable": [
+    "region",
+    "position",
+    "size",
+    "rotation",
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-scar-chest-slash",
+   "name": "Chest Slash",
+   "part_class": "texture_part",
+   "suite_slot": "scar",
+   "t7_slot": "8",
+   "library": "western-heart",
+   "source": "customization/decal-library/scars",
+   "glb": null,
+   "asset": "customization/decal-library/scars/chest-slash.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "scar",
+   "decal_kind": "scar",
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "chest",
+    "u": 0.0,
+    "v": 0.55
+   },
+   "editable": [
+    "region",
+    "position",
+    "size",
+    "rotation",
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-scar-back-lashes",
+   "name": "Back Lashes",
+   "part_class": "texture_part",
+   "suite_slot": "scar",
+   "t7_slot": "8",
+   "library": "western-heart",
+   "source": "customization/decal-library/scars",
+   "glb": null,
+   "asset": "customization/decal-library/scars/back-lashes.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "scar",
+   "decal_kind": "scar",
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "back",
+    "u": 0.5,
+    "v": 0.55
+   },
+   "editable": [
+    "region",
+    "position",
+    "size",
+    "rotation",
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-scar-forearm-stitch",
+   "name": "Stitched Forearm",
+   "part_class": "texture_part",
+   "suite_slot": "scar",
+   "t7_slot": "8",
+   "library": "western-heart",
+   "source": "customization/decal-library/scars",
+   "glb": null,
+   "asset": "customization/decal-library/scars/forearm-stitch.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "scar",
+   "decal_kind": "scar",
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "forearm_R",
+    "u": 0.0,
+    "v": 0.5
+   },
+   "editable": [
+    "region",
+    "position",
+    "size",
+    "rotation",
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-scar-shoulder-claw",
+   "name": "Claw Marks",
+   "part_class": "texture_part",
+   "suite_slot": "scar",
+   "t7_slot": "8",
+   "library": "western-heart",
+   "source": "customization/decal-library/scars",
+   "glb": null,
+   "asset": "customization/decal-library/scars/shoulder-claw.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "scar",
+   "decal_kind": "scar",
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "upper_arm_L",
+    "u": 0.0,
+    "v": 0.3
+   },
+   "editable": [
+    "region",
+    "position",
+    "size",
+    "rotation",
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-scar-burn-patch",
+   "name": "Burn Patch",
+   "part_class": "texture_part",
+   "suite_slot": "scar",
+   "t7_slot": "8",
+   "library": "western-heart",
+   "source": "customization/decal-library/scars",
+   "glb": null,
+   "asset": "customization/decal-library/scars/burn-patch.png",
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "scar",
+   "decal_kind": "scar",
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "upper_arm_R",
+    "u": 0.0,
+    "v": 0.5
+   },
+   "editable": [
+    "region",
+    "position",
+    "size",
+    "rotation",
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-scar-ref-t7-90016",
+   "name": "Brow Scar (reference)",
+   "part_class": "texture_part",
+   "suite_slot": "scar",
+   "t7_slot": "8",
+   "library": "western-heart",
+   "source": "teardown/tekken7/facepaint-reference.json",
+   "glb": null,
+   "asset": null,
+   "socket": null,
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": true,
+   "reference_only": true,
+   "kind": "scar",
+   "decal_kind": "scar",
+   "placement": {
+    "kind": "body_region_decal",
+    "region": "face",
+    "u": 0.08,
+    "v": 0.35
+   },
+   "editable": [
+    "region",
+    "position",
+    "size",
+    "rotation",
+    "opacity",
+    "color",
+    "mirror",
+    "layer_order"
+   ],
+   "reference": {
+    "item_no": 90016,
+    "slot_code": 8,
+    "note": "only scar-named Tekken 7 face-paint item; CharacterItemTex file not in western-heart -> reference only, no texture claimed"
+   }
   }
  ]
 }
