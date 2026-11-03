@@ -6,10 +6,12 @@
 //  - the suite save -> game roster path carries the chosen parts + tints
 //  - NUMERIC PROBE on the real GLBs through the game's own three.js +
 //    meshopt + assets.js instance path (MB-Lab -> T3 bone remap):
-//    each part loads, is parented to the Head bone, sits on the head
-//    within tolerance (hair around the skull, brows above the eyes,
-//    lashes on the eyes, beards on the jaw), follows a head rotation
-//    exactly, and its face morphs move with the body's.
+//    each part loads, is skinned to the body skeleton (Blender-transferred
+//    weights; group under the Head bone), sits on the head within
+//    tolerance (hair around the skull, brows above the eyes, lashes on the
+//    eyes, beards on the jaw), head-weighted vertices follow a head
+//    rotation exactly while long-hair tips stay with the neck/upper spine,
+//    and its face morphs move with the body's.
 // Node limit (same as custom-template-fight.test.mjs): textures are not
 // decoded in Node, so materials/texture look are NOT proven here.
 
@@ -81,7 +83,7 @@ test('manifest, game list, catalog and files agree; files small; licence CC0', (
     assert.ok(p, 'catalog has ' + e.id);
     assert.equal(p.geometry_pending, false, e.id);
     assert.equal(p.part_class, 'mesh_part');
-    assert.ok(p.fitted && p.fitted.space === 'head-bone-local', e.id);
+    assert.ok(p.fitted && p.fitted.space === 'model-bind' && p.fitted.skinned === true, e.id);
     assert.ok(!SOURCE_NAMES.test(p.name), 'generic player-facing name: ' + p.name);
     assert.ok(['Hairstyle', 'Facial Hair', 'Eyebrows', 'Eyelashes'].includes(p.wwe_category), e.id);
   }
@@ -135,10 +137,21 @@ function partPoints(group) {
       if (o.morphTargetInfluences && o.geometry.morphAttributes.position) {
         o.morphTargetInfluences.forEach((w, k) => { if (w) p.addScaledVector(v().fromBufferAttribute(o.geometry.morphAttributes.position[k], i), w); });
       }
+      if (o.isSkinnedMesh) o.applyBoneTransform(i, p);
       pts.push(p.applyMatrix4(o.matrixWorld));
     }
   });
   return pts;
+}
+/* vertex indices of a skinned part whose weight on `bone` is >= minW */
+function weightedTo(group, bone, minW) {
+  const out = [];
+  group.traverse((o) => {
+    if (!o.isSkinnedMesh) return;
+    const k = o.skeleton.bones.indexOf(bone); const si = o.geometry.attributes.skinIndex, sw = o.geometry.attributes.skinWeight;
+    for (let i = 0; i < si.count; i++) for (let c = 0; c < 4; c++) if (si.getComponent(i, c) === k && sw.getComponent(i, c) >= minW) { out.push(i); break; }
+  });
+  return out;
 }
 const mean = (pts) => pts.reduce((s, p) => s.add(p), v()).multiplyScalar(1 / pts.length);
 
@@ -171,6 +184,7 @@ for (const tid of PROBE_TEMPLATES) {
     for (const g of groups) {
       const { partId, slot } = g.userData.whFitted;
       assert.equal(g.parent, head, partId + ' parented to Head');
+      assert.ok(g.userData.whFitted.skinned, partId + ' skinned to the body skeleton (Blender weights)');
       const pts = partPoints(g);
       const c = mean(pts);
       const d = { dx: c.x - eyeMid.x, dy: c.y - eyeMid.y, dz: c.z - eyeMid.z };
@@ -190,16 +204,28 @@ for (const tid of PROBE_TEMPLATES) {
         assert.ok(d.dy < -0.04 && d.dy > -0.15, `${partId}: below the eyes on the jaw (${d.dy.toFixed(3)})`);
       }
     }
-    // follows the head bone exactly: rotate Head 30 deg, every part vertex moves rigidly with it
+    // skinned to the body: rotate Head 30 deg — brows (100 % head weight) and the head-weighted hair vertices move
+    // rigidly with it; long hair's lower strands (neck / upper-spine weights) do NOT swing with the skull.
+    const browG = groups.find((g) => g.userData.whFitted.slot === 'eyebrows');
     const g0 = groups[0];
-    const before = partPoints(g0).slice(0, 50);
+    const hv = weightedTo(g0, head, 0.999).slice(0, 200);
+    assert.ok(hv.length > 20, 'short hair has head-weighted vertices');
+    const longG = groups.find((g) => g.userData.whFitted.partId === 'mh-hair-long01');
+    const longPts0 = partPoints(longG);
+    const yMin = Math.min(...longPts0.map((p) => p.y)), yMax = Math.max(...longPts0.map((p) => p.y));
+    const tips = longPts0.map((p, i) => [p, i]).filter(([p]) => p.y < yMin + 0.12 * (yMax - yMin)).map(([, i]) => i);
+    const before = [...partPoints(browG), ...hv.map((i) => partPoints(g0)[i])];
     const hw0 = head.matrixWorld.clone();
     head.rotateX(Math.PI / 6); model.updateMatrixWorld(true);
-    const after = partPoints(g0).slice(0, 50);
+    const after = [...partPoints(browG), ...hv.map((i) => partPoints(g0)[i])];
     const xf = head.matrixWorld.clone().multiply(hw0.clone().invert());
     const err = Math.max(...before.map((p, i) => p.clone().applyMatrix4(xf).distanceTo(after[i])));
-    assert.ok(err < 1e-4, 'rigid head follow error ' + err);
+    assert.ok(err < 1e-4, 'head-weighted vertices follow the head rigidly, error ' + err);
+    const longPts1 = partPoints(longG);
+    const tipMove = mean(tips.map((i) => longPts1[i].clone().sub(longPts0[i]))).length();
+    const tipRigid = mean(tips.map((i) => longPts0[i].clone().applyMatrix4(xf).sub(longPts0[i]))).length();
     head.rotateX(-Math.PI / 6); model.updateMatrixWorld(true);
+    assert.ok(tipMove < 0.5 * tipRigid, `long-hair tips follow neck/upper spine, not the skull (moved ${tipMove.toFixed(3)} m vs rigid ${tipRigid.toFixed(3)} m)`);
     // face morphs drive the parts: brow height raises brows
     const brow = groups.find((g) => g.userData.whFitted.slot === 'eyebrows');
     const y0 = mean(partPoints(brow)).y;
@@ -208,7 +234,7 @@ for (const tid of PROBE_TEMPLATES) {
     applyMorphTargets(model, {});
     assert.ok(live > 1, 'slider reached body and parts');
     assert.ok(Math.abs(y1 - y0) > 0.0005, `brow morph moves the fitted brows (${(y1 - y0).toFixed(4)} m)`);
-    console.log(`[probe] ${tid}: ${groups.length} parts on Head; brow f_brow_h+ dy=${(y1 - y0).toFixed(4)} m; head-follow err=${err.toExponential(1)}; offsets from eye midpoint (m):`, JSON.stringify(report));
+    console.log(`[probe] ${tid}: ${groups.length} parts skinned; brow f_brow_h+ dy=${(y1 - y0).toFixed(4)} m; head-follow err=${err.toExponential(1)}; long-hair tips ${tipMove.toFixed(3)} m vs rigid ${tipRigid.toFixed(3)} m; offsets from eye midpoint (m):`, JSON.stringify(report));
   });
 }
 

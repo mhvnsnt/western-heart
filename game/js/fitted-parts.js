@@ -4,10 +4,15 @@
    MakeHuman base mesh, fitted offline onto each of the 9 creation-suite template bodies
    (tools/mpfb2/hair/fit_proxies.py + build_glb.mjs). Each fit is one GLB per template:
      customization/parts/hair/mpfb2/<part-id>/<template-id>.glb   (+ a shared texture.png beside it)
-   Geometry is authored in HEAD-BONE-LOCAL space (inverse head-joint bind matrix), so the part is parented to the
-   head bone with an identity transform: it follows every head animation exactly (rigid head weight), and its morph
-   targets carry the template's own face/head slider names, so face morphs move brows / lashes / beards / hairline
-   when the same slider values are applied to the model.
+   Since the Blender stage (tools/mpfb2/hair/blender_fit.py, 2026-11-02) each GLB is authored in the template's
+   MODEL BIND space and carries per-vertex skin weights (JOINTS_0 / WEIGHTS_0, joint indices = the template's glTF
+   skin joint order) transferred from the template skin in Blender: brows / lashes 100 % head, beards head + neck,
+   hair head / neck / upper spine / clavicles, so long hair follows the neck and shoulders instead of swinging
+   rigidly with the skull. attachFittedScene turns each weighted mesh into a SkinnedMesh bound to the BODY's own
+   skeleton (same joint order), and still parents the group under the head bone for bookkeeping (attached bind
+   mode cancels the parent transform). Morph targets carry the template's own slider names (transferred in Blender
+   with Surface Deform), so face sliders move brows / lashes / beards / hairline with the body. Older head-local
+   GLBs (no weights) still attach rigidly to the head bone.
 
    Used by both the suite preview (customization/creation-suite-ui/js/viewer3d.js) and the fight/select model
    (game/js/fighter.js, created fighters on custom-template-<id>). Pure helpers first (node-testable), then the
@@ -80,12 +85,52 @@ export function findHeadBone(root) {
   return hit;
 }
 
-/** Parent a loaded fitted part (gltf.scene) to the head bone with an identity transform; tint + flag it.
-    Returns the attached group. */
+/** The body SkinnedMesh whose skeleton holds `bone` (the template's skin primitive group shares one skeleton). */
+export function findBodySkin(bone) {
+  let root = bone; while (root && root.parent) root = root.parent;
+  let hit = null;
+  if (root) root.traverse((o) => { if (!hit && o.isSkinnedMesh && o.skeleton && o.skeleton.bones.includes(bone) && !insideFitted(o)) hit = o; });
+  return hit;
+}
+
+/** Re-bind every skinned fitted mesh to the BODY's live skeleton. The part GLB carries its own small glTF skin (flat
+    joints at the template's bind matrices) plus extras wh_joint_index (each joint's index in the template skin) and
+    wh_joint_ibm (the template's original inverse bind matrices). Bone i of the part becomes body bone wh_joint_index[i];
+    its inverse is bodyInverse * inverse(templateIBM) * partIBM, so the bind pose matches the body even when the instance
+    path re-derived the body's inverses (bone remap / frame conversion), and gltfpack's dequantisation (part IBM or
+    node matrix) is kept. Returns how many meshes were re-bound. */
+export function skinToBody(partScene, bodySkin) {
+  if (!bodySkin || !bodySkin.skeleton) return 0;
+  const todo = [];
+  partScene.traverse((o) => { if (o.isSkinnedMesh && o.skeleton) todo.push(o); });
+  let n = 0;
+  for (const sm of todo) {
+    let ud = null;
+    for (let a = sm; a && !ud; a = a.parent) if (a.userData && Array.isArray(a.userData.wh_joint_index)) ud = a.userData;
+    if (!ud) continue;
+    const bodyBones = bodySkin.skeleton.bones, bodyInv = bodySkin.skeleton.boneInverses;
+    const bones = ud.wh_joint_index.map((i) => bodyBones[i]);
+    if (bones.some((b) => !b)) continue;
+    const M4 = bodyInv[0].constructor;
+    const inv = ud.wh_joint_index.map((i, k) => bodyInv[i].clone()
+      .multiply(new M4().fromArray(ud.wh_joint_ibm, k * 16).invert())
+      .multiply(sm.skeleton.boneInverses[k]));
+    const own = sm.skeleton.bones;
+    sm.bind(new bodySkin.skeleton.constructor(bones, inv), sm.bindMatrix);
+    for (const b of own) if (b.parent && !b.children.some((c) => c.isMesh)) b.parent.remove(b);  // drop the GLB's joint stubs
+    sm.userData.whSkinned = true;
+    n++;
+  }
+  return n;
+}
+
+/** Attach a loaded fitted part (gltf.scene) under the head bone; weighted meshes are skinned to the body skeleton,
+    unweighted (legacy head-local) meshes ride the head bone rigidly. Tint + flag it. Returns the attached group. */
 export function attachFittedScene(headBone, partScene, { partId, slot, tint } = {}) {
   partScene.name = 'fitted:' + partId;
   partScene.position.set(0, 0, 0); partScene.quaternion.set(0, 0, 0, 1); partScene.scale.set(1, 1, 1);
   partScene.userData.whFitted = { partId, slot };
+  partScene.userData.whFitted.skinned = skinToBody(partScene, findBodySkin(headBone)) > 0;
   partScene.traverse((o) => {
     if (!o.isMesh) return;
     o.frustumCulled = false; // follows a skinned head; its own bbox lags the animated bone

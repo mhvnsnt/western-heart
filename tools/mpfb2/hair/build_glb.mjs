@@ -1,6 +1,7 @@
 // build_glb.mjs — fit/<asset>/<template>.json (fit_proxies.py) -> GLB per template + one shared texture per asset.
 // Usage: node build_glb.mjs <outRoot> [assetId ...]
-// Each GLB: one mesh "<asset>" in HEAD-BONE-LOCAL space (parent it to the head bone, identity transform),
+// Each GLB: one mesh "<asset>" in the template's MODEL BIND space (metres) with JOINTS_0/WEIGHTS_0 from the Blender
+// stage (blender_fit.py) — the runtime turns it into a SkinnedMesh bound to the body's skeleton —
 // morph targets named exactly like the template's face/head sliders, material tintable (greyscale texture x
 // baseColorFactor). Compressed with gltfpack -cc; -tr keeps the texture as a shared sibling file (texture.png).
 import { Document, NodeIO } from '@gltf-transform/core';
@@ -71,18 +72,41 @@ function computeNormals(pos, idx) {
   return n;
 }
 
-const io = new NodeIO().registerExtensions(ALL_EXTENSIONS);
+import { MeshoptDecoder } from 'meshoptimizer';
+// 4x4 inverse (column-major, glTF layout), Gauss-Jordan
+const mat4 = { invert(out, m) {
+  const a = [0, 1, 2, 3].map((r) => [0, 1, 2, 3].map((c) => m[c * 4 + r]).concat([0, 1, 2, 3].map((k) => (k === r ? 1 : 0))));
+  for (let c = 0; c < 4; c++) {
+    let p = c; for (let r = c + 1; r < 4; r++) if (Math.abs(a[r][c]) > Math.abs(a[p][c])) p = r;
+    [a[c], a[p]] = [a[p], a[c]]; const d = a[c][c]; for (let k = 0; k < 8; k++) a[c][k] /= d;
+    for (let r = 0; r < 4; r++) if (r !== c) { const f = a[r][c]; for (let k = 0; k < 8; k++) a[r][k] -= f * a[c][k]; }
+  }
+  for (let r = 0; r < 4; r++) for (let c = 0; c < 4; c++) out[c * 4 + r] = a[r][4 + c];
+  return out;
+} };
+await MeshoptDecoder.ready;
+const io = new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({ 'meshopt.decoder': MeshoptDecoder });
+const TPL_DIR = process.env.WH_TEMPLATE_DIR || path.join(HERE, '..', '..', '..', 'customization', 'templates', 'meshes');
+const _tj = {};
+async function templateJoints(tpl) {  // template skin: joint names, bind world matrices, inverse bind matrices
+  if (_tj[tpl]) return _tj[tpl];
+  const d = await io.read(path.join(TPL_DIR, tpl + '.glb'));
+  const sk = d.getRoot().listSkins()[0]; const acc = sk.getInverseBindMatrices();
+  const js = sk.listJoints();
+  return (_tj[tpl] = { names: js.map((j) => j.getName()), world: js.map((j) => j.getWorldMatrix()),
+    ibm: js.map((j, i) => acc.getElement(i, [])) });
+}
 const gltfpack = path.join(HERE, 'node_modules', '.bin', 'gltfpack');
 const sizes = {};
 for (const a of assets) {
   if (only.length && !only.includes(a.id)) continue;
-  const fitDir = path.join(HERE, 'fit', a.id);
+  const fitDir = path.join(HERE, 'fitbl', a.id);
   if (!fs.existsSync(fitDir)) { console.warn('no fit for', a.id); continue; }
   const outDir = path.join(outRoot, a.id); fs.mkdirSync(outDir, { recursive: true });
   const texPath = path.join(outDir, 'texture.png');
   await makeTexture(a, texPath);
   sizes[a.id] = { texture: fs.statSync(texPath).size, glb: {} };
-  for (const f of fs.readdirSync(fitDir)) {
+  for (const f of fs.readdirSync(fitDir).filter((f) => f.endsWith('.json'))) {
     const tpl = f.replace(/\.json$/, '');
     const J = JSON.parse(fs.readFileSync(path.join(fitDir, f), 'utf8'));
     const doc = new Document(); const buffer = doc.createBuffer();
@@ -94,6 +118,13 @@ for (const a of assets) {
       .setAttribute('NORMAL', doc.createAccessor().setType('VEC3').setArray(computeNormals(pos, idx)).setBuffer(buffer))
       .setAttribute('TEXCOORD_0', doc.createAccessor().setType('VEC2').setArray(uv).setBuffer(buffer))
       .setIndices(doc.createAccessor().setType('SCALAR').setArray(idx).setBuffer(buffer));
+    // skin weights from the Blender stage (Data Transfer from the template skin). JOINTS_0 indexes the TEMPLATE's
+    // glTF skin joint order (extras.wh_joint_names); the runtime binds the mesh to the body's own skeleton.
+    const T = await templateJoints(tpl);
+    const used = [...new Set(J.joints.filter((j, i) => J.weights[i] > 0))].sort((x, y) => x - y);
+    const local = new Uint8Array(J.joints.map((j, i) => (J.weights[i] > 0 ? used.indexOf(j) : 0)));
+    prim.setAttribute('JOINTS_0', doc.createAccessor().setType('VEC4').setArray(local).setBuffer(buffer));
+    prim.setAttribute('WEIGHTS_0', doc.createAccessor().setType('VEC4').setArray(new Float32Array(J.weights)).setBuffer(buffer));
     const names = Object.keys(J.targets);
     for (const nm of names) {
       prim.addTarget(doc.createPrimitiveTarget(nm).setAttribute('POSITION',
@@ -107,12 +138,25 @@ for (const a of assets) {
     prim.setMaterial(mat);
     const mesh = doc.createMesh(a.id).addPrimitive(prim).setWeights(names.map(() => 0)).setExtras({ targetNames: names });
     const node = doc.createNode(a.id).setMesh(mesh)
-      .setExtras({ wh_part: a.id, wh_kind: a.kind, wh_template: tpl, wh_space: 'head-bone-local', license: 'CC0-1.0' });
-    doc.createScene('scene').addChild(node);
+      .setExtras({ wh_part: a.id, wh_kind: a.kind, wh_template: tpl, wh_space: 'model-bind', wh_skinned: true, license: 'CC0-1.0' });
+    // a real glTF skin (gltfpack keeps JOINTS/WEIGHTS only on skinned meshes): flat joint nodes at the template's
+    // bind world matrices + the template's inverse bind matrices. extras.wh_joint_index = the joints' indices in the
+    // template skin; extras.wh_joint_ibm = the template IBMs, so the runtime can bind to the body's live skeleton.
+    const scene = doc.createScene('scene');
+    const jnodes = used.map((ti) => { const n = doc.createNode('wh_j_' + T.names[ti]).setMatrix(T.world[ti]); scene.addChild(n); return n; });
+    // skin IBMs = pure inverse(joint bind world) (the part's vertices are in model metres); the template's stored IBMs
+    // (which carry the body's own gltfpack dequantisation) go in extras for the runtime re-bind.
+    const ibm = new Float32Array(used.length * 16); used.forEach((ti, k) => ibm.set(mat4.invert([], T.world[ti]), k * 16));
+    const tplIbm = new Float32Array(used.length * 16); used.forEach((ti, k) => tplIbm.set(T.ibm[ti], k * 16));
+    const skin = doc.createSkin('wh_skin').setInverseBindMatrices(doc.createAccessor().setType('MAT4').setArray(ibm).setBuffer(buffer));
+    jnodes.forEach((n) => skin.addJoint(n));
+    node.setSkin(skin);
+    node.setExtras({ ...node.getExtras(), wh_joint_index: used, wh_joint_ibm: Array.from(tplIbm) });
+    scene.addChild(node);
     const tmp = path.join(outDir, `_tmp_${tpl}.gltf`);
     await io.write(tmp, doc);
     const out = path.join(outDir, `${tpl}.glb`);
-    execFileSync(gltfpack, ['-i', tmp, '-o', out, '-cc', '-tr', '-kn', '-km', '-ke'], { stdio: 'pipe' });
+    execFileSync(gltfpack, ['-i', tmp, '-o', out, '-cc', '-tr', '-kn', '-km', '-ke', ...(a.kind === 'hair' ? ['-vp', '12'] : [])], { stdio: 'pipe' });
     for (const g of fs.readdirSync(outDir)) if (g.startsWith('_tmp_')) fs.unlinkSync(path.join(outDir, g));
     sizes[a.id].glb[tpl] = fs.statSync(out).size;
   }

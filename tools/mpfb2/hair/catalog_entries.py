@@ -38,7 +38,7 @@ def fitted_entries(root=ROOT):
             'offset': [0, 0, 0], 'rotation': [0, 0, 0], 'scale': 1, 'modeled_in_place_for': None,
             'geometry_pending': False, 'kind': kind,
             'placement': {'socket': 'head', 'mode': 'fitted', 'offset': [0, 0, 0], 'rotation': [0, 0, 0], 'scale': 1},
-            'fitted': {'dir': d, 'templates': e['templates'], 'space': 'head-bone-local', 'texture': f"{d}/texture.png"},
+            'fitted': {'dir': d, 'templates': e['templates'], 'space': 'model-bind', 'skinned': True, 'texture': f"{d}/texture.png"},
             'editable': ['tint', 'visible'], 'license': 'CC0-1.0',
         })
     return out

@@ -336,7 +336,7 @@ def main():
             pl = (Hi[:3, :3] @ pw.T).T + Hi[:3, 3]
             targets = resample_targets(pw, tpl, a['kind'])
             od = os.path.join(out_root, a['id']); os.makedirs(od, exist_ok=True)
-            json.dump(dict(id=a['id'], template=n, kind=a['kind'], pos=pl.round(6).ravel().tolist(),
+            json.dump(dict(id=a['id'], template=n, kind=a['kind'], pos=pl.round(6).ravel().tolist(), pos_w=pw.round(6).ravel().tolist(),
                            uv=np.asarray(uv).round(5).ravel().tolist(), idx=np.asarray(tris).ravel().tolist(),
                            targets={k: v.round(6).ravel().tolist() for k, v in targets.items()}),
                       open(os.path.join(od, n + '.json'), 'w'))

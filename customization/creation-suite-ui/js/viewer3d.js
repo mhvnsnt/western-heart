@@ -361,8 +361,9 @@ export class SuiteViewer {
       this.parts.delete(partId);
     }
   }
-  /* template-fitted part: the GLB is authored in head-bone-local space for THIS template body, so it is parented to
-     the head bone with an identity transform (follows head animation + POSE clips); its morph targets share the
+  /* template-fitted part: the GLB is authored for THIS template body with skin weights from the Blender stage;
+     attachFittedScene skins it to the body skeleton (hair follows head / neck / upper spine; parented under the head
+     bone for bookkeeping) so it follows animation + POSE clips; its morph targets share the
      body's face slider names, so syncMorphs (applyMorphTargets over this.model) drives them with the body. */
   attachFitted(partId, glbUrl, def, tint){
     return new Promise((res, rej)=>{
