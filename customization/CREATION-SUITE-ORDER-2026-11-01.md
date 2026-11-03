@@ -184,6 +184,24 @@ overall: 4,939 / 7,424 before tattoos (66.5%); tattoos add 99 non-pending.
   socket would be wrong. Still owed, with that reason.
 - Scars: 0 entries, 0 scar-labeled assets found in the repo (WMXIX
   MAKE_UP names are opaque `ty2_*` texture ids, no scar labels).
-  Still owed: create or cut, owner decision.
+  Still owed: create or cut, owner decision. -> CREATED 2026-11-02 (draft
+  PR #1527, see "Tattoos + scars phase" below).
 - Face: face slot 1,828, 1,673 non-pending (mostly WMXIX MAKE_UP
   textures, 1,477 converted), 48 with glb, 155 pending.
+
+## Tattoos + scars phase — 2026-11-02 (draft PR #1527, not merged)
+
+Owner instruction: "find a way to use blender, show me it all, and do all the rest".
+
+- Tattoos: dedicated **Tattoos** category in PARTS (PARTS_TREE), plus **Scars** and **Body Layers**.
+  WWE 2K layer system on 12 body regions (chest, back, neck, face, upper arms, forearms, thighs,
+  calves, L/R): position around/along, scale X/Y, rotation, opacity, colour, flip, mirror copy,
+  order, 40 layers; saved per attire and in customization.json; applied on created fighters in
+  fights (template bodies) with the wear-off hook on landed hits.
+- Default placements per region on all 9 template bodies authored in Blender 4.3
+  (`customization/templates/decal-placements.json`); the game's JS resolver matches Blender < 1 mm.
+- 99 tattoos now carry a body_region_decal placement (was null). Scars: 11 Western Heart CC0
+  procedural scars + 1 reference-only row (Tekken 7 item 90016, texture not in repo).
+- Proof renders: `customization/creation-suite-ui/proof-pass/tattoos-scars/`.
+- Still owed: phone-size browser check of the layer editor; roster (non-template) bodies; colour-key
+  for the No Mercy tattoos that ship without alpha; fight-harness run.
