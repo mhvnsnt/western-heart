@@ -37578,26 +37578,7 @@
     "WS.2,2": 535,
     "t7.steve_138": 1042
   },
-  "stance_after": {
-    "3+4~t8.steve": "ALB",
-    "b+1,2~t8.steve": "LNH",
-    "b+3+4~t8.steve": "FLK",
-    "b+3~t8.steve": "SWY",
-    "d/b+3,2~t8.steve": "LNH",
-    "DCK.f+3": "EXD",
-    "f+2,2": "LNH",
-    "f+3+4~t8.steve": "PAB",
-    "f+3~t8.steve": "DCK",
-    "H.d/f+3+4": "EXD",
-    "H.EXD.1+3": "TFA",
-    "t8.Steve-H.LNH.P": "TFA",
-    "LWV.1,2": "LNH",
-    "PAB.d/f+1,2": "LNH",
-    "RWV.1,2": "LNH",
-    "u/b+2": "LNH",
-    "u/b+3~t8.steve": "LNH",
-    "WS.2,2": "LNH"
-  },
+  "stance_after": {"3+4~t8.steve":"ALB","b+1,2~t8.steve":"LNH","b+3+4~t8.steve":"FLK","b+3~t8.steve":"SWY","d/b+3,2~t8.steve":"LNH","DCK.f+3":"EXD","f+2,2":"LNH","f+3+4~t8.steve":"PAB","f+3~t8.steve":"DCK","H.d/f+3+4":"EXD","H.EXD.1+3":"TFA","t8.Steve-H.LNH.P":"TFA","LWV.1,2":"LNH","PAB.d/f+1,2":"LNH","RWV.1,2":"LNH","u/b+2":"LNH","u/b+3~t8.steve":"LNH","WS.2,2":"LNH","f+3+4":"DRU"},
   "mix_note_20261024": "MIX PER CANON (2026-10-24): Zui = Steve Fox T7 base + Lei Wulong drunken fist (Tekken 6 / TTT2, shared via Rave's Lei set; Rave keeps his full Lei moveset) + 2 WH-original canon moves (Bottle's Honest Truth, Beautiful Stumble). Every mix entry carries source_fighter, source_game, mix_group, and input_display (LP1/RP2/LK3/RK4 rendering of its Tekken input). Correction, not rewrite: the 2026-10-21 import labeled the Lei group \"T7\" via t7chicken; Lei is not in Tekken 7, so source_game on those entries now reads Tekken 6 / TTT2 and the historical t7_import_note string is left untouched. No move deleted; no damage, anim_ref, input, or stance-gate changed; Rave untouched. TheBigTuna MOD damage: 175 Steve entries already carry mod_source/mod_damage from PR #1000/#005061f2 method (verified 117/117 where TheBigTuna has parseable damage); the remaining 119 Steve entries are unmatchable by whole-notation matching (notations absent from TheBigTuna's 255 Steve rows, or ambiguous) and were left exactly as-is per that method.",
   "mix_20261024": {
     "counts_keys": {
