@@ -3,7 +3,7 @@
    (creation suite TATTOOS + SCARS phase, 2026-11-02)
 
    STRUCTURE SOURCE (not invented):
-   - WWE 2K Create-A-Superstar Tattoos / Logos: "layered, placeable,
+   - The wrestling CAW reference's Tattoos / Logos: "layered, placeable,
      scalable, rotatable — full body canvas"
      (customization/wwe2k-caw/CAW-SUITE-BREAKDOWN.md §2.2), decal layers
      with position / scale / rotation / opacity (COMBINED-CREATION-SUITE.md
@@ -52,7 +52,7 @@ export const BODY_REGIONS = Object.freeze([
   { key: 'calf_R',      label: 'Calf R',           axis: ['calf_R', 'foot_R'],         bones: ['calf_R', 'calf_twist_R'], zone: 'lower', size: 0.10 },
 ]);
 export const REGION_BY_KEY = Object.freeze(Object.fromEntries(BODY_REGIONS.map((r) => [r.key, r])));
-/* WWE 2K22 "40 body/head layers" (MENU_SRC.WWE_ATTIRE). */
+/* "40 body/head layers" (wrestling CAW reference, menu-data.js MENU_SRC.WWE_ATTIRE). */
 export const MAX_LAYERS = 40;
 export const LAYER_KINDS = Object.freeze(['tattoo', 'scar']);
 
@@ -117,7 +117,7 @@ export function moveLayer(list, id, dir) {
   if (i < 0 || j < 0 || j >= list.length) return false;
   [list[i], list[j]] = [list[j], list[i]]; return true;
 }
-/** WWE "Mirror": copy a layer onto the opposite-side region (L <-> R), mirrored. */
+/** CAW "Mirror": copy a layer onto the opposite-side region (L <-> R), mirrored. */
 export function mirrorLayer(layer) {
   const flip = { _L: '_R', _R: '_L' };
   const m = /_(L|R)$/.exec(layer.region);
