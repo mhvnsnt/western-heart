@@ -1,0 +1,56 @@
+{
+  "poseDeltaIdleVsAttack1": 0.2450000000000001,
+  "shotStates": [
+    {
+      "round": "fight",
+      "p1model": "pantera-leoman",
+      "p1state": "idle",
+      "p1atk": null,
+      "p1clip": null,
+      "p2model": "demonio-a1",
+      "p2state": "idle",
+      "p2hp": 180,
+      "p1hp": 180
+    },
+    {
+      "round": "fight",
+      "p1model": "pantera-leoman",
+      "p1state": "attack",
+      "p1atk": "1",
+      "p1clip": "atk:1:1",
+      "p2model": "demonio-a1",
+      "p2state": "hitstun",
+      "p2hp": 168.3,
+      "p1hp": 180
+    },
+    {
+      "round": "fight",
+      "p1model": "pantera-leoman",
+      "p1state": "idle",
+      "p1atk": null,
+      "p1clip": "atk:1:1",
+      "p2model": "demonio-a1",
+      "p2state": "idle",
+      "p2hp": 180,
+      "p1hp": 180
+    },
+    {
+      "round": "fight",
+      "p1model": "pantera-leoman",
+      "p1state": "idle",
+      "p1atk": null,
+      "p1clip": "atk:2:2",
+      "p2model": "demonio-a1",
+      "p2state": "idle",
+      "p2hp": 180,
+      "p1hp": 180
+    }
+  ],
+  "checks": {
+    "roundFight": true,
+    "p1IsPantera": true,
+    "p2IsDemonio": true,
+    "attackStateSeen": true,
+    "poseMoved": true
+  }
+}
