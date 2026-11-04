@@ -124,6 +124,13 @@ export const T3_BANKS = {
   // (docs/anim/RAVEN-ANIM-GAP-20261023.md isolation doctrine). raven serves Pond, luckychloe serves Ryusan.
   raven:      'assets/anim/t3/raven/',
   luckychloe: 'assets/anim/t3/luckychloe/',
+  // TTT2-sourced banks (2026-11-04): REAL Tekken Tag Tournament 2 motion decoded with the shipped
+  // 0x64/0xC8 MOTA decoders and baked via the calibrated sampler convention (tools/anim/ttt2_bank_bake.py)
+  // — each bank is the character's OWN TTT2 state moves per the join tables
+  // (docs/tech/ttt2-mota/join/). roger serves Menajerii (Vixen, base Roger Jr.), jun serves
+  // Megami (Parvati, base Jun Kazama).
+  roger:      'assets/anim/t3/roger/',
+  jun:        'assets/anim/t3/jun/',
   gon:        'assets/anim/t3/gon/',
   law:        'assets/anim/t3/law/',
   // Forest Law's own divmot20 motion posed on Law's body (his KMDs do not fit; heihachi_on_jin pattern).
@@ -155,6 +162,7 @@ export const SOURCE_TO_BANK = {
   armorking: 'armorking', 'armor-king': 'armorking',
   ogre: 'ogre', kuma: 'kuma', panda: 'kuma', gon: 'gon', law: 'law', forestlaw: 'forestlaw',
   raven: 'raven', luckychloe: 'luckychloe',
+  roger: 'roger', jun: 'jun',
   // VF5 Dural (Zen's 3D base, owner 2026-10-24/28): zen.json moves name t3_source 'dural'. The bank
   // itself only exists in private builds (T3_BANKS.dural, __WH_PRIVATE_ASSETS); bankIdFor keeps
   // public Zen UNMAPPED, so this entry only resolves Zen's own rows when the private bank is bound.

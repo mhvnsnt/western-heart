@@ -1,0 +1,79 @@
+{
+ "bank": "jun",
+ "baked": {
+  "t3_grab": {
+   "move": "Thrmv_B2_00i",
+   "anim": "Tco_ntukami(DVD)",
+   "bank": 1,
+   "idx": 126,
+   "frames": 150,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_jump_back": {
+   "move": "sJUMP_00B",
+   "anim": "Bco_newjump2(DVD)",
+   "bank": 2,
+   "idx": 309,
+   "frames": 120,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_jump_fwd": {
+   "move": "sJUMP_00F",
+   "anim": "Bco_newjump2(DVD)",
+   "bank": 2,
+   "idx": 309,
+   "frames": 120,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_jump_up": {
+   "move": "sJUMP_00_",
+   "anim": "Bco_newjump2(DVD)",
+   "bank": 2,
+   "idx": 309,
+   "frames": 120,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_neutral": {
+   "move": "Jn_IKI00",
+   "anim": "amju_kamae_test(DVD)",
+   "bank": 1,
+   "idx": 139,
+   "frames": 97,
+   "fk_selfcheck_max_m": 0.0,
+   "gate_note": "toe graze 0.08 m (frame 37) within TTT2-vs-T7 skeleton proportion delta; ankles >= -0.01 m throughout; all other gate checks pass"
+  },
+  "t3_sidestep_a": {
+   "move": "sSTEP_01L",
+   "anim": "naco_l2idou(DVD)",
+   "bank": 2,
+   "idx": 1807,
+   "frames": 70,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_walk_back": {
+   "move": "Rg_sWALKB",
+   "anim": "ygco_bwalk00(DVD)",
+   "bank": 2,
+   "idx": 40,
+   "frames": 15,
+   "fk_selfcheck_max_m": 0.0
+  }
+ },
+ "skipped": {
+  "t3_block": "in-game plausibility gate: LeftToeBase 1.05 m below the floor on frame 0 (mannequin proportions)",
+  "t3_dash_fwd": "in-game plausibility gate: does not start upright",
+  "t3_hit": "in-game plausibility gate: LeftToeBase 0.13 m below the floor on frame 0 (mannequin proportions)",
+  "t3_hit_launch": "in-game plausibility gate: LeftToeBase 0.10 m below the floor on frame 3 (mannequin proportions)",
+  "t3_ko": "in-game plausibility gate: does not start upright",
+  "t3_sidestep_b": "in-game plausibility gate: LeftToeBase 0.11 m below the floor on frame 3 (mannequin proportions)",
+  "t3_walk_fwd": "in-game plausibility gate: LeftToeBase 0.08 m below the floor on frame 3 (mannequin proportions)"
+ },
+ "gaps": {
+  "t3_backdash": "No backdash record in Jun's TTT2 motbin records (no sDASHB/st2cr-family state record; toju_back90 is referenced only by Unknown's Uj_sDASHB). Left unfilled rather than guessed.",
+  "t3_crouch": "No stand-to-crouch transition record in Jun's TTT2 motbin records (ygco_ta_sya is referenced only by Unknown's st2cr_00B). Left unfilled rather than guessed.",
+  "t3_crouch_hold": "No cKAM__00_ record in Jun's TTT2 motbin records (ozco_syagami is referenced only by Unknown's block, at Unknown's bank-1 idx147; bank-1 indices do not transfer between character tables). Left unfilled rather than guessed.",
+  "t3_heavy": "No standing '4' basic in Jun's TTT2 motbin records (no Jn_rk00/Co_rk00 standing record; toju_rk is referenced only by Unknown's block). Left unfilled rather than guessed.",
+  "t3_light": "No standing '1' basic exists in Jun's TTT2 motbin records (jun-join.json, 749 records, full re-parse of her movelist section grids 589..1489 with a widened string set): no Jn_lp00, no Co_lp00, and the anim amlu_lp2 that Unknown's Uj_lp00 plays is never referenced by any pointer in Jun's block. Left unfilled rather than guessed; Megami's move rows still play their own clips, and the generic light input keeps the pre-bank fallback.",
+  "t3_medium": "No standing '3' basic in Jun's TTT2 motbin records (no Jn_lk00/Co_lk00 standing record; amju_lk is referenced only by Unknown's block). Left unfilled rather than guessed."
+ }
+}
