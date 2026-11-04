@@ -30,6 +30,10 @@ const FIGHTERS = [
   { fighter: 'gashadokuro', base: 'kuma', bank: 'kuma', moveset: 'gashadokuro', stance: 'Km_sKAM00_' },
   { fighter: 'aotsuki', base: 'panda', bank: 'kuma', moveset: 'aotsuki', stance: 'Km_sKAM00_' },
   { fighter: 'nightwolf', base: 'julia', bank: 'julia', moveset: 'nightwolf', stance: 'Jl_sKAM00_' },
+  // 2026-11-03 (SmutBase T7 bank production): Pond and Ryusan — the first fighters whose bound bank is
+  // their own T7-sourced bank (T3_BANKS raven / luckychloe), produced by this same pipeline.
+  { fighter: 'pond', base: 'raven', bank: 'raven', moveset: 'pond', stance: 'Nj_sKAM00_' },
+  { fighter: 'ryusan', base: 'luckychloe', bank: 'luckychloe', moveset: 'ryusan', stance: 'Dc_sKAM00_' },
 ];
 
 const qmul = (a, b) => [a[3] * b[0] + a[0] * b[3] + a[1] * b[2] - a[2] * b[1], a[3] * b[1] - a[0] * b[2] + a[1] * b[3] + a[2] * b[0],
