@@ -34,6 +34,23 @@ const RUNTIME_TINTED_TEMPLATES = new Set([
   'custom-template-striker-w',
 ]);
 
+// OWNER OUTFIT-NOT-THE-GATE EXEMPTION (owner rule 2026-11-03: "if a fighter
+// has no outfit textures, show her without the outfit — what matters is her
+// skin texture, eyes, and hair; outfits can be added later from parts").
+// Mirrors tools/assets/material_gate.mjs: Megami's playable variant
+// (model-rigged-nooutfit.glb) excludes the textureless 24_/25_ outfit +
+// headgear shells, which never had textures in her source file. Her skin,
+// eyes and hair are textured from her own source. The remaining untextured
+// verdicts are source-faithful traits: clear eye shells (EyeMoisture /
+// Cornea, transparent by design), one hair-strand material (Bangs1-1 — no
+// strand texture exists in any copy of her source), the inner Torso-6 shell
+// (textureless in the source itself), and shoe / panties parts carrying
+// authored near-black colours. An untextured-only verdict on exactly these
+// keys, with no 24_/25_ outfit material left in the model, is therefore
+// usable, not broken. Missing or placeholder verdicts are NEVER exempted,
+// and no other key is exempted.
+const OWNER_OUTFIT_RULE_EXEMPT = new Set(['megami', 'megami-attire1']);
+
 export function isModelUsable(key) { return !broken.has(key); }
 export function materialReason(key) { return reasons[key] || null; }
 export function donorFor(key) { return (MATERIAL_STATUS.resolve || {})[key] || null; }
@@ -79,9 +96,11 @@ export async function resolveModelMaterials(key, gltf, getDonorGltf) {
     });
   }
   const counts = { ok: 0, missing: 0, placeholder: 0, untextured: 0 };
+  let outfitPresent = false;
   gltf.scene.traverse(o => {
     if (!o.isMesh) return;
     for (const m of [].concat(o.material)) {
+      if (m && /^2[45]_/.test((m.name || '').trim())) outfitPresent = true;
       if (m) {
         for (const k of MAPS_SRGB) if (m[k]) m[k].colorSpace = THREE.SRGBColorSpace;
         for (const k of MAPS_LINEAR) if (m[k]) m[k].colorSpace = THREE.NoColorSpace;
@@ -92,10 +111,12 @@ export async function resolveModelMaterials(key, gltf, getDonorGltf) {
   const bad = counts.missing + counts.placeholder + counts.untextured;
   const runtimeTinted = RUNTIME_TINTED_TEMPLATES.has(key) &&
     counts.missing === 0 && counts.placeholder === 0 && counts.untextured > 0;
-  if (bad && !runtimeTinted) {
+  const ownerOutfitRule = OWNER_OUTFIT_RULE_EXEMPT.has(key) && !outfitPresent &&
+    counts.missing === 0 && counts.placeholder === 0 && counts.untextured > 0;
+  if (bad && !runtimeTinted && !ownerOutfitRule) {
     broken.add(key);
     reasons[key] = reasons[key] || Object.entries(counts).filter(([k, n]) => k !== 'ok' && n).map(([k, n]) => `${n} ${k}`).join(', ');
     console.error(`[WH] material gate: ${key} blocked (${reasons[key]})`);
   }
-  return { key, counts, resolvedFrom: plan ? plan.donor : null, usable: !bad || runtimeTinted, runtimeTinted };
+  return { key, counts, resolvedFrom: plan ? plan.donor : null, usable: !bad || runtimeTinted || ownerOutfitRule, runtimeTinted, ownerOutfitRule };
 }

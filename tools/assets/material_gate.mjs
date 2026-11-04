@@ -88,6 +88,38 @@ for (const [key, url] of RUNTIME_TINTED_TEMPLATES) {
     r.ok = true; r.runtimeTinted = true; runtimeTinted.push(key);
   }
 }
+// OWNER OUTFIT-NOT-THE-GATE EXEMPTION (owner rule 2026-11-03: "if a fighter
+// has no outfit textures, show her without the outfit — what matters is her
+// skin texture, eyes, and hair; outfits can be added later from parts"):
+// Megami's playable variant (model-rigged-nooutfit.glb) excludes the
+// textureless 24_/25_ outfit + headgear shells, which never had textures in
+// her source file. Her skin, eyes and hair are textured from her own source
+// (audit ok prims). The remaining untextured findings are source-faithful
+// traits, enumerated in the landing PR: clear eye shells (EyeMoisture /
+// Cornea, transparent by design), one hair-strand material (Bangs1-1 — no
+// strand texture exists in any copy of her source), the inner Torso-6 shell
+// (textureless in the source itself), and shoe / panties parts carrying
+// authored near-black colours. An untextured-only failure on exactly these
+// keys at exactly this URL is therefore expected, not broken. Missing or
+// placeholder verdicts are NEVER exempted, any 24_/25_ material still in
+// the file voids the exemption, and no other key or URL is exempted.
+const OWNER_OUTFIT_RULE_EXEMPT = new Map([
+  ['megami', '../roster/parvati/attires/attire1/model-rigged-nooutfit.glb'],
+  ['megami-attire1', '../roster/parvati/attires/attire1/model-rigged-nooutfit.glb'],
+]);
+const ownerOutfitRule = [];
+for (const [key, url] of OWNER_OUTFIT_RULE_EXEMPT) {
+  const r = results[key];
+  if (!r || r.ok || r.error) continue;
+  if (r.url !== url) continue;
+  if (!(r.counts.missing === 0 && r.counts.placeholder === 0 && r.counts.untextured > 0)) continue;
+  const t = jsonOf(key); if (!t) continue;
+  const usedMats = new Set();
+  for (const m of t.meshes || []) for (const pr of m.primitives || []) if (pr.material !== undefined) usedMats.add(pr.material);
+  const outfitLeft = [...usedMats].some(mi => /^2[45]_/.test((t.materials[mi] && t.materials[mi].name) || ''));
+  if (outfitLeft) continue;
+  r.ok = true; r.ownerOutfitRule = true; ownerOutfitRule.push(key);
+}
 const failing = Object.keys(results).filter(k => !results[k].ok).sort();
 const statusPath = path.join(root, 'game/js/material-status.js');
 const readStatus = () => { const t = fs.readFileSync(statusPath, 'utf8'); return JSON.parse(t.slice(t.indexOf('{'), t.lastIndexOf('}') + 1)); };
@@ -106,7 +138,7 @@ const resolveStale = JSON.stringify(statusFile.resolve || {}) !== JSON.stringify
 if (resolveStale) console.log('::error::material-status.json resolve plans are stale — rerun with --write-status');
 const leak = failing.filter(k => !(k in status));
 const stale = Object.keys(status).filter(k => !failing.includes(k));
-console.log(`material gate: ${keys.length} keys, ${keys.length - failing.length - Object.keys(resolve).length - runtimeTinted.length} pass as-is, ${Object.keys(resolve).length} resolved from a same-model donor, ${runtimeTinted.length} runtime-tinted templates exempted (untextured-only), ${failing.length} quarantined`);
+console.log(`material gate: ${keys.length} keys, ${keys.length - failing.length - Object.keys(resolve).length - runtimeTinted.length - ownerOutfitRule.length} pass as-is, ${Object.keys(resolve).length} resolved from a same-model donor, ${runtimeTinted.length} runtime-tinted templates exempted (untextured-only), ${ownerOutfitRule.length} owner outfit-rule exempted (untextured-only, outfit shells excluded), ${failing.length} quarantined`);
 for (const k of leak) console.log(`::error::${k} (${results[k].url}) has broken materials and is NOT quarantined: ${results[k].error || results[k].findings.join(' | ')}`);
 for (const k of stale) console.log(`::error::${k} is quarantined but now passes or is gone — rerun with --write-status`);
 process.exit(leak.length || stale.length || resolveStale ? 1 : 0);
