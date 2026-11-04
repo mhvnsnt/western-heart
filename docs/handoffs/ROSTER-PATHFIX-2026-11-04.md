@@ -17,8 +17,9 @@ which exists on main. This doc supersedes the "RESCUED" framing for these
 four fighters; their probe verdicts from PR #1559 stand unchanged.
 
 No model file, roster JSON, or config was changed by this lane. The only
-genuine gap found is a **bucket upload gap** (Mariposa Slot 3, below) that
-no repo change can fix; it belongs to the B2 upload queue.
+bucket gap found is the missing bucket copy of Mariposa's Slot 1 file
+(below) — covered live by the jsDelivr fallback, so nothing is broken;
+uploading it belongs to the B2 upload queue.
 
 ## How a fight model path actually resolves
 
@@ -91,15 +92,17 @@ no repo change can fix; it belongs to the B2 upload queue.
   verdicts to PR #1559.
 - **Live-build status (Pages shell + bucket, checked 2026-11-04):**
   Slot 1: bucket 404 → falls through to jsDelivr (5.84 MB < 20 MB) — loads.
-  Slot 2: bucket 200 exact — loads. Slot 3: bucket 404 and 90 MB, so
-  jsDelivr refuses it — **Slot 3 cannot load on the current live build.**
-  Slot 4: bucket 404 → jsDelivr (6.27 MB) — loads. Slot 5: bucket 200 — loads.
-  Her default fight model (Slot 1) works live; only the Slot 3 attire pick
-  is broken live. All five paths are listed in
-  tools/deploy/r2-upload-manifest.json — Slot 3 (and the Slot 1/4 bucket
-  copies) are upload gaps of the same family as the 2026-11-02 Snow Leopard
-  case. The fix is a bucket upload (B2 lane; storage-cap blocked), not a
-  repo change: the repo file is present, correct, and probe-proven.
+  Slot 2: bucket 200 exact — loads. Slot 3: bucket 200 exact
+  (90,429,536 B) — loads. Slot 4: bucket 404 → jsDelivr (6.27 MB) — loads.
+  Slot 5: bucket 200 — loads. **All five slots load on the live build.**
+  All five paths are listed in tools/deploy/r2-upload-manifest.json; the
+  Slot 1 and Slot 4 bucket copies are the only upload gaps, and both are
+  covered by jsDelivr — upload-queue niceties, not breakages.
+  (Correction: the original version of this doc reported Slot 3 as bucket
+  404 / live-unreachable. That was an erroneous check result from this
+  lane's first bucket sweep. Re-verified 2026-11-04 23:54 UTC, twice from
+  different edges: HTTP 200 at the exact repo size, and the object's own
+  Last-Modified is 2026-10-31 — it was on the bucket all along.)
 
 ### buffalo-bill — 7 correct + throw (totals identical to roster pass)
 - Chain: fighter `buffalo-bill` → key `buffalo-bill` →
