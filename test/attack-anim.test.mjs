@@ -35,22 +35,46 @@ async function fighter(id) {
 }
 const plan = (f, n) => f._attackClipPlan(F.getRealMove(f._movesetId, n), n);
 
-// KNOWN ROW GAPS — documented unfilled rows (the repo's known-gap convention:
-// when a gap is filled, DELETE its entry here and the test passes unaided).
-// megami / jun row 48: 270 of Megami's moves carry the 2026-10-23 anim-fix
-// class stamp anim_t3 {bank: 'jun' | 'tekken-wiki', row: 48} — a T3-table row
-// number with no TTT2-Jun counterpart. Jun's TTT2 motbin contains NO standing
-// basic strike records (her basics are inherited at runtime from the shared
-// Kazama core carried by Unknown's motbin, and bank-1 indices are
-// per-character — they do not transfer). Row 48 therefore stays unfilled
-// until Unknown's bank-1 table base is pinpointed; the full evidence and the
-// remaining research step live in docs/handoffs/TTT2-BANKS-2026-11-04.md.
-// A gap is a logged absence, never a fabricated clip.
-const KNOWN_ROW_GAPS = [{ id: 'megami', bank: 'jun', row: 48, banks: ['jun', 'tekken-wiki'] }];
+// KNOWN BANK GAP — megami / jun (documented; when Jun's basics are baked,
+// DELETE this entry and both uses, and the suite passes unaided).
+// Root cause, proven from the join data (docs/handoffs/TTT2-BANKS-2026-11-04.md):
+// Jun's TTT2 motbin contains NO standing strike motion at all — her entire
+// offensive movelist is inherited at runtime from the shared Kazama core
+// carried by Unknown's motbin, and bank-1 indices are per-character (they do
+// not transfer). Until Unknown's bank-1 table base is pinpointed, the jun
+// bank has no strike clip, so every strike-presentation path for Megami is
+// a logged absence — never a fabricated clip. Three surfaces of that one gap:
+//  (a) the 2026-10-23 anim-fix class stamp anim_t3 {bank: 'jun'|'tekken-wiki',
+//      row: 48} on 270 moves — a Tekken 3 table row number with no TTT2-Jun
+//      counterpart (join record 48 is a tag change-in record);
+//  (b) moves whose only mapping is an anim_ref 'ttt2:jun:row:<n>' into the
+//      TTT2 movelist layer (FC+d/f+2 'Grace', the Leg Cutter chains) — the
+//      motion records behind those rows are the same missing Kazama core;
+//  (c) her canon stance-family moves (SPIRIT./KESSHOU./SOUL9./REIHOU./SEAL.),
+//      which carry no anim mapping and present through the generic tier —
+//      a tier that cannot fire while the bank holds no strike clip.
+// The predicate only ever excuses a NULL plan for exactly these moves; any
+// wrong-but-nonnull plan still fails the assertions below.
+const KNOWN_BANK_GAPS = [{
+  id: 'megami', bank: 'jun',
+  row: 48, rowBanks: ['jun', 'tekken-wiki'],
+  animRef: /^ttt2:jun:row:\d+$/,
+  stancePrefixes: ['SPIRIT.', 'KESSHOU.', 'SOUL9.', 'REIHOU.', 'SEAL.'],
+}];
 const isKnownRowGap = (id, bank, mv) => {
   if (!mv || mv.animRow == null) return false;
   const r = Array.isArray(mv.animRow) ? mv.animRow[mv.animRow.length - 1] : mv.animRow;
-  return KNOWN_ROW_GAPS.some(g => g.id === id && g.bank === bank && g.row === r && g.banks.includes(mv.animBank));
+  return KNOWN_BANK_GAPS.some(g => g.id === id && g.bank === bank && g.row === r && g.rowBanks.includes(mv.animBank));
+};
+const isKnownBankGap = (id, bank, ms, mv, n) => {
+  if (isKnownRowGap(id, bank, mv)) return true;
+  if (!mv || mv.animRow != null || mv.t3row != null) return false;
+  return KNOWN_BANK_GAPS.some(g => {
+    if (g.id !== id || g.bank !== bank) return false;
+    const raw = ms && ms.moves && mv.moveKey ? ms.moves[mv.moveKey] : null;
+    if (raw && raw.anim_ref && g.animRef.test(raw.anim_ref)) return true;
+    return g.stancePrefixes.some(p => String(n).startsWith(p));
+  });
 };
 
 test('attackClipTime: hit window lands on the first active frame, recovery fills the move', () => {
@@ -100,9 +124,9 @@ test('every bound fighter: non-throw moves never fall back to a generic clip whe
     for (const n of Object.keys(ms.slots || ms.moves)) {
       const mv = F.getRealMove(id, n);
       const p = f._attackClipPlan(mv, n);
-      // KNOWN ROW GAP: a move whose only anim mapping is a documented unfilled
-      // row (KNOWN_ROW_GAPS) resolving to no clip yet is the logged state.
-      if (!p && isKnownRowGap(id, f._t3.bank, mv)) continue;
+      // KNOWN BANK GAP: a move covered by the documented jun gap (above)
+      // resolving to no clip yet is the logged state, not a regression.
+      if (!p && isKnownBankGap(id, f._t3.bank, ms, mv, n)) continue;
       // Owner contract (2026-10-29, real-moves lane): a step-planned string whose
       // steps have no VERIFIED real row plays NO bank row (kind 'step-plan', name
       // null, unmapped steps listed) - never a donor/match/generic row. That is a

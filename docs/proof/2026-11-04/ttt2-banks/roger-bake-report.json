@@ -33,6 +33,14 @@
    "frames": 20,
    "fk_selfcheck_max_m": 0.0
   },
+  "t3_grab": {
+   "move": "Thrmv_B1_00",
+   "anim": "Tco_ntukami(DVD)",
+   "bank": 1,
+   "idx": 385,
+   "frames": 40,
+   "fk_selfcheck_max_m": 0.0
+  },
   "t3_heavy": {
    "move": "Rg_rk00",
    "anim": "kjrg_rk01(DVD)",
@@ -117,7 +125,6 @@
  },
  "skipped": {
   "t3_block": "in-game plausibility gate: RightToeBase 1.02 m below the floor on frame 0 (mannequin proportions)",
-  "t3_grab": "in-game plausibility gate: LeftToeBase 0.08 m below the floor on frame 20 (mannequin proportions)",
   "t3_hit_launch": "in-game plausibility gate: LeftToeBase 0.09 m below the floor on frame 5 (mannequin proportions)",
   "t3_ko": "in-game plausibility gate: does not start upright",
   "t3_light": "in-game plausibility gate: does not start upright",
