@@ -1,0 +1,67 @@
+{
+ "fighter": "megami",
+ "gate": {
+  "roundState": "fight",
+  "p1id": "megami",
+  "skinned": 52,
+  "paused": false
+ },
+ "rows": [
+  {
+   "notation": "1+3",
+   "fired": {
+    "ok": true,
+    "err": null,
+    "state": "attack"
+   },
+   "plan": null,
+   "planKind": null,
+   "planWhy": null,
+   "p2hp_before": 1000000,
+   "p2hp_min": 1000000,
+   "damage": 0
+  },
+  {
+   "notation": "2+4",
+   "fired": {
+    "ok": false,
+    "err": null,
+    "state": "throwing"
+   },
+   "plan": "grab",
+   "planKind": "generic",
+   "planWhy": "generic grab for armR (NOT a throw row)",
+   "p2hp_before": 1000000,
+   "p2hp_min": 1000000,
+   "damage": 0
+  },
+  {
+   "notation": "2",
+   "fired": {
+    "ok": false,
+    "err": null,
+    "state": "throwExec"
+   },
+   "plan": "grab",
+   "planKind": "generic",
+   "planWhy": "generic grab for armR (NOT a throw row)",
+   "p2hp_before": 1000000,
+   "p2hp_min": 1000000,
+   "damage": 0
+  },
+  {
+   "notation": "d/f+2",
+   "fired": {
+    "ok": false,
+    "err": null,
+    "state": "throwExec"
+   },
+   "plan": "grab",
+   "planKind": "generic",
+   "planWhy": "generic grab for armR (NOT a throw row)",
+   "p2hp_before": 1000000,
+   "p2hp_min": 1000000,
+   "damage": 0
+  }
+ ]
+}

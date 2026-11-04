@@ -1,0 +1,67 @@
+{
+ "test": "Unknown bank-1 table pinpoint by clip-fingerprint matching (JOIN-SEARCH-ROUND4.md S4 method)",
+ "fingerprint": "(type, track count, frame count, byte size) of the clip at a character's own bank-1 index, compared across characters over shared bank-1 anim names",
+ "data005": {
+  "file": "data005-decoded.bin",
+  "sha256": "a7fc54d76b204056a9d45abc63c3e114d38e0fe253fe8e3922ccf9f2779afdfc",
+  "bytes": 283908372
+ },
+ "reference_tables": {
+  "paul": 320,
+  "jun": 193068196,
+  "roger": 90926084
+ },
+ "unknown_bank1_anims_from_own_motbin": 86,
+ "positive_controls": {
+  "jun_indices_in_jun_table_vs_paul_refs": "34/40",
+  "roger_indices_in_roger_table_vs_paul_refs": "68/87",
+  "cross_control_unknown_indices_in_jun_table_vs_jun_refs": "1/28"
+ },
+ "candidates_scored_with_unknowns_own_indices": {
+  "44851360": {
+   "entries": 561,
+   "vs_jun": "0/28",
+   "vs_paul": "0/43",
+   "idx134_bytes_equal_jun_stance": false
+  },
+  "150079668": {
+   "entries": 648,
+   "vs_jun": "1/28",
+   "vs_paul": "0/43",
+   "idx134_bytes_equal_jun_stance": true
+  },
+  "163712228": {
+   "entries": 485,
+   "vs_jun": "1/28",
+   "vs_paul": "0/43",
+   "idx134_bytes_equal_jun_stance": true
+  },
+  "198828228": {
+   "entries": 736,
+   "vs_jun": "27/28",
+   "vs_paul": "34/43",
+   "idx134_bytes_equal_jun_stance": true
+  },
+  "254734996": {
+   "entries": 655,
+   "vs_jun": "1/28",
+   "vs_paul": "0/43",
+   "idx134_bytes_equal_jun_stance": true
+  },
+  "259686676": {
+   "entries": 1281,
+   "vs_jun": "2/28",
+   "vs_paul": "1/43",
+   "idx134_bytes_equal_jun_stance": true
+  }
+ },
+ "winner": {
+  "table_base_decimal": 198828228,
+  "table_base_hex": "0x0BD9E0C4",
+  "entries": 736,
+  "byte_identity_check": "26 of the 28 clips shared between Unknown's and Jun's bank-1 sets are BYTE-IDENTICAL at Unknown's indices in this table vs Jun's indices in her own table; the 2 exceptions are item anims (coyo_it_cake_f(DVD) - different size, also the single fingerprint miss; yoco_it_kugibat(DVD) - same fingerprint, different bytes)",
+  "consistency_check": "Unknown's own stance record Uj_sKAM00_ gives amju_kamae_test(DVD) at idx 134; this table's idx-134 clip is byte-identical to Jun's stance clip (her idx 139)",
+  "pipeline_check": "the stance clip baked from this table (idx 134) is rot/root_t-identical to the shipped t3_neutral.json baked from Jun's own table in PR #1558, and the bake's skeleton.json output is identical to the shipped jun skeleton.json"
+ },
+ "verdict": "data005 @198828228 is Unknown's bank-1 table. Every other candidate scores at the cross-control noise level (0-2 matches)."
+}
