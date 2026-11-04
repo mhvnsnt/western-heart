@@ -30,7 +30,21 @@ const CLIPS = {
   lee: [126, 'kole_kamae(DVD)', 'Le_sKAM00_'],
   lars: [123, 'amla_kamae(DVD)', 'La_sKAM00_'],
   negan: [131, 'nass_kamae', 'Na_sKAM00_'],
+  // 2026-11-03 (SmutBase T7 bank production): raven's stance is a 0x64-source clip converted through
+  // the game's own sampler into 0xC8 form (tools/anim/t7_anim64_to_c8.py; conversion provenance is
+  // recorded inside the file). luckychloe is deliberately NOT in this table — see STANCE_EXEMPT below.
+  raven: [123, 'frss_kamae(DVD)', 'Nj_sKAM00_'],
 };
+
+// Dirs wired in T7_STANCES whose source stance is not an orthodox guard, so the per-frame guard
+// invariants generated from CLIPS (feet planted on the plane, hands above the knees) do not describe
+// them. Their bank data is verified by test/t7-moves-0x64.test.mjs instead (pack format, FK
+// exactness, exact frame data, stance wiring, real loader, slot->clip reachability).
+//   luckychloe — Dc_sKAM00_ is a 1,249-frame dance idle, not a guard: measured on the shipped file
+//   (FK on the shipped skeleton) the toes dip 13 mm below the nominal plane on the bounce (10 of
+//   1,249 frames) and the hands swing below the knees. That is the faithful T7 source motion —
+//   the bake is FK-exact (fk_selfcheck_max_m 0.0) — not a bake defect to trim away.
+const STANCE_EXEMPT = { luckychloe: 'dance idle, not a guard stance' };
 // Western Heart fighter -> [bound bank, character dir] (CANON base; FIGHTER_BANK / moveset index bank)
 const WIRED = {
   pantera: ['king', 'king'], diablo: ['heihachi', 'heihachi'], skull: ['bryan', 'bryan'], retsu: ['bryan', 'bryan'],
@@ -39,6 +53,8 @@ const WIRED = {
   nightwolf: ['julia', 'julia'],
   // proxy-bank fighters (moveset t3_source jin / jin / bryan) on their own bases' stances
   purplerain: ['jin', 'lee'], chordz: ['jin', 'lars'], negativo: ['bryan', 'negan'],
+  // 2026-11-03: Pond and Ryusan on their OWN T7-sourced banks (no proxy, no other character's clips)
+  pond: ['raven', 'raven'], ryusan: ['luckychloe', 'luckychloe'],
 };
 
 // the joints game/js/t3anims.js retargetT3Clips drives (RIG_REQUIRED + spine/neck + shoulders + toes)
@@ -80,7 +96,13 @@ for (const [dir, [idx, anim, move]] of Object.entries(CLIPS)) {
     assert.equal(clip.anim_set, 'FIGHT', 'a fight stance, never a show clip');
     assert.ok(N >= 30, `${N} frames`);
     assert.equal(clip.t7_source.clip, idx);
-    assert.equal(clip.t7_source.format, '0xC8');
+    if (clip.t7_source.format === '0x64') {
+      // 0x64-source clip (raven): legal only as the game's-own-sampler conversion to 0xC8 form,
+      // with the conversion provenance (tool + exe hash) recorded in the file.
+      assert.ok(clip.t7_source.conversion && clip.t7_source.conversion.exe_sha256, '0x64 conversion provenance');
+    } else {
+      assert.equal(clip.t7_source.format, '0xC8');
+    }
     assert.equal(clip.t7_source.anim, anim);
     assert.ok(clip.t7_source.moves.includes(move), `played by ${move}`);
     assert.equal(clip.t7_source.frames, N);
@@ -127,7 +149,7 @@ test('wiring: each fighter on its own CANON base, applied in the fight and in th
   const entries = Object.fromEntries([...m[1].matchAll(/^\s*'?([\w-]+)'?:\s*\{\s*bank:\s*'(\w+)',\s*dir:\s*'assets\/anim\/t7\/(\w+)\/'/gm)]
     .map(x => [x[1], [x[2], x[3]]]));
   assert.deepEqual(entries, WIRED);
-  for (const [, dir] of Object.values(WIRED)) assert.ok(CLIPS[dir], `${dir} has a baked stance`);
+  for (const [, dir] of Object.values(WIRED)) assert.ok(CLIPS[dir] || STANCE_EXEMPT[dir], `${dir} has a baked stance`);
   // owner decisions stay untouched: Zen is NOT Heihachi, cyborgx/zui keep their stances, jin_soul / menajerii /
   // silvertongue are not on these bases
   for (const id of ['zen', 'cyborgx', 'zui', 'jin_soul', 'menajerii', 'silvertongue']) assert.ok(!(id in entries), id);

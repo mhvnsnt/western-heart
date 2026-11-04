@@ -211,6 +211,12 @@ export function bankIdFor(charId, movesetId) {
     // 2026-10-23 (Claude session): the last decoded T3 banks (tools/anim/t3_bake_bank.py). These movesets
     // name their source as a teardown path or not at all, so bind each to its base's own bank here.
     chatur: 'ogre', dorowani: 'gon', menajerii: 'kuma',
+    // 2026-11-03 (SmutBase T7 bank production): Pond and Ryusan bind their OWN T7-sourced banks
+    // (game/assets/anim/t3/raven/ + luckychloe/, baked from their bases' own motbin state moves) —
+    // until now bankIdFor returned null for both, so _bindT3 returned early and NO bank, stance or
+    // T7 move pack could ever load for them. Their real T7 per-move clips ride on top via
+    // T7_MOVES (t3anims.js), keyed to these same bank ids.
+    pond: 'raven', ryusan: 'luckychloe',
     // 2026-10-23 (landing wave 3): the bear-bank successors + Silvertongue.
     // Their index entries name the bank (anim_bank/t3_source), but the
     // portrait-capture page resolves banks without the moveset index
