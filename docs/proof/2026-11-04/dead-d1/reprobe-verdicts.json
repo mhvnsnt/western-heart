@@ -1,0 +1,406 @@
+{
+ "generated": "2026-11-04",
+ "purpose": "Re-probe of previously dead-d+1 fighters after the _prepare slotting fix (docs/movesets/DEAD-D1-DIAGNOSIS-2026-11-04.md). Original pass verdicts: docs/proof/2026-11-03/roster/roster-verdicts-20261103.json (all four: d+1 press=false).",
+ "fighters": [
+  {
+   "fighter": "skull",
+   "gate": {
+    "id": "skull",
+    "rs": "fight"
+   },
+   "tree": "serve-roster (main movesets.js + dead-d1 patch) via roster harness, probe-only",
+   "probe": [
+    {
+     "input": "1",
+     "press": "true",
+     "row": null,
+     "dmg": 8.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "press": "true",
+     "row": null,
+     "dmg": 8.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "press": "true",
+     "row": null,
+     "dmg": 16.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "press": "true",
+     "row": null,
+     "dmg": 18.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "press": "true",
+     "row": null,
+     "dmg": 19.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "press": "true",
+     "row": null,
+     "dmg": 9.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "press": "true",
+     "row": null,
+     "dmg": 5.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "press": "true",
+     "row": null,
+     "dmg": 11,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "press": "true",
+     "row": null,
+     "dmg": 26.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "press": "true",
+     "row": null,
+     "dmg": 17.4,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ]
+  },
+  {
+   "fighter": "negativo",
+   "gate": {
+    "id": "negativo",
+    "rs": "fight"
+   },
+   "tree": "serve-roster (main movesets.js + dead-d1 patch) via roster harness, probe-only",
+   "probe": [
+    {
+     "input": "1",
+     "press": "true",
+     "row": null,
+     "dmg": 3.7,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "press": "true",
+     "row": null,
+     "dmg": 4.6,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "press": "true",
+     "row": null,
+     "dmg": 13.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "press": "true",
+     "row": null,
+     "dmg": 9.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "press": "true",
+     "row": null,
+     "dmg": 19.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "press": "true",
+     "row": null,
+     "dmg": 11.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "press": "true",
+     "row": null,
+     "dmg": 2.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "press": "true",
+     "row": null,
+     "dmg": 6.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "press": "true",
+     "row": null,
+     "dmg": 19,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "press": "true",
+     "row": null,
+     "dmg": 19.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    }
+   ]
+  },
+  {
+   "fighter": "menajerii",
+   "gate": {
+    "id": "menajerii",
+    "rs": "fight"
+   },
+   "tree": "serve-roster (main movesets.js + dead-d1 patch) via roster harness, probe-only",
+   "probe": [
+    {
+     "input": "1",
+     "press": "true",
+     "row": null,
+     "dmg": 6.7,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "press": "true",
+     "row": null,
+     "dmg": 11.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "press": "true",
+     "row": null,
+     "dmg": 24,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "press": "true",
+     "row": null,
+     "dmg": 15.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "press": "true",
+     "row": null,
+     "dmg": 16.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "press": "true",
+     "row": null,
+     "dmg": 5.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "press": "true",
+     "row": null,
+     "dmg": 14.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "press": "true",
+     "row": null,
+     "dmg": 12.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "press": "true",
+     "row": null,
+     "dmg": 33.5,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ]
+  },
+  {
+   "fighter": "kinpo",
+   "gate": {
+    "id": "kinpo",
+    "rs": "fight"
+   },
+   "tree": "serve-roster (main movesets.js + dead-d1 patch) via roster harness, probe-only",
+   "probe": [
+    {
+     "input": "1",
+     "press": "true",
+     "row": null,
+     "dmg": 9.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "press": "true",
+     "row": null,
+     "dmg": 11,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "press": "true",
+     "row": null,
+     "dmg": 11,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "press": "true",
+     "row": null,
+     "dmg": 34,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "press": "true",
+     "row": null,
+     "dmg": 9.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "press": "true",
+     "row": null,
+     "dmg": 10.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "press": "true",
+     "row": null,
+     "dmg": 22.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "press": "true",
+     "row": null,
+     "dmg": 17.4,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ]
+  }
+ ]
+}
