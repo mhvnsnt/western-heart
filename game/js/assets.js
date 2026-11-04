@@ -442,8 +442,12 @@ export const MODEL_URLS = {
   // intake original (191.6 MB) archived on release
   // megami-menajerii-smutbase-20261023. Canon: roster/parvati/CANON.md.
   // Moveset: game/assets/movesets/megami.json (Jun Kazama TTT2 kit, Tekken inputs).
-  megami: '../roster/parvati/attires/attire1/model-rigged.glb',
-  'megami-attire1': '../roster/parvati/attires/attire1/model-rigged.glb',
+  // Playable variant (owner OUTFIT-NOT-THE-GATE rule, 2026-11-03): the
+  // textureless 24_/25_ outfit + headgear shells are excluded; the original
+  // model-rigged.glb stays in the repo untouched. Skin/eyes/hair are hers
+  // and textured; clothing gets added later from parts.
+  megami: '../roster/parvati/attires/attire1/model-rigged-nooutfit.glb',
+  'megami-attire1': '../roster/parvati/attires/attire1/model-rigged-nooutfit.glb',
   // MENAJERII (2026-10-23, SmutBase 6 pipeline fighters 5-6): SmutBase Vixen
   // commission intake (Injustice 2-based). In-repo build = meshopt-compressed
   // (41.7 MB, validated); intake original (629.7 MB) archived on release
