@@ -65,10 +65,14 @@ no repo change can fix; it belongs to the B2 upload queue.
   shell itself.
 - Probe: 1/2/3/4, d/f+2, u/f+4 correct; 1+2, d/f+1, d+1 fire-no-damage;
   1+3 throw connects (17.4 dmg) — verdict-for-verdict identical to PR #1559.
-- Note: a video capture was attempted twice; both takes hit the camera-miss
-  transient the roster lane also documented for this fighter (fighters leave
-  the frame). The captured frames are NOT used as proof; the identity-gated
-  probe above is his proof.
+- Video: the first capture take hit the camera-miss transient the roster
+  lane also documented for this fighter (fighters left the frame) and was
+  discarded. A second take framed the fight correctly (101 frames, 5.05 s):
+  docs/proof/2026-11-04/roster-pathfix/cyborgx-pathfix-proof-20261104.mp4 —
+  Cyborg X (Cape Jones attire) mid-exchange with Pantera on the shrine
+  stage, sampled frame viewed. His identity-gated probe above remains the
+  verdict proof. (Correction PR: the original version of this note said
+  both takes missed — that was written before the second take finished.)
 
 ### mariposa-monarch — 8 correct + throw, zero diffs; one live-build attire gap (bucket, not repo)
 - Chain: fighter `mariposa-monarch` → key `mariposa-butterfly-default` →
