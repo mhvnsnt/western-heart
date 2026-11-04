@@ -1,14 +1,14 @@
 {
  "format": "wh-pages-deploy/1",
  "ref": "0306417fd2adfc7ab3af9bb928d3958508c8d8d4",
- "commit": "e15815709919aea34f78957522708c56a0f0375b",
- "files": 2150,
- "bytes": 997773216,
- "built": "2026-11-03T11:12:14Z",
+ "commit": "75eeb0bf020b92f6fb808029ce7e19bbdfe6332c",
+ "files": 2186,
+ "bytes": 999991649,
+ "built": "2026-11-04T05:44:05Z",
  "tool": "tools/deploy/build_pages.py",
  "mode": "shell-only",
  "excluded_files": 5648,
  "excluded_bytes": 5068817600,
- "delta_note": "Delta deploy (everything-else lane 2026-11-02, Git Data API, guarded-delta semantics of tools/deploy/deploy_delta.py) live 094d23a4 -> main e1581570: 40 updated, 11 added, 0 removed; module graph exit 0 on the build tree (tools/deploy/check_module_graph.py) + delta coverage audit clean. Ships the consolidated bundle: Claude-WIP completion (#1488/#1494/#1495/#1496/#1497), Phase 4B proof (#1538), no-bank evidence (#1534), stance NO-ENTRY fixes (#1535/#1536).",
+ "delta_note": "Delta deploy (republish recovery lane #3 2026-11-03, Git Data API, guarded-delta semantics of tools/deploy/deploy_delta.py) live 625600dc -> main 75eeb0bf: 7 updated, 36 added, 0 removed; module graph exit 0 on the build tree (tools/deploy/check_module_graph.py) + delta coverage audit clean. Republish recovery lane #3 2026-11-03: ships #1548 Pantera wiring fix, #1549 Megami no-outfit wiring, #1550 Pond (Raven) + Ryusan (Lucky Chloe) banks, #1552 Pond model fix wiring. Extension vs stock deploy_api.py: adds the no-fallback generic banks game/assets/anim/t3/raven/* + t3/luckychloe/*. CAP TRIM (1,294,012 over the 1 GB Pages cap at full selection): withheld 10 adds - t7 raven/luckychloe stance.json+skeleton.json (loadT7Stance falls back to the bank stance, same kamae motion as each bank t3_neutral) and t3 jump_up/jump_back/jump_fwd for both new banks; all 10 remain on main and carry on the next cap relief. T7 moves packs stay main-only, loading via the fetchT7Json jsDelivr fallback by design.",
  "source_pr": 1492
 }

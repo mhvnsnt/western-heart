@@ -117,6 +117,13 @@ export const T3_BANKS = {
   // gon = divmot19, law = divmot01 (Marshall Law).
   ogre:       'assets/anim/t3/ogre/',
   kuma:       'assets/anim/t3/kuma/',
+  // T7-sourced banks (2026-11-03, SmutBase T7 bank production): REAL Tekken 7 motion baked through the
+  // 0x64 game-sampler conversion + the proven 0xC8 mannequin path (tools/anim/t7_c8_stance_bake.py) into
+  // wh-anim/1 bank dirs — each bank is the character's OWN T7 state moves (kamae, walks, dashes, guard,
+  // damage, down states) from their motbin tables, never another character's clips
+  // (docs/anim/RAVEN-ANIM-GAP-20261023.md isolation doctrine). raven serves Pond, luckychloe serves Ryusan.
+  raven:      'assets/anim/t3/raven/',
+  luckychloe: 'assets/anim/t3/luckychloe/',
   gon:        'assets/anim/t3/gon/',
   law:        'assets/anim/t3/law/',
   // Forest Law's own divmot20 motion posed on Law's body (his KMDs do not fit; heihachi_on_jin pattern).
@@ -147,6 +154,7 @@ export const SOURCE_TO_BANK = {
   bosconovitch: 'bosconovitch', heihachi: 'heihachi',
   armorking: 'armorking', 'armor-king': 'armorking',
   ogre: 'ogre', kuma: 'kuma', panda: 'kuma', gon: 'gon', law: 'law', forestlaw: 'forestlaw',
+  raven: 'raven', luckychloe: 'luckychloe',
   // VF5 Dural (Zen's 3D base, owner 2026-10-24/28): zen.json moves name t3_source 'dural'. The bank
   // itself only exists in private builds (T3_BANKS.dural, __WH_PRIVATE_ASSETS); bankIdFor keeps
   // public Zen UNMAPPED, so this entry only resolves Zen's own rows when the private bank is bound.
@@ -595,8 +603,10 @@ export function getT3Clips(bankId = 'king') { return _t3clipCache[bankId] || nul
    bankIdFor), `dir` the base character's baked stance. Not listed, by owner decision: zen (NOT Heihachi),
    cyborgx + zui (keep their stances), jin_soul (identity on the decision list); menajerii (Roger Jr.) and
    silvertongue (Lili) only borrow the kuma / xiaoyu banks. 0x64 stances (Jin, Law, Paul, Nina, Alisa, Miguel,
-   Eddy, Asuka, Katarina, Akuma, Jack-7, Raven, Anna, Lei, Lili, Zafina, Lucky Chloe) wait for the 0x64 joint
-   frame (docs/anim/T7-0x64-FRAME-RESEARCH-2026-10-30.md).
+   Eddy, Asuka, Katarina, Akuma, Jack-7, Anna, Lei, Lili, Zafina) wait for the 0x64 joint
+   frame (docs/anim/T7-0x64-FRAME-RESEARCH-2026-10-30.md). Raven and Lucky Chloe left this list
+   2026-11-03: their stances were converted by the game's own sampler (the #1466 path) and baked —
+   see the pond / ryusan entries below.
    2026-10-31 (later): Purple Rain (Lee), Chordz (Lars) and Negativo (Negan). Their moveset data binds a proxy bank
    (jin / jin / bryan, from each moveset's t3_source), so they shared Demonio's / Skull's stance; each now stands in
    its own base's real T7 stance (owner 2026-10-23 for Chordz: "pull their animations ... and their stances and
@@ -618,6 +628,11 @@ export const T7_STANCES = {
   purplerain: { bank: 'jin', dir: 'assets/anim/t7/lee/' },
   chordz: { bank: 'jin', dir: 'assets/anim/t7/lars/' },
   negativo: { bank: 'bryan', dir: 'assets/anim/t7/negan/' },
+  // 2026-11-03 (SmutBase T7 bank production): Pond and Ryusan stand in their OWN T7 stances, baked from
+  // their bases' kamae clips (0x64, converted by the game's own sampler like every attack below). Their
+  // bound banks are their own T7-sourced banks (T3_BANKS raven / luckychloe above).
+  pond: { bank: 'raven', dir: 'assets/anim/t7/raven/' },
+  ryusan: { bank: 'luckychloe', dir: 'assets/anim/t7/luckychloe/' },
 };
 const _t7stance = {}; // fighterId -> { bank, skelId, clip }
 async function loadT7Stance(fid, def, THREE) {
@@ -681,6 +696,10 @@ export const T7_MOVES = {
   gashadokuro: { bank: 'kuma', dir: 'assets/anim/t7/kuma/' },
   aotsuki: { bank: 'kuma', dir: 'assets/anim/t7/panda/' },
   nightwolf: { bank: 'julia', dir: 'assets/anim/t7/julia/' },
+  // 2026-11-03 (SmutBase T7 bank production): Pond's and Ryusan's real T7 per-move clips, resolved by
+  // tools/anim/t7_move_resolve.py (cancel graph + exact frame data) and baked by tools/anim/t7_move_bake.py.
+  pond: { bank: 'raven', dir: 'assets/anim/t7/raven/' },
+  ryusan: { bank: 'luckychloe', dir: 'assets/anim/t7/luckychloe/' },
 };
 const _t7moves = {}; // fighterId -> { bank, skelId, clips: { name: clip }, moves: { moveKey: { clip, active, motbin } } }
 const _t7movesLoading = {};
