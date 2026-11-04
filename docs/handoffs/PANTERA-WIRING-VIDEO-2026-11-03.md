@@ -2,7 +2,7 @@
 
 ## What landed on main
 
-- **PR #1548** (squash `a2efb22cd8c02f58e733b765788d3b9462611a39`): diagnosis doc `docs/movesets/PANTERA-WIRING-DIAGNOSIS-2026-11-03.md` + the `game/js/fighter.js` fix (RC1–RC4 below) + `test/pantera-wiring.test.mjs` + before/after probe evidence under `docs/proof/2026-11-03/pantera-wiring/`. CI 14/14 green incl. instruction-gate, no-deletion guard, game-unit-tests.
+- **PR #1548** (squash `392352ed6d9ac88bbc9115a576c91f70b546a80b`): diagnosis doc `docs/movesets/PANTERA-WIRING-DIAGNOSIS-2026-11-03.md` + the `game/js/fighter.js` fix (RC1–RC4 below) + `test/pantera-wiring.test.mjs` + before/after probe evidence under `docs/proof/2026-11-03/pantera-wiring/`. CI 14/14 green incl. instruction-gate, no-deletion guard, game-unit-tests.
 - **PR #1551** (squash `eb55d3695ab69f35de9d09bacb89605e71cdc948`): Pantera fight video `docs/proof/2026-11-03/pantera-wiring/pantera-fight-proof-20261103-fixed2.mp4` + phase log + VIDEO-README. Copy for the owner's phone: `~/workspace/your_files/pantera-proof/`.
 
 ## Root causes (full evidence in the diagnosis doc)
