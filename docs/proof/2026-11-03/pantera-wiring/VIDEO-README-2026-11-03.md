@@ -3,7 +3,7 @@
 `pantera-fight-proof-20261103-fixed2.mp4` — 13.5 s, 270 frames at 20 fps, recorded from the
 actual game (the served build's own three.js renderer, real fight vs Zen on shrine; frames are
 the game's renderer output — the DOM HUD layer is not in these frames). Pantera runs the FIXED
-fighter.js (main since PR #1548, squash a2efb22c). Full per-phase data: `video-pantera-log.json`.
+fighter.js (main since PR #1548, squash 392352ed). Full per-phase data: `video-pantera-log.json`.
 
 | Phase | Result |
 |---|---|
