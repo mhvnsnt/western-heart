@@ -1,162 +1,6490 @@
-[
- {
-  "fighter": "rin",
-  "p2": "pantera",
-  "error": "gate-failed (cannot instance)"
- },
- {
-  "fighter": "byou",
-  "p2": "pantera",
-  "error": "gate-failed (cannot instance)"
- },
- {
-  "fighter": "demonio",
-  "p2": "pantera",
-  "gate": {
-   "id": "demonio",
-   "rs": "fight"
+{
+ "generated_from": [
+  "roster-main.jsonl",
+  "roster-pose.jsonl",
+  "roster-p2-main.jsonl",
+  "roster-full.jsonl (demonio)"
+ ],
+ "tree": "serve-roster = main HEAD JS + bucket-vendored models (vendor-manifest.json)",
+ "fighters": [
+  {
+   "fighter": "rin",
+   "note": "Select-hidden original: model is null (modelPending) in the game roster data \u2014 no model wired at all. Cannot instance as P1 or P2 (probed as P2 per handoff note).",
+   "status": "cannot-instance",
+   "error": "gate-failed (cannot instance)"
   },
-  "setup": {
-   "p1": "demonio",
-   "p2": "pantera",
-   "bank": null
+  {
+   "fighter": "byou",
+   "note": "Select-hidden original: model is null (modelPending) in the game roster data \u2014 no model wired at all. Cannot instance as P1 or P2 (probed as P2 per handoff note).",
+   "status": "cannot-instance",
+   "error": "gate-failed (cannot instance)"
   },
-  "probe": [
-   {
-    "input": "1",
-    "press": "true",
-    "row": null,
-    "dmg": 6.1,
-    "sawThrow": false,
-    "atkName": null,
-    "isGrab": false
+  {
+   "fighter": "tou",
+   "note": "Select-hidden original: model is null (modelPending) in the game roster data \u2014 no model wired at all. Cannot instance as P1 or P2 (probed as P2 per handoff note).",
+   "status": "cannot-instance",
+   "error": "gate-failed (cannot instance)"
+  },
+  {
+   "fighter": "sha",
+   "note": "Select-hidden original: model is null (modelPending) in the game roster data \u2014 no model wired at all. Cannot instance as P1 or P2 (probed as P2 per handoff note).",
+   "status": "cannot-instance",
+   "error": "gate-failed (cannot instance)"
+  },
+  {
+   "fighter": "kai",
+   "note": "Select-hidden original: model is null (modelPending) in the game roster data \u2014 no model wired at all. Cannot instance as P1 or P2 (probed as P2 per handoff note).",
+   "status": "cannot-instance",
+   "error": "gate-failed (cannot instance)"
+  },
+  {
+   "fighter": "retsu",
+   "note": "Select-hidden original: model is null (modelPending) in the game roster data \u2014 no model wired at all. Cannot instance as P1 or P2 (probed as P2 per handoff note).",
+   "status": "cannot-instance",
+   "error": "gate-failed (cannot instance)"
+  },
+  {
+   "fighter": "zen",
+   "note": "No bank by owner decision 2026-10-24 \u2014 pose-only video, never probed for attacks.",
+   "bank": null,
+   "mode": "pose-only",
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/zen-fight-20261103.mp4",
+   "frames": 50,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 50
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "gyou",
+   "note": "Select-hidden original: model is null (modelPending) in the game roster data \u2014 no model wired at all. Cannot instance as P1 or P2 (probed as P2 per handoff note).",
+   "status": "cannot-instance",
+   "error": "gate-failed (cannot instance)"
+  },
+  {
+   "fighter": "pantera",
+   "status": "complete-prior-lane",
+   "note": "Completed by the prior lane, not re-probed in the roster pass: full key-level wiring diagnosis (per-notation move-plan probe), wiring fix PR #1548 (squash 392352ed6d9ac88bbc9115a576c91f70b546a80b), proof video PR #1551.",
+   "video": "pantera-fight-proof-20261103-fixed2.mp4"
+  },
+  {
+   "fighter": "demonio",
+   "bank": null,
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 6.1,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 7.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 16.6,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 15.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 4.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 8.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "WRONG-throw-on-strike-input",
+     "press": "true",
+     "row": null,
+     "dmg": 21,
+     "sawThrow": true,
+     "atkName": "d+1",
+     "isGrab": true
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 10.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw animates, 0 damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 8,
+    "WRONG-throw-on-strike-input": 1,
+    "throw animates, 0 damage": 1
    },
-   {
-    "input": "2",
-    "press": "true",
-    "row": null,
-    "dmg": 7.9,
-    "sawThrow": false,
-    "atkName": null,
-    "isGrab": false
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos/demonio-fight-20261103.mp4",
+   "frames": null,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 6.1,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 11
+    },
+    {
+     "dmg": 18.5,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 17
+    },
+    {
+     "dmg": 0,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 33
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "phantom",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 8.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 32.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 20.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 18.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 19.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 17.4,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 7,
+    "fires-no-damage": 2,
+    "throw connects (damage)": 1
    },
-   {
-    "input": "3",
-    "press": "true",
-    "row": null,
-    "dmg": 16.6,
-    "sawThrow": false,
-    "atkName": null,
-    "isGrab": false
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/phantom-fight-20261103.mp4",
+   "frames": 99,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 8.3,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 11
+    },
+    {
+     "dmg": 11.9,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 15
+    },
+    {
+     "dmg": 17.4,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 33
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "diablo",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 8.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 18.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 23,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 17.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 19.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 7.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 15.6,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 17.4,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 8,
+    "fires-no-damage": 1,
+    "throw connects (damage)": 1
    },
-   {
-    "input": "4",
-    "press": "true",
-    "row": null,
-    "dmg": 15.8,
-    "sawThrow": false,
-    "atkName": null,
-    "isGrab": false
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/diablo-fight-20261103.mp4",
+   "frames": 99,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 8.3,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 11
+    },
+    {
+     "dmg": 7.3,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 14
+    },
+    {
+     "dmg": 17.4,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 34
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "skull",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 8.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 18.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 31.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "dead",
+     "press": "false",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": null
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 19,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 18.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 17.4,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 7,
+    "fires-no-damage": 1,
+    "dead": 1,
+    "throw connects (damage)": 1
    },
-   {
-    "input": "1+2",
-    "press": "true",
-    "row": null,
-    "dmg": 4.4,
-    "sawThrow": false,
-    "atkName": null,
-    "isGrab": false
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/skull-fight-20261103.mp4",
+   "frames": 99,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 8.3,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 11
+    },
+    {
+     "dmg": 11,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 14
+    },
+    {
+     "dmg": 17.4,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 34
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "samura1",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 5.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 5.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 9.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 21.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 19,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 4.6,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 17.4,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 8,
+    "fires-no-damage": 1,
+    "throw connects (damage)": 1
    },
-   {
-    "input": "d/f+1",
-    "press": "true",
-    "row": null,
-    "dmg": 8.8,
-    "sawThrow": false,
-    "atkName": null,
-    "isGrab": false
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/samura1-fight-20261103.mp4",
+   "frames": 98,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 5.5,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 12
+    },
+    {
+     "dmg": 11.9,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 12
+    },
+    {
+     "dmg": 17.4,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 34
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "sakura",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 20.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": null
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 19.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 13.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 13.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 18.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 17.4,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 7,
+    "fires-no-damage": 2,
+    "throw connects (damage)": 1
    },
-   {
-    "input": "d+1",
-    "press": "true",
-    "row": null,
-    "dmg": 21,
-    "sawThrow": true,
-    "atkName": "d+1",
-    "isGrab": true
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/sakura-fight-20261103.mp4",
+   "frames": 97,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 2.8,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 11
+    },
+    {
+     "dmg": 13.8,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 12
+    },
+    {
+     "dmg": 17.4,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 34
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "zui",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 6.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 16.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 6.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 6.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 5.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 10.1,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 7,
+    "fires-no-damage": 3
    },
-   {
-    "input": "d/f+2",
-    "press": "true",
-    "row": null,
-    "dmg": 10.5,
-    "sawThrow": false,
-    "atkName": null,
-    "isGrab": false
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/zui-fight-20261103.mp4",
+   "frames": 115,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 2.8,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 11
+    },
+    {
+     "dmg": 5.5,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 17
+    },
+    {
+     "dmg": 17.4,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 47
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "kinpo",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 9.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 34,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 9.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "dead",
+     "press": "false",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": null
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 12.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 22.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 17.4,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 7,
+    "fires-no-damage": 1,
+    "dead": 1,
+    "throw connects (damage)": 1
    },
-   {
-    "input": "u/f+4",
-    "press": "true",
-    "row": null,
-    "dmg": 11.4,
-    "sawThrow": false,
-    "atkName": null,
-    "isGrab": false
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/kinpo-fight-20261103.mp4",
+   "frames": 106,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 9.2,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 12
+    },
+    {
+     "dmg": 12.8,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 14
+    },
+    {
+     "dmg": 17.4,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 40
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "waterfall",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 3.7,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 4.6,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 5.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 20.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": null
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 7.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 5,
+    "fires-no-damage": 5
    },
-   {
-    "input": "1+3",
-    "press": "true",
-    "row": null,
-    "dmg": 0,
-    "sawThrow": true,
-    "atkName": "1+3",
-    "isGrab": true
-   }
-  ],
-  "video_phases": [
-   {
-    "dmg": 0,
-    "phase": "idle-pose",
-    "frames": 40
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/waterfall-fight-20261103.mp4",
+   "frames": 91,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 3.7,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 14
+    },
+    {
+     "dmg": 17.5,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 17
+    },
+    {
+     "dmg": 0,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "grapple:1+3",
+     "frames": 20
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "kingtyrant",
+   "note": "Blocked by the game's own MATERIAL GATE \u2014 diag captured the verbatim error '[WH] material gate: king-tyrant-attire1 blocked (1 untextured)'; GLB inspection confirms exactly 1 of his 24 materials has no baseColorTexture. He IS rigged (skin, 50 joints). His model was also absent from the game-requested path roster/king-tyrant/attires/attire1/model.glb in the repo snapshot (it lives at game/assets/models/king-tyrant.glb, 25,643,940 B) \u2014 placed locally to reach the gate. Fix belongs to the model lane: bake the missing texture, and put the file at the requested roster path.",
+   "status": "cannot-instance",
+   "error": "gate-failed (cannot instance)"
+  },
+  {
+   "fighter": "burger",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 6.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 7.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 12.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 12.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 16.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 16.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 20.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 18.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 17.4,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 9,
+    "throw connects (damage)": 1
    },
-   {
-    "dmg": 6.1,
-    "press": "true",
-    "throwSeen": false,
-    "phase": "attack:1",
-    "frames": 11
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/burger-fight-20261103.mp4",
+   "frames": 122,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 6.4,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 11
+    },
+    {
+     "dmg": 12.8,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 15
+    },
+    {
+     "dmg": 17.4,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 56
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "awapop",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 13.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 17.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 7.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 15.6,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 9.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 4.6,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 20.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 17.4,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 9,
+    "throw connects (damage)": 1
    },
-   {
-    "dmg": 18.5,
-    "press": "true",
-    "throwSeen": false,
-    "phase": "attack:d/f+2",
-    "frames": 17
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/awapop-fight-20261103.mp4",
+   "frames": 115,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 2.8,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 11
+    },
+    {
+     "dmg": 11,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 15
+    },
+    {
+     "dmg": 17.4,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 49
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "scimitar",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 6.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 6.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 6.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 14.7,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 14.7,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 14.7,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 19.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 17.4,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 9,
+    "throw connects (damage)": 1
    },
-   {
-    "dmg": 0,
-    "press": "true",
-    "throwSeen": true,
-    "phase": "grapple:1+3",
-    "frames": 33
-   }
-  ],
-  "frames": 101,
-  "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos/demonio-fight-20261103.mp4"
- },
- {
-  "fighter": "phantom",
-  "p2": "pantera",
-  "error": "gate-failed (cannot instance)"
- },
- {
-  "fighter": "diablo",
-  "p2": "pantera",
-  "error": "gate-failed (cannot instance)"
- },
- {
-  "fighter": "diablo",
-  "p2": "pantera",
-  "error": "gate-failed (cannot instance)"
- }
-]
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/scimitar-fight-20261103.mp4",
+   "frames": 103,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 6.4,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 14
+    },
+    {
+     "dmg": 11.9,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 15
+    },
+    {
+     "dmg": 17.4,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 34
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "purplerain",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 12.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 8.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 8.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 22.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 9.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "dead",
+     "press": "false",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": null
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 20.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 17.4,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 8,
+    "dead": 1,
+    "throw connects (damage)": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/purplerain-fight-20261103.mp4",
+   "frames": 99,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 2.8,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 11
+    },
+    {
+     "dmg": 11,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 15
+    },
+    {
+     "dmg": 17.4,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 33
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "nightwolf",
+   "note": "Blocked by the game's MATERIAL GATE class: model serves 200 at the game-requested path roster/nightwolf/attires/attire1/model.glb (verified in server log; file lives at game/assets/models/nightwolf.glb in the repo) and his moveset loads, yet quick-start never spawns him; GLB inspection shows 2 of his 37 materials have no baseColorTexture (the gate's block condition \u2014 cf. kingtyrant's captured gate error). He IS rigged (skin, 50 joints). Fix belongs to the model lane: bake the missing textures.",
+   "status": "cannot-instance",
+   "error": "gate-failed (cannot instance)"
+  },
+  {
+   "fighter": "dio",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 15.7,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 13.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 20.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 9.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 8.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 5.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 13.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 19.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    }
+   ],
+   "probe_summary": {
+    "correct": 8,
+    "fires-no-damage": 2
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/dio-fight-20261103.mp4",
+   "frames": 91,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 15.7,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 14
+    },
+    {
+     "dmg": 0,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 17
+    },
+    {
+     "dmg": 15.4,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "grapple:1+3",
+     "frames": 20
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "cyborgx",
+   "note": "RESCUED in the local tree: the game requests roster/cyborg-x/attires/attire1/model.glb but the repo stores his model as model-rigged.glb in the same folder; probed + videoed with the repo's own GLB placed at the requested path. Repo wiring gap: the deployed build 404s his model until the file is renamed/placed as model.glb. (First video capture missed the fighters entirely \u2014 transient camera miss; the redo capture is the shipped one, frames verified.)",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 13.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 5.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 23.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": null
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 14.7,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 7.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 17.4,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 6,
+    "fires-no-damage": 3,
+    "throw connects (damage)": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/cyborgx-fight-20261103.mp4",
+   "frames": 101,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 2.8,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 11
+    },
+    {
+     "dmg": 14.7,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 16
+    },
+    {
+     "dmg": 17.4,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 34
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "michiko",
+   "note": "Blocked by the game's MATERIAL GATE class: the game requests roster/michiko/attires/attire1/model-rigged.glb (note: -rigged filename); with the repo GLB (game/assets/models/michiko.glb, 1,163,716 B) placed there it serves 200 and her moveset loads, yet quick-start never spawns her; GLB inspection shows her ONLY material (1 of 1) has no baseColorTexture \u2014 the gate's block condition. She IS rigged (skin, 33 joints). Fix belongs to the model lane: bake the missing texture.",
+   "status": "cannot-instance",
+   "error": "gate-failed (cannot instance)"
+  },
+  {
+   "fighter": "star",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 3.7,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 27.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 19.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 6.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 19,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 7.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 10.1,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 17.4,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 8,
+    "fires-no-damage": 1,
+    "throw connects (damage)": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/star-fight-20261103.mp4",
+   "frames": 101,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 2.8,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 11
+    },
+    {
+     "dmg": 7.3,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 16
+    },
+    {
+     "dmg": 17.4,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 34
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "torch",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 6.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 6.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 15.6,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 13.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 14.7,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 9.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 4.6,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 22,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 17.4,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 9,
+    "throw connects (damage)": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/torch-fight-20261103.mp4",
+   "frames": 100,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 6.4,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 11
+    },
+    {
+     "dmg": 11,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 15
+    },
+    {
+     "dmg": 17.4,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 34
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "bruno",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 3.7,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 17.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 7.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 31.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 17.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "dead",
+     "press": "false",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": null
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 5.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 7.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 8,
+    "dead": 1,
+    "fires-no-damage": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/bruno-fight-20261103.mp4",
+   "frames": 132,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 3.7,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 14
+    },
+    {
+     "dmg": 5.5,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 17
+    },
+    {
+     "dmg": 19.3,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 61
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "negativo",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 3.7,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 4.6,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 13.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 9.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 19.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "dead",
+     "press": "false",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": null
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 6.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 19,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 19.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    }
+   ],
+   "probe_summary": {
+    "correct": 9,
+    "dead": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/negativo-fight-20261103.mp4",
+   "frames": 91,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 3.7,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 14
+    },
+    {
+     "dmg": 18.4,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 17
+    },
+    {
+     "dmg": 0,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "grapple:1+3",
+     "frames": 20
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "thor",
+   "note": "RESCUED in the local tree: the game requests roster/thor/attires/attire1/model.glb but the repo stores his model as model-rerig.glb in the same folder; probed + videoed with the repo's own GLB (30,869,328 B) placed at the requested path. PERFECT probe. Repo wiring gap: the deployed build 404s his model until the file is renamed/placed as model.glb.",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 8.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 18.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 13.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 38.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 19.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 8.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 20.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 8.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 19.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 19.3,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 9,
+    "throw connects (damage)": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/thor-fight-20261103.mp4",
+   "frames": 109,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 8.3,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 14
+    },
+    {
+     "dmg": 8.3,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 21
+    },
+    {
+     "dmg": 0,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 34
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "yukihyo",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 5.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 8.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 7.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 16.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 6.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 14.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 17.4,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 9,
+    "throw connects (damage)": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/yukihyo-fight-20261103.mp4",
+   "frames": 89,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 2.8,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 11
+    },
+    {
+     "dmg": 23,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 17
+    },
+    {
+     "dmg": 0,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "grapple:1+3",
+     "frames": 21
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "slice",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 5.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 5.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 5.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 16.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 6.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 9.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 7.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 16.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 17.4,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 9,
+    "throw connects (damage)": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/slice-fight-20261103.mp4",
+   "frames": 89,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 2.8,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 11
+    },
+    {
+     "dmg": 19.3,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 17
+    },
+    {
+     "dmg": 0,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "grapple:1+3",
+     "frames": 21
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "docfrank",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 1.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 7.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 10.1,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 3.7,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 1.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 8.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 8.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 13.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 18.3,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 8,
+    "fires-no-damage": 1,
+    "throw connects (damage)": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/docfrank-fight-20261103.mp4",
+   "frames": 157,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 1.8,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 10
+    },
+    {
+     "dmg": 8.3,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 16
+    },
+    {
+     "dmg": 18.3,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 91
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "baek-master-white",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 6.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 13.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": null
+    },
+    {
+     "input": "1+2",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": null
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 6.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "dead",
+     "press": "false",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": null
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 8.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 19.3,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 6,
+    "fires-no-damage": 2,
+    "dead": 1,
+    "throw connects (damage)": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/baek-master-white-fight-20261103.mp4",
+   "frames": 107,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 6.4,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 14
+    },
+    {
+     "dmg": 8.3,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 21
+    },
+    {
+     "dmg": 19.3,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 32
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "mariposa-monarch",
+   "note": "RESCUED in the local tree: her model lives in the repo at roster/zafina/attires/butterfly-default/mariposa-butterfly-default.glb (5,840,076 B, Zafina-base Monarch reskin); probed + videoed with it placed at the game-requested roster/mariposa-monarch/attires/attire1/model.glb. Repo wiring gap: the deployed build cannot reach her model at the requested path. (First video capture had the camera under the stage \u2014 transient; the redo capture is the shipped one, frames verified.)",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 3.7,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 8.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 22.1,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 5.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 5.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 14.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 7.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 17.4,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 8,
+    "fires-no-damage": 1,
+    "throw connects (damage)": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/mariposa-monarch-fight-20261103.mp4",
+   "frames": 89,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 2.8,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 11
+    },
+    {
+     "dmg": 18.4,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 17
+    },
+    {
+     "dmg": 0,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "grapple:1+3",
+     "frames": 21
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "dxmmii-patchwork",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 4.6,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 14.7,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 12.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 6.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": null
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 19.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "dead",
+     "press": "false",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": null
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 24.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 13.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 19.3,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 7,
+    "fires-no-damage": 1,
+    "dead": 1,
+    "throw connects (damage)": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/dxmmii-patchwork-fight-20261103.mp4",
+   "frames": 107,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 4.6,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 15
+    },
+    {
+     "dmg": 16.5,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 17
+    },
+    {
+     "dmg": 19.3,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 35
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "charger",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 10,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 12,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 10,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 7,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "dead",
+     "press": "false",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": null
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 14,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "dead",
+     "press": "false",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": null
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 12,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 25,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 7,
+    "dead": 2,
+    "throw connects (damage)": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/charger-fight-20261103.mp4",
+   "frames": 90,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 10,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 14
+    },
+    {
+     "dmg": 0,
+     "press": "false",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 5
+    },
+    {
+     "dmg": 25,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 31
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "dorowani",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 9.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 9.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 9.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 13.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 22.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 4.6,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "dead",
+     "press": "false",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": null
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "dead",
+     "press": "false",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": null
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 27.5,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 7,
+    "dead": 2,
+    "throw connects (damage)": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/dorowani-fight-20261103.mp4",
+   "frames": 118,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 9.2,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 10
+    },
+    {
+     "dmg": 0,
+     "press": "false",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 5
+    },
+    {
+     "dmg": 27.5,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 63
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "chatur",
+   "note": "No bank yet (TTT2 lane: True Ogre has no TTT2 moveset file; only Ancient Ogre) \u2014 pose-only video.",
+   "bank": null,
+   "mode": "pose-only",
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/chatur-fight-20261103.mp4",
+   "frames": 50,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 50
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "pond",
+   "note": "Real T7 Raven bank merged in PR #1550; confirmation probe only \u2014 proof video already delivered by the T7 lane.",
+   "bank": null,
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 4.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 7.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 9.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 14.7,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 5.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 15.8,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 8,
+    "fires-no-damage": 1,
+    "throw connects (damage)": 1
+   },
+   "status": "probed"
+  },
+  {
+   "fighter": "ryusan",
+   "note": "Real T7 Lucky Chloe bank merged in PR #1550; confirmation probe only \u2014 proof video already delivered by the T7 lane.",
+   "bank": null,
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 6.1,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 8.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 10.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 13.1,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 5.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.6,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 12.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 7,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 30.6,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 9,
+    "throw connects (damage)": 1
+   },
+   "status": "probed"
+  },
+  {
+   "fighter": "tobi",
+   "note": "Hwoarang bank.",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 4.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 6.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 4.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 5.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 15,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 7,
+    "fires-no-damage": 2,
+    "throw connects (damage)": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/tobi-fight-20261103.mp4",
+   "frames": 87,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 2.4,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 11
+    },
+    {
+     "dmg": 17.5,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 15
+    },
+    {
+     "dmg": 0,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "grapple:1+3",
+     "frames": 21
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "megami",
+   "note": "Probed on the merged no-outfit variant (PR #1549, outfit-not-the-gate rule); UNBANKED \u2014 awaits the Jun bank from the TTT2 lane.",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 6.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 7.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 12.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 15.6,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 16.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 9.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "dead",
+     "press": "false",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": null
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 12.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 5.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 32.1,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 8,
+    "dead": 1,
+    "throw connects (damage)": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/megami-fight-20261103.mp4",
+   "frames": 85,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 6.4,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 5
+    },
+    {
+     "dmg": 12.8,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 7
+    },
+    {
+     "dmg": 32.1,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 33
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "menajerii",
+   "note": "Fights on the kuma STAND-IN bank (own Roger Jr. bank blocked on the TTT2 XEX lane).",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 6.7,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 24,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 15.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 16.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 5.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "dead",
+     "press": "false",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": null
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 14.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "dead",
+     "press": "false",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": null
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 33.5,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 7,
+    "dead": 2,
+    "throw connects (damage)": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/menajerii-fight-20261103.mp4",
+   "frames": 85,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 6.7,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 5
+    },
+    {
+     "dmg": 14.4,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 7
+    },
+    {
+     "dmg": 33.5,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 33
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "kronos",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 13.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 13.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 16.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 15,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 30,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 6.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 18.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 21.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 10,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 35,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 9,
+    "throw connects (damage)": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/kronos-fight-20261103.mp4",
+   "frames": 107,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 13.8,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 14
+    },
+    {
+     "dmg": 21.3,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 20
+    },
+    {
+     "dmg": 35,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 33
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "deathfang",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 1.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 1.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 1.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 1.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 19.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "dead",
+     "press": "false",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": null
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 14.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 24.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 1.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 15.3,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 8,
+    "dead": 1,
+    "throw connects (damage)": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/deathfang-fight-20261103.mp4",
+   "frames": 154,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 1.9,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 8
+    },
+    {
+     "dmg": 24.9,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 14
+    },
+    {
+     "dmg": 15.3,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 92
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "ryuji",
+   "note": "Select-hidden original; hybrid by design (evidence-closed 2026-11-03). Probed as P2.",
+   "status": "cannot-instance",
+   "error": "gate-failed (cannot instance)"
+  },
+  {
+   "fighter": "ryuji-rock",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "dead",
+     "press": "false",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": null
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 16.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "dead",
+     "press": "false",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": null
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 23.6,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 7,
+    "dead": 2,
+    "throw connects (damage)": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/ryuji-rock-fight-20261103.mp4",
+   "frames": 91,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 2.3,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 8
+    },
+    {
+     "dmg": 0,
+     "press": "false",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 5
+    },
+    {
+     "dmg": 23.6,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 38
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "koreshi",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 10.1,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 31.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 10.1,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 4.6,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 13.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 7.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 19.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 32.1,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 8,
+    "fires-no-damage": 1,
+    "throw connects (damage)": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/koreshi-fight-20261103.mp4",
+   "frames": 100,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 10.1,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 14
+    },
+    {
+     "dmg": 7.3,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 12
+    },
+    {
+     "dmg": 32.1,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 34
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "rave",
+   "note": "Renders untextured white in the local tree (his texture pack is bucket-served and was not vendored); wiring probe unaffected. His wide-armed stance silhouette is his Lei-style rig at capture resolution.",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 15.7,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 5.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 24.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "dead",
+     "press": "false",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": null
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 6.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 9.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 19.3,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 6,
+    "fires-no-damage": 2,
+    "dead": 1,
+    "throw connects (damage)": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/rave-fight-20261103.mp4",
+   "frames": 91,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 15.7,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 14
+    },
+    {
+     "dmg": 0,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 17
+    },
+    {
+     "dmg": 0,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "grapple:1+3",
+     "frames": 20
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "buffalo-bill",
+   "note": "RESCUED in the local tree: the game requests roster/buffalo-bill/attires/attire3/model.glb but the repo stores his model as model-rigged.glb in the same folder; probed + videoed with the repo's own GLB (30,836,224 B) placed at the requested path. Repo wiring gap: the deployed build 404s his model until the file is renamed/placed as model.glb.",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 3.7,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 6.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 10.1,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 5.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 7.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 14.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 17.4,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 7,
+    "fires-no-damage": 2,
+    "throw connects (damage)": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/buffalo-bill-fight-20261103.mp4",
+   "frames": 87,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 2.8,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 11
+    },
+    {
+     "dmg": 18.4,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 15
+    },
+    {
+     "dmg": 0,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "grapple:1+3",
+     "frames": 21
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "vainabel",
+   "note": "The pass's one clear WRONG: his 1+2 fires a THROW (grab-class clip, 22.9 dmg) on a strike input, and his 1+3 throw animates but deals 0 damage \u2014 his throw/strike wiring is crossed (see probe rows).",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 7.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 7.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 7.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 17.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "WRONG-throw-on-strike-input",
+     "press": "true",
+     "row": null,
+     "dmg": 22.9,
+     "sawThrow": true,
+     "atkName": "1+2",
+     "isGrab": true
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 8.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw animates, 0 damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 8,
+    "WRONG-throw-on-strike-input": 1,
+    "throw animates, 0 damage": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/vainabel-fight-20261103.mp4",
+   "frames": 115,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 7.3,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 19
+    },
+    {
+     "dmg": 8.3,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 21
+    },
+    {
+     "dmg": 19.3,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 35
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "cainelias",
+   "note": "MODEL DEFECT (for the rig lane): his model renders at MINIATURE scale from spawn (a tiny figure beside full-size opponents in every frame) \u2014 the wiring probe is fully functional (9 damaging + throw), but the model's scale is broken. The shipped video is the honest proof of the defect.",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 6.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 8.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 16.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 6.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "dead",
+     "press": "false",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": null
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 11,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 22,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 8,
+    "dead": 1,
+    "throw connects (damage)": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/cainelias-fight-20261103.mp4",
+   "frames": 112,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 6.4,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 14
+    },
+    {
+     "dmg": 11,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 20
+    },
+    {
+     "dmg": 22,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 38
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "chordz",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 5.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 8.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 13.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 6.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "dead",
+     "press": "false",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": null
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 7.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 18.1,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 7,
+    "fires-no-damage": 2,
+    "dead": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/chordz-fight-20261103.mp4",
+   "frames": 133,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 2.8,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 11
+    },
+    {
+     "dmg": 7.3,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 15
+    },
+    {
+     "dmg": 17.4,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 67
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "gashadokuro",
+   "note": "MODEL DEFECT (for the rig lane): his kuma-a1.glb renders as a tiny flat skeleton lying on the ground in every phase \u2014 the wiring probe is fully functional, but the MODEL is broken (scale/rig). The shipped video is the honest proof of the defect.",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 12.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 24.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 18.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 5.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 10.1,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 8,
+    "fires-no-damage": 2
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/gashadokuro-fight-20261103.mp4",
+   "frames": 101,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 2.8,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 11
+    },
+    {
+     "dmg": 5.5,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 17
+    },
+    {
+     "dmg": 17.4,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 33
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "aotsuki",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 5.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 12.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 8.1,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 20.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 5.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 10.1,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 17.4,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 9,
+    "throw connects (damage)": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/aotsuki-fight-20261103.mp4",
+   "frames": 147,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 2.8,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 11
+    },
+    {
+     "dmg": 5.5,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 17
+    },
+    {
+     "dmg": 17.4,
+     "press": "true",
+     "throwSeen": true,
+     "phase": "grapple:1+3",
+     "frames": 79
+    }
+   ],
+   "status": "probed"
+  },
+  {
+   "fighter": "silvertongue",
+   "bank": null,
+   "mode": "probe+video",
+   "probe": [
+    {
+     "input": "1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 2.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "2",
+     "verdict": "fires-no-damage",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "3",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 6.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 8.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 14.7,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 5.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d+1",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 5.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "d/f+2",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 7.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "u/f+4",
+     "verdict": "correct",
+     "press": "true",
+     "row": null,
+     "dmg": 15.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false
+    },
+    {
+     "input": "1+3",
+     "verdict": "throw connects (damage)",
+     "press": "true",
+     "row": null,
+     "dmg": 17.4,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true
+    }
+   ],
+   "probe_summary": {
+    "correct": 8,
+    "fires-no-damage": 1,
+    "throw connects (damage)": 1
+   },
+   "video": "/home/hatch/workspace/_pantera-wiring-20261103/roster-videos-main/silvertongue-fight-20261103.mp4",
+   "frames": 89,
+   "video_phases": [
+    {
+     "dmg": 0,
+     "phase": "idle-pose",
+     "frames": 40
+    },
+    {
+     "dmg": 2.8,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:1",
+     "frames": 11
+    },
+    {
+     "dmg": 19.3,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "attack:d/f+2",
+     "frames": 17
+    },
+    {
+     "dmg": 0,
+     "press": "true",
+     "throwSeen": false,
+     "phase": "grapple:1+3",
+     "frames": 21
+    }
+   ],
+   "status": "probed"
+  }
+ ]
+}
