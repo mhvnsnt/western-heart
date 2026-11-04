@@ -1,0 +1,35 @@
+{
+ "format": "ttt2-join-banks/1",
+ "rule": "anim_ref = (bank << 14) | index. Bank rule source: the shipped T7 lane resolver (tools on main from PR #1550): 0x4000 = per-character table, 0x8000 = common table, 0x0000 = motbin own first MOTA block. Confirmed on TTT2 data by the validations below.",
+ "bank0": {
+  "where": "the character own first trailing MOTA table inside data006 (after the motbin pool)",
+  "evidence": "Paul: exactly 4 bank-0 anims (item anims idx 0..3) and a 4-entry table at data006 file 0xD9C7C whose entries 1..3 are real clips (entry 0 is the null slot). Roger and Jun bank-0 sets are also exactly idx 0..3."
+ },
+ "bank1": {
+  "where": "one big MOTA table per character inside data005-decoded.bin",
+  "paul": {
+   "table_file_offset": 320,
+   "count": 549
+  },
+  "roger": {
+   "table_file_offset": 90926084,
+   "count": 509,
+   "validation": "68/89 shared bank-1 anims have identical (type, tracks, frames, byte size) clip fingerprints vs Paul table; next-best table 24/89"
+  },
+  "jun": {
+   "table_file_offset": 193068196,
+   "count": 596,
+   "validation": "35/41 shared bank-1 anims have identical clip fingerprints vs Paul table"
+  }
+ },
+ "bank2": {
+  "where": "data004-decoded.bin table @0x100",
+  "table_file_offset": 256,
+  "count": 1875,
+  "validation": "cross-character index agreement is exact: all 922 bank-2 anims shared by Paul and Roger carry identical indices (all 87 Paul/Roger disagreements are bank-1); max bank-2 index used by any cleanly parsed character is 1868-1873 < 1875"
+ },
+ "end_to_end_decode_proof": [
+  "Roger move Rg_sKAM00_ -> anim kjrg_kamae02(DVD) -> bank 1 idx 48 -> data005 @0x56b6c04 entry 48 -> tools/ttt2_mota_decode64.py decoded: 270 frames, 23 tracks (docs/proof/2026-11-04/ttt2-join/roger-stance-decoded.json)",
+  "Roger/Jun move Fall_sKAM -> anim naco_700dwn2(DVD) -> bank 2 idx 343 -> data004 @0x100 entry 343 -> decoded (docs/proof/2026-11-04/ttt2-join/common-fall-decoded.json)"
+ ]
+}

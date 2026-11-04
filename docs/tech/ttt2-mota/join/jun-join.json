@@ -1,0 +1,6002 @@
+{
+ "format": "ttt2-join/1",
+ "character": "JUN_KAZAMA (Jun Kazama)",
+ "motbin": "data006-decoded.bin, block base 24097052 (file offset of [JUN_KAZAMA] name at 24097580)",
+ "record_layout": "unrotated (Kiloutre): name@+0x00 anim_name@+0x04 anim_ref@+0x08, record size 0x70, records begin mid-section at section_ptr + 0x5C + 585*0x70 (motOrigin at grid record 589)",
+ "anim_ref": "(bank << 14) | index; bank 0 = own trailing MOTA table in data006, bank 1 = data005 table @0xb81fca4 (596 entries), bank 2 = data004 table @0x100 (1875 entries)",
+ "notes": "Jun and the [Unknown] boss block share a moveset core; bank-1 indices are per-character (Jun idx != Unknown idx for the same anim), so this table uses Jun-block records only. Unknown-block records (1484, same layout, section phase 0x2C) are in unknown-join.json for reference; its bank-2 indices are interchangeable with Jun (shared common table).",
+ "records": [
+  {
+   "i": 4,
+   "name": "motOrigin",
+   "anim": "Bco_newjump2(DVD)",
+   "ref": 33077,
+   "bank": 2,
+   "idx": 309
+  },
+  {
+   "i": 5,
+   "name": "sDw_AIR00_",
+   "anim": "dwfkao00(DVD)",
+   "ref": 33078,
+   "bank": 2,
+   "idx": 310
+  },
+  {
+   "i": 6,
+   "name": "Tco_dwupR50",
+   "anim": "Tco_dwupR50(DVD)",
+   "ref": 33079,
+   "bank": 2,
+   "idx": 311
+  },
+  {
+   "i": 7,
+   "name": "Tco_dwupL50",
+   "anim": "Tco_dwupL50(DVD)",
+   "ref": 33080,
+   "bank": 2,
+   "idx": 312
+  },
+  {
+   "i": 8,
+   "name": "Tco_dwupU40",
+   "anim": "naco_dwupU40(DVD)",
+   "ref": 33081,
+   "bank": 2,
+   "idx": 313
+  },
+  {
+   "i": 9,
+   "name": "hrUpL50",
+   "anim": "naco_st2dwal(DVD)",
+   "ref": 33082,
+   "bank": 2,
+   "idx": 314
+  },
+  {
+   "i": 10,
+   "name": "hrUpR50",
+   "anim": "koco_st2dwar(DVD)",
+   "ref": 33083,
+   "bank": 2,
+   "idx": 315
+  },
+  {
+   "i": 11,
+   "name": "dwup_hei_xe",
+   "anim": "dwup_hei_xe(DVD)",
+   "ref": 33084,
+   "bank": 2,
+   "idx": 316
+  },
+  {
+   "i": 12,
+   "name": "dwup_heiB_xe",
+   "anim": "dwup_hei_xe(DVD)",
+   "ref": 33084,
+   "bank": 2,
+   "idx": 316
+  },
+  {
+   "i": 13,
+   "name": "dwup_heiL_xe",
+   "anim": "dwup_hei_xe(DVD)",
+   "ref": 33084,
+   "bank": 2,
+   "idx": 316
+  },
+  {
+   "i": 14,
+   "name": "dwup_heiR_xe",
+   "anim": "dwup_hei_xe(DVD)",
+   "ref": 33084,
+   "bank": 2,
+   "idx": 316
+  },
+  {
+   "i": 15,
+   "name": "dwup_hei_xU",
+   "anim": "naco_dwupheixeU(DVD)",
+   "ref": 33088,
+   "bank": 2,
+   "idx": 320
+  },
+  {
+   "i": 16,
+   "name": "dwup_hei_xe2",
+   "anim": "dwup_hei_xe(DVD)",
+   "ref": 33084,
+   "bank": 2,
+   "idx": 316
+  },
+  {
+   "i": 17,
+   "name": "dwup_heiB_xe2",
+   "anim": "dwup_hei_xe(DVD)",
+   "ref": 33084,
+   "bank": 2,
+   "idx": 316
+  },
+  {
+   "i": 18,
+   "name": "dwup_heiL_xe2",
+   "anim": "dwup_hei_xe(DVD)",
+   "ref": 33084,
+   "bank": 2,
+   "idx": 316
+  },
+  {
+   "i": 19,
+   "name": "dwup_heiR_xe2",
+   "anim": "dwup_hei_xe(DVD)",
+   "ref": 33084,
+   "bank": 2,
+   "idx": 316
+  },
+  {
+   "i": 20,
+   "name": "dwup_hei_xU2",
+   "anim": "naco_dwupheixeU(DVD)",
+   "ref": 33088,
+   "bank": 2,
+   "idx": 320
+  },
+  {
+   "i": 21,
+   "name": "dwup_hei_xe_ex",
+   "anim": "ozco_kuu_tataki2(DVD)",
+   "ref": 33094,
+   "bank": 2,
+   "idx": 326
+  },
+  {
+   "i": 22,
+   "name": "dwup_hei_xU_ex",
+   "anim": "ozco_kuu_head_tataki(DVD)",
+   "ref": 33095,
+   "bank": 2,
+   "idx": 327
+  },
+  {
+   "i": 23,
+   "name": "dwup_hei_xe_DA",
+   "anim": "koco_highbnc2(DVD)",
+   "ref": 33096,
+   "bank": 2,
+   "idx": 328
+  },
+  {
+   "i": 24,
+   "name": "dwup_hei_xU_DA",
+   "anim": "koco_highbnut(DVD)",
+   "ref": 33097,
+   "bank": 2,
+   "idx": 329
+  },
+  {
+   "i": 25,
+   "name": "Dw_AIR00_Png",
+   "anim": "dwfkao00(DVD)",
+   "ref": 33078,
+   "bank": 2,
+   "idx": 310
+  },
+  {
+   "i": 26,
+   "name": "aDw_UP_30R",
+   "anim": "Mco_Rdwup0U(DVD)",
+   "ref": 33099,
+   "bank": 2,
+   "idx": 331
+  },
+  {
+   "i": 27,
+   "name": "aDw_UP_U30R",
+   "anim": "koco_dwupo(DVD)",
+   "ref": 33100,
+   "bank": 2,
+   "idx": 332
+  },
+  {
+   "i": 28,
+   "name": "aDw_ym_y01R",
+   "anim": "ym_y01(DVD)",
+   "ref": 33101,
+   "bank": 2,
+   "idx": 333
+  },
+  {
+   "i": 29,
+   "name": "aDw_ym_yU01R",
+   "anim": "koco_y01r(DVD)",
+   "ref": 33102,
+   "bank": 2,
+   "idx": 334
+  },
+  {
+   "i": 30,
+   "name": "aDw_ym_y01L",
+   "anim": "Wco_ym_y01flp(DVD)",
+   "ref": 33103,
+   "bank": 2,
+   "idx": 335
+  },
+  {
+   "i": 31,
+   "name": "aDw_ym_yU01L",
+   "anim": "koco_y01l(DVD)",
+   "ref": 33104,
+   "bank": 2,
+   "idx": 336
+  },
+  {
+   "i": 32,
+   "name": "aDw_c_y00",
+   "anim": "c_y00(DVD)",
+   "ref": 34036,
+   "bank": 2,
+   "idx": 1268
+  },
+  {
+   "i": 33,
+   "name": "aDw_c_y00B",
+   "anim": "Hco_y_Bck00(DVD)",
+   "ref": 34079,
+   "bank": 2,
+   "idx": 1311
+  },
+  {
+   "i": 34,
+   "name": "aDw_y_mixrz",
+   "anim": "msco_y_mixrz(DVD)",
+   "ref": 33771,
+   "bank": 2,
+   "idx": 1003
+  },
+  {
+   "i": 35,
+   "name": "aDw_y_mixlz",
+   "anim": "msco_y_mixlz(DVD)",
+   "ref": 33105,
+   "bank": 2,
+   "idx": 337
+  },
+  {
+   "i": 36,
+   "name": "aDw_vertical",
+   "anim": "naco_vryara2(DVD)",
+   "ref": 33110,
+   "bank": 2,
+   "idx": 342
+  },
+  {
+   "i": 37,
+   "name": "Fall_sKAM",
+   "anim": "naco_700dwn2(DVD)",
+   "ref": 33111,
+   "bank": 2,
+   "idx": 343
+  },
+  {
+   "i": 38,
+   "name": "Fall_sKAMcrh",
+   "anim": "naco_700dwn2(DVD)",
+   "ref": 33111,
+   "bank": 2,
+   "idx": 343
+  },
+  {
+   "i": 39,
+   "name": "Fall_dwKAM",
+   "anim": "ozco_kuu_tataki_b(DVD)",
+   "ref": 33113,
+   "bank": 2,
+   "idx": 345
+  },
+  {
+   "i": 40,
+   "name": "Fall_rdwKAM",
+   "anim": "ozco_kuu_head_tataki(DVD)",
+   "ref": 33095,
+   "bank": 2,
+   "idx": 327
+  },
+  {
+   "i": 41,
+   "name": "Fall_Thr_dwKAM",
+   "anim": "ozco_kuu_tataki2(DVD)",
+   "ref": 33094,
+   "bank": 2,
+   "idx": 326
+  },
+  {
+   "i": 42,
+   "name": "Fall_Thr_rdwKAM",
+   "anim": "ozco_kuu_head_tataki(DVD)",
+   "ref": 33095,
+   "bank": 2,
+   "idx": 327
+  },
+  {
+   "i": 43,
+   "name": "FallBalconyFKAM",
+   "anim": "koco_go270hell(DVD)",
+   "ref": 33117,
+   "bank": 2,
+   "idx": 349
+  },
+  {
+   "i": 44,
+   "name": "FallBalBoundF",
+   "anim": "koco_hell270bounce(DVD)",
+   "ref": 33118,
+   "bank": 2,
+   "idx": 350
+  },
+  {
+   "i": 45,
+   "name": "FallBalconyBKAM",
+   "anim": "koco_go270bell(DVD)",
+   "ref": 33119,
+   "bank": 2,
+   "idx": 351
+  },
+  {
+   "i": 46,
+   "name": "FallBalBoundB",
+   "anim": "koco_bell270bounce(DVD)",
+   "ref": 33120,
+   "bank": 2,
+   "idx": 352
+  },
+  {
+   "i": 47,
+   "name": "Co_Change_Kam",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 48,
+   "name": "Co_ChgInNChg",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 49,
+   "name": "Co_StChgOutB",
+   "anim": "koco_chout_runaway(DVD)",
+   "ref": 33123,
+   "bank": 2,
+   "idx": 355
+  },
+  {
+   "i": 50,
+   "name": "Co_StChgOutBJmp",
+   "anim": "koco_chout_jumpaway(DVD)",
+   "ref": 33124,
+   "bank": 2,
+   "idx": 356
+  },
+  {
+   "i": 51,
+   "name": "Co_StChgOutF",
+   "anim": "koco_chout_runbaway(DVD)",
+   "ref": 33125,
+   "bank": 2,
+   "idx": 357
+  },
+  {
+   "i": 52,
+   "name": "Co_StChgOutFJmp",
+   "anim": "koco_chout_bjaway(DVD)",
+   "ref": 33126,
+   "bank": 2,
+   "idx": 358
+  },
+  {
+   "i": 53,
+   "name": "Co_StChgOutL",
+   "anim": "koco_chout_runlaway(DVD)",
+   "ref": 33127,
+   "bank": 2,
+   "idx": 359
+  },
+  {
+   "i": 54,
+   "name": "Co_StChgOutLJmp",
+   "anim": "koco_chout_ljaway(DVD)",
+   "ref": 33128,
+   "bank": 2,
+   "idx": 360
+  },
+  {
+   "i": 55,
+   "name": "Co_StChgOutR",
+   "anim": "koco_chout_runraway(DVD)",
+   "ref": 33129,
+   "bank": 2,
+   "idx": 361
+  },
+  {
+   "i": 56,
+   "name": "Co_StChgOutRJmp",
+   "anim": "koco_chout_rjaway(DVD)",
+   "ref": 33130,
+   "bank": 2,
+   "idx": 362
+  },
+  {
+   "i": 57,
+   "name": "Co_ChgInStd",
+   "anim": "koco_chin_run(DVD)",
+   "ref": 33131,
+   "bank": 2,
+   "idx": 363
+  },
+  {
+   "i": 58,
+   "name": "Co_ChgInStdBal00",
+   "anim": "kopl_kamae(DVD)",
+   "ref": 33132,
+   "bank": 2,
+   "idx": 364
+  },
+  {
+   "i": 59,
+   "name": "Co_ChgInStdBal01",
+   "anim": "kopl_kamae(DVD)",
+   "ref": 33132,
+   "bank": 2,
+   "idx": 364
+  },
+  {
+   "i": 60,
+   "name": "Co_ChgInStdBal",
+   "anim": "koco_chin_run125(DVD)",
+   "ref": 33134,
+   "bank": 2,
+   "idx": 366
+  },
+  {
+   "i": 61,
+   "name": "Co_ChgInStdBalSolo",
+   "anim": "koco_chin_run125(DVD)",
+   "ref": 33134,
+   "bank": 2,
+   "idx": 366
+  },
+  {
+   "i": 62,
+   "name": "Co_ChgInStdAuto",
+   "anim": "koco_chin_run(DVD)",
+   "ref": 33131,
+   "bank": 2,
+   "idx": 363
+  },
+  {
+   "i": 63,
+   "name": "At_ChgInStdAuto",
+   "anim": "koco_chin_run(DVD)",
+   "ref": 33131,
+   "bank": 2,
+   "idx": 363
+  },
+  {
+   "i": 64,
+   "name": "Co_ChgInNChgAuto",
+   "anim": "koco_chin_run(DVD)",
+   "ref": 33131,
+   "bank": 2,
+   "idx": 363
+  },
+  {
+   "i": 65,
+   "name": "At_ChgInStdAuto_Lw",
+   "anim": "koco_chin_run(DVD)",
+   "ref": 33131,
+   "bank": 2,
+   "idx": 363
+  },
+  {
+   "i": 66,
+   "name": "At_ChgInStdAuto_Ft",
+   "anim": "koco_chin_run(DVD)",
+   "ref": 33131,
+   "bank": 2,
+   "idx": 363
+  },
+  {
+   "i": 67,
+   "name": "Co_ChgInJmp",
+   "anim": "koco_chin_zuzaaa150(DVD)",
+   "ref": 33141,
+   "bank": 2,
+   "idx": 373
+  },
+  {
+   "i": 68,
+   "name": "Co_ChgInJmpBalS",
+   "anim": "koco_chin_zuzaaa150(DVD)",
+   "ref": 33141,
+   "bank": 2,
+   "idx": 373
+  },
+  {
+   "i": 69,
+   "name": "At_ChgInJmp",
+   "anim": "koco_chin_zuzaaa150(DVD)",
+   "ref": 33141,
+   "bank": 2,
+   "idx": 373
+  },
+  {
+   "i": 70,
+   "name": "At_ChgInJmpNear",
+   "anim": "koco_chin_zuzaaa150(DVD)",
+   "ref": 33141,
+   "bank": 2,
+   "idx": 373
+  },
+  {
+   "i": 71,
+   "name": "At_ChgInJmp_Lw",
+   "anim": "koco_chin_zuzaaa150(DVD)",
+   "ref": 33141,
+   "bank": 2,
+   "idx": 373
+  },
+  {
+   "i": 72,
+   "name": "ChgInJmpDA",
+   "anim": "koco_chin_zuzaaa150(DVD)",
+   "ref": 33141,
+   "bank": 2,
+   "idx": 373
+  },
+  {
+   "i": 73,
+   "name": "Co_ChgInHelpNew",
+   "anim": "koco_chin_xchop(DVD)",
+   "ref": 33147,
+   "bank": 2,
+   "idx": 379
+  },
+  {
+   "i": 74,
+   "name": "Co_ChgInHelpNew2",
+   "anim": "koco_chin_xchop(DVD)",
+   "ref": 33147,
+   "bank": 2,
+   "idx": 379
+  },
+  {
+   "i": 75,
+   "name": "Co_ChgInHelpNewG",
+   "anim": "koco_chin_xchop(DVD)",
+   "ref": 33147,
+   "bank": 2,
+   "idx": 379
+  },
+  {
+   "i": 76,
+   "name": "sDm_helpF36",
+   "anim": "kmco_yco_fuj_yar(DVD)",
+   "ref": 33150,
+   "bank": 2,
+   "idx": 382
+  },
+  {
+   "i": 77,
+   "name": "sDm_helpL36",
+   "anim": "Nco_yl_legha(DVD)",
+   "ref": 33151,
+   "bank": 2,
+   "idx": 383
+  },
+  {
+   "i": 78,
+   "name": "sDm_helpR36",
+   "anim": "Nco_yr_legha(DVD)",
+   "ref": 33152,
+   "bank": 2,
+   "idx": 384
+  },
+  {
+   "i": 79,
+   "name": "sDm_helpB36",
+   "anim": "Nco_yb_legha(DVD)",
+   "ref": 33153,
+   "bank": 2,
+   "idx": 385
+  },
+  {
+   "i": 80,
+   "name": "sGrd_help",
+   "anim": "naco_gkaka2(DVD)",
+   "ref": 33154,
+   "bank": 2,
+   "idx": 386
+  },
+  {
+   "i": 81,
+   "name": "At_StChgOutBJmp",
+   "anim": "koco_chout_jumpaway200(DVD)",
+   "ref": 16384,
+   "bank": 1,
+   "idx": 0
+  },
+  {
+   "i": 82,
+   "name": "At_StChgOutFJmp",
+   "anim": "koco_chout_bjaway(DVD)",
+   "ref": 33126,
+   "bank": 2,
+   "idx": 358
+  },
+  {
+   "i": 83,
+   "name": "Co_runchng",
+   "anim": "Gco_turnout(DVD)",
+   "ref": 33160,
+   "bank": 2,
+   "idx": 392
+  },
+  {
+   "i": 84,
+   "name": "Co_AoF_rn_Chg",
+   "anim": "koco_chout_ao2runfaway(DVD)",
+   "ref": 33161,
+   "bank": 2,
+   "idx": 393
+  },
+  {
+   "i": 85,
+   "name": "Co_AoB_rn_Chg",
+   "anim": "koco_chout_ao2runbaway(DVD)",
+   "ref": 33162,
+   "bank": 2,
+   "idx": 394
+  },
+  {
+   "i": 86,
+   "name": "Co_AoR_ds_Chg",
+   "anim": "koco_chout_ao2runraway(DVD)",
+   "ref": 33163,
+   "bank": 2,
+   "idx": 395
+  },
+  {
+   "i": 87,
+   "name": "Co_AoL_ds_Chg",
+   "anim": "koco_chout_ao2runlaway(DVD)",
+   "ref": 33164,
+   "bank": 2,
+   "idx": 396
+  },
+  {
+   "i": 88,
+   "name": "Co_AoF_Uk_Chg",
+   "anim": "koco_chout_ao2zenaway(DVD)",
+   "ref": 33165,
+   "bank": 2,
+   "idx": 397
+  },
+  {
+   "i": 89,
+   "name": "Co_AoB_Uk_Chg",
+   "anim": "koco_chout_ao2kouaway(DVD)",
+   "ref": 33166,
+   "bank": 2,
+   "idx": 398
+  },
+  {
+   "i": 90,
+   "name": "Co_AoR_Uk_Chg",
+   "anim": "koco_chout_ao2zenraway(DVD)",
+   "ref": 33167,
+   "bank": 2,
+   "idx": 399
+  },
+  {
+   "i": 91,
+   "name": "Co_AoL_Uk_Chg",
+   "anim": "koco_chout_ao2zenlaway(DVD)",
+   "ref": 33168,
+   "bank": 2,
+   "idx": 400
+  },
+  {
+   "i": 92,
+   "name": "Co_UFdsChg_",
+   "anim": "koco_chout_ut2runfaway(DVD)",
+   "ref": 33169,
+   "bank": 2,
+   "idx": 401
+  },
+  {
+   "i": 93,
+   "name": "Co_UBdsChg_",
+   "anim": "koco_chout_ut2runbaway(DVD)",
+   "ref": 33170,
+   "bank": 2,
+   "idx": 402
+  },
+  {
+   "i": 94,
+   "name": "Co_URdsChg_",
+   "anim": "koco_chout_ut2runraway(DVD)",
+   "ref": 33171,
+   "bank": 2,
+   "idx": 403
+  },
+  {
+   "i": 95,
+   "name": "Co_ULdsChg_",
+   "anim": "koco_chout_ut2runlaway(DVD)",
+   "ref": 33172,
+   "bank": 2,
+   "idx": 404
+  },
+  {
+   "i": 96,
+   "name": "Co_UtF_Uk_Chg",
+   "anim": "koco_chout_ut2zenaway(DVD)",
+   "ref": 33173,
+   "bank": 2,
+   "idx": 405
+  },
+  {
+   "i": 97,
+   "name": "Co_UtB_Uk_Chg",
+   "anim": "koco_chout_ut2kouaway(DVD)",
+   "ref": 33174,
+   "bank": 2,
+   "idx": 406
+  },
+  {
+   "i": 98,
+   "name": "Co_UtR_Uk_Chg",
+   "anim": "koco_chout_ut2zenraway(DVD)",
+   "ref": 33175,
+   "bank": 2,
+   "idx": 407
+  },
+  {
+   "i": 99,
+   "name": "Co_UtL_Uk_Chg",
+   "anim": "koco_chout_ut2zenlaway(DVD)",
+   "ref": 33176,
+   "bank": 2,
+   "idx": 408
+  },
+  {
+   "i": 100,
+   "name": "Co_Chg_Trn",
+   "anim": "Gco_turnout(DVD)",
+   "ref": 33160,
+   "bank": 2,
+   "idx": 392
+  },
+  {
+   "i": 101,
+   "name": "Co_Chg_TrnE",
+   "anim": "Gco_turnout2(DVD)",
+   "ref": 33178,
+   "bank": 2,
+   "idx": 410
+  },
+  {
+   "i": 102,
+   "name": "DA_KamDash",
+   "anim": "toju_fwalk00(DVD)",
+   "ref": 16385,
+   "bank": 1,
+   "idx": 1
+  },
+  {
+   "i": 103,
+   "name": "Co_DA_Ground",
+   "anim": "koco_tafk2(DVD)",
+   "ref": 16386,
+   "bank": 1,
+   "idx": 2
+  },
+  {
+   "i": 104,
+   "name": "Co_DA_Ground2",
+   "anim": "koco_tafk2(DVD)",
+   "ref": 16386,
+   "bank": 1,
+   "idx": 2
+  },
+  {
+   "i": 105,
+   "name": "Co_DA_Ground_H",
+   "anim": "koco_tafk2(DVD)",
+   "ref": 16386,
+   "bank": 1,
+   "idx": 2
+  },
+  {
+   "i": 106,
+   "name": "sGrd_DA_KAK",
+   "anim": "amco_y_kaka(DVD)",
+   "ref": 33179,
+   "bank": 2,
+   "idx": 411
+  },
+  {
+   "i": 107,
+   "name": "sDm_DA_Ground",
+   "anim": "koco_highbnc2(DVD)",
+   "ref": 33096,
+   "bank": 2,
+   "idx": 328
+  },
+  {
+   "i": 108,
+   "name": "sDm_DA_GroundB",
+   "anim": "koco_highbnut(DVD)",
+   "ref": 33097,
+   "bank": 2,
+   "idx": 329
+  },
+  {
+   "i": 109,
+   "name": "sDm_sohek1C_DA",
+   "anim": "Yco_succes(DVD)",
+   "ref": 33182,
+   "bank": 2,
+   "idx": 414
+  },
+  {
+   "i": 110,
+   "name": "Thrmv_2ptN00",
+   "anim": "msco_rtukami(DVD)",
+   "ref": 16389,
+   "bank": 1,
+   "idx": 5
+  },
+  {
+   "i": 111,
+   "name": "ThrMvBB2pt_R0",
+   "anim": "Yco_BcatchS(DVD)",
+   "ref": 33183,
+   "bank": 2,
+   "idx": 415
+  },
+  {
+   "i": 112,
+   "name": "Co_2pt_GrpS_n",
+   "anim": "amco_tag_ddt_f(DVD)",
+   "ref": 33184,
+   "bank": 2,
+   "idx": 416
+  },
+  {
+   "i": 113,
+   "name": "Co_2pt_GrpS_y",
+   "anim": "amco_tag_ddt_y(DVD)",
+   "ref": 33185,
+   "bank": 2,
+   "idx": 417
+  },
+  {
+   "i": 114,
+   "name": "Co_2pt_GrpS_SB",
+   "anim": "amco_tag_ddt_s(DVD)",
+   "ref": 33186,
+   "bank": 2,
+   "idx": 418
+  },
+  {
+   "i": 115,
+   "name": "Esc_Co_2pt_GrpS_n",
+   "anim": "amco_tag_ddt_nuke_f(DVD)",
+   "ref": 33187,
+   "bank": 2,
+   "idx": 419
+  },
+  {
+   "i": 116,
+   "name": "Esc_Co_2pt_GrpS_y",
+   "anim": "amco_tag_ddt_nuke_y(DVD)",
+   "ref": 33188,
+   "bank": 2,
+   "idx": 420
+  },
+  {
+   "i": 117,
+   "name": "Esc_Co_2pt_GrpS_SB",
+   "anim": "amco_tag_ddt_nuke_fs2(DVD)",
+   "ref": 33189,
+   "bank": 2,
+   "idx": 421
+  },
+  {
+   "i": 118,
+   "name": "Esc_Co_2pt_GrpS_ASB",
+   "anim": "amco_tag_ddt_nuke_ys(DVD)",
+   "ref": 33190,
+   "bank": 2,
+   "idx": 422
+  },
+  {
+   "i": 119,
+   "name": "Co_2pt_GrpWOMEN_n",
+   "anim": "cokm_tp_onna_f(DVD)",
+   "ref": 16390,
+   "bank": 1,
+   "idx": 6
+  },
+  {
+   "i": 120,
+   "name": "Co_2pt_GrpWOMEN_y",
+   "anim": "cokm_tp_onna_y(DVD)",
+   "ref": 16391,
+   "bank": 1,
+   "idx": 7
+  },
+  {
+   "i": 121,
+   "name": "Co_2pt_GrpWOMEN_SB",
+   "anim": "cokm_tp_onna_s(DVD)",
+   "ref": 16392,
+   "bank": 1,
+   "idx": 8
+  },
+  {
+   "i": 122,
+   "name": "Esc_Co_2pt_GrpWOMEN_n",
+   "anim": "cokm_tp_onna_nuke_f(DVD)",
+   "ref": 16393,
+   "bank": 1,
+   "idx": 9
+  },
+  {
+   "i": 123,
+   "name": "Esc_Co_2pt_GrpWOMEN_y",
+   "anim": "cokm_tp_onna_nuke_y(DVD)",
+   "ref": 16394,
+   "bank": 1,
+   "idx": 10
+  },
+  {
+   "i": 124,
+   "name": "Esc_Co_2pt_GrpWOMEN_SB",
+   "anim": "cokm_tp_onna_nuke_fs(DVD)",
+   "ref": 16395,
+   "bank": 1,
+   "idx": 11
+  },
+  {
+   "i": 125,
+   "name": "Esc_Co_2pt_GrpWOMEN_ASB",
+   "anim": "cokm_tp_onna_nuke_ys(DVD)",
+   "ref": 16396,
+   "bank": 1,
+   "idx": 12
+  },
+  {
+   "i": 126,
+   "name": "sRUN__00F",
+   "anim": "toju_run00(DVD)",
+   "ref": 16397,
+   "bank": 1,
+   "idx": 13
+  },
+  {
+   "i": 127,
+   "name": "sRUN__01F",
+   "anim": "Bco_run01(DVD)",
+   "ref": 16398,
+   "bank": 1,
+   "idx": 14
+  },
+  {
+   "i": 128,
+   "name": "sRUN__02F",
+   "anim": "Bco_run02(DVD)",
+   "ref": 32768,
+   "bank": 2,
+   "idx": 0
+  },
+  {
+   "i": 129,
+   "name": "sRUN__03F",
+   "anim": "Bco_run01(DVD)",
+   "ref": 16398,
+   "bank": 1,
+   "idx": 14
+  },
+  {
+   "i": 130,
+   "name": "Co_runchop",
+   "anim": "Bco_PSrunchop(DVD)",
+   "ref": 32850,
+   "bank": 2,
+   "idx": 82
+  },
+  {
+   "i": 131,
+   "name": "sGrd_YC00G",
+   "anim": "Zco_PSgu02(DVD)",
+   "ref": 33192,
+   "bank": 2,
+   "idx": 424
+  },
+  {
+   "i": 132,
+   "name": "Co_runrk00",
+   "anim": "koco_sliding(DVD)",
+   "ref": 16400,
+   "bank": 1,
+   "idx": 16
+  },
+  {
+   "i": 133,
+   "name": "sJUMP_00_",
+   "anim": "Bco_newjump2(DVD)",
+   "ref": 33077,
+   "bank": 2,
+   "idx": 309
+  },
+  {
+   "i": 134,
+   "name": "sJUMP_0E_",
+   "anim": "Bco_newjump2(DVD)",
+   "ref": 33077,
+   "bank": 2,
+   "idx": 309
+  },
+  {
+   "i": 135,
+   "name": "sJUMP_00F",
+   "anim": "Bco_newjump2(DVD)",
+   "ref": 33077,
+   "bank": 2,
+   "idx": 309
+  },
+  {
+   "i": 136,
+   "name": "sJUMP_00B",
+   "anim": "Bco_newjump2(DVD)",
+   "ref": 33077,
+   "bank": 2,
+   "idx": 309
+  },
+  {
+   "i": 137,
+   "name": "sJUMPr00H_",
+   "anim": "Bco_newjump2(DVD)",
+   "ref": 33077,
+   "bank": 2,
+   "idx": 309
+  },
+  {
+   "i": 138,
+   "name": "Co_jpRlk00_",
+   "anim": "Bco_newjump2(DVD)",
+   "ref": 33077,
+   "bank": 2,
+   "idx": 309
+  },
+  {
+   "i": 139,
+   "name": "Co_jpRrk00_",
+   "anim": "Bco_newjump2(DVD)",
+   "ref": 33077,
+   "bank": 2,
+   "idx": 309
+  },
+  {
+   "i": 140,
+   "name": "sJUMPrrp03B_",
+   "anim": "Bco_newjump2(DVD)",
+   "ref": 33077,
+   "bank": 2,
+   "idx": 309
+  },
+  {
+   "i": 141,
+   "name": "Co_jpRlk00B_",
+   "anim": "Bco_newjump2(DVD)",
+   "ref": 33077,
+   "bank": 2,
+   "idx": 309
+  },
+  {
+   "i": 142,
+   "name": "Co_jpRrk00B_",
+   "anim": "Bco_newjump2(DVD)",
+   "ref": 33077,
+   "bank": 2,
+   "idx": 309
+  },
+  {
+   "i": 143,
+   "name": "sJUMPrrp03F_",
+   "anim": "Bco_newjump2(DVD)",
+   "ref": 33077,
+   "bank": 2,
+   "idx": 309
+  },
+  {
+   "i": 144,
+   "name": "Co_jpRrk00F_",
+   "anim": "Bco_newjump2(DVD)",
+   "ref": 33077,
+   "bank": 2,
+   "idx": 309
+  },
+  {
+   "i": 145,
+   "name": "dwDWN_00U",
+   "anim": "DOWN_AO_TES(DVD)",
+   "ref": 16401,
+   "bank": 1,
+   "idx": 17
+  },
+  {
+   "i": 146,
+   "name": "dwDWN_10U",
+   "anim": "DOWN_AO_TES(DVD)",
+   "ref": 16401,
+   "bank": 1,
+   "idx": 17
+  },
+  {
+   "i": 147,
+   "name": "dwDWN_20U",
+   "anim": "DOWN_AO_TES(DVD)",
+   "ref": 16401,
+   "bank": 1,
+   "idx": 17
+  },
+  {
+   "i": 148,
+   "name": "dwDWN_30U",
+   "anim": "DOWN_AO_TES(DVD)",
+   "ref": 16401,
+   "bank": 1,
+   "idx": 17
+  },
+  {
+   "i": 149,
+   "name": "dwKAM_00U",
+   "anim": "DOWN_AO_TES(DVD)",
+   "ref": 16401,
+   "bank": 1,
+   "idx": 17
+  },
+  {
+   "i": 150,
+   "name": "dwChg_AoUke",
+   "anim": "DOWN_AO_TES(DVD)",
+   "ref": 16401,
+   "bank": 1,
+   "idx": 17
+  },
+  {
+   "i": 151,
+   "name": "dwChg_AoUkeHlp",
+   "anim": "DOWN_AO_TES(DVD)",
+   "ref": 16401,
+   "bank": 1,
+   "idx": 17
+  },
+  {
+   "i": 152,
+   "name": "dwDWN_01U",
+   "anim": "Mco_dwkam0(DVD)",
+   "ref": 16408,
+   "bank": 1,
+   "idx": 24
+  },
+  {
+   "i": 153,
+   "name": "dwDWN_01UE",
+   "anim": "Mco_dwkam0(DVD)",
+   "ref": 16408,
+   "bank": 1,
+   "idx": 24
+  },
+  {
+   "i": 154,
+   "name": "dwKAM_FFU",
+   "anim": "msco_dwkokyu(DVD)",
+   "ref": 16410,
+   "bank": 1,
+   "idx": 26
+  },
+  {
+   "i": 155,
+   "name": "dwMOV_L0R",
+   "anim": "Mco_A_Lroll(DVD)",
+   "ref": 33206,
+   "bank": 2,
+   "idx": 438
+  },
+  {
+   "i": 156,
+   "name": "dwMOV_L1R",
+   "anim": "msre_mov01r(DVD)",
+   "ref": 33207,
+   "bank": 2,
+   "idx": 439
+  },
+  {
+   "i": 157,
+   "name": "dwMOV_R0R",
+   "anim": "Mco_A_Rroll(DVD)",
+   "ref": 33208,
+   "bank": 2,
+   "idx": 440
+  },
+  {
+   "i": 158,
+   "name": "dwMOV_R1R",
+   "anim": "msco_au_rroll(DVD)",
+   "ref": 33209,
+   "bank": 2,
+   "idx": 441
+  },
+  {
+   "i": 159,
+   "name": "dwDWN_00D",
+   "anim": "msco_dwutkokyu(DVD)",
+   "ref": 16411,
+   "bank": 1,
+   "idx": 27
+  },
+  {
+   "i": 160,
+   "name": "dwDWN_100D",
+   "anim": "ozco_dwut3kokyu(DVD)",
+   "ref": 32769,
+   "bank": 2,
+   "idx": 1
+  },
+  {
+   "i": 161,
+   "name": "dwKAM_00D",
+   "anim": "msco_u_kokyu(DVD)",
+   "ref": 16412,
+   "bank": 1,
+   "idx": 28
+  },
+  {
+   "i": 162,
+   "name": "dwChg_UtUke",
+   "anim": "msco_u_kokyu(DVD)",
+   "ref": 16412,
+   "bank": 1,
+   "idx": 28
+  },
+  {
+   "i": 163,
+   "name": "dwChg_UtUkeHlp",
+   "anim": "msco_u_kokyu(DVD)",
+   "ref": 16412,
+   "bank": 1,
+   "idx": 28
+  },
+  {
+   "i": 164,
+   "name": "dwDWN_01D",
+   "anim": "msco_dwut2(DVD)",
+   "ref": 16415,
+   "bank": 1,
+   "idx": 31
+  },
+  {
+   "i": 165,
+   "name": "dwDWN_101D",
+   "anim": "msco_dwut3(DVD)",
+   "ref": 16416,
+   "bank": 1,
+   "idx": 32
+  },
+  {
+   "i": 166,
+   "name": "dwDWN_01DE",
+   "anim": "msco_dwut2(DVD)",
+   "ref": 16415,
+   "bank": 1,
+   "idx": 31
+  },
+  {
+   "i": 167,
+   "name": "dwKAM_FFD",
+   "anim": "msco_u_kokyu(DVD)",
+   "ref": 16412,
+   "bank": 1,
+   "idx": 28
+  },
+  {
+   "i": 168,
+   "name": "dwMOVrL0R",
+   "anim": "msco_u_l40(DVD)",
+   "ref": 33210,
+   "bank": 2,
+   "idx": 442
+  },
+  {
+   "i": 169,
+   "name": "dwMOVrL1R",
+   "anim": "Mco_U_L55(DVD)",
+   "ref": 33211,
+   "bank": 2,
+   "idx": 443
+  },
+  {
+   "i": 170,
+   "name": "dwMOVrR0R",
+   "anim": "msco_u_r40(DVD)",
+   "ref": 33212,
+   "bank": 2,
+   "idx": 444
+  },
+  {
+   "i": 171,
+   "name": "dwMOVrR1R",
+   "anim": "Mco_U_R55(DVD)",
+   "ref": 33213,
+   "bank": 2,
+   "idx": 445
+  },
+  {
+   "i": 172,
+   "name": "cOKI_00",
+   "anim": "Mco_aosha(DVD)",
+   "ref": 33214,
+   "bank": 2,
+   "idx": 446
+  },
+  {
+   "i": 173,
+   "name": "sOKI_00",
+   "anim": "Mco_aokam(DVD)",
+   "ref": 33215,
+   "bank": 2,
+   "idx": 447
+  },
+  {
+   "i": 174,
+   "name": "cOKI_C00",
+   "anim": "Mco_aosha(DVD)",
+   "ref": 33214,
+   "bank": 2,
+   "idx": 446
+  },
+  {
+   "i": 175,
+   "name": "sOKI_C00",
+   "anim": "Mco_aokam(DVD)",
+   "ref": 33215,
+   "bank": 2,
+   "idx": 447
+  },
+  {
+   "i": 176,
+   "name": "cOKI_L0",
+   "anim": "Mco_aoLTs1(DVD)",
+   "ref": 33218,
+   "bank": 2,
+   "idx": 450
+  },
+  {
+   "i": 177,
+   "name": "cOKI_L1",
+   "anim": "Mco_aoLTs2(DVD)",
+   "ref": 33219,
+   "bank": 2,
+   "idx": 451
+  },
+  {
+   "i": 178,
+   "name": "sOKI_L0",
+   "anim": "Mco_aoLT1(DVD)",
+   "ref": 33220,
+   "bank": 2,
+   "idx": 452
+  },
+  {
+   "i": 179,
+   "name": "sOKI_L1",
+   "anim": "Mco_aoLT2(DVD)",
+   "ref": 33221,
+   "bank": 2,
+   "idx": 453
+  },
+  {
+   "i": 180,
+   "name": "cOKI_R0",
+   "anim": "Mco_aoRTs1(DVD)",
+   "ref": 33222,
+   "bank": 2,
+   "idx": 454
+  },
+  {
+   "i": 181,
+   "name": "cOKI_R1",
+   "anim": "Mco_aoRTs2(DVD)",
+   "ref": 33223,
+   "bank": 2,
+   "idx": 455
+  },
+  {
+   "i": 182,
+   "name": "sOKI_R0",
+   "anim": "Mco_aoRT1(DVD)",
+   "ref": 33224,
+   "bank": 2,
+   "idx": 456
+  },
+  {
+   "i": 183,
+   "name": "sOKI_R1",
+   "anim": "Mco_aoRT2(DVD)",
+   "ref": 33225,
+   "bank": 2,
+   "idx": 457
+  },
+  {
+   "i": 184,
+   "name": "Co_AOzen",
+   "anim": "Mco_aozen(DVD)",
+   "ref": 33226,
+   "bank": 2,
+   "idx": 458
+  },
+  {
+   "i": 185,
+   "name": "Co_AOzenKiC",
+   "anim": "Mco_aozen(DVD)",
+   "ref": 33226,
+   "bank": 2,
+   "idx": 458
+  },
+  {
+   "i": 186,
+   "name": "Co_AOzenKiD",
+   "anim": "Mco_aozen(DVD)",
+   "ref": 33226,
+   "bank": 2,
+   "idx": 458
+  },
+  {
+   "i": 187,
+   "name": "Co_UTzen",
+   "anim": "Mco_utzen(DVD)",
+   "ref": 16419,
+   "bank": 1,
+   "idx": 35
+  },
+  {
+   "i": 188,
+   "name": "Co_UTzenKiC",
+   "anim": "Mco_utzen(DVD)",
+   "ref": 16419,
+   "bank": 1,
+   "idx": 35
+  },
+  {
+   "i": 189,
+   "name": "Co_UTzenKiD",
+   "anim": "Mco_utzen(DVD)",
+   "ref": 16419,
+   "bank": 1,
+   "idx": 35
+  },
+  {
+   "i": 190,
+   "name": "Co_zenCr00",
+   "anim": "Mco_Fshaga(DVD)",
+   "ref": 33229,
+   "bank": 2,
+   "idx": 461
+  },
+  {
+   "i": 191,
+   "name": "Co_zenCrL0",
+   "anim": "Mco_FLTs1(DVD)",
+   "ref": 33230,
+   "bank": 2,
+   "idx": 462
+  },
+  {
+   "i": 192,
+   "name": "Co_zenCrL1",
+   "anim": "Mco_FLTs2(DVD)",
+   "ref": 33231,
+   "bank": 2,
+   "idx": 463
+  },
+  {
+   "i": 193,
+   "name": "Co_zenCrR0",
+   "anim": "Mco_FRTs1(DVD)",
+   "ref": 33232,
+   "bank": 2,
+   "idx": 464
+  },
+  {
+   "i": 194,
+   "name": "Co_zenCrR1",
+   "anim": "Mco_FRTs2(DVD)",
+   "ref": 33233,
+   "bank": 2,
+   "idx": 465
+  },
+  {
+   "i": 195,
+   "name": "Co_zenSt00",
+   "anim": "Mco_Ftachi(DVD)",
+   "ref": 33234,
+   "bank": 2,
+   "idx": 466
+  },
+  {
+   "i": 196,
+   "name": "Co_zenStL0",
+   "anim": "Mco_FLT1(DVD)",
+   "ref": 33235,
+   "bank": 2,
+   "idx": 467
+  },
+  {
+   "i": 197,
+   "name": "Co_zenStL1",
+   "anim": "Mco_FLT2(DVD)",
+   "ref": 33236,
+   "bank": 2,
+   "idx": 468
+  },
+  {
+   "i": 198,
+   "name": "Co_zenStR0",
+   "anim": "Mco_FRT1(DVD)",
+   "ref": 33237,
+   "bank": 2,
+   "idx": 469
+  },
+  {
+   "i": 199,
+   "name": "Co_zenStR1",
+   "anim": "Mco_FRT2(DVD)",
+   "ref": 33238,
+   "bank": 2,
+   "idx": 470
+  },
+  {
+   "i": 200,
+   "name": "Co_AOkou",
+   "anim": "Mco_aokou(DVD)",
+   "ref": 33239,
+   "bank": 2,
+   "idx": 471
+  },
+  {
+   "i": 201,
+   "name": "Co_AOkouKiC",
+   "anim": "Mco_aokou(DVD)",
+   "ref": 33239,
+   "bank": 2,
+   "idx": 471
+  },
+  {
+   "i": 202,
+   "name": "Co_AOkouKiD",
+   "anim": "Mco_aokou(DVD)",
+   "ref": 33239,
+   "bank": 2,
+   "idx": 471
+  },
+  {
+   "i": 203,
+   "name": "Co_UTkou",
+   "anim": "Mco_utkou(DVD)",
+   "ref": 33242,
+   "bank": 2,
+   "idx": 474
+  },
+  {
+   "i": 204,
+   "name": "Co_UTkouKiC",
+   "anim": "Mco_utkou(DVD)",
+   "ref": 33242,
+   "bank": 2,
+   "idx": 474
+  },
+  {
+   "i": 205,
+   "name": "Co_UTkouKiD",
+   "anim": "Mco_utkou(DVD)",
+   "ref": 33242,
+   "bank": 2,
+   "idx": 474
+  },
+  {
+   "i": 206,
+   "name": "Co_kouCr00",
+   "anim": "Mco_Bshaga(DVD)",
+   "ref": 33245,
+   "bank": 2,
+   "idx": 477
+  },
+  {
+   "i": 207,
+   "name": "Co_kouSt00",
+   "anim": "Mco_Btachi(DVD)",
+   "ref": 33246,
+   "bank": 2,
+   "idx": 478
+  },
+  {
+   "i": 208,
+   "name": "Co_kouCrL0",
+   "anim": "Mco_BLTs1(DVD)",
+   "ref": 33247,
+   "bank": 2,
+   "idx": 479
+  },
+  {
+   "i": 209,
+   "name": "Co_kouCrL1",
+   "anim": "Mco_BLTs2(DVD)",
+   "ref": 33248,
+   "bank": 2,
+   "idx": 480
+  },
+  {
+   "i": 210,
+   "name": "Co_kouCrR0",
+   "anim": "Mco_BRTs1(DVD)",
+   "ref": 33249,
+   "bank": 2,
+   "idx": 481
+  },
+  {
+   "i": 211,
+   "name": "Co_kouCrR1",
+   "anim": "Mco_BRTs2(DVD)",
+   "ref": 33250,
+   "bank": 2,
+   "idx": 482
+  },
+  {
+   "i": 212,
+   "name": "Co_kouStL0",
+   "anim": "Mco_BLT1(DVD)",
+   "ref": 33251,
+   "bank": 2,
+   "idx": 483
+  },
+  {
+   "i": 213,
+   "name": "Co_kouStL1",
+   "anim": "Mco_BLT2(DVD)",
+   "ref": 33252,
+   "bank": 2,
+   "idx": 484
+  },
+  {
+   "i": 214,
+   "name": "Co_kouStR0",
+   "anim": "Mco_BRT1(DVD)",
+   "ref": 33253,
+   "bank": 2,
+   "idx": 485
+  },
+  {
+   "i": 215,
+   "name": "Co_kouStR1",
+   "anim": "Mco_BRT2(DVD)",
+   "ref": 33254,
+   "bank": 2,
+   "idx": 486
+  },
+  {
+   "i": 216,
+   "name": "Co_UToki",
+   "anim": "msco_utsoki(DVD)",
+   "ref": 16422,
+   "bank": 1,
+   "idx": 38
+  },
+  {
+   "i": 217,
+   "name": "Co_UTokiF",
+   "anim": "msco_utfoki(DVD)",
+   "ref": 32770,
+   "bank": 2,
+   "idx": 2
+  },
+  {
+   "i": 218,
+   "name": "Co_UTokiB",
+   "anim": "msco_utboki(DVD)",
+   "ref": 33255,
+   "bank": 2,
+   "idx": 487
+  },
+  {
+   "i": 219,
+   "name": "Co_UTokiCr_",
+   "anim": "Mco_utsha(DVD)",
+   "ref": 33256,
+   "bank": 2,
+   "idx": 488
+  },
+  {
+   "i": 220,
+   "name": "Co_UTokiSt_",
+   "anim": "Mco_utkam(DVD)",
+   "ref": 33257,
+   "bank": 2,
+   "idx": 489
+  },
+  {
+   "i": 221,
+   "name": "Co_UokiCrL0",
+   "anim": "Mco_utLTs1(DVD)",
+   "ref": 33258,
+   "bank": 2,
+   "idx": 490
+  },
+  {
+   "i": 222,
+   "name": "Co_UokiCrL1",
+   "anim": "Mco_utLTs2(DVD)",
+   "ref": 33259,
+   "bank": 2,
+   "idx": 491
+  },
+  {
+   "i": 223,
+   "name": "Co_UokiStL0",
+   "anim": "Mco_utLT1(DVD)",
+   "ref": 33260,
+   "bank": 2,
+   "idx": 492
+  },
+  {
+   "i": 224,
+   "name": "Co_UokiStL1",
+   "anim": "Mco_utLT2(DVD)",
+   "ref": 33261,
+   "bank": 2,
+   "idx": 493
+  },
+  {
+   "i": 225,
+   "name": "Wg_item_OKI",
+   "anim": "kmwg_kyon(DVD)",
+   "ref": 33262,
+   "bank": 2,
+   "idx": 494
+  },
+  {
+   "i": 226,
+   "name": "Wg_item_OKIlp",
+   "anim": "kmwg_kyon_walk(DVD)",
+   "ref": 33263,
+   "bank": 2,
+   "idx": 495
+  },
+  {
+   "i": 227,
+   "name": "Ni_Dwn_rk00",
+   "anim": "Tco_PSdwrkA(DVD)",
+   "ref": 33264,
+   "bank": 2,
+   "idx": 496
+  },
+  {
+   "i": 228,
+   "name": "Co_Aokilk00",
+   "anim": "naco_aolowk1(DVD)",
+   "ref": 33265,
+   "bank": 2,
+   "idx": 497
+  },
+  {
+   "i": 229,
+   "name": "Co_Aokirk00",
+   "anim": "naco_aomk1(DVD)",
+   "ref": 33266,
+   "bank": 2,
+   "idx": 498
+  },
+  {
+   "i": 230,
+   "name": "Co_AokilkL0",
+   "anim": "naco_aotlk1(DVD)",
+   "ref": 33267,
+   "bank": 2,
+   "idx": 499
+  },
+  {
+   "i": 231,
+   "name": "Co_AokirkL0",
+   "anim": "naco_aotmk1(DVD)",
+   "ref": 33268,
+   "bank": 2,
+   "idx": 500
+  },
+  {
+   "i": 232,
+   "name": "Co_ADwSlk00",
+   "anim": "Mco_aolok2(DVD)",
+   "ref": 33269,
+   "bank": 2,
+   "idx": 501
+  },
+  {
+   "i": 233,
+   "name": "Co_ADwSrk00",
+   "anim": "Mco_aomk2(DVD)",
+   "ref": 33270,
+   "bank": 2,
+   "idx": 502
+  },
+  {
+   "i": 234,
+   "name": "Co_ADwSlkR0",
+   "anim": "Mco_aoTlk3(DVD)",
+   "ref": 33271,
+   "bank": 2,
+   "idx": 503
+  },
+  {
+   "i": 235,
+   "name": "Co_ADwSlkR1",
+   "anim": "Mco_aoTlk4(DVD)",
+   "ref": 33272,
+   "bank": 2,
+   "idx": 504
+  },
+  {
+   "i": 236,
+   "name": "Co_ADwSrkR0",
+   "anim": "Mco_aoTmk3(DVD)",
+   "ref": 33273,
+   "bank": 2,
+   "idx": 505
+  },
+  {
+   "i": 237,
+   "name": "Co_ADwSrkR1",
+   "anim": "Mco_aoTmk4(DVD)",
+   "ref": 33274,
+   "bank": 2,
+   "idx": 506
+  },
+  {
+   "i": 238,
+   "name": "Co_FRollk00",
+   "anim": "naco_Flk1(DVD)",
+   "ref": 33275,
+   "bank": 2,
+   "idx": 507
+  },
+  {
+   "i": 239,
+   "name": "Co_FRolrk00",
+   "anim": "naco_Fmk1(DVD)",
+   "ref": 33276,
+   "bank": 2,
+   "idx": 508
+  },
+  {
+   "i": 240,
+   "name": "Co_FRollkL0",
+   "anim": "naco_FTlk1(DVD)",
+   "ref": 33277,
+   "bank": 2,
+   "idx": 509
+  },
+  {
+   "i": 241,
+   "name": "Co_FRolrkL0",
+   "anim": "naco_FTmk1(DVD)",
+   "ref": 33278,
+   "bank": 2,
+   "idx": 510
+  },
+  {
+   "i": 242,
+   "name": "Co_BRollk00",
+   "anim": "naco_Blk1(DVD)",
+   "ref": 33279,
+   "bank": 2,
+   "idx": 511
+  },
+  {
+   "i": 243,
+   "name": "Co_BRolrk00",
+   "anim": "naco_Bmk1(DVD)",
+   "ref": 33280,
+   "bank": 2,
+   "idx": 512
+  },
+  {
+   "i": 244,
+   "name": "Co_BRollkL0",
+   "anim": "naco_BTlk1(DVD)",
+   "ref": 33281,
+   "bank": 2,
+   "idx": 513
+  },
+  {
+   "i": 245,
+   "name": "Co_BRolrkL0",
+   "anim": "naco_BTmk1(DVD)",
+   "ref": 33282,
+   "bank": 2,
+   "idx": 514
+  },
+  {
+   "i": 246,
+   "name": "Co_Fcross",
+   "anim": "Mco_fc02xg(DVD)",
+   "ref": 33283,
+   "bank": 2,
+   "idx": 515
+  },
+  {
+   "i": 247,
+   "name": "Co_Bcross",
+   "anim": "Mco_fcs(DVD)",
+   "ref": 33284,
+   "bank": 2,
+   "idx": 516
+  },
+  {
+   "i": 248,
+   "name": "Co_Rol_lrk",
+   "anim": "Mco_grshoper(DVD)",
+   "ref": 16423,
+   "bank": 1,
+   "idx": 39
+  },
+  {
+   "i": 249,
+   "name": "Co_Uokilk00",
+   "anim": "kmre_utu_oki(DVD)",
+   "ref": 33285,
+   "bank": 2,
+   "idx": 517
+  },
+  {
+   "i": 250,
+   "name": "Co_Uokilk01",
+   "anim": "naco_utlk1(DVD)",
+   "ref": 33286,
+   "bank": 2,
+   "idx": 518
+  },
+  {
+   "i": 251,
+   "name": "Co_Uokirk00",
+   "anim": "msco_utsoki(DVD)",
+   "ref": 16422,
+   "bank": 1,
+   "idx": 38
+  },
+  {
+   "i": 252,
+   "name": "Co_Uokirk01",
+   "anim": "naco_utmk1(DVD)",
+   "ref": 33287,
+   "bank": 2,
+   "idx": 519
+  },
+  {
+   "i": 253,
+   "name": "Co_UokilkR0",
+   "anim": "msco_utsoki(DVD)",
+   "ref": 16422,
+   "bank": 1,
+   "idx": 38
+  },
+  {
+   "i": 254,
+   "name": "Co_UokilkR1",
+   "anim": "naco_utTlk1(DVD)",
+   "ref": 33288,
+   "bank": 2,
+   "idx": 520
+  },
+  {
+   "i": 255,
+   "name": "Co_UokirkR0",
+   "anim": "msco_utsoki(DVD)",
+   "ref": 16422,
+   "bank": 1,
+   "idx": 38
+  },
+  {
+   "i": 256,
+   "name": "Co_UokirkR1",
+   "anim": "naco_utTmk1(DVD)",
+   "ref": 33289,
+   "bank": 2,
+   "idx": 521
+  },
+  {
+   "i": 257,
+   "name": "sDm_AokiAri00",
+   "anim": "Tco_y_aki00(DVD)",
+   "ref": 33290,
+   "bank": 2,
+   "idx": 522
+  },
+  {
+   "i": 258,
+   "name": "sDm_AokiAriL0",
+   "anim": "Tco_yl_aki00(DVD)",
+   "ref": 33291,
+   "bank": 2,
+   "idx": 523
+  },
+  {
+   "i": 259,
+   "name": "sDm_AokiAriR0",
+   "anim": "Tco_yr_aki00(DVD)",
+   "ref": 33292,
+   "bank": 2,
+   "idx": 524
+  },
+  {
+   "i": 260,
+   "name": "sDm_AokiAriB0",
+   "anim": "Nco_y_lk(DVD)",
+   "ref": 33293,
+   "bank": 2,
+   "idx": 525
+  },
+  {
+   "i": 261,
+   "name": "cGrd_AokilR18",
+   "anim": "Bco_gurd_cl(DVD)",
+   "ref": 33294,
+   "bank": 2,
+   "idx": 526
+  },
+  {
+   "i": 262,
+   "name": "sDm_Aokimid00",
+   "anim": "Tco_styoro(DVD)",
+   "ref": 33295,
+   "bank": 2,
+   "idx": 527
+  },
+  {
+   "i": 263,
+   "name": "sDm_Aokimid00B",
+   "anim": "Nco_yb_legha(DVD)",
+   "ref": 33153,
+   "bank": 2,
+   "idx": 385
+  },
+  {
+   "i": 264,
+   "name": "sGrd_AokihR18",
+   "anim": "Bco_gurd_hl(DVD)",
+   "ref": 33297,
+   "bank": 2,
+   "idx": 529
+  },
+  {
+   "i": 265,
+   "name": "sDm_AokirHiza",
+   "anim": "naco_hizyarar(DVD)",
+   "ref": 33298,
+   "bank": 2,
+   "idx": 530
+  },
+  {
+   "i": 266,
+   "name": "sDm_AokirAriL0",
+   "anim": "Nco_yl_lk(DVD)",
+   "ref": 33299,
+   "bank": 2,
+   "idx": 531
+  },
+  {
+   "i": 267,
+   "name": "sDm_AokirAriR0",
+   "anim": "Nco_yr_lk(DVD)",
+   "ref": 33300,
+   "bank": 2,
+   "idx": 532
+  },
+  {
+   "i": 268,
+   "name": "sDm_AokirAriB0",
+   "anim": "Nco_yb_lk(DVD)",
+   "ref": 33301,
+   "bank": 2,
+   "idx": 533
+  },
+  {
+   "i": 269,
+   "name": "cGrd_AokilL18",
+   "anim": "Bco_gurd_cr(DVD)",
+   "ref": 33302,
+   "bank": 2,
+   "idx": 534
+  },
+  {
+   "i": 270,
+   "name": "Co_runspA00",
+   "anim": "kmco_tac_runtac(DVD)",
+   "ref": 32771,
+   "bank": 2,
+   "idx": 3
+  },
+  {
+   "i": 271,
+   "name": "Co_runsp_01",
+   "anim": "kmco_tac_runtac_turn(DVD)",
+   "ref": 33303,
+   "bank": 2,
+   "idx": 535
+  },
+  {
+   "i": 272,
+   "name": "Co_fumuA00",
+   "anim": "fumu20xk(DVD)",
+   "ref": 33304,
+   "bank": 2,
+   "idx": 536
+  },
+  {
+   "i": 273,
+   "name": "Co_fumu_01",
+   "anim": "fumu20xk(DVD)",
+   "ref": 33304,
+   "bank": 2,
+   "idx": 536
+  },
+  {
+   "i": 274,
+   "name": "Co_fumu_02",
+   "anim": "fumu21xk(DVD)",
+   "ref": 33306,
+   "bank": 2,
+   "idx": 538
+  },
+  {
+   "i": 275,
+   "name": "dDw_OUC00_",
+   "anim": "ouch(DVD)",
+   "ref": 33307,
+   "bank": 2,
+   "idx": 539
+  },
+  {
+   "i": 276,
+   "name": "dDwrOUC00_",
+   "anim": "msco_ouch11xk(DVD)",
+   "ref": 33310,
+   "bank": 2,
+   "idx": 542
+  },
+  {
+   "i": 277,
+   "name": "Co_sJP_RP",
+   "anim": "naco_9rp(DVD)",
+   "ref": 16427,
+   "bank": 1,
+   "idx": 43
+  },
+  {
+   "i": 278,
+   "name": "sDm_Rhd40GY",
+   "anim": "noco_rkaokama(DVD)",
+   "ref": 33312,
+   "bank": 2,
+   "idx": 544
+  },
+  {
+   "i": 279,
+   "name": "Co_sabaloRKn",
+   "anim": "naco_sabak2l_f(DVD)",
+   "ref": 33313,
+   "bank": 2,
+   "idx": 545
+  },
+  {
+   "i": 280,
+   "name": "Co_sabaloRKy",
+   "anim": "naco_sababyrk2(DVD)",
+   "ref": 33314,
+   "bank": 2,
+   "idx": 546
+  },
+  {
+   "i": 281,
+   "name": "Co_sabaloLKn",
+   "anim": "naco_sabak2r_f(DVD)",
+   "ref": 33315,
+   "bank": 2,
+   "idx": 547
+  },
+  {
+   "i": 282,
+   "name": "Co_sabaloLKy",
+   "anim": "naco_sababylk2(DVD)",
+   "ref": 33316,
+   "bank": 2,
+   "idx": 548
+  },
+  {
+   "i": 283,
+   "name": "Co_sabaloLPn",
+   "anim": "naco_sabak2r_f(DVD)",
+   "ref": 33315,
+   "bank": 2,
+   "idx": 547
+  },
+  {
+   "i": 284,
+   "name": "Co_sabaloLPy",
+   "anim": "koco_sbk2sylp_y(DVD)",
+   "ref": 33318,
+   "bank": 2,
+   "idx": 550
+  },
+  {
+   "i": 285,
+   "name": "Co_sabaloRPn",
+   "anim": "naco_sabak2l_f(DVD)",
+   "ref": 33313,
+   "bank": 2,
+   "idx": 545
+  },
+  {
+   "i": 286,
+   "name": "Co_sabaloRPy",
+   "anim": "koco_sbk2syrp_y(DVD)",
+   "ref": 33320,
+   "bank": 2,
+   "idx": 552
+  },
+  {
+   "i": 287,
+   "name": "Ni_sabaDS1n",
+   "anim": "Bni_lsaba_r1(DVD)",
+   "ref": 33321,
+   "bank": 2,
+   "idx": 553
+  },
+  {
+   "i": 288,
+   "name": "Ni_sabaDS1y",
+   "anim": "Mdr_srisaba(DVD)",
+   "ref": 33322,
+   "bank": 2,
+   "idx": 554
+  },
+  {
+   "i": 289,
+   "name": "Ni_sabaDS2n",
+   "anim": "Bni_lsaba_r2(DVD)",
+   "ref": 33323,
+   "bank": 2,
+   "idx": 555
+  },
+  {
+   "i": 290,
+   "name": "Ni_sabaDS2y",
+   "anim": "Mdr_srisab2(DVD)",
+   "ref": 33324,
+   "bank": 2,
+   "idx": 556
+  },
+  {
+   "i": 291,
+   "name": "nuke30_n",
+   "anim": "Bco_nuke_n(DVD)",
+   "ref": 33325,
+   "bank": 2,
+   "idx": 557
+  },
+  {
+   "i": 292,
+   "name": "nuke30_y",
+   "anim": "Bco_nuke_y(DVD)",
+   "ref": 33326,
+   "bank": 2,
+   "idx": 558
+  },
+  {
+   "i": 293,
+   "name": "nuke36_n",
+   "anim": "Bco_nuke_n(DVD)",
+   "ref": 33325,
+   "bank": 2,
+   "idx": 557
+  },
+  {
+   "i": 294,
+   "name": "nuke36_y",
+   "anim": "Aco_nukea_y(DVD)",
+   "ref": 32868,
+   "bank": 2,
+   "idx": 100
+  },
+  {
+   "i": 295,
+   "name": "SideEscL_n",
+   "anim": "G_Lnuke_n(DVD)",
+   "ref": 33328,
+   "bank": 2,
+   "idx": 560
+  },
+  {
+   "i": 296,
+   "name": "SideEscL_y",
+   "anim": "G_Lnuke_y(DVD)",
+   "ref": 33329,
+   "bank": 2,
+   "idx": 561
+  },
+  {
+   "i": 297,
+   "name": "SideEscR_n",
+   "anim": "G_Rnuke_n(DVD)",
+   "ref": 33330,
+   "bank": 2,
+   "idx": 562
+  },
+  {
+   "i": 298,
+   "name": "SideEscR_y",
+   "anim": "G_Rnuke_y(DVD)",
+   "ref": 33331,
+   "bank": 2,
+   "idx": 563
+  },
+  {
+   "i": 299,
+   "name": "Co_offsetThr",
+   "anim": "naco_nuke(DVD)",
+   "ref": 33332,
+   "bank": 2,
+   "idx": 564
+  },
+  {
+   "i": 300,
+   "name": "sDw_UP_00_",
+   "anim": "kmco_dwup00(DVD)",
+   "ref": 33333,
+   "bank": 2,
+   "idx": 565
+  },
+  {
+   "i": 301,
+   "name": "sDw_UP_01_",
+   "anim": "kmco_dwup01(DVD)",
+   "ref": 33334,
+   "bank": 2,
+   "idx": 566
+  },
+  {
+   "i": 302,
+   "name": "sDw_UP_11_",
+   "anim": "ytco_dwup_hei(DVD)",
+   "ref": 33335,
+   "bank": 2,
+   "idx": 567
+  },
+  {
+   "i": 303,
+   "name": "sDw_UP_R00",
+   "anim": "Tco_dwupUtate(DVD)",
+   "ref": 33338,
+   "bank": 2,
+   "idx": 570
+  },
+  {
+   "i": 304,
+   "name": "sDw_UP_R00L",
+   "anim": "yaco_dwuputate_l(DVD)",
+   "ref": 33819,
+   "bank": 2,
+   "idx": 1051
+  },
+  {
+   "i": 305,
+   "name": "sDw_UP_R00R",
+   "anim": "yaco_dwuputate_r(DVD)",
+   "ref": 33820,
+   "bank": 2,
+   "idx": 1052
+  },
+  {
+   "i": 306,
+   "name": "sDw_KAO00_",
+   "anim": "ytco_dwfkao00(DVD)",
+   "ref": 33339,
+   "bank": 2,
+   "idx": 571
+  },
+  {
+   "i": 307,
+   "name": "sDw_KI_00_",
+   "anim": "dwki00(DVD)",
+   "ref": 33340,
+   "bank": 2,
+   "idx": 572
+  },
+  {
+   "i": 308,
+   "name": "ym_y00",
+   "anim": "ym_y00(DVD)",
+   "ref": 33343,
+   "bank": 2,
+   "idx": 575
+  },
+  {
+   "i": 309,
+   "name": "ym_y01",
+   "anim": "ym_y01(DVD)",
+   "ref": 33101,
+   "bank": 2,
+   "idx": 333
+  },
+  {
+   "i": 310,
+   "name": "ym_y01L",
+   "anim": "Wco_ym_y01flp(DVD)",
+   "ref": 33103,
+   "bank": 2,
+   "idx": 335
+  },
+  {
+   "i": 311,
+   "name": "sDw_katay",
+   "anim": "suta_yaratk00(DVD)",
+   "ref": 33347,
+   "bank": 2,
+   "idx": 579
+  },
+  {
+   "i": 312,
+   "name": "dm_kaityuu",
+   "anim": "suta_yarakaityu(DVD)",
+   "ref": 33348,
+   "bank": 2,
+   "idx": 580
+  },
+  {
+   "i": 313,
+   "name": "c_y00",
+   "anim": "c_y00(DVD)",
+   "ref": 34036,
+   "bank": 2,
+   "idx": 1268
+  },
+  {
+   "i": 314,
+   "name": "c_y00b2",
+   "anim": "Hco_y_Bck00(DVD)",
+   "ref": 34079,
+   "bank": 2,
+   "idx": 1311
+  },
+  {
+   "i": 315,
+   "name": "c_y00L",
+   "anim": "naco_Lck00(DVD)",
+   "ref": 33857,
+   "bank": 2,
+   "idx": 1089
+  },
+  {
+   "i": 316,
+   "name": "c_y00R",
+   "anim": "naco_Rck00(DVD)",
+   "ref": 33858,
+   "bank": 2,
+   "idx": 1090
+  },
+  {
+   "i": 317,
+   "name": "sDw_screwL",
+   "anim": "ozco_sukuryu2_l_yz80(DVD)",
+   "ref": 33999,
+   "bank": 2,
+   "idx": 1231
+  },
+  {
+   "i": 318,
+   "name": "sDm_2K3_Fy",
+   "anim": "Bmt_hp2_y3(DVD)",
+   "ref": 33351,
+   "bank": 2,
+   "idx": 583
+  },
+  {
+   "i": 319,
+   "name": "sDm_2K3_Ry",
+   "anim": "naco_mahha2r(DVD)",
+   "ref": 33352,
+   "bank": 2,
+   "idx": 584
+  },
+  {
+   "i": 320,
+   "name": "sDm_2K3_Ly",
+   "anim": "naco_mahha2l(DVD)",
+   "ref": 33353,
+   "bank": 2,
+   "idx": 585
+  },
+  {
+   "i": 321,
+   "name": "sDm_2K3_By",
+   "anim": "Bco_bryara_b(DVD)",
+   "ref": 33354,
+   "bank": 2,
+   "idx": 586
+  },
+  {
+   "i": 322,
+   "name": "sDm_KAK10_",
+   "anim": "Tco_ovhkya(DVD)",
+   "ref": 33355,
+   "bank": 2,
+   "idx": 587
+  },
+  {
+   "i": 323,
+   "name": "sDm_KAK10L",
+   "anim": "naco_ovhkya2l(DVD)",
+   "ref": 33356,
+   "bank": 2,
+   "idx": 588
+  },
+  {
+   "i": 324,
+   "name": "sDm_KAK10R",
+   "anim": "naco_ovhkya2r(DVD)",
+   "ref": 33357,
+   "bank": 2,
+   "idx": 589
+  },
+  {
+   "i": 325,
+   "name": "sDm_KAK10B",
+   "anim": "ytco_nco_ovhkyab(DVD)",
+   "ref": 33358,
+   "bank": 2,
+   "idx": 590
+  },
+  {
+   "i": 326,
+   "name": "sDm_zutukiF",
+   "anim": "naco_ma2yara2(DVD)",
+   "ref": 33359,
+   "bank": 2,
+   "idx": 591
+  },
+  {
+   "i": 327,
+   "name": "sDm_zutukiR",
+   "anim": "naco_mahha2r(DVD)",
+   "ref": 33352,
+   "bank": 2,
+   "idx": 584
+  },
+  {
+   "i": 328,
+   "name": "sDm_zutukiL",
+   "anim": "naco_mahha2l(DVD)",
+   "ref": 33353,
+   "bank": 2,
+   "idx": 585
+  },
+  {
+   "i": 329,
+   "name": "sDw_dwhiji",
+   "anim": "kmco_y_dwhiji(DVD)",
+   "ref": 33362,
+   "bank": 2,
+   "idx": 594
+  },
+  {
+   "i": 330,
+   "name": "sDw_tataki",
+   "anim": "Moco_mhp_yarare(DVD)",
+   "ref": 33363,
+   "bank": 2,
+   "idx": 595
+  },
+  {
+   "i": 331,
+   "name": "sDm_DwKAOF0",
+   "anim": "Tco_dwkaoL(DVD)",
+   "ref": 33364,
+   "bank": 2,
+   "idx": 596
+  },
+  {
+   "i": 332,
+   "name": "sDm_DwKAOL0",
+   "anim": "Tco_dwkaoB(DVD)",
+   "ref": 33365,
+   "bank": 2,
+   "idx": 597
+  },
+  {
+   "i": 333,
+   "name": "sDm_DwKAOR0",
+   "anim": "Tco_dwkaoF(DVD)",
+   "ref": 33366,
+   "bank": 2,
+   "idx": 598
+  },
+  {
+   "i": 334,
+   "name": "sDm_DwKAOB0",
+   "anim": "Tco_dwkaoR(DVD)",
+   "ref": 33367,
+   "bank": 2,
+   "idx": 599
+  },
+  {
+   "i": 335,
+   "name": "sDm_PNG02Cr",
+   "anim": "Zco_ponbari(DVD)",
+   "ref": 33368,
+   "bank": 2,
+   "idx": 600
+  },
+  {
+   "i": 336,
+   "name": "sDm_naraHd_L",
+   "anim": "naco_laonara(DVD)",
+   "ref": 34015,
+   "bank": 2,
+   "idx": 1247
+  },
+  {
+   "i": 337,
+   "name": "sDm_naraHd_R",
+   "anim": "naco_raonara(DVD)",
+   "ref": 34016,
+   "bank": 2,
+   "idx": 1248
+  },
+  {
+   "i": 338,
+   "name": "sDm_hineri00",
+   "anim": "kmco_y_hineri(DVD)",
+   "ref": 33947,
+   "bank": 2,
+   "idx": 1179
+  },
+  {
+   "i": 339,
+   "name": "sDm_Straight00",
+   "anim": "naco_yorodwn(DVD)",
+   "ref": 33370,
+   "bank": 2,
+   "idx": 602
+  },
+  {
+   "i": 340,
+   "name": "sDm_PNG01_",
+   "anim": "pol_y00(DVD)",
+   "ref": 33106,
+   "bank": 2,
+   "idx": 338
+  },
+  {
+   "i": 341,
+   "name": "sDm_PNG00_",
+   "anim": "kmco_dwhaoh00(DVD)",
+   "ref": 33372,
+   "bank": 2,
+   "idx": 604
+  },
+  {
+   "i": 342,
+   "name": "sDm_PNGL0_",
+   "anim": "Mco_y_NLdw(DVD)",
+   "ref": 33373,
+   "bank": 2,
+   "idx": 605
+  },
+  {
+   "i": 343,
+   "name": "sDm_PNGR0_",
+   "anim": "Mco_y_NRdw(DVD)",
+   "ref": 33374,
+   "bank": 2,
+   "idx": 606
+  },
+  {
+   "i": 344,
+   "name": "sDm_PNGB0_",
+   "anim": "Mco_y_Bpon(DVD)",
+   "ref": 33109,
+   "bank": 2,
+   "idx": 341
+  },
+  {
+   "i": 345,
+   "name": "dw_nog00",
+   "anim": "naco_nog(DVD)",
+   "ref": 33378,
+   "bank": 2,
+   "idx": 610
+  },
+  {
+   "i": 346,
+   "name": "sGrd_hara_J",
+   "anim": "Bco_dmhara_n(DVD)",
+   "ref": 33381,
+   "bank": 2,
+   "idx": 613
+  },
+  {
+   "i": 347,
+   "name": "sGrd_hara_Chg",
+   "anim": "Bco_dmhara_n(DVD)",
+   "ref": 33381,
+   "bank": 2,
+   "idx": 613
+  },
+  {
+   "i": 348,
+   "name": "wDm_AirF_ttr",
+   "anim": "ozco_petan_suwari_00(DVD)",
+   "ref": 33191,
+   "bank": 2,
+   "idx": 423
+  },
+  {
+   "i": 349,
+   "name": "wDm_AirB_ttr",
+   "anim": "msco_y_bkabed0(DVD)",
+   "ref": 33385,
+   "bank": 2,
+   "idx": 617
+  },
+  {
+   "i": 350,
+   "name": "wDm_AirL_ttr",
+   "anim": "msco_y_lkabed0(DVD)",
+   "ref": 33386,
+   "bank": 2,
+   "idx": 618
+  },
+  {
+   "i": 351,
+   "name": "wDm_AirR_ttr",
+   "anim": "msco_y_rkabed0(DVD)",
+   "ref": 33387,
+   "bank": 2,
+   "idx": 619
+  },
+  {
+   "i": 352,
+   "name": "sDw_zakoF_air",
+   "anim": "cokm_y_change(DVD)",
+   "ref": 33388,
+   "bank": 2,
+   "idx": 620
+  },
+  {
+   "i": 353,
+   "name": "sDw_zakoB_air",
+   "anim": "cokm_y_change_b(DVD)",
+   "ref": 33389,
+   "bank": 2,
+   "idx": 621
+  },
+  {
+   "i": 354,
+   "name": "sDw_zakoL_air",
+   "anim": "cokm_y_change_l(DVD)",
+   "ref": 33390,
+   "bank": 2,
+   "idx": 622
+  },
+  {
+   "i": 355,
+   "name": "sDw_zakoR_air",
+   "anim": "cokm_y_change_r(DVD)",
+   "ref": 33391,
+   "bank": 2,
+   "idx": 623
+  },
+  {
+   "i": 356,
+   "name": "Co_UkemL0D",
+   "anim": "Tco_ukedw00(DVD)",
+   "ref": 33392,
+   "bank": 2,
+   "idx": 624
+  },
+  {
+   "i": 357,
+   "name": "Co_UkemL0DE",
+   "anim": "Tco_ukedwl(DVD)",
+   "ref": 33393,
+   "bank": 2,
+   "idx": 625
+  },
+  {
+   "i": 358,
+   "name": "Co_UkerL0D",
+   "anim": "Tco_ukedwlf(DVD)",
+   "ref": 33394,
+   "bank": 2,
+   "idx": 626
+  },
+  {
+   "i": 359,
+   "name": "Co_UkerL0DE",
+   "anim": "Tco_ukedwlf(DVD)",
+   "ref": 33394,
+   "bank": 2,
+   "idx": 626
+  },
+  {
+   "i": 360,
+   "name": "Co_UkemR0D",
+   "anim": "Tco_ukedwr(DVD)",
+   "ref": 33396,
+   "bank": 2,
+   "idx": 628
+  },
+  {
+   "i": 361,
+   "name": "Co_UkemR0DE",
+   "anim": "Tco_ukedwr(DVD)",
+   "ref": 33396,
+   "bank": 2,
+   "idx": 628
+  },
+  {
+   "i": 362,
+   "name": "Co_UkerR0D",
+   "anim": "Tco_ukedwrf(DVD)",
+   "ref": 33398,
+   "bank": 2,
+   "idx": 630
+  },
+  {
+   "i": 363,
+   "name": "Co_UkerR0DE",
+   "anim": "Tco_ukedwrf(DVD)",
+   "ref": 33398,
+   "bank": 2,
+   "idx": 630
+  },
+  {
+   "i": 364,
+   "name": "Co_DUkmL0D",
+   "anim": "Nco_utuLroll(DVD)",
+   "ref": 33400,
+   "bank": 2,
+   "idx": 632
+  },
+  {
+   "i": 365,
+   "name": "Co_DUkmL0DE",
+   "anim": "Nco_utuLroll(DVD)",
+   "ref": 33400,
+   "bank": 2,
+   "idx": 632
+  },
+  {
+   "i": 366,
+   "name": "Co_DUkrL0D",
+   "anim": "Nco_utuLrollF(DVD)",
+   "ref": 33402,
+   "bank": 2,
+   "idx": 634
+  },
+  {
+   "i": 367,
+   "name": "Co_DUkrL0DA",
+   "anim": "naco_utuLrollF2(DVD)",
+   "ref": 33403,
+   "bank": 2,
+   "idx": 635
+  },
+  {
+   "i": 368,
+   "name": "Co_DUkrL0DE",
+   "anim": "naco_utuLrollF2(DVD)",
+   "ref": 33403,
+   "bank": 2,
+   "idx": 635
+  },
+  {
+   "i": 369,
+   "name": "Co_DUkmR0D",
+   "anim": "Nco_utuRroll(DVD)",
+   "ref": 33405,
+   "bank": 2,
+   "idx": 637
+  },
+  {
+   "i": 370,
+   "name": "Co_DUkmR0DE",
+   "anim": "Nco_utuRroll(DVD)",
+   "ref": 33405,
+   "bank": 2,
+   "idx": 637
+  },
+  {
+   "i": 371,
+   "name": "Co_DUkrR0D",
+   "anim": "Nco_utuRrollF(DVD)",
+   "ref": 33407,
+   "bank": 2,
+   "idx": 639
+  },
+  {
+   "i": 372,
+   "name": "Co_DUkrR0DA",
+   "anim": "naco_utuRrollF2(DVD)",
+   "ref": 33408,
+   "bank": 2,
+   "idx": 640
+  },
+  {
+   "i": 373,
+   "name": "Co_DUkrR0DE",
+   "anim": "naco_utuRrollF2(DVD)",
+   "ref": 33408,
+   "bank": 2,
+   "idx": 640
+  },
+  {
+   "i": 374,
+   "name": "Co_DUkmF00",
+   "anim": "Tco_ubroll(DVD)",
+   "ref": 33410,
+   "bank": 2,
+   "idx": 642
+  },
+  {
+   "i": 375,
+   "name": "Co_DUkmB00",
+   "anim": "Nco_Uutkou(DVD)",
+   "ref": 33411,
+   "bank": 2,
+   "idx": 643
+  },
+  {
+   "i": 376,
+   "name": "Co_DUkmQ00",
+   "anim": "kzco_ut_ukemi00(DVD)",
+   "ref": 33412,
+   "bank": 2,
+   "idx": 644
+  },
+  {
+   "i": 377,
+   "name": "Co_UkerB00",
+   "anim": "Nco_Uaokou(DVD)",
+   "ref": 33413,
+   "bank": 2,
+   "idx": 645
+  },
+  {
+   "i": 378,
+   "name": "Co_UkerB01",
+   "anim": "Nco_Uaokou(DVD)",
+   "ref": 33413,
+   "bank": 2,
+   "idx": 645
+  },
+  {
+   "i": 379,
+   "name": "Co_newUkCD",
+   "anim": "Nco_Uaohs(DVD)",
+   "ref": 33415,
+   "bank": 2,
+   "idx": 647
+  },
+  {
+   "i": 380,
+   "name": "Co_newUkCDE",
+   "anim": "Nco_Uaohs(DVD)",
+   "ref": 33415,
+   "bank": 2,
+   "idx": 647
+  },
+  {
+   "i": 381,
+   "name": "Co_newUkCD2",
+   "anim": "Nco_Uaohs(DVD)",
+   "ref": 33415,
+   "bank": 2,
+   "idx": 647
+  },
+  {
+   "i": 382,
+   "name": "Co_UkerF00",
+   "anim": "XXco_Uaozen(DVD)",
+   "ref": 33418,
+   "bank": 2,
+   "idx": 650
+  },
+  {
+   "i": 383,
+   "name": "Co_PtnUkeR",
+   "anim": "ozco_petan_suwari_r2(DVD)",
+   "ref": 33419,
+   "bank": 2,
+   "idx": 651
+  },
+  {
+   "i": 384,
+   "name": "Co_PtnUkeRE",
+   "anim": "ozco_petan_suwari_r2(DVD)",
+   "ref": 33419,
+   "bank": 2,
+   "idx": 651
+  },
+  {
+   "i": 385,
+   "name": "Co_PtnUkeL",
+   "anim": "ozco_petan_suwari_l2(DVD)",
+   "ref": 33421,
+   "bank": 2,
+   "idx": 653
+  },
+  {
+   "i": 386,
+   "name": "Co_PtnUkeLE",
+   "anim": "ozco_petan_suwari_l2(DVD)",
+   "ref": 33421,
+   "bank": 2,
+   "idx": 653
+  },
+  {
+   "i": 387,
+   "name": "fatal00",
+   "anim": "Ico_FATALITY_y(DVD)",
+   "ref": 33423,
+   "bank": 2,
+   "idx": 655
+  },
+  {
+   "i": 388,
+   "name": "fatal01",
+   "anim": "kmco_y_fatality_b(DVD)",
+   "ref": 33424,
+   "bank": 2,
+   "idx": 656
+  },
+  {
+   "i": 389,
+   "name": "fatal02",
+   "anim": "kmco_y_fatality_c(DVD)",
+   "ref": 33425,
+   "bank": 2,
+   "idx": 657
+  },
+  {
+   "i": 390,
+   "name": "fatal03",
+   "anim": "kmco_fatality_low(DVD)",
+   "ref": 32772,
+   "bank": 2,
+   "idx": 4
+  },
+  {
+   "i": 391,
+   "name": "fatal_s",
+   "anim": "kzco_y_fatal(DVD)",
+   "ref": 33426,
+   "bank": 2,
+   "idx": 658
+  },
+  {
+   "i": 392,
+   "name": "dDm_death00",
+   "anim": "Zco_monketu(DVD)",
+   "ref": 33427,
+   "bank": 2,
+   "idx": 659
+  },
+  {
+   "i": 393,
+   "name": "dDm_death00E",
+   "anim": "DOWN_AO_TES(DVD)",
+   "ref": 16401,
+   "bank": 1,
+   "idx": 17
+  },
+  {
+   "i": 394,
+   "name": "dDm_death00D",
+   "anim": "msco_y_monut(DVD)",
+   "ref": 33428,
+   "bank": 2,
+   "idx": 660
+  },
+  {
+   "i": 395,
+   "name": "dDm_death00DE",
+   "anim": "msco_dwutkokyu(DVD)",
+   "ref": 16411,
+   "bank": 1,
+   "idx": 27
+  },
+  {
+   "i": 396,
+   "name": "Uj_Rnd_Lose",
+   "anim": "s9_ju_lose_01(DVD)",
+   "ref": 16430,
+   "bank": 1,
+   "idx": 46
+  },
+  {
+   "i": 397,
+   "name": "Male_Cnt_M1",
+   "anim": "co_lose_m_01_m1(DVD)",
+   "ref": 33429,
+   "bank": 2,
+   "idx": 661
+  },
+  {
+   "i": 398,
+   "name": "Male_Cnt_M1E",
+   "anim": "co_lose_m_01_m1_loop(DVD)",
+   "ref": 33430,
+   "bank": 2,
+   "idx": 662
+  },
+  {
+   "i": 399,
+   "name": "Male_Cnt_S4",
+   "anim": "co_lose_s_04_m1(DVD)",
+   "ref": 33431,
+   "bank": 2,
+   "idx": 663
+  },
+  {
+   "i": 400,
+   "name": "Male_Cnt_S4E",
+   "anim": "co_lose_s_04_m1_loop(DVD)",
+   "ref": 33432,
+   "bank": 2,
+   "idx": 664
+  },
+  {
+   "i": 401,
+   "name": "Famale_Cnt_M1",
+   "anim": "co_lose_m_01_f1(DVD)",
+   "ref": 16431,
+   "bank": 1,
+   "idx": 47
+  },
+  {
+   "i": 402,
+   "name": "Famale_Cnt_M1E",
+   "anim": "co_lose_m_01_f1_loop(DVD)",
+   "ref": 16432,
+   "bank": 1,
+   "idx": 48
+  },
+  {
+   "i": 403,
+   "name": "Famale_Cnt_S1",
+   "anim": "co_lose_s_01_f1(DVD)",
+   "ref": 16433,
+   "bank": 1,
+   "idx": 49
+  },
+  {
+   "i": 404,
+   "name": "Famale_Cnt_S1E",
+   "anim": "co_lose_s_01_f1_loop(DVD)",
+   "ref": 16434,
+   "bank": 1,
+   "idx": 50
+  },
+  {
+   "i": 405,
+   "name": "Famale_Cnt_S3",
+   "anim": "co_lose_s_03_f1(DVD)",
+   "ref": 16435,
+   "bank": 1,
+   "idx": 51
+  },
+  {
+   "i": 406,
+   "name": "Famale_Cnt_S3E",
+   "anim": "co_lose_s_03_f1_loop(DVD)",
+   "ref": 16436,
+   "bank": 1,
+   "idx": 52
+  },
+  {
+   "i": 407,
+   "name": "Ju_Cnt_T2_1",
+   "anim": "s9_ju_continue_01(DVD)",
+   "ref": 16437,
+   "bank": 1,
+   "idx": 53
+  },
+  {
+   "i": 408,
+   "name": "Ju_Cnt_T2_1E",
+   "anim": "s9_ju_continue_01_loop(DVD)",
+   "ref": 16438,
+   "bank": 1,
+   "idx": 54
+  },
+  {
+   "i": 409,
+   "name": "Uj_Cnt_T2_1",
+   "anim": "s9_uj_continue_01(DVD)",
+   "ref": 16439,
+   "bank": 1,
+   "idx": 55
+  },
+  {
+   "i": 410,
+   "name": "Uj_Cnt_T2_1E",
+   "anim": "s9_uj_continue_01_loop(DVD)",
+   "ref": 16440,
+   "bank": 1,
+   "idx": 56
+  },
+  {
+   "i": 411,
+   "name": "Co_TimeCnt_1",
+   "anim": "ykco_cont808(DVD)",
+   "ref": 32773,
+   "bank": 2,
+   "idx": 5
+  },
+  {
+   "i": 412,
+   "name": "Co_TimeCnt_1E",
+   "anim": "ykco_cont909(DVD)",
+   "ref": 32774,
+   "bank": 2,
+   "idx": 6
+  },
+  {
+   "i": 413,
+   "name": "Hw_bk_contS1",
+   "anim": "naco_cnt00(DVD)",
+   "ref": 34299,
+   "bank": 2,
+   "idx": 1531
+  },
+  {
+   "i": 414,
+   "name": "Hw_bk_contS2",
+   "anim": "naco_cnt00(DVD)",
+   "ref": 34299,
+   "bank": 2,
+   "idx": 1531
+  },
+  {
+   "i": 415,
+   "name": "wDASH_rpB",
+   "anim": "kzco_wallact01(DVD)",
+   "ref": 32864,
+   "bank": 2,
+   "idx": 96
+  },
+  {
+   "i": 416,
+   "name": "Co_wDASH_rp00",
+   "anim": "kzco_wallrp01(DVD)",
+   "ref": 16441,
+   "bank": 1,
+   "idx": 57
+  },
+  {
+   "i": 417,
+   "name": "wGrd_KAK32",
+   "anim": "amco_y_kaka(DVD)",
+   "ref": 33179,
+   "bank": 2,
+   "idx": 411
+  },
+  {
+   "i": 418,
+   "name": "wdw_nog00",
+   "anim": "dw_nog00(DVD)",
+   "ref": 34051,
+   "bank": 2,
+   "idx": 1283
+  },
+  {
+   "i": 419,
+   "name": "wdw_nog00L",
+   "anim": "yaco_ldw_nog00(DVD)",
+   "ref": 33379,
+   "bank": 2,
+   "idx": 611
+  },
+  {
+   "i": 420,
+   "name": "wdw_nog00R",
+   "anim": "yaco_rdw_nog00(DVD)",
+   "ref": 33380,
+   "bank": 2,
+   "idx": 612
+  },
+  {
+   "i": 421,
+   "name": "sGrd_TorowB",
+   "anim": "Nco_kuzusiS(DVD)",
+   "ref": 33440,
+   "bank": 2,
+   "idx": 672
+  },
+  {
+   "i": 422,
+   "name": "Dj_GATE_STD",
+   "anim": "ytco_syouten(DVD)",
+   "ref": 33441,
+   "bank": 2,
+   "idx": 673
+  },
+  {
+   "i": 423,
+   "name": "Dj_GATE_DWN",
+   "anim": "ytco_syouten_ao(DVD)",
+   "ref": 33442,
+   "bank": 2,
+   "idx": 674
+  },
+  {
+   "i": 424,
+   "name": "Dj_GATE_DWN2",
+   "anim": "ytco_syouten_utu(DVD)",
+   "ref": 33443,
+   "bank": 2,
+   "idx": 675
+  },
+  {
+   "i": 425,
+   "name": "Uj_PIT_STD",
+   "anim": "yoco_y_kousoku(DVD)",
+   "ref": 33444,
+   "bank": 2,
+   "idx": 676
+  },
+  {
+   "i": 426,
+   "name": "Uj_PIT_DWN",
+   "anim": "yoco_y_kousoku_ao(DVD)",
+   "ref": 33445,
+   "bank": 2,
+   "idx": 677
+  },
+  {
+   "i": 427,
+   "name": "Uj_PIT_DWN2",
+   "anim": "yoco_y_kousoku_utu(DVD)",
+   "ref": 33446,
+   "bank": 2,
+   "idx": 678
+  },
+  {
+   "i": 428,
+   "name": "Uj_PIT_STD_Boss",
+   "anim": "yoco_y_kousoku(DVD)",
+   "ref": 33444,
+   "bank": 2,
+   "idx": 676
+  },
+  {
+   "i": 429,
+   "name": "Uj_PIT_DWN_Boss",
+   "anim": "yoco_y_kousoku_ao(DVD)",
+   "ref": 33445,
+   "bank": 2,
+   "idx": 677
+  },
+  {
+   "i": 430,
+   "name": "Uj_PIT_DWN2_Boss",
+   "anim": "yoco_y_kousoku_utu(DVD)",
+   "ref": 33446,
+   "bank": 2,
+   "idx": 678
+  },
+  {
+   "i": 431,
+   "name": "Co_IKI00",
+   "anim": "cokm_f_charge(DVD)",
+   "ref": 16442,
+   "bank": 1,
+   "idx": 58
+  },
+  {
+   "i": 432,
+   "name": "Jn_IKI00",
+   "anim": "amju_kamae_test(DVD)",
+   "ref": 16523,
+   "bank": 1,
+   "idx": 139
+  },
+  {
+   "i": 433,
+   "name": "Jn_IKI01",
+   "anim": "toju_kiai(DVD)",
+   "ref": 16923,
+   "bank": 1,
+   "idx": 539
+  },
+  {
+   "i": 434,
+   "name": "SE_KIAI_0",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 435,
+   "name": "SE_KIAI_1",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 436,
+   "name": "SE_KIAI_2",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 437,
+   "name": "SE_KIAI_3",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 438,
+   "name": "SE_KIAI_4",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 439,
+   "name": "SE_KIAI_5",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 440,
+   "name": "SE_KIAI_6",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 441,
+   "name": "SE_KIAI_7",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 442,
+   "name": "SE_KIAI_8",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 443,
+   "name": "SE_KIAI_9",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 444,
+   "name": "SE_KIAI_10",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 445,
+   "name": "SE_KIAI_11",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 446,
+   "name": "SE_KIAI_12",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 447,
+   "name": "SE_KIAI_13",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 448,
+   "name": "SE_YARARE_0",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 449,
+   "name": "SE_YARARE_1",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 450,
+   "name": "SE_YARARE_2",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 451,
+   "name": "SE_YARARE_3",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 452,
+   "name": "SE_YARARE_4",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 453,
+   "name": "SE_YARARE_5",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 454,
+   "name": "SE_YARARE_6",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 455,
+   "name": "SE_YARARE_7",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 456,
+   "name": "SE_YARARE_8",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 457,
+   "name": "SE_YARARE_9",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 458,
+   "name": "SE_YARARE_10",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 459,
+   "name": "SE_DEAD_0",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 460,
+   "name": "SE_DEAD_1",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 461,
+   "name": "FACE_KAMAE",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 462,
+   "name": "FACE_WINK",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 463,
+   "name": "FACE_DAMAGE",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 464,
+   "name": "FACE_OUT",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 465,
+   "name": "FACE_ATTACK",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 466,
+   "name": "FACE_SURPRISE",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 467,
+   "name": "FACE_THROWN",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 468,
+   "name": "FACE_THROWN_D",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 469,
+   "name": "FACE_GUARD",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 470,
+   "name": "FACE_DELIGHT",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 471,
+   "name": "FACE_ANGER",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 472,
+   "name": "FACE_SORROW",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 473,
+   "name": "FACE_PLEASURE",
+   "anim": "ygjz_kamae00(DVD)",
+   "ref": 33452,
+   "bank": 2,
+   "idx": 684
+  },
+  {
+   "i": 474,
+   "name": "mk_srm",
+   "anim": "mk_srm(DVD)",
+   "ref": 33492,
+   "bank": 2,
+   "idx": 724
+  },
+  {
+   "i": 475,
+   "name": "mk_srs",
+   "anim": "mk_srs(DVD)",
+   "ref": 33493,
+   "bank": 2,
+   "idx": 725
+  },
+  {
+   "i": 476,
+   "name": "mk_slm",
+   "anim": "mk_slm(DVD)",
+   "ref": 33494,
+   "bank": 2,
+   "idx": 726
+  },
+  {
+   "i": 477,
+   "name": "mk_sls",
+   "anim": "mk_sls(DVD)",
+   "ref": 33495,
+   "bank": 2,
+   "idx": 727
+  },
+  {
+   "i": 478,
+   "name": "Female_CST",
+   "anim": "kamae_item2(DVD)",
+   "ref": 16444,
+   "bank": 1,
+   "idx": 60
+  },
+  {
+   "i": 479,
+   "name": "___________",
+   "anim": "nab6_guard(DVD)",
+   "ref": 33496,
+   "bank": 2,
+   "idx": 728
+  },
+  {
+   "i": 480,
+   "name": "GhostDummy",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 481,
+   "name": "G_Dummy_1",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 482,
+   "name": "G_Dummy_2",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 483,
+   "name": "G_Dummy_3",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 484,
+   "name": "G_Dummy_4",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 485,
+   "name": "G_Dummy_5",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 486,
+   "name": "G_Dummy_6",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 487,
+   "name": "G_Dummy_7",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 488,
+   "name": "G_Dummy_8",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 489,
+   "name": "G_Dummy_9",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 490,
+   "name": "G_Dummy_10",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 491,
+   "name": "G_Dummy_11",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 492,
+   "name": "G_Dummy_12",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 493,
+   "name": "G_Dummy_13",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 494,
+   "name": "G_Dummy_14",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 495,
+   "name": "G_Dummy_15",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 496,
+   "name": "G_Dummy_16",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 497,
+   "name": "G_Dummy_17",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 498,
+   "name": "G_Dummy_18",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 499,
+   "name": "G_Dummy_19",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 500,
+   "name": "G_Dummy_20",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 501,
+   "name": "G_Dummy_21",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 502,
+   "name": "G_Dummy_22",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 503,
+   "name": "G_Dummy_23",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 504,
+   "name": "G_Dummy_24",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 505,
+   "name": "G_Dummy_25",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 506,
+   "name": "G_Dummy_26",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 507,
+   "name": "G_Dummy_27",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 508,
+   "name": "G_Dummy_28",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 509,
+   "name": "G_Dummy_29",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 510,
+   "name": "G_Dummy_30",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 511,
+   "name": "G_Dummy_31",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 512,
+   "name": "G_Dummy_32",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 513,
+   "name": "G_Dummy_33",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 514,
+   "name": "G_Dummy_34",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 515,
+   "name": "G_Dummy_35",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 516,
+   "name": "G_Dummy_36",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 517,
+   "name": "G_Dummy_37",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 518,
+   "name": "G_Dummy_38",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 519,
+   "name": "G_Dummy_39",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 520,
+   "name": "G_Dummy_40",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 521,
+   "name": "G_Dummy_41",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 522,
+   "name": "G_Dummy_42",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 523,
+   "name": "G_Dummy_43",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 524,
+   "name": "G_Dummy_44",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 525,
+   "name": "G_Dummy_45",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 526,
+   "name": "G_Dummy_46",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 527,
+   "name": "G_Dummy_47",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 528,
+   "name": "G_Dummy_48",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 529,
+   "name": "G_Dummy_49",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 530,
+   "name": "G_Dummy_50",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 531,
+   "name": "G_Dummy_51",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 532,
+   "name": "G_Dummy_52",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 533,
+   "name": "G_Dummy_53",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 534,
+   "name": "G_Dummy_54",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 535,
+   "name": "G_Dummy_55",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 536,
+   "name": "G_Dummy_56",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 537,
+   "name": "G_Dummy_57",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 538,
+   "name": "G_Dummy_58",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 539,
+   "name": "G_Dummy_59",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 540,
+   "name": "G_Dummy_60",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 541,
+   "name": "G_Dummy_61",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 542,
+   "name": "G_Dummy_62",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 543,
+   "name": "G_Dummy_63",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 544,
+   "name": "G_Dummy_64",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 545,
+   "name": "G_Dummy_65",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 546,
+   "name": "G_Dummy_66",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 547,
+   "name": "G_Dummy_67",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 548,
+   "name": "G_Dummy_68",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 549,
+   "name": "G_Dummy_69",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 550,
+   "name": "G_Dummy_70",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 551,
+   "name": "G_Dummy_71",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 552,
+   "name": "G_Dummy_72",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 553,
+   "name": "G_Dummy_73",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 554,
+   "name": "G_Dummy_74",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 555,
+   "name": "G_Dummy_75",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 556,
+   "name": "G_Dummy_76",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 557,
+   "name": "G_Dummy_77",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 558,
+   "name": "G_Dummy_78",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 559,
+   "name": "G_Dummy_79",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 560,
+   "name": "G_Dummy_80",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 561,
+   "name": "G_Dummy_81",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 562,
+   "name": "G_Dummy_82",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 563,
+   "name": "G_Dummy_83",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 564,
+   "name": "G_Dummy_84",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 565,
+   "name": "G_Dummy_85",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 566,
+   "name": "G_Dummy_86",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 567,
+   "name": "G_Dummy_87",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 568,
+   "name": "G_Dummy_88",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 569,
+   "name": "G_Dummy_89",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 570,
+   "name": "G_Dummy_90",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 571,
+   "name": "G_Dummy_91",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 572,
+   "name": "G_Dummy_92",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 573,
+   "name": "G_Dummy_93",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 574,
+   "name": "G_Dummy_94",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 575,
+   "name": "G_Dummy_95",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 576,
+   "name": "G_Dummy_96",
+   "anim": "K_charge01(DVD)",
+   "ref": 33121,
+   "bank": 2,
+   "idx": 353
+  },
+  {
+   "i": 577,
+   "name": "Male_CST2",
+   "anim": "cokm_item_mid",
+   "ref": 0,
+   "bank": 0,
+   "idx": 0
+  },
+  {
+   "i": 578,
+   "name": "Female_CST2",
+   "anim": "cokm_item_woman",
+   "ref": 1,
+   "bank": 0,
+   "idx": 1
+  },
+  {
+   "i": 579,
+   "name": "Heavy_CST2",
+   "anim": "item_kamae_heavy",
+   "ref": 2,
+   "bank": 0,
+   "idx": 2
+  },
+  {
+   "i": 580,
+   "name": "Dvj_CST2",
+   "anim": "item_kamae_devil",
+   "ref": 3,
+   "bank": 0,
+   "idx": 3
+  },
+  {
+   "i": 581,
+   "name": "Mo_SUPER_0",
+   "anim": "yomk_it_kiai(DVD)",
+   "ref": 33598,
+   "bank": 2,
+   "idx": 830
+  },
+  {
+   "i": 582,
+   "name": "Co_IHummer",
+   "anim": "yoco_it_sledgehammer(DVD)",
+   "ref": 32775,
+   "bank": 2,
+   "idx": 7
+  },
+  {
+   "i": 583,
+   "name": "Co_INaginata",
+   "anim": "yoco_it_naginata2(DVD)",
+   "ref": 16445,
+   "bank": 1,
+   "idx": 61
+  },
+  {
+   "i": 584,
+   "name": "Co_IBeamSpear",
+   "anim": "yoco_it_naginata2(DVD)",
+   "ref": 16445,
+   "bank": 1,
+   "idx": 61
+  },
+  {
+   "i": 585,
+   "name": "Co_IHude_P",
+   "anim": "yoco_it_naginata2(DVD)",
+   "ref": 16445,
+   "bank": 1,
+   "idx": 61
+  },
+  {
+   "i": 586,
+   "name": "Co_ISRed_P",
+   "anim": "yoco_it_naginata2(DVD)",
+   "ref": 16445,
+   "bank": 1,
+   "idx": 61
+  },
+  {
+   "i": 587,
+   "name": "Co_ISGreen_P",
+   "anim": "yoco_it_naginata2(DVD)",
+   "ref": 16445,
+   "bank": 1,
+   "idx": 61
+  },
+  {
+   "i": 588,
+   "name": "Co_ISBlue_P",
+   "anim": "yoco_it_naginata2(DVD)",
+   "ref": 16445,
+   "bank": 1,
+   "idx": 61
+  },
+  {
+   "i": 589,
+   "name": "Co_IKugibat",
+   "anim": "yoco_it_kugibat(DVD)",
+   "ref": 16451,
+   "bank": 1,
+   "idx": 67
+  },
+  {
+   "i": 590,
+   "name": "Co_IPac_Man",
+   "anim": "yoco_it_kugibat(DVD)",
+   "ref": 16451,
+   "bank": 1,
+   "idx": 67
+  },
+  {
+   "i": 591,
+   "name": "Co_IHomeRun",
+   "anim": "yoco_it_homerunbat(DVD)",
+   "ref": 16453,
+   "bank": 1,
+   "idx": 69
+  },
+  {
+   "i": 592,
+   "name": "Co_IPikoHan",
+   "anim": "yoco_it_picohammer(DVD)",
+   "ref": 16454,
+   "bank": 1,
+   "idx": 70
+  },
+  {
+   "i": 593,
+   "name": "Co_IUchide",
+   "anim": "yoco_it_picohammer(DVD)",
+   "ref": 16454,
+   "bank": 1,
+   "idx": 70
+  },
+  {
+   "i": 594,
+   "name": "Co_IHarisen",
+   "anim": "ozjn_item_hari2(DVD)",
+   "ref": 16456,
+   "bank": 1,
+   "idx": 72
+  },
+  {
+   "i": 595,
+   "name": "Co_IHarisenT",
+   "anim": "ozjn_item_hari2(DVD)",
+   "ref": 16456,
+   "bank": 1,
+   "idx": 72
+  },
+  {
+   "i": 596,
+   "name": "Co_IHarisenDA",
+   "anim": "ozjn_item_hari2(DVD)",
+   "ref": 16456,
+   "bank": 1,
+   "idx": 72
+  },
+  {
+   "i": 597,
+   "name": "Co_IHukuHari",
+   "anim": "ozjn_item_hari2(DVD)",
+   "ref": 16456,
+   "bank": 1,
+   "idx": 72
+  },
+  {
+   "i": 598,
+   "name": "Co_IHukuHariT",
+   "anim": "ozjn_item_hari2(DVD)",
+   "ref": 16456,
+   "bank": 1,
+   "idx": 72
+  },
+  {
+   "i": 599,
+   "name": "Co_IHukuHariDA",
+   "anim": "ozjn_item_hari2(DVD)",
+   "ref": 16456,
+   "bank": 1,
+   "idx": 72
+  },
+  {
+   "i": 600,
+   "name": "Co_IOgre",
+   "anim": "yoco_it_onibou(DVD)",
+   "ref": 16462,
+   "bank": 1,
+   "idx": 78
+  },
+  {
+   "i": 601,
+   "name": "Co_IKatuo",
+   "anim": "yoco_it_onibou(DVD)",
+   "ref": 16462,
+   "bank": 1,
+   "idx": 78
+  },
+  {
+   "i": 602,
+   "name": "Co_INunchaku",
+   "anim": "kmco_it_nun(DVD)",
+   "ref": 16464,
+   "bank": 1,
+   "idx": 80
+  },
+  {
+   "i": 603,
+   "name": "Co_INunchaku_2",
+   "anim": "kmco_it_nun(DVD)",
+   "ref": 16464,
+   "bank": 1,
+   "idx": 80
+  },
+  {
+   "i": 604,
+   "name": "Co_INunchaku_3",
+   "anim": "kmco_it_nun(DVD)",
+   "ref": 16464,
+   "bank": 1,
+   "idx": 80
+  },
+  {
+   "i": 605,
+   "name": "Co_INunchaku_4",
+   "anim": "kmco_it_nun(DVD)",
+   "ref": 16464,
+   "bank": 1,
+   "idx": 80
+  },
+  {
+   "i": 606,
+   "name": "Co_INunchaku_5",
+   "anim": "kmco_it_nun(DVD)",
+   "ref": 16464,
+   "bank": 1,
+   "idx": 80
+  },
+  {
+   "i": 607,
+   "name": "Co_INunchaku_6",
+   "anim": "kmco_it_nun(DVD)",
+   "ref": 16464,
+   "bank": 1,
+   "idx": 80
+  },
+  {
+   "i": 608,
+   "name": "Co_INunchaku_7",
+   "anim": "kmco_it_nun(DVD)",
+   "ref": 16464,
+   "bank": 1,
+   "idx": 80
+  },
+  {
+   "i": 609,
+   "name": "Co_IHandGun",
+   "anim": "yoco_it_handgun_st(DVD)",
+   "ref": 16471,
+   "bank": 1,
+   "idx": 87
+  },
+  {
+   "i": 610,
+   "name": "Co_IHandGun_Fire",
+   "anim": "yoco_it_handgun_lp(DVD)",
+   "ref": 33599,
+   "bank": 2,
+   "idx": 831
+  },
+  {
+   "i": 611,
+   "name": "Co_IHandGun_Fire2",
+   "anim": "yoco_it_handgun_lp(DVD)",
+   "ref": 33599,
+   "bank": 2,
+   "idx": 831
+  },
+  {
+   "i": 612,
+   "name": "Co_IHandGun_Fire3",
+   "anim": "yoco_it_handgun_lp(DVD)",
+   "ref": 33599,
+   "bank": 2,
+   "idx": 831
+  },
+  {
+   "i": 613,
+   "name": "Co_IHandGun_Fire4",
+   "anim": "yoco_it_handgun_lp(DVD)",
+   "ref": 33599,
+   "bank": 2,
+   "idx": 831
+  },
+  {
+   "i": 614,
+   "name": "Co_IHandGun_Fire5",
+   "anim": "yoco_it_handgun_lp(DVD)",
+   "ref": 33599,
+   "bank": 2,
+   "idx": 831
+  },
+  {
+   "i": 615,
+   "name": "Co_IHandGun_End",
+   "anim": "yoco_it_handgun_en(DVD)",
+   "ref": 33604,
+   "bank": 2,
+   "idx": 836
+  },
+  {
+   "i": 616,
+   "name": "Co_IModelGun_P",
+   "anim": "yoco_it_handgun_st(DVD)",
+   "ref": 16471,
+   "bank": 1,
+   "idx": 87
+  },
+  {
+   "i": 617,
+   "name": "Co_IModelGun_P_Fire",
+   "anim": "yoco_it_handgun_lp(DVD)",
+   "ref": 33599,
+   "bank": 2,
+   "idx": 831
+  },
+  {
+   "i": 618,
+   "name": "Co_IModelGun_P_Fire2",
+   "anim": "yoco_it_handgun_lp(DVD)",
+   "ref": 33599,
+   "bank": 2,
+   "idx": 831
+  },
+  {
+   "i": 619,
+   "name": "Co_IModelGun_P_Fire3",
+   "anim": "yoco_it_handgun_lp(DVD)",
+   "ref": 33599,
+   "bank": 2,
+   "idx": 831
+  },
+  {
+   "i": 620,
+   "name": "Co_IModelGun_P_Fire4",
+   "anim": "yoco_it_handgun_lp(DVD)",
+   "ref": 33599,
+   "bank": 2,
+   "idx": 831
+  },
+  {
+   "i": 621,
+   "name": "Co_IModelGun_P_Fire5",
+   "anim": "yoco_it_handgun_lp(DVD)",
+   "ref": 33599,
+   "bank": 2,
+   "idx": 831
+  },
+  {
+   "i": 622,
+   "name": "Co_IModelGun_P_End",
+   "anim": "yoco_it_handgun_en(DVD)",
+   "ref": 33604,
+   "bank": 2,
+   "idx": 836
+  },
+  {
+   "i": 623,
+   "name": "Co_IRevolver",
+   "anim": "yoco_it_revolver(DVD)",
+   "ref": 32776,
+   "bank": 2,
+   "idx": 8
+  },
+  {
+   "i": 624,
+   "name": "Co_IShotgun",
+   "anim": "yoco_it_shotgun(DVD)",
+   "ref": 16473,
+   "bank": 1,
+   "idx": 89
+  },
+  {
+   "i": 625,
+   "name": "Co_IShotgun_P",
+   "anim": "yoco_it_shotgun(DVD)",
+   "ref": 16473,
+   "bank": 1,
+   "idx": 89
+  },
+  {
+   "i": 626,
+   "name": "Co_IRaygun",
+   "anim": "yoco_it_raygun(DVD)",
+   "ref": 16475,
+   "bank": 1,
+   "idx": 91
+  },
+  {
+   "i": 627,
+   "name": "Co_ISyuriken",
+   "anim": "yoco_it_syuriken(DVD)",
+   "ref": 16476,
+   "bank": 1,
+   "idx": 92
+  },
+  {
+   "i": 628,
+   "name": "Co_IThrowKnife",
+   "anim": "yoco_it_syuriken(DVD)",
+   "ref": 16476,
+   "bank": 1,
+   "idx": 92
+  },
+  {
+   "i": 629,
+   "name": "Co_IGrenade",
+   "anim": "yoco_it_grenade(DVD)",
+   "ref": 16478,
+   "bank": 1,
+   "idx": 94
+  },
+  {
+   "i": 630,
+   "name": "Co_IGrenade_E",
+   "anim": "yoco_it_grenade_modori(DVD)",
+   "ref": 16479,
+   "bank": 1,
+   "idx": 95
+  },
+  {
+   "i": 631,
+   "name": "Co_IMedical_P",
+   "anim": "yoco_it_grenade(DVD)",
+   "ref": 16478,
+   "bank": 1,
+   "idx": 94
+  },
+  {
+   "i": 632,
+   "name": "Co_IMedical_P_E",
+   "anim": "yoco_it_grenade_modori(DVD)",
+   "ref": 16479,
+   "bank": 1,
+   "idx": 95
+  },
+  {
+   "i": 633,
+   "name": "Co_IBalloon",
+   "anim": "coyo_it_balloon(DVD)",
+   "ref": 16482,
+   "bank": 1,
+   "idx": 98
+  },
+  {
+   "i": 634,
+   "name": "Co_IBalloonR",
+   "anim": "coyo_it_balloon(DVD)",
+   "ref": 16482,
+   "bank": 1,
+   "idx": 98
+  },
+  {
+   "i": 635,
+   "name": "Co_IBalloonY",
+   "anim": "coyo_it_balloon(DVD)",
+   "ref": 16482,
+   "bank": 1,
+   "idx": 98
+  },
+  {
+   "i": 636,
+   "name": "Co_IBalloonB",
+   "anim": "coyo_it_balloon(DVD)",
+   "ref": 16482,
+   "bank": 1,
+   "idx": 98
+  },
+  {
+   "i": 637,
+   "name": "Co_IJSword",
+   "anim": "yoco_it_nihontou_tuki(DVD)",
+   "ref": 32777,
+   "bank": 2,
+   "idx": 9
+  },
+  {
+   "i": 638,
+   "name": "Co_IJSword2",
+   "anim": "yoco_it_nihontou_kesa(DVD)",
+   "ref": 32778,
+   "bank": 2,
+   "idx": 10
+  },
+  {
+   "i": 639,
+   "name": "Co_IJSword2E",
+   "anim": "yoco_it_nihontou_kesasuka(DVD)",
+   "ref": 32779,
+   "bank": 2,
+   "idx": 11
+  },
+  {
+   "i": 640,
+   "name": "Co_IESword",
+   "anim": "yoco_it_silversword(DVD)",
+   "ref": 16486,
+   "bank": 1,
+   "idx": 102
+  },
+  {
+   "i": 641,
+   "name": "Co_IBeamSaber",
+   "anim": "yoco_it_silversword(DVD)",
+   "ref": 16486,
+   "bank": 1,
+   "idx": 102
+  },
+  {
+   "i": 642,
+   "name": "Co_IBRed_P",
+   "anim": "yoco_it_silversword(DVD)",
+   "ref": 16486,
+   "bank": 1,
+   "idx": 102
+  },
+  {
+   "i": 643,
+   "name": "Co_IBGreen_P",
+   "anim": "yoco_it_silversword(DVD)",
+   "ref": 16486,
+   "bank": 1,
+   "idx": 102
+  },
+  {
+   "i": 644,
+   "name": "Co_IBBlue_P",
+   "anim": "yoco_it_silversword(DVD)",
+   "ref": 16486,
+   "bank": 1,
+   "idx": 102
+  },
+  {
+   "i": 645,
+   "name": "Co_ICSword",
+   "anim": "yoco_it_seiryutou(DVD)",
+   "ref": 32780,
+   "bank": 2,
+   "idx": 12
+  },
+  {
+   "i": 646,
+   "name": "Co_IStunRod",
+   "anim": "yoco_it_stanrod(DVD)",
+   "ref": 16491,
+   "bank": 1,
+   "idx": 107
+  },
+  {
+   "i": 647,
+   "name": "Co_ISoftCream",
+   "anim": "yoco_it_stanrod(DVD)",
+   "ref": 16491,
+   "bank": 1,
+   "idx": 107
+  },
+  {
+   "i": 648,
+   "name": "Co_IChocoVanilla",
+   "anim": "yoco_it_stanrod(DVD)",
+   "ref": 16491,
+   "bank": 1,
+   "idx": 107
+  },
+  {
+   "i": 649,
+   "name": "Co_I3xIceCream",
+   "anim": "yoco_it_stanrod(DVD)",
+   "ref": 16491,
+   "bank": 1,
+   "idx": 107
+  },
+  {
+   "i": 650,
+   "name": "Co_ITonfur",
+   "anim": "yoco_it_tonfur(DVD)",
+   "ref": 16495,
+   "bank": 1,
+   "idx": 111
+  },
+  {
+   "i": 651,
+   "name": "Co_ITonfur1_2",
+   "anim": "yoco_it_tonfur(DVD)",
+   "ref": 16495,
+   "bank": 1,
+   "idx": 111
+  },
+  {
+   "i": 652,
+   "name": "Co_ITonfur1_3",
+   "anim": "yoco_it_tonfur(DVD)",
+   "ref": 16495,
+   "bank": 1,
+   "idx": 111
+  },
+  {
+   "i": 653,
+   "name": "Co_ITonfur2",
+   "anim": "yoco_it_tonfur(DVD)",
+   "ref": 16495,
+   "bank": 1,
+   "idx": 111
+  },
+  {
+   "i": 654,
+   "name": "Co_ITonfur2_2",
+   "anim": "yoco_it_tonfur(DVD)",
+   "ref": 16495,
+   "bank": 1,
+   "idx": 111
+  },
+  {
+   "i": 655,
+   "name": "Co_ITonfur2_3",
+   "anim": "yoco_it_tonfur(DVD)",
+   "ref": 16495,
+   "bank": 1,
+   "idx": 111
+  },
+  {
+   "i": 656,
+   "name": "Co_IMagicWand",
+   "anim": "yoco_it_magicwand(DVD)",
+   "ref": 32781,
+   "bank": 2,
+   "idx": 13
+  },
+  {
+   "i": 657,
+   "name": "Co_IAssaultRifle",
+   "anim": "yoco_it_assaultrifle(DVD)",
+   "ref": 16501,
+   "bank": 1,
+   "idx": 117
+  },
+  {
+   "i": 658,
+   "name": "Co_ITrombone",
+   "anim": "yoco_it_assaultrifle(DVD)",
+   "ref": 16501,
+   "bank": 1,
+   "idx": 117
+  },
+  {
+   "i": 659,
+   "name": "Co_IBeamRifle",
+   "anim": "yoco_it_beamrifle(DVD)",
+   "ref": 16503,
+   "bank": 1,
+   "idx": 119
+  },
+  {
+   "i": 660,
+   "name": "Co_ICatGun_P",
+   "anim": "yoco_it_beamrifle(DVD)",
+   "ref": 16503,
+   "bank": 1,
+   "idx": 119
+  },
+  {
+   "i": 661,
+   "name": "Co_ICupid",
+   "anim": "yoco_it_cupid(DVD)",
+   "ref": 32782,
+   "bank": 2,
+   "idx": 14
+  },
+  {
+   "i": 662,
+   "name": "Co_IBouquet",
+   "anim": "yoco_it_bouquet(DVD)",
+   "ref": 32783,
+   "bank": 2,
+   "idx": 15
+  },
+  {
+   "i": 663,
+   "name": "Co_IMagical",
+   "anim": "yoco_it_sutekki(DVD)",
+   "ref": 33611,
+   "bank": 2,
+   "idx": 843
+  },
+  {
+   "i": 664,
+   "name": "Co_INae",
+   "anim": "yoco_it_hanaue(DVD)",
+   "ref": 16505,
+   "bank": 1,
+   "idx": 121
+  },
+  {
+   "i": 665,
+   "name": "Co_INaeSIT",
+   "anim": "yoco_it_hanaue(DVD)",
+   "ref": 16505,
+   "bank": 1,
+   "idx": 121
+  },
+  {
+   "i": 666,
+   "name": "Co_IConductor",
+   "anim": "coyo_it_toonsutekki(DVD)",
+   "ref": 16507,
+   "bank": 1,
+   "idx": 123
+  },
+  {
+   "i": 667,
+   "name": "Co_IConductorU",
+   "anim": "coyo_it_toonsutekki(DVD)",
+   "ref": 16507,
+   "bank": 1,
+   "idx": 123
+  },
+  {
+   "i": 668,
+   "name": "Co_IConductorD",
+   "anim": "coyo_it_toonsutekki(DVD)",
+   "ref": 16507,
+   "bank": 1,
+   "idx": 123
+  },
+  {
+   "i": 669,
+   "name": "Co_IGlove",
+   "anim": "coyo_it_pitcherglove(DVD)",
+   "ref": 32784,
+   "bank": 2,
+   "idx": 16
+  },
+  {
+   "i": 670,
+   "name": "Co_IGlove_CN",
+   "anim": "coyo_it_pitcherglove_cancel(DVD)",
+   "ref": 32785,
+   "bank": 2,
+   "idx": 17
+  },
+  {
+   "i": 671,
+   "name": "Thrmv_B2_00i",
+   "anim": "Tco_ntukami(DVD)",
+   "ref": 16510,
+   "bank": 1,
+   "idx": 126
+  },
+  {
+   "i": 672,
+   "name": "Fm_Ihip_n",
+   "anim": "ozmn_hip_f(DVD)",
+   "ref": 16511,
+   "bank": 1,
+   "idx": 127
+  },
+  {
+   "i": 673,
+   "name": "Fm_Ihip_y",
+   "anim": "ozmn_hip_y(DVD)",
+   "ref": 16512,
+   "bank": 1,
+   "idx": 128
+  },
+  {
+   "i": 674,
+   "name": "Co_IAngelU",
+   "anim": "yoco_it_angelring_ao(DVD)",
+   "ref": 33612,
+   "bank": 2,
+   "idx": 844
+  },
+  {
+   "i": 675,
+   "name": "Co_IAngelD",
+   "anim": "yoco_it_angelring_utu(DVD)",
+   "ref": 33613,
+   "bank": 2,
+   "idx": 845
+  },
+  {
+   "i": 676,
+   "name": "Co_IAngelS",
+   "anim": "yoco_it_angelring_tati(DVD)",
+   "ref": 33614,
+   "bank": 2,
+   "idx": 846
+  },
+  {
+   "i": 677,
+   "name": "Co_IAngelS_B",
+   "anim": "yoco_it_angelring_tati_b(DVD)",
+   "ref": 33615,
+   "bank": 2,
+   "idx": 847
+  },
+  {
+   "i": 678,
+   "name": "Co_IAngelS_C",
+   "anim": "yoco_it_angelring_tati_c(DVD)",
+   "ref": 33616,
+   "bank": 2,
+   "idx": 848
+  },
+  {
+   "i": 679,
+   "name": "ThrmvLB2_00i",
+   "anim": "naco_tukami2l(DVD)",
+   "ref": 33617,
+   "bank": 2,
+   "idx": 849
+  },
+  {
+   "i": 680,
+   "name": "ThrmvLB2_00Fi",
+   "anim": "naco_tukami2long(DVD)",
+   "ref": 33618,
+   "bank": 2,
+   "idx": 850
+  },
+  {
+   "i": 681,
+   "name": "ThrmvBB2_L0i",
+   "anim": "Yco_BcatchS(DVD)",
+   "ref": 33183,
+   "bank": 2,
+   "idx": 415
+  },
+  {
+   "i": 682,
+   "name": "Co_IFLnage00_n",
+   "anim": "coyo_it_cake_f(DVD)",
+   "ref": 16513,
+   "bank": 1,
+   "idx": 129
+  },
+  {
+   "i": 683,
+   "name": "Co_IFLnage00BIG_n",
+   "anim": "coyo_it_cake_up_f(DVD)",
+   "ref": 16514,
+   "bank": 1,
+   "idx": 130
+  },
+  {
+   "i": 684,
+   "name": "Co_IFLnage00vsOGR_n",
+   "anim": "coyo_it_cake_down_f(DVD)",
+   "ref": 16515,
+   "bank": 1,
+   "idx": 131
+  },
+  {
+   "i": 685,
+   "name": "Co_IFLnage00_y",
+   "anim": "coyo_it_cake_y(DVD)",
+   "ref": 33620,
+   "bank": 2,
+   "idx": 852
+  },
+  {
+   "i": 686,
+   "name": "Co_IFLnage00BIG_y",
+   "anim": "coyo_it_cakekm_y(DVD)",
+   "ref": 16516,
+   "bank": 1,
+   "idx": 132
+  },
+  {
+   "i": 687,
+   "name": "Co_IFLnage00KUMKUM_y",
+   "anim": "coyo_it_cakekmkm_y(DVD)",
+   "ref": 33621,
+   "bank": 2,
+   "idx": 853
+  },
+  {
+   "i": 688,
+   "name": "Esc_Co_IFLnage00_n",
+   "anim": "coyo_it_cake_nuke_f(DVD)",
+   "ref": 33622,
+   "bank": 2,
+   "idx": 854
+  },
+  {
+   "i": 689,
+   "name": "Esc_Co_IFLnage00_y",
+   "anim": "coyo_it_cake_nuke_y(DVD)",
+   "ref": 16517,
+   "bank": 1,
+   "idx": 133
+  },
+  {
+   "i": 690,
+   "name": "Co_IFLnage11_n",
+   "anim": "coyo_it_cake_f(DVD)",
+   "ref": 16513,
+   "bank": 1,
+   "idx": 129
+  },
+  {
+   "i": 691,
+   "name": "Co_IFLnage11BIG_n",
+   "anim": "coyo_it_cake_up_f(DVD)",
+   "ref": 16514,
+   "bank": 1,
+   "idx": 130
+  },
+  {
+   "i": 692,
+   "name": "Co_IFLnage11vsOGR_n",
+   "anim": "coyo_it_cake_down_f(DVD)",
+   "ref": 16515,
+   "bank": 1,
+   "idx": 131
+  },
+  {
+   "i": 693,
+   "name": "Co_IFLnage11_y",
+   "anim": "coyo_it_cake_y(DVD)",
+   "ref": 33620,
+   "bank": 2,
+   "idx": 852
+  },
+  {
+   "i": 694,
+   "name": "Co_IFLnage11BIG_y",
+   "anim": "coyo_it_cakekm_y(DVD)",
+   "ref": 16516,
+   "bank": 1,
+   "idx": 132
+  },
+  {
+   "i": 695,
+   "name": "Co_IFLnage11KUMKUM_y",
+   "anim": "coyo_it_cakekmkm_y(DVD)",
+   "ref": 33621,
+   "bank": 2,
+   "idx": 853
+  },
+  {
+   "i": 696,
+   "name": "Esc_Co_IFLnage11_n",
+   "anim": "coyo_it_cake_nuke_f(DVD)",
+   "ref": 33622,
+   "bank": 2,
+   "idx": 854
+  },
+  {
+   "i": 697,
+   "name": "Esc_Co_IFLnage11_y",
+   "anim": "coyo_it_cake_nuke_y(DVD)",
+   "ref": 16517,
+   "bank": 1,
+   "idx": 133
+  },
+  {
+   "i": 698,
+   "name": "Fb_IModelGun_P_Fire2",
+   "anim": "yoco_it_handgun_lp(DVD)",
+   "ref": 33599,
+   "bank": 2,
+   "idx": 831
+  },
+  {
+   "i": 699,
+   "name": "Fb_IModelGun_P_End",
+   "anim": "yoco_it_handgun_en(DVD)",
+   "ref": 33604,
+   "bank": 2,
+   "idx": 836
+  },
+  {
+   "i": 700,
+   "name": "sDm_genko",
+   "anim": "Nco_PSy_genko(DVD)",
+   "ref": 33628,
+   "bank": 2,
+   "idx": 860
+  },
+  {
+   "i": 701,
+   "name": "sDm_IKAO_pl",
+   "anim": "Kco_y_snap40(DVD)",
+   "ref": 33629,
+   "bank": 2,
+   "idx": 861
+  },
+  {
+   "i": 702,
+   "name": "sDm_IKAO_plL",
+   "anim": "kjco_y_lsnap(DVD)",
+   "ref": 33630,
+   "bank": 2,
+   "idx": 862
+  },
+  {
+   "i": 703,
+   "name": "sDm_IKAO_plR",
+   "anim": "kjco_y_rsnap(DVD)",
+   "ref": 33631,
+   "bank": 2,
+   "idx": 863
+  },
+  {
+   "i": 704,
+   "name": "sDm_IKAO_plB",
+   "anim": "kjco_y_bsnap(DVD)",
+   "ref": 33632,
+   "bank": 2,
+   "idx": 864
+  },
+  {
+   "i": 705,
+   "name": "sDm_Aa_kaitenL",
+   "anim": "kmaa_kaiten_y_r(DVD)",
+   "ref": 33633,
+   "bank": 2,
+   "idx": 865
+  },
+  {
+   "i": 706,
+   "name": "sDm_Aa_kaitenR",
+   "anim": "kmaa_kaiten_y_l(DVD)",
+   "ref": 33634,
+   "bank": 2,
+   "idx": 866
+  },
+  {
+   "i": 707,
+   "name": "sDm_Aa_kaitenB",
+   "anim": "kmaa_kaiten_y_f(DVD)",
+   "ref": 33635,
+   "bank": 2,
+   "idx": 867
+  },
+  {
+   "i": 708,
+   "name": "sDm_Aa_kaitenF",
+   "anim": "kmaa_kaiten_y_b(DVD)",
+   "ref": 33636,
+   "bank": 2,
+   "idx": 868
+  },
+  {
+   "i": 709,
+   "name": "sDm_InkdowCE",
+   "anim": "Sco_nkdown(DVD)",
+   "ref": 33637,
+   "bank": 2,
+   "idx": 869
+  },
+  {
+   "i": 710,
+   "name": "sDm_Inkdow2C",
+   "anim": "Sco_nkdown(DVD)",
+   "ref": 33637,
+   "bank": 2,
+   "idx": 869
+  },
+  {
+   "i": 711,
+   "name": "sDm_ILnkdowCE",
+   "anim": "Sco_Lnkdown(DVD)",
+   "ref": 33639,
+   "bank": 2,
+   "idx": 871
+  },
+  {
+   "i": 712,
+   "name": "sDm_ILnkdow2C",
+   "anim": "Sco_Lnkdown(DVD)",
+   "ref": 33639,
+   "bank": 2,
+   "idx": 871
+  },
+  {
+   "i": 713,
+   "name": "sDm_Itohtai",
+   "anim": "Tco_yo_haF(DVD)",
+   "ref": 33641,
+   "bank": 2,
+   "idx": 873
+  },
+  {
+   "i": 714,
+   "name": "sDm_ItohtaiL",
+   "anim": "Tco_yo_haL(DVD)",
+   "ref": 33642,
+   "bank": 2,
+   "idx": 874
+  },
+  {
+   "i": 715,
+   "name": "sDm_ItohtaiR",
+   "anim": "Tco_yo_haR(DVD)",
+   "ref": 33643,
+   "bank": 2,
+   "idx": 875
+  },
+  {
+   "i": 716,
+   "name": "sDm_ItohtaiB",
+   "anim": "Tco_yo_haB(DVD)",
+   "ref": 33644,
+   "bank": 2,
+   "idx": 876
+  },
+  {
+   "i": 717,
+   "name": "Co_IcrstY",
+   "anim": "naco_nodo(DVD)",
+   "ref": 33645,
+   "bank": 2,
+   "idx": 877
+  },
+  {
+   "i": 718,
+   "name": "Co_IcrstYL",
+   "anim": "naco_nodoL(DVD)",
+   "ref": 33646,
+   "bank": 2,
+   "idx": 878
+  },
+  {
+   "i": 719,
+   "name": "Co_IcrstYR",
+   "anim": "naco_nodoR(DVD)",
+   "ref": 33647,
+   "bank": 2,
+   "idx": 879
+  },
+  {
+   "i": 720,
+   "name": "Co_IcrstYB",
+   "anim": "Zco_agoB(DVD)",
+   "ref": 33648,
+   "bank": 2,
+   "idx": 880
+  },
+  {
+   "i": 721,
+   "name": "sDm_InkdowCE2",
+   "anim": "Sco_nkdown(DVD)",
+   "ref": 33637,
+   "bank": 2,
+   "idx": 869
+  },
+  {
+   "i": 722,
+   "name": "sDm_Inkdow2C2",
+   "anim": "Sco_nkdown(DVD)",
+   "ref": 33637,
+   "bank": 2,
+   "idx": 869
+  },
+  {
+   "i": 723,
+   "name": "sDm_ILnkdowCE2",
+   "anim": "Sco_Lnkdown(DVD)",
+   "ref": 33639,
+   "bank": 2,
+   "idx": 871
+  },
+  {
+   "i": 724,
+   "name": "sDm_ILnkdow2C2",
+   "anim": "Sco_Lnkdown(DVD)",
+   "ref": 33639,
+   "bank": 2,
+   "idx": 871
+  },
+  {
+   "i": 725,
+   "name": "dw_Ihas",
+   "anim": "naco_has(DVD)",
+   "ref": 33653,
+   "bank": 2,
+   "idx": 885
+  },
+  {
+   "i": 726,
+   "name": "sDm_IPaintY",
+   "anim": "koco_y2paint(DVD)",
+   "ref": 33654,
+   "bank": 2,
+   "idx": 886
+  },
+  {
+   "i": 727,
+   "name": "sDm_IPaintL",
+   "anim": "koco_y2laint(DVD)",
+   "ref": 33655,
+   "bank": 2,
+   "idx": 887
+  },
+  {
+   "i": 728,
+   "name": "sDm_IPaintR",
+   "anim": "koco_y2raint(DVD)",
+   "ref": 33656,
+   "bank": 2,
+   "idx": 888
+  },
+  {
+   "i": 729,
+   "name": "sDm_IPaintB",
+   "anim": "koco_y2baint(DVD)",
+   "ref": 33657,
+   "bank": 2,
+   "idx": 889
+  },
+  {
+   "i": 730,
+   "name": "sDm_IHAR00M",
+   "anim": "Tco_y_hara(DVD)",
+   "ref": 33658,
+   "bank": 2,
+   "idx": 890
+  },
+  {
+   "i": 731,
+   "name": "sDm_IStun",
+   "anim": "koco_stan(DVD)",
+   "ref": 33659,
+   "bank": 2,
+   "idx": 891
+  },
+  {
+   "i": 732,
+   "name": "sDm_IKAO00R",
+   "anim": "Tco_y_kaoL(DVD)",
+   "ref": 33660,
+   "bank": 2,
+   "idx": 892
+  },
+  {
+   "i": 733,
+   "name": "sDm_IKAOL0R",
+   "anim": "Tco_yl_kaoB(DVD)",
+   "ref": 33661,
+   "bank": 2,
+   "idx": 893
+  },
+  {
+   "i": 734,
+   "name": "sDm_IKAOR0R",
+   "anim": "Tco_yr_kaoF(DVD)",
+   "ref": 33662,
+   "bank": 2,
+   "idx": 894
+  },
+  {
+   "i": 735,
+   "name": "sDm_IKAO_p30",
+   "anim": "Nco_y_haigoP(DVD)",
+   "ref": 33663,
+   "bank": 2,
+   "idx": 895
+  },
+  {
+   "i": 736,
+   "name": "sDm_IKAO00L",
+   "anim": "Tco_y_kaoR(DVD)",
+   "ref": 33664,
+   "bank": 2,
+   "idx": 896
+  },
+  {
+   "i": 737,
+   "name": "sDm_IKAOL0L",
+   "anim": "Tco_yl_kaoF(DVD)",
+   "ref": 33665,
+   "bank": 2,
+   "idx": 897
+  },
+  {
+   "i": 738,
+   "name": "sDm_IKAOR0L",
+   "anim": "Tco_yr_kaoB(DVD)",
+   "ref": 33666,
+   "bank": 2,
+   "idx": 898
+  },
+  {
+   "i": 739,
+   "name": "dw_Irarixk",
+   "anim": "dw_rarixk(DVD)",
+   "ref": 33435,
+   "bank": 2,
+   "idx": 667
+  },
+  {
+   "i": 740,
+   "name": "dw_IrariLxk",
+   "anim": "yaco_lrarixk(DVD)",
+   "ref": 33436,
+   "bank": 2,
+   "idx": 668
+  },
+  {
+   "i": 741,
+   "name": "dw_IrariRxk",
+   "anim": "yaco_rrarixk(DVD)",
+   "ref": 33437,
+   "bank": 2,
+   "idx": 669
+  },
+  {
+   "i": 742,
+   "name": "dw_Iraribxk",
+   "anim": "dw_raribxk(DVD)",
+   "ref": 33438,
+   "bank": 2,
+   "idx": 670
+  },
+  {
+   "i": 743,
+   "name": "sDm_genko2",
+   "anim": "Nco_PSy_genko(DVD)",
+   "ref": 33628,
+   "bank": 2,
+   "idx": 860
+  },
+  {
+   "i": 744,
+   "name": "sDw_JACKup2",
+   "anim": "Nco_y_omoi(DVD)",
+   "ref": 33672,
+   "bank": 2,
+   "idx": 904
+  },
+  {
+   "i": 745,
+   "name": "sDw_JACKup2L",
+   "anim": "naco_omoi2l(DVD)",
+   "ref": 33673,
+   "bank": 2,
+   "idx": 905
+  },
+  {
+   "i": 746,
+   "name": "[JUN_KAZAMA]",
+   "anim": "[JUN_KAZAMA]",
+   "ref": 0,
+   "bank": 0,
+   "idx": 0
+  },
+  {
+   "i": 788,
+   "name": "2012/06/23_0",
+   "anim": "[JUN_KAZAMA]",
+   "ref": 0,
+   "bank": 0,
+   "idx": 0
+  },
+  {
+   "i": 820,
+   "name": "2012/06/23_0",
+   "anim": "[JUN_KAZAMA]",
+   "ref": 0,
+   "bank": 0,
+   "idx": 0
+  },
+  {
+   "i": 862,
+   "name": "[JUN_KAZAMA]",
+   "anim": "motOrigin",
+   "ref": 32767,
+   "bank": 1,
+   "idx": 16383
+  },
+  {
+   "i": 870,
+   "name": "[JUN_KAZAMA]",
+   "anim": "[JUN_KAZAMA]",
+   "ref": 0,
+   "bank": 0,
+   "idx": 0
+  },
+  {
+   "i": 872,
+   "name": "[JUN_KAZAMA]",
+   "anim": "[JUN_KAZAMA]",
+   "ref": 0,
+   "bank": 0,
+   "idx": 0
+  },
+  {
+   "i": 904,
+   "name": "[JUN_KAZAMA]",
+   "anim": "Tue Jul 24 22:03:32 JST 2012",
+   "ref": 32767,
+   "bank": 1,
+   "idx": 16383
+  }
+ ]
+}
