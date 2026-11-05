@@ -384,7 +384,7 @@ IK/Tsuyu Asui IK.blend`, sha256 034d0972eafd…) in Blender 5.2.3. The
 **Next in the owner's order after Pond: Chatur** (Rahkasa; 983-bone
 full rig / 133 deform in the blend, four arms — see the gap report).
 
-## CHATUR REBUILD — LANDED (2026-11-05, PR #CHATURPR)
+## CHATUR REBUILD — LANDED (2026-11-05, PR #1572)
 
 Rebuilt from her own blend (`roster/rahkasa/intake/RahkasaV1.1.blend`,
 11,459,182 B, sha256 85610cee5dafc070bd9d05bc75b7ca33d3f96dc8987693b4d5a5cb232c97c7e3)
