@@ -446,8 +446,15 @@ export const MODEL_URLS = {
   // textureless 24_/25_ outfit + headgear shells are excluded; the original
   // model-rigged.glb stays in the repo untouched. Skin/eyes/hair are hers
   // and textured; clothing gets added later from parts.
-  megami: '../roster/parvati/attires/attire1/model-rigged-nooutfit.glb',
-  'megami-attire1': '../roster/parvati/attires/attire1/model-rigged-nooutfit.glb',
+  // FIDELITY REBUILD (2026-11-05, SmutBase 6 fidelity order): the registry
+  // now loads model-rigged.glb, replaced in place by the rebuild from the
+  // recovered commission blend (full 469-bone rig, 474 shape keys, her
+  // textured steampunk outfit as authored — the 2026-10-23 verdict that
+  // the outfit was textureless described the stripped conversion, not
+  // the source blend). model-rigged-nooutfit.glb stays on disk untouched
+  // as the named no-outfit option from 2026-11-03.
+  megami: '../roster/parvati/attires/attire1/model-rigged.glb',
+  'megami-attire1': '../roster/parvati/attires/attire1/model-rigged.glb',
   // MENAJERII (2026-10-23, SmutBase 6 pipeline fighters 5-6): SmutBase Vixen
   // commission intake (Injustice 2-based). In-repo build = meshopt-compressed
   // (41.7 MB, validated); intake original (629.7 MB) archived on release

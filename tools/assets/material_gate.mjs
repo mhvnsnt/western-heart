@@ -32,7 +32,7 @@ const RUNTIME_TINTED_TEMPLATES = new Map([
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
-import { auditGltf, parseGlb, donorPlan } from '../../game/js/material-resolve.js';
+import { auditGltf, parseGlb, donorPlan, authoredFlat } from '../../game/js/material-resolve.js';
 
 const root = execFileSync('git', ['rev-parse', '--show-toplevel']).toString().trim();
 const args = process.argv.slice(2);
@@ -103,9 +103,19 @@ for (const [key, url] of RUNTIME_TINTED_TEMPLATES) {
 // keys at exactly this URL is therefore expected, not broken. Missing or
 // placeholder verdicts are NEVER exempted, any 24_/25_ material still in
 // the file voids the exemption, and no other key or URL is exempted.
+// FIDELITY REBUILD (2026-11-05): the loaded URL is now model-rigged.glb,
+// rebuilt from the recovered commission blend. The 2026-11-03 premise was
+// wrong about the source: in the blend the 24_/25_ outfit is FULLY
+// textured (all seven 24_/25_ materials carry base textures in the
+// rebuild) — the textureless shells were an artifact of the stripped
+// 2026-10-23 conversion, not of her file. The exemption therefore now
+// voids only on a TEXTURELESS 24_/25_ outfit material (a shell), not on
+// the outfit's presence. The remaining untextured findings on the rebuild
+// are the same source-faithful classes named above (EyeMoisture-3/-4,
+// Cornea-2 clear shells; Torso-6 inner shell), verified in the landing PR.
 const OWNER_OUTFIT_RULE_EXEMPT = new Map([
-  ['megami', '../roster/parvati/attires/attire1/model-rigged-nooutfit.glb'],
-  ['megami-attire1', '../roster/parvati/attires/attire1/model-rigged-nooutfit.glb'],
+  ['megami', '../roster/parvati/attires/attire1/model-rigged.glb'],
+  ['megami-attire1', '../roster/parvati/attires/attire1/model-rigged.glb'],
 ]);
 const ownerOutfitRule = [];
 for (const [key, url] of OWNER_OUTFIT_RULE_EXEMPT) {
@@ -116,7 +126,12 @@ for (const [key, url] of OWNER_OUTFIT_RULE_EXEMPT) {
   const t = jsonOf(key); if (!t) continue;
   const usedMats = new Set();
   for (const m of t.meshes || []) for (const pr of m.primitives || []) if (pr.material !== undefined) usedMats.add(pr.material);
-  const outfitLeft = [...usedMats].some(mi => /^2[45]_/.test((t.materials[mi] && t.materials[mi].name) || ''));
+  const outfitLeft = [...usedMats].some(mi => {
+    const mat = t.materials[mi];
+    if (!mat || !/^2[45]_/.test(mat.name || '')) return false;
+    const pb = mat.pbrMetallicRoughness || {};
+    return !pb.baseColorTexture && !authoredFlat(pb.baseColorFactor);
+  });
   if (outfitLeft) continue;
   r.ok = true; r.ownerOutfitRule = true; ownerOutfitRule.push(key);
 }
