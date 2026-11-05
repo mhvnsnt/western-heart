@@ -1,3 +1,5 @@
+> Before touching any model, rig, or animation: read ASSET-PIPELINE.md. Prove with renders you looked at.
+
 # AGENTS.md
 
 # ANTI-CLOBBER LAWS (owner 2026-10-17 — the DXMMII 54k-file wipe)
