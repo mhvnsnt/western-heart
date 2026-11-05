@@ -997,3 +997,256 @@ the parent lane's live check owns the final in-game read.
 **Next: Menajerii (Vixen, Roger Jr.) — the last of the six. NOT
 started here.** Her recovered blend (450 bones, 2,509 shape keys,
 124 packed images) is inventoried in the recovery section above.
+
+
+## MENAJERII REBUILD — LANDED (2026-11-05, PR #1577)
+
+Rebuilt from her own recovered blend
+(`VixenCommission.blend`, 984,617,116 B, sha256
+085d914c6539e0bef89f881ba6887336a1d93115ee6bef792161ec737c375670 —
+byte-identical to the lost original commission, recovery #1575) in
+Blender 5.2.3. The 52-joint template conversion is retired for her —
+the last of the six. Rebuild script:
+tools/anim/export_vixen_fidelity.py; texture pipeline: the Megami
+lane's tools/anim/megami_texture_pipeline/ (proxy-graft), with the
+payload solver run per-image (this lane's solver:
+scripts/build_payloads.py in the lane record).
+
+**Files**
+- Game (loaded path, replaced in place):
+  roster/vixen/attires/attire1/model-rigged-noplane.glb —
+  39,136,632 B, 450 joints, 932 morph targets, 26 images,
+  21 materials. game/js/assets.js already pointed `menajerii` +
+  `menajerii-attire1` at this path; the registry comment now records
+  the rebuild. model-rigged.glb (the #780 crew file) and model.glb
+  stay on disk untouched as the earlier named options.
+- Master: the full blend export (451 joints — 450 blend bones +
+  the exporter's generated neutral_bone for the unskinned meshes —
+  2,509 morph targets, 80 images, 69 materials, every
+  polygon-bearing object incl. the floor Plane and all
+  author-hidden garments) is 114,293,416 B even with textures
+  capped at 1024 px, over GitHub's 100 MB per-file limit, so there
+  is NO in-repo model-blend-master.glb for her (deviation 14).
+  Both master builds are parked on release
+  `megami-menajerii-smutbase-20261023` (her oversized-artifact home
+  since intake): menajerii-master-capped1024.glb (114,293,416 B,
+  sha256 07b5428ea31f09c457825e5910f85128420012ec70eaba81c9443b171333bb20)
+  and menajerii-master-packed.glb (493,068,228 B, uncapped
+  textures, sha256 e4a425cc2ccc4260d730ccf39095a13803bcd4a550a85757e5af916c0248526e),
+  both digest-verified on the release via the API. The game file's
+  textures are capped at 1024 px (the shipped roster's class); the
+  source blend remains the full-res record.
+- Proof: docs/proof/2026-11-04/smutbase6-fidelity/
+  menajerii-fidelity-{front,q34,face}-20261105.png.
+
+**The rig, as measured** — one armature "Vixen": 450 bones, 192
+deform, DAZ/GZM construction, identified by modifier reference
+(every character mesh's live ARMATURE modifier points at it). Same
+DAZ/GZM family as Parvati: arm_parent.L/R hang off `hip` under
+COPY_TRANSFORMS from armSocket.L/R on the clavicles; leg_parent
+likewise from legSocket on the pelvis. glTF carries no constraints,
+so the export copy repairs the hierarchy to the rig's own
+constraint intent (arm_parent→armSocket, leg_parent→legSocket,
+upper_arm.bend→upper_arm, thigh.bend→thigh — 8 reparents); a
+TEST-mode A/B export measured the bind-pose cost at max joint-world
+delta 0.0000128 (bind-neutral, float-noise class). 23 core bones
+renamed to the engine's canonical names in the game file only (the
+identical set to Megami's). The blend's only nonzero pose bones are
+the 4 IK pole targets; export is at REST like every lane before
+this one. All 2,509 shape keys across 24 meshes are driver-driven
+and ALL evaluate to 0 after a depsgraph update — the authored look
+is the Basis; drivers are stripped in the export copy and every key
+ships as a morph target: 932 in the game file (Vixen Mesh 515, Suit
+355, Necklace 21, Hair 18, Arms 13, Boots 10) and 2,509 in the
+master (the remaining 1,577 ride the author-hidden wardrobe meshes).
+20 meshes carry a dead object=None ARMATURE modifier (a source
+defect, also present on Ryusan's blend); removed in the export
+copy. Hair and Necklace are two of them — as authored they are
+bone-parented (Hair→head, Necklace→neck) and ship rigid on those
+bones, exactly as the file has them; weight authoring would be
+fabrication.
+
+**The authored look is the blend's single view layer, and it
+decides the game file's wardrobe.** The layer EXCLUDES the
+collections Public Hair, Lingerie 1, Lingerie 2, Lingerie 3, BDSM
+and Hidden (the 31 GZM widget meshes) from viewport and render
+alike. Opened and rendered as saved she wears the cheetah-print
+suit, the tall hair, arms, necklace and boots — the game set. The
+excluded 22 wardrobe meshes (three lingerie sets, the BDSM
+harness set, three public-hair cards) are the author's alternates,
+toggled off in her own file: out of the game file, all present in
+the master (the Pond #1552 author-hidden sense). The GZM widgets
+(0-poly) and the floor Plane are likewise game-dropped,
+master-kept. Vixen has NO literal fox ears in the blend or the
+rebuild — none added (recovery #1575 finding).
+
+**Floor and scale** — evaluated REST sole (her Boots) at
+z = -0.0576, lift +0.0576 applied to the root objects of both
+files. Uniform scale x0.94643 on the game file, anchored to the
+shipped model's own in-game idle height (1.80 m, measured in the
+live scene on the shipped file); the raw blend figure is 1.9019 m
+sole->top. In-game she stands 1.80 m idle, feet grounded (minY -0.0),
+against Pantera's 1.85 m in the same harness = 97.3%
+body-to-body — the shipped model's own anchored scale,
+reproduced exactly. (Canvas grabs come out black in the
+swiftshader harness, the known Pond/Ryusan/Megami limitation;
+the verdict is numeric from the live scene.)
+
+**Textures: the proxy-graft route again.** The packed set is
+410 MB across 124 images (several 4K); as with Megami, the lane
+exports a 64x64 proxy blend through the stock exporter (identical
+script and settings — the exporter's own wiring decisions), solves
+every image's payload rule against the proxy pixels, rebuilds the
+payloads at full resolution from the blend's packed data, and
+grafts them onto the morph/geometry exports. Game set: 24 of 25
+images are the source bytes verbatim (identity-bytes, verify error
+at JPEG/PNG generation noise, worst 7.4 on the small mouth maps);
+the one pack — the hair base color — is the exporter's own
+base+alpha pack (RGB from Cheetah_A_Hair_Color, alpha =
+luma(Cheetah_A_Hair_CO)), verified at 0.92 mean error with a
+channel-independent comparison (PIL's RGBA resize premultiplies
+alpha and reports a phantom 14.5 on this pack — a verify-method
+artifact, recorded here so the next lane doesn't chase it). DAZ
+bump-in-normal-slot wart the Megami lane preserved as-is is
+CORRECTED here (deviation 12): on Vixen's strong G8F bump maps it
+breaks the authored look outright (charcoal skin), so the slots
+carry authored normals / hand-applied bump bakes instead.
+GP_Torso-1 / GP_Torso_Back-1 sample their maps on TEXCOORD_1, so
+both files are encoded with the codec's meshopt step only — the
+prune() landmine from the Megami lane applies unchanged.
+Image accounting: the blend holds 125 images = 124 packed +
+Blender's "Render Result" slot. The game file carries 26 GLB
+entries covering 26 distinct blend images (the 25 the exporter
+wires, plus the one appended GP_Torso normal conversion of
+deviation 12); the master carries 80 GLB entries covering 89
+distinct blend images. The 35 packed images not carried are
+declared, none silent: 16 pixel-identical duplicate datablocks of
+carried images; 10 height/bump companions superseded in their own
+normalTexture slots by the authored normal maps or the deviation-12
+conversions; 4 GoldenPalace group-internal maps superseded by the
+carried GP trio; 2 Mix.B inputs the Principled conversion drops
+(the Necklace group's 3f0a05d6…jpg and the Cheetah groups'
+NormalMap (27).png); 1 displacement map with no glTF slot
+(dtt_HHSBC1_Displace); 2 wall-coat scene-dressing images. The
+per-image record lives in the lane's payload manifests.
+
+**Probes (serve tree at main + this PR's files)**
+Gate: the loaded file audits ok 21 / missing 0 / placeholder 0 /
+untextured 2 — the 2 are EyeMoisture-2 + Cornea-2, clear
+transmission shells (deviation 15 extends the outfit-rule
+exemption to her keys, the Megami #1576 mechanism); the harness
+gatecheck reaches roundState fight with p1model loaded and no
+load error. BASICS roster probe vs Pantera: all 10 inputs press
+true; damage parity with the shipped model on 7 of 10 (1: 6.7,
+1+2: 16.3, d/f+1: 5.8, d+1: 11.5, d/f+2: 14.4, u/f+4: 12.5,
+1+3: 33.5 with the throw seen); inputs 2, 3, 4 land different
+hit-segment totals (9.6 -> 11.5, 22 -> 24, 19.2 -> 15.3,
+deterministic across two runs — deviation 16; the moveset data
+is untouched). Grabs probe: 1+3 connects at 33.5; 2+4 presses
+and grabs for 0 damage, exactly the shipped model's pre-existing
+throw-execution anomaly (cf. Pantera A1) — matched, not masked.
+Roger bank play probe: 15 T3 actions bound, 15 mixer actions,
+all 10 BASICS rows OK at weight 1, bindFrac 0.08, 1+3 playing
+Roger's own grab clip — row-for-row identical to a control run
+of the shipped model in the same tree. (Probe-environment note:
+the lane's probe copy of the tree was missing
+game/assets/anim/t3/roger/; restored from main before probing —
+on main the bank was always present.) Proof renders
+(front/q34 EEVEE, face Cycles) eye-checked in the lane: warm tan
+skin, red lips, blue irises, cheetah suit, silver arm guards,
+orange boots — the authored look; an intermediate build failed
+this check with charcoal skin and was rebuilt (deviation 12).
+
+**Deviations (each with its ref)**
+1. 23 core bone renames, game file only — engine canon-name
+   requirement; precedents #1570-#1576, approval WH #1567.
+2. 8 hierarchy reparents in the export copy — constraint-intent
+   repair, bind delta measured 0.0000128; same refs.
+3. REST export (the authored pose touches only the 4 IK pole
+   targets) — all-lane precedent.
+4. Author-hidden set (22 wardrobe meshes) + GZM widgets + Plane
+   dropped from the game file, all kept in the master — Pond
+   #1552 author-hidden precedent; view-layer evidence above.
+5. Dead object=None ARMATURE modifiers (20) removed in the export
+   copy — Hair and Necklace therefore ship rigid on their
+   bone-parents, exactly as authored; weight authoring would be
+   fabrication. Ryusan/Megami precedent.
+6. SUBSURF ships as cage (export_apply=False) — all-lane
+   precedent.
+7. In-repo textures capped at 1024 px; the uncapped master is
+   parked on the release — Megami #1576 precedent (deviation 8
+   there).
+8. Proxy-graft texture transplant (the exporter's own wiring at
+   64x64, payloads rebuilt at full res) — Megami #1576 precedent
+   (deviation 9 there).
+9. Meshopt-only encode, prune() skipped — Megami #1576 A/B proof
+   (deviation 7 there): prune() drops TextureInfo.texCoord +
+   TEXCOORD_1, which her GP_Torso materials sample.
+10. Game-file scale x0.94643 anchored to the shipped model's
+    in-game idle height — Megami #1576 precedent (deviation 11
+    there); the game has no height normalization, scale is baked
+    into the file.
+11. The master carries the exporter's generated neutral_bone as a
+    451st joint — it is what the stock exporter emits for the
+    unskinned meshes (Plane, strand cards, widgets); the game
+    file, whose meshes are all skinned, carries exactly the 450
+    blend bones.
+12. Bump-to-normal payload correction (the one place this lane
+    overrides the exporter's literal output). Where the blend
+    feeds Principled.Normal through a Bump node sitting behind
+    DAZ group nodes, the stock exporter skips its bump bake and
+    writes the raw HEIGHT map into the normalTexture slot. On
+    Parvati the same wart was invisible (her bump maps are
+    low-contrast); on Vixen the G8F bump maps are strong and the
+    shading breaks outright — measured: her skin renders
+    charcoal with the height maps in the slots, and renders as
+    authored (warm skin, red lips, blue irises) with them
+    corrected. The correction is the exporter's own bake,
+    applied by hand: where the material chain also carries an
+    authored NormalMap companion (the XF lingerie *_N set, the
+    BDSM harness normal, ASB2_Mat1_Normal), the payload is that
+    authored normal; otherwise it is a Sobel tangent-space
+    normal derived from the blend's own height map at the
+    blend's own Bump strength x distance. The GP_Torso normal
+    slot, which the exporter had filled with the Specularity
+    image, receives the Torso bump conversion as one appended
+    image (the Specularity image stays for its specularColor
+    duty). Slots, sources and strengths are recorded per image
+    in the lane's payload manifests (rule "bump-to-normal" /
+    "authored-normal-swap"). Deviation from the Megami #1576
+    precedent of preserving the wart as-is, because here the
+    wart defeats the owner's fidelity bar itself.
+13. Buffer-domain payloads for the ASB2 heel set. Three ASB2
+    datablocks (Height, Opacity, and the Metallic/Roughness
+    pair) hold in-memory pixel buffers that differ from their
+    packed file bytes (the file copies are stale — the Height
+    file is pure white; the buffer holds the authored leather
+    height). The exporter reads the buffers, so the ASB2
+    payloads are built from buffer dumps (img.pixels), verified
+    against the proxy export at <=1.5 mean error where the file
+    bytes scored 15-114. The same check was run across the
+    master manifest: every other payload verifies against the
+    buffer-derived proxy export at generation-noise levels, so
+    no other datablock is affected.
+14. Master parked on the release instead of in-repo (both
+    builds) — the 1024-capped master is 114,293,416 B, over
+    GitHub's 100 MB per-file limit; the release is this
+    fighter's established oversized-artifact home (her
+    629.7 MB intake original lives there). Sizes + sha256 in
+    the Files section above and in ATTIRE-SLOTS.md.
+15. Material-gate exemption extended to menajerii /
+    menajerii-attire1 (game/js/material-runtime.js) with the
+    matching expected-failure entries in
+    tools/assets/material_gate.mjs — her audit's only
+    untextured materials are EyeMoisture-2 and Cornea-2, clear
+    transmission shells with no base texture by design. Same
+    class and mechanism as Megami #1576 (deviation 10 there).
+16. BASICS damage on inputs 2, 3, 4 differs from the shipped
+    template model (9.6 -> 11.5, 22 -> 24, 19.2 -> 15.3;
+    deterministic across two probe runs; the other seven
+    inputs match exactly, including the 33.5 grab). The
+    moveset data is untouched — the totals are hit-segment
+    sums, and her real limb proportions change which segments
+    connect at probe spacing. Declared rather than tuned away:
+    editing damage data to force the template's totals would
+    falsify her moveset.
