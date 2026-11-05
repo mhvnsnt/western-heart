@@ -482,10 +482,18 @@ gap report's framing)**
   pose-only by owner decision; no bank was fabricated or borrowed.
   Her t3actions count is 0, the same pose-only state as the shipped
   file (roster pass: pose-only, 0/214 no-clip).
-- In-game still capture: attempted twice; the headless harness's
-  screenshot call times out under SwiftShader with this scene (the
-  fight state itself verified by state probe both runs). Logged as a
-  harness limitation, not hidden.
+- In-game still: `chatur-ingame-pose-20261105.png` (follow-up PR
+  #1573 — the screenshot call timed out twice under SwiftShader,
+  then succeeded on the third attempt with a longer timeout). It
+  shows her in the arena vs an animated, stance-posed Pantera at
+  correct scale (she reads taller on screen, 2.0 m vs his height at
+  similar depth). CAVEAT, stated plainly: under this serve harness
+  she renders blown-out white (her packed Body/Head emission maps
+  under the harness's stage lighting), while the same packed file
+  renders her authored dark skin correctly in Blender — a
+  harness/engine rendering state to re-check on the current build,
+  not a defect measured in the file. The fight state itself was
+  verified by state probe on every run.
 
 **Deviations**
 
