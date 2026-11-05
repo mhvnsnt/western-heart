@@ -195,3 +195,87 @@ materials, morphs, or meshes.
 - [ ] Locate or re-download the two commission .rar originals (hashes recorded above).
 - [ ] Store the four in-repo blends + this report's renders per the storing laws
       (they are already safe in the repo; local scratch copies are cache only).
+
+---
+
+## TOBI REBUILD — LANDED (2026-11-05, this PR)
+
+Rebuilt from her own blend (`roster/miruko/intake/miruko IK/mirkoIK.blend`,
+sha256 7aba517fdb7f2b1cb3b09fc9fe5d36eb0e3a1a877c79db2ced5154a375a27269) in
+Blender 5.2.3. The 48-bone-template conversion is retired for her.
+
+**Files**
+- Game model (replaces the shipped conversion at the path the game loads):
+  `roster/miruko/attires/attire1/model-rerig-textured.glb` — 2,495,616 B
+  (was 4,823,088 B), 255 joints (her full 254-bone rig + the exporter's
+  standard neutral_bone), 11 embedded images, morph targets on every mesh
+  that has them in the blend: body 54, Hair 37, tail 30, Gloves 1.
+- Canonical master (original Blender bone names, every object incl. the
+  author-hidden Bulge/Penis, tail unskinned exactly as authored):
+  `roster/miruko/attires/attire1/model-blend-master.glb` — 2,874,744 B,
+  255 joints, 12 images, 345 morph targets.
+- Blend totals preserved: 254 bones / 129 shape keys across the kept meshes
+  (122 in the game file; the 7 Penis keys live only in the master with the
+  author-hidden mesh) / all 12 packed images + the intake
+  `textures/Mirko body.png` wired in (the blend's one unpacked reference).
+
+**Method notes (reusable for Pond/Chatur/Ryusan)**
+- The body mesh's 3 MASK modifiers are baked through the depsgraph per shape
+  key (armature modifier kept ACTIVE — this DMX mesh's bind is not identity;
+  muting displaces the surface ~5 cm). The authored key mix (suit-fit /
+  tights-fit at 1.0) is folded into the basis; after `shape_key_add`, every
+  key block's value must be reset to the authored value or all morphs apply
+  at once and the surface bulges (caught by eye on the pelvis proof, fixed,
+  re-proven: evaluated front surface matches the blend to 4 decimal places).
+- Scale: blend is authored 9.388 units tall; uniform 0.189475 applied to
+  reach the shipped model's 1.7755 m. Inverse bind matrices scale by
+  translation only (uniform S: IBM' = S·IBM·S⁻¹).
+- Pack: repo codec (meshopt + quantization); embedded image sha256 sets
+  verified identical pre/post pack; the material gate audit
+  (game/js/material-resolve.js auditGltf) passes 14/14 primitives ok.
+
+**Proof (this PR)**
+- Renders from the shipped file: `docs/proof/2026-11-04/smutbase6-fidelity/tobi-fidelity-front-20261104.png`, `docs/proof/2026-11-04/smutbase6-fidelity/tobi-fidelity-q34-20261104.png`, `docs/proof/2026-11-04/smutbase6-fidelity/tobi-fidelity-face-20261104.png`, pelvis pair `docs/proof/2026-11-04/smutbase6-fidelity/tobi-pelvis-blend-20261104.png` + `docs/proof/2026-11-04/smutbase6-fidelity/tobi-pelvis-glb-20261104.png`.
+- Fight proof video: `docs/proof/2026-11-04/smutbase6-fidelity/tobi-fight-probe-20261104.mp4` (stepped-capture from the game's own harness; frames eye-checked: stance scale vs Pantera correct, strike poses real; the throw phase rides the game's low throw camera — the driver log records throwSeen + 15 dmg for the grapple).
+- Roster probe (game harness, BASICS): all 10 press true; strikes deal the
+  roster-pass baseline damage (1: 2.4, 2: 4–4.8, 3: 4–4.8, 4: 6.3, d/f+1: 4.8,
+  d+1: 2.4, d/f+2: 13.5–17.5 across runs); 1+3 throw connects for 15 (proven
+  at the baseline spacing in a distance sweep: connects at 0.7 / 1.15 / 1.8).
+  Play-probe: all 10 inputs OK, mixer weight 1.0, bind-pose fraction 0.17,
+  22 T3 actions built on the new rig (rows 91–294, own + donor).
+
+**Deviations (all game-file only; the master is the blend exactly)**
+1. 22 core bones renamed to the engine's canonical names (hips→Hips,
+   upper_arm.L→LeftArm, …). The runtime retargeter (t3anims.js
+   analyzeRig/canonBoneName) matches NO Blender-style name, so without this
+   the model gets no animation at all. Alternative (extend canonBoneName for
+   Blender-style names engine-side) noted as a follow-up; not done here
+   because an engine change risks all 59 fighters.
+2. Tail repair: the blend's tail ARMATURE modifier has object=None (source
+   defect — the tail could never deform as authored). Game file assigns the
+   rig and renames the orphan SFM vertex group to Hips.
+3. Author-hidden Bulge/Penis + 0-poly rig helpers excluded from the game
+   file (Pond #1552 precedent — the author hid them in the blend itself);
+   all present in the master.
+4. Neck fluff: the blend gives it NO material (renders plain white). Game
+   file gives it an authored flat warm-white (0.90, 0.88, 0.84) so the
+   material gate passes and the collar reads as the blend's white fluff.
+   (The old conversion put it on the Body texture → skin-toned collar.)
+5. Authored fit-key mix folded into the basis (see method notes).
+6. Hero-suit Metallic/Roughness merged into one MR image by the glTF
+   exporter (standard glTF behaviour).
+
+**Track 1 (Megami/Menajerii source recovery) — status**
+- Disk search (full workspace, trash, staging dirs): NEITHER rar/blend found.
+- GitHub releases + trees (western-heart, game-reverse-engineering,
+  cape-jones, agent-ops; 158 releases / 3,892 assets): NOT FOUND. Only the
+  two known GLBs exist.
+- Interim masters pulled from release `megami-menajerii-smutbase-20261023`
+  and hash-verified against the release digests:
+  parvati-full.glb 191,604,148 B sha256 0165575b…d232 (25 meshes,
+  1,154,840 tris, 66 images, rigless) and vixen-full.glb 629,742,368 B
+  sha256 7b4df9fb…eafa (29 meshes, 986,895 tris, palette materials — INTACT,
+  supersedes the truncated local copy). Local cache:
+  ~/workspace/_smutbase6-fidelity-20261104/recovered-masters/.
+- Still open: TeraBox check (browser lane) and, if empty there, the
+  SmutBase re-download (browser lane; scripted downloads are Anubis-blocked).
