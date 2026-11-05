@@ -1,0 +1,173 @@
+{
+ "thrower": "megami",
+ "victim": "pantera",
+ "base": "http://127.0.0.1:8777/game/",
+ "ready": true,
+ "trials": [
+  {
+   "n": "1+3",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "1+3",
+    "damage": 35,
+    "isGrab": true,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": null,
+   "pairSeen": false,
+   "lockSeen": true,
+   "hpDelta": 32.1,
+   "firstDmgT": 1.1,
+   "vThrowHitDone": true,
+   "whLogs": [
+    "[WH-THROW] megami vs pantera: no file pair (no reactions bank for 'jun' (UNMAPPED)) \u2014 legacy lock"
+   ],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "walk",
+     "pair": false
+    },
+    {
+     "t": 0.208,
+     "p1": "throwing",
+     "p2": "thrown",
+     "pair": false
+    },
+    {
+     "t": 0.508,
+     "p1": "throwExec",
+     "p2": "thrownExec",
+     "pair": false
+    },
+    {
+     "t": 1.417,
+     "p1": "idle",
+     "p2": "knockdown",
+     "pair": false
+    },
+    {
+     "t": 1.967,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "2+4",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "2+4",
+    "damage": 35,
+    "isGrab": true,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "row:111",
+    "kind": "match",
+    "why": "throw btn ? armL(measured) t hit@12f"
+   },
+   "pairSeen": false,
+   "lockSeen": true,
+   "hpDelta": 32.1,
+   "firstDmgT": 1.1,
+   "vThrowHitDone": true,
+   "whLogs": [
+    "[WH-THROW] megami vs pantera: no file pair (no reactions bank for 'jun' (UNMAPPED)) \u2014 legacy lock"
+   ],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.208,
+     "p1": "throwing",
+     "p2": "thrown",
+     "pair": false
+    },
+    {
+     "t": 0.508,
+     "p1": "throwExec",
+     "p2": "thrownExec",
+     "pair": false
+    },
+    {
+     "t": 1.417,
+     "p1": "idle",
+     "p2": "knockdown",
+     "pair": false
+    },
+    {
+     "t": 1.967,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  }
+ ],
+ "setup": {
+  "roundState": "fight",
+  "p1": {
+   "id": "megami",
+   "t3dir": "jun",
+   "t3bank": "jun",
+   "t3actions": 12
+  },
+  "p2": {
+   "id": "pantera",
+   "t3dir": "king_on_pantera_leoman",
+   "t3bank": "king",
+   "t3actions": 22
+  }
+ },
+ "logs": [
+  "[http 404] http://127.0.0.1:8777/game/assets/anim/t3/jun/t3_hit.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/anim/t3/jun/t3_win_rp.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/anim/t3/jun/t3_ko.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/anim/t3/jun/t3_walk_fwd.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/anim/t3/jun/t3_dash_fwd.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/anim/t3/jun/t3_crouch.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/anim/t3/jun/t3_sidestep_b.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/anim/t7/king/stance.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/movesets/hugo.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/movesets/armor-king.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/movesets/kronos-attire2.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/movesets/kronos.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/movesets/zangief.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/movesets/marduk.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/movesets/cainelias.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/movesets/yukihyo.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/movesets/kutz.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/movesets/ryuji-rock.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/anim/t3/jun/reactions.pack.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/fx/effekseer/ToonHit.efkefc",
+  "[http 404] http://127.0.0.1:8777/game/assets/portraits/megami.png",
+  "[http 404] http://127.0.0.1:8777/game/assets/portraits/pantera.png",
+  "[http 404] http://127.0.0.1:8777/game/assets/anim/t7/king/moves.pack.json",
+  "[http 404] http://127.0.0.1:8777/roster/megami/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8777/roster/pantera/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8777/customization/profiles/index.json",
+  "[http 404] http://127.0.0.1:8777/customization/profiles/megami.json",
+  "[http 404] http://127.0.0.1:8777/customization/profiles/pantera.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/music/battle-volatile.mp3",
+  "[http 404] http://127.0.0.1:8777/game/js/intro-interactions.js"
+ ]
+}
