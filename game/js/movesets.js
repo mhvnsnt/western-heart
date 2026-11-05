@@ -623,6 +623,25 @@ function _prepare(ms) {
      is also reachable on the numeric input (P -> 1, K -> 4) when no other move owns it. */
   for (const k of Object.keys(ms.moves)) { const a = legacyAlias(k); if (a && !(a in slots)) slots[a] = k; }
   for (const k of Object.keys(ms.moves)) { const c = canonNotation(k); if (c && c !== k && !(c in slots)) slots[c] = k; }
+  /* Stance-spelling aliases (roster-100 S9, 2026-11-05; docs/movesets/NO-ENTRY-S9-REAUDIT-2026-11-05.md):
+     a fighter's merged layers can key ONE stance under two spellings — phantom's T7 layer keys the
+     Indian Stance INS while his wired entry (d+3+4, T8 layer) names it IND; cyborgx's T8 layer keys
+     BKP / CLOCKWORK where the wired entries name BACKUP / CLK. stance_after carries only the one
+     canonical spelling, so every duplicate-spelling row could never fire. The moveset file itself
+     declares the pairs (ms.stance_alias, from its own rows: the same move names sit under both
+     spellings); each duplicate-spelling key is ALSO slotted on the canonical spelling when nothing
+     else owns that slot — owned inputs keep their canonical row, exactly like the canonNotation
+     pass above, and no row is renamed or removed. */
+  for (const [alias, canon] of Object.entries(ms.stance_alias || {})) {
+    if (!alias || !canon || alias === canon) continue;
+    for (const k of Object.keys(ms.moves)) {
+      if (!k.startsWith(alias + '.')) continue;
+      const t = canon + k.slice(alias.length);
+      if (!(t in slots)) slots[t] = k;
+      const c = canonNotation(t);
+      if (c && c !== t && !(c in slots)) slots[c] = k;
+    }
+  }
   /* Variants (2026-10-29): KOF/SF close and far normals ('1 (close)' / 'far 1') and T7 stance
      spin counts ('JGS* (3 spins), 1') share the plain input; press() picks them by the fight
      context (distance, spins). Other name-keyed moves (rush_l2 '1,1 (Rush)', hop_1 'hop u/f+1')

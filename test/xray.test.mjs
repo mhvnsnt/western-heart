@@ -18,7 +18,7 @@ globalThis.localStorage = {
   removeItem: (k) => { delete _ls[k]; },
 };
 
-const { XraySystem, XRAY, parseAnatomyLayers, normPrim, dentVector } =
+const { XraySystem, XRAY, parseAnatomyLayers, normPrim, dentVector, anatomyDir } =
   await import(join(here, '..', 'game', 'js', 'xray.js'));
 const { SoftBody } = await import(join(here, '..', 'game', 'js', 'softbody.js'));
 
@@ -273,6 +273,20 @@ ok(!x.active && skinMat.opacity === 1, 'cancel() restores skin mid-sequence');
   const xl = new XraySystem(game, Tstub);
   await xl.prefetch('pantera');
   ok(seen.length === 1 && seen[0].startsWith('../'), `page copy used without a CDN request (${seen.join(', ')})`);
+  // S9 (2026-11-05): fighters whose anatomy JSON lives under a roster DIRECTORY that
+  // differs from the fighter id fetch from that directory instead of 404ing on the id path
+  ok(anatomyDir('cyborgx') === 'cyborg-x', 'anatomyDir cyborgx -> cyborg-x');
+  ok(anatomyDir('mariposa-monarch') === 'mariposa', 'anatomyDir mariposa-monarch -> mariposa');
+  ok(anatomyDir('megami') === 'parvati', 'anatomyDir megami -> parvati');
+  ok(anatomyDir('menajerii') === 'vixen', 'anatomyDir menajerii -> vixen');
+  ok(anatomyDir('pantera') === 'pantera', 'anatomyDir leaves unmapped ids alone');
+  seen.length = 0;
+  const xa = new XraySystem(game, Tstub);
+  await xa.prefetch('cyborgx');
+  ok(seen[0] === '../roster/cyborg-x/anatomy/anatomy-layers.json', `cyborgx anatomy fetched from its directory (got ${seen[0]})`);
+  const xm = new XraySystem(game, Tstub);
+  await xm.prefetch('mariposa-monarch');
+  ok(seen[1] === '../roster/mariposa/anatomy/anatomy-layers.json', `mariposa-monarch anatomy fetched from its directory (got ${seen[1]})`);
   // nothing anywhere: null (skin / camera beat only), no throw
   globalThis.fetch = async () => ({ ok: false, status: 404, json: async () => null });
   const xn = new XraySystem(game, Tstub);

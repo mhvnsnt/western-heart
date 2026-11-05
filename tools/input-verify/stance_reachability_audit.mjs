@@ -9,6 +9,9 @@
 //             R / RD (rage), FLANK_L/R/B (at the foe's side / back), soul systems (SPIRIT, SOUL9, ...), and the
 //             ground states the knockdown leaves (FUFT, plus FUHT when the moveset has it);
 //   stance    a stance some move of this fighter enters (moveset stance_after: b+1+2 -> JGR);
+//             a prefix the moveset itself declares a spelling alias of an entered stance
+//             (moveset stance_alias, roster-100 S9 2026-11-05: phantom INS -> IND, cyborgx
+//             BKP -> BACKUP) also counts — _prepare slots those rows on the canonical spelling;
 //   throw     a chain-throw stage a throw of this fighter opens (movesets.js throwStageTag: 'Arm Breaker (AB1)' -> AB1);
 //   NO ENTRY  nothing in the game puts the fighter there: those moves can never fire.
 //
@@ -100,12 +103,14 @@ function audit(fid) {
     e.moves++;
     if (e.examples.length < 4) e.examples.push(k);
   }
+  const aliases = data.stance_alias || {};
   for (const e of Object.values(by)) {
     const p = e.prefix;
     e.way = ENGINE[p] ? 'engine'
       : stances.has(p) ? 'stance'
-        : throwTags.has(p) ? 'throw'
-          : 'NO ENTRY';
+        : (aliases[p] && stances.has(aliases[p])) ? 'stance'
+          : throwTags.has(p) ? 'throw'
+            : 'NO ENTRY';
     if (p === 'BT' && stances.has('BT')) e.way = 'stance';
   }
   const list = Object.values(by).sort((a, b) => b.moves - a.moves);

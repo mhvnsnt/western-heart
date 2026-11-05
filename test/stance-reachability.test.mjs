@@ -1,7 +1,9 @@
 // Stance / state-prefixed moves that could never fire (owner 2026-11-01: "you said many of the moves need a state or
 // stance prefix to fire then set that up set all that up with all the moves"). tools/input-verify/
 // stance_reachability_audit.mjs found 2,237 of 5,577 prefixed inputs with no way in; the universal fixes here take it
-// to 1,952 (docs/movesets/STANCE-REACHABILITY-AUDIT-2026-11-01.md). Node, through the game's own TekkenBuffer.
+// to 1,952 (docs/movesets/STANCE-REACHABILITY-AUDIT-2026-11-01.md). The roster-100 S9 pass (2026-11-05) adds the
+// stance_alias + Megami IZU cases below and takes NO ENTRY 593 -> 561
+// (docs/movesets/NO-ENTRY-S9-REAUDIT-2026-11-05.md). Node, through the game's own TekkenBuffer.
 // Run: node --test test/stance-reachability.test.mjs
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -77,6 +79,43 @@ test('a tackle throw opens the TACKLE. follow-ups', () => {
     if (tackle && Object.keys(mv).some((k) => k.startsWith('TACKLE.'))) live++;
   }
   assert.ok(live >= 5, `${live} fighters with a tackle throw and TACKLE. follow-ups`);
+});
+
+test('duplicate stance spellings declared in stance_alias slot their rows on the entered spelling (S9)', () => {
+  // phantom: the T7 layer keys the Indian Stance INS, the wired entry (d+3+4) names it IND
+  const phantom = load('phantom');
+  assert.deepEqual(phantom.stance_alias, { INS: 'IND', POISON_WIND: 'POI' });
+  // canonical rows keep the inputs they already own
+  assert.equal(M.resolveMoveKey('phantom', 'IND.1'), 'IND.1');
+  assert.equal(M.resolveMoveKey('phantom', 'IND.2'), 'IND.2');
+  // rows only the duplicate spelling carries become reachable on the canonical spelling
+  assert.equal(M.resolveMoveKey('phantom', 'IND.2,D/B+2'), 'INS.2,D/B+2');
+  assert.equal(M.resolveMoveKey('phantom', 'IND.2,D/B+2,2,2,2'), 'INS.2,D/B+2,2,2,2');
+  assert.equal(M.resolveMoveKey('phantom', 'IND.3+4*'), 'INS.3+4*');
+  assert.equal(M.resolveMoveKey('phantom', 'POI.1+2'), 'POISON_WIND.1+2');
+  // and the buffer fires them from inside the stance, string chain included
+  const b = new M.TekkenBuffer('phantom');
+  assert.equal(b.pressButton('2', { stance: 'IND' }), 'IND.2');
+  const step = b.continuation('D/B+2', { stance: 'IND' });
+  assert.equal(step, 'IND.2,D/B+2');
+  b.recordExplicit(step);
+  assert.equal(b.continuation('2', { stance: 'IND' }), 'IND.2,D/B+2,2');
+  // cyborgx: the T8 layer keys BKP / CLOCKWORK, the wired entries name BACKUP / CLK
+  const cyborgx = load('cyborgx');
+  assert.deepEqual(cyborgx.stance_alias, { BKP: 'BACKUP', CLOCKWORK: 'CLK' });
+  assert.equal(M.resolveMoveKey('cyborgx', 'BACKUP.1'), 'BACKUP.1');
+  assert.equal(M.resolveMoveKey('cyborgx', 'BACKUP.1+2'), 'BKP.1+2');
+  assert.equal(M.resolveMoveKey('cyborgx', 'CLK.3'), 'CLK.3');
+  assert.equal(new M.TekkenBuffer('cyborgx').pressChord('1+2', { stance: 'BACKUP' }), 'BACKUP.1+2');
+});
+
+test('megami f+1+2 enters Izumo, so her IZU. rows fire (S9)', async () => {
+  const F = await import(join(ROOT, 'game/js/fighter.js'));
+  const d = load('megami');
+  assert.equal((d.stance_after || {})['f+1+2'], 'IZU');
+  assert.equal(F.getRealMove('megami', 'f+1+2').stanceAfter, 'IZU');
+  assert.equal(new M.TekkenBuffer('megami').pressButton('1', { stance: 'IZU' }), 'IZU.1');
+  assert.equal(new M.TekkenBuffer('megami').pressChord('1+3', { stance: 'IZU' }), 'IZU.1+3');
 });
 
 test('a move whose frame data says "(BT)" leaves the fighter back-turned, so BT. moves can fire after it', async () => {
