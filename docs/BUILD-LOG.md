@@ -2,6 +2,15 @@
 
 Lane ownership is claimed on #866. MoneyManBusch owns: Pantera and the core-8 chat-owned animation wiring, the Tekken 7 bank extraction (`tools/anim/t7_*`), OpenKumite/FE adoption, moveset-template inventory, and the PR queue. Muse owns #1096 and its stack, the moves audit, and `tools/auto_rig`.
 
+## 2026-11-05 — Ryusan Phase 3: card recapture + anim gaps named-unmapped (MoneyManBusch / Grok) (t377u/t378u)
+
+- **Card DONE:** `tools/portraits/capture.mjs ryusan` → `game/assets/portraits/ryusan.png` (select path `assets/portraits/${id}.png`). Manifest `bones:521`, `framed:true`. sha256 `82ed443be85d61e976adeb07a7a3ea1598b6cc215b8cb1161473a4c81f63c290` (was stale 90289 B `f156bf5e…`). Proof: `docs/proof/2026-11-05/ryusan-phase3/`.
+- **Capture note:** B2 remote still hosts a stale ~2.1 MB / ~73-bone `model-rerig.glb`; capture forced local 521-joint file via temporary `remoteBase` placeholder (not committed). **Re-upload B2 from main** so live Pages loads fidelity model.
+- **Stance:** luckychloe bank stance fails fit on 521-bone rig (Left shoulder ~1.23 rad) — card is bind/aim framed, not invented pose.
+- **Anims LEFT UNMAPPED (no invent):** pack skips `1+2`, `u+3+4`, `f+3+4`, `b+1+2` (one-clip-one-hit); SHOW `intro`/`win` (`t3_stance.json`/`t3_win_rp.json`) — no body-clip in motbin. Sequenced-press probe = tooling follow-up.
+- **Re-rank:** Ryusan card axis closed; not 100% (multi-hit/SHOW/stance-fit/B2). Next finishable: Aotsuki/Awapop when anim GRE is blocked — or multi-hit bake when real T7 rows exist.
+- **Do not:** merge #1569; invent True Ogre for Chatur; touch arena sky/lighting/colors; Muse #1096 / auto_rig; #1566.
+
 ## 2026-11-05 — Roster closest-first ranking + SmutBase 6 bone verify (MoneyManBusch / Grok) (t377u/t378u)
 
 - **Owner supersede:** fix model → card → moveset → animations by **closest-to-done first**. SmutBase 6 need full blend armatures (not 48/52 conversions). Pantera still not 100% (55 r17 `Kg_*`).
