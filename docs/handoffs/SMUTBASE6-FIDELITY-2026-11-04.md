@@ -279,3 +279,107 @@ Blender 5.2.3. The 48-bone-template conversion is retired for her.
   ~/workspace/_smutbase6-fidelity-20261104/recovered-masters/.
 - Still open: TeraBox check (browser lane) and, if empty there, the
   SmutBase re-download (browser lane; scripted downloads are Anubis-blocked).
+
+## POND REBUILD — LANDED (2026-11-05, PR #1571)
+
+Rebuilt from her own blend (`roster/tsuyu-asui/intake/Tsuyu Asui
+IK/Tsuyu Asui IK.blend`, sha256 034d0972eafd…) in Blender 5.2.3. The
+52-joint MPFB-template conversion (#1552) is retired for her.
+
+**Files**
+
+- Game model (replaces the shipped conversion at the path the game
+  loads — `game/js/assets.js` `pond:`): `roster/tsuyu-asui/attires/
+  attire1/model-rigged-textured.glb` — 7,726,484 B packed (was
+  8,235,624 B), 224 joints (her full 224-bone rig), 10 embedded
+  images, morphs on the meshes that have them: body 66, suit 9.
+- Canonical master (original Blender bone names, every
+  polygon-bearing object incl. the author-hidden Bulge/Penis):
+  `roster/tsuyu-asui/attires/attire1/model-blend-master.glb` —
+  8,098,424 B packed, 224 joints, 11 images, 82 morphs total
+  (66 body + 9 suit + 7 Penis).
+- Blend totals preserved: 224 bones / 82 shape keys / 12 packed
+  images (11 in the master; 10 in the game file — the penis image
+  leaves with its dropped mesh, and `phong_exp` is referenced by no
+  mesh, only by the unused outfit_toon material).
+- BOOTS + GLOVES RESTORED: the boots mesh (3,084 verts, tsuyu-boots
+  materials) and gloves mesh (4,070 verts) that the original
+  conversion dropped entirely are back in both files — she rendered
+  barefoot with sleeve-cuff hands before; now she doesn't.
+
+**Method notes (deltas from the Tobi recipe)**
+
+- TWO masked meshes: `tsuyu` carries 3 MASKs (vg `suit hide`,
+  `Bootshide`, `expose vagina`) and `suit` carries 2 MASKs
+  (`boots hide`, `expose vagina`) — both baked through the depsgraph
+  per shape key with the armature ACTIVE, same method as Tobi.
+- NO authored fit mix: every shape-key value in this blend is 0
+  (dump-verified), so no fold was needed; the value-reset step still
+  applied after `shape_key_add`.
+- FLOOR LIFT: the blend's floor is NOT the armature origin — her
+  boot soles evaluate at z = −0.1869 (the footTip helper bones
+  corroborate). The armature object is lifted +0.1869 before
+  evaluation/export so the exported soles sit at y = 0, the shipped
+  model's footprint. Uniform scale 0.404717 to the shipped model's
+  1.80 m total height (blend character 4.4476 → 1.80).
+- POSE: the blend's `pose_position` is POSE but every pose bone is
+  at rest (0 nonzero pose bones, dump-verified) — exporting at REST
+  is the authored bind either way.
+- Pack = repo codec (meshopt + quantization). Embedded-image sha256
+  sets verified identical pre/post pack (10/10 game, 11/11 master).
+  Material-gate audit (`auditGltf`): game file 10/10 prims ok, no
+  repairs. The master's one sub-ok prim is `Plane.002` (the
+  mouth_template object) which has NO material in the blend itself —
+  source trait, archival file only, not gated.
+
+**Proof (this PR, docs/proof/2026-11-04/smutbase6-fidelity/)**
+
+- Renders from the packed game file (decoded; geometry/images
+  byte-identical to the packed file): `pond-fidelity-front-20261105.png`,
+  `pond-fidelity-q34-20261105.png`, `pond-fidelity-face-20261105.png`.
+- Pelvis/suit-coverage pair (EEVEE, same bbox-relative framing):
+  `pond-pelvis-blend-20261105.png` vs `pond-pelvis-glb-20261105.png`
+  — baked MASK regions and suit coverage match the blend. (The
+  Workbench TEXTURE view of the blend shows the suit's roughness
+  map, not its base color — the pair is EEVEE for that reason.)
+- Fight proof: `pond-fight-probe-20261105.mp4` + driver log
+  `pond-fight-probe-20261105.json` — live game, Pond (P1) vs
+  Pantera (P2) with the game's own AI driving the opponent (not
+  stubbed); frames eye-checked: Pond at correct scale vs Pantera (slightly shorter, grounded), animated in stance and attacks with hit sparks, throw seen in the grapple phase (driver log: attack:1 dmg 4.8, d/f+2 dmg 0.8, grapple throwSeen true). The capture assembles the screencast's 22 real frames at a fixed 0.4 s each (8.8 s) — the headless harness emits frames sparsely, same as the Tobi capture.
+- Probes: roster BASICS all 10 press true at shipped-model baseline
+  damage parity (1: 2.5 · 2: 4.2 · 3: 5 · 4: 7.5 vs baseline 6.7,
+  run variance · 1+2: 21.2 · d/f+2: 14.7 · u/f+4: 5.3); 1+3 throw
+  connects for 15.8 (baseline 15.8). Play-probe: all 11 fired
+  inputs OK, mixer weight 1.0, bind-pose fraction 0.08–0.17, her
+  20 T7 Raven actions built on the new rig with the same plans as
+  baseline. d+1 plans the generic light fallback exactly as on the
+  shipped model (pre-existing moveset-data state, not a model
+  regression); the string extras d/f+1,2 and f,f+2 don't fire under
+  single-press harness input on either model.
+
+**Deviations (all game-file only; the master is the blend as authored)**
+
+1. 22 core bones renamed to the engine's canonical names — same
+   reason as Tobi deviation 1 (`canonBoneName` matches no
+   Blender-style names): `spine`→Hips (this rig's `spine` IS the
+   pelvis bone — thighs/pelvis hang off it), `spine.001`→Spine,
+   `spine.002`→Spine1, `spine.003`→Chest, `spine.004`→Neck,
+   `spine.005`→Head, `shoulder/upper_arm/forearm/hand`→
+   Left/RightShoulder/Arm/ForeArm/Hand, `thigh/shin/foot/toe`→
+   Left/RightUpLeg/Leg/Foot/ToeBase. The short in-chain helpers
+   `Elbow.L/R` + `Knee.L/R` and every twist/breast/pelvis/facial
+   bone keep their names and ride at rest local rotation — the
+   pattern `game/js/assets.js` documents for other fighters.
+2. Author-hidden Bulge/Penis + non-character helper objects
+   dropped (`directional`, `switch`, `up/down`, `face_template`,
+   `mouth_template`, `WGT-*` widgets). Bulge/Penis are
+   hide_viewport + hide_render IN THE BLEND (owner-approved Pond
+   precedent, #1552); the helpers are wireframe-only gizmos with
+   0 polygons — glTF cannot represent them, they export as bare
+   nodes even in the master.
+3. Floor lift +0.1869 (see method notes) — a placement correction
+   to the shipped model's footprint; proportions untouched
+   (uniform scale only).
+
+**Next in the owner's order after Pond: Chatur** (Rahkasa; 983-bone
+full rig / 133 deform in the blend, four arms — see the gap report).
