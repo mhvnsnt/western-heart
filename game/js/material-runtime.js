@@ -49,6 +49,13 @@ const RUNTIME_TINTED_TEMPLATES = new Set([
 // keys, with no 24_/25_ outfit material left in the model, is therefore
 // usable, not broken. Missing or placeholder verdicts are NEVER exempted,
 // and no other key is exempted.
+// FIDELITY REBUILD (2026-11-05): Megami's loaded model is now the rebuild
+// from her recovered commission blend, WITH the outfit — and in the blend
+// the outfit is fully textured (the textureless-shell premise described
+// the stripped 2026-10-23 conversion, not her source). The exemption's
+// outfit test below therefore voids only on a TEXTURELESS 24_/25_ outfit
+// material; her textured outfit no longer trips it. The untextured
+// verdicts that remain are the same source-faithful classes named above.
 const OWNER_OUTFIT_RULE_EXEMPT = new Set(['megami', 'megami-attire1']);
 
 export function isModelUsable(key) { return !broken.has(key); }
@@ -96,22 +103,27 @@ export async function resolveModelMaterials(key, gltf, getDonorGltf) {
     });
   }
   const counts = { ok: 0, missing: 0, placeholder: 0, untextured: 0 };
-  let outfitPresent = false;
+  let outfitShellPresent = false;
   gltf.scene.traverse(o => {
     if (!o.isMesh) return;
     for (const m of [].concat(o.material)) {
-      if (m && /^2[45]_/.test((m.name || '').trim())) outfitPresent = true;
       if (m) {
         for (const k of MAPS_SRGB) if (m[k]) m[k].colorSpace = THREE.SRGBColorSpace;
         for (const k of MAPS_LINEAR) if (m[k]) m[k].colorSpace = THREE.NoColorSpace;
       }
-      counts[verdict(o, m)]++;
+      const v = verdict(o, m);
+      // A 24_/25_ outfit material only voids the owner exemption when it is
+      // itself textureless (the 2026-11-03 shells). Since the 2026-11-05
+      // fidelity rebuild, Megami's 24_/25_ outfit materials carry her source
+      // textures — a textured outfit is the real outfit, not a shell.
+      if (m && /^2[45]_/.test((m.name || '').trim()) && v !== 'ok') outfitShellPresent = true;
+      counts[v]++;
     }
   });
   const bad = counts.missing + counts.placeholder + counts.untextured;
   const runtimeTinted = RUNTIME_TINTED_TEMPLATES.has(key) &&
     counts.missing === 0 && counts.placeholder === 0 && counts.untextured > 0;
-  const ownerOutfitRule = OWNER_OUTFIT_RULE_EXEMPT.has(key) && !outfitPresent &&
+  const ownerOutfitRule = OWNER_OUTFIT_RULE_EXEMPT.has(key) && !outfitShellPresent &&
     counts.missing === 0 && counts.placeholder === 0 && counts.untextured > 0;
   if (bad && !runtimeTinted && !ownerOutfitRule) {
     broken.add(key);

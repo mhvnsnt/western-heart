@@ -798,3 +798,202 @@ order (Chatur → Ryusan → Megami → Menajerii). The full rigs, morphs,
 and textures the fidelity order demands for these two now exist in
 hand: Parvati 469-bone GZM rig + 474 shape keys + 123 packed images;
 Vixen 450-bone GZM rig + 2,509 shape keys + 124 packed images.
+
+## MEGAMI REBUILD — LANDED (2026-11-05, PR #MEGAMIPR)
+
+Rebuilt from her own recovered blend
+(`ParvatiCommission.blend`, 595,860,144 B, sha256
+cfc9864a15b03989b9dcb559e5fffc02bde8075f26472eeb4308500f01a8612a —
+byte-identical to the lost original commission, recovery #1575) in
+Blender 5.2.3. The 52-joint template conversion is retired for her.
+Rebuild script: tools/anim/export_megami_fidelity.py; texture pipeline:
+tools/anim/megami_texture_pipeline/.
+
+**Files**
+- Game (loaded path, replaced in place):
+  roster/parvati/attires/attire1/model-rigged.glb — 41,319,032 B,
+  469 joints, 474 morph targets, 40 images, 28 materials.
+  The registry previously loaded model-rigged-nooutfit.glb (WH #1549);
+  game/js/assets.js now points `megami` + `megami-attire1` at
+  model-rigged.glb, and model-rigged-nooutfit.glb stays on disk
+  untouched as the named no-outfit option.
+- Master: roster/parvati/attires/attire1/model-blend-master.glb —
+  61,156,276 B, 469 joints with the ORIGINAL bone names, 474 morph
+  targets, 86 images, 71 materials, every polygon-bearing object
+  (incl. the floor Plane and all author-hidden garments).
+- Full-resolution master (uncapped textures, 314,555,688 B) on release
+  `megami-menajerii-smutbase-20261023` as megami-master-packed.glb —
+  the in-repo files cap textures at 1024 px (the shipped roster's
+  class); the source blend remains the full-res record.
+- Proof: docs/proof/2026-11-04/smutbase6-fidelity/
+  megami-fidelity-{front,q34,face}-20261105.png (front/q34 EEVEE;
+  face Cycles — see the eyes note below).
+
+**The rig, as measured** — one armature "Parvati": 469 bones, 211
+deform, DAZ/GZM construction. Skin weights ride `.twk` terminal
+deformers under bend/twist mid-bones; the arm assemblies hang off
+`hip` via arm_parent.L/R, which Blender drives by COPY_TRANSFORMS
+from armSocket.L/R on the clavicles. glTF carries no constraints, so
+the export copy repairs the hierarchy to the rig's own constraint
+intent (arm_parent→armSocket, upper_arm.bend→upper_arm,
+thigh.bend→thigh — the Ryusan/Tobi pattern); a TEST-mode A/B export
+measured the bind-pose cost at max joint-world delta 0.000001
+(bind-neutral). 23 core bones renamed to the engine's canonical
+names in the game file only. The blend carries an authored pose
+(12 nonzero pose bones, hair + IK poles); export is at REST like
+every lane before this one. All 474 non-Basis shape keys sit on
+Parvati Mesh, are ALL driver-driven, and ALL evaluate to 0 after a
+depsgraph update — the authored look is the Basis; drivers are
+stripped in the export copy and every key ships as a morph target
+(474 accounted: 474 targets, 0 folded, 0 on hidden meshes).
+
+**The authored look is a view-layer state, and it decides the game
+file's wardrobe.** The blend's only view layer EXCLUDES the
+collections Wearables 1, Wearables 2, Wearables 3, Hair 2 and
+Public Hair from viewport and render alike. Opened and rendered as
+saved, she wears only the `Original` collection (Top, Bottom,
+Gaunlet, Goggles, Shoes), the Hair.001 updo and the Full chest
+patch — exactly what the recovery lane's source renders show. The
+excluded 17 objects (Bra, Pantie, Stocking.001, Heels, Body Suit,
+Heels 3 robe, Belt, Bra (2), Choker, Glove L/R, Pantie 3, Stocking,
+Heel R, the 184k-vert Hair hairstyle, Triangle, Stripe) are the
+author's alternate wardrobe, toggled off in her own file. A first
+build that shipped everything put three outfits on her at once —
+bra cups over the corset, the sheer robe over the pants, a second
+hairstyle, and the Heels/Heel R shells floating at her feet (their
+z-minimum, -0.146, even set that build's floor lift). Those 17
+objects are author-hidden in the Pond #1552 sense: out of the game
+file, all present in the master. The GZM widget meshes (0-poly) and
+the floor Plane are likewise game-dropped, master-kept.
+
+**Floor and scale** — evaluated REST sole (her Shoes) at
+z = -0.1176, lift +0.1176 applied to the root objects of both
+files. Uniform scale x0.69382 on the game file, anchored to the
+shipped model's own body height (sole->top 1.3597 m, measured on
+the decoded shipped file); the raw blend figure is 1.9598 m
+sole->top. In-game she stands 1.334 m at idle (Box3 of the live
+skinned model, feet at minY -0.001 — grounded), against Pantera's
+1.85 m in the same capture: ~72% of his height body-to-body, the
+same body scale the WH #1568 Jun-bank fix was baked against. (The
+older "~85% of Pantera" record compared full file spans including
+the robe hem that trailed 0.18 m below her soles in the old
+conversion.) NOT tiny, NOT crumpled: the Jun bank play probe on
+the new rig reads bindFrac 0.08 — identical to the shipped rig.
+
+**Textures: the stock exporter cannot lift this blend on this
+box, so the wiring is the exporter's own, transplanted.** 61 of
+the used images are 4096x4096 (17.1 GB of float pixels); a direct
+AUTO export OOM-dies mid-extraction, and export_keep_originals
+embeds zero images (the packed originals point at dead DAZ paths).
+The lane therefore exports a 64x64 proxy blend through the stock
+exporter (identical script and settings — the exporter's own
+wiring decisions at trivial memory), rebuilds every image payload
+at full resolution from the blend's packed data following the
+exporter's own packing rules (base+alpha packs, metallic/roughness
+channel packs, bump maps riding the normal slot exactly as the
+exporter emits them), and grafts the payloads onto the morph/
+geometry export. Every payload was verified against its proxy
+image in a channel-independent comparison (worst mean error 9.1,
+JPEG generation noise; median 2.5). Image accounting: the blend
+holds 124 images = 123 packed textures + Blender's "Render
+Result" slot. The master carries 86 GLB image entries covering 91
+distinct blend images (97 source slots; the exporter's material
+variants re-emit 6 images). The 32 packed textures not carried are
+the channels the Principled conversion itself does not carry:
+SSS maps (4), the hair SSS/specular/translucency set (6),
+GoldenPalace group-internal maps superseded by the carried set
+(4), *_N normal companions of carried *_B bump maps and the
+choker's factor-resolved companions (7), Kayla heel bump maps the
+exporter did not wire (2), the t_char *_l light maps (5), a wall
+coat and a scene lightmap not on the character (2), plus
+G8FBaseArmsMapS_1004 (specular carried for face/torso/legs only).
+The game file carries the 40 images of the authored-look subset;
+the other 51 master-carried images belong to the author-hidden
+garments. Two codec findings, both verified by A/B runs:
+(1) the repo codec's prune() step drops TextureInfo.texCoord and
+then the TEXCOORD_1 attribute it considers unused — Parvati's
+GP_Torso-1/GP_Torso_Back-1 sample their maps on TEXCOORD_1, so
+both Megami files are packed with the codec's meshopt step only
+(encode_meshopt_only.mjs in the texture pipeline); any future
+model with texCoord>0 materials will lose them in the standard
+encode. (2) Bump maps exported as normalTexture are the stock
+exporter's own behavior on DAZ graphs and are preserved as-is.
+
+**The material gate needed one honest amendment.** The rebuild's
+audit: 26 ok / 0 missing / 0 placeholder / 4 untextured — the 4
+being EyeMoisture-3, EyeMoisture-4, Cornea-2 (clear eye shells,
+transparent by design) and Torso-6 (inner strand shell) — exactly
+the source-faithful classes the owner's 2026-11-03
+OUTFIT-NOT-THE-GATE exemption already names. But the exemption
+also voided itself if ANY 24_/25_-named material remained in the
+file, on the 2026-11-03 premise that those shells "never had
+textures in her source file". The recovered blend refutes the
+premise: all seven 24_/25_ outfit materials carry base textures
+in the rebuild, because they carry them in her file. Both gate
+implementations (game/js/material-runtime.js and
+tools/assets/material_gate.mjs) now void the exemption only on a
+TEXTURELESS 24_/25_ material, and the gate's exempt URL follows
+the registry to model-rigged.glb. Verified live: with the
+amendment the fight loads; without it the runtime gate blocks her
+(4 untextured).
+
+**Eyes note** — in the EEVEE proof harness the transmissive
+cornea/moisture layers frost white and hide the iris (a
+diagnostic render with those two materials temporarily
+transparent shows the full authored eye: hazel iris, pupil,
+sclera, all from her own textures). The face proof is therefore
+rendered in Cycles, the source file's own engine, where the stack
+reads as authored. The game uses three.js physical materials;
+the parent lane's live check owns the final in-game read.
+
+**Probes (serve tree at main + this PR's files)**
+- Gate/load: fight state reached, no gate errors (post-amendment).
+- BASICS damage parity vs the shipped model, exact on all 10:
+  1:6.4, 2:7.3, 3:12.8, 4:15.6, 1+2:16.5, d/f+1:9.2, d+1 no-fire
+  (dead on the shipped model too), d/f+2:12.8, u/f+4:5.5,
+  1+3:32.1 (throw).
+- Jun bank play probe: 12 t3 actions attached; sampled inputs
+  (BASICS + 1,2 / d/f+1 / f,f+2) identical to the shipped-rig
+  baseline — all OK at action weight 1, bindFrac 0.08; d+1 and
+  f,f+2 no-fire on both rigs (known dead inputs, not a rebuild
+  regression). The WH #1568 re-baked clips play on the new rig
+  unchanged: the rebuild's scale matches the rig they were baked
+  against (above), so no re-bake was needed.
+- Scale: measured in the live scene (above) — 1.334 m vs
+  Pantera 1.85 m, feet grounded.
+- Canvas frame grabs in the swiftshader harness come out black
+  and page.screenshot times out on fonts (the Pond/Ryusan harness
+  limitation); the scale verdict above is numeric from the live
+  scene, and the visual proof is the Blender renders. Logged
+  honestly, not faked.
+
+**Deviations (each with its ref)**
+1. 23 core bone renames, game file only — engine canon-name
+   requirement; precedents #1570-#1574, approval WH #1567.
+2. 6 hierarchy reparents in the export copy — constraint-intent
+   repair, bind delta measured 0.000001; same refs.
+3. REST export (authored pose of 12 bones stays in the blend) —
+   all-lane precedent.
+4. Author-hidden set (17 wardrobe objects) + GZM widgets + Plane
+   dropped from the game file, all kept in the master — Pond
+   #1552 author-hidden precedent; view-layer evidence above.
+5. Dead object=None ARMATURE modifiers removed in the export
+   copy (Shoes 1, Top 1, Hair.001 1 — Hair.001 therefore ships
+   rigid on its head bone-parent, exactly as authored; weight
+   authoring would be fabrication).
+6. SUBSURF ships as cage (export_apply=False) — all-lane
+   precedent.
+7. Game + in-repo master textures capped at 1024 px — shipped
+   roster class; full-res master on the release, source blend
+   untouched.
+8. Texture wiring via proxy-export graft (stock exporter OOMs
+   on 61x 4096^2 images); payloads verified per-image.
+9. Encode without prune() — the codec finding above; output
+   format identical (EXT_meshopt_compression).
+10. Material-gate exemption amendment (runtime + CI mirror) —
+    owner rule 2026-11-03; premise correction documented in both
+    files' comments.
+
+**Next: Menajerii (Vixen, Roger Jr.) — the last of the six. NOT
+started here.** Her recovered blend (450 bones, 2,509 shape keys,
+124 packed images) is inventoried in the recovery section above.
