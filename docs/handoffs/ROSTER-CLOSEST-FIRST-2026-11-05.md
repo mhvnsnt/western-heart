@@ -123,17 +123,19 @@ Local box search this pass: no copies of the SmutBase character blends under `/w
 - Never merge #1569 as a 52-bone Pond graft. Never touch arena sky/lighting/colors. Pages republish only after a real merged asset fix, under 1 GB.
 
 
-## Phase 3 start — Ryusan (closest)
+## Phase 3 — Ryusan (closest) — update 2026-11-05 12:31 CST
 
-**Started:** 2026-11-05 (this ranking PR). Not finished.
+**Card: DONE this pass.** Anims: finishable multi-hit/SHOW left **explicitly unmapped** (real multi-hit bake / body SHOW clips do not exist yet).
 
 | Axis | State | Remaining |
 |---|---|---|
-| Model / rig | Live `model-rerig.glb` = **521 joints** (blend 520 + neutral); fidelity renders in `docs/proof/2026-11-04/smutbase6-fidelity/ryusan-*` | None for bone-count bar. Do not re-strip. |
-| Character card | `game/assets/portraits/ryusan.png` present (90,289 B) but ROSTER-100 marks nearly all cards stale vs post-refit models | Re-run `tools/portraits/capture.mjs` for `ryusan` after confirming PreviewPane loads the 521-joint GLB; replace PNG only via that pipeline (320×320). |
-| Moveset data | `ryusan.json`: 211 moves, **211/211** `anim_ref` (`t7:luckychloe:…`); slots identity map complete; real T7 frame data (not proxy) | No donor fills. |
-| Animations | T7 Lucky Chloe bank landed (#1550): `game/assets/anim/t7/luckychloe/` + t3 generic bank; BASICS probe 9/10 + throw | Logged gaps from `docs/handoffs/SMUTBASE-T7-BANKS-2026-11-03.md`: **4 multi-hit clips** (one-clip-one-hit rule), resolver no-match rows, intro/win SHOW slots (no body-clip candidate). Fix only with real reverse-engineering-repo / T7 motion — never invent mappings. |
-| Probe residual | 10/10 damaging on confirmation probe (9 correct + throw) | Optional: sequenced-press probe for strings like `d/f+1,2`. |
+| Model / rig | Live `model-rerig.glb` = **521 joints** | None for bone-count bar. **Ops:** B2 remote still serves stale ~2.1 MB / ~73-bone copy — re-upload from main before live Pages shows the fidelity model. |
+| Character card | **RECAPTURED** via `tools/portraits/capture.mjs` → `game/assets/portraits/ryusan.png` (select path). Manifest `bones:521`, `framed:true`. Proof: `docs/proof/2026-11-05/ryusan-phase3/`. sha256 `82ed443be85d61e976adeb07a7a3ea1598b6cc215b8cb1161473a4c81f63c290` (was stale `f156bf5e…` 90289 B). | Stance fit fails on 521-bone rig (luckychloe bank Left shoulder ~1.23 rad) — card uses bind/aim frame. Stance retarget is a separate anim lane, not invented here. |
+| Moveset data | 211/211 `anim_ref` | No donor fills. |
+| Animations | Pack has 27 moves / 25 clips | **UNMAPPED by name (no invent):** pack skips `1+2`, `u+3+4`, `f+3+4`, `b+1+2` (one-clip-one-hit). SHOW `intro`/`win` (`t3_stance.json` / `t3_win_rp.json`) — no body-clip in motbin. Sequenced-press probe = tooling follow-up. |
+| Probe residual | 9/10 + throw | Sequenced-press probe still owed. |
 
-**Blocked without new GRE data:** inventing the 4 multi-hit clip splits or SHOW intro/win. **Not blocked:** portrait recapture (tooling exists).
+**Ryusan not 100% complete** (4 multi-hit + SHOW + stance-fit + B2 refresh). Closest-for-next-finishable after card: still polish Ryusan anims when GRE multi-hit bake exists; else start **Aotsuki** / **Awapop** model+card+moveset pass.
+
+**Do not merge #1569** (52-bone Pond graft).
 
