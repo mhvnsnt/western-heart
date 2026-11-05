@@ -7,6 +7,9 @@
   "proxy_note": null,
   "variant": 2,
   "canon_note": "CHARGER (owner 2026-10-20): proprietary Blanka replacement. Blanka's full 199-move set (post-#363 union: SF6 set + SFV extras + T3 bryan bank rows) carried over with inputs/frame data IDENTICAL; only signature names in the Electric Thunder and Rolling families were renamed to CHARGER's ice+electric identity (see canon_rename_map). Source: blanka.json on main. CHARGER's powers are ice and electricity \u2014 the name is from Blanka's attacks attaching to him. Original canon_note for the source set: Full Blanka SF6 set (supercombo.gg) + SFV V-System/CA extras (supercombo.gg) added 2026-10-19 under the FULL MOVESET LAW; SF motion inputs converted to Tekken notation, original motion kept in note/sf_motion. SF6 damage x0.03, SFV damage x0.3 (1000-HP scale), frames /60.",
+  "slots": {
+    "d/f+2": "2_r149"
+  },
   "moves": {
     "1": {
       "name": "BLANKA 1 (T3 bryan r44)",
@@ -1220,10 +1223,10 @@
     },
     "2_r149": {
       "name": "BLANKA 2_r149 (T3 bryan r149)",
-      "input": "2_r149",
+      "input": "d/f+2",
       "t3_source": "bryan",
       "t3_row": 149,
-      "t3_command": "RP",
+      "t3_command": "3+RP",
       "startup": 0.383,
       "active": 0.017,
       "recovery": 0.633,
@@ -1234,7 +1237,7 @@
       "soulGain": 8,
       "anim_ref": "t3:bryan:row:149",
       "input_slots": [
-        "2"
+        "d/f+2"
       ],
       "move_class": "strike"
     },
