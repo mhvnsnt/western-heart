@@ -166,6 +166,37 @@ export function dentVector(d, dirX, damage) {
   return [sx, s * 0.25 * fall, 0];
 }
 
+/* Anatomy directory per fighter id (roster-100 S9, 2026-11-05;
+   docs/movesets/NO-ENTRY-S9-REAUDIT-2026-11-05.md): the anatomy JSON lives
+   under the fighter's roster DIRECTORY, which is not the fighter id for the
+   fighters below — prefetch built the path from the id alone, so every one
+   of these 404'd on both the page and jsDelivr copies (fail-silent: no
+   layer reveal). Each directory is the one that holds that fighter's own
+   attires, and its anatomy-layers.json names that directory's own model in
+   its skin mesh_ref (cyborg-x's file references cyborg-x/attires/attire1,
+   mariposa's references mariposa-monarch-rigged.glb, parvati's references
+   parvati/attires/attire1 — Megami's shipped model file). The roster pass
+   observed the first two; the S9 cross-check of every roster id against
+   every anatomy directory on main found the full set. Fighters with no
+   anatomy file under any directory are absent here — they keep the
+   fail-silent no-layers path, by design. */
+const ANATOMY_DIR = {
+  cyborgx: 'cyborg-x',
+  'mariposa-monarch': 'mariposa',
+  samura1: 'sam-ur-a1',
+  'baek-master-white': 'baek',
+  docfrank: 'doc-frank',
+  awapop: 'awa-pop',
+  'dxmmii-patchwork': 'dxmmii',
+  pond: 'tsuyu-asui',
+  ryusan: 'mina-ashido',
+  tobi: 'miruko',
+  chatur: 'rahkasa',
+  megami: 'parvati',
+  menajerii: 'vixen',
+};
+export function anatomyDir(fighterId) { return ANATOMY_DIR[fighterId] || fighterId; }
+
 function _clamp01(x) { return x < 0 ? 0 : x > 1 ? 1 : x; }
 function _lerp(a, b, k) { return a + (b - a) * k; }
 function _dist3(a, b) {
@@ -199,7 +230,7 @@ export class XraySystem {
     if (typeof fetch === 'undefined') return undefined;
     this._fetching[fighterId] = true;
     // game/ is the page base (game/index.html); roster/ sits at repo root.
-    const rel = 'roster/' + fighterId + '/anatomy/anatomy-layers.json';
+    const rel = 'roster/' + anatomyDir(fighterId) + '/anatomy/anatomy-layers.json';
     const get = (url) => fetch(url).then((r) => {
       if (!r || !r.ok) throw new Error('HTTP ' + (r && r.status) + ' for ' + url);
       return r.json();
