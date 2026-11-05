@@ -388,15 +388,30 @@ export class StageBreaks {
     if (this.fx) this.fx.setArenaLimit(newLimit);
     // breach dressing: broken chunks + glow beyond the breach (the "new area")
     const dir = Math.sign(def.x);
+    // REAL debris physics (owner t374u 2026-11-05): breach chunks must
+    // fall / collide / settle via the existing _debris integrator — never
+    // static "cracked" props that float in place. Voronoi shards already
+    // use DestructionSystem gravity; these dressing chunks join _debris.
     for (let i = 0; i < 5; i++) {
       const chunk = new THREE.Mesh(
         new THREE.BoxGeometry(0.7 + Math.random(), 0.5 + Math.random() * 0.8, 0.7),
-        new THREE.MeshStandardMaterial({ color: 0x5a4a3a, roughness: 0.95 })
+        new THREE.MeshStandardMaterial({ color: 0x5a4a3a, roughness: 0.95, transparent: true, opacity: 1 })
       );
-      chunk.position.set(bx + dir * (1 + Math.random() * 3), 0.3, (Math.random() - 0.5) * 7);
-      chunk.rotation.y = Math.random() * 3;
+      chunk.position.set(bx + dir * (0.4 + Math.random() * 1.2), 1.2 + Math.random() * 1.4, (Math.random() - 0.5) * 4);
+      chunk.rotation.set(Math.random(), Math.random() * 3, Math.random());
       chunk.castShadow = true;
       this.group.add(chunk);
+      this._debris.push({
+        mesh: chunk,
+        life: 2.4 + Math.random() * 1.2,
+        depth: 0,
+        vel: new THREE.Vector3(
+          dir * (2 + Math.random() * 4),
+          3 + Math.random() * 4,
+          (Math.random() - 0.5) * 3,
+        ),
+        spin: (Math.random() - 0.5) * 10,
+      });
     }
     const glow = new THREE.Mesh(
       new THREE.PlaneGeometry(7, 4),

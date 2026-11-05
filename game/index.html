@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="theme-color" content="#14091f" />
+  <link rel="manifest" href="manifest.webmanifest" />
   <title>WESTERN HEART — a lost multiverse bastard child</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="select.css" />
@@ -720,5 +721,18 @@
     }, 1200);
   })();
   </script>
+
+  <!-- PWA shell (OpenKumite v0.1.2-inspired; shell only — no /assets/ pack cache) -->
+  <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('./sw.js').catch(function (e) {
+        console.info('[WH] sw register skipped', e && e.message);
+      });
+    });
+  }
+  </script>
+  <!-- Hit / hurt / push debug overlay (F4 or ?hitboxes=1) -->
+  <script type="module" src="js/hit-push-debug.js"></script>
 </body>
 </html>

@@ -61,6 +61,7 @@ import { hitWordFor, attackPhase, moveReach, PressBuffer,
   resolvePerMoveHitbox, resolvePerMoveHurtbox } from './combat-core.js';
 import { HURT_SEGMENTS, WEAPON_SEGMENTS, LIMB_RADIUS, fallbackHurts } from './hitbox.js';
 import { selectReactionSlot, reactionSlotBank } from './t3-reaction-select.js';
+import { FE_AIR_BLEND_WEIGHT, beginAirCatch, sampleAirBlend } from './air-reaction-blend.js';
 import { soulStates } from './full-movelist.js';
 import { t3ConditionHolds } from './t3-conditions.js';
 
@@ -573,7 +574,7 @@ export class Fighter {
     this.state = 'idle'; this.stateT = 0;
     this.attack = null; this.attackName = null; this._attackPhase = 'startup';
     this._rmPrev = null; // root-motion cursor for the current attack (see _rootMotionApply)
-    this.hasHit = false; this._prevHitPoint = null; this._reactionSel = null; this._reactLoading = null; this._reactChainDepth = 0; this.stun = 0; this.invuln = 0; this.dodgeDir = 0;
+    this.hasHit = false; this._prevHitPoint = null; this._reactionSel = null; this._airBlend = null; this._airVisualBoost = 0; this._reactLoading = null; this._reactChainDepth = 0; this.stun = 0; this.invuln = 0; this.dodgeDir = 0;
     this.dead = false; this.combo = 0; this._comboTimer = 0;
     this.tekken = new TekkenBuffer(charData.id); // strings / motion specials / directionals
     // Tekken states (2026-10-21, decoded T3 rules — see _guardBits/canBeHitBy):
@@ -2802,6 +2803,7 @@ export class Fighter {
     }
     // Juggle scaling: first airborne hit x0.8, later ones x0.5.
     if (!this.onGround && !move.isGrab) { dmg *= this._juggle === 0 ? 0.8 : 0.5; this._juggle++; }
+      if (!this._airBlend) { this._airBlend = beginAirCatch(this.root.position.y, FE_AIR_BLEND_WEIGHT); this._airVisualBoost = 0; }
     this.lastCounterHit = counter;
     this.hp = Math.max(0, this.hp - dmg);
     // GAP-FILL LANE 1: the attacker recovers from their own
@@ -2854,6 +2856,9 @@ export class Fighter {
     if (this.hp <= 0) { this._knockout(dir); return 'ko'; }
     if (move.isGrab || move.knock >= 6 || move.launch || (counter && move.knockdown)) {
       this.vy = move.isGrab ? 5.2 : 4.6; this.onGround = false; this.stun = 0.55;
+      // FE public air catch-height blend (PIPELINE-LAW / air-reaction-blend.js)
+      this._airBlend = beginAirCatch(this.root.position.y, FE_AIR_BLEND_WEIGHT);
+      this._airVisualBoost = 0;
       this._juggleG = 0;
       /* Juggle airtime (moveset sweep 2026-10-29): a launcher keeps the victim airborne for the
          rest of the attacker's move plus its T8 on-hit advantage (default +30f), as in Tekken, so
@@ -3569,9 +3574,23 @@ export class Fighter {
       }
     }
     if (!inThrowAnim) {
+      // FE air blend: strip last frame's visual boost so gravity integrates unblended Y
+      if (this._airVisualBoost) {
+        this.root.position.y -= this._airVisualBoost;
+        this._airVisualBoost = 0;
+      }
       this.root.position.x += this.vx * dt;
       this.root.position.y += this.vy * dt;
       this.root.position.z += this.vz * dt;
+      if (this._airBlend && !this.onGround && (this.state === 'hitstun' || this.state === 'knockdown')) {
+        const r = sampleAirBlend(this._airBlend, this.root.position.y);
+        this._airBlend = r.state;
+        this._airVisualBoost = r.state.boost || 0;
+        this.root.position.y = r.y;
+      } else if (this.onGround) {
+        this._airBlend = null;
+        this._airVisualBoost = 0;
+      }
     }
     // ROOT MOTION (2026-10-24): attack-clip travel, applied here so the
     // arena clamp and body-vs-body pushout below see it this same frame

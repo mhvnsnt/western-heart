@@ -1,6 +1,18 @@
 # BUILD-LOG — Western Heart (resume point for Muse / any agent)
 
-Lane ownership is claimed on #866. MoneyManBusch owns: Pantera and the core-8 chat-owned animation wiring, the Tekken 7 bank extraction (`tools/anim/t7_*`), and the PR queue. Muse owns #1096 and its stack, the moves audit, and `tools/auto_rig`.
+Lane ownership is claimed on #866. MoneyManBusch owns: Pantera and the core-8 chat-owned animation wiring, the Tekken 7 bank extraction (`tools/anim/t7_*`), OpenKumite/FE adoption, moveset-template inventory, and the PR queue. Muse owns #1096 and its stack, the moves audit, and `tools/auto_rig`.
+
+## 2026-11-05 — OpenKumite v0.1.2 + FE public rules + template layer + first-play (MoneyManBusch / Grok)
+
+- **Law:** `docs/PIPELINE-LAW.md` (OK/FE rails, FE embargo until 2026-12-25, Tag Battle demo ban, WWE-style template layer, Steam/GRE pointer rules, first-play camera/debris).
+- **Handoff:** `docs/handoffs/OPENKUMITE-FIGHTINGENGINE-ADOPTION-2026-11-05.md`.
+- **Templates:** `docs/movesets/MOVESET-TEMPLATE-INVENTORY-2026-11-05.md` + `game/data/moveset-templates/index.json`. Pantera → `t7-grappler-jaguar-mask` (exact King T7). No franchise roster names.
+- **Combat:** `game/js/air-reaction-blend.js` (FE public 0.758 catch-height) + fighter hook + `node --test` ; hit/push debug F4.
+- **Camera:** `fightCameraDolly` / `fightCameraCenterX` — landscape no longer forces 10.5 m into walls; FOV widens instead (`scene.js`).
+- **Debris:** wall-break breach chunks join `_debris` gravity/settle (no more static floating chunks).
+- **PWA shell:** `game/manifest.webmanifest` + `game/sw.js` (shell only; no `/assets/` pack cache). Android APK later (OK packaging pattern).
+- **Pantera audit:** `docs/movesets/PANTERA-KING-T7-AUDIT-2026-11-05.md` — A1/C1/RC4 + 55 r17 slots remain; not 100% yet.
+- **Do not:** hunt FE leaks; add Tag Battle/WWE superstar names to roster; touch Muse #1096 / `tools/auto_rig`.
 
 ## 2026-10-31 (evening) — Negativo plays Negan's real T7 attacks; rig checkpoint (Claude)
 
