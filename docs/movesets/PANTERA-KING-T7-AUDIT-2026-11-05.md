@@ -1,14 +1,15 @@
-# Pantera = exact King T7 — audit 2026-11-05
+# Pantera = exact King T7 — audit 2026-11-05 (updated same day)
+
 Owner: Pantera must be **100% exact King Tekken 7** (no switched/mixed/swapped
 anims; no T3 King as T7). Template: `t7-grappler-jaguar-mask` → `pantera`
 (see `MOVESET-TEMPLATE-INVENTORY-2026-11-05.md`).
 
-Authorized: t369u / t374u. Claim #866.
+Authorized: t369u / t374u / t376u. Claim #866 (MoneyManBusch).
 
 ## Sources of truth
 
-- Clipmap: `docs/proof/t7-clipmap-king-pantera.json` (**467** mapped moves).
-- Wiring diagnosis: `docs/movesets/PANTERA-WIRING-DIAGNOSIS-2026-11-03.md` (RC1–RC5 fixed on main for strike-as-grab; A1/C1 carried).
+- Clipmap: `docs/proof/t7-clipmap-king-pantera.json` (**467** mapped moves; internal `Kg_*` names — no notation bridge in-repo for the 55 r17 slots).
+- Wiring diagnosis: `docs/movesets/PANTERA-WIRING-DIAGNOSIS-2026-11-03.md` (RC1–RC5 fixed on main for strike-as-grab; A1/C1 carried until this update).
 - Input coverage: `docs/movesets/PANTERA-INPUT-COVERAGE-2026-11-01.md`.
 - Historical r17 core-8 failing list: `docs/proof/moveset-sweep-20261028/r17-core8-failing.json`.
 
@@ -22,17 +23,18 @@ Authorized: t369u / t374u. Claim #866.
 | Template id is generic (`t7-grappler-jaguar-mask`) | logged |
 | Roster name stays `pantera` | logged |
 
-## Carried anomalies (from 2026-11-03 diagnosis — NOT claimed fixed here)
+## Anomalies — status after this MoneyManBusch pass
 
-- **A1** — most throws deal 0 damage in probe (Zen / legacy lock path); `1+3` damages ≈24 but `2+4`, `1+4`, `f+1+3`, `f+2+4`, `d/b+1+3` execute with 0 damage.
-- **C1** — chain-throw follow-ups (`1+3,1`, `2+4,1`) registered as ordinary strings; correct only inside throw via `_throwChainPress`.
-- **RC4** — deliberate throws hard at human two-finger timing (`CHORD_WINDOW_MS = 50`) on touch.
-- Unmapped step plans / dead slots still listed in the diagnosis “11 dead slots” table.
+| ID | Status | What landed / why still open |
+|---|---|---|
+| **A1** | **FIXED (engine)** | Root cause: `_enterThrownExec` never cleared `_throwHitDone`. After the first legacy slam the victim kept `true`, so later throws (`2+4`, `1+4`, `f+1+3`, `f+2+4`, `d/b+1+3`) skipped `_throwSlamDamage` while still playing `thrownExec`. Probe pattern (1+3≈23.5 then every later throw dmg 0) matches. Fix: clear `_throwHitDone` in `_enterThrownExec` and in `startThrowLock`. Damage values already present on the King/`~t8.king` records — no donor / clip swap. |
+| **C1** | **FIXED (data class only)** | `1+3,1` / `2+4,1` were `move_class: strike` despite diagnosis rows 415/417 being throw rows and the correct path being `_throwChainPress` mid-throw. Set `move_class: throw`, `isGrab`/`throw` true + `throw_chain_follow` hint. **Did not** rewire anims (still `anim_ref` t3:king rows already on file — no new T3-as-T7 presentation). Fresh-input strike presentation of the chain follow-ups is the bug closed. |
+| **RC4** | **FIXED (already on main; audit closed)** | Deliberate two-thumb throws: `CHORD_WINDOW_MS` stays **50** (raising it back to 140 regresses strings — see `input.js` comment). Touch rescue already on main in `fighter.js` `tryAttack`: a second single limb within **0.14 s** of startup upgrades to the chord when that chord exists (`PANTERA-WIRING-VIDEO-2026-11-03.md`, proven on camera). No window widen this pass. |
+| r17 ×55 | **named-open** | Clipmap uses internal `Kg_*` move names; no in-repo notation↔clipmap bridge proves a replacement row for any of the 55 slots without GRE pac work (forbidden this pass). Including `~t3.king` twins — leave named. |
 
-## r17-core8 failing inventory (Pantera) — 55 named slots
+## r17-core8 failing inventory (Pantera) — 55 named slots (still open)
 
-These are the historical failing notation / system rows. Clear one-by-one with
-proven King T7 clipmap rows only — never a donor guess.
+These stay named until a proven King T7 clipmap row (notation bridge) lands. No donor guess.
 
 1. `P+K`
 2. `1_c26_r235`
@@ -90,15 +92,16 @@ proven King T7 clipmap rows only — never a donor guess.
 54. `d,d/b,d,d/b+1+2,1`
 55. `n,d/f,n,d/f+2+4,1`
 
-## Proven fixes in this adoption PR
+## Proven fixes this pass
 
-- Template attachment logged (`t7-grappler-jaguar-mask` → `pantera`).
-- No animation row rewrites in this PR (would violate exactness without fresh probe proof).
-- Next MoneyManBusch Pantera commits: A1 throw damage path (`completeThrow` / `_throwSlamDamage`), then unmapped step plans against clipmap, then pile-driver / MMD / UT strings from the list above.
+- A1 engine clear of `_throwHitDone` (`game/js/fighter.js`).
+- C1 data classification for `1+3,1` / `2+4,1` (`game/assets/movesets/pantera.json`).
+- RC4 audit closed against existing 0.14 s chord rescue (no CHORD_WINDOW widen).
+- r17: **0 of 55** cleared (no notation↔clipmap proof without GRE).
 
 ## Percent complete (honest)
 
 - Clipmap coverage: 467 mapped (bank extract).
 - Input fire coverage (2026-11-01): 227/238 fired.
-- Identity-correct wiring: RC1–RC3 fixed; A1/C1/RC4 + r17 list remain → **not 100%**.
-- Do not claim 100% until this remaining list is empty with probe proof.
+- A1/C1/RC4 closed; **r17 list still open** → still **not 100%**.
+- Do not claim 100% until the r17 list is empty with probe proof.

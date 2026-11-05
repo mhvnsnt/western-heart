@@ -2,6 +2,15 @@
 
 Lane ownership is claimed on #866. MoneyManBusch owns: Pantera and the core-8 chat-owned animation wiring, the Tekken 7 bank extraction (`tools/anim/t7_*`), OpenKumite/FE adoption, moveset-template inventory, and the PR queue. Muse owns #1096 and its stack, the moves audit, and `tools/auto_rig`.
 
+## 2026-11-05 — Pantera A1/C1/RC4 + live Pages republish (MoneyManBusch / Grok)
+
+- **A1 FIXED:** `fighter.js` clears `_throwHitDone` in `_enterThrownExec` and `startThrowLock`. Probe pattern (first throw damages, later throws 0) was stale flag on the victim — not missing JSON damage.
+- **C1 FIXED (class only):** `pantera.json` `1+3,1` / `2+4,1` → `move_class: throw` + `isGrab`/`throw` + `throw_chain_follow` (diagnosis rows 415/417). No new anim wiring / no T3-as-T7 swap.
+- **RC4 CLOSED:** `CHORD_WINDOW_MS` stays 50; touch throws use the existing 0.14 s chord rescue in `tryAttack` (video handoff). Widening the window would regress strings.
+- **r17:** 55 slots remain named-open (clipmap is `Kg_*`; no notation bridge this pass; no GRE pac hunt).
+- **Pages:** delta-deploy `gh-pages-m1-20261029` so main `#1578` (camera/debris/air-blend/PWA/templates) is playable live under the 1 GB cap. Arena sky/lighting/colors untouched.
+- **Claim:** #866 MoneyManBusch. No Muse #1096 / `tools/auto_rig`. No FE leak / new imports.
+
 ## 2026-11-05 — OpenKumite v0.1.2 + FE public rules + template layer + first-play (MoneyManBusch / Grok)
 
 - **Law:** `docs/PIPELINE-LAW.md` (OK/FE rails, FE embargo until 2026-12-25, Tag Battle demo ban, WWE-style template layer, Steam/GRE pointer rules, first-play camera/debris).
