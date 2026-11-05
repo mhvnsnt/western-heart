@@ -18,12 +18,35 @@
   "gre_divmot14_ogre": "NOT in tekken3/animations listing this pass",
   "ryusan_chloe_gre": {
     "dncmot": "teardown/tekken7-steam/tkdata/mothead/bin/dncmot.bin",
-    "dncrotsm": "teardown/tekken7-steam/tkdata/mothead/mask/dncrotsm.arc"
+    "dncrotsm": "teardown/tekken7-steam/tkdata/mothead/mask/dncrotsm.arc",
+    "dnc_json": "teardown/tekken7-steam/tkdata/mothead/json/dnc.json",
+    "dnc_json_meta": {
+      "bytes": 6147478,
+      "moves": 2183,
+      "fighter_tag": "ryusan / [Chloe]",
+      "note": "Decoded mothead (move defs + anim name refs), NOT skeletal clip bake. Stays in private GRE; public WH gets mapped clips only after t7_move_bake."
+    },
+    "pakchunk0_meshes_checked": [
+      "teardown/pakchunk0/models/Character/Item/Meshes/dnc/",
+      "teardown/pakchunk0/textures/Character/Item/Meshes/dnc/"
+    ]
   },
   "ryusan_pack_still_skips": [
     "1+2",
     "u+3+4",
     "f+3+4",
     "b+1+2"
-  ]
+  ],
+  "paths_checked_no_show_intro_win_body": [
+    "GRE mothead/json/dnc.json (2183 moves: no intro/win/show-named body clips; dance fun Dc_sFUN00_/02_ only)",
+    "GRE tekken3/animations/ (no divmot14 ogre)",
+    "WH game/assets/anim/t3/luckychloe/ (T3 fallback bank present; Chloe debut T7 \u2014 not source for SHOW)",
+    "WH docs/anim/LUCKYCHLOE-ANIM-GAP-20261023.md"
+  ],
+  "pages": {
+    "branch": "gh-pages-m1-20261029",
+    "tip_at_write": "32607e2b",
+    "prior_failed_publish": "cd2905e2 (updating_pages timeout 10m)",
+    "url": "https://mhvnsnt.github.io/western-heart/"
+  }
 }
