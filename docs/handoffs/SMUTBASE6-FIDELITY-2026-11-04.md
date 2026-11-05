@@ -280,7 +280,7 @@ Blender 5.2.3. The 48-bone-template conversion is retired for her.
 - Still open: TeraBox check (browser lane) and, if empty there, the
   SmutBase re-download (browser lane; scripted downloads are Anubis-blocked).
 
-## POND REBUILD — LANDED (2026-11-05, PR #PONDPR)
+## POND REBUILD — LANDED (2026-11-05, PR #1571)
 
 Rebuilt from her own blend (`roster/tsuyu-asui/intake/Tsuyu Asui
 IK/Tsuyu Asui IK.blend`, sha256 034d0972eafd…) in Blender 5.2.3. The
