@@ -1,0 +1,7 @@
+$ cp game/assets/portraits/rin.png game/assets/portraits/aotsuki.png   # aotsuki card becomes the shared placeholder, unregistered
+$ node test/portraits.test.mjs
+portraits: 50 select fighters, 6 pose blockers, 7 registered placeholders
+FAIL
+  aotsuki: portrait is the shared placeholder PNG but is not registered in KNOWN-PLACEHOLDERS.json
+  placeholder-byte card group (aotsuki,byou,gyou,kai,retsu,rin,sha,tou) does not match the KNOWN-PLACEHOLDERS registry
+exit=1

@@ -1,0 +1,8 @@
+$ python3: remove \"rin\" from KNOWN-PLACEHOLDERS.json placeholders   # registry no longer names a fighter still carrying the placeholder + false manifest claim
+$ node test/portraits.test.mjs
+portraits: 50 select fighters, 6 pose blockers, 6 registered placeholders
+FAIL
+  rin: portrait is the shared placeholder PNG but is not registered in KNOWN-PLACEHOLDERS.json
+  placeholder-byte card group (byou,gyou,kai,retsu,rin,sha,tou) does not match the KNOWN-PLACEHOLDERS registry
+  rin: portraits-manifest claims a capture from 'steve-fox' but the fighter has no attire-1 model (false claim; register in KNOWN-PLACEHOLDERS.json only if it is the L3 placeholder class)
+exit=1
