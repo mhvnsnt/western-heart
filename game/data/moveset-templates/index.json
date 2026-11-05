@@ -6,10 +6,15 @@
   "steam_library_doc": "docs/tech/STEAM-LIBRARY.md",
   "private_teardown_repo": "mhvnsnt/game-reverse-engineering",
   "rules": {
-    "roster_names": "WH character ids only — never other-franchise display names",
+    "roster_names": "WH character ids only \u2014 never other-franchise display names",
     "template_ids": "generic hinting names (Creator copy-moveset style)",
-    "raw_assets": "private GRE repo — WH keeps mappings + pointers only",
-    "no_fe_demo_roster": ["hwoarang", "jin-kazama", "yugo-the-wolf", "siegfried-schtauffen"],
+    "raw_assets": "private GRE repo \u2014 WH keeps mappings + pointers only",
+    "no_fe_demo_roster": [
+      "hwoarang",
+      "jin-kazama",
+      "yugo-the-wolf",
+      "siegfried-schtauffen"
+    ],
     "no_superstar_roster_names": true,
     "wh_visual_identity": "no licensed logos/rings/belts/announce-table branding on screen"
   },
@@ -24,28 +29,34 @@
         "game/assets/movesets/pantera.json",
         "docs/movesets/PANTERA-WIRING-DIAGNOSIS-2026-11-03.md"
       ],
-      "attached_to": ["pantera"],
+      "attached_to": [
+        "pantera"
+      ],
       "status": "primary",
-      "exactness": "Pantera = exact King T7 — no swapped/mixed/T3-as-T7"
+      "exactness": "Pantera = exact King T7 \u2014 no swapped/mixed/T3-as-T7"
     },
     {
       "id": "t7-mishima-style-karate",
       "hint": "T7 Mishima-style karate family (WH: Demonio)",
       "source_game": "tekken7",
       "steam_app_id": 389730,
-      "attached_to": ["demonio"],
+      "attached_to": [
+        "demonio"
+      ],
       "status": "attached-existing"
     },
     {
       "id": "t7-heavy-bob-style",
       "hint": "T7 heavyweight bob-and-weave brawler",
       "source_game": "tekken7",
-      "attached_to": ["burger"],
+      "attached_to": [
+        "burger"
+      ],
       "status": "attached-existing"
     },
     {
       "id": "t7-flashy-counter-kickbox",
-      "hint": "T7 flashy counter kickboxer family — template only, never demo-cast roster names",
+      "hint": "T7 flashy counter kickboxer family \u2014 template only, never demo-cast roster names",
       "source_game": "tekken7",
       "attached_to": [],
       "status": "reserved"
@@ -54,16 +65,27 @@
       "id": "t3-ogre-bank",
       "hint": "T3 Ogre-family bank already in WH",
       "source_game": "tekken3",
-      "pointers": ["game/assets/anim/t3/ogre/"],
-      "attached_to": ["chatur"],
-      "status": "pointer"
+      "pointers": [
+        "game/assets/anim/t3/ogre/",
+        "game/assets/movesets/chatur.json",
+        "game/assets/movesets/t3-ogre.json",
+        "game/js/fighter.js",
+        "docs/proof/claude-2026-10-23/t3-banks/"
+      ],
+      "attached_to": [
+        "chatur"
+      ],
+      "status": "attached-existing",
+      "exactness": "Chatur FIGHTER_BANK \u2192 ogre; bank game/assets/anim/t3/ogre/ + movesets/chatur.json (281 T3 True Ogre rows). Decoded WH commit ed16dd6c 2026-10-23. GRE tekken3/animations has no divmot14 this pass \u2014 WH bank is the landed game asset."
     },
     {
       "id": "cam-moveset-string-lib",
       "hint": "Create-A-Moveset string library (~5581 names) from owner pro-wrestling teardown",
       "source_game": "pro-wrestling-cam",
       "steam_app_id": 817130,
-      "pointers": ["GRE:cam-moveset-string-library"],
+      "pointers": [
+        "GRE:cam-moveset-string-library"
+      ],
       "teardown_path_doc": "docs/movesets/MOVESET-TEMPLATE-INVENTORY-2026-11-05.md",
       "attached_to": [],
       "status": "library"
@@ -72,7 +94,11 @@
       "id": "cam-powerhouse-brawler",
       "hint": "Create-A-Moveset powerhouse / big-man grappler archetype",
       "source_game": "pro-wrestling-cam",
-      "steam_app_ids": [817130, 1015500, 1255630],
+      "steam_app_ids": [
+        817130,
+        1015500,
+        1255630
+      ],
       "attached_to": [],
       "status": "reserved"
     },
@@ -94,7 +120,10 @@
       "id": "doa-speed-striker",
       "hint": "DOA speed-striker family mirrored in WH movesets",
       "source_game": "doa",
-      "pointers": ["game/assets/movesets/doa-kasumi.json", "game/assets/movesets/doa-ayane.json"],
+      "pointers": [
+        "game/assets/movesets/doa-kasumi.json",
+        "game/assets/movesets/doa-ayane.json"
+      ],
       "attached_to": [],
       "status": "pointer"
     }
