@@ -1,0 +1,223 @@
+{
+ "fighter": "gashadokuro",
+ "base": "http://127.0.0.1:8906/game/",
+ "ready": true,
+ "rows": [
+  {
+   "n": "1",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": null,
+   "kind": null,
+   "why": "",
+   "timing": {
+    "S": null,
+    "A": null,
+    "t0": null,
+    "t1": null,
+    "D": null,
+    "src": null
+   },
+   "moveDmg": null,
+   "hitWord": null,
+   "isGrab": false,
+   "atkName": null,
+   "hasHit": true,
+   "distAtHit": 1.67,
+   "defStates": [],
+   "hpDelta": 2.8,
+   "hits": [
+    {
+     "dmg": 3,
+     "word": 1042,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": null,
+   "kind": null,
+   "why": "",
+   "timing": {
+    "S": null,
+    "A": null,
+    "t0": null,
+    "t1": null,
+    "D": null,
+    "src": null
+   },
+   "moveDmg": null,
+   "hitWord": null,
+   "isGrab": false,
+   "atkName": null,
+   "hasHit": false,
+   "distAtHit": null,
+   "defStates": [],
+   "hpDelta": 0,
+   "hits": []
+  },
+  {
+   "n": "4",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": null,
+   "kind": null,
+   "why": "",
+   "timing": {
+    "S": null,
+    "A": null,
+    "t0": null,
+    "t1": null,
+    "D": null,
+    "src": null
+   },
+   "moveDmg": null,
+   "hitWord": null,
+   "isGrab": false,
+   "atkName": null,
+   "hasHit": true,
+   "distAtHit": 9.68,
+   "defStates": [],
+   "hpDelta": 22.1,
+   "hits": [
+    {
+     "dmg": 11,
+     "word": 1042,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "4",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": null,
+   "kind": null,
+   "why": "",
+   "timing": {
+    "S": null,
+    "A": null,
+    "t0": null,
+    "t1": null,
+    "D": null,
+    "src": null
+   },
+   "moveDmg": null,
+   "hitWord": null,
+   "isGrab": false,
+   "atkName": null,
+   "hasHit": true,
+   "distAtHit": 8.85,
+   "defStates": [],
+   "hpDelta": 10.1,
+   "hits": [
+    {
+     "dmg": 11,
+     "word": 1042,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1+3",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": null,
+   "kind": null,
+   "why": "",
+   "timing": {
+    "S": null,
+    "A": null,
+    "t0": null,
+    "t1": null,
+    "D": null,
+    "src": null
+   },
+   "moveDmg": 19,
+   "hitWord": 2048,
+   "isGrab": true,
+   "atkName": "1+3",
+   "hasHit": true,
+   "distAtHit": 1.56,
+   "defStates": [],
+   "hpDelta": 17.4,
+   "hits": [
+    {
+     "lock": true,
+     "dmg": 19,
+     "res": "undefined"
+    }
+   ]
+  },
+  {
+   "n": "1+3",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": null,
+   "kind": null,
+   "why": "",
+   "timing": {
+    "S": null,
+    "A": null,
+    "t0": null,
+    "t1": null,
+    "D": null,
+    "src": null
+   },
+   "moveDmg": 19,
+   "hitWord": 2048,
+   "isGrab": true,
+   "atkName": "1+3",
+   "hasHit": true,
+   "distAtHit": 1.56,
+   "defStates": [],
+   "hpDelta": 17.4,
+   "hits": [
+    {
+     "lock": true,
+     "dmg": 19,
+     "res": "undefined"
+    }
+   ]
+  }
+ ],
+ "setup": {
+  "roundState": "fight",
+  "p1id": "gashadokuro",
+  "t3actionsCount": 0,
+  "bank": null
+ },
+ "logs": [
+  "[http 404] http://127.0.0.1:8906/deploy-manifest.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/index.json",
+  "[http 404] http://127.0.0.1:8906/roster/gashadokuro/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8906/roster/pantera/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/gashadokuro.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/pantera.json",
+  "[http 404] http://127.0.0.1:8906/game/js/intro-interactions.js"
+ ]
+}

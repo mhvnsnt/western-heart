@@ -1,0 +1,46 @@
+{
+ "fighter": "koreshi",
+ "base": "http://127.0.0.1:8906/game/",
+ "ready": true,
+ "rows": [
+  {
+   "n": "1",
+   "spacing": 1.1,
+   "ok": false,
+   "error": "Page.evaluate: Target page, context or browser has been closed"
+  },
+  {
+   "n": "1",
+   "spacing": 1.8,
+   "ok": false,
+   "error": "Page.evaluate: Target page, context or browser has been closed"
+  },
+  {
+   "n": "1+2",
+   "spacing": 1.1,
+   "ok": false,
+   "error": "Page.evaluate: Target page, context or browser has been closed"
+  },
+  {
+   "n": "1+2",
+   "spacing": 1.8,
+   "ok": false,
+   "error": "Page.evaluate: Target page, context or browser has been closed"
+  }
+ ],
+ "setup": {
+  "roundState": "fight",
+  "p1id": "koreshi",
+  "t3actionsCount": 22,
+  "bank": "heihachi"
+ },
+ "logs": [
+  "[http 404] http://127.0.0.1:8906/deploy-manifest.json",
+  "[http 404] http://127.0.0.1:8906/roster/koreshi/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/index.json",
+  "[http 404] http://127.0.0.1:8906/roster/pantera/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/koreshi.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/pantera.json",
+  "[http 404] http://127.0.0.1:8906/game/js/intro-interactions.js"
+ ]
+}

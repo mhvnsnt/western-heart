@@ -1,0 +1,244 @@
+{
+ "fighter": "phantom",
+ "base": "http://127.0.0.1:8906/game/",
+ "ready": true,
+ "rows": [
+  {
+   "n": "1",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": "t7:1~t7.yoshimitsu",
+   "kind": "t7",
+   "why": "real T7 Ym_lp00F (mbym_lp_DVD)",
+   "timing": {
+    "S": 0.167,
+    "A": 0.017,
+    "t0": 0.15,
+    "t1": 0.167,
+    "D": 0.667,
+    "src": "t7-active"
+   },
+   "moveDmg": 9,
+   "hitWord": 1042,
+   "isGrab": false,
+   "atkName": "1",
+   "hasHit": true,
+   "distAtHit": 1.45,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 8.3,
+   "hits": [
+    {
+     "dmg": 9,
+     "word": 1042,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": "t7:1~t7.yoshimitsu",
+   "kind": "t7",
+   "why": "real T7 Ym_lp00F (mbym_lp_DVD)",
+   "timing": {
+    "S": 0.167,
+    "A": 0.017,
+    "t0": 0.15,
+    "t1": 0.167,
+    "D": 0.667,
+    "src": "t7-active"
+   },
+   "moveDmg": 9,
+   "hitWord": 1042,
+   "isGrab": false,
+   "atkName": "1",
+   "hasHit": true,
+   "distAtHit": 1.45,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 8.3,
+   "hits": [
+    {
+     "dmg": 9,
+     "word": 1042,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "2",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": "t7:2~t7.yoshimitsu",
+   "kind": "t7",
+   "why": "real T7 Ym_rp00 (amym_rp_DVD)",
+   "timing": {
+    "S": 0.167,
+    "A": 0.017,
+    "t0": 0.15,
+    "t1": 0.167,
+    "D": 0.683,
+    "src": "t7-active"
+   },
+   "moveDmg": 13,
+   "hitWord": 1042,
+   "isGrab": false,
+   "atkName": "2",
+   "hasHit": true,
+   "distAtHit": 1.45,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 11.9,
+   "hits": [
+    {
+     "dmg": 13,
+     "word": 1042,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "2",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": "t7:2~t7.yoshimitsu",
+   "kind": "t7",
+   "why": "real T7 Ym_rp00 (amym_rp_DVD)",
+   "timing": {
+    "S": 0.167,
+    "A": 0.017,
+    "t0": 0.15,
+    "t1": 0.167,
+    "D": 0.683,
+    "src": "t7-active"
+   },
+   "moveDmg": 13,
+   "hitWord": 1042,
+   "isGrab": false,
+   "atkName": "2",
+   "hasHit": true,
+   "distAtHit": 1.45,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 11.9,
+   "hits": [
+    {
+     "dmg": 13,
+     "word": 1042,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1+2",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:265",
+   "kind": "notation",
+   "why": "same input '1+2'",
+   "timing": {
+    "S": 0.33,
+    "A": 0.1,
+    "t0": 0.367,
+    "t1": 0.4,
+    "D": 0.4,
+    "src": "decoded"
+   },
+   "moveDmg": 20,
+   "hitWord": null,
+   "isGrab": false,
+   "atkName": "1+2",
+   "hasHit": true,
+   "distAtHit": 1.54,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 18.3,
+   "hits": [
+    {
+     "dmg": 20,
+     "word": null,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1+2",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:265",
+   "kind": "notation",
+   "why": "same input '1+2'",
+   "timing": {
+    "S": 0.33,
+    "A": 0.1,
+    "t0": 0.367,
+    "t1": 0.4,
+    "D": 0.4,
+    "src": "decoded"
+   },
+   "moveDmg": 20,
+   "hitWord": null,
+   "isGrab": false,
+   "atkName": "1+2",
+   "hasHit": true,
+   "distAtHit": 1.54,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 18.3,
+   "hits": [
+    {
+     "dmg": 20,
+     "word": null,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  }
+ ],
+ "setup": {
+  "roundState": "fight",
+  "p1id": "phantom",
+  "t3actionsCount": 22,
+  "bank": "yoshimitsu"
+ },
+ "logs": [
+  "[http 404] http://127.0.0.1:8906/deploy-manifest.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/index.json",
+  "[http 404] http://127.0.0.1:8906/roster/phantom/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8906/roster/pantera/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/phantom.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/pantera.json",
+  "[http 404] http://127.0.0.1:8906/game/js/intro-interactions.js"
+ ]
+}

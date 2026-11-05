@@ -1,0 +1,246 @@
+{
+ "fighter": "chordz",
+ "base": "http://127.0.0.1:8906/game/",
+ "ready": true,
+ "rows": [
+  {
+   "n": "1",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": "t7:1~t7.lars",
+   "kind": "t7",
+   "why": "real T7 La_lp00 (amla_lp_DVD)",
+   "timing": {
+    "S": 0.167,
+    "A": 0.017,
+    "t0": 0.15,
+    "t1": 0.167,
+    "D": 0.75,
+    "src": "t7-active"
+   },
+   "moveDmg": 3,
+   "hitWord": 1042,
+   "isGrab": false,
+   "atkName": "1",
+   "hasHit": true,
+   "distAtHit": 1.45,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 2.8,
+   "hits": [
+    {
+     "dmg": 3,
+     "word": 1042,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": "t7:1~t7.lars",
+   "kind": "t7",
+   "why": "real T7 La_lp00 (amla_lp_DVD)",
+   "timing": {
+    "S": 0.167,
+    "A": 0.017,
+    "t0": 0.15,
+    "t1": 0.167,
+    "D": 0.75,
+    "src": "t7-active"
+   },
+   "moveDmg": 3,
+   "hitWord": 1042,
+   "isGrab": false,
+   "atkName": "1",
+   "hasHit": true,
+   "distAtHit": 1.45,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 2.8,
+   "hits": [
+    {
+     "dmg": 3,
+     "word": 1042,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1+2",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:32",
+   "kind": "notation",
+   "why": "same input '1+2'",
+   "timing": {
+    "S": 0.29,
+    "A": 0.017,
+    "t0": 0.3,
+    "t1": 0.3,
+    "D": 0.867,
+    "src": "decoded"
+   },
+   "moveDmg": 18,
+   "hitWord": null,
+   "isGrab": false,
+   "atkName": "1+2",
+   "hasHit": true,
+   "distAtHit": 1.45,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 16.5,
+   "hits": [
+    {
+     "dmg": 18,
+     "word": null,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1+2",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:32",
+   "kind": "notation",
+   "why": "same input '1+2'",
+   "timing": {
+    "S": 0.29,
+    "A": 0.017,
+    "t0": 0.3,
+    "t1": 0.3,
+    "D": 0.867,
+    "src": "decoded"
+   },
+   "moveDmg": 18,
+   "hitWord": null,
+   "isGrab": false,
+   "atkName": "1+2",
+   "hasHit": true,
+   "distAtHit": 1.8,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 16.5,
+   "hits": [
+    {
+     "dmg": 18,
+     "word": null,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1+3",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:273",
+   "kind": "notation",
+   "why": "same input '1+3'",
+   "timing": {
+    "S": 0.2,
+    "A": 0.05,
+    "t0": 0.2,
+    "t1": 0.233,
+    "D": 0.7,
+    "src": "decoded"
+   },
+   "moveDmg": 19,
+   "hitWord": 2048,
+   "isGrab": true,
+   "atkName": "1+3",
+   "hasHit": true,
+   "distAtHit": 1.48,
+   "defStates": [
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "hpDelta": 17.4,
+   "hits": [
+    {
+     "lock": true,
+     "dmg": 19,
+     "res": "undefined"
+    }
+   ]
+  },
+  {
+   "n": "1+3",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:273",
+   "kind": "notation",
+   "why": "same input '1+3'",
+   "timing": {
+    "S": 0.2,
+    "A": 0.05,
+    "t0": 0.2,
+    "t1": 0.233,
+    "D": 0.7,
+    "src": "decoded"
+   },
+   "moveDmg": 19,
+   "hitWord": 2048,
+   "isGrab": true,
+   "atkName": "1+3",
+   "hasHit": true,
+   "distAtHit": 1.48,
+   "defStates": [
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "hpDelta": 17.4,
+   "hits": [
+    {
+     "lock": true,
+     "dmg": 19,
+     "res": "undefined"
+    }
+   ]
+  }
+ ],
+ "setup": {
+  "roundState": "fight",
+  "p1id": "chordz",
+  "t3actionsCount": 22,
+  "bank": "jin"
+ },
+ "logs": [
+  "[http 404] http://127.0.0.1:8906/deploy-manifest.json",
+  "[http 404] http://127.0.0.1:8906/roster/chordz/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/index.json",
+  "[http 404] http://127.0.0.1:8906/roster/pantera/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/chordz.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/pantera.json",
+  "[http 404] http://127.0.0.1:8906/game/js/intro-interactions.js"
+ ]
+}
