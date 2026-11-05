@@ -1,23 +1,41 @@
 {
- "fighter": "waterfall",
- "base": "http://127.0.0.1:8906/game/",
- "ready": false,
- "rows": [],
- "error": "fight never reached roundState=fight",
- "logs": [
-  "[http 404] http://127.0.0.1:8906/deploy-manifest.json",
-  "[http 404] http://127.0.0.1:8906/roster/waterfall/attires/attire1/model-rigged.glb",
-  "[http 404] http://127.0.0.1:8906/roster/waterfall/attires/attire1/model-rigged.glb",
-  "[http 404] http://127.0.0.1:8906/roster/waterfall/attires/attire1/model-rigged.glb",
-  "[http 404] http://127.0.0.1:8906/roster/waterfall/attires/attire1/model-rigged.glb",
-  "[http 404] http://127.0.0.1:8906/roster/waterfall/attires/attire1/model-rigged.glb",
-  "[http 404] http://127.0.0.1:8906/roster/waterfall/attires/attire1/model-rigged.glb",
-  "[http 404] http://127.0.0.1:8906/deploy-manifest.json",
-  "[http 404] http://127.0.0.1:8906/roster/waterfall/attires/attire1/model-rigged.glb",
-  "[http 404] http://127.0.0.1:8906/roster/waterfall/attires/attire1/model-rigged.glb",
-  "[http 404] http://127.0.0.1:8906/roster/waterfall/attires/attire1/model-rigged.glb",
-  "[http 404] http://127.0.0.1:8906/roster/waterfall/attires/attire1/model-rigged.glb",
-  "[http 404] http://127.0.0.1:8906/roster/waterfall/attires/attire1/model-rigged.glb",
-  "[http 404] http://127.0.0.1:8906/roster/waterfall/attires/attire1/model-rigged.glb"
- ]
+ "mode": "old-placement (roster-pass pattern) summary \u2014 authored summary of the two probe_artifact runs below, not a raw probe",
+ "pattern": "attacker placed relative to defender's current position at first canAct; no settle-wait; defender still relocating to her fight anchor",
+ "runs": [
+  {
+   "input": "d/f+1",
+   "claimedSpacing": 1.1,
+   "defenderAtGate": [
+    2.8,
+    0
+   ],
+   "attackerPlaced": 1.7,
+   "distAtActiveWindow": 1.53,
+   "defenderStateDuringAttack": [
+    "hitstun",
+    "idle",
+    "walk"
+   ],
+   "hpDelta": 7.3,
+   "sourceFile": "probe-waterfall-diag.json"
+  },
+  {
+   "input": "1+2",
+   "claimedSpacing": 1.1,
+   "defenderAtGate": [
+    3.27,
+    0
+   ],
+   "attackerPlaced": 2.17,
+   "distAtActiveWindow": 1.61,
+   "defenderStateDuringAttack": [
+    "hitstun",
+    "idle",
+    "walk"
+   ],
+   "hpDelta": 17.4,
+   "sourceFile": "probe-waterfall-diag2.json"
+  }
+ ],
+ "note": "In both runs the defender is 2.8-3.3 m from center and WALKING at gate-open and moves >=0.6 m during the attack; the distance at the active window (1.51 / 1.88 m) never equals the claimed 1.1 m spacing. Whether an attempt whiffs depends on where in that relocation the active window falls \u2014 the #1559 pass recorded the whiff tail as 41 zeros (docs/proof/2026-11-03/roster/roster-verdicts-20261103.json). The first S6 session also observed the cross-behind case live (defender transient at x=-2.2, snap to anchor behind the attacker, 3.81 m at the window, both contact paths dead); that trace was printed to the lane log and not preserved to disk \u2014 recorded here as an observation, not a file."
 }

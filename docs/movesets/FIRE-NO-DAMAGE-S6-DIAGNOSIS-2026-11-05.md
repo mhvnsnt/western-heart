@@ -60,20 +60,26 @@ instruction: zero of the 41 belong to it (section 3).
 
 ## Root cause 1 — the defender is still relocating when the ready gate opens
 
-Frame-level trace of waterfall d/f+1 in the ORIGINAL (S5-style)
-placement, `probe-waterfall-diag.json`: at sample start the defender
-(Pantera) is not yet at her fight anchor. The ready gate opens on
-`roundState == 'fight'` + fighter identity while round-start
-positioning is still moving her. The old probe placed the attacker
-relative to her transient position (she sat at x=−2.2; the attacker was
-placed at −1.1 facing −1, correct toward her at that instant); she then
-snapped to her anchor (x=0) BEHIND him. At the active window the roots
-were 3.81 m apart with the weapon pointing away: the geometry path
-misses and the range fallback's facing sign check fails, so neither
-contact path can register. The #1559 roster pass used the same
-place-relative-to-defender pattern, and its fire-no-damage verdicts
-inherit this artifact. With settled placement, the same inputs deal
-their recorded damage (Class A table).
+Frame-level traces of the ORIGINAL (place-relative-to-defender, no
+settle) placement are preserved in `probe-waterfall-diag.json`
+(d/f+1) and `probe-waterfall-diag2.json` (1+2), summarized in
+`probe-waterfall-pre.json`: at the moment the ready gate opens
+(`roundState == 'fight'` + fighter identity), round-start positioning
+is still moving the defender — in both traces she is 2.8-3.3 m from
+center and in state `walk`, relocating to her fight anchor. The old
+probe placed the attacker relative to that transient position at the
+claimed 1.1 m spacing; she then kept moving >=0.6 m during the attack,
+and the root distance at the active window measured 1.51-1.88 m —
+never the claimed spacing. Whether a given attempt whiffs depends on
+where in that relocation the active window falls: in this lane's
+first diagnostic the relocation carried her BEHIND the attacker
+(roots 3.81 m apart at the window, weapon pointing away, both contact
+paths dead); that trace was printed to the lane log and its file was
+not preserved (see the correction of record). The #1559 roster pass
+used the same place-relative-to-defender pattern, and its
+fire-no-damage verdicts inherit this artifact: the measurement was
+never controlled. With settle-wait + explicit placement, the same
+inputs deal their recorded damage (Class A table).
 
 ## Root cause 2 — paired throws need the fight model in the tree
 
@@ -116,10 +122,10 @@ control-parity reach; every entry deals its damage at 1.1 m).
 
 | Fighter · input | Resolved plan | Data dmg | Dealt 1.1 / 1.8 |
 |---|---|---|---|
-| waterfall 1+2 | signature "Nine Souls' Grief" (jin row 32) | 19 | 25.2 / 25.2 |
-| waterfall d/f+1 | jin row | 8 | 10.8 / 10.8 |
-| waterfall d+1 | jin row | 3 | 4.1 / 4.1 |
-| waterfall d/f+2 | jin row | 6 | 8.1 / 8.1 |
+| waterfall 1+2 | signature "Nine Souls' Grief" (jin row 32) | 19 | 17.4 / 17.4 |
+| waterfall d/f+1 | jin row 179 | 8 | 7.3 / 7.3 |
+| waterfall d+1 | jin row 36 (donor) | 3 | 2.8 / — (whiffs at 1.8, the same envelope as his control `1`) |
+| waterfall d/f+2 | jin row 269 | 6 | 17.5 / 5.5 (one logged hit, data 6, at both spacings; totals include the launch aftermath; knockdown at both) |
 | phantom 2 | `2~t7.yoshimitsu` | 13 | 11.9 / 11.9 |
 | phantom 1+2 | t3 yoshimitsu row 265 | 20 | 18.3 / 18.3 |
 | diablo 1+2 | `1+2~t7.heihachi` | 33 | 42.3 / 30.3 |
@@ -157,12 +163,17 @@ the clean re-probe is `probe-F-koreshi.json`.)
 
 ## Class B — throws complete with the fight model loaded (5)
 
-All five `1+3` inputs: defender state sequence `thrown → thrownExec →
-knockdown` in the probe (waterfall via the pair path, §2).
+All five `1+3` inputs complete with the defender ending in
+knockdown. Four bind their file pair (`startThrowLock` →
+`pairDamage`); gashadokuro's pair does not bind against king
+(`pairAfter: false`) and his throw completes on the legacy path
+(`startThrowLock` → `startThrowing` → `completeThrow` → `slam`).
+Per-input, per-spacing evidence is in the correction sweep files
+below.
 
 | Fighter · input | Data dmg | Dealt 1.1 / 1.8 |
 |---|---|---|
-| waterfall 1+3 (jin r276) | 21 | 19.3 / (pair proof at 1.1) |
+| waterfall 1+3 (jin r276) | 21 | 19.3 / 19.3 |
 | zui 1+3 (steve row 274) | 19 | 17.4 / 17.4 |
 | bruno 1+3 (miguel "Paseo", row 210) | 21 | 19.3 / 19.3 |
 | chordz 1+3 (lars row 273) | 19 | 17.4 / 17.4 |
@@ -236,3 +247,60 @@ execution record, and the checkpoint record. If a future pass wants the
 roster harness itself hardened against root cause 1, the fix belongs
 to the probe tooling (settle + explicit placement, as in this item's
 method), not to any fighter's data.
+
+## Correction of record — post-merge evidence sweep (2026-11-05)
+
+The original S6 PR (#1591) shipped four hollow proof files:
+`probe-waterfall-v2.json`, `probe-waterfall-diag.json`,
+`probe-waterfall-diag2.json` and `probe-waterfall-pre.json` contained
+a failed duplicate run's output (`ready: false`, zero rows) — the
+good runs' results existed only as lane-log stdout, and the PR's
+post-merge blob check sampled other files but not these. A post-merge
+audit caught it. This section and the accompanying correction PR
+replace those files with read-back-verified content and re-prove
+every row the audit found unaccounted. Process rule adopted: a proof
+file is cited only after its contents are read back from the file
+itself; every file below was read back before upload, and the
+correction PR's verification reads every replaced file back from
+main.
+
+What the sweep re-ran (all files in
+`docs/proof/2026-11-05/fire-no-damage-s6/`):
+
+- **Waterfall strikes** — fixed placement, fight model loaded:
+  `probe-waterfall-v2.json` (assembled from two page loads,
+  `probe-waterfall-v2d.json` + `probe-waterfall-v2c.json`, after the
+  single-load file was lost twice more — a failed duplicate, then a
+  service-restart kill). Dealt values in the Class A table above are
+  corrected to this file's readings (1+2: 17.4, d/f+1: 7.3, d+1: 2.8,
+  d/f+2: 17.5/5.5); the originally published waterfall numbers were
+  stdout readings from the lost run and are superseded.
+- **Root-cause traces** — the old placement reproduced on purpose
+  (`probe_artifact.py` pattern): `probe-waterfall-diag.json`,
+  `probe-waterfall-diag2.json`, summarized in
+  `probe-waterfall-pre.json` (see root cause 1).
+- **Class B throws at BOTH spacings**, instrumented
+  (`throw-sweep-<fighter>-<spacing>.json`): waterfall pairDamage
+  19.3/19.3, zui 17.4/17.4, bruno 19.3/19.3, chordz 17.4/17.4 — each
+  with `startThrowLock` (defender state `thrown`), the `pairDamage`
+  HP before/after, and a knockdown sequence end. Gashadokuro
+  completes on the legacy path at both spacings (`slam` entry,
+  HP 1,000,000 -> 999,982.58 = 17.4, defender `thrown` sustained,
+  then knockdown) — his path statement in the Class B section is
+  corrected accordingly.
+- **Class C contact rows** — zui `3` and `4`
+  (`probe-G-zui.json`): contact at both spacings (hit registered,
+  defender hitstun, hit word 799), move damage 0, HP delta 0.
+  docfrank `1+2` (`probe-G-docfrank.json`): contact at both
+  spacings, move damage 0, HP delta 0. The honest-zero verdicts rest
+  on registered contact with zero damage, as filed.
+- **Chatur** — the audit asked for a chatur S6 row (`1+2`). No such
+  row exists: the roster-verdicts probe lists enumerate exactly the
+  41 inputs of this item, and chatur is pose-only (no bank, no probe
+  rows; the roster-100 checkpoint's inventory counts 41). Recorded
+  here so the absence is a finding, not an oversight.
+
+No verdict changes: the classes stand as published (30/5/4/2, zero
+hit-data defects, zero game data files changed). What changed is
+that every one of the 41 verdicts is now backed by a proof file
+whose contents were read back from main.

@@ -1,1 +1,107 @@
-{"base_main_tip_probed":"3996ab07 + #1580/#1581 payloads (blob-SHA audited); written at main a2aa63e8","charger_rider":{"charger d/f+2":"plan row:149, data dmg 9, hitWord 535, dealt 9 at 1.1 m (probe-E-charger.json); S1 harness used real keyboard input + real-time stepping; the row's single active frame (23/60) can fall between rendered frames","verdict":"closed - harness artifact"},"classes":{"A":["waterfall 1+2","waterfall d/f+1","waterfall d+1","waterfall d/f+2","phantom 2","phantom 1+2","diablo 1+2","skull d/f+1","samura1 1+2","sakura 4","sakura 1+2","kinpo 1+2","dio 2","dio 4","star 1+2","baek-master-white 4","baek-master-white 1+2","dxmmii-patchwork 1+2","pond d/f+1","tobi u/f+4","rave 2","rave 3","buffalo-bill 1+2","buffalo-bill u/f+4","chordz 1+2","gashadokuro 4","cyborgx 1+2","cyborgx d/f+1","cyborgx d+1","koreshi 1+2"],"B":["waterfall 1+3","zui 1+3","bruno 1+3","chordz 1+3","gashadokuro 1+3"],"C":["zui 3","zui 4","docfrank 1+2","tobi 1+2"],"D":["mariposa-monarch 1+2","silvertongue 2"]},"counts":{"classA_harness_artifact":30,"classB_throw_completes_with_model":5,"classC_honest_zero_source":4,"classD_in_range_only":2,"data_defects":0,"scale_class_cainelias":0,"total":41},"date":"2026-11-05","game_data_files_changed":[],"item":"roster-100 S6 fire-no-damage","method":"fixed-step DT=1/120 fight probes vs Pantera, settle-wait + explicit both-fighter placement, spacings 1.1/1.8, verified fight models in tree","root_causes":["RC1: roster-pass placement relative to a still-relocating defender (ready gate opens before round-start positioning settles) - geometry + facing-sign range fallback both dead","RC2: paired throws do not complete damage in a model-less probe tree; with the verified fight model loaded the pair binds and pairDamage lands"],"s3_scale_check":{"mariposa-monarch":{"height_m":1.933,"minY":-0.006},"note":"every damaging input connects at 1.1 m; Cainelias defect whiffed at 0.75 m","verdict":"0 of 41"},"s5_buttons_referral":{"note":"no roger/jun-bank fighter in the set; T3 banks carry decoded buttons; limitation stays a TTT2 bank-production item","verdict":"nil blast radius for the 41"}}
+{
+ "base_main_tip_probed": "3996ab07 + #1580/#1581 payloads (blob-SHA audited); written at main a2aa63e8",
+ "charger_rider": {
+  "charger d/f+2": "plan row:149, data dmg 9, hitWord 535, dealt 9 at 1.1 m (probe-E-charger.json); S1 harness used real keyboard input + real-time stepping; the row's single active frame (23/60) can fall between rendered frames",
+  "verdict": "closed - harness artifact"
+ },
+ "classes": {
+  "A": [
+   "waterfall 1+2",
+   "waterfall d/f+1",
+   "waterfall d+1",
+   "waterfall d/f+2",
+   "phantom 2",
+   "phantom 1+2",
+   "diablo 1+2",
+   "skull d/f+1",
+   "samura1 1+2",
+   "sakura 4",
+   "sakura 1+2",
+   "kinpo 1+2",
+   "dio 2",
+   "dio 4",
+   "star 1+2",
+   "baek-master-white 4",
+   "baek-master-white 1+2",
+   "dxmmii-patchwork 1+2",
+   "pond d/f+1",
+   "tobi u/f+4",
+   "rave 2",
+   "rave 3",
+   "buffalo-bill 1+2",
+   "buffalo-bill u/f+4",
+   "chordz 1+2",
+   "gashadokuro 4",
+   "cyborgx 1+2",
+   "cyborgx d/f+1",
+   "cyborgx d+1",
+   "koreshi 1+2"
+  ],
+  "B": [
+   "waterfall 1+3",
+   "zui 1+3",
+   "bruno 1+3",
+   "chordz 1+3",
+   "gashadokuro 1+3"
+  ],
+  "C": [
+   "zui 3",
+   "zui 4",
+   "docfrank 1+2",
+   "tobi 1+2"
+  ],
+  "D": [
+   "mariposa-monarch 1+2",
+   "silvertongue 2"
+  ]
+ },
+ "counts": {
+  "classA_harness_artifact": 30,
+  "classB_throw_completes_with_model": 5,
+  "classC_honest_zero_source": 4,
+  "classD_in_range_only": 2,
+  "data_defects": 0,
+  "scale_class_cainelias": 0,
+  "total": 41
+ },
+ "date": "2026-11-05",
+ "game_data_files_changed": [],
+ "item": "roster-100 S6 fire-no-damage",
+ "method": "fixed-step DT=1/120 fight probes vs Pantera, settle-wait + explicit both-fighter placement, spacings 1.1/1.8, verified fight models in tree",
+ "root_causes": [
+  "RC1: roster-pass placement relative to a still-relocating defender (ready gate opens before round-start positioning settles) - geometry + facing-sign range fallback both dead",
+  "RC2: paired throws do not complete damage in a model-less probe tree; with the verified fight model loaded the pair binds and pairDamage lands"
+ ],
+ "s3_scale_check": {
+  "mariposa-monarch": {
+   "height_m": 1.933,
+   "minY": -0.006
+  },
+  "note": "every damaging input connects at 1.1 m; Cainelias defect whiffed at 0.75 m",
+  "verdict": "0 of 41"
+ },
+ "s5_buttons_referral": {
+  "note": "no roger/jun-bank fighter in the set; T3 banks carry decoded buttons; limitation stays a TTT2 bank-production item",
+  "verdict": "nil blast radius for the 41"
+ },
+ "correction_sweep_20261105": {
+  "note": "Post-merge audit found 4 hollow proof files in PR #1591 (waterfall v2/diag/diag2/pre contained a failed duplicate run's output). A correction sweep re-proved every unaccounted row; all files below were read back before upload.",
+  "waterfall_strikes": "probe-waterfall-v2.json (from probe-waterfall-v2d.json + probe-waterfall-v2c.json): 1+2 17.4/17.4, d/f+1 7.3/7.3, d+1 2.8 @1.1, d/f+2 17.5/5.5 knockdown",
+  "waterfall_numbers_superseded": "originally published 25.2/10.8/4.1/8.1 were stdout readings from the lost run",
+  "root_cause_traces": "probe-waterfall-diag.json + probe-waterfall-diag2.json (old placement reproduced), summarized in probe-waterfall-pre.json",
+  "throws_both_spacings": {
+   "waterfall 1+3": "pairDamage 19.3/19.3 (throw-sweep-waterfall-1.1.json, throw-sweep-waterfall-1.8.json)",
+   "zui 1+3": "pairDamage 17.4/17.4 (throw-sweep-zui-*.json)",
+   "bruno 1+3": "pairDamage 19.3/19.3 (throw-sweep-bruno-*.json)",
+   "chordz 1+3": "pairDamage 17.4/17.4 (throw-sweep-chordz-*.json)",
+   "gashadokuro 1+3": "legacy slam 17.4/17.4, pairAfter false (throw-sweep-gashadokuro-*.json)"
+  },
+  "classC_contact": {
+   "zui 3": "probe-G-zui.json: contact both spacings, hitstun, moveDmg 0, hpDelta 0",
+   "zui 4": "probe-G-zui.json: contact both spacings, hitstun, moveDmg 0, hpDelta 0",
+   "docfrank 1+2": "probe-G-docfrank.json: contact both spacings, hitstun, moveDmg 0, hpDelta 0"
+  },
+  "chatur": "no S6 row exists \u2014 roster-verdicts probe lists enumerate exactly the 41; chatur is pose-only (no bank, no probe rows)",
+  "verdict_changes": "none \u2014 classes stand (30/5/4/2); waterfall dealt numbers corrected to the read-back files"
+ }
+}
