@@ -21,10 +21,10 @@ Machine-readable twin: `game/data/moveset-templates/index.json`.
 | `t7-heavy-bob-style` | T7 heavyweight bob-and-weave brawler | Tekken 7 | Burger T7 stance / moves path | `burger` | attached (existing); verify clip identity in later audit |
 | `t7-flashy-counter-kickbox` | T7 flashy counter kickboxer (Hwoarang-family motion — **template only**, never roster Hwoarang) | Tekken 7 | GRE / WH bank when claimed | _(none yet)_ | template reserved — **do not** create a Hwoarang roster entry |
 | `t3-ogre-bank` | T3 Ogre-family bank already in WH | Tekken 3 | `game/assets/anim/t3/ogre/` | `chatur` (existing bank use) | pointer only; T3 ≠ T7 King rule still holds for Pantera |
-| `wwe2k-moveset-string-lib` | WWE 2K19 Create-A-Moveset string library (5,581 names) | WWE 2K19 | `customization/wwe2k-caw/moveset-library-2k19.txt` (+ GRE pacs) | _(library only — attach per CAW character later)_ | data present; no superstar roster names |
-| `wwe2k-powerhouse-brawler` | 2K powerhouse / big-man grappler archetype | WWE 2K19/20/22 | GRE `teardown/wwe2k*`; Steam apps 817130 / 1015500 / 1255630 | _(none yet)_ | reserved for WH powerhouse CAWs |
-| `wwe2k-highflyer` | 2K high-flyer / cruiser archetype | WWE 2K19/20/22 | GRE + `customization/templates/meshes/highflyer.glb` body hint | _(none yet)_ | reserved |
-| `wwe2k-technician` | 2K technical wrestler archetype | WWE 2K19/20/22 | GRE + `customization/templates/meshes/technician.glb` | _(none yet)_ | reserved |
+| `cam-moveset-string-lib` | WWE 2K19 Create-A-Moveset string library (5,581 names) | WWE 2K19 | `customization/wwe2k-caw/moveset-library-2k19.txt` (+ GRE pacs) | _(library only — attach per CAW character later)_ | data present; no superstar roster names |
+| `cam-powerhouse-brawler` | 2K powerhouse / big-man grappler archetype | WWE 2K19/20/22 | GRE `teardown/wwe2k*`; Steam apps 817130 / 1015500 / 1255630 | _(none yet)_ | reserved for WH powerhouse CAWs |
+| `cam-highflyer` | 2K high-flyer / cruiser archetype | WWE 2K19/20/22 | GRE + `customization/templates/meshes/highflyer.glb` body hint | _(none yet)_ | reserved |
+| `cam-technician` | 2K technical wrestler archetype | WWE 2K19/20/22 | GRE + `customization/templates/meshes/technician.glb` | _(none yet)_ | reserved |
 | `doa-speed-striker` | DOA speed striker family already mirrored in WH movesets | DOA | `game/assets/movesets/doa-*.json` | map per WH character when identity-gated | pointers only |
 | `fe-importer-demo-ban` | _(not a playable template)_ | FightingEngine Tag Battle demos | YT Lko4SWLXVEU | **FORBIDDEN** on roster | Hwoarang / Jin / Yugo / Siegfried never attach |
 
