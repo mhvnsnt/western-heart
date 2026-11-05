@@ -5,7 +5,7 @@
 // single scene node). Any future geometry change to these files must
 // re-prove scale/grounding and update the pinned hashes deliberately.
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 
 const CASES = [
@@ -17,8 +17,16 @@ const CASES = [
 // at his canon 200 cm — so 1.749 * 208/200 = 1.81896 m, feet at y=0.
 const TARGET_H = 1.81896;
 
+let enforced = 0;
 for (const { path, binSha256 } of CASES) {
-  const buf = readFileSync(new URL(`../${path}`, import.meta.url));
+  const url = new URL(`../${path}`, import.meta.url);
+  // The game-unit-tests CI job uses a sparse checkout without roster/;
+  // skip loudly there, enforce fully wherever the models are present.
+  if (!existsSync(url)) {
+    console.log(`cainelias-scale: SKIP ${path} (not in this checkout)`);
+    continue;
+  }
+  const buf = readFileSync(url);
   assert.equal(buf.toString('ascii', 0, 4), 'glTF', `${path}: GLB magic`);
   const jlen = buf.readUInt32LE(12);
   assert.equal(buf.toString('ascii', 16, 20), 'JSON', `${path}: JSON chunk`);
@@ -50,6 +58,7 @@ for (const { path, binSha256 } of CASES) {
   const effHi = node.translation[1] + sy * hi;
   assert.ok(Math.abs(effLo) < 0.005, `${path}: grounded (effective min.y = ${effLo})`);
   assert.ok(Math.abs((effHi - effLo) - TARGET_H) < 0.005, `${path}: effective height ${effHi - effLo} != target ${TARGET_H}`);
+  enforced += 1;
   console.log(`cainelias-scale: ${path} grounded at ${effLo.toFixed(4)}, height ${(effHi - effLo).toFixed(4)} m, BIN pinned ok`);
 }
-console.log('cainelias-scale: both attires ok');
+console.log(`cainelias-scale: done (${enforced}/${CASES.length} attires enforced in this checkout)`);
