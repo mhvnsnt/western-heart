@@ -43,3 +43,7 @@ Machine-readable twin: `game/data/moveset-templates/index.json`.
 3. Add a row here + in `game/data/moveset-templates/index.json`.
 4. Attach only to WH character ids.
 5. Never commit raw Steam dumps into public WH paths.
+
+## 2026-11-05 update (t383u)
+
+- `t3-ogre-bank` status → **attached-existing** (Chatur already bound to `game/assets/anim/t3/ogre/` via `FIGHTER_BANK.chatur`).
