@@ -139,3 +139,33 @@ Local box search this pass: no copies of the SmutBase character blends under `/w
 
 **Do not merge #1569** (52-bone Pond graft).
 
+
+
+## Source search record (t380u–t383u) — 2026-11-05 12:53 CST
+
+Searched reverse-engineering repo + WH + Steam-extract trees before any missing claim.
+
+### Chatur / True Ogre — FOUND (already in WH)
+
+| What | Path |
+|---|---|
+| T3 Ogre anim bank | `game/assets/anim/t3/ogre/` |
+| Moveset (281 rows) | `game/assets/movesets/chatur.json` |
+| Mirror | `game/assets/movesets/t3-ogre.json` |
+| Runtime | `FIGHTER_BANK.chatur = 'ogre'` in `game/js/fighter.js` |
+| Decode | commit `ed16dd6c` (2026-10-23) |
+| Proof | `docs/proof/claude-2026-10-23/t3-banks/` |
+| Template | `t3-ogre-bank` → **attached-existing** |
+
+GRE `tekken3/animations/`: divmot03/04/07/09/12/13/16/99 only (no divmot14 this pass). WH bank is the landed asset.
+
+### Ryusan multi-hit — motion FOUND (`mhvnsnt/game-reverse-engineering`)
+
+- `teardown/tekken7-steam/tkdata/mothead/bin/dncmot.bin` (2,621,500 B)
+- `teardown/tkdata/mothead/bin/dncmot.bin`
+- `teardown/tekken7-steam/tkdata/mothead/mask/dncrotsm.arc`
+- WH pack still skips `1+2`, `u+3+4`, `f+3+4`, `b+1+2` (`t7_move_bake.py` one-clip-one-hit). Per-hit bake next — not invented.
+
+### Pages
+
+- #1588 → `a2aa63e8`; Pages `cd2905e2` ryusan card.

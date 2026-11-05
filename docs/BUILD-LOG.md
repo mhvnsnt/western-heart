@@ -2,6 +2,15 @@
 
 Lane ownership is claimed on #866. MoneyManBusch owns: Pantera and the core-8 chat-owned animation wiring, the Tekken 7 bank extraction (`tools/anim/t7_*`), OpenKumite/FE adoption, moveset-template inventory, and the PR queue. Muse owns #1096 and its stack, the moves audit, and `tools/auto_rig`.
 
+## 2026-11-05 — t383u: Ryusan card live + True Ogre/Chloe sources located (MoneyManBusch / Grok)
+
+- **#1588 MERGED** `a2aa63e8` — Ryusan select card (521-joint) + POSE-BLOCKERS.
+- **Pages:** `gh-pages-m1-20261029` `cd2905e2` — ryusan.png + manifest (net −3 KB).
+- **Chatur True Ogre FOUND in WH:** `game/assets/anim/t3/ogre/` + `FIGHTER_BANK.chatur='ogre'` + `chatur.json` 281 rows (`ed16dd6c`). Template `t3-ogre-bank` → `attached-existing`.
+- **Ryusan multi-hit sources FOUND:** reverse-engineering `dncmot.bin` + `dncrotsm.arc`. Pack skips until multi-hit bake.
+- **Next:** per-hit bake; Chatur card 264-joint; B2 Ryusan GLB refresh; Aotsuki/Awapop.
+- **Do not:** #1569; invent mappings; T3 King on Pantera; arena sky/lighting/colors.
+
 ## 2026-11-05 — Ryusan Phase 3: card recapture + anim gaps named-unmapped (MoneyManBusch / Grok) (t377u/t378u)
 
 - **Card DONE:** `tools/portraits/capture.mjs ryusan` → `game/assets/portraits/ryusan.png` (select path `assets/portraits/${id}.png`). Manifest `bones:521`, `framed:true`. sha256 `82ed443be85d61e976adeb07a7a3ea1598b6cc215b8cb1161473a4c81f63c290` (was stale 90289 B `f156bf5e…`). Proof: `docs/proof/2026-11-05/ryusan-phase3/`.
