@@ -1,3 +1,10 @@
+## 2026-11-05 — t383u land: #1590 + Pages tip 32607e2b (MoneyManBusch)
+
+- **#1588** Ryusan card on main `a2aa63e8`; first Pages tip `cd2905e2` (~999.96 MB) **failed to publish** (`updating_pages` timeout → Page build failed). Live host stayed on `b3a7cc6` old ryusan.png (90289 B) until republish succeeds.
+- **#1590 MERGED** `847e35c9` — True Ogre bank FOUND in WH (`game/assets/anim/t3/ogre/`, `chatur.json`, FIGHTER_BANK=ogre); template `t3-ogre-bank` → attached-existing; GRE `dncmot.bin` / `dncrotsm.arc` / **`mothead/json/dnc.json`** (6.1 MB, 2183 moves) named for Ryusan leftovers. Raw dumps stay private.
+- **Pages tip** `32607e2b` on `gh-pages-m1-20261029` — delta 1 updated (`game/data/moveset-templates/index.json`), 0 added/removed; ~999.96 MB. Arena sky/lighting/colors untouched.
+- **Still unmapped after search:** Ryusan multi-hit keys `1+2`/`u+3+4`/`f+3+4`/`b+1+2` (need per-hit bake from dncmot — tool gate); SHOW intro/win body clips (not named in dnc.json move list); Chatur 264-joint card recapture; B2 stale Ryusan GLB re-upload.
+
 # BUILD-LOG — Western Heart (resume point for Muse / any agent)
 
 Lane ownership is claimed on #866. MoneyManBusch owns: Pantera and the core-8 chat-owned animation wiring, the Tekken 7 bank extraction (`tools/anim/t7_*`), OpenKumite/FE adoption, moveset-template inventory, and the PR queue. Muse owns #1096 and its stack, the moves audit, and `tools/auto_rig`.

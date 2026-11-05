@@ -169,3 +169,9 @@ GRE `tekken3/animations/`: divmot03/04/07/09/12/13/16/99 only (no divmot14 this 
 ### Pages
 
 - #1588 → `a2aa63e8`; Pages `cd2905e2` ryusan card.
+
+### t383u land note
+- Chatur True Ogre: **FOUND** in WH (not missing). Template attached-existing via #1590.
+- Ryusan: card on main; GRE `dnc.json`+`dncmot.bin` named; multi-hit/SHOW still bake-gated after search.
+- Pages tip `32607e2b` (publish watch).
+
