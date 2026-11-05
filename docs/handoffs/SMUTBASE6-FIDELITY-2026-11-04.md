@@ -999,7 +999,7 @@ started here.** Her recovered blend (450 bones, 2,509 shape keys,
 124 packed images) is inventoried in the recovery section above.
 
 
-## MENAJERII REBUILD — LANDED (2026-11-05, PR #MENAPR)
+## MENAJERII REBUILD — LANDED (2026-11-05, PR #1577)
 
 Rebuilt from her own recovered blend
 (`VixenCommission.blend`, 984,617,116 B, sha256
