@@ -540,7 +540,7 @@ two commissions were identified on SmutBase as MilkGuy_3D's
 "Parvati Holcomb" (ParvatiCommission.rar) and "Vixen"
 (Vixen_Commission.rar) — a browser lane is downloading both rars.
 
-## RYUSAN REBUILD — LANDED (2026-11-05, PR #RYUSANPR)
+## RYUSAN REBUILD — LANDED (2026-11-05, PR #1574)
 
 Rebuilt from her own blend (`roster/mina-ashido/intake/Mina Ashido
 rigify/ryusan-mina.blend`, 7,396,031 B, sha256
