@@ -1,0 +1,445 @@
+{
+  "inventory": "SmutBase 6 fidelity rebuild \u2014 Tobi + Chatur",
+  "date": "2026-11-04",
+  "lane_folder": "~/workspace/_smutbase6-fidelity-20261104/",
+  "scope": "READ-ONLY inventory. GLB JSON chunks parsed with python struct/json (no Blender). No edits outside the fidelity folder.",
+  "checkpoint_source": "~/workspace/agent-ops/checkpoints/smutbase6-fix-20261102.json (updated 2026-11-03)",
+  "blend_search_record": {
+    "local_fix_folder_find": "find ~/workspace/_smutbase6-fix-20261102 -iname '*.blend' -> ONLY work/mina-intake/rigify.blend (7.1 MB, Mina/Ryusan), work/mina-intake/rigify-unpacked.blend (0 B), serve/game/assets/materials/fishnet/Fishnet_material_by_RenCeifer.blend (shared material). NO miruko/mirko/rahkasa .blend.",
+    "local_model_intake_find": "find ~/workspace/model-intake -iname '*.blend' -> 21 blends (Essi, Poppy, Qhala, Orn, PiranhaPlant, KirillVolkov, Baigo, Lestya, Succubus_rigify, ReptilianAlienWoman, JuniperActias, MataraKan, Grussy, Lizzy, Hara, MaeOkyra, Daree, DesertGobbo, Vielra, extracted/MrSmith). NO miruko/mirko/rahkasa .blend.",
+    "gh_release_list": "gh release list --repo mhvnsnt/western-heart --limit 50 -> no Miruko- or Rahkasa-specific release. Only SmutBase-six release in list: 'MEGAMI + MENAJERII \u2014 SmutBase intake originals (2026-10-23)' tag megami-menajerii-smutbase-20261023 (does not cover Tobi/Chatur).",
+    "gh_repo_contents_and_git_tree": "gh api contents roster/miruko, roster/rahkasa + git/trees/main?recursive=1 filtered to intake/ -> BOTH source .blends EXIST, in-repo only (see per-character source_blend_in_repo). This is the core finding: fidelity source is a repo .blend, NOT the local GLB.",
+    "conclusion": "Source .blend EXISTS for both characters \u2014 in mhvnsnt/western-heart intake/, not on local disk in the searched folders. Local holdings are GLB + (for Miruko) 3 loose intake PNGs only."
+  },
+  "characters": [
+    {
+      "fighter": "Tobi",
+      "source_character": "Mirko / Miruko (Rumi Usagiyama, My Hero Academia)",
+      "canon_pairing": "Tobi = Mirko (Hwoarang base) \u2014 per docs/decisions/2026-10-23-smutbase6-parts-system.md, NO swap",
+      "source_blend_in_repo": {
+        "status": "FOUND \u2014 in repo only, NOT local",
+        "repo_path": "roster/miruko/intake/miruko IK/mirkoIK.blend",
+        "bytes": 6310244,
+        "git_blob_sha": "16032badf812 (prefix, from git tree)",
+        "provenance": "SmutBase intake queue row 10: miruko_IK zip 7.6 MB, download sha256 prefix 67106659\u2026, in-repo 14 files (blend + textures/). IK-rigged.",
+        "local_copy": "NOT FOUND in ~/workspace/_smutbase6-fix-20261102 or ~/workspace/model-intake"
+      },
+      "source_intake_textures_in_repo": [
+        {
+          "repo_path": "roster/miruko/intake/miruko IK/textures/Mirko body.png",
+          "bytes": 320986,
+          "git_blob_sha_prefix": "6cf4c581cdfc"
+        },
+        {
+          "repo_path": "roster/miruko/intake/miruko IK/textures/Mirko body unshaded.png",
+          "bytes": 26712,
+          "git_blob_sha_prefix": "32f2b347cd94",
+          "note": "NOT embedded in orig or shipped GLB \u2014 unused in game file"
+        },
+        {
+          "repo_path": "roster/miruko/intake/miruko IK/textures/Mirko body.png~",
+          "bytes": 192920,
+          "git_blob_sha_prefix": "6a68b4aa69f6",
+          "note": "editor backup file (~), not a texture to ship"
+        },
+        {
+          "repo_path": "roster/miruko/intake/miruko IK/textures/Mirko face.png",
+          "bytes": 61652,
+          "git_blob_sha_prefix": "d212e6799a86"
+        },
+        {
+          "repo_path": "roster/miruko/intake/miruko IK/textures/Neck.png",
+          "bytes": 5736,
+          "git_blob_sha_prefix": "4ff651e669e4"
+        },
+        {
+          "repo_path": "roster/miruko/intake/miruko IK/textures/mirko penis.png",
+          "bytes": 126015,
+          "git_blob_sha_prefix": "6f4354e4528d"
+        },
+        {
+          "repo_path": "roster/miruko/intake/miruko IK/textures/mirko-belt_Base_color.png",
+          "bytes": 25840,
+          "git_blob_sha_prefix": "350e656d34c4"
+        },
+        {
+          "repo_path": "roster/miruko/intake/miruko IK/textures/mirko-belt_Mixed_AO.png",
+          "bytes": 550815,
+          "git_blob_sha_prefix": "d879bbe9afed"
+        },
+        {
+          "repo_path": "roster/miruko/intake/miruko IK/textures/miruko-hero-suit_Base_color.png",
+          "bytes": 147823,
+          "git_blob_sha_prefix": "48a9f7b17b2d"
+        },
+        {
+          "repo_path": "roster/miruko/intake/miruko IK/textures/miruko-hero-suit_Metallic.png",
+          "bytes": 19115,
+          "git_blob_sha_prefix": "152577b7c084"
+        },
+        {
+          "repo_path": "roster/miruko/intake/miruko IK/textures/miruko-hero-suit_Roughness.png",
+          "bytes": 28429,
+          "git_blob_sha_prefix": "b80f0e68bbbc"
+        }
+      ],
+      "local_intake_textures_fix_lane": [
+        {
+          "path": "~/workspace/_smutbase6-fix-20261102/work/miruko-intake/mirko-belt_Mixed_AO.png",
+          "bytes": 550815,
+          "sha256": "784025a503307e391575cd71b32797fdb51e931ec5897ceb29fb36415f07f12c",
+          "dimensions": "2048x2048 L"
+        },
+        {
+          "path": "~/workspace/_smutbase6-fix-20261102/work/miruko-intake/miruko-hero-suit_Metallic.png",
+          "bytes": 19115,
+          "sha256": "52c2cdaf051cafa09e522eeb449b760bc90eb266f1d58c4e1454fea453e9c94d",
+          "dimensions": "2048x2048 L"
+        },
+        {
+          "path": "~/workspace/_smutbase6-fix-20261102/work/miruko-intake/miruko-hero-suit_Roughness.png",
+          "bytes": 28429,
+          "sha256": "7da1801080122a0a0283a8bf7545ee9d932797e29948d6e58a83d852b3dab91c",
+          "dimensions": "2048x2048 L"
+        }
+      ],
+      "local_orig_glb": {
+        "path": "~/workspace/_smutbase6-fix-20261102/models/orig/miruko-tobi.glb",
+        "bytes": 4119856,
+        "sha256": "8df163bcb3b3ec6a5b5eba73db950e31df19ded3806c2c0e4bd688978a691ef7",
+        "note": "This is the PRE-#1529 shipped file downloaded from main (per models6.json), NOT a Blender source export. Generator glTF-Transform v4.5.1, EXT_meshopt_compression + KHR_mesh_quantization.",
+        "inventory": {
+          "nodes": 85,
+          "meshes": 11,
+          "primitives": 17,
+          "verts_POSITION_sum": 266980,
+          "tris": 89116,
+          "skins": 11,
+          "skin_names": [
+            "rig x11"
+          ],
+          "joints_per_skin": 73,
+          "unique_joints": 73,
+          "joint_names": [
+            "Hips",
+            "Spine",
+            "Spine1",
+            "Spine2",
+            "LeftBreast",
+            "RightBreast",
+            "LeftShoulder",
+            "LeftArm",
+            "LeftArm.001",
+            "LeftForeArm",
+            "LeftForeArm.001",
+            "LeftHand",
+            "LeftHandPalm1/2/3/4",
+            "LeftHandIndex1-3",
+            "LeftHandThumb1-3",
+            "LeftHandMiddle1-3",
+            "LeftHandRing1-3",
+            "LeftHandPinky1-3",
+            "RightShoulder",
+            "RightArm",
+            "RightArm.001",
+            "RightForeArm",
+            "RightForeArm.001",
+            "RightHand + same palm/finger set",
+            "Neck",
+            "Head",
+            "HeadTop",
+            "LeftPelvis",
+            "RightPelvis",
+            "LeftUpLeg",
+            "LeftUpLeg.001",
+            "LeftLeg",
+            "LeftLeg.001",
+            "LeftFoot",
+            "LeftToeBase",
+            "RightUpLeg",
+            "RightUpLeg.001",
+            "RightLeg",
+            "RightLeg.001",
+            "RightFoot",
+            "RightToeBase"
+          ],
+          "materials": 11,
+          "material_names": [
+            "belt",
+            "Penis",
+            "miruko-hero-suit",
+            "body",
+            "Neck",
+            "Eyes",
+            "Eyeshadow",
+            "Face",
+            "Hair",
+            "Body",
+            "Body"
+          ],
+          "materials_with_baseColorTexture": 6,
+          "materials_flat_factor_only": [
+            "Eyes",
+            "Eyeshadow",
+            "Hair",
+            "Body",
+            "Body"
+          ],
+          "textures": 6,
+          "images": 6,
+          "image_names": [
+            "mirko-belt_Base_color.png (25840 B)",
+            "mirko_penis.png (126015 B)",
+            "miruko-hero-suit_Base_color.png (147823 B)",
+            "Mirko_body.png (320986 B)",
+            "Neck.png (5736 B)",
+            "Face.png (61652 B)"
+          ],
+          "normal_textures": 0,
+          "metallicRoughness_textures": 0,
+          "occlusion_textures": 0,
+          "animations": [
+            {
+              "name": "CMU135_04_boxing",
+              "channels": 219,
+              "samplers": 219
+            }
+          ],
+          "morph_targets": 0,
+          "mesh_names": [
+            "Cube_001",
+            "Mesh0000_002",
+            "Mesh0000_003",
+            "Mirko (5 prims)",
+            "Mirko_001",
+            "Mirko_002 (2 prims)",
+            "Mirko_003 (2 prims)",
+            "Plane",
+            "puppershupper_\u2026_Ears_\u2026",
+            "puppershupper_\u2026_Mirko_\u2026",
+            "Torus"
+          ],
+          "all_prims_have_TEXCOORD_0": true,
+          "baseline_audit": "SEAM CRACKS: 37445 seam copies >0.1 disagreeing (37956 >0.01); face-region verdicts are multi-skin tool artifacts per checkpoint \u2014 per-part probe: coherent split-bone rig, 1.800 m"
+        }
+      },
+      "shipped_glb": {
+        "repo_path": "roster/miruko/attires/attire1/model-rerig-textured.glb",
+        "bytes": 4823088,
+        "git_blob_sha_prefix": "f46f8c4427c1",
+        "pr": "PR #1529, merged squash 598823872d6599f6d9d7a35459f2742eb7454b05",
+        "local_copy_verified": {
+          "path": "~/workspace/_smutbase6-fix-20261102/visual-gate/models/tobi-miruko.glb",
+          "bytes": 4823088,
+          "sha256": "4a7a96734de44b272241ca7fa04459be9c89c3114430c3e77768237c1b62f61f",
+          "note": "Size matches main blob exactly; this local visual-gate copy was parsed as the shipped file. Generator in this copy: glTF-Transform v4.1.1 (repo codec)."
+        },
+        "inventory": {
+          "nodes": 85,
+          "meshes": 11,
+          "primitives": 17,
+          "verts_POSITION_sum": 266980,
+          "tris": 89116,
+          "skins": 11,
+          "joints_per_skin": 73,
+          "unique_joints": 73,
+          "materials": 11,
+          "materials_with_baseColorTexture": 8,
+          "textures": 8,
+          "images": 8,
+          "image_names_added_vs_orig": [
+            "miruko-hero-suit_MR.png (42658 B, packed from intake Roughness+Metallic)",
+            "mirko-belt_Mixed_AO.png (550815 B, from intake)"
+          ],
+          "material_changes_vs_orig": [
+            "Body x2 (mat9/mat10): flat factor -> baseColorTexture = Mirko_body.png atlas (texture index 5 -> image 3)",
+            "miruko-hero-suit: gains metallicRoughnessTexture (MR pack), roughnessFactor blanket removed in favour of map",
+            "belt: gains occlusionTexture = mirko-belt_Mixed_AO.png"
+          ],
+          "animations": [
+            {
+              "name": "CMU135_04_boxing",
+              "channels": 219
+            }
+          ],
+          "morph_targets": 0,
+          "normal_textures": 0,
+          "prims_missing_TEXCOORD_0_vs_orig": [
+            "Mirko prim2 (Eyes, mat5)",
+            "Mirko prim3 (Eyeshadow, mat6)",
+            "Mirko_001 prim0 (Hair, mat8)",
+            "\u2014 all three are flat-factor materials, so no texture sampling is lost, but it is a JSON-observable delta from orig"
+          ],
+          "checkpoint_fix": "Seams 37445 -> 0 (official audit SEAM CRACKS -> OK); textures 6 -> 8 images from her own intake/embedded atlas; 11 skins, animation preserved. Visual gate 2026-11-03: PASS (white/purple suit, purple boots, lavender hair, horns; inherited pelvis accessory wedge + minor silvery noise at leotard hip edge are source traits)."
+        },
+        "other_attire_siblings_in_repo_not_parsed": [
+          {
+            "repo_path": "roster/miruko/attires/attire1/model-rerig.glb",
+            "bytes": 2570352,
+            "git_blob_sha_prefix": "2cddca346662"
+          },
+          {
+            "repo_path": "roster/miruko/attires/attire1/model-rigged.glb",
+            "bytes": 14674608,
+            "git_blob_sha_prefix": "8cf3bd8986fc"
+          },
+          {
+            "repo_path": "roster/miruko/attires/attire1/model.glb",
+            "bytes": 5648588,
+            "git_blob_sha_prefix": "81334feac3bc",
+            "note": "Candidate closest-to-blend export \u2014 fidelity lane should parse/probe this + the .blend next"
+          }
+        ]
+      },
+      "gap_list_vs_source_blend": [
+        "CORE: shipped rig is NOT the source blend's IK rig. GLB = 11 skins x 73 joints, split-bone gamerig-style names (LeftArm.001, Left/RightPelvis, Left/RightBreast, HeadTop, palm bones). Blend rig bone count/names UNKNOWN until mirkoIK.blend is opened in Blender \u2014 delta cannot be quantified from GLB alone; do NOT assume 73 = source.",
+        "Morphs: 0 morph targets in orig and shipped GLB. Any blend shape keys (face/body) are lost in the GLB lineage.",
+        "Textures still flat after #1529: Eyes, Eyeshadow, Hair have NO texture in GLB and NO named map among the 10 intake PNGs \u2014 fix lane closed this as 'flat by source design' (apply_miruko_tex.py: assignment authority = blend, pending blend read at that time). Fidelity lane must confirm in the .blend, not re-close from GLB.",
+        "Unused intake art: 'Mirko body unshaded.png' (26712 B) is in repo intake, embedded in NEITHER GLB.",
+        "No normal maps and no metallic/roughness maps (except hero-suit MR added by #1529) on any material in either GLB; all other materials carry blanket roughnessFactor 0.8 / metallicFactor 0. Whether the blend defines more maps is unprobed.",
+        "Animation in GLB is a single CMU mocap clip 'CMU135_04_boxing' (219 channels) \u2014 a game/test clip, not evidence of source-blend animation/actions.",
+        "Geometry names are SFM/DMX-export remnants (puppershupper_\u2026, Cube_001, Plane, Torus) \u2014 parts/labels do not match a clean Blender object list from the .blend; parts-system labelling will need the blend's object names.",
+        "Local disk has NO .blend and only 3/10 intake PNGs extracted \u2014 a fidelity rebuild cannot start locally; pull mirkoIK.blend + full textures/ from repo first."
+      ]
+    },
+    {
+      "fighter": "Chatur",
+      "source_character": "Rahkasa (RahkasaV1.1)",
+      "canon_pairing": "Chatur = Rahkasa (True Ogre base) \u2014 per decisions doc, NO swap. Canon note (intake queue row 3): Oversoul spirit body, four-armed female spirit form (Eastern Mind canon).",
+      "source_blend_in_repo": {
+        "status": "FOUND \u2014 in repo only, NOT local",
+        "repo_path": "roster/rahkasa/intake/RahkasaV1.1.blend",
+        "bytes": 11459182,
+        "git_blob_sha_prefix": "6427d66ea600",
+        "provenance": "SmutBase intake queue row 3: RahkasaV1.1.blend 11.5 MB, download sha256 prefix 85610cee\u2026, in-repo as sole intake file \u2014 NO separate texture PNGs filed (textures presumably packed inside the .blend).",
+        "local_copy": "NOT FOUND in ~/workspace/_smutbase6-fix-20261102 or ~/workspace/model-intake"
+      },
+      "local_orig_glb": {
+        "path": "~/workspace/_smutbase6-fix-20261102/models/orig/rahkasa-chatur.glb",
+        "bytes": 2361776,
+        "sha256": "a75649cab620bd15538e1188626f90ec311de36113c1075da73f1ff9d477d0b4",
+        "note": "Identical to shipped (see below) \u2014 this 'orig' IS the current shipped file, byte for byte.",
+        "inventory": {
+          "nodes": 54,
+          "meshes": 1,
+          "primitives": 4,
+          "verts_POSITION_sum": 176555,
+          "tris": 58911,
+          "skins": 1,
+          "skin_name": "WH_Skeleton",
+          "joints": 52,
+          "unique_joints": 52,
+          "joint_names": [
+            "Hips",
+            "Spine",
+            "Spine1",
+            "Spine2",
+            "Neck",
+            "Head",
+            "LeftShoulder",
+            "LeftArm",
+            "LeftForeArm",
+            "LeftHand",
+            "LeftHandThumb1-3",
+            "LeftHandIndex1-3",
+            "LeftHandMiddle1-3",
+            "LeftHandRing1-3",
+            "LeftHandPinky1-3",
+            "RightShoulder",
+            "RightArm",
+            "RightForeArm",
+            "RightHand",
+            "RightHandThumb1-3",
+            "RightHandIndex1-3",
+            "RightHandMiddle1-3",
+            "RightHandRing1-3",
+            "RightHandPinky1-3",
+            "LeftUpLeg",
+            "LeftLeg",
+            "LeftFoot",
+            "LeftToeBase",
+            "RightUpLeg",
+            "RightLeg",
+            "RightFoot",
+            "RightToeBase"
+          ],
+          "materials": 3,
+          "material_names": [
+            "Rahkasa_Body",
+            "Rahkasa_Head",
+            "Rahkasa_Eyes"
+          ],
+          "materials_with_baseColorTexture": 3,
+          "textures": 5,
+          "images": 5,
+          "image_names": [
+            "Rahkasa_Body_BaseColor.png (198943 B)",
+            "Rahkasa_Body_Emission.png (155991 B)",
+            "Rahkasa_Head_BaseColor.png (23725 B)",
+            "Rahkasa_Head_Emission.png (16152 B)",
+            "Rahkasa_Eyes_BaseColor.png (3741 B)"
+          ],
+          "material_wiring": "Body: baseColor tex0 + emissive tex1 (emissiveFactor 1,1,1); Head: baseColor tex2 + emissive tex3; Eyes: baseColor tex4. No normal, no metallicRoughness, no occlusion textures; blanket roughnessFactor 0.8 / metallicFactor 0 on all 3.",
+          "animations": 0,
+          "morph_targets": 0,
+          "mesh_names": [
+            "ReVAmped_body_base_female_standard (4 prims: Body x2, Head, Eyes)"
+          ],
+          "all_prims_have_TEXCOORD_0_JOINTS_WEIGHTS": true,
+          "generator": "glTF-Transform v4.5.1, EXT_meshopt_compression + KHR_mesh_quantization"
+        }
+      },
+      "shipped_glb": {
+        "repo_path": "roster/rahkasa/attires/attire1/model-rigged-textured.glb",
+        "bytes": 2361776,
+        "git_blob_sha_prefix": "a23c514f68f6",
+        "status": "UNCHANGED \u2014 no PR in the 2026-11-02 fix lane; checkpoint: 'NO model change (cleanest: rig OK, seams 0, 3/3 textured). Loaded file untouched on main.'",
+        "local_copies_verified_identical": [
+          {
+            "path": "~/workspace/_smutbase6-fix-20261102/models/orig/rahkasa-chatur.glb",
+            "bytes": 2361776,
+            "sha256": "a75649cab620bd15538e1188626f90ec311de36113c1075da73f1ff9d477d0b4"
+          },
+          {
+            "path": "~/workspace/_smutbase6-fix-20261102/serve/roster/rahkasa/attires/attire1/model-rigged-textured.glb",
+            "bytes": 2361776,
+            "sha256": "a75649cab620bd15538e1188626f90ec311de36113c1075da73f1ff9d477d0b4"
+          }
+        ],
+        "inventory": "IDENTICAL to local_orig_glb above in every parsed field (same sha256 = same bytes).",
+        "other_attire_siblings_in_repo_not_parsed": [
+          {
+            "repo_path": "roster/rahkasa/attires/attire1/model-rigged.glb",
+            "bytes": 9817884,
+            "git_blob_sha_prefix": "81c041c69868"
+          },
+          {
+            "repo_path": "roster/rahkasa/attires/attire1/model.glb",
+            "bytes": 3706016,
+            "git_blob_sha_prefix": "cecb64125c22",
+            "note": "Candidate pre-template export \u2014 fidelity lane should parse/probe this + the .blend next"
+          }
+        ]
+      },
+      "cleanest_claim_verification": {
+        "claim": "Checkpoint / fix handoff: Chatur is cleanest of the six \u2014 rig OK, seams 0, 3/3 textured, no change needed.",
+        "verdict": "VERIFIED at shipped-GLB level; REFUTED as a fidelity-to-source claim (see gap list).",
+        "evidence": [
+          "audit-2.json (lane GLB audit of models/orig/rahkasa-chatur.glb): images 5, materials 3, materials_with_basecolor_tex 3/3, skins 1, joints 52, verts 176555, tris 58911, animations 0, seam_copies_weightdiff_gt0.1 = 0, unweighted_verts 0, bad_weightsum_verts 0.",
+          "baseline-audit.json (repo batch_audit): verdict OK \u2014 seams: 176555 seam copies, 0 disagreeing >0.01, 0 >0.1, max L1 0.0, pass=true; face Head 98%, chin Head+Neck 73%, upper-arm trunk 0%/0%, height 1.8 m. Single-skin file, so this audit IS trustworthy for Rahkasa (unlike multi-skin Miruko/Tsuyu).",
+          "Own parse 2026-11-04: all 4 prims carry POSITION/NORMAL/TEXCOORD_0/JOINTS_0/WEIGHTS_0; every material has a baseColor texture; Body+Head also have emissive textures; no missing images/textures inside the file.",
+          "Moves (checkpoint/handoff, planner): chatur 0/214 no-clip. Later roster state: Chatur pose-only, no bank; True Ogre has no TTT2 moveset file (only Ancient Ogre) \u2014 a moves/bank gap, not a model gap."
+        ]
+      },
+      "gap_list_vs_source_blend": [
+        "CORE: shipped rig is a 52-joint template skeleton literally named 'WH_Skeleton' (standard Hips/Spine/\u2026/fingers set, no breast, no HeadTop, no extra chains) \u2014 NOT demonstrably the RahkasaV1.1.blend's own rig. Blend rig count/names UNKNOWN until the 11,459,182 B .blend is opened; it is 4.85x the GLB's size, so the GLB cannot contain everything the blend holds.",
+        "FOUR-ARM QUESTION (flag, not proven): intake canon describes Rahkasa as a four-armed female spirit body, but the shipped GLB skeleton has exactly ONE Left + ONE Right arm chain and a single collapsed mesh ('ReVAmped_body_base_female_standard' \u2014 a generic female base name, not a Rahkasa-specific object name). If the blend is four-armed, the shipped file has lost an arm pair. MUST be settled by opening the .blend; do not ship a fidelity claim either way from GLB alone.",
+        "Mesh collapse: 1 mesh / 4 prims / 3 materials total in GLB. Any separate blend objects (clothing, accessories, hair, extra body parts) are merged away \u2014 no parts-system separation survives.",
+        "Morphs: 0 morph targets. Any blend shape keys are lost.",
+        "Animations: 0 in GLB. Any blend actions are absent (game animation comes from banks/movesets, not this file).",
+        "PBR incompleteness: no normal / metallicRoughness / occlusion maps at all; blanket roughness 0.8 / metallic 0. Only baseColor + emissive survive. Whether the blend defines further maps is unprobed \u2014 no separate intake PNGs were filed for Rahkasa, so packed blend images are the only possible source.",
+        "Local disk has NO .blend and NO Rahkasa intake textures \u2014 a fidelity rebuild cannot start locally; pull RahkasaV1.1.blend from repo first."
+      ]
+    }
+  ]
+}
