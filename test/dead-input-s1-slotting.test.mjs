@@ -1,11 +1,12 @@
 // Roster-100 S1 (docs/movesets/DEAD-INPUT-S1-DIAGNOSIS-2026-11-05.md):
 // charger d/f+2 was a binding/label gap — bryan bank row 149 sits in
-// charger.json (and charger-attire2.json) as key '2_r149' with its direction
-// dropped by the 2026-10-20 merge (recorded t3_command 'RP', input_slots
-// ['2']). The repair corrects the row's recorded input to the bank's own
-// command for that row ('d/f+2' / '3+RP' — skull.json's record of the same
-// bank row) and binds the slot in the file's slots table. No fight datum
-// (damage/startup/active/recovery/anim_ref/key) changed.
+// charger.json (and charger-attire2.json) under the key '2_r149' with its
+// direction dropped by the 2026-10-20 merge (recorded t3_command 'RP',
+// input_slots ['2'], bound to no playable input). The repair gives the row
+// back the bank's own identity for it: key, name, input and hit_words key
+// become 'd/f+2' and t3_command '3+RP' — exactly the shape skull.json's
+// record of the same bank row carries. No fight datum (damage / startup /
+// active / recovery / anim_ref) changed.
 // The other six S1 slots are documented data gaps (bank row absent from the
 // fighter's merged file, or absent from the source bank entirely). The
 // assertions below pin them UNRESOLVED so no future change can silently
@@ -23,8 +24,8 @@ const load = (id) => {
 
 test('charger d/f+2 fires the bryan r149 row already present in his file', () => {
   load('charger');
-  assert.equal(M.resolveMoveKey('charger', 'd/f+2'), '2_r149');
-  const mv = M.getFighterMoveset('charger').moves['2_r149'];
+  assert.equal(M.resolveMoveKey('charger', 'd/f+2'), 'd/f+2');
+  const mv = M.getFighterMoveset('charger').moves['d/f+2'];
   assert.equal(mv.t3_row, 149);
   assert.equal(mv.t3_command, '3+RP');
   assert.equal(mv.damage, 9);
@@ -39,7 +40,7 @@ test('charger d/f+2 fires the bryan r149 row already present in his file', () =>
 
 test('charger-attire2 d/f+2 fires the same row (identical mislabel, identical repair)', () => {
   load('charger-attire2');
-  assert.equal(M.resolveMoveKey('charger-attire2', 'd/f+2'), '2_r149');
+  assert.equal(M.resolveMoveKey('charger-attire2', 'd/f+2'), 'd/f+2');
   assert.equal(M.resolveMoveKey('charger-attire2', 'd+1'), '7');
 });
 

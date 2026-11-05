@@ -57,12 +57,19 @@ record of the same row survives in skull.json (same bank, same row): key
 to no playable input today: pressing `2` resolves to key `2` (bryan r48).
 
 Repair (charger.json and charger-attire2.json — the fighter's attire-2 file
-carries the identical row with the identical mislabel): the row's recorded
-`input` is corrected to `d/f+2`, `t3_command` to `3+RP`, `input_slots` to
-`["d/f+2"]`, and the file gains the binding `"slots": {"d/f+2": "2_r149"}`.
-No fight datum changes: key, name, damage, startup, active, recovery,
-anim_ref are byte-identical. Post-fix trace: `d/f+2` resolves to `2_r149`
-(strike, damage 9) in both files. Browser re-probe (below): the slot now
+carries the identical row with the identical mislabel): the row gets back
+the bank's own identity for it, in exactly the shape skull.json's record
+of the same row carries — key `2_r149` → `d/f+2`, name and `input` and
+`input_slots` corrected to `d/f+2`, `t3_command` to `3+RP`, and the
+hit_words entry re-keyed to `d/f+2`. The key rename (rather than a
+file-level `slots` entry) is deliberate: charger.json has never carried a
+`slots` table, and files without one are skipped by
+test/full-movelist-combos.test.mjs — enrolling the fighter in that test
+regime via a one-entry slots table made the combo-route check fail on a
+fighter whose curated data has no route table, a side effect outside this
+item's scope. No fight datum changes: damage, startup, active, recovery,
+anim_ref are byte-identical. Post-fix trace: `d/f+2` resolves to the r149
+strike (damage 9) in both files. Browser re-probe (below): the slot now
 FIRES the r149 strike in a real fight (press=true, anim row 149) at every
 tested spacing, where it was press=false before.
 
@@ -140,17 +147,20 @@ imported, per the line above.
 ## Regression
 
 Full-registry slot-map diff over all 163 files in game/assets/movesets/
-(real engine, original vs repaired): exactly 2 slot additions —
-charger d/f+2 and charger-attire2 d/f+2, both to the pre-existing row
-`2_r149`. 0 slots overwritten, 0 removed, every other file's slot map
-unchanged (zen and chatur included; neither is touched by this change).
+(real engine, original vs repaired): per charger file exactly two entry
+changes — the playable binding `d/f+2` ADDED, and the retired internal
+identity entry for the old key `2_r149` removed by the rename (that entry
+was bound to no input; the row itself is the same record under its bank
+name). 0 bindings overwritten, 0 playable bindings removed, every other
+file's slot map unchanged (zen and chatur included; neither is touched
+by this change).
 
 ## Re-probe
 
 Engine trace (real engine from main): proof file
 `docs/proof/2026-11-05/dead-input-s1/reprobe-verdicts-s1-20261105.json`.
 Before: all 7 slots resolve null. After: charger d/f+2 resolves to the
-r149 strike in both of the fighter's files; the 6 data-gap slots still
+r149 strike (key `d/f+2`) in both of the fighter's files; the 6 data-gap slots still
 resolve null — re-probed to confirm they stay dead for the documented
 data reason, not for a fixable binding reason. Charger's remaining BASICS
 re-probed unchanged (1, 2, 3, 4, d+1→`7`, d+2→`8`, f+1→`5`, f+2, b+1→`9`,
@@ -174,7 +184,7 @@ HP state rather than the models).
 | fighter slot | before (roster pass) | after (browser re-probe) |
 | --- | --- | --- |
 | charger d/f+1 | press=false | no d/f+1 move fires (falls back to standing `1`) — data gap confirmed |
-| charger d/f+2 | press=false | **press=true, key `2_r149`, anim row 149** — fires; HP damage 0 in this harness (see the damage rider in §1) |
+| charger d/f+2 | press=false | **press=true, key `d/f+2` (the r149 row), anim row 149** — fires; HP damage 0 in this harness (see the damage rider in §1) |
 | dorowani d/f+2 | press=false | no attack fires — data gap confirmed |
 | dorowani u/f+4 | press=false | no u/f+4 move fires (falls back to standing `4`) — data gap confirmed |
 | ryuji-rock d/f+1 | press=false | no d/f+1 move fires (falls back to close standing RP) — data gap confirmed |
