@@ -62,7 +62,26 @@ carries the identical row with the identical mislabel): the row's recorded
 `["d/f+2"]`, and the file gains the binding `"slots": {"d/f+2": "2_r149"}`.
 No fight datum changes: key, name, damage, startup, active, recovery,
 anim_ref are byte-identical. Post-fix trace: `d/f+2` resolves to `2_r149`
-(strike, damage 9) in both files.
+(strike, damage 9) in both files. Browser re-probe (below): the slot now
+FIRES the r149 strike in a real fight (press=true, anim row 149) at every
+tested spacing, where it was press=false before.
+
+Damage rider (stated plainly, not hidden): in the S1 probe harness
+(software-GL Chromium; see Re-probe) the fired r149 strike registers 0 HP
+damage, while the same fighter's other bank-row strikes register their
+recorded damage (1→10, 2→11, d+1→14, d+2→12, u/f+4→12). The row's hit
+data exists (game/assets/anim/t3/bryan/hit_frames.json row 149: active
+frame 23, attack word 535), and the reference roster harness measured the
+same bank row dealing damage through Skull (19, roster pass 2026-11-03),
+whose file carries the later T7 frame-data wiring for the row (startup
+0.2167 from T7 data; the in-fight clip resolves through that wiring).
+Charger's record carries the bank's raw active frame as its startup
+(0.383) and a single-frame active window (hit_frames 23–23), which the
+software-GL harness's coarse stepping can skip. Whether any residual
+damage-path gap remains on real hardware belongs to the fire-no-damage
+workstream (S6, which consumes the S5 hit-frames production) — it is a
+hit-data question, not a slotting question, and it is NOT fixed here. What
+S1 fixed is the dead slot: the input now fires the fighter's own row.
 
 ### 2. charger d/f+1 — DATA GAP (class c: merge-provenance)
 
@@ -126,15 +145,45 @@ charger d/f+2 and charger-attire2 d/f+2, both to the pre-existing row
 `2_r149`. 0 slots overwritten, 0 removed, every other file's slot map
 unchanged (zen and chatur included; neither is touched by this change).
 
-## Re-probe (engine trace, real engine from main)
+## Re-probe
 
-Proof files: `docs/proof/2026-11-05/dead-input-s1/reprobe-verdicts-s1-20261105.json` (engine trace) and the browser fight re-probe under `docs/proof/2026-11-05/dead-input-s1/` (per-fighter results + frames).
+Engine trace (real engine from main): proof file
+`docs/proof/2026-11-05/dead-input-s1/reprobe-verdicts-s1-20261105.json`.
 Before: all 7 slots resolve null. After: charger d/f+2 resolves to the
 r149 strike in both of the fighter's files; the 6 data-gap slots still
 resolve null — re-probed to confirm they stay dead for the documented
 data reason, not for a fixable binding reason. Charger's remaining BASICS
 re-probed unchanged (1, 2, 3, 4, d+1→`7`, d+2→`8`, f+1→`5`, f+2, b+1→`9`,
 b+2→`10`, d/f+1+2→`df+1+2`, u/f+4→`f_c36_r86`, 1+2).
+
+Browser fight re-probe (real keyboard input through the game's own input
+path, opponent Pantera, stage Shrine of the Blade, identity gate
+`p1.char.id` + round state `fight` verified per run; probe tree = main
+3f63454e + this repair, asset bases pointed at the local tree because
+remote candidates hang in this container's Chromium — probe-only, the
+live Pages build untouched). Per-fighter results:
+`docs/proof/2026-11-05/dead-input-s1/browser-probe-charger-20261105.json`,
+`docs/proof/2026-11-05/dead-input-s1/browser-probe-dorowani-20261105.json`,
+`docs/proof/2026-11-05/dead-input-s1/browser-probe-ryuji-rock-20261105.json`,
+`docs/proof/2026-11-05/dead-input-s1/browser-probe-deathfang-20261105.json`;
+fight frame: `docs/proof/2026-11-05/dead-input-s1/fight-frame-charger-20261105.png`
+(HUD/stage level — the arena renderer was stubbed during input probing
+for software-GL performance, so the frame shows the fight HUD, stage and
+HP state rather than the models).
+
+| fighter slot | before (roster pass) | after (browser re-probe) |
+| --- | --- | --- |
+| charger d/f+1 | press=false | no d/f+1 move fires (falls back to standing `1`) — data gap confirmed |
+| charger d/f+2 | press=false | **press=true, key `2_r149`, anim row 149** — fires; HP damage 0 in this harness (see the damage rider in §1) |
+| dorowani d/f+2 | press=false | no attack fires — data gap confirmed |
+| dorowani u/f+4 | press=false | no u/f+4 move fires (falls back to standing `4`) — data gap confirmed |
+| ryuji-rock d/f+1 | press=false | no d/f+1 move fires (falls back to close standing RP) — data gap confirmed |
+| ryuji-rock d/f+2 | press=false | no d/f+2 move fires (same fallback) — data gap confirmed |
+| deathfang d/f+1 | press=false | no d/f+1 move fires (falls back to his d+2, key `8`) — data gap confirmed |
+
+Control damage in the same runs (proves the harness measures damage when
+a strike connects): charger 1→10, 2→11, 3→12, d+1→14, d+2→12, u/f+4→12;
+dorowani d/f+1 fires (his known working move).
 
 Unit test: `test/dead-input-s1-slotting.test.mjs`.
 
