@@ -2,6 +2,16 @@
 
 Lane ownership is claimed on #866. MoneyManBusch owns: Pantera and the core-8 chat-owned animation wiring, the Tekken 7 bank extraction (`tools/anim/t7_*`), OpenKumite/FE adoption, moveset-template inventory, and the PR queue. Muse owns #1096 and its stack, the moves audit, and `tools/auto_rig`.
 
+## 2026-11-05 — Roster closest-first ranking + SmutBase 6 bone verify (MoneyManBusch / Grok) (t377u/t378u)
+
+- **Owner supersede:** fix model → card → moveset → animations by **closest-to-done first**. SmutBase 6 need full blend armatures (not 48/52 conversions). Pantera still not 100% (55 r17 `Kg_*`).
+- **Phase 1 RANK landed:** `docs/handoffs/ROSTER-CLOSEST-FIRST-2026-11-05.md` (+ `.json`). Score = BASICS probe + r17 fails + moveset density + card placeholder + material gate + SmutBase full-rig bonus. Sources listed in that doc.
+- **Closest:** **ryusan** (score 115; 9/10 probe; live joints **521**). Then aotsuki/awapop; pond; megami/menajerii/tobi; pantera (55 r17) is not closest.
+- **Phase 2 VERIFY (no redo of #1570–#1577):** parsed live GLB JSON chunks from main `assets.js` paths — Pond 224, Ryusan 521, Tobi 255, Chatur 264 (master 984), Megami 469, Menajerii 450. **None** are the stripped 48/52 conversions on the live keys. Blends found in-repo for Pond/Ryusan/Tobi/Chatur; Megami/Menajerii blends recovered (#1575) kept out of public intake (README only) — shipped game GLBs already carry full bone counts.
+- **DO NOT MERGE #1569** as written: it grafts Pond onto 52-joint `WH_Skeleton` and would undo #1571.
+- **Phase 3 next:** start Ryusan (recapture stale card; finish remaining Lucky Chloe teardown rows from real reverse-engineering-repo data only — no donor/procedural as real moves). Re-rank when finished.
+- **Out of scope this pass:** arena sky/lighting/colors; Muse #1096 / auto_rig; #1566 ASSET-PIPELINE; FE showcase names; Pages republish (docs-only).
+
 ## 2026-11-05 — Pantera A1/C1/RC4 + live Pages republish (MoneyManBusch / Grok)
 
 - **A1 FIXED:** `fighter.js` clears `_throwHitDone` in `_enterThrownExec` and `startThrowLock`. Probe pattern (first throw damages, later throws 0) was stale flag on the victim — not missing JSON damage.
