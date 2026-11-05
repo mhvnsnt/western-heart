@@ -1,0 +1,161 @@
+{
+ "p1": "dorowani",
+ "p2": "pantera",
+ "gate": {
+  "id": "dorowani",
+  "p2id": "pantera",
+  "rs": "fight",
+  "stage": null
+ },
+ "rows": [
+  {
+   "input": "1",
+   "press": "false",
+   "key": null,
+   "notation": null,
+   "name": null,
+   "anim": null,
+   "word": null,
+   "state": "idle",
+   "dmg": 0
+  },
+  {
+   "input": "2",
+   "press": "false",
+   "key": null,
+   "notation": null,
+   "name": null,
+   "anim": null,
+   "word": null,
+   "state": "idle",
+   "dmg": 0
+  },
+  {
+   "input": "3",
+   "press": "true",
+   "key": "3",
+   "notation": "3",
+   "name": "Tail Jab",
+   "anim": "row 27",
+   "word": 1042,
+   "state": "attack",
+   "dmg": 9.2
+  },
+  {
+   "input": "4",
+   "press": "true",
+   "key": "4",
+   "notation": "4",
+   "name": "Tail Swipe",
+   "anim": "row 28",
+   "word": 1042,
+   "state": "attack",
+   "dmg": 13.7
+  },
+  {
+   "input": "1+2",
+   "press": "true",
+   "key": "1+2",
+   "notation": "1+2",
+   "name": "DINO BREATH",
+   "anim": "row 25",
+   "word": 535,
+   "state": "attack",
+   "dmg": 22.9
+  },
+  {
+   "input": "d+1",
+   "press": "true",
+   "key": "d+1",
+   "notation": "d+1",
+   "name": "Mud Bite",
+   "anim": "row 32",
+   "word": 271,
+   "state": "attack",
+   "dmg": 11
+  },
+  {
+   "input": "d+2",
+   "press": "true",
+   "key": "d+1",
+   "notation": "d+1",
+   "name": "Mud Bite",
+   "anim": "row 32",
+   "word": 271,
+   "state": "idle",
+   "dmg": 9.2
+  },
+  {
+   "input": "d/f+1",
+   "press": "true",
+   "key": "2",
+   "notation": "2",
+   "name": "Claw Swipe",
+   "anim": "row 5",
+   "word": 1543,
+   "state": "idle",
+   "dmg": 0
+  },
+  {
+   "input": "d/f+2",
+   "press": "true",
+   "key": "1",
+   "notation": "1",
+   "name": "Snap Bite",
+   "anim": "row 4",
+   "word": 535,
+   "state": "idle",
+   "dmg": 9.2
+  },
+  {
+   "input": "u/f+4",
+   "press": "true",
+   "key": "4",
+   "notation": "4",
+   "name": "Tail Swipe",
+   "anim": "row 28",
+   "word": 1042,
+   "state": "attack",
+   "dmg": 13.7
+  },
+  {
+   "input": "1+3",
+   "press": "true",
+   "key": "1+3",
+   "notation": "1+3",
+   "name": "Bite Me",
+   "anim": "row 6",
+   "word": 1543,
+   "state": "attack",
+   "dmg": 0
+  }
+ ],
+ "logs": [
+  "[warning] [WH] No custom fighter found in either suite slot",
+  "[log] [WH] stage loaded: SHRINE OF THE BLADE (shrine)",
+  "[warning] [WH] No custom fighter found in either suite slot",
+  "[warning] [WH] No custom fighter found in either suite slot",
+  "[warning] [WH] No custom fighter found in either suite slot",
+  "[warning] [WH] pantera-leoman load failed, retrying: HTTP 404 loading pantera-leoman from ../roster/pantera/attires/leomon/model.glb (fallback also failed: no bytes received for 45000ms loading pantera-leoman)",
+  "[log] [WH] Real T3 movesets loaded for 36 fighters (7 T3 sources)",
+  "[log] [WH] Moveset index: 128 fighters (full sets load per fight)",
+  "[warning] [WH] select preview failed for pantera-leoman HTTP 404 loading pantera-leoman from ../roster/pantera/attires/leomon/model.glb (fallback also failed: HTTP 404 loading pantera-leoman from http://127.0.0.1:8768/roster/pantera/attires/leomon/model.glb)",
+  "[error] [WH] fight load failed: Error: HTTP 404 loading pantera-leoman from ../roster/pantera/attires/leomon/model.glb (fallback also failed: HTTP 404 loading pantera-leoman from http://127.0.0.1:8768/roster/pantera/attires/leomon/model.glb)\n    at attemptBody (http://127.0.0.1:8768/game/js/assets.js:1468:15)\n    at async attempt (http://127.0.0.1:8768/game/js/assets.js:1392:16)\n    at async http://127.0.0.1:8768/game/js/assets.js:1485:16\n    at async AssetManager.loadModels (http://127.0.0.1:8768/game/js/assets.js:1347:7)\n    at async PreviewPane.show (http://127.0.0.1:8768/game/js/select-screen.js:166:7)\n    at async showOnSide (http://127.0.0.1:8768/game/js/select-screen.js:687:16)",
+  "[log] [WH] Moveset index: 128 fighters (full sets load per fight)",
+  "[log] [WH] Real T3 movesets loaded for 36 fighters (7 T3 sources)",
+  "[log] [WH] Moveset index: 128 fighters (full sets load per fight)",
+  "[warning] [WH] pantera-leoman load failed, retrying: HTTP 404 loading pantera-leoman from ../roster/pantera/attires/leomon/model.glb (fallback also failed: HTTP 404 loading pantera-leoman from http://127.0.0.1:8768/roster/pantera/attires/leomon/model.glb)",
+  "[error] [WH] fight load failed: Error: HTTP 404 loading pantera-leoman from ../roster/pantera/attires/leomon/model.glb (fallback also failed: HTTP 404 loading pantera-leoman from http://127.0.0.1:8768/roster/pantera/attires/leomon/model.glb)\n    at attemptBody (http://127.0.0.1:8768/game/js/assets.js:1468:15)\n    at async attempt (http://127.0.0.1:8768/game/js/assets.js:1392:16)\n    at async http://127.0.0.1:8768/game/js/assets.js:1485:16\n    at async AssetManager.loadModels (http://127.0.0.1:8768/game/js/assets.js:1347:7)\n    at async startFight (http://127.0.0.1:8768/game/js/main.js:1401:5)",
+  "[log] [WH] Real T3 movesets loaded for 36 fighters (7 T3 sources)",
+  "[log] [WH] Moveset index: 128 fighters (full sets load per fight)",
+  "[log] [WH] stage loaded: SHRINE OF THE BLADE (shrine)",
+  "[warning] [WH] lab/replay attach failed: TypeError: Cannot read properties of undefined (reading 'push')\n    at new ReplayRecorder (http://127.0.0.1:8768/game/js/replay.js:99:21)\n    at ReplayRecorder.attach (http://127.0.0.1:8768/game/js/replay.js:79:15)\n    at startFight (http://127.0.0.1:8768/game/js/main.js:1520:22)",
+  "[warning] [WHHitDetect] verify failed, keeping sphere result TypeError: baked.computeBoundsTree is not a function\n    at WHHitDetect.buildFighterBVH (http://127.0.0.1:8768/game/js/hitdetect.js:81:11)\n    at async WHHitDetect.testLimbVsBody (http://127.0.0.1:8768/game/js/hitdetect.js:106:17)\n    at async WHHitDetect.verify (http://127.0.0.1:8768/game/js/hitdetect.js:149:17)",
+  "[warning] [WHHitDetect] verify failed, keeping sphere result TypeError: baked.computeBoundsTree is not a function\n    at WHHitDetect.buildFighterBVH (http://127.0.0.1:8768/game/js/hitdetect.js:81:11)\n    at async WHHitDetect.testLimbVsBody (http://127.0.0.1:8768/game/js/hitdetect.js:106:17)\n    at async WHHitDetect.verify (http://127.0.0.1:8768/game/js/hitdetect.js:149:17)",
+  "[warning] [WHHitDetect] verify failed, keeping sphere result TypeError: baked.computeBoundsTree is not a function\n    at WHHitDetect.buildFighterBVH (http://127.0.0.1:8768/game/js/hitdetect.js:81:11)\n    at async WHHitDetect.testLimbVsBody (http://127.0.0.1:8768/game/js/hitdetect.js:106:17)\n    at async WHHitDetect.verify (http://127.0.0.1:8768/game/js/hitdetect.js:149:17)",
+  "[warning] [WHHitDetect] verify failed, keeping sphere result TypeError: baked.computeBoundsTree is not a function\n    at WHHitDetect.buildFighterBVH (http://127.0.0.1:8768/game/js/hitdetect.js:81:11)\n    at async WHHitDetect.testLimbVsBody (http://127.0.0.1:8768/game/js/hitdetect.js:106:17)\n    at async WHHitDetect.verify (http://127.0.0.1:8768/game/js/hitdetect.js:149:17)",
+  "[warning] [WHHitDetect] verify failed, keeping sphere result TypeError: baked.computeBoundsTree is not a function\n    at WHHitDetect.buildFighterBVH (http://127.0.0.1:8768/game/js/hitdetect.js:81:11)\n    at async WHHitDetect.testLimbVsBody (http://127.0.0.1:8768/game/js/hitdetect.js:106:17)\n    at async WHHitDetect.verify (http://127.0.0.1:8768/game/js/hitdetect.js:149:17)",
+  "[warning] [WHHitDetect] verify failed, keeping sphere result TypeError: baked.computeBoundsTree is not a function\n    at WHHitDetect.buildFighterBVH (http://127.0.0.1:8768/game/js/hitdetect.js:81:11)\n    at async WHHitDetect.testLimbVsBody (http://127.0.0.1:8768/game/js/hitdetect.js:106:17)\n    at async WHHitDetect.verify (http://127.0.0.1:8768/game/js/hitdetect.js:149:17)",
+  "[warning] [WHHitDetect] verify failed, keeping sphere result TypeError: baked.computeBoundsTree is not a function\n    at WHHitDetect.buildFighterBVH (http://127.0.0.1:8768/game/js/hitdetect.js:81:11)\n    at async WHHitDetect.testLimbVsBody (http://127.0.0.1:8768/game/js/hitdetect.js:106:17)\n    at async WHHitDetect.verify (http://127.0.0.1:8768/game/js/hitdetect.js:149:17)"
+ ]
+}
