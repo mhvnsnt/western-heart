@@ -1,0 +1,101 @@
+{
+  "schema": "wh.moveset-template.v1",
+  "updated": "2026-11-05",
+  "law": "docs/PIPELINE-LAW.md",
+  "inventory_doc": "docs/movesets/MOVESET-TEMPLATE-INVENTORY-2026-11-05.md",
+  "steam_library_doc": "docs/tech/STEAM-LIBRARY.md",
+  "private_teardown_repo": "mhvnsnt/game-reverse-engineering",
+  "rules": {
+    "roster_names": "WH character ids only — never other-franchise display names",
+    "template_ids": "generic hinting names (WWE copy-moveset style)",
+    "raw_assets": "private GRE repo — WH keeps mappings + pointers only",
+    "no_fe_demo_roster": ["hwoarang", "jin-kazama", "yugo-the-wolf", "siegfried-schtauffen"],
+    "no_wwe_superstar_roster_names": true,
+    "wh_visual_identity": "no WWE logos/rings/belts/announce table branding on screen"
+  },
+  "templates": [
+    {
+      "id": "t7-grappler-jaguar-mask",
+      "hint": "T7 jaguar-masked wrestler-grappler (King-style 0x64)",
+      "source_game": "tekken7",
+      "steam_app_id": 389730,
+      "pointers": [
+        "docs/proof/t7-clipmap-king-pantera.json",
+        "game/assets/movesets/pantera.json",
+        "docs/movesets/PANTERA-WIRING-DIAGNOSIS-2026-11-03.md"
+      ],
+      "attached_to": ["pantera"],
+      "status": "primary",
+      "exactness": "Pantera = exact King T7 — no swapped/mixed/T3-as-T7"
+    },
+    {
+      "id": "t7-mishima-style-karate",
+      "hint": "T7 Mishima-style karate family (WH: Demonio)",
+      "source_game": "tekken7",
+      "steam_app_id": 389730,
+      "attached_to": ["demonio"],
+      "status": "attached-existing"
+    },
+    {
+      "id": "t7-heavy-bob-style",
+      "hint": "T7 heavyweight bob-and-weave brawler",
+      "source_game": "tekken7",
+      "attached_to": ["burger"],
+      "status": "attached-existing"
+    },
+    {
+      "id": "t7-flashy-counter-kickbox",
+      "hint": "T7 flashy counter kickboxer family — template only, never roster Hwoarang",
+      "source_game": "tekken7",
+      "attached_to": [],
+      "status": "reserved"
+    },
+    {
+      "id": "t3-ogre-bank",
+      "hint": "T3 Ogre-family bank already in WH",
+      "source_game": "tekken3",
+      "pointers": ["game/assets/anim/t3/ogre/"],
+      "attached_to": ["chatur"],
+      "status": "pointer"
+    },
+    {
+      "id": "wwe2k-moveset-string-lib",
+      "hint": "WWE 2K19 Create-A-Moveset string library (5581 names)",
+      "source_game": "wwe2k19",
+      "steam_app_id": 817130,
+      "pointers": ["customization/wwe2k-caw/moveset-library-2k19.txt"],
+      "attached_to": [],
+      "status": "library"
+    },
+    {
+      "id": "wwe2k-powerhouse-brawler",
+      "hint": "2K powerhouse / big-man grappler archetype",
+      "source_game": "wwe2k",
+      "steam_app_ids": [817130, 1015500, 1255630],
+      "attached_to": [],
+      "status": "reserved"
+    },
+    {
+      "id": "wwe2k-highflyer",
+      "hint": "2K high-flyer / cruiser archetype",
+      "source_game": "wwe2k",
+      "attached_to": [],
+      "status": "reserved"
+    },
+    {
+      "id": "wwe2k-technician",
+      "hint": "2K technical wrestler archetype",
+      "source_game": "wwe2k",
+      "attached_to": [],
+      "status": "reserved"
+    },
+    {
+      "id": "doa-speed-striker",
+      "hint": "DOA speed-striker family mirrored in WH movesets",
+      "source_game": "doa",
+      "pointers": ["game/assets/movesets/doa-kasumi.json", "game/assets/movesets/doa-ayane.json"],
+      "attached_to": [],
+      "status": "pointer"
+    }
+  ]
+}

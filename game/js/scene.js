@@ -11,7 +11,7 @@ import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { getStage, buildStage, disposeStage } from './stages.js';
-import { fightCameraY } from './fight-camera-math.js';
+import { fightCameraY, fightCameraDolly, fightCameraCenterX } from './fight-camera-math.js';
 // Per-stage color grade (worker 27 lighting rig): tone-mapping exposure +
 // bloom strength from the stage's lighting.grade block. Serves the bible's
 // "luminous darkness" — each land gets its own grade.
@@ -162,10 +162,6 @@ export class Arena {
     // orbit the camera around the target for cluttered stages.
     const camScale = ((this._stage && this._stage.def.camDist) || 7) / 7;
     const camAng = (((this._stage && this._stage.def.camAngle) || 0) * Math.PI) / 180;
-    // tan(horizontal_fov / 2) = tan(vertical_fov / 2) * aspect — three.js
-    // PerspectiveCamera already keeps vertical FOV invariant, same as Tekken.
-    const tanHalfH = Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2)) *
-      Math.max(this.camera.aspect || 1, 0.2);
     let baseX = Math.sin(camAng) * 7 * camScale, baseZ = Math.cos(camAng) * 7 * camScale;
     let baseY = 1.8, lookY = 1.0;
     if (!this._camRig) this._camRig = { centerX: 0, span: 5.0 };
@@ -177,31 +173,23 @@ export class Arena {
       this._camRig.centerX += (desiredCenter - this._camRig.centerX) * k;
       this._camRig.span += (desiredSpan - this._camRig.span) * k;
       if (this._baseFov === undefined) this._baseFov = this.camera.fov;
-      const vFov = this._baseFov * Math.PI / 180;
-      const hFov = 2 * Math.atan(Math.tan(vFov / 2) * this.camera.aspect);
-      // Portrait (owner 2026-10-23 "make fighters larger in portrait"): the narrow
-      // horizontal frustum pushed the camera ~2.5x farther out, shrinking fighters to
-      // specks. In portrait fit only the fighters' bodies (span + 1.8 m instead of + 3 m),
-      // with a closer minimum distance; landscape keeps the original fit.
-      // Moving the camera back past ~10.5 m puts it behind the arena walls, so the
-      // portrait view showed only a wall. In portrait the camera stays inside the
-      // arena; when the fighters don't fit, the FOV widens instead of the camera
-      // pulling back.
-      const portrait = this.camera.aspect < 1;
-      const pad = portrait ? 1.8 : 3.0;
-      let fitDist = (this._camRig.span + pad) / (2 * Math.tan(hFov / 2));
-      if (portrait) {
-        const maxD = 10.5;
-        let wantFov = this._baseFov;
-        if (fitDist > maxD) {
-          const needH = 2 * Math.atan((this._camRig.span + pad) / (2 * maxD));
-          wantFov = Math.min(80, 2 * Math.atan(Math.tan(needH / 2) / this.camera.aspect) * 180 / Math.PI);
-          fitDist = maxD;
-        }
-        if (Math.abs(wantFov - this.camera.fov) > 0.05) { this.camera.fov = wantFov; this.camera.updateProjectionMatrix(); }
-      } else if (this.camera.fov !== this._baseFov) { this.camera.fov = this._baseFov; this.camera.updateProjectionMatrix(); }
-      baseZ = Math.max(portrait ? 6.0 : 10.5, fitDist) * camScale;
-      baseX = this._camRig.centerX;
+      // Edge-safe dolly (owner t374u 2026-11-05): cap distance inside the
+      // arena shell; widen FOV when the span no longer fits — never shove
+      // the camera through / behind walls. Landscape used to force min
+      // 10.5 m (wall line); now both aspects share fightCameraDolly().
+      const wallD = (this._stage && this._stage.def && this._stage.def.dims && this._stage.def.dims.wallDistance) || 8.4;
+      const dolly = fightCameraDolly({
+        span: this._camRig.span,
+        aspect: this.camera.aspect || 1,
+        baseFov: this._baseFov,
+        camScale,
+      });
+      if (Math.abs(dolly.fov - this.camera.fov) > 0.05) {
+        this.camera.fov = dolly.fov;
+        this.camera.updateProjectionMatrix();
+      }
+      baseZ = dolly.dist;
+      baseX = fightCameraCenterX(this._camRig.centerX, wallD, 1.2);
       const maxY = Math.max(fighterA.root.position.y, fighterB.root.position.y);
       // Level-following vertical framing (owner 2026-10-25: camera stayed
       // up top after floor/balcony breaks): anchor to the current ground

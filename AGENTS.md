@@ -1,5 +1,8 @@
 # AGENTS.md
 
+> **PIPELINE LAW (2026-11-05):** read `docs/PIPELINE-LAW.md` before OpenKumite / FightingEngine / moveset-template / Pantera / first-play camera-debris work. FE source private until 2026-12-25 — do not hunt leaks. Tag Battle demo chars and WWE superstar names never go on the WH roster. Pantera = exact King T7 via template `t7-grappler-jaguar-mask`.
+
+
 # ANTI-CLOBBER LAWS (owner 2026-10-17 — the DXMMII 54k-file wipe)
 
 On 2026-10-17, commit cd3bf38 ("DXMMII limb system", PR mhvnsnt/western-heart#221) deleted 54,456 files against 105 additions. The commit message said nothing about deletions. Nobody read the deletion list before merging. The repo was 99.996% gone. These laws exist so that never happens again. Every agent, every repo, every commit, every merge.
