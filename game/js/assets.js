@@ -463,6 +463,12 @@ export const MODEL_URLS = {
   // Tekken inputs per owner directive — no Injustice 2 input system).
   // model-rigged-noplane.glb = the crew rig (PR #780) with its skinned 4.23 m floor plane removed
   // (docs/proof/claude-2026-10-23/smutbase/README.md); the crew file stays beside it.
+  // FIDELITY REBUILD (2026-11-05, SmutBase 6 fidelity order): the loaded
+  // file is replaced in place by the rebuild from the recovered commission
+  // blend (full 450-bone GZM rig, 932 shape keys in the game set, her
+  // authored cheetah suit + hair + necklace as the blend's view layer
+  // saves them). model-rigged.glb and model.glb stay on disk untouched
+  // as the earlier named options.
   menajerii: '../roster/vixen/attires/attire1/model-rigged-noplane.glb',
   'menajerii-attire1': '../roster/vixen/attires/attire1/model-rigged-noplane.glb',
   // ——— LANDING WAVE 1 (2026-10-23, docs/CATCHUP-AUDIT-2026-10-23.md) ———

@@ -56,7 +56,16 @@ const RUNTIME_TINTED_TEMPLATES = new Set([
 // outfit test below therefore voids only on a TEXTURELESS 24_/25_ outfit
 // material; her textured outfit no longer trips it. The untextured
 // verdicts that remain are the same source-faithful classes named above.
-const OWNER_OUTFIT_RULE_EXEMPT = new Set(['megami', 'megami-attire1']);
+// FIDELITY REBUILD (2026-11-05): Menajerii's loaded model is now the
+// rebuild from her recovered commission blend. Her audit: 21 ok /
+// 2 untextured, and the 2 untextured are exactly the clear eye shells
+// (EyeMoisture-2 / Cornea-2, transparent by design — the same
+// source-faithful class named in the exemption above). Her skin,
+// eyes and hair are textured from her own source; the shells carry
+// transmission/clearcoat instead of a base texture, in her file and
+// in the rebuild alike. An untextured-only verdict on exactly these
+// keys is therefore usable, not broken.
+const OWNER_OUTFIT_RULE_EXEMPT = new Set(['megami', 'megami-attire1', 'menajerii', 'menajerii-attire1']);
 
 export function isModelUsable(key) { return !broken.has(key); }
 export function materialReason(key) { return reasons[key] || null; }

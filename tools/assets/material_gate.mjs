@@ -116,6 +116,17 @@ for (const [key, url] of RUNTIME_TINTED_TEMPLATES) {
 const OWNER_OUTFIT_RULE_EXEMPT = new Map([
   ['megami', '../roster/parvati/attires/attire1/model-rigged.glb'],
   ['megami-attire1', '../roster/parvati/attires/attire1/model-rigged.glb'],
+  // FIDELITY REBUILD (2026-11-05): Menajerii's loaded model is now the
+  // rebuild from her recovered commission blend. Her audit: 21 ok /
+  // 2 untextured, and the 2 untextured are exactly the clear eye shells
+  // (EyeMoisture-2 / Cornea-2, transparent by design — the same
+  // source-faithful class named above). Her skin, eyes and hair are
+  // textured from her own source; the shells carry
+  // transmission/clearcoat instead of a base texture, in her file and
+  // in the rebuild alike. An untextured-only failure on exactly these
+  // keys at exactly this URL is therefore expected, not broken.
+  ['menajerii', '../roster/vixen/attires/attire1/model-rigged-noplane.glb'],
+  ['menajerii-attire1', '../roster/vixen/attires/attire1/model-rigged-noplane.glb'],
 ]);
 const ownerOutfitRule = [];
 for (const [key, url] of OWNER_OUTFIT_RULE_EXEMPT) {
