@@ -38,3 +38,5 @@ under code **ASA** (roster ID 19 = Alisa Bosconovitch), not under the string
 ## Not in this pack
 - Playable wh-anim `t3_*.json` / `rows.pack.json` Alisa bank (bake still required)
 - Jungle Outpost (stg02) stage geometry (still missing — see PROOF)
+
+<!-- intake CI re-trigger 2026-11-05 -->
