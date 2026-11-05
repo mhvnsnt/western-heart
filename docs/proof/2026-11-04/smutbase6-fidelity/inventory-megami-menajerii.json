@@ -1,0 +1,1964 @@
+{
+ "generated": "2026-11-04 (inventory run, read-only GLB JSON parsing; sha256 computed locally)",
+ "method": "Python struct/json parse of each GLB's JSON chunk + accessor counts for verts/tris; sha256 over full file; targeted find for *.blend; gh api contents for roster/parvati and roster/vixen (root listings returned; intake sublistings pending/slow - see repo_check)",
+ "repo_check": {
+  "repo": "mhvnsnt/western-heart",
+  "method": "gh api contents listings (slow/flaky - several timeouts and two stream-CANCEL failures on roster/parvati/attires/attire1, which was therefore not re-listed; its shipped sizes are verified from local serve copies + PR records)",
+  "roster_parvati_root": "ATTIRE-SLOTS.md, CANON.md, PARTS.md, anatomy/, attires/, intake/, parvati.json - no .blend",
+  "roster_parvati_intake": "DEFINITIVE (gh api returned): contains ONLY README.md (1,210 B, git blob fee76530c2e8e9e480f00348d8a83739bf4d3fa1). No .blend, no textures, no model files.",
+  "roster_vixen_root": "ATTIRE-SLOTS.md, CANON.md, PARTS.md, anatomy/, attires/, intake/ - no .blend",
+  "roster_vixen_intake": "DEFINITIVE (gh api returned): contains ONLY README.md (1,603 B). No .blend, no textures, no model files.",
+  "roster_vixen_attires_attire1": "DEFINITIVE (gh api returned): model-rigged-noplane.glb 3,194,880 B git blob 0108a675680edb38420025f66dd3e00ff4375ef5 (matches task-supplied blob 0108a67568); model-rigged.glb 14,653,404 B git blob b5388913e56ed85d00c1576394bad422c8e09ffc; model.glb 41,676,940 B git blob ca7a656f93713c6471a9476b3de4415c0a478712 (the palette sibling - local vixen-model-src.glb is exactly 41,676,940 B, size-identical)",
+  "sib_placeholder_explanation": "The two zero-byte local files work/vixen-sib-b5388913e56ed85d00c1576394bad422c8e09ffc.glb and work/vixen-sib-ca7a656f93713c6471a9476b3de4415c0a478712.glb are named by the GIT BLOB SHAs of roster/vixen/attires/attire1/model-rigged.glb and model.glb respectively - they were failed download attempts keyed by blob sha. The successful download of model.glb is work/vixen-model-src.glb.",
+  "corroboration": "~/workspace/model-intake/INVENTORY.md verified 2026-11-02 against live repo trees states BOTH intake .blends are 'not in repo (source held outside)' - now directly confirmed by the intake listings above (README.md only)."
+ },
+ "megami_parvati": {
+  "character": "Megami",
+  "source_character": "Parvati",
+  "game_base": "Jun Kazama",
+  "blend_search": {
+   "result": "NOT FOUND",
+   "searched": [
+    "find ~/workspace/_smutbase6-fix-20261102 -iname '*.blend*' -> only work/mina-intake/rigify.blend, rigify-unpacked.blend (Mina) and serve/game/assets/materials/fishnet/Fishnet_material_by_RenCeifer.blend; no parvati/megami blend",
+    "find ~/workspace/model-intake -iname '*.blend*' -> 21 blends in models/ (Baigo, Daree, DesertGobbo, Essi, Grussy, Hara, JuniperActias, KirillVolkov, Lestya, Lizzy, MaeOkyra, MataraKan, MrSmith (7z), Orn, PiranhaPlant, Poppy, Qhala, ReptilianAlienWoman, Succubus_rigify, Vielra) + extracted/MrSmith; none named or matching Parvati/Megami",
+    "~/workspace/model-intake/INVENTORY.md (verified 2026-11-02) states verbatim: Megami | Parvati | intake .blend 'not in repo (source held outside)'",
+    "gh api repos/mhvnsnt/western-heart/contents/roster/parvati -> top level has attires/ and intake/ dirs (see repo_check); INVENTORY.md already records the intake blend is not in the repo",
+    "gh api repos/mhvnsnt/western-heart/contents/roster/parvati/intake -> ONLY README.md (1,210 B, blob fee76530c2e8e9e480f00348d8a83739bf4d3fa1); no .blend in the repo intake folder (definitive)"
+   ],
+   "conclusion": "No Parvati .blend exists in any searched local holding or in the repo per the intake inventory. The fidelity-order target ('exactly like the source .blend') has no .blend to open; the highest-fidelity surviving source is the Blender-exported GLB below (generator: Khronos glTF Blender I/O v4.0.44, i.e. it was exported from a .blend that is not in the holdings)."
+  },
+  "sources": {
+   "primary_intake_glb_models_src": {
+    "path": "/home/hatch/workspace/_smutbase6-fix-20261102/models/src/parvati-full.glb",
+    "size_bytes": 99973212,
+    "sha256": "0c71536e4db704ea0cc5a173ee671049be5ebe480fba3aede734ed3a7c6f5835",
+    "generator": "Khronos glTF Blender I/O v4.0.44",
+    "extensionsUsed": [
+     "KHR_materials_specular",
+     "KHR_materials_clearcoat",
+     "KHR_materials_transmission",
+     "KHR_materials_ior",
+     "KHR_texture_transform",
+     "EXT_texture_webp"
+    ],
+    "meshes": 25,
+    "primitives": 71,
+    "verts_POSITION_sum": 718178,
+    "tris": 1154840,
+    "materials": 69,
+    "textures": 96,
+    "images": 66,
+    "image_bytes": 17982544,
+    "skins": 0,
+    "joints_per_skin": [],
+    "nodes": 25,
+    "animations": 0,
+    "materials_no_baseColorTexture_count": 34
+   },
+   "release_copy_megami_src": {
+    "path": "/home/hatch/workspace/_smutbase6-fix-20261102/megami-src/parvati-full.glb",
+    "size_bytes": 191604148,
+    "sha256": "0165575bdf3000c15e230bcb2f4d452d557dbae7c6e9889aecd8514e7774d232",
+    "generator": "Khronos glTF Blender I/O v4.0.44",
+    "extensionsUsed": [
+     "KHR_materials_specular",
+     "KHR_materials_clearcoat",
+     "KHR_materials_transmission",
+     "KHR_materials_ior",
+     "KHR_texture_transform",
+     "EXT_texture_webp"
+    ],
+    "meshes": 25,
+    "primitives": 71,
+    "verts_POSITION_sum": 718178,
+    "tris": 1154840,
+    "materials": 69,
+    "textures": 96,
+    "images": 66,
+    "image_bytes": 17982544,
+    "skins": 0,
+    "joints_per_skin": [],
+    "nodes": 25,
+    "animations": 0,
+    "materials_no_baseColorTexture_count": 34
+   },
+   "sibling_model_glb_megami_src": {
+    "path": "/home/hatch/workspace/_smutbase6-fix-20261102/megami-src/model-sibling.glb",
+    "size_bytes": 23541928,
+    "sha256": "7907f8d39b157a745c6835d42980b1f6f659021c2b116cf2e78fee3ae4eb39fe",
+    "generator": "glTF-Transform v4.5.1",
+    "extensionsUsed": [
+     "EXT_meshopt_compression",
+     "EXT_texture_webp",
+     "KHR_materials_clearcoat",
+     "KHR_materials_ior",
+     "KHR_materials_specular",
+     "KHR_materials_transmission",
+     "KHR_mesh_quantization",
+     "KHR_texture_transform"
+    ],
+    "meshes": 25,
+    "primitives": 71,
+    "verts_POSITION_sum": 718178,
+    "tris": 1154840,
+    "materials": 69,
+    "textures": 66,
+    "images": 66,
+    "image_bytes": 5963510,
+    "skins": 0,
+    "joints_per_skin": [],
+    "nodes": 25,
+    "animations": 0,
+    "materials_no_baseColorTexture_count": 34
+   },
+   "orig_rigged_conversion": {
+    "path": "/home/hatch/workspace/_smutbase6-fix-20261102/models/orig/parvati-megami.glb",
+    "size_bytes": 30860048,
+    "sha256": "cb101ed1a79e70c383bbd18d8c20d3eb171c2959e1e7bb97efc433974799b50d",
+    "generator": "Khronos glTF Blender I/O v4.0.44",
+    "extensionsUsed": [
+     "KHR_materials_specular",
+     "KHR_texture_transform",
+     "KHR_materials_clearcoat",
+     "KHR_materials_transmission",
+     "KHR_materials_ior"
+    ],
+    "meshes": 24,
+    "primitives": 70,
+    "verts_POSITION_sum": 200229,
+    "tris": 311325,
+    "materials": 68,
+    "textures": 95,
+    "images": 65,
+    "image_bytes": 17945530,
+    "skins": 1,
+    "joints_per_skin": [
+     52
+    ],
+    "nodes": 77,
+    "animations": 0,
+    "materials_no_baseColorTexture_count": 33
+   },
+   "extracted_json_chunk": {
+    "path": "/home/hatch/workspace/_smutbase6-fix-20261102/work/full/parvati-full.json",
+    "size_bytes": 3573684,
+    "note": "Extracted glTF JSON of parvati-full (3.5 MB); meshes 25, materials 69, images 66, skins 0"
+   },
+   "empty_json_placeholder": {
+    "path": "/home/hatch/workspace/_smutbase6-fix-20261102/megami-src/parvati-full-json.json",
+    "size_bytes": 0,
+    "note": "Zero-byte file - NOT a usable JSON dump; the real extracted JSON is work/full/parvati-full.json"
+   },
+   "source_variants_note": "All three parvati-full/model-sibling variants carry IDENTICAL geometry/material counts (25 meshes, 71 prims, 69 materials, 66 images, 1,154,840 tris, 718,178 verts, 0 skins). They differ only in encoding: megami-src/parvati-full.glb 191,604,148 B (raw Blender export, image bytes 17,982,544), models/src/parvati-full.glb 99,973,212 B (same generator/image bytes, smaller BIN), megami-src/model-sibling.glb 23,541,928 B (glTF-Transform v4.5.1, EXT_meshopt_compression + quantization, images recompressed to webp, image bytes 5,963,510). None is byte-identical to another (sha256 all differ)."
+  },
+  "source_inventory_headline": {
+   "bones_joints": "0 skins, 0 joints - the source GLB is a STATIC, unrigged DAZ/Blender export. There is no skeleton in the source file to preserve.",
+   "meshes": 25,
+   "primitives": 71,
+   "verts": 718178,
+   "tris": 1154840,
+   "materials": 69,
+   "textures": 96,
+   "images": 66,
+   "animations": 0,
+   "mesh_names": [
+    "geometry-5",
+    "Lashes",
+    "brow10",
+    "24_Material43_0.25_0_0",
+    "24_Material44_0.25_0_0",
+    "24_+headgear.Material39_1_0_0.001",
+    "24_Material43_0.25_0_0.001",
+    "24_Material42_0.25_0_0",
+    "Top-1",
+    "geometry-11",
+    "geometry-18",
+    "geometry-8",
+    "Bodystocking-1",
+    "temp",
+    "geometry-15",
+    "geometry-12",
+    "The Choker",
+    "geometry-16",
+    "geometry-14",
+    "geometry-13",
+    "geometry-17",
+    "geometry-9",
+    "25_Material40_1_0_0",
+    "Flora Hair Genesis 8 Female",
+    "RenderStrandHairGeom"
+   ],
+   "materials_no_baseColorTexture_34": [
+    "EyeMoisture-3",
+    "Cornea-2",
+    "EyeMoisture-4",
+    "Layer1-1",
+    "Layer2-1",
+    "24_Material43_0.25_0_0",
+    "24_Material45_0.25_0_0",
+    "24_Material44_0.25_0_0",
+    "24_+headgear.Material39_1_0_0",
+    "24_Material42_0.25_0_0",
+    "PANTIES-1",
+    "Outsole-1",
+    "Sole-3",
+    "Heel-3",
+    "Metal-1",
+    "Upper-1",
+    "Material.001",
+    "metal-4",
+    "metal-3",
+    "Heel-4",
+    "Heeltip-2",
+    "Buckle-2",
+    "Sole-4",
+    "25_Material40_1_0_0",
+    "25_Material41_1_0_0",
+    "Bangs1-1",
+    "Bangs2-1",
+    "Front1-1",
+    "SideBangs1-1",
+    "Back1-2",
+    "SideBangs2-1",
+    "Front2-1",
+    "Back2-2",
+    "Torso-6"
+   ],
+   "material_details": [
+    {
+     "name": "Torso-3",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorTexture",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Face-2",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorTexture",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Lips-2",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorTexture",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Teeth-2",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorTexture",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Legs-2",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorTexture",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "EyeSocket-2",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorTexture",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Arms-3",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorTexture",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Pupils-2",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorTexture",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "EyeMoisture-3",
+     "has_baseColorTexture": false,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Fingernails-2",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorTexture",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Cornea-2",
+     "has_baseColorTexture": false,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Irises-2",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorTexture",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Sclera-2",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorTexture",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Toenails-2",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorTexture",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "GP_Torso-1",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorTexture",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "GP_Torso_Back-1",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorTexture",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "EyeMoisture-4",
+     "has_baseColorTexture": false,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Eyelashes-1",
+     "has_baseColorTexture": true,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "baseColorTexture",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Layer1-1",
+     "has_baseColorTexture": false,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Layer2-1",
+     "has_baseColorTexture": false,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "24_Material43_0.25_0_0",
+     "has_baseColorTexture": false,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "24_Material45_0.25_0_0",
+     "has_baseColorTexture": false,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "24_Material44_0.25_0_0",
+     "has_baseColorTexture": false,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "24_+headgear.Material39_1_0_0",
+     "has_baseColorTexture": false,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "24_Material42_0.25_0_0",
+     "has_baseColorTexture": false,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "STopStrap-1",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": true,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "baseColorTexture",
+      "metallicRoughnessTexture"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "STopMain-1",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": true,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "baseColorTexture",
+      "metallicRoughnessTexture"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "PANTIES-1",
+     "has_baseColorTexture": false,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "DM04:lambert1SG-1",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": true,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorTexture",
+      "metallicRoughnessTexture"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Outsole-1",
+     "has_baseColorTexture": false,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Sole-3",
+     "has_baseColorTexture": false,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Insole-1",
+     "has_baseColorTexture": true,
+     "has_normal": false,
+     "has_mr": true,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorTexture",
+      "metallicFactor",
+      "metallicRoughnessTexture"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Heel-3",
+     "has_baseColorTexture": false,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Metal-1",
+     "has_baseColorTexture": false,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Straps-1",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "baseColorTexture",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Upper-1",
+     "has_baseColorTexture": false,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Bodystocking-2",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "baseColorTexture",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Material.001",
+     "has_baseColorTexture": false,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "garter-1",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": true,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "baseColorTexture",
+      "metallicFactor",
+      "metallicRoughnessTexture",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "metal-4",
+     "has_baseColorTexture": false,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "bow garter-1",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": true,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorTexture",
+      "metallicRoughnessTexture",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "top-1",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": true,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "baseColorTexture",
+      "metallicFactor",
+      "metallicRoughnessTexture",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "metal-3",
+     "has_baseColorTexture": false,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "bow bra-1",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": true,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorTexture",
+      "metallicRoughnessTexture",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "leather-1",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": true,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorTexture",
+      "metallicRoughnessTexture"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "metal-5",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorTexture",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Material-2",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "baseColorTexture",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "bottom-1",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": true,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "baseColorTexture",
+      "metallicFactor",
+      "metallicRoughnessTexture",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "bow bottom-1",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": true,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorTexture",
+      "metallicRoughnessTexture",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Socks-1",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "baseColorTexture",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Material-3",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "baseColorTexture",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Heel-4",
+     "has_baseColorTexture": false,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Heeltip-2",
+     "has_baseColorTexture": false,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Toestrap Inside-2",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "baseColorTexture",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Buckle-2",
+     "has_baseColorTexture": false,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Inlay-2",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "baseColorTexture",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Sole-4",
+     "has_baseColorTexture": false,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "25_Material40_1_0_0",
+     "has_baseColorTexture": false,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [],
+     "alphaMode": "BLEND",
+     "doubleSided": true
+    },
+    {
+     "name": "25_Material41_1_0_0",
+     "has_baseColorTexture": false,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [],
+     "alphaMode": "BLEND",
+     "doubleSided": true
+    },
+    {
+     "name": "Cap-1",
+     "has_baseColorTexture": true,
+     "has_normal": true,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "baseColorFactor",
+      "baseColorTexture",
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Bangs1-1",
+     "has_baseColorTexture": false,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Bangs2-1",
+     "has_baseColorTexture": false,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Front1-1",
+     "has_baseColorTexture": false,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "SideBangs1-1",
+     "has_baseColorTexture": false,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Back1-2",
+     "has_baseColorTexture": false,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "SideBangs2-1",
+     "has_baseColorTexture": false,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Front2-1",
+     "has_baseColorTexture": false,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Back2-2",
+     "has_baseColorTexture": false,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    },
+    {
+     "name": "Torso-6",
+     "has_baseColorTexture": false,
+     "has_normal": false,
+     "has_mr": false,
+     "has_occlusion": false,
+     "has_emissive": false,
+     "pbr_keys": [
+      "metallicFactor",
+      "roughnessFactor"
+     ],
+     "alphaMode": null,
+     "doubleSided": true
+    }
+   ],
+   "image_names": [
+    "G8FBaseTorsoMapS_1002",
+    "G8FBaseTorsoMapB_1002",
+    "Parvati_Torso",
+    "G8FBaseFaceMapS_1001",
+    "G8FBaseFaceMapB_1001",
+    "Parvati",
+    "G8FBaseMouthMapB_1005",
+    "G8FBaseMouthMapD_1005",
+    "G8FBaseLegsMapS_1003",
+    "G8FBaseLegsMapB_1003",
+    "Parvati_Leg",
+    "G8FBaseArmsMapS_1004",
+    "G8FBaseArmsMapB_1004",
+    "Parvati_Arm",
+    "G8FBaseEyesB_1007",
+    "G8FBaseEyes01_1007",
+    "AGD--Sofie8FullMats--e8 eye 1",
+    "G8FBaseEyelashes_1006",
+    "V2.BLK.NM.1002",
+    "V2_BLK_BC_1002-V2_BLK_OP_1002",
+    "V2_BLK_ML_1002-V2_BLK_RN_1002",
+    "V2.BLK.NM.1001",
+    "V2_BLK_BC_1001-V2_BLK_OP_1001",
+    "V2_BLK_ML_1001-V2_BLK_RN_1001",
+    "MTT_IO SHP 00N",
+    "YF02_02_Normal_OpenGL",
+    "YF02_02_Base_Color-YF02_02_Opacity",
+    "YF02_02_Metallic-YF02_02_Roughness",
+    "Tracy_tx_In_Color",
+    "Tracy_tx_In_Roughness",
+    "Tracy_tx_B_4k",
+    "Tracy_tx_BCW_4k",
+    "Bodystocking_tran03_obsessive03",
+    "Bodystocking_tran03_obsessive03",
+    "1K-walllpaper_27-normal",
+    "XF_Roses_Bows_Garter_B",
+    "XF_Roses_Bows_Garter_D01-XF_Roses_Bows_Garter_O",
+    "XF_Roses_Bows_Garter_R",
+    "XF_Roses_Bows_Garter_D01",
+    "XF_Roses_Bows_Garter_R",
+    "XF_Roses_Bows_Top_B",
+    "XF_Roses_Bows_Top_D01-XF_Roses_Bows_Top_O",
+    "XF_Roses_Bows_Top_R",
+    "XF_Roses_Bows_Top_D01",
+    "XF_Roses_Bows_Top_R",
+    "XF-Sugar Choker_B",
+    "XF-Sugar Choker_D01",
+    "XF-Sugar_Choker_M-XF-Sugar_Choker_R",
+    "XF-Sugar ChokerM_B",
+    "XF-Sugar ChokerM_D01",
+    "cgi0422_nadia_Glove_Normal",
+    "cgi0422_nadia_Glove_Diffuse",
+    "XF_Roses_Bows_Bottom_B",
+    "XF_Roses_Bows_Bottom_D01-XF_Roses_Bows_Bottom_O",
+    "XF_Roses_Bows_Bottom_R",
+    "XF_Roses_Bows_Bottom_D01",
+    "XF_Roses_Bows_Bottom_R",
+    "XF_Roses_Bows_Stocking_R",
+    "XF_Roses_Bows_Stocking_B",
+    "XF_Roses_Bows_Stocking_D01-XF_Roses_Bows_Stocking_O",
+    "Kayla HH Metal BM",
+    "Kayla HH Velvet NM",
+    "Kayla HH Inside CM",
+    "Logo BM",
+    "WFFloraCapN",
+    "WFFloraCapT"
+   ]
+  },
+  "known_traits_verification": {
+   "outfit_materials_empty_pbr": {
+    "verdict": "VERIFIED, scoped: exactly 7 materials have pbrMetallicRoughness == {} and NO texture slot of any kind (no base/normal/MR/occlusion/emissive, no extensions)",
+    "materials": [
+     "24_Material43_0.25_0_0",
+     "24_Material45_0.25_0_0",
+     "24_Material44_0.25_0_0",
+     "24_+headgear.Material39_1_0_0",
+     "24_Material42_0.25_0_0",
+     "25_Material40_1_0_0",
+     "25_Material41_1_0_0"
+    ],
+    "meshes_using_them_in_source_order": [
+     3,
+     4,
+     5,
+     6,
+     7,
+     22
+    ],
+    "note": "These are exactly the 6 meshes the no-outfit variant excludes (meshes 3,4,5,6,7,22). 0 of the 66 source images are referenced by these 7 materials. SCOPE CORRECTION to the broader claim: other garment meshes DO have real textures in the source - STopMain/STopStrap (V2.BLK.* images), garter/top/bottom/bows/socks (XF_Roses_Bows_*), bodystocking, choker (XF-Sugar Choker), shoes (Tracy_tx_*, Kayla HH). 'Outfit textureless' is true only of the 24_*/25_* outfit set."
+   },
+   "hair_strand_materials_no_texture": {
+    "verdict": "VERIFIED: exactly 8 Flora Hair strand materials (mesh 23 'Flora Hair Genesis 8 Female') have no texture slot anywhere; their entire pbr block is {metallicFactor: 0.5, roughnessFactor: 0.5} - no baseColorTexture AND no baseColorFactor (defaults to white, consistent with the recorded silver-white source trait)",
+    "materials": [
+     "Bangs1-1",
+     "Bangs2-1",
+     "Front1-1",
+     "SideBangs1-1",
+     "Back1-2",
+     "SideBangs2-1",
+     "Front2-1",
+     "Back2-2"
+    ],
+    "also_untextured": "RenderStrandHairGeom material Torso-6 (metallic 0.9 / roughness 0.2, no slots) and Cap-1 IS textured (WFFloraCapT/N)"
+   },
+   "counts": "CONFIRMED from GLB JSON: 66 images, 69 materials, 35 materials WITH baseColorTexture, 34 without (7 empty-pbr outfit + 8 hair strands + Torso-6 strand + EyeMoisture-3/-4 + Cornea-2 (normal only) + Layer1-1/Layer2-1 brows (flat factor) + PANTIES-1 (normal only) + 10 shoe/metal flat-factor materials (Outsole-1, Sole-3, Heel-3, Metal-1, Upper-1 (normal only), metal-4, metal-3, Heel-4 (normal only), Heeltip-2, Buckle-2, Sole-4 (normal only)) + Material.001)",
+   "texcoord_note": "Source: 70/71 prims carry TEXCOORD_0 (only RenderStrandHairGeom lacks it). 0/71 prims carry JOINTS_0 (unrigged)."
+  },
+  "shipped": {
+   "attire1_packed_pr1528": {
+    "path": "/home/hatch/workspace/_smutbase6-fix-20261102/serve/roster/parvati/attires/attire1/model-rigged.glb",
+    "size_bytes": 19511432,
+    "sha256": "f2c5efed3bc0c1f340868021c9483d8fa888355920e502309e705c5da1a57b28",
+    "generator": "gltfpack 0.22",
+    "extensionsUsed": [
+     "KHR_mesh_quantization",
+     "EXT_meshopt_compression",
+     "KHR_texture_transform",
+     "KHR_materials_clearcoat",
+     "KHR_materials_transmission",
+     "KHR_materials_ior",
+     "KHR_materials_specular"
+    ],
+    "meshes": 24,
+    "primitives": 58,
+    "verts_POSITION_sum": 200219,
+    "tris": 311325,
+    "materials": 52,
+    "textures": 65,
+    "images": 65,
+    "image_bytes": 17945530,
+    "skins": 1,
+    "joints_per_skin": [
+     52
+    ],
+    "nodes": 101,
+    "animations": 0,
+    "materials_no_baseColorTexture_count": 20,
+    "repo_path": "roster/parvati/attires/attire1/model-rigged.glb",
+    "task_supplied": "19,511,432 B, git blob b79bda9260, 65 images, 52 joints - local serve copy size matches exactly (19,511,432 B); work/parvati-packed.glb is byte-identical to it (same sha256)",
+    "detail": "gltfpack 0.22 (generator), 24 meshes, 58 prims, 52 materials (16 exact-duplicate materials merged by gltfpack from orig's 68), 65 images, 1 skin x 52 joints, 311,325 tris, 200,219 verts"
+   },
+   "nooutfit_variant_pr1549": {
+    "path": "/home/hatch/workspace/_smutbase6-fix-20261102/serve/roster/parvati/attires/attire1/model-rigged-nooutfit.glb",
+    "size_bytes": 19510660,
+    "sha256": "c30708da6702d0ab14c37d251c86aa6f9c3ef45a29693c9beb34c9c70cc2632e",
+    "generator": "gltfpack 0.22",
+    "extensionsUsed": [
+     "KHR_mesh_quantization",
+     "EXT_meshopt_compression",
+     "KHR_texture_transform",
+     "KHR_materials_clearcoat",
+     "KHR_materials_transmission",
+     "KHR_materials_ior",
+     "KHR_materials_specular"
+    ],
+    "meshes": 18,
+    "primitives": 52,
+    "verts_POSITION_sum": 187174,
+    "tris": 297167,
+    "materials": 52,
+    "textures": 65,
+    "images": 65,
+    "image_bytes": 17945530,
+    "skins": 1,
+    "joints_per_skin": [
+     52
+    ],
+    "nodes": 101,
+    "animations": 0,
+    "materials_no_baseColorTexture_count": 20,
+    "repo_path": "roster/parvati/attires/attire1/model-rigged-nooutfit.glb",
+    "task_supplied": "19,510,660 B - local serve copy matches exactly",
+    "detail": "18 meshes (6 outfit meshes dropped), 52 prims, 52 materials, 65 images, 1 skin x 52 joints, 297,167 tris, 187,174 verts"
+   },
+   "orig_conversion_baseline": {
+    "path": "/home/hatch/workspace/_smutbase6-fix-20261102/models/orig/parvati-megami.glb",
+    "size_bytes": 30860048,
+    "sha256": "cb101ed1a79e70c383bbd18d8c20d3eb171c2959e1e7bb97efc433974799b50d",
+    "generator": "Khronos glTF Blender I/O v4.0.44",
+    "extensionsUsed": [
+     "KHR_materials_specular",
+     "KHR_texture_transform",
+     "KHR_materials_clearcoat",
+     "KHR_materials_transmission",
+     "KHR_materials_ior"
+    ],
+    "meshes": 24,
+    "primitives": 70,
+    "verts_POSITION_sum": 200229,
+    "tris": 311325,
+    "materials": 68,
+    "textures": 95,
+    "images": 65,
+    "image_bytes": 17945530,
+    "skins": 1,
+    "joints_per_skin": [
+     52
+    ],
+    "nodes": 77,
+    "animations": 0,
+    "materials_no_baseColorTexture_count": 33,
+    "detail": "The 2026-10-23 MPFB-template conversion before packing: 24 meshes, 70 prims, 68 materials, 65 images (1 source image lost vs source's 66 - see gaps), 95 textures (vs 96), 1 skin x 52 joints, 311,325 tris, 200,229 verts"
+   },
+   "joint_names_52": [
+    "Hips",
+    "Spine",
+    "Spine1",
+    "Spine2",
+    "Neck",
+    "Head",
+    "LeftShoulder",
+    "LeftArm",
+    "LeftForeArm",
+    "LeftHand",
+    "LeftHandThumb1",
+    "LeftHandThumb2",
+    "LeftHandThumb3",
+    "LeftHandIndex1",
+    "LeftHandIndex2",
+    "LeftHandIndex3",
+    "LeftHandMiddle1",
+    "LeftHandMiddle2",
+    "LeftHandMiddle3",
+    "LeftHandRing1",
+    "LeftHandRing2",
+    "LeftHandRing3",
+    "LeftHandPinky1",
+    "LeftHandPinky2",
+    "LeftHandPinky3",
+    "RightShoulder",
+    "RightArm",
+    "RightForeArm",
+    "RightHand",
+    "RightHandThumb1",
+    "RightHandThumb2",
+    "RightHandThumb3",
+    "RightHandIndex1",
+    "RightHandIndex2",
+    "RightHandIndex3",
+    "RightHandMiddle1",
+    "RightHandMiddle2",
+    "RightHandMiddle3",
+    "RightHandRing1",
+    "RightHandRing2",
+    "RightHandRing3",
+    "RightHandPinky1",
+    "RightHandPinky2",
+    "RightHandPinky3",
+    "LeftUpLeg",
+    "LeftLeg",
+    "LeftFoot",
+    "LeftToeBase",
+    "RightUpLeg",
+    "RightLeg",
+    "RightFoot",
+    "RightToeBase"
+   ],
+   "joint_note": "The 52-joint skeleton (Hips/Spine/Head/fingers/toes, DAZ-style names) exists ONLY in the converted/shipped files. It is the MPFB-template-family rig, NOT a rig from the source file (source has no rig)."
+  },
+  "gaps_vs_source": [
+   "NO .blend in holdings (see blend_search) - fidelity rebuild cannot open the original Blender file; best source is the Blender-exported GLB.",
+   "NO RIG IN SOURCE: source GLB has 0 skins/0 joints. Any fidelity rebuild must rig from scratch or reuse the shipped 52-joint template rig - the order's 'full rigs that come with their own files' cannot be satisfied from this source because the file carries none.",
+   "GEOMETRY DECIMATION: source 1,154,840 tris / 718,178 verts -> shipped 311,325 tris / 200,219 verts = -843,515 tris (-73.0%), -517,949 verts. Shipped is a heavily decimated re-export, not the source geometry.",
+   "MESH LOSS/MERGE: source 25 meshes / 71 prims -> shipped 24 meshes / 58 prims. Body mesh geometry-5's 16 prims merged and GP_Torso/GP_Torso_Back prims dropped in shipped mesh 19 (14 prims); Flora Hair's 9 prims collapsed to 2 prims in shipped mesh 13 (Cap-1 + Bangs1-1 only as separate prims - the other 7 hair-strand materials are GONE from the shipped material list, folded into merged prims).",
+   "MATERIAL LOSS: source 69 materials -> orig conversion 68 -> shipped 52 (gltfpack duplicate-merge). Shipped materials without baseColorTexture: 20 (vs 34 in source; several source flat materials were merged into the repeated '24_Material43_0.25_0_0' prims).",
+   "IMAGE LOSS: source 66 images -> shipped 65. Image byte total is unchanged in orig (17,945,530 B vs 17,982,544 B source - small delta); the packed file preserves the orig's 65-image set (PR #1528 verified sha256 sets identical between orig and packed).",
+   "TEXCOORD LOSS IN PACK: source 70/71 prims have TEXCOORD_0; shipped packed file has TEXCOORD_0 on only ~35/58 prims (gltfpack dropped UVs on prims whose materials have no texture - acceptable for those materials, but the UV data itself is lost for a future re-texture).",
+   "OUTFIT: the 7 empty-pbr outfit materials / 6 meshes can never be textured faithfully - there is no texture for them anywhere in the source (0/66 images). No-outfit variant (297,167 tris) is the honest playable form.",
+   "HAIR: 8 strand materials have no texture/color in source - silver-white flat is the faithful ceiling from this source.",
+   "megami-src/parvati-full-json.json is a 0-byte placeholder - do not cite it as the source JSON; use work/full/parvati-full.json."
+  ]
+ },
+ "menajerii_vixen": {
+  "character": "Menajerii",
+  "source_character": "Vixen",
+  "game_base": "Roger Jr.",
+  "blend_search": {
+   "result": "NOT FOUND",
+   "searched": [
+    "find ~/workspace/_smutbase6-fix-20261102 -iname '*.blend*' -> only Mina rigify blends + a fishnet material blend; no vixen/menajerii blend",
+    "find ~/workspace/model-intake -iname '*.blend*' -> 21 blends in models/ + extracted/MrSmith; none named or matching Vixen/Menajerii",
+    "~/workspace/model-intake/INVENTORY.md (verified 2026-11-02) states verbatim: Menajerii | Vixen | intake .blend 'not in repo (source held outside)'",
+    "gh api repos/mhvnsnt/western-heart/contents/roster/vixen -> top level has attires/ and intake/ dirs (see repo_check); INVENTORY.md already records the intake blend is not in the repo",
+    "gh api repos/mhvnsnt/western-heart/contents/roster/vixen/intake -> ONLY README.md (1,603 B); no .blend in the repo intake folder (definitive)"
+   ],
+   "conclusion": "No Vixen .blend exists in any searched local holding or in the repo per the intake inventory. Highest-fidelity surviving source is the Blender-exported GLB below (Khronos glTF Blender I/O v4.0.44)."
+  },
+  "sources": {
+   "primary_intake_glb": {
+    "path": "/home/hatch/workspace/_smutbase6-fix-20261102/models/src/vixen-full.glb",
+    "size_bytes": 100078094,
+    "sha256": "636958185cad837018045c4273dcda1998a6c70bdd01ae08d4bd0e325687f68c",
+    "generator": "Khronos glTF Blender I/O v4.0.44",
+    "extensionsUsed": [
+     "KHR_materials_specular",
+     "KHR_materials_clearcoat",
+     "KHR_materials_transmission",
+     "KHR_materials_ior"
+    ],
+    "meshes": 29,
+    "primitives": 72,
+    "verts_POSITION_sum": 532326,
+    "tris": 986895,
+    "materials": 69,
+    "textures": 0,
+    "images": 0,
+    "image_bytes": 0,
+    "skins": 0,
+    "joints_per_skin": [],
+    "nodes": 60,
+    "animations": 0,
+    "materials_no_baseColorTexture_count": 69
+   },
+   "orig_rigged_conversion": {
+    "path": "/home/hatch/workspace/_smutbase6-fix-20261102/models/orig/vixen-menajerii.glb",
+    "size_bytes": 13896480,
+    "sha256": "e06f7a811ce691ea1b36ca529d657446a69496a9558586be43364787599eeed9",
+    "generator": "glTF-Transform v4.5.1",
+    "extensionsUsed": [
+     "KHR_materials_clearcoat",
+     "KHR_materials_ior",
+     "KHR_materials_specular",
+     "KHR_materials_transmission"
+    ],
+    "meshes": 28,
+    "primitives": 69,
+    "verts_POSITION_sum": 230694,
+    "tris": 403383,
+    "materials": 69,
+    "textures": 0,
+    "images": 0,
+    "image_bytes": 0,
+    "skins": 1,
+    "joints_per_skin": [
+     52
+    ],
+    "nodes": 81,
+    "animations": 0,
+    "materials_no_baseColorTexture_count": 69
+   },
+   "sibling_palette_model_glb": {
+    "path": "/home/hatch/workspace/_smutbase6-fix-20261102/work/vixen-model-src.glb",
+    "size_bytes": 41676940,
+    "sha256": "9f4915998bf1deb91e56e769ac818936cb197a1f41d687c6b917934968d84500",
+    "generator": "glTF-Transform v4.5.1",
+    "extensionsUsed": [
+     "EXT_meshopt_compression",
+     "EXT_texture_webp",
+     "KHR_materials_clearcoat",
+     "KHR_materials_ior",
+     "KHR_materials_specular",
+     "KHR_materials_transmission",
+     "KHR_mesh_quantization"
+    ],
+    "meshes": 29,
+    "primitives": 72,
+    "verts_POSITION_sum": 456073,
+    "tris": 854295,
+    "materials": 18,
+    "textures": 2,
+    "images": 2,
+    "image_bytes": 612,
+    "skins": 0,
+    "joints_per_skin": [],
+    "nodes": 29,
+    "animations": 0,
+    "materials_no_baseColorTexture_count": 0,
+    "repo_identity": "CONFIRMED via gh api: repo roster/vixen/attires/attire1/model.glb is 41,676,940 B, git blob ca7a656f93713c6471a9476b3de4415c0a478712 - exactly the size of local work/vixen-model-src.glb (41,676,940 B, sha256 9f4915998bf1deb9...). The zero-byte work/vixen-sib-ca7a656f93713c6471a9476b3de4415c0a478712.glb is named by that same blob sha (failed download attempt); build_vixen_textured.py reads vixen-model-src.glb as 'her own palette set from model.glb'.",
+    "detail": "MPFB-style palette model: 29 meshes (incl. Plane), 72 prims, 18 materials PaletteMaterial001-018, 2 images (PaletteBaseColor 200 B + PaletteMetallicRoughness 412 B, image/webp, 612 B total), 2 textures, 0 skins, 854,295 tris, 456,073 verts. All 72 prims carry TEXCOORD_0 with flat per-prim palette UVs."
+   },
+   "sibling_placeholder_files": {
+    "paths": [
+     "/home/hatch/workspace/_smutbase6-fix-20261102/work/vixen-sib-b5388913e56ed85d00c1576394bad422c8e09ffc.glb",
+     "/home/hatch/workspace/_smutbase6-fix-20261102/work/vixen-sib-ca7a656f93713c6471a9476b3de4415c0a478712.glb"
+    ],
+    "size_bytes_each": 0,
+    "note": "Zero-byte failed-download placeholders - NOT the sibling model. The real sibling is vixen-model-src.glb above."
+   },
+   "extracted_json_chunk": {
+    "path": "/home/hatch/workspace/_smutbase6-fix-20261102/work/full/vixen-full.json",
+    "size_bytes": 5734096,
+    "note": "Extracted glTF JSON of vixen-full: meshes 29, materials 69, images 0, skins 0, nodes 60"
+   },
+   "release_origin": "Both parvati-full and vixen-full are the masters from GitHub release megami-menajerii-smutbase-20261023 (per lane handoff docs in _smutbase6-fix-20261102/)"
+  },
+  "source_inventory_headline": {
+   "bones_joints": "0 skins, 0 joints - STATIC unrigged DAZ/Blender export, same as Parvati. No skeleton in the source file.",
+   "meshes": 29,
+   "primitives": 72,
+   "verts": 532326,
+   "tris": 986895,
+   "materials": 69,
+   "textures": 0,
+   "images": 0,
+   "animations": 0,
+   "mesh_names": [
+    "geometry-1",
+    "Hair",
+    "RenderStrandHairGeom",
+    "RenderStrandHairGeom-1",
+    "RenderStrandHairGeom-2",
+    "Arms-3",
+    "Necklace",
+    "Suit",
+    "Boots",
+    "Top-1",
+    "geometry-12",
+    "geometry-19",
+    "geometry-9",
+    "Bodystocking-1",
+    "VALASB4Lace",
+    "geometry-16",
+    "geometry-13",
+    "geometry-15",
+    "geometry-14",
+    "geometry-17",
+    "geometry-18",
+    "The Choker",
+    "geometry-11",
+    "geometry-10",
+    "BDSM harness",
+    "BDSM harness neck ring-1",
+    "ForDAzMerged2",
+    "geometry-20",
+    "Plane"
+   ],
+   "materials_all_69_no_baseColorTexture": [
+    "Torso-3.001",
+    "Face-2.001",
+    "Lips-2.001",
+    "Teeth-2",
+    "Legs-2.001",
+    "EyeSocket-2",
+    "Arms-4.001",
+    "Pupils-2",
+    "EyeMoisture-2",
+    "Fingernails-2",
+    "Cornea-2",
+    "Irises-2",
+    "Sclera-2",
+    "Toenails-2",
+    "GP_Torso-1",
+    "GP_Torso_Back-1",
+    "mesh1-1",
+    "Torso-6",
+    "Torso-7",
+    "Torso-8",
+    "mesh0-4",
+    "mesh0.002-1",
+    "mesh0-3",
+    "mesh0-5",
+    "STopStrap-1.001",
+    "STopMain-1.001",
+    "PANTIES-1",
+    "DM04:lambert1SG-1",
+    "Outsole-1",
+    "Sole-4",
+    "Insole-1",
+    "Heel-4",
+    "Metal-2",
+    "Straps-1",
+    "Upper-1",
+    "Bodystocking-2",
+    "ASB2_HighHeels-1",
+    "garter-1.001",
+    "metal-5",
+    "bow garter-1",
+    "top-1.001",
+    "metal-4",
+    "bow bra-1",
+    "bottom-1.001",
+    "bow bottom-1.001",
+    "Socks-1.001",
+    "Material-2.001",
+    "Material-3",
+    "leather-1",
+    "metal-3",
+    "Heelcap Inside-3",
+    "Heel-6",
+    "Heeltip-3",
+    "Buckle-3",
+    "Inlay-3",
+    "Sole-6",
+    "Heel-5",
+    "Heeltip-2",
+    "Toestrap Inside-2",
+    "Buckle-2",
+    "Inlay-2",
+    "Sole-5",
+    "straps_-_neck-1",
+    "ring_neck-1",
+    "Main3-1",
+    "Platform-1",
+    "Metal-3",
+    "Sole-7",
+    "VALNicole_Gloves-1.001"
+   ],
+   "materials_empty_pbr_4": [
+    "DM04:lambert1SG-1",
+    "leather-1",
+    "straps_-_neck-1",
+    "ring_neck-1"
+   ],
+   "texcoord_note": "69/72 prims carry TEXCOORD_0 (the 3 RenderStrandHairGeom prims lack it) - real per-vertex DAZ UVs exist in the source even though no image is embedded. 0/72 prims carry JOINTS_0.",
+   "plane_mesh": "Mesh 28 'Plane' (1 prim, NO material) is part of the source - the shipped file is the '-noplane' variant with it removed."
+  },
+  "shipped": {
+   "noplane_palette_baked_pr1541": {
+    "path": "/home/hatch/workspace/_smutbase6-fix-20261102/serve/roster/vixen/attires/attire1/model-rigged-noplane.glb",
+    "size_bytes": 3194880,
+    "sha256": "9bc0640f43e23e9cb79259c6196a928d82d1cbcf4db4d194d917e77bf6685cdc",
+    "generator": "glTF-Transform v4.1.1",
+    "extensionsUsed": [
+     "EXT_meshopt_compression",
+     "EXT_texture_webp",
+     "KHR_materials_clearcoat",
+     "KHR_materials_ior",
+     "KHR_materials_specular",
+     "KHR_materials_transmission",
+     "KHR_mesh_quantization"
+    ],
+    "meshes": 28,
+    "primitives": 69,
+    "verts_POSITION_sum": 230694,
+    "tris": 403383,
+    "materials": 18,
+    "textures": 2,
+    "images": 2,
+    "image_bytes": 612,
+    "skins": 28,
+    "joints_per_skin": [
+     52,
+     52,
+     52,
+     52,
+     52,
+     52,
+     52,
+     52,
+     52,
+     52,
+     52,
+     52,
+     52,
+     52,
+     52,
+     52,
+     52,
+     52,
+     52,
+     52,
+     52,
+     52,
+     52,
+     52,
+     52,
+     52,
+     52,
+     52
+    ],
+    "nodes": 81,
+    "animations": 0,
+    "materials_no_baseColorTexture_count": 0,
+    "repo_path": "roster/vixen/attires/attire1/model-rigged-noplane.glb",
+    "task_supplied": "3,194,880 B, git blob 0108a67568, 69/69 prims palette-baked, 403,383 tris, 28 skins - local serve copy size matches exactly (3,194,880 B); parse confirms 28 meshes, 69 prims, 18 palette materials, 2 images, 28 skins each with 52 joints, 403,383 tris, 230,694 verts",
+    "pre_bake_intermediate": {
+     "path": "/home/hatch/workspace/_smutbase6-fix-20261102/work/vixen-final.glb",
+     "size_bytes": 3164796,
+     "sha256": "7167eddb2fbd79bb62de3b8b3f46bffc511d00586cda92ed00b63c05d7029dd1",
+     "generator": "glTF-Transform v4.1.1",
+     "extensionsUsed": [
+      "EXT_meshopt_compression",
+      "KHR_materials_clearcoat",
+      "KHR_materials_ior",
+      "KHR_materials_specular",
+      "KHR_materials_transmission",
+      "KHR_mesh_quantization"
+     ],
+     "meshes": 28,
+     "primitives": 69,
+     "verts_POSITION_sum": 230694,
+     "tris": 403383,
+     "materials": 69,
+     "textures": 0,
+     "images": 0,
+     "image_bytes": 0,
+     "skins": 28,
+     "joints_per_skin": [
+      52,
+      52,
+      52,
+      52,
+      52,
+      52,
+      52,
+      52,
+      52,
+      52,
+      52,
+      52,
+      52,
+      52,
+      52,
+      52,
+      52,
+      52,
+      52,
+      52,
+      52,
+      52,
+      52,
+      52,
+      52,
+      52,
+      52,
+      52
+     ],
+     "nodes": 81,
+     "animations": 0,
+     "materials_no_baseColorTexture_count": 69,
+     "note": "work/vixen-final.glb (3,164,796 B) is the pre-bake meshopt file: same geometry/rig, 69 DAZ materials, 0 images. The bake grew it by 30,084 B (palette set) to the shipped 3,194,880 B."
+    },
+    "repo_blob_full": "0108a675680edb38420025f66dd3e00ff4375ef5 (gh api, matches task-supplied prefix 0108a67568); attire folder also holds model-rigged.glb 14,653,404 B blob b5388913e56ed85d00c1576394bad422c8e09ffc (pre-noplane rigged file)"
+   },
+   "orig_conversion_baseline": {
+    "path": "/home/hatch/workspace/_smutbase6-fix-20261102/models/orig/vixen-menajerii.glb",
+    "size_bytes": 13896480,
+    "sha256": "e06f7a811ce691ea1b36ca529d657446a69496a9558586be43364787599eeed9",
+    "generator": "glTF-Transform v4.5.1",
+    "extensionsUsed": [
+     "KHR_materials_clearcoat",
+     "KHR_materials_ior",
+     "KHR_materials_specular",
+     "KHR_materials_transmission"
+    ],
+    "meshes": 28,
+    "primitives": 69,
+    "verts_POSITION_sum": 230694,
+    "tris": 403383,
+    "materials": 69,
+    "textures": 0,
+    "images": 0,
+    "image_bytes": 0,
+    "skins": 1,
+    "joints_per_skin": [
+     52
+    ],
+    "nodes": 81,
+    "animations": 0,
+    "materials_no_baseColorTexture_count": 69,
+    "detail": "2026-10-23 conversion: 28 meshes (Plane dropped), 69 prims, 69 DAZ materials, 0 images, 0 textures, TEXCOORD_0 on 0/69 prims (UVs STRIPPED - renders bare white), 1 skin x 52 joints, 403,383 tris, 230,694 verts"
+   },
+   "joint_names_52": [
+    "Hips",
+    "Spine",
+    "Spine1",
+    "Spine2",
+    "Neck",
+    "Head",
+    "LeftShoulder",
+    "LeftArm",
+    "LeftForeArm",
+    "LeftHand",
+    "LeftHandThumb1",
+    "LeftHandThumb2",
+    "LeftHandThumb3",
+    "LeftHandIndex1",
+    "LeftHandIndex2",
+    "LeftHandIndex3",
+    "LeftHandMiddle1",
+    "LeftHandMiddle2",
+    "LeftHandMiddle3",
+    "LeftHandRing1",
+    "LeftHandRing2",
+    "LeftHandRing3",
+    "LeftHandPinky1",
+    "LeftHandPinky2",
+    "LeftHandPinky3",
+    "RightShoulder",
+    "RightArm",
+    "RightForeArm",
+    "RightHand",
+    "RightHandThumb1",
+    "RightHandThumb2",
+    "RightHandThumb3",
+    "RightHandIndex1",
+    "RightHandIndex2",
+    "RightHandIndex3",
+    "RightHandMiddle1",
+    "RightHandMiddle2",
+    "RightHandMiddle3",
+    "RightHandRing1",
+    "RightHandRing2",
+    "RightHandRing3",
+    "RightHandPinky1",
+    "RightHandPinky2",
+    "RightHandPinky3",
+    "LeftUpLeg",
+    "LeftLeg",
+    "LeftFoot",
+    "LeftToeBase",
+    "RightUpLeg",
+    "RightLeg",
+    "RightFoot",
+    "RightToeBase"
+   ],
+   "skin_structure_note": "Orig conversion has 1 skin (52 joints). The shipped meshopt/palette file has 28 skins - one per mesh - each listing the same 52 joints. Joint set is identical (same 52 DAZ-style names as Parvati's shipped rig)."
+  },
+  "decimation": {
+   "source_tris": 986895,
+   "shipped_tris": 403383,
+   "tris_removed": 583512,
+   "tris_removed_pct": 59.1,
+   "source_verts": 532326,
+   "shipped_verts": 230694,
+   "verts_removed_pct": 56.7,
+   "sibling_model_tris": 854295,
+   "sibling_note": "Even the palette sibling model.glb (854,295 tris) is a reduced/re-exported variant vs the intake master's 986,895 tris, though its 29-mesh / 72-prim structure matches the master exactly (per-mesh prim counts equal; body mesh 18 prims in both) while its per-mesh tri counts differ."
+  },
+  "gaps_vs_source": [
+   "NO .blend in holdings (see blend_search) - same blocker as Megami.",
+   "NO RIG IN SOURCE: 0 skins/0 joints in vixen-full.glb. Shipped 52-joint rig is the template conversion, not a source rig.",
+   "NO TEXTURES IN SOURCE GLB: vixen-full.glb embeds 0 images / 0 textures and all 69 DAZ materials have no baseColorTexture (4 are empty pbr {}: DM04:lambert1SG-1, leather-1, straps_-_neck-1, ring_neck-1). Unlike Parvati, there are no DAZ texture maps in the intake master at all - the ONLY texture data in the holdings for Vixen is the sibling model.glb's 2-image MPFB palette (612 B total, near-monochrome white/gray/black swatches). A photoreal DAZ-texture fidelity rebuild is IMPOSSIBLE from current holdings; the palette bake is the ceiling unless the original DAZ texture folders are located outside these holdings.",
+   "GEOMETRY DECIMATION: 986,895 -> 403,383 tris (-583,512, -59.1%); 532,326 -> 230,694 verts (-56.7%). The jagged dark shard pattern on arms/legs recorded in PR #1541 is a property of this decimated shell geometry (inner garment shells breach outer shells) - it does not exist in the un-decimated sibling (854,295 tris, renders smooth).",
+   "UV STRIP + FLAT-UV SUBSTITUTE: orig conversion stripped TEXCOORD_0 from all 69 prims despite the source carrying real DAZ UVs on 69/72 prims. The shipped palette bake restored only a single CONSTANT UV point per prim (median palette UV from model.glb) - the source's real per-vertex UVs are still not in the shipped file.",
+   "PLANE REMOVED: source mesh 28 'Plane' dropped in orig + shipped (intentional '-noplane').",
+   "BODY PRIM MERGE: source body mesh geometry-1 has 18 prims (Torso-3.001 and Arms-4.001 each appear twice); shipped has 16 (duplicates merged, same palette slot on both occurrences per PR #1541 verification).",
+   "SKIN FRAGMENTATION: shipped file carries 28 skins (one per mesh, each 52 joints) vs orig's single skin - structurally heavier/odd for engines expecting one skeleton, though joints are identical.",
+   "MATERIAL IDENTITY REPLACED: shipped materials are the 18 MPFB palette slots, not the 69 DAZ materials of the source. Palette assignment was proven by DAZ-name chain via the intake master (PR #1541), but per-material DAZ properties (transmission/clearcoat/specular factors of the originals) survive only insofar as the palette materials carry their own extension blocks."
+  ]
+ }
+}

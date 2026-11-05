@@ -1,0 +1,916 @@
+{
+ "blender_version": [
+  5,
+  2,
+  3
+ ],
+ "file": "/home/hatch/workspace/_smutbase6-fidelity-20261104/blends/pond-tsuyu.blend",
+ "armatures": [
+  {
+   "name": "tsuyu rig",
+   "bone_count": 224,
+   "bones": [
+    "Root",
+    "spine",
+    "spine.001",
+    "spine.002",
+    "spine.003",
+    "spine.004",
+    "spine.005",
+    "Face",
+    "Head_forehead",
+    "Head_eyebrow_left_1a",
+    "Head_eyebrow_left_adj_1a",
+    "Head_eyebrow_left_1b",
+    "Head_eyebrow_left_adj_1b",
+    "Head_eyebrow_left_1c",
+    "Head_eyebrow_left_adj_1c",
+    "Head_eyebrow_left_1d",
+    "Head_eyebrow_left_adj_1d",
+    "Head_eyebrow_left_1e",
+    "Head_eyebrow_left_adj_1e",
+    "Head_eyelid_left_inner",
+    "Head_eyelid_left_upper_1a",
+    "Head_eyelid_left_upper_1b",
+    "Head_eyelid_left_upper_1c",
+    "Head_eyelid_left_upper_1d",
+    "Head_eyelid_left_outer",
+    "Head_eyelid_left_lower_1a",
+    "Head_eyelid_left_lower_1b",
+    "Head_eyelid_left_lower_1c",
+    "Head_eyelid_left_lower_1d",
+    "Eye_L",
+    "Head_eyebrow_right_1a",
+    "Head_eyebrow_right_adj_1a",
+    "Head_eyebrow_right_1b",
+    "Head_eyebrow_right_adj_1b",
+    "Head_eyebrow_right_1c",
+    "Head_eyebrow_right_adj_1c",
+    "Head_eyebrow_right_1d",
+    "Head_eyebrow_right_adj_1d",
+    "Head_eyebrow_right_1e",
+    "Head_eyebrow_right_adj_1e",
+    "Head_eyelid_right_inner",
+    "Head_eyelid_right_upper_1a",
+    "Head_eyelid_right_upper_1b",
+    "Head_eyelid_right_upper_1c",
+    "Head_eyelid_right_upper_1d",
+    "Head_eyelid_right_outer",
+    "Head_eyelid_right_lower_1a",
+    "Head_eyelid_right_lower_1b",
+    "Head_eyelid_right_lower_1c",
+    "Head_eyelid_right_lower_1d",
+    "Eye_R",
+    "Head_nose",
+    "Head_cheek_left_1a",
+    "Head_cheek_left_1b",
+    "Head_cheek_left_1c",
+    "Head_cheek_left_1d",
+    "Head_cheek_right_1a",
+    "Head_cheek_right_1b",
+    "Head_cheek_right_1c",
+    "Head_cheek_right_1d",
+    "Head_lip_upper_middle",
+    "Head_lip_upper1a.L",
+    "Head_lip_upper1b.L",
+    "Head_lip_upper1c.L",
+    "Head_lip_corner_left",
+    "Head_lip_upper1a.R",
+    "Head_lip_upper1b.R",
+    "Head_lip_upper1c.R",
+    "Head_lip_corner_right",
+    "Head_teeth_upper",
+    "Jaw",
+    "Head_lip_lower_middle",
+    "Head_lip_lower1a.L",
+    "Head_lip_lower1b.L",
+    "Head_lip_lower1c.L",
+    "Head_lip_lower1a.R",
+    "Head_lip_lower1b.R",
+    "Head_lip_lower1c.R",
+    "Head_teeth_lower",
+    "Tongue1",
+    "Tongue1B",
+    "Tongue2",
+    "Tongue2B",
+    "Tongue3",
+    "Tuyutongue_A",
+    "Tuyutongue_B",
+    "Tuyutongue_C",
+    "Tuyutongue_D",
+    "Tuyutongue_E",
+    "Tuyutongue_F",
+    "Tuyutongue_G",
+    "Tuyutongue_H",
+    "Tuyutongue_I",
+    "Tuyutongue_J",
+    "Tuyutongue_K",
+    "Tuyutongue_L",
+    "backhair_0",
+    "backhair_1",
+    "backhair_2",
+    "sidehair_L",
+    "sidehair_R",
+    "Eye-ctrl",
+    "shoulder.L",
+    "upper_arm.L",
+    "Elbow.L",
+    "forearm.L",
+    "hand.L",
+    "f_index.01.L",
+    "f_index.02.L",
+    "f_index.03.L",
+    "thumb.01.L",
+    "thumb.02.L",
+    "thumb.03.L",
+    "f_middle.01.L",
+    "f_middle.02.L",
+    "f_middle.03.L",
+    "f_ring.01.L",
+    "f_ring.02.L",
+    "f_ring.03.L",
+    "f_pinky.01.L",
+    "f_pinky.02.L",
+    "f_pinky.03.L",
+    "palm.01.L",
+    "palm.02.L",
+    "palm.03.L",
+    "palm.04.L",
+    "armtwist3.L",
+    "armtwist1.L",
+    "armtwist2.L",
+    "shoulder.R",
+    "upper_arm.R",
+    "Elbow.R",
+    "forearm.R",
+    "hand.R",
+    "thumb.01.R",
+    "thumb.02.R",
+    "thumb.03.R",
+    "palm.01.R",
+    "f_index.01.R",
+    "f_index.02.R",
+    "f_index.03.R",
+    "palm.02.R",
+    "f_middle.01.R",
+    "f_middle.02.R",
+    "f_middle.03.R",
+    "palm.03.R",
+    "f_ring.01.R",
+    "f_ring.02.R",
+    "f_ring.03.R",
+    "palm.04.R",
+    "f_pinky.01.R",
+    "f_pinky.02.R",
+    "f_pinky.03.R",
+    "armtwist3.R",
+    "armtwist1.R",
+    "armtwist2.R",
+    "Breast.L",
+    "Breast2.L",
+    "Breast3.L",
+    "Breast4.L",
+    "Breast.R",
+    "Breast2.R",
+    "Breast3.R",
+    "Breast4.R",
+    "ArmIK.L",
+    "ArmIK.R",
+    "thigh.L",
+    "Knee.L",
+    "shin.L",
+    "foot.L",
+    "toe.L",
+    "thigh.R",
+    "Knee.R",
+    "shin.R",
+    "foot.R",
+    "toe.R",
+    "Butt.L",
+    "Butt2.L",
+    "Butt.R",
+    "Butt2.R",
+    "pelvis.L",
+    "pelvis.R",
+    "Penis0",
+    "Penis1",
+    "Penis2",
+    "Penis3",
+    "Penis4",
+    "Penis5",
+    "Balls",
+    "Balls.L",
+    "Balls.R",
+    "Bulge1",
+    "HandIK.L",
+    "HandTip.L",
+    "HandIK.R",
+    "HandTip.R",
+    "properties",
+    "facial_panel",
+    "bottomlip",
+    "toplip",
+    "cornermouth.L",
+    "lidbottom.L",
+    "lidtop.L",
+    "browinner.L",
+    "browmid.L",
+    "cornermouth.R",
+    "lidbottom.R",
+    "lidtop.R",
+    "browmid.R",
+    "browouter.L",
+    "browinner.R",
+    "browouter.R",
+    "mouth_template",
+    "u_switch",
+    "o_switch",
+    "ch_switch",
+    "e_switch",
+    "a_switch",
+    "shin.L.001",
+    "footTip.L",
+    "thigh.L.001",
+    "shin.R.001",
+    "footTip.R",
+    "thigh.R.001"
+   ],
+   "pose_bone_count": 224
+  }
+ ],
+ "meshes": [
+  {
+   "name": "Body_belt.dmx",
+   "verts": 758,
+   "polys": 1556,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [
+    "outfit"
+   ],
+   "uv_layers": [
+    "UVMap"
+   ],
+   "shape_keys": [],
+   "vertex_groups": 2,
+   "parent": "tsuyu rig",
+   "modifiers": [
+    "ARMATURE"
+   ]
+  },
+  {
+   "name": "Body_google.dmx",
+   "verts": 1554,
+   "polys": 2288,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [
+    "googles_mask"
+   ],
+   "uv_layers": [
+    "UVMap"
+   ],
+   "shape_keys": [],
+   "vertex_groups": 150,
+   "parent": "tsuyu rig",
+   "modifiers": [
+    "ARMATURE"
+   ]
+  },
+  {
+   "name": "Body_mask.dmx",
+   "verts": 142,
+   "polys": 180,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [
+    "googles_mask"
+   ],
+   "uv_layers": [
+    "UVMap"
+   ],
+   "shape_keys": [],
+   "vertex_groups": 150,
+   "parent": "tsuyu rig",
+   "modifiers": [
+    "ARMATURE"
+   ]
+  },
+  {
+   "name": "boots",
+   "verts": 3084,
+   "polys": 3096,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [
+    "tsuyu-boots"
+   ],
+   "uv_layers": [
+    "UVMap"
+   ],
+   "shape_keys": [],
+   "vertex_groups": 10,
+   "parent": "tsuyu rig",
+   "modifiers": [
+    "ARMATURE"
+   ]
+  },
+  {
+   "name": "Bulge",
+   "verts": 4144,
+   "polys": 8284,
+   "hide_viewport": true,
+   "hide_render": true,
+   "hide_get": false,
+   "materials": [
+    "boots"
+   ],
+   "uv_layers": [
+    "Mesh0000_000-mesh-map-0"
+   ],
+   "shape_keys": [],
+   "vertex_groups": 11,
+   "parent": "tsuyu rig",
+   "modifiers": [
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE"
+   ]
+  },
+  {
+   "name": "directional",
+   "verts": 24,
+   "polys": 0,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [],
+   "uv_layers": [],
+   "shape_keys": [],
+   "vertex_groups": 0,
+   "parent": null,
+   "modifiers": []
+  },
+  {
+   "name": "face_template",
+   "verts": 80,
+   "polys": 0,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [],
+   "uv_layers": [
+    "UVMap"
+   ],
+   "shape_keys": [],
+   "vertex_groups": 0,
+   "parent": null,
+   "modifiers": [
+    "SUBSURF"
+   ]
+  },
+  {
+   "name": "gloves",
+   "verts": 4070,
+   "polys": 4048,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [
+    "suit"
+   ],
+   "uv_layers": [
+    "UVMap"
+   ],
+   "shape_keys": [],
+   "vertex_groups": 42,
+   "parent": "tsuyu rig",
+   "modifiers": [
+    "ARMATURE"
+   ]
+  },
+  {
+   "name": "Hair",
+   "verts": 1224,
+   "polys": 2029,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [
+    "hair"
+   ],
+   "uv_layers": [
+    "UVMap"
+   ],
+   "shape_keys": [],
+   "vertex_groups": 150,
+   "parent": "tsuyu rig",
+   "modifiers": [
+    "ARMATURE"
+   ]
+  },
+  {
+   "name": "mouth_template",
+   "verts": 1706,
+   "polys": 8,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [],
+   "uv_layers": [
+    "UVMap"
+   ],
+   "shape_keys": [],
+   "vertex_groups": 0,
+   "parent": null,
+   "modifiers": []
+  },
+  {
+   "name": "Penis",
+   "verts": 5120,
+   "polys": 10236,
+   "hide_viewport": true,
+   "hide_render": true,
+   "hide_get": false,
+   "materials": [
+    "penis"
+   ],
+   "uv_layers": [
+    "Mesh0000_003-mesh-map-0"
+   ],
+   "shape_keys": [
+    "Basis",
+    "PenisForward",
+    "PenisBackwards",
+    "Urethra0",
+    "Urethra1",
+    "Urethra2",
+    "Urethra3",
+    "BallsGrowth"
+   ],
+   "vertex_groups": 9,
+   "parent": "tsuyu rig",
+   "modifiers": [
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE"
+   ]
+  },
+  {
+   "name": "suit",
+   "verts": 12403,
+   "polys": 12380,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [
+    "suit"
+   ],
+   "uv_layers": [
+    "UVMap"
+   ],
+   "shape_keys": [
+    "base",
+    "PussySpread",
+    "AnusSpread",
+    "BreastFlat",
+    "NipplePenetration.L",
+    "NipplePenetration.R",
+    "NipplesFlat",
+    "BellyInflate",
+    "PenisShapeBelly",
+    "NipplesErect"
+   ],
+   "vertex_groups": 182,
+   "parent": "tsuyu rig",
+   "modifiers": [
+    "ARMATURE",
+    "MASK",
+    "MASK"
+   ]
+  },
+  {
+   "name": "switch",
+   "verts": 24,
+   "polys": 0,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [],
+   "uv_layers": [
+    "UVMap"
+   ],
+   "shape_keys": [],
+   "vertex_groups": 0,
+   "parent": null,
+   "modifiers": []
+  },
+  {
+   "name": "tsuyu",
+   "verts": 20911,
+   "polys": 22342,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [
+    "skin_face",
+    "eyes",
+    "Material"
+   ],
+   "uv_layers": [
+    "UVMap"
+   ],
+   "shape_keys": [
+    "base",
+    "PussySpread",
+    "AnusSpread",
+    "BreastFlat",
+    "NipplePenetration.L",
+    "NipplePenetration.R",
+    "NipplesFlat",
+    "BellyInflate",
+    "PenisShapeBelly",
+    "NipplesErect",
+    "Blink",
+    "eyes-blink-happy",
+    "eye-blink-left",
+    "eye-blink-right",
+    "eye-blink-happy-left",
+    "eye-blink-happy-right",
+    "eyes-slant",
+    "eyes-surprised",
+    "eyes-stare",
+    "mouth-a",
+    "mouth-e",
+    "mouth-ch",
+    "mouth-o",
+    "mouth-u",
+    "mouth-grin",
+    "mouth-grin2",
+    "mouth-smile",
+    "mouth-frown",
+    "mouth-widen",
+    "teeth-upper",
+    "teeth-lower",
+    "tongue-out",
+    "tongue-out2",
+    "brows-serious",
+    "brows-sad",
+    "brows-cheerful",
+    "brows-angry",
+    "brows-lower",
+    "brows-upper",
+    "brows-doubt-left",
+    "brows-doubt-right",
+    "eyes-shocked",
+    "eyes-vanish",
+    "eyes-look-left",
+    "eyes-look-right",
+    "eyes-look-up",
+    "eyes-look-down",
+    "mouth-grin.L",
+    "mouth-grin.R",
+    "mouth-smile.L",
+    "mouth-smile.R",
+    "mouth-frown.L",
+    "mouth-frown.R",
+    "mouth-widen.L",
+    "mouth-widen.R",
+    "brows-serious.L",
+    "brows-serious.R",
+    "brows-sad.L",
+    "brows-sad.R",
+    "brows-cheerful.L",
+    "brows-cheerful.R",
+    "brows-angry.L",
+    "brows-angry.R",
+    "brows-lower.L",
+    "brows-lower.R",
+    "brows-upper.L",
+    "brows-upper.R"
+   ],
+   "vertex_groups": 191,
+   "parent": "tsuyu rig",
+   "modifiers": [
+    "ARMATURE",
+    "MASK",
+    "MASK",
+    "MASK"
+   ]
+  },
+  {
+   "name": "up/down",
+   "verts": 12,
+   "polys": 0,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [],
+   "uv_layers": [
+    "UVMap"
+   ],
+   "shape_keys": [],
+   "vertex_groups": 0,
+   "parent": null,
+   "modifiers": []
+  },
+  {
+   "name": "WGT-tsuyu rig_ArmIK.L",
+   "verts": 90,
+   "polys": 0,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [],
+   "uv_layers": [],
+   "shape_keys": [],
+   "vertex_groups": 0,
+   "parent": null,
+   "modifiers": []
+  },
+  {
+   "name": "WGT-tsuyu rig_ArmIK.R",
+   "verts": 90,
+   "polys": 0,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [],
+   "uv_layers": [],
+   "shape_keys": [],
+   "vertex_groups": 0,
+   "parent": null,
+   "modifiers": []
+  },
+  {
+   "name": "WGT-tsuyu rig_thigh.L.001",
+   "verts": 90,
+   "polys": 0,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [],
+   "uv_layers": [],
+   "shape_keys": [],
+   "vertex_groups": 0,
+   "parent": null,
+   "modifiers": []
+  },
+  {
+   "name": "WGT-tsuyu rig_thigh.R.001",
+   "verts": 90,
+   "polys": 0,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [],
+   "uv_layers": [],
+   "shape_keys": [],
+   "vertex_groups": 0,
+   "parent": null,
+   "modifiers": []
+  }
+ ],
+ "mesh_count": 19,
+ "total_verts": 55616,
+ "object_count": 22,
+ "objects_by_type": {
+  "MESH": 19,
+  "CAMERA": 1,
+  "LIGHT": 1,
+  "ARMATURE": 1
+ },
+ "images": [
+  {
+   "name": "boots_Base_color.png",
+   "size": [
+    2048,
+    2048
+   ],
+   "filepath": "//textures//boots_Base_color.png",
+   "packed": true,
+   "source": "FILE"
+  },
+  {
+   "name": "boots_Roughness.png",
+   "size": [
+    2048,
+    2048
+   ],
+   "filepath": "//textures//boots_Roughness.png",
+   "packed": true,
+   "source": "FILE"
+  },
+  {
+   "name": "eyes",
+   "size": [
+    512,
+    256
+   ],
+   "filepath": "",
+   "packed": true,
+   "source": "FILE"
+  },
+  {
+   "name": "googles_mask",
+   "size": [
+    512,
+    512
+   ],
+   "filepath": "",
+   "packed": true,
+   "source": "FILE"
+  },
+  {
+   "name": "hair",
+   "size": [
+    1024,
+    512
+   ],
+   "filepath": "",
+   "packed": true,
+   "source": "FILE"
+  },
+  {
+   "name": "outfit",
+   "size": [
+    2048,
+    2048
+   ],
+   "filepath": "",
+   "packed": true,
+   "source": "FILE"
+  },
+  {
+   "name": "penis",
+   "size": [
+    2048,
+    2048
+   ],
+   "filepath": "//textures/penis.png",
+   "packed": true,
+   "source": "FILE"
+  },
+  {
+   "name": "phong_exp",
+   "size": [
+    128,
+    128
+   ],
+   "filepath": "",
+   "packed": true,
+   "source": "FILE"
+  },
+  {
+   "name": "Render Result",
+   "size": [
+    0,
+    0
+   ],
+   "filepath": "",
+   "packed": false,
+   "source": "VIEWER"
+  },
+  {
+   "name": "skin_face.png",
+   "size": [
+    1024,
+    1024
+   ],
+   "filepath": "//textures/skin_face.png",
+   "packed": true,
+   "source": "FILE"
+  },
+  {
+   "name": "suit_Base_color.png",
+   "size": [
+    2048,
+    2048
+   ],
+   "filepath": "//suit_Base_color.png",
+   "packed": true,
+   "source": "FILE"
+  },
+  {
+   "name": "suit_Roughness.png",
+   "size": [
+    2048,
+    2048
+   ],
+   "filepath": "//suit_Roughness.png",
+   "packed": true,
+   "source": "FILE"
+  },
+  {
+   "name": "Tsuyu_skin.png",
+   "size": [
+    2048,
+    2048
+   ],
+   "filepath": "//textures/Tsuyu_skin.png",
+   "packed": true,
+   "source": "FILE"
+  }
+ ],
+ "materials": [
+  {
+   "name": "boots",
+   "tex_images": [
+    "boots_Base_color.png"
+   ],
+   "use_nodes": true
+  },
+  {
+   "name": "eyes",
+   "tex_images": [
+    "eyes"
+   ],
+   "use_nodes": true
+  },
+  {
+   "name": "googles_mask",
+   "tex_images": [
+    "googles_mask"
+   ],
+   "use_nodes": true
+  },
+  {
+   "name": "hair",
+   "tex_images": [
+    "hair"
+   ],
+   "use_nodes": true
+  },
+  {
+   "name": "Material",
+   "tex_images": [
+    "Tsuyu_skin.png"
+   ],
+   "use_nodes": true
+  },
+  {
+   "name": "outfit",
+   "tex_images": [
+    "outfit"
+   ],
+   "use_nodes": true
+  },
+  {
+   "name": "outfit_toon",
+   "tex_images": [
+    "outfit",
+    "phong_exp"
+   ],
+   "use_nodes": true
+  },
+  {
+   "name": "penis",
+   "tex_images": [
+    "penis"
+   ],
+   "use_nodes": true
+  },
+  {
+   "name": "skin_face",
+   "tex_images": [
+    "skin_face.png"
+   ],
+   "use_nodes": true
+  },
+  {
+   "name": "suit",
+   "tex_images": [
+    "suit_Base_color.png",
+    "suit_Roughness.png"
+   ],
+   "use_nodes": true
+  },
+  {
+   "name": "tsuyu-boots",
+   "tex_images": [
+    "boots_Base_color.png",
+    "boots_Roughness.png"
+   ],
+   "use_nodes": true
+  }
+ ],
+ "actions": []
+}
