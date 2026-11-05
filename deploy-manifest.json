@@ -1,14 +1,14 @@
 {
  "format": "wh-pages-deploy/1",
- "ref": "0306417fd2adfc7ab3af9bb928d3958508c8d8d4",
- "commit": "75eeb0bf020b92f6fb808029ce7e19bbdfe6332c",
- "files": 2186,
- "bytes": 999991649,
- "built": "2026-11-04T05:44:05Z",
- "tool": "tools/deploy/build_pages.py",
+ "ref": "af5cb30bae58f0fe854dae097b5fa3af1c68b581",
+ "commit": "af5cb30bae58f0fe854dae097b5fa3af1c68b581",
+ "files": 2187,
+ "bytes": 999997537,
+ "built": "2026-11-05T13:54:34Z",
+ "tool": "tools/deploy/deploy_delta.py",
  "mode": "shell-only",
  "excluded_files": 5648,
  "excluded_bytes": 5068817600,
- "delta_note": "Delta deploy (republish recovery lane #3 2026-11-03, Git Data API, guarded-delta semantics of tools/deploy/deploy_delta.py) live 625600dc -> main 75eeb0bf: 7 updated, 36 added, 0 removed; module graph exit 0 on the build tree (tools/deploy/check_module_graph.py) + delta coverage audit clean. Republish recovery lane #3 2026-11-03: ships #1548 Pantera wiring fix, #1549 Megami no-outfit wiring, #1550 Pond (Raven) + Ryusan (Lucky Chloe) banks, #1552 Pond model fix wiring. Extension vs stock deploy_api.py: adds the no-fallback generic banks game/assets/anim/t3/raven/* + t3/luckychloe/*. CAP TRIM (1,294,012 over the 1 GB Pages cap at full selection): withheld 10 adds - t7 raven/luckychloe stance.json+skeleton.json (loadT7Stance falls back to the bank stance, same kamae motion as each bank t3_neutral) and t3 jump_up/jump_back/jump_fwd for both new banks; all 10 remain on main and carry on the next cap relief. T7 moves packs stay main-only, loading via the fetchT7Json jsDelivr fallback by design.",
- "source_pr": 1492
+ "delta_note": "Delta deploy (MoneyManBusch, Git Data API, t376u playtest priority) live 8eb155a4 -> main af5cb30b: 3 updated, 1 added, 0 removed; ships #1578 fightCameraDolly/fightCameraCenterX + stagebreaks _debris gravity + moveset-templates index. PWA/air-blend/hit-push deferred (~18KB over 1GB headroom; follow-up after trim). Arena sky/lighting/colors untouched.",
+ "source_pr": 1578
 }
