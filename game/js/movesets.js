@@ -676,6 +676,59 @@ function _prepare(ms) {
           if (sc.endsWith('_' + m[1]) && !(ek in ms.stance_after)) ms.stance_after[ek] = m[1];
       }
     } }
+  /* Dead d+1 fix (2026-11-04, docs/movesets/DEAD-D1-DIAGNOSIS-2026-11-04.md): three
+     data-sanctioned slot completions, each filling ONLY a still-free slot, in
+     explicitness order. The roster pass found d+1 press-dead on 12 fighters whose
+     merged data carries the move under another spelling the resolver never slotted. */
+  { // (a) Recorded input alternates: a move's own input_slots list every Tekken input
+    // slot the move can occupy (movesets.js header), but _prepare never slotted them —
+    // e.g. negativo's d/b+1 (rbnorway command 'd/b or d+1') lists d+1 and could never
+    // be pressed on it. Guards keep this to true alternates of the SAME move: single
+    // step on both sides, identical button chord, exactly one claimant move (the
+    // DOA/VF string tables list every button of a string in input_slots — those fail
+    // the single-step / ambiguity guards and stay unslotted).
+    const claims = new Map();
+    const btnOf = (n) => { const tail = String(n).split('.').pop(); const m = /([1-4](?:\+[1-4])*)(?:\*)?$/.exec(tail); return m ? m[1] : null; };
+    for (const [k, mv] of Object.entries(ms.moves)) {
+      if (!mv || !Array.isArray(mv.input_slots)) continue;
+      const own = canonNotation(mv.input || k);
+      if (!own || /[,~:]/.test(own)) continue;
+      for (const s of mv.input_slots) {
+        const c = canonNotation(s);
+        if (!c || c === own || /[,~:]/.test(c)) continue;
+        if (btnOf(c) === null || btnOf(c) !== btnOf(own)) continue;
+        if (!claims.has(c)) claims.set(c, new Set());
+        claims.get(c).add(k);
+      }
+    }
+    for (const [c, ks] of claims) if (ks.size === 1 && !(c in slots)) slots[c] = [...ks][0];
+  }
+  { // (b) T3 any-of DOWN commands: a bank row whose source command lists several
+    // down directions for one button ('1/2/3+LP' — any of d/b, d, d/f performs the
+    // row, Tekken 3 input encoding) is the same move on every listed spelling.
+    // The clip-variant loop above slots only the first free spelling and only for
+    // raw-suffixed keys, so skull's bryan r115 crouch row (keyed 'd/b', suffix lost
+    // in the key) sat on none of them and his d+1 was dead. Down family only:
+    // the up/side any-of groups ('6/9+LP') are jump rows the merge already keys on
+    // their playable spelling; slotting their plain f/b spellings would put a jump
+    // attack on a standing basic.
+    for (const [k, mv] of Object.entries(ms.moves)) {
+      if (!mv || mv.t3_row == null) continue;
+      const ns = t3CommandNotations(mv.t3_command);
+      if (ns.length < 2 || !ns.every((n) => /^d(?:\/[fb])?\+/.test(n))) continue;
+      for (const n of ns) if (!(n in slots)) slots[n] = k;
+    }
+  }
+  // (c) d+1 is the crouch jab: where no row of its own is slotted on d+1, the
+  // fighter's FC.1 IS that jab — the input buffer already resolves a held-down 1
+  // to FC.1 (see the FC special case in _pressV2: 'in Tekken a button there is
+  // the FC move'), so the direct notation path (tryAttack / AI / trials) now
+  // agrees with the buffer. Scoped to button 1 only: d+1/FC.1 is the universal
+  // Tekken spelling pair for the crouch jab; no such convention exists for 2/3/4,
+  // whose FC rows are distinct named moves. Fighters with a real d+1 row keep it
+  // (the slot is taken, this never fires); fighters with no FC.1 either stay dead
+  // on d+1 — their data genuinely has no crouch jab row (diagnosis doc, class D).
+  if (!('d+1' in slots)) { const fc = slots['FC.1'] || slots['hFC.1']; if (fc) slots['d+1'] = fc; }
   ms._slots = slots;
   const motions = [];
   for (const n of Object.keys(slots)) {
