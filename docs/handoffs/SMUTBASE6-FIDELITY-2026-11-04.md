@@ -383,3 +383,151 @@ IK/Tsuyu Asui IK.blend`, sha256 034d0972eafd…) in Blender 5.2.3. The
 
 **Next in the owner's order after Pond: Chatur** (Rahkasa; 983-bone
 full rig / 133 deform in the blend, four arms — see the gap report).
+
+## CHATUR REBUILD — LANDED (2026-11-05, PR #CHATURPR)
+
+Rebuilt from her own blend (`roster/rahkasa/intake/RahkasaV1.1.blend`,
+11,459,182 B, sha256 85610cee5dafc070bd9d05bc75b7ca33d3f96dc8987693b4d5a5cb232c97c7e3)
+in Blender 5.2.3. The 52-joint template conversion is retired for her.
+**The second arm pair is restored** — she is four-armed again, as the
+blend authors her.
+
+**Files**
+
+- Game model (replaces the shipped conversion at the path the game
+  loads — `game/js/assets.js` `chatur:`): `roster/rahkasa/attires/
+  attire1/model-rigged-textured.glb` — 4,787,016 B packed (was
+  2,361,776 B), ONE skin of **264 joints** (the RIG's full 263-bone
+  deform set + armature root) shared by body and hair, **98 morph
+  targets on all 3 body prims**, 7 embedded images.
+- Canonical master (original Blender bone names, every
+  polygon-bearing object incl. the NSFW spare-parts sheet, Floor and
+  the godrays prop): `roster/rahkasa/attires/attire1/model-blend-master.glb`
+  — 5,010,320 B packed, **984 joints** (the full 983-bone RahkasaRIG
+  + root), 98 morph targets, 7 images.
+- Blend totals preserved: 983 bones / 263 deform / 98 shape keys /
+  9 packed images (7 export — see deviation 4).
+
+**The rig, as the blend actually works (measured, supersedes the
+gap report's framing)**
+
+- The blend carries TWO armatures. `RahkasaRIG` (983 bones, 263
+  deform) is the skinning rig — both meshes' ARMATURE modifiers point
+  at it. `RahkasaRIG_Deform` (133 bones, all deform) is a SEPARATE
+  single-armed skeleton whose arm bones sit at averaged positions
+  between the RIG's two chains; NO mesh references it as a modifier
+  target. The gap report's "133 deform" figure describes that helper
+  skeleton, not the skin. The game skin therefore carries the full
+  263-bone deform set of the real rig — no runtime subset was forced;
+  both arm chains fit the engine as-is.
+- FOUR ARMS are in the RIG's deform set, two full chains per side:
+  shoulder chain DEF-upper_arm→.001 (segment)→DEF-forearm→.001→
+  DEF-hand (head z≈1.175 in armature space) with DEF-palm.01–04 +
+  finger sets, and the waist chain DEF-upper_arm.002→.003→
+  DEF-forearm.002→.003→DEF-hand.001 (z≈0.922) with .001-suffixed
+  palm/finger sets. All of it is in the game file (waist chains keep
+  their source names — deviation 2).
+- TRAP FOUND AND FIXED: the body object is object-parented to
+  RahkasaRIG_Deform in the blend, and the Blender glTF exporter skins
+  an object to its PARENT armature — a naive export puts the body on
+  the 133-bone single-armed skeleton and amputates the waist arms and
+  every face weight. The export reparents the body to RahkasaRIG with
+  keep_transform first (measured world delta 0.0 — both armatures
+  share the same object transform).
+
+**Method notes (deltas from the Tobi/Pond recipe)**
+
+- AUTHORED SHAPE-KEY MIX FOLDED: the body carries 13 nonzero keys as
+  authored (HipsThiccness 1.0, AnklesThiccness 1.0, ArmsThiccness
+  1.0, ForearmsDefined 1.0, BreastsLarge 2.5, BreastsRounded 1.0,
+  BreastsPaizuri 0.4797, BreastsBalloons 0.4959, BreastsApart 1.0,
+  'No Nipples' 1.0, BellyDefine 1.0, BellyChubby 0.4797,
+  AssThiccness 1.0). The exporter writes glTF mesh.weights ALL ZERO
+  (measured on the test export), so the mix is folded into the basis
+  via a depsgraph bake with the armature ACTIVE (Tobi method) — the
+  exported model renders as the blend opens, and all 98 keys remain
+  as morph targets. No MASK modifiers exist on either character mesh,
+  so no mask bake was needed.
+- REST export: RahkasaRIG carries an authored flex pose (61 nonzero
+  pose bones). Both files export at REST (Tobi/Pond precedent — the
+  pose lives in the blend; the bind is the export). Declared, not
+  silent.
+- SCALE: uniform ×0.214655 to a 2.0 m total height (blend character
+  9.3172 → 2.0), matching the shipped model's 2.0 m bind height.
+  Imported packed-file bounds measured: height exactly 2.0, soles at
+  y≈0 (the blend's soles evaluate 0.0303 below the armature origin;
+  the game's GROUNDING block in assets.js grounds by bind-pose min.y,
+  so floor placement is unchanged from the shipped file).
+- Pack = repo codec (meshopt + quantization). Embedded-image sha256
+  sets verified identical pre/post pack (7/7, both files). Material
+  gate audit (`auditGltf`, the game's own) on the packed game file:
+  **4/4 prims ok, 0 missing / 0 placeholder / 0 untextured** — she
+  passes the gate that quarantined fighters before.
+
+**Proof (this PR, docs/proof/2026-11-04/smutbase6-fidelity/)**
+
+- Renders from the packed game file, eye-checked for scale AND pose:
+  `chatur-fidelity-front-20261105.png`, `chatur-fidelity-q34-20261105.png`,
+  `chatur-fidelity-face-20261105.png`. ALL FOUR ARMS are visible in
+  the front and 3/4 views (shoulder pair spread, waist pair below
+  them, full finger sets on all four hands); the folded authored mix
+  reads in the proportions; face close-up shows the packed eye/hair
+  maps and her authored grin.
+- In-game (repo serve harness, `?quick=chatur,pantera,shrine`):
+  roundState reached **fight** with both models loaded; a live
+  instance bone probe measured 264 bones with all 14 of the engine's
+  required canonical bones present by name. The engine declined to
+  bind the 'ogre' T3 bank — correct and required: that bank is
+  Ancient Ogre's, TRUE OGRE HAS NO TTT2 MOVESET FILE, and Chatur is
+  pose-only by owner decision; no bank was fabricated or borrowed.
+  Her t3actions count is 0, the same pose-only state as the shipped
+  file (roster pass: pose-only, 0/214 no-clip).
+- In-game still capture: attempted twice; the headless harness's
+  screenshot call times out under SwiftShader with this scene (the
+  fight state itself verified by state probe both runs). Logged as a
+  harness limitation, not hidden.
+
+**Deviations**
+
+1. 22 core bones renamed to the engine's canonical names in the game
+   file (DEF-spine→Hips, DEF-spine.001→Spine, .002→Spine1,
+   .003→Chest, DEF-neck→Neck, DEF-head→Head, DEF-shoulder/upper_arm/
+   forearm/hand→Left/RightShoulder/Arm/ForeArm/Hand, DEF-thigh/shin/
+   foot/toe→Left/RightUpLeg/Leg/Foot/ToeBase) — the runtime
+   retargeter matches no Blender-style names (Tobi #1570 / Pond #1571
+   precedent). Master keeps the original names.
+2. The waist arm pair keeps its source names (DEF-upper_arm.L.002
+   etc.) in the game file: the engine has no canonical names for a
+   second arm pair, and inventing names would be fabrication. The
+   pair rides at rest, fully skinned, exactly as authored.
+3. Game file drops: Floor + godrays (scene set), NSFWNipples (an
+   unskinned, material-less spare-parts sheet floating beside her at
+   x 2.71..3.87 — not worn geometry), RahkasaRIG_Deform (the
+   non-skinning helper skeleton), and the 206 zero-polygon WGT-*
+   widget gizmos. ALL of it is preserved in the master (widgets as
+   bare nodes before pack; see 5).
+4. 7 of 9 packed images export, in BOTH files: Rahkasa_Body_Nipples_
+   BaseColor + _Emission feed the B inputs of Mix nodes inside the
+   Rahkasa_Body material (node-audited) — a custom overlay blend with
+   no glTF PBR slot, so Blender's exporter omits them. Doubly moot
+   for the authored look: the 'No Nipples' key is authored at 1.0 and
+   folded into the basis. The two maps remain packed in the blend,
+   which stays in the repo at roster/rahkasa/intake/.
+5. Master pack (repo codec prune): the unreferenced RahkasaRIG_Deform
+   SKIN object and the 206 zero-geometry WGT widget nodes were pruned
+   by the codec (the Deform armature's object node survives; the
+   skeleton was never a skinning target for any mesh, and it remains
+   fully in the source blend). The master's skinning rig (984
+   joints), every polygon-bearing object, all 98 shape keys and all
+   7 exportable images are intact.
+6. Both files export at REST, not at the blend's authored flex pose
+   (61 pose bones) — Tobi/Pond precedent; the blend in the repo is
+   the canonical source and keeps the pose.
+
+**Next in the owner's order after Chatur: Ryusan** (Mina Ashido;
+520-bone Rigify blend in repo, 71 shape keys, Lucky Chloe T7 bank to
+retarget). Megami/Menajerii recovery status has CHANGED since the
+last checkpoint update: the TeraBox check came back NEGATIVE, and the
+two commissions were identified on SmutBase as MilkGuy_3D's
+"Parvati Holcomb" (ParvatiCommission.rar) and "Vixen"
+(Vixen_Commission.rar) — a browser lane is downloading both rars.
