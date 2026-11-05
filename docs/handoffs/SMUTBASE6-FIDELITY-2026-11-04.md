@@ -539,3 +539,155 @@ last checkpoint update: the TeraBox check came back NEGATIVE, and the
 two commissions were identified on SmutBase as MilkGuy_3D's
 "Parvati Holcomb" (ParvatiCommission.rar) and "Vixen"
 (Vixen_Commission.rar) — a browser lane is downloading both rars.
+
+## RYUSAN REBUILD — LANDED (2026-11-05, PR #1574)
+
+Rebuilt from her own blend (`roster/mina-ashido/intake/Mina Ashido
+rigify/ryusan-mina.blend`, 7,396,031 B, sha256
+75f96a453d2b8a673232af91138a9160d8d0ff3e682c0bfce10ab662219e328d) in
+Blender 5.2.3. The 73-joint template conversion is retired for her.
+Rebuild script: tools/anim/export_ryusan_fidelity.py.
+
+**Files**
+- Game (loaded path, replaced in place):
+  roster/mina-ashido/attires/attire1/model-rerig.glb — 3,267,036 B
+  (was 5,079,568 B shipped), 521 joints (the blend's full 520-bone
+  skinning rig + root), 64 morph targets, 7 images, 6 materials.
+- Master: roster/mina-ashido/attires/attire1/model-blend-master.glb —
+  3,535,264 B, 521 joints with the ORIGINAL bone names, 71 morph
+  targets, 8 images, 7 materials, every polygon-bearing object.
+- Proof: docs/proof/2026-11-04/smutbase6-fidelity/
+  ryusan-fidelity-{front,q34,face}-20261105.png (EEVEE renders of the
+  rebuilt game file).
+
+**The rig, as measured** — two armatures live in the blend. The
+skinning rig is the object "Mina Ashido": 520 bones, 169 of them
+deform — a Rigify DEF- body plus a GZM-style face rig (brows, lids,
+eyeballs, lips, Jaw, Tongue, Breast, Butt, Penis0-5). Every
+character mesh's ARMATURE modifier points at it. The 65-bone
+"backup-metarig" skins NOTHING (no modifier references it); it is
+dropped from the game file and its skin is pruned from the master
+pack (deviation 5; the metarig object node survives, and the
+skeleton remains fully in the source blend). The blend's pose is
+all-rest (0 nonzero pose bones, dump-verified).
+
+**A measured trap: deform-only export flattens Rigify.** The first
+game build exported Blender's deform-only subset (170 joints).
+Blender's deform-only path re-roots every ORG-parented DEF bone at
+the skin root (Rigify parents DEF- bones to ORG- control bones),
+disconnecting the arms/legs from the spine. The engine's rig
+analysis (t3anims.js analyzeRig — chest = lowest common ancestor of
+the two arms) then returns null and the bank never binds ("lacks
+core humanoid bones", all-inputs TPOSE in the play probe). The game
+skin therefore carries the FULL 520-bone rig (Pond 224 / Tobi 254
+precedent — the full rigs ride), with the authored hierarchy intact
+(verified live: LeftArm -> ORG-shoulder.L -> ORG-spine.003 ...;
+Head -> Neck -> DEF-spine.004 -> Chest).
+
+**Method notes** — 32 driver fcurves drive Mina's shape keys from
+the face-rig bones (authored mixes read Mina NipplesFlat = 1.0,
+suit 'nipples flat' = 1.0). Drivers have no glTF representation;
+they are stripped in the export copy only, after capturing the
+rest-evaluated authored values, and the shapes ship as morph
+targets (the repo blend keeps the driver rig). The MASK modifier
+(SuitHide, inverted) on Mina is baked through the depsgraph with
+the armature ACTIVE (authored mixes folded into the bases per the
+Tobi method; folded keys keep zero-delta targets so nothing
+double-applies): Mina 20,719 -> 13,044 verts; the suit bakes the
+same way. Floor lift +0.0473 on the armature (her soles sit at
+z = -0.0473 in the blend's own coordinates); uniform scale
+x0.3128614551655725 to 1.992 m total character height (the shipped
+file's own stance span -0.996..+0.996). Repo codec pack (meshopt +
+quantization, keepSolidTextures); embedded-image sha256 sets are
+identical raw vs packed (game 7/7, master 8/8 — the master's extra
+image is the penis texture).
+
+**Shape-key accounting: 71/71** — Mina 62 + Horns 1 + suit 1 ride
+in both files (64 targets); the Penis mesh's 7 ride only in the
+master (author-hidden mesh, deviation 2). Nothing fabricated:
+Horns' single key is named 'Armature' — a rest-state key with
+measured-zero deltas that exists in the blend as authored.
+
+**Material gate** (the game's own auditGltf): game file 10/10 prims
+ok, 0 missing/placeholder/untextured. Master 11 ok + 1 'missing' =
+the material-less template helper prim (Plane.003 — it has no
+material in the blend; source trait, archival only).
+
+**Proof + probes**
+- Blender EEVEE renders of the packed game file (front / 3/4 /
+  face): pink skin and hair read pink everywhere, tan horns,
+  black-sclera / yellow-iris eye maps, teal/purple camo hero suit,
+  fur collar, jacket, boots — matching the phase-1 blend reference
+  renders. No white blow-out (contrast Chatur's in-game harness
+  caveat: hers is a serve-harness lighting state; Ryusan's Blender
+  proof is clean).
+- Roster probe (game harness, BASICS): all 10 press true; damage
+  parity class with the shipped model (4: 13.1, 1+2: 5.3, d/f+1:
+  11.4, d+1: 2.6, d/f+2: 12.3 exact; 1/2/3 in the single-hit variance
+  class the Tobi/Pond probes also showed; u/f+4: 19 vs shipped 7 —
+  the rebuilt hop kick lands its full multi-hit where the shipped
+  conversion chunked to one hit; 1+3 throw deals 0 at probe spacing
+  on BOTH models).
+- Play probe: t3actions 20 (= shipped), mixer 20 actions, 12/13 OK
+  at mixer weight 1.0 with the SAME plans as the shipped model (t7
+  rows for 1/2/3/4/d/f+1/d+1/f+2, generics for 1+2/d/f+2/1,2, grab
+  for 1+3); d+3 NOFIRE on both models (single-press harness
+  limitation, same class as Pond's string extras). Bind-pose
+  fraction 0.25-0.33 (metric counts more same-named bones on the
+  full Rigify hierarchy; 75% of measured bones are off bind
+  mid-clip = animated; TPOSE threshold is 0.7).
+- Gate check vs a live animated Pantera: roundState 'fight',
+  "[WH] Fighter ryusan: 20 real T3 actions from bank 'luckychloe'
+  (retargeted onto ryusan)" + 27 real T7 move clips loaded.
+  Canvas frame grabs came out black in this headless harness (the
+  same capture limitation the Pond lane hit) — logged honestly;
+  the Blender renders above are the visual proof.
+
+**Deviations (game file only unless noted; the master keeps
+everything)**
+1. 22 core bones renamed to the engine's canonical names
+   (DEF-spine->Hips, DEF-spine.001->Spine, .002->Spine1,
+   .003->Chest, DEF-spine.005->Neck, .006->Head,
+   DEF-shoulder/upper_arm/forearm/hand -> Left/RightShoulder/Arm/
+   ForeArm/Hand, DEF-thigh/shin/foot/toe -> Left/RightUpLeg/Leg/
+   Foot/ToeBase). DEF-spine.004 keeps its blend name as an in-chain
+   helper (the engine drives the spine through it; Pond Elbow/Knee
+   precedent), as do the segment/FK/tweak bones. The runtime
+   retargeter matches NO Blender-style name, so without this the
+   model gets no animation at all. Master keeps original names.
+2. Author-hidden Penis excluded from the game file (Pond #1552
+   precedent — the author hid it in the blend itself:
+   hide_viewport + hide_render). It is also UNSKINNED as authored
+   (8 ARMATURE modifiers, all with object=None) — a source trait,
+   recorded, not repaired. Preserved in the master with its 7
+   shape keys and its texture.
+3. Template helper meshes (directional, switch, up, down,
+   face_template, mouth_template) and the 131 zero-polygon WGT-*
+   widget gizmos are dropped from the game file; all preserved in
+   the master.
+4. 8 of 10 packed images export, in BOTH files:
+   Mina-hero-outfit_Height.png feeds a Displacement node (no glTF
+   slot), and the skin_head image sits in a $bumpmap node whose
+   outputs are NOT LINKED in the blend's own node tree
+   (node-audited) — the exporter omits both. Both maps remain
+   packed in the blend, which stays in the repo.
+5. Master pack (repo codec prune): the unreferenced
+   backup-metarig SKIN and 135 zero-geometry WGT/template nodes
+   were pruned by the codec (the metarig object node survives;
+   Chatur deviation-5 precedent). The master's skinning rig (521
+   joints), every polygon-bearing object, all 71 shape keys and
+   all 8 exportable images are intact.
+6. Shape-key drivers stripped in the export copy only (see method
+   notes); the repo blend keeps the driver rig.
+7. The game skin carries the FULL 520-bone rig, not a deform-only
+   subset (see the measured trap above) — the full deform set
+   (169 bones) rides inside the full rig.
+8. Fur kept in both files although it is hide_render in the blend:
+   it is visible in the blend as opened (viewport state) and it
+   shipped in the old file; the phase-1 EEVEE reference renders
+   omit it only because renders honor hide_render.
+
+**Next in the owner's order after Ryusan: Megami** (Parvati /
+Jun Kazama) — gated on the Track 1 recovery close-out lane
+(ParvatiCommission.rar + Vixen_Commission.rar re-downloads), which
+is running in parallel; this lane does not start Megami.
