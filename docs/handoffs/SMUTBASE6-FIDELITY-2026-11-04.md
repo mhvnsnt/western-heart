@@ -799,7 +799,7 @@ and textures the fidelity order demands for these two now exist in
 hand: Parvati 469-bone GZM rig + 474 shape keys + 123 packed images;
 Vixen 450-bone GZM rig + 2,509 shape keys + 124 packed images.
 
-## MEGAMI REBUILD — LANDED (2026-11-05, PR #MEGAMIPR)
+## MEGAMI REBUILD — LANDED (2026-11-05, PR #1576)
 
 Rebuilt from her own recovered blend
 (`ParvatiCommission.blend`, 595,860,144 B, sha256
