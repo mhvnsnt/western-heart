@@ -1,3 +1,5 @@
+> Before touching any model, rig, or animation: read ASSET-PIPELINE.md. Prove with renders you looked at.
+
 # CLAUDE.md — read this first (Claude Code loads it automatically)
 
 Also read and follow `AGENTS.md` (all crew laws apply to you).
