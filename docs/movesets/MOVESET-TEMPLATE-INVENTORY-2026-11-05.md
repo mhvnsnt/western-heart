@@ -34,6 +34,7 @@ Machine-readable twin: `game/data/moveset-templates/index.json`.
 - Template: `t7-grappler-jaguar-mask`
 - Requirement: **100% exact King T7** — no swapped / mixed / T3-as-T7 clips.
 - Remaining gaps: `docs/movesets/PANTERA-KING-T7-AUDIT-2026-11-05.md`
+- 2026-11-05 MoneyManBusch pass: **A1/C1/RC4 closed**; **55 r17-core8 slots still named-open** (no notation↔clipmap proof without GRE). Template attachment unchanged (`t7-grappler-jaguar-mask` → `pantera`).
 
 ## How to add a template
 

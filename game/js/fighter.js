@@ -1866,6 +1866,7 @@ export class Fighter {
     }
     if (pair && pair.reason) console.log(`[WH-THROW] ${attacker.char.id} vs ${this.char.id}: no file pair (${pair.reason}) — legacy lock`);
     this.state = 'thrown'; this.stateT = 0;
+    this._throwHitDone = false; // A1: each new lock may slam again
     this.lockT = 0.3; this.lockMove = move; this.lockPartner = attacker;
     this.vx = 0; this.vz = 0;
     // face the attacker during the lock
@@ -2099,6 +2100,10 @@ export class Fighter {
   _enterThrownExec(attacker, move) {
     this.state = 'thrownExec'; this.stateT = 0;
     this._throwAttacker = attacker; this._throwMove = move;
+    // A1 (2026-11-05): clear before slam. _throwHitDone lived only on the
+    // attacker enter path; after the first legacy slam the victim kept
+    // true and every later throw (2+4, 1+4, f+1+3, …) skipped damage.
+    this._throwHitDone = false;
     this.vx = 0; this.vz = 0; this.vy = 0;
     this.onGround = false; // lifted during the throw
     const want = Math.sign(attacker.root.position.x - this.root.position.x) || this.facing;

@@ -39092,9 +39092,12 @@
    "input_slots": [
     "1+3,1"
    ],
-   "move_class": "strike",
+   "move_class": "throw",
    "t3_condition": 36,
-   "merge_source": "t3:king:row:415"
+   "merge_source": "t3:king:row:415",
+   "isGrab": true,
+   "throw": true,
+   "throw_chain_follow": true
   },
   "1+3,1~t3.king": {
    "name": "KING 1+3,1_c2 (T3 king r415)",
@@ -39136,9 +39139,12 @@
    "input_slots": [
     "2+4,1"
    ],
-   "move_class": "strike",
+   "move_class": "throw",
    "t3_condition": 36,
-   "merge_source": "t3:king:row:417"
+   "merge_source": "t3:king:row:417",
+   "isGrab": true,
+   "throw": true,
+   "throw_chain_follow": true
   },
   "2+4,1~t3.king": {
    "name": "KING 2+4,1_c2 (T3 king r417)",
