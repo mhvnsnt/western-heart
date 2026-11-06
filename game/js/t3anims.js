@@ -1265,14 +1265,31 @@ const RIG_REQUIRED = ['Hips', 'Head', 'LeftArm', 'LeftForeArm', 'LeftHand', 'Rig
   'LeftUpLeg', 'LeftLeg', 'LeftFoot', 'RightUpLeg', 'RightLeg', 'RightFoot'];
 
 /* Rest-pose analysis of a fighter rig, in the model's own space.
-   Must run before the instance's mixer first updates (rest pose). */
-function analyzeRig(model, THREE) {
+   Must run before the instance's mixer first updates (rest pose).
+   `profile` (RETARGET_PROFILES, keyed by model key) is the data-driven
+   per-character retarget profile: it names the canonical chest anchor
+   and any SECONDARY bone chains (Chatur's waist arm pair) that a bank
+   clip must not be fitted against — the industry bone-mask rule
+   (Unreal IK Retargeter / Unity Avatar Mask): extra chains are driven
+   by their own masked layer, never counted as core divergence. */
+function analyzeRig(model, THREE, profile = null) {
   model.updateMatrixWorld(true);
   const inv = new THREE.Matrix4().copy(model.matrixWorld).invert();
   const bones = [];
   model.traverse((o) => { if (o.isBone) bones.push(o); });
   const by = {};
+  // Loaded node names are NOT the file's names: GLTFLoader sanitizes
+  // them (PropertyBinding.sanitizeNodeName strips '.', so a source bone
+  // 'DEF-upper_arm.L.002' arrives as 'DEF-upper_armL002'). Index bones by
+  // BOTH the loaded name and its punctuation-stripped form, and resolve
+  // profile bone names through the same normalization, so a profile can
+  // name bones the way the source file does.
+  const normBoneName = (n) => String(n || '').replace(/[^a-zA-Z0-9_]/g, '');
+  const byName = new Map();
   for (const b of bones) {
+    if (!byName.has(b.name)) byName.set(b.name, b);
+    const nb = normBoneName(b.name);
+    if (!byName.has(nb)) byName.set(nb, b);
     const c = canonBoneName(b.name);
     if (c && !by[c]) by[c] = b;
   }
@@ -1316,6 +1333,21 @@ function analyzeRig(model, THREE) {
   let chest = null;
   for (let o = by.RightArm.parent; o && o !== model && !chest; o = o.parent) if (ancL.includes(o)) chest = o;
   while (chest && ['Neck', 'Head'].includes(canonBoneName(chest.name)) && chest.parent && chest.parent.isBone) chest = chest.parent;
+  // Flat-hierarchy rigs (Chatur's fidelity GLB: the limb roots are
+  // parented to the armature root, not to the torso — the Blender
+  // deform-only export dropped their ORG parents) give an LCA that is
+  // the armature node itself, not a bone. When the LCA search fails
+  // that way, fall back to the rig's own canonical chest anchor (the
+  // profile's chestAnchor, else Chest/Spine2/Spine1) provided it sits
+  // in the hips subtree — the torso chain itself is intact on those
+  // rigs, only the limb parenting is flat. Rigs with neither a bone
+  // LCA nor a canonical chest in the hips subtree still bail, exactly
+  // as before.
+  if ((!chest || !chest.isBone) && by.Hips) {
+    const anchorName = (profile && profile.chestAnchor) || null;
+    const anchor = (anchorName && by[anchorName]) || by.Chest || by.Spine2 || by.Spine1;
+    if (anchor && anchor.isBone && (anchor === by.Hips || isAnc(by.Hips, anchor))) chest = anchor;
+  }
   if (!chest || !chest.isBone) return null;
   // Drivers. Spine chain: chest's ancestors that are not ancestors of
   // the hips (and are not the hips). Neck chain: chest -> head.
@@ -1360,9 +1392,44 @@ function analyzeRig(model, THREE) {
   // Floor contact (2026-10-21): the humanoid joints under the hips, and how
   // high the lowest of them sits at rest (the standing ankle/toe height) —
   // retargetT3Clips keeps every posed frame at or above that level.
-  const contact = Object.values(by).filter(b => b === by.Hips || isAnc(by.Hips, b));
+  // The contact set is the canonical core chain itself (2026-11-06,
+  // Chatur profile lane): on hierarchy-intact rigs the canonical bones
+  // ARE the hips subtree, so this is the same set as the old descendant
+  // filter; on flat-hierarchy rigs (limb roots parented to the armature
+  // root) the descendant filter silently lost the legs and feet, which
+  // made floorY the hip height and would have clamped every crouch.
+  // Secondary/profile chains are NOT in `by`, so they never enter the
+  // core fit metric (bone mask).
+  const contact = Object.values(by);
   const floorY = Math.min(...contact.map(b => rest(b).pos.y));
+  // Secondary chains (profile): resolved by bone NAME from the profile
+  // data. Each chain's Arm/ForeArm/Hand bones become drivers of the
+  // masked secondary layer (driver.layer = chain id, driver.aKey =
+  // the chain's own swing-alignment key in `dirs`/`A`); their segment
+  // splits and fingers are not drivers — the W solver's follow rule
+  // carries them at rest local, exactly like the core chain's splits.
+  const secondary = {};
+  if (profile && Array.isArray(profile.secondaryChains)) {
+    for (const chain of profile.secondaryChains) {
+      if (!chain || !chain.id || !chain.bones) continue;
+      const resolved = {};
+      let ok = true;
+      for (const role of ['Arm', 'ForeArm', 'Hand']) {
+        const b = byName.get(chain.bones[role]) || byName.get(normBoneName(chain.bones[role]));
+        if (!b) { ok = false; break; }
+        resolved[role] = b;
+      }
+      if (!ok) continue;
+      dirs[chain.id + 'Arm'] = dir(resolved.Arm, resolved.ForeArm);
+      dirs[chain.id + 'ForeArm'] = dir(resolved.ForeArm, resolved.Hand);
+      for (const role of ['Arm', 'ForeArm', 'Hand']) {
+        driver.set(resolved[role], { c: chain.side + role, layer: chain.id, aKey: chain.id + role });
+      }
+      secondary[chain.id] = { id: chain.id, side: chain.side, bones: resolved };
+    }
+  }
   return { bones, by, chest, driver, rest, facesNegZ, swapLR, dirs, hipsY: rest(by.Hips).pos.y, contact, floorY,
+    secondary, profile: profile || null,
     trackName: (b) => (nameCount[b.name] === 1 ? b.name : b.uuid), uniqueNames: bones.every(b => nameCount[b.name] === 1) };
 }
 
@@ -1424,6 +1491,55 @@ function targetPosed(rig, W, want) {
   return want.map(fk);
 }
 
+/* ============================================================
+   RETARGET PROFILES (Chatur lane, 2026-11-06) — data-driven
+   per-character retarget profiles, keyed by MODEL KEY (the
+   instanceKey retargetT3Clips already receives from fighter.js /
+   select-screen.js; the same keying pattern as T7_STANCES /
+   FIGHTER_BANK). A profile exists for rigs whose topology exceeds
+   the canonical two-armed humanoid chain. The industry mechanism
+   (Unreal IK Retargeter bone mapping / Unity Avatar Mask /
+   Maya HIK characterization): the CORE chain (pelvis/spine/head,
+   both legs, the PRIMARY arm pair) is the retarget target and the
+   only thing the bank-stance fit gate measures; EXTRA chains are
+   UNMAPPED for the core fit — never divergence, never an error —
+   and are driven by a masked secondary layer (below).
+
+   chatur (Rahkasa, True Ogre base): the ONLY four-armed fighter.
+   Her shipped GLB (roster/rahkasa/attires/attire1/
+   model-rigged-textured.glb, PR #1572) carries the full 263-bone
+   deform set of her own blend: the primary pair was renamed to the
+   canonical Left/Right Arm chain at export; the WAIST pair kept its
+   source names (no canonical names exist for a second pair, and
+   inventing names would be fabrication — #1572 deviation 2). Its
+   chain per side (measured from the GLB hierarchy): upper_arm.002
+   (root) -> upper_arm.003 (segment split) -> forearm.002 ->
+   forearm.003 (segment split) -> hand.001 -> finger sets. The
+   profile's Arm/ForeArm/Hand name the SEGMENT ROOTS; the splits
+   and fingers follow at rest local via the W solver, exactly like
+   the primary chain's own DEF-*.001 splits already do.
+   secondaryLayer (Phase 1 fill): the waist pair rides the SAME
+   bank clip as the core, sampled timeOffsetFrames later — a
+   follow-through layer of REAL clip data (the clip's own arm
+   motion retargeted onto the waist chain), never procedural.
+   Phase 2 replaces the layer source per move from chatur.json
+   layer2 blocks (donor banks, override-masked, contact-aligned);
+   rows with no layer2 entry keep this fill.
+   ============================================================ */
+export const RETARGET_PROFILES = {
+  chatur: {
+    chestAnchor: 'Chest',
+    secondaryChains: [
+      { id: 'arms2L', side: 'Left', bones: { Arm: 'DEF-upper_arm.L.002', ForeArm: 'DEF-forearm.L.002', Hand: 'DEF-hand.L.001' } },
+      { id: 'arms2R', side: 'Right', bones: { Arm: 'DEF-upper_arm.R.002', ForeArm: 'DEF-forearm.R.002', Hand: 'DEF-hand.R.001' } },
+    ],
+    secondaryLayer: { mode: 'override-masked', source: 'self', timeOffsetFrames: 4 },
+  },
+};
+export function retargetProfileFor(modelKey) {
+  return (modelKey && Object.prototype.hasOwnProperty.call(RETARGET_PROFILES, modelKey)) ? RETARGET_PROFILES[modelKey] : null;
+}
+
 const _retargetCache = new WeakMap(); // model instance -> Map(bankId -> { rig, out: { action: clip } })
 
 /**
@@ -1450,7 +1566,8 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
     const o = {}; for (const n of names) if (cached.out[n]) o[n] = cached.out[n];
     return o;
   }
-  const rig = (cached && cached.rig) || analyzeRig(model, THREE);
+  const profile = retargetProfileFor(instanceKey);
+  const rig = (cached && cached.rig) || analyzeRig(model, THREE, profile);
   if (!rig) { perModel.set(bankId, null); return null; }
   const src = sourceInfo(skel, THREE);
   const F = new THREE.Quaternion();
@@ -1469,6 +1586,20 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
     if (rig.dirs[s + 'Foot'] === 'leg' || src.dirs[s + 'Foot'] === 'leg') A[s + 'Foot'] = A[s + 'Leg'];
     A[s + 'Hand'] = A[s + 'ForeArm']; A[s + 'ToeBase'] = A[s + 'Foot'];
   }
+  // Secondary chains (profile rigs): their swing alignments map the
+  // SOURCE bank's arm roles onto each chain's own rest directions.
+  if (rig.secondary) {
+    for (const chain of Object.values(rig.secondary)) {
+      for (const role of ['Arm', 'ForeArm']) {
+        const ds = src.dirs[chain.side + role], dt = rig.dirs[chain.id + role];
+        A[chain.id + role] = new THREE.Quaternion();
+        if (ds && dt && ds !== 'leg' && dt !== 'leg' && ds.lengthSq() > 1e-10 && dt.lengthSq() > 1e-10) {
+          A[chain.id + role].setFromUnitVectors(dt.clone().normalize(), ds.clone().applyQuaternion(F).normalize());
+        }
+      }
+      A[chain.id + 'Hand'] = A[chain.id + 'ForeArm'];
+    }
+  }
   // Hips position: parent space transform + hip-height scale.
   const hips = rig.by.Hips;
   const hipsParentInv = hips.parent ? new THREE.Matrix4().copy(rig.rest(hips.parent).mat).invert() : null;
@@ -1480,6 +1611,13 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
 
   const out = {};
   const G = {}, D = {}, W = new Map();
+  // Secondary layer state (profile rigs): G2/D2 are the layer clip's
+  // world rotations / target-frame deltas, keyed like G/D but sampled
+  // at the layer's own frame (see the per-frame block below).
+  const G2 = {}, D2 = {};
+  const layerChains = (rig.secondary && Object.keys(rig.secondary).length) ? Object.values(rig.secondary) : null;
+  const layerOff = (rig.profile && rig.profile.secondaryLayer && rig.profile.secondaryLayer.source === 'self')
+    ? (rig.profile.secondaryLayer.timeOffsetFrames || 0) : 0;
   const tmpQ = new THREE.Quaternion(), tmpV = new THREE.Vector3();
   for (const action of names) {
     const clip = t3Clips[action];
@@ -1518,6 +1656,31 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
         if (!G[s + 'Shoulder']) D[s + 'Shoulder'] = (D[s + 'Shoulder'] || new THREE.Quaternion()).copy(D.Chest);
         D[s + 'ToeBase'] = (D[s + 'ToeBase'] || new THREE.Quaternion()).copy(D[s + 'Foot']);
       }
+      // Secondary layer (profile rigs, Phase 1 'self' fill): compose
+      // the SAME clip at the layer's offset frame and build the arm
+      // deltas for each secondary chain from its own A keys. Looping
+      // clips wrap the offset; one-shot clips clamp at the last frame
+      // (the pair settles into the clip's final arm pose, it does not
+      // snap back). Phase 2 swaps this source per move (layerSrc).
+      if (layerChains) {
+        const f2 = clip.userData.loop ? (f + layerOff) % n : Math.min(f + layerOff, n - 1);
+        for (const j of src.order) {
+          const q = G2[j] || (G2[j] = new THREE.Quaternion());
+          const r = raw.rot[j];
+          if (r && r.length) { const v = r[Math.min(f2, r.length - 1)]; q.set(v[0], v[1], v[2], v[3]); } else q.identity();
+          const p = src.par[j];
+          if (p && G2[p]) q.premultiply(G2[p]);
+        }
+        for (const chain of layerChains) {
+          for (const role of ['Arm', 'ForeArm', 'Hand']) {
+            const c = chain.side + role, key = chain.id + role;
+            const d = D2[key] || (D2[key] = new THREE.Quaternion());
+            if (!G2[c]) { d.identity(); continue; }
+            d.copy(F).multiply(G2[c]).multiply(Finv);
+            if (A[key]) d.multiply(A[key]);
+          }
+        }
+      }
       // W per target bone.
       const solveW = () => {
         W.clear();
@@ -1526,6 +1689,7 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
           const w = W.get(b) || new THREE.Quaternion();
           if (dv) {
             if (dv.slerp !== undefined) w.slerpQuaternions(D.Hips, D.Chest, dv.slerp);
+            else if (dv.layer) w.copy(D2[dv.aKey] || D[dv.c] || tmpQ.identity());
             else w.copy(D[dv.c] || tmpQ.identity());
             w.multiply(rig.rest(b).quat);
           } else {
