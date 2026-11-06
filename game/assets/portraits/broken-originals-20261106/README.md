@@ -20,9 +20,9 @@ cards that were broken at that moment, byte-for-byte as they shipped, kept here 
 | deathfang | back view | facing: front 180 deg from the card camera in stance |
 | koreshi | back of the spiked head | facing: front 180 deg from the card camera in stance |
 | rave | huge white hood geometry | textures are bucket-served (white on a local tree) + rig (audit: CONE FACE) |
-| chatur | untextured (white hair, grey body) | material / texture load |
+| chatur | NOT broken: corrected the same day. Dark skin and white hair are her fidelity rebuild from her own blend (#1572); owner 2026-11-06: "chart got fixed". Kept here only because it was swept up in the first pass. | — |
 
-Suspect on the same pass (kept for comparison): dxmmii-patchwork and bruno (floating hands), dorowani, michiko,
+Suspect on the same pass (kept for comparison): dxmmii-patchwork (a forearm and hand float detached), bruno, dorowani (back view; FIXED same day by his facing record, see docs/proof/2026-11-06/cards-facing/), michiko (speckle holes in hair and arm),
 cainelias, tobi.
 
 The seven fighters with no model at all (rin, byou, tou, sha, kai, retsu, gyou) show the shared MODEL PENDING

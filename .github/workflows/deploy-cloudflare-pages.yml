@@ -1,0 +1,63 @@
+name: deploy-cloudflare-pages
+# Owner 2026-11-06: "a free fix for my cap on my storage for game assets to the deployable build the top industry
+# standard way". GitHub Pages caps a site at 1 GB and the live tree hit it (main could no longer deploy). Cloudflare
+# Pages (free) has no total-size cap and unlimited bandwidth: every push to main deploys the game's full reference
+# closure (files <= 25 MiB, ~3.1 GB) to https://western-heart.pages.dev via tools/deploy/build_cf_pages.py.
+# Needs two repository secrets (Settings > Secrets and variables > Actions): CLOUDFLARE_API_TOKEN (a token with
+# "Cloudflare Pages: Edit") and CLOUDFLARE_ACCOUNT_ID. Without them the job explains and stops green.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: deploy-cloudflare-pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - name: Secrets present?
+        id: gate
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::notice::CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID repository secrets are not set; skipping the Cloudflare Pages deploy."
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@v4
+        if: steps.gate.outputs.go == 'true'
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            tools/deploy
+      - name: Build the site (closure files <= 25 MiB, fetched in batches)
+        if: steps.gate.outputs.go == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 tools/deploy/build_cf_pages.py --ref HEAD --out cf-site
+      - uses: actions/setup-node@v4
+        if: steps.gate.outputs.go == 'true'
+        with:
+          node-version: 22
+      - name: Deploy to Cloudflare Pages
+        if: steps.gate.outputs.go == 'true'
+        run: |
+          du -sh cf-site
+          npx --yes wrangler@4.150.0 pages deploy cf-site --project-name western-heart --branch main \
+            --commit-hash "$GITHUB_SHA" --commit-message "main $GITHUB_SHA" --commit-dirty=true
+      - name: Live check
+        if: steps.gate.outputs.go == 'true'
+        run: |
+          sleep 20
+          for p in game/index.html game/js/assets.js game/data/roster_map.json; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" "https://western-heart.pages.dev/$p")
+            echo "$p -> $code"; [ "$code" = "200" ] || exit 1
+          done
