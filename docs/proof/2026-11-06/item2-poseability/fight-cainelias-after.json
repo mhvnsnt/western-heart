@@ -1,0 +1,557 @@
+{
+ "p1": "cainelias",
+ "p2": "pantera",
+ "base": "http://127.0.0.1:8831/game/",
+ "ready": true,
+ "trials": [
+  {
+   "n": "1",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "1",
+    "damage": 7,
+    "isGrab": false,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": null,
+   "pairSeen": false,
+   "lockSeen": false,
+   "hpDelta": 6.4,
+   "firstDmgT": 0.183,
+   "vThrowHitDone": null,
+   "whLogs": [],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.183,
+     "p1": "attack",
+     "p2": "hitstun",
+     "pair": false
+    },
+    {
+     "t": 0.475,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.683,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "2",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "2",
+    "damage": 12,
+    "isGrab": false,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "row:38",
+    "kind": "own",
+    "why": ""
+   },
+   "pairSeen": false,
+   "lockSeen": false,
+   "hpDelta": 11,
+   "firstDmgT": 0.275,
+   "vThrowHitDone": null,
+   "whLogs": [],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.275,
+     "p1": "attack",
+     "p2": "hitstun",
+     "pair": false
+    },
+    {
+     "t": 0.625,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 1.025,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "3",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "3",
+    "damage": 9,
+    "isGrab": false,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "row:203",
+    "kind": "own",
+    "why": ""
+   },
+   "pairSeen": false,
+   "lockSeen": false,
+   "hpDelta": 8.3,
+   "firstDmgT": 0.258,
+   "vThrowHitDone": null,
+   "whLogs": [],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.258,
+     "p1": "attack",
+     "p2": "hitstun",
+     "pair": false
+    },
+    {
+     "t": 0.567,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 1.125,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "4",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "4",
+    "damage": 18,
+    "isGrab": false,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "row:64",
+    "kind": "own",
+    "why": ""
+   },
+   "pairSeen": false,
+   "lockSeen": false,
+   "hpDelta": 16.5,
+   "firstDmgT": 0.258,
+   "vThrowHitDone": null,
+   "whLogs": [],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.258,
+     "p1": "attack",
+     "p2": "hitstun",
+     "pair": false
+    },
+    {
+     "t": 0.675,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.958,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "d+1",
+   "ok": false,
+   "err": null,
+   "atk": null,
+   "plan": {
+    "name": "row:216",
+    "kind": "own",
+    "why": ""
+   },
+   "pairSeen": false,
+   "lockSeen": false,
+   "hpDelta": 0,
+   "firstDmgT": null,
+   "vThrowHitDone": null,
+   "whLogs": [],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "d+2",
+   "ok": false,
+   "err": null,
+   "atk": null,
+   "plan": {
+    "name": "row:216",
+    "kind": "own",
+    "why": ""
+   },
+   "pairSeen": false,
+   "lockSeen": false,
+   "hpDelta": 0,
+   "firstDmgT": null,
+   "vThrowHitDone": null,
+   "whLogs": [],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "d/f+1",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "d/f+1",
+    "damage": 12,
+    "isGrab": false,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "row:216",
+    "kind": "own",
+    "why": ""
+   },
+   "pairSeen": false,
+   "lockSeen": false,
+   "hpDelta": 11,
+   "firstDmgT": 0.5,
+   "vThrowHitDone": null,
+   "whLogs": [],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.5,
+     "p1": "attack",
+     "p2": "hitstun",
+     "pair": false
+    },
+    {
+     "t": 0.85,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 1.183,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "d/f+2",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "d/f+2",
+    "damage": 12,
+    "isGrab": false,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "row:117",
+    "kind": "own",
+    "why": ""
+   },
+   "pairSeen": false,
+   "lockSeen": false,
+   "hpDelta": 11,
+   "firstDmgT": 0.275,
+   "vThrowHitDone": null,
+   "whLogs": [],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.275,
+     "p1": "attack",
+     "p2": "hitstun",
+     "pair": false
+    },
+    {
+     "t": 0.625,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 1.025,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "1+3",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "1+3",
+    "damage": 24,
+    "isGrab": true,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "row:202",
+    "kind": "own",
+    "why": ""
+   },
+   "pairSeen": false,
+   "lockSeen": true,
+   "hpDelta": 22,
+   "firstDmgT": 1.292,
+   "vThrowHitDone": true,
+   "whLogs": [
+    "[WH-THROW] cainelias vs pantera: no file pair (no branch matches situation 2 at this distance (UNMAPPED for this situation)) \u2014 legacy lock"
+   ],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.4,
+     "p1": "throwing",
+     "p2": "thrown",
+     "pair": false
+    },
+    {
+     "t": 0.7,
+     "p1": "throwExec",
+     "p2": "thrownExec",
+     "pair": false
+    },
+    {
+     "t": 1.608,
+     "p1": "idle",
+     "p2": "knockdown",
+     "pair": false
+    },
+    {
+     "t": 2.158,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "2+4",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "2+4",
+    "damage": 28,
+    "isGrab": true,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "row:277",
+    "kind": "donor",
+    "why": "donor row 277"
+   },
+   "pairSeen": false,
+   "lockSeen": true,
+   "hpDelta": 25.7,
+   "firstDmgT": 1.292,
+   "vThrowHitDone": true,
+   "whLogs": [
+    "[WH-THROW] cainelias vs pantera: no file pair (no branch matches situation 2 at this distance (UNMAPPED for this situation)) \u2014 legacy lock"
+   ],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.4,
+     "p1": "throwing",
+     "p2": "thrown",
+     "pair": false
+    },
+    {
+     "t": 0.7,
+     "p1": "throwExec",
+     "p2": "thrownExec",
+     "pair": false
+    },
+    {
+     "t": 1.608,
+     "p1": "idle",
+     "p2": "knockdown",
+     "pair": false
+    },
+    {
+     "t": 2.158,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  }
+ ],
+ "setup": {
+  "roundState": "fight",
+  "p1": {
+   "id": "cainelias",
+   "t3dir": "king_on_pantera_leoman",
+   "t3bank": "king",
+   "t3actions": 22,
+   "bones": 50
+  },
+  "p2": {
+   "id": "pantera",
+   "t3dir": "king_on_pantera_leoman",
+   "t3bank": "king",
+   "t3actions": 22,
+   "bones": 22
+  }
+ },
+ "measure": {
+  "boneRange": {
+   "Hips": [
+    0,
+    0.19,
+    0
+   ],
+   "Head": [
+    0.114,
+    0.206,
+    0.061
+   ],
+   "LeftHand": [
+    0.137,
+    0.374,
+    0.069
+   ],
+   "RightHand": [
+    0.054,
+    0.378,
+    0.095
+   ],
+   "LeftFoot": [
+    0.183,
+    0.106,
+    0.103
+   ],
+   "RightFoot": [
+    0.088,
+    0.138,
+    0.098
+   ]
+  },
+  "maxBoneRange": 0.378,
+  "stanceHeight": 1.809,
+  "stanceMinY": 0.017
+ },
+ "logs": [
+  "[http 404] http://127.0.0.1:8831/deploy-manifest.json",
+  "[http 404] http://127.0.0.1:8831/roster/cainelias/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8831/game/js/intro-interactions.js"
+ ]
+}
