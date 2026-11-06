@@ -11,18 +11,18 @@
 - **Stance entries completed from each fighter's own data (2026-11-02 closeout):** NO ENTRY **1,363 → 593** (`docs/handoffs/STANCE-NOENTRY-CLOSEOUT-2026-11-02.md`).
 - **Duplicate stance spellings + Megami's Izumo entry (roster-100 S9, 2026-11-05):** NO ENTRY **593 → 561** — `stance_alias` in the moveset data slots the duplicate-spelling rows on the entered spelling (phantom INS → IND, POISON_WIND → POI; cyborgx BKP → BACKUP, CLOCKWORK → CLK), and Megami's own `stance_after` wires f+1+2 → IZU (`docs/movesets/NO-ENTRY-S9-REAUDIT-2026-11-05.md`).
 
-**Left (2026-11-05):** the tackle family (owner gameplay decision), Pond's bank-linked stance rows (entry moves identified, per-row clip verification still owed), the dataset row-id artifact keys (byou `t7.*`, megami `t8.*` — no input notation exists for them anywhere in the repo), Zen's stance rows (owner no-bank decision), and genuine no-entry-move gaps — full accounting in `docs/movesets/NO-ENTRY-S9-REAUDIT-2026-11-05.md`.
+**Left (2026-11-05):** the tackle family (owner gameplay decision), Pond's SZN / DEEP / REV / RAGE rows (no entry move named anywhere in her data — Wave 3 item 6 record in the roster-100 handoff), the dataset row-id artifact keys (byou `t7.*`, megami `t8.*` — no input notation exists for them anywhere in the repo), Zen's stance rows (owner no-bank decision), and genuine no-entry-move gaps — full accounting in `docs/movesets/NO-ENTRY-S9-REAUDIT-2026-11-05.md`.
 - **Crouch-dash + sidestep-side contexts (roster-100 L5, 2026-11-06):** NO ENTRY **561 → 539** — `CD.` resolves while a fighter's OWN declared crouch-dash entry move is in its window (`cd_entry` in the moveset data: rin `f,n,d,d/f`, demonio `f,n,d,df`, gyou `d,d/f`; the buffer latches the context off the f,n,d,d/f motion itself), and `SSL.` / `SSR.` resolve during a sidestep toward the foe's left / right (`ssSide` in `fighter.js` `_inputCtx`, side derived from the engine's own flank convention). Fight-proven: demonio/rin/gyou CD rows fire from the motion, Purplerain's SSL.3+4 and SSR.3+4 fire off the matching sidesteps. CD rows for awapop / pantera / tobi stay NO ENTRY — their files declare no crouch-dash entry anywhere (no entry move named, no `stance_after` into CD). Guard test: `test/cd-ss-contexts.test.mjs`.
+- **Pond's stance entries (roster-100 Wave 3 item 6, 2026-11-06):** NO ENTRY **539 → 483** — Pond's `stance_after` now wires the entries her own data declares, on every playable spelling: LAB via b+3+4 (her T7-layer row is named "Labyrinth"), MIST via 3+4 (her canon row is named "MIST"; the T7-layer spelling is named "Haze"), STRIDE via qcf (her canon row is named "WATER STRIDE"). `stance_alias` unifies HAZ into MIST — the HAZ rows are renamed duplicates of the canon MIST rows, so the alias slots the two HAZ-only inputs (HAZ.F / HAZ.U) onto MIST.F / MIST.U and the canon rows keep the five shared strike inputs. Fight-proven through the real input path (entries end in their stances; follow-ups fire LAB.1 / MIST.1 / STRIDE.1): `docs/proof/2026-11-06/item6-pond-stances/`. SZN / DEEP / REV / RAGE stay NO ENTRY — no entry move is named for them anywhere in her data (SZN's "Blind Labyrinth" is a from-SZN row, input `SZN.B`, not an entry). Guard test: `test/pond-stances.test.mjs`.
 
 
-55 fighters, 15737 move inputs, 5577 of them state / stance-prefixed: engine context 2881, stance entered by a move 2034, chain-throw stage 123, **NO ENTRY 539** (can never fire).
+55 fighters, 15737 move inputs, 5577 of them state / stance-prefixed: engine context 2881, stance entered by a move 2090, chain-throw stage 123, **NO ENTRY 483** (can never fire).
 
 ## Prefixes nothing in the game enters, by moves affected
 
 | prefix | moves | fighters |
 |---|---|---|
 | TACKLE | 118 | rin, sha, kai, retsu, zen, pantera, demonio, diablo, skull, samura1, sakura, zui +17 |
-| LAB | 39 | pond |
 | DES | 32 | cyborgx |
 | t7 | 25 | byou |
 | KND | 20 | byou, rave |
@@ -37,7 +37,6 @@
 | DVS | 13 | rin, demonio |
 | BT_RFF | 10 | gyou, tobi |
 | RAI | 8 | zen |
-| HAZ | 7 | pond |
 | MD1 | 6 | kai, kingtyrant, star |
 | MD2 | 6 | kai, kingtyrant, star |
 | CH | 6 | waterfall, dio, negativo, slice, chordz |
@@ -45,8 +44,6 @@
 | DFLIP | 6 | dio |
 | BT | 6 | koreshi |
 | DEEP | 5 | pond |
-| MIST | 5 | pond |
-| STRIDE | 5 | pond |
 | WFL | 4 | phantom, koreshi |
 | CROUCHING | 4 | samura1, nightwolf |
 | CHARGE | 4 | kinpo, yukihyo |
@@ -139,7 +136,7 @@
 | charger | 218 | 15 | 15 | 0 | 0 | 0 |  |
 | dorowani | 108 | 17 | 17 | 0 | 0 | 0 |  |
 | chatur | 214 | 31 | 31 | 0 | 0 | 0 |  |
-| pond | 312 | 176 | 53 | 39 | 4 | 80 | LAB (39), SZN (14), HAZ (7), DEEP (5), MIST (5), STRIDE (5), REV (3), RAGE (2) |
+| pond | 312 | 176 | 53 | 95 | 4 | 24 | SZN (14), DEEP (5), REV (3), RAGE (2) |
 | ryusan | 226 | 23 | 20 | 3 | 0 | 0 |  |
 | tobi | 360 | 193 | 65 | 117 | 0 | 11 | BT_RFF (5), TACKLE (4), CD (2) |
 | megami | 324 | 73 | 50 | 19 | 0 | 4 | t8 (4) |
