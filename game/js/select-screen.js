@@ -251,8 +251,10 @@ export class PreviewPane {
               // gyro-shoulder failure), even when the hands stay
               // within reach. PAIRED READING (Wave 3 item 7,
               // 2026-11-06): the old world-space reading rejected
-              // every measured bank stance (18 of 18, 0.69-2.50 rad)
-              // because a real kamae turns the whole torso side-on —
+              // nearly every measured bank stance (18 of 19 whose
+              // gate ran, 0.69-2.50 rad; the one pass, Cainelias,
+              // landed under the reading by bind geometry) because a
+              // real kamae turns the whole torso side-on —
               // intrinsic FK on the clips' own skeletons shows the
               // shoulder's world swing IS the chest's turn (Pantera:
               // chest 0.73 vs shoulder-world 0.69 at the gate sample;
