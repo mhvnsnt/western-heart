@@ -129,13 +129,13 @@ export const MODEL_URLS = {
   // NIGHTWOLF Attire 1 (owner 2026-10-18, Tripo pull 5b0835eb "tribal warrior"):
   // his DEFAULT attire per roster/nightwolf/attires/ATTIRE-SLOTS.md — tribute to
   // Serena Misae Brown. Unrigged static; playable swap rides the auto-rig pass.
-  'nightwolf-attire1': '../roster/nightwolf/attires/attire1/model.glb',
+  'nightwolf-attire1': '../roster/nightwolf/attires/attire1/model-rigged.glb',
   'king-tyrant': 'assets/models/king-tyrant.glb',
   // KING TYRANT Attires 1-4 (owner 2026-10-19, Tripo pulls — see
   // roster/king-tyrant/attires/ATTIRE-SLOTS.md): White Tyrant / Tyrant King /
   // Black Snow / Fight Gear. The in-game base build ladders back. Unrigged
   // statics; auto-rig queued (cape/jacket cloth-rig tasks recorded, not blocking).
-  'king-tyrant-attire1': '../roster/king-tyrant/attires/attire1/model.glb',
+  'king-tyrant-attire1': '../roster/king-tyrant/attires/attire1/model-rigged.glb',
   'king-tyrant-attire2': '../roster/king-tyrant/attires/attire2/model.glb',
   'king-tyrant-attire3': '../roster/king-tyrant/attires/attire3/model.glb',
   'king-tyrant-attire4': '../roster/king-tyrant/attires/attire4/model.glb',
@@ -216,7 +216,7 @@ export const MODEL_URLS = {
   dxmmii: 'assets/models/dxmmii.glb',
   rave: 'assets/models/rave.glb',
   // Cain Elias — Vain Abel's brother, Undertaker archetype (owner 2026-10-19, Tripo pulls).
-  'cain-elias': '../roster/cain-elias/attires/attire1/model.glb',
+  'cain-elias': '../roster/cain-elias/attires/attire1/model-rigged.glb',
   'cain-elias-attire2': '../roster/cain-elias/attires/attire2/model.glb',
   // Vain Abel — Attire 2 (owner 2026-10-20, Tripo pull).
   'vainabel-attire1': '../roster/vainabel/attires/attire1/model-rigged.glb',
