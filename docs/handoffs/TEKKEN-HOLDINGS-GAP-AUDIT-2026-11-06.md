@@ -70,7 +70,7 @@ WH checkpoints `gap-closure-w7b/w7d/w7e` (PRs #459/#521/#485); WH `teardown/tekk
 |---|---|---|
 | ISO | **HELD, byte-perfect** | GRE release `tekken5-iso-v1`: 10 assets, 4,483,548,101 B stored; ISO = 4,483,547,136 B, **MD5 `8c20e626260890d5562e9e6f628d658f`**, SHA256 `7831994299…`. (WH release `tekken5-ps2-v1` exists but carries **0 assets** — pointer only.) |
 | Full disc extraction | **HELD (raw)** | GRE release `tekken5-disc-v1`: 14 assets, 4,039,180,062 B — TK5DATA0/1/2/3 raw + DATA0 head. |
-| DATA0 payloads | **HELD, CRACKED + EXTRACTED (2026-11-06)** | 44 MPEG-2 FMVs, 1,948,071,008 B payload, GRE release `tekken5-data0-cracked-20261106` (sha256 manifest + format doc). |
+| DATA0 payloads | **HELD, CRACKED + EXTRACTED (2026-11-06)** | 44 MPEG-2 FMVs, 1,955,267,488 B payload, GRE release `tekken5-data0-cracked-20261106` (sha256 manifest + format doc). |
 | DATA1 split | **HELD** | 1,571 files split via the recovered file table; 1,355 checksum-verified, 216 empty/sentinel (W7b). |
 | Overlays E0–E4 (DATA3≡DATA5) | **HELD, decoded** | LZSS cracked; deobfuscated ELFs byte-identical between DATA3/DATA5. |
 | E5/E6 (roster module) | **HELD, decoded** | LZSS solved; 33-fighter roster + name tables extracted — GRE `tekken5/data/roster.json` (35,854 B), `name_tables.json` (97,621 B). |
