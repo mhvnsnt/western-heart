@@ -168,3 +168,218 @@ test('input context: backturned comes from the facing state and coexists with a 
   assert.equal(ctx.backturned, true);
   assert.equal(ctx.stance, 'RFF', 'the character stance survives entering BT');
 });
+
+/* ---- BT GUARD: Tekken-strict + the multi-arm exception (owner rulings
+   2026-11-06: Tekken-strict for everyone; multi-arm fighters keep BT guard
+   under the hybrid handicap — bleed chip + SoulCalibur guard-break strain.
+   Design + strain provenance: game/js/bt-guard.js.) ---- */
+const BG = await import(join(ROOT, 'game/js/bt-guard.js')).catch(() => null);
+function makeHitFighter(id) {
+  const f = makeFighter();
+  f.char = { id }; f._movesetId = id;
+  f.hp = 180; f.maxHp = 180; f.meter = 0; f.maxMeter = 100; f.soulMeterMult = 1;
+  f.stats = { speed: 2.8, jump: 8, power: 1, defense: 1, chipMult: 1 };
+  f._stickDir = 'b';            // holding back: standing guard posture
+  f.isPlayer = true;
+  f._btGuardCfg = BG ? BG.btGuardFor(id, f.char) : null;
+  f._btStrain = 0; f._btGuardBroken = false;
+  f._addRecoverable = F.Fighter.prototype._addRecoverable;
+  f._pickReaction = F.Fighter.prototype._pickReaction;
+  f._knockout = () => { f.dead = true; };
+  return f;
+}
+function makeAttacker() {
+  const a = Object.create(F.Fighter.prototype);
+  a.root = { position: { x: 2, y: 0, z: 0 } };
+  a.stats = { power: 1, chipMult: 1 };
+  a._clock = 0; a._vtriggerT = 0; a._maxT = 0; a._vbreakT = 0; a.kindle = null;
+  return a;
+}
+const MID = { damage: 16, knock: 2, hitWord: 0x217 };        // mid: standing-guard bit only
+const LOW = { damage: 12, knock: 2, hitWord: 0x10F };        // low: crouch-guard bit only
+const THROW = { damage: 20, knock: 2, isGrab: true, hitWord: 0x800 };
+const KD_MOVE = { damage: 10, knock: 8, hitWord: 0x217 };    // knock >= 6: knockdown class
+
+test('BT guard (a): back-turned + holding guard -> the hit lands UNGUARDED (Tekken-strict)', (t) => {
+  if (!F) { t.skip('fighter.js not in this checkout'); return; }
+  const f = makeHitFighter('pond'); const atk = makeAttacker();
+  f.state = 'block'; f._bt = true;
+  const hpBefore = f.hp;
+  const r = f.receiveHit({ ...MID }, atk);
+  assert.equal(r, 'hit', 'no block while back-turned: full hit resolution');
+  assert.equal(hpBefore - f.hp, MID.damage, 'full damage, not chip');
+  assert.equal(f.state, 'hitstun');
+  assert.equal(f._bt, false, 'the landed hit resolves BT, as #1611 left it');
+});
+
+test('BT guard (b): facing + holding guard -> blocks exactly as before', (t) => {
+  if (!F) { t.skip('fighter.js not in this checkout'); return; }
+  const f = makeHitFighter('pond'); const atk = makeAttacker();
+  f.state = 'block'; f._bt = false;
+  const hpBefore = f.hp;
+  const r = f.receiveHit({ ...MID }, atk);
+  assert.equal(r, 'block');
+  assert.ok(Math.abs((hpBefore - f.hp) - MID.damage * 0.12) < 1e-9, 'front-guard chip stays 0.12');
+  assert.equal(f.meter, 4, 'front guard still earns +4 meter');
+  assert.equal(f.vx, -MID.knock * 0.5, 'front-guard pushback unchanged');
+});
+
+test('BT guard (c): turn around via a #1611 exit path -> guard blocks again', (t) => {
+  if (!F) { t.skip('fighter.js not in this checkout'); return; }
+  const f = makeHitFighter('pond'); const atk = makeAttacker();
+  f._bt = true; f.tryCrouch(true);                 // crouch = a #1611 turn-around
+  assert.equal(f._bt, false);
+  f.state = 'block'; f._stickDir = 'b';
+  assert.equal(f.receiveHit({ ...MID }, atk), 'block', 'guard restored the moment BT cleared');
+});
+
+test('BT guard (d): a BT defender takes the #1611 back-hit knockdown', (t) => {
+  if (!F) { t.skip('fighter.js not in this checkout'); return; }
+  const f = makeHitFighter('pond'); const atk = makeAttacker();
+  f._bt = true; f.state = 'idle';
+  const r = f.receiveHit({ ...KD_MOVE }, atk);
+  assert.equal(r, 'hit');
+  assert.equal(f.state, 'knockdown');
+  assert.equal(f._kdHeadTowards, true, 'hit in the back: falls head towards the attacker');
+  assert.equal(f._kdFaceDown, true, 'hit in the back: falls face down (FDFA)');
+});
+
+test('BT guard (e): the multi-arm exception — Chatur BLOCKS back-turned, Pond eats the hit', (t) => {
+  if (!F || !BG) { t.skip('bt-guard.js not in this checkout'); return; }
+  const atk = makeAttacker();
+  const c = makeHitFighter('chatur');
+  assert.ok(c._btGuardCfg, 'chatur resolves a bt_guard config from her model data');
+  c.state = 'block'; c._bt = true;
+  assert.equal(c.receiveHit({ ...MID }, atk), 'block', 'the back pair guards');
+  assert.equal(c._bt, true, 'a BT block never clears BT (clears_bt: false)');
+  const p = makeHitFighter('pond');
+  assert.equal(p._btGuardCfg, null, 'pond has no exception');
+  p.state = 'block'; p._bt = true;
+  assert.equal(p.receiveHit({ ...MID }, atk), 'hit', 'same setup, normal fighter: Tekken-strict');
+});
+
+test('BT guard (f): BT block bleeds 0.30 chip, earns NO meter, pushes back at half rate', (t) => {
+  if (!F || !BG) { t.skip('bt-guard.js not in this checkout'); return; }
+  const atk = makeAttacker();
+  const front = makeHitFighter('pond'); front.state = 'block';
+  const frontHp = front.hp;
+  assert.equal(front.receiveHit({ ...MID }, atk), 'block');
+  const frontChip = frontHp - front.hp, frontPush = Math.abs(front.vx);
+  const c = makeHitFighter('chatur'); c.state = 'block'; c._bt = true;
+  const hpBefore = c.hp;
+  assert.equal(c.receiveHit({ ...MID }, atk), 'block');
+  const btChip = hpBefore - c.hp;
+  assert.ok(Math.abs(btChip - MID.damage * 0.30) < 1e-9, 'BT chip = the 0.30 bleed rate');
+  assert.ok(Math.abs(btChip / frontChip - 0.30 / 0.12) < 1e-9, 'BT chip scales off the same formula as front guard');
+  assert.equal(c.meter, 0, 'meter_on_block is 0 (front guard earned +4)');
+  assert.ok(Math.abs(Math.abs(c.vx) - frontPush * 0.5) < 1e-9, 'pushback at pushback_mult 0.5');
+  assert.ok(Math.abs((c._recoverable || 0) - btChip) < 1e-9, 'bled chip feeds the recoverable pool, as front guard');
+  assert.ok(Math.abs(c._btStrain - 0.75 * MID.damage) < 1e-9, 'one block of strain: 0.75 x damage');
+});
+
+test('BT guard (g): strain accumulates, warnings fire at 60/80, at max the guard BREAKS', (t) => {
+  if (!F || !BG) { t.skip('bt-guard.js not in this checkout'); return; }
+  const atk = makeAttacker();
+  const c = makeHitFighter('chatur'); c.state = 'block'; c._bt = true;
+  // 16-dmg mid -> 12 strain per block: 5 blocks = 60 (warn 1), 7 = 84 (warn 2), 9 = capped 100 (break)
+  for (let i = 0; i < 5; i++) assert.equal(c.receiveHit({ ...MID }, atk), 'block');
+  assert.equal(c.btGuardState().warn, 1, 'yellow warning at 60% strain (SC)');
+  for (let i = 0; i < 2; i++) assert.equal(c.receiveHit({ ...MID }, atk), 'block');
+  assert.equal(c.btGuardState().warn, 2, 'red warning at 80% strain (SC)');
+  assert.equal(c.receiveHit({ ...MID }, atk), 'block');
+  assert.equal(c.receiveHit({ ...MID }, atk), 'block', 'the block that reaches strain max still blocks');
+  const st = c.btGuardState();
+  assert.equal(st.strain, 100); assert.equal(st.broken, true, 'the back pair is spent');
+  const hpBefore = c.hp;
+  assert.equal(c.receiveHit({ ...MID }, atk), 'hit', 'next high/mid lands unguarded while still back-turned');
+  assert.equal(hpBefore - c.hp, MID.damage, 'post-break hit is full damage, not chip');
+});
+
+test('BT guard (h): strain resets when _bt ends; a fresh BT stint guards again', (t) => {
+  if (!F || !BG) { t.skip('bt-guard.js not in this checkout'); return; }
+  const atk = makeAttacker();
+  const c = makeHitFighter('chatur'); c.state = 'block'; c._bt = true;
+  for (let i = 0; i < 9; i++) c.receiveHit({ ...MID }, atk);   // break the pair
+  assert.equal(c.btGuardState().broken, true);
+  c.tryCrouch(true);                                            // a real BT exit (#1611 path)
+  assert.equal(c._bt, false);
+  c.update(0.016, OPP);                                         // the strain watchdog tick
+  assert.deepEqual([c.btGuardState().strain, c.btGuardState().broken], [0, false], 'strain spent with the stint');
+  c.state = 'block'; c._stickDir = 'b'; c._bt = true;           // fresh BT stint
+  assert.equal(c.receiveHit({ ...MID }, atk), 'block', 'the back pair guards again');
+});
+
+test('BT guard (i): lows and throws beat the BT guard clean, even at zero strain', (t) => {
+  if (!F || !BG) { t.skip('bt-guard.js not in this checkout'); return; }
+  const atk = makeAttacker();
+  const c = makeHitFighter('chatur'); c.state = 'block'; c._bt = true;
+  const hpLow = c.hp;
+  assert.equal(c.receiveHit({ ...LOW }, atk), 'hit', 'lows are not covered (high/mid only)');
+  assert.equal(hpLow - c.hp, LOW.damage, 'the low lands at 100%, no chip');
+  const c2 = makeHitFighter('chatur'); c2.state = 'block'; c2._bt = true;
+  const hpThrow = c2.hp;
+  const r = c2.receiveHit({ ...THROW }, atk);
+  assert.notEqual(r, 'block', 'throws are never BT-guarded');
+  assert.equal(hpThrow - c2.hp, THROW.damage, 'the throw lands at 100%');
+});
+
+/* The multi-arm table is DERIVED from the fighters' in-game models, not a
+   name list: re-run the same arm-chain detector
+   (tools/anatomy/bt_guard_arm_scan.py) over the GLB bytes and require the
+   checked-in table to match — every entry qualifies, and the two
+   owner-named fighters whose data does not carry the extra pair stay out. */
+function armChainRoots(glbPath) {
+  const buf = fs.readFileSync(glbPath);
+  const clen = buf.readUInt32LE(12);
+  const js = JSON.parse(buf.subarray(20, 20 + clen).toString('utf8'));
+  const nodes = js.nodes || [];
+  const joints = new Set();
+  for (const s of js.skins || []) for (const j of s.joints || []) joints.add(j);
+  const parent = {};
+  nodes.forEach((n, i) => { for (const c of n.children || []) parent[c] = i; });
+  const armWord = (nm) => ['arm', 'shoulder', 'elbow', 'wrist', 'hand', 'clavicle'].some((k) => nm.includes(k));
+  const roots = [];
+  for (const j of [...joints].sort((a, b) => a - b)) {
+    const nm = (nodes[j].name || '').toLowerCase();
+    const isStart = nm.includes('shoulder') || nm.includes('upper_arm') || nm.includes('upperarm') ||
+      nm === 'leftarm' || nm === 'rightarm' || (nm.endsWith('arm') && !nm.includes('fore'));
+    const p = parent[j];
+    if (!isStart || (p != null && armWord((nodes[p].name || '').toLowerCase()))) continue;
+    let hands = 0; const stack = [j];
+    while (stack.length) {
+      const x = stack.pop();
+      if ((nodes[x].name || '').toLowerCase().includes('hand')) hands++;
+      for (const c of nodes[x].children || []) stack.push(c);
+    }
+    if (hands) roots.push(nodes[j].name);
+  }
+  return roots;
+}
+
+test('BT guard data: the multi-arm table matches the models on disk (derived, not named)', (t) => {
+  if (!BG) { t.skip('bt-guard.js not in this checkout'); return; }
+  for (const [id, entry] of Object.entries(BG.BT_GUARD_MULTI_ARM)) {
+    const p = join(ROOT, entry.model);
+    if (!fs.existsSync(p)) { t.skip(entry.model + ' not in this checkout'); return; }
+    const roots = armChainRoots(p);
+    assert.ok(roots.length > 2, id + ': in-game model carries more than one arm pair');
+    assert.deepEqual([...roots].sort(), [...entry.chains].sort(), id + ': checked-in chains match the GLB');
+  }
+  // The documented negatives: the exception activates when their model
+  // data carries the extra pair — until then the flag stays OFF.
+  const negatives = {
+    'dxmmii (attire1)': 'roster/dxmmii/attires/attire1/model-rigged.glb',
+    'dxmmii (patchwork)': 'roster/dxmmii/attires/patchwork-dj/dxmmii-patchwork-rigged.glb',
+    'zen (attire1)': 'roster/zen/attires/attire1/model-rigged.glb',
+    'zen (tentacle)': 'roster/zen/tentacle/model-rigged.glb',
+    'zen (spirit)': 'roster/zen/spirit/model-rigged.glb',
+  };
+  for (const [label, rel] of Object.entries(negatives)) {
+    const p = join(ROOT, rel);
+    if (!fs.existsSync(p)) continue;
+    assert.ok(armChainRoots(p).length <= 2, label + ': no extra arm pair in current data');
+  }
+  assert.equal(BG.btGuardFor('dxmmii-patchwork', { id: 'dxmmii-patchwork' }), null);
+  assert.equal(BG.btGuardFor('zen', { id: 'zen' }), null);
+  assert.ok(BG.btGuardFor('chatur', { id: 'chatur' }), 'chatur qualifies on her model data');
+});

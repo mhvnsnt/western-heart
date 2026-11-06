@@ -130,4 +130,83 @@ declaration:
   from #1601/#1603 all verified by the regression family).
 - Blocking while back-turned keeps the engine's existing guard rules; Tekken
   removes guard in BT, but that is a combat-balance change the data does not
-  dictate, so it is deliberately out of this fix's scope.
+  dictate, so it is deliberately out of this fix's scope. **Superseded the
+  same day by the owner's rulings below — see the addendum.**
+
+## Addendum 2026-11-06 — BT guard: Tekken-strict + the multi-arm hybrid
+
+Three owner rulings, same day, after the deliberate omission above was
+flagged to him:
+
+1. **Tekken-strict (owner ~15:21 CST: "Yes I want it Tekken strict").**
+   While `Fighter._bt` holds, guard is DISABLED: an incoming hit resolves
+   through the existing unguarded path in `receiveHit` (full hit, normal
+   reactions, the back-hit knockdown flags from the fix above), regardless
+   of guard input. The moment `_bt` clears, guard works exactly as before.
+   No damage change, no counter-hit addition, no BT entry/exit change, no
+   moveset JSON edits.
+2. **The multi-arm exception (owner ~15:23 CST):** fighters with more than
+   one arm pair keep BT guard. Implemented DATA-DRIVEN — derived from the
+   fighter's in-game model (extra arm chain in the rig) by
+   `tools/anatomy/bt_guard_arm_scan.py`; the checked-in table lives in
+   `game/js/bt-guard.js` and `test/back-turned.test.mjs` re-derives it from
+   the GLB bytes on every run.
+   - **Chatur QUALIFIES.** Her in-game model
+     (`roster/rahkasa/attires/attire1/model-rigged-textured.glb`, 264
+     joints) carries 4 arm chain roots: the primary pair (LeftArm /
+     RightArm) plus the independently rooted waist pair
+     (DEF-upper_arm.L.002 / DEF-upper_arm.R.002).
+   - **DXMMII does NOT verify on current data** — attire1, patchwork-dj
+     and `game/assets/models/dxmmii.glb` each carry one pair (the `.001`
+     bones are mid-chain segments, not a second pair); attire2 is
+     unrigged. **Zen does NOT verify either** — attire1 / oversoul /
+     tentacle carry one pair (tentacles are not arm chains), spirit
+     carries none. For both, the exception activates when their model
+     data carries the extra pair; the flag was NOT faked.
+   - Roster-wide sweep of `game/assets/models/` (64 GLBs, same detector):
+     no other model carries more than one pair.
+3. **The handicap — the owner's hybrid (owner ~15:36 CST: "Bleed design
+   go with that but we build the guard break design as a layer into it
+   from soul calibers files, so we just invented something new
+   awesome."):** bleed base + a SoulCalibur guard-break layer, wired as
+   the `bt_guard` design in `game/js/bt-guard.js` (per-fighter data hook:
+   a fighter's own `btGuard` data block overrides field-by-field). While
+   back-turned and guarding, a qualifying fighter blocks highs/mids only;
+   every blocked hit bleeds **30% chip** through the existing chip
+   formula/recoverable pool (front guard: 0.12), earns **zero meter**
+   (front guard: +4), pushes back at **half rate**, does **not** clear
+   `_bt`, and adds **strain**. Lows and throws land 100% clean. At strain
+   max the back pair is spent — BT guard off for the rest of that BT
+   stint (Tekken-strict until a real BT exit); **strain resets when `_bt`
+   ends**. HUD tell (SC-style): the defender's own health-bar fill glows
+   **yellow at 60% strain, red at 80%** (`.bt-strain-1` / `.bt-strain-2`,
+   toggled by `UI._hp` from `Fighter.btGuardState()`).
+
+**Strain derivation (provenance mandatory).** Holdings check first: NO
+extracted SoulCalibur system data is held — the SCVI binaries were never
+acquired (`teardown/scvi-doa6-acquisition-2026-10-14.md`), and
+`teardown/soulcalibur-6/docs/SCVI-MECHANICS.md` is our own qualitative
+research write-up. The numbers therefore come from DOCUMENTED system data
+(SuperCombo Wiki, SoulCalibur VI / System — extracted game data, read
+2026-11-06): guard stamina accumulates 0→100%, bar glows yellow at 60%,
+red at 80%, Guard Crush at 100%, Guard Impact costs 10%; 240 HP all
+characters; move levels lights 0–21 / mediums 22–34 / heavies 35+; per-move
+Guard Burst values published per move (16 dmg → 5%; 18–20 → 9–14%; 30 → 9%;
+32 → 18%; 36 → 15%; 40 → 25%; 52 → 41.67%). WH's scale, measured from
+`game/assets/movesets/chatur.json` (281 damaging non-grab moves): median
+13, p75 16, max 60, basics 7/11. **The fitted rule is
+`strain = 0.75 × blocked move damage`** (listed damage, not stat-scaled —
+in SC, Guard Burst is a property of the attacking move). Anchors: jab 7 →
+5.25 ≈ SC light ~5%; medium ~16 → 12 ≈ SC 9–15%; heavy 30 → 22.5 ≈ SC
+18–25%; max 60 → 45 ≈ SC break ceiling 42–50%. Break profile: ~19 jabs,
+~8 mediums (≈2–3 medium strings), ~4–5 heavies. **The 100/60/80 gauge is
+documented SC data + the owner's spec; the 0.75 slope and the WH↔SC scale
+conversion are JUDGMENT CALLS fitted to the documented anchors — they are
+not SC data.** Observation (not implemented): in SC, small quick attacks
+cannot crush even at 100% stamina; the owner's break-at-max design governs
+and is what shipped.
+
+Tests: `test/back-turned.test.mjs` cases (a)–(i) + the model-derivation
+test; the #1611 regression family (cd-ss-contexts, pond-stances,
+stance-reachability, input-slotting, yaotome-stance, dead-input) re-run
+green; full CI suite green.

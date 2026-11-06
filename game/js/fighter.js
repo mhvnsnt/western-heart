@@ -64,6 +64,7 @@ import { selectReactionSlot, reactionSlotBank } from './t3-reaction-select.js';
 import { FE_AIR_BLEND_WEIGHT, beginAirCatch, sampleAirBlend } from './air-reaction-blend.js';
 import { soulStates } from './full-movelist.js';
 import { t3ConditionHolds } from './t3-conditions.js';
+import { btGuardFor } from './bt-guard.js';
 
 // ---- Frame data: REAL Tekken 3 data (teardown/tekken3/movesets/moveset_king.json, moveset_jin.json)
 // NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO in Western Heart. The 'jin' moveset family is now 'demonio'.
@@ -587,6 +588,17 @@ export class Fighter {
     // 'NSS.BT.d+1'), it has no timer (it ends by turning around, attacking, or being hit — see
     // the facing block in update()), and the body actually faces away while it holds.
     this._bt = false;
+    // BACK-TURNED GUARD (owner rulings 2026-11-06, game/js/bt-guard.js):
+    // Tekken-strict — guard is DISABLED while _bt holds (receiveHit routes
+    // to the unguarded path) — EXCEPT multi-arm fighters (a second arm pair
+    // verified in the fighter's model data), who guard from BT under the
+    // owner's hybrid handicap: 30% bleed chip, no meter, half pushback,
+    // BT never cleared by a block, and SC-style strain that spends the
+    // back pair at strainMax until _bt ends. _btGuardCfg is null for
+    // everyone else (Tekken-strict). Strain state is per-BT-stint: the
+    // watchdog in update() resets it the moment _bt is observed clear.
+    this._btGuardCfg = btGuardFor(charData.id, charData);
+    this._btStrain = 0; this._btGuardBroken = false;
     this._juggle = 0; this._rageUsed = false; this._queuedNext = null; this._queuedAfter = null;
     this._stepChain = null; // whole-string step chain (Batch 1 step plans): {key, steps, idx}
     this._stringGraceUntil = 0; // wall-clock end of the post-move string window (see _tryAttackFresh)
@@ -2703,6 +2715,20 @@ export class Fighter {
   /* ---------------- defense / damage ---------------- */
   isBlocking() { return this.state === 'block'; }
 
+  /* Back-turned guard state for the HUD strain tell (main.js UI._hp)
+     and tests: strain on the back pair, the SC-style warning level
+     (0 none / 1 at strainWarn1 / 2 at strainWarn2), whether the pair
+     is spent for this BT stint, and whether BT guard is available at
+     all. Fighters without the multi-arm exception report enabled
+     false and never accumulate strain. */
+  btGuardState() {
+    const cfg = this._btGuardCfg;
+    if (!cfg) return { enabled: false, strain: 0, warn: 0, broken: false };
+    const strain = this._btStrain || 0;
+    const warn = strain >= cfg.strainWarn2 ? 2 : strain >= cfg.strainWarn1 ? 1 : 0;
+    return { enabled: true, strain, warn, broken: !!this._btGuardBroken };
+  }
+
   /* Normalized world-space vector pointing AWAY from `attacker` on the
      ground plane (brawler knockback direction). */
   _awayFrom(attacker) {
@@ -2754,8 +2780,68 @@ export class Fighter {
     // attacker. Standing guard blocks highs/mids, crouching guard blocks lows; throws and
     // unblockables carry no guard bits.
     const word = move.hitWord ?? Fighter.defaultWord(move);
-    const guarded = !move.unblockable && !move.isGrab && facingAttacker && (this._guardBits() & word) !== 0;
-    if (attacker) attacker._t3Contact = { t: attacker._clock || 0, guarded }; // T3 conditions 1 / 0x1A / 0x1B / situations
+    let guarded = !move.unblockable && !move.isGrab && facingAttacker && (this._guardBits() & word) !== 0;
+    // TEKKEN-STRICT BT GUARD (owner ruling 2026-11-06, game/js/bt-guard.js):
+    // while back-turned, guard is DISABLED — the hit falls through to the
+    // existing unguarded path below (full hit, normal reactions, and the
+    // back-hit knockdown flags that read _bt further down), whatever the
+    // defender's guard input. It works again the moment _bt clears.
+    // EXCEPTION: a multi-arm fighter (cfg from its model data) guards from
+    // BT against standing-guard levels only — (word & 0x10) is exactly the
+    // standing-guard bit, i.e. high / mid / special-mid; lows carry only
+    // the crouch-guard bit and throws/unblockables are already excluded
+    // above, so both land clean — under the hybrid handicap branch below.
+    let btGuarded = false;
+    if (this._bt) {
+      guarded = false;
+      const cfg = this._btGuardCfg;
+      if (cfg && !this._btGuardBroken && !move.unblockable && !move.isGrab &&
+          (word & 0x10) !== 0 && (this._guardBits() & word) !== 0) btGuarded = true;
+    }
+    if (attacker) attacker._t3Contact = { t: attacker._clock || 0, guarded: guarded || btGuarded }; // T3 conditions 1 / 0x1A / 0x1B / situations
+    if (btGuarded) {
+      // BT GUARD (the owner's hybrid: bleed base + SoulCalibur guard-break
+      // layer — design + provenance in game/js/bt-guard.js). Mirrors the
+      // front-guard block branch with the handicap applied: chip at
+      // cfg.chipPct (0.30) through the same formula and recoverable pool,
+      // pushback at cfg.pushbackMult, NO meter (meterOnBlock 0), _bt NOT
+      // cleared (clearsBt false) — and every block adds strain; the block
+      // that reaches strainMax still blocks, then the pair is spent
+      // (onBreak: bt_guard_off_until_bt_ends) and later hits this stint
+      // resolve Tekken-strict through the unguarded path.
+      const cfg = this._btGuardCfg;
+      let chip = 0;
+      if (!this.game || this.game.guardDamage !== false) {
+        chip = move.damage * attacker.stats.power * cfg.chipPct * (attacker.stats.chipMult || 1) / this.stats.defense;
+        if (attacker._vtriggerT > 0 && !move.isGrab) {
+          chip += move.damage * V.TRIGGER_CHIP_MULT * attacker.stats.power / this.stats.defense;
+        }
+      }
+      const _hpBeforeBlock = this.hp;
+      this.hp = attacker._urgeOn ? Math.max(1, this.hp - chip) : Math.max(0, this.hp - chip);
+      this._addRecoverable(_hpBeforeBlock - this.hp);
+      if (attacker && typeof attacker._recoverOnAttack === 'function') attacker._recoverOnAttack(chip);
+      if (move.urgeBurst && this.game && this.game.soulurge &&
+          typeof this.game.soulurge.onBlockedHit === 'function') {
+        this.game.soulurge.onBlockedHit(attacker, move);
+      }
+      this.stun = (move.t8 && move.t8.blk != null) ? stunFromAdvantage(move.t8.blk, move)
+        : 0.18 + move.damage * 0.01;
+      if (this.brawler) {
+        const [nx, nz] = this._awayFrom(attacker);
+        this.vx = nx * move.knock * 0.5 * cfg.pushbackMult;
+        this.vz = nz * move.knock * 0.5 * cfg.pushbackMult;
+      } else {
+        this.vx = Math.sign(this.root.position.x - attacker.root.position.x) * move.knock * 0.5 * cfg.pushbackMult;
+      }
+      // meterOnBlock is 0 by design: a back-pair block earns no meter.
+      this._btStrain = Math.min(cfg.strainMax, (this._btStrain || 0) + cfg.strainPerDamage * move.damage);
+      if (this._btStrain >= cfg.strainMax) this._btGuardBroken = true;
+      if (this.hp <= 0) { this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || 1); return 'ko'; }
+      this._reactionSel = this._pickReaction(move, attacker, { guarded: true, counter: false,
+        crouch: _wasCrouch, airborne: false, down: false, forState: 'block' });
+      return 'block';
+    }
     if (guarded) {
       // GAME OPTION / VERSUS SETUP: GUARD DAMAGE OFF = no chip at all.
       // (V-Trigger chip is part of guard damage too.)
@@ -3298,6 +3384,15 @@ export class Fighter {
       this._surgeT -= dt;
       this.meter = Math.max(0, this.meter - 4 * dt);
       if (this._surgeT <= 0 || this.meter <= 0) this.endSurgeForm();
+    }
+
+    // BT GUARD strain is per-stint (owner design 2026-11-06): it resets
+    // when _bt ends, however _bt was cleared (turn-around, crouch,
+    // sidestep, jump, attack start, landed hit). One watchdog here
+    // covers every exit path, including the ones that clear _bt outside
+    // update()'s facing block below.
+    if (!this._bt && (this._btStrain || this._btGuardBroken)) {
+      this._btStrain = 0; this._btGuardBroken = false;
     }
 
     // BRAWLER: facing is yaw-driven by the brawler controller (free 3D) —

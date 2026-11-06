@@ -348,6 +348,11 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 .hp-damage { position: absolute; inset: 0; width: 100%; background: rgba(255,255,255,0.55); transition: width 0.45s ease 0.15s; }
 .hp-fill { position: absolute; inset: 0; width: 100%; background: var(--hp-good); transition: width 0.18s ease, background 0.3s; }
 .hp-fill.low { background: var(--hp-low); }
+/* BT guard strain tell (owner design 2026-11-06, SoulCalibur-style guard
+   break warnings): yellow at 60% strain on the back pair, red at 80%.
+   Toggled by UI._hp in game/js/main.js from Fighter.btGuardState(). */
+.hp-fill.bt-strain-1 { background: linear-gradient(180deg,#ffe066,#e6a817); box-shadow: 0 0 10px rgba(255,196,0,.9); }
+.hp-fill.bt-strain-2 { background: linear-gradient(180deg,#ff8a5c,#d62f2f); box-shadow: 0 0 12px rgba(255,60,40,.95); }
 
 /* Nine-Soul Meter: 9 soul segments */
 .soul-label { margin-top: 5px; font-size: 9px; letter-spacing: 2px; opacity: 0.6; font-weight: 700; }
