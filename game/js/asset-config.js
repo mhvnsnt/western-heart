@@ -153,11 +153,27 @@ export function resolveAssetCandidates(url) {
   if (SHELL_BUNDLED_MODELS.includes(repoPath)) {
     return isRemoteReady() ? [url, `${ASSET_CONFIG.remoteBase}/${repoPath}`] : [url];
   }
+  // Cloudflare Pages full build: the page's own copy first (see isFullSiteHost).
+  if (isFullSiteHost()) {
+    const full = [url];
+    if (isRemoteReady()) full.push(`${ASSET_CONFIG.remoteBase}/${repoPath}`);
+    full.push(`${ASSET_CONFIG.jsdelivrBase}/${repoPath}`);
+    return full;
+  }
   const out = [];
   if (isRemoteReady()) out.push(`${ASSET_CONFIG.remoteBase}/${repoPath}`);
   out.push(url);
   out.push(`${ASSET_CONFIG.jsdelivrBase}/${repoPath}`);
   return out;
+}
+
+/* 2026-11-06 (owner: "a free fix for my cap on my storage for game assets"): the full build on Cloudflare Pages
+ * (tools/deploy/build_cf_pages.py -> https://western-heart.pages.dev, no 1 GB cap) carries every closure file
+ * <= 25 MiB, so there a model's own page copy is tried FIRST (Cloudflare CDN), then the remote base, then jsDelivr
+ * (files over 25 MiB 404 fast and fall through). The GitHub Pages shell keeps its order above unchanged. */
+export function isFullSiteHost(host) {
+  const h = host != null ? host : (typeof location !== 'undefined' && location && location.hostname) || '';
+  return /(^|\.)western-heart\.pages\.dev$/i.test(String(h));
 }
 
 /* Fetch + parse one GLB through its candidates, in order, with a
