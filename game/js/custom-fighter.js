@@ -17,6 +17,8 @@ const BODY_TYPES = {
   'King Frame': { h: 1.04, w: 1.14 }, 'Ganryu Frame': { h: 0.96, w: 1.34 },
 };
 
+import { selectFittedParts } from './fitted-parts.js';
+
 const LS_KEY = 'wh_create_fighter_v1';
 // Stream 4: the flagship Creation Suite (customization/creation-suite-ui)
 // saves under its own key with a compatible profile/body shape.
@@ -155,6 +157,13 @@ export function customFighterToRoster(F) {
     // was never set — see templateModelFor).
     template: template,
     baseGlb: F.baseGlb || null,
+    // HAIR phase (2026-11-02): the suite's chosen template-fitted hair /
+    // facial hair / brows / lashes for the active attire, with their
+    // tints — Fighter._build parents each to the template's head bone
+    // (game/js/fitted-parts.js). Roster-mode saves have no template body,
+    // so they carry none (selectFittedParts returns [] off-template).
+    fittedParts: F.mode === 'roster' ? [] : selectFittedParts(
+      (Array.isArray(F.attires) && F.attires[F.attireIndex || 0]) || null, template),
     // Raw CAW data for appearance application
     _caw: F,
   };
