@@ -1,0 +1,29 @@
+{
+ "model": "roster/star/attires/attire1/model-rigged.glb",
+ "source": "roster/star/attires/attire1/model.glb (her own Tripo static ea73eeb3, blob 1a198e9e)",
+ "pipeline": "tools/auto_rig refit path: gltf_codec decode -> refit_skeleton template fit (landmark pass evaluated and NOT used: its left-arm chain degenerated and its leg pass dropped the hips 0.15 m; the template fit tracks her T-pose - see star-fit.png) -> finger symmetrization + LeftHandThumb3 restoration (the pantera template GLB itself lacks that joint) -> heat_rebind (default proxy) -> head_territory -> gltf_codec encode",
+ "skeleton": "50 joints, canonical WH names",
+ "height_m": 1.59,
+ "height_anchor": "michiko attire-1 (Katarina 167 cm canon) authored 1.582 m standing in file; star canon Christie 168 cm -> 1.59 m",
+ "validate_py": {
+  "pass": true,
+  "height_m": 1.59,
+  "foot_y": 0.0,
+  "fingers_symmetric": true
+ },
+ "anim_check_official_cmuboxing": {
+  "edge_stretch_p999": 1.459,
+  "max": 1.559,
+  "gate": 2.5,
+  "pass": true,
+  "tearing_spikes": 40
+ },
+ "rig_inspect_seams": {
+  "pass": true,
+  "max_l1_disagreement": 0.0003
+ },
+ "rig_inspect_stretch_strict": {
+  "p999": 5.37,
+  "note": "micro-edge ratio on a 1.4M-vert mesh; median over-2x elongation 2.68 mm. The official long-edge metric above is the pipeline's stretch verdict and it passes."
+ }
+}
