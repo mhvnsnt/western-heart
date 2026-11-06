@@ -6,6 +6,8 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 /* The template bodies ship gltfpack -cc (meshopt + quantized morph targets): same decoder the game's assets.js uses
    (game/vendor/addons/libs/meshopt_decoder.js via the suite importmap). */
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.js';
+/* TATTOOS + SCARS (2026-11-02): body-region decal layers — the fight's own module (game/js/decal-layers.js). */
+import { buildDecalMesh, findBodySkin, meshDataFromSkinned } from '../../../game/js/decal-layers.js';
 /* MB-Lab game skeleton (WWE-style CREATE templates) -> the Mixamo bone names SOCKET_BONES and framing use (2026-11-01) */
 const MBLAB_ALIASES = { Hips:['pelvis'], Spine:['spine01'], Spine1:['spine02'], Spine2:['spine03'], Neck:['neck'], Head:['head'],
   LeftShoulder:['clavicle_L'], RightShoulder:['clavicle_R'], LeftArm:['upperarm_L'], RightArm:['upperarm_R'],
@@ -366,6 +368,47 @@ export class SuiteViewer {
     this.scene.add(m); this.markers.set(key, m);
     const n = document.getElementById('part-layer-note');
     if(n) n.textContent = label ? `◈ ${label} — texture part (applies at ${socket} socket)` : '';
+  }
+  /* Body-region decal layers (tattoos / scars) on the CREATE template skin. layers = attire.decals (bottom -> top);
+     urlFor(layer) -> texture url; sizeFor(layer) -> base decal size (m) for this body + region. Geometry is rebuilt only
+     when a placement field changes; colour / opacity edits touch the material. Fail-silent per layer. */
+  syncDecals(layers, urlFor, sizeFor){
+    if(!this.model) return;
+    if(!this.decals) this.decals = new Map();
+    if(!this._texCache) this._texCache = new Map();
+    if(this._decalModel !== this.model){
+      for(const d of this.decals.values()) this._dropDecal(d);
+      this.decals.clear(); this._decalModel = this.model;
+      this._skin = findBodySkin(this.model);
+      try{ this._skinData = this._skin ? meshDataFromSkinned(this._skin) : null; }catch(e){ this._skinData = null; }
+    }
+    const want = new Set();
+    (layers||[]).forEach((l, i)=>{
+      want.add(l.id);
+      const geoSig = JSON.stringify([l.part_id, l.region, l.u, l.v, l.scaleX, l.scaleY, l.rotation, l.mirror, sizeFor(l)]);
+      const cur = this.decals.get(l.id);
+      if(cur && cur.geoSig === geoSig){
+        if(cur.mesh){ cur.mesh.material.opacity = l.opacity; cur.mesh.material.color.set(l.color); cur.mesh.renderOrder = 10 + i; }
+        return;
+      }
+      if(cur) this._dropDecal(cur);
+      const entry = { geoSig, mesh:null }; this.decals.set(l.id, entry);
+      if(!this._skin || !this._skinData) return;
+      const url = urlFor(l); if(!url) return;
+      this._decalTex(url).then(tex=>{
+        if(this.decals.get(l.id) !== entry) return;
+        try{
+          entry.mesh = buildDecalMesh(THREE, this._skin, l, tex, { meshData:this._skinData, size:sizeFor(l), order:i });
+          if(!entry.mesh) console.warn('[WH-CS] decal layer missed the body:', l.part_id, l.region);
+        }catch(e){ console.warn('[WH-CS] decal layer failed:', e.message||e); }
+      }).catch(()=>{});
+    });
+    for(const [id, e] of [...this.decals]) if(!want.has(id)){ this._dropDecal(e); this.decals.delete(id); }
+  }
+  _dropDecal(e){ if(e && e.mesh){ if(e.mesh.parent) e.mesh.parent.remove(e.mesh); e.mesh.geometry.dispose(); e.mesh.material.dispose(); e.mesh = null; } }
+  _decalTex(url){
+    if(!this._texCache.has(url)) this._texCache.set(url, new THREE.TextureLoader().loadAsync(url));
+    return this._texCache.get(url);
   }
   clearMarker(key){ const m=this.markers.get(key); if(m){ this.scene.remove(m); this.markers.delete(key);} }
   /* texture-part swap, mirroring packages/creation-suite/src/parts.js

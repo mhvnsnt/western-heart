@@ -4367,3 +4367,38 @@ Branch `claude/cs-phase3-morph-targets`, draft PR #1489 (stacked on #1486). Orde
 - Follow-ups: fights still load the stock model (next: Phase 4 branch `claude/cs-phase4-custom-fighter-in-game`);
   168 targets ~50 MB GPU on the main mesh.
 - Deletions: none.
+
+## 2026-11-02 — Claude: creation suite TATTOOS + SCARS phase (body-region decal layers) — draft PR #1527
+
+**Owner instruction (verbatim):** "find a way to use blender, show me it all, and do all the rest"
+
+**What:** WWE 2K Create-A-Superstar Tattoos / Logos layer system inside the suite's Tekken-style PARTS list.
+- `game/js/decal-layers.js` (pure, Node-testable; THREE passed in): 12 body regions (chest, back, neck, face,
+  upper arm / forearm / thigh / calf L+R) each with a UV canvas from the template skeleton (v along the bone
+  axis, u around it, u=0 front); layer = part_id, kind tattoo|scar, region, u, v, scaleX/Y, rotation, opacity,
+  colour, mirror, texture path; 40-layer cap (WWE 2K22 "40 body/head layers"); ray-cast anchor on the region's
+  skin (search to nearest region skin over skin holes); DecalGeometry-style clip patch carrying skin weights +
+  morph targets (decal deforms with body sliders + fight animation); wear hook (wear-off.js floors).
+- Defaults per region on all 9 template bodies authored IN BLENDER 4.3 (`tools/creation-suite/decals/
+  author_placements_blender.py`, BVHTree ray casts) -> `customization/templates/decal-placements.json`.
+  Blender can't import EXT_meshopt_compression, so `decode_glb.mjs` strips it with the game's vendored decoder.
+- Scars: 11 procedural CC0 textures (`make_scars.py` -> `customization/decal-library/scars/`), generic names;
+  the one scar-named Tekken 7 face-paint item (90016) is a reference-only, geometry_pending catalog row
+  (texture not in repo). Catalog: 99 tattoos get a body_region_decal placement (was null).
+- Suite: PARTS > Tattoos / Scars / Body Layers; ADD AS LAYER; layer editor (region chips, around/along, scale
+  X/Y, rotation, opacity, colour, flip, copy to other side, reorder, remove); saved per attire (`attire.decals`)
+  and in customization.json (`decals[]`); live preview via `viewer3d.js syncDecals()`.
+- Game: `customization-consumer.js applyBodyDecals()` puts the layers on the created fighter's template body;
+  `fighter.js receiveHit` calls `wearBodyDecals()` on a landed hit.
+
+**Tools / settings:** Blender 4.3.2 (bpy, Cycles CPU 32 spp, no denoise), Node 22, numpy/Pillow.
+`tools/creation-suite/decals/run_author.sh` re-authors placements; `export_decal_proof.mjs` +
+`render_decal_proof_blender.py` render the game's own decal patches on every template.
+
+**Proof:** `test/decal-layers.test.mjs` (9 tests: game resolver vs Blender anchor < 1 mm on 9 templates x 12
+regions, region bones, side/height/front bands, patch UV/skin checks, hole search, per-attire save/restore,
+stubbed-THREE build). Renders: `customization/creation-suite-ui/proof-pass/tattoos-scars/`.
+
+**Left:** browser look-check of the suite layer editor at phone size; roster (non-template) bodies don't take
+body layers yet (different skeleton); No Mercy tattoos with an opaque background render as rectangles (source
+PNGs have no alpha); real fight-harness run not done in this sandbox.

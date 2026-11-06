@@ -36,6 +36,7 @@
    ============================================================ */
 import * as THREE from 'three';
 import { assets } from './assets.js';
+import { wearBodyDecals } from './decal-layers.js';
 import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK, T3_BANKS,
   clipStrikeProfile, clipHitWindow, bankAttackPool, attackLevelOfWord, attackClipTime, clipIsThrow, BUTTON_LIMB,
   loadT3Clips, loadT3ReactionClip, getT3ReactionPackScale, loadReactionPack, getReactionPack, getReactionClip,
@@ -2822,6 +2823,8 @@ export class Fighter {
       if (!this._airBlend) { this._airBlend = beginAirCatch(this.root.position.y, FE_AIR_BLEND_WEIGHT); this._airVisualBoost = 0; }
     this.lastCounterHit = counter;
     this.hp = Math.max(0, this.hp - dmg);
+    // TATTOOS + SCARS (2026-11-02): body decal layers wear on a landed hit (scars barely, tattoos to a floor)
+    if (this.model && this.model.userData && this.model.userData.whDecals) wearBodyDecals(this.model, move, dmg);
     // GAP-FILL LANE 1: the attacker recovers from their own
     // recoverable pool whenever they land damage (T8: recover
     // only by attacking — never over time). Applies to crush-,

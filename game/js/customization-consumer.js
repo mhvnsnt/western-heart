@@ -71,6 +71,9 @@ import { applyPart } from '../../packages/creation-suite/src/parts.js';
 // Part GLBs load through the same candidate order as fighters
 // (remote base first, jsDelivr fallback) — see asset-config.js.
 import { loadGlbCandidates } from './asset-config.js';
+// TATTOOS + SCARS (2026-11-02): the suite's body-region decal layers, put on the
+// created fighter's template skin by the SAME module the suite previews with.
+import { normalizeLayers, buildDecalMesh, findBodySkin, meshDataFromSkinned, defaultPlacement, registerDecalWear } from './decal-layers.js';
 
 const ROOT = new URL('../../', import.meta.url);
 const LS_KEY_SUITE = 'wh_creation_suite_v1';
@@ -303,6 +306,14 @@ export async function applyFighterProfile(fighter) {
       }
     }
 
+    // --- TATTOOS + SCARS: body-region decal layers (profile.decals, or the suite working
+    //     state's current attire). Template bodies only (MB-Lab skeleton); fail-silent per layer. ---
+    {
+      const ds = await applyBodyDecals(model, profile, charId);
+      status.applied.push(...ds.applied);
+      status.skipped.push(...ds.skipped);
+    }
+
     // --- Phase 1: the fighter's own part toggles (profile.part_states) ---
     if (profile.part_states && Object.keys(profile.part_states).length) {
       const ps = await applyPartStates(model, profile.part_states, entries, charId);
@@ -423,5 +434,61 @@ async function applyPartStates(model, partStates, entries, charId) {
       skipped.push(label);
     }
   }
+  return { applied, skipped };
+}
+
+/* ============================================================
+   TATTOOS + SCARS (2026-11-02) — body-region decal layers on a created
+   fighter. Layers come from the customization record (`decals`) or, for
+   the suite's working state F, from F.attires[F.attireIndex].decals; the
+   template id picks the Blender-authored size table
+   (customization/templates/decal-placements.json). Each layer becomes a
+   SkinnedMesh patch bound to the body's skeleton (it animates with the
+   fight) and registers a wear-off layer (decal-layers.js wearBodyDecals,
+   called from fighter.js receiveHit).
+   ============================================================ */
+let _decalTable;
+function decalTable() {
+  if (_decalTable === undefined) {
+    _decalTable = fetch(new URL('customization/templates/decal-placements.json', ROOT))
+      .then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  }
+  return _decalTable;
+}
+export function profileDecals(profile) {
+  if (!profile) return [];
+  if (Array.isArray(profile.decals)) return normalizeLayers(profile.decals);
+  const a = Array.isArray(profile.attires) ? profile.attires[profile.attireIndex || 0] : null;
+  return normalizeLayers(a && a.decals);
+}
+async function applyBodyDecals(model, profile, charId) {
+  const applied = [], skipped = [];
+  const layers = profileDecals(profile);
+  if (!layers.length) return { applied, skipped };
+  const skin = findBodySkin(model);
+  if (!skin) { skipped.push(`decals:${layers.length} (no skinned body)`); return { applied, skipped }; }
+  let data;
+  try { data = meshDataFromSkinned(skin); } catch (e) { skipped.push('decals (body data)'); return { applied, skipped }; }
+  if (!data.bones.spine01 || !data.bones.head) { skipped.push(`decals:${layers.length} (not a template skeleton)`); return { applied, skipped }; }
+  const table = await decalTable();
+  const tpl = profile.template || (profile.body && profile.body.template) || null;
+  const loader = new THREE.TextureLoader();
+  for (let i = 0; i < layers.length; i++) {
+    const l = layers[i];
+    const label = `decal:${l.kind}:${l.part_id}@${l.region}`;
+    try {
+      if (!l.asset) { skipped.push(label + ' (no texture path)'); continue; }
+      const tex = await loader.loadAsync(new URL(l.asset, ROOT).href);
+      const size = defaultPlacement(table, tpl, l.region).size;
+      const mesh = buildDecalMesh(THREE, skin, l, tex, { meshData: data, size, order: i });
+      if (!mesh) { skipped.push(label + ' (missed the body)'); continue; }
+      registerDecalWear(model, mesh, l);
+      applied.push(label);
+    } catch (e) {
+      console.warn(`[WH-CS] ${charId} ${label} FAILED:`, e.message || e);
+      skipped.push(label);
+    }
+  }
+  console.log(`[WH-CS] ${charId} body decals: ${applied.length} applied, ${skipped.length} skipped`);
   return { applied, skipped };
 }
