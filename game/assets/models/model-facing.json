@@ -70,6 +70,7 @@
   "iori": "+Z",
   "deathfang": "-Z",
   "dio-attire1": "-Z",
+  "slice-attire1": "+X",
   "dorowani": "+Z",
   "demonio-a1": "+Z",
   "doc-frank-hood": "+Z",
@@ -107,6 +108,7 @@
  "corrections": {
   "nightwolf": "2026-10-22: REVERTED the -Z correction from earlier the same day. Direct raw-GLB render (three.js, camera on +Z, no instance correction) shows her FRONT from +Z and her BACK from -Z: the mesh faces +Z. The -Z reading came from a per-part audit that transforms mesh verts by the rig's bone matrices; nightwolf's auto-rig skeleton faces -Z inside her +Z mesh, which flips that measurement. The game corrects by MESH facing, so +Z (no turn) is correct. Proof: worker-5 raw renders.",
   "deathfang": "2026-11-06: +Z -> -Z. His select card showed his back. tools/portraits/facing_probe.mjs renders the game's own instance (assets.createInstance, the same one the fight uses) from four camera angles: in the bind pose AND in his heihachi stance his face and shirt front are at 180 deg from the card camera, i.e. the current attire1/model.glb faces -Z (the +Z record predates this file). Proof: docs/proof/2026-11-06/cards-facing/.",
+  "slice-attire1": "2026-11-06: unlisted -> +X (new quarter-turn record, game/js/assets.js facingYaw). His card showed his side and back and he fought with his back to the camera while Pantera, opposite, stood in profile. tools/portraits/facing_probe.mjs: in the bind pose his chest is square to the camera at yaw 90 (camera on +X), i.e. the mesh faces +X; a half turn cannot fix that. Proof: docs/proof/2026-11-06/cards-facing/.",
   "dorowani": "2026-11-06: unlisted -> +Z. The feet cue read -Z and turned him around: his select card showed his back and the four-angle probe (tools/portraits/facing_probe.mjs) put his face at 180 deg in his gon stance with the cue's -Z applied (assets.facing = -1, read back in the page). Proof: docs/proof/2026-11-06/cards-facing/.",
   "dio-attire1": "2026-11-06: unlisted (feet cue read +Z) -> -Z. His select card showed the back of his head; the same four-angle probe puts his face at 180 deg in the bind pose and in his heihachi stance. Proof: docs/proof/2026-11-06/cards-facing/."
  }

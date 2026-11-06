@@ -1308,6 +1308,7 @@ class AssetManager {
     this.gltfs = {};   // id -> gltf
     this.clips = {};   // id -> {name: clip}
     this.facing = {};  // id -> +1 (+Z) | -1 (-Z), mesh facing of the raw GLB
+    this.facingYaw = {}; // id -> extra Y turn (radians) for a mesh recorded '+X' / '-X' (quarter-turned), else 0
     this.groundY = {}; // id -> lowest skinned-vertex height of the raw GLB at rest
     this.ready = false;
     this._inflight = {};      // id -> { promise, abort } — dedups concurrent loads
@@ -1561,7 +1562,11 @@ class AssetManager {
     await _facingReady.then(() => {
       try {
         const rec = _facingTable && _facingTable[id];
-        this.facing[id] = rec === '-Z' ? -1 : rec === '+Z' ? 1 : (feetFacingCue(gltf.scene) || 1);
+        // '+X' / '-X' (2026-11-06): a mesh that faces sideways (Slice's card showed his side and back, and he
+        // fought turned 90 deg away) is turned a quarter, not a half, to face +Z.
+        const quarter = rec === '+X' ? -Math.PI / 2 : rec === '-X' ? Math.PI / 2 : 0;
+        this.facingYaw[id] = quarter;
+        this.facing[id] = rec === '-Z' ? -1 : (rec === '+Z' || quarter) ? 1 : (feetFacingCue(gltf.scene) || 1);
       } catch (e) {
         console.warn(`[WH] facing cue failed for ${id}, defaulting to +Z:`, (e && e.message) || e);
         this.facing[id] = 1;
@@ -1657,6 +1662,7 @@ class AssetManager {
     // dict and mixer are built from it. The source gltf is untouched.
     const mblabRemapped = remapMblabBones(fighterId, inner);
     if ((this.facing[fighterId] || 1) < 0) inner.rotation.y = Math.PI;
+    else if (this.facingYaw[fighterId]) inner.rotation.y = this.facingYaw[fighterId];
     const gy = this.groundY[fighterId] || 0;
     if (Math.abs(gy) > 0.03) inner.position.y = -gy; // feet on the floor
     const model = new THREE.Group();

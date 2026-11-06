@@ -17,3 +17,11 @@ The broken originals stay in `game/assets/portraits/broken-originals-20261106/`.
 His card showed his back too. Here the game had already turned him (the feet cue read `-Z`, `assets.facing = -1` read
 back in the page), and his face was still at 180 deg in the probe, so his mesh faces `+Z`: `dorowani` is now recorded
 `+Z`. `dorowani-card-and-fight.png`: old card / new card (his face) and a real fight vs Pantera, facing his opponent.
+
+## Slice (same day): a quarter turn
+
+His card showed his side and back, and in a fight he stood with his back to the camera while Pantera, opposite, was in
+profile (`slice-fight-before.png`). In the bind pose his chest is square to the camera at yaw 90 (camera on +X): the
+mesh faces +X, which a 180 deg turn cannot fix. `model-facing.json` gains quarter-turn records (`+X` / `-X`, read in
+`game/js/assets.js` as `facingYaw`); `slice-attire1` is `+X`. `slice-card-and-fight.png`: the new card from four
+angles (front at yaw 0) and the same fight, Slice now in profile facing Pantera.
