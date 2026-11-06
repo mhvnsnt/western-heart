@@ -326,7 +326,10 @@ export const MODEL_URLS = {
   // + A3 Capoeira Gold (texture colorways on the Tripo base), A5 rated-M lane
   // (improved build; model.glb superseded, kept on disk). Unrigged statics;
   // playable swap rides the auto-rig pass.
-  'star-attire1': '../roster/star/attires/attire1/model.glb',
+  // Star rigged 2026-11-06 (Roster-100 Wave 3, item L2): template-fit refit of
+  // her own Tripo static on the canonical 50-joint skeleton, 1.59 m; the
+  // unrigged source static stays at attires/attire1/model.glb.
+  'star-attire1': '../roster/star/attires/attire1/model-rigged.glb',
   'star-attire2': '../roster/star/attires/attire2/model.glb',
   'star-attire3': '../roster/star/attires/attire3/model.glb',
   'star-attire5': '../roster/star/attires/attire5/model-improved.glb',
@@ -490,8 +493,10 @@ export const MODEL_URLS = {
   // GASHADOKURO + AOTSUKI (OBSOLETE-ORIGINALS rule, docs/OBSOLETE-ORIGINALS-
   // RULE.md): the Kuma/Panda models ARE the proprietary successors now — the
   // keys are the successors' names; there is no 'kuma'/'panda' fighter key.
-  // Unrigged statics; their roster entries wait for wave-3 movesets.
-  gashadokuro: '../roster/kuma/attires/attire1/source/kuma-a1.glb',
+  // Gashadokuro rigged 2026-11-06 (Roster-100 Wave 3, item L2): landmark refit
+  // of his own Tripo static on the canonical 50-joint skeleton, 1.95 m; the
+  // unrigged source static stays at source/kuma-a1.glb.
+  gashadokuro: '../roster/kuma/attires/attire1/source/gashadokuro-a1-rigged.glb',
   aotsuki: '../roster/panda/attires/attire1/source/aotsuki-a1-rigged.glb',
   // Attire variant keys for on-main GLBs no key reached (catch-up audit
   // attires-unwired set). Ladder placement lives in game/js/attires.js:
