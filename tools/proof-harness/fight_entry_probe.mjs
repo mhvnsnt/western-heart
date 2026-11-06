@@ -63,6 +63,12 @@ for (let i = 0; i < +attempts; i++) {
   if (outcome === 'FIGHT') break;
 }
 try { await page.screenshot({ path: `${out}/final.png`, timeout: 60000 }); } catch (e) { /* slow renderer */ }
+// SETTLE_S=<seconds>: also screenshot the fight itself after the VS splash clears (fight.png): which way each
+// fighter faces, how it stands (2026-11-06 card / facing fix pass)
+if (+process.env.SETTLE_S > 0 && results.some((r) => r.outcome === 'FIGHT')) {
+  await page.waitForTimeout(+process.env.SETTLE_S * 1000);
+  try { await page.screenshot({ path: `${out}/fight.png`, timeout: 60000 }); } catch (e) { /* slow renderer */ }
+}
 fs.writeFileSync(`${out}/fight_entry.json`, JSON.stringify({ url, p1, p2, phases, results, events: ev }, null, 1));
 console.log('PHASES', JSON.stringify(phases));
 console.log(ev.slice(0, 40).join('\n'));
