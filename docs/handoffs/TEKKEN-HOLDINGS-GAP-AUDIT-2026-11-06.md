@@ -51,7 +51,7 @@ deferred Ghidra pass and wiring the extracted stages.
 > DATA0 = 112,445 records x 18,432 B; each of its 44 files is encrypted with a
 > 2048-byte LCG keystream tile (w' = 5w + 3 mod 2^32) seeded by its file index
 > (1..44). All 44 payloads are MPEG-2 FMV streams (intros, endings, cutscene
-> movies — 1,948,071,008 B, ffprobe-verified, frames visually checked). Stored
+> movies — 1,955,267,488 B, ffprobe-verified, frames visually checked). Stored
 > on GRE release `tekken5-data0-cracked-20261106` (per-file sha256 in its
 > MANIFEST-data0.md; format in DATA0-FORMAT.md). **Versus models, T5-native
 > movesets/animations, stage geometry, audio banks, the skull mask,
