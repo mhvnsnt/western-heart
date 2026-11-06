@@ -1,0 +1,159 @@
+{
+  "_doc": "M3 portrait recapture Wave B - capture.mjs result lines, exactly as printed by the tool. Ryusan ran first, alone, as the currency check against her #1588 card; the other nine ran in one batch. Raw batch stdout is preserved in the lane scratch (proof-out/capture-batch1-raw.log).",
+  "base_main": "839565071bf9152b54dec0cb515bd1ca1dbb84d2",
+  "tool": "tools/portraits/capture.mjs",
+  "runs": [
+    {
+      "ids": [
+        "ryusan"
+      ],
+      "when": "2026-11-06 ~00:26 CST"
+    },
+    {
+      "ids": [
+        "pond",
+        "tobi",
+        "chatur",
+        "megami",
+        "menajerii",
+        "kingtyrant",
+        "nightwolf",
+        "michiko",
+        "cainelias"
+      ],
+      "when": "2026-11-06 ~00:35 CST"
+    }
+  ],
+  "results": [
+    {
+      "id": "ryusan",
+      "model": "ryusan",
+      "bones": 521,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "luckychloe",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    {
+      "id": "pond",
+      "model": "pond",
+      "bones": 224,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "raven",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    {
+      "id": "tobi",
+      "model": "tobi",
+      "bones": 255,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "hwoarang",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    {
+      "id": "chatur",
+      "model": "chatur",
+      "bones": 264,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "ogre",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    {
+      "id": "megami",
+      "model": "megami",
+      "bones": 469,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "jun",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    {
+      "id": "menajerii",
+      "model": "menajerii",
+      "bones": 450,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "roger",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    {
+      "id": "kingtyrant",
+      "model": "king-tyrant-attire1",
+      "bones": 0,
+      "stance": false,
+      "stanceSource": null,
+      "framed": false,
+      "bank": "eddy",
+      "armDeg": {
+        "L": null,
+        "R": null
+      }
+    },
+    {
+      "id": "nightwolf",
+      "model": "nightwolf-attire1",
+      "bones": 0,
+      "stance": false,
+      "stanceSource": null,
+      "framed": false,
+      "bank": "julia",
+      "armDeg": {
+        "L": null,
+        "R": null
+      }
+    },
+    {
+      "id": "michiko",
+      "model": "michiko-attire1",
+      "bones": 73,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "jin",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    {
+      "id": "cainelias",
+      "model": "cain-elias",
+      "bones": 0,
+      "stance": false,
+      "stanceSource": null,
+      "framed": false,
+      "bank": "king",
+      "armDeg": {
+        "L": null,
+        "R": null
+      }
+    }
+  ]
+}

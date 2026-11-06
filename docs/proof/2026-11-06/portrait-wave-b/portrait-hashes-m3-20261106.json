@@ -1,0 +1,136 @@
+{
+  "_doc": "Per-card sha256/bytes on main 83956507 vs the M3 capture, for every fighter attempted.",
+  "base_main": "839565071bf9152b54dec0cb515bd1ca1dbb84d2",
+  "fighters": {
+    "pond": {
+      "main": {
+        "sha256": "934fd8a0032488ddd95612eb3b70fbca3ed18ed6046756a453a3ebd4884a5065",
+        "bytes": 86912
+      },
+      "captured": {
+        "sha256": "03a766a37a9af8e3f014b2d864e9bcf1c40387d4d2c946c5d41396cad55c410e",
+        "bytes": 98502
+      },
+      "byte_changed": true,
+      "shipped": true,
+      "note": "shipped - recaptured from the current rebuilt model; stance applied (cmu-14_01), framed"
+    },
+    "tobi": {
+      "main": {
+        "sha256": "9e2b2dfd4f75f6b5726465b40a6311050e5606f99513ddef6c13fe17e75d2db4",
+        "bytes": 57041
+      },
+      "captured": {
+        "sha256": "aed7cedd8f6ab401dd3da2371b8f961c68db2c21f3d2c8b4d29551740c0e6ace",
+        "bytes": 79044
+      },
+      "byte_changed": true,
+      "shipped": true,
+      "note": "shipped - recaptured from the current rebuilt model; stance applied (cmu-14_01), framed"
+    },
+    "ryusan": {
+      "main": {
+        "sha256": "82ed443be85d61e976adeb07a7a3ea1598b6cc215b8cb1161473a4c81f63c290",
+        "bytes": 86889
+      },
+      "captured": {
+        "sha256": "ee3a486bfb62b2cddcde8b378aa21f319699d3cc03a44a414cf8ccdb304f6f85",
+        "bytes": 92647
+      },
+      "byte_changed": true,
+      "shipped": true,
+      "note": "shipped - #1588 card did NOT match a fresh capture (bind/aim card, armDeg 87/87); new capture is stance-posed (cmu-14_01, armDeg 23/12), framed"
+    },
+    "chatur": {
+      "main": {
+        "sha256": "a5c43dac334c344087745d148652c5bb452a0bffb00b7e62f0344a9895c18ae0",
+        "bytes": 105755
+      },
+      "captured": {
+        "sha256": "17178225ef88c6b9e0c0980a6e875fea5747db5a840f8451c4981c678b708fc0",
+        "bytes": 59846
+      },
+      "byte_changed": true,
+      "shipped": true,
+      "note": "shipped - recaptured from the current rebuilt model; stance applied (cmu-14_01), framed"
+    },
+    "megami": {
+      "main": {
+        "sha256": "cf51ad3c4d71cec7983d528896c43a4b2311fa77e1c138222d1ee480d09929e7",
+        "bytes": 97983
+      },
+      "captured": {
+        "sha256": "ec7a70b3e8b551c709dd7fa72155ca2790e0fdcce3de78d20335227b559c5d1e",
+        "bytes": 92004
+      },
+      "byte_changed": true,
+      "shipped": true,
+      "note": "shipped - recaptured from the current rebuilt model; stance applied (cmu-14_01), framed"
+    },
+    "menajerii": {
+      "main": {
+        "sha256": "51e9580ae4933eed7e7728848e4cc6440dbd247f90febead4e01b109dc3b8068",
+        "bytes": 103792
+      },
+      "captured": {
+        "sha256": "8688cc484a91ca1a17126f395cdd497a3c3d004f907b8c4094fe2a3a08da752d",
+        "bytes": 73953
+      },
+      "byte_changed": true,
+      "shipped": true,
+      "note": "shipped - recaptured from the current rebuilt model; stance applied (cmu-14_01), framed"
+    },
+    "kingtyrant": {
+      "main": {
+        "sha256": "d86c7411303167479cc6db187901cc02bf24285ddcd3465fdc84b2484c109024",
+        "bytes": 59331
+      },
+      "captured": {
+        "sha256": "d86c7411303167479cc6db187901cc02bf24285ddcd3465fdc84b2484c109024",
+        "bytes": 59331
+      },
+      "byte_changed": false,
+      "shipped": false,
+      "note": "not shipped - capture bones 0 / stance false / framed false: attire-1 GLB has no skinned mesh/skeleton in the select path; fallback capture byte-identical to the current card; card and POSE-BLOCKERS entry retained"
+    },
+    "nightwolf": {
+      "main": {
+        "sha256": "9446eb99d7ff0a5dbbcabe03302b94aa2be01082ad483ad0de316bddcf6eff43",
+        "bytes": 69534
+      },
+      "captured": {
+        "sha256": "9446eb99d7ff0a5dbbcabe03302b94aa2be01082ad483ad0de316bddcf6eff43",
+        "bytes": 69534
+      },
+      "byte_changed": false,
+      "shipped": false,
+      "note": "not shipped - capture bones 0 / stance false / framed false: attire-1 GLB has no skinned mesh/skeleton in the select path; fallback capture byte-identical to the current card; card and POSE-BLOCKERS entry retained"
+    },
+    "michiko": {
+      "main": {
+        "sha256": "1eae25f014f558f3baff1679ca1bbf1c0f059ae6b358a89efd529f7950dbd288",
+        "bytes": 119143
+      },
+      "captured": {
+        "sha256": "1eae25f014f558f3baff1679ca1bbf1c0f059ae6b358a89efd529f7950dbd288",
+        "bytes": 119143
+      },
+      "byte_changed": false,
+      "shipped": false,
+      "note": "not shipped - capture reproduced the current card byte-for-byte; manifest entry already records this exact run"
+    },
+    "cainelias": {
+      "main": {
+        "sha256": "4a186028461fbf06150d834cb32f3c713bb856af5f93577159447fca278d9d91",
+        "bytes": 70660
+      },
+      "captured": {
+        "sha256": "acf0f1964d46f3fd8b628e598dc3c0480867da540004285a345bfe4a7f8b4561",
+        "bytes": 69983
+      },
+      "byte_changed": true,
+      "shipped": false,
+      "note": "not shipped - capture bones 0 / stance false / framed false: skeleton-less (the S3 scale fix added no skeleton); fallback capture differs from the current card (framing of the rescaled model) but is not a posed card; current card retained per the Wave 2 brief, POSE-BLOCKERS entry retained"
+    }
+  }
+}
