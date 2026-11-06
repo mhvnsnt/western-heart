@@ -582,6 +582,11 @@ export class Fighter {
     // (moveset stance_after), rising = while-standing window after leaving a crouch,
     // stick = facing-relative direction (guard + posture), juggle = hits taken airborne.
     this.stance = null; this.stanceT = 0; this._risingT = 0; this._stickDir = 'n';
+    // BACK-TURNED (Tekken BT) is a FACING state, not a stance: it lives in its own flag so it
+    // can coexist with a character stance (the moveset data keys composed rows 'BT_RFF.1' and
+    // 'NSS.BT.d+1'), it has no timer (it ends by turning around, attacking, or being hit — see
+    // the facing block in update()), and the body actually faces away while it holds.
+    this._bt = false;
     this._juggle = 0; this._rageUsed = false; this._queuedNext = null; this._queuedAfter = null;
     this._stepChain = null; // whole-string step chain (Batch 1 step plans): {key, steps, idx}
     this._stringGraceUntil = 0; // wall-clock end of the post-move string window (see _tryAttackFresh)
@@ -1648,6 +1653,7 @@ export class Fighter {
   tryCrouch(on) {
     if (this.dead) return;
     if (on && this.onGround && (this.state === 'idle' || this.state === 'walk' || this.state === 'block')) {
+      this._bt = false; // Tekken: crouching from back-turned turns you around into the crouch
       this._enter('crouch'); this.vx = 0;
     } else if (!on && this.state === 'crouch') {
       this._enter('idle'); this._risingT = 0.35;
@@ -1676,7 +1682,7 @@ export class Fighter {
     const st = this.stance;
     return {
       stance: st && st !== 'BT' && st !== 'FC' && st !== 'SS' ? st : null,
-      backturned: st === 'BT',
+      backturned: !!this._bt || st === 'BT',
       sidestep: this.state === 'sidestep',
       crouching: this.state === 'crouch' || st === 'FC',
       rising: this._risingT > 0,
@@ -1750,7 +1756,7 @@ export class Fighter {
     if ((word & 0x18) === 0x08 && (word & 7) === 7 && !this.onGround) return false; // lows vs airborne
     return true;
   }
-  tryJump() { if (this.canAct() && this.onGround) { this.vy = this.stats.jump; this.onGround = false; this._enter('jump'); } }
+  tryJump() { if (this.canAct() && this.onGround) { this._bt = false; this.vy = this.stats.jump; this.onGround = false; this._enter('jump'); } } // a jump turns you around (Tekken)
   tryBlock(on) {
     if (this.dead) return;
     // FIGHTER DEPTH (worker 34): soul kindle flash — cannot block during it (T7).
@@ -1836,6 +1842,7 @@ export class Fighter {
      genuinely move off the attack's line on the z-axis. */
   trySidestep(dir) {
     if (!this.canAct() || !this.onGround) return false;
+    this._bt = false; // a sidestep re-faces the opponent (Tekken)
     this._enter('sidestep');
     this.ssDir = dir;
     this._ssId = (this._ssId || 0) + 1;
@@ -2221,10 +2228,10 @@ export class Fighter {
           if (resolveMoveKey(this.tekken.fighterId, chord)) {
             this.tekken.lastMove = this._chordBase || null;
             const saved = { state: this.state, attack: this.attack, attackName: this.attackName, stateT: this.stateT,
-              stance: this.stance, stanceT: this.stanceT, _risingT: this._risingT };
+              stance: this.stance, stanceT: this.stanceT, _risingT: this._risingT, _bt: this._bt };
             const pre = this._preAtk || {};
             this.state = pre.state === 'crouch' ? 'crouch' : 'idle';
-            this.stance = pre.stance || null; this.stanceT = pre.stanceT || 0; this._risingT = pre.risingT || 0;
+            this.stance = pre.stance || null; this.stanceT = pre.stanceT || 0; this._risingT = pre.risingT || 0; this._bt = pre.bt || false;
             if (this._tryAttackFresh(chord)) return true;
             Object.assign(this, saved);
           }
@@ -2248,13 +2255,13 @@ export class Fighter {
         if (/^[1234]$/.test(btn) && name.split('+').includes(btn)) {
           this.tekken.lastMove = this._chordBase || null;
           const saved = { state: this.state, attack: this.attack, attackName: this.attackName, stateT: this.stateT,
-            stance: this.stance, stanceT: this.stanceT, _risingT: this._risingT };
+            stance: this.stance, stanceT: this.stanceT, _risingT: this._risingT, _bt: this._bt };
           // Moveset sweep 2026-10-28: re-resolve the chord in the state the single was pressed
           // from (stance / crouch / while-rising), not plain idle — SAV.1+2, WS.1+2, FC.1+2 and
           // stance throws (SIDE_L.1+3) came out as the neutral chord.
           const pre = this._preAtk || {};
           this.state = pre.state === 'crouch' ? 'crouch' : 'idle';
-          this.stance = pre.stance || null; this.stanceT = pre.stanceT || 0; this._risingT = pre.risingT || 0;
+          this.stance = pre.stance || null; this.stanceT = pre.stanceT || 0; this._risingT = pre.risingT || 0; this._bt = pre.bt || false;
           if (this._tryAttackFresh(name)) return true;
           Object.assign(this, saved);
         }
@@ -2405,10 +2412,10 @@ export class Fighter {
   /** Does this fighter's moveset own `input` as a KOF system row (optionally of `sys`)? */
   systemRowOn(input, sys) { return systemRows(this._movesetId).find((r) => r.input === input && (!sys || r.sys === sys)) || null; }
   _startSystemMove(key, move) {
-    this._preAtk = { state: this.state, stance: this.stance, stanceT: this.stanceT, risingT: this._risingT };
+    this._preAtk = { state: this.state, stance: this.stance, stanceT: this.stanceT, risingT: this._risingT, bt: !!this._bt };
     this.attack = move; this.attackName = key; this.hasHit = false; this._prevHitPoint = null;
     this._attackId = (this._attackId || 0) + 1;
-    this._queuedNext = null; this._queuedAfter = null; this.stance = null; this.stanceT = 0;
+    this._queuedNext = null; this._queuedAfter = null; this.stance = null; this.stanceT = 0; this._bt = false;
     this._throwFollow = null; this._chainFrom = null; this._chainNext = null; this._chainSeq = [];
     this.vx = 0; this._enter('attack'); this._attackPhase = 'startup'; this._prevAtkT = 0;
   }
@@ -2565,7 +2572,7 @@ export class Fighter {
     }
     if (move.system === 'taunt') { const t = (move.startup || 0) + (move.active || 0);
       move = { ...move, recovery: Math.max(move.recovery || 0, KOF.TAUNT_LOCK - t) }; } // 49f uncancellable
-    this._preAtk = { state: this.state, stance: this.stance, stanceT: this.stanceT, risingT: this._risingT };
+    this._preAtk = { state: this.state, stance: this.stance, stanceT: this.stanceT, risingT: this._risingT, bt: !!this._bt };
     this.attack = move; this.attackName = notation; this.hasHit = false; this._prevHitPoint = null;
     this._attackId = (this._attackId || 0) + 1;
     this._queuedNext = null; this._queuedAfter = null; this._stepChain = null;
@@ -2576,7 +2583,7 @@ export class Fighter {
     if (/^(R|RD)\./.test(notation)) this._rageUsed = true; // rage art/drive: once per round
     // stance spin count (T7 JGS* (N spins)): re-entering the stance the move started from adds a spin
     this._spinNext = move.stanceAfter && this.stance === move.stanceAfter ? (this._stanceSpins || 1) + 1 : 1;
-    this.stance = null; this.stanceT = 0; this._risingT = 0;
+    this.stance = null; this.stanceT = 0; this._risingT = 0; this._bt = false; // the press already resolved against the pre-attack facing; the move's own end state re-applies at its end
     this._throwFollow = null; this._chainFrom = null; this._chainNext = null; this._chainSeq = [];
     this.vx = 0; this._enter('attack'); this._attackPhase = 'startup'; this._prevAtkT = 0;
     if (name === 'surge') this._auraFlash = 0.7;
@@ -2657,7 +2664,8 @@ export class Fighter {
   _endThrowFollow() {
     const c = this._throwFollow; this._throwFollow = null; if (!c) return;
     const m = getRealMove(this._movesetId, c), after = m && m.stanceAfter;
-    if (after === 'FC') { this._enter('crouch'); this.stance = 'FC'; this.stanceT = 0.5; }
+    if (after === 'BT') { this._bt = true; } // ends back-turned: a facing state, not a stance
+    else if (after === 'FC') { this._enter('crouch'); this.stance = 'FC'; this.stanceT = 0.5; }
     else if (after) { this._stanceSpins = this._spinNext || 1; this.stance = after; this.stanceT = 0.8; }
   }
   /* Start the move for an already-resolved notation (buffered string hits). */
@@ -2887,8 +2895,8 @@ export class Fighter {
       }
       this._queuedNext = null; this._queuedAfter = null; this._stepChain = null; this._stringGraceUntil = 0; // getting hit kills your string
       // Hit in the back (BT) the victim falls forward past its feet: it lands head towards the attacker.
-      this._kdHeadTowards = this.stance === 'BT';
-      this._kdFaceDown = this.stance === 'BT';   // falls forward: face down (FDFA ground state)
+      this._kdHeadTowards = !!this._bt;
+      this._kdFaceDown = !!this._bt;   // falls forward: face down (FDFA ground state)
       this._enter('knockdown');
     } else {
       const t8adv = move.t8 ? (counter && move.t8.ch != null ? move.t8.ch : move.t8.hit) : null;
@@ -2943,7 +2951,7 @@ export class Fighter {
         this._enter('wallsplat');
       }
     }
-    this.stance = null; this._stanceSpins = 0;
+    this.stance = null; this._stanceSpins = 0; this._bt = false; // a landed hit resolves the facing state too (the back-hit flags above already read it)
     // Soft-body hit injection: dent the muscle volume at the impact point.
     if (this._softbody) {
       try {
@@ -3295,13 +3303,28 @@ export class Fighter {
     // BRAWLER: facing is yaw-driven by the brawler controller (free 3D) —
     // never x-snap toward a single opponent.
     if (opponent && this.canAct() && !this.brawler) {
-      const want = opponent.root.position.x >= this.root.position.x ? 1 : -1;
-      if (want !== this.facing) this.facing = want;
-      // QA 2026-10-23 targeting fix (T7 tracking): in neutral a fighter turns to
-      // face the opponent in 3D, not just along x, so after a sidestep the
-      // body and the next attack point at the opponent.
-      this._faceYaw = Math.atan2(opponent.root.position.x - this.root.position.x,
-        opponent.root.position.z - this.root.position.z);
+      if (this._bt) {
+        // BACK-TURNED: the body faces AWAY from the opponent and does NOT snap
+        // back. BT is a facing state with no timer: it ends when the fighter
+        // turns around — stepping toward the opponent (walk / dash in) re-faces,
+        // crouch / sidestep / jump clear it in their own entry points, and an
+        // attack or a hit resolves it through the normal move flow. Before this,
+        // the snap below ran unconditionally, so a fighter the data had put in
+        // BT still LOOKED facing while its presses resolved BT rows: the BT move
+        // "fired from the front" and spun the fighter around (owner report).
+        this._faceYaw = Math.atan2(opponent.root.position.x - this.root.position.x,
+          opponent.root.position.z - this.root.position.z) + Math.PI;
+        const toward = Math.sign(opponent.root.position.x - this.root.position.x);
+        if (toward !== 0 && Math.sign(this.vx) === toward && Math.abs(this.vx) > 0.4) this._bt = false;
+      } else {
+        const want = opponent.root.position.x >= this.root.position.x ? 1 : -1;
+        if (want !== this.facing) this.facing = want;
+        // QA 2026-10-23 targeting fix (T7 tracking): in neutral a fighter turns to
+        // face the opponent in 3D, not just along x, so after a sidestep the
+        // body and the next attack point at the opponent.
+        this._faceYaw = Math.atan2(opponent.root.position.x - this.root.position.x,
+          opponent.root.position.z - this.root.position.z);
+      }
     }
 
     this._tickState(dt);
@@ -3390,7 +3413,9 @@ export class Fighter {
           // BATCH: 200 -> 500 ms for touch cadence (phone taps are slower than stick).
           if (!m.isGrab) this._stringGraceUntil = (typeof performance !== 'undefined' ? performance.now() : 0) + 500;
           // Source notes "Transition to X": the move ends in that stance (FC = crouch).
-          if (after === 'FC') { this._enter('crouch'); this.stance = 'FC'; this.stanceT = 0.5; }
+          // "Transition to BT" ends back-turned: a facing state, not a stance (see _bt).
+          if (after === 'BT') { this._bt = true; }
+          else if (after === 'FC') { this._enter('crouch'); this.stance = 'FC'; this.stanceT = 0.5; }
           else if (after) { this._stanceSpins = this._spinNext || 1; this.stance = after; this.stanceT = 0.8; }
         }
         // Buffered string hit fires once this hit's active frames are over.
