@@ -34,9 +34,17 @@
   {
    "id": "byou",
    "name": "BYOU",
-   "tekken_slot": "Lei Wulong",
+   "tekken_slot": "Wang Jinrei",
    "wh_moveset": "demonio",
-   "moves_match_slot": null,
+   "moveset_sources": {
+    "t6": [
+     "wang"
+    ],
+    "t3": [
+     "jin"
+    ]
+   },
+   "moves_match_slot": true,
    "attire_count": 1,
    "tekken_original_slots": [],
    "ladder_ok": null,
@@ -1928,8 +1936,10 @@
    "demonio"
   ],
   "Lei Wulong": [
-   "byou",
    "rave"
+  ],
+  "Wang Jinrei": [
+   "byou"
   ],
   "Paul Phoenix": [
    "tou"
@@ -2137,7 +2147,6 @@
   "cainelias: no Tekken-original attire in its ladder",
   "chordz: no Tekken-original attire in its ladder",
   "slot 'Jin Kazama' claimed by 2 fighters: rin, demonio",
-  "slot 'Lei Wulong' claimed by 2 fighters: byou, rave",
   "slot 'Xiaoyu' claimed by 2 fighters: sha, sakura",
   "slot 'Eddy Gordo' claimed by 2 fighters: kai, kingtyrant",
   "slot 'Bryan Fury' claimed by 2 fighters: retsu, skull",

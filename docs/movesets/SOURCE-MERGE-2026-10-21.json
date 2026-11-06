@@ -211,8 +211,17 @@
    "owner_excluded_inputs": []
   },
   "byou": {
-   "skipped": "no Tekken/teardown base with decoded data",
-   "tekken_base": "Lei Wulong"
+   "bases": {
+    "t6": [
+     "wang"
+    ],
+    "t3": [
+     "jin"
+    ]
+   },
+   "tekken_base": "Wang Jinrei",
+   "why": "owner 2026-11-06: \"He can have wang if no one else does\" - Byou's base rebuilt on Wang Jinrei's decoded Tekken 6 PSP kit (teardown/tekken6/movesets/t6psp-wang-moveset-v3.json). Lei Wulong is Rave's alone (see rave entry). Playable frame/anim layer remains the T3 jin bank; no Wang frame/damage/anim data exists in our holdings.",
+   "corrected": "2026-11-06"
   },
   "cainelias": {
    "skipped": "no Tekken/teardown base with decoded data",
