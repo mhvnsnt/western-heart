@@ -71,8 +71,8 @@ const OWNERSHIP = {
     ]
   },
   "byou": {
-    "base": "rave"
-  }, // wave 3 L3 2026-11-06: rides the Lei Wulong base file (his declared base; Kiko ladders it as her classic)
+    "pending": true
+  }, // wave 3 L3 2026-11-06: stays pending — no own-body in holdings; the Lei file is Rave's (no-wrong-body gate #866)
   "charger": {
     "own": [
       "charger",
@@ -384,8 +384,8 @@ const OWNERSHIP = {
     ]
   }, // wave 1 2026-10-23: select entry + base key landed (base = Attire 2; A1 Tripo not on disk)
   "tou": {
-    "base": "pantera"
-  }, // wave 3 L3 2026-11-06: declared soul rider on Pantera (MODEL-STATUS.md)
+    "pending": true
+  }, // wave 3 L3 2026-11-06: stays pending — no Paul/own-body in holdings; the rider body is Pantera's (no-wrong-body gate #866)
   "waterfall": {
     "own": [
       "waterfall",

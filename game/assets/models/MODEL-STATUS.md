@@ -137,15 +137,15 @@ NO Western Heart names. Never invent names for them.
 
 ## Wave 3 L3 (2026-11-06) — the seven pending souls wired
 
-The seven `modelPending` Nine Souls (roster-full.js) are wired to real models
-from this inventory and un-hidden; `game/tests/model-key-guard.test.mjs`
+Five of the seven `modelPending` Nine Souls (roster-full.js) are wired to real models
+from this inventory and un-hidden (byou and tou remain pending — see their rows); `game/tests/model-key-guard.test.mjs`
 OWNERSHIP updated in the same change, per that file's rule:
 
 | Soul | Model key | Source (this doc's terms) |
 |---|---|---|
 | RIN | `rin-body` | his own soul-body shell (Steve Fox body) |
-| BYOU | `rave` (base) | the Lei Wulong base file — his declared base; Kiko Tanaka ladders the same file as her classic attire |
-| TOU | `pantera` (base) | declared soul rider on Pantera (see the pantera.glb row) |
+| BYOU | — still pending | no own-body file exists in holdings; the Lei base file is Rave's fighter model and the no-wrong-body gate (owner order 2026-10-23, #866) forbids riding it — retires when a byou body lands |
+| TOU | — still pending | no Paul/own-body file exists in holdings; the declared rider body is Pantera's own and the no-wrong-body gate (owner order 2026-10-23, #866) forbids it — retires when a tou body lands |
 | SHA | `sha-body` | her own soul-body shell (Xiaoyu body); hair weights repaired (pigtails were arm-bound) in the same change |
 | KAI | `kai-body` | his own soul-body shell (Eddy body); the 1 untextured material (ModelHair_Base) repaired with the hair texture's own authored colour, lifting the material quarantine |
 | RETSU | `retsu-body` | his own soul-body shell (Bryan body) |
