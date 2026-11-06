@@ -1,0 +1,1107 @@
+{
+  "file": "work-item3/gyou/manual/rig_t.glb",
+  "animations": {
+    "CMU135_04_boxing": {
+      "name": "CMU135_04_boxing",
+      "frames": 18,
+      "pass": false,
+      "failures": [
+        "p99.9 triangle-edge stretch 11.60 > 2.5 (rest-pose ratio; edges < 8.7 mm excluded)",
+        "40 vertex displacement spike(s) (> 0.35 m in one step, or > 8.0x the frame median and > 0.10 m) \u2014 tearing"
+      ],
+      "channels_on_non_joint_nodes": [],
+      "unanimated_joints": 0,
+      "root_joint": "Hips",
+      "root_max_dev_m": 0.0,
+      "joint_trans_devs": [
+        {
+          "joint": "RightToeBase",
+          "max_dev_m": 1.4458
+        },
+        {
+          "joint": "RightFoot",
+          "max_dev_m": 1.2845
+        },
+        {
+          "joint": "RightHandMiddle3",
+          "max_dev_m": 1.1007
+        },
+        {
+          "joint": "RightHandIndex3",
+          "max_dev_m": 1.077
+        },
+        {
+          "joint": "RightHandRing3",
+          "max_dev_m": 1.0627
+        },
+        {
+          "joint": "RightHandMiddle2",
+          "max_dev_m": 1.056
+        },
+        {
+          "joint": "RightHandIndex2",
+          "max_dev_m": 1.0414
+        },
+        {
+          "joint": "RightHandRing2",
+          "max_dev_m": 1.0264
+        }
+      ],
+      "bones_checked": 49,
+      "bones": {
+        "Hips->LeftUpLeg": {
+          "rest_m": 0.11,
+          "min_m": 0.11,
+          "max_m": 0.11,
+          "mean_m": 0.11,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "Hips->RightUpLeg": {
+          "rest_m": 0.0912,
+          "min_m": 0.0912,
+          "max_m": 0.0912,
+          "mean_m": 0.0912,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "Hips->Spine": {
+          "rest_m": 0.0957,
+          "min_m": 0.0957,
+          "max_m": 0.0957,
+          "mean_m": 0.0957,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "LeftUpLeg->LeftLeg": {
+          "rest_m": 0.4346,
+          "min_m": 0.4346,
+          "max_m": 0.4346,
+          "mean_m": 0.4346,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "LeftLeg->LeftFoot": {
+          "rest_m": 0.4528,
+          "min_m": 0.4528,
+          "max_m": 0.4528,
+          "mean_m": 0.4528,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "LeftFoot->LeftToeBase": {
+          "rest_m": 0.1475,
+          "min_m": 0.1475,
+          "max_m": 0.1475,
+          "mean_m": 0.1475,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "RightUpLeg->RightLeg": {
+          "rest_m": 0.4336,
+          "min_m": 0.4336,
+          "max_m": 0.4337,
+          "mean_m": 0.4337,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "RightLeg->RightFoot": {
+          "rest_m": 0.4563,
+          "min_m": 0.4563,
+          "max_m": 0.4563,
+          "mean_m": 0.4563,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "RightFoot->RightToeBase": {
+          "rest_m": 0.1475,
+          "min_m": 0.1475,
+          "max_m": 0.1475,
+          "mean_m": 0.1475,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "Spine->Spine1": {
+          "rest_m": 0.1109,
+          "min_m": 0.1109,
+          "max_m": 0.1109,
+          "mean_m": 0.1109,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "Spine1->Spine2": {
+          "rest_m": 0.1295,
+          "min_m": 0.1295,
+          "max_m": 0.1295,
+          "mean_m": 0.1295,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "Spine2->LeftShoulder": {
+          "rest_m": 0.124,
+          "min_m": 0.124,
+          "max_m": 0.124,
+          "mean_m": 0.124,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "Spine2->Neck": {
+          "rest_m": 0.1427,
+          "min_m": 0.1427,
+          "max_m": 0.1427,
+          "mean_m": 0.1427,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "Spine2->RightShoulder": {
+          "rest_m": 0.1408,
+          "min_m": 0.1408,
+          "max_m": 0.1408,
+          "mean_m": 0.1408,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "LeftShoulder->LeftArm": {
+          "rest_m": 0.1445,
+          "min_m": 0.1445,
+          "max_m": 0.1445,
+          "mean_m": 0.1445,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "LeftArm->LeftForeArm": {
+          "rest_m": 0.2403,
+          "min_m": 0.2403,
+          "max_m": 0.2403,
+          "mean_m": 0.2403,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "LeftForeArm->LeftHand": {
+          "rest_m": 0.2407,
+          "min_m": 0.2407,
+          "max_m": 0.2407,
+          "mean_m": 0.2407,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "LeftHand->LeftHandIndex1": {
+          "rest_m": 0.1495,
+          "min_m": 0.1495,
+          "max_m": 0.1495,
+          "mean_m": 0.1495,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "LeftHand->LeftHandMiddle1": {
+          "rest_m": 0.1441,
+          "min_m": 0.1441,
+          "max_m": 0.1441,
+          "mean_m": 0.1441,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "LeftHand->LeftHandPinky1": {
+          "rest_m": 0.1293,
+          "min_m": 0.1293,
+          "max_m": 0.1293,
+          "mean_m": 0.1293,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "LeftHand->LeftHandRing1": {
+          "rest_m": 0.136,
+          "min_m": 0.136,
+          "max_m": 0.136,
+          "mean_m": 0.136,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "LeftHand->LeftHandThumb1": {
+          "rest_m": 0.0484,
+          "min_m": 0.0484,
+          "max_m": 0.0484,
+          "mean_m": 0.0484,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "LeftHandIndex1->LeftHandIndex2": {
+          "rest_m": 0.0325,
+          "min_m": 0.0325,
+          "max_m": 0.0325,
+          "mean_m": 0.0325,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "LeftHandIndex2->LeftHandIndex3": {
+          "rest_m": 0.0266,
+          "min_m": 0.0266,
+          "max_m": 0.0266,
+          "mean_m": 0.0266,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "LeftHandMiddle1->LeftHandMiddle2": {
+          "rest_m": 0.0326,
+          "min_m": 0.0326,
+          "max_m": 0.0326,
+          "mean_m": 0.0326,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "LeftHandMiddle2->LeftHandMiddle3": {
+          "rest_m": 0.0264,
+          "min_m": 0.0264,
+          "max_m": 0.0264,
+          "mean_m": 0.0264,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "LeftHandPinky1->LeftHandPinky2": {
+          "rest_m": 0.0156,
+          "min_m": 0.0156,
+          "max_m": 0.0156,
+          "mean_m": 0.0156,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "LeftHandRing1->LeftHandRing2": {
+          "rest_m": 0.0272,
+          "min_m": 0.0272,
+          "max_m": 0.0272,
+          "mean_m": 0.0272,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "LeftHandRing2->LeftHandRing3": {
+          "rest_m": 0.0213,
+          "min_m": 0.0213,
+          "max_m": 0.0213,
+          "mean_m": 0.0213,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "LeftHandThumb1->LeftHandThumb2": {
+          "rest_m": 0.0387,
+          "min_m": 0.0387,
+          "max_m": 0.0387,
+          "mean_m": 0.0387,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "LeftHandThumb2->LeftHandThumb3": {
+          "rest_m": 0.0515,
+          "min_m": 0.0515,
+          "max_m": 0.0515,
+          "mean_m": 0.0515,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "Neck->Head": {
+          "rest_m": 0.0357,
+          "min_m": 0.0357,
+          "max_m": 0.0357,
+          "mean_m": 0.0357,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "RightShoulder->RightArm": {
+          "rest_m": 0.1481,
+          "min_m": 0.1481,
+          "max_m": 0.1481,
+          "mean_m": 0.1481,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "RightArm->RightForeArm": {
+          "rest_m": 0.2316,
+          "min_m": 0.2316,
+          "max_m": 0.2316,
+          "mean_m": 0.2316,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "RightForeArm->RightHand": {
+          "rest_m": 0.2414,
+          "min_m": 0.2414,
+          "max_m": 0.2414,
+          "mean_m": 0.2414,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "RightHand->RightHandIndex1": {
+          "rest_m": 0.1496,
+          "min_m": 0.1496,
+          "max_m": 0.1496,
+          "mean_m": 0.1496,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "RightHand->RightHandMiddle1": {
+          "rest_m": 0.1453,
+          "min_m": 0.1453,
+          "max_m": 0.1453,
+          "mean_m": 0.1453,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "RightHand->RightHandPinky1": {
+          "rest_m": 0.1305,
+          "min_m": 0.1305,
+          "max_m": 0.1305,
+          "mean_m": 0.1305,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "RightHand->RightHandRing1": {
+          "rest_m": 0.1311,
+          "min_m": 0.1311,
+          "max_m": 0.1311,
+          "mean_m": 0.1311,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "RightHand->RightHandThumb1": {
+          "rest_m": 0.0488,
+          "min_m": 0.0488,
+          "max_m": 0.0488,
+          "mean_m": 0.0488,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "RightHandIndex1->RightHandIndex2": {
+          "rest_m": 0.0322,
+          "min_m": 0.0322,
+          "max_m": 0.0322,
+          "mean_m": 0.0322,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "RightHandIndex2->RightHandIndex3": {
+          "rest_m": 0.0264,
+          "min_m": 0.0264,
+          "max_m": 0.0264,
+          "mean_m": 0.0264,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "RightHandMiddle1->RightHandMiddle2": {
+          "rest_m": 0.0313,
+          "min_m": 0.0313,
+          "max_m": 0.0313,
+          "mean_m": 0.0313,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "RightHandMiddle2->RightHandMiddle3": {
+          "rest_m": 0.0267,
+          "min_m": 0.0267,
+          "max_m": 0.0267,
+          "mean_m": 0.0267,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "RightHandPinky1->RightHandPinky2": {
+          "rest_m": 0.0168,
+          "min_m": 0.0168,
+          "max_m": 0.0168,
+          "mean_m": 0.0168,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "RightHandRing1->RightHandRing2": {
+          "rest_m": 0.0251,
+          "min_m": 0.0251,
+          "max_m": 0.0251,
+          "mean_m": 0.0251,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "RightHandRing2->RightHandRing3": {
+          "rest_m": 0.022,
+          "min_m": 0.022,
+          "max_m": 0.022,
+          "mean_m": 0.022,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "RightHandThumb1->RightHandThumb2": {
+          "rest_m": 0.0391,
+          "min_m": 0.0391,
+          "max_m": 0.0391,
+          "mean_m": 0.0391,
+          "var": 0.0,
+          "rest_dev": 0.0
+        },
+        "RightHandThumb2->RightHandThumb3": {
+          "rest_m": 0.0475,
+          "min_m": 0.0475,
+          "max_m": 0.0475,
+          "mean_m": 0.0475,
+          "var": 0.0,
+          "rest_dev": 0.0
+        }
+      },
+      "bones_flagged": [],
+      "bones_rest_deviant": [],
+      "model_height_m": 1.75,
+      "meshes_checked": 1,
+      "edge_stretch_p999": 11.598,
+      "edge_stretch_max": 15.154,
+      "edge_min_m": 0.008749999310362975,
+      "tearing": {
+        "max_disp_m": 0.8413,
+        "spikes": [
+          {
+            "mesh": 0,
+            "time": 1.2083,
+            "vertex": 118789,
+            "disp_m": 0.4543,
+            "frame_median_m": 0.06603,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.2083,
+            "vertex": 118790,
+            "disp_m": 0.4538,
+            "frame_median_m": 0.06603,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.2083,
+            "vertex": 118791,
+            "disp_m": 0.4536,
+            "frame_median_m": 0.06603,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.2083,
+            "vertex": 118792,
+            "disp_m": 0.4546,
+            "frame_median_m": 0.06603,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.2083,
+            "vertex": 118793,
+            "disp_m": 0.4547,
+            "frame_median_m": 0.06603,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.2083,
+            "vertex": 118794,
+            "disp_m": 0.455,
+            "frame_median_m": 0.06603,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.2083,
+            "vertex": 118795,
+            "disp_m": 0.4551,
+            "frame_median_m": 0.06603,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.2083,
+            "vertex": 118796,
+            "disp_m": 0.4543,
+            "frame_median_m": 0.06603,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.2083,
+            "vertex": 118797,
+            "disp_m": 0.4537,
+            "frame_median_m": 0.06603,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.2083,
+            "vertex": 118798,
+            "disp_m": 0.453,
+            "frame_median_m": 0.06603,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.375,
+            "vertex": 118789,
+            "disp_m": 0.3878,
+            "frame_median_m": 0.09391,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.375,
+            "vertex": 118790,
+            "disp_m": 0.3875,
+            "frame_median_m": 0.09391,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.375,
+            "vertex": 118791,
+            "disp_m": 0.3883,
+            "frame_median_m": 0.09391,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.375,
+            "vertex": 118792,
+            "disp_m": 0.3869,
+            "frame_median_m": 0.09391,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.375,
+            "vertex": 118793,
+            "disp_m": 0.3881,
+            "frame_median_m": 0.09391,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.375,
+            "vertex": 118794,
+            "disp_m": 0.3871,
+            "frame_median_m": 0.09391,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.375,
+            "vertex": 118795,
+            "disp_m": 0.3856,
+            "frame_median_m": 0.09391,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.375,
+            "vertex": 118796,
+            "disp_m": 0.386,
+            "frame_median_m": 0.09391,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.375,
+            "vertex": 118797,
+            "disp_m": 0.3862,
+            "frame_median_m": 0.09391,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.375,
+            "vertex": 118798,
+            "disp_m": 0.386,
+            "frame_median_m": 0.09391,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.5417,
+            "vertex": 323671,
+            "disp_m": 0.3511,
+            "frame_median_m": 0.06512,
+            "joints": [
+              "RightLeg"
+            ],
+            "weights": [
+              1.0
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.5417,
+            "vertex": 323672,
+            "disp_m": 0.3531,
+            "frame_median_m": 0.06512,
+            "joints": [
+              "RightLeg"
+            ],
+            "weights": [
+              1.0
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.5417,
+            "vertex": 323673,
+            "disp_m": 0.3541,
+            "frame_median_m": 0.06512,
+            "joints": [
+              "RightLeg"
+            ],
+            "weights": [
+              1.0
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.5417,
+            "vertex": 323674,
+            "disp_m": 0.3503,
+            "frame_median_m": 0.06512,
+            "joints": [
+              "RightLeg"
+            ],
+            "weights": [
+              1.0
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.5417,
+            "vertex": 323675,
+            "disp_m": 0.3535,
+            "frame_median_m": 0.06512,
+            "joints": [
+              "RightLeg"
+            ],
+            "weights": [
+              1.0
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.5417,
+            "vertex": 323677,
+            "disp_m": 0.3533,
+            "frame_median_m": 0.06512,
+            "joints": [
+              "RightLeg"
+            ],
+            "weights": [
+              1.0
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.5417,
+            "vertex": 323680,
+            "disp_m": 0.3514,
+            "frame_median_m": 0.06512,
+            "joints": [
+              "RightLeg"
+            ],
+            "weights": [
+              1.0
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.5417,
+            "vertex": 323681,
+            "disp_m": 0.3537,
+            "frame_median_m": 0.06512,
+            "joints": [
+              "RightLeg"
+            ],
+            "weights": [
+              1.0
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.5417,
+            "vertex": 323684,
+            "disp_m": 0.3518,
+            "frame_median_m": 0.06512,
+            "joints": [
+              "RightLeg"
+            ],
+            "weights": [
+              1.0
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.5417,
+            "vertex": 323685,
+            "disp_m": 0.3538,
+            "frame_median_m": 0.06512,
+            "joints": [
+              "RightLeg"
+            ],
+            "weights": [
+              1.0
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.7083,
+            "vertex": 118789,
+            "disp_m": 0.4173,
+            "frame_median_m": 0.06811,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.7083,
+            "vertex": 118790,
+            "disp_m": 0.4169,
+            "frame_median_m": 0.06811,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.7083,
+            "vertex": 118791,
+            "disp_m": 0.4165,
+            "frame_median_m": 0.06811,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.7083,
+            "vertex": 118792,
+            "disp_m": 0.4178,
+            "frame_median_m": 0.06811,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.7083,
+            "vertex": 118793,
+            "disp_m": 0.4175,
+            "frame_median_m": 0.06811,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.7083,
+            "vertex": 118794,
+            "disp_m": 0.4181,
+            "frame_median_m": 0.06811,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.7083,
+            "vertex": 118795,
+            "disp_m": 0.4184,
+            "frame_median_m": 0.06811,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.7083,
+            "vertex": 118796,
+            "disp_m": 0.4176,
+            "frame_median_m": 0.06811,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.7083,
+            "vertex": 118797,
+            "disp_m": 0.417,
+            "frame_median_m": 0.06811,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          },
+          {
+            "mesh": 0,
+            "time": 1.7083,
+            "vertex": 118798,
+            "disp_m": 0.4163,
+            "frame_median_m": 0.06811,
+            "joints": [
+              "RightUpLeg",
+              "RightLeg",
+              "Spine"
+            ],
+            "weights": [
+              0.821,
+              0.154,
+              0.025
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "pass": false,
+  "thresholds": {
+    "bone_var": 0.02,
+    "tear_m": 0.35,
+    "tear_k": 8.0,
+    "edge_max": 2.5,
+    "max_frames": 18
+  }
+}

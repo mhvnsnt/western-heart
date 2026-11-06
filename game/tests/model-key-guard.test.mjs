@@ -72,7 +72,7 @@ const OWNERSHIP = {
   },
   "byou": {
     "pending": true
-  },
+  }, // wave 3 L3 2026-11-06: stays pending — no own-body in holdings; the Lei file is Rave's (no-wrong-body gate #866)
   "charger": {
     "own": [
       "charger",
@@ -193,14 +193,19 @@ const OWNERSHIP = {
     ]
   }, // table was stale vs the re-keyed ladder (Tripo default Slot 1); fixed 2026-10-22
   "gyou": {
-    "pending": true
-  },
+    "own": [
+      "gyou-attire1",
+      "gyou-spirit"
+    ]
+  }, // wave 3 L3 2026-11-06: spirit body rigged from his archived Tripo static (the fighter); spirit form is his floating spirit
   "jin_soul": {
     "base": "steve-fox"
   },
   "kai": {
-    "pending": true
-  },
+    "own": [
+      "kai-body"
+    ]
+  }, // wave 3 L3 2026-11-06: wired to his own soul-body shell (hair-base material repaired)
   "kingtyrant": {
     "own": [
       "king-tyrant",
@@ -291,11 +296,15 @@ const OWNERSHIP = {
     ]
   },
   "retsu": {
-    "pending": true
-  },
+    "own": [
+      "retsu-body"
+    ]
+  }, // wave 3 L3 2026-11-06: wired to his own soul-body shell
   "rin": {
-    "pending": true
-  },
+    "own": [
+      "rin-body"
+    ]
+  }, // wave 3 L3 2026-11-06: wired to his own soul-body shell
   "ryuji": {
     "own": [
       "ryuji-rock"
@@ -325,8 +334,10 @@ const OWNERSHIP = {
     ]
   },
   "sha": {
-    "pending": true
-  },
+    "own": [
+      "sha-body"
+    ]
+  }, // wave 3 L3 2026-11-06: wired to her own soul-body shell (card posed-fix rides item 7)
   "skull": {
     "own": [
       "skull",
@@ -374,7 +385,7 @@ const OWNERSHIP = {
   }, // wave 1 2026-10-23: select entry + base key landed (base = Attire 2; A1 Tripo not on disk)
   "tou": {
     "pending": true
-  },
+  }, // wave 3 L3 2026-11-06: stays pending — no Paul/own-body in holdings; the rider body is Pantera's (no-wrong-body gate #866)
   "waterfall": {
     "own": [
       "waterfall",

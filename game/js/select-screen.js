@@ -426,9 +426,21 @@ export function createSelectScreen(deps) {
      unlockable boss-type characters with vessels/bodies once story modes
      progress — the unlock path is future design, not this change. Their
      presence on a fighter is the soul-spirit toggle (js/soul-spirit.js),
-     not a select card. */
+     not a select card.
+     WAVE 3 L3 (2026-11-06, Roster-100 program): the redesign's return
+     condition — real bodies — is now met for rin, sha, kai, retsu
+     (their own soul-body shells) and gyou
+     (his own spirit body, rigged). They come off SELECT_HIDDEN as
+     selectable fighters with real cards; the soul-spirit toggle remains
+     their presence on other fighters. byou and tou STAY hidden and
+     modelPending: the no-wrong-body gate (owner order 2026-10-23, #866)
+     forbids the only bodies holdings offer them (the Lei base file is
+     Rave's fighter model; the Paul-soul rider body is Pantera's), and no
+     own-body file for either exists in holdings yet. zen stays as-is in this change
+     (not an L3 fighter); sha's card is still the registered placeholder
+     pending the item-7 stance fix (POSE-BLOCKERS). */
   const SELECT_HIDDEN = new Set([
-    'rin', 'byou', 'tou', 'sha', 'kai', 'jin_soul', 'retsu', 'zen', 'gyou',
+    'byou', 'tou', 'jin_soul', 'zen',
     'ryuji', 'doc-frank-machine-shop',
 
   ]);
