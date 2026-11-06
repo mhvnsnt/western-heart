@@ -28,7 +28,17 @@
       "t3_source": "ogre",
       "t3_row": 38,
       "t3_command": "LP",
-      "note": "Quick lead palm. The first hand speaks."
+      "note": "Quick lead palm. The first hand speaks.",
+      "layer2": {
+        "anim_ref": "t3:kuma:row:177",
+        "chain": "arms2",
+        "mode": "override-masked",
+        "sync": "contact-aligned",
+        "phase_offset_frames": 4,
+        "phase_domain": "hit_frames 60fps logic frames (donor active_first - base active_first); engine converts to 30fps clip frames (/2)",
+        "weight": 1.0,
+        "provenance": "Kuma T3 row 177: arm-dominant (armL) mid paw, ext 1.11, active 15-16f vs base active_first 11f -> offset +4. Second pair answers the lead palm."
+      }
     },
     "2": {
       "name": "Second Mudra",
@@ -49,7 +59,27 @@
       "t3_source": "ogre",
       "t3_row": 50,
       "t3_command": "RP",
-      "note": "Right palm, heavier. The second hand answers."
+      "note": "Right palm, heavier. The second hand answers.",
+      "layer2": {
+        "anim_ref": "t3:kuma:row:130",
+        "chain": "arms2",
+        "mode": "override-masked",
+        "sync": "contact-aligned",
+        "phase_offset_frames": 3,
+        "phase_domain": "hit_frames 60fps logic frames (donor active_first - base active_first); engine converts to 30fps clip frames (/2)",
+        "weight": 1.0,
+        "hit": {
+          "damage": 6,
+          "active": [
+            10,
+            13
+          ],
+          "limb": "arm2R",
+          "level": "mid",
+          "note": "active = donor window [14,16] shifted by the phase offset into the base move timeline (+/-1f rounding from the 60->30fps conversion)"
+        },
+        "provenance": "Kuma T3 row 130: arm-dominant (armR) mid paw, ext 1.25 (strongest mid paw in the bank), active 14-16f vs base 11f -> offset +3. Authored TWO-HIT: the second pair lands its own contact."
+      }
     },
     "1,2": {
       "name": "Mudra Pair",
@@ -813,7 +843,17 @@
       "t3_source": "ogre",
       "t3_row": 168,
       "t3_command": "LP+RP",
-      "note": "Both palms shove. Staggering."
+      "note": "Both palms shove. Staggering.",
+      "layer2": {
+        "anim_ref": "t3:kuma:row:155",
+        "chain": "arms2",
+        "mode": "override-masked",
+        "sync": "contact-aligned",
+        "phase_offset_frames": -3,
+        "phase_domain": "hit_frames 60fps logic frames (donor active_first - base active_first); engine converts to 30fps clip frames (/2)",
+        "weight": 1.0,
+        "provenance": "Kuma T3 row 155: arm-dominant (armR) mid, ext 1.22, active 55-130f \u2014 the same long-charge family as Double Refusal (58-126f) -> offset -3."
+      }
     },
     "3+4": {
       "name": "Twin Drum",
@@ -855,7 +895,17 @@
       "t3_source": "ogre",
       "t3_row": 220,
       "t3_command": "LP+LK",
-      "note": "Left-side throw. The arms close like a gate."
+      "note": "Left-side throw. The arms close like a gate.",
+      "layer2": {
+        "anim_ref": "t3:kuma:row:212",
+        "chain": "arms2",
+        "mode": "override-masked",
+        "sync": "peak-aligned",
+        "phase_offset_frames": 2,
+        "phase_domain": "hit_frames 60fps logic frames (donor active_first - base active_first); engine converts to 30fps clip frames (/2)",
+        "weight": 1.0,
+        "provenance": "Kuma T3 throw row 212: arm-dominant (armR) grab chain, ext 0.88, strike peak frame 7 (30fps) = 14f (60fps) vs base throw active_first 12f -> peak-aligned offset +2. The second pair restrains while the first pair throws."
+      }
     },
     "2+4": {
       "name": "Second Binding",
@@ -1255,7 +1305,17 @@
       "t3_source": "ogre",
       "t3_row": 185,
       "t3_command": "",
-      "note": "Unblockable crush. Four arms, one verdict."
+      "note": "Unblockable crush. Four arms, one verdict.",
+      "layer2": {
+        "anim_ref": "t3:gunjack:row:241",
+        "chain": "arms2",
+        "mode": "override-masked",
+        "sync": "contact-aligned",
+        "phase_offset_frames": 0,
+        "phase_domain": "hit_frames 60fps logic frames (donor active_first - base active_first); engine converts to 30fps clip frames (/2)",
+        "weight": 1.0,
+        "provenance": "Gun Jack T3 row 241: arm-dominant (armL) mid slam arc, ext 1.32, active 21-30f vs base 21f -> offset 0. Heavy class layer per the donor spec."
+      }
     },
     "2+3": {
       "name": "Oversoul Quake",
@@ -1276,7 +1336,17 @@
       "t3_source": "ogre",
       "t3_row": 212,
       "t3_command": "",
-      "note": "The ground answers the dance. Unblockable stomp-wave."
+      "note": "The ground answers the dance. Unblockable stomp-wave.",
+      "layer2": {
+        "anim_ref": "t3:gunjack:row:84",
+        "chain": "arms2",
+        "mode": "override-masked",
+        "sync": "contact-aligned",
+        "phase_offset_frames": 11,
+        "phase_domain": "hit_frames 60fps logic frames (donor active_first - base active_first); engine converts to 30fps clip frames (/2)",
+        "weight": 1.0,
+        "provenance": "Gun Jack T3 row 84: arm-dominant (armR) mid piston slam, ext 0.92, active 34-39f vs base 23f -> offset +11."
+      }
     },
     "f+3": {
       "name": "Procession Kick",
@@ -6195,6 +6265,99 @@
       "t3_restriction": 15,
       "merge_source": "t3:ogre:row:313",
       "set": "FIGHT"
+    },
+    "f+2+3": {
+      "name": "Low Offering",
+      "input": "f+2+3",
+      "input_slots": [
+        "2",
+        "3"
+      ],
+      "move_class": "strike",
+      "anim_ref": "t3:ogre:row:38",
+      "damage": 12,
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.15,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.6,
+      "soulGain": 9,
+      "t3_source": "ogre",
+      "t3_row": 38,
+      "note": "The waist hands sweep the ground. An offering, placed low.",
+      "layer2": {
+        "anim_ref": "t3:kuma:row:219",
+        "chain": "arms2",
+        "mode": "override-masked",
+        "sync": "self-timed",
+        "phase_offset_frames": 0,
+        "phase_domain": "hit_frames 60fps logic frames (donor active_first - base active_first); engine converts to 30fps clip frames (/2)",
+        "weight": 1.0,
+        "provenance": "Kuma T3 row 219: low paw swipe, arm-dominant (armR), ext 0.89, active 20-21f, stream 30f. Base body = her own ogre row 38 (First Mudra palm body, stream 39f): the spec's brace-row shape does not exist in the ogre bank (every no-window row is throw-class and the plan guard rejects those for strikes), so the body is her lightest real palm row; the named strike, its timing and its level are the donor row's, carried on layer2."
+      }
+    },
+    "d+2+4": {
+      "name": "Procession Lariat",
+      "input": "d+2+4",
+      "input_slots": [
+        "2",
+        "4"
+      ],
+      "move_class": "strike",
+      "anim_ref": "t3:ogre:row:110",
+      "damage": 14,
+      "startup": 0.333,
+      "active": 0.333,
+      "recovery": 0.767,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 3.4,
+      "soulGain": 10,
+      "t3_source": "ogre",
+      "t3_row": 110,
+      "note": "The second pair takes the procession around. Do not step in its path.",
+      "layer2": {
+        "anim_ref": "t3:armorking:row:220",
+        "chain": "arms2",
+        "mode": "override-masked",
+        "sync": "self-timed",
+        "phase_offset_frames": 0,
+        "phase_domain": "hit_frames 60fps logic frames (donor active_first - base active_first); engine converts to 30fps clip frames (/2)",
+        "weight": 1.0,
+        "provenance": "Armor King T3 row 220: spinning lariat arc, arm-dominant (armR), ext 1.20, active 20-39f, stream 85f. Base body = her own ogre row 110 (Procession Punch body, stream 60f) \u2014 same procession family, duration-matched, per the brace-row finding on Low Offering. Level: HIGH per the donor hit word (the research spec guessed mid; the data says high, so high it is)."
+      }
+    },
+    "b+1+3": {
+      "name": "Gate Piston",
+      "input": "b+1+3",
+      "input_slots": [
+        "2",
+        "3"
+      ],
+      "move_class": "strike",
+      "anim_ref": "t3:ogre:row:212",
+      "damage": 20,
+      "startup": 0.883,
+      "active": 0.033,
+      "recovery": 1.0,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "t3_source": "ogre",
+      "t3_row": 212,
+      "note": "Both lower arms rise and fall as one gate. Nothing passes.",
+      "layer2": {
+        "anim_ref": "t3:gunjack:row:248",
+        "chain": "arms2",
+        "mode": "override-masked",
+        "sync": "self-timed",
+        "phase_offset_frames": 0,
+        "phase_domain": "hit_frames 60fps logic frames (donor active_first - base active_first); engine converts to 30fps clip frames (/2)",
+        "weight": 1.0,
+        "provenance": "Gun Jack T3 row 248: overhead piston slam, arm-dominant (armR), ext 0.74, active 53-54f, stream 114f. Base body = her own ogre row 212 (Oversoul Quake two-arm slam body, stream 85f) \u2014 duration-matched, per the brace-row finding on Low Offering. Input is b+1+3, not u+2+3: the engine claims u+2+3 for its UB Urge Burst system move (measured live), so the slot is not hers to hold."
+      }
     }
   },
   "strings": [
@@ -6729,7 +6892,10 @@
     "u/f+3+4": "u/f+3+4",
     "u/f+3,4": "u/f+3,4",
     "u/f+3,4,3": "u/f+3,4,3",
-    "u/f+4": "u/f+4"
+    "u/f+4": "u/f+4",
+    "f+2+3": "f+2+3",
+    "d+2+4": "d+2+4",
+    "b+1+3": "b+1+3"
   },
   "merge_sources": {
     "date": "2026-10-23",
@@ -7034,5 +7200,12 @@
     "n,d/f,n,d/f+2+4,1~t3.ogre": 2048
   },
   "stance_after": {},
-  "anim_bank": "ogre"
+  "anim_bank": "ogre",
+  "layer2_stance": {
+    "anim_ref": "t3:kuma:stance",
+    "chain": "arms2",
+    "mode": "override-masked",
+    "sync": "loop",
+    "provenance": "Kuma T3 stance (t3_neutral) masked to the waist chain: the second pair guards and breathes with real motion under her own ogre stance. Phase 1 self-offset fill is replaced by this donor layer at bind."
+  }
 }

@@ -157,6 +157,63 @@ test('profile is data, not a name hack: only chatur has one, and its chains reso
   }
 });
 
+test('phase 2: a donor-bank clip drives the waist pair (layer2 composite), core untouched', async () => {
+  const ogre = await T.loadT3Clips(THREE, 'ogre');
+  const kuma = await T.loadT3Clips(THREE, 'kuma');
+  const model = buildModelFromFixture('chatur-rig.json');
+  const plain = T.retargetT3Clips(ogre, 'ogre', model, THREE, 'chatur', ['row:50']);
+  assert.ok(plain && plain['row:50'], 'plain row 50 retargets');
+  // Second Mudra (ogre row 50, contact 11f@60) + Kuma row 130 paw
+  // (contact 14f@60): phase_offset_frames +3 in the data's 60 fps
+  // domain = +2 clip frames (30 fps) at the engine boundary.
+  const layered = T.retargetT3Clips(ogre, 'ogre', model, THREE, 'chatur', ['row:50'],
+    { cacheAs: 'row:50#l2', layer: { clips: kuma, bankId: 'kuma', clipName: 'row:130', offsetFrames: 2 } });
+  assert.ok(layered && layered['row:50#l2'], 'layered composite retargets under its cache key');
+  assert.ok(!layered['row:50'], 'layered call does not masquerade as the plain clip');
+  const lc = layered['row:50#l2'], pc = plain['row:50'];
+  const trackOf = (clip, name) => clip.tracks.find((t) => t.name === name);
+  // Core chain: byte-identical values — the layer never touches it.
+  assert.deepEqual(trackOf(lc, 'LeftHand.quaternion').values, trackOf(pc, 'LeftHand.quaternion').values,
+    'layer altered the primary hand track');
+  assert.deepEqual(trackOf(lc, 'Hips.quaternion').values, trackOf(pc, 'Hips.quaternion').values,
+    'layer altered the hips track');
+  // Waist chain: present, and DIFFERENT motion from the self fill —
+  // it is the donor clip's data now.
+  for (const n of ['DEFupper_armL002', 'DEFforearmL002', 'DEFhandL001', 'DEFupper_armR002', 'DEFforearmR002', 'DEFhandR001']) {
+    assert.ok(trackOf(lc, `${n}.quaternion`), `layered clip missing waist track ${n}`);
+  }
+  assert.notDeepEqual(trackOf(lc, 'DEFhandR001.quaternion').values, trackOf(pc, 'DEFhandR001.quaternion').values,
+    'waist hand still on the self fill — donor layer did not take over');
+  // And it moves: sample the layered clip on a mixer.
+  const mixer = new THREE.AnimationMixer(model);
+  const action = mixer.clipAction(lc);
+  action.setLoop(THREE.LoopOnce, 1);
+  action.play();
+  const hand2 = boneByName(model, gltfName('DEF-hand.R.001'));
+  mixer.update(0.05); model.updateWorldMatrix(true, true);
+  const a = wp(hand2);
+  mixer.update(0.3); model.updateWorldMatrix(true, true);
+  const b = wp(hand2);
+  assert.ok(a.distanceTo(b) > 0.02, 'donor-layered waist hand does not travel during Second Mudra');
+  // The plain clip is still cached clean afterwards.
+  const again = T.retargetT3Clips(ogre, 'ogre', model, THREE, 'chatur', ['row:50']);
+  assert.equal(again['row:50'], pc, 'plain row 50 cache polluted by the layered variant');
+});
+
+test('phase 2: ambient stance layer (donor stance clip) retargets onto the waist pair', async () => {
+  const ogre = await T.loadT3Clips(THREE, 'ogre');
+  const kuma = await T.loadT3Clips(THREE, 'kuma');
+  assert.ok(kuma.stance, 'kuma bank has a stance clip');
+  const model = buildModelFromFixture('chatur-rig.json');
+  T.retargetT3Clips(ogre, 'ogre', model, THREE, 'chatur');
+  const layered = T.retargetT3Clips(ogre, 'ogre', model, THREE, 'chatur', ['stance'],
+    { cacheAs: 'stance#l2', layer: { clips: kuma, bankId: 'kuma', clipName: 'stance', offsetFrames: 0 } });
+  assert.ok(layered && layered['stance#l2'], 'layered stance retargets');
+  const names = new Set(layered['stance#l2'].tracks.map((t) => t.name));
+  assert.ok(names.has('DEFhandL001.quaternion') && names.has('DEFhandR001.quaternion'),
+    'ambient stance layer carries no waist tracks');
+});
+
 test('regression: a canonical hierarchy rig still retargets (jin bank, synthetic Mixamo chain)', async () => {
   // Minimal canonical rig: torso chain intact, arms parented under the
   // chest, legs under the hips — the shape every other fighter ships.
