@@ -199,7 +199,7 @@ export const MODEL_URLS = {
   // under his roster dir per convention. Byte-identical to
   // assets/models/cape-jones.glb — no re-rig needed. See
   // roster/cyborg-x/ATTIRE-SLOTS.md.
-  'cape-jones-attire1': '../roster/cyborg-x/attires/attire1/model-rigged.glb',
+  'cape-jones-attire1': '../roster/cyborg-x/attires/attire1/model-rigged-refit.glb', // 2026-11-06 refit (was model-rigged.glb, 86 MB, torn cape on his card): refit_rig + fit_cdn_budget, 14.1 MB
   // Bonus / music fighters and name-pending models (loadable, unassigned).
   mariposa: 'assets/models/mariposa.glb',
   // Mariposa Slot 1 — Butterfly Default (dedup 2026-10-22): owner-designated
@@ -362,7 +362,7 @@ export const MODEL_URLS = {
   yukihyo: 'assets/models/yukihyo.glb',
   // SCIMITAR (2026-10-21, lane 4 rig batch 1): unrigged static -> auto-rigged via
   // tools/auto_rig knn backend (donor pantera.glb); owner's original stays untouched.
-  scimitar: 'assets/models/scimitar-rigged.glb',   // Shaheen-based base mesh — NO-GATE: wired as-is, clothing via Creation Suite as an option
+  scimitar: '../roster/scimitar/attires/attire1/source/scimitar-a1-rigged.glb', // 2026-11-06 owner: "that not the correct scimitar glb model from my tripo imports" -> his own Tripo pull (scimitar-a1.glb, Tripo a3e76dd5) rigged by tools/auto_rig/rig_tripo_static.py; was assets/models/scimitar-rigged.glb (Shaheen-based base mesh)
   // Created fighters use the Soldier.glb base from the CAW suite.
   // Relative path works on GitHub Pages (game/ -> customization/).
   custom: '../customization/create-fighter/assets/Soldier.glb',
@@ -503,7 +503,7 @@ export const MODEL_URLS = {
   // successor's own attires first, source-game originals late (slots 5+).
   'bruno-attire1': '../roster/bruno/attires/attire1/source/bruno-a1.glb',
   'bruno-attire2': '../roster/bruno/attires/attire2/source/bruno-a2-sail-the-sea-rigged.glb',
-  'dio-attire1': '../roster/dio/attires/attire1/source/dio-a1-jade-god-rigged.glb',
+  'dio-attire1': '../roster/dio/attires/attire1/source/dio-a1-jade-god-rigged-refit.glb', // 2026-11-06 refit (was -rigged.glb: cone face + crushed arms): refit_rig + fit_cdn_budget, 19.0 MB
   'koreshi-attire1': '../roster/koreshi/attires/attire1/model.glb',
   // Negativo attire 1 = the landmark re-fit (PR #1463, tools/auto_rig/refit_rig.py; proof
   // docs/proof/2026-11-01/refit-negativo/): face/hair on Head, arms on the arm bones, hips at the hips.
