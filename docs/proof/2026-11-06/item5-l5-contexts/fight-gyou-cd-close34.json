@@ -1,0 +1,125 @@
+{
+ "p1": "gyou",
+ "case": "gyou-close34",
+ "p2": "pantera",
+ "base": "http://127.0.0.1:8836/game/",
+ "ready": true,
+ "run": {
+  "fid": "gyou",
+  "steps": [
+   {
+    "tag": "dirs:d,d/f",
+    "state": "idle",
+    "atk": null,
+    "stance": null,
+    "cd": true,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 0
+   },
+   {
+    "tag": "hold:d/f",
+    "state": "idle",
+    "atk": null,
+    "stance": null,
+    "cd": true,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 0
+   },
+   {
+    "tag": "dirs:n",
+    "state": "idle",
+    "atk": null,
+    "stance": null,
+    "cd": true,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 0
+   },
+   {
+    "tag": "attack:3",
+    "state": "attack",
+    "atk": "CD.3",
+    "stance": null,
+    "cd": true,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 0,
+    "ok": true
+   },
+   {
+    "tag": "step130",
+    "state": "idle",
+    "atk": null,
+    "stance": "LFS",
+    "cd": false,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 1.7
+   },
+   {
+    "tag": "settle",
+    "state": "idle",
+    "atk": null,
+    "stance": "LFS",
+    "cd": false,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 0
+   },
+   {
+    "tag": "dirs:d,d/f",
+    "state": "idle",
+    "atk": null,
+    "stance": "LFS",
+    "cd": true,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 0
+   },
+   {
+    "tag": "hold:d/f",
+    "state": "idle",
+    "atk": null,
+    "stance": "LFS",
+    "cd": true,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 0
+   },
+   {
+    "tag": "dirs:n",
+    "state": "idle",
+    "atk": null,
+    "stance": "LFS",
+    "cd": true,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 0
+   },
+   {
+    "tag": "attack:4",
+    "state": "attack",
+    "atk": "CD.4",
+    "stance": null,
+    "cd": true,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 0,
+    "ok": true
+   },
+   {
+    "tag": "step130",
+    "state": "idle",
+    "atk": null,
+    "stance": null,
+    "cd": true,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 0
+   }
+  ]
+ },
+ "logs": []
+}

@@ -12,9 +12,10 @@
 - **Duplicate stance spellings + Megami's Izumo entry (roster-100 S9, 2026-11-05):** NO ENTRY **593 → 561** — `stance_alias` in the moveset data slots the duplicate-spelling rows on the entered spelling (phantom INS → IND, POISON_WIND → POI; cyborgx BKP → BACKUP, CLOCKWORK → CLK), and Megami's own `stance_after` wires f+1+2 → IZU (`docs/movesets/NO-ENTRY-S9-REAUDIT-2026-11-05.md`).
 
 **Left (2026-11-05):** the tackle family (owner gameplay decision), Pond's bank-linked stance rows (entry moves identified, per-row clip verification still owed), the dataset row-id artifact keys (byou `t7.*`, megami `t8.*` — no input notation exists for them anywhere in the repo), Zen's stance rows (owner no-bank decision), and genuine no-entry-move gaps — full accounting in `docs/movesets/NO-ENTRY-S9-REAUDIT-2026-11-05.md`.
+- **Crouch-dash + sidestep-side contexts (roster-100 L5, 2026-11-06):** NO ENTRY **561 → 539** — `CD.` resolves while a fighter's OWN declared crouch-dash entry move is in its window (`cd_entry` in the moveset data: rin `f,n,d,d/f`, demonio `f,n,d,df`, gyou `d,d/f`; the buffer latches the context off the f,n,d,d/f motion itself), and `SSL.` / `SSR.` resolve during a sidestep toward the foe's left / right (`ssSide` in `fighter.js` `_inputCtx`, side derived from the engine's own flank convention). Fight-proven: demonio/rin/gyou CD rows fire from the motion, Purplerain's SSL.3+4 and SSR.3+4 fire off the matching sidesteps. CD rows for awapop / pantera / tobi stay NO ENTRY — their files declare no crouch-dash entry anywhere (no entry move named, no `stance_after` into CD). Guard test: `test/cd-ss-contexts.test.mjs`.
 
 
-55 fighters, 15737 move inputs, 5577 of them state / stance-prefixed: engine context 2859, stance entered by a move 2034, chain-throw stage 123, **NO ENTRY 561** (can never fire).
+55 fighters, 15737 move inputs, 5577 of them state / stance-prefixed: engine context 2881, stance entered by a move 2034, chain-throw stage 123, **NO ENTRY 539** (can never fire).
 
 ## Prefixes nothing in the game enters, by moves affected
 
@@ -23,13 +24,13 @@
 | TACKLE | 118 | rin, sha, kai, retsu, zen, pantera, demonio, diablo, skull, samura1, sakura, zui +17 |
 | LAB | 39 | pond |
 | DES | 32 | cyborgx |
-| CD | 30 | rin, gyou, pantera, demonio, awapop, tobi |
 | t7 | 25 | byou |
 | KND | 20 | byou, rave |
 | REV | 16 | rin, tou, sha, zen, demonio, diablo, sakura, kinpo, awapop, cyborgx, star, torch +2 |
 | SLD | 15 | byou, rave |
 | FCD | 14 | byou |
 | WAR | 14 | zen, diablo |
+| CD | 14 | pantera, awapop, tobi |
 | GMH | 14 | samura1 |
 | DBT | 14 | cyborgx |
 | SZN | 14 | pond |
@@ -58,8 +59,6 @@
 | GMC | 3 | samura1 |
 | NWG | 3 | kinpo |
 | BHS | 3 | awapop |
-| SSL | 3 | purplerain, negativo |
-| SSR | 3 | purplerain, negativo |
 | SHADOW_STEP | 3 | yukihyo |
 | PGR | 3 | slice |
 | SIT | 2 | byou |
@@ -99,16 +98,16 @@
 
 | fighter | inputs | prefixed | engine | stance | throw | NO ENTRY | no-entry prefixes |
 |---|---|---|---|---|---|---|---|
-| rin | 385 | 103 | 66 | 13 | 0 | 24 | CD (10), DVS (7), TACKLE (5), CDS (1), REV (1) |
+| rin | 385 | 103 | 76 | 13 | 0 | 14 | DVS (7), TACKLE (5), CDS (1), REV (1) |
 | byou | 753 | 366 | 62 | 239 | 0 | 65 | t7 (25), KND (14), FCD (14), SLD (10), SIT (2) |
 | tou | 304 | 95 | 64 | 23 | 7 | 1 | REV (1) |
 | sha | 350 | 164 | 75 | 83 | 0 | 6 | TACKLE (4), CHAOP (1), REV (1) |
 | kai | 403 | 156 | 85 | 63 | 0 | 8 | TACKLE (4), MD1 (2), MD2 (2) |
 | retsu | 373 | 91 | 64 | 23 | 0 | 4 | TACKLE (4) |
 | zen | 324 | 87 | 53 | 14 | 0 | 20 | RAI (8), WAR (7), TACKLE (4), REV (1) |
-| gyou | 383 | 191 | 63 | 117 | 4 | 7 | BT_RFF (5), CD (2) |
+| gyou | 383 | 191 | 65 | 117 | 4 | 5 | BT_RFF (5) |
 | pantera | 429 | 191 | 78 | 28 | 63 | 22 | TACKLE (6), CD (4), DHH (2), DOUBLE_HEEL_HOLD (2), PD (2), ALI (1), BLIND_KICK_HIT (1), CROSS_ARM_LOCK (1), FDFL (1), FDFR (1), FUFL (1) |
-| demonio | 326 | 93 | 63 | 14 | 0 | 16 | DVS (6), TACKLE (5), CD (4), REV (1) |
+| demonio | 326 | 93 | 67 | 14 | 0 | 12 | DVS (6), TACKLE (5), REV (1) |
 | phantom | 563 | 260 | 82 | 175 | 1 | 2 | WFL (2) |
 | diablo | 319 | 87 | 53 | 22 | 0 | 12 | WAR (7), TACKLE (4), REV (1) |
 | skull | 313 | 79 | 54 | 21 | 0 | 4 | TACKLE (4) |
@@ -121,7 +120,7 @@
 | burger | 262 | 80 | 63 | 13 | 0 | 4 | TACKLE (4) |
 | awapop | 429 | 132 | 82 | 5 | 15 | 30 | CD (8), TACKLE (5), BHS (3), ABK (2), BTR (2), CHD (2), HHD (2), NTM (2), TSS (2), REV (1), STB (1) |
 | scimitar | 182 | 70 | 53 | 13 | 4 | 0 |  |
-| purplerain | 286 | 105 | 68 | 29 | 0 | 8 | TACKLE (4), SSL (2), SSR (2) |
+| purplerain | 286 | 105 | 72 | 29 | 0 | 4 | TACKLE (4) |
 | nightwolf | 243 | 66 | 49 | 4 | 0 | 13 | CES (6), TACKLE (4), CROUCHING (2), SPIN_BEHIND (1) |
 | dio | 149 | 59 | 33 | 0 | 0 | 26 | DFLIP (6), FORWARD_OR_BACKWARD_JUMP (4), JUMP (4), TACKLE (4), VERTICAL_JUMP (4), HISENKYAKU (2), CH (1), FORWARD_JUMP_PEAK (1) |
 | cyborgx | 323 | 151 | 67 | 33 | 0 | 51 | DES (32), DBT (14), TACKLE (4), REV (1) |
@@ -129,7 +128,7 @@
 | star | 427 | 207 | 86 | 111 | 0 | 10 | TACKLE (4), MD1 (2), MD2 (2), CHAOP (1), REV (1) |
 | torch | 419 | 135 | 73 | 53 | 0 | 9 | TACKLE (4), TOM (4), REV (1) |
 | bruno | 192 | 89 | 46 | 39 | 4 | 0 |  |
-| negativo | 155 | 60 | 40 | 15 | 0 | 5 | CH (2), SSL (1), SSR (1), TACKLE (1) |
+| negativo | 155 | 60 | 42 | 15 | 0 | 3 | CH (2), TACKLE (1) |
 | thor | 342 | 20 | 20 | 0 | 0 | 0 |  |
 | yukihyo | 284 | 120 | 71 | 25 | 12 | 12 | CHARGE (3), SHADOW_STEP (3), UT (2), CATCH (1), COUNTER_HIT (1), FDFL (1), FUFL (1) |
 | slice | 230 | 79 | 61 | 10 | 3 | 5 | PGR (3), CH (1), ENEMY_WALL_STUN (1) |

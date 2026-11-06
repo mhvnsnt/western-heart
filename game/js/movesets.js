@@ -957,10 +957,50 @@ export class TekkenBuffer {
     const now = performance.now();
     this.dirEvents.push({ dir, t: now });
     if (this.dirEvents.length > 24) this.dirEvents.shift();
+    // roster-100 L5: crouch-dash motion detection. When the direction history
+    // completes the motion of the fighter's data-declared cd_entry (that
+    // file's own "Crouch Dash" row, e.g. f,n,d,d/f), latch the CD context —
+    // the same way the f,f double-tap above latches the dash row. Fighters
+    // whose data declares no cd_entry gain nothing here.
+    try {
+      const ms = getFighterMoveset(this.fighterId);
+      if (ms && ms.cd_entry) {
+        if (ms._cdSeq === undefined) {
+          const toks = String(ms.cd_entry).split(',').map((x) => x.trim().toLowerCase()
+            .replace(/^df$/, 'd/f').replace(/^db$/, 'd/b').replace(/^uf$/, 'u/f').replace(/^ub$/, 'u/b'));
+          // dirEvents (and _matchMotion) are neutral-free by design — the 'n'
+          // steps of a motion (f,n,d,d/f) are not recorded there, so the
+          // match sequence drops them, exactly like the engine's own qcf
+          // motion matching on the same history.
+          const seq = toks.filter((x) => x !== 'n');
+          ms._cdSeq = toks.every((x) => !/[0-9+]/.test(x)) && seq.length >= 2 ? seq : null;
+        }
+        if (ms._cdSeq && this._matchMotion(ms._cdSeq)) this.noteCdStart(ms.cd_entry);
+      }
+    } catch (e) { /* cd detection is additive; never break direction noting */ }
   }
 
   /** Tekken running state (WR): see RUN_HOLD_FRAMES. */
   running() { return !!this._runUntil && performance.now() < this._runUntil; }
+  /** Crouch dash state (CD): latched by _recordMove when the fighter's own
+   * data-declared cd_entry move fires (roster-100 L5, 2026-11-06). The window
+   * is the entry move's own duration + a grace tail, mirroring the WR latch. */
+  cdActive() { return !!this._cdUntil && performance.now() < this._cdUntil; }
+  /** Latch the CD context when the fighter's data-declared cd_entry move
+   * starts. Called from _recordMove (explicit/buffer paths) and from
+   * fighter.js's main attack-start (which does not record). */
+  noteCdStart(notation) {
+    try {
+      const ms = getFighterMoveset(this.fighterId);
+      if (!ms || !ms.cd_entry) return;
+      const fired = resolveMoveKey(this.fighterId, notation) || notation;
+      const entry = resolveMoveKey(this.fighterId, ms.cd_entry) || ms.cd_entry;
+      if (fired !== entry) return;
+      const mv = ms.moves[ms.cd_entry] || {};
+      const dur = ((+mv.startup || 0) + (+mv.active || 0) + (+mv.recovery || 0)) * 1000;
+      this._cdUntil = performance.now() + Math.min(1500, Math.max(500, dur + 250));
+    } catch (e) { /* cd latch is additive; never break move starts */ }
+  }
   /** This fighter's move key for a notation, if it owns one. */
   resolveKey(k) { return resolveMoveKey(this.fighterId, k); }
 
@@ -1153,6 +1193,7 @@ export class TekkenBuffer {
     const opener = (c) => (strPrefixesHas(this.fighterId, ms, c) ? (this._strPath = c, this._strPathT = now, true) : false);
     const prefixes = [];
     if (ctx.running) prefixes.push('WR.'); // Tekken while running
+    if (ctx.crouchDash) prefixes.push('CD.'); // roster-100 L5: crouch dash (data-declared cd_entry latch)
     for (const sp of ctx.soulStates || []) prefixes.push(sp + '.'); // pt217u soul systems
     if (ctx.stance) prefixes.push(ctx.stance + '.');
     if (ctx.rage) prefixes.push('R.');
@@ -1161,6 +1202,7 @@ export class TekkenBuffer {
     // Rage lane (T7), as in _pressLegacy: the rage drive lives on 3+4 while raging (synthesized RD.).
     if (ctx.rage) prefixes.push('RD.');
     if (ctx.backturned) prefixes.push('BT.');
+    if (ctx.ssSide) prefixes.push(ctx.ssSide + '.'); // roster-100 L5: directional sidestep (SSL/SSR, foe-flank convention) — side-specific outranks generic SS (the side is always known from ssDir mid-step)
     if (ctx.sidestep) prefixes.push('SS.');
     if (ctx.crouching) prefixes.push('FC.', 'hFC.'); // T8 'hFC' rows are crouch moves too (stance audit: 130 rows)
     if (ctx.foeDown) prefixes.push('OTG.');          // on the grounded foe
@@ -1301,6 +1343,7 @@ export class TekkenBuffer {
     }
     const prefixes = [];
     if (ctx.running) prefixes.push('WR.'); // Tekken while running
+    if (ctx.crouchDash) prefixes.push('CD.'); // roster-100 L5: crouch dash (data-declared cd_entry latch)
     for (const sp of ctx.soulStates || []) prefixes.push(sp + '.'); // pt217u soul systems
     if (ctx.stance) prefixes.push(ctx.stance + '.');
     if (ctx.rage) prefixes.push('R.');
@@ -1309,6 +1352,7 @@ export class TekkenBuffer {
     // Rage lane (T7): rage drive lives on 3+4 while raging (synthesized RD.).
     if (ctx.rage) prefixes.push('RD.');
     if (ctx.backturned) prefixes.push('BT.');
+    if (ctx.ssSide) prefixes.push(ctx.ssSide + '.'); // roster-100 L5: directional sidestep (SSL/SSR, foe-flank convention) — side-specific outranks generic SS (the side is always known from ssDir mid-step)
     if (ctx.sidestep) prefixes.push('SS.');
     if (ctx.crouching) prefixes.push('FC.', 'hFC.'); // T8 'hFC' rows are crouch moves too (stance audit: 130 rows)
     if (ctx.foeDown) prefixes.push('OTG.');          // on the grounded foe
@@ -1442,6 +1486,8 @@ export class TekkenBuffer {
   _recordMove(notation) {
     this.lastMove = notation;
     this.lastMoveT = performance.now();
+    // roster-100 L5: firing the data-declared crouch-dash entry latches CD.
+    this.noteCdStart(notation);
     return notation;
   }
 

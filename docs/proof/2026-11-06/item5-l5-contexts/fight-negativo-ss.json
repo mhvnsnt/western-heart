@@ -1,0 +1,106 @@
+{
+ "p1": "negativo",
+ "p2": "pantera",
+ "base": "http://127.0.0.1:8835/game/",
+ "ready": true,
+ "run": {
+  "fid": "negativo",
+  "steps": [
+   {
+    "tag": "sidestep:1",
+    "state": "sidestep",
+    "atk": null,
+    "stance": null,
+    "cd": false,
+    "ssSide": "SSL",
+    "flank": null,
+    "hpDelta": 0,
+    "ok": true
+   },
+   {
+    "tag": "step20",
+    "state": "sidestep",
+    "atk": null,
+    "stance": null,
+    "cd": false,
+    "ssSide": "SSL",
+    "flank": null,
+    "hpDelta": 0
+   },
+   {
+    "tag": "attack:2",
+    "state": "attack",
+    "atk": "SSL.2",
+    "stance": null,
+    "cd": false,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 0,
+    "ok": true
+   },
+   {
+    "tag": "step110",
+    "state": "attack",
+    "atk": "SSL.2",
+    "stance": null,
+    "cd": false,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 21.1
+   },
+   {
+    "tag": "settle",
+    "state": "idle",
+    "atk": null,
+    "stance": null,
+    "cd": false,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 0
+   },
+   {
+    "tag": "sidestep:-1",
+    "state": "sidestep",
+    "atk": null,
+    "stance": null,
+    "cd": false,
+    "ssSide": "SSR",
+    "flank": null,
+    "hpDelta": 0,
+    "ok": true
+   },
+   {
+    "tag": "step20",
+    "state": "sidestep",
+    "atk": null,
+    "stance": null,
+    "cd": false,
+    "ssSide": "SSR",
+    "flank": null,
+    "hpDelta": 0
+   },
+   {
+    "tag": "attack:2",
+    "state": "attack",
+    "atk": "SSR.2",
+    "stance": null,
+    "cd": false,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 0,
+    "ok": true
+   },
+   {
+    "tag": "step110",
+    "state": "attack",
+    "atk": "SSR.2",
+    "stance": null,
+    "cd": false,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 2.5
+   }
+  ]
+ },
+ "logs": []
+}

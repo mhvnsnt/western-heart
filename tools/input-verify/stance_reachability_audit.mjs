@@ -40,6 +40,7 @@ export const ENGINE = {
   FDFA: 'on the ground, face down, head towards (hit in the back / screw)', FUFA: 'on the ground, face up, head towards',
   FDFT: 'on the ground, face down, feet towards', FUHT: 'on the ground, head towards',
   OTG: 'the opponent is on the ground', WALL: 'own back to the wall', hFC: 'crouching (T8 hFC)',
+  SSL: 'sidestep toward the foe\'s left (engine ssSide, roster-100 L5)', SSR: 'sidestep toward the foe\'s right (engine ssSide, roster-100 L5)',
 };
 for (const s of FML.SOUL_SYSTEMS) ENGINE[s.prefix] = `soul system: ${s.en}`;
 
@@ -107,6 +108,7 @@ function audit(fid) {
   for (const e of Object.values(by)) {
     const p = e.prefix;
     e.way = ENGINE[p] ? 'engine'
+      : (p === 'CD' && data.cd_entry) ? 'engine' // roster-100 L5: CD resolves only where the file declares its cd_entry
       : stances.has(p) ? 'stance'
         : (aliases[p] && stances.has(aliases[p])) ? 'stance'
           : throwTags.has(p) ? 'throw'

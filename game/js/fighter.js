@@ -1685,6 +1685,13 @@ export class Fighter {
       urgeOn: !!this._urgeOn,
       urgeAvailable: !this._urgeUsed && !this._urgeOn && this.hp > 0,
       running: !!(this.tekken && this.tekken.running && this.tekken.running() && this.onGround) || (this.state === 'attack' && /^WR\./.test(this.attackName || '') && this.stateT <= 0.14), // Tekken WR (and its chord-upgrade window)
+      // roster-100 L5: crouch dash — the buffer latches CD when the fighter's own
+      // data-declared cd_entry move fires; CD. rows resolve only inside that window.
+      crouchDash: !!(this.tekken && this.tekken.cdActive && this.tekken.cdActive() && this.onGround),
+      // roster-100 L5: directional sidestep — SSL/SSR by the foe-flank convention
+      // (_foeFlank: at the foe's left iff dz * -(foe.facing) > 0; here the heading
+      // is ssDir, the world-z step direction set by trySidestep).
+      ssSide: (this.state === 'sidestep' && this._opp && this.ssDir) ? ((this.ssDir * -(this._opp.facing || 1)) > 0 ? 'SSL' : 'SSR') : null,
       inMove: this.state === 'attack',
       attackT: this.state === 'attack' ? this.stateT : null, // time into the current hit ('~' window)
       // close/far normals (KOF/SF) pick by root distance; stance spin variants by re-entries
@@ -2562,6 +2569,10 @@ export class Fighter {
     this.attack = move; this.attackName = notation; this.hasHit = false; this._prevHitPoint = null;
     this._attackId = (this._attackId || 0) + 1;
     this._queuedNext = null; this._queuedAfter = null; this._stepChain = null;
+    // roster-100 L5: this start path does not record into the buffer, so the
+    // crouch-dash latch is noted here (the _fireNotation path gets it via
+    // tekken._recordMove). No-op for fighters without a declared cd_entry.
+    if (this.tekken && this.tekken.noteCdStart) this.tekken.noteCdStart(notation);
     if (/^(R|RD)\./.test(notation)) this._rageUsed = true; // rage art/drive: once per round
     // stance spin count (T7 JGS* (N spins)): re-entering the stance the move started from adds a spin
     this._spinNext = move.stanceAfter && this.stance === move.stanceAfter ? (this._stanceSpins || 1) + 1 : 1;
