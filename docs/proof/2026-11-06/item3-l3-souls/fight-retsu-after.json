@@ -1,0 +1,607 @@
+{
+ "p1": "retsu",
+ "p2": "pantera",
+ "base": "http://127.0.0.1:8834/game/",
+ "ready": true,
+ "trials": [
+  {
+   "n": "1",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "1",
+    "damage": 3,
+    "isGrab": false,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": null,
+   "pairSeen": false,
+   "lockSeen": false,
+   "hpDelta": 2.8,
+   "firstDmgT": 0.175,
+   "vThrowHitDone": null,
+   "whLogs": [],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "walk",
+     "pair": false
+    },
+    {
+     "t": 0.175,
+     "p1": "attack",
+     "p2": "hitstun",
+     "pair": false
+    },
+    {
+     "t": 0.417,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.542,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "2",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "2",
+    "damage": 6,
+    "isGrab": false,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "t7:1~t7.bryan",
+    "kind": "t7",
+    "why": "real T7 Bx_lp00F (cbbx_lp00f_DVD)"
+   },
+   "pairSeen": false,
+   "lockSeen": false,
+   "hpDelta": 5.5,
+   "firstDmgT": 0.175,
+   "vThrowHitDone": null,
+   "whLogs": [],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.175,
+     "p1": "attack",
+     "p2": "hitstun",
+     "pair": false
+    },
+    {
+     "t": 0.45,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.525,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "3",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "3",
+    "damage": 8,
+    "isGrab": false,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "t7:2~t7.bryan",
+    "kind": "t7",
+    "why": "real T7 Bx_rp00 (ygbx_rp00_DVD)"
+   },
+   "pairSeen": false,
+   "lockSeen": false,
+   "hpDelta": 7.3,
+   "firstDmgT": 0.275,
+   "vThrowHitDone": null,
+   "whLogs": [],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.275,
+     "p1": "attack",
+     "p2": "hitstun",
+     "pair": false
+    },
+    {
+     "t": 0.575,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.7,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "4",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "4",
+    "damage": 8,
+    "isGrab": false,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "t7:3~t7.bryan",
+    "kind": "t7",
+    "why": "real T7 Bx_lk00 (mbbx_lk_DVD)"
+   },
+   "pairSeen": false,
+   "lockSeen": false,
+   "hpDelta": 7.3,
+   "firstDmgT": 0.208,
+   "vThrowHitDone": null,
+   "whLogs": [],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.208,
+     "p1": "attack",
+     "p2": "hitstun",
+     "pair": false
+    },
+    {
+     "t": 0.508,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.683,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "d+1",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "d+1",
+    "damage": 6,
+    "isGrab": false,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "t7:4~t7.bryan",
+    "kind": "t7",
+    "why": "real T7 Bx_rk00 (bxod_s4_rk)"
+   },
+   "pairSeen": false,
+   "lockSeen": false,
+   "hpDelta": 5.5,
+   "firstDmgT": 0.133,
+   "vThrowHitDone": null,
+   "whLogs": [],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.133,
+     "p1": "attack",
+     "p2": "hitstun",
+     "pair": false
+    },
+    {
+     "t": 0.408,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.667,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "d+2",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "d+2",
+    "damage": 9,
+    "isGrab": false,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "row:115",
+    "kind": "own",
+    "why": ""
+   },
+   "pairSeen": false,
+   "lockSeen": false,
+   "hpDelta": 8.3,
+   "firstDmgT": 0.233,
+   "vThrowHitDone": null,
+   "whLogs": [],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.233,
+     "p1": "attack",
+     "p2": "hitstun",
+     "pair": false
+    },
+    {
+     "t": 0.542,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.758,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "d/f+1",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "d/f+1",
+    "damage": 9,
+    "isGrab": false,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "t7:d+2~t7.bryan",
+    "kind": "t7",
+    "why": "real T7 Bx_Relbow (bxkb_relbow)"
+   },
+   "pairSeen": false,
+   "lockSeen": false,
+   "hpDelta": 8.3,
+   "firstDmgT": 0.175,
+   "vThrowHitDone": null,
+   "whLogs": [],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.175,
+     "p1": "attack",
+     "p2": "hitstun",
+     "pair": false
+    },
+    {
+     "t": 0.483,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.742,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "d/f+2",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "d/f+2",
+    "damage": 7,
+    "isGrab": false,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "t7:D/F+1~t7.bryan",
+    "kind": "t7",
+    "why": "real T7 Bx_t_slpF (mbbx_3lp_DVD)"
+   },
+   "pairSeen": false,
+   "lockSeen": false,
+   "hpDelta": 6.4,
+   "firstDmgT": 0.225,
+   "vThrowHitDone": null,
+   "whLogs": [],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.225,
+     "p1": "attack",
+     "p2": "hitstun",
+     "pair": false
+    },
+    {
+     "t": 0.517,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.692,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "1+3",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "1+3",
+    "damage": 19,
+    "isGrab": true,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "t7:d/f+2~t7.bryan",
+    "kind": "t7",
+    "why": "real T7 Bx_t_srpF (nabx_3rp_DVD)"
+   },
+   "pairSeen": false,
+   "lockSeen": true,
+   "hpDelta": 17.4,
+   "firstDmgT": 1.1,
+   "vThrowHitDone": true,
+   "whLogs": [
+    "[WH-THROW] retsu vs pantera: no file pair (no branch matches situation 2 at this distance (UNMAPPED for this situation)) \u2014 legacy lock"
+   ],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.208,
+     "p1": "throwing",
+     "p2": "thrown",
+     "pair": false
+    },
+    {
+     "t": 0.508,
+     "p1": "throwExec",
+     "p2": "thrownExec",
+     "pair": false
+    },
+    {
+     "t": 1.417,
+     "p1": "idle",
+     "p2": "knockdown",
+     "pair": false
+    },
+    {
+     "t": 1.967,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "2+4",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "2+4",
+    "damage": 19,
+    "isGrab": true,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "row:138",
+    "kind": "notation",
+    "why": "same input '1+3'"
+   },
+   "pairSeen": true,
+   "lockSeen": false,
+   "hpDelta": 17.4,
+   "firstDmgT": 1.45,
+   "vThrowHitDone": true,
+   "whLogs": [],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.208,
+     "p1": "throwing",
+     "p2": "thrown",
+     "pair": true
+    },
+    {
+     "t": 0.467,
+     "p1": "throwExec",
+     "p2": "thrownExec",
+     "pair": true
+    },
+    {
+     "t": 2.55,
+     "p1": "idle",
+     "p2": "knockdown",
+     "pair": false
+    },
+    {
+     "t": 3.1,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  }
+ ],
+ "setup": {
+  "roundState": "fight",
+  "p1": {
+   "id": "retsu",
+   "t3dir": "bryan",
+   "t3bank": "bryan",
+   "t3actions": 22,
+   "bones": 49
+  },
+  "p2": {
+   "id": "pantera",
+   "t3dir": "king_on_pantera_leoman",
+   "t3bank": "king",
+   "t3actions": 22,
+   "bones": 22
+  }
+ },
+ "measure": {
+  "boneRange": {
+   "Hips": [
+    1.017,
+    0.019,
+    0
+   ],
+   "Head": [
+    1.018,
+    0.02,
+    0.005
+   ],
+   "LeftHand": [
+    1.021,
+    0.033,
+    0.003
+   ],
+   "RightHand": [
+    1.034,
+    0.039,
+    0.017
+   ],
+   "LeftFoot": [
+    1.022,
+    0.002,
+    0.003
+   ],
+   "RightFoot": [
+    1.022,
+    0.002,
+    0.003
+   ]
+  },
+  "maxBoneRange": 1.034,
+  "stanceHeight": 1.62,
+  "stanceMinY": -0.008
+ },
+ "logs": [
+  "[http 404] http://127.0.0.1:8834/deploy-manifest.json",
+  "[http 404] http://127.0.0.1:8834/roster/retsu/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8834/game/js/intro-interactions.js"
+ ]
+}

@@ -1,0 +1,57 @@
+{
+ "input": "work-item3/gyou/manual/static.glb",
+ "fit": "work-item3/gyou/manual/fit_corrected.json",
+ "mesh_bbox_blender": [
+  [
+   -0.11989593505859375,
+   -0.447967529296875,
+   0.0
+  ],
+  [
+   0.11934661865234375,
+   0.4478759765625,
+   0.979339599609375
+  ]
+ ],
+ "scaled_to_height_m": 1.75,
+ "scale_factor": 1.7869184506559472,
+ "bones": 50,
+ "unweighted_fixed": 0,
+ "heat_proxy": [
+  {
+   "voxel_m": 0.006,
+   "continuous_limit_verts": 473341,
+   "faces_remeshed": 130538,
+   "faces_proxy_after_decimate": 65445,
+   "proxy_verts": 39648,
+   "unweighted_proxy_verts": 0,
+   "mesh_scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "mesh_dims": [
+    0.4275069236755371,
+    1.600799560546875,
+    1.749999761581421
+   ],
+   "proxy_groups": 50,
+   "attempts": [
+    {
+     "tri_target": 80000,
+     "proxy_verts": 39648,
+     "unweighted": 0
+    }
+   ]
+  }
+ ],
+ "continuous_limit_verts": 0,
+ "test_clip": {
+  "action": "CMU135_04_boxing",
+  "frames": 72,
+  "bones": 26,
+  "donor": "wh-tools/assets/free-pull-1/cmu-mocap/fighting/135_04.bvh"
+ },
+ "out": "work-item3/gyou/manual/rig.glb",
+ "out_bytes": 96007120
+}

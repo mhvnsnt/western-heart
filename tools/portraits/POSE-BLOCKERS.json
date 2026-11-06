@@ -1,4 +1,6 @@
 {
   "_doc": "Fighters whose select portrait is still bind-posed because their moveset-bank stance does not retarget cleanly onto their attire-1 rig (rig/anim lane). test/portraits.test.mjs fails if a fighter is bind-posed and NOT listed, or listed but fixed. Re-run tools/portraits/capture.mjs after rig fixes and remove entries. Since the CMU aim fallback (game/js/stance-aim.js), only unrigged or unloadable models remain here.",
-  "blocked": {}
+  "blocked": {
+    "sha": "bank 'xiaoyu' stance fit-rejected (Right shoulder swung 0.99 rad from bind \u2014 her rig is authored in a dynamic idol pose) and the bind-independent CMU aim fallback (stance-aim.js) deforms her head/shoulders at bust framing (verified: with the aim step disabled her posed card is clean). She fights correctly on her bank. Card recapture rides the Wave 3 item-7 stance-class fix."
+  }
 }

@@ -1,0 +1,615 @@
+{
+ "p1": "sha",
+ "p2": "pantera",
+ "base": "http://127.0.0.1:8834/game/",
+ "ready": true,
+ "trials": [
+  {
+   "n": "1",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "1",
+    "damage": 3,
+    "isGrab": false,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": null,
+   "pairSeen": false,
+   "lockSeen": false,
+   "hpDelta": 2.8,
+   "firstDmgT": 0.175,
+   "vThrowHitDone": null,
+   "whLogs": [],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "walk",
+     "pair": false
+    },
+    {
+     "t": 0.175,
+     "p1": "attack",
+     "p2": "hitstun",
+     "pair": false
+    },
+    {
+     "t": 0.542,
+     "p1": "idle",
+     "p2": "hitstun",
+     "pair": false
+    },
+    {
+     "t": 0.642,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "2",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "2",
+    "damage": 4,
+    "isGrab": false,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "t7:1~t7.xiaoyu",
+    "kind": "t7",
+    "why": "real T7 Fu_lp00F (kmfu_lpf_10f_DVD)"
+   },
+   "pairSeen": false,
+   "lockSeen": false,
+   "hpDelta": 3.7,
+   "firstDmgT": 0.175,
+   "vThrowHitDone": null,
+   "whLogs": [],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.175,
+     "p1": "attack",
+     "p2": "hitstun",
+     "pair": false
+    },
+    {
+     "t": 0.725,
+     "p1": "idle",
+     "p2": "hitstun",
+     "pair": false
+    },
+    {
+     "t": 0.792,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "3",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "3",
+    "damage": 9,
+    "isGrab": false,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "t7:2~t7.xiaoyu",
+    "kind": "t7",
+    "why": "real T7 Fu_rp00 (Yfu_rp00_DVD)"
+   },
+   "pairSeen": false,
+   "lockSeen": false,
+   "hpDelta": 8.3,
+   "firstDmgT": 0.233,
+   "vThrowHitDone": null,
+   "whLogs": [],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.233,
+     "p1": "attack",
+     "p2": "knockdown",
+     "pair": false
+    },
+    {
+     "t": 0.783,
+     "p1": "idle",
+     "p2": "knockdown",
+     "pair": false
+    },
+    {
+     "t": 1.592,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "4",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "4",
+    "damage": 8,
+    "isGrab": false,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "t7:3~t7.xiaoyu",
+    "kind": "t7",
+    "why": "real T7 Fu_lk00 (fuyt_lk_DVD)"
+   },
+   "pairSeen": false,
+   "lockSeen": false,
+   "hpDelta": 19.3,
+   "firstDmgT": 0.183,
+   "vThrowHitDone": null,
+   "whLogs": [],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.183,
+     "p1": "attack",
+     "p2": "knockdown",
+     "pair": false
+    },
+    {
+     "t": 0.733,
+     "p1": "idle",
+     "p2": "knockdown",
+     "pair": false
+    },
+    {
+     "t": 1.325,
+     "p1": "idle",
+     "p2": "wallsplat",
+     "pair": false
+    },
+    {
+     "t": 1.875,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "d+1",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "d+1",
+    "damage": 21,
+    "isGrab": false,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "t7:4~t7.xiaoyu",
+    "kind": "t7",
+    "why": "real T7 Fu_rk00 (Mofu_rk00_DVD)"
+   },
+   "pairSeen": false,
+   "lockSeen": false,
+   "hpDelta": 27.3,
+   "firstDmgT": 0.283,
+   "vThrowHitDone": null,
+   "whLogs": [],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.283,
+     "p1": "attack",
+     "p2": "hitstun",
+     "pair": false
+    },
+    {
+     "t": 0.65,
+     "p1": "idle",
+     "p2": "hitstun",
+     "pair": false
+    },
+    {
+     "t": 0.742,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "d+2",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "d+2",
+    "damage": 8,
+    "isGrab": false,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "row:137",
+    "kind": "notation",
+    "why": "same input 'd+1'"
+   },
+   "pairSeen": false,
+   "lockSeen": false,
+   "hpDelta": 7.3,
+   "firstDmgT": 0.183,
+   "vThrowHitDone": null,
+   "whLogs": [],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.183,
+     "p1": "attack",
+     "p2": "hitstun",
+     "pair": false
+    },
+    {
+     "t": 0.55,
+     "p1": "idle",
+     "p2": "hitstun",
+     "pair": false
+    },
+    {
+     "t": 0.642,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "d/f+1",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "d/f+1",
+    "damage": 13,
+    "isGrab": false,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "row:138",
+    "kind": "notation",
+    "why": "same input 'd+2'"
+   },
+   "pairSeen": false,
+   "lockSeen": false,
+   "hpDelta": 11.9,
+   "firstDmgT": 0.233,
+   "vThrowHitDone": null,
+   "whLogs": [],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.233,
+     "p1": "attack",
+     "p2": "hitstun",
+     "pair": false
+    },
+    {
+     "t": 0.592,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.6,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "d/f+2",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "d/f+2",
+    "damage": 15,
+    "isGrab": false,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "row:125",
+    "kind": "notation",
+    "why": "same input 'd/f+1'"
+   },
+   "pairSeen": false,
+   "lockSeen": false,
+   "hpDelta": 13.8,
+   "firstDmgT": 0.233,
+   "vThrowHitDone": null,
+   "whLogs": [],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.233,
+     "p1": "attack",
+     "p2": "hitstun",
+     "pair": false
+    },
+    {
+     "t": 0.6,
+     "p1": "idle",
+     "p2": "hitstun",
+     "pair": false
+    },
+    {
+     "t": 0.617,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "1+3",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "1+3",
+    "damage": 19,
+    "isGrab": true,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "t7:d/f+2~t7.xiaoyu",
+    "kind": "t7",
+    "why": "real T7 Fu_t_srpF (Yfu_tyouda_DVD)"
+   },
+   "pairSeen": false,
+   "lockSeen": true,
+   "hpDelta": 17.4,
+   "firstDmgT": 1.1,
+   "vThrowHitDone": true,
+   "whLogs": [
+    "[WH-THROW] sha vs pantera: no file pair (no branch matches situation 2 at this distance (UNMAPPED for this situation)) \u2014 legacy lock"
+   ],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.208,
+     "p1": "throwing",
+     "p2": "thrown",
+     "pair": false
+    },
+    {
+     "t": 0.508,
+     "p1": "throwExec",
+     "p2": "thrownExec",
+     "pair": false
+    },
+    {
+     "t": 1.417,
+     "p1": "idle",
+     "p2": "knockdown",
+     "pair": false
+    },
+    {
+     "t": 1.967,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "2+4",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "2+4",
+    "damage": 19,
+    "isGrab": true,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "row:155",
+    "kind": "notation",
+    "why": "same input '1+3'"
+   },
+   "pairSeen": false,
+   "lockSeen": true,
+   "hpDelta": 17.4,
+   "firstDmgT": 1.1,
+   "vThrowHitDone": true,
+   "whLogs": [
+    "[WH-THROW] sha vs pantera: no file pair (no branch matches situation 2 at this distance (UNMAPPED for this situation)) \u2014 legacy lock"
+   ],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.208,
+     "p1": "throwing",
+     "p2": "thrown",
+     "pair": false
+    },
+    {
+     "t": 0.508,
+     "p1": "throwExec",
+     "p2": "thrownExec",
+     "pair": false
+    },
+    {
+     "t": 1.417,
+     "p1": "idle",
+     "p2": "knockdown",
+     "pair": false
+    },
+    {
+     "t": 1.967,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  }
+ ],
+ "setup": {
+  "roundState": "fight",
+  "p1": {
+   "id": "sha",
+   "t3dir": "xiaoyu",
+   "t3bank": "xiaoyu",
+   "t3actions": 22,
+   "bones": 50
+  },
+  "p2": {
+   "id": "pantera",
+   "t3dir": "king_on_pantera_leoman",
+   "t3bank": "king",
+   "t3actions": 22,
+   "bones": 22
+  }
+ },
+ "measure": {
+  "boneRange": {
+   "Hips": [
+    0.783,
+    0.041,
+    0
+   ],
+   "Head": [
+    0.802,
+    0.04,
+    0.002
+   ],
+   "LeftHand": [
+    0.801,
+    0.053,
+    0.016
+   ],
+   "RightHand": [
+    0.793,
+    0.052,
+    0.017
+   ],
+   "LeftFoot": [
+    0.791,
+    0.006,
+    0.027
+   ],
+   "RightFoot": [
+    0.809,
+    0.034,
+    0.049
+   ]
+  },
+  "maxBoneRange": 0.809,
+  "stanceHeight": 1.578,
+  "stanceMinY": 0.008
+ },
+ "logs": [
+  "[http 404] http://127.0.0.1:8834/deploy-manifest.json",
+  "[http 404] http://127.0.0.1:8834/roster/sha/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8834/game/js/intro-interactions.js"
+ ]
+}
