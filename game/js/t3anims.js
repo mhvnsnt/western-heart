@@ -1589,6 +1589,33 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
     if (hipPos) tracks.push(new THREE.VectorKeyframeTrack(`${rig.trackName(hips)}.position`, times, hipPos));
     const rc = new THREE.AnimationClip(`${clip.name}@${instanceKey || 'rig'}`, n / raw.fps, tracks);
     rc.userData = { ...clip.userData, raw: undefined, retargeted: true, rigFacesNegZ: rig.facesNegZ, rigSwapLR: rig.swapLR };
+    if (action === 'stance') {
+      // Intrinsic clavicle swing of the SOURCE clip at the select fit
+      // gate's sample time (0.05 s): each shoulder's world orientation
+      // relative to the chest's, composed on the bank's own skeleton
+      // (identity rest). The select gate (select-screen.js check (c))
+      // judges the retargeted pose against this — a stance is only
+      // misapplied when the rig swings the clavicle materially
+      // further than the clip itself does. Wave 3 item 7 evidence:
+      // docs/proof/2026-11-06/item7-bank-stance-fit/
+      const f05 = Math.min(n - 1, Math.max(0, Math.round(0.05 * raw.fps)));
+      const Gs = {};
+      for (const j of src.order) {
+        const q = new THREE.Quaternion();
+        const r = raw.rot[j];
+        if (r && r.length) { const v = r[Math.min(f05, r.length - 1)]; q.set(v[0], v[1], v[2], v[3]); }
+        const p = src.par[j];
+        if (p && Gs[p]) q.premultiply(Gs[p]);
+        Gs[j] = q;
+      }
+      if (Gs.Chest && Gs.LeftShoulder && Gs.RightShoulder) {
+        const chestInv = Gs.Chest.clone().invert();
+        rc.userData.intrinsicRel = {
+          L: chestInv.clone().multiply(Gs.LeftShoulder).angleTo(new THREE.Quaternion()),
+          R: chestInv.clone().multiply(Gs.RightShoulder).angleTo(new THREE.Quaternion()),
+        };
+      }
+    }
     out[action] = rc;
   }
   const c = cached || { rig, out: {} };
