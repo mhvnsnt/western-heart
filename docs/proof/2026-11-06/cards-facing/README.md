@@ -11,3 +11,9 @@ card camera (`facing-probe-rest-vs-stance.png`). So these two model files face -
   that picture".
 
 The broken originals stay in `game/assets/portraits/broken-originals-20261106/`.
+
+## Dorowani (same day)
+
+His card showed his back too. Here the game had already turned him (the feet cue read `-Z`, `assets.facing = -1` read
+back in the page), and his face was still at 180 deg in the probe, so his mesh faces `+Z`: `dorowani` is now recorded
+`+Z`. `dorowani-card-and-fight.png`: old card / new card (his face) and a real fight vs Pantera, facing his opponent.
