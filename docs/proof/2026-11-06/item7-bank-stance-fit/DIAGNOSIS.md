@@ -28,9 +28,22 @@ six + Pantera + Demonio.
 | Awapop | nina (T3 neutral) | L 1.11 | rejected |
 
 A second batch (diablo 0.81, skull 1.38, docfrank 1.32, burger 1.08, sakura 1.37,
-phantom 1.59, nightwolf 1.20) was also rejected 7 of 7. **In 18 measured fighters the
-gate passed nobody** — the shipped select screen shows the CMU fallback for every
-banked fighter, which is why the M3 portrait cards all read cmu-14_01.
+phantom 1.59, nightwolf 1.20) was also rejected 7 of 7. Across all pre-fix probe
+runs, **19 fighters' gates ran: 18 rejected, 1 accepted** — the shipped select
+screen shows the CMU fallback for nearly every banked fighter, which is why the M3 portrait cards all read cmu-14_01.
+
+**Correction (2026-11-06, later the same day):** the first version of this doc
+said the gate "passed nobody (18 of 18)". The batch-2 probe's full log, reviewed
+after the fix landed, shows one acceptance the first count missed: **Cainelias
+(king bank, 50-bone rig) passed the old world-space check** and stood in his bank
+stance. That is consistent with the diagnosis, not against it: the world reading
+is a torso-plus-bind-geometry lottery — most rigs fail it, his landed under it.
+The same batch adds two non-outcomes: Chordz's gate never ran in the capture
+harness (no bank resolved there), and King Tyrant's model failed to load in the
+harness (his rejection value 0.69 stands from the item-2 record). The corrected
+population is the 19 / 18 / 1 accounting above; the 11-fighter before/after set
+below is unaffected (Cainelias was not in it). The code comment in
+game/js/select-screen.js and the handoff record carry the same correction.
 
 ## Measurement 2 — intrinsic FK on each clip's own skeleton
 
