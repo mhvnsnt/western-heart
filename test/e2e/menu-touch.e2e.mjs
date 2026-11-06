@@ -88,7 +88,12 @@ try {
   await step('.char-card >> nth=0'); await step('#confirm-fighter');
   await step('.char-card >> nth=2'); await step('#confirm-fighter', 'screen-stage', '03-stage');
   await p.tap('#confirm-stage');
-  await p.waitForFunction(() => { const h = document.getElementById('hud'); return h && getComputedStyle(h).display !== 'none' && !h.classList.contains('hidden'); }, null, { timeout: 60000 });
+  // 180s (was 60s): the index picks are kai (nth=0) vs gyou (nth=2) since
+  // Wave 3 L3 wired the souls — the first fight load pulls two ~30 MB
+  // models remote-first plus their parse on software GL, which overruns
+  // 60s on the runner. Same wait class as the 180s select wait above and
+  // the 300s rematch waits below; the assertion is unchanged.
+  await p.waitForFunction(() => { const h = document.getElementById('hud'); return h && getComputedStyle(h).display !== 'none' && !h.classList.contains('hidden'); }, null, { timeout: 180000 });
   await p.waitForTimeout(2000); await p.screenshot({ path: `${SHOTS}/04-fight.png` });
   console.log('flow: menu -> select -> stage -> fight OK');
 } catch (e) { fails.push('flow: ' + e.message.split('\n')[0]); }
