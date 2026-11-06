@@ -248,6 +248,8 @@ def main() -> int:
     hair_added = 0
     if HAIR_DIR.is_dir():
         for glb in sorted(HAIR_DIR.rglob("*.glb")):
+            if "mpfb2" in glb.parts:
+                continue  # per-template fitted hair: one entry per part via fitted_entries() below, not per file
             rp = rel(glb)
             if any(e["glb"] == rp or e["asset"] == rp for e in parts):
                 continue
@@ -267,6 +269,34 @@ def main() -> int:
             })
             hair_added += 1
     counts["parts/hair GLB scan (new)"] = hair_added
+
+    # Template-fitted CC0 hair / facial hair / brows / lashes (HAIR phase 2026-11-02):
+    # tools/mpfb2/hair/catalog_entries.py builds them from customization/parts/hair/mpfb2/MANIFEST.json.
+    try:
+        import importlib.util as _ilu
+        _spec = _ilu.spec_from_file_location("wh_fitted_hair", ROOT / "tools" / "mpfb2" / "hair" / "catalog_entries.py")
+        _mod = _ilu.module_from_spec(_spec); _spec.loader.exec_module(_mod)
+        _fitted = [e for e in _mod.fitted_entries(ROOT) if e["id"] not in seen]
+        for e in _fitted:
+            seen.add(e["id"])
+        parts.extend(_fitted)
+        counts[_mod.COUNT_KEY] = len(_fitted)
+    except FileNotFoundError:
+        pass
+
+    # Template-fitted eyes (EYES phase 2026-11-02): tools/eyes/catalog_entries.py (eye types on eyeball.glb at
+    # customization/parts/eyes/eye-sockets.json).
+    try:
+        import importlib.util as _ilu
+        _spec = _ilu.spec_from_file_location("wh_fitted_eyes", ROOT / "tools" / "eyes" / "catalog_entries.py")
+        _mod = _ilu.module_from_spec(_spec); _spec.loader.exec_module(_mod)
+        _fitted = [e for e in _mod.fitted_entries(ROOT) if e["id"] not in seen]
+        for e in _fitted:
+            seen.add(e["id"])
+        parts.extend(_fitted)
+        counts[_mod.COUNT_KEY] = len(_fitted)
+    except FileNotFoundError:
+        pass
 
     # Eye library: every PNG in customization/eye-library not already registered.
     eye_added = 0

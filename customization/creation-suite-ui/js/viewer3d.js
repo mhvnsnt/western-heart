@@ -6,6 +6,10 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 /* The template bodies ship gltfpack -cc (meshopt + quantized morph targets): same decoder the game's assets.js uses
    (game/vendor/addons/libs/meshopt_decoder.js via the suite importmap). */
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.js';
+/* template-fitted hair / facial hair / brows / lashes: head-bone parenting shared with the game (HAIR phase 2026-11-02) */
+import { findHeadBone, attachFittedScene, setFittedTint, setBaseHidden } from '../../../game/js/fitted-parts.js';
+/* template-fitted left / right eyes (EYES phase 2026-11-02): same placement module as the game */
+import { attachEyes, clearEyes, restyleEyes, updateEyeSockets, EYEBALL_GLB, EYE_SOCKETS_JSON } from '../../../game/js/fitted-eyes.js';
 /* MB-Lab game skeleton (WWE-style CREATE templates) -> the Mixamo bone names SOCKET_BONES and framing use (2026-11-01) */
 const MBLAB_ALIASES = { Hips:['pelvis'], Spine:['spine01'], Spine1:['spine02'], Spine2:['spine03'], Neck:['neck'], Head:['head'],
   LeftShoulder:['clavicle_L'], RightShoulder:['clavicle_R'], LeftArm:['upperarm_L'], RightArm:['upperarm_R'],
@@ -347,14 +351,58 @@ export class SuiteViewer {
     group.scale.setScalar(s);
   }
   updatePlacement(partId, placement){
-    const e = this.parts.get(partId); if(!e) return;
+    const e = this.parts.get(partId); if(!e || e.fitted) return;
     e.placement = {...placement};
     this._applyPlacement(e.group, e.def, e.placement);
   }
   detachPart(partId){
     const e = this.parts.get(partId);
-    if(e){ this.scene.remove(e.group); this.parts.delete(partId); }
+    if(e){
+      if(e.fitted && this.model) setBaseHidden(this.model, e.def && e.def.suite_slot, false);
+      if(e.group.parent) e.group.parent.remove(e.group); else this.scene.remove(e.group);
+      this.parts.delete(partId);
+    }
   }
+  /* template-fitted part: the GLB is authored in head-bone-local space for THIS template body, so it is parented to
+     the head bone with an identity transform (follows head animation + POSE clips); its morph targets share the
+     body's face slider names, so syncMorphs (applyMorphTargets over this.model) drives them with the body. */
+  attachFitted(partId, glbUrl, def, tint){
+    return new Promise((res, rej)=>{
+      const head = findHeadBone(this.model);
+      if(!head) return rej(new Error('no head bone'));
+      const model = this.model;
+      this.loader.load(glbUrl, gltf=>{
+        if(this.model !== model) return rej(new Error('body changed'));
+        this.detachPart(partId);
+        const g = attachFittedScene(head, gltf.scene, { partId, slot: def && def.suite_slot, tint });
+        setBaseHidden(this.model, def && def.suite_slot, true);
+        this.parts.set(partId, { group:g, def, placement:{}, fitted:true });
+        this.onFittedAttached && this.onFittedAttached(partId);
+        res(g);
+      }, undefined, rej);
+    });
+  }
+  /* fitted eyes: one eyeball.glb per side on the head bone at the template's measured sockets
+     (customization/parts/eyes/eye-sockets.json); cfg = selectEyes(attire, template) or null for the body's own eyes */
+  async setEyes(cfg, morphValues, urlPrefix='../../'){
+    const model = this.model;
+    if(!cfg || !model || !this.isTemplate){ if(model) clearEyes(model); this._eyeKey=null; return []; }
+    const key = cfg.template+'|'+cfg.id+'|'+cfg.lens;
+    const opts = { makeTexture: (url)=>{ const t=new THREE.TextureLoader().load(url); t.colorSpace=THREE.SRGBColorSpace; return t; }, urlPrefix };
+    if(this._eyeKey===key && model.userData._eyesOn){ restyleEyes(model, cfg, opts); return []; }
+    this._eyeKey = key;
+    if(!this._eyeAssets) this._eyeAssets = Promise.all([
+      new Promise((res, rej)=>this.loader.load(urlPrefix+EYEBALL_GLB, g=>res(g.scene), undefined, rej)),
+      fetch(urlPrefix+EYE_SOCKETS_JSON).then(r=>{ if(!r.ok) throw new Error('eye sockets '+r.status); return r.json(); })]);
+    const [ball, sockets] = await this._eyeAssets;
+    this._eyeSockets = sockets;
+    if(this.model!==model || this._eyeKey!==key) return [];
+    const g = attachEyes(model, ball, sockets, cfg, { ...opts, morphValues: morphValues||{} });
+    model.userData._eyesOn = g.length===2;
+    return g;
+  }
+  updateEyes(morphValues){ if(this.model && this._eyeSockets) updateEyeSockets(this.model, this._eyeSockets, morphValues||{}); }
+  setFittedTint(partId, tint){ const e=this.parts.get(partId); if(e && e.fitted) setFittedTint(e.group, tint); }
   getPlacement(partId){ const e=this.parts.get(partId); return e?{...e.placement}:null; }
   /* texture-part marker: shows where a texture part applies (honest: geometry-pending parts) */
   setMarker(key, socket, color, label){
