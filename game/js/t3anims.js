@@ -1554,7 +1554,7 @@ const _retargetCache = new WeakMap(); // model instance -> Map(bankId -> { rig, 
  * `only`) can be retargeted lazily mid-fight. `instanceKey` only names
  * the clips.
  */
-export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = null, only = null) {
+export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = null, only = null, opts = null) {
   const skel = _t3skelCache[bankId];
   if (!t3Clips || !skel) return null;
   let perModel = _retargetCache.get(model);
@@ -1562,8 +1562,25 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
   const cached = perModel.get(bankId);
   if (cached === null) return null;
   const names = only || Object.keys(t3Clips).filter(n => !n.startsWith('row:')); // rows retarget on demand
-  if (cached && names.every(n => cached.out[n] || !t3Clips[n])) {
-    const o = {}; for (const n of names) if (cached.out[n]) o[n] = cached.out[n];
+  // PHASE 2 donor layer (opts.layer): the profile's secondary chains
+  // are driven by a DIFFERENT bank's clip (the moveset entry's layer2
+  // block — chatur.json), override-masked to those chains, sampled at
+  // the layer's own frame (base frame + offsetFrames, in 30 fps clip
+  // frames; the caller converts the data's 60 fps logic frames). The
+  // composite is stored under opts.cacheAs so it can never replace
+  // the plain clip of the same name in the cache. Layered calls name
+  // exactly one base action in `only`.
+  const layer = (opts && opts.layer && only && only.length === 1) ? opts.layer : null;
+  const layerClip = layer ? (layer.clips && layer.clips[layer.clipName]) : null;
+  const layerRaw = layerClip && layerClip.userData && layerClip.userData.raw;
+  const layerSkel = layer ? _t3skelCache[layer.bankId] : null;
+  const layerActive = !!(layerRaw && layerSkel);
+  const srcL = layerActive ? sourceInfo(layerSkel, THREE) : null;
+  let layerN = 0;
+  if (layerRaw) for (const v of Object.values(layerRaw.rot)) if (v && v.length > layerN) layerN = v.length;
+  const storeKey = (a) => (layerActive && opts.cacheAs) ? opts.cacheAs : a;
+  if (cached && names.every(n => cached.out[storeKey(n)] || !t3Clips[n])) {
+    const o = {}; for (const n of names) if (cached.out[storeKey(n)]) o[storeKey(n)] = cached.out[storeKey(n)];
     return o;
   }
   const profile = retargetProfileFor(instanceKey);
@@ -1600,6 +1617,21 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
       A[chain.id + 'Hand'] = A[chain.id + 'ForeArm'];
     }
   }
+  // Donor-layer alignments: same construction, but the source dirs
+  // come from the DONOR bank's skeleton (Phase 2 layer2 composites).
+  const A2 = {};
+  if (layerActive && rig.secondary) {
+    for (const chain of Object.values(rig.secondary)) {
+      for (const role of ['Arm', 'ForeArm']) {
+        const ds = srcL.dirs[chain.side + role], dt = rig.dirs[chain.id + role];
+        A2[chain.id + role] = new THREE.Quaternion();
+        if (ds && dt && ds !== 'leg' && dt !== 'leg' && ds.lengthSq() > 1e-10 && dt.lengthSq() > 1e-10) {
+          A2[chain.id + role].setFromUnitVectors(dt.clone().normalize(), ds.clone().applyQuaternion(F).normalize());
+        }
+      }
+      A2[chain.id + 'Hand'] = A2[chain.id + 'ForeArm'];
+    }
+  }
   // Hips position: parent space transform + hip-height scale.
   const hips = rig.by.Hips;
   const hipsParentInv = hips.parent ? new THREE.Matrix4().copy(rig.rest(hips.parent).mat).invert() : null;
@@ -1616,12 +1648,14 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
   // at the layer's own frame (see the per-frame block below).
   const G2 = {}, D2 = {};
   const layerChains = (rig.secondary && Object.keys(rig.secondary).length) ? Object.values(rig.secondary) : null;
-  const layerOff = (rig.profile && rig.profile.secondaryLayer && rig.profile.secondaryLayer.source === 'self')
-    ? (rig.profile.secondaryLayer.timeOffsetFrames || 0) : 0;
+  const layerOff = layerActive
+    ? (layer.offsetFrames || 0)
+    : (rig.profile && rig.profile.secondaryLayer && rig.profile.secondaryLayer.source === 'self')
+      ? (rig.profile.secondaryLayer.timeOffsetFrames || 0) : 0;
   const tmpQ = new THREE.Quaternion(), tmpV = new THREE.Vector3();
   for (const action of names) {
     const clip = t3Clips[action];
-    if (cached && cached.out[action]) { out[action] = cached.out[action]; continue; }
+    if (cached && cached.out[storeKey(action)]) { out[storeKey(action)] = cached.out[storeKey(action)]; continue; }
     const raw = clip && clip.userData && clip.userData.raw;
     if (!raw) continue;
     let n = 0;
@@ -1663,12 +1697,21 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
       // (the pair settles into the clip's final arm pose, it does not
       // snap back). Phase 2 swaps this source per move (layerSrc).
       if (layerChains) {
-        const f2 = clip.userData.loop ? (f + layerOff) % n : Math.min(f + layerOff, n - 1);
-        for (const j of src.order) {
+        // Layer source: the base clip itself (Phase 1 'self' fill) or
+        // the donor bank's clip (Phase 2 layer2) — its own raw frames,
+        // its own skeleton hierarchy, its own swing alignments (A2).
+        const rawX = layerActive ? layerRaw : raw;
+        const ordX = layerActive ? srcL.order : src.order;
+        const parX = layerActive ? srcL.par : src.par;
+        const nX = layerActive ? layerN : n;
+        const loopX = layerActive ? layerClip.userData.loop : clip.userData.loop;
+        let f2 = loopX ? (f + layerOff) % nX : Math.min(f + layerOff, nX - 1);
+        if (f2 < 0) f2 = 0;
+        for (const j of ordX) {
           const q = G2[j] || (G2[j] = new THREE.Quaternion());
-          const r = raw.rot[j];
+          const r = rawX.rot[j];
           if (r && r.length) { const v = r[Math.min(f2, r.length - 1)]; q.set(v[0], v[1], v[2], v[3]); } else q.identity();
-          const p = src.par[j];
+          const p = parX[j];
           if (p && G2[p]) q.premultiply(G2[p]);
         }
         for (const chain of layerChains) {
@@ -1677,7 +1720,8 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
             const d = D2[key] || (D2[key] = new THREE.Quaternion());
             if (!G2[c]) { d.identity(); continue; }
             d.copy(F).multiply(G2[c]).multiply(Finv);
-            if (A[key]) d.multiply(A[key]);
+            const Ak = layerActive ? A2[key] : A[key];
+            if (Ak) d.multiply(Ak);
           }
         }
       }
@@ -1780,7 +1824,7 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
         };
       }
     }
-    out[action] = rc;
+    out[storeKey(action)] = rc;
   }
   const c = cached || { rig, out: {} };
   Object.assign(c.out, out);

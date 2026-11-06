@@ -39,7 +39,7 @@ import { assets } from './assets.js';
 import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK, T3_BANKS,
   clipStrikeProfile, clipHitWindow, bankAttackPool, attackLevelOfWord, attackClipTime, clipIsThrow, BUTTON_LIMB,
   loadT3Clips, loadT3ReactionClip, getT3ReactionPackScale, loadReactionPack, getReactionPack, getReactionClip,
-  applyT7Stance, ensureT7Moves, t7MoveClip, t7MoveRetarget } from './t3anims.js';
+  applyT7Stance, ensureT7Moves, t7MoveClip, t7MoveRetarget, retargetProfileFor } from './t3anims.js';
 import { effectiveStepPlay, playableStepPlay, stepActionName, stepPlanBanksFor } from './step-plan-bank.js';
 import { selectThrow, resolveThrowClips, throwBreaks, throwDamageTimeSec, throwPairDurationSec,
   escapePairFor, anchorAt, sharedFramePos, throwQuadrant, attemptRowForInput, hexSlot, bankDirOf } from './t3-throw.js';
@@ -1061,6 +1061,110 @@ export class Fighter {
     // dir is the reactions.json banks key (the T3_BANKS folder name).
     this._t3 = { bank, clips: t3clips, model, modelKey, dir: bankDirOf(T3_BANKS[bank]) };
     console.log(`[WH] Fighter ${this.char.id}: ${Object.keys(this.t3actions).length} real T3 actions from bank '${bank}' (retargeted onto ${modelKey})`);
+    // LAYER2 (Chatur Phase 2, 2026-11-06): on a retarget-profile rig,
+    // cache the secondary chains' hand bones (layer2 contact checks),
+    // and apply the moveset's ambient layer2 stance if it declares
+    // one (donor-bank clip on the secondary chain, looping under her
+    // own stance). Data-driven: any moveset may carry these blocks;
+    // today only chatur.json does.
+    try {
+      const prof = retargetProfileFor(modelKey);
+      if (prof && Array.isArray(prof.secondaryChains)) {
+        const norm = (n) => String(n || '').replace(/[^a-zA-Z0-9_]/g, '');
+        this._arm2Hands = {};
+        for (const chain of prof.secondaryChains) {
+          let hand = null;
+          model.traverse((o) => { if (!hand && norm(o.name) === norm(chain.bones.Hand)) hand = o; });
+          if (hand) this._arm2Hands[chain.side] = hand;
+        }
+      }
+      const msL = getFighterMoveset(movesetId);
+      if (msL && msL.layer2_stance) this._applyLayer2Stance(msL.layer2_stance);
+    } catch (e) { /* layer2 is additive — never break the bind */ }
+  }
+
+  /* The moveset's layer2 block for one move (Phase 2): a donor-bank
+     clip that plays on the retarget profile's secondary chain at the
+     same time as the move's own clip (bone-masked layered blending,
+     override mode). Returns null when the move carries none.
+     phase_offset_frames lives in the data's 60 fps logic-frame
+     domain (hit_frames.json); the engine consumes 30 fps clip
+     frames, so the conversion happens here, once. */
+  _layer2For(move) {
+    if (!move || !move.moveKey) return null;
+    const ms = getFighterMoveset(this._movesetId);
+    const raw = ms && ms.moves ? ms.moves[move.moveKey] : null;
+    const l2 = raw && raw.layer2;
+    if (!l2 || !l2.anim_ref) return null;
+    const m = /^t3:([a-z0-9_]+):(.+)$/.exec(l2.anim_ref);
+    if (!m) return null;
+    return { donorBank: m[1], clipName: m[2],
+      offsetFrames: Math.round((l2.phase_offset_frames || 0) / 2),
+      hit: l2.hit || null };
+  }
+
+  /* Ambient layer2 stance: replace this fighter's stance ACTION
+     with the composite (her own stance clip + the donor clip on the
+     secondary chain). Runs at bind; if the donor bank is still
+     loading it applies when the bank lands. */
+  _applyLayer2Stance(spec) {
+    if (!spec || !this._t3) return;
+    const m = /^t3:([a-z0-9_]+):(.+)$/.exec(spec.anim_ref || '');
+    if (!m) return;
+    const donorClips = getT3Clips(m[1]);
+    if (!donorClips) {
+      const p = loadT3Clips(THREE, m[1]);
+      if (p && p.then) p.then(() => this._applyLayer2Stance(spec)).catch(() => {});
+      return;
+    }
+    if (!donorClips[m[2]] || !this.t3actions || !this.t3actions.stance) return;
+    const rc = retargetT3Clips(this._t3.clips, this._t3.bank, this._t3.model, THREE, this._t3.modelKey, ['stance'],
+      { cacheAs: 'stance#l2', layer: { clips: donorClips, bankId: m[1], clipName: m[2], offsetFrames: 0 } });
+    if (rc && rc['stance#l2']) {
+      Object.assign(this.t3actions, createT3Actions(this.mixer, { stance: rc['stance#l2'] }, THREE));
+      console.log(`[WH-LAYER2] ${this.char.id}: ambient stance layer ${spec.anim_ref} on the secondary chain`);
+    }
+  }
+
+  /* LAYER2 second contact: a composite move whose layer2.hit block
+     is authored two-hit lands a SECOND, separate hit from the
+     secondary pair — checked on the attacker's own clock, gated on
+     the waist hand actually reaching the opponent's torso (the
+     visual strike IS the hitbox, like the primary's weapon sweep).
+     Once per attack. */
+  _layer2Contact(opp) {
+    const p = this._atkPlan;
+    if (!p || p.id !== this._attackId || !p.layer2hit || this._l2HitId === p.id) return;
+    if (this.state !== 'attack' || !opp || opp.dead || opp.invuln > 0) return;
+    const hit = p.layer2hit;
+    const t0 = ((hit.active && hit.active[0]) || 0) / 60, t1 = ((hit.active && hit.active[1]) || 0) / 60;
+    if (this.stateT < t0 || this.stateT > t1 + 0.05) return;
+    const hand = this._arm2Hands && this._arm2Hands[hit.limb === 'arm2L' ? 'Left' : 'Right'];
+    if (!hand) return;
+    hand.getWorldPosition(_v1);
+    // Contact = the waist hand reaching the opponent's actual
+    // hurtbox geometry (the same segments the primary weapon sweep
+    // tests), not a chest point: the waist pair is shorter-levered
+    // than the primary arms, and its strikes land on the foremost
+    // hurt segment (forearm / torso line) well before chest center.
+    let best = Infinity;
+    const hurts = opp.getHurtboxes ? opp.getHurtboxes() : [];
+    for (const h of hurts) {
+      const abx = h.x2 - h.x1, aby = h.y2 - h.y1, abz = h.z2 - h.z1;
+      const t = Math.max(0, Math.min(1, (((_v1.x - h.x1) * abx) + ((_v1.y - h.y1) * aby) + ((_v1.z - h.z1) * abz)) / ((abx * abx) + (aby * aby) + (abz * abz) || 1)));
+      const dx = _v1.x - (h.x1 + abx * t), dy = _v1.y - (h.y1 + aby * t), dz = _v1.z - (h.z1 + abz * t);
+      const d = Math.hypot(dx, dy, dz);
+      if (d < best) best = d;
+    }
+    if (best > 0.38) return;
+    this._l2HitId = p.id;
+    const mv = { name: `${(this.attack && this.attack.name) || 'Layered strike'} (second pair)`,
+      damage: hit.damage || 5, limb: hit.limb === 'arm2L' ? 'armL' : 'armR', level: hit.level || 'mid',
+      heavy: false, knock: 1.4, soulGain: 4, startup: t0, active: Math.max(0.017, t1 - t0), recovery: 0.3 };
+    try {
+      opp.receiveHit(mv, this);
+      console.log(`[WH-LAYER2] ${this.char.id}: second-pair contact — ${mv.damage} dmg from ${hit.limb}`);
+    } catch (e) { /* receiveHit guards its own states */ }
   }
 
   /* ATTACK CLIP SELECTION (lane D, 2026-10-24; owner: "the different move inputs from the move
@@ -1500,11 +1604,38 @@ export class Fighter {
         if (rc && rc[name]) Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
       }
     }
+    // LAYER2 composite (Chatur Phase 2): when the moveset entry
+    // carries a layer2 block, build (once) the layered variant of
+    // this row action — donor-bank clip on the secondary chain,
+    // composited over the move's own clip — and play THAT. The
+    // variant lives under '<name>#l2'; the plain action is never
+    // replaced. If the donor bank has not landed yet, this attack
+    // plays unlayered and the composite applies from the next one.
+    let l2used = null;
+    if (name && name.startsWith('row:') && this.t3actions[name]) {
+      const l2 = this._layer2For(move);
+      if (l2) {
+        const l2name = name + '#l2';
+        if (!this.t3actions[l2name]) {
+          const donorClips = getT3Clips(l2.donorBank);
+          if (donorClips && donorClips[l2.clipName]) {
+            const rc = retargetT3Clips(this._t3.clips, this._t3.bank, this._t3.model, THREE, this._t3.modelKey, [name],
+              { cacheAs: l2name, layer: { clips: donorClips, bankId: l2.donorBank, clipName: l2.clipName, offsetFrames: l2.offsetFrames } });
+            if (rc && rc[l2name]) Object.assign(this.t3actions, createT3Actions(this.mixer, { [l2name]: rc[l2name] }, THREE));
+          } else if (!donorClips) {
+            const pr = loadT3Clips(THREE, l2.donorBank);
+            if (pr && pr.catch) pr.catch(() => {});
+          }
+        }
+        if (this.t3actions[l2name]) { name = l2name; l2used = l2; }
+      }
+    }
     if (name && !this.t3actions[name]) name = null;
     this._atkPlan = { id: this._attackId, move, name, kind: plan && plan.kind, why: plan && plan.why,
       limb: plan && plan.limb, timing: plan && plan.timing, rejected: plan && plan.rejected,
       steps: plan && plan.steps, unmapped: plan && plan.unmapped,
-      stepBank: plan && plan.stepBank, stepRow: plan && plan.stepRow };
+      stepBank: plan && plan.stepBank, stepRow: plan && plan.stepRow,
+      layer2hit: l2used && l2used.hit ? l2used.hit : null };
     return name;
   }
 
@@ -1580,7 +1711,7 @@ export class Fighter {
     } else if (isT7) {
       const mc = t7MoveClip(this.char.id, this._t3 && this._t3.bank, String(p.name).slice(3));
       clip = mc ? mc.clip : null;
-    } else clip = this._t3 && this._t3.clips ? this._t3.clips[p.name] : null;
+    } else clip = this._t3 && this._t3.clips ? this._t3.clips[String(p.name).split('#')[0]] : null; // '#l2' layered variants read the base row's travel
     const raw = clip && clip.userData && clip.userData.raw;
     const rt = isT7 ? (clip && clip.userData && clip.userData.rootMotionT) : (raw && raw.root_t);
     const rfps = isT7 ? 60 : ((raw && raw.fps) || 30);
@@ -3425,7 +3556,7 @@ export class Fighter {
     this._tickState(dt);
     this._drainPressBuffer();
     this._physics(dt, opponent);
-    this._animate(dt);
+    this._animate(dt, opponent);
 
     // Secondary systems update (after animation, before render)
     if (this._jiggle) {
@@ -3869,7 +4000,7 @@ export class Fighter {
   }
 
   /* ---------------- animation ---------------- */
-  _animate(dt) {
+  _animate(dt, opponent) {
     // 1) Facing (3D yaw toward the opponent when known; sign convention kept)
     // BRAWLER: yaw drives the facing directly in free 3D (brawler.js updates
     // f.yaw per frame); sync it into _faceYaw so the facing line below stays
@@ -3942,6 +4073,10 @@ export class Fighter {
     // the move clock first, so its hit frame lands on the move's active frames (lane D).
     this._applyAttackWarp();
     this.mixer.update(dt);
+    // 4a) LAYER2 second contact (Chatur Phase 2): after the mixer has
+    // posed this frame, an authored two-hit composite can land its
+    // second pair's hit (see _layer2Contact).
+    if (opponent) this._layer2Contact(opponent);
 
     // 4b) CANON SIZING (game/data/canon-sizing.js): once per model/form, after
     // the stance has posed a couple of frames, scale the root so the stance
