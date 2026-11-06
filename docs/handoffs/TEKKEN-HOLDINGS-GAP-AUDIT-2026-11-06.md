@@ -46,6 +46,20 @@ deferred Ghidra pass and wiring the extracted stages.
 
 ## 2. TEKKEN 5 (PS2) + DEVIL WITHIN — owner's top-priority teardown
 
+> **CORRECTION 2026-11-06 (Fill 1 lane): TK5DATA0.BIN IS CRACKED AND FULLY
+> EXTRACTED — and it contains none of the items this section attributed to it.**
+> DATA0 = 112,445 records x 18,432 B; each of its 44 files is encrypted with a
+> 2048-byte LCG keystream tile (w' = 5w + 3 mod 2^32) seeded by its file index
+> (1..44). All 44 payloads are MPEG-2 FMV streams (intros, endings, cutscene
+> movies — 1,948,071,008 B, ffprobe-verified, frames visually checked). Stored
+> on GRE release `tekken5-data0-cracked-20261106` (per-file sha256 in its
+> MANIFEST-data0.md; format in DATA0-FORMAT.md). **Versus models, T5-native
+> movesets/animations, stage geometry, audio banks, the skull mask,
+> pack->character attribution and all Devil Within gameplay data are NOT in
+> DATA0** — the standing candidate is TK5DATA1.BIN's 1,571 split files
+> (held, checksum-verified, contents never inventoried). The stale DATA0
+> claims below are corrected in place.
+
 Evidence: GRE `tekken5/TEARDOWN-STATUS.md` (Lane E update 2026-10-20),
 `TEARDOWN-DEVIL-WITHIN.md`, `TEARDOWN-DEVIL-WITHIN-DEEP.md`, `TK5-E5-E6-DATA.md`;
 WH checkpoints `gap-closure-w7b/w7d/w7e` (PRs #459/#521/#485); WH `teardown/tekken5/`.
@@ -56,6 +70,7 @@ WH checkpoints `gap-closure-w7b/w7d/w7e` (PRs #459/#521/#485); WH `teardown/tekk
 |---|---|---|
 | ISO | **HELD, byte-perfect** | GRE release `tekken5-iso-v1`: 10 assets, 4,483,548,101 B stored; ISO = 4,483,547,136 B, **MD5 `8c20e626260890d5562e9e6f628d658f`**, SHA256 `7831994299…`. (WH release `tekken5-ps2-v1` exists but carries **0 assets** — pointer only.) |
 | Full disc extraction | **HELD (raw)** | GRE release `tekken5-disc-v1`: 14 assets, 4,039,180,062 B — TK5DATA0/1/2/3 raw + DATA0 head. |
+| DATA0 payloads | **HELD, CRACKED + EXTRACTED (2026-11-06)** | 44 MPEG-2 FMVs, 1,948,071,008 B payload, GRE release `tekken5-data0-cracked-20261106` (sha256 manifest + format doc). |
 | DATA1 split | **HELD** | 1,571 files split via the recovered file table; 1,355 checksum-verified, 216 empty/sentinel (W7b). |
 | Overlays E0–E4 (DATA3≡DATA5) | **HELD, decoded** | LZSS cracked; deobfuscated ELFs byte-identical between DATA3/DATA5. |
 | E5/E6 (roster module) | **HELD, decoded** | LZSS solved; 33-fighter roster + name tables extracted — GRE `tekken5/data/roster.json` (35,854 B), `name_tables.json` (97,621 B). |
@@ -65,11 +80,14 @@ WH checkpoints `gap-closure-w7b/w7d/w7e` (PRs #459/#521/#485); WH `teardown/tekk
 
 ### 2.2 What we are MISSING (the hard core)
 
-- **TK5DATA0.BIN (2,072,586,240 B) is still encrypted.** Held raw, never decrypted.
-  Its head is structured (in-file index under a light transform); the cipher is the
-  named open problem (DATA0 layer-1 = LCG seed-1 + an unidentified second layer).
-- Because DATA0 is shut: **versus character models 0% decoded, T5-native animations
-  0%, T5-native movesets 0%, versus stage geometry 0%.** WH `teardown/tekken5/STAGES.md`
+- **TK5DATA0.BIN (2,072,586,240 B) — CRACKED 2026-11-06** (see the correction
+  banner above). It is an FMV archive only: 44 MPEG-2 movies, all extracted.
+  The earlier "layer-1 = LCG seed-1 + unidentified second layer" model was
+  wrong; the true scheme is a per-file LCG keystream tile, seed = file index.
+- **Versus character models 0% decoded, T5-native animations 0%, T5-native
+  movesets 0%, versus stage geometry 0% — and none of them are in DATA0.**
+  Next hunt: the contents of DATA1's 1,571 split files (held, never
+  inventoried). WH `teardown/tekken5/STAGES.md`
   is a 15–16 stage list documented from public data; its "Disc verification" section
   is empty — no stage file has ever been mapped from the disc.
 - **Audio:** TK5DATA2 (romD, 244,426,640 B) head mapped only (first bank + name
@@ -77,8 +95,10 @@ WH checkpoints `gap-closure-w7b/w7d/w7e` (PRs #459/#521/#485); WH `teardown/tekk
 - **Skull mask item: NOT FOUND in DATA1** (named gap since W7b).
 - **Pack→character attribution: 0/80 proven** — all 80 costume packs sit in the
   catalog with `null` attribution; no data-proven table exists yet.
-- **Cutscenes/story beyond E7:** the ending/story video set is only partially
-  extracted with the E7 slice; no complete story-mode extraction exists.
+- **Cutscenes/story beyond E7:** RESOLVED 2026-11-06 — the complete DATA0 FMV
+  set (44 movies: intros, endings, story/Devil Within cutscene movies) is
+  extracted and stored (release above). The E7 IPU slice remains a separate,
+  partial extraction of a different (IPU) copy.
 
 ### 2.3 DEVIL WITHIN — line-item breakdown (becomes "Heart and Mind Within")
 
@@ -89,15 +109,17 @@ WH checkpoints `gap-closure-w7b/w7d/w7e` (PRs #459/#521/#485); WH `teardown/tekk
 | Mode structure tables | **HELD, extracted** | GRE `tekken5/devil-within/`: `romdata_manifest.tsv` (325 files the mode loads), `area_tables.json` — **5 stages / 37 areas / 30 slots / 41 chamber links**, `stage_demo_table.json`. |
 | Enemy + boss data | **HELD (parameter tables)** | `char_tables.json` (38,905 B) + **60 per-character JSONs** in `tekken5/devil-within/characters/` (`chr_jin`, `chr_devil`, `chr_boss1/2/3/5`, `chr_mon_power1–4 lv1–4`, `chr_mon_speed…`) — the OBJ+CHR tables the binary defines. |
 | DW animations | **PARTIAL — names only** | File names located in TK5DATA2 (`gym_dw_nog00.dat`, `gym_dw_rari*.dat`, `gym_djin_newhane00–03.dat`, `dwfkao00/dwhadoh00/dwup00.dat`) per WH `teardown/tekken5/DEVIL-WITHIN-DATA.md` (2026-10-23). The `.dat` payloads were never extracted (romD bank extraction, above). |
-| DW stage geometry / placements / scripts | **MISSING** | Area `.pak/.txt/.evb` contents live in TK5DATA0 packs — encrypted. WH status line (2026-10-23): stage geometry, boss AI, mechanics "mapped for the RE bench, not yet extracted." |
+| DW stage geometry / placements / scripts | **MISSING — NOT in DATA0** | Was assumed to live in TK5DATA0 packs; DATA0 is cracked and holds only FMVs (2026-11-06). Remaining candidate: DATA1's 1,571 split files. WH status line (2026-10-23): stage geometry, boss AI, mechanics "mapped for the RE bench, not yet extracted." |
 | Boss AI behaviour | **PARTIAL** | Parameter tables held (above); behaviour code not decompiled per-function. |
-| Gimmick / item numeric tables | **MISSING** | `gim.db`, `item.txt`, `gimmick_*.txt` named in DEEP §7 as still inside the archive packs. |
-| Jin's DW brawler moveset / Devil Gene meter data | **MISSING as data** | Known from the design spec only; the numeric source data sits in DATA0/list packs. |
+| Gimmick / item numeric tables | **MISSING — NOT in DATA0** | `gim.db`, `item.txt`, `gimmick_*.txt` named in DEEP §7 as inside the archive packs; not in DATA0 (cracked, FMV-only). DATA1 split files are the remaining candidate. |
+| Jin's DW brawler moveset / Devil Gene meter data | **MISSING as data** | Known from the design spec only; NOT in DATA0 (cracked, FMV-only) — DATA1 split files are the remaining candidate. |
 | DW UI / menus | **MISSING** | No DW UI extraction. |
 
 **Honest T5 total:** acquisition 100%, disc split ~90%, customization slice 100%,
 Devil Within *tables* ~70%, Devil Within *geometry/assets* 0%, versus-game core
-(models/moves/stages/audio) 0% — all of it behind one lock: TK5DATA0.
+(models/moves/stages/audio) 0%. The TK5DATA0 lock is OPEN (2026-11-06) and held
+none of it — it is the FMV archive. The remaining T5 hunt is the content
+inventory of DATA1's 1,571 split files.
 
 ---
 
@@ -195,8 +217,8 @@ Evidence: GRE release `t8-community-pieces-v1` (2026-10-31); WH `teardown/tekken
 | Game | Stage state |
 |---|---|
 | Tekken 3 | **EXTRACTED, not wired** — 15 panorama OBJs + `stage.json` in WH teardown. |
-| Tekken 5 (versus) | **MISSING** — name list only; geometry inside encrypted TK5DATA0. |
-| Devil Within (5 stages) | **PARTIAL** — structure/area/chamber tables extracted from the E4 binary; geometry, placements, scripts MISSING (DATA0). |
+| Tekken 5 (versus) | **MISSING** — name list only; NOT in TK5DATA0 (cracked 2026-11-06, FMV-only); DATA1 split files unexamined. |
+| Devil Within (5 stages) | **PARTIAL** — structure/area/chamber tables extracted from the E4 binary; geometry, placements, scripts MISSING (not in DATA0 — cracked, FMV-only; DATA1 is the candidate). |
 | Tekken 6 PSP | **DOES NOT EXIST in source** — proven: packages hold placement + textures only; 1 ground-plane quad extracted. |
 | TTT2 (29 stages) | **MISSING** — public-data list only; geometry inside the never-fully-extracted STFS archive. |
 | Tekken 7 (~34 stages) | **HELD RAW in the depot paks, ZERO decoded**; 1 community map archive (Mishima Dojo) held unopened. |
@@ -228,7 +250,7 @@ T5 DATA1's 1,571 split files; TTT2 data004's MOTA tables for the unbuilt cast;
 T5 E7 archive contents beyond the catalog slice; T6 COM tail payloads.
 
 **(d) Not held at all:**
-T5 TK5DATA0 plaintext (versus models/moves/stages + DW geometry); the Tekken 8 game;
+T5 versus models/moves/stages + DW geometry (NOT in DATA0 — cracked, FMV-only; DATA1 split files unexamined); the Tekken 8 game;
 T6 PS3 full teardown + Scenario Campaign; TTT2 full STFS extraction + all stage
 geometry; T7 stage extraction (raw held, decoded missing); T6 texture pixels +
 skinning (capture-gated); DW gimmick/item tables + DW UI.
@@ -239,10 +261,10 @@ skinning (capture-gated); DW gimmick/item tables + DW UI.
 
 | Missing item | Fill path | New acquisition needed? |
 |---|---|---|
-| T5 DATA0 (models, moves, stages, DW geometry) | RE on held data: deobfuscator crib-drag + E5/E6 consumer analysis against the disc release we already hold | **No** — ISO + extraction already stored |
-| DW boss AI behaviour, Jin DW moveset, gem/item tables | Same DATA0 unlock; the extracted OBJ/CHR + area tables narrow the search | No |
+| T5 models, moves, stages, DW geometry (NOT in DATA0) | Content inventory + RE on DATA1's 1,571 held split files (DATA0 itself is DONE: cracked, FMV-only, release `tekken5-data0-cracked-20261106`) | **No** — DATA1 split already stored |
+| DW boss AI behaviour, Jin DW moveset, gem/item tables | DATA1 split-file inventory (DATA0 held none of it); the extracted OBJ/CHR + area tables narrow the search | No |
 | T5 audio banks | romD bank-directory RE on held TK5DATA2 | No |
-| T5 skull mask; pack→character attribution | Wider DATA1/DATA0 search once DATA0 opens; attribution from DATA0 tables | No |
+| T5 skull mask; pack→character attribution | DATA1 search (DATA0 is open and holds neither); attribution table still unlocated | No |
 | T6 texture pixels + skinning | **One PPSSPP GE capture session** (guide written: `PPSSPP-LIVE-RUN-GUIDE.md`) | No — a session, not a download |
 | T6 stages / Scenario Campaign | Console (PS3) version only — the Draft `tekken6-ps3-full-v1` release is the in-hand lead and is unverified | **Maybe** — verify the Draft release first |
 | TTT2 remaining banks (~57 fighters) | Reassemble held 7z chunks → STFS → repeat the proven data004 join per character. Disk space is the only gate | No — chunks already stored |
@@ -263,7 +285,7 @@ skinning (capture-gated); DW gimmick/item tables + DW UI.
   customization; T7 full depot storage + frame data; TTT2 Roger/Jun.
 - **Held but dark:** most of T6's wiring, T5's Devil Within tables, T7's stages and
   customization, TTT2's other 57 banks.
-- **Flat missing:** everything behind TK5DATA0 (all of T5's versus core + Devil
+- **Flat missing:** all of T5's versus core + Devil
   Within's geometry), the whole of Tekken 8 beyond community scraps, TTT2 stage
   geometry, T7 stage extraction, and T6's texture pixels (one capture session away).
 
