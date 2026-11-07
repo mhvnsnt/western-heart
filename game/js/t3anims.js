@@ -1540,6 +1540,103 @@ export function retargetProfileFor(modelKey) {
   return (modelKey && Object.prototype.hasOwnProperty.call(RETARGET_PROFILES, modelKey)) ? RETARGET_PROFILES[modelKey] : null;
 }
 
+/* ============================================================
+   HEAD-FRAME NORMALIZATION (2026-11-06, roster head/face audit —
+   owner: "some characters... have a twisted neck and head where they
+   are facing 3/4 towards the cam in a odd way instead of facing their
+   opponents... Yukihyo has some face stretch issues during match and
+   so do many others, evaluate and fix them all").
+
+   MEASURED ROOT CAUSE. Every driven joint except the head is
+   corrected by its rest-direction swing A(c) in retargetT3Clips; the
+   head's A is identity by design (the baker's "Hips/Head: identity"),
+   so the head world rotation lands on the target rig exactly as the
+   bank composed it. That is only safe when the bank's head track is
+   clean — and almost none are. The banks were baked on each source
+   character's own part rig (the 18-joint divmot bakes; the rows pack
+   of EVERY bank, and the T7/TTT2 bank bakes too), whose head joint
+   frame is itself rotated: the head-vs-chest rotation of the bank's
+   own neutral stance, composed on the bank's own skeleton, is a
+   large CONSTANT (circular mean over the stance's frames):
+     jin 90.9°, heihachi 114.6°, yoshimitsu 96.5° (roll -96°),
+     jun 85.9°, bryan 77.2°, eddy 74.9°, forestlaw 74.5°,
+     roger 74.5°, gunjack 73.5°, julia 72.0°, raven 69.3°,
+     xiaoyu 61.1°, law 60.9°, kuma 54.4°, lei 54.6°, paul 53.6°,
+     anna 44.5°, armorking 45.6°, luckychloe 40.1°, nina 37.4°,
+     ogre 37.5°, hwoarang 65.3°, gon 63.3° — and king 0.0°.
+   King is the one clean bank (baked on the canonical rig), and
+   Pantera is the roster's reference-good fighter. On the target
+   rigs the constant is a twisted neck: the neck chain takes
+   D.Chest, the head takes the twisted D.Head, and the skin between
+   them shears — the "face stretch during match" (rows carry the
+   same constant, so it shows when moves play, worst on fighters
+   whose stance clip is itself an own-rig bake: jin/xiaoyu/bryan/
+   gunjack/yoshimitsu neutrals, all of heihachi_on_jin).
+
+   THE FIX (same pattern as bankFacing / standingIdle: a whole-bank
+   constant measured from the bank's own data at load, nothing
+   authored). The first retarget call that carries the bank's
+   stance-family clips estimates the constant — the circular mean
+   of G(Chest)^-1 * G(Head) over those clips' frames, composed
+   exactly as the retarget composes G — and caches it on the
+   skeleton. In the frame loop the head's world rotation is then
+   counter-rotated by that constant in the chest frame:
+     G'(Head) = [G(Chest) * offset^-1 * G(Chest)^-1] * G(Head)
+   so the stance's head-vs-chest becomes identity (the king-bank
+   value) while every frame's and every clip's variation around the
+   constant — the real head acting — is preserved untouched. Banks
+   whose measured constant is under 20° keep their data exactly
+   (king 0.0°, bosconovitch 16.2°). The 't7:' stance/move skeletons
+   are EXEMPT: they come through the 0xC8 TekkenMannequin path (a
+   jointed rig, no part frames — T7 King's 40° head-vs-chest is
+   his real side-on stance, chest angled, head on the opponent),
+   and their fighters (Pantera first) are owner-approved as-is.
+   ============================================================ */
+const HEAD_CORR_MIN_DEG = 20;
+function estimateHeadOffset(skel, t3Clips, THREE) {
+  // Returns undefined when this call carries no stance-family clip
+  // (defer — the bind call always carries the full action set),
+  // null when the bank measures clean, else the offset Quaternion.
+  if (!skel || !t3Clips) return undefined;
+  const src = sourceInfo(skel, THREE);
+  if (!src || !src.par || !src.order.includes('Head') || !src.order.includes('Chest')) return null;
+  let sx = 0, sy = 0, sz = 0, sw = 0, samples = 0, ref = null;
+  const G = {};
+  // The stance clip ONLY: it is the bank's reference pose (the head
+  // in a neutral guard faces the opponent, aligned with the chest —
+  // the king bank measures exactly 0.0°). Pooling the other
+  // stance-family clips contaminates the constant with their real
+  // acting (king's crouch-hold tucks the head 54°, his block 30°;
+  // pooled, king measured a phantom 24.4° and the correction then
+  // MOVED Pantera's verified head — measured in the audit harness).
+  for (const name of ['stance']) {
+    const clip = t3Clips[name];
+    const raw = clip && clip.userData && clip.userData.raw;
+    if (!raw || !raw.rot || !raw.rot.Head || !raw.rot.Chest) continue;
+    let n = 0;
+    for (const j of src.order) if (raw.rot[j] && raw.rot[j].length > n) n = raw.rot[j].length;
+    for (let f = 0; f < n; f++) {
+      for (const j of src.order) {
+        const q = G[j] || (G[j] = new THREE.Quaternion());
+        const r = raw.rot[j];
+        if (r && r.length) { const v = r[Math.min(f, r.length - 1)]; q.set(v[0], v[1], v[2], v[3]); } else q.identity();
+        const p = src.par[j];
+        if (p && G[p]) q.premultiply(G[p]);
+      }
+      const rel = G.Chest.clone().invert().multiply(G.Head);
+      if (!ref) ref = rel;
+      const s = (rel.x * ref.x + rel.y * ref.y + rel.z * ref.z + rel.w * ref.w) < 0 ? -1 : 1;
+      sx += s * rel.x; sy += s * rel.y; sz += s * rel.z; sw += s * rel.w; samples++;
+    }
+  }
+  if (samples < 8) return undefined;
+  const len = Math.hypot(sx, sy, sz, sw);
+  if (!(len > 1e-9)) return null;
+  const off = new THREE.Quaternion(sx / len, sy / len, sz / len, sw / len);
+  const deg = 2 * Math.acos(Math.min(1, Math.abs(off.w))) * 180 / Math.PI;
+  return deg >= HEAD_CORR_MIN_DEG ? off : null;
+}
+
 const _retargetCache = new WeakMap(); // model instance -> Map(bankId -> { rig, out: { action: clip } })
 
 /**
@@ -1584,6 +1681,18 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
     return o;
   }
   const profile = retargetProfileFor(instanceKey);
+  // HEAD-FRAME NORMALIZATION: estimate this bank's constant head
+  // offset once (from the stance-family clips of the first full
+  // call) and cache it on the skeleton; 't7:' skeletons are exempt
+  // (see the block above estimateHeadOffset).
+  if (skel._headCorr === undefined && !String(bankId).startsWith('t7:')) {
+    const est = estimateHeadOffset(skel, t3Clips, THREE);
+    if (est !== undefined) {
+      skel._headCorr = est;
+      if (est) console.log(`[WH-T3] bank '${bankId}': head-frame constant ${(2 * Math.acos(Math.min(1, Math.abs(est.w))) * 180 / Math.PI).toFixed(1)}° measured in its stance — normalized out of every clip (head/face audit 2026-11-06)`);
+    }
+  }
+  const headCorrInv = skel._headCorr ? skel._headCorr.clone().invert() : null;
   const rig = (cached && cached.rig) || analyzeRig(model, THREE, profile);
   if (!rig) { perModel.set(bankId, null); return null; }
   const src = sourceInfo(skel, THREE);
@@ -1652,7 +1761,7 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
     ? (layer.offsetFrames || 0)
     : (rig.profile && rig.profile.secondaryLayer && rig.profile.secondaryLayer.source === 'self')
       ? (rig.profile.secondaryLayer.timeOffsetFrames || 0) : 0;
-  const tmpQ = new THREE.Quaternion(), tmpV = new THREE.Vector3();
+  const tmpQ = new THREE.Quaternion(), tmpQ2 = new THREE.Quaternion(), tmpV = new THREE.Vector3();
   for (const action of names) {
     const clip = t3Clips[action];
     if (cached && cached.out[storeKey(action)]) { out[storeKey(action)] = cached.out[storeKey(action)]; continue; }
@@ -1673,6 +1782,16 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
         if (r && r.length) { const v = r[Math.min(f, r.length - 1)]; q.set(v[0], v[1], v[2], v[3]); } else q.identity();
         const p = src.par[j];
         if (p && G[p]) q.premultiply(G[p]);
+      }
+      // HEAD-FRAME NORMALIZATION: counter-rotate the head's world
+      // rotation by the bank's measured constant, in the chest
+      // frame — G'(Head) = [G(Chest) * offset^-1 * G(Chest)^-1] *
+      // G(Head). Only the constant goes; the frame's own head
+      // acting (rel variation around it) is preserved.
+      if (headCorrInv && G.Head && G.Chest) {
+        tmpQ.copy(G.Chest).multiply(headCorrInv)
+          .multiply(tmpQ2.copy(G.Chest).invert());
+        G.Head.premultiply(tmpQ);
       }
       // D: world deltas in the target frame.
       const delta = (c) => {
