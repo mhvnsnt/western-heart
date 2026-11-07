@@ -620,9 +620,9 @@ def main():
     hit = {'format': 'wh-hitframes/1', 'bank': label,
            'source': 'data006-decoded.bin motbin move records (first_active @+0x40, '
                      'last_active @+0x44, attack word + throw flag @+0x5C) joined by '
-                     'docs/tech/ttt2-mota/join/%s-join.json; stream_frames decoded via '
+                     'docs/tech/ttt2-mota/join/%s; stream_frames decoded via '
                      'bank tables (bank 1 data005 @%s, bank 2 data004 @0x100)'
-                     % (a.bank, a.bank1_table if a.bank1_table is not None
+                     % (os.path.basename(a.join), a.bank1_table if a.bank1_table is not None
                         else 'NOT LOCATED - named gap, see bank-tables.json'),
            'sha256': shas,
            'tool': 'tools/anim/ttt2_bank_rows.py', 'fps': 60,

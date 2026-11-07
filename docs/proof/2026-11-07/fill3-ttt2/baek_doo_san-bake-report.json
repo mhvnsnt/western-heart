@@ -1,5 +1,5 @@
 {
- "bank": "asuka",
+ "bank": "baek_doo_san",
  "baked": {
   "t3_neutral": {
    "move": "FACE_KAMAE",
@@ -11,23 +11,31 @@
    "gate_note": "toe graze 0.08 m (frame 15) within TTT2-vs-T7 skeleton proportion delta; ankles >= 0.01 m throughout; all other gate checks pass"
   },
   "t3_light": {
-   "move": "Jn_lp00",
-   "anim": "sujn_lp(DVD)",
+   "move": "Bk_lp00",
+   "anim": "kobk_lp00f(DVD)",
    "bank": 1,
-   "idx": 220,
+   "idx": 203,
    "frames": 71,
    "fk_selfcheck_max_m": 0.0
   },
   "t3_medium": {
-   "move": "Jn_lk00",
-   "anim": "najn_lk(DVD)",
+   "move": "Bk_lk00",
+   "anim": "nabk_lk(DVD)",
    "bank": 1,
-   "idx": 234,
-   "frames": 49,
+   "idx": 210,
+   "frames": 50,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_heavy": {
+   "move": "Bk_rk00",
+   "anim": "mobk_rk(DVD)",
+   "bank": 1,
+   "idx": 211,
+   "frames": 58,
    "fk_selfcheck_max_m": 0.0
   },
   "t3_walk_fwd": {
-   "move": "Jn_sWALKFLp",
+   "move": "sWALK_00FLp",
    "anim": "ygco_fwalk01(DVD)",
    "bank": 2,
    "idx": 109,
@@ -35,7 +43,7 @@
    "fk_selfcheck_max_m": 0.0
   },
   "t3_walk_back": {
-   "move": "Jn_sWALKB",
+   "move": "Kz_sWALKB",
    "anim": "ygco_bwalk00(DVD)",
    "bank": 2,
    "idx": 40,
@@ -43,34 +51,26 @@
    "fk_selfcheck_max_m": 0.0
   },
   "t3_dash_fwd": {
-   "move": "Jn_sDASHF",
+   "move": "Kz_sDASHF",
    "anim": "kzco_dash125(DVD)",
    "bank": 1,
-   "idx": 146,
+   "idx": 134,
    "frames": 20,
    "fk_selfcheck_max_m": 0.0
   },
   "t3_backdash": {
-   "move": "Jn_sDASHB",
+   "move": "sDASH_00B",
    "anim": "naco_back90(DVD)",
    "bank": 1,
-   "idx": 148,
+   "idx": 136,
    "frames": 30,
-   "fk_selfcheck_max_m": 0.0
-  },
-  "t3_crouch": {
-   "move": "st2cr_00B",
-   "anim": "ygco_ta_sya(DVD)",
-   "bank": 1,
-   "idx": 165,
-   "frames": 59,
    "fk_selfcheck_max_m": 0.0
   },
   "t3_crouch_hold": {
    "move": "cKAM__00_",
    "anim": "ozco_syagami(DVD)",
    "bank": 1,
-   "idx": 152,
+   "idx": 140,
    "frames": 35,
    "fk_selfcheck_max_m": 0.0
   },
@@ -108,13 +108,13 @@
   }
  },
  "skipped": {
-  "t3_heavy": "in-game plausibility gate: LeftToeBase 0.11 m below the floor on frame 0 (mannequin proportions)",
   "t3_hit": "in-game plausibility gate: LeftToeBase 0.22 m below the floor on frame 0 (mannequin proportions)",
   "t3_block": "in-game plausibility gate: LeftToeBase 1.11 m below the floor on frame 0 (mannequin proportions)",
-  "t3_sidestep_b": "in-game plausibility gate: LeftToeBase 0.08 m below the floor on frame 3 (mannequin proportions)",
-  "t3_grab": "in-game plausibility gate: LeftToeBase 0.11 m below the floor on frame 13 (mannequin proportions)"
+  "t3_crouch": "in-game plausibility gate: LeftToeBase 0.21 m below the floor on frame 0 (mannequin proportions)",
+  "t3_sidestep_b": "in-game plausibility gate: LeftToeBase 0.08 m below the floor on frame 3 (mannequin proportions)"
  },
  "gaps": {
+  "t3_grab": "no Thrmv_B1_00/Thrmv_B2_00i bank-1 record in join",
   "t3_ko": "no slot source identified (shipped Roger/Jun banks also ship no t3_ko clip)",
   "t3_hit_launch": "no slot source identified (shipped Roger/Jun banks also ship no t3_hit_launch clip)"
  }
