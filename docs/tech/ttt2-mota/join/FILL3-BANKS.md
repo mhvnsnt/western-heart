@@ -108,7 +108,7 @@ exactly this in batch 1's first CI run: 347 torch-referenced rows).
 
 ## Per-bank counts
 
-| bank | clips baked | clips gate-skipped | slot gaps | pack rows | hit rows | rows missing |
+| bank | clips baked | clips skipped (gate) | slot gaps | pack rows | hit rows | rows missing |
 |---|---|---|---|---|---|---|
 | alex | 12 | 5 | 3 | 320 | 332 | 35 |
 | alisa | 14 | 4 | 2 | 463 | 468 | 30 |
@@ -116,6 +116,12 @@ exactly this in batch 1's first CI run: 347 torch-referenced rows).
 | armor_king | 12 | 6 | 2 | 342 | 345 | 24 |
 | asuka | 13 | 5 | 2 | 319 | 330 | 35 |
 | bob_satsuma | 4 | 2 | 14 | 36 | 38 | 6 |
-| **batch 1 total** | **68** | **27** | **25** | **1770** | **1801** | **161** |
+| anna | 5 | 4 | 11 | 78 | 77 | 302 |
+| baek_doo_san | 13 | 4 | 3 | 315 | 318 | 32 |
+| bosconovitch | 14 | 3 | 3 | 270 | 270 | 22 |
+| bruce | 11 | 6 | 3 | 328 | 336 | 28 |
+| bryan | 13 | 5 | 2 | 354 | 363 | 34 |
+| christie | 9 | 5 | 6 | 374 | 397 | 46 |
+| **batches 1–2 total (12 banks)** | **133** | **54** | **53** | **3489** | **3562** | **625** |
 
-(Remaining banks land in follow-up batches of this series; this table grows with each batch.)
+Batch 1 = PR #1625 (alex, alisa, angel, armor_king, asuka, bob_satsuma). Batch 2 = PR #1627 (anna_ttt2, baek_doo_san, bosconovitch_ttt2, bruce, bryan_ttt2, christie). Further batches append rows here as they land.
