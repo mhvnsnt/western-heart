@@ -31,5 +31,284 @@
  "end_to_end_decode_proof": [
   "Roger move Rg_sKAM00_ -> anim kjrg_kamae02(DVD) -> bank 1 idx 48 -> data005 @0x56b6c04 entry 48 -> tools/ttt2_mota_decode64.py decoded: 270 frames, 23 tracks (docs/proof/2026-11-04/ttt2-join/roger-stance-decoded.json)",
   "Roger/Jun move Fall_sKAM -> anim naco_700dwn2(DVD) -> bank 2 idx 343 -> data004 @0x100 entry 343 -> decoded (docs/proof/2026-11-04/ttt2-join/common-fall-decoded.json)"
- ]
+ ],
+ "fill3_bank1_tables": {
+  "where": "one big MOTA table per character inside data005-decoded.bin; located by clip-fingerprint matching (Fill 3 - see FILL3-JOINS-AND-TABLES.md). The paul/roger/jun entries in bank1 above agree with this map; unknown @198828228 count 736 was pinned by PR #1561 and is included here.",
+  "tables": {
+   "ALEX": {
+    "table_file_offset": 234987876,
+    "count": 506
+   },
+   "ANGEL": {
+    "table_file_offset": 222803614,
+    "count": 482
+   },
+   "ANNA": {
+    "table_file_offset": null,
+    "count": null,
+    "note": "GAP: bank-1 table not locatable in held data005 - 65 of 66 character tables located; the one unassigned big table @94807636 (cnt 648) is a non-character table (42/648 body clips, lacks the shared clip library). ANNA join itself verified (bank-2 agreement 910/910 vs Paul). Fallback source: queued PS3 copy (tag ttt2-ps3-archiveorg-20261106)."
+   },
+   "ARMOR_KING": {
+    "table_file_offset": 133108105,
+    "count": 566
+   },
+   "Alisa": {
+    "table_file_offset": 176215748,
+    "count": 749
+   },
+   "Asuka": {
+    "table_file_offset": 107977065,
+    "count": 570
+   },
+   "BAEK_DOO_SAN": {
+    "table_file_offset": 116588873,
+    "count": 519
+   },
+   "BOB_SATSUMA": {
+    "table_file_offset": 154866148,
+    "count": 601
+   },
+   "BRUCE": {
+    "table_file_offset": 112664505,
+    "count": 542
+   },
+   "Bosconovitch": {
+    "table_file_offset": 246448452,
+    "count": 430
+   },
+   "Bryan": {
+    "table_file_offset": 59435793,
+    "count": 559
+   },
+   "CHRISTIE": {
+    "table_file_offset": 39729168,
+    "count": 662
+   },
+   "Combot": {
+    "table_file_offset": 259686676,
+    "count": 1281,
+    "note": "mimic compilation table; only table whose count fits his 1278 bank-1 records; at-index fingerprint agreement ~0.45 (variant encodings) - bake stage validates clips individually"
+   },
+   "DEVIL_JIN": {
+    "table_file_offset": 120263961,
+    "count": 598
+   },
+   "Dragunov": {
+    "table_file_offset": 141362348,
+    "count": 551
+   },
+   "EDDY": {
+    "table_file_offset": 150079668,
+    "count": 648
+   },
+   "EMILIE": {
+    "table_file_offset": 137061148,
+    "count": 548
+   },
+   "Eleonor": {
+    "table_file_offset": 167670804,
+    "count": 512
+   },
+   "FENG": {
+    "table_file_offset": 129480537,
+    "count": 557
+   },
+   "Forest": {
+    "table_file_offset": 212977380,
+    "count": 668
+   },
+   "GANRYU": {
+    "table_file_offset": 103438505,
+    "count": 578
+   },
+   "GreenOgre": {
+    "table_file_offset": 238844548,
+    "count": 443
+   },
+   "HEIHACHI": {
+    "table_file_offset": 63164577,
+    "count": 590
+   },
+   "HWOARANG": {
+    "table_file_offset": 29469248,
+    "count": 662
+   },
+   "JIN": {
+    "table_file_offset": 44851360,
+    "count": 561
+   },
+   "JULIA": {
+    "table_file_offset": 49598320,
+    "count": 680
+   },
+   "JUN_KAZAMA": {
+    "table_file_offset": 193068196,
+    "count": 596
+   },
+   "Jack": {
+    "table_file_offset": 86952868,
+    "count": 606
+   },
+   "Jinpachi": {
+    "table_file_offset": 181989524,
+    "count": 498
+   },
+   "KAZUYA": {
+    "table_file_offset": 68837841,
+    "count": 540
+   },
+   "KING": {
+    "table_file_offset": 14478896,
+    "count": 872
+   },
+   "Kuma": {
+    "table_file_offset": 54607856,
+    "count": 588
+   },
+   "Kunimitsu": {
+    "table_file_offset": 204067812,
+    "count": 526
+   },
+   "LAW": {
+    "table_file_offset": 4872336,
+    "count": 654
+   },
+   "LEE": {
+    "table_file_offset": 73948209,
+    "count": 554
+   },
+   "Lars": {
+    "table_file_offset": 171684964,
+    "count": 545
+   },
+   "Lei_Wulong": {
+    "table_file_offset": 9537376,
+    "count": 865
+   },
+   "Lin_Xiaoyu": {
+    "table_file_offset": 33849056,
+    "count": 808
+   },
+   "MARDUK": {
+    "table_file_offset": 81979617,
+    "count": 684
+   },
+   "Michelle": {
+    "table_file_offset": 226930414,
+    "count": 587
+   },
+   "Miguel": {
+    "table_file_offset": 163712228,
+    "count": 485
+   },
+   "Miharu": {
+    "table_file_offset": 217606606,
+    "count": 812
+   },
+   "NINA": {
+    "table_file_offset": 24847680,
+    "count": 686
+   },
+   "Ogre": {
+    "table_file_offset": 186968644,
+    "count": 518,
+    "note": "size-insensitive fingerprint match 0.59, 4x margin over next candidate"
+   },
+   "P-JACK": {
+    "table_file_offset": 231298612,
+    "count": 590,
+    "note": "three tables tie size-insensitively at 13/15 shared anims; this one wins the size-sensitive fingerprint; join is partial (273 records)"
+   },
+   "PANDA": {
+    "table_file_offset": 145419060,
+    "count": 601
+   },
+   "Paul": {
+    "table_file_offset": 320,
+    "count": 549
+   },
+   "RAVEN": {
+    "table_file_offset": 125006969,
+    "count": 611
+   },
+   "ROGER": {
+    "table_file_offset": 90926084,
+    "count": 509
+   },
+   "Sebastian": {
+    "table_file_offset": 250507156,
+    "count": 548
+   },
+   "SlimBob": {
+    "table_file_offset": 208473508,
+    "count": 600
+   },
+   "Steve_Fox": {
+    "table_file_offset": 77833569,
+    "count": 634
+   },
+   "TIGER": {
+    "table_file_offset": 254734996,
+    "count": 655
+   },
+   "Unknown": {
+    "table_file_offset": 198828228,
+    "count": 736
+   },
+   "VIOLET": {
+    "table_file_offset": 242796116,
+    "count": 555
+   },
+   "Wang": {
+    "table_file_offset": 99364606,
+    "count": 478
+   },
+   "YOSHIMITSU": {
+    "table_file_offset": 20467936,
+    "count": 805
+   },
+   "ZAFINA": {
+    "table_file_offset": 159372756,
+    "count": 573
+   },
+   "Zako00": {
+    "table_file_offset": 265197316,
+    "count": 448,
+    "note": "six content-identical cnt=448 Zako tables in data005; assigned in file order (Zako01 @267512724 cnt=452 and Zako02 @269835972 cnt=498 were located independently and anchor the sequence)"
+   },
+   "Zako01": {
+    "table_file_offset": 267512724,
+    "count": 452
+   },
+   "Zako02": {
+    "table_file_offset": 269835972,
+    "count": 498
+   },
+   "Zako03": {
+    "table_file_offset": 272331396,
+    "count": 448,
+    "note": "six content-identical cnt=448 Zako tables in data005; assigned in file order (Zako01 @267512724 cnt=452 and Zako02 @269835972 cnt=498 were located independently and anchor the sequence)"
+   },
+   "Zako04": {
+    "table_file_offset": 274646804,
+    "count": 448,
+    "note": "six content-identical cnt=448 Zako tables in data005; assigned in file order (Zako01 @267512724 cnt=452 and Zako02 @269835972 cnt=498 were located independently and anchor the sequence)"
+   },
+   "Zako05": {
+    "table_file_offset": 276962212,
+    "count": 448,
+    "note": "six content-identical cnt=448 Zako tables in data005; assigned in file order (Zako01 @267512724 cnt=452 and Zako02 @269835972 cnt=498 were located independently and anchor the sequence)"
+   },
+   "Zako06": {
+    "table_file_offset": 279277620,
+    "count": 448,
+    "note": "six content-identical cnt=448 Zako tables in data005; assigned in file order (Zako01 @267512724 cnt=452 and Zako02 @269835972 cnt=498 were located independently and anchor the sequence)"
+   },
+   "Zako07": {
+    "table_file_offset": 281593028,
+    "count": 448,
+    "note": "six content-identical cnt=448 Zako tables in data005; assigned in file order (Zako01 @267512724 cnt=452 and Zako02 @269835972 cnt=498 were located independently and anchor the sequence)"
+   }
+  }
+ }
 }
