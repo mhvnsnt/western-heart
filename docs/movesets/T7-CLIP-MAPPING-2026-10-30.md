@@ -147,3 +147,59 @@ burger 89/22, demonio 51/29, diablo 54/26, kinpo 64/39, pantera 77/32,
 phantom 76/51, scimitar 40/17, skull 74/40. No mapping here is claimed
 play-verified; clip-maps remain the supply layer for the wiring lane, and
 this lane did not run the PR #1282 republish.
+
+---
+
+## FILL 2 ADDENDUM — 2026-11-06 (group-correct re-walk + bank-0x0000 solved)
+
+Owner fill order: "1, 2, 3, then 4, remember then all til we get em done" — Fill 2 (Tekken 7 held-data gaps).
+
+### F2 — bank-0x0000 SOLVED
+
+Bank 0x0000 is **MotaList slot 0: the MOTA section embedded in each character's own `bin/<code>mot.bin`** (the rule is stated in the header docs of GRE's own `t7_motbin_to_json.py`). Verified 10/10 characters: exactly one embedded section per motbin whose entry count equals the bank-0 anim_id count, 404/404 signature checks. All **33** clip-map bank-0 entries are now clip-resolved (locators in the clip-maps; indexes in GRE `mask/indexes/<code>_bank0_index.json`; clip bytes in GRE release `t7-bank0-clips-v1`, pull-back verified). The 2026-10-30 hunt's §3c claim ("no MOTA data in bin/") was wrong and is superseded by §10 of the hunt doc.
+
+### F1 — group-correct re-walk of the 256 unmapped
+
+Walker: GRE `t7_string_walk.py` (0x800B group-cancel partition + alias-table hub rules, 2026-10-31 — postdates the v1/v2 flat-pool runs). Validation on the 525 mapped entries: unique verdicts 280 correct / 28 differ / 217 no-unique — so uniqueness alone did not promote. Promotion required unique terminal + concrete clip locator + corroboration (two-notation agreement and/or a v1 MVL row and/or fingerprint damage+startup double-true-unique), with a fingerprint veto. **Promoted: 22. Held: 234** (walk-multi-terminal 114, walk-no-terminal 68, unique-but-held 24, walk-dies 24, t8-sourced-entry 4) — per-entry verdicts are recorded in each clip-map (`fill2_20261106` addenda; prior reasons preserved). New totals: **547/781 clip-resolved, 234 unmapped**.
+
+**Correction applied:** pantera `df+1` was remapped 1611 `Kg_syalp00` → **1652 `Kg_t_slpF`** — the ALIAS-AND-GROUP-DECODE doc itself names the old mapping a flat-pool false join; the group-walk reproduces the correction.
+
+**Contested (reported, NOT edited):** 26 mapped entries the group-walk uniquely contradicts. These need a provenance-lane adjudication, one by one:
+
+| fighter | input | mapped (kept) | group-walk unique |
+|---|---|---|---|
+| pantera | Behind.b,f+1+2 | Kg_Akelbow2 | Kg_rpspxk |
+| pantera | df+1,2 | Kg_syalp01 | Kg_t_slpF03B |
+| pantera | df+2 | Co_syarp00 | Kg_t_srpF |
+| phantom | 1+2_t8 | Co_s_tlp00 | Ym_vs_yos2 |
+| phantom | df+2 | Co_syarp00 | Ym_t_XsrpF |
+| phantom | df+3 | Co_syalkF | Ym_maegeri |
+| phantom | qcb,f+2 | Thrmv_Ym_neg | Ym_rp00F |
+| phantom | qcf+1 | Ym_spinjp_0 | Ym_lp00F |
+| phantom | u+1+2 | Ym_Xhoba | Ym_hoba |
+| skull | b,df+4 | Bx_MAPPALOW | Bx_t_srkF |
+| skull | df+3 | Co_syalkF | Bx_back_LK |
+| skull | df+4 | Co_syarkF | Bx_t_srkF |
+| skull | f+1+2 | ___________ | Bx_roll_LP1 |
+| skull | f,n,b+2 | Bx_MAPPA00 | Bx_back_RP |
+| burger | b+3+4 | Ft_lrk00D_B | Ft_Broll00 |
+| burger | df+2 | Ft_syarp00 | Ft_t_srpF |
+| burger | f+3+4 | Ft_JWheel | Ft_Froll00 |
+| burger | ws3,3+4 | Ft_s_tlk01 | Ft_lk00 |
+| demonio | b,f+2 | JIN_up06 | Jz_rp00F |
+| demonio | b,f+2,3 | Jz_karatekick | Jz_10comb2 |
+| demonio | df+4 | Jz_syarkF | Jz_3rk |
+| diablo | df+4 | He_syarkF | He_t_srkF |
+| diablo | qcf+2 | He_hadoh03 | He_rp00F |
+| scimitar | df+2 | Co_syarp00 | Co_t_srpF |
+| scimitar | df+4 | Co_syarkF | Ab_t_srk00 |
+| scimitar | f,b+2 | Ab_64rp | Ab_rp00B |
+
+### F5 — no-anim moves wired from held data
+
+Census of current main: 433 moves carry no animation binding of any kind (the audit's 453 was its own count). New clip-maps: **pond** (Master Raven/frv — 40 of 151 bare moves wired) and **thor** (Ganryu/gan — 14 of 78). The 9 bare moves across the 8 clip-mapped fighters all walked to no terminal (0 wired, recorded). Not wireable from T7 data: baek-master-white (153 — Baek is not in Tekken 7), menajerii (32 — Roger Jr. is TTT2), megami (5 — Jun is TTT2), street-reign (5 — not Tekken).
+
+### F11 — format-100 SOLVED (record correction)
+
+Format-100 (0x64) bodies were solved 2026-11-01 on WH main (axis-angle rotation encoding decoded from the shipping EXE's sampler; `tools/anim/t7_anim64.py`, `tools/anim/t7_anim64_to_c8.py`). Fill 2 independently re-verified 2026-11-06: decoder `validate()` over kinmot.bin = 118 clips / 17,239 frames / 0 errors; Unicorn round-trip 0x64 → 0xC8 → the game's own sampler reproduced the game's 0x64 quaternions with worst error **3.58e-07** over 8 King clips. Remaining work is application (baking), not format RE.
+

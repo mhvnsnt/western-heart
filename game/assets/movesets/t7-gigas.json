@@ -1,0 +1,3491 @@
+{
+ "fighter": "t7-gigas",
+ "display": "Gigas (Tekken 7 source moveset)",
+ "tekken_base": "Gigas",
+ "source": {
+  "built_by": "FILL 2 (2026-11-06), owner fill order: \"1, 2, 3, then 4, remember then all til we get em done\"",
+  "frame_table": "game/data/t7-frame-data/t7-gigas-lp-rp-lk-rk.json",
+  "motbin": "GRE teardown/tekken7-steam/tkdata/mothead/bin/crzmot.bin + json/crzmot.json",
+  "mvl": "GRE teardown/tekken7-steam/tkdata/mothead/movelist/crz.mvl",
+  "banks": "GRE release t7-fighter-banks-v1 (crz_clips.bin, crz_bank0_clips.bin); indexes in GRE mask/indexes/",
+  "method": "group-correct string walk (t7_string_walk.py); wired = unique terminal + clip locator; see fill2 fields per move"
+ },
+ "fill2_stats": {
+  "rows": 103,
+  "wired": 51,
+  "pass2": {
+   "sequence": 8,
+   "slide": 0
+  }
+ },
+ "moves": {
+  "in rage 1+2": {
+   "name": "in rage 1+2",
+   "name_source": "notation-only",
+   "input": "in rage 1+2",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "\u2013",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Rage art",
+   "anim_ref": null,
+   "t7": {
+    "notation": "in rage 1+2",
+    "id": "crz_1",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1": {
+   "name": "Metal Crusher",
+   "name_source": "mvl",
+   "input": "1",
+   "damage": 7,
+   "damage_raw": "7",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h",
+   "on_block": "+1",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:299",
+   "t7": {
+    "notation": "1",
+    "id": "crz_2",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "1",
+    "motbin_move_id": 1552,
+    "motbin_move_name": "Cz_lp00",
+    "anim_name": "czkb_lp(DVD)",
+    "anim_id": 16683,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 299,
+     "rel_offset": 2635720,
+     "size": 3080,
+     "format_word": 100,
+     "sha256": "b28894ff330b061e245e65a1402ac05acdf22ecdbc2259ba093d917814f042ff",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [7]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1552
+    ]
+   }
+  },
+  "1, 2": {
+   "name": "Iron Breaker",
+   "name_source": "mvl",
+   "input": "1, 2",
+   "damage": 7,
+   "damage_raw": "7,24",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h",
+   "on_block": "-14",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:301",
+   "t7": {
+    "notation": "1, 2",
+    "id": "crz_3",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "1, 2",
+    "motbin_move_id": 1559,
+    "motbin_move_name": "Cz_lprp",
+    "anim_name": "czkb_lprp(DVD)",
+    "anim_id": 16685,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 301,
+     "rel_offset": 2643368,
+     "size": 5052,
+     "format_word": 100,
+     "sha256": "e93305fa82169fd177c11e29381ced13173ff4ce727fb31dfdc82315afd2b869",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "2": {
+   "name": "Hell Crusher",
+   "name_source": "mvl",
+   "input": "2",
+   "damage": 10,
+   "damage_raw": "10",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h",
+   "on_block": "-5",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:302",
+   "t7": {
+    "notation": "2",
+    "id": "crz_4",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "2",
+    "motbin_move_id": 1560,
+    "motbin_move_name": "Cz_rp00",
+    "anim_name": "czkb_rp(DVD)",
+    "anim_id": 16686,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 302,
+     "rel_offset": 2648420,
+     "size": 3124,
+     "format_word": 100,
+     "sha256": "c508684fa4e97e4b5970018909ac05aabacf00893c6a1338517363037f74f184",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [10]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1560
+    ]
+   }
+  },
+  "2, 1": {
+   "name": "Double Gimlet",
+   "name_source": "mvl",
+   "input": "2, 1",
+   "damage": 10,
+   "damage_raw": "10,12",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h",
+   "on_block": "-5",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:303",
+   "t7": {
+    "notation": "2, 1",
+    "id": "crz_5",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "2, 1",
+    "motbin_move_id": 1561,
+    "motbin_move_name": "Cz_rplp",
+    "anim_name": "czkb_rplp(DVD)",
+    "anim_id": 16687,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 303,
+     "rel_offset": 2651544,
+     "size": 4472,
+     "format_word": 100,
+     "sha256": "80d4a5c4f13d2361141bb0cc6aaa13b50d3cec34c75eb63d6d608d705f921f06",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [10, 12]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1560,
+     1561
+    ]
+   }
+  },
+  "2, 1, 3+4": {
+   "name": "Double Gimlet to Golem Set Up",
+   "name_source": "mvl",
+   "input": "2, 1, 3+4",
+   "damage": 10,
+   "damage_raw": "10,12",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h, (SG)",
+   "on_block": "-?",
+   "on_hit": "-4?",
+   "on_ch": "-4?",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:304",
+   "t7": {
+    "notation": "2, 1, 3+4",
+    "id": "crz_6",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "2, 1, 3+4",
+    "motbin_move_id": 1562,
+    "motbin_move_name": "Cz_rplp_kam",
+    "anim_name": "czkb_rplp_set_75(DVD)",
+    "anim_id": 16688,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 304,
+     "rel_offset": 2656016,
+     "size": 12236,
+     "format_word": 100,
+     "sha256": "e51c001ea0120389a5746984c5be054746b15892df8eeaa08092d7422d8d4753",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "3": {
+   "name": "Left Wrench Kick",
+   "name_source": "mvl",
+   "input": "3",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "m",
+   "on_block": "-9",
+   "on_hit": "+2",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "3",
+    "id": "crz_7",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "sWALK_00F",
+     "Cz_lk00",
+     "sWALK_00FMv",
+     "Mt_sDASHF",
+     "Cz_2rp",
+     "Cz_4lp",
+     "Cz_rp00F",
+     "Cz_2lrp"
+    ]
+   }
+  },
+  "4": {
+   "name": "Right Wrench Kick",
+   "name_source": "mvl",
+   "input": "4",
+   "damage": 23,
+   "damage_raw": "23",
+   "startup": 0.2667,
+   "startup_frames": 16,
+   "hit_level": "m",
+   "on_block": "-9",
+   "on_hit": "+2",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "4",
+    "id": "crz_8",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Cz_2lrp",
+     "Cz_rk00"
+    ]
+   }
+  },
+  "f+2": {
+   "name": "f+2",
+   "name_source": "notation-only",
+   "input": "f+2",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": 0.2667,
+   "startup_frames": 16,
+   "hit_level": "h",
+   "on_block": "-9",
+   "on_hit": "+7",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f+2",
+    "id": "crz_9",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Cz_rp00F",
+     "Cz_6rp6lp"
+    ]
+   }
+  },
+  "f+2, 1": {
+   "name": "f+2, 1",
+   "name_source": "notation-only",
+   "input": "f+2, 1",
+   "damage": 20,
+   "damage_raw": "20,17",
+   "startup": 0.2667,
+   "startup_frames": 16,
+   "hit_level": "h, h",
+   "on_block": "-3",
+   "on_hit": "+5",
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f+2, 1",
+    "id": "crz_10",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Cz_rp00F_R_A",
+     "Cz_6rplp"
+    ]
+   }
+  },
+  "f+2, 1, 1": {
+   "name": "Mad Rampage",
+   "name_source": "mvl",
+   "input": "f+2, 1, 1",
+   "damage": 20,
+   "damage_raw": "20,17,24",
+   "startup": 0.2667,
+   "startup_frames": 16,
+   "hit_level": "h, h, m",
+   "on_block": "-12",
+   "on_hit": "KMUD",
+   "on_ch": "KMUD",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:317",
+   "t7": {
+    "notation": "f+2, 1, 1",
+    "id": "crz_11",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+2, 1, 1",
+    "motbin_move_id": 1579,
+    "motbin_move_name": "Cz_6rplplp",
+    "anim_name": "czkb_6rplplp(DVD)",
+    "anim_id": 16701,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 317,
+     "rel_offset": 2715272,
+     "size": 5596,
+     "format_word": 100,
+     "sha256": "cb742ca435b01ad31d42336097016f5519fdddbeee91f199b8f1d4f309723101",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+2, f+1": {
+   "name": "Double Monster Hook",
+   "name_source": "mvl",
+   "input": "f+2, f+1",
+   "damage": 20,
+   "damage_raw": "20,17",
+   "startup": 0.2667,
+   "startup_frames": 16,
+   "hit_level": "h, h",
+   "on_block": "-9",
+   "on_hit": "CS",
+   "on_ch": "CS",
+   "notes": "Tail spin",
+   "anim_ref": null,
+   "t7": {
+    "notation": "f+2, f+1",
+    "id": "crz_12",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Cz_rp00F_R_6A",
+     "Cz_6rp6lp"
+    ]
+   }
+  },
+  "f+2, d+1": {
+   "name": "Monster Axe",
+   "name_source": "mvl",
+   "input": "f+2, d+1",
+   "damage": 20,
+   "damage_raw": "20,17",
+   "startup": 0.2667,
+   "startup_frames": 16,
+   "hit_level": "h, m",
+   "on_block": "-13s",
+   "on_hit": "-2s",
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f+2, d+1",
+    "id": "crz_13",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Cz_rp00F_R_23A",
+     "Cz_6rp2lp"
+    ]
+   }
+  },
+  "f+2, d+1, 3+4": {
+   "name": "Monster Axe to Golem Set Up",
+   "name_source": "mvl",
+   "input": "f+2, d+1, 3+4",
+   "damage": 20,
+   "damage_raw": "20,17",
+   "startup": 0.2667,
+   "startup_frames": 16,
+   "hit_level": "h, m, (SG)",
+   "on_block": "-12s",
+   "on_hit": "+3s?",
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:315",
+   "t7": {
+    "notation": "f+2, d+1, 3+4",
+    "id": "crz_14",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+2, d+1, 3+4",
+    "motbin_move_id": 1577,
+    "motbin_move_name": "Cz_6rp2lp_kam",
+    "anim_name": "czkb_6rp2lp_set_75(DVD)",
+    "anim_id": 16699,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 315,
+     "rel_offset": 2698728,
+     "size": 12256,
+     "format_word": 100,
+     "sha256": "b537e928a32c4ee32044d410c6792e5be14e91e4ccc62b5c6a0b29ed82b9f48b",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+3": {
+   "name": "Cz_lk00F",
+   "name_source": "motbin-internal",
+   "input": "f+3",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-13~12",
+   "on_hit": "+5~+6",
+   "on_ch": "+5~+6",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:356",
+   "t7": {
+    "notation": "f+3",
+    "id": "crz_15",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+3",
+    "motbin_move_id": 1635,
+    "motbin_move_name": "Cz_lk00F",
+    "anim_name": "czkb_6lk(DVD)",
+    "anim_id": 16740,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 356,
+     "rel_offset": 2835932,
+     "size": 4720,
+     "format_word": 100,
+     "sha256": "f72e940c258e625af78d6848fb7138ad0424d31022ceb7379acf4f8862dd4f5c",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+3, 2": {
+   "name": "Crazy Knuckle Combo",
+   "name_source": "mvl",
+   "input": "f+3, 2",
+   "damage": 17,
+   "damage_raw": "17,20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m",
+   "on_block": "-13",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:348",
+   "t7": {
+    "notation": "f+3, 2",
+    "id": "crz_16",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+3, 2",
+    "motbin_move_id": 1642,
+    "motbin_move_name": "Cz_4rp",
+    "anim_name": "czkb_4rp(DVD)",
+    "anim_id": 16732,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 348,
+     "rel_offset": 2795504,
+     "size": 5092,
+     "format_word": 100,
+     "sha256": "e3a30343ed41da79c0b7bc8a9eb421b3e25c4168e9868cf952b637f5a25ecdb7",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [17, 20]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1635,
+     1642
+    ]
+   }
+  },
+  "f+3, 2*": {
+   "name": "f+3, 2*",
+   "name_source": "notation-only",
+   "input": "f+3, 2*",
+   "damage": 17,
+   "damage_raw": "17,40",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m",
+   "on_block": "+15 GB",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f+3, 2*",
+    "id": "crz_17",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f+3, 2, F": {
+   "name": "Crazy Knuckle Combo to Goliath",
+   "name_source": "mvl",
+   "input": "f+3, 2, F",
+   "damage": 17,
+   "damage_raw": "17,40",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m, (GOL)",
+   "on_block": "\u2013",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f+3, 2, F",
+    "id": "crz_18",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f+4": {
+   "name": "Burring Reamer",
+   "name_source": "mvl",
+   "input": "f+4",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": 0.4,
+   "startup_frames": 24,
+   "hit_level": "m",
+   "on_block": "-14",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:398",
+   "t7": {
+    "notation": "f+4",
+    "id": "crz_19",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+4",
+    "motbin_move_id": 1705,
+    "motbin_move_name": "Cz_66rk",
+    "anim_name": "czkb_66rk(DVD)",
+    "anim_id": 16782,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 398,
+     "rel_offset": 3006176,
+     "size": 4364,
+     "format_word": 100,
+     "sha256": "2a8eadfb18960607dca202327d52b1a8702ae638ce53236d0ea57850fde039f0",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [20]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1705
+    ]
+   }
+  },
+  "f+4*": {
+   "name": "f+4*",
+   "name_source": "notation-only",
+   "input": "f+4*",
+   "damage": 40,
+   "damage_raw": "40",
+   "startup": 0.4,
+   "startup_frames": 24,
+   "hit_level": "m",
+   "on_block": "+26 GB",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f+4*",
+    "id": "crz_20",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f+4, F": {
+   "name": "Burring Reamer to Goliath",
+   "name_source": "mvl",
+   "input": "f+4, F",
+   "damage": null,
+   "damage_raw": "20or40",
+   "startup": 0.4,
+   "startup_frames": 24,
+   "hit_level": "m, (GOL)",
+   "on_block": "\u2013",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f+4, F",
+    "id": "crz_21",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f+1+2": {
+   "name": "Quick Head-Butt",
+   "name_source": "mvl",
+   "input": "f+1+2",
+   "damage": 15,
+   "damage_raw": "15",
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "h",
+   "on_block": "-10",
+   "on_hit": "+5s",
+   "on_ch": "Throw(+)",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:373",
+   "t7": {
+    "notation": "f+1+2",
+    "id": "crz_22",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+1+2",
+    "motbin_move_id": 1659,
+    "motbin_move_name": "Cz_zutuki",
+    "anim_name": "czkb_6wp_1_yobi(DVD)",
+    "anim_id": 16757,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 373,
+     "rel_offset": 2894504,
+     "size": 3832,
+     "format_word": 100,
+     "sha256": "7067f23f6cabd51a69b4f6e0348c07904564eafd9b9f75e3de4617ff39a54d47",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+1+2 (Counter hit)": {
+   "name": "Cz_zutuki",
+   "name_source": "motbin-internal",
+   "input": "f+1+2 (Counter hit)",
+   "damage": 18,
+   "damage_raw": "18,40",
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "h, (throw)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": "Throw(KND)",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:373",
+   "t7": {
+    "notation": "f+1+2 (Counter hit)",
+    "id": "crz_23",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+1+2",
+    "motbin_move_id": 1659,
+    "motbin_move_name": "Cz_zutuki",
+    "anim_name": "czkb_6wp_1_yobi(DVD)",
+    "anim_id": 16757,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 373,
+     "rel_offset": 2894504,
+     "size": 3832,
+     "format_word": 100,
+     "sha256": "7067f23f6cabd51a69b4f6e0348c07904564eafd9b9f75e3de4617ff39a54d47",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+1": {
+   "name": "Hazardous Hook",
+   "name_source": "mvl",
+   "input": "d/f+1",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "m",
+   "on_block": "-6",
+   "on_hit": "+7",
+   "on_ch": "+7",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:385",
+   "t7": {
+    "notation": "d/f+1",
+    "id": "crz_24",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+1",
+    "motbin_move_id": 1672,
+    "motbin_move_name": "Cz_3lp",
+    "anim_name": "czkb_3lp(DVD)",
+    "anim_id": 16769,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 385,
+     "rel_offset": 2944100,
+     "size": 3408,
+     "format_word": 100,
+     "sha256": "106a2886db79b7f1028040a4d4a6a0779d9d5e063132f7916c49278917bca716",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+2": {
+   "name": "Brush Cutter",
+   "name_source": "mvl",
+   "input": "d/f+2",
+   "damage": 14,
+   "damage_raw": "14",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "m",
+   "on_block": "-7",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:505",
+   "t7": {
+    "notation": "d/f+2",
+    "id": "crz_25",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+2",
+    "motbin_move_id": 1998,
+    "motbin_move_name": "Cz_3rp",
+    "anim_name": "czkb_3rp(DVD)",
+    "anim_id": 16889,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 505,
+     "rel_offset": 3508188,
+     "size": 3560,
+     "format_word": 100,
+     "sha256": "45e40d9010d25afa8a95ac6cce8273bc7ec67f32716d1f691bb345681b87b68f",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+2, 1": {
+   "name": "Double Hook Reactor",
+   "name_source": "mvl",
+   "input": "d/f+2, 1",
+   "damage": 14,
+   "damage_raw": "14,21",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "m, m",
+   "on_block": "-13",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Tail spin",
+   "anim_ref": "t7:crz:0x4000:506",
+   "t7": {
+    "notation": "d/f+2, 1",
+    "id": "crz_26",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+2, 1",
+    "motbin_move_id": 1999,
+    "motbin_move_name": "Cz_3rplp",
+    "anim_name": "czkb_3rplp(DVD)",
+    "anim_id": 16890,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 506,
+     "rel_offset": 3511748,
+     "size": 4280,
+     "format_word": 100,
+     "sha256": "8c58397d2707ed6a0bf11c1b81cdb8126fb270cb76b8260b5e71fde143fb9943",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+3": {
+   "name": "Cz_3lk",
+   "name_source": "motbin-internal",
+   "input": "d/f+3",
+   "damage": 11,
+   "damage_raw": "11",
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "m",
+   "on_block": "-9",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:386",
+   "t7": {
+    "notation": "d/f+3",
+    "id": "crz_27",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+3",
+    "motbin_move_id": 1688,
+    "motbin_move_name": "Cz_3lk",
+    "anim_name": "czkb_3lk(DVD)",
+    "anim_id": 16770,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 386,
+     "rel_offset": 2947508,
+     "size": 4864,
+     "format_word": 100,
+     "sha256": "79ff361e3b93d2ba11418b928decb3148771bbbc9a5307f4c6ddd7641026fce8",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [11]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1688
+    ]
+   }
+  },
+  "d/f+3, 1": {
+   "name": "Nail Gun Punch",
+   "name_source": "mvl",
+   "input": "d/f+3, 1",
+   "damage": 11,
+   "damage_raw": "11,12",
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "m, h",
+   "on_block": "-4",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:387",
+   "t7": {
+    "notation": "d/f+3, 1",
+    "id": "crz_28",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+3, 1",
+    "motbin_move_id": 1689,
+    "motbin_move_name": "Cz_3lklp",
+    "anim_name": "czss_3lklp(DVD)",
+    "anim_id": 16771,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 387,
+     "rel_offset": 2952372,
+     "size": 3984,
+     "format_word": 100,
+     "sha256": "3aeba3de9231a7c8f6a14ff2ea83f3b482d879906c2e6a5e95293aa7041a7a5e",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+3, 1+2": {
+   "name": "d/f+3, 1+2",
+   "name_source": "notation-only",
+   "input": "d/f+3, 1+2",
+   "damage": 11,
+   "damage_raw": "11,20",
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "m, m",
+   "on_block": "-15",
+   "on_hit": "CS",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d/f+3, 1+2",
+    "id": "crz_29",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Cz_3lklrp",
+     "Cz_WPunchip"
+    ]
+   }
+  },
+  "d/f+3, 1+2, 1+2": {
+   "name": "Vice Grip Hammer Rush",
+   "name_source": "mvl",
+   "input": "d/f+3, 1+2, 1+2",
+   "damage": 11,
+   "damage_raw": "11,20,20",
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "m, m, h",
+   "on_block": "-1",
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:326",
+   "t7": {
+    "notation": "d/f+3, 1+2, 1+2",
+    "id": "crz_30",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+3, 1+2, 1+2",
+    "motbin_move_id": 1599,
+    "motbin_move_name": "Cz_WPunchip",
+    "anim_name": "czss_wpwp(DVD)",
+    "anim_id": 16710,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 326,
+     "rel_offset": 2749384,
+     "size": 5808,
+     "format_word": 100,
+     "sha256": "75337a83bcb0ffff0a20f43f9fbbe45a0f335cb7fb85990b3c2565bba9844fa5",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+4": {
+   "name": "Cz_t_srkF",
+   "name_source": "motbin-internal",
+   "input": "d/f+4",
+   "damage": 12,
+   "damage_raw": "12",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "m",
+   "on_block": "-3",
+   "on_hit": "+3",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:502",
+   "t7": {
+    "notation": "d/f+4",
+    "id": "crz_31",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+4",
+    "motbin_move_id": 1989,
+    "motbin_move_name": "Cz_t_srkF",
+    "anim_name": "czkb_3rk(DVD)",
+    "anim_id": 16886,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 502,
+     "rel_offset": 3495232,
+     "size": 4376,
+     "format_word": 100,
+     "sha256": "7a9e2e2d0c9fcf1a41fed462774187d06e9e73253a248d63079eb9224f06891a",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+4, 1+2": {
+   "name": "Nail Gun",
+   "name_source": "mvl",
+   "input": "d/f+4, 1+2",
+   "damage": 12,
+   "damage_raw": "12,30",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "m, m",
+   "on_block": "+1s",
+   "on_hit": "+5s",
+   "on_ch": "+5s",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:503",
+   "t7": {
+    "notation": "d/f+4, 1+2",
+    "id": "crz_32",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+4, 1+2",
+    "motbin_move_id": 1990,
+    "motbin_move_name": "Cz_3rk4lrp",
+    "anim_name": "czkb_3rk_tu_4wp(DVD)",
+    "anim_id": 16887,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 503,
+     "rel_offset": 3499608,
+     "size": 5244,
+     "format_word": 100,
+     "sha256": "22143041d47ae89678e415934a935d1a0ce07eeb8efae4fe6f3c3e57519c39df",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+1+2": {
+   "name": "d/f+1+2",
+   "name_source": "notation-only",
+   "input": "d/f+1+2",
+   "damage": 13,
+   "damage_raw": "13,13",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "mm",
+   "on_block": "-18?",
+   "on_hit": "-9s",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d/f+1+2",
+    "id": "crz_33",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Cz_6lrp",
+     "Cz_6lrp2"
+    ]
+   }
+  },
+  "d/f+1+2, 1+2": {
+   "name": "Excavator",
+   "name_source": "mvl",
+   "input": "d/f+1+2, 1+2",
+   "damage": 13,
+   "damage_raw": "13,13,20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "mm, m",
+   "on_block": "-16?s",
+   "on_hit": "KND",
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d/f+1+2, 1+2",
+    "id": "crz_34",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Cz_6lrp2_R",
+     "Cz_6lrplrp"
+    ]
+   }
+  },
+  "d+2": {
+   "name": "Sledgehammer",
+   "name_source": "mvl",
+   "input": "d+2",
+   "damage": 13,
+   "damage_raw": "13",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "m",
+   "on_block": "-14",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:363",
+   "t7": {
+    "notation": "d+2",
+    "id": "crz_35",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+2",
+    "motbin_move_id": 1643,
+    "motbin_move_name": "Cz_2rp",
+    "anim_name": "czkb_2rp(DVD)",
+    "anim_id": 16747,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 363,
+     "rel_offset": 2867380,
+     "size": 4636,
+     "format_word": 100,
+     "sha256": "03aecefea97625f0355e418e76f15cbb80ba38635753685bd63d578e681fe3ad",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d+3": {
+   "name": "Cz_t_slk00",
+   "name_source": "motbin-internal",
+   "input": "d+3",
+   "damage": 18,
+   "damage_raw": "18",
+   "startup": 0.2667,
+   "startup_frames": 16,
+   "hit_level": "l",
+   "on_block": "-12",
+   "on_hit": "-1",
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:499",
+   "t7": {
+    "notation": "d+3",
+    "id": "crz_36",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+3",
+    "motbin_move_id": 1982,
+    "motbin_move_name": "Cz_t_slk00",
+    "anim_name": "czkb_2lk(DVD)",
+    "anim_id": 16883,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 499,
+     "rel_offset": 3480112,
+     "size": 4244,
+     "format_word": 100,
+     "sha256": "206f2adc8f7fff4e8081c29ec9c8c20212935cc026a21d64630bab0d866f5fe4",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d+3, 2": {
+   "name": "Ignition Coil",
+   "name_source": "mvl",
+   "input": "d+3, 2",
+   "damage": 18,
+   "damage_raw": "18,17",
+   "startup": 0.2667,
+   "startup_frames": 16,
+   "hit_level": "l, m",
+   "on_block": "-10s",
+   "on_hit": "0s",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:500",
+   "t7": {
+    "notation": "d+3, 2",
+    "id": "crz_37",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+3, 2",
+    "motbin_move_id": 1983,
+    "motbin_move_name": "Cz_t_slkrp",
+    "anim_name": "czkb_2lkrp(DVD)",
+    "anim_id": 16884,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 500,
+     "rel_offset": 3484356,
+     "size": 5880,
+     "format_word": 100,
+     "sha256": "80bc160604cbad4fb29c2821b57168280fb65ca041d8e02e04dad9cbfd5f0045",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d+1+2": {
+   "name": "Repelling Blast",
+   "name_source": "mvl",
+   "input": "d+1+2",
+   "damage": 30,
+   "damage_raw": "30",
+   "startup": 0.5,
+   "startup_frames": 30,
+   "hit_level": "m",
+   "on_block": "-13",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Power crush",
+   "anim_ref": "t7:crz:0x4000:319",
+   "t7": {
+    "notation": "d+1+2",
+    "id": "crz_38",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+1+2",
+    "motbin_move_id": 1583,
+    "motbin_move_name": "Cz_2lrp",
+    "anim_name": "czkb_2wp(DVD)",
+    "anim_id": 16703,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 319,
+     "rel_offset": 2726244,
+     "size": 5552,
+     "format_word": 100,
+     "sha256": "b9d1abc2ba95cc79da5e90d7b24a6f17f746e5458c2a05db12fc9d75c6a63e73",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d+3+4": {
+   "name": "Enraged Howl",
+   "name_source": "mvl",
+   "input": "d+3+4",
+   "damage": null,
+   "damage_raw": null,
+   "startup": 0.5,
+   "startup_frames": 30,
+   "hit_level": "(Special)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": "Power crush",
+   "anim_ref": "t7:crz:0x4000:198",
+   "t7": {
+    "notation": "d+3+4",
+    "id": "crz_39",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+3+4",
+    "motbin_move_id": 1437,
+    "motbin_move_name": "Cz_SUPER",
+    "anim_name": "czkb_4rprk(DVD)",
+    "anim_id": 16582,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 198,
+     "rel_offset": 2491368,
+     "size": 4416,
+     "format_word": 100,
+     "sha256": "f3e79cbc95bdb7963e921e8a9cec415faf06fa079d891c0857cc2a377b96127c",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+2": {
+   "name": "End Mill",
+   "name_source": "mvl",
+   "input": "d/b+2",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-15",
+   "on_hit": "+2",
+   "on_ch": "aUD",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:380",
+   "t7": {
+    "notation": "d/b+2",
+    "id": "crz_40",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+2",
+    "motbin_move_id": 1667,
+    "motbin_move_name": "Cz_1rp",
+    "anim_name": "czkb_1rp(DVD)",
+    "anim_id": 16764,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 380,
+     "rel_offset": 2919692,
+     "size": 5132,
+     "format_word": 100,
+     "sha256": "cd363c6ac3ca655ccb19f01e8899f139b1602631bc99d1ee19bb24de94b6502f",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+3": {
+   "name": "Shin Breaker",
+   "name_source": "mvl",
+   "input": "d/b+3",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-25~?",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:197",
+   "t7": {
+    "notation": "d/b+3",
+    "id": "crz_41",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+3",
+    "motbin_move_id": 1430,
+    "motbin_move_name": "Cz_1lk",
+    "anim_name": "czkb_1lk(DVD)",
+    "anim_id": 16581,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 197,
+     "rel_offset": 2486068,
+     "size": 5300,
+     "format_word": 100,
+     "sha256": "2a14fa83e24258c4625cb20b335f3f84f9579fa843d3882a2d3e332da88f2e94",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+4": {
+   "name": "Chisel Kick",
+   "name_source": "mvl",
+   "input": "d/b+4",
+   "damage": 8,
+   "damage_raw": "8",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-13",
+   "on_hit": "-2",
+   "on_ch": "+3",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:383",
+   "t7": {
+    "notation": "d/b+4",
+    "id": "crz_42",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+4",
+    "motbin_move_id": 1670,
+    "motbin_move_name": "Cz_1rk",
+    "anim_name": "czkb_1rk(DVD)",
+    "anim_id": 16767,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 383,
+     "rel_offset": 2936404,
+     "size": 4316,
+     "format_word": 100,
+     "sha256": "a7527cd8eb3c56508e66a77419e63c64fefc9899820f2da5acd9135d775701d4",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+1+2": {
+   "name": "Fork Lift",
+   "name_source": "mvl",
+   "input": "d/b+1+2",
+   "damage": 35,
+   "damage_raw": "35",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m?",
+   "on_block": "-8~-7",
+   "on_hit": "Launch",
+   "on_ch": "Launch",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:381",
+   "t7": {
+    "notation": "d/b+1+2",
+    "id": "crz_43",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+1+2",
+    "motbin_move_id": 1668,
+    "motbin_move_name": "Cz_1lrp",
+    "anim_name": "czkb_1wp(DVD)",
+    "anim_id": 16765,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 381,
+     "rel_offset": 2924824,
+     "size": 5636,
+     "format_word": 100,
+     "sha256": "d6768ccc36fe243ab211cf4753b3926f0b64e80f6053ad07bf7bc5da19af3581",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+1": {
+   "name": "Fracturing Upper",
+   "name_source": "mvl",
+   "input": "b+1",
+   "damage": 15,
+   "damage_raw": "15",
+   "startup": 0.3333,
+   "startup_frames": 20,
+   "hit_level": "m?",
+   "on_block": "-15",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:300",
+   "t7": {
+    "notation": "b+1",
+    "id": "crz_44",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+1",
+    "motbin_move_id": 1558,
+    "motbin_move_name": "Cz_4lp",
+    "anim_name": "czkb_4lp(DVD)",
+    "anim_id": 16684,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 300,
+     "rel_offset": 2638800,
+     "size": 4568,
+     "format_word": 100,
+     "sha256": "70b75002cdcb0d3ed79c881ade6edd752b3079d3923680e6b4188f7d317b2d90",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+2": {
+   "name": "Crazy Knuckle",
+   "name_source": "mvl",
+   "input": "b+2",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": 0.35,
+   "startup_frames": 21,
+   "hit_level": "m",
+   "on_block": "-13",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:348",
+   "t7": {
+    "notation": "b+2",
+    "id": "crz_45",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+2",
+    "motbin_move_id": 1642,
+    "motbin_move_name": "Cz_4rp",
+    "anim_name": "czkb_4rp(DVD)",
+    "anim_id": 16732,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 348,
+     "rel_offset": 2795504,
+     "size": 5092,
+     "format_word": 100,
+     "sha256": "e3a30343ed41da79c0b7bc8a9eb421b3e25c4168e9868cf952b637f5a25ecdb7",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [20]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1642
+    ]
+   }
+  },
+  "b+2*": {
+   "name": "b+2*",
+   "name_source": "notation-only",
+   "input": "b+2*",
+   "damage": 40,
+   "damage_raw": "40",
+   "startup": 0.35,
+   "startup_frames": 21,
+   "hit_level": "m",
+   "on_block": "+15g",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "b+2*",
+    "id": "crz_46",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "b+2, F": {
+   "name": "Crazy Knuckle to Goliath",
+   "name_source": "mvl",
+   "input": "b+2, F",
+   "damage": 40,
+   "damage_raw": "40",
+   "startup": 0.35,
+   "startup_frames": 21,
+   "hit_level": "m, (GOL)",
+   "on_block": "\u2013",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "b+2, F",
+    "id": "crz_47",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "b+3": {
+   "name": "Deadly Cannon",
+   "name_source": "mvl",
+   "input": "b+3",
+   "damage": 26,
+   "damage_raw": "26",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-9?",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:306",
+   "t7": {
+    "notation": "b+3",
+    "id": "crz_48",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+3",
+    "motbin_move_id": 1567,
+    "motbin_move_name": "Cz_lk00B",
+    "anim_name": "czkb_4lk(DVD)",
+    "anim_id": 16690,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 306,
+     "rel_offset": 2672816,
+     "size": 4512,
+     "format_word": 100,
+     "sha256": "570d9fd15452880da352d2baf5531961f5532864d932fffd084c3ae5a1419942",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+4": {
+   "name": "Heavy Stomp",
+   "name_source": "mvl",
+   "input": "b+4",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": 0.3333,
+   "startup_frames": 20,
+   "hit_level": "m",
+   "on_block": "-9s",
+   "on_hit": "+1s",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:501",
+   "t7": {
+    "notation": "b+4",
+    "id": "crz_49",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+4",
+    "motbin_move_id": 1988,
+    "motbin_move_name": "Cz_4rk",
+    "anim_name": "czkb_6rk(DVD)",
+    "anim_id": 16885,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 501,
+     "rel_offset": 3490236,
+     "size": 4996,
+     "format_word": 100,
+     "sha256": "1d7c6f5fc8679c0a2488ef17a2f219cbbe926d498df07053f560a36759605283",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+1+2": {
+   "name": "Rusty Nail",
+   "name_source": "mvl",
+   "input": "b+1+2",
+   "damage": 30,
+   "damage_raw": "30",
+   "startup": 0.4167,
+   "startup_frames": 25,
+   "hit_level": "m",
+   "on_block": "+1s",
+   "on_hit": "+5s",
+   "on_ch": "+5s",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:379",
+   "t7": {
+    "notation": "b+1+2",
+    "id": "crz_50",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+1+2",
+    "motbin_move_id": 1665,
+    "motbin_move_name": "Cz_4lrp",
+    "anim_name": "czkb_4wp(DVD)",
+    "anim_id": 16763,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 379,
+     "rel_offset": 2915344,
+     "size": 4348,
+     "format_word": 100,
+     "sha256": "d06454f04de90832ff0a7ccd895cd1b8b6dd89648ec11b2a28d45dd2604bd9ec",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/f+1": {
+   "name": "Jumping Elbow",
+   "name_source": "mvl",
+   "input": "u/f+1",
+   "damage": 25,
+   "damage_raw": "25",
+   "startup": 0.3833,
+   "startup_frames": 23,
+   "hit_level": "m (TJ)",
+   "on_block": "-9s",
+   "on_hit": "+1s",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:392",
+   "t7": {
+    "notation": "u/f+1",
+    "id": "crz_51",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/f+1",
+    "motbin_move_id": 1696,
+    "motbin_move_name": "Cz_9lp",
+    "anim_name": "czkb_9lp(DVD)",
+    "anim_id": 16776,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 392,
+     "rel_offset": 2973488,
+     "size": 4604,
+     "format_word": 100,
+     "sha256": "bdd7d3cb400582a89caad838139ab0847ea9e0bb1287ea9fc75190bbe79dc69b",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/b or u+3": {
+   "name": "Cz_sjk00",
+   "name_source": "motbin-internal",
+   "input": "u/b or u+3",
+   "damage": 15,
+   "damage_raw": "15",
+   "startup": 0.3333,
+   "startup_frames": 20,
+   "hit_level": "m (TJ)",
+   "on_block": "-3?",
+   "on_hit": "+3?",
+   "on_ch": "Launch (JG?)?",
+   "notes": null,
+   "anim_ref": "t7:crz:0x0000:101",
+   "t7": {
+    "notation": "u/b or u+3",
+    "id": "crz_52",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u+3",
+    "motbin_move_id": 1522,
+    "motbin_move_name": "Cz_sjk00",
+    "anim_name": "czkb_s4_8lk",
+    "anim_id": 101,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x0000",
+     "source": "crzmot.bin",
+     "section": 0,
+     "entry": 101,
+     "rel_offset": 1861880,
+     "size": 4776,
+     "format_word": 100,
+     "sha256": "c2beb00fa34ecc2628c8b2872d4de9058bd23884322ed2f9b8cab41abb66e9a3",
+     "blob_file": "crz_bank0_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/f+3": {
+   "name": "Staple Knee",
+   "name_source": "mvl",
+   "input": "u/f+3",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": 0.3333,
+   "startup_frames": 20,
+   "hit_level": "m (TJ)",
+   "on_block": "-3",
+   "on_hit": "+3",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": "t7:crz:0x0000:102",
+   "t7": {
+    "notation": "u/f+3",
+    "id": "crz_53",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/f+3",
+    "motbin_move_id": 1523,
+    "motbin_move_name": "Cz_sjk00F",
+    "anim_name": "czkb_s4_8lk",
+    "anim_id": 102,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x0000",
+     "source": "crzmot.bin",
+     "section": 0,
+     "entry": 102,
+     "rel_offset": 1861880,
+     "size": 4776,
+     "format_word": 100,
+     "sha256": "c2beb00fa34ecc2628c8b2872d4de9058bd23884322ed2f9b8cab41abb66e9a3",
+     "blob_file": "crz_bank0_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/f+1+2": {
+   "name": "Giant Press",
+   "name_source": "mvl",
+   "input": "u/f+1+2",
+   "damage": 35,
+   "damage_raw": "35",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "+?",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:372",
+   "t7": {
+    "notation": "u/f+1+2",
+    "id": "crz_54",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/f+1+2",
+    "motbin_move_id": 1658,
+    "motbin_move_name": "Cz_9lrp",
+    "anim_name": "czkb_9wp(DVD)",
+    "anim_id": 16756,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 372,
+     "rel_offset": 2887840,
+     "size": 6664,
+     "format_word": 100,
+     "sha256": "72dd31a157bf63eb60d382a52fb9b82636dabc4c199fd1b29ec4232d6580ceca",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/f+3+4": {
+   "name": "Crushing Stomp",
+   "name_source": "mvl",
+   "input": "u/f+3+4",
+   "damage": 25,
+   "damage_raw": "25",
+   "startup": 0.3333,
+   "startup_frames": 20,
+   "hit_level": "m (TJ)",
+   "on_block": "-3s",
+   "on_hit": "+7s",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:279",
+   "t7": {
+    "notation": "u/f+3+4",
+    "id": "crz_55",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/f+3+4",
+    "motbin_move_id": 1528,
+    "motbin_move_name": "Cz_9lrk",
+    "anim_name": "czkb_9wk(DVD)",
+    "anim_id": 16663,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 279,
+     "rel_offset": 2597876,
+     "size": 4556,
+     "format_word": 100,
+     "sha256": "af3501a7568c1ae414c282fd75d32d2268ed68ecb3f3c9d14e588d9990f00dc7",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f, F+2": {
+   "name": "Unchained Upper",
+   "name_source": "mvl",
+   "input": "f, F+2",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-13",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+2",
+    "id": "crz_56",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, F+3": {
+   "name": "Dashing Knee",
+   "name_source": "mvl",
+   "input": "f, F+3",
+   "damage": 24,
+   "damage_raw": "24",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-13",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+3",
+    "id": "crz_57",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, F+4": {
+   "name": "f, F+4",
+   "name_source": "notation-only",
+   "input": "f, F+4",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-8",
+   "on_hit": "+3",
+   "on_ch": "+",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+4",
+    "id": "crz_58",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, F+4, 2": {
+   "name": "Gorefoot Impact",
+   "name_source": "mvl",
+   "input": "f, F+4, 2",
+   "damage": 17,
+   "damage_raw": "17,25",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, h",
+   "on_block": "-4",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+4, 2",
+    "id": "crz_59",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "f, F+1+2": {
+   "name": "Claw Hammer",
+   "name_source": "mvl",
+   "input": "f, F+1+2",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-16",
+   "on_hit": "CS",
+   "on_ch": "CS",
+   "notes": "Homing",
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+1+2",
+    "id": "crz_60",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, F+1+2, 1+2": {
+   "name": "Vice Grip Hammer",
+   "name_source": "mvl",
+   "input": "f, F+1+2, 1+2",
+   "damage": 20,
+   "damage_raw": "20,20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, h",
+   "on_block": "-9?",
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+1+2, 1+2",
+    "id": "crz_61",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "f, f, f+2": {
+   "name": "Charging Tackle",
+   "name_source": "mvl",
+   "input": "f, f, f+2",
+   "damage": 30,
+   "damage_raw": "30",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "+7~?",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, f, f+2",
+    "id": "crz_62",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Cz_rp00F",
+     "Cz_6rp6lp"
+    ]
+   }
+  },
+  "WS+1": {
+   "name": "WS+1",
+   "name_source": "notation-only",
+   "input": "WS+1",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": 0.1833,
+   "startup_frames": 11,
+   "hit_level": "m",
+   "on_block": "-6",
+   "on_hit": "+3",
+   "on_ch": "+3",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+1",
+    "id": "crz_63",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Co_syalp00",
+     "Cz_2rp",
+     "Cz_lp00"
+    ]
+   }
+  },
+  "WS+2": {
+   "name": "WS+2",
+   "name_source": "notation-only",
+   "input": "WS+2",
+   "damage": 19,
+   "damage_raw": "19",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "m",
+   "on_block": "-5",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+2",
+    "id": "crz_64",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Co_syarp00",
+     "Cz_rp00F",
+     "Cz_4lp",
+     "Cz_rp00",
+     "Cz_6rp6lp"
+    ]
+   }
+  },
+  "WS+2, 3": {
+   "name": "WS+2, 3",
+   "name_source": "notation-only",
+   "input": "WS+2, 3",
+   "damage": 19,
+   "damage_raw": "19,24",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "m, m",
+   "on_block": "-13",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+2, 3",
+    "id": "crz_65",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "WS+2, 4": {
+   "name": "WS+2, 4",
+   "name_source": "notation-only",
+   "input": "WS+2, 4",
+   "damage": 19,
+   "damage_raw": "19,20",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "m, m",
+   "on_block": "-14",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+2, 4",
+    "id": "crz_66",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "WS+2, 4*": {
+   "name": "WS+2, 4*",
+   "name_source": "notation-only",
+   "input": "WS+2, 4*",
+   "damage": 19,
+   "damage_raw": "19,40",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "m, m",
+   "on_block": "+26 GB",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+2, 4*",
+    "id": "crz_67",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "WS+2, 4, F": {
+   "name": "WS+2, 4, F",
+   "name_source": "notation-only",
+   "input": "WS+2, 4, F",
+   "damage": 19,
+   "damage_raw": "19,40",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "m, m, (GOL)",
+   "on_block": null,
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+2, 4, F",
+    "id": "crz_68",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "WS+3": {
+   "name": "WS+3",
+   "name_source": "notation-only",
+   "input": "WS+3",
+   "damage": 25,
+   "damage_raw": "25",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-13~-12",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+3",
+    "id": "crz_69",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "sWALK_00F",
+     "Co_syalk00",
+     "Cz_lk00",
+     "sWALK_00FMv",
+     "Mt_sDASHF",
+     "Cz_2rp",
+     "Cz_4lp",
+     "Cz_rp00F"
+    ]
+   }
+  },
+  "WS+4": {
+   "name": "WS+4",
+   "name_source": "notation-only",
+   "input": "WS+4",
+   "damage": 21,
+   "damage_raw": "21",
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "m",
+   "on_block": "-12",
+   "on_hit": "KND",
+   "on_ch": "mKZD",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+4",
+    "id": "crz_70",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Co_syark00",
+     "Cz_2lrp",
+     "Cz_rk00"
+    ]
+   }
+  },
+  "FC+d/f+2": {
+   "name": "FC+d/f+2",
+   "name_source": "notation-only",
+   "input": "FC+d/f+2",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "l",
+   "on_block": "-17~?",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FC+d/f+2",
+    "id": "crz_71",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "SS+2": {
+   "name": "SS+2",
+   "name_source": "notation-only",
+   "input": "SS+2",
+   "damage": 25,
+   "damage_raw": "25",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h (TJ)",
+   "on_block": "-12",
+   "on_hit": "SCD",
+   "on_ch": "SCD",
+   "notes": "Tail spin",
+   "anim_ref": null,
+   "t7": {
+    "notation": "SS+2",
+    "id": "crz_72",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Cz_rp00F",
+     "Cz_4lp",
+     "Cz_rp00",
+     "Cz_6rp6lp"
+    ]
+   }
+  },
+  "Face down Grounded 2": {
+   "name": "Face down Grounded 2",
+   "name_source": "notation-only",
+   "input": "Face down Grounded 2",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l",
+   "on_block": "-15",
+   "on_hit": "+2",
+   "on_ch": "aUD",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "Face down Grounded 2",
+    "id": "crz_73",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "Face down Grounded 1+2": {
+   "name": "Face down Grounded 1+2",
+   "name_source": "notation-only",
+   "input": "Face down Grounded 1+2",
+   "damage": 30,
+   "damage_raw": "30",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "0",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "Face down Grounded 1+2",
+    "id": "crz_74",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f+3+4 or From special move": {
+   "name": "Cz_6lrk",
+   "name_source": "motbin-internal",
+   "input": "f+3+4 or From special move",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "(GOL)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:328",
+   "t7": {
+    "notation": "f+3+4 or From special move",
+    "id": "crz_75",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+3+4",
+    "motbin_move_id": 1602,
+    "motbin_move_name": "Cz_6lrk",
+    "anim_name": "czkb_6wk(DVD)",
+    "anim_id": 16712,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 328,
+     "rel_offset": 2760736,
+     "size": 7352,
+     "format_word": 100,
+     "sha256": "0cd37a6db46ac0e8d4b6d02db10366c22eff462ae42535e621ecdbd56d32a704",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "in rage f+3+4*": {
+   "name": "in rage f+3+4*",
+   "name_source": "notation-only",
+   "input": "in rage f+3+4*",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l!, (Special)",
+   "on_block": "+",
+   "on_hit": "+",
+   "on_ch": "+",
+   "notes": "Rage art",
+   "anim_ref": null,
+   "t7": {
+    "notation": "in rage f+3+4*",
+    "id": "crz_76",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "GOL 1": {
+   "name": "GOL 1",
+   "name_source": "notation-only",
+   "input": "GOL 1",
+   "damage": null,
+   "damage_raw": "25 or 40",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "+7",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "GOL 1",
+    "id": "crz_77",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "GOL 2": {
+   "name": "GOL 2",
+   "name_source": "notation-only",
+   "input": "GOL 2",
+   "damage": null,
+   "damage_raw": "28 or 43?",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h!",
+   "on_block": "KND",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "GOL 2",
+    "id": "crz_78",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "GOL 1+2": {
+   "name": "GOL 1+2",
+   "name_source": "notation-only",
+   "input": "GOL 1+2",
+   "damage": null,
+   "damage_raw": "15 or 30",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "\u2013",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "GOL 1+2",
+    "id": "crz_79",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "d/b+3+4 (to SG)": {
+   "name": "Cz_1lrk",
+   "name_source": "motbin-internal",
+   "input": "d/b+3+4 (to SG)",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "(Special) (TC)?(SG)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:350",
+   "t7": {
+    "notation": "d/b+3+4 (to SG)",
+    "id": "crz_80",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+3+4",
+    "motbin_move_id": 1626,
+    "motbin_move_name": "Cz_1lrk",
+    "anim_name": "czkb_1wk(DVD)",
+    "anim_id": 16734,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 350,
+     "rel_offset": 2800596,
+     "size": 12016,
+     "format_word": 100,
+     "sha256": "b892f23f86a895b424247c1d4f52d23f8bf7112f15fbcee3ee69b93a6b8774cc",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "SG 1": {
+   "name": "SG 1",
+   "name_source": "notation-only",
+   "input": "SG 1",
+   "damage": 25,
+   "damage_raw": "25",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "+5",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "SG 1",
+    "id": "crz_81",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "SG 2": {
+   "name": "SG 2",
+   "name_source": "notation-only",
+   "input": "SG 2",
+   "damage": 30,
+   "damage_raw": "30",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-5",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "SG 2",
+    "id": "crz_82",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "SG u/b": {
+   "name": "SG u/b",
+   "name_source": "notation-only",
+   "input": "SG u/b",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "(Special) (TJ)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "SG u/b",
+    "id": "crz_83",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "Command": {
+   "name": "Command",
+   "name_source": "notation-only",
+   "input": "Command",
+   "damage": null,
+   "damage_raw": "Damage",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Hit level",
+   "on_block": "Block frame",
+   "on_hit": "Hit frame",
+   "on_ch": "Counter hit frame",
+   "notes": "Notes",
+   "anim_ref": null,
+   "t7": {
+    "notation": "Command",
+    "id": "crz_84",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f+1": {
+   "name": "Cz_lp00",
+   "name_source": "motbin-internal",
+   "input": "f+1",
+   "damage": 7,
+   "damage_raw": "7",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h",
+   "on_block": "+1",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:299",
+   "t7": {
+    "notation": "f+1",
+    "id": "crz_85",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+1",
+    "motbin_move_id": 1552,
+    "motbin_move_name": "Cz_lp00",
+    "anim_name": "czkb_lp(DVD)",
+    "anim_id": 16683,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 299,
+     "rel_offset": 2635720,
+     "size": 3080,
+     "format_word": 100,
+     "sha256": "b28894ff330b061e245e65a1402ac05acdf22ecdbc2259ba093d917814f042ff",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f, F+1": {
+   "name": "f, F+1",
+   "name_source": "notation-only",
+   "input": "f, F+1",
+   "damage": 7,
+   "damage_raw": "7",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "+1",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+1",
+    "id": "crz_86",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "d+1": {
+   "name": "Co_t_slp00",
+   "name_source": "motbin-internal",
+   "input": "d+1",
+   "damage": 6,
+   "damage_raw": "6",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm (TC)",
+   "on_block": "-5",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:364",
+   "t7": {
+    "notation": "d+1",
+    "id": "crz_87",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+1",
+    "motbin_move_id": 1656,
+    "motbin_move_name": "Co_t_slp00",
+    "anim_name": "czkb_sylp(DVD)",
+    "anim_id": 16748,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 364,
+     "rel_offset": 2872016,
+     "size": 2952,
+     "format_word": 100,
+     "sha256": "ad164c55bbe894f4227e0e0b4043da7e97e59d14eb7080d44ae3b9d399d86563",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d+4": {
+   "name": "Cz_t_srk00",
+   "name_source": "motbin-internal",
+   "input": "d+4",
+   "damage": 9,
+   "damage_raw": "9",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-13?",
+   "on_hit": "-2?",
+   "on_ch": "-2?",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:384",
+   "t7": {
+    "notation": "d+4",
+    "id": "crz_88",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+4",
+    "motbin_move_id": 1671,
+    "motbin_move_name": "Cz_t_srk00",
+    "anim_name": "czkb_tsrk(DVD)",
+    "anim_id": 16768,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 384,
+     "rel_offset": 2940720,
+     "size": 3380,
+     "format_word": 100,
+     "sha256": "2b7de4a8cc4100b8e9243e646ce9ca7e1d0de3295e44c63c0265d1c96082cf85",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+1": {
+   "name": "Co_t_slp00",
+   "name_source": "motbin-internal",
+   "input": "d/b+1",
+   "damage": 6,
+   "damage_raw": "6",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm (TC)",
+   "on_block": "-5",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:364",
+   "t7": {
+    "notation": "d/b+1",
+    "id": "crz_89",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+1",
+    "motbin_move_id": 1656,
+    "motbin_move_name": "Co_t_slp00",
+    "anim_name": "czkb_sylp(DVD)",
+    "anim_id": 16748,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 364,
+     "rel_offset": 2872016,
+     "size": 2952,
+     "format_word": 100,
+     "sha256": "ad164c55bbe894f4227e0e0b4043da7e97e59d14eb7080d44ae3b9d399d86563",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "FC+1": {
+   "name": "FC+1",
+   "name_source": "notation-only",
+   "input": "FC+1",
+   "damage": 6,
+   "damage_raw": "6",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm (TC)",
+   "on_block": "-5",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FC+1",
+    "id": "crz_90",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "FC+d/b or d+2": {
+   "name": "Cz_2rp",
+   "name_source": "motbin-internal",
+   "input": "FC+d/b or d+2",
+   "damage": 10,
+   "damage_raw": "10",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm (TC)",
+   "on_block": "-4",
+   "on_hit": "+7",
+   "on_ch": "+7",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:363",
+   "t7": {
+    "notation": "FC+d/b or d+2",
+    "id": "crz_91",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+2",
+    "motbin_move_id": 1643,
+    "motbin_move_name": "Cz_2rp",
+    "anim_name": "czkb_2rp(DVD)",
+    "anim_id": 16747,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 363,
+     "rel_offset": 2867380,
+     "size": 4636,
+     "format_word": 100,
+     "sha256": "03aecefea97625f0355e418e76f15cbb80ba38635753685bd63d578e681fe3ad",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "FC+3": {
+   "name": "FC+3",
+   "name_source": "notation-only",
+   "input": "FC+3",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-17",
+   "on_hit": "-3",
+   "on_ch": "-3",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FC+3",
+    "id": "crz_92",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "FC+4": {
+   "name": "FC+4",
+   "name_source": "notation-only",
+   "input": "FC+4",
+   "damage": 13,
+   "damage_raw": "13",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-15",
+   "on_hit": "-4",
+   "on_ch": "-4",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FC+4",
+    "id": "crz_93",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "u/b or u+1": {
+   "name": "Co_jplp00",
+   "name_source": "motbin-internal",
+   "input": "u/b or u+1",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": 0.3,
+   "startup_frames": 18,
+   "hit_level": "m (TJ)",
+   "on_block": "-8",
+   "on_hit": "+3",
+   "on_ch": "+3",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:240",
+   "t7": {
+    "notation": "u/b or u+1",
+    "id": "crz_94",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u+1",
+    "motbin_move_id": 1489,
+    "motbin_move_name": "Co_jplp00",
+    "anim_name": "Bco_sjplp_n(DVD)",
+    "anim_id": 16624,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 240,
+     "rel_offset": 2563840,
+     "size": 2420,
+     "format_word": 100,
+     "sha256": "a2b788534b5ca56ac91b8b3664c3e44ff1d31201e7cf44f3282a4d1552441554",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/b or u or u/f+2": {
+   "name": "u/b or u or u/f+2",
+   "name_source": "notation-only",
+   "input": "u/b or u or u/f+2",
+   "damage": 22,
+   "damage_raw": "22",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "h",
+   "on_block": "-12",
+   "on_hit": "+9",
+   "on_ch": "+9",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u/b or u or u/f+2",
+    "id": "crz_95",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "u/b or u+3__2": {
+   "name": "Cz_sjk00",
+   "name_source": "motbin-internal",
+   "input": "u/b or u+3",
+   "damage": null,
+   "damage_raw": null,
+   "startup": 0.3333,
+   "startup_frames": 20,
+   "hit_level": "m (TJ)",
+   "on_block": "-3?",
+   "on_hit": "+3?",
+   "on_ch": "Launch (JG?)?",
+   "notes": null,
+   "anim_ref": "t7:crz:0x0000:101",
+   "t7": {
+    "notation": "u/b or u+3",
+    "id": "crz_96",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u+3",
+    "motbin_move_id": 1522,
+    "motbin_move_name": "Cz_sjk00",
+    "anim_name": "czkb_s4_8lk",
+    "anim_id": 101,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x0000",
+     "source": "crzmot.bin",
+     "section": 0,
+     "entry": 101,
+     "rel_offset": 1861880,
+     "size": 4776,
+     "format_word": 100,
+     "sha256": "c2beb00fa34ecc2628c8b2872d4de9058bd23884322ed2f9b8cab41abb66e9a3",
+     "blob_file": "crz_bank0_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/b or u+4": {
+   "name": "Cz_jprk00",
+   "name_source": "motbin-internal",
+   "input": "u/b or u+4",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "\u2013",
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:276",
+   "t7": {
+    "notation": "u/b or u+4",
+    "id": "crz_97",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u+4",
+    "motbin_move_id": 1525,
+    "motbin_move_name": "Cz_jprk00",
+    "anim_name": "czkb_8rk(DVD)",
+    "anim_id": 16660,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 276,
+     "rel_offset": 2592712,
+     "size": 5164,
+     "format_word": 100,
+     "sha256": "467ef4e0bf481f8476dc90bb34c235303c36fae30b3c5dfb4a18fa0aea6c961b",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/f+4": {
+   "name": "Cz_jprk00F",
+   "name_source": "motbin-internal",
+   "input": "u/f+4",
+   "damage": null,
+   "damage_raw": null,
+   "startup": 0.4167,
+   "startup_frames": 25,
+   "hit_level": "m (TJ)",
+   "on_block": "-13?",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:276",
+   "t7": {
+    "notation": "u/f+4",
+    "id": "crz_98",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/f+4",
+    "motbin_move_id": 1526,
+    "motbin_move_name": "Cz_jprk00F",
+    "anim_name": "czkb_8rk(DVD)",
+    "anim_id": 16660,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 276,
+     "rel_offset": 2592712,
+     "size": 5164,
+     "format_word": 100,
+     "sha256": "467ef4e0bf481f8476dc90bb34c235303c36fae30b3c5dfb4a18fa0aea6c961b",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "SS+1": {
+   "name": "Cz_lp00",
+   "name_source": "motbin-internal",
+   "input": "SS+1",
+   "damage": 7,
+   "damage_raw": "7",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "+1",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": "t7:crz:0x4000:299",
+   "t7": {
+    "notation": "SS+1",
+    "id": "crz_99",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "SS+1",
+    "motbin_move_id": 1552,
+    "motbin_move_name": "Cz_lp00",
+    "anim_name": "czkb_lp(DVD)",
+    "anim_id": 16683,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "crzrotsm.arc",
+     "section": 0,
+     "entry": 299,
+     "rel_offset": 2635720,
+     "size": 3080,
+     "format_word": 100,
+     "sha256": "b28894ff330b061e245e65a1402ac05acdf22ecdbc2259ba093d917814f042ff",
+     "blob_file": "crz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [7]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1552
+    ]
+   }
+  },
+  "SS+3": {
+   "name": "SS+3",
+   "name_source": "notation-only",
+   "input": "SS+3",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-9",
+   "on_hit": "+2",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "SS+3",
+    "id": "crz_100",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "sWALK_00F",
+     "Cz_lk00",
+     "sWALK_00FMv",
+     "Mt_sDASHF",
+     "Cz_2rp",
+     "Cz_4lp",
+     "Cz_rp00F",
+     "Cz_2lrp"
+    ]
+   }
+  },
+  "SS+4": {
+   "name": "SS+4",
+   "name_source": "notation-only",
+   "input": "SS+4",
+   "damage": 23,
+   "damage_raw": "23",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-9",
+   "on_hit": "+2",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "SS+4",
+    "id": "crz_101",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Cz_2lrp",
+     "Cz_rk00"
+    ]
+   }
+  },
+  "BT 1 or 2": {
+   "name": "BT 1 or 2",
+   "name_source": "notation-only",
+   "input": "BT 1 or 2",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": 0.1333,
+   "startup_frames": 8,
+   "hit_level": "h",
+   "on_block": "-8",
+   "on_hit": "+3",
+   "on_ch": "+3",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "BT 1 or 2",
+    "id": "crz_102",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Cz_rp00F",
+     "Cz_4lp",
+     "Cz_rp00",
+     "Cz_6rp6lp"
+    ]
+   }
+  },
+  "BT 3 or 4": {
+   "name": "BT 3 or 4",
+   "name_source": "notation-only",
+   "input": "BT 3 or 4",
+   "damage": 33,
+   "damage_raw": "33",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h",
+   "on_block": "-8",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "BT 3 or 4",
+    "id": "crz_103",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Cz_2lrp",
+     "Cz_rk00"
+    ]
+   }
+  }
+ }
+}
