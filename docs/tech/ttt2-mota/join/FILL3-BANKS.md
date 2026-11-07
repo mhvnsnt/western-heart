@@ -152,7 +152,28 @@ exactly this in batch 1's first CI run: 347 torch-referenced rows).
 | miharu | 10 | 8 | 2 | 409 | 420 | 31 |
 | nina | 5 | 3 | 12 | 119 | 119 | 8 |
 | ogre | 10 | 7 | 3 | 296 | 305 | 30 |
-| **batches 1–8 total (42 banks)** | **419** | **216** | **205** | **12797** | **13012** | **1342** |
+| p-jack | 4 | 1 | 15 | 30 | 32 | 6 |
+| panda | 12 | 5 | 3 | 341 | 353 | 35 |
+| paul | 14 | 3 | 3 | 315 | 311 | 26 |
+| raven | 8 | 9 | 3 | 339 | 343 | 32 |
+| sebastian | 13 | 4 | 3 | 310 | 323 | 35 |
+| slimbob | 10 | 8 | 2 | 381 | 385 | 28 |
+| steve_fox | 8 | 10 | 2 | 309 | 316 | 26 |
+| tiger | 10 | 4 | 6 | 366 | 400 | 54 |
+| unknown | 9 | 2 | 9 | 159 | 157 | 16 |
+| violet | 13 | 4 | 3 | 350 | 352 | 23 |
+| wang | 7 | 9 | 4 | 302 | 311 | 27 |
+| yoshimitsu | 3 | 1 | 16 | 32 | 32 | 3 |
+| zafina | 5 | 3 | 12 | 112 | 114 | 8 |
+| zako00 | 15 | 2 | 3 | 310 | 303 | 15 |
+| zako01 | 15 | 2 | 3 | 296 | 300 | 31 |
+| zako02 | 14 | 3 | 3 | 339 | 332 | 24 |
+| zako03 | 15 | 2 | 3 | 311 | 303 | 14 |
+| zako04 | 15 | 2 | 3 | 303 | 295 | 22 |
+| zako05 | 15 | 2 | 3 | 309 | 301 | 16 |
+| zako06 | 15 | 2 | 3 | 307 | 301 | 18 |
+| zako07 | 4 | 2 | 14 | 107 | 109 | 10 |
+| **ALL 63 BANKS** | **643** | **296** | **321** | **18425** | **18685** | **1811** |
 
 Batch 1 = PR #1625 (alex, alisa, angel, armor_king, asuka, bob_satsuma).
 Batch 2 = PR #1627 (anna, baek_doo_san, bosconovitch, bruce, bryan, christie).
@@ -162,4 +183,6 @@ Batch 5 = PR #1630 (jack, jin, jinpachi, kazuya).
 Batch 6 = PR #1631 (julia, king, kuma, kunimitsu, lars).
 Batch 7 = PR #1632 (law, lee, lei_wulong, lin_xiaoyu, marduk).
 Batch 8 = PR #1634 (michelle, miguel, miharu, nina, ogre).
-Collider banks land at <name>_ttt2 (see the naming rule above). Further batches append rows here as they land.
+Batch 9 = PR #1635 (p-jack, panda, paul, raven, sebastian, slimbob, steve_fox).
+Batch 10 = PR (batch 10 PR) (tiger, unknown, violet, wang, yoshimitsu, zafina, zako00, zako01, zako02, zako03, zako04, zako05, zako06, zako07).
+Collider banks land at <name>_ttt2 (see the naming rule above). The batch series is complete with batch 10: all 63 producible TTT2 banks are on main (GreenOgre excluded by ruling — no TTT2 moveset bank exists for True Ogre).
