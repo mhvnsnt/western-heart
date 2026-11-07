@@ -197,6 +197,11 @@ export class PreviewPane {
         bindQ = {
           LeftShoulder: inst.bones.LeftShoulder.getWorldQuaternion(new THREE.Quaternion()),
           RightShoulder: inst.bones.RightShoulder.getWorldQuaternion(new THREE.Quaternion()),
+          // Torso frame for the torso-relative clavicle check below
+          // (the shoulder's parent chain runs through the chest bone;
+          // Mixamo-family rigs name it Spine2).
+          Chest: (inst.bones.Chest || inst.bones.Spine2)
+            ? (inst.bones.Chest || inst.bones.Spine2).getWorldQuaternion(new THREE.Quaternion()) : null,
         };
       }
       try {
@@ -242,14 +247,48 @@ export class PreviewPane {
             if (fit && bindQ) {
               // (c) clavicle check: shoulder bones are near-rigid
               // parts of the torso in any real stance; a clip that
-              // swings them far from bind is misapplied (the
+              // swings them far from the torso is misapplied (the
               // gyro-shoulder failure), even when the hands stay
-              // within reach.
+              // within reach. PAIRED READING (Wave 3 item 7,
+              // 2026-11-06): the old world-space reading rejected
+              // nearly every measured bank stance (18 of 19 whose
+              // gate ran, 0.69-2.50 rad; the one pass, Cainelias,
+              // landed under the reading by bind geometry) because a
+              // real kamae turns the whole torso side-on —
+              // intrinsic FK on the clips' own skeletons shows the
+              // shoulder's world swing IS the chest's turn (Pantera:
+              // chest 0.73 vs shoulder-world 0.69 at the gate sample;
+              // the clavicle's own chest-relative swing is 0.24).
+              // So the gate now judges the pose against the clip
+              // itself (userData.intrinsicRel, stamped by
+              // retargetT3Clips at this same 0.05 s sample): the
+              // source clip's own chest-relative swing must stay
+              // under the 0.6 rad the check always used (the jun /
+              // roger bank neutrals swing 2.2-3.1 rad in their own
+              // data and stay rejected), and the retargeted pose —
+              // read chest-relative on this rig, since a rig's bind
+              // clavicle direction legitimately differs from the
+              // bank's (measured slack 0.32-0.68 rad) — must not
+              // exceed the intrinsic swing by more than 0.75 rad (measured rig-divergence slack across seven shipped rigs: 0.32-0.68 rad).
+              // Evidence: docs/proof/2026-11-06/item7-bank-stance-fit/
+              const intr = (t3.stance.getClip().userData || {}).intrinsicRel || null;
               for (const s of ['Left', 'Right']) {
                 const sh = inst.bones[s + 'Shoulder'];
                 if (!sh) continue;
-                const ang = sh.getWorldQuaternion(new THREE.Quaternion()).angleTo(bindQ[s + 'Shoulder']);
-                if (ang > 0.6) { fit = false; why = `${s} shoulder swung ${(ang).toFixed(2)} rad from bind`; break; }
+                let ang;
+                const chestBone = inst.bones.Chest || inst.bones.Spine2;
+                if (bindQ.Chest && chestBone) {
+                  const rel = chestBone.getWorldQuaternion(new THREE.Quaternion()).invert()
+                    .multiply(sh.getWorldQuaternion(new THREE.Quaternion()));
+                  const bindRel = bindQ.Chest.clone().invert().multiply(bindQ[s + 'Shoulder']);
+                  ang = rel.angleTo(bindRel);
+                } else {
+                  ang = sh.getWorldQuaternion(new THREE.Quaternion()).angleTo(bindQ[s + 'Shoulder']);
+                }
+                const cap = intr ? intr[s === 'Left' ? 'L' : 'R'] : null;
+                if (cap != null && cap > 0.6) { fit = false; why = `${s} shoulder swung ${cap.toFixed(2)} rad in the source clip itself`; break; }
+                if (cap != null && ang > cap + 0.75) { fit = false; why = `${s} shoulder swung ${ang.toFixed(2)} rad from bind (torso-relative) vs ${cap.toFixed(2)} rad intrinsic`; break; }
+                if (cap == null && ang > 0.6) { fit = false; why = `${s} shoulder swung ${ang.toFixed(2)} rad from bind (torso-relative)`; break; }
               }
             }
             if (fit) {

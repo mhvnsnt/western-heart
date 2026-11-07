@@ -19,7 +19,8 @@ Nine fighters. Each is a lost soul of Tong-Nou. Each soul's **body** is a Tekken
 
 ### 2. BYOU — The Sick Soul
 - **Nature:** 病 — sickness. A soul that twitches, stutters, moves wrong. Its illness is its weapon — opponents can't read a body that doesn't obey itself.
-- **Fighting style:** Lei Wulong's Five Animals kung fu (Tekken) — deceptive, stance-shifting, deliberately unreadable. The drunken-sick master.
+- **Fighting style:** Wang Jinrei's Xingyiquan kung fu (Tekken 6) — deceptive, stance-shifting, deliberately unreadable. The drunken-sick master.
+- **Moveset base correction (2026-11-06):** owner ruling — Lei Wulong is Rave's alone; Byou's moveset base is Wang Jinrei (Tekken 6), wired from the decoded T6 PSP kit in `game/assets/movesets/byou.json` (see its `wang_rebuild` record). This replaces the pre-correction Lei Wulong style mapping.
 - **Body donor:** Lei Wulong TMD — loose-limbed, expressive. **REPLACED by Rave** (WH name locked 2026-10-15; Great Muta/Keiji Mutoh skin, bald/gray goatee). T3 Lei moves to legacy.
 - **Skin:** Eastern Mind sick/decay sprite extractions. Jaundiced yellows, infected greens.
 - **Archetype:** The trickster. Stance-dance, unpredictability.

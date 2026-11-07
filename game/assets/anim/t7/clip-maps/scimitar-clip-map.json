@@ -8,9 +8,9 @@
   "common_index": "clips-all/common_index.json"
  },
  "stats": {
-  "mapped_clip_resolved": 37,
-  "mapped_bank0_noclip": 3,
-  "unmapped": 17
+  "mapped_clip_resolved": 41,
+  "mapped_bank0_noclip": 0,
+  "unmapped": 16
  },
  "moves": [
   {
@@ -225,7 +225,7 @@
    "bank_index": null,
    "evidence": [],
    "confidence": null,
-   "reason": "v2 re-run 2026-10-30: full-sequence walk over the v2 cancel graph (sequence commands, pass-through auto-cancels, bound-class terminals, direction-set chords) terminates at 29 terminal(s) [91, 93, 95, 99, 178, 311, 312, 315] +21 more \u2014 still non-unique, held as unmapped per no-guess rule. the full-sequence v2 walk terminates at 29 terminals \u2014 still non-unique",
+   "reason": "FILL 2 (2026-11-06) group-walk verdict: unique-but-held. unique terminal, no corroboration (single-attempt, no MVL row, no fingerprint double-true)",
    "bank": null,
    "motbin_startup": null,
    "motbin_damage": null,
@@ -399,6 +399,14 @@
      1991
     ],
     "note": "the full-sequence v2 walk terminates at 29 terminals \u2014 still non-unique"
+   },
+   "fill2_20261106": {
+    "kind": "held",
+    "class": "unique-but-held",
+    "note": "unique terminal, no corroboration (single-attempt, no MVL row, no fingerprint double-true)",
+    "pools": null,
+    "candidate": "Ab_lk00",
+    "prior_reason": "v2 re-run 2026-10-30: full-sequence walk over the v2 cancel graph (sequence commands, pass-through auto-cancels, bound-class terminals, direction-set chords) terminates at 29 terminal(s) [91, 93, 95, 99, 178, 311, 312, 315] +21 more \u2014 still non-unique, held as unmapped per no-guess rule. the full-sequence v2 walk terminates at 29 terminals \u2014 still non-unique"
    }
   },
   {
@@ -415,7 +423,7 @@
    "bank_index": null,
    "evidence": [],
    "confidence": null,
-   "reason": "multiple motbin terminals at tier 0 with distinct anims and no decisive discriminator: [(1583, 'Ab_rklp', 16696), (1574, 'Ab_rk00_R_A', 16692)]",
+   "reason": "FILL 2 (2026-11-06) group-walk verdict: walk-multi-terminal. group-walk terminal pools remain non-unique per notation attempt",
    "bank": null,
    "motbin_startup": null,
    "motbin_damage": null,
@@ -484,6 +492,27 @@
      }
     ],
     "verdict": "held unmapped: no candidate is a unique exact match on both shared fields (or the WH block is absent); calibration on 132 known multi-candidate pools showed a unique-exact damage+startup rule would have been wrong on 9 of 26 (35%), so no mapping was promoted from fingerprint evidence alone"
+   },
+   "fill2_20261106": {
+    "kind": "held",
+    "class": "walk-multi-terminal",
+    "note": "group-walk terminal pools remain non-unique per notation attempt",
+    "pools": {
+     "t7": [
+      "Ab_9rk",
+      "Ab_lp00F",
+      "Ab_rk00_R_A",
+      "Ab_rklp"
+     ],
+     "wh": [
+      "Ab_9rk",
+      "Ab_lp00F",
+      "Ab_rk00_R_A",
+      "Ab_rklp"
+     ]
+    },
+    "candidate": null,
+    "prior_reason": "multiple motbin terminals at tier 0 with distinct anims and no decisive discriminator: [(1583, 'Ab_rklp', 16696), (1574, 'Ab_rk00_R_A', 16692)]"
    }
   },
   {
@@ -500,7 +529,7 @@
    "bank_index": null,
    "evidence": [],
    "confidence": null,
-   "reason": "multiple motbin terminals at tier 0 with distinct anims and no decisive discriminator: [(1585, 'Ab_rklk', 16698), (1575, 'Ab_rk00_R_C', 16692)]",
+   "reason": "FILL 2 (2026-11-06) group-walk verdict: walk-multi-terminal. group-walk terminal pools remain non-unique per notation attempt",
    "bank": null,
    "motbin_startup": null,
    "motbin_damage": null,
@@ -556,6 +585,27 @@
      }
     ],
     "verdict": "held unmapped: no candidate is a unique exact match on both shared fields (or the WH block is absent); calibration on 132 known multi-candidate pools showed a unique-exact damage+startup rule would have been wrong on 9 of 26 (35%), so no mapping was promoted from fingerprint evidence alone"
+   },
+   "fill2_20261106": {
+    "kind": "held",
+    "class": "walk-multi-terminal",
+    "note": "group-walk terminal pools remain non-unique per notation attempt",
+    "pools": {
+     "t7": [
+      "Ab_sWALKF",
+      "Ab_lk00",
+      "Ab_rk00_R_C",
+      "Ab_rklk"
+     ],
+     "wh": [
+      "Ab_sWALKF",
+      "Ab_lk00",
+      "Ab_rk00_R_C",
+      "Ab_rklk"
+     ]
+    },
+    "candidate": null,
+    "prior_reason": "multiple motbin terminals at tier 0 with distinct anims and no decisive discriminator: [(1585, 'Ab_rklk', 16698), (1575, 'Ab_rk00_R_C', 16692)]"
    }
   },
   {
@@ -572,7 +622,7 @@
    "bank_index": null,
    "evidence": [],
    "confidence": null,
-   "reason": "multiple motbin terminals at tier 0 with distinct anims and no decisive discriminator: [(1586, 'Ab_rkrk', 16699), (1576, 'Ab_rk00_R_D', 16692)]",
+   "reason": "FILL 2 (2026-11-06) group-walk verdict: walk-multi-terminal. group-walk terminal pools remain non-unique per notation attempt",
    "bank": null,
    "motbin_startup": null,
    "motbin_damage": null,
@@ -641,6 +691,29 @@
      }
     ],
     "verdict": "held unmapped: no candidate is a unique exact match on both shared fields (or the WH block is absent); calibration on 132 known multi-candidate pools showed a unique-exact damage+startup rule would have been wrong on 9 of 26 (35%), so no mapping was promoted from fingerprint evidence alone"
+   },
+   "fill2_20261106": {
+    "kind": "held",
+    "class": "walk-multi-terminal",
+    "note": "group-walk terminal pools remain non-unique per notation attempt",
+    "pools": {
+     "t7": [
+      "Ab_sWALKF",
+      "Ab_rk00",
+      "Ab_rk00_R_D",
+      "Ab_rkrk",
+      "Ab_rklk"
+     ],
+     "wh": [
+      "Ab_sWALKF",
+      "Ab_rk00",
+      "Ab_rk00_R_D",
+      "Ab_rkrk",
+      "Ab_rklk"
+     ]
+    },
+    "candidate": null,
+    "prior_reason": "multiple motbin terminals at tier 0 with distinct anims and no decisive discriminator: [(1586, 'Ab_rkrk', 16699), (1576, 'Ab_rk00_R_D', 16692)]"
    }
   },
   {
@@ -702,11 +775,12 @@
    "bank_index": 103,
    "evidence": [
     "MVL name+notation exact",
-    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation b+2"
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation b+2",
+    "FILL 2 (2026-11-06): bank 0x0000 located \u2014 it is MotaList slot 0, the MOTA section embedded in arbmot.bin at file offset 1224388 (entry 103). Clip bytes in GRE release t7-bank0-clips-v1 (arb_bank0_clips.bin); index in GRE teardown/tekken7-steam/tkdata/mothead/mask/indexes/arb_bank0_index.json."
    ],
    "confidence": "high",
    "reason": null,
-   "bank": "0x0",
+   "bank": "0x0000",
    "motbin_startup": 15,
    "motbin_damage": 17,
    "mvl_row": 36,
@@ -721,9 +795,16 @@
     }
    ],
    "clip": {
-    "status": "bank0-file-not-located",
+    "status": "resolved",
     "bank": "0x0000",
-    "entry": 103
+    "source": "arbmot.bin",
+    "section": 0,
+    "entry": 103,
+    "rel_offset": 1882084,
+    "size": 4424,
+    "format_word": 100,
+    "sha256": "21bafa4189cc70990df20b914b340c6432d0d84ee60737df04a4abc951fc4333",
+    "blob_file": "arb_bank0_clips.bin"
    }
   },
   {
@@ -740,11 +821,12 @@
    "bank_index": 110,
    "evidence": [
     "MVL name+notation exact",
-    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation b+3"
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation b+3",
+    "FILL 2 (2026-11-06): bank 0x0000 located \u2014 it is MotaList slot 0, the MOTA section embedded in arbmot.bin at file offset 1224388 (entry 110). Clip bytes in GRE release t7-bank0-clips-v1 (arb_bank0_clips.bin); index in GRE teardown/tekken7-steam/tkdata/mothead/mask/indexes/arb_bank0_index.json."
    ],
    "confidence": "high",
    "reason": null,
-   "bank": "0x0",
+   "bank": "0x0000",
    "motbin_startup": 18,
    "motbin_damage": 20,
    "mvl_row": 37,
@@ -765,9 +847,16 @@
     }
    ],
    "clip": {
-    "status": "bank0-file-not-located",
+    "status": "resolved",
     "bank": "0x0000",
-    "entry": 110
+    "source": "arbmot.bin",
+    "section": 0,
+    "entry": 110,
+    "rel_offset": 1934696,
+    "size": 4532,
+    "format_word": 100,
+    "sha256": "e5c439854050eec43d2b062a886b6d6145a88c77e560a50be6b98ff996fa2390",
+    "blob_file": "arb_bank0_clips.bin"
    }
   },
   {
@@ -1533,7 +1622,7 @@
    "bank_index": null,
    "evidence": [],
    "confidence": null,
-   "reason": "v2 re-run 2026-10-30: full-sequence walk over the v2 cancel graph (sequence commands, pass-through auto-cancels, bound-class terminals, direction-set chords) terminates at 2 terminal(s) [1618, 1640] \u2014 still non-unique, held as unmapped per no-guess rule. the full-sequence v2 walk terminates at 2 terminals \u2014 still non-unique",
+   "reason": "FILL 2 (2026-11-06) group-walk verdict: unique-but-held. unique terminal, no corroboration (single-attempt, no MVL row, no fingerprint double-true)",
    "bank": null,
    "motbin_startup": null,
    "motbin_damage": null,
@@ -1575,6 +1664,14 @@
      1640
     ],
     "note": "the full-sequence v2 walk terminates at 2 terminals \u2014 still non-unique"
+   },
+   "fill2_20261106": {
+    "kind": "held",
+    "class": "unique-but-held",
+    "note": "unique terminal, no corroboration (single-attempt, no MVL row, no fingerprint double-true)",
+    "pools": null,
+    "candidate": "Ab_t_slpF",
+    "prior_reason": "v2 re-run 2026-10-30: full-sequence walk over the v2 cancel graph (sequence commands, pass-through auto-cancels, bound-class terminals, direction-set chords) terminates at 2 terminal(s) [1618, 1640] \u2014 still non-unique, held as unmapped per no-guess rule. the full-sequence v2 walk terminates at 2 terminals \u2014 still non-unique"
    }
   },
   {
@@ -1634,45 +1731,30 @@
    "wh_input": "df+3",
    "t7_id": null,
    "t7_notation": null,
-   "status": "unmapped",
-   "motbin_move_id": null,
-   "motbin_move_name": null,
-   "anim_name": null,
-   "anim_id": null,
-   "bank_index": null,
-   "evidence": [],
-   "confidence": null,
-   "reason": "multiple motbin terminals at tier 0 with distinct anims and no decisive discriminator: [(1642, 'Ab_3lk', 16730), (1624, 'Co_syalk00', 16721)]",
-   "bank": null,
-   "motbin_startup": null,
-   "motbin_damage": null,
+   "status": "mapped",
+   "motbin_move_id": 1642,
+   "motbin_move_name": "Ab_3lk",
+   "anim_name": "abet_roundhouselk(DVD)",
+   "anim_id": 16730,
+   "bank_index": 346,
+   "evidence": [
+    "FILL 2 (2026-11-06) group-correct walk (GRE t7_string_walk.py: 0x800B group partition + alias-table hubs, postdates the v1/v2 flat-pool runs): exactly ONE attack/playable-class terminal at tier<=stage, with a concrete clip locator.",
+    "Corroboration: two-notation agreement (2 attempts); v1 MVL row corroborates (row 22)."
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 17,
+   "motbin_damage": 20,
    "mvl_row": 22,
    "mvl_name": "Whirlwind Kick",
    "mvl_notation": "d/f+3",
    "motbin_candidates": [
     {
-     "id": 1624,
-     "name": "Co_syalk00",
-     "anim": "abss_sitspinlk(DVD)",
-     "anim_id": 16721
-    },
-    {
-     "id": 1628,
-     "name": "Co_syalkF",
-     "anim": "new_syrkf(DVD)",
-     "anim_id": 32857
-    },
-    {
      "id": 1642,
      "name": "Ab_3lk",
      "anim": "abet_roundhouselk(DVD)",
      "anim_id": 16730
-    },
-    {
-     "id": 1655,
-     "name": "Ab_m_k02",
-     "anim": "abss_sliding(DVD)",
-     "anim_id": 16738
     }
    ],
    "fingerprint_pass": {
@@ -1711,6 +1793,35 @@
      }
     ],
     "verdict": "held unmapped: no candidate is a unique exact match on both shared fields (or the WH block is absent); calibration on 132 known multi-candidate pools showed a unique-exact damage+startup rule would have been wrong on 9 of 26 (35%), so no mapping was promoted from fingerprint evidence alone"
+   },
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "arbrotsm.arc",
+    "section": 0,
+    "entry": 346,
+    "rel_offset": 2747956,
+    "size": 4776,
+    "format_word": 100,
+    "sha256": "11be6c848e36c6cbe5aa172541e2a41abda91e230fad7679ec3e1f7320e2d10d",
+    "blob_file": "arb_clips.bin"
+   },
+   "fill2_20261106": {
+    "kind": "promotion",
+    "via_attempts": {
+     "wh": {
+      "notation": "df+3",
+      "candidates": [
+       1642
+      ]
+     },
+     "mvl": {
+      "notation": "d/f+3",
+      "candidates": [
+       1642
+      ]
+     }
+    }
    }
   },
   {
@@ -1915,7 +2026,7 @@
    "bank_index": null,
    "evidence": [],
    "confidence": null,
-   "reason": "multiple motbin terminals at tier 0 with distinct anims and no decisive discriminator: [(1604, 'Ab_6rprkrk', 16712), (1601, 'Ab_6rprk_R_D', 16708)]",
+   "reason": "FILL 2 (2026-11-06) group-walk verdict: walk-multi-terminal. group-walk terminal pools remain non-unique per notation attempt",
    "bank": null,
    "motbin_startup": null,
    "motbin_damage": null,
@@ -1958,6 +2069,27 @@
      }
     ],
     "verdict": "held unmapped: no candidate is a unique exact match on both shared fields (or the WH block is absent); calibration on 132 known multi-candidate pools showed a unique-exact damage+startup rule would have been wrong on 9 of 26 (35%), so no mapping was promoted from fingerprint evidence alone"
+   },
+   "fill2_20261106": {
+    "kind": "held",
+    "class": "walk-multi-terminal",
+    "note": "group-walk terminal pools remain non-unique per notation attempt",
+    "pools": {
+     "t7": [
+      "Ab_6rprk_R_D",
+      "Ab_6rprkrk"
+     ],
+     "wh": [
+      "Ab_6rprk_R_D",
+      "Ab_6rprkrk"
+     ],
+     "mvl": [
+      "Ab_6rprk_R_D",
+      "Ab_6rprkrk"
+     ]
+    },
+    "candidate": null,
+    "prior_reason": "multiple motbin terminals at tier 0 with distinct anims and no decisive discriminator: [(1604, 'Ab_6rprkrk', 16712), (1601, 'Ab_6rprk_R_D', 16708)]"
    }
   },
   {
@@ -2166,7 +2298,7 @@
    "bank_index": null,
    "evidence": [],
    "confidence": null,
-   "reason": "v2 re-run 2026-10-30: full-sequence walk over the v2 cancel graph (sequence commands, pass-through auto-cancels, bound-class terminals, direction-set chords) terminates at 2 terminal(s) [1621, 1641] \u2014 still non-unique, held as unmapped per no-guess rule. the full-sequence v2 walk terminates at 2 terminals \u2014 still non-unique",
+   "reason": "FILL 2 (2026-11-06) group-walk verdict: walk-multi-terminal. group-walk terminal pools remain non-unique per notation attempt",
    "bank": null,
    "motbin_startup": null,
    "motbin_damage": null,
@@ -2208,6 +2340,19 @@
      1643
     ],
     "note": "the full-sequence v2 walk terminates at 2 terminals \u2014 still non-unique"
+   },
+   "fill2_20261106": {
+    "kind": "held",
+    "class": "walk-multi-terminal",
+    "note": "group-walk terminal pools remain non-unique per notation attempt",
+    "pools": {
+     "wh": [
+      "Co_syarp00",
+      "Co_t_srpF"
+     ]
+    },
+    "candidate": null,
+    "prior_reason": "v2 re-run 2026-10-30: full-sequence walk over the v2 cancel graph (sequence commands, pass-through auto-cancels, bound-class terminals, direction-set chords) terminates at 2 terminal(s) [1621, 1641] \u2014 still non-unique, held as unmapped per no-guess rule. the full-sequence v2 walk terminates at 2 terminals \u2014 still non-unique"
    }
   },
   {
@@ -2275,14 +2420,22 @@
    "bank_index": null,
    "evidence": [],
    "confidence": null,
-   "reason": "MVL name match (Sand Storm) but notation differs: T7 MVL 'd/f,d,D/F+3' vs WH 'FC.df,d,DF+3'/t7_notation 'None' \u2014 not mapped (possible T8 notation change)",
+   "reason": "FILL 2 (2026-11-06) group-walk verdict: walk-no-terminal. group-walk completes with zero attack/playable-class terminals at tier<=stage \u2014 no T7 counterpart evidence in the held motbin",
    "bank": null,
    "motbin_startup": null,
    "motbin_damage": null,
    "mvl_row": null,
    "mvl_name": null,
    "mvl_notation": null,
-   "motbin_candidates": []
+   "motbin_candidates": [],
+   "fill2_20261106": {
+    "kind": "held",
+    "class": "walk-no-terminal",
+    "note": "group-walk completes with zero attack/playable-class terminals at tier<=stage \u2014 no T7 counterpart evidence in the held motbin",
+    "pools": null,
+    "candidate": null,
+    "prior_reason": "MVL name match (Sand Storm) but notation differs: T7 MVL 'd/f,d,D/F+3' vs WH 'FC.df,d,DF+3'/t7_notation 'None' \u2014 not mapped (possible T8 notation change)"
+   }
   },
   {
    "wh_key": "f,F+3",
@@ -2298,7 +2451,7 @@
    "bank_index": null,
    "evidence": [],
    "confidence": null,
-   "reason": "MVL name match (Hunting Falcon Dive) but notation differs: T7 MVL 'f,F+3,f,f,f+3' vs WH 'f,F+3'/t7_notation 'None' \u2014 not mapped (possible T8 notation change)",
+   "reason": "FILL 2 (2026-11-06) group-walk verdict: walk-no-terminal. group-walk completes with zero attack/playable-class terminals at tier<=stage \u2014 no T7 counterpart evidence in the held motbin",
    "bank": null,
    "motbin_startup": null,
    "motbin_damage": null,
@@ -2312,7 +2465,15 @@
      "anim": "abet_jumpsidekick(DVD)",
      "anim_id": 16741
     }
-   ]
+   ],
+   "fill2_20261106": {
+    "kind": "held",
+    "class": "walk-no-terminal",
+    "note": "group-walk completes with zero attack/playable-class terminals at tier<=stage \u2014 no T7 counterpart evidence in the held motbin",
+    "pools": null,
+    "candidate": null,
+    "prior_reason": "MVL name match (Hunting Falcon Dive) but notation differs: T7 MVL 'f,F+3,f,f,f+3' vs WH 'f,F+3'/t7_notation 'None' \u2014 not mapped (possible T8 notation change)"
+   }
   },
   {
    "wh_key": "f,f,F+2",
@@ -2328,11 +2489,12 @@
    "bank_index": 106,
    "evidence": [
     "MVL name+notation exact",
-    "motbin cancel-graph (B2 v2): GROUP input-sequence command 0x80b5 spells f,f,f+2 to Ab_666rp (666rp = f,f,f+RP numpad naming); unique terminal"
+    "motbin cancel-graph (B2 v2): GROUP input-sequence command 0x80b5 spells f,f,f+2 to Ab_666rp (666rp = f,f,f+RP numpad naming); unique terminal",
+    "FILL 2 (2026-11-06): bank 0x0000 located \u2014 it is MotaList slot 0, the MOTA section embedded in arbmot.bin at file offset 1224388 (entry 106). Clip bytes in GRE release t7-bank0-clips-v1 (arb_bank0_clips.bin); index in GRE teardown/tekken7-steam/tkdata/mothead/mask/indexes/arb_bank0_index.json."
    ],
    "confidence": "high",
    "reason": null,
-   "bank": "0x0",
+   "bank": "0x0000",
    "motbin_startup": 20,
    "motbin_damage": 20,
    "mvl_row": 44,
@@ -2347,9 +2509,16 @@
     }
    ],
    "clip": {
-    "status": "bank0-file-not-located",
+    "status": "resolved",
     "bank": "0x0000",
-    "entry": 106
+    "source": "arbmot.bin",
+    "section": 0,
+    "entry": 106,
+    "rel_offset": 1916484,
+    "size": 4312,
+    "format_word": 100,
+    "sha256": "95680ad78a77804f2866c462dfe339e85c3e394d864e743b7d4b1dac40802d62",
+    "blob_file": "arb_bank0_clips.bin"
    }
   },
   {
@@ -2460,7 +2629,7 @@
    "bank_index": null,
    "evidence": [],
    "confidence": null,
-   "reason": "multiple motbin terminals at tier 2 with distinct anims and no decisive discriminator: [(1573, 'Ab_rk00', 16692), (1498, 'Ab_jplk00F', 16643)]",
+   "reason": "FILL 2 (2026-11-06) group-walk verdict: walk-multi-terminal. group-walk terminal pools remain non-unique per notation attempt",
    "bank": null,
    "motbin_startup": null,
    "motbin_damage": null,
@@ -2685,6 +2854,21 @@
      }
     ],
     "verdict": "held unmapped: no candidate is a unique exact match on both shared fields (or the WH block is absent); calibration on 132 known multi-candidate pools showed a unique-exact damage+startup rule would have been wrong on 9 of 26 (35%), so no mapping was promoted from fingerprint evidence alone"
+   },
+   "fill2_20261106": {
+    "kind": "held",
+    "class": "walk-multi-terminal",
+    "note": "group-walk terminal pools remain non-unique per notation attempt",
+    "pools": {
+     "wh": [
+      "Ab_rk00",
+      "Ab_jplk00F",
+      "Ab_rp00",
+      "Ab_rklk"
+     ]
+    },
+    "candidate": null,
+    "prior_reason": "multiple motbin terminals at tier 2 with distinct anims and no decisive discriminator: [(1573, 'Ab_rk00', 16692), (1498, 'Ab_jplk00F', 16643)]"
    }
   },
   {
@@ -3049,7 +3233,7 @@
    "bank_index": null,
    "evidence": [],
    "confidence": null,
-   "reason": "multiple motbin terminals at tier 2 with distinct anims and no decisive discriminator: [(160, 'Co_AokilkL0', 33046), (158, 'Co_Aokilk00', 33044)]",
+   "reason": "FILL 2 (2026-11-06) group-walk verdict: walk-multi-terminal. group-walk terminal pools remain non-unique per notation attempt",
    "bank": null,
    "motbin_startup": null,
    "motbin_damage": null,
@@ -3651,6 +3835,25 @@
      }
     ],
     "verdict": "held unmapped: no candidate is a unique exact match on both shared fields (or the WH block is absent); calibration on 132 known multi-candidate pools showed a unique-exact damage+startup rule would have been wrong on 9 of 26 (35%), so no mapping was promoted from fingerprint evidence alone"
+   },
+   "fill2_20261106": {
+    "kind": "held",
+    "class": "walk-multi-terminal",
+    "note": "group-walk terminal pools remain non-unique per notation attempt",
+    "pools": {
+     "t7": [
+      "Ab_sWALKF",
+      "Co_syalk00",
+      "Ab_lk00"
+     ],
+     "wh": [
+      "Ab_sWALKF",
+      "Co_syalk00",
+      "Ab_lk00"
+     ]
+    },
+    "candidate": null,
+    "prior_reason": "multiple motbin terminals at tier 2 with distinct anims and no decisive discriminator: [(160, 'Co_AokilkL0', 33046), (158, 'Co_Aokilk00', 33044)]"
    }
   },
   {
@@ -3724,7 +3927,7 @@
    "bank_index": null,
    "evidence": [],
    "confidence": null,
-   "reason": "multiple motbin terminals at tier 2 with distinct anims and no decisive discriminator: [(161, 'Co_AokirkL0', 33047), (159, 'Co_Aokirk00', 33045)]",
+   "reason": "FILL 2 (2026-11-06) group-walk verdict: walk-multi-terminal. group-walk terminal pools remain non-unique per notation attempt",
    "bank": null,
    "motbin_startup": null,
    "motbin_damage": null,
@@ -4339,6 +4542,27 @@
      }
     ],
     "verdict": "held unmapped: no candidate is a unique exact match on both shared fields (or the WH block is absent); calibration on 132 known multi-candidate pools showed a unique-exact damage+startup rule would have been wrong on 9 of 26 (35%), so no mapping was promoted from fingerprint evidence alone"
+   },
+   "fill2_20261106": {
+    "kind": "held",
+    "class": "walk-multi-terminal",
+    "note": "group-walk terminal pools remain non-unique per notation attempt",
+    "pools": {
+     "t7": [
+      "Ab_sWALKF",
+      "Co_syark00",
+      "Ab_rk00",
+      "Ab_rklk"
+     ],
+     "wh": [
+      "Ab_sWALKF",
+      "Co_syark00",
+      "Ab_rk00",
+      "Ab_rklk"
+     ]
+    },
+    "candidate": null,
+    "prior_reason": "multiple motbin terminals at tier 2 with distinct anims and no decisive discriminator: [(161, 'Co_AokirkL0', 33047), (159, 'Co_Aokirk00', 33045)]"
    }
   },
   {
@@ -4355,7 +4579,7 @@
    "bank_index": null,
    "evidence": [],
    "confidence": null,
-   "reason": "v2 re-run 2026-10-30: full-sequence walk over the v2 cancel graph (sequence commands, pass-through auto-cancels, bound-class terminals, direction-set chords) terminates at 31 terminal(s) [549, 1474, 1475, 1476, 1477, 1478, 1479, 1480] +23 more \u2014 still non-unique, held as unmapped per no-guess rule. the full-sequence v2 walk terminates at 31 terminals \u2014 still non-unique",
+   "reason": "FILL 2 (2026-11-06) group-walk verdict: walk-multi-terminal. group-walk terminal pools remain non-unique per notation attempt",
    "bank": null,
    "motbin_startup": null,
    "motbin_damage": null,
@@ -4643,6 +4867,23 @@
      2096
     ],
     "note": "the full-sequence v2 walk terminates at 31 terminals \u2014 still non-unique"
+   },
+   "fill2_20261106": {
+    "kind": "held",
+    "class": "walk-multi-terminal",
+    "note": "group-walk terminal pools remain non-unique per notation attempt",
+    "pools": {
+     "t7": [
+      "Ab_9rk",
+      "Ab_lp00F"
+     ],
+     "wh": [
+      "Ab_9rk",
+      "Ab_lp00F"
+     ]
+    },
+    "candidate": null,
+    "prior_reason": "v2 re-run 2026-10-30: full-sequence walk over the v2 cancel graph (sequence commands, pass-through auto-cancels, bound-class terminals, direction-set chords) terminates at 31 terminal(s) [549, 1474, 1475, 1476, 1477, 1478, 1479, 1480] +23 more \u2014 still non-unique, held as unmapped per no-guess rule. the full-sequence v2 walk terminates at 31 terminals \u2014 still non-unique"
    }
   },
   {
@@ -4659,7 +4900,7 @@
    "bank_index": null,
    "evidence": [],
    "confidence": null,
-   "reason": "multiple motbin terminals at tier 0 with distinct anims and no decisive discriminator: [(1597, 'Ab_lprpC', 16677), (1596, 'Ab_lp00Fb', 16702), (1539, 'Ab_lprp', 16677)]",
+   "reason": "FILL 2 (2026-11-06) group-walk verdict: walk-multi-terminal. group-walk terminal pools remain non-unique per notation attempt",
    "bank": null,
    "motbin_startup": null,
    "motbin_damage": null,
@@ -4715,6 +4956,23 @@
      }
     ],
     "verdict": "held unmapped: no candidate is a unique exact match on both shared fields (or the WH block is absent); calibration on 132 known multi-candidate pools showed a unique-exact damage+startup rule would have been wrong on 9 of 26 (35%), so no mapping was promoted from fingerprint evidence alone"
+   },
+   "fill2_20261106": {
+    "kind": "held",
+    "class": "walk-multi-terminal",
+    "note": "group-walk terminal pools remain non-unique per notation attempt",
+    "pools": {
+     "t7": [
+      "Ab_lp00Fb",
+      "Ab_lprp"
+     ],
+     "wh": [
+      "Ab_lp00Fb",
+      "Ab_lprp"
+     ]
+    },
+    "candidate": null,
+    "prior_reason": "multiple motbin terminals at tier 0 with distinct anims and no decisive discriminator: [(1597, 'Ab_lprpC', 16677), (1596, 'Ab_lp00Fb', 16702), (1539, 'Ab_lprp', 16677)]"
    }
   },
   {
@@ -4794,7 +5052,7 @@
    "bank_index": null,
    "evidence": [],
    "confidence": null,
-   "reason": "v2 re-run 2026-10-30: full-sequence walk over the v2 cancel graph (sequence commands, pass-through auto-cancels, bound-class terminals, direction-set chords) terminates at 22 terminal(s) [215, 549, 1489, 1490, 1491, 1492, 1493, 1494] +14 more \u2014 still non-unique, held as unmapped per no-guess rule. the full-sequence v2 walk terminates at 22 terminals \u2014 still non-unique",
+   "reason": "FILL 2 (2026-11-06) group-walk verdict: walk-multi-terminal. group-walk terminal pools remain non-unique per notation attempt",
    "bank": null,
    "motbin_startup": null,
    "motbin_damage": null,
@@ -4977,6 +5235,27 @@
      1709
     ],
     "note": "the full-sequence v2 walk terminates at 22 terminals \u2014 still non-unique"
+   },
+   "fill2_20261106": {
+    "kind": "held",
+    "class": "walk-multi-terminal",
+    "note": "group-walk terminal pools remain non-unique per notation attempt",
+    "pools": {
+     "t7": [
+      "Ab_rk00",
+      "Ab_jplk00F",
+      "Ab_rp00",
+      "Ab_rklk"
+     ],
+     "wh": [
+      "Ab_rk00",
+      "Ab_jplk00F",
+      "Ab_rp00",
+      "Ab_rklk"
+     ]
+    },
+    "candidate": null,
+    "prior_reason": "v2 re-run 2026-10-30: full-sequence walk over the v2 cancel graph (sequence commands, pass-through auto-cancels, bound-class terminals, direction-set chords) terminates at 22 terminal(s) [215, 549, 1489, 1490, 1491, 1492, 1493, 1494] +14 more \u2014 still non-unique, held as unmapped per no-guess rule. the full-sequence v2 walk terminates at 22 terminals \u2014 still non-unique"
    }
   },
   {
@@ -5410,7 +5689,7 @@
    "bank_index": null,
    "evidence": [],
    "confidence": null,
-   "reason": "v2 re-run 2026-10-30: full-sequence walk over the v2 cancel graph (sequence commands, pass-through auto-cancels, bound-class terminals, direction-set chords) terminates at 53 terminal(s) [105, 108, 121, 124, 159, 161, 163, 166] +45 more \u2014 still non-unique, held as unmapped per no-guess rule. the full-sequence v2 walk terminates at 53 terminals \u2014 still non-unique",
+   "reason": "FILL 2 (2026-11-06) group-walk verdict: walk-multi-terminal. group-walk terminal pools remain non-unique per notation attempt",
    "bank": null,
    "motbin_startup": null,
    "motbin_damage": null,
@@ -5866,6 +6145,25 @@
      1993
     ],
     "note": "the full-sequence v2 walk terminates at 53 terminals \u2014 still non-unique"
+   },
+   "fill2_20261106": {
+    "kind": "held",
+    "class": "walk-multi-terminal",
+    "note": "group-walk terminal pools remain non-unique per notation attempt",
+    "pools": {
+     "t7": [
+      "Ab_sWALKF",
+      "Ab_rk00",
+      "Ab_rklk"
+     ],
+     "wh": [
+      "Ab_sWALKF",
+      "Ab_rk00",
+      "Ab_rklk"
+     ]
+    },
+    "candidate": null,
+    "prior_reason": "v2 re-run 2026-10-30: full-sequence walk over the v2 cancel graph (sequence commands, pass-through auto-cancels, bound-class terminals, direction-set chords) terminates at 53 terminal(s) [105, 108, 121, 124, 159, 161, 163, 166] +45 more \u2014 still non-unique, held as unmapped per no-guess rule. the full-sequence v2 walk terminates at 53 terminals \u2014 still non-unique"
    }
   }
  ]

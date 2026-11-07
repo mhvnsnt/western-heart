@@ -722,6 +722,38 @@ function _prepare(ms) {
     }
     for (const [c, ks] of claims) if (ks.size === 1 && !(c in slots)) slots[c] = [...ks][0];
   }
+  /* BT shared buttons (frame-data convention 'BT 1 (or 2)'): a back-turned row whose own
+     source command declares a shared button is the SAME move on both buttons. demonio's
+     merged slots wire that sharing by hand (BT.2 -> BT.1, BT.4 -> BT.3); sibling files carry
+     the same declarations in their rows' t7_command ('BT 1 (or 2)' on demonio-human /
+     -winged / -bloodline-ember, gyou-spirit-body, t3-anna / eddy / julia / nina / paul) but
+     never got the slots, so a BT press on the shared button fell through to the FACING row.
+     Slot the declared alternate on the row the primary button fires — fill-only, like every
+     pass above; nothing is slotted that the row's own command does not declare. The composed
+     '(During BT RFF) 1 or 2' spelling (tobi / t3-hwoarang BT_RFF.1) is the same declaration
+     for a stance-composed BT row. */
+  for (const [k, mv] of Object.entries(ms.moves)) {
+    if (!mv) continue;
+    const cmd = typeof mv.t7_command === 'string' ? mv.t7_command.trim() : '';
+    let m = /^BT\s+(d\+)?([1-4](?:\+[1-4])*)?\s*\(or\s+(d\+)?([1-4](?:\+[1-4])*)\)/i.exec(cmd);
+    if (m && m[4]) {
+      const primary = canonNotation(mv.input || k);
+      if (primary && primary.startsWith('BT.')) {
+        const tail = primary.slice(3);
+        const dirPart = m[3] ? 'd+' : (/^d\+/.test(tail) ? 'd+' : '');
+        const alt = 'BT.' + dirPart + m[4];
+        const target = slots[primary] || k;
+        if (alt !== primary && !(alt in slots)) slots[alt] = target;
+      }
+      continue;
+    }
+    m = /^\(during BT ([A-Z][A-Z0-9_]*)\)\s*([1-4])\s+or\s+([1-4])$/i.exec(cmd);
+    if (m) {
+      const primary = 'BT_' + m[1] + '.' + m[2], alt = 'BT_' + m[1] + '.' + m[3];
+      const target = slots[primary] || (ms.moves[primary] ? primary : null);
+      if (target && !(alt in slots)) slots[alt] = target;
+    }
+  }
   { // (b) T3 any-of DOWN commands: a bank row whose source command lists several
     // down directions for one button ('1/2/3+LP' — any of d/b, d, d/f performs the
     // row, Tekken 3 input encoding) is the same move on every listed spelling.
@@ -1195,13 +1227,17 @@ export class TekkenBuffer {
     if (ctx.running) prefixes.push('WR.'); // Tekken while running
     if (ctx.crouchDash) prefixes.push('CD.'); // roster-100 L5: crouch dash (data-declared cd_entry latch)
     for (const sp of ctx.soulStates || []) prefixes.push(sp + '.'); // pt217u soul systems
+    // BT is a facing state of its own (fighter._bt) and it DOMINATES the stance: while
+    // back-turned, the BT rows are the moves, including the composed spellings the data keys
+    // itself ('BT_RFF.1' = BT while in RFF, 'NSS.BT.d+1' = the stance's BT row). These come
+    // before the bare stance prefix, or the facing stance row would win from behind.
+    if (ctx.backturned) { if (ctx.stance) prefixes.push('BT_' + ctx.stance + '.', ctx.stance + '.BT.'); prefixes.push('BT.'); }
     if (ctx.stance) prefixes.push(ctx.stance + '.');
     if (ctx.rage) prefixes.push('R.');
     // T8 Heat moves ('H.2+3', 'f,f,F+2,H.1+2'): the WH heat state is Soul Urge (stance audit 2026-11-01: 99 rows, 33 fighters)
     if (ctx.urgeOn) prefixes.push('H.');
     // Rage lane (T7), as in _pressLegacy: the rage drive lives on 3+4 while raging (synthesized RD.).
     if (ctx.rage) prefixes.push('RD.');
-    if (ctx.backturned) prefixes.push('BT.');
     if (ctx.ssSide) prefixes.push(ctx.ssSide + '.'); // roster-100 L5: directional sidestep (SSL/SSR, foe-flank convention) — side-specific outranks generic SS (the side is always known from ssDir mid-step)
     if (ctx.sidestep) prefixes.push('SS.');
     if (ctx.crouching) prefixes.push('FC.', 'hFC.'); // T8 'hFC' rows are crouch moves too (stance audit: 130 rows)
@@ -1345,13 +1381,14 @@ export class TekkenBuffer {
     if (ctx.running) prefixes.push('WR.'); // Tekken while running
     if (ctx.crouchDash) prefixes.push('CD.'); // roster-100 L5: crouch dash (data-declared cd_entry latch)
     for (const sp of ctx.soulStates || []) prefixes.push(sp + '.'); // pt217u soul systems
+    // BT dominates the stance (see _pressV2): composed 'BT_RFF.' / 'NSS.BT.' spellings, then BT.
+    if (ctx.backturned) { if (ctx.stance) prefixes.push('BT_' + ctx.stance + '.', ctx.stance + '.BT.'); prefixes.push('BT.'); }
     if (ctx.stance) prefixes.push(ctx.stance + '.');
     if (ctx.rage) prefixes.push('R.');
     // T8 Heat moves ('H.2+3', 'f,f,F+2,H.1+2'): the WH heat state is Soul Urge (stance audit 2026-11-01: 99 rows, 33 fighters)
     if (ctx.urgeOn) prefixes.push('H.');
     // Rage lane (T7): rage drive lives on 3+4 while raging (synthesized RD.).
     if (ctx.rage) prefixes.push('RD.');
-    if (ctx.backturned) prefixes.push('BT.');
     if (ctx.ssSide) prefixes.push(ctx.ssSide + '.'); // roster-100 L5: directional sidestep (SSL/SSR, foe-flank convention) — side-specific outranks generic SS (the side is always known from ssDir mid-step)
     if (ctx.sidestep) prefixes.push('SS.');
     if (ctx.crouching) prefixes.push('FC.', 'hFC.'); // T8 'hFC' rows are crouch moves too (stance audit: 130 rows)

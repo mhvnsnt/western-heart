@@ -1,0 +1,78 @@
+{
+ "session": "phase2-final (probe3-final2 + probe3-final + run3)",
+ "opponent": "pantera (frozen AI, grounded resets)",
+ "ambientStanceLayer": {
+  "log": "[WH-LAYER2] chatur: ambient stance layer t3:kuma:stance on the secondary chain",
+  "waistL": [
+   -3.345,
+   1.026,
+   -0.091
+  ],
+  "waistR": [
+   -3.359,
+   0.976,
+   0.073
+  ],
+  "bindPoseWaistL": [
+   -3.534,
+   1.008,
+   -0.484
+  ],
+  "phase1SelfFillWaistL": [
+   -3.188,
+   1.321,
+   -0.349
+  ],
+  "note": "three mutually distinct poses: bind / Phase-1 self-fill / Phase-2 Kuma donor layer"
+ },
+ "cases": {
+  "1": {
+   "move": "First Mudra",
+   "plan": "row:38#l2 (kuma:177 composite)",
+   "hp": "100 -> 91.5"
+  },
+  "2": {
+   "move": "Second Mudra",
+   "plan": "row:50#l2 (kuma:130 composite)",
+   "hpTrail": [
+    100,
+    92.8,
+    79.5
+   ],
+   "note": "TWO-HIT: primary contact then second-pair contact; console logged '[WH-LAYER2] chatur: second-pair contact \u2014 6 dmg from arm2R' x3 across the '2' cases; total 20.5 dmg"
+  },
+  "2@0.8m": {
+   "move": "Second Mudra",
+   "plan": "row:50#l2",
+   "hp": "100 -> 79.5"
+  },
+  "1+2": {
+   "move": "Double Refusal",
+   "plan": "row:168#l2 (kuma:155 composite)",
+   "note": "layered plan built + plays; whiffed at 1.05 m in the sampled run (primary weapon reach)"
+  },
+  "f+2+3": {
+   "move": "Low Offering (dedicated, kuma:219)",
+   "plan": "row:38#l2",
+   "hp": "100 -> 85.5",
+   "waistRMaxStep_m": 0.263
+  },
+  "b+1+3": {
+   "move": "Gate Piston (dedicated, gunjack:248)",
+   "plan": "row:212#l2",
+   "hp": "100 -> 75.8 (lands at the end of the 0.883 s startup)",
+   "waistRMaxStep_m": 0.231
+  },
+  "d+2+4": {
+   "move": "Procession Lariat (dedicated, armorking:220)",
+   "plan": "row:110#l2",
+   "hp": "100 -> 83.1 (warm-up + two measured runs; one measured run whiffed at 1.05 m)",
+   "waistRMaxStep_m": 0.303
+  }
+ },
+ "firstUseRule": "first use of a donor bank in a match plays the unlayered base while the bank loads + the #l2 variant builds; the layered variant plays from the next use (verified live for gunjack/armorking rows)",
+ "logs": [
+  "[WH-LAYER2] chatur: ambient stance layer t3:kuma:stance on the secondary chain",
+  "[WH-LAYER2] chatur: second-pair contact \u2014 6 dmg from arm2R"
+ ]
+}

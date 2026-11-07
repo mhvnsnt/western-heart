@@ -1,0 +1,201 @@
+{
+ "pantera": {
+  "id": "pantera",
+  "model": "pantera-leoman",
+  "bones": 22,
+  "stance": true,
+  "stanceSource": "cmu-14_01",
+  "framed": true,
+  "bank": "king",
+  "armDeg": {
+   "L": 23,
+   "R": 12
+  },
+  "gateWarns": [
+   "[WH] select preview: bank 'king' stance does not fit pantera's rig (Left shoulder swung 0.69 rad from bind) \u2014 falling back"
+  ]
+ },
+ "demonio": {
+  "id": "demonio",
+  "model": "demonio-a1",
+  "bones": 73,
+  "stance": true,
+  "stanceSource": "cmu-14_01",
+  "framed": true,
+  "bank": "jin",
+  "armDeg": {
+   "L": 23,
+   "R": 12
+  },
+  "gateWarns": [
+   "[WH] select preview: bank 'jin' stance does not fit demonio's rig (Left shoulder swung 0.71 rad from bind) \u2014 falling back"
+  ]
+ },
+ "pond": {
+  "id": "pond",
+  "model": "pond",
+  "bones": 224,
+  "stance": true,
+  "stanceSource": "cmu-14_01",
+  "framed": true,
+  "bank": "raven",
+  "armDeg": {
+   "L": 23,
+   "R": 12
+  },
+  "gateWarns": [
+   "[WH-T3] failed to load raven/t3_stance.json: HTTP 404",
+   "[WH-T3] raven/rows.pack.json unavailable: HTTP 404",
+   "[WH-T3] failed to load raven/t3_win_rp.json: HTTP 404",
+   "[WH] select preview: bank 'raven' stance does not fit pond's rig (Left shoulder swung 1.61 rad from bind) \u2014 falling back"
+  ]
+ },
+ "ryusan": {
+  "id": "ryusan",
+  "model": "ryusan",
+  "bones": 521,
+  "stance": true,
+  "stanceSource": "cmu-14_01",
+  "framed": true,
+  "bank": "luckychloe",
+  "armDeg": {
+   "L": 23,
+   "R": 12
+  },
+  "gateWarns": [
+   "[WH-T3] failed to load luckychloe/t3_win_rp.json: HTTP 404",
+   "[WH-T3] failed to load luckychloe/t3_stance.json: HTTP 404",
+   "[WH-T3] luckychloe/rows.pack.json unavailable: HTTP 404",
+   "[WH] select preview: bank 'luckychloe' stance does not fit ryusan's rig (Left shoulder swung 1.23 rad from bind) \u2014 falling back"
+  ]
+ },
+ "tobi": {
+  "id": "tobi",
+  "model": "tobi",
+  "bones": 255,
+  "stance": true,
+  "stanceSource": "cmu-14_01",
+  "framed": true,
+  "bank": "hwoarang",
+  "armDeg": {
+   "L": 23,
+   "R": 12
+  },
+  "gateWarns": [
+   "[WH] select preview: bank 'hwoarang' stance does not fit tobi's rig (Left shoulder swung 1.02 rad from bind) \u2014 falling back"
+  ]
+ },
+ "megami": {
+  "id": "megami",
+  "model": "megami",
+  "bones": 469,
+  "stance": true,
+  "stanceSource": "cmu-14_01",
+  "framed": true,
+  "bank": "jun",
+  "armDeg": {
+   "L": 23,
+   "R": 12
+  },
+  "gateWarns": [
+   "[WH-T3] failed to load jun/t3_block.json: HTTP 404",
+   "[WH-T3] failed to load jun/t3_win_rp.json: HTTP 404",
+   "[WH-T3] failed to load jun/t3_hit.json: HTTP 404",
+   "[WH-T3] failed to load jun/t3_stance.json: HTTP 404",
+   "[WH-T3] failed to load jun/t3_ko.json: HTTP 404",
+   "[WH-T3] failed to load jun/t3_walk_fwd.json: HTTP 404",
+   "[WH-T3] failed to load jun/t3_hit_launch.json: HTTP 404",
+   "[WH-T3] failed to load jun/t3_dash_fwd.json: HTTP 404",
+   "[WH-T3] failed to load jun/t3_crouch.json: HTTP 404",
+   "[WH-T3] failed to load jun/t3_sidestep_b.json: HTTP 404",
+   "[WH] select preview: bank 'jun' stance does not fit megami's rig (Left shoulder swung 2.50 rad from bind) \u2014 falling back"
+  ]
+ },
+ "menajerii": {
+  "id": "menajerii",
+  "model": "menajerii",
+  "bones": 450,
+  "stance": true,
+  "stanceSource": "cmu-14_01",
+  "framed": true,
+  "bank": "roger",
+  "armDeg": {
+   "L": 23,
+   "R": 12
+  },
+  "gateWarns": [
+   "[WH-T3] failed to load roger/t3_light.json: HTTP 404",
+   "[WH-T3] failed to load roger/t3_ko.json: HTTP 404",
+   "[WH-T3] failed to load roger/t3_block.json: HTTP 404",
+   "[WH-T3] failed to load roger/t3_stance.json: HTTP 404",
+   "[WH-T3] failed to load roger/t3_win_rp.json: HTTP 404",
+   "[WH-T3] failed to load roger/t3_hit_launch.json: HTTP 404",
+   "[WH-T3] failed to load roger/t3_sidestep_b.json: HTTP 404",
+   "[WH] select preview: bank 'roger' stance does not fit menajerii's rig (Left shoulder swung 0.80 rad from bind) \u2014 falling back"
+  ]
+ },
+ "star": {
+  "id": "star",
+  "model": "star-attire1",
+  "bones": 50,
+  "stance": true,
+  "stanceSource": "cmu-14_01",
+  "framed": true,
+  "bank": "xiaoyu",
+  "armDeg": {
+   "L": 23,
+   "R": 12
+  },
+  "gateWarns": [
+   "[WH] select preview: bank 'xiaoyu' stance does not fit star's rig (Left shoulder swung 0.89 rad from bind) \u2014 falling back"
+  ]
+ },
+ "negativo": {
+  "id": "negativo",
+  "model": "negativo-attire1",
+  "bones": 50,
+  "stance": true,
+  "stanceSource": "cmu-14_01",
+  "framed": true,
+  "bank": "bryan",
+  "armDeg": {
+   "L": 23,
+   "R": 12
+  },
+  "gateWarns": [
+   "[WH] select preview: bank 'bryan' stance does not fit negativo's rig (Left shoulder swung 0.77 rad from bind) \u2014 falling back"
+  ]
+ },
+ "purplerain": {
+  "id": "purplerain",
+  "model": "purple-rain",
+  "bones": 73,
+  "stance": true,
+  "stanceSource": "cmu-14_01",
+  "framed": true,
+  "bank": "jin",
+  "armDeg": {
+   "L": 23,
+   "R": 12
+  },
+  "gateWarns": [
+   "[WH] select preview: bank 'jin' stance does not fit purplerain's rig (Left shoulder swung 1.38 rad from bind) \u2014 falling back"
+  ]
+ },
+ "awapop": {
+  "id": "awapop",
+  "model": "awa-pop-attire2",
+  "bones": 73,
+  "stance": true,
+  "stanceSource": "cmu-14_01",
+  "framed": true,
+  "bank": "nina",
+  "armDeg": {
+   "L": 23,
+   "R": 12
+  },
+  "gateWarns": [
+   "[WH] select preview: bank 'nina' stance does not fit awapop's rig (Left shoulder swung 1.11 rad from bind) \u2014 falling back"
+  ]
+ }
+}

@@ -33,3 +33,14 @@ All T7-style models are RigModels fan rips (third-party), integrated on PR #170 
 
 - `jin-body.glb` serves **JIN (刃, the Blade Soul)** — Yoshimitsu. Not to be confused with RIN (凛), whose body is `rin-body.glb` (Jin Kazama).
 - BYOU's vessel is Zui (Steve body); the Lei→BYOU body mapping is flagged blocked until the owner names Lei's WH fighter (see `roster/rave/CONCEPT.md` on PR #170 for the pending Rave concept).
+
+## Resolution (2026-11-06)
+
+The blocked BYOU/Lei mapping above is resolved. The owner named Lei
+Wulong's WH fighter: **Rave** (Kiko Tanaka / Ghost — locked 2026-10-19 /
+2026-10-21, see `game/js/roster-full.js`). Byou's moveset base is **Wang
+Jinrei** (Tekken 6) per the owner's 2026-11-06 ruling ("He can have wang
+if no one else does"); the Lei layer was removed from
+`game/assets/movesets/byou.json` and Wang's decoded T6 PSP kit wired in
+its place. Byou's vessel remains **Zui** (Steve body), unchanged. The
+dated entries above stand as the historical record of the blocked state.

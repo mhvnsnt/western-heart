@@ -11,12 +11,12 @@
 | **Engine** | Unreal Engine 4 |
 | **Platform target** | PC/Steam (preferred for extraction) |
 | **Size** | ~32GB installed |
-| **Status** | **NOT YET ACQUIRED** (2026-10-13) |
+| **Status** | **ACQUIRED 2026-11-06** from archive.org (item dixen-18-soulcalibur-vi); stored to release soulcalibur6-archiveorg-20261106 on GRE + WH in 7 verified parts. Extraction pending (FreeArc .dxn + staged disk space). See HOLDINGS-INDEX-2026-11-06.md in this folder |
 
 ### Why not yet pulled
 
 1. **Not on Archive.org** — SCVI is a 2018 commercial title still sold on Steam. No free
-   dump exists on IA (verified via advancedsearch 2026-10-13; only videos/trailers found).
+   dump exists on IA (verified via advancedsearch 2026-10-13; only videos/trailers found) **Superseded 2026-11-06:** a complete PC copy was uploaded to IA after the Oct check and acquired; see the holdings index..
 2. **Disk** — VM at 93% (7.8GB free). A 32GB game cannot land here.
 3. **Steam Workshop assets ARE available** — see below. These cover the character models.
 

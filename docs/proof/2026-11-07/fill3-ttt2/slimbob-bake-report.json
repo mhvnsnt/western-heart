@@ -1,0 +1,99 @@
+{
+ "bank": "slimbob",
+ "baked": {
+  "t3_light": {
+   "move": "Ft_lp00",
+   "anim": "amfa_lp15(DVD)",
+   "bank": 1,
+   "idx": 269,
+   "frames": 84,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_heavy": {
+   "move": "Ft_rk00",
+   "anim": "ikfa_rk_ver02(DVD)",
+   "bank": 1,
+   "idx": 306,
+   "frames": 66,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_walk_fwd": {
+   "move": "Ft_sWALKFLp",
+   "anim": "ygco_fwalk01(DVD)",
+   "bank": 2,
+   "idx": 109,
+   "frames": 61,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_walk_back": {
+   "move": "sWALK_00B",
+   "anim": "ygco_bwalk00(DVD)",
+   "bank": 2,
+   "idx": 40,
+   "frames": 15,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_backdash": {
+   "move": "Ft_sDASHB",
+   "anim": "naco_back90(DVD)",
+   "bank": 1,
+   "idx": 178,
+   "frames": 30,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_crouch_hold": {
+   "move": "Ft_cKAM00_",
+   "anim": "ikfa_syagami_2(DVD)",
+   "bank": 1,
+   "idx": 182,
+   "frames": 35,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_jump_up": {
+   "move": "sJUMP_00_",
+   "anim": "Bco_newjump2(DVD)",
+   "bank": 2,
+   "idx": 309,
+   "frames": 120,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_jump_fwd": {
+   "move": "sJUMP_00F",
+   "anim": "Bco_newjump2(DVD)",
+   "bank": 2,
+   "idx": 309,
+   "frames": 120,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_jump_back": {
+   "move": "sJUMP_00B",
+   "anim": "Bco_newjump2(DVD)",
+   "bank": 2,
+   "idx": 309,
+   "frames": 120,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_sidestep_a": {
+   "move": "sSTEP_01L",
+   "anim": "naco_l2idou(DVD)",
+   "bank": 2,
+   "idx": 1807,
+   "frames": 70,
+   "fk_selfcheck_max_m": 0.0
+  }
+ },
+ "skipped": {
+  "t3_neutral": "in-game plausibility gate: RightToeBase 0.08 m below the floor on frame 19 (mannequin proportions)",
+  "t3_medium": "in-game plausibility gate: LeftToeBase 0.34 m below the floor on frame 0 (mannequin proportions)",
+  "t3_hit": "in-game plausibility gate: LeftToeBase 0.22 m below the floor on frame 0 (mannequin proportions)",
+  "t3_block": "in-game plausibility gate: LeftToeBase 1.05 m below the floor on frame 0 (mannequin proportions)",
+  "t3_dash_fwd": "in-game plausibility gate: RightToeBase 0.09 m below the floor on frame 5 (mannequin proportions)",
+  "t3_crouch": "in-game plausibility gate: LeftToeBase 0.21 m below the floor on frame 0 (mannequin proportions)",
+  "t3_sidestep_b": "in-game plausibility gate: LeftToeBase 0.17 m below the floor on frame 4 (mannequin proportions)",
+  "t3_grab": "in-game plausibility gate: LeftToeBase 0.08 m below the floor on frame 9 (mannequin proportions)"
+ },
+ "gaps": {
+  "t3_ko": "no slot source identified (shipped Roger/Jun banks also ship no t3_ko clip)",
+  "t3_hit_launch": "no slot source identified (shipped Roger/Jun banks also ship no t3_hit_launch clip)"
+ }
+}

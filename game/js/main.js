@@ -143,6 +143,14 @@ const ui = {
     // recoverable pool (capped at 100%); empty pool matches fill.
     dmg.style.width = Math.min(100, pct + Math.max(0, ((f._recoverable || 0) / f.maxHp) * 100)) + '%';
     fill.classList.toggle('low', pct < 30);
+    // BT GUARD strain tell (owner design 2026-11-06, SoulCalibur-style):
+    // a multi-arm fighter guarding back-turned strains its back pair;
+    // the defender's own health-bar fill glows warning yellow at 60%
+    // strain and warning red at 80% (.bt-strain-1 / .bt-strain-2 in
+    // styles.css) — the SC yellow/red warning, on the bar this HUD has.
+    const _btWarn = f.btGuardState ? f.btGuardState().warn : 0;
+    fill.classList.toggle('bt-strain-1', _btWarn === 1);
+    fill.classList.toggle('bt-strain-2', _btWarn === 2);
   },
   updateMeter(p1, p2) { this._meter('p1', p1); this._meter('p2', p2); },
   _meter(id, f) {

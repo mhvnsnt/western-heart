@@ -1,0 +1,2803 @@
+{
+ "fighter": "t7-eliza",
+ "display": "Eliza (Tekken 7 source moveset)",
+ "tekken_base": "Eliza",
+ "source": {
+  "built_by": "FILL 2 (2026-11-06), owner fill order: \"1, 2, 3, then 4, remember then all til we get em done\"",
+  "frame_table": "game/data/t7-frame-data/t7-eliza-lp-rp-lk-rk.json",
+  "motbin": "GRE teardown/tekken7-steam/tkdata/mothead/bin/elzmot.bin + json/elzmot.json",
+  "mvl": "GRE teardown/tekken7-steam/tkdata/mothead/movelist/elz.mvl",
+  "banks": "GRE release t7-fighter-banks-v1 (elz_clips.bin, elz_bank0_clips.bin); indexes in GRE mask/indexes/",
+  "method": "group-correct string walk (t7_string_walk.py); wired = unique terminal + clip locator; see fill2 fields per move"
+ },
+ "fill2_stats": {
+  "rows": 87,
+  "wired": 35,
+  "pass2": {
+   "sequence": 8,
+   "slide": 0
+  }
+ },
+ "moves": {
+  "in rage u/f+3+4?": {
+   "name": "in rage u/f+3+4?",
+   "name_source": "notation-only",
+   "input": "in rage u/f+3+4?",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "\u2013",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Rage art",
+   "anim_ref": null,
+   "t7": {
+    "notation": "in rage u/f+3+4?",
+    "id": "elz_1",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1": {
+   "name": "Needle Jab",
+   "name_source": "mvl",
+   "input": "1",
+   "damage": 7,
+   "damage_raw": "7",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h",
+   "on_block": "+1",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": "t7:elz:0x4000:274",
+   "t7": {
+    "notation": "1",
+    "id": "elz_2",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "1",
+    "motbin_move_id": 1503,
+    "motbin_move_name": "Vp_lp00",
+    "anim_name": "vpyt_at_pugyaaa(DVD)",
+    "anim_id": 16658,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "elzrotsm.arc",
+     "section": 0,
+     "entry": 274,
+     "rel_offset": 2627068,
+     "size": 3420,
+     "format_word": 100,
+     "sha256": "2227c6835a0a4df033553905eb132cdd6e70ee87872940c6fdd0dd2246228554",
+     "blob_file": "elz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [7]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1503
+    ]
+   }
+  },
+  "1, 2": {
+   "name": "Left Right Slap",
+   "name_source": "mvl",
+   "input": "1, 2",
+   "damage": 7,
+   "damage_raw": "7,10",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h",
+   "on_block": "-1",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1, 2",
+    "id": "elz_3",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1, 2, 3": {
+   "name": "Left Right Moonrise",
+   "name_source": "mvl",
+   "input": "1, 2, 3",
+   "damage": 7,
+   "damage_raw": "7,10,20",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h, m (TJ)",
+   "on_block": "\u2013",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1, 2, 3",
+    "id": "elz_4",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1, 2, 4": {
+   "name": "Left Right Arc Kick",
+   "name_source": "mvl",
+   "input": "1, 2, 4",
+   "damage": 7,
+   "damage_raw": "7,10,20",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h, h",
+   "on_block": "\u2013",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1, 2, 4",
+    "id": "elz_5",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "2": {
+   "name": "Bloody Claw Chaos to Deadly Slumber",
+   "name_source": "mvl",
+   "input": "2",
+   "damage": 10,
+   "damage_raw": "10",
+   "startup": 0.2,
+   "startup_frames": 12,
+   "hit_level": "h",
+   "on_block": "\u2013",
+   "on_hit": "+",
+   "on_ch": "+",
+   "notes": null,
+   "anim_ref": "t7:elz:0x4000:278",
+   "t7": {
+    "notation": "2",
+    "id": "elz_6",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "2",
+    "motbin_move_id": 1515,
+    "motbin_move_name": "Vp_lprp",
+    "anim_name": "vpyt_at_pugyaaa_pan(DVD)",
+    "anim_id": 16662,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "elzrotsm.arc",
+     "section": 0,
+     "entry": 278,
+     "rel_offset": 2634364,
+     "size": 4352,
+     "format_word": 100,
+     "sha256": "f2ca2265c71a774cd472ce80d06667cbf389ff4ce02ea1540a005341af2c2c90",
+     "blob_file": "elz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [10]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1515
+    ]
+   }
+  },
+  "2, 4": {
+   "name": "Vp_rprk",
+   "name_source": "motbin-internal",
+   "input": "2, 4",
+   "damage": 10,
+   "damage_raw": "10,20",
+   "startup": 0.2,
+   "startup_frames": 12,
+   "hit_level": "h, h",
+   "on_block": "\u2013",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:elz:0x4000:285",
+   "t7": {
+    "notation": "2, 4",
+    "id": "elz_7",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "2, 4",
+    "motbin_move_id": 1529,
+    "motbin_move_name": "Vp_rprk",
+    "anim_name": "vpyt_at_pugyaaa_pan_rk(DVD)",
+    "anim_id": 16669,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "elzrotsm.arc",
+     "section": 0,
+     "entry": 285,
+     "rel_offset": 2658184,
+     "size": 4668,
+     "format_word": 100,
+     "sha256": "959c31040705480c8a7dff769697133322eeafd99c63607785dba399b2f4dd19",
+     "blob_file": "elz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "3": {
+   "name": "Rose Thorn",
+   "name_source": "mvl",
+   "input": "3",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "h",
+   "on_block": "\u2013",
+   "on_hit": "+",
+   "on_ch": "+",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "3",
+    "id": "elz_8",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Jn_sWALKF",
+     "Jn_lk00",
+     "sWALK_00FMv",
+     "Jn_sDASHF",
+     "Vp_t_srpF",
+     "Jn_rp00",
+     "Vp_lp00",
+     "Vp_lrp"
+    ]
+   }
+  },
+  "4": {
+   "name": "Arc Kick",
+   "name_source": "mvl",
+   "input": "4",
+   "damage": 24,
+   "damage_raw": "24",
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "h",
+   "on_block": "\u2013",
+   "on_hit": "KND",
+   "on_ch": "SCD",
+   "notes": "Homing, Tail spin",
+   "anim_ref": null,
+   "t7": {
+    "notation": "4",
+    "id": "elz_9",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Vp_lrp",
+     "Vp_rk00"
+    ]
+   }
+  },
+  "f+1+2": {
+   "name": "Broken Dream",
+   "name_source": "mvl",
+   "input": "f+1+2",
+   "damage": 21,
+   "damage_raw": "21",
+   "startup": 0.4167,
+   "startup_frames": 25,
+   "hit_level": "m",
+   "on_block": "-10~?",
+   "on_hit": "KND",
+   "on_ch": "CS",
+   "notes": "Homing, Power crush",
+   "anim_ref": "t7:elz:0x4000:360",
+   "t7": {
+    "notation": "f+1+2",
+    "id": "elz_10",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+1+2",
+    "motbin_move_id": 1680,
+    "motbin_move_name": "Vp_lrp",
+    "anim_name": "vpyt_at_6wp(DVD)",
+    "anim_id": 16744,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "elzrotsm.arc",
+     "section": 0,
+     "entry": 360,
+     "rel_offset": 2935056,
+     "size": 4816,
+     "format_word": 100,
+     "sha256": "8f9184b77ae138bc35e109c56cf68e3fcb95b2c0dca6006c3e6389fda350f8ef",
+     "blob_file": "elz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+1": {
+   "name": "Vp_t_slpF",
+   "name_source": "motbin-internal",
+   "input": "d/f+1",
+   "damage": 12,
+   "damage_raw": "12",
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "m",
+   "on_block": "\u2013",
+   "on_hit": "+",
+   "on_ch": "+",
+   "notes": null,
+   "anim_ref": "t7:elz:0x4000:319",
+   "t7": {
+    "notation": "d/f+1",
+    "id": "elz_11",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+1",
+    "motbin_move_id": 1596,
+    "motbin_move_name": "Vp_t_slpF",
+    "anim_name": "vpkb_3lp(DVD)",
+    "anim_id": 16703,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "elzrotsm.arc",
+     "section": 0,
+     "entry": 319,
+     "rel_offset": 2749256,
+     "size": 3960,
+     "format_word": 100,
+     "sha256": "2490de5beee51fee77c5b510e62c156a7be9fa9f8c9f11639e8307d12134b251",
+     "blob_file": "elz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+1, 2": {
+   "name": "Moonlight",
+   "name_source": "mvl",
+   "input": "d/f+1, 2",
+   "damage": 12,
+   "damage_raw": "12,",
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "m, h",
+   "on_block": "\u2013",
+   "on_hit": "+",
+   "on_ch": "+",
+   "notes": null,
+   "anim_ref": "t7:elz:0x4000:321",
+   "t7": {
+    "notation": "d/f+1, 2",
+    "id": "elz_12",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+1, 2",
+    "motbin_move_id": 1598,
+    "motbin_move_name": "Vp_3lprp",
+    "anim_name": "vpyt_at_3lpzubo(DVD)",
+    "anim_id": 16705,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "elzrotsm.arc",
+     "section": 0,
+     "entry": 321,
+     "rel_offset": 2757780,
+     "size": 4920,
+     "format_word": 100,
+     "sha256": "6b8f5f6d814cae88b3d7c11010fc655684b2387ab8576b315f9cb1196eab86bb",
+     "blob_file": "elz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+1, 2, 4": {
+   "name": "d/f+1, 2, 4",
+   "name_source": "notation-only",
+   "input": "d/f+1, 2, 4",
+   "damage": 12,
+   "damage_raw": "12,,",
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "m, h, h",
+   "on_block": "\u2013",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Tail spin",
+   "anim_ref": null,
+   "t7": {
+    "notation": "d/f+1, 2, 4",
+    "id": "elz_13",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "d/f+2": {
+   "name": "d/f+2",
+   "name_source": "notation-only",
+   "input": "d/f+2",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "m",
+   "on_block": "-9?",
+   "on_hit": "+",
+   "on_ch": "+?",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d/f+2",
+    "id": "elz_14",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Vp_t_srpF",
+     "Vp_3rplk"
+    ]
+   }
+  },
+  "d/f+2, 3": {
+   "name": "Rending Claw",
+   "name_source": "mvl",
+   "input": "d/f+2, 3",
+   "damage": 17,
+   "damage_raw": "17,",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "m, m",
+   "on_block": "-13~?",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": "t7:elz:0x4000:303",
+   "t7": {
+    "notation": "d/f+2, 3",
+    "id": "elz_15",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+2, 3",
+    "motbin_move_id": 1564,
+    "motbin_move_name": "Vp_3rplk",
+    "anim_name": "vpyt_at_3rplk(DVD)",
+    "anim_id": 16687,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "elzrotsm.arc",
+     "section": 0,
+     "entry": 303,
+     "rel_offset": 2713156,
+     "size": 5428,
+     "format_word": 100,
+     "sha256": "390b4f05c52359ab88422f7583b2e5a3ebcee7930bd730b51f77b79f1178a6da",
+     "blob_file": "elz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+3": {
+   "name": "Astral Shot",
+   "name_source": "mvl",
+   "input": "d/f+3",
+   "damage": 24,
+   "damage_raw": "24",
+   "startup": 0.3333,
+   "startup_frames": 20,
+   "hit_level": "m",
+   "on_block": "-9?",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Homing",
+   "anim_ref": "t7:elz:0x4000:322",
+   "t7": {
+    "notation": "d/f+3",
+    "id": "elz_16",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+3",
+    "motbin_move_id": 1599,
+    "motbin_move_name": "Vp_t_slkF",
+    "anim_name": "vpsj_new_sa(DVD)",
+    "anim_id": 16706,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "elzrotsm.arc",
+     "section": 0,
+     "entry": 322,
+     "rel_offset": 2762700,
+     "size": 6840,
+     "format_word": 100,
+     "sha256": "e4fa5a8fe5c6dfc9ad7263fd0dfc58a8ebfab4d427eac3bf3431b11adff751d3",
+     "blob_file": "elz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [24]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1599
+    ]
+   }
+  },
+  "d/f+4": {
+   "name": "Vp_t_srkF",
+   "name_source": "motbin-internal",
+   "input": "d/f+4",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": 0.2,
+   "startup_frames": 12,
+   "hit_level": "m",
+   "on_block": "-7",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "notes": null,
+   "anim_ref": "t7:elz:0x4000:324",
+   "t7": {
+    "notation": "d/f+4",
+    "id": "elz_17",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+4",
+    "motbin_move_id": 1603,
+    "motbin_move_name": "Vp_t_srkF",
+    "anim_name": "vpyt_at_3rk(DVD)",
+    "anim_id": 16708,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "elzrotsm.arc",
+     "section": 0,
+     "entry": 324,
+     "rel_offset": 2769540,
+     "size": 4156,
+     "format_word": 100,
+     "sha256": "7265b1518c05ce777ef2bf977ef29d047de0216e6eebeff6bd9ee9a421197f95",
+     "blob_file": "elz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d+3 or FC+d/b or d+3": {
+   "name": "Vp_t_slk00",
+   "name_source": "motbin-internal",
+   "input": "d+3 or FC+d/b or d+3",
+   "damage": 12,
+   "damage_raw": "12",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "\u2013",
+   "on_hit": "+",
+   "on_ch": "+",
+   "notes": null,
+   "anim_ref": "t7:elz:0x0000:107",
+   "t7": {
+    "notation": "d+3 or FC+d/b or d+3",
+    "id": "elz_18",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+3",
+    "motbin_move_id": 1587,
+    "motbin_move_name": "Vp_t_slk00",
+    "anim_name": "vpss_s4_2lk",
+    "anim_id": 107,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x0000",
+     "source": "elzmot.bin",
+     "section": 0,
+     "entry": 107,
+     "rel_offset": 1870588,
+     "size": 4060,
+     "format_word": 100,
+     "sha256": "37d5125de139c86289b6bf82032422265f0b137f7eb8e402c6628ecc925566ae",
+     "blob_file": "elz_bank0_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+3": {
+   "name": "Vp_t_slk00",
+   "name_source": "motbin-internal",
+   "input": "d/b+3",
+   "damage": 24,
+   "damage_raw": "24",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)?",
+   "on_block": "\u2013",
+   "on_hit": "+1?s",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:elz:0x0000:107",
+   "t7": {
+    "notation": "d/b+3",
+    "id": "elz_19",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+3",
+    "motbin_move_id": 1587,
+    "motbin_move_name": "Vp_t_slk00",
+    "anim_name": "vpss_s4_2lk",
+    "anim_id": 107,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x0000",
+     "source": "elzmot.bin",
+     "section": 0,
+     "entry": 107,
+     "rel_offset": 1870588,
+     "size": 4060,
+     "format_word": 100,
+     "sha256": "37d5125de139c86289b6bf82032422265f0b137f7eb8e402c6628ecc925566ae",
+     "blob_file": "elz_bank0_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+4": {
+   "name": "Co_t_srk00",
+   "name_source": "motbin-internal",
+   "input": "d/b+4",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": 0.4833,
+   "startup_frames": 29,
+   "hit_level": "l (TJ)",
+   "on_block": "-15~",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:elz:0x0000:108",
+   "t7": {
+    "notation": "d/b+4",
+    "id": "elz_20",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+4",
+    "motbin_move_id": 1591,
+    "motbin_move_name": "Co_t_srk00",
+    "anim_name": "vpss_s4_1rk",
+    "anim_id": 108,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x0000",
+     "source": "elzmot.bin",
+     "section": 0,
+     "entry": 108,
+     "rel_offset": 1874648,
+     "size": 4848,
+     "format_word": 100,
+     "sha256": "0937716f8d3c75680f2933326b5e94129f6eb2d08372fc6ce15620d5dfbd248e",
+     "blob_file": "elz_bank0_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+1": {
+   "name": "Vp_4lp",
+   "name_source": "motbin-internal",
+   "input": "b+1",
+   "damage": 13,
+   "damage_raw": "13",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "m",
+   "on_block": "\u2013",
+   "on_hit": "+",
+   "on_ch": "+",
+   "notes": null,
+   "anim_ref": "t7:elz:0x4000:333",
+   "t7": {
+    "notation": "b+1",
+    "id": "elz_21",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+1",
+    "motbin_move_id": 1633,
+    "motbin_move_name": "Vp_4lp",
+    "anim_name": "vpyt_at_4lp(DVD)",
+    "anim_id": 16717,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "elzrotsm.arc",
+     "section": 0,
+     "entry": 333,
+     "rel_offset": 2805028,
+     "size": 4360,
+     "format_word": 100,
+     "sha256": "01a309087f8da24b151c663cdb530c6616dff155d4ff7db450898175f8301894",
+     "blob_file": "elz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+1, 2": {
+   "name": "Vp_4lprp",
+   "name_source": "motbin-internal",
+   "input": "b+1, 2",
+   "damage": 13,
+   "damage_raw": "13,15",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "m, m",
+   "on_block": "\u2013",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": "t7:elz:0x4000:334",
+   "t7": {
+    "notation": "b+1, 2",
+    "id": "elz_22",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+1, 2",
+    "motbin_move_id": 1639,
+    "motbin_move_name": "Vp_4lprp",
+    "anim_name": "vpyt_at_4lprp(DVD)",
+    "anim_id": 16718,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "elzrotsm.arc",
+     "section": 0,
+     "entry": 334,
+     "rel_offset": 2809388,
+     "size": 6064,
+     "format_word": 100,
+     "sha256": "5afe3b4668e618a014a2cd9d0d2a66ee728c4b17e048cc0fad1b9229d0a97c68",
+     "blob_file": "elz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+1, 2, 4": {
+   "name": "Rising Chaos",
+   "name_source": "mvl",
+   "input": "b+1, 2, 4",
+   "damage": 13,
+   "damage_raw": "13,15,30",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "m, m, m",
+   "on_block": "\u2013",
+   "on_hit": "+s",
+   "on_ch": "+s",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "b+1, 2, 4",
+    "id": "elz_23",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "b+2?": {
+   "name": "b+2?",
+   "name_source": "notation-only",
+   "input": "b+2?",
+   "damage": null,
+   "damage_raw": null,
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "m",
+   "on_block": "\u2013",
+   "on_hit": "KND?",
+   "on_ch": "KND?",
+   "notes": "Tail spin",
+   "anim_ref": null,
+   "t7": {
+    "notation": "b+2?",
+    "id": "elz_24",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "b+3": {
+   "name": "Vp_4lk",
+   "name_source": "motbin-internal",
+   "input": "b+3",
+   "damage": 30,
+   "damage_raw": "30",
+   "startup": 0.3833,
+   "startup_frames": 23,
+   "hit_level": "m (TJ)",
+   "on_block": "\u2013",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Homing",
+   "anim_ref": "t7:elz:0x4000:338",
+   "t7": {
+    "notation": "b+3",
+    "id": "elz_25",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+3",
+    "motbin_move_id": 1645,
+    "motbin_move_name": "Vp_4lk",
+    "anim_name": "vphg_4lk(DVD)",
+    "anim_id": 16722,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "elzrotsm.arc",
+     "section": 0,
+     "entry": 338,
+     "rel_offset": 2836400,
+     "size": 4468,
+     "format_word": 100,
+     "sha256": "8811754df2646c3a9547d7539021429c92ec3c87ec21197a3bcb014f9b8a1f3f",
+     "blob_file": "elz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+4": {
+   "name": "Flare Knee",
+   "name_source": "mvl",
+   "input": "b+4",
+   "damage": null,
+   "damage_raw": null,
+   "startup": 0.3833,
+   "startup_frames": 23,
+   "hit_level": "m?",
+   "on_block": "\u2013",
+   "on_hit": "+",
+   "on_ch": "+",
+   "notes": null,
+   "anim_ref": "t7:elz:0x4000:295",
+   "t7": {
+    "notation": "b+4",
+    "id": "elz_26",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+4",
+    "motbin_move_id": 1547,
+    "motbin_move_name": "Vp_rk00B",
+    "anim_name": "vpyt_at_hizark(DVD)",
+    "anim_id": 16679,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "elzrotsm.arc",
+     "section": 0,
+     "entry": 295,
+     "rel_offset": 2696860,
+     "size": 4576,
+     "format_word": 100,
+     "sha256": "e202d3161b1be3d38bb17de3b9df88789fab23c044e2f262094d5333e7ae00a2",
+     "blob_file": "elz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/b, b": {
+   "name": "u/b, b",
+   "name_source": "notation-only",
+   "input": "u/b, b",
+   "damage": null,
+   "damage_raw": null,
+   "startup": 0.3833,
+   "startup_frames": 23,
+   "hit_level": "(Special) (TJ)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u/b, b",
+    "id": "elz_27",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "u/b+3": {
+   "name": "u/b+3",
+   "name_source": "notation-only",
+   "input": "u/b+3",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "m (TJ)",
+   "on_block": "\u2013",
+   "on_hit": "\u2013",
+   "on_ch": "\u2013",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u/b+3",
+    "id": "elz_28",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "u+3": {
+   "name": "u+3",
+   "name_source": "notation-only",
+   "input": "u+3",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "m (TJ)",
+   "on_block": "\u2013",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u+3",
+    "id": "elz_29",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "u/f+3": {
+   "name": "u/f+3",
+   "name_source": "notation-only",
+   "input": "u/f+3",
+   "damage": 25,
+   "damage_raw": "25",
+   "startup": 0.3167,
+   "startup_frames": 19,
+   "hit_level": "m (TJ)",
+   "on_block": "-13",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u/f+3",
+    "id": "elz_30",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "u/b or u or u/f+4": {
+   "name": "u/b or u or u/f+4",
+   "name_source": "notation-only",
+   "input": "u/b or u or u/f+4",
+   "damage": 10,
+   "damage_raw": "10",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "m (TJ)",
+   "on_block": "\u2013",
+   "on_hit": "+",
+   "on_ch": "+",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u/b or u or u/f+4",
+    "id": "elz_31",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "u/f+4, 2": {
+   "name": "u/f+4, 2",
+   "name_source": "notation-only",
+   "input": "u/f+4, 2",
+   "damage": 10,
+   "damage_raw": "10,10",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "m (TJ), m",
+   "on_block": "\u2013",
+   "on_hit": "BU",
+   "on_ch": "BU",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u/f+4, 2",
+    "id": "elz_32",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "u/f+4, 2, qcf+2": {
+   "name": "u/f+4, 2, qcf+2",
+   "name_source": "notation-only",
+   "input": "u/f+4, 2, qcf+2",
+   "damage": 10,
+   "damage_raw": "10,10,20",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "m (TJ), m, Sm(DW)",
+   "on_block": "\u2013",
+   "on_hit": "TKF(KND)",
+   "on_ch": "TKF(KND)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u/f+4, 2, qcf+2",
+    "id": "elz_33",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "u/f+1+2": {
+   "name": "u/f+1+2",
+   "name_source": "notation-only",
+   "input": "u/f+1+2",
+   "damage": 40,
+   "damage_raw": "40",
+   "startup": 0.85,
+   "startup_frames": 51,
+   "hit_level": "! (TJ)",
+   "on_block": "KND",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u/f+1+2",
+    "id": "elz_34",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, F+2": {
+   "name": "f, F+2",
+   "name_source": "notation-only",
+   "input": "f, F+2",
+   "damage": 25,
+   "damage_raw": "25",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m(, (Special))(DS)",
+   "on_block": "\u2013",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+2",
+    "id": "elz_35",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, F+2 When hit , b": {
+   "name": "f, F+2 When hit , b",
+   "name_source": "notation-only",
+   "input": "f, F+2 When hit , b",
+   "damage": 25,
+   "damage_raw": "25",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": null,
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+2 When hit , b",
+    "id": "elz_36",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "f, f+2 When hit or MG 2 When hit": {
+   "name": "f, f+2 When hit or MG 2 When hit",
+   "name_source": "notation-only",
+   "input": "f, f+2 When hit or MG 2 When hit",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "(DS)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, f+2 When hit or MG 2 When hit",
+    "id": "elz_37",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, f, f+3 or 2+4+3": {
+   "name": "Vp_FUN_2",
+   "name_source": "motbin-internal",
+   "input": "f, f, f+3 or 2+4+3",
+   "damage": 30,
+   "damage_raw": "30",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "+",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:elz:0x4000:464",
+   "t7": {
+    "notation": "f, f, f+3 or 2+4+3",
+    "id": "elz_38",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "2+4+3",
+    "motbin_move_id": 1913,
+    "motbin_move_name": "Vp_FUN_2",
+    "anim_name": "vpkb_ap_akubi(DVD)",
+    "anim_id": 16848,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "elzrotsm.arc",
+     "section": 0,
+     "entry": 464,
+     "rel_offset": 3494060,
+     "size": 6284,
+     "format_word": 100,
+     "sha256": "8caca40b660278c452faf537ed094499bd4bf3e07e6224ebe3db228a02c7a54a",
+     "blob_file": "elz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "WS+1": {
+   "name": "WS+1",
+   "name_source": "notation-only",
+   "input": "WS+1",
+   "damage": 12,
+   "damage_raw": "12",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "\u2013",
+   "on_hit": "+",
+   "on_ch": "+",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+1",
+    "id": "elz_39",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Jn_syalp00",
+     "Vp_t_srpF",
+     "Vp_lp00",
+     "Vp_3rplk",
+     "Vp_lprp",
+     "Vp_rprk"
+    ]
+   }
+  },
+  "WS+1, 4": {
+   "name": "Vp_rprk",
+   "name_source": "motbin-internal",
+   "input": "WS+1, 4",
+   "damage": 12,
+   "damage_raw": "12,16",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m",
+   "on_block": "-9?",
+   "on_hit": "+",
+   "on_ch": "+",
+   "notes": null,
+   "anim_ref": "t7:elz:0x4000:285",
+   "t7": {
+    "notation": "WS+1, 4",
+    "id": "elz_40",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "WS+1, 4",
+    "motbin_move_id": 1529,
+    "motbin_move_name": "Vp_rprk",
+    "anim_name": "vpyt_at_pugyaaa_pan_rk(DVD)",
+    "anim_id": 16669,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "elzrotsm.arc",
+     "section": 0,
+     "entry": 285,
+     "rel_offset": 2658184,
+     "size": 4668,
+     "format_word": 100,
+     "sha256": "959c31040705480c8a7dff769697133322eeafd99c63607785dba399b2f4dd19",
+     "blob_file": "elz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "WS+2": {
+   "name": "WS+2",
+   "name_source": "notation-only",
+   "input": "WS+2",
+   "damage": 18,
+   "damage_raw": "18",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "m",
+   "on_block": "\u2013",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+2",
+    "id": "elz_41",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Co_syarp00",
+     "Vp_lp00",
+     "Jn_rp00",
+     "Vp_lprp",
+     "Vp_rprp",
+     "Vp_rprk"
+    ]
+   }
+  },
+  "WS+3": {
+   "name": "Vp_lrp",
+   "name_source": "motbin-internal",
+   "input": "WS+3",
+   "damage": 21,
+   "damage_raw": "21",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "\u2013",
+   "on_hit": "+",
+   "on_ch": "+",
+   "notes": null,
+   "anim_ref": "t7:elz:0x4000:360",
+   "t7": {
+    "notation": "WS+3",
+    "id": "elz_42",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "WS+3",
+    "motbin_move_id": 1680,
+    "motbin_move_name": "Vp_lrp",
+    "anim_name": "vpyt_at_6wp(DVD)",
+    "anim_id": 16744,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "elzrotsm.arc",
+     "section": 0,
+     "entry": 360,
+     "rel_offset": 2935056,
+     "size": 4816,
+     "format_word": 100,
+     "sha256": "8f9184b77ae138bc35e109c56cf68e3fcb95b2c0dca6006c3e6389fda350f8ef",
+     "blob_file": "elz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [21]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1680
+    ]
+   }
+  },
+  "Opponent Down d+3+4": {
+   "name": "Opponent Down d+3+4",
+   "name_source": "notation-only",
+   "input": "Opponent Down d+3+4",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": 0.3833,
+   "startup_frames": 23,
+   "hit_level": "On grounded opponent(l)",
+   "on_block": "\u2013",
+   "on_hit": "-?",
+   "on_ch": "-?",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "Opponent Down d+3+4",
+    "id": "elz_43",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1+3+4": {
+   "name": "1+3+4",
+   "name_source": "notation-only",
+   "input": "1+3+4",
+   "damage": null,
+   "damage_raw": null,
+   "startup": 0.3833,
+   "startup_frames": 23,
+   "hit_level": "(Special)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1+3+4",
+    "id": "elz_44",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f+4": {
+   "name": "Moon Glide",
+   "name_source": "mvl",
+   "input": "f+4",
+   "damage": null,
+   "damage_raw": null,
+   "startup": 0.3833,
+   "startup_frames": 23,
+   "hit_level": "(MG)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": "t7:elz:0x4000:341",
+   "t7": {
+    "notation": "f+4",
+    "id": "elz_45",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+4",
+    "motbin_move_id": 1649,
+    "motbin_move_name": "Vp_dash_C",
+    "anim_name": "vpyt_at_dashvan(DVD)",
+    "anim_id": 16725,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "elzrotsm.arc",
+     "section": 0,
+     "entry": 341,
+     "rel_offset": 2851132,
+     "size": 4012,
+     "format_word": 100,
+     "sha256": "427a4e61680b1a82bcade68832c85c3f84791cc072f96d171c29578e4337cd12",
+     "blob_file": "elz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "MG 1": {
+   "name": "MG 1",
+   "name_source": "notation-only",
+   "input": "MG 1",
+   "damage": 11,
+   "damage_raw": "11",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "\u2013",
+   "on_hit": "+",
+   "on_ch": "+",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "MG 1",
+    "id": "elz_46",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "MG 1, 2": {
+   "name": "MG 1, 2",
+   "name_source": "notation-only",
+   "input": "MG 1, 2",
+   "damage": 11,
+   "damage_raw": "11,12",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h, h",
+   "on_block": "\u2013",
+   "on_hit": "+",
+   "on_ch": "+",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "MG 1, 2",
+    "id": "elz_47",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "DS f+4, 1, 2, 1+2": {
+   "name": "DS f+4, 1, 2, 1+2",
+   "name_source": "notation-only",
+   "input": "DS f+4, 1, 2, 1+2",
+   "damage": 11,
+   "damage_raw": "11,12,21",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h, h, m(DS)",
+   "on_block": "\u2013",
+   "on_hit": "KND",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "DS f+4, 1, 2, 1+2",
+    "id": "elz_48",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "MG 2": {
+   "name": "MG 2",
+   "name_source": "notation-only",
+   "input": "MG 2",
+   "damage": 25,
+   "damage_raw": "25",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m(, (Special))(DS)",
+   "on_block": "\u2013",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "MG 2",
+    "id": "elz_49",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "MG 4": {
+   "name": "MG 4",
+   "name_source": "notation-only",
+   "input": "MG 4",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l",
+   "on_block": "\u2013",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "MG 4",
+    "id": "elz_50",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "qcf+2 or FC+qcf+2 (to DW)": {
+   "name": "qcf+2 or FC+qcf+2 (to DW)",
+   "name_source": "notation-only",
+   "input": "qcf+2 or FC+qcf+2 (to DW)",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm(DW)",
+   "on_block": "\u2013",
+   "on_hit": "TKF(KND)",
+   "on_ch": "TKF(KND)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "qcf+2 or FC+qcf+2 (to DW)",
+    "id": "elz_51",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "DWF": {
+   "name": "DWF",
+   "name_source": "notation-only",
+   "input": "DWF",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm, (MG)",
+   "on_block": "\u2013",
+   "on_hit": "TKF(KND)",
+   "on_ch": "TKF(KND)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "DWF",
+    "id": "elz_52",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "DW D/F (Cancel)": {
+   "name": "DW D/F (Cancel)",
+   "name_source": "notation-only",
+   "input": "DW D/F (Cancel)",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "(MG)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "DW D/F (Cancel)",
+    "id": "elz_53",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "qcf+1 or FC+qcf+1": {
+   "name": "qcf+1 or FC+qcf+1",
+   "name_source": "notation-only",
+   "input": "qcf+1 or FC+qcf+1",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm?",
+   "on_block": "\u2013",
+   "on_hit": "KND",
+   "on_ch": "KND?",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "qcf+1 or FC+qcf+1",
+    "id": "elz_54",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "qcf+1+2 or FC+qcf+1+2": {
+   "name": "Vp_lrp",
+   "name_source": "motbin-internal",
+   "input": "qcf+1+2 or FC+qcf+1+2",
+   "damage": 40,
+   "damage_raw": "40",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "!",
+   "on_block": "KND",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:elz:0x4000:360",
+   "t7": {
+    "notation": "qcf+1+2 or FC+qcf+1+2",
+    "id": "elz_55",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "qcf+1+2",
+    "motbin_move_id": 1680,
+    "motbin_move_name": "Vp_lrp",
+    "anim_name": "vpyt_at_6wp(DVD)",
+    "anim_id": 16744,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "elzrotsm.arc",
+     "section": 0,
+     "entry": 360,
+     "rel_offset": 2935056,
+     "size": 4816,
+     "format_word": 100,
+     "sha256": "8f9184b77ae138bc35e109c56cf68e3fcb95b2c0dca6006c3e6389fda350f8ef",
+     "blob_file": "elz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f, n, d, d/f+2": {
+   "name": "Dark Blade",
+   "name_source": "mvl",
+   "input": "f, n, d, d/f+2",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm? x 3",
+   "on_block": "\u2013",
+   "on_hit": "Launch",
+   "on_ch": "Launch",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, n, d, d/f+2",
+    "id": "elz_56",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Co_syarp00",
+     "Vp_t_srpF",
+     "Vp_3rplk"
+    ]
+   }
+  },
+  "Command": {
+   "name": "Command",
+   "name_source": "notation-only",
+   "input": "Command",
+   "damage": null,
+   "damage_raw": "Damage",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Hit level",
+   "on_block": "Block frame",
+   "on_hit": "Hit frame",
+   "on_ch": "Counter hit frame",
+   "notes": "Notes",
+   "anim_ref": null,
+   "t7": {
+    "notation": "Command",
+    "id": "elz_57",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f+1": {
+   "name": "Vp_lp00",
+   "name_source": "motbin-internal",
+   "input": "f+1",
+   "damage": 7,
+   "damage_raw": "7",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h",
+   "on_block": "+1",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": "t7:elz:0x4000:274",
+   "t7": {
+    "notation": "f+1",
+    "id": "elz_58",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+1",
+    "motbin_move_id": 1503,
+    "motbin_move_name": "Vp_lp00",
+    "anim_name": "vpyt_at_pugyaaa(DVD)",
+    "anim_id": 16658,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "elzrotsm.arc",
+     "section": 0,
+     "entry": 274,
+     "rel_offset": 2627068,
+     "size": 3420,
+     "format_word": 100,
+     "sha256": "2227c6835a0a4df033553905eb132cdd6e70ee87872940c6fdd0dd2246228554",
+     "blob_file": "elz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [7]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1503
+    ]
+   }
+  },
+  "f+2": {
+   "name": "f+2",
+   "name_source": "notation-only",
+   "input": "f+2",
+   "damage": 10,
+   "damage_raw": "10",
+   "startup": 0.2,
+   "startup_frames": 12,
+   "hit_level": "h",
+   "on_block": "-6",
+   "on_hit": "+5",
+   "on_ch": "+5",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f+2",
+    "id": "elz_59",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Jn_rp00",
+     "Vp_rprp"
+    ]
+   }
+  },
+  "f+3": {
+   "name": "Fierce Sting",
+   "name_source": "mvl",
+   "input": "f+3",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "h",
+   "on_block": "\u2013",
+   "on_hit": "+",
+   "on_ch": "+",
+   "notes": null,
+   "anim_ref": "t7:elz:0x0000:102",
+   "t7": {
+    "notation": "f+3",
+    "id": "elz_60",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+3",
+    "motbin_move_id": 1545,
+    "motbin_move_name": "Vp_6lk",
+    "anim_name": "vpyt_s3_at_yokogeri",
+    "anim_id": 102,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x0000",
+     "source": "elzmot.bin",
+     "section": 0,
+     "entry": 102,
+     "rel_offset": 1865868,
+     "size": 4720,
+     "format_word": 100,
+     "sha256": "e0da81bccf8272939196b2c44c4fbef47f61057a1ecfc66437f0a4160f32e9ed",
+     "blob_file": "elz_bank0_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+4 (to MG)": {
+   "name": "Vp_dash_C",
+   "name_source": "motbin-internal",
+   "input": "f+4 (to MG)",
+   "damage": null,
+   "damage_raw": null,
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "(MG)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": "t7:elz:0x4000:341",
+   "t7": {
+    "notation": "f+4 (to MG)",
+    "id": "elz_61",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+4",
+    "motbin_move_id": 1649,
+    "motbin_move_name": "Vp_dash_C",
+    "anim_name": "vpyt_at_dashvan(DVD)",
+    "anim_id": 16725,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "elzrotsm.arc",
+     "section": 0,
+     "entry": 341,
+     "rel_offset": 2851132,
+     "size": 4012,
+     "format_word": 100,
+     "sha256": "427a4e61680b1a82bcade68832c85c3f84791cc072f96d171c29578e4337cd12",
+     "blob_file": "elz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f, F+1": {
+   "name": "f, F+1",
+   "name_source": "notation-only",
+   "input": "f, F+1",
+   "damage": 7,
+   "damage_raw": "7",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "+1",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+1",
+    "id": "elz_62",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, F+2__2": {
+   "name": "f, F+2",
+   "name_source": "notation-only",
+   "input": "f, F+2",
+   "damage": 25,
+   "damage_raw": "25",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m(, (Special))",
+   "on_block": "\u2013",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+2",
+    "id": "elz_63",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, F+3": {
+   "name": "f, F+3",
+   "name_source": "notation-only",
+   "input": "f, F+3",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "\u2013",
+   "on_hit": "+",
+   "on_ch": "+",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+3",
+    "id": "elz_64",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, F+4 (to MG)": {
+   "name": "f, F+4 (to MG)",
+   "name_source": "notation-only",
+   "input": "f, F+4 (to MG)",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "(MG)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+4 (to MG)",
+    "id": "elz_65",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "d+1": {
+   "name": "Sitting Jab",
+   "name_source": "mvl",
+   "input": "d+1",
+   "damage": 5,
+   "damage_raw": "5",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm (TC)",
+   "on_block": "-5",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": "t7:elz:0x4000:306",
+   "t7": {
+    "notation": "d+1",
+    "id": "elz_66",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+1",
+    "motbin_move_id": 1586,
+    "motbin_move_name": "Jn_t_slp00",
+    "anim_name": "vpyt_at_syalp(DVD)",
+    "anim_id": 16690,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "elzrotsm.arc",
+     "section": 0,
+     "entry": 306,
+     "rel_offset": 2721444,
+     "size": 3184,
+     "format_word": 100,
+     "sha256": "441959dae42dc70c09ab1ffa5f7bedd08abe831868f47ebcc8f0ed8987e13736",
+     "blob_file": "elz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d+2": {
+   "name": "Sitting Claw",
+   "name_source": "mvl",
+   "input": "d+2",
+   "damage": 8,
+   "damage_raw": "8",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm (TC)",
+   "on_block": "-4",
+   "on_hit": "+7",
+   "on_ch": "+7",
+   "notes": null,
+   "anim_ref": "t7:elz:0x4000:308",
+   "t7": {
+    "notation": "d+2",
+    "id": "elz_67",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+2",
+    "motbin_move_id": 1627,
+    "motbin_move_name": "Co_t_srp00",
+    "anim_name": "vpyt_at_syarp(DVD)",
+    "anim_id": 16692,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "elzrotsm.arc",
+     "section": 0,
+     "entry": 308,
+     "rel_offset": 2724628,
+     "size": 4324,
+     "format_word": 100,
+     "sha256": "ffc16752c30b9ea1873bc749ae7309434b27a461e3f5980514a75cbd567ee0e6",
+     "blob_file": "elz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d+3": {
+   "name": "Sweeping Scarlet",
+   "name_source": "mvl",
+   "input": "d+3",
+   "damage": 12,
+   "damage_raw": "12",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "\u2013",
+   "on_hit": "+",
+   "on_ch": "+",
+   "notes": null,
+   "anim_ref": "t7:elz:0x0000:107",
+   "t7": {
+    "notation": "d+3",
+    "id": "elz_68",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+3",
+    "motbin_move_id": 1587,
+    "motbin_move_name": "Vp_t_slk00",
+    "anim_name": "vpss_s4_2lk",
+    "anim_id": 107,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x0000",
+     "source": "elzmot.bin",
+     "section": 0,
+     "entry": 107,
+     "rel_offset": 1870588,
+     "size": 4060,
+     "format_word": 100,
+     "sha256": "37d5125de139c86289b6bf82032422265f0b137f7eb8e402c6628ecc925566ae",
+     "blob_file": "elz_bank0_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d+4": {
+   "name": "Horizon Ring",
+   "name_source": "mvl",
+   "input": "d+4",
+   "damage": 7,
+   "damage_raw": "7",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-13",
+   "on_hit": "-2",
+   "on_ch": "-2",
+   "notes": null,
+   "anim_ref": "t7:elz:0x0000:108",
+   "t7": {
+    "notation": "d+4",
+    "id": "elz_69",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+4",
+    "motbin_move_id": 1591,
+    "motbin_move_name": "Co_t_srk00",
+    "anim_name": "vpss_s4_1rk",
+    "anim_id": 108,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x0000",
+     "source": "elzmot.bin",
+     "section": 0,
+     "entry": 108,
+     "rel_offset": 1874648,
+     "size": 4848,
+     "format_word": 100,
+     "sha256": "0937716f8d3c75680f2933326b5e94129f6eb2d08372fc6ce15620d5dfbd248e",
+     "blob_file": "elz_bank0_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+1": {
+   "name": "Jn_t_slp00",
+   "name_source": "motbin-internal",
+   "input": "d/b+1",
+   "damage": 5,
+   "damage_raw": "5",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm (TC)",
+   "on_block": "-5",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": "t7:elz:0x4000:306",
+   "t7": {
+    "notation": "d/b+1",
+    "id": "elz_70",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+1",
+    "motbin_move_id": 1586,
+    "motbin_move_name": "Jn_t_slp00",
+    "anim_name": "vpyt_at_syalp(DVD)",
+    "anim_id": 16690,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "elzrotsm.arc",
+     "section": 0,
+     "entry": 306,
+     "rel_offset": 2721444,
+     "size": 3184,
+     "format_word": 100,
+     "sha256": "441959dae42dc70c09ab1ffa5f7bedd08abe831868f47ebcc8f0ed8987e13736",
+     "blob_file": "elz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+2": {
+   "name": "Co_t_srp00",
+   "name_source": "motbin-internal",
+   "input": "d/b+2",
+   "damage": 8,
+   "damage_raw": "8",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm (TC)",
+   "on_block": "-4",
+   "on_hit": "+7",
+   "on_ch": "+7",
+   "notes": null,
+   "anim_ref": "t7:elz:0x4000:308",
+   "t7": {
+    "notation": "d/b+2",
+    "id": "elz_71",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+2",
+    "motbin_move_id": 1627,
+    "motbin_move_name": "Co_t_srp00",
+    "anim_name": "vpyt_at_syarp(DVD)",
+    "anim_id": 16692,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "elzrotsm.arc",
+     "section": 0,
+     "entry": 308,
+     "rel_offset": 2724628,
+     "size": 4324,
+     "format_word": 100,
+     "sha256": "ffc16752c30b9ea1873bc749ae7309434b27a461e3f5980514a75cbd567ee0e6",
+     "blob_file": "elz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+3__2": {
+   "name": "Vp_t_slk00",
+   "name_source": "motbin-internal",
+   "input": "d/b+3",
+   "damage": 24,
+   "damage_raw": "24",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)?",
+   "on_block": "\u2013",
+   "on_hit": "+1?s",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:elz:0x0000:107",
+   "t7": {
+    "notation": "d/b+3",
+    "id": "elz_72",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+3",
+    "motbin_move_id": 1587,
+    "motbin_move_name": "Vp_t_slk00",
+    "anim_name": "vpss_s4_2lk",
+    "anim_id": 107,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x0000",
+     "source": "elzmot.bin",
+     "section": 0,
+     "entry": 107,
+     "rel_offset": 1870588,
+     "size": 4060,
+     "format_word": 100,
+     "sha256": "37d5125de139c86289b6bf82032422265f0b137f7eb8e402c6628ecc925566ae",
+     "blob_file": "elz_bank0_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "FC+1": {
+   "name": "FC+1",
+   "name_source": "notation-only",
+   "input": "FC+1",
+   "damage": 5,
+   "damage_raw": "5",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm (TC)",
+   "on_block": "-5",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FC+1",
+    "id": "elz_73",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "FC+2": {
+   "name": "FC+2",
+   "name_source": "notation-only",
+   "input": "FC+2",
+   "damage": 8,
+   "damage_raw": "8",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm (TC)",
+   "on_block": "-4",
+   "on_hit": "+7",
+   "on_ch": "+7",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FC+2",
+    "id": "elz_74",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "FC+d/b or d+3": {
+   "name": "Vp_t_slk00",
+   "name_source": "motbin-internal",
+   "input": "FC+d/b or d+3",
+   "damage": 12,
+   "damage_raw": "12",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "\u2013",
+   "on_hit": "+",
+   "on_ch": "+",
+   "notes": null,
+   "anim_ref": "t7:elz:0x0000:107",
+   "t7": {
+    "notation": "FC+d/b or d+3",
+    "id": "elz_75",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+3",
+    "motbin_move_id": 1587,
+    "motbin_move_name": "Vp_t_slk00",
+    "anim_name": "vpss_s4_2lk",
+    "anim_id": 107,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x0000",
+     "source": "elzmot.bin",
+     "section": 0,
+     "entry": 107,
+     "rel_offset": 1870588,
+     "size": 4060,
+     "format_word": 100,
+     "sha256": "37d5125de139c86289b6bf82032422265f0b137f7eb8e402c6628ecc925566ae",
+     "blob_file": "elz_bank0_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "FC+d/f+3": {
+   "name": "FC+d/f+3",
+   "name_source": "notation-only",
+   "input": "FC+d/f+3",
+   "damage": 12,
+   "damage_raw": "12",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-17",
+   "on_hit": "-3",
+   "on_ch": "-3",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FC+d/f+3",
+    "id": "elz_76",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "FC+4": {
+   "name": "FC+4",
+   "name_source": "notation-only",
+   "input": "FC+4",
+   "damage": 10,
+   "damage_raw": "10",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-15",
+   "on_hit": "-4",
+   "on_ch": "-4",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FC+4",
+    "id": "elz_77",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "WS+4": {
+   "name": "WS+4",
+   "name_source": "notation-only",
+   "input": "WS+4",
+   "damage": 15,
+   "damage_raw": "15",
+   "startup": 0.1833,
+   "startup_frames": 11,
+   "hit_level": "m",
+   "on_block": "-5",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+4",
+    "id": "elz_78",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Jn_syark00",
+     "Vp_lrp",
+     "Vp_rk00"
+    ]
+   }
+  },
+  "d/f+3__2": {
+   "name": "Astral Shot",
+   "name_source": "mvl",
+   "input": "d/f+3",
+   "damage": 24,
+   "damage_raw": "24",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "m",
+   "on_block": "-9?",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Homing",
+   "anim_ref": "t7:elz:0x4000:322",
+   "t7": {
+    "notation": "d/f+3",
+    "id": "elz_79",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+3",
+    "motbin_move_id": 1599,
+    "motbin_move_name": "Vp_t_slkF",
+    "anim_name": "vpsj_new_sa(DVD)",
+    "anim_id": 16706,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "elzrotsm.arc",
+     "section": 0,
+     "entry": 322,
+     "rel_offset": 2762700,
+     "size": 6840,
+     "format_word": 100,
+     "sha256": "e4fa5a8fe5c6dfc9ad7263fd0dfc58a8ebfab4d427eac3bf3431b11adff751d3",
+     "blob_file": "elz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [24]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1599
+    ]
+   }
+  },
+  "u/b or u or u/f+1": {
+   "name": "u/b or u or u/f+1",
+   "name_source": "notation-only",
+   "input": "u/b or u or u/f+1",
+   "damage": 12,
+   "damage_raw": "12",
+   "startup": 0.3,
+   "startup_frames": 18,
+   "hit_level": "m (TJ)",
+   "on_block": "-8",
+   "on_hit": "+3",
+   "on_ch": "+3",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u/b or u or u/f+1",
+    "id": "elz_80",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "u/b or u or u/f+2": {
+   "name": "u/b or u or u/f+2",
+   "name_source": "notation-only",
+   "input": "u/b or u or u/f+2",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-12~-11",
+   "on_hit": "+9~+10g",
+   "on_ch": "+9~+10g",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u/b or u or u/f+2",
+    "id": "elz_81",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "SS+1": {
+   "name": "Vp_lp00",
+   "name_source": "motbin-internal",
+   "input": "SS+1",
+   "damage": 7,
+   "damage_raw": "7",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "+1",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": "t7:elz:0x4000:274",
+   "t7": {
+    "notation": "SS+1",
+    "id": "elz_82",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "SS+1",
+    "motbin_move_id": 1503,
+    "motbin_move_name": "Vp_lp00",
+    "anim_name": "vpyt_at_pugyaaa(DVD)",
+    "anim_id": 16658,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "elzrotsm.arc",
+     "section": 0,
+     "entry": 274,
+     "rel_offset": 2627068,
+     "size": 3420,
+     "format_word": 100,
+     "sha256": "2227c6835a0a4df033553905eb132cdd6e70ee87872940c6fdd0dd2246228554",
+     "blob_file": "elz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [7]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1503
+    ]
+   }
+  },
+  "SS+2": {
+   "name": "Vp_lprp",
+   "name_source": "motbin-internal",
+   "input": "SS+2",
+   "damage": 10,
+   "damage_raw": "10",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-6",
+   "on_hit": "+5",
+   "on_ch": "+5",
+   "notes": null,
+   "anim_ref": "t7:elz:0x4000:278",
+   "t7": {
+    "notation": "SS+2",
+    "id": "elz_83",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "SS+2",
+    "motbin_move_id": 1515,
+    "motbin_move_name": "Vp_lprp",
+    "anim_name": "vpyt_at_pugyaaa_pan(DVD)",
+    "anim_id": 16662,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "elzrotsm.arc",
+     "section": 0,
+     "entry": 278,
+     "rel_offset": 2634364,
+     "size": 4352,
+     "format_word": 100,
+     "sha256": "f2ca2265c71a774cd472ce80d06667cbf389ff4ce02ea1540a005341af2c2c90",
+     "blob_file": "elz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [10]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1515
+    ]
+   }
+  },
+  "SS+3": {
+   "name": "SS+3",
+   "name_source": "notation-only",
+   "input": "SS+3",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "\u2013",
+   "on_hit": "+",
+   "on_ch": "+",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "SS+3",
+    "id": "elz_84",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Jn_sWALKF",
+     "Jn_lk00",
+     "sWALK_00FMv",
+     "Jn_sDASHF",
+     "Vp_t_srpF",
+     "Jn_rp00",
+     "Vp_lp00",
+     "Vp_lrp"
+    ]
+   }
+  },
+  "SS+4": {
+   "name": "SS+4",
+   "name_source": "notation-only",
+   "input": "SS+4",
+   "damage": 24,
+   "damage_raw": "24",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "\u2013",
+   "on_hit": "KND",
+   "on_ch": "SCD",
+   "notes": "Homing, Tail spin",
+   "anim_ref": null,
+   "t7": {
+    "notation": "SS+4",
+    "id": "elz_85",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Vp_lrp",
+     "Vp_rk00"
+    ]
+   }
+  },
+  "BT 1 or 2": {
+   "name": "BT 1 or 2",
+   "name_source": "notation-only",
+   "input": "BT 1 or 2",
+   "damage": 15,
+   "damage_raw": "15",
+   "startup": 0.1333,
+   "startup_frames": 8,
+   "hit_level": "h",
+   "on_block": "-8",
+   "on_hit": "+3",
+   "on_ch": "+3",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "BT 1 or 2",
+    "id": "elz_86",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Vp_lp00",
+     "Jn_rp00",
+     "Vp_lprp",
+     "Vp_rprp",
+     "Vp_rprk"
+    ]
+   }
+  },
+  "BT 3 or 4": {
+   "name": "BT 3 or 4",
+   "name_source": "notation-only",
+   "input": "BT 3 or 4",
+   "damage": 25,
+   "damage_raw": "25",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h",
+   "on_block": "-8",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "BT 3 or 4",
+    "id": "elz_87",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Vp_lrp",
+     "Vp_rk00"
+    ]
+   }
+  }
+ }
+}
