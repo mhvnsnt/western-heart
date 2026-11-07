@@ -13,6 +13,7 @@ Source: owner's own Steam purchase of TEKKEN 7 (app 389730, main depot 389731, m
 
 ## Extracted so far
 ### pakchunk0-WindowsNoEditor.pak (20.1 GB raw, deleted after extraction)
+Output: `teardown/tekken7-steam/pakchunk0/`. `manifest.json` lists every file and its joint count.
 Output (PRIVATE repo mhvnsnt/game-reverse-engineering, PR #51): `teardown/tekken7-steam/pakchunk0/`. `manifest.json` lists every file and its joint count.
 - 200 skeletal meshes as glb: base 1P costume (face, hair, upper, lower) for 38 codes, including **asa (Alisa → Cape/Cyborg-X), lee (Lee → Purple Rain), bob (Bob → Burger)**, plus kin, yos, xia, jin, bry, hei, jac, lar, hwo, nin, edd, ask, mig, mrx, ltn, lil, kaz and others.
 - Rig: the T7 skeleton `SKT_CH_base_Skeleton` has about 207–233 joints per mesh. That is far more than 52, so under the "most bones" rule it becomes the preferred rig.
@@ -21,6 +22,7 @@ Output (PRIVATE repo mhvnsnt/game-reverse-engineering, PR #51): `teardown/tekken
 
 ### Content/Binary/tkdata.bin (305 MB raw, deleted after extraction)
 - Unpacked with `tools/extract/t7/t7_tkdata.py`, a Python port of the community `tkdata.bms` v0.2.1. It uses the tkdata AES key published in that public script. The archive holds 1087 files.
+- Output: `teardown/tekken7-steam/tkdata/`
 - Output (PRIVATE repo mhvnsnt/game-reverse-engineering, PR #51): `teardown/tekken7-steam/tkdata/`
   - `mothead/bin/<code>mot.bin`: **full movesets for every T7 character, DLC included** (moves, cancels, hit and frame data, throws). Examples: `asamot.bin` (Alisa → Cape), `leemot.bin` (Lee → Purple Rain), `bobmot.bin` (Bob → Burger).
   - `mothead/movelist`, `mothead/nua`, `mothead/mask`: command lists and related data.
