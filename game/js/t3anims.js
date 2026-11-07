@@ -1707,7 +1707,7 @@ const ARM_CORR_SHOULDER_MIN_DEG = 25;
 const ARM_CORR_JOINTS = ['LeftShoulder', 'LeftArm', 'LeftForeArm', 'LeftHand',
   'RightShoulder', 'RightArm', 'RightForeArm', 'RightHand'];
 const ARM_CHAIN = ['Shoulder', 'Arm', 'ForeArm', 'Hand']; // top-down per side
-function estimateArmCorr(rig, skel, stanceClip, probeClip, THREE) {
+function estimateArmCorr(rig, skel, stanceClip, probeClip, THREE, shoulderGateDeg) {
   // Returns undefined when the stance data needed is not in this
   // call (defer), null when the (bank, rig) pair measures clean,
   // else { jointName: thetaRad } for the joints over their gate.
@@ -1821,7 +1821,14 @@ function estimateArmCorr(rig, skel, stanceClip, probeClip, THREE) {
         return circMean(angs);
       };
       const base = errAt(0);
-      const gate = (role === 'Shoulder' ? ARM_CORR_SHOULDER_MIN_DEG : ARM_CORR_MIN_DEG) * Math.PI / 180;
+      // Shoulder gate: the raised shoulder gate exists because an
+      // uncorrected shoulder twist entangles with the torso-match
+      // split on the bank's own frame. When a spine-pitch
+      // correction is active for this (bank, rig) pair, the torso
+      // frame has been deliberately re-pitched by this engine, so
+      // the shoulder's residual is dominated by that reframing —
+      // the caller passes the standard gate for that case.
+      const gate = (role === 'Shoulder' ? (shoulderGateDeg || ARM_CORR_SHOULDER_MIN_DEG) : ARM_CORR_MIN_DEG) * Math.PI / 180;
       if (Math.abs(base) < gate) continue;
       // Bisect around th0 = -base (the twist shift tracks theta
       // ~1:1 near the solution).
@@ -1839,6 +1846,166 @@ function estimateArmCorr(rig, skel, stanceClip, probeClip, THREE) {
     }
   }
   return Object.keys(out).length ? out : null;
+}
+
+/* ============================================================
+   SPINE-PITCH NORMALIZATION (2026-11-07, full-model audit —
+   owner on Demonio's stance pair: "He's still broken").
+
+   MEASURED ROOT CAUSE. The retarget transports bone directions
+   through rest-frame swings, so a target rig whose REST spine
+   chain carries a forward pitch keeps that pitch in every posed
+   frame. Demonio-a1's bind locals carry an S-curve (Hips local
+   pitch +14.5 deg, Neck +23.3 deg, measured from the GLB): jin's
+   stance Hips->Head line pitch is -7.6 deg on his own skeleton
+   (slight back-lean) but +9.3 deg posed on Demonio-a1 — a
+   hunched guard, head down in the mane, claws bunched at the
+   chest. Sam-ur-a1, the owner's control ("close to perfect"),
+   has a dead-straight bind (0.0 deg) and lands at -0.8 deg.
+
+   THE FIX (same measured-constant pattern as the head/arm
+   fixes; nothing authored). At the first retarget call that
+   carries the bank's stance, the stance is probed through the
+   real frame loop (arm constants applied, spine uncorrected):
+   the target's posed Hips->Head line pitch is measured by FK
+   from the probe's own tracks, the bank's by FK on its own
+   skeleton (sourcePosed). The gate engages ONLY on a
+   forward-hunched result (> SPINE_CORR_GATE_DEG): matching the
+   bank exactly is not the goal — Sam's -0.8 deg against
+   gunjack's -13.5 deg is owner-approved and stays untouched.
+   When engaged, one scalar counter-pitch theta is bisected
+   through the real loop so the target pitch becomes the gate;
+   in the frame loop theta is spread evenly over the source
+   spine joints (Spine, Spine1, Spine2, Chest, Neck) as
+   world-frame rotations about the bank's left axis, applied
+   while G composes so children inherit. The arm constants are
+   estimated AFTER the spine constant, from a probe built with
+   the correction applied, so they are tuned in the frame the
+   clips will play in; and while a spine correction is active
+   the Shoulder arm gate uses the standard 12 deg (the raised
+   25 deg shoulder gate guards the torso-match split on the
+   bank's own frame — once this layer re-pitches the torso,
+   the shoulder residual is dominated by the reframing, not
+   the split). Acting variation around the constant is
+   preserved. 't7:' skeletons are EXEMPT (head-fix precedent:
+   their stance pitches are authored acting, e.g. T7 King's
+   side-on guard).
+   ============================================================ */
+const SPINE_CORR_GATE_DEG = 5;
+const SPINE_CORR_JOINTS = ['Spine', 'Spine1', 'Spine2', 'Chest', 'Neck'];
+function _spineFwd(dirs, facesNegZ, THREE) {
+  const acc = new THREE.Vector3();
+  let n = 0;
+  for (const s of ['Left', 'Right']) {
+    const d = dirs && dirs[s + 'Foot'];
+    if (d && d !== 'leg' && d.lengthSq && d.lengthSq() > 1e-10) { acc.add(d); n++; }
+  }
+  if (n) { acc.y = 0; if (acc.lengthSq() > 1e-10) return acc.normalize(); }
+  return new THREE.Vector3(0, 0, facesNegZ ? -1 : 1);
+}
+/* Forward from a joint-position map's own geometry (toes, else
+   knee bulge) — always in the same frame as the positions, unlike
+   the dirs fallback, whose foot_tip can be rejected ('leg') or
+   whose sign flips on turned banks. */
+function _spineFwdFromPts(P, THREE) {
+  const acc = new THREE.Vector3();
+  let n = 0;
+  for (const s of ['Left', 'Right']) {
+    const f = P[s + 'Foot'], t = P[s + 'ToeBase'];
+    if (f && t) { const d = new THREE.Vector3().subVectors(t, f); d.y = 0; if (d.lengthSq() > 1e-10) { acc.add(d.normalize()); n++; } }
+  }
+  if (n) return acc.normalize();
+  for (const s of ['Left', 'Right']) {
+    const h = P[s + 'UpLeg'], k = P[s + 'Leg'], a = P[s + 'Foot'];
+    if (h && k && a) { const mid = new THREE.Vector3().addVectors(h, a).multiplyScalar(0.5); const d = new THREE.Vector3().subVectors(k, mid); d.y = 0; if (d.lengthSq() > 1e-10) { acc.add(d.normalize()); n++; } }
+  }
+  return n ? acc.normalize() : null;
+}
+function _linePitchDeg(hipsPos, headPos, fwd, THREE) {
+  const line = new THREE.Vector3().subVectors(headPos, hipsPos);
+  return Math.atan2(line.dot(fwd), line.y) * 180 / Math.PI;
+}
+/* Target posed Hips->Head line pitch from a built clip's tracks:
+   FK down the Head ancestor chain on rig rest offsets. */
+function _targetLinePitch(rig, clip, THREE) {
+  const head = rig.by.Head, hips = rig.by.Hips;
+  if (!head || !hips || !clip) return null;
+  const chain = [];
+  let b = head;
+  while (b && b.isBone) { chain.unshift(b); if (b === hips) break; b = b.parent; }
+  if (chain[0] !== hips || chain.length < 2) return null;
+  const tracks = {};
+  let nF = 0;
+  for (const bn of chain) {
+    const tr = clip.tracks.find(t => t.name === rig.trackName(bn) + '.quaternion');
+    if (tr) { tracks[bn.uuid] = tr.values; nF = Math.max(nF, Math.floor(tr.values.length / 4)); }
+  }
+  if (nF < 8) return null;
+  const locPos = {}, locQuat = {};
+  for (let i = 1; i < chain.length; i++) {
+    const rb = rig.rest(chain[i]), rp = rig.rest(chain[i - 1]);
+    locPos[chain[i].uuid] = rb.pos.clone().sub(rp.pos).applyQuaternion(rp.quat.clone().invert());
+    locQuat[chain[i].uuid] = rp.quat.clone().invert().multiply(rb.quat);
+  }
+  const Pt = {};
+  for (const s of ['Left', 'Right']) for (const r of ['Foot', 'ToeBase', 'UpLeg', 'Leg']) {
+    const bn = rig.by[s + r]; if (bn) Pt[s + r] = rig.rest(bn).pos;
+  }
+  const fwd = _spineFwdFromPts(Pt, THREE) || _spineFwd(rig.dirs, rig.facesNegZ, THREE);
+  const steps = Math.min(24, nF);
+  const Wq = {}, Wp = {};
+  let sum = 0, cnt = 0;
+  for (let s = 0; s < steps; s++) {
+    const f = Math.floor(s * nF / steps);
+    for (let i = 0; i < chain.length; i++) {
+      const bn = chain[i], vals = tracks[bn.uuid];
+      const q = vals ? new THREE.Quaternion(vals[f * 4], vals[f * 4 + 1], vals[f * 4 + 2], vals[f * 4 + 3]) : locQuat[bn.uuid];
+      if (i === 0) { Wq[bn.uuid] = q; Wp[bn.uuid] = rig.rest(bn).pos.clone(); }
+      else {
+        const par = chain[i - 1];
+        Wq[bn.uuid] = Wq[par.uuid].clone().multiply(q);
+        Wp[bn.uuid] = Wp[par.uuid].clone().add(locPos[bn.uuid].clone().applyQuaternion(Wq[par.uuid]));
+      }
+    }
+    sum += _linePitchDeg(Wp[hips.uuid], Wp[head.uuid], fwd, THREE); cnt++;
+  }
+  return cnt ? sum / cnt : null;
+}
+function estimateSpineCorr(rig, skel, stanceClip, buildProbe, THREE) {
+  // Returns undefined when the stance data needed is not in this
+  // call (defer), null when the (bank, rig) pair measures clean
+  // (target stance pitch at or under the gate), else the total
+  // counter-pitch theta in radians.
+  if (!rig || !skel || !stanceClip || !buildProbe) return undefined;
+  const raw = stanceClip.userData && stanceClip.userData.raw;
+  if (!raw || !raw.rot) return undefined;
+  const probe0 = buildProbe(0);
+  if (!probe0) return undefined;
+  const tgt0 = _targetLinePitch(rig, probe0, THREE);
+  if (tgt0 === null) return null;
+  if (tgt0 <= SPINE_CORR_GATE_DEG) return null;
+  // The desired pitch is the GATE itself, not the bank's pitch:
+  // in retarget space the transport is already near-exact (the
+  // bank's 18-joint composition measures within ~0.2 deg of the
+  // target), so the defect is purely the target rig's own bind
+  // pitch pushing the RESULT past what reads as a guard. Drive
+  // the result to the gate and no further — acting preserved,
+  // upright fighters untouched.
+  const desired = SPINE_CORR_GATE_DEG;
+  const pitchAt = (th) => { const c = buildProbe(th); return c ? _targetLinePitch(rig, c, THREE) : null; };
+  let lo = -1.2, hi = 1.2;
+  const plo = pitchAt(lo), phi = pitchAt(hi);
+  if (plo === null || phi === null) return null;
+  if ((plo - desired) * (phi - desired) > 0) return null;
+  let th = 0;
+  for (let it = 0; it < 20; it++) {
+    th = (lo + hi) / 2;
+    const pm = pitchAt(th);
+    if (pm === null) return null;
+    if (Math.abs(pm - desired) < 0.25) break;
+    if ((pm - desired) * (plo - desired) > 0) lo = th; else hi = th;
+  }
+  return th || null;
 }
 
 const _retargetCache = new WeakMap(); // model instance -> Map(bankId -> { rig, out: { action: clip } })
@@ -1969,10 +2136,24 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
   // One action's clip build, parameterized by the arm-frame
   // correction map (null = uncorrected) so the arm estimator's
   // probe pass and the production pass share the exact frame math.
-  const buildClip = (action, corr) => {
+  const buildClip = (action, corr, spineTheta) => {
     const clip = t3Clips[action];
     const raw = clip && clip.userData && clip.userData.raw;
     if (!raw) return null;
+    // SPINE-PITCH NORMALIZATION setup: bank left axis + the spine
+    // joints present in this bank, weighted evenly (see
+    // estimateSpineCorr). Applied while G composes, below.
+    let spineAxis = null, spineW = null;
+    if (spineTheta) {
+      const fwdS = _spineFwdFromPts(src.P, THREE) || _spineFwd(src.dirs, false, THREE);
+      spineAxis = new THREE.Vector3(0, 1, 0).cross(fwdS);
+      if (spineAxis.lengthSq() > 1e-10) {
+        spineAxis.normalize();
+        const present = SPINE_CORR_JOINTS.filter(jn => src.order.includes(jn));
+        spineW = {};
+        for (const jn of present) spineW[jn] = 1 / Math.max(1, present.length);
+      } else spineAxis = null;
+    }
     let n = 0;
     for (const j of src.order) if (raw.rot[j] && raw.rot[j].length > n) n = raw.rot[j].length;
     if (!n) return null;
@@ -1988,6 +2169,13 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
         if (r && r.length) { const v = r[Math.min(f, r.length - 1)]; q.set(v[0], v[1], v[2], v[3]); } else q.identity();
         const p = src.par[j];
         if (p && G[p]) q.premultiply(G[p]);
+        // SPINE-PITCH NORMALIZATION: spread the (bank, rig)
+        // counter-pitch over the spine joints while G composes,
+        // so child joints inherit it (see estimateSpineCorr).
+        if (spineAxis && spineW && spineW[j]) {
+          tmpQ.setFromAxisAngle(spineAxis, spineTheta * spineW[j]);
+          q.premultiply(tmpQ);
+        }
       }
       // HEAD-FRAME NORMALIZATION: counter-rotate the head's world
       // rotation by the bank's measured constant, in the chest
@@ -2182,18 +2370,38 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
     }
     return rc;
   };
+  // SPINE-PITCH NORMALIZATION runs FIRST: estimate this (bank,
+  // rig) pair's counter-pitch once, from the stance probed through
+  // the real loop, and cache it on the per-model entry (it depends
+  // on the rig's rest pose). The Hips->Head line it measures does
+  // not involve the arm joints, so it can be estimated before the
+  // arm constants exist. 't7:' skeletons are exempt (see
+  // estimateSpineCorr).
+  let spineCorr = cached ? cached.spineCorr : undefined;
+  if (spineCorr === undefined && !layerActive && !String(bankId).startsWith('t7:') && t3Clips.stance &&
+      (names.includes('stance') || (cached && cached.out.stance))) {
+    const est = estimateSpineCorr(rig, skel, t3Clips.stance, (th) => buildClip('stance', null, th), THREE);
+    if (est !== undefined) {
+      spineCorr = est;
+      if (est) console.log(`[WH-T3] bank '${bankId}': spine-pitch constant ${(est * 180 / Math.PI).toFixed(1)}° measured in its stance on this rig — normalized out of every clip (full-model audit 2026-11-07)`);
+    }
+  }
   // ARM-FRAME NORMALIZATION: estimate this (bank, rig) pair's arm
   // constants once, from the stance (probe = the stance built once
-  // uncorrected through the real loop above, or the uncorrected
-  // stance an earlier call already cached), and cache them on the
-  // per-model entry — they depend on the rig's rest pose, so they
-  // cannot live on the skeleton the way the head constant does.
+  // through the real loop above WITH the spine correction applied,
+  // so the constants are tuned in the frame the clips will actually
+  // play in — the spine joints are ancestors of the shoulders, and
+  // constants tuned in the uncorrected frame would leave a residual
+  // shoulder twist), and cache them on the per-model entry — they
+  // depend on the rig's rest pose, so they cannot live on the
+  // skeleton the way the head constant does.
   let armCorr = cached ? cached.armCorr : undefined;
   if (armCorr === undefined && !layerActive && t3Clips.stance &&
       (names.includes('stance') || (cached && cached.out.stance))) {
-    const probe = (cached && cached.out.stance) || buildClip('stance', null);
+    const probe = buildClip('stance', null, spineCorr || 0);
     if (probe) {
-      const est = estimateArmCorr(rig, skel, t3Clips.stance, probe, THREE);
+      const est = estimateArmCorr(rig, skel, t3Clips.stance, probe, THREE,
+        spineCorr ? ARM_CORR_MIN_DEG : undefined);
       if (est !== undefined) {
         armCorr = est;
         if (est) console.log(`[WH-T3] bank '${bankId}': arm-frame constants measured in its stance — normalized out of every clip (arm audit 2026-11-07): ` +
@@ -2203,11 +2411,12 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
   }
   for (const action of names) {
     if (cached && cached.out[storeKey(action)]) { out[storeKey(action)] = cached.out[storeKey(action)]; continue; }
-    const rc = buildClip(action, armCorr || null);
+    const rc = buildClip(action, armCorr || null, spineCorr || 0);
     if (rc) out[storeKey(action)] = rc;
   }
   const c = cached || { rig, out: {} };
   if (armCorr !== undefined) c.armCorr = armCorr;
+  if (spineCorr !== undefined) c.spineCorr = spineCorr;
   Object.assign(c.out, out);
   perModel.set(bankId, c);
   return out;
