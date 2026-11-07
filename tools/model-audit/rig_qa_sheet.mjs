@@ -49,6 +49,18 @@ for (const id of list.split(',')) {
   results[id].push({ name: `${id}_face`, ...f });
   console.log(id, results[id].filter((x) => x.err).map((x) => `${x.name}: ${x.err}`).join(' | ') || 'ok');
   await p.close();
+  // contact sheet: every shot of this fighter in one image (5 x 2, labelled), the page to judge by eye
+  const shots = results[id].filter((x) => !x.err && fs.existsSync(`${out}/${x.name}.png`));
+  if (shots.length) {
+    const cells = shots.map((x) => `<figure><img src="data:image/png;base64,${fs.readFileSync(`${out}/${x.name}.png`).toString('base64')}">`
+      + `<figcaption>${x.name}</figcaption></figure>`).join('');
+    const sp = await b.newPage({ viewport: { width: 1500, height: 600 } });
+    await sp.setContent(`<style>body{margin:0;background:#111;display:grid;grid-template-columns:repeat(5,300px)}`
+      + `figure{margin:0;position:relative}img{width:300px;height:225px;display:block}`
+      + `figcaption{position:absolute;top:2px;left:4px;color:#ff0;font:11px sans-serif}</style>${cells}`);
+    await sp.screenshot({ path: `${out}/${id}_sheet.png`, fullPage: true });
+    await sp.close();
+  }
 }
 fs.writeFileSync(`${out}/results.json`, JSON.stringify(results, null, 1));
 await b.close();
