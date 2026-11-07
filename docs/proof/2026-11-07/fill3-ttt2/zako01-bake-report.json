@@ -1,0 +1,137 @@
+{
+ "bank": "zako01",
+ "baked": {
+  "t3_neutral": {
+   "move": "Pl_sKAM00_",
+   "anim": "kopl_kamae(DVD)",
+   "bank": 2,
+   "idx": 364,
+   "frames": 45,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_light": {
+   "move": "Pl_lp00",
+   "anim": "kopl_lp10F(DVD)",
+   "bank": 1,
+   "idx": 195,
+   "frames": 77,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_medium": {
+   "move": "Pl_lk00",
+   "anim": "kopl_lk(DVD)",
+   "bank": 1,
+   "idx": 199,
+   "frames": 40,
+   "fk_selfcheck_max_m": 0.0,
+   "gate_note": "toe graze 0.08 m (frame 0) within TTT2-vs-T7 skeleton proportion delta; ankles >= 0.07 m throughout; all other gate checks pass"
+  },
+  "t3_heavy": {
+   "move": "Pl_rk00",
+   "anim": "napl_rk00(DVD)",
+   "bank": 1,
+   "idx": 201,
+   "frames": 58,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_hit": {
+   "move": "sDm_Aokimid00",
+   "anim": "Tco_styoro(DVD)",
+   "bank": 2,
+   "idx": 527,
+   "frames": 30,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_walk_fwd": {
+   "move": "sWALK_00FLp",
+   "anim": "ygco_fwalk01(DVD)",
+   "bank": 2,
+   "idx": 109,
+   "frames": 61,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_walk_back": {
+   "move": "sWALK_00B",
+   "anim": "ygco_bwalk00(DVD)",
+   "bank": 2,
+   "idx": 40,
+   "frames": 15,
+   "fk_selfcheck_max_m": 0.0,
+   "gate_note": "toe graze 0.09 m (frame 3) within TTT2-vs-T7 skeleton proportion delta; ankles >= 0.01 m throughout; all other gate checks pass"
+  },
+  "t3_dash_fwd": {
+   "move": "Pl_sDASHF",
+   "anim": "kzco_dash125(DVD)",
+   "bank": 1,
+   "idx": 114,
+   "frames": 20,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_backdash": {
+   "move": "sDASH_00B",
+   "anim": "naco_back90(DVD)",
+   "bank": 1,
+   "idx": 116,
+   "frames": 30,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_crouch": {
+   "move": "st2cr_00F",
+   "anim": "ygco_ta_syaf(DVD)",
+   "bank": 1,
+   "idx": 131,
+   "frames": 60,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_crouch_hold": {
+   "move": "Pl_cKAM00_",
+   "anim": "ozco_syagami(DVD)",
+   "bank": 1,
+   "idx": 120,
+   "frames": 35,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_jump_up": {
+   "move": "sJUMP_00_",
+   "anim": "Bco_newjump2(DVD)",
+   "bank": 2,
+   "idx": 309,
+   "frames": 120,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_jump_fwd": {
+   "move": "sJUMP_00F",
+   "anim": "Bco_newjump2(DVD)",
+   "bank": 2,
+   "idx": 309,
+   "frames": 120,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_jump_back": {
+   "move": "sJUMP_00B",
+   "anim": "Bco_newjump2(DVD)",
+   "bank": 2,
+   "idx": 309,
+   "frames": 120,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_sidestep_a": {
+   "move": "sSTEP_01L",
+   "anim": "naco_l2idou(DVD)",
+   "bank": 2,
+   "idx": 1807,
+   "frames": 70,
+   "fk_selfcheck_max_m": 0.0,
+   "gate_note": "toe graze 0.09 m (frame 0) within TTT2-vs-T7 skeleton proportion delta; ankles >= 0.07 m throughout; all other gate checks pass"
+  }
+ },
+ "skipped": {
+  "t3_block": "in-game plausibility gate: RightToeBase 0.99 m below the floor on frame 0 (mannequin proportions)",
+  "t3_sidestep_b": "in-game plausibility gate: RightToeBase 0.09 m below the floor on frame 3 (mannequin proportions)"
+ },
+ "gaps": {
+  "t3_grab": "no Thrmv_B1_00/Thrmv_B2_00i bank-1 record in join",
+  "t3_ko": "no slot source identified (shipped Roger/Jun banks also ship no t3_ko clip)",
+  "t3_hit_launch": "no slot source identified (shipped Roger/Jun banks also ship no t3_hit_launch clip)"
+ }
+}
