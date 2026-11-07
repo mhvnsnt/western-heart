@@ -20,6 +20,7 @@ fetched, in batches, then streamed out with `git cat-file --batch` — never the
 import argparse
 import json
 import os
+import re
 import subprocess
 import sys
 import time
@@ -71,6 +72,19 @@ HEADERS = """/game/js/*
   Cache-Control: public, max-age=86400
   Access-Control-Allow-Origin: *
 """
+
+
+# Files the game fetches by a path it BUILDS at runtime, so the reference closure (which follows string literals) never
+# sees them. Same class as build_pages.ROOTS' customization/profiles/. Each pattern names the code that builds the path.
+RUNTIME_PATH_SEEDS = (
+    # game/js/xray.js XraySystem.prefetch: 'roster/' + anatomyDir(id) + '/anatomy/anatomy-layers.json' (43 files,
+    # 1.6 MB; 2026-11-07 live probe: every X-ray KO fetched these from jsDelivr after a 404 here).
+    re.compile(r'^roster/[^/]+/anatomy/anatomy-layers\.json$'),
+)
+
+
+def runtime_seeded(sizes):
+    return sorted(p for p in sizes if any(rx.match(p) for rx in RUNTIME_PATH_SEEDS))
 
 
 def git(*args, inp=None, binary=False, env=None):
@@ -130,6 +144,10 @@ def main():
     B.prefetch_text(oids)
     r = B.compute_deploy_files(sha, sizes, oids)
     files = r[0] if isinstance(r, tuple) else r
+    seeded = [f for f in runtime_seeded(sizes) if f not in set(files)]
+    files = sorted(set(files) | set(seeded))
+    if seeded:
+        print('runtime-path seeds: +%d files the closure cannot see (RUNTIME_PATH_SEEDS)' % len(seeded))
     ship = [f for f in files if sizes[f] <= CF_FILE_MAX]
     over = sorted(([f, sizes[f]] for f in files if sizes[f] > CF_FILE_MAX), key=lambda x: -x[1])
     total = sum(sizes[f] for f in ship)
