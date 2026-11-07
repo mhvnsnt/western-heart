@@ -1,0 +1,4141 @@
+{
+ "fighter": "t7-kazuya",
+ "display": "Kazuya Mishima (Tekken 7 source moveset)",
+ "tekken_base": "Kazuya Mishima",
+ "source": {
+  "built_by": "FILL 2 (2026-11-06), owner fill order: \"1, 2, 3, then 4, remember then all til we get em done\"",
+  "frame_table": "game/data/t7-frame-data/t7-kazuya-lp-rp-lk-rk.json",
+  "motbin": "GRE teardown/tekken7-steam/tkdata/mothead/bin/kazmot.bin + json/kazmot.json",
+  "mvl": "GRE teardown/tekken7-steam/tkdata/mothead/movelist/kaz.mvl",
+  "banks": "GRE release t7-fighter-banks-v1 (kaz_clips.bin, kaz_bank0_clips.bin); indexes in GRE mask/indexes/",
+  "method": "group-correct string walk (t7_string_walk.py); wired = unique terminal + clip locator; see fill2 fields per move"
+ },
+ "fill2_stats": {
+  "rows": 125,
+  "wired": 55,
+  "pass2": {
+   "sequence": 15,
+   "slide": 0
+  }
+ },
+ "moves": {
+  "in rage d/f+1+2": {
+   "name": "in rage d/f+1+2",
+   "name_source": "notation-only",
+   "input": "in rage d/f+1+2",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "\u2013",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Rage art",
+   "anim_ref": null,
+   "t7": {
+    "notation": "in rage d/f+1+2",
+    "id": "kaz_1",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1": {
+   "name": "Kz_lp00F",
+   "name_source": "motbin-internal",
+   "input": "1",
+   "damage": 7,
+   "damage_raw": "7",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h",
+   "on_block": "+1",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:333",
+   "t7": {
+    "notation": "1",
+    "id": "kaz_2",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "1",
+    "motbin_move_id": 1584,
+    "motbin_move_name": "Kz_lp00F",
+    "anim_name": "cbjz_lp00f(DVD)",
+    "anim_id": 16717,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 333,
+     "rel_offset": 2656252,
+     "size": 2216,
+     "format_word": 100,
+     "sha256": "2384e6788bcb73bc9c9d50df76bfa78240a478126f1614ddf65261b0b2e99847",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [7]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1584
+    ]
+   }
+  },
+  "1, 1": {
+   "name": "Kz_lpf",
+   "name_source": "motbin-internal",
+   "input": "1, 1",
+   "damage": 7,
+   "damage_raw": "7,6",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h",
+   "on_block": "-1",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:312",
+   "t7": {
+    "notation": "1, 1",
+    "id": "kaz_3",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "1, 1",
+    "motbin_move_id": 1560,
+    "motbin_move_name": "Kz_lpf",
+    "anim_name": "mskz_lpf(DVD)",
+    "anim_id": 16696,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 312,
+     "rel_offset": 2611104,
+     "size": 2432,
+     "format_word": 100,
+     "sha256": "32f17268b87029e399c83e73be13ea5997b4fb610e4f1351af7c89b587b4586a",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [7, 6]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1584,
+     1560
+    ]
+   }
+  },
+  "1, 1, 2": {
+   "name": "Flash Punch Combo",
+   "name_source": "mvl",
+   "input": "1, 1, 2",
+   "damage": 7,
+   "damage_raw": "7,6,12",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h, m",
+   "on_block": "-17",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1, 1, 2",
+    "id": "kaz_4",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Kz_keriage0",
+     "Kz_sWALKF",
+     "Kz_rp00",
+     "Kz_lprpF",
+     "Kz_rp1"
+    ]
+   }
+  },
+  "1, 2": {
+   "name": "Twin Pistons",
+   "name_source": "mvl",
+   "input": "1, 2",
+   "damage": 7,
+   "damage_raw": "7,8",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h",
+   "on_block": "-1",
+   "on_hit": "+7",
+   "on_ch": "+7",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:315",
+   "t7": {
+    "notation": "1, 2",
+    "id": "kaz_5",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "1, 2",
+    "motbin_move_id": 1563,
+    "motbin_move_name": "Kz_lprpF",
+    "anim_name": "cbjz_lprp00(DVD)",
+    "anim_id": 16699,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 315,
+     "rel_offset": 2616624,
+     "size": 2224,
+     "format_word": 100,
+     "sha256": "17e9b61db62c99fc2138fa832ed25a7e243721b2ad4a00cd21daf0a17d8ed9bc",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [7, 8]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1584,
+     1563
+    ]
+   }
+  },
+  "1, 2, 2": {
+   "name": "Demon Slayer",
+   "name_source": "mvl",
+   "input": "1, 2, 2",
+   "damage": 7,
+   "damage_raw": "7,8,12",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h, h",
+   "on_block": "-12",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1, 2, 2",
+    "id": "kaz_6",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Kz_keriage0",
+     "Kz_sWALKF",
+     "Kz_rp00",
+     "Kz_rprp",
+     "Kz_rprp01"
+    ]
+   }
+  },
+  "1, 2, 4": {
+   "name": "1, 2, 4",
+   "name_source": "notation-only",
+   "input": "1, 2, 4",
+   "damage": 7,
+   "damage_raw": "7,8,18",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h, l",
+   "on_block": "-14",
+   "on_hit": "-3",
+   "on_ch": "0 OC",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1, 2, 4",
+    "id": "kaz_7",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Kz_tukirpsp",
+     "Kz_rk00",
+     "Kz_rprkcom"
+    ]
+   }
+  },
+  "1, 2, 4, 3": {
+   "name": "Twin Fang Double Kick",
+   "name_source": "mvl",
+   "input": "1, 2, 4, 3",
+   "damage": 7,
+   "damage_raw": "7,8,18,25",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h, l, m",
+   "on_block": "-2",
+   "on_hit": "KND",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1, 2, 4, 3",
+    "id": "kaz_8",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Kz_hasai",
+     "Kz_rprklk",
+     "Kz_hasai2",
+     "Kz_hasaiE"
+    ]
+   }
+  },
+  "2": {
+   "name": "Devil Twister",
+   "name_source": "mvl",
+   "input": "2",
+   "damage": 12,
+   "damage_raw": "12",
+   "startup": 0.2,
+   "startup_frames": 12,
+   "hit_level": "h",
+   "on_block": "-3",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:320",
+   "t7": {
+    "notation": "2",
+    "id": "kaz_9",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "2",
+    "motbin_move_id": 1568,
+    "motbin_move_name": "Kz_rp00",
+    "anim_name": "nakz_rph(DVD)",
+    "anim_id": 16704,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 320,
+     "rel_offset": 2629564,
+     "size": 2204,
+     "format_word": 100,
+     "sha256": "776ec763f4654d30b693247dc1a32c2db3f1006571fb2ae4a1b4eb4deb957f57",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [12]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1568
+    ]
+   }
+  },
+  "2, 2": {
+   "name": "Double Back Fist",
+   "name_source": "mvl",
+   "input": "2, 2",
+   "damage": 12,
+   "damage_raw": "12,24",
+   "startup": 0.2,
+   "startup_frames": 12,
+   "hit_level": "h, m",
+   "on_block": "-10",
+   "on_hit": "+6",
+   "on_ch": "CS",
+   "notes": "Tail spin",
+   "anim_ref": "t7:kaz:0x4000:321",
+   "t7": {
+    "notation": "2, 2",
+    "id": "kaz_10",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "2, 2",
+    "motbin_move_id": 1569,
+    "motbin_move_name": "Kz_rprp",
+    "anim_name": "nakz_rphrp(DVD)",
+    "anim_id": 16705,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 321,
+     "rel_offset": 2631768,
+     "size": 3244,
+     "format_word": 100,
+     "sha256": "ff95ce6b549bbf2e015176d04335d96c9e9606fd4dbd0522397015a7d3fe4a85",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [12, 24]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1568,
+     1569
+    ]
+   }
+  },
+  "3": {
+   "name": "Shattered Spine",
+   "name_source": "mvl",
+   "input": "3",
+   "damage": 14,
+   "damage_raw": "14",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "h",
+   "on_block": "-8",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:324",
+   "t7": {
+    "notation": "3",
+    "id": "kaz_11",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "3",
+    "motbin_move_id": 1574,
+    "motbin_move_name": "Kz_lk00",
+    "anim_name": "ozkz_lmk_r(DVD)",
+    "anim_id": 16708,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 324,
+     "rel_offset": 2638476,
+     "size": 3004,
+     "format_word": 100,
+     "sha256": "6bad390a3f73dd44ccff7dd17e0fdb402b6b4b46099ff29ea0e00f71e2efb9c4",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [14]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1574
+    ]
+   }
+  },
+  "3, 1": {
+   "name": "Kz_lp00F",
+   "name_source": "motbin-internal",
+   "input": "3, 1",
+   "damage": 14,
+   "damage_raw": "14,7",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "h, h",
+   "on_block": "-1",
+   "on_hit": "+7",
+   "on_ch": "+7",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:333",
+   "t7": {
+    "notation": "3, 1",
+    "id": "kaz_12",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "3, 1",
+    "motbin_move_id": 1584,
+    "motbin_move_name": "Kz_lp00F",
+    "anim_name": "cbjz_lp00f(DVD)",
+    "anim_id": 16717,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 333,
+     "rel_offset": 2656252,
+     "size": 2216,
+     "format_word": 100,
+     "sha256": "2384e6788bcb73bc9c9d50df76bfa78240a478126f1614ddf65261b0b2e99847",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [14, 7]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1574,
+     1584
+    ]
+   }
+  },
+  "3, 1, 4": {
+   "name": "Agony Spear",
+   "name_source": "mvl",
+   "input": "3, 1, 4",
+   "damage": 14,
+   "damage_raw": "14,7,17",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "h, h, m",
+   "on_block": "-6",
+   "on_hit": "+8",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:326",
+   "t7": {
+    "notation": "3, 1, 4",
+    "id": "kaz_13",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "3, 1, 4",
+    "motbin_move_id": 1576,
+    "motbin_move_name": "Kz_lklp_hiza",
+    "anim_name": "nakz_lkp2hiz(DVD)",
+    "anim_id": 16710,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 326,
+     "rel_offset": 2644076,
+     "size": 3444,
+     "format_word": 100,
+     "sha256": "b6118f33975b8dfb31c58fbb727078f2095cbe3b367008483bf3436f7d97497c",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [14, 7, 17]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1574,
+     1584,
+     1576
+    ]
+   }
+  },
+  "4": {
+   "name": "Roundhouse",
+   "name_source": "mvl",
+   "input": "4",
+   "damage": 18,
+   "damage_raw": "18",
+   "startup": 0.2,
+   "startup_frames": 12,
+   "hit_level": "h",
+   "on_block": "-9",
+   "on_hit": "+2",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:327",
+   "t7": {
+    "notation": "4",
+    "id": "kaz_14",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "4",
+    "motbin_move_id": 1577,
+    "motbin_move_name": "Kz_rk00",
+    "anim_name": "cbjz_rkhigh01(DVD)",
+    "anim_id": 16711,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 327,
+     "rel_offset": 2647520,
+     "size": 2948,
+     "format_word": 100,
+     "sha256": "ed0a3829b3620e95b4abb4c9e2bdad9a6cd3b5b9cd423f8a292c93493c23b8bb",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [18]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1577
+    ]
+   }
+  },
+  "4~3": {
+   "name": "4~3",
+   "name_source": "notation-only",
+   "input": "4~3",
+   "damage": 18,
+   "damage_raw": "18,17?",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "mm (TJ)",
+   "on_block": "-11~-10",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "4~3",
+    "id": "kaz_15",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1+2": {
+   "name": "Inferno",
+   "name_source": "mvl",
+   "input": "1+2",
+   "damage": 5,
+   "damage_raw": "5,20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "mm",
+   "on_block": "-14",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1+2",
+    "id": "kaz_16",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Kz_lprpcom",
+     "Kz_lprpcom2"
+    ]
+   }
+  },
+  "3+4": {
+   "name": "Devil Blaster",
+   "name_source": "mvl",
+   "input": "3+4",
+   "damage": null,
+   "damage_raw": null,
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "h",
+   "on_block": "-8",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:324",
+   "t7": {
+    "notation": "3+4",
+    "id": "kaz_17",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "3+4",
+    "motbin_move_id": 1581,
+    "motbin_move_name": "Kz_WK00",
+    "anim_name": "ozkz_lmk_r(DVD)",
+    "anim_id": 16708,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 324,
+     "rel_offset": 2638476,
+     "size": 3004,
+     "format_word": 100,
+     "sha256": "6bad390a3f73dd44ccff7dd17e0fdb402b6b4b46099ff29ea0e00f71e2efb9c4",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+2": {
+   "name": "Kz_tukirpsp",
+   "name_source": "motbin-internal",
+   "input": "f+2",
+   "damage": 25,
+   "damage_raw": "25",
+   "startup": 0.3333,
+   "startup_frames": 20,
+   "hit_level": "m(h or m punch parry)",
+   "on_block": "-12",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Power crush",
+   "anim_ref": "t7:kaz:0x4000:338",
+   "t7": {
+    "notation": "f+2",
+    "id": "kaz_18",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+2",
+    "motbin_move_id": 1589,
+    "motbin_move_name": "Kz_tukirpsp",
+    "anim_name": "Bkz_tukir(DVD)",
+    "anim_id": 16722,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 338,
+     "rel_offset": 2658468,
+     "size": 2984,
+     "format_word": 100,
+     "sha256": "8902da4803d62ac066f7afefe04ca12c97af9757040509d897c470376dcb5164",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+3": {
+   "name": "Kz_6lk",
+   "name_source": "motbin-internal",
+   "input": "f+3",
+   "damage": 22,
+   "damage_raw": "22",
+   "startup": 0.3167,
+   "startup_frames": 19,
+   "hit_level": "m",
+   "on_block": "-13",
+   "on_hit": "+5",
+   "on_ch": "+g?(KND?)",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:351",
+   "t7": {
+    "notation": "f+3",
+    "id": "kaz_19",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+3",
+    "motbin_move_id": 1608,
+    "motbin_move_name": "Kz_6lk",
+    "anim_name": "amkz_kenka(DVD)",
+    "anim_id": 16735,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 351,
+     "rel_offset": 2702496,
+     "size": 3024,
+     "format_word": 100,
+     "sha256": "371f64a92067ce4f8e77e07e03fbb01d942e3959fb503be9ccfadae1603dc234",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+4": {
+   "name": "Kz_mrk",
+   "name_source": "motbin-internal",
+   "input": "f+4",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "+4~+5?s",
+   "on_hit": "+7~+8s",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:353",
+   "t7": {
+    "notation": "f+4",
+    "id": "kaz_20",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+4",
+    "motbin_move_id": 1610,
+    "motbin_move_name": "Kz_mrk",
+    "anim_name": "Zpe_PSlk(DVD)",
+    "anim_id": 16737,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 353,
+     "rel_offset": 2708620,
+     "size": 2844,
+     "format_word": 100,
+     "sha256": "2a848fba60396cf2232d0202cbb73ea9bc17fbed340f690616d8bde2e28af6b1",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+1+2": {
+   "name": "Elkeid",
+   "name_source": "mvl",
+   "input": "f+1+2",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": 0.4167,
+   "startup_frames": 25,
+   "hit_level": "m",
+   "on_block": "-16",
+   "on_hit": "CS",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:347",
+   "t7": {
+    "notation": "f+1+2",
+    "id": "kaz_21",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+1+2",
+    "motbin_move_id": 1600,
+    "motbin_move_name": "Kz_vipLP",
+    "anim_name": "kz_6wp_kubi(DVD)",
+    "anim_id": 16731,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 347,
+     "rel_offset": 2685484,
+     "size": 4780,
+     "format_word": 100,
+     "sha256": "f99a1dd50c95208ff9452a1c19b2c392f9444f3aab284338cf41d5fff2b6f552",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+1": {
+   "name": "Kz_bodylp00",
+   "name_source": "motbin-internal",
+   "input": "d/f+1",
+   "damage": 11,
+   "damage_raw": "11",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-7~-6",
+   "on_hit": "+9~+10",
+   "on_ch": "+9~+10",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:384",
+   "t7": {
+    "notation": "d/f+1",
+    "id": "kaz_22",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+1",
+    "motbin_move_id": 1651,
+    "motbin_move_name": "Kz_bodylp00",
+    "anim_name": "yokz_sitazuki(DVD)",
+    "anim_id": 16768,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 384,
+     "rel_offset": 2787052,
+     "size": 2752,
+     "format_word": 100,
+     "sha256": "d0934dfa4d5aa388e18dded0cf1b300192fe193c391d2e2972c1c84504a4d855",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+1, 2": {
+   "name": "Twin Pistons",
+   "name_source": "mvl",
+   "input": "d/f+1, 2",
+   "damage": 11,
+   "damage_raw": "11,20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m",
+   "on_block": "-12~-11s?",
+   "on_hit": "s",
+   "on_ch": "s",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d/f+1, 2",
+    "id": "kaz_23",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "d/f+1, 4": {
+   "name": "d/f+1, 4",
+   "name_source": "notation-only",
+   "input": "d/f+1, 4",
+   "damage": 11,
+   "damage_raw": "11,20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, h",
+   "on_block": "-9?",
+   "on_hit": "+k",
+   "on_ch": "KND?",
+   "notes": "Tail spin",
+   "anim_ref": null,
+   "t7": {
+    "notation": "d/f+1, 4",
+    "id": "kaz_24",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "d/f+1, f+2": {
+   "name": "Devastator",
+   "name_source": "mvl",
+   "input": "d/f+1, f+2",
+   "damage": 11,
+   "damage_raw": "11,22",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m",
+   "on_block": "-12",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d/f+1, f+2",
+    "id": "kaz_25",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "d/f+2": {
+   "name": "Abolishing Fist",
+   "name_source": "mvl",
+   "input": "d/f+2",
+   "damage": 22,
+   "damage_raw": "22",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "m",
+   "on_block": "-12?",
+   "on_hit": "+5",
+   "on_ch": "CS(13)",
+   "notes": "Homing",
+   "anim_ref": "t7:kaz:0x4000:391",
+   "t7": {
+    "notation": "d/f+2",
+    "id": "kaz_26",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+2",
+    "motbin_move_id": 1658,
+    "motbin_move_name": "Kz_majin_00",
+    "anim_name": "sukz_kien(DVD)",
+    "anim_id": 16775,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 391,
+     "rel_offset": 2803284,
+     "size": 2716,
+     "format_word": 100,
+     "sha256": "52b93ec18579052ce02bb3247fc3f31fc5671274161ceb3f58770714cc3723cb",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+3": {
+   "name": "Impaling Knee",
+   "name_source": "mvl",
+   "input": "d/f+3",
+   "damage": 13,
+   "damage_raw": "13",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-7~-6",
+   "on_hit": "+9~+10",
+   "on_ch": "+9~+10",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:392",
+   "t7": {
+    "notation": "d/f+3",
+    "id": "kaz_27",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+3",
+    "motbin_move_id": 1659,
+    "motbin_move_name": "Co_t_slkF",
+    "anim_name": "sukz_heavyhiza(DVD)",
+    "anim_id": 16776,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 392,
+     "rel_offset": 2806000,
+     "size": 3132,
+     "format_word": 100,
+     "sha256": "d661292a42bca78aad62f63facefefedf28451df27bc5f1f2697493ef785f269",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+3, 2": {
+   "name": "Kz_hizabody",
+   "name_source": "motbin-internal",
+   "input": "d/f+3, 2",
+   "damage": 13,
+   "damage_raw": "13,15",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m",
+   "on_block": "-11",
+   "on_hit": "+5",
+   "on_ch": "+5",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:393",
+   "t7": {
+    "notation": "d/f+3, 2",
+    "id": "kaz_28",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+3, 2",
+    "motbin_move_id": 1660,
+    "motbin_move_name": "Kz_hizabody",
+    "anim_name": "amkz_hiza_body(DVD)",
+    "anim_id": 16777,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 393,
+     "rel_offset": 2809132,
+     "size": 3284,
+     "format_word": 100,
+     "sha256": "8e3ec85e2a2d7e3f2993a88c77c5d255ae91c59119dea3aa60f1d44f9ae1ace0",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+3, 2, 1": {
+   "name": "Impaling Knee Twin Thrust",
+   "name_source": "mvl",
+   "input": "d/f+3, 2, 1",
+   "damage": 13,
+   "damage_raw": "13,15,21",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m, m",
+   "on_block": "-19",
+   "on_hit": "KND",
+   "on_ch": "+24",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:394",
+   "t7": {
+    "notation": "d/f+3, 2, 1",
+    "id": "kaz_29",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+3, 2, 1",
+    "motbin_move_id": 1661,
+    "motbin_move_name": "Kz_3lkrplp",
+    "anim_name": "amkz_hizabodyseiken(DVD)",
+    "anim_id": 16778,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 394,
+     "rel_offset": 2812416,
+     "size": 3228,
+     "format_word": 100,
+     "sha256": "31ad6fd424dc6abf6ee1c8cc860cf01ae8c993cdea41c823066930d7f3827d03",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+4": {
+   "name": "Kz_k00",
+   "name_source": "motbin-internal",
+   "input": "d/f+4",
+   "damage": 10,
+   "damage_raw": "10",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-9~-8",
+   "on_hit": "+2~+3",
+   "on_ch": "+2~+3",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:395",
+   "t7": {
+    "notation": "d/f+4",
+    "id": "kaz_30",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+4",
+    "motbin_move_id": 1662,
+    "motbin_move_name": "Kz_k00",
+    "anim_name": "kaz_k00xk(DVD)",
+    "anim_id": 16779,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 395,
+     "rel_offset": 2815644,
+     "size": 2412,
+     "format_word": 100,
+     "sha256": "49172b66cc33783465fe39c9fccc1ee7f01c78c3ed26e53e042ab767ccf29879",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+4, 4": {
+   "name": "Tsunami Kick",
+   "name_source": "mvl",
+   "input": "d/f+4, 4",
+   "damage": 10,
+   "damage_raw": "10,16",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m",
+   "on_block": "-15~-14",
+   "on_hit": "-4~-3 OC",
+   "on_ch": "-4~-3 OC",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:396",
+   "t7": {
+    "notation": "d/f+4, 4",
+    "id": "kaz_31",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+4, 4",
+    "motbin_move_id": 1663,
+    "motbin_move_name": "Kz_syrrk",
+    "anim_name": "kz_syllk(DVD)",
+    "anim_id": 16780,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 396,
+     "rel_offset": 2818056,
+     "size": 2228,
+     "format_word": 100,
+     "sha256": "2f725dd4d5d9b8d5807b291735af4c15b8ba6898d8e481e5c465590d8b260d6b",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d+1+2": {
+   "name": "Sorai Zanba",
+   "name_source": "mvl",
+   "input": "d+1+2",
+   "damage": 18,
+   "damage_raw": "18",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-16",
+   "on_hit": "+2 OC",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:404",
+   "t7": {
+    "notation": "d+1+2",
+    "id": "kaz_32",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+1+2",
+    "motbin_move_id": 1673,
+    "motbin_move_name": "Kz_SpinRP",
+    "anim_name": "yokz_uraken_x2(DVD)",
+    "anim_id": 16788,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 404,
+     "rel_offset": 2833636,
+     "size": 3436,
+     "format_word": 100,
+     "sha256": "842a70d1e598a3bfc096ab354c86dcd944dad815e1103fdcadff6f039b29a783",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+2": {
+   "name": "Lion Slayer",
+   "name_source": "mvl",
+   "input": "d/b+2",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "0 OC",
+   "on_hit": "+9 OC",
+   "on_ch": "+9 OC",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:397",
+   "t7": {
+    "notation": "d/b+2",
+    "id": "kaz_33",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+2",
+    "motbin_move_id": 1664,
+    "motbin_move_name": "Kz_syutou",
+    "anim_name": "kokz_syutou(DVD)",
+    "anim_id": 16781,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 397,
+     "rel_offset": 2820284,
+     "size": 3276,
+     "format_word": 100,
+     "sha256": "e24c213be7b5d34557917fbcb42c2ad86355f269e36f120aafe9f4993a2dcccd",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+3": {
+   "name": "Sliding Low Kick",
+   "name_source": "mvl",
+   "input": "d/b+3",
+   "damage": 14,
+   "damage_raw": "14",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-12~-11",
+   "on_hit": "-1~0",
+   "on_ch": "+7~+8 OC",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:399",
+   "t7": {
+    "notation": "d/b+3",
+    "id": "kaz_34",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+3",
+    "motbin_move_id": 1666,
+    "motbin_move_name": "Kz_t_slk00",
+    "anim_name": "sukz_mogurilw(DVD)",
+    "anim_id": 16783,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 399,
+     "rel_offset": 2827060,
+     "size": 3352,
+     "format_word": 100,
+     "sha256": "f3053309c39da8553200c5e901d4d05bdd0c56907511e27c7fc2f1e3b4db90b7",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+4": {
+   "name": "Stature Smash",
+   "name_source": "mvl",
+   "input": "d/b+4",
+   "damage": 18,
+   "damage_raw": "18",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l",
+   "on_block": "-12~-11",
+   "on_hit": "+4~+5?",
+   "on_ch": "+10~?g",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:400",
+   "t7": {
+    "notation": "d/b+4",
+    "id": "kaz_35",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+4",
+    "motbin_move_id": 1667,
+    "motbin_move_name": "Kz_orosi",
+    "anim_name": "Gkz_orosi(DVD)",
+    "anim_id": 16784,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 400,
+     "rel_offset": 2830412,
+     "size": 3224,
+     "format_word": 100,
+     "sha256": "e7d07cc5f8132917d402fb772eb82a87d72dcc935d1f561a3087ec0b79d7891e",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+1": {
+   "name": "Kz_uralp",
+   "name_source": "motbin-internal",
+   "input": "b+1",
+   "damage": 13,
+   "damage_raw": "13",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-10~-9",
+   "on_hit": "+1~+2",
+   "on_ch": "+1~+2",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:355",
+   "t7": {
+    "notation": "b+1",
+    "id": "kaz_36",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+1",
+    "motbin_move_id": 1612,
+    "motbin_move_name": "Kz_uralp",
+    "anim_name": "amkz_4lp(DVD)",
+    "anim_id": 16739,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 355,
+     "rel_offset": 2711464,
+     "size": 3088,
+     "format_word": 100,
+     "sha256": "1bcc2decbf43c1770c32ccee231a4026002ddd11979a921e41143336ac709538",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+1, 2": {
+   "name": "Sokushitsu Goda",
+   "name_source": "mvl",
+   "input": "b+1, 2",
+   "damage": 13,
+   "damage_raw": "13,20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h, m",
+   "on_block": "-14",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:356",
+   "t7": {
+    "notation": "b+1, 2",
+    "id": "kaz_37",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+1, 2",
+    "motbin_move_id": 1613,
+    "motbin_move_name": "Kz_4lprp",
+    "anim_name": "amjz_4lp_rp(DVD)",
+    "anim_id": 16740,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 356,
+     "rel_offset": 2714552,
+     "size": 3968,
+     "format_word": 100,
+     "sha256": "ef30fcdd83902b93f6e8b97edba080ae13b233d05142411232f87f21d468c39f",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+2": {
+   "name": "b+2",
+   "name_source": "notation-only",
+   "input": "b+2",
+   "damage": 12,
+   "damage_raw": "12",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "m",
+   "on_block": "-7",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "b+2",
+    "id": "kaz_38",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Kz_hizicom1",
+     "Kz_hizicom2",
+     "Kz_hizicom3",
+     "Kz_hizicom2s"
+    ]
+   }
+  },
+  "b+2, 4": {
+   "name": "b+2, 4",
+   "name_source": "notation-only",
+   "input": "b+2, 4",
+   "damage": 12,
+   "damage_raw": "12,12",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "m, h",
+   "on_block": "-3",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "b+2, 4",
+    "id": "kaz_39",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Kz_hizicom2",
+     "Kz_hizicom3",
+     "Kz_hizicom2s"
+    ]
+   }
+  },
+  "b+2, 4, 1": {
+   "name": "Rampaging Demon",
+   "name_source": "mvl",
+   "input": "b+2, 4, 1",
+   "damage": 12,
+   "damage_raw": "12,12,22",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "m, h, m",
+   "on_block": "-14~-13",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:362",
+   "t7": {
+    "notation": "b+2, 4, 1",
+    "id": "kaz_40",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+2, 4, 1",
+    "motbin_move_id": 1621,
+    "motbin_move_name": "Kz_hizicom3",
+    "anim_name": "sukz_rhijihilp(DVD)",
+    "anim_id": 16746,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 362,
+     "rel_offset": 2737496,
+     "size": 3308,
+     "format_word": 100,
+     "sha256": "282f118fa391d0f869d87c4caafe1eafd19502582296f67b9ee5ee2b832df7cf",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+3": {
+   "name": "Kz_Naru00",
+   "name_source": "motbin-internal",
+   "input": "b+3",
+   "damage": 15,
+   "damage_raw": "15",
+   "startup": 0.3,
+   "startup_frames": 18,
+   "hit_level": "h",
+   "on_block": "-8",
+   "on_hit": "+3",
+   "on_ch": "+3",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:364",
+   "t7": {
+    "notation": "b+3",
+    "id": "kaz_41",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+3",
+    "motbin_move_id": 1623,
+    "motbin_move_name": "Kz_Naru00",
+    "anim_name": "Ygkz_narucom00(DVD)",
+    "anim_id": 16748,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 364,
+     "rel_offset": 2744568,
+     "size": 5928,
+     "format_word": 100,
+     "sha256": "178fb3595937969e68f3807093cd2d28d30081406f399714082da8cd6f3ccfa1",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [15]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1623
+    ]
+   }
+  },
+  "b+3, 1": {
+   "name": "Kz_Naru01",
+   "name_source": "motbin-internal",
+   "input": "b+3, 1",
+   "damage": 15,
+   "damage_raw": "15,10",
+   "startup": 0.3,
+   "startup_frames": 18,
+   "hit_level": "h, h",
+   "on_block": "0",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:364",
+   "t7": {
+    "notation": "b+3, 1",
+    "id": "kaz_42",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+3, 1",
+    "motbin_move_id": 1625,
+    "motbin_move_name": "Kz_Naru01",
+    "anim_name": "Ygkz_narucom00(DVD)",
+    "anim_id": 16748,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 364,
+     "rel_offset": 2744568,
+     "size": 5928,
+     "format_word": 100,
+     "sha256": "178fb3595937969e68f3807093cd2d28d30081406f399714082da8cd6f3ccfa1",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [15, 10]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1623,
+     1625
+    ]
+   }
+  },
+  "b+3, 1, 4": {
+   "name": "Kz_Naru02",
+   "name_source": "motbin-internal",
+   "input": "b+3, 1, 4",
+   "damage": 15,
+   "damage_raw": "15,10,10",
+   "startup": 0.3,
+   "startup_frames": 18,
+   "hit_level": "h, h, l",
+   "on_block": "-10",
+   "on_hit": "+7",
+   "on_ch": "+7",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:364",
+   "t7": {
+    "notation": "b+3, 1, 4",
+    "id": "kaz_43",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+3, 1, 4",
+    "motbin_move_id": 1627,
+    "motbin_move_name": "Kz_Naru02",
+    "anim_name": "Ygkz_narucom00(DVD)",
+    "anim_id": 16748,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 364,
+     "rel_offset": 2744568,
+     "size": 5928,
+     "format_word": 100,
+     "sha256": "178fb3595937969e68f3807093cd2d28d30081406f399714082da8cd6f3ccfa1",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [15, 10, 10]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1623,
+     1625,
+     1627
+    ]
+   }
+  },
+  "b+3, 1, 4, 1": {
+   "name": "Demon's Wrath",
+   "name_source": "mvl",
+   "input": "b+3, 1, 4, 1",
+   "damage": 15,
+   "damage_raw": "15,10,10,15",
+   "startup": 0.3,
+   "startup_frames": 18,
+   "hit_level": "h, h, l, m",
+   "on_block": "-14",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:370",
+   "t7": {
+    "notation": "b+3, 1, 4, 1",
+    "id": "kaz_44",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+3, 1, 4, 1",
+    "motbin_move_id": 1629,
+    "motbin_move_name": "Kz_Naru032",
+    "anim_name": "amkz_narukon00(DVD)",
+    "anim_id": 16754,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 370,
+     "rel_offset": 2756612,
+     "size": 3016,
+     "format_word": 100,
+     "sha256": "25d8f47c481dd93a10abe7482341a7118923a04e590907ebdcb2a2862d80ddab",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+3, 1, 4, 3": {
+   "name": "Reign of Terror",
+   "name_source": "mvl",
+   "input": "b+3, 1, 4, 3",
+   "damage": 15,
+   "damage_raw": "15,10,10,12",
+   "startup": 0.3,
+   "startup_frames": 18,
+   "hit_level": "h, h, l, l",
+   "on_block": "-13",
+   "on_hit": "+1",
+   "on_ch": "+1",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:371",
+   "t7": {
+    "notation": "b+3, 1, 4, 3",
+    "id": "kaz_45",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+3, 1, 4, 3",
+    "motbin_move_id": 1630,
+    "motbin_move_name": "Kz_Naru04",
+    "anim_name": "amKz_narucon04(DVD)",
+    "anim_id": 16755,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 371,
+     "rel_offset": 2759628,
+     "size": 2880,
+     "format_word": 100,
+     "sha256": "d0338a1b18cecf2c3d237c2b27dd67924ed459eb28ef0f1dc1daaf1386f2e469",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+4": {
+   "name": "Flash Tornado",
+   "name_source": "mvl",
+   "input": "b+4",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": 0.3,
+   "startup_frames": 18,
+   "hit_level": "h",
+   "on_block": "-5",
+   "on_hit": "+k",
+   "on_ch": "SCD",
+   "notes": "Tail spin, Homing",
+   "anim_ref": "t7:kaz:0x0000:105",
+   "t7": {
+    "notation": "b+4",
+    "id": "kaz_46",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+4",
+    "motbin_move_id": 1603,
+    "motbin_move_name": "Kz_keriage0",
+    "anim_name": "kzyt_s3_qurk",
+    "anim_id": 105,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x0000",
+     "source": "kazmot.bin",
+     "section": 0,
+     "entry": 105,
+     "rel_offset": 2063924,
+     "size": 4148,
+     "format_word": 100,
+     "sha256": "99ca12ec29b92c07508aea8df3f802d9b182773b2156f15d26856fa5fce62ae2",
+     "blob_file": "kaz_bank0_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+1+2": {
+   "name": "Kumo Kiri",
+   "name_source": "mvl",
+   "input": "b+1+2",
+   "damage": 21,
+   "damage_raw": "21",
+   "startup": 0.3667,
+   "startup_frames": 22,
+   "hit_level": "m",
+   "on_block": "-8?",
+   "on_hit": "+5?",
+   "on_ch": "CS(13?)",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:363",
+   "t7": {
+    "notation": "b+1+2",
+    "id": "kaz_47",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+1+2",
+    "motbin_move_id": 1622,
+    "motbin_move_name": "Kz_Luraken",
+    "anim_name": "kzyt_uraken_st(DVD)",
+    "anim_id": 16747,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 363,
+     "rel_offset": 2740804,
+     "size": 3764,
+     "format_word": 100,
+     "sha256": "ad0c056c7a010b4d666dc6389451b4b6e1b208aefb3317a2e02d7115750fa754",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+1+4": {
+   "name": "Lightning Uppercut",
+   "name_source": "mvl",
+   "input": "b+1+4",
+   "damage": 30,
+   "damage_raw": "30",
+   "startup": 0.7167,
+   "startup_frames": 43,
+   "hit_level": "!",
+   "on_block": "Launch",
+   "on_hit": "Launch",
+   "on_ch": "Launch",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:357",
+   "t7": {
+    "notation": "b+1+4",
+    "id": "kaz_48",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+1+4",
+    "motbin_move_id": 1614,
+    "motbin_move_name": "Kz_kazup00",
+    "anim_name": "kzkz_newkijin0(DVD)",
+    "anim_id": 16741,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 357,
+     "rel_offset": 2718520,
+     "size": 4296,
+     "format_word": 100,
+     "sha256": "60c6bc9332da363cc3705727de5536173b2488155b3a6263a0d315fdda215d91",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "B+1+4": {
+   "name": "Lightning Screw Uppercut",
+   "name_source": "mvl",
+   "input": "B+1+4",
+   "damage": 60,
+   "damage_raw": "60",
+   "startup": 1.05,
+   "startup_frames": 63,
+   "hit_level": "!",
+   "on_block": "Launch",
+   "on_hit": "Launch",
+   "on_ch": "Launch",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "B+1+4",
+    "id": "kaz_49",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "u or u/f+3": {
+   "name": "Kz_jplk00F",
+   "name_source": "motbin-internal",
+   "input": "u or u/f+3",
+   "damage": 25,
+   "damage_raw": "25",
+   "startup": 0.3167,
+   "startup_frames": 19,
+   "hit_level": "m (TJ)",
+   "on_block": "-9",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:266",
+   "t7": {
+    "notation": "u or u/f+3",
+    "id": "kaz_50",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/f+3",
+    "motbin_move_id": 1506,
+    "motbin_move_name": "Kz_jplk00F",
+    "anim_name": "sukz_jlk(DVD)",
+    "anim_id": 16650,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 266,
+     "rel_offset": 2536540,
+     "size": 3084,
+     "format_word": 100,
+     "sha256": "1ea4832e5afe9d10d63bc27a9c0e66f93ce2dca56d842c9cba2f0801b97927cc",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u or u/f+4": {
+   "name": "Kz_jprk00F",
+   "name_source": "motbin-internal",
+   "input": "u or u/f+4",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": 0.4167,
+   "startup_frames": 25,
+   "hit_level": "m (TJ)",
+   "on_block": "-12",
+   "on_hit": "-1",
+   "on_ch": "-1",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:294",
+   "t7": {
+    "notation": "u or u/f+4",
+    "id": "kaz_51",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/f+4",
+    "motbin_move_id": 1539,
+    "motbin_move_name": "Kz_jprk00F",
+    "anim_name": "kaz_sjk008(DVD)",
+    "anim_id": 16678,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 294,
+     "rel_offset": 2565740,
+     "size": 3280,
+     "format_word": 100,
+     "sha256": "af12a37154f93622ca3adc0c03fb98787fe6a69d2d7dc091b7642ee0dbdddd81",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/f+4, 4": {
+   "name": "u/f+4, 4",
+   "name_source": "notation-only",
+   "input": "u/f+4, 4",
+   "damage": 16,
+   "damage_raw": "16,12",
+   "startup": 0.4167,
+   "startup_frames": 25,
+   "hit_level": "m (TJ), l",
+   "on_block": "-23~?",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u/f+4, 4",
+    "id": "kaz_52",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Kz_sjk01",
+     "Kz_sjk01E"
+    ]
+   }
+  },
+  "u/f+4, 4, 4": {
+   "name": "u/f+4, 4, 4",
+   "name_source": "notation-only",
+   "input": "u/f+4, 4, 4",
+   "damage": 16,
+   "damage_raw": "16,12,10",
+   "startup": 0.4167,
+   "startup_frames": 25,
+   "hit_level": "m (TJ), l, l",
+   "on_block": "-18?",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u/f+4, 4, 4",
+    "id": "kaz_53",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Kz_sjk01G",
+     "Kz_sjk02h"
+    ]
+   }
+  },
+  "u/f+4, 4, 4, 4": {
+   "name": "Roundhouse to Triple Spin Kick",
+   "name_source": "mvl",
+   "input": "u/f+4, 4, 4, 4",
+   "damage": 16,
+   "damage_raw": "16,12,10,20",
+   "startup": 0.4167,
+   "startup_frames": 25,
+   "hit_level": "m (TJ), l, l, m",
+   "on_block": "-17",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u/f+4, 4, 4, 4",
+    "id": "kaz_54",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Kz_sjk02hG",
+     "Kz_sjk03h"
+    ]
+   }
+  },
+  "f, F+2": {
+   "name": "Devil Fist",
+   "name_source": "mvl",
+   "input": "f, F+2",
+   "damage": 30,
+   "damage_raw": "30",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-11",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+2",
+    "id": "kaz_55",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, F+3": {
+   "name": "Left Splits Kick",
+   "name_source": "mvl",
+   "input": "f, F+3",
+   "damage": 25,
+   "damage_raw": "25",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-3 OC",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+3",
+    "id": "kaz_56",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, F+4": {
+   "name": "Devil's Steel Petal",
+   "name_source": "mvl",
+   "input": "f, F+4",
+   "damage": 22,
+   "damage_raw": "22",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-10?",
+   "on_hit": "+6~+7?",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+4",
+    "id": "kaz_57",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, f, f+3 or 2+4+3": {
+   "name": "f, f, f+3 or 2+4+3",
+   "name_source": "notation-only",
+   "input": "f, f, f+3 or 2+4+3",
+   "damage": 30,
+   "damage_raw": "30",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "+9~+10 GB",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, f, f+3 or 2+4+3",
+    "id": "kaz_58",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "WS+1": {
+   "name": "WS+1",
+   "name_source": "notation-only",
+   "input": "WS+1",
+   "damage": 10,
+   "damage_raw": "10",
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "m",
+   "on_block": "-5",
+   "on_hit": "+5",
+   "on_ch": "+5",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+1",
+    "id": "kaz_59",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Kz_sWALKF",
+     "Co_syalp00",
+     "Kz_lp00F"
+    ]
+   }
+  },
+  "WS+1, 2": {
+   "name": "WS+1, 2",
+   "name_source": "notation-only",
+   "input": "WS+1, 2",
+   "damage": 10,
+   "damage_raw": "10,12",
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "m, m",
+   "on_block": "-12?",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+1, 2",
+    "id": "kaz_60",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Kz_keriage0",
+     "Kz_sWALKF",
+     "Kz_rp00",
+     "Kz_lprpF"
+    ]
+   }
+  },
+  "WS+2": {
+   "name": "WS+2",
+   "name_source": "notation-only",
+   "input": "WS+2",
+   "damage": 25,
+   "damage_raw": "25",
+   "startup": 0.2667,
+   "startup_frames": 16,
+   "hit_level": "m",
+   "on_block": "-18",
+   "on_hit": "CS",
+   "on_ch": "CS",
+   "notes": "Homing",
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+2",
+    "id": "kaz_61",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Kz_keriage0",
+     "Co_syarp00",
+     "Kz_sWALKF",
+     "Kz_rp00"
+    ]
+   }
+  },
+  "WS+3": {
+   "name": "WS+3",
+   "name_source": "notation-only",
+   "input": "WS+3",
+   "damage": 24,
+   "damage_raw": "24",
+   "startup": 0.35,
+   "startup_frames": 21,
+   "hit_level": "m",
+   "on_block": "-5",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Homing",
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+3",
+    "id": "kaz_62",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Co_syalk00",
+     "Kz_sWALKF",
+     "Kz_lk00"
+    ]
+   }
+  },
+  "WS+4": {
+   "name": "WS+4",
+   "name_source": "notation-only",
+   "input": "WS+4",
+   "damage": 13,
+   "damage_raw": "13",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-3~-2",
+   "on_hit": "+8~+9",
+   "on_ch": "+8~+9",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+4",
+    "id": "kaz_63",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Kz_tukirpsp",
+     "Kz_syark00",
+     "Kz_rk00"
+    ]
+   }
+  },
+  "WS+4, 4": {
+   "name": "WS+4, 4",
+   "name_source": "notation-only",
+   "input": "WS+4, 4",
+   "damage": 13,
+   "damage_raw": "13,16",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m",
+   "on_block": "-15~-14",
+   "on_hit": "-4~-3 OC",
+   "on_ch": "-4~-3 OC",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+4, 4",
+    "id": "kaz_64",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "FC+d/f+3+4": {
+   "name": "FC+d/f+3+4",
+   "name_source": "notation-only",
+   "input": "FC+d/f+3+4",
+   "damage": 24,
+   "damage_raw": "24",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TC)",
+   "on_block": "-12~-11?s",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FC+d/f+3+4",
+    "id": "kaz_65",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "SS+3": {
+   "name": "SS+3",
+   "name_source": "notation-only",
+   "input": "SS+3",
+   "damage": 23,
+   "damage_raw": "23",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-9?",
+   "on_hit": "CS",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "SS+3",
+    "id": "kaz_66",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Kz_sWALKF",
+     "Kz_lk00"
+    ]
+   }
+  },
+  "SS+1+2": {
+   "name": "SS+1+2",
+   "name_source": "notation-only",
+   "input": "SS+1+2",
+   "damage": 25,
+   "damage_raw": "25",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-6",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Tail spin",
+   "anim_ref": null,
+   "t7": {
+    "notation": "SS+1+2",
+    "id": "kaz_67",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Kz_lprpcom",
+     "Kz_lprpcom2"
+    ]
+   }
+  },
+  "Opponent Down d+3+4": {
+   "name": "Opponent Down d+3+4",
+   "name_source": "notation-only",
+   "input": "Opponent Down d+3+4",
+   "damage": 25,
+   "damage_raw": "25",
+   "startup": 0.3833,
+   "startup_frames": 23,
+   "hit_level": "On grounded opponent(l)",
+   "on_block": "-12",
+   "on_hit": "-1",
+   "on_ch": "-1",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "Opponent Down d+3+4",
+    "id": "kaz_68",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "Odd frame f, n (SSL)": {
+   "name": "Odd frame f, n (SSL)",
+   "name_source": "notation-only",
+   "input": "Odd frame f, n (SSL)",
+   "damage": null,
+   "damage_raw": null,
+   "startup": 0.3833,
+   "startup_frames": 23,
+   "hit_level": "(Special)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "Odd frame f, n (SSL)",
+    "id": "kaz_69",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "Even frame f, n (SSR)": {
+   "name": "Even frame f, n (SSR)",
+   "name_source": "notation-only",
+   "input": "Even frame f, n (SSR)",
+   "damage": null,
+   "damage_raw": null,
+   "startup": 0.3833,
+   "startup_frames": 23,
+   "hit_level": "(Special)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "Even frame f, n (SSR)",
+    "id": "kaz_70",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, n, D/F+2": {
+   "name": "f, n, D/F+2",
+   "name_source": "notation-only",
+   "input": "f, n, D/F+2",
+   "damage": 23,
+   "damage_raw": "23",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-10",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, n, D/F+2",
+    "id": "kaz_71",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, n, d/f+2": {
+   "name": "Kz_majin_00",
+   "name_source": "motbin-internal",
+   "input": "f, n, d/f+2",
+   "damage": 23,
+   "damage_raw": "23",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "+5",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:391",
+   "t7": {
+    "notation": "f, n, d/f+2",
+    "id": "kaz_72",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f, n, d/f+2",
+    "motbin_move_id": 1658,
+    "motbin_move_name": "Kz_majin_00",
+    "anim_name": "sukz_kien(DVD)",
+    "anim_id": 16775,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 391,
+     "rel_offset": 2803284,
+     "size": 2716,
+     "format_word": 100,
+     "sha256": "52b93ec18579052ce02bb3247fc3f31fc5671274161ceb3f58770714cc3723cb",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f, n, d/f+1": {
+   "name": "Kz_bodylp00",
+   "name_source": "motbin-internal",
+   "input": "f, n, d/f+1",
+   "damage": 30,
+   "damage_raw": "30",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-15~-14",
+   "on_hit": "Launch",
+   "on_ch": "Launch",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:384",
+   "t7": {
+    "notation": "f, n, d/f+1",
+    "id": "kaz_73",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f, n, d/f+1",
+    "motbin_move_id": 1651,
+    "motbin_move_name": "Kz_bodylp00",
+    "anim_name": "yokz_sitazuki(DVD)",
+    "anim_id": 16768,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 384,
+     "rel_offset": 2787052,
+     "size": 2752,
+     "format_word": 100,
+     "sha256": "d0934dfa4d5aa388e18dded0cf1b300192fe193c391d2e2972c1c84504a4d855",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f, n, d/f+3": {
+   "name": "Co_t_slkF",
+   "name_source": "motbin-internal",
+   "input": "f, n, d/f+3",
+   "damage": 40,
+   "damage_raw": "40",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h (TJ)",
+   "on_block": "-9~0",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:392",
+   "t7": {
+    "notation": "f, n, d/f+3",
+    "id": "kaz_74",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f, n, d/f+3",
+    "motbin_move_id": 1659,
+    "motbin_move_name": "Co_t_slkF",
+    "anim_name": "sukz_heavyhiza(DVD)",
+    "anim_id": 16776,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 392,
+     "rel_offset": 2806000,
+     "size": 3132,
+     "format_word": 100,
+     "sha256": "d661292a42bca78aad62f63facefefedf28451df27bc5f1f2697493ef785f269",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f, n, d/f+4": {
+   "name": "Kz_k00",
+   "name_source": "motbin-internal",
+   "input": "f, n, d/f+4",
+   "damage": 15,
+   "damage_raw": "15",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l",
+   "on_block": "-26",
+   "on_hit": "-3 OC (KND)",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:395",
+   "t7": {
+    "notation": "f, n, d/f+4",
+    "id": "kaz_75",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f, n, d/f+4",
+    "motbin_move_id": 1662,
+    "motbin_move_name": "Kz_k00",
+    "anim_name": "kaz_k00xk(DVD)",
+    "anim_id": 16779,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 395,
+     "rel_offset": 2815644,
+     "size": 2412,
+     "format_word": 100,
+     "sha256": "49172b66cc33783465fe39c9fccc1ee7f01c78c3ed26e53e042ab767ccf29879",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f, n, d, D/F": {
+   "name": "f, n, d, D/F",
+   "name_source": "notation-only",
+   "input": "f, n, d, D/F",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "(Special)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, n, d, D/F",
+    "id": "kaz_76",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, n, d, D/F+2": {
+   "name": "f, n, d, D/F+2",
+   "name_source": "notation-only",
+   "input": "f, n, d, D/F+2",
+   "damage": 23,
+   "damage_raw": "23",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-10",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, n, d, D/F+2",
+    "id": "kaz_77",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, n, d, d/f+2": {
+   "name": "f, n, d, d/f+2",
+   "name_source": "notation-only",
+   "input": "f, n, d, d/f+2",
+   "damage": 23,
+   "damage_raw": "23",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "+5",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, n, d, d/f+2",
+    "id": "kaz_78",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Kz_shoryu_S",
+     "Kz_majin_00",
+     "Co_syarp00"
+    ]
+   }
+  },
+  "f, n, d, d/f+1": {
+   "name": "Dragon Uppercut",
+   "name_source": "mvl",
+   "input": "f, n, d, d/f+1",
+   "damage": 30,
+   "damage_raw": "30",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-15~-14",
+   "on_hit": "Launch",
+   "on_ch": "Launch",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, n, d, d/f+1",
+    "id": "kaz_79",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Kz_dslp",
+     "Kz_bodylp00",
+     "Co_syalp00"
+    ]
+   }
+  },
+  "in rage f, n, d, d/f+1+4": {
+   "name": "in rage f, n, d, d/f+1+4",
+   "name_source": "notation-only",
+   "input": "in rage f, n, d, d/f+1+4",
+   "damage": 45,
+   "damage_raw": "45",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "+2~+4?",
+   "on_hit": "Launch",
+   "on_ch": "Launch",
+   "notes": "Rage art",
+   "anim_ref": null,
+   "t7": {
+    "notation": "in rage f, n, d, d/f+1+4",
+    "id": "kaz_80",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "in rage f, n, d, d/f+1+4, u/f (Only when hit )": {
+   "name": "in rage f, n, d, d/f+1+4, u/f (Only when hit )",
+   "name_source": "notation-only",
+   "input": "in rage f, n, d, d/f+1+4, u/f (Only when hit )",
+   "damage": 45,
+   "damage_raw": "45,18",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m(, (throw))(DVK)",
+   "on_block": null,
+   "on_hit": "Throw(KND)",
+   "on_ch": "Throw(KND)",
+   "notes": "Rage art",
+   "anim_ref": null,
+   "t7": {
+    "notation": "in rage f, n, d, d/f+1+4, u/f (Only when hit )",
+    "id": "kaz_81",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "f, n, d, d/f+3": {
+   "name": "f, n, d, d/f+3",
+   "name_source": "notation-only",
+   "input": "f, n, d, d/f+3",
+   "damage": 40,
+   "damage_raw": "40",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h (TJ)",
+   "on_block": "-9~0",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, n, d, d/f+3",
+    "id": "kaz_82",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Kz_Rider",
+     "Co_t_slkF",
+     "Co_syalk00"
+    ]
+   }
+  },
+  "f, n, d, d/f+4": {
+   "name": "f, n, d, d/f+4",
+   "name_source": "notation-only",
+   "input": "f, n, d, d/f+4",
+   "damage": 15,
+   "damage_raw": "15",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l",
+   "on_block": "-26",
+   "on_hit": "-3 OC (KND)",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, n, d, d/f+4",
+    "id": "kaz_83",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Kz_m_k00",
+     "Kz_k00",
+     "Kz_syark00"
+    ]
+   }
+  },
+  "f, n, d, d/f+4 (Far)": {
+   "name": "f, n, d, d/f+4 (Far)",
+   "name_source": "notation-only",
+   "input": "f, n, d, d/f+4 (Far)",
+   "damage": 15,
+   "damage_raw": "15",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l",
+   "on_block": "-23",
+   "on_hit": "-3 OC (KND)",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, n, d, d/f+4 (Far)",
+    "id": "kaz_84",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Kz_m_k00",
+     "Kz_k00",
+     "Kz_syark00"
+    ]
+   }
+  },
+  "f, n, d, d/f+4, 4": {
+   "name": "Spinning Demon",
+   "name_source": "mvl",
+   "input": "f, n, d, d/f+4, 4",
+   "damage": 15,
+   "damage_raw": "15,12",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l, l",
+   "on_block": "-23",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, n, d, d/f+4, 4",
+    "id": "kaz_85",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Kz_m_k00G",
+     "Kz_syrrk",
+     "Kz_m_k01"
+    ]
+   }
+  },
+  "f, n, d, d/f+4, 1": {
+   "name": "Spinning Demon to Left Hook",
+   "name_source": "mvl",
+   "input": "f, n, d, d/f+4, 1",
+   "damage": 15,
+   "damage_raw": "15,27",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l, m",
+   "on_block": "-16",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, n, d, d/f+4, 1",
+    "id": "kaz_86",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Kz_m_k00Gup",
+     "Kz_naraku_up"
+    ]
+   }
+  },
+  "in rage u/b+1+2 (to DVK)": {
+   "name": "in rage u/b+1+2 (to DVK)",
+   "name_source": "notation-only",
+   "input": "in rage u/b+1+2 (to DVK)",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "(DVK)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": "Rage art",
+   "anim_ref": null,
+   "t7": {
+    "notation": "in rage u/b+1+2 (to DVK)",
+    "id": "kaz_87",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "DVK 1+2": {
+   "name": "DVK 1+2",
+   "name_source": "notation-only",
+   "input": "DVK 1+2",
+   "damage": 44,
+   "damage_raw": "44",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h!",
+   "on_block": "KND",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "DVK 1+2",
+    "id": "kaz_88",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "DVK 3+4": {
+   "name": "DVK 3+4",
+   "name_source": "notation-only",
+   "input": "DVK 3+4",
+   "damage": 33,
+   "damage_raw": "33",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "! (TJ)",
+   "on_block": "KND",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "DVK 3+4",
+    "id": "kaz_89",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "DVK 3+4, 3+4": {
+   "name": "DVK 3+4, 3+4",
+   "name_source": "notation-only",
+   "input": "DVK 3+4, 3+4",
+   "damage": 33,
+   "damage_raw": "33",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "(Special) (TJ), ! (TJ)",
+   "on_block": "KND",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "DVK 3+4, 3+4",
+    "id": "kaz_90",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "DVK f+4": {
+   "name": "DVK f+4",
+   "name_source": "notation-only",
+   "input": "DVK f+4",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "+4~+5?s",
+   "on_hit": "+7~+8s (+15~+16?lc)",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "DVK f+4",
+    "id": "kaz_91",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "DVK f+1+2": {
+   "name": "DVK f+1+2",
+   "name_source": "notation-only",
+   "input": "DVK f+1+2",
+   "damage": 23,
+   "damage_raw": "23",
+   "startup": 0.3667,
+   "startup_frames": 22,
+   "hit_level": "m",
+   "on_block": "-10?",
+   "on_hit": "CS",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "DVK f+1+2",
+    "id": "kaz_92",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "DVK d/f+1": {
+   "name": "DVK d/f+1",
+   "name_source": "notation-only",
+   "input": "DVK d/f+1",
+   "damage": 12,
+   "damage_raw": "12",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-7~-6",
+   "on_hit": "+9~+10",
+   "on_ch": "+9~+10",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "DVK d/f+1",
+    "id": "kaz_93",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "DVK d/f+1, 2": {
+   "name": "DVK d/f+1, 2",
+   "name_source": "notation-only",
+   "input": "DVK d/f+1, 2",
+   "damage": 12,
+   "damage_raw": "12,12",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m",
+   "on_block": "-13",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "DVK d/f+1, 2",
+    "id": "kaz_94",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "DVK u or u/f+1+2": {
+   "name": "Co_jplp00F",
+   "name_source": "motbin-internal",
+   "input": "DVK u or u/f+1+2",
+   "damage": 27,
+   "damage_raw": "27",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "(Sky)!",
+   "on_block": "KND",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:244",
+   "t7": {
+    "notation": "DVK u or u/f+1+2",
+    "id": "kaz_95",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/f+1+2",
+    "motbin_move_id": 1484,
+    "motbin_move_name": "Co_jplp00F",
+    "anim_name": "Bco_sjplp_n(DVD)",
+    "anim_id": 16628,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 244,
+     "rel_offset": 2523532,
+     "size": 2420,
+     "format_word": 100,
+     "sha256": "a2b788534b5ca56ac91b8b3664c3e44ff1d31201e7cf44f3282a4d1552441554",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "DVK f, F+2": {
+   "name": "DVK f, F+2",
+   "name_source": "notation-only",
+   "input": "DVK f, F+2",
+   "damage": null,
+   "damage_raw": "20(,4*3)",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-13",
+   "on_hit": "KND",
+   "on_ch": "Throw(CS)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "DVK f, F+2",
+    "id": "kaz_96",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "DVK f, n, d, d/f+1 When hit U/F": {
+   "name": "DVK f, n, d, d/f+1 When hit U/F",
+   "name_source": "notation-only",
+   "input": "DVK f, n, d, d/f+1 When hit U/F",
+   "damage": 30,
+   "damage_raw": "30,16",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, (throw)",
+   "on_block": "-15",
+   "on_hit": "Throw(KND)",
+   "on_ch": "Throw(KND)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "DVK f, n, d, d/f+1 When hit U/F",
+    "id": "kaz_97",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "DVK f, n, d, d/f+2": {
+   "name": "DVK f, n, d, d/f+2",
+   "name_source": "notation-only",
+   "input": "DVK f, n, d, d/f+2",
+   "damage": 23,
+   "damage_raw": "23",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-10",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "DVK f, n, d, d/f+2",
+    "id": "kaz_98",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "DVK f, n, d, d/f+4": {
+   "name": "DVK f, n, d, d/f+4",
+   "name_source": "notation-only",
+   "input": "DVK f, n, d, d/f+4",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l",
+   "on_block": "-?",
+   "on_hit": "-3s? (KND)",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "DVK f, n, d, d/f+4",
+    "id": "kaz_99",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "DVK f, n, d, d/f+4, 1": {
+   "name": "DVK f, n, d, d/f+4, 1",
+   "name_source": "notation-only",
+   "input": "DVK f, n, d, d/f+4, 1",
+   "damage": 16,
+   "damage_raw": "16,28",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l, m",
+   "on_block": "-16",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "DVK f, n, d, d/f+4, 1",
+    "id": "kaz_100",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "DVK f, n, d, d/f+4, 1, f, n, d, d/f+1": {
+   "name": "DVK f, n, d, d/f+4, 1, f, n, d, d/f+1",
+   "name_source": "notation-only",
+   "input": "DVK f, n, d, d/f+4, 1, f, n, d, d/f+1",
+   "damage": 16,
+   "damage_raw": "16,28,20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l, m, m",
+   "on_block": "-15?",
+   "on_hit": "Launch",
+   "on_ch": "Launch",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "DVK f, n, d, d/f+4, 1, f, n, d, d/f+1",
+    "id": "kaz_101",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "DVK f, n, d, d/f+4, 1, f, n, d, d/f+1 When hit U/F": {
+   "name": "DVK f, n, d, d/f+4, 1, f, n, d, d/f+1 When hit U/F",
+   "name_source": "notation-only",
+   "input": "DVK f, n, d, d/f+4, 1, f, n, d, d/f+1 When hit U/F",
+   "damage": 16,
+   "damage_raw": "16,28,20,16",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l, m, (throw)",
+   "on_block": "-15?",
+   "on_hit": "Throw(KND)",
+   "on_ch": "Throw(KND)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "DVK f, n, d, d/f+4, 1, f, n, d, d/f+1 When hit U/F",
+    "id": "kaz_102",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "DVK SS+2": {
+   "name": "DVK SS+2",
+   "name_source": "notation-only",
+   "input": "DVK SS+2",
+   "damage": 25,
+   "damage_raw": "25",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-22",
+   "on_hit": "Launch",
+   "on_ch": "Launch",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "DVK SS+2",
+    "id": "kaz_103",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "DVK d+1+2 (Opponent Down)": {
+   "name": "DVK d+1+2 (Opponent Down)",
+   "name_source": "notation-only",
+   "input": "DVK d+1+2 (Opponent Down)",
+   "damage": 26,
+   "damage_raw": "26",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l(On grounded opponent)",
+   "on_block": "-15~-13",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "DVK d+1+2 (Opponent Down)",
+    "id": "kaz_104",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "Command": {
+   "name": "Command",
+   "name_source": "notation-only",
+   "input": "Command",
+   "damage": null,
+   "damage_raw": "Damage",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Hit level",
+   "on_block": "Block frame",
+   "on_hit": "Hit frame",
+   "on_ch": "Counter hit frame",
+   "notes": "Notes",
+   "anim_ref": null,
+   "t7": {
+    "notation": "Command",
+    "id": "kaz_105",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "b+3__2": {
+   "name": "b+3",
+   "name_source": "notation-only",
+   "input": "b+3",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": 0.3,
+   "startup_frames": 18,
+   "hit_level": "h",
+   "on_block": "-8",
+   "on_hit": "+3",
+   "on_ch": "+3",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "b+3",
+    "id": "kaz_106",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Kz_Naru00",
+     "Kz_Naru00E"
+    ]
+   }
+  },
+  "f+1": {
+   "name": "Kz_lp00F",
+   "name_source": "motbin-internal",
+   "input": "f+1",
+   "damage": 7,
+   "damage_raw": "7",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h",
+   "on_block": "+1",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:333",
+   "t7": {
+    "notation": "f+1",
+    "id": "kaz_107",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+1",
+    "motbin_move_id": 1584,
+    "motbin_move_name": "Kz_lp00F",
+    "anim_name": "cbjz_lp00f(DVD)",
+    "anim_id": 16717,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 333,
+     "rel_offset": 2656252,
+     "size": 2216,
+     "format_word": 100,
+     "sha256": "2384e6788bcb73bc9c9d50df76bfa78240a478126f1614ddf65261b0b2e99847",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f, F+1": {
+   "name": "f, F+1",
+   "name_source": "notation-only",
+   "input": "f, F+1",
+   "damage": 7,
+   "damage_raw": "7",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "+1",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+1",
+    "id": "kaz_108",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "d/b or d+1": {
+   "name": "Kz_st2cr00B",
+   "name_source": "motbin-internal",
+   "input": "d/b or d+1",
+   "damage": 5,
+   "damage_raw": "5",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm (TC)",
+   "on_block": "-5",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:234",
+   "t7": {
+    "notation": "d/b or d+1",
+    "id": "kaz_109",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b",
+    "motbin_move_id": 1466,
+    "motbin_move_name": "Kz_st2cr00B",
+    "anim_name": "coyt_ta_sya(DVD)",
+    "anim_id": 16618,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 234,
+     "rel_offset": 2520680,
+     "size": 704,
+     "format_word": 100,
+     "sha256": "05a795e2131eb7e4b86c14d3d27f94b38a41a16cf7def897dac75528100a8a38",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d+2": {
+   "name": "Kz_t_srp00",
+   "name_source": "motbin-internal",
+   "input": "d+2",
+   "damage": 8,
+   "damage_raw": "8",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm (TC)",
+   "on_block": "-4",
+   "on_hit": "+7",
+   "on_ch": "+7",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:382",
+   "t7": {
+    "notation": "d+2",
+    "id": "kaz_110",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+2",
+    "motbin_move_id": 1672,
+    "motbin_move_name": "Kz_t_srp00",
+    "anim_name": "naco_syrp(DVD)",
+    "anim_id": 16766,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 382,
+     "rel_offset": 2782560,
+     "size": 2284,
+     "format_word": 100,
+     "sha256": "327dcf0bceebd1010eb934ac7e6fdb0392de5b390920e24feabc6444d640bdae",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d+3": {
+   "name": "Co_t_slk00",
+   "name_source": "motbin-internal",
+   "input": "d+3",
+   "damage": 12,
+   "damage_raw": "12",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-17",
+   "on_hit": "-3",
+   "on_ch": "-3",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x8000:104",
+   "t7": {
+    "notation": "d+3",
+    "id": "kaz_111",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+3",
+    "motbin_move_id": 1675,
+    "motbin_move_name": "Co_t_slk00",
+    "anim_name": "new_tsrk(DVD)",
+    "anim_id": 32872,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x8000",
+     "source": "common.arc",
+     "section": 0,
+     "entry": 104,
+     "rel_offset": 622340,
+     "size": 2768,
+     "format_word": 100,
+     "sha256": "a4d4fb8df70a3c4f3eaa15a1bfd0d9fd664dfa15840a2b8b3011ab9c529c6a59",
+     "blob_file": "common_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d+4": {
+   "name": "Kz_t_srk00",
+   "name_source": "motbin-internal",
+   "input": "d+4",
+   "damage": 7,
+   "damage_raw": "7",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-13",
+   "on_hit": "-2",
+   "on_ch": "-2",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x8000:93",
+   "t7": {
+    "notation": "d+4",
+    "id": "kaz_112",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+4",
+    "motbin_move_id": 1676,
+    "motbin_move_name": "Kz_t_srk00",
+    "anim_name": "ygco_tsrk(DVD)",
+    "anim_id": 32861,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x8000",
+     "source": "common.arc",
+     "section": 0,
+     "entry": 93,
+     "rel_offset": 584104,
+     "size": 2340,
+     "format_word": 100,
+     "sha256": "97ee309b5c5cfb36f2e6756f2046dd971edda51f1abe89874dbf844fcbb493ed",
+     "blob_file": "common_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "FC+1": {
+   "name": "FC+1",
+   "name_source": "notation-only",
+   "input": "FC+1",
+   "damage": 5,
+   "damage_raw": "5",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm (TC)",
+   "on_block": "-5",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FC+1",
+    "id": "kaz_113",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "FC+2": {
+   "name": "FC+2",
+   "name_source": "notation-only",
+   "input": "FC+2",
+   "damage": 18,
+   "damage_raw": "18",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm (TC)",
+   "on_block": "-4",
+   "on_hit": "+7",
+   "on_ch": "+7",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FC+2",
+    "id": "kaz_114",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "FC+3": {
+   "name": "FC+3",
+   "name_source": "notation-only",
+   "input": "FC+3",
+   "damage": 12,
+   "damage_raw": "12",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-17",
+   "on_hit": "-3",
+   "on_ch": "-3",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FC+3",
+    "id": "kaz_115",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "FC+4": {
+   "name": "FC+4",
+   "name_source": "notation-only",
+   "input": "FC+4",
+   "damage": 10,
+   "damage_raw": "10",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-15",
+   "on_hit": "-4",
+   "on_ch": "-4",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FC+4",
+    "id": "kaz_116",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "WS+1+2": {
+   "name": "WS+1+2",
+   "name_source": "notation-only",
+   "input": "WS+1+2",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-2~-1",
+   "on_hit": "+9~+10",
+   "on_ch": "+9~+10",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+1+2",
+    "id": "kaz_117",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Kz_lprpcom",
+     "Kz_lprpcom2"
+    ]
+   }
+  },
+  "u/b or u or u/f+1": {
+   "name": "Co_jplp00F",
+   "name_source": "motbin-internal",
+   "input": "u/b or u or u/f+1",
+   "damage": null,
+   "damage_raw": null,
+   "startup": 0.3,
+   "startup_frames": 18,
+   "hit_level": "m (TJ)",
+   "on_block": "-8",
+   "on_hit": "+3",
+   "on_ch": "+3",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:244",
+   "t7": {
+    "notation": "u/b or u or u/f+1",
+    "id": "kaz_118",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/f+1",
+    "motbin_move_id": 1484,
+    "motbin_move_name": "Co_jplp00F",
+    "anim_name": "Bco_sjplp_n(DVD)",
+    "anim_id": 16628,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 244,
+     "rel_offset": 2523532,
+     "size": 2420,
+     "format_word": 100,
+     "sha256": "a2b788534b5ca56ac91b8b3664c3e44ff1d31201e7cf44f3282a4d1552441554",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/b or u or u/f+2": {
+   "name": "u/b or u or u/f+2",
+   "name_source": "notation-only",
+   "input": "u/b or u or u/f+2",
+   "damage": null,
+   "damage_raw": null,
+   "startup": 0.2833,
+   "startup_frames": 17,
+   "hit_level": "h",
+   "on_block": "-8",
+   "on_hit": "+3",
+   "on_ch": "+3",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u/b or u or u/f+2",
+    "id": "kaz_119",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "u/b+3": {
+   "name": "Co_jplk00B",
+   "name_source": "motbin-internal",
+   "input": "u/b+3",
+   "damage": null,
+   "damage_raw": null,
+   "startup": 0.35,
+   "startup_frames": 21,
+   "hit_level": "m (TJ)",
+   "on_block": "-17",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:268",
+   "t7": {
+    "notation": "u/b+3",
+    "id": "kaz_120",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/b+3",
+    "motbin_move_id": 1507,
+    "motbin_move_name": "Co_jplk00B",
+    "anim_name": "sjprki10(DVD)",
+    "anim_id": 16652,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 268,
+     "rel_offset": 2539624,
+     "size": 3020,
+     "format_word": 100,
+     "sha256": "808c1358cd95fd6ef901386803f51a75fd9fd16bfb5dde42129faea18ecab81e",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/b+4": {
+   "name": "Co_jprk00B",
+   "name_source": "motbin-internal",
+   "input": "u/b+4",
+   "damage": null,
+   "damage_raw": null,
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "m (TJ)",
+   "on_block": "-19",
+   "on_hit": "-8",
+   "on_ch": "-8",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:281",
+   "t7": {
+    "notation": "u/b+4",
+    "id": "kaz_121",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/b+4",
+    "motbin_move_id": 1520,
+    "motbin_move_name": "Co_jprk00B",
+    "anim_name": "sjplki00(DVD)",
+    "anim_id": 16665,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 281,
+     "rel_offset": 2553896,
+     "size": 2636,
+     "format_word": 100,
+     "sha256": "a58dfed4693eb7788968b18bd64e607696d5b0a8bf14e6f634eecd6203d2b744",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "SS+1": {
+   "name": "Kz_lp00F",
+   "name_source": "motbin-internal",
+   "input": "SS+1",
+   "damage": 7,
+   "damage_raw": "7",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "+1",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:333",
+   "t7": {
+    "notation": "SS+1",
+    "id": "kaz_122",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "SS+1",
+    "motbin_move_id": 1584,
+    "motbin_move_name": "Kz_lp00F",
+    "anim_name": "cbjz_lp00f(DVD)",
+    "anim_id": 16717,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 333,
+     "rel_offset": 2656252,
+     "size": 2216,
+     "format_word": 100,
+     "sha256": "2384e6788bcb73bc9c9d50df76bfa78240a478126f1614ddf65261b0b2e99847",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [7]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1584
+    ]
+   }
+  },
+  "SS+2": {
+   "name": "Kz_rp00",
+   "name_source": "motbin-internal",
+   "input": "SS+2",
+   "damage": 12,
+   "damage_raw": "12",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-3",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:320",
+   "t7": {
+    "notation": "SS+2",
+    "id": "kaz_123",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "SS+2",
+    "motbin_move_id": 1568,
+    "motbin_move_name": "Kz_rp00",
+    "anim_name": "nakz_rph(DVD)",
+    "anim_id": 16704,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 320,
+     "rel_offset": 2629564,
+     "size": 2204,
+     "format_word": 100,
+     "sha256": "776ec763f4654d30b693247dc1a32c2db3f1006571fb2ae4a1b4eb4deb957f57",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [12]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1568
+    ]
+   }
+  },
+  "SS+4": {
+   "name": "Kz_rk00",
+   "name_source": "motbin-internal",
+   "input": "SS+4",
+   "damage": 18,
+   "damage_raw": "18",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-9",
+   "on_hit": "+2",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:327",
+   "t7": {
+    "notation": "SS+4",
+    "id": "kaz_124",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "SS+4",
+    "motbin_move_id": 1577,
+    "motbin_move_name": "Kz_rk00",
+    "anim_name": "cbjz_rkhigh01(DVD)",
+    "anim_id": 16711,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 327,
+     "rel_offset": 2647520,
+     "size": 2948,
+     "format_word": 100,
+     "sha256": "ed0a3829b3620e95b4abb4c9e2bdad9a6cd3b5b9cd423f8a292c93493c23b8bb",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [18]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1577
+    ]
+   }
+  },
+  "SS+3+4": {
+   "name": "Kz_WK00",
+   "name_source": "motbin-internal",
+   "input": "SS+3+4",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-8",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "notes": null,
+   "anim_ref": "t7:kaz:0x4000:324",
+   "t7": {
+    "notation": "SS+3+4",
+    "id": "kaz_125",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "SS+3+4",
+    "motbin_move_id": 1581,
+    "motbin_move_name": "Kz_WK00",
+    "anim_name": "ozkz_lmk_r(DVD)",
+    "anim_id": 16708,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "kazrotsm.arc",
+     "section": 0,
+     "entry": 324,
+     "rel_offset": 2638476,
+     "size": 3004,
+     "format_word": 100,
+     "sha256": "6bad390a3f73dd44ccff7dd17e0fdb402b6b4b46099ff29ea0e00f71e2efb9c4",
+     "blob_file": "kaz_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  }
+ }
+}
