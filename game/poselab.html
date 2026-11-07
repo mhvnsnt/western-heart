@@ -242,7 +242,33 @@ function footYaw() {
   };
   return { src: yaw(boneMap(cur.src), false), tgt: yaw(boneMap(cur.tgt), cur.swapLR) };
 }
-window.__poselab = { show, rest, restUrl, showFighter, footYaw, cur: () => cur, banks: Object.keys(T3_BANKS) };
+/* Close-up QA view (2026-11-07; owner: "Arms at shoulders, forearms, and hands are all crushed and twisted ... twisted
+   necks or stretched faces evaluate and fix it all"): after show()/showFighter(), render ONLY the posed fighter, full
+   canvas, framed on the upper body (hips to above the head, both hands), from `yaw` degrees around it (0 = front, +Z).
+   tools/model-audit/rig_qa_sheet.mjs drives it for every fighter. */
+function closeup({ yaw = 0, part = 'upper' } = {}) {
+  if (!cur || !cur.tgt) throw new Error('show a fighter first');
+  const tgt = cur.tgt;
+  tgt.updateMatrixWorld(true);
+  const bm = boneMap(tgt);
+  const p = (b) => b.getWorldPosition(new THREE.Vector3());
+  const pts = ['Hips', 'Head', 'LeftHand', 'RightHand', 'LeftShoulder', 'RightShoulder', 'LeftForeArm', 'RightForeArm']
+    .filter((n) => bm[n]).map((n) => p(bm[n]));
+  if (!pts.length) throw new Error('no humanoid bones');
+  const box = new THREE.Box3().setFromPoints(pts);
+  if (part === 'face' && bm.Head) { const h = p(bm.Head); box.setFromCenterAndSize(h.clone().add(new THREE.Vector3(0, 0.08, 0)), new THREE.Vector3(0.35, 0.35, 0.35)); }
+  else box.max.y += 0.25; // the top of the head
+  const c = box.getCenter(new THREE.Vector3()), sz = box.getSize(new THREE.Vector3());
+  const r = Math.max(sz.x, sz.y, sz.z) * 0.72 + 0.06;
+  const cam = new THREE.PerspectiveCamera(30, W / H, 0.01, 50);
+  const yr = THREE.MathUtils.degToRad(yaw), d = r / Math.tan(THREE.MathUtils.degToRad(15));
+  cam.position.set(c.x + Math.sin(yr) * d, c.y + r * 0.15, c.z + Math.cos(yr) * d);
+  cam.lookAt(c);
+  renderer.setViewport(0, 0, W, H); renderer.setScissor(0, 0, W, H);
+  renderer.render(scenes[1], cam);
+  return { center: c.toArray().map((x) => +x.toFixed(3)), radius: +r.toFixed(3) };
+}
+window.__poselab = { show, rest, restUrl, showFighter, footYaw, closeup, cur: () => cur, banks: Object.keys(T3_BANKS) };
 const q = new URLSearchParams(location.search);
 if (q.get('model')) show({ model: q.get('model'), bank: q.get('bank') || 'king', clip: q.get('clip') || 'stance', t: +(q.get('t') || 0.5) })
   .catch(e => { info.textContent = 'ERROR ' + e.message; });
