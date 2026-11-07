@@ -5,6 +5,10 @@ bulk, or superseded intermediates). Every one is reproducible from the local
 working copies at `~/workspace/game-reverse-engineering/`, which are never
 deleted. Sizes in bytes, hashes are SHA-256.
 
+## Where game binaries come from — ARCHIVE-ORG-FIRST LAW (owner 2026-11-06)
+
+For ANY game acquisition or teardown pull, **archive.org is checked FIRST** — before Steam, before stores, before torrents, before anywhere else. Only when archive.org verifiably does NOT have the game — checked LIVE via its search/metadata API with the item's actual files inspected (names, sizes, formats), never a title guess — do we move to another source. A stale "not on archive.org" note is NOT a check: catalogs change. Proof case: SCVI was recorded absent in Oct 2026 and was sitting on archive.org in Nov 2026 while lanes burned hours on the Steam route. Every acquisition brief names the archive.org check and its date. Current catalog: `teardown/ARCHIVE-ORG-CATALOG-2026-11-06.md` (mirrored at the game-reverse-engineering repo root).
+
 ## Raw disc / ROM binaries (extracted knowledge IS in the repo; the raw dumps stay local)
 
 | Size | SHA-256 | Local path |
