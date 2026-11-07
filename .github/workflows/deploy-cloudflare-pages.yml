@@ -57,7 +57,12 @@ jobs:
         if: steps.gate.outputs.go == 'true'
         run: |
           sleep 20
-          for p in game/index.html game/js/assets.js game/data/roster_map.json; do
-            code=$(curl -s -o /dev/null -w "%{http_code}" "https://western-heart.pages.dev/$p")
+          # -L: Pages serves /game/index.html as a 308 to its clean URL /game/
+          for p in game/ game/js/assets.js game/data/roster_map.json; do
+            code=$(curl -s -L -o /dev/null -w "%{http_code}" "https://western-heart.pages.dev/$p")
             echo "$p -> $code"; [ "$code" = "200" ] || exit 1
           done
+          # a missing file must be a real 404 (404.html present), never index.html with 200: the game's loaders fall
+          # through to the remote / jsDelivr copies on 404 only
+          code=$(curl -s -L -o /dev/null -w "%{http_code}" "https://western-heart.pages.dev/game/assets/__missing_check_$GITHUB_RUN_ID.json")
+          echo "missing file -> $code"; [ "$code" = "404" ] || exit 1

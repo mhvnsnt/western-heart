@@ -45,7 +45,9 @@ test('the site builder enforces the Cloudflare Pages per-file and per-deployment
   const py = src('tools/deploy/build_cf_pages.py');
   assert.match(py, /CF_FILE_MAX = 25 \* 1024 \* 1024/);
   assert.match(py, /CF_FILE_COUNT_MAX = 20000/);
+  assert.match(py, /os\.path\.join\(a\.out, '404\.html'\)/, 'a top-level 404.html turns off the Pages SPA fallback');
   const wf = src('.github/workflows/deploy-cloudflare-pages.yml');
   assert.match(wf, /wrangler@4\.150\.0 pages deploy cf-site --project-name western-heart/);
   assert.match(wf, /filter: blob:none/, 'never checks out the 14 GB tree');
+  assert.match(wf, /missing file -> \$code"; \[ "\$code" = "404" \]/, 'the live check proves missing files 404');
 });
