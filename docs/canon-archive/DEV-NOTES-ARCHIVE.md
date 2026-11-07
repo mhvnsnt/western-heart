@@ -717,3 +717,14 @@ they are made — this file is a living archive, not a one-time dump.*
 - **Landed:** WH PR #1154, merged 2026-10-27 (merge `4581f63f`).
 
 *Entry compiled 2026-10-28 by the overnight pipeline from the itch-trim lane record (WH PR #1154, verified-extraction 00:47 UTC).*
+
+---
+
+## 2026-11-07 — SmutBase 6: pose-fix set done; Megami live proof rejected by the owner
+
+- **Pose-fix set done (2026-11-07):** 16 renders (front + three-quarter per pose) for the SmutBase six, stored on the western-heart release `smutbase6-bank-poses-20261106`, digests verified. Every pose now comes from the character's own bank data, her own authored pose, or the owner's two reference shots for Pond — replacing the earlier invented-pose set. Pond has three poses (Master Raven T7 stance + the two hand-authored reference poses); Tobi is Hwoarang T3 neutral; Ryusan is Lucky Chloe T7 dance-idle; Megami is a Jun TTT2 spinning-kick frame; Menajerii is Roger Jr TTT2 mid-reach; Chatur uses her own authored pose from her raw blend with her original purple-horizon background.
+- **Honest gap:** the bank clips carry no finger tracks, so the five bank-posed fighters' fingers sit at their rigs' natural rest curl — only Pond's two reference poses have fully posed fingers.
+- **Owner decision (2026-11-07): Megami live proof REJECTED.** Owner's words: "Megami live proof is bad for about 5 reason watch and you'll see why." The Nov 4 flag is NOT closed; a live Megami proof is still owed. The five defects: she renders pale/white with light hair instead of her dark textured hair and mustard corset; tiny in the wide shot; back to camera, face never visible in 4.8s; on the floor / curled in a white glow ball with debug orbs and spiky shadows; dark, chopped, stitched from separate sessions. The pale in-engine render needs a root cause before any re-shoot (the file itself was byte-verified against the rebuild).
+- **Sources:** release `smutbase6-bank-poses-20261106` (16 assets, verified this run); daily note 2026-11-07 verified extraction 04:25 UTC; SmutBase 6 fidelity handoff `docs/handoffs/SMUTBASE6-FIDELITY-2026-11-04.md` (WH #1567).
+
+*Entry compiled 2026-11-07 by the overnight pipeline from the 2026-11-07 daily note (verified extraction 04:25 UTC) and the release asset list.*
