@@ -122,6 +122,17 @@ exactly this in batch 1's first CI run: 347 torch-referenced rows).
 | bruce | 11 | 6 | 3 | 328 | 336 | 28 |
 | bryan | 13 | 5 | 2 | 354 | 363 | 34 |
 | christie | 9 | 5 | 6 | 374 | 397 | 46 |
-| **batches 1–2 total (12 banks)** | **133** | **54** | **53** | **3489** | **3562** | **625** |
+| combot | 14 | 3 | 3 | 792 | 809 | 40 |
+| devil_jin | 12 | 5 | 3 | 363 | 365 | 26 |
+| dragunov | 8 | 9 | 3 | 310 | 318 | 27 |
+| eddy | 9 | 5 | 6 | 379 | 393 | 40 |
+| eleonor | 11 | 6 | 3 | 316 | 323 | 35 |
+| emilie | 4 | 3 | 13 | 36 | 38 | 6 |
+| feng | 11 | 6 | 3 | 328 | 336 | 27 |
+| forest | 12 | 5 | 3 | 403 | 401 | 19 |
+| ganryu | 8 | 8 | 4 | 322 | 328 | 26 |
+| heihachi | 12 | 5 | 3 | 338 | 342 | 27 |
+| hwoarang | 3 | 2 | 15 | 36 | 36 | 3 |
+| **batches 1–4 total (23 banks)** | **237** | **111** | **112** | **7112** | **7251** | **901** |
 
-Batch 1 = PR #1625 (alex, alisa, angel, armor_king, asuka, bob_satsuma). Batch 2 = PR #1627 (anna_ttt2, baek_doo_san, bosconovitch_ttt2, bruce, bryan_ttt2, christie). Further batches append rows here as they land.
+Batch 1 = PR #1625 (alex, alisa, angel, armor_king, asuka, bob_satsuma). Batch 2 = PR #1627 (anna_ttt2, baek_doo_san, bosconovitch_ttt2, bruce, bryan_ttt2, christie). Batch 3 = PR #1628 (combot, devil_jin, dragunov, eddy_ttt2, eleonor). Batch 4 = PR #1629 (emilie, feng, forest, ganryu, heihachi_ttt2, hwoarang_ttt2). Further batches append rows here as they land.
