@@ -65,7 +65,12 @@ function clear() {
 /* Raw bank clip on the identity-rest source rig (+ Root height from root_t). */
 function rawClipForSource(clip) {
   const raw = clip.userData.raw;
-  const tracks = clip.tracks.slice();
+  // jsonToClip names the chest track 'Spine2' (the game rigs' chest bone); the source rig's chest node is 'Chest', so
+  // without this the source preview silently dropped every clip's chest motion and always looked upright (2026-11-07).
+  const tracks = clip.tracks.map((t) => {
+    if (t.name !== 'Spine2.quaternion') return t;
+    const c = t.clone(); c.name = 'Chest.quaternion'; return c;
+  });
   if (raw.root_t) {
     const n = raw.root_t.length, times = new Float32Array(n), v = new Float32Array(n * 3);
     for (let i = 0; i < n; i++) { times[i] = i / raw.fps; v.set(raw.root_t[i], i * 3); }
@@ -90,11 +95,14 @@ async function show({ model = 'pantera', bank = 'king', clip = 'stance', t = 0.5
   // Source rig: the bank's own skeleton.json names it (source_glb), so every decoded bank works here.
   const skel = getT3Skeleton(bank);
   const srcUrl = BANK_GLB[bank] || (skel && skel.source_glb ? '../' + skel.source_glb : null);
-  if (!srcUrl) throw new Error(`no source rig for bank ${bank}`);
-  const sg = await loadGlb(srcUrl);
-  const src = skeletonClone(sg.scene);
-  const srcMixer = new THREE.AnimationMixer(src);
-  const sa = srcMixer.clipAction(rawClipForSource(clips[clip])); sa.play();
+  // A bank with no source rig (the TTT2 / T7 banks: their skeleton.json names none) renders the fighter only.
+  let src = new THREE.Group(), srcMixer = new THREE.AnimationMixer(src);
+  if (srcUrl) {
+    const sg = await loadGlb(srcUrl);
+    src = skeletonClone(sg.scene);
+    srcMixer = new THREE.AnimationMixer(src);
+    const sa = srcMixer.clipAction(rawClipForSource(clips[clip])); sa.play();
+  }
   // target (the game's own loader + retarget)
   await assets.loadModels([model]);
   const inst = assets.createInstance(model, 0xffffff, 0x888888, tint);
@@ -123,7 +131,7 @@ async function show({ model = 'pantera', bank = 'king', clip = 'stance', t = 0.5
     const ds = p(sb[b]).sub(p(sb[a])).normalize(), dt = p(tb[b]).sub(p(tb[a])).normalize();
     errs[`${a}->${b}`] = +(THREE.MathUtils.radToDeg(ds.angleTo(dt))).toFixed(1);
   }
-  const hs = p(sb.Head).y - p(sb.Hips).y, ht = p(tb.Head).y - p(tb.Hips).y;
+  const hs = (sb.Head && sb.Hips) ? p(sb.Head).y - p(sb.Hips).y : NaN, ht = p(tb.Head).y - p(tb.Hips).y;
   // Which way the feet point (world XZ), from foot->toe joints.
   const toe = (m) => {
     const v = new THREE.Vector3();
@@ -140,8 +148,8 @@ async function show({ model = 'pantera', bank = 'king', clip = 'stance', t = 0.5
   render();
   const res = { model, bank, clip, time: +time.toFixed(3), duration: +dur.toFixed(3), facesNegZ, swapLR: rt[clip].userData.rigSwapLR,
     srcHeadAboveHips: +hs.toFixed(3), tgtHeadAboveHips: +ht.toFixed(3), toes, dirErrDeg: errs,
-    maxErr: Math.max(...Object.values(errs)) };
-  info.textContent = `SOURCE (raw bank on ${srcUrl.split('/').pop()})  |  TARGET ${model} (retargeted)\n` + JSON.stringify(res);
+    maxErr: Object.keys(errs).length ? Math.max(...Object.values(errs)) : null };
+  info.textContent = `SOURCE (${srcUrl ? 'raw bank on ' + srcUrl.split('/').pop() : 'no source rig for ' + bank})  |  TARGET ${model} (retargeted)\n` + JSON.stringify(res);
   return res;
 }
 function render() {
@@ -180,17 +188,26 @@ async function rest(model) {
    entry (selected attire 1), bank from bankIdFor (moveset t3_source). */
 import { FULL_ROSTER } from './js/roster-full.js';
 import { loadFighterMovesets } from './js/movesets.js';
-import { bankIdFor } from './js/fighter.js';
+import { bankIdFor, ownSlotBankFor } from './js/fighter.js';
+import { resolveFighterAttire } from './js/attires.js';
 let _msReady = null;
-async function showFighter({ id, clip = 'stance', t = 0.5 }) {
+async function showFighter({ id, clip = 'stance', t = 0.5, ownCandidates = false, model = null }) {
   _msReady = _msReady || loadFighterMovesets();
   await _msReady;
-  const c = FULL_ROSTER.find(x => x.id === id);
-  if (!c) throw new Error('no roster fighter ' + id);
-  const bank = bankIdFor(c.id, c.id);
+  const base = FULL_ROSTER.find(x => x.id === id);
+  if (!base) throw new Error('no roster fighter ' + id);
+  // The model the fight loads: the selected attire (attires.js resolveFighterAttire; slot 1 by default), not the roster
+  // entry's base key (2026-11-07: King Tyrant fights in king-tyrant-attire1, Cyborg X in its attire-1 model). `model`
+  // overrides it to judge another attire.
+  const c = { ...base, model: model || resolveFighterAttire(base).model || base.model };
+  let bank = bankIdFor(c.id, c.id);
   if (!bank) throw new Error(`${id}: no bank`);
+  // Same rule as the fight (fighter.js layerOwnSlots): a slot the fighter's OWN character's bank has plays from it.
+  // ownCandidates: preview a fighter's not-yet-active own bank (fighter.js OWN_SLOT_CANDIDATES) to judge it by eye.
+  const own = ownSlotBankFor(c.id, { candidates: !!ownCandidates });
+  if (own) { const oc = await loadT3Clips(THREE, own); if (oc && oc[clip]) bank = own; }
   const r = await show({ model: c.model, bank, clip, t });
-  return { id, ...r };
+  return { id, model: c.model, ...r };
 }
 /* Raw rest render of any GLB by URL (statics included; meshopt decoded). */
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.js';
@@ -235,7 +252,101 @@ function footYaw() {
   };
   return { src: yaw(boneMap(cur.src), false), tgt: yaw(boneMap(cur.tgt), cur.swapLR) };
 }
-window.__poselab = { show, rest, restUrl, showFighter, footYaw, cur: () => cur, banks: Object.keys(T3_BANKS) };
+/* Close-up QA view (2026-11-07; owner: "Arms at shoulders, forearms, and hands are all crushed and twisted ... twisted
+   necks or stretched faces evaluate and fix it all"): after show()/showFighter(), render ONLY the posed fighter, full
+   canvas, framed on the upper body (hips to above the head, both hands), from `yaw` degrees around it (0 = front, +Z).
+   tools/model-audit/rig_qa_sheet.mjs drives it for every fighter. */
+function closeup({ yaw = 0, part = 'upper', which = 'tgt' } = {}) {
+  if (!cur || !cur.tgt) throw new Error('show a fighter first');
+  // which: 'tgt' = the retargeted fighter (default); 'src' = the bank's own source rig playing the raw clip.
+  const tgt = which === 'src' ? cur.src : cur.tgt;
+  tgt.updateMatrixWorld(true);
+  const bm = boneMap(tgt);
+  const p = (b) => b.getWorldPosition(new THREE.Vector3());
+  const pts = ['Hips', 'Head', 'LeftHand', 'RightHand', 'LeftShoulder', 'RightShoulder', 'LeftForeArm', 'RightForeArm']
+    .filter((n) => bm[n]).map((n) => p(bm[n]));
+  if (!pts.length) throw new Error('no humanoid bones');
+  const box = new THREE.Box3().setFromPoints(pts);
+  if (part === 'face' && bm.Head) { const h = p(bm.Head); box.setFromCenterAndSize(h.clone().add(new THREE.Vector3(0, 0.08, 0)), new THREE.Vector3(0.35, 0.35, 0.35)); }
+  else if (part === 'full') box.setFromObject(tgt); // the whole body (meshes included)
+  else box.max.y += 0.25; // the top of the head
+  const c = box.getCenter(new THREE.Vector3()), sz = box.getSize(new THREE.Vector3());
+  const r = Math.max(sz.x, sz.y, sz.z) * 0.72 + 0.06;
+  const cam = new THREE.PerspectiveCamera(30, W / H, 0.01, 50);
+  const yr = THREE.MathUtils.degToRad(yaw), d = r / Math.tan(THREE.MathUtils.degToRad(15));
+  cam.position.set(c.x + Math.sin(yr) * d, c.y + r * 0.15, c.z + Math.cos(yr) * d);
+  cam.lookAt(c);
+  renderer.setViewport(0, 0, W, H); renderer.setScissor(0, 0, W, H);
+  renderer.render(scenes[which === 'src' ? 0 : 1], cam);
+  return { center: c.toArray().map((x) => +x.toFixed(3)), radius: +r.toFixed(3) };
+}
+/* Deformation stretch map (2026-11-07, owner: "extreme weight painting issues all over ... crushed and twisted arms"):
+   after show()/showFighter(), skin every vertex on the CPU exactly as the GPU does (SkinnedMesh.getVertexPosition) and
+   compare each triangle edge with its bind length. A vertex scores max(posed/bind, bind/posed) over its edges: 1 =
+   rigid, 2 = doubled or halved. Weight-paint errors (skin bound to the wrong bone, missing blend at a joint) show as
+   high scores clustered on one region. Returns per-mesh percentiles plus the bones that own the worst vertices.
+   heat: true repaints the posed fighter with the score (blue 1 -> yellow 2 -> red 3+) so closeup() renders the map. */
+function stretchMap({ heat = false, worst = 2.5 } = {}) {
+  if (!cur || !cur.tgt) throw new Error('show a fighter first');
+  cur.tgt.updateMatrixWorld(true);
+  const meshes = [];
+  cur.tgt.traverse((o) => { if (o.isSkinnedMesh && o.geometry && o.geometry.attributes.position) meshes.push(o); });
+  const v = new THREE.Vector3(), out = [];
+  for (const m of meshes) {
+    const g = m.geometry, pos = g.attributes.position, n = pos.count;
+    const P = new Float32Array(n * 3);
+    for (let i = 0; i < n; i++) { m.getVertexPosition(i, v); P[i * 3] = v.x; P[i * 3 + 1] = v.y; P[i * 3 + 2] = v.z; }
+    const idx = g.index ? g.index.array : null;
+    const tri = idx ? idx.length / 3 : n / 3;
+    const score = new Float32Array(n).fill(1);
+    const ratios = [];
+    const edge = (a, b) => {
+      const rx = pos.getX(a) - pos.getX(b), ry = pos.getY(a) - pos.getY(b), rz = pos.getZ(a) - pos.getZ(b);
+      const r0 = Math.sqrt(rx * rx + ry * ry + rz * rz);
+      if (r0 < 1e-5) return;
+      const px = P[a * 3] - P[b * 3], py = P[a * 3 + 1] - P[b * 3 + 1], pz = P[a * 3 + 2] - P[b * 3 + 2];
+      const r1 = Math.sqrt(px * px + py * py + pz * pz);
+      const k = r1 > 1e-9 ? Math.max(r1 / r0, r0 / r1) : 100;
+      ratios.push(k);
+      if (k > score[a]) score[a] = k;
+      if (k > score[b]) score[b] = k;
+    };
+    for (let t = 0; t < tri; t++) {
+      const a = idx ? idx[t * 3] : t * 3, b = idx ? idx[t * 3 + 1] : t * 3 + 1, c = idx ? idx[t * 3 + 2] : t * 3 + 2;
+      edge(a, b); edge(b, c); edge(c, a);
+    }
+    ratios.sort((x, y) => x - y);
+    const pct = (q) => ratios.length ? +ratios[Math.min(ratios.length - 1, Math.floor(q * ratios.length))].toFixed(2) : null;
+    // bones owning the worst vertices (dominant joint of each vertex scoring above `worst`)
+    const si = g.attributes.skinIndex, sw = g.attributes.skinWeight, own = {};
+    let bad = 0;
+    for (let i = 0; i < n; i++) {
+      if (score[i] < worst) continue;
+      bad++;
+      if (!si || !sw) continue;
+      let bj = 0, bw = -1;
+      for (let k = 0; k < 4; k++) { const w = sw.getComponent(i, k); if (w > bw) { bw = w; bj = si.getComponent(i, k); } }
+      const bn = m.skeleton.bones[bj] ? m.skeleton.bones[bj].name : String(bj);
+      own[bn] = (own[bn] || 0) + 1;
+    }
+    out.push({ mesh: m.name, verts: n, edges: ratios.length, p50: pct(0.5), p99: pct(0.99), p999: pct(0.999), max: pct(1),
+      badVerts: bad, badFrac: +(bad / n).toFixed(4),
+      badBones: Object.entries(own).sort((a, b) => b[1] - a[1]).slice(0, 6).map(([k, c]) => `${k}:${c}`) });
+    if (heat) {
+      const col = new Float32Array(n * 3);
+      for (let i = 0; i < n; i++) {
+        const s = Math.min(1, (score[i] - 1) / 2); // 1 -> 0, 3 -> 1
+        // blue -> yellow -> red
+        const r = s < 0.5 ? s * 2 : 1, gg = s < 0.5 ? s * 2 : 2 - s * 2, bb = s < 0.5 ? 1 - s * 2 : 0;
+        col[i * 3] = r * 0.9 + 0.1; col[i * 3 + 1] = gg * 0.9 + 0.1; col[i * 3 + 2] = bb * 0.9 + 0.1;
+      }
+      g.setAttribute('color', new THREE.BufferAttribute(col, 3));
+      m.material = new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.DoubleSide });
+    }
+  }
+  return out;
+}
+window.__poselab = { show, rest, restUrl, showFighter, footYaw, closeup, stretchMap, cur: () => cur, banks: Object.keys(T3_BANKS) };
 const q = new URLSearchParams(location.search);
 if (q.get('model')) show({ model: q.get('model'), bank: q.get('bank') || 'king', clip: q.get('clip') || 'stance', t: +(q.get('t') || 0.5) })
   .catch(e => { info.textContent = 'ERROR ' + e.message; });

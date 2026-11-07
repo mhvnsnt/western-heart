@@ -29,7 +29,7 @@
    passes its content builders in (no import cycle).
    ============================================================ */
 import * as THREE from 'three';
-import { Fighter, setArenaLimit, bankIdFor } from './fighter.js';
+import { Fighter, setArenaLimit, bankIdFor, ownSlotBankFor } from './fighter.js';
 import { assets } from './assets.js';
 import { getStage } from './stages.js';
 import { ensureMovesets } from './movesets.js';
@@ -380,7 +380,7 @@ export class BrawlerGame {
       });
       await ensureMovesets([...needMoves]);
       try {
-        const banks = [...new Set([...needMoves].map((id) => bankIdFor(id)).filter(Boolean))];
+        const banks = [...new Set([...needMoves].flatMap((id) => [bankIdFor(id), ownSlotBankFor(id)]).filter(Boolean))];
         await Promise.all(banks.map((b) => loadT3Clips(THREE, b)));
       } catch (e) {
         console.warn('[WH] brawler T3 clips fallback:', e.message || e);

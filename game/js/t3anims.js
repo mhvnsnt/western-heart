@@ -135,6 +135,22 @@ export const T3_BANKS = {
   law:        'assets/anim/t3/law/',
   // Forest Law's own divmot20 motion posed on Law's body (his KMDs do not fit; heihachi_on_jin pattern).
   forestlaw:  'assets/anim/t3/forestlaw_on_law/',
+  // Fill 3 TTT2 banks (2026-11-07, docs/tech/ttt2-mota/join/FILL3-BANKS.md): each fighter's OWN base character's
+  // TTT2 state moves. They cover only part of the action slots, so they are never bound alone: fighter.js
+  // OWN_SLOT_BANKS lays each over its fighter's bound bank slot by slot (docs/anim/BANK-AUDIT-2026-11-07.md).
+  steve_fox:  'assets/anim/t3/steve_fox/',
+  asuka:      'assets/anim/t3/asuka/',
+  lee:        'assets/anim/t3/lee/',
+  lars:       'assets/anim/t3/lars/',
+  alisa:      'assets/anim/t3/alisa/',
+  christie:   'assets/anim/t3/christie/',
+  miguel:     'assets/anim/t3/miguel/',
+  ganryu:     'assets/anim/t3/ganryu/',
+  dragunov:   'assets/anim/t3/dragunov/',
+  panda:      'assets/anim/t3/panda/',
+  bob_satsuma: 'assets/anim/t3/bob_satsuma/',
+  zafina:     'assets/anim/t3/zafina/',
+  emilie:     'assets/anim/t3/emilie/',
 };
 /* PRIVATE VF5 Dural bank (Zen, 2026-10-28). Decoded from VF5 (PS3 BLES00029)
    mot_DUR.bin in the private mhvnsnt/game-reverse-engineering repo
@@ -1244,9 +1260,19 @@ const BIPED = { Pelvis: 'Hips', Spine: 'Spine', Spine1: 'Spine1', Spine2: 'Spine
   Thigh: 'UpLeg', Calf: 'Leg', Foot: 'Foot', Toe0: 'ToeBase' };
 const LR_STYLE = { Shoulder: 'Shoulder', Arm: 'Arm', ForeArm: 'ForeArm', Hand: 'Hand',
   UpLeg: 'UpLeg', Leg: 'Leg', Foot: 'Foot', Toe: 'ToeBase' };
+// Descriptive names ('arm right elbow' -> GLTFLoader-sanitized 'arm_right_elbow'): Mariposa's Butterfly Default
+// (roster/zafina/attires/butterfly-default, built from the T6-era Zafina parts). Without this map her Slot 1 default
+// bound NO bank in a fight ("rig lacks core humanoid bones"; poselab "retarget failed", 2026-11-07). The joints between
+// these (shoulder 3, the 'unused.NNN' twist joints, pelvis) are unmapped and follow their parent at rest local.
+const DESCRIPTIVE = { root_hips: 'Hips', spine_lower: 'Spine', spine_upper: 'Spine2', head_neck_lower: 'Neck', head_neck_upper: 'Head' };
+const DESCRIPTIVE_LIMB = { shoulder_1: 'Shoulder', shoulder_2: 'Arm', elbow: 'ForeArm', wrist: 'Hand',
+  thigh: 'UpLeg', knee: 'Leg', ankle: 'Foot', toes: 'ToeBase' };
 export function canonBoneName(name) {
   let n = String(name).replace(/^mixamorig[:_]?/i, '');
   if (CANON_SET.has(n)) return n;
+  if (DESCRIPTIVE[n]) return DESCRIPTIVE[n];
+  const dm = n.match(/^(?:arm|leg)_(left|right)_(shoulder_[12]|elbow|wrist|thigh|knee|ankle|toes)$/);
+  if (dm) return (dm[1] === 'left' ? 'Left' : 'Right') + DESCRIPTIVE_LIMB[dm[2]];
   n = n.replace(/_\d+$/, '');                    // Sketchfab index suffix (Head_019)
   if (CANON_SET.has(n)) return n;
   let m = n.match(/^Bip0*1_(?:(L|R)_)?([A-Za-z]+\d?)$/); // Biped: Bip001_L_Thigh

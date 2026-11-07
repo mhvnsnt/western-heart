@@ -264,6 +264,43 @@ export function bankIdFor(charId, movesetId) {
   return Object.prototype.hasOwnProperty.call(SOURCE_TO_BANK, src) ? SOURCE_TO_BANK[src] : null;
 }
 
+/* OWN-SLOT BANKS (2026-11-07; owner: "ur using incorrect banks for some characters ... some should have fully one
+   character banks and data unless it comes from Tekken code like that"). These fighters bound another character's bank
+   (zui on jin, slice on bryan, ...) while their OWN base character's motion now exists: the Fill 3 TTT2 banks
+   (docs/tech/ttt2-mota/join/FILL3-BANKS.md). Each of those covers only part of the action slots (stance / walks /
+   dashes / jumps / sidesteps / some attacks; none has block, hit or KO), so binding one alone would leave the rest on the
+   bind pose. Instead the own bank is laid over the bound bank SLOT BY SLOT (layerOwnSlots): every slot the character's
+   own data has plays it; only the slots it lacks stay on the bound bank (the shared reactions above all, the way
+   Tekken's own common bank serves every character). A real T7 stance (T7_STANCES) still wins for 'stance'.
+   Audit + per-fighter coverage: docs/anim/BANK-AUDIT-2026-11-07.md (tools/anim/bank_audit.mjs). */
+// Candidates: each fighter -> its own base character's TTT2 bank. NOT ACTIVE (2026-11-07): judged by eye in poselab
+// (docs/proof/2026-11-07/bank-audit/), these TTT2 clips retarget with a strong forward pitch on our rigs (walks nearly
+// horizontal, stances hunched: Zui / Kinpo / Purple Rain / Chordz / Bruno / Aotsuki), the fold class the Jun bank had
+// before its re-bake (docs/handoffs/MEGAMI-JUN-BANK-SCALE-FIX-2026-11-04.md). Binding them would make these fighters
+// look worse. A fighter moves into OWN_SLOT_BANKS only when its own clips pass by eye.
+export const OWN_SLOT_CANDIDATES = {
+  zui: 'steve_fox', kinpo: 'asuka', purplerain: 'lee', chordz: 'lars', cyborgx: 'alisa', star: 'christie',
+  bruno: 'miguel', thor: 'ganryu', slice: 'dragunov', aotsuki: 'panda', burger: 'bob_satsuma',
+  'mariposa-monarch': 'zafina', silvertongue: 'emilie',
+};
+export const OWN_SLOT_BANKS = {};
+export function ownSlotBankFor(charId, { candidates = false } = {}) {
+  const b = (candidates ? OWN_SLOT_CANDIDATES : OWN_SLOT_BANKS)[charId];
+  return b && T3_BANKS[b] ? b : null;
+}
+/** Lay the fighter's own-character bank over `clips` (the bound bank, retargeted onto `model`), slot by slot.
+    Returns `clips`. A no-op when the fighter has no own-slot bank or it is not loaded yet. */
+export function layerOwnSlots(charId, clips, model, THREE_, instanceKey = null) {
+  const own = ownSlotBankFor(charId);
+  if (!own || !clips) return clips;
+  const oc = getT3Clips(own);
+  if (!oc || !Object.keys(oc).length) return clips;
+  const ro = retargetT3Clips(oc, own, model, THREE_, instanceKey);
+  if (!ro) return clips;
+  for (const [k, v] of Object.entries(ro)) if (v && !k.startsWith('row:')) clips[k] = v;
+  return clips;
+}
+
 export async function loadRealMovesets() {
   try {
     const names = ['king', 'demonio', 'bryan', 'heihachi', 'xiaoyu', 'yoshimitsu', 'gunjack'];
@@ -1029,6 +1066,7 @@ export class Fighter {
       console.log(`[WH-T3] ${this.char.id}: rig '${modelKey}' lacks core humanoid bones — bank '${bank}' not bound`);
       return;
     }
+    layerOwnSlots(this.char.id, clips, model, THREE, modelKey); // the fighter's OWN character's slots over the bound bank
     applyT7Stance(this.char.id, bank, clips, model, THREE, modelKey); // real T7 stance where baked (t3anims.js T7_STANCES)
     // Real T7 per-move clips (t3anims.js T7_MOVES), loaded per fighter in the background; until they arrive the
     // moves keep their current clips. They retarget lazily with the stance's bind-time rest pose.

@@ -51,3 +51,15 @@ test('the site builder enforces the Cloudflare Pages per-file and per-deployment
   assert.match(wf, /filter: blob:none/, 'never checks out the 14 GB tree');
   assert.match(wf, /missing file -> \$code"; \[ "\$code" = "404" \]/, 'the live check proves missing files 404');
 });
+
+test('files fetched by a runtime-built path ship too: every fighter anatomy JSON the X-ray prefetch builds', () => {
+  const py = src('tools/deploy/build_cf_pages.py');
+  const m = py.match(/re\.compile\(r'(\^roster\/\[\^\/\]\+\/anatomy\/anatomy-layers\\\.json\$)'\)/);
+  assert.ok(m, 'RUNTIME_PATH_SEEDS has the anatomy pattern');
+  const rx = new RegExp(m[1]);
+  const xray = src('game/js/xray.js');
+  assert.match(xray, /const rel = 'roster\/' \+ anatomyDir\(fighterId\) \+ '\/anatomy\/anatomy-layers\.json';/);
+  for (const dir of ['demonio', 'cyborg-x', 'mariposa', 'parvati']) assert.ok(rx.test(`roster/${dir}/anatomy/anatomy-layers.json`), dir);
+  assert.ok(!rx.test('roster/demonio/attires/attire1/model.glb'), 'models are not seeded');
+  assert.match(py, /files = sorted\(set\(files\) \| set\(seeded\)\)/, 'the seeds join the shipped set');
+});

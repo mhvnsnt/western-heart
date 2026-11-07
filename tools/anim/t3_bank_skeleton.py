@@ -69,7 +69,16 @@ BANKS = {
 # source rig's OWN bone lengths (lengths are pose-invariant) and proportions.
 # Clip files are untouched: their world rotations do not depend on skeleton
 # positions (positions feed only the swing/facing derivation).
-NEUTRAL_BIND_GLBS = {"lab/game/assets/t3_xiaoyu_t3real.glb"}
+# RETIRED 2026-11-07 (owner: "arms ... crushed and twisted"): the neutral bind above was wrong. The clips are LOCAL
+# rotations of THIS rig at ITS joint positions (identity rest = the GLB's own node translations), so the posed stance
+# frame IS the reference the clips were baked against, not an error to remove. Rewriting the rest as a T-pose composed
+# every xiaoyu-bank clip on the wrong offsets: in game every fighter on the bank (Star, Mariposa, Sakura/Sha's non-stance
+# clips) stood with arms spread like a T-pose and knees locked, and every clip came out turned wrong. The "130-170 deg
+# off the decoded motion" it was built to fix was measured against game/poselab.html's source preview, which at the
+# time dropped every clip's chest track (jsonToClip names it 'Spine2'; the source rig's node is 'Chest'), so the
+# reference itself was broken. With the preview fixed, the GLB rest retargets the source within a few degrees (the
+# same as jin / paul, whose skeletons were never rewritten). Proof: docs/proof/2026-11-07/xiaoyu-bank-rest/.
+NEUTRAL_BIND_GLBS = set()
 NEUTRAL_BIND_NOTE = (
     " CORRECTED 2026-10-22 (star segment-flip fix): the source GLB's joint positions are a posed stance frame, "
     "not a bind (thighs slanted fwd, shins back, forearms crossed to the opposite hip, Chest joint on the Hips). "
@@ -274,8 +283,13 @@ def check(bank, glb_rel):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true")
+    ap.add_argument("--bank", action="append", help="only these banks (repeatable). Without it every bank in BANKS is "
+                    "rewritten, which would undo the offline 180-degree turns of yoshimitsu / gunjack / eddy / heihachi / "
+                    "bosconovitch (their skeleton.json notes): regenerate one bank at a time.")
     a = ap.parse_args()
     for bank, glb in BANKS.items():
+        if a.bank and bank not in a.bank:
+            continue
         if a.check:
             n, worst = check(bank, glb)
             if n == 0:

@@ -241,21 +241,23 @@ test('yukihyo (king bank): the clean bank is NOT normalized — data untouched',
   assert.ok(m.hinge.Right > 9 && m.hinge.Right < 18, `king right hinge ${m.hinge.Right.toFixed(1)}deg outside his measured band`);
 });
 
-test('xiaoyu bank: source-true hinge error is NOT corrected away', async () => {
+test('xiaoyu bank: transported exactly, with an anatomical elbow on her own rig rest', async () => {
   const clips = await T.loadT3Clips(THREE, 'xiaoyu');
   const model = buildCanonicalRig();
   const rc = T.retargetT3Clips(clips, 'xiaoyu', model, THREE, 'harness');
   const src = sourceData(skelOf('xiaoyu'), clips.stance.userData.raw);
   const m = measure(model, rc.stance, src, clips.stance.userData.raw.fps);
-  // Her forearm flexion axis is rolled ~30 deg IN THE SOURCE DATA
-  // (hinge error 29.1 / 33.1 deg composed on her own skeleton) and
-  // her transport twist deltas are 0.0 — nothing here is a
-  // transport error, so the fix must leave her exactly as baked.
   for (const j of ['LeftArm', 'RightArm', 'LeftForeArm', 'RightForeArm', 'LeftHand', 'RightHand']) {
     assert.ok(Math.abs(m.joints[j].mean) <= 1, `${j} twist error ${m.joints[j].mean.toFixed(1)}deg — xiaoyu must stay exact`);
   }
-  assert.ok(m.hinge.Left > 24 && m.hinge.Right > 28,
-    `xiaoyu hinge L ${m.hinge.Left.toFixed(1)} / R ${m.hinge.Right.toFixed(1)} deg — her source-true error was flattened`);
+  // 2026-11-07: this test used to pin a 29-33 deg "source-true" elbow hinge error. That number came from her
+  // skeleton.json, which had been rewritten to a neutral T-pose (tools/anim/t3_bank_skeleton.py NEUTRAL_BIND, now
+  // retired) while her clips are local rotations of the source rig at ITS rest (t3_bank_skeleton.py --check: 522
+  // channels equal the GLB's own animation, max error 8e-7). Composed on the real rest, her elbow is a pure hinge like
+  // 24 of the 26 banks, and every Xiaoyu-bank fighter now matches the source within ~2 deg in poselab
+  // (docs/proof/2026-11-07/xiaoyu-bank-rest/).
+  assert.ok(m.hinge.Left < 5 && m.hinge.Right < 5,
+    `xiaoyu hinge L ${m.hinge.Left.toFixed(1)} / R ${m.hinge.Right.toFixed(1)} deg — her elbow should be anatomical on her own rig rest`);
 });
 
 test('pantera (T7 king stance): the mannequin path stays exact and untouched', async () => {
