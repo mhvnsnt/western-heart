@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
-"""ttt2_bank_rows.py: produce rows.pack.json + hit_frames.json for a TTT2 bank
-(roger / jun) from the shipped join tables and the decoded clip data.
+"""ttt2_bank_rows.py (Fill-3 generalized): produce rows.pack.json +
+hit_frames.json for ANY TTT2 bank from its ttt2-join/1 table and the
+decoded clip data. Generalizes the shipped roger/jun tool: the motbin
+grid is replaced by the join + a record-offsets sidecar (each record's
+raw 0x70 struct window in data006, located and triple-verified by the
+stage-5 locator); field semantics, row set, gates, buttons and output
+schemas are the shipped ones, validated by reproducing the shipped
+roger/jun rows.pack.json + hit_frames.json byte-for-byte.
 
 Roster-100 Wave 1 item S5 (docs/handoffs/ROSTER-100-FIX-2026-11-04.md),
 closing follow-up #3 of the TTT2 banks handoff (WH #1558/#1561). Formats are
@@ -114,10 +120,6 @@ WITHHELD = {48: 'grid row 48 withheld: the legacy row-48 class stamp '
 SLOT_BUTTONS = {'t3_medium': 4, 't3_heavy': 8}           # LK / RK identities
 GRAB_BUTTONS = {'Thrmv_B1_00': 5, 'Thrmv_B2_00i': 10}   # 1+3 / 2+4
 
-BANK1_TABLE = {'roger': 90926084, 'jun': 193068196}     # data005 offsets (bank-tables.json)
-CHAR_NAME = {'roger': b'[ROGER]', 'jun': b'[JUN_KAZAMA]'}
-BODY_KMD = {'roger': 'ROGER (Roger Jr.)', 'jun': 'JUN_KAZAMA (Jun Kazama)'}
-JUN_GRID_OFF = 0xA2D7C
 
 
 def sha256_bytes(b):
@@ -140,74 +142,98 @@ def attack_level(word):
     return 'm'
 
 
-class Motbin:
-    """One character's motbin move grid in data006-decoded.bin."""
+class JoinGrid:
+    """One character's join records + raw struct windows in data006.
 
-    def __init__(self, data, bank):
+    Replaces the shipped Motbin grid parse: record fields come from the
+    record-offsets sidecar (stage-5 locator), and every located window
+    is re-verified here against its join triple - a mismatch aborts,
+    inheriting the shipped tool's cross-validation.
+    """
+
+    def __init__(self, data, join, offsets, char):
         self.data = data
-        name = CHAR_NAME[bank]
-        off = data.find(name)
-        if off < 0:
-            raise ValueError('character name %r not found in data006' % name)
-        self.base = off - 0x20C
-        self.pool = self.base + 0x20C
-        u32 = lambda o: struct.unpack('>I', data[o:o + 4])[0]
-        if bank == 'roger':
-            ptr, count = u32(self.base + 0x140 + 8 * 12), u32(self.base + 0x140 + 8 * 12 + 4)
-            self.start, self.count = self.base + ptr, count + 400
-        else:
-            self.start, self.count = self.base + JUN_GRID_OFF, 1600
-        self.grid = [self._record(i) for i in range(self.count)]
+        self.join = join
+        bracket = data.find(('[%s]' % char).encode())
+        if bracket < 0:
+            raise ValueError('character name [%s] not found in data006' % char)
+        # string pool exactly as parse_joins builds it (rel 0 = the
+        # bracketed name itself is a valid pool string)
+        base = bracket - 0x20C
+        u32b = lambda o: struct.unpack('>I', data[o:o + 4])[0]
+        span = u32b(base + 0x140) if 0x1000 < u32b(base + 0x140) < 0x40000 else 0x14000
+        self.poolmap = {}
+        off = bracket
+        limit = bracket + span
+        while off < limit:
+            end = data.find(b'\x00', off)
+            if end < 0:
+                break
+            self.poolmap[off - bracket] = data[off:end].decode('ascii', 'replace')
+            off = end + 1
+        self.offsets = offsets          # {str(i): [window, layout, score]}
+        self.by_i = {r['i']: r for r in join['records']}
+        self.mismatches = []
+        for i, r in self.by_i.items():
+            o = self.offsets.get(str(i))
+            if o is None:
+                continue
+            if self._triple(o[0]) != (r['name'], r['anim'], r['ref']):
+                self.mismatches.append(i)
 
-    def _str(self, off):
-        if off <= 0 or self.pool + off >= len(self.data):
+    def _str(self, rel, pool_base):
+        if rel <= 0 or pool_base + rel >= len(self.data):
             return None
-        end = self.data.find(b'\x00', self.pool + off)
+        end = self.data.find(b'\x00', pool_base + rel)
         if end < 0:
             return None
         try:
-            s = self.data[self.pool + off:end].decode('ascii')
+            s = self.data[pool_base + rel:end].decode('ascii')
         except UnicodeDecodeError:
             return None
         return s if s and all(32 <= ord(c) < 127 for c in s) else None
 
-    def _record(self, i):
-        o = self.start + i * 0x70
-        if o + 0x70 > len(self.data):
-            return None
-        u32 = lambda k: struct.unpack('>I', self.data[o + k:o + k + 4])[0]
-        name, anim = self._str(u32(0x4C)), self._str(u32(0x50))
+    def _triple(self, win):
+        u32 = lambda k: struct.unpack('>I', self.data[win + k:win + k + 4])[0]
+        name = self.poolmap.get(u32(0x4C))
+        anim = self.poolmap.get(u32(0x50))
         if name is None or anim is None:
             return None
         return (name, anim, u32(0x54))
 
+    def _rel0(self, win):
+        u32 = lambda k: struct.unpack('>I', self.data[win + k:win + k + 4])[0]
+        return u32(0x4C) == 0 or u32(0x50) == 0
+
     def fields(self, i):
-        """(first_active, last_active, attack_word_u32) for grid record i."""
-        o = self.start + i * 0x70
-        u32 = lambda k: struct.unpack('>I', self.data[o + k:o + k + 4])[0]
+        """(first_active, last_active, attack_word_u32) or None."""
+        o = self.offsets.get(str(i))
+        if o is None:
+            return None
+        win = o[0]
+        u32 = lambda k: struct.unpack('>I', self.data[win + k:win + k + 4])[0]
         return u32(0x40), u32(0x44), u32(0x5C)
 
 
-def load_join(path, mb):
-    """Cross-validate the shipped join against the raw grid. Returns
-    (records_by_grid_index, unmapped_join_records). Aborts on misalignment."""
-    join = json.load(open(path))
+def load_join(join, grid):
+    """Cross-validate the join against the located raw records (JoinGrid
+    already re-verified every located window's triple). Returns
+    (records_by_grid_index, join_records_without_a_located_window)."""
+    if grid.mismatches:
+        raise SystemExit('JOIN/GRID MISALIGNMENT: %d located windows disagree '
+                         'with the join (first: i=%s)' % (len(grid.mismatches), grid.mismatches[0]))
     by_i, unmapped = {}, []
-    triples = {}
-    for gi, rec in enumerate(mb.grid):
-        if rec is not None:
-            triples.setdefault(rec, []).append(gi)
     for r in join['records']:
-        gi = r['i']
-        want = (r['name'], r['anim'], r['ref'])
-        if gi < len(mb.grid) and mb.grid[gi] == want:
-            by_i[gi] = r
-        elif want in triples:
-            raise SystemExit('JOIN/GRID MISALIGNMENT: join record %r claims grid %d '
-                             'but its triple sits at %s' % (r['name'], gi, triples[want]))
-        else:
+        o = grid.offsets.get(str(r['i']))
+        # shipped-tool semantics: a record whose name/anim pool offset is
+        # 0 (the bracketed character name itself) does not parse on the
+        # shipped grid (_str rejects rel <= 0) and stays unmapped - this
+        # is exactly record 0 of the shipped roger/jun joins.
+        if o is None or grid._rel0(o[0]):
             unmapped.append(r)
-    return join, by_i, unmapped
+        else:
+            by_i[r['i']] = r
+    return by_i, unmapped
 
 
 _CTX = {}  # per-process bake context (fork-inherited under multiprocessing)
@@ -386,9 +412,9 @@ def slot_sources(bank_dir, mb, by_i):
                 gi = cand
                 break
         if gi is None:
-            for cand, rec in enumerate(mb.grid):
-                if rec == want:
-                    gi = cand
+            for cand, o in mb.offsets.items():
+                if mb._triple(o[0]) == want:
+                    gi = int(cand)
                     break
         if gi is None:
             unmatched.append(slot)
@@ -414,7 +440,12 @@ def enc_root(clip, axis):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument('--bank', required=True, choices=('roger', 'jun'))
+    ap.add_argument('--bank', required=True)
+    ap.add_argument('--char', required=True, help='motbin bracket name, e.g. ROGER')
+    ap.add_argument('--body-kmd', required=True)
+    ap.add_argument('--bank1-table', type=int, default=None,
+                    help='data005 offset of the character bank-1 table (omit for the ANNA gap)')
+    ap.add_argument('--offsets', required=True, help='record-offsets.json sidecar')
     ap.add_argument('--data004', required=True)
     ap.add_argument('--data005', required=True)
     ap.add_argument('--data006', required=True)
@@ -442,14 +473,16 @@ def main():
     dec64 = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(dec64)
     u32 = lambda d, o: struct.unpack('>I', d[o:o + 4])[0]
-    tables = {1: (d5, BANK1_TABLE[a.bank]), 2: (d4, 0x100)}
+    tables = {2: (d4, 0x100)}
+    if a.bank1_table is not None:
+        tables[1] = (d5, a.bank1_table)
 
-    mb = Motbin(d6, a.bank)
-    join, by_i, unmapped = load_join(a.join, mb)
-    print('grid: %d slots scanned, %d valid records' % (len(mb.grid), sum(1 for r in mb.grid if r)))
-    print('join: %d records, %d mapped to the grid, %d unmapped' % (len(join['records']), len(by_i), len(unmapped)))
-    for r in unmapped:
-        print('  unmapped join record: %s (i=%s, ref=%s)' % (r['name'], r['i'], r['ref']))
+    join = json.load(open(a.join))
+    offsets_all = json.load(open(a.offsets))
+    mb = JoinGrid(d6, join, offsets_all.get(a.char, {}), a.char)
+    by_i, unmapped = load_join(join, mb)
+    print('grid: %d join records, %d with a located raw window, %d unlocated'
+          % (len(join['records']), len(by_i), len(unmapped)))
 
     slots, unmatched_slots = slot_sources(a.bank_dir, mb, by_i)
     print('slot sources on the %s grid: %s' % (a.bank, slots))
@@ -458,17 +491,34 @@ def main():
     slot_idx = set(slots.values())
 
     # frame-0 branch reference: the bank's own stance entry triples.
-    neutral = json.load(open(os.path.join(a.bank_dir, 't3_neutral.json')))['ttt2_source']
-    ndata, ntab = tables[neutral['bank']]
-    neoff = ntab + u32(ndata, ntab + 16 + 4 * neutral['clip'])
+    # Fill-3 fallback: if the stance slot was gate-skipped at bake time
+    # (no t3_neutral.json in the bank dir), use the first baked slot
+    # clip's own entry - still the bank's own motion, never another
+    # character's.
+    ref_src = None
+    for cand in ['t3_neutral.json'] + sorted(f for f in os.listdir(a.bank_dir)
+                                             if f.startswith('t3_') and f.endswith('.json')):
+        cp = os.path.join(a.bank_dir, cand)
+        if os.path.exists(cp):
+            ref_src = json.load(open(cp))['ttt2_source']
+            break
+    ndata, ntab = tables[ref_src['bank']]
+    neoff = ntab + u32(ndata, ntab + 16 + 4 * ref_src['clip'])
     ref_triples = dec64.decode_clip(ndata, neoff)['frames'][0]
 
     jobs, withheld = {}, {}
+    fields_unlocated = []
     for gi in sorted(by_i):
         if gi in WITHHELD:
             withheld[str(gi)] = WITHHELD[gi]
             continue
-        fa, la, w32 = mb.fields(gi)
+        f = mb.fields(gi)
+        if f is None:
+            if gi in slot_idx:
+                jobs[gi] = by_i[gi]
+                fields_unlocated.append(gi)
+            continue
+        fa, la, w32 = f
         if fa > 0 or (w32 & 0x400000) or gi in slot_idx:
             jobs[gi] = by_i[gi]
     print('row set: %d records (%d withheld)' % (len(jobs), len(withheld)))
@@ -481,6 +531,12 @@ def main():
             entries.add((r['ref'] >> 14, r['ref'] & 0x3FFF))
     entries = sorted(entries)
     print('unique MOTA entries to bake: %d' % len(entries))
+    no_table = {}
+    if a.bank1_table is None:
+        for key in entries:
+            if key[0] == 1:
+                no_table[key] = ('decode', 'character bank-1 table is a named gap '
+                                 '(bank-tables.json); fallback = queued PS3 copy', None)
 
     _CTX['dec64'] = dec64
     _CTX['synth'] = Synthesizer(a.calib, json.load(open(a.rest)), a.root_affine)
@@ -492,7 +548,8 @@ def main():
         clip = json.load(open(os.path.join(a.bank_dir, slot + '.json')))
         ship_refs[(r['ref'] >> 14, r['ref'] & 0x3FFF)] = {'rot': clip['rot_xyzw']}
     _CTX['ship_refs'] = ship_refs
-    results = {}
+    results = dict(no_table)
+    entries = [k for k in entries if k not in no_table]
     if a.jobs > 1:
         import multiprocessing as mp
         with mp.Pool(a.jobs) as pool:
@@ -514,7 +571,8 @@ def main():
     for gi, r in sorted(jobs.items()):
         if (r['ref'] >> 14) == 0:
             continue
-        fa, la, w32 = mb.fields(gi)
+        f = mb.fields(gi)
+        fa, la, w32 = f if f is not None else (0, 0, 0)
         word, throw = w32 & 0xFFFF, 1 if (w32 & 0x400000) else 0
         status, payload, stream = results[(r['ref'] >> 14, r['ref'] & 0x3FFF)]
         if status == 'decode':
@@ -551,8 +609,8 @@ def main():
                               'q': enc_quats(clip, bones),
                               'rx': enc_root(clip, 0), 'ry': enc_root(clip, 1), 'rz': enc_root(clip, 2)}
 
-    label = 'data006-decoded.bin [%s] motbin' % ('ROGER' if a.bank == 'roger' else 'JUN_KAZAMA')
-    pack = {'format': 'wh-anim-pack/1', 'bank': label, 'body_kmd': BODY_KMD[a.bank],
+    label = 'data006-decoded.bin [%s] motbin' % a.char
+    pack = {'format': 'wh-anim-pack/1', 'bank': label, 'body_kmd': a.body_kmd,
             'target_rig': 'ttt2-mannequin-21 (game/assets/anim/t3/%s/skeleton.json)' % a.bank,
             'bones': bones, 'fps': 60.0, 'hand_keyed': False,
             'decoder': 'tools/ttt2_mota_decode64.py (0x64) + ttt2_bank_bake.decode_c8 (0xC8)',
@@ -563,8 +621,9 @@ def main():
            'source': 'data006-decoded.bin motbin move records (first_active @+0x40, '
                      'last_active @+0x44, attack word + throw flag @+0x5C) joined by '
                      'docs/tech/ttt2-mota/join/%s-join.json; stream_frames decoded via '
-                     'bank tables (bank 1 data005 @%d, bank 2 data004 @0x100)'
-                     % (a.bank, BANK1_TABLE[a.bank]),
+                     'bank tables (bank 1 data005 @%s, bank 2 data004 @0x100)'
+                     % (a.bank, a.bank1_table if a.bank1_table is not None
+                        else 'NOT LOCATED - named gap, see bank-tables.json'),
            'sha256': shas,
            'tool': 'tools/anim/ttt2_bank_rows.py', 'fps': 60,
            'fields': ['active_first', 'active_last', 'stream_frames', 'attack_word', 'throw', 'button'],
@@ -591,9 +650,9 @@ def main():
     report = {'bank': a.bank, 'fighter': a.fighter, 'tool': 'tools/anim/ttt2_bank_rows.py',
               'join_records': len(join['records']), 'join_mapped': len(by_i),
               'join_unmapped': [{'i': r['i'], 'name': r['name'], 'ref': r['ref']} for r in unmapped],
-              'grid_valid_records': sum(1 for r in mb.grid if r),
+              'grid_valid_records': len(by_i),
               'slot_sources': slots, 'slots_without_grid_record': unmatched_slots,
-              'row_set': len(jobs), 'unique_entries': len(entries),
+              'row_set': len(jobs), 'fields_unlocated': fields_unlocated, 'unique_entries': len(entries),
               'pack_rows': len(pack_rows), 'hit_rows': len(hit_rows), 'missing': missing,
               'presentation_gate_failures': presentation_failures,
               'sanity': sanity, 'buttons_assigned': buttons,

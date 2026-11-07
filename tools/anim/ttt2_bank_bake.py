@@ -216,7 +216,15 @@ def unwrap_rotations(frames, ref_triples=None):
     wraps at +-pi in output units); the euler composition used for posing is
     not, so continuity is restored here first. Frame 0 is anchored to
     ref_triples (the character's own stance frame-0 triples) when given.
-    Translation tracks (0,1,2) and the f32 Spine2 track (6) are untouched."""
+    Translation tracks (0,1,2) and the f32 Spine2 track (6) are untouched.
+
+    Fill-3 performance note (2026-11-07): the candidate matrices are built
+    with ONE batched scipy from_euler call per (track, frame) instead of
+    81 scalar calls; candidate ORDER and first-minimum tie-breaking are
+    unchanged, and the choice semantics are identical. Verified by the
+    Fill-3 gates: shipped Roger/Jun rows packs and slot clips reproduce
+    byte-for-byte with this implementation.
+    """
     import itertools as _it
     from scipy.spatial.transform import Rotation as _Rot
 
@@ -233,24 +241,32 @@ def unwrap_rotations(frames, ref_triples=None):
                 out.append((b[0] + 2 * math.pi * k[0], b[1] + 2 * math.pi * k[1], b[2] + 2 * math.pi * k[2]))
         return out
 
+    def G_batch(cands):
+        arr = np.array([(-c[1] * 0.5, c[2] * 0.5, c[0] * 0.5) for c in cands])
+        return _Rot.from_euler('ZXY', arr, degrees=False).as_matrix()
+
     out = [[tuple(t) for t in row] for row in frames]
     for tr in range(23):
         if tr in (0, 1, 2, 6):
             continue
         prev = G(ref_triples[tr]) if ref_triples is not None else None
+        # Candidate matrices for the whole track in ONE batched call:
+        # candidates depend only on the stored triples, never on the
+        # sequential choice, so this changes no semantics.
+        all_cands = [candidates(out[f][tr]) for f in range(len(out))]
+        flat = [c for cands in all_cands for c in cands]
+        if flat:
+            Mall = G_batch(flat).reshape(len(out), len(all_cands[0]), 3, 3)
         for f in range(len(out)):
             t = out[f][tr]
             if prev is None:
                 prev = G(t)
                 continue
-            best, best_err, best_M = t, None, None
-            for cand in candidates(t):
-                M = G(cand)
-                err = float(np.abs(M - prev).max())
-                if best_err is None or err < best_err:
-                    best, best_err, best_M = cand, err, M
-            out[f][tr] = best
-            prev = best_M
+            M = Mall[f]
+            errs = np.abs(M - prev).max(axis=(1, 2))
+            bi = int(np.argmin(errs))
+            out[f][tr] = all_cands[f][bi]
+            prev = M[bi]
     return out
 
 
@@ -286,13 +302,21 @@ def main():
     rest = json.load(open(a.rest))
     synth = Synthesizer(a.calib, rest, a.root_affine)
     # frame-0 branch reference: the character's own stance (t3_neutral) triples.
+    # Fill-3 guard (2026-11-07): a stance entry that is itself an
+    # unidentified decoder variant (Steve_Fox bank1#150) must not crash
+    # the whole bank - fall back to the unanchored unwrap the tool
+    # already uses when a bank has no t3_neutral slot; the slot itself
+    # is then classed in the loop with its decode reason.
     ref_triples = None
     ns = spec['slots'].get('t3_neutral')
     if ns is not None:
         data, tab, _, _ = tables[ns['bank']]
         eoff = tab + u32(data, tab + 16 + 4 * ns['idx'])
         if struct.unpack('>H', data[eoff:eoff + 2])[0] == 100:
-            ref_triples = dec64.decode_clip(data, eoff)['frames'][0]
+            try:
+                ref_triples = dec64.decode_clip(data, eoff)['frames'][0]
+            except Exception:
+                ref_triples = None
     os.makedirs(a.out_dir, exist_ok=True)
     report = {'bank': spec['bank'], 'baked': {}, 'skipped': {}, 'gaps': spec.get('gaps', {})}
     skel_written = None
