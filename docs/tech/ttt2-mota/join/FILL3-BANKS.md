@@ -142,7 +142,17 @@ exactly this in batch 1's first CI run: 347 torch-referenced rows).
 | kuma | 12 | 5 | 3 | 348 | 353 | 28 |
 | kunimitsu | 4 | 3 | 13 | 108 | 113 | 11 |
 | lars | 7 | 10 | 3 | 309 | 313 | 21 |
-| **batches 1–6 total (32 banks)** | **318** | **163** | **159** | **9735** | **9915** | **1100** |
+| law | 12 | 5 | 3 | 395 | 396 | 26 |
+| lee | 13 | 4 | 3 | 347 | 347 | 24 |
+| lei_wulong | 4 | 2 | 14 | 112 | 116 | 8 |
+| lin_xiaoyu | 10 | 8 | 2 | 409 | 417 | 28 |
+| marduk | 13 | 5 | 2 | 312 | 316 | 24 |
+| michelle | 12 | 6 | 2 | 359 | 361 | 35 |
+| miguel | 12 | 5 | 3 | 304 | 300 | 28 |
+| miharu | 10 | 8 | 2 | 409 | 420 | 31 |
+| nina | 5 | 3 | 12 | 119 | 119 | 8 |
+| ogre | 10 | 7 | 3 | 296 | 305 | 30 |
+| **batches 1–8 total (42 banks)** | **419** | **216** | **205** | **12797** | **13012** | **1342** |
 
 Batch 1 = PR #1625 (alex, alisa, angel, armor_king, asuka, bob_satsuma).
 Batch 2 = PR #1627 (anna, baek_doo_san, bosconovitch, bruce, bryan, christie).
@@ -150,4 +160,6 @@ Batch 3 = PR #1628 (combot, devil_jin, dragunov, eddy, eleonor).
 Batch 4 = PR #1629 (emilie, feng, forest, ganryu, heihachi, hwoarang).
 Batch 5 = PR #1630 (jack, jin, jinpachi, kazuya).
 Batch 6 = PR #1631 (julia, king, kuma, kunimitsu, lars).
+Batch 7 = PR #1632 (law, lee, lei_wulong, lin_xiaoyu, marduk).
+Batch 8 = PR #1634 (michelle, miguel, miharu, nina, ogre).
 Collider banks land at <name>_ttt2 (see the naming rule above). Further batches append rows here as they land.
