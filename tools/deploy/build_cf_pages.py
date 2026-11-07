@@ -43,6 +43,16 @@ a{color:#f2c14e}main{padding:24px}</style></head>
 </body></html>
 """
 
+# A top-level 404.html switches Cloudflare Pages OFF its single-page-app fallback (2026-11-07). Without it, Pages answers
+# every missing path with index.html + HTTP 200, so the game's "page copy first, then remote / jsDelivr" loaders read
+# HTML as JSON / GLB and fail ("Unexpected token '<', \"<!doctype \"... is not valid JSON" on the first live fight: the
+# 74 files over 25 MiB are never on this site and must 404 to fall through). With it, missing paths return a real 404.
+NOT_FOUND = """<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Not found</title></head>
+<body style="background:#05070c;color:#f2f4f8;font-family:system-ui,sans-serif">
+<p>Not found. <a href="/game/" style="color:#f2c14e">Play Western Heart</a></p></body></html>
+"""
+
 # Cache rules (Cloudflare Pages _headers): code and data revalidate so a deploy is seen at once; heavy binary assets
 # are cached a day at the edge and in the browser (they change by path when a model is re-rigged, e.g. -refit.glb).
 HEADERS = """/game/js/*
@@ -138,6 +148,8 @@ def main():
         over = sorted(over + late, key=lambda x: -x[1])
     with open(os.path.join(a.out, 'index.html'), 'w') as f:
         f.write(ROOT_INDEX)
+    with open(os.path.join(a.out, '404.html'), 'w') as f:
+        f.write(NOT_FOUND)
     with open(os.path.join(a.out, '_headers'), 'w') as f:
         f.write(HEADERS)
     with open(os.path.join(a.out, 'cf-oversize.json'), 'w') as f:

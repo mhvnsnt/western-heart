@@ -25,3 +25,13 @@ profile (`slice-fight-before.png`). In the bind pose his chest is square to the 
 mesh faces +X, which a 180 deg turn cannot fix. `model-facing.json` gains quarter-turn records (`+X` / `-X`, read in
 `game/js/assets.js` as `facingYaw`); `slice-attire1` is `+X`. `slice-card-and-fight.png`: the new card from four
 angles (front at yaw 0) and the same fight, Slice now in profile facing Pantera.
+
+## Waterfall and Koreshi (same day)
+
+- **Waterfall:** her card showed her turned away and in a real fight she faced the camera instead of Pantera. The feet
+  cue had already turned her a half (`assets.facing = -1`); with it her face sat at yaw 270, so her raw mesh faces +X.
+  Recorded `+X` (a `-X` record was tried first and put her face at yaw 180: rejected). `waterfall-card-and-fight.png`:
+  four-angle probe (face front-on at yaw 0), the fight (in profile facing Pantera), old / new cards.
+- **Koreshi:** his card / poselab head views were ambiguous (helmet-like hair), so a same-moment A/B of the real fight
+  decided (`koreshi-fight-ab.png`, both at 7 s): unrecorded he crouches with his weapon arm pointing away from his
+  opponent; with `-Z` he stands bladed, weapon at his opponent, scroll box on his back. Recorded `-Z`.

@@ -1,0 +1,67 @@
+{
+ "before_main_loader": {
+  "url": "http://127.0.0.1:8822/game/index.html",
+  "p1": "demonio",
+  "p2": "pantera",
+  "phases": {
+   "page_load": 2.5,
+   "menu_ready": 2.9,
+   "select_ready": 16.9,
+   "stage_ready": 37.6
+  },
+  "results": [
+   {
+    "attempt": 1,
+    "outcome": "BOUNCED",
+    "seconds": 21.8,
+    "hint": "Failed to load fighters: Unexpected token '<', \"<!doctype \"... is not valid JSON \u2014 tap CONFIRM to retry."
+   }
+  ],
+  "events": [
+   "2.5s [http 404] http://127.0.0.1:8822/deploy-manifest.json",
+   "2.5s [HTML-for-data] http://127.0.0.1:8822/deploy-manifest.json",
+   "2.5s [error] Failed to load resource: the server responded with a status of 404 (File not found)",
+   "23.6s [HTML-for-data] http://127.0.0.1:8822/roster/demonio/attires/attire1/model.glb",
+   "23.6s [HTML-for-data] http://127.0.0.1:8822/roster/demonio/attires/attire1/model.glb",
+   "39.5s [error] [WH] fight load failed: SyntaxError: Unexpected token '<', \"<!doctype \"... is not valid JSON\n    at JSON.parse (<anonymous>)\n    at GLTFLoader.parse (http://127.0.0.1:8822/game/vendor/addons/loaders/GLTFLoader.js:344:17)\n    at http://127.0.0.1:8822/game/vendo",
+   "41.1s [error] [WH] fight load failed: SyntaxError: Unexpected token '<', \"<!doctype \"... is not valid JSON\n    at JSON.parse (<anonymous>)\n    at GLTFLoader.parse (http://127.0.0.1:8822/game/vendor/addons/loaders/GLTFLoader.js:344:17)\n    at http://127.0.0.1:8822/game/vendo",
+   "42.3s [error] [WH] fight load failed: SyntaxError: Unexpected token '<', \"<!doctype \"... is not valid JSON\n    at JSON.parse (<anonymous>)\n    at GLTFLoader.parse (http://127.0.0.1:8822/game/vendor/addons/loaders/GLTFLoader.js:344:17)\n    at http://127.0.0.1:8822/game/vendo",
+   "50.5s [http 404] http://127.0.0.1:8822/deploy-manifest.json",
+   "50.5s [HTML-for-data] http://127.0.0.1:8822/deploy-manifest.json",
+   "50.5s [error] Failed to load resource: the server responded with a status of 404 (File not found)",
+   "54.6s [error] [WH] fight load failed: SyntaxError: Unexpected token '<', \"<!doctype \"... is not valid JSON\n    at JSON.parse (<anonymous>)\n    at GLTFLoader.parse (http://127.0.0.1:8822/game/vendor/addons/loaders/GLTFLoader.js:344:17)\n    at http://127.0.0.1:8822/game/vendo",
+   "56.3s [error] [WH] fight load failed: SyntaxError: Unexpected token '<', \"<!doctype \"... is not valid JSON\n    at JSON.parse (<anonymous>)\n    at GLTFLoader.parse (http://127.0.0.1:8822/game/vendor/addons/loaders/GLTFLoader.js:344:17)\n    at http://127.0.0.1:8822/game/vendo",
+   "59.1s [error] [WH] fight load failed: SyntaxError: Unexpected token '<', \"<!doctype \"... is not valid JSON\n    at JSON.parse (<anonymous>)\n    at GLTFLoader.parse (http://127.0.0.1:8822/game/vendor/addons/loaders/GLTFLoader.js:344:17)\n    at http://127.0.0.1:8822/game/vendo"
+  ]
+ },
+ "after_fixed_loader": {
+  "url": "http://127.0.0.1:8822/game/index.html",
+  "p1": "demonio",
+  "p2": "pantera",
+  "phases": {
+   "page_load": 0.9,
+   "menu_ready": 5.1,
+   "select_ready": 10.8,
+   "stage_ready": 60.3
+  },
+  "results": [
+   {
+    "attempt": 1,
+    "outcome": "FIGHT",
+    "seconds": 25.4,
+    "hint": ""
+   }
+  ],
+  "events": [
+   "0.9s [http 404] http://127.0.0.1:8822/deploy-manifest.json",
+   "0.9s [HTML-for-data] http://127.0.0.1:8822/deploy-manifest.json",
+   "0.9s [error] Failed to load resource: the server responded with a status of 404 (File not found)",
+   "14.5s [HTML-for-data] http://127.0.0.1:8822/roster/demonio/attires/attire1/model.glb",
+   "85.9s [http 404] http://127.0.0.1:8822/game/js/intro-interactions.js",
+   "85.9s [error] Failed to load resource: the server responded with a status of 404 (File not found)",
+   "85.9s [requestfailed] http://127.0.0.1:8822/game/js/intro-interactions.js net::ERR_ABORTED",
+   "85.9s [log] [WH-T7] pantera: 29 real T7 move clips (assets/anim/t7/king/moves.pack.json)",
+   "86.4s [requestfailed] http://127.0.0.1:8822/game/assets/audio/eastern-mind/tong-nou-esoteric-mix.mp3 net::ERR_ABORTED"
+  ]
+ }
+}
