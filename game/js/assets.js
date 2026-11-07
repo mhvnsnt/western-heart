@@ -32,7 +32,7 @@ import { getCachedBuffer, putCachedBuffer } from './asset-cache.js';
 // bundled models stay local; everything else tries the remote asset
 // base first (R2 once the bucket exists), then jsDelivr. One config
 // line in asset-config.js moves the base — no per-model changes.
-import { resolveAssetCandidates } from './asset-config.js';
+import { resolveAssetCandidates, looksLikeModel } from './asset-config.js';
 
 export const MODEL_URLS = {
   pantera: 'assets/models/pantera.glb',
@@ -1413,9 +1413,15 @@ class AssetManager {
         // exactly like a bundled one.
         if (!signal.aborted) {
           const cached = await getCachedBuffer(cand);
-          if (cached && !signal.aborted) {
+          // A cached entry that is not a model (an HTML page a host once served with 200) is skipped: the network
+          // copy below replaces it. A cached model that fails to parse falls through the same way.
+          if (cached && !signal.aborted && looksLikeModel(cached)) {
             if (onProgress) onProgress(1, cached.byteLength, cached.byteLength, id);
-            return _sharedGLTFLoader().parseAsync(cached, cand);
+            try {
+              return await _sharedGLTFLoader().parseAsync(cached, cand);
+            } catch (e) {
+              if (e && e.name === 'AbortError') throw e;
+            }
           }
         }
         let res;
@@ -1458,13 +1464,27 @@ class AssetManager {
           if (e && e.name === 'AbortError') throw e;
           buf = await res.arrayBuffer(); // no reader progress on very old browsers
         }
+        // Not a model (an HTML page served with 200 for a missing file): a failed candidate, never cached or parsed.
+        if (!looksLikeModel(buf)) {
+          lastErr = new Error(`not a model (got ${res.headers.get('content-type') || 'unknown type'}) loading ${id} from ${cand}`);
+          if (!firstErr) firstErr = lastErr;
+          continue;
+        }
         // Lane 5: persist the downloaded bytes for the next session.
         // Fire-and-forget (never blocks the parse); a failed store is
         // a silent no-op inside putCachedBuffer.
-        if (buf) putCachedBuffer(cand, buf);
+        putCachedBuffer(cand, buf);
         // The candidate URL string is the parse base, so external .bin /
         // texture references resolve against the host that served the GLB.
-        return _sharedGLTFLoader().parseAsync(buf, cand);
+        // A parse failure moves on to the next candidate instead of failing the whole load.
+        try {
+          return await _sharedGLTFLoader().parseAsync(buf, cand);
+        } catch (e) {
+          if (e && e.name === 'AbortError') throw e;
+          lastErr = e;
+          if (!firstErr) firstErr = e;
+          continue;
+        }
       }
       // Name the FIRST (primary/local) failure, not only the last
       // fallback's: a local 404 followed by an unreachable CDN used to

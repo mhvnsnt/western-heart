@@ -16,6 +16,8 @@ fs.mkdirSync(out, { recursive: true });
 const browser = await chromium.launch({ args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
 const ctx = await browser.newContext({ ...devices['iPhone 13'], viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
 const page = await ctx.newPage();
+// HTML_FOR=<regex>: answer matching requests with an HTML page + HTTP 200 (reproduces a host's SPA fallback, 2026-11-07)
+if (process.env.HTML_FOR) { const rx = new RegExp(process.env.HTML_FOR); await page.route((u) => rx.test(String(u)), (r) => r.fulfill({ status: 200, contentType: 'text/html', body: '<!doctype html><html><body>index</body></html>' })); }
 const ev = [];
 const t0 = Date.now();
 const at = () => ((Date.now() - t0) / 1000).toFixed(1);
@@ -23,6 +25,8 @@ page.on('console', (m) => { const t = m.text(); if (m.type() === 'error' || /fig
 page.on('pageerror', (e) => ev.push(`${at()}s [pageerror] ${e.message.slice(0, 260)}`));
 page.on('requestfailed', (r) => ev.push(`${at()}s [requestfailed] ${r.url().slice(0, 140)} ${r.failure() && r.failure().errorText}`));
 page.on('response', (r) => { if (r.status() >= 400) ev.push(`${at()}s [http ${r.status()}] ${r.url().slice(0, 160)}`); });
+// data served as an HTML page (a host's single-page-app fallback answering a missing file with 200)
+page.on('response', (r) => { const ct = (r.headers()['content-type'] || ''); if (/\.(json|glb)(\?|$)/.test(r.url()) && ct.includes('text/html')) ev.push(`${at()}s [HTML-for-data] ${r.url().slice(0, 200)}`); });
 const visible = (id) => page.evaluate((id) => { const e = document.getElementById(id); return !!e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden'); }, id);
 const waitScreen = async (id, ms) => { try { await page.waitForFunction((id) => { const e = document.getElementById(id); return e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden'); }, id, { timeout: ms, polling: 250 }); return true; } catch { return false; } };
 const tap = async (sel) => { await page.tap(sel, { timeout: 120000 }); await page.waitForTimeout(600); };

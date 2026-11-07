@@ -171,6 +171,21 @@ export function resolveAssetCandidates(url) {
  * (tools/deploy/build_cf_pages.py -> https://western-heart.pages.dev, no 1 GB cap) carries every closure file
  * <= 25 MiB, so there a model's own page copy is tried FIRST (Cloudflare CDN), then the remote base, then jsDelivr
  * (files over 25 MiB 404 fast and fall through). The GitHub Pages shell keeps its order above unchanged. */
+/* A model response must BE a model (2026-11-07): a GLB starts with the bytes 'glTF', a .gltf is JSON ('{' after any
+ * whitespace / UTF-8 BOM). A host that answers a missing file with an HTML page and HTTP 200 (Cloudflare Pages' single-
+ * page-app fallback before 404.html existed, a captive portal, a proxy error page) must count as a FAILED candidate:
+ * never cached, never parsed, the next candidate tried. On 2026-11-07 the live Cloudflare build served index.html for
+ * Demonio's 28.8 MB model (over its 25 MiB file limit); the loader cached it and the parse failed the whole fight load
+ * ("Unexpected token '<', \"<!doctype \"... is not valid JSON"). */
+export function looksLikeModel(buf) {
+  if (!buf || buf.byteLength < 4) return false;
+  const b = new Uint8Array(buf, 0, Math.min(64, buf.byteLength));
+  if (b[0] === 0x67 && b[1] === 0x6C && b[2] === 0x54 && b[3] === 0x46) return true; // 'glTF'
+  let i = 0;
+  while (i < b.length && (b[i] === 0x20 || b[i] === 0x09 || b[i] === 0x0A || b[i] === 0x0D || b[i] === 0xEF || b[i] === 0xBB || b[i] === 0xBF)) i++;
+  return i < b.length && b[i] === 0x7B; // '{' : .gltf JSON
+}
+
 export function isFullSiteHost(host) {
   const h = host != null ? host : (typeof location !== 'undefined' && location && location.hostname) || '';
   return /(^|\.)western-heart\.pages\.dev$/i.test(String(h));
