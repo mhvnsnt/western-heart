@@ -133,6 +133,21 @@ exactly this in batch 1's first CI run: 347 torch-referenced rows).
 | ganryu | 8 | 8 | 4 | 322 | 328 | 26 |
 | heihachi | 12 | 5 | 3 | 338 | 342 | 27 |
 | hwoarang | 3 | 2 | 15 | 36 | 36 | 3 |
-| **batches 1–4 total (23 banks)** | **237** | **111** | **112** | **7112** | **7251** | **901** |
+| jack | 7 | 10 | 3 | 387 | 404 | 35 |
+| jin | 11 | 5 | 4 | 327 | 334 | 34 |
+| jinpachi | 12 | 5 | 3 | 304 | 302 | 18 |
+| kazuya | 12 | 5 | 3 | 333 | 331 | 19 |
+| julia | 11 | 7 | 2 | 397 | 402 | 26 |
+| king | 5 | 2 | 13 | 110 | 112 | 7 |
+| kuma | 12 | 5 | 3 | 348 | 353 | 28 |
+| kunimitsu | 4 | 3 | 13 | 108 | 113 | 11 |
+| lars | 7 | 10 | 3 | 309 | 313 | 21 |
+| **batches 1–6 total (32 banks)** | **318** | **163** | **159** | **9735** | **9915** | **1100** |
 
-Batch 1 = PR #1625 (alex, alisa, angel, armor_king, asuka, bob_satsuma). Batch 2 = PR #1627 (anna_ttt2, baek_doo_san, bosconovitch_ttt2, bruce, bryan_ttt2, christie). Batch 3 = PR #1628 (combot, devil_jin, dragunov, eddy_ttt2, eleonor). Batch 4 = PR #1629 (emilie, feng, forest, ganryu, heihachi_ttt2, hwoarang_ttt2). Further batches append rows here as they land.
+Batch 1 = PR #1625 (alex, alisa, angel, armor_king, asuka, bob_satsuma).
+Batch 2 = PR #1627 (anna, baek_doo_san, bosconovitch, bruce, bryan, christie).
+Batch 3 = PR #1628 (combot, devil_jin, dragunov, eddy, eleonor).
+Batch 4 = PR #1629 (emilie, feng, forest, ganryu, heihachi, hwoarang).
+Batch 5 = PR #1630 (jack, jin, jinpachi, kazuya).
+Batch 6 = PR #1631 (julia, king, kuma, kunimitsu, lars).
+Collider banks land at <name>_ttt2 (see the naming rule above). Further batches append rows here as they land.
