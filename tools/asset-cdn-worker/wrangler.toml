@@ -1,0 +1,11 @@
+name = "western-heart-assets"
+main = "worker.js"
+compatibility_date = "2024-11-01"
+workers_dev = true
+
+[vars]
+B2_BUCKET = "western-heart-assets"
+B2_ENDPOINT = "s3.us-east-005.backblazeb2.com"
+# Secrets B2_KEY_ID + B2_APP_KEY are set on the deployed script and are
+# never stored in this repo. They must be present for the B2 fall-through
+# path; the GitHub-Releases path needs no secrets.
