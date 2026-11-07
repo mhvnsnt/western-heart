@@ -365,13 +365,17 @@ test('BT guard data: the multi-arm table matches the models on disk (derived, no
     assert.ok(roots.length > 2, id + ': in-game model carries more than one arm pair');
     assert.deepEqual([...roots].sort(), [...entry.chains].sort(), id + ': checked-in chains match the GLB');
   }
-  // The documented negatives: the exception activates when their model
-  // data carries the extra pair — until then the flag stays OFF.
+  // The documented negatives: models whose rigs do NOT carry extra
+  // arm chains — the flag stays OFF for them. DXMMII attire1 and Zen's
+  // tentacle form left this list 2026-11-06, when the owner's rigging
+  // order landed their extra chains in the shipped models; patchwork
+  // stays (its source holds no extra-arm geometry at all) and Zen's
+  // non-tentacle forms stay (rigging was ordered for the tentacle form
+  // only; oversoul's torso-rooted chain is the spirit head's).
   const negatives = {
-    'dxmmii (attire1)': 'roster/dxmmii/attires/attire1/model-rigged.glb',
     'dxmmii (patchwork)': 'roster/dxmmii/attires/patchwork-dj/dxmmii-patchwork-rigged.glb',
     'zen (attire1)': 'roster/zen/attires/attire1/model-rigged.glb',
-    'zen (tentacle)': 'roster/zen/tentacle/model-rigged.glb',
+    'zen (oversoul)': 'roster/zen/oversoul/model-rigged.glb',
     'zen (spirit)': 'roster/zen/spirit/model-rigged.glb',
   };
   for (const [label, rel] of Object.entries(negatives)) {
@@ -380,6 +384,7 @@ test('BT guard data: the multi-arm table matches the models on disk (derived, no
     assert.ok(armChainRoots(p).length <= 2, label + ': no extra arm pair in current data');
   }
   assert.equal(BG.btGuardFor('dxmmii-patchwork', { id: 'dxmmii-patchwork' }), null);
-  assert.equal(BG.btGuardFor('zen', { id: 'zen' }), null);
+  assert.ok(BG.btGuardFor('dxmmii', { id: 'dxmmii' }), 'dxmmii qualifies on his model data');
+  assert.ok(BG.btGuardFor('zen', { id: 'zen' }), 'zen qualifies on his tentacle-form model data');
   assert.ok(BG.btGuardFor('chatur', { id: 'chatur' }), 'chatur qualifies on her model data');
 });

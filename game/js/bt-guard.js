@@ -106,18 +106,24 @@ export const BT_GUARD_DESIGN = Object.freeze({
 // documented negatives) from the GLB bytes, so this table cannot drift
 // from the models.
 //
-// Owner-named fighters whose current data does NOT show the extra
-// pair (reported plainly, flag NOT faked — their exception activates
-// when their model data carries the extra pair):
-//   dxmmii — attire1 (tripo) rig, patchwork-dj rig and
-//     game/assets/models/dxmmii.glb each carry ONE pair; the .001
-//     bones are mid-chain segment duplicates (a segment's parent is
-//     an arm bone, so it starts no chain). attire2/model.glb is
-//     unrigged (no skeleton at all).
-//   zen — attire1, oversoul and tentacle rigs each carry ONE pair
-//     (the tentacle chains are not arm chains: no shoulder/elbow/
-//     wrist structure); spirit carries NO arm chains (spring chains
-//     only).
+// Owner order 2026-11-06 ("We have to rig DXMMII arms extras and zens
+// tentacles in his tentacle forms"): DXMMII's extra pair and Zen's
+// tentacle chains were rigged into the shipped models as real arm
+// chains (method + per-model verification:
+// docs/movesets/BT-GUARD-RIGGING-2026-11-06.md), so both qualify from
+// rig data below. What still does NOT carry extra chains, verified the
+// same day with the same detector (reported plainly, flag NOT faked):
+//   dxmmii patchwork-dj rig + game/assets/models/dxmmii.glb (twins) —
+//     Mokujin-family bodies with NO extra-arm geometry anywhere in
+//     their source (21 material-panel meshes, standard two-arm
+//     humanoid, ~4.4k verts); nothing exists there to rig. The
+//     'dxmmii-patchwork' transform stage stays a documented negative.
+//   dxmmii attire2/model.glb — no extra-arm geometry either (clean
+//     two-arm T-pose) and unrigged (no skeleton at all).
+//   zen attire1 / spirit / oversoul — rigging was ordered for the
+//     tentacle form only; oversoul's body tentacles are clothing
+//     imagery by canon and its one torso-rooted chain belongs to the
+//     spirit head; spirit carries NO arm chains (spring chains only).
 // Roster-wide sweep (game/assets/models/, 64 GLBs, same detector):
 // every other model carries exactly one pair. (zafina.glb's apparent
 // third root is the standard clavicle->arm chain: RightArm's parent
@@ -130,6 +136,29 @@ export const BT_GUARD_MULTI_ARM = Object.freeze({
     evidence: '264-joint rig: the primary Mixamo pair (LeftArm/RightArm) plus a second, ' +
       'independently rooted Rigify DEF pair (DEF-upper_arm.L.002 / DEF-upper_arm.R.002, ' +
       'the waist pair) — 4 arm chain roots, each with a hand descendant.',
+  }),
+  dxmmii: Object.freeze({
+    armPairs: 2,
+    model: 'roster/dxmmii/attires/attire1/model-rigged.glb',
+    chains: ['LeftShoulder', 'LeftShoulder2', 'RightShoulder', 'RightShoulder2'],
+    evidence: '81-joint rig: the standard pair plus a second pair rigged 2026-11-06 ' +
+      '(LeftShoulder2/RightShoulder2 roots parented to Spine2, with Arm2/ForeArm2/Hand2 ' +
+      'descendants) onto the extra-arm geometry the source mesh always carried detached ' +
+      'above the head — DXMMII\'s arms are retractable/detachable by canon, and the ' +
+      'floating pair is its gyro-stance system. Bind pose verified unchanged (max skin ' +
+      'error 1.1e-6); the new chains articulate independently of the body.',
+  }),
+  zen: Object.freeze({
+    armPairs: 3,
+    model: 'roster/zen/tentacle/model-rigged.glb',
+    chains: ['LeftShoulder', 'RightShoulder', 'T10_UpperArm', 'T11_UpperArm', 'T1_UpperArm', 'T2_UpperArm', 'T3_UpperArm'],
+    evidence: '109-joint tentacle-form rig: the standard pair plus the five tentacle ' +
+      'chains rooted outside the arms (T1/T11 at the left hip, T2/T3 at the left leg, ' +
+      'T10 at the head), restructured 2026-11-06 into arm-chain form (T#_UpperArm roots ' +
+      'with T#_Hand tip effectors) — 7 arm chain roots. The seven arm-rooted tentacle ' +
+      'chains (T0/T4/T5/T6/T7/T8/T9) cannot root at the torso without re-posing his ' +
+      'bound clips, so they stay spring chains; the rename touches names only (BIN ' +
+      'chunk byte-identical), so ZEN_BUST_OUT / ZEN_IDLE sample exactly as before.',
   }),
 });
 
