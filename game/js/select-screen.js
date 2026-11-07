@@ -34,7 +34,7 @@ import { assets } from './assets.js';
 import { loadGuardStance, createAimStance } from './stance-aim.js';
 import { attiresFor, selectableAttires, selectedAttireModel, setAttire, attireLabel, attireEyeGlow } from './attires.js';
 import { loadT3Clips, createT3Actions, retargetT3Clips, applyT7Stance } from './t3anims.js';
-import { bankIdFor } from './fighter.js';
+import { bankIdFor, ownSlotBankFor, layerOwnSlots } from './fighter.js';
 import { getMovesetInfo } from './movesets.js';
 import { warmSelect, warmFight } from './preload.js';
 import { NINE_SOULS, newSoulSpiritPick, vesselMatch, soulSpiritLabel } from './soul-spirit.js';
@@ -208,11 +208,14 @@ export class PreviewPane {
         // The fighter's OWN moveset file decides its bank (its base's motion), same as in the fight.
         const bank = bankIdFor(c.id, getMovesetInfo(c.id) ? c.id : (c.moveset || c.id));
         const clips = bank ? await loadT3Clips(THREE, bank) : null;
+        const ownBank = ownSlotBankFor(c.id);
+        if (ownBank) { try { await loadT3Clips(THREE, ownBank); } catch (e) { /* own slots optional */ } }
         if (token !== this._token) return true; // superseded while loading
         if (clips && clips.stance && inst.bones && inst.bones.Hips && inst.bones.RightArm && inst.bones.Head) {
           // Retargeted onto this rig (t3anims.js retargetT3Clips) — the
           // raw bank quaternions only fit the rig they were baked onto.
           const rc = retargetT3Clips(clips, bank, inst.model, THREE, modelId) || {};
+          layerOwnSlots(c.id, rc, inst.model, THREE, modelId); // the fighter's OWN character's slots, same as the fight
           applyT7Stance(c.id, bank, rc, inst.model, THREE, modelId); // real T7 stance where baked, same as the fight
           const t3 = createT3Actions(inst.mixer, rc, THREE);
           if (t3.stance) {

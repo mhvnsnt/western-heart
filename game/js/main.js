@@ -1343,7 +1343,7 @@ async function startFight(playerId, enemyId, opts = {}) {
     // instead of at boot (they are fight data, not menu data).
     const [F, MS, T3] = await Promise.all([lazy.fighter(), lazy.movesets(), lazy.t3anims()]);
     const { ensureMovesets } = MS;
-    const { bankIdFor, loadRealMovesets } = F;
+    const { bankIdFor, loadRealMovesets, ownSlotBankFor } = F;
     const { loadT3Clips } = T3;
     setPhase('Loading move lists…');
     await Promise.all([loadRealMovesets(), MS.loadFighterMovesets()]);
@@ -1384,7 +1384,8 @@ async function startFight(playerId, enemyId, opts = {}) {
       await ensureMovesets(msIds);
       setPhase('Loading real fight motion…');
       try {
-        const banks = [...new Set([bankIdFor(player.id), bankIdFor(enemy.id)].filter(Boolean))];
+        const banks = [...new Set([bankIdFor(player.id), bankIdFor(enemy.id),
+          ownSlotBankFor(player.id), ownSlotBankFor(enemy.id)].filter(Boolean))];
         await Promise.all(banks.map(b => loadT3Clips(THREE, b)));
       } catch (e) {
         console.warn('[WH] T3 clips failed, using procedural fallback:', e.message || e);

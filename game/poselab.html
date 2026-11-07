@@ -90,11 +90,14 @@ async function show({ model = 'pantera', bank = 'king', clip = 'stance', t = 0.5
   // Source rig: the bank's own skeleton.json names it (source_glb), so every decoded bank works here.
   const skel = getT3Skeleton(bank);
   const srcUrl = BANK_GLB[bank] || (skel && skel.source_glb ? '../' + skel.source_glb : null);
-  if (!srcUrl) throw new Error(`no source rig for bank ${bank}`);
-  const sg = await loadGlb(srcUrl);
-  const src = skeletonClone(sg.scene);
-  const srcMixer = new THREE.AnimationMixer(src);
-  const sa = srcMixer.clipAction(rawClipForSource(clips[clip])); sa.play();
+  // A bank with no source rig (the TTT2 / T7 banks: their skeleton.json names none) renders the fighter only.
+  let src = new THREE.Group(), srcMixer = new THREE.AnimationMixer(src);
+  if (srcUrl) {
+    const sg = await loadGlb(srcUrl);
+    src = skeletonClone(sg.scene);
+    srcMixer = new THREE.AnimationMixer(src);
+    const sa = srcMixer.clipAction(rawClipForSource(clips[clip])); sa.play();
+  }
   // target (the game's own loader + retarget)
   await assets.loadModels([model]);
   const inst = assets.createInstance(model, 0xffffff, 0x888888, tint);
@@ -123,7 +126,7 @@ async function show({ model = 'pantera', bank = 'king', clip = 'stance', t = 0.5
     const ds = p(sb[b]).sub(p(sb[a])).normalize(), dt = p(tb[b]).sub(p(tb[a])).normalize();
     errs[`${a}->${b}`] = +(THREE.MathUtils.radToDeg(ds.angleTo(dt))).toFixed(1);
   }
-  const hs = p(sb.Head).y - p(sb.Hips).y, ht = p(tb.Head).y - p(tb.Hips).y;
+  const hs = (sb.Head && sb.Hips) ? p(sb.Head).y - p(sb.Hips).y : NaN, ht = p(tb.Head).y - p(tb.Hips).y;
   // Which way the feet point (world XZ), from foot->toe joints.
   const toe = (m) => {
     const v = new THREE.Vector3();
@@ -140,8 +143,8 @@ async function show({ model = 'pantera', bank = 'king', clip = 'stance', t = 0.5
   render();
   const res = { model, bank, clip, time: +time.toFixed(3), duration: +dur.toFixed(3), facesNegZ, swapLR: rt[clip].userData.rigSwapLR,
     srcHeadAboveHips: +hs.toFixed(3), tgtHeadAboveHips: +ht.toFixed(3), toes, dirErrDeg: errs,
-    maxErr: Math.max(...Object.values(errs)) };
-  info.textContent = `SOURCE (raw bank on ${srcUrl.split('/').pop()})  |  TARGET ${model} (retargeted)\n` + JSON.stringify(res);
+    maxErr: Object.keys(errs).length ? Math.max(...Object.values(errs)) : null };
+  info.textContent = `SOURCE (${srcUrl ? 'raw bank on ' + srcUrl.split('/').pop() : 'no source rig for ' + bank})  |  TARGET ${model} (retargeted)\n` + JSON.stringify(res);
   return res;
 }
 function render() {
@@ -180,15 +183,19 @@ async function rest(model) {
    entry (selected attire 1), bank from bankIdFor (moveset t3_source). */
 import { FULL_ROSTER } from './js/roster-full.js';
 import { loadFighterMovesets } from './js/movesets.js';
-import { bankIdFor } from './js/fighter.js';
+import { bankIdFor, ownSlotBankFor } from './js/fighter.js';
 let _msReady = null;
-async function showFighter({ id, clip = 'stance', t = 0.5 }) {
+async function showFighter({ id, clip = 'stance', t = 0.5, ownCandidates = false }) {
   _msReady = _msReady || loadFighterMovesets();
   await _msReady;
   const c = FULL_ROSTER.find(x => x.id === id);
   if (!c) throw new Error('no roster fighter ' + id);
-  const bank = bankIdFor(c.id, c.id);
+  let bank = bankIdFor(c.id, c.id);
   if (!bank) throw new Error(`${id}: no bank`);
+  // Same rule as the fight (fighter.js layerOwnSlots): a slot the fighter's OWN character's bank has plays from it.
+  // ownCandidates: preview a fighter's not-yet-active own bank (fighter.js OWN_SLOT_CANDIDATES) to judge it by eye.
+  const own = ownSlotBankFor(c.id, { candidates: !!ownCandidates });
+  if (own) { const oc = await loadT3Clips(THREE, own); if (oc && oc[clip]) bank = own; }
   const r = await show({ model: c.model, bank, clip, t });
   return { id, ...r };
 }
