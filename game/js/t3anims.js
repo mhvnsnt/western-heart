@@ -1637,6 +1637,210 @@ function estimateHeadOffset(skel, t3Clips, THREE) {
   return deg >= HEAD_CORR_MIN_DEG ? off : null;
 }
 
+/* ============================================================
+   ARM-FRAME NORMALIZATION (2026-11-07, roster arm audit — owner:
+   "Now gotta fix the wired candy wrapper shoulders, arms, elbows,
+   and hands twists and wired stuff happening on every caharcters
+   arms almost").
+
+   MEASURED ROOT CAUSE (docs/proof/2026-11-07/arm-twist-audit/).
+   Every driven joint's world delta is D(c) = F G(c) F^-1 A(c) with
+   A(c) a pure SWING (setFromUnitVectors of rest directions): it
+   aligns where each bone POINTS exactly — posed positions and bone
+   directions transport exactly — but it cannot carry the source
+   frame's ROLL, so the roll split between adjacent locals is
+   scrambled: local(k) = Wrest(parent)^-1 A(parent)^-1 G-local
+   A(k) Wrest(k), and the conjugating constants differ per joint.
+   On the bank's own skeleton the arm chain is anatomical (elbow
+   hinge error 0.0-0.5 deg in 24 of 26 banks; forearm locals are
+   pure hinge swings, twist ~0). After transport onto a rig whose
+   rest directions differ from the bank skeleton's, the forearm
+   local carries a large CONSTANT twist error (circular spread
+   0.0 deg across stance/light/heavy): jin right -154.1 deg, paul
+   right +84.2, paul left +29.9, jin/heihachi left -19.9, gunjack
+   +17.3/-19.8 — and the elbow hinge error grows with it (jin
+   right 79.7-82.7 deg on the canonical rig vs 0-5.8 in the
+   source). The hand local's twist transports exactly (A(Hand) =
+   A(ForeArm) conjugates a near-axial local), so the wrist wrapper
+   is the forearm's rolled frame, not a hand error. Banks baked on
+   a rig matching the target (king on the canonical rig, jun /
+   roger / xiaoyu arm chains) measure 0.0 everywhere and stay
+   untouched; xiaoyu's 29-33 deg hinge error is IN her source data
+   and transports faithfully — it is not corrected (it is not a
+   transport error: her twist deltas are 0.0).
+
+   THE FIX (same philosophy as the head fix: constants measured
+   from the bank's own data, nothing authored — but per RIG as
+   well as per bank, because the error lives in the A/Wrest
+   conjugation, not in the bank alone). At the first retarget
+   call that carries the bank's stance, the stance is built once
+   uncorrected through the real frame loop (the probe — torso
+   match and all), and for each arm joint the twist of the
+   target local about the target bone's rest axis is compared
+   frame by frame with the twist of the source local about the
+   source bone's rest axis. Top-down (Shoulder, Arm, ForeArm,
+   Hand) a constant roll theta about the joint's own posed bone
+   axis is solved by bisection so the stance's circular-mean
+   twist error becomes zero; in the frame loop the roll is
+   applied to G(joint) before delta(), exactly where the head
+   correction sits. A roll about a bone's own axis changes no
+   joint position and no bone direction — it only moves roll
+   between adjacent locals, putting the roll where the source
+   put it. Per-frame variation around the constant (the acting,
+   including the swing-dependent part of the Arm error during
+   big moves) is preserved. Gates, from the measured clusters
+   (clean banks sit at 0.0-4.7 deg, real constants at 17.3+):
+   a joint is corrected only when its stance twist error is at
+   least ARM_CORR_MIN_DEG (12 deg); the Shoulder's delta is
+   entangled with the deliberate torso-match re-split, so it
+   uses ARM_CORR_SHOULDER_MIN_DEG (25 deg). The constants are
+   cached on the per-model retarget entry (they depend on the
+   rig), not on the skeleton. 't7:' skeletons are NOT exempt:
+   the correction removes only the transport difference (target
+   twist minus source twist), so a T7 stance's own arm twists
+   (king L -57 / R +37 deg, his real guard) are reproduced, not
+   flattened — and where a T7 transport measures clean, the
+   gates leave it untouched.
+   ============================================================ */
+const ARM_CORR_MIN_DEG = 12;
+const ARM_CORR_SHOULDER_MIN_DEG = 25;
+const ARM_CORR_JOINTS = ['LeftShoulder', 'LeftArm', 'LeftForeArm', 'LeftHand',
+  'RightShoulder', 'RightArm', 'RightForeArm', 'RightHand'];
+const ARM_CHAIN = ['Shoulder', 'Arm', 'ForeArm', 'Hand']; // top-down per side
+function estimateArmCorr(rig, skel, stanceClip, probeClip, THREE) {
+  // Returns undefined when the stance data needed is not in this
+  // call (defer), null when the (bank, rig) pair measures clean,
+  // else { jointName: thetaRad } for the joints over their gate.
+  if (!rig || !skel || !stanceClip || !probeClip) return undefined;
+  const raw = stanceClip.userData && stanceClip.userData.raw;
+  if (!raw || !raw.rot) return undefined;
+  const src = sourceInfo(skel, THREE);
+  if (!src || !src.par || !src.order.length) return null;
+  // Probe tracks by canonical joint name (tracks ARE the target
+  // locals the real frame loop emitted for the stance).
+  const trackOf = {};
+  for (const jn of ARM_CORR_JOINTS) {
+    const b = rig.by[jn];
+    if (!b) continue;
+    const tn = rig.trackName(b) + '.quaternion';
+    const tr = probeClip.tracks.find(t => t.name === tn);
+    if (tr) trackOf[jn] = tr.values;
+  }
+  // Source per-frame world rotations, composed exactly as the
+  // frame loop composes G.
+  let n = 0;
+  for (const j of src.order) if (raw.rot[j] && raw.rot[j].length > n) n = raw.rot[j].length;
+  for (const jn of ARM_CORR_JOINTS) if (trackOf[jn]) n = Math.min(n, trackOf[jn].length / 4);
+  if (n < 8) return undefined;
+  const G = {};
+  const srcLocal = {}; // joint -> [Quaternion per frame]
+  for (const jn of ARM_CORR_JOINTS) srcLocal[jn] = new Array(n);
+  for (let f = 0; f < n; f++) {
+    for (const j of src.order) {
+      const q = G[j] || (G[j] = new THREE.Quaternion());
+      const r = raw.rot[j];
+      if (r && r.length) { const v = r[Math.min(f, r.length - 1)]; q.set(v[0], v[1], v[2], v[3]); } else q.identity();
+      const p = src.par[j];
+      if (p && G[p]) q.premultiply(G[p]);
+    }
+    for (const jn of ARM_CORR_JOINTS) {
+      if (!G[jn]) continue;
+      const p = src.par[jn];
+      srcLocal[jn][f] = (p && G[p]) ? G[p].clone().invert().multiply(G[jn]) : G[jn].clone();
+    }
+  }
+  const twist = (q, ax) => {
+    let a = 2 * Math.atan2(q.x * ax.x + q.y * ax.y + q.z * ax.z, q.w);
+    if (a > Math.PI) a -= 2 * Math.PI;
+    if (a < -Math.PI) a += 2 * Math.PI;
+    return a;
+  };
+  const circMean = (angs) => {
+    let x = 0, y = 0;
+    for (const a of angs) { x += Math.cos(a); y += Math.sin(a); }
+    return Math.atan2(y, x);
+  };
+  const out = {};
+  const theta = {}; // solved (gated) thetas, radians, per joint name
+  for (const side of ['Left', 'Right']) {
+    for (const role of ARM_CHAIN) {
+      const jn = side + role;
+      theta[jn] = 0;
+      const vals = trackOf[jn], bone = rig.by[jn];
+      if (!vals || !bone || !srcLocal[jn][0]) continue;
+      // Axes: source bone axis (rest dir to the child; the Hand's
+      // axis is the ForeArm->Hand segment, as in the census), the
+      // target bone axis in the parent frame, and in its own frame.
+      const srcDir = src.dirs[role === 'Hand' ? side + 'ForeArm' : jn];
+      if (!srcDir || srcDir === 'leg' || !srcDir.lengthSq) continue;
+      const axS = srcDir.clone().normalize();
+      const childJn = role === 'Hand' ? null : side + ARM_CHAIN[ARM_CHAIN.indexOf(role) + 1];
+      const segA = role === 'Hand' ? rig.by[side + 'ForeArm'] : bone;
+      const segB = role === 'Hand' ? bone : rig.by[childJn];
+      if (!segA || !segB) continue;
+      const dirT = rig.rest(segB).pos.clone().sub(rig.rest(segA).pos);
+      if (dirT.lengthSq() < 1e-12) continue;
+      dirT.normalize();
+      const parBone = bone.parent && bone.parent.isBone ? bone.parent : null;
+      const axT = parBone ? dirT.clone().applyQuaternion(rig.rest(parBone).quat.clone().invert()) : dirT.clone();
+      const ownAxT = dirT.clone().applyQuaternion(rig.rest(bone).quat.clone().invert());
+      // Parent correction factor: applies only when the chain
+      // parent is this bone's actual parent in the rig.
+      const parJn = role === 'Shoulder' ? null : side + ARM_CHAIN[ARM_CHAIN.indexOf(role) - 1];
+      const parTheta = (parJn && rig.by[parJn] && bone.parent === rig.by[parJn]) ? (theta[parJn] || 0) : 0;
+      let parOwnAx = null;
+      if (parTheta && parJn) {
+        const pb = rig.by[parJn];
+        const pChild = rig.by[side + role];
+        const pDir = rig.rest(pChild).pos.clone().sub(rig.rest(pb).pos).normalize();
+        parOwnAx = pDir.applyQuaternion(rig.rest(pb).quat.clone().invert());
+      }
+      const qPar = parOwnAx ? new THREE.Quaternion().setFromAxisAngle(parOwnAx, -parTheta) : null;
+      // Per-frame probe locals, posed own-axis directions, and the
+      // source twists; err(th) = circular mean of the corrected
+      // twist error over the stance.
+      const Lp = [], dHat = [], ts = [];
+      for (let f = 0; f < n; f++) {
+        const q = new THREE.Quaternion(vals[f * 4], vals[f * 4 + 1], vals[f * 4 + 2], vals[f * 4 + 3]);
+        Lp.push(q);
+        dHat.push(ownAxT.clone().applyQuaternion(q));
+        ts.push(twist(srcLocal[jn][f], axS));
+      }
+      const errAt = (th) => {
+        const angs = new Array(n);
+        const qo = new THREE.Quaternion(), lc = new THREE.Quaternion();
+        for (let f = 0; f < n; f++) {
+          lc.copy(Lp[f]);
+          if (th) { qo.setFromAxisAngle(dHat[f], th); lc.premultiply(qo); }
+          if (qPar) lc.premultiply(qPar);
+          let d = twist(lc, axT) - ts[f];
+          if (d > Math.PI) d -= 2 * Math.PI;
+          if (d < -Math.PI) d += 2 * Math.PI;
+          angs[f] = d;
+        }
+        return circMean(angs);
+      };
+      const base = errAt(0);
+      const gate = (role === 'Shoulder' ? ARM_CORR_SHOULDER_MIN_DEG : ARM_CORR_MIN_DEG) * Math.PI / 180;
+      if (Math.abs(base) < gate) continue;
+      // Bisect around th0 = -base (the twist shift tracks theta
+      // ~1:1 near the solution).
+      let lo = -base - 0.6, hi = -base + 0.6, th = -base;
+      const elo = errAt(lo), ehi = errAt(hi);
+      if (Math.abs(errAt(th)) > 0.01 && elo * ehi < 0) {
+        for (let it = 0; it < 24; it++) {
+          const mid = (lo + hi) / 2, em = errAt(mid);
+          if (Math.abs(em) < 0.002) { th = mid; break; }
+          if ((em > 0) === (elo > 0)) lo = mid; else hi = mid;
+          th = mid;
+        }
+      }
+      if (th) { theta[jn] = th; out[jn] = th; }
+    }
+  }
+  return Object.keys(out).length ? out : null;
+}
+
 const _retargetCache = new WeakMap(); // model instance -> Map(bankId -> { rig, out: { action: clip } })
 
 /**
@@ -1762,14 +1966,16 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
     : (rig.profile && rig.profile.secondaryLayer && rig.profile.secondaryLayer.source === 'self')
       ? (rig.profile.secondaryLayer.timeOffsetFrames || 0) : 0;
   const tmpQ = new THREE.Quaternion(), tmpQ2 = new THREE.Quaternion(), tmpV = new THREE.Vector3();
-  for (const action of names) {
+  // One action's clip build, parameterized by the arm-frame
+  // correction map (null = uncorrected) so the arm estimator's
+  // probe pass and the production pass share the exact frame math.
+  const buildClip = (action, corr) => {
     const clip = t3Clips[action];
-    if (cached && cached.out[storeKey(action)]) { out[storeKey(action)] = cached.out[storeKey(action)]; continue; }
     const raw = clip && clip.userData && clip.userData.raw;
-    if (!raw) continue;
+    if (!raw) return null;
     let n = 0;
     for (const j of src.order) if (raw.rot[j] && raw.rot[j].length > n) n = raw.rot[j].length;
-    if (!n) continue;
+    if (!n) return null;
     const times = new Float32Array(n);
     for (let i = 0; i < n; i++) times[i] = i / raw.fps;
     const vals = new Map(driven.map(b => [b, new Float32Array(n * 4)]));
@@ -1792,6 +1998,22 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
         tmpQ.copy(G.Chest).multiply(headCorrInv)
           .multiply(tmpQ2.copy(G.Chest).invert());
         G.Head.premultiply(tmpQ);
+      }
+      // ARM-FRAME NORMALIZATION: roll each corrected arm joint's
+      // world rotation about its own posed bone axis by the
+      // (bank, rig) constant measured from the stance — positions
+      // and bone directions unchanged, only the roll split
+      // between adjacent locals moves (see estimateArmCorr).
+      if (corr) {
+        for (const jn of ARM_CORR_JOINTS) {
+          const th = corr[jn];
+          if (!th || !G[jn]) continue;
+          const sd = src.dirs[jn.endsWith('Hand') ? jn.slice(0, -4) + 'ForeArm' : jn];
+          if (!sd || sd === 'leg' || !sd.lengthSq) continue;
+          tmpV.copy(sd).normalize().applyQuaternion(G[jn]);
+          tmpQ.setFromAxisAngle(tmpV, th);
+          G[jn].premultiply(tmpQ);
+        }
       }
       // D: world deltas in the target frame.
       const delta = (c) => {
@@ -1832,6 +2054,21 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
           if (r && r.length) { const v = r[Math.min(f2, r.length - 1)]; q.set(v[0], v[1], v[2], v[3]); } else q.identity();
           const p = parX[j];
           if (p && G2[p]) q.premultiply(G2[p]);
+        }
+        // Secondary chains ride the same correction as the core
+        // chain of their side (self fill only: the constants were
+        // measured against THIS bank's skeleton; a donor bank's
+        // frames are its own, so Phase 2 composites keep their data).
+        if (corr && !layerActive) {
+          for (const jn of ARM_CORR_JOINTS) {
+            const th = corr[jn];
+            if (!th || !G2[jn]) continue;
+            const sd = src.dirs[jn.endsWith('Hand') ? jn.slice(0, -4) + 'ForeArm' : jn];
+            if (!sd || sd === 'leg' || !sd.lengthSq) continue;
+            tmpV.copy(sd).normalize().applyQuaternion(G2[jn]);
+            tmpQ.setFromAxisAngle(tmpV, th);
+            G2[jn].premultiply(tmpQ);
+          }
         }
         for (const chain of layerChains) {
           for (const role of ['Arm', 'ForeArm', 'Hand']) {
@@ -1943,9 +2180,34 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
         };
       }
     }
-    out[storeKey(action)] = rc;
+    return rc;
+  };
+  // ARM-FRAME NORMALIZATION: estimate this (bank, rig) pair's arm
+  // constants once, from the stance (probe = the stance built once
+  // uncorrected through the real loop above, or the uncorrected
+  // stance an earlier call already cached), and cache them on the
+  // per-model entry — they depend on the rig's rest pose, so they
+  // cannot live on the skeleton the way the head constant does.
+  let armCorr = cached ? cached.armCorr : undefined;
+  if (armCorr === undefined && !layerActive && t3Clips.stance &&
+      (names.includes('stance') || (cached && cached.out.stance))) {
+    const probe = (cached && cached.out.stance) || buildClip('stance', null);
+    if (probe) {
+      const est = estimateArmCorr(rig, skel, t3Clips.stance, probe, THREE);
+      if (est !== undefined) {
+        armCorr = est;
+        if (est) console.log(`[WH-T3] bank '${bankId}': arm-frame constants measured in its stance — normalized out of every clip (arm audit 2026-11-07): ` +
+          Object.entries(est).map(([j, th]) => `${j} ${(th * 180 / Math.PI).toFixed(1)}°`).join(', '));
+      }
+    }
+  }
+  for (const action of names) {
+    if (cached && cached.out[storeKey(action)]) { out[storeKey(action)] = cached.out[storeKey(action)]; continue; }
+    const rc = buildClip(action, armCorr || null);
+    if (rc) out[storeKey(action)] = rc;
   }
   const c = cached || { rig, out: {} };
+  if (armCorr !== undefined) c.armCorr = armCorr;
   Object.assign(c.out, out);
   perModel.set(bankId, c);
   return out;
