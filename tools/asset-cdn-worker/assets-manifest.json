@@ -1,0 +1,358 @@
+{
+ "format": "wh-assets-cdn-manifest/1",
+ "release_tag": "assets-cdn-v1",
+ "repo": "mhvnsnt/western-heart",
+ "purpose": "Keys the western-heart-assets Cloudflare Worker serves from GitHub Releases instead of Backblaze B2 (B2 no-card storage cap bypass, owner decision 2026-11-06).",
+ "asset_name_rule": "bucket key with '/' replaced by '__'",
+ "source_note": "Model bytes fetched from western-heart main (branch tip 2026-11-06/07, HEAD b6add3fa at fetch start) except negativo-a1-refit.glb and purplerain model-rerig.glb, which came from the hash-verified staged copies in _b2-upload-20261031/reupload-20261101 (identical to main). Every sha256 below was computed on the exact bytes uploaded and re-verified against the release API digest for all 58 assets.",
+ "entries": [
+  {
+   "key": "game/assets/accessories/tripo-demo-prop/source/tripo-demo-model.glb",
+   "asset": "game__assets__accessories__tripo-demo-prop__source__tripo-demo-model.glb",
+   "size": 8971340,
+   "sha256": "430cd6b953e79f4f03329b0c6f358dbd7403360174f0fad18877784254a7f433"
+  },
+  {
+   "key": "game/assets/models/kiko-tanaka.glb",
+   "asset": "game__assets__models__kiko-tanaka.glb",
+   "size": 20234944,
+   "sha256": "7289654c2050c36314f10b54da5439ffc8ccadc4bf35f2a895d89f70c30db91d"
+  },
+  {
+   "key": "game/assets/stages/sunra/mars-sky.glb",
+   "asset": "game__assets__stages__sunra__mars-sky.glb",
+   "size": 4974016,
+   "sha256": "8d24a5cc2dce68aefe94b1b2a404bc4e2c74624e0f688cfc86f93946527b5fb9"
+  },
+  {
+   "key": "roster/demonio/attires/attire1/model.glb",
+   "asset": "roster__demonio__attires__attire1__model.glb",
+   "size": 28793068,
+   "sha256": "b95e71252ba11b4308b9c96f575217e3e292707579de65b2867558dce307804d"
+  },
+  {
+   "key": "roster/doc-frank/attires/attire2/base/model.glb",
+   "asset": "roster__doc-frank__attires__attire2__base__model.glb",
+   "size": 41184968,
+   "sha256": "17e7c5ae89d7830efec3d0bf03d1c588f14ee3a0b61e898a7d7daa7d33d0365e"
+  },
+  {
+   "key": "roster/doc-frank/attires/attire2/dome-fix/model-dome-glass-v1-thindisc.glb",
+   "asset": "roster__doc-frank__attires__attire2__dome-fix__model-dome-glass-v1-thindisc.glb",
+   "size": 76117932,
+   "sha256": "9ffa24e9ecba1c4c4361ff1676af26e866baa8cd2f158bf0f8977df8fd4084f3"
+  },
+  {
+   "key": "roster/doc-frank/attires/attire2/dome-fix/model-dome-glass-v4.glb",
+   "asset": "roster__doc-frank__attires__attire2__dome-fix__model-dome-glass-v4.glb",
+   "size": 76321008,
+   "sha256": "3ec991a9de8a21564c5dcfea576dfa05f71cc6b1c8e9e16097a1489a4c42843c"
+  },
+  {
+   "key": "roster/doc-frank/attires/attire2/dome-fix/model-dome-glass-v5.glb",
+   "asset": "roster__doc-frank__attires__attire2__dome-fix__model-dome-glass-v5.glb",
+   "size": 76449144,
+   "sha256": "d682a945ecdc563722e89d2c56ed6b8ca273f96949815f411f84ec2e0588f861"
+  },
+  {
+   "key": "roster/doc-frank/attires/attire2/dome-fix/model-dome-glass.glb",
+   "asset": "roster__doc-frank__attires__attire2__dome-fix__model-dome-glass.glb",
+   "size": 76140792,
+   "sha256": "f37f31a8f7ca7c73054eb8f6f74843f622697a9f1112f08b845eaffb18b1cec9"
+  },
+  {
+   "key": "roster/doc-frank/attires/attire2/transformed/model.glb",
+   "asset": "roster__doc-frank__attires__attire2__transformed__model.glb",
+   "size": 41797212,
+   "sha256": "e3e410c260604029c5b4038f721425b3e5ef5bbf31ec5ae05e0aa609fdc23c84"
+  },
+  {
+   "key": "roster/doc-frank/attires/attire3/transformed/model.glb",
+   "asset": "roster__doc-frank__attires__attire3__transformed__model.glb",
+   "size": 40614276,
+   "sha256": "abd84d78c7364a4046c6017e089169b1fedb4d433a2fe1f73b0b685d51367dcb"
+  },
+  {
+   "key": "roster/doc-frank/attires/attire4/base/model.glb",
+   "asset": "roster__doc-frank__attires__attire4__base__model.glb",
+   "size": 21524900,
+   "sha256": "9e0fe2537b830563d369be154af22542efdd31c45665d2ce91833ea8333d0628"
+  },
+  {
+   "key": "roster/doc-frank/attires/attire4/transformed/model.glb",
+   "asset": "roster__doc-frank__attires__attire4__transformed__model.glb",
+   "size": 22946508,
+   "sha256": "4dcaba89222d05cf8f3eaedbd925247d6b655e97ff13a610389d7e14ed4bb2e3"
+  },
+  {
+   "key": "roster/negativo/attires/attire1/source/negativo-a1-refit.glb",
+   "asset": "roster__negativo__attires__attire1__source__negativo-a1-refit.glb",
+   "size": 18874032,
+   "sha256": "9eab7cc949194d6e1188ead760699a8c401f6dd539d78f795173037373aea8dc"
+  },
+  {
+   "key": "roster/negativo/attires/attire2/source/negativo-a2-rigged.glb",
+   "asset": "roster__negativo__attires__attire2__source__negativo-a2-rigged.glb",
+   "size": 35072400,
+   "sha256": "a7394d54e752027e81c1361c409de270d6515afb5935ac1199ef130aa6e7edd7"
+  },
+  {
+   "key": "roster/pantera/attires/snow-leopard/pantera-snow-leopard.glb",
+   "asset": "roster__pantera__attires__snow-leopard__pantera-snow-leopard.glb",
+   "size": 7434348,
+   "sha256": "a1b7f7fadaf18cd187dad0ca30fbb41c6c66aee7a0b839b0d67f03254aa9e6ca"
+  },
+  {
+   "key": "roster/parvati/attires/attire1/model-rigged.glb",
+   "asset": "roster__parvati__attires__attire1__model-rigged.glb",
+   "size": 41319032,
+   "sha256": "73e2baa3e0a795b79731854d6f9219ea6df94219eaea14ffcf5745e1b51cfd51"
+  },
+  {
+   "key": "roster/phantom/attires/attire1/model.glb",
+   "asset": "roster__phantom__attires__attire1__model.glb",
+   "size": 21957208,
+   "sha256": "0d3c31ee4512037bc9fd77a19a45832d1cbbddd13390d37ac3e5a57ddb4fa40b"
+  },
+  {
+   "key": "roster/purplerain/attires/attire1/model-rerig.glb",
+   "asset": "roster__purplerain__attires__attire1__model-rerig.glb",
+   "size": 21899588,
+   "sha256": "f8fae3a27f587f46898332b71e64ae4cb091eabafde26d4bc10b2fe7d44c7264"
+  },
+  {
+   "key": "roster/purplerain/attires/attire1/model.glb",
+   "asset": "roster__purplerain__attires__attire1__model.glb",
+   "size": 18982308,
+   "sha256": "d3a3f586a443d1700f769222081b770322aa9653ffbe0deff4aa8a111cd5bd54"
+  },
+  {
+   "key": "roster/sakura/attires/attire1/model.glb",
+   "asset": "roster__sakura__attires__attire1__model.glb",
+   "size": 19347460,
+   "sha256": "2884219281286772549e605f916450ed750bfe10576807a49836fa8005975bbd"
+  },
+  {
+   "key": "roster/sam-ur-a1/attires/attire1/model.glb",
+   "asset": "roster__sam-ur-a1__attires__attire1__model.glb",
+   "size": 7449416,
+   "sha256": "c79fac0bbcfa4f8e187c3d576afa3307a9c94c026dda0c443ff0dfcda9a50178"
+  },
+  {
+   "key": "roster/silvertongue/attires/attire1/model.glb",
+   "asset": "roster__silvertongue__attires__attire1__model.glb",
+   "size": 23872756,
+   "sha256": "4d68802b273697d254836e93417f8a314efc280caf0c81baa67d906b79bf3645"
+  },
+  {
+   "key": "roster/silvertongue/attires/attire2/model-improved.glb",
+   "asset": "roster__silvertongue__attires__attire2__model-improved.glb",
+   "size": 36078536,
+   "sha256": "66d317a18bc135b42025d195249c0dd8188d37ed597d413bb451f2db38fa49a5"
+  },
+  {
+   "key": "roster/silvertongue/attires/attire2/model.glb",
+   "asset": "roster__silvertongue__attires__attire2__model.glb",
+   "size": 23430592,
+   "sha256": "8061498aab9f4b128216b1d6c8207d24ff861dd515e55b7ed0dbdd77b90bda66"
+  },
+  {
+   "key": "roster/silvertongue/attires/spy-debut/silvertongue-spy-debut.glb",
+   "asset": "roster__silvertongue__attires__spy-debut__silvertongue-spy-debut.glb",
+   "size": 14971672,
+   "sha256": "25a886b1ce6cc37e053c97a270ccd90b2330cc691f9746b587704490bda8bbae"
+  },
+  {
+   "key": "roster/skull/attires/attire1/model.glb",
+   "asset": "roster__skull__attires__attire1__model.glb",
+   "size": 24678364,
+   "sha256": "94c8ef788267cc790caa8eac517a279bd0c62f84eb061298b348acfe2904542d"
+  },
+  {
+   "key": "roster/slice/attires/attire1/model.glb",
+   "asset": "roster__slice__attires__attire1__model.glb",
+   "size": 18884292,
+   "sha256": "6cddd2c9697aead7abb4a7c61dd36e9f003bafad14fd9fd6d0e49ff851074337"
+  },
+  {
+   "key": "roster/slice/attires/attire2/model.glb",
+   "asset": "roster__slice__attires__attire2__model.glb",
+   "size": 52403356,
+   "sha256": "af51f6473e7764ac6f832d19a3e6a38ef89f924e3a1511f43c3b7531a01d94b0"
+  },
+  {
+   "key": "roster/star/attires/attire1/model.glb",
+   "asset": "roster__star__attires__attire1__model.glb",
+   "size": 19717000,
+   "sha256": "525aa5fd61932417f58794d2539eec4dfac85f719a916e7bd37cb6f768677756"
+  },
+  {
+   "key": "roster/star/attires/attire2/model.glb",
+   "asset": "roster__star__attires__attire2__model.glb",
+   "size": 18441084,
+   "sha256": "6f74bdff1ad7d888ec3f34fb76ee35a488b4c76c52df64f639e791ad10598394"
+  },
+  {
+   "key": "roster/star/attires/attire3/model.glb",
+   "asset": "roster__star__attires__attire3__model.glb",
+   "size": 18649660,
+   "sha256": "c88f6ffc6821aa875576eb431bed0ec95d34677789c51325375483421271bb0e"
+  },
+  {
+   "key": "roster/star/attires/attire5/model-improved.glb",
+   "asset": "roster__star__attires__attire5__model-improved.glb",
+   "size": 34875032,
+   "sha256": "ed953ffb1afba46b4d4d6aadc8fe0bef1da93d50f112c878aa659d021cfa023b"
+  },
+  {
+   "key": "roster/star/attires/attire5/model.glb",
+   "asset": "roster__star__attires__attire5__model.glb",
+   "size": 19077152,
+   "sha256": "f65e7f59f95d3b6b106a5b8532e2ad9f800d9b605870557b3ab38a62641befe1"
+  },
+  {
+   "key": "roster/thor/attires/attire1/model.glb",
+   "asset": "roster__thor__attires__attire1__model.glb",
+   "size": 21459020,
+   "sha256": "85db09049adace5b6af3a3c178372582f1769972744d5c3b4d7cd78b3c8b3ffb"
+  },
+  {
+   "key": "roster/thor/attires/attire2/model.glb",
+   "asset": "roster__thor__attires__attire2__model.glb",
+   "size": 24147212,
+   "sha256": "296a2a441e5f44acdbee1a82e1694f6aadbcf533cda5267ea4cc29f2472a8615"
+  },
+  {
+   "key": "roster/tsuyu-asui/attires/attire1/model-rigged-textured.glb",
+   "asset": "roster__tsuyu-asui__attires__attire1__model-rigged-textured.glb",
+   "size": 7726484,
+   "sha256": "22ed7de0f783923e5dda118c4ebbd30b0240b805bc764f2d9575de4dcdb9e435"
+  },
+  {
+   "key": "roster/vainabel/attires/attire2/model-rigged.glb",
+   "asset": "roster__vainabel__attires__attire2__model-rigged.glb",
+   "size": 29067968,
+   "sha256": "5351f764ac6942728da0338809c1256d317345d0db617cc203de9e566c84bac1"
+  },
+  {
+   "key": "roster/vainabel/attires/attire2/model.glb",
+   "asset": "roster__vainabel__attires__attire2__model.glb",
+   "size": 19846172,
+   "sha256": "6fafebf194abcbb3542555a9263d98c7cdb67343532e15edd47e0810542e5552"
+  },
+  {
+   "key": "roster/vainabel/attires/attire3/model-rigged.glb",
+   "asset": "roster__vainabel__attires__attire3__model-rigged.glb",
+   "size": 28999692,
+   "sha256": "9c41e8697cb54ef80febd5e7c6d1dd3e4f50d5094ad0765d3dccd7d5a723a38b"
+  },
+  {
+   "key": "roster/vainabel/attires/attire3/model.glb",
+   "asset": "roster__vainabel__attires__attire3__model.glb",
+   "size": 19614052,
+   "sha256": "49bf980a8540ee10f52812492167236f558ec6aa14cbb128ad9c7c38e1381c41"
+  },
+  {
+   "key": "roster/vainabel/attires/attire4/model-rigged.glb",
+   "asset": "roster__vainabel__attires__attire4__model-rigged.glb",
+   "size": 29990708,
+   "sha256": "8009f38e14760eb7b70dd78557ecbb0ce29b108df6c0f455d0c144147768ac49"
+  },
+  {
+   "key": "roster/vega/attires/attire1/model.glb",
+   "asset": "roster__vega__attires__attire1__model.glb",
+   "size": 1624744,
+   "sha256": "70aabf7e4a22962173887921ad7875d950da7ebb348a38cf66539c598c894207"
+  },
+  {
+   "key": "roster/vixen/attires/attire1/model-rigged-noplane.glb",
+   "asset": "roster__vixen__attires__attire1__model-rigged-noplane.glb",
+   "size": 39136632,
+   "sha256": "4a65068a0e209604ec79f630c5ce2694124d2afb2d8897c53b061e9404540465"
+  },
+  {
+   "key": "roster/waterfall/attires/attire1/model-rigged.glb",
+   "asset": "roster__waterfall__attires__attire1__model-rigged.glb",
+   "size": 17316348,
+   "sha256": "d4e3942d531a40c9ac409de05c73f1a49c9844e52c13ea2261c6769d6e73a1b4"
+  },
+  {
+   "key": "roster/waterfall/attires/attire1/model.glb",
+   "asset": "roster__waterfall__attires__attire1__model.glb",
+   "size": 18028208,
+   "sha256": "8e789c3cc68599dd465143ec942918a70a6419eb9f38cb1ae83e2b5688d286bb"
+  },
+  {
+   "key": "roster/yukihyo/attires/attire2/source/yukihyo-a2-bobcat-pride-rigged.glb",
+   "asset": "roster__yukihyo__attires__attire2__source__yukihyo-a2-bobcat-pride-rigged.glb",
+   "size": 33257868,
+   "sha256": "4570cd6587c59e31fbb87eb63fa582aeb33826e0be57fcc5472d7b940f3466da"
+  },
+  {
+   "key": "roster/yukihyo/attires/attire3/source/yukihyo-a3-tiger-king-rigged.glb",
+   "asset": "roster__yukihyo__attires__attire3__source__yukihyo-a3-tiger-king-rigged.glb",
+   "size": 32100272,
+   "sha256": "f7e18f0f6596dce324c51b20e3de63421abdd3160971103b749e38f2ff064b76"
+  },
+  {
+   "key": "roster/zafina/attires/butterfly-default/mariposa-butterfly-default.glb",
+   "asset": "roster__zafina__attires__butterfly-default__mariposa-butterfly-default.glb",
+   "size": 5840076,
+   "sha256": "a248ef32fc124cedb4cc89891516fad0777a06af71a271f9e88b09faac2c02c9"
+  },
+  {
+   "key": "roster/zafina/attires/golden-pharaoh/zafina-golden-pharaoh.glb",
+   "asset": "roster__zafina__attires__golden-pharaoh__zafina-golden-pharaoh.glb",
+   "size": 6271368,
+   "sha256": "192339e515f41aeb3eb6a0afbd04a4610bd003207cb0af691c363768dd94d4bf"
+  },
+  {
+   "key": "roster/zangief/attires/attire1/model-rigged.glb",
+   "asset": "roster__zangief__attires__attire1__model-rigged.glb",
+   "size": 10082112,
+   "sha256": "4d05cdce4e6cf421a3d721e4647e5e44ea339f7166c28c11e16b5808ea8e3681"
+  },
+  {
+   "key": "roster/zangief/attires/attire1/model.glb",
+   "asset": "roster__zangief__attires__attire1__model.glb",
+   "size": 20090176,
+   "sha256": "1649dc8296f27460527e9025e14dca0741b14fc0fc1b2db012b9fbeb8e3b258e"
+  },
+  {
+   "key": "roster/zen/oversoul/model-rigged.glb",
+   "asset": "roster__zen__oversoul__model-rigged.glb",
+   "size": 21025188,
+   "sha256": "a26c2494f907a06e90227705a460b08810eaf32d18bd4b5ae5b4fd6900426bfc"
+  },
+  {
+   "key": "roster/zen/spirit/model-rigged.glb",
+   "asset": "roster__zen__spirit__model-rigged.glb",
+   "size": 17786892,
+   "sha256": "21d9392cf02f29e7ef3542f0a07f7a6abe98b4b63ce007a21e6c05f96248a3fb"
+  },
+  {
+   "key": "roster/zen/tentacle/model-rigged.glb",
+   "asset": "roster__zen__tentacle__model-rigged.glb",
+   "size": 21280944,
+   "sha256": "b1f22d343c494daa6f74d4c65574b12544fca2b9d0836f63bfa151a18d23e301"
+  },
+  {
+   "key": "roster/zui/attires/attire1/model.glb",
+   "asset": "roster__zui__attires__attire1__model.glb",
+   "size": 20699580,
+   "sha256": "c51e0d40ac955c39573a3edba9a40750f83c5341299bfc1072eca5f8c4c09b44"
+  },
+  {
+   "key": "roster/zui/attires/attire2/model.glb",
+   "asset": "roster__zui__attires__attire2__model.glb",
+   "size": 22441284,
+   "sha256": "bb505396043dc9190d5e564cdadee7d308b1a9ac070dd2969e4cfe7fb7c0ba88"
+  },
+  {
+   "key": "roster/zui/imports/base_v1.glb",
+   "asset": "roster__zui__imports__base_v1.glb",
+   "size": 23311408,
+   "sha256": "9b5ff2a1086b837c0bf652ac245d74767fbc23516ed211039cfbe7a727941349"
+  }
+ ]
+}
