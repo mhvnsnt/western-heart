@@ -1,0 +1,152 @@
+{
+ "bank": "nina_ttt2",
+ "fighter": "nina",
+ "tool": "tools/anim/ttt2_bank_rows.py",
+ "join_records": 861,
+ "join_mapped": 861,
+ "join_unmapped": [],
+ "grid_valid_records": 861,
+ "slot_sources": {
+  "t3_heavy": 245,
+  "t3_jump_back": 153,
+  "t3_jump_fwd": 152,
+  "t3_jump_up": 150,
+  "t3_neutral": 444
+ },
+ "slots_without_grid_record": [],
+ "row_set": 126,
+ "fields_unlocated": [],
+ "unique_entries": 74,
+ "pack_rows": 119,
+ "hit_rows": 119,
+ "missing": {
+  "48": "grid row 48 withheld: the legacy row-48 class stamp (roster-100 owner ruling pending); this record is not an attack (first_active 0)",
+  "247": "inter-frame jump check failed: RightHand jumps 1.56 m on frame 16",
+  "248": "inter-frame jump check failed: LeftFoot jumps 1.50 m on frame 16",
+  "258": "inter-frame jump check failed: LeftFoot jumps 1.60 m on frame 56",
+  "642": "decode failed: index out of range",
+  "644": "decode failed: index out of range",
+  "694": "inter-frame jump check failed: LeftToeBase jumps 1.56 m on frame 38",
+  "721": "decode failed: index out of range"
+ },
+ "presentation_gate_failures": {
+  "120": "RightToeBase 0.09 m below the floor on frame 2 (mannequin proportions)",
+  "121": "LeftToeBase 0.31 m below the floor on frame 0 (mannequin proportions)",
+  "148": "does not start upright",
+  "246": "does not start upright",
+  "249": "RightToeBase 0.68 m below the floor on frame 0 (mannequin proportions)",
+  "250": "RightToeBase 0.61 m below the floor on frame 0 (mannequin proportions)",
+  "251": "does not start upright",
+  "254": "does not start upright",
+  "256": "does not start upright",
+  "257": "does not start upright",
+  "259": "does not start upright",
+  "260": "RightFoot 0.11 m below the floor on frame 59 (mannequin proportions)",
+  "261": "RightToeBase 0.11 m below the floor on frame 1 (mannequin proportions)",
+  "263": "does not start upright",
+  "264": "does not start upright",
+  "265": "LeftToeBase 0.77 m below the floor on frame 0 (mannequin proportions)",
+  "267": "RightToeBase 0.09 m below the floor on frame 8 (mannequin proportions)",
+  "269": "does not start upright",
+  "271": "does not start upright",
+  "273": "does not start upright",
+  "275": "does not start upright",
+  "289": "LeftToeBase 0.27 m below the floor on frame 0 (mannequin proportions)",
+  "296": "LeftToeBase 0.74 m below the floor on frame 0 (mannequin proportions)",
+  "398": "does not start upright",
+  "433": "RightToeBase 0.12 m below the floor on frame 0 (mannequin proportions)",
+  "614": "RightToeBase 0.09 m below the floor on frame 26 (mannequin proportions)",
+  "615": "RightToeBase 0.09 m below the floor on frame 26 (mannequin proportions)",
+  "616": "RightToeBase 0.09 m below the floor on frame 26 (mannequin proportions)",
+  "617": "RightToeBase 0.09 m below the floor on frame 26 (mannequin proportions)",
+  "618": "RightToeBase 0.09 m below the floor on frame 26 (mannequin proportions)",
+  "619": "RightToeBase 0.09 m below the floor on frame 26 (mannequin proportions)",
+  "620": "RightToeBase 0.09 m below the floor on frame 26 (mannequin proportions)",
+  "621": "RightToeBase 0.09 m below the floor on frame 68 (mannequin proportions)",
+  "623": "LeftToeBase 0.11 m below the floor on frame 14 (mannequin proportions)",
+  "624": "LeftToeBase 0.11 m below the floor on frame 14 (mannequin proportions)",
+  "625": "LeftToeBase 0.11 m below the floor on frame 14 (mannequin proportions)",
+  "626": "LeftToeBase 0.11 m below the floor on frame 14 (mannequin proportions)",
+  "630": "LeftToeBase 0.11 m below the floor on frame 14 (mannequin proportions)",
+  "631": "LeftToeBase 0.11 m below the floor on frame 14 (mannequin proportions)",
+  "632": "LeftToeBase 0.11 m below the floor on frame 14 (mannequin proportions)",
+  "633": "LeftToeBase 0.11 m below the floor on frame 14 (mannequin proportions)",
+  "639": "does not start upright",
+  "640": "does not start upright",
+  "641": "RightToeBase 0.09 m below the floor on frame 2 (mannequin proportions)",
+  "651": "RightToeBase 0.11 m below the floor on frame 31 (mannequin proportions)",
+  "653": "RightToeBase 0.09 m below the floor on frame 11 (mannequin proportions)",
+  "654": "RightToeBase 0.09 m below the floor on frame 11 (mannequin proportions)",
+  "655": "RightToeBase 0.09 m below the floor on frame 11 (mannequin proportions)",
+  "656": "RightToeBase 0.09 m below the floor on frame 11 (mannequin proportions)",
+  "658": "RightToeBase 0.09 m below the floor on frame 9 (mannequin proportions)",
+  "659": "RightToeBase 0.09 m below the floor on frame 9 (mannequin proportions)",
+  "660": "RightToeBase 0.09 m below the floor on frame 9 (mannequin proportions)",
+  "661": "RightToeBase 0.09 m below the floor on frame 9 (mannequin proportions)",
+  "662": "RightToeBase 0.10 m below the floor on frame 97 (mannequin proportions)",
+  "663": "RightToeBase 0.10 m below the floor on frame 97 (mannequin proportions)",
+  "664": "RightToeBase 0.10 m below the floor on frame 97 (mannequin proportions)",
+  "665": "RightToeBase 0.10 m below the floor on frame 97 (mannequin proportions)",
+  "666": "RightToeBase 0.10 m below the floor on frame 97 (mannequin proportions)",
+  "667": "RightToeBase 0.10 m below the floor on frame 97 (mannequin proportions)",
+  "668": "RightToeBase 0.10 m below the floor on frame 39 (mannequin proportions)",
+  "669": "RightToeBase 0.10 m below the floor on frame 27 (mannequin proportions)",
+  "670": "RightToeBase 0.10 m below the floor on frame 27 (mannequin proportions)",
+  "673": "RightToeBase 0.09 m below the floor on frame 12 (mannequin proportions)",
+  "682": "LeftToeBase 0.08 m below the floor on frame 65 (mannequin proportions)",
+  "683": "LeftToeBase 0.08 m below the floor on frame 0 (mannequin proportions)",
+  "691": "LeftToeBase 0.08 m below the floor on frame 17 (mannequin proportions)",
+  "693": "LeftToeBase 0.31 m below the floor on frame 0 (mannequin proportions)",
+  "715": "RightToeBase 0.09 m below the floor on frame 68 (mannequin proportions)",
+  "717": "LeftToeBase 0.11 m below the floor on frame 14 (mannequin proportions)",
+  "720": "RightToeBase 0.09 m below the floor on frame 2 (mannequin proportions)"
+ },
+ "sanity": {
+  "first_gt_last": 0,
+  "first_gt_stream": 6,
+  "word_classes": {
+   "u": 68,
+   "m": 27,
+   "h": 12,
+   "t": 3,
+   "l": 9
+  }
+ },
+ "buttons_assigned": {
+  "683": {
+   "move": "Thrmv_B2_00i",
+   "button": 10,
+   "via": "grab record"
+  }
+ },
+ "move_rows_stamped": [
+  {
+   "slot": "t3_heavy",
+   "move_row": 245
+  },
+  {
+   "slot": "t3_jump_back",
+   "move_row": 153
+  },
+  {
+   "slot": "t3_jump_fwd",
+   "move_row": 152
+  },
+  {
+   "slot": "t3_jump_up",
+   "move_row": 150
+  },
+  {
+   "slot": "t3_neutral",
+   "move_row": 444
+  }
+ ],
+ "pack_bytes": 2837298,
+ "hit_bytes": 3817,
+ "sha256": {
+  "data004-decoded.bin": "18b18d0ff2356219e9fac852eaa48f6b0a839479ea41f6d4b94069b5f86b2b21",
+  "data005-decoded.bin": "a7fc54d76b204056a9d45abc63c3e114d38e0fe253fe8e3922ccf9f2779afdfc",
+  "data006-decoded.bin": "fa486948e1fced19116a5304a9779f2b04bede2328a6c43ff4818a68913ebdb2"
+ },
+ "elapsed_s": 247.0
+}
