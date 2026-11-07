@@ -92,6 +92,20 @@ Used, per stage:
   `docs/proof/2026-11-07/fill3-ttt2/`.
 - Row 48 withheld in all banks (owner ruling pending).
 
+## Directory naming / collision rule
+
+`game/assets/anim/t3/` already holds Tekken 3 banks at several
+character names (anna, bryan, eddy, jin, julia, kuma, law, nina, ogre,
+paul, yoshimitsu, bosconovitch, heihachi, hwoarang, armorking) — live,
+bound, complete banks the game serves today. A TTT2 bank never
+overwrites one: where the lowercase block name collides with an
+existing bank dir, the TTT2 bank lands inert at `<name>_ttt2/`
+(unbound; binding a fighter to it is a separate step, as it was for
+roger/jun). ANNA's TTT2 bank therefore lands as `anna_ttt2` in a later
+batch — her incomplete pack (bank-1 table gap) must not replace the
+complete T3 anna bank that serves Torch (game-unit-tests caught
+exactly this in batch 1's first CI run: 347 torch-referenced rows).
+
 ## Per-bank counts
 
 | bank | clips baked | clips gate-skipped | slot gaps | pack rows | hit rows | rows missing |
@@ -99,10 +113,9 @@ Used, per stage:
 | alex | 12 | 5 | 3 | 320 | 332 | 35 |
 | alisa | 14 | 4 | 2 | 463 | 468 | 30 |
 | angel | 13 | 5 | 2 | 290 | 288 | 31 |
-| anna | 5 | 4 | 11 | 78 | 77 | 302 |
 | armor_king | 12 | 6 | 2 | 342 | 345 | 24 |
 | asuka | 13 | 5 | 2 | 319 | 330 | 35 |
 | bob_satsuma | 4 | 2 | 14 | 36 | 38 | 6 |
-| **batch 1 total** | **73** | **31** | **36** | **1848** | **1878** | **463** |
+| **batch 1 total** | **68** | **27** | **25** | **1770** | **1801** | **161** |
 
 (Remaining banks land in follow-up batches of this series; this table grows with each batch.)
