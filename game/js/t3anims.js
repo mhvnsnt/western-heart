@@ -1707,7 +1707,7 @@ const ARM_CORR_SHOULDER_MIN_DEG = 25;
 const ARM_CORR_JOINTS = ['LeftShoulder', 'LeftArm', 'LeftForeArm', 'LeftHand',
   'RightShoulder', 'RightArm', 'RightForeArm', 'RightHand'];
 const ARM_CHAIN = ['Shoulder', 'Arm', 'ForeArm', 'Hand']; // top-down per side
-function estimateArmCorr(rig, skel, stanceClip, probeClip, THREE) {
+function estimateArmCorr(rig, skel, stanceClip, probeClip, THREE, shoulderGateDeg) {
   // Returns undefined when the stance data needed is not in this
   // call (defer), null when the (bank, rig) pair measures clean,
   // else { jointName: thetaRad } for the joints over their gate.
@@ -1821,7 +1821,14 @@ function estimateArmCorr(rig, skel, stanceClip, probeClip, THREE) {
         return circMean(angs);
       };
       const base = errAt(0);
-      const gate = (role === 'Shoulder' ? ARM_CORR_SHOULDER_MIN_DEG : ARM_CORR_MIN_DEG) * Math.PI / 180;
+      // Shoulder gate: the raised shoulder gate exists because an
+      // uncorrected shoulder twist entangles with the torso-match
+      // split on the bank's own frame. When a spine-pitch
+      // correction is active for this (bank, rig) pair, the torso
+      // frame has been deliberately re-pitched by this engine, so
+      // the shoulder's residual is dominated by that reframing —
+      // the caller passes the standard gate for that case.
+      const gate = (role === 'Shoulder' ? (shoulderGateDeg || ARM_CORR_SHOULDER_MIN_DEG) : ARM_CORR_MIN_DEG) * Math.PI / 180;
       if (Math.abs(base) < gate) continue;
       // Bisect around th0 = -base (the twist shift tracks theta
       // ~1:1 near the solution).
@@ -1868,13 +1875,21 @@ function estimateArmCorr(rig, skel, stanceClip, probeClip, THREE) {
    gunjack's -13.5 deg is owner-approved and stays untouched.
    When engaged, one scalar counter-pitch theta is bisected
    through the real loop so the target pitch becomes the gate;
-   in the frame loop theta is spread
-   evenly over the source spine joints (Spine, Spine1, Spine2,
-   Chest, Neck) as world-frame rotations about the bank's left
-   axis, applied while G composes so children inherit. Acting
-   variation around the constant is preserved. 't7:' skeletons
-   are EXEMPT (head-fix precedent: their stance pitches are
-   authored acting, e.g. T7 King's side-on guard).
+   in the frame loop theta is spread evenly over the source
+   spine joints (Spine, Spine1, Spine2, Chest, Neck) as
+   world-frame rotations about the bank's left axis, applied
+   while G composes so children inherit. The arm constants are
+   estimated AFTER the spine constant, from a probe built with
+   the correction applied, so they are tuned in the frame the
+   clips will play in; and while a spine correction is active
+   the Shoulder arm gate uses the standard 12 deg (the raised
+   25 deg shoulder gate guards the torso-match split on the
+   bank's own frame — once this layer re-pitches the torso,
+   the shoulder residual is dominated by the reframing, not
+   the split). Acting variation around the constant is
+   preserved. 't7:' skeletons are EXEMPT (head-fix precedent:
+   their stance pitches are authored acting, e.g. T7 King's
+   side-on guard).
    ============================================================ */
 const SPINE_CORR_GATE_DEG = 5;
 const SPINE_CORR_JOINTS = ['Spine', 'Spine1', 'Spine2', 'Chest', 'Neck'];
@@ -2355,37 +2370,43 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
     }
     return rc;
   };
+  // SPINE-PITCH NORMALIZATION runs FIRST: estimate this (bank,
+  // rig) pair's counter-pitch once, from the stance probed through
+  // the real loop, and cache it on the per-model entry (it depends
+  // on the rig's rest pose). The Hips->Head line it measures does
+  // not involve the arm joints, so it can be estimated before the
+  // arm constants exist. 't7:' skeletons are exempt (see
+  // estimateSpineCorr).
+  let spineCorr = cached ? cached.spineCorr : undefined;
+  if (spineCorr === undefined && !layerActive && !String(bankId).startsWith('t7:') && t3Clips.stance &&
+      (names.includes('stance') || (cached && cached.out.stance))) {
+    const est = estimateSpineCorr(rig, skel, t3Clips.stance, (th) => buildClip('stance', null, th), THREE);
+    if (est !== undefined) {
+      spineCorr = est;
+      if (est) console.log(`[WH-T3] bank '${bankId}': spine-pitch constant ${(est * 180 / Math.PI).toFixed(1)}° measured in its stance on this rig — normalized out of every clip (full-model audit 2026-11-07)`);
+    }
+  }
   // ARM-FRAME NORMALIZATION: estimate this (bank, rig) pair's arm
   // constants once, from the stance (probe = the stance built once
-  // uncorrected through the real loop above, or the uncorrected
-  // stance an earlier call already cached), and cache them on the
-  // per-model entry — they depend on the rig's rest pose, so they
-  // cannot live on the skeleton the way the head constant does.
+  // through the real loop above WITH the spine correction applied,
+  // so the constants are tuned in the frame the clips will actually
+  // play in — the spine joints are ancestors of the shoulders, and
+  // constants tuned in the uncorrected frame would leave a residual
+  // shoulder twist), and cache them on the per-model entry — they
+  // depend on the rig's rest pose, so they cannot live on the
+  // skeleton the way the head constant does.
   let armCorr = cached ? cached.armCorr : undefined;
   if (armCorr === undefined && !layerActive && t3Clips.stance &&
       (names.includes('stance') || (cached && cached.out.stance))) {
-    const probe = (cached && cached.out.stance) || buildClip('stance', null);
+    const probe = buildClip('stance', null, spineCorr || 0);
     if (probe) {
-      const est = estimateArmCorr(rig, skel, t3Clips.stance, probe, THREE);
+      const est = estimateArmCorr(rig, skel, t3Clips.stance, probe, THREE,
+        spineCorr ? ARM_CORR_MIN_DEG : undefined);
       if (est !== undefined) {
         armCorr = est;
         if (est) console.log(`[WH-T3] bank '${bankId}': arm-frame constants measured in its stance — normalized out of every clip (arm audit 2026-11-07): ` +
           Object.entries(est).map(([j, th]) => `${j} ${(th * 180 / Math.PI).toFixed(1)}°`).join(', '));
       }
-    }
-  }
-  // SPINE-PITCH NORMALIZATION: estimate this (bank, rig) pair's
-  // counter-pitch once, from the stance probed through the real
-  // loop with the arm constants applied, and cache it on the
-  // per-model entry (it depends on the rig's rest pose). 't7:'
-  // skeletons are exempt (see estimateSpineCorr).
-  let spineCorr = cached ? cached.spineCorr : undefined;
-  if (spineCorr === undefined && !layerActive && !String(bankId).startsWith('t7:') && t3Clips.stance &&
-      (names.includes('stance') || (cached && cached.out.stance))) {
-    const est = estimateSpineCorr(rig, skel, t3Clips.stance, (th) => buildClip('stance', armCorr || null, th), THREE);
-    if (est !== undefined) {
-      spineCorr = est;
-      if (est) console.log(`[WH-T3] bank '${bankId}': spine-pitch constant ${(est * 180 / Math.PI).toFixed(1)}° measured in its stance on this rig — normalized out of every clip (full-model audit 2026-11-07)`);
     }
   }
   for (const action of names) {
