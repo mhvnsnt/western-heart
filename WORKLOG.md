@@ -4395,3 +4395,97 @@ Branch `claude/cs-phase3-morph-targets`, draft PR #1489 (stacked on #1486). Orde
 **Still owed:** throw pair-binding live re-check; the remaining 178 wireable clips (kmb1 Warden kit next); the `dwup00` trigger-role clip choice; P3Dp audio wiring.
 
 **Deletions:** none. 11 files added, 3 modified; the only deleted line is the fighter.js import line replaced.
+
+## 2026-11-08 — HeartMind rename application: CONFIRMED rows only (RENAME LANE)
+
+**Map:** `~/workspace/western-heart-audit/HEARTMIND-RENAME-MAP.md` (§§0–§5).
+**What:** applied the map's 25 CONFIRMED rows (14 DW + 6 UR + 5 Redux) — nothing
+else. No PROVISIONAL or PROPOSED name was applied anywhere; no canon name was
+invented.
+**Row verdicts:** 10 already in code (UR: 31 wired movesets, 60 fps bar,
+Free Mode rule, Glen Kluger → Cain Elias, UR story names dropped; Redux: Mod
+Manager / Editor / roster-lib / Source/editor / Source/web verified on disk
+with SHA-256 sums matching the author); 14 waits on decode (all DW: 4 boss
+bodies, 6 wave-echo archetypes, 4 stage texts — names already canon in code,
+decoded data not on disk yet); 1 NOT VERIFIED in code and flagged, not
+claimed (UR region damage — no per-region damage implementation found at HEAD;
+see the application doc §2).
+**Code change (1 file, 1 line):** `game/js/mainmenu.js:55` — the HEART AND
+MIND WITHIN menu description no longer says "Tekken 5 Devil Within style"
+(the mode's canon name is HeartMind, map §0/§5.3; owner law: no source-game
+names in UI). Only player-visible string found that used a source proper noun
+where a CONFIRMED canon name exists. "Devil" in code comments left alone
+(provenance, not names). DIABLO's player-visible "Devil" strings
+(roster title 'The Devil Soul', Attire 2 label 'ATTIRE 2 · DEVIL GOD') left
+alone — no CONFIRMED replacement exists; they are Jay calls (#14).
+**Flags for the coordinator:** map `mon01–06` filenames match no file in
+`dw-motion-index.json` (real names: `mon_power1/2`, `mon_speed1`,
+`mon_standard1/2`, `mon_tricky1`); map §5.3 calls Diablo "one of the nine
+souls" but `NINE-SOULS-CANON.md` lists the nine without Diablo.
+**Deliverables:** `~/workspace/western-heart-audit/HEARTMIND-RENAME-APPLICATION.md`
+(per-row verdicts + grep pass) and `HEARTMIND-JAY-CALLS.md` (15 Jay calls).
+**Verification:** `node --check` on the edited file (pass); no test covers
+the menu description string (no test references `mainmenu.js`); full suite
+runs in CI on the PR. `ui_sources.json` already lists `game/js/mainmenu.js`,
+so the ui-sources gate is unaffected.
+**Deletions:** none.
+**How this commit was built:** no local clone was used — the HEAD tree is
+~14.3 GB and the workspace disk quota blocks a full clone (two attempts
+failed "Disk quota exceeded"). Built via the Git Data API from verified tree
+SHAs per the NO-SPARSE-COMMIT LAW: base commit `3334ebf`, base tree
+`52e2204aca2a1ca5ce27a2b06a453069a36de3b1`; `mainmenu.js` HEAD blob
+`73e6ab642b967a1aed522e1111c637296460dbef` hash-verified before editing.
+
+## 2026-11-08 — HeartMind rename application: decode rows landed (RENAME LANE, post-#1647)
+
+**Map:** `HEARTMIND-RENAME-MAP.md` (§§0–§5) — the 14 DW rows PR #1644 left
+"waits on decode" (4 boss bodies, 6 wave-echo archetypes, 4 stage texts).
+PR #1647 landed the Devil Within real-bytes decode (merge `14a5020c`), so
+the gating fact — the decoded data being on disk — is now verifiable.
+**What:** verified each of the 14 rows against the landed payload by
+measurement, then applied them. Nothing invented; the NOT VERIFIED
+UR region-damage row untouched; DIABLO's Devil strings untouched (Jay
+call, no CONFIRMED replacement).
+**Row verdicts — 14/14 APPLIED (data landed, canon names bound):**
+- Boss bodies (4): `gym_init_obj_boss1/2/3/5.dat` measured in
+  `teardown/tekken5/dw_measurements.json` (78/78/111/111 bones, 1 frame
+  each) and present as extracted clips in `dw-motion-bank.json` carrying
+  the canon names: WARDEN OF THE THRESHOLD, THE MASKS, THE DROWNED OGRE,
+  THE UNMASKED (all "— body/init"). Boss kits measured from the bank:
+  Surge 52 clips/3488 frames, Warden 39/3186, Drowned Ogre 29/3245,
+  Unmasked 42/4517, Soul Surge Bloom 4/52; bank totals recompute to
+  220 clips / 214 extracted / 16,503 frames, matching #1647's numbers.
+- Wave-echo archetypes (6): the map's `mon01–06` filenames matched no real
+  file (flagged in the #1644 entry); the decode's real names
+  (`gym_init_obj_mon_power1/2`, `mon_speed1`, `mon_standard1/2`,
+  `mon_tricky1`) are measured (78 bones each) and carry the canon
+  archetype names in the bank. The `tk_*` second family (6 more) is
+  recorded the same way in the same file.
+- Stages (4): `moj_stg00/01/02/04` all status "extracted" in
+  `teardown/tekken5/moj-stage-inventory.json` with canon names
+  THE THRESHOLD, THE GALLERY OF MASKS, THE DROWNING ROOM, THE STILL
+  POINT. (The map's "stage texts" wording came from the old moji=text
+  misread; the decode corrected it from real bytes — `moj_stg*` are
+  stage map objects, geometry. THE FURNACE has no DW donor by design:
+  no boss4 init, no moj_stg03.)
+**Data corrections (3, measured — in `game/data/heartmind-dw-teardown.json`):**
+the file that binds these renames disagreed with the payload it describes
+in exactly three numbers, corrected to the measured values: Unmasked Kit
+clips 41 → 42 (bank count; frames agree at 4517); moj_stg00 `mif_count`
+56 → 29 and moj_stg02 `mif_count` 22 → 20 (stage inventory counts; the
+inventory's own arrays are self-consistent at 29 and 20). Everything else
+in the file recomputes exactly.
+**Code changes:** none in JS. Grep pass over `game/js/heartmind.js` and
+`game/js/heartmind-campaign.js`: canon stage names already in code; zero
+player-visible source proper nouns; every "Devil" occurrence is a code
+comment (provenance, left alone per the #1644 rule). The `HM_TEARDOWN`
+seam (`ready: false`, enemyAi/waveTables/doorSystems null) is NOT rename
+scope — those systems live in TK5DATA0/1, genuinely undecoded, and stay
+null rather than guessed.
+**Verification:** JSON re-parsed after edit; the file diff is exactly the
+3 corrected lines plus this log entry; full suite runs in CI on the PR.
+**Deletions:** none.
+**How this commit was built:** via the Git Data API from verified tree
+SHAs (base commit `14a5020c`): both edited files' base blobs were
+hash-verified locally against main before editing
+(`heartmind-dw-teardown.json` `f370948f`, `WORKLOG.md` `da57a813`).

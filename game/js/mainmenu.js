@@ -52,7 +52,7 @@ const SUBMENUS = {
   story: { title: 'STORY', cards: [
     { t: 'THE TRIAL', d: 'Seven lands. Five forces. Death is not failure — it is reincarnation. Climb to the Shrine and face the Assembled Soul.', badge: 'live', action: 'mode-story' },
     { t: 'CHARACTER EPISODES', d: 'Every soul, their story. Short cinematic ladders for the whole roster.', badge: 'live', action: 'mode-episodes' },
-    { t: 'HEART AND MIND WITHIN', d: 'Per-character 3D beat-em-up campaigns, Tekken 5 Devil Within style. Pick a soul and descend.', badge: 'hot', action: 'mode-heartmind' },
+    { t: 'HEART AND MIND WITHIN', d: 'Per-character 3D beat-em-up campaigns. Pick a soul and descend.', badge: 'hot', action: 'mode-heartmind' },
   ]},
   versus: { title: 'VERSUS', cards: [
     { t: '1V1 VERSUS', d: 'Two souls, one shrine. Local versus — set the rules, then fight.', badge: 'live', setup: 'versus' },
