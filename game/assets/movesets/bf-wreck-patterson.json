@@ -1,0 +1,350 @@
+{
+ "fighter": "bf-wreck-patterson",
+ "display": "WRECK PATTERSON",
+ "brutal_fist_id": "wreck_patterson",
+ "brutal_fist_role": "Wrecking Machine / Demolition Expert",
+ "brutal_fist_style": "Wrecking Machine / Demolition. Systematic destruction, power throws, and relentless pressure. The Wreck Ball is a devastating finishing slam.",
+ "tekken_base": "king",
+ "donor": "ur-char031",
+ "donor_moveset": "ur-char031.json",
+ "proxy": true,
+ "proxy_note": "Brutal Fist character pulled from Jay's own brutalfistgrokversiontenpointfive. Inputs in Tekken 7 notation; animations + full move-list data from Urban Reign / Urban Reign Redux donor ur-char031. BF frame data (frames @60fps) converted to WH seconds; BF damage not portable (BF HP 10000 vs WH 100) so WH damage is donor-sourced.",
+ "variant": 1,
+ "moves": {
+  "1": {
+   "name": "Wreck Patterson Dragon Chop (BF bf_chop)",
+   "input": "1",
+   "bf_source": "bf_chop",
+   "bf_category": "strike",
+   "bf_frames": {
+    "startup": 5,
+    "active": 3,
+    "recovery": 12
+   },
+   "bf_damage": 14,
+   "donor": "ur-char031",
+   "donor_move": "cbco_dwngnuke_asi_y",
+   "startup": 0.083,
+   "active": 0.05,
+   "recovery": 0.2,
+   "damage": 7,
+   "donor_framed": false,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char031:ur_m001",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "2": {
+   "name": "Wreck Patterson Lion's Roar (BF bf_discus_clothesline)",
+   "input": "2",
+   "bf_source": "bf_discus_clothesline",
+   "bf_category": "kick",
+   "bf_frames": {
+    "startup": 18,
+    "active": 3,
+    "recovery": 30
+   },
+   "bf_damage": 36,
+   "donor": "ur-char031",
+   "donor_move": "cbbx_bckturnrp",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 15,
+   "donor_framed": false,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 11,
+   "anim_ref": "ur:ur-char031:ur_m000",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "4": {
+   "name": "Wreck Patterson High Kick (BF bf_high_kick)",
+   "input": "4",
+   "bf_source": "bf_high_kick",
+   "bf_category": "kick",
+   "bf_frames": {
+    "startup": 12,
+    "active": 3,
+    "recovery": 24
+   },
+   "bf_damage": 26,
+   "donor": "ur-char031",
+   "donor_move": "moco_dvkdvk_z",
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.4,
+   "damage": 24,
+   "donor_framed": false,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char031:ur_m030",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "d+3": {
+   "name": "Wreck Patterson Low Kick (BF bf_low_kick)",
+   "input": "d+3",
+   "bf_source": "bf_low_kick",
+   "bf_category": "kick",
+   "bf_frames": {
+    "startup": 4,
+    "active": 3,
+    "recovery": 10
+   },
+   "bf_damage": 10,
+   "donor": "ur-char031",
+   "donor_move": "moco_dvkhit",
+   "startup": 0.067,
+   "active": 0.05,
+   "recovery": 0.167,
+   "damage": 7,
+   "donor_framed": false,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char031:ur_m031",
+   "input_slots": [
+    "d+3"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "b+1+2": {
+   "name": "Wreck Patterson Armor Breaker (BF bf_armor_breaker)",
+   "input": "b+1+2",
+   "bf_source": "bf_armor_breaker",
+   "bf_category": "counter",
+   "bf_frames": {
+    "startup": 8,
+    "active": 3,
+    "recovery": 22
+   },
+   "bf_damage": 24,
+   "donor": "ur-char031",
+   "donor_move": "cbco_dwngnuke_atama_y",
+   "startup": 0.133,
+   "active": 0.05,
+   "recovery": 0.367,
+   "damage": 15,
+   "donor_framed": false,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char031:ur_m002",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "f+1+2": {
+   "name": "Wreck Patterson Clinch (BF bf_clinch)",
+   "input": "f+1+2",
+   "bf_source": "bf_clinch",
+   "bf_category": "grapple",
+   "bf_frames": {
+    "startup": 6,
+    "active": 4,
+    "recovery": 14
+   },
+   "bf_damage": 0,
+   "donor": "ur-char031",
+   "donor_move": "moco_salbrolreg",
+   "startup": 0.1,
+   "active": 0.067,
+   "recovery": 0.233,
+   "damage": 15,
+   "donor_framed": false,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char031:ur_m039",
+   "input_slots": [
+    "f+1+2"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "1+3": {
+   "name": "Wreck Patterson Unity Bomb (BF bf_running_powerbomb)",
+   "input": "1+3",
+   "bf_source": "bf_running_powerbomb",
+   "bf_category": "throw",
+   "bf_frames": {
+    "startup": 22,
+    "active": 2,
+    "recovery": 44
+   },
+   "bf_damage": 58,
+   "donor": "ur-char031",
+   "donor_move": "moco_salbrolreg_z",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.733,
+   "damage": 24,
+   "donor_framed": false,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 11,
+   "anim_ref": "ur:ur-char031:ur_m040",
+   "input_slots": [
+    "1+3"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "f+2": {
+   "name": "Wreck Patterson Powerbomb (BF bf_powerbomb)",
+   "input": "f+2",
+   "bf_source": "bf_powerbomb",
+   "bf_category": "throw",
+   "bf_frames": {
+    "startup": 16,
+    "active": 2,
+    "recovery": 36
+   },
+   "bf_damage": 45,
+   "donor": "ur-char031",
+   "donor_move": "moco_rbdhook",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 15,
+   "donor_framed": false,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 11,
+   "anim_ref": "ur:ur-char031:ur_m037",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "f+4": {
+   "name": "Wreck Patterson Death Valley Driver (BF bf_dvd)",
+   "input": "f+4",
+   "bf_source": "bf_dvd",
+   "bf_category": "throw",
+   "bf_frames": {
+    "startup": 18,
+    "active": 2,
+    "recovery": 40
+   },
+   "bf_damage": 50,
+   "donor": "ur-char031",
+   "donor_move": "moco_dvkbrolk_z",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.667,
+   "damage": 24,
+   "donor_framed": false,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "ur:ur-char031:ur_m029",
+   "input_slots": [
+    "f+4"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "1,1,2,4": {
+   "name": "Wreck Patterson Rush Combo (BF bf_rush_combo)",
+   "input": "1,1,2,4",
+   "bf_source": "bf_rush_combo",
+   "bf_category": "combo",
+   "bf_frames": {
+    "startup": 5,
+    "active": 10,
+    "recovery": 28
+   },
+   "bf_damage": 55,
+   "donor": "ur-char031",
+   "donor_move": "cbco_tp_spkfrnt_f2",
+   "startup": 0.083,
+   "active": 0.167,
+   "recovery": 0.467,
+   "damage": 24,
+   "donor_framed": false,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 11,
+   "anim_ref": "ur:ur-char031:ur_m011",
+   "input_slots": [
+    "1,1,2,4"
+   ],
+   "move_class": "string",
+   "set": "FIGHT"
+  },
+  "d/b+1+2": {
+   "name": "Wreck Patterson bf_wreck_ball (BF bf_wreck_ball)",
+   "input": "d/b+1+2",
+   "bf_source": "bf_wreck_ball",
+   "bf_category": "unmeasured",
+   "bf_frames": null,
+   "bf_damage": null,
+   "donor": "ur-char031",
+   "donor_move": "cbco_tp_spkfrnt_f1",
+   "startup": 0.333,
+   "active": 0.045,
+   "recovery": 0.763,
+   "damage": 32,
+   "donor_framed": true,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 7.5,
+   "soulGain": 13,
+   "anim_ref": "ur:ur-char031:ur_m010",
+   "input_slots": [
+    "d/b+1+2"
+   ],
+   "move_class": "signature",
+   "set": "FIGHT"
+  }
+ },
+ "strings": [
+  {
+   "input": "1,1,2,4",
+   "hits": [
+    "1",
+    "1",
+    "2",
+    "4"
+   ],
+   "bf_combo": "bf_rush_combo"
+  }
+ ],
+ "specials": [],
+ "frame_convention": "BF frames @60fps -> seconds; damage donor-sourced (UR/Redux); WH 100HP",
+ "schema_version": 2,
+ "canon_note": "Brutal Fist pull-in. Model: WRECK_PATTERSON.glb.",
+ "anim_set_lock": {
+  "bank": "pmot031.ppk",
+  "donor": "ur-char031"
+ }
+}

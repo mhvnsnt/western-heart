@@ -56,6 +56,37 @@ const BASE = {
   'buffalo-bill': ['Marshall Law', 175], vainabel: ['Bass Armstrong', 188, 1.1], cainelias: ['Undertaker', 208],
   chordz: ['Lars', 186],
   gashadokuro: ['Kuma', 280, 1, 'Kuma T3 profile 280 cm (Tekkenpedia); GASHADOKURO is the Kuma-bank successor (roster/kuma/CANON.md)'], aotsuki: ['Panda', 277, 1, 'Panda profile 277 cm (Tekkenpedia); AOTSUKI base Panda (roster)'], silvertongue: ['Lili', 180, 1, 'Lili official profile 180 cm (T8); SILVERTONGUE is Lili re-owned (roster)'],
+  /* Brutal Fist pull-in (2026-11-08, PR #1643): T3 source bank per fighter
+     (game/js/fighter.js MOVESET_MAP — the bank each fighter fights on until the
+     UR clip binding lands). Body + height are that bank's Tekken profile values
+     as already recorded above for the same body; BF canon study pending, so
+     these stay apply:false like every other baseline row. */
+  'bf-aaron-ruben': ['King', 200, 1, 'Brutal Fist pull-in: King bank baseline; BF canon study pending'],
+  'bf-bannon': ['King', 200, 1, 'Brutal Fist pull-in: King bank baseline; BF canon study pending'],
+  'bf-brutus': ['King', 200, 1, 'Brutal Fist pull-in: King bank baseline; BF canon study pending'],
+  'bf-el-toro-de-oro': ['King', 200, 1, 'Brutal Fist pull-in: King bank baseline; BF canon study pending'],
+  'bf-hall-nighter': ['King', 200, 1, 'Brutal Fist pull-in: King bank baseline; BF canon study pending'],
+  'bf-pablo': ['King', 200, 1, 'Brutal Fist pull-in: King bank baseline; BF canon study pending'],
+  'bf-titan': ['King', 200, 1, 'Brutal Fist pull-in: King bank baseline; BF canon study pending'],
+  'bf-wreck-patterson': ['King', 200, 1, 'Brutal Fist pull-in: King bank baseline; BF canon study pending'],
+  'bf-cody': ['Jin Kazama', 180, 1, 'Brutal Fist pull-in: Jin Kazama bank baseline; BF canon study pending'],
+  'bf-maime': ['Jin Kazama', 180, 1, 'Brutal Fist pull-in: Jin Kazama bank baseline; BF canon study pending'],
+  'bf-stan-combs': ['Jin Kazama', 180, 1, 'Brutal Fist pull-in: Jin Kazama bank baseline; BF canon study pending'],
+  'bf-tyneshia': ['Jin Kazama', 180, 1, 'Brutal Fist pull-in: Jin Kazama bank baseline; BF canon study pending'],
+  'bf-jager': ['Bryan Fury', 186, 1, 'Brutal Fist pull-in: Bryan Fury bank baseline; BF canon study pending'],
+  'bf-kobra': ['Bryan Fury', 186, 1, 'Brutal Fist pull-in: Bryan Fury bank baseline; BF canon study pending'],
+  'bf-onyx': ['Bryan Fury', 186, 1, 'Brutal Fist pull-in: Bryan Fury bank baseline; BF canon study pending'],
+  'bf-static': ['Bryan Fury', 186, 1, 'Brutal Fist pull-in: Bryan Fury bank baseline; BF canon study pending'],
+  'bf-viper': ['Bryan Fury', 186, 1, 'Brutal Fist pull-in: Bryan Fury bank baseline; BF canon study pending'],
+  'bf-cipher': ['Xiaoyu', 159, 1, 'Brutal Fist pull-in: Xiaoyu bank baseline; BF canon study pending'],
+  'bf-echo': ['Xiaoyu', 159, 1, 'Brutal Fist pull-in: Xiaoyu bank baseline; BF canon study pending'],
+  'bf-finxsse': ['Xiaoyu', 159, 1, 'Brutal Fist pull-in: Xiaoyu bank baseline; BF canon study pending'],
+  'bf-stick-up': ['Xiaoyu', 159, 1, 'Brutal Fist pull-in: Xiaoyu bank baseline; BF canon study pending'],
+  'bf-edwin-kennedy': ['Heihachi', 179, 1, 'Brutal Fist pull-in: Heihachi bank baseline; BF canon study pending'],
+  'bf-master-sensei': ['Heihachi', 179, 1, 'Brutal Fist pull-in: Heihachi bank baseline; BF canon study pending'],
+  'bf-hollow': ['Yoshimitsu', 178, 1, 'Brutal Fist pull-in: Yoshimitsu bank baseline; BF canon study pending'],
+  'bf-tarzanian-devil': ['Yoshimitsu', 178, 1, 'Brutal Fist pull-in: Yoshimitsu bank baseline; BF canon study pending'],
+  'bf-triple-xxx': ['Yoshimitsu', 178, 1, 'Brutal Fist pull-in: Yoshimitsu bank baseline; BF canon study pending'],
 };
 for (const [id, [body, h, girth = 1, cue]] of Object.entries(BASE)) {
   if (CANON_SIZING[id]) continue;

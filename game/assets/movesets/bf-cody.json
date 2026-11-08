@@ -1,0 +1,353 @@
+{
+ "fighter": "bf-cody",
+ "display": "CODY",
+ "brutal_fist_id": "cody",
+ "brutal_fist_role": "Toxic Pawn / Former Manager",
+ "brutal_fist_style": "Brawler / Interference. Dirty tactics, rope breaks, and managerial interference. When forced to fight, uses explosive power moves.",
+ "tekken_base": "jin",
+ "donor": "ur-char022",
+ "donor_moveset": "ur-char022.json",
+ "proxy": true,
+ "proxy_note": "Brutal Fist character pulled from Jay's own brutalfistgrokversiontenpointfive. Inputs in Tekken 7 notation; animations + full move-list data from Urban Reign / Urban Reign Redux donor ur-char022. BF frame data (frames @60fps) converted to WH seconds; BF damage not portable (BF HP 10000 vs WH 100) so WH damage is donor-sourced.",
+ "variant": 1,
+ "moves": {
+  "1": {
+   "name": "Cody Jab (BF bf_jab)",
+   "input": "1",
+   "bf_source": "bf_jab",
+   "bf_category": "strike",
+   "bf_frames": {
+    "startup": 3,
+    "active": 2,
+    "recovery": 8
+   },
+   "bf_damage": 8,
+   "donor": "ur-char022",
+   "donor_move": "cbco_mapahanchi",
+   "startup": 0.05,
+   "active": 0.033,
+   "recovery": 0.133,
+   "damage": 6,
+   "donor_framed": false,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char022:ur_m006",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "2": {
+   "name": "Cody Hook (BF bf_hook)",
+   "input": "2",
+   "bf_source": "bf_hook",
+   "bf_category": "strike",
+   "bf_frames": {
+    "startup": 8,
+    "active": 4,
+    "recovery": 18
+   },
+   "bf_damage": 22,
+   "donor": "ur-char022",
+   "donor_move": "mobx_p5dan_b",
+   "startup": 0.133,
+   "active": 0.067,
+   "recovery": 0.3,
+   "damage": 15,
+   "donor_framed": false,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char022:ur_m015",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "4": {
+   "name": "Cody Mid Kick (BF bf_mid_kick)",
+   "input": "4",
+   "bf_source": "bf_mid_kick",
+   "bf_category": "kick",
+   "bf_frames": {
+    "startup": 7,
+    "active": 3,
+    "recovery": 16
+   },
+   "bf_damage": 18,
+   "donor": "ur-char022",
+   "donor_move": "moco_dvbhiza",
+   "startup": 0.117,
+   "active": 0.05,
+   "recovery": 0.267,
+   "damage": 24,
+   "donor_framed": false,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char022:ur_m020",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "d+3": {
+   "name": "Cody Low Kick (BF bf_low_kick)",
+   "input": "d+3",
+   "bf_source": "bf_low_kick",
+   "bf_category": "kick",
+   "bf_frames": {
+    "startup": 4,
+    "active": 3,
+    "recovery": 10
+   },
+   "bf_damage": 10,
+   "donor": "ur-char022",
+   "donor_move": "moco_rklow",
+   "startup": 0.067,
+   "active": 0.05,
+   "recovery": 0.167,
+   "damage": 6,
+   "donor_framed": false,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char022:ur_m029",
+   "input_slots": [
+    "d+3"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "b+1+2": {
+   "name": "Cody Armor Breaker (BF bf_armor_breaker)",
+   "input": "b+1+2",
+   "bf_source": "bf_armor_breaker",
+   "bf_category": "counter",
+   "bf_frames": {
+    "startup": 8,
+    "active": 3,
+    "recovery": 22
+   },
+   "bf_damage": 24,
+   "donor": "ur-char022",
+   "donor_move": "mobx_p5dan_by",
+   "startup": 0.133,
+   "active": 0.05,
+   "recovery": 0.367,
+   "damage": 15,
+   "donor_framed": false,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char022:ur_m016",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "f+1+2": {
+   "name": "Cody Clinch (BF bf_clinch)",
+   "input": "f+1+2",
+   "bf_source": "bf_clinch",
+   "bf_category": "grapple",
+   "bf_frames": {
+    "startup": 6,
+    "active": 4,
+    "recovery": 14
+   },
+   "bf_damage": 0,
+   "donor": "ur-char022",
+   "donor_move": "cbco_dwngnuke_asi_y",
+   "startup": 0.1,
+   "active": 0.067,
+   "recovery": 0.233,
+   "damage": 15,
+   "donor_framed": false,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char022:ur_m002",
+   "input_slots": [
+    "f+1+2"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "1+3": {
+   "name": "Cody Body Slam (BF bf_body_slam)",
+   "input": "1+3",
+   "bf_source": "bf_body_slam",
+   "bf_category": "throw",
+   "bf_frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28
+   },
+   "bf_damage": 32,
+   "donor": "ur-char022",
+   "donor_move": "cbbx_bckturnrp",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 24,
+   "donor_framed": false,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 11,
+   "anim_ref": "ur:ur-char022:ur_m000",
+   "input_slots": [
+    "1+3"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "f+2": {
+   "name": "Cody Uppercut (BF bf_uppercut)",
+   "input": "f+2",
+   "bf_source": "bf_uppercut",
+   "bf_category": "strike",
+   "bf_frames": {
+    "startup": 10,
+    "active": 3,
+    "recovery": 22
+   },
+   "bf_damage": 28,
+   "donor": "ur-char022",
+   "donor_move": "cbco_dwngnuke_atama_y",
+   "startup": 0.167,
+   "active": 0.05,
+   "recovery": 0.367,
+   "damage": 15,
+   "donor_framed": false,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char022:ur_m003",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "f+4": {
+   "name": "Cody Suplex (BF bf_suplex)",
+   "input": "f+4",
+   "bf_source": "bf_suplex",
+   "bf_category": "throw",
+   "bf_frames": {
+    "startup": 14,
+    "active": 2,
+    "recovery": 32
+   },
+   "bf_damage": 38,
+   "donor": "ur-char022",
+   "donor_move": "moco_dvhiza",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 24,
+   "donor_framed": false,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "ur:ur-char022:ur_m024",
+   "input_slots": [
+    "f+4"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "1,2,3": {
+   "name": "Cody Jab-Cross-Hook (BF bf_jab_cross_hook)",
+   "input": "1,2,3",
+   "bf_source": "bf_jab_cross_hook",
+   "bf_category": "combo",
+   "bf_frames": {
+    "startup": 3,
+    "active": 8,
+    "recovery": 22
+   },
+   "bf_damage": 40,
+   "donor": "ur-char022",
+   "donor_move": "itco_tp_sobfam_f",
+   "startup": 0.05,
+   "active": 0.133,
+   "recovery": 0.367,
+   "damage": 24,
+   "donor_framed": false,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 11,
+   "anim_ref": "ur:ur-char022:ur_m013",
+   "input_slots": [
+    "1,2,3"
+   ],
+   "move_class": "string",
+   "set": "FIGHT"
+  },
+  "f,f+1+2": {
+   "name": "Cody Cody Buster (BF bf_cody_buster)",
+   "input": "f,f+1+2",
+   "bf_source": "bf_cody_buster",
+   "bf_category": "signature",
+   "bf_frames": {
+    "startup": 18,
+    "active": 2,
+    "recovery": 44
+   },
+   "bf_damage": 74,
+   "donor": "ur-char022",
+   "donor_move": "itco_tp_sobfam_y",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.733,
+   "damage": 30,
+   "donor_framed": false,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 7.5,
+   "soulGain": 13,
+   "anim_ref": "ur:ur-char022:ur_m014",
+   "input_slots": [
+    "f,f+1+2"
+   ],
+   "move_class": "signature",
+   "set": "FIGHT"
+  }
+ },
+ "strings": [
+  {
+   "input": "1,2,3",
+   "hits": [
+    "1",
+    "2",
+    "3"
+   ],
+   "bf_combo": "bf_jab_cross_hook"
+  }
+ ],
+ "specials": [],
+ "frame_convention": "BF frames @60fps -> seconds; damage donor-sourced (UR/Redux); WH 100HP",
+ "schema_version": 2,
+ "canon_note": "Brutal Fist pull-in. Model: CODY_sober.glb.",
+ "anim_set_lock": {
+  "bank": "pmot022.ppk",
+  "donor": "ur-char022"
+ }
+}

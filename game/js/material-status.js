@@ -105,6 +105,7 @@ export const MATERIAL_STATUS = {
  "quarantine": {
   "armor-king": "1 untextured",
   "armor-king-attire1": "1 untextured",
+  "bf-maime": "15 untextured",
   "cyborg-x": "6 untextured",
   "demonio-bloodline-ember": "2 untextured",
   "jin-bloodline-ember": "2 untextured",
