@@ -62,6 +62,26 @@ from a sandbox where git object writes were blocked:
    `force: false`. A 422 means another lane deployed first — stop,
    recompute the delta from the new tip, never force.
 
+The route above is scripted as `tools/deploy/deploy_api.py` — one
+script, no local git, no clone, scratch under the system temp area:
+
+```sh
+python3 tools/deploy/deploy_api.py            # dry run (default): delta, materialize, module-graph check, manifest blob, tree, commit — stops before the ref
+python3 tools/deploy/deploy_api.py --push     # same, then PATCHes the branch ref (fast-forward only)
+```
+
+Before the push it materializes the assembled tree's code files through
+the blobs API and runs `tools/deploy/check_module_graph.py` on them —
+the same check section 3 describes, without needing a checkout. A hard
+missing module that exists on main is added and the check re-runs; any
+other hard missing refuses the deploy.
+
+Run record 2026-11-08: live `32607e2b` → main `847a0aa4`, 109 updated,
+9 added, 0 removed, deploy commit `60a0c5f8`, manifest `847a0aa4`
+verified live (Pages `built`, spot-checks pass). The script was
+dry-run verified the same day on the synced branch: 0/0 delta, module
+graph 155/155/0 hard missing, tree total matching the manifest.
+
 ## 3. Verify the Pages deploy (always, before calling it done)
 
 ```sh
