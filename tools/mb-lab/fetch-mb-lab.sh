@@ -13,7 +13,10 @@
 # READ FIRST: tools/mb-lab/README.md (license: GPL-3.0 code, AGPL-3.0 database).
 set -euo pipefail
 
-MBLAB_TAG="${MBLAB_TAG:-v1.8.1}"
+# Upstream tag name is 1_8_1 (v1.8.1 does not exist upstream;
+# cloning --branch v1.8.1 fails). Verified 2026-11-02, see
+# docs/handoffs/BLENDER-PIN-20261102.md.
+MBLAB_TAG="${MBLAB_TAG:-1_8_1}"
 MBLAB_REPO="https://github.com/animate1978/MB-Lab.git"
 DEST="${1:-$(dirname "$0")/vendor}"
 
