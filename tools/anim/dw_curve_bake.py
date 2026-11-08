@@ -143,6 +143,72 @@ PANTERA_UNMAPPED = ['gym_ikdv_b_nage_f.dat', 'gym_ikdv_b_nage_y.dat',
 WARDEN_MOVES = {}  # kmb1 Warden kit — wiring hook is the HeartMind Warden boss
                    # in brawler.js; its fighter binding is a follow-up.
 
+# Rollout kit sets (2026-11-08): one pack per DW group, baked the same way
+# as the pilot. The packs are DATA (moves = {} — move mapping owed, not
+# guessed) except Pantera's, which keeps the pilot's 4 mapped moves.
+#   warden       <- kmb1  (39 clips, all 35-bone)
+#   unmasked     <- ozb3  (29 wireable 35-bone; 7 x 4-bone teil1 appendage
+#                          clips excluded — see kit_exclusions())
+#   drowned-ogre <- kob2  (25 wireable 35-bone; 4 x 4-bone tail part-clips
+#                          excluded)
+#   wave-echo    <- oz_extra (5 clips, all 35-bone)
+# The 27-bone singles (dw_nog00 / dw_raribxk / dw_rarixk / dwfkao00 /
+# dwup_hei) are decoded but non-wireable per the bank (no kit assignment)
+# and are NOT baked. The 78/111-bone init objects are 1-frame poses, not
+# motion; the 12-bone djin clips are wing/feather appendage motion — none
+# of them is fighter motion and none is bakeable with this 35/27-bone FK
+# model. Each exclusion is measured and listed by kit_exclusions().
+KIT_SETS = {
+    'warden':       {'group': 'kmb1',     'fighter': 'warden',       'pack': 'moves.warden.pack.json'},
+    'unmasked':     {'group': 'ozb3',     'fighter': 'unmasked',     'pack': 'moves.unmasked.pack.json'},
+    'drowned-ogre': {'group': 'kob2',     'fighter': 'drowned-ogre', 'pack': 'moves.drowned-ogre.pack.json'},
+    'wave-echo':    {'group': 'oz_extra', 'fighter': 'wave-echo',    'pack': 'moves.wave-echo.pack.json'},
+}
+
+def kit_clip_names(bank, group):
+    """Sorted clip names (no gym_/.dat) of the wireable 35-bone clips in a
+    DW group, from the motion bank. These are the bakeable clips of the
+    group — the FK model covers 35-bone (and 27-bone) skeletons only."""
+    out = []
+    for c in bank.get('clips', []):
+        if c.get('group') != group or not c.get('wireable') or c.get('bones') != 35:
+            continue
+        src = c.get('source_file', '')
+        if src.startswith('gym_') and src.endswith('.dat'):
+            out.append(src[4:-4])
+    return sorted(set(out))
+
+def kit_exclusions(bank, group):
+    """(clip name, measured reason) for the decoded clips of a group that
+    are NOT bakeable with this FK model. Reasons are measured from the
+    bank + curves, never guessed."""
+    out = []
+    for c in bank.get('clips', []):
+        if c.get('group') != group:
+            continue
+        src = c.get('source_file', '')
+        name = src[4:-4] if src.startswith('gym_') and src.endswith('.dat') else src
+        bones, frames = c.get('bones'), c.get('frames')
+        status = str(c.get('status', ''))
+        if c.get('wireable') and bones == 35:
+            continue  # bakeable
+        if status.startswith('MISSING'):
+            reason = 'missing file — no data in TK5DATA2 (list reference only, no curves to bake)'
+        elif bones in (78, 111, 96) and frames == 1:
+            reason = f'{bones}-bone 1-frame init object (a pose, not motion)'
+        elif bones == 4:
+            reason = '4-bone appendage part-clip (tail/wave/horn/tornado/demo part 1 — not a full-body skeleton)'
+        elif bones == 12:
+            reason = '12-bone wing/feather appendage motion (not a full-body skeleton)'
+        elif bones == 27 and not c.get('wireable'):
+            reason = '27-bone, decoded but non-wireable per the bank (no kit assignment)'
+        elif not c.get('wireable'):
+            reason = 'decoded but non-wireable per the bank (no kit assignment)'
+        else:
+            reason = f'{bones}-bone, no FK model for this skeleton'
+        out.append((name, reason))
+    return sorted(out)
+
 def rot_y_deg(deg):
     r = math.radians(deg)
     return (0.0, math.sin(r / 2), 0.0, math.cos(r / 2))
@@ -322,34 +388,14 @@ def bake_skeleton(W_ref, P_ref, facing_deg):
     }, {'dw_hips_chest_m': round(dw_hips_chest, 6), 'scale_vs_king': round(scale, 6),
         'root_rest_y_m': root_rest_y}
 
-def main():
-    ap = argparse.ArgumentParser(description='Bake DW motion curves to wh-anim packs.')
-    ap.add_argument('--curves', default='teardown/tekken5/dw-motion-curves.json')
-    ap.add_argument('--out', default='game/assets/anim/dw')
-    ap.add_argument('--set', choices=['pantera', 'warden', 'all'], default='pantera')
-    ap.add_argument('--ref', default='gym_ozb3_greaction2.dat')
-    ap.add_argument('--fighter', default='pantera')
-    args = ap.parse_args()
-
-    data = load_curves(args.curves)
-    byname = {c['source_file']: c for c in data['clips']}
-    W_ref, P_ref, facing, ref_clip = reference_frame(data, args.ref)
-    skel, skel_meta = bake_skeleton(W_ref, P_ref, facing)
-
-    if args.set == 'pantera':
-        moves = PANTERA_MOVES
-        unmapped = PANTERA_UNMAPPED
-        clip_names = sorted({m['clip'] for m in moves.values()} | {u.replace('gym_', '').replace('.dat', '') for u in unmapped})
-    elif args.set == 'warden':
-        moves = WARDEN_MOVES
-        unmapped = []
-        clip_names = []
-    else:
-        moves = dict(PANTERA_MOVES)
-        moves.update(WARDEN_MOVES)
-        unmapped = list(PANTERA_UNMAPPED)
-        clip_names = sorted({m['clip'] for m in moves.values()} | {u.replace('gym_', '').replace('.dat', '') for u in unmapped})
-
+def bake_set(data, byname, bank, W_ref, P_ref, facing, skel, skel_meta,
+             set_name, moves, unmapped, clip_names, fighter, pack_name,
+             exclusions, out, ref='gym_ozb3_greaction2.dat'):
+    """Bake one set (a fighter pack or a kit data pack) into `out`.
+    `moves` maps move keys to {clip, input, dw_source, note}; `unmapped`
+    is the list of gym_*.dat source files baked as data; `exclusions`
+    is the list of (clip, measured reason) NOT baked. Returns (n_clips,
+    pack_path)."""
     clips = {}
     log_lines = []
     for cname in clip_names:
@@ -369,8 +415,8 @@ def main():
             'rot_xyzw': baked['rot_xyzw'],
             'root_t': baked['root_t'],
             'source': src,
-            'character': args.fighter,
-            'for_fighter': args.fighter,
+            'character': fighter,
+            'for_fighter': fighter,
             'loop': False,
             'dw_source': src,
             'applier': 'dw_curve_bake.py',
@@ -390,8 +436,8 @@ def main():
     pack = {
         'format': 'wh-dw-moves/1',
         'fps': 30,
-        'fighter': args.fighter,
-        'character': args.fighter,
+        'fighter': fighter,
+        'character': fighter,
         'anim_set': 'FIGHT',
         'skeleton': 'skeleton.json',
         'source': {'dw_curves': 'teardown/tekken5/dw-motion-curves.json',
@@ -402,17 +448,17 @@ def main():
         'clips': clips,
     }
 
-    os.makedirs(args.out, exist_ok=True)
-    with open(os.path.join(args.out, 'skeleton.json'), 'w') as f:
+    os.makedirs(out, exist_ok=True)
+    with open(os.path.join(out, 'skeleton.json'), 'w') as f:
         json.dump(skel, f, indent=1)
-    pack_path = os.path.join(args.out, f'moves.{args.fighter}.pack.json')
+    pack_path = os.path.join(out, pack_name)
     with open(pack_path, 'w') as f:
         json.dump(pack, f, indent=1)
 
     log = []
     log.append('# DW curve bake log')
     log.append('')
-    log.append(f"Reference clip: {args.ref} (frame 0 rest pose). Facing (pelvis forward): {facing:.2f} deg from +Z.")
+    log.append(f"Reference clip: {ref} (frame 0 rest pose). Facing (pelvis forward): {facing:.2f} deg from +Z.")
     log.append(f"root_rest_y: {skel_meta['root_rest_y_m']} m. DW Hips->Chest: {skel_meta['dw_hips_chest_m']} m (scale vs king: {skel_meta['scale_vs_king']}).")
     log.append('')
     log.append('## Assumptions (DW data has no positions for these)')
@@ -428,19 +474,93 @@ def main():
     log.extend(log_lines)
     log.append('')
     log.append('## Moves mapped')
-    for key, m in moves.items():
-        log.append(f"- {key}: {m['clip']} ({m['dw_source']}) — {m['note']}")
+    if moves:
+        for key, m in moves.items():
+            log.append(f"- {key}: {m['clip']} ({m['dw_source']}) — {m['note']}")
+    else:
+        log.append('- (none — this pack is DATA: every clip is baked, no move mapping is claimed. Mapping owed, not guessed.)')
     log.append('')
     log.append('## Unmapped (baked as data, mapping owed — not guessed)')
     for u in unmapped:
         log.append(f'- {u}')
-    with open(os.path.join(args.out, 'DW-BAKE-LOG.md'), 'w') as f:
+    log.append('')
+    log.append('## Excluded from this pack (measured — not bakeable with this FK model)')
+    if exclusions:
+        for name, reason in exclusions:
+            log.append(f'- {name}: {reason}')
+    else:
+        log.append('- (none — every decoded clip of this group is baked)')
+    log_name = 'DW-BAKE-LOG.md' if set_name == 'pantera' else f'DW-BAKE-LOG-{fighter}.md'
+    with open(os.path.join(out, log_name), 'w') as f:
         f.write('\n'.join(log) + '\n')
 
-    print(f'Baked {len(clips)} clips, {len(moves)} moves -> {args.out}')
+    print(f'Baked {len(clips)} clips, {len(moves)} moves -> {out}')
     print(f'  skeleton.json (root_rest_y {skel_meta["root_rest_y_m"]} m, facing {facing:.2f} deg)')
-    print(f'  {os.path.basename(pack_path)} ({os.path.getsize(pack_path)} B)')
-    print(f'  DW-BAKE-LOG.md')
+    print(f'  {pack_name} ({os.path.getsize(pack_path)} B)')
+    print(f'  {log_name}')
+    return len(clips), pack_path
+
+
+def pantera_unmapped(bank):
+    """Pantera's unmapped clips: the pilot's 4 nage clips PLUS every
+    remaining wireable 35-bone ikdv (Surge Kit) clip — the Surge Kit is
+    Pantera's kit, so its clips live in his pack as data until a move
+    mapping claims them. Returns gym_*.dat source filenames, sorted."""
+    have = {m['clip'] for m in PANTERA_MOVES.values()}
+    unmapped = list(PANTERA_UNMAPPED)
+    for c in bank.get('clips', []):
+        if c.get('group') != 'ikdv' or not c.get('wireable') or c.get('bones') != 35:
+            continue
+        src = c.get('source_file', '')
+        if not src or src in unmapped:
+            continue
+        if src[4:-4] in have:
+            continue
+        unmapped.append(src)
+    return sorted(unmapped)
+
+
+def main():
+    ap = argparse.ArgumentParser(description='Bake DW motion curves to wh-anim packs.')
+    ap.add_argument('--curves', default='teardown/tekken5/dw-motion-curves.json')
+    ap.add_argument('--bank', default='teardown/tekken5/dw-motion-bank.json')
+    ap.add_argument('--out', default='game/assets/anim/dw')
+    ap.add_argument('--set', choices=['pantera', 'warden', 'unmasked', 'drowned-ogre', 'wave-echo', 'all'],
+                    default='pantera')
+    ap.add_argument('--ref', default='gym_ozb3_greaction2.dat')
+    ap.add_argument('--fighter', default=None,
+                    help='fighter/kit id for the pack (defaults per set)')
+    args = ap.parse_args()
+
+    data = load_curves(args.curves)
+    byname = {c['source_file']: c for c in data['clips']}
+    with open(args.bank) as f:
+        bank = json.load(f)
+    W_ref, P_ref, facing, ref_clip = reference_frame(data, args.ref)
+    skel, skel_meta = bake_skeleton(W_ref, P_ref, facing)
+
+    sets = ['pantera', 'warden', 'unmasked', 'drowned-ogre', 'wave-echo'] if args.set == 'all' else [args.set]
+    for set_name in sets:
+        if set_name == 'pantera':
+            moves = PANTERA_MOVES
+            unmapped = pantera_unmapped(bank)
+            clip_names = sorted({m['clip'] for m in moves.values()} |
+                                {u.replace('gym_', '').replace('.dat', '') for u in unmapped})
+            fighter = args.fighter or 'pantera'
+            pack_name = 'moves.pantera.pack.json'
+            exclusions = []
+        else:
+            spec = KIT_SETS[set_name]
+            moves = {}
+            names = kit_clip_names(bank, spec['group'])
+            unmapped = ['gym_' + n + '.dat' for n in names]
+            clip_names = names
+            fighter = args.fighter or spec['fighter']
+            pack_name = spec['pack']
+            exclusions = kit_exclusions(bank, spec['group'])
+        bake_set(data, byname, bank, W_ref, P_ref, facing, skel, skel_meta,
+                 set_name, moves, unmapped, clip_names, fighter, pack_name,
+                 exclusions, args.out, args.ref)
 
 if __name__ == '__main__':
     main()
