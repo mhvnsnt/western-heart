@@ -11,12 +11,12 @@
    `moveset_custom`, produced by this module).
 
    LAYOUT (verified sources, not invented):
-   - WWE Create-A-Moveset categories are the layout spine:
+   - Pro-wrestling Create-A-Moveset categories are the layout spine:
      BASES, READY MOVES, GROUND, TURNBUCKLE, ROPE OPPONENT,
      AERIAL, RUNNING, DOUBLE TEAM, SPECIAL — SmackDown! vs. Raw /
-     Here Comes the Pain / WWE 2K19 Create-A-Moveset flow
+     Here Comes the Pain / the 2019 wrestling game's Create-A-Moveset flow
      (choose a category on the left, preview, add to the list).
-     WWE 2K19 also contributes PRESET MOVE SETS (a whole existing
+     The 2019 wrestling game also contributes PRESET MOVE SETS (a whole existing
      fighter's moveset as the starting template) and fighting
      styles (Powerhouse / Cruiser / Technician / Striker / Giant).
    - Mortal Kombat 11 contributes Kustom Variations (3 ability
@@ -102,7 +102,7 @@ export const SLOT_INPUTS = [
   '1,2', '2,1', '3,2', '1,2,1', '1+2,1',
 ];
 
-/* WWE Create-A-Moveset categories (verified layout) mapped onto WH
+/* Pro-wrestling Create-A-Moveset categories (verified layout) mapped onto WH
    positions/situations. A category is a FILTER over slots, not a
    separate system — every slot still lives in the same library. */
 export const WWE_CATEGORIES = [
@@ -132,7 +132,7 @@ export function parseSlotKey(key) {
 
 export function slotsForCategory(categoryId) {
   const cat = WWE_CATEGORIES.find((c) => c.id === categoryId);
-  if (!cat) throw new Error(`unknown WWE category: ${categoryId}`);
+  if (!cat) throw new Error(`unknown creation category: ${categoryId}`);
   const out = [];
   for (const p of cat.positions) for (const s of cat.situations) for (const i of SLOT_INPUTS) out.push(`${p}|${s}|${i}`);
   return out;

@@ -185,16 +185,16 @@ const PENDING = [
     pointers: ['teardown/tekken-tag-tournament-2'],
   },
   {
-    id: 'wwe2k19-pending',
-    hint: 'WWE 2K19 — 1,678 files extracted in teardown/wwe2k19 (753.7 MB, .yobj/.bin/.dds), raw, needs WMXIX-style decode path. The CAW + Create-A-Moveset layout is already documented (customization/wwe2k-caw/CAW-SUITE-BREAKDOWN.md, moveset-library-2k19.txt: 5,581 names). Per-character move counts UNMEASURED.',
-    source_game: 'wwe2k19', source_bank: null, source_character: null, moves: null,
+    id: 'pro-wrestling-2019-pending',
+    hint: 'Pro-wrestling game (2019 release) — 1,678 files extracted in teardown/wwe2k19 (753.7 MB, .yobj/.bin/.dds), raw, needs WMXIX-style decode path. The CAW + Create-A-Moveset layout is already documented (customization/wwe2k-caw/CAW-SUITE-BREAKDOWN.md, moveset name list: 5,581 names). Per-character move counts UNMEASURED.',
+    source_game: 'pro-wrestling-2019', source_bank: null, source_character: null, moves: null,
     status: 'pending-ingest', attached_to: [],
     pointers: ['teardown/wwe2k19', 'customization/wwe2k-caw/CAW-SUITE-BREAKDOWN.md'],
   },
   {
-    id: 'wwe2k20-2k22-pending',
-    hint: 'WWE 2K20 / 2K22 — readme only in repo (1 file each in teardown/wwe2k20, teardown/wwe2k22); 2K22 is the newest WWE Jay owns on Steam (app 1255630) and the creation-suite source of record, but no teardown/archive exists in the repo. Nothing measured yet.',
-    source_game: 'wwe2k20_2k22', source_bank: null, source_character: null, moves: null,
+    id: 'pro-wrestling-2020-2022-pending',
+    hint: 'Pro-wrestling games (2020 / 2022 releases) — readme only in repo (1 file each in teardown/wwe2k20, teardown/wwe2k22); the 2022 release is the newest wrestling game Jay owns on Steam (app 1255630) and the creation-suite source of record, but no teardown/archive exists in the repo. Nothing measured yet.',
+    source_game: 'pro-wrestling-2020-2022', source_bank: null, source_character: null, moves: null,
     status: 'pending-ingest', attached_to: [],
     pointers: ['teardown/wwe2k20', 'teardown/wwe2k22', 'docs/tech/STEAM-LIBRARY.md'],
   },
@@ -216,8 +216,12 @@ const PENDING = [
 
 const GENERATED_PREFIXES = ['t3-', 'doa-', 'vf-', 'vf5-', 'wrestling-pool', 'wmxix-pool', 't7-frame-', 't8-frame-',
   'urban-reign-pending', 'urban-reign-redux-pending', 'soulcalibur2-pending', 'def-jam-pending',
-  'street-fighter-3d-pending', 'tekken6-pending', 'ttt2-pending', 'wwe2k19-pending',
-  'wwe2k20-2k22-pending', 'devil-within-pending', 'brutal-fist-pending'];
+  'street-fighter-3d-pending', 'tekken6-pending', 'ttt2-pending', 'pro-wrestling-2019-pending',
+  'pro-wrestling-2020-2022-pending', 'devil-within-pending', 'brutal-fist-pending',
+  /* Legacy ids (pre-canon-name fix, 2026-11-08): the two pending rows were
+     renamed to pro-wrestling-* ids. Keep the old ids listed so a re-run
+     drops the stale rows instead of keeping them as hand-written. */
+  'wwe2k19-pending', 'wwe2k20-2k22-pending'];
 /* Hand-written 2026-11-05 rows that share a generated prefix — never
    treated as generated: t3-ogre-bank (Chatur's bank) and
    doa-speed-striker (pointer row). */
