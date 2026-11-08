@@ -859,6 +859,34 @@ if (fb) {
     if (c) highlight(c, { scroll: true });
   }
 
+  /* T3 select timeout (TEKKEN-TEARDOWN-SPEC.md §2a): the fighter under the
+     cursor. If the side now choosing has no cursor fighter yet (Versus P2
+     before a first tap), park the cursor the way onShow does — that side's
+     last pick, else the first grid card — so there is always a fighter
+     under the cursor, as in Tekken 3. Returns null only while the Versus
+     format submenu is still open (no preview allowed yet). */
+  function cursorFighter() {
+    const draftMode = state.mode === 'versus' && state.vsMode === 'team' && !state.vsTeamsDone;
+    const side = draftMode ? state.draftSide : state.activeSide;
+    let c = state.highlight[side];
+    if (!c) {
+      try {
+        const last = JSON.parse(localStorage.getItem(LAST_KEY) || '{}');
+        c = last[side] && deps.findChar(last[side]);
+      } catch (_) {}
+      if (!c || !cardFor(c.id)) {
+        const first = allCards().find(x => x.dataset.id && x.dataset.id !== '__random');
+        c = first && deps.findChar(first.dataset.id);
+      }
+      if (c) highlight(c, { scroll: true });
+    }
+    return state.highlight[side] || null;
+  }
+
+  /* Grid size for the select timer (T3: the countdown grows with the
+     number of unlocked fighters). */
+  function visibleCount() { return selectRoster().length; }
+
   /* Called by main.js confirmSelection() BEFORE modes.onConfirm runs,
      with the id being confirmed. Mirrors the mode flow: versus locks
      P1 then hands the cursor to P2; team stacks picks on P1. */
@@ -1037,7 +1065,7 @@ if (fb) {
     return state.locked;
   }
 
-  return { build, onShow, selectById, notifyConfirm, highlight, warmLockedFighters, soulSpiritLocked, _state: state, _panes: panes };
+  return { build, onShow, selectById, notifyConfirm, highlight, cursorFighter, visibleCount, warmLockedFighters, soulSpiritLocked, _state: state, _panes: panes };
 
   /* ---------- TTT2 versus submenu (INSIDE the select screen) ----------
      TTT2 actual: "before you select your characters, you will choose

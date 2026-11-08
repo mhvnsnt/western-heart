@@ -618,18 +618,33 @@ document.addEventListener('keydown', (e) => {
   if (id && getStage(id)) selectedStage = getStage(id).id;
 })();
 
-/* 99-second select timer (Tekken standard selector: starts at 99).
-   The countdown starts only once assets are loaded (maybeStartSelectTimer),
-   and at 0 it auto-highlights a random fighter — it never starts a fight
-   without the user tapping CONFIRM. */
+/* Select timer — Tekken 3, measured (TEKKEN-TEARDOWN-SPEC.md §2a, from the
+   n0madic/Tekken3Remake decompiled code): starts at 20·T frames, T = 60,
+   or 60 + 3·(n − 10) past 10 unlocked fighters; at 60 fps that is 20 s,
+   +1 s per extra unlocked fighter past 10. At 0 each side gets the fighter
+   under the cursor — never a random pick. The old 99 s timer and random
+   pick were invented, not teardown, and both go.
+   NOTE: spec §2a's prose says "+3 seconds per extra fighter", but its own
+   formula (20·T frames, T growing by 3) is +60 frames = +1 s at 60 fps.
+   The formula is followed here; the prose looks like a slip.
+   The countdown starts only once assets are loaded (maybeStartSelectTimer).
+   It stops the moment a side locks; if another side still has to pick
+   (Versus P1 locked, P2 to go), a fresh countdown starts for that side —
+   the timer runs while anyone is still choosing, as in Tekken 3. */
 let selectTimerId = null;
 let selectTimerArmed = false;
 function maybeStartSelectTimer() {
   if (assetsReady && !selectTimerArmed) { selectTimerArmed = true; startSelectTimer(); }
 }
+/* Unlocked fighters = the fighters on the grid (spec §7: 50 pickable). */
+function selectTimerSeconds() {
+  let n = 50;
+  try { if (selectScreen && selectScreen.visibleCount) n = selectScreen.visibleCount(); } catch (_) {}
+  return 20 + Math.max(0, n - 10);
+}
 function startSelectTimer() {
   stopSelectTimer();
-  let t = 99;
+  let t = selectTimerSeconds();
   const el = document.getElementById('select-timer');
   el.textContent = t;
   el.classList.remove('low');
@@ -639,12 +654,22 @@ function startSelectTimer() {
     if (t <= 10) el.classList.add('low');
     if (t <= 0) {
       stopSelectTimer();
-      // Tekken timeout behavior: cursor jumps to a random fighter, but the
-      // match does NOT start — the user still taps CONFIRM to fight.
-      const pool = ROSTER.filter(c => c.id !== selectedChar);
-      const pick = pool[Math.floor(Math.random() * pool.length)];
-      if (pick) selectScreen.selectById(pick.id);
-      document.getElementById('select-hint').textContent = 'TIME UP — random fighter picked. Tap CONFIRM to fight.';
+      // Tekken 3 timeout (spec §2a): the fighter under the cursor is
+      // CONFIRMED through the normal CONFIRM path, so locks, spirit
+      // snapshots, and mode routing run exactly as if the player tapped
+      // CONFIRM. Never random, never overwriting a locked side. If no
+      // cursor fighter exists yet (Versus format submenu still open),
+      // the countdown simply restarts.
+      const c = selectScreen && selectScreen.cursorFighter ? selectScreen.cursorFighter() : null;
+      if (!c || !selectedChar) { startSelectTimer(); return; }
+      const hintEl = document.getElementById('select-hint');
+      confirmSelection();
+      if (selectScreen._state && selectScreen._state.phase !== 'done') {
+        if (hintEl) hintEl.textContent = 'TIME UP — ' + c.name + ' locked. VERSUS — Player 2: choose your soul.';
+        startSelectTimer(); // fresh countdown for the side still choosing
+      } else if (hintEl) {
+        hintEl.textContent = 'TIME UP — ' + c.name + ' confirmed.';
+      }
     }
   }, 1000);
 }
@@ -908,6 +933,15 @@ async function confirmSelection() {
   // Select-screen lock state first (P1 lock -> P2 cursor in versus),
   // then the mode controller routes the fight.
   selectScreen.notifyConfirm(id);
+  // Piece 1 Break 1 (TEKKEN-TEARDOWN-SPEC.md §9 D1): the countdown stops
+  // the moment a side locks. If another side still has to pick (Versus
+  // P1 locked, P2 to go) and a countdown was running, a fresh countdown
+  // starts for that side — the timer runs while anyone is still choosing,
+  // as in Tekken 3.
+  try {
+    if (selectScreen._state && selectScreen._state.phase === 'done') stopSelectTimer();
+    else if (selectTimerArmed) startSelectTimer();
+  } catch (_) {}
   if (rankBattleSelect) {
     rankBattleSelect = false;
     (await getRankBattle()).onConfirm(id);
