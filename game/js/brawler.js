@@ -29,11 +29,11 @@
    passes its content builders in (no import cycle).
    ============================================================ */
 import * as THREE from 'three';
-import { Fighter, setArenaLimit, bankIdFor } from './fighter.js';
+import { Fighter, setArenaLimit, bankIdFor, ownSlotBankFor } from './fighter.js';
 import { assets } from './assets.js';
 import { getStage } from './stages.js';
 import { ensureMovesets } from './movesets.js';
-import { loadT3Clips } from './t3anims.js';
+import { loadT3Clips, ensureDwKindMoves } from './t3anims.js';
 import { scaledAi } from './modes.js';
 import { audio } from './audio.js';
 import { applyFighterProfile } from './customization-consumer.js';
@@ -273,7 +273,13 @@ class BrawlerAI {
       this.B._fireProjectile(f, this.B.player, {
         speed: 11, dmg: 17, color: 0xffb020, r: 0.45, unblockable: false,
       });
-      f.tryAttack('2');
+      // DW WARDEN SLAM (dw-followups): this '2' plays the mapped Warden Kit
+      // explosion attack (kmb1_bakutyu, 65f strike) when the kind pack is
+      // loaded — the flag is consumed by fighter.js _attackClipPlan for
+      // this attack only, so a melee '2' is never hijacked. Falls back to
+      // the plain '2' when the pack is missing or the retarget fails.
+      f._dwSlamNext = true;
+      if (!f.tryAttack('2')) f._dwSlamNext = false;
       audio.whiff();
     }
   }
@@ -380,7 +386,7 @@ export class BrawlerGame {
       });
       await ensureMovesets([...needMoves]);
       try {
-        const banks = [...new Set([...needMoves].map((id) => bankIdFor(id)).filter(Boolean))];
+        const banks = [...new Set([...needMoves].flatMap((id) => [bankIdFor(id), ownSlotBankFor(id)]).filter(Boolean))];
         await Promise.all(banks.map((b) => loadT3Clips(THREE, b)));
       } catch (e) {
         console.warn('[WH] brawler T3 clips fallback:', e.message || e);
@@ -427,7 +433,14 @@ export class BrawlerGame {
 
   _buildCast(playerId, n) {
     const pool = this.roster.filter((c) => c.id !== playerId && !c.boss);
-    const list = pool.length >= n ? pool : this.roster.filter((c) => c.id !== playerId);
+    let list = pool.length >= n ? pool : this.roster.filter((c) => c.id !== playerId);
+    // Per-character flow (Pantera template): when the flow names an
+    // echo pool, the cast draws ONLY from it — the flow's rivals,
+    // even when the pool is smaller than the cast.
+    if (this.content.echoIds && this.content.echoIds.length) {
+      const wanted = pool.filter((c) => this.content.echoIds.includes(c.id));
+      if (wanted.length) list = wanted;
+    }
     const cast = [];
     const used = new Set();
     let guard = 0;
@@ -470,7 +483,7 @@ export class BrawlerGame {
   }
 
   _layoutZones(st) {
-    const table = WAVE_TABLES[st.key] || WAVE_TABLES.threshold;
+    const table = (this.content.waveTables && this.content.waveTables[st.key]) || WAVE_TABLES[st.key] || WAVE_TABLES.threshold;
     const R = this.arenaR;
     const n = table.length;
     this.zones = table.map((zd, i) => {
@@ -592,6 +605,16 @@ export class BrawlerGame {
     }
     const f = new Fighter(charData, x, 1, false);
     f.brawler = true;
+    // DW WARDEN KIT (dw-followups): the Warden boss is a brawler KIND, not a
+    // fighter id — the fighter is an echo, so its char.id never resolves to
+    // the 'warden' pack. Load the kind pack here and flag the fighter, so
+    // its slam can play a mapped Warden Kit move (fighter.js _dwKind).
+    // Fire-and-forget like the fighter's own ensureDwMoves call; a missing
+    // pack leaves the boss on its procedural/T3 clips.
+    if (kind === 'warden') {
+      f._dwKind = 'warden';
+      try { const p = ensureDwKindMoves('warden', THREE); if (p && p.catch) p.catch(() => {}); } catch (e) { /* optional */ }
+    }
     f.root.position.z = z;
     if (o.scale && o.scale !== 1) f.root.scale.multiplyScalar(o.scale);
     f.yaw = Math.atan2(this.player.root.position.x - x, this.player.root.position.z - z);

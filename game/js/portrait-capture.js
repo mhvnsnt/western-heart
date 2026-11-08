@@ -31,6 +31,12 @@ window.capture = async (id, opts = {}) => {
   if (!ok) return { id, model, error: 'model failed to load' };
   if (pane.mixer) for (let i = 0; i < 12; i++) pane.mixer.update(1 / 30);
   if (pane.aim) pane.aim.apply(0.4);
+  // opts.rest: the bind pose instead of the stance (facing audit: a front that moves between rest and stance is the
+  // stance retarget turning the body, not the model's facing record)
+  if (opts.rest) {
+    if (pane.mixer) pane.mixer.stopAllAction();
+    pane.model.traverse(o => { if (o.isSkinnedMesh && o.skeleton) o.skeleton.pose(); });
+  }
   pane.model.updateWorldMatrix(true, true);
   let bones = 0; pane.model.traverse(o => { if (o.isBone) bones++; });
   const inst = { bones: {} };
@@ -52,7 +58,11 @@ window.capture = async (id, opts = {}) => {
     const cy = hp.y + torso * 0.05;
     const dist = (torso * 1.15) / Math.tan(THREE.MathUtils.degToRad(pane.camera.fov / 2));
     pane.camera.aspect = 1; pane.camera.updateProjectionMatrix();
-    pane.camera.position.set(hp.x + dist * 0.18, cy + torso * 0.08, hp.z + dist);
+    // opts.yaw (degrees): orbit the camera around the head, for the facing audit
+    // (tools/portraits/facing_probe.mjs renders 0/90/180/270 to find each model's front).
+    const yaw = THREE.MathUtils.degToRad(opts.yaw || 0);
+    const ox = dist * 0.18, oz = dist;
+    pane.camera.position.set(hp.x + ox * Math.cos(yaw) + oz * Math.sin(yaw), cy + torso * 0.08, hp.z - ox * Math.sin(yaw) + oz * Math.cos(yaw));
     pane.camera.lookAt(hp.x, cy - torso * 0.12, hp.z);
     framed = true;
   }

@@ -32,7 +32,7 @@ import { getCachedBuffer, putCachedBuffer } from './asset-cache.js';
 // bundled models stay local; everything else tries the remote asset
 // base first (R2 once the bucket exists), then jsDelivr. One config
 // line in asset-config.js moves the base — no per-model changes.
-import { resolveAssetCandidates } from './asset-config.js';
+import { resolveAssetCandidates, looksLikeModel } from './asset-config.js';
 
 export const MODEL_URLS = {
   pantera: 'assets/models/pantera.glb',
@@ -129,13 +129,13 @@ export const MODEL_URLS = {
   // NIGHTWOLF Attire 1 (owner 2026-10-18, Tripo pull 5b0835eb "tribal warrior"):
   // his DEFAULT attire per roster/nightwolf/attires/ATTIRE-SLOTS.md — tribute to
   // Serena Misae Brown. Unrigged static; playable swap rides the auto-rig pass.
-  'nightwolf-attire1': '../roster/nightwolf/attires/attire1/model.glb',
+  'nightwolf-attire1': '../roster/nightwolf/attires/attire1/model-rigged.glb',
   'king-tyrant': 'assets/models/king-tyrant.glb',
   // KING TYRANT Attires 1-4 (owner 2026-10-19, Tripo pulls — see
   // roster/king-tyrant/attires/ATTIRE-SLOTS.md): White Tyrant / Tyrant King /
   // Black Snow / Fight Gear. The in-game base build ladders back. Unrigged
   // statics; auto-rig queued (cape/jacket cloth-rig tasks recorded, not blocking).
-  'king-tyrant-attire1': '../roster/king-tyrant/attires/attire1/model.glb',
+  'king-tyrant-attire1': '../roster/king-tyrant/attires/attire1/model-rigged.glb',
   'king-tyrant-attire2': '../roster/king-tyrant/attires/attire2/model.glb',
   'king-tyrant-attire3': '../roster/king-tyrant/attires/attire3/model.glb',
   'king-tyrant-attire4': '../roster/king-tyrant/attires/attire4/model.glb',
@@ -199,7 +199,7 @@ export const MODEL_URLS = {
   // under his roster dir per convention. Byte-identical to
   // assets/models/cape-jones.glb — no re-rig needed. See
   // roster/cyborg-x/ATTIRE-SLOTS.md.
-  'cape-jones-attire1': '../roster/cyborg-x/attires/attire1/model-rigged.glb',
+  'cape-jones-attire1': '../roster/cyborg-x/attires/attire1/model-rigged-refit.glb', // 2026-11-06 refit (was model-rigged.glb, 86 MB, torn cape on his card): refit_rig + fit_cdn_budget, 14.1 MB
   // Bonus / music fighters and name-pending models (loadable, unassigned).
   mariposa: 'assets/models/mariposa.glb',
   // Mariposa Slot 1 — Butterfly Default (dedup 2026-10-22): owner-designated
@@ -216,7 +216,33 @@ export const MODEL_URLS = {
   dxmmii: 'assets/models/dxmmii.glb',
   rave: 'assets/models/rave.glb',
   // Cain Elias — Vain Abel's brother, Undertaker archetype (owner 2026-10-19, Tripo pulls).
-  'cain-elias': '../roster/cain-elias/attires/attire1/model.glb',
+  'cain-elias': '../roster/cain-elias/attires/attire1/model-rigged.glb',
+  'bf-aaron-ruben': '../roster/bf-aaron-ruben/attires/attire1/model-rigged.glb',
+  'bf-bannon': '../roster/bf-bannon/attires/attire1/model-rigged.glb',
+  'bf-brutus': '../roster/bf-brutus/attires/attire1/model-rigged.glb',
+  'bf-cipher': '../roster/bf-cipher/attires/attire1/model-rigged.glb',
+  'bf-cody': '../roster/bf-cody/attires/attire1/model-rigged.glb',
+  'bf-echo': '../roster/bf-echo/attires/attire1/model-rigged.glb',
+  'bf-edwin-kennedy': '../roster/bf-edwin-kennedy/attires/attire1/model-rigged.glb',
+  'bf-el-toro-de-oro': '../roster/bf-el-toro-de-oro/attires/attire1/model-rigged.glb',
+  'bf-finxsse': '../roster/bf-finxsse/attires/attire1/model-rigged.glb',
+  'bf-hall-nighter': '../roster/bf-hall-nighter/attires/attire1/model-rigged.glb',
+  'bf-hollow': '../roster/bf-hollow/attires/attire1/model-rigged.glb',
+  'bf-jager': '../roster/bf-jager/attires/attire1/model-rigged.glb',
+  'bf-kobra': '../roster/bf-kobra/attires/attire1/model-rigged.glb',
+  'bf-maime': '../roster/bf-maime/attires/attire1/model-rigged.glb',
+  'bf-master-sensei': '../roster/bf-master-sensei/attires/attire1/model-rigged.glb',
+  'bf-onyx': '../roster/bf-onyx/attires/attire1/model-rigged.glb',
+  'bf-pablo': '../roster/bf-pablo/attires/attire1/model-rigged.glb',
+  'bf-stan-combs': '../roster/bf-stan-combs/attires/attire1/model-rigged.glb',
+  'bf-static': '../roster/bf-static/attires/attire1/model-rigged.glb',
+  'bf-stick-up': '../roster/bf-stick-up/attires/attire1/model-rigged.glb',
+  'bf-tarzanian-devil': '../roster/bf-tarzanian-devil/attires/attire1/model-rigged.glb',
+  'bf-titan': '../roster/bf-titan/attires/attire1/model-rigged.glb',
+  'bf-triple-xxx': '../roster/bf-triple-xxx/attires/attire1/model-rigged.glb',
+  'bf-tyneshia': '../roster/bf-tyneshia/attires/attire1/model-rigged.glb',
+  'bf-viper': '../roster/bf-viper/attires/attire1/model-rigged.glb',
+  'bf-wreck-patterson': '../roster/bf-wreck-patterson/attires/attire1/model-rigged.glb',
   'cain-elias-attire2': '../roster/cain-elias/attires/attire2/model.glb',
   // Vain Abel — Attire 2 (owner 2026-10-20, Tripo pull).
   'vainabel-attire1': '../roster/vainabel/attires/attire1/model-rigged.glb',
@@ -326,7 +352,10 @@ export const MODEL_URLS = {
   // + A3 Capoeira Gold (texture colorways on the Tripo base), A5 rated-M lane
   // (improved build; model.glb superseded, kept on disk). Unrigged statics;
   // playable swap rides the auto-rig pass.
-  'star-attire1': '../roster/star/attires/attire1/model.glb',
+  // Star rigged 2026-11-06 (Roster-100 Wave 3, item L2): template-fit refit of
+  // her own Tripo static on the canonical 50-joint skeleton, 1.59 m; the
+  // unrigged source static stays at attires/attire1/model.glb.
+  'star-attire1': '../roster/star/attires/attire1/model-rigged.glb',
   'star-attire2': '../roster/star/attires/attire2/model.glb',
   'star-attire3': '../roster/star/attires/attire3/model.glb',
   'star-attire5': '../roster/star/attires/attire5/model-improved.glb',
@@ -359,7 +388,7 @@ export const MODEL_URLS = {
   yukihyo: 'assets/models/yukihyo.glb',
   // SCIMITAR (2026-10-21, lane 4 rig batch 1): unrigged static -> auto-rigged via
   // tools/auto_rig knn backend (donor pantera.glb); owner's original stays untouched.
-  scimitar: 'assets/models/scimitar-rigged.glb',   // Shaheen-based base mesh — NO-GATE: wired as-is, clothing via Creation Suite as an option
+  scimitar: '../roster/scimitar/attires/attire1/source/scimitar-a1-rigged.glb', // 2026-11-06 owner: "that not the correct scimitar glb model from my tripo imports" -> his own Tripo pull (scimitar-a1.glb, Tripo a3e76dd5) rigged by tools/auto_rig/rig_tripo_static.py; was assets/models/scimitar-rigged.glb (Shaheen-based base mesh)
   // Created fighters use the Soldier.glb base from the CAW suite.
   // Relative path works on GitHub Pages (game/ -> customization/).
   custom: '../customization/create-fighter/assets/Soldier.glb',
@@ -490,15 +519,17 @@ export const MODEL_URLS = {
   // GASHADOKURO + AOTSUKI (OBSOLETE-ORIGINALS rule, docs/OBSOLETE-ORIGINALS-
   // RULE.md): the Kuma/Panda models ARE the proprietary successors now — the
   // keys are the successors' names; there is no 'kuma'/'panda' fighter key.
-  // Unrigged statics; their roster entries wait for wave-3 movesets.
-  gashadokuro: '../roster/kuma/attires/attire1/source/kuma-a1.glb',
+  // Gashadokuro rigged 2026-11-06 (Roster-100 Wave 3, item L2): landmark refit
+  // of his own Tripo static on the canonical 50-joint skeleton, 1.95 m; the
+  // unrigged source static stays at source/kuma-a1.glb.
+  gashadokuro: '../roster/kuma/attires/attire1/source/gashadokuro-a1-rigged.glb',
   aotsuki: '../roster/panda/attires/attire1/source/aotsuki-a1-rigged.glb',
   // Attire variant keys for on-main GLBs no key reached (catch-up audit
   // attires-unwired set). Ladder placement lives in game/js/attires.js:
   // successor's own attires first, source-game originals late (slots 5+).
   'bruno-attire1': '../roster/bruno/attires/attire1/source/bruno-a1.glb',
   'bruno-attire2': '../roster/bruno/attires/attire2/source/bruno-a2-sail-the-sea-rigged.glb',
-  'dio-attire1': '../roster/dio/attires/attire1/source/dio-a1-jade-god-rigged.glb',
+  'dio-attire1': '../roster/dio/attires/attire1/source/dio-a1-jade-god-rigged-refit.glb', // 2026-11-06 refit (was -rigged.glb: cone face + crushed arms): refit_rig + fit_cdn_budget, 19.0 MB
   'koreshi-attire1': '../roster/koreshi/attires/attire1/model.glb',
   // Negativo attire 1 = the landmark re-fit (PR #1463, tools/auto_rig/refit_rig.py; proof
   // docs/proof/2026-11-01/refit-negativo/): face/hair on Head, arms on the arm bones, hips at the hips.
@@ -1303,6 +1334,7 @@ class AssetManager {
     this.gltfs = {};   // id -> gltf
     this.clips = {};   // id -> {name: clip}
     this.facing = {};  // id -> +1 (+Z) | -1 (-Z), mesh facing of the raw GLB
+    this.facingYaw = {}; // id -> extra Y turn (radians) for a mesh recorded '+X' / '-X' (quarter-turned), else 0
     this.groundY = {}; // id -> lowest skinned-vertex height of the raw GLB at rest
     this.ready = false;
     this._inflight = {};      // id -> { promise, abort } — dedups concurrent loads
@@ -1407,9 +1439,15 @@ class AssetManager {
         // exactly like a bundled one.
         if (!signal.aborted) {
           const cached = await getCachedBuffer(cand);
-          if (cached && !signal.aborted) {
+          // A cached entry that is not a model (an HTML page a host once served with 200) is skipped: the network
+          // copy below replaces it. A cached model that fails to parse falls through the same way.
+          if (cached && !signal.aborted && looksLikeModel(cached)) {
             if (onProgress) onProgress(1, cached.byteLength, cached.byteLength, id);
-            return _sharedGLTFLoader().parseAsync(cached, cand);
+            try {
+              return await _sharedGLTFLoader().parseAsync(cached, cand);
+            } catch (e) {
+              if (e && e.name === 'AbortError') throw e;
+            }
           }
         }
         let res;
@@ -1452,13 +1490,27 @@ class AssetManager {
           if (e && e.name === 'AbortError') throw e;
           buf = await res.arrayBuffer(); // no reader progress on very old browsers
         }
+        // Not a model (an HTML page served with 200 for a missing file): a failed candidate, never cached or parsed.
+        if (!looksLikeModel(buf)) {
+          lastErr = new Error(`not a model (got ${res.headers.get('content-type') || 'unknown type'}) loading ${id} from ${cand}`);
+          if (!firstErr) firstErr = lastErr;
+          continue;
+        }
         // Lane 5: persist the downloaded bytes for the next session.
         // Fire-and-forget (never blocks the parse); a failed store is
         // a silent no-op inside putCachedBuffer.
-        if (buf) putCachedBuffer(cand, buf);
+        putCachedBuffer(cand, buf);
         // The candidate URL string is the parse base, so external .bin /
         // texture references resolve against the host that served the GLB.
-        return _sharedGLTFLoader().parseAsync(buf, cand);
+        // A parse failure moves on to the next candidate instead of failing the whole load.
+        try {
+          return await _sharedGLTFLoader().parseAsync(buf, cand);
+        } catch (e) {
+          if (e && e.name === 'AbortError') throw e;
+          lastErr = e;
+          if (!firstErr) firstErr = e;
+          continue;
+        }
       }
       // Name the FIRST (primary/local) failure, not only the last
       // fallback's: a local 404 followed by an unreachable CDN used to
@@ -1556,7 +1608,11 @@ class AssetManager {
     await _facingReady.then(() => {
       try {
         const rec = _facingTable && _facingTable[id];
-        this.facing[id] = rec === '-Z' ? -1 : rec === '+Z' ? 1 : (feetFacingCue(gltf.scene) || 1);
+        // '+X' / '-X' (2026-11-06): a mesh that faces sideways (Slice's card showed his side and back, and he
+        // fought turned 90 deg away) is turned a quarter, not a half, to face +Z.
+        const quarter = rec === '+X' ? -Math.PI / 2 : rec === '-X' ? Math.PI / 2 : 0;
+        this.facingYaw[id] = quarter;
+        this.facing[id] = rec === '-Z' ? -1 : (rec === '+Z' || quarter) ? 1 : (feetFacingCue(gltf.scene) || 1);
       } catch (e) {
         console.warn(`[WH] facing cue failed for ${id}, defaulting to +Z:`, (e && e.message) || e);
         this.facing[id] = 1;
@@ -1652,6 +1708,7 @@ class AssetManager {
     // dict and mixer are built from it. The source gltf is untouched.
     const mblabRemapped = remapMblabBones(fighterId, inner);
     if ((this.facing[fighterId] || 1) < 0) inner.rotation.y = Math.PI;
+    else if (this.facingYaw[fighterId]) inner.rotation.y = this.facingYaw[fighterId];
     const gy = this.groundY[fighterId] || 0;
     if (Math.abs(gy) > 0.03) inner.position.y = -gy; // feet on the floor
     const model = new THREE.Group();

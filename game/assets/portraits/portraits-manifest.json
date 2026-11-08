@@ -15,15 +15,15 @@
     },
     "rin": {
       "id": "rin",
-      "model": "steve-fox",
+      "model": "rin-body",
       "bones": 49,
       "stance": true,
-      "stanceSource": "tekken-bank",
+      "stanceSource": "cmu-14_01",
       "framed": true,
       "bank": "jin",
       "armDeg": {
-        "L": 39,
-        "R": 42
+        "L": 23,
+        "R": 12
       }
     },
     "byou": {
@@ -54,8 +54,8 @@
     },
     "sha": {
       "id": "sha",
-      "model": "steve-fox",
-      "bones": 49,
+      "model": "sha-body",
+      "bones": 50,
       "stance": true,
       "stanceSource": "cmu-14_01",
       "framed": true,
@@ -80,15 +80,15 @@
     },
     "retsu": {
       "id": "retsu",
-      "model": "pantera",
+      "model": "retsu-body",
       "bones": 49,
       "stance": true,
-      "stanceSource": "tekken-bank",
+      "stanceSource": "cmu-14_01",
       "framed": true,
       "bank": "bryan",
       "armDeg": {
-        "L": 43,
-        "R": 35
+        "L": 23,
+        "R": 12
       }
     },
     "zen": {
@@ -226,25 +226,25 @@
       "model": "waterfall",
       "bones": 49,
       "stance": true,
-      "stanceSource": "tekken-bank",
+      "stanceSource": "cmu-14_01",
       "framed": true,
       "bank": "jin",
       "armDeg": {
-        "L": 42,
-        "R": 39
+        "L": 23,
+        "R": 12
       }
     },
     "kingtyrant": {
       "id": "kingtyrant",
       "model": "king-tyrant-attire1",
-      "bones": 0,
-      "stance": false,
-      "stanceSource": null,
-      "framed": false,
+      "bones": 50,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
       "bank": "eddy",
       "armDeg": {
-        "L": null,
-        "R": null
+        "L": 23,
+        "R": 12
       }
     },
     "burger": {
@@ -276,14 +276,14 @@
     "scimitar": {
       "id": "scimitar",
       "model": "scimitar",
-      "bones": 49,
+      "bones": 73,
       "stance": true,
-      "stanceSource": "tekken-bank",
+      "stanceSource": "cmu-14_01",
       "framed": true,
       "bank": "jin",
       "armDeg": {
-        "L": 39,
-        "R": 42
+        "L": 23,
+        "R": 12
       }
     },
     "purplerain": {
@@ -302,20 +302,20 @@
     "nightwolf": {
       "id": "nightwolf",
       "model": "nightwolf-attire1",
-      "bones": 0,
-      "stance": false,
-      "stanceSource": null,
-      "framed": false,
+      "bones": 50,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
       "bank": "julia",
       "armDeg": {
-        "L": null,
-        "R": null
+        "L": 23,
+        "R": 12
       }
     },
     "dio": {
       "id": "dio",
       "model": "dio-attire1",
-      "bones": 73,
+      "bones": 66,
       "stance": true,
       "stanceSource": "cmu-14_01",
       "framed": true,
@@ -328,7 +328,7 @@
     "cyborgx": {
       "id": "cyborgx",
       "model": "cape-jones-attire1",
-      "bones": 49,
+      "bones": 50,
       "stance": true,
       "stanceSource": "cmu-14_01",
       "framed": true,
@@ -354,14 +354,14 @@
     "star": {
       "id": "star",
       "model": "star-attire1",
-      "bones": 0,
-      "stance": false,
-      "stanceSource": null,
-      "framed": false,
+      "bones": 50,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
       "bank": "xiaoyu",
       "armDeg": {
-        "L": null,
-        "R": null
+        "L": 23,
+        "R": 12
       }
     },
     "torch": {
@@ -434,12 +434,12 @@
       "model": "slice-attire1",
       "bones": 73,
       "stance": true,
-      "stanceSource": "tekken-bank",
+      "stanceSource": "cmu-14_01",
       "framed": true,
       "bank": "bryan",
       "armDeg": {
-        "L": 35,
-        "R": 43
+        "L": 23,
+        "R": 12
       }
     },
     "docfrank": {
@@ -523,7 +523,7 @@
     "chatur": {
       "id": "chatur",
       "model": "chatur",
-      "bones": 52,
+      "bones": 264,
       "stance": true,
       "stanceSource": "cmu-14_01",
       "framed": true,
@@ -536,11 +536,11 @@
     "pond": {
       "id": "pond",
       "model": "pond",
-      "bones": 52,
+      "bones": 224,
       "stance": true,
       "stanceSource": "cmu-14_01",
       "framed": true,
-      "bank": null,
+      "bank": "raven",
       "armDeg": {
         "L": 23,
         "R": 12
@@ -550,23 +550,23 @@
       "id": "ryusan",
       "model": "ryusan",
       "bones": 521,
-      "stance": false,
-      "stanceSource": null,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
       "framed": true,
       "bank": "luckychloe",
       "armDeg": {
-        "L": 87,
-        "R": 87
+        "L": 23,
+        "R": 12
       }
     },
     "tobi": {
       "id": "tobi",
       "model": "tobi",
-      "bones": 73,
+      "bones": 255,
       "stance": true,
       "stanceSource": "cmu-14_01",
       "framed": true,
-      "bank": null,
+      "bank": "hwoarang",
       "armDeg": {
         "L": 23,
         "R": 12
@@ -575,11 +575,11 @@
     "megami": {
       "id": "megami",
       "model": "megami",
-      "bones": 52,
+      "bones": 469,
       "stance": true,
       "stanceSource": "cmu-14_01",
       "framed": true,
-      "bank": null,
+      "bank": "jun",
       "armDeg": {
         "L": 23,
         "R": 12
@@ -588,11 +588,11 @@
     "menajerii": {
       "id": "menajerii",
       "model": "menajerii",
-      "bones": 52,
+      "bones": 450,
       "stance": true,
       "stanceSource": "cmu-14_01",
       "framed": true,
-      "bank": "kuma",
+      "bank": "roger",
       "armDeg": {
         "L": 23,
         "R": 12
@@ -646,8 +646,8 @@
       "framed": true,
       "bank": "heihachi",
       "armDeg": {
-        "L": 12,
-        "R": 55
+        "L": 55,
+        "R": 12
       }
     },
     "rave": {
@@ -692,14 +692,14 @@
     "cainelias": {
       "id": "cainelias",
       "model": "cain-elias",
-      "bones": 0,
-      "stance": false,
-      "stanceSource": null,
-      "framed": false,
+      "bones": 50,
+      "stance": true,
+      "stanceSource": "tekken-bank",
+      "framed": true,
       "bank": "king",
       "armDeg": {
-        "L": null,
-        "R": null
+        "L": 47,
+        "R": 44
       }
     },
     "chordz": {
@@ -718,14 +718,14 @@
     "gashadokuro": {
       "id": "gashadokuro",
       "model": "gashadokuro",
-      "bones": 0,
-      "stance": false,
-      "stanceSource": null,
-      "framed": false,
+      "bones": 50,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
       "bank": "kuma",
       "armDeg": {
-        "L": null,
-        "R": null
+        "L": 23,
+        "R": 12
       }
     },
     "aotsuki": {
@@ -758,6 +758,331 @@
       "id": "ryuji-rock",
       "model": "ryuji-rock",
       "bones": 73,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "king",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    "bf-aaron-ruben": {
+      "id": "bf-aaron-ruben",
+      "model": "bf-aaron-ruben",
+      "bones": 58,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "king",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    "bf-bannon": {
+      "id": "bf-bannon",
+      "model": "bf-bannon",
+      "bones": 58,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "king",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    "bf-brutus": {
+      "id": "bf-brutus",
+      "model": "bf-brutus",
+      "bones": 58,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "king",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    "bf-cipher": {
+      "id": "bf-cipher",
+      "model": "bf-cipher",
+      "bones": 58,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "xiaoyu",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    "bf-cody": {
+      "id": "bf-cody",
+      "model": "bf-cody",
+      "bones": 58,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "jin",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    "bf-echo": {
+      "id": "bf-echo",
+      "model": "bf-echo",
+      "bones": 58,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "xiaoyu",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    "bf-edwin-kennedy": {
+      "id": "bf-edwin-kennedy",
+      "model": "bf-edwin-kennedy",
+      "bones": 58,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "heihachi",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    "bf-el-toro-de-oro": {
+      "id": "bf-el-toro-de-oro",
+      "model": "bf-el-toro-de-oro",
+      "bones": 58,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "king",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    "bf-finxsse": {
+      "id": "bf-finxsse",
+      "model": "bf-finxsse",
+      "bones": 58,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "xiaoyu",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    "bf-hall-nighter": {
+      "id": "bf-hall-nighter",
+      "model": "bf-hall-nighter",
+      "bones": 58,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "king",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    "bf-hollow": {
+      "id": "bf-hollow",
+      "model": "bf-hollow",
+      "bones": 58,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "yoshimitsu",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    "bf-jager": {
+      "id": "bf-jager",
+      "model": "bf-jager",
+      "bones": 58,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "bryan",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    "bf-kobra": {
+      "id": "bf-kobra",
+      "model": "bf-kobra",
+      "bones": 58,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "bryan",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    "bf-master-sensei": {
+      "id": "bf-master-sensei",
+      "model": "bf-master-sensei",
+      "bones": 58,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "heihachi",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    "bf-onyx": {
+      "id": "bf-onyx",
+      "model": "bf-onyx",
+      "bones": 58,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "bryan",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    "bf-pablo": {
+      "id": "bf-pablo",
+      "model": "bf-pablo",
+      "bones": 58,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "king",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    "bf-stan-combs": {
+      "id": "bf-stan-combs",
+      "model": "bf-stan-combs",
+      "bones": 58,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "jin",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    "bf-static": {
+      "id": "bf-static",
+      "model": "bf-static",
+      "bones": 58,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "bryan",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    "bf-stick-up": {
+      "id": "bf-stick-up",
+      "model": "bf-stick-up",
+      "bones": 58,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "xiaoyu",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    "bf-tarzanian-devil": {
+      "id": "bf-tarzanian-devil",
+      "model": "bf-tarzanian-devil",
+      "bones": 58,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "yoshimitsu",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    "bf-titan": {
+      "id": "bf-titan",
+      "model": "bf-titan",
+      "bones": 58,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "king",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    "bf-triple-xxx": {
+      "id": "bf-triple-xxx",
+      "model": "bf-triple-xxx",
+      "bones": 58,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "yoshimitsu",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    "bf-tyneshia": {
+      "id": "bf-tyneshia",
+      "model": "bf-tyneshia",
+      "bones": 58,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "jin",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    "bf-viper": {
+      "id": "bf-viper",
+      "model": "bf-viper",
+      "bones": 58,
+      "stance": true,
+      "stanceSource": "cmu-14_01",
+      "framed": true,
+      "bank": "bryan",
+      "armDeg": {
+        "L": 23,
+        "R": 12
+      }
+    },
+    "bf-wreck-patterson": {
+      "id": "bf-wreck-patterson",
+      "model": "bf-wreck-patterson",
+      "bones": 58,
       "stance": true,
       "stanceSource": "cmu-14_01",
       "framed": true,

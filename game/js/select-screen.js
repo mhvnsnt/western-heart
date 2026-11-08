@@ -34,7 +34,7 @@ import { assets } from './assets.js';
 import { loadGuardStance, createAimStance } from './stance-aim.js';
 import { attiresFor, selectableAttires, selectedAttireModel, setAttire, attireLabel, attireEyeGlow } from './attires.js';
 import { loadT3Clips, createT3Actions, retargetT3Clips, applyT7Stance } from './t3anims.js';
-import { bankIdFor } from './fighter.js';
+import { bankIdFor, ownSlotBankFor, layerOwnSlots } from './fighter.js';
 import { getMovesetInfo } from './movesets.js';
 import { warmSelect, warmFight } from './preload.js';
 import { NINE_SOULS, newSoulSpiritPick, vesselMatch, soulSpiritLabel } from './soul-spirit.js';
@@ -197,17 +197,25 @@ export class PreviewPane {
         bindQ = {
           LeftShoulder: inst.bones.LeftShoulder.getWorldQuaternion(new THREE.Quaternion()),
           RightShoulder: inst.bones.RightShoulder.getWorldQuaternion(new THREE.Quaternion()),
+          // Torso frame for the torso-relative clavicle check below
+          // (the shoulder's parent chain runs through the chest bone;
+          // Mixamo-family rigs name it Spine2).
+          Chest: (inst.bones.Chest || inst.bones.Spine2)
+            ? (inst.bones.Chest || inst.bones.Spine2).getWorldQuaternion(new THREE.Quaternion()) : null,
         };
       }
       try {
         // The fighter's OWN moveset file decides its bank (its base's motion), same as in the fight.
         const bank = bankIdFor(c.id, getMovesetInfo(c.id) ? c.id : (c.moveset || c.id));
         const clips = bank ? await loadT3Clips(THREE, bank) : null;
+        const ownBank = ownSlotBankFor(c.id);
+        if (ownBank) { try { await loadT3Clips(THREE, ownBank); } catch (e) { /* own slots optional */ } }
         if (token !== this._token) return true; // superseded while loading
         if (clips && clips.stance && inst.bones && inst.bones.Hips && inst.bones.RightArm && inst.bones.Head) {
           // Retargeted onto this rig (t3anims.js retargetT3Clips) — the
           // raw bank quaternions only fit the rig they were baked onto.
           const rc = retargetT3Clips(clips, bank, inst.model, THREE, modelId) || {};
+          layerOwnSlots(c.id, rc, inst.model, THREE, modelId); // the fighter's OWN character's slots, same as the fight
           applyT7Stance(c.id, bank, rc, inst.model, THREE, modelId); // real T7 stance where baked, same as the fight
           const t3 = createT3Actions(inst.mixer, rc, THREE);
           if (t3.stance) {
@@ -242,14 +250,48 @@ export class PreviewPane {
             if (fit && bindQ) {
               // (c) clavicle check: shoulder bones are near-rigid
               // parts of the torso in any real stance; a clip that
-              // swings them far from bind is misapplied (the
+              // swings them far from the torso is misapplied (the
               // gyro-shoulder failure), even when the hands stay
-              // within reach.
+              // within reach. PAIRED READING (Wave 3 item 7,
+              // 2026-11-06): the old world-space reading rejected
+              // nearly every measured bank stance (18 of 19 whose
+              // gate ran, 0.69-2.50 rad; the one pass, Cainelias,
+              // landed under the reading by bind geometry) because a
+              // real kamae turns the whole torso side-on —
+              // intrinsic FK on the clips' own skeletons shows the
+              // shoulder's world swing IS the chest's turn (Pantera:
+              // chest 0.73 vs shoulder-world 0.69 at the gate sample;
+              // the clavicle's own chest-relative swing is 0.24).
+              // So the gate now judges the pose against the clip
+              // itself (userData.intrinsicRel, stamped by
+              // retargetT3Clips at this same 0.05 s sample): the
+              // source clip's own chest-relative swing must stay
+              // under the 0.6 rad the check always used (the jun /
+              // roger bank neutrals swing 2.2-3.1 rad in their own
+              // data and stay rejected), and the retargeted pose —
+              // read chest-relative on this rig, since a rig's bind
+              // clavicle direction legitimately differs from the
+              // bank's (measured slack 0.32-0.68 rad) — must not
+              // exceed the intrinsic swing by more than 0.75 rad (measured rig-divergence slack across seven shipped rigs: 0.32-0.68 rad).
+              // Evidence: docs/proof/2026-11-06/item7-bank-stance-fit/
+              const intr = (t3.stance.getClip().userData || {}).intrinsicRel || null;
               for (const s of ['Left', 'Right']) {
                 const sh = inst.bones[s + 'Shoulder'];
                 if (!sh) continue;
-                const ang = sh.getWorldQuaternion(new THREE.Quaternion()).angleTo(bindQ[s + 'Shoulder']);
-                if (ang > 0.6) { fit = false; why = `${s} shoulder swung ${(ang).toFixed(2)} rad from bind`; break; }
+                let ang;
+                const chestBone = inst.bones.Chest || inst.bones.Spine2;
+                if (bindQ.Chest && chestBone) {
+                  const rel = chestBone.getWorldQuaternion(new THREE.Quaternion()).invert()
+                    .multiply(sh.getWorldQuaternion(new THREE.Quaternion()));
+                  const bindRel = bindQ.Chest.clone().invert().multiply(bindQ[s + 'Shoulder']);
+                  ang = rel.angleTo(bindRel);
+                } else {
+                  ang = sh.getWorldQuaternion(new THREE.Quaternion()).angleTo(bindQ[s + 'Shoulder']);
+                }
+                const cap = intr ? intr[s === 'Left' ? 'L' : 'R'] : null;
+                if (cap != null && cap > 0.6) { fit = false; why = `${s} shoulder swung ${cap.toFixed(2)} rad in the source clip itself`; break; }
+                if (cap != null && ang > cap + 0.75) { fit = false; why = `${s} shoulder swung ${ang.toFixed(2)} rad from bind (torso-relative) vs ${cap.toFixed(2)} rad intrinsic`; break; }
+                if (cap == null && ang > 0.6) { fit = false; why = `${s} shoulder swung ${ang.toFixed(2)} rad from bind (torso-relative)`; break; }
               }
             }
             if (fit) {
@@ -428,7 +470,7 @@ export function createSelectScreen(deps) {
      presence on a fighter is the soul-spirit toggle (js/soul-spirit.js),
      not a select card. */
   const SELECT_HIDDEN = new Set([
-    'rin', 'byou', 'tou', 'sha', 'kai', 'jin_soul', 'retsu', 'zen', 'gyou',
+    'byou', 'tou', 'jin_soul', 'zen', 'gyou',
     'ryuji', 'doc-frank-machine-shop',
 
   ]);
@@ -526,9 +568,16 @@ export function createSelectScreen(deps) {
     els.root.classList.toggle('is-locked', !!locked);
     els.lock.hidden = !locked;
     if (!c) {
-      els.name.textContent = side === 'p1' ? 'PLAYER 1' : 'PLAYER 2';
-      els.title.textContent = state.mode === 'versus' && side === 'p2' && !state.locked.p1
-        ? 'Waiting for P1…' : 'Pick a fighter';
+      // Piece 1 Break 2 (TEKKEN-TEARDOWN-SPEC.md §9 D2): in a one-player
+      // mode there is no P2 pick — the second side is the CPU, and in
+      // Arcade its fighter is a random ladder draw. Never let the pane
+      // look like a second pick exists.
+      const soloRival = state.mode !== 'versus' && side === 'p2';
+      els.name.textContent = soloRival ? 'RIVAL' : (side === 'p1' ? 'PLAYER 1' : 'PLAYER 2');
+      els.title.textContent = soloRival
+        ? (state.mode === 'arcade' ? 'CPU — random ladder foe' : 'CPU')
+        : state.mode === 'versus' && side === 'p2' && !state.locked.p1
+          ? 'Waiting for P1…' : 'Pick a fighter';
       els.style.textContent = '';
       els.stats.innerHTML = '';
       els.attires.innerHTML = '';
@@ -817,6 +866,34 @@ if (fb) {
     if (c) highlight(c, { scroll: true });
   }
 
+  /* T3 select timeout (TEKKEN-TEARDOWN-SPEC.md §2a): the fighter under the
+     cursor. If the side now choosing has no cursor fighter yet (Versus P2
+     before a first tap), park the cursor the way onShow does — that side's
+     last pick, else the first grid card — so there is always a fighter
+     under the cursor, as in Tekken 3. Returns null only while the Versus
+     format submenu is still open (no preview allowed yet). */
+  function cursorFighter() {
+    const draftMode = state.mode === 'versus' && state.vsMode === 'team' && !state.vsTeamsDone;
+    const side = draftMode ? state.draftSide : state.activeSide;
+    let c = state.highlight[side];
+    if (!c) {
+      try {
+        const last = JSON.parse(localStorage.getItem(LAST_KEY) || '{}');
+        c = last[side] && deps.findChar(last[side]);
+      } catch (_) {}
+      if (!c || !cardFor(c.id)) {
+        const first = allCards().find(x => x.dataset.id && x.dataset.id !== '__random');
+        c = first && deps.findChar(first.dataset.id);
+      }
+      if (c) highlight(c, { scroll: true });
+    }
+    return state.highlight[side] || null;
+  }
+
+  /* Grid size for the select timer (T3: the countdown grows with the
+     number of unlocked fighters). */
+  function visibleCount() { return selectRoster().length; }
+
   /* Called by main.js confirmSelection() BEFORE modes.onConfirm runs,
      with the id being confirmed. Mirrors the mode flow: versus locks
      P1 then hands the cursor to P2; team stacks picks on P1. */
@@ -995,7 +1072,7 @@ if (fb) {
     return state.locked;
   }
 
-  return { build, onShow, selectById, notifyConfirm, highlight, warmLockedFighters, soulSpiritLocked, _state: state, _panes: panes };
+  return { build, onShow, selectById, notifyConfirm, highlight, cursorFighter, visibleCount, warmLockedFighters, soulSpiritLocked, _state: state, _panes: panes };
 
   /* ---------- TTT2 versus submenu (INSIDE the select screen) ----------
      TTT2 actual: "before you select your characters, you will choose

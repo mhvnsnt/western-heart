@@ -26,6 +26,7 @@
 import { scaledAi, whGetRecords, whSetRecord } from './modes.js';
 import { playStoryBeats, setModeTag, showLoading, hideLoading } from './menus.js';
 import { roadInto, createPartyState, switchPartyFighter, recordPartyStageClear, HM_RAGDOLL_CONTEXTS } from './heartmind-campaign.js';
+import { getHeartmindFlow, FIGHTER_SOUL } from './heartmind-flows.js';
 import { BrawlerGame } from './brawler.js';
 
 /* Filled by the teardown lane. Consumed 1:1 when present. */
@@ -272,6 +273,66 @@ export const HEARTMIND_STORIES = {
         'Her joints crack backward one last time — and then, for the first time, they bend the right way. The eye-spots blink, left to right. All four. The floor can wait.' },
     ],
   },
+  // PANTERA (2026-11-08): 1st per-character flow — the template every
+  // fighter follows. Vessel of TOU (闘 — battle itself). He has
+  // nothing to resolve: the trial uses him as the standard the
+  // others are measured against. (CANON.md PANTERA; NINE-SOULS-
+  // CANON.md TOU row.) Flow: game/js/heartmind-flows.js.
+  pantera: {
+    title: 'PANTERA 闘 — DESCENT OF THE HOLD',
+    entry: [
+      { name: 'THE HEART AND MIND INSIDE', charId: 'pantera', text:
+        'The trial turned inward for Pantera — not across the five lands, down. Every soul carries a dark it will not name. Pantera carries a mat.' },
+      { name: 'PANTERA', charId: 'pantera', text:
+        'A tournament found the right fighter. Five rooms, five main events. I will hold them all.' },
+      { name: 'THE HEART AND MIND INSIDE', charId: 'pantera', text:
+        'He believes the trial is a tournament. The idea that something made the tournament — that something is watching — has never occurred to him.' },
+    ],
+    beats: {
+      masks: [{ name: 'PANTERA', charId: 'pantera', text:
+        'Masks, one after another, and every one of them gets up again. Good. A face that stays down teaches nothing. Under the last mask there is only the hold — it was never a mask. It was a mirror.' }],
+      drowning: [{ name: 'PANTERA', charId: 'pantera', text:
+        'They said something is buried down here. There is nothing buried. Only water, and a mat under it. The trial looked for my dark and found a clinch.' }],
+      furnace: [{ name: 'PANTERA', charId: 'pantera', text:
+        'The furnace asks what I will burn to stay myself. Nothing. I hunt where the sky burns. The fire is my element, not my enemy.' }],
+    },
+    // Per-boss intros (Pantera template): the wardens do not just
+    // roar for him — he sizes each one up. Played by onBossIntro.
+    bossIntros: {
+      threshold: [{ name: 'PANTERA', charId: 'pantera', text:
+        'Big. Loud. Announces himself with every step. Size is not a hold.' }],
+      masks: [{ name: 'PANTERA', charId: 'pantera', text:
+        'One face. Then three. The trial thinks numbers are a hold. Numbers are just more to pin.' }],
+      drowning: [{ name: 'PANTERA', charId: 'pantera', text:
+        'It teleports. It breathes fire. It still has to land somewhere — and where it lands, I will be holding.' }],
+      furnace: [{ name: 'PANTERA', charId: 'pantera', text:
+        'A heart with no body, throwing bodies at me. The trial is running out of fighters. Good. Send the next one.' }],
+    },
+    // Corner partner (Urban Reign partner rule): Demonio would not
+    // stay down, so after the Masks he walks to Pantera's corner.
+    // Played by onStageClear when the flow names a partner.
+    partnerBeat: [
+      { name: 'THE HEART AND MIND INSIDE', charId: 'pantera', text:
+        'The masks are down. One of them would not stay down — it gets up, shakes off the dark, and walks to Pantera\'s corner.' },
+      { name: 'DEMONIO', charId: 'demonio', text:
+        'You fight honest. I will watch your back until the still point. No warmth. Just the work.' },
+      { name: 'PANTERA', charId: 'pantera', text:
+        'Good. The corner is yours.' },
+    ],
+    bossName: 'SHADOW OF PANTERA',
+    bossLines: [
+      { name: 'SHADOW OF PANTERA', charId: 'pantera', text:
+        'I have watched every hold you ever took. I know the long wait, the leverage, the patience. I am the wait, wearing your shape.' },
+      { name: 'PANTERA', charId: 'pantera', text:
+        'Then I can finally wrestle it. The thing that has been watching. Come here.' },
+    ],
+    resolution: [
+      { name: 'PANTERA', charId: 'pantera', text:
+        'It is quiet at the still point. I pinned the watcher. The trial used me as its standard — I set it. The mat is here. I am here.' },
+      { name: 'THE HEART AND MIND INSIDE', charId: 'pantera', text:
+        'Pantera had nothing to resolve, so the descent resolved nothing — and proved the measure every other soul is judged against. He walks out the way he walked in: hunting.' },
+    ],
+  },
   thor: {
     title: 'THOR — DESCENT OF THE THUNDER',
     entry: [
@@ -344,7 +405,12 @@ export function genericStory(char) {
 }
 
 export function getHeartmindStory(char) {
-  return HEARTMIND_STORIES[char.id] || genericStory(char);
+  // Fighter story first; then the fighter's soul's story (a vessel
+  // without its own story falls back to its soul's nineStory);
+  // then the generic frame.
+  return HEARTMIND_STORIES[char.id]
+    || (FIGHTER_SOUL[char.id] && NINE[FIGHTER_SOUL[char.id]]
+      ? nineStory(FIGHTER_SOUL[char.id]) : genericStory(char));
 }
 
 /* ============================================================
@@ -412,6 +478,10 @@ export class HeartmindController {
     if (!this.run) return;
     const fighterId = this.run.fighterId;
     const story = this._story;
+    // Per-character flow (Pantera template): a flow's own stages,
+    // echo pool and wave tables replace the shared ones.
+    const flow = getHeartmindFlow(fighterId);
+    const stages = flow ? flow.stages : HEARTMIND_STAGES;
     this.show('hud');
     const brawler = new BrawlerGame({
       game: this.game,
@@ -420,9 +490,11 @@ export class HeartmindController {
       getChar: this.getChar,
       roster: this.roster,
       content: {
-        stages: HEARTMIND_STAGES,
+        stages,
         makeEcho,
         buildShadowSelf,
+        echoIds: flow ? flow.echoIds : null,
+        waveTables: flow ? flow.waveTables : null,
       },
     });
     // The stage-5 boss wears the story's name for the shadow.
@@ -431,7 +503,7 @@ export class HeartmindController {
     this._brawler = brawler;
     brawler.begin(fighterId, {
       onStageIntro: (i, done) => {
-        const st = HEARTMIND_STAGES[i];
+        const st = stages[i];
         const beat = story.beats[st.key];
         // Shrine体系 at the Still Point: the shrine terminal reads
         // the descending soul before the shadow fight (owner 2026-10-24).
@@ -444,19 +516,39 @@ export class HeartmindController {
         ], done, st.name);
       },
       onBossIntro: (stageIdx, kind, label, done) => {
-        // The shadow confrontation gets its lines; the wardens just roar.
-        if (HEARTMIND_STAGES[stageIdx].key === 'stillpoint') {
+        // The shadow confrontation gets its lines; the wardens just
+        // roar — unless the fighter's story sizes them up first
+        // (Pantera template: story.bossIntros[stageKey]).
+        if (stages[stageIdx].key === 'stillpoint') {
           playStoryBeats(story.bossLines, done, story.bossName);
+        } else if (story.bossIntros && story.bossIntros[stages[stageIdx].key]) {
+          playStoryBeats(story.bossIntros[stages[stageIdx].key], done, label);
         } else {
           done();
         }
       },
       onStageClear: (i, rank, done) => {
-        const st = HEARTMIND_STAGES[i];
+        const st = stages[i];
         const key = 'heartmind_' + fighterId;
         const rec = whGetRecords();
         if (st.n > (rec[key] || 0)) whSetRecord(key, st.n);
         if (this.party) recordPartyStageClear(this.party, fighterId, st.key);
+        // Pantera template: the corner partner joins when the flow
+        // says they are earned (Urban Reign partner rule — beaten,
+        // would not stay down). Added to the party in place; the
+        // player may switch to them between fights, never mid-fight.
+        if (flow && flow.partnerAfter === st.key && flow.partnerId && this.party
+          && !this.party.members.includes(flow.partnerId)) {
+          this.party.members.push(flow.partnerId);
+          this.party.progress[flow.partnerId] = {
+            stage: this.run.stage, wave: this.run.wave, hp: null, cleared: [],
+          };
+          const beat = story.partnerBeat || [];
+          if (beat.length) {
+            playStoryBeats(beat, () => setTimeout(done, 1200), 'THE CORNER');
+            return;
+          }
+        }
         // a breath before the next descent
         setTimeout(done, 1200);
       },

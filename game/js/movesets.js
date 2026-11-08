@@ -52,6 +52,33 @@ export const MOVESET_IDS = [
   'demonio-winged',
   // Stream 6 (2026-10-19): Cain Elias (Undertaker archetype, new fighter).
   'cainelias',
+  // Brutal Fist pull-in (2026-11-08): 26 fighters from Jay's Brutal Fist game.
+  'bf-aaron-ruben',
+  'bf-bannon',
+  'bf-brutus',
+  'bf-cipher',
+  'bf-cody',
+  'bf-echo',
+  'bf-edwin-kennedy',
+  'bf-el-toro-de-oro',
+  'bf-finxsse',
+  'bf-hall-nighter',
+  'bf-hollow',
+  'bf-jager',
+  'bf-kobra',
+  'bf-maime',
+  'bf-master-sensei',
+  'bf-onyx',
+  'bf-pablo',
+  'bf-stan-combs',
+  'bf-static',
+  'bf-stick-up',
+  'bf-tarzanian-devil',
+  'bf-titan',
+  'bf-triple-xxx',
+  'bf-tyneshia',
+  'bf-viper',
+  'bf-wreck-patterson',
   // Burger Kusaregedo kit (owner 2026-10-19): per-form movesets.
   'burger-demon', 'burger-speed-demon', 'burger-the-mouth',
   // Sketchfab intake (owner 2026-10-19): working names, WH names pending.
@@ -623,6 +650,25 @@ function _prepare(ms) {
      is also reachable on the numeric input (P -> 1, K -> 4) when no other move owns it. */
   for (const k of Object.keys(ms.moves)) { const a = legacyAlias(k); if (a && !(a in slots)) slots[a] = k; }
   for (const k of Object.keys(ms.moves)) { const c = canonNotation(k); if (c && c !== k && !(c in slots)) slots[c] = k; }
+  /* Stance-spelling aliases (roster-100 S9, 2026-11-05; docs/movesets/NO-ENTRY-S9-REAUDIT-2026-11-05.md):
+     a fighter's merged layers can key ONE stance under two spellings — phantom's T7 layer keys the
+     Indian Stance INS while his wired entry (d+3+4, T8 layer) names it IND; cyborgx's T8 layer keys
+     BKP / CLOCKWORK where the wired entries name BACKUP / CLK. stance_after carries only the one
+     canonical spelling, so every duplicate-spelling row could never fire. The moveset file itself
+     declares the pairs (ms.stance_alias, from its own rows: the same move names sit under both
+     spellings); each duplicate-spelling key is ALSO slotted on the canonical spelling when nothing
+     else owns that slot — owned inputs keep their canonical row, exactly like the canonNotation
+     pass above, and no row is renamed or removed. */
+  for (const [alias, canon] of Object.entries(ms.stance_alias || {})) {
+    if (!alias || !canon || alias === canon) continue;
+    for (const k of Object.keys(ms.moves)) {
+      if (!k.startsWith(alias + '.')) continue;
+      const t = canon + k.slice(alias.length);
+      if (!(t in slots)) slots[t] = k;
+      const c = canonNotation(t);
+      if (c && c !== t && !(c in slots)) slots[c] = k;
+    }
+  }
   /* Variants (2026-10-29): KOF/SF close and far normals ('1 (close)' / 'far 1') and T7 stance
      spin counts ('JGS* (3 spins), 1') share the plain input; press() picks them by the fight
      context (distance, spins). Other name-keyed moves (rush_l2 '1,1 (Rush)', hop_1 'hop u/f+1')
@@ -702,6 +748,38 @@ function _prepare(ms) {
       }
     }
     for (const [c, ks] of claims) if (ks.size === 1 && !(c in slots)) slots[c] = [...ks][0];
+  }
+  /* BT shared buttons (frame-data convention 'BT 1 (or 2)'): a back-turned row whose own
+     source command declares a shared button is the SAME move on both buttons. demonio's
+     merged slots wire that sharing by hand (BT.2 -> BT.1, BT.4 -> BT.3); sibling files carry
+     the same declarations in their rows' t7_command ('BT 1 (or 2)' on demonio-human /
+     -winged / -bloodline-ember, gyou-spirit-body, t3-anna / eddy / julia / nina / paul) but
+     never got the slots, so a BT press on the shared button fell through to the FACING row.
+     Slot the declared alternate on the row the primary button fires — fill-only, like every
+     pass above; nothing is slotted that the row's own command does not declare. The composed
+     '(During BT RFF) 1 or 2' spelling (tobi / t3-hwoarang BT_RFF.1) is the same declaration
+     for a stance-composed BT row. */
+  for (const [k, mv] of Object.entries(ms.moves)) {
+    if (!mv) continue;
+    const cmd = typeof mv.t7_command === 'string' ? mv.t7_command.trim() : '';
+    let m = /^BT\s+(d\+)?([1-4](?:\+[1-4])*)?\s*\(or\s+(d\+)?([1-4](?:\+[1-4])*)\)/i.exec(cmd);
+    if (m && m[4]) {
+      const primary = canonNotation(mv.input || k);
+      if (primary && primary.startsWith('BT.')) {
+        const tail = primary.slice(3);
+        const dirPart = m[3] ? 'd+' : (/^d\+/.test(tail) ? 'd+' : '');
+        const alt = 'BT.' + dirPart + m[4];
+        const target = slots[primary] || k;
+        if (alt !== primary && !(alt in slots)) slots[alt] = target;
+      }
+      continue;
+    }
+    m = /^\(during BT ([A-Z][A-Z0-9_]*)\)\s*([1-4])\s+or\s+([1-4])$/i.exec(cmd);
+    if (m) {
+      const primary = 'BT_' + m[1] + '.' + m[2], alt = 'BT_' + m[1] + '.' + m[3];
+      const target = slots[primary] || (ms.moves[primary] ? primary : null);
+      if (target && !(alt in slots)) slots[alt] = target;
+    }
   }
   { // (b) T3 any-of DOWN commands: a bank row whose source command lists several
     // down directions for one button ('1/2/3+LP' — any of d/b, d, d/f performs the
@@ -938,10 +1016,50 @@ export class TekkenBuffer {
     const now = performance.now();
     this.dirEvents.push({ dir, t: now });
     if (this.dirEvents.length > 24) this.dirEvents.shift();
+    // roster-100 L5: crouch-dash motion detection. When the direction history
+    // completes the motion of the fighter's data-declared cd_entry (that
+    // file's own "Crouch Dash" row, e.g. f,n,d,d/f), latch the CD context —
+    // the same way the f,f double-tap above latches the dash row. Fighters
+    // whose data declares no cd_entry gain nothing here.
+    try {
+      const ms = getFighterMoveset(this.fighterId);
+      if (ms && ms.cd_entry) {
+        if (ms._cdSeq === undefined) {
+          const toks = String(ms.cd_entry).split(',').map((x) => x.trim().toLowerCase()
+            .replace(/^df$/, 'd/f').replace(/^db$/, 'd/b').replace(/^uf$/, 'u/f').replace(/^ub$/, 'u/b'));
+          // dirEvents (and _matchMotion) are neutral-free by design — the 'n'
+          // steps of a motion (f,n,d,d/f) are not recorded there, so the
+          // match sequence drops them, exactly like the engine's own qcf
+          // motion matching on the same history.
+          const seq = toks.filter((x) => x !== 'n');
+          ms._cdSeq = toks.every((x) => !/[0-9+]/.test(x)) && seq.length >= 2 ? seq : null;
+        }
+        if (ms._cdSeq && this._matchMotion(ms._cdSeq)) this.noteCdStart(ms.cd_entry);
+      }
+    } catch (e) { /* cd detection is additive; never break direction noting */ }
   }
 
   /** Tekken running state (WR): see RUN_HOLD_FRAMES. */
   running() { return !!this._runUntil && performance.now() < this._runUntil; }
+  /** Crouch dash state (CD): latched by _recordMove when the fighter's own
+   * data-declared cd_entry move fires (roster-100 L5, 2026-11-06). The window
+   * is the entry move's own duration + a grace tail, mirroring the WR latch. */
+  cdActive() { return !!this._cdUntil && performance.now() < this._cdUntil; }
+  /** Latch the CD context when the fighter's data-declared cd_entry move
+   * starts. Called from _recordMove (explicit/buffer paths) and from
+   * fighter.js's main attack-start (which does not record). */
+  noteCdStart(notation) {
+    try {
+      const ms = getFighterMoveset(this.fighterId);
+      if (!ms || !ms.cd_entry) return;
+      const fired = resolveMoveKey(this.fighterId, notation) || notation;
+      const entry = resolveMoveKey(this.fighterId, ms.cd_entry) || ms.cd_entry;
+      if (fired !== entry) return;
+      const mv = ms.moves[ms.cd_entry] || {};
+      const dur = ((+mv.startup || 0) + (+mv.active || 0) + (+mv.recovery || 0)) * 1000;
+      this._cdUntil = performance.now() + Math.min(1500, Math.max(500, dur + 250));
+    } catch (e) { /* cd latch is additive; never break move starts */ }
+  }
   /** This fighter's move key for a notation, if it owns one. */
   resolveKey(k) { return resolveMoveKey(this.fighterId, k); }
 
@@ -1134,14 +1252,20 @@ export class TekkenBuffer {
     const opener = (c) => (strPrefixesHas(this.fighterId, ms, c) ? (this._strPath = c, this._strPathT = now, true) : false);
     const prefixes = [];
     if (ctx.running) prefixes.push('WR.'); // Tekken while running
+    if (ctx.crouchDash) prefixes.push('CD.'); // roster-100 L5: crouch dash (data-declared cd_entry latch)
     for (const sp of ctx.soulStates || []) prefixes.push(sp + '.'); // pt217u soul systems
+    // BT is a facing state of its own (fighter._bt) and it DOMINATES the stance: while
+    // back-turned, the BT rows are the moves, including the composed spellings the data keys
+    // itself ('BT_RFF.1' = BT while in RFF, 'NSS.BT.d+1' = the stance's BT row). These come
+    // before the bare stance prefix, or the facing stance row would win from behind.
+    if (ctx.backturned) { if (ctx.stance) prefixes.push('BT_' + ctx.stance + '.', ctx.stance + '.BT.'); prefixes.push('BT.'); }
     if (ctx.stance) prefixes.push(ctx.stance + '.');
     if (ctx.rage) prefixes.push('R.');
     // T8 Heat moves ('H.2+3', 'f,f,F+2,H.1+2'): the WH heat state is Soul Urge (stance audit 2026-11-01: 99 rows, 33 fighters)
     if (ctx.urgeOn) prefixes.push('H.');
     // Rage lane (T7), as in _pressLegacy: the rage drive lives on 3+4 while raging (synthesized RD.).
     if (ctx.rage) prefixes.push('RD.');
-    if (ctx.backturned) prefixes.push('BT.');
+    if (ctx.ssSide) prefixes.push(ctx.ssSide + '.'); // roster-100 L5: directional sidestep (SSL/SSR, foe-flank convention) — side-specific outranks generic SS (the side is always known from ssDir mid-step)
     if (ctx.sidestep) prefixes.push('SS.');
     if (ctx.crouching) prefixes.push('FC.', 'hFC.'); // T8 'hFC' rows are crouch moves too (stance audit: 130 rows)
     if (ctx.foeDown) prefixes.push('OTG.');          // on the grounded foe
@@ -1282,14 +1406,17 @@ export class TekkenBuffer {
     }
     const prefixes = [];
     if (ctx.running) prefixes.push('WR.'); // Tekken while running
+    if (ctx.crouchDash) prefixes.push('CD.'); // roster-100 L5: crouch dash (data-declared cd_entry latch)
     for (const sp of ctx.soulStates || []) prefixes.push(sp + '.'); // pt217u soul systems
+    // BT dominates the stance (see _pressV2): composed 'BT_RFF.' / 'NSS.BT.' spellings, then BT.
+    if (ctx.backturned) { if (ctx.stance) prefixes.push('BT_' + ctx.stance + '.', ctx.stance + '.BT.'); prefixes.push('BT.'); }
     if (ctx.stance) prefixes.push(ctx.stance + '.');
     if (ctx.rage) prefixes.push('R.');
     // T8 Heat moves ('H.2+3', 'f,f,F+2,H.1+2'): the WH heat state is Soul Urge (stance audit 2026-11-01: 99 rows, 33 fighters)
     if (ctx.urgeOn) prefixes.push('H.');
     // Rage lane (T7): rage drive lives on 3+4 while raging (synthesized RD.).
     if (ctx.rage) prefixes.push('RD.');
-    if (ctx.backturned) prefixes.push('BT.');
+    if (ctx.ssSide) prefixes.push(ctx.ssSide + '.'); // roster-100 L5: directional sidestep (SSL/SSR, foe-flank convention) — side-specific outranks generic SS (the side is always known from ssDir mid-step)
     if (ctx.sidestep) prefixes.push('SS.');
     if (ctx.crouching) prefixes.push('FC.', 'hFC.'); // T8 'hFC' rows are crouch moves too (stance audit: 130 rows)
     if (ctx.foeDown) prefixes.push('OTG.');          // on the grounded foe
@@ -1423,6 +1550,8 @@ export class TekkenBuffer {
   _recordMove(notation) {
     this.lastMove = notation;
     this.lastMoveT = performance.now();
+    // roster-100 L5: firing the data-declared crouch-dash entry latches CD.
+    this.noteCdStart(notation);
     return notation;
   }
 

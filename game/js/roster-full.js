@@ -10,17 +10,17 @@
 
 export const FULL_ROSTER = [
   // ——— THE NINE SOULS ———
-  { id: 'rin', name: 'RIN', title: 'The Protagonist Soul', base: 'Jin Kazama', moveset: 'demonio', model: null, modelPending: true, tintStrength: 0.6,
+  { id: 'rin', name: 'RIN', title: 'The Protagonist Soul', base: 'Jin Kazama', moveset: 'demonio', model: 'rin-body', tintStrength: 0.6,
     colors: { suit: 0x1a3a6b, trim: 0x9fd8ff }, style: 'Karate', archetype: 'Balanced' },
-  { id: 'byou', name: 'BYOU', title: 'The Sick Soul', base: 'Lei Wulong', moveset: 'demonio', model: null, modelPending: true, tintStrength: 0.6,
-    colors: { suit: 0x4a5a1a, trim: 0x8a9a3a }, style: 'Five Animals', archetype: 'Trickster' },
+  { id: 'byou', name: 'BYOU', title: 'The Sick Soul', base: 'Wang Jinrei', moveset: 'demonio', model: null, modelPending: true, tintStrength: 0.6,
+    colors: { suit: 0x4a5a1a, trim: 0x8a9a3a }, style: 'Xingyiquan', archetype: 'Trickster' },
   { id: 'tou', name: 'TOU', title: 'The Fighting Soul', base: 'Paul Phoenix', moveset: 'heihachi', model: null, modelPending: true, tintStrength: 0.25,
     colors: { suit: 0x8a1a1a, trim: 0xcc4400 }, style: 'Power Karate', archetype: 'Power' },
-  { id: 'sha', name: 'SHA', title: 'The Sand Soul', base: 'Xiaoyu', moveset: 'xiaoyu', model: null, modelPending: true, tintStrength: 0.6,
+  { id: 'sha', name: 'SHA', title: 'The Sand Soul', base: 'Xiaoyu', moveset: 'xiaoyu', model: 'sha-body', tintStrength: 0.6,
     colors: { suit: 0xc2a36b, trim: 0x8a6a3a }, style: 'Hakkesho', archetype: 'Evasive' },
-  { id: 'kai', name: 'KAI', title: 'The Sea Soul', base: 'Eddy Gordo', moveset: 'demonio', model: null, modelPending: true, tintStrength: 0.25,
+  { id: 'kai', name: 'KAI', title: 'The Sea Soul', base: 'Eddy Gordo', moveset: 'demonio', model: 'kai-body', tintStrength: 0.25,
     colors: { suit: 0x1a4a6b, trim: 0x3a8acc }, style: 'Capoeira', archetype: 'Rushdown' },
-  { id: 'retsu', name: 'RETSU', title: 'The Violent Soul', base: 'Bryan Fury', moveset: 'bryan', model: null, modelPending: true, tintStrength: 0.25,
+  { id: 'retsu', name: 'RETSU', title: 'The Violent Soul', base: 'Bryan Fury', moveset: 'bryan', model: 'retsu-body', tintStrength: 0.25,
     colors: { suit: 0x3a1a1a, trim: 0xcc2222 }, style: 'Kickboxing', archetype: 'Rushdown' },
   { id: 'zen', name: 'ZEN', title: 'The Still Soul', base: 'Heihachi', moveset: 'heihachi', model: 'zen', tintStrength: 0.6,
     colors: { suit: 0xd0d0d0, trim: 0x8a8a8a }, style: 'Karate', archetype: 'Defensive',
@@ -382,6 +382,84 @@ export const FULL_ROSTER = [
   // silvertongue.json (her full kit, authored as her own file this wave).
   { id: 'silvertongue', name: 'SILVERTONGUE', title: 'The Heiress Soul', base: 'Lili', moveset: 'silvertongue', model: 'silvertongue', tintStrength: 0.25,
     colors: { suit: 0xf0e8f0, trim: 0xc0a062 }, style: 'Acrobatic Elegance', archetype: 'Stylish' },
+  // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): Aaron Ruben — BF role "Technical Grappler / Ring General", T3 bank king, UR donor ur-char002. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
+  { id: 'bf-aaron-ruben', name: 'AARON RUBEN', title: 'Technical Grappler / Ring General', base: 'Technical Grappler / Ring General', moveset: 'bf-aaron-ruben', model: 'bf-aaron-ruben', tintStrength: 0.25,
+    colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Technical Grappler / Ring General', archetype: 'Power' },
+  // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): Bannon — BF role "Protagonist / Power Wrestler", T3 bank king, UR donor ur-char042. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
+  { id: 'bf-bannon', name: 'BANNON', title: 'Protagonist / Power Wrestler', base: 'Power Wrestling / Technical Hybrid', moveset: 'bf-bannon', model: 'bf-bannon', tintStrength: 0.25,
+    colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Protagonist / Power Wrestler', archetype: 'Power' },
+  // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): Brutus — BF role "Unstoppable Juggernaut", T3 bank king, UR donor ur-char032. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
+  { id: 'bf-brutus', name: 'BRUTUS', title: 'Unstoppable Juggernaut', base: 'Juggernaut / Pure Power', moveset: 'bf-brutus', model: 'bf-brutus', tintStrength: 0.25,
+    colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Unstoppable Juggernaut', archetype: 'Power' },
+  // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): Cipher — BF role "Agile Disruptor / Speed Fighter", T3 bank xiaoyu, UR donor ur-char045. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
+  { id: 'bf-cipher', name: 'CIPHER', title: 'Agile Disruptor / Speed Fighter', base: 'Speed / Agility', moveset: 'bf-cipher', model: 'bf-cipher', tintStrength: 0.25,
+    colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Agile Disruptor / Speed Fighter', archetype: 'Tricky' },
+  // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): Cody — BF role "Toxic Pawn / Former Manager", T3 bank jin, UR donor ur-char022. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
+  { id: 'bf-cody', name: 'CODY', title: 'Toxic Pawn / Former Manager', base: 'Brawler / Interference', moveset: 'bf-cody', model: 'bf-cody', tintStrength: 0.25,
+    colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Toxic Pawn / Former Manager', archetype: 'Balanced' },
+  // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): Echo — BF role "Psychological Threat / Aerial", T3 bank xiaoyu, UR donor ur-char046. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
+  { id: 'bf-echo', name: 'ECHO', title: 'Psychological Threat / Aerial', base: 'Psychological / Aerial', moveset: 'bf-echo', model: 'bf-echo', tintStrength: 0.25,
+    colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Psychological Threat / Aerial', archetype: 'Tricky' },
+  // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): Edwin Kennedy — BF role "Corporate Mastermind / Power Broker", T3 bank heihachi, UR donor ur-char061. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
+  { id: 'bf-edwin-kennedy', name: 'EDWIN KENNEDY', title: 'Corporate Mastermind / Power Broker', base: 'Corporate Power / Calculated Brutality', moveset: 'bf-edwin-kennedy', model: 'bf-edwin-kennedy', tintStrength: 0.25,
+    colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Corporate Mastermind / Power Broker', archetype: 'Power' },
+  // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): El Toro de Oro — BF role "Luchador / Golden Bull", T3 bank king, UR donor ur-char030. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
+  { id: 'bf-el-toro-de-oro', name: 'EL TORO DE ORO', title: 'Luchador / Golden Bull', base: 'Luchador / Power', moveset: 'bf-el-toro-de-oro', model: 'bf-el-toro-de-oro', tintStrength: 0.25,
+    colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Luchador / Golden Bull', archetype: 'Power' },
+  // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): Finxsse — BF role "Showman / Power-Agility Hybrid", T3 bank xiaoyu, UR donor ur-char060. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
+  { id: 'bf-finxsse', name: 'FINXSSE', title: 'Showman / Power-Agility Hybrid', base: 'Power + speed hybrid', moveset: 'bf-finxsse', model: 'bf-finxsse', tintStrength: 0.25,
+    colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Showman / Power-Agility Hybrid', archetype: 'Tricky' },
+  // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): Hall Nighter — BF role "Powerhouse Enforcer", T3 bank king, UR donor ur-char058. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
+  { id: 'bf-hall-nighter', name: 'HALL NIGHTER', title: 'Powerhouse Enforcer', base: 'Power Brawler / Endurance', moveset: 'bf-hall-nighter', model: 'bf-hall-nighter', tintStrength: 0.25,
+    colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Powerhouse Enforcer', archetype: 'Power' },
+  // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): Hollow — BF role "Phantom / Psychological Warfare", T3 bank yoshimitsu, UR donor ur-char063. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
+  { id: 'bf-hollow', name: 'HOLLOW', title: 'Phantom / Psychological Warfare', base: 'Phantom / Psychological', moveset: 'bf-hollow', model: 'bf-hollow', tintStrength: 0.25,
+    colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Phantom / Psychological Warfare', archetype: 'Tricky' },
+  // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): Jager — BF role "Predator / Hunter", T3 bank bryan, UR donor ur-char044. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
+  { id: 'bf-jager', name: 'JAGER', title: 'Predator / Hunter', base: 'Predator / Hunter', moveset: 'bf-jager', model: 'bf-jager', tintStrength: 0.25,
+    colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Predator / Hunter', archetype: 'Power' },
+  // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): Kobra — BF role "Street Fighter / Chaos Agent", T3 bank bryan, UR donor ur-char043. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
+  { id: 'bf-kobra', name: 'KOBRA', title: 'Street Fighter / Chaos Agent', base: 'Street Fighter / Chaos', moveset: 'bf-kobra', model: 'bf-kobra', tintStrength: 0.25,
+    colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Street Fighter / Chaos Agent', archetype: 'Power' },
+  // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): Maime — BF role "Technical Striker", T3 bank jin, UR donor ur-char020. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
+  { id: 'bf-maime', name: 'MAIME', title: 'Technical Striker', base: 'Technical Striking / Speed', moveset: 'bf-maime', model: 'bf-maime', tintStrength: 0.25,
+    colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Technical Striker', archetype: 'Balanced' },
+  // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): Master Sensei — BF role "Martial Arts Master / Discipline Incarnate", T3 bank heihachi, UR donor ur-char016. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
+  { id: 'bf-master-sensei', name: 'MASTER SENSEI', title: 'Martial Arts Master / Discipline Incarnate', base: 'Martial Arts Master / Precision', moveset: 'bf-master-sensei', model: 'bf-master-sensei', tintStrength: 0.25,
+    colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Martial Arts Master / Discipline Incarnate', archetype: 'Power' },
+  // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): Onyx — BF role "Power Brawler", T3 bank bryan, UR donor ur-char056. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
+  { id: 'bf-onyx', name: 'ONYX', title: 'Power Brawler', base: 'Power Brawler', moveset: 'bf-onyx', model: 'bf-onyx', tintStrength: 0.25,
+    colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Power Brawler', archetype: 'Power' },
+  // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): Pablo — BF role "Mythic Powerhouse / Bull of the Ring", T3 bank king, UR donor ur-char003. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
+  { id: 'bf-pablo', name: 'PABLO', title: 'Mythic Powerhouse / Bull of the Ring', base: 'Mythic Power / Bull Rush', moveset: 'bf-pablo', model: 'bf-pablo', tintStrength: 0.25,
+    colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Mythic Powerhouse / Bull of the Ring', archetype: 'Power' },
+  // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): Stan Combs — BF role "Corporate Architect / Manager Fighter", T3 bank jin, UR donor ur-char055. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
+  { id: 'bf-stan-combs', name: 'STAN COMBS', title: 'Corporate Architect / Manager Fighter', base: 'Corporate Architect / Dirty Fighter', moveset: 'bf-stan-combs', model: 'bf-stan-combs', tintStrength: 0.25,
+    colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Corporate Architect / Manager Fighter', archetype: 'Balanced' },
+  // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): Static — BF role "Electric Striker / Speed Brawler", T3 bank bryan, UR donor ur-char054. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
+  { id: 'bf-static', name: 'STATIC', title: 'Electric Striker / Speed Brawler', base: 'Electric Striker / Speed Brawler', moveset: 'bf-static', model: 'bf-static', tintStrength: 0.25,
+    colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Electric Striker / Speed Brawler', archetype: 'Power' },
+  // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): Stick-Up — BF role "Agile Disruptor / Speed Fighter", T3 bank xiaoyu, UR donor ur-char059. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
+  { id: 'bf-stick-up', name: 'STICK-UP', title: 'Agile Disruptor / Speed Fighter', base: 'Speed / Agility', moveset: 'bf-stick-up', model: 'bf-stick-up', tintStrength: 0.25,
+    colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Agile Disruptor / Speed Fighter', archetype: 'Tricky' },
+  // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): Tarzanian Devil — BF role "Wildman Luchador / Hardcore High Flyer", T3 bank yoshimitsu, UR donor ur-char041. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
+  { id: 'bf-tarzanian-devil', name: 'TARZANIAN DEVIL', title: 'Wildman Luchador / Hardcore High Flyer', base: 'Lucha libre / hardcore hybrid', moveset: 'bf-tarzanian-devil', model: 'bf-tarzanian-devil', tintStrength: 0.25,
+    colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Wildman Luchador / Hardcore High Flyer', archetype: 'Tricky' },
+  // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): Titan — BF role "Colossus / Immovable Object", T3 bank king, UR donor ur-char001. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
+  { id: 'bf-titan', name: 'TITAN', title: 'Colossus / Immovable Object', base: 'Colossus / Immovable', moveset: 'bf-titan', model: 'bf-titan', tintStrength: 0.25,
+    colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Colossus / Immovable Object', archetype: 'Power' },
+  // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): Triple XXX — BF role "Showman / High-Flying Entertainer", T3 bank yoshimitsu, UR donor ur-char062. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
+  { id: 'bf-triple-xxx', name: 'TRIPLE XXX', title: 'Showman / High-Flying Entertainer', base: 'Showman / High-Flying', moveset: 'bf-triple-xxx', model: 'bf-triple-xxx', tintStrength: 0.25,
+    colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Showman / High-Flying Entertainer', archetype: 'Tricky' },
+  // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): Tyneshia — BF role "Street Queen / Technical Brawler", T3 bank jin, UR donor ur-char057. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
+  { id: 'bf-tyneshia', name: 'TYNESHIA', title: 'Street Queen / Technical Brawler', base: 'Street Queen / Technical Brawler', moveset: 'bf-tyneshia', model: 'bf-tyneshia', tintStrength: 0.25,
+    colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Street Queen / Technical Brawler', archetype: 'Balanced' },
+  // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): Viper — BF role "Assassin / Strike Specialist", T3 bank bryan, UR donor ur-char021. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
+  { id: 'bf-viper', name: 'VIPER', title: 'Assassin / Strike Specialist', base: 'Assassin / Precision Striker', moveset: 'bf-viper', model: 'bf-viper', tintStrength: 0.25,
+    colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Assassin / Strike Specialist', archetype: 'Power' },
+  // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): Wreck Patterson — BF role "Wrecking Machine / Demolition Expert", T3 bank king, UR donor ur-char031. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
+  { id: 'bf-wreck-patterson', name: 'WRECK PATTERSON', title: 'Wrecking Machine / Demolition Expert', base: 'Wrecking Machine / Demolition', moveset: 'bf-wreck-patterson', model: 'bf-wreck-patterson', tintStrength: 0.25,
+    colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Wrecking Machine / Demolition Expert', archetype: 'Power' },
 ];
 
 /* Unknown / missing id -> a MODEL PENDING soul (no body, kept out of fights),

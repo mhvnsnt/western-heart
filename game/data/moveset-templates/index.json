@@ -1,14 +1,14 @@
 {
   "schema": "wh.moveset-template.v1",
-  "updated": "2026-11-05",
+  "updated": "2026-11-08",
   "law": "docs/PIPELINE-LAW.md",
   "inventory_doc": "docs/movesets/MOVESET-TEMPLATE-INVENTORY-2026-11-05.md",
   "steam_library_doc": "docs/tech/STEAM-LIBRARY.md",
   "private_teardown_repo": "mhvnsnt/game-reverse-engineering",
   "rules": {
-    "roster_names": "WH character ids only \u2014 never other-franchise display names",
+    "roster_names": "WH character ids only — never other-franchise display names",
     "template_ids": "generic hinting names (Creator copy-moveset style)",
-    "raw_assets": "private GRE repo \u2014 WH keeps mappings + pointers only",
+    "raw_assets": "private GRE repo — WH keeps mappings + pointers only",
     "no_fe_demo_roster": [
       "hwoarang",
       "jin-kazama",
@@ -33,7 +33,7 @@
         "pantera"
       ],
       "status": "primary",
-      "exactness": "Pantera = exact King T7 \u2014 no swapped/mixed/T3-as-T7"
+      "exactness": "Pantera = exact King T7 — no swapped/mixed/T3-as-T7"
     },
     {
       "id": "t7-mishima-style-karate",
@@ -56,7 +56,7 @@
     },
     {
       "id": "t7-flashy-counter-kickbox",
-      "hint": "T7 flashy counter kickboxer family \u2014 template only, never demo-cast roster names",
+      "hint": "T7 flashy counter kickboxer family — template only, never demo-cast roster names",
       "source_game": "tekken7",
       "attached_to": [],
       "status": "reserved"
@@ -76,7 +76,7 @@
         "chatur"
       ],
       "status": "attached-existing",
-      "exactness": "Chatur FIGHTER_BANK \u2192 ogre; bank game/assets/anim/t3/ogre/ + movesets/chatur.json (281 T3 True Ogre rows). Decoded WH commit ed16dd6c 2026-10-23. GRE tekken3/animations has no divmot14 this pass \u2014 WH bank is the landed game asset."
+      "exactness": "Chatur FIGHTER_BANK → ogre; bank game/assets/anim/t3/ogre/ + movesets/chatur.json (281 T3 True Ogre rows). Decoded WH commit ed16dd6c 2026-10-23. GRE tekken3/animations has no divmot14 this pass — WH bank is the landed game asset."
     },
     {
       "id": "cam-moveset-string-lib",
@@ -126,6 +126,1746 @@
       ],
       "attached_to": [],
       "status": "pointer"
+    },
+    {
+      "id": "t3-anna",
+      "hint": "T3 bank character — 276 measured moves in game/data/moveset-library/banks/t3.json",
+      "source_game": "tekken3",
+      "source_bank": "t3",
+      "source_character": "Anna",
+      "library_prefix": "t3:anna",
+      "moves": 276,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/t3.json"
+      ]
+    },
+    {
+      "id": "t3-bosconovitch",
+      "hint": "T3 bank character — 280 measured moves in game/data/moveset-library/banks/t3.json",
+      "source_game": "tekken3",
+      "source_bank": "t3",
+      "source_character": "Bosconovitch",
+      "library_prefix": "t3:bosconovitch",
+      "moves": 280,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/t3.json"
+      ]
+    },
+    {
+      "id": "t3-bryan",
+      "hint": "T3 bank character — 195 measured moves in game/data/moveset-library/banks/t3.json",
+      "source_game": "tekken3",
+      "source_bank": "t3",
+      "source_character": "Bryan",
+      "library_prefix": "t3:bryan",
+      "moves": 195,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/t3.json"
+      ]
+    },
+    {
+      "id": "t3-eddy",
+      "hint": "T3 bank character — 241 measured moves in game/data/moveset-library/banks/t3.json",
+      "source_game": "tekken3",
+      "source_bank": "t3",
+      "source_character": "Eddy",
+      "library_prefix": "t3:eddy",
+      "moves": 241,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/t3.json"
+      ]
+    },
+    {
+      "id": "t3-forestlaw",
+      "hint": "T3 bank character — 111 measured moves in game/data/moveset-library/banks/t3.json",
+      "source_game": "tekken3",
+      "source_bank": "t3",
+      "source_character": "Forestlaw",
+      "library_prefix": "t3:forestlaw",
+      "moves": 111,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/t3.json"
+      ]
+    },
+    {
+      "id": "t3-gon",
+      "hint": "T3 bank character — 157 measured moves in game/data/moveset-library/banks/t3.json",
+      "source_game": "tekken3",
+      "source_bank": "t3",
+      "source_character": "Gon",
+      "library_prefix": "t3:gon",
+      "moves": 157,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/t3.json"
+      ]
+    },
+    {
+      "id": "t3-gunjack",
+      "hint": "T3 bank character — 250 measured moves in game/data/moveset-library/banks/t3.json",
+      "source_game": "tekken3",
+      "source_bank": "t3",
+      "source_character": "Gunjack",
+      "library_prefix": "t3:gunjack",
+      "moves": 250,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/t3.json"
+      ]
+    },
+    {
+      "id": "t3-heihachi",
+      "hint": "T3 bank character — 216 measured moves in game/data/moveset-library/banks/t3.json",
+      "source_game": "tekken3",
+      "source_bank": "t3",
+      "source_character": "Heihachi",
+      "library_prefix": "t3:heihachi",
+      "moves": 216,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/t3.json"
+      ]
+    },
+    {
+      "id": "t3-hwoarang",
+      "hint": "T3 bank character — 221 measured moves in game/data/moveset-library/banks/t3.json",
+      "source_game": "tekken3",
+      "source_bank": "t3",
+      "source_character": "Hwoarang",
+      "library_prefix": "t3:hwoarang",
+      "moves": 221,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/t3.json"
+      ]
+    },
+    {
+      "id": "t3-jin",
+      "hint": "T3 bank character — 253 measured moves in game/data/moveset-library/banks/t3.json",
+      "source_game": "tekken3",
+      "source_bank": "t3",
+      "source_character": "Jin",
+      "library_prefix": "t3:jin",
+      "moves": 253,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/t3.json"
+      ]
+    },
+    {
+      "id": "t3-julia",
+      "hint": "T3 bank character — 207 measured moves in game/data/moveset-library/banks/t3.json",
+      "source_game": "tekken3",
+      "source_bank": "t3",
+      "source_character": "Julia",
+      "library_prefix": "t3:julia",
+      "moves": 207,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/t3.json"
+      ]
+    },
+    {
+      "id": "t3-king",
+      "hint": "T3 bank character — 298 measured moves in game/data/moveset-library/banks/t3.json",
+      "source_game": "tekken3",
+      "source_bank": "t3",
+      "source_character": "King",
+      "library_prefix": "t3:king",
+      "moves": 298,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/t3.json"
+      ]
+    },
+    {
+      "id": "t3-kuma",
+      "hint": "T3 bank character — 188 measured moves in game/data/moveset-library/banks/t3.json",
+      "source_game": "tekken3",
+      "source_bank": "t3",
+      "source_character": "Kuma",
+      "library_prefix": "t3:kuma",
+      "moves": 188,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/t3.json"
+      ]
+    },
+    {
+      "id": "t3-law",
+      "hint": "T3 bank character — 252 measured moves in game/data/moveset-library/banks/t3.json",
+      "source_game": "tekken3",
+      "source_bank": "t3",
+      "source_character": "Law",
+      "library_prefix": "t3:law",
+      "moves": 252,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/t3.json"
+      ]
+    },
+    {
+      "id": "t3-lei",
+      "hint": "T3 bank character — 294 measured moves in game/data/moveset-library/banks/t3.json",
+      "source_game": "tekken3",
+      "source_bank": "t3",
+      "source_character": "Lei",
+      "library_prefix": "t3:lei",
+      "moves": 294,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/t3.json"
+      ]
+    },
+    {
+      "id": "t3-nina",
+      "hint": "T3 bank character — 279 measured moves in game/data/moveset-library/banks/t3.json",
+      "source_game": "tekken3",
+      "source_bank": "t3",
+      "source_character": "Nina",
+      "library_prefix": "t3:nina",
+      "moves": 279,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/t3.json"
+      ]
+    },
+    {
+      "id": "t3-ogre",
+      "hint": "T3 bank character — 192 measured moves in game/data/moveset-library/banks/t3.json",
+      "source_game": "tekken3",
+      "source_bank": "t3",
+      "source_character": "Ogre",
+      "library_prefix": "t3:ogre",
+      "moves": 192,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/t3.json"
+      ]
+    },
+    {
+      "id": "t3-paul",
+      "hint": "T3 bank character — 209 measured moves in game/data/moveset-library/banks/t3.json",
+      "source_game": "tekken3",
+      "source_bank": "t3",
+      "source_character": "Paul",
+      "library_prefix": "t3:paul",
+      "moves": 209,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/t3.json"
+      ]
+    },
+    {
+      "id": "t3-xiaoyu",
+      "hint": "T3 bank character — 268 measured moves in game/data/moveset-library/banks/t3.json",
+      "source_game": "tekken3",
+      "source_bank": "t3",
+      "source_character": "Xiaoyu",
+      "library_prefix": "t3:xiaoyu",
+      "moves": 268,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/t3.json"
+      ]
+    },
+    {
+      "id": "t3-yoshimitsu",
+      "hint": "T3 bank character — 261 measured moves in game/data/moveset-library/banks/t3.json",
+      "source_game": "tekken3",
+      "source_bank": "t3",
+      "source_character": "Yoshimitsu",
+      "library_prefix": "t3:yoshimitsu",
+      "moves": 261,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/t3.json"
+      ]
+    },
+    {
+      "id": "doa-ayane-doa4-doa-ultimate",
+      "hint": "DOA bank character — 26 measured moves in game/data/moveset-library/banks/doa.json",
+      "source_game": "doa",
+      "source_bank": "doa",
+      "source_character": "Ayane (DOA4 / DOA Ultimate)",
+      "library_prefix": "doa:ayane",
+      "moves": 26,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/doa.json"
+      ]
+    },
+    {
+      "id": "doa-bass-armstrong-doa5-last-round-doa-ultimate",
+      "hint": "DOA bank character — 24 measured moves in game/data/moveset-library/banks/doa.json",
+      "source_game": "doa",
+      "source_bank": "doa",
+      "source_character": "Bass Armstrong (DOA5 Last Round / DOA Ultimate)",
+      "library_prefix": "doa:bass",
+      "moves": 24,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/doa.json"
+      ]
+    },
+    {
+      "id": "doa-jann-lee-doa4-doa-ultimate",
+      "hint": "DOA bank character — 23 measured moves in game/data/moveset-library/banks/doa.json",
+      "source_game": "doa",
+      "source_bank": "doa",
+      "source_character": "Jann Lee (DOA4 / DOA Ultimate)",
+      "library_prefix": "doa:jannlee",
+      "moves": 23,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/doa.json"
+      ]
+    },
+    {
+      "id": "doa-kasumi-doa5-last-round",
+      "hint": "DOA bank character — 23 measured moves in game/data/moveset-library/banks/doa.json",
+      "source_game": "doa",
+      "source_bank": "doa",
+      "source_character": "Kasumi (DOA5 Last Round)",
+      "library_prefix": "doa:kasumi",
+      "moves": 23,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/doa.json"
+      ]
+    },
+    {
+      "id": "doa-ryu-hayabusa-doa5-last-round",
+      "hint": "DOA bank character — 20 measured moves in game/data/moveset-library/banks/doa.json",
+      "source_game": "doa",
+      "source_bank": "doa",
+      "source_character": "Ryu Hayabusa (DOA5 Last Round)",
+      "library_prefix": "doa:hayabusa",
+      "moves": 20,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/doa.json"
+      ]
+    },
+    {
+      "id": "doa-tina-armstrong-doa4-doa-ultimate",
+      "hint": "DOA bank character — 30 measured moves in game/data/moveset-library/banks/doa.json",
+      "source_game": "doa",
+      "source_bank": "doa",
+      "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+      "library_prefix": "doa:tina",
+      "moves": 30,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/doa.json"
+      ]
+    },
+    {
+      "id": "vf-akira-yuki-virtua-fighter-5-final-showdown",
+      "hint": "VF bank character — 20 measured moves in game/data/moveset-library/banks/vf.json",
+      "source_game": "virtua_fighter",
+      "source_bank": "vf",
+      "source_character": "Akira Yuki (Virtua Fighter 5 Final Showdown)",
+      "library_prefix": "vf:akira",
+      "moves": 20,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/vf.json"
+      ]
+    },
+    {
+      "id": "vf-kage-maru-virtua-fighter-5-final-showdown",
+      "hint": "VF bank character — 14 measured moves in game/data/moveset-library/banks/vf.json",
+      "source_game": "virtua_fighter",
+      "source_bank": "vf",
+      "source_character": "Kage-Maru (Virtua Fighter 5 Final Showdown)",
+      "library_prefix": "vf:kage",
+      "moves": 14,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/vf.json"
+      ]
+    },
+    {
+      "id": "vf-sarah-bryant-virtua-fighter-5-final-showdown",
+      "hint": "VF bank character — 14 measured moves in game/data/moveset-library/banks/vf.json",
+      "source_game": "virtua_fighter",
+      "source_bank": "vf",
+      "source_character": "Sarah Bryant (Virtua Fighter 5 Final Showdown)",
+      "library_prefix": "vf:sarah",
+      "moves": 14,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/vf.json"
+      ]
+    },
+    {
+      "id": "vf5-el-blaze-vf",
+      "hint": "VF5 bank character — 28 measured moves in game/data/moveset-library/banks/vf5.json",
+      "source_game": "virtua_fighter_5",
+      "source_bank": "vf5",
+      "source_character": "EL BLAZE (VF)",
+      "library_prefix": "vf5:el-blaze",
+      "moves": 28,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/vf5.json"
+      ]
+    },
+    {
+      "id": "vf5-jeffry-vf",
+      "hint": "VF5 bank character — 25 measured moves in game/data/moveset-library/banks/vf5.json",
+      "source_game": "virtua_fighter_5",
+      "source_bank": "vf5",
+      "source_character": "JEFFRY (VF)",
+      "library_prefix": "vf5:jeffry",
+      "moves": 25,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/vf5.json"
+      ]
+    },
+    {
+      "id": "vf5-lei-fei-vf",
+      "hint": "VF5 bank character — 22 measured moves in game/data/moveset-library/banks/vf5.json",
+      "source_game": "virtua_fighter_5",
+      "source_bank": "vf5",
+      "source_character": "LEI-FEI (VF)",
+      "library_prefix": "vf5:lei-fei",
+      "moves": 22,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/vf5.json"
+      ]
+    },
+    {
+      "id": "vf5-wolf-vf",
+      "hint": "VF5 bank character — 21 measured moves in game/data/moveset-library/banks/vf5.json",
+      "source_game": "virtua_fighter_5",
+      "source_bank": "vf5",
+      "source_character": "WOLF (VF)",
+      "library_prefix": "vf5:wolf",
+      "moves": 21,
+      "status": "template",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/vf5.json"
+      ]
+    },
+    {
+      "id": "wrestling-pool",
+      "hint": "WRESTLING move pool — 4409 measured moves. generic No Mercy move pool — per-wrestler grouping not yet decoded, so no per-character template exists yet",
+      "source_game": "wwf_no_mercy",
+      "source_bank": "wrestling",
+      "source_character": null,
+      "moves": 4409,
+      "status": "pool",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/wrestling.json"
+      ]
+    },
+    {
+      "id": "wmxix-pool",
+      "hint": "WMXIX move pool — 169 measured moves. per-clip pool — per-clip identity pending (game/data/moveset-library/wmxix-verified.json: 115 wired to SHOW, 54 provisional hidden, 0 to combat)",
+      "source_game": "wwe_wrestlemania_xix",
+      "source_bank": "wmxix",
+      "source_character": null,
+      "moves": 169,
+      "status": "pool",
+      "attached_to": [],
+      "pointers": [
+        "game/data/moveset-library/banks/wmxix.json"
+      ]
+    },
+    {
+      "id": "t7-frame-akuma",
+      "hint": "T7 frame data only — 120 measured rows in game/data/t7-frame-data/t7-akuma-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "akuma",
+      "moves": 120,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-akuma-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-alisa",
+      "hint": "T7 frame data only — 192 measured rows in game/data/t7-frame-data/t7-alisa-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "alisa",
+      "moves": 192,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-alisa-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-asuka",
+      "hint": "T7 frame data only — 138 measured rows in game/data/t7-frame-data/t7-asuka-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "asuka",
+      "moves": 138,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-asuka-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-bob",
+      "hint": "T7 frame data only — 174 measured rows in game/data/t7-frame-data/t7-bob-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "bob",
+      "moves": 174,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-bob-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-bryan",
+      "hint": "T7 frame data only — 172 measured rows in game/data/t7-frame-data/t7-bryan-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "bryan",
+      "moves": 172,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-bryan-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-claudio",
+      "hint": "T7 frame data only — 98 measured rows in game/data/t7-frame-data/t7-claudio-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "claudio",
+      "moves": 98,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-claudio-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-devil-jin",
+      "hint": "T7 frame data only — 140 measured rows in game/data/t7-frame-data/t7-devil-jin-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "devil-jin",
+      "moves": 140,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-devil-jin-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-dragunov",
+      "hint": "T7 frame data only — 141 measured rows in game/data/t7-frame-data/t7-dragunov-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "dragunov",
+      "moves": 141,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-dragunov-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-eddy",
+      "hint": "T7 frame data only — 224 measured rows in game/data/t7-frame-data/t7-eddy-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "eddy",
+      "moves": 224,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-eddy-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-eliza",
+      "hint": "T7 frame data only — 87 measured rows in game/data/t7-frame-data/t7-eliza-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "eliza",
+      "moves": 87,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-eliza-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-fahkumram",
+      "hint": "T7 frame data only — 137 measured rows in game/data/t7-frame-data/t7-fahkumram-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "fahkumram",
+      "moves": 137,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-fahkumram-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-feng",
+      "hint": "T7 frame data only — 166 measured rows in game/data/t7-frame-data/t7-feng-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "feng",
+      "moves": 166,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-feng-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-ganryu",
+      "hint": "T7 frame data only — 139 measured rows in game/data/t7-frame-data/t7-ganryu-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "ganryu",
+      "moves": 139,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-ganryu-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-geese",
+      "hint": "T7 frame data only — 106 measured rows in game/data/t7-frame-data/t7-geese-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "geese",
+      "moves": 106,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-geese-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-gigas",
+      "hint": "T7 frame data only — 103 measured rows in game/data/t7-frame-data/t7-gigas-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "gigas",
+      "moves": 103,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-gigas-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-heihachi",
+      "hint": "T7 frame data only — 124 measured rows in game/data/t7-frame-data/t7-heihachi-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "heihachi",
+      "moves": 124,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-heihachi-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-hwoarang",
+      "hint": "T7 frame data only — 221 measured rows in game/data/t7-frame-data/t7-hwoarang-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "hwoarang",
+      "moves": 221,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-hwoarang-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-jack-7",
+      "hint": "T7 frame data only — 182 measured rows in game/data/t7-frame-data/t7-jack-7-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "jack-7",
+      "moves": 182,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-jack-7-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-jin",
+      "hint": "T7 frame data only — 144 measured rows in game/data/t7-frame-data/t7-jin-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "jin",
+      "moves": 144,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-jin-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-josie",
+      "hint": "T7 frame data only — 135 measured rows in game/data/t7-frame-data/t7-josie-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "josie",
+      "moves": 135,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-josie-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-katarina",
+      "hint": "T7 frame data only — 109 measured rows in game/data/t7-frame-data/t7-katarina-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "katarina",
+      "moves": 109,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-katarina-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-kazumi",
+      "hint": "T7 frame data only — 101 measured rows in game/data/t7-frame-data/t7-kazumi-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "kazumi",
+      "moves": 101,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-kazumi-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-kazuya",
+      "hint": "T7 frame data only — 125 measured rows in game/data/t7-frame-data/t7-kazuya-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "kazuya",
+      "moves": 125,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-kazuya-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-king",
+      "hint": "T7 frame data only — 157 measured rows in game/data/t7-frame-data/t7-king-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "king",
+      "moves": 157,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-king-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-kunimitsu",
+      "hint": "T7 frame data only — 185 measured rows in game/data/t7-frame-data/t7-kunimitsu-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "kunimitsu",
+      "moves": 185,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-kunimitsu-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-lars",
+      "hint": "T7 frame data only — 127 measured rows in game/data/t7-frame-data/t7-lars-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "lars",
+      "moves": 127,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-lars-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-law",
+      "hint": "T7 frame data only — 225 measured rows in game/data/t7-frame-data/t7-law-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "law",
+      "moves": 225,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-law-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-lee",
+      "hint": "T7 frame data only — 202 measured rows in game/data/t7-frame-data/t7-lee-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "lee",
+      "moves": 202,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-lee-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-leo",
+      "hint": "T7 frame data only — 167 measured rows in game/data/t7-frame-data/t7-leo-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "leo",
+      "moves": 167,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-leo-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-leroy",
+      "hint": "T7 frame data only — 124 measured rows in game/data/t7-frame-data/t7-leroy-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "leroy",
+      "moves": 124,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-leroy-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-lidia",
+      "hint": "T7 frame data only — 157 measured rows in game/data/t7-frame-data/t7-lidia-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "lidia",
+      "moves": 157,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-lidia-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-lili",
+      "hint": "T7 frame data only — 144 measured rows in game/data/t7-frame-data/t7-lili-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "lili",
+      "moves": 144,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-lili-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-ling",
+      "hint": "T7 frame data only — 220 measured rows in game/data/t7-frame-data/t7-ling-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "ling",
+      "moves": 220,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-ling-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-lucky-chloe",
+      "hint": "T7 frame data only — 141 measured rows in game/data/t7-frame-data/t7-lucky-chloe-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "lucky-chloe",
+      "moves": 141,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-lucky-chloe-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-master-raven",
+      "hint": "T7 frame data only — 191 measured rows in game/data/t7-frame-data/t7-master-raven-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "master-raven",
+      "moves": 191,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-master-raven-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-miguel",
+      "hint": "T7 frame data only — 157 measured rows in game/data/t7-frame-data/t7-miguel-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "miguel",
+      "moves": 157,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-miguel-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-negan",
+      "hint": "T7 frame data only — 119 measured rows in game/data/t7-frame-data/t7-negan-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "negan",
+      "moves": 119,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-negan-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-nina",
+      "hint": "T7 frame data only — 189 measured rows in game/data/t7-frame-data/t7-nina-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "nina",
+      "moves": 189,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-nina-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-noctis",
+      "hint": "T7 frame data only — 106 measured rows in game/data/t7-frame-data/t7-noctis-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "noctis",
+      "moves": 106,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-noctis-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-paul",
+      "hint": "T7 frame data only — 125 measured rows in game/data/t7-frame-data/t7-paul-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "paul",
+      "moves": 125,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-paul-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-shaheen",
+      "hint": "T7 frame data only — 93 measured rows in game/data/t7-frame-data/t7-shaheen-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "shaheen",
+      "moves": 93,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-shaheen-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-steve",
+      "hint": "T7 frame data only — 239 measured rows in game/data/t7-frame-data/t7-steve-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "steve",
+      "moves": 239,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-steve-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-yoshimitsu",
+      "hint": "T7 frame data only — 375 measured rows in game/data/t7-frame-data/t7-yoshimitsu-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "yoshimitsu",
+      "moves": 375,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-yoshimitsu-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t7-frame-zafina",
+      "hint": "T7 frame data only — 188 measured rows in game/data/t7-frame-data/t7-zafina-lp-rp-lk-rk.json. No animation IDs in this file (anim_ref null); frame data, not a playable bank.",
+      "source_game": "tekken7",
+      "source_bank": "t7-frame-data",
+      "source_character": "zafina",
+      "moves": 188,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t7-frame-data/t7-zafina-lp-rp-lk-rk.json"
+      ]
+    },
+    {
+      "id": "t8-frame-alisa",
+      "hint": "T8 frame table only — 188 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "alisa",
+      "moves": 188,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-anna",
+      "hint": "T8 frame table only — 165 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "anna",
+      "moves": 165,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-armor-king",
+      "hint": "T8 frame table only — 173 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "armor_king",
+      "moves": 173,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-asuka",
+      "hint": "T8 frame table only — 146 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "asuka",
+      "moves": 146,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-azucena",
+      "hint": "T8 frame table only — 149 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "azucena",
+      "moves": 149,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-bob",
+      "hint": "T8 frame table only — 161 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "bob",
+      "moves": 161,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-bryan",
+      "hint": "T8 frame table only — 168 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "bryan",
+      "moves": 168,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-claudio",
+      "hint": "T8 frame table only — 99 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "claudio",
+      "moves": 99,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-clive",
+      "hint": "T8 frame table only — 122 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "clive",
+      "moves": 122,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-devil-jin",
+      "hint": "T8 frame table only — 141 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "devil_jin",
+      "moves": 141,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-dragunov",
+      "hint": "T8 frame table only — 141 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "dragunov",
+      "moves": 141,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-eddy",
+      "hint": "T8 frame table only — 152 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "eddy",
+      "moves": 152,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-fahkumram",
+      "hint": "T8 frame table only — 138 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "fahkumram",
+      "moves": 138,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-feng",
+      "hint": "T8 frame table only — 149 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "feng",
+      "moves": 149,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-heihachi",
+      "hint": "T8 frame table only — 145 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "heihachi",
+      "moves": 145,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-hwoarang",
+      "hint": "T8 frame table only — 209 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "hwoarang",
+      "moves": 209,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-jack-8",
+      "hint": "T8 frame table only — 199 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "jack_8",
+      "moves": 199,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-jin",
+      "hint": "T8 frame table only — 128 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "jin",
+      "moves": 128,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-jun",
+      "hint": "T8 frame table only — 149 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "jun",
+      "moves": 149,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-kazuya",
+      "hint": "T8 frame table only — 135 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "kazuya",
+      "moves": 135,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-king",
+      "hint": "T8 frame table only — 215 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "king",
+      "moves": 215,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-kuma",
+      "hint": "T8 frame table only — 142 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "kuma",
+      "moves": 142,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-kunimitsu",
+      "hint": "T8 frame table only — 167 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "kunimitsu",
+      "moves": 167,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-lars",
+      "hint": "T8 frame table only — 121 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "lars",
+      "moves": 121,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-law",
+      "hint": "T8 frame table only — 161 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "law",
+      "moves": 161,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-lee",
+      "hint": "T8 frame table only — 156 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "lee",
+      "moves": 156,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-leo",
+      "hint": "T8 frame table only — 140 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "leo",
+      "moves": 140,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-leroy",
+      "hint": "T8 frame table only — 130 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "leroy",
+      "moves": 130,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-lidia",
+      "hint": "T8 frame table only — 167 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "lidia",
+      "moves": 167,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-lili",
+      "hint": "T8 frame table only — 148 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "lili",
+      "moves": 148,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-nina",
+      "hint": "T8 frame table only — 191 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "nina",
+      "moves": 191,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-panda",
+      "hint": "T8 frame table only — 132 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "panda",
+      "moves": 132,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-paul",
+      "hint": "T8 frame table only — 143 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "paul",
+      "moves": 143,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-raven",
+      "hint": "T8 frame table only — 177 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "raven",
+      "moves": 177,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-reina",
+      "hint": "T8 frame table only — 150 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "reina",
+      "moves": 150,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-shaheen",
+      "hint": "T8 frame table only — 90 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "shaheen",
+      "moves": 90,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-steve",
+      "hint": "T8 frame table only — 169 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "steve",
+      "moves": 169,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-victor",
+      "hint": "T8 frame table only — 122 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "victor",
+      "moves": 122,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-xiaoyu",
+      "hint": "T8 frame table only — 175 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "xiaoyu",
+      "moves": 175,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-yoshimitsu",
+      "hint": "T8 frame table only — 312 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "yoshimitsu",
+      "moves": 312,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "t8-frame-zafina",
+      "hint": "T8 frame table only — 146 measured notation-keyed rows in game/data/t8_frame_tables.json. No animation IDs; frame data, not a playable bank.",
+      "source_game": "tekken8",
+      "source_bank": "t8-frame-tables",
+      "source_character": "zafina",
+      "moves": 146,
+      "status": "frame-data-only",
+      "attached_to": [],
+      "pointers": [
+        "game/data/t8_frame_tables.json"
+      ]
+    },
+    {
+      "id": "urban-reign-pending",
+      "hint": "Urban Reign — 72 char PPK slots + 72 textured GLBs, 285 banks / 3,357 motions, 484 named moves per TEARDOWN-PART-C; 4,188 files in teardown/urban-reign. No ingested bank yet (stage/mission PPKs not decoded); 31 movesets already wired into game/ as UR kits.",
+      "source_game": "urban_reign",
+      "source_bank": null,
+      "source_character": null,
+      "moves": null,
+      "status": "pending-ingest",
+      "attached_to": [],
+      "pointers": [
+        "teardown/urban-reign",
+        "TEARDOWN-PART-C-URBAN-REIGN.md"
+      ]
+    },
+    {
+      "id": "urban-reign-redux-pending",
+      "hint": "Urban Reign Redux v0.5 — Mod Manager 0.5 + Editor 0.5 fetched and hash-verified from the author (see ~/workspace/urban-reign-redux/INVENTORY.md); all-in-one Drive link quota-blocked, retry Sun Nov 8 ~7:18 PM CST. Per-fighter counts UNMEASURED until the disc build lands on Windows.",
+      "source_game": "urban_reign_redux",
+      "source_bank": null,
+      "source_character": null,
+      "moves": null,
+      "status": "pending-ingest",
+      "attached_to": [],
+      "pointers": [
+        "~/workspace/urban-reign-redux/INVENTORY.md"
+      ]
+    },
+    {
+      "id": "soulcalibur2-pending",
+      "hint": "Soulcalibur II — 18 named textured fighters + 22 GLB models + 41 stage GLBs (237 files in teardown/soulcalibur-2). No moveset bank ingested yet.",
+      "source_game": "soulcalibur2",
+      "source_bank": null,
+      "source_character": null,
+      "moves": null,
+      "status": "pending-ingest",
+      "attached_to": [],
+      "pointers": [
+        "teardown/soulcalibur-2"
+      ]
+    },
+    {
+      "id": "def-jam-pending",
+      "hint": "Def Jam Fight For NY — 271 files in teardown/def-jam-fight-for-ny (EAGL spec + surgical .o/.ssh extracts, not decoded to models/anims yet). Per-character counts UNMEASURED.",
+      "source_game": "def_jam_ffny",
+      "source_bank": null,
+      "source_character": null,
+      "moves": null,
+      "status": "pending-ingest",
+      "attached_to": [],
+      "pointers": [
+        "teardown/def-jam-fight-for-ny"
+      ]
+    },
+    {
+      "id": "street-fighter-3d-pending",
+      "hint": "3D Street Fighter (EX series) — docs/catalog only in repo (58 files EX Plus Alpha, 2 EX2 Plus, 1 EX3, 4 SFV). No extracted movesets; SFV pull blocked per teardown catalog. Per-character counts UNMEASURED.",
+      "source_game": "street_fighter_ex",
+      "source_bank": null,
+      "source_character": null,
+      "moves": null,
+      "status": "pending-ingest",
+      "attached_to": [],
+      "pointers": [
+        "teardown/street-fighter-3d-games"
+      ]
+    },
+    {
+      "id": "tekken6-pending",
+      "hint": "Tekken 6 (PSP) — 3,849 files in teardown/tekken6; 18 fighters x 3 versions movesets (54 files), models encrypted (DATA401). No ingested bank yet.",
+      "source_game": "tekken6",
+      "source_bank": null,
+      "source_character": null,
+      "moves": null,
+      "status": "pending-ingest",
+      "attached_to": [],
+      "pointers": [
+        "teardown/tekken6"
+      ]
+    },
+    {
+      "id": "ttt2-pending",
+      "hint": "Tekken Tag Tournament 2 — 56 files in teardown/tekken-tag-tournament-2; roster 59 fighters / 29 stages in docs only, containers not decoded. Per-character counts UNMEASURED.",
+      "source_game": "tekken_tag_tournament_2",
+      "source_bank": null,
+      "source_character": null,
+      "moves": null,
+      "status": "pending-ingest",
+      "attached_to": [],
+      "pointers": [
+        "teardown/tekken-tag-tournament-2"
+      ]
+    },
+    {
+      "id": "pro-wrestling-2019-pending",
+      "hint": "Pro-wrestling game (2019 release) — 1,678 files extracted in teardown/wwe2k19 (753.7 MB, .yobj/.bin/.dds), raw, needs WMXIX-style decode path. The CAW + Create-A-Moveset layout is already documented (customization/wwe2k-caw/CAW-SUITE-BREAKDOWN.md, moveset name list: 5,581 names). Per-character move counts UNMEASURED.",
+      "source_game": "pro-wrestling-2019",
+      "source_bank": null,
+      "source_character": null,
+      "moves": null,
+      "status": "pending-ingest",
+      "attached_to": [],
+      "pointers": [
+        "teardown/wwe2k19",
+        "customization/wwe2k-caw/CAW-SUITE-BREAKDOWN.md"
+      ]
+    },
+    {
+      "id": "pro-wrestling-2020-2022-pending",
+      "hint": "Pro-wrestling games (2020 / 2022 releases) — readme only in repo (1 file each in teardown/wwe2k20, teardown/wwe2k22); the 2022 release is the newest wrestling game Jay owns on Steam (app 1255630) and the creation-suite source of record, but no teardown/archive exists in the repo. Nothing measured yet.",
+      "source_game": "pro-wrestling-2020-2022",
+      "source_bank": null,
+      "source_character": null,
+      "moves": null,
+      "status": "pending-ingest",
+      "attached_to": [],
+      "pointers": [
+        "teardown/wwe2k20",
+        "teardown/wwe2k22",
+        "docs/tech/STEAM-LIBRARY.md"
+      ]
+    },
+    {
+      "id": "devil-within-pending",
+      "hint": "Devil Within (Tekken 5) — all 242 files inventoried on branch dw-decode (commit 06eef2ea), 0 bytes decoded; blocked on missing archive bytes (TK5DATA*.BIN). Per-character move counts UNMEASURED until the archive pull lands.",
+      "source_game": "devil_within",
+      "source_bank": null,
+      "source_character": null,
+      "moves": null,
+      "status": "pending-ingest",
+      "attached_to": [],
+      "pointers": [
+        "~/workspace/western-heart-audit/TEARDOWN-PART-B-DEVIL-WITHIN.md"
+      ]
+    },
+    {
+      "id": "brutal-fist-pending",
+      "hint": "Brutal Fist — identification in progress by a separate agent (deliverable ~/workspace/western-heart-audit/BRUTAL-FIST-PULLIN.md, not landed as of 2026-11-08 ~02:30). No roster, no counts yet — this row is a placeholder, not a template.",
+      "source_game": "brutal_fist",
+      "source_bank": null,
+      "source_character": null,
+      "moves": null,
+      "status": "pending-ingest",
+      "attached_to": [],
+      "pointers": [
+        "~/workspace/western-heart-audit/BRUTAL-FIST-PULLIN.md"
+      ]
     }
   ]
 }

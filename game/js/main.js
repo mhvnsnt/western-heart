@@ -32,7 +32,7 @@ import { stageVisible, CORE_STAGES, CORE_FIGHTERS, quickFightParams } from './co
 // the versus flow and getStage is needed by startFight; its parse cost is
 // small next to the deferred modules. Stage THUMBS are the real cost there
 // (see the thumb atlas, assets/stages/thumbs/atlas.png + thumbs.json).
-import { initMenus, keepLoading } from './menus.js';
+import { initMenus, keepLoading, pauseGame } from './menus.js';
 import { isModuleLoadError, claimReload, resumable, saveResume, takeResume, fightStarted, nextStep } from './fight-recovery.js';
 import './load-progress.js'; // real loading bar (owner pt134u)
 
@@ -143,6 +143,14 @@ const ui = {
     // recoverable pool (capped at 100%); empty pool matches fill.
     dmg.style.width = Math.min(100, pct + Math.max(0, ((f._recoverable || 0) / f.maxHp) * 100)) + '%';
     fill.classList.toggle('low', pct < 30);
+    // BT GUARD strain tell (owner design 2026-11-06, SoulCalibur-style):
+    // a multi-arm fighter guarding back-turned strains its back pair;
+    // the defender's own health-bar fill glows warning yellow at 60%
+    // strain and warning red at 80% (.bt-strain-1 / .bt-strain-2 in
+    // styles.css) — the SC yellow/red warning, on the bar this HUD has.
+    const _btWarn = f.btGuardState ? f.btGuardState().warn : 0;
+    fill.classList.toggle('bt-strain-1', _btWarn === 1);
+    fill.classList.toggle('bt-strain-2', _btWarn === 2);
   },
   updateMeter(p1, p2) { this._meter('p1', p1); this._meter('p2', p2); },
   _meter(id, f) {
@@ -240,6 +248,24 @@ const ui = {
     pop.classList.add('show');
     clearTimeout(this._comboT);
     this._comboT = setTimeout(() => pop.classList.remove('show'), 900);
+  },
+  /* Attack data (Tekken 3 Practice ATTACK DATA, spec D11 — Piece 1 Break 5):
+     damage number + COUNTER / CLEAN HIT / BLOCKED label + running TOTAL DMG.
+     dmg null = a label-only cue (failed Surge / failed grab), no number shown. */
+  attackData({ dmg, label, total, blocked }) {
+    const el = document.getElementById('attack-data');
+    if (!el) return;
+    document.getElementById('attack-data-label').textContent = label;
+    const dmgEl = document.getElementById('attack-data-dmg');
+    dmgEl.textContent = dmg == null ? '' : dmg;
+    el.classList.toggle('note', dmg == null);
+    const tot = document.getElementById('attack-data-total');
+    if (tot) tot.textContent = total != null ? ('TOTAL ' + total) : '';
+    el.classList.toggle('blocked', !!blocked);
+    el.classList.remove('show'); void el.offsetWidth;
+    el.classList.add('show');
+    clearTimeout(this._attackDataT);
+    this._attackDataT = setTimeout(() => el.classList.remove('show'), 900);
   },
   /* Stream 6: throw-break prompt. show=false clears. breakInput '1'/'2'/'1+2'
      tells the defender which limb button breaks the throw (Tekken rules). */
@@ -610,18 +636,33 @@ document.addEventListener('keydown', (e) => {
   if (id && getStage(id)) selectedStage = getStage(id).id;
 })();
 
-/* 99-second select timer (Tekken standard selector: starts at 99).
-   The countdown starts only once assets are loaded (maybeStartSelectTimer),
-   and at 0 it auto-highlights a random fighter — it never starts a fight
-   without the user tapping CONFIRM. */
+/* Select timer — Tekken 3, measured (TEKKEN-TEARDOWN-SPEC.md §2a, from the
+   n0madic/Tekken3Remake decompiled code): starts at 20·T frames, T = 60,
+   or 60 + 3·(n − 10) past 10 unlocked fighters; at 60 fps that is 20 s,
+   +1 s per extra unlocked fighter past 10. At 0 each side gets the fighter
+   under the cursor — never a random pick. The old 99 s timer and random
+   pick were invented, not teardown, and both go.
+   NOTE: spec §2a's prose says "+3 seconds per extra fighter", but its own
+   formula (20·T frames, T growing by 3) is +60 frames = +1 s at 60 fps.
+   The formula is followed here; the prose looks like a slip.
+   The countdown starts only once assets are loaded (maybeStartSelectTimer).
+   It stops the moment a side locks; if another side still has to pick
+   (Versus P1 locked, P2 to go), a fresh countdown starts for that side —
+   the timer runs while anyone is still choosing, as in Tekken 3. */
 let selectTimerId = null;
 let selectTimerArmed = false;
 function maybeStartSelectTimer() {
   if (assetsReady && !selectTimerArmed) { selectTimerArmed = true; startSelectTimer(); }
 }
+/* Unlocked fighters = the fighters on the grid (spec §7: 50 pickable). */
+function selectTimerSeconds() {
+  let n = 50;
+  try { if (selectScreen && selectScreen.visibleCount) n = selectScreen.visibleCount(); } catch (_) {}
+  return 20 + Math.max(0, n - 10);
+}
 function startSelectTimer() {
   stopSelectTimer();
-  let t = 99;
+  let t = selectTimerSeconds();
   const el = document.getElementById('select-timer');
   el.textContent = t;
   el.classList.remove('low');
@@ -631,12 +672,22 @@ function startSelectTimer() {
     if (t <= 10) el.classList.add('low');
     if (t <= 0) {
       stopSelectTimer();
-      // Tekken timeout behavior: cursor jumps to a random fighter, but the
-      // match does NOT start — the user still taps CONFIRM to fight.
-      const pool = ROSTER.filter(c => c.id !== selectedChar);
-      const pick = pool[Math.floor(Math.random() * pool.length)];
-      if (pick) selectScreen.selectById(pick.id);
-      document.getElementById('select-hint').textContent = 'TIME UP — random fighter picked. Tap CONFIRM to fight.';
+      // Tekken 3 timeout (spec §2a): the fighter under the cursor is
+      // CONFIRMED through the normal CONFIRM path, so locks, spirit
+      // snapshots, and mode routing run exactly as if the player tapped
+      // CONFIRM. Never random, never overwriting a locked side. If no
+      // cursor fighter exists yet (Versus format submenu still open),
+      // the countdown simply restarts.
+      const c = selectScreen && selectScreen.cursorFighter ? selectScreen.cursorFighter() : null;
+      if (!c || !selectedChar) { startSelectTimer(); return; }
+      const hintEl = document.getElementById('select-hint');
+      confirmSelection();
+      if (selectScreen._state && selectScreen._state.phase !== 'done') {
+        if (hintEl) hintEl.textContent = 'TIME UP — ' + c.name + ' locked. VERSUS — Player 2: choose your soul.';
+        startSelectTimer(); // fresh countdown for the side still choosing
+      } else if (hintEl) {
+        hintEl.textContent = 'TIME UP — ' + c.name + ' confirmed.';
+      }
     }
   }, 1000);
 }
@@ -900,6 +951,15 @@ async function confirmSelection() {
   // Select-screen lock state first (P1 lock -> P2 cursor in versus),
   // then the mode controller routes the fight.
   selectScreen.notifyConfirm(id);
+  // Piece 1 Break 1 (TEKKEN-TEARDOWN-SPEC.md §9 D1): the countdown stops
+  // the moment a side locks. If another side still has to pick (Versus
+  // P1 locked, P2 to go) and a countdown was running, a fresh countdown
+  // starts for that side — the timer runs while anyone is still choosing,
+  // as in Tekken 3.
+  try {
+    if (selectScreen._state && selectScreen._state.phase === 'done') stopSelectTimer();
+    else if (selectTimerArmed) startSelectTimer();
+  } catch (_) {}
   if (rankBattleSelect) {
     rankBattleSelect = false;
     (await getRankBattle()).onConfirm(id);
@@ -1050,6 +1110,14 @@ async function toggleMovelist(open) {
   const willOpen = open === undefined ? !el.classList.contains('active') : open;
   if (willOpen) await renderMovelist();
   el.classList.toggle('active', willOpen);
+  // Piece 1 Break 7 (D15): COMMAND opened the movelist from pause — closing
+  // it returns to the pause menu, same as the options / records / clothing
+  // back buttons (menus.js). Only when the fight is still paused.
+  if (!willOpen) {
+    const g = window.__game;
+    const p = document.getElementById('wh-pause');
+    if (g && (g.running || g.brawler) && g.paused && p && !p.classList.contains('show')) p.classList.add('show');
+  }
 }
 document.getElementById('movelist-btn').addEventListener('click', () => {
   audio.uiClick(); toggleMovelist();
@@ -1253,10 +1321,20 @@ async function startFight(playerId, enemyId, opts = {}) {
   let player = resolveFighterAttire(
     opts.playerChar || getCharacterWithCustom(selectedChar || firstReady));
   // MODEL PENDING fighters (no own model yet) never enter a fight on another body.
-  if (player.modelPending || !player.model) player = resolveFighterAttire(getCharacterWithCustom(firstReady));
+  // Piece 1 Break 2 (TEKKEN-TEARDOWN-SPEC.md §9 D2 + §7c.4): the safety net
+  // used to swap a model-less pick silently — say so on the loading screen
+  // instead, naming the fighter actually fielded.
+  let swapNote = '';
+  if (player.modelPending || !player.model) {
+    player = resolveFighterAttire(getCharacterWithCustom(firstReady));
+    swapNote = `No model — switched to ${player.name}.`;
+  }
   let enemy = opts.enemyChar ||
     (typeof enemyId === 'string' && enemyId !== player.id ? resolveFighterAttire(getCharacterWithCustom(enemyId)) : randomEnemy(player.id));
-  if (!enemy || enemy.modelPending || !enemy.model) enemy = randomEnemy(player.id);
+  if (!enemy || enemy.modelPending || !enemy.model) {
+    enemy = randomEnemy(player.id);
+    swapNote += `${swapNote ? ' ' : ''}No model — rival switched to ${(enemy && enemy.name) || 'a rival'}.`;
+  }
   // Classic REMATCH record: the resolved pairing + stage, set BEFORE any
   // await so a rematch from the result screen replays this exact fight.
   // (Modes fights rematch through modes.rematch(), never through this.)
@@ -1326,16 +1404,21 @@ async function startFight(playerId, enemyId, opts = {}) {
   const stageHintEl = document.getElementById('stage-hint');
   const setPhase = (t) => { if (hint) hint.textContent = t; if (stageHintEl) stageHintEl.textContent = t; keepLoading(t); };
   const hideLoadOverlay = () => { window.__whFightLoading = 0; const o = document.getElementById('wh-loading'); if (o) o.classList.remove('show'); };
+  // Piece 1 Break 2 (TEKKEN-TEARDOWN-SPEC.md §9 D2): in one-player modes
+  // the foe is drawn by the game, not picked — name both fighters on the
+  // loading screen so the player sees the drawn foe before the fight
+  // starts. (Versus shows the same line: both picks confirmed.)
+  const loadLine = (suffix) => `Entering the arena… ${player.name || player.id} VS ${enemy.name || enemy.id}${swapNote ? ` — ${swapNote}` : ''}${suffix ? ` · ${suffix}` : ''}`;
   window.__whFightLoading = window.__whFightLoading || Date.now();  // menus.js keeps the overlay up while this is set
   try {
-    setPhase('Entering the arena…');
+    setPhase(loadLine());
     // LOADSPEED: fight-only modules (fighter/movesets/t3anims) stream in
     // here — they are warmed during menu idle, so this usually resolves
     // from cache. The real-Tekken moveset JSONs (~300KB) also load here
     // instead of at boot (they are fight data, not menu data).
     const [F, MS, T3] = await Promise.all([lazy.fighter(), lazy.movesets(), lazy.t3anims()]);
     const { ensureMovesets } = MS;
-    const { bankIdFor, loadRealMovesets } = F;
+    const { bankIdFor, loadRealMovesets, ownSlotBankFor } = F;
     const { loadT3Clips } = T3;
     setPhase('Loading move lists…');
     await Promise.all([loadRealMovesets(), MS.loadFighterMovesets()]);
@@ -1376,7 +1459,8 @@ async function startFight(playerId, enemyId, opts = {}) {
       await ensureMovesets(msIds);
       setPhase('Loading real fight motion…');
       try {
-        const banks = [...new Set([bankIdFor(player.id), bankIdFor(enemy.id)].filter(Boolean))];
+        const banks = [...new Set([bankIdFor(player.id), bankIdFor(enemy.id),
+          ownSlotBankFor(player.id), ownSlotBankFor(enemy.id)].filter(Boolean))];
         await Promise.all(banks.map(b => loadT3Clips(THREE, b)));
       } catch (e) {
         console.warn('[WH] T3 clips failed, using procedural fallback:', e.message || e);
@@ -1405,9 +1489,9 @@ async function startFight(playerId, enemyId, opts = {}) {
       if (loaded && total) {
         const mbL = (loaded / 1048576).toFixed(1);
         const mbT = (total / 1048576).toFixed(1);
-        t = `Entering the arena… ${mbL}/${mbT} MB${id ? ` · ${id}` : ''}`;
+        t = loadLine(`${mbL}/${mbT} MB${id ? ` · ${id}` : ''}`);
       } else {
-        t = `Entering the arena… ${Math.round(p * 100)}%`;
+        t = loadLine(`${Math.round(p * 100)}%`);
       }
       if (hint) hint.textContent = t;
       if (stageHintEl) stageHintEl.textContent = t;
@@ -1588,6 +1672,12 @@ document.addEventListener('keydown', (e) => {
     if (e.code === 'BracketLeft') rp.setSpeed(Math.max(0.25, (rp.game.timeScale || 1) / 2));
     if (e.code === 'BracketRight') rp.setSpeed(Math.min(2, (rp.game.timeScale || 1) * 2));
     if (e.code === 'Escape') exitReplay();
+  }
+  // Piece 1 Break 7 (D15): Escape is Start — it pauses mid-round. A replay
+  // keeps its own Escape (exit replay, above). Start again does NOT unpause
+  // in Tekken; only CANCEL does, so a paused game ignores a second Escape.
+  if (e.code === 'Escape' && !(rp && rp.game && game.running)) {
+    if ((game.running || game.brawler) && !game.paused) pauseGame();
   }
 });
 

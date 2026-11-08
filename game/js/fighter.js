@@ -39,7 +39,7 @@ import { assets } from './assets.js';
 import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK, T3_BANKS,
   clipStrikeProfile, clipHitWindow, bankAttackPool, attackLevelOfWord, attackClipTime, clipIsThrow, BUTTON_LIMB,
   loadT3Clips, loadT3ReactionClip, getT3ReactionPackScale, loadReactionPack, getReactionPack, getReactionClip,
-  applyT7Stance, ensureT7Moves, t7MoveClip, t7MoveRetarget } from './t3anims.js';
+  applyT7Stance, ensureT7Moves, t7MoveClip, t7MoveRetarget, ensureDwMoves, dwMoveClip, dwMoveRetarget, dwKindMoveClip, dwKindMoveRetarget, retargetProfileFor } from './t3anims.js';
 import { effectiveStepPlay, playableStepPlay, stepActionName, stepPlanBanksFor } from './step-plan-bank.js';
 import { selectThrow, resolveThrowClips, throwBreaks, throwDamageTimeSec, throwPairDurationSec,
   escapePairFor, anchorAt, sharedFramePos, throwQuadrant, attemptRowForInput, hexSlot, bankDirOf } from './t3-throw.js';
@@ -64,6 +64,7 @@ import { selectReactionSlot, reactionSlotBank } from './t3-reaction-select.js';
 import { FE_AIR_BLEND_WEIGHT, beginAirCatch, sampleAirBlend } from './air-reaction-blend.js';
 import { soulStates } from './full-movelist.js';
 import { t3ConditionHolds } from './t3-conditions.js';
+import { btGuardFor } from './bt-guard.js';
 
 // ---- Frame data: REAL Tekken 3 data (teardown/tekken3/movesets/moveset_king.json, moveset_jin.json)
 // NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO in Western Heart. The 'jin' moveset family is now 'demonio'.
@@ -101,6 +102,33 @@ const MOVESET_MAP = {
   'dxmmii-patchwork': 'demonio',
   // Stream 6 (2026-10-19): Cain Elias (Undertaker archetype -> King bank).
   'cainelias': 'king',
+  // Brutal Fist pull-in (2026-11-08): T3 source bank per character; UR clip binding is the follow-up.
+  'bf-aaron-ruben': 'king',
+  'bf-bannon': 'king',
+  'bf-brutus': 'king',
+  'bf-cipher': 'xiaoyu',
+  'bf-cody': 'jin',
+  'bf-echo': 'xiaoyu',
+  'bf-edwin-kennedy': 'heihachi',
+  'bf-el-toro-de-oro': 'king',
+  'bf-finxsse': 'xiaoyu',
+  'bf-hall-nighter': 'king',
+  'bf-hollow': 'yoshimitsu',
+  'bf-jager': 'bryan',
+  'bf-kobra': 'bryan',
+  'bf-maime': 'jin',
+  'bf-master-sensei': 'heihachi',
+  'bf-onyx': 'bryan',
+  'bf-pablo': 'king',
+  'bf-stan-combs': 'jin',
+  'bf-static': 'bryan',
+  'bf-stick-up': 'xiaoyu',
+  'bf-tarzanian-devil': 'yoshimitsu',
+  'bf-titan': 'king',
+  'bf-triple-xxx': 'yoshimitsu',
+  'bf-tyneshia': 'jin',
+  'bf-viper': 'bryan',
+  'bf-wreck-patterson': 'king',
   // Sketchfab intake (owner 2026-10-19): working names.
   zangief: 'king', blanka: 'bryan', vega: 'xiaoyu', iori: 'heihachi',
   // CHARGER (owner 2026-10-20): Blanka replacement — plays Blanka's bryan bank.
@@ -261,6 +289,43 @@ export function bankIdFor(charId, movesetId) {
   if (!src) src = MOVESET_MAP[movesetId || charId] || MOVESET_MAP[charId] || null;
   if (!src) return null;
   return Object.prototype.hasOwnProperty.call(SOURCE_TO_BANK, src) ? SOURCE_TO_BANK[src] : null;
+}
+
+/* OWN-SLOT BANKS (2026-11-07; owner: "ur using incorrect banks for some characters ... some should have fully one
+   character banks and data unless it comes from Tekken code like that"). These fighters bound another character's bank
+   (zui on jin, slice on bryan, ...) while their OWN base character's motion now exists: the Fill 3 TTT2 banks
+   (docs/tech/ttt2-mota/join/FILL3-BANKS.md). Each of those covers only part of the action slots (stance / walks /
+   dashes / jumps / sidesteps / some attacks; none has block, hit or KO), so binding one alone would leave the rest on the
+   bind pose. Instead the own bank is laid over the bound bank SLOT BY SLOT (layerOwnSlots): every slot the character's
+   own data has plays it; only the slots it lacks stay on the bound bank (the shared reactions above all, the way
+   Tekken's own common bank serves every character). A real T7 stance (T7_STANCES) still wins for 'stance'.
+   Audit + per-fighter coverage: docs/anim/BANK-AUDIT-2026-11-07.md (tools/anim/bank_audit.mjs). */
+// Candidates: each fighter -> its own base character's TTT2 bank. NOT ACTIVE (2026-11-07): judged by eye in poselab
+// (docs/proof/2026-11-07/bank-audit/), these TTT2 clips retarget with a strong forward pitch on our rigs (walks nearly
+// horizontal, stances hunched: Zui / Kinpo / Purple Rain / Chordz / Bruno / Aotsuki), the fold class the Jun bank had
+// before its re-bake (docs/handoffs/MEGAMI-JUN-BANK-SCALE-FIX-2026-11-04.md). Binding them would make these fighters
+// look worse. A fighter moves into OWN_SLOT_BANKS only when its own clips pass by eye.
+export const OWN_SLOT_CANDIDATES = {
+  zui: 'steve_fox', kinpo: 'asuka', purplerain: 'lee', chordz: 'lars', cyborgx: 'alisa', star: 'christie',
+  bruno: 'miguel', thor: 'ganryu', slice: 'dragunov', aotsuki: 'panda', burger: 'bob_satsuma',
+  'mariposa-monarch': 'zafina', silvertongue: 'emilie',
+};
+export const OWN_SLOT_BANKS = {};
+export function ownSlotBankFor(charId, { candidates = false } = {}) {
+  const b = (candidates ? OWN_SLOT_CANDIDATES : OWN_SLOT_BANKS)[charId];
+  return b && T3_BANKS[b] ? b : null;
+}
+/** Lay the fighter's own-character bank over `clips` (the bound bank, retargeted onto `model`), slot by slot.
+    Returns `clips`. A no-op when the fighter has no own-slot bank or it is not loaded yet. */
+export function layerOwnSlots(charId, clips, model, THREE_, instanceKey = null) {
+  const own = ownSlotBankFor(charId);
+  if (!own || !clips) return clips;
+  const oc = getT3Clips(own);
+  if (!oc || !Object.keys(oc).length) return clips;
+  const ro = retargetT3Clips(oc, own, model, THREE_, instanceKey);
+  if (!ro) return clips;
+  for (const [k, v] of Object.entries(ro)) if (v && !k.startsWith('row:')) clips[k] = v;
+  return clips;
 }
 
 export async function loadRealMovesets() {
@@ -582,6 +647,22 @@ export class Fighter {
     // (moveset stance_after), rising = while-standing window after leaving a crouch,
     // stick = facing-relative direction (guard + posture), juggle = hits taken airborne.
     this.stance = null; this.stanceT = 0; this._risingT = 0; this._stickDir = 'n';
+    // BACK-TURNED (Tekken BT) is a FACING state, not a stance: it lives in its own flag so it
+    // can coexist with a character stance (the moveset data keys composed rows 'BT_RFF.1' and
+    // 'NSS.BT.d+1'), it has no timer (it ends by turning around, attacking, or being hit — see
+    // the facing block in update()), and the body actually faces away while it holds.
+    this._bt = false;
+    // BACK-TURNED GUARD (owner rulings 2026-11-06, game/js/bt-guard.js):
+    // Tekken-strict — guard is DISABLED while _bt holds (receiveHit routes
+    // to the unguarded path) — EXCEPT multi-arm fighters (a second arm pair
+    // verified in the fighter's model data), who guard from BT under the
+    // owner's hybrid handicap: 30% bleed chip, no meter, half pushback,
+    // BT never cleared by a block, and SC-style strain that spends the
+    // back pair at strainMax until _bt ends. _btGuardCfg is null for
+    // everyone else (Tekken-strict). Strain state is per-BT-stint: the
+    // watchdog in update() resets it the moment _bt is observed clear.
+    this._btGuardCfg = btGuardFor(charData.id, charData);
+    this._btStrain = 0; this._btGuardBroken = false;
     this._juggle = 0; this._rageUsed = false; this._queuedNext = null; this._queuedAfter = null;
     this._stepChain = null; // whole-string step chain (Batch 1 step plans): {key, steps, idx}
     this._stringGraceUntil = 0; // wall-clock end of the post-move string window (see _tryAttackFresh)
@@ -885,6 +966,11 @@ export class Fighter {
       defense: this.stats.defense * 1.2,
     };
     this._auraFlash = 1.0;
+    // Soul Surge Bloom trigger (DW dwup00): play the DW trigger clip once when
+    // the form starts. Best-effort — if the DW pack has not loaded yet, the form
+    // still starts and the trigger plays on the next surge.
+    this._dwTriggerPending = true;
+    this._dwTriggerId = (this._dwTriggerId || 0) + 1;
     return true;
   }
   endSurgeForm() {
@@ -1012,10 +1098,12 @@ export class Fighter {
       console.log(`[WH-T3] ${this.char.id}: rig '${modelKey}' lacks core humanoid bones — bank '${bank}' not bound`);
       return;
     }
+    layerOwnSlots(this.char.id, clips, model, THREE, modelKey); // the fighter's OWN character's slots over the bound bank
     applyT7Stance(this.char.id, bank, clips, model, THREE, modelKey); // real T7 stance where baked (t3anims.js T7_STANCES)
     // Real T7 per-move clips (t3anims.js T7_MOVES), loaded per fighter in the background; until they arrive the
     // moves keep their current clips. They retarget lazily with the stance's bind-time rest pose.
     try { const p = ensureT7Moves(this.char.id, THREE); if (p && p.catch) p.catch(() => {}); } catch (e) { /* optional */ }
+    try { const p = ensureDwMoves(this.char.id, THREE); if (p && p.catch) p.catch(() => {}); } catch (e) { /* optional */ }
     this.t3actions = createT3Actions(this.mixer, clips, THREE);
     this._stepBankClips = {}; // per-step-bank source clips (see _attackClip)
     // Reaction pack prefetch (hit-reaction lane): the JSON arrives
@@ -1044,6 +1132,110 @@ export class Fighter {
     // dir is the reactions.json banks key (the T3_BANKS folder name).
     this._t3 = { bank, clips: t3clips, model, modelKey, dir: bankDirOf(T3_BANKS[bank]) };
     console.log(`[WH] Fighter ${this.char.id}: ${Object.keys(this.t3actions).length} real T3 actions from bank '${bank}' (retargeted onto ${modelKey})`);
+    // LAYER2 (Chatur Phase 2, 2026-11-06): on a retarget-profile rig,
+    // cache the secondary chains' hand bones (layer2 contact checks),
+    // and apply the moveset's ambient layer2 stance if it declares
+    // one (donor-bank clip on the secondary chain, looping under her
+    // own stance). Data-driven: any moveset may carry these blocks;
+    // today only chatur.json does.
+    try {
+      const prof = retargetProfileFor(modelKey);
+      if (prof && Array.isArray(prof.secondaryChains)) {
+        const norm = (n) => String(n || '').replace(/[^a-zA-Z0-9_]/g, '');
+        this._arm2Hands = {};
+        for (const chain of prof.secondaryChains) {
+          let hand = null;
+          model.traverse((o) => { if (!hand && norm(o.name) === norm(chain.bones.Hand)) hand = o; });
+          if (hand) this._arm2Hands[chain.side] = hand;
+        }
+      }
+      const msL = getFighterMoveset(movesetId);
+      if (msL && msL.layer2_stance) this._applyLayer2Stance(msL.layer2_stance);
+    } catch (e) { /* layer2 is additive — never break the bind */ }
+  }
+
+  /* The moveset's layer2 block for one move (Phase 2): a donor-bank
+     clip that plays on the retarget profile's secondary chain at the
+     same time as the move's own clip (bone-masked layered blending,
+     override mode). Returns null when the move carries none.
+     phase_offset_frames lives in the data's 60 fps logic-frame
+     domain (hit_frames.json); the engine consumes 30 fps clip
+     frames, so the conversion happens here, once. */
+  _layer2For(move) {
+    if (!move || !move.moveKey) return null;
+    const ms = getFighterMoveset(this._movesetId);
+    const raw = ms && ms.moves ? ms.moves[move.moveKey] : null;
+    const l2 = raw && raw.layer2;
+    if (!l2 || !l2.anim_ref) return null;
+    const m = /^t3:([a-z0-9_]+):(.+)$/.exec(l2.anim_ref);
+    if (!m) return null;
+    return { donorBank: m[1], clipName: m[2],
+      offsetFrames: Math.round((l2.phase_offset_frames || 0) / 2),
+      hit: l2.hit || null };
+  }
+
+  /* Ambient layer2 stance: replace this fighter's stance ACTION
+     with the composite (her own stance clip + the donor clip on the
+     secondary chain). Runs at bind; if the donor bank is still
+     loading it applies when the bank lands. */
+  _applyLayer2Stance(spec) {
+    if (!spec || !this._t3) return;
+    const m = /^t3:([a-z0-9_]+):(.+)$/.exec(spec.anim_ref || '');
+    if (!m) return;
+    const donorClips = getT3Clips(m[1]);
+    if (!donorClips) {
+      const p = loadT3Clips(THREE, m[1]);
+      if (p && p.then) p.then(() => this._applyLayer2Stance(spec)).catch(() => {});
+      return;
+    }
+    if (!donorClips[m[2]] || !this.t3actions || !this.t3actions.stance) return;
+    const rc = retargetT3Clips(this._t3.clips, this._t3.bank, this._t3.model, THREE, this._t3.modelKey, ['stance'],
+      { cacheAs: 'stance#l2', layer: { clips: donorClips, bankId: m[1], clipName: m[2], offsetFrames: 0 } });
+    if (rc && rc['stance#l2']) {
+      Object.assign(this.t3actions, createT3Actions(this.mixer, { stance: rc['stance#l2'] }, THREE));
+      console.log(`[WH-LAYER2] ${this.char.id}: ambient stance layer ${spec.anim_ref} on the secondary chain`);
+    }
+  }
+
+  /* LAYER2 second contact: a composite move whose layer2.hit block
+     is authored two-hit lands a SECOND, separate hit from the
+     secondary pair — checked on the attacker's own clock, gated on
+     the waist hand actually reaching the opponent's torso (the
+     visual strike IS the hitbox, like the primary's weapon sweep).
+     Once per attack. */
+  _layer2Contact(opp) {
+    const p = this._atkPlan;
+    if (!p || p.id !== this._attackId || !p.layer2hit || this._l2HitId === p.id) return;
+    if (this.state !== 'attack' || !opp || opp.dead || opp.invuln > 0) return;
+    const hit = p.layer2hit;
+    const t0 = ((hit.active && hit.active[0]) || 0) / 60, t1 = ((hit.active && hit.active[1]) || 0) / 60;
+    if (this.stateT < t0 || this.stateT > t1 + 0.05) return;
+    const hand = this._arm2Hands && this._arm2Hands[hit.limb === 'arm2L' ? 'Left' : 'Right'];
+    if (!hand) return;
+    hand.getWorldPosition(_v1);
+    // Contact = the waist hand reaching the opponent's actual
+    // hurtbox geometry (the same segments the primary weapon sweep
+    // tests), not a chest point: the waist pair is shorter-levered
+    // than the primary arms, and its strikes land on the foremost
+    // hurt segment (forearm / torso line) well before chest center.
+    let best = Infinity;
+    const hurts = opp.getHurtboxes ? opp.getHurtboxes() : [];
+    for (const h of hurts) {
+      const abx = h.x2 - h.x1, aby = h.y2 - h.y1, abz = h.z2 - h.z1;
+      const t = Math.max(0, Math.min(1, (((_v1.x - h.x1) * abx) + ((_v1.y - h.y1) * aby) + ((_v1.z - h.z1) * abz)) / ((abx * abx) + (aby * aby) + (abz * abz) || 1)));
+      const dx = _v1.x - (h.x1 + abx * t), dy = _v1.y - (h.y1 + aby * t), dz = _v1.z - (h.z1 + abz * t);
+      const d = Math.hypot(dx, dy, dz);
+      if (d < best) best = d;
+    }
+    if (best > 0.38) return;
+    this._l2HitId = p.id;
+    const mv = { name: `${(this.attack && this.attack.name) || 'Layered strike'} (second pair)`,
+      damage: hit.damage || 5, limb: hit.limb === 'arm2L' ? 'armL' : 'armR', level: hit.level || 'mid',
+      heavy: false, knock: 1.4, soulGain: 4, startup: t0, active: Math.max(0.017, t1 - t0), recovery: 0.3 };
+    try {
+      opp.receiveHit(mv, this);
+      console.log(`[WH-LAYER2] ${this.char.id}: second-pair contact — ${mv.damage} dmg from ${hit.limb}`);
+    } catch (e) { /* receiveHit guards its own states */ }
   }
 
   /* ATTACK CLIP SELECTION (lane D, 2026-10-24; owner: "the different move inputs from the move
@@ -1249,6 +1441,36 @@ export class Fighter {
     const { bank, clips } = this._t3;
     const ms = getFighterMoveset(this._movesetId);
     const raw = move && move.moveKey && ms && ms.moves ? ms.moves[move.moveKey] : null;
+    // DW SURGE BEAM: the surge attack plays the DW wave clip (dwhadoh00).
+    // Keyed on attackName === 'surge' — the surge move has no moveKey, so the
+    // T7 branch below (which needs move.moveKey) never matches it. Skipped
+    // if the DW retarget failed before (in _dwskip), like the T7 skip set.
+    if (attackName === 'surge' && !(this._dwskip && this._dwskip.has('surge'))) {
+      const dw = dwMoveClip(this.char.id, 'surge', this._t3.model);
+      if (dw) return { name: dw.name, kind: 'dw', timing: null, why: 'DW surge beam (dwhadoh00)', limb: 'armR' };
+    }
+    // DW WARDEN SLAM: the Warden boss's slam plays the mapped Warden Kit
+    // explosion attack (kmb1_bakutyu, 65f strike, bank dw:warden:bakutyu)
+    // for the '2' the slam fires — same move, same timing, same damage;
+    // only the clip swaps, exactly like the T7 branch swaps clips for a
+    // move. _dwSlamNext is set by BrawlerAI._wardenSlam just before
+    // tryAttack('2'); it is consumed here and only here, and only when
+    // this call is the top-level plan for the current attack (move ===
+    // this.attack, not a step-plan candidate recursion through
+    // _ownButtonPlan, and not under the _ownBtnGuard). Falls through to
+    // the normal '2' plan when the kind pack is not loaded or the
+    // retarget already failed (then _dwskip blocks the retry).
+    if (this._dwSlamNext && attackName === '2' && this._dwKind === 'warden'
+        && move === this.attack && attackName === this.attackName && !this._ownBtnGuard) {
+      this._dwSlamNext = false;
+      if (!(this._dwskip && this._dwskip.has('warden:bakutyu'))) {
+        const dw = dwKindMoveClip('warden', 'warden:bakutyu', this._t3.model);
+        if (dw) return { name: dw.name, kind: 'dw', timing: null, why: 'DW warden explosion attack (kmb1_bakutyu)',
+          limb: Fighter.attackLimb(move, attackName), level: Fighter.attackLevel(move, raw), grab: false };
+      }
+    } else if (this._dwSlamNext && move === this.attack && attackName === this.attackName) {
+      this._dwSlamNext = false;
+    }
     // REAL T7 MOVE (t3anims.js T7_MOVES): the row's own Tekken 7 clip, mapped exactly by
     // tools/anim/t7_move_resolve.py (input path + exact T7 frame data), ahead of step plans, bank rows, donors
     // and matches. Strikes only (the moves pack holds no throws; a throw keeps the throw path). Timed on the
@@ -1462,6 +1684,21 @@ export class Fighter {
         name = plan ? plan.name : null;
       }
     }
+    if (name && !this.t3actions[name] && name.startsWith('dw:')) {
+      // A brawler-kind DW move (the Warden slam) lives in the kind pack, not
+      // the fighter's own pack: try the fighter's pack first, then the kind
+      // pack. The key spaces are disjoint ('warden:*' vs 'surge'/'1+3'/...),
+      // so the order never changes which move resolves.
+      let rc = dwMoveRetarget(this.char.id, name.slice(3), this._t3.model, THREE, this._t3.modelKey);
+      if (!rc && this._dwKind) rc = dwKindMoveRetarget(this._dwKind, name.slice(3), this._t3.model, THREE, this._t3.modelKey);
+      if (rc && rc[name]) Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
+      if (!this.t3actions[name]) {
+        // Could not retarget safely: this move keeps its previous clip choice from now on.
+        (this._dwskip || (this._dwskip = new Set())).add(name.slice(3));
+        plan = this._attackClipPlan(move, attackName);
+        name = plan ? plan.name : null;
+      }
+    }
     if (name && !this.t3actions[name] && name.startsWith('row:')) {
       if (plan.stepBank && plan.stepBank !== this._t3.bank && plan.stepRow != null) {
         // Per-step-bank action: retarget the override bank's own
@@ -1483,11 +1720,38 @@ export class Fighter {
         if (rc && rc[name]) Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
       }
     }
+    // LAYER2 composite (Chatur Phase 2): when the moveset entry
+    // carries a layer2 block, build (once) the layered variant of
+    // this row action — donor-bank clip on the secondary chain,
+    // composited over the move's own clip — and play THAT. The
+    // variant lives under '<name>#l2'; the plain action is never
+    // replaced. If the donor bank has not landed yet, this attack
+    // plays unlayered and the composite applies from the next one.
+    let l2used = null;
+    if (name && name.startsWith('row:') && this.t3actions[name]) {
+      const l2 = this._layer2For(move);
+      if (l2) {
+        const l2name = name + '#l2';
+        if (!this.t3actions[l2name]) {
+          const donorClips = getT3Clips(l2.donorBank);
+          if (donorClips && donorClips[l2.clipName]) {
+            const rc = retargetT3Clips(this._t3.clips, this._t3.bank, this._t3.model, THREE, this._t3.modelKey, [name],
+              { cacheAs: l2name, layer: { clips: donorClips, bankId: l2.donorBank, clipName: l2.clipName, offsetFrames: l2.offsetFrames } });
+            if (rc && rc[l2name]) Object.assign(this.t3actions, createT3Actions(this.mixer, { [l2name]: rc[l2name] }, THREE));
+          } else if (!donorClips) {
+            const pr = loadT3Clips(THREE, l2.donorBank);
+            if (pr && pr.catch) pr.catch(() => {});
+          }
+        }
+        if (this.t3actions[l2name]) { name = l2name; l2used = l2; }
+      }
+    }
     if (name && !this.t3actions[name]) name = null;
     this._atkPlan = { id: this._attackId, move, name, kind: plan && plan.kind, why: plan && plan.why,
       limb: plan && plan.limb, timing: plan && plan.timing, rejected: plan && plan.rejected,
       steps: plan && plan.steps, unmapped: plan && plan.unmapped,
-      stepBank: plan && plan.stepBank, stepRow: plan && plan.stepRow };
+      stepBank: plan && plan.stepBank, stepRow: plan && plan.stepRow,
+      layer2hit: l2used && l2used.hit ? l2used.hit : null };
     return name;
   }
 
@@ -1563,7 +1827,7 @@ export class Fighter {
     } else if (isT7) {
       const mc = t7MoveClip(this.char.id, this._t3 && this._t3.bank, String(p.name).slice(3));
       clip = mc ? mc.clip : null;
-    } else clip = this._t3 && this._t3.clips ? this._t3.clips[p.name] : null;
+    } else clip = this._t3 && this._t3.clips ? this._t3.clips[String(p.name).split('#')[0]] : null; // '#l2' layered variants read the base row's travel
     const raw = clip && clip.userData && clip.userData.raw;
     const rt = isT7 ? (clip && clip.userData && clip.userData.rootMotionT) : (raw && raw.root_t);
     const rfps = isT7 ? 60 : ((raw && raw.fps) || 30);
@@ -1648,6 +1912,7 @@ export class Fighter {
   tryCrouch(on) {
     if (this.dead) return;
     if (on && this.onGround && (this.state === 'idle' || this.state === 'walk' || this.state === 'block')) {
+      this._bt = false; // Tekken: crouching from back-turned turns you around into the crouch
       this._enter('crouch'); this.vx = 0;
     } else if (!on && this.state === 'crouch') {
       this._enter('idle'); this._risingT = 0.35;
@@ -1676,7 +1941,7 @@ export class Fighter {
     const st = this.stance;
     return {
       stance: st && st !== 'BT' && st !== 'FC' && st !== 'SS' ? st : null,
-      backturned: st === 'BT',
+      backturned: !!this._bt || st === 'BT',
       sidestep: this.state === 'sidestep',
       crouching: this.state === 'crouch' || st === 'FC',
       rising: this._risingT > 0,
@@ -1685,6 +1950,13 @@ export class Fighter {
       urgeOn: !!this._urgeOn,
       urgeAvailable: !this._urgeUsed && !this._urgeOn && this.hp > 0,
       running: !!(this.tekken && this.tekken.running && this.tekken.running() && this.onGround) || (this.state === 'attack' && /^WR\./.test(this.attackName || '') && this.stateT <= 0.14), // Tekken WR (and its chord-upgrade window)
+      // roster-100 L5: crouch dash — the buffer latches CD when the fighter's own
+      // data-declared cd_entry move fires; CD. rows resolve only inside that window.
+      crouchDash: !!(this.tekken && this.tekken.cdActive && this.tekken.cdActive() && this.onGround),
+      // roster-100 L5: directional sidestep — SSL/SSR by the foe-flank convention
+      // (_foeFlank: at the foe's left iff dz * -(foe.facing) > 0; here the heading
+      // is ssDir, the world-z step direction set by trySidestep).
+      ssSide: (this.state === 'sidestep' && this._opp && this.ssDir) ? ((this.ssDir * -(this._opp.facing || 1)) > 0 ? 'SSL' : 'SSR') : null,
       inMove: this.state === 'attack',
       attackT: this.state === 'attack' ? this.stateT : null, // time into the current hit ('~' window)
       // close/far normals (KOF/SF) pick by root distance; stance spin variants by re-entries
@@ -1743,7 +2015,7 @@ export class Fighter {
     if ((word & 0x18) === 0x08 && (word & 7) === 7 && !this.onGround) return false; // lows vs airborne
     return true;
   }
-  tryJump() { if (this.canAct() && this.onGround) { this.vy = this.stats.jump; this.onGround = false; this._enter('jump'); } }
+  tryJump() { if (this.canAct() && this.onGround) { this._bt = false; this.vy = this.stats.jump; this.onGround = false; this._enter('jump'); } } // a jump turns you around (Tekken)
   tryBlock(on) {
     if (this.dead) return;
     // FIGHTER DEPTH (worker 34): soul kindle flash — cannot block during it (T7).
@@ -1829,6 +2101,7 @@ export class Fighter {
      genuinely move off the attack's line on the z-axis. */
   trySidestep(dir) {
     if (!this.canAct() || !this.onGround) return false;
+    this._bt = false; // a sidestep re-faces the opponent (Tekken)
     this._enter('sidestep');
     this.ssDir = dir;
     this._ssId = (this._ssId || 0) + 1;
@@ -1946,6 +2219,26 @@ export class Fighter {
      the thrower's anchor scale (used for both clips, per doc).
      Returns false when either clip is unavailable — the caller
      then keeps the legacy lock instead of a half pair. */
+  /* Retarget the DW Surge Kit throw clip for this fighter's front throw.
+     Returns the action name or null (pack not loaded yet, or not a front throw). */
+  _dwThrowAction() {
+    const key = this.attackName;
+    if (key !== '1+3' && key !== '2+4') return null;
+    const name = 'dw:' + key;
+    if (this.t3actions[name]) return name;
+    const rc = dwMoveRetarget(this.char.id, key, this._t3.model, THREE, this._t3.modelKey);
+    if (rc && rc[name]) Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
+    return this.t3actions[name] ? name : null;
+  }
+  /* Retarget the DW Soul Surge Bloom trigger clip ('dw:surge-trigger') onto this
+     fighter. Returns the action name or null (pack not loaded yet). */
+  _dwTriggerAction() {
+    const name = 'dw:surge-trigger';
+    if (this.t3actions[name]) return name;
+    const rc = dwMoveRetarget(this.char.id, 'surge-trigger', this._t3.model, THREE, this._t3.modelKey);
+    if (rc && rc[name]) Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
+    return this.t3actions[name] ? name : null;
+  }
   _bindThrowPair(pair, victim) {
     const thrower = this;
     const tBank = thrower._bankIdForDir(pair.clips.throwerBank);
@@ -1959,6 +2252,15 @@ export class Fighter {
     pair.anchorScale = tRp.pack.anchor_mm_to_rig_m;
     pair.throwerAction = thrower._reactionAction(tBank, pair.clips.throwerSlot, 'throw:' + hexSlot(pair.clips.throwerSlot));
     pair.victimAction = victim._reactionAction(vBank, pair.clips.victimSlot, 'victim:' + hexSlot(pair.clips.victimSlot));
+    // SURGE FORM THROW (DW): in Surge Form, Pantera's front throws play the DW Surge Kit
+    // throw clip for the thrower only — the victim keeps the T3 reaction, the pair root
+    // still follows the pack anchors, and the pack's damage time / duration still time
+    // the pair. Known limit: the DW clip (2.0/2.1 s) is not the pair's duration, so the
+    // thrower may finish early/late; the pair clock rules.
+    if (thrower.surgeForm) {
+      const dwName = thrower._dwThrowAction && thrower._dwThrowAction();
+      if (dwName) pair.throwerAction = dwName;
+    }
     return !!(pair.throwerAction && pair.victimAction);
   }
   /* Start a bound pair: shared root frame anchored at the
@@ -2214,10 +2516,10 @@ export class Fighter {
           if (resolveMoveKey(this.tekken.fighterId, chord)) {
             this.tekken.lastMove = this._chordBase || null;
             const saved = { state: this.state, attack: this.attack, attackName: this.attackName, stateT: this.stateT,
-              stance: this.stance, stanceT: this.stanceT, _risingT: this._risingT };
+              stance: this.stance, stanceT: this.stanceT, _risingT: this._risingT, _bt: this._bt };
             const pre = this._preAtk || {};
             this.state = pre.state === 'crouch' ? 'crouch' : 'idle';
-            this.stance = pre.stance || null; this.stanceT = pre.stanceT || 0; this._risingT = pre.risingT || 0;
+            this.stance = pre.stance || null; this.stanceT = pre.stanceT || 0; this._risingT = pre.risingT || 0; this._bt = pre.bt || false;
             if (this._tryAttackFresh(chord)) return true;
             Object.assign(this, saved);
           }
@@ -2241,13 +2543,13 @@ export class Fighter {
         if (/^[1234]$/.test(btn) && name.split('+').includes(btn)) {
           this.tekken.lastMove = this._chordBase || null;
           const saved = { state: this.state, attack: this.attack, attackName: this.attackName, stateT: this.stateT,
-            stance: this.stance, stanceT: this.stanceT, _risingT: this._risingT };
+            stance: this.stance, stanceT: this.stanceT, _risingT: this._risingT, _bt: this._bt };
           // Moveset sweep 2026-10-28: re-resolve the chord in the state the single was pressed
           // from (stance / crouch / while-rising), not plain idle — SAV.1+2, WS.1+2, FC.1+2 and
           // stance throws (SIDE_L.1+3) came out as the neutral chord.
           const pre = this._preAtk || {};
           this.state = pre.state === 'crouch' ? 'crouch' : 'idle';
-          this.stance = pre.stance || null; this.stanceT = pre.stanceT || 0; this._risingT = pre.risingT || 0;
+          this.stance = pre.stance || null; this.stanceT = pre.stanceT || 0; this._risingT = pre.risingT || 0; this._bt = pre.bt || false;
           if (this._tryAttackFresh(name)) return true;
           Object.assign(this, saved);
         }
@@ -2398,10 +2700,10 @@ export class Fighter {
   /** Does this fighter's moveset own `input` as a KOF system row (optionally of `sys`)? */
   systemRowOn(input, sys) { return systemRows(this._movesetId).find((r) => r.input === input && (!sys || r.sys === sys)) || null; }
   _startSystemMove(key, move) {
-    this._preAtk = { state: this.state, stance: this.stance, stanceT: this.stanceT, risingT: this._risingT };
+    this._preAtk = { state: this.state, stance: this.stance, stanceT: this.stanceT, risingT: this._risingT, bt: !!this._bt };
     this.attack = move; this.attackName = key; this.hasHit = false; this._prevHitPoint = null;
     this._attackId = (this._attackId || 0) + 1;
-    this._queuedNext = null; this._queuedAfter = null; this.stance = null; this.stanceT = 0;
+    this._queuedNext = null; this._queuedAfter = null; this.stance = null; this.stanceT = 0; this._bt = false;
     this._throwFollow = null; this._chainFrom = null; this._chainNext = null; this._chainSeq = [];
     this.vx = 0; this._enter('attack'); this._attackPhase = 'startup'; this._prevAtkT = 0;
   }
@@ -2558,14 +2860,18 @@ export class Fighter {
     }
     if (move.system === 'taunt') { const t = (move.startup || 0) + (move.active || 0);
       move = { ...move, recovery: Math.max(move.recovery || 0, KOF.TAUNT_LOCK - t) }; } // 49f uncancellable
-    this._preAtk = { state: this.state, stance: this.stance, stanceT: this.stanceT, risingT: this._risingT };
+    this._preAtk = { state: this.state, stance: this.stance, stanceT: this.stanceT, risingT: this._risingT, bt: !!this._bt };
     this.attack = move; this.attackName = notation; this.hasHit = false; this._prevHitPoint = null;
     this._attackId = (this._attackId || 0) + 1;
     this._queuedNext = null; this._queuedAfter = null; this._stepChain = null;
+    // roster-100 L5: this start path does not record into the buffer, so the
+    // crouch-dash latch is noted here (the _fireNotation path gets it via
+    // tekken._recordMove). No-op for fighters without a declared cd_entry.
+    if (this.tekken && this.tekken.noteCdStart) this.tekken.noteCdStart(notation);
     if (/^(R|RD)\./.test(notation)) this._rageUsed = true; // rage art/drive: once per round
     // stance spin count (T7 JGS* (N spins)): re-entering the stance the move started from adds a spin
     this._spinNext = move.stanceAfter && this.stance === move.stanceAfter ? (this._stanceSpins || 1) + 1 : 1;
-    this.stance = null; this.stanceT = 0; this._risingT = 0;
+    this.stance = null; this.stanceT = 0; this._risingT = 0; this._bt = false; // the press already resolved against the pre-attack facing; the move's own end state re-applies at its end
     this._throwFollow = null; this._chainFrom = null; this._chainNext = null; this._chainSeq = [];
     this.vx = 0; this._enter('attack'); this._attackPhase = 'startup'; this._prevAtkT = 0;
     if (name === 'surge') this._auraFlash = 0.7;
@@ -2646,7 +2952,8 @@ export class Fighter {
   _endThrowFollow() {
     const c = this._throwFollow; this._throwFollow = null; if (!c) return;
     const m = getRealMove(this._movesetId, c), after = m && m.stanceAfter;
-    if (after === 'FC') { this._enter('crouch'); this.stance = 'FC'; this.stanceT = 0.5; }
+    if (after === 'BT') { this._bt = true; } // ends back-turned: a facing state, not a stance
+    else if (after === 'FC') { this._enter('crouch'); this.stance = 'FC'; this.stanceT = 0.5; }
     else if (after) { this._stanceSpins = this._spinNext || 1; this.stance = after; this.stanceT = 0.8; }
   }
   /* Start the move for an already-resolved notation (buffered string hits). */
@@ -2683,6 +2990,20 @@ export class Fighter {
 
   /* ---------------- defense / damage ---------------- */
   isBlocking() { return this.state === 'block'; }
+
+  /* Back-turned guard state for the HUD strain tell (main.js UI._hp)
+     and tests: strain on the back pair, the SC-style warning level
+     (0 none / 1 at strainWarn1 / 2 at strainWarn2), whether the pair
+     is spent for this BT stint, and whether BT guard is available at
+     all. Fighters without the multi-arm exception report enabled
+     false and never accumulate strain. */
+  btGuardState() {
+    const cfg = this._btGuardCfg;
+    if (!cfg) return { enabled: false, strain: 0, warn: 0, broken: false };
+    const strain = this._btStrain || 0;
+    const warn = strain >= cfg.strainWarn2 ? 2 : strain >= cfg.strainWarn1 ? 1 : 0;
+    return { enabled: true, strain, warn, broken: !!this._btGuardBroken };
+  }
 
   /* Normalized world-space vector pointing AWAY from `attacker` on the
      ground plane (brawler knockback direction). */
@@ -2735,8 +3056,68 @@ export class Fighter {
     // attacker. Standing guard blocks highs/mids, crouching guard blocks lows; throws and
     // unblockables carry no guard bits.
     const word = move.hitWord ?? Fighter.defaultWord(move);
-    const guarded = !move.unblockable && !move.isGrab && facingAttacker && (this._guardBits() & word) !== 0;
-    if (attacker) attacker._t3Contact = { t: attacker._clock || 0, guarded }; // T3 conditions 1 / 0x1A / 0x1B / situations
+    let guarded = !move.unblockable && !move.isGrab && facingAttacker && (this._guardBits() & word) !== 0;
+    // TEKKEN-STRICT BT GUARD (owner ruling 2026-11-06, game/js/bt-guard.js):
+    // while back-turned, guard is DISABLED — the hit falls through to the
+    // existing unguarded path below (full hit, normal reactions, and the
+    // back-hit knockdown flags that read _bt further down), whatever the
+    // defender's guard input. It works again the moment _bt clears.
+    // EXCEPTION: a multi-arm fighter (cfg from its model data) guards from
+    // BT against standing-guard levels only — (word & 0x10) is exactly the
+    // standing-guard bit, i.e. high / mid / special-mid; lows carry only
+    // the crouch-guard bit and throws/unblockables are already excluded
+    // above, so both land clean — under the hybrid handicap branch below.
+    let btGuarded = false;
+    if (this._bt) {
+      guarded = false;
+      const cfg = this._btGuardCfg;
+      if (cfg && !this._btGuardBroken && !move.unblockable && !move.isGrab &&
+          (word & 0x10) !== 0 && (this._guardBits() & word) !== 0) btGuarded = true;
+    }
+    if (attacker) attacker._t3Contact = { t: attacker._clock || 0, guarded: guarded || btGuarded }; // T3 conditions 1 / 0x1A / 0x1B / situations
+    if (btGuarded) {
+      // BT GUARD (the owner's hybrid: bleed base + SoulCalibur guard-break
+      // layer — design + provenance in game/js/bt-guard.js). Mirrors the
+      // front-guard block branch with the handicap applied: chip at
+      // cfg.chipPct (0.30) through the same formula and recoverable pool,
+      // pushback at cfg.pushbackMult, NO meter (meterOnBlock 0), _bt NOT
+      // cleared (clearsBt false) — and every block adds strain; the block
+      // that reaches strainMax still blocks, then the pair is spent
+      // (onBreak: bt_guard_off_until_bt_ends) and later hits this stint
+      // resolve Tekken-strict through the unguarded path.
+      const cfg = this._btGuardCfg;
+      let chip = 0;
+      if (!this.game || this.game.guardDamage !== false) {
+        chip = move.damage * attacker.stats.power * cfg.chipPct * (attacker.stats.chipMult || 1) / this.stats.defense;
+        if (attacker._vtriggerT > 0 && !move.isGrab) {
+          chip += move.damage * V.TRIGGER_CHIP_MULT * attacker.stats.power / this.stats.defense;
+        }
+      }
+      const _hpBeforeBlock = this.hp;
+      this.hp = attacker._urgeOn ? Math.max(1, this.hp - chip) : Math.max(0, this.hp - chip);
+      this._addRecoverable(_hpBeforeBlock - this.hp);
+      if (attacker && typeof attacker._recoverOnAttack === 'function') attacker._recoverOnAttack(chip);
+      if (move.urgeBurst && this.game && this.game.soulurge &&
+          typeof this.game.soulurge.onBlockedHit === 'function') {
+        this.game.soulurge.onBlockedHit(attacker, move);
+      }
+      this.stun = (move.t8 && move.t8.blk != null) ? stunFromAdvantage(move.t8.blk, move)
+        : 0.18 + move.damage * 0.01;
+      if (this.brawler) {
+        const [nx, nz] = this._awayFrom(attacker);
+        this.vx = nx * move.knock * 0.5 * cfg.pushbackMult;
+        this.vz = nz * move.knock * 0.5 * cfg.pushbackMult;
+      } else {
+        this.vx = Math.sign(this.root.position.x - attacker.root.position.x) * move.knock * 0.5 * cfg.pushbackMult;
+      }
+      // meterOnBlock is 0 by design: a back-pair block earns no meter.
+      this._btStrain = Math.min(cfg.strainMax, (this._btStrain || 0) + cfg.strainPerDamage * move.damage);
+      if (this._btStrain >= cfg.strainMax) this._btGuardBroken = true;
+      if (this.hp <= 0) { this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || 1); return 'ko'; }
+      this._reactionSel = this._pickReaction(move, attacker, { guarded: true, counter: false,
+        crouch: _wasCrouch, airborne: false, down: false, forState: 'block' });
+      return 'block';
+    }
     if (guarded) {
       // GAME OPTION / VERSUS SETUP: GUARD DAMAGE OFF = no chip at all.
       // (V-Trigger chip is part of guard damage too.)
@@ -2876,8 +3257,8 @@ export class Fighter {
       }
       this._queuedNext = null; this._queuedAfter = null; this._stepChain = null; this._stringGraceUntil = 0; // getting hit kills your string
       // Hit in the back (BT) the victim falls forward past its feet: it lands head towards the attacker.
-      this._kdHeadTowards = this.stance === 'BT';
-      this._kdFaceDown = this.stance === 'BT';   // falls forward: face down (FDFA ground state)
+      this._kdHeadTowards = !!this._bt;
+      this._kdFaceDown = !!this._bt;   // falls forward: face down (FDFA ground state)
       this._enter('knockdown');
     } else {
       const t8adv = move.t8 ? (counter && move.t8.ch != null ? move.t8.ch : move.t8.hit) : null;
@@ -2932,7 +3313,7 @@ export class Fighter {
         this._enter('wallsplat');
       }
     }
-    this.stance = null; this._stanceSpins = 0;
+    this.stance = null; this._stanceSpins = 0; this._bt = false; // a landed hit resolves the facing state too (the back-hit flags above already read it)
     // Soft-body hit injection: dent the muscle volume at the impact point.
     if (this._softbody) {
       try {
@@ -3281,22 +3662,46 @@ export class Fighter {
       if (this._surgeT <= 0 || this.meter <= 0) this.endSurgeForm();
     }
 
+    // BT GUARD strain is per-stint (owner design 2026-11-06): it resets
+    // when _bt ends, however _bt was cleared (turn-around, crouch,
+    // sidestep, jump, attack start, landed hit). One watchdog here
+    // covers every exit path, including the ones that clear _bt outside
+    // update()'s facing block below.
+    if (!this._bt && (this._btStrain || this._btGuardBroken)) {
+      this._btStrain = 0; this._btGuardBroken = false;
+    }
+
     // BRAWLER: facing is yaw-driven by the brawler controller (free 3D) —
     // never x-snap toward a single opponent.
     if (opponent && this.canAct() && !this.brawler) {
-      const want = opponent.root.position.x >= this.root.position.x ? 1 : -1;
-      if (want !== this.facing) this.facing = want;
-      // QA 2026-10-23 targeting fix (T7 tracking): in neutral a fighter turns to
-      // face the opponent in 3D, not just along x, so after a sidestep the
-      // body and the next attack point at the opponent.
-      this._faceYaw = Math.atan2(opponent.root.position.x - this.root.position.x,
-        opponent.root.position.z - this.root.position.z);
+      if (this._bt) {
+        // BACK-TURNED: the body faces AWAY from the opponent and does NOT snap
+        // back. BT is a facing state with no timer: it ends when the fighter
+        // turns around — stepping toward the opponent (walk / dash in) re-faces,
+        // crouch / sidestep / jump clear it in their own entry points, and an
+        // attack or a hit resolves it through the normal move flow. Before this,
+        // the snap below ran unconditionally, so a fighter the data had put in
+        // BT still LOOKED facing while its presses resolved BT rows: the BT move
+        // "fired from the front" and spun the fighter around (owner report).
+        this._faceYaw = Math.atan2(opponent.root.position.x - this.root.position.x,
+          opponent.root.position.z - this.root.position.z) + Math.PI;
+        const toward = Math.sign(opponent.root.position.x - this.root.position.x);
+        if (toward !== 0 && Math.sign(this.vx) === toward && Math.abs(this.vx) > 0.4) this._bt = false;
+      } else {
+        const want = opponent.root.position.x >= this.root.position.x ? 1 : -1;
+        if (want !== this.facing) this.facing = want;
+        // QA 2026-10-23 targeting fix (T7 tracking): in neutral a fighter turns to
+        // face the opponent in 3D, not just along x, so after a sidestep the
+        // body and the next attack point at the opponent.
+        this._faceYaw = Math.atan2(opponent.root.position.x - this.root.position.x,
+          opponent.root.position.z - this.root.position.z);
+      }
     }
 
     this._tickState(dt);
     this._drainPressBuffer();
     this._physics(dt, opponent);
-    this._animate(dt);
+    this._animate(dt, opponent);
 
     // Secondary systems update (after animation, before render)
     if (this._jiggle) {
@@ -3379,7 +3784,9 @@ export class Fighter {
           // BATCH: 200 -> 500 ms for touch cadence (phone taps are slower than stick).
           if (!m.isGrab) this._stringGraceUntil = (typeof performance !== 'undefined' ? performance.now() : 0) + 500;
           // Source notes "Transition to X": the move ends in that stance (FC = crouch).
-          if (after === 'FC') { this._enter('crouch'); this.stance = 'FC'; this.stanceT = 0.5; }
+          // "Transition to BT" ends back-turned: a facing state, not a stance (see _bt).
+          if (after === 'BT') { this._bt = true; }
+          else if (after === 'FC') { this._enter('crouch'); this.stance = 'FC'; this.stanceT = 0.5; }
           else if (after) { this._stanceSpins = this._spinNext || 1; this.stance = after; this.stanceT = 0.8; }
         }
         // Buffered string hit fires once this hit's active frames are over.
@@ -3738,7 +4145,7 @@ export class Fighter {
   }
 
   /* ---------------- animation ---------------- */
-  _animate(dt) {
+  _animate(dt, opponent) {
     // 1) Facing (3D yaw toward the opponent when known; sign convention kept)
     // BRAWLER: yaw drives the facing directly in free 3D (brawler.js updates
     // f.yaw per frame); sync it into _faceYaw so the facing line below stays
@@ -3811,6 +4218,10 @@ export class Fighter {
     // the move clock first, so its hit frame lands on the move's active frames (lane D).
     this._applyAttackWarp();
     this.mixer.update(dt);
+    // 4a) LAYER2 second contact (Chatur Phase 2): after the mixer has
+    // posed this frame, an authored two-hit composite can land its
+    // second pair's hit (see _layer2Contact).
+    if (opponent) this._layer2Contact(opponent);
 
     // 4b) CANON SIZING (game/data/canon-sizing.js): once per model/form, after
     // the stance has posed a couple of frames, scale the root so the stance
@@ -3840,6 +4251,21 @@ export class Fighter {
         // Guard reaction during blockstun overrides locomotion.
         const grn = this._guardReactionName();
         if (grn) { this._playT3Once(grn, 'react:' + this._reactionSel.slot); break; }
+        // SOUL SURGE BLOOM TRIGGER (DW dwup00): when Surge Form just started, play
+        // the DW trigger clip once. It owns the frame while it runs (isRunning);
+        // when it finishes, the stance loop resumes. If the DW pack has not
+        // loaded yet, the flag clears and the form still started.
+        if (this._dwTriggerPending) {
+          const dwName = this._dwTriggerAction && this._dwTriggerAction();
+          if (dwName) {
+            this._dwTriggerPending = false;
+            const a = this.t3actions[dwName];
+            if (a && a.isRunning && a.isRunning()) break;
+            if (this._playT3Once(dwName, 'dw-trigger:' + (this._dwTriggerId || 0))) break;
+          } else {
+            this._dwTriggerPending = false;
+          }
+        }
         // Animated bank stance / walk cycle — the living fighting idle.
         if (t3Active) this._playT3(t3Wanted, { loop: true });
         else this._stopT3();

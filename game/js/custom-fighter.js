@@ -65,6 +65,19 @@ function templateModelFor(F) {
 }
 
 /**
+ * The moveset editor's saved custom moveset, if this fighter has
+ * one (game/js/moveset-editor.js, schema wh.custom-moveset.v1).
+ * A created fighter's save may carry `moveset_custom` — a full
+ * template base + per-slot library moves. Returns null when the
+ * fighter was made before the editor or never edited its moveset.
+ */
+export function customMovesetFor(F) {
+  const m = F && F.moveset_custom;
+  if (!m || m.schema !== 'wh.custom-moveset.v1') return null;
+  return m;
+}
+
+/**
  * Load the saved custom fighter from localStorage.
  * Reads the flagship Creation Suite format first (`wh_creation_suite_v1`),
  * then falls back to the legacy create-fighter format (`wh_create_fighter_v1`).
@@ -107,19 +120,26 @@ export function customFighterToRoster(F) {
   // Convert hex skin tone to integer for the game's color system
   const suitColor = parseInt(skinTone.replace('#', ''), 16) || 0xc98d5e;
 
+  const customMoveset = customMovesetFor(F);
+
   return {
     id: 'custom',
     name: name,
     title: title,
     base: 'Custom',
-    // MOVESET FALLBACK, explicit (Phase 4b): no custom moveset slots
-    // are wired yet, so a created fighter falls back to the jin
-    // bank for animation (fighter.js bankIdFor logs this fallback
-    // once) and to the generic move table for frame data. Custom
-    // moveset slots are still TODO — this placeholder is named
-    // here and in bankIdFor, not hidden behind a silent default.
-    moveset: 'jin',
+    // MOVESET, editor-wired (2026-11-08): a fighter saved with a
+    // custom moveset (game/js/moveset-editor.js) fights on it —
+    // `moveset` names the custom set, `customMoveset` carries the
+    // template base + per-slot library moves for the assembler.
+    // Without one, the old fallback stands, named here and in
+    // bankIdFor: the jin bank for animation and the generic move
+    // table for frame data. The animation bank still rides the
+    // fallback until the assembler path wires custom manifests
+    // into fights (next step — needs movesets.js integration and
+    // a live fight proof, not claimed here).
+    moveset: customMoveset ? `custom:${customMoveset.baseTemplate}` : 'jin',
     movesetFallback: 'jin',
+    customMoveset: customMoveset,
     model: model,
     tintStrength: 0.3,
     colorize: true, // the CAW skin tone is applied as a tint (player's choice)

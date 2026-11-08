@@ -329,9 +329,9 @@
   "bank_map": {
    "anim_id>=0x8000": "common.arc (bare MOTA, 1711 entries), key = anim_id - 0x8000",
    "0x4000<=anim_id<0x8000": "character rotsm.arc section 0, key = anim_id - 0x4000",
-   "anim_id<0x4000": "file not in the pulled tkdata tree \u2014 31 mapped moves wait on it (bounded remainder)"
+   "anim_id<0x4000": "RESOLVED 2026-11-06 (FILL 2): bank 0x0000 is MotaList slot 0 \u2014 the MOTA section embedded in each character's own <code>mot.bin. Indexes in GRE mask/indexes/<code>_bank0_index.json; clip bytes in GRE release t7-bank0-clips-v1. All 33 mapped bank-0 moves now clip-resolved."
   },
-  "format": "MOTA spec + parser: GRE teardown/tekken7-steam/tkdata/mothead/mask/MOTA-FORMAT.md and tools/mota_parse.py (PR mhvnsnt/game-reverse-engineering#74). Clip-start words 100/200; format-200 bodies fully decoded (f32 BE frames x tracks x vec3); format-100 bodies sliced/indexed, encoding open.",
+  "format": "MOTA spec + parser: GRE teardown/tekken7-steam/tkdata/mothead/mask/MOTA-FORMAT.md and tools/mota_parse.py (PR mhvnsnt/game-reverse-engineering#74). Clip-start words 100/200; format-200 bodies fully decoded (f32 BE frames x tracks x vec3); format-100 bodies SOLVED 2026-11-01 (axis-angle encoding; tools/anim/t7_anim64.py + t7_anim64_to_c8.py), independently re-verified 2026-11-06 (FILL 2: decoder validate 0 errors; Unicorn round-trip through the game's own sampler worst error 3.58e-07 over 8 clips).",
   "clips_storage": "GRE release t7-rotsm-clips-v1 (59,211,723 B, SHA256SUMS.txt) \u2014 distinct clips per bank; indexes in GRE mask/indexes/ and inside each clip-map JSON.",
   "the_781": {
    "clip_resolved": 450,
@@ -464,5 +464,19 @@
   },
   "held_records": "The 78 still-unmapped 'other'-pool entries carry a v2_rerun_20261030 field (steps walked, terminal ids/names, direction-set pool, note) and an updated reason naming the v2 re-run and its terminal count. Notable v2 blocks: pantera f,F+2 gains bound-class Kg_p00_2 (1690); phantom f,f,F+3 gains Ym_runlk00 (1714); diablo f,n,d,df+3 forms gain He_sjk02 (1712); demonio f,n,d,d/f+1+2 gains Jz_shoryu_EX2 (1844); direction-set running-kick terminals block skull f,F+3 (Co_runlk00 1703) and burger f,F+3 (Ft_runlk00 1768); a GROUP direction-set string blocks demonio f+3,1 (Jz_lk00_lp 1619).",
   "doc": "docs/movesets/T7-CLIP-MAPPING-2026-10-30.md (section 'V2 re-run over the held \"other\" pool')"
+ },
+ "fill2_20261106": {
+  "lane": "FILL 2 of the owner fill order (\"1, 2, 3, then 4, remember then all til we get em done\") \u2014 Tekken 7 held-data gaps, 2026-11-06.",
+  "the_781_after": {
+   "clip_resolved": 547,
+   "mapped_bank0_no_clip": 0,
+   "unmapped": 234
+  },
+  "f2_bank0": "SOLVED: bank 0x0000 = motbin MotaList slot 0 (33/33 entries resolved). GRE release t7-bank0-clips-v1 (10 char blobs + SHA256SUMS, pull-back verified); indexes land in GRE mask/indexes/; hunt doc BANK-0000-HUNT-2026-10-30.md \u00a710 records the superseded verdict.",
+  "f1_group_walk": "GRE t7_string_walk.py (0x800B group partition + alias hubs) re-walk of the 256 unmapped: 22 promoted (unique terminal + locator + corroboration: two-notation agreement and/or v1 MVL row and/or fingerprint double-true-unique; fingerprint veto applied); 234 held with reason classes recorded per entry (walk-multi-terminal 114, walk-no-terminal 68, unique-but-held 24, walk-dies 24, t8-sourced-entry 4). 26 mapped entries the walker uniquely contradicts are listed as contested in docs/movesets/T7-CLIP-MAPPING-2026-10-30.md (not edited); pantera df+1 corrected to 1652 Kg_t_slpF on the ALIAS doc's own adjudication.",
+  "f11_format100": "SOLVED 2026-11-01 on WH main (axis-angle rotation encoding decoded from the shipping EXE sampler; tools/anim/t7_anim64.py). FILL 2 independent re-verification 2026-11-06: t7_anim64 validate() over kinmot.bin = 118 clips / 17,239 frames / 0 errors; round-trip 0x64->0xC8->game sampler worst quaternion error 3.58e-07 over 8 King clips. Remaining F11 work is application (baking), not format RE.",
+  "pakchunk1_p": "Index parsed and SHA-1-verified from the stored wave0 parts (sparse image, tail part only): pak V3, 50,795 files, ALL .uasset/.umap (UE assets), zero MOTA/motbin content \u2014 same verdict as pakchunk1. Fighter motion data does not live in the UE paks.",
+  "fighters_built": "See fill2 section of docs/handoffs/TEKKEN-HOLDINGS-GAP-AUDIT-2026-11-06.md for the 14 frame-table fighters: codes identified from held MVL move names + notation-overlap census; banks indexed into GRE; movesets built from frame tables x group-walk joins.",
+  "f5_no_anim": "Census: 433 moves with no animation binding of any kind across the WH movesets. Wired from held T7 data: 54 (pond/Master Raven 40 of 151 bare, thor/Ganryu 14 of 78; the 9 bare moves in the 8 clip-mapped fighters walked to no terminal, 0 wired). New clip-maps: pond-clip-map.json, thor-clip-map.json (same schema; their held entries carry reason classes). Not wireable from T7: baek-master-white 153 (Baek not in T7), menajerii 32 (Roger Jr. = TTT2), megami 5 (Jun = TTT2), street-reign 5 (not Tekken)."
  }
 }
