@@ -2,7 +2,7 @@
  "format": "western-heart dw-motion-bank v1",
  "source": "Tekken 5 disc, TK5DATA2.BIN (romD), Internet Archive item slus-210.59.-tekken-5",
  "canon_law": "\"Devil\" only in our own way/language, never the source game's way. There is NO Jin Kazama in our game at all — the ONLY Jin is the soul JIN (the Blade Soul), pickable as Phantom (Law 2, Jay 2026-11-08 ~00:04). The Devil Jin kit is moveset donor data only, never a character. Names blocked on a Jay-call are PROVISIONAL, never decided here.",
- "decode_status": "Structural decode complete (header, record table, bone table, data section, first-frame float32 values for type-3/11 bones). Inner keyframe packing (delta frames, type-7 6-byte encoding) NOT yet reversed \u2014 see DW-DECODE-LOG.md \u00a7keyframe.",
+ "decode_status": "Structural decode complete (header, record table, bone table, data section, first-frame float32 values for type-3/11 bones). Keyframe packing REVERSED (commit 1beffd18): per-joint curves for all 214 clips, 9,002 keyframes, in dw-motion-curves.json; rotation R = Rz\u00b7Ry\u00b7Rx, LOCAL \u2014 see DW-DECODE-LOG.md \u00a78/\u00a722.",
  "clips_total": 220,
  "clips_extracted": 214,
  "clips_missing": 6,
