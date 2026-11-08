@@ -229,3 +229,20 @@ geometry), star attire5 (681 NaN position verts in the shipped file,
 identical before/after — flagged above, not a weights defect). Thor
 attire1's pair caught two different frames of the same stance clip
 (capture timing); both frames are clean.
+
+## Merge-gate verification (PR #1641, 2026-11-07)
+
+Diff verified independently of the API diff view (which times out on
+this payload size): local diff-tree between the branch base and the
+final tree = exactly the 309 intended paths, every blob sha matching
+the staged change set, 0 deletions, 0 unexpected paths. Check runs on
+the head commit: guard, deletion-guard, pr-safety-guard, clobber-guard,
+rig-guard, coverage-guard, canon-names, ui-sources, material-gate,
+budgets, speed-quality and menu-touch-e2e all SUCCESS. Two runs failed
+inside actions/checkout itself ('/usr/bin/git' exit code 128 while
+fetching this PR's ~2.6 GB of GLB payloads): game-unit-tests and
+instruction-gate — no test or gate logic executed in either (this diff
+contains zero .js files); instruction-gate failed 3 of 4 runs on the
+already-shipped #1640 the same way. This section was appended to
+re-trigger those two runs under lower contention. S6 read-back of
+every payload file from main follows the merge.
