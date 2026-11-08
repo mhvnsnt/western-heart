@@ -199,7 +199,13 @@ export function hideVs() {
   setTimeout(() => o.classList.remove('show', 'hide'), 380);
 }
 
-/* ---------------- Pause ---------------- */
+/* ---------------- Pause ----------------
+   Piece 1 Break 7 (D15, Tekken's pause, T3 decompiled): Start pauses
+   mid-round; Start again does NOT unpause — only CANCEL does; the menu is
+   CANCEL / COMMAND (move list) / RESET (leave to main menu); the music
+   drops while paused. CLOTHING / OPTIONS / FREE CAMERA stay as secondary
+   entries — they are wired features that live behind PAUSE (free camera,
+   owner 2026-10-31; clothing, worker 64). */
 export function pauseGame() {
   const g = window.__game;
   if (!g || g.paused) return;
@@ -209,6 +215,8 @@ export function pauseGame() {
   g.pause(true);
   const o = document.getElementById('wh-pause');
   if (o) o.classList.add('show');
+  // Music drops while paused (D15, measured Tekken); restored on resume.
+  if (audio.setMusicVolume) audio.setMusicVolume(getSettings().muted || getSettings().soundOn === false ? 0 : getSettings().music * 0.3);
   audio.uiClick && audio.uiClick();
 }
 export function resumeGame() {
@@ -216,6 +224,7 @@ export function resumeGame() {
   const o = document.getElementById('wh-pause');
   if (o) o.classList.remove('show');
   if (g && (g.running || g.brawler)) g.pause(false);
+  if (audio.setMusicVolume) audio.setMusicVolume(getSettings().muted || getSettings().soundOn === false ? 0 : getSettings().music);
   audio.uiClick && audio.uiClick();
 }
 export function quitToMenu() {
@@ -455,11 +464,12 @@ function buildOverlays() {
       <div class="wh-dialog">
         <h2>PAUSED</h2>
         <div class="wh-sub">The shrine holds its breath.</div>
-        <button class="btn-primary" data-wh="resume">RESUME</button>
+        <button class="btn-primary" data-wh="cancel">CANCEL</button>
+        <button class="btn-ghost" data-wh="pause-command">COMMAND</button>
+        <button class="btn-ghost" data-wh="reset">RESET</button>
         <button class="btn-ghost" data-wh="pause-clothing">CLOTHING</button>
         <button class="btn-ghost" data-wh="pause-options">OPTIONS</button>
         <button class="btn-ghost" data-wh="pause-freecam">FREE CAMERA</button>
-        <button class="btn-ghost" data-wh="quit">QUIT TO MENU</button>
       </div>
     </div>
     <div id="wh-clothing" role="dialog" aria-label="Clothing">
@@ -511,9 +521,15 @@ function buildOverlays() {
     hud.appendChild(tag);
   }
 
-  // Overlay button wiring
-  document.querySelector('[data-wh="resume"]').addEventListener('click', resumeGame);
-  document.querySelector('[data-wh="quit"]').addEventListener('click', quitToMenu);
+  // Overlay button wiring — pause menu Tekken's way (D15): CANCEL resumes,
+  // COMMAND opens the move list, RESET leaves to the main menu.
+  document.querySelector('[data-wh="cancel"]').addEventListener('click', resumeGame);
+  document.querySelector('[data-wh="reset"]').addEventListener('click', quitToMenu);
+  document.querySelector('[data-wh="pause-command"]').addEventListener('click', () => {
+    document.getElementById('wh-pause').classList.remove('show');
+    // Reuse the movelist button's own path (same as KeyM / tapping ☰ MOVES).
+    document.getElementById('movelist-btn').click();
+  });
   document.querySelector('[data-wh="pause-clothing"]').addEventListener('click', openClothing);
   document.querySelector('[data-wh="pause-options"]').addEventListener('click', () => {
     document.getElementById('wh-pause').classList.remove('show');

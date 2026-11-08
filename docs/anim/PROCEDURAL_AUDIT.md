@@ -183,6 +183,12 @@ All T3-baked clips already in the repo are **fallback, to be replaced from T5/6/
 |---|---|---|---|
 | `game/js/main.js` `ui.attackData` + `game/js/game.js` hit-site calls + `#attack-data` HUD (`game/index.html`, `game/styles.css`) (Piece 1 Break 5, branch `fix/piece1-breaks`) | Tekken 3 Practice ATTACK DATA (decompiled `practice.ovl`, spec D11): damage numbers, TOTAL DMG, COUNTER / CLEAN HIT labels, combo + damage counters — always on in Practice | fallback, to be replaced from T5/6/7/8/TTT2 if a measured T7/T8 practice HUD spec ever surfaces | T5+ added frame data on top and T7 Practice has the same idea, but the measured spec in hand is T3's `practice.ovl` (spec §D11). The HUD shows the game's own computed damage (`dealt`) and result — no damage value is invented or rebalanced. |
 
+### T3 pause-menu use under this law (Piece 1 Break 7, 2026-11-08)
+
+| Asset | T3 data | Status | Reason T3 was used (no T5/6/7/8/TTT2 source available) |
+|---|---|---|---|
+| Pause menu shape — CANCEL / COMMAND / RESET, Start pauses but does not unpause, music drops while paused (`game/js/menus.js` pause dialog + `pauseGame` / `resumeGame`, `game/js/main.js` Escape handler) (Piece 1 Break 7, branch `fix/piece1-breaks`) | Tekken 3 pause (decompiled, spec D15): Start pauses mid-round; Start again does NOT unpause — only CANCEL does; menu is CANCEL / COMMAND (move list) / RESET (leave to main menu); music volume drops while paused | fallback, to be replaced from T5/6/7/8/TTT2 if a measured T7/T8 pause spec ever surfaces | No T5/6/7/8/TTT2 pause-menu measurement exists in-repo; the measured spec in hand is T3's (spec §D15). No behavior invented beyond it — CLOTHING / OPTIONS / FREE CAMERA stay as secondary entries because they are wired features that live behind PAUSE, not because Tekken has them there. |
+
 ## INSTRUCTION GATE: Owner law, no hand-made menus (Oct 23, 2026, 2:21 PM CT)
 
 > **NO hand-made menus. Every Western Heart menu, character select and customization screen must be built from the actual teardown files (Tekken 5/6/7/8/TTT2 and other game teardowns). Every UI change must cite its teardown source files.**

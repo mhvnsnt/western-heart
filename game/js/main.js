@@ -32,7 +32,7 @@ import { stageVisible, CORE_STAGES, CORE_FIGHTERS, quickFightParams } from './co
 // the versus flow and getStage is needed by startFight; its parse cost is
 // small next to the deferred modules. Stage THUMBS are the real cost there
 // (see the thumb atlas, assets/stages/thumbs/atlas.png + thumbs.json).
-import { initMenus, keepLoading } from './menus.js';
+import { initMenus, keepLoading, pauseGame } from './menus.js';
 import { isModuleLoadError, claimReload, resumable, saveResume, takeResume, fightStarted, nextStep } from './fight-recovery.js';
 import './load-progress.js'; // real loading bar (owner pt134u)
 
@@ -1110,6 +1110,14 @@ async function toggleMovelist(open) {
   const willOpen = open === undefined ? !el.classList.contains('active') : open;
   if (willOpen) await renderMovelist();
   el.classList.toggle('active', willOpen);
+  // Piece 1 Break 7 (D15): COMMAND opened the movelist from pause — closing
+  // it returns to the pause menu, same as the options / records / clothing
+  // back buttons (menus.js). Only when the fight is still paused.
+  if (!willOpen) {
+    const g = window.__game;
+    const p = document.getElementById('wh-pause');
+    if (g && (g.running || g.brawler) && g.paused && p && !p.classList.contains('show')) p.classList.add('show');
+  }
 }
 document.getElementById('movelist-btn').addEventListener('click', () => {
   audio.uiClick(); toggleMovelist();
@@ -1664,6 +1672,12 @@ document.addEventListener('keydown', (e) => {
     if (e.code === 'BracketLeft') rp.setSpeed(Math.max(0.25, (rp.game.timeScale || 1) / 2));
     if (e.code === 'BracketRight') rp.setSpeed(Math.min(2, (rp.game.timeScale || 1) * 2));
     if (e.code === 'Escape') exitReplay();
+  }
+  // Piece 1 Break 7 (D15): Escape is Start — it pauses mid-round. A replay
+  // keeps its own Escape (exit replay, above). Start again does NOT unpause
+  // in Tekken; only CANCEL does, so a paused game ignores a second Escape.
+  if (e.code === 'Escape' && !(rp && rp.game && game.running)) {
+    if ((game.running || game.brawler) && !game.paused) pauseGame();
   }
 });
 
