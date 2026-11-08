@@ -4562,3 +4562,21 @@ kit_exclusions / pantera_unmapped / bake_set / --set / --bank), same shape
   durations), `teardown/tekken5/DW-DECODE-LOG.md` (§23).
 - B7 re-score: 45% → 60% (see `HEARTMIND-COMPLETION.md`); Bucket B ~17% →
   ~19%; headline ~47% → ~48%.
+
+## 2026-11-08 — UR stages/missions decode follow-ons: 6 decoded arenas registered (UR STAGES LANE)
+
+**Why:** Lane 4 decoded the Urban Reign stages/missions but left 5 follow-ons: full 97-mission-PPK census, stage020 geometry, mission .bin semantics, place-name → PPK mapping, stage registration in the game. Jay re-ordered (2026-11-07 ~22:19) to get ALL the decoding done and ALL of it wired up.
+
+**Decoded (measured, not guessed):**
+- Census 100/100 missions × 4 outputs: 87 DECODED, 4 NO STAGE-CANDIDATE (33/47/51/64), 9 NOT DECODED. 8,975 PPK entries, 272 fighter VMDs.
+- .bin semantics proven from the SLUS_212.09 disassembly (596,814 instructions, Capstone 5.0.7 MIPS32 LE): spawn X/Z/facing per slot (0x08–0x1c), slot-1 presence 0x20 (−1 no second fighter / −2 special / positive fixed id), 172-byte record count 0xa8, 28-byte record count 0x15c, activation-flag trio 0x1754/56/58, and the 0x1884 slot table having NO reader in the game or any DVP overlay. Stage-name table proven (ids 0–54, file 0x4ea3c0).
+- Mission → stage PPK mapping completed: byte-identical VMD SHA256 AND 100.0% posset overlap agree exactly — stage003 ← missions 30/35/42/54; stage004 ← missions 9/20/24/44/48/66/82; stage020 ← mission 99. stage028/029/030/031 ← no missions. Place → PPK has NO 1:1 map (measured): the same stage serves many place labels, so off00 is a per-mission place label, not a stage selector.
+- stage020 identified by use: the only mission on its geometry is mission 99 (LAST BOSS FLOOR). Single-use correlation, not a proven 1:1 file→place identity.
+
+**Wired (this PR #1650):** 6 decoded arena OBJs (game/assets/stages/ur/, 24.5 MB, vertices + UVs + decoded vertex colors, metres, no scale) + 6 defs in game/js/stages.js (ur-stage003 etc., tier 'URBAN REIGN', builder 'urstage', hidePlatform) + game/tests/ur-stages.test.mjs (8 tests). Names are PROPOSED labels (PPK ids) — Jay names the arenas.
+
+**Blocked (exact blockers):** stage020 geometry — VMD bd01 fails read_mesh in every in-VM reader (command-walk reads past EOF); same class covers 7dd4 (missions 37/50/59/61) and 01cd (69/77/83/92). Unblocker: Redux Editor on Windows (Jay's machine). Textures not wired yet (vertex colors only); raw shells include far backdrop geometry (up to ±540 m) the standard fog will wash out — textured/backdrop treatment is the named follow-up. Live playthrough proof with video owed (parent's lane).
+
+**Verification:** node --check stages.js OK; ur-stages 8/8 green; full suite 296 tests, 245 pass, 51 fail — same 51 pre-existing failures as main (baseline 288/237/51 + 8 new tests), zero regressions; no failing file is stage-related. Zero deletions. gitleaks binary not available in-VM; the diff is OBJ vertex data + registry code + a test (no secrets).
+**Deletions:** none.
+**Deliverables:** ~/workspace/urban-reign-redux/UR-STAGE-MISSION-DECODE-FOLLOWON.md (census, .bin field map, stage-name table, place→PPK result, blockers). Census JSONs + link/mapping JSONs + stage export report in /var/tmp/ur-census/ (home copy best-effort — home quota flaps).
