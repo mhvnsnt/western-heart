@@ -81,6 +81,13 @@ export class AIController {
     this._action = 'neutral';
     this._actionT = 0;
     this._block = 0;
+    // Piece 1 Break 5c: one reactive read per incoming attack (see the
+    // reactive-defense block below). _reactKey = a read is open for the
+    // foe's current attack; _reactDone = the read has been spent.
+    this._reactKey = false;
+    this._reactDone = false;
+    this._reactWill = false;
+    this._reactR = 0;
     this.passive = !!personality.passive; // modes lane: training dummy never acts
     // YUKA COMBAT BRAIN (2026-10-23): hierarchical state machines drive the
     // decisions below; this controller keeps owning every try* call.
@@ -282,24 +289,38 @@ export class AIController {
     }
 
     // Reactive defense: block/dodge/sidestep incoming attacks (gated by reaction stat)
-    if (playerAttacking && dist < 2.6 && f.canAct()) {
-      const react = Math.random() < (0.25 + this.reaction * 0.5);
-      if (react) {
-        const r = Math.random();
+    // Piece 1 Break 5c: ONE read per attack. The old code re-rolled every
+    // frame during the foe's startup, so at mid reaction the AI blocked
+    // nearly every attack (a ~0.5 roll per frame over a ~12-frame startup
+    // is a ~99% block). A human gets one read per attack — the same
+    // probability (0.25 + reaction * 0.5), evaluated once when the attack
+    // starts, and the same V-Shift / sidestep / dodge / block split. A
+    // failed read means the AI eats that attack; the reversal brain above
+    // still decides independently. The read resets when the attack ends.
+    if (playerAttacking && dist < 2.6 && f.canAct() && !this._reactDone) {
+      if (!this._reactKey) {
+        this._reactKey = true;
+        this._reactWill = Math.random() < (0.25 + this.reaction * 0.5);
+        this._reactR = Math.random();
+      }
+      if (this._reactWill) {
+        const r = this._reactR;
         // V-System: V-Shift the incoming attack (reads like an SFV player).
         if (r < 0.08 && f.onGround) {
           f.tryVShift();
-          this._think = 0.5; return;
+          this._think = 0.5; this._reactDone = true; return;
         }
         // Stream 6: sidestep the linear attack (reads like a Tekken player).
         if (r < 0.28 && f.onGround) {
           f.trySidestep(Math.random() < 0.5 ? -1 : 1);
-          this._think = 0.5; return;
+          this._think = 0.5; this._reactDone = true; return;
         }
-        if (r < 0.54 && f.onGround) { f.tryDodge(); this._think = 0.4; return; }
-        f.tryBlock(true); this._block = 0.35; this._think = 0.25; return;
+        if (r < 0.54 && f.onGround) { f.tryDodge(); this._think = 0.4; this._reactDone = true; return; }
+        f.tryBlock(true); this._block = 0.35; this._think = 0.25; this._reactDone = true; return;
       }
+      this._reactDone = true; // read failed: no defense against this attack
     }
+    if (!playerAttacking) { this._reactKey = false; this._reactDone = false; }
 
     // Release block once the threat passes
     if (f.isBlocking()) {

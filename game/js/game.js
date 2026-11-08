@@ -553,6 +553,8 @@ export class Game {
             // SOUL-SYSTEMS: 霊放 Reihou on 1+4 only while the foe is raging.
             if (act === '1+4' && this.soul && this.soul.tryReihou(this.p1, this.p2)) { rec('reihou'); continue; }
             if (this.p1.tryAttack(act)) { audio.whiff(); rec(act); }
+            // Piece 1 Break 5b: a rejected grab used to fail silently.
+            else if (act === 'grab') { this.ui.attackData({ dmg: null, label: !this.p1.canAct() ? 'GRAB — CAN\'T ACT NOW' : 'GRAB — NO OPENING', total: null, blocked: true }); }
           }
           else if (act === 'ss-up') { if (this.p1.trySidestep(-1)) rec('sidestep'); }
           else if (act === 'ss-down') { if (this.p1.trySidestep(1)) rec('sidestep'); }
@@ -561,6 +563,10 @@ export class Game {
               rec('surge');
               audio.soulSurge(this.p1.char.id);
               this.ui.surgeFlash(this.p1.char.surge?.color ?? this.p1.char.colors.trim, this.p1.char.surge?.accent ?? 0xffffff);
+            } else {
+              // Piece 1 Break 5b: a rejected Surge used to fail silently.
+              // Name the reason: the strike costs the full meter (100).
+              this.ui.attackData({ dmg: null, label: this.p1.meter < this.p1.maxMeter ? 'SURGE — METER NOT FULL' : (!this.p1.canAct() ? 'SURGE — CAN\'T ACT NOW' : 'SURGE — NO OPENING'), total: null, blocked: true });
             }
           }
           else if (act === 'dodge') { if (this.p1.tryDodge()) rec('dodge'); }
@@ -623,6 +629,8 @@ export class Game {
                 dirX: Math.sign(def.root.position.x - atk.root.position.x) || 1 });
             const combo = atk.registerCombo();
             this.ui.combo(Math.max(1, combo));
+            // Piece 1 Break 5a (D11): a landed throw shows its damage too.
+            this.ui.attackData({ dmg: dealt, label: 'CLEAN HIT', total: this.matchStats ? (atk === this.p1 ? this.matchStats.dmgDealt : this.matchStats.dmgTaken) : null, blocked: false });
           }
         }
       }
@@ -793,6 +801,11 @@ export class Game {
           if (attacker === this.p1) this.matchStats.dmgDealt += dealt;
           else if (defender === this.p1) this.matchStats.dmgTaken += dealt;
         }
+        // Piece 1 Break 5a (D11 attack data): this attacker's running
+        // TOTAL DMG for the HUD — the current hit is already counted above.
+        const totalDealt = this.matchStats
+          ? (attacker === this.p1 ? this.matchStats.dmgDealt : this.matchStats.dmgTaken)
+          : null;
 
         if (result === 'block') {
           audio.block();
@@ -801,6 +814,9 @@ export class Game {
           this.arena.shake(0.08 * this.feel.shake, 0.12);
           this.hitfx.spawn('block', hb.x, hb.y, hb.z, { dirX: Math.sign(defender.root.position.x - attacker.root.position.x) || 1 });
           attacker.combo = 0;
+          // Piece 1 Break 5a (D11): a blocked hit shows its chip damage
+          // with a BLOCKED label, in pale blue — never reads as a clean hit.
+          this.ui.attackData({ dmg: dealt, label: 'BLOCKED', total: totalDealt, blocked: true });
           if (this.soulurge) this.soulurge.onBlockedHit(attacker, hb.move);
         } else if (result === 'dodge') {
           // whiffed into i-frames, nothing
@@ -862,6 +878,9 @@ export class Game {
           // HITS counter: show on EVERY landed hit, not just 2+ combos.
           // Single hits show "1 HITS" briefly; combos accumulate.
           this.ui.combo(Math.max(1, combo));
+          // Piece 1 Break 5a (D11 attack data): damage number + COUNTER /
+          // CLEAN HIT label + running TOTAL DMG.
+          this.ui.attackData({ dmg: dealt, label: isCounter ? 'COUNTER' : 'CLEAN HIT', total: totalDealt, blocked: false });
           if (this.stageBreaks) this.stageBreaks.checkHit(attacker, defender, hb.move, result);
           if (this.soulurge) this.soulurge.onHit(attacker, hb.move);
           if (this.rage && attacker.attackName && attacker.attackName.indexOf('R.') === 0) {

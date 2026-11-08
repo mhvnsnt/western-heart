@@ -177,6 +177,12 @@ All T3-baked clips already in the repo are **fallback, to be replaced from T5/6/
 |---|---|---|---|
 | `game/js/modes.js` foe gate — `_foeEligible` reads `bankIdFor` (`game/js/fighter.js`, `FIGHTER_BANK` + `SOURCE_TO_BANK`) to decide whether a CPU-drawn foe has a decoded animation bank (Piece 1 Breaks 3/4, branch `fix/piece1-breaks`) | The existing T3 bank registry only — read, not copied or extended; no new T3 clip, row, or bank data is introduced | read-only fallback use | No T5/6/7/8/TTT2 bank mapping exists in-repo for these fighters: the T3 bank registry is the only bank source wired to the roster. The gate EXCLUDES fighters with no decoded bank from CPU draws instead of substituting procedural motion for them (RULES_NO_GUESSING §4: report MISSING, don't fill the gap). Player picks are not gated. |
 
+### T3 Practice attack-data HUD use under this law (Piece 1 Break 5, 2026-11-08)
+
+| Asset | T3 data | Status | Reason T3 was used (no T5/6/7/8/TTT2 source available) |
+|---|---|---|---|
+| `game/js/main.js` `ui.attackData` + `game/js/game.js` hit-site calls + `#attack-data` HUD (`game/index.html`, `game/styles.css`) (Piece 1 Break 5, branch `fix/piece1-breaks`) | Tekken 3 Practice ATTACK DATA (decompiled `practice.ovl`, spec D11): damage numbers, TOTAL DMG, COUNTER / CLEAN HIT labels, combo + damage counters — always on in Practice | fallback, to be replaced from T5/6/7/8/TTT2 if a measured T7/T8 practice HUD spec ever surfaces | T5+ added frame data on top and T7 Practice has the same idea, but the measured spec in hand is T3's `practice.ovl` (spec §D11). The HUD shows the game's own computed damage (`dealt`) and result — no damage value is invented or rebalanced. |
+
 ## INSTRUCTION GATE: Owner law, no hand-made menus (Oct 23, 2026, 2:21 PM CT)
 
 > **NO hand-made menus. Every Western Heart menu, character select and customization screen must be built from the actual teardown files (Tekken 5/6/7/8/TTT2 and other game teardowns). Every UI change must cite its teardown source files.**

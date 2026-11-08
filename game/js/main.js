@@ -249,6 +249,24 @@ const ui = {
     clearTimeout(this._comboT);
     this._comboT = setTimeout(() => pop.classList.remove('show'), 900);
   },
+  /* Attack data (Tekken 3 Practice ATTACK DATA, spec D11 — Piece 1 Break 5):
+     damage number + COUNTER / CLEAN HIT / BLOCKED label + running TOTAL DMG.
+     dmg null = a label-only cue (failed Surge / failed grab), no number shown. */
+  attackData({ dmg, label, total, blocked }) {
+    const el = document.getElementById('attack-data');
+    if (!el) return;
+    document.getElementById('attack-data-label').textContent = label;
+    const dmgEl = document.getElementById('attack-data-dmg');
+    dmgEl.textContent = dmg == null ? '' : dmg;
+    el.classList.toggle('note', dmg == null);
+    const tot = document.getElementById('attack-data-total');
+    if (tot) tot.textContent = total != null ? ('TOTAL ' + total) : '';
+    el.classList.toggle('blocked', !!blocked);
+    el.classList.remove('show'); void el.offsetWidth;
+    el.classList.add('show');
+    clearTimeout(this._attackDataT);
+    this._attackDataT = setTimeout(() => el.classList.remove('show'), 900);
+  },
   /* Stream 6: throw-break prompt. show=false clears. breakInput '1'/'2'/'1+2'
      tells the defender which limb button breaks the throw (Tekken rules). */
   throwBreakPrompt(show, breakInput) {
