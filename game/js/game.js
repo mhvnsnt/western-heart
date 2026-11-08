@@ -334,6 +334,9 @@ export class Game {
     this.wins = { p1: 0, p2: 0 };
     this.round = 1;
     this.timer = this.roundTime === 0 ? Infinity : (this.roundTime || ROUND_TIME);
+    // Piece 1 Break 9: wall-clock round timer (display only) restarts here.
+    this._roundWallElapsed = 0;
+    this._roundWallLast = null;
     this.roundState = 'idle';
     this._roundLockT = 0;
     this._hitStop = 0;
@@ -361,6 +364,9 @@ export class Game {
 
   _startRound() {
     this.timer = this.roundTime === 0 ? Infinity : (this.roundTime || ROUND_TIME);
+    // Piece 1 Break 9: wall-clock round timer (display only) restarts here.
+    this._roundWallElapsed = 0;
+    this._roundWallLast = null;
     this.p1.hp = this.p1.maxHp; this.p2.hp = this.p2.maxHp;
     this.p1.meter = this.p2.meter = 0;
     if (this.rage) this.rage.resetRound();
@@ -425,6 +431,15 @@ export class Game {
     requestAnimationFrame(this._loop);
     if (!this._last) this._last = now;
     let frameDt = Math.min(0.05, (now - this._last) / 1000);
+    // Piece 1 Break 9: wall-clock round timer (display only). Accumulate
+    // real seconds only while the round is actually fighting and unpaused
+    // — intro, pause, and brawler time never count. The round still ENDS
+    // on sim time (this.timer, _update below); on a slow machine the
+    // display can reach 0 while the round is still running. CAVEAT, flagged.
+    if (this.running && !this.paused && this.roundState === 'fight' && this._roundWallLast != null) {
+      this._roundWallElapsed = (this._roundWallElapsed || 0) + (now - this._roundWallLast) / 1000;
+    }
+    this._roundWallLast = now;
     const realDt = frameDt; // X-ray beat runs on real seconds, not slow-mo scale
     this._last = now;
     if (this.rage) frameDt = this.rage.slowMoScale(frameDt);
@@ -483,7 +498,12 @@ export class Game {
     if (this.roundState === 'fight') {
       this.timer -= dt;
       if (this.timer <= 0) { this.timer = 0; this._timeOut(); }
-      this.ui.setTimer(Math.ceil(this.timer));
+      // Piece 1 Break 9 (display only): the shown clock runs on wall time
+      // so it never lies about how long the round has lasted. The round
+      // still ENDS on sim time above — see the CAVEAT at _roundWallElapsed.
+      const _limit = this.roundTime === 0 ? Infinity : (this.roundTime || ROUND_TIME);
+      const _wallLeft = _limit === Infinity ? Infinity : Math.max(0, _limit - (this._roundWallElapsed || 0));
+      this.ui.setTimer(Math.ceil(_wallLeft));
 
       // --- Player input -> intents ---
       if (this.ai1) {

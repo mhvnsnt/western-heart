@@ -55,7 +55,8 @@ export function setSettings(patch) {
   applySettings();
 }
 /* Graphics quality: pixel-ratio scaling (+ shadow toggle). Real effect,
-   no asset reload. low = 0.75x, med = 1x, high = min(dpr,2). */
+   no asset reload. low = 0.75x, med = 1x, high = min(dpr,2) on phone widths,
+   capped at 1x above them (Piece 1 Break 9 — see applyQuality). */
 export function applyQuality(q) {
   const g = window.__game;
   if (!g || !g.arena || !g.arena.renderer) return;
@@ -63,7 +64,14 @@ export function applyQuality(q) {
   const dpr = window.devicePixelRatio || 1;
   if (q === 'low') { r.setPixelRatio(Math.min(dpr, 0.75)); r.shadowMap.enabled = false; }
   else if (q === 'med') { r.setPixelRatio(Math.min(dpr, 1)); r.shadowMap.enabled = true; }
-  else { r.setPixelRatio(Math.min(dpr, 2)); r.shadowMap.enabled = true; }
+  // Piece 1 Break 9: HIGH was min(dpr, 2) at any width — at 1919 px the
+  // renderer ran ~1 fps and the fixed-step cap (4 x 1/120 s per frame)
+  // turned that into ~1 game second per 30 wall seconds. Above phone
+  // widths (844 px, the playtest phone's long edge) the pixel ratio caps
+  // at 1; phones keep min(dpr, 2). The step cap is NEVER raised — it exists
+  // to stop a spiral. Shadows stay on; dropping them first is the next rung
+  // if HIGH is still slow at big widths.
+  else { r.setPixelRatio(Math.min(dpr, window.innerWidth > 844 ? 1 : 2)); r.shadowMap.enabled = true; }
 }
 
 /* ---------------- DOM helpers ---------------- */

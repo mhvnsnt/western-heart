@@ -4440,6 +4440,15 @@ Branch `claude/cs-phase3-morph-targets`, draft PR #1489 (stacked on #1486). Orde
 **Verification:** `node --check` on both edited JS files. Existing tests: `test/overlay-pointer-events.test.mjs` (pause still intercepts touches) and `test/free-camera-placement.test.mjs` (FREE CAMERA entry + resume-then-enter) both pass, 4/4. No existing tests cover the Escape-to-pause handler, the CANCEL/COMMAND/RESET labels, the clothing sheet rules, or the music duck. Live proof (headed playthrough: pause button + Escape open pause, CANCEL resumes, COMMAND shows the move list, RESET leaves, clothing opens) is owed to the parent.
 - Deletions: none.
 
+## 2026-11-08 — Piece 1 Break 9: HIGH graphics speed (TEKKEN-TEARDOWN-SPEC.md §9, §6b 60-fps bar)
+
+**What:** arithmetic, not a timer bug (spec §9 + diagnosis §9): fixed step 1/120 s × max 4 steps per render frame = at most 1/30 s of game time per frame; at ~1 fps on HIGH, one game second took ~30 wall seconds. (a) `game/js/menus.js` `applyQuality`: HIGH now caps the pixel ratio at 1 above phone widths (`window.innerWidth > 844`, the playtest phone's long edge) and keeps `min(dpr, 2)` on phones; LOW/MED untouched, shadows stay on. The step cap is NEVER raised — it exists to stop a spiral. Dropping shadows first is the next rung if HIGH is still slow at big widths. (b) `game/js/game.js`: the displayed round clock now runs on wall time — `_loop` accumulates real rAF seconds into `_roundWallElapsed` only while the round is fighting and unpaused (intro, pause, and brawler time never count), reset in `_startRound` / `resetFightState`; `_update` shows `roundTime - elapsed`, clamped at 0, with `∞` for untimed rounds. The round still ENDS on sim time (`this.timer`, `_timeOut` untouched). **CAVEAT, flagged:** on a slow machine the display can reach 0 while the round is still running, because sim time lags wall time — the clock no longer lies about elapsed time, but it can run ahead of the round end. No formula, damage, or step-cap change.
+
+**ui_sources:** `game/js/menus.js` and `game/js/game.js` — `menus.js` is already listed under sourced screens in `game/ui_sources.json`; `game.js` matches none of the gate's UI-file patterns — no manifest change needed. No T3 data used — no `PROCEDURAL_AUDIT.md` row.
+
+**Verification:** `node --check` on both edited JS files. Existing tests: none cover `applyQuality` or the timer display (`game/tests/brawler-sim.test.mjs` and `brawler-surge.test.mjs` only stub `setTimer` as a no-op). Live proof (headed playthrough: HIGH at 1919 px runs visibly faster than 1 game-second per 30 wall-seconds; the displayed clock ticks in real seconds) is owed to the parent.
+- Deletions: none.
+
 ## 2026-11-08 — HeartMind rename application: CONFIRMED rows only (RENAME LANE)
 
 **Map:** `~/workspace/western-heart-audit/HEARTMIND-RENAME-MAP.md` (§§0–§5).
