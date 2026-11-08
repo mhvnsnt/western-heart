@@ -470,7 +470,7 @@ export function createSelectScreen(deps) {
      presence on a fighter is the soul-spirit toggle (js/soul-spirit.js),
      not a select card. */
   const SELECT_HIDDEN = new Set([
-    'rin', 'byou', 'tou', 'sha', 'kai', 'jin_soul', 'retsu', 'zen', 'gyou',
+    'byou', 'tou', 'jin_soul', 'zen', 'gyou',
     'ryuji', 'doc-frank-machine-shop',
 
   ]);
