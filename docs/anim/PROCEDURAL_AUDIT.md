@@ -171,6 +171,12 @@ All T3-baked clips already in the repo are **fallback, to be replaced from T5/6/
 |---|---|---|---|
 | `game/js/main.js` select timer + `game/js/select-screen.js` `cursorFighter()` / `visibleCount()` (Piece 1 Break 1, branch `fix/piece1-breaks`) | T3 select timer: 20·T frames (T = 60, or 60 + 3·(n − 10) past 10 unlocked fighters); at 0 each side gets the fighter under the cursor, never random (n0madic/Tekken3Remake `docs/research/code/modes.md`, "Character select", confirmed from decompiled code) | fallback, to be replaced from T5/6/7/8/TTT2 if a measured T7/T8 select timer ever surfaces | T7/T8 select timer value and at-0 behavior are UNMEASURED (TEKKEN-TEARDOWN-SPEC.md §2b, §10 item 1): no public source checked states them. T3's decompiled timer is the only measured timer. The old 99 s timer and random pick at 0 were invented, not teardown. NOTE: the spec's §2a prose says the timer "grows by 3 seconds per extra unlocked fighter", but its own formula (20·T frames, T growing by 3) is +60 frames = +1 s at 60 fps; the code follows the formula (20 + (n − 10) s, 60 s for the current 50-fighter grid). The in-repo T8 doc (`docs/select-redesign/SELECT-DESIGN.md` §2) says an unpicked side defaults to a CPU random pick — that disagrees with the T3 measurement; the spec is followed and the disagreement is recorded here and in the PR. |
 
+### T3 bank-mapping read use under this law (Piece 1 Breaks 3/4, 2026-11-08)
+
+| Asset | T3 data | Status | Reason T3 was used (no T5/6/7/8/TTT2 source available) |
+|---|---|---|---|
+| `game/js/modes.js` foe gate — `_foeEligible` reads `bankIdFor` (`game/js/fighter.js`, `FIGHTER_BANK` + `SOURCE_TO_BANK`) to decide whether a CPU-drawn foe has a decoded animation bank (Piece 1 Breaks 3/4, branch `fix/piece1-breaks`) | The existing T3 bank registry only — read, not copied or extended; no new T3 clip, row, or bank data is introduced | read-only fallback use | No T5/6/7/8/TTT2 bank mapping exists in-repo for these fighters: the T3 bank registry is the only bank source wired to the roster. The gate EXCLUDES fighters with no decoded bank from CPU draws instead of substituting procedural motion for them (RULES_NO_GUESSING §4: report MISSING, don't fill the gap). Player picks are not gated. |
+
 ## INSTRUCTION GATE: Owner law, no hand-made menus (Oct 23, 2026, 2:21 PM CT)
 
 > **NO hand-made menus. Every Western Heart menu, character select and customization screen must be built from the actual teardown files (Tekken 5/6/7/8/TTT2 and other game teardowns). Every UI change must cite its teardown source files.**
