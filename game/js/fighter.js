@@ -39,7 +39,7 @@ import { assets } from './assets.js';
 import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK, T3_BANKS,
   clipStrikeProfile, clipHitWindow, bankAttackPool, attackLevelOfWord, attackClipTime, clipIsThrow, BUTTON_LIMB,
   loadT3Clips, loadT3ReactionClip, getT3ReactionPackScale, loadReactionPack, getReactionPack, getReactionClip,
-  applyT7Stance, ensureT7Moves, t7MoveClip, t7MoveRetarget, retargetProfileFor } from './t3anims.js';
+  applyT7Stance, ensureT7Moves, t7MoveClip, t7MoveRetarget, ensureDwMoves, dwMoveClip, dwMoveRetarget, retargetProfileFor } from './t3anims.js';
 import { effectiveStepPlay, playableStepPlay, stepActionName, stepPlanBanksFor } from './step-plan-bank.js';
 import { selectThrow, resolveThrowClips, throwBreaks, throwDamageTimeSec, throwPairDurationSec,
   escapePairFor, anchorAt, sharedFramePos, throwQuadrant, attemptRowForInput, hexSlot, bankDirOf } from './t3-throw.js';
@@ -939,6 +939,11 @@ export class Fighter {
       defense: this.stats.defense * 1.2,
     };
     this._auraFlash = 1.0;
+    // Soul Surge Bloom trigger (DW dwup00): play the DW trigger clip once when
+    // the form starts. Best-effort — if the DW pack has not loaded yet, the form
+    // still starts and the trigger plays on the next surge.
+    this._dwTriggerPending = true;
+    this._dwTriggerId = (this._dwTriggerId || 0) + 1;
     return true;
   }
   endSurgeForm() {
@@ -1071,6 +1076,7 @@ export class Fighter {
     // Real T7 per-move clips (t3anims.js T7_MOVES), loaded per fighter in the background; until they arrive the
     // moves keep their current clips. They retarget lazily with the stance's bind-time rest pose.
     try { const p = ensureT7Moves(this.char.id, THREE); if (p && p.catch) p.catch(() => {}); } catch (e) { /* optional */ }
+    try { const p = ensureDwMoves(this.char.id, THREE); if (p && p.catch) p.catch(() => {}); } catch (e) { /* optional */ }
     this.t3actions = createT3Actions(this.mixer, clips, THREE);
     this._stepBankClips = {}; // per-step-bank source clips (see _attackClip)
     // Reaction pack prefetch (hit-reaction lane): the JSON arrives
@@ -1408,6 +1414,14 @@ export class Fighter {
     const { bank, clips } = this._t3;
     const ms = getFighterMoveset(this._movesetId);
     const raw = move && move.moveKey && ms && ms.moves ? ms.moves[move.moveKey] : null;
+    // DW SURGE BEAM: the surge attack plays the DW wave clip (dwhadoh00).
+    // Keyed on attackName === 'surge' — the surge move has no moveKey, so the
+    // T7 branch below (which needs move.moveKey) never matches it. Skipped
+    // if the DW retarget failed before (in _dwskip), like the T7 skip set.
+    if (attackName === 'surge' && !(this._dwskip && this._dwskip.has('surge'))) {
+      const dw = dwMoveClip(this.char.id, 'surge', this._t3.model);
+      if (dw) return { name: dw.name, kind: 'dw', timing: null, why: 'DW surge beam (dwhadoh00)', limb: 'armR' };
+    }
     // REAL T7 MOVE (t3anims.js T7_MOVES): the row's own Tekken 7 clip, mapped exactly by
     // tools/anim/t7_move_resolve.py (input path + exact T7 frame data), ahead of step plans, bank rows, donors
     // and matches. Strikes only (the moves pack holds no throws; a throw keeps the throw path). Timed on the
@@ -1617,6 +1631,16 @@ export class Fighter {
       if (!this.t3actions[name]) {
         // Could not retarget safely: this move keeps its previous clip choice from now on.
         (this._t7skip || (this._t7skip = new Set())).add(name.slice(3));
+        plan = this._attackClipPlan(move, attackName);
+        name = plan ? plan.name : null;
+      }
+    }
+    if (name && !this.t3actions[name] && name.startsWith('dw:')) {
+      const rc = dwMoveRetarget(this.char.id, name.slice(3), this._t3.model, THREE, this._t3.modelKey);
+      if (rc && rc[name]) Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
+      if (!this.t3actions[name]) {
+        // Could not retarget safely: this move keeps its previous clip choice from now on.
+        (this._dwskip || (this._dwskip = new Set())).add(name.slice(3));
         plan = this._attackClipPlan(move, attackName);
         name = plan ? plan.name : null;
       }
@@ -2141,6 +2165,26 @@ export class Fighter {
      the thrower's anchor scale (used for both clips, per doc).
      Returns false when either clip is unavailable — the caller
      then keeps the legacy lock instead of a half pair. */
+  /* Retarget the DW Surge Kit throw clip for this fighter's front throw.
+     Returns the action name or null (pack not loaded yet, or not a front throw). */
+  _dwThrowAction() {
+    const key = this.attackName;
+    if (key !== '1+3' && key !== '2+4') return null;
+    const name = 'dw:' + key;
+    if (this.t3actions[name]) return name;
+    const rc = dwMoveRetarget(this.char.id, key, this._t3.model, THREE, this._t3.modelKey);
+    if (rc && rc[name]) Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
+    return this.t3actions[name] ? name : null;
+  }
+  /* Retarget the DW Soul Surge Bloom trigger clip ('dw:surge-trigger') onto this
+     fighter. Returns the action name or null (pack not loaded yet). */
+  _dwTriggerAction() {
+    const name = 'dw:surge-trigger';
+    if (this.t3actions[name]) return name;
+    const rc = dwMoveRetarget(this.char.id, 'surge-trigger', this._t3.model, THREE, this._t3.modelKey);
+    if (rc && rc[name]) Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
+    return this.t3actions[name] ? name : null;
+  }
   _bindThrowPair(pair, victim) {
     const thrower = this;
     const tBank = thrower._bankIdForDir(pair.clips.throwerBank);
@@ -2154,6 +2198,15 @@ export class Fighter {
     pair.anchorScale = tRp.pack.anchor_mm_to_rig_m;
     pair.throwerAction = thrower._reactionAction(tBank, pair.clips.throwerSlot, 'throw:' + hexSlot(pair.clips.throwerSlot));
     pair.victimAction = victim._reactionAction(vBank, pair.clips.victimSlot, 'victim:' + hexSlot(pair.clips.victimSlot));
+    // SURGE FORM THROW (DW): in Surge Form, Pantera's front throws play the DW Surge Kit
+    // throw clip for the thrower only — the victim keeps the T3 reaction, the pair root
+    // still follows the pack anchors, and the pack's damage time / duration still time
+    // the pair. Known limit: the DW clip (2.0/2.1 s) is not the pair's duration, so the
+    // thrower may finish early/late; the pair clock rules.
+    if (thrower.surgeForm) {
+      const dwName = thrower._dwThrowAction && thrower._dwThrowAction();
+      if (dwName) pair.throwerAction = dwName;
+    }
     return !!(pair.throwerAction && pair.victimAction);
   }
   /* Start a bound pair: shared root frame anchored at the
@@ -4144,6 +4197,21 @@ export class Fighter {
         // Guard reaction during blockstun overrides locomotion.
         const grn = this._guardReactionName();
         if (grn) { this._playT3Once(grn, 'react:' + this._reactionSel.slot); break; }
+        // SOUL SURGE BLOOM TRIGGER (DW dwup00): when Surge Form just started, play
+        // the DW trigger clip once. It owns the frame while it runs (isRunning);
+        // when it finishes, the stance loop resumes. If the DW pack has not
+        // loaded yet, the flag clears and the form still started.
+        if (this._dwTriggerPending) {
+          const dwName = this._dwTriggerAction && this._dwTriggerAction();
+          if (dwName) {
+            this._dwTriggerPending = false;
+            const a = this.t3actions[dwName];
+            if (a && a.isRunning && a.isRunning()) break;
+            if (this._playT3Once(dwName, 'dw-trigger:' + (this._dwTriggerId || 0))) break;
+          } else {
+            this._dwTriggerPending = false;
+          }
+        }
         // Animated bank stance / walk cycle — the living fighting idle.
         if (t3Active) this._playT3(t3Wanted, { loop: true });
         else this._stopT3();
