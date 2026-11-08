@@ -34,9 +34,19 @@ waveTables / doorSystems null, not guessed) + stage inventory
 (`moj-stage-inventory.json`) + audio inventory
 (`dw-audio-inventory.json`). TK5DATA1 stream-scanned (no readable
 DW strings — the meter/gem/Force/rank/symbol numbers are not there
-as text). Per-frame keyframe packing + type-7 rotation scale still
-blocked. Rename-map filename corrections found (mon/tk, ikt5,
+as text). Rename-map filename corrections found (mon/tk, ikt5,
 dw_singles, oz_extra, snd rows) — see `DW-DECODE-LOG.md` §15.
+
+**Status 2026-11-08 (keyframe stream CRACKED, see
+`DW-DECODE-LOG.md` §18):** per-joint keyframe curves decoded
+for all 214 clips (`dw-motion-curves.json`, 9,002 keyframes;
+`tools/gym_keyframes.py`) — full frame blocks, step flag
+(header u16[7]: 8192 = every 2nd frame, 0 = every frame),
+rotations i16 × 180/32768 deg with R = Ry(t0)·Rx(t1)·Rz(t2),
+positions mm Y-up. TK5DATA0 stream-scanned too (§19): no
+readable DW strings there either (309 hits, all false
+positives) — the meter/gem/Force/rank/symbol numbers live as
+binary values or MIPS immediates, not text.
 
 ---
 
@@ -109,3 +119,4 @@ When the formats are reversed, extract in this order:
 | 2026-10-23 | Scanned TK5DATA2.BIN motion manifest | 3 `gym_dw_*` + 4 `gym_djin_*` + 3 `gym_dw*.dat` + 4 `moj_stg*.dat` found (0 plain `stg*.dat` — the earlier "4 `stg*.dat`" note was wrong) |
 | 2026-10-23 | Scanned TK5DATA0/1/3 for DW markers | 0 hits — DW stage/boss data in binary formats, queued for RE bench |
 | 2026-11-08 | Index-level decode of the 498-name manifest | 242 DW files inventoried with glosses in `dw-motion-index.json`; romD format documented in `ROMD-FORMAT.md`; reader built + self-tested in `tools/romd_extract.py`; log in `DW-DECODE-LOG.md`. Offsets/sizes still BLOCKED — no `TK5DATA2.BIN` bytes in repo or on disk. |
+| 2026-11-08 | Gym keyframe stream cracked (`tools/gym_keyframes.py`) | Per-joint curves for all 214 DW clips in `dw-motion-curves.json` (9,002 keyframes); TK5DATA0 stream-scanned — no readable DW strings (309 hits, all false positives). |
