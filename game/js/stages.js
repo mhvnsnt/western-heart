@@ -7,6 +7,9 @@
    • Every stage: collision bounds (wallDistance), spawn points,
      lighting rig, floor, backdrop. Builders return an update hook
      for animated elements (flicker, drift, ripple).
+   • + 6 Urban Reign arenas from REAL decoded stage PPKs (Lane 4
+     follow-ons): game/assets/stages/ur/stageNNN.obj, builder 'urstage',
+     tier 'URBAN REIGN'. stage020 NOT registered (VMD undecodable in-VM).
    • Tekken 3 panoramas are TEXTURED: per-stage atlases
      (game/assets/stages/t3/stg_<letter>_atlas.png) decoded from the
      real stage texture ARCs (BNS 36-50) by the texture-atlas pipeline
@@ -684,6 +687,53 @@ for (const [file, name, desc, skyTop, skyMid, sunC, floorTint] of NO_MERCY) {
     builder: 'nomercy',
     obj: `assets/stages/no-mercy/${file}.obj`,
     panoTint: '#ffffff',
+  });
+}
+
+
+/* ---------------- URBAN REIGN ARENAS (Lane 4 follow-ons, 2026-11-08) ----
+   6 real arena shells from teardown/urban-reign/stages/ (stage003/004/028/
+   029/030/031.ppk), decoded with the Redux Editor's meshes.load and exported
+   to game/assets/stages/ur/stageNNN.obj (vertices + UVs + decoded vertex
+   colors, metres). stage020.ppk is NOT here: its only VMD fails read_mesh
+   (command-walk reads past EOF) in every in-VM reader — the named route is
+   the Editor on Windows. Names are PROPOSED labels (the PPK ids) — Jay
+   names these arenas; the measured source place per arena is in
+   UR-STAGE-MISSION-DECODE.md, NOT in the game strings (UR stage names stay
+   in the teardown). Textures are not wired yet (vertex colors only). */
+const URBAN_REIGN = [
+  // ppk, PROPOSED label, verts, tris, panoTint, measured mean vertex color
+  ['stage003', 'UR Arena 003', 57621, 36953, '#ffffff', '#cbcac9'],
+  ['stage004', 'UR Arena 004', 38747, 22769, '#ffffff', '#847a72'],
+  ['stage028', 'UR Arena 028', 26759, 16117, '#ffffff', '#7e746e'],
+  ['stage029', 'UR Arena 029', 77032, 49442, '#ffffff', '#9e9e9b'],
+  ['stage030', 'UR Arena 030', 34873, 20757, '#ffffff', '#999791'],
+  ['stage031', 'UR Arena 031', 46941, 28017, '#ececed', '#ececed'],
+];
+for (const [ppk, label, verts, tris, tint, meanHex] of URBAN_REIGN) {
+  STAGES.push({
+    id: `ur-${ppk}`,
+    name: label,
+    tier: 'URBAN REIGN',
+    universe: 'Urban Reign (legacy)',
+    element: 'Retro',
+    description: `Real Urban Reign arena — decoded stage geometry (${verts} verts, ${tris} tris) from ${ppk}.ppk. PROPOSED name — Jay names this arena. Vertex colors only; textures not wired yet.`,
+    dims: { width: 16.8, depth: 6.0, wallDistance: 8.4 },
+    spawns: { p1: -3.5, p2: 3.5 },
+    lighting: {
+      sky: [[0.0, '#0a0a18'], [0.55, '#1a2a3a'], [0.85, '#7ab0d0'], [1.0, '#0a0a18']],
+      fog: ['#0a0a18', 22, 80],
+      hemi: ['#8a8aa8', '#1a1420', 1.5],
+      sun: ['#ffe0c0', 2.2, [-10, 8, 5]],
+      rim: ['#ffe0c0', 0.6, [8, 6, -7]],
+      fill: ['#ffe0c0', 0.8, [0, 4, 10]],
+    },
+    floor: { kind: 'stone', tint: '#5a5a5a', repeat: 26, platformTint: '#5a5a5a', platformRepeat: 6 },
+    swatch: [meanHex, '#ffe0c0'],
+    builder: 'urstage',
+    obj: `assets/stages/ur/${ppk}.obj`,
+    panoTint: tint,
+    hidePlatform: true, // the decoded stage carries its own floor at y=0
   });
 }
 
@@ -1573,6 +1623,35 @@ async function buildNoMercy(g, def, api) {
   return { updaters, skyTex, fog };
 }
 
+
+/* ---- URBAN REIGN: real decoded stage geometry (Lane 4 follow-ons) ----
+   The 6 decodable stage PPKs (003/004/028/029/030/031) export their stage
+   VMD through the Redux Editor's meshes.load to OBJ (game/assets/stages/ur/).
+   Units are metres (world space) — NO scale, unlike the T3 (0.015) and
+   No Mercy (0.012) shells. Vertex colors are the VMD's decoded colors;
+   textures are NOT wired yet (no map — the follow-up adds the decoded
+   texture atlas). stage020's VMD fails read_mesh in-VM and is NOT
+   registered. See UR-STAGE-MISSION-DECODE.md. */
+async function buildURStage(g, def, api) {
+  const { updaters, skyTex, fog } = buildBase(g, def, api);
+  try {
+    const geo = await fetchStageOBJ(def.obj);
+    const mat = new THREE.MeshBasicMaterial({
+      vertexColors: !!geo.getAttribute('color'),
+      color: _hex(def.panoTint),
+      side: THREE.DoubleSide, fog: true,
+    });
+    const shell = new THREE.Mesh(geo, mat);
+    g.add(shell);
+  } catch (e) {
+    console.warn(`[WH] stage ${def.id}: UR shell failed (${e.message}), palette backdrop only`);
+  }
+  const edge = new THREE.Mesh(new THREE.TorusGeometry(8.9, 0.08, 10, 48),
+    new THREE.MeshBasicMaterial({ color: _hex(def.lighting.sun[0]) }));
+  edge.rotation.x = Math.PI / 2; edge.position.y = 0.02; edge.userData.nearClip = true; g.add(edge);
+  return { updaters, skyTex, fog };
+}
+
 /* ---- TEKKEN 7 GLB stage (Mishima Dojo): untextured rip, normals rebuilt ---- */
 async function buildT7Glb(g, def, api) {
   const { updaters, skyTex, fog } = buildBase(g, def, api);
@@ -1761,6 +1840,7 @@ const BUILDERS = {
   chiu: buildChiU, parfang: buildParFang, helix: buildHelix,
   dreaming: buildDreaming, marketplace: buildMarketplace, t3retro: buildT3Retro,
   sunra: buildSunRa, nomercy: buildNoMercy, t7glb: buildT7Glb,
+  urstage: buildURStage,
   capehouse: buildCapeHouse, capebeach: buildCapeBeach,
 };
 
@@ -1793,7 +1873,7 @@ export function disposeStage(group) {
 }
 
 /* Tier order for the stage-select screen. */
-export const STAGE_TIERS = ['CANON LANDS', 'CAPE JONES', 'TEKKEN RETRO', 'WWF NO MERCY', 'WRESTLING', 'BOSS STAGES'];
+export const STAGE_TIERS = ['CANON LANDS', 'CAPE JONES', 'TEKKEN RETRO', 'WWF NO MERCY', 'WRESTLING', 'URBAN REIGN', 'BOSS STAGES'];
 
 /* ---------------- SUN RĀ — THE STARING SKY ----------------
    Boss stage. Kevin's home base (he takes Baek's roster slot; can fight
