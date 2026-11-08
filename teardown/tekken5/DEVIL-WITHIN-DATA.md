@@ -34,19 +34,9 @@ waveTables / doorSystems null, not guessed) + stage inventory
 (`moj-stage-inventory.json`) + audio inventory
 (`dw-audio-inventory.json`). TK5DATA1 stream-scanned (no readable
 DW strings — the meter/gem/Force/rank/symbol numbers are not there
-as text). Rename-map filename corrections found (mon/tk, ikt5,
+as text). Per-frame keyframe packing + type-7 rotation scale still
+blocked. Rename-map filename corrections found (mon/tk, ikt5,
 dw_singles, oz_extra, snd rows) — see `DW-DECODE-LOG.md` §15.
-
-**Status 2026-11-08 (keyframe stream CRACKED, see
-`DW-DECODE-LOG.md` §18):** per-joint keyframe curves decoded
-for all 214 clips (`dw-motion-curves.json`, 9,002 keyframes;
-`tools/gym_keyframes.py`) — full frame blocks, step flag
-(header u16[7]: 8192 = every 2nd frame, 0 = every frame),
-rotations i16 × 180/32768 deg with R = Ry(t0)·Rx(t1)·Rz(t2),
-positions mm Y-up. TK5DATA0 stream-scanned too (§19): no
-readable DW strings there either (309 hits, all false
-positives) — the meter/gem/Force/rank/symbol numbers live as
-binary values or MIPS immediates, not text.
 
 ---
 
@@ -57,19 +47,19 @@ binary values or MIPS immediates, not text.
 | `gym_dw_nog00.dat` | Devil Within enemy animation ("nog" — enemy type TBD) |
 | `gym_dw_raribxk.dat` | Devil Within boss/enemy animation ("rari" — TBD) |
 | `gym_dw_rarixk.dat` | Devil Within boss/enemy animation |
-| `gym_djin_newhane00.dat` … `newhane03.dat` | Devil Jin transformation ("hane" = wings/feathers — the black-feather disintegration visual) |
-| `gym_dwfkao00.dat` | DW-specific data ("kao" = face — Devil Jin face/model) |
+| `gym_djin_newhane00.dat` … `newhane03.dat` | Soul Surge Bloom donor — source: Devil Jin transformation ("hane" = wings/feathers — the black-feather disintegration visual; moveset data only, never a character) |
+| `gym_dwfkao00.dat` | DW-specific data ("kao" = face — source Devil Jin face/model data; donor data only, not a character) |
 | `gym_dwhadoh00.dat` | DW-specific data ("hadoh" = wave — likely the laser/wave file) |
 | `gym_dwup00.dat` | DW-specific data ("up" — power-up; possibly Devil Gene meter UI or power-up object) |
 | `gym_dwup_hei.dat` | Power-up, Heihachi variant (the Heihachi-clone version of `dwup`) |
 
-Full inventory: `dw-motion-index.json` — 242 DW files (Devil Jin kit `gym_ikdv_*`
+Full inventory: `dw-motion-index.json` — 242 DW files (Surge donor kit, source group `gym_ikdv_*` — Tekken's Devil Jin kit
 52, Modified Gun Jack `gym_kmb1_*` 39, True Ogre `gym_kob2_*` 29 [inference],
 Monstrous Ogre `gym_ozb3_*` 36 [inference], unresolved gun/fly kit `gym_ikt5_*`
 26, init objects `gym_init_obj_*` 21, transform `gym_djin_newhane*` 4, stage map
 objects `moj_stg00/01/02/04`, sounds `snd_*` 18), each with a gloss and confidence.
 
-Character sound: `snd_c30dvj.dat` (Devil Jin), `snd_c10jin.dat` (Jin), `snd_c15hei.dat` (Heihachi clones), `snd_c21jac.dat` (JACK), `snd_c02lei.dat` (Lei). These anchor the char codes: c02 = Lei, c10 = Jin, c15 = Heihachi, c21 = JACK, c30 = Devil Jin.
+Source character sound: `snd_c30dvj.dat` (Devil Jin), `snd_c10jin.dat` (Jin), `snd_c15hei.dat` (Heihachi clones), `snd_c21jac.dat` (JACK), `snd_c02lei.dat` (Lei) — voice donor data only. These anchor the source char codes: c02 = Lei, c10 = Jin, c15 = Heihachi, c21 = JACK, c30 = Devil Jin.
 
 ## 2. Stage files (`TK5DATA2.BIN`) — CORRECTED 2026-11-08
 
@@ -103,8 +93,8 @@ in TK5DATA1/3 and presence of DW animations in TK5DATA2.
 ## 4. What the mode needs (from design doc, for the RE bench)
 
 When the formats are reversed, extract in this order:
-1. Jin's DW brawler moveset (simplified: punch/kick/block/jump — distinct from versus)
-2. Devil Gene meter + Devil Jin transformation data (fill rates, laser damage, health drain)
+1. The Surge donor kit's DW brawler moveset (source: Devil Jin's kit — simplified: punch/kick/block/jump — distinct from versus)
+2. Devil Gene meter + Soul Surge Bloom transform data (source: Devil Jin transformation — fill rates, laser damage, health drain)
 3. 5 stage layouts (rooms, breakables, gem/Force spawns, Devil symbol locations, boss arenas)
 4. Boss patterns (Modified Gun Jack, Heihachi clones, True Ogre, Soul Sphere, Monstrous Ogre)
 5. Ranking thresholds (time/damage/retries/Force → S/A/B/C)
@@ -119,4 +109,3 @@ When the formats are reversed, extract in this order:
 | 2026-10-23 | Scanned TK5DATA2.BIN motion manifest | 3 `gym_dw_*` + 4 `gym_djin_*` + 3 `gym_dw*.dat` + 4 `moj_stg*.dat` found (0 plain `stg*.dat` — the earlier "4 `stg*.dat`" note was wrong) |
 | 2026-10-23 | Scanned TK5DATA0/1/3 for DW markers | 0 hits — DW stage/boss data in binary formats, queued for RE bench |
 | 2026-11-08 | Index-level decode of the 498-name manifest | 242 DW files inventoried with glosses in `dw-motion-index.json`; romD format documented in `ROMD-FORMAT.md`; reader built + self-tested in `tools/romd_extract.py`; log in `DW-DECODE-LOG.md`. Offsets/sizes still BLOCKED — no `TK5DATA2.BIN` bytes in repo or on disk. |
-| 2026-11-08 | Gym keyframe stream cracked (`tools/gym_keyframes.py`) | Per-joint curves for all 214 DW clips in `dw-motion-curves.json` (9,002 keyframes); TK5DATA0 stream-scanned — no readable DW strings (309 hits, all false positives). |

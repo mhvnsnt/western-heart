@@ -204,25 +204,19 @@ little-endian u16 header:
 |---|---|
 | [1] | bone count: 35 (fighter motions), 78/111/96 (`init_obj`), 12 (`djin`), 4 (7 special kob2/ozb3 files) |
 | [2] | frame count |
-| [3] | frame-block size in bytes: 276 (motions); = bones×10 (`init_obj`); 108 (`djin`) |
+| [3] | 276 (motions); = bones×10 (`init_obj`); 108 (`djin`) — UNRESOLVED |
 | [5] | 16528 (0x4090) constant; u32 @8 = 0x40900000 = 4.5f |
-| [7] | STEP FLAG: 8192 (0x2000) = keyframes every 2nd frame; 0 = every frame (solved 2026-11-08) |
+| [7] | 8192 (0x2000) constant |
 | [10] | = bone count × 128 |
-| [12] | = frames × bones × 12 (standard); smaller for 19 sparse clips — layout unaffected, exact meaning unresolved |
+| [12] | = frames × bones × 12 (standard subtype: 420 values/frame at 35 bones) |
 | [14] | 68 / 180 / 15 — UNRESOLVED |
 
-Each bone carries **12 values per frame**. Two subtypes by
-field12 — but BOTH decode identically (full frame blocks,
-§"Gym keyframe stream — CRACKED" below):
+Each bone carries **12 values per frame**. Two subtypes:
 - **Standard:** field12 == frames×bones×12 (per-frame data).
-- **Sparse (14 DW clips; 19 across all 454 gym files):**
-  field12 much smaller (11–135 values/frame). The
-  long/special motions (`ozb3_dead` 500f, `ozb3_toujyou`
-  460f, `kob2_escape` 321f, projectile attacks, throws).
-  CORRECTION 2026-11-08: they do NOT store only changed
-  channels — the keyframe model fits them exactly, so no
-  separate handling is needed. field12's exact meaning for
-  them is unresolved.
+- **Sparse (14 clips):** field12 much smaller (11–135 values/frame)
+  — only changed channels recorded. The long/special motions
+  (`ozb3_dead` 500f, `ozb3_toujyou` 460f, `kob2_escape` 321f,
+  projectile attacks, throws). A retarget must handle both.
 
 ### Gym container layout — record table + channel kinds (2026-11-08)
 
@@ -244,12 +238,9 @@ offset 72:  record table, 16 bytes per bone
               +6  u16 index    (records pair up: 0,0,1,1,2,2...)
               +8  u32 offset   cumulative data offset (within one frame block)
               +12 u32 offset2  identical to +8
-bone table:   bone indices (u16) — hierarchy paths separated by
-              0xFFFF, terminated by 0xFFFE + 0xFFFF
-data section: FULL frame blocks, one per keyframe (see
-              "Gym keyframe stream — CRACKED" below). A 13-frame
-              file is 7 keyframes x frame-block size + trailer,
-              not 13x the 1-frame size.
+bone table:   bone indices (u16) with 0xFFFF markers
+data section: per-frame blocks, variable length (keyframe/delta
+              encoding — a 13-frame file is NOT 13x the 1-frame size)
 ```
 
 **Channel kind = record type LOW byte (measured):**
@@ -258,31 +249,17 @@ data section: FULL frame blocks, one per keyframe (see
 |---|---|---|---|
 | 3 | 12 | SCALE | 3 float32 (sx,sy,sz), near 1.0 |
 | 11 | 12 | POSITION | 3 float32 (x,y,z) in millimetres |
-| 7 | 6 | ROTATION (packed) | 3 x i16; angles = i16 x 180/32768 deg, R = Ry(t0)·Rx(t1)·Rz(t2) — CRACKED, see below |
+| 7 | 6 | ROTATION (packed) | 3 x i16; angle scale NOT yet confirmed |
 
 Position decode validated (root ~origin; height bone Y ≈ 989–1011 mm;
 side bone X = −400 mm; airborne clips Y up to ~7050 mm, matching
 their names). First-frame channel counts (214 clips): position
-2,431, rotation-packed 4,908, scale 520.
-
-### Gym keyframe stream — CRACKED (2026-11-08)
-
-`tools/gym_keyframes.py` → `dw-motion-curves.json` (214 clips,
-9,002 keyframes, 0 problems). The data section is n_kf FULL
-frame blocks of field3 bytes + a zero trailer (0–12 bytes).
-n_kf = frames if the step flag (header u16[7]) is 0, else
-frames//2 + 1 (flag 8192). Keyframe k is at frame k*step.
-Per keyframe, every record sits at its record-table offset:
-type 3/11 = 3 × float32 (scale; position mm, Y-up), type 7 =
-3 × i16 rotation, angles = i16 × 180/32768 deg,
-R = Ry(t0)·Rx(t1)·Rz(t2) (file triple order). Validated on
-all 454 gym files in the archive (keyframe model fits 454/454,
-0 mismatches) and by rotation smoothness (stance clip max
-0.95° per keyframe step under this convention; every other
-permutation × order gives 138–177° jumps). The convention is
-determined up to a global axis relabeling; positions are Y-up.
-Full proof + the fast-motion/snap-turn analysis: see
-`DW-DECODE-LOG.md` §18.
+2,431, rotation-packed 4,908, scale 520. **NOT yet decoded:** the
+inner delta-frame packing (frame-block delimiter) and the type-7
+rotation angle scale. The per-frame keyframe stream is the
+remaining gym blocker. Frame/bone counts are measured for all 214
+extracted DW files in `dw-motion-bank.json` (214 motion clips,
+16,503 frames, 275.1 s at 60 fps).
 
 ## Stage map objects (`moj_stg*.dat`) — geometry, not text
 
@@ -311,17 +288,17 @@ manifest by name, with romaji glosses and confidence per file:
 
 | Group | Files | Assignment |
 |---|---|---|
-| `gym_ikdv_*` | 52 | Devil Jin's DW brawler kit (beams, punches, kicks, throws, turns, breakfalls) |
+| `gym_ikdv_*` | 52 | Surge Kit donor — source: Devil Jin's DW brawler kit (moveset data only, never a character) (beams, punches, kicks, throws, turns, breakfalls) |
 | `gym_kmb1_*` | 39 | Modified Gun Jack — stage 1 boss (machinegun, shotgun, charge shots) |
 | `gym_kob2_*` | 29 | True Ogre — stage 3 boss, INFERENCE (fly, fire, horn, tail, snake) |
 | `gym_ozb3_*` | 36 | Monstrous Ogre — stage 5 boss, INFERENCE (whirlwind `tatumaki`, stomp `fumi`, burn) |
 | `gym_oz_extra` (ozt4/ozhe/oznj) | 6 | Ogre-family extras, boss unassigned |
 | `gym_ikt5_*` | 26 | UNRESOLVED gun/fly kit, base + `_mon` monster variants |
-| `gym_init_obj_*` | 21 | Boss init 1/2/3/5 (boss4 ABSENT), Jin, devil, monster archetypes power/speed/standard/tricky, 3 test characters |
-| `gym_djin_newhane00-03` | 4 | Devil Jin transform — wings/feathers |
+| `gym_init_obj_*` | 21 | Boss init 1/2/3/5 (boss4 ABSENT), source init objects `jin` / `devil` (source filenames only — neither is a character in our game), monster archetypes power/speed/standard/tricky, 3 test characters |
+| `gym_djin_newhane00-03` | 4 | Soul Surge Bloom donor — source: Devil Jin transform, wings/feathers (moveset data only) |
 | `gym_dw_*` singles | 7 | Face (`dwfkao`), wave (`dwhadoh`), power-up (`dwup`, `dwup_hei`), 3 opaque |
 | `moj_stg00/01/02/04` | 4 | Stage MAP OBJECTS (`.moj` geometry: NUDP models + TIM2 textures + MIF bones), NOT text; `moj_stg03` absent |
-| `snd_*` | 18 | Lab / Egyptian / blue themes; Lei/Jin/Heihachi/JACK/Devil Jin voices (anchors c02/c10/c15/c21/c30); ogre, ruins, boss, monster, system sounds |
+| `snd_*` | 18 | Lab / Egyptian / blue themes; source voice files for Lei / Jin / Heihachi / JACK / Devil Jin (source characters — voice donor data only; anchors c02/c10/c15/c21/c30); ogre, ruins, boss, monster, system sounds |
 
 Confidence: 155 high, 56 medium, 31 opaque (tokens not translated).
 
@@ -343,13 +320,7 @@ not a LUT — solved 2026-11-08.
   2026-11-08 to free quota (SHA-256 `74a50b9843f88c34d817e5737aacc8f09f8de22d810c03ec38e0346e6b83fb79`;
   re-fetchable from the archive item, extent 1646501). PKG
   `files[7]` mask.bin + `files[9]` table NOT extracted.
-- `TK5DATA0.BIN` (2.07 GB) — NOT held whole (disk quota).
-  **Stream-scanned 2026-11-08** (`tools/tk5data0_scan.py`):
-  198 × 10 MB Range chunks, 309 hits — 305 "gem" false
-  positives + 4 chance 4-letter matches in binary data
-  (re-fetched and checked). **TK5DATA0 contains NO readable
-  DW-relevant strings either.** Meter/gem/Force/rank/symbol
-  numbers are binary values there or MIPS immediates.
+- `TK5DATA0.BIN` (2.07 GB) — NOT fetched (disk quota).
 - `TK5DATA1.BIN` (1.30 GB) — NOT held whole (disk quota); PS2 LUT
   validated in the Code blob, entries tile 99.9% of it.
   **Stream-scanned 2026-11-08** (`tools/tk5data1_scan.py`): 124 × 10 MB
@@ -367,9 +338,10 @@ not a LUT — solved 2026-11-08.
   `teardown/tekken5/INVENTORY.md`. Jay authorized the pull
   2026-11-07 ~20:15. Full-ISO md5/sha1 NOT verifiable (quota-forced
   range-fetch of individual BINs; see `DW-DECODE-LOG.md`).
-- Next steps: reverse the NUDP/MIF stage formats; decode P3Dp
-  audio; confirm the rotation axis labels by forward kinematics
-  against the bone hierarchy. The moveset-library bank
+- Next steps: stream-scan TK5DATA0 for meter, gem, Force, rank,
+  symbol, and AI tables (same discardable-chunk method); reverse
+  the gym keyframe stream packing and the NUDP/MIF stage formats;
+  decode P3Dp audio. The moveset-library bank
   (`game/data/moveset-library/banks/dw.json`, 165 moves) and the
   HM_TEARDOWN data (`game/data/heartmind-dw-teardown.json`) are
   landed on the `dw-decode` branch — see `DW-DECODE-LOG.md` §8–17.

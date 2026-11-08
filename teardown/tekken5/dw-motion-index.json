@@ -2,6 +2,7 @@
   "archive": "TK5DATA2.BIN (romD archive, 244 MB on the Tekken 5 PS2 disc SLUS_210.59)",
   "source_manifest": "teardown/tekken5/t5_motion_manifest.txt (498 named files, extracted 2026-10-23)",
   "decoded": "2026-11-08",
+  "canon_note": "Canon law (Jay, 2026-11-08 ~00:04): there is NO Jin Kazama in our game at all — the ONLY Jin is the soul JIN (the Blade Soul), pickable as Phantom. In this index, 'Jin' / 'Devil Jin' / 'fighter' name the SOURCE game's characters (Tekken 5) only — source attributions for the decoded files, never characters in our game. The Devil Jin kit (group ikdv) is moveset donor data only (canon: Surge Kit).",
   "decode_level": "INDEX LEVEL ONLY — names, romaji glosses, and group assignments. No bytes exist in the repo, so no offsets, sizes, headers, or motion data are resolved. See DW-DECODE-LOG.md for the blocker.",
   "devil_within_file_count": 242,
   "manifest_count": 498,
@@ -41,10 +42,10 @@
   "groups": [
     {
       "id": "ikdv",
-      "label": "Devil Jin — Devil Within brawler kit",
-      "assignment": "Devil Jin's Devil Within moveset",
+      "label": "Surge Kit donor — Devil Within brawler kit (source: Devil Jin's kit; moveset data only, never a character)",
+      "assignment": "Surge Kit donor moveset (source: Devil Jin's Devil Within kit)",
       "assignment_confidence": "high",
-      "evidence": "Beams (beam / d_beam / all_beam / jump_beam / d_nagi_beam) match the public description of Devil Jin's laser attacks; paired with snd_c30dvj (Devil Jin sound, code c30).",
+      "evidence": "Beams (beam / d_beam / all_beam / jump_beam / d_nagi_beam) match the public description of the source Devil Jin's laser attacks; paired with snd_c30dvj (source Devil Jin sound, code c30).",
       "files": [
         {
           "name": "gym_ikdv_36_nage_f.dat",
@@ -62,7 +63,7 @@
           "name": "gym_ikdv_all_beam.dat",
           "gloss": "beam hitting all targets",
           "confidence": "medium",
-          "note": "Matches public description: Devil Jin lasers hit several enemies at once."
+          "note": "Matches public description: the source Devil Jin's lasers hit several enemies at once."
         },
         {
           "name": "gym_ikdv_b_nage_f.dat",
@@ -1088,8 +1089,8 @@
     },
     {
       "id": "init_obj",
-      "label": "Init objects — bosses, Jin, devil, monster archetypes",
-      "assignment": "Enemy/boss spawn data: 4 monster archetypes (power / speed / standard / tricky) for DW monsters (mon_*) and versus fighters (tk_*); boss init objects 1/2/3/5; Jin; devil; 3 test characters",
+      "label": "Init objects — bosses, source 'jin' / 'devil' init objects, monster archetypes",
+      "assignment": "Enemy/boss spawn data: 4 monster archetypes (power / speed / standard / tricky) for DW monsters (mon_*) and versus fighters (tk_*); boss init objects 1/2/3/5; source init objects 'jin' / 'devil'; 3 test characters",
       "assignment_confidence": "high",
       "evidence": "Names are explicit. HYPOTHESIS (unproven): boss1 = Modified Gun Jack, boss2 = Heihachi clones, boss3 = True Ogre, boss5 = Monstrous Ogre; boss4 missing because the Soul Sphere (stage 4 boss) is an energy orb with no fighter body, so it needs no init object.",
       "files": [
@@ -1119,7 +1120,7 @@
           "name": "gym_init_obj_devil.dat",
           "gloss": "devil init object",
           "confidence": "medium",
-          "note": "Devil Jin or devil form init."
+          "note": "Source Devil Jin / devil-form init object (source data only)."
         },
         {
           "name": "gym_init_obj_jin.dat",
@@ -1207,10 +1208,10 @@
     },
     {
       "id": "djin",
-      "label": "Devil Jin transformation — wings/feathers",
-      "assignment": "Devil Jin transformation / feather-disintegration effect (4 parts)",
+      "label": "Soul Surge Bloom donor — transform, wings/feathers (source: Devil Jin transformation; moveset data only)",
+      "assignment": "Soul Surge Bloom donor transform / feather-disintegration effect (source: Devil Jin transformation, 4 parts)",
       "assignment_confidence": "high",
-      "evidence": "hane = wings/feathers; 4 sequential parts; paired with the public description of black-feather disintegration and the Devil Jin transform.",
+      "evidence": "hane = wings/feathers; 4 sequential parts; paired with the public description of black-feather disintegration and the source Devil Jin transform.",
       "files": [
         {
           "name": "gym_djin_newhane00.dat",
