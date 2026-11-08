@@ -732,3 +732,202 @@ Pilot: Pantera's flow donors (Surge Kit throws, Soul Surge Bloom trigger + beam)
 - **Wiring order (landed):** beam first (single-character strike, hooks into `_attackClipPlan`, keyed on `attackName === 'surge'`), then trigger (one-shot on `startSurgeForm`), then throws (pair-path override in `_bindThrowPair`: DW clip replaces the thrower action only, victim still plays the T3 reaction, pair root still follows pack anchors; DW clip durations 2.0/2.1 s vs the T3 pair duration is a known limitation — the pair clock rules).
 - **Tests:** full suite 313 tests (306 baseline + 7 new DW), 264 pass, 49 fail — the failing file list is IDENTICAL to the baseline (40 files). Zero new failures.
 - **Still owed in this lane:** the throw pair-binding live re-check (above); the remaining 178 wireable clips in the same shape (kmb1 Warden kit next — same 35-bone skeleton, same bake; its fighter binding is a follow-up, the Warden is a brawler kind, not a fighter id); the `dwup00` trigger-role clip choice (a grounded power-up clip vs the leaping source clip); P3Dp audio payload decoded but not wired.
+
+### 23. Retarget rollout — all remaining wireable 35-bone clips (this lane, branch `retarget-dw-rollout`, base PR #1652 head `c2eaed35`)
+
+Same bake, same shape as the pilot (§22). Tool extended, not rewritten:
+`tools/anim/dw_curve_bake.py` gains `KIT_SETS` (warden←kmb1, unmasked←ozb3,
+drowned-ogre←kob2, wave-echo←oz_extra), `kit_clip_names()` (wireable 35-bone
+clips of a group, from the bank), `kit_exclusions()` (measured reason per
+non-bakeable clip), `pantera_unmapped()` (the pilot's 4 nage + every remaining
+wireable 35-bone ikdv clip — the Surge Kit is Pantera's kit, so its clips
+live in his pack as data until a move mapping claims them), `bake_set()`,
+`--set` (pantera/warden/unmasked/drowned-ogre/wave-echo/all) + `--bank`.
+One bug fixed in `kit_exclusions()`: a MISSING file (`ozhe_1ckj66a`, no data
+in TK5DATA2) was reported as "None-bone" — it now reads "missing file — no
+data in TK5DATA2 (list reference only, no curves to bake)".
+
+- **CORRECTION to the pilot's count:** the remaining wireable set is **175,
+  not 178**. The pilot's "178" = 182 wireable − 4 mapped moves, which
+  double-counts the 4 unmapped-but-baked nage clips. Decoded 214; wireable
+  182; pilot baked 8 (7 wireable + `dwhadoh00`, non-wireable "wave").
+  Remaining wireable by bones: **35-bone 144 (bakeable now)**, 78-bone 14
+  (all 1-frame init objects — poses, not motion), 4-bone 11 (appendage
+  part-clips: kob2 tail ×4, ozb3 teil1 ×7), 12-bone 4 (djin wings/feathers),
+  111-bone 2 (boss init objects, 1-frame). Remaining by group: ikdv 46,
+  kmb1 39, ozb3 36, kob2 29, ikt5 24 (ALL non-wireable — opaque tokens /
+  monster variants), init_obj 18, oz_extra 5, dw_singles 5, djin 4.
+  Remaining 27-bone decoded clips: 5, all non-wireable. The 31 non-35/27
+  clips are NOT bakeable with the current FK model — each with a measured
+  reason, recorded by `kit_exclusions()` and in the kit bake logs.
+
+- **Bake `--set all` (2026-11-08 ~12:24):** pantera 54 clips / 4 moves
+  (3,372,185 B), warden 39 / 0 (3,362,815 B), unmasked 29 / 0
+  (2,747,447 B), drowned-ogre 25 / 0 (2,219,485 B), wave-echo 5 / 0
+  (299,333 B). **Total 152 clips = 144 remaining 35-bone wireable + 8
+  pilot.** Verified: all 8 pilot clips byte-identical to the committed
+  pack, moves identical, skeleton identical; pantera pack 54 clips / 50
+  skipped; kit packs 0 moves / skipped == all clips. 10 clips are step-1
+  (60 fps): 6 ikdv + 4 kmb1; the other 142 are step-2 (30 fps). Root_t Y
+  (hips height) across the rollout: min 0.109 m (a throw low point),
+  max 8.000 m (the flying boss's fire attack, `kob2_fly2fire`) — the
+  test band is 0.05–8.5 m, which catches unit/sign errors, not jumps.
+
+- **Round-trip verification** (`teardown/tekken5/tools/dw_roundtrip.py`,
+  extended with `--pack`, default all `moves.*.pack.json`): all 152 clips
+  checked, exit 0. Per-pack worst: drowned-ogre 239.9, pantera 371.0,
+  unmasked 292.0, warden 376.5, wave-echo 182.8 mm. **Overall worst
+  376.5 mm** (`kmb1_yoko_r`, RightLeg); median worst 136.4 mm; 9 clips
+  over 300 mm, 43 over 200 mm — inside the documented residual envelope
+  (up to 200–400 mm at the foot during a big throw; worst offenders are
+  jumps/side-steps, consistent with the skipped-joint residual at the
+  legs). Rotation round-trip worst 0.00° (unchanged).
+
+- **Wiring:** `game/js/t3anims.js` `DW_MOVES` gains `warden`, `unmasked`,
+  `drowned-ogre`, `wave-echo` — kit data packs, `moves = {}` in every kit
+  pack, move mapping owed. Nothing in-game calls `ensureDwMoves()` with
+  these ids yet; the binding is the follow-up (the Warden pack's hook is
+  the HeartMind Warden boss in `brawler.js`). The entries make the packs
+  loadable through the existing path and testable in node. All four names
+  are canon terms (Warden / Unmasked / Drowned Ogre bosses, wave-echo
+  archetype). The Warden is a brawler kind, not a fighter id — not forced
+  onto one.
+
+- **Tests:** new `game/tests/dw-rollout.test.mjs` (5 tests: pack files
+  exist; shapes — 21 bones, fps follows the source step, unit quats,
+  root_t band; DW_MOVES has one entry per pack; `ensureDwMoves` loads
+  every pack with fetch stubbed to disk; totals 152 clips + exclusions
+  recorded). The pilot test `dw-retarget.test.mjs` updated to the extended
+  pack: 54 clips, 50 skipped, fps follows step, root_t band 0.05–8.5 m.
+  **12 DW tests, all green.** Full `game/tests` suite: 358 tests, 315
+  pass, 43 fail — all 43 failures are pre-existing sparse-checkout ENOENTs
+  (missing moveset/model files, e.g. `game/assets/movesets/burger.json`,
+  `game/ui-wh/ui.js`); zero failures mention DW/rollout. (Count shift vs
+  the pilot's 313/264/49: the sparse-checkout adds needed for the probe —
+  game/vendor, game/css, game/netplay, packages/creation-suite, the two
+  roster attire models — unblocked test files that previously failed at
+  import, so more tests run and pass.)
+
+- **Probe (Job 1 — reproduce the pilot proof + Job 2 — throw re-check):
+  run 4, 2026-11-08 ~13:00, headless Chromium + software WebGL, Pantera
+  vs Demonio, Shrine of the Blade, probe `tools/proof-harness/dw_probe.mjs`.**
+  Run 1 FAILED (READY false, models 404 — sparse checkout lacked them,
+  remote fallback 404 on the Worker). Run 2 FAILED (READY false after
+  241 s; only error: `demonio-human` 404 — Demonio's DEPOWER form,
+  `roster/demonio/attires/human/model-rerig.glb`, 28,661,076 B; local copy
+  missing, the Worker fallback is aborted by the probe, jsDelivr 403s
+  files over 20 MiB). Run 3 FAILED (READY false after 241 s; the human
+  404 was GONE after the overlay fix — only T7 stance warnings remained).
+  A diagnostic probe (`/tmp/probe-env/dw_diag.mjs`, 10 s samples × 18)
+  then showed the real cause: the game LOADS (models true, HUD up) and
+  `roundState` goes idle → `fight` at ~t+49 s and stays there — but
+  `p1.t3actions` / `p2.t3actions` stay **0 at every sample**. The T3
+  animation banks (`game/assets/anim/t3/king_on_pantera_leoman/` +
+  `jin/`) are NOT in the sparse checkout, and `loadT3Clips`
+  (`game/js/t3anims.js:495`) fetches them with **no jsDelivr fallback**
+  (unlike `fetchT7Json`), so every bank fetch 404s and the bank cannot
+  be retargeted. Fix: both banks downloaded to the /tmp overlay (70
+  files, 15 MB — every size verified against the repo listing, hashes
+  spot-checked) + the human model (28,661,076 B, hash-verified). The
+  overlay server (`/tmp/probe-env/dw_server_overlay.mjs`) serves a file
+  from the overlay only when it is missing under the repo root.
+  - **Run 4: READY true after 52 s.** Beam TRIGGER ok (`dw:surge`, kind
+    `dw`, dwhadoh00), 12 frames — WATCHED: crouches low, gathers energy
+    (bright white/gold glow + purple particles), goes low/flat on the
+    floor, rises, stands; no T-pose, feet on the floor — **the pilot's
+    beam result is REPRODUCED**. Trigger TRIGGER surgeForm true, actions
+    [`dw:surge`, `dw:surge-trigger`], 12 frames — WATCHED: Surge Form on
+    (purple meter), bright glow, low/grounded in the captured window;
+    the leap is in the raw data (hips 2.375 m) even though this window
+    did not catch the apex — the `dwup00` defect stands on measurement.
+    Throw TRIGGER ok (1+3, Surge Form on) but the PLAN is the T3 throw
+    (`row:463`, kind `own`, "KING 1+3 (T3 king r463)") and the actions
+    are [`dw:surge`, `dw:surge-trigger`] — **no `dw:1+3`**. 16 frames —
+    WATCHED: Pantera glowing in Surge Form next to Demonio, Demonio's
+    health dropping, but NO throw arc, Demonio never goes over. **The DW
+    throw did NOT connect**: the throw pair never formed within the
+    window, so `_bindThrowPair` never ran and the DW override never
+    engaged (the 1+3 attack fired, P2 was placed 1.2 m away inside the
+    1.9 m reach, but in slow-motion rendering the grab connects after
+    the 2.4 s-real capture window). Follow-up owed: a probe variant that
+    polls for `f._throwPair` / `pair.throwerAction` with a long window.
+    The throw pair-binding live re-check is STILL OWED.
+  - Side notes from run 4: `[WH-T7] pantera: real T7 move clips
+    unavailable ... HTTP 404 for assets/anim/t7/king/moves.pack.json` —
+    the T7 move pack 404s locally AND on jsDelivr; fighters keep their
+    T3 clips (pre-existing environment limitation, not this lane). `[WH-DW]
+    pantera: 54 DW move clips` — the extended pack loads.
+  - **Proof: 40 frames + 3 mp4s + 3 contact sheets in
+    `/tmp/dw-proof-pilot/` (15 MB) — watched end to end (beam, trigger,
+    throw sheets). They could NOT be copied to
+    `~/workspace/devil-within-decode/dw-proof/` (EDQUOT — quota at zero,
+    flapping; even a 2 KB copy fails). They MUST be copied ASAP when the
+    quota frees; /tmp is tmpfs and is wiped on restart. Run log:
+    `/tmp/dw-proof-pilot-run4.log`.
+
+- **Trigger clip choice (Job 3, measured + watched + ADOPTED):**
+  `gym_dwup00.dat` (27-bone, "power-up"): hips Y start 1283, min 136,
+  max 2375, end 136 mm — leaps and ends prone. `gym_dwup_hei.dat`
+  (27-bone, non-wireable): hips max 3015, end 136 — an even bigger leap,
+  NOT a replacement. The DW source's power-ups ARE leaps that end on the
+  floor; no DW power-up clip is grounded. **Replacement by measurement:
+  `gym_ozhe_power.dat`** (unmasked kit, 45f, gloss "power"): hmin 620,
+  hmax 1122, rise 200, end+ 59, travel 470 mm — starts ~922, dips to 620
+  (crouch), rises to 1122, ends 981; grounded, crouch-then-rise.
+  **Watched verification DONE 2026-11-08 ~13:10** (trigger-only probe,
+  `/tmp/probe-env/dw_trigger_probe.mjs`, overlay pack with surge-trigger
+  → ozhe_power, 55 DW clips — the overlay pack is /tmp-only, the repo
+  pack untouched): READY true after 41 s, triggerAction `dw:surge-trigger`,
+  12 frames — WATCHED: crouch (dips low), gather (bright glow), rise
+  back up, feet on the floor throughout, NO leap, NO prone. **ADOPTED:**
+  the bake's `PANTERA_MOVES['surge-trigger']` now points at `ozhe_power`
+  (`gym_ozhe_power.dat`); `dwup00` is out of the pantera pack (it stays a
+  decoded clip only). Re-baked pantera pack: 54 clips, 4 moves,
+  3,359,575 B; round-trip worst 371.0 mm (unchanged), ozhe_power
+  157.6 mm; 12 DW tests green against the new pack (run from a /tmp
+  mirror — the repo pack cannot be overwritten locally, EDQUOT; the new
+  pack lands via this commit's Data API blobs). The overlay pack was
+  removed from /tmp/dw-overlay immediately after the run.
+
+- **Audio (Job 5, assessed — wiring only if 1–4 are done):** the game's
+  sound path (`game/js/audio.js:227-228`) is `fetch(path)` →
+  `arrayBuffer()` → `decodeAudioData(ab)` — it takes WAV, and SFX are
+  named events → repo paths (`audio.js:335+`, e.g. teardown WAVs). So the
+  P3Dp-decoded WAVs (22050 Hz 16-bit mono) ARE playable by the game's
+  sound path — the format is not the blocker. The blockers: (a) the full
+  WAV set is not on disk (only 3 proof WAVs, 345 KB; regenerating all 391
+  clips ≈ 13 MB via `snd_decode.py`); (b) the task's disk rule forbids
+  audio in git, so live wiring needs remote-asset hosting (R2/B2) or a
+  build-time generation step — that hosting/generation decision is owed;
+  (c) clip→game-event curation is owed (which of the 391 clips is a hit,
+  a roar, a sting — the decode gives regions, not roles).
+
+- **Disk quota (2026-11-08 ~12:33):** the btrfs quota is at ZERO — even a
+  1-byte `touch` and a `mkdir` fail with EDQUOT, in the repo AND the
+  workspace. The 28.7 MB human model could not be checked out (git
+  fetch of its blob fails EDQUOT) and could not be written to the repo
+  at all. Workaround for the probe ONLY: the real file (size 28,661,076
+  B, `git hash-object` 8b8f0b78c21683e933a38aa96df1c94860c510b9 — matches
+  the GitHub API blob SHA) was downloaded to /tmp (tmpfs, separate from
+  the quota) and served by a /tmp copy of the probe server
+  (`/tmp/probe-env/dw_server_overlay.mjs`) with an overlay root
+  (`/tmp/dw-overlay/`), consulted only when a file is missing under the
+  repo root. The landed `tools/proof-harness/dw_server.mjs` is UNTOUCHED
+  (it could not even be edited — EDQUOT); the overlay feature lives only
+  in /tmp and is NOT committed. All doc updates for this lane (this §23,
+  WORKLOG, HEARTMIND-COMPLETION.md B7) are prepared in /tmp and land via
+  the Git Data API (which writes to GitHub, not the local disk) or when
+  the quota frees — the workspace copies cannot be edited locally right
+  now.
+
+- **Still owed in this lane:** the commit on `retarget-dw-rollout`
+  (Data API from verified tree SHAs per NO-SPARSE-COMMIT LAW, deletion
+  check, grep secret scan) + PR (do NOT merge); the B7 re-score in
+  `HEARTMIND-COMPLETION.md` (draft in /tmp — the workspace file cannot
+  be edited locally, EDQUOT); Job 5 audio wiring (blocked as above); the
+  throw pair-binding live re-check (probe variant polling for
+  `f._throwPair` / `pair.throwerAction`); the 31 non-bakeable clips (new
+  FK models or stay as data records); kit-pack move mappings + the
+  Warden/brawler binding; copying the /tmp proof (40 frames + 3 mp4s +
+  3 sheets) into `~/workspace/devil-within-decode/dw-proof/` when the
+  quota frees (EDQUOT now — /tmp is wiped on restart).

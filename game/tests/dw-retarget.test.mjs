@@ -65,6 +65,8 @@ test('DW skeleton is the 21-joint canonical rig, faces +Z, left at +X', () => {
 
 test('DW pack format, moves, and clip shapes', () => {
   const pack = readJson(path.join(BANK_DIR, 'moves.pantera.pack.json'));
+  const curves = readJson(path.join(REPO, 'teardown', 'tekken5', 'dw-motion-curves.json'));
+  const bySrc = Object.fromEntries(curves.clips.map(c => [c.source_file, c]));
   assert.equal(pack.format, 'wh-dw-moves/1');
   assert.equal(pack.fighter, 'pantera');
   // The four pilot moves.
@@ -72,14 +74,16 @@ test('DW pack format, moves, and clip shapes', () => {
     assert.ok(pack.moves[key], `missing move ${key}`);
     assert.equal(pack.moves[key].active_frames, null, `${key} active_frames must be an honest null`);
   }
-  // The four unmapped nage clips are baked as data, listed in skipped.
-  assert.equal(pack.skipped.length, 4);
-  for (const s of pack.skipped) assert.ok(s.clip.startsWith('ikdv_'), `skipped clip ${s.clip} is not a nage clip`);
-  // Every clip: 21 bones, fps 30 (step-2), rot lengths == root_t lengths, unit quats.
+  // The four unmapped nage clips are baked as data, listed in skipped —
+  // and so are the 46 remaining Surge Kit clips (rollout, 2026-11-08).
+  assert.equal(pack.skipped.length, 50);
+  for (const s of pack.skipped.slice(0, 4)) assert.ok(s.clip.startsWith('ikdv_'), `skipped clip ${s.clip} is not a nage clip`);
+  // Every clip: 21 bones, fps follows the source step (60 for step-1,
+  // 30 for step-2), rot lengths == root_t lengths, unit quats.
   for (const [cname, c] of Object.entries(pack.clips)) {
     assert.equal(c.format, 'wh-anim/1');
     assert.equal(c.bones.length, 21, `${cname} must have 21 bones`);
-    assert.equal(c.fps, 30, `${cname} fps must be 30 (step-2 clips)`);
+    assert.equal(c.fps, bySrc[c.dw_source].step === 1 ? 60 : 30, `${cname} fps must follow step`);
     assert.equal(c.root_t.length, c.rot_xyzw[c.bones[0]].length, `${cname} rot/root_t length mismatch`);
     for (const b of c.bones) {
       assert.equal(c.rot_xyzw[b].length, c.root_t.length, `${cname}:${b} length mismatch`);
@@ -88,12 +92,19 @@ test('DW pack format, moves, and clip shapes', () => {
         assert.ok(Math.abs(n - 1) < 1e-4, `${cname}:${b} quat not unit (${n})`);
       }
     }
-    // root_t Y (hips height) stays in a sane band for a human-scale fighter.
-    for (const r of c.root_t) assert.ok(r[1] > 0.05 && r[1] < 2.6, `${cname} root_t Y ${r[1]} out of range`);
+    // root_t Y (hips height) stays in the measured band for DW motion:
+    // min 0.109 m (a throw low point) to max 8.000 m (the flying boss's
+    // fire attack, kob2_fly2fire). The band catches unit/sign errors,
+    // not jumps — DW motion includes real leaps and a flying boss.
+    for (const r of c.root_t) assert.ok(r[1] > 0.05 && r[1] < 8.5, `${cname} root_t Y ${r[1]} out of range`);
   }
-  // Durations are keyframe counts: dwhadoh00 23/30 s, dwup00 31/30 s.
+  // Durations are keyframe counts: dwhadoh00 23/30 s, ozhe_power 23/30 s
+  // (the trigger was repointed from dwup00 to ozhe_power 2026-11-08 —
+  // dwup00 leaps to 2.375 m and ends prone; ozhe_power is grounded,
+  // crouch-then-rise, watched in-game the same day).
   assert.equal(pack.clips.dwhadoh00.root_t.length, 23);
-  assert.equal(pack.clips.dwup00.root_t.length, 31);
+  assert.equal(pack.clips.ozhe_power.root_t.length, 23);
+  assert.ok(!pack.clips.dwup00, 'dwup00 must be out of the pantera pack (trigger is ozhe_power now)');
 });
 
 test('DW_MOVES + ensureDwMoves loads the pack (fetch stubbed to disk)', async () => {
@@ -113,10 +124,10 @@ test('DW_MOVES + ensureDwMoves loads the pack (fetch stubbed to disk)', async ()
   try {
     const rec = await t3.ensureDwMoves('pantera', THREE);
     assert.ok(rec, 'ensureDwMoves returned null');
-    assert.equal(Object.keys(rec.clips).length, 8, 'expected 8 DW clips');
-    // Durations: dwhadoh00 23 keyframes @ 30 fps, dwup00 31 @ 30.
+    assert.equal(Object.keys(rec.clips).length, 54, 'expected 54 DW clips (8 pilot + 46 Surge Kit rollout)');
+    // Durations: dwhadoh00 23 keyframes @ 30 fps, ozhe_power 23 @ 30.
     assert.ok(Math.abs(rec.clips.dwhadoh00.duration - 23 / 30) < 1e-6);
-    assert.ok(Math.abs(rec.clips.dwup00.duration - 31 / 30) < 1e-6);
+    assert.ok(Math.abs(rec.clips.ozhe_power.duration - 23 / 30) < 1e-6);
     // Cached on the second call.
     const rec2 = await t3.ensureDwMoves('pantera', THREE);
     assert.equal(rec2, rec, 'ensureDwMoves must cache');

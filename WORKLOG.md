@@ -4395,3 +4395,76 @@ Branch `claude/cs-phase3-morph-targets`, draft PR #1489 (stacked on #1486). Orde
 **Still owed:** throw pair-binding live re-check; the remaining 178 wireable clips (kmb1 Warden kit next); the `dwup00` trigger-role clip choice; P3Dp audio wiring.
 
 **Deletions:** none. 11 files added, 3 modified; the only deleted line is the fighter.js import line replaced.
+
+## 2026-11-08 — DW retarget rollout: all remaining wireable 35-bone clips (PR to be opened, do NOT merge)
+
+Rollout of the §22 pilot bake to the full wireable set. Same bake
+(`tools/anim/dw_curve_bake.py`, extended with KIT_SETS / kit_clip_names /
+kit_exclusions / pantera_unmapped / bake_set / --set / --bank), same shape
+(wh-anim/1 packs, conjugated deltas, bank frame = pelvis forward 0.0°).
+
+- Counts (measured, corrects the pilot): decoded 214; wireable 182; pilot
+  baked 8. Remaining wireable is **175, not 178** (the pilot double-counted
+  the 4 unmapped nage clips). Baked now: the remaining **144 35-bone**
+  wireable clips. **152 clips total in 5 packs**: pantera 54 / 4 moves
+  (3,372,185 B), warden 39 / 0 (3,362,815 B), unmasked 29 / 0 (2,747,447 B),
+  drowned-ogre 25 / 0 (2,219,485 B), wave-echo 5 / 0 (299,333 B). The 31
+  non-35/27 clips are not bakeable with the current FK model (78-bone
+  1-frame init poses, 4-bone appendage part-clips, 12-bone wings, 111-bone
+  boss init objects — measured reasons in the kit bake logs).
+- Round-trip (`teardown/tekken5/tools/dw_roundtrip.py --pack`, all 152
+  clips): worst **376.5 mm** (`kmb1_yoko_r`, RightLeg), median worst
+  136.4 mm, 9 clips over 300 mm, 43 over 200 mm — inside the documented
+  residual envelope. Rotation worst 0.00°.
+- Wiring: `DW_MOVES` gains warden / unmasked / drowned-ogre / wave-echo
+  (kit data packs, `moves = {}` — move mapping + the Warden/brawler binding
+  are follow-ups; the Warden is a brawler kind, not a fighter id).
+- Tests: new `game/tests/dw-rollout.test.mjs` (5 tests); pilot test updated
+  (54 clips, 50 skipped, fps follows the source step — 10 clips are step-1
+  / 60 fps — root_t band 0.05–8.5 m, measured min 0.109 m / max 8.000 m).
+  **12 DW tests green.** Full suite 358 tests, 315 pass, 43 fail — all 43
+  pre-existing sparse-checkout ENOENTs, zero DW failures.
+- Trigger choice (measured): `gym_ozhe_power.dat` (grounded, crouch-then-
+  rise, hips 620→1122 mm) is the replacement candidate for `dwup00` (leaps
+  to 2.375 m, ends prone); watched verification owed.
+- Audio assessed: the game's sound path (`game/js/audio.js:227-228`, fetch +
+  decodeAudioData) takes WAV, so the P3Dp-decoded WAVs are playable — the
+  blockers are the missing full WAV set (only 3 proof WAVs on disk;
+  regenerating 391 clips ≈ 13 MB), the no-audio-in-git disk rule (live
+  wiring needs remote hosting or build-time generation), and clip→event
+  curation.
+- Probe (Jobs 1 + 2, run 4, 2026-11-08 ~13:00): READY true after 52 s
+  (after fixing two environment gaps: Demonio's human-form model via a
+  /tmp overlay, and the T3 animation banks — `loadT3Clips` has no
+  jsDelivr fallback — via the same overlay). Beam REPRODUCED (watched:
+  crouch, gather, low/flat, rise, stand; no T-pose). Trigger plays
+  (Surge Form on, glow). Throw NOT connected as DW: the 1+3 attack fired
+  as the T3 throw (row:463, kind "own"), the pair never formed in the
+  window, `_bindThrowPair` never ran, no `dw:1+3` — re-check still owed
+  (probe variant polling for `f._throwPair`). Proof (40 frames + 3 mp4s)
+  in /tmp/dw-proof-pilot/ — could NOT be copied to the workspace (EDQUOT);
+  copy ASAP when the quota frees. Full record: `teardown/tekken5/DW-DECODE-LOG.md` §23.
+- Trigger ADOPTED (Job 3): `ozhe_power` (measured grounded crouch-then-
+  rise) verified by watching (trigger-only probe, READY 41 s, 12 frames:
+  crouch, gather, rise, feet on floor, no leap) and adopted — the bake's
+  `PANTERA_MOVES['surge-trigger']` now points at it; `dwup00` is out of
+  the pantera pack. Re-baked pantera pack 54 clips / 4 moves, 3,359,575 B;
+  round-trip worst 371.0 mm (unchanged); 12 DW tests green against the new
+  pack (run from a /tmp mirror — the repo pack cannot be overwritten
+  locally, EDQUOT; the new pack lands via this commit's Data API blobs).
+- Disk quota at ZERO during this lane (even a 1-byte write fails, repo and
+  workspace). The probe's missing human model (Demonio's DEPOWER form,
+  28,661,076 B, hash-verified) was served from a /tmp overlay by a /tmp
+  copy of the probe server; the landed server file is untouched and the
+  overlay feature is NOT committed. Docs for this lane were prepared in
+  /tmp and land via the Git Data API.
+- Files: `tools/anim/dw_curve_bake.py` (kit sets + trigger adoption),
+  `teardown/tekken5/tools/dw_roundtrip.py` (--pack),
+  `game/js/t3anims.js` (4 kit DW_MOVES entries),
+  `game/assets/anim/dw/` (5 packs + 5 logs + skeleton; pantera pack is
+  the re-baked trigger-adopted one),
+  `game/tests/dw-rollout.test.mjs` (new, 5 tests),
+  `game/tests/dw-retarget.test.mjs` (54 clips / 50 skipped / ozhe_power
+  durations), `teardown/tekken5/DW-DECODE-LOG.md` (§23).
+- B7 re-score: 45% → 60% (see `HEARTMIND-COMPLETION.md`); Bucket B ~17% →
+  ~19%; headline ~47% → ~48%.
