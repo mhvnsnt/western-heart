@@ -1,0 +1,23 @@
+TK5DATA3_code.bin len=2719159 head=c0ffbd271000b2ff2d9080000000b0ff
+  first u32 (PKG count if archive) = 666763200
+  LUT@0x27B5B0 first 5 (sector,size) = [(0, 28806), (15, 61009920), (29805, 60954624), (59568, 212115456), (163140, 212060160)]
+  NOT a PKG archive (count>=30); treating as code blob as-is
+  saved copy to /tmp/dec_code.bin
+
+TK5DATA0[0:256K] head=01000000080000002b440000da000000
+  decNLZ1.unpack_sc3game: OK out_len=0
+  [decNLZ1.unpack_sc3game head] len=0 magics=[] head=b''
+  tk5psp_dec.decompress_blob: OK out_len=0
+  [tk5psp_dec.decompress_blob head] len=0 magics=[] head=b''
+
+sector-start NLZ1 sweep (8KB windows, first 64K of TK5DATA0):
+  sweep: 0 sector starts produced >100B output
+
+decrypt-then-unpack, sector 0, seeds 0..3:
+  seed 0: unpack OK out_len=0 head=b''
+  [seed0 head] len=0 magics=[] head=b''
+  seed 1: unpack OK out_len=0 head=b''
+  [seed1 head] len=0 magics=[] head=b''
+  seed 2: unpack OK out_len=1 head=b'\x00'
+  [seed2 head] len=1 magics=[] head=b'\x00'
+  seed 3: unpack FAILED Exception('invalid backref offset=2048 length=32 dstlen=0') dec-head=020000001a000000764400000e010000

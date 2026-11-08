@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/hatch/workspace/devil-within-decode/numbers-hunt/job1_probe8.py", line 17, in <module>
+    CODE = open("/tmp/dec_code.bin", "rb").read()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/dec_code.bin'
