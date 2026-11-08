@@ -10,17 +10,17 @@
 
 export const FULL_ROSTER = [
   // ——— THE NINE SOULS ———
-  { id: 'rin', name: 'RIN', title: 'The Protagonist Soul', base: 'Jin Kazama', moveset: 'demonio', model: null, modelPending: true, tintStrength: 0.6,
+  { id: 'rin', name: 'RIN', title: 'The Protagonist Soul', base: 'Jin Kazama', moveset: 'demonio', model: 'rin-body', tintStrength: 0.6,
     colors: { suit: 0x1a3a6b, trim: 0x9fd8ff }, style: 'Karate', archetype: 'Balanced' },
   { id: 'byou', name: 'BYOU', title: 'The Sick Soul', base: 'Wang Jinrei', moveset: 'demonio', model: null, modelPending: true, tintStrength: 0.6,
     colors: { suit: 0x4a5a1a, trim: 0x8a9a3a }, style: 'Xingyiquan', archetype: 'Trickster' },
   { id: 'tou', name: 'TOU', title: 'The Fighting Soul', base: 'Paul Phoenix', moveset: 'heihachi', model: null, modelPending: true, tintStrength: 0.25,
     colors: { suit: 0x8a1a1a, trim: 0xcc4400 }, style: 'Power Karate', archetype: 'Power' },
-  { id: 'sha', name: 'SHA', title: 'The Sand Soul', base: 'Xiaoyu', moveset: 'xiaoyu', model: null, modelPending: true, tintStrength: 0.6,
+  { id: 'sha', name: 'SHA', title: 'The Sand Soul', base: 'Xiaoyu', moveset: 'xiaoyu', model: 'sha-body', tintStrength: 0.6,
     colors: { suit: 0xc2a36b, trim: 0x8a6a3a }, style: 'Hakkesho', archetype: 'Evasive' },
-  { id: 'kai', name: 'KAI', title: 'The Sea Soul', base: 'Eddy Gordo', moveset: 'demonio', model: null, modelPending: true, tintStrength: 0.25,
+  { id: 'kai', name: 'KAI', title: 'The Sea Soul', base: 'Eddy Gordo', moveset: 'demonio', model: 'kai-body', tintStrength: 0.25,
     colors: { suit: 0x1a4a6b, trim: 0x3a8acc }, style: 'Capoeira', archetype: 'Rushdown' },
-  { id: 'retsu', name: 'RETSU', title: 'The Violent Soul', base: 'Bryan Fury', moveset: 'bryan', model: null, modelPending: true, tintStrength: 0.25,
+  { id: 'retsu', name: 'RETSU', title: 'The Violent Soul', base: 'Bryan Fury', moveset: 'bryan', model: 'retsu-body', tintStrength: 0.25,
     colors: { suit: 0x3a1a1a, trim: 0xcc2222 }, style: 'Kickboxing', archetype: 'Rushdown' },
   { id: 'zen', name: 'ZEN', title: 'The Still Soul', base: 'Heihachi', moveset: 'heihachi', model: 'zen', tintStrength: 0.6,
     colors: { suit: 0xd0d0d0, trim: 0x8a8a8a }, style: 'Karate', archetype: 'Defensive',

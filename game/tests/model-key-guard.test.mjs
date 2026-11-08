@@ -199,7 +199,9 @@ const OWNERSHIP = {
     "base": "steve-fox"
   },
   "kai": {
-    "pending": true
+    "own": [
+      "kai-body"
+    ]
   },
   "kingtyrant": {
     "own": [
@@ -291,10 +293,14 @@ const OWNERSHIP = {
     ]
   },
   "retsu": {
-    "pending": true
+    "own": [
+      "retsu-body"
+    ]
   },
   "rin": {
-    "pending": true
+    "own": [
+      "rin-body"
+    ]
   },
   "ryuji": {
     "own": [
@@ -325,7 +331,9 @@ const OWNERSHIP = {
     ]
   },
   "sha": {
-    "pending": true
+    "own": [
+      "sha-body"
+    ]
   },
   "skull": {
     "own": [
