@@ -4,6 +4,12 @@
  * combat math so a bot can actually play the descent. */
 export function setArenaLimit(v) { globalThis.__arenaLimit = v; }
 export function bankIdFor(id) { return null; }
+// Own-slot bank for the fighter's own-character T3 clips. The real
+// game/js/fighter.js gained ownSlotBankFor (brawler.js imports it) and
+// this stub went stale without it. Stub world has no banks loaded, so
+// it returns null — the same stance as bankIdFor above. Signature
+// mirrors the real one so callers can pass { candidates: true }.
+export function ownSlotBankFor(id, { candidates = false } = {}) { return null; }
 
 export class Fighter {
   constructor(charData, startX, facing, isPlayer) {
