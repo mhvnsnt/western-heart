@@ -427,7 +427,14 @@ export class BrawlerGame {
 
   _buildCast(playerId, n) {
     const pool = this.roster.filter((c) => c.id !== playerId && !c.boss);
-    const list = pool.length >= n ? pool : this.roster.filter((c) => c.id !== playerId);
+    let list = pool.length >= n ? pool : this.roster.filter((c) => c.id !== playerId);
+    // Per-character flow (Pantera template): when the flow names an
+    // echo pool, the cast draws ONLY from it — the flow's rivals,
+    // even when the pool is smaller than the cast.
+    if (this.content.echoIds && this.content.echoIds.length) {
+      const wanted = pool.filter((c) => this.content.echoIds.includes(c.id));
+      if (wanted.length) list = wanted;
+    }
     const cast = [];
     const used = new Set();
     let guard = 0;
@@ -470,7 +477,7 @@ export class BrawlerGame {
   }
 
   _layoutZones(st) {
-    const table = WAVE_TABLES[st.key] || WAVE_TABLES.threshold;
+    const table = (this.content.waveTables && this.content.waveTables[st.key]) || WAVE_TABLES[st.key] || WAVE_TABLES.threshold;
     const R = this.arenaR;
     const n = table.length;
     this.zones = table.map((zd, i) => {
