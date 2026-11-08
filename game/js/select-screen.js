@@ -568,9 +568,16 @@ export function createSelectScreen(deps) {
     els.root.classList.toggle('is-locked', !!locked);
     els.lock.hidden = !locked;
     if (!c) {
-      els.name.textContent = side === 'p1' ? 'PLAYER 1' : 'PLAYER 2';
-      els.title.textContent = state.mode === 'versus' && side === 'p2' && !state.locked.p1
-        ? 'Waiting for P1…' : 'Pick a fighter';
+      // Piece 1 Break 2 (TEKKEN-TEARDOWN-SPEC.md §9 D2): in a one-player
+      // mode there is no P2 pick — the second side is the CPU, and in
+      // Arcade its fighter is a random ladder draw. Never let the pane
+      // look like a second pick exists.
+      const soloRival = state.mode !== 'versus' && side === 'p2';
+      els.name.textContent = soloRival ? 'RIVAL' : (side === 'p1' ? 'PLAYER 1' : 'PLAYER 2');
+      els.title.textContent = soloRival
+        ? (state.mode === 'arcade' ? 'CPU — random ladder foe' : 'CPU')
+        : state.mode === 'versus' && side === 'p2' && !state.locked.p1
+          ? 'Waiting for P1…' : 'Pick a fighter';
       els.style.textContent = '';
       els.stats.innerHTML = '';
       els.attires.innerHTML = '';

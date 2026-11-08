@@ -1295,10 +1295,20 @@ async function startFight(playerId, enemyId, opts = {}) {
   let player = resolveFighterAttire(
     opts.playerChar || getCharacterWithCustom(selectedChar || firstReady));
   // MODEL PENDING fighters (no own model yet) never enter a fight on another body.
-  if (player.modelPending || !player.model) player = resolveFighterAttire(getCharacterWithCustom(firstReady));
+  // Piece 1 Break 2 (TEKKEN-TEARDOWN-SPEC.md §9 D2 + §7c.4): the safety net
+  // used to swap a model-less pick silently — say so on the loading screen
+  // instead, naming the fighter actually fielded.
+  let swapNote = '';
+  if (player.modelPending || !player.model) {
+    player = resolveFighterAttire(getCharacterWithCustom(firstReady));
+    swapNote = `No model — switched to ${player.name}.`;
+  }
   let enemy = opts.enemyChar ||
     (typeof enemyId === 'string' && enemyId !== player.id ? resolveFighterAttire(getCharacterWithCustom(enemyId)) : randomEnemy(player.id));
-  if (!enemy || enemy.modelPending || !enemy.model) enemy = randomEnemy(player.id);
+  if (!enemy || enemy.modelPending || !enemy.model) {
+    enemy = randomEnemy(player.id);
+    swapNote += `${swapNote ? ' ' : ''}No model — rival switched to ${(enemy && enemy.name) || 'a rival'}.`;
+  }
   // Classic REMATCH record: the resolved pairing + stage, set BEFORE any
   // await so a rematch from the result screen replays this exact fight.
   // (Modes fights rematch through modes.rematch(), never through this.)
@@ -1368,9 +1378,14 @@ async function startFight(playerId, enemyId, opts = {}) {
   const stageHintEl = document.getElementById('stage-hint');
   const setPhase = (t) => { if (hint) hint.textContent = t; if (stageHintEl) stageHintEl.textContent = t; keepLoading(t); };
   const hideLoadOverlay = () => { window.__whFightLoading = 0; const o = document.getElementById('wh-loading'); if (o) o.classList.remove('show'); };
+  // Piece 1 Break 2 (TEKKEN-TEARDOWN-SPEC.md §9 D2): in one-player modes
+  // the foe is drawn by the game, not picked — name both fighters on the
+  // loading screen so the player sees the drawn foe before the fight
+  // starts. (Versus shows the same line: both picks confirmed.)
+  const loadLine = (suffix) => `Entering the arena… ${player.name || player.id} VS ${enemy.name || enemy.id}${swapNote ? ` — ${swapNote}` : ''}${suffix ? ` · ${suffix}` : ''}`;
   window.__whFightLoading = window.__whFightLoading || Date.now();  // menus.js keeps the overlay up while this is set
   try {
-    setPhase('Entering the arena…');
+    setPhase(loadLine());
     // LOADSPEED: fight-only modules (fighter/movesets/t3anims) stream in
     // here — they are warmed during menu idle, so this usually resolves
     // from cache. The real-Tekken moveset JSONs (~300KB) also load here
@@ -1448,9 +1463,9 @@ async function startFight(playerId, enemyId, opts = {}) {
       if (loaded && total) {
         const mbL = (loaded / 1048576).toFixed(1);
         const mbT = (total / 1048576).toFixed(1);
-        t = `Entering the arena… ${mbL}/${mbT} MB${id ? ` · ${id}` : ''}`;
+        t = loadLine(`${mbL}/${mbT} MB${id ? ` · ${id}` : ''}`);
       } else {
-        t = `Entering the arena… ${Math.round(p * 100)}%`;
+        t = loadLine(`${Math.round(p * 100)}%`);
       }
       if (hint) hint.textContent = t;
       if (stageHintEl) stageHintEl.textContent = t;

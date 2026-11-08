@@ -4404,6 +4404,13 @@ Branch `claude/cs-phase3-morph-targets`, draft PR #1489 (stacked on #1486). Orde
 **Verification:** `node --check` on both edited JS files. Tests: no existing tests cover the select timer (grep for `selectTimer|startSelectTimer|TIME UP` in `test/` and `game/tests/` returns nothing). Live proof (headed playthrough: let the timer run out on select, confirm the cursor fighter locks) is owed to the parent — this subagent cannot run a browser.
 - Deletions: none.
 
+## 2026-11-08 — Piece 1 Break 2: Arcade shows a P2 pick it never uses (TEKKEN-TEARDOWN-SPEC.md §9 D2 + §7c.4)
+
+**What:** `game/js/select-screen.js` — in a one-player mode the P2 pane no longer reads "PLAYER 2 / Pick a fighter": it reads "RIVAL / CPU — random ladder foe" in Arcade and "RIVAL / CPU" in the other solo modes (story, team, training, survival, treasure). Versus is untouched (both sides pick). `game/js/main.js` — `startFight` names both fighters on the loading screen ("Entering the arena… PANTERA VS KING TYRANT"), in the first phase line AND the MB/% progress lines, so the drawn foe is visible before the fight starts instead of only in the in-fight badge/hudNote. The silent model-less safety net is now loud (spec §7c.4): when it swaps a pick, the loading line says so ("No model — switched to ZEN." / "No model — rival switched to …"). `game/ui_sources.json` needed no change: `screen-select` is already sourced with `game/js/select-screen.js` in its files.
+
+**Verification:** `node --check` on both edited JS files. No existing tests cover the select pane labels or the loading line. Live proof (headed playthrough: Arcade select shows RIVAL, loading line names the drawn foe) is owed to the parent.
+- Deletions: none.
+
 ## 2026-11-08 — HeartMind rename application: CONFIRMED rows only (RENAME LANE)
 
 **Map:** `~/workspace/western-heart-audit/HEARTMIND-RENAME-MAP.md` (§§0–§5).
