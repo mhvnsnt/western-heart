@@ -1,0 +1,9151 @@
+{
+ "format": "western-heart dw-audio-decoded v1",
+ "source": "Tekken 5 disc, TK5DATA2.BIN (romD), Internet Archive item slus-210.59.-tekken-5",
+ "decoder": "ffmpeg adpcm_psx via synthetic VAGp header (standard tool)",
+ "sample_rate_hz": 22050,
+ "sample_rate_note": "ASSUMED standard PS2 sound-effect rate; the rate is NOT stored in the P3Dp bytes. Confirm against the game code (Job 3).",
+ "totals": {
+  "files": 18,
+  "clips": 391,
+  "unique_regions": 318,
+  "samples": 6562472,
+  "duration_s_at_22050": 297.6
+ },
+ "problems": [
+  "snd_bg_blu_se.dat: clip region 442160+4704 truncated: 16 bytes past EOF, decoded 4688 bytes (293 frames)",
+  "snd_bg_egy_se.dat: clip region 435024+4704 truncated: 16 bytes past EOF, decoded 4688 bytes (293 frames)",
+  "snd_bg_lab_se.dat: clip region 435280+4704 truncated: 16 bytes past EOF, decoded 4688 bytes (293 frames)",
+  "snd_c10jin.dat: clip region 152224+6976 truncated: 16 bytes past EOF, decoded 6960 bytes (435 frames)",
+  "snd_c21jac.dat: clip region 160048+7920 truncated: 16 bytes past EOF, decoded 7904 bytes (494 frames)",
+  "snd_c30dvj.dat: clip region 245200+12400 truncated: 16 bytes past EOF, decoded 12384 bytes (774 frames)",
+  "snd_c_03_ogre.dat: clip region 125056+5632 truncated: 16 bytes past EOF, decoded 5616 bytes (351 frames)",
+  "snd_c_04_iseki.dat: clip region 199584+41632 truncated: 16 bytes past EOF, decoded 41616 bytes (2601 frames)",
+  "snd_c_boss.dat: clip region 94352+21984 truncated: 16 bytes past EOF, decoded 21968 bytes (1373 frames)",
+  "snd_c_monst.dat: clip region 87664+14896 truncated: 16 bytes past EOF, decoded 14880 bytes (930 frames)",
+  "snd_c_tks.dat: clip region 50352+50352 truncated: 4 bytes past EOF + 12-byte partial frame, decoded 50336 bytes (3146 frames)",
+  "snd_chara_se.dat: clip region 106000+8992 truncated: 16 bytes past EOF, decoded 8976 bytes (561 frames)",
+  "snd_system_se.dat: clip region 65840+9056 truncated: 16 bytes past EOF, decoded 9040 bytes (565 frames)",
+  "snd_title.dat: clip region 286880+93696 truncated: 37376 bytes past EOF, decoded 56320 bytes (3520 frames)",
+  "snd_title.dat: clip region 380576+16064 runs past EOF (0 bytes read, 0 whole frames available)",
+  "snd_title.dat: clip region 396640+16064 runs past EOF (0 bytes read, 0 whole frames available)"
+ ],
+ "files": [
+  {
+   "source_file": "snd_bg_blu_se.dat",
+   "container": "P3Dp",
+   "size_bytes": 452496,
+   "clip_count": 54,
+   "payload_base": 5648,
+   "payload_alignment_delta": 12,
+   "payload_frames_valid": "1000/1000",
+   "unique_regions": 43,
+   "clips": [
+    {
+     "index": 0,
+     "clip_id": 262145,
+     "size_bytes": 2288,
+     "start": 0,
+     "field5": 1365,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 143,
+      "samples": 4004,
+      "duration_s_at_22050": 0.182,
+      "peak": 32493,
+      "rms": 10311.8,
+      "nonzero_fraction": 0.971,
+      "silent": false,
+      "clip_indexes": [
+       0
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 1,
+     "clip_id": 262146,
+     "size_bytes": 1248,
+     "start": 2288,
+     "field5": 1365,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 78,
+      "samples": 2184,
+      "duration_s_at_22050": 0.099,
+      "peak": 32359,
+      "rms": 8837.3,
+      "nonzero_fraction": 0.958,
+      "silent": false,
+      "clip_indexes": [
+       1
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 2,
+     "clip_id": 262147,
+     "size_bytes": 5888,
+     "start": 3536,
+     "field5": 1536,
+     "field6": 8060928,
+     "field7": 16448,
+     "decoded": {
+      "frames": 368,
+      "samples": 10304,
+      "duration_s_at_22050": 0.467,
+      "peak": 32598,
+      "rms": 6915.8,
+      "nonzero_fraction": 0.978,
+      "silent": false,
+      "clip_indexes": [
+       2,
+       53
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 3,
+     "clip_id": 262148,
+     "size_bytes": 17184,
+     "start": 9424,
+     "field5": 1194,
+     "field6": 7864320,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1074,
+      "samples": 30072,
+      "duration_s_at_22050": 1.364,
+      "peak": 32537,
+      "rms": 7591.3,
+      "nonzero_fraction": 0.985,
+      "silent": false,
+      "clip_indexes": [
+       3,
+       38,
+       44
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 4,
+     "clip_id": 262149,
+     "size_bytes": 39888,
+     "start": 26608,
+     "field5": 1881,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 2493,
+      "samples": 69804,
+      "duration_s_at_22050": 3.166,
+      "peak": 32768,
+      "rms": 9350.2,
+      "nonzero_fraction": 0.992,
+      "silent": false,
+      "clip_indexes": [
+       4,
+       6,
+       8
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 5,
+     "clip_id": 262150,
+     "size_bytes": 4320,
+     "start": 66496,
+     "field5": 3763,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 270,
+      "samples": 7560,
+      "duration_s_at_22050": 0.343,
+      "peak": 0,
+      "rms": 0.0,
+      "nonzero_fraction": 0.0,
+      "silent": true,
+      "clip_indexes": [
+       5
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 6,
+     "clip_id": 262151,
+     "size_bytes": 39888,
+     "start": 26608,
+     "field5": 6555481,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 2493,
+      "samples": 69804,
+      "duration_s_at_22050": 3.166,
+      "peak": 32768,
+      "rms": 9350.2,
+      "nonzero_fraction": 0.992,
+      "silent": false,
+      "clip_indexes": [
+       4,
+       6,
+       8
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 7,
+     "clip_id": 262152,
+     "size_bytes": 17024,
+     "start": 70816,
+     "field5": 1194,
+     "field6": 7667712,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1064,
+      "samples": 29792,
+      "duration_s_at_22050": 1.351,
+      "peak": 32758,
+      "rms": 6576.1,
+      "nonzero_fraction": 0.983,
+      "silent": false,
+      "clip_indexes": [
+       7
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 8,
+     "clip_id": 262153,
+     "size_bytes": 39888,
+     "start": 26608,
+     "field5": 1881,
+     "field6": 7733248,
+     "field7": 16448,
+     "decoded": {
+      "frames": 2493,
+      "samples": 69804,
+      "duration_s_at_22050": 3.166,
+      "peak": 32768,
+      "rms": 9350.2,
+      "nonzero_fraction": 0.992,
+      "silent": false,
+      "clip_indexes": [
+       4,
+       6,
+       8
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 9,
+     "clip_id": 262154,
+     "size_bytes": 32176,
+     "start": 87840,
+     "field5": 1536,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 2011,
+      "samples": 56308,
+      "duration_s_at_22050": 2.554,
+      "peak": 32153,
+      "rms": 8892.3,
+      "nonzero_fraction": 0.989,
+      "silent": false,
+      "clip_indexes": [
+       9,
+       10
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 10,
+     "clip_id": 262155,
+     "size_bytes": 32176,
+     "start": 87840,
+     "field5": 1536,
+     "field6": 0,
+     "field7": 16384,
+     "decoded": {
+      "frames": 2011,
+      "samples": 56308,
+      "duration_s_at_22050": 2.554,
+      "peak": 32153,
+      "rms": 8892.3,
+      "nonzero_fraction": 0.989,
+      "silent": false,
+      "clip_indexes": [
+       9,
+       10
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 11,
+     "clip_id": 268697612,
+     "size_bytes": 9664,
+     "start": 120016,
+     "field5": 1365,
+     "field6": 4135059556,
+     "field7": 16448,
+     "decoded": {
+      "frames": 604,
+      "samples": 16912,
+      "duration_s_at_22050": 0.767,
+      "peak": 32552,
+      "rms": 6120.2,
+      "nonzero_fraction": 0.915,
+      "silent": false,
+      "clip_indexes": [
+       11
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 12,
+     "clip_id": 285474829,
+     "size_bytes": 9088,
+     "start": 129680,
+     "field5": 1899,
+     "field6": 4135059556,
+     "field7": 16448,
+     "decoded": {
+      "frames": 568,
+      "samples": 15904,
+      "duration_s_at_22050": 0.721,
+      "peak": 32662,
+      "rms": 11887.4,
+      "nonzero_fraction": 0.993,
+      "silent": false,
+      "clip_indexes": [
+       12
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 13,
+     "clip_id": 302252046,
+     "size_bytes": 7344,
+     "start": 138768,
+     "field5": 1365,
+     "field6": 4135059556,
+     "field7": 16448,
+     "decoded": {
+      "frames": 459,
+      "samples": 12852,
+      "duration_s_at_22050": 0.583,
+      "peak": 32617,
+      "rms": 14108.7,
+      "nonzero_fraction": 0.994,
+      "silent": false,
+      "clip_indexes": [
+       13
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 14,
+     "clip_id": 262159,
+     "size_bytes": 7424,
+     "start": 146112,
+     "field5": 1365,
+     "field6": 4135059556,
+     "field7": 16448,
+     "decoded": {
+      "frames": 464,
+      "samples": 12992,
+      "duration_s_at_22050": 0.589,
+      "peak": 31818,
+      "rms": 13533.8,
+      "nonzero_fraction": 0.932,
+      "silent": false,
+      "clip_indexes": [
+       14
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 15,
+     "clip_id": 262160,
+     "size_bytes": 1696,
+     "start": 153536,
+     "field5": 1365,
+     "field6": 4135518308,
+     "field7": 16448,
+     "decoded": {
+      "frames": 106,
+      "samples": 2968,
+      "duration_s_at_22050": 0.135,
+      "peak": 29827,
+      "rms": 4599.4,
+      "nonzero_fraction": 0.979,
+      "silent": false,
+      "clip_indexes": [
+       15
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 16,
+     "clip_id": 262161,
+     "size_bytes": 4256,
+     "start": 155232,
+     "field5": 1365,
+     "field6": 4134076516,
+     "field7": 16448,
+     "decoded": {
+      "frames": 266,
+      "samples": 7448,
+      "duration_s_at_22050": 0.338,
+      "peak": 30792,
+      "rms": 2335.1,
+      "nonzero_fraction": 0.947,
+      "silent": false,
+      "clip_indexes": [
+       16
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 17,
+     "clip_id": 262162,
+     "size_bytes": 3056,
+     "start": 159488,
+     "field5": 1365,
+     "field6": 4134076516,
+     "field7": 16448,
+     "decoded": {
+      "frames": 191,
+      "samples": 5348,
+      "duration_s_at_22050": 0.243,
+      "peak": 30581,
+      "rms": 3066.3,
+      "nonzero_fraction": 0.951,
+      "silent": false,
+      "clip_indexes": [
+       17
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 18,
+     "clip_id": 262163,
+     "size_bytes": 3040,
+     "start": 162544,
+     "field5": 1365,
+     "field6": 4134076516,
+     "field7": 16448,
+     "decoded": {
+      "frames": 190,
+      "samples": 5320,
+      "duration_s_at_22050": 0.241,
+      "peak": 30808,
+      "rms": 2609.7,
+      "nonzero_fraction": 0.964,
+      "silent": false,
+      "clip_indexes": [
+       18
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 19,
+     "clip_id": 262164,
+     "size_bytes": 2848,
+     "start": 165584,
+     "field5": 1365,
+     "field6": 4134076516,
+     "field7": 16448,
+     "decoded": {
+      "frames": 178,
+      "samples": 4984,
+      "duration_s_at_22050": 0.226,
+      "peak": 30759,
+      "rms": 2416.1,
+      "nonzero_fraction": 0.971,
+      "silent": false,
+      "clip_indexes": [
+       19
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 20,
+     "clip_id": 262165,
+     "size_bytes": 3008,
+     "start": 168432,
+     "field5": 1365,
+     "field6": 4134076516,
+     "field7": 16448,
+     "decoded": {
+      "frames": 188,
+      "samples": 5264,
+      "duration_s_at_22050": 0.239,
+      "peak": 29701,
+      "rms": 1941.4,
+      "nonzero_fraction": 0.961,
+      "silent": false,
+      "clip_indexes": [
+       20
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 21,
+     "clip_id": 262166,
+     "size_bytes": 2720,
+     "start": 171440,
+     "field5": 1365,
+     "field6": 4134076516,
+     "field7": 16448,
+     "decoded": {
+      "frames": 170,
+      "samples": 4760,
+      "duration_s_at_22050": 0.216,
+      "peak": 31199,
+      "rms": 2783.0,
+      "nonzero_fraction": 0.953,
+      "silent": false,
+      "clip_indexes": [
+       21
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 22,
+     "clip_id": 262167,
+     "size_bytes": 128,
+     "start": 174160,
+     "field5": 682,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 8,
+      "samples": 224,
+      "duration_s_at_22050": 0.01,
+      "peak": 31740,
+      "rms": 19651.6,
+      "nonzero_fraction": 0.871,
+      "silent": false,
+      "clip_indexes": [
+       22,
+       41,
+       42
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 23,
+     "clip_id": 262168,
+     "size_bytes": 11648,
+     "start": 174288,
+     "field5": 1365,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 728,
+      "samples": 20384,
+      "duration_s_at_22050": 0.924,
+      "peak": 32566,
+      "rms": 10556.8,
+      "nonzero_fraction": 0.996,
+      "silent": false,
+      "clip_indexes": [
+       23
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 24,
+     "clip_id": 262169,
+     "size_bytes": 16000,
+     "start": 185936,
+     "field5": 1024,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1000,
+      "samples": 28000,
+      "duration_s_at_22050": 1.27,
+      "peak": 30739,
+      "rms": 7214.8,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       24,
+       25
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 25,
+     "clip_id": 262170,
+     "size_bytes": 16000,
+     "start": 185936,
+     "field5": 1024,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1000,
+      "samples": 28000,
+      "duration_s_at_22050": 1.27,
+      "peak": 30739,
+      "rms": 7214.8,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       24,
+       25
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 26,
+     "clip_id": 327707,
+     "size_bytes": 9424,
+     "start": 201936,
+     "field5": 1365,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 589,
+      "samples": 16492,
+      "duration_s_at_22050": 0.748,
+      "peak": 31951,
+      "rms": 9192.2,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       26
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 27,
+     "clip_id": 262172,
+     "size_bytes": 4224,
+     "start": 211360,
+     "field5": 940,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 264,
+      "samples": 7392,
+      "duration_s_at_22050": 0.335,
+      "peak": 30777,
+      "rms": 9819.3,
+      "nonzero_fraction": 0.993,
+      "silent": false,
+      "clip_indexes": [
+       27
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 28,
+     "clip_id": 262173,
+     "size_bytes": 7808,
+     "start": 215584,
+     "field5": 682,
+     "field6": 7667712,
+     "field7": 16448,
+     "decoded": {
+      "frames": 488,
+      "samples": 13664,
+      "duration_s_at_22050": 0.62,
+      "peak": 31650,
+      "rms": 6836.1,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       28
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 29,
+     "clip_id": 262174,
+     "size_bytes": 8800,
+     "start": 223392,
+     "field5": 940,
+     "field6": 7667712,
+     "field7": 16448,
+     "decoded": {
+      "frames": 550,
+      "samples": 15400,
+      "duration_s_at_22050": 0.698,
+      "peak": 32746,
+      "rms": 3377.4,
+      "nonzero_fraction": 0.918,
+      "silent": false,
+      "clip_indexes": [
+       29
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 30,
+     "clip_id": 262175,
+     "size_bytes": 12528,
+     "start": 232192,
+     "field5": 940,
+     "field6": 8060928,
+     "field7": 16448,
+     "decoded": {
+      "frames": 783,
+      "samples": 21924,
+      "duration_s_at_22050": 0.994,
+      "peak": 30783,
+      "rms": 5834.3,
+      "nonzero_fraction": 0.996,
+      "silent": false,
+      "clip_indexes": [
+       30
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 31,
+     "clip_id": 262176,
+     "size_bytes": 13552,
+     "start": 244720,
+     "field5": 940,
+     "field6": 8060928,
+     "field7": 16448,
+     "decoded": {
+      "frames": 847,
+      "samples": 23716,
+      "duration_s_at_22050": 1.076,
+      "peak": 31728,
+      "rms": 6807.0,
+      "nonzero_fraction": 0.984,
+      "silent": false,
+      "clip_indexes": [
+       31
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 32,
+     "clip_id": 262177,
+     "size_bytes": 6112,
+     "start": 258272,
+     "field5": 4281861977,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 382,
+      "samples": 10696,
+      "duration_s_at_22050": 0.485,
+      "peak": 31222,
+      "rms": 7108.7,
+      "nonzero_fraction": 0.958,
+      "silent": false,
+      "clip_indexes": [
+       32,
+       40
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 33,
+     "clip_id": 262178,
+     "size_bytes": 18128,
+     "start": 264384,
+     "field5": 1024,
+     "field6": 7864320,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1133,
+      "samples": 31724,
+      "duration_s_at_22050": 1.439,
+      "peak": 31691,
+      "rms": 9623.2,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       33
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 34,
+     "clip_id": 262179,
+     "size_bytes": 19728,
+     "start": 282512,
+     "field5": 940,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1233,
+      "samples": 34524,
+      "duration_s_at_22050": 1.566,
+      "peak": 32512,
+      "rms": 5989.2,
+      "nonzero_fraction": 0.963,
+      "silent": false,
+      "clip_indexes": [
+       34
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 35,
+     "clip_id": 262180,
+     "size_bytes": 31920,
+     "start": 302240,
+     "field5": 1365,
+     "field6": 8192000,
+     "field7": 16384,
+     "decoded": {
+      "frames": 1995,
+      "samples": 55860,
+      "duration_s_at_22050": 2.533,
+      "peak": 31492,
+      "rms": 7587.6,
+      "nonzero_fraction": 0.994,
+      "silent": false,
+      "clip_indexes": [
+       35
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 36,
+     "clip_id": 262181,
+     "size_bytes": 31920,
+     "start": 334160,
+     "field5": 1365,
+     "field6": 8192000,
+     "field7": 16511,
+     "decoded": {
+      "frames": 1995,
+      "samples": 55860,
+      "duration_s_at_22050": 2.533,
+      "peak": 31847,
+      "rms": 7551.0,
+      "nonzero_fraction": 0.992,
+      "silent": false,
+      "clip_indexes": [
+       36
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 37,
+     "clip_id": 262182,
+     "size_bytes": 9024,
+     "start": 366080,
+     "field5": 1194,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 564,
+      "samples": 15792,
+      "duration_s_at_22050": 0.716,
+      "peak": 32726,
+      "rms": 8283.6,
+      "nonzero_fraction": 0.965,
+      "silent": false,
+      "clip_indexes": [
+       37
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 38,
+     "clip_id": 327719,
+     "size_bytes": 17184,
+     "start": 9424,
+     "field5": 1194,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1074,
+      "samples": 30072,
+      "duration_s_at_22050": 1.364,
+      "peak": 32537,
+      "rms": 7591.3,
+      "nonzero_fraction": 0.985,
+      "silent": false,
+      "clip_indexes": [
+       3,
+       38,
+       44
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 39,
+     "clip_id": 262184,
+     "size_bytes": 5152,
+     "start": 375104,
+     "field5": 852,
+     "field6": 7208960,
+     "field7": 16448,
+     "decoded": {
+      "frames": 322,
+      "samples": 9016,
+      "duration_s_at_22050": 0.409,
+      "peak": 31215,
+      "rms": 9092.7,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       39
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 40,
+     "clip_id": 262185,
+     "size_bytes": 6112,
+     "start": 258272,
+     "field5": 4281861977,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 382,
+      "samples": 10696,
+      "duration_s_at_22050": 0.485,
+      "peak": 31222,
+      "rms": 7108.7,
+      "nonzero_fraction": 0.958,
+      "silent": false,
+      "clip_indexes": [
+       32,
+       40
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 41,
+     "clip_id": 262186,
+     "size_bytes": 128,
+     "start": 174160,
+     "field5": 682,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 8,
+      "samples": 224,
+      "duration_s_at_22050": 0.01,
+      "peak": 31740,
+      "rms": 19651.6,
+      "nonzero_fraction": 0.871,
+      "silent": false,
+      "clip_indexes": [
+       22,
+       41,
+       42
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 42,
+     "clip_id": 262187,
+     "size_bytes": 128,
+     "start": 174160,
+     "field5": 682,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 8,
+      "samples": 224,
+      "duration_s_at_22050": 0.01,
+      "peak": 31740,
+      "rms": 19651.6,
+      "nonzero_fraction": 0.871,
+      "silent": false,
+      "clip_indexes": [
+       22,
+       41,
+       42
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 43,
+     "clip_id": 262188,
+     "size_bytes": 20928,
+     "start": 380256,
+     "field5": 1194,
+     "field6": 7864320,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1308,
+      "samples": 36624,
+      "duration_s_at_22050": 1.661,
+      "peak": 31702,
+      "rms": 5719.0,
+      "nonzero_fraction": 0.913,
+      "silent": false,
+      "clip_indexes": [
+       43
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 44,
+     "clip_id": 327725,
+     "size_bytes": 17184,
+     "start": 9424,
+     "field5": 1194,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1074,
+      "samples": 30072,
+      "duration_s_at_22050": 1.364,
+      "peak": 32537,
+      "rms": 7591.3,
+      "nonzero_fraction": 0.985,
+      "silent": false,
+      "clip_indexes": [
+       3,
+       38,
+       44
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 45,
+     "clip_id": 262190,
+     "size_bytes": 3984,
+     "start": 401184,
+     "field5": 682,
+     "field6": 6946816,
+     "field7": 16448,
+     "decoded": {
+      "frames": 249,
+      "samples": 6972,
+      "duration_s_at_22050": 0.316,
+      "peak": 30813,
+      "rms": 10532.3,
+      "nonzero_fraction": 0.992,
+      "silent": false,
+      "clip_indexes": [
+       45
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 46,
+     "clip_id": 262191,
+     "size_bytes": 6688,
+     "start": 405168,
+     "field5": 26215082,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 418,
+      "samples": 11704,
+      "duration_s_at_22050": 0.531,
+      "peak": 31851,
+      "rms": 5516.3,
+      "nonzero_fraction": 0.876,
+      "silent": false,
+      "clip_indexes": [
+       46,
+       48
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 47,
+     "clip_id": 262192,
+     "size_bytes": 12272,
+     "start": 411856,
+     "field5": 940,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 767,
+      "samples": 21476,
+      "duration_s_at_22050": 0.974,
+      "peak": 31713,
+      "rms": 7215.2,
+      "nonzero_fraction": 0.939,
+      "silent": false,
+      "clip_indexes": [
+       47
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 48,
+     "clip_id": 262193,
+     "size_bytes": 6688,
+     "start": 405168,
+     "field5": 26215082,
+     "field6": 8192000,
+     "field7": 16384,
+     "decoded": {
+      "frames": 418,
+      "samples": 11704,
+      "duration_s_at_22050": 0.531,
+      "peak": 31851,
+      "rms": 5516.3,
+      "nonzero_fraction": 0.876,
+      "silent": false,
+      "clip_indexes": [
+       46,
+       48
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 49,
+     "clip_id": 262194,
+     "size_bytes": 6688,
+     "start": 424128,
+     "field5": 26215082,
+     "field6": 8192000,
+     "field7": 16511,
+     "decoded": {
+      "frames": 418,
+      "samples": 11704,
+      "duration_s_at_22050": 0.531,
+      "peak": 32403,
+      "rms": 5745.4,
+      "nonzero_fraction": 0.87,
+      "silent": false,
+      "clip_indexes": [
+       49
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 50,
+     "clip_id": 262195,
+     "size_bytes": 7056,
+     "start": 430816,
+     "field5": 1365,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 441,
+      "samples": 12348,
+      "duration_s_at_22050": 0.56,
+      "peak": 31173,
+      "rms": 9727.8,
+      "nonzero_fraction": 0.997,
+      "silent": false,
+      "clip_indexes": [
+       50
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 51,
+     "clip_id": 262196,
+     "size_bytes": 4288,
+     "start": 437872,
+     "field5": 1881,
+     "field6": 7536640,
+     "field7": 16448,
+     "decoded": {
+      "frames": 268,
+      "samples": 7504,
+      "duration_s_at_22050": 0.34,
+      "peak": 28672,
+      "rms": 6461.7,
+      "nonzero_fraction": 0.977,
+      "silent": false,
+      "clip_indexes": [
+       51
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 52,
+     "clip_id": 262197,
+     "size_bytes": 4704,
+     "start": 442160,
+     "field5": 1365,
+     "field6": 7864320,
+     "field7": 16448,
+     "decoded": {
+      "frames": 293,
+      "samples": 8204,
+      "truncated_bytes_past_eof": 16,
+      "duration_s_at_22050": 0.372,
+      "peak": 31699,
+      "rms": 9863.4,
+      "nonzero_fraction": 0.991,
+      "silent": false,
+      "clip_indexes": [
+       52
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 53,
+     "clip_id": 1127481344,
+     "size_bytes": 5888,
+     "start": 3536,
+     "field5": 1536,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 368,
+      "samples": 10304,
+      "duration_s_at_22050": 0.467,
+      "peak": 32598,
+      "rms": 6915.8,
+      "nonzero_fraction": 0.978,
+      "silent": false,
+      "clip_indexes": [
+       2,
+       53
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    }
+   ]
+  },
+  {
+   "source_file": "snd_bg_egy_se.dat",
+   "container": "P3Dp",
+   "size_bytes": 445360,
+   "clip_count": 54,
+   "payload_base": 5648,
+   "payload_alignment_delta": 12,
+   "payload_frames_valid": "1000/1000",
+   "unique_regions": 43,
+   "clips": [
+    {
+     "index": 0,
+     "clip_id": 262145,
+     "size_bytes": 2288,
+     "start": 0,
+     "field5": 1365,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 143,
+      "samples": 4004,
+      "duration_s_at_22050": 0.182,
+      "peak": 32493,
+      "rms": 10311.8,
+      "nonzero_fraction": 0.971,
+      "silent": false,
+      "clip_indexes": [
+       0
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 1,
+     "clip_id": 262146,
+     "size_bytes": 1248,
+     "start": 2288,
+     "field5": 1365,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 78,
+      "samples": 2184,
+      "duration_s_at_22050": 0.099,
+      "peak": 32359,
+      "rms": 8837.3,
+      "nonzero_fraction": 0.958,
+      "silent": false,
+      "clip_indexes": [
+       1
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 2,
+     "clip_id": 262147,
+     "size_bytes": 5888,
+     "start": 3536,
+     "field5": 1536,
+     "field6": 8060928,
+     "field7": 16448,
+     "decoded": {
+      "frames": 368,
+      "samples": 10304,
+      "duration_s_at_22050": 0.467,
+      "peak": 32598,
+      "rms": 6915.8,
+      "nonzero_fraction": 0.978,
+      "silent": false,
+      "clip_indexes": [
+       2,
+       53
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 3,
+     "clip_id": 262148,
+     "size_bytes": 17184,
+     "start": 9424,
+     "field5": 1194,
+     "field6": 7864320,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1074,
+      "samples": 30072,
+      "duration_s_at_22050": 1.364,
+      "peak": 32537,
+      "rms": 7591.3,
+      "nonzero_fraction": 0.985,
+      "silent": false,
+      "clip_indexes": [
+       3,
+       38,
+       44
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 4,
+     "clip_id": 262149,
+     "size_bytes": 39888,
+     "start": 26608,
+     "field5": 1881,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 2493,
+      "samples": 69804,
+      "duration_s_at_22050": 3.166,
+      "peak": 32768,
+      "rms": 9350.2,
+      "nonzero_fraction": 0.992,
+      "silent": false,
+      "clip_indexes": [
+       4,
+       6,
+       8
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 5,
+     "clip_id": 262150,
+     "size_bytes": 4320,
+     "start": 66496,
+     "field5": 3763,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 270,
+      "samples": 7560,
+      "duration_s_at_22050": 0.343,
+      "peak": 0,
+      "rms": 0.0,
+      "nonzero_fraction": 0.0,
+      "silent": true,
+      "clip_indexes": [
+       5
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 6,
+     "clip_id": 262151,
+     "size_bytes": 39888,
+     "start": 26608,
+     "field5": 6555481,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 2493,
+      "samples": 69804,
+      "duration_s_at_22050": 3.166,
+      "peak": 32768,
+      "rms": 9350.2,
+      "nonzero_fraction": 0.992,
+      "silent": false,
+      "clip_indexes": [
+       4,
+       6,
+       8
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 7,
+     "clip_id": 262152,
+     "size_bytes": 17024,
+     "start": 70816,
+     "field5": 1194,
+     "field6": 7864320,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1064,
+      "samples": 29792,
+      "duration_s_at_22050": 1.351,
+      "peak": 32758,
+      "rms": 6576.1,
+      "nonzero_fraction": 0.983,
+      "silent": false,
+      "clip_indexes": [
+       7
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 8,
+     "clip_id": 262153,
+     "size_bytes": 39888,
+     "start": 26608,
+     "field5": 1881,
+     "field6": 7733248,
+     "field7": 16448,
+     "decoded": {
+      "frames": 2493,
+      "samples": 69804,
+      "duration_s_at_22050": 3.166,
+      "peak": 32768,
+      "rms": 9350.2,
+      "nonzero_fraction": 0.992,
+      "silent": false,
+      "clip_indexes": [
+       4,
+       6,
+       8
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 9,
+     "clip_id": 262154,
+     "size_bytes": 32176,
+     "start": 87840,
+     "field5": 1536,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 2011,
+      "samples": 56308,
+      "duration_s_at_22050": 2.554,
+      "peak": 32153,
+      "rms": 8892.3,
+      "nonzero_fraction": 0.989,
+      "silent": false,
+      "clip_indexes": [
+       9,
+       10
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 10,
+     "clip_id": 262155,
+     "size_bytes": 32176,
+     "start": 87840,
+     "field5": 1536,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 2011,
+      "samples": 56308,
+      "duration_s_at_22050": 2.554,
+      "peak": 32153,
+      "rms": 8892.3,
+      "nonzero_fraction": 0.989,
+      "silent": false,
+      "clip_indexes": [
+       9,
+       10
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 11,
+     "clip_id": 268697612,
+     "size_bytes": 9664,
+     "start": 120016,
+     "field5": 1365,
+     "field6": 4135059556,
+     "field7": 16448,
+     "decoded": {
+      "frames": 604,
+      "samples": 16912,
+      "duration_s_at_22050": 0.767,
+      "peak": 32552,
+      "rms": 6120.2,
+      "nonzero_fraction": 0.915,
+      "silent": false,
+      "clip_indexes": [
+       11
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 12,
+     "clip_id": 285474829,
+     "size_bytes": 9088,
+     "start": 129680,
+     "field5": 1899,
+     "field6": 4135059556,
+     "field7": 16448,
+     "decoded": {
+      "frames": 568,
+      "samples": 15904,
+      "duration_s_at_22050": 0.721,
+      "peak": 32662,
+      "rms": 11887.4,
+      "nonzero_fraction": 0.993,
+      "silent": false,
+      "clip_indexes": [
+       12
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 13,
+     "clip_id": 302252046,
+     "size_bytes": 7344,
+     "start": 138768,
+     "field5": 1365,
+     "field6": 4135059556,
+     "field7": 16448,
+     "decoded": {
+      "frames": 459,
+      "samples": 12852,
+      "duration_s_at_22050": 0.583,
+      "peak": 32617,
+      "rms": 14108.7,
+      "nonzero_fraction": 0.994,
+      "silent": false,
+      "clip_indexes": [
+       13
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 14,
+     "clip_id": 262159,
+     "size_bytes": 7424,
+     "start": 146112,
+     "field5": 1365,
+     "field6": 4135059556,
+     "field7": 16448,
+     "decoded": {
+      "frames": 464,
+      "samples": 12992,
+      "duration_s_at_22050": 0.589,
+      "peak": 31818,
+      "rms": 13533.8,
+      "nonzero_fraction": 0.932,
+      "silent": false,
+      "clip_indexes": [
+       14
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 15,
+     "clip_id": 262160,
+     "size_bytes": 1696,
+     "start": 153536,
+     "field5": 1365,
+     "field6": 4135518308,
+     "field7": 16448,
+     "decoded": {
+      "frames": 106,
+      "samples": 2968,
+      "duration_s_at_22050": 0.135,
+      "peak": 29827,
+      "rms": 4599.4,
+      "nonzero_fraction": 0.979,
+      "silent": false,
+      "clip_indexes": [
+       15
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 16,
+     "clip_id": 262161,
+     "size_bytes": 4256,
+     "start": 155232,
+     "field5": 1365,
+     "field6": 4134076516,
+     "field7": 16448,
+     "decoded": {
+      "frames": 266,
+      "samples": 7448,
+      "duration_s_at_22050": 0.338,
+      "peak": 30792,
+      "rms": 2335.1,
+      "nonzero_fraction": 0.947,
+      "silent": false,
+      "clip_indexes": [
+       16
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 17,
+     "clip_id": 262162,
+     "size_bytes": 3056,
+     "start": 159488,
+     "field5": 1365,
+     "field6": 4134076516,
+     "field7": 16448,
+     "decoded": {
+      "frames": 191,
+      "samples": 5348,
+      "duration_s_at_22050": 0.243,
+      "peak": 30581,
+      "rms": 3066.3,
+      "nonzero_fraction": 0.951,
+      "silent": false,
+      "clip_indexes": [
+       17
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 18,
+     "clip_id": 262163,
+     "size_bytes": 3040,
+     "start": 162544,
+     "field5": 1365,
+     "field6": 4134076516,
+     "field7": 16448,
+     "decoded": {
+      "frames": 190,
+      "samples": 5320,
+      "duration_s_at_22050": 0.241,
+      "peak": 30808,
+      "rms": 2609.7,
+      "nonzero_fraction": 0.964,
+      "silent": false,
+      "clip_indexes": [
+       18
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 19,
+     "clip_id": 262164,
+     "size_bytes": 2848,
+     "start": 165584,
+     "field5": 1365,
+     "field6": 4134076516,
+     "field7": 16448,
+     "decoded": {
+      "frames": 178,
+      "samples": 4984,
+      "duration_s_at_22050": 0.226,
+      "peak": 30759,
+      "rms": 2416.1,
+      "nonzero_fraction": 0.971,
+      "silent": false,
+      "clip_indexes": [
+       19
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 20,
+     "clip_id": 262165,
+     "size_bytes": 3008,
+     "start": 168432,
+     "field5": 1365,
+     "field6": 4134076516,
+     "field7": 16448,
+     "decoded": {
+      "frames": 188,
+      "samples": 5264,
+      "duration_s_at_22050": 0.239,
+      "peak": 29701,
+      "rms": 1941.4,
+      "nonzero_fraction": 0.961,
+      "silent": false,
+      "clip_indexes": [
+       20
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 21,
+     "clip_id": 262166,
+     "size_bytes": 2720,
+     "start": 171440,
+     "field5": 1365,
+     "field6": 4134076516,
+     "field7": 16448,
+     "decoded": {
+      "frames": 170,
+      "samples": 4760,
+      "duration_s_at_22050": 0.216,
+      "peak": 31199,
+      "rms": 2783.0,
+      "nonzero_fraction": 0.953,
+      "silent": false,
+      "clip_indexes": [
+       21
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 22,
+     "clip_id": 262167,
+     "size_bytes": 128,
+     "start": 174160,
+     "field5": 682,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 8,
+      "samples": 224,
+      "duration_s_at_22050": 0.01,
+      "peak": 31740,
+      "rms": 19651.6,
+      "nonzero_fraction": 0.871,
+      "silent": false,
+      "clip_indexes": [
+       22,
+       41,
+       42
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 23,
+     "clip_id": 262168,
+     "size_bytes": 11648,
+     "start": 174288,
+     "field5": 1365,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 728,
+      "samples": 20384,
+      "duration_s_at_22050": 0.924,
+      "peak": 32566,
+      "rms": 10556.8,
+      "nonzero_fraction": 0.996,
+      "silent": false,
+      "clip_indexes": [
+       23
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 24,
+     "clip_id": 262169,
+     "size_bytes": 16000,
+     "start": 185936,
+     "field5": 1024,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1000,
+      "samples": 28000,
+      "duration_s_at_22050": 1.27,
+      "peak": 30739,
+      "rms": 7214.8,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       24,
+       25
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 25,
+     "clip_id": 262170,
+     "size_bytes": 16000,
+     "start": 185936,
+     "field5": 1024,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1000,
+      "samples": 28000,
+      "duration_s_at_22050": 1.27,
+      "peak": 30739,
+      "rms": 7214.8,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       24,
+       25
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 26,
+     "clip_id": 327707,
+     "size_bytes": 9424,
+     "start": 201936,
+     "field5": 1365,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 589,
+      "samples": 16492,
+      "duration_s_at_22050": 0.748,
+      "peak": 31951,
+      "rms": 9192.2,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       26
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 27,
+     "clip_id": 262172,
+     "size_bytes": 4224,
+     "start": 211360,
+     "field5": 940,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 264,
+      "samples": 7392,
+      "duration_s_at_22050": 0.335,
+      "peak": 30777,
+      "rms": 9819.3,
+      "nonzero_fraction": 0.993,
+      "silent": false,
+      "clip_indexes": [
+       27
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 28,
+     "clip_id": 262173,
+     "size_bytes": 7808,
+     "start": 215584,
+     "field5": 682,
+     "field6": 7667712,
+     "field7": 16448,
+     "decoded": {
+      "frames": 488,
+      "samples": 13664,
+      "duration_s_at_22050": 0.62,
+      "peak": 31650,
+      "rms": 6836.1,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       28
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 29,
+     "clip_id": 262174,
+     "size_bytes": 8800,
+     "start": 223392,
+     "field5": 940,
+     "field6": 7667712,
+     "field7": 16448,
+     "decoded": {
+      "frames": 550,
+      "samples": 15400,
+      "duration_s_at_22050": 0.698,
+      "peak": 32746,
+      "rms": 3377.4,
+      "nonzero_fraction": 0.918,
+      "silent": false,
+      "clip_indexes": [
+       29
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 30,
+     "clip_id": 262175,
+     "size_bytes": 12528,
+     "start": 232192,
+     "field5": 940,
+     "field6": 8060928,
+     "field7": 16448,
+     "decoded": {
+      "frames": 783,
+      "samples": 21924,
+      "duration_s_at_22050": 0.994,
+      "peak": 30783,
+      "rms": 5834.3,
+      "nonzero_fraction": 0.996,
+      "silent": false,
+      "clip_indexes": [
+       30
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 31,
+     "clip_id": 262176,
+     "size_bytes": 13552,
+     "start": 244720,
+     "field5": 940,
+     "field6": 8060928,
+     "field7": 16448,
+     "decoded": {
+      "frames": 847,
+      "samples": 23716,
+      "duration_s_at_22050": 1.076,
+      "peak": 31728,
+      "rms": 6807.0,
+      "nonzero_fraction": 0.984,
+      "silent": false,
+      "clip_indexes": [
+       31
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 32,
+     "clip_id": 262177,
+     "size_bytes": 6112,
+     "start": 258272,
+     "field5": 4281861977,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 382,
+      "samples": 10696,
+      "duration_s_at_22050": 0.485,
+      "peak": 31222,
+      "rms": 7108.7,
+      "nonzero_fraction": 0.958,
+      "silent": false,
+      "clip_indexes": [
+       32,
+       40
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 33,
+     "clip_id": 262178,
+     "size_bytes": 14208,
+     "start": 264384,
+     "field5": 1194,
+     "field6": 7864320,
+     "field7": 16448,
+     "decoded": {
+      "frames": 888,
+      "samples": 24864,
+      "duration_s_at_22050": 1.128,
+      "peak": 31177,
+      "rms": 7855.9,
+      "nonzero_fraction": 0.988,
+      "silent": false,
+      "clip_indexes": [
+       33
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 34,
+     "clip_id": 262179,
+     "size_bytes": 16512,
+     "start": 278592,
+     "field5": 1194,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1032,
+      "samples": 28896,
+      "duration_s_at_22050": 1.31,
+      "peak": 31504,
+      "rms": 7424.1,
+      "nonzero_fraction": 0.996,
+      "silent": false,
+      "clip_indexes": [
+       34
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 35,
+     "clip_id": 262180,
+     "size_bytes": 31920,
+     "start": 295104,
+     "field5": 1365,
+     "field6": 8257536,
+     "field7": 16384,
+     "decoded": {
+      "frames": 1995,
+      "samples": 55860,
+      "duration_s_at_22050": 2.533,
+      "peak": 31492,
+      "rms": 7587.6,
+      "nonzero_fraction": 0.994,
+      "silent": false,
+      "clip_indexes": [
+       35
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 36,
+     "clip_id": 262181,
+     "size_bytes": 31920,
+     "start": 327024,
+     "field5": 1365,
+     "field6": 8257536,
+     "field7": 16511,
+     "decoded": {
+      "frames": 1995,
+      "samples": 55860,
+      "duration_s_at_22050": 2.533,
+      "peak": 31847,
+      "rms": 7551.0,
+      "nonzero_fraction": 0.992,
+      "silent": false,
+      "clip_indexes": [
+       36
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 37,
+     "clip_id": 262182,
+     "size_bytes": 9024,
+     "start": 358944,
+     "field5": 1194,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 564,
+      "samples": 15792,
+      "duration_s_at_22050": 0.716,
+      "peak": 32726,
+      "rms": 8283.6,
+      "nonzero_fraction": 0.965,
+      "silent": false,
+      "clip_indexes": [
+       37
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 38,
+     "clip_id": 327719,
+     "size_bytes": 17184,
+     "start": 9424,
+     "field5": 1194,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1074,
+      "samples": 30072,
+      "duration_s_at_22050": 1.364,
+      "peak": 32537,
+      "rms": 7591.3,
+      "nonzero_fraction": 0.985,
+      "silent": false,
+      "clip_indexes": [
+       3,
+       38,
+       44
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 39,
+     "clip_id": 262184,
+     "size_bytes": 5152,
+     "start": 367968,
+     "field5": 852,
+     "field6": 7208960,
+     "field7": 16448,
+     "decoded": {
+      "frames": 322,
+      "samples": 9016,
+      "duration_s_at_22050": 0.409,
+      "peak": 31215,
+      "rms": 9092.7,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       39
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 40,
+     "clip_id": 262185,
+     "size_bytes": 6112,
+     "start": 258272,
+     "field5": 4281861977,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 382,
+      "samples": 10696,
+      "duration_s_at_22050": 0.485,
+      "peak": 31222,
+      "rms": 7108.7,
+      "nonzero_fraction": 0.958,
+      "silent": false,
+      "clip_indexes": [
+       32,
+       40
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 41,
+     "clip_id": 262186,
+     "size_bytes": 128,
+     "start": 174160,
+     "field5": 682,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 8,
+      "samples": 224,
+      "duration_s_at_22050": 0.01,
+      "peak": 31740,
+      "rms": 19651.6,
+      "nonzero_fraction": 0.871,
+      "silent": false,
+      "clip_indexes": [
+       22,
+       41,
+       42
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 42,
+     "clip_id": 262187,
+     "size_bytes": 128,
+     "start": 174160,
+     "field5": 682,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 8,
+      "samples": 224,
+      "duration_s_at_22050": 0.01,
+      "peak": 31740,
+      "rms": 19651.6,
+      "nonzero_fraction": 0.871,
+      "silent": false,
+      "clip_indexes": [
+       22,
+       41,
+       42
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 43,
+     "clip_id": 262188,
+     "size_bytes": 20928,
+     "start": 373120,
+     "field5": 1194,
+     "field6": 7864320,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1308,
+      "samples": 36624,
+      "duration_s_at_22050": 1.661,
+      "peak": 31702,
+      "rms": 5719.0,
+      "nonzero_fraction": 0.913,
+      "silent": false,
+      "clip_indexes": [
+       43
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 44,
+     "clip_id": 327725,
+     "size_bytes": 17184,
+     "start": 9424,
+     "field5": 1194,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1074,
+      "samples": 30072,
+      "duration_s_at_22050": 1.364,
+      "peak": 32537,
+      "rms": 7591.3,
+      "nonzero_fraction": 0.985,
+      "silent": false,
+      "clip_indexes": [
+       3,
+       38,
+       44
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 45,
+     "clip_id": 262190,
+     "size_bytes": 3984,
+     "start": 394048,
+     "field5": 682,
+     "field6": 6946816,
+     "field7": 16448,
+     "decoded": {
+      "frames": 249,
+      "samples": 6972,
+      "duration_s_at_22050": 0.316,
+      "peak": 30813,
+      "rms": 10532.3,
+      "nonzero_fraction": 0.992,
+      "silent": false,
+      "clip_indexes": [
+       45
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 46,
+     "clip_id": 262191,
+     "size_bytes": 6688,
+     "start": 398032,
+     "field5": 26215082,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 418,
+      "samples": 11704,
+      "duration_s_at_22050": 0.531,
+      "peak": 31851,
+      "rms": 5516.3,
+      "nonzero_fraction": 0.876,
+      "silent": false,
+      "clip_indexes": [
+       46,
+       48
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 47,
+     "clip_id": 262192,
+     "size_bytes": 12272,
+     "start": 404720,
+     "field5": 940,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 767,
+      "samples": 21476,
+      "duration_s_at_22050": 0.974,
+      "peak": 31713,
+      "rms": 7215.2,
+      "nonzero_fraction": 0.939,
+      "silent": false,
+      "clip_indexes": [
+       47
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 48,
+     "clip_id": 262193,
+     "size_bytes": 6688,
+     "start": 398032,
+     "field5": 26215082,
+     "field6": 8192000,
+     "field7": 16384,
+     "decoded": {
+      "frames": 418,
+      "samples": 11704,
+      "duration_s_at_22050": 0.531,
+      "peak": 31851,
+      "rms": 5516.3,
+      "nonzero_fraction": 0.876,
+      "silent": false,
+      "clip_indexes": [
+       46,
+       48
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 49,
+     "clip_id": 262194,
+     "size_bytes": 6688,
+     "start": 416992,
+     "field5": 26215082,
+     "field6": 8192000,
+     "field7": 16511,
+     "decoded": {
+      "frames": 418,
+      "samples": 11704,
+      "duration_s_at_22050": 0.531,
+      "peak": 32403,
+      "rms": 5745.4,
+      "nonzero_fraction": 0.87,
+      "silent": false,
+      "clip_indexes": [
+       49
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 50,
+     "clip_id": 262195,
+     "size_bytes": 7056,
+     "start": 423680,
+     "field5": 1365,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 441,
+      "samples": 12348,
+      "duration_s_at_22050": 0.56,
+      "peak": 31173,
+      "rms": 9727.8,
+      "nonzero_fraction": 0.997,
+      "silent": false,
+      "clip_indexes": [
+       50
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 51,
+     "clip_id": 262196,
+     "size_bytes": 4288,
+     "start": 430736,
+     "field5": 1881,
+     "field6": 7536640,
+     "field7": 16448,
+     "decoded": {
+      "frames": 268,
+      "samples": 7504,
+      "duration_s_at_22050": 0.34,
+      "peak": 28672,
+      "rms": 6461.7,
+      "nonzero_fraction": 0.977,
+      "silent": false,
+      "clip_indexes": [
+       51
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 52,
+     "clip_id": 262197,
+     "size_bytes": 4704,
+     "start": 435024,
+     "field5": 1365,
+     "field6": 7864320,
+     "field7": 16448,
+     "decoded": {
+      "frames": 293,
+      "samples": 8204,
+      "truncated_bytes_past_eof": 16,
+      "duration_s_at_22050": 0.372,
+      "peak": 31699,
+      "rms": 9863.4,
+      "nonzero_fraction": 0.991,
+      "silent": false,
+      "clip_indexes": [
+       52
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 53,
+     "clip_id": 1127481344,
+     "size_bytes": 5888,
+     "start": 3536,
+     "field5": 1536,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 368,
+      "samples": 10304,
+      "duration_s_at_22050": 0.467,
+      "peak": 32598,
+      "rms": 6915.8,
+      "nonzero_fraction": 0.978,
+      "silent": false,
+      "clip_indexes": [
+       2,
+       53
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    }
+   ]
+  },
+  {
+   "source_file": "snd_bg_lab_se.dat",
+   "container": "P3Dp",
+   "size_bytes": 445616,
+   "clip_count": 54,
+   "payload_base": 5648,
+   "payload_alignment_delta": 12,
+   "payload_frames_valid": "1000/1000",
+   "unique_regions": 44,
+   "clips": [
+    {
+     "index": 0,
+     "clip_id": 262145,
+     "size_bytes": 2288,
+     "start": 0,
+     "field5": 1365,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 143,
+      "samples": 4004,
+      "duration_s_at_22050": 0.182,
+      "peak": 32493,
+      "rms": 10311.8,
+      "nonzero_fraction": 0.971,
+      "silent": false,
+      "clip_indexes": [
+       0
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 1,
+     "clip_id": 262146,
+     "size_bytes": 1248,
+     "start": 2288,
+     "field5": 1365,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 78,
+      "samples": 2184,
+      "duration_s_at_22050": 0.099,
+      "peak": 32359,
+      "rms": 8837.3,
+      "nonzero_fraction": 0.958,
+      "silent": false,
+      "clip_indexes": [
+       1
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 2,
+     "clip_id": 262147,
+     "size_bytes": 5888,
+     "start": 3536,
+     "field5": 1536,
+     "field6": 7995392,
+     "field7": 16448,
+     "decoded": {
+      "frames": 368,
+      "samples": 10304,
+      "duration_s_at_22050": 0.467,
+      "peak": 32598,
+      "rms": 6915.8,
+      "nonzero_fraction": 0.978,
+      "silent": false,
+      "clip_indexes": [
+       2,
+       53
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 3,
+     "clip_id": 262148,
+     "size_bytes": 21744,
+     "start": 9424,
+     "field5": 2048,
+     "field6": 8060928,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1359,
+      "samples": 38052,
+      "duration_s_at_22050": 1.726,
+      "peak": 31599,
+      "rms": 7005.3,
+      "nonzero_fraction": 0.972,
+      "silent": false,
+      "clip_indexes": [
+       3
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 4,
+     "clip_id": 262149,
+     "size_bytes": 9088,
+     "start": 31168,
+     "field5": 39323499,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 568,
+      "samples": 15904,
+      "duration_s_at_22050": 0.721,
+      "peak": 32662,
+      "rms": 11887.4,
+      "nonzero_fraction": 0.993,
+      "silent": false,
+      "clip_indexes": [
+       4,
+       12
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 5,
+     "clip_id": 262150,
+     "size_bytes": 17184,
+     "start": 40256,
+     "field5": 52429742,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1074,
+      "samples": 30072,
+      "duration_s_at_22050": 1.364,
+      "peak": 31132,
+      "rms": 8607.2,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       5,
+       35,
+       36
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 6,
+     "clip_id": 262151,
+     "size_bytes": 20688,
+     "start": 57440,
+     "field5": 4281861632,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1293,
+      "samples": 36204,
+      "duration_s_at_22050": 1.642,
+      "peak": 32342,
+      "rms": 6778.2,
+      "nonzero_fraction": 0.941,
+      "silent": false,
+      "clip_indexes": [
+       6
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 7,
+     "clip_id": 262152,
+     "size_bytes": 15536,
+     "start": 78128,
+     "field5": 1024,
+     "field6": 6553600,
+     "field7": 16448,
+     "decoded": {
+      "frames": 971,
+      "samples": 27188,
+      "duration_s_at_22050": 1.233,
+      "peak": 30427,
+      "rms": 6792.3,
+      "nonzero_fraction": 0.878,
+      "silent": false,
+      "clip_indexes": [
+       7
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 8,
+     "clip_id": 262153,
+     "size_bytes": 44560,
+     "start": 93664,
+     "field5": 1881,
+     "field6": 7864320,
+     "field7": 16448,
+     "decoded": {
+      "frames": 2785,
+      "samples": 77980,
+      "duration_s_at_22050": 3.537,
+      "peak": 32753,
+      "rms": 9870.4,
+      "nonzero_fraction": 0.992,
+      "silent": false,
+      "clip_indexes": [
+       8
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 9,
+     "clip_id": 262154,
+     "size_bytes": 44048,
+     "start": 138224,
+     "field5": 1536,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 2753,
+      "samples": 77084,
+      "duration_s_at_22050": 3.496,
+      "peak": 32739,
+      "rms": 13162.2,
+      "nonzero_fraction": 0.989,
+      "silent": false,
+      "clip_indexes": [
+       9,
+       10
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 10,
+     "clip_id": 262155,
+     "size_bytes": 44048,
+     "start": 138224,
+     "field5": 3278336,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 2753,
+      "samples": 77084,
+      "duration_s_at_22050": 3.496,
+      "peak": 32739,
+      "rms": 13162.2,
+      "nonzero_fraction": 0.989,
+      "silent": false,
+      "clip_indexes": [
+       9,
+       10
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 11,
+     "clip_id": 268697612,
+     "size_bytes": 9664,
+     "start": 182272,
+     "field5": 1365,
+     "field6": 4135059556,
+     "field7": 16448,
+     "decoded": {
+      "frames": 604,
+      "samples": 16912,
+      "duration_s_at_22050": 0.767,
+      "peak": 32552,
+      "rms": 6120.2,
+      "nonzero_fraction": 0.915,
+      "silent": false,
+      "clip_indexes": [
+       11
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 12,
+     "clip_id": 285474829,
+     "size_bytes": 9088,
+     "start": 31168,
+     "field5": 1899,
+     "field6": 4135059556,
+     "field7": 16448,
+     "decoded": {
+      "frames": 568,
+      "samples": 15904,
+      "duration_s_at_22050": 0.721,
+      "peak": 32662,
+      "rms": 11887.4,
+      "nonzero_fraction": 0.993,
+      "silent": false,
+      "clip_indexes": [
+       4,
+       12
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 13,
+     "clip_id": 302252046,
+     "size_bytes": 7344,
+     "start": 191936,
+     "field5": 1365,
+     "field6": 4135059556,
+     "field7": 16448,
+     "decoded": {
+      "frames": 459,
+      "samples": 12852,
+      "duration_s_at_22050": 0.583,
+      "peak": 32617,
+      "rms": 14108.7,
+      "nonzero_fraction": 0.994,
+      "silent": false,
+      "clip_indexes": [
+       13
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 14,
+     "clip_id": 262159,
+     "size_bytes": 7424,
+     "start": 199280,
+     "field5": 1365,
+     "field6": 4135059556,
+     "field7": 16448,
+     "decoded": {
+      "frames": 464,
+      "samples": 12992,
+      "duration_s_at_22050": 0.589,
+      "peak": 31818,
+      "rms": 13533.8,
+      "nonzero_fraction": 0.932,
+      "silent": false,
+      "clip_indexes": [
+       14
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 15,
+     "clip_id": 262160,
+     "size_bytes": 1696,
+     "start": 206704,
+     "field5": 1365,
+     "field6": 4135321700,
+     "field7": 16448,
+     "decoded": {
+      "frames": 106,
+      "samples": 2968,
+      "duration_s_at_22050": 0.135,
+      "peak": 29827,
+      "rms": 4599.4,
+      "nonzero_fraction": 0.979,
+      "silent": false,
+      "clip_indexes": [
+       15
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 16,
+     "clip_id": 262161,
+     "size_bytes": 4256,
+     "start": 208400,
+     "field5": 1365,
+     "field6": 4133945444,
+     "field7": 16448,
+     "decoded": {
+      "frames": 266,
+      "samples": 7448,
+      "duration_s_at_22050": 0.338,
+      "peak": 30792,
+      "rms": 2335.1,
+      "nonzero_fraction": 0.947,
+      "silent": false,
+      "clip_indexes": [
+       16
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 17,
+     "clip_id": 262162,
+     "size_bytes": 3056,
+     "start": 212656,
+     "field5": 1365,
+     "field6": 4133945444,
+     "field7": 16448,
+     "decoded": {
+      "frames": 191,
+      "samples": 5348,
+      "duration_s_at_22050": 0.243,
+      "peak": 30581,
+      "rms": 3066.3,
+      "nonzero_fraction": 0.951,
+      "silent": false,
+      "clip_indexes": [
+       17
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 18,
+     "clip_id": 262163,
+     "size_bytes": 3040,
+     "start": 215712,
+     "field5": 1365,
+     "field6": 4133945444,
+     "field7": 16448,
+     "decoded": {
+      "frames": 190,
+      "samples": 5320,
+      "duration_s_at_22050": 0.241,
+      "peak": 30808,
+      "rms": 2609.7,
+      "nonzero_fraction": 0.964,
+      "silent": false,
+      "clip_indexes": [
+       18
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 19,
+     "clip_id": 262164,
+     "size_bytes": 2848,
+     "start": 218752,
+     "field5": 1365,
+     "field6": 4133945444,
+     "field7": 16448,
+     "decoded": {
+      "frames": 178,
+      "samples": 4984,
+      "duration_s_at_22050": 0.226,
+      "peak": 30759,
+      "rms": 2416.1,
+      "nonzero_fraction": 0.971,
+      "silent": false,
+      "clip_indexes": [
+       19
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 20,
+     "clip_id": 262165,
+     "size_bytes": 3008,
+     "start": 221600,
+     "field5": 1365,
+     "field6": 4133945444,
+     "field7": 16448,
+     "decoded": {
+      "frames": 188,
+      "samples": 5264,
+      "duration_s_at_22050": 0.239,
+      "peak": 29701,
+      "rms": 1941.4,
+      "nonzero_fraction": 0.961,
+      "silent": false,
+      "clip_indexes": [
+       20
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 21,
+     "clip_id": 327702,
+     "size_bytes": 2720,
+     "start": 224608,
+     "field5": 1365,
+     "field6": 4133945444,
+     "field7": 16448,
+     "decoded": {
+      "frames": 170,
+      "samples": 4760,
+      "duration_s_at_22050": 0.216,
+      "peak": 31199,
+      "rms": 2783.0,
+      "nonzero_fraction": 0.953,
+      "silent": false,
+      "clip_indexes": [
+       21
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 22,
+     "clip_id": 262167,
+     "size_bytes": 9984,
+     "start": 227328,
+     "field5": 1536,
+     "field6": 7864320,
+     "field7": 16448,
+     "decoded": {
+      "frames": 624,
+      "samples": 17472,
+      "duration_s_at_22050": 0.792,
+      "peak": 30687,
+      "rms": 8740.4,
+      "nonzero_fraction": 0.979,
+      "silent": false,
+      "clip_indexes": [
+       22
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 23,
+     "clip_id": 262168,
+     "size_bytes": 6064,
+     "start": 237312,
+     "field5": 1194,
+     "field6": 7864320,
+     "field7": 16448,
+     "decoded": {
+      "frames": 379,
+      "samples": 10612,
+      "duration_s_at_22050": 0.481,
+      "peak": 32613,
+      "rms": 8267.9,
+      "nonzero_fraction": 0.991,
+      "silent": false,
+      "clip_indexes": [
+       23
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 24,
+     "clip_id": 262169,
+     "size_bytes": 10592,
+     "start": 243376,
+     "field5": 1194,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 662,
+      "samples": 18536,
+      "duration_s_at_22050": 0.841,
+      "peak": 31236,
+      "rms": 5072.9,
+      "nonzero_fraction": 0.86,
+      "silent": false,
+      "clip_indexes": [
+       24
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 25,
+     "clip_id": 262170,
+     "size_bytes": 11536,
+     "start": 253968,
+     "field5": 1194,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 721,
+      "samples": 20188,
+      "duration_s_at_22050": 0.916,
+      "peak": 31585,
+      "rms": 6653.0,
+      "nonzero_fraction": 0.982,
+      "silent": false,
+      "clip_indexes": [
+       25
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 26,
+     "clip_id": 327707,
+     "size_bytes": 9184,
+     "start": 265504,
+     "field5": 1024,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 574,
+      "samples": 16072,
+      "duration_s_at_22050": 0.729,
+      "peak": 32746,
+      "rms": 10282.3,
+      "nonzero_fraction": 0.991,
+      "silent": false,
+      "clip_indexes": [
+       26
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 27,
+     "clip_id": 262172,
+     "size_bytes": 4224,
+     "start": 274688,
+     "field5": 940,
+     "field6": 7864320,
+     "field7": 16448,
+     "decoded": {
+      "frames": 264,
+      "samples": 7392,
+      "duration_s_at_22050": 0.335,
+      "peak": 30777,
+      "rms": 9819.3,
+      "nonzero_fraction": 0.993,
+      "silent": false,
+      "clip_indexes": [
+       27
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 28,
+     "clip_id": 262173,
+     "size_bytes": 7808,
+     "start": 278912,
+     "field5": 682,
+     "field6": 7667712,
+     "field7": 16448,
+     "decoded": {
+      "frames": 488,
+      "samples": 13664,
+      "duration_s_at_22050": 0.62,
+      "peak": 31650,
+      "rms": 6836.1,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       28
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 29,
+     "clip_id": 262174,
+     "size_bytes": 8800,
+     "start": 286720,
+     "field5": 940,
+     "field6": 7667712,
+     "field7": 16448,
+     "decoded": {
+      "frames": 550,
+      "samples": 15400,
+      "duration_s_at_22050": 0.698,
+      "peak": 32746,
+      "rms": 3377.4,
+      "nonzero_fraction": 0.918,
+      "silent": false,
+      "clip_indexes": [
+       29
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 30,
+     "clip_id": 262175,
+     "size_bytes": 6144,
+     "start": 295520,
+     "field5": 1365,
+     "field6": 7667712,
+     "field7": 16448,
+     "decoded": {
+      "frames": 384,
+      "samples": 10752,
+      "duration_s_at_22050": 0.488,
+      "peak": 32717,
+      "rms": 10224.5,
+      "nonzero_fraction": 0.987,
+      "silent": false,
+      "clip_indexes": [
+       30
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 31,
+     "clip_id": 262176,
+     "size_bytes": 8336,
+     "start": 301664,
+     "field5": 1365,
+     "field6": 7667712,
+     "field7": 16448,
+     "decoded": {
+      "frames": 521,
+      "samples": 14588,
+      "duration_s_at_22050": 0.662,
+      "peak": 32661,
+      "rms": 9324.6,
+      "nonzero_fraction": 0.986,
+      "silent": false,
+      "clip_indexes": [
+       31
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 32,
+     "clip_id": 262177,
+     "size_bytes": 7104,
+     "start": 310000,
+     "field5": 4281861461,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 444,
+      "samples": 12432,
+      "duration_s_at_22050": 0.564,
+      "peak": 29212,
+      "rms": 5698.7,
+      "nonzero_fraction": 0.832,
+      "silent": false,
+      "clip_indexes": [
+       32
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 33,
+     "clip_id": 262178,
+     "size_bytes": 9712,
+     "start": 317104,
+     "field5": 1024,
+     "field6": 7471104,
+     "field7": 16448,
+     "decoded": {
+      "frames": 607,
+      "samples": 16996,
+      "duration_s_at_22050": 0.771,
+      "peak": 30913,
+      "rms": 5230.3,
+      "nonzero_fraction": 0.94,
+      "silent": false,
+      "clip_indexes": [
+       33
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 34,
+     "clip_id": 262179,
+     "size_bytes": 19680,
+     "start": 326816,
+     "field5": 26215936,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1230,
+      "samples": 34440,
+      "duration_s_at_22050": 1.562,
+      "peak": 32762,
+      "rms": 7498.3,
+      "nonzero_fraction": 0.975,
+      "silent": false,
+      "clip_indexes": [
+       34
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 35,
+     "clip_id": 262180,
+     "size_bytes": 17184,
+     "start": 40256,
+     "field5": 52429742,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1074,
+      "samples": 30072,
+      "duration_s_at_22050": 1.364,
+      "peak": 31132,
+      "rms": 8607.2,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       5,
+       35,
+       36
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 36,
+     "clip_id": 262181,
+     "size_bytes": 17184,
+     "start": 40256,
+     "field5": 52429742,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1074,
+      "samples": 30072,
+      "duration_s_at_22050": 1.364,
+      "peak": 31132,
+      "rms": 8607.2,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       5,
+       35,
+       36
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 37,
+     "clip_id": 262182,
+     "size_bytes": 9024,
+     "start": 346496,
+     "field5": 1194,
+     "field6": 8060928,
+     "field7": 16448,
+     "decoded": {
+      "frames": 564,
+      "samples": 15792,
+      "duration_s_at_22050": 0.716,
+      "peak": 32726,
+      "rms": 8283.6,
+      "nonzero_fraction": 0.965,
+      "silent": false,
+      "clip_indexes": [
+       37
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 38,
+     "clip_id": 327719,
+     "size_bytes": 20512,
+     "start": 355520,
+     "field5": 1536,
+     "field6": 8060928,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1282,
+      "samples": 35896,
+      "duration_s_at_22050": 1.628,
+      "peak": 32643,
+      "rms": 6055.1,
+      "nonzero_fraction": 0.883,
+      "silent": false,
+      "clip_indexes": [
+       38,
+       44
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 39,
+     "clip_id": 262184,
+     "size_bytes": 18144,
+     "start": 376032,
+     "field5": 940,
+     "field6": 7208960,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1134,
+      "samples": 31752,
+      "duration_s_at_22050": 1.44,
+      "peak": 30826,
+      "rms": 10076.7,
+      "nonzero_fraction": 0.999,
+      "silent": false,
+      "clip_indexes": [
+       39
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 40,
+     "clip_id": 262185,
+     "size_bytes": 128,
+     "start": 394176,
+     "field5": 682,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 8,
+      "samples": 224,
+      "duration_s_at_22050": 0.01,
+      "peak": 31740,
+      "rms": 19651.6,
+      "nonzero_fraction": 0.871,
+      "silent": false,
+      "clip_indexes": [
+       40,
+       41,
+       42,
+       43
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 41,
+     "clip_id": 262186,
+     "size_bytes": 128,
+     "start": 394176,
+     "field5": 682,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 8,
+      "samples": 224,
+      "duration_s_at_22050": 0.01,
+      "peak": 31740,
+      "rms": 19651.6,
+      "nonzero_fraction": 0.871,
+      "silent": false,
+      "clip_indexes": [
+       40,
+       41,
+       42,
+       43
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 42,
+     "clip_id": 262187,
+     "size_bytes": 128,
+     "start": 394176,
+     "field5": 682,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 8,
+      "samples": 224,
+      "duration_s_at_22050": 0.01,
+      "peak": 31740,
+      "rms": 19651.6,
+      "nonzero_fraction": 0.871,
+      "silent": false,
+      "clip_indexes": [
+       40,
+       41,
+       42,
+       43
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 43,
+     "clip_id": 262188,
+     "size_bytes": 128,
+     "start": 394176,
+     "field5": 682,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 8,
+      "samples": 224,
+      "duration_s_at_22050": 0.01,
+      "peak": 31740,
+      "rms": 19651.6,
+      "nonzero_fraction": 0.871,
+      "silent": false,
+      "clip_indexes": [
+       40,
+       41,
+       42,
+       43
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 44,
+     "clip_id": 327725,
+     "size_bytes": 20512,
+     "start": 355520,
+     "field5": 1536,
+     "field6": 8060928,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1282,
+      "samples": 35896,
+      "duration_s_at_22050": 1.628,
+      "peak": 32643,
+      "rms": 6055.1,
+      "nonzero_fraction": 0.883,
+      "silent": false,
+      "clip_indexes": [
+       38,
+       44
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 45,
+     "clip_id": 262190,
+     "size_bytes": 3984,
+     "start": 394304,
+     "field5": 682,
+     "field6": 7208960,
+     "field7": 16448,
+     "decoded": {
+      "frames": 249,
+      "samples": 6972,
+      "duration_s_at_22050": 0.316,
+      "peak": 30813,
+      "rms": 10532.3,
+      "nonzero_fraction": 0.992,
+      "silent": false,
+      "clip_indexes": [
+       45
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 46,
+     "clip_id": 262191,
+     "size_bytes": 6688,
+     "start": 398288,
+     "field5": 26215082,
+     "field6": 8060928,
+     "field7": 16448,
+     "decoded": {
+      "frames": 418,
+      "samples": 11704,
+      "duration_s_at_22050": 0.531,
+      "peak": 31851,
+      "rms": 5516.3,
+      "nonzero_fraction": 0.876,
+      "silent": false,
+      "clip_indexes": [
+       46,
+       48
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 47,
+     "clip_id": 262192,
+     "size_bytes": 12272,
+     "start": 404976,
+     "field5": 940,
+     "field6": 8060928,
+     "field7": 16448,
+     "decoded": {
+      "frames": 767,
+      "samples": 21476,
+      "duration_s_at_22050": 0.974,
+      "peak": 31713,
+      "rms": 7215.2,
+      "nonzero_fraction": 0.939,
+      "silent": false,
+      "clip_indexes": [
+       47
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 48,
+     "clip_id": 262193,
+     "size_bytes": 6688,
+     "start": 398288,
+     "field5": 26215082,
+     "field6": 8060928,
+     "field7": 16384,
+     "decoded": {
+      "frames": 418,
+      "samples": 11704,
+      "duration_s_at_22050": 0.531,
+      "peak": 31851,
+      "rms": 5516.3,
+      "nonzero_fraction": 0.876,
+      "silent": false,
+      "clip_indexes": [
+       46,
+       48
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 49,
+     "clip_id": 262194,
+     "size_bytes": 6688,
+     "start": 417248,
+     "field5": 26215082,
+     "field6": 8060928,
+     "field7": 16511,
+     "decoded": {
+      "frames": 418,
+      "samples": 11704,
+      "duration_s_at_22050": 0.531,
+      "peak": 32403,
+      "rms": 5745.4,
+      "nonzero_fraction": 0.87,
+      "silent": false,
+      "clip_indexes": [
+       49
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 50,
+     "clip_id": 262195,
+     "size_bytes": 7056,
+     "start": 423936,
+     "field5": 1365,
+     "field6": 8060928,
+     "field7": 16448,
+     "decoded": {
+      "frames": 441,
+      "samples": 12348,
+      "duration_s_at_22050": 0.56,
+      "peak": 31173,
+      "rms": 9727.8,
+      "nonzero_fraction": 0.997,
+      "silent": false,
+      "clip_indexes": [
+       50
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 51,
+     "clip_id": 262196,
+     "size_bytes": 4288,
+     "start": 430992,
+     "field5": 1881,
+     "field6": 7667712,
+     "field7": 16448,
+     "decoded": {
+      "frames": 268,
+      "samples": 7504,
+      "duration_s_at_22050": 0.34,
+      "peak": 28672,
+      "rms": 6461.7,
+      "nonzero_fraction": 0.977,
+      "silent": false,
+      "clip_indexes": [
+       51
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 52,
+     "clip_id": 262197,
+     "size_bytes": 4704,
+     "start": 435280,
+     "field5": 1365,
+     "field6": 7667712,
+     "field7": 16448,
+     "decoded": {
+      "frames": 293,
+      "samples": 8204,
+      "truncated_bytes_past_eof": 16,
+      "duration_s_at_22050": 0.372,
+      "peak": 31699,
+      "rms": 9863.4,
+      "nonzero_fraction": 0.991,
+      "silent": false,
+      "clip_indexes": [
+       52
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 53,
+     "clip_id": 1127481344,
+     "size_bytes": 5888,
+     "start": 3536,
+     "field5": 1536,
+     "field6": 7208960,
+     "field7": 16448,
+     "decoded": {
+      "frames": 368,
+      "samples": 10304,
+      "duration_s_at_22050": 0.467,
+      "peak": 32598,
+      "rms": 6915.8,
+      "nonzero_fraction": 0.978,
+      "silent": false,
+      "clip_indexes": [
+       2,
+       53
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    }
+   ]
+  },
+  {
+   "source_file": "snd_c02lei.dat",
+   "container": "NOT P3Dp",
+   "note": "plain text (sound positions + event script), no audio payload",
+   "clips": []
+  },
+  {
+   "source_file": "snd_c10jin.dat",
+   "container": "P3Dp",
+   "size_bytes": 161088,
+   "clip_count": 18,
+   "payload_base": 1904,
+   "payload_alignment_delta": 12,
+   "payload_frames_valid": "1000/1000",
+   "unique_regions": 18,
+   "clips": [
+    {
+     "index": 0,
+     "clip_id": 100925441,
+     "size_bytes": 2656,
+     "start": 0,
+     "field5": 1881,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 166,
+      "samples": 4648,
+      "duration_s_at_22050": 0.211,
+      "peak": 30617,
+      "rms": 6452.8,
+      "nonzero_fraction": 0.987,
+      "silent": false,
+      "clip_indexes": [
+       0
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 1,
+     "clip_id": 100925442,
+     "size_bytes": 5248,
+     "start": 2656,
+     "field5": 1881,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 328,
+      "samples": 9184,
+      "duration_s_at_22050": 0.417,
+      "peak": 28672,
+      "rms": 9713.8,
+      "nonzero_fraction": 0.952,
+      "silent": false,
+      "clip_indexes": [
+       1
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 2,
+     "clip_id": 100925443,
+     "size_bytes": 3216,
+     "start": 7904,
+     "field5": 1881,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 201,
+      "samples": 5628,
+      "duration_s_at_22050": 0.255,
+      "peak": 30487,
+      "rms": 10398.7,
+      "nonzero_fraction": 0.992,
+      "silent": false,
+      "clip_indexes": [
+       2
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 3,
+     "clip_id": 100925444,
+     "size_bytes": 3184,
+     "start": 11120,
+     "field5": 1881,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 199,
+      "samples": 5572,
+      "duration_s_at_22050": 0.253,
+      "peak": 28672,
+      "rms": 6522.3,
+      "nonzero_fraction": 0.953,
+      "silent": false,
+      "clip_indexes": [
+       3
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 4,
+     "clip_id": 100925445,
+     "size_bytes": 4496,
+     "start": 14304,
+     "field5": 1881,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 281,
+      "samples": 7868,
+      "duration_s_at_22050": 0.357,
+      "peak": 28672,
+      "rms": 6336.6,
+      "nonzero_fraction": 0.967,
+      "silent": false,
+      "clip_indexes": [
+       4
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 5,
+     "clip_id": 100925446,
+     "size_bytes": 3808,
+     "start": 18800,
+     "field5": 1881,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 238,
+      "samples": 6664,
+      "duration_s_at_22050": 0.302,
+      "peak": 30529,
+      "rms": 11453.3,
+      "nonzero_fraction": 0.989,
+      "silent": false,
+      "clip_indexes": [
+       5
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 6,
+     "clip_id": 100925447,
+     "size_bytes": 5680,
+     "start": 22608,
+     "field5": 1881,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 355,
+      "samples": 9940,
+      "duration_s_at_22050": 0.451,
+      "peak": 28672,
+      "rms": 9679.3,
+      "nonzero_fraction": 0.993,
+      "silent": false,
+      "clip_indexes": [
+       6
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 7,
+     "clip_id": 100925448,
+     "size_bytes": 25040,
+     "start": 28288,
+     "field5": 1881,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1565,
+      "samples": 43820,
+      "duration_s_at_22050": 1.987,
+      "peak": 31119,
+      "rms": 7552.2,
+      "nonzero_fraction": 0.987,
+      "silent": false,
+      "clip_indexes": [
+       7
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 8,
+     "clip_id": 100925449,
+     "size_bytes": 12160,
+     "start": 53328,
+     "field5": 1881,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 760,
+      "samples": 21280,
+      "duration_s_at_22050": 0.965,
+      "peak": 29777,
+      "rms": 6889.9,
+      "nonzero_fraction": 0.949,
+      "silent": false,
+      "clip_indexes": [
+       8
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 9,
+     "clip_id": 100925450,
+     "size_bytes": 2960,
+     "start": 65488,
+     "field5": 1881,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 185,
+      "samples": 5180,
+      "duration_s_at_22050": 0.235,
+      "peak": 30252,
+      "rms": 4548.2,
+      "nonzero_fraction": 0.953,
+      "silent": false,
+      "clip_indexes": [
+       9
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 10,
+     "clip_id": 100925451,
+     "size_bytes": 2544,
+     "start": 68448,
+     "field5": 1881,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 159,
+      "samples": 4452,
+      "duration_s_at_22050": 0.202,
+      "peak": 30386,
+      "rms": 5683.0,
+      "nonzero_fraction": 0.981,
+      "silent": false,
+      "clip_indexes": [
+       10
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 11,
+     "clip_id": 100925452,
+     "size_bytes": 5264,
+     "start": 70992,
+     "field5": 1881,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 329,
+      "samples": 9212,
+      "duration_s_at_22050": 0.418,
+      "peak": 31309,
+      "rms": 7365.0,
+      "nonzero_fraction": 0.988,
+      "silent": false,
+      "clip_indexes": [
+       11
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 12,
+     "clip_id": 100925453,
+     "size_bytes": 4432,
+     "start": 76256,
+     "field5": 1881,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 277,
+      "samples": 7756,
+      "duration_s_at_22050": 0.352,
+      "peak": 29150,
+      "rms": 8595.5,
+      "nonzero_fraction": 0.989,
+      "silent": false,
+      "clip_indexes": [
+       12
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 13,
+     "clip_id": 100925454,
+     "size_bytes": 5168,
+     "start": 80688,
+     "field5": 1881,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 323,
+      "samples": 9044,
+      "duration_s_at_22050": 0.41,
+      "peak": 31491,
+      "rms": 6414.8,
+      "nonzero_fraction": 0.989,
+      "silent": false,
+      "clip_indexes": [
+       13
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 14,
+     "clip_id": 100925455,
+     "size_bytes": 8272,
+     "start": 85856,
+     "field5": 1881,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 517,
+      "samples": 14476,
+      "duration_s_at_22050": 0.657,
+      "peak": 29439,
+      "rms": 6687.8,
+      "nonzero_fraction": 0.937,
+      "silent": false,
+      "clip_indexes": [
+       14
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 15,
+     "clip_id": 100925456,
+     "size_bytes": 33984,
+     "start": 94128,
+     "field5": 1881,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 2124,
+      "samples": 59472,
+      "duration_s_at_22050": 2.697,
+      "peak": 30845,
+      "rms": 6161.7,
+      "nonzero_fraction": 0.762,
+      "silent": false,
+      "clip_indexes": [
+       15
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 16,
+     "clip_id": 262161,
+     "size_bytes": 24112,
+     "start": 128112,
+     "field5": 1881,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1507,
+      "samples": 42196,
+      "duration_s_at_22050": 1.914,
+      "peak": 30431,
+      "rms": 6551.8,
+      "nonzero_fraction": 0.836,
+      "silent": false,
+      "clip_indexes": [
+       16
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 17,
+     "clip_id": 1127481344,
+     "size_bytes": 6976,
+     "start": 152224,
+     "field5": 682,
+     "field6": 7077888,
+     "field7": 16448,
+     "decoded": {
+      "frames": 435,
+      "samples": 12180,
+      "truncated_bytes_past_eof": 16,
+      "duration_s_at_22050": 0.552,
+      "peak": 31501,
+      "rms": 6716.9,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       17
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    }
+   ]
+  },
+  {
+   "source_file": "snd_c15hei.dat",
+   "container": "P3Dp",
+   "size_bytes": 258320,
+   "clip_count": 27,
+   "payload_base": 2832,
+   "payload_alignment_delta": 4,
+   "payload_frames_valid": "1000/1000",
+   "unique_regions": 27,
+   "clips": [
+    {
+     "index": 0,
+     "clip_id": 201588737,
+     "size_bytes": 3040,
+     "start": 0,
+     "field5": 1881,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 190,
+      "samples": 5320,
+      "duration_s_at_22050": 0.241,
+      "peak": 31481,
+      "rms": 7630.9,
+      "nonzero_fraction": 0.986,
+      "silent": false,
+      "clip_indexes": [
+       0
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 1,
+     "clip_id": 201588738,
+     "size_bytes": 3024,
+     "start": 3040,
+     "field5": 1881,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 189,
+      "samples": 5292,
+      "duration_s_at_22050": 0.24,
+      "peak": 31730,
+      "rms": 9176.5,
+      "nonzero_fraction": 0.988,
+      "silent": false,
+      "clip_indexes": [
+       1
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 2,
+     "clip_id": 201588739,
+     "size_bytes": 3424,
+     "start": 6064,
+     "field5": 1881,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 214,
+      "samples": 5992,
+      "duration_s_at_22050": 0.272,
+      "peak": 31512,
+      "rms": 9573.6,
+      "nonzero_fraction": 0.958,
+      "silent": false,
+      "clip_indexes": [
+       2
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 3,
+     "clip_id": 201588740,
+     "size_bytes": 3600,
+     "start": 9488,
+     "field5": 1881,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 225,
+      "samples": 6300,
+      "duration_s_at_22050": 0.286,
+      "peak": 31735,
+      "rms": 10080.5,
+      "nonzero_fraction": 0.984,
+      "silent": false,
+      "clip_indexes": [
+       3
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 4,
+     "clip_id": 201588741,
+     "size_bytes": 6416,
+     "start": 13088,
+     "field5": 1881,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 401,
+      "samples": 11228,
+      "duration_s_at_22050": 0.509,
+      "peak": 30839,
+      "rms": 8061.0,
+      "nonzero_fraction": 0.928,
+      "silent": false,
+      "clip_indexes": [
+       4
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 5,
+     "clip_id": 201588742,
+     "size_bytes": 13200,
+     "start": 19504,
+     "field5": 1881,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 825,
+      "samples": 23100,
+      "duration_s_at_22050": 1.048,
+      "peak": 32385,
+      "rms": 11349.3,
+      "nonzero_fraction": 0.961,
+      "silent": false,
+      "clip_indexes": [
+       5
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 6,
+     "clip_id": 201588743,
+     "size_bytes": 4256,
+     "start": 32704,
+     "field5": 1881,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 266,
+      "samples": 7448,
+      "duration_s_at_22050": 0.338,
+      "peak": 31242,
+      "rms": 8943.2,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       6
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 7,
+     "clip_id": 201588744,
+     "size_bytes": 6144,
+     "start": 36960,
+     "field5": 1881,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 384,
+      "samples": 10752,
+      "duration_s_at_22050": 0.488,
+      "peak": 30611,
+      "rms": 10722.9,
+      "nonzero_fraction": 0.989,
+      "silent": false,
+      "clip_indexes": [
+       7
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 8,
+     "clip_id": 201588745,
+     "size_bytes": 5280,
+     "start": 43104,
+     "field5": 1881,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 330,
+      "samples": 9240,
+      "duration_s_at_22050": 0.419,
+      "peak": 31764,
+      "rms": 11571.1,
+      "nonzero_fraction": 0.993,
+      "silent": false,
+      "clip_indexes": [
+       8
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 9,
+     "clip_id": 201588746,
+     "size_bytes": 5408,
+     "start": 48384,
+     "field5": 1881,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 338,
+      "samples": 9464,
+      "duration_s_at_22050": 0.429,
+      "peak": 31669,
+      "rms": 10858.5,
+      "nonzero_fraction": 0.951,
+      "silent": false,
+      "clip_indexes": [
+       9
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 10,
+     "clip_id": 201588747,
+     "size_bytes": 4096,
+     "start": 53792,
+     "field5": 1881,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 256,
+      "samples": 7168,
+      "duration_s_at_22050": 0.325,
+      "peak": 30609,
+      "rms": 8162.2,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       10
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 11,
+     "clip_id": 201588748,
+     "size_bytes": 4304,
+     "start": 57888,
+     "field5": 1881,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 269,
+      "samples": 7532,
+      "duration_s_at_22050": 0.342,
+      "peak": 31746,
+      "rms": 8596.3,
+      "nonzero_fraction": 0.991,
+      "silent": false,
+      "clip_indexes": [
+       11
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 12,
+     "clip_id": 201588749,
+     "size_bytes": 5408,
+     "start": 62192,
+     "field5": 1881,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 338,
+      "samples": 9464,
+      "duration_s_at_22050": 0.429,
+      "peak": 30810,
+      "rms": 9273.5,
+      "nonzero_fraction": 0.996,
+      "silent": false,
+      "clip_indexes": [
+       12
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 13,
+     "clip_id": 201588750,
+     "size_bytes": 5664,
+     "start": 67600,
+     "field5": 1881,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 354,
+      "samples": 9912,
+      "duration_s_at_22050": 0.45,
+      "peak": 31600,
+      "rms": 8491.1,
+      "nonzero_fraction": 0.985,
+      "silent": false,
+      "clip_indexes": [
+       13
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 14,
+     "clip_id": 201588751,
+     "size_bytes": 9120,
+     "start": 73264,
+     "field5": 1881,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 570,
+      "samples": 15960,
+      "duration_s_at_22050": 0.724,
+      "peak": 32626,
+      "rms": 9153.8,
+      "nonzero_fraction": 0.988,
+      "silent": false,
+      "clip_indexes": [
+       14
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 15,
+     "clip_id": 201588752,
+     "size_bytes": 10144,
+     "start": 82384,
+     "field5": 1881,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 634,
+      "samples": 17752,
+      "duration_s_at_22050": 0.805,
+      "peak": 32482,
+      "rms": 8687.8,
+      "nonzero_fraction": 0.97,
+      "silent": false,
+      "clip_indexes": [
+       15
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 16,
+     "clip_id": 201588753,
+     "size_bytes": 7680,
+     "start": 92528,
+     "field5": 1881,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 480,
+      "samples": 13440,
+      "duration_s_at_22050": 0.61,
+      "peak": 31712,
+      "rms": 9148.5,
+      "nonzero_fraction": 0.987,
+      "silent": false,
+      "clip_indexes": [
+       16
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 17,
+     "clip_id": 201588754,
+     "size_bytes": 5792,
+     "start": 100208,
+     "field5": 1881,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 362,
+      "samples": 10136,
+      "duration_s_at_22050": 0.46,
+      "peak": 31653,
+      "rms": 8083.0,
+      "nonzero_fraction": 0.954,
+      "silent": false,
+      "clip_indexes": [
+       17
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 18,
+     "clip_id": 201588755,
+     "size_bytes": 26416,
+     "start": 106000,
+     "field5": 1881,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1651,
+      "samples": 46228,
+      "duration_s_at_22050": 2.097,
+      "peak": 30847,
+      "rms": 8765.7,
+      "nonzero_fraction": 0.988,
+      "silent": false,
+      "clip_indexes": [
+       18
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 19,
+     "clip_id": 262164,
+     "size_bytes": 45568,
+     "start": 132416,
+     "field5": 1881,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 2848,
+      "samples": 79744,
+      "duration_s_at_22050": 3.617,
+      "peak": 30922,
+      "rms": 5388.7,
+      "nonzero_fraction": 0.997,
+      "silent": false,
+      "clip_indexes": [
+       19
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 20,
+     "clip_id": 262165,
+     "size_bytes": 3440,
+     "start": 177984,
+     "field5": 1365,
+     "field6": 3966697672,
+     "field7": 16448,
+     "decoded": {
+      "frames": 215,
+      "samples": 6020,
+      "duration_s_at_22050": 0.273,
+      "peak": 31116,
+      "rms": 6897.2,
+      "nonzero_fraction": 0.98,
+      "silent": false,
+      "clip_indexes": [
+       20
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 21,
+     "clip_id": 262166,
+     "size_bytes": 3840,
+     "start": 181424,
+     "field5": 1365,
+     "field6": 3966697672,
+     "field7": 16448,
+     "decoded": {
+      "frames": 240,
+      "samples": 6720,
+      "duration_s_at_22050": 0.305,
+      "peak": 30748,
+      "rms": 6164.6,
+      "nonzero_fraction": 0.986,
+      "silent": false,
+      "clip_indexes": [
+       21
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 22,
+     "clip_id": 262167,
+     "size_bytes": 3584,
+     "start": 185264,
+     "field5": 1365,
+     "field6": 3966697672,
+     "field7": 16448,
+     "decoded": {
+      "frames": 224,
+      "samples": 6272,
+      "duration_s_at_22050": 0.284,
+      "peak": 30947,
+      "rms": 5843.2,
+      "nonzero_fraction": 0.99,
+      "silent": false,
+      "clip_indexes": [
+       22
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 23,
+     "clip_id": 262168,
+     "size_bytes": 3696,
+     "start": 188848,
+     "field5": 1365,
+     "field6": 3966697672,
+     "field7": 16448,
+     "decoded": {
+      "frames": 231,
+      "samples": 6468,
+      "duration_s_at_22050": 0.293,
+      "peak": 31134,
+      "rms": 5599.2,
+      "nonzero_fraction": 0.988,
+      "silent": false,
+      "clip_indexes": [
+       23
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 24,
+     "clip_id": 268697625,
+     "size_bytes": 6528,
+     "start": 192544,
+     "field5": 1365,
+     "field6": 7274496,
+     "field7": 16448,
+     "decoded": {
+      "frames": 408,
+      "samples": 11424,
+      "duration_s_at_22050": 0.518,
+      "peak": 32732,
+      "rms": 8847.7,
+      "nonzero_fraction": 0.991,
+      "silent": false,
+      "clip_indexes": [
+       24
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 25,
+     "clip_id": 268697626,
+     "size_bytes": 28208,
+     "start": 199072,
+     "field5": 1536,
+     "field6": 8192000,
+     "field7": 16384,
+     "decoded": {
+      "frames": 1763,
+      "samples": 49364,
+      "duration_s_at_22050": 2.239,
+      "peak": 32684,
+      "rms": 8261.1,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       25
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 26,
+     "clip_id": 1127481344,
+     "size_bytes": 28208,
+     "start": 227280,
+     "field5": 1536,
+     "field6": 8192000,
+     "field7": 16511,
+     "decoded": {
+      "frames": 1763,
+      "samples": 49364,
+      "duration_s_at_22050": 2.239,
+      "peak": 32751,
+      "rms": 9582.3,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       26
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    }
+   ]
+  },
+  {
+   "source_file": "snd_c21jac.dat",
+   "container": "P3Dp",
+   "size_bytes": 171104,
+   "clip_count": 30,
+   "payload_base": 3152,
+   "payload_alignment_delta": 12,
+   "payload_frames_valid": "1000/1000",
+   "unique_regions": 19,
+   "clips": [
+    {
+     "index": 0,
+     "clip_id": 262145,
+     "size_bytes": 10144,
+     "start": 0,
+     "field5": 1881,
+     "field6": 8060928,
+     "field7": 16448,
+     "decoded": {
+      "frames": 634,
+      "samples": 17752,
+      "duration_s_at_22050": 0.805,
+      "peak": 30481,
+      "rms": 4349.2,
+      "nonzero_fraction": 0.975,
+      "silent": false,
+      "clip_indexes": [
+       0
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 1,
+     "clip_id": 262146,
+     "size_bytes": 6416,
+     "start": 10144,
+     "field5": 1881,
+     "field6": 8060928,
+     "field7": 16448,
+     "decoded": {
+      "frames": 401,
+      "samples": 11228,
+      "duration_s_at_22050": 0.509,
+      "peak": 29573,
+      "rms": 5326.7,
+      "nonzero_fraction": 0.997,
+      "silent": false,
+      "clip_indexes": [
+       1
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 2,
+     "clip_id": 262147,
+     "size_bytes": 4800,
+     "start": 16560,
+     "field5": 1881,
+     "field6": 8060928,
+     "field7": 16448,
+     "decoded": {
+      "frames": 300,
+      "samples": 8400,
+      "duration_s_at_22050": 0.381,
+      "peak": 29736,
+      "rms": 5186.7,
+      "nonzero_fraction": 0.988,
+      "silent": false,
+      "clip_indexes": [
+       2
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 3,
+     "clip_id": 262148,
+     "size_bytes": 3712,
+     "start": 21360,
+     "field5": 1881,
+     "field6": 8060928,
+     "field7": 16448,
+     "decoded": {
+      "frames": 232,
+      "samples": 6496,
+      "duration_s_at_22050": 0.295,
+      "peak": 30387,
+      "rms": 7195.8,
+      "nonzero_fraction": 0.988,
+      "silent": false,
+      "clip_indexes": [
+       3
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 4,
+     "clip_id": 262149,
+     "size_bytes": 15744,
+     "start": 25072,
+     "field5": 1881,
+     "field6": 8060928,
+     "field7": 16448,
+     "decoded": {
+      "frames": 984,
+      "samples": 27552,
+      "duration_s_at_22050": 1.25,
+      "peak": 29767,
+      "rms": 7878.1,
+      "nonzero_fraction": 0.999,
+      "silent": false,
+      "clip_indexes": [
+       4
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 5,
+     "clip_id": 262150,
+     "size_bytes": 13856,
+     "start": 40816,
+     "field5": 1881,
+     "field6": 8060928,
+     "field7": 16448,
+     "decoded": {
+      "frames": 866,
+      "samples": 24248,
+      "duration_s_at_22050": 1.1,
+      "peak": 30482,
+      "rms": 8021.1,
+      "nonzero_fraction": 0.996,
+      "silent": false,
+      "clip_indexes": [
+       5
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 6,
+     "clip_id": 262151,
+     "size_bytes": 6896,
+     "start": 54672,
+     "field5": 1881,
+     "field6": 8060928,
+     "field7": 16448,
+     "decoded": {
+      "frames": 431,
+      "samples": 12068,
+      "duration_s_at_22050": 0.547,
+      "peak": 30190,
+      "rms": 5845.7,
+      "nonzero_fraction": 0.993,
+      "silent": false,
+      "clip_indexes": [
+       6
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 7,
+     "clip_id": 262152,
+     "size_bytes": 4480,
+     "start": 61568,
+     "field5": 1881,
+     "field6": 8060928,
+     "field7": 16448,
+     "decoded": {
+      "frames": 280,
+      "samples": 7840,
+      "duration_s_at_22050": 0.356,
+      "peak": 30772,
+      "rms": 5765.6,
+      "nonzero_fraction": 0.993,
+      "silent": false,
+      "clip_indexes": [
+       7
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 8,
+     "clip_id": 262153,
+     "size_bytes": 5408,
+     "start": 66048,
+     "field5": 1881,
+     "field6": 8060928,
+     "field7": 16448,
+     "decoded": {
+      "frames": 338,
+      "samples": 9464,
+      "duration_s_at_22050": 0.429,
+      "peak": 30212,
+      "rms": 8146.4,
+      "nonzero_fraction": 0.996,
+      "silent": false,
+      "clip_indexes": [
+       8
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 9,
+     "clip_id": 327690,
+     "size_bytes": 19568,
+     "start": 71456,
+     "field5": 1881,
+     "field6": 8060928,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1223,
+      "samples": 34244,
+      "duration_s_at_22050": 1.553,
+      "peak": 30232,
+      "rms": 7142.2,
+      "nonzero_fraction": 0.998,
+      "silent": false,
+      "clip_indexes": [
+       9
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 10,
+     "clip_id": 262155,
+     "size_bytes": 640,
+     "start": 91024,
+     "field5": 682,
+     "field6": 7536640,
+     "field7": 16448,
+     "decoded": {
+      "frames": 40,
+      "samples": 1120,
+      "duration_s_at_22050": 0.051,
+      "peak": 28672,
+      "rms": 12359.0,
+      "nonzero_fraction": 0.869,
+      "silent": false,
+      "clip_indexes": [
+       10
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 11,
+     "clip_id": 262156,
+     "size_bytes": 3200,
+     "start": 91664,
+     "field5": 1881,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 200,
+      "samples": 5600,
+      "duration_s_at_22050": 0.254,
+      "peak": 29986,
+      "rms": 4772.2,
+      "nonzero_fraction": 0.913,
+      "silent": false,
+      "clip_indexes": [
+       11
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 12,
+     "clip_id": 262157,
+     "size_bytes": 6352,
+     "start": 94864,
+     "field5": 940,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 397,
+      "samples": 11116,
+      "duration_s_at_22050": 0.504,
+      "peak": 28672,
+      "rms": 9989.6,
+      "nonzero_fraction": 0.956,
+      "silent": false,
+      "clip_indexes": [
+       12,
+       19,
+       20,
+       21,
+       22,
+       23,
+       24,
+       25,
+       26,
+       27,
+       28,
+       29
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 13,
+     "clip_id": 262158,
+     "size_bytes": 5232,
+     "start": 101216,
+     "field5": 1365,
+     "field6": 343081060,
+     "field7": 16448,
+     "decoded": {
+      "frames": 327,
+      "samples": 9156,
+      "duration_s_at_22050": 0.415,
+      "peak": 32768,
+      "rms": 12319.0,
+      "nonzero_fraction": 0.962,
+      "silent": false,
+      "clip_indexes": [
+       13
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 14,
+     "clip_id": 262159,
+     "size_bytes": 4768,
+     "start": 106448,
+     "field5": 1365,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 298,
+      "samples": 8344,
+      "duration_s_at_22050": 0.378,
+      "peak": 32248,
+      "rms": 12906.7,
+      "nonzero_fraction": 0.988,
+      "silent": false,
+      "clip_indexes": [
+       14
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 15,
+     "clip_id": 262160,
+     "size_bytes": 23120,
+     "start": 111216,
+     "field5": 19662165,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1445,
+      "samples": 40460,
+      "duration_s_at_22050": 1.835,
+      "peak": 32737,
+      "rms": 9316.0,
+      "nonzero_fraction": 0.999,
+      "silent": false,
+      "clip_indexes": [
+       15
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 16,
+     "clip_id": 262161,
+     "size_bytes": 11936,
+     "start": 134336,
+     "field5": 19662165,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 746,
+      "samples": 20888,
+      "duration_s_at_22050": 0.947,
+      "peak": 32756,
+      "rms": 12625.5,
+      "nonzero_fraction": 0.997,
+      "silent": false,
+      "clip_indexes": [
+       16
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 17,
+     "clip_id": 327698,
+     "size_bytes": 13776,
+     "start": 146272,
+     "field5": 1365,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 861,
+      "samples": 24108,
+      "duration_s_at_22050": 1.093,
+      "peak": 32768,
+      "rms": 19564.0,
+      "nonzero_fraction": 0.998,
+      "silent": false,
+      "clip_indexes": [
+       17
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 18,
+     "clip_id": 262163,
+     "size_bytes": 7920,
+     "start": 160048,
+     "field5": 1365,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 494,
+      "samples": 13832,
+      "truncated_bytes_past_eof": 16,
+      "duration_s_at_22050": 0.627,
+      "peak": 32768,
+      "rms": 17262.7,
+      "nonzero_fraction": 1.0,
+      "silent": false,
+      "clip_indexes": [
+       18
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 19,
+     "clip_id": 262164,
+     "size_bytes": 6352,
+     "start": 94864,
+     "field5": 940,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 397,
+      "samples": 11116,
+      "duration_s_at_22050": 0.504,
+      "peak": 28672,
+      "rms": 9989.6,
+      "nonzero_fraction": 0.956,
+      "silent": false,
+      "clip_indexes": [
+       12,
+       19,
+       20,
+       21,
+       22,
+       23,
+       24,
+       25,
+       26,
+       27,
+       28,
+       29
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 20,
+     "clip_id": 262165,
+     "size_bytes": 6352,
+     "start": 94864,
+     "field5": 940,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 397,
+      "samples": 11116,
+      "duration_s_at_22050": 0.504,
+      "peak": 28672,
+      "rms": 9989.6,
+      "nonzero_fraction": 0.956,
+      "silent": false,
+      "clip_indexes": [
+       12,
+       19,
+       20,
+       21,
+       22,
+       23,
+       24,
+       25,
+       26,
+       27,
+       28,
+       29
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 21,
+     "clip_id": 262166,
+     "size_bytes": 6352,
+     "start": 94864,
+     "field5": 940,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 397,
+      "samples": 11116,
+      "duration_s_at_22050": 0.504,
+      "peak": 28672,
+      "rms": 9989.6,
+      "nonzero_fraction": 0.956,
+      "silent": false,
+      "clip_indexes": [
+       12,
+       19,
+       20,
+       21,
+       22,
+       23,
+       24,
+       25,
+       26,
+       27,
+       28,
+       29
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 22,
+     "clip_id": 262167,
+     "size_bytes": 6352,
+     "start": 94864,
+     "field5": 940,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 397,
+      "samples": 11116,
+      "duration_s_at_22050": 0.504,
+      "peak": 28672,
+      "rms": 9989.6,
+      "nonzero_fraction": 0.956,
+      "silent": false,
+      "clip_indexes": [
+       12,
+       19,
+       20,
+       21,
+       22,
+       23,
+       24,
+       25,
+       26,
+       27,
+       28,
+       29
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 23,
+     "clip_id": 262168,
+     "size_bytes": 6352,
+     "start": 94864,
+     "field5": 940,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 397,
+      "samples": 11116,
+      "duration_s_at_22050": 0.504,
+      "peak": 28672,
+      "rms": 9989.6,
+      "nonzero_fraction": 0.956,
+      "silent": false,
+      "clip_indexes": [
+       12,
+       19,
+       20,
+       21,
+       22,
+       23,
+       24,
+       25,
+       26,
+       27,
+       28,
+       29
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 24,
+     "clip_id": 262169,
+     "size_bytes": 6352,
+     "start": 94864,
+     "field5": 940,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 397,
+      "samples": 11116,
+      "duration_s_at_22050": 0.504,
+      "peak": 28672,
+      "rms": 9989.6,
+      "nonzero_fraction": 0.956,
+      "silent": false,
+      "clip_indexes": [
+       12,
+       19,
+       20,
+       21,
+       22,
+       23,
+       24,
+       25,
+       26,
+       27,
+       28,
+       29
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 25,
+     "clip_id": 262170,
+     "size_bytes": 6352,
+     "start": 94864,
+     "field5": 940,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 397,
+      "samples": 11116,
+      "duration_s_at_22050": 0.504,
+      "peak": 28672,
+      "rms": 9989.6,
+      "nonzero_fraction": 0.956,
+      "silent": false,
+      "clip_indexes": [
+       12,
+       19,
+       20,
+       21,
+       22,
+       23,
+       24,
+       25,
+       26,
+       27,
+       28,
+       29
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 26,
+     "clip_id": 262171,
+     "size_bytes": 6352,
+     "start": 94864,
+     "field5": 940,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 397,
+      "samples": 11116,
+      "duration_s_at_22050": 0.504,
+      "peak": 28672,
+      "rms": 9989.6,
+      "nonzero_fraction": 0.956,
+      "silent": false,
+      "clip_indexes": [
+       12,
+       19,
+       20,
+       21,
+       22,
+       23,
+       24,
+       25,
+       26,
+       27,
+       28,
+       29
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 27,
+     "clip_id": 262172,
+     "size_bytes": 6352,
+     "start": 94864,
+     "field5": 940,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 397,
+      "samples": 11116,
+      "duration_s_at_22050": 0.504,
+      "peak": 28672,
+      "rms": 9989.6,
+      "nonzero_fraction": 0.956,
+      "silent": false,
+      "clip_indexes": [
+       12,
+       19,
+       20,
+       21,
+       22,
+       23,
+       24,
+       25,
+       26,
+       27,
+       28,
+       29
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 28,
+     "clip_id": 262173,
+     "size_bytes": 6352,
+     "start": 94864,
+     "field5": 940,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 397,
+      "samples": 11116,
+      "duration_s_at_22050": 0.504,
+      "peak": 28672,
+      "rms": 9989.6,
+      "nonzero_fraction": 0.956,
+      "silent": false,
+      "clip_indexes": [
+       12,
+       19,
+       20,
+       21,
+       22,
+       23,
+       24,
+       25,
+       26,
+       27,
+       28,
+       29
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 29,
+     "clip_id": 1127481344,
+     "size_bytes": 6352,
+     "start": 94864,
+     "field5": 940,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 397,
+      "samples": 11116,
+      "duration_s_at_22050": 0.504,
+      "peak": 28672,
+      "rms": 9989.6,
+      "nonzero_fraction": 0.956,
+      "silent": false,
+      "clip_indexes": [
+       12,
+       19,
+       20,
+       21,
+       22,
+       23,
+       24,
+       25,
+       26,
+       27,
+       28,
+       29
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    }
+   ]
+  },
+  {
+   "source_file": "snd_c30dvj.dat",
+   "container": "P3Dp",
+   "size_bytes": 260112,
+   "clip_count": 24,
+   "payload_base": 2528,
+   "payload_alignment_delta": 12,
+   "payload_frames_valid": "1000/1000",
+   "unique_regions": 21,
+   "clips": [
+    {
+     "index": 0,
+     "clip_id": 100925441,
+     "size_bytes": 5840,
+     "start": 0,
+     "field5": 1365,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 365,
+      "samples": 10220,
+      "duration_s_at_22050": 0.463,
+      "peak": 32768,
+      "rms": 15183.8,
+      "nonzero_fraction": 0.947,
+      "silent": false,
+      "clip_indexes": [
+       0
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 1,
+     "clip_id": 100925442,
+     "size_bytes": 5488,
+     "start": 5840,
+     "field5": 1881,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 343,
+      "samples": 9604,
+      "duration_s_at_22050": 0.436,
+      "peak": 31209,
+      "rms": 5416.0,
+      "nonzero_fraction": 0.991,
+      "silent": false,
+      "clip_indexes": [
+       1
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 2,
+     "clip_id": 100925443,
+     "size_bytes": 8320,
+     "start": 11328,
+     "field5": 1881,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 520,
+      "samples": 14560,
+      "duration_s_at_22050": 0.66,
+      "peak": 30882,
+      "rms": 9169.2,
+      "nonzero_fraction": 0.97,
+      "silent": false,
+      "clip_indexes": [
+       2
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 3,
+     "clip_id": 100925444,
+     "size_bytes": 6320,
+     "start": 19648,
+     "field5": 1881,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 395,
+      "samples": 11060,
+      "duration_s_at_22050": 0.502,
+      "peak": 30771,
+      "rms": 7725.2,
+      "nonzero_fraction": 0.997,
+      "silent": false,
+      "clip_indexes": [
+       3
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 4,
+     "clip_id": 100925445,
+     "size_bytes": 6064,
+     "start": 25968,
+     "field5": 1881,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 379,
+      "samples": 10612,
+      "duration_s_at_22050": 0.481,
+      "peak": 28672,
+      "rms": 6012.3,
+      "nonzero_fraction": 0.974,
+      "silent": false,
+      "clip_indexes": [
+       4
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 5,
+     "clip_id": 100925446,
+     "size_bytes": 6784,
+     "start": 32032,
+     "field5": 1881,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 424,
+      "samples": 11872,
+      "duration_s_at_22050": 0.538,
+      "peak": 30844,
+      "rms": 6290.4,
+      "nonzero_fraction": 0.979,
+      "silent": false,
+      "clip_indexes": [
+       5
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 6,
+     "clip_id": 100925447,
+     "size_bytes": 6592,
+     "start": 38816,
+     "field5": 1881,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 412,
+      "samples": 11536,
+      "duration_s_at_22050": 0.523,
+      "peak": 31906,
+      "rms": 9196.8,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       6
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 7,
+     "clip_id": 100925448,
+     "size_bytes": 8704,
+     "start": 45408,
+     "field5": 1881,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 544,
+      "samples": 15232,
+      "duration_s_at_22050": 0.691,
+      "peak": 30519,
+      "rms": 8303.9,
+      "nonzero_fraction": 0.992,
+      "silent": false,
+      "clip_indexes": [
+       7
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 8,
+     "clip_id": 100925449,
+     "size_bytes": 26992,
+     "start": 54112,
+     "field5": 1881,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1687,
+      "samples": 47236,
+      "duration_s_at_22050": 2.142,
+      "peak": 31624,
+      "rms": 8261.1,
+      "nonzero_fraction": 0.996,
+      "silent": false,
+      "clip_indexes": [
+       8
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 9,
+     "clip_id": 100925450,
+     "size_bytes": 15168,
+     "start": 81104,
+     "field5": 1881,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 948,
+      "samples": 26544,
+      "duration_s_at_22050": 1.204,
+      "peak": 30990,
+      "rms": 7378.6,
+      "nonzero_fraction": 0.963,
+      "silent": false,
+      "clip_indexes": [
+       9
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 10,
+     "clip_id": 100925451,
+     "size_bytes": 5312,
+     "start": 96272,
+     "field5": 1881,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 332,
+      "samples": 9296,
+      "duration_s_at_22050": 0.422,
+      "peak": 30824,
+      "rms": 4052.4,
+      "nonzero_fraction": 0.994,
+      "silent": false,
+      "clip_indexes": [
+       10
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 11,
+     "clip_id": 100925452,
+     "size_bytes": 4704,
+     "start": 101584,
+     "field5": 1881,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 294,
+      "samples": 8232,
+      "duration_s_at_22050": 0.373,
+      "peak": 30113,
+      "rms": 4862.4,
+      "nonzero_fraction": 0.996,
+      "silent": false,
+      "clip_indexes": [
+       11
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 12,
+     "clip_id": 100925453,
+     "size_bytes": 8384,
+     "start": 106288,
+     "field5": 1881,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 524,
+      "samples": 14672,
+      "duration_s_at_22050": 0.665,
+      "peak": 30596,
+      "rms": 6615.0,
+      "nonzero_fraction": 0.996,
+      "silent": false,
+      "clip_indexes": [
+       12
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 13,
+     "clip_id": 100925454,
+     "size_bytes": 7776,
+     "start": 114672,
+     "field5": 1881,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 486,
+      "samples": 13608,
+      "duration_s_at_22050": 0.617,
+      "peak": 30991,
+      "rms": 7809.8,
+      "nonzero_fraction": 0.996,
+      "silent": false,
+      "clip_indexes": [
+       13
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 14,
+     "clip_id": 100925455,
+     "size_bytes": 7792,
+     "start": 122448,
+     "field5": 1881,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 487,
+      "samples": 13636,
+      "duration_s_at_22050": 0.618,
+      "peak": 30775,
+      "rms": 6343.8,
+      "nonzero_fraction": 0.998,
+      "silent": false,
+      "clip_indexes": [
+       14
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 15,
+     "clip_id": 100925456,
+     "size_bytes": 10896,
+     "start": 130240,
+     "field5": 1881,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 681,
+      "samples": 19068,
+      "duration_s_at_22050": 0.865,
+      "peak": 30730,
+      "rms": 6503.9,
+      "nonzero_fraction": 0.971,
+      "silent": false,
+      "clip_indexes": [
+       15,
+       22,
+       23
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 16,
+     "clip_id": 100925457,
+     "size_bytes": 35456,
+     "start": 141136,
+     "field5": 1881,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 2216,
+      "samples": 62048,
+      "duration_s_at_22050": 2.814,
+      "peak": 30321,
+      "rms": 7205.3,
+      "nonzero_fraction": 0.997,
+      "silent": false,
+      "clip_indexes": [
+       16
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 17,
+     "clip_id": 262162,
+     "size_bytes": 27216,
+     "start": 176592,
+     "field5": 1881,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1701,
+      "samples": 47628,
+      "duration_s_at_22050": 2.16,
+      "peak": 30787,
+      "rms": 6890.8,
+      "nonzero_fraction": 0.997,
+      "silent": false,
+      "clip_indexes": [
+       17
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 18,
+     "clip_id": 262163,
+     "size_bytes": 21280,
+     "start": 203808,
+     "field5": 1365,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1330,
+      "samples": 37240,
+      "duration_s_at_22050": 1.689,
+      "peak": 32440,
+      "rms": 7109.9,
+      "nonzero_fraction": 0.966,
+      "silent": false,
+      "clip_indexes": [
+       18
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 19,
+     "clip_id": 262164,
+     "size_bytes": 20112,
+     "start": 225088,
+     "field5": 1365,
+     "field6": 7667712,
+     "field7": 16384,
+     "decoded": {
+      "frames": 1257,
+      "samples": 35196,
+      "duration_s_at_22050": 1.596,
+      "peak": 32695,
+      "rms": 12590.2,
+      "nonzero_fraction": 0.996,
+      "silent": false,
+      "clip_indexes": [
+       19,
+       20
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 20,
+     "clip_id": 262165,
+     "size_bytes": 20112,
+     "start": 225088,
+     "field5": 1365,
+     "field6": 7667712,
+     "field7": 16511,
+     "decoded": {
+      "frames": 1257,
+      "samples": 35196,
+      "duration_s_at_22050": 1.596,
+      "peak": 32695,
+      "rms": 12590.2,
+      "nonzero_fraction": 0.996,
+      "silent": false,
+      "clip_indexes": [
+       19,
+       20
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 21,
+     "clip_id": 262166,
+     "size_bytes": 12400,
+     "start": 245200,
+     "field5": 1194,
+     "field6": 7471104,
+     "field7": 16448,
+     "decoded": {
+      "frames": 774,
+      "samples": 21672,
+      "truncated_bytes_past_eof": 16,
+      "duration_s_at_22050": 0.983,
+      "peak": 31984,
+      "rms": 8652.0,
+      "nonzero_fraction": 0.983,
+      "silent": false,
+      "clip_indexes": [
+       21
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 22,
+     "clip_id": 262167,
+     "size_bytes": 10896,
+     "start": 130240,
+     "field5": 1881,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 681,
+      "samples": 19068,
+      "duration_s_at_22050": 0.865,
+      "peak": 30730,
+      "rms": 6503.9,
+      "nonzero_fraction": 0.971,
+      "silent": false,
+      "clip_indexes": [
+       15,
+       22,
+       23
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 23,
+     "clip_id": 1127481344,
+     "size_bytes": 10896,
+     "start": 130240,
+     "field5": 1881,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 681,
+      "samples": 19068,
+      "duration_s_at_22050": 0.865,
+      "peak": 30730,
+      "rms": 6503.9,
+      "nonzero_fraction": 0.971,
+      "silent": false,
+      "clip_indexes": [
+       15,
+       22,
+       23
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    }
+   ]
+  },
+  {
+   "source_file": "snd_c_03_ogre.dat",
+   "container": "P3Dp",
+   "size_bytes": 131952,
+   "clip_count": 12,
+   "payload_base": 1280,
+   "payload_alignment_delta": 12,
+   "payload_frames_valid": "1000/1000",
+   "unique_regions": 11,
+   "clips": [
+    {
+     "index": 0,
+     "clip_id": 262145,
+     "size_bytes": 28432,
+     "start": 0,
+     "field5": 1536,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1777,
+      "samples": 49756,
+      "duration_s_at_22050": 2.257,
+      "peak": 31084,
+      "rms": 9999.1,
+      "nonzero_fraction": 0.982,
+      "silent": false,
+      "clip_indexes": [
+       0
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 1,
+     "clip_id": 262146,
+     "size_bytes": 11248,
+     "start": 28432,
+     "field5": 940,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 703,
+      "samples": 19684,
+      "duration_s_at_22050": 0.893,
+      "peak": 32745,
+      "rms": 9335.9,
+      "nonzero_fraction": 0.992,
+      "silent": false,
+      "clip_indexes": [
+       1
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 2,
+     "clip_id": 262147,
+     "size_bytes": 6576,
+     "start": 39680,
+     "field5": 1365,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 411,
+      "samples": 11508,
+      "duration_s_at_22050": 0.522,
+      "peak": 32574,
+      "rms": 8890.1,
+      "nonzero_fraction": 0.973,
+      "silent": false,
+      "clip_indexes": [
+       2
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 3,
+     "clip_id": 262148,
+     "size_bytes": 8656,
+     "start": 46256,
+     "field5": 1365,
+     "field6": 7208960,
+     "field7": 16384,
+     "decoded": {
+      "frames": 541,
+      "samples": 15148,
+      "duration_s_at_22050": 0.687,
+      "peak": 29675,
+      "rms": 5389.5,
+      "nonzero_fraction": 0.989,
+      "silent": false,
+      "clip_indexes": [
+       3
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 4,
+     "clip_id": 262149,
+     "size_bytes": 8656,
+     "start": 54912,
+     "field5": 1365,
+     "field6": 7208960,
+     "field7": 16511,
+     "decoded": {
+      "frames": 541,
+      "samples": 15148,
+      "duration_s_at_22050": 0.687,
+      "peak": 27713,
+      "rms": 5196.1,
+      "nonzero_fraction": 0.99,
+      "silent": false,
+      "clip_indexes": [
+       4
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 5,
+     "clip_id": 262150,
+     "size_bytes": 4528,
+     "start": 63568,
+     "field5": 940,
+     "field6": 343408690,
+     "field7": 16448,
+     "decoded": {
+      "frames": 283,
+      "samples": 7924,
+      "duration_s_at_22050": 0.359,
+      "peak": 32485,
+      "rms": 10349.3,
+      "nonzero_fraction": 0.99,
+      "silent": false,
+      "clip_indexes": [
+       5
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 6,
+     "clip_id": 262151,
+     "size_bytes": 28176,
+     "start": 68096,
+     "field5": 1024,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1761,
+      "samples": 49308,
+      "duration_s_at_22050": 2.236,
+      "peak": 32607,
+      "rms": 7345.6,
+      "nonzero_fraction": 0.998,
+      "silent": false,
+      "clip_indexes": [
+       6
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 7,
+     "clip_id": 262152,
+     "size_bytes": 5200,
+     "start": 96272,
+     "field5": 1024,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 325,
+      "samples": 9100,
+      "duration_s_at_22050": 0.413,
+      "peak": 31491,
+      "rms": 10020.2,
+      "nonzero_fraction": 0.992,
+      "silent": false,
+      "clip_indexes": [
+       7
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 8,
+     "clip_id": 262153,
+     "size_bytes": 12976,
+     "start": 101472,
+     "field5": 1024,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 811,
+      "samples": 22708,
+      "duration_s_at_22050": 1.03,
+      "peak": 31637,
+      "rms": 8089.0,
+      "nonzero_fraction": 0.996,
+      "silent": false,
+      "clip_indexes": [
+       8
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 9,
+     "clip_id": 262154,
+     "size_bytes": 10608,
+     "start": 114448,
+     "field5": 1194,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 663,
+      "samples": 18564,
+      "duration_s_at_22050": 0.842,
+      "peak": 32746,
+      "rms": 11181.5,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       9
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 10,
+     "clip_id": 262155,
+     "size_bytes": 5632,
+     "start": 125056,
+     "field5": 1024,
+     "field6": 343408640,
+     "field7": 16448,
+     "decoded": {
+      "frames": 351,
+      "samples": 9828,
+      "truncated_bytes_past_eof": 16,
+      "duration_s_at_22050": 0.446,
+      "peak": 31316,
+      "rms": 8811.8,
+      "nonzero_fraction": 0.999,
+      "silent": false,
+      "clip_indexes": [
+       10,
+       11
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 11,
+     "clip_id": 1127481344,
+     "size_bytes": 5632,
+     "start": 125056,
+     "field5": 1024,
+     "field6": 343408640,
+     "field7": 16448,
+     "decoded": {
+      "frames": 351,
+      "samples": 9828,
+      "truncated_bytes_past_eof": 16,
+      "duration_s_at_22050": 0.446,
+      "peak": 31316,
+      "rms": 8811.8,
+      "nonzero_fraction": 0.999,
+      "silent": false,
+      "clip_indexes": [
+       10,
+       11
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    }
+   ]
+  },
+  {
+   "source_file": "snd_c_04_iseki.dat",
+   "container": "P3Dp",
+   "size_bytes": 242272,
+   "clip_count": 10,
+   "payload_base": 1072,
+   "payload_alignment_delta": 12,
+   "payload_frames_valid": "1000/1000",
+   "unique_regions": 7,
+   "clips": [
+    {
+     "index": 0,
+     "clip_id": 262145,
+     "size_bytes": 35904,
+     "start": 0,
+     "field5": 1365,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 2244,
+      "samples": 62832,
+      "duration_s_at_22050": 2.85,
+      "peak": 30974,
+      "rms": 6530.5,
+      "nonzero_fraction": 0.993,
+      "silent": false,
+      "clip_indexes": [
+       0
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 1,
+     "clip_id": 327682,
+     "size_bytes": 20336,
+     "start": 35904,
+     "field5": 1024,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1271,
+      "samples": 35588,
+      "duration_s_at_22050": 1.614,
+      "peak": 30997,
+      "rms": 5750.9,
+      "nonzero_fraction": 0.978,
+      "silent": false,
+      "clip_indexes": [
+       1
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 2,
+     "clip_id": 262147,
+     "size_bytes": 71840,
+     "start": 56240,
+     "field5": 1881,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 4490,
+      "samples": 125720,
+      "duration_s_at_22050": 5.702,
+      "peak": 32720,
+      "rms": 8641.7,
+      "nonzero_fraction": 0.895,
+      "silent": false,
+      "clip_indexes": [
+       2
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 3,
+     "clip_id": 327684,
+     "size_bytes": 24432,
+     "start": 128080,
+     "field5": 1365,
+     "field6": 8323072,
+     "field7": 16384,
+     "decoded": {
+      "frames": 1527,
+      "samples": 42756,
+      "duration_s_at_22050": 1.939,
+      "peak": 30949,
+      "rms": 10546.3,
+      "nonzero_fraction": 0.997,
+      "silent": false,
+      "clip_indexes": [
+       3,
+       7,
+       8
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 4,
+     "clip_id": 262149,
+     "size_bytes": 29168,
+     "start": 152512,
+     "field5": 1536,
+     "field6": 7471104,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1823,
+      "samples": 51044,
+      "duration_s_at_22050": 2.315,
+      "peak": 28595,
+      "rms": 7955.5,
+      "nonzero_fraction": 0.982,
+      "silent": false,
+      "clip_indexes": [
+       4
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 5,
+     "clip_id": 262150,
+     "size_bytes": 17904,
+     "start": 181680,
+     "field5": 1365,
+     "field6": 8323072,
+     "field7": 16384,
+     "decoded": {
+      "frames": 1119,
+      "samples": 31332,
+      "duration_s_at_22050": 1.421,
+      "peak": 32757,
+      "rms": 10186.4,
+      "nonzero_fraction": 0.986,
+      "silent": false,
+      "clip_indexes": [
+       5,
+       6
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 6,
+     "clip_id": 262151,
+     "size_bytes": 17904,
+     "start": 181680,
+     "field5": 1365,
+     "field6": 8323072,
+     "field7": 16511,
+     "decoded": {
+      "frames": 1119,
+      "samples": 31332,
+      "duration_s_at_22050": 1.421,
+      "peak": 32757,
+      "rms": 10186.4,
+      "nonzero_fraction": 0.986,
+      "silent": false,
+      "clip_indexes": [
+       5,
+       6
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 7,
+     "clip_id": 262152,
+     "size_bytes": 24432,
+     "start": 128080,
+     "field5": 1365,
+     "field6": 8323072,
+     "field7": 16511,
+     "decoded": {
+      "frames": 1527,
+      "samples": 42756,
+      "duration_s_at_22050": 1.939,
+      "peak": 30949,
+      "rms": 10546.3,
+      "nonzero_fraction": 0.997,
+      "silent": false,
+      "clip_indexes": [
+       3,
+       7,
+       8
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 8,
+     "clip_id": 262153,
+     "size_bytes": 24432,
+     "start": 128080,
+     "field5": 1365,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1527,
+      "samples": 42756,
+      "duration_s_at_22050": 1.939,
+      "peak": 30949,
+      "rms": 10546.3,
+      "nonzero_fraction": 0.997,
+      "silent": false,
+      "clip_indexes": [
+       3,
+       7,
+       8
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 9,
+     "clip_id": 1127481344,
+     "size_bytes": 41632,
+     "start": 199584,
+     "field5": 2048,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 2601,
+      "samples": 72828,
+      "truncated_bytes_past_eof": 16,
+      "duration_s_at_22050": 3.303,
+      "peak": 32395,
+      "rms": 7531.7,
+      "nonzero_fraction": 0.984,
+      "silent": false,
+      "clip_indexes": [
+       9
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    }
+   ]
+  },
+  {
+   "source_file": "snd_c_05_ogre.dat",
+   "container": "P3Dp",
+   "size_bytes": 257808,
+   "clip_count": 15,
+   "payload_base": 1584,
+   "payload_alignment_delta": 4,
+   "payload_frames_valid": "1000/1000",
+   "unique_regions": 14,
+   "clips": [
+    {
+     "index": 0,
+     "clip_id": 262145,
+     "size_bytes": 28432,
+     "start": 0,
+     "field5": 1536,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1777,
+      "samples": 49756,
+      "duration_s_at_22050": 2.257,
+      "peak": 31084,
+      "rms": 9999.1,
+      "nonzero_fraction": 0.982,
+      "silent": false,
+      "clip_indexes": [
+       0
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 1,
+     "clip_id": 262146,
+     "size_bytes": 11248,
+     "start": 28432,
+     "field5": 940,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 703,
+      "samples": 19684,
+      "duration_s_at_22050": 0.893,
+      "peak": 32745,
+      "rms": 9335.9,
+      "nonzero_fraction": 0.992,
+      "silent": false,
+      "clip_indexes": [
+       1
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 2,
+     "clip_id": 262147,
+     "size_bytes": 6576,
+     "start": 39680,
+     "field5": 1365,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 411,
+      "samples": 11508,
+      "duration_s_at_22050": 0.522,
+      "peak": 32574,
+      "rms": 8890.1,
+      "nonzero_fraction": 0.973,
+      "silent": false,
+      "clip_indexes": [
+       2
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 3,
+     "clip_id": 262148,
+     "size_bytes": 8656,
+     "start": 46256,
+     "field5": 1365,
+     "field6": 7208960,
+     "field7": 16384,
+     "decoded": {
+      "frames": 541,
+      "samples": 15148,
+      "duration_s_at_22050": 0.687,
+      "peak": 29675,
+      "rms": 5389.5,
+      "nonzero_fraction": 0.989,
+      "silent": false,
+      "clip_indexes": [
+       3
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 4,
+     "clip_id": 262149,
+     "size_bytes": 8656,
+     "start": 54912,
+     "field5": 1365,
+     "field6": 7208960,
+     "field7": 16511,
+     "decoded": {
+      "frames": 541,
+      "samples": 15148,
+      "duration_s_at_22050": 0.687,
+      "peak": 27713,
+      "rms": 5196.1,
+      "nonzero_fraction": 0.99,
+      "silent": false,
+      "clip_indexes": [
+       4
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 5,
+     "clip_id": 262150,
+     "size_bytes": 4528,
+     "start": 63568,
+     "field5": 940,
+     "field6": 7864320,
+     "field7": 16448,
+     "decoded": {
+      "frames": 283,
+      "samples": 7924,
+      "duration_s_at_22050": 0.359,
+      "peak": 32485,
+      "rms": 10349.3,
+      "nonzero_fraction": 0.99,
+      "silent": false,
+      "clip_indexes": [
+       5
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 6,
+     "clip_id": 262151,
+     "size_bytes": 28176,
+     "start": 68096,
+     "field5": 1024,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1761,
+      "samples": 49308,
+      "duration_s_at_22050": 2.236,
+      "peak": 32607,
+      "rms": 7345.6,
+      "nonzero_fraction": 0.998,
+      "silent": false,
+      "clip_indexes": [
+       6
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 7,
+     "clip_id": 262152,
+     "size_bytes": 5200,
+     "start": 96272,
+     "field5": 1024,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 325,
+      "samples": 9100,
+      "duration_s_at_22050": 0.413,
+      "peak": 31491,
+      "rms": 10020.2,
+      "nonzero_fraction": 0.992,
+      "silent": false,
+      "clip_indexes": [
+       7
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 8,
+     "clip_id": 262153,
+     "size_bytes": 12976,
+     "start": 101472,
+     "field5": 1024,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 811,
+      "samples": 22708,
+      "duration_s_at_22050": 1.03,
+      "peak": 31637,
+      "rms": 8089.0,
+      "nonzero_fraction": 0.996,
+      "silent": false,
+      "clip_indexes": [
+       8
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 9,
+     "clip_id": 262154,
+     "size_bytes": 10608,
+     "start": 114448,
+     "field5": 1194,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 663,
+      "samples": 18564,
+      "duration_s_at_22050": 0.842,
+      "peak": 32746,
+      "rms": 11181.5,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       9
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 10,
+     "clip_id": 262155,
+     "size_bytes": 5632,
+     "start": 125056,
+     "field5": 1024,
+     "field6": 7864320,
+     "field7": 16448,
+     "decoded": {
+      "frames": 352,
+      "samples": 9856,
+      "duration_s_at_22050": 0.447,
+      "peak": 31316,
+      "rms": 8799.2,
+      "nonzero_fraction": 0.996,
+      "silent": false,
+      "clip_indexes": [
+       10
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 11,
+     "clip_id": 262156,
+     "size_bytes": 19632,
+     "start": 130688,
+     "field5": 1536,
+     "field6": 343670784,
+     "field7": 16384,
+     "decoded": {
+      "frames": 1227,
+      "samples": 34356,
+      "duration_s_at_22050": 1.558,
+      "peak": 32671,
+      "rms": 7183.6,
+      "nonzero_fraction": 0.966,
+      "silent": false,
+      "clip_indexes": [
+       11
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 12,
+     "clip_id": 262157,
+     "size_bytes": 19632,
+     "start": 150320,
+     "field5": 1536,
+     "field6": 343670784,
+     "field7": 16511,
+     "decoded": {
+      "frames": 1227,
+      "samples": 34356,
+      "duration_s_at_22050": 1.558,
+      "peak": 31767,
+      "rms": 7096.6,
+      "nonzero_fraction": 0.965,
+      "silent": false,
+      "clip_indexes": [
+       12
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 13,
+     "clip_id": 262158,
+     "size_bytes": 86272,
+     "start": 169952,
+     "field5": 1706,
+     "field6": 7864320,
+     "field7": 16384,
+     "decoded": {
+      "frames": 5392,
+      "samples": 150976,
+      "duration_s_at_22050": 6.847,
+      "peak": 32056,
+      "rms": 5590.6,
+      "nonzero_fraction": 0.996,
+      "silent": false,
+      "clip_indexes": [
+       13,
+       14
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 14,
+     "clip_id": 1127481344,
+     "size_bytes": 86272,
+     "start": 169952,
+     "field5": 1706,
+     "field6": 7864320,
+     "field7": 16511,
+     "decoded": {
+      "frames": 5392,
+      "samples": 150976,
+      "duration_s_at_22050": 6.847,
+      "peak": 32056,
+      "rms": 5590.6,
+      "nonzero_fraction": 0.996,
+      "silent": false,
+      "clip_indexes": [
+       13,
+       14
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    }
+   ]
+  },
+  {
+   "source_file": "snd_c_boss.dat",
+   "container": "P3Dp",
+   "size_bytes": 118432,
+   "clip_count": 20,
+   "payload_base": 2112,
+   "payload_alignment_delta": 12,
+   "payload_frames_valid": "1000/1000",
+   "unique_regions": 16,
+   "clips": [
+    {
+     "index": 0,
+     "clip_id": 262145,
+     "size_bytes": 10176,
+     "start": 0,
+     "field5": 1365,
+     "field6": 7864320,
+     "field7": 16448,
+     "decoded": {
+      "frames": 636,
+      "samples": 17808,
+      "duration_s_at_22050": 0.808,
+      "peak": 32602,
+      "rms": 7655.5,
+      "nonzero_fraction": 0.988,
+      "silent": false,
+      "clip_indexes": [
+       0
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 1,
+     "clip_id": 262146,
+     "size_bytes": 8336,
+     "start": 10176,
+     "field5": 940,
+     "field6": 7733248,
+     "field7": 16384,
+     "decoded": {
+      "frames": 521,
+      "samples": 14588,
+      "duration_s_at_22050": 0.662,
+      "peak": 32543,
+      "rms": 9432.4,
+      "nonzero_fraction": 0.997,
+      "silent": false,
+      "clip_indexes": [
+       1,
+       2
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 2,
+     "clip_id": 262147,
+     "size_bytes": 8336,
+     "start": 10176,
+     "field5": 940,
+     "field6": 7733248,
+     "field7": 16511,
+     "decoded": {
+      "frames": 521,
+      "samples": 14588,
+      "duration_s_at_22050": 0.662,
+      "peak": 32543,
+      "rms": 9432.4,
+      "nonzero_fraction": 0.997,
+      "silent": false,
+      "clip_indexes": [
+       1,
+       2
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 3,
+     "clip_id": 262148,
+     "size_bytes": 5968,
+     "start": 18512,
+     "field5": 13108394,
+     "field6": 8060928,
+     "field7": 16448,
+     "decoded": {
+      "frames": 373,
+      "samples": 10444,
+      "duration_s_at_22050": 0.474,
+      "peak": 32726,
+      "rms": 10319.4,
+      "nonzero_fraction": 0.934,
+      "silent": false,
+      "clip_indexes": [
+       3
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 4,
+     "clip_id": 327685,
+     "size_bytes": 4320,
+     "start": 24480,
+     "field5": 1194,
+     "field6": 8060928,
+     "field7": 16448,
+     "decoded": {
+      "frames": 270,
+      "samples": 7560,
+      "duration_s_at_22050": 0.343,
+      "peak": 32499,
+      "rms": 9588.1,
+      "nonzero_fraction": 0.928,
+      "silent": false,
+      "clip_indexes": [
+       4
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 5,
+     "clip_id": 327686,
+     "size_bytes": 1088,
+     "start": 28800,
+     "field5": 1365,
+     "field6": 7864320,
+     "field7": 16448,
+     "decoded": {
+      "frames": 68,
+      "samples": 1904,
+      "duration_s_at_22050": 0.086,
+      "peak": 32093,
+      "rms": 10880.0,
+      "nonzero_fraction": 0.896,
+      "silent": false,
+      "clip_indexes": [
+       5
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 6,
+     "clip_id": 262151,
+     "size_bytes": 1600,
+     "start": 29888,
+     "field5": 1365,
+     "field6": 7864320,
+     "field7": 16448,
+     "decoded": {
+      "frames": 100,
+      "samples": 2800,
+      "duration_s_at_22050": 0.127,
+      "peak": 32760,
+      "rms": 9639.4,
+      "nonzero_fraction": 0.961,
+      "silent": false,
+      "clip_indexes": [
+       6
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 7,
+     "clip_id": 262152,
+     "size_bytes": 17728,
+     "start": 31488,
+     "field5": 1365,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1108,
+      "samples": 31024,
+      "duration_s_at_22050": 1.407,
+      "peak": 32675,
+      "rms": 9882.5,
+      "nonzero_fraction": 0.91,
+      "silent": false,
+      "clip_indexes": [
+       7
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 8,
+     "clip_id": 262153,
+     "size_bytes": 5456,
+     "start": 49216,
+     "field5": 1194,
+     "field6": 7864320,
+     "field7": 16448,
+     "decoded": {
+      "frames": 341,
+      "samples": 9548,
+      "duration_s_at_22050": 0.433,
+      "peak": 32612,
+      "rms": 7213.2,
+      "nonzero_fraction": 0.92,
+      "silent": false,
+      "clip_indexes": [
+       8
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 9,
+     "clip_id": 262154,
+     "size_bytes": 5776,
+     "start": 54672,
+     "field5": 1024,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 361,
+      "samples": 10108,
+      "duration_s_at_22050": 0.458,
+      "peak": 30776,
+      "rms": 7558.1,
+      "nonzero_fraction": 0.968,
+      "silent": false,
+      "clip_indexes": [
+       9,
+       13,
+       15
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 10,
+     "clip_id": 262155,
+     "size_bytes": 10464,
+     "start": 60448,
+     "field5": 940,
+     "field6": 7864320,
+     "field7": 16448,
+     "decoded": {
+      "frames": 654,
+      "samples": 18312,
+      "duration_s_at_22050": 0.83,
+      "peak": 31499,
+      "rms": 6364.6,
+      "nonzero_fraction": 0.901,
+      "silent": false,
+      "clip_indexes": [
+       10
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 11,
+     "clip_id": 262156,
+     "size_bytes": 2736,
+     "start": 70912,
+     "field5": 940,
+     "field6": 343408740,
+     "field7": 16448,
+     "decoded": {
+      "frames": 171,
+      "samples": 4788,
+      "duration_s_at_22050": 0.217,
+      "peak": 32445,
+      "rms": 6603.8,
+      "nonzero_fraction": 0.929,
+      "silent": false,
+      "clip_indexes": [
+       11
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 12,
+     "clip_id": 262157,
+     "size_bytes": 2832,
+     "start": 73648,
+     "field5": 1365,
+     "field6": 3966894280,
+     "field7": 16448,
+     "decoded": {
+      "frames": 177,
+      "samples": 4956,
+      "duration_s_at_22050": 0.225,
+      "peak": 32221,
+      "rms": 6025.0,
+      "nonzero_fraction": 0.983,
+      "silent": false,
+      "clip_indexes": [
+       12
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 13,
+     "clip_id": 262158,
+     "size_bytes": 5776,
+     "start": 54672,
+     "field5": 1024,
+     "field6": 7864320,
+     "field7": 16448,
+     "decoded": {
+      "frames": 361,
+      "samples": 10108,
+      "duration_s_at_22050": 0.458,
+      "peak": 30776,
+      "rms": 7558.1,
+      "nonzero_fraction": 0.968,
+      "silent": false,
+      "clip_indexes": [
+       9,
+       13,
+       15
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 14,
+     "clip_id": 262159,
+     "size_bytes": 5360,
+     "start": 76480,
+     "field5": 4281861290,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 335,
+      "samples": 9380,
+      "duration_s_at_22050": 0.425,
+      "peak": 32566,
+      "rms": 8500.3,
+      "nonzero_fraction": 0.985,
+      "silent": false,
+      "clip_indexes": [
+       14
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 15,
+     "clip_id": 262160,
+     "size_bytes": 5776,
+     "start": 54672,
+     "field5": 26215424,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 361,
+      "samples": 10108,
+      "duration_s_at_22050": 0.458,
+      "peak": 30776,
+      "rms": 7558.1,
+      "nonzero_fraction": 0.968,
+      "silent": false,
+      "clip_indexes": [
+       9,
+       13,
+       15
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 16,
+     "clip_id": 262161,
+     "size_bytes": 7392,
+     "start": 81840,
+     "field5": 1365,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 462,
+      "samples": 12936,
+      "duration_s_at_22050": 0.587,
+      "peak": 32768,
+      "rms": 11217.5,
+      "nonzero_fraction": 0.968,
+      "silent": false,
+      "clip_indexes": [
+       16
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 17,
+     "clip_id": 262162,
+     "size_bytes": 5120,
+     "start": 89232,
+     "field5": 940,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 320,
+      "samples": 8960,
+      "duration_s_at_22050": 0.406,
+      "peak": 31732,
+      "rms": 8148.8,
+      "nonzero_fraction": 0.972,
+      "silent": false,
+      "clip_indexes": [
+       17
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 18,
+     "clip_id": 262163,
+     "size_bytes": 21984,
+     "start": 94352,
+     "field5": 1365,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1373,
+      "samples": 38444,
+      "truncated_bytes_past_eof": 16,
+      "duration_s_at_22050": 1.743,
+      "peak": 32720,
+      "rms": 7448.0,
+      "nonzero_fraction": 0.98,
+      "silent": false,
+      "clip_indexes": [
+       18,
+       19
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 19,
+     "clip_id": 1127481344,
+     "size_bytes": 21984,
+     "start": 94352,
+     "field5": 52430165,
+     "field6": 8323072,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1373,
+      "samples": 38444,
+      "truncated_bytes_past_eof": 16,
+      "duration_s_at_22050": 1.743,
+      "peak": 32720,
+      "rms": 7448.0,
+      "nonzero_fraction": 0.98,
+      "silent": false,
+      "clip_indexes": [
+       18,
+       19
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    }
+   ]
+  },
+  {
+   "source_file": "snd_c_monst.dat",
+   "container": "P3Dp",
+   "size_bytes": 103824,
+   "clip_count": 12,
+   "payload_base": 1280,
+   "payload_alignment_delta": 12,
+   "payload_frames_valid": "1000/1000",
+   "unique_regions": 9,
+   "clips": [
+    {
+     "index": 0,
+     "clip_id": 168034305,
+     "size_bytes": 9936,
+     "start": 0,
+     "field5": 3763,
+     "field6": 7864320,
+     "field7": 16448,
+     "decoded": {
+      "frames": 621,
+      "samples": 17388,
+      "duration_s_at_22050": 0.789,
+      "peak": 30811,
+      "rms": 9939.1,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       0,
+       4,
+       6,
+       8
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 1,
+     "clip_id": 184811522,
+     "size_bytes": 11792,
+     "start": 9936,
+     "field5": 1024,
+     "field6": 7864320,
+     "field7": 16448,
+     "decoded": {
+      "frames": 737,
+      "samples": 20636,
+      "duration_s_at_22050": 0.936,
+      "peak": 32589,
+      "rms": 8254.9,
+      "nonzero_fraction": 0.97,
+      "silent": false,
+      "clip_indexes": [
+       1
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 2,
+     "clip_id": 151257091,
+     "size_bytes": 16192,
+     "start": 21728,
+     "field5": 1365,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1012,
+      "samples": 28336,
+      "duration_s_at_22050": 1.285,
+      "peak": 31227,
+      "rms": 8261.3,
+      "nonzero_fraction": 0.994,
+      "silent": false,
+      "clip_indexes": [
+       2
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 3,
+     "clip_id": 184811524,
+     "size_bytes": 12032,
+     "start": 37920,
+     "field5": 3763,
+     "field6": 7864320,
+     "field7": 16448,
+     "decoded": {
+      "frames": 752,
+      "samples": 21056,
+      "duration_s_at_22050": 0.955,
+      "peak": 30827,
+      "rms": 10588.4,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       3
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 4,
+     "clip_id": 168034309,
+     "size_bytes": 9936,
+     "start": 0,
+     "field5": 3763,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 621,
+      "samples": 17388,
+      "duration_s_at_22050": 0.789,
+      "peak": 30811,
+      "rms": 9939.1,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       0,
+       4,
+       6,
+       8
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 5,
+     "clip_id": 151257094,
+     "size_bytes": 6736,
+     "start": 49952,
+     "field5": 1024,
+     "field6": 7864320,
+     "field7": 16448,
+     "decoded": {
+      "frames": 421,
+      "samples": 11788,
+      "duration_s_at_22050": 0.535,
+      "peak": 31732,
+      "rms": 7630.7,
+      "nonzero_fraction": 0.993,
+      "silent": false,
+      "clip_indexes": [
+       5
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 6,
+     "clip_id": 184811527,
+     "size_bytes": 9936,
+     "start": 0,
+     "field5": 3763,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 621,
+      "samples": 17388,
+      "duration_s_at_22050": 0.789,
+      "peak": 30811,
+      "rms": 9939.1,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       0,
+       4,
+       6,
+       8
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 7,
+     "clip_id": 151257096,
+     "size_bytes": 4864,
+     "start": 56688,
+     "field5": 1194,
+     "field6": 8060928,
+     "field7": 16448,
+     "decoded": {
+      "frames": 304,
+      "samples": 8512,
+      "duration_s_at_22050": 0.386,
+      "peak": 31449,
+      "rms": 8339.5,
+      "nonzero_fraction": 0.989,
+      "silent": false,
+      "clip_indexes": [
+       7
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 8,
+     "clip_id": 151257097,
+     "size_bytes": 9936,
+     "start": 0,
+     "field5": 3763,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 621,
+      "samples": 17388,
+      "duration_s_at_22050": 0.789,
+      "peak": 30811,
+      "rms": 9939.1,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       0,
+       4,
+       6,
+       8
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 9,
+     "clip_id": 168034314,
+     "size_bytes": 11920,
+     "start": 61552,
+     "field5": 1194,
+     "field6": 7667712,
+     "field7": 16448,
+     "decoded": {
+      "frames": 745,
+      "samples": 20860,
+      "duration_s_at_22050": 0.946,
+      "peak": 31319,
+      "rms": 9805.1,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       9
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 10,
+     "clip_id": 184811531,
+     "size_bytes": 14192,
+     "start": 73472,
+     "field5": 39322965,
+     "field6": 7864320,
+     "field7": 16448,
+     "decoded": {
+      "frames": 887,
+      "samples": 24836,
+      "duration_s_at_22050": 1.126,
+      "peak": 31487,
+      "rms": 8407.7,
+      "nonzero_fraction": 0.992,
+      "silent": false,
+      "clip_indexes": [
+       10
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 11,
+     "clip_id": 1127481344,
+     "size_bytes": 14896,
+     "start": 87664,
+     "field5": 1024,
+     "field6": 8126464,
+     "field7": 16448,
+     "decoded": {
+      "frames": 930,
+      "samples": 26040,
+      "truncated_bytes_past_eof": 16,
+      "duration_s_at_22050": 1.181,
+      "peak": 30265,
+      "rms": 6416.8,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       11
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    }
+   ]
+  },
+  {
+   "source_file": "snd_c_tks.dat",
+   "container": "P3Dp",
+   "size_bytes": 101760,
+   "clip_count": 10,
+   "payload_base": 1060,
+   "payload_alignment_delta": 0,
+   "payload_frames_valid": "1000/1000",
+   "unique_regions": 2,
+   "clips": [
+    {
+     "index": 0,
+     "clip_id": 262145,
+     "size_bytes": 50352,
+     "start": 0,
+     "field5": 3763,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 3147,
+      "samples": 88116,
+      "duration_s_at_22050": 3.996,
+      "peak": 16384,
+      "rms": 3095.8,
+      "nonzero_fraction": 0.036,
+      "silent": false,
+      "clip_indexes": [
+       0,
+       1,
+       2,
+       3,
+       4
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 1,
+     "clip_id": 262146,
+     "size_bytes": 50352,
+     "start": 0,
+     "field5": 3763,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 3147,
+      "samples": 88116,
+      "duration_s_at_22050": 3.996,
+      "peak": 16384,
+      "rms": 3095.8,
+      "nonzero_fraction": 0.036,
+      "silent": false,
+      "clip_indexes": [
+       0,
+       1,
+       2,
+       3,
+       4
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 2,
+     "clip_id": 262147,
+     "size_bytes": 50352,
+     "start": 0,
+     "field5": 3763,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 3147,
+      "samples": 88116,
+      "duration_s_at_22050": 3.996,
+      "peak": 16384,
+      "rms": 3095.8,
+      "nonzero_fraction": 0.036,
+      "silent": false,
+      "clip_indexes": [
+       0,
+       1,
+       2,
+       3,
+       4
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 3,
+     "clip_id": 262148,
+     "size_bytes": 50352,
+     "start": 0,
+     "field5": 3763,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 3147,
+      "samples": 88116,
+      "duration_s_at_22050": 3.996,
+      "peak": 16384,
+      "rms": 3095.8,
+      "nonzero_fraction": 0.036,
+      "silent": false,
+      "clip_indexes": [
+       0,
+       1,
+       2,
+       3,
+       4
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 4,
+     "clip_id": 262149,
+     "size_bytes": 50352,
+     "start": 0,
+     "field5": 3763,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 3147,
+      "samples": 88116,
+      "duration_s_at_22050": 3.996,
+      "peak": 16384,
+      "rms": 3095.8,
+      "nonzero_fraction": 0.036,
+      "silent": false,
+      "clip_indexes": [
+       0,
+       1,
+       2,
+       3,
+       4
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 5,
+     "clip_id": 262150,
+     "size_bytes": 50352,
+     "start": 50352,
+     "field5": 3763,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 3146,
+      "samples": 88088,
+      "truncated_bytes_past_eof": 4,
+      "duration_s_at_22050": 3.995,
+      "peak": 16384,
+      "rms": 3096.3,
+      "nonzero_fraction": 0.036,
+      "silent": false,
+      "clip_indexes": [
+       5,
+       6,
+       7,
+       8,
+       9
+      ],
+      "dropped_partial_frame_bytes": 12
+     }
+    },
+    {
+     "index": 6,
+     "clip_id": 262151,
+     "size_bytes": 50352,
+     "start": 50352,
+     "field5": 3763,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 3146,
+      "samples": 88088,
+      "truncated_bytes_past_eof": 4,
+      "duration_s_at_22050": 3.995,
+      "peak": 16384,
+      "rms": 3096.3,
+      "nonzero_fraction": 0.036,
+      "silent": false,
+      "clip_indexes": [
+       5,
+       6,
+       7,
+       8,
+       9
+      ],
+      "dropped_partial_frame_bytes": 12
+     }
+    },
+    {
+     "index": 7,
+     "clip_id": 262152,
+     "size_bytes": 50352,
+     "start": 50352,
+     "field5": 3763,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 3146,
+      "samples": 88088,
+      "truncated_bytes_past_eof": 4,
+      "duration_s_at_22050": 3.995,
+      "peak": 16384,
+      "rms": 3096.3,
+      "nonzero_fraction": 0.036,
+      "silent": false,
+      "clip_indexes": [
+       5,
+       6,
+       7,
+       8,
+       9
+      ],
+      "dropped_partial_frame_bytes": 12
+     }
+    },
+    {
+     "index": 8,
+     "clip_id": 262153,
+     "size_bytes": 50352,
+     "start": 50352,
+     "field5": 3763,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 3146,
+      "samples": 88088,
+      "truncated_bytes_past_eof": 4,
+      "duration_s_at_22050": 3.995,
+      "peak": 16384,
+      "rms": 3096.3,
+      "nonzero_fraction": 0.036,
+      "silent": false,
+      "clip_indexes": [
+       5,
+       6,
+       7,
+       8,
+       9
+      ],
+      "dropped_partial_frame_bytes": 12
+     }
+    },
+    {
+     "index": 9,
+     "clip_id": 1127481344,
+     "size_bytes": 50352,
+     "start": 50352,
+     "field5": 3763,
+     "field6": 0,
+     "field7": 16448,
+     "decoded": {
+      "frames": 3146,
+      "samples": 88088,
+      "truncated_bytes_past_eof": 4,
+      "duration_s_at_22050": 3.995,
+      "peak": 16384,
+      "rms": 3096.3,
+      "nonzero_fraction": 0.036,
+      "silent": false,
+      "clip_indexes": [
+       5,
+       6,
+       7,
+       8,
+       9
+      ],
+      "dropped_partial_frame_bytes": 12
+     }
+    }
+   ]
+  },
+  {
+   "source_file": "snd_chara_se.dat",
+   "container": "P3Dp",
+   "size_bytes": 117296,
+   "clip_count": 22,
+   "payload_base": 2320,
+   "payload_alignment_delta": 12,
+   "payload_frames_valid": "1000/1000",
+   "unique_regions": 22,
+   "clips": [
+    {
+     "index": 0,
+     "clip_id": 67371009,
+     "size_bytes": 2752,
+     "start": 0,
+     "field5": 1365,
+     "field6": 4135125092,
+     "field7": 16448,
+     "decoded": {
+      "frames": 172,
+      "samples": 4816,
+      "duration_s_at_22050": 0.218,
+      "peak": 31841,
+      "rms": 9768.5,
+      "nonzero_fraction": 0.978,
+      "silent": false,
+      "clip_indexes": [
+       0
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 1,
+     "clip_id": 67371010,
+     "size_bytes": 2480,
+     "start": 2752,
+     "field5": 1365,
+     "field6": 4135125092,
+     "field7": 16448,
+     "decoded": {
+      "frames": 155,
+      "samples": 4340,
+      "duration_s_at_22050": 0.197,
+      "peak": 32730,
+      "rms": 8819.2,
+      "nonzero_fraction": 0.981,
+      "silent": false,
+      "clip_indexes": [
+       1
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 2,
+     "clip_id": 67371011,
+     "size_bytes": 3872,
+     "start": 5232,
+     "field5": 1365,
+     "field6": 4135125092,
+     "field7": 16448,
+     "decoded": {
+      "frames": 242,
+      "samples": 6776,
+      "duration_s_at_22050": 0.307,
+      "peak": 31648,
+      "rms": 8244.8,
+      "nonzero_fraction": 0.98,
+      "silent": false,
+      "clip_indexes": [
+       2
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 3,
+     "clip_id": 84148228,
+     "size_bytes": 5056,
+     "start": 9104,
+     "field5": 1899,
+     "field6": 4135125092,
+     "field7": 16448,
+     "decoded": {
+      "frames": 316,
+      "samples": 8848,
+      "duration_s_at_22050": 0.401,
+      "peak": 31688,
+      "rms": 10104.9,
+      "nonzero_fraction": 0.996,
+      "silent": false,
+      "clip_indexes": [
+       3
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 4,
+     "clip_id": 134479877,
+     "size_bytes": 2496,
+     "start": 14160,
+     "field5": 1365,
+     "field6": 4135125092,
+     "field7": 16448,
+     "decoded": {
+      "frames": 156,
+      "samples": 4368,
+      "duration_s_at_22050": 0.198,
+      "peak": 32687,
+      "rms": 12858.3,
+      "nonzero_fraction": 0.982,
+      "silent": false,
+      "clip_indexes": [
+       4
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 5,
+     "clip_id": 84148230,
+     "size_bytes": 4720,
+     "start": 16656,
+     "field5": 1365,
+     "field6": 4135125092,
+     "field7": 16448,
+     "decoded": {
+      "frames": 295,
+      "samples": 8260,
+      "duration_s_at_22050": 0.375,
+      "peak": 31433,
+      "rms": 10849.9,
+      "nonzero_fraction": 0.962,
+      "silent": false,
+      "clip_indexes": [
+       5
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 6,
+     "clip_id": 134479879,
+     "size_bytes": 4576,
+     "start": 21376,
+     "field5": 1365,
+     "field6": 4135125092,
+     "field7": 16448,
+     "decoded": {
+      "frames": 286,
+      "samples": 8008,
+      "duration_s_at_22050": 0.363,
+      "peak": 31720,
+      "rms": 8304.2,
+      "nonzero_fraction": 0.985,
+      "silent": false,
+      "clip_indexes": [
+       6
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 7,
+     "clip_id": 134479880,
+     "size_bytes": 7248,
+     "start": 25952,
+     "field5": 1365,
+     "field6": 4135125092,
+     "field7": 16448,
+     "decoded": {
+      "frames": 453,
+      "samples": 12684,
+      "duration_s_at_22050": 0.575,
+      "peak": 29937,
+      "rms": 8806.2,
+      "nonzero_fraction": 0.982,
+      "silent": false,
+      "clip_indexes": [
+       7
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 8,
+     "clip_id": 134479881,
+     "size_bytes": 9824,
+     "start": 33200,
+     "field5": 1365,
+     "field6": 4135125092,
+     "field7": 16448,
+     "decoded": {
+      "frames": 614,
+      "samples": 17192,
+      "duration_s_at_22050": 0.78,
+      "peak": 31010,
+      "rms": 7568.9,
+      "nonzero_fraction": 0.959,
+      "silent": false,
+      "clip_indexes": [
+       8
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 9,
+     "clip_id": 84148234,
+     "size_bytes": 8544,
+     "start": 43024,
+     "field5": 1365,
+     "field6": 4135125092,
+     "field7": 16448,
+     "decoded": {
+      "frames": 534,
+      "samples": 14952,
+      "duration_s_at_22050": 0.678,
+      "peak": 32569,
+      "rms": 6945.9,
+      "nonzero_fraction": 0.942,
+      "silent": false,
+      "clip_indexes": [
+       9
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 10,
+     "clip_id": 134479883,
+     "size_bytes": 5136,
+     "start": 51568,
+     "field5": 1365,
+     "field6": 4135125092,
+     "field7": 16448,
+     "decoded": {
+      "frames": 321,
+      "samples": 8988,
+      "duration_s_at_22050": 0.408,
+      "peak": 30807,
+      "rms": 8344.7,
+      "nonzero_fraction": 0.989,
+      "silent": false,
+      "clip_indexes": [
+       10
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 11,
+     "clip_id": 134479884,
+     "size_bytes": 5392,
+     "start": 56704,
+     "field5": 1365,
+     "field6": 4135125092,
+     "field7": 16448,
+     "decoded": {
+      "frames": 337,
+      "samples": 9436,
+      "duration_s_at_22050": 0.428,
+      "peak": 31510,
+      "rms": 8710.2,
+      "nonzero_fraction": 0.979,
+      "silent": false,
+      "clip_indexes": [
+       11
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 12,
+     "clip_id": 67371021,
+     "size_bytes": 8784,
+     "start": 62096,
+     "field5": 1365,
+     "field6": 4135125092,
+     "field7": 16448,
+     "decoded": {
+      "frames": 549,
+      "samples": 15372,
+      "duration_s_at_22050": 0.697,
+      "peak": 31961,
+      "rms": 9327.2,
+      "nonzero_fraction": 0.975,
+      "silent": false,
+      "clip_indexes": [
+       12
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 13,
+     "clip_id": 67371022,
+     "size_bytes": 8272,
+     "start": 70880,
+     "field5": 1365,
+     "field6": 4135059556,
+     "field7": 16448,
+     "decoded": {
+      "frames": 517,
+      "samples": 14476,
+      "duration_s_at_22050": 0.657,
+      "peak": 32460,
+      "rms": 7072.0,
+      "nonzero_fraction": 0.979,
+      "silent": false,
+      "clip_indexes": [
+       13
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 14,
+     "clip_id": 67371023,
+     "size_bytes": 2368,
+     "start": 79152,
+     "field5": 1365,
+     "field6": 4135059556,
+     "field7": 16448,
+     "decoded": {
+      "frames": 148,
+      "samples": 4144,
+      "duration_s_at_22050": 0.188,
+      "peak": 30551,
+      "rms": 5346.0,
+      "nonzero_fraction": 0.989,
+      "silent": false,
+      "clip_indexes": [
+       14
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 15,
+     "clip_id": 67371024,
+     "size_bytes": 4544,
+     "start": 81520,
+     "field5": 1365,
+     "field6": 4135059556,
+     "field7": 16448,
+     "decoded": {
+      "frames": 284,
+      "samples": 7952,
+      "duration_s_at_22050": 0.361,
+      "peak": 31655,
+      "rms": 3493.0,
+      "nonzero_fraction": 0.984,
+      "silent": false,
+      "clip_indexes": [
+       15
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 16,
+     "clip_id": 67371025,
+     "size_bytes": 4752,
+     "start": 86064,
+     "field5": 1365,
+     "field6": 4135059556,
+     "field7": 16448,
+     "decoded": {
+      "frames": 297,
+      "samples": 8316,
+      "duration_s_at_22050": 0.377,
+      "peak": 31138,
+      "rms": 3052.3,
+      "nonzero_fraction": 0.98,
+      "silent": false,
+      "clip_indexes": [
+       16
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 17,
+     "clip_id": 67371026,
+     "size_bytes": 3296,
+     "start": 90816,
+     "field5": 1365,
+     "field6": 4135059556,
+     "field7": 16448,
+     "decoded": {
+      "frames": 206,
+      "samples": 5768,
+      "duration_s_at_22050": 0.262,
+      "peak": 30876,
+      "rms": 10160.0,
+      "nonzero_fraction": 0.982,
+      "silent": false,
+      "clip_indexes": [
+       17
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 18,
+     "clip_id": 67371027,
+     "size_bytes": 5488,
+     "start": 94112,
+     "field5": 1365,
+     "field6": 4135059556,
+     "field7": 16448,
+     "decoded": {
+      "frames": 343,
+      "samples": 9604,
+      "duration_s_at_22050": 0.436,
+      "peak": 30763,
+      "rms": 9513.6,
+      "nonzero_fraction": 0.988,
+      "silent": false,
+      "clip_indexes": [
+       18
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 19,
+     "clip_id": 67371028,
+     "size_bytes": 4624,
+     "start": 99600,
+     "field5": 1365,
+     "field6": 4135059556,
+     "field7": 16448,
+     "decoded": {
+      "frames": 289,
+      "samples": 8092,
+      "duration_s_at_22050": 0.367,
+      "peak": 30822,
+      "rms": 7820.1,
+      "nonzero_fraction": 0.884,
+      "silent": false,
+      "clip_indexes": [
+       19
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 20,
+     "clip_id": 67371029,
+     "size_bytes": 1776,
+     "start": 104224,
+     "field5": 1365,
+     "field6": 4134731876,
+     "field7": 16448,
+     "decoded": {
+      "frames": 111,
+      "samples": 3108,
+      "duration_s_at_22050": 0.141,
+      "peak": 32093,
+      "rms": 4474.3,
+      "nonzero_fraction": 0.894,
+      "silent": false,
+      "clip_indexes": [
+       20
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 21,
+     "clip_id": 1127481344,
+     "size_bytes": 8992,
+     "start": 106000,
+     "field5": 1365,
+     "field6": 4134862848,
+     "field7": 16448,
+     "decoded": {
+      "frames": 561,
+      "samples": 15708,
+      "truncated_bytes_past_eof": 16,
+      "duration_s_at_22050": 0.712,
+      "peak": 32147,
+      "rms": 7058.0,
+      "nonzero_fraction": 0.853,
+      "silent": false,
+      "clip_indexes": [
+       21
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    }
+   ]
+  },
+  {
+   "source_file": "snd_etc_se.dat",
+   "container": "P3Dp",
+   "size_bytes": 103504,
+   "clip_count": 9,
+   "payload_base": 960,
+   "payload_alignment_delta": 4,
+   "payload_frames_valid": "1000/1000",
+   "unique_regions": 9,
+   "clips": [
+    {
+     "index": 0,
+     "clip_id": 262145,
+     "size_bytes": 16000,
+     "start": 0,
+     "field5": 1536,
+     "field6": 7536640,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1000,
+      "samples": 28000,
+      "duration_s_at_22050": 1.27,
+      "peak": 32657,
+      "rms": 10381.1,
+      "nonzero_fraction": 0.972,
+      "silent": false,
+      "clip_indexes": [
+       0
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 1,
+     "clip_id": 262146,
+     "size_bytes": 18816,
+     "start": 16000,
+     "field5": 1365,
+     "field6": 7471104,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1176,
+      "samples": 32928,
+      "duration_s_at_22050": 1.493,
+      "peak": 32139,
+      "rms": 6232.8,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       1
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 2,
+     "clip_id": 262147,
+     "size_bytes": 7600,
+     "start": 34816,
+     "field5": 1365,
+     "field6": 7667712,
+     "field7": 16448,
+     "decoded": {
+      "frames": 475,
+      "samples": 13300,
+      "duration_s_at_22050": 0.603,
+      "peak": 28672,
+      "rms": 5744.9,
+      "nonzero_fraction": 0.829,
+      "silent": false,
+      "clip_indexes": [
+       2
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 3,
+     "clip_id": 262148,
+     "size_bytes": 15280,
+     "start": 42416,
+     "field5": 1365,
+     "field6": 7864320,
+     "field7": 16448,
+     "decoded": {
+      "frames": 955,
+      "samples": 26740,
+      "duration_s_at_22050": 1.213,
+      "peak": 32707,
+      "rms": 7809.1,
+      "nonzero_fraction": 0.948,
+      "silent": false,
+      "clip_indexes": [
+       3
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 4,
+     "clip_id": 5,
+     "size_bytes": 6512,
+     "start": 57696,
+     "field5": 1194,
+     "field6": 7864320,
+     "field7": 16448,
+     "decoded": {
+      "frames": 407,
+      "samples": 11396,
+      "duration_s_at_22050": 0.517,
+      "peak": 32437,
+      "rms": 6907.3,
+      "nonzero_fraction": 0.982,
+      "silent": false,
+      "clip_indexes": [
+       4
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 5,
+     "clip_id": 6,
+     "size_bytes": 8032,
+     "start": 64208,
+     "field5": 1881,
+     "field6": 7471104,
+     "field7": 16511,
+     "decoded": {
+      "frames": 502,
+      "samples": 14056,
+      "duration_s_at_22050": 0.637,
+      "peak": 26563,
+      "rms": 3732.7,
+      "nonzero_fraction": 0.882,
+      "silent": false,
+      "clip_indexes": [
+       5
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 6,
+     "clip_id": 7,
+     "size_bytes": 8032,
+     "start": 72240,
+     "field5": 1881,
+     "field6": 7471104,
+     "field7": 16384,
+     "decoded": {
+      "frames": 502,
+      "samples": 14056,
+      "duration_s_at_22050": 0.637,
+      "peak": 24001,
+      "rms": 3459.8,
+      "nonzero_fraction": 0.894,
+      "silent": false,
+      "clip_indexes": [
+       6
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 7,
+     "clip_id": 8,
+     "size_bytes": 11136,
+     "start": 80272,
+     "field5": 1365,
+     "field6": 7471104,
+     "field7": 16511,
+     "decoded": {
+      "frames": 696,
+      "samples": 19488,
+      "duration_s_at_22050": 0.884,
+      "peak": 29874,
+      "rms": 4616.2,
+      "nonzero_fraction": 0.982,
+      "silent": false,
+      "clip_indexes": [
+       7
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 8,
+     "clip_id": 1127481344,
+     "size_bytes": 11136,
+     "start": 91408,
+     "field5": 1365,
+     "field6": 7471104,
+     "field7": 16384,
+     "decoded": {
+      "frames": 696,
+      "samples": 19488,
+      "duration_s_at_22050": 0.884,
+      "peak": 30109,
+      "rms": 4385.8,
+      "nonzero_fraction": 0.984,
+      "silent": false,
+      "clip_indexes": [
+       8
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    }
+   ]
+  },
+  {
+   "source_file": "snd_system_se.dat",
+   "container": "P3Dp",
+   "size_bytes": 76160,
+   "clip_count": 12,
+   "payload_base": 1280,
+   "payload_alignment_delta": 12,
+   "payload_frames_valid": "1000/1000",
+   "unique_regions": 7,
+   "clips": [
+    {
+     "index": 0,
+     "clip_id": 1,
+     "size_bytes": 1968,
+     "start": 0,
+     "field5": 13108565,
+     "field6": 8192000,
+     "field7": 16384,
+     "decoded": {
+      "frames": 123,
+      "samples": 3444,
+      "duration_s_at_22050": 0.156,
+      "peak": 31910,
+      "rms": 7739.6,
+      "nonzero_fraction": 0.937,
+      "silent": false,
+      "clip_indexes": [
+       0,
+       7
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 1,
+     "clip_id": 2,
+     "size_bytes": 5472,
+     "start": 1968,
+     "field5": 4281861461,
+     "field6": 8060928,
+     "field7": 16384,
+     "decoded": {
+      "frames": 342,
+      "samples": 9576,
+      "duration_s_at_22050": 0.434,
+      "peak": 32666,
+      "rms": 9824.1,
+      "nonzero_fraction": 0.987,
+      "silent": false,
+      "clip_indexes": [
+       1,
+       8
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 2,
+     "clip_id": 3,
+     "size_bytes": 16704,
+     "start": 7440,
+     "field5": 1881,
+     "field6": 7864320,
+     "field7": 16384,
+     "decoded": {
+      "frames": 1044,
+      "samples": 29232,
+      "duration_s_at_22050": 1.326,
+      "peak": 32152,
+      "rms": 9163.4,
+      "nonzero_fraction": 0.984,
+      "silent": false,
+      "clip_indexes": [
+       2,
+       9
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 3,
+     "clip_id": 4,
+     "size_bytes": 19232,
+     "start": 24144,
+     "field5": 1881,
+     "field6": 8257536,
+     "field7": 16448,
+     "decoded": {
+      "frames": 1202,
+      "samples": 33656,
+      "duration_s_at_22050": 1.526,
+      "peak": 32028,
+      "rms": 8529.4,
+      "nonzero_fraction": 0.992,
+      "silent": false,
+      "clip_indexes": [
+       3
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 4,
+     "clip_id": 5,
+     "size_bytes": 7856,
+     "start": 43376,
+     "field5": 1881,
+     "field6": 8192000,
+     "field7": 16448,
+     "decoded": {
+      "frames": 491,
+      "samples": 13748,
+      "duration_s_at_22050": 0.623,
+      "peak": 30096,
+      "rms": 7890.4,
+      "nonzero_fraction": 0.893,
+      "silent": false,
+      "clip_indexes": [
+       4
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 5,
+     "clip_id": 6,
+     "size_bytes": 14608,
+     "start": 51232,
+     "field5": 1881,
+     "field6": 7995392,
+     "field7": 16384,
+     "decoded": {
+      "frames": 913,
+      "samples": 25564,
+      "duration_s_at_22050": 1.159,
+      "peak": 32576,
+      "rms": 8667.9,
+      "nonzero_fraction": 0.985,
+      "silent": false,
+      "clip_indexes": [
+       5,
+       10
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 6,
+     "clip_id": 7,
+     "size_bytes": 9056,
+     "start": 65840,
+     "field5": 1365,
+     "field6": 8192000,
+     "field7": 16384,
+     "decoded": {
+      "frames": 565,
+      "samples": 15820,
+      "truncated_bytes_past_eof": 16,
+      "duration_s_at_22050": 0.717,
+      "peak": 32753,
+      "rms": 6668.8,
+      "nonzero_fraction": 0.92,
+      "silent": false,
+      "clip_indexes": [
+       6,
+       11
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 7,
+     "clip_id": 8,
+     "size_bytes": 1968,
+     "start": 0,
+     "field5": 11797845,
+     "field6": 8192000,
+     "field7": 16511,
+     "decoded": {
+      "frames": 123,
+      "samples": 3444,
+      "duration_s_at_22050": 0.156,
+      "peak": 31910,
+      "rms": 7739.6,
+      "nonzero_fraction": 0.937,
+      "silent": false,
+      "clip_indexes": [
+       0,
+       7
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 8,
+     "clip_id": 9,
+     "size_bytes": 5472,
+     "start": 1968,
+     "field5": 4288415061,
+     "field6": 8060928,
+     "field7": 16511,
+     "decoded": {
+      "frames": 342,
+      "samples": 9576,
+      "duration_s_at_22050": 0.434,
+      "peak": 32666,
+      "rms": 9824.1,
+      "nonzero_fraction": 0.987,
+      "silent": false,
+      "clip_indexes": [
+       1,
+       8
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 9,
+     "clip_id": 10,
+     "size_bytes": 16704,
+     "start": 7440,
+     "field5": 6555481,
+     "field6": 7864320,
+     "field7": 16511,
+     "decoded": {
+      "frames": 1044,
+      "samples": 29232,
+      "duration_s_at_22050": 1.326,
+      "peak": 32152,
+      "rms": 9163.4,
+      "nonzero_fraction": 0.984,
+      "silent": false,
+      "clip_indexes": [
+       2,
+       9
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 10,
+     "clip_id": 11,
+     "size_bytes": 14608,
+     "start": 51232,
+     "field5": 6555481,
+     "field6": 7995392,
+     "field7": 16511,
+     "decoded": {
+      "frames": 913,
+      "samples": 25564,
+      "duration_s_at_22050": 1.159,
+      "peak": 32576,
+      "rms": 8667.9,
+      "nonzero_fraction": 0.985,
+      "silent": false,
+      "clip_indexes": [
+       5,
+       10
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 11,
+     "clip_id": 1127481344,
+     "size_bytes": 9056,
+     "start": 65840,
+     "field5": 6554965,
+     "field6": 8192000,
+     "field7": 16511,
+     "decoded": {
+      "frames": 565,
+      "samples": 15820,
+      "truncated_bytes_past_eof": 16,
+      "duration_s_at_22050": 0.717,
+      "peak": 32753,
+      "rms": 6668.8,
+      "nonzero_fraction": 0.92,
+      "silent": false,
+      "clip_indexes": [
+       6,
+       11
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    }
+   ]
+  },
+  {
+   "source_file": "snd_title.dat",
+   "container": "P3Dp",
+   "size_bytes": 344064,
+   "clip_count": 8,
+   "payload_base": 864,
+   "payload_alignment_delta": 12,
+   "payload_frames_valid": "1000/1000",
+   "unique_regions": 8,
+   "clips": [
+    {
+     "index": 0,
+     "clip_id": 327681,
+     "size_bytes": 41120,
+     "start": 0,
+     "field5": 1881,
+     "field6": 7012352,
+     "field7": 16384,
+     "decoded": {
+      "frames": 2570,
+      "samples": 71960,
+      "duration_s_at_22050": 3.263,
+      "peak": 27225,
+      "rms": 5778.2,
+      "nonzero_fraction": 0.772,
+      "silent": false,
+      "clip_indexes": [
+       0
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 1,
+     "clip_id": 262146,
+     "size_bytes": 41120,
+     "start": 41120,
+     "field5": 1881,
+     "field6": 7012352,
+     "field7": 16511,
+     "decoded": {
+      "frames": 2570,
+      "samples": 71960,
+      "duration_s_at_22050": 3.263,
+      "peak": 28278,
+      "rms": 5800.8,
+      "nonzero_fraction": 0.775,
+      "silent": false,
+      "clip_indexes": [
+       1
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 2,
+     "clip_id": 262147,
+     "size_bytes": 55472,
+     "start": 82240,
+     "field5": 13109081,
+     "field6": 7602176,
+     "field7": 16384,
+     "decoded": {
+      "frames": 3467,
+      "samples": 97076,
+      "duration_s_at_22050": 4.403,
+      "peak": 30793,
+      "rms": 7466.9,
+      "nonzero_fraction": 0.995,
+      "silent": false,
+      "clip_indexes": [
+       2
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 3,
+     "clip_id": 262148,
+     "size_bytes": 55472,
+     "start": 137712,
+     "field5": 13109081,
+     "field6": 7602176,
+     "field7": 16511,
+     "decoded": {
+      "frames": 3467,
+      "samples": 97076,
+      "duration_s_at_22050": 4.403,
+      "peak": 30818,
+      "rms": 6956.4,
+      "nonzero_fraction": 0.996,
+      "silent": false,
+      "clip_indexes": [
+       3
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 4,
+     "clip_id": 262149,
+     "size_bytes": 93696,
+     "start": 193184,
+     "field5": 1881,
+     "field6": 7798784,
+     "field7": 16384,
+     "decoded": {
+      "frames": 5856,
+      "samples": 163968,
+      "duration_s_at_22050": 7.436,
+      "peak": 30876,
+      "rms": 7081.7,
+      "nonzero_fraction": 0.976,
+      "silent": false,
+      "clip_indexes": [
+       4
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 5,
+     "clip_id": 262150,
+     "size_bytes": 93696,
+     "start": 286880,
+     "field5": 1881,
+     "field6": 7798784,
+     "field7": 16511,
+     "decoded": {
+      "frames": 3520,
+      "samples": 98560,
+      "truncated_bytes_past_eof": 37376,
+      "duration_s_at_22050": 4.47,
+      "peak": 30785,
+      "rms": 9269.6,
+      "nonzero_fraction": 0.996,
+      "silent": false,
+      "clip_indexes": [
+       5
+      ],
+      "dropped_partial_frame_bytes": 0
+     }
+    },
+    {
+     "index": 6,
+     "clip_id": 262151,
+     "size_bytes": 16064,
+     "start": 380576,
+     "field5": 1881,
+     "field6": 7536640,
+     "field7": 16384,
+     "decoded": null
+    },
+    {
+     "index": 7,
+     "clip_id": 1127481344,
+     "size_bytes": 16064,
+     "start": 396640,
+     "field5": 1881,
+     "field6": 7536640,
+     "field7": 16511,
+     "decoded": null
+    }
+   ]
+  }
+ ]
+}
