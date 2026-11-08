@@ -12,15 +12,31 @@ mapped for the RE bench, not yet extracted.
 **Status 2026-11-08 (real-bytes decode, see `DW-DECODE-LOG.md`):** 236/242
 Devil Within files extracted from the archive item
 `slus-210.59.-tekken-5` (range-fetch; TK5DATA0/1 not fetched — disk
-quota) and measured (`dw_measurements.json`): gym motion header
-(bones/frames, `GYM1` @0x40), 214 motion clips, 17,553 frames
-(~292 s at 60 fps); `moj_stg*` are stage MAP OBJECTS (geometry),
-not text — corrected 2026-11-08 from real bytes. 6 DW files have no
-data in TK5DATA2 (list references only). CORRECTION: there are NO
-plain `stg*.dat` stage files in the romD manifest at all (§2 below
+quota) and measured (`dw_measurements.json`, `dw-motion-bank.json`):
+gym motion header (bones/frames, `GYM1` @0x40) + record table +
+channel kinds (position/scale/rotation-packed), 214 motion clips,
+16,503 frames (275.1 s at 60 fps); `moj_stg*` are stage MAP OBJECTS
+(geometry), not text — corrected 2026-11-08 from real bytes. 6 DW files
+have no data in TK5DATA2 (list references only). CORRECTION: there are
+NO plain `stg*.dat` stage files in the romD manifest at all (§2 below
 was wrong); only `moj_stg*` stage map objects. The romD table format
 is the BDPK/BD directory, documented in `ROMD-FORMAT.md`; the
-extractor is `tools/romd_extract_full.py`.
+extractor is `tools/romd_extract_full.py`. **CORRECTION 2026-11-08:**
+the frame total was first written as 17,553 / ~292 s — a mis-add;
+the per-group numbers sum to 16,503 / 275.1 s.
+
+**Status 2026-11-08 (full contents + wire-up, see `DW-DECODE-LOG.md`
+§8–17):** canon-named motion bank (`dw-motion-bank.json`, 220 clips,
+182 wireable) + moveset-library bank
+(`game/data/moveset-library/banks/dw.json`, 165 moves) + HM_TEARDOWN
+data (`game/data/heartmind-dw-teardown.json`, ready=false — enemyAi /
+waveTables / doorSystems null, not guessed) + stage inventory
+(`moj-stage-inventory.json`) + audio inventory
+(`dw-audio-inventory.json`). TK5DATA1 stream-scanned (no readable
+DW strings — the meter/gem/Force/rank/symbol numbers are not there
+as text). Per-frame keyframe packing + type-7 rotation scale still
+blocked. Rename-map filename corrections found (mon/tk, ikt5,
+dw_singles, oz_extra, snd rows) — see `DW-DECODE-LOG.md` §15.
 
 ---
 

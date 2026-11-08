@@ -217,11 +217,49 @@ Each bone carries **12 values per frame**. Two subtypes:
   — only changed channels recorded. The long/special motions
   (`ozb3_dead` 500f, `ozb3_toujyou` 460f, `kob2_escape` 321f,
   projectile attacks, throws). A retarget must handle both.
-- The keyframe stream after the header is a variable-length
-  record encoding (`ff ff` separators); the bit-exact packing is
-  NOT yet reversed. Frame/bone counts are measured for all 236
-  extracted DW files in `dw_measurements.json` (214 motion clips,
-  17,553 frames, ~292 s at 60 fps).
+
+### Gym container layout — record table + channel kinds (2026-11-08)
+
+`tools/gym_parse.py` — structural parser, validated on all 214
+extracted gym files (0 validation problems). Beyond the 32-byte
+header:
+
+```
+offset 32:  sub-header, 4 x u32
+              [0] = 72          record-table offset (always 72)
+              [1] = bone-table offset (264 djin / 1320 init_obj / 632 motions)
+              [2] = data offset     (296 djin / 1688 init_obj / 776 motions)
+              [3] = field3 again    (108 djin / 780 init_obj / 276 motions)
+offset 64:  "GYM1" magic (4 bytes)
+offset 72:  record table, 16 bytes per bone
+              +0  u16 chan_a   (-1 = none)
+              +2  u16 chan_b   (-1 = none)
+              +4  u16 type     (low byte = channel kind; high byte 0/1 = flag)
+              +6  u16 index    (records pair up: 0,0,1,1,2,2...)
+              +8  u32 offset   cumulative data offset (within one frame block)
+              +12 u32 offset2  identical to +8
+bone table:   bone indices (u16) with 0xFFFF markers
+data section: per-frame blocks, variable length (keyframe/delta
+              encoding — a 13-frame file is NOT 13x the 1-frame size)
+```
+
+**Channel kind = record type LOW byte (measured):**
+
+| Type low | Bytes/entry | Channel | Values |
+|---|---|---|---|
+| 3 | 12 | SCALE | 3 float32 (sx,sy,sz), near 1.0 |
+| 11 | 12 | POSITION | 3 float32 (x,y,z) in millimetres |
+| 7 | 6 | ROTATION (packed) | 3 x i16; angle scale NOT yet confirmed |
+
+Position decode validated (root ~origin; height bone Y ≈ 989–1011 mm;
+side bone X = −400 mm; airborne clips Y up to ~7050 mm, matching
+their names). First-frame channel counts (214 clips): position
+2,431, rotation-packed 4,908, scale 520. **NOT yet decoded:** the
+inner delta-frame packing (frame-block delimiter) and the type-7
+rotation angle scale. The per-frame keyframe stream is the
+remaining gym blocker. Frame/bone counts are measured for all 214
+extracted DW files in `dw-motion-bank.json` (214 motion clips,
+16,503 frames, 275.1 s at 60 fps).
 
 ## Stage map objects (`moj_stg*.dat`) — geometry, not text
 
@@ -283,8 +321,16 @@ not a LUT — solved 2026-11-08.
   re-fetchable from the archive item, extent 1646501). PKG
   `files[7]` mask.bin + `files[9]` table NOT extracted.
 - `TK5DATA0.BIN` (2.07 GB) — NOT fetched (disk quota).
-- `TK5DATA1.BIN` (1.30 GB) — NOT fetched (disk quota); PS2 LUT
+- `TK5DATA1.BIN` (1.30 GB) — NOT held whole (disk quota); PS2 LUT
   validated in the Code blob, entries tile 99.9% of it.
+  **Stream-scanned 2026-11-08** (`tools/tk5data1_scan.py`): 124 × 10 MB
+  Range chunks, scanned in memory for DW strings (force/gem/symbol/
+  laser/rank/gauge/drain/heal/devil/gym_/mon_/romD/item_force),
+  232 hits — ALL "gem"/"GEM"/"Gem" false positives (binary data in a
+  repeating 2048-byte record structure). Zero hits for everything
+  else. **TK5DATA1 contains NO readable DW-relevant strings.**
+  The meter/gem/Force/rank/symbol numbers are binary values there
+  (unlabelled) or MIPS immediates — not readable strings.
 - `SLUS_210.59` (689 KB bootloader ELF) — FETCHED.
 - Recorded source: Internet Archive item `slus-210.59.-tekken-5`
   (md5 `5bce17ccabacea46d621d195c4600ebb`, sha1
@@ -292,6 +338,10 @@ not a LUT — solved 2026-11-08.
   `teardown/tekken5/INVENTORY.md`. Jay authorized the pull
   2026-11-07 ~20:15. Full-ISO md5/sha1 NOT verifiable (quota-forced
   range-fetch of individual BINs; see `DW-DECODE-LOG.md`).
-- Next steps: range-fetch / stream-scan TK5DATA0/1 for meter, gem,
-  Force, rank, symbol, and AI tables; reverse the gym keyframe
-  stream packing and the NUDP/MIF stage formats; decode P3Dp audio.
+- Next steps: stream-scan TK5DATA0 for meter, gem, Force, rank,
+  symbol, and AI tables (same discardable-chunk method); reverse
+  the gym keyframe stream packing and the NUDP/MIF stage formats;
+  decode P3Dp audio. The moveset-library bank
+  (`game/data/moveset-library/banks/dw.json`, 165 moves) and the
+  HM_TEARDOWN data (`game/data/heartmind-dw-teardown.json`) are
+  landed on the `dw-decode` branch — see `DW-DECODE-LOG.md` §8–17.
