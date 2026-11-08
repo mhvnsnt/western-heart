@@ -5,6 +5,14 @@ audit itself, no repo files modified by it, no deploy, no Steam login,
 no model fabricated. Counts below were re-verified against the main
 tree (`git ls-tree -r HEAD`) on 2026-11-02, not taken from the brief.
 
+**Update 2026-11-08 (PR #1647 fix lane):** the Tekken 5 section below
+was updated to the measured state after the Devil Within decode.
+Counts were re-verified against the `dw-decode` branch tree
+(`git ls-tree -r HEAD` equivalent via the git trees API) and the
+committed measurement artifacts were cross-checked against each
+other (see §Tekken 5). All other sections are unchanged from
+2026-11-02.
+
 ## WWE
 
 ### 2K19 — batch 1 landed, not a complete teardown
@@ -62,16 +70,42 @@ WH baselines: roster `game/js/roster-full.js` = 59 fighters;
 moveset library `game/data/moveset-library/index.json` (built
 2026-10-22) = 9,516 total moves across 6 landed banks + 9 pending.
 
-### Tekken 5 — docs only, 0% extracted models/movesets
+### Tekken 5 — Devil Within decoded 2026-11-08 (PR #1647); main-game models/movesets still 0%
 
-- `teardown/tekken5/`: **11 blobs** — docs, survey, manifests, tools,
-  rigging reference, UI status. No models, no movesets.
-- `ROSTER.md` documents 32 fighters from public game data (explicitly
-  "verify against disc file inventory"), not from extracted files.
-- `TEARDOWN.md`'s "0% → ~15%" is survey/documentation coverage, not
-  extraction coverage. T5 is not even a pending bank in the library
-  index (pending: t7, ttt2, t6, soulcalibur, urban_reign, bloody_roar,
-  sf, def_jam, vf5-motion).
+- `teardown/tekken5/`: **43 blobs** (tree-verified on the `dw-decode`
+  branch, 2026-11-08) — the original 11 docs/survey/manifest files
+  plus 32 decode files added by PR #1647: `DW-DECODE-LOG.md`,
+  `ROMD-FORMAT.md`, 10 measured-data JSONs, and 20 extraction tools
+  under `tools/`.
+- romD extraction (per `DW-DECODE-LOG.md` §3; extracted bytes are on
+  disk only in `raw/romd_out/`, not in the repo): 1,022 files /
+  108,866,592 bytes across containers; **Devil Within 236/242 files
+  extracted**. The 6 with no file data in TK5DATA2 are named
+  identically in the log, `dw_measurements.json`, and
+  `dw-motion-bank.json`: `gym_ozhe_1ckj66a.dat`,
+  `gym_ikt5_katgym_Bbr_bbblow.dat`, `gym_ikt5_katgym_Gan_mekin.dat`,
+  `gym_init_obj_testchr1.dat`, `gym_init_obj_testchr2.dat`,
+  `gym_init_obj_testchr3.dat`.
+- Index decode: all 242 Devil Within files named and glossed in
+  `dw-motion-index.json` against the 498-name romD manifest.
+- Motion measurements (recomputed from `dw_measurements.json`
+  per-file entries by the fix lane; group aggregates match exactly):
+  **214 extracted motion clips, 16,503 frames** at 60 fps (~275 s),
+  35 bones for standard motions. `dw-motion-bank.json` agrees with
+  `dw_measurements.json` on frames/bones/group for all 214 clips,
+  0 discrepancies. The bit-exact keyframe decode is NOT finished
+  (decode log §4 says so); the romD LUT table layout is documented
+  but UNVALIDATED (decode log §2).
+- Audio/stage data: `dw-audio-decoded.json` covers the 18 `snd_*`
+  files at 22,050 Hz; `moj-stage-geometry.json` parses 4 stages.
+- Game side: PR #1647 adds the Devil Within motion bank
+  `game/data/moveset-library/banks/dw.json` plus
+  `game/data/heartmind-dw-teardown.json` and updates the library
+  index — the DW sub-mode now has a bank; T5 main-game native
+  movesets/models remain 0% (no model payloads in this decode).
+- `ROSTER.md` still documents 32 fighters from public game data
+  (explicitly "verify against disc file inventory"), not from
+  extracted files — unchanged by PR #1647.
 
 ### Tekken 3 — the only Tekken moveset bank in the library
 
@@ -164,7 +198,10 @@ that routing stands or needs correcting; this audit changes neither.
 
 - T7-native movesets/animations: 0% — pending bank, blocked on game paks.
 - TTT2-native movesets/models: 0% — pending bank, blocked on container decryption.
-- T5-native movesets/models: 0% — no bank at all, docs/survey only.
+- T5-native (main game) movesets/models: 0% — still no main-game
+  bank; the Devil Within sub-mode was decoded 2026-11-08
+  (PR #1647, see §Tekken 5): 236/242 files extracted (disk),
+  214 motion clips measured, `dw` motion bank in the library.
 - T3-native movesets: extracted for 20 fighters + common, but
   law-gated to unclaimed/free fighters only; Mokujin missing entirely.
 - T7-native models: 49% held (repo + releases) per the 2026-10-23
