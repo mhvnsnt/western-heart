@@ -1,11 +1,11 @@
 # romD archive format — Tekken 5 PS2 (TK5DATA2.BIN)
 
-Status: **format documented from survey + community tools; table layout
-UNVALIDATED against real bytes.** No `TK5DATA2.BIN` exists in the repo or
-on disk anywhere found (2026-11-08). The ISO was deleted after the
-2026-10-23 survey; only the 498-name manifest survives. See
-`DW-DECODE-LOG.md` for the blocker and `tools/romd_extract.py` for the
-reader that runs the moment bytes exist.
+Status: **format CRACKED against real bytes 2026-11-08.** The
+file-table mapping is SOLVED: romD uses BDPK containers with a BD
+directory (not a LUT). 236/242 Devil Within files extracted and
+measured. See `DW-DECODE-LOG.md` for the decode and
+`tools/romd_extract_full.py` for the extractor. The PS2 LUT
+(TK5DATA1 index) is validated separately in the TK5DATA3 Code blob.
 
 ## What the repo's own survey established (2026-10-23)
 
@@ -13,11 +13,11 @@ reader that runs the moment bytes exist.
 - It holds a **CRLF filename manifest** — 498 `.dat` motion/sound/text
   names, preserved in `t5_motion_manifest.txt` (498 lines, one name per
   line, all ending `.dat`, all prefixed `gym_` / `snd_` / `moj_`).
-- **21 `BDPK` markers** inside the archive. Purpose unknown — possibly
-  section delimiters. Their offsets were never recorded; the scanner in
-  `romd_extract.py` lists them when bytes exist.
-- The **file-table → data-offset mapping was never reversed**. That is
-  the blocker this decode ran into: names are known, offsets/sizes are not.
+- **99 `BDPK` containers** (the 2026-10-23 survey said 21 — wrong;
+  recount from real bytes is 99). They are the file store, not
+  section delimiters; see "BDPK containers + BD directory" below.
+- The **file-table → data-offset mapping is SOLVED** (2026-11-08):
+  BD directory records inside each BDPK container. See below.
 - `TK5DATA0.BIN` (2.07 GB), `TK5DATA1.BIN` (1.30 GB),
   `TK5DATA3.BIN` (423 MB) are proprietary binary with no ASCII filenames.
   DW stage geometry, boss AI, meters, rank thresholds live there, not in
@@ -110,19 +110,138 @@ From `tekkenmods.com/article/48` (extracting vanilla Tekken 5 assets):
   conflate the two. Whether romD's DW `.dat` files are encrypted is
   UNPROVEN until bytes exist.
 
-## What romD's own table is — UNKNOWN
+## What romD's own table is — SOLVED (2026-11-08, real bytes)
 
-- Neither documented LUT is proven to be the romD table. The romD
-  manifest gives 498 names; the PS2 LUT has 1571 entries (indexes
-  TK5DATA1, not romD); the generic LUT has 5004 (retail) / 3030 (beta)
-  entries. None of those counts is 498.
-- Working hypothesis (UNPROVEN): romD follows the same Namco LUT
-  pattern — a table of (sector, size) entries in the same entry shapes,
-  with the 498-name manifest order matching table order (typical for
-  these archives). `romd_extract.py --scan` hunts for candidate tables
-  by that shape and reports them; extraction needs a confirmed table.
-- The 21 `BDPK` markers may delimit 21 sections (motions / sounds /
-  text / stages …) — unproven.
+romD does NOT use a LUT. It uses **BDPK containers with a BD
+directory**. Measured from `TK5DATA2.BIN` (244,426,640 bytes);
+extractor: `tools/romd_extract_full.py`.
+
+### BDPK container
+
+```
+offset 0:  "BDPK"            (4 bytes)
+offset 4:  u32 A             entry count (number of BD records)
+offset 8:  u32 B             payload size in bytes
+offset 12: payload (B bytes)
+```
+
+99 containers; total BDPK payload 167,172,864 bytes. A values
+observed: 0, 1, 2, 3, 4, 5, 6, 13, 27, 51, 54, 71, 80, 86, 91, 99,
+103, 104, 105, 108, 110, 114, 115, 116, 123, 136, 138, 140, 143,
+144, 145, 148, 151, 274. A=0 containers hold no files. One
+`BDPK` hit is nested inside another container's payload (a false
+hit, not a container). Containers tile the archive with small gaps;
+the gaps hold name-list blocks, the offset-16 text file, and the
+~74 MB tail (motion data + compressed blobs + textures).
+
+### Payload layout
+
+```
+payload+0:    116-byte prefix — a fixed bone/skeleton block
+              (first 32 bytes identical across containers:
+              ca a5 00 40 58 47 01 40 00 00 00 40 14 f0 ff bf
+              a8 a3 07 08 ...)
+payload+116:  A × 128-byte BD directory records
+payload+116+A*128: file data, in directory order
+payload+B-12: 12-byte trailer (content unassigned)
+```
+
+### BD directory record (128 bytes)
+
+```
+offset 0:   "BD"            (2 bytes)
+offset 2:   u16 type        0=gym_ motion, 1=obj_ object, 2=nut_,
+                            3=(1 file, unassigned), 4=snd_ sound,
+                            5=cap_ font, 8=moj_ stage
+offset 4:   u32 X           per-file value, UNRESOLVED (clusters by
+                            character group, e.g. amt3 motions
+                            X≈12123–12176 — possibly a motion/group ID)
+offset 8:   u32 Y           FILE SIZE in bytes
+offset 12:  8 bytes         mostly zero (occasionally small values)
+offset 20:  filename WITHOUT ".dat", NUL-terminated, zero-padded
+            to fill the 128-byte record
+```
+
+**File data:** the files follow the directory in record order,
+each exactly Y bytes, back to back. Validation that holds on
+every extracted container: record count == A, and the Y values
+sum to (data region − 12) exactly (the 12-byte trailer). Some
+containers have empty directory slots (all zeros, or zeros + a
+stray float −1.857) — those hold no file and contribute Y=0.
+
+### Name-list blocks (NOT a manifest)
+
+97 text blocks in the gaps between containers (5,780 name lines,
+1,143 unique names): stage-pack load lists (`bhb_`/`gym_`/`obj_`/
+`snd_`/`moj_`/`nut_`/`cap_` names, CRLF-separated). They are load
+lists, NOT the archive index — a name in a list does not mean the
+file is stored in a container (6 DW names are list-only). 15 of
+the 97 blocks are false positives (binary motion data that
+happens to contain name-like ASCII).
+
+### The offset-16 text file
+
+Bytes [16, 0x1b30) (6,944 bytes) are a plain-text file:
+`snd_c02lei.dat` — Lei's sound-position definitions (`lab_A/B`,
+`blu_A/B`, `szk`, ... with 3D coordinates + angles + Shift-JIS
+labels) followed by a binary `.evd` event-script section
+(NAME/TYPE/MODE/NAME_ID/LOAD_FILENAME/LOAD_TYPE/LOAD_LEVEL,
+`TEG_0.01`, `leload_testmap1_1`, `EV_TYPE_LOAD`, `START_BLK`,
+`testmap2_001`, `END`). It is stored raw, not in a container.
+
+### No romD table in TK5DATA3 / Code / SLUS
+
+Searched and found absent: no `romD`, no `TK5DATA2`, no `.dat`,
+no `gym_` names in the TK5DATA3 Code blob, SLUS_210.59, or
+TK5DATA4.BIN. The romD index lives ONLY in the BDPK containers.
+
+## Gym motion format (`gym_*.dat`) — header decoded
+
+Magic `GYM1` at offset 0x40 (64) in every gym file. 32-byte
+little-endian u16 header:
+
+| Field | Meaning (measured) |
+|---|---|
+| [1] | bone count: 35 (fighter motions), 78/111/96 (`init_obj`), 12 (`djin`), 4 (7 special kob2/ozb3 files) |
+| [2] | frame count |
+| [3] | 276 (motions); = bones×10 (`init_obj`); 108 (`djin`) — UNRESOLVED |
+| [5] | 16528 (0x4090) constant; u32 @8 = 0x40900000 = 4.5f |
+| [7] | 8192 (0x2000) constant |
+| [10] | = bone count × 128 |
+| [12] | = frames × bones × 12 (standard subtype: 420 values/frame at 35 bones) |
+| [14] | 68 / 180 / 15 — UNRESOLVED |
+
+Each bone carries **12 values per frame**. Two subtypes:
+- **Standard:** field12 == frames×bones×12 (per-frame data).
+- **Sparse (14 clips):** field12 much smaller (11–135 values/frame)
+  — only changed channels recorded. The long/special motions
+  (`ozb3_dead` 500f, `ozb3_toujyou` 460f, `kob2_escape` 321f,
+  projectile attacks, throws). A retarget must handle both.
+- The keyframe stream after the header is a variable-length
+  record encoding (`ff ff` separators); the bit-exact packing is
+  NOT yet reversed. Frame/bone counts are measured for all 236
+  extracted DW files in `dw_measurements.json` (214 motion clips,
+  17,553 frames, ~292 s at 60 fps).
+
+## Stage map objects (`moj_stg*.dat`) — geometry, not text
+
+CORRECTION (2026-11-08): `moj_stg*` are stage MAP OBJECT files
+(`.moj`), not stage text. Each starts with the dev build path
+`C:\temp\mapobj\stgNN.moj`, then effect-archive references
+(`stgNN_effnud.arc`, `stgNN_effmif.arc`, `stgNN.efp`,
+`stgNN_effnut.arc`), then NUDP model containers + TIM2 textures
++ MIF bone data. Measured: stg00 1,916,672 B (29 NUDP / 29 TIM2 /
+56 MIF); stg01 872,320 B (18/18/18); stg02 1,392,384 B (20/20/22);
+stg04 200,192 B (3/3/3). `moj_stg03` does not exist. The NUDP/MIF
+contents (positions, collision) are NOT yet parsed.
+
+## Sound container (`snd_*.dat`) — P3Dp
+
+17 of 18 `snd_*` files start with magic `P3Dp` (u32 0x70443350).
+Header (16 bytes): magic, then u16 fields (0x0A01, a count 8–20,
+a second count 8–12, sizes). Entropy ~6.5 (compressed/encoded
+audio). Audio payload not decoded. `snd_c02lei.dat` is the
+plain-text file above, not P3Dp.
 
 ## What the index-level decode found (2026-11-08)
 
@@ -140,32 +259,39 @@ manifest by name, with romaji glosses and confidence per file:
 | `gym_init_obj_*` | 21 | Boss init 1/2/3/5 (boss4 ABSENT), Jin, devil, monster archetypes power/speed/standard/tricky, 3 test characters |
 | `gym_djin_newhane00-03` | 4 | Devil Jin transform — wings/feathers |
 | `gym_dw_*` singles | 7 | Face (`dwfkao`), wave (`dwhadoh`), power-up (`dwup`, `dwup_hei`), 3 opaque |
-| `moj_stg00/01/02/04` | 4 | Stage text/messages (NOT geometry); `moj_stg03` absent |
+| `moj_stg00/01/02/04` | 4 | Stage MAP OBJECTS (`.moj` geometry: NUDP models + TIM2 textures + MIF bones), NOT text; `moj_stg03` absent |
 | `snd_*` | 18 | Lab / Egyptian / blue themes; Lei/Jin/Heihachi/JACK/Devil Jin voices (anchors c02/c10/c15/c21/c30); ogre, ruins, boss, monster, system sounds |
 
 Confidence: 155 high, 56 medium, 31 opaque (tokens not translated).
 
 **Corrections found in this pass:** (1) there are NO plain `stg*.dat`
 stage-geometry files in the romD manifest at all — only `moj_stg*`
-text. An earlier draft said `stg00/01/02/04.dat` exist; that was
-wrong. Stage geometry lives in TK5DATA0/1/3. (2) `ikdv` is 52 files
-including `jump_k` / `jump_p`, which an earlier enumeration missed.
-(3) The manifest is 498 single-spaced lines, not 996.
+map objects. An earlier draft said `stg00/01/02/04.dat` exist; that was
+wrong. (2) `ikdv` is 52 files including `jump_k` / `jump_p`, which an
+earlier enumeration missed. (3) The manifest is 498 single-spaced
+lines, not 996. (4) `moj_stg*` are stage map objects (geometry), NOT
+stage text — corrected 2026-11-08 from real bytes. (5) `BDPK` count
+is 99, not 21. (6) The romD file-table mapping is the BD directory,
+not a LUT — solved 2026-11-08.
 
-## Still blocked — exact missing data
+## Still blocked — exact missing data (revised 2026-11-08)
 
-- `TK5DATA2.BIN` (244 MB) — the 498 named files themselves.
-- `TK5DATA0.BIN` (2.07 GB) — stage geometry, boss AI, meters, rank thresholds.
-- `TK5DATA1.BIN` (1.30 GB) + `TK5DATA3.BIN` (423 MB) — data/code archives.
-- `SLUS_210.59` (689 KB bootloader ELF).
+- `TK5DATA2.BIN` (244 MB) — FETCHED + EXTRACTED (236/242 DW files).
+- `TK5DATA3.BIN` (423 MB) — FETCHED, PKG parsed, Code blob saved
+  (`TK5DATA3_code.bin` on disk only); the BIN itself was deleted
+  2026-11-08 to free quota (SHA-256 `74a50b9843f88c34d817e5737aacc8f09f8de22d810c03ec38e0346e6b83fb79`;
+  re-fetchable from the archive item, extent 1646501). PKG
+  `files[7]` mask.bin + `files[9]` table NOT extracted.
+- `TK5DATA0.BIN` (2.07 GB) — NOT fetched (disk quota).
+- `TK5DATA1.BIN` (1.30 GB) — NOT fetched (disk quota); PS2 LUT
+  validated in the Code blob, entries tile 99.9% of it.
+- `SLUS_210.59` (689 KB bootloader ELF) — FETCHED.
 - Recorded source: Internet Archive item `slus-210.59.-tekken-5`
   (md5 `5bce17ccabacea46d621d195c4600ebb`, sha1
   `97ca517151229bc1c6a58396ccf470f91676f047`), per
-  `teardown/tekken5/INVENTORY.md`. Re-supply must come from Jay's own
-  disc or that item — do NOT download a Tekken 5 ISO from the internet
-  without Jay supplying it.
-- When bytes exist: run `tools/romd_extract.py` (`--scan`, then
-  `--extract` with a confirmed table), then decode the `.dat` contents
-  (motion format, stage geometry, boss/enemy tables, meter and rank
-  numbers) against the `NUDP` / `TIM2` / `MIF` headers and the ImHex
-  patterns.
+  `teardown/tekken5/INVENTORY.md`. Jay authorized the pull
+  2026-11-07 ~20:15. Full-ISO md5/sha1 NOT verifiable (quota-forced
+  range-fetch of individual BINs; see `DW-DECODE-LOG.md`).
+- Next steps: range-fetch / stream-scan TK5DATA0/1 for meter, gem,
+  Force, rank, symbol, and AI tables; reverse the gym keyframe
+  stream packing and the NUDP/MIF stage formats; decode P3Dp audio.

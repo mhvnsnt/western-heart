@@ -9,14 +9,18 @@ blueprint): `~/workspace/devil-within-teardown.md` (2026-10-22).
 boss AI, and mechanics are in the binary `TK5DATA0.BIN`/`TK5DATA3.BIN` formats —
 mapped for the RE bench, not yet extracted.
 
-**Status 2026-11-08 (index-level decode, see `DW-DECODE-LOG.md`):** all 242 Devil
-Within files in the romD manifest are inventoried by name with romaji glosses in
-`dw-motion-index.json` (Devil Jin kit 52, Modified Gun Jack 39, True Ogre 29,
-Monstrous Ogre 36, monster archetypes, transform, stage text, sounds). No offsets,
-sizes, or file contents are resolved — the archive bytes are not in the repo.
-CORRECTION: there are NO plain `stg*.dat` stage files in the romD manifest at all
-(§2 below was wrong); only `moj_stg*` stage text. The romD table format is
-documented in `ROMD-FORMAT.md`; the reader is `tools/romd_extract.py`.
+**Status 2026-11-08 (real-bytes decode, see `DW-DECODE-LOG.md`):** 236/242
+Devil Within files extracted from the archive item
+`slus-210.59.-tekken-5` (range-fetch; TK5DATA0/1 not fetched — disk
+quota) and measured (`dw_measurements.json`): gym motion header
+(bones/frames, `GYM1` @0x40), 214 motion clips, 17,553 frames
+(~292 s at 60 fps); `moj_stg*` are stage MAP OBJECTS (geometry),
+not text — corrected 2026-11-08 from real bytes. 6 DW files have no
+data in TK5DATA2 (list references only). CORRECTION: there are NO
+plain `stg*.dat` stage files in the romD manifest at all (§2 below
+was wrong); only `moj_stg*` stage map objects. The romD table format
+is the BDPK/BD directory, documented in `ROMD-FORMAT.md`; the
+extractor is `tools/romd_extract_full.py`.
 
 ---
 
@@ -36,8 +40,8 @@ documented in `ROMD-FORMAT.md`; the reader is `tools/romd_extract.py`.
 Full inventory: `dw-motion-index.json` — 242 DW files (Devil Jin kit `gym_ikdv_*`
 52, Modified Gun Jack `gym_kmb1_*` 39, True Ogre `gym_kob2_*` 29 [inference],
 Monstrous Ogre `gym_ozb3_*` 36 [inference], unresolved gun/fly kit `gym_ikt5_*`
-26, init objects `gym_init_obj_*` 21, transform `gym_djin_newhane*` 4, stage text
-`moj_stg00/01/02/04`, sounds `snd_*` 18), each with a gloss and confidence.
+26, init objects `gym_init_obj_*` 21, transform `gym_djin_newhane*` 4, stage map
+objects `moj_stg00/01/02/04`, sounds `snd_*` 18), each with a gloss and confidence.
 
 Character sound: `snd_c30dvj.dat` (Devil Jin), `snd_c10jin.dat` (Jin), `snd_c15hei.dat` (Heihachi clones), `snd_c21jac.dat` (JACK), `snd_c02lei.dat` (Lei). These anchor the char codes: c02 = Lei, c10 = Jin, c15 = Heihachi, c21 = JACK, c30 = Devil Jin.
 
@@ -46,10 +50,12 @@ Character sound: `snd_c30dvj.dat` (Devil Jin), `snd_c10jin.dat` (Jin), `snd_c15h
 **There are NO plain `stg*.dat` stage-geometry files in the romD manifest.**
 An earlier version of this doc said `stg00/01/02/04.dat` exist; that was wrong
 (verified by grep over all 498 manifest names, 2026-11-08). What exists is
-stage **text**: `moj_stg00.dat`, `moj_stg01.dat`, `moj_stg02.dat`,
-`moj_stg04.dat` ("moji" = characters/text). `moj_stg03` is absent from the
-manifest. Stage geometry is NOT in romD — it lives in `TK5DATA0.BIN`'s binary
-format (see §3).
+stage **map objects**: `moj_stg00.dat`, `moj_stg01.dat`, `moj_stg02.dat`,
+`moj_stg04.dat` — `.moj` files holding NUDP models + TIM2 textures + MIF
+bones (CORRECTED 2026-11-08 from real bytes: they are geometry, NOT text;
+"moji" = characters/text was a misread of the prefix). `moj_stg03` is absent
+from the manifest and from the archive. Stage geometry beyond the `.moj`
+contents lives in `TK5DATA0.BIN`'s binary format (see §3).
 
 DW's 5 stages (G Corp lab → medical wing → ruins → spaceship → deeper) are likely among
 these or in `TK5DATA0.BIN`'s binary format. Mapping stage IDs → DW stages is RE bench work.
