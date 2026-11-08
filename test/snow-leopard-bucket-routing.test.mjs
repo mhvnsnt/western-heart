@@ -8,6 +8,9 @@
 // A blob SHA pins the exact bytes, which pins the size too; the byte sizes
 // below were verified against the R2 upload manifest and the 2026-11-02
 // task (snow-leopard 7,434,348; bobcat-pride 33,257,868; tiger-king 32,100,272).
+// 2026-11-07: the head_debleed fix (PR #1641) rewrote the bobcat-pride and
+// tiger-king weights, so their blobs changed (bobcat-pride 33,196,144;
+// tiger-king 32,049,712); the pins above track the fixed files.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
@@ -21,7 +24,7 @@ const AC = await import(join(ROOT, 'game/js/asset-config.js'));
 const FIXED = [
   ['roster/pantera/attires/snow-leopard/pantera-snow-leopard.glb', 'ab46d87309e31bc60c186ae4c529dbb9ed797577'],
   ['roster/yukihyo/attires/attire2/source/yukihyo-a2-bobcat-pride-rigged.glb', 'deac50e24633612140168cbb8669d1c357b20b5b'],
-  ['roster/yukihyo/attires/attire3/source/yukihyo-a3-tiger-king-rigged.glb', '6222d4e8139f4a268cc5b7e3dc85460f553b6e4e'],
+  ['roster/yukihyo/attires/attire3/source/yukihyo-a3-tiger-king-rigged.glb', '28df1f1428497f0a8a2303c7a12cdd132bb263a3'],
 ];
 
 test('fixed models are shell-bundled, local-first, and present at the verified blob', () => {
