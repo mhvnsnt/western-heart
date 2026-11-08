@@ -4379,3 +4379,43 @@ Branch `claude/cs-phase3-morph-targets`, draft PR #1489 (stacked on #1486). Orde
 **Strain provenance:** no SC system data is held (SCVI binaries never acquired — `teardown/scvi-doa6-acquisition-2026-10-14.md`; the SCVI mechanics doc is our own qualitative research). Values from documented system data (SuperCombo Wiki SCVI/System, read 2026-11-06): 0-100% gauge, yellow 60%, red 80%, crush at 100%, GI cost 10%, per-move Guard Burst examples (16 dmg→5%, 40→25%, 52→41.67%). WH scale measured from `game/assets/movesets/chatur.json` (median 13, max 60). strainPerDamage 0.75 is a JUDGMENT CALL fitted to those anchors (labeled as such in `game/js/bt-guard.js` and the BT doc addendum) — the gauge structure is documented SC data + the owner's spec.
 
 **Verification:** `test/back-turned.test.mjs` 18/18 (cases (a)-(i) + derivation test + all #1611 tests); #1611 regression family green (cd-ss-contexts, pond-stances, stance-reachability, input-slotting, yaotome-stance, dead-input-s1-slotting, dead-d1-slotting, stance-neutral, t7-stance); full `test/*.test.mjs` suite run locally; CI on the PR. Docs: addendum in `docs/movesets/BT-SYSTEM-FIX-2026-11-06.md`.
+
+## 2026-11-08 — HeartMind rename application: CONFIRMED rows only (RENAME LANE)
+
+**Map:** `~/workspace/western-heart-audit/HEARTMIND-RENAME-MAP.md` (§§0–§5).
+**What:** applied the map's 25 CONFIRMED rows (14 DW + 6 UR + 5 Redux) — nothing
+else. No PROVISIONAL or PROPOSED name was applied anywhere; no canon name was
+invented.
+**Row verdicts:** 10 already in code (UR: 31 wired movesets, 60 fps bar,
+Free Mode rule, Glen Kluger → Cain Elias, UR story names dropped; Redux: Mod
+Manager / Editor / roster-lib / Source/editor / Source/web verified on disk
+with SHA-256 sums matching the author); 14 waits on decode (all DW: 4 boss
+bodies, 6 wave-echo archetypes, 4 stage texts — names already canon in code,
+decoded data not on disk yet); 1 NOT VERIFIED in code and flagged, not
+claimed (UR region damage — no per-region damage implementation found at HEAD;
+see the application doc §2).
+**Code change (1 file, 1 line):** `game/js/mainmenu.js:55` — the HEART AND
+MIND WITHIN menu description no longer says "Tekken 5 Devil Within style"
+(the mode's canon name is HeartMind, map §0/§5.3; owner law: no source-game
+names in UI). Only player-visible string found that used a source proper noun
+where a CONFIRMED canon name exists. "Devil" in code comments left alone
+(provenance, not names). DIABLO's player-visible "Devil" strings
+(roster title 'The Devil Soul', Attire 2 label 'ATTIRE 2 · DEVIL GOD') left
+alone — no CONFIRMED replacement exists; they are Jay calls (#14).
+**Flags for the coordinator:** map `mon01–06` filenames match no file in
+`dw-motion-index.json` (real names: `mon_power1/2`, `mon_speed1`,
+`mon_standard1/2`, `mon_tricky1`); map §5.3 calls Diablo "one of the nine
+souls" but `NINE-SOULS-CANON.md` lists the nine without Diablo.
+**Deliverables:** `~/workspace/western-heart-audit/HEARTMIND-RENAME-APPLICATION.md`
+(per-row verdicts + grep pass) and `HEARTMIND-JAY-CALLS.md` (15 Jay calls).
+**Verification:** `node --check` on the edited file (pass); no test covers
+the menu description string (no test references `mainmenu.js`); full suite
+runs in CI on the PR. `ui_sources.json` already lists `game/js/mainmenu.js`,
+so the ui-sources gate is unaffected.
+**Deletions:** none.
+**How this commit was built:** no local clone was used — the HEAD tree is
+~14.3 GB and the workspace disk quota blocks a full clone (two attempts
+failed "Disk quota exceeded"). Built via the Git Data API from verified tree
+SHAs per the NO-SPARSE-COMMIT LAW: base commit `3334ebf`, base tree
+`52e2204aca2a1ca5ce27a2b06a453069a36de3b1`; `mainmenu.js` HEAD blob
+`73e6ab642b967a1aed522e1111c637296460dbef` hash-verified before editing.
