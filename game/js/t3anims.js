@@ -813,6 +813,84 @@ export function t7MoveRetarget(fid, bankId, moveKey, model, THREE, instanceKey =
 }
 
 /* ============================================================
+   DEVIL WITHIN MOVES (DW) — retargeted DW motion curves.
+   Mirrors the T7 moves (T7_MOVES / ensureT7Moves / t7MoveClip /
+   t7MoveRetarget) but loads the wh-dw-moves/1 packs baked by
+   tools/anim/dw_curve_bake.py from the decoded DW curves
+   (teardown/tekken5/dw-motion-curves.json). The DW bank has NO
+   stance clip (the DW clips start moving immediately), so dwMoveClip
+   does NOT gate on a captured rest pose — the rig is analyzed on
+   first retarget, the same analyzeRig the T3 banks use.
+   The DW clips are the Surge Kit donor (gym_ikdv_*) and the Soul
+   Surge Bloom donor (gym_dwup00 / gym_dwhadoh00) — donor data only,
+   never presented as a source character. active_frames is null for
+   every DW move: the decode carries no hit timing, so the game times
+   DW moves on the moveset's own S/A/R (honest nulls).
+   ============================================================ */
+export const DW_MOVES = {
+  pantera: { dir: 'assets/anim/dw/', pack: 'moves.pantera.pack.json' },
+};
+
+const _dwmoves = {}; // fighterId -> { skelId, clips: { name: clip }, moves: { moveKey: { clip, active, dw_source } } }
+const _dwmovesLoading = {};
+
+export function ensureDwMoves(fid, THREE) {
+  const spec = DW_MOVES[fid];
+  if (!spec) return Promise.resolve(null);
+  if (_dwmoves[fid]) return Promise.resolve(_dwmoves[fid]);
+  if (_dwmovesLoading[fid]) return _dwmovesLoading[fid];
+  _dwmovesLoading[fid] = (async () => {
+    try {
+      const pack = await fetchT7Json(spec.dir + spec.pack);
+      const skelId = 'dw:' + spec.dir;
+      if (!_t3skelCache[skelId]) _t3skelCache[skelId] = await fetchT7Json(spec.dir + (pack.skeleton || 'skeleton.json'));
+      const clips = {};
+      for (const [cname, cdata] of Object.entries(pack.clips || {})) {
+        if (cdata.anim_set && cdata.anim_set !== 'FIGHT') continue;
+        const clip = jsonToClip(`dw_${fid}_${cname}`, cdata, THREE);
+        if (!clip) continue;
+        clip.userData.dw = cdata.dw_source;
+        clips[cname] = clip;
+      }
+      const moves = {}, byInput = {};
+      for (const [key, m] of Object.entries(pack.moves || {})) {
+        if (!clips[m.clip]) continue;
+        moves[key] = { clip: m.clip, active: null, dw_source: m.dw_source };
+        const ni = t7NormInput(m.input);
+        if (ni && !byInput[ni]) byInput[ni] = key;
+      }
+      _dwmoves[fid] = { skelId, clips, moves, byInput };
+      console.log(`[WH-DW] ${fid}: ${Object.keys(clips).length} DW move clips (${spec.dir}${spec.pack})`);
+      return _dwmoves[fid];
+    } catch (e) {
+      console.warn(`[WH-DW] ${fid}: DW move clips unavailable, moves keep their current clips:`, e.message || e);
+      return null;
+    }
+  })();
+  return _dwmovesLoading[fid];
+}
+
+export function dwMoveClip(fid, moveKey, model, input) {
+  const rec = _dwmoves[fid];
+  if (!rec) return null;
+  const key = rec.moves[moveKey] ? moveKey : (input && rec.byInput ? rec.byInput[t7NormInput(input)] : null);
+  const mv = key ? rec.moves[key] : null;
+  if (!mv || !rec.clips[mv.clip]) return null;
+  // No stance gate: the DW bank has no stance clip, so there is no captured
+  // rest pose to require — the rig is analyzed on first retarget.
+  return { name: 'dw:' + key, clip: rec.clips[mv.clip], skelId: rec.skelId, active: null, dw_source: mv.dw_source, anim: mv.clip };
+}
+
+export function dwMoveRetarget(fid, moveKey, model, THREE, instanceKey) {
+  const rec = _dwmoves[fid];
+  if (!rec) return null;
+  const mv = rec.moves[moveKey];
+  if (!mv || !rec.clips[mv.clip]) return null;
+  const name = 'dw:' + moveKey;
+  return retargetT3Clips({ [name]: rec.clips[mv.clip] }, rec.skelId, model, THREE, instanceKey, [name]);
+}
+
+/* ============================================================
    REACTION PACKS (grapple lane, 2026-10-24) — the throw /
    victim / escape clips of docs/anim/T3-REACTIONS.md. These
    live in game/assets/anim/t3/<bank>/reactions.pack.json
