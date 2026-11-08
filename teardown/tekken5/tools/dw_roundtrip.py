@@ -8,7 +8,8 @@ Head/Neck/ToeBase are excluded — their rest positions are proportions, not
 measurements. The residual is the skipped-joint residual (DW joints 5/7):
 expect ~130-290 mm worst at the feet during a big throw.
 Usage: python3 dw_roundtrip.py --curves <dw-motion-curves.json> --bank <dir>
-       --ref <reference clip>
+       --ref <reference clip> [--pack <moves.NAME.pack.json>]
+       (default: every moves.*.pack.json in the bank dir, per-pack worst + overall)
 """
 import argparse
 import json
@@ -104,38 +105,49 @@ def main():
     ap.add_argument('--curves', required=True)
     ap.add_argument('--bank', required=True)
     ap.add_argument('--ref', default='gym_ozb3_greaction2.dat')
+    ap.add_argument('--pack', default=None,
+                    help='one pack file to check (default: every moves.*.pack.json in the bank dir)')
     args = ap.parse_args()
 
     with open(args.curves) as f:
         curves = json.load(f)
     byname = {c['source_file']: c for c in curves['clips']}
-    pack = json.load(open(os.path.join(args.bank, 'moves.pantera.pack.json')))
+    if args.pack:
+        pack_files = [args.pack]
+    else:
+        pack_files = sorted(fn for fn in os.listdir(args.bank)
+                            if fn.startswith('moves.') and fn.endswith('.pack.json'))
     skel = json.load(open(os.path.join(args.bank, 'skeleton.json')))
     rest = {j['name']: tuple(j['rest']) for j in skel['joints']}
 
     worst_all = 0.0
-    for cname, clip in pack['clips'].items():
-        src = clip['dw_source']
-        dw = byname[src]
-        parent = PARENT35 if dw['bones'] == 35 else PARENT27
-        offset = OFFSET35 if dw['bones'] == 35 else OFFSET27
-        bone_map = CANON_DW_BONE_35 if dw['bones'] == 35 else CANON_DW_BONE_27
-        worst = 0.0
-        worst_joint = None
-        n = len(clip['root_t'])
-        for ki in range(n):
-            P = fk_positions(rest, clip['rot_xyzw'], ki, clip['root_t'][ki])
-            T = true_positions(dw, ki, parent, offset, bone_map)
-            hips_b = P['Hips']
-            for j in MEASURED:
-                pb = (P[j][0] - hips_b[0], P[j][1] - hips_b[1], P[j][2] - hips_b[2])
-                tb = T[j]
-                d = math.sqrt(sum((pb[i] - tb[i]) ** 2 for i in range(3))) * 1000.0
-                if d > worst:
-                    worst = d
-                    worst_joint = j
-        print(f'{cname}: worst position error {worst:.1f} mm ({worst_joint})')
-        worst_all = max(worst_all, worst)
+    for pack_file in pack_files:
+        pack = json.load(open(os.path.join(args.bank, pack_file)))
+        worst_pack = 0.0
+        for cname, clip in pack['clips'].items():
+            src = clip['dw_source']
+            dw = byname[src]
+            parent = PARENT35 if dw['bones'] == 35 else PARENT27
+            offset = OFFSET35 if dw['bones'] == 35 else OFFSET27
+            bone_map = CANON_DW_BONE_35 if dw['bones'] == 35 else CANON_DW_BONE_27
+            worst = 0.0
+            worst_joint = None
+            n = len(clip['root_t'])
+            for ki in range(n):
+                P = fk_positions(rest, clip['rot_xyzw'], ki, clip['root_t'][ki])
+                T = true_positions(dw, ki, parent, offset, bone_map)
+                hips_b = P['Hips']
+                for j in MEASURED:
+                    pb = (P[j][0] - hips_b[0], P[j][1] - hips_b[1], P[j][2] - hips_b[2])
+                    tb = T[j]
+                    d = math.sqrt(sum((pb[i] - tb[i]) ** 2 for i in range(3))) * 1000.0
+                    if d > worst:
+                        worst = d
+                        worst_joint = j
+            print(f'{cname}: worst position error {worst:.1f} mm ({worst_joint})')
+            worst_pack = max(worst_pack, worst)
+        print(f'{pack_file}: worst {worst_pack:.1f} mm ({len(pack["clips"])} clips)')
+        worst_all = max(worst_all, worst_pack)
     print(f'OVERALL worst: {worst_all:.1f} mm')
 
 if __name__ == '__main__':

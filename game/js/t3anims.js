@@ -829,6 +829,17 @@ export function t7MoveRetarget(fid, bankId, moveKey, model, THREE, instanceKey =
    ============================================================ */
 export const DW_MOVES = {
   pantera: { dir: 'assets/anim/dw/', pack: 'moves.pantera.pack.json' },
+  // Kit data packs (DW retarget rollout, 2026-11-08): the remaining wireable
+  // 35-bone clips, baked the same way as Pantera's, as DATA — moves = {}
+  // in every kit pack, move mapping owed, not guessed. Nothing in the game
+  // calls ensureDwMoves() with these ids yet; the binding is the follow-up
+  // (the Warden pack's hook is the HeartMind Warden boss in brawler.js).
+  // The entries make the packs loadable through the existing path, and the
+  // rollout test loads every pack through ensureDwMoves with fetch stubbed.
+  warden: { dir: 'assets/anim/dw/', pack: 'moves.warden.pack.json' },
+  unmasked: { dir: 'assets/anim/dw/', pack: 'moves.unmasked.pack.json' },
+  'drowned-ogre': { dir: 'assets/anim/dw/', pack: 'moves.drowned-ogre.pack.json' },
+  'wave-echo': { dir: 'assets/anim/dw/', pack: 'moves.wave-echo.pack.json' },
 };
 
 const _dwmoves = {}; // fighterId -> { skelId, clips: { name: clip }, moves: { moveKey: { clip, active, dw_source } } }
