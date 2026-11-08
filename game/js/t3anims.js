@@ -829,13 +829,15 @@ export function t7MoveRetarget(fid, bankId, moveKey, model, THREE, instanceKey =
    ============================================================ */
 export const DW_MOVES = {
   pantera: { dir: 'assets/anim/dw/', pack: 'moves.pantera.pack.json' },
-  // Kit data packs (DW retarget rollout, 2026-11-08): the remaining wireable
-  // 35-bone clips, baked the same way as Pantera's, as DATA — moves = {}
-  // in every kit pack, move mapping owed, not guessed. Nothing in the game
-  // calls ensureDwMoves() with these ids yet; the binding is the follow-up
-  // (the Warden pack's hook is the HeartMind Warden boss in brawler.js).
-  // The entries make the packs loadable through the existing path, and the
-  // rollout test loads every pack through ensureDwMoves with fetch stubbed.
+  // Kit packs (DW retarget rollout, 2026-11-08): the remaining wireable
+  // 35-bone clips, baked the same way as Pantera's. Their clips were DATA
+  // (moves = {}) until the follow-ups mapped them (2026-11-08,
+  // tools/anim/dw_map_kit_moves.py: every packed clip with a moveset-library
+  // move has a `moves` entry now, input null, verified false). Nothing in
+  // the game calls ensureDwMoves() with these ids by fighter id — the
+  // Warden pack is bound by BRAWLER KIND, not fighter id (DW_KIND_MOVES
+  // below; the Warden boss in brawler.js is an echo, never 'warden').
+  // The rollout test loads every pack through ensureDwMoves with fetch stubbed.
   warden: { dir: 'assets/anim/dw/', pack: 'moves.warden.pack.json' },
   unmasked: { dir: 'assets/anim/dw/', pack: 'moves.unmasked.pack.json' },
   'drowned-ogre': { dir: 'assets/anim/dw/', pack: 'moves.drowned-ogre.pack.json' },
@@ -899,6 +901,37 @@ export function dwMoveRetarget(fid, moveKey, model, THREE, instanceKey) {
   if (!mv || !rec.clips[mv.clip]) return null;
   const name = 'dw:' + moveKey;
   return retargetT3Clips({ [name]: rec.clips[mv.clip] }, rec.skelId, model, THREE, instanceKey, [name]);
+}
+
+/* DW BRAWLER KINDS — a kit pack bound to a brawler kind, not a fighter id.
+   The Warden boss (brawler.js kind 'warden') is an echo fighter: its
+   char.id is the echo's id, never 'warden', so nothing can load the
+   'warden' pack for it by fighter id. DW_KIND_MOVES maps the kind to its
+   DW_MOVES entry; ensureDwKindMoves loads that pack, and the dwKind*
+   wrappers resolve moves from it exactly the way the fid functions do.
+   Only 'warden' is bound (dw-followups, 2026-11-08); the other kits
+   (unmasked, drowned-ogre, wave-echo) have mapped moves but no kind
+   binding yet — their bosses still play their procedural/T3 clips. */
+export const DW_KIND_MOVES = {
+  warden: 'warden',
+};
+
+export function ensureDwKindMoves(kind, THREE) {
+  const fid = DW_KIND_MOVES[kind];
+  if (!fid) return Promise.resolve(null);
+  return ensureDwMoves(fid, THREE);
+}
+
+export function dwKindMoveClip(kind, moveKey, model, input) {
+  const fid = DW_KIND_MOVES[kind];
+  if (!fid) return null;
+  return dwMoveClip(fid, moveKey, model, input);
+}
+
+export function dwKindMoveRetarget(kind, moveKey, model, THREE, instanceKey) {
+  const fid = DW_KIND_MOVES[kind];
+  if (!fid) return null;
+  return dwMoveRetarget(fid, moveKey, model, THREE, instanceKey);
 }
 
 /* ============================================================

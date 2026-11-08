@@ -39,7 +39,7 @@ import { assets } from './assets.js';
 import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK, T3_BANKS,
   clipStrikeProfile, clipHitWindow, bankAttackPool, attackLevelOfWord, attackClipTime, clipIsThrow, BUTTON_LIMB,
   loadT3Clips, loadT3ReactionClip, getT3ReactionPackScale, loadReactionPack, getReactionPack, getReactionClip,
-  applyT7Stance, ensureT7Moves, t7MoveClip, t7MoveRetarget, ensureDwMoves, dwMoveClip, dwMoveRetarget, retargetProfileFor } from './t3anims.js';
+  applyT7Stance, ensureT7Moves, t7MoveClip, t7MoveRetarget, ensureDwMoves, dwMoveClip, dwMoveRetarget, dwKindMoveClip, dwKindMoveRetarget, retargetProfileFor } from './t3anims.js';
 import { effectiveStepPlay, playableStepPlay, stepActionName, stepPlanBanksFor } from './step-plan-bank.js';
 import { selectThrow, resolveThrowClips, throwBreaks, throwDamageTimeSec, throwPairDurationSec,
   escapePairFor, anchorAt, sharedFramePos, throwQuadrant, attemptRowForInput, hexSlot, bankDirOf } from './t3-throw.js';
@@ -1449,6 +1449,28 @@ export class Fighter {
       const dw = dwMoveClip(this.char.id, 'surge', this._t3.model);
       if (dw) return { name: dw.name, kind: 'dw', timing: null, why: 'DW surge beam (dwhadoh00)', limb: 'armR' };
     }
+    // DW WARDEN SLAM: the Warden boss's slam plays the mapped Warden Kit
+    // explosion attack (kmb1_bakutyu, 65f strike, bank dw:warden:bakutyu)
+    // for the '2' the slam fires — same move, same timing, same damage;
+    // only the clip swaps, exactly like the T7 branch swaps clips for a
+    // move. _dwSlamNext is set by BrawlerAI._wardenSlam just before
+    // tryAttack('2'); it is consumed here and only here, and only when
+    // this call is the top-level plan for the current attack (move ===
+    // this.attack, not a step-plan candidate recursion through
+    // _ownButtonPlan, and not under the _ownBtnGuard). Falls through to
+    // the normal '2' plan when the kind pack is not loaded or the
+    // retarget already failed (then _dwskip blocks the retry).
+    if (this._dwSlamNext && attackName === '2' && this._dwKind === 'warden'
+        && move === this.attack && attackName === this.attackName && !this._ownBtnGuard) {
+      this._dwSlamNext = false;
+      if (!(this._dwskip && this._dwskip.has('warden:bakutyu'))) {
+        const dw = dwKindMoveClip('warden', 'warden:bakutyu', this._t3.model);
+        if (dw) return { name: dw.name, kind: 'dw', timing: null, why: 'DW warden explosion attack (kmb1_bakutyu)',
+          limb: Fighter.attackLimb(move, attackName), level: Fighter.attackLevel(move, raw), grab: false };
+      }
+    } else if (this._dwSlamNext && move === this.attack && attackName === this.attackName) {
+      this._dwSlamNext = false;
+    }
     // REAL T7 MOVE (t3anims.js T7_MOVES): the row's own Tekken 7 clip, mapped exactly by
     // tools/anim/t7_move_resolve.py (input path + exact T7 frame data), ahead of step plans, bank rows, donors
     // and matches. Strikes only (the moves pack holds no throws; a throw keeps the throw path). Timed on the
@@ -1663,7 +1685,12 @@ export class Fighter {
       }
     }
     if (name && !this.t3actions[name] && name.startsWith('dw:')) {
-      const rc = dwMoveRetarget(this.char.id, name.slice(3), this._t3.model, THREE, this._t3.modelKey);
+      // A brawler-kind DW move (the Warden slam) lives in the kind pack, not
+      // the fighter's own pack: try the fighter's pack first, then the kind
+      // pack. The key spaces are disjoint ('warden:*' vs 'surge'/'1+3'/...),
+      // so the order never changes which move resolves.
+      let rc = dwMoveRetarget(this.char.id, name.slice(3), this._t3.model, THREE, this._t3.modelKey);
+      if (!rc && this._dwKind) rc = dwKindMoveRetarget(this._dwKind, name.slice(3), this._t3.model, THREE, this._t3.modelKey);
       if (rc && rc[name]) Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
       if (!this.t3actions[name]) {
         // Could not retarget safely: this move keeps its previous clip choice from now on.

@@ -2,7 +2,9 @@
 // Verifies the rollout packs (the remaining wireable 35-bone clips, baked
 // the same way as the pilot): every pack loads through the real ensureDwMoves
 // path, clip shapes hold (21 bones, 30 fps, unit quats, sane root_t), and
-// the kit packs are DATA (moves = {}, every clip listed in skipped).
+// every packed clip has a mapped move (dw-followups, 2026-11-08:
+// tools/anim/dw_map_kit_moves.py mapped all 152 clips from the measured
+// moveset library; the kit packs were DATA (moves = {}) until then).
 // The position round-trip (FK rebuilt vs true DW positions) is NOT in this
 // file — it runs in Python (teardown/tekken5/tools/dw_roundtrip.py) and its
 // numbers are recorded in the bake logs + DW-DECODE-LOG.md §23.
@@ -19,11 +21,11 @@ const BANK_DIR = path.join(REPO, 'game', 'assets', 'anim', 'dw');
 
 // pack file -> [fighter, expected clips, expected moves]
 const PACKS = {
-  'moves.pantera.pack.json': ['pantera', 54, 4],
-  'moves.warden.pack.json': ['warden', 39, 0],
-  'moves.unmasked.pack.json': ['unmasked', 29, 0],
-  'moves.drowned-ogre.pack.json': ['drowned-ogre', 25, 0],
-  'moves.wave-echo.pack.json': ['wave-echo', 5, 0],
+  'moves.pantera.pack.json': ['pantera', 54, 54],
+  'moves.warden.pack.json': ['warden', 39, 39],
+  'moves.unmasked.pack.json': ['unmasked', 29, 29],
+  'moves.drowned-ogre.pack.json': ['drowned-ogre', 25, 25],
+  'moves.wave-echo.pack.json': ['wave-echo', 5, 5],
 };
 
 const THREE = {
@@ -62,11 +64,15 @@ test('rollout pack shapes: format, fighter, clip geometry', () => {
     assert.equal(pack.fighter, fighter, `${file} fighter`);
     assert.equal(Object.keys(pack.clips).length, nClips, `${file} clip count`);
     assert.equal(Object.keys(pack.moves).length, nMoves, `${file} move count`);
-    // Kit packs are DATA: every clip listed in skipped, no moves claimed.
-    if (nMoves === 0) {
-      assert.equal(pack.skipped.length, nClips, `${file} skipped must list every clip`);
-      for (const s of pack.skipped) assert.ok(pack.clips[s.clip], `${file} skipped ${s.clip} is not a baked clip`);
+    // Every packed clip has exactly one mapped move now (dw-followups);
+    // nothing is left in skipped. A move entry names a baked clip.
+    assert.equal(pack.skipped.length, 0, `${file} skipped must be empty — every clip is mapped`);
+    assert.equal(Object.keys(pack.moves).length, nClips, `${file} must map every clip`);
+    for (const [key, m] of Object.entries(pack.moves)) {
+      assert.ok(pack.clips[m.clip], `${file} move ${key} names clip ${m.clip}, which is not baked`);
     }
+    assert.equal(new Set(Object.values(pack.moves).map((m) => m.clip)).size, nClips,
+      `${file} two moves must not share one clip`);
     for (const [cname, c] of Object.entries(pack.clips)) {
       assert.equal(c.format, 'wh-anim/1', `${file}:${cname} format`);
       assert.equal(c.bones.length, 21, `${file}:${cname} must have 21 bones`);
@@ -115,10 +121,12 @@ test('ensureDwMoves loads every rollout pack (fetch stubbed to disk)', async () 
       assert.equal(Object.keys(rec.clips).length, nClips, `ensureDwMoves(${fighter}) clip count`);
       // Cached on the second call.
       assert.equal(await t3.ensureDwMoves(fighter, THREE), rec, `ensureDwMoves(${fighter}) must cache`);
-      // Kit packs carry no moves — dwMoveClip resolves nothing for them.
-      if (Object.keys(rec.moves).length === 0) {
-        assert.equal(t3.dwMoveClip(fighter, 'surge', null), null);
-      }
+      // Every pack's moves resolve through dwMoveClip (a known key per pack).
+      const probeKey = { pantera: 'surge', warden: 'warden:bakutyu', unmasked: 'unmasked:360',
+        'drowned-ogre': 'drowned_ogre:180', 'wave-echo': 'unmasked:ozhe-power' }[fighter];
+      const probe = t3.dwMoveClip(fighter, probeKey, null);
+      assert.ok(probe && probe.name === 'dw:' + probeKey, `dwMoveClip(${fighter}, ${probeKey}) must resolve`);
+      assert.equal(t3.dwMoveClip(fighter, 'no-such-move', null), null);
     }
   } finally {
     globalThis.fetch = origFetch;

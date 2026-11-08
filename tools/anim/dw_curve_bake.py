@@ -145,12 +145,17 @@ PANTERA_MOVES = {
 }
 PANTERA_UNMAPPED = ['gym_ikdv_b_nage_f.dat', 'gym_ikdv_b_nage_y.dat',
                     'gym_ikdv_ppp_nage_f.dat', 'gym_ikdv_ppp_nage_y.dat']
-WARDEN_MOVES = {}  # kmb1 Warden kit — wiring hook is the HeartMind Warden boss
-                   # in brawler.js; its fighter binding is a follow-up.
+WARDEN_MOVES = {}  # kmb1 Warden kit — bound as brawler kind 'warden' in
+                   # brawler.js (dw-followups, 2026-11-08); the pack's moves
+                   # are mapped by tools/anim/dw_map_kit_moves.py, and a
+                   # re-bake preserves them (see main()).
 
 # Rollout kit sets (2026-11-08): one pack per DW group, baked the same way
-# as the pilot. The packs are DATA (moves = {} — move mapping owed, not
-# guessed) except Pantera's, which keeps the pilot's 4 mapped moves.
+# as the pilot. The packs were DATA (moves = {} — move mapping owed, not
+# guessed) until the follow-ups mapped them (2026-11-08,
+# tools/anim/dw_map_kit_moves.py); a re-bake preserves an existing pack's
+# moves (see main()), and a from-scratch bake needs the mapping script
+# re-run. Pantera's pack keeps the pilot's 4 mapped moves.
 #   warden       <- kmb1  (39 clips, all 35-bone)
 #   unmasked     <- ozb3  (29 wireable 35-bone; 7 x 4-bone teil1 appendage
 #                          clips excluded — see kit_exclusions())
@@ -563,6 +568,27 @@ def main():
             fighter = args.fighter or spec['fighter']
             pack_name = spec['pack']
             exclusions = kit_exclusions(bank, spec['group'])
+        # Move-mapping preservation (dw-followups): a re-bake must not wipe
+        # the mappings tools/anim/dw_map_kit_moves.py wrote into the pack.
+        # Carry over any existing move whose clip is still baked with the
+        # same dw_source; unmapped is then just the clips with no move.
+        # A pack baked from scratch starts from moves={} again — re-run the
+        # mapping script after it.
+        moves = dict(moves)
+        pack_path = os.path.join(args.out, pack_name)
+        if os.path.exists(pack_path):
+            try:
+                with open(pack_path) as pf:
+                    old_pack = json.load(pf)
+                for _k, _m in (old_pack.get('moves') or {}).items():
+                    if _m.get('clip') in clip_names and _m.get('dw_source') == 'gym_' + _m['clip'] + '.dat':
+                        moves.setdefault(_k, {'clip': _m['clip'], 'input': _m.get('input'),
+                                             'dw_source': _m['dw_source'],
+                                             'note': 'carried over from the existing pack (dw_map_kit_moves.py)'})
+                _moved = {m['clip'] for m in moves.values()}
+                unmapped = [u for u in unmapped if u.replace('gym_', '').replace('.dat', '') not in _moved]
+            except Exception as e:
+                print(f'  (could not preserve moves from {pack_path}: {e} — baking from scratch)')
         bake_set(data, byname, bank, W_ref, P_ref, facing, skel, skel_meta,
                  set_name, moves, unmapped, clip_names, fighter, pack_name,
                  exclusions, args.out, args.ref)
