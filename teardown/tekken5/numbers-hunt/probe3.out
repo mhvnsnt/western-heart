@@ -1,0 +1,42 @@
+== sector-header census (128 sectors in first 256KiB) ==
+sectors starting with 01 00 00 00 08 00 00 00: [0, 9, 18, 36, 45, 54, 63, 72, 81, 90, 99, 108, 117, 126]
+  sector 0 (@0x0) first 32B: 01000000080000002b440000da000000b76b5f035c150000cf6a00000e160200
+    as u32: ['0x1', '0x8', '0x442b', '0xda', '0x35f6bb7', '0x155c', '0x6acf', '0x2160e']
+  sector 9 (@0x4800) first 32B: 01000000080000002b440000da000000c4570b3c5c150000cf6a00000e160200
+    as u32: ['0x1', '0x8', '0x442b', '0xda', '0x3c0b57c4', '0x155c', '0x6acf', '0x2160e']
+  sector 18 (@0x9000) first 32B: 01000000080000002b440000da0000002bac24415c150000cf6a00000e160200
+    as u32: ['0x1', '0x8', '0x442b', '0xda', '0x4124ac2b', '0x155c', '0x6acf', '0x2160e']
+  sector 36 (@0x12000) first 32B: 01000000080000002b440000da000000865365945c150000cf6a00000e160200
+    as u32: ['0x1', '0x8', '0x442b', '0xda', '0x94655386', '0x155c', '0x6acf', '0x2160e']
+  sector 45 (@0x16800) first 32B: 01000000080000002b440000da0000001b5c25315c150000cf6a00000e160200
+    as u32: ['0x1', '0x8', '0x442b', '0xda', '0x31255c1b', '0x155c', '0x6acf', '0x2160e']
+  sector 54 (@0x1b000) first 32B: 01000000080000002b440000da000000878c933c5c150000cf6a00000e160200
+    as u32: ['0x1', '0x8', '0x442b', '0xda', '0x3c938c87', '0x155c', '0x6acf', '0x2160e']
+
+== NLZ1 unpack at header offsets (sectors 0 and 9) ==
+  sector 0 +8: FAIL invalid backref offset=218 length=32 dstlen=2
+  sector 0 +12: FAIL invalid backref offset=2048 length=32 dstlen=0
+  sector 0 +16: FAIL invalid backref offset=1045 length=11 dstlen=3
+  sector 0 +20: FAIL invalid backref offset=1280 length=2 dstlen=0
+  sector 0 +24: FAIL invalid backref offset=1538 length=2 dstlen=4
+  sector 0 +32: FAIL invalid backref offset=512 length=1 dstlen=1
+  sector 0 +64: FAIL invalid backref offset=415 length=5 dstlen=1
+  sector 0 +128: FAIL invalid backref offset=242 length=23 dstlen=0
+  sector 9 +8: FAIL invalid backref offset=218 length=32 dstlen=2
+  sector 9 +12: FAIL invalid backref offset=2048 length=32 dstlen=0
+  sector 9 +16: FAIL invalid backref offset=1803 length=10 dstlen=0
+  sector 9 +20: FAIL invalid backref offset=1280 length=2 dstlen=0
+  sector 9 +24: FAIL invalid backref offset=1538 length=2 dstlen=4
+  sector 9 +32: FAIL invalid backref offset=512 length=1 dstlen=1
+  sector 9 +64: FAIL invalid backref offset=1295 length=19 dstlen=1
+  sector 9 +128: FAIL invalid backref offset=1021 length=29 dstlen=0
+
+== seed sweep: decrypt sector 0 then NLZ1-unpack (seeds 0..50000) ==
+sweep done: 0 candidates with out_len>100
+
+== code filename table around TK5DATA1/0 strings ==
+Traceback (most recent call last):
+  File "/home/hatch/workspace/devil-within-decode/numbers-hunt/job1_probe3.py", line 50, in <module>
+    CODE = open("/tmp/dec_code.bin", "rb").read()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/dec_code.bin'
