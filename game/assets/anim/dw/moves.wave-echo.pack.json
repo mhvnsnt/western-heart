@@ -9,29 +9,44 @@
   "dw_curves": "teardown/tekken5/dw-motion-curves.json",
   "baker": "dw_curve_bake.py"
  },
- "skipped": [
-  {
+ "skipped": [],
+ "moves": {
+  "unmasked:ozhe-power": {
    "clip": "ozhe_power",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_ozhe_power.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "unmasked:oznj-meteorite": {
    "clip": "oznj_meteorite",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_oznj_meteorite.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "unmasked:ozt4-aidoring": {
    "clip": "ozt4_aidoring",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_ozt4_aidoring.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "unmasked:ozt4-goron": {
    "clip": "ozt4_goron",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_ozt4_goron.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "unmasked:ozt4-kamae": {
    "clip": "ozt4_kamae",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_ozt4_kamae.dat",
+   "active_frames": null,
+   "verified": false
   }
- ],
- "moves": {},
+ },
  "clips": {
   "ozhe_power": {
    "format": "wh-anim/1",

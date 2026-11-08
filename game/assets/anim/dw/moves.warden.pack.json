@@ -9,165 +9,282 @@
   "dw_curves": "teardown/tekken5/dw-motion-curves.json",
   "baker": "dw_curve_bake.py"
  },
- "skipped": [
-  {
+ "skipped": [],
+ "moves": {
+  "warden:bakutyu": {
    "clip": "kmb1_bakutyu",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_bakutyu.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:bakutyushot": {
    "clip": "kmb1_bakutyushot",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_bakutyushot.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:charge-shot-02": {
    "clip": "kmb1_charge_shot_02",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_charge_shot_02.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:guard-mm": {
    "clip": "kmb1_guard_mm",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_guard_mm.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:hijump-shot": {
    "clip": "kmb1_hijump_shot",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_hijump_shot.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:histep-l": {
    "clip": "kmb1_histep_l",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_histep_l.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:histep-r": {
    "clip": "kmb1_histep_r",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_histep_r.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:jumpmachinegun": {
    "clip": "kmb1_jumpmachinegun",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_jumpmachinegun.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:kamae": {
    "clip": "kmb1_kamae",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_kamae.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:lk": {
    "clip": "kmb1_lk",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_lk.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:lk-histep-r": {
    "clip": "kmb1_lk_histep_r",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_lk_histep_r.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:lturn180": {
    "clip": "kmb1_lturn180",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_lturn180.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:lturn90": {
    "clip": "kmb1_lturn90",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_lturn90.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:machinegun": {
    "clip": "kmb1_machinegun",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_machinegun.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:machinegun-f": {
    "clip": "kmb1_machinegun_f",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_machinegun_f.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:rk": {
    "clip": "kmb1_rk",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_rk.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:rk-histep-l": {
    "clip": "kmb1_rk_histep_l",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_rk_histep_l.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:rturn180": {
    "clip": "kmb1_rturn180",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_rturn180.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:rturn90": {
    "clip": "kmb1_rturn90",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_rturn90.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:run01-start": {
    "clip": "kmb1_run01_start",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_run01_start.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:run02-loop": {
    "clip": "kmb1_run02_loop",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_run02_loop.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:run03-walk": {
    "clip": "kmb1_run03_walk",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_run03_walk.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:shortshot-shot": {
    "clip": "kmb1_shortshot_shot",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_shortshot_shot.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:shortshot-soten": {
    "clip": "kmb1_shortshot_soten",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_shortshot_soten.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:shotgun-cyop": {
    "clip": "kmb1_shotgun_cyop",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_shotgun_cyop.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:shotgun-shot": {
    "clip": "kmb1_shotgun_shot",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_shotgun_shot.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:shotgun-soten": {
    "clip": "kmb1_shotgun_soten",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_shotgun_soten.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:step-in": {
    "clip": "kmb1_step_in",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_step_in.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:step-l": {
    "clip": "kmb1_step_l",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_step_l.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:step-r": {
    "clip": "kmb1_step_r",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_step_r.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:tojo": {
    "clip": "kmb1_tojo",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_tojo.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:walk-f01-start": {
    "clip": "kmb1_walk_f01_start",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_walk_f01_start.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:walk-f02-loop": {
    "clip": "kmb1_walk_f02_loop",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_walk_f02_loop.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:walk-l": {
    "clip": "kmb1_walk_l",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_walk_l.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:walk-r": {
    "clip": "kmb1_walk_r",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_walk_r.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:wdown": {
    "clip": "kmb1_wdown",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_wdown.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:wshot": {
    "clip": "kmb1_wshot",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_wshot.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:yoko-l": {
    "clip": "kmb1_yoko_l",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_yoko_l.dat",
+   "active_frames": null,
+   "verified": false
   },
-  {
+  "warden:yoko-r": {
    "clip": "kmb1_yoko_r",
-   "reason": "baked as data, move mapping owed \u2014 not guessed"
+   "input": null,
+   "dw_source": "gym_kmb1_yoko_r.dat",
+   "active_frames": null,
+   "verified": false
   }
- ],
- "moves": {},
+ },
  "clips": {
   "kmb1_bakutyu": {
    "format": "wh-anim/1",
