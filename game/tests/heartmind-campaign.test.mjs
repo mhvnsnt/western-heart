@@ -82,11 +82,20 @@ test('T5/T6 slot taxonomy + validation', () => {
 test('yarn story: Trial path, or null fallback when PR #1044 is unmerged', async () => {
   const yarnPath = join(ROOT, 'game', 'story', 'heartmind-trial.yarn');
   const enginePath = join(ROOT, 'game', 'js', 'yarn-parse.js');
-  if (!fs.existsSync(enginePath) || !fs.existsSync(yarnPath)) {
+  if (!fs.existsSync(enginePath)) {
+    // Engine absent (PR #1044 unmerged): the adapter returns null, never throws.
     assert.strictEqual(await loadYarnDialogue('title: Start\n---\nHi\n', 'Start'), null);
     return;
   }
-  const yarn = await loadYarnDialogue(fs.readFileSync(yarnPath, 'utf8'), 'Start');
+  // Engine present: the adapter parses whatever text it is given — the
+  // null fallback keys off the ENGINE, not the story file. With the story
+  // file present it runs the Trial path; without it (sparse checkout) the
+  // inline demo still parses and runs. (The old branch asserted null
+  // whenever the story file was missing, even with the engine present.)
+  const yarnText = fs.existsSync(yarnPath)
+    ? fs.readFileSync(yarnPath, 'utf8')
+    : 'title: Start\n---\nHi\n';
+  const yarn = await loadYarnDialogue(yarnText, 'Start');
   assert.ok(yarn && yarn.kind === 'yarn');
   const r = yarn.runner;
   const lines = [];
@@ -102,9 +111,14 @@ test('yarn story: Trial path, or null fallback when PR #1044 is unmerged', async
     }
     break;
   }
-  assert.ok(lines.some((l) => l.includes('Souls gathered: 3')));
-  assert.strictEqual(r.vars.souls, 3);
-  assert.strictEqual(r.vars.trial_done, true);
+  if (fs.existsSync(yarnPath)) {
+    assert.ok(lines.some((l) => l.includes('Souls gathered: 3')));
+    assert.strictEqual(r.vars.souls, 3);
+    assert.strictEqual(r.vars.trial_done, true);
+  } else {
+    // Inline demo only: the single Start line runs and the story ends.
+    assert.ok(lines.some((l) => l.includes('Hi')));
+  }
 });
 
 test('ink story: Trial path, or null fallback when PR #1044 is unmerged', async () => {
