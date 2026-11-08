@@ -1,0 +1,349 @@
+{
+ "fighter": "bf-edwin-kennedy",
+ "display": "EDWIN KENNEDY",
+ "brutal_fist_id": "edwin_kennedy",
+ "brutal_fist_role": "Corporate Mastermind / Power Broker",
+ "brutal_fist_style": "Corporate Power / Calculated Brutality. Deliberate, powerful strikes and throws. The Corporate Takeover is a devastating power slam sequence.",
+ "tekken_base": "heihachi",
+ "donor": "ur-char061",
+ "donor_moveset": "ur-char061.json",
+ "proxy": true,
+ "proxy_note": "Brutal Fist character pulled from Jay's own brutalfistgrokversiontenpointfive. Inputs in Tekken 7 notation; animations + full move-list data from Urban Reign / Urban Reign Redux donor ur-char061. BF frame data (frames @60fps) converted to WH seconds; BF damage not portable (BF HP 10000 vs WH 100) so WH damage is donor-sourced.",
+ "variant": 1,
+ "moves": {
+  "1": {
+   "name": "Edwin Kennedy Elbow Strike (BF bf_elbow)",
+   "input": "1",
+   "bf_source": "bf_elbow",
+   "bf_category": "strike",
+   "bf_frames": {
+    "startup": 7,
+    "active": 3,
+    "recovery": 16
+   },
+   "bf_damage": 20,
+   "donor": "ur-char061",
+   "donor_move": "cbco_dwngnuke_asi_y",
+   "startup": 0.117,
+   "active": 0.05,
+   "recovery": 0.267,
+   "damage": 7,
+   "donor_framed": false,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char061:ur_m000",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "2": {
+   "name": "Edwin Kennedy Hook (BF bf_hook)",
+   "input": "2",
+   "bf_source": "bf_hook",
+   "bf_category": "strike",
+   "bf_frames": {
+    "startup": 8,
+    "active": 4,
+    "recovery": 18
+   },
+   "bf_damage": 22,
+   "donor": "ur-char061",
+   "donor_move": "cbco_dwngnuke_atama_y",
+   "startup": 0.133,
+   "active": 0.067,
+   "recovery": 0.3,
+   "damage": 15,
+   "donor_framed": false,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char061:ur_m001",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "4": {
+   "name": "Edwin Kennedy Mid Kick (BF bf_mid_kick)",
+   "input": "4",
+   "bf_source": "bf_mid_kick",
+   "bf_category": "kick",
+   "bf_frames": {
+    "startup": 7,
+    "active": 3,
+    "recovery": 16
+   },
+   "bf_damage": 18,
+   "donor": "ur-char061",
+   "donor_move": "cbco_dwngnuke_right_y",
+   "startup": 0.117,
+   "active": 0.05,
+   "recovery": 0.267,
+   "damage": 21,
+   "donor_framed": false,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char061:ur_m003",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "d+3": {
+   "name": "Edwin Kennedy Low Kick (BF bf_low_kick)",
+   "input": "d+3",
+   "bf_source": "bf_low_kick",
+   "bf_category": "kick",
+   "bf_frames": {
+    "startup": 4,
+    "active": 3,
+    "recovery": 10
+   },
+   "bf_damage": 10,
+   "donor": "ur-char061",
+   "donor_move": "cbco_dwngnuke_left_y",
+   "startup": 0.067,
+   "active": 0.05,
+   "recovery": 0.167,
+   "damage": 7,
+   "donor_framed": false,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char061:ur_m002",
+   "input_slots": [
+    "d+3"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "b+1+2": {
+   "name": "Edwin Kennedy Armor Breaker (BF bf_armor_breaker)",
+   "input": "b+1+2",
+   "bf_source": "bf_armor_breaker",
+   "bf_category": "counter",
+   "bf_frames": {
+    "startup": 8,
+    "active": 3,
+    "recovery": 22
+   },
+   "bf_damage": 24,
+   "donor": "ur-char061",
+   "donor_move": null,
+   "startup": 0.133,
+   "active": 0.05,
+   "recovery": 0.367,
+   "damage": 15,
+   "donor_framed": false,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char061:ur_m052",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "f+1+2": {
+   "name": "Edwin Kennedy Clinch (BF bf_clinch)",
+   "input": "f+1+2",
+   "bf_source": "bf_clinch",
+   "bf_category": "grapple",
+   "bf_frames": {
+    "startup": 6,
+    "active": 4,
+    "recovery": 14
+   },
+   "bf_damage": 0,
+   "donor": "ur-char061",
+   "donor_move": null,
+   "startup": 0.1,
+   "active": 0.067,
+   "recovery": 0.233,
+   "damage": 15,
+   "donor_framed": false,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char061:ur_m053",
+   "input_slots": [
+    "f+1+2"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "1+3": {
+   "name": "Edwin Kennedy Unity Bomb (BF bf_running_powerbomb)",
+   "input": "1+3",
+   "bf_source": "bf_running_powerbomb",
+   "bf_category": "throw",
+   "bf_frames": {
+    "startup": 22,
+    "active": 2,
+    "recovery": 44
+   },
+   "bf_damage": 58,
+   "donor": "ur-char061",
+   "donor_move": null,
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.733,
+   "damage": 21,
+   "donor_framed": false,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 11,
+   "anim_ref": "ur:ur-char061:ur_m020",
+   "input_slots": [
+    "1+3"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "f+2": {
+   "name": "Edwin Kennedy Powerbomb (BF bf_powerbomb)",
+   "input": "f+2",
+   "bf_source": "bf_powerbomb",
+   "bf_category": "throw",
+   "bf_frames": {
+    "startup": 16,
+    "active": 2,
+    "recovery": 36
+   },
+   "bf_damage": 45,
+   "donor": "ur-char061",
+   "donor_move": null,
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 15,
+   "donor_framed": false,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 11,
+   "anim_ref": "ur:ur-char061:ur_m023",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "f+4": {
+   "name": "Edwin Kennedy Brainbuster (BF bf_brainbuster)",
+   "input": "f+4",
+   "bf_source": "bf_brainbuster",
+   "bf_category": "throw",
+   "bf_frames": {
+    "startup": 20,
+    "active": 2,
+    "recovery": 42
+   },
+   "bf_damage": 55,
+   "donor": "ur-char061",
+   "donor_move": null,
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.7,
+   "damage": 21,
+   "donor_framed": false,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "ur:ur-char061:ur_m024",
+   "input_slots": [
+    "f+4"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "1,2,3": {
+   "name": "Edwin Kennedy Jab-Cross-Hook (BF bf_jab_cross_hook)",
+   "input": "1,2,3",
+   "bf_source": "bf_jab_cross_hook",
+   "bf_category": "combo",
+   "bf_frames": {
+    "startup": 3,
+    "active": 8,
+    "recovery": 22
+   },
+   "bf_damage": 40,
+   "donor": "ur-char061",
+   "donor_move": null,
+   "startup": 0.05,
+   "active": 0.133,
+   "recovery": 0.367,
+   "damage": 21,
+   "donor_framed": false,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 11,
+   "anim_ref": "ur:ur-char061:ur_m021",
+   "input_slots": [
+    "1,2,3"
+   ],
+   "move_class": "string",
+   "set": "FIGHT"
+  },
+  "d/b+1+2": {
+   "name": "Edwin Kennedy bf_corporate_takeover (BF bf_corporate_takeover)",
+   "input": "d/b+1+2",
+   "bf_source": "bf_corporate_takeover",
+   "bf_category": "unmeasured",
+   "bf_frames": null,
+   "bf_damage": null,
+   "donor": "ur-char061",
+   "donor_move": null,
+   "startup": 0.333,
+   "active": 0.045,
+   "recovery": 0.763,
+   "damage": 32,
+   "donor_framed": true,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 7.5,
+   "soulGain": 13,
+   "anim_ref": "ur:ur-char061:ur_m008",
+   "input_slots": [
+    "d/b+1+2"
+   ],
+   "move_class": "signature",
+   "set": "FIGHT"
+  }
+ },
+ "strings": [
+  {
+   "input": "1,2,3",
+   "hits": [
+    "1",
+    "2",
+    "3"
+   ],
+   "bf_combo": "bf_jab_cross_hook"
+  }
+ ],
+ "specials": [],
+ "frame_convention": "BF frames @60fps -> seconds; damage donor-sourced (UR/Redux); WH 100HP",
+ "schema_version": 2,
+ "canon_note": "Brutal Fist pull-in. Model: EDWIN_KENNEDY.glb.",
+ "anim_set_lock": {
+  "bank": "pmot061.ppk",
+  "donor": "ur-char061"
+ }
+}
