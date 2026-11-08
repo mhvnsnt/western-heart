@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Structural inventory of Tekken 5 Devil Within stage map objects (moj_stg*.dat).
+r"""Structural inventory of Tekken 5 Devil Within stage map objects (moj_stg*.dat).
 
 Each moj_stg file is a stage MAP OBJECT file (.moj), NOT stage text:
   head: dev build path  C:\temp\mapobj\stgNN.moj  (NUL-padded)
@@ -9,21 +9,26 @@ Each moj_stg file is a stage MAP OBJECT file (.moj), NOT stage text:
 
 Measured structure (validated on all 4 files):
   NUDP: 'NUDP' magic; u32[1] = chunk byte length (distance to next NUDP);
-        u32[2] = large value (unresolved); u32[3] = 0;
-        u32[4..7] = float32 values (position / bounds — unresolved which).
-  MIF:  'MIF' magic (+NUL); u32[3] = 0x05010000; u32[4] = small count
-        (bone count?); u32[5] = 64; u32[6] = data size (multiple of 64);
+        u32[2] = (block_count << 16) | 0x5103; u32[3] = 0;
+        u32[4..7] = bounding sphere (cx, cy, cz, radius) as float32.
+        Block table at +32; per-block bounding spheres; sub-meshes with
+        positions, per-vertex colours, UVs (0x83 variant adds normals).
+  MIF:  'MIF' magic (+NUL); u32[3] = 0x05010000; u32[4] = bone count;
+        u32[5] = 64; u32[6] = 64 * (3 * count + 1) data bytes;
         u32[7] = chunk size - 16 (distance to next MIF = u32[7] + 16).
+        192-byte bone records: 4x4 float matrix + name.
   TIM2: 'TIM2' magic; standard PS2 texture header.
+  NOTE: raw byte search for 'MIF' overcounts — the letters EMIF occur
+  inside texture/vertex data. Only header-validated MIFs are counted
+  (real: 29/18/20/3 across the four stages, not 56/22). Same guard
+  applied to NUDP hits.
 
 Canon stage names (HEARTMIND-RENAME-MAP.md §1, CONFIRMED):
   moj_stg00 -> THE THRESHOLD; moj_stg01 -> THE GALLERY OF MASKS;
   moj_stg02 -> THE DROWNING ROOM; moj_stg04 -> THE STILL POINT.
   (moj_stg03 does NOT exist — THE FURNACE has no DW stage donor.)
-The NUDP float values and MIF bone contents (actual geometry, positions,
-collision) are NOT yet parsed — that needs the NUDP model + MIF bone
-formats reversed (ImHex patterns owed). This inventory records the
-containers so that parse can be done per-container.
+Full geometry parse: teardown/tekken5/tools/moj_geometry.py ->
+teardown/tekken5/moj-stage-geometry.json (697 bones, 34,143 vertices).
 
 Usage: python3 moj_parse.py <romd_out_dir> <out.json>
 """
@@ -47,6 +52,20 @@ def find_all(data, magic):
         i = j + 1
     return offs
 
+def is_mif(d, off):
+    if off + 32 > len(d):
+        return False
+    u = struct.unpack_from('<8I', d, off)
+    return (u[0] == 0x0046494D and u[3] == 0x05010000 and u[5] == 64
+            and u[6] == 64 * (3 * u[4] + 1) and 0 < u[4] <= 4096)
+
+def is_nudp(d, off):
+    if off + 32 > len(d):
+        return False
+    u = struct.unpack_from('<8I', d, off)
+    return (u[0] == 0x5044554E and u[3] == 0 and (u[2] & 0xFFFF) == 0x5103
+            and 1 <= (u[2] >> 16) <= 64 and 0 < u[1] <= len(d) - off)
+
 def main():
     out_dir, out_path = Path(sys.argv[1]), Path(sys.argv[2])
     stages = []
@@ -60,9 +79,9 @@ def main():
         # dev path at head (first NUL-terminated string)
         head_end = d.find(b'\x00')
         dev_path = d[:head_end].decode('ascii', 'replace')
-        nudp_offs = find_all(d, b'NUDP')
+        nudp_offs = [o for o in find_all(d, b'NUDP') if is_nudp(d, o)]
         tim2_offs = find_all(d, b'TIM2')
-        mif_offs = find_all(d, b'MIF')
+        mif_offs = [o for o in find_all(d, b'MIF') if is_mif(d, o)]
         nudps = []
         for off in nudp_offs:
             u = struct.unpack_from('<8I', d, off)
@@ -92,8 +111,9 @@ def main():
     inv = {
         'format': 'western-heart dw-stage-inventory v1',
         'source': 'Tekken 5 disc, TK5DATA2.BIN (romD), Internet Archive item slus-210.59.-tekken-5',
-        'note': ('Stage MAP OBJECT files (.moj), not stage text. Geometry, '
-                 'positions, and collision inside NUDP/MIF are NOT yet parsed.'),
+        'note': ('Stage MAP OBJECT files (.moj), not stage text. Full geometry '
+                 'parsed in teardown/tekken5/tools/moj_geometry.py -> '
+                 'moj-stage-geometry.json (697 bones, 34,143 vertices).'),
         'stages': stages,
     }
     out_path.write_text(json.dumps(inv, indent=1))

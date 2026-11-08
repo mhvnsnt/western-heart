@@ -1,7 +1,7 @@
 {
  "format": "western-heart dw-stage-inventory v1",
  "source": "Tekken 5 disc, TK5DATA2.BIN (romD), Internet Archive item slus-210.59.-tekken-5",
- "note": "Stage MAP OBJECT files (.moj), not stage text. Geometry, positions, and collision inside NUDP/MIF are NOT yet parsed.",
+ "note": "Stage MAP OBJECT files (.moj), not stage text. Full geometry parsed in teardown/tekken5/tools/moj_geometry.py -> moj-stage-geometry.json (697 bones, 34,143 vertices).",
  "stages": [
   {
    "source_file": "moj_stg00.dat",
@@ -12,7 +12,7 @@
    "nudp_count": 29,
    "nudp_tiling_ok": true,
    "tim2_count": 29,
-   "mif_count": 56,
+   "mif_count": 29,
    "nudps": [
     {
      "offset": 1536,
@@ -566,222 +566,6 @@
      "field5": 64,
      "data_bytes": 256,
      "chunk_minus16": 304
-    },
-    {
-     "offset": 552557,
-     "field3": 1784388826,
-     "count": 2806344298,
-     "field5": 3048650422,
-     "data_bytes": 2964370871,
-     "chunk_minus16": 2913841328
-    },
-    {
-     "offset": 552816,
-     "field3": 1734369384,
-     "count": 2964369584,
-     "field5": 3065492918,
-     "data_bytes": 2914037938,
-     "chunk_minus16": 2964171693
-    },
-    {
-     "offset": 553843,
-     "field3": 2964499885,
-     "count": 2964369584,
-     "field5": 2998319541,
-     "data_bytes": 2913840557,
-     "chunk_minus16": 2880483504
-    },
-    {
-     "offset": 568576,
-     "field3": 589372952,
-     "count": 504765985,
-     "field5": 774449182,
-     "data_bytes": 505948201,
-     "chunk_minus16": 589504024
-    },
-    {
-     "offset": 573183,
-     "field3": 555620371,
-     "count": 404759845,
-     "field5": 623191329,
-     "data_bytes": 623060261,
-     "chunk_minus16": 589305886
-    },
-    {
-     "offset": 577132,
-     "field3": 2964144858,
-     "count": 3149380023,
-     "field5": 3149773755,
-     "data_bytes": 3368008635,
-     "chunk_minus16": 3200173003
-    },
-    {
-     "offset": 577391,
-     "field3": 3082533814,
-     "count": 3149642681,
-     "field5": 3149643195,
-     "data_bytes": 3201027527,
-     "chunk_minus16": 3200171710
-    },
-    {
-     "offset": 578418,
-     "field3": 3149643719,
-     "count": 3149642683,
-     "field5": 3183721915,
-     "data_bytes": 3149642683,
-     "chunk_minus16": 3149642683
-    },
-    {
-     "offset": 619213,
-     "field3": 1784388826,
-     "count": 2806344298,
-     "field5": 3048650422,
-     "data_bytes": 2964370871,
-     "chunk_minus16": 2913841328
-    },
-    {
-     "offset": 619472,
-     "field3": 1734369384,
-     "count": 2964369584,
-     "field5": 3065492918,
-     "data_bytes": 2914037938,
-     "chunk_minus16": 2964171693
-    },
-    {
-     "offset": 620499,
-     "field3": 2964499885,
-     "count": 2964369584,
-     "field5": 2998319541,
-     "data_bytes": 2913840557,
-     "chunk_minus16": 2880483504
-    },
-    {
-     "offset": 635232,
-     "field3": 589372952,
-     "count": 504765985,
-     "field5": 774449182,
-     "data_bytes": 505948201,
-     "chunk_minus16": 589504024
-    },
-    {
-     "offset": 639839,
-     "field3": 555620371,
-     "count": 404759845,
-     "field5": 623191329,
-     "data_bytes": 623060261,
-     "chunk_minus16": 589305886
-    },
-    {
-     "offset": 643788,
-     "field3": 2964144858,
-     "count": 3149380023,
-     "field5": 3149773755,
-     "data_bytes": 3368008635,
-     "chunk_minus16": 3200173003
-    },
-    {
-     "offset": 644047,
-     "field3": 3082533814,
-     "count": 3149642681,
-     "field5": 3149643195,
-     "data_bytes": 3201027527,
-     "chunk_minus16": 3200171710
-    },
-    {
-     "offset": 645074,
-     "field3": 3149643719,
-     "count": 3149642683,
-     "field5": 3183721915,
-     "data_bytes": 3149642683,
-     "chunk_minus16": 3149642683
-    },
-    {
-     "offset": 685869,
-     "field3": 1784388826,
-     "count": 2806344298,
-     "field5": 3048650422,
-     "data_bytes": 2964370871,
-     "chunk_minus16": 2913841328
-    },
-    {
-     "offset": 686128,
-     "field3": 1734369384,
-     "count": 2964369584,
-     "field5": 3065492918,
-     "data_bytes": 2914037938,
-     "chunk_minus16": 2964171693
-    },
-    {
-     "offset": 687155,
-     "field3": 2964499885,
-     "count": 2964369584,
-     "field5": 2998319541,
-     "data_bytes": 2913840557,
-     "chunk_minus16": 2880483504
-    },
-    {
-     "offset": 701888,
-     "field3": 589372952,
-     "count": 504765985,
-     "field5": 774449182,
-     "data_bytes": 505948201,
-     "chunk_minus16": 589504024
-    },
-    {
-     "offset": 706495,
-     "field3": 555620371,
-     "count": 404759845,
-     "field5": 623191329,
-     "data_bytes": 623060261,
-     "chunk_minus16": 589305886
-    },
-    {
-     "offset": 710444,
-     "field3": 2964144858,
-     "count": 3149380023,
-     "field5": 3149773755,
-     "data_bytes": 3368008635,
-     "chunk_minus16": 3200173003
-    },
-    {
-     "offset": 710703,
-     "field3": 3082533814,
-     "count": 3149642681,
-     "field5": 3149643195,
-     "data_bytes": 3201027527,
-     "chunk_minus16": 3200171710
-    },
-    {
-     "offset": 711730,
-     "field3": 3149643719,
-     "count": 3149642683,
-     "field5": 3183721915,
-     "data_bytes": 3149642683,
-     "chunk_minus16": 3149642683
-    },
-    {
-     "offset": 1139748,
-     "field3": 1547591683,
-     "count": 1549818220,
-     "field5": 1751802974,
-     "data_bytes": 2459083391,
-     "chunk_minus16": 3234511531
-    },
-    {
-     "offset": 1194900,
-     "field3": 1547591683,
-     "count": 1549818220,
-     "field5": 1751802974,
-     "data_bytes": 2459083391,
-     "chunk_minus16": 3234511531
-    },
-    {
-     "offset": 1233028,
-     "field3": 1547591683,
-     "count": 1549818220,
-     "field5": 1751802974,
-     "data_bytes": 2459083391,
-     "chunk_minus16": 3234511531
     }
    ],
    "tim2s": [
@@ -1766,7 +1550,7 @@
    "nudp_count": 20,
    "nudp_tiling_ok": true,
    "tim2_count": 20,
-   "mif_count": 22,
+   "mif_count": 20,
    "nudps": [
     {
      "offset": 1536,
@@ -2149,22 +1933,6 @@
      "field5": 64,
      "data_bytes": 256,
      "chunk_minus16": 304
-    },
-    {
-     "offset": 680040,
-     "field3": 893936979,
-     "count": 1904245321,
-     "field5": 1631340104,
-     "data_bytes": 829045349,
-     "chunk_minus16": 1463036712
-    },
-    {
-     "offset": 1207912,
-     "field3": 893936979,
-     "count": 1904245321,
-     "field5": 1631340104,
-     "data_bytes": 829045349,
-     "chunk_minus16": 1463036712
     }
    ],
    "tim2s": [
