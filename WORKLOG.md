@@ -4419,3 +4419,57 @@ failed "Disk quota exceeded"). Built via the Git Data API from verified tree
 SHAs per the NO-SPARSE-COMMIT LAW: base commit `3334ebf`, base tree
 `52e2204aca2a1ca5ce27a2b06a453069a36de3b1`; `mainmenu.js` HEAD blob
 `73e6ab642b967a1aed522e1111c637296460dbef` hash-verified before editing.
+
+## 2026-11-08 — HeartMind rename application: decode rows landed (RENAME LANE, post-#1647)
+
+**Map:** `HEARTMIND-RENAME-MAP.md` (§§0–§5) — the 14 DW rows PR #1644 left
+"waits on decode" (4 boss bodies, 6 wave-echo archetypes, 4 stage texts).
+PR #1647 landed the Devil Within real-bytes decode (merge `14a5020c`), so
+the gating fact — the decoded data being on disk — is now verifiable.
+**What:** verified each of the 14 rows against the landed payload by
+measurement, then applied them. Nothing invented; the NOT VERIFIED
+UR region-damage row untouched; DIABLO's Devil strings untouched (Jay
+call, no CONFIRMED replacement).
+**Row verdicts — 14/14 APPLIED (data landed, canon names bound):**
+- Boss bodies (4): `gym_init_obj_boss1/2/3/5.dat` measured in
+  `teardown/tekken5/dw_measurements.json` (78/78/111/111 bones, 1 frame
+  each) and present as extracted clips in `dw-motion-bank.json` carrying
+  the canon names: WARDEN OF THE THRESHOLD, THE MASKS, THE DROWNED OGRE,
+  THE UNMASKED (all "— body/init"). Boss kits measured from the bank:
+  Surge 52 clips/3488 frames, Warden 39/3186, Drowned Ogre 29/3245,
+  Unmasked 42/4517, Soul Surge Bloom 4/52; bank totals recompute to
+  220 clips / 214 extracted / 16,503 frames, matching #1647's numbers.
+- Wave-echo archetypes (6): the map's `mon01–06` filenames matched no real
+  file (flagged in the #1644 entry); the decode's real names
+  (`gym_init_obj_mon_power1/2`, `mon_speed1`, `mon_standard1/2`,
+  `mon_tricky1`) are measured (78 bones each) and carry the canon
+  archetype names in the bank. The `tk_*` second family (6 more) is
+  recorded the same way in the same file.
+- Stages (4): `moj_stg00/01/02/04` all status "extracted" in
+  `teardown/tekken5/moj-stage-inventory.json` with canon names
+  THE THRESHOLD, THE GALLERY OF MASKS, THE DROWNING ROOM, THE STILL
+  POINT. (The map's "stage texts" wording came from the old moji=text
+  misread; the decode corrected it from real bytes — `moj_stg*` are
+  stage map objects, geometry. THE FURNACE has no DW donor by design:
+  no boss4 init, no moj_stg03.)
+**Data corrections (3, measured — in `game/data/heartmind-dw-teardown.json`):**
+the file that binds these renames disagreed with the payload it describes
+in exactly three numbers, corrected to the measured values: Unmasked Kit
+clips 41 → 42 (bank count; frames agree at 4517); moj_stg00 `mif_count`
+56 → 29 and moj_stg02 `mif_count` 22 → 20 (stage inventory counts; the
+inventory's own arrays are self-consistent at 29 and 20). Everything else
+in the file recomputes exactly.
+**Code changes:** none in JS. Grep pass over `game/js/heartmind.js` and
+`game/js/heartmind-campaign.js`: canon stage names already in code; zero
+player-visible source proper nouns; every "Devil" occurrence is a code
+comment (provenance, left alone per the #1644 rule). The `HM_TEARDOWN`
+seam (`ready: false`, enemyAi/waveTables/doorSystems null) is NOT rename
+scope — those systems live in TK5DATA0/1, genuinely undecoded, and stay
+null rather than guessed.
+**Verification:** JSON re-parsed after edit; the file diff is exactly the
+3 corrected lines plus this log entry; full suite runs in CI on the PR.
+**Deletions:** none.
+**How this commit was built:** via the Git Data API from verified tree
+SHAs (base commit `14a5020c`): both edited files' base blobs were
+hash-verified locally against main before editing
+(`heartmind-dw-teardown.json` `f370948f`, `WORKLOG.md` `da57a813`).
