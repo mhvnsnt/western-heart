@@ -15,6 +15,19 @@ Tong-Nou is the cosmology — the souls, the vessels, the trial, the giant head 
 
 ---
 
+## CANON LAWS — OWNER ORDERS, 2026-11-07
+
+*Ordered by Jay, 2026-11-07. These are law, not proposals. They override any earlier canon text that contradicts them — but earlier text is NOT silently rewritten here. Contradictions are listed in the pull request that added these laws, and Jay decides each one.*
+
+1. **The word "Devil" MAY appear — but ONLY written in OUR own way and language, NEVER in the Devil Within way.** Never Tekken's Devil Jin / Devil Gene sense, never the source game's usage. (Revised by Jay 2026-11-07 ~22:32 — this replaces the absolute ban ordered the same day.) "Demon" is a different word — Demonio and DIO are lawful under this law as written.
+2. **"Jin" ONLY ever means the soul JIN (刃, the Blade Soul).** Never Jin Kazama, never the bloodline Jin, never the Devil Jin kit. When the name Jin appears, it is the soul — the blade — who wears Phantom.
+3. **Devil Within, Urban Reign, and every other source are REWRITTEN to fit our canon**, our character select, and individual per-character HeartMind stories. No single shared flow or story for all characters — each character gets their own HeartMind story. (The source names are used here only to say what is being rewritten, not as canon names.)
+4. **Pantera first.** His HeartMind is built from canon + the Urban Reign Redux story flow that fits him + the Devil Within mix. That is the template for every character after him.
+5. **Chapter title (Jay, 2026-11-07): "The Devil That Stays..."** — one character's HeartMind story may have a chapter with this exact title. It STANDS as-is under revised Law 1: it is written in our own way and language, not the Devil Within way, so it is allowed. The character for this chapter is still unassigned — do NOT assign it to Pantera or anyone else.
+6. **The rename map's proposed Jin rule is now LAW** (decided by Jay 2026-11-07): bare "Jin" always means the soul. Its proposed Devil rule ("never appears") is SUPERSEDED by Law 1 as revised 2026-11-07 ~22:32. The map and the Jay-calls list are held in the audit workspace, not yet in this repo: `~/workspace/western-heart-audit/HEARTMIND-RENAME-MAP.md` and `~/workspace/western-heart-audit/HEARTMIND-JAY-CALLS.md`.
+
+---
+
 ## 1. THE WORLD
 
 ### Tong-Nou
