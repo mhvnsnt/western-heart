@@ -448,6 +448,41 @@ export class ModeController {
     this._teamTray = null;
     this._teamPending = [];
     this._el = (id) => document.getElementById(id);
+    // Piece 1 Break 3/4 gate (TEKKEN-TEARDOWN-SPEC.md §9 D3): never field
+    // a foe that cannot animate. The bank resolver is fighter.js
+    // bankIdFor (the repo's own teardown-wired bank mapping) — modes.js
+    // must NOT statically import fighter.js (LOADSPEED: fighter.js is
+    // fight-time only, modes.js is menu-only). Kick off the dynamic
+    // import at construction (first mode tap) so it is ready by the
+    // first confirm; onConfirm awaits it before any branch draws a foe.
+    this._bankIdFor = null;
+    this._bankIdForP = import('./fighter.js').then((m) => m.bankIdFor || null).catch(() => null);
+  }
+
+  /* Bank resolver for the foe gate: resolves the cached dynamic import
+     (no-op once loaded). Null when fighter.js failed to load — the gate
+     then falls back to the model-only rule (same as main.js randomEnemy). */
+  async _ensureBankResolver() {
+    if (!this._bankIdFor && this._bankIdForP) {
+      try { this._bankIdFor = await this._bankIdForP; } catch (e) { this._bankIdFor = null; }
+    }
+    return this._bankIdFor;
+  }
+
+  /* Foe eligibility (spec §9 D3): a CPU-drawn foe must have a model AND
+     a decoded animation bank. A bankless foe binds no clips and fights
+     invisibly on frame data alone — Break 4's passive health loss, and
+     Break 3's T-posed foe. The model rule mirrors main.js randomEnemy
+     (owner 2026-10-23: never field a MODEL PENDING fighter); the bank
+     rule reads bankIdFor (fighter.js). Player picks are NOT gated here —
+     the select screen's own gating decides what a player may pick. */
+  _foeEligible(c) {
+    if (!c || c.modelPending || !c.model) return false;
+    if (this._bankIdFor) {
+      try { return !!this._bankIdFor(c.id, c.moveset); }
+      catch (e) { return true; } // resolver hiccup: model gate already passed; never break the draw
+    }
+    return true; // resolver not loaded yet: model-only gate
   }
 
   /* ---------- mode entry (called from menu buttons) ---------- */
@@ -505,8 +540,15 @@ export class ModeController {
   }
 
   /* ---------- character-select confirm routing ---------- */
-  onConfirm(selectedId) {
+  async onConfirm(selectedId) {
     if (!selectedId) return false;
+    // Piece 1 Break 3/4 gate (spec §9 D3): the bank resolver must be
+    // ready before any branch below draws a foe, so _pickFoe's bank
+    // rule applies from the very first rung/wave. The import started
+    // at construction (first mode tap), so this is a no-op by confirm
+    // time. Async is safe: the only caller (main.js confirmSelection)
+    // does not use the return value.
+    await this._ensureBankResolver();
     // TTT2 TEAM BATTLE (worker 24): if the select-screen draft completed,
     // launch the team battle instead of the classic P1/P2 versus flow.
     if (this.mode === 'versus') {
@@ -1169,9 +1211,14 @@ export class ModeController {
   }
   _teamBuildCpu(pTeam) {
     const pool = this.roster.map((c) => c.id).filter((id) => !pTeam.includes(id) && id !== 'custom');
+    // Same foe gate as _pickFoe (spec §9 D3): the CPU team must be
+    // drawable fighters — model AND decoded animation bank. Fall back
+    // to the unfiltered pool rather than fielding a short team.
+    const eligible = pool.filter((id) => this._foeEligible(this.getChar(id)));
+    const src = eligible.length ? eligible : pool;
     const team = [];
-    while (team.length < TEAM_CFG.size && pool.length) {
-      team.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]);
+    while (team.length < TEAM_CFG.size && src.length) {
+      team.push(src.splice(Math.floor(Math.random() * src.length), 1)[0]);
     }
     return team;
   }
@@ -1376,7 +1423,12 @@ export class ModeController {
     let ids = (pool && pool.length ? pool : this.roster.map((c) => c.id));
     ids = ids.filter((id) => id !== excludeId && id !== 'custom');
     const avail = ids.map((id) => this.getChar(id)).filter(Boolean);
-    const list = avail.length ? avail : this.roster.filter((c) => c.id !== excludeId);
+    // Piece 1 Break 3/4 gate (spec §9 D3): a drawn foe must be eligible —
+    // model AND decoded animation bank. A bankless foe binds no clips
+    // and fights invisibly on frame data alone. If nothing is eligible,
+    // fall back to the unfiltered list rather than breaking the ladder.
+    const gated = avail.filter((c) => this._foeEligible(c));
+    const list = gated.length ? gated : (avail.length ? avail : this.roster.filter((c) => c.id !== excludeId));
     return list[Math.floor(Math.random() * list.length)];
   }
   _badge(text) {

@@ -225,11 +225,14 @@ export function attackPhase(m, t, prevT = t) {
 /* Reach (root-to-root horizontal distance, metres) a move connects at.
    Bodies separate at 1.45 m (fighter.js), so every move must reach past it.
    Values follow Tekken range classes: jabs ~1.75, kicks ~1.95, lunging
-   heavy/launch/specials ~2.25, throws 1.7. A move may author `reach`. */
+   heavy/launch/specials ~2.25, throws 1.9 (Piece 1 Break 5d: was 1.7, a
+   0.25 m usable window past the 1.45 m separation — unforgiving at the
+   slow sim speed; +0.2 m is a judgment call, not a measured Tekken
+   throw range, flagged for Jay). A move may author `reach`. */
 export function moveReach(m, name = '') {
   if (!m) return 0;
   if (Number(m.reach) > 0) return Number(m.reach);
-  if (m.isGrab || /^(1\+3|2\+4)$/.test(name) || name === 'grab') return 1.7;
+  if (m.isGrab || /^(1\+3|2\+4)$/.test(name) || name === 'grab') return 1.9;
   const leg = String(m.limb || '').startsWith('leg') || /(^|[+,])[34]$/.test(name);
   let r = leg ? 1.95 : 1.75;
   if (m.heavy || m.launch || m.knockdown || m.rageArt) r += 0.3;

@@ -568,9 +568,16 @@ export function createSelectScreen(deps) {
     els.root.classList.toggle('is-locked', !!locked);
     els.lock.hidden = !locked;
     if (!c) {
-      els.name.textContent = side === 'p1' ? 'PLAYER 1' : 'PLAYER 2';
-      els.title.textContent = state.mode === 'versus' && side === 'p2' && !state.locked.p1
-        ? 'Waiting for P1…' : 'Pick a fighter';
+      // Piece 1 Break 2 (TEKKEN-TEARDOWN-SPEC.md §9 D2): in a one-player
+      // mode there is no P2 pick — the second side is the CPU, and in
+      // Arcade its fighter is a random ladder draw. Never let the pane
+      // look like a second pick exists.
+      const soloRival = state.mode !== 'versus' && side === 'p2';
+      els.name.textContent = soloRival ? 'RIVAL' : (side === 'p1' ? 'PLAYER 1' : 'PLAYER 2');
+      els.title.textContent = soloRival
+        ? (state.mode === 'arcade' ? 'CPU — random ladder foe' : 'CPU')
+        : state.mode === 'versus' && side === 'p2' && !state.locked.p1
+          ? 'Waiting for P1…' : 'Pick a fighter';
       els.style.textContent = '';
       els.stats.innerHTML = '';
       els.attires.innerHTML = '';
@@ -859,6 +866,34 @@ if (fb) {
     if (c) highlight(c, { scroll: true });
   }
 
+  /* T3 select timeout (TEKKEN-TEARDOWN-SPEC.md §2a): the fighter under the
+     cursor. If the side now choosing has no cursor fighter yet (Versus P2
+     before a first tap), park the cursor the way onShow does — that side's
+     last pick, else the first grid card — so there is always a fighter
+     under the cursor, as in Tekken 3. Returns null only while the Versus
+     format submenu is still open (no preview allowed yet). */
+  function cursorFighter() {
+    const draftMode = state.mode === 'versus' && state.vsMode === 'team' && !state.vsTeamsDone;
+    const side = draftMode ? state.draftSide : state.activeSide;
+    let c = state.highlight[side];
+    if (!c) {
+      try {
+        const last = JSON.parse(localStorage.getItem(LAST_KEY) || '{}');
+        c = last[side] && deps.findChar(last[side]);
+      } catch (_) {}
+      if (!c || !cardFor(c.id)) {
+        const first = allCards().find(x => x.dataset.id && x.dataset.id !== '__random');
+        c = first && deps.findChar(first.dataset.id);
+      }
+      if (c) highlight(c, { scroll: true });
+    }
+    return state.highlight[side] || null;
+  }
+
+  /* Grid size for the select timer (T3: the countdown grows with the
+     number of unlocked fighters). */
+  function visibleCount() { return selectRoster().length; }
+
   /* Called by main.js confirmSelection() BEFORE modes.onConfirm runs,
      with the id being confirmed. Mirrors the mode flow: versus locks
      P1 then hands the cursor to P2; team stacks picks on P1. */
@@ -1037,7 +1072,7 @@ if (fb) {
     return state.locked;
   }
 
-  return { build, onShow, selectById, notifyConfirm, highlight, warmLockedFighters, soulSpiritLocked, _state: state, _panes: panes };
+  return { build, onShow, selectById, notifyConfirm, highlight, cursorFighter, visibleCount, warmLockedFighters, soulSpiritLocked, _state: state, _panes: panes };
 
   /* ---------- TTT2 versus submenu (INSIDE the select screen) ----------
      TTT2 actual: "before you select your characters, you will choose

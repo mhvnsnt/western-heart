@@ -50,7 +50,7 @@
    lift + re-touch, which is exactly the reported "stuck drag at first, then
    worked". pointer-events: none lets first touches reach the joystick zone
    while VS is still visible. #wh-pause is NOT changed: it has buttons
-   (RESUME / OPTIONS / QUIT) and must keep intercepting. */
+   (CANCEL / COMMAND / RESET / CLOTHING / OPTIONS / FREE CAMERA) and must keep intercepting. */
 #wh-vs {
   position: fixed; inset: 0; z-index: 190;
   display: none; align-items: center; justify-content: center; flex-direction: column;
@@ -99,6 +99,10 @@
   background: rgba(20,12,32,.78); border: 1px solid rgba(139,43,216,.55);
   color: #fff; font-size: 20px; display: none;
   align-items: center; justify-content: center; cursor: pointer;
+  /* Piece 1 Break 7 (D15): .screen.hud is pointer-events: none, so the
+     pause button inherited that and never received a tap — same re-enable
+     as .training-quit (styles.css). */
+  pointer-events: auto;
 }
 #hud.active #wh-pause-btn { display: flex; }
 #wh-pause {
@@ -128,6 +132,17 @@
   padding: 16px;
 }
 #wh-options.show, #wh-records.show { display: flex; }
+
+/* Piece 1 Break 7 (D15): the clothing sheet had no positioning rules at
+   all, so it never showed. Same fixed-position / z-index / show rules as
+   its siblings #wh-options / #wh-records. */
+#wh-clothing {
+  position: fixed; inset: 0; z-index: 205; display: none;
+  align-items: center; justify-content: center;
+  background: rgba(10,5,18,.82);
+  padding: 16px;
+}
+#wh-clothing.show { display: flex; }
 .wh-sheet {
   width: min(94vw, 480px); max-height: 92vh; overflow-y: auto;
   background: var(--panel); border: 1px solid rgba(139,43,216,.5);

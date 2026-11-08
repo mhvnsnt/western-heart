@@ -165,6 +165,30 @@ All T3-baked clips already in the repo are **fallback, to be replaced from T5/6/
 | `game/assets/movesets/chatur.json` +129 moves (`merge_source: t3:ogre:row:N`, tagged `"set": "FIGHT"`) | True Ogre rows from `teardown/tekken3/movesets/moveset_ogre.json` (divmot14, 330 rows) via `tools/moveset-merge/merge_sources.py` | fallback, to be replaced from T5/6/7/8/TTT2 if True Ogre data ever surfaces | True Ogre is T3-only: cut from every later Tekken (not in T5/T6/T7/T8/TTT2 rosters). No newer movelist exists anywhere. T3 is the only source, not a fallback of convenience. |
 | `game/assets/movesets/bruno.json` (0 added), `docfrank.json` (0 added), `samura1.json` (0 added), `star.json` (0 added) | none — pulls verified complete from newer sources | n/a | bruno: T7 Miguel complete (219/219, `docs/t7t8-reference/frame-data-t7/miguel.json`). docfrank: T3 Bosconovitch rows all covered (TTT2 Bosconovitch movelist pending extraction lane — no data to pull). samura1: T8 Jack-8 + T7 Jack-7 + T3 Gun Jack complete. star: Christie T5/TTT2 movelist unavailable (no data on disk; TTT2 extraction blocked) — see `docs/anim/STAR-ANIM-GAP-20261023.md`. |
 
+### T3 select-timer behavior use under this law (Piece 1 Break 1, 2026-11-08)
+
+| Asset | T3 data | Status | Reason T3 was used (no T5/6/7/8/TTT2 source available) |
+|---|---|---|---|
+| `game/js/main.js` select timer + `game/js/select-screen.js` `cursorFighter()` / `visibleCount()` (Piece 1 Break 1, branch `fix/piece1-breaks`) | T3 select timer: 20·T frames (T = 60, or 60 + 3·(n − 10) past 10 unlocked fighters); at 0 each side gets the fighter under the cursor, never random (n0madic/Tekken3Remake `docs/research/code/modes.md`, "Character select", confirmed from decompiled code) | fallback, to be replaced from T5/6/7/8/TTT2 if a measured T7/T8 select timer ever surfaces | T7/T8 select timer value and at-0 behavior are UNMEASURED (TEKKEN-TEARDOWN-SPEC.md §2b, §10 item 1): no public source checked states them. T3's decompiled timer is the only measured timer. The old 99 s timer and random pick at 0 were invented, not teardown. NOTE: the spec's §2a prose says the timer "grows by 3 seconds per extra unlocked fighter", but its own formula (20·T frames, T growing by 3) is +60 frames = +1 s at 60 fps; the code follows the formula (20 + (n − 10) s, 60 s for the current 50-fighter grid). The in-repo T8 doc (`docs/select-redesign/SELECT-DESIGN.md` §2) says an unpicked side defaults to a CPU random pick — that disagrees with the T3 measurement; the spec is followed and the disagreement is recorded here and in the PR. |
+
+### T3 bank-mapping read use under this law (Piece 1 Breaks 3/4, 2026-11-08)
+
+| Asset | T3 data | Status | Reason T3 was used (no T5/6/7/8/TTT2 source available) |
+|---|---|---|---|
+| `game/js/modes.js` foe gate — `_foeEligible` reads `bankIdFor` (`game/js/fighter.js`, `FIGHTER_BANK` + `SOURCE_TO_BANK`) to decide whether a CPU-drawn foe has a decoded animation bank (Piece 1 Breaks 3/4, branch `fix/piece1-breaks`) | The existing T3 bank registry only — read, not copied or extended; no new T3 clip, row, or bank data is introduced | read-only fallback use | No T5/6/7/8/TTT2 bank mapping exists in-repo for these fighters: the T3 bank registry is the only bank source wired to the roster. The gate EXCLUDES fighters with no decoded bank from CPU draws instead of substituting procedural motion for them (RULES_NO_GUESSING §4: report MISSING, don't fill the gap). Player picks are not gated. |
+
+### T3 Practice attack-data HUD use under this law (Piece 1 Break 5, 2026-11-08)
+
+| Asset | T3 data | Status | Reason T3 was used (no T5/6/7/8/TTT2 source available) |
+|---|---|---|---|
+| `game/js/main.js` `ui.attackData` + `game/js/game.js` hit-site calls + `#attack-data` HUD (`game/index.html`, `game/styles.css`) (Piece 1 Break 5, branch `fix/piece1-breaks`) | Tekken 3 Practice ATTACK DATA (decompiled `practice.ovl`, spec D11): damage numbers, TOTAL DMG, COUNTER / CLEAN HIT labels, combo + damage counters — always on in Practice | fallback, to be replaced from T5/6/7/8/TTT2 if a measured T7/T8 practice HUD spec ever surfaces | T5+ added frame data on top and T7 Practice has the same idea, but the measured spec in hand is T3's `practice.ovl` (spec §D11). The HUD shows the game's own computed damage (`dealt`) and result — no damage value is invented or rebalanced. |
+
+### T3 pause-menu use under this law (Piece 1 Break 7, 2026-11-08)
+
+| Asset | T3 data | Status | Reason T3 was used (no T5/6/7/8/TTT2 source available) |
+|---|---|---|---|
+| Pause menu shape — CANCEL / COMMAND / RESET, Start pauses but does not unpause, music drops while paused (`game/js/menus.js` pause dialog + `pauseGame` / `resumeGame`, `game/js/main.js` Escape handler) (Piece 1 Break 7, branch `fix/piece1-breaks`) | Tekken 3 pause (decompiled, spec D15): Start pauses mid-round; Start again does NOT unpause — only CANCEL does; menu is CANCEL / COMMAND (move list) / RESET (leave to main menu); music volume drops while paused | fallback, to be replaced from T5/6/7/8/TTT2 if a measured T7/T8 pause spec ever surfaces | No T5/6/7/8/TTT2 pause-menu measurement exists in-repo; the measured spec in hand is T3's (spec §D15). No behavior invented beyond it — CLOTHING / OPTIONS / FREE CAMERA stay as secondary entries because they are wired features that live behind PAUSE, not because Tekken has them there. |
+
 ## INSTRUCTION GATE: Owner law, no hand-made menus (Oct 23, 2026, 2:21 PM CT)
 
 > **NO hand-made menus. Every Western Heart menu, character select and customization screen must be built from the actual teardown files (Tekken 5/6/7/8/TTT2 and other game teardowns). Every UI change must cite its teardown source files.**

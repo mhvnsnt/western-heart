@@ -393,6 +393,22 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 .combo-pop span { font-size: 14px; letter-spacing: 4px; }
 @keyframes comboHit { 0%{opacity:0;transform:scale(0.4) rotate(-8deg);} 40%{opacity:1;transform:scale(1.15) rotate(-4deg);} 100%{opacity:1;transform:scale(1) rotate(-4deg);} }
 
+/* Attack data (Tekken 3 Practice ATTACK DATA, spec D11 — Piece 1 Break 5):
+   damage number + COUNTER / CLEAN HIT / BLOCKED label + running TOTAL DMG.
+   Sits under the combo popup; pale blue when the hit was blocked so a
+   blocked jab never reads as a clean one. */
+.attack-data {
+  position: fixed; left: 8%; top: 42%; z-index: 12; text-align: center; opacity: 0;
+  pointer-events: none; color: var(--gold); text-shadow: 0 3px 10px rgba(0,0,0,0.7);
+}
+.attack-data.show { animation: comboHit 0.4s ease; }
+.attack-data.blocked { color: #9fd8ff; }
+.attack-data span { font-size: 15px; letter-spacing: 2px; font-weight: 700; }
+.attack-data b { font-size: clamp(26px,7vw,44px); font-weight: 900; line-height: 1; }
+.attack-data .attack-total { display: block; font-size: 12px; letter-spacing: 3px; opacity: 0.85; }
+.attack-data.note b { display: none; }
+.attack-data.note span { font-size: 17px; }
+
 /* Control hints — fades after 6s, toggle with H */
 .control-hints {
   position: fixed; bottom: calc(12px + env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%);

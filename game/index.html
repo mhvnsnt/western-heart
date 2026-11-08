@@ -277,7 +277,7 @@
     <header class="select-header">
       <button class="btn-ghost select-back" data-action="back-menu">BACK</button>
       <h2>CHOOSE YOUR SOUL</h2>
-      <div id="select-timer" class="select-timer">99</div>
+      <div id="select-timer" class="select-timer">60</div>
     </header>
     <div class="fighters-zone">
       <div class="side-pane pane-p1" id="pane-p1">
@@ -352,7 +352,7 @@
     <header class="select-header">
       <button class="btn-ghost select-back" data-action="back-select">BACK</button>
       <h2>CHOOSE YOUR ARENA</h2>
-      <div class="select-timer" style="visibility:hidden">99</div>
+      <div class="select-timer" style="visibility:hidden">60</div>
     </header>
     <div class="stage-body">
       <div class="stage-preview-pane">
@@ -429,6 +429,10 @@
     <!-- Combo popup -->
     <div id="combo-pop" class="combo-pop"><b id="combo-num">0</b><span>HITS</span></div>
 
+    <!-- Attack data (Tekken 3 Practice ATTACK DATA, spec D11): damage number +
+         COUNTER / CLEAN HIT / BLOCKED label + running TOTAL DMG per hit. -->
+    <div id="attack-data" class="attack-data"><span id="attack-data-label">CLEAN HIT</span> <b id="attack-data-dmg">0</b><span id="attack-data-total" class="attack-total"></span></div>
+
     <!-- HEART AND MIND WITHIN brawler status (worker 20, 2026-10-22):
          stage / zone / foe readout for the Devil Within descent. -->
     <div id="brawler-status" class="brawler-status" style="display:none;position:fixed;top:64px;left:50%;transform:translateX(-50%);z-index:60;color:#ffd76a;font:600 13px/1.4 system-ui,sans-serif;letter-spacing:0.12em;text-shadow:0 2px 8px #000;background:rgba(10,6,20,0.55);padding:6px 14px;border:1px solid rgba(255,215,106,0.35);border-radius:20px;pointer-events:none"></div>
@@ -436,7 +440,7 @@
     <!-- Control hints (desktop keys + touch). Fades after 6s. -->
     <div id="control-hints" class="control-hints">
       <span><b>J</b> punch</span><span><b>K</b> kick</span><span><b>U</b> grab</span>
-      <span><b>L</b> surge</span><span><b>Space</b> block</span><span><b>Shift</b> dodge</span>
+      <span><b>L</b> surge</span><span><b>1+2+3+4</b> Nine-Soul Release</span><span><b>Space</b> block</span><span><b>Shift</b> dodge</span>
       <span><b>A/D</b> move</span>
     </div>
 
