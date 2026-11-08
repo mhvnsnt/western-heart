@@ -1,0 +1,665 @@
+{
+ "format": "western-heart dw-code-immediates v1",
+ "source": "TK5DATA3_code.bin (2,719,159 B, NLZ1-decompressed Code blob)",
+ "tool": "Capstone 5.x, MIPS64 little-endian, linear sweep, operands from op_str",
+ "code_region": {
+  "start": 0,
+  "end": "0x200000"
+ },
+ "sweep": {
+  "instructions": 483144,
+  "skipped_words": 41144,
+  "coverage": 0.922
+ },
+ "pairs_reconstructed": 11940,
+ "load_base": {
+  "proven": false,
+  "evidence": "NO anchor address is ever formed by lui+addiu/ori => load base UNPROVEN; addresses below are FILE OFFSETS"
+ },
+ "anchor_refs": {
+  "ps2_lut": [],
+  "item_force": [],
+  "handycap_gauge_yellow_p1": [],
+  "handycap_gauge_yellow_p2": [],
+  "RankingMode": [],
+  "Devil_Jin": [],
+  "name_DEVILJIN": []
+ },
+ "va_anchor_refs_base_0x200000": {
+  "ps2_lut": [],
+  "item_force": [],
+  "handycap_gauge_yellow_p1": [],
+  "handycap_gauge_yellow_p2": [],
+  "RankingMode": [],
+  "Devil_Jin": [
+   {
+    "lui_addr": 643744,
+    "use_addr": 643756,
+    "reg": "$a1",
+    "kind": "addiu",
+    "va": "0x47a0a8"
+   }
+  ],
+  "name_DEVILJIN": []
+ },
+ "anchor_windows": {
+  "ps2_lut": [],
+  "item_force": [],
+  "handycap_gauge_yellow_p1": [],
+  "handycap_gauge_yellow_p2": [],
+  "RankingMode": [],
+  "Devil_Jin": [],
+  "name_DEVILJIN": []
+ },
+ "hypotheses": {
+  "sample_rate_22050": {
+   "value": 22050,
+   "pair_hits": 0,
+   "pair_sites": [],
+   "small_imm_hits": 2
+  },
+  "sample_rate_24000": {
+   "value": 24000,
+   "pair_hits": 0,
+   "pair_sites": [],
+   "small_imm_hits": 0
+  },
+  "sample_rate_32000": {
+   "value": 32000,
+   "pair_hits": 0,
+   "pair_sites": [],
+   "small_imm_hits": 0
+  },
+  "sample_rate_44100": {
+   "value": 44100,
+   "pair_hits": 0,
+   "pair_sites": [],
+   "small_imm_hits": 1
+  },
+  "sample_rate_48000": {
+   "value": 48000,
+   "pair_hits": 0,
+   "pair_sites": [],
+   "small_imm_hits": 4
+  },
+  "force_reward_1000000": {
+   "value": 1000000,
+   "pair_hits": 2,
+   "pair_sites": [
+    [
+     425564,
+     425572
+    ],
+    [
+     1344000,
+     1344004
+    ]
+   ],
+   "small_imm_hits": 0
+  },
+  "symbol_count_40": {
+   "value": 40,
+   "pair_hits": 0,
+   "pair_sites": [],
+   "small_imm_hits": 185
+  }
+ },
+ "float_constants": [
+  {
+   "bits": "0x40000400",
+   "float": 2.000244140625,
+   "sites": 12
+  },
+  {
+   "bits": "0x3fffffff",
+   "float": 1.9999998807907104,
+   "sites": 9
+  },
+  {
+   "bits": "0x40000800",
+   "float": 2.00048828125,
+   "sites": 4
+  },
+  {
+   "bits": "0x4000000d",
+   "float": 2.0000030994415283,
+   "sites": 4
+  },
+  {
+   "bits": "0x3f800001",
+   "float": 1.0000001192092896,
+   "sites": 3
+  },
+  {
+   "bits": "0x40000c00",
+   "float": 2.000732421875,
+   "sites": 3
+  },
+  {
+   "bits": "0x40001000",
+   "float": 2.0009765625,
+   "sites": 2
+  },
+  {
+   "bits": "0x40001400",
+   "float": 2.001220703125,
+   "sites": 2
+  },
+  {
+   "bits": "0x3b9ac9ff",
+   "float": 0.0047237868420779705,
+   "sites": 2
+  },
+  {
+   "bits": "0x44bb8000",
+   "float": 1500.0,
+   "sites": 2
+  },
+  {
+   "bits": "0x40000006",
+   "float": 2.0000014305114746,
+   "sites": 2
+  },
+  {
+   "bits": "0xbfffffff",
+   "float": -1.9999998807907104,
+   "sites": 2
+  },
+  {
+   "bits": "0x40002c02",
+   "float": 2.002686023712158,
+   "sites": 1
+  },
+  {
+   "bits": "0x40002c01",
+   "float": 2.002685785293579,
+   "sites": 1
+  },
+  {
+   "bits": "0x40002c04",
+   "float": 2.0026865005493164,
+   "sites": 1
+  },
+  {
+   "bits": "0x3f80000c",
+   "float": 1.0000014305114746,
+   "sites": 1
+  },
+  {
+   "bits": "0x3f800008",
+   "float": 1.0000009536743164,
+   "sites": 1
+  },
+  {
+   "bits": "0x3f800004",
+   "float": 1.0000004768371582,
+   "sites": 1
+  },
+  {
+   "bits": "0x3f800010",
+   "float": 1.0000019073486328,
+   "sites": 1
+  },
+  {
+   "bits": "0x3f800020",
+   "float": 1.0000038146972656,
+   "sites": 1
+  },
+  {
+   "bits": "0x40001401",
+   "float": 2.001220941543579,
+   "sites": 1
+  },
+  {
+   "bits": "0x3b9aca00",
+   "float": 0.004723787307739258,
+   "sites": 1
+  },
+  {
+   "bits": "0x451c4000",
+   "float": 2500.0,
+   "sites": 1
+  },
+  {
+   "bits": "0x3a83126e",
+   "float": 0.0009999999310821295,
+   "sites": 1
+  },
+  {
+   "bits": "0x40001800",
+   "float": 2.00146484375,
+   "sites": 1
+  },
+  {
+   "bits": "0x40002800",
+   "float": 2.00244140625,
+   "sites": 1
+  },
+  {
+   "bits": "0x40002802",
+   "float": 2.002441883087158,
+   "sites": 1
+  },
+  {
+   "bits": "0x40000880",
+   "float": 2.000518798828125,
+   "sites": 1
+  },
+  {
+   "bits": "0x4000000e",
+   "float": 2.0000033378601074,
+   "sites": 1
+  },
+  {
+   "bits": "0x4000001e",
+   "float": 2.000007152557373,
+   "sites": 1
+  },
+  {
+   "bits": "0x3f808080",
+   "float": 1.0039215087890625,
+   "sites": 1
+  },
+  {
+   "bits": "0xc0c0c0c0",
+   "float": -6.023529052734375,
+   "sites": 1
+  },
+  {
+   "bits": "0x3f7ffe40",
+   "float": 0.9999732971191406,
+   "sites": 1
+  },
+  {
+   "bits": "0xbeaaaaab",
+   "float": -0.3333333432674408,
+   "sites": 1
+  },
+  {
+   "bits": "0x3e4ccccd",
+   "float": 0.20000000298023224,
+   "sites": 1
+  },
+  {
+   "bits": "0xbe124925",
+   "float": -0.1428571492433548,
+   "sites": 1
+  },
+  {
+   "bits": "0x3de38e39",
+   "float": 0.1111111119389534,
+   "sites": 1
+  },
+  {
+   "bits": "0x3f80000f",
+   "float": 1.0000017881393433,
+   "sites": 1
+  }
+ ],
+ "top_small_immediates": [
+  [
+   "0x1",
+   9259
+  ],
+  [
+   "0x10",
+   4556
+  ],
+  [
+   "0xffff",
+   3084
+  ],
+  [
+   "0x2",
+   2762
+  ],
+  [
+   "0xfff0",
+   2736
+  ],
+  [
+   "0x20",
+   2248
+  ],
+  [
+   "0x4",
+   1769
+  ],
+  [
+   "0x3",
+   1265
+  ],
+  [
+   "0xffe0",
+   1197
+  ],
+  [
+   "0x8",
+   1155
+  ],
+  [
+   "0x40",
+   1072
+  ],
+  [
+   "0x30",
+   1044
+  ],
+  [
+   "0x50",
+   745
+  ],
+  [
+   "0xc",
+   693
+  ],
+  [
+   "0x5",
+   654
+  ],
+  [
+   "0xefff",
+   602
+  ],
+  [
+   "0x4000",
+   581
+  ],
+  [
+   "0xffd0",
+   558
+  ],
+  [
+   "0x6",
+   514
+  ],
+  [
+   "0x8000",
+   492
+  ],
+  [
+   "0x7",
+   491
+  ],
+  [
+   "0x60",
+   467
+  ],
+  [
+   "0x1000",
+   432
+  ],
+  [
+   "0x80",
+   421
+  ],
+  [
+   "0xff",
+   416
+  ],
+  [
+   "0xa",
+   394
+  ],
+  [
+   "0xffc0",
+   333
+  ],
+  [
+   "0x70",
+   316
+  ],
+  [
+   "0x18",
+   281
+  ],
+  [
+   "0x0",
+   274
+  ]
+ ],
+ "no_anchor_strings": [
+  "symbol",
+  "laser",
+  "drain",
+  "heal"
+ ],
+ "load_base_metric": {
+  "0x0": {
+   "jal_targets": 22414,
+   "land_on_decoded_insn": 2960,
+   "fraction": 0.132
+  },
+  "0x100000": {
+   "jal_targets": 22414,
+   "land_on_decoded_insn": 13651,
+   "fraction": 0.609
+  },
+  "0x200000": {
+   "jal_targets": 22414,
+   "land_on_decoded_insn": 16655,
+   "fraction": 0.743
+  },
+  "0x80000000": {
+   "jal_targets": 22414,
+   "land_on_decoded_insn": 0,
+   "fraction": 0.0
+  }
+ },
+ "load_base_verdict": "BEST-SUPPORTED 0x200000 (74.3% of jal targets land on decoded code, vs 13.2% at base 0 and 60.9% at 0x100000; the blob occupies VA 0x200000-0x497E57). NOT proven: ~26% of calls go outside this blob (other PKG overlays). All addresses below are FILE OFFSETS; VA = file offset + 0x200000 under this hypothesis.",
+ "sample_rate_sites": [
+  {
+   "addr": 328056,
+   "text": "ori $a2, $zero, 0xbb80",
+   "rate": 48000
+  },
+  {
+   "addr": 328064,
+   "text": "ori $v0, $zero, 0xac44",
+   "rate": 44100
+  },
+  {
+   "addr": 328068,
+   "text": "addiu $a2, $zero, 0x5622",
+   "rate": 22050
+  },
+  {
+   "addr": 365812,
+   "text": "addiu $a2, $zero, 0x5622",
+   "rate": 22050
+  },
+  {
+   "addr": 1155824,
+   "text": "ori $v1, $zero, 0xbb80",
+   "rate": 48000
+  },
+  {
+   "addr": 1528104,
+   "text": "ori $s0, $zero, 0xbb80",
+   "rate": 48000
+  },
+  {
+   "addr": 1531736,
+   "text": "ori $v0, $zero, 0xbb80",
+   "rate": 48000
+  }
+ ],
+ "sample_rate_function": {
+  "file_range": "0x50050-0x501C0 (VA 0x250050-0x2501C0 under base 0x200000)",
+  "finding": "flag-driven rate select: flag bit 0x20 -> 48000, bit 0x40 -> 44100, else 22050; rate passed as $a2 to call at 0x316BE8 (VA). 22050 is the DEFAULT tier, not the only rate.",
+  "disassembly": [
+   "0x050050: addiu $sp, $sp, -0x40",
+   "0x050054: sd $s1, 0x28($sp)",
+   "0x050058: move $s1, $a0",
+   "0x05005c: addiu $a0, $zero, 0x52",
+   "0x050060: sd $s0, 0x20($sp)",
+   "0x050064: sd $ra, 0x30($sp)",
+   "0x050068: jal 0x1012e0",
+   "0x05006c: move $s0, $a1",
+   "0x050070: beql $v0, $zero, 0x501b0",
+   "0x050074: ld $s0, 0x20($sp)",
+   "0x050078: beqz $s0, 0x50094",
+   "0x05007c: move $a1, $zero",
+   "0x050080: lui $a0, 0x3e",
+   "0x050084: jal 0x2df410",
+   "0x050088: addiu $a0, $a0, 0x37e0",
+   "0x05008c: jal 0x2dda78",
+   "0x050090: move $a0, $v0",
+   "0x050094: addiu $v0, $zero, -1",
+   "0x050098: addiu $v1, $zero, 0x12c",
+   "0x05009c: sw $v1, 0x88($s1)",
+   "0x0500a0: sw $v0, 0x84($s1)",
+   "0x0500a4: lw $v1, 0x58($s1)",
+   "0x0500a8: lhu $v0, ($v1)",
+   "0x0500ac: andi $v0, $v0, 0x10",
+   "0x0500b0: bnez $v0, 0x500bc",
+   "0x0500b4: addiu $v0, $zero, 0x2000",
+   "0x0500b8: addiu $v0, $zero, 0x4800",
+   "0x0500bc: sw $v0, ($sp)",
+   "0x0500c0: lhu $v0, ($v1)",
+   "0x0500c4: andi $v0, $v0, 8",
+   "0x0500c8: beqz $v0, 0x500d8",
+   "0x0500cc: lui $v0, 0x47",
+   "0x0500d0: b 0x500e0",
+   "0x0500d4: addiu $a2, $v0, 0x2c0",
+   "0x0500d8: lui $v0, 0x47",
+   "0x0500dc: addiu $a2, $v0, 0x2b8",
+   "0x0500e0: lhu $a1, ($a2)",
+   "0x0500e4: addiu $a3, $zero, 2",
+   "0x0500e8: move $a0, $sp",
+   "0x0500ec: lui $t0, 0x30",
+   "0x0500f0: sh $a1, 0x70($s1)",
+   "0x0500f4: sll $a1, $a1, 0x10",
+   "0x0500f8: sra $a1, $a1, 0x10",
+   "0x0500fc: lhu $v1, 2($a2)",
+   "0x050100: sh $v1, 0x72($s1)",
+   "0x050104: sll $v1, $v1, 0x10",
+   "0x050108: sra $v1, $v1, 0x10",
+   "0x05010c: lhu $v0, 4($a2)",
+   "0x050110: sh $v0, 0x74($s1)",
+   "0x050114: lhu $a2, 6($a2)",
+   "0x050118: sw $a1, 4($sp)",
+   "0x05011c: sh $a2, 0x76($s1)",
+   "0x050120: sw $v1, 8($sp)",
+   "0x050124: sw $t0, 0xc($sp)",
+   "0x050128: sw $a3, 0x14($sp)",
+   "0x05012c: jal 0x3165fc",
+   "0x050130: sw $a3, 0x10($sp)",
+   "0x050134: sw $v0, 0x60($s1)",
+   "0x050138: jal 0x1012e0",
+   "0x05013c: addiu $a0, $zero, 0x52",
+   "0x050140: lw $a2, 0x60($s1)",
+   "0x050144: sw $v0, 0x5c($s1)",
+   "0x050148: move $a1, $v0",
+   "0x05014c: move $a0, $sp",
+   "0x050150: addiu $a3, $zero, 0x300",
+   "0x050154: jal 0x316634",
+   "0x050158: addiu $t0, $zero, 2",
+   "0x05015c: lw $v1, 0x58($s1)",
+   "0x050160: lhu $v1, ($v1)",
+   "0x050164: xori $v0, $v1, 1",
+   "0x050168: andi $v0, $v0, 1",
+   "0x05016c: beqz $v0, 0x5019c",
+   "0x050170: andi $v0, $v1, 0x20",
+   "0x050174: bnez $v0, 0x5018c",
+   "0x050178: ori $a2, $zero, 0xbb80",
+   "0x05017c: andi $v1, $v1, 0x40",
+   "0x050180: ori $v0, $zero, 0xac44",
+   "0x050184: addiu $a2, $zero, 0x5622",
+   "0x050188: movz $a2, $v0, $v1",
+   "0x05018c: move $a0, $zero",
+   "0x050190: move $a1, $zero",
+   "0x050194: jal 0x316be8",
+   "0x050198: addiu $a3, $zero, 7",
+   "0x05019c: move $a0, $s1",
+   "0x0501a0: jal 0x2400c8",
+   "0x0501a4: move $a1, $zero",
+   "0x0501a8: sltu $v0, $zero, $v0",
+   "0x0501ac: ld $s0, 0x20($sp)",
+   "0x0501b0: ld $s1, 0x28($sp)",
+   "0x0501b4: ld $ra, 0x30($sp)",
+   "0x0501b8: jr $ra",
+   "0x0501bc: addiu $sp, $sp, 0x40"
+  ]
+ },
+ "million_sites": [
+  {
+   "lui_addr": 425564,
+   "use_addr": 425572,
+   "reg": "$v1",
+   "kind": "ori",
+   "context": [
+    "0x067e24: lui $v0, 0x17",
+    "0x067e28: sll $t3, $s7, 4",
+    "0x067e2c: addiu $a1, $v0, -0x3280",
+    "0x067e30: move $t0, $s0",
+    "0x067e34: addiu $a1, $a1, -0x10",
+    "0x067e38: addiu $a2, $sp, 0x1d0",
+    "0x067e3c: jal 0x257878",
+    "0x067e40: addu $a1, $t3, $a1",
+    "0x067e44: slti $v0, $s7, 6",
+    "0x067e48: bnez $v0, 0x68090",
+    "0x067e4c: ld $s0, 0xb40($sp)",
+    "0x067e50: addiu $a2, $sp, 0x8b0",
+    "0x067e54: addiu $s4, $sp, 0x9e0",
+    "0x067e58: sw $a2, 0x1f0($sp)",
+    "0x067e5c: lui $v1, 0xf",
+    "0x067e60: sw $s4, 0x1f4($sp)",
+    "0x067e64: ori $v1, $v1, 0x4240",
+    "0x067e68: sw $zero, 0xb24($sp)",
+    "0x067e6c: ldl $a0, 0x1f7($sp)",
+    "0x067e70: ldr $a0, 0x1f0($sp)",
+    "0x067e74: sdl $a0, 0x1e7($sp)",
+    "0x067e78: sdr $a0, 0x1e0($sp)",
+    "0x067e7c: sw $v1, 0xb20($sp)",
+    "0x067e80: lw $v1, 0x1dc($sp)",
+    "0x067e84: sw $zero, 0xb18($sp)",
+    "0x067e88: blez $s7, 0x68064",
+    "0x067e8c: sw $v1, 0xb1c($sp)",
+    "0x067e90: lui $v0, 0x17",
+    "0x067e94: cvt.w.s $f0, $f20",
+    "0x067e98: mfc1 $a0, $f0",
+    "0x067e9c: addiu $fp, $v0, -0x3280",
+    "0x067ea0: sll $t3, $s7, 4"
+   ]
+  },
+  {
+   "lui_addr": 1344000,
+   "use_addr": 1344004,
+   "reg": "$a1",
+   "kind": "ori",
+   "context": [
+    "0x1481c4: dsll32 $v0, $v0, 0",
+    "0x1481c8: dsra32 $v0, $v0, 0",
+    "0x1481cc: sw $v0, ($s2)",
+    "0x1481d0: ld $s0, ($sp)",
+    "0x1481d4: ld $s1, 8($sp)",
+    "0x1481d8: ld $s2, 0x10($sp)",
+    "0x1481dc: ld $ra, 0x18($sp)",
+    "0x1481e0: jr $ra",
+    "0x1481e4: addiu $sp, $sp, 0x20",
+    "0x1481e8: addiu $sp, $sp, -0x10",
+    "0x1481ec: move $v1, $a1",
+    "0x1481f0: lui $v0, 0x8ca",
+    "0x1481f4: sd $s0, ($sp)",
+    "0x1481f8: multu $v1, $v0",
+    "0x1481fc: move $s0, $a0",
+    "0x148200: lui $a1, 0xf",
+    "0x148204: ori $a1, $a1, 0x4240",
+    "0x14820c: sd $ra, 8($sp)",
+    "0x148210: mflo $a2",
+    "0x148214: mfhi $a0",
+    "0x148218: dsll32 $a2, $a2, 0",
+    "0x14821c: dsll32 $a0, $a0, 0",
+    "0x148224: dsrl32 $a2, $a2, 0",
+    "0x148228: vmm0 $s0, $zero, $zero",
+    "0x14822c: dsll32 $v1, $v1, 0",
+    "0x148230: dsrl32 $v1, $v1, 0",
+    "0x148234: or $a0, $a0, $a2",
+    "0x148238: dsll32 $s0, $s0, 0",
+    "0x14823c: jal 0x120cc8",
+    "0x148240: or $s0, $s0, $v1"
+   ]
+  }
+ ]
+}

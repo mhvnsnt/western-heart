@@ -622,11 +622,11 @@ Corrections owed in the map:
 | Item | Blocker (exact) |
 |---|---|
 | Gym per-frame keyframe stream | Record table + channel kinds decoded; the inner delta-frame packing and the type-7 rotation angle scale are NOT yet reversed. Needs the packing reversed (the frame-block delimiter). |
-| Meter/gem/Force/rank/symbol numbers | NOT in TK5DATA2 or the Code blob as readable data; NOT in TK5DATA1 as readable strings (stream-scan, 232 false-positive "gem" hits only). They are binary values in TK5DATA0/1 or MIPS immediates. TK5DATA0 (2.07 GB) never fetched; TK5DATA1 (1.30 GB) never held whole (quota). |
-| NUDP/MIF stage geometry | Container counts + tiling validated; vertex/bone contents NOT parsed (ImHex patterns owed). Symbol locations NOT found. |
-| P3Dp audio payload | Container header measured; VAG/ADPCM payload NOT decoded. |
+| Meter/gem/Force/rank/symbol numbers | NOT in TK5DATA2 or the Code blob as readable data; NOT in TK5DATA1 as readable strings (stream-scan, 232 false-positive "gem" hits only); NOT in the Code blob as MIPS immediates either (Capstone sweep, 483,144 insns, §20 — no anchored value for any of them; sample rates FOUND: 48000/44100/22050 select, 22050 default). They are binary values in TK5DATA0/1 tables. TK5DATA0 (2.07 GB) never fetched; TK5DATA1 (1.30 GB) never held whole (quota). |
+| NUDP/MIF stage geometry | PARSED (§18, commit `f1a2e29`): 70 models, 697 bones, 1,212 sub-meshes, 34,143 vertices byte-verified, 0 problems. Triangle indices NOT found; positions chunk-relative (no stage-absolute placement); symbol locations NOT found. |
+| P3Dp audio payload | DECODED (§19): 391 clips, 318 regions, 297.6 s at 22050 Hz (assumed — see §20, 22050 is the default tier of a 3-rate select, per-clip rate NOT confirmed). 2 clips (`snd_title.dat` 6–7) absent from this disc image. |
 | HM_TEARDOWN enemyAi / waveTables / doorSystems | Null (see §11). enemyAi + doorSystems need TK5DATA0/1; waveTables needs the load-list-to-stage assignment resolved. |
-| 6 DW files | No data in TK5DATA2 (list references only). May be in TK5DATA0/1 or absent from this disc image. |
+| 6 DW files | No data in TK5DATA2 (list references only). NOT in TK5DATA1 as gym entries — LUT scan of all 1571 entries found 0 gym files (§21; sampler validated by TK5RESU1/TIM2 magics). TK5DATA0 (2.07 GB) has no LUT and was not scanned — blind 2 GB scan not run. May be in TK5DATA0 or absent from this disc image. Per-file verdicts: all 6 UNPROVEN. |
 | Disk quota | Flaky / nearly full. This pass hit EDQUOT twice writing a 10 KB file (Redux ISO download, 3.8 GB in `~/workspace/urban-reign-redux/`, is the current consumer — NOT this lane's to delete). TK5DATA0/1 cannot be held whole here. Stream-scan (fetch + discard) is the viable route for them. |
 
 ### 17. What this means for HeartMind (revised, this pass)
@@ -646,5 +646,60 @@ Corrections owed in the map:
   frame poses now; full motion needs the packing reversed.
 - No meter/gem/Force/rank/symbol number is presented anywhere
   in this pass — the TK5DATA1 stream-scan proved they are not
-  readable strings there. Do NOT present any number for them
-  until TK5DATA0/1 bytes or MIPS disassembly yields them.
+  readable strings there, and the MIPS immediate scan (§20)
+  proved they are not anchored immediates in the Code blob
+  either. Do NOT present any number for them until TK5DATA0/1
+  table bytes yield them.
+- Bucket B moves again (see `HEARTMIND-COMPLETION.md`): B8 stage
+  geometry 10% → 35% (vertices+bones parsed and byte-verified;
+  indices, placement, spawns, symbol spots still missing); B1
+  50% → 60% (geometry parse + audio decode close two of its
+  missing items; meter/rank numbers still missing, retarget
+  still missing). Bucket B ~12% → ~15%; headline ~45% → ~47%.
+- Audio is decoded and measurable — 391 clips, 297.6 s — but the
+  per-clip sample rate is NOT confirmed (22050 assumed; the
+  code's rate-select proves 22050 is only the default tier).
+
+### 18. Stage geometry — NUDP vertices + MIF bones parsed (commit `f1a2e29`, pushed)
+
+- Parser: `tools/moj_geometry.py`; `moj_parse.py` fix (raw `'MIF'` search overcounted false EMIF bytes; inventory corrected stg00 MIF 56→29, stg02 22→20).
+- Totals: **70 NUDP models, 697 bones, 697 blocks, 1,212 sub-meshes, 34,143 vertices, 0 validation problems.**
+- Verification: **all 34,143 vertices byte-verified against the raw `.dat` files** (positions are chunk-relative — the first spot-check failed only because file-absolute offsets were used; corrected, 0 mismatches). UVs match. All positions inside chunk bounding spheres. All 1,212 sub-mesh checks pass (sphere, UV finite, aux header/trailer, normal header). Variants 0x82: 1,182 / 0x83: 14 / 0x86: 16.
+- Files: `moj-stage-geometry.json` (7,347,961 B), `tools/moj_geometry.py`, updated `moj-stage-inventory.json`.
+- Honest limits: **triangle indices NOT found** (vertices in draw order; strip order UNCONFIRMED). Positions are chunk-relative — no stage-absolute placement. No breakables/spawns/symbol spots. Symbol locations NOT found.
+
+### 19. P3Dp audio decoded (this pass)
+
+- `tools/snd_decode.py` fixed: decode available whole frames instead of skipping a region short by a partial frame. Recovered 21 of 23 skipped clips.
+- Totals: **18 files, 391 clips, 318 unique regions decoded, 6,562,472 samples, 297.6 s at 22050 Hz.**
+- Deliverable: `dw-audio-decoded.json` (187,999 B) — measurements only. 3 proof WAVs in `~/workspace/devil-within-decode/audio-proof/` (**workspace only, NOT in git** — decoded commercial audio stays out of git): `blu-clip0.wav` (8,086 B, 0.18 s), `c10-clip0.wav` (9,374 B, 0.21 s), `largest.wav` (328,014 B, 7.44 s) — all ffprobe-verified PCM s16le mono 22050 Hz.
+- Short regions: 13 short by exactly one 16-byte VAG frame (clip table size overstates by one frame); 1 (`snd_c_tks.dat` clips 5–9) 4 bytes past EOF + 12-byte partial frame; 1 (`snd_title.dat` clip 5) 37,376 bytes short — file holds only its first 60%.
+- **Only 2 clips remain undecodable: `snd_title.dat` clips 6–7 (0 bytes in file — data absent from this disc image).**
+- Sample rate 22050 Hz is ASSUMED (standard PS2 SE rate, not in the bytes) — see §20: 22050 is the DEFAULT tier of a 3-rate select, not the only rate. Per-clip rate NOT confirmed.
+
+### 20. Code blob MIPS immediate scan — meter/gem/Force/rank/symbol numbers (this pass)
+
+- Tool: `tools/code_immediates.py` (Capstone 5.0.7, MIPS64 LE, linear sweep, detail=False + op_str parsing; detail=True aborts on some encodings; MIPS32 mode stops after 1 instruction because `sd` is 64-bit).
+- Sweep: **483,144 instructions, 41,144 skipped words, ~90% coverage in file 0x0–0x200000** (real code region; above that strings/LUT/tables). **11,940 lui+addiu/ori pairs reconstructed.**
+- Load base: **BEST-SUPPORTED 0x200000, NOT proven** (jal/j landing over 22,414 targets: base 0x0 → 13.2%, 0x100000 → 60.9%, **0x200000 → 74.3%**, 0x80000000 → 0%). Blob occupies VA 0x200000–0x497E57 under this hypothesis. ~26% of calls go outside this blob (other PKG overlays). `$gp` zeroed at file 0x1CAC14 — no gp-relative addressing.
+- Anchor refs: essentially NONE. At base 0 AND base 0x200000, zero lui-pair refs for PS2 LUT (0x27B5B0), `item_force` (0x2905B8), `handycap_gauge_yellow_p1/p2` (0x28CAD1/0x28CAF1), `RankingMode` (0x28B3F0), `name_DEVILJIN` (0x28A4D9). Single exception: `'Devil Jin'` (file 0x27A0A8) formed once — lui file 0x9D2A0, use 0x9D2AC, `$a1`, VA 0x47A0A8 — in a name-lookup loop calling `jal 0x296DE0` (VA) with successive fighter-name pointers (Eddy Gordo, Roger Jr., Anna Williams, Bruce Irvin, Devil Jin, Feng Wei; one pointer lands mid-string, `'rei'` tail of Wang Jinrei — recorded, not resolved), clearing flag bit 0x1000 (field +0x80) on each found record.
+- **Sample rates FOUND — the one solid hit.** Function at file 0x50050 (VA 0x250050): reads a sound-header word (struct+0x58), tests flag bits, selects a rate passed as `$a2` to a call at VA 0x316BE8 with `$a3=7`: **flag bit 0x20 → 48000; bit 0x40 → 44100; else 22050.** Rates sit within 12 bytes (file 0x50178 `ori $a2=0xbb80`=48000; 0x50180 `ori $v0=0xac44`=44100; 0x50184 `addiu $a2=0x5622`=22050; `movz` picks 44100 if flag 0x40 set). Other rate sites: 22050 also at file 0x594F4; 48000 also at 0x11A2F0, 0x175128, 0x175F58. **22050 is the DEFAULT tier, not the only rate.** No caller (`jal 0x250050`) exists in the scanned code — called from outside this blob.
+- 1,000,000 (Force reward hypothesis): 2 pair sites, NEITHER attributable to Force. Site A (file 0x67E5C lui / 0x67E64 ori, `$v1`): stored to stack struct +0xB20 in a float-math function with a 6-entry loop, 0.5/1.0 float constants, 16-byte-entry table at 0x16CD70+16*i — UNCONFIRMED candidate, no Force/gauge/rank anchor nearby. Site B (file 0x148200 lui / 0x148204 ori, `$a1`): inside a 64-bit divide helper (multu by magic 0x8CA, mflo/mfhi, jal 0x120CC8) — most plausibly a time conversion (µs→s divisor), NOT a reward. Candidates only.
+- Meter/gem/Force/rank/symbol numbers: **NOT FOUND as anchored values.** No string anchors in the blob for `symbol`, `laser`, `drain`, `heal` (0 byte-search hits). `item_force`, `RankingMode`, `handycap_gauge` strings exist but are never referenced by lui pairs. Float constants from pairs are mostly ~2.0 bit patterns (0x40000400 ×12, 0x3FFFFFFF ×9, 0x40000800 ×4) — likely addresses/fixed-point, not confirmed tuning floats; 1500.0 (0x44BB8000) ×2, unattributed.
+- Verdict: the numbers live in TK5DATA0/1 tables (or in data the code reads via tables/pointers this scan cannot resolve without the load map) — NOT recoverable from this blob by immediate scan.
+- Deliverables: `tools/code_immediates.py` + `dw-code-immediates.json` (12,913 B — sweep stats, pairs, base metric + verdict, anchor refs, hypotheses, float constants, top small immediates, sample-rate sites + rate-select disassembly, 1M sites with context).
+
+### 21. The 6 missing DW files — LUT gym scan of TK5DATA1 (this pass)
+
+- Tool: `tools/lut_gym_scan.py`. Method: first 2048 bytes of each of the 1571 PS2 LUT entries, HTTP Range-fetch + discard (no whole-file download, no big disk writes); GYM1 magic at offset 64, raw then sector-cipher (seed = entry index).
+- Result: **1571 entries; 237 skipped (size 0xFFFFFFFF or < 104 B); 0 fetch errors; 1334 sampled; 0 gym entries** (0 raw, 0 encrypted).
+- Sampler validated: 8 random entries' decrypted first bytes show real structure — entry 148 decrypts to `'TK5RESU1'`, entry 192 to `'TIM2'`, entries 758/936 to a `'COM '` container header — proving the LUT offsets and the sector-cipher decrypt (seed = entry index) are right. The 0-gym result is real, not a sampler bug. (A full-entry word-sum checksum check was started and stopped: the largest entry is 212,115,456 B and the single-stream fetch was still running after ~9 minutes; the magic-based validation already proves the offsets and decrypt, and the LUT itself was validated in an earlier pass.)
+- Per-file verdicts — all 6 **UNPROVEN** (none found, none excluded):
+  - `gym_ozhe_1ckj66a.dat` — UNPROVEN (not in TK5DATA1 as a gym entry; TK5DATA0 not scanned — no LUT for it; may be absent from this disc image).
+  - `gym_ikt5_katgym_Bbr_bbblow.dat` — UNPROVEN (same).
+  - `gym_ikt5_katgym_Gan_mekin.dat` — UNPROVEN (same).
+  - `gym_init_obj_testchr1.dat` — UNPROVEN (same).
+  - `gym_init_obj_testchr2.dat` — UNPROVEN (same).
+  - `gym_init_obj_testchr3.dat` — UNPROVEN (same).
+- Why attribution is impossible even if gym entries existed: the 6 names appear NOWHERE in TK5DATA1 (full string stream-scan: 0 `'gym_'` hits) and the index records no sizes for them, so no LUT entry can be matched to one of them by name or size.
+- Deliverables: `tools/lut_gym_scan.py` + `dw-lut-gym-scan.json` (687 B).
