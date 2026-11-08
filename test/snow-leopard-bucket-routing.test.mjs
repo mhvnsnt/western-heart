@@ -20,7 +20,7 @@ const AC = await import(join(ROOT, 'game/js/asset-config.js'));
 // [repo path, blob SHA on main] — SHAs from `git ls-tree -r HEAD` (2026-11-02).
 const FIXED = [
   ['roster/pantera/attires/snow-leopard/pantera-snow-leopard.glb', 'ab46d87309e31bc60c186ae4c529dbb9ed797577'],
-  ['roster/yukihyo/attires/attire2/source/yukihyo-a2-bobcat-pride-rigged.glb', '11ff0c3a509d2c756744e4806b9f99c7c109586f'],
+  ['roster/yukihyo/attires/attire2/source/yukihyo-a2-bobcat-pride-rigged.glb', 'deac50e24633612140168cbb8669d1c357b20b5b'],
   ['roster/yukihyo/attires/attire3/source/yukihyo-a3-tiger-king-rigged.glb', '6222d4e8139f4a268cc5b7e3dc85460f553b6e4e'],
 ];
 

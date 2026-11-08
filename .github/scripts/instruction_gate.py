@@ -198,15 +198,49 @@ def live_pr(pr, repo, fetch=_gh_get_pr):
     return merged
 
 
+def fetch_changed_files(repo, number, base="main"):
+    """Changed-file list for the gate. The pull-files endpoint 422s on
+    very large diffs (PR #1641: 309 files) and can fail transiently, so
+    fall back gracefully instead of crashing the whole gate: the
+    compare API (truncated at 300 files, never 422s), then a local git
+    diff, then an empty list. An empty list is safe here: the proof
+    check also resolves any path that exists in the checkout, so only
+    the docs-only label check weakens."""
+    try:
+        out = subprocess.run(["gh", "api", "--paginate", f"repos/{repo}/pulls/{number}/files",
+                              "-q", ".[].filename"],
+                             capture_output=True, text=True, check=True).stdout
+        return [f for f in out.split("\n") if f]
+    except subprocess.CalledProcessError as e:
+        print(f"::warning::pull-files API failed (exit {e.returncode}); trying compare API")
+    try:
+        head = subprocess.run(["gh", "api", f"repos/{repo}/pulls/{number}", "-q", ".head.sha"],
+                              capture_output=True, text=True, check=True).stdout.strip()
+        out = subprocess.run(["gh", "api", f"repos/{repo}/compare/{base}...{head}",
+                              "-q", ".files[].filename"],
+                             capture_output=True, text=True, check=True).stdout
+        files = [f for f in out.split("\n") if f]
+        if files:
+            print("::warning::changed-file list from compare API (truncated at 300 files)")
+            return files
+    except subprocess.CalledProcessError as e:
+        print(f"::warning::compare API failed (exit {e.returncode}); trying local git diff")
+    try:
+        out = subprocess.run(["git", "diff", "--name-only", f"{base}...HEAD"],
+                             capture_output=True, text=True, check=True).stdout
+        return [f for f in out.split("\n") if f]
+    except subprocess.CalledProcessError as e:
+        print(f"::warning::git diff failed (exit {e.returncode}); proceeding with no changed-file list")
+    return []
+
+
 def main():
     with open(os.environ["GITHUB_EVENT_PATH"]) as f:
         ev = json.load(f)
     repo = ev["repository"]["full_name"]
     pr = live_pr(ev["pull_request"], repo)
-    files = subprocess.run(["gh", "api", "--paginate", f"repos/{repo}/pulls/{pr['number']}/files",
-                            "-q", ".[].filename"],
-                           capture_output=True, text=True, check=True).stdout.split("\n")
-    files = [f for f in files if f]
+    base = (pr.get("base") or {}).get("ref") or "main"
+    files = fetch_changed_files(repo, pr["number"], base)
     errs = check(pr.get("body") or "", files, ".",
                  [l["name"] for l in pr.get("labels", [])], pr["user"]["login"], gh_resolver(repo))
     if errs:
