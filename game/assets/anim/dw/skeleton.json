@@ -1,0 +1,200 @@
+{
+ "format": "wh-anim-skel/1",
+ "tool": "dw_curve_bake.py (Devil Within curve retarget)",
+ "note": "Rest = FK positions at the reference clip frame 0 (guard stance). Head/Neck rest and ToeBase rest are the game's own canonical proportions at the same scale (king bank) \u2014 DW data has no positions for them. All joint rest rotations are identity; rest = world joint positions (glTF space, meters, faces +Z, character left = +X).",
+ "source_skeleton": "tekken5-dw-35bone (27-bone clips share the same rest pose)",
+ "root": "Hips",
+ "root_rest_y": 0.885044,
+ "joints": [
+  {
+   "name": "Hips",
+   "parent": null,
+   "rest": [
+    -0.000417,
+    0.885044,
+    -0.012977
+   ]
+  },
+  {
+   "name": "Spine",
+   "parent": "Hips",
+   "rest": [
+    -0.000417,
+    0.885044,
+    -0.012977
+   ]
+  },
+  {
+   "name": "Chest",
+   "parent": "Spine",
+   "rest": [
+    -0.017894,
+    0.963293,
+    0.089354
+   ]
+  },
+  {
+   "name": "Neck",
+   "parent": "Chest",
+   "rest": [
+    -0.052849,
+    1.11979,
+    0.294017
+   ]
+  },
+  {
+   "name": "Head",
+   "parent": "Neck",
+   "rest": [
+    -0.072042,
+    1.20572,
+    0.406394
+   ]
+  },
+  {
+   "name": "LeftShoulder",
+   "parent": "Chest",
+   "rest": [
+    0.023509,
+    1.0112,
+    0.322572
+   ]
+  },
+  {
+   "name": "LeftArm",
+   "parent": "LeftShoulder",
+   "rest": [
+    0.147408,
+    0.992498,
+    0.385016
+   ]
+  },
+  {
+   "name": "LeftForeArm",
+   "parent": "LeftArm",
+   "rest": [
+    0.129073,
+    0.699585,
+    0.322838
+   ]
+  },
+  {
+   "name": "LeftHand",
+   "parent": "LeftForeArm",
+   "rest": [
+    -0.067026,
+    0.671445,
+    0.439685
+   ]
+  },
+  {
+   "name": "LeftUpLeg",
+   "parent": "Hips",
+   "rest": [
+    0.10558,
+    0.757398,
+    -0.102816
+   ]
+  },
+  {
+   "name": "LeftLeg",
+   "parent": "LeftUpLeg",
+   "rest": [
+    0.245777,
+    0.538773,
+    0.252357
+   ]
+  },
+  {
+   "name": "LeftFoot",
+   "parent": "LeftLeg",
+   "rest": [
+    0.350621,
+    0.140904,
+    0.336667
+   ]
+  },
+  {
+   "name": "LeftToeBase",
+   "parent": "LeftFoot",
+   "rest": [
+    0.350621,
+    0.045666,
+    0.482382
+   ]
+  },
+  {
+   "name": "RightShoulder",
+   "parent": "Chest",
+   "rest": [
+    -0.169915,
+    1.008039,
+    0.271803
+   ]
+  },
+  {
+   "name": "RightArm",
+   "parent": "RightShoulder",
+   "rest": [
+    -0.289639,
+    1.002271,
+    0.344142
+   ]
+  },
+  {
+   "name": "RightForeArm",
+   "parent": "RightArm",
+   "rest": [
+    -0.288691,
+    0.70421,
+    0.378187
+   ]
+  },
+  {
+   "name": "RightHand",
+   "parent": "RightForeArm",
+   "rest": [
+    -0.102313,
+    0.589362,
+    0.448709
+   ]
+  },
+  {
+   "name": "RightUpLeg",
+   "parent": "Hips",
+   "rest": [
+    -0.0942,
+    0.754435,
+    -0.111699
+   ]
+  },
+  {
+   "name": "RightLeg",
+   "parent": "RightUpLeg",
+   "rest": [
+    -0.347221,
+    0.505227,
+    0.148062
+   ]
+  },
+  {
+   "name": "RightFoot",
+   "parent": "RightLeg",
+   "rest": [
+    -0.471839,
+    0.144735,
+    -0.027767
+   ]
+  },
+  {
+   "name": "RightToeBase",
+   "parent": "RightFoot",
+   "rest": [
+    -0.471839,
+    0.049497,
+    0.117947
+   ]
+  }
+ ],
+ "foot_tip": {}
+}

@@ -4380,6 +4380,22 @@ Branch `claude/cs-phase3-morph-targets`, draft PR #1489 (stacked on #1486). Orde
 
 **Verification:** `test/back-turned.test.mjs` 18/18 (cases (a)-(i) + derivation test + all #1611 tests); #1611 regression family green (cd-ss-contexts, pond-stances, stance-reachability, input-slotting, yaotome-stance, dead-input-s1-slotting, dead-d1-slotting, stance-neutral, t7-stance); full `test/*.test.mjs` suite run locally; CI on the PR. Docs: addendum in `docs/movesets/BT-SYSTEM-FIX-2026-11-06.md`.
 
+## 2026-11-08 — DW retarget pilot: Devil Within curves onto WH fighters (PR #1652)
+
+**Owner instruction (verbatim):** "get all the decoding and decryptt and decipher done for it all and get it all wired up." Lane: retarget the decoded DW motion curves onto Western Heart fighters — pilot Pantera's flow donors first, get the pilot PLAYING before touching the rest, verification mandatory (watchable clip, watched end to end), tests zero new failures, open a PR, do NOT merge.
+
+**What:** `tools/anim/dw_curve_bake.py` converts the decoded per-joint DW curves (`teardown/tekken5/dw-motion-curves.json`) into wh-anim/1 packs (conjugated deltas from the rest pose, bank frame = pelvis forward 0.0°), shared FK module `teardown/tekken5/tools/dw_fk.py`, verification `dw_rotcheck.py` + `dw_roundtrip.py`. Pilot bank `game/assets/anim/dw/` (skeleton.json + `moves.pantera.pack.json`, wh-dw-moves/1): 8 clips, 4 moves — beam (`dwhadoh00`), trigger (`dwup00`), Surge Form front throws 1+3 / 2+4 (`ikdv_36_nage_f` / `ikdv_36_nage_y`). Wiring in `game/js/t3anims.js` (`DW_MOVES` / `ensureDwMoves` / `dwMoveClip` / `dwMoveRetarget`, a mirror of the T7 moves, no stance gate) and `game/js/fighter.js` (dw: hooks: beam keyed on `attackName === 'surge'`, trigger one-shot on `startSurgeForm`, throw override in `_bindThrowPair` — thrower only). Tests `game/tests/dw-retarget.test.mjs` (7 tests). Proof tooling `tools/proof-harness/dw_probe.mjs` + `dw_server.mjs` (python http.server drops the game's ~100-file module graph — use the Node server). Docs: `DW-DECODE-LOG.md` §8 correction + §22.
+
+**Cracked, measured (not guessed):** rotation convention is R = Rz(t2)·Ry(t1)·Rx(t0), LOCAL (the decode's stated R = Ry(t0)·Rx(t1)·Rz(t2) was WRONG — direction test over 24 conventions, 9.2° vs 35.9° next-best). FK model exact (RMS 0.108 mm). L/R swap measured: DW bone 11 is the character's RIGHT side, bone 15 the LEFT. Unmapped bones (2, 8, 9/10) dropped and documented; 4 nage clips baked as data, mapping owed, not guessed; `active_frames` null (honest nulls — the decode carries no hit timing).
+
+**Verification (watched, not file-check-only):** headless Chromium + software WebGL, Pantera vs Demonio, Shrine of the Blade. Beam PLAYS (crouch low, gather energy, rise — coherent, no T-pose, no wrong facing, feet on the floor). Trigger PLAYS but the source clip is a big leap (hips to 2.375 m, raw DW data confirms it), so it reads as a launch, not a grounded power-up — the clip choice for the trigger role is the open item, not the retarget. Throw retarget function verified by direct test (returns `dw:1+3`, action created); **the pair-binding live re-check is owed** (the throw never connected within the observation windows; software rendering runs the game in slow motion and a VM restart wiped the long-wait test). Rotation round-trip worst 0.00°; position round-trip worst 129.8–288.8 mm (skipped-joint residual). Tests: 313 (306 baseline + 7 new), 264 pass, 49 fail — failing file list IDENTICAL to baseline, zero new failures.
+
+**Landing:** branch `retarget-dw-curves` off `dw-decode` head `af46251`, commits `90a1de6` (pilot) + `7f65acf` (log) + this entry, built via the Git Data API from verified tree SHAs (the sparse checkout + flapping disk quota blocked a local write-tree; NO-SPARSE-COMMIT LAW). PR #1652 (base `dw-decode`, OPEN, MERGEABLE, all 6 checks green: instruction-gate, canon-names, guard, ui-sources, budgets, speed-quality). Do NOT merge — parent lands.
+
+**Still owed:** throw pair-binding live re-check; the remaining 178 wireable clips (kmb1 Warden kit next); the `dwup00` trigger-role clip choice; P3Dp audio wiring.
+
+**Deletions:** none. 11 files added, 3 modified; the only deleted line is the fighter.js import line replaced.
+
 ## 2026-11-08 — HeartMind rename application: CONFIRMED rows only (RENAME LANE)
 
 **Map:** `~/workspace/western-heart-audit/HEARTMIND-RENAME-MAP.md` (§§0–§5).

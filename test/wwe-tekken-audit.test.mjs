@@ -27,7 +27,7 @@ test('WWE teardown states match the audit', () => {
 });
 
 test('Tekken teardown states match the audit', () => {
-  assert.equal(blobs('teardown/tekken5/'), 43, 'T5 decoded: 43 blobs (236/242 DW files)');
+  assert.equal(blobs('teardown/tekken5/'), 46, 'T5 decoded: 46 blobs (236/242 DW files + 3 pilot tools)');
   assert.ok(blobs('teardown/tekken3/') >= 19499, 'T3 teardown present');
   assert.equal(blobs('teardown/tekken-tag-tournament-2/'), 56, 'TTT2 container docs only');
   assert.ok(blobs('teardown/tekken7/') >= 173, 'T7 teardown present');
