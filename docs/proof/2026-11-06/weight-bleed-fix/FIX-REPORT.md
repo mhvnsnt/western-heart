@@ -246,3 +246,9 @@ contains zero .js files); instruction-gate failed 3 of 4 runs on the
 already-shipped #1640 the same way. This section was appended to
 re-trigger those two runs under lower contention. S6 read-back of
 every payload file from main follows the merge.
+Round 2 (head 11f1075c): both runs failed again in actions/checkout
+with the identical git exit-128 signature; all other 12 checks passed,
+including every guard. A third re-trigger follows this note; if the
+required instruction-gate run dies at checkout again, the merge is an
+admin decision on the required check, not a content question — the
+payload itself is fully verified by the local diff-tree record above.
