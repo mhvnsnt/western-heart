@@ -13,6 +13,12 @@ committed measurement artifacts were cross-checked against each
 other (see §Tekken 5). All other sections are unchanged from
 2026-11-02.
 
+**Update 2026-11-08 (PR #1655):** Tekken 5 count 43 → 46 — the
+pilot added 3 shared-FK/verification tools under
+`teardown/tekken5/tools/` (`dw_fk.py`, `dw_rotcheck.py`,
+`dw_roundtrip.py`). Decode itself unchanged (236/242 files,
+214 clips, 16,503 frames).
+
 ## WWE
 
 ### 2K19 — batch 1 landed, not a complete teardown
@@ -72,11 +78,12 @@ moveset library `game/data/moveset-library/index.json` (built
 
 ### Tekken 5 — Devil Within decoded 2026-11-08 (PR #1647); main-game models/movesets still 0%
 
-- `teardown/tekken5/`: **43 blobs** (tree-verified on the `dw-decode`
+- `teardown/tekken5/`: **46 blobs** (tree-verified on the `dw-decode`
   branch, 2026-11-08) — the original 11 docs/survey/manifest files
   plus 32 decode files added by PR #1647: `DW-DECODE-LOG.md`,
   `ROMD-FORMAT.md`, 10 measured-data JSONs, and 20 extraction tools
-  under `tools/`.
+  under `tools/`, plus 3 pilot tools added by PR #1652/#1655:
+  `tools/dw_fk.py`, `tools/dw_rotcheck.py`, `tools/dw_roundtrip.py`.
 - romD extraction (per `DW-DECODE-LOG.md` §3; extracted bytes are on
   disk only in `raw/romd_out/`, not in the repo): 1,022 files /
   108,866,592 bytes across containers; **Devil Within 236/242 files
