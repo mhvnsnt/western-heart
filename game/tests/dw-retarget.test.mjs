@@ -98,9 +98,13 @@ test('DW pack format, moves, and clip shapes', () => {
     // not jumps — DW motion includes real leaps and a flying boss.
     for (const r of c.root_t) assert.ok(r[1] > 0.05 && r[1] < 8.5, `${cname} root_t Y ${r[1]} out of range`);
   }
-  // Durations are keyframe counts: dwhadoh00 23/30 s, dwup00 31/30 s.
+  // Durations are keyframe counts: dwhadoh00 23/30 s, ozhe_power 23/30 s
+  // (the trigger was repointed from dwup00 to ozhe_power 2026-11-08 —
+  // dwup00 leaps to 2.375 m and ends prone; ozhe_power is grounded,
+  // crouch-then-rise, watched in-game the same day).
   assert.equal(pack.clips.dwhadoh00.root_t.length, 23);
-  assert.equal(pack.clips.dwup00.root_t.length, 31);
+  assert.equal(pack.clips.ozhe_power.root_t.length, 23);
+  assert.ok(!pack.clips.dwup00, 'dwup00 must be out of the pantera pack (trigger is ozhe_power now)');
 });
 
 test('DW_MOVES + ensureDwMoves loads the pack (fetch stubbed to disk)', async () => {
@@ -121,9 +125,9 @@ test('DW_MOVES + ensureDwMoves loads the pack (fetch stubbed to disk)', async ()
     const rec = await t3.ensureDwMoves('pantera', THREE);
     assert.ok(rec, 'ensureDwMoves returned null');
     assert.equal(Object.keys(rec.clips).length, 54, 'expected 54 DW clips (8 pilot + 46 Surge Kit rollout)');
-    // Durations: dwhadoh00 23 keyframes @ 30 fps, dwup00 31 @ 30.
+    // Durations: dwhadoh00 23 keyframes @ 30 fps, ozhe_power 23 @ 30.
     assert.ok(Math.abs(rec.clips.dwhadoh00.duration - 23 / 30) < 1e-6);
-    assert.ok(Math.abs(rec.clips.dwup00.duration - 31 / 30) < 1e-6);
+    assert.ok(Math.abs(rec.clips.ozhe_power.duration - 23 / 30) < 1e-6);
     // Cached on the second call.
     const rec2 = await t3.ensureDwMoves('pantera', THREE);
     assert.equal(rec2, rec, 'ensureDwMoves must cache');

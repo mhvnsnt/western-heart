@@ -131,8 +131,13 @@ KING_FOOT_DIR = (0.0, -0.1, 0.153)
 PANTERA_MOVES = {
     'surge':         {'clip': 'dwhadoh00', 'input': '1+2+3+4', 'dw_source': 'gym_dwhadoh00.dat',
                       'note': 'Surge Form beam (wave file).'},
-    'surge-trigger': {'clip': 'dwup00', 'input': None, 'dw_source': 'gym_dwup00.dat',
-                      'note': 'Soul Surge Bloom trigger — plays once when Surge Form starts.'},
+    'surge-trigger': {'clip': 'ozhe_power', 'input': None, 'dw_source': 'gym_ozhe_power.dat',
+                      'note': 'Soul Surge Bloom trigger — plays once when Surge Form starts. '
+                              'ozhe_power (unmasked kit, 45f): grounded crouch-then-rise '
+                              '(hips 620->1122 mm, ends 981 mm) — measured 2026-11-08 and '
+                              'watched in-game the same day (crouch, gather, rise, feet on '
+                              'the floor, no leap). Replaces dwup00 (leaps to 2.375 m, ends '
+                              'prone — measured; kept as a decoded clip only, not a move).'},
     '1+3':           {'clip': 'ikdv_36_nage_f', 'input': '1+3', 'dw_source': 'gym_ikdv_36_nage_f.dat',
                       'note': 'Surge Form front throw 1+3 (Surge Kit donor, first pair).'},
     '2+4':           {'clip': 'ikdv_36_nage_y', 'input': '2+4', 'dw_source': 'gym_ikdv_36_nage_y.dat',

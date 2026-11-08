@@ -14,7 +14,6 @@ The canonical hierarchy skips DW joints 5 (Chest) and 7 (UpLeg). Their rotations
 
 ## Clips baked
   dwhadoh00: 45f step 2 (23 kf @ 30 fps, 27 bones)
-  dwup00: 60f step 2 (31 kf @ 30 fps, 27 bones)
   ikdv_36_nage_f: 120f step 2 (61 kf @ 30 fps, 35 bones)
   ikdv_36_nage_y: 126f step 2 (64 kf @ 30 fps, 35 bones)
   ikdv_all_beam: 85f step 2 (43 kf @ 30 fps, 35 bones)
@@ -67,10 +66,11 @@ The canonical hierarchy skips DW joints 5 (Chest) and 7 (UpLeg). Their rotations
   ikdv_sjk02: 70f step 2 (36 kf @ 30 fps, 35 bones)
   ikdv_sjk03: 70f step 2 (36 kf @ 30 fps, 35 bones)
   ikdv_sway: 35f step 2 (18 kf @ 30 fps, 35 bones)
+  ozhe_power: 45f step 2 (23 kf @ 30 fps, 35 bones)
 
 ## Moves mapped
 - surge: dwhadoh00 (gym_dwhadoh00.dat) — Surge Form beam (wave file).
-- surge-trigger: dwup00 (gym_dwup00.dat) — Soul Surge Bloom trigger — plays once when Surge Form starts.
+- surge-trigger: ozhe_power (gym_ozhe_power.dat) — Soul Surge Bloom trigger — plays once when Surge Form starts. ozhe_power (unmasked kit, 45f): grounded crouch-then-rise (hips 620->1122 mm, ends 981 mm) — measured 2026-11-08 and watched in-game the same day (crouch, gather, rise, feet on the floor, no leap). Replaces dwup00 (leaps to 2.375 m, ends prone — measured; kept as a decoded clip only, not a move).
 - 1+3: ikdv_36_nage_f (gym_ikdv_36_nage_f.dat) — Surge Form front throw 1+3 (Surge Kit donor, first pair).
 - 2+4: ikdv_36_nage_y (gym_ikdv_36_nage_y.dat) — Surge Form front throw 2+4 (Surge Kit donor, first pair).
 
