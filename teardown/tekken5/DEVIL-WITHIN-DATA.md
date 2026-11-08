@@ -9,6 +9,15 @@ blueprint): `~/workspace/devil-within-teardown.md` (2026-10-22).
 boss AI, and mechanics are in the binary `TK5DATA0.BIN`/`TK5DATA3.BIN` formats —
 mapped for the RE bench, not yet extracted.
 
+**Status 2026-11-08 (index-level decode, see `DW-DECODE-LOG.md`):** all 242 Devil
+Within files in the romD manifest are inventoried by name with romaji glosses in
+`dw-motion-index.json` (Devil Jin kit 52, Modified Gun Jack 39, True Ogre 29,
+Monstrous Ogre 36, monster archetypes, transform, stage text, sounds). No offsets,
+sizes, or file contents are resolved — the archive bytes are not in the repo.
+CORRECTION: there are NO plain `stg*.dat` stage files in the romD manifest at all
+(§2 below was wrong); only `moj_stg*` stage text. The romD table format is
+documented in `ROMD-FORMAT.md`; the reader is `tools/romd_extract.py`.
+
 ---
 
 ## 1. Located: DW animation files (`TK5DATA2.BIN` romD)
@@ -19,16 +28,28 @@ mapped for the RE bench, not yet extracted.
 | `gym_dw_raribxk.dat` | Devil Within boss/enemy animation ("rari" — TBD) |
 | `gym_dw_rarixk.dat` | Devil Within boss/enemy animation |
 | `gym_djin_newhane00.dat` … `newhane03.dat` | Devil Jin transformation ("hane" = wings/feathers — the black-feather disintegration visual) |
-| `dwfkao00.dat` | DW-specific data ("kao" = face — possibly Devil Jin face/model) |
-| `dwhadoh00.dat` | DW-specific data |
-| `dwup00.dat` | DW-specific data ("up" — possibly Devil Gene meter UI or power-up) |
+| `gym_dwfkao00.dat` | DW-specific data ("kao" = face — Devil Jin face/model) |
+| `gym_dwhadoh00.dat` | DW-specific data ("hadoh" = wave — likely the laser/wave file) |
+| `gym_dwup00.dat` | DW-specific data ("up" — power-up; possibly Devil Gene meter UI or power-up object) |
+| `gym_dwup_hei.dat` | Power-up, Heihachi variant (the Heihachi-clone version of `dwup`) |
 
-Character sound: `c30dvj.dat` (Devil Jin), `c10jin.dat` (Jin), `c15hei.dat` (Heihachi clones), `c21jac.dat` (JACK).
+Full inventory: `dw-motion-index.json` — 242 DW files (Devil Jin kit `gym_ikdv_*`
+52, Modified Gun Jack `gym_kmb1_*` 39, True Ogre `gym_kob2_*` 29 [inference],
+Monstrous Ogre `gym_ozb3_*` 36 [inference], unresolved gun/fly kit `gym_ikt5_*`
+26, init objects `gym_init_obj_*` 21, transform `gym_djin_newhane*` 4, stage text
+`moj_stg00/01/02/04`, sounds `snd_*` 18), each with a gloss and confidence.
 
-## 2. Stage files (`TK5DATA2.BIN`)
+Character sound: `snd_c30dvj.dat` (Devil Jin), `snd_c10jin.dat` (Jin), `snd_c15hei.dat` (Heihachi clones), `snd_c21jac.dat` (JACK), `snd_c02lei.dat` (Lei). These anchor the char codes: c02 = Lei, c10 = Jin, c15 = Heihachi, c21 = JACK, c30 = Devil Jin.
 
-`stg00.dat`, `stg01.dat`, `stg02.dat`, `stg04.dat` — stage data files. (`stg03` absent from manifest.)
-`moj_stg02.dat` — stage 2 text ("moji" = characters/text).
+## 2. Stage files (`TK5DATA2.BIN`) — CORRECTED 2026-11-08
+
+**There are NO plain `stg*.dat` stage-geometry files in the romD manifest.**
+An earlier version of this doc said `stg00/01/02/04.dat` exist; that was wrong
+(verified by grep over all 498 manifest names, 2026-11-08). What exists is
+stage **text**: `moj_stg00.dat`, `moj_stg01.dat`, `moj_stg02.dat`,
+`moj_stg04.dat` ("moji" = characters/text). `moj_stg03` is absent from the
+manifest. Stage geometry is NOT in romD — it lives in `TK5DATA0.BIN`'s binary
+format (see §3).
 
 DW's 5 stages (G Corp lab → medical wing → ruins → spaceship → deeper) are likely among
 these or in `TK5DATA0.BIN`'s binary format. Mapping stage IDs → DW stages is RE bench work.
@@ -63,5 +84,6 @@ When the formats are reversed, extract in this order:
 
 | Date | Action | Result |
 |------|--------|--------|
-| 2026-10-23 | Scanned TK5DATA2.BIN motion manifest | 3 `gym_dw_*` + 4 `gym_djin_*` + 3 `dw*.dat` + 4 `stg*.dat` found |
+| 2026-10-23 | Scanned TK5DATA2.BIN motion manifest | 3 `gym_dw_*` + 4 `gym_djin_*` + 3 `gym_dw*.dat` + 4 `moj_stg*.dat` found (0 plain `stg*.dat` — the earlier "4 `stg*.dat`" note was wrong) |
 | 2026-10-23 | Scanned TK5DATA0/1/3 for DW markers | 0 hits — DW stage/boss data in binary formats, queued for RE bench |
+| 2026-11-08 | Index-level decode of the 498-name manifest | 242 DW files inventoried with glosses in `dw-motion-index.json`; romD format documented in `ROMD-FORMAT.md`; reader built + self-tested in `tools/romd_extract.py`; log in `DW-DECODE-LOG.md`. Offsets/sizes still BLOCKED — no `TK5DATA2.BIN` bytes in repo or on disk. |
