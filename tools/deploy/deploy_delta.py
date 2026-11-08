@@ -19,7 +19,10 @@ ADD_PREFIXES = ('game/assets/anim/t7/',)
 SMALL_ADD_PREFIXES = ('customization/creation-suite-ui/', 'customization/templates/', 'game/js/', 'game/data/', 'game/css/')
 SMALL_EXT = ('.js', '.mjs', '.json', '.css', '.html')
 SMALL_MAX, SMALL_TOTAL = 256 * 1024, 2_500_000
-CAP = 1_000_000_000
+# CAP raised 2026-11-08 by Jay's deploy-cap call ("Raise the cap in the repo"):
+# 1 GiB (1,073,741,824) is the platform's own limit; the 1,003,598,282-byte
+# tree from main fcaa8b1d is under it.
+CAP = 1_073_741_824
 CODE_EXT = ('.js', '.mjs', '.html', '.json', '.css')
 
 
