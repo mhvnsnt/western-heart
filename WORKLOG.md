@@ -4642,3 +4642,33 @@ kit_exclusions / pantera_unmapped / bake_set / --set / --bank), same shape
 **Waits on decode:** gym keyframe-stream decode — DONE on main since this branch was cut (DW retarget pilot #1652 + rollout #1654 wired the beam/trigger/throws, so the donors are live, not just records — rebase note, 2026-11-08); TK5DATA0/1 numbers (meter/gem/Force/rank/symbol); NUDP/MIF stage-geometry parse; P3Dp audio. **Waits on Jay:** rename Jay-calls #5 Twin Strike, #6 "Soul Beam", #13 DW Force = Force Claiming; the chapter-title assignment; live playthrough proof (parent re-tests).
 **Deletions:** none.
 **How this commit was built:** no local clone was used — the HEAD tree is ~14.3 GB and the workspace disk quota blocks a full clone. Built via the Git Data API from verified tree SHAs per the NO-SPARSE-COMMIT LAW: base commit `a89b10b04042b69ea926729c23b680e021c03174`; `heartmind.js` base blob `9ff9757e3cd6f4199a649459195344bbcc78ff10` and `brawler.js` base blob `91466922f5e2cb4abfb4147946c53bd0737fe643` hash-verified against main before editing. **Rebased 2026-11-08 onto main `4fbe4b5`, then again onto main `0714dc5` (PR #1645 merged in between, PR #1649):** `heartmind.js`/`brawler.js` unchanged on main since the branch base, so the branch versions apply as-is; the two new files apply as-is; the only conflict each time was WORKLOG.md (same-anchor append) — resolved keep-both, main's added lines first, this entry last; all 18 donor file/frame/bone claims re-verified against main's `teardown/tekken5/dw_measurements.json` — all match, no donor change.
+
+## 2026-11-08 — Moveset template library + creation system (lane 2e9d1e8d)
+
+**Owner order (2026-11-07 ~20:00–20:05):** every character from every teardown game as a
+selectable full-moveset template (MUGEN-style, like WWE), then a WWE-style moveset library +
+creation + editing system: start from a full template, swap every move by input + position +
+situation. Built from the actual most recent WWE game Jay has access to (WWE 2K22, Steam app
+1255630 — newest owned, best CAW per STEAM-LIBRARY.md; no teardown/archive in repo, so the
+layout comes from the in-repo WWE 2K19 CAW + Create-A-Moveset docs) + real measured moveset data.
+
+**What:** `tools/moveset-library/build-templates.mjs` (new — regenerates template rows from
+measured bank/frame-data counts, `--check` for CI); `game/data/moveset-templates/index.json`
+(10 → 141 templates: 33 per-character bank templates, 2 pools, 85 frame-data-only, 11
+pending-ingest); `game/js/moveset-editor.js` (new — slot engine, WWE category spine, source-law
+enforcement, toManifest into the existing assembler); `game/js/custom-fighter.js` (wired:
+saved `moveset_custom` → `moveset: custom:<template>`, else named jin fallback);
+`test/moveset-editor.test.mjs` (new — 8/8 green); inventory doc section appended.
+
+**Verification:** `node --test test/moveset-editor.test.mjs` 8/8 (2026-11-08). Template counts
+verified against banks (t3 4,648/20, wrestling 4,409 pool, wmxix 169 pool, doa 146/6, vf 48/3,
+vf5 96/4; T7 44 files/6,909 rows; T8 41 chars/6,411 rows). Integration test proves a
+vf5-el-blaze custom moveset assembles its full base kit through the real assembler, source
+law green; and proves the T3 limit (0/4,648 inputs decoded → T3 base contributes nothing
+until #615 lands — asserted in-test, not hidden).
+
+**Owed, not claimed:** in-game editor screen (creation-suite UI NON-COMPLIANT pending
+teardown-sourced rebuild, ui_sources gate); movesets.js integration for custom manifests;
+live fight proof (needs a browser — parent to arrange); Brutal Fist roster (separate agent);
+DOA/VF editor-status verification (web search failed on local disk quota).
+- Deletions: none.
