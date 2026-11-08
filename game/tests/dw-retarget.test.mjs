@@ -74,10 +74,15 @@ test('DW pack format, moves, and clip shapes', () => {
     assert.ok(pack.moves[key], `missing move ${key}`);
     assert.equal(pack.moves[key].active_frames, null, `${key} active_frames must be an honest null`);
   }
-  // The four unmapped nage clips are baked as data, listed in skipped —
-  // and so are the 46 remaining Surge Kit clips (rollout, 2026-11-08).
-  assert.equal(pack.skipped.length, 50);
-  for (const s of pack.skipped.slice(0, 4)) assert.ok(s.clip.startsWith('ikdv_'), `skipped clip ${s.clip} is not a nage clip`);
+  // Kit-pack mapping (follow-ups, 2026-11-08): every clip is a move now —
+  // skipped is empty. The four nage clips are the mapped moves
+  // surge:b-nage-f/y and surge:ppp-nage-f/y; the 46 remaining Surge Kit
+  // clips are mapped moves too (see game/assets/anim/dw/DW-MOVE-MAP-LOG.md).
+  assert.equal(pack.skipped.length, 0);
+  assert.equal(Object.keys(pack.moves).length, 54);
+  for (const key of ['surge:b-nage-f', 'surge:b-nage-y', 'surge:ppp-nage-f', 'surge:ppp-nage-y']) {
+    assert.ok(pack.moves[key], `missing mapped nage move ${key}`);
+  }
   // Every clip: 21 bones, fps follows the source step (60 for step-1,
   // 30 for step-2), rot lengths == root_t lengths, unit quats.
   for (const [cname, c] of Object.entries(pack.clips)) {
