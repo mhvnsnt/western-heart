@@ -208,3 +208,184 @@ Under `docs/proof/2026-11-08/megami-pilot2/`:
 - [x] Self-check: face side-by-sides, tattoo placement renders (front/back/arm),
   full-body, and both hairstyle comparisons rendered from the shipped GLBs
   and viewed by the builder before this PR was opened.
+
+---
+
+# V2 — face rebuilt to a measured Angel likeness, eyes, tattoo completion, body + skin (2026-11-08, later)
+
+Owner verdict on v1: "Get eyes and face like Angel Fernandez" / "it looks like u didn't
+change the face" / "that first look [doesn't look] enough like angel in the face — do it
+better." This section is the v2 answer. **Final face candidate = iteration 4** (named for
+the parent's Build-A-Bitch comparison on the same gate).
+
+## What was actually wrong with v1 (measured, not guessed)
+
+- v1's AngelFace key displaced the surface by **max 1.67 mm / mean 0.14 mm** (re-measured
+  off the v1 build blend) — the v1 report's "3.0 mm" was overstated. At that size no
+  likeness change is visible, which is exactly what the owner saw.
+- v1's gate compared Angel's selfie video against a proof render shot through a
+  **different camera**, so its numbers (OFF 9.57% vs ON 9.77%) measured camera mismatch,
+  not likeness. Through the matched camera (below), the SAME v1-era base face (all keys
+  off) gates at **1.81%** — the v1 gate residual was camera, almost entirely.
+
+## Matched camera (the gate's foundation)
+
+- Angel identity = Procrustes average of neutral frames f0002 + f0004 from video 457
+  (MediaPipe Face Landmarker, Apache-2.0; blendshape gates mouthSmile ≤0.32, jawOpen <0.1).
+  Identity face width (oval 234–454) 0.2451 of frame width; IOD 0.1703; face-height
+  fraction 0.191.
+- Focal length is **not recoverable** from MediaPipe 3D landmarks (a PnP focal sweep is
+  degenerate — best fit runs to the sweep cap at 0.09 px RMSE; the landmarks carry no true
+  perspective). Adopted **vertical FOV 55°** (typical front-camera selfie at arm's length)
+  as a stated assumption; OFF/ON deltas are camera-consistent regardless of the choice.
+- Camera pitch settled empirically: **−4.8°** (camera slightly below her eye line, her
+  selfie geometry) gates clearly better than +4.8° (jaw region 3.09 vs 5.01).
+- 3/4 source = video 482 frame f003 (1080×1920, yaw −51.9°, neutral): matching render
+  azimuth **+52°**. (The mirrored −52° view was rendered first by mistake and read 26.7% —
+  caught and discarded; the +52° numbers below are the real ones.)
+- Proof lighting = the v4-standard harness rig (hemi 1.15 / key 2.2 / fill 0.55 / rim 0.9,
+  Neutral 1.1) with the standing material fixes — no pale/glossy variance.
+
+## Face v2 — method and gate
+
+Method: MediaPipe-track the matched-camera render → similarity-align to the Angel
+identity → per-landmark deltas → raycast anchors on the evaluated mesh → RBF displacement
+field (r0 22 mm body / 12 mm brow+lash, 12% neighbour blend, ≤12 mm per pass) written into
+the **AngelFace shape key (v1's key REPLACED — target = Basis + the new cumulative field;
+v1's field discarded)**. All gains 1.0 — **undamped**, per the owner's escalation. Brow
+band thickness measured after pass 1 (L 1.006 / R 0.964 of Angel's) — already at target,
+no artificial thickening applied.
+
+Gate — mean landmark error, % of face width (plan bar ≤3%):
+
+| State | Front | 3/4 (visible side) |
+|---|---|---|
+| OFF (all keys 0) | 1.81% | — |
+| Iter 1 | 1.00% | — |
+| Iter 2 | 0.95% | 3.69% → after 3/4 pass **2.91%** |
+| Iter 4 (FINAL) | **0.95%** | **2.91%** |
+
+Final front per-region: oval 1.70 · lips 0.93 · eye R 0.59 / L 0.96 · brow R 0.78 / L 1.63 ·
+nose 0.58 — every region inside the bar. Total AngelFace field max **13.35 mm** (vs v1's
+1.67 mm). The OFF→ON difference is visible at a glance in the side-by-sides (broader
+jaw/cheeks, fuller lips, stronger arched brows, wider nose base) — see
+`proof-face-sidebyside-front-v2-20261108.png` / `proof-face-sidebyside-34-v2-20261108.png`.
+Honest residuals: the 3/4 oval figure includes occluded-side landmarks; the focal length
+is an assumption (stated above); her raised-brow resting look in the source frames is
+carried in the identity (browInnerUp 0.63/0.84 in both neutral picks).
+
+**Expression preservation (verified by hash):** all 480 shape keys across body/brow/lash
+meshes were md5-compared against the v1 build — the ONLY changed keys are the three
+AngelFace keys; the only additions are the three AngelBody keys. Every Daz expression
+key is byte-identical; AngelFace/AngelBody are dial-able 0–1 keys, nothing baked flat.
+The expression/motion learning lane can drive her exactly as before.
+
+## Eyes — Angel-brown added (tiger untouched)
+
+Angel's eyes are dark brown (confirmed in the photo crops). Built
+`customization/eye-library/eye-brown-angel-daz.png` by the proven radial-remap method
+(the tiger-eye build's fiber annulus compressed into the Daz-atlas sampled window),
+recoloured to a deep brown ramp ((8,5,2) pupil/limbal → (96,60,28) brightest fiber),
+RepeatWrapping, flipY=false, SRGB. Proof: `proof-eyes-brown-closeup-v2-20261108.png`.
+The yellow tiger eye remains the universal library option and Megami's standing pick —
+eyes are swappable parts; brown is the Angel-look part, added, not substituted.
+
+## Tattoo completion — re-audit of ALL held evidence (owner: "any other tattoos ur missing add them")
+
+Re-examined: the 4 catalogue videos' stills + the owner's 5 supplied public-post
+screenshots at full zoom. Two additions, both built:
+
+- **T13 — "XIV", her LEFT upper chest** just below the clavicle, tiny serif roman
+  numerals (~3.6 cm). Reading proof: owner photo 1 (selfie) shows "VIX" in image space =
+  mirrored "XIV" (letters mirror-symmetric, order reverses); photo 4 (direct) is X-first;
+  "XIX" fits neither orientation. Side from photo 4 (orientation verified true via the
+  Coca-Cola script in-frame). The v1-era catalogue "chest bare" note is superseded.
+- **T14 — small dark symbol, centre sternum/cleavage top** (~2.1 cm), photos 4 + 5. It is
+  NOT her gold necklace pendant (the pendant hangs separately at centre neck in the same
+  photos). Motif unresolvable at screenshot resolution → built as a small ankh-form
+  glyph, flagged here as the one unresolvable-motif build in this pass.
+
+No other additions: the back view in photo 1 is consistent with the built T5; the
+afro-era photos don't show the thigh butterflies at screenshot resolution (they likely
+predate them) — T1/T2 stand on the frame-verified video catalogue and were NOT removed.
+T4 / T5-centre / T6-centre / T10 motifs remain unresolvable and stay as built. Nothing
+invented; areas with no evidence of ink stay bare.
+
+Build note (own-eyes catch): the first v2 GLB export silently carried the pre-paint
+torso texture — Blender does not persist shape/texture pixel edits to packed images on
+save unless re-packed. Caught by rendering the chest proof and finding XIV missing;
+fixed by force-loading the verified texture files + `pack()`, re-exporting, and
+verifying the GLB's embedded torso texture byte-for-byte against the source file
+(mean diff 0.0). The chest proof in this PR is from the corrected GLB:
+`proof-tattoo-chest-v2-20261108.png` (XIV + T14 legible), plus front/back/arm placement
+renders on the reshaped body.
+
+## Body pass — measurement-driven (sheets: roster/parvati/MEASUREMENTS-ANGEL-MEGAMI-2026-11-08.md)
+
+Full measurement sheets for both women are stored with this PR — every number with its
+method; Angel's true height, circumferences, arm absolutes and head size are logged
+**unmeasured** (evidence can't support them), never invented. Headline ratios —
+Angel: hip/waist 1.57, bust/waist 1.26, leg/stature 0.558. Megami (off the model):
+bust/waist 2.83, hip/waist 2.07, stature 1.334 units, thigh 0.331 / shin 0.311.
+
+**MAX rule (per area, fatter wins):** BUST → Megami (2.83 vs 1.26) — untouched.
+HIPS/ASS → Megami (2.07 vs 1.57) — untouched. Both zones were hard-excluded from the
+reshape field (radial factor 1.0).
+
+**AngelBody shape key** (new, on every mesh incl. attire/hair so everything stays
+fitted; 26 axial bones moved by the same field; skin weights untouched): stature
+1.334 → **1.609 units (+20.6%)**, with **+0.220 of the +0.275 gain in the legs**
+(thigh/shin lengthened proportionally, +34.4% each; her own shin/thigh ratio kept —
+Angel's noisy 1.09 measurement was not forced). Waist radial ×1.20 peak (waist/hip
+0.48 → ≈0.58, moving toward Angel's 0.64 — a partial move, stated honestly); thighs
+×1.03, calves ×1.02, neck +6%, shoulders ≈+3%. Tattoos are UV-painted and travel with
+the skin — verified visually on the lengthened legs (T1/T2/T4 read at natural
+proportions in `proof-tattoo-front-v2-20261108.png`).
+
+Rig note (stated plainly): the armature's rest bones moved WITH the key, so the v2 GLB
+is coherent at its shipped state, AngelBody = 1. At AngelBody = 0 the basis mesh sits
+on the moved rig (head-bone-weighted pieces ride high) — 0 is a dial position, not a
+clean "original model" state. The before/after body proofs therefore use the **v1 GLB
+for the BEFORE panels** (its own rig, the true original body) against the v2 GLB at
+AngelBody = 1, same camera — `proof-body-front-v2-20261108.png` /
+`proof-body-side-v2-20261108.png`.
+
+## Skin — improve, don't rework (owner's priority ruling)
+
+Angel's lit-photo skin means (191,143,120) vs Megami's texture means (115,82,67) differ
+mostly by photo LIGHTING vs texture albedo, so only the hue direction was used, at 25%
+strength, hard-capped: **R ×1.040, G ×1.015, B ×1.000** on skin-classified pixels of
+the four skin textures. No smoothing or even-out was applied — her v4 tones are the
+base and win. Before/after at identical lighting:
+`proof-skin-before-after-v2-20261108.png`.
+
+**Natural variation preserved — sampled proof (owner's constraint):** every variation
+zone shifted by the SAME per-channel gain, so inter-zone relationships are unchanged
+to ~0.00: areola L (119.6,83.8,62.9)→(123.6,84.8,62.9) · areola R (117.2,81.8,61.2)→
+(121.2,82.8,61.2) · chest (119.0,78.5,58.5)→(123.0,79.5,58.5) · belly (120.4,85.6,65.3)→
+(124.4,86.6,65.3) · GP area (116.3,79.4,62.0)→(120.3,80.4,62.0). (One sample box hit a
+non-skin grey atlas cell — excluded, not reported as skin.)
+
+**Consent basis (for the record):** Angel Fernandez's consent to her likeness being in
+the game is on record with the owner (owner-held screenshots, 2026-11-08). Megami's
+intimate anatomy texturing in this pass is her own source model's, untouched — the
+skin pass above preserved those zones exactly, per the constraint.
+
+## Combined hero shot — load state for the parent
+
+Load **`megami-angel-pilot2-v2.glb`** from draft release `megami-pilot2-20261108`;
+set **AngelFace = 1, AngelBody = 1** (both are the exported default weights); eye part
+= `eye-brown-angel-daz.png` on Irises-2 (RepeatWrapping, flipY=false, SRGB). Compose on
+THIS reshaped body. Head sits +0.275 local-Z above the body-off position — the hair
+lane's afro must be fitted to the shifted head. The Flora shot in this PR
+(`proof-face-front-v2-20261108.png`) wears this build's bundled hair; Flora proper
+lives in parvati-full.glb (hair lane's registry work).
+
+## Files in this v2 push
+
+- Release `megami-pilot2-20261108`: `megami-angel-pilot2-v2.glb` (59,108,496 B).
+- `customization/eye-library/eye-brown-angel-daz.png` (Angel-brown eye part).
+- `roster/parvati/MEASUREMENTS-ANGEL-MEGAMI-2026-11-08.md` (both sheets + MAX calls).
+- Proofs in `docs/proof/2026-11-08/megami-pilot2/` with `-v2-20261108` names:
+  front + 3/4 side-by-sides, face front (Flora-state), eyes close-up, chest close-up,
+  tattoo front/back, body front/side before-after, skin before-after.
