@@ -1747,7 +1747,7 @@ listed. Nothing has been invented to fill these rows.*
 | Gashadokuro (`kuma`) | Roster dir `roster/kuma/` carries the name Gashadokuro (2026-10-23 audit). The T3 wiring record reserves the bear name URSA "if ever pulled" (see Dio) — whether Gashadokuro is that bear is NOT recorded. | **no canon recorded yet** |
 | Aotsuki (`panda`) | Roster dir `roster/panda/` carries the name Aotsuki (2026-10-23 audit). | **no canon recorded yet** |
 | Vixen (`vixen`) | Roster dir exists. | **no canon recorded yet** |
-| Parvati (`parvati`) | Roster dir exists. | **no canon recorded yet** |
+| Parvati (`parvati`) | Roster dir exists. | Canon in `roster/parvati/CANON.md` (Megami — the Shrine Soul; owner orders 2026-11-08 recorded). |
 | Rahkasa (`rahkasa`) | Roster dir exists. | **no canon recorded yet** |
 | Mina Ashido (`mina-ashido`) | Roster dir exists. | **no canon recorded yet** |
 | Miruko (`miruko`) | Roster dir exists. | **no canon recorded yet** |
@@ -1785,6 +1785,53 @@ Raiden, Bass Armstrong (→ Vain Abel's base), Craig Marduk, Armor King
    the owner's later rulings settle it as: Julia's moves = Nightwolf's;
    Zen's base = Twelve/Eleven + Dural, unvesseled (see Zen, Nightwolf).
    The appendix text itself has not been rewritten.
+
+## OWNER ORDERS — 2026-11-08 (MEGAMI)
+
+- **Megami ← Angel Fernandez ("Pilot 2"):** Megami gets Angel
+  Fernandez's face exactly + all of Angel's tattoos exactly how/where
+  Angel has them (11 catalogue-confirmed pieces; Megami keeps her own
+  skin colour; all ink black/grey monochrome). Face chain licence-clean
+  ONLY (MediaPipe Face Landmarker + house shape basis + Blender;
+  FLAME/SMPL/BFM/DECA/EMOCA/MICA/SMIRK/SPECTRE/Pixel3DMM banned).
+  Canon-fill rule: unreadable script-tattoo wording is filled from
+  Megami canon in this repo. Built 2026-11-08 as PR #1678 (open,
+  awaiting the owner's pass). Face/eyes v1 REJECTED by the owner
+  (~20:20 CST) — v2 lane launched; face verdict 2 (~20:22 CST):
+  "it looks like u didn't change the face" — v2 escalated to full
+  measured values per region. Boundary: sourcing a real person's nude
+  imagery to replicate her intimate anatomy is off-limits; do not
+  re-offer or delegate.
+- **Angel hairstyles:** both built for Megami. Straight v1 REJECTED
+  ("the hair there looks terrible and unrealistic") — full strand-grade
+  opaque rebuild. Afro is the owner's preferred style ("That hair is
+  ok, but the afro will look better"); reference received ~20:24 CST
+  (5 screenshots of Angel's public posts) — afro build unblocked and
+  priority in the hair lane. Combined shot ordered: tattoos + v2 Angel
+  face + Angel-brown eyes + afro; Flora + straight saved as options
+  (Flora still default until the owner rules otherwise).
+- **Tattoo re-audit:** owner ruled ~20:25 CST "Yes any other tattoos ur
+  missing of angel Fernandez add them" — chest script ("XIX") added;
+  full re-audit ordered; proofs + per-addition evidence list land in
+  PR #1678.
+- **Default attire / hair / eyes / skin:** Roses & Bows-minus-bra +
+  Sugar choker + Flora hair + black gauntlets on the fixed v4 base/skin
+  is her base default attire (landed PR #1677; shoe slot still open —
+  owner picking). Flora is her main default hairstyle. Tiger eyes
+  (yellow, universal eye library) are her eye pick. Skin = fixed v4
+  in every render and in game.
+- **Roster-wide:** all hair from all held games usable + swappable,
+  rigged and alive (gravity / wind / movement physics); every clothing
+  item / outfit piece / accessory from all held games saved
+  individually as customization options (Tekken/WWE organization).
+- **Face/body creation system (dual home):** built in
+  physics-playground-pwa (Physique Lab) FOR Western Heart; the same
+  mechanic also ships inside western-heart's creation/customization
+  suite, shared formats. Proving case = Angel→Megami face. Its
+  product name lives in its Physique Lab home ONLY and never appears
+  in western-heart (owner name law 2026-11-08) — no strings, files,
+  or docs here.
+- Full detail: `roster/parvati/CANON.md` ("Owner orders — 2026-11-08").
 
 *End of CANON-MASTER. Compiled 2026-10-23. If it isn't recorded, it
 isn't here — and if it gets recorded, it gets pushed here.*
