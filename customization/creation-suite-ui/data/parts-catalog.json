@@ -15,10 +15,10 @@
   "customization/parts-converted/wmxix-textures/TEX/Face_op": 140,
   "customization/parts-converted/wmxix-textures/TEX/64gara": 39,
   "tekken7 hair (GRE teardown, new)": 33,
-  "megami-default + megami-eyes (2026-11-08, new)": 7
+  "megami-default + megami-eyes (2026-11-08, new)": 9
  },
- "total": 7742,
- "notes": "parts-converted/CATALOG.json is a REAL source since PR #398 merged (run #3 absence finding was true at check time; the merge landed after). Eyes: mesh eye/brow parts are placeable (eye_kind=placeable_part); eye texture entries are legacy variants (eye_kind=texture_variant) per the owner 2026-10-20 eye verdict. No eyelash mesh exists in-repo yet. Def Jam CAW library wired 2026-10-22 (worker 33, fight-lab lane): 2,624 conversion entries, all geometry_pending (POINTS topology until the mesh conversion pass lands). Worker 38 (2026-10-22): +272 DOA4 costume GLBs (full-body, real meshes). AshLane hair wired 2026-11-02: +5 real GLBs from the owner's AshLane parts library (INDEX geometryReady), listed in the suite catalog with head socket, offset 0, scale 1 (per customization/parts/ashlane/hair/manifest.json). No Mercy tattoos wired 2026-11-02: 99 tattoo PNGs from teardown/wwf-no-mercy/textures/rom/tattoo/ as decal_logo texture parts (geometry_pending false, chest-socket marker fallback in the suite preview until a placement is authored; they surface under Decals, since PARTS_TREE has no dedicated tattoo category yet). Tekken 7 hair wired 2026-11-08: +33 items (31 HAIR + 2 FACE_HAIR) from the held GRE Steam teardown (pakchunk0), real GLBs with swing-bone chains, spring physics via game/js/hair-spring.js. Megami default set wired 2026-11-08: +7 (Flora hair, 5 default-attire pieces, tiger eye).",
+ "total": 7744,
+ "notes": "parts-converted/CATALOG.json is a REAL source since PR #398 merged (run #3 absence finding was true at check time; the merge landed after). Eyes: mesh eye/brow parts are placeable (eye_kind=placeable_part); eye texture entries are legacy variants (eye_kind=texture_variant) per the owner 2026-10-20 eye verdict. No eyelash mesh exists in-repo yet. Def Jam CAW library wired 2026-10-22 (worker 33, fight-lab lane): 2,624 conversion entries, all geometry_pending (POINTS topology until the mesh conversion pass lands). Worker 38 (2026-10-22): +272 DOA4 costume GLBs (full-body, real meshes). AshLane hair wired 2026-11-02: +5 real GLBs from the owner's AshLane parts library (INDEX geometryReady), listed in the suite catalog with head socket, offset 0, scale 1 (per customization/parts/ashlane/hair/manifest.json). No Mercy tattoos wired 2026-11-02: 99 tattoo PNGs from teardown/wwf-no-mercy/textures/rom/tattoo/ as decal_logo texture parts (geometry_pending false, chest-socket marker fallback in the suite preview until a placement is authored; they surface under Decals, since PARTS_TREE has no dedicated tattoo category yet). Tekken 7 hair wired 2026-11-08: +33 items (31 HAIR + 2 FACE_HAIR) from the held GRE Steam teardown (pakchunk0), real GLBs with swing-bone chains, spring physics via game/js/hair-spring.js. Megami default set wired 2026-11-08: +7 (Flora hair, 5 default-attire pieces, tiger eye). Angel Afro + Angel Straight options wired 2026-11-08 (hair-wiring lane): +2 Megami hair options (strand-grade builds on the Parvati rig, spring physics via game/js/hair-spring.js); header total/counts reconciled to the parts array (the Afro PR had left the header one behind).",
  "parts": [
   {
    "id": "no-mercy-0x12ba-attire-parts-model-12ba-obj",
@@ -242036,6 +242036,64 @@
    "size": 22441832,
    "file": "customization/parts/megami-hair/megami-hair-angel-afro/megami-hair-angel-afro.glb",
    "notes": "Angel afro for Megami \u2014 owner priority pick 2026-11-08 ('the afro will look better'), built from his 5 reference screenshots of Angel Fernandez's public posts (evidence/ in this part folder). Strand-grade opaque build on the Parvati commission rig: Flora scalp cap inner layer + ellipsoid volume shell cut at the bone-space hairline + 1,700 helix-curl clump meshes; silhouette/density governed by the references (rounded dome ~2x head width, ears covered, sides to jaw, back to nape, no part). 6 spring chains (hairFront/hairBack/hairLeft/hairRight/hairTop/hairTopB) on game/js/hair-spring.js with a stiff afro profile. Selectable OPTION \u2014 Flora remains Megami's main default hairstyle."
+  },
+  {
+   "id": "megami-hair-angel-straight",
+   "name": "Hair \u2014 Angel Straight (Megami option)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "library": "megami-default",
+   "source": "Parvati commission blend (fixed v4 base) \u2014 Megami default attire set, owner pick 2026-11-08",
+   "glb": "customization/parts/megami-hair/megami-hair-angel-straight/megami-hair-angel-straight.glb",
+   "asset": "customization/parts/megami-hair/megami-hair-angel-straight/megami-hair-angel-straight.glb",
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": "megami",
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 19,
+    "chains": 10,
+    "stiffness": 0.45,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false
+   },
+   "size": 11607904,
+   "file": "customization/parts/megami-hair/megami-hair-angel-straight/megami-hair-angel-straight.glb",
+   "notes": "Angel straight hairstyle for Megami \u2014 REBUILD replacing the Pilot 2 v1 card veil (owner verdict 2026-11-08: 'the hair there looks terrible and unrealistic'). Strand-grade opaque build from Flora's real DAZ strand geometry on the Parvati commission rig: fringe removed, waves relaxed, length graded (front collarbone / back shoulder blades), near-black sections from Flora's own texture with a darkening factor, the wide blonde streak as its own material section at front-left with a baked blonde texture variant, and Pilot 2's own headband mesh repositioned onto the hairline as a separate toggleable mesh skinned to `head`. Flora's 10 spring chains drive physics via game/js/hair-spring.js. Selectable OPTION \u2014 Flora remains Megami's main default hairstyle."
   }
  ]
 }
