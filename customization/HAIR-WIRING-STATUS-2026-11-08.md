@@ -151,3 +151,24 @@ Build script: build_afro.py in the part folder.
 Known polish items (not blockers): crown coverage shows dome patches under flat
 harness lighting; shell rim edge visible from low angles. Angel straight rebuild
 (strand-grade, replacing the PR #1678 v1 card veil) still owed.
+
+## Addendum 4 — Angel Straight REBUILT strand-grade + registered (2026-11-08)
+
+The Pilot 2 v1 straight style (PR #1678) rendered as a translucent card veil; the
+owner rejected it ("the hair there looks terrible and unrealistic") and ordered a
+strand-grade rebuild. Rebuilt from Flora's real DAZ strand geometry on the Parvati
+commission rig (the same system that renders solid as Megami's default hair):
+fringe sections removed, waves relaxed, length graded to the evidenced design
+(front collarbone / back shoulder blades), centre part kept, near-black sections
+authored from Flora's own texture with a darkening factor, the wide blonde streak
+kept as its own material section at front-left (baked blonde texture variant),
+and Pilot 2's own headband mesh repositioned onto the hairline as a separate
+toggleable mesh skinned to `head`. Colours finished at the glTF level
+(postprocess_glb.py in the part folder). Bound to Flora's chain set — the shipped
+hair-spring driver discovers 10 chains. Registered as a selectable Megami hair
+OPTION; Flora remains her main default.
+Proof: customization/proof/hair-wiring-2026-11-08/straight-onbody-front.png,
+straight-onbody-34.png, straight-solo-back.png (harness compensates the known
+v4-body mesh-vs-skeleton offset, labeled in PR #1679's addendum; the dark bun at
+the hairline in harness shots is the v4 body's own base hair, hidden in game when
+a hair part is equipped).

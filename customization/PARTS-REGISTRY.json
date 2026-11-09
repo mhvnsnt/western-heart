@@ -54670,6 +54670,74 @@
    "notes": "Angel afro for Megami \u2014 owner priority pick 2026-11-08 ('the afro will look better'), built from his 5 reference screenshots of Angel Fernandez's public posts (evidence/ in this part folder). Strand-grade opaque build on the Parvati commission rig: Flora scalp cap inner layer + ellipsoid volume shell cut at the bone-space hairline + 1,700 helix-curl clump meshes; silhouette/density governed by the references (rounded dome ~2x head width, ears covered, sides to jaw, back to nape, no part). 6 spring chains (hairFront/hairBack/hairLeft/hairRight/hairTop/hairTopB) on game/js/hair-spring.js with a stiff afro profile. Selectable OPTION \u2014 Flora remains Megami's main default hairstyle.",
    "asset": "customization/parts/megami-hair/megami-hair-angel-afro/megami-hair-angel-afro.glb",
    "source": "Angel afro for Megami \u2014 owner priority pick 2026-11-08 ('the afro will look better'), built from his 5 reference screenshots of Angel Fernandez's public posts (evidence/ in this part folder). Strand-grade opaque build on the Parvati commission rig: Flora scalp cap inner layer + ellipsoid volume shell cut at the bone-space hairline + 1,700 helix-curl clump meshes; silhouette/density governed by the references (rounded dome ~2x head width, ears covered, sides to jaw, back to nape, no part). 6 spring chains (hairFront/hairBack/hairLeft/hairRight/hairTop/hairTopB) on game/js/hair-spring.js with a stiff afro profile. Selectable OPTION \u2014 Flora remains Megami's main default hairstyle."
+  },
+  {
+   "id": "megami-hair-angel-straight",
+   "name": "Angel Straight \u2014 Megami hair option (strand-grade rebuild)",
+   "library": "megami-hair",
+   "source_game": "megami-hair",
+   "type": "mesh_part",
+   "part_class": "mesh_part",
+   "kind": "hair",
+   "suite_slot": "hair",
+   "menu": "head",
+   "tab": "Head (hair)",
+   "socket": "head",
+   "bone_aliases": [
+    "Head",
+    "mixamorig:Head",
+    "head",
+    "J_Head",
+    "Bip01 Head"
+   ],
+   "file": "customization/parts/megami-hair/megami-hair-angel-straight/megami-hair-angel-straight.glb",
+   "glb": "customization/parts/megami-hair/megami-hair-angel-straight/megami-hair-angel-straight.glb",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1.0,
+   "editable": [
+    "tint",
+    "roughness",
+    "metalness",
+    "offset",
+    "rotation",
+    "scale",
+    "visible"
+   ],
+   "geometryPending": false,
+   "size": 11607904,
+   "placement": {
+    "socket": "head",
+    "modeled_in_place_for": "megami"
+   },
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 19,
+    "chains": 10,
+    "stiffness": 0.45,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false,
+    "notes": "Long straight profile: Flora chain set (10 chains), free sway with gravity/wind via hair-spring.js."
+   },
+   "tris": 172650,
+   "character_mappings": {
+    "megami": "authored on her own rig (28-joint subset incl. Flora hair chains + head) \u2014 selectable option; Flora stays her main default",
+    "*": "socket attach at head with placement offsets"
+   },
+   "notes": "Angel straight hairstyle for Megami \u2014 REBUILD replacing the Pilot 2 v1 card veil (owner verdict 2026-11-08: 'the hair there looks terrible and unrealistic'). Strand-grade opaque build from Flora's real DAZ strand geometry on the Parvati commission rig: fringe removed, waves relaxed, length graded (front collarbone / back shoulder blades), near-black sections from Flora's own texture with a darkening factor, the wide blonde streak as its own material section at front-left with a baked blonde texture variant, and Pilot 2's own headband mesh repositioned onto the hairline as a separate toggleable mesh skinned to `head`. Flora's 10 spring chains drive physics via game/js/hair-spring.js. Selectable OPTION \u2014 Flora remains Megami's main default hairstyle.",
+   "asset": "customization/parts/megami-hair/megami-hair-angel-straight/megami-hair-angel-straight.glb",
+   "source": "Angel straight hairstyle for Megami \u2014 REBUILD replacing the Pilot 2 v1 card veil (owner verdict 2026-11-08: 'the hair there looks terrible and unrealistic'). Strand-grade opaque build from Flora's real DAZ strand geometry on the Parvati commission rig: fringe removed, waves relaxed, length graded (front collarbone / back shoulder blades), near-black sections from Flora's own texture with a darkening factor, the wide blonde streak as its own material section at front-left with a baked blonde texture variant, and Pilot 2's own headband mesh repositioned onto the hairline as a separate toggleable mesh skinned to `head`. Flora's 10 spring chains drive physics via game/js/hair-spring.js. Selectable OPTION \u2014 Flora remains Megami's main default hairstyle."
   }
  ],
  "registry": "creation-suite-parts-registry",
