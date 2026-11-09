@@ -299,3 +299,66 @@ owner's memory record; this section is the repo-home copy.
   T14 glyph accept/replace, whether afro becomes default.
 - Note: eye-brown-angel-daz.png lives only on PR #1678's branch until
   it merges.
+
+### 2026-11-09 owner verdicts — hero face rejected, rebuild lanes launched
+
+- HERO FACE REJECTED (owner 2026-11-09 ~09:17 CST, on the delivered
+  proofs): "the face does not look good". The v2 AngelFace
+  (MediaPipe-landmark RBF warp) is superseded as shipping candidate.
+  Face redo = top industry-standard parametric route (GNM fitter, the
+  face/body creation system's Phase 2, Megami = priority proof case,
+  relayed to that chat 2026-11-09).
+- HERO ARMS/BUST (owner 2026-11-09 ~09:18 CST): owner confirmed the
+  forearm warp + bust distortion with his own eyes ("arms look
+  melty... her tits fix that") and ordered bone/skin weights fixed.
+  Measured cause (fidelity lane, PR #1693 merged): the AngelBody
+  morph's hand-written analytic height field sheared what it touched
+  — arm cross-section delta std ≤21.7 mm, radii 20→33 mm, arm spine
+  1.8°→19.1°; basis geometry + bind matrices were clean, so nobody
+  "edited her arms" — the reshape field damaged them as it passed
+  through, bust included. PR #1693's de-shear v2fix is a STOPGAP
+  only; owner rejected the hand-tooling approach itself ("I can tell
+  ur hand tooling instead of wiring up and using the best of the
+  best").
+- REBUILD LANE LAUNCHED 2026-11-09: parametric body (Anny/MHR/MPFB2
+  class) from the clean v4 base + learned auto-skin stack, tattoo
+  textures byte-identical, MAX rule kept, AngelFace carried
+  untouched.
+- NIGHTWOLF RIGGING (owner 2026-11-09 ~09:19 CST): owner re-rejected
+  the arm stretch/crush on sight of the old-rig stance frame and
+  ordered the whole rig+weights approach replaced by the top
+  industry-standard auto-rig stack, perfect first time; proof lane
+  launched 2026-11-09 on her clean Tripo statue (learned UniRig-class
+  backend; the house bone-heat/seam_safe_smooth chain is OUT for
+  production rigs — it converged on 0 of 5 chains). PR #1692's landed
+  rerig stays in place until the new stack beats it under parent
+  own-eyes review.
+- HAIR (owner 2026-11-09 ~09:20 CST): afro SAVED + straight SAVED as
+  options ("Save the afro" / "Save that hair too") — but BOTH ruled
+  "not fitted to the head enough"; hair-fit lane launched 2026-11-09
+  (measured scalp seating per region + surface-fit refit, zero hand
+  nudges; PR #1695's +0.05 m straight fit counts as unverified until
+  measurements + parent own-eyes say otherwise). Flora stays default.
+- FIDELITY LANE COMPLETE 2026-11-09 (PRs #1693/#1694/#1695 merged +
+  read back): forearm attribution above; the v4 −0.33 m offset claim
+  REFUTED and the fixed v4 landed as Megami attire1 (#1694); straight
+  hair geometry sat 0.05 m low vs its own rig (#1695).
+- MEGAMI BODY ADDENDA (owner 2026-11-09 ~09:22–09:23 CST):
+  (a) HEIGHT ≠ WEIGHTS rule, his words: "It wasn't supposed to mess
+  up any skin weights when you made the motherfucker taller" —
+  height/shape change and skinning are separate operations; the
+  rebuild's acceptance gate includes a per-region weight-integrity
+  comparison vs the clean base (zero collateral weight drift from the
+  stretch). (b) HIPS/ASS: the stretch NARROWED her thick frame — hip
+  width AND hip/ass depth must measure EQUAL to her original body
+  (pre-stretch Megami), added as pass/fail metrics on the rebuild.
+  (c) SAVE-THE-DEFAULT rule: her default body + default height stay
+  preserved untouched as the return-to fallback (the fixed v4 base on
+  main as attire1); the Angel-height build ships as its own variant,
+  never an overwrite; if the Angel height can't be hit with hips +
+  weights intact, ship the saved default and say so — never a
+  narrowed compromise.
+- OWNER RULINGS OWED (updated 2026-11-09): face verdict — ANSWERED
+  (rejected; parametric redo ordered). Still owed: PR #1678 merge,
+  bio draft 3 flags, T14 glyph accept/replace, whether afro becomes
+  default.
