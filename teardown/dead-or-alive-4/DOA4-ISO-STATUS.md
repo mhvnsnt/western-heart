@@ -39,3 +39,18 @@ The ISO was assembled over two sessions due to daemon restarts:
 3. Locate Bass Armstrong's character files (models, textures, animations)
 4. Extract all other characters' models and movesets
 5. Extract stages, audio, UI assets
+
+## 2026-11-08 — Correctness verdict (supersedes the local-copy status above)
+
+**The release copy is correct; the Nov-2026 local ISO is corrupt in parts 04/05.**
+Full evidence, part-digest table, full-image fingerprint, and the verified
+pull-back procedure: `DOA4-ISO-MANIFEST-2026-11-08.md` in this directory.
+Summary: local slices 04/05 diverge from the release starting exactly
+28,143,616 B into part_04 (the documented partial-append point of the first,
+buggy reassembly; 476,442,907 bytes differ). 22/22 archive.org range probes
+across the disputed span match the release bytes and none match the local
+bytes; four AFS archives with headers inside the span (spr/mot/anm/chrthree)
+parse only under the release bytes. The local ISO at
+`_roster100-wave3-20261105/work-item4/DOA4.iso` must not be extracted from;
+the release `doa4-iso-v1` is the store of record, and pull-back is via
+`tools/reassemble-doa4.sh` (sha256-verifies every part before appending).
