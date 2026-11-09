@@ -33,12 +33,35 @@ in-universe only.
    the full evidence table lives with the face-from-photo plan in the
    Physique Lab repo.
 
+## Judging standard for likeness candidates
+
+The target is exact likeness + manner of the reference person across
+face, body and expression set, with only the owner's standing
+exceptions: (1) skin — the character's own base tones win, any
+reference-ward shift is a light touch, natural variation preserved;
+(2) bust/hips/ass — the MAX rule (see MODEL-TWEAKING-PRINCIPLES.md
+#3). Candidates are judged and reported against exactly that.
+
+## Foundation — measurement-driven
+
+The system is measurement-driven, never eyeball-driven (owner rule
+2026-11-08: "real measurements and data of everything, every inch of
+their bodies"). Every person gets a measurement sheet in the repo
+(`body-measurements/v1` — see MEASUREMENTS-SCHEMA.md): stature, leg
+segments, torso, bust/waist/hip widths and circumferences, shoulders,
+arm segments, neck, head/face dimensions — each number with its
+method and confidence. Builds are driven from the sheet, and
+comparison rules (the MAX rule included) compute from the two sheets.
+A dimension the evidence cannot support is logged as unmeasured —
+never invented.
+
 ## Wiring state in this repo (2026-11-08)
 
 - WIRED: measurement engine (`customization/face-measure/`), the
   face-params/v1 schema, the model-tweaking principles.
 - NOT BUILT: the parametric fitter, the expression-signature mapper,
-  the
+  the measurement-sheet extractor (sheets are authored from study
+  data until it lands), the
   matched-camera gate harness, the creation-suite identity slider UI,
   GLB/morph export from the panel. These are logged gaps in the
   Physique Lab survey doc; no hand-tooled substitute stands in for any
