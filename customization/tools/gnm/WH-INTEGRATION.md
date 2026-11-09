@@ -25,8 +25,9 @@ How Google's GNM Head model plugs into the customization suite's BODY tab
 
 ```bash
 cd customization/tools/gnm
-# 1. weights (gated HF repo google/gnm-3 — needs an HF token with access)
-python3 wh_gnm_wireup.py fetch-weights --token $HF_TOKEN
+# 1. weights (PUBLIC HF repo google/gnm-v3, Apache-2.0 — no token needed;
+#    the download is hard-verified against the published size + SHA-256)
+python3 wh_gnm_wireup.py fetch-weights
 
 # 2. inspect the named slider dimensions the UI binds to
 python3 wh_gnm_wireup.py --weights ~/.cache/wh-gnm/v3_0/gnm_head.npz list-sliders
@@ -93,11 +94,17 @@ function onFaceSlider(expressionName, value /* 0..1 */) {
 - **Head only.** Google has released GNM Head (v3.0) only; the full-body
   model is roadmap, not shipped. Body sliders (Height/Weight/Muscle/…)
   stay on the WMXIX parametric sliders + No Mercy body morphs.
-- **Weights are gated** (HF `google/gnm-3`, 401 without an authorized
-  account). The wire-up is built and tested against the documented `.npz`
-  field layout (verified via synthetic-model round-trip: base positions
-  and morph-target deltas match the linear model exactly); the first
-  real-weights run needs `HF_TOKEN` with repo access.
+- **Weights are public** (HF `google/gnm-v3`, Apache-2.0, `gated: false`).
+  An earlier version of this doc wrongly named a gated `google/gnm-3`
+  repo; that repo does not exist. Corrected 2026-11-08, and the first
+  REAL-weights run is now done: `fetch-weights` downloaded
+  `v3_0/gnm_head.npz` (53,328,601 B) and the wire-up's hard gate
+  verified SHA-256
+  `61d78bbfb4ad8e0b38495804a4caef3214d3df00f8c3f68761e63b41ce3747eb`
+  (the published HF LFS oid). `list-sliders` on the real file: 17,821
+  verts, 253 identity dims, 383 expression dims. `export-glb` baked a
+  proof GLB with all 383 expression morph targets. (The synthetic
+  round-trip from the original build is superseded by this run.)
 - Live preview uses the linear shape model only (identity + expression).
   Joint posing / pose correctives live in upstream `gnm_numpy` for
   offline baking.

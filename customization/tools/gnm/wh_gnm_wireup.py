@@ -6,8 +6,11 @@ tab (UNIFIED-UI-SPEC.md section 5.1: Head Shape / Face sliders).
 
 What it does:
   1. fetch-weights  - download gnm_head.npz (v3.0) from Hugging Face
-                      (gated: needs an HF account with access to google/gnm-3).
+                      (public HF repo google/gnm-v3, Apache-2.0, no token
+                      needed; --token kept as an optional no-op).
                       Skips download if a cached copy already exists.
+                      The download is hard-verified against the published
+                      size + SHA-256 before it is accepted.
   2. list-sliders   - print the named identity + expression slider dimensions
                       the suite's UI binds to.
   3. sample         - sample an identity (random or semantic-style preset) and
@@ -39,7 +42,13 @@ import urllib.request
 
 import numpy as np
 
-WEIGHTS_URL = "https://huggingface.co/google/gnm-3/resolve/main/v3_0/gnm_head.npz"
+WEIGHTS_URL = "https://huggingface.co/google/gnm-v3/resolve/main/v3_0/gnm_head.npz"
+# Hard verification gate (Hugging Face LFS oid for v3_0/gnm_head.npz,
+# cross-confirmed by the repo's own v3_0/checksums.sha256, 2026-11-08).
+# A mirror publishes a conflicting hash; HF is authoritative. Any file
+# that does not match BOTH values is refused, never used.
+EXPECTED_SIZE = 53328601
+EXPECTED_SHA256 = "61d78bbfb4ad8e0b38495804a4caef3214d3df00f8c3f68761e63b41ce3747eb"
 DEFAULT_CACHE = os.path.expanduser("~/.cache/wh-gnm/v3_0/gnm_head.npz")
 UPSTREAM_COMMIT = "5cf11d785a38a83597e64ad0b6d15950bcd6b390"
 
@@ -60,9 +69,9 @@ def fetch_weights(dest: str = DEFAULT_CACHE, token: str | None = None) -> str:
         return dest
     os.makedirs(os.path.dirname(dest), exist_ok=True)
     print(f"downloading {WEIGHTS_URL}\n  -> {dest}")
-    print("NOTE: google/gnm-3 is a gated HF repo; set --token with an HF")
-    print("token whose account has been granted access, or the server")
-    print("returns 401 Unauthorized.")
+    print("NOTE: google/gnm-v3 is public (Apache-2.0, gated: false); no")
+    print("token is required. The file is verified against the published")
+    print("size + SHA-256 before it is accepted.")
     req = urllib.request.Request(WEIGHTS_URL)
     if token:
         req.add_header("Authorization", f"Bearer {token}")
@@ -85,9 +94,28 @@ def fetch_weights(dest: str = DEFAULT_CACHE, token: str | None = None) -> str:
         if os.path.exists(tmp):
             os.remove(tmp)
         raise RuntimeError(f"weight download failed: {e}") from e
+    verify_weights(tmp)
     os.rename(tmp, dest)
-    print(f"saved: {dest}")
+    print(f"saved + verified: {dest}")
     return dest
+
+
+def verify_weights(path: str) -> None:
+    """Refuse any weights file that is not the published HF artifact."""
+    import hashlib
+    size = os.path.getsize(path)
+    if size != EXPECTED_SIZE:
+        raise RuntimeError(
+            f"weights size mismatch: got {size}, expected {EXPECTED_SIZE} "
+            f"(do not use; re-download from {WEIGHTS_URL})")
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            h.update(chunk)
+    if h.hexdigest() != EXPECTED_SHA256:
+        raise RuntimeError(
+            f"weights SHA-256 mismatch: got {h.hexdigest()}, expected "
+            f"{EXPECTED_SHA256} (do not use; re-download from HF, not a mirror)")
 
 
 # ---------------------------------------------------------------- model
@@ -282,7 +310,7 @@ def main(argv: list[str] | None = None) -> int:
                     help="path to gnm_head.npz")
     sub = ap.add_subparsers(dest="cmd", required=True)
 
-    p = sub.add_parser("fetch-weights", help="download gnm_head.npz (gated HF)")
+    p = sub.add_parser("fetch-weights", help="download gnm_head.npz (public HF, hash-verified)")
     p.add_argument("--token", default=os.environ.get("HF_TOKEN"),
                    help="Hugging Face token (or set HF_TOKEN)")
 
