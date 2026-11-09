@@ -18,6 +18,14 @@ in-universe only.
    in the creation suite UI — the same parameter names as the schema.
 3. **Export.** GLB + morph data in the customization formats already
    used by this repo (`customization/CUSTOMIZATION-JSON-SCHEMA.md`).
+5. **Expression & motion signature.** Likeness includes how the person
+   moves: mouth shapes through speech, brow/eye movement, characteristic
+   expressions, head motion while talking. Tracked video (the same
+   licence-clean landmark chain) is mapped into the parametric
+   expression space and stored as a per-character expression/talk
+   animation set. Expression data stays separate from the neutral
+   identity fit and is never flattened into it.
+
 4. **Licence rule.** The measurement/fit chain is licence-clean only:
    MediaPipe + a house shape basis built from this project's own roster
    heads + Blender. FLAME / SMPL / BFM / DECA-family components are
@@ -29,7 +37,8 @@ in-universe only.
 
 - WIRED: measurement engine (`customization/face-measure/`), the
   face-params/v1 schema, the model-tweaking principles.
-- NOT BUILT: the house shape basis + parametric fitter, the
+- NOT BUILT: the parametric fitter, the expression-signature mapper,
+  the
   matched-camera gate harness, the creation-suite identity slider UI,
   GLB/morph export from the panel. These are logged gaps in the
   Physique Lab survey doc; no hand-tooled substitute stands in for any
