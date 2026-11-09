@@ -22,12 +22,18 @@ before/after any skin pass and report the numbers in the build report.
 
 ## 3. Signature proportions stay
 
-When shaping a character toward a reference build, the character's own
-signature proportions that the owner names stay untouched.
+This rule is a MAX rule, not a freeze (owner amendment 2026-11-08
+~20:50 CST). For the areas the owner names, the character keeps
+whichever is BIGGER — her own size or the reference's evidenced size —
+area by area. A named area is never shrunk below the larger of the
+two; where the reference is evidenced bigger, she is sized up to the
+reference there. Owner's words: "Unless angels ass and hips and tits
+are fatter."
 
-Precedent (owner 2026-11-08, Megami): taller with longer legs, everything
-else shaped toward Angel Fernandez's build — except her bust and ass, which
-stay Megami's own huge size/volume exactly.
+Precedent (owner 2026-11-08, Megami): taller with longer legs,
+everything else shaped toward Angel Fernandez's build — for bust,
+hips and ass, whichever is bigger between Megami's own size and
+Angel's evidenced size wins, per area.
 
 ## 4. Proper deformation only
 
