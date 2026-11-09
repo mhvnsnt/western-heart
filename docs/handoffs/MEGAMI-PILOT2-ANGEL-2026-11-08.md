@@ -149,7 +149,7 @@ superlative).
 ## 7. Assets in this PR
 
 - `megami-angel-pilot2.glb` — full model: v4 base + AngelFace key (on) +
-  tattooed skin textures. Blender re-export, uncompressed, 90.7 MB —
+  tattooed skin textures. Blender re-export, uncompressed, 52.7 MB —
   uploaded as release asset `megami-pilot2-20261108` (too large for a
   git blob); the 45 MB meshopt-preserving tattoo-base GLB is on the same
   release (the blob API rejected it at 45 MB with a 422). Export note:
