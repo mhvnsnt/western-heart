@@ -129,3 +129,25 @@ unrealistic), same evidenced design (centre part, blonde front-left streak,
 toggleable headband). Both register here with spring-bone physics when built.
 Flora stays Megami's main default hairstyle; the Angel styles are additional
 options.
+
+## Addendum 3 — Angel Afro registered (2026-11-08, owner priority)
+
+Owner supplied 5 reference screenshots of Angel Fernandez's public posts (Threads
+@the67latina / X / Facebook "Tallest Latin Model") and ordered the afro built as the
+priority Angel style for Megami ("the afro will look better"). Built strand-grade on
+the Parvati commission rig: Flora's real scalp cap (inner layer) + an ellipsoid volume
+shell cut to the bone-space hairline (face opening) + 1,700 opaque helix-curl clump
+meshes; silhouette and density governed by the references (rounded dome ~2x head width,
+ears covered, sides descend to the jaw, back to the nape, no part, tight curl,
+near-black). 6 spring-bone chains (hairFront/hairBack/hairLeft/hairRight/hairTop/
+hairTopB) parented to `head`; stiff physics profile via the generic hair-spring driver
+(dense curl mass barely sways). Registered as a selectable Megami hair OPTION — Flora
+remains her main default hairstyle.
+Proof: customization/proof/hair-wiring-2026-11-08/afro-onbody-front.png,
+afro-onbody-34.png, afro-solo-back.png (harness applies the labeled compensation for
+the known v4-body mesh-vs-skeleton offset; see PR #1679 addendum).
+Source evidence: customization/parts/megami-hair/megami-hair-angel-afro/evidence/.
+Build script: build_afro.py in the part folder.
+Known polish items (not blockers): crown coverage shows dome patches under flat
+harness lighting; shell rim edge visible from low angles. Angel straight rebuild
+(strand-grade, replacing the PR #1678 v1 card veil) still owed.
