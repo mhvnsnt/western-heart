@@ -83,5 +83,5 @@ mb.node_tree.nodes['Principled BSDF'].inputs['Base Color'].default_value=(0.02,0
 mb.node_tree.nodes['Principled BSDF'].inputs['Roughness'].default_value=0.35
 band.data.materials.clear(); band.data.materials.append(mb)
 print('band skinned + rematerialed')
-bpy.ops.wm.save_as_mainfile(filepath='/home/hatch/workspace/_hair-wire-20261108/straight/straight-build3.blend')
+bpy.ops.wm.save_as_mainfile(filepath='/home/hatch/workspace/_hair-fix-20261108/work/straight-build3.blend')
 print('STRAIGHT BUILD2 DONE')

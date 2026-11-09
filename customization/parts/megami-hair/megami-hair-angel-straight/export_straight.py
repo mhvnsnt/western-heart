@@ -1,5 +1,5 @@
 import bpy, os
-bpy.ops.wm.open_mainfile(filepath='/home/hatch/workspace/_hair-wire-20261108/straight/straight-build4.blend')
+bpy.ops.wm.open_mainfile(filepath='/home/hatch/workspace/_hair-fix-20261108/work/straight-build5.blend')
 def unexclude(lc):
     lc.exclude=False
     for c in lc.children: unexclude(c)
@@ -27,6 +27,6 @@ for ob in bpy.data.objects: ob.hide_viewport = ob not in meshes and ob is not ar
 bpy.ops.object.select_all(action='DESELECT')
 for ob in meshes: ob.select_set(True)
 arm.select_set(True); bpy.context.view_layer.objects.active=arm
-OUT='/home/hatch/workspace/_hair-wire-20261108/straight/megami-hair-angel-straight.glb'
+OUT='/home/hatch/workspace/_hair-fix-20261108/work/straight-raw.glb'
 bpy.ops.export_scene.gltf(filepath=OUT, export_format='GLB', use_selection=True, export_skins=True, export_apply=False, export_yup=True)
 print('EXPORTED', os.path.getsize(OUT))
