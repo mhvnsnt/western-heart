@@ -2157,6 +2157,9 @@ function estimateSpineCorr(rig, skel, stanceClip, buildProbe, THREE) {
 }
 
 const _retargetCache = new WeakMap(); // model instance -> Map(bankId -> { rig, out: { action: clip } })
+// QA switch for A/B renders (game/poselab.html): globalThis.__WH_RETARGET_LAYERS = { head: false, spine: false,
+// arm: false } turns that correction layer off. Unset (the game) = every layer on, exactly as before.
+const _layerOn = (k) => { const L = globalThis.__WH_RETARGET_LAYERS; return !L || L[k] !== false; };
 
 /**
  * Retarget a bank's clips onto one fighter model. The FIRST call for a
@@ -2211,7 +2214,7 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
       if (est) console.log(`[WH-T3] bank '${bankId}': head-frame constant ${(2 * Math.acos(Math.min(1, Math.abs(est.w))) * 180 / Math.PI).toFixed(1)}° measured in its stance — normalized out of every clip (head/face audit 2026-11-06)`);
     }
   }
-  const headCorrInv = skel._headCorr ? skel._headCorr.clone().invert() : null;
+  const headCorrInv = (skel._headCorr && _layerOn('head')) ? skel._headCorr.clone().invert() : null;
   const rig = (cached && cached.rig) || analyzeRig(model, THREE, profile);
   if (!rig) { perModel.set(bankId, null); return null; }
   const src = sourceInfo(skel, THREE);
@@ -2526,7 +2529,7 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
   // arm constants exist. 't7:' skeletons are exempt (see
   // estimateSpineCorr).
   let spineCorr = cached ? cached.spineCorr : undefined;
-  if (spineCorr === undefined && !layerActive && !String(bankId).startsWith('t7:') && t3Clips.stance &&
+  if (spineCorr === undefined && _layerOn('spine') && !layerActive && !String(bankId).startsWith('t7:') && t3Clips.stance &&
       (names.includes('stance') || (cached && cached.out.stance))) {
     const est = estimateSpineCorr(rig, skel, t3Clips.stance, (th) => buildClip('stance', null, th), THREE);
     if (est !== undefined) {
@@ -2544,7 +2547,7 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
   // depend on the rig's rest pose, so they cannot live on the
   // skeleton the way the head constant does.
   let armCorr = cached ? cached.armCorr : undefined;
-  if (armCorr === undefined && !layerActive && t3Clips.stance &&
+  if (armCorr === undefined && _layerOn('arm') && !layerActive && t3Clips.stance &&
       (names.includes('stance') || (cached && cached.out.stance))) {
     const probe = buildClip('stance', null, spineCorr || 0);
     if (probe) {

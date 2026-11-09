@@ -1,4 +1,4 @@
-# Thor attire 1 re-rig: WIRED (2026-11-09)
+# Thor attire 1 re-rig: wired, NOT a fix of the crushed look (2026-11-09)
 
 Owner (verbatim): "Arms at shoulders, forearms, and hands are all crushed and twisted some have extreme weight painting
 issues all over and some have twisted necks or stretched faces evaluate and fix it all".
@@ -25,9 +25,14 @@ issues all over and some have twisted necks or stretched faces evaluate and fix 
 The images come from `tools/model-audit/weight_compare.mjs`: the game's own loader and retarget, the old model on the
 left and the re-rig on the right.
 
-- **Stance:** before, his head was crushed down into his chest, the helmet pressed into his shoulders and his face
-  buried under his forearm. Now the head sits on his neck, the face is visible, the guard is clean and the cape hangs
-  free.
+- **Owner's verdict (2026-11-09):** "that was barely a 5% change on thor u did not fix it". Against his base model at
+  rest, the in-fight Thor is still squashed: a short torso, the head sunk between hunched shoulders, tucked arms. The
+  re-rig only changed his weights and joints.
+- **Cause, checked by eye:** Thor has no T7 stance, so he plays the Tekken 3 Bryan stance. The retarget does not
+  reproduce that source faithfully: the torso is 12.6 deg off and the arms 11-12 deg off. It also stacks three
+  correction layers on the old data (head-frame 77 deg, spine-pitch -12.9 deg, arm rolls 48-76 deg). Switching them
+  off in poselab (`__WH_RETARGET_LAYERS`) makes his upper body more upright but exposes the raw T3 head, twisted about
+  77 deg. No layer setting fixes it. The fix is his own T7 data.
 - **Torn vertices** (stretch >= 2x and >= 1 cm):
 
   | Clip | Before | After |
