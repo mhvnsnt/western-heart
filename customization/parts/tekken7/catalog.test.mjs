@@ -45,10 +45,13 @@ test('catalog loads through the real loadCatalog with the landed skull mask', as
   // FLIPPED 2026-10-21 (W6 piecewise lane): the skull mask was really
   // extracted from the T7 game tree and landed in parts[] — the survey's
   // §3.5 flip, recorded here as instructed there.
-  assert.equal(catalog.parts.length, 1, 'one landed part: the skull mask');
+  // FLIPPED 2026-11-08 (hair-wiring lane): 33 hair items landed from the
+  // held GRE Steam teardown — 31 HAIR + 2 FACE_HAIR — alongside the mask.
+  assert.equal(catalog.parts.length, 34, 'landed parts: skull mask + 33 hair items');
   // every slot class present in the mapping; only FULL_HEAD has landed so far
+  const EXPECTED_BY_SLOT = { FULL_HEAD: 1, HAIR: 31, FACE_HAIR: 2 };
   for (const slot of T7_SLOTS) {
-    assert.equal(catalog._meta.by_slot[slot], slot === 'FULL_HEAD' ? 1 : 0, `by_slot.${slot}`);
+    assert.equal(catalog._meta.by_slot[slot], EXPECTED_BY_SLOT[slot] || 0, `by_slot.${slot}`);
     assert.ok(catalog._meta.suite_slot_mapping.includes(slot), `mapping covers ${slot}`);
   }
 });
@@ -57,8 +60,11 @@ test('merging into the real registry adds exactly the landed part', async () => 
   const registry = JSON.parse(await readFile(registryUrl, 'utf8'));
   const catalog = await loadCatalog('tekken7-catalog', fetcherFor(catalogUrl));
   const merged = mergeCatalogs(registry, catalog);
-  assert.equal(merged.length, registry.parts.length + 1, 'T7 catalog adds the skull mask');
-  assert.equal(entriesForSource(merged, 'tekken7').length, 1);
+  // The 33 hair items are registered in PARTS-REGISTRY too (same file
+  // paths), so the by-file dedupe keeps the registry copies; only the
+  // catalog-only skull mask grows the merged list. Source total = 34.
+  assert.equal(merged.length, registry.parts.length + 1, 'dedupe: only the skull mask is catalog-only');
+  assert.equal(entriesForSource(merged, 'tekken7').length, 34);
 });
 
 test('skull mask: named gap RESOLVED — the runtime now resolves the real part', async () => {
@@ -88,4 +94,22 @@ test('skull mask: named gap RESOLVED — the runtime now resolves the real part'
   assert.equal(resolved[0].part_id, SKULL_MASK_ID, 'assignment is reported, not dropped');
   assert.equal(resolved[0].status, 'resolved');
   assert.equal(resolved[0].glb, 'customization/parts/tekken7/full_head/skull-mask/skull-mask.glb');
+});
+
+test('hair items: all 33 landed with real GLBs and spring-bone physics metadata', async () => {
+  const registry = JSON.parse(await readFile(registryUrl, 'utf8'));
+  const catalog = await loadCatalog('tekken7-catalog', fetcherFor(catalogUrl));
+  const merged = mergeCatalogs(registry, catalog);
+  const hair = merged.filter((e) => e.source_game === 'tekken7' && (e.slot === 'HAIR' || e.slot === 'FACE_HAIR'));
+  assert.equal(hair.length, 33);
+  for (const e of hair) {
+    assert.ok(e.glb && e.glb.endsWith('.glb'), `${e.id} carries a GLB`);
+    assert.equal(e.physics?.driver, 'game/js/hair-spring.js', `${e.id} physics driver`);
+    assert.ok(Array.isArray(e.components) && e.components.length >= 1, `${e.id} components`);
+  }
+  const lil = getEntry(merged, 'tekken7:lil:hair:lil-har-1p');
+  assert.ok(lil, 'Lili hair entry exists');
+  assert.ok(lil.physics.chains >= 10, 'Lili hair carries its measured swing-bone chains');
+  const resolved = resolveProfileParts(merged, { parts: { hair: { part_id: 'tekken7:lil:hair:lil-har-1p' } } });
+  assert.equal(resolved[0].status, 'resolved');
 });
