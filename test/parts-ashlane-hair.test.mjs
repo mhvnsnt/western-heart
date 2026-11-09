@@ -50,11 +50,13 @@ test('the 5 AshLane hair entries are wired, unique, and not pending', () => {
   }
 });
 
-test('hair totals after wiring: 332 entries, 20 wired, 17 with a glb', () => {
+test('hair totals after wiring: 363 entries, 51 wired, 48 with a glb', () => {
+  // 2026-11-08 (hair-wiring lane): +31 Tekken 7 HAIR entries (suite_slot
+  // 'hair', all wired with GLBs) over the 332 / 20 / 17 baseline.
   const hair = CATALOG.parts.filter((p) => p.suite_slot === 'hair');
-  assert.equal(hair.length, 332, 'hair entries');
-  assert.equal(hair.filter((p) => !p.geometry_pending).length, 20, 'hair wired');
-  assert.equal(hair.filter((p) => p.glb).length, 17, 'hair with glb');
+  assert.equal(hair.length, 363, 'hair entries');
+  assert.equal(hair.filter((p) => !p.geometry_pending).length, 51, 'hair wired');
+  assert.equal(hair.filter((p) => p.glb).length, 48, 'hair with glb');
 });
 
 test('create-fighter catalog header no longer cites the stale 3,372 figure', () => {
