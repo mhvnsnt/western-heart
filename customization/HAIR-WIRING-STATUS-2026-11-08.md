@@ -93,3 +93,39 @@ registered as individual parts; her suite profile composes them + Flora.
   was wiped with the old lanes' caches, so the SwiftShader harness could
   not run in this lane; proof at landing is the solver's node test-suite
   (4/4) plus in-repo harness-readiness. Browser proof still owed. (The Flora GLB's skinning was verified byte-exact at bind in its place: skinned == raw positions, max delta 0.0.)
+
+
+## ADDENDUM 2026-11-08 (evening) — browser proof landed + v4 offset attribution
+
+Visual proof (Playwright + headless Chromium on this VM; three.js, the game's own
+engine path) is committed under `customization/proof/hair-wiring-2026-11-08/`:
+
+- `flora-shipped-bind.png` — the Flora GLB **as shipped on main** (PR #1677),
+  rendered standalone: dark, textured, natural hang; bind verified two ways
+  (in-engine render + numeric check: world @ inverseBindMatrix = identity for
+  head/neck/chest joints; skinned == raw bind positions across all 9 prims).
+- `flora-phys-lag.png` / `flora-phys-wind.png` — the shipped `hair-spring.js`
+  driving Flora's own rig: frame after a 0.55 rad head snap (4 steps) shows
+  inertia lag; after wind +X for 45 steps the mass streams sideways. 10 spring
+  chains discovered on Flora's rig.
+- `ltn-onbody-closeup.png` — a registered Tekken 7 hair (ltn) worn on the
+  Megami body in the same harness, textured from its shipped WebP PBR set.
+
+**Attribution note (stage law):** when Flora is rendered alongside the v4 body
+GLB (`parvati-basefixed-glb-v4.glb`), the PAIR looks offset — measurement shows
+the defect is in the **v4 body build, not the hair**: the body's skinned mesh
+sits ~0.33 m below its own skeleton (its deform `head` bone reads Y 1.629 while
+the mesh's bounds top out at ~1.41), so any bone-true part reads as floating
+next to it. Flora alone is exact. The v4 basefix is the fidelity lane's
+artifact (same defect family as the open Megami live-proof issue); fixing the
+body build is theirs — no part registered by this lane carries the offset.
+
+**Next work assigned to this lane (owner verdicts 2026-11-08 ~20:20 CST):**
+Angel Fernandez hairstyles for Megami — (1) curly AFRO is the owner's
+preferred style and its reference has now been received (owner-supplied
+screenshots of Angel's public posts, in `~/workspace/user/files/`); (2) the
+straight style gets a full strand-grade opaque rebuild (v1 cards rejected as
+unrealistic), same evidenced design (centre part, blonde front-left streak,
+toggleable headband). Both register here with spring-bone physics when built.
+Flora stays Megami's main default hairstyle; the Angel styles are additional
+options.
