@@ -4672,3 +4672,15 @@ teardown-sourced rebuild, ui_sources gate); movesets.js integration for custom m
 live fight proof (needs a browser — parent to arrange); Brutal Fist roster (separate agent);
 DOA/VF editor-status verification (web search failed on local disk quota).
 - Deletions: none.
+
+## 2026-11-08 — Zui attire1 refit landed (batch rig-fix program)
+
+**Owner order (2026-11-08 18:26 CST, options-widget tap in main chat):** "Land the Zui refit".
+
+**What:** `roster/zui/attires/attire1/model-rigged.glb` replaced with the batch rig-fix program's zui-a1 refit — one unmodified refit chain end-to-end (landmark refit → bone-heat rebind → head_territory → secondary chains → seam_safe_smooth → gates → codec encode), zero hand edits. New file 31,721,680 B (blob 7b8b01b746de5b631babb549aabacc8e0844ba32), replacing blob bf97863a3562ef2fc2e37bdadc2a733c28ed9ec5 (31,905,468 B).
+
+**Verification:** header length == file size; Blender strict import OK (50 bones); validate PASS; seams PASS; official anim_check p999 1.478 PASS; probe_audit ok — arms dominant 34,478/35,180, forearms 19,751/20,477, height offsets 0.003–0.005 (her shipped file was audit-flagged, worst_seg 0.088); harness stance (julia bank t=0.35) pose-equal to shipped, no tearing.
+
+**Accepted shortfalls (owner landing with eyes open):** strict p999 stretch 6.292 vs the 2.5 gate; face slab 71% (Head 63% + Neck 8%) vs the 95% bar. Everything else passes; arms measurably improve on the shipped file.
+
+- Deletions: none (one file replaced in place).
