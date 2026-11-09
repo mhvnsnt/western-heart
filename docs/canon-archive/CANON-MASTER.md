@@ -1791,7 +1791,8 @@ Raiden, Bass Armstrong (→ Vain Abel's base), Craig Marduk, Armor King
 - **Megami ← Angel Fernandez ("Pilot 2"):** Megami gets Angel
   Fernandez's face exactly + all of Angel's tattoos exactly how/where
   Angel has them (11 catalogue-confirmed pieces; Megami keeps her own
-  skin colour; all ink black/grey monochrome). Face chain licence-clean
+  skin-colour family, shifted a little toward Angel's tones per the
+  ~20:35 CST amendment; all ink black/grey monochrome). Face chain licence-clean
   ONLY (MediaPipe Face Landmarker + house shape basis + Blender;
   FLAME/SMPL/BFM/DECA/EMOCA/MICA/SMIRK/SPECTRE/Pixel3DMM banned).
   Canon-fill rule: unreadable script-tattoo wording is filled from
@@ -1801,7 +1802,14 @@ Raiden, Bass Armstrong (→ Vain Abel's base), Craig Marduk, Armor King
   "it looks like u didn't change the face" — v2 escalated to full
   measured values per region. Boundary: sourcing a real person's nude
   imagery to replicate her intimate anatomy is off-limits; do not
-  re-offer or delegate.
+  re-offer or delegate. Body amendment (~20:35 CST): taller with longer
+  legs (proper deformation, not Y-scale); everything else toward Angel's
+  build except bust and ass, which stay Megami's own huge size/volume
+  untouched; combined hero shot on the reshaped body. Skin-shift
+  constraints (~20:36 CST): general skin only — her model's natural
+  tonal variation in intimate areas stays exactly as sourced, never
+  flattened/unified (verified by texture sampling); her v4 tones are
+  the base and win any conflict — improve, don't rework.
 - **Angel hairstyles:** both built for Megami. Straight v1 REJECTED
   ("the hair there looks terrible and unrealistic") — full strand-grade
   opaque rebuild. Afro is the owner's preferred style ("That hair is
@@ -1827,11 +1835,33 @@ Raiden, Bass Armstrong (→ Vain Abel's base), Craig Marduk, Armor King
 - **Face/body creation system (dual home):** built in
   physics-playground-pwa (Physique Lab) FOR Western Heart; the same
   mechanic also ships inside western-heart's creation/customization
-  suite, shared formats. Proving case = Angel→Megami face. Its
+  suite, shared formats. Proving case = Angel→Megami face. Top-20
+  directive (~20:33 CST): pull in the highest-level top 20 things for
+  it — not hand-tooled, not homebrew — wired fully in the repos;
+  licence-blocked entries documented-not-pulled. Its
   product name lives in its Physique Lab home ONLY and never appears
   in western-heart (owner name law 2026-11-08) — no strings, files,
   or docs here.
 - Full detail: `roster/parvati/CANON.md` ("Owner orders — 2026-11-08").
+
+## MODEL-TWEAKING PRINCIPLES — 2026-11-08 (standing rules, all future model work)
+
+Owner order 2026-11-08 ~20:37 CST — land in all necessary repos.
+
+1. IMPROVE, DON'T REWORK — a model's own natural tones/colours are the
+   base and win; reference-ward shifts are light touches, never a recolor.
+2. Natural tonal variation (including intimate areas) is preserved
+   exactly, never flattened or unified; verified by texture sampling.
+3. Reference-shaping keeps the character's own signature proportions the
+   owner names (Megami precedent: her bust/ass stay hers).
+4. Height/proportion changes via proper deformation (legs carry height),
+   never naive Y-scale.
+5. Face likeness is judged on a matched camera + the at-a-glance test,
+   full measured values, no damped deltas.
+6. Detail sets (tattoos etc.) are audited against ALL held evidence;
+   confirmed misses get added; nothing is invented; unreadable words are
+   canon-filled and listed for owner approval.
+7. Eyes and hair are swappable parts; defaults vs options are owner-ruled.
 
 *End of CANON-MASTER. Compiled 2026-10-23. If it isn't recorded, it
 isn't here — and if it gets recorded, it gets pushed here.*

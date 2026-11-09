@@ -118,7 +118,8 @@ owner's memory record; this section is the repo-home copy.
 - Megami gets Angel Fernandez's FACE exactly, plus ALL of Angel's tattoos
   exactly how and where Angel has them (11 catalogue-confirmed pieces;
   catalogue: physics-playground-pwa `docs/likeness-pilot2/TATTOO-CATALOGUE-2026-11-08.md`).
-- Megami KEEPS her own skin colour. All ink is black/grey monochrome.
+- Megami keeps her own skin-colour family (see Body/skin amendment below —
+  shifted a little toward Angel's tones). All ink is black/grey monochrome.
   Areas never tattooed on Angel stay bare.
 - "Mutumbo" in the owner's usage = Angel Fernandez.
 - Angel-inspired elements are mixed into Megami's bio ADAPTED to the WH
@@ -157,6 +158,22 @@ owner's memory record; this section is the repo-home copy.
   u didn't change the face" — v2 escalated: no damped deltas, full
   measured values per region; proof must show an obvious at-a-glance
   OFF/ON difference.
+- BODY/SKIN AMENDMENT (owner 2026-11-08 ~20:35 CST, supersedes the
+  skin-colour rule in part): make Megami TALLER with LONGER LEGS (gain
+  mainly from leg length, proper deformation, not Y-scale), shape
+  everything else toward Angel's build — EXCEPT her bust and ass, which
+  stay Megami's own huge size/volume untouched — and shift her skin tone
+  A LITTLE toward Angel's tones (partial; she keeps her own base family;
+  tattoos stay black/grey). SKIN-SHIFT CONSTRAINT (owner 2026-11-08
+  ~20:36 CST): the shift touches general skin only — the natural tonal
+  variation her own model carries in her intimate areas stays exactly as
+  her source model has it, never flattened or unified; verified by
+  texture sampling in the build report. IMPROVE-DON'T-REWORK (owner
+  2026-11-08 ~20:36 CST): her own existing v4 tones/colours are the base
+  and win any conflict — the Angel-ward move is a light touch at most;
+  the skin job is to IMPROVE what Parvati already has, never to damage
+  her natural tones. Body pass sits with the v2 lane; the combined
+  hero shot is composed on the reshaped body.
 - BOUNDARY (set 2026-11-08 ~20:22 CST): sourcing a real person's nude
   imagery to replicate her intimate anatomy onto her likeness is
   off-limits (matches the study's standing rule: leaked / OnlyFans
