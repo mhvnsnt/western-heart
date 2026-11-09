@@ -164,6 +164,10 @@ export class Arena {
     const camAng = (((this._stage && this._stage.def.camAngle) || 0) * Math.PI) / 180;
     let baseX = Math.sin(camAng) * 7 * camScale, baseZ = Math.cos(camAng) * 7 * camScale;
     let baseY = 1.8, lookY = 1.0;
+    // Stage wall distance (fighters clamp at ±wallDistance; Tekken
+    // standard 8.4 for a 16.8-wide arena). Hoisted here so the shaken
+    // camera below can be re-clamped against the same wall (Bug 5).
+    const wallD = (this._stage && this._stage.def && this._stage.def.dims && this._stage.def.dims.wallDistance) || 8.4;
     if (!this._camRig) this._camRig = { centerX: 0, span: 5.0 };
     if (fighterA && fighterB) {
       const p1x = fighterA.root.position.x, p2x = fighterB.root.position.x;
@@ -177,7 +181,7 @@ export class Arena {
       // arena shell; widen FOV when the span no longer fits — never shove
       // the camera through / behind walls. Landscape used to force min
       // 10.5 m (wall line); now both aspects share fightCameraDolly().
-      const wallD = (this._stage && this._stage.def && this._stage.def.dims && this._stage.def.dims.wallDistance) || 8.4;
+      // (wallD is hoisted above this block — see Bug 5 note below.)
       const dolly = fightCameraDolly({
         span: this._camRig.span,
         aspect: this.camera.aspect || 1,
@@ -221,6 +225,25 @@ export class Arena {
 
     let { ox, oy } = this.shakeOffset(dt);
     this.camera.position.x += ox; this.camera.position.y += oy;
+    // Piece 1 re-test Bug 5 (camera clips inside/behind pillars and walls
+    // after 00): the impact shake was added AFTER the wall clamp, with no
+    // clamp on the shaken position. A heavy hit (mag 0.6, dur 0.5) shoves
+    // the camera up to ±2.1 m sideways/down — at the stage edge the camera
+    // already sits at its clamped corner (Shrine: 12.73 m from center vs
+    // the panel ring's 13.25 m inner face, 0.5 m of clearance), so the
+    // shake pushed it through the shell, behind the wood panels, and the
+    // fighters vanished behind the wall. After 00 the fight ran ~25 min
+    // with the fighters piled at the walls, so the camera sat at that
+    // corner for minutes with every heavy hit shaking it through. Fix:
+    // re-clamp the shaken position against the same wall (same
+    // fightCameraCenterX the unshaken position uses) and keep it above
+    // the current floor (groundY + 0.5 m) — the shake keeps its kick,
+    // it just cannot leave the shell. The look target keeps its
+    // counter-shake (-ox) so framing is unchanged.
+    if (!camAng) {
+      this.camera.position.x = fightCameraCenterX(this.camera.position.x, wallD, 1.2);
+      this.camera.position.y = Math.max(groundY + 0.5, this.camera.position.y);
+    }
     if (this._stage && this._stage.def && this._stage.def.camTgt) {
       const t = this._stage.def.camTgt;
       this.camera.lookAt(t[0], this._lookY, t[2]);

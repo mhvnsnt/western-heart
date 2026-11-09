@@ -2,8 +2,8 @@
 Run from anywhere inside the repo checkout; dry run by default.
 - update: every file in the deploy roots present on BOTH main and the live branch whose blob differs (vs the live
   branch's ACTUAL blobs, not its manifest commit);
-- add: files missing on live under ADD_PREFIXES (new data the shipped code fetches) + any target the module-graph
-  check reports missing;
+- add: files missing on live under ADD_PREFIXES (new data the shipped code fetches) + bundled shell models
+  (SHELL_BUNDLED_MODELS in main's game/js/asset-config.js) + any target the module-graph check reports missing;
 - refuse: any removal, a tree over the size cap, or a non-zero tools/deploy/check_module_graph.py on the new tree;
 - push fast-forward only (no force). Usage: python3 deploy_delta.py [--push] [--note TEXT] [--pr N]"""
 import json, os, subprocess, sys, tempfile, datetime
@@ -61,6 +61,19 @@ def main():
     mblk = _re.search(r'export const T7_MOVES = \{(.*?)\n\};', t3, _re.S)
     mdirs = sorted(set(_re.findall(r"dir:\s*'(assets/anim/t7/[\w-]+/)'", mblk.group(1)))) if mblk else []
     want += ['game/' + d + 'skeleton.json' for d in mdirs]
+    # Piece 1 re-test Bug 4 (King Tyrant): bundled shell models the shipped
+    # loader fetches same-origin (SHELL_BUNDLED_MODELS in main's
+    # game/js/asset-config.js — the same list build_pages.py reads). The
+    # delta never shipped new models before, so a model added to the list
+    # stayed missing from the live shell (local 404) while the loader's
+    # other fallbacks were dead for it (jsDelivr 403s files over 20 MB) —
+    # the King Tyrant fight could only load from the remote Worker, and a
+    # stall there dumped the player to the menu. The CAP check at the end
+    # still refuses a tree over 1 GiB, so a bundled model that busts the
+    # cap blocks the deploy instead of shipping a shell that cannot load it.
+    acfg = git('show', MAIN + ':game/js/asset-config.js')
+    ablk = _re.search(r'export const SHELL_BUNDLED_MODELS = \[(.*?)\n\];', acfg, _re.S)
+    want += sorted(set(_re.findall(r"^\s*'((?:game|roster|customization|packages)/[^']+)'", ablk.group(1), _re.M))) if ablk else []
     add = sorted(p for p in want if p in M and p not in L)
     small = sorted(p for p in M if p not in L and p.startswith(SMALL_ADD_PREFIXES) and p.endswith(SMALL_EXT)
                    and '/tests/' not in p and '/proof' not in p and M[p][1] <= SMALL_MAX)
