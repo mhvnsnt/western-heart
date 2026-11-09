@@ -66,6 +66,17 @@ export const ASSET_CONFIG = {
 export const SHELL_BUNDLED_MODELS = [
   'game/assets/models/demonio.glb', // 8.8 MB — canon fighter, play-verify pair
   'game/assets/models/pantera.glb', // 7.6 MB — play-verify pair
+  // Piece 1 re-test Bug 4 (King Tyrant fight fails to load): his 26.7 MB
+  // GLB was the ONLY one of the three re-test fighters with no
+  // same-origin copy — Demonio/Pantera load from the shell, he loaded
+  // only from the remote Worker (bucket copy is the older 25,643,940 B
+  // build; repo file is 26,682,804 B), local Pages 404s, jsDelivr 403s
+  // files over 20 MB. When the remote fetch stalled (>45 s watchdog),
+  // the retry chain re-tried the identical failing fetch and dumped the
+  // player to the menu, twice. Bundling him makes his load path the
+  // same measured working path as Demonio's. 26.7 MB fits the 1 GiB
+  // Pages cap (live tree 1,003,871,226 B + 26,682,804 B = 1,030,554,030 B).
+  'game/assets/models/king-tyrant.glb', // 26.7 MB — King Tyrant fight model
   'game/assets/models/awa-pop.glb', // 0.4 MB
   'game/assets/models/baek.glb', // 0.4 MB
   // Milestone 1 core 8 (game/js/core-set.js): the FIGHT model of each fighter

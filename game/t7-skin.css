@@ -59,7 +59,19 @@
   background-image: var(--t7-result-bolt, none), radial-gradient(60% 70% at 50% 40%, rgba(70,110,255,.35), transparent 70%), linear-gradient(180deg, #070a18, #000);
   background-size: auto 100%, cover, cover; background-position: center; background-repeat: no-repeat;
 }
-#screen-result .panel { background: transparent; border: 0; box-shadow: none; text-align: center; }
+#screen-result .panel { background: transparent; border: 0; box-shadow: none; text-align: center; overflow: visible; }
+/* Piece 1 re-test Bug 1 (Break 8, "YOU LOSE" clipped to "YOU L"): the
+   T7 skin sizes #result-title at min(16vw, 20vh, 150px) with
+   white-space: nowrap — ~780 px wide on desktop, ~340 px at phone
+   width — while the base .panel is max 460 px with overflow-x: hidden,
+   so the title's right half was cut at the panel edge. The T7 skin
+   already makes this panel invisible (transparent, no border/shadow),
+   so its overflow rule is meaningless here: let the title spill past
+   the panel box (it still fits the viewport). The shorthand sets BOTH
+   axes to visible — setting only overflow-x would compute to auto
+   against the base overflow-y: auto and show a scrollbar instead.
+   Content height (~470 px desktop / ~380 px phone) still fits the
+   viewport, so losing this screen's vertical scroll is safe. */
 #screen-result #result-title {
   font-size: min(16vw, 20vh, 150px); white-space: nowrap; font-weight: 900; font-style: italic; letter-spacing: 4px; margin: 0;
   color: #fff; -webkit-text-stroke: 2px #6fa8ff;
