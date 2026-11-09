@@ -71,6 +71,7 @@ import { applyPart } from '../../packages/creation-suite/src/parts.js';
 // Part GLBs load through the same candidate order as fighters
 // (remote base first, jsDelivr fallback) — see asset-config.js.
 import { loadGlbCandidates } from './asset-config.js';
+import { attachHairPhysics } from './hair-spring.js';
 
 const ROOT = new URL('../../', import.meta.url);
 const LS_KEY_SUITE = 'wh_creation_suite_v1';
@@ -274,6 +275,25 @@ export async function applyFighterProfile(fighter) {
             const ms = Array.isArray(o.material) ? o.material : [o.material];
             ms.forEach((m) => { if (m && 'side' in m) m.side = THREE.DoubleSide; });
           });
+          // Spring-bone hair physics: when the equipped part is hair, its
+          // own swing-bone chains go live immediately (gravity / wind /
+          // inertia via game/js/hair-spring.js, tuned by the entry's
+          // physics block). Rigid hair returns null and follows the head,
+          // as authored in the source game. Stepped per-frame by
+          // fighter-depth.js from model.userData.whHairSprings.
+          if (entry.suite_slot === 'hair' || entry.suite_slot === 'face_hair' || entry.slot === 'HAIR' || entry.slot === 'FACE_HAIR') {
+            try {
+              const phys = entry.physics || {};
+              const hs = attachHairPhysics(piece, {
+                stiffness: phys.stiffness, drag: phys.drag,
+                gravityPower: phys.gravity_power, windScale: phys.wind_scale,
+              });
+              if (hs) {
+                (model.userData.whHairSprings ||= []).push(hs);
+                console.log(`[WH-CS] ${charId} hair physics live: ${entry.id} (${hs.chains.length} chains, ${hs.count} joints)`);
+              }
+            } catch (e) { console.warn('[WH-CS] hair physics attach failed (visual unaffected):', e.message || e); }
+          }
           console.log(`[WH-CS] ${charId} part attached: ${entry.id} at socket '${placement.socket}' (scale ${placement.scale})${tint ? ` tint ${tint}` : ''}`);
           status.applied.push(label);
         } else if (entry.part_class === 'texture_part') {

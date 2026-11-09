@@ -13,6 +13,7 @@
 import { SoulKindle, updateKindle } from './soul-kindle.js';
 import { TagRelay, TagTeam } from './tag-relay.js';
 import { autoAttachCloth } from './cloth-hair.js';
+import { attachHairPhysics } from './hair-spring.js';
 import { TrialRunner, trialsFor, markTrialComplete } from './combo-trials.js';
 import { GhostModel, GhostRecorder, GhostAI, loadGhost } from './ghost-ai.js';
 import { analyzeReplay, showTrialReview, evHit } from './replay-analysis.js';
@@ -27,6 +28,7 @@ export const WH_DEPTH_FLAGS = {
   soulKindle: true,      // ki charge
   tagRelay: true,        // tag throws/crash/assault (2v2 modes)
   clothHair: true,       // hair + cloth physics
+  hairPhysics: true,     // spring-bone hair chains (hair-spring.js)
   comboTrials: true,     // combo trials
   ghostAi: true,         // ghost AI (soul echoes)
   replayAnalysis: true,  // trial review overlay
@@ -41,6 +43,23 @@ export function setDepthFlag(k, v) { if (k in WH_DEPTH_FLAGS) WH_DEPTH_FLAGS[k] 
 
 const F = WH_DEPTH_FLAGS;
 
+/* Step every live hair-spring system once: the fighters' own hair plus
+   any suite-equipped hair parts (deduped). Wind comes from game._whWind
+   when a stage/weather system sets it; camera drives the LOD sleep. */
+function stepHairSystems(game, dt) {
+  const env = {};
+  if (game._whWind) env.wind = game._whWind;
+  if (game.camera) { try { env.cameraPos = game.camera.position; } catch {} }
+  const seen = new Set();
+  const step = (sys) => { if (sys && !seen.has(sys)) { seen.add(sys); try { sys.update(dt, env); } catch {} } };
+  for (const s of game._whHair || []) step(s);
+  for (const p of [game.p1, game.p2]) {
+    const m = p && (p.group || p.model);
+    const list = m && m.userData && m.userData.whHairSprings;
+    if (Array.isArray(list)) for (const s of list) step(s);
+  }
+}
+
 export const FighterDepth = {
   /* Called from Game.startMatch after fighters spawn. */
   onMatchStart(game, opts = {}) {
@@ -50,6 +69,17 @@ export const FighterDepth = {
       try {
         game._whCloth = [autoAttachCloth(p1.group || p1.model), autoAttachCloth(p2.group || p2.model)];
       } catch { game._whCloth = []; }
+    }
+    if (F.hairPhysics) {
+      // Spring-bone hair: one system per fighter over its OWN skeleton's
+      // hair chains (the model's authored hair — T7 SWG/Hair_OPT bones,
+      // DAZ section bones, SmutBase chains). Rigid hair returns null and
+      // follows the head, exactly as in the source games. Parts equipped
+      // through the Creation Suite attach their own systems on top
+      // (customization-consumer.js -> model.userData.whHairSprings).
+      try {
+        game._whHair = [attachHairPhysics(p1.group || p1.model), attachHairPhysics(p2.group || p2.model)].filter(Boolean);
+      } catch { game._whHair = []; }
     }
     if (F.stageIntros && !opts.skipIntro && game.camera) {
       const stage = opts.stageDef || (game.stageDef);
@@ -89,6 +119,7 @@ export const FighterDepth = {
     if (F.stageVariants && game._whWeather) {
       updateWeatherPoints(game._whWeather, dt, (game._whT = (game._whT || 0) + dt));
     }
+    if (F.hairPhysics) stepHairSystems(game, dt);
     // cloth sims advance here (colliders from fighter bodies in the full wire)
     if (F.clothHair && game._whCloth) {
       for (const set of game._whCloth) for (const a of set) {
