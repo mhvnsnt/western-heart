@@ -8,7 +8,8 @@ as back-slot attires. (No Tekken reskin exists for Megami yet.)
 
 | Slot | Name | Model | Status |
 |---|---|---|---|
-| A1 | Shrine Regalia (default) | `attires/attire1/model-rigged.glb` | ✅ wired — MODEL_URLS `megami`, `megami-attire1` (fidelity rebuild, 2026-11-05) |
+| A1 | Shrine Regalia | `attires/attire1/model-rigged.glb` | ✅ wired — MODEL_URLS `megami-attire1` (fidelity rebuild, 2026-11-05) |
+| A2 | Roses & Bows default (BASE DEFAULT — owner pick 2026-11-08) | composed via `customization/profiles/megami.json` | ✅ pieces + Flora registered individually (library `megami-default`); composed single-GLB export pending a quiet-VM window — see Provenance A2 |
 | A1-alt | No-outfit variant (WH #1549) | `attires/attire1/model-rigged-nooutfit.glb` | on disk as a named option — not wired |
 | A1-master | Blend master (not a playable slot) | `attires/attire1/model-blend-master.glb` | full rig + all objects from the source blend |
 
@@ -52,3 +53,25 @@ as back-slot attires. (No Tekken reskin exists for Megami yet.)
 `roster/parvati/CANON.md` — MEGAMI, the Shrine Soul: temple guardian of a
 sealed door; trained Chatur; grief in motion.
 *"The shrine was here before you. It will be here after."*
+
+## Provenance — Attire 2 (owner-picked base default, 2026-11-08)
+
+- **Owner decision (2026-11-08):** the composed look in
+  `parvati-look-rosesbows-nobra-choker-flora-gauntletblack-20261108.png`
+  (workspace `_parvati-redress-20261107`) IS her base default attire:
+  Roses & Bows **Pantie 3 + garter Belt + Stocking (bra REMOVED by owner
+  order)**, **Sugar choker**, **Flora hair** (her main default hairstyle,
+  confirmed 2026-11-08), **black-panel gauntlets**, on the fixed v4
+  base/skin. Shoe slot open (owner picking). Eyes: yellow tiger (owner
+  pick 2026-11-08, registered as `megami-eye-yellow-tiger`).
+- **Pieces landed individually** (all-items order) under
+  `customization/parts/megami-default/` — Flora (23-joint rig: neck/head +
+  19 hair bones, 10 spring-bone chains), pantie, garter belt, stockings,
+  choker, gauntlets — each exported from the fixed blend
+  (`Parvati-basefix.blend`), registered in PARTS-REGISTRY + suite catalog
+  + create-fighter index, and composed by `customization/profiles/megami.json`.
+- **Pending:** the composed one-file `attires/attire2/model-rigged.glb`
+  export OOMs on this 8 GB VM (474 shape keys; two attempts killed) —
+  until it lands in a quiet window, MODEL_URLS `megami` stays on attire1
+  and A2 is carried by the profile composition above. Not a silent gap:
+  tracked in `customization/HAIR-WIRING-STATUS-2026-11-08.md`.

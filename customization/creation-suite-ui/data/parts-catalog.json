@@ -14,10 +14,11 @@
   "teardown/wwf-no-mercy/textures/rom/tattoo": 99,
   "customization/parts-converted/wmxix-textures/TEX/Face_op": 140,
   "customization/parts-converted/wmxix-textures/TEX/64gara": 39,
-  "tekken7 hair (GRE teardown, new)": 33
+  "tekken7 hair (GRE teardown, new)": 33,
+  "megami-default + megami-eyes (2026-11-08, new)": 7
  },
- "total": 7735,
- "notes": "parts-converted/CATALOG.json is a REAL source since PR #398 merged (run #3 absence finding was true at check time; the merge landed after). Eyes: mesh eye/brow parts are placeable (eye_kind=placeable_part); eye texture entries are legacy variants (eye_kind=texture_variant) per the owner 2026-10-20 eye verdict. No eyelash mesh exists in-repo yet. Def Jam CAW library wired 2026-10-22 (worker 33, fight-lab lane): 2,624 conversion entries, all geometry_pending (POINTS topology until the mesh conversion pass lands). Worker 38 (2026-10-22): +272 DOA4 costume GLBs (full-body, real meshes). AshLane hair wired 2026-11-02: +5 real GLBs from the owner's AshLane parts library (INDEX geometryReady), listed in the suite catalog with head socket, offset 0, scale 1 (per customization/parts/ashlane/hair/manifest.json). No Mercy tattoos wired 2026-11-02: 99 tattoo PNGs from teardown/wwf-no-mercy/textures/rom/tattoo/ as decal_logo texture parts (geometry_pending false, chest-socket marker fallback in the suite preview until a placement is authored; they surface under Decals, since PARTS_TREE has no dedicated tattoo category yet). Tekken 7 hair wired 2026-11-08: +33 items (31 HAIR + 2 FACE_HAIR) from the held GRE Steam teardown (pakchunk0), real GLBs with swing-bone chains, spring physics via game/js/hair-spring.js.",
+ "total": 7742,
+ "notes": "parts-converted/CATALOG.json is a REAL source since PR #398 merged (run #3 absence finding was true at check time; the merge landed after). Eyes: mesh eye/brow parts are placeable (eye_kind=placeable_part); eye texture entries are legacy variants (eye_kind=texture_variant) per the owner 2026-10-20 eye verdict. No eyelash mesh exists in-repo yet. Def Jam CAW library wired 2026-10-22 (worker 33, fight-lab lane): 2,624 conversion entries, all geometry_pending (POINTS topology until the mesh conversion pass lands). Worker 38 (2026-10-22): +272 DOA4 costume GLBs (full-body, real meshes). AshLane hair wired 2026-11-02: +5 real GLBs from the owner's AshLane parts library (INDEX geometryReady), listed in the suite catalog with head socket, offset 0, scale 1 (per customization/parts/ashlane/hair/manifest.json). No Mercy tattoos wired 2026-11-02: 99 tattoo PNGs from teardown/wwf-no-mercy/textures/rom/tattoo/ as decal_logo texture parts (geometry_pending false, chest-socket marker fallback in the suite preview until a placement is authored; they surface under Decals, since PARTS_TREE has no dedicated tattoo category yet). Tekken 7 hair wired 2026-11-08: +33 items (31 HAIR + 2 FACE_HAIR) from the held GRE Steam teardown (pakchunk0), real GLBs with swing-bone chains, spring physics via game/js/hair-spring.js. Megami default set wired 2026-11-08: +7 (Flora hair, 5 default-attire pieces, tiger eye).",
  "parts": [
   {
    "id": "no-mercy-0x12ba-attire-parts-model-12ba-obj",
@@ -241664,6 +241665,319 @@
     "wind_scale": 1.0,
     "rigid": false
    }
+  },
+  {
+   "id": "megami-hair-flora",
+   "name": "Hair \u2014 Flora (Megami default)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "library": "megami-default",
+   "source": "Parvati commission blend (fixed v4 base) \u2014 Megami default attire set, owner pick 2026-11-08",
+   "glb": "customization/parts/megami-default/flora-hair/flora-hair.glb",
+   "asset": "customization/parts/megami-default/flora-hair/flora-hair.glb",
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": "megami",
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 19,
+    "chains": 10,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false
+   },
+   "is_default_hairstyle": true,
+   "default_for": "megami",
+   "size": 13456256
+  },
+  {
+   "id": "megami-roses-bows-pantie",
+   "name": "Roses & Bows \u2014 Pantie",
+   "part_class": "mesh_part",
+   "suite_slot": "lower_body",
+   "library": "megami-default",
+   "source": "Parvati commission blend (fixed v4 base) \u2014 Megami default attire set, owner pick 2026-11-08",
+   "glb": "customization/parts/megami-default/roses-bows-pantie/roses-bows-pantie.glb",
+   "asset": "customization/parts/megami-default/roses-bows-pantie/roses-bows-pantie.glb",
+   "socket": "lower_body",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": "megami",
+   "geometry_pending": false,
+   "kind": "lower_body",
+   "placement": {
+    "socket": "lower_body",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ]
+  },
+  {
+   "id": "megami-roses-bows-garter-belt",
+   "name": "Roses & Bows \u2014 Garter Belt",
+   "part_class": "mesh_part",
+   "suite_slot": "accessory",
+   "library": "megami-default",
+   "source": "Parvati commission blend (fixed v4 base) \u2014 Megami default attire set, owner pick 2026-11-08",
+   "glb": "customization/parts/megami-default/roses-bows-garter-belt/roses-bows-garter-belt.glb",
+   "asset": "customization/parts/megami-default/roses-bows-garter-belt/roses-bows-garter-belt.glb",
+   "socket": "accessory",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": "megami",
+   "geometry_pending": false,
+   "kind": "accessory",
+   "placement": {
+    "socket": "accessory",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ]
+  },
+  {
+   "id": "megami-roses-bows-stockings",
+   "name": "Roses & Bows \u2014 Stockings",
+   "part_class": "mesh_part",
+   "suite_slot": "lower_body",
+   "library": "megami-default",
+   "source": "Parvati commission blend (fixed v4 base) \u2014 Megami default attire set, owner pick 2026-11-08",
+   "glb": "customization/parts/megami-default/roses-bows-stockings/roses-bows-stockings.glb",
+   "asset": "customization/parts/megami-default/roses-bows-stockings/roses-bows-stockings.glb",
+   "socket": "lower_body",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": "megami",
+   "geometry_pending": false,
+   "kind": "lower_body",
+   "placement": {
+    "socket": "lower_body",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ]
+  },
+  {
+   "id": "megami-sugar-choker",
+   "name": "Sugar \u2014 Choker",
+   "part_class": "mesh_part",
+   "suite_slot": "accessory",
+   "library": "megami-default",
+   "source": "Parvati commission blend (fixed v4 base) \u2014 Megami default attire set, owner pick 2026-11-08",
+   "glb": "customization/parts/megami-default/sugar-choker/sugar-choker.glb",
+   "asset": "customization/parts/megami-default/sugar-choker/sugar-choker.glb",
+   "socket": "accessory",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": "megami",
+   "geometry_pending": false,
+   "kind": "accessory",
+   "placement": {
+    "socket": "accessory",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ]
+  },
+  {
+   "id": "megami-gauntlets-black",
+   "name": "Gauntlets \u2014 Black Panels",
+   "part_class": "mesh_part",
+   "suite_slot": "gauntlets",
+   "library": "megami-default",
+   "source": "Parvati commission blend (fixed v4 base) \u2014 Megami default attire set, owner pick 2026-11-08",
+   "glb": "customization/parts/megami-default/gauntlets-black/gauntlets-black.glb",
+   "asset": "customization/parts/megami-default/gauntlets-black/gauntlets-black.glb",
+   "socket": "gauntlets",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": "megami",
+   "geometry_pending": false,
+   "kind": "gauntlets",
+   "placement": {
+    "socket": "gauntlets",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ]
+  },
+  {
+   "id": "megami-eye-yellow-tiger",
+   "name": "Megami eyes \u2014 yellow tiger",
+   "part_class": "texture_part",
+   "suite_slot": "eye",
+   "library": "megami-eyes",
+   "source": "PARTS-REGISTRY.json",
+   "glb": null,
+   "asset": "customization/parts/megami-eyes/eye-yellow-tiger-daz.png",
+   "socket": "eyes",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": "megami",
+   "geometry_pending": false,
+   "kind": "eye",
+   "placement": {
+    "material": "Irises-2",
+    "mode": "full_replace"
+   },
+   "editable": [
+    "position",
+    "size",
+    "opacity"
+   ],
+   "eye_kind": "texture_variant"
   }
  ]
 }
