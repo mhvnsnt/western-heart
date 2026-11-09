@@ -446,6 +446,20 @@
    "note": "Tekken 7 customization items from the held Steam teardown (GRE tekken7-steam, pakchunk0), registered with T7-native slot metadata (16-slot system; HAIR slotId 2, FACE_HAIR slotId 7). Hair items carry their own T7 skeleton + swing-bone chains; physics via game/js/hair-spring.js. 2026-11-08: 31 HAIR + 2 FACE_HAIR landed; remaining item slots land in follow-up PRs from the same held tree.",
    "part_class": "mesh_part",
    "path": "customization/parts/tekken7/"
+  },
+  "megami-default": {
+   "kind": "hair | lower_body | accessories | gauntlets",
+   "manifest": null,
+   "note": "Megami's owner-picked base default attire set (2026-11-08): Flora hair (her main default hairstyle) + Roses & Bows pantie/garter/stockings + Sugar choker + black-panel gauntlets, exported piece-by-piece from her fixed source blend. Composed as her default via customization/profiles/megami.json.",
+   "part_class": "mesh_part",
+   "path": "customization/parts/megami-default/"
+  },
+  "megami-eyes": {
+   "kind": "eye",
+   "manifest": null,
+   "note": "Megami's saved eye variants (same art family as eye-library; kept as megami-local options).",
+   "part_class": "texture_part",
+   "path": "customization/parts/megami-eyes/"
   }
  },
  "parts": [
@@ -54255,10 +54269,343 @@
    "size": 700184,
    "tris": 20418,
    "notes": "Physics-live: 30 swing/hair bones in 5 chains (the game's own SWG/Hair_OPT bones), driven by game/js/hair-spring.js (gravity + wind + inertia). Texture gap (held files): GRE holds no diffuse map for this item (see textures list) \u2014 the mesh renders with its held maps + suite tint until the GRE texture extraction is completed. Logged, not fabricated."
+  },
+  {
+   "id": "megami-hair-flora",
+   "name": "Flora Hair \u2014 Megami main default hairstyle",
+   "library": "megami-default",
+   "source_game": "megami-default",
+   "type": "mesh_part",
+   "part_class": "mesh_part",
+   "kind": "hair",
+   "suite_slot": "hair",
+   "menu": "head",
+   "tab": "Head (hair)",
+   "socket": "head",
+   "bone_aliases": [
+    "Head",
+    "mixamorig:Head",
+    "head",
+    "J_Head",
+    "Bip01 Head"
+   ],
+   "file": "customization/parts/megami-default/flora-hair/flora-hair.glb",
+   "glb": "customization/parts/megami-default/flora-hair/flora-hair.glb",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1.0,
+   "editable": [
+    "tint",
+    "roughness",
+    "metalness",
+    "offset",
+    "rotation",
+    "scale",
+    "visible"
+   ],
+   "geometryPending": false,
+   "size": 13456256,
+   "placement": {
+    "socket": "head",
+    "modeled_in_place_for": "megami"
+   },
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 19,
+    "chains": 10,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false
+   },
+   "is_default_hairstyle": true,
+   "default_for": "megami",
+   "tris": 181154,
+   "character_mappings": {
+    "megami": "authored on her own rig (23-joint subset: neck/head + 19 Flora hair bones, 10 chains) \u2014 her main default hairstyle per owner 2026-11-08",
+    "*": "socket attach at head with placement offsets"
+   },
+   "notes": "Flora Hair Genesis 8 Female from Parvati's source blend (object 'Hair'), dark 20WFFloraHair diffuse embedded at 1024px with cap maps. Owner pick 2026-11-08: 'that hair is better on her' + confirmed MAIN DEFAULT hairstyle 2026-11-08. Rigged on her own hair bones; spring-bone physics via game/js/hair-spring.js."
+  },
+  {
+   "id": "megami-roses-bows-pantie",
+   "name": "Roses & Bows \u2014 Pantie",
+   "library": "megami-default",
+   "source_game": "megami-default",
+   "type": "mesh_part",
+   "part_class": "mesh_part",
+   "kind": "lower_body",
+   "suite_slot": "lower_body",
+   "menu": "body",
+   "tab": "Legs / lower",
+   "socket": "lower_body",
+   "bone_aliases": [],
+   "file": "customization/parts/megami-default/roses-bows-pantie/roses-bows-pantie.glb",
+   "glb": "customization/parts/megami-default/roses-bows-pantie/roses-bows-pantie.glb",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1.0,
+   "editable": [
+    "tint",
+    "roughness",
+    "metalness",
+    "offset",
+    "rotation",
+    "scale",
+    "visible"
+   ],
+   "geometryPending": false,
+   "size": 5285784,
+   "placement": {
+    "socket": "lower_body",
+    "modeled_in_place_for": "megami"
+   },
+   "notes": "Roses & Bows Pantie 3 (bra removed from the set by owner order). Part of Megami's base default attire (owner 2026-11-08). Exported from the fixed Parvati commission blend (Parvati-basefix.blend) \u2014 the piece as authored, skinned to the full GZM rig.",
+   "character_mappings": {
+    "megami": "modeled in place on her own rig (full GZM skeleton)",
+    "*": "socket attach with placement offsets"
+   }
+  },
+  {
+   "id": "megami-roses-bows-garter-belt",
+   "name": "Roses & Bows \u2014 Garter Belt",
+   "library": "megami-default",
+   "source_game": "megami-default",
+   "type": "mesh_part",
+   "part_class": "mesh_part",
+   "kind": "accessory",
+   "suite_slot": "accessory",
+   "menu": "body",
+   "tab": "Accessories",
+   "socket": "accessory",
+   "bone_aliases": [],
+   "file": "customization/parts/megami-default/roses-bows-garter-belt/roses-bows-garter-belt.glb",
+   "glb": "customization/parts/megami-default/roses-bows-garter-belt/roses-bows-garter-belt.glb",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1.0,
+   "editable": [
+    "tint",
+    "roughness",
+    "metalness",
+    "offset",
+    "rotation",
+    "scale",
+    "visible"
+   ],
+   "geometryPending": false,
+   "size": 14450468,
+   "placement": {
+    "socket": "accessory",
+    "modeled_in_place_for": "megami"
+   },
+   "notes": "Roses & Bows garter Belt. Part of Megami's base default attire (owner 2026-11-08). Exported from the fixed Parvati commission blend (Parvati-basefix.blend) \u2014 the piece as authored, skinned to the full GZM rig.",
+   "character_mappings": {
+    "megami": "modeled in place on her own rig (full GZM skeleton)",
+    "*": "socket attach with placement offsets"
+   }
+  },
+  {
+   "id": "megami-roses-bows-stockings",
+   "name": "Roses & Bows \u2014 Stockings",
+   "library": "megami-default",
+   "source_game": "megami-default",
+   "type": "mesh_part",
+   "part_class": "mesh_part",
+   "kind": "lower_body",
+   "suite_slot": "lower_body",
+   "menu": "body",
+   "tab": "Legs / lower",
+   "socket": "lower_body",
+   "bone_aliases": [],
+   "file": "customization/parts/megami-default/roses-bows-stockings/roses-bows-stockings.glb",
+   "glb": "customization/parts/megami-default/roses-bows-stockings/roses-bows-stockings.glb",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1.0,
+   "editable": [
+    "tint",
+    "roughness",
+    "metalness",
+    "offset",
+    "rotation",
+    "scale",
+    "visible"
+   ],
+   "geometryPending": false,
+   "size": 15813048,
+   "placement": {
+    "socket": "lower_body",
+    "modeled_in_place_for": "megami"
+   },
+   "notes": "Roses & Bows Stocking. Part of Megami's base default attire (owner 2026-11-08). Exported from the fixed Parvati commission blend (Parvati-basefix.blend) \u2014 the piece as authored, skinned to the full GZM rig.",
+   "character_mappings": {
+    "megami": "modeled in place on her own rig (full GZM skeleton)",
+    "*": "socket attach with placement offsets"
+   }
+  },
+  {
+   "id": "megami-sugar-choker",
+   "name": "Sugar \u2014 Choker",
+   "library": "megami-default",
+   "source_game": "megami-default",
+   "type": "mesh_part",
+   "part_class": "mesh_part",
+   "kind": "accessory",
+   "suite_slot": "accessory",
+   "menu": "body",
+   "tab": "Accessories",
+   "socket": "accessory",
+   "bone_aliases": [],
+   "file": "customization/parts/megami-default/sugar-choker/sugar-choker.glb",
+   "glb": "customization/parts/megami-default/sugar-choker/sugar-choker.glb",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1.0,
+   "editable": [
+    "tint",
+    "roughness",
+    "metalness",
+    "offset",
+    "rotation",
+    "scale",
+    "visible"
+   ],
+   "geometryPending": false,
+   "size": 4089292,
+   "placement": {
+    "socket": "accessory",
+    "modeled_in_place_for": "megami"
+   },
+   "notes": "The_Choker (Sugar set). Part of Megami's base default attire (owner 2026-11-08). Exported from the fixed Parvati commission blend (Parvati-basefix.blend) \u2014 the piece as authored, skinned to the full GZM rig.",
+   "character_mappings": {
+    "megami": "modeled in place on her own rig (full GZM skeleton)",
+    "*": "socket attach with placement offsets"
+   }
+  },
+  {
+   "id": "megami-gauntlets-black",
+   "name": "Gauntlets \u2014 Black Panels",
+   "library": "megami-default",
+   "source_game": "megami-default",
+   "type": "mesh_part",
+   "part_class": "mesh_part",
+   "kind": "gauntlets",
+   "suite_slot": "gauntlets",
+   "menu": "body",
+   "tab": "Hands (gauntlets)",
+   "socket": "gauntlets",
+   "bone_aliases": [],
+   "file": "customization/parts/megami-default/gauntlets-black/gauntlets-black.glb",
+   "glb": "customization/parts/megami-default/gauntlets-black/gauntlets-black.glb",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1.0,
+   "editable": [
+    "tint",
+    "roughness",
+    "metalness",
+    "offset",
+    "rotation",
+    "scale",
+    "visible"
+   ],
+   "geometryPending": false,
+   "size": 2187804,
+   "placement": {
+    "socket": "gauntlets",
+    "modeled_in_place_for": "megami"
+   },
+   "notes": "Her Gaunlet with the black-panel atlas (mat44 recolor). Part of Megami's base default attire (owner 2026-11-08). Exported from the fixed Parvati commission blend (Parvati-basefix.blend) \u2014 the piece as authored, skinned to the full GZM rig.",
+   "character_mappings": {
+    "megami": "modeled in place on her own rig (full GZM skeleton)",
+    "*": "socket attach with placement offsets"
+   }
+  },
+  {
+   "asset": "customization/parts/megami-eyes/eye-yellow-tiger-daz.png",
+   "editable": [
+    "position",
+    "size",
+    "opacity"
+   ],
+   "id": "megami-eye-yellow-tiger",
+   "kind": "eye",
+   "library": "megami-eyes",
+   "name": "Megami eyes \u2014 yellow tiger (owner pick 2026-11-08, currently applied)",
+   "notes": "Owner pick 2026-11-08: 'Give her the tiger eyes.' The universal eye-library yellow tiger iris REBUILT for Megami's Daz-atlas eye UVs: radial remap compressing the fiber annulus into the sampled window. Swap target = material Irises-2 on her model. Texture MUST be sampled with RepeatWrapping + flipY=false + SRGBColorSpace. Parent-verified proof: parvati-eyes-tiger-closeup-v3-20261108.png (workspace _parvati-redress-20261107). Same art family as the universal eye-library entry eye-yellow-tiger.",
+   "part_class": "texture_part",
+   "placement": {
+    "default_character": "megami",
+    "material": "Irises-2",
+    "mode": "full_replace",
+    "texture": "parvati-iris-tiger-daz"
+   },
+   "size_px": [
+    1024,
+    1024
+   ],
+   "suite_slot": "eye",
+   "texture_settings": {
+    "wrapS": "RepeatWrapping",
+    "wrapT": "RepeatWrapping",
+    "flipY": false,
+    "colorSpace": "SRGBColorSpace"
+   }
   }
  ],
  "registry": "creation-suite-parts-registry",
- "source": "Owner directive 2026-10-18: make the parts libraries swappable on ANY character, Tekken/WWE-style. | 2026-10-18: wired 3372 teardown wearable parts (geometryPending) + 9 universal CC0 hair pieces. | 2026-11-08: +33 Tekken 7 hair items (31 HAIR + 2 FACE_HAIR) from the GRE Steam teardown, physics-ready (hair-spring.js).",
+ "source": "Owner directive 2026-10-18: make the parts libraries swappable on ANY character, Tekken/WWE-style. | 2026-10-18: wired 3372 teardown wearable parts (geometryPending) + 9 universal CC0 hair pieces. | 2026-11-08: +33 Tekken 7 hair items (31 HAIR + 2 FACE_HAIR) from the GRE Steam teardown, physics-ready (hair-spring.js). | 2026-11-08: +6 megami-default parts (Flora hair + default attire pieces) + Megami tiger eye.",
  "suite_slots": {
   "accessory": {
    "attire_slot": "torso",
