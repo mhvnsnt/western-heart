@@ -1844,6 +1844,31 @@ Raiden, Bass Armstrong (→ Vain Abel's base), Craig Marduk, Armor King
   or docs here.
 - Full detail: `roster/parvati/CANON.md` ("Owner orders — 2026-11-08").
 
+
+## OWNER ORDERS — 2026-11-09 (MEGAMI)
+
+- **Hair verdicts:** afro build12 ACCEPTED (PR #1689 merged; dense
+  black opaque, ~2x head width; reservations: chunky curls at macro,
+  hairline slightly high with centre notch, long side points). Straight
+  v2 REJECTED — renders displaced off her head (black cap slab over
+  bare scalp).
+- **Hero shot:** LANDED + DELIVERED 2026-11-09 ~05:20 CST (PR #1690
+  merged; 8 frames, v2 face + tattoos + fixed afro + Angel-brown
+  eyes, bare; parent own-eyes: composition is the ordered set).
+- **Confirmed defects:** (1) FOREARM WARP — both forearms bend/melt in
+  S-curve in all full-body frames; (2) glossy/oiled skin sheen;
+  (3) afro fringe notch + dome arc at face-close distance; (4) T4
+  still blocky.
+- **Fidelity lane (2026-11-09):** one lane owns all three bind-state
+  defects — pilot GLB forearm warp, v4 body mesh ~0.33 m below its
+  skeleton, straight hair displaced off head — proving which stage
+  introduced each before fixing at that source, no hand edits; the
+  corrected Parvati v4 base-fix landing into the game build rides in
+  the same lane.
+- **Owner rulings owed:** face verdict, PR #1678 merge, bio draft 3
+  flags, T14 glyph accept/replace, whether afro becomes default.
+- Full detail: `roster/parvati/CANON.md` ("2026-11-09 outcomes").
+
 ## MODEL-TWEAKING PRINCIPLES — 2026-11-08 (standing rules, all future model work)
 
 Owner order 2026-11-08 ~20:37 CST — land in all necessary repos.
