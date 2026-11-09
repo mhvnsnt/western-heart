@@ -50,13 +50,15 @@ test('the 5 AshLane hair entries are wired, unique, and not pending', () => {
   }
 });
 
-test('hair totals after wiring: 363 entries, 51 wired, 48 with a glb', () => {
+test('hair totals after wiring: 364 entries, 52 wired, 49 with a glb', () => {
+  // 2026-11-08 (hair-wiring lane, Megami PR): +1 — Flora, Megami's main
+  // default hairstyle (suite_slot 'hair', wired with GLB) over 363/51/48.
   // 2026-11-08 (hair-wiring lane): +31 Tekken 7 HAIR entries (suite_slot
   // 'hair', all wired with GLBs) over the 332 / 20 / 17 baseline.
   const hair = CATALOG.parts.filter((p) => p.suite_slot === 'hair');
-  assert.equal(hair.length, 363, 'hair entries');
-  assert.equal(hair.filter((p) => !p.geometry_pending).length, 51, 'hair wired');
-  assert.equal(hair.filter((p) => p.glb).length, 48, 'hair with glb');
+  assert.equal(hair.length, 364, 'hair entries');
+  assert.equal(hair.filter((p) => !p.geometry_pending).length, 52, 'hair wired');
+  assert.equal(hair.filter((p) => p.glb).length, 49, 'hair with glb');
 });
 
 test('create-fighter catalog header no longer cites the stale 3,372 figure', () => {
