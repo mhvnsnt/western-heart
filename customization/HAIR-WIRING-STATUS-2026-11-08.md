@@ -172,3 +172,81 @@ straight-onbody-34.png, straight-solo-back.png (harness compensates the known
 v4-body mesh-vs-skeleton offset, labeled in PR #1679's addendum; the dark bun at
 the hairline in harness shots is the v4 body's own base hair, hidden in game when
 a hair part is equipped).
+
+
+## Addendum 5 — FIX PASS: afro density/colour + straight cap/headband (2026-11-08)
+
+Parent own-eyes review REJECTED the #1687/#1688 proofs: afro grey and see-through
+(smooth dome patches through the curl mass), afro proofs shot on the wrong (white)
+stage, the body's own base hair showing inside the afro, pale/white eyes in the
+hair proofs, and the straight headband sitting across the forehead like a slab.
+This pass fixes all five. Flora remains Megami's main default hair; afro and
+straight remain selectable options.
+
+AFRO — root causes established by measurement:
+1. GREY WASH: the shipped AngelAfroMat carried KHR_materials_sheen with
+   sheenColorFactor [1,1,1] at full strength over thin curl tubes. The rebuilt
+   materials carry NO sheen anywhere: curls (0.010, 0.008, 0.006) roughness 0.9;
+   dome/cap backing (0.004, 0.004, 0.004) roughness 1.0.
+2. SEE-THROUGH PANEL: a "pull-in" deform in the build scaled the front band's
+   x/y by 0.55 toward the skull, putting the whole front clump screen BEHIND the
+   forehead plane (joined-mesh front extent |y| max 0.146 vs envelope 0.170;
+   forehead surface at -0.095..-0.098) — her crown poked through the recessed
+   screen as a smooth warm trapezoid (material-ID render confirmed the panel is
+   body skin, not dome or curl). The deform is REMOVED: roots sit on the raw
+   envelope ~6 cm in front of the forehead, and the sight corridor is tiled by
+   layered passes — main 2,100 + frizz 800 + front wall fill 900 + dome-band
+   apron 800 + hairline fringe 500 + scalp-cap fill 850 + hairline seal 350 =
+   6,300 corkscrew clumps on the registered 6 spring chains (stiff profile).
+   The envelope's bottom edge follows the MEASURED Flora hairline at the front
+   (set 8 mm below it, natural range) and descends to jaw/nape at sides/back;
+   ears covered.
+3. STAGE: all fix proofs re-shot on the dark standard stage (#14121c,
+   v4 skin-standard lighting), matching every other Megami proof.
+4. BASE HAIR HIDDEN (harness + game-side rule): GLTFLoader sanitizes the v4
+   body's node name `Hair.001` to `Hair001`; the original hide list used the
+   dotted spelling and never matched. Hide by name on ANY object type, both
+   spellings. GAME-SIDE COMPOSITION: when a hair part is equipped, hide the
+   body's own hair the same way — for the v4 body GLB the group `Hair001`
+   (meshes 25_Material40_1_0_0 / 25_Material40_1_0_1) plus the `Full` strand
+   mesh where applicable; the combined hero shot hides the Pilot 2 v2 GLB's
+   bundled Hair.001 identically.
+5. EYES: the Angel-brown eye part (customization/eye-library/
+   eye-brown-angel-daz.png) is applied to Irises-2 in the harness
+   (radial-remap, RepeatWrapping, flipY=false, SRGB) — no more pale eyes.
+
+Afro verdict (own-eyes on the shipped GLB): dense, black, opaque from front,
+3/4, back and top; ~2x head width; back matches the v1 back-view colour target.
+SIZE NOTE: density costs geometry — the GLB is now 81,320,784 B / 1,670,136 tris
+(was 22,441,832 B / 456,624); registry/index/catalog updated in place (part
+counts unchanged: registry 1,192 / suite 7,744 / create-fighter 8,002). Serving
+this part through the 25 MiB Pages path needs the same treatment as other
+oversize models; the part file itself is correct.
+
+STRAIGHT — cap darkened (AngelCap base factor [0.07, 0.065, 0.06] ->
+[0.012, 0.011, 0.010], roughness 1.0) so the sleek top reads as black hair, not
+a grey dome; headband repositioned in geometry: base fit + lift (bottom edge ON
+the measured hairline, z 1.715) + tip back -8 deg to follow the forehead curve +
+hug pass (radial scale 0.96 about the head axis, -0.015 drop, -5 deg tuck);
+final band bounds x +/-0.084, y -0.113..-0.029, z 1.704..1.762 (front surface
+~5 mm proud of the cap). RESIDUAL, stated plainly: in the three.js proof
+renderer the band — a 100%-`head`-weighted accessory mesh — still renders
+displaced forward off the cap (visor artifact), although its GLB geometry,
+skin indices and weights verify correct (all 74 verts -> joint `head`,
+weight 1.0; inverse-bind-matrix recompute changed nothing). Same
+mesh-vs-skeleton bind family as the v4 body's -0.33 offset — the fidelity
+lane's territory. Per the fix brief's sanctioned fallback, the shipped
+straight proofs are shot with the band toggled OFF, plus one labeled band-ON
+close proof showing the residual displacement. The band remains a toggleable
+sub-part (node `AngelHeadband`).
+
+Harness compensation (unchanged, labeled): proof shots place the hair root at
+y -0.33, compensating the known v4-body mesh-vs-skeleton offset; the body fix
+belongs to the fidelity lane, not this pass.
+
+Proofs: customization/proof/hair-wiring-2026-11-08/afro-onbody-front-v2-20261108.png,
+afro-onbody-34-v2-20261108.png, afro-onbody-back-v2-20261108.png,
+afro-onbody-top-v2-20261108.png, afro-closeup-curl-v2-20261108.png,
+straight-onbody-front-v2-20261108.png, straight-onbody-34-v2-20261108.png,
+straight-onbody-close-v2-20261108.png,
+straight-headband-bandon-close-v2-20261108.png.

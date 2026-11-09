@@ -1,11 +1,13 @@
 """Author the Angel straight GLB's color sections at the glTF level:
 AngelBlack/AngelCap get a darkening baseColorFactor; AngelBlonde gets its own
 baked blonde variant of Flora's hair texture (embedded image), since a <=1
-factor cannot brighten the dark source texture toward blonde."""
+factor cannot brighten the dark source texture toward blonde.
+FIX PASS (2026-11-08): AngelCap darkened + roughness 1.0 so the exposed cap
+no longer catches a glossy dome highlight above the headband."""
 import json, struct, io, sys
 import numpy as np
 from PIL import Image
-SRC='megami-hair-angel-straight.glb'; OUT='megami-hair-angel-straight-final.glb'
+SRC='straight-raw.glb'; OUT='straight-v2.glb'
 d=open(SRC,'rb').read()
 jl=struct.unpack('<I',d[12:16])[0]; g=json.loads(d[20:20+jl])
 off=20+jl; bl=struct.unpack('<I',d[off:off+4])[0]; binchunk=bytearray(d[off+8:off+8+bl])
@@ -30,8 +32,8 @@ g['images'].append({'name':'AngelHairBlondeTex','mimeType':'image/jpeg','bufferV
 g['textures'].append({'source':len(g['images'])-1,'sampler':g['textures'][hair_tex_idx].get('sampler',0)})
 mats['AngelBlonde']['pbrMetallicRoughness']['baseColorTexture']={'index':len(g['textures'])-1}
 mats['AngelBlack']['pbrMetallicRoughness']['baseColorFactor']=[0.18,0.15,0.13,1.0]
-mats['AngelCap']['pbrMetallicRoughness']['baseColorFactor']=[0.10,0.09,0.08,1.0]
-mats['AngelCap']['pbrMetallicRoughness']['roughnessFactor']=0.9
+mats['AngelCap']['pbrMetallicRoughness']['baseColorFactor']=[0.012,0.011,0.010,1.0]
+mats['AngelCap']['pbrMetallicRoughness']['roughnessFactor']=1.0
 g['buffers'][0]['byteLength']=len(binchunk)
 gj=json.dumps(g).encode()
 while len(gj)%4: gj+=b' '
