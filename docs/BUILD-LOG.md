@@ -1,3 +1,11 @@
+## 2026-11-10 — King T7 FULL graph import + runtime interpreter (owner t388u method correction) (MoneyManBusch / Grok)
+
+- **Import.** `tools/anim/t7_graph_import.py` imports King's whole motbin graph: 2,787 moves, 42,621 cancel rows with groups inlined, 259 sequences, 868 requirement lists, and the alias table read from the bin header. It is deterministic. Output: `game/assets/anim/t7/king/graph.json` (2.55 MB).
+- **Coverage** is generated from the source: 1,196 moves reachable, using 772 unique clips. 135 of 225 requirement conditions are unlabelled.
+- **Runtime.** `game/js/t7graph.js` walks cancels in source priority (press vs held vs state links, windows, AUTO, sequences, requirements). Unknown conditions are skipped and reported, never satisfied. 10/10 tests reproduce the earlier verified dash/run/KBD/throw facts from the graph alone.
+- **Bake.** `tools/anim/t7_graph_bake.py` batch-bakes every reachable clip through the existing sampler path, with a resumable cache.
+- **Not yet:** the fighter adapter that uses the graph, shipping the baked clips, unlabelled requirement conditions, character-ID table, distance units, throws table. See `docs/proof/2026-11-10/t7-full-graph/README.md`.
+
 ## 2026-11-10 — Pantera pass 5: real King T7 run locomotion (sRUN__00F..03F) (MoneyManBusch / Grok) (t386u)
 
 - **Sources restored** to `/workspace/pantera-t7-sources`, hash-verified: mothead subset (git blobs), exe `7f2b6872…`, mannequin `ce817108…`, helper `1b447b1f…`.
