@@ -1,3 +1,16 @@
+## 2026-11-10 — Pantera pass 4: run-alias fix, KBD crouch cancel, King T7 sequence/group/requirement decode (MoneyManBusch / Grok) (t386u)
+
+- **Alias.** `t7NormMotion` now canonicalizes only the run's third input (`f,f,F+X` → `f,f,f+X`). It is the dash's f-state link at frame 12 → `sRUN__00F`, so there is no blind case folding. `f,f,F+3` / `f,f,F+3+4` now play King T7 `Kg_666lk` / `Kg_dki11` (they were T3).
+- **KBD.** Backdash `sDASH_00B`'s group cancels d/b|d|d/f → crouch transitions (req 0, from frame 1) are wired as `TEKKEN_BACKDASH_CROUCH_CANCEL_FROM`. b,b from crouch backdashes again. No backdash→backdash link exists in the table, so none was added.
+- **Decode.** `tools/anim/t7_table_dump.py` produces `docs/proof/2026-11-10/pantera-tekken-dash/king-t7-tables.json`:
+  - input sequence = cmd − 0x800D (verified at 0x80b6 = n,f,n,f,n,f+3 → `Kg_666lk`);
+  - group cancels are `<QQQIIIHH` ending at 0x800C;
+  - requirement rows run to 881;
+  - King T7 references no CD sequence (no crouch dash).
+- **Coverage.** Plain rows on real King T7: 68 → **70 / 643**; T3 King 509 → 507.
+- **Tests:** 4 new positive tests fail on main and pass here, plus negatives. The suite failure set is identical to main.
+- **Not done:** run locomotion (needs the `Bco_run00` 0x8043 bake), gated links (req 2130/2132/1085/539), WR rows, throws, stance/close-far rows. Not touch- or model-verified.
+
 ## 2026-11-10 — Pantera pass 3: King T7 dash / run moves from King's own link tables (MoneyManBusch / Grok) (t386u)
 
 - **Resolver.** `t7_move_resolve.py --motions` walks stance → 0x8001 → `Kg_sDASHF`, then the dash's f+X / n+X, or the dash's f → `sRUN__00F`, then X. The final move's damage and first active frame must match. 8 of 11 motion rows mapped. The earlier lead dash+1 → `Kg_jprk00F` was corrected: that cancel is requirement-gated; Jaguar Hook is `Kg_lygerlp00`.

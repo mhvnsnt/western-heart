@@ -590,10 +590,19 @@ export function rootMotionSample(root_t, fps, t) {
      +1.31..+1.46 m, backdash x -0.64..-0.72 m, sidesteps z +-0.92 m) — unlike the T3
      banks (forward = +z), so this reads x;
    - buttons cancel the dash from frame 1 (both moves' 1/2/3/4 cancels, window [1, 32767]).
-   NOT YET SOURCED / NOT DONE: the backdash crouch cancel (KBD) lives in the motbin's
-   packed group-cancel table, not the move's own list — undecoded, so no KBD is invented;
-   the f re-press at frame 12 (re-dash / sRUN__00F run) is not wired either. */
+   KBD (2026-11-10, pass 4): the backdash's crouch cancel, decoded from the packed
+   group-cancel table (0x800B refs -> group_cancels, 40-byte <QQQIIIHH rows, ended by 0x800C):
+   sDASH_00B d/b -> Kg_st2cr00B, d -> Kg_st2cr00_, d/f -> st2cr_00F, each requirement 0
+   (unconditional), window [1, 32767] — so from frame 1 any down direction cancels the
+   backdash into crouch (TEKKEN_BACKDASH_CROUCH_CANCEL_FROM). Re-entering the backdash
+   from there is the ordinary b,b (cancel 0x8002 -> sDASH_00B, the same requirement 2130 as
+   from the stance), so WH's normal b,b latch does it; no backdash->backdash link exists in
+   the table and none is added.
+   NOT DONE: the f state at frame 12 -> sRUN__00F run (req 0) needs the common-bank clip
+   Bco_run00 (anim 0x8043) baked first; the f re-dash (req 1085) and neutral->run (req 2132)
+   are requirement-gated and not wired. */
 export const TEKKEN_DASH_END_FRAMES = { t7_king: { f: 30, b: 30 } };
+export const TEKKEN_BACKDASH_CROUCH_CANCEL_FROM = { t7_king: 1 };
 export function t7BankForwardTravel(root_t, fps, t) {
   if (!root_t || root_t.length < 2 || !(fps > 0) || !Number.isFinite(t)) return 0;
   const n = root_t.length, f = Math.max(0, Math.min(n - 1, t * fps));
@@ -1955,7 +1964,10 @@ export class Fighter {
   /* Tekken crouch: hold down. Releasing it opens the while-standing (WS.) window. */
   tryCrouch(on) {
     if (this.dead) return;
-    if (on && this.onGround && (this.state === 'idle' || this.state === 'walk' || this.state === 'block')) {
+    const kbd = on && this.onGround && this.state === 'tekdash' && this._tekDash && this._tekDash.dir === 'b' &&
+      this.char && TEKKEN_BACKDASH_CROUCH_CANCEL_FROM[ownSlotBankFor(this.char.id)] != null &&
+      this.stateT * 60 >= TEKKEN_BACKDASH_CROUCH_CANCEL_FROM[ownSlotBankFor(this.char.id)];
+    if (kbd || (on && this.onGround && (this.state === 'idle' || this.state === 'walk' || this.state === 'block'))) {
       this._bt = false; // Tekken: crouching from back-turned turns you around into the crouch
       this._enter('crouch'); this.vx = 0;
     } else if (!on && this.state === 'crouch') {
