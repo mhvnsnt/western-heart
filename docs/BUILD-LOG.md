@@ -1,3 +1,10 @@
+## 2026-11-10 — Pantera pass 5: real King T7 run locomotion (sRUN__00F..03F) (MoneyManBusch / Grok) (t386u)
+
+- **Sources restored** to `/workspace/pantera-t7-sources`, hash-verified: mothead subset (git blobs), exe `7f2b6872…`, mannequin `ce817108…`, helper `1b447b1f…`.
+- **Baked** King's run clips Bco_run00/01/02 (game sampler, FK ≤ 1e-6 m) into `game/assets/anim/t3/t7_king/t3_run_{start,a,b}.json`. They are new files only.
+- **Wired** `TEKKEN_RUN`: the dash with f held at frame 12 → run (requirement 0). The chain follows King's end transitions. b → walk; d-directions → crouch. Releasing f ends the run at the clip end (WH boundary). Gated links are not wired.
+- **Tests:** `test/tekken-run-pantera.test.mjs` (4 tests fail on main). The suite failure set is main's minus those 4. Not touch- or model-verified.
+
 ## 2026-11-10 — GitHub Pages synced to main 63f6ea9c (owner t387u) (MoneyManBusch / Grok)
 
 - Live Pages `847a0aa4` (Nov 8) → `63f6ea9c` through the established API route (`deploy_api.py`, fast-forward, no force). Deploy commit `0969a76e` built 08:59 CST. Manifest and 12 spot files verified byte-identical to main.

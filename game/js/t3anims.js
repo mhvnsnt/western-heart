@@ -47,6 +47,12 @@ const T3_CLIP_DEFS = {
   crouch:  { file: 't3_crouch.json',  loop: false },  // stand -> crouch (slot 0x3b)
   crouchHold:{ file: 't3_crouch_hold.json', loop: true }, // crouching neutral (slot 40)
   backdash:{ file: 't3_backdash.json', loop: false },
+  // Tekken run (2026-11-10, Pantera pass 5): King T7 sRUN__00F (Bco_run00) -> sRUN__01F (Bco_run01) -> sRUN__02F
+  // (Bco_run02) -> sRUN__03F (Bco_run01 again) <-> sRUN__02F; baked by t7_generic_bank_bake.py. Only own-slot T7
+  // banks that baked them have these files (missing files are tolerated like the other optional slots).
+  runStart:{ file: 't3_run_start.json', loop: false },
+  runA:    { file: 't3_run_a.json', loop: false },
+  runB:    { file: 't3_run_b.json', loop: false },
   // noRise: the game's jump/launch physics lifts the fighter, so the clip
   // keeps its crouch/landing compression but not its rise (else the
   // height doubles: hips measured at 2.46 m mid-jump before this).
