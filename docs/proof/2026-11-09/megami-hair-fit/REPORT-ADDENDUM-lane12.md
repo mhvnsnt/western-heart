@@ -140,10 +140,12 @@ method under a frozen rim parametrization.
   FINAL — unchanged by this lane, flagged for the parent (the stage's
   band on/off proofs exist from earlier lanes).
 
-## Straight REFIT — proof frame + a stage finding (own-eyes)
+## Straight REFIT — proof frames + a stage finding (own-eyes)
 
-proof/straight-refit-face.png was shot on the standard stage (:8843 stage,
-hair.glb → REFIT, brown eye, band meshes present). Parent-own-eyes items:
+Full set shot on the standard stage (:8843 stage, hair.glb → REFIT, brown
+eye, band meshes present): face, face34, front (full body), top; the tq
+camera at 640×960 framed below the head (body-only frame — kept on disk as
+straight-refit-tq.png, no hair evidence in it). Parent-own-eyes items:
 
 - The cap's forehead edge is CLEAN: no torn band, no floating shards across
   the forehead (FINAL's face frame shows grey shard planes + a light patch
