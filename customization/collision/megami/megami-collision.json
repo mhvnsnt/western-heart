@@ -1,0 +1,69 @@
+{
+ "character": "megami",
+ "format": "wh-collision/v1",
+ "capsules": [
+  {
+   "boneA": "Neck",
+   "boneB": "Head",
+   "radius": 0.0793,
+   "margin": 0.006,
+   "friction": 0.35
+  },
+  {
+   "boneA": "Spine2",
+   "boneB": "Neck",
+   "radius": 0.2434,
+   "margin": 0.006,
+   "friction": 0.35
+  },
+  {
+   "boneA": "LeftShoulder",
+   "boneB": "LeftArm",
+   "radius": 0.1145,
+   "margin": 0.006,
+   "friction": 0.35
+  },
+  {
+   "boneA": "RightShoulder",
+   "boneB": "RightArm",
+   "radius": 0.1126,
+   "margin": 0.006,
+   "friction": 0.35
+  },
+  {
+   "boneA": "LeftArm",
+   "boneB": "LeftForeArm",
+   "radius": 0.3253,
+   "margin": 0.006,
+   "friction": 0.35
+  },
+  {
+   "boneA": "RightArm",
+   "boneB": "RightForeArm",
+   "radius": 0.3253,
+   "margin": 0.006,
+   "friction": 0.35
+  }
+ ],
+ "spheres": [
+  {
+   "bone": "Head",
+   "offset": [
+    0,
+    0.055,
+    0.0033
+   ],
+   "radius": 0.0764,
+   "margin": 0.004,
+   "friction": 0.3
+  }
+ ],
+ "sdf": {
+  "file": "megami-body.sdf.bin",
+  "header": "megami-body.sdf.json",
+  "frameBone": "Spine2",
+  "margin": 0.004,
+  "friction": 0.35
+ },
+ "notes": "Colliders fitted from the skinned bind pose (see tools/collision/bake-collision.mjs). Radii are measured percentiles of skin vertices assigned by segment proximity; margins add the hair clump radius at runtime."
+}

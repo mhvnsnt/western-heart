@@ -1,3 +1,5 @@
+import { SelfCollider } from '../collision.js';
+
 /* ============================================================
    WESTERN HEART — WHCloth (XPBD cloth engine, CPU backend)
 
@@ -39,6 +41,15 @@
    game/js/cloth-hair.js (autoAttachCloth), which builds on this
    engine. Mesh-based costume pieces use buildFromMesh() so intake
    costume geometry simulates directly instead of generated grids.
+
+   Collision (2026-11-09, owner collision order): the shared
+   collision core (game/js/collision.js) plugs in here —
+   • SDF colliders: a collider entry { sdf, margin } where sdf is
+     a BodySDF (baked per character by tools/collision/) projects
+     particles out of the baked body volume along its gradient.
+   • Self-collision: opts.selfCollision = min particle distance
+     enables spatial-hash particle self-collision (collision.js
+     SelfCollider), excluding constraint neighbours.
 
    ALL CHARACTERS ARE ADULTS (owner law) — cloth attaches to adult
    fighter costume meshes only.
@@ -113,6 +124,10 @@ export class XPBDSolver {
     this.wind = { x: 0, y: 0, z: 0, t: 0 };
     this._finalized = false;
     this._push = new Float32Array(n * 3); // per-substep contact push vectors
+    // self-collision (collision.js): min particle distance, 0 = off
+    this.selfCollision = opts.selfCollision || 0;
+    this._selfCollider = this.selfCollision > 0 ? new SelfCollider(this.selfCollision) : null;
+    this._skipPairs = null; // built at finalize() from the constraint list
   }
 
   addParticle(x, y, z, invMass = 1) {
@@ -181,6 +196,15 @@ export class XPBDSolver {
     this.colorStarts = starts; this.colorCounts = counts;
     this.colorCount = colorCount;
     this.constraintCount = m;
+    if (this._selfCollider) {
+      // constraint neighbours are excluded from self-collision:
+      // their separation is the constraint's job, not contact's
+      this._skipPairs = new Set();
+      for (let k = 0; k < m; k++) {
+        const a = Math.min(A[k], B[k]), b = Math.max(A[k], B[k]);
+        this._skipPairs.add(a + '_' + b);
+      }
+    }
     this._finalized = true;
     return this;
   }
@@ -188,8 +212,10 @@ export class XPBDSolver {
   _ensureFinalized() { if (!this._finalized) this.finalize(); }
 
   /** One frame: substeps of (integrate → solve colors → collide →
-      commit). colliders: [{x,y,z,r}] spheres and
-      [{x1,y1,z1,x2,y2,z2,r}] capsules. */
+      commit). colliders: [{x,y,z,r}] spheres,
+      [{x1,y1,z1,x2,y2,z2,r}] capsules, and
+      [{sdf, margin}] baked-SDF volumes (sdf = collision.js BodySDF
+      posed in solver space by the caller). */
   step(dt, colliders = []) {
     this._ensureFinalized();
     const h = dt / this.substeps;
@@ -232,6 +258,9 @@ export class XPBDSolver {
       vel[ix+2] = (est[ix+2] - pos[ix+2]) * inv_h;
     }
     this._collide(colliders);
+    if (this._selfCollider) {
+      this._selfCollider.collide(est, invMass, this._skipPairs, 1);
+    }
     this._contactVelocity();
     for (let i = 0; i < count; i++) {
       if (invMass[i] === 0) continue;
@@ -272,6 +301,24 @@ export class XPBDSolver {
     if (!colliders || colliders.length === 0) return;
     for (let n = 0; n < colliders.length; n++) {
       const c = colliders[n];
+      if (c.sdf) {
+        // baked-SDF volume: project particles to the margin
+        // iso-surface along the field gradient (collision.js)
+        const sdf = c.sdf, margin = c.margin || 0;
+        const p = [0, 0, 0];
+        for (let i = 0; i < count; i++) {
+          if (invMass[i] === 0) continue;
+          const ix = i * 3;
+          const d = sdf.sample(est[ix], est[ix + 1], est[ix + 2]);
+          if (d >= margin) continue;
+          p[0] = est[ix]; p[1] = est[ix + 1]; p[2] = est[ix + 2];
+          sdf.project(p, margin, 2);
+          const ox = p[0] - est[ix], oy = p[1] - est[ix + 1], oz = p[2] - est[ix + 2];
+          est[ix] = p[0]; est[ix + 1] = p[1]; est[ix + 2] = p[2];
+          _push[ix] += ox; _push[ix + 1] += oy; _push[ix + 2] += oz;
+        }
+        continue;
+      }
       if (c.r === undefined) continue;
       const isCapsule = c.x1 !== undefined;
       for (let i = 0; i < count; i++) {
@@ -354,6 +401,7 @@ export function buildSheet(cols, rows, width, height, opts = {}) {
     damping: opts.damping !== undefined ? opts.damping : fabric.damping,
     substeps: opts.substeps || q.substeps,
     gravity: opts.gravity,
+    selfCollision: opts.selfCollision || 0,
   });
   const idx = [];
   const pinTest = opts.pinTest || ((c, r) =>
@@ -394,6 +442,7 @@ export function buildFromMesh(positions, indices, opts = {}) {
     damping: opts.damping !== undefined ? opts.damping : fabric.damping,
     substeps: opts.substeps || q.substeps,
     gravity: opts.gravity,
+    selfCollision: opts.selfCollision || 0,
   });
   // NOTE: meshes over budget are rejected (not decimated) — the caller
   // picks a LOD. Silent decimation would simulate the wrong shape.
@@ -434,6 +483,7 @@ export function buildChain(segments, segLen, opts = {}) {
     damping: opts.damping !== undefined ? opts.damping : fabric.damping,
     substeps: opts.substeps || q.substeps,
     gravity: opts.gravity,
+    selfCollision: opts.selfCollision || 0,
   });
   const idx = [];
   const dir = opts.direction || [0, -1, 0];
