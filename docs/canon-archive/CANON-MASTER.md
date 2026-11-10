@@ -1895,5 +1895,9 @@ Owner order 2026-11-08 ~20:37 CST — land in all necessary repos.
    canon-filled and listed for owner approval.
 7. Eyes and hair are swappable parts; defaults vs options are owner-ruled.
 
+### 2026-11-10 owner ruling — Madelyn is low priority
+
+- MADELYN (owner 2026-11-10): may be wired into the western-heart game and repo, but explicitly LOW priority — the owner is not that invested in her. Her wiring work (open PR #1708) stays behind the roster, Megami, hair, and collision lanes; no lane pulls Madelyn work ahead of higher-priority work on this ruling.
+
 *End of CANON-MASTER. Compiled 2026-10-23. If it isn't recorded, it
 isn't here — and if it gets recorded, it gets pushed here.*
