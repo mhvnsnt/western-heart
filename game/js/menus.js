@@ -81,6 +81,12 @@ const el = (tag, cls, html) => {
   if (html != null) e.innerHTML = html;
   return e;
 };
+/* Piece 1 re-test Bug 3 (CLOTHING dead): openClothing() called esc()
+   to escape fighter/layer names, but esc was never defined in this file
+   or as a global — the first row threw ReferenceError, the async
+   function rejected silently, and the sheet never showed. Same escape
+   pattern the game already uses (game/js/fighter-portraits.js:172). */
+const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 /* Classic screen switcher (mirrors main.js show()). */
 export function showScreen(name) {
   document.querySelectorAll('.screen').forEach((s) => s.classList.remove('active'));
@@ -335,6 +341,13 @@ export async function openClothing() {
   if (!o) return;
   const list = o.querySelector('.wh-clothing-list');
   list.innerHTML = '<div class="wh-sub">loading layers…</div>';
+  // Piece 1 re-test Bug 3: show the sheet BEFORE the config load (same
+  // as openOptions) so the tap always answers at once and a stall is
+  // visible instead of silent — the sheet used to appear only after the
+  // await, so any load hiccup looked exactly like a dead button.
+  document.getElementById('wh-pause').classList.remove('show');
+  o.classList.add('show');
+  audio.uiClick && audio.uiClick();
   const g = window.__game;
   const fighters = g && g.p1 && g.p2 ? [g.p1, g.p2] : [];
   await loadClothingConfig();
@@ -371,9 +384,7 @@ export async function openClothing() {
       list.appendChild(row);
     }
   }
-  document.getElementById('wh-pause').classList.remove('show');
-  o.classList.add('show');
-  audio.uiClick && audio.uiClick();
+  // Sheet was already shown above, before the config load (Bug 3).
 }
 export function closeClothing() {
   const o = document.getElementById('wh-clothing');

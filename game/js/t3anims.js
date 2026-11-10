@@ -124,6 +124,25 @@ export const T3_BANKS = {
   // (docs/anim/RAVEN-ANIM-GAP-20261023.md isolation doctrine). raven serves Pond, luckychloe serves Ryusan.
   raven:      'assets/anim/t3/raven/',
   luckychloe: 'assets/anim/t3/luckychloe/',
+  // T7 generic banks (2026-11-10, owner: "negativo should have only had t7 data from negan"): each T7-stance
+  // fighter's base character's OWN walk / dash / crouch / jump / sidestep / guard / damage / KO states, named by its
+  // own motbin stance cancel table (tools/anim/t7_generic_slots.py; plans in tools/anim/t7_generic_slots/<code>.json)
+  // and baked through the same 0x64 game-sampler + 0xC8 mannequin path (tools/anim/t7_generic_bank_bake.py --slots).
+  // fighter.js OWN_SLOT_BANKS lays each over its fighter's bound bank slot by slot, so the base's own T7 state plays
+  // wherever it exists and no Tekken 3 clip does.
+  t7_king:       'assets/anim/t3/t7_king/',
+  t7_heihachi:   'assets/anim/t3/t7_heihachi/',
+  t7_bryan:      'assets/anim/t3/t7_bryan/',
+  t7_bob:        'assets/anim/t3/t7_bob/',
+  t7_xiaoyu:     'assets/anim/t3/t7_xiaoyu/',
+  t7_yoshimitsu: 'assets/anim/t3/t7_yoshimitsu/',
+  t7_hwoarang:   'assets/anim/t3/t7_hwoarang/',
+  t7_kuma:       'assets/anim/t3/t7_kuma/',
+  t7_panda:      'assets/anim/t3/t7_panda/',
+  t7_julia:      'assets/anim/t3/t7_julia/',
+  t7_lee:        'assets/anim/t3/t7_lee/',
+  t7_lars:       'assets/anim/t3/t7_lars/',
+  t7_negan:      'assets/anim/t3/t7_negan/',
   // TTT2-sourced banks (2026-11-04): REAL Tekken Tag Tournament 2 motion decoded with the shipped
   // 0x64/0xC8 MOTA decoders and baked via the calibrated sampler convention (tools/anim/ttt2_bank_bake.py)
   // — each bank is the character's OWN TTT2 state moves per the join tables
@@ -766,14 +785,20 @@ export function ensureT7Moves(fid, THREE) {
         clip.userData.rootMotionT = Array.isArray(data.root_motion_fwd_m) ? data.root_motion_fwd_m.map(f => [0, 0, f]) : null;
         clips[cname] = clip;
       }
-      const moves = {}, byInput = {};
+      const moves = {}, byInput = {}, byString = {}, dupString = new Set(), byMotion = {}, dupMotion = new Set();
       for (const [key, m] of Object.entries(pack.moves || {})) {
         if (!clips[m.clip]) continue;
         moves[key] = { clip: m.clip, active: m.active_frames, motbin: m.motbin_move };
         const ni = t7NormInput(m.input);
         if (ni && !byInput[ni]) byInput[ni] = key;
+        const ns = t7NormString(m.input);
+        if (ns) { if (byString[ns]) dupString.add(ns); else byString[ns] = key; }
+        const nm = t7NormMotion(m.input);
+        if (nm) { if (byMotion[nm]) dupMotion.add(nm); else byMotion[nm] = key; }
       }
-      _t7moves[fid] = { bank: def.bank, skelId, clips, moves, byInput };
+      for (const ns of dupString) delete byString[ns]; // two string steps on one input: no exact mapping, keep current clips
+      for (const nm of dupMotion) delete byMotion[nm];
+      _t7moves[fid] = { bank: def.bank, skelId, clips, moves, byInput, byString, byMotion };
       console.log(`[WH-T7] ${fid}: ${Object.keys(moves).length} real T7 move clips (${def.dir}${packFile})`);
       return _t7moves[fid];
     } catch (e) {
@@ -791,6 +816,28 @@ export function t7NormInput(input) {
   if (!s || s.includes(',')) return null;
   return s.replace(/(^|[^a-z/])([du])([fb])(?=\+|$)/g, '$1$2/$3');
 }
+/** String notation in one spelling, every step through t7NormInput: 'df+4, 3' -> 'd/f+4,3'. Null unless every step
+    is a single input (so motions like 'f,F+1' and stance prefixes never match). */
+export function t7NormString(input) {
+  const steps = String(input || '').toLowerCase().replace(/\s+/g, '').split(',');
+  if (steps.length < 2) return null;
+  const out = steps.map((x) => (/^([du]\/?[fb]|[dubf])?\+?[1-4](\+[1-4])*$/.test(x) ? t7NormInput(x) : null));
+  return out.every(Boolean) ? out.join(',') : null;
+}
+/** Dash / run notation, exact (whitespace dropped, CASE KEPT: 'F' = held forward is its own command):
+    'f, F+1' -> 'f,F+1'; 'f,f,n,2'; 'f,f,f+3'. Null for anything that is not a dash or run motion. */
+export function t7NormMotion(input) {
+  const s = String(input || '').replace(/\s+/g, '');
+  return /^(f,F\+[1-4](\+[1-4])*|f,f,n,[1-4](\+[1-4])*|f,f,f\+[1-4](\+[1-4])*)$/.test(s) ? s : null;
+}
+/* DASH / RUN MOVES (2026-11-10, tools/anim/t7_move_resolve.py --motions): mapped on King's own link tables (stance
+   cancel 0x8001 -> Kg_sDASHF; the dash's f+X / n+X cancels; the dash's f cancel -> sRUN__00F, then the run's X),
+   checked on the final move's damage + first active frame. A played row with the identical motion input plays
+   that clip (exact input only; 'f,f,F+3' is not 'f,f,f+3'). */
+/* STRING STEPS (2026-11-10, tools/anim/t7_move_resolve.py --strings): the pack's string-step moves (e.g.
+   '1,2~t7.king.2' = the 2 of 1,2, motbin Kg_lprpF) were mapped by walking the cancel graph from the stance and
+   checked on the step's own damage + first active frame. Pressing the same string from neutral reaches the same
+   motbin move, so a played row with the identical string input plays that step's clip (exact input only). */
 /* A fighter's moveset can hold several rows for one input (Pantera: '1~t7.king' with T7 frame data, '1~t8.king',
    '1'); the game plays its preferred row, the resolver mapped the T7 row. Same input from the same neutral stance
    = the same move, so a row not in the pack plays the pack's clip for its input (`input`, single inputs only);
@@ -798,7 +845,9 @@ export function t7NormInput(input) {
 export function t7MoveClip(fid, bankId, moveKey, model = null, input = null) {
   const t = _t7moves[fid];
   if (!t || t.bank !== bankId || !moveKey) return null;
-  const key = t.moves[moveKey] ? moveKey : (input && t.byInput ? t.byInput[t7NormInput(input)] : null);
+  const key = t.moves[moveKey] ? moveKey
+    : (input && t.byInput && t.byInput[t7NormInput(input)]) || (t.byString && (t.byString[t7NormString(input)] || t.byString[t7NormString(moveKey)]))
+    || (t.byMotion && (t.byMotion[t7NormMotion(input)] || t.byMotion[t7NormMotion(moveKey)])) || null;
   const m = key ? t.moves[key] : null;
   if (!m || !t.clips[m.clip]) return null;
   if (model) { const pm = _retargetCache.get(model); if (!pm || !pm.get(t.skelId)) return null; }
@@ -1843,12 +1892,29 @@ function estimateHeadOffset(skel, t3Clips, THREE) {
    entangled with the deliberate torso-match re-split, so it
    uses ARM_CORR_SHOULDER_MIN_DEG (25 deg). The constants are
    cached on the per-model retarget entry (they depend on the
-   rig), not on the skeleton. 't7:' skeletons are NOT exempt:
-   the correction removes only the transport difference (target
-   twist minus source twist), so a T7 stance's own arm twists
-   (king L -57 / R +37 deg, his real guard) are reproduced, not
-   flattened — and where a T7 transport measures clean, the
-   gates leave it untouched.
+   rig), not on the skeleton.
+
+   't7:' SKELETONS ARE EXEMPT (2026-11-10, owner: "Arms at
+   shoulders, forearms, and hands are all crushed and twisted").
+   The twist measure above compares LOCAL twists, which only
+   means "transport error" on a rig whose rest rotations are
+   identity (the synthetic rig the 2026-11-07 tests used). Real
+   fighter rigs (Blender / Tripo exports) carry bone-aligned rest
+   frames with arbitrary rolls, and the measure read those rolls
+   as errors: the poselab sweep measured 40-200 deg constants on
+   16 of the 17 fighters that play a real T7 stance (diablo R 170,
+   retsu R 177, burger L 173, sha R 135, negativo L 83 / R 85 deg;
+   only pantera measured clean), applied to the stance AND every
+   T7 attack — rolled arms, shoulder armour stretched to the ears,
+   folded chest pieces. With the layer off every one of the 17
+   matched or beat the corrected pose by eye
+   (docs/proof/2026-11-10/t7-arm-roll/). T7 data needs no
+   correction: the T7 mannequin and the fighters' rigs are both
+   T-poses, so the world-delta transfer (D = F G F^-1 A, applied
+   to each bone's own rest) carries every bone's direction and
+   roll exactly, whatever the rig's rest frames — pinned by the
+   rolled-rest-rig test in test/arm-frame-normalization.test.mjs
+   (133 deg off before this exemption, < 1 deg after).
    ============================================================ */
 const ARM_CORR_MIN_DEG = 12;
 const ARM_CORR_SHOULDER_MIN_DEG = 25;
@@ -1932,6 +1998,12 @@ function estimateArmCorr(rig, skel, stanceClip, probeClip, THREE, shoulderGateDe
       const parBone = bone.parent && bone.parent.isBone ? bone.parent : null;
       const axT = parBone ? dirT.clone().applyQuaternion(rig.rest(parBone).quat.clone().invert()) : dirT.clone();
       const ownAxT = dirT.clone().applyQuaternion(rig.rest(bone).quat.clone().invert());
+      // REST-FRAME INDEPENDENCE (2026-11-10): the twist is read from the motion RELATIVE TO this bone's rest local
+      // (posed local x rest local^-1), not from the posed local itself. On the identity-rest rigs this file was tuned
+      // on the two are the same number; on real exported rigs the rest local carries the bone's roll, and reading the
+      // posed local took that roll for a transport error (constants of 40-200 deg; arms rolled in every clip).
+      const restLocInv = (parBone ? rig.rest(parBone).quat.clone().invert().multiply(rig.rest(bone).quat)
+        : rig.rest(bone).quat.clone()).invert();
       // Parent correction factor: applies only when the chain
       // parent is this bone's actual parent in the rig.
       const parJn = role === 'Shoulder' ? null : side + ARM_CHAIN[ARM_CHAIN.indexOf(role) - 1];
@@ -1961,6 +2033,7 @@ function estimateArmCorr(rig, skel, stanceClip, probeClip, THREE, shoulderGateDe
           lc.copy(Lp[f]);
           if (th) { qo.setFromAxisAngle(dHat[f], th); lc.premultiply(qo); }
           if (qPar) lc.premultiply(qPar);
+          lc.multiply(restLocInv); // the motion from rest, in the parent frame (see REST-FRAME INDEPENDENCE above)
           let d = twist(lc, axT) - ts[f];
           if (d > Math.PI) d -= 2 * Math.PI;
           if (d < -Math.PI) d += 2 * Math.PI;
@@ -2157,6 +2230,9 @@ function estimateSpineCorr(rig, skel, stanceClip, buildProbe, THREE) {
 }
 
 const _retargetCache = new WeakMap(); // model instance -> Map(bankId -> { rig, out: { action: clip } })
+// QA switch for A/B renders (game/poselab.html): globalThis.__WH_RETARGET_LAYERS = { head: false, spine: false,
+// arm: false } turns that correction layer off. Unset (the game) = every layer on, exactly as before.
+const _layerOn = (k) => { const L = globalThis.__WH_RETARGET_LAYERS; return !L || L[k] !== false; };
 
 /**
  * Retarget a bank's clips onto one fighter model. The FIRST call for a
@@ -2173,6 +2249,11 @@ const _retargetCache = new WeakMap(); // model instance -> Map(bankId -> { rig, 
 export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = null, only = null, opts = null) {
   const skel = _t3skelCache[bankId];
   if (!t3Clips || !skel) return null;
+  // T7 DATA (2026-11-10): the 't7:' stance/move skeletons AND every bank baked by the T7 mannequin path (raven,
+  // luckychloe, the t7_* generic banks: their skeleton.json names tools/anim/t7_c8_stance_bake.py) are exempt from the
+  // Tekken 3 head-frame, spine-pitch and arm-frame normalizations, for the reasons in those blocks: a jointed rig with
+  // no part frames, whose head-vs-chest and arm twists are the character's real acting, transferred exactly.
+  const t7data = String(bankId).startsWith('t7:') || skel.tool === 'tools/anim/t7_c8_stance_bake.py';
   let perModel = _retargetCache.get(model);
   if (!perModel) { perModel = new Map(); _retargetCache.set(model, perModel); }
   const cached = perModel.get(bankId);
@@ -2204,14 +2285,14 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
   // offset once (from the stance-family clips of the first full
   // call) and cache it on the skeleton; 't7:' skeletons are exempt
   // (see the block above estimateHeadOffset).
-  if (skel._headCorr === undefined && !String(bankId).startsWith('t7:')) {
+  if (skel._headCorr === undefined && !t7data) {
     const est = estimateHeadOffset(skel, t3Clips, THREE);
     if (est !== undefined) {
       skel._headCorr = est;
       if (est) console.log(`[WH-T3] bank '${bankId}': head-frame constant ${(2 * Math.acos(Math.min(1, Math.abs(est.w))) * 180 / Math.PI).toFixed(1)}° measured in its stance — normalized out of every clip (head/face audit 2026-11-06)`);
     }
   }
-  const headCorrInv = skel._headCorr ? skel._headCorr.clone().invert() : null;
+  const headCorrInv = (skel._headCorr && _layerOn('head')) ? skel._headCorr.clone().invert() : null;
   const rig = (cached && cached.rig) || analyzeRig(model, THREE, profile);
   if (!rig) { perModel.set(bankId, null); return null; }
   const src = sourceInfo(skel, THREE);
@@ -2526,7 +2607,7 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
   // arm constants exist. 't7:' skeletons are exempt (see
   // estimateSpineCorr).
   let spineCorr = cached ? cached.spineCorr : undefined;
-  if (spineCorr === undefined && !layerActive && !String(bankId).startsWith('t7:') && t3Clips.stance &&
+  if (spineCorr === undefined && _layerOn('spine') && !layerActive && !t7data && t3Clips.stance &&
       (names.includes('stance') || (cached && cached.out.stance))) {
     const est = estimateSpineCorr(rig, skel, t3Clips.stance, (th) => buildClip('stance', null, th), THREE);
     if (est !== undefined) {
@@ -2544,7 +2625,8 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
   // depend on the rig's rest pose, so they cannot live on the
   // skeleton the way the head constant does.
   let armCorr = cached ? cached.armCorr : undefined;
-  if (armCorr === undefined && !layerActive && t3Clips.stance &&
+  // 't7:' skeletons are exempt (2026-11-10, see the block above estimateArmCorr): the T7 transfer is already exact.
+  if (armCorr === undefined && _layerOn('arm') && !layerActive && !t7data && t3Clips.stance &&
       (names.includes('stance') || (cached && cached.out.stance))) {
     const probe = buildClip('stance', null, spineCorr || 0);
     if (probe) {

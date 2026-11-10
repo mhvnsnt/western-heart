@@ -13,10 +13,12 @@
   "ashlane": 5,
   "teardown/wwf-no-mercy/textures/rom/tattoo": 99,
   "customization/parts-converted/wmxix-textures/TEX/Face_op": 140,
-  "customization/parts-converted/wmxix-textures/TEX/64gara": 39
+  "customization/parts-converted/wmxix-textures/TEX/64gara": 39,
+  "tekken7 hair (GRE teardown, new)": 33,
+  "megami-default + megami-eyes (2026-11-08, new)": 9
  },
- "total": 7702,
- "notes": "parts-converted/CATALOG.json is a REAL source since PR #398 merged (run #3 absence finding was true at check time; the merge landed after). Eyes: mesh eye/brow parts are placeable (eye_kind=placeable_part); eye texture entries are legacy variants (eye_kind=texture_variant) per the owner 2026-10-20 eye verdict. No eyelash mesh exists in-repo yet. Def Jam CAW library wired 2026-10-22 (worker 33, fight-lab lane): 2,624 conversion entries, all geometry_pending (POINTS topology until the mesh conversion pass lands). Worker 38 (2026-10-22): +272 DOA4 costume GLBs (full-body, real meshes). AshLane hair wired 2026-11-02: +5 real GLBs from the owner's AshLane parts library (INDEX geometryReady), listed in the suite catalog with head socket, offset 0, scale 1 (per customization/parts/ashlane/hair/manifest.json). No Mercy tattoos wired 2026-11-02: 99 tattoo PNGs from teardown/wwf-no-mercy/textures/rom/tattoo/ as decal_logo texture parts (geometry_pending false, chest-socket marker fallback in the suite preview until a placement is authored; they surface under Decals, since PARTS_TREE has no dedicated tattoo category yet).",
+ "total": 7744,
+ "notes": "parts-converted/CATALOG.json is a REAL source since PR #398 merged (run #3 absence finding was true at check time; the merge landed after). Eyes: mesh eye/brow parts are placeable (eye_kind=placeable_part); eye texture entries are legacy variants (eye_kind=texture_variant) per the owner 2026-10-20 eye verdict. No eyelash mesh exists in-repo yet. Def Jam CAW library wired 2026-10-22 (worker 33, fight-lab lane): 2,624 conversion entries, all geometry_pending (POINTS topology until the mesh conversion pass lands). Worker 38 (2026-10-22): +272 DOA4 costume GLBs (full-body, real meshes). AshLane hair wired 2026-11-02: +5 real GLBs from the owner's AshLane parts library (INDEX geometryReady), listed in the suite catalog with head socket, offset 0, scale 1 (per customization/parts/ashlane/hair/manifest.json). No Mercy tattoos wired 2026-11-02: 99 tattoo PNGs from teardown/wwf-no-mercy/textures/rom/tattoo/ as decal_logo texture parts (geometry_pending false, chest-socket marker fallback in the suite preview until a placement is authored; they surface under Decals, since PARTS_TREE has no dedicated tattoo category yet). Tekken 7 hair wired 2026-11-08: +33 items (31 HAIR + 2 FACE_HAIR) from the held GRE Steam teardown (pakchunk0), real GLBs with swing-bone chains, spring physics via game/js/hair-spring.js. Megami default set wired 2026-11-08: +7 (Flora hair, 5 default-attire pieces, tiger eye). Angel Afro + Angel Straight options wired 2026-11-08 (hair-wiring lane): +2 Megami hair options (strand-grade builds on the Parvati rig, spring physics via game/js/hair-spring.js); header total/counts reconciled to the parts array (the Afro PR had left the header one behind).",
  "parts": [
   {
    "id": "no-mercy-0x12ba-attire-parts-model-12ba-obj",
@@ -239603,6 +239605,2495 @@
     "rotation",
     "opacity"
    ]
+  },
+  {
+   "id": "tekken7-face_hair-arb-fah-1p",
+   "name": "Facial hair \u2014 'arb' (name unresolved in held docs \u2014 code kept) facial hair (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "face_hair",
+   "t7_slot": "7",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/face_hair/arb-fah-1p/arb-fah-1p.glb",
+   "asset": "customization/parts/tekken7/face_hair/arb-fah-1p/arb-fah-1p.glb",
+   "components": [
+    "customization/parts/tekken7/face_hair/arb-fah-1p/arb-fah-1p.glb"
+   ],
+   "textures": [],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "face_hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 0,
+    "chains": 0,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": true
+   }
+  },
+  {
+   "id": "tekken7-hair-arb-har-1p",
+   "name": "Hair \u2014 'arb' (name unresolved in held docs \u2014 code kept) hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/arb-har-1p/arb-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/arb-har-1p/arb-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/arb-har-1p/SK_CH_arb_har_1p_E.glb",
+    "customization/parts/tekken7/hair/arb-har-1p/arb-har-1p.glb"
+   ],
+   "textures": [
+    "customization/parts/tekken7/hair/arb-har-1p/textures/T_CH_arb_har_1p_hair1_D.webp"
+   ],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 0,
+    "chains": 0,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": true
+   }
+  },
+  {
+   "id": "tekken7-hair-asa-har-1p",
+   "name": "Hair \u2014 Alisa Bosconovitch hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/asa-har-1p/asa-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/asa-har-1p/asa-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/asa-har-1p/SK_CH_asa_har_1p_H.glb",
+    "customization/parts/tekken7/hair/asa-har-1p/asa-har-1p.glb"
+   ],
+   "textures": [],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 11,
+    "chains": 7,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false
+   }
+  },
+  {
+   "id": "tekken7-hair-ask-har-1p",
+   "name": "Hair \u2014 Asuka Kazama hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/ask-har-1p/ask-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/ask-har-1p/ask-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/ask-har-1p/SK_CH_ask_har_1p_I.glb",
+    "customization/parts/tekken7/hair/ask-har-1p/SK_CH_ask_har_1p_H.glb",
+    "customization/parts/tekken7/hair/ask-har-1p/SK_CH_ask_har_1p_G.glb",
+    "customization/parts/tekken7/hair/ask-har-1p/SK_CH_ask_har_1p_F.glb",
+    "customization/parts/tekken7/hair/ask-har-1p/SK_CH_ask_har_1p_E.glb",
+    "customization/parts/tekken7/hair/ask-har-1p/SK_CH_ask_har_1p_D.glb",
+    "customization/parts/tekken7/hair/ask-har-1p/SK_CH_ask_har_1p_C.glb",
+    "customization/parts/tekken7/hair/ask-har-1p/SK_CH_ask_har_1p_B.glb",
+    "customization/parts/tekken7/hair/ask-har-1p/SK_CH_ask_har_1p_A.glb",
+    "customization/parts/tekken7/hair/ask-har-1p/ask-har-1p.glb"
+   ],
+   "textures": [
+    "customization/parts/tekken7/hair/ask-har-1p/textures/T_CH_ask_har_1p_N.webp"
+   ],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 18,
+    "chains": 10,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false
+   }
+  },
+  {
+   "id": "tekken7-hair-bob-har-1p",
+   "name": "Hair \u2014 Bob hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/bob-har-1p/bob-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/bob-har-1p/bob-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/bob-har-1p/bob-har-1p.glb"
+   ],
+   "textures": [],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 0,
+    "chains": 0,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": true
+   }
+  },
+  {
+   "id": "tekken7-hair-bry-har-1p",
+   "name": "Hair \u2014 Bryan Fury hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/bry-har-1p/bry-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/bry-har-1p/bry-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/bry-har-1p/bry-har-1p.glb"
+   ],
+   "textures": [],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 0,
+    "chains": 0,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": true
+   }
+  },
+  {
+   "id": "tekken7-hair-bs7-har-1p",
+   "name": "Hair \u2014 'bs7' (name unresolved in held docs \u2014 code kept) hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/bs7-har-1p/bs7-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/bs7-har-1p/bs7-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/bs7-har-1p/bs7-har-1p.glb"
+   ],
+   "textures": [
+    "customization/parts/tekken7/hair/bs7-har-1p/textures/T_CH_bs7_har_1p01_S.webp"
+   ],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 66,
+    "chains": 16,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false
+   }
+  },
+  {
+   "id": "tekken7-hair-dnc-har-1p",
+   "name": "Hair \u2014 'dnc' (name unresolved in held docs \u2014 code kept) hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/dnc-har-1p/dnc-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/dnc-har-1p/dnc-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/dnc-har-1p/SK_CH_dnc_har_1p_I.glb",
+    "customization/parts/tekken7/hair/dnc-har-1p/SK_CH_dnc_har_1p_E.glb",
+    "customization/parts/tekken7/hair/dnc-har-1p/SK_CH_dnc_har_1p_D.glb",
+    "customization/parts/tekken7/hair/dnc-har-1p/SK_CH_dnc_har_1p_C.glb",
+    "customization/parts/tekken7/hair/dnc-har-1p/SK_CH_dnc_har_1p_B.glb",
+    "customization/parts/tekken7/hair/dnc-har-1p/SK_CH_dnc_har_1p_A.glb",
+    "customization/parts/tekken7/hair/dnc-har-1p/dnc-har-1p.glb"
+   ],
+   "textures": [
+    "customization/parts/tekken7/hair/dnc-har-1p/textures/T_CH_dnc_har_1p_mae_D.webp"
+   ],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 19,
+    "chains": 5,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false
+   }
+  },
+  {
+   "id": "tekken7-hair-dra-har-1p",
+   "name": "Hair \u2014 Sergei Dragunov hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/dra-har-1p/dra-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/dra-har-1p/dra-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/dra-har-1p/SK_CH_dra_har_1p_F.glb",
+    "customization/parts/tekken7/hair/dra-har-1p/dra-har-1p.glb"
+   ],
+   "textures": [
+    "customization/parts/tekken7/hair/dra-har-1p/textures/T_CH_dra_har_1p_N.webp"
+   ],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 10,
+    "chains": 5,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false
+   }
+  },
+  {
+   "id": "tekken7-hair-dvj-har-1p",
+   "name": "Hair \u2014 Devil Jin hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/dvj-har-1p/dvj-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/dvj-har-1p/dvj-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/dvj-har-1p/dvj-har-1p.glb"
+   ],
+   "textures": [],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 12,
+    "chains": 4,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false
+   }
+  },
+  {
+   "id": "tekken7-hair-edd-har-1p",
+   "name": "Hair \u2014 Eddy Gordo hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/edd-har-1p/edd-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/edd-har-1p/edd-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/edd-har-1p/edd-har-1p.glb"
+   ],
+   "textures": [
+    "customization/parts/tekken7/hair/edd-har-1p/textures/T_CH_edd_har_1p_1_M.webp",
+    "customization/parts/tekken7/hair/edd-har-1p/textures/T_CH_edd_har_1p_2_M.webp",
+    "customization/parts/tekken7/hair/edd-har-1p/textures/T_CH_edd_har_1p_3_M.webp",
+    "customization/parts/tekken7/hair/edd-har-1p/textures/T_CH_edd_har_1p_5_D.webp",
+    "customization/parts/tekken7/hair/edd-har-1p/textures/T_CH_edd_har_1p_5_M.webp"
+   ],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 8,
+    "chains": 8,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false
+   }
+  },
+  {
+   "id": "tekken7-hair-elz-har-1p",
+   "name": "Hair \u2014 Eliza hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/elz-har-1p/elz-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/elz-har-1p/elz-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/elz-har-1p/elz-har-1p.glb"
+   ],
+   "textures": [
+    "customization/parts/tekken7/hair/elz-har-1p/textures/T_CH_elz_har_1p_gradation_S.webp",
+    "customization/parts/tekken7/hair/elz-har-1p/textures/T_CH_elz_har_1p_suki_hair_S.webp"
+   ],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 34,
+    "chains": 9,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false
+   }
+  },
+  {
+   "id": "tekken7-hair-fen-har-1p",
+   "name": "Hair \u2014 Feng Wei hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/fen-har-1p/fen-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/fen-har-1p/fen-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/fen-har-1p/SK_CH_fen_har_1p_C.glb",
+    "customization/parts/tekken7/hair/fen-har-1p/fen-har-1p.glb"
+   ],
+   "textures": [],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 7,
+    "chains": 1,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false
+   }
+  },
+  {
+   "id": "tekken7-hair-frv-har-1p",
+   "name": "Hair \u2014 'frv' (name unresolved in held docs \u2014 code kept) hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/frv-har-1p/frv-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/frv-har-1p/frv-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/frv-har-1p/frv-har-1p.glb"
+   ],
+   "textures": [
+    "customization/parts/tekken7/hair/frv-har-1p/textures/T_CH_frv_har_N1.webp",
+    "customization/parts/tekken7/hair/frv-har-1p/textures/T_CH_frv_har_N2.webp",
+    "customization/parts/tekken7/hair/frv-har-1p/textures/T_CH_frv_har_N3.webp"
+   ],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 48,
+    "chains": 12,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false
+   }
+  },
+  {
+   "id": "tekken7-face_hair-hei-fah-1p",
+   "name": "Facial hair \u2014 Heihachi Mishima facial hair (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "face_hair",
+   "t7_slot": "7",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/face_hair/hei-fah-1p/hei-fah-1p.glb",
+   "asset": "customization/parts/tekken7/face_hair/hei-fah-1p/hei-fah-1p.glb",
+   "components": [
+    "customization/parts/tekken7/face_hair/hei-fah-1p/hei-fah-1p.glb"
+   ],
+   "textures": [],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "face_hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 0,
+    "chains": 0,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": true
+   }
+  },
+  {
+   "id": "tekken7-hair-hei-har-1p",
+   "name": "Hair \u2014 Heihachi Mishima hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/hei-har-1p/hei-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/hei-har-1p/hei-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/hei-har-1p/SK_CH_hei_har_1p_D.glb",
+    "customization/parts/tekken7/hair/hei-har-1p/SK_CH_hei_har_1p_C.glb",
+    "customization/parts/tekken7/hair/hei-har-1p/SK_CH_hei_har_1p_B.glb",
+    "customization/parts/tekken7/hair/hei-har-1p/SK_CH_hei_har_1p_A.glb",
+    "customization/parts/tekken7/hair/hei-har-1p/hei-har-1p.glb"
+   ],
+   "textures": [],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 0,
+    "chains": 0,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": true
+   }
+  },
+  {
+   "id": "tekken7-hair-hwo-har-1p",
+   "name": "Hair \u2014 Hwoarang hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/hwo-har-1p/hwo-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/hwo-har-1p/hwo-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/hwo-har-1p/hwo-har-1p.glb"
+   ],
+   "textures": [
+    "customization/parts/tekken7/hair/hwo-har-1p/textures/T_CH_hwo_har_1p_N.webp",
+    "customization/parts/tekken7/hair/hwo-har-1p/textures/T_CH_hwo_har_1p_hair_goggle_D.webp",
+    "customization/parts/tekken7/hair/hwo-har-1p/textures/T_CH_hwo_har_1p_hair_goggle_M.webp"
+   ],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 11,
+    "chains": 10,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false
+   }
+  },
+  {
+   "id": "tekken7-hair-jac-har-1p",
+   "name": "Hair \u2014 Jack-7 hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/jac-har-1p/jac-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/jac-har-1p/jac-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/jac-har-1p/jac-har-1p.glb"
+   ],
+   "textures": [
+    "customization/parts/tekken7/hair/jac-har-1p/textures/T_CH_jac_har_hair_dcl_D.webp"
+   ],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 0,
+    "chains": 0,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": true
+   }
+  },
+  {
+   "id": "tekken7-hair-jin-har-1p",
+   "name": "Hair \u2014 Jin Kazama hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/jin-har-1p/jin-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/jin-har-1p/jin-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/jin-har-1p/SK_CH_jin_har_1p_F.glb",
+    "customization/parts/tekken7/hair/jin-har-1p/SK_CH_jin_har_1p_E.glb",
+    "customization/parts/tekken7/hair/jin-har-1p/jin-har-1p.glb"
+   ],
+   "textures": [],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 10,
+    "chains": 4,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false
+   }
+  },
+  {
+   "id": "tekken7-hair-kzm-har-1p",
+   "name": "Hair \u2014 Kazumi Mishima hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/kzm-har-1p/kzm-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/kzm-har-1p/kzm-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/kzm-har-1p/SK_CH_kzm_har_1p_D.glb",
+    "customization/parts/tekken7/hair/kzm-har-1p/kzm-har-1p.glb"
+   ],
+   "textures": [
+    "customization/parts/tekken7/hair/kzm-har-1p/textures/T_CH_kzm_hed_1P_N.webp"
+   ],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 6,
+    "chains": 2,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false
+   }
+  },
+  {
+   "id": "tekken7-hair-lar-har-1p",
+   "name": "Hair \u2014 Lars Alexandersson hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/lar-har-1p/lar-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/lar-har-1p/lar-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/lar-har-1p/lar-har-1p.glb"
+   ],
+   "textures": [],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 11,
+    "chains": 6,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false
+   }
+  },
+  {
+   "id": "tekken7-hair-law-har-1p",
+   "name": "Hair \u2014 Marshall Law hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/law-har-1p/law-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/law-har-1p/law-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/law-har-1p/law-har-1p.glb"
+   ],
+   "textures": [],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 0,
+    "chains": 0,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": true
+   }
+  },
+  {
+   "id": "tekken7-hair-lee-har-1p",
+   "name": "Hair \u2014 Lee Chaolan hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/lee-har-1p/lee-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/lee-har-1p/lee-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/lee-har-1p/lee-har-1p.glb"
+   ],
+   "textures": [
+    "customization/parts/tekken7/hair/lee-har-1p/textures/T_CH_lee_har_1p_1_S.webp"
+   ],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 9,
+    "chains": 9,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false
+   }
+  },
+  {
+   "id": "tekken7-hair-leo-har-1p",
+   "name": "Hair \u2014 Leo Kliesen hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/leo-har-1p/leo-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/leo-har-1p/leo-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/leo-har-1p/leo-har-1p.glb"
+   ],
+   "textures": [],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 14,
+    "chains": 11,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false
+   }
+  },
+  {
+   "id": "tekken7-hair-lil-har-1p",
+   "name": "Hair \u2014 Lili Rochefort hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/lil-har-1p/lil-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/lil-har-1p/lil-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/lil-har-1p/lil-har-1p.glb"
+   ],
+   "textures": [],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 58,
+    "chains": 16,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false
+   }
+  },
+  {
+   "id": "tekken7-hair-ltn-har-1p",
+   "name": "Hair \u2014 'ltn' (name unresolved in held docs \u2014 code kept) hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/ltn-har-1p/ltn-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/ltn-har-1p/ltn-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/ltn-har-1p/ltn-har-1p.glb"
+   ],
+   "textures": [
+    "customization/parts/tekken7/hair/ltn-har-1p/textures/T_CH_ltn_hair_D.webp"
+   ],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 27,
+    "chains": 9,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false
+   }
+  },
+  {
+   "id": "tekken7-hair-mig-har-1p",
+   "name": "Hair \u2014 Miguel Caballero Rojo hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/mig-har-1p/mig-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/mig-har-1p/mig-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/mig-har-1p/mig-har-1p.glb"
+   ],
+   "textures": [
+    "customization/parts/tekken7/hair/mig-har-1p/textures/T_CH_mig_hair1p_1_R.webp",
+    "customization/parts/tekken7/hair/mig-har-1p/textures/T_CH_mig_har1p_2_sub.webp"
+   ],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 0,
+    "chains": 0,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": true
+   }
+  },
+  {
+   "id": "tekken7-hair-mrx-har-1p",
+   "name": "Hair \u2014 Master Raven hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/mrx-har-1p/mrx-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/mrx-har-1p/mrx-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/mrx-har-1p/mrx-har-1p.glb"
+   ],
+   "textures": [
+    "customization/parts/tekken7/hair/mrx-har-1p/textures/T_CH_mrx_har_1p_himo_N.webp"
+   ],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 0,
+    "chains": 0,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": true
+   }
+  },
+  {
+   "id": "tekken7-hair-mut-har-1p",
+   "name": "Hair \u2014 'mut' (name unresolved in held docs \u2014 code kept) hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/mut-har-1p/mut-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/mut-har-1p/mut-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/mut-har-1p/SK_CH_mut_har_1p_B.glb",
+    "customization/parts/tekken7/hair/mut-har-1p/mut-har-1p.glb"
+   ],
+   "textures": [],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 3,
+    "chains": 3,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false
+   }
+  },
+  {
+   "id": "tekken7-hair-nin-har-1p",
+   "name": "Hair \u2014 Nina Williams hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/nin-har-1p/nin-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/nin-har-1p/nin-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/nin-har-1p/nin-har-1p.glb"
+   ],
+   "textures": [
+    "customization/parts/tekken7/hair/nin-har-1p/textures/T_CH_nin_har1_D.webp",
+    "customization/parts/tekken7/hair/nin-har-1p/textures/T_CH_nin_har2_D.webp"
+   ],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 9,
+    "chains": 3,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false
+   }
+  },
+  {
+   "id": "tekken7-hair-pau-har-1p",
+   "name": "Hair \u2014 Paul Phoenix hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/pau-har-1p/pau-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/pau-har-1p/pau-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/pau-har-1p/pau-har-1p.glb"
+   ],
+   "textures": [
+    "customization/parts/tekken7/hair/pau-har-1p/textures/T_CH_pau_har_1p_base_D.webp",
+    "customization/parts/tekken7/hair/pau-har-1p/textures/T_CH_pau_har_1p_hair1_D.webp",
+    "customization/parts/tekken7/hair/pau-har-1p/textures/T_CH_pau_har_1p_hair2_D.webp",
+    "customization/parts/tekken7/hair/pau-har-1p/textures/T_CH_pau_har_1p_hair3_D.webp",
+    "customization/parts/tekken7/hair/pau-har-1p/textures/T_CH_pau_har_1p_hair4_D.webp"
+   ],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 0,
+    "chains": 0,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": true
+   }
+  },
+  {
+   "id": "tekken7-hair-ste-har-1p",
+   "name": "Hair \u2014 Steve Fox hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/ste-har-1p/ste-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/ste-har-1p/ste-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/ste-har-1p/SK_CH_ste_har_1p_E.glb",
+    "customization/parts/tekken7/hair/ste-har-1p/ste-har-1p.glb"
+   ],
+   "textures": [
+    "customization/parts/tekken7/hair/ste-har-1p/textures/T_CH_ste_har_1p_N.webp"
+   ],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 9,
+    "chains": 9,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false
+   }
+  },
+  {
+   "id": "tekken7-hair-xia-har-1p",
+   "name": "Hair \u2014 Ling Xiaoyu hairstyle (Tekken 7)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "t7_slot": "2",
+   "library": "tekken7",
+   "source": "GRE teardown tekken7-steam pakchunk0 (Steam Tekken 7)",
+   "glb": "customization/parts/tekken7/hair/xia-har-1p/xia-har-1p.glb",
+   "asset": "customization/parts/tekken7/hair/xia-har-1p/xia-har-1p.glb",
+   "components": [
+    "customization/parts/tekken7/hair/xia-har-1p/SK_CH_xia_har_1p_D.glb",
+    "customization/parts/tekken7/hair/xia-har-1p/xia-har-1p.glb"
+   ],
+   "textures": [],
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 30,
+    "chains": 5,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false
+   }
+  },
+  {
+   "id": "megami-hair-flora",
+   "name": "Hair \u2014 Flora (Megami default)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "library": "megami-default",
+   "source": "Parvati commission blend (fixed v4 base) \u2014 Megami default attire set, owner pick 2026-11-08",
+   "glb": "customization/parts/megami-default/flora-hair/flora-hair.glb",
+   "asset": "customization/parts/megami-default/flora-hair/flora-hair.glb",
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": "megami",
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 19,
+    "chains": 10,
+    "stiffness": 0.55,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false
+   },
+   "is_default_hairstyle": true,
+   "default_for": "megami",
+   "size": 13456256
+  },
+  {
+   "id": "megami-roses-bows-pantie",
+   "name": "Roses & Bows \u2014 Pantie",
+   "part_class": "mesh_part",
+   "suite_slot": "lower_body",
+   "library": "megami-default",
+   "source": "Parvati commission blend (fixed v4 base) \u2014 Megami default attire set, owner pick 2026-11-08",
+   "glb": "customization/parts/megami-default/roses-bows-pantie/roses-bows-pantie.glb",
+   "asset": "customization/parts/megami-default/roses-bows-pantie/roses-bows-pantie.glb",
+   "socket": "lower_body",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": "megami",
+   "geometry_pending": false,
+   "kind": "lower_body",
+   "placement": {
+    "socket": "lower_body",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ]
+  },
+  {
+   "id": "megami-roses-bows-garter-belt",
+   "name": "Roses & Bows \u2014 Garter Belt",
+   "part_class": "mesh_part",
+   "suite_slot": "accessory",
+   "library": "megami-default",
+   "source": "Parvati commission blend (fixed v4 base) \u2014 Megami default attire set, owner pick 2026-11-08",
+   "glb": "customization/parts/megami-default/roses-bows-garter-belt/roses-bows-garter-belt.glb",
+   "asset": "customization/parts/megami-default/roses-bows-garter-belt/roses-bows-garter-belt.glb",
+   "socket": "accessory",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": "megami",
+   "geometry_pending": false,
+   "kind": "accessory",
+   "placement": {
+    "socket": "accessory",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ]
+  },
+  {
+   "id": "megami-roses-bows-stockings",
+   "name": "Roses & Bows \u2014 Stockings",
+   "part_class": "mesh_part",
+   "suite_slot": "lower_body",
+   "library": "megami-default",
+   "source": "Parvati commission blend (fixed v4 base) \u2014 Megami default attire set, owner pick 2026-11-08",
+   "glb": "customization/parts/megami-default/roses-bows-stockings/roses-bows-stockings.glb",
+   "asset": "customization/parts/megami-default/roses-bows-stockings/roses-bows-stockings.glb",
+   "socket": "lower_body",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": "megami",
+   "geometry_pending": false,
+   "kind": "lower_body",
+   "placement": {
+    "socket": "lower_body",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ]
+  },
+  {
+   "id": "megami-sugar-choker",
+   "name": "Sugar \u2014 Choker",
+   "part_class": "mesh_part",
+   "suite_slot": "accessory",
+   "library": "megami-default",
+   "source": "Parvati commission blend (fixed v4 base) \u2014 Megami default attire set, owner pick 2026-11-08",
+   "glb": "customization/parts/megami-default/sugar-choker/sugar-choker.glb",
+   "asset": "customization/parts/megami-default/sugar-choker/sugar-choker.glb",
+   "socket": "accessory",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": "megami",
+   "geometry_pending": false,
+   "kind": "accessory",
+   "placement": {
+    "socket": "accessory",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ]
+  },
+  {
+   "id": "megami-gauntlets-black",
+   "name": "Gauntlets \u2014 Black Panels",
+   "part_class": "mesh_part",
+   "suite_slot": "gauntlets",
+   "library": "megami-default",
+   "source": "Parvati commission blend (fixed v4 base) \u2014 Megami default attire set, owner pick 2026-11-08",
+   "glb": "customization/parts/megami-default/gauntlets-black/gauntlets-black.glb",
+   "asset": "customization/parts/megami-default/gauntlets-black/gauntlets-black.glb",
+   "socket": "gauntlets",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": "megami",
+   "geometry_pending": false,
+   "kind": "gauntlets",
+   "placement": {
+    "socket": "gauntlets",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ]
+  },
+  {
+   "id": "megami-eye-yellow-tiger",
+   "name": "Megami eyes \u2014 yellow tiger",
+   "part_class": "texture_part",
+   "suite_slot": "eye",
+   "library": "megami-eyes",
+   "source": "PARTS-REGISTRY.json",
+   "glb": null,
+   "asset": "customization/parts/megami-eyes/eye-yellow-tiger-daz.png",
+   "socket": "eyes",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": "megami",
+   "geometry_pending": false,
+   "kind": "eye",
+   "placement": {
+    "material": "Irises-2",
+    "mode": "full_replace"
+   },
+   "editable": [
+    "position",
+    "size",
+    "opacity"
+   ],
+   "eye_kind": "texture_variant"
+  },
+  {
+   "id": "megami-hair-angel-afro",
+   "name": "Hair \u2014 Angel Afro (Megami option)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "library": "megami-default",
+   "source": "Parvati commission blend (fixed v4 base) \u2014 Megami default attire set, owner pick 2026-11-08",
+   "glb": "customization/parts/megami-hair/megami-hair-angel-afro/megami-hair-angel-afro.glb",
+   "asset": "customization/parts/megami-hair/megami-hair-angel-afro/megami-hair-angel-afro.glb",
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": "megami",
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 19,
+    "chains": 10,
+    "stiffness": 0.92,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false
+   },
+   "size": 81320784,
+   "file": "customization/parts/megami-hair/megami-hair-angel-afro/megami-hair-angel-afro.glb",
+   "notes": "Angel afro for Megami \u2014 owner priority pick 2026-11-08 ('the afro will look better'), built from his 5 reference screenshots of Angel Fernandez's public posts (evidence/ in this part folder). Strand-grade opaque build on the Parvati commission rig: Flora scalp cap inner layer + ellipsoid volume shell cut at the bone-space hairline + 1,700 helix-curl clump meshes; silhouette/density governed by the references (rounded dome ~2x head width, ears covered, sides to jaw, back to nape, no part). 6 spring chains (hairFront/hairBack/hairLeft/hairRight/hairTop/hairTopB) on game/js/hair-spring.js with a stiff afro profile. Selectable OPTION \u2014 Flora remains Megami's main default hairstyle."
+  },
+  {
+   "id": "megami-hair-angel-straight",
+   "name": "Hair \u2014 Angel Straight (Megami option)",
+   "part_class": "mesh_part",
+   "suite_slot": "hair",
+   "library": "megami-default",
+   "source": "Parvati commission blend (fixed v4 base) \u2014 Megami default attire set, owner pick 2026-11-08",
+   "glb": "customization/parts/megami-hair/megami-hair-angel-straight/megami-hair-angel-straight.glb",
+   "asset": "customization/parts/megami-hair/megami-hair-angel-straight/megami-hair-angel-straight.glb",
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": "megami",
+   "geometry_pending": false,
+   "kind": "hair",
+   "placement": {
+    "socket": "head",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "physics": {
+    "system": "spring-bone",
+    "driver": "game/js/hair-spring.js",
+    "hair_bones": 19,
+    "chains": 10,
+    "stiffness": 0.45,
+    "drag": 0.28,
+    "gravity_power": 1.0,
+    "wind_scale": 1.0,
+    "rigid": false
+   },
+   "size": 11607996,
+   "file": "customization/parts/megami-hair/megami-hair-angel-straight/megami-hair-angel-straight.glb",
+   "notes": "Angel straight hairstyle for Megami \u2014 REBUILD replacing the Pilot 2 v1 card veil (owner verdict 2026-11-08: 'the hair there looks terrible and unrealistic'). Strand-grade opaque build from Flora's real DAZ strand geometry on the Parvati commission rig: fringe removed, waves relaxed, length graded (front collarbone / back shoulder blades), near-black sections from Flora's own texture with a darkening factor, the wide blonde streak as its own material section at front-left with a baked blonde texture variant, and Pilot 2's own headband mesh repositioned onto the hairline as a separate toggleable mesh skinned to `head`. Flora's 10 spring chains drive physics via game/js/hair-spring.js. Selectable OPTION \u2014 Flora remains Megami's main default hairstyle."
   }
  ]
 }

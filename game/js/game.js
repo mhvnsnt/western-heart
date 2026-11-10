@@ -433,11 +433,30 @@ export class Game {
     let frameDt = Math.min(0.05, (now - this._last) / 1000);
     // Piece 1 Break 9: wall-clock round timer (display only). Accumulate
     // real seconds only while the round is actually fighting and unpaused
-    // — intro, pause, and brawler time never count. The round still ENDS
-    // on sim time (this.timer, _update below); on a slow machine the
-    // display can reach 0 while the round is still running. CAVEAT, flagged.
-    if (this.running && !this.paused && this.roundState === 'fight' && this._roundWallLast != null) {
-      this._roundWallElapsed = (this._roundWallElapsed || 0) + (now - this._roundWallLast) / 1000;
+    // — intro, pause, and brawler time never count.
+    // Piece 1 re-test Bug 2 (round NEVER ends at 00): the display ran on
+    // wall time while the round END ran on sim time only (this.timer in
+    // _update) — at ~1 fps one sim second takes ~30 wall seconds, so the
+    // display hit 00 at 60 s wall while the sim timer still had most of
+    // its 60 s left, and the fight ran ~25 min past 00. Tekken rule
+    // (teardown spec L38/L111: T7 tournament 60 s timer, first to 3;
+    // TIME UP ends the round, higher HP wins) and UR's rule (Part C:
+    // when the condition expires the mission ENDS) — so the round ends
+    // on the wall clock too. roundTime 0 = INFINITY: no wall timeout.
+    if (this.running && !this.paused && this._roundWallLast != null) {
+      const wallDt = (now - this._roundWallLast) / 1000;
+      if (this.roundState === 'fight') {
+        this._roundWallElapsed = (this._roundWallElapsed || 0) + wallDt;
+        const _limit = this.roundTime === 0 ? Infinity : (this.roundTime || ROUND_TIME);
+        if (_limit !== Infinity && this._roundWallElapsed >= _limit) this._timeOut();
+      } else if (this.roundState === 'over') {
+        // The post-round lockout (3.0 s to the result screen) was counted
+        // in sim dt too, so the result screen itself arrived ~90 s late
+        // on a slow machine. Count it in wall time here; the 'over'
+        // branch in _update no longer decrements it (see below).
+        this._roundLockT -= wallDt;
+        if (this._roundLockT <= 0) this._afterRound();
+      }
     }
     this._roundWallLast = now;
     const realDt = frameDt; // X-ray beat runs on real seconds, not slow-mo scale
@@ -500,7 +519,9 @@ export class Game {
       if (this.timer <= 0) { this.timer = 0; this._timeOut(); }
       // Piece 1 Break 9 (display only): the shown clock runs on wall time
       // so it never lies about how long the round has lasted. The round
-      // still ENDS on sim time above — see the CAVEAT at _roundWallElapsed.
+      // ENDS on wall time too now (Piece 1 re-test Bug 2: _loop calls
+      // _timeOut when the wall limit is reached); the sim timer above is
+      // the fast-machine path to the same outcome.
       const _limit = this.roundTime === 0 ? Infinity : (this.roundTime || ROUND_TIME);
       const _wallLeft = _limit === Infinity ? Infinity : Math.max(0, _limit - (this._roundWallElapsed || 0));
       this.ui.setTimer(Math.ceil(_wallLeft));
@@ -678,7 +699,10 @@ export class Game {
       if (this.soul) this.soul.update();
       if (this.p1.hp <= 0 || this.p2.hp <= 0) this._endRound();
     } else if (this.roundState === 'over') {
-      this._roundLockT -= dt;
+      // Piece 1 re-test Bug 2: the lockout is counted down in wall time
+      // in _loop now (see above) — NOT here, or it would count twice.
+      // This check is the backstop: if _loop already fired _afterRound
+      // the roundState has moved on and this branch never runs.
       this.p1.update(dt, this.p2);
       this.p2.update(dt, this.p1);
       if (this._roundLockT <= 0) this._afterRound();
@@ -930,6 +954,10 @@ export class Game {
 
   /* ---------------- Round flow ---------------- */
   _timeOut() {
+    // Piece 1 re-test Bug 2: the wall clock in _loop can race the sim
+    // timer in _update — both call _timeOut. Guard here so the second
+    // call cannot re-set HP after the round already ended.
+    if (this.roundState !== 'fight') return;
     // TTT2 tag: timeout compares TOTAL team HP (active + benched), not
     // just the fighters in the ring.
     if (this.tagMatch) {
