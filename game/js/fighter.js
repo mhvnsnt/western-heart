@@ -603,6 +603,16 @@ export function rootMotionSample(root_t, fps, t) {
    are requirement-gated and not wired. */
 export const TEKKEN_DASH_END_FRAMES = { t7_king: { f: 30, b: 30 } };
 export const TEKKEN_BACKDASH_CROUCH_CANCEL_FROM = { t7_king: 1 };
+/* Tekken RUN (2026-11-10, Pantera pass 5), from King's T7 motbin (kinmot.json), nothing invented:
+   - entry: the dash Kg_sDASHF's cancel dir 0x40 (stick f STATE, held), window [12, 12], requirement 0 -> sRUN__00F;
+   - chain: each run move's end (0x8000) -> next: sRUN__00F -> sRUN__01F -> sRUN__02F -> sRUN__03F -> sRUN__02F ...
+     clips runStart (Bco_run00, 32 f) / runA (Bco_run01, 16 f) / runB (Bco_run02, 16 f), each clip's own root travel;
+   - exits (requirement 0, window [1, 32767]): stick b -> sWALK_00B (here: idle, WH's walk-back takes the held b),
+     d / d/b / d/f -> crouch transitions (tryCrouch);
+   - NOT in the table with requirement 0: a neutral-stick stop. Here releasing f ends the run at the current
+     clip's end (a WH boundary, not a King timing). The gated links (f re-dash 1085, n -> run 2132, run stomp /
+     tackle 1093/1098/1104) are not wired. */
+export const TEKKEN_RUN = { t7_king: { fromDashFrame: 12, chain: ['runStart', 'runA', 'runB'], loop: ['runA', 'runB'] } };
 export function t7BankForwardTravel(root_t, fps, t) {
   if (!root_t || root_t.length < 2 || !(fps > 0) || !Number.isFinite(t)) return 0;
   const n = root_t.length, f = Math.max(0, Math.min(n - 1, t * fps));
@@ -1964,7 +1974,8 @@ export class Fighter {
   /* Tekken crouch: hold down. Releasing it opens the while-standing (WS.) window. */
   tryCrouch(on) {
     if (this.dead) return;
-    const kbd = on && this.onGround && this.state === 'tekdash' && this._tekDash && this._tekDash.dir === 'b' &&
+    const runCrouch = on && this.onGround && this.state === 'tekrun'; // run d|d/b|d/f group cancels (req 0)
+    const kbd = runCrouch || on && this.onGround && this.state === 'tekdash' && this._tekDash && this._tekDash.dir === 'b' &&
       this.char && TEKKEN_BACKDASH_CROUCH_CANCEL_FROM[ownSlotBankFor(this.char.id)] != null &&
       this.stateT * 60 >= TEKKEN_BACKDASH_CROUCH_CANCEL_FROM[ownSlotBankFor(this.char.id)];
     if (kbd || (on && this.onGround && (this.state === 'idle' || this.state === 'walk' || this.state === 'block'))) {
@@ -2779,6 +2790,26 @@ export class Fighter {
     return true;
   }
   get tekDashCancelable() { return this.state === 'tekdash' && this.stateT >= 1 / 60; }
+  /** Dash -> run: King's dash cancel stick-f STATE at exactly frame TEKKEN_RUN.fromDashFrame (requirement 0). */
+  _tryTekkenRun() {
+    const d = this._tekDash; const bank = this.char && ownSlotBankFor(this.char.id); const R = bank && TEKKEN_RUN[bank];
+    if (!R || !d || d.dir !== 'f' || this._stickDir !== 'f') return false;
+    const f = Math.round(this.stateT * 60);
+    if (f !== R.fromDashFrame) return false;
+    const src = getT3Clips(bank);
+    if (!src || !R.chain.every((n) => src[n] && src[n].userData && src[n].userData.raw && src[n].userData.raw.root_t)) return false;
+    this._tekRunId = (this._tekRunId || 0) + 1;
+    this._tekRun = { id: this._tekRunId, bank, idx: -1 };
+    this._enter('tekrun'); this._tekRunPhase(0);
+    return true;
+  }
+  _tekRunPhase(i) {
+    const r = this._tekRun; const R = TEKKEN_RUN[r.bank]; const src = getT3Clips(r.bank);
+    const name = i < R.chain.length ? R.chain[i] : R.loop[(i - R.chain.length) % R.loop.length];
+    const raw = src[name].userData.raw; const n = raw.root_t.length; const fps = raw.fps || 60;
+    Object.assign(r, { idx: i, name, rt: raw.root_t, fps, dur: (n - 1) / fps, t: 0, prev: 0 });
+  }
+  get tekRunCancelable() { return this.state === 'tekrun'; }
   /** Double tap f/b (input buffer dash latch): the fighter's dash / backdash row, or its roll
       row when no dash row owns that direction. */
   trySystemMotion(dir) {
@@ -2808,7 +2839,7 @@ export class Fighter {
     this._stepChain = null; return false;
   }
   _tryAttackFresh(name) {
-    if (!this.canAct() && !this.sidestepCancelable && !this.tekDashCancelable) return false;
+    if (!this.canAct() && !this.sidestepCancelable && !this.tekDashCancelable && !this.tekRunCancelable) return false;
     // A fresh press cancels any auto step chain: the player is driving now.
     this._stepChain = null;
     // Tekken notation resolution: strings (1,2), motion specials (qcf+2),
@@ -3058,6 +3089,7 @@ export class Fighter {
     }
     if (state !== 'attack') this._ssAlign = false;
     if (state !== 'tekdash') this._tekDash = null;
+    if (state !== 'tekrun') this._tekRun = null;
     this.state = state; this.stateT = 0;
   }
 
@@ -3912,7 +3944,19 @@ export class Fighter {
         if (!d) { this.vx = 0; this._enter('idle'); break; }
         const cur = t7BankForwardTravel(d.rt, d.fps, Math.min(this.stateT, d.dur));
         this.root.position.x += this.facing * (cur - d.prev); d.prev = cur; this.vx = 0;
+        if (d.dir === 'f' && this._tryTekkenRun()) break;
         if (this.stateT >= d.dur) this._enter('idle');
+      } break;
+      case 'tekrun': {
+        const r = this._tekRun;
+        if (!r) { this.vx = 0; this._enter('idle'); break; }
+        if (this._stickDir === 'b') { this.vx = 0; this._enter('idle'); break; } // sWALK_00B (req 0)
+        const cur = t7BankForwardTravel(r.rt, r.fps, Math.min(r.t, r.dur));
+        this.root.position.x += this.facing * (cur - r.prev); r.prev = cur; this.vx = 0; r.t += dt;
+        if (r.t >= r.dur) {
+          if (this._stickDir !== 'f') { this._enter('idle'); break; } // WH boundary (no req-0 stop link)
+          this._tekRunPhase(r.idx + 1);
+        }
       } break;
       case 'vshift':
         // V-Shift: invulnerable backshift; game.js may proc the evade.
@@ -4422,6 +4466,9 @@ export class Fighter {
         break;
       case 'tekdash':
         if (!this._tekDash || !this._playT3Once(this._tekDash.name, 'tekdash:' + this._tekDash.id)) this._stopT3();
+        break;
+      case 'tekrun':
+        if (!this._tekRun || !this._playT3Once(this._tekRun.name, 'tekrun:' + this._tekRun.id + ':' + this._tekRun.idx)) this._stopT3();
         break;
       case 'dodge': case 'vshift':
         // The dodge moves the fighter backwards: T3's own back-dash

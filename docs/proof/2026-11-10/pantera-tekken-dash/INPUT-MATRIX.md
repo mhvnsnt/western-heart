@@ -166,3 +166,32 @@ Node test: `test/t7-king-motions.test.mjs` (fails 9/10 on main, passes here).
 2. **Run attacks from a real run** (`WR`): map `sRUN__00F`'s own button links once the run state exists. Check WR 4 against `Kg_runrk00` / 0x80b7 and WR+1+2 against `Co_runchop` / 0x80b0 by damage and startup in `t7_move_resolve.py`. Not verified yet.
 3. **Requirement conditions** 35/36/124/254/72 need the community condition table before any gated link (re-dash, n→run, input sequences) is wired.
 4. **Throws** (`Thrmv_*`; 0 on T7 today) need paired-throw clip extraction. Not started.
+
+## Pass 5 (2026-11-10): real run locomotion from King's T7 tables
+
+**Sources** (restored to the persistent `/workspace/pantera-t7-sources`, all hash-verified: mothead blobs, exe sha256 `7f2b6872…2d60ed`, mannequin `ce817108…2321`, helper `1b447b1f…777c`).
+
+**Bake:** `T7_EXE=<exe> python tools/anim/t7_generic_bank_bake.py --code kin --fighter pantera --character "King (Tekken 7)" --mothead <mothead> --mannequin <blend> --helper <helper> --blender <blender 4.2.3> --out-dir <scratch> --slots docs/proof/2026-11-10/pantera-tekken-dash/king-run-slots.json`. The game's own sampler handles the 0x64 clips; the skeleton is byte-identical to the existing `t7_king` bank. Only the three new files were added, and no existing clip changed.
+
+| Run move (King T7) | Anim | Clip (bank#idx, fmt) | Frames | Root fwd | FK check |
+|---|---|---|---:|---:|---:|
+| `sRUN__00F` | Bco_run00 | common#67 0x64 → `t3_run_start.json` | 32 | +3.13 m | 0.000001 m |
+| `sRUN__01F` / `sRUN__03F` | Bco_run01 | rotsm#0 0x64 → `t3_run_a.json` | 16 | +1.79 m | 0.000000 m |
+| `sRUN__02F` | Bco_run02 | common#35 0x64 → `t3_run_b.json` | 16 | +1.79 m | 0.000000 m |
+
+**Transitions (all requirement 0):**
+- **Entry:** dash `Kg_sDASHF`, stick f **state** at frame [12,12] → `sRUN__00F`.
+- **Chain** (each move's end 0x8000): 00F → 01F → 02F → 03F → 02F, looping.
+- **Exits:** b → `sWALK_00B`; d / d/b / d/f → crouch transitions (group cancels, window [1,32767]).
+- **No requirement-0 neutral stop.** WH ends the run at the current clip's end when f is released. This is a WH boundary, **not** a King timing.
+- **Gated and not wired:** run stomp/tackle (`Co_fumuA00` 1093, `Co_runtac00` 1098, `Co_runspA00` 1104), f re-dash (1085), n → run (2132).
+
+**Tests.** `test/tekken-run-pantera.test.mjs` tests locomotion only:
+- entry at frame 12;
+- the chain playing start → a → b;
+- travel on the clips' own roots;
+- negatives: released before 12, re-pressed after 12, a plain held f, and b,b;
+- the exits;
+- a button press from the run firing an attack (which move it resolves to is not asserted).
+
+The 4 positive tests fail on main and pass here. The alias and KBD tests still pass. Run-attack recognition is tested separately in `test/t7-king-motions.test.mjs`. Node only; no touch or model proof.
