@@ -1,3 +1,63 @@
+## 2026-11-10 — Pantera: King T7 full-graph fighter adapter, opt-in DEVELOPMENT integration (MoneyManBusch / Grok) (t386u/t388u)
+
+- **Decode v2** (`wh-t7-graph/2`). Cancel buttons are now `0xMMNNHHPP` (pressed / held / not-held / mode, per the TekkenMods Input Extradata doc). v1 misread the 627 "any-of" rows as held.
+  - The cancel frame is applied at `starting_frame` (input buffered).
+  - Move length is the clip frames (motbin `anim_max_len` is 0 on disk).
+  - Hit level agrees with the frame data on 48/48 joined moves.
+- **Adapter.** The real shared input (on-screen hold/release now tracked) feeds `t7-graph-input.js`, then `Fighter.t7gFeed`, then `T7GraphDriver`, then the source cancel walk. The source move plays its own clip frame, with source root travel, damage, active frames and hit level.
+  - It is opt-in only: `?t7graph=1`, with a visible on-screen label. Off = unchanged Pantera.
+  - Unknown conditions are skipped and counted, never true. A fire after a skipped unknown row is flagged.
+- **Pack.** 772 clips are in 10 deterministic shards, 57,046,485 B total (max 5,991,270 B; Cloudflare 25 MiB/file, jsDelivr 20 MB/file). They come from the existing bake cache and were not rebaked. They are not added to GitHub Pages (no headroom); jsDelivr is the fallback there.
+- **Commands** generated from the graph: 37,419 rows on 1,196 reachable moves.
+  - Evaluable 7,775; unknown 28,247; known-false 1,039; timing 151; special 134; seq-mode 73.
+  - 66/66 evaluable stance press commands are replayed through the real input path.
+- **Tests:** `test/t7-graph-adapter-pantera.test.mjs` 14/14, `test/t7-graph-king.test.mjs` 10/10. Node only; no touch or model proof; not 100%.
+  See `docs/proof/2026-11-10/t7-graph-adapter/README.md`.
+
+## 2026-11-10 — King T7 FULL graph import + runtime interpreter (owner t388u method correction) (MoneyManBusch / Grok)
+
+- **Import.** `tools/anim/t7_graph_import.py` imports King's whole motbin graph: 2,787 moves, 42,621 cancel rows with groups inlined, 259 sequences, 868 requirement lists, and the alias table read from the bin header. It is deterministic. Output: `game/assets/anim/t7/king/graph.json` (2.55 MB).
+- **Coverage** is generated from the source: 1,196 moves reachable, using 772 unique clips. 135 of 225 requirement conditions are unlabelled.
+- **Runtime.** `game/js/t7graph.js` walks cancels in source priority (press vs held vs state links, windows, AUTO, sequences, requirements). Unknown conditions are skipped and reported, never satisfied. 10/10 tests reproduce the earlier verified dash/run/KBD/throw facts from the graph alone.
+- **Bake.** `tools/anim/t7_graph_bake.py` batch-bakes every reachable clip through the existing sampler path, with a resumable cache.
+- **Not yet:** the fighter adapter that uses the graph, shipping the baked clips, unlabelled requirement conditions, character-ID table, distance units, throws table. See `docs/proof/2026-11-10/t7-full-graph/README.md`.
+
+## 2026-11-10 — Pantera pass 5: real King T7 run locomotion (sRUN__00F..03F) (MoneyManBusch / Grok) (t386u)
+
+- **Sources restored** to `/workspace/pantera-t7-sources`, hash-verified: mothead subset (git blobs), exe `7f2b6872…`, mannequin `ce817108…`, helper `1b447b1f…`.
+- **Baked** King's run clips Bco_run00/01/02 (game sampler, FK ≤ 1e-6 m) into `game/assets/anim/t3/t7_king/t3_run_{start,a,b}.json`. They are new files only.
+- **Wired** `TEKKEN_RUN`: the dash with f held at frame 12 → run (requirement 0). The chain follows King's end transitions. b → walk; d-directions → crouch. Releasing f ends the run at the clip end (WH boundary). Gated links are not wired.
+- **Tests:** `test/tekken-run-pantera.test.mjs` (4 tests fail on main). The suite failure set is main's minus those 4. Not touch- or model-verified.
+
+## 2026-11-10 — GitHub Pages synced to main 63f6ea9c (owner t387u) (MoneyManBusch / Grok)
+
+- Live Pages `847a0aa4` (Nov 8) → `63f6ea9c` through the established API route (`deploy_api.py`, fast-forward, no force). Deploy commit `0969a76e` built 08:59 CST. Manifest and 12 spot files verified byte-identical to main.
+- `deploy_api.py` now adds the own-slot T7 banks `game/assets/anim/t3/t7_*` (256 files, 10.1 MB). The code loads them locally with no remote fallback, and the old rules would have left them off Pages.
+- #1672's six fixes are on Pages now: every added line is still on main, and its `game/tests` round/camera/cache tests pass (6/16/7).
+- Follow-up: `b53755b4` (Pantera pass 4) shipped as deploy `5e4c6a4f`, built 09:19 CST. Pages and Cloudflare are both on `b53755b4`.
+- Not shipped (pre-existing, over headroom): 16 older T3/DW bank dirs, about 92 MB. Cloudflare is unaffected.
+## 2026-11-10 — Pantera pass 4: run-alias fix, KBD crouch cancel, King T7 sequence/group/requirement decode (MoneyManBusch / Grok) (t386u)
+
+- **Alias.** `t7NormMotion` now canonicalizes only the run's third input (`f,f,F+X` → `f,f,f+X`). It is the dash's f-state link at frame 12 → `sRUN__00F`, so there is no blind case folding. `f,f,F+3` / `f,f,F+3+4` now play King T7 `Kg_666lk` / `Kg_dki11` (they were T3).
+- **KBD.** Backdash `sDASH_00B`'s group cancels d/b|d|d/f → crouch transitions (req 0, from frame 1) are wired as `TEKKEN_BACKDASH_CROUCH_CANCEL_FROM`. b,b from crouch backdashes again. No backdash→backdash link exists in the table, so none was added.
+- **Decode.** `tools/anim/t7_table_dump.py` produces `docs/proof/2026-11-10/pantera-tekken-dash/king-t7-tables.json`:
+  - input sequence = cmd − 0x800D (verified at 0x80b6 = n,f,n,f,n,f+3 → `Kg_666lk`);
+  - group cancels are `<QQQIIIHH` ending at 0x800C;
+  - requirement rows run to 881;
+  - King T7 references no CD sequence (no crouch dash).
+- **Coverage.** Plain rows on real King T7: 68 → **70 / 643**; T3 King 509 → 507.
+- **Tests:** 4 new positive tests fail on main and pass here, plus negatives. The suite failure set is identical to main.
+- **Not done:** run locomotion (needs the `Bco_run00` 0x8043 bake), gated links (req 2130/2132/1085/539), WR rows, throws, stance/close-far rows. Not touch- or model-verified.
+
+## 2026-11-10 — Pantera pass 3: King T7 dash / run moves from King's own link tables (MoneyManBusch / Grok) (t386u)
+
+- **Resolver.** `t7_move_resolve.py --motions` walks stance → 0x8001 → `Kg_sDASHF`, then the dash's f+X / n+X, or the dash's f → `sRUN__00F`, then X. The final move's damage and first active frame must match. 8 of 11 motion rows mapped. The earlier lead dash+1 → `Kg_jprk00F` was corrected: that cancel is requirement-gated; Jaguar Hook is `Kg_lygerlp00`.
+- **Bake.** Same verified setup. 7 moves / 7 clips added; the pack goes from 44 to 51 moves with the old 44 byte-identical. `Kg_fallerurari` was gated (not upright).
+- **Wiring.** `t3anims.js` gets an exact motion-input map (`t7NormMotion`, case-kept). Real stick sequences through TekkenBuffer + `trySystemMotion` + `tryAttack` now play f,F+1 / f,F+2 / f,F+4 / f,F+3+4 / f,f,n,2 / f,f,f+3 / f,f,f+3+4 as King T7.
+- **Coverage.** Plain rows on real King T7: 61 → **68 / 643**; T3 King 516 → 509.
+- **Tests:** `test/t7-king-motions.test.mjs` (fails 9/10 on main). Dash test comment updated.
+- **Not done:** `f,f,F+3` duplicate spellings, WR 4, WR+1+2, close/far rows, throws, f,n,d,d/f (input-sequence commands undecoded), KBD. Not touch- or model-verified.
+
 ## 2026-11-10 — Pantera pass 2: 15 real King T7 string steps extracted + wired (MoneyManBusch / Grok) (t386u)
 
 - **Resolver.** `t7_move_resolve.py --strings` (cancel-graph walk plus the exact step damage / first active frame) maps 17 of 24 King string-step rows (v1 output unchanged).

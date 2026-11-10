@@ -145,7 +145,24 @@ export const MOVESET_IDS = [
 const _movesets = {};
 const _loading = {};
 let _index = null;
-let MS_BASE = 'assets/movesets/'; // relative to the page; the creation suite points it at ../../game/assets/movesets/
+/* GAME-ROOT ANCHOR (moveset path gap, 2026-11-10): the moveset JSONs live
+   under game/assets/, but this base used to be page-relative ('assets/...'),
+   so any page whose URL is not game/ resolved it to <site>/assets/... and
+   404'd every moveset file while the game silently fell back to procedural
+   movesets (fighter.js loadRealMovesets uses the same page-relative base).
+   Anchor it to THIS module's URL (game/js/) instead of the page: on any
+   http(s) host it resolves to game/assets/... and is identical to the old
+   base when the page is game/. Node tests keep the page-relative default
+   (file:// module URLs are not http(s)). The creation suite's
+   setMovesetBase override still works — it reassigns MS_BASE after this. */
+export function gameAssetBase(sub) {
+  try {
+    const u = new URL(`../assets/${sub}`, import.meta.url);
+    if (u.protocol === 'http:' || u.protocol === 'https:') return u.href;
+  } catch (_) { /* fall through to the page-relative default */ }
+  return `assets/${sub}`;
+}
+let MS_BASE = gameAssetBase('movesets/');
 export function setMovesetBase(url) { MS_BASE = url.endsWith('/') ? url : url + '/'; }
 // Browser global mirror (fighter.js reads window.WH_MOVESETS); guarded for Node tests.
 const _g = (typeof window !== 'undefined') ? window : (typeof globalThis !== 'undefined' ? globalThis : {});

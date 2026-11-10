@@ -85,6 +85,11 @@ def compute_delta(live, main, t3anims):
                                   mblk.group(1)))) if mblk else []
     want += ["game/" + d + "skeleton.json" for d in mdirs]
     add = sorted(p for p in want if p in main and p not in live)
+    # Own-slot T7 generic banks (t3anims.js 'assets/anim/t3/t7_*/'): t3anims loads banks with a plain
+    # local fetch (no remote fallback), so the shell must carry them or own-slot fighters lose their
+    # bank on Pages (2026-11-10: 13 banks, 256 files, 10.1 MB, shipped in deploy 0969a76e).
+    bdirs = sorted(set(re.findall(r"'(assets/anim/t3/t7_[\w-]+/)'", t3anims)))
+    add += sorted(p for p in main for d in bdirs if p.startswith("game/" + d) and p not in live)
     budget = SMALL_TOTAL
     for p in sorted(p for p in main if p not in live
                     and p.startswith(SMALL_ADD_PREFIXES)

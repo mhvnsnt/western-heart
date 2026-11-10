@@ -39,11 +39,14 @@ import { assets } from './assets.js';
 import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK, T3_BANKS,
   clipStrikeProfile, clipHitWindow, bankAttackPool, attackLevelOfWord, attackClipTime, clipIsThrow, BUTTON_LIMB,
   loadT3Clips, loadT3ReactionClip, getT3ReactionPackScale, loadReactionPack, getReactionPack, getReactionClip,
-  applyT7Stance, ensureT7Moves, t7MoveClip, t7MoveRetarget, ensureDwMoves, dwMoveClip, dwMoveRetarget, dwKindMoveClip, dwKindMoveRetarget, retargetProfileFor } from './t3anims.js';
+  applyT7Stance, ensureT7Moves, t7MoveClip, t7MoveRetarget, ensureDwMoves, dwMoveClip, dwMoveRetarget, dwKindMoveClip, dwKindMoveRetarget, retargetProfileFor,
+  T7_GRAPHS, ensureT7Graph, t7GraphRetarget } from './t3anims.js';
+import { T7GraphDriver, T7G_FPS } from './t7-graph-driver.js';
+import { buttonsMask as t7ButtonsMask } from './t7graph.js';
 import { effectiveStepPlay, playableStepPlay, stepActionName, stepPlanBanksFor } from './step-plan-bank.js';
 import { selectThrow, resolveThrowClips, throwBreaks, throwDamageTimeSec, throwPairDurationSec,
   escapePairFor, anchorAt, sharedFramePos, throwQuadrant, attemptRowForInput, hexSlot, bankDirOf } from './t3-throw.js';
-import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove, resolveMoveKey, hasStrPrefix, variantBase, throwStageTag, throwStageKeys, systemRows, systemTagOf } from './movesets.js';
+import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove, resolveMoveKey, hasStrPrefix, variantBase, throwStageTag, throwStageKeys, systemRows, systemTagOf, gameAssetBase } from './movesets.js';
 import { TransformCinematic } from './transform-cinematic.js';
 import { V, vskillFor, vtriggerEnhance, vreversalMove } from './v-system.js';
 import { JiggleRig } from './jiggle.js';
@@ -356,7 +359,10 @@ export async function loadRealMovesets() {
     // aggregate moveset map silently never built.
     const FILE_FOR = { demonio: 'jin' };
     const data = await Promise.all(
-      names.map(n => fetch(`assets/${FILE_FOR[n] || n}_moves.json`).then(r => r.json()))
+      // GAME-ROOT ANCHOR (moveset path gap, 2026-11-10): same page-relative
+      // base bug as movesets.js MS_BASE — anchor to the module URL so the
+      // fetch resolves to game/assets/ from any page base.
+      names.map(n => fetch(gameAssetBase(`${FILE_FOR[n] || n}_moves.json`)).then(r => r.json()))
     );
     const byName = {};
     names.forEach((n, i) => byName[n] = data[i]);
@@ -592,10 +598,49 @@ export function rootMotionSample(root_t, fps, t) {
      +1.31..+1.46 m, backdash x -0.64..-0.72 m, sidesteps z +-0.92 m) — unlike the T3
      banks (forward = +z), so this reads x;
    - buttons cancel the dash from frame 1 (both moves' 1/2/3/4 cancels, window [1, 32767]).
-   NOT YET SOURCED / NOT DONE: the backdash crouch cancel (KBD) lives in the motbin's
-   packed group-cancel table, not the move's own list — undecoded, so no KBD is invented;
-   the f re-press at frame 12 (re-dash / sRUN__00F run) is not wired either. */
+   KBD (2026-11-10, pass 4): the backdash's crouch cancel, decoded from the packed
+   group-cancel table (0x800B refs -> group_cancels, 40-byte <QQQIIIHH rows, ended by 0x800C):
+   sDASH_00B d/b -> Kg_st2cr00B, d -> Kg_st2cr00_, d/f -> st2cr_00F, each requirement 0
+   (unconditional), window [1, 32767] — so from frame 1 any down direction cancels the
+   backdash into crouch (TEKKEN_BACKDASH_CROUCH_CANCEL_FROM). Re-entering the backdash
+   from there is the ordinary b,b (cancel 0x8002 -> sDASH_00B, the same requirement 2130 as
+   from the stance), so WH's normal b,b latch does it; no backdash->backdash link exists in
+   the table and none is added.
+   NOT DONE: the f state at frame 12 -> sRUN__00F run (req 0) needs the common-bank clip
+   Bco_run00 (anim 0x8043) baked first; the f re-dash (req 1085) and neutral->run (req 2132)
+   are requirement-gated and not wired. */
 export const TEKKEN_DASH_END_FRAMES = { t7_king: { f: 30, b: 30 } };
+export const TEKKEN_BACKDASH_CROUCH_CANCEL_FROM = { t7_king: 1 };
+/* Tekken RUN (2026-11-10, Pantera pass 5), from King's T7 motbin (kinmot.json), nothing invented:
+   - entry: the dash Kg_sDASHF's cancel dir 0x40 (stick f STATE, held), window [12, 12], requirement 0 -> sRUN__00F;
+   - chain: each run move's end (0x8000) -> next: sRUN__00F -> sRUN__01F -> sRUN__02F -> sRUN__03F -> sRUN__02F ...
+     clips runStart (Bco_run00, 32 f) / runA (Bco_run01, 16 f) / runB (Bco_run02, 16 f), each clip's own root travel;
+   - exits (requirement 0, window [1, 32767]): stick b -> sWALK_00B (here: idle, WH's walk-back takes the held b),
+     d / d/b / d/f -> crouch transitions (tryCrouch);
+   - NOT in the table with requirement 0: a neutral-stick stop. Here releasing f ends the run at the current
+     clip's end (a WH boundary, not a King timing). The gated links (f re-dash 1085, n -> run 2132, run stomp /
+     tackle 1093/1098/1104) are not wired. */
+export const TEKKEN_RUN = { t7_king: { fromDashFrame: 12, chain: ['runStart', 'runA', 'runB'], loop: ['runA', 'runB'] } };
+/* T7 FULL-GRAPH DEVELOPMENT INTEGRATION (2026-11-10, owner t388u). Opt-in only (?t7graph=1, localStorage
+   wh.t7graph=1, or globalThis.WH_T7GRAPH = true for tests): the player's fighter with a T7_GRAPHS entry (Pantera <-
+   King) is then driven frame by frame by its imported source graph (t7-graph-driver.js): every press / hold / release
+   / chord / double tap / sequence goes through the source cancel tables, every frame plays the source move's own
+   clip sample, travel comes from the clip's raw root channel, and damage + active frames + hit level come from the
+   source move. Not the default: the graph is incomplete (unknown requirement conditions skip their cancels, reaction
+   lists and throws are not traversed), so the default game keeps its current controls. While WH puts the fighter
+   in a hit / block / throw / KO state (WH engine, not King's reaction lists) the graph is suspended and restarts at
+   the stance when WH returns to neutral. Hit levels: only the source words that decode to high / mid / low through
+   the T3 attack-word layout (t3anims attackLevelOfWord; checked 49/49 against T7 frame data on independently
+   resolved King moves) produce a hitbox; unblockable / throw-class / undecoded words do not (counted in
+   _t7gStatus). */
+export function t7GraphDevEnabled() {
+  if (globalThis.WH_T7GRAPH != null) return !!globalThis.WH_T7GRAPH;
+  try {
+    if (typeof location !== 'undefined' && /[?&]t7graph=1(?:&|$)/.test(location.search || '')) return true;
+    return typeof localStorage !== 'undefined' && localStorage.getItem('wh.t7graph') === '1';
+  } catch (e) { return false; }
+}
+export const T7G_HIT_LEVELS = { h: 'high', m: 'mid', l: 'low' };
 export function t7BankForwardTravel(root_t, fps, t) {
   if (!root_t || root_t.length < 2 || !(fps > 0) || !Number.isFinite(t)) return 0;
   const n = root_t.length, f = Math.max(0, Math.min(n - 1, t * fps));
@@ -1149,6 +1194,9 @@ export class Fighter {
     // Real T7 per-move clips (t3anims.js T7_MOVES), loaded per fighter in the background; until they arrive the
     // moves keep their current clips. They retarget lazily with the stance's bind-time rest pose.
     try { const p = ensureT7Moves(this.char.id, THREE); if (p && p.catch) p.catch(() => {}); } catch (e) { /* optional */ }
+    if (this.isPlayer && T7_GRAPHS[this.char.id] && t7GraphDevEnabled()) {
+      try { ensureT7Graph(this.char.id, THREE).then((b) => { if (b) this.t7gAttach(b); }).catch(() => {}); } catch (e) { /* optional */ }
+    }
     try { const p = ensureDwMoves(this.char.id, THREE); if (p && p.catch) p.catch(() => {}); } catch (e) { /* optional */ }
     this.t3actions = createT3Actions(this.mixer, clips, THREE);
     this._stepBankClips = {}; // per-step-bank source clips (see _attackClip)
@@ -1957,7 +2005,11 @@ export class Fighter {
   /* Tekken crouch: hold down. Releasing it opens the while-standing (WS.) window. */
   tryCrouch(on) {
     if (this.dead) return;
-    if (on && this.onGround && (this.state === 'idle' || this.state === 'walk' || this.state === 'block')) {
+    const runCrouch = on && this.onGround && this.state === 'tekrun'; // run d|d/b|d/f group cancels (req 0)
+    const kbd = runCrouch || on && this.onGround && this.state === 'tekdash' && this._tekDash && this._tekDash.dir === 'b' &&
+      this.char && TEKKEN_BACKDASH_CROUCH_CANCEL_FROM[ownSlotBankFor(this.char.id)] != null &&
+      this.stateT * 60 >= TEKKEN_BACKDASH_CROUCH_CANCEL_FROM[ownSlotBankFor(this.char.id)];
+    if (kbd || (on && this.onGround && (this.state === 'idle' || this.state === 'walk' || this.state === 'block'))) {
       this._bt = false; // Tekken: crouching from back-turned turns you around into the crouch
       this._enter('crouch'); this.vx = 0;
     } else if (!on && this.state === 'crouch') {
@@ -2032,7 +2084,9 @@ export class Fighter {
   _guardBits() {
     if (!this.onGround || this.dead) return 0;
     const s = this.state;
-    if (!(s === 'idle' || s === 'walk' || s === 'crouch' || s === 'block')) return 0;
+    // T7 graph dev: WH's guard rule while the source move deals no damage (guard is engine-side, not in the tables)
+    const t7gNeutral = s === 'tekgraph' && !!this._t7gRec && !(this._t7gRec.damage > 0);
+    if (!(s === 'idle' || s === 'walk' || s === 'crouch' || s === 'block' || t7gNeutral)) return 0;
     const d = this._stickDir || 'n';
     const low = s === 'crouch' || d === 'd' || d === 'd/b';
     if (s === 'block') return low ? 0x08 : 0x10;          // WH block button
@@ -2753,6 +2807,96 @@ export class Fighter {
     this._throwFollow = null; this._chainFrom = null; this._chainNext = null; this._chainSeq = [];
     this.vx = 0; this._enter('attack'); this._attackPhase = 'startup'; this._prevAtkT = 0;
   }
+  /* ---- T7 full-graph development integration (see t7GraphDevEnabled) ---- */
+  t7gAttach(bank) {
+    this._t7gBank = bank;
+    this._t7g = new T7GraphDriver(bank.graph, bank.driverClips, { evalState: { dead: !!this.dead } });
+    this._t7gAcc = 0; this._t7gDown = 0; this._t7gSpecial = []; this._t7gRec = null; this._t7gAtkId = -1;
+    this._t7gStatus = { label: 'T7 GRAPH DEV — King T7 source graph (development integration, not full parity)',
+      ticks: 0, hitboxes: 0, noHitbox: {}, clipUnbound: 0, suspended: 0 };
+    try { // visible, accurately labelled dev marker (never shown without the opt-in flag)
+      if (typeof document !== 'undefined' && document.body && !document.getElementById('t7g-dev')) {
+        const el = document.createElement('div'); el.id = 't7g-dev';
+        el.style.cssText = 'position:fixed;left:6px;bottom:6px;z-index:9999;font:11px monospace;color:#ffd54a;background:rgba(0,0,0,.6);padding:3px 6px;pointer-events:none';
+        el.textContent = this._t7gStatus.label; document.body.appendChild(el); this._t7gEl = el;
+      }
+    } catch (e) { /* cosmetic */ }
+    return this._t7g;
+  }
+  t7gReady() { return !!this._t7g && !this.brawler; }
+  /** One game tick of player input into the graph: dir (facing-relative stick), presses (the shared input queue's
+      limb presses / chords this tick), held ({1..4: bool}), dashDir (the shared buffer's new double-tap latch). */
+  t7gFeed(inp, dt) {
+    const D = this._t7g; if (!D) return false;
+    for (const a of inp.presses || []) this._t7gDown |= t7ButtonsMask([a]);
+    if (inp.dashDir === 'f') this._t7gSpecial.push(0x8001); else if (inp.dashDir === 'b') this._t7gSpecial.push(0x8002);
+    const free = !this.dead && this.stun <= 0 && !(this._cinematic && !this._cinematic.done) &&
+      (this.state === 'tekgraph' || this.state === 'idle' || this.state === 'walk' || this.state === 'crouch');
+    if (!free) { this._t7gSuspended = true; this._t7gAcc = 0; this._t7gDown = 0; this._t7gSpecial = []; return false; }
+    if (this.state !== 'tekgraph') {
+      if (this._t7gSuspended || !this._t7gRec) { D.reset(); this._t7gStatus.suspended += this._t7gSuspended ? 1 : 0; }
+      this._t7gSuspended = false; this._enter('tekgraph'); this.vx = 0; this.vz = 0;
+    }
+    D.evalState.dead = !!this.dead;
+    this._t7gAcc += dt;
+    const held = inp.held ? ['1', '2', '3', '4'].filter((b) => inp.held[b]) : [];
+    while (this._t7gAcc >= 1 / T7G_FPS - 1e-9) {
+      this._t7gAcc -= 1 / T7G_FPS;
+      const rec = D.step({ dir: inp.dir || 'n', down: this._t7gDown, held, special: this._t7gSpecial });
+      this._t7gDown = 0; this._t7gSpecial = [];
+      this._t7gApply(rec);
+    }
+    return true;
+  }
+  _t7gApply(rec) {
+    this._t7gRec = rec; this._t7gStatus.ticks += 1;
+    if (this._t7gEl && this._t7gStatus.ticks % 6 === 0) {
+      const st = this._t7g.stats;
+      this._t7gEl.textContent = `${this._t7gStatus.label} | ${rec.name} f${rec.frame}/${rec.len} | fires ${st.fired}` +
+        ` (${st.precedenceUnknown || 0} after an unknown row) | rows skipped: unknown cond ${st.skipped.requirement || 0}, timing ${st.skipped.timing || 0}`;
+    }
+    // Travel: the clip's raw T7 root channel, forward along the facing (lateral 0, sign unproven).
+    if (rec.dFwd && this.root) this.root.position.x += this.facing * rec.dFwd;
+    this.vx = 0; this.vz = 0;
+    if (rec.attackId !== this._t7gAtkId) { this._t7gAtkId = rec.attackId; this.hasHit = false; this._prevHitPoint = null; }
+    const word = rec.damage > 0 ? (rec.hitlevelRaw & 0xFFF) : null;
+    const lv = word != null ? attackLevelOfWord(word) : null;
+    if (rec.active && T7G_HIT_LEVELS[lv]) {
+      if (!this.attack || !this.attack.t7graph || this.attack.t7id !== rec.attackId) {
+        this.attack = { t7graph: true, t7id: rec.attackId, name: rec.name, damage: rec.damage, hitWord: word,
+          level: T7G_HIT_LEVELS[lv], t7_move: rec.moveId, soulGain: 0, limb: null };
+        this.attackName = rec.name; this._t7gStatus.hitboxes += 1;
+      }
+      this._attackPhase = 'active';
+    } else {
+      if (rec.active) { const k = lv || 'undecoded'; this._t7gStatus.noHitbox[k] = (this._t7gStatus.noHitbox[k] || 0) + 1; }
+      if (this.attack && this.attack.t7graph) { this.attack = null; this.attackName = null; }
+      this._attackPhase = rec.damage > 0 ? 'recovery' : null;
+    }
+  }
+  _t7gActionName() {
+    const rec = this._t7gRec; if (!rec || !rec.clipKey || !this._t3) return null;
+    const name = 't7g:' + rec.clipKey;
+    if (!this.t3actions[name] && !(this._t7gNoBind && this._t7gNoBind.has(name))) {
+      const rc = t7GraphRetarget(this.char.id, rec.clipKey, this._t3.model, THREE, this._t3.modelKey);
+      if (rc && rc[name]) Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
+      if (!this.t3actions[name]) (this._t7gNoBind || (this._t7gNoBind = new Set())).add(name);
+    }
+    if (!this.t3actions[name]) { this._t7gStatus.clipUnbound += 1; return null; }
+    return name;
+  }
+  /* The source frame owns the pose: the move's clip, paused at this tick's sample (no time warp, no blend). */
+  _applyT7GraphPose() {
+    if (this.state !== 'tekgraph' || !this._t7gRec) return;
+    const name = this._t7gActionName(); const a = name && this.t3actions[name];
+    if (!a) return;
+    if (this._t3current !== a) {
+      if (this._t3current) { this._t3current.paused = false; this._t3current.stop(); }
+      for (const n of ['Idle', 'Walk', 'Run']) if (this.actions && this.actions[n]) this.actions[n].fadeOut(0.05);
+      a.reset(); a.setEffectiveWeight(1); a.play(); this._t3current = a; this._t3stateKey = null;
+    }
+    a.paused = true; a.time = (this._t7gRec.sample || 0) / T7G_FPS;
+  }
   /** Tekken f,f dash / b,b backdash on the fighter's own T7 generic bank (see TEKKEN_DASH_END_FRAMES). */
   _tryTekkenDash(dir) {
     if (this.brawler || !this.onGround || (dir !== 'f' && dir !== 'b')) return false;
@@ -2769,6 +2913,26 @@ export class Fighter {
     return true;
   }
   get tekDashCancelable() { return this.state === 'tekdash' && this.stateT >= 1 / 60; }
+  /** Dash -> run: King's dash cancel stick-f STATE at exactly frame TEKKEN_RUN.fromDashFrame (requirement 0). */
+  _tryTekkenRun() {
+    const d = this._tekDash; const bank = this.char && ownSlotBankFor(this.char.id); const R = bank && TEKKEN_RUN[bank];
+    if (!R || !d || d.dir !== 'f' || this._stickDir !== 'f') return false;
+    const f = Math.round(this.stateT * 60);
+    if (f !== R.fromDashFrame) return false;
+    const src = getT3Clips(bank);
+    if (!src || !R.chain.every((n) => src[n] && src[n].userData && src[n].userData.raw && src[n].userData.raw.root_t)) return false;
+    this._tekRunId = (this._tekRunId || 0) + 1;
+    this._tekRun = { id: this._tekRunId, bank, idx: -1 };
+    this._enter('tekrun'); this._tekRunPhase(0);
+    return true;
+  }
+  _tekRunPhase(i) {
+    const r = this._tekRun; const R = TEKKEN_RUN[r.bank]; const src = getT3Clips(r.bank);
+    const name = i < R.chain.length ? R.chain[i] : R.loop[(i - R.chain.length) % R.loop.length];
+    const raw = src[name].userData.raw; const n = raw.root_t.length; const fps = raw.fps || 60;
+    Object.assign(r, { idx: i, name, rt: raw.root_t, fps, dur: (n - 1) / fps, t: 0, prev: 0 });
+  }
+  get tekRunCancelable() { return this.state === 'tekrun'; }
   /** Double tap f/b (input buffer dash latch): the fighter's dash / backdash row, or its roll
       row when no dash row owns that direction. */
   trySystemMotion(dir) {
@@ -2798,7 +2962,7 @@ export class Fighter {
     this._stepChain = null; return false;
   }
   _tryAttackFresh(name) {
-    if (!this.canAct() && !this.sidestepCancelable && !this.tekDashCancelable) return false;
+    if (!this.canAct() && !this.sidestepCancelable && !this.tekDashCancelable && !this.tekRunCancelable) return false;
     // A fresh press cancels any auto step chain: the player is driving now.
     this._stepChain = null;
     // Tekken notation resolution: strings (1,2), motion specials (qcf+2),
@@ -3048,6 +3212,11 @@ export class Fighter {
     }
     if (state !== 'attack') this._ssAlign = false;
     if (state !== 'tekdash') this._tekDash = null;
+    if (state !== 'tekrun') this._tekRun = null;
+    if (this.state === 'tekgraph' && state !== 'tekgraph') {
+      if (this._t3current) this._t3current.paused = false; // the source frame no longer owns the pose
+      if (this.attack && this.attack.t7graph) { this.attack = null; this.attackName = null; }
+    }
     this.state = state; this.stateT = 0;
   }
 
@@ -3599,7 +3768,8 @@ export class Fighter {
   getHitbox() {
     // V-System: vskill/vreversal are attacks too. Parry-kind V-Skills
     // (noHitbox) never produce a hitbox.
-    if ((this.state !== 'attack' && this.state !== 'vskill' && this.state !== 'vreversal') ||
+    const t7g = this.state === 'tekgraph' && !!(this.attack && this.attack.t7graph);
+    if ((this.state !== 'attack' && this.state !== 'vskill' && this.state !== 'vreversal' && !t7g) ||
         this._attackPhase !== 'active' || this.hasHit) return null;
     if (this.attack && this.attack.noHitbox) return null;
     const isGrab = !!(this.attack?.isGrab || this.attackName === 'grab' || this.attackName === '1+3' || this.attackName === '2+4');
@@ -3673,7 +3843,7 @@ export class Fighter {
     }
     return out;
   }
-  registerHit() { this.hasHit = true; this.addMeter(this.attack.soulGain); }
+  registerHit() { this.hasHit = true; if (this.attack && !this.attack.t7graph) this.addMeter(this.attack.soulGain); }
   registerCombo() { this.combo++; this._comboTimer = 1.2; return this.combo; }
 
   /* ---------------- per-frame update ---------------- */
@@ -3736,7 +3906,9 @@ export class Fighter {
 
     // BRAWLER: facing is yaw-driven by the brawler controller (free 3D) —
     // never x-snap toward a single opponent.
-    if (opponent && this.canAct() && !this.brawler) {
+    // T7 graph dev: re-face only while the source STANCE move plays (WH policy; T7 tracking is engine-side).
+    const t7gStance = this.state === 'tekgraph' && !!this._t7gRec && !!this._t7g && this._t7gRec.moveId === this._t7g.graph.stance;
+    if (opponent && (this.canAct() || t7gStance) && !this.brawler) {
       if (this._bt) {
         // BACK-TURNED: the body faces AWAY from the opponent and does NOT snap
         // back. BT is a facing state with no timer: it ends when the fighter
@@ -3902,7 +4074,19 @@ export class Fighter {
         if (!d) { this.vx = 0; this._enter('idle'); break; }
         const cur = t7BankForwardTravel(d.rt, d.fps, Math.min(this.stateT, d.dur));
         this.root.position.x += this.facing * (cur - d.prev); d.prev = cur; this.vx = 0;
+        if (d.dir === 'f' && this._tryTekkenRun()) break;
         if (this.stateT >= d.dur) this._enter('idle');
+      } break;
+      case 'tekrun': {
+        const r = this._tekRun;
+        if (!r) { this.vx = 0; this._enter('idle'); break; }
+        if (this._stickDir === 'b') { this.vx = 0; this._enter('idle'); break; } // sWALK_00B (req 0)
+        const cur = t7BankForwardTravel(r.rt, r.fps, Math.min(r.t, r.dur));
+        this.root.position.x += this.facing * (cur - r.prev); r.prev = cur; this.vx = 0; r.t += dt;
+        if (r.t >= r.dur) {
+          if (this._stickDir !== 'f') { this._enter('idle'); break; } // WH boundary (no req-0 stop link)
+          this._tekRunPhase(r.idx + 1);
+        }
       } break;
       case 'vshift':
         // V-Shift: invulnerable backshift; game.js may proc the evade.
@@ -4258,6 +4442,7 @@ export class Fighter {
       case 'knockdown': t3Wanted = 'launch'; break;
       case 'ko': t3Wanted = 'ko'; break;
       case 'attack': case 'vskill': case 'vreversal': t3Wanted = attackClipFor(); break;
+      case 'tekgraph': t3Wanted = this._t7gActionName(); break;
     }
     if (t3Wanted && !this.t3actions[t3Wanted] && this.t3actions.stance) t3Wanted = 'stance';
     const t3Active = !!(t3Wanted && this.t3actions[t3Wanted]);
@@ -4288,6 +4473,7 @@ export class Fighter {
     // 4) Advance clips (writes the posed skeleton into bones). The attack clip's time is set from
     // the move clock first, so its hit frame lands on the move's active frames (lane D).
     this._applyAttackWarp();
+    this._applyT7GraphPose();
     this.mixer.update(dt);
     // 4a) LAYER2 second contact (Chatur Phase 2): after the mixer has
     // posed this frame, an authored two-hit composite can land its
@@ -4413,6 +4599,10 @@ export class Fighter {
       case 'tekdash':
         if (!this._tekDash || !this._playT3Once(this._tekDash.name, 'tekdash:' + this._tekDash.id)) this._stopT3();
         break;
+      case 'tekrun':
+        if (!this._tekRun || !this._playT3Once(this._tekRun.name, 'tekrun:' + this._tekRun.id + ':' + this._tekRun.idx)) this._stopT3();
+        break;
+      case 'tekgraph': break; // the source frame was set before the mixer update (_applyT7GraphPose)
       case 'dodge': case 'vshift':
         // The dodge moves the fighter backwards: T3's own back-dash
         // V-Shift rides the same presentation (a fast defensive shift).

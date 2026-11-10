@@ -47,6 +47,12 @@ const T3_CLIP_DEFS = {
   crouch:  { file: 't3_crouch.json',  loop: false },  // stand -> crouch (slot 0x3b)
   crouchHold:{ file: 't3_crouch_hold.json', loop: true }, // crouching neutral (slot 40)
   backdash:{ file: 't3_backdash.json', loop: false },
+  // Tekken run (2026-11-10, Pantera pass 5): King T7 sRUN__00F (Bco_run00) -> sRUN__01F (Bco_run01) -> sRUN__02F
+  // (Bco_run02) -> sRUN__03F (Bco_run01 again) <-> sRUN__02F; baked by t7_generic_bank_bake.py. Only own-slot T7
+  // banks that baked them have these files (missing files are tolerated like the other optional slots).
+  runStart:{ file: 't3_run_start.json', loop: false },
+  runA:    { file: 't3_run_a.json', loop: false },
+  runB:    { file: 't3_run_b.json', loop: false },
   // noRise: the game's jump/launch physics lifts the fighter, so the clip
   // keeps its crouch/landing compression but not its rise (else the
   // height doubles: hips measured at 2.46 m mid-jump before this).
@@ -790,7 +796,7 @@ export function ensureT7Moves(fid, THREE) {
         clip.userData.rootMotionT = Array.isArray(data.root_motion_fwd_m) ? data.root_motion_fwd_m.map(f => [0, 0, f]) : null;
         clips[cname] = clip;
       }
-      const moves = {}, byInput = {}, byString = {}, dupString = new Set();
+      const moves = {}, byInput = {}, byString = {}, dupString = new Set(), byMotion = {}, dupMotion = new Set();
       for (const [key, m] of Object.entries(pack.moves || {})) {
         if (!clips[m.clip]) continue;
         moves[key] = { clip: m.clip, active: m.active_frames, motbin: m.motbin_move };
@@ -798,9 +804,12 @@ export function ensureT7Moves(fid, THREE) {
         if (ni && !byInput[ni]) byInput[ni] = key;
         const ns = t7NormString(m.input);
         if (ns) { if (byString[ns]) dupString.add(ns); else byString[ns] = key; }
+        const nm = t7NormMotion(m.input);
+        if (nm) { if (byMotion[nm]) dupMotion.add(nm); else byMotion[nm] = key; }
       }
       for (const ns of dupString) delete byString[ns]; // two string steps on one input: no exact mapping, keep current clips
-      _t7moves[fid] = { bank: def.bank, skelId, clips, moves, byInput, byString };
+      for (const nm of dupMotion) delete byMotion[nm];
+      _t7moves[fid] = { bank: def.bank, skelId, clips, moves, byInput, byString, byMotion };
       console.log(`[WH-T7] ${fid}: ${Object.keys(moves).length} real T7 move clips (${def.dir}${packFile})`);
       return _t7moves[fid];
     } catch (e) {
@@ -809,6 +818,59 @@ export function ensureT7Moves(fid, THREE) {
     }
   })();
   return _t7movesLoading[fid];
+}
+/* T7 FULL GRAPH CLIP BANK (2026-11-10, owner t388u: import EVERY move from the complete source, not per-move picks).
+   A fighter's imported motbin graph (graph.json, tools/anim/t7_graph_import.py) plus EVERY clip that graph reaches
+   (graph-clips/, tools/anim/t7_graph_pack.py: deterministic shards of <= 6 MB, index.json with frames + sha256 per
+   shard). Same skeleton + rest-pose capture as the T7 stance / moves (one skelId per dir), so a clip is only retargeted
+   for a model whose stance rest pose was captured. Loaded ONLY for the explicit development integration
+   (fighter.js t7GraphDevEnabled: ?t7graph=1 or localStorage wh.t7graph=1); the default game is unchanged.
+   Every file loads page first, then jsDelivr (fetchT7Json), like the moves packs. */
+export const T7_GRAPHS = {
+  pantera: { bank: 'king', dir: 'assets/anim/t7/king/' },
+};
+const _t7graphs = {}; const _t7graphLoading = {};
+export function ensureT7Graph(fid, THREE, { fetchJson = fetchT7Json } = {}) {
+  const def = T7_GRAPHS[fid];
+  if (!def) return Promise.resolve(null);
+  if (_t7graphs[fid]) return Promise.resolve(_t7graphs[fid]);
+  if (_t7graphLoading[fid]) return _t7graphLoading[fid];
+  _t7graphLoading[fid] = (async () => {
+    try {
+      const [graph, index] = await Promise.all([fetchJson(def.dir + 'graph.json'), fetchJson(def.dir + 'graph-clips/index.json')]);
+      if (graph.format !== 'wh-t7-graph/2' || index.format !== 'wh-t7-graph-clips/1') throw new Error(`format ${graph.format} / ${index.format}`);
+      const skelId = 't7:' + def.dir;
+      if (!_t3skelCache[skelId]) _t3skelCache[skelId] = await fetchJson(def.dir + 'skeleton.json');
+      const shards = await Promise.all(index.shards.map((sh) => fetchJson(def.dir + 'graph-clips/' + sh.file)));
+      const clips = {}, driverClips = {};
+      for (const sh of shards) {
+        if (sh.graph_sha256 !== index.graph_sha256) throw new Error(`shard ${sh.shard} was packed for another graph`);
+        for (const [key, data] of Object.entries(sh.clips)) {
+          if (data.anim_set && data.anim_set !== 'FIGHT') continue;
+          const clip = THREE ? jsonToClip(`t7g_${fid}_${key}`, data, THREE) : null;
+          if (clip) { clip.userData.loop = false; clip.userData.t7 = data.t7_source || true; clips[key] = clip; }
+          driverClips[key] = { frames: data.root_t.length, fwd: data.root_motion_fwd_m || null };
+        }
+      }
+      const missing = Object.keys(index.clips).filter((k) => !driverClips[k]);
+      _t7graphs[fid] = { fid, bank: def.bank, dir: def.dir, skelId, graph, index, clips, driverClips, missing };
+      console.log(`[WH-T7G] ${fid}: graph ${graph.moves.length} moves, ${Object.keys(driverClips).length} clips in ${index.shards.length} shards (${index.total_bytes} B)`);
+      return _t7graphs[fid];
+    } catch (e) {
+      console.warn(`[WH-T7G] ${fid}: T7 graph bank unavailable, the fighter keeps its current controls:`, e.message || e);
+      return null;
+    }
+  })();
+  return _t7graphLoading[fid];
+}
+export function getT7Graph(fid) { return _t7graphs[fid] || null; }
+/** Retarget one graph clip onto `model` as action 't7g:<key>' (same captured rest pose as the stance), or null. */
+export function t7GraphRetarget(fid, key, model, THREE, instanceKey = null) {
+  const b = _t7graphs[fid]; const clip = b && b.clips[key];
+  if (!clip || !model) return null;
+  const pm = _retargetCache.get(model); if (!pm || !pm.get(b.skelId)) return null;
+  const name = 't7g:' + key;
+  return retargetT3Clips({ [name]: clip }, b.skelId, model, THREE, instanceKey, [name]);
 }
 /** The real T7 clip for one moveset row of this fighter on its bound bank, or null. With `model`, also null
     unless the stance's rest pose was captured for that model (so the move can be retargeted safely). */
@@ -826,6 +888,20 @@ export function t7NormString(input) {
   const out = steps.map((x) => (/^([du]\/?[fb]|[dubf])?\+?[1-4](\+[1-4])*$/.test(x) ? t7NormInput(x) : null));
   return out.every(Boolean) ? out.join(',') : null;
 }
+/** Dash / run notation, exact (whitespace dropped, CASE KEPT: 'F' = held forward is its own command):
+    'f, F+1' -> 'f,F+1'; 'f,f,n,2'; 'f,f,f+3'. Null for anything that is not a dash or run motion. */
+export function t7NormMotion(input) {
+  // RUN ALIAS (2026-11-10, pass 4): the THIRD forward input of a run move is one link in King's table — the dash
+  // Kg_sDASHF's direction-STATE cancel (dir 0x40 tested at frame 12) to sRUN__00F, a state test, not a tap event —
+  // so 'f,f,F+X' (third f held) and 'f,f,f+X' (third f tapped) reach the same run move. Only that position is
+  // canonicalized; 'f,F+X' (held SECOND input, the dash's own F+X) is never folded into anything.
+  const s = String(input || '').replace(/\s+/g, '').replace(/^f,f,F\+/, 'f,f,f+');
+  return /^(f,F\+[1-4](\+[1-4])*|f,f,n,[1-4](\+[1-4])*|f,f,f\+[1-4](\+[1-4])*)$/.test(s) ? s : null;
+}
+/* DASH / RUN MOVES (2026-11-10, tools/anim/t7_move_resolve.py --motions): mapped on King's own link tables (stance
+   cancel 0x8001 -> Kg_sDASHF; the dash's f+X / n+X cancels; the dash's f cancel -> sRUN__00F, then the run's X),
+   checked on the final move's damage + first active frame. A played row with the identical motion input plays
+   that clip (exact input; the one sourced alias is the run's third input, see t7NormMotion). */
 /* STRING STEPS (2026-11-10, tools/anim/t7_move_resolve.py --strings): the pack's string-step moves (e.g.
    '1,2~t7.king.2' = the 2 of 1,2, motbin Kg_lprpF) were mapped by walking the cancel graph from the stance and
    checked on the step's own damage + first active frame. Pressing the same string from neutral reaches the same
@@ -838,7 +914,8 @@ export function t7MoveClip(fid, bankId, moveKey, model = null, input = null) {
   const t = _t7moves[fid];
   if (!t || t.bank !== bankId || !moveKey) return null;
   const key = t.moves[moveKey] ? moveKey
-    : (input && t.byInput && t.byInput[t7NormInput(input)]) || (t.byString && (t.byString[t7NormString(input)] || t.byString[t7NormString(moveKey)])) || null;
+    : (input && t.byInput && t.byInput[t7NormInput(input)]) || (t.byString && (t.byString[t7NormString(input)] || t.byString[t7NormString(moveKey)]))
+    || (t.byMotion && (t.byMotion[t7NormMotion(input)] || t.byMotion[t7NormMotion(moveKey)])) || null;
   const m = key ? t.moves[key] : null;
   if (!m || !t.clips[m.clip]) return null;
   if (model) { const pm = _retargetCache.get(model); if (!pm || !pm.get(t.skelId)) return null; }
