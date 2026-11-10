@@ -299,3 +299,9 @@ owner's memory record; this section is the repo-home copy.
   T14 glyph accept/replace, whether afro becomes default.
 - Note: eye-brown-angel-daz.png lives only on PR #1678's branch until
   it merges.
+
+### 2026-11-09 owner verdicts — Angel composite rejected, lash placement order
+
+- ANGEL COMPOSITE FACE REJECTED (owner 2026-11-09 ~20:38 CST, via screenshots of the Build-A-Bitch chat): the glam composite face (bald head, afro floating above the scalp, oversized lashes across the eyes) = "No that's bad" — REJECTED. The owner is working on a better face in the other chats, so the WH chat's face line stays ON HOLD and presents nothing as the Angel face; the bare-face proof verdict is still his call.
+- LASHES (owner 2026-11-09 ~20:38 CST): the glam lash STYLE is APPROVED ("this lashes are better" — the long winged set, physics-playground-pwa PR #149) but the PLACEMENT is WRONG (authored on the GNM head's lid margins, carried across; spans too wide, off the lid line, fans past the corners, eyes read shut — the PR #149 seating caveat never closed). ORDER: keep the style, re-fit placement per-station onto Megami's OWN lid-margin curve in the AngelFace=1.0 build. Lash-fix lane launched in the WH chat 2026-11-09; parent own-eyes before owner.
+- OWNER RULINGS OWED (updated): the composite rejection answers the open face verdict for the glam attempt only — the Angel face itself stays open pending the owner's better face from the other chats. PR #1678 merge, bio draft 3 flags, T14 glyph accept/replace, whether afro becomes default: still owed.

@@ -1865,9 +1865,15 @@ Raiden, Bass Armstrong (→ Vain Abel's base), Craig Marduk, Armor King
   introduced each before fixing at that source, no hand edits; the
   corrected Parvati v4 base-fix landing into the game build rides in
   the same lane.
-- **Owner rulings owed:** face verdict, PR #1678 merge, bio draft 3
+- **Owner rulings owed:** face verdict (glam composite REJECTED 2026-11-09 ~20:38 CST — see below; the Angel face itself stays open, owner building a better face in the other chats), PR #1678 merge, bio draft 3
   flags, T14 glyph accept/replace, whether afro becomes default.
 - Full detail: `roster/parvati/CANON.md` ("2026-11-09 outcomes").
+
+### 2026-11-09 owner verdicts — Angel composite rejected, lash placement order
+
+- ANGEL COMPOSITE FACE REJECTED (owner 2026-11-09 ~20:38 CST): the glam composite face = "No that's bad" — REJECTED. The WH chat's face line stays ON HOLD; nothing is presented as the Angel face; the bare-face proof verdict is still the owner's call. The owner is working on a better face in the other chats.
+- LASHES: style APPROVED ("this lashes are better" — the long winged set, physics-playground-pwa PR #149); placement WRONG — re-fit per-station onto Megami's OWN lid-margin curve in the AngelFace=1.0 build. Lash-fix lane launched in the WH chat 2026-11-09; parent own-eyes before owner.
+- Full detail: `roster/parvati/CANON.md` ("2026-11-09 owner verdicts — Angel composite rejected, lash placement order").
 
 ## MODEL-TWEAKING PRINCIPLES — 2026-11-08 (standing rules, all future model work)
 
