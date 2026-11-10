@@ -1,0 +1,23 @@
+{
+ "refit": "v5 = v4 (delta-field real-topology diffusion + hairline anchor + reconcile) with continuity-constrained final placement (coherent-seed BFS tri assignment + surface walk; closest-point on assigned tri)",
+ "continuity_assignment": {
+  "groups": 2413,
+  "anchor_groups": 498,
+  "seeds": 498,
+  "bfs_assigned": 1915,
+  "fallback_unreached": 0,
+  "walk_steps_total": 1363,
+  "walk_steps_max": 6,
+  "incoherent_anchor_groups": 0
+ },
+ "spec": "straight-cap",
+ "standoff_mm": 1.5,
+ "anchor_verts": 498,
+ "anchor_sd_err_p95_mm": 0.017,
+ "inside_total": 0,
+ "deep_interior_left": 0,
+ "edge_growth_p99": 1.05,
+ "edge_growth_max": 1.66,
+ "max_edge_mm": 12.6,
+ "bad_tris": 0
+}
