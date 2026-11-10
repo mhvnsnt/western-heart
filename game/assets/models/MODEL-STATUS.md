@@ -164,3 +164,10 @@ Judged by eye in the fight's own loader and retarget (docs/proof/2026-11-10/rost
 | `kai-body` | assets/models/kai-body-cdn.glb (14.2 MB) | the lane's hair repair, under a NEW path: the remote bucket the loader tries first still serves the unrepaired kai-body.glb (kept, main's bytes) |
 | `sha-body` | assets/models/sha-body-hairfix-cdn.glb (14.0 MB) | the lane's rebind ALSO bound her right arm to her head (hands left at T-pose); only its head-territory half kept (territory_weight_merge.py). sha-body.glb kept, main's bytes |
 | `tou-body` | assets/models/tou-body-cdn.glb (13.6 MB) | Spine1 reparented under Hips (reparent_joints.py): T7 keeps legs and upper body as siblings under BASE, so the Hips' root motion left his upper body in the air on his KO |
+
+### 2026-11-10: KAI and TOU in their own Eastern Mind bodies (owner)
+
+`kai-body` -> `assets/models/kai-soul.glb`, `tou-body` -> `assets/models/tou-soul.glb`: built from Osamu Sato's
+Eastern Mind art (teardown/eastern-mind CHARA_b006 / CHARA_b012 + R_KAI / R_TOH) by tools/souls/build_soul.py,
+rigid parts on the game skeleton. The Eddy shell and the Paul kit stay beside them.
+Proof: docs/proof/2026-11-10/souls-kai-tou/.
