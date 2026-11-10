@@ -1,13 +1,39 @@
-✔ own-slot bank is King T7 and the sourced end frames are 30/30 (1.07636ms)
-✔ f,f starts the Tekken forward dash and travels King's dash_fwd root distance (3.203427ms)
-✔ b,b starts the backdash (no invulnerability) and travels backwards; mirrored when facing -1 (0.849942ms)
-✔ negatives: single f tap, held f, f then b, and a dash while airborne do NOT dash (0.341597ms)
-✔ a button can cancel the dash from frame 1 (motbin 1/2/3/4 cancels, window [1, 32767]) (2.972281ms)
-ℹ tests 5
+✔ stick fx2 nx2 fx3 + 1 -> f,F+1 -> King T7 Kg_lygerlp00 (6.620804ms)
+✔ stick fx2 nx2 fx3 + 2 -> f,F+2 -> King T7 Kg_p00 (0.613251ms)
+✔ stick fx2 nx2 fx3 + 4 -> f,F+4 -> King T7 Kg_tkr01 (0.451672ms)
+✔ stick fx2 nx2 fx3 + 3+4 -> f,F+3+4 -> King T7 Kg_dki10 (0.650678ms)
+✔ stick fx2 nx2 fx2 nx3 + 2 -> f,f,n,2 -> King T7 Kg_p01 (0.421189ms)
+✔ stick fx2 nx2 fx2 nx2 fx2 + 3 -> f,f,f+3 -> King T7 Kg_666lk (0.543115ms)
+✔ stick fx2 nx2 fx2 nx2 fx2 + 3+4 -> f,f,f+3+4 -> King T7 Kg_dki11 (0.414582ms)
+✔ negatives: a plain 1 is the jab, not a dash move; f+1 (no dash) is not f,F+1 (0.587198ms)
+✔ motion normalizer: exact, plus the ONE sourced alias (run third input held == tapped) (0.16681ms)
+✔ held third f (f,f,F+3) -> same King T7 Kg_666lk as tapped, never T3 (0.700072ms)
+✔ held third f (f,f,F+3+4) -> same King T7 Kg_dki11 as tapped, never T3 (0.593176ms)
+✔ negative: f,F+3 (dash, second input held) is NOT routed to the run move (4.889725ms)
+✔ gated dash follow-up stays out with its reason (no substitute) (0.156199ms)
+[WH-STEP-PLAN] pantera d+3+4,4: UNMAPPED steps [d+3+4, d+3+4,4] — no bank row played, never donor fallback
+✔ every string press plays its exact King T7 motbin move clip (3.914619ms)
+✔ the 29 single-input King T7 moves are still in the pack unchanged in kind (0.160487ms)
+✔ string normalizer: motions, suffixed keys and single inputs never map (0.145084ms)
+✔ a gated clip stays out with its reason (no substitute) (6.804011ms)
+✔ King moves pack: FIGHT-only, 0x64 clips converted by the game sampler, FK exact (1.157764ms)
+✔ every mapped King row keeps its exact T7 frame data and plays a real clip (0.613736ms)
+✔ every King clip is physically plausible (upright start, floor contact, no limb flips) (55.671964ms)
+✔ wiring: Pantera loads King moves from the stance skeleton dir (1.050291ms)
+[WH-T7] pantera: 51 real T7 move clips (assets/anim/t7/king/moves.pack.json)
+✔ the real loader builds King move clips for Pantera only (130.719898ms)
+✔ own-slot bank is King T7 and the sourced end frames are 30/30 (1.200825ms)
+✔ f,f starts the Tekken forward dash and travels King's dash_fwd root distance (2.881928ms)
+✔ b,b starts the backdash (no invulnerability) and travels backwards; mirrored when facing -1 (0.808166ms)
+✔ negatives: single f tap, held f, f then b, and a dash while airborne do NOT dash (0.307987ms)
+✔ a button can cancel the dash from frame 1 (motbin 1/2/3/4 cancels, window [1, 32767]) (3.244887ms)
+✔ KBD: b,b then d/b cancels the backdash into crouch (sourced req-0 link), b,b backdashes again (0.429996ms)
+✔ KBD negatives: down does not cancel the FORWARD dash; no backdash-into-backdash link (0.262569ms)
+ℹ tests 29
 ℹ suites 0
-ℹ pass 5
+ℹ pass 29
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 269.697043
+ℹ duration_ms 439.386829

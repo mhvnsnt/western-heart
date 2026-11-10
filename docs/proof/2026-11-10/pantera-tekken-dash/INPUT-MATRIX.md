@@ -111,3 +111,58 @@ Node test: `test/t7-king-motions.test.mjs` (fails 9/10 on main, passes here).
 - Close/far `f,F+1+2` and `f,F+2+3`, and throws, are excluded.
 - `f,n,d,D/F+X` (crouch dash): its entry is not the 0x8001 path. The stance's input-sequence commands (0x80b0–0x80b7 class) are undecoded, as is the KBD group-cancel table.
 - No touchscreen or rendered-model proof.
+
+## Pass 4 (2026-11-10): run-alias fix, KBD crouch cancel, King T7 table decode
+
+**Decode tool:** `tools/anim/t7_table_dump.py` (read-only). Its output is `docs/proof/2026-11-10/pantera-tekken-dash/king-t7-tables.json`: all 259 input sequences, plus every link (own list and expanded groups) of `Kg_sDASHF`, `sDASH_00B`, `sDASH_00BLp`, `Kg_st2cr00B`, `Kg_st2cr00_`, `st2cr_00_Rv` and `sRUN__00F`, each with window, starting frame and requirement rows.
+
+**Verified table structures:**
+- **Input-sequence cancel command.** Index = cmd − 0x800D into `input_sequences` (stride 16: `input_window_frames`, `input_amount`, `unk_0x4`, `input_idx`). That points into `inputs` (`{direction, button}`), listed in time order; the last element carries press flag 0x40000000. Verified at 0x80b6 = `n,f,n,f,n,f+3` in 99 frames → `Kg_666lk`, the same move the pass-3 dash→`sRUN__00F`→3 path resolved independently.
+- **Group cancels.** An own cancel with cmd 0x800B points at `group_cancels[move_id]`. Each row is 40 bytes `<QQQIIIHH` (cmd, req, ext, detection_start, detection_end, starting_frame, move_id, option), and the group ends at 0x800C.
+- **Requirements.** `requirements[idx…]` rows are `{condition, param}`, terminated by condition 881. req 0 = (0,0), unconditional. Gated (condition meanings not decoded, so nothing is bypassed):
+
+  | req | Row | Used by |
+  |---|---|---|
+  | 2130 | (35,1800) | stance b,b backdash |
+  | 2132 | (36,3800) | dash n → run |
+  | 1085 | (124,0) | f re-dash |
+  | 539 | (254,1) | run input sequences |
+  | 40 | (72,0) | — |
+
+**Sourced links used or checked this pass:**
+
+| From | Input (cmd) | → To | req | Window | Status |
+|---|---|---|---|---|---|
+| `sDASH_00B` backdash | d/b (group) | `Kg_st2cr00B` | 0 | [1,32767] | **wired: KBD crouch cancel** |
+| `sDASH_00B` | d (group) | `Kg_st2cr00_` | 0 | [1,32767] | **wired** (any down) |
+| `sDASH_00B` | d/f (group) | `st2cr_00F` | 0 | [1,32767] | **wired** (any down) |
+| `sDASH_00B` | END 0x8000 @30 | `sWALK_00B` | 0 | — | wired (pass 1) |
+| stance / `st2cr_00_Rv` / `cr2st_00_` | 0x8002 (b,b) | `sDASH_00B` | 2130 | [1,32767] | WH's existing b,b latch (same gate in both places) |
+| `sDASH_00B` | 0x8002 | `sDASH_00B` | — | — | **no such link**, so none added (test asserts no restart) |
+| `Kg_sDASHF` dash | f state @12 | `sRUN__00F` | 0 | [12,12] | **not wired**: run clip `Bco_run00(DVD)` anim 0x8043 (common.arc) not baked |
+| `Kg_sDASHF` | f @12 | `Kg_sDASHF` (re-dash) | 1085 | [12,12] | gated, not wired |
+| `Kg_sDASHF` | n [1,12] | `sRUN__00F` | 2132 | [1,12] | gated, not wired |
+| stance / backdash / run | seq 0x80b0–0x80b7 `n,f,n,f,n,f+X` (99 f) | `Co_runchop`/`Kg_dki11`/`Thrmv_B0_02`/`Kg_lp00F`/`Kg_rp00F`/`Kg_666lk`/`Kg_runrk00` | 539 (throws 527–536) | [1,32767] | 666lk/dki11 already play via the run path; the rest are not mapped |
+
+**Crouch dash.** The `f,n,d,d/f+X` sequences exist in the table (0x80e5–0x80eb, 0x80f5–0x80f6) but **no King T7 move references them**. King T7 has no crouch dash, so WH's `f,n,d,D/F+X` rows cannot be sourced from King T7 and stay as they are.
+
+**Run alias fix (no blind case folding).** `t7NormMotion` canonicalizes only the third input of `f,f,F+X` to `f,f,f+X`, because that input is a direction-state test on the dash (f @12 → `sRUN__00F`), so held and tapped reach the same move. A held second input (`f,F+X`, the dash's own move), `F,f,f`, `f,F,f`, `f,f+X` and `b,b,B+X` stay null (tested).
+
+| Press | Before | After |
+|---|---|---|
+| f×2 n×2 f×2 n×2 f×20 + 3 (`f,f,F+3` Strong Knee) | T3 row:54 | **t7 `Kg_666lk`** |
+| f×2 n×2 f×2 n×2 f×20 + 3+4 (`f,f,F+3+4` Running Exploder) | T3 row:35 | **t7 `Kg_dki11`** |
+| b,b → d/b (frame ≥1) | backdash ran its full 30 f | **crouch**; b,b again → new backdash (KBD loop) |
+
+| Plain rows (643) | Real King T7 | T3 King row | Generic light / medium |
+|---|---:|---:|---:|
+| Before pass 4 | 68 | 509 | 46 / 20 |
+| After pass 4 | **70** | 507 | 46 / 20 |
+
+**Tests.** `test/t7-king-motions.test.mjs` and `test/tekken-dash-pantera.test.mjs`: 4 new positive tests fail on main and pass here; the negatives pass on both. Full suite failure set is identical to main (83 sparse-checkout-only).
+
+**Exact next implementation (not done):**
+1. **Run locomotion.** Bake the `sRUN__00F` clip `Bco_run00(DVD)` (anim_id 0x8043, common bank) and its transition move (id 52) as locomotion clips, not attacks. The bake's resolve path is damage/startup-gated, so add a locomotion entry without frame-data checks. Then in `tekdash` (dir f), at exactly frame 12 with stick f held (req 0), enter a `tekrun` state that plays that clip with its own root travel.
+2. **Run attacks from a real run** (`WR`): map `sRUN__00F`'s own button links once the run state exists. Check WR 4 against `Kg_runrk00` / 0x80b7 and WR+1+2 against `Co_runchop` / 0x80b0 by damage and startup in `t7_move_resolve.py`. Not verified yet.
+3. **Requirement conditions** 35/36/124/254/72 need the community condition table before any gated link (re-dash, n→run, input sequences) is wired.
+4. **Throws** (`Thrmv_*`; 0 on T7 today) need paired-throw clip extraction. Not started.

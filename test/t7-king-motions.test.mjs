@@ -76,9 +76,34 @@ test('negatives: a plain 1 is the jab, not a dash move; f+1 (no dash) is not f,F
   const b = pantera(); drive(b, [['f', 3]]); b.tryAttack('1'); assert.notEqual(b.attackName, 'f,F+1');
 });
 
-test('motion normalizer is exact: f,f,F+3 is not f,f,f+3; strings/singles never match', () => {
+test('motion normalizer: exact, plus the ONE sourced alias (run third input held == tapped)', () => {
   assert.equal(T.t7NormMotion('f, F+1'), 'f,F+1');
-  for (const x of ['f,f,F+3', 'f,F', '1,2', '1', 'd/f+1', 'f,F+1~t7.king']) assert.equal(T.t7NormMotion(x), null, x);
+  // Pass 4 (2026-11-10): the run move's third forward input is the dash's direction-STATE cancel
+  // (Kg_sDASHF dir 0x40 at frame 12, req 0 -> sRUN__00F), so held F and tapped f reach the same move.
+  for (const [x, want] of [['f,f,F+3', 'f,f,f+3'], ['f,f,F+3+4', 'f,f,f+3+4'], ['f,f,F+1', 'f,f,f+1'],
+    ['f, f, F+4', 'f,f,f+4'], ['f,f,f+3', 'f,f,f+3']]) assert.equal(T.t7NormMotion(x), want, x);
+  // Negatives: no blind case folding — a held SECOND input is the dash's own F+X, never folded;
+  // lowercase f,f+X is not a dash move; F,f,f / f,F,f are not aliases; strings/singles never match.
+  for (const x of ['f,F', '1,2', '1', 'd/f+1', 'f,F+1~t7.king', 'f,f+1', 'F,f,f+3', 'f,F,f+3', 'f,F,F+3',
+    'f,f,F', 'f,f,F+5', 'b,b,B+3']) assert.equal(T.t7NormMotion(x), null, x);
+  assert.notEqual(T.t7NormMotion('f,F+3'), T.t7NormMotion('f,f,f+3'));
+});
+
+// Real presses for the alias: third f HELD (20 frames) must play the SAME King T7 move as tapped.
+const RUN_HELD = [['f', 2], ['n', 2], ['f', 2], ['n', 2], ['f', 20]];
+for (const [btn, motbin] of [['3', 'Kg_666lk'], ['3+4', 'Kg_dki11']]) {
+  test(`held third f (f,f,F+${btn}) -> same King T7 ${motbin} as tapped, never T3`, () => {
+    const f = pantera(); drive(f, RUN_HELD);
+    assert.equal(f.tryAttack(btn), true);
+    const p = f._attackClipPlan(f.attack, f.attackName);
+    assert.ok(p && String(p.name).startsWith('t7:'), `${f.attackName}: plan ${p && p.name} is not King T7`);
+    assert.equal(pack.moves[String(p.name).slice(3)].motbin_move, motbin);
+  });
+}
+test('negative: f,F+3 (dash, second input held) is NOT routed to the run move', () => {
+  const f = pantera(); drive(f, DASH_HELD); f.tryAttack('3');
+  const p = f._attackClipPlan(f.attack, f.attackName);
+  assert.ok(!(p && String(p.name).startsWith('t7:') && pack.moves[String(p.name).slice(3)].motbin_move === 'Kg_666lk'));
 });
 
 test('gated dash follow-up stays out with its reason (no substitute)', () => {
