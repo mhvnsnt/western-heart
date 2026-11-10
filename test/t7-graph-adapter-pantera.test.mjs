@@ -254,7 +254,7 @@ test('exe-decoded requirements: 217 own chara_id (+ exe group params), 225 contr
   assert.equal(king(609, 146), null, 'the equipped T7 item set is not known for Pantera');
   assert.equal(G.makeEvalCond({ items: [146] })(609, 146), true);
   assert.equal(king(72, 0), null); assert.equal(king(73, 0), null);
-  assert.equal(G.makeEvalCond({ backturned: false })(73, 0), true);
+  assert.equal(G.makeEvalCond({ relHeading16: 0 })(73, 0), true);
 });
 
 test('real fighter: the attached driver carries King\'s chara_id 2 and the player controller; rows for other chara_ids never fire', () => {
@@ -279,4 +279,59 @@ test('real fighter: the attached driver carries King\'s chara_id 2 and the playe
     }
   }
   assert.ok(gated > 0, `${gated} fires were gated on King's own chara_id`);
+});
+
+/* Facing family, decoded from exe 0x1406ebfe0 (writes [+0x1c2] = own yaw - bearing to opponent, [+0x1c4] = folded) and
+   the evaluator cases 72/73/80/81. Boundary values are the exe's own comparisons. */
+test('exe facing decode: 72/73 on the folded angle (> / <= 0x4000), 80 = rel in [0x3fff,0x7fff], 81 = rel in [0x8000,0xbfff]; null without relHeading16', () => {
+  const at = (rel) => G.makeEvalCond({ relHeading16: rel });
+  const none = G.makeEvalCond({ charId: 2, controller: 0 });
+  for (const c of [72, 73, 80, 81]) assert.equal(none(c, 0), null);
+  assert.equal(G.t7FacingFold({ relHeading16: 0xC000 }), 0x3fff); assert.equal(G.t7FacingFold({ relHeading16: 0x8000 }), 0x7fff);
+  assert.equal(at(0)(72, 0), false); assert.equal(at(0)(73, 0), true);
+  assert.equal(at(0x4000)(72, 0), false); assert.equal(at(0x4001)(72, 0), true);
+  assert.equal(at(0xBFFF)(72, 0), false); assert.equal(at(0xBFFE)(72, 0), true); assert.equal(at(0xBFFE)(73, 0), false);
+  assert.equal(at(0x3ffe)(80, 0), false); assert.equal(at(0x3fff)(80, 0), true); assert.equal(at(0x7fff)(80, 0), true); assert.equal(at(0x8000)(80, 0), false);
+  assert.equal(at(0x7fff)(81, 0), false); assert.equal(at(0x8000)(81, 0), true); assert.equal(at(0xbfff)(81, 0), true); assert.equal(at(0xc000)(81, 0), false);
+});
+
+test('real fighter, stance n+1+2: the source BT row (stance row 280, req [72] -> Kg_Tnrpsp) is skipped as UNKNOWN in the game, never taken; it fires only under an injected backturned heading and is known-false when facing', () => {
+  const row = g.moves[g.stance].cancels[280];
+  assert.deepEqual(g.requirements[String(row[G.F.req])], [[72, 0]]);
+  assert.equal(G.moveByName(g, 'Kg_Tnrpsp'), G.resolveMoveId(g, row[G.F.to]));
+  const run = (rel) => {
+    const r = rig(); if (rel !== undefined) r.f._t7g.evalState.relHeading16 = rel; // TEST INJECTION, not a runtime source
+    r.tick(6); r.press('1', '2'); r.tick(2); r.release('1', '2'); r.tick(4);
+    const fire = r.log.find((x) => x.fired && x.moveId === g.stance && x.fired.via === 'cancel');
+    const sk = r.log.flatMap((x) => (x.moveId === g.stance ? x.skipped || [] : []));
+    return { fire, sk, r };
+  };
+  const game = run();
+  assert.equal(game.r.f._t7g.evalState.relHeading16, undefined, 'the game supplies no heading');
+  assert.ok(game.sk.some((k) => k.index === 280 && k.reason === 'requirement' && k.unknown && k.unknown.includes(72)), 'skipped as unknown 72');
+  assert.ok(game.fire && game.fire.fired.index !== 280 && game.fire.fired.toName !== 'Kg_Tnrpsp');
+  assert.ok(game.fire.fired.precedenceUnknown.length > 0, 'flagged: an unknown row outranked the fired row');
+  const bt = run(0x8000);
+  assert.equal(bt.fire.fired.index, 280); assert.equal(bt.fire.fired.toName, 'Kg_Tnrpsp');
+  const facing = run(0);
+  assert.ok(facing.fire.fired.index !== 280);
+  assert.ok(!facing.sk.some((k) => k.index === 280 && k.unknown), 'facing the opponent: 72 is known-false, not unknown');
+});
+
+test('throws are visibly UNSUPPORTED: a throw-class source move plays its clip only, never a hitbox, and is counted and labelled', () => {
+  const C = JSON.parse(readFileSync(join(KING, 'graph.commands.json'), 'utf8'));
+  const thr = C.all.find((x) => x.from === C.stance && x.kind === 'press' && x.status === 'evaluable' &&
+    g.moves[G.moveByName(g, x.to)].damage === 0x4000 && /^Thrmv/.test(x.to));
+  assert.ok(thr, 'an evaluable stance throw command exists');
+  const [d0, rest] = thr.notation.split(/\+(.*)/s); const btn = rest.split(' ')[0].split('+');
+  const r = rig(); r.tick(6); r.stick(d0 === '*' ? 'n' : d0.split('|')[0]); r.press(...btn); r.tick(2); r.release(...btn);
+  let sawHitbox = false; let inThrow = 0;
+  for (let i = 0; i < 120; i++) { r.tick(1); const x = r.f._t7gRec; if (x && x.unsupported) inThrow++; if (x && x.unsupported && r.f.attack) sawHitbox = true; }
+  assert.ok(recs(r).some((x) => x.name === thr.to), `${thr.notation} -> ${thr.to}`);
+  assert.ok(inThrow > 0); assert.equal(sawHitbox, false, 'no hitbox: there is no grab');
+  assert.ok(r.f._t7gStatus.throwNoGrab >= 1);
+  assert.match(recs(r).find((x) => x.name === thr.to).unsupported, /NO GRAB/);
+  assert.match(r.f._t7gStatus.assumptions, /posture: standing .*undecoded.*facing: unknown/);
+  const marked = g.moves.filter((m) => m.damage === 0x4000);
+  assert.equal(marked.length, 43, 'source hit conditions with the 0x4000 throw marker');
 });

@@ -146,12 +146,19 @@ export function stepCancel(graph, moveId, ctx) {
    in any source on hand. Distances are T7 units (state.oppDistT7); no metre conversion is assumed, so in the game
    (where no T7-unit distance exists) 35 / 36 stay unknown. */
 export const KNOWN_CONDITIONS = { 1: 'practice demo (false)', 35: 'opp dist <= (T7 units)', 36: 'opp dist >= (T7 units)',
-  72: 'backturned', 73: 'not backturned', 217: 'self chara_id == param (exe, needs charId)',
+  72: 'backturned (exe, needs relHeading16)', 73: 'not backturned (exe, needs relHeading16)', 80: 'rel heading in [0x3fff,0x7fff] (exe)', 81: 'rel heading in [0x8000,0xbfff] (exe)', 217: 'self chara_id == param (exe, needs charId)',
   225: 'controller type (exe, needs controller)', 609: 'has item (exe, needs the equipped item set)', 135: 'on death', 558: 'story battle (false)', 636: 'assist button (false)', 811: 'basic combo (false)' };
 /* Requirement 217 params 76..90 → the chara_id they test, read from the exe helper 0x1406f46a0's jump table
    (TekkenGame-Win64-Shipping.exe; see docs/proof/2026-11-10/t7-requirements/README.md). */
 export const T7_CHAR_GROUPS = { 76: 0x21, 77: 0x22, 78: 0x23, 79: 0x3d, 80: 0x4b, 81: 0x1f, 82: 0x4b, 83: 5, 84: 0x4b,
   85: 0x45, 86: 0x4b, 87: 0x1e, 88: 0x4b, 89: 0x0f, 90: 0x4b };
+
+/* [self+0x1c4] from [self+0x1c2] exactly as 0x1406ec17f..0x1406ec18e computes it (rel >= 0x8000 -> ~rel). */
+export function t7FacingFold(state) {
+  if (state.relHeading16 == null) return null;
+  const rel = state.relHeading16 & 0xffff;
+  return rel >= 0x8000 ? (~rel & 0xffff) : rel;
+}
 
 export function makeEvalCond(state) {
   return (c, p) => {
@@ -159,8 +166,12 @@ export function makeEvalCond(state) {
       case 1: return false;                                                  // Practice mode move demo
       case 35: return state.oppDistT7 == null ? null : state.oppDistT7 <= p; // Opponent distance <= param
       case 36: return state.oppDistT7 == null ? null : state.oppDistT7 >= p; // Opponent distance >= param
-      case 72: return state.backturned == null ? null : !!state.backturned;  // Backturned: exe word [self+0x1c4] > 0x4000 (unknown unless the caller knows)
-      case 73: return state.backturned == null ? null : !state.backturned;   // Not backturned: exe word [self+0x1c4] <= 0x4000
+      // Facing family (exe 0x1406ebfe0, per frame): rel = [self+0x1c2] = (own yaw - bearing to opponent) as a 16-bit
+      // binary angle; [self+0x1c4] = rel folded to 0..0x7fff. Evaluated only from an explicit relHeading16.
+      case 72: { const f = t7FacingFold(state); return f == null ? null : f > 0x4000; }   // Backturned  (exe 0x1406f5bdd)
+      case 73: { const f = t7FacingFold(state); return f == null ? null : f <= 0x4000; }  // Not backturned (0x1406f5bf1)
+      case 80: return state.relHeading16 == null ? null : ((state.relHeading16 - 0x3fff) & 0xffff) <= 0x4000; // 0x1406f5cd5
+      case 81: return state.relHeading16 == null ? null : ((state.relHeading16 + 0x8000) & 0xffff) <= 0x3fff; // 0x1406f5cf4
       case 217: {                                                            // Player character ID: exe chara_id [self+0xD8] == param,
         if (state.charId == null) return null;                               // params 76..90 are exe-coded groups (T7_CHAR_GROUPS)
         const grp = T7_CHAR_GROUPS[p];

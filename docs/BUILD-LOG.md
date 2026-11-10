@@ -1,3 +1,12 @@
+## 2026-11-10 — King T7 facing conditions decoded (72/73/80/81), throws marked unsupported, throw-marker hitbox fix (MoneyManBusch / Grok) (t386u/t388u)
+
+- **Exe facing.** `0x1406ebfe0` writes `[+0x1c2]` = own yaw − bearing to the opponent and `[+0x1c4]` = its fold. 72/73 test the fold against 0x4000; 80/81 are the two back half-turns.
+  The evaluator takes an explicit `relHeading16`. The game supplies none, because the own-yaw setters are not traced, so the four conditions stay UNKNOWN.
+- **Throws.** The dev label shows `UNSUPPORTED throw: clip only, NO GRAB`.
+  Fix: 43 moves whose source hit condition carries 0x4000 (the throw starters) had produced a HIGH hitbox with 16,384 damage. They now produce no hitbox.
+- **Tests.** 19/19 adapter tests, including stance row 280 (`[[72,0]]` → `Kg_Tnrpsp`) through the real Fighter: unknown → skipped, injected backturned → fires, injected facing → known-false.
+  See `docs/proof/2026-11-10/t7-facing/README.md`. Still opt-in; Node only; not 100%.
+
 ## 2026-11-10 — King T7 requirement evaluator decoded from the shipping exe (217 / 225 / 609 / 72 / 73 …) (MoneyManBusch / Grok) (t386u/t388u)
 
 - **Found** the exe's requirement switch `0x1406f5490`: ids 0..875, ids ≥ 0x8000 return 1, the default is false.
