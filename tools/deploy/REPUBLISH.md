@@ -91,6 +91,8 @@ manifest `63f6ea9c` live; 12 spot files byte-match main. Older banks still not o
 (dw, t3 alisa/asuka/bob_satsuma/christie/dragunov/emilie/ganryu/jun/lars/lee/miguel/panda/
 roger/steve_fox/zafina, about 92 MB) were missing before this deploy too, and they exceed the
 headroom.
+Follow-up the same day: `63f6ea9c` → `b53755b4` (Pantera pass 4), 2 updated, deploy commit
+`5e4c6a4f`, built 09:19 CST, manifest `b53755b4` live, fighter.js/t3anims.js byte-match.
 
 ## 3. Verify the Pages deploy (always, before calling it done)
 
