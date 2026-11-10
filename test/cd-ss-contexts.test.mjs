@@ -21,7 +21,8 @@ const M = await import(join(ROOT, 'game/js/movesets.js'));
 const MS = join(ROOT, 'game/assets/movesets');
 const load = (fid) => { const d = JSON.parse(fs.readFileSync(join(MS, fid + '.json'), 'utf8')); M.registerMoveset(fid, d); return d; };
 
-const CD_WIRED = { rin: 'f,n,d,d/f', demonio: 'f,n,d,df', gyou: 'd,d/f' };
+// gyou left this table 2026-11-10: rebased on Paul Phoenix (owner); his crouch dash came with the 145 Jin rows.
+const CD_WIRED = { rin: 'f,n,d,d/f', demonio: 'f,n,d,df' };
 
 test('cd_entry declarations name a real "Crouch Dash" row in the same file', () => {
   for (const [fid, entry] of Object.entries(CD_WIRED)) {
@@ -58,7 +59,7 @@ test('firing the declared entry latches cdActive; CD rows resolve only inside th
 });
 
 test('the cd_entry motion itself latches CD through noteDirection (the human input path)', () => {
-  const motions = { rin: ['f', 'n', 'd', 'd/f'], demonio: ['f', 'n', 'd', 'd/f'], gyou: ['d', 'd/f'] };
+  const motions = { rin: ['f', 'n', 'd', 'd/f'], demonio: ['f', 'n', 'd', 'd/f'] };
   for (const [fid, seq] of Object.entries(motions)) {
     load(fid);
     const b = new M.TekkenBuffer(fid);

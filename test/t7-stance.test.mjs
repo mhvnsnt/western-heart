@@ -36,6 +36,8 @@ const CLIPS = {
   raven: [123, 'frss_kamae(DVD)', 'Nj_sKAM00_'],
   // 2026-11-10: Thor's canon base Ganryu (ganrotsm.arc), his sumo kamae.
   ganryu: [198, 'susm_kamae(DVD)', 'Sm_sKAM00_'],
+  // 2026-11-10: Gyou's base Paul Phoenix (common.arc clip 185, 0x64 via the game's own sampler).
+  paul: [185, 'kopl_kamae(DVD)', 'Pl_sKAM00_'],
 };
 
 // Dirs wired in T7_STANCES whose source stance is not an orthodox guard, so the per-frame guard
@@ -51,7 +53,7 @@ const STANCE_EXEMPT = { luckychloe: 'dance idle, not a guard stance' };
 const WIRED = {
   pantera: ['king', 'king'], diablo: ['heihachi', 'heihachi'], skull: ['bryan', 'bryan'], retsu: ['bryan', 'bryan'],
   burger: ['bryan', 'bob'], sakura: ['xiaoyu', 'xiaoyu'], sha: ['xiaoyu', 'xiaoyu'], phantom: ['yoshimitsu', 'yoshimitsu'],
-  gyou: ['hwoarang', 'hwoarang'], tobi: ['hwoarang', 'hwoarang'], gashadokuro: ['kuma', 'kuma'], aotsuki: ['kuma', 'panda'],
+  gyou: ['paul', 'paul'], tobi: ['hwoarang', 'hwoarang'], gashadokuro: ['kuma', 'kuma'], aotsuki: ['kuma', 'panda'],
   nightwolf: ['julia', 'julia'],
   // proxy-bank fighters (moveset t3_source jin / jin / bryan) on their own bases' stances
   purplerain: ['jin', 'lee'], chordz: ['jin', 'lars'], negativo: ['bryan', 'negan'],

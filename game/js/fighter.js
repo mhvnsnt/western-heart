@@ -89,7 +89,7 @@ let MOVES = {
 const MOVESET_MAP = {
   // THE NINE SOULS
   rin: 'demonio', byou: 'demonio', tou: 'heihachi', sha: 'xiaoyu', kai: 'demonio',
-  jin_soul: 'yoshimitsu', retsu: 'bryan', zen: 'heihachi', gyou: 'demonio', // zen 'heihachi' here is INTERIM frame-data provenance ONLY (his 639 interim rows) — his BANK is UNMAPPED (see FIGHTER_BANK), NOT Heihachi as a base.
+  jin_soul: 'yoshimitsu', retsu: 'bryan', zen: 'heihachi', gyou: 'paul', // zen 'heihachi' here is INTERIM frame-data provenance ONLY (his 639 interim rows) — his BANK is UNMAPPED (see FIGHTER_BANK), NOT Heihachi as a base.
   // MAIN ROSTER
   pantera: 'king', demonio: 'demonio', phantom: 'yoshimitsu', diablo: 'heihachi',
   skull: 'bryan', samura1: 'gunjack', sakura: 'xiaoyu',
@@ -207,7 +207,9 @@ export function bankIdFor(charId, movesetId) {
   //   kai        -> eddy     (nine-souls appendix: KAI's vessel base = Eddy)
   //   tou        -> paul     (nine-souls appendix: TOU's vessel base = Paul)
   //   byou       -> lei      (nine-souls appendix: BYOU's vessel base = Lei)
-  //   gyou       -> hwoarang (nine-souls appendix: GYOU's vessel base = Hwoarang)
+  //   gyou       -> paul     (owner 2026-11-10: "Gyou was probably Paul Phoenix and fire attacks"; 2026-10-23: "he can
+  //                 have Paul Phoenix moves mixed with like flame attacks". Hwoarang is Tobi's base: "Someone else has
+  //                 hwoarangs moves". The old nine-souls-appendix Hwoarang mapping is superseded.)
   //   zen        -> UNMAPPED (owner decision 2026-10-24: Zen is NEITHER Heihachi NOR Julia — see FIGHTER_BANK note)
   //   rave       -> lei      (CANON: Rave base = Lei Wulong)
   //   yukihyo    -> armorking (CANON: Yukihyo base = Armor King; same
@@ -238,7 +240,7 @@ export function bankIdFor(charId, movesetId) {
     // hasOwnProperty('zen') is true, so bankIdFor returns null before any Heihachi/Julia
     // fallback can bind. Do NOT restore 'julia' or 'heihachi' here without a new owner decision.
     awapop: 'nina', torch: 'anna', kingtyrant: 'eddy', kai: 'eddy',
-    tou: 'paul', gyou: 'hwoarang', zen: null, rave: 'lei',
+    tou: 'paul', gyou: 'paul', zen: null, rave: 'lei',
     yukihyo: 'armorking', nightwolf: 'julia',
     // 2026-10-23 (Claude session): the last decoded T3 banks (tools/anim/t3_bake_bank.py). These movesets
     // name their source as a teardown path or not at all, so bind each to its base's own bank here.
@@ -317,7 +319,7 @@ export const OWN_SLOT_CANDIDATES = {
   bruno: 'miguel', thor: 't7_ganryu', slice: 'dragunov',
   'mariposa-monarch': 'zafina', silvertongue: 'emilie',
   pantera: 't7_king', diablo: 't7_heihachi', skull: 't7_bryan', retsu: 't7_bryan', burger: 't7_bob',
-  sakura: 't7_xiaoyu', sha: 't7_xiaoyu', phantom: 't7_yoshimitsu', gyou: 't7_hwoarang', tobi: 't7_hwoarang',
+  sakura: 't7_xiaoyu', sha: 't7_xiaoyu', phantom: 't7_yoshimitsu', gyou: 't7_paul', tobi: 't7_hwoarang',
   gashadokuro: 't7_kuma', aotsuki: 't7_panda', nightwolf: 't7_julia', purplerain: 't7_lee', chordz: 't7_lars',
   negativo: 't7_negan',
 };
@@ -327,7 +329,7 @@ export const OWN_SLOT_CANDIDATES = {
 // (docs/proof/2026-11-10/t7-generic-banks/).
 export const OWN_SLOT_BANKS = {
   pantera: 't7_king', diablo: 't7_heihachi', skull: 't7_bryan', retsu: 't7_bryan', burger: 't7_bob',
-  sakura: 't7_xiaoyu', sha: 't7_xiaoyu', phantom: 't7_yoshimitsu', gyou: 't7_hwoarang', tobi: 't7_hwoarang',
+  sakura: 't7_xiaoyu', sha: 't7_xiaoyu', phantom: 't7_yoshimitsu', gyou: 't7_paul', tobi: 't7_hwoarang',
   gashadokuro: 't7_kuma', aotsuki: 't7_panda', nightwolf: 't7_julia', purplerain: 't7_lee', chordz: 't7_lars',
   negativo: 't7_negan',
   // 2026-11-10: Thor on his canon base Ganryu's own T7 states (his TTT2 'ganryu' candidate stays registered).
