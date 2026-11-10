@@ -53,8 +53,23 @@ primitives in 1994; each soul here is built the same way:
 - **Kept beside them:** `kai-body.glb` / `kai-body-cdn.glb` (the Eddy shell) and `tou-body.glb` / `tou-body-cdn.glb`
   (the Paul kit).
 
+## Sato's surfaces (2026-11-10, later)
+
+The art's surfaces are dithered and speckled, not flat. `tools/souls/textures.py` synthesises a tileable texture per
+surface from Sato's own pixels:
+
+- It collects that surface's pixels from the soul's full-body art (a region plus a colour rule that excludes the
+  background).
+- It keeps the lit ones: a render's shadows are not the surface's colour, and the first pass came out too dark without
+  this.
+- It scatters that palette with periodic low-frequency plus per-texel noise.
+
+The textures are `tools/souls/tex/` (preview `sato-surface-textures.png`). `kai-body` / `tou-body` now load
+`kai-soul-tex.glb` (1.8 MB) / `tou-soul-tex.glb` (1.6 MB). The flat-colour builds stay beside them.
+`kai-tou-textured-vs-art.jpg` shows the art beside the textured build, front and close up. validate.py and the material
+gate pass both, and the cards are re-captured.
+
 ## Not done here
 
-- The art's surfaces carry Sato's dithered, sparkly textures. These are clean glossy colours; a texture pass is next.
 - The other souls' bodies (RIN, BYOU, SHA, JIN, RETSU, ZEN) are still Tekken shells. Their own art is in the same
   teardown (R_RTOG, R_BYOU, R_SHA, R_JIN, R_LETS, R_ZEN).
