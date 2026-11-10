@@ -785,7 +785,7 @@ export function ensureT7Moves(fid, THREE) {
         clip.userData.rootMotionT = Array.isArray(data.root_motion_fwd_m) ? data.root_motion_fwd_m.map(f => [0, 0, f]) : null;
         clips[cname] = clip;
       }
-      const moves = {}, byInput = {}, byString = {}, dupString = new Set();
+      const moves = {}, byInput = {}, byString = {}, dupString = new Set(), byMotion = {}, dupMotion = new Set();
       for (const [key, m] of Object.entries(pack.moves || {})) {
         if (!clips[m.clip]) continue;
         moves[key] = { clip: m.clip, active: m.active_frames, motbin: m.motbin_move };
@@ -793,9 +793,12 @@ export function ensureT7Moves(fid, THREE) {
         if (ni && !byInput[ni]) byInput[ni] = key;
         const ns = t7NormString(m.input);
         if (ns) { if (byString[ns]) dupString.add(ns); else byString[ns] = key; }
+        const nm = t7NormMotion(m.input);
+        if (nm) { if (byMotion[nm]) dupMotion.add(nm); else byMotion[nm] = key; }
       }
       for (const ns of dupString) delete byString[ns]; // two string steps on one input: no exact mapping, keep current clips
-      _t7moves[fid] = { bank: def.bank, skelId, clips, moves, byInput, byString };
+      for (const nm of dupMotion) delete byMotion[nm];
+      _t7moves[fid] = { bank: def.bank, skelId, clips, moves, byInput, byString, byMotion };
       console.log(`[WH-T7] ${fid}: ${Object.keys(moves).length} real T7 move clips (${def.dir}${packFile})`);
       return _t7moves[fid];
     } catch (e) {
@@ -821,6 +824,16 @@ export function t7NormString(input) {
   const out = steps.map((x) => (/^([du]\/?[fb]|[dubf])?\+?[1-4](\+[1-4])*$/.test(x) ? t7NormInput(x) : null));
   return out.every(Boolean) ? out.join(',') : null;
 }
+/** Dash / run notation, exact (whitespace dropped, CASE KEPT: 'F' = held forward is its own command):
+    'f, F+1' -> 'f,F+1'; 'f,f,n,2'; 'f,f,f+3'. Null for anything that is not a dash or run motion. */
+export function t7NormMotion(input) {
+  const s = String(input || '').replace(/\s+/g, '');
+  return /^(f,F\+[1-4](\+[1-4])*|f,f,n,[1-4](\+[1-4])*|f,f,f\+[1-4](\+[1-4])*)$/.test(s) ? s : null;
+}
+/* DASH / RUN MOVES (2026-11-10, tools/anim/t7_move_resolve.py --motions): mapped on King's own link tables (stance
+   cancel 0x8001 -> Kg_sDASHF; the dash's f+X / n+X cancels; the dash's f cancel -> sRUN__00F, then the run's X),
+   checked on the final move's damage + first active frame. A played row with the identical motion input plays
+   that clip (exact input only; 'f,f,F+3' is not 'f,f,f+3'). */
 /* STRING STEPS (2026-11-10, tools/anim/t7_move_resolve.py --strings): the pack's string-step moves (e.g.
    '1,2~t7.king.2' = the 2 of 1,2, motbin Kg_lprpF) were mapped by walking the cancel graph from the stance and
    checked on the step's own damage + first active frame. Pressing the same string from neutral reaches the same
@@ -833,7 +846,8 @@ export function t7MoveClip(fid, bankId, moveKey, model = null, input = null) {
   const t = _t7moves[fid];
   if (!t || t.bank !== bankId || !moveKey) return null;
   const key = t.moves[moveKey] ? moveKey
-    : (input && t.byInput && t.byInput[t7NormInput(input)]) || (t.byString && (t.byString[t7NormString(input)] || t.byString[t7NormString(moveKey)])) || null;
+    : (input && t.byInput && t.byInput[t7NormInput(input)]) || (t.byString && (t.byString[t7NormString(input)] || t.byString[t7NormString(moveKey)]))
+    || (t.byMotion && (t.byMotion[t7NormMotion(input)] || t.byMotion[t7NormMotion(moveKey)])) || null;
   const m = key ? t.moves[key] : null;
   if (!m || !t.clips[m.clip]) return null;
   if (model) { const pm = _retargetCache.get(model); if (!pm || !pm.get(t.skelId)) return null; }

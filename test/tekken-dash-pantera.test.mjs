@@ -89,9 +89,9 @@ test('a button can cancel the dash from frame 1 (motbin 1/2/3/4 cancels, window 
   assert.equal(f.tekDashCancelable, true);
   assert.equal(f.tryAttack('1'), true, '1 during the dash must fire a dash move');
   assert.equal(f.state, 'attack');
-  // Resolves the dash move f,F+1 (Jaguar Hook; motbin dash+1 -> Kg_jprk00F). KNOWN DEFECT, next
-  // pass: it picks the plain 'f,F+1' row (anim_ref UNMAPPED:t7-clip-pending), not the
-  // 'f,F+1~t7.king' row that carries King's real clip t7:king:king_48.
+  // Resolves the dash move f,F+1 (Jaguar Hook). Since pass 3 (test/t7-king-motions.test.mjs) the row plays
+  // King's real T7 Kg_lygerlp00 (the dash's own f+1 cancel); the plain dash+1 -> Kg_jprk00F cancel in the motbin
+  // is requirement-gated and is NOT Jaguar Hook (earlier lead corrected).
   assert.equal(f.attackName, 'f,F+1');
   assert.equal(f._tekDash, null, 'leaving the dash clears it');
 });

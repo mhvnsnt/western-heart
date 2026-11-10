@@ -1,3 +1,12 @@
+## 2026-11-10 — Pantera pass 3: King T7 dash / run moves from King's own link tables (MoneyManBusch / Grok) (t386u)
+
+- **Resolver.** `t7_move_resolve.py --motions` walks stance → 0x8001 → `Kg_sDASHF`, then the dash's f+X / n+X, or the dash's f → `sRUN__00F`, then X. The final move's damage and first active frame must match. 8 of 11 motion rows mapped. The earlier lead dash+1 → `Kg_jprk00F` was corrected: that cancel is requirement-gated; Jaguar Hook is `Kg_lygerlp00`.
+- **Bake.** Same verified setup. 7 moves / 7 clips added; the pack goes from 44 to 51 moves with the old 44 byte-identical. `Kg_fallerurari` was gated (not upright).
+- **Wiring.** `t3anims.js` gets an exact motion-input map (`t7NormMotion`, case-kept). Real stick sequences through TekkenBuffer + `trySystemMotion` + `tryAttack` now play f,F+1 / f,F+2 / f,F+4 / f,F+3+4 / f,f,n,2 / f,f,f+3 / f,f,f+3+4 as King T7.
+- **Coverage.** Plain rows on real King T7: 61 → **68 / 643**; T3 King 516 → 509.
+- **Tests:** `test/t7-king-motions.test.mjs` (fails 9/10 on main). Dash test comment updated.
+- **Not done:** `f,f,F+3` duplicate spellings, WR 4, WR+1+2, close/far rows, throws, f,n,d,d/f (input-sequence commands undecoded), KBD. Not touch- or model-verified.
+
 ## 2026-11-10 — Pantera pass 2: 15 real King T7 string steps extracted + wired (MoneyManBusch / Grok) (t386u)
 
 - **Resolver.** `t7_move_resolve.py --strings` (cancel-graph walk plus the exact step damage / first active frame) maps 17 of 24 King string-step rows (v1 output unchanged).

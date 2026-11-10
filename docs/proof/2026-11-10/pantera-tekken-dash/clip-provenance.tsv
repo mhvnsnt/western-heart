@@ -274,16 +274,16 @@ FDFA.db+1+3_2+4	Wing Tearer	t8:king:king-fdfa.db+1+3	row:127	t3row
 FDFL.db+1+3_2+4	Bow & Arrow Stretch Hold	t8:king:king-fdfl.db+1+3	row:127	t3row
 FDFR.db+1+3_2+4	Camel Clutch	t8:king:king-fdfr.db+1+3	row:127	t3row
 FDFT.db+1+3_2+4	Half Boston Crab (OTG)	t8:king:king-fdft.db+1+3	row:127	t3row
-f,F+1	Jaguar Hook	UNMAPPED:t7-clip-pending	row:35	t3row
-f,F+2	Beast Elbow	UNMAPPED:t7-clip-pending	row:203	t3row
+f,F+1	Jaguar Hook	UNMAPPED:t7-clip-pending	t7:f,F+1~t7.king	t7
+f,F+2	Beast Elbow	UNMAPPED:t7-clip-pending	t7:f,F+2~t7.king	t7
 f,F+2+3	Diving Body Press	UNMAPPED:t7-clip-pending	row:237	t3row
-f,F+3+4	Exploder	UNMAPPED:t7-clip-pending	row:35	t3row
-f,F+4	Konvict Kick	UNMAPPED:t7-clip-pending	row:216	t3row
+f,F+3+4	Exploder	UNMAPPED:t7-clip-pending	t7:f,F+3+4~t7.king	t7
+f,F+4	Konvict Kick	UNMAPPED:t7-clip-pending	t7:f,F+4~t7.king	t7
 f,f,F+2+4	Tomahawk	UNMAPPED:t7-clip-pending	row:128	t3row
 f,f,F+3	Strong Knee	UNMAPPED:t7-clip-pending	row:54	t3row
 f,f,F+3+4	Running Exploder	UNMAPPED:t7-clip-pending	row:35	t3row
 f,f,n,1+2	Lay Off	UNMAPPED:t7-clip-pending	row:195	t3row
-f,f,n,2	Stomach Smash / Jaguar Hammer	UNMAPPED:t7-clip-pending	row:50	t3row
+f,f,n,2	Stomach Smash / Jaguar Hammer	UNMAPPED:t7-clip-pending	t7:f,f,n,2~t7.king	t7
 f,hcf+1	Giant Swing	t8:king:king-f,hcf+1	row:280	t3row
 f,hcf+2	Tijuana Twister	t8:king:king-f,hcf+2	row:586	t3row
 f,n,d,df	Beast Step	UNMAPPED:t7-clip-pending	row:195	t3row
@@ -423,25 +423,25 @@ f+4~t7.king	Rolling Sobat	t7:king:king_44	t7:f+4~t7.king	t7
 f+1+2~t7.king	Shadow Lariat	t7:king:king_45	row:112	t3row
 f+1+4~t7.king	Body Check	t7:king:king_46	t7:f+1+4~t7.king	t7
 f+3+4~t7.king	Exploder	t7:king:king_47	row:109	t3row
-f,F+1~t7.king	Jaguar Hook	t7:king:king_48	row:209	t3row
-f,F+2~t7.king	Rolling Elbow	t7:king:king_49	row:203	t3row
+f,F+1~t7.king	Jaguar Hook	t7:king:king_48	t7:f,F+1~t7.king	t7
+f,F+2~t7.king	Rolling Elbow	t7:king:king_49	t7:f,F+2~t7.king	t7
 f,F+2,1	Clothesline Combo	t7:king:king_50	row:110	t3row
 f,F+2,1~t7.king	PANTERA f,F+2,1	t7:king:king_51	row:110	t3row
-f,F+4~t7.king	Konvict Kick	t7:king:king_52	row:216	t3row
+f,F+4~t7.king	Konvict Kick	t7:king:king_52	t7:f,F+4~t7.king	t7
 CH.f,F+4	Konvict Kick to DDT	t7:king:king_53	row:216	t3row
 f,F+1+2	Flying Cross Chop	t7:king:king_54	row:220	t3row
 f,F+1+2~t7.king	PANTERA f,F+1+2	t7:king:king_55	row:204	t3row
 f,F+2+3~t7.king	Diving Body Press	t7:king:king_56	row:94	t3row
 f,F+2+3~t7.king.2	PANTERA f,F+2+3	t7:king:king_57	row:94	t3row
-f,F+3+4~t7.king	PANTERA f,F+3+4	t7:king:king_58	row:109	t3row
+f,F+3+4~t7.king	PANTERA f,F+3+4	t7:king:king_58	t7:f,F+3+4~t7.king	t7
 f,n,d,D/F+1	PANTERA f,n,d,D/F+1	t7:king:king_59	row:117	t3row
 f,n,d,D/F+4	Jumping Knee	t7:king:king_60	row:135	t3row
 f,n,d,D/F+1+2	Black Bomb	t7:king:king_61	row:227	t3row
-f,f,n,2~t7.king	Stomach Smash	t7:king:king_62	row:99	t3row
+f,f,n,2~t7.king	Stomach Smash	t7:king:king_62	t7:f,f,n,2~t7.king	t7
 CH.f,f,n,2	Jaguar Hammer	t7:king:king_63	row:99	t3row
 f,f,n,1+2~t7.king	Lay Off	t7:king:king_64	row:101	t3row
-f,f,f+3	Strong Knee	t7:king:king_65	row:113	t3row
-f,f,f+3+4	Running Exploder	t7:king:king_66	row:109	t3row
+f,f,f+3	Strong Knee	t7:king:king_65	t7:f,f,f+3	t7
+f,f,f+3+4	Running Exploder	t7:king:king_66	t7:f,f,f+3+4	t7
 d/f+1~t7.king	PANTERA d/f+1	t7:king:king_67	t7:d/f+1~t7.king	t7
 d/f+1,2	Elbow Sting	t7:king:king_68	t7:d/f+1,2~t7.king	t7
 d/f+1,2~t7.king	PANTERA d/f+1,2	t7:king:king_69	t7:d/f+1,2~t7.king	t7

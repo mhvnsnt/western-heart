@@ -22,6 +22,14 @@ reached move's own expanded cancel list (every candidate is followed: prefix ste
 own), then the final step must reach a move whose damage and first active frame equal the row's own T7 frame data,
 exactly as in v1. Full-string rows ('1, 2' with several hits' data) and motion / stance rows stay unmapped.
 
+Scope v3 (--motions, 2026-11-10): DASH and RUN rows, walked on King's own link tables, nothing timed by us:
+  DASH  'f, F+X' / 'f, f, n, X' / '(f, F+X), Y': from the stance, the cancel whose command is 0x8001 (the
+        engine's forward double tap; the same 0x8001 the stance uses for its dash_fwd slot, tools/anim/
+        t7_generic_slots) reaches the dash move; 'F+X' is then the dash's own f+X cancel, 'n, X' its neutral X.
+  RUN   'WR X' / 'WR+X' / 'f, f, f+X (or WR X)': the dash, then the dash's direction-only f cancel to a move other
+        than itself (the run), then X from the run's own cancel list with f held.
+The final move must pass the v1 frame-data check. Distance-gated rows ('(close)' / '(far)') and throws stay out.
+
 Cancel command (u64): low 32 bits = direction mask (0x2 d/b, 0x4 d, 0x8 d/f, 0x10 b, 0x20 n, 0x40 f, 0x80 u/b,
 0x100 u, 0x200 u/f; 0 = any; >= 0x8000 = special), high 32 bits = buttons (bit 0 = 1/LP, 1 = 2/RP, 2 = 3/LK,
 3 = 4/RK; 0x40000000 = press flag). Bank rule for a move's clip: anim_id & 0xC000 -> 0x4000 <code>rotsm.arc,
@@ -184,6 +192,89 @@ def resolve_strings(mb, moveset, rows, stats):
         rows[key] = rec
 
 
+DASH_CMD = 0x8001
+
+
+def _motion_hits(mb, by_id, cancels, kind):
+    out = []
+    for cd, cb, mid, req in cancels:
+        if mid >= 0x8000 or mid not in by_id or (cb & 0xFF): continue
+        if kind == 'dash' and cd == DASH_CMD: out.append(mid)
+        if kind == 'run' and cd == DIRS['f']: out.append(mid)
+    return out
+
+
+def parse_motion(cmd):
+    """-> (prefix tokens, final (dir, btn)); tokens: 'dash' | 'run' | (dir, btn). None for anything else."""
+    c = re.sub(r'\s+', ' ', str(cmd or '')).strip()
+    m = re.fullmatch(r'f, f, f\+([1-4](?:\+[1-4])*) \(or WR ([1-4](?:\+[1-4])*)\)', c)
+    if m and m.group(1) == m.group(2): c = 'WR ' + m.group(1)
+    m = re.fullmatch(r'WR ?\+?([1-4](?:\+[1-4])*)', c)
+    if m:
+        p = parse_single(m.group(1)); return (['dash', 'run'], (DIRS['f'], p[1])) if p else None
+    m = re.fullmatch(r'f, F\+([1-4](?:\+[1-4])*)', c)
+    if m:
+        p = parse_single(m.group(1)); return (['dash'], (DIRS['f'], p[1])) if p else None
+    m = re.fullmatch(r'f, f, n, ([1-4](?:\+[1-4])*)', c)
+    if m:
+        p = parse_single(m.group(1)); return (['dash'], (NEUTRAL, p[1])) if p else None
+    m = re.fullmatch(r'\(f, F\+([1-4](?:\+[1-4])*)\), (.+)', c)
+    if m:
+        a, b = parse_single(m.group(1)), parse_single(m.group(2))
+        return (['dash', (DIRS['f'], a[1])], b) if a and b else None
+    return None
+
+
+def resolve_motions(mb, moveset, rows, stats):
+    by_id = {m['id']: m for m in mb.moves}
+    cache = {}
+    def cancels_of(mid):
+        if mid not in cache: cache[mid] = mb.expanded_cancels(by_id[mid])
+        return cache[mid]
+    st = mb.stance()
+    stats.update({'motion_rows': 0, 'motion_mapped': 0, 'motion_ambiguous': 0, 'motion_no_match': 0})
+    for key, row in moveset['moves'].items():
+        if not isinstance(row, dict) or 't7_damage_raw' not in row or key in rows: continue
+        pm = parse_motion(row.get('t7_command'))
+        if pm is None: continue
+        stats['motion_rows'] += 1
+        pre, (d, btn) = pm
+        frontier, chain = [st['id']], []
+        for tok in pre:
+            nxt = []
+            for mid in frontier:
+                if tok in ('dash', 'run'):
+                    hs = [h for h in _motion_hits(mb, by_id, cancels_of(mid), tok) if tok == 'dash' or h != mid]
+                else:
+                    hs = _step_hits(mb, by_id, cancels_of(mid), tok[0], tok[1])
+                for h in hs:
+                    if h not in nxt: nxt.append(h)
+            frontier = nxt
+            chain.append(sorted({by_id[m]['name'] for m in nxt}))
+        dmg, su = first_int(row.get('t7_damage_raw')), first_int(row.get('t7_startup_frames'))
+        path_hits, verified = [], []
+        for mid in frontier:
+            for h in _step_hits(mb, by_id, cancels_of(mid), d, btn):
+                path_hits.append(h)
+                m = by_id[h]; af = m.get('active_frames') or [None]
+                if dmg is not None and m.get('damage') == dmg and af[0] == su and h not in verified: verified.append(h)
+        anims = sorted({by_id[h]['anim'] for h in verified})
+        rec = {'input': row.get('input'), 't7_command': row.get('t7_command'), 'damage': dmg, 'startup': su,
+               'kind': 'motion', 'prefix_chain': chain, 'path_candidates': len(path_hits),
+               'path_moves': sorted({by_id[h]['name'] for h in path_hits}),
+               'verified_candidates': [by_id[h]['name'] for h in verified]}
+        if len(anims) == 1:
+            m = by_id[verified[0]]
+            rec.update({'status': 'mapped', 'motbin_move': m['name'], 'motbin_id': m['id'], 'anim': m['anim'],
+                        'active_frames': m.get('active_frames'), **mb.clip(m)})
+            stats['motion_mapped'] += 1
+        elif len(anims) > 1:
+            rec.update({'status': 'ambiguous', 'anims': anims}); stats['motion_ambiguous'] += 1
+        else:
+            rec.update({'status': 'no_match'}); stats['motion_no_match'] += 1
+        rows[key] = rec
+
+
 def resolve(mb, moveset):
     st = mb.stance()
     cancels = mb.expanded_cancels(st)
@@ -230,10 +321,13 @@ def main():
     if len(sys.argv) < 4: raise SystemExit(__doc__)
     strings = '--strings' in sys.argv
     if strings: sys.argv.remove('--strings')
+    motions = '--motions' in sys.argv
+    if motions: sys.argv.remove('--motions')
     mb = Motbin(sys.argv[1], sys.argv[2])
     ms = json.load(open(sys.argv[3]))
     out = resolve(mb, ms)
     if strings: resolve_strings(mb, ms, out['rows'], out['stats'])
+    if motions: resolve_motions(mb, ms, out['rows'], out['stats'])
     out['moveset'] = os.path.basename(sys.argv[3])
     if len(sys.argv) > 4:
         json.dump(out, open(sys.argv[4], 'w'), indent=1)
