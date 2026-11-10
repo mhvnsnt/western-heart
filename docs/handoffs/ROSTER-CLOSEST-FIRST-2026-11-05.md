@@ -175,3 +175,14 @@ GRE `tekken3/animations/`: divmot03/04/07/09/12/13/16/99 only (no divmot14 this 
 - Ryusan: card on main; GRE `dnc.json`+`dncmot.bin` named; multi-hit/SHOW still bake-gated after search.
 - Pages tip `32607e2b` (publish watch).
 
+
+
+## 2026-11-10 — Owner override: PANTERA FIRST (t386u)
+- Pass 1: Tekken f,f dash / b,b backdash restored from King T7 motbin + t7_king clips (node-proven; touchscreen proof pending). Open Pantera items, in order:
+  1. Duplicate plain vs `~t7.king` rows resolving to unmapped clips.
+  2. KBD (group-cancel decode).
+  3. Run / re-dash at dash frame 12.
+  4. f,n,d,df CD (`cd_entry`).
+  5. T7-bank sidestep axis.
+  6. Full movelist / throws / chains matrix.
+  See `docs/proof/2026-11-10/pantera-tekken-dash/INPUT-MATRIX.md`.
