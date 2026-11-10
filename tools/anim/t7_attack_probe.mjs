@@ -33,7 +33,13 @@ while (Date.now() - t0 < 180000) {
   await page.waitForTimeout(1000);
 }
 console.log('READY', ready);
-await page.evaluate(() => { const g = window.__game; g.ai = { update() {}, reset() {} }; });
+// The round clock runs on WALL time (game.js: roundTime 0 = INFINITY). Under software WebGL a 60 s round runs out a few
+// moves into a probe: TIME UP resets both fighters mid-move (2026-11-10, Thor's b+1+2 "travelled" -1.67 m and his f+2
+// never reached idle). The probe holds the round open, and P2's health full, so every listed move is pressed in one fight.
+await page.evaluate(() => {
+  const g = window.__game; g.ai = { update() {}, reset() {} }; g.roundTime = 0; g.timer = Infinity;
+  const p2 = g.p2; if (p2) { const hp = p2.maxHp || p2.hp; window.__whProbeHp = setInterval(() => { if (p2.hp < hp) p2.hp = hp; }, 200); }
+});
 await page.waitForTimeout(1500);
 const cdp = await page.context().newCDPSession(page);
 const shot = async (file) => {

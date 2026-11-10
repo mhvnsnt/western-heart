@@ -289,7 +289,12 @@ def resolve(mb, moveset):
     for key, row in moveset['moves'].items():
         if not isinstance(row, dict) or 't7_damage_raw' not in row: continue
         stats['t7_rows'] += 1
-        inp = parse_single(row.get('t7_command') or row.get('input'))
+        cmd = row.get('t7_command') or row.get('input')
+        # a sheet command listing alternatives ('4 or f+4': the same move on 4 and on f+4) is read on the row's own
+        # input when that input is one of them (tools/moveset-merge/t7_sheet_fill.py --split-or rows)
+        alts = [x.strip() for x in str(cmd).split(' or ')] if ' or ' in str(cmd) else []
+        if row.get('input') in alts: cmd = row['input']
+        inp = parse_single(cmd)
         if inp is None:
             stats['not_single_input'] += 1; continue
         d, btn = inp

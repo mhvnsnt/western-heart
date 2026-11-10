@@ -753,8 +753,10 @@ export const T7_MOVES = {
   // (owner); that pack stays on disk. His own Paul T7 moves (2026-11-10): 36 rows from Paul's own arc (paurotsm.arc);
   // the two whose clips live in paumot.bin, which the teardown lacks, keep their current clips.
   gyou: { bank: 'paul', dir: 'assets/anim/t7/paul/', pack: 'moves.gyou.pack.json' },
-  // thor: Ganryu's own T7 attacks (2026-11-10; canon "Built on Ganryu's sumo frame"), 20 rows from ganrotsm.arc +
-  // ganmot.bin. His d/f+1+2 double slap stays out (its second slap is a separate follow-up motbin move).
+  // thor: Ganryu's own T7 attacks (2026-11-10; canon "Built on Ganryu's sumo frame"), 25 rows from ganrotsm.arc +
+  // ganmot.bin, his own 1 / 2 / 3 / 4 / f+4 included (tools/moveset-merge/t7_sheet_fill.py put Ganryu's sheet rows
+  // back on the inputs Bryan's T3 stand-ins held). His d/f+1+2 double slap stays out (its second slap is a separate
+  // follow-up motbin move).
   thor: { bank: 'bryan', dir: 'assets/anim/t7/ganryu/' },
   tobi: { bank: 'hwoarang', dir: 'assets/anim/t7/hwoarang/', pack: 'moves.tobi.pack.json' },
   gashadokuro: { bank: 'kuma', dir: 'assets/anim/t7/kuma/' },
