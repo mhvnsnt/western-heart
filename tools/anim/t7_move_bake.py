@@ -133,10 +133,19 @@ def main():
     for key, r in res['rows'].items():
         if r.get('status') != 'mapped': continue
         row = moveset.get(key) or {}
+        if r.get('fmt') == 'file-absent':  # t7_move_resolve.py: the clip's bank file is not in this teardown
+            skipped[key] = 'clip %s #%s lives in %s, which this teardown does not hold' % (r.get('anim'), r.get('clip'), r.get('file'))
+            continue
         if r.get('fmt') != '0xC8' and not (r.get('fmt') == '0x64' and os.environ.get('T7_EXE')):
             skipped[key] = 'clip is %s (0x64 needs T7_EXE for the game-sampler conversion)' % r.get('fmt'); continue
         levels = [x for x in str(row.get('t7_hit_level') or '').split(',') if x.strip()]
-        if len(levels) > 1: skipped[key] = 'multi-hit (%s): one clip could show only the first hit' % row.get('t7_hit_level'); continue
+        # 2026-11-10: some frame sheets write a two-hit move compactly ('mm', damage '10,10': Thor's d/f+1+2, whose second
+        # slap is a separate follow-up motbin move), so the hit count is also read from the damage list (one value per
+        # hit; '7 [8]' is one hit with its rage value). A compact level alone is not counted ('Sm' is one special mid).
+        damages = [x for x in str(row.get('t7_damage_raw') or '').split(',') if x.strip()]
+        if len(levels) > 1 or len(damages) > 1:
+            skipped[key] = 'multi-hit (%s, damage %s): one clip could show only the first hit' % (
+                row.get('t7_hit_level'), row.get('t7_damage_raw')); continue
         if row.get('isGrab') or row.get('throw') or re.match(r'\s*t', str(row.get('t7_hit_level') or ''), re.I):
             skipped[key] = 'throw: own pair-animation path'; continue
         keep[key] = r

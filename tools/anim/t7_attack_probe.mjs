@@ -33,7 +33,15 @@ while (Date.now() - t0 < 180000) {
   await page.waitForTimeout(1000);
 }
 console.log('READY', ready);
-await page.evaluate(() => { const g = window.__game; g.ai = { update() {}, reset() {} }; });
+// The round clock runs on WALL time (game.js: roundTime 0 = INFINITY). Under software WebGL a 60 s round runs out a few
+// moves into a probe: TIME UP resets both fighters mid-move (2026-11-10, Thor's b+1+2 "travelled" -1.67 m and his f+2
+// never reached idle). The probe holds the round open, and P2's health full, so every listed move is pressed in one fight.
+await page.evaluate(() => {
+  const g = window.__game; g.ai = { update() {}, reset() {} }; g.roundTime = 0; g.timer = Infinity;
+  const p2 = g.p2; if (p2) { const hp = p2.maxHp || p2.hp; window.__whProbeHp = setInterval(() => { if (p2.hp < hp) p2.hp = hp; }, 200); }
+  // every move starts from the round-start spacing (a run of lunges otherwise walks P1 into P2's back or a wall)
+  window.__whProbeStart = { p1: g.p1.root.position.clone(), p2: g.p2 ? g.p2.root.position.clone() : null };
+});
 await page.waitForTimeout(1500);
 const cdp = await page.context().newCDPSession(page);
 const shot = async (file) => {
@@ -52,6 +60,10 @@ for (const mv of list.split(',')) {
     // a press inside the post-move string grace (fighter._stringGraceUntil, 500 ms) continues the last string:
     // wait it out so each listed notation is pressed fresh, the way a player starts a new move
     await until(() => performance.now() > (f._stringGraceUntil || 0) + 50, 3000);
+    const st = window.__whProbeStart;
+    if (st && !(g.stageBreaks && g.stageBreaks.groundY < 0)) {  // after a floor break the fight is on the level below
+      f.root.position.copy(st.p1); if (g.p2 && st.p2) g.p2.root.position.copy(st.p2);
+    }
     const x0 = f.root.position.x;
     const oldId = f._atkPlan && f._atkPlan.id;
     const ok = f.tryAttack(mv);
@@ -73,9 +85,10 @@ for (const mv of list.split(',')) {
       f.root.getWorldPosition(rp);
       const dir = f.facing || 1;
       g.arena.setFreeCamera(true);
-      if (view === 'front') cam.position.set(rp.x + dir * 2.6, 1.3, rp.z + 0.35);
-      else cam.position.set(rp.x + dir * 0.3, 1.3, rp.z + 2.7);
-      cam.lookAt(rp.x + dir * 0.25, 1.0, rp.z);
+      // heights follow the fighter: a T7 floor break drops the fight a level (stagebreaks.js _breakFloor)
+      if (view === 'front') cam.position.set(rp.x + dir * 2.6, rp.y + 1.3, rp.z + 0.35);
+      else cam.position.set(rp.x + dir * 0.3, rp.y + 1.3, rp.z + 2.7);
+      cam.lookAt(rp.x + dir * 0.25, rp.y + 1.0, rp.z);
       cam.updateMatrixWorld();
       try { g.arena.render(); } catch (e) { /* render once for the shot */ }
     }, [view]);

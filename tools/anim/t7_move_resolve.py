@@ -110,6 +110,12 @@ class Motbin:
         sel = aid & 0xC000
         path = {0x4000: 'mask/%srotsm.arc' % self.code, 0x8000: 'mask/common.arc', 0x0000: 'bin/%smot.bin' % self.code}.get(sel)
         if not path: return {'bank': '?', 'clip': None, 'fmt': '?'}
+        # 2026-11-10 (Gyou/Paul): a teardown can lack a character's <code>mot.bin (Paul has paurotsm.arc and his motbin
+        # JSON, but no paumot.bin). The row still maps (the cancel graph and frame data live in the motbin JSON); its
+        # clip is recorded as absent, and tools/anim/t7_move_bake.py skips it with that reason. Rows whose clips live in
+        # <code>rotsm.arc or common.arc still bake.
+        if path not in self._banks and not os.path.exists(self.G + path):
+            return {'bank': BANK[sel], 'clip': aid & 0x3FFF, 'fmt': 'file-absent', 'file': path}
         if path not in self._banks:
             b = open(self.G + path, 'rb').read(); m0 = re.search(b'MOTA', b).start()
             self._banks[path] = (b, m0, mota_anims(b, m0))
@@ -283,7 +289,12 @@ def resolve(mb, moveset):
     for key, row in moveset['moves'].items():
         if not isinstance(row, dict) or 't7_damage_raw' not in row: continue
         stats['t7_rows'] += 1
-        inp = parse_single(row.get('t7_command') or row.get('input'))
+        cmd = row.get('t7_command') or row.get('input')
+        # a sheet command listing alternatives ('4 or f+4': the same move on 4 and on f+4) is read on the row's own
+        # input when that input is one of them (tools/moveset-merge/t7_sheet_fill.py --split-or rows)
+        alts = [x.strip() for x in str(cmd).split(' or ')] if ' or ' in str(cmd) else []
+        if row.get('input') in alts: cmd = row['input']
+        inp = parse_single(cmd)
         if inp is None:
             stats['not_single_input'] += 1; continue
         d, btn = inp

@@ -1,0 +1,1276 @@
+{
+ "schema": "wh-t7-move-resolve/1",
+ "code": "pau",
+ "stance": "Pl_sKAM00_",
+ "stance_cancels_expanded": 480,
+ "stats": {
+  "t7_rows": 219,
+  "mapped": 22,
+  "mapped_0xC8": 0,
+  "ambiguous": 0,
+  "no_match": 2,
+  "not_single_input": 195,
+  "string_step_rows": 18,
+  "string_mapped": 14,
+  "string_ambiguous": 0,
+  "string_no_match": 4,
+  "motion_rows": 7,
+  "motion_mapped": 3,
+  "motion_ambiguous": 0,
+  "motion_no_match": 4
+ },
+ "rows": {
+  "1~t7.paul": {
+   "input": "1",
+   "t7_command": "1",
+   "damage": 7,
+   "startup": 10,
+   "path_candidates": 5,
+   "verified_candidates": [
+    "Pl_lp00F"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_lp00F",
+   "motbin_id": 1606,
+   "anim": "cbpl_lp00f(DVD)",
+   "active_frames": [
+    10,
+    10
+   ],
+   "bank": "rotsm",
+   "clip": 318,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "2~t7.paul": {
+   "input": "2",
+   "t7_command": "2",
+   "damage": 10,
+   "startup": 10,
+   "path_candidates": 5,
+   "verified_candidates": [
+    "Pl_rp00"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_rp00",
+   "motbin_id": 1586,
+   "anim": "ygpl_rp00(DVD)",
+   "active_frames": [
+    10,
+    10
+   ],
+   "bank": "rotsm",
+   "clip": 311,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "3~t7.paul": {
+   "input": "3",
+   "t7_command": "3",
+   "damage": 14,
+   "startup": 15,
+   "path_candidates": 8,
+   "verified_candidates": [
+    "Pl_lk00"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_lk00",
+   "motbin_id": 1593,
+   "anim": "kopl_lk(DVD)",
+   "active_frames": [
+    15,
+    16
+   ],
+   "bank": "rotsm",
+   "clip": 313,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "4~t7.paul": {
+   "input": "4",
+   "t7_command": "4",
+   "damage": 17,
+   "startup": 12,
+   "path_candidates": 6,
+   "verified_candidates": [
+    "Pl_rk00"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_rk00",
+   "motbin_id": 1602,
+   "anim": "napl_rk00(DVD)",
+   "active_frames": [
+    12,
+    12
+   ],
+   "bank": "rotsm",
+   "clip": 315,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "f+2~t7.paul": {
+   "input": "f+2",
+   "t7_command": "f+2",
+   "damage": 10,
+   "startup": 12,
+   "path_candidates": 5,
+   "verified_candidates": [
+    "Pl_rp00F"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_rp00F",
+   "motbin_id": 1607,
+   "anim": "kopl_6rp(DVD)",
+   "active_frames": [
+    12,
+    12
+   ],
+   "bank": "rotsm",
+   "clip": 320,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "f+3~t7.paul": {
+   "input": "f+3",
+   "t7_command": "f+3",
+   "damage": 30,
+   "startup": 16,
+   "path_candidates": 8,
+   "verified_candidates": [
+    "Pl_lk00F"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_lk00F",
+   "motbin_id": 1610,
+   "anim": "Rpl_PSrk00f(DVD)",
+   "active_frames": [
+    16,
+    16
+   ],
+   "bank": "rotsm",
+   "clip": 322,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "f+1+2~t7.paul": {
+   "input": "f+1+2",
+   "t7_command": "f+1+2",
+   "damage": 22,
+   "startup": 20,
+   "path_candidates": 7,
+   "verified_candidates": [
+    "Pl_midlp"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_midlp",
+   "motbin_id": 1608,
+   "anim": "ikpl_rakurai(DVD)",
+   "active_frames": [
+    20,
+    21
+   ],
+   "bank": "rotsm",
+   "clip": 321,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "f+1+4~t7.paul": {
+   "input": "f+1+4",
+   "t7_command": "f+1+4",
+   "damage": 21,
+   "startup": 8,
+   "path_candidates": 4,
+   "verified_candidates": [],
+   "status": "no_match"
+  },
+  "d/f+1~t7.paul": {
+   "input": "d/f+1",
+   "t7_command": "d/f+1",
+   "damage": 13,
+   "startup": 14,
+   "path_candidates": 5,
+   "verified_candidates": [
+    "Pl_t_slpF"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_t_slpF",
+   "motbin_id": 1653,
+   "anim": "ampl_newbody(DVD)",
+   "active_frames": [
+    14,
+    14
+   ],
+   "bank": "rotsm",
+   "clip": 349,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "d/f+2~t7.paul": {
+   "input": "d/f+2",
+   "t7_command": "d/f+2",
+   "damage": 13,
+   "startup": 15,
+   "path_candidates": 5,
+   "verified_candidates": [
+    "Pl_t_srpF"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_t_srpF",
+   "motbin_id": 1663,
+   "anim": "kopl_3rp(DVD)",
+   "active_frames": [
+    15,
+    16
+   ],
+   "bank": "rotsm",
+   "clip": 355,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "d/f+3~t7.paul": {
+   "input": "d/f+3",
+   "t7_command": "d/f+3",
+   "damage": 14,
+   "startup": 16,
+   "path_candidates": 6,
+   "verified_candidates": [
+    "Co_t_slkF"
+   ],
+   "status": "mapped",
+   "motbin_move": "Co_t_slkF",
+   "motbin_id": 1664,
+   "anim": "kopl_3lk(DVD)",
+   "active_frames": [
+    16,
+    16
+   ],
+   "bank": "rotsm",
+   "clip": 356,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "d/f+4~t7.paul": {
+   "input": "d/f+4",
+   "t7_command": "d/f+4",
+   "damage": 21,
+   "startup": 19,
+   "path_candidates": 6,
+   "verified_candidates": [
+    "Co_t_srkF"
+   ],
+   "status": "mapped",
+   "motbin_move": "Co_t_srkF",
+   "motbin_id": 1676,
+   "anim": "kopl_getaway(DVD)",
+   "active_frames": [
+    19,
+    20
+   ],
+   "bank": "rotsm",
+   "clip": 359,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "d+1~t7.paul": {
+   "input": "d+1",
+   "t7_command": "d+1",
+   "damage": 16,
+   "startup": 14,
+   "path_candidates": 6,
+   "verified_candidates": [
+    "pol_kawara",
+    "pol_kawara"
+   ],
+   "status": "mapped",
+   "motbin_move": "pol_kawara",
+   "motbin_id": 1642,
+   "anim": "ikpl_kawara(DVD)",
+   "active_frames": [
+    14,
+    15
+   ],
+   "bank": "rotsm",
+   "clip": 342,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "d+1+2~t7.paul": {
+   "input": "d+1+2",
+   "t7_command": "d+1+2",
+   "damage": 30,
+   "startup": 12,
+   "path_candidates": 3,
+   "verified_candidates": [
+    "Pl_Tetsuzan"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_Tetsuzan",
+   "motbin_id": 1647,
+   "anim": "plss_tetuzan(DVD)",
+   "active_frames": [
+    12,
+    13
+   ],
+   "bank": "rotsm",
+   "clip": 346,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "d/b+2~t7.paul": {
+   "input": "d/b+2",
+   "t7_command": "d/b+2",
+   "damage": 21,
+   "startup": 19,
+   "path_candidates": 5,
+   "verified_candidates": [
+    "Pl_t_srp00B"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_t_srp00B",
+   "motbin_id": 1646,
+   "anim": "plhk_wideupper_mox(DVD)",
+   "active_frames": [
+    19,
+    20
+   ],
+   "bank": "rotsm",
+   "clip": 345,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "b+1~t7.paul": {
+   "input": "b+1",
+   "t7_command": "b+1",
+   "damage": 12,
+   "startup": 12,
+   "path_candidates": 5,
+   "verified_candidates": [
+    "Pl_4lp"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_4lp",
+   "motbin_id": 1613,
+   "anim": "plkb_whook1_mox(DVD)",
+   "active_frames": [
+    12,
+    13
+   ],
+   "bank": "rotsm",
+   "clip": 325,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "b+2~t7.paul": {
+   "input": "b+2",
+   "t7_command": "b+2",
+   "damage": 22,
+   "startup": 18,
+   "path_candidates": 5,
+   "verified_candidates": [
+    "Pl_4rp"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_4rp",
+   "motbin_id": 1616,
+   "anim": "plss_4rp18f(DVD)",
+   "active_frames": [
+    18,
+    18
+   ],
+   "bank": "rotsm",
+   "clip": 327,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "b+3~t7.paul": {
+   "input": "b+3",
+   "t7_command": "b+3",
+   "damage": 16,
+   "startup": 14,
+   "path_candidates": 10,
+   "verified_candidates": [
+    "Pl_agohiza"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_agohiza",
+   "motbin_id": 1668,
+   "anim": "napl_hiza01(DVD)",
+   "active_frames": [
+    14,
+    15
+   ],
+   "bank": "rotsm",
+   "clip": 358,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "b+4~t7.paul": {
+   "input": "b+4",
+   "t7_command": "b+4",
+   "damage": 14,
+   "startup": 20,
+   "path_candidates": 6,
+   "verified_candidates": [
+    "Pl_rk00B"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_rk00B",
+   "motbin_id": 1641,
+   "anim": "plkw_s4_4rk",
+   "active_frames": [
+    20,
+    21
+   ],
+   "bank": "motbin",
+   "clip": 103,
+   "fmt": "file-absent",
+   "file": "bin/paumot.bin"
+  },
+  "u/b+2~t7.paul": {
+   "input": "u/b+2",
+   "t7_command": "u/b+2",
+   "damage": 22,
+   "startup": 20,
+   "path_candidates": 7,
+   "verified_candidates": [
+    "Pl_spfk",
+    "Pl_spfk"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_spfk",
+   "motbin_id": 1620,
+   "anim": "plss_4rp(DVD)",
+   "active_frames": [
+    20,
+    21
+   ],
+   "bank": "rotsm",
+   "clip": 330,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "u/f+2~t7.paul": {
+   "input": "u/f+2",
+   "t7_command": "u/f+2",
+   "damage": 35,
+   "startup": 34,
+   "path_candidates": 6,
+   "verified_candidates": [
+    "Pl_chest"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_chest",
+   "motbin_id": 1785,
+   "anim": "plkb_earth",
+   "active_frames": [
+    34,
+    34
+   ],
+   "bank": "motbin",
+   "clip": 110,
+   "fmt": "file-absent",
+   "file": "bin/paumot.bin"
+  },
+  "u/f+3~t7.paul": {
+   "input": "u/f+3",
+   "t7_command": "u/f+3",
+   "damage": 14,
+   "startup": 15,
+   "path_candidates": 3,
+   "verified_candidates": [
+    "pol_sjk00F"
+   ],
+   "status": "mapped",
+   "motbin_move": "pol_sjk00F",
+   "motbin_id": 1547,
+   "anim": "kopl_8lk(DVD)",
+   "active_frames": [
+    15,
+    16
+   ],
+   "bank": "rotsm",
+   "clip": 281,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "b+1+2~t7.paul": {
+   "input": "b+1+2",
+   "t7_command": "b+1+2",
+   "damage": 28,
+   "startup": 24,
+   "path_candidates": 8,
+   "verified_candidates": [
+    "Pl_hibiki"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_hibiki",
+   "motbin_id": 1624,
+   "anim": "kopl_hibiki(DVD)",
+   "active_frames": [
+    24,
+    24
+   ],
+   "bank": "rotsm",
+   "clip": 331,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "d/b+1+2~t7.paul": {
+   "input": "d/b+1+2",
+   "t7_command": "d/b+1+2",
+   "damage": 5,
+   "startup": 26,
+   "path_candidates": 3,
+   "verified_candidates": [],
+   "status": "no_match"
+  },
+  "1,2~t7.paul.2": {
+   "input": "1,2",
+   "t7_command": "(1), 2",
+   "damage": 12,
+   "startup": 10,
+   "kind": "string_step",
+   "prefix_chain": [
+    [
+     "Co_R_lp00R",
+     "Co_R_rp00L",
+     "Pl_lp00F",
+     "pol_sjk00F"
+    ]
+   ],
+   "path_candidates": 1,
+   "verified_candidates": [
+    "Pl_lprpF"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_lprpF",
+   "motbin_id": 1585,
+   "anim": "ygpl_lprp(DVD)",
+   "active_frames": [
+    10,
+    10
+   ],
+   "bank": "rotsm",
+   "clip": 310,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "1,4~t7.paul.2": {
+   "input": "1,4",
+   "t7_command": "(1), 4",
+   "damage": 8,
+   "startup": 23,
+   "kind": "string_step",
+   "prefix_chain": [
+    [
+     "Co_R_lp00R",
+     "Co_R_rp00L",
+     "Pl_lp00F",
+     "pol_sjk00F"
+    ]
+   ],
+   "path_candidates": 4,
+   "verified_candidates": [
+    "Ni_lprkd"
+   ],
+   "status": "mapped",
+   "motbin_move": "Ni_lprkd",
+   "motbin_id": 1803,
+   "anim": "napl_lp2rk(DVD)",
+   "active_frames": [
+    23,
+    23
+   ],
+   "bank": "rotsm",
+   "clip": 439,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "2,3~t7.paul.2": {
+   "input": "2,3",
+   "t7_command": "(2), 3",
+   "damage": 21,
+   "startup": 22,
+   "kind": "string_step",
+   "prefix_chain": [
+    [
+     "Co_R_lp00R",
+     "Co_R_rp00L",
+     "Pl_4lp",
+     "Pl_rp00",
+     "Pl_st2cr00_"
+    ]
+   ],
+   "path_candidates": 10,
+   "verified_candidates": [],
+   "status": "no_match"
+  },
+  "2,d+3~t7.paul": {
+   "input": "2,d+3",
+   "t7_command": "(2), d+3",
+   "damage": 11,
+   "startup": 22,
+   "kind": "string_step",
+   "prefix_chain": [
+    [
+     "Co_R_lp00R",
+     "Co_R_rp00L",
+     "Pl_4lp",
+     "Pl_rp00",
+     "Pl_st2cr00_"
+    ]
+   ],
+   "path_candidates": 11,
+   "verified_candidates": [
+    "Pl_rplks"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_rplks",
+   "motbin_id": 1752,
+   "anim": "tapl_ps_lprks_t(DVD)",
+   "active_frames": [
+    22,
+    22
+   ],
+   "bank": "rotsm",
+   "clip": 399,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "3,2~t7.paul.2": {
+   "input": "3,2",
+   "t7_command": "(3), 2",
+   "damage": 17,
+   "startup": 23,
+   "kind": "string_step",
+   "prefix_chain": [
+    [
+     "Co_R_lk00L",
+     "Co_R_rk00R",
+     "Pl_lk00",
+     "Pl_st2cr00_"
+    ]
+   ],
+   "path_candidates": 8,
+   "verified_candidates": [
+    "Pl_lkrp"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_lkrp",
+   "motbin_id": 1594,
+   "anim": "kopl_lk2rp(DVD)",
+   "active_frames": [
+    23,
+    23
+   ],
+   "bank": "rotsm",
+   "clip": 314,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "f+2,3~t7.paul.2": {
+   "input": "f+2,3",
+   "t7_command": "(f+2), 3",
+   "damage": 16,
+   "startup": 20,
+   "kind": "string_step",
+   "prefix_chain": [
+    [
+     "Co_R_lp00R",
+     "Co_R_rp00L",
+     "Pl_4lp",
+     "Pl_rp00F",
+     "Pl_st2cr00_"
+    ]
+   ],
+   "path_candidates": 10,
+   "verified_candidates": [
+    "Pl_rplkf"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_rplkf",
+   "motbin_id": 1753,
+   "anim": "kopl_6rplk(DVD)",
+   "active_frames": [
+    20,
+    21
+   ],
+   "bank": "rotsm",
+   "clip": 400,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "f+2,3,1~t7.paul.2": {
+   "input": "f+2,3,1",
+   "t7_command": "(f+2), (3), 1",
+   "damage": 22,
+   "startup": 17,
+   "kind": "string_step",
+   "prefix_chain": [
+    [
+     "Co_R_lp00R",
+     "Co_R_rp00L",
+     "Pl_4lp",
+     "Pl_rp00F",
+     "Pl_st2cr00_"
+    ],
+    [
+     "Co_R_lk00L",
+     "Co_R_rk00R",
+     "Co_s_tlk00",
+     "Pl_lk00",
+     "Pl_rplkf",
+     "Pl_st2cr00_"
+    ]
+   ],
+   "path_candidates": 7,
+   "verified_candidates": [
+    "Pl_rplkfhizi2"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_rplkfhizi2",
+   "motbin_id": 1754,
+   "anim": "kopl_6rplk2rimbow(DVD)",
+   "active_frames": [
+    17,
+    17
+   ],
+   "bank": "rotsm",
+   "clip": 401,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "d/f+1,1~t7.paul.2": {
+   "input": "d/f+1,1",
+   "t7_command": "(d/f+1), 1",
+   "damage": 9,
+   "startup": 20,
+   "kind": "string_step",
+   "prefix_chain": [
+    [
+     "Co_R_clp00R",
+     "Co_R_crp00L",
+     "Pl_t_slpF",
+     "pol_sjk00F"
+    ]
+   ],
+   "path_candidates": 1,
+   "verified_candidates": [
+    "Pl_t_slpF2"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_t_slpF2",
+   "motbin_id": 1654,
+   "anim": "kmpl_uraken(DVD)",
+   "active_frames": [
+    20,
+    21
+   ],
+   "bank": "rotsm",
+   "clip": 350,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "d/f+1,1,2~t7.paul.3": {
+   "input": "d/f+1,1,2",
+   "t7_command": "(d/f+1), (1), 2",
+   "damage": 22,
+   "startup": 22,
+   "kind": "string_step",
+   "prefix_chain": [
+    [
+     "Co_R_clp00R",
+     "Co_R_crp00L",
+     "Pl_t_slpF",
+     "pol_sjk00F"
+    ],
+    [
+     "Pl_t_slpF2"
+    ]
+   ],
+   "path_candidates": 1,
+   "verified_candidates": [
+    "Pl_t_slpF3"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_t_slpF3",
+   "motbin_id": 1659,
+   "anim": "ozpl_mizup(DVD)",
+   "active_frames": [
+    22,
+    23
+   ],
+   "bank": "rotsm",
+   "clip": 351,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "d/f+3,4~t7.paul.2": {
+   "input": "d/f+3,4",
+   "t7_command": "(d/f+3), 4",
+   "damage": 17,
+   "startup": 21,
+   "kind": "string_step",
+   "prefix_chain": [
+    [
+     "Co_R_clk00L",
+     "Co_R_crk00R",
+     "Co_t_slkF",
+     "Pl_st2cr00_"
+    ]
+   ],
+   "path_candidates": 8,
+   "verified_candidates": [
+    "Pl_3lkrk"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_3lkrk",
+   "motbin_id": 1665,
+   "anim": "kopl_3lkrk(DVD)",
+   "active_frames": [
+    21,
+    22
+   ],
+   "bank": "rotsm",
+   "clip": 357,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "d+1,2~t7.paul.2": {
+   "input": "d+1,2",
+   "t7_command": "(d+1), 2",
+   "damage": 26,
+   "startup": 29,
+   "kind": "string_step",
+   "prefix_chain": [
+    [
+     "Co_R_clp00R",
+     "Co_R_crp00L",
+     "pol_kawara",
+     "pol_sjk00F"
+    ]
+   ],
+   "path_candidates": 1,
+   "verified_candidates": [
+    "pol_kawapo"
+   ],
+   "status": "mapped",
+   "motbin_move": "pol_kawapo",
+   "motbin_id": 1708,
+   "anim": "kopl_kawapon(DVD)",
+   "active_frames": [
+    29,
+    29
+   ],
+   "bank": "rotsm",
+   "clip": 376,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "d+1,4~t7.paul.2": {
+   "input": "d+1,4",
+   "t7_command": "(d+1), 4",
+   "damage": 15,
+   "startup": 19,
+   "kind": "string_step",
+   "prefix_chain": [
+    [
+     "Co_R_clp00R",
+     "Co_R_crp00L",
+     "pol_kawara",
+     "pol_sjk00F"
+    ]
+   ],
+   "path_candidates": 4,
+   "verified_candidates": [
+    "kawa_rak"
+   ],
+   "status": "mapped",
+   "motbin_move": "kawa_rak",
+   "motbin_id": 1762,
+   "anim": "kopl_kawaraku(DVD)",
+   "active_frames": [
+    19,
+    19
+   ],
+   "bank": "rotsm",
+   "clip": 406,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "d+1,4,2~t7.paul.3": {
+   "input": "d+1,4,2",
+   "t7_command": "(d+1), (4), 2",
+   "damage": 21,
+   "startup": 21,
+   "kind": "string_step",
+   "prefix_chain": [
+    [
+     "Co_R_clp00R",
+     "Co_R_crp00L",
+     "pol_kawara",
+     "pol_sjk00F"
+    ],
+    [
+     "kawa_rak",
+     "pol_sjk00FRv",
+     "pol_sjk10F"
+    ]
+   ],
+   "path_candidates": 1,
+   "verified_candidates": [],
+   "status": "no_match"
+  },
+  "d+4,2~t7.paul.2": {
+   "input": "d+4,2",
+   "t7_command": "(d+4), 2",
+   "damage": 23,
+   "startup": 15,
+   "kind": "string_step",
+   "prefix_chain": [
+    [
+     "Co_R_clk00L",
+     "Co_R_crk00R",
+     "Pl_hibiki",
+     "pol_sk00"
+    ]
+   ],
+   "path_candidates": 2,
+   "verified_candidates": [],
+   "status": "no_match"
+  },
+  "d+4,2,1+2~t7.paul.3": {
+   "input": "d+4,2,1+2",
+   "t7_command": "(d+4), (2), 1+2",
+   "damage": 22,
+   "startup": 26,
+   "kind": "string_step",
+   "prefix_chain": [
+    [
+     "Co_R_clk00L",
+     "Co_R_crk00R",
+     "Pl_hibiki",
+     "pol_sk00"
+    ],
+    [
+     "rakuyo2JST",
+     "rakuyo2JST0"
+    ]
+   ],
+   "path_candidates": 2,
+   "verified_candidates": [
+    "Pl_raklpW"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_raklpW",
+   "motbin_id": 1713,
+   "anim": "kopl_rakuyou3(DVD)",
+   "active_frames": [
+    26,
+    27
+   ],
+   "bank": "rotsm",
+   "clip": 380,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "b+1,2~t7.paul.2": {
+   "input": "b+1,2",
+   "t7_command": "(b+1), 2",
+   "damage": 21,
+   "startup": 18,
+   "kind": "string_step",
+   "prefix_chain": [
+    [
+     "Co_R_lp00R",
+     "Co_R_rp00L",
+     "Pl_4lp",
+     "pol_sjk00F"
+    ]
+   ],
+   "path_candidates": 2,
+   "verified_candidates": [
+    "Pl_4lprp2"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_4lprp2",
+   "motbin_id": 1614,
+   "anim": "plhi_whook2_mox(DVD)",
+   "active_frames": [
+    18,
+    19
+   ],
+   "bank": "rotsm",
+   "clip": 326,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "b+2,1~t7.paul.2": {
+   "input": "b+2,1",
+   "t7_command": "(b+2), 1",
+   "damage": 22,
+   "startup": 16,
+   "kind": "string_step",
+   "prefix_chain": [
+    [
+     "Co_R_lp00R",
+     "Co_R_rp00L",
+     "Pl_4lp",
+     "Pl_4rp",
+     "Pl_st2cr00_"
+    ]
+   ],
+   "path_candidates": 7,
+   "verified_candidates": [],
+   "status": "no_match"
+  },
+  "u/f+3,4~t7.paul.2": {
+   "input": "u/f+3,4",
+   "t7_command": "(u/f+3), 4",
+   "damage": 20,
+   "startup": 13,
+   "kind": "string_step",
+   "prefix_chain": [
+    [
+     "Co_jpRlk00F_",
+     "Pl_st2cr00_",
+     "pol_sjk00F"
+    ]
+   ],
+   "path_candidates": 11,
+   "verified_candidates": [
+    "pol_sjk10F"
+   ],
+   "status": "mapped",
+   "motbin_move": "pol_sjk10F",
+   "motbin_id": 1770,
+   "anim": "kopl_8lkrk(DVD)",
+   "active_frames": [
+    13,
+    14
+   ],
+   "bank": "rotsm",
+   "clip": 413,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "f,F+3~t7.paul": {
+   "input": "f,F+3",
+   "t7_command": "f, F+3",
+   "damage": 17,
+   "startup": 15,
+   "kind": "motion",
+   "prefix_chain": [
+    [
+     "Pl_sDASHF"
+    ]
+   ],
+   "path_candidates": 9,
+   "path_moves": [
+    "Co_R_lk00L",
+    "Co_R_rk00R",
+    "Pl_lk00F",
+    "Pl_st2cr00_",
+    "pol_ki00"
+   ],
+   "verified_candidates": [
+    "pol_ki00"
+   ],
+   "status": "mapped",
+   "motbin_move": "pol_ki00",
+   "motbin_id": 1759,
+   "anim": "kopl_3paul1(DVD)",
+   "active_frames": [
+    15,
+    16
+   ],
+   "bank": "rotsm",
+   "clip": 403,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "f,F+3,4~t7.paul.2": {
+   "input": "f,F+3,4",
+   "t7_command": "(f, F+3), 4",
+   "damage": 15,
+   "startup": 13,
+   "kind": "motion",
+   "prefix_chain": [
+    [
+     "Pl_sDASHF"
+    ],
+    [
+     "Co_R_lk00L",
+     "Co_R_rk00R",
+     "Pl_lk00F",
+     "Pl_st2cr00_",
+     "pol_ki00"
+    ]
+   ],
+   "path_candidates": 8,
+   "path_moves": [
+    "Co_R_lk00L",
+    "Co_R_rk00R",
+    "Pl_hibiki",
+    "Pl_rk00",
+    "Pl_s_trk00",
+    "pol_ki01"
+   ],
+   "verified_candidates": [
+    "pol_ki01"
+   ],
+   "status": "mapped",
+   "motbin_move": "pol_ki01",
+   "motbin_id": 1765,
+   "anim": "kopl_3paul2(DVD)",
+   "active_frames": [
+    13,
+    14
+   ],
+   "bank": "rotsm",
+   "clip": 409,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "f,F+4~t7.paul": {
+   "input": "f,F+4",
+   "t7_command": "f, F+4",
+   "damage": 20,
+   "startup": 23,
+   "kind": "motion",
+   "prefix_chain": [
+    [
+     "Pl_sDASHF"
+    ]
+   ],
+   "path_candidates": 7,
+   "path_moves": [
+    "Co_R_lk00L",
+    "Co_R_rk00R",
+    "Pl_abise",
+    "Pl_hibiki",
+    "Pl_rk00F"
+   ],
+   "verified_candidates": [
+    "Pl_abise"
+   ],
+   "status": "mapped",
+   "motbin_move": "Pl_abise",
+   "motbin_id": 1772,
+   "anim": "Bpl_abise(DVD)",
+   "active_frames": [
+    23,
+    34
+   ],
+   "bank": "rotsm",
+   "clip": 416,
+   "fmt": "0x64",
+   "file": "mask/paurotsm.arc"
+  },
+  "4~t7.paul.2": {
+   "input": "4",
+   "t7_command": "WR 4",
+   "damage": 17,
+   "startup": 14,
+   "kind": "motion",
+   "prefix_chain": [
+    [
+     "Pl_sDASHF"
+    ],
+    [
+     "sRUN__00F",
+     "sTRN_L00F",
+     "sTRN_R00F"
+    ]
+   ],
+   "path_candidates": 16,
+   "path_moves": [
+    "Co_R_lk00L",
+    "Co_R_rk00R",
+    "Pl_hibiki",
+    "Pl_rk00",
+    "Pl_rk00F"
+   ],
+   "verified_candidates": [],
+   "status": "no_match"
+  },
+  "1+2~t7.paul": {
+   "input": "1+2",
+   "t7_command": "WR 1+2",
+   "damage": 24,
+   "startup": 18,
+   "kind": "motion",
+   "prefix_chain": [
+    [
+     "Pl_sDASHF"
+    ],
+    [
+     "sRUN__00F",
+     "sTRN_L00F",
+     "sTRN_R00F"
+    ]
+   ],
+   "path_candidates": 23,
+   "path_moves": [
+    "Co_R_lp00R",
+    "Pl_lp00F",
+    "Pl_midlp"
+   ],
+   "verified_candidates": [],
+   "status": "no_match"
+  },
+  "WR.4": {
+   "input": "WR.4",
+   "t7_command": "WR 4",
+   "damage": 17,
+   "startup": 14,
+   "kind": "motion",
+   "prefix_chain": [
+    [
+     "Pl_sDASHF"
+    ],
+    [
+     "sRUN__00F",
+     "sTRN_L00F",
+     "sTRN_R00F"
+    ]
+   ],
+   "path_candidates": 16,
+   "path_moves": [
+    "Co_R_lk00L",
+    "Co_R_rk00R",
+    "Pl_hibiki",
+    "Pl_rk00",
+    "Pl_rk00F"
+   ],
+   "verified_candidates": [],
+   "status": "no_match"
+  },
+  "WR.1+2": {
+   "input": "WR.1+2",
+   "t7_command": "WR 1+2",
+   "damage": 24,
+   "startup": 18,
+   "kind": "motion",
+   "prefix_chain": [
+    [
+     "Pl_sDASHF"
+    ],
+    [
+     "sRUN__00F",
+     "sTRN_L00F",
+     "sTRN_R00F"
+    ]
+   ],
+   "path_candidates": 23,
+   "path_moves": [
+    "Co_R_lp00R",
+    "Pl_lp00F",
+    "Pl_midlp"
+   ],
+   "verified_candidates": [],
+   "status": "no_match"
+  }
+ },
+ "moveset": "gyou.json"
+}

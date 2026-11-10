@@ -106,137 +106,178 @@
   },
   "moves": {
     "1": {
-      "name": "THOR 1 (T3 bryan r49)",
+      "name": "THOR 1",
       "input": "1",
-      "t3_source": "bryan",
-      "t3_row": 49,
-      "t3_command": "LP",
-      "startup": 0.15,
-      "active": 0.017,
-      "recovery": 0.467,
-      "damage": 9,
-      "t3_damage": 15,
-      "limb": "armL",
-      "heavy": false,
+      "t7_source": "rbnorway T7 frame sheet (via tekkendocs.com/api/t7/ganryu/framedata)",
+      "t7_command": "1",
+      "t7_hit_level": "h",
+      "t7_damage_raw": "10",
+      "t7_startup_frames": "12",
+      "t7_on_block": "+3",
+      "t7_on_hit": "+9",
+      "t7_on_ch": "+11",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.45,
       "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:49",
+      "heavy": false,
+      "damage": 10,
+      "limb": "armL",
+      "soulGain": 5,
+      "anim_ref": "t7:ganryu:1",
       "input_slots": [
         "1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "note": "T7 [h] startup 12 | block +3 | hit +9 | CH +11 | rbnorway sheet carries no move names; labeled by T7 command"
     },
     "2": {
-      "name": "THOR 2 (T3 bryan r152)",
+      "name": "THOR 2",
       "input": "2",
-      "t3_source": "bryan",
-      "t3_row": 152,
-      "t3_command": "RP",
-      "startup": 0.283,
-      "active": 0.017,
-      "recovery": 0.65,
-      "damage": 12,
-      "t3_damage": 21,
-      "limb": "armR",
-      "heavy": false,
+      "t7_source": "rbnorway T7 frame sheet (via tekkendocs.com/api/t7/ganryu/framedata)",
+      "t7_command": "2",
+      "t7_hit_level": "h",
+      "t7_damage_raw": "12",
+      "t7_startup_frames": "12",
+      "t7_on_block": "+1",
+      "t7_on_hit": "+7",
+      "t7_on_ch": "+9",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.45,
       "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:152",
+      "heavy": false,
+      "damage": 12,
+      "limb": "armR",
+      "soulGain": 6,
+      "anim_ref": "t7:ganryu:2",
       "input_slots": [
         "2"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "note": "T7 [h] startup 12 | block +1 | hit +7 | CH +9 | rbnorway sheet carries no move names; labeled by T7 command"
     },
     "2,1": {
-      "name": "THOR 2,1 (T3 bryan r153)",
+      "name": "THOR 2, 1",
       "input": "2,1",
-      "t3_source": "bryan",
-      "t3_row": 153,
-      "t3_command": "LP",
-      "startup": 0.317,
-      "active": 0.017,
-      "recovery": 0.65,
-      "damage": 12,
-      "t3_damage": 21,
+      "t7_source": "rbnorway T7 frame sheet (via tekkendocs.com/api/t7/ganryu/framedata)",
+      "t7_command": "2, 1",
+      "t7_hit_level": "h, h",
+      "t7_damage_raw": "12,12",
+      "t7_startup_frames": "12",
+      "t7_on_block": "-3",
+      "t7_on_hit": "+8",
+      "t7_on_ch": "+8",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.55,
+      "knock": 4.2,
+      "heavy": true,
+      "damage": 24,
       "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "string_hit": "2",
-      "anim_ref": "t3:bryan:row:153",
+      "soulGain": 12,
+      "anim_ref": "t7:ganryu:2_1",
       "input_slots": [
-        "2,1",
         "2",
-        "1"
+        "2,1"
       ],
-      "move_class": "string"
+      "move_class": "string",
+      "note": "T7 [h, h] startup 12 | block -3 | hit +8 | CH +8 | Jails | rbnorway sheet carries no move names; labeled by T7 command",
+      "multi_hit": {
+        "hits": [
+          12,
+          12
+        ],
+        "total": 24
+      }
     },
     "2,1,2": {
-      "name": "THOR 2,1,2 (T3 bryan r151)",
+      "name": "THOR 2, 1, 2",
       "input": "2,1,2",
-      "t3_source": "bryan",
-      "t3_row": 151,
-      "t3_command": "RP",
-      "startup": 0.217,
-      "active": 0.017,
-      "recovery": 0.783,
-      "damage": 12,
-      "t3_damage": 21,
+      "t7_source": "rbnorway T7 frame sheet (via tekkendocs.com/api/t7/ganryu/framedata)",
+      "t7_command": "2, 1, 2",
+      "t7_hit_level": "h, h, m",
+      "t7_damage_raw": "16,16,27",
+      "t7_startup_frames": "14",
+      "t7_on_block": "-13~-12 OC",
+      "t7_on_hit": "Launch",
+      "t7_on_ch": "Launch",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.7,
+      "knock": 5.0,
+      "heavy": true,
+      "damage": 59,
       "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "string_hit": "2,1",
-      "anim_ref": "t3:bryan:row:151",
+      "soulGain": 15,
+      "anim_ref": "t7:ganryu:2_1_2",
       "input_slots": [
-        "2,1,2",
         "2",
-        "1",
-        "2"
+        "2,1",
+        "2,1,2"
       ],
-      "move_class": "string"
+      "move_class": "string",
+      "note": "T7 [h, h, m] startup 14 | block -13~-12 OC | hit Launch | CH Launch | rbnorway sheet carries no move names; labeled by T7 command",
+      "multi_hit": {
+        "hits": [
+          16,
+          16,
+          27
+        ],
+        "total": 59
+      }
     },
     "3": {
-      "name": "THOR 3 (T3 bryan r71)",
+      "name": "THOR 3",
       "input": "3",
-      "t3_source": "bryan",
-      "t3_row": 71,
-      "t3_command": "LK",
-      "startup": 0.233,
-      "active": 0.017,
-      "recovery": 0.8,
-      "damage": 15,
-      "t3_damage": 25,
-      "limb": "legL",
-      "heavy": true,
+      "t7_source": "rbnorway T7 frame sheet (via tekkendocs.com/api/t7/ganryu/framedata)",
+      "t7_command": "3",
+      "t7_hit_level": "h",
+      "t7_damage_raw": "22",
+      "t7_startup_frames": "16",
+      "t7_on_block": "-8",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "KND",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.55,
       "knock": 4.2,
+      "heavy": true,
+      "damage": 22,
+      "limb": "legL",
       "soulGain": 11,
-      "anim_ref": "t3:bryan:row:71",
+      "anim_ref": "t7:ganryu:3",
       "input_slots": [
         "3"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "note": "T7 [h] startup 16 | block -8 | hit KND | CH KND | rbnorway sheet carries no move names; labeled by T7 command"
     },
     "4": {
-      "name": "THOR 4 (T3 bryan r87)",
+      "name": "THOR 4",
       "input": "4",
-      "t3_source": "bryan",
-      "t3_row": 87,
-      "t3_command": "RK",
-      "startup": 0.15,
-      "active": 0.017,
-      "recovery": 0.717,
-      "damage": 11,
-      "t3_damage": 18,
-      "limb": "legR",
-      "heavy": false,
+      "t7_source": "rbnorway T7 frame sheet (via tekkendocs.com/api/t7/ganryu/framedata)",
+      "t7_command": "4 or f+4",
+      "t7_hit_level": "h",
+      "t7_damage_raw": "20",
+      "t7_startup_frames": "15~16",
+      "t7_on_block": "-8~-7",
+      "t7_on_hit": "+3~+4",
+      "t7_on_ch": "+3~+4",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.55,
       "knock": 4.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:87",
+      "heavy": true,
+      "damage": 20,
+      "limb": "legR",
+      "soulGain": 10,
+      "anim_ref": "t7:ganryu:4_or_f_4",
       "input_slots": [
         "4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "note": "T7 [h] startup 15~16 | block -8~-7 | hit +3~+4 | CH +3~+4 | rbnorway sheet carries no move names; labeled by T7 command | same move as '4 or f+4' (the sheet lists both inputs)"
     },
     "1+3": {
       "name": "THOR 1+3 throw (T3 bryan r212)",
@@ -291,25 +332,30 @@
       "throw_break": "2"
     },
     "d/f+2": {
-      "name": "THOR d/f+2 (T3 bryan r149)",
+      "name": "THOR d/f+2",
       "input": "d/f+2",
-      "t3_source": "bryan",
-      "t3_row": 149,
-      "t3_command": "3+RP",
-      "startup": 0.383,
-      "active": 0.017,
-      "recovery": 0.633,
-      "damage": 9,
-      "t3_damage": 16,
+      "t7_source": "rbnorway T7 frame sheet (via tekkendocs.com/api/t7/ganryu/framedata)",
+      "t7_command": "d/f+2",
+      "t7_hit_level": "m",
+      "t7_damage_raw": "16",
+      "t7_startup_frames": "16~17",
+      "t7_on_block": "-11~-10",
+      "t7_on_hit": "Launch (JG?)",
+      "t7_on_ch": "Launch (JG?)",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.55,
+      "knock": 4.2,
+      "heavy": true,
+      "damage": 16,
       "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
       "soulGain": 8,
-      "anim_ref": "t3:bryan:row:149",
+      "anim_ref": "t7:ganryu:d_f_2",
       "input_slots": [
         "d/f+2"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "note": "T7 [m] startup 16~17 | block -11~-10 | hit Launch (JG?) | CH Launch (JG?) | rbnorway sheet carries no move names; labeled by T7 command"
     },
     "u/f+4": {
       "name": "THOR u/f+4 (T3 bryan r183)",
@@ -8147,6 +8193,186 @@
       "ttt2_source": "ganryu",
       "merge_source": "ttt2:ganryu",
       "note": "TTT2 ganryu movelist (documented; TTT2/T6 teardown extraction pending). Stuns"
+    },
+    "1~t3proxy": {
+      "name": "THOR 1 (T3 bryan r49)",
+      "input": "1",
+      "t3_source": "bryan",
+      "t3_row": 49,
+      "t3_command": "LP",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 9,
+      "t3_damage": 15,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:49",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "2~t3proxy": {
+      "name": "THOR 2 (T3 bryan r152)",
+      "input": "2",
+      "t3_source": "bryan",
+      "t3_row": 152,
+      "t3_command": "RP",
+      "startup": 0.283,
+      "active": 0.017,
+      "recovery": 0.65,
+      "damage": 12,
+      "t3_damage": 21,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:152",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "2,1~t3proxy": {
+      "name": "THOR 2,1 (T3 bryan r153)",
+      "input": "2,1",
+      "t3_source": "bryan",
+      "t3_row": 153,
+      "t3_command": "LP",
+      "startup": 0.317,
+      "active": 0.017,
+      "recovery": 0.65,
+      "damage": 12,
+      "t3_damage": 21,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "string_hit": "2",
+      "anim_ref": "t3:bryan:row:153",
+      "input_slots": [
+        "2,1",
+        "2",
+        "1"
+      ],
+      "move_class": "string"
+    },
+    "2,1,2~t3proxy": {
+      "name": "THOR 2,1,2 (T3 bryan r151)",
+      "input": "2,1,2",
+      "t3_source": "bryan",
+      "t3_row": 151,
+      "t3_command": "RP",
+      "startup": 0.217,
+      "active": 0.017,
+      "recovery": 0.783,
+      "damage": 12,
+      "t3_damage": 21,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "string_hit": "2,1",
+      "anim_ref": "t3:bryan:row:151",
+      "input_slots": [
+        "2,1,2",
+        "2",
+        "1",
+        "2"
+      ],
+      "move_class": "string"
+    },
+    "3~t3proxy": {
+      "name": "THOR 3 (T3 bryan r71)",
+      "input": "3",
+      "t3_source": "bryan",
+      "t3_row": 71,
+      "t3_command": "LK",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.8,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:bryan:row:71",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+2~t3proxy": {
+      "name": "THOR d/f+2 (T3 bryan r149)",
+      "input": "d/f+2",
+      "t3_source": "bryan",
+      "t3_row": 149,
+      "t3_command": "3+RP",
+      "startup": 0.383,
+      "active": 0.017,
+      "recovery": 0.633,
+      "damage": 9,
+      "t3_damage": 16,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:149",
+      "input_slots": [
+        "d/f+2"
+      ],
+      "move_class": "strike"
+    },
+    "4~t3proxy": {
+      "name": "THOR 4 (T3 bryan r87)",
+      "input": "4",
+      "t3_source": "bryan",
+      "t3_row": 87,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 11,
+      "t3_damage": 18,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:87",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "f+4": {
+      "name": "THOR f+4",
+      "input": "f+4",
+      "t7_source": "rbnorway T7 frame sheet (via tekkendocs.com/api/t7/ganryu/framedata)",
+      "t7_command": "4 or f+4",
+      "t7_hit_level": "h",
+      "t7_damage_raw": "20",
+      "t7_startup_frames": "15~16",
+      "t7_on_block": "-8~-7",
+      "t7_on_hit": "+3~+4",
+      "t7_on_ch": "+3~+4",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.55,
+      "knock": 4.2,
+      "heavy": true,
+      "damage": 20,
+      "limb": "legR",
+      "soulGain": 10,
+      "anim_ref": "t7:ganryu:4_or_f_4",
+      "input_slots": [
+        "f+4"
+      ],
+      "move_class": "strike",
+      "note": "T7 [h] startup 15~16 | block -8~-7 | hit +3~+4 | CH +3~+4 | rbnorway sheet carries no move names; labeled by T7 command | same move as '4 or f+4' (the sheet lists both inputs)"
     }
   },
   "restored_from_sweep_338": {
@@ -8159,15 +8385,8 @@
     "specials": 2
   },
   "hit_words": {
-    "1": 535,
-    "2": 1042,
-    "2,1": 1042,
-    "2,1,2": 1042,
-    "3": 535,
-    "4": 535,
     "1+3": 1042,
     "2+4": 1042,
-    "d/f+2": 535,
     "u/f+4": 535,
     "d,d/f,d,d/f+1+2": 1042,
     "n,d/b,n,f+1+2": 1042,
@@ -8389,7 +8608,22 @@
     "SIT 1+2": 535,
     "SIT 3+4": 271,
     "SIT d,f,1+2": 535,
-    "SIT d,d or u": 535
+    "SIT d,d or u": 535,
+    "1~t3proxy": 535,
+    "1": 1042,
+    "2~t3proxy": 1042,
+    "2": 1042,
+    "2,1~t3proxy": 1042,
+    "2,1": 1042,
+    "2,1,2~t3proxy": 1042,
+    "2,1,2": 535,
+    "3~t3proxy": 535,
+    "3": 1042,
+    "d/f+2~t3proxy": 535,
+    "d/f+2": 535,
+    "4~t3proxy": 535,
+    "4": 1042,
+    "f+4": 1042
   },
   "stance_after": {},
   "anim_set_lock": {
@@ -135033,5 +135267,90 @@
         ]
       }
     ]
+  },
+  "t7_sheet_fill": {
+    "date": "2026-11-10",
+    "tool": "tools/moveset-merge/t7_sheet_fill.py",
+    "owner": [
+      "Ganryu is Thor, the literal norse god of lightning (roster/thor/CANON.md)",
+      "Gyou isn't supposed to have hwoarang guard? Someone else has hwoarangs moves and whollyhot so many things mixed like that gyou has someone else's moves"
+    ],
+    "sheet": "game/data/t7-frame-data/t7-ganryu-lp-rp-lk-rk.json",
+    "base": "ganryu",
+    "proxy_source": "bryan",
+    "old_file_archived_as": "docs/archive/movesets/thor-pre-t7-fill-2026-11-10.json",
+    "rule_checked_on_existing_t7_rows": 126,
+    "added": [
+      {
+        "key": "1",
+        "why": "sheet row '1' was dropped by the 2026-10-20 import (deduped by input)"
+      },
+      {
+        "key": "2",
+        "why": "sheet row '2' was dropped by the 2026-10-20 import (deduped by input)"
+      },
+      {
+        "key": "2,1",
+        "why": "sheet row '2, 1' was dropped by the 2026-10-20 import (deduped by input)"
+      },
+      {
+        "key": "2,1,2",
+        "why": "sheet row '2, 1, 2' was dropped by the 2026-10-20 import (deduped by input)"
+      },
+      {
+        "key": "3",
+        "why": "sheet row '3' was dropped by the 2026-10-20 import (deduped by input)"
+      },
+      {
+        "key": "d/f+2",
+        "why": "sheet row 'd/f+2' was dropped by the 2026-10-20 import (deduped by input)"
+      },
+      {
+        "key": "4",
+        "why": "the sheet row '4 or f+4' lists '4' as one of its inputs"
+      },
+      {
+        "key": "f+4",
+        "why": "the sheet row '4 or f+4' lists 'f+4' as one of its inputs"
+      }
+    ],
+    "displaced_to_t3proxy": [
+      {
+        "key": "1",
+        "now": "1~t3proxy",
+        "name": "THOR 1 (T3 bryan r49)"
+      },
+      {
+        "key": "2",
+        "now": "2~t3proxy",
+        "name": "THOR 2 (T3 bryan r152)"
+      },
+      {
+        "key": "2,1",
+        "now": "2,1~t3proxy",
+        "name": "THOR 2,1 (T3 bryan r153)"
+      },
+      {
+        "key": "2,1,2",
+        "now": "2,1,2~t3proxy",
+        "name": "THOR 2,1,2 (T3 bryan r151)"
+      },
+      {
+        "key": "3",
+        "now": "3~t3proxy",
+        "name": "THOR 3 (T3 bryan r71)"
+      },
+      {
+        "key": "d/f+2",
+        "now": "d/f+2~t3proxy",
+        "name": "THOR d/f+2 (T3 bryan r149)"
+      },
+      {
+        "key": "4",
+        "now": "4~t3proxy",
+        "name": "THOR 4 (T3 bryan r87)"
+      }
+    ],
+    "skipped": {}
   }
 }
