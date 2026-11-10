@@ -151,6 +151,8 @@ export const T3_BANKS = {
   t7_negan:      'assets/anim/t3/t7_negan/',
   // 2026-11-10: Thor's canon base Ganryu (code gan, tools/anim/t7_generic_slots/gan.json), same bake path.
   t7_ganryu:     'assets/anim/t3/t7_ganryu/',
+  // 2026-11-10: Gyou's base Paul Phoenix (code pau, tools/anim/t7_generic_slots/pau.json), same bake path.
+  t7_paul:       'assets/anim/t3/t7_paul/',
   // TTT2-sourced banks (2026-11-04): REAL Tekken Tag Tournament 2 motion decoded with the shipped
   // 0x64/0xC8 MOTA decoders and baked via the calibrated sampler convention (tools/anim/ttt2_bank_bake.py)
   // — each bank is the character's OWN TTT2 state moves per the join tables
@@ -671,7 +673,9 @@ export const T7_STANCES = {
   sakura: { bank: 'xiaoyu', dir: 'assets/anim/t7/xiaoyu/' },
   sha: { bank: 'xiaoyu', dir: 'assets/anim/t7/xiaoyu/' },
   phantom: { bank: 'yoshimitsu', dir: 'assets/anim/t7/yoshimitsu/' },
-  gyou: { bank: 'hwoarang', dir: 'assets/anim/t7/hwoarang/' },
+  // 2026-11-10 (owner: "Gyou isn't supposed to have hwoarang guard"): Gyou stands in Paul Phoenix's own T7 kamae
+  // (common.arc clip 185, 0x64 via the game's own sampler); Hwoarang's is Tobi's.
+  gyou: { bank: 'paul', dir: 'assets/anim/t7/paul/' },
   tobi: { bank: 'hwoarang', dir: 'assets/anim/t7/hwoarang/' },
   gashadokuro: { bank: 'kuma', dir: 'assets/anim/t7/kuma/' },
   aotsuki: { bank: 'kuma', dir: 'assets/anim/t7/panda/' },
@@ -745,7 +749,8 @@ export const T7_MOVES = {
   sakura: { bank: 'xiaoyu', dir: 'assets/anim/t7/xiaoyu/', pack: 'moves.sakura.pack.json' },
   sha: { bank: 'xiaoyu', dir: 'assets/anim/t7/xiaoyu/', pack: 'moves.sha.pack.json' },
   phantom: { bank: 'yoshimitsu', dir: 'assets/anim/t7/yoshimitsu/' },
-  gyou: { bank: 'hwoarang', dir: 'assets/anim/t7/hwoarang/', pack: 'moves.gyou.pack.json' },
+  // gyou: Hwoarang move pack (moves.gyou.pack.json) unwired 2026-11-10 — Gyou is Paul Phoenix (owner); the pack stays
+  // on disk. His Paul T7 moves take the same bake path (tools/anim/t7_move_bake.py --code pau) next.
   tobi: { bank: 'hwoarang', dir: 'assets/anim/t7/hwoarang/', pack: 'moves.tobi.pack.json' },
   gashadokuro: { bank: 'kuma', dir: 'assets/anim/t7/kuma/' },
   aotsuki: { bank: 'kuma', dir: 'assets/anim/t7/panda/' },

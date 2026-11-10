@@ -316,7 +316,11 @@ export const MODEL_URLS = {
   // 2026-11-10: Kai's repaired body (roster wire-up, PR #1600 -> #1710: ModelHair_Base given a flat colour from his own
   // hair texture, the one material the gate failed) served under a NEW path, packed 25.6 -> 14.2 MB: the remote asset
   // bucket, which the loader tries first, still holds the unrepaired kai-body.glb (kept unchanged beside it).
-  'kai-body': 'assets/models/kai-body-cdn.glb',
+  // 2026-11-10 (owner: "u have kai and tou looking like Paul Phoenix and Eddy, they are souls and if u research the
+  // eastern mind games and canon and images you will see what they really look like"): KAI's own Eastern Mind body,
+  // built from Osamu Sato's art (teardown/eastern-mind/prologue-ending/bitmaps/CHARA/CHARA_b006) by
+  // tools/souls/build_soul.py. kai-body-cdn.glb / kai-body.glb (the Eddy shell) stay beside it.
+  'kai-body': 'assets/models/kai-soul.glb',
   'jin-body': 'assets/models/jin-body.glb',
   'rin-body': 'assets/models/rin-body.glb',
   'jin-t7': 'assets/models/jin.glb',
@@ -354,7 +358,9 @@ export const MODEL_URLS = {
   // the lane's file also bound her right arm to the head and her neck to a shoulder). New path for the same reason as
   // kai-body above; sha-body.glb stays unchanged beside it.
   'sha-body': 'assets/models/sha-body-hairfix-cdn.glb',
-  'tou-body': 'assets/models/tou-body-cdn.glb', // roster wire-up batch C 2026-11-09: Tou's own body — Paul Phoenix (pau) parts extracted from the held T7 pakchunk0 and assembled on the shared T7 skeleton (213 joints, core bones canonicalized); see docs/TOU-BODY-BUILD-2026-11-09.md. 2026-11-10: served packed (fit_cdn_budget.py: duplicate face textures merged, normal-map alpha dropped (glTF reads RGB only), q93 full-chroma JPEG, gltfpack -cc) 48.8 -> 15.5 MB; tou-body.glb stays beside it
+  // 2026-11-10: TOU's own Eastern Mind body (CHARA_b012 + R_TOH; tools/souls/build_soul.py), not Paul Phoenix's T7 kit;
+  // tou-body-cdn.glb / tou-body.glb (the assembled Paul body, docs/TOU-BODY-BUILD-2026-11-09.md) stay beside it.
+  'tou-body': 'assets/models/tou-soul.glb',
   'zen-body': 'assets/models/zen-body.glb',
   'zui_alt1': 'assets/models/zui_alt1.glb',
   'zui_alt2': 'assets/models/zui_alt2.glb',

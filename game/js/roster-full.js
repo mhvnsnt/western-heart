@@ -52,7 +52,7 @@ export const FULL_ROSTER = [
         down: { target: 'zen-tentacle', label: 'OVERSOUL RELEASE', powerMult: 0.8, speedMult: 0.95, defenseMult: 0.87, moveset: 'zen' },
       },
     } },
-  { id: 'gyou', name: 'GYOU', title: 'The Moving Soul', base: 'Hwoarang', moveset: 'demonio', model: 'gyou-attire1', tintStrength: 0.25,
+  { id: 'gyou', name: 'GYOU', title: 'The Moving Soul', base: 'Paul Phoenix', moveset: 'gyou', model: 'gyou-attire1', tintStrength: 0.25,
     colors: { suit: 0x1a5a3a, trim: 0x3acc6a }, style: 'Tae Kwon Do', archetype: 'Pressure' },
 
   // ——— MAIN ROSTER ———

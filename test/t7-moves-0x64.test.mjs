@@ -25,7 +25,7 @@ const FIGHTERS = [
   { fighter: 'sakura', base: 'xiaoyu', bank: 'xiaoyu', moveset: 'sakura', stance: 'Fu_sKAM00_', pack: 'moves.sakura.pack.json' },
   { fighter: 'sha', base: 'xiaoyu', bank: 'xiaoyu', moveset: 'sha', stance: 'Fu_sKAM00_', pack: 'moves.sha.pack.json' },
   { fighter: 'phantom', base: 'yoshimitsu', bank: 'yoshimitsu', moveset: 'phantom', stance: 'Ym_sKAM00_' },
-  { fighter: 'gyou', base: 'hwoarang', bank: 'hwoarang', moveset: 'gyou', stance: 'Hw_sKAM00_', pack: 'moves.gyou.pack.json' },
+  // gyou: off this table 2026-11-10 — Gyou is Paul Phoenix (owner); his Hwoarang pack was unwired (Hwoarang is Tobi's).
   { fighter: 'tobi', base: 'hwoarang', bank: 'hwoarang', moveset: 'tobi', stance: 'Hw_sKAM00_', pack: 'moves.tobi.pack.json' },
   { fighter: 'gashadokuro', base: 'kuma', bank: 'kuma', moveset: 'gashadokuro', stance: 'Km_sKAM00_' },
   { fighter: 'aotsuki', base: 'panda', bank: 'kuma', moveset: 'aotsuki', stance: 'Km_sKAM00_' },
