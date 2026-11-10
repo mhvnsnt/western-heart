@@ -35,7 +35,7 @@ usage: T7_EXE=<exe> python3 tools/anim/t7_generic_bank_bake.py --code frv --figh
          --out-dir game/assets/anim/t3/raven
 Re-running is safe: slots whose file already exists in --out-dir are skipped.
 """
-import argparse, os, subprocess, sys
+import argparse, json, os, subprocess, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
@@ -55,18 +55,29 @@ ARC = {'rotsm': 'mask/{code}rotsm.arc', 'motbin': 'bin/{code}mot.bin', 'common':
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    for a in ('--code', '--fighter', '--prefix', '--stance', '--basic1', '--basic3', '--basic4', '--crouch',
-              '--character', '--mothead', '--mannequin', '--helper', '--blender', '--out-dir'):
+    for a in ('--code', '--fighter', '--character', '--mothead', '--mannequin', '--helper', '--blender', '--out-dir'):
         ap.add_argument(a, required=True)
+    # Name templates (the 2026-11-03 path), or --slots: a tools/anim/t7_generic_slots.py JSON that names each slot's
+    # move from the base's own stance cancel table (2026-11-10: Negan walks with the shared sWALK_00F, King has no
+    # Kg_sWALKB, so the templates miss them).
+    for a in ('--prefix', '--stance', '--basic1', '--basic3', '--basic4', '--crouch'):
+        ap.add_argument(a)
     ap.add_argument('--grab', default='Thrmv_B2_00')
+    ap.add_argument('--slots', help='slot -> move JSON from tools/anim/t7_generic_slots.py (replaces the templates)')
     a = ap.parse_args()
     mb = Motbin(a.mothead, a.code)
     by_name = {m['name']: m for m in mb.moves}
     os.makedirs(a.out_dir, exist_ok=True)
-    fmt = dict(P=a.prefix, stance=a.stance, basic1=a.basic1, basic3=a.basic3, basic4=a.basic4, crouch=a.crouch,
-               grab=a.grab)
-    for slot, tmpl in SLOTS.items():
-        name = tmpl.format(**fmt)
+    if a.slots:
+        plan = {slot: (v or {}).get('move') for slot, v in json.load(open(a.slots))['slots'].items()}
+    else:
+        missing = [o for o in ('prefix', 'stance', 'basic1', 'basic3', 'basic4', 'crouch') if getattr(a, o) is None]
+        if missing:
+            ap.error('without --slots these are required: ' + ', '.join('--' + m for m in missing))
+        fmt = dict(P=a.prefix, stance=a.stance, basic1=a.basic1, basic3=a.basic3, basic4=a.basic4, crouch=a.crouch,
+                   grab=a.grab)
+        plan = {slot: tmpl.format(**fmt) for slot, tmpl in SLOTS.items()}
+    for slot, name in plan.items():
         m = by_name.get(name)
         if m is None:
             print('SKIP %s: move %s not in %s motbin' % (slot, name, a.code)); continue

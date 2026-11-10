@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 """Unpack TEKKEN 7 tkdata.bin (port of the community tkdata.bms v0.2.1). usage: t7_tkdata.py tkdata.bin outdir [--list]"""
 import sys, os, struct, zlib
-from Crypto.Cipher import AES
 KEY = b'epsNJf#ut&v3fVrndlYkp&Sq@5Ry?BHA'
+try:  # pycryptodome
+    from Crypto.Cipher import AES
+    _ecb = lambda b: AES.new(KEY, AES.MODE_ECB).decrypt(b)
+except ImportError:  # the 'cryptography' package (2026-11-09: the cloud containers ship it, not pycryptodome)
+    from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+    _ecb = lambda b: (lambda d: d.update(b) + d.finalize())(Cipher(algorithms.AES(KEY), modes.ECB()).decryptor())
 def aes(b):  # quickbms 'encryption aes' == ECB decrypt over full blocks
-    n = len(b)//16*16; return AES.new(KEY, AES.MODE_ECB).decrypt(b[:n]) + b[n:]
+    n = len(b)//16*16; return _ecb(b[:n]) + b[n:]
 src, out = sys.argv[1], sys.argv[2]; lst = '--list' in sys.argv
 f = open(src, 'rb'); d = f.read()
 assert d[:16] == b'_TEKKEN7CSFILES_', d[:16]

@@ -28,7 +28,7 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { clone as skeletonClone } from 'three/addons/utils/SkeletonUtils.js';
 import { assets } from './js/assets.js';
-import { loadT3Clips, getT3Skeleton, retargetT3Clips, canonBoneName, T3_BANKS } from './js/t3anims.js';
+import { loadT3Clips, getT3Skeleton, retargetT3Clips, canonBoneName, T3_BANKS, applyT7Stance } from './js/t3anims.js';
 
 const W = 1200, H = 900;
 const canvas = document.getElementById('c');
@@ -87,7 +87,7 @@ function boneMap(root) {
 const PAIRS = [['Hips', 'Head'], ['Chest', 'Head'], ['LeftArm', 'LeftForeArm'], ['LeftForeArm', 'LeftHand'], ['RightArm', 'RightForeArm'],
   ['RightForeArm', 'RightHand'], ['LeftUpLeg', 'LeftLeg'], ['LeftLeg', 'LeftFoot'], ['RightUpLeg', 'RightLeg'], ['RightLeg', 'RightFoot']];
 
-async function show({ model = 'pantera', bank = 'king', clip = 'stance', t = 0.5, tint = 0, rest = false } = {}) {
+async function show({ model = 'pantera', bank = 'king', clip = 'stance', t = 0.5, tint = 0, rest = false, fighterId = null } = {}) {
   clear();
   const clips = await loadT3Clips(THREE, bank);
   if (!clips || !clips[clip]) throw new Error(`no clip ${bank}/${clip}`);
@@ -110,6 +110,10 @@ async function show({ model = 'pantera', bank = 'king', clip = 'stance', t = 0.5
   for (const n of Object.keys(inst.actions)) inst.actions[n].stop();
   const rt = retargetT3Clips(clips, bank, tgt, THREE, model, clip.startsWith('row:') ? [clip] : null);
   if (!rt || !rt[clip]) throw new Error(`retarget failed for ${model}`);
+  // The fight plays a fighter's baked T7 stance where one exists (fighter.js _bindT3 -> applyT7Stance); so does this
+  // view when it shows a fighter (the source column still shows the T3 bank stance, so its error is not comparable).
+  let t7stance = false;
+  if (fighterId && clip === 'stance') { const before = rt.stance; applyT7Stance(fighterId, bank, rt, tgt, THREE, model); t7stance = rt.stance !== before; }
   const tgtMixer = inst.mixer;
   const ta = tgtMixer.clipAction(rt[clip]); if (!rest) ta.play();
   const facesNegZ = rt[clip].userData.rigFacesNegZ;
@@ -146,7 +150,7 @@ async function show({ model = 'pantera', bank = 'king', clip = 'stance', t = 0.5
   front.position.set(0, cy, dist); front.lookAt(0, cy, 0);
   side.position.set(dist, cy, 0); side.lookAt(0, cy, 0);
   render();
-  const res = { model, bank, clip, time: +time.toFixed(3), duration: +dur.toFixed(3), facesNegZ, swapLR: rt[clip].userData.rigSwapLR,
+  const res = { model, bank, clip, t7stance, time: +time.toFixed(3), duration: +dur.toFixed(3), facesNegZ, swapLR: rt[clip].userData.rigSwapLR,
     srcHeadAboveHips: +hs.toFixed(3), tgtHeadAboveHips: +ht.toFixed(3), toes, dirErrDeg: errs,
     maxErr: Object.keys(errs).length ? Math.max(...Object.values(errs)) : null };
   info.textContent = `SOURCE (${srcUrl ? 'raw bank on ' + srcUrl.split('/').pop() : 'no source rig for ' + bank})  |  TARGET ${model} (retargeted)\n` + JSON.stringify(res);
@@ -206,7 +210,7 @@ async function showFighter({ id, clip = 'stance', t = 0.5, ownCandidates = false
   // ownCandidates: preview a fighter's not-yet-active own bank (fighter.js OWN_SLOT_CANDIDATES) to judge it by eye.
   const own = ownSlotBankFor(c.id, { candidates: !!ownCandidates });
   if (own) { const oc = await loadT3Clips(THREE, own); if (oc && oc[clip]) bank = own; }
-  const r = await show({ model: c.model, bank, clip, t });
+  const r = await show({ model: c.model, bank, clip, t, fighterId: c.id });
   return { id, model: c.model, ...r };
 }
 /* Raw rest render of any GLB by URL (statics included; meshopt decoded). */
@@ -286,7 +290,9 @@ function closeup({ yaw = 0, part = 'upper', which = 'tgt' } = {}) {
    rigid, 2 = doubled or halved. Weight-paint errors (skin bound to the wrong bone, missing blend at a joint) show as
    high scores clustered on one region. Returns per-mesh percentiles plus the bones that own the worst vertices.
    heat: true repaints the posed fighter with the score (blue 1 -> yellow 2 -> red 3+) so closeup() renders the map. */
-function stretchMap({ heat = false, worst = 2.5 } = {}) {
+function stretchMap({ heat = false, worst = 2.5, scores = false, minAbs = 0.01 } = {}) {
+  // minAbs (metres, world): an edge only counts when it ALSO changed by at least this much. On the 1M-vertex Tripo
+  // meshes most edges are sub-millimetre slivers whose RATIO swings on invisible motion; a visible tear is both.
   if (!cur || !cur.tgt) throw new Error('show a fighter first');
   cur.tgt.updateMatrixWorld(true);
   const meshes = [];
@@ -294,6 +300,7 @@ function stretchMap({ heat = false, worst = 2.5 } = {}) {
   const v = new THREE.Vector3(), out = [];
   for (const m of meshes) {
     const g = m.geometry, pos = g.attributes.position, n = pos.count;
+    const wscale = new THREE.Vector3().setFromMatrixScale(m.matrixWorld).x || 1, minLocal = minAbs / wscale;
     const P = new Float32Array(n * 3);
     for (let i = 0; i < n; i++) { m.getVertexPosition(i, v); P[i * 3] = v.x; P[i * 3 + 1] = v.y; P[i * 3 + 2] = v.z; }
     const idx = g.index ? g.index.array : null;
@@ -306,7 +313,7 @@ function stretchMap({ heat = false, worst = 2.5 } = {}) {
       if (r0 < 1e-5) return;
       const px = P[a * 3] - P[b * 3], py = P[a * 3 + 1] - P[b * 3 + 1], pz = P[a * 3 + 2] - P[b * 3 + 2];
       const r1 = Math.sqrt(px * px + py * py + pz * pz);
-      const k = r1 > 1e-9 ? Math.max(r1 / r0, r0 / r1) : 100;
+      const k = Math.abs(r1 - r0) < minLocal ? 1 : (r1 > 1e-9 ? Math.max(r1 / r0, r0 / r1) : 100);
       ratios.push(k);
       if (k > score[a]) score[a] = k;
       if (k > score[b]) score[b] = k;
@@ -329,9 +336,18 @@ function stretchMap({ heat = false, worst = 2.5 } = {}) {
       const bn = m.skeleton.bones[bj] ? m.skeleton.bones[bj].name : String(bj);
       own[bn] = (own[bn] || 0) + 1;
     }
-    out.push({ mesh: m.name, verts: n, edges: ratios.length, p50: pct(0.5), p99: pct(0.99), p999: pct(0.999), max: pct(1),
+    const rec = { mesh: m.name, verts: n, edges: ratios.length, p50: pct(0.5), p99: pct(0.99), p999: pct(0.999), max: pct(1),
       badVerts: bad, badFrac: +(bad / n).toFixed(4),
-      badBones: Object.entries(own).sort((a, b) => b[1] - a[1]).slice(0, 6).map(([k, c]) => `${k}:${c}`) });
+      badBones: Object.entries(own).sort((a, b) => b[1] - a[1]).slice(0, 6).map(([k, c]) => `${k}:${c}`) };
+    // scores: the per-vertex score itself (Float32, base64) in the glTF primitive's own vertex order (GLTFLoader keeps
+    // it), plus the first vertex position to match the primitive offline (tools/model-audit/weight_inpaint.py).
+    if (scores) {
+      const u8 = new Uint8Array(score.buffer);
+      let bin = ''; for (let i = 0; i < u8.length; i += 0x8000) bin += String.fromCharCode.apply(null, u8.subarray(i, i + 0x8000));
+      rec.scores = btoa(bin);
+      rec.first = [pos.getX(0), pos.getY(0), pos.getZ(0)];
+    }
+    out.push(rec);
     if (heat) {
       const col = new Float32Array(n * 3);
       for (let i = 0; i < n; i++) {
@@ -346,7 +362,29 @@ function stretchMap({ heat = false, worst = 2.5 } = {}) {
   }
   return out;
 }
-window.__poselab = { show, rest, restUrl, showFighter, footYaw, closeup, stretchMap, cur: () => cur, banks: Object.keys(T3_BANKS) };
+/* Per-pose skinning matrices (2026-11-07, tools/model-audit/weight_inpaint.py --poses): for every skinned mesh of the
+   posed fighter, K_i = bindMatrixInverse * bone_i.matrixWorld * boneInverse_i * bindMatrix, so a bind-space vertex v
+   lands at sum_i w_i K_i v in the mesh's own space, exactly as the GPU skins it. Float32 column-major, base64. */
+function skinMats() {
+  if (!cur || !cur.tgt) throw new Error('show a fighter first');
+  cur.tgt.updateMatrixWorld(true);
+  const out = [];
+  cur.tgt.traverse((m) => {
+    if (!m.isSkinnedMesh) return;
+    m.skeleton.update();
+    const nb = m.skeleton.bones.length, F = new Float32Array(nb * 16), K = new THREE.Matrix4();
+    for (let i = 0; i < nb; i++) {
+      K.multiplyMatrices(m.bindMatrixInverse, m.skeleton.bones[i].matrixWorld).multiply(m.skeleton.boneInverses[i]).multiply(m.bindMatrix);
+      F.set(K.elements, i * 16);
+    }
+    const u8 = new Uint8Array(F.buffer);
+    let bin = ''; for (let i = 0; i < u8.length; i += 0x8000) bin += String.fromCharCode.apply(null, u8.subarray(i, i + 0x8000));
+    out.push({ mesh: m.name, verts: m.geometry.attributes.position.count, bones: nb,
+      wscale: new THREE.Vector3().setFromMatrixScale(m.matrixWorld).x, mats: btoa(bin) });
+  });
+  return out;
+}
+window.__poselab = { show, rest, restUrl, showFighter, footYaw, closeup, stretchMap, skinMats, cur: () => cur, banks: Object.keys(T3_BANKS) };
 const q = new URLSearchParams(location.search);
 if (q.get('model')) show({ model: q.get('model'), bank: q.get('bank') || 'king', clip: q.get('clip') || 'stance', t: +(q.get('t') || 0.5) })
   .catch(e => { info.textContent = 'ERROR ' + e.message; });

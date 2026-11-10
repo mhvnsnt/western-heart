@@ -15,7 +15,10 @@ permissions:
 jobs:
   budgets:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    # 2026-11-10: was 10. The full checkout of the ~78,800-file tree alone takes ~8-10 min, so runs were cancelled
+    # inside actions/checkout before the report ran (PRs #1678, #1696, #1699; agents pushed empty "budgets rerun"
+    # commits to get past it). 25 leaves room for the tree to keep growing.
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       # Advisory in v1 (continue-on-error): the roster has not been fully

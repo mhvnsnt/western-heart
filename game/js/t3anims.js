@@ -1843,12 +1843,29 @@ function estimateHeadOffset(skel, t3Clips, THREE) {
    entangled with the deliberate torso-match re-split, so it
    uses ARM_CORR_SHOULDER_MIN_DEG (25 deg). The constants are
    cached on the per-model retarget entry (they depend on the
-   rig), not on the skeleton. 't7:' skeletons are NOT exempt:
-   the correction removes only the transport difference (target
-   twist minus source twist), so a T7 stance's own arm twists
-   (king L -57 / R +37 deg, his real guard) are reproduced, not
-   flattened — and where a T7 transport measures clean, the
-   gates leave it untouched.
+   rig), not on the skeleton.
+
+   't7:' SKELETONS ARE EXEMPT (2026-11-10, owner: "Arms at
+   shoulders, forearms, and hands are all crushed and twisted").
+   The twist measure above compares LOCAL twists, which only
+   means "transport error" on a rig whose rest rotations are
+   identity (the synthetic rig the 2026-11-07 tests used). Real
+   fighter rigs (Blender / Tripo exports) carry bone-aligned rest
+   frames with arbitrary rolls, and the measure read those rolls
+   as errors: the poselab sweep measured 40-200 deg constants on
+   16 of the 17 fighters that play a real T7 stance (diablo R 170,
+   retsu R 177, burger L 173, sha R 135, negativo L 83 / R 85 deg;
+   only pantera measured clean), applied to the stance AND every
+   T7 attack — rolled arms, shoulder armour stretched to the ears,
+   folded chest pieces. With the layer off every one of the 17
+   matched or beat the corrected pose by eye
+   (docs/proof/2026-11-10/t7-arm-roll/). T7 data needs no
+   correction: the T7 mannequin and the fighters' rigs are both
+   T-poses, so the world-delta transfer (D = F G F^-1 A, applied
+   to each bone's own rest) carries every bone's direction and
+   roll exactly, whatever the rig's rest frames — pinned by the
+   rolled-rest-rig test in test/arm-frame-normalization.test.mjs
+   (133 deg off before this exemption, < 1 deg after).
    ============================================================ */
 const ARM_CORR_MIN_DEG = 12;
 const ARM_CORR_SHOULDER_MIN_DEG = 25;
@@ -2157,6 +2174,9 @@ function estimateSpineCorr(rig, skel, stanceClip, buildProbe, THREE) {
 }
 
 const _retargetCache = new WeakMap(); // model instance -> Map(bankId -> { rig, out: { action: clip } })
+// QA switch for A/B renders (game/poselab.html): globalThis.__WH_RETARGET_LAYERS = { head: false, spine: false,
+// arm: false } turns that correction layer off. Unset (the game) = every layer on, exactly as before.
+const _layerOn = (k) => { const L = globalThis.__WH_RETARGET_LAYERS; return !L || L[k] !== false; };
 
 /**
  * Retarget a bank's clips onto one fighter model. The FIRST call for a
@@ -2211,7 +2231,7 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
       if (est) console.log(`[WH-T3] bank '${bankId}': head-frame constant ${(2 * Math.acos(Math.min(1, Math.abs(est.w))) * 180 / Math.PI).toFixed(1)}° measured in its stance — normalized out of every clip (head/face audit 2026-11-06)`);
     }
   }
-  const headCorrInv = skel._headCorr ? skel._headCorr.clone().invert() : null;
+  const headCorrInv = (skel._headCorr && _layerOn('head')) ? skel._headCorr.clone().invert() : null;
   const rig = (cached && cached.rig) || analyzeRig(model, THREE, profile);
   if (!rig) { perModel.set(bankId, null); return null; }
   const src = sourceInfo(skel, THREE);
@@ -2526,7 +2546,7 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
   // arm constants exist. 't7:' skeletons are exempt (see
   // estimateSpineCorr).
   let spineCorr = cached ? cached.spineCorr : undefined;
-  if (spineCorr === undefined && !layerActive && !String(bankId).startsWith('t7:') && t3Clips.stance &&
+  if (spineCorr === undefined && _layerOn('spine') && !layerActive && !String(bankId).startsWith('t7:') && t3Clips.stance &&
       (names.includes('stance') || (cached && cached.out.stance))) {
     const est = estimateSpineCorr(rig, skel, t3Clips.stance, (th) => buildClip('stance', null, th), THREE);
     if (est !== undefined) {
@@ -2544,7 +2564,8 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
   // depend on the rig's rest pose, so they cannot live on the
   // skeleton the way the head constant does.
   let armCorr = cached ? cached.armCorr : undefined;
-  if (armCorr === undefined && !layerActive && t3Clips.stance &&
+  // 't7:' skeletons are exempt (2026-11-10, see the block above estimateArmCorr): the T7 transfer is already exact.
+  if (armCorr === undefined && _layerOn('arm') && !layerActive && !String(bankId).startsWith('t7:') && t3Clips.stance &&
       (names.includes('stance') || (cached && cached.out.stance))) {
     const probe = buildClip('stance', null, spineCorr || 0);
     if (probe) {
