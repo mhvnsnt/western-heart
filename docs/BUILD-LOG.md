@@ -1,3 +1,17 @@
+## 2026-11-10 — Pantera first, pass 1: Tekken f,f dash / b,b backdash restored from King T7 data (MoneyManBusch / Grok) (t386u)
+
+- **Root cause (named regression "run and dash gone"):** the stick double-tap latch (`TekkenBuffer.noteDirection` → `game.js` → `Fighter.trySystemMotion`) only started KOF `system` rows. `pantera.json` has none, so f,f and b,b did nothing. Backdash was reachable only through the Shift dodge (invulnerable, not Tekken).
+- **Fix (`game/js/fighter.js`):** a fighter with no KOF rows whose own-slot bank has a sourced end frame (`TEKKEN_DASH_END_FRAMES`, King only: motbin `Kg_sDASHF` / `sDASH_00B` end cancel at frame 30) gets the Tekken move in a new `tekdash` state. It plays t7_king's own `dash` / `backdash` clip and travels that clip's root_t per frame (+1.414 m / −0.667 m). There is no invuln, and buttons cancel from frame 1 (motbin window [1, 32767]). KOF fighters are unchanged.
+- **Axis finding:** all 13 T7 generic banks are baked forward = +x, lateral = z (T3 banks: forward = +z).
+- **Tests:** `test/tekken-dash-pantera.test.mjs` 5/5 (fails 4/5 on main). Matrix: `docs/proof/2026-11-10/pantera-tekken-dash/INPUT-MATRIX.md`.
+- **Found, not fixed (next):**
+  - KBD: d/b cancel sits in the undecoded group-cancel table.
+  - Dash frame-12 f → re-dash/run.
+  - No `cd_entry` for f,n,d,df.
+  - The dash `1` resolves the plain `f,F+1` row (`UNMAPPED:t7-clip-pending`) instead of `f,F+1~t7.king` (king_48).
+  - T7-bank sidestep `lateralDx` reads x (right sidestep never gets a clip on 16 fighters); the z sign needs a rendered check.
+- **Proven:** node path only. **Not yet verified:** real touchscreen presses on the deployed build.
+
 ## 2026-11-05 — t383u land: #1590 + Pages tip 32607e2b (MoneyManBusch)
 
 - **#1588** Ryusan card on main `a2aa63e8`; first Pages tip `cd2905e2` (~999.96 MB) **failed to publish** (`updating_pages` timeout → Page build failed). Live host stayed on `b3a7cc6` old ryusan.png (90289 B) until republish succeeds.

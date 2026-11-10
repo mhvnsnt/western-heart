@@ -575,6 +575,33 @@ export function rootMotionSample(root_t, fps, t) {
   return { fwd: Number.isFinite(fwd) ? fwd : 0, lat: Number.isFinite(lat) ? lat : 0 };
 }
 
+/* TEKKEN DASH / BACKDASH for Tekken-notation fighters (2026-11-10, Pantera audit).
+   Owner: "KBD, ffd ... run and dash gone or not working". Root cause: the stick double-tap
+   latch (movesets.js TekkenBuffer.noteDirection -> game.js -> trySystemMotion) only ever
+   started a KOF XV `system` row; Pantera's moveset has none, so f,f and b,b did NOTHING
+   (backdash was reachable only through the Shift dodge, which is invulnerable — not Tekken).
+   Now a fighter with no KOF row, whose OWN-SLOT bank is a real Tekken 7 generic bank with a
+   SOURCED end frame below, gets the Tekken move instead:
+   - f,f -> Kg_sDASHF (anim coyt_dash125), b,b -> sDASH_00B (anim coyt_newback);
+   - length: the motbin's own end cancel (cancel input 0x8000 at frame 30 -> walk) — read
+     from the King T7 motbin (the reverse-engineering repo, tkdata mothead json kinmot.json);
+   - travel: the played clip's OWN root_t, sampled per frame (never an authored speed).
+     The 13 T7 generic banks are baked forward = +x, lateral = z (every bank: dash_fwd x
+     +1.31..+1.46 m, backdash x -0.64..-0.72 m, sidesteps z +-0.92 m) — unlike the T3
+     banks (forward = +z), so this reads x;
+   - buttons cancel the dash from frame 1 (both moves' 1/2/3/4 cancels, window [1, 32767]).
+   NOT YET SOURCED / NOT DONE: the backdash crouch cancel (KBD) lives in the motbin's
+   packed group-cancel table, not the move's own list — undecoded, so no KBD is invented;
+   the f re-press at frame 12 (re-dash / sRUN__00F run) is not wired either. */
+export const TEKKEN_DASH_END_FRAMES = { t7_king: { f: 30, b: 30 } };
+export function t7BankForwardTravel(root_t, fps, t) {
+  if (!root_t || root_t.length < 2 || !(fps > 0) || !Number.isFinite(t)) return 0;
+  const n = root_t.length, f = Math.max(0, Math.min(n - 1, t * fps));
+  const i = Math.floor(f), k = Math.min(n - 1, i + 1), a = f - i;
+  const v = (root_t[i][0] + (root_t[k][0] - root_t[i][0]) * a) - root_t[0][0];
+  return Number.isFinite(v) ? v : 0;
+}
+
 /* KOF XV system actions (Dream Cancel wiki, KOF XV Defense / Offense / Meters and Gauges).
    WH gauge = 100 souls; one KOF power stock = 25 souls (XV first character holds 3-5 stocks). */
 export const KOF = {
@@ -2724,6 +2751,22 @@ export class Fighter {
     this._throwFollow = null; this._chainFrom = null; this._chainNext = null; this._chainSeq = [];
     this.vx = 0; this._enter('attack'); this._attackPhase = 'startup'; this._prevAtkT = 0;
   }
+  /** Tekken f,f dash / b,b backdash on the fighter's own T7 generic bank (see TEKKEN_DASH_END_FRAMES). */
+  _tryTekkenDash(dir) {
+    if (this.brawler || !this.onGround || (dir !== 'f' && dir !== 'b')) return false;
+    const bank = this.char && ownSlotBankFor(this.char.id);
+    const end = bank && TEKKEN_DASH_END_FRAMES[bank];
+    if (!end) return false;
+    const name = dir === 'f' ? 'dash' : 'backdash';
+    const src = getT3Clips(bank); const c = src && src[name];
+    const raw = c && c.userData && c.userData.raw;
+    if (!raw || !raw.root_t || raw.root_t.length < 2) return false;
+    this._tekDashId = (this._tekDashId || 0) + 1;
+    this._tekDash = { id: this._tekDashId, dir, name, rt: raw.root_t, fps: raw.fps || 60, dur: end[dir] / 60, prev: 0 };
+    this.vx = 0; this._enter('tekdash');
+    return true;
+  }
+  get tekDashCancelable() { return this.state === 'tekdash' && this.stateT >= 1 / 60; }
   /** Double tap f/b (input buffer dash latch): the fighter's dash / backdash row, or its roll
       row when no dash row owns that direction. */
   trySystemMotion(dir) {
@@ -2731,7 +2774,7 @@ export class Fighter {
     const rows = systemRows(this._movesetId); const dd = dir + ',' + dir;
     const want = dir === 'f' ? 'dash' : 'backdash';
     const row = rows.find((r) => r.sys === want && r.input === dd) || rows.find((r) => r.sys === 'roll' && r.input === dd);
-    if (!row) return false;
+    if (!row) return rows.length ? false : this._tryTekkenDash(dir);
     const ms = getFighterMoveset(this._movesetId); const mv = ms && ms.moves[row.key]; if (!mv) return false;
     this._startSystemMove(row.key, mv);
     const sgn = dir === 'f' ? 1 : -1;
@@ -2753,7 +2796,7 @@ export class Fighter {
     this._stepChain = null; return false;
   }
   _tryAttackFresh(name) {
-    if (!this.canAct() && !this.sidestepCancelable) return false;
+    if (!this.canAct() && !this.sidestepCancelable && !this.tekDashCancelable) return false;
     // A fresh press cancels any auto step chain: the player is driving now.
     this._stepChain = null;
     // Tekken notation resolution: strings (1,2), motion specials (qcf+2),
@@ -3002,6 +3045,7 @@ export class Fighter {
       this.vz = 0; this._ssAlign = true;
     }
     if (state !== 'attack') this._ssAlign = false;
+    if (state !== 'tekdash') this._tekDash = null;
     this.state = state; this.stateT = 0;
   }
 
@@ -3850,6 +3894,14 @@ export class Fighter {
       // receiveHit, not here — expiry is not a hit).
       case 'wallsplat': if (this.stun <= 0) { this._wallSplatHits = 0; this._enter('idle'); } break;
       case 'dodge': if (this.stateT > 0.34) { this.vx = 0; this._enter('idle'); } break;
+      case 'tekdash': {
+        // Clip-driven travel (see TEKKEN_DASH_END_FRAMES): this frame's root_t sample minus the last.
+        const d = this._tekDash;
+        if (!d) { this.vx = 0; this._enter('idle'); break; }
+        const cur = t7BankForwardTravel(d.rt, d.fps, Math.min(this.stateT, d.dur));
+        this.root.position.x += this.facing * (cur - d.prev); d.prev = cur; this.vx = 0;
+        if (this.stateT >= d.dur) this._enter('idle');
+      } break;
       case 'vshift':
         // V-Shift: invulnerable backshift; game.js may proc the evade.
         if (this.stateT >= V.SHIFT_DURATION) { this.vx = 0; this._enter('idle'); }
@@ -4355,6 +4407,9 @@ export class Fighter {
       }
       case 'victory':
         this._playT3('win', { loop: true });
+        break;
+      case 'tekdash':
+        if (!this._tekDash || !this._playT3Once(this._tekDash.name, 'tekdash:' + this._tekDash.id)) this._stopT3();
         break;
       case 'dodge': case 'vshift':
         // The dodge moves the fighter backwards: T3's own back-dash
