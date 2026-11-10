@@ -1,3 +1,10 @@
+## 2026-11-10 — GitHub Pages synced to main 63f6ea9c (owner t387u) (MoneyManBusch / Grok)
+
+- Live Pages `847a0aa4` (Nov 8) → `63f6ea9c` through the established API route (`deploy_api.py`, fast-forward, no force). Deploy commit `0969a76e` built 08:59 CST. Manifest and 12 spot files verified byte-identical to main.
+- `deploy_api.py` now adds the own-slot T7 banks `game/assets/anim/t3/t7_*` (256 files, 10.1 MB). The code loads them locally with no remote fallback, and the old rules would have left them off Pages.
+- #1672's six fixes are on Pages now: every added line is still on main, and its `game/tests` round/camera/cache tests pass (6/16/7).
+- Not shipped (pre-existing, over headroom): 16 older T3/DW bank dirs, about 92 MB. Cloudflare is unaffected.
+
 ## 2026-11-10 — Pantera pass 3: King T7 dash / run moves from King's own link tables (MoneyManBusch / Grok) (t386u)
 
 - **Resolver.** `t7_move_resolve.py --motions` walks stance → 0x8001 → `Kg_sDASHF`, then the dash's f+X / n+X, or the dash's f → `sRUN__00F`, then X. The final move's damage and first active frame must match. 8 of 11 motion rows mapped. The earlier lead dash+1 → `Kg_jprk00F` was corrected: that cancel is requirement-gated; Jaguar Hook is `Kg_lygerlp00`.

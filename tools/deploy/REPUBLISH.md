@@ -82,6 +82,16 @@ verified live (Pages `built`, spot-checks pass). The script was
 dry-run verified the same day on the synced branch: 0/0 delta, module
 graph 155/155/0 hard missing, tree total matching the manifest.
 
+Run record 2026-11-10 (owner t387u, "YES" to syncing the merged tested build): live
+`847a0aa4` → main `63f6ea9c` (129 commits). 29 updated, 258 added: 256 own-slot T7 bank files
+`game/assets/anim/t3/t7_*` (10.1 MB; new rule above, because t3anims fetches banks locally with
+no remote fallback) plus `game/js/hair-spring.js` and its test. 0 removed. Total 1,015,287,213 B
+(58.5 MB headroom). Module graph 156/156, 0 hard missing. Deploy commit `0969a76e`; Pages `built`;
+manifest `63f6ea9c` live; 12 spot files byte-match main. Older banks still not on the shell
+(dw, t3 alisa/asuka/bob_satsuma/christie/dragunov/emilie/ganryu/jun/lars/lee/miguel/panda/
+roger/steve_fox/zafina, about 92 MB) were missing before this deploy too, and they exceed the
+headroom.
+
 ## 3. Verify the Pages deploy (always, before calling it done)
 
 ```sh
