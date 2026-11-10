@@ -4,7 +4,7 @@
 // Each row is classified by what the runtime can actually decide today, so the source reachability graph and the
 // playable command set are reported separately:
 //   evaluable      every requirement condition is known to the runtime and true in a neutral game state
-//                  (makeEvalCond({ dead: false })), the input mode / timing / special has a proven meaning;
+//                  (makeEvalCond with Pantera's context), the input mode / timing / special has a proven meaning;
 //   known-false    a known condition is false in WH (practice demo, story battle, assist button, basic combo);
 //   unknown        blocked by >= 1 requirement condition the runtime cannot evaluate (listed);
 //   timing         cancel frame past the move's animation (meaning unproven);
@@ -24,7 +24,8 @@ const ix = JSON.parse(readFileSync(join(dir, 'graph-clips/index.json'), 'utf8'))
 const NAMES = Object.entries(G.DIR_BITS);
 const dirs = (m) => (m ? NAMES.filter(([, b]) => m & b).map(([n]) => n).join('|') : '*');
 const btns = (m) => [1, 2, 4, 8, 16].filter((b) => m & b).map((b) => (b === 16 ? 'RA' : String(Math.log2(b) + 1))).join('+');
-const ev = G.makeEvalCond({ dead: false });
+const CTX = { dead: false, charId: 2, controller: 0 }; // Pantera's runtime context (fighter.js t7gAttach)
+const ev = G.makeEvalCond(CTX);
 const nameOf = (id) => (g.moves[id] ? g.moves[id].name : `0x${id.toString(16)}`);
 const len = (m) => (m.clip != null && ix.clips[`${m.bank}_${m.clip}`] ? ix.clips[`${m.bank}_${m.clip}`].frames : 0);
 const F = G.F; const rows = []; const counts = {}; const unknownConds = {};
@@ -66,7 +67,7 @@ const stanceCommands = rows.filter((x) => x.from === stance && x.kind === 'press
   .map((x) => { const t = g.moves[G.moveByName(g, x.to)] || {}; const w = t.damage > 0 ? t.hitlevel & 0xFFF : null;
     return { notation: x.notation, row: x.row, to: x.to, damage: t.damage || 0, first_active: t.first_active || 0, hitlevel_raw: t.hitlevel }; });
 const rep = { format: 'wh-t7-graph-commands/1', graph_sha256: ix.graph_sha256, generated_by: 'tools/anim/t7_graph_commands.mjs',
-  semantics: 'game/js/t7graph.js (same interpreter as the game)', neutral_state: 'makeEvalCond({ dead: false })',
+  semantics: 'game/js/t7graph.js (same interpreter as the game)', neutral_state: 'makeEvalCond(' + JSON.stringify(CTX) + ')',
   reachable_moves: cov.reachable_moves.length, rows: rows.length, by_status: counts,
   unknown_condition_rows: Object.fromEntries(Object.entries(unknownConds).sort((a, b) => b[1] - a[1])),
   stance: stance, stance_press_commands_evaluable: stanceCommands, all: rows };

@@ -156,7 +156,7 @@ test('unknown requirements are never satisfied: every fire across a long replay 
     if (i % 3 === 0) { const b = seq[(i * 5) % seq.length].split('+'); r.press(...b); r.tick(2); r.release(...b); }
     r.tick(5);
   }
-  const ev = G.makeEvalCond({ dead: false });
+  const ev = G.makeEvalCond({ dead: false, charId: 2, controller: 0 }); // the fighter's own context (fighter.js t7gAttach)
   let fires = 0;
   for (const x of r.log) {
     if (!x.fired || x.fired.via !== 'cancel') continue;
@@ -237,4 +237,46 @@ test('the graph input reads the stick with the SAME function body as game.js _te
   assert.ok(m && k);
   const norm = (t) => t.split('\n').map((l) => l.trim()).join('\n');
   assert.equal(norm(k[1]), norm(m[1]));
+});
+
+/* Exe-decoded requirements (docs/proof/2026-11-10/t7-requirements/README.md). The expectations are the exe's
+   comparisons, written out by hand from the disassembly, and are checked against the shipped evaluator. */
+test('exe-decoded requirements: 217 own chara_id (+ exe group params), 225 controller, 609 items, 72/73 backturn; fail closed without context', () => {
+  const none = G.makeEvalCond({});
+  for (const c of [72, 73, 217, 225, 609]) assert.equal(none(c, 0), null, `cond ${c} without context stays UNKNOWN`);
+  const king = G.makeEvalCond({ charId: 2, controller: 0 });
+  assert.equal(king(217, 2), true); assert.equal(king(217, 10), false); assert.equal(king(217, 75), false);
+  assert.equal(king(217, 83), false, 'param 83 tests chara_id 5 (exe jump table)');
+  assert.equal(G.makeEvalCond({ charId: 5 })(217, 83), true);
+  assert.equal(G.makeEvalCond({ charId: 0x21 })(217, 76), true);
+  assert.equal(king(225, 0), true); assert.equal(king(225, 1), false); assert.equal(king(225, 3), false);
+  assert.equal(G.makeEvalCond({ controller: 1 })(225, 0), null, 'CPU + param 0 depends on unmodelled exe flags');
+  assert.equal(king(609, 146), null, 'the equipped T7 item set is not known for Pantera');
+  assert.equal(G.makeEvalCond({ items: [146] })(609, 146), true);
+  assert.equal(king(72, 0), null); assert.equal(king(73, 0), null);
+  assert.equal(G.makeEvalCond({ backturned: false })(73, 0), true);
+});
+
+test('real fighter: the attached driver carries King\'s chara_id 2 and the player controller; rows for other chara_ids never fire', () => {
+  const r = rig(); r.tick(4);
+  assert.equal(r.f._t7g.evalState.charId, 2); assert.equal(r.f._t7g.evalState.controller, 0);
+  assert.equal(r.f._t7g.evalState.items, undefined, 'items stay unknown');
+  const seq = ['1', '2', '3', '4', '1+2', '3+4', '1+3', '2+4'];
+  const dirs = ['n', 'f', 'b', 'd', 'd/f', 'f', 'f'];
+  for (let i = 0; i < 300; i++) {
+    r.stick(dirs[(i * 3) % dirs.length]); r.tick(2);
+    if (i % 2 === 0) { const b = seq[(i * 5) % seq.length].split('+'); r.press(...b); r.tick(2); r.release(...b); }
+    r.tick(4);
+  }
+  let gated = 0;
+  for (const x of r.log) {
+    if (!x.fired || x.fired.via !== 'cancel') continue;
+    const row = g.moves[x.moveId].cancels[x.fired.index];
+    for (const [c, p] of g.requirements[String(row[G.F.req])] || []) {
+      if (c !== 217) continue; gated++;
+      const want = G.T7_CHAR_GROUPS[p] ?? p;
+      assert.equal(want, 2, `fired ${x.name} row ${x.fired.index} is gated to chara_id ${want}, not King`);
+    }
+  }
+  assert.ok(gated > 0, `${gated} fires were gated on King's own chara_id`);
 });

@@ -1,3 +1,19 @@
+## 2026-11-10 — King T7 requirement evaluator decoded from the shipping exe (217 / 225 / 609 / 72 / 73 …) (MoneyManBusch / Grok) (t386u/t388u)
+
+- **Found** the exe's requirement switch `0x1406f5490`: ids 0..875, ids ≥ 0x8000 return 1, the default is false.
+  - 217 = self chara_id `[+0xD8]` == param, with exe group params 76..90.
+  - 225 = controller type (player = 0).
+  - 609 = customization item query.
+  - 72/73 = facing word `[+0x1c4]` above or at most 0x4000.
+- **Runtime context:** charId 2 (King, community table; offset 0xD8 matches the exe) and controller 0 for the player driver. The item set, backturn and distance stay UNKNOWN (fail closed).
+- **Reachable rows:**
+  - unknown 28,247 → 13,567;
+  - evaluable 7,775 → 8,459;
+  - known-false 1,039 → 15,035;
+  - stance press commands 66 → 73, all replayed through the real input path.
+  Graph integration is still opt-in (`?t7graph=1`).
+- See `docs/proof/2026-11-10/t7-requirements/README.md`. Node only; not 100%.
+
 ## 2026-11-10 — Pantera: King T7 full-graph fighter adapter, opt-in DEVELOPMENT integration (MoneyManBusch / Grok) (t386u/t388u)
 
 - **Decode v2** (`wh-t7-graph/2`). Cancel buttons are now `0xMMNNHHPP` (pressed / held / not-held / mode, per the TekkenMods Input Extradata doc). v1 misread the 627 "any-of" rows as held.
