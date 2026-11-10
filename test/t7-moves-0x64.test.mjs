@@ -25,7 +25,10 @@ const FIGHTERS = [
   { fighter: 'sakura', base: 'xiaoyu', bank: 'xiaoyu', moveset: 'sakura', stance: 'Fu_sKAM00_', pack: 'moves.sakura.pack.json' },
   { fighter: 'sha', base: 'xiaoyu', bank: 'xiaoyu', moveset: 'sha', stance: 'Fu_sKAM00_', pack: 'moves.sha.pack.json' },
   { fighter: 'phantom', base: 'yoshimitsu', bank: 'yoshimitsu', moveset: 'phantom', stance: 'Ym_sKAM00_' },
-  // gyou: off this table 2026-11-10 — Gyou is Paul Phoenix (owner); his Hwoarang pack was unwired (Hwoarang is Tobi's).
+  // gyou: his Hwoarang pack was unwired 2026-11-10 (Gyou is Paul Phoenix, owner; Hwoarang is Tobi's). His own Paul pack:
+  { fighter: 'gyou', base: 'paul', bank: 'paul', moveset: 'gyou', stance: 'Pl_sKAM00_', pack: 'moves.gyou.pack.json' },
+  // thor: Ganryu (canon "Built on Ganryu's sumo frame"); his T3 retarget bank is bryan, his T7 data dir ganryu.
+  { fighter: 'thor', base: 'ganryu', bank: 'bryan', moveset: 'thor', stance: 'Sm_sKAM00_' },
   { fighter: 'tobi', base: 'hwoarang', bank: 'hwoarang', moveset: 'tobi', stance: 'Hw_sKAM00_', pack: 'moves.tobi.pack.json' },
   { fighter: 'gashadokuro', base: 'kuma', bank: 'kuma', moveset: 'gashadokuro', stance: 'Km_sKAM00_' },
   { fighter: 'aotsuki', base: 'panda', bank: 'kuma', moveset: 'aotsuki', stance: 'Km_sKAM00_' },
@@ -158,7 +161,10 @@ for (const F of FIGHTERS) {
       const m = T.t7MoveClip(F.fighter, F.bank, '__another_row_for_' + pm.input, null, pm.input);
       assert.ok(m, `input ${pm.input} -> ${pk}`);
     }
-    assert.equal(T.t7MoveClip(F.fighter, F.bank, '1,2', null, '1,2'), null, 'strings never take a single-input clip');
+    // Strings never take a single-input clip. Since 2026-11-10 a string may take ONLY its own verified string-step clip
+    // (t7_move_resolve.py --strings, e.g. Gyou's '1,2~t7.paul.2'), the same rule as test/t7-moves-king.test.mjs.
+    const s12 = T.t7MoveClip(F.fighter, F.bank, '1,2', null, '1,2');
+    if (s12) { const pk = pack.moves[s12.name.slice(3)]; assert.ok(pk && pk.input === '1,2', 'strings never take a single-input clip'); }
   });
 
   test(`${F.fighter}: the rows its 1-4 slots fire reach its T7 clips by their input (probe 2026-11-01)`, async () => {
@@ -168,7 +174,9 @@ for (const F of FIGHTERS) {
     await T.ensureT7Moves(F.fighter, THREE);
     const ms = JSON.parse(src(`game/assets/movesets/${F.moveset}.json`));
     for (const b of ['1', '2', '3', '4']) {
-      const played = ms.slots[b], [packKey] = Object.entries(pack.moves).find(([, m]) => m.input === b) || [];
+      // a moveset without a slots table slots every row on its own key (game/js/movesets.js _prepare), e.g. thor.json
+      const played = ms.slots ? ms.slots[b] : (ms.moves[b] ? b : undefined);
+      const [packKey] = Object.entries(pack.moves).find(([, m]) => m.input === b) || [];
       if (!packKey || !played) continue;
       const m = T.t7MoveClip(F.fighter, F.bank, played, null, ms.moves[played].input);
       assert.ok(m, `${b}: slot row ${played} (input ${ms.moves[played].input}) -> ${packKey}`);

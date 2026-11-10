@@ -749,8 +749,13 @@ export const T7_MOVES = {
   sakura: { bank: 'xiaoyu', dir: 'assets/anim/t7/xiaoyu/', pack: 'moves.sakura.pack.json' },
   sha: { bank: 'xiaoyu', dir: 'assets/anim/t7/xiaoyu/', pack: 'moves.sha.pack.json' },
   phantom: { bank: 'yoshimitsu', dir: 'assets/anim/t7/yoshimitsu/' },
-  // gyou: Hwoarang move pack (moves.gyou.pack.json) unwired 2026-11-10 — Gyou is Paul Phoenix (owner); the pack stays
-  // on disk. His Paul T7 moves take the same bake path (tools/anim/t7_move_bake.py --code pau) next.
+  // gyou: Hwoarang move pack (assets/anim/t7/hwoarang/moves.gyou.pack.json) unwired 2026-11-10 — Gyou is Paul Phoenix
+  // (owner); that pack stays on disk. His own Paul T7 moves (2026-11-10): 36 rows from Paul's own arc (paurotsm.arc);
+  // the two whose clips live in paumot.bin, which the teardown lacks, keep their current clips.
+  gyou: { bank: 'paul', dir: 'assets/anim/t7/paul/', pack: 'moves.gyou.pack.json' },
+  // thor: Ganryu's own T7 attacks (2026-11-10; canon "Built on Ganryu's sumo frame"), 20 rows from ganrotsm.arc +
+  // ganmot.bin. His d/f+1+2 double slap stays out (its second slap is a separate follow-up motbin move).
+  thor: { bank: 'bryan', dir: 'assets/anim/t7/ganryu/' },
   tobi: { bank: 'hwoarang', dir: 'assets/anim/t7/hwoarang/', pack: 'moves.tobi.pack.json' },
   gashadokuro: { bank: 'kuma', dir: 'assets/anim/t7/kuma/' },
   aotsuki: { bank: 'kuma', dir: 'assets/anim/t7/panda/' },
