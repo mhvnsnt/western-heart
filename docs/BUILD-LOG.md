@@ -1,3 +1,8 @@
+## 2026-11-10 — Pantera pass 1b: clip provenance probe (MoneyManBusch / Grok) (t386u)
+
+- `tools/anim/pantera_clip_provenance.mjs` gives every row's planned clip with the T7 pack loaded. Of 643 plain rows: **41 real King T7, 521 T3 King rows, 81 generic**. Throws: 0 T7.
+- Cause: the King T7 move pack has only 29 single-input clips. The fix is a full resolve+bake of King's motbin rows (next pass), not rewiring. Evidence: `docs/proof/2026-11-10/pantera-tekken-dash/clip-provenance.tsv`.
+
 ## 2026-11-10 — Pantera first, pass 1: Tekken f,f dash / b,b backdash restored from King T7 data (MoneyManBusch / Grok) (t386u)
 
 - **Root cause (named regression "run and dash gone"):** the stick double-tap latch (`TekkenBuffer.noteDirection` → `game.js` → `Fighter.trySystemMotion`) only started KOF `system` rows. `pantera.json` has none, so f,f and b,b did nothing. Backdash was reachable only through the Shift dodge (invulnerable, not Tekken).

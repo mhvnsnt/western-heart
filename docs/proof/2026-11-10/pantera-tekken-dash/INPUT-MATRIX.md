@@ -30,3 +30,17 @@ f,f and b,b did **nothing** for Pantera: the latch only starts KOF `system` rows
 - **Duplicate rows.** Plain vs `~t7.king` rows (e.g. `f,F+1`, `f,F+2` "Beast Elbow" vs "Rolling Elbow") — the resolver picks the plain unmapped row.
 - **Sidestep clip choice, all 13 T7 generic banks.** They are baked forward = +x, lateral = z, but `t3anims.js` `lateralDx` reads x (≈ +0.005 for both sidesteps), so the right sidestep never finds a clip. The sign of z (is `sSTEP_01L` +z the character's left?) needs a rendered check before the fix.
 - **Touchscreen proof** (real presses on the deployed build) — parent computerUse task.
+
+## Clip provenance, every Pantera row (`tools/anim/pantera_clip_provenance.mjs` → `clip-provenance.tsv`)
+Probe: the clip `Fighter._attackClipPlan` plays for each row, with King's T7 move pack loaded as at boot. Node proof; main `50ba753f`.
+
+| Rows | Real King T7 clip | T3 King bank row | Bank generic (light / medium) |
+|---|---:|---:|---:|
+| 643 plain rows (what button presses resolve) | **41** | **521** | 53 / 28 |
+| 72 throw-class plain rows (1+3, 2+4, …) | 0 | 65 | 7 / 0 |
+
+**Root cause of "moves not playing King T7":**
+- `game/assets/anim/t7/king/moves.pack.json` holds only **29** real King T7 clips, all single inputs (1, 2, 3, 4, d/f+1, …), and no throws.
+- Strings, dash moves (f,F+1, f,f,F+3), stance moves and throws have no King T7 clip in the repo at all, so they fall to T3 King rows.
+- This is a missing bake, not a wiring bug. It needs `tools/anim/t7_move_resolve.py` and `tools/anim/t7_move_bake.py` run over King's motbin (`kinmot.json`, the reverse-engineering repo) for every row.
+- Bake tool gates: multi-hit moves are skipped (one clip, one hit) and 0x64 clips need T7_EXE.
