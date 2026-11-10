@@ -188,3 +188,4 @@ GRE `tekken3/animations/`: divmot03/04/07/09/12/13/16/99 only (no divmot14 this 
   See `docs/proof/2026-11-10/pantera-tekken-dash/INPUT-MATRIX.md`.
 
 - Pass 2 (2026-11-10): 15 King T7 string steps baked and wired; Pantera plain rows on real King T7 41 → 61 / 643. Next: motion (f,F / f,f) rows via resolver motion support, then stance rows, then throws.
+- Pass 3 (2026-11-10): King T7 dash/run moves (f,F+X, f,f,n,2, f,f,f+3/3+4) resolved on King link tables, baked and wired; plain rows on real King T7 61 → 68 / 643. Next: decode input-sequence commands (f,n,d,d/f CD, WR variants) and the KBD group-cancel table.

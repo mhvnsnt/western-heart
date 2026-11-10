@@ -77,3 +77,37 @@ Test: `test/t7-king-strings.test.mjs`.
 - Motion inputs (f,F+*, f,f,*, qcf), stance moves (WS / FC / SS / BT / JGS), throws (own pair path, 0 T7), and chain-throw branches.
 - 516 rows still on T3 King. Multi-hit single moves are still skipped by the bake gate (one clip, one hit).
 - Touchscreen and rendered-model proof: not done (browser unavailable).
+
+## Pass 3 (2026-11-10): King T7 dash and run moves (f,F+X / f,f,n,X / f,f,f+X)
+- **Resolver v3.** `tools/anim/t7_move_resolve.py --strings --motions` walks King's own link tables in `kinmot.json`:
+  - stance `Kg_sKAM00_` → cancel command **0x8001** (the forward double tap; the same 0x8001 the slot plan records for dash_fwd) → `Kg_sDASHF`;
+  - then the dash's own `f+X` (F+X) or `n+X` cancel;
+  - or for run moves, the dash's `f` cancel → `sRUN__00F`, then the run's X.
+  - The final move must match the row's T7 damage and first active frame. Nothing is timed by us.
+- **Result:** 11 motion rows, **8 mapped**, 3 no-match (`WR 4`, `WR+1+2`, and `f, f, n, 1+2`, which has no damage value). Details: `king-motion-resolve.json`.
+- **Earlier lead corrected.** The dash's plain `1` → `Kg_jprk00F` is a requirement-gated generic cancel. Jaguar Hook `f, F+1` is the dash's `f+1` → `Kg_lygerlp00`.
+- **Bake.** Same verified setup as pass 2 (unchanged tool; Koenji mannequin, Kiloutre helper, game sampler, Blender 4.2.3). It adds 7 moves / 7 clips; the pack goes from 44 to **51 moves**, with all 44 old moves and clips byte-identical. `(f, F+2), 1` (`Kg_fallerurari`) was rejected by the plausibility gate ("does not start upright") and recorded in `skipped`.
+
+| Press (stick frames @60fps + button) | Resolved row | King T7 motbin move | Clip | Fwd travel |
+|---|---|---|---|---|
+| f×2 n×2 f×3 + 1 | `f,F+1` | Kg_lygerlp00 | kgss_66lp(DVD) rotsm#439 | 2.41 m |
+| f×2 n×2 f×3 + 2 | `f,F+2` | Kg_p00 | sukg_falleru(DVD) rotsm#442 | 1.57 m |
+| f×2 n×2 f×3 + 4 | `f,F+4` | Kg_tkr01 | mokg_tkr(DVD) rotsm#458 | 0.74 m |
+| f×2 n×2 f×3 + 3+4 | `f,F+3+4` | Kg_dki10 | kin_dki10(DVD) rotsm#481 | 2.50 m |
+| f×2 n×2 f×2 n×3 + 2 | `f,f,n,2` | Kg_p01 | k_p01(DVD) rotsm#447 | 0.89 m |
+| f×2 n×2 f×2 n×2 f×2 + 3 | `f,f,f+3` | Kg_666lk (via sRUN__00F) | kgss_bomaknee(DVD) rotsm#997 | 3.36 m |
+| f×2 n×2 f×2 n×2 f×2 + 3+4 | `f,f,f+3+4` | Kg_dki11 (via sRUN__00F) | kgss_s4_666wk motbin#118 | 3.50 m |
+
+Node test: `test/t7-king-motions.test.mjs` (fails 9/10 on main, passes here).
+
+| Plain rows (643) | Real King T7 | T3 King row | Generic light / medium |
+|---|---:|---:|---:|
+| Before pass 3 | 61 | 516 | 46 / 20 |
+| After pass 3 | **68** | 509 | 46 / 20 |
+
+**Not done:**
+- WH's duplicate spellings `f,f,F+3` / `f,f,F+3+4` ("Strong Knee" / "Running Exploder") keep T3; only the exact `f,f,f+3` spelling is wired.
+- `WR 4` / `WR+1+2` do not verify through `sRUN__00F`.
+- Close/far `f,F+1+2` and `f,F+2+3`, and throws, are excluded.
+- `f,n,d,D/F+X` (crouch dash): its entry is not the 0x8001 path. The stance's input-sequence commands (0x80b0–0x80b7 class) are undecoded, as is the KBD group-cancel table.
+- No touchscreen or rendered-model proof.
