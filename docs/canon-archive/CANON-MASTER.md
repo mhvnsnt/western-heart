@@ -1873,6 +1873,7 @@ Raiden, Bass Armstrong (→ Vain Abel's base), Craig Marduk, Armor King
 
 - ANGEL COMPOSITE FACE REJECTED (owner 2026-11-09 ~20:38 CST): the glam composite face = "No that's bad" — REJECTED. The WH chat's face line stays ON HOLD; nothing is presented as the Angel face; the bare-face proof verdict is still the owner's call. The owner is working on a better face in the other chats.
 - LASHES: style APPROVED ("this lashes are better" — the long winged set, physics-playground-pwa PR #149); placement WRONG — re-fit per-station onto Megami's OWN lid-margin curve in the AngelFace=1.0 build. Lash-fix lane launched in the WH chat 2026-11-09; parent own-eyes before owner.
+- CORRECTION (owner 2026-11-10): the lash fix covers EYELASHES ONLY — eyebrows are explicitly OUT of scope. For the closer 1:1 Angel pass, the owner wants longer EYELASHES, not longer hair — Megami's afro is already long and needs no change.
 - Full detail: `roster/parvati/CANON.md` ("2026-11-09 owner verdicts — Angel composite rejected, lash placement order").
 
 ## MODEL-TWEAKING PRINCIPLES — 2026-11-08 (standing rules, all future model work)
