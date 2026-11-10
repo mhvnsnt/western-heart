@@ -81,3 +81,11 @@ Fix: `tools/auto_rig/head_territory_clean.py` (`data/head_territory_clean.json`)
   re-encoded at q90 full chroma (mean error 0.96/255) to fit (`data/pack.json`).
 * **Gates:** anim_check edge p99.9 2.30 (`data/anim_check_final.json`). The 40-spike flag is present on the refit too
   (`data/anim_check_before.json`): fast-moving vertices in the stress clip.
+
+## Select card
+
+`thor-card-old-new.png`: re-captured through `tools/portraits/capture.mjs thor` from the model that ships (50 joints).
+The select preview's shoulder-swing fit gate (`game/js/select-screen.js`, 0.6 rad cap when a clip carries no intrinsic
+swing) rejects Ganryu's hunched sumo shoulders, so the card uses the CMU 14_01 guard fallback
+(`stanceSource: cmu-14_01`). In the fight he stands in Ganryu's stance. The old card was the Tekken 3 Bryan stance on
+an earlier 73-joint rig, with his head cocked and a hand at his helmet.
