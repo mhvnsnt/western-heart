@@ -15,21 +15,27 @@
    Effects reported per tick (the fighter applies them): source move id/name, clip key + sample, damage and the
    source active window [first_active, last_active] (hit level: see hitLevelOf), forward root travel this tick from
    the clip's raw T7 root channel (root_motion_fwd_m; lateral 0, sign unproven). */
-import { stepCancel, resolveMoveId, makeEvalCond, buttonsMask, F, T7_VAR_WRITERS } from './t7graph.js';
+import { stepCancel, resolveMoveId, makeEvalCond, buttonsMask, F, T7_VAR_WRITERS, T7_FLAG_WRITERS } from './t7graph.js';
 
 export const T7G_FPS = 60;
 export const T7G_HISTORY = 160; // frames kept; the longest King sequence window is 155
 
 export class T7GraphDriver {
   /** graph: wh-t7-graph/2; clips: { key: { frames, fwd: number[] } } (key = '<bank>_<clip>'). */
-  constructor(graph, clips, { evalState = null, strict = true } = {}) {
+  constructor(graph, clips, { evalState = null, strict = true, props = null } = {}) {
+    this.props = props; // wh-t7-graph-props/1 (extra move properties per move), or null
     this.graph = graph; this.clips = clips; this.evalState = evalState || {};
     this.strict = strict; // fail closed when an outranking row's requirement truth is unknown (see stepCancel)
     this.stats = { ticks: 0, fired: 0, transitions: 0, skipped: {}, unknownConditions: {}, missingClip: 0 };
     this.attackId = 0;
+    // Match start (only when the caller asks for tracked state): the exe player init 0x140759a50 zeroes [0x938],
+    // [0x960..0x967] and the 100 player-flag words (0x14075a033..0x14075a065); the reset 0x140746ad0 zeroes [0x938]/[0x964].
+    // Set BEFORE the stance is entered so the stance's own property writers are applied to it.
+    if (this.evalState.trackPlayerVars) {
+      this.evalState.playerVars = { [0x938]: 0, [0x964]: 0 };
+      this.evalState.playerFlags = new Array(100).fill(0);
+    }
     this.reset();
-    // Match start: the exe reset 0x140746ad0 zeroes both variables (only when the caller asks for tracked variables).
-    if (this.evalState.trackPlayerVars) this.evalState.playerVars = { [0x938]: 0, [0x964]: 0 };
   }
   clipKey(m) { return m && m.clip != null ? `${m.bank}_${m.clip}` : null; }
   clipOf(m) { const k = this.clipKey(m); return k ? this.clips[k] || null : null; }
@@ -40,6 +46,8 @@ export class T7GraphDriver {
     this.moveId = id; this.frame = 1; this.pending = null; this._prevFwd = null;
     const m = this.graph.moves[id];
     if (m && m.damage > 0) this.attackId += 1;
+    const P = this.props && this.props.moves[id];
+    if (P) this._applyWriters([...P.extra.map((x) => [x[2], x[3]]), ...P.start.map((x) => [x[2], x[3]]), ...P.end.map((x) => [x[2], x[3]])]);
   }
   get move() { return this.graph.moves[this.moveId]; }
   /* Player variables [self+0x938] / [self+0x964] (requirements 809 / 361). Exe: zeroed by the reset 0x140746ad0, written
@@ -47,10 +55,17 @@ export class T7GraphDriver {
      lists contain none (graph.props.json, tested); his cancel requirement lists DO (667 rows). WHEN the engine applies a
      list's property entries is not traced, so after such a row fires the variable becomes UNKNOWN (fail closed). */
   _varWriters(rowIndex, m) {
-    const row = m.cancels[rowIndex]; const pv = this.evalState.playerVars; if (!row || !pv) return;
-    for (const [c] of this.graph.requirements[String(row[F.req])] || []) {
+    const row = m.cancels[rowIndex]; if (!row) return;
+    this._applyWriters((this.graph.requirements[String(row[F.req])] || []).map(([c, p]) => [c, p]));
+  }
+  /* A property entry that can write tracked state makes that state UNKNOWN (when / how it applies is not traced):
+     player vars by T7_VAR_WRITERS, own flag (value >> 16) by T7_FLAG_WRITERS. Never a guessed write. */
+  _applyWriters(entries) {
+    const pv = this.evalState.playerVars, fl = this.evalState.playerFlags;
+    for (const [c, p] of entries) {
       const v = T7_VAR_WRITERS[c];
-      if (v != null && pv[v] !== null) { pv[v] = null; this.stats.varsUnknown = (this.stats.varsUnknown || 0) + 1; }
+      if (v != null && pv && pv[v] !== null) { pv[v] = null; this.stats.varsUnknown = (this.stats.varsUnknown || 0) + 1; }
+      if (T7_FLAG_WRITERS[c] && fl) { const k = p >>> 16; if (k <= 0x63 && fl[k] !== null) { fl[k] = null; this.stats.flagsUnknown = (this.stats.flagsUnknown || 0) + 1; } }
     }
   }
   /** Advance one source frame. inp: { dir, down, held, special: [cmd] }. Returns this tick's record. */

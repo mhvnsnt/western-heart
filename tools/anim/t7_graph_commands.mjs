@@ -24,7 +24,7 @@ const ix = JSON.parse(readFileSync(join(dir, 'graph-clips/index.json'), 'utf8'))
 const NAMES = Object.entries(G.DIR_BITS);
 const dirs = (m) => (m ? NAMES.filter(([, b]) => m & b).map(([n]) => n).join('|') : '*');
 const btns = (m) => [1, 2, 4, 8, 16].filter((b) => m & b).map((b) => (b === 16 ? 'RA' : String(Math.log2(b) + 1))).join('+');
-const CTX = { dead: false, charId: 2, controller: 0, playerVars: { [0x938]: 0, [0x964]: 0 } }; // Pantera's runtime context (fighter.js t7gAttach)
+const CTX = { dead: false, charId: 2, controller: 0, playerVars: { [0x938]: 0, [0x964]: 0 }, playerFlags: new Array(100).fill(0) }; // match-start state (exe init 0x140759a50) // Pantera's runtime context (fighter.js t7gAttach)
 const ev = G.makeEvalCond(CTX);
 const nameOf = (id) => (g.moves[id] ? g.moves[id].name : `0x${id.toString(16)}`);
 const len = (m) => (m.clip != null && ix.clips[`${m.bank}_${m.clip}`] ? ix.clips[`${m.bank}_${m.clip}`].frames : 0);

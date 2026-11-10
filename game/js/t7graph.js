@@ -168,7 +168,7 @@ export function stepCancel(graph, moveId, ctx) {
    (where no T7-unit distance exists) 35 / 36 stay unknown. */
 export const KNOWN_CONDITIONS = { 1: 'practice demo (false)', 35: 'opp dist <= (T7 units)', 36: 'opp dist >= (T7 units)',
   72: 'backturned (exe, needs relHeading16)', 73: 'not backturned (exe, needs relHeading16)', 80: 'rel heading in [0x3fff,0x7fff] (exe)', 81: 'rel heading in [0x8000,0xbfff] (exe)', 217: 'self chara_id == param (exe, needs charId)',
-  225: 'controller type (exe, needs controller)', 809: 'player var [+0x938] == param (exe)', 361: 'player var [+0x964] == param (exe)', 609: 'has item (exe, needs the equipped item set)', 135: 'on death', 558: 'story battle (false)', 636: 'assist button (false)', 811: 'basic combo (false)' };
+  225: 'controller type (exe, needs controller)', 809: 'player var [+0x938] == param (exe)', 359: 'player flag == value (exe)', 361: 'player var [+0x964] == param (exe)', 609: 'has item (exe, needs the equipped item set)', 135: 'on death', 558: 'story battle (false)', 636: 'assist button (false)', 811: 'basic combo (false)' };
 /* Requirement 217 params 76..90 → the chara_id they test, read from the exe helper 0x1406f46a0's jump table
    (TekkenGame-Win64-Shipping.exe; see docs/proof/2026-11-10/t7-requirements/README.md). */
 export const T7_CHAR_GROUPS = { 76: 0x21, 77: 0x22, 78: 0x23, 79: 0x3d, 80: 0x4b, 81: 0x1f, 82: 0x4b, 83: 5, 84: 0x4b,
@@ -182,10 +182,17 @@ export function t7FacingFold(state) {
 }
 
 /* Property ids that write player variables (exe property switch 0x1407198ac): id -> variable offset. */
+export const T7_FLAG_WRITERS = { 0x8106: 'set', 0x8107: 'add', 0x8108: 'sub' }; // self flag [0x968 + (value>>16)*2]
 export const T7_VAR_WRITERS = { 0x8414: 0x938, 0x8415: 0x938, 0x8416: 0x938, 0x80ed: 0x964, 0x8112: 0x964, 0x8113: 0x964 };
+
+/* Requirement ids whose slot in the exe evaluator's jump table (0x1406f9478, 0x36C entries, evaluator 0x1406f5490) is the
+ default case 0x1406f56e5 (`xor bl,bl` -> false); ids above 0x36B take the same default via `ja`. Extracted from the shipping
+ exe (329 ids); these are source-proven ALWAYS FALSE in this build, independent of game state. */
+export const T7_EXE_DEFAULT_FALSE = new Set([1,37,38,39,40,41,42,55,56,57,58,152,153,154,160,167,181,204,205,206,207,208,209,210,211,212,213,214,215,237,238,240,241,242,243,245,246,247,248,249,250,254,263,264,291,300,301,328,337,338,366,372,373,389,395,396,412,418,431,432,433,434,435,436,437,438,439,440,441,442,443,444,445,446,447,448,449,450,451,452,453,454,455,456,457,458,459,460,461,462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,477,478,479,480,481,482,483,484,485,486,487,488,489,490,491,492,493,494,495,496,497,498,499,500,501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,555,557,565,568,616,617,621,622,623,624,625,626,627,644,645,646,647,648,649,650,651,652,653,654,655,656,657,658,659,660,661,662,663,664,665,666,667,668,669,670,671,672,673,674,675,676,677,678,679,680,681,682,683,684,685,686,687,688,689,690,691,692,693,694,695,696,697,698,699,700,701,702,703,704,705,706,707,708,709,710,711,712,713,714,715,716,717,718,719,720,721,722,723,724,725,726,727,728,729,730,731,732,733,734,735,736,737,738,739,740,742,743,744,745,746,747,748,749,750,751,752,753,754,755,756,757,758,759,760,761,762,763,764,766,767,768,769,770,771,772,773,774,775,776,781,782,783,784,785,786,787,788,789,790,791,792,793,794,795,805,831,832,833,834,835,836,837,838,839,840]);
 
 export function makeEvalCond(state) {
   return (c, p) => {
+    if (!(c & 0x8000) && (c > 0x36b || T7_EXE_DEFAULT_FALSE.has(c))) return false; // exe default case
     if (c & 0x8000) return true; // exe 0x1406f54d9: an id with bit 0x8000 returns 1 before the switch
     switch (c) {
       case 1: return false;                                                  // Practice mode move demo
@@ -210,6 +217,15 @@ export function makeEvalCond(state) {
       // Player variables (exe): 809 = [self+0x938] == param (case 0x1406f7849), 361 = [self+0x964] == param (0x1406f7e2c).
       // Written ONLY by extra properties 0x8414/0x8415/0x8416 (set/add/sub [0x938]) and 0x80ed/0x8112/0x8113 ([0x964])
       // in the property switch at 0x1407198ac (id - 0x8001 jump table), and zeroed by the reset 0x140746ad0.
+      // Player flags (exe case 0x1406f8298): idx = param >> 16 (must be <= 0x63), value = param low 16 bits sign-extended
+      // (prologue 0x1406f5550..0x1406f556d); true when word [self+0x968+idx*2] == value. The init 0x140759a50 zeroes
+      // all 100 words (rep stosw at 0x14075a065); writers are props 0x8106/0x8107/0x8108 (self).
+      case 359: {
+        const idx = p >> 16; if (idx > 0x63) return false;
+        const lo = p & 0xffff, val = lo & 0x8000 ? lo - 0x10000 : lo;
+        const fl = state.playerFlags; if (!fl || fl[idx] == null) return null;
+        return fl[idx] === val;
+      }
       case 809: return state.playerVars && state.playerVars[0x938] != null ? state.playerVars[0x938] === p : null;
       case 361: return state.playerVars && state.playerVars[0x964] != null ? state.playerVars[0x964] === p : null;
       case 609:                                                              // Has item: exe asks the customization object (side, item id);

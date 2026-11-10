@@ -1,3 +1,10 @@
+## 2026-11-10 — King T7 player flags (359) from exe init, 329 exe default-false requirement ids, props-driven writers (MoneyManBusch / Grok) (t386u/t388u)
+
+- **Exe.** Player init `0x140759a50` zeroes the 100 flag words (`rep stosw` at `0x14075a065`) and `[+0x938]`/`[+0x964]`. 359 = flag[param>>16] == sign-extended low word. 329 evaluator jump-table slots are the default (`xor bl,bl`), so those ids are always false; this includes 167 and 254.
+- **Runtime.** Flags are tracked from init. A writer (0x8106-8) in a fired list, or in an entered move's props (`graph.props.json`, now loaded), makes its flag UNKNOWN; it is never guessed.
+- **Effect.** Stance row #132 is known-false via the AND, with no guess for 815 or 553. Strict still fires 0 stance commands. The blockers are now facing 72/80 (own-yaw `[+0x1b8]` not traced) and 356 (`[+0x390]`, untraced).
+  See `docs/proof/2026-11-10/t7-flags/README.md`. Not 100%. Not deployed (no new working command).
+
 ## 2026-11-10 — King T7 extra properties imported; player vars 809/361 decoded; strict input semantics (MoneyManBusch / Grok) (t386u/t388u)
 
 - **Import.** `tools/anim/t7_graph_props.py` writes `graph.props.json`: all 12,227 extra-property rows and 531 end props, with source indices. It is separate from `graph.json`, so the clip shards stay valid and nothing was rebaked.

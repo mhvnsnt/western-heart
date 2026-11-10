@@ -353,7 +353,7 @@ test('exe list semantics: any known-false entry makes the list false even after 
   assert.equal(ev(0x8106, 0), true); assert.equal(ev(0x8414, 3), true);
 });
 
-test('STRICT (game default), real Fighter: row #0 is now KNOWN-false (player vars zeroed at match start); every input is blocked by row #132 (815 parry-low, 359 flag, 553 RNG); press frames report the unproven P1 rule instead of hiding behind it', () => {
+test('STRICT (game default), real Fighter: rows #0 (vars) and #132 (flag 10 == 1, partial AND) are KNOWN-false from exe init; inputs are now blocked only by facing (72/80), 356 and item 609 rows; press frames report the unproven P1 rule', () => {
   assert.equal(F.t7GraphStrict(), true, 'strict unless the labelled permissive diagnostic is requested');
   globalThis.WH_T7GRAPH = 'permissive'; assert.equal(F.t7GraphStrict(), false); delete globalThis.WH_T7GRAPH;
   const st = g.moves[g.stance].cancels;
@@ -361,15 +361,19 @@ test('STRICT (game default), real Fighter: row #0 is now KNOWN-false (player var
   assert.deepEqual(g.requirements[String(st[132][G.F.req])], [[815, 16], [359, 655361], [553, 800], [33816, 655660], [33030, 655360], [33446, 0]]);
   for (const [dir, btn] of [['n', []], ['n', ['1']], ['f', []], ['d/f', []], ['n', ['3', '4']], ['f', ['1', '3']]]) {
     const r = rig(true); assert.equal(r.f._t7g.strict, true);
-    assert.deepEqual(r.f._t7g.evalState.playerVars, { [0x938]: 0, [0x964]: 0 }, 'exe reset 0x140746ad0 zeroes both');
+    assert.deepEqual(r.f._t7g.evalState.playerVars, { [0x938]: 0, [0x964]: 0 }, 'exe init/reset zero both');
     r.tick(4); r.stick(dir); if (btn.length) r.press(...btn); r.tick(2); if (btn.length) r.release(...btn); r.tick(150);
     assert.equal(r.log.filter((x) => x.fired && x.fired.via === 'cancel').length, 0, `${dir}+${btn.join('+')}: no cancel fires`);
     assert.ok(r.log.every((x) => x.name === 'Kg_sKAM00_'));
     assert.ok(!r.log.some((x) => x.ambiguous && x.ambiguous.index === 0), 'row #0 no longer blocks: 809 is known-false');
+    assert.equal(r.f._t7g.evalState.playerFlags[10], 0, 'exe init 0x140759a50 zeroes the flag words; nothing has written flag 10');
     const amb = r.log.filter((x) => x.ambiguous);
-    assert.ok(amb.length && amb.every((x) => x.ambiguous.index === 132));
-    assert.deepEqual(amb[0].ambiguous.unknown, [815, 359, 553]);
-    if (btn.length) assert.ok(amb.some((x) => x.ambiguous.reason === 'input-semantics'), 'press frame: P1 is reported, not applied');
+    assert.ok(amb.length, 'still blocked (fail closed), not silently firing');
+    assert.ok(!amb.some((x) => x.ambiguous.index === 132), 'row #132: 359 (flag 10 == 1) is known-false, so 815/553 need not be guessed');
+    const why = new Set(amb.flatMap((x) => x.ambiguous.unknown));
+    assert.ok([...why].every((c) => [72, 80, 356, 609].includes(c)), `remaining unknowns are the untraced facing/0x390/item state: ${[...why]}`);
+    // P1 is never applied silently: an outranking button-less unknown row on a press frame is reported as input-semantics.
+    for (const x of amb) if (x.ambiguous.reason === 'input-semantics') assert.equal(G.buttonsMask(btn) !== 0, true);
     assert.ok(r.log.some((x) => x.stalled)); assert.ok(!r.f.attack);
   }
 });
@@ -400,4 +404,30 @@ test('PERMISSIVE diagnostic: the same input fires a lower row, and the fire is f
   // On the press frame the button-less row #0 does not take the press (WH policy P1, unproven); rows gated by the
   // unresolved facing conditions 80/81 outrank the jab row and were skipped.
   assert.deepEqual(fire.fired.precedenceUnknown, [80, 81]);
+});
+
+/* Foundations validated against the shipping exe (fixtures extracted from the binary, not from expectations of blocking). */
+test('exe default case: 329 requirement ids whose jump-table slot is the default (xor bl,bl) are ALWAYS false; decoded ids are not in it', () => {
+  assert.equal(G.T7_EXE_DEFAULT_FALSE.size, 329);
+  for (const c of [1, 167, 254, 739, 742, 568]) assert.equal(G.makeEvalCond({})(c, 0), false, `${c}`);
+  for (const c of [35, 36, 72, 73, 80, 81, 135, 217, 225, 356, 359, 361, 553, 609, 809, 815]) assert.ok(!G.T7_EXE_DEFAULT_FALSE.has(c), `${c} has its own case`);
+  assert.equal(G.makeEvalCond({})(0x36c, 0), false, 'above the table: ja -> default');
+  assert.equal(G.makeEvalCond({})(0x8001, 0), true, 'bit 0x8000 still returns 1 first');
+});
+
+test('player flags (359): idx = param>>16 (<= 0x63), value = sign-extended low word; init zero; a flag writer (0x8106-8) in a fired list or an entered move\'s properties makes that flag UNKNOWN, never a guessed value', () => {
+  const ev = (fl) => G.makeEvalCond({ playerFlags: fl });
+  const z = new Array(100).fill(0);
+  assert.equal(ev(z)(359, (10 << 16) | 1), false); assert.equal(ev(z)(359, 10 << 16), true);
+  assert.equal(ev(z)(359, (0x64 << 16) | 0), false, 'idx > 0x63 -> false (exe bound)');
+  assert.equal(ev(z)(359, (3 << 16) | 0xffff), false, 'value -1 never equals an unsigned word');
+  const u = z.slice(); u[10] = null; assert.equal(ev(u)(359, (10 << 16) | 1), null);
+  assert.equal(ev(null)(359, 0), null, 'untracked -> unknown');
+  const r = rig(true); const D = r.f._t7g;
+  D._applyWriters([[0x8106, (10 << 16) | 1]]); assert.equal(D.evalState.playerFlags[10], null);
+  assert.equal(D.evalState.playerFlags[11], 0);
+  const P = bank.props; assert.equal(P.format, 'wh-t7-graph-props/1');
+  const mi = P.moves.findIndex((m) => m.extra.some((x) => x[2] === 0x8106));
+  assert.ok(mi >= 0); const k = P.moves[mi].extra.find((x) => x[2] === 0x8106)[3] >>> 16;
+  const r2 = rig(true); r2.f._t7g._enter(mi); assert.equal(r2.f._t7g.evalState.playerFlags[k], null, 'entered move with a flag writer');
 });

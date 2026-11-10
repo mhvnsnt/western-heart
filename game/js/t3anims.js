@@ -851,7 +851,9 @@ export function ensureT7Graph(fid, THREE, { fetchJson = fetchT7Json } = {}) {
   if (_t7graphLoading[fid]) return _t7graphLoading[fid];
   _t7graphLoading[fid] = (async () => {
     try {
-      const [graph, index] = await Promise.all([fetchJson(def.dir + 'graph.json'), fetchJson(def.dir + 'graph-clips/index.json')]);
+      const [graph, index, props] = await Promise.all([fetchJson(def.dir + 'graph.json'), fetchJson(def.dir + 'graph-clips/index.json'),
+        fetchJson(def.dir + 'graph.props.json').catch(() => null)]);
+      if (props && props.format !== 'wh-t7-graph-props/1') throw new Error(`props format ${props.format}`);
       if (graph.format !== 'wh-t7-graph/2' || index.format !== 'wh-t7-graph-clips/1') throw new Error(`format ${graph.format} / ${index.format}`);
       const skelId = 't7:' + def.dir;
       if (!_t3skelCache[skelId]) _t3skelCache[skelId] = await fetchJson(def.dir + 'skeleton.json');
@@ -867,7 +869,7 @@ export function ensureT7Graph(fid, THREE, { fetchJson = fetchT7Json } = {}) {
         }
       }
       const missing = Object.keys(index.clips).filter((k) => !driverClips[k]);
-      _t7graphs[fid] = { fid, bank: def.bank, dir: def.dir, skelId, graph, index, clips, driverClips, missing };
+      _t7graphs[fid] = { fid, bank: def.bank, dir: def.dir, skelId, graph, index, props, clips, driverClips, missing };
       console.log(`[WH-T7G] ${fid}: graph ${graph.moves.length} moves, ${Object.keys(driverClips).length} clips in ${index.shards.length} shards (${index.total_bytes} B)`);
       return _t7graphs[fid];
     } catch (e) {
