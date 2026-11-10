@@ -282,6 +282,7 @@ export const MODEL_URLS = {
   'burger-demon': '../roster/burger/attires/attire1/model.glb',
   // Gyou spirit form (owner 2026-10-19, Tripo pull).
   'gyou-spirit': '../roster/gyou/attires/spirit-form/model.glb',
+  'gyou-attire1': '../roster/gyou/spirit-body/model-rigged.glb', // roster wire-up 2026-11-09: his spirit body (the fighter), rigged from his archived Tripo static — carried from PR #1600, re-verified (audit PASS)
   lili: 'assets/models/lili.glb',   // base T7 Lili build (Silvertongue's Tekken base)
   // SILVERTONGUE (owner 2026-10-18: proprietary name, retired "Lili" — never use the
   // old name; see roster/silvertongue/ATTIRE-SLOTS.md): Slot 1 Tripo Main "Metallic
@@ -336,6 +337,7 @@ export const MODEL_URLS = {
   'saku-ra-main': 'assets/models/saku-ra-main.glb',
   'sam-ur-a1-body': 'assets/models/sam-ur-a1-body.glb',
   'sha-body': 'assets/models/sha-body.glb',
+  'tou-body': 'assets/models/tou-body.glb', // roster wire-up batch C 2026-11-09: Tou's own body — Paul Phoenix (pau) parts extracted from the held T7 pakchunk0 and assembled on the shared T7 skeleton (213 joints, core bones canonicalized); see docs/TOU-BODY-BUILD-2026-11-09.md
   'zen-body': 'assets/models/zen-body.glb',
   'zui_alt1': 'assets/models/zui_alt1.glb',
   'zui_alt2': 'assets/models/zui_alt2.glb',

@@ -469,8 +469,15 @@ export function createSelectScreen(deps) {
      progress — the unlock path is future design, not this change. Their
      presence on a fighter is the soul-spirit toggle (js/soul-spirit.js),
      not a select card. */
+  // Roster wire-up (2026-11-09): GYOU comes off this set — his own spirit body
+  // is rigged and wired ('gyou-attire1'), meeting the redesign's return
+  // condition (a real body of his own). Batch C (same day): TOU comes off too —
+  // his own Paul body was extracted from the held T7 pak and assembled
+  // ('tou-body'). byou stays: no own-body file exists for him, and the
+  // no-wrong-body gate (owner 2026-10-23, #866) forbids the only bodies
+  // holdings offer him.
   const SELECT_HIDDEN = new Set([
-    'byou', 'tou', 'jin_soul', 'zen', 'gyou',
+    'byou', 'jin_soul', 'zen',
     'ryuji', 'doc-frank-machine-shop',
 
   ]);
