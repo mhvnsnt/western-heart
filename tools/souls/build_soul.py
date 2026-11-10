@@ -48,13 +48,21 @@ def clear():
 _MATS = {}
 
 
-def material(name, rgb, rough=0.32, metal=0.0, emit=None):
+TEX_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tex')
+
+
+def material(name, rgb, rough=0.32, metal=0.0, emit=None, tex=None):
+    """tex: a file in tools/souls/tex/ (tools/souls/textures.py: Sato's own pixels) for the base colour."""
     if name in _MATS:
         return _MATS[name]
     m = bpy.data.materials.new(name)
     m.use_nodes = True
     b = m.node_tree.nodes.get('Principled BSDF')
     b.inputs['Base Color'].default_value = (*rgb, 1.0)
+    if tex:
+        node = m.node_tree.nodes.new('ShaderNodeTexImage')
+        node.image = bpy.data.images.load(os.path.join(TEX_DIR, tex))
+        m.node_tree.links.new(node.outputs['Color'], b.inputs['Base Color'])
     b.inputs['Roughness'].default_value = rough
     b.inputs['Metallic'].default_value = metal
     if emit:

@@ -45,9 +45,9 @@ def kai():
 
     def parts(api):
         mat = api['material']
-        red = mat('kai_red', (0.62, 0.025, 0.035), rough=0.28)
-        blue = mat('kai_blue', (0.04, 0.16, 0.72), rough=0.3)
-        gold = mat('kai_gold', (0.86, 0.55, 0.10), rough=0.25, metal=0.75)
+        red = mat('kai_red', (0.62, 0.025, 0.035), rough=0.28, tex='kai_red.png')
+        blue = mat('kai_blue', (0.04, 0.16, 0.72), rough=0.3, tex='kai_blue.png')
+        gold = mat('kai_gold', (0.86, 0.55, 0.10), rough=0.25, metal=0.75, tex='kai_gold.png')
         teal = mat('kai_eye_teal', (0.10, 0.48, 0.52), rough=0.2)
         pupil = mat('kai_eye_pupil', (0.02, 0.05, 0.26), rough=0.15)
         P = []
@@ -149,8 +149,8 @@ def tou():
 
     def parts(api):
         mat = api['material']
-        teal = mat('tou_teal', (0.07, 0.40, 0.31), rough=0.3)
-        head_g = mat('tou_head_green', (0.10, 0.36, 0.24), rough=0.32)
+        teal = mat('tou_teal', (0.07, 0.40, 0.31), rough=0.3, tex='tou_teal.png')
+        head_g = mat('tou_head_green', (0.10, 0.36, 0.24), rough=0.32, tex='tou_head.png')
         frame = mat('tou_glasses_frame', (0.30, 0.10, 0.62), rough=0.25, metal=0.3)
         white = mat('tou_eye_white', (0.95, 0.88, 0.70), rough=0.15)
         iris = mat('tou_eye_iris', (0.72, 0.04, 0.10), rough=0.2)
