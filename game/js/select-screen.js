@@ -471,11 +471,13 @@ export function createSelectScreen(deps) {
      not a select card. */
   // Roster wire-up (2026-11-09): GYOU comes off this set — his own spirit body
   // is rigged and wired ('gyou-attire1'), meeting the redesign's return
-  // condition (a real body of his own). byou/tou stay: no own-body file
-  // exists for either, and the no-wrong-body gate (owner 2026-10-23, #866)
-  // forbids the only bodies holdings offer them.
+  // condition (a real body of his own). Batch C (same day): TOU comes off too —
+  // his own Paul body was extracted from the held T7 pak and assembled
+  // ('tou-body'). byou stays: no own-body file exists for him, and the
+  // no-wrong-body gate (owner 2026-10-23, #866) forbids the only bodies
+  // holdings offer him.
   const SELECT_HIDDEN = new Set([
-    'byou', 'tou', 'jin_soul', 'zen',
+    'byou', 'jin_soul', 'zen',
     'ryuji', 'doc-frank-machine-shop',
 
   ]);
