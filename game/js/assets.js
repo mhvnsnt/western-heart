@@ -282,6 +282,12 @@ export const MODEL_URLS = {
   'burger-demon': '../roster/burger/attires/attire1/model.glb',
   // Gyou spirit form (owner 2026-10-19, Tripo pull).
   'gyou-spirit': '../roster/gyou/attires/spirit-form/model.glb',
+  // 2026-11-10: re-rigged. model-rigged.glb (kept) bound his arms to Spine (2.7% of arm-region vertices on arm bones:
+  // the skeleton sat 90 deg off his +X-facing mesh) and, at 32.5 MB, was over both live hosts' file limits. This is the
+  // GameRig rig of the same Tripo static (tools/auto_rig/rig_tripo_static.py steps, smoothing skipped: it diverges on
+  // his flame wisps), 94.9% of arm vertices on arm bones; his fused legs cut apart (tools/auto_rig/split_fused_legs.py,
+  // 2,238 of 1.94M triangles); packed to 19.8 MB (docs/proof/2026-11-10/roster-wireup/).
+  'gyou-attire1': '../roster/gyou/spirit-body/model-gamerig-cdn.glb', // roster wire-up 2026-11-09: his spirit body (the fighter), from his archived Tripo static (PR #1600)
   lili: 'assets/models/lili.glb',   // base T7 Lili build (Silvertongue's Tekken base)
   // SILVERTONGUE (owner 2026-10-18: proprietary name, retired "Lili" — never use the
   // old name; see roster/silvertongue/ATTIRE-SLOTS.md): Slot 1 Tripo Main "Metallic
@@ -302,7 +308,10 @@ export const MODEL_URLS = {
   // repointed to the shipped Demonio body (teardown-integration 2026-10-19)
   // so the key resolves instead of 404ing.
   'demonio-body': 'assets/models/demonio.glb',
-  'kai-body': 'assets/models/kai-body.glb',
+  // 2026-11-10: Kai's repaired body (roster wire-up, PR #1600 -> #1710: ModelHair_Base given a flat colour from his own
+  // hair texture, the one material the gate failed) served under a NEW path, packed 25.6 -> 14.2 MB: the remote asset
+  // bucket, which the loader tries first, still holds the unrepaired kai-body.glb (kept unchanged beside it).
+  'kai-body': 'assets/models/kai-body-cdn.glb',
   'jin-body': 'assets/models/jin-body.glb',
   'rin-body': 'assets/models/rin-body.glb',
   'jin-t7': 'assets/models/jin.glb',
@@ -335,7 +344,12 @@ export const MODEL_URLS = {
   'saku-ra_alt1': 'assets/models/saku-ra_alt1.glb',
   'saku-ra-main': 'assets/models/saku-ra-main.glb',
   'sam-ur-a1-body': 'assets/models/sam-ur-a1-body.glb',
-  'sha-body': 'assets/models/sha-body.glb',
+  // 2026-11-10: Sha's hair rebound to her head (the roster lane's head-territory rebind, PR #1600 -> #1710, kept ONLY
+  // within 30 cm of the Head joint and only onto Head / Neck / Spine2 / Spine1: tools/auto_rig/territory_weight_merge.py;
+  // the lane's file also bound her right arm to the head and her neck to a shoulder). New path for the same reason as
+  // kai-body above; sha-body.glb stays unchanged beside it.
+  'sha-body': 'assets/models/sha-body-hairfix-cdn.glb',
+  'tou-body': 'assets/models/tou-body-cdn.glb', // roster wire-up batch C 2026-11-09: Tou's own body — Paul Phoenix (pau) parts extracted from the held T7 pakchunk0 and assembled on the shared T7 skeleton (213 joints, core bones canonicalized); see docs/TOU-BODY-BUILD-2026-11-09.md. 2026-11-10: served packed (fit_cdn_budget.py: duplicate face textures merged, normal-map alpha dropped (glTF reads RGB only), q93 full-chroma JPEG, gltfpack -cc) 48.8 -> 15.5 MB; tou-body.glb stays beside it
   'zen-body': 'assets/models/zen-body.glb',
   'zui_alt1': 'assets/models/zui_alt1.glb',
   'zui_alt2': 'assets/models/zui_alt2.glb',

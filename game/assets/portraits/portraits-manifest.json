@@ -41,8 +41,8 @@
     },
     "tou": {
       "id": "tou",
-      "model": "pantera",
-      "bones": 49,
+      "model": "tou-body",
+      "bones": 213,
       "stance": true,
       "stanceSource": "cmu-14_01",
       "framed": true,
@@ -57,18 +57,18 @@
       "model": "sha-body",
       "bones": 50,
       "stance": true,
-      "stanceSource": "cmu-14_01",
+      "stanceSource": "tekken-bank",
       "framed": true,
       "bank": "xiaoyu",
       "armDeg": {
-        "L": 23,
-        "R": 12
+        "L": 20,
+        "R": 50
       }
     },
     "kai": {
       "id": "kai",
-      "model": "pantera",
-      "bones": 49,
+      "model": "kai-body",
+      "bones": 50,
       "stance": true,
       "stanceSource": "cmu-14_01",
       "framed": true,
@@ -106,15 +106,15 @@
     },
     "gyou": {
       "id": "gyou",
-      "model": "pantera",
-      "bones": 49,
+      "model": "gyou-attire1",
+      "bones": 73,
       "stance": true,
-      "stanceSource": "cmu-14_01",
+      "stanceSource": "tekken-bank",
       "framed": true,
       "bank": "hwoarang",
       "armDeg": {
-        "L": 23,
-        "R": 12
+        "L": 39,
+        "R": 42
       }
     },
     "pantera": {

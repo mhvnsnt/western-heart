@@ -193,8 +193,11 @@ const OWNERSHIP = {
     ]
   }, // table was stale vs the re-keyed ladder (Tripo default Slot 1); fixed 2026-10-22
   "gyou": {
-    "pending": true
-  },
+    "own": [
+      "gyou-attire1",
+      "gyou-spirit"
+    ]
+  }, // roster wire-up 2026-11-09: spirit body rigged from his archived Tripo static (the fighter); spirit form is his floating spirit
   "jin_soul": {
     "base": "steve-fox"
   },
@@ -202,7 +205,7 @@ const OWNERSHIP = {
     "own": [
       "kai-body"
     ]
-  },
+  }, // roster wire-up 2026-11-09: wired to his own soul-body shell (hair-base material repaired, quarantine lifted)
   "kingtyrant": {
     "own": [
       "king-tyrant",
@@ -381,8 +384,10 @@ const OWNERSHIP = {
     ]
   }, // wave 1 2026-10-23: select entry + base key landed (base = Attire 2; A1 Tripo not on disk)
   "tou": {
-    "pending": true
-  },
+    "own": [
+      "tou-body"
+    ]
+  }, // roster wire-up batch C 2026-11-09: his own Paul (pau) body, extracted from the held T7 pakchunk0 and assembled — pending retired
   "waterfall": {
     "own": [
       "waterfall",

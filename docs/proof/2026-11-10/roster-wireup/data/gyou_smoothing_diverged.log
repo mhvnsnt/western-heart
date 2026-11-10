@@ -1,0 +1,15 @@
+$ /usr/bin/python3 tools/auto_rig/backends/smooth_weights.py --in $WORK/rigged.glb --threshold 2.0 --rounds 12 --frames-per-clip 10 --gate 4.4
+round 0: edge p99.9 = 12.11 (edges > 2.0: {0: 181504})
+round 1: edge p99.9 = 15.70 (edges > 2.0: {0: 182377})
+round 2: edge p99.9 = 17.62 (edges > 2.0: {0: 195493})
+round 3: edge p99.9 = 17.33 (edges > 2.0: {0: 200450})
+round 4: edge p99.9 = 17.25 (edges > 2.0: {0: 204696})
+round 5: edge p99.9 = 17.12 (edges > 2.0: {0: 207904})
+round 6: edge p99.9 = 16.92 (edges > 2.0: {0: 209630})
+round 7: edge p99.9 = 16.76 (edges > 2.0: {0: 210771})
+round 8: edge p99.9 = 16.78 (edges > 2.0: {0: 212053})
+round 9: edge p99.9 = 16.55 (edges > 2.0: {0: 213321})
+round 10: edge p99.9 = 16.66 (edges > 2.0: {0: 213548})
+round 11: edge p99.9 = 16.48 (edges > 2.0: {0: 213836})
+final: edge p99.9 = 16.40
+smoothing did not reach the 4.4 gate

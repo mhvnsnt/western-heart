@@ -89,6 +89,7 @@ pantera-body) — the WH skeleton has no face bones at all.
 | waterfall.glb | 21 | 50 | 1.75 m |
 | dxmmii.glb | 21 | 49 | 1.80 m |
 | sha-body.glb | 32 | 50 | 1.75 m |
+| tou-body.glb | 5 | 213 | 1.75 m |
 | zen-body.glb | 37 | 50 | 1.75 m |
 | zui_alt1.glb | 18 | 50 | 1.75 m |
 | zui_alt2.glb | 18 | 50 | 1.75 m |
@@ -134,3 +135,32 @@ NO Western Heart names. Never invent names for them.
    GLBs, re-run this gate, then wire.
 3. Convert Bass Armstrong zip → vain-abel.glb (T-pose, ~1.93 m).
 4. Owner call: which foreign-skeleton models get retargeted vs re-rigged.
+
+## Roster wire-up (2026-11-09) — GYOU + KAI selectable
+
+Carried from PR #1600 (Wave 3 L3) onto current main after byte-level
+re-verification; full census in docs/ROSTER-WIREUP-CENSUS-2026-11-09.md.
+
+| Soul | Model key | Source (this doc's terms) |
+|---|---|---|
+| GYOU | `gyou-attire1` | his OWN spirit body — the archived Tripo "fiery humanoid" static (roster/gyou/spirit-body/, source sha256 a1bd1432…) rigged on the auto_rig refit pipeline; file roster/gyou/spirit-body/model-rigged.glb (32,476,664 B, 50 joints, material audit PASS); `gyou-spirit` (spirit form) unchanged |
+| KAI | `kai-body` | his own soul-body shell (Eddy body); ModelHair_Base_Material017 repaired with the authored flat colour sampled from the model's OWN hair texture (JSON-chunk-only, +44 B); material audit PASS, quarantine lifted |
+| TOU | `tou-body` | his OWN body, assembled 2026-11-09 (Batch C) from his base character's T7 parts (face/hair/upper/lower, pak code pau) extracted from the held pakchunk0: one merged skin on the shared T7 base skeleton (213 joints, Namco weights), core bones canonicalized to game names, 28 materials (26 textured from the source's own textures; tear/eye-shadow instances carry authored flat colour — the source instances have no diffuse); docs/TOU-BODY-BUILD-2026-11-09.md |
+
+BYOU remains modelPending (no own-body file in holdings; no-wrong-body
+gate #866). TOU resolved 2026-11-09 (Batch C): the Tekken 7 Paul extraction
+route landed — see his row above and docs/TOU-BODY-BUILD-2026-11-09.md.
+RYUJI stays hidden by owner ruling #6 (same-body hybrid of Cornerstone).
+BF-MAIME stays material-quarantined (15 untextured — texture production,
+not wiring).
+
+### 2026-11-10: fight-path check (the lane's one open item) — served files
+
+Judged by eye in the fight's own loader and retarget (docs/proof/2026-11-10/roster-wireup/):
+
+| Key | Served file | Why |
+|---|---|---|
+| `gyou-attire1` | roster/gyou/spirit-body/model-gamerig-cdn.glb (19.8 MB) | the carried rig bound his arms to Spine (2.7% of arm vertices on arm bones; he fought T-posed) and was 32.5 MB (over both hosts' file limits). GameRig re-rig of the same static, 94.9% on arm bones; fused legs cut apart (split_fused_legs.py, 2,238 triangles). model-rigged.glb kept |
+| `kai-body` | assets/models/kai-body-cdn.glb (14.2 MB) | the lane's hair repair, under a NEW path: the remote bucket the loader tries first still serves the unrepaired kai-body.glb (kept, main's bytes) |
+| `sha-body` | assets/models/sha-body-hairfix-cdn.glb (14.0 MB) | the lane's rebind ALSO bound her right arm to her head (hands left at T-pose); only its head-territory half kept (territory_weight_merge.py). sha-body.glb kept, main's bytes |
+| `tou-body` | assets/models/tou-body-cdn.glb (13.6 MB) | Spine1 reparented under Hips (reparent_joints.py): T7 keeps legs and upper body as siblings under BASE, so the Hips' root motion left his upper body in the air on his KO |

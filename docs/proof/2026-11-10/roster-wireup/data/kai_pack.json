@@ -1,0 +1,144 @@
+{
+ "input": "$SCRATCH/kaifix/kai-plain.glb",
+ "tool": "tools/deploy/fit_cdn_budget.py",
+ "textures": [
+  {
+   "image": 3,
+   "size": [
+    1024,
+    1024
+   ],
+   "png_bytes": 2062457,
+   "jpeg_bytes": 592380,
+   "normal_map": true,
+   "channel_err_mean": 1.77,
+   "normal_angle_err_deg": {
+    "mean": 1.322,
+    "p99": 3.58
+   }
+  },
+  {
+   "image": 4,
+   "size": [
+    1024,
+    1024
+   ],
+   "png_bytes": 1298086,
+   "jpeg_bytes": 407945,
+   "normal_map": false,
+   "channel_err_mean": 1.22
+  },
+  {
+   "image": 5,
+   "size": [
+    1024,
+    1024
+   ],
+   "png_bytes": 2058076,
+   "jpeg_bytes": 447098,
+   "normal_map": true,
+   "channel_err_mean": 1.292,
+   "normal_angle_err_deg": {
+    "mean": 1.052,
+    "p99": 3.375
+   }
+  },
+  {
+   "image": 6,
+   "size": [
+    1024,
+    1024
+   ],
+   "png_bytes": 1133146,
+   "jpeg_bytes": 387617,
+   "normal_map": false,
+   "channel_err_mean": 1.199
+  },
+  {
+   "image": 17,
+   "size": [
+    1024,
+    1024
+   ],
+   "png_bytes": 2180754,
+   "jpeg_bytes": 582792,
+   "normal_map": true,
+   "channel_err_mean": 1.783,
+   "normal_angle_err_deg": {
+    "mean": 1.344,
+    "p99": 3.591
+   }
+  },
+  {
+   "image": 18,
+   "size": [
+    1024,
+    1024
+   ],
+   "png_bytes": 1298947,
+   "jpeg_bytes": 434413,
+   "normal_map": false,
+   "channel_err_mean": 1.301
+  },
+  {
+   "image": 26,
+   "size": [
+    1024,
+    1024
+   ],
+   "png_bytes": 1547780,
+   "jpeg_bytes": 553274,
+   "normal_map": true,
+   "channel_err_mean": 1.162,
+   "normal_angle_err_deg": {
+    "mean": 0.942,
+    "p99": 3.105
+   }
+  },
+  {
+   "image": 38,
+   "size": [
+    1024,
+    512
+   ],
+   "png_bytes": 1543072,
+   "jpeg_bytes": 413494,
+   "normal_map": true,
+   "channel_err_mean": 2.174,
+   "normal_angle_err_deg": {
+    "mean": 1.577,
+    "p99": 4.137
+   }
+  },
+  {
+   "image": 39,
+   "size": [
+    1024,
+    1024
+   ],
+   "png_bytes": 1253660,
+   "jpeg_bytes": 404946,
+   "normal_map": false,
+   "channel_err_mean": 1.228
+  },
+  {
+   "image": 40,
+   "size": [
+    1024,
+    1024
+   ],
+   "png_bytes": 1449447,
+   "jpeg_bytes": 701706,
+   "normal_map": true,
+   "channel_err_mean": 1.308,
+   "normal_angle_err_deg": {
+    "mean": 1.013,
+    "p99": 3.3
+   }
+  }
+ ],
+ "output": "$SCRATCH/kaifix/kai-body-cdn.glb",
+ "bytes": 14177612,
+ "budget": 19990000,
+ "pass": true
+}

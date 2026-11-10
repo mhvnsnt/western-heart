@@ -1,0 +1,37 @@
+{
+ "input": "$SCRATCH/gyoufix3/rigged-split.glb",
+ "tool": "tools/deploy/fit_cdn_budget.py",
+ "textures": [
+  {
+   "image": 0,
+   "size": [
+    4096,
+    4096
+   ],
+   "png_bytes": 8589983,
+   "jpeg_bytes": 2529615,
+   "normal_map": true,
+   "channel_err_mean": 1.029,
+   "normal_angle_err_deg": {
+    "mean": 0.92,
+    "p99": 6.481
+   }
+  },
+  {
+   "image": 1,
+   "size": [
+    4096,
+    4096
+   ],
+   "jpeg_in_bytes": 6011972,
+   "jpeg_bytes": 4804821,
+   "normal_map": false,
+   "reencoded": true,
+   "channel_err_mean": 1.595
+  }
+ ],
+ "output": "roster/gyou/spirit-body/model-gamerig-cdn.glb",
+ "bytes": 19829004,
+ "budget": 19990000,
+ "pass": true
+}
