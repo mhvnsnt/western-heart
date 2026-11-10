@@ -153,3 +153,14 @@ route landed — see his row above and docs/TOU-BODY-BUILD-2026-11-09.md.
 RYUJI stays hidden by owner ruling #6 (same-body hybrid of Cornerstone).
 BF-MAIME stays material-quarantined (15 untextured — texture production,
 not wiring).
+
+### 2026-11-10: fight-path check (the lane's one open item) — served files
+
+Judged by eye in the fight's own loader and retarget (docs/proof/2026-11-10/roster-wireup/):
+
+| Key | Served file | Why |
+|---|---|---|
+| `gyou-attire1` | roster/gyou/spirit-body/model-gamerig-cdn.glb (19.8 MB) | the carried rig bound his arms to Spine (2.7% of arm vertices on arm bones; he fought T-posed) and was 32.5 MB (over both hosts' file limits). GameRig re-rig of the same static, 94.9% on arm bones; fused legs cut apart (split_fused_legs.py, 2,238 triangles). model-rigged.glb kept |
+| `kai-body` | assets/models/kai-body-cdn.glb (14.2 MB) | the lane's hair repair, under a NEW path: the remote bucket the loader tries first still serves the unrepaired kai-body.glb (kept, main's bytes) |
+| `sha-body` | assets/models/sha-body-hairfix-cdn.glb (14.0 MB) | the lane's rebind ALSO bound her right arm to her head (hands left at T-pose); only its head-territory half kept (territory_weight_merge.py). sha-body.glb kept, main's bytes |
+| `tou-body` | assets/models/tou-body-cdn.glb (13.6 MB) | Spine1 reparented under Hips (reparent_joints.py): T7 keeps legs and upper body as siblings under BASE, so the Hips' root motion left his upper body in the air on his KO |

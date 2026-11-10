@@ -12,6 +12,9 @@ Steps (input must be plain glTF: decode meshopt first, tools/anim/gltf_codec.mjs
   1. PNG textures over --png-min MB are re-encoded as JPEG with FULL chroma (4:4:4) at --jpeg-q: normal maps keep
      their x/y channels sharp (4:2:0 blurs them). The mean / p99 normal-angle error is reported per texture
      (Negativo's 4096^2 normal map at q93: 5.95 MB -> 1.57 MB, 0.48 deg mean, 1.94 deg p99);
+  1b. opt-in (--jpeg-reencode-min MB, 2026-11-10, Gyou's re-rig): a JPEG over that size is re-encoded the same way
+     (full chroma, --jpeg-q) and kept only if smaller; mean channel error reported. Tripo ships 4096^2 base colours as
+     ~6 MB near-lossless JPEGs; texture resolution is never reduced;
   2. gltfpack -cc -kn -km -ke (meshopt high compression, default quantization; skin, clip, names kept);
   3. refuse (exit 1) if the result is over --budget bytes.
 
@@ -107,6 +110,8 @@ def main():
     ap.add_argument('--budget', type=int, default=19_500_000, help='bytes (jsDelivr refuses files over 20 MB)')
     ap.add_argument('--jpeg-q', type=int, default=93)
     ap.add_argument('--png-min', type=float, default=1.0, help='re-encode PNGs larger than this many MB')
+    ap.add_argument('--jpeg-reencode-min', type=float, default=0.0,
+                    help='also re-encode JPEGs larger than this many MB (0 = never); kept only when smaller')
     a = ap.parse_args()
     js, blob = read_glb(a.inp)
     if 'EXT_meshopt_compression' in (js.get('extensionsUsed') or []):
@@ -120,7 +125,25 @@ def main():
     # of them as PNG; they now take the same full-chroma JPEG path, with the normal-angle error reported as before.
     normal_only = normals - other_slots(js)
     for ii, im in enumerate(js.get('images', [])):
-        if im.get('mimeType') != 'image/png' or 'bufferView' not in im:
+        if 'bufferView' not in im:
+            continue
+        if im.get('mimeType') == 'image/jpeg' and a.jpeg_reencode_min > 0 and \
+                len(views[im['bufferView']]) >= a.jpeg_reencode_min * 1e6:
+            data = views[im['bufferView']]
+            img = Image.open(io.BytesIO(data)).convert('RGB')
+            buf = io.BytesIO()
+            img.save(buf, 'JPEG', quality=a.jpeg_q, subsampling=0, optimize=True)
+            jpg = buf.getvalue()
+            t = {'image': ii, 'size': list(img.size), 'jpeg_in_bytes': len(data), 'jpeg_bytes': len(jpg),
+                 'normal_map': ii in normals, 'reencoded': len(jpg) < len(data)}
+            if t['reencoded']:
+                A = np.asarray(img).astype(np.float64)
+                B = np.asarray(Image.open(io.BytesIO(jpg)).convert('RGB')).astype(np.float64)
+                t['channel_err_mean'] = round(float(np.abs(A - B).mean()), 3)
+                views[im['bufferView']] = jpg
+            rep['textures'].append(t)
+            continue
+        if im.get('mimeType') != 'image/png':
             continue
         data = views[im['bufferView']]
         if len(data) < a.png_min * 1e6:

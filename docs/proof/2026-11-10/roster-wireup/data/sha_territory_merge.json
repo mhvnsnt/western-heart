@@ -1,0 +1,321 @@
+{
+ "tool": "tools/auto_rig/territory_weight_merge.py",
+ "base": "$SCRATCH/kaifix/sha-main-plain.glb",
+ "repair": "$SCRATCH/kaifix/sha-rep-plain.glb",
+ "output": "$SCRATCH/kaifix/sha-merged-plain.glb",
+ "joint": "Head",
+ "radius": 0.3,
+ "allow": [
+  "Head",
+  "Neck",
+  "Spine1",
+  "Spine2"
+ ],
+ "prims": [
+  {
+   "verts": 228,
+   "changed_by_repair": 0,
+   "accepted": 0,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 0,
+   "accepted_from": {}
+  },
+  {
+   "verts": 234,
+   "changed_by_repair": 0,
+   "accepted": 0,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 0,
+   "accepted_from": {}
+  },
+  {
+   "verts": 1191,
+   "changed_by_repair": 0,
+   "accepted": 0,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 0,
+   "accepted_from": {}
+  },
+  {
+   "verts": 170,
+   "changed_by_repair": 0,
+   "accepted": 0,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 0,
+   "accepted_from": {}
+  },
+  {
+   "verts": 167,
+   "changed_by_repair": 0,
+   "accepted": 0,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 0,
+   "accepted_from": {}
+  },
+  {
+   "verts": 260,
+   "changed_by_repair": 0,
+   "accepted": 0,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 0,
+   "accepted_from": {}
+  },
+  {
+   "verts": 755,
+   "changed_by_repair": 0,
+   "accepted": 0,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 0,
+   "accepted_from": {}
+  },
+  {
+   "verts": 282,
+   "changed_by_repair": 0,
+   "accepted": 0,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 0,
+   "accepted_from": {}
+  },
+  {
+   "verts": 708,
+   "changed_by_repair": 0,
+   "accepted": 0,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 0,
+   "accepted_from": {}
+  },
+  {
+   "verts": 288,
+   "changed_by_repair": 144,
+   "accepted": 0,
+   "rejected_far": 144,
+   "rejected_not_onto_allowed": 0,
+   "accepted_from": {}
+  },
+  {
+   "verts": 2470,
+   "changed_by_repair": 1419,
+   "accepted": 1419,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 0,
+   "accepted_from": {
+    "Head": 749,
+    "RightShoulder": 331,
+    "LeftArm": 132,
+    "Spine2": 118,
+    "LeftShoulder": 89
+   }
+  },
+  {
+   "verts": 456,
+   "changed_by_repair": 0,
+   "accepted": 0,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 0,
+   "accepted_from": {}
+  },
+  {
+   "verts": 224,
+   "changed_by_repair": 0,
+   "accepted": 0,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 0,
+   "accepted_from": {}
+  },
+  {
+   "verts": 37,
+   "changed_by_repair": 0,
+   "accepted": 0,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 0,
+   "accepted_from": {}
+  },
+  {
+   "verts": 786,
+   "changed_by_repair": 393,
+   "accepted": 0,
+   "rejected_far": 393,
+   "rejected_not_onto_allowed": 0,
+   "accepted_from": {}
+  },
+  {
+   "verts": 2470,
+   "changed_by_repair": 1419,
+   "accepted": 1419,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 0,
+   "accepted_from": {
+    "Head": 812,
+    "RightShoulder": 301,
+    "Spine2": 118,
+    "LeftArm": 99,
+    "LeftShoulder": 89
+   }
+  },
+  {
+   "verts": 3340,
+   "changed_by_repair": 596,
+   "accepted": 0,
+   "rejected_far": 596,
+   "rejected_not_onto_allowed": 0,
+   "accepted_from": {}
+  },
+  {
+   "verts": 282,
+   "changed_by_repair": 144,
+   "accepted": 4,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 140,
+   "accepted_from": {
+    "Neck": 4
+   }
+  },
+  {
+   "verts": 1455,
+   "changed_by_repair": 875,
+   "accepted": 875,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 0,
+   "accepted_from": {
+    "Head": 567,
+    "Neck": 248,
+    "Spine2": 42,
+    "LeftShoulder": 18
+   }
+  },
+  {
+   "verts": 800,
+   "changed_by_repair": 0,
+   "accepted": 0,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 0,
+   "accepted_from": {}
+  },
+  {
+   "verts": 338,
+   "changed_by_repair": 0,
+   "accepted": 0,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 0,
+   "accepted_from": {}
+  },
+  {
+   "verts": 242,
+   "changed_by_repair": 0,
+   "accepted": 0,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 0,
+   "accepted_from": {}
+  },
+  {
+   "verts": 186,
+   "changed_by_repair": 0,
+   "accepted": 0,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 0,
+   "accepted_from": {}
+  },
+  {
+   "verts": 3011,
+   "changed_by_repair": 1081,
+   "accepted": 1042,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 39,
+   "accepted_from": {
+    "Head": 623,
+    "LeftArm": 75,
+    "Spine2": 70,
+    "LeftShoulder": 66,
+    "RightShoulder": 65,
+    "Neck": 58
+   }
+  },
+  {
+   "verts": 3011,
+   "changed_by_repair": 1429,
+   "accepted": 1429,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 0,
+   "accepted_from": {
+    "Head": 753,
+    "RightShoulder": 230,
+    "LeftArm": 213,
+    "LeftShoulder": 98,
+    "Spine1": 64,
+    "Neck": 56
+   }
+  },
+  {
+   "verts": 141,
+   "changed_by_repair": 0,
+   "accepted": 0,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 0,
+   "accepted_from": {}
+  },
+  {
+   "verts": 118,
+   "changed_by_repair": 0,
+   "accepted": 0,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 0,
+   "accepted_from": {}
+  },
+  {
+   "verts": 62,
+   "changed_by_repair": 62,
+   "accepted": 62,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 0,
+   "accepted_from": {
+    "Head": 52,
+    "Neck": 10
+   }
+  },
+  {
+   "verts": 12,
+   "changed_by_repair": 0,
+   "accepted": 0,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 0,
+   "accepted_from": {}
+  },
+  {
+   "verts": 126,
+   "changed_by_repair": 126,
+   "accepted": 63,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 63,
+   "accepted_from": {
+    "Neck": 63
+   }
+  },
+  {
+   "verts": 126,
+   "changed_by_repair": 125,
+   "accepted": 125,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 0,
+   "accepted_from": {
+    "Neck": 63,
+    "Head": 62
+   }
+  },
+  {
+   "verts": 76,
+   "changed_by_repair": 56,
+   "accepted": 18,
+   "rejected_far": 0,
+   "rejected_not_onto_allowed": 38,
+   "accepted_from": {
+    "Neck": 18
+   }
+  }
+ ],
+ "totals": {
+  "changed_by_repair": 7869,
+  "accepted": 6456,
+  "rejected_far": 1133,
+  "rejected_not_onto_allowed": 280
+ }
+}
