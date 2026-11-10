@@ -713,6 +713,20 @@ export function genericBankAction(bank, clips, limb, grab) {
   }
   return best && clips[best] ? best : null;
 }
+/* [self+0x1c2] = own yaw - bearing to the opponent (exe facing writer 0x1406ebfe0; round start sets yaw = bearing,
+   0x1406e5623). From WH world geometry: the fighter's facing (+-x) against the vector to the opponent. The sign
+   convention between WH and T7 is not proven, so a value is given only when |angle| < 0x3fff, where 72/73/80/81 are
+   decided whatever the sign (fold < 0x3fff); otherwise null. */
+export function t7RelHeadingFromWorld(f, opp) {
+  if (!f || !opp || !f.root || !opp.root || !f.facing) return null;
+  const dx = opp.root.position.x - f.root.position.x, dz = opp.root.position.z - f.root.position.z;
+  if (!(Math.abs(dx) + Math.abs(dz) > 1e-6)) return null;
+  const a = Math.atan2(dz, dx) - Math.atan2(0, f.facing);
+  const w = Math.atan2(Math.sin(a), Math.cos(a)); // wrap to (-pi, pi]
+  const mag = Math.round(Math.abs(w) / (2 * Math.PI) * 65536);
+  return mag < 0x3fff ? mag : null;
+}
+
 export class Fighter {
   constructor(charData, startX, facing, isPlayer) {
     this.char = charData;
@@ -2833,9 +2847,9 @@ export class Fighter {
     this._t7gStatus = { label: 'T7 GRAPH DEV — King T7 source graph (development integration, not full parity) — ' +
       (this._t7g.strict ? 'STRICT precedence (ambiguous rows block)' : 'PERMISSIVE: precedence UNVERIFIED'),
       ticks: 0, hitboxes: 0, noHitbox: {}, clipUnbound: 0, suspended: 0, throwNoGrab: 0, unsupported: null,
-      // Stated, not hidden: WH keeps the fighter's posture standing and its source facing (relHeading16) is not tracked,
-      // so backturn conditions (72/73/80/81) stay UNKNOWN and graph moves are standing for hit detection.
-      assumptions: 'posture: standing (source posture undecoded) | facing: unknown (backturn rows skipped)' };
+      // Stated, not hidden: WH keeps the fighter's posture standing. Source facing (relHeading16) comes from the world
+      // only until the first source move fires (t7RelHeadingFromWorld), then 72/73/80/81 are UNKNOWN again.
+      assumptions: 'posture: standing (source posture undecoded) | facing: from the world until the first source move, then unknown (source turning not modelled)' };
     try { // visible, accurately labelled dev marker (never shown without the opt-in flag)
       if (typeof document !== 'undefined' && document.body && !document.getElementById('t7g-dev')) {
         const el = document.createElement('div'); el.id = 't7g-dev';
@@ -2865,6 +2879,9 @@ export class Fighter {
       this._t7gSuspended = false; this._enter('tekgraph'); this.vx = 0; this.vz = 0;
     }
     D.evalState.dead = !!this.dead;
+    // (_t7gHeadingOverride: test injection only; never set by the game)
+    D.evalState.relHeading16 = this._t7gHeadingOverride !== undefined ? this._t7gHeadingOverride
+      : D.headingFromWorld ? t7RelHeadingFromWorld(this, inp.opponent) : null;
     this._t7gAcc += dt;
     const held = inp.held ? ['1', '2', '3', '4'].filter((b) => inp.held[b]) : [];
     while (this._t7gAcc >= 1 / T7G_FPS - 1e-9) {

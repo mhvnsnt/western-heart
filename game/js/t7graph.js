@@ -93,23 +93,115 @@ export function matchSequence(graph, seqIdx, history) {
   return k < 0;
 }
 
-/* The cancel the source takes on this frame, or row null. ctx: { frame, moveLen (animation frames), dir,
-   down: buttons that went down this frame, held: buttons held, history, special(cmd) -> bool, evalCond }.
-   Returns { row, index, to, at, skipped: [{ index, reason, unknown? , cmd? }] } — `at` is the frame of the current
-   move the cancel applies on (>= frame). */
+/* cancel_option as the exe LOADER derives it (0x140714f5e, rows at 0x14071525e..0x14071535d; group rows identically at
+   0x14071539e..): the packed moveset carries option 0, the game computes it from the row at load time.
+     0x01  command == 0 (direction 0 and button 0)                    -> matcher 0x140742de0 returns 2 (always matches)
+     0x02  requirement list holds an id in [0x32C, 0x8000)  (0x1406fd3b0) -> main walk skips; secondary walk 0x14074f040
+     0x04  requirement list holds an id in [0x349, 0x8000)  (0x1406fd3e0)
+     0x08  requirement list holds 0x84CE                     (0x1406fd7e0)
+     0x40  (extradata & 0x3C00) != 0x2800                    -> the walk STOPS on this row (it is taken)
+     0x80  (extradata & 0x3F) == 0x16                        -> taken row is passed over when [self+0x8fc] != 0
+   (0x10 and 0x100 only steer a global byte / alias handling and are not modelled.) */
+export function t7CancelOption(graph, r) {
+  if (r._opt != null) return r._opt;
+  const list = graph.requirements[String(r[F.req])] || [];
+  const has = (lo) => list.some(([c]) => c >= lo && !(c & 0x8000));
+  const xd = r[F.extradata] == null ? 0 : r[F.extradata] >>> 0;
+  let o = 0;
+  if (r[F.cmd] === 0 && (r[F.raw] >>> 0) === 0) o |= 0x01;
+  if (has(0x32c)) o |= 0x02;
+  if (has(0x349)) o |= 0x04;
+  if (list.some(([c]) => c === 0x84ce)) o |= 0x08;
+  if ((xd & 0x3c00) !== 0x2800) o |= 0x40;
+  if ((xd & 0x3f) === 0x16) o |= 0x80;
+  Object.defineProperty(r, '_opt', { value: o, enumerable: false });
+  return o;
+}
+
+/* Input match of one plain-command row, transcribed from the exe matcher 0x140742de0 and the button test 0x140743d40.
+   Input state as the matcher reads it: direction bits [self+0xddc] (same bit layout as the command), button word
+   [self+0xdd8] with bits 0..8 = pressed this frame, 9..17 = held (layout inferred from 0x140743dbe: mode 0x40 turns each
+   required press bit i into held bit 9+i; the writer of [self+0xdd8] is not traced). Returns true | false | null. */
+function commandMatch(r, dir, down, held) {
+  const dm = r[F.cmd] >>> 0, b = r[F.raw] >>> 0;
+  if (dm !== 0) {
+    if (dm & 0x400) return null;                // also tests [self+0xde0] (meaning not traced)
+    if (!(dm & (DIR_BITS[dir] || 0))) return false;
+  }
+  if (b === 0) return true;                     // 0x140743d4f: no button requirement -> match, presses or not
+  if (b === 0x80000000) return down === 0;
+  if (b === 0x80000001) return held === 0;
+  if (b === 0x80000002) return down !== 0;
+  if (b === 0x80000003) return held !== 0;
+  const press = b & 0x1ff, hold = (b >>> 9) & 0x1ff, bits18 = (b >>> 18) & 0x1ff;
+  let needHeld = hold;
+  if (press) {
+    if (b & 0x20000000) { if (!(down & press)) return false; }
+    else if (b & 0x40000000) { if (!(down & press)) return false; needHeld |= press; }
+    else if ((down & press) !== press) return false;
+  }
+  if (needHeld && (held & needHeld) !== needHeld) return false;
+  if (bits18) return null;                      // must be set in [self+0xdd8] bits 18..26 (meaning not traced)
+  return true;
+}
+
+/* Exact application of the requirement-list property entries of a row that passed (main walk 0x14074962e..0x14074966e:
+   0x140717750 per entry, phase 1 then phase 0; the variable/flag writers run in phase 0 only, once). Tracked state:
+   player vars [0x938]/[0x964] (0x8414-6 set/add/sub, 0x80ed/0x8112/0x8113 set/add/sub low word) and own flags
+   (0x8106-8, idx = value>>16 <= 0x63, value = low word). `known` false -> the row might have run: tracked targets become
+   unknown instead. Returns the list of property ids applied. */
+const VAR_OPS = { 0x8414: [0x938, 'set'], 0x8415: [0x938, 'add'], 0x8416: [0x938, 'sub'],
+  0x80ed: [0x964, 'set'], 0x8112: [0x964, 'add'], 0x8113: [0x964, 'sub'] };
+export function applyListProps(graph, reqIdx, state, known = true) {
+  const out = [];
+  for (const [c, p] of graph.requirements[String(reqIdx)] || []) {
+    if (!(c & 0x8000)) continue;
+    out.push(c);
+    const v = VAR_OPS[c];
+    if (v && state.playerVars) {
+      const [k, op] = v; const val = k === 0x964 ? (p & 0xffff) : (p | 0);
+      const cur = state.playerVars[k];
+      // a row that MIGHT have run: a set to the value already held changes nothing either way; anything else -> unknown
+      if (!known) { if (!(op === 'set' && cur === val)) state.playerVars[k] = null; }
+      else state.playerVars[k] = op === 'set' ? val : cur == null ? null : op === 'add' ? (cur + val) | 0 : (cur - val) | 0;
+    }
+    if ((c === 0x8106 || c === 0x8107 || c === 0x8108) && state.playerFlags) {
+      const idx = p >> 16; if (idx < 0 || idx > 0x63) continue;
+      const val = p & 0xffff; const cur = state.playerFlags[idx];
+      if (!known) { if (!(c === 0x8106 && cur === val)) state.playerFlags[idx] = null; }
+      else state.playerFlags[idx] = c === 0x8106 ? val : cur == null ? null : c === 0x8107 ? (cur + val) & 0xffff : (cur - val) & 0xffff;
+    }
+  }
+  return out;
+}
+
+/* The cancel the source takes on this frame, or row null — the exe main walk 0x140749240 (body 0x140749568..):
+   rows in order, a group reference (0x800B) is walked in place until 0x800C (its own fields are not tested), the walk
+   ends at the AUTO row (0x8000). Per row: frame window [start, end] inclusive; option 0x02 rows are skipped (they
+   belong to the secondary walk 0x14074f040, see below); input match; requirement list (plain AND); when it holds the
+   row's property entries are applied, and the walk STOPS only on an option-0x40 row — rows whose extradata has
+   (x & 0x3C00) == 0x2800 apply their properties and the walk continues. A taken row whose extradata is 0x3FFF is
+   replaced by the AUTO row.
+   ctx: { frame, moveLen, dir, down, held, history, special(cmd), evalCond, strict, state (vars/flags, mutated when
+   ctx.apply) }. STRICT fails closed where the outcome depends on something unknown: a stopping row whose input or
+   requirement truth is unknown, and option-0x02 rows of the secondary walk (its order against the main walk is not
+   traced) unless known-false. A NON-stopping row with an unknown requirement only makes the state it writes unknown. */
 export function stepCancel(graph, moveId, ctx) {
   const mv = graph.moves[moveId]; if (!mv) return null;
   const skipped = []; const down = buttonsMask(ctx.down), held = buttonsMask(ctx.held) | down;
-  const len = ctx.moveLen || 0, f = ctx.frame;
-  // STRICT: a row whose input/timing semantics are not proven (P1 button-less row on a press frame, mode-0 sequence
-  // elements, undecoded specials that were signalled, unknown modes, cancel frames past the clip) could be the source's
-  // choice unless its requirement list is known-false, so it blocks every lower row exactly like an unknown requirement.
+  const len = ctx.moveLen || 0, f = ctx.frame; const st = ctx.state || null; const apply = !!(ctx.apply && st);
+  const effects = [];
+  const block = (i, unknown, reason) => ({ row: null, index: -1, to: null, at: null, skipped, effects,
+    ambiguous: { index: i, unknown, reason } });
   const uncertain = (i, r, reason, extra) => {
     skipped.push({ index: i, reason, ...extra });
-    if (!ctx.strict) return null;
     const rq = evalRequirements(graph, r[F.req], ctx, ctx.evalCond);
-    if (!rq.ok && !rq.unknown.length) return null; // known-false: cannot fire whatever the input semantics are
-    return { row: null, index: -1, to: null, at: null, skipped, ambiguous: { index: i, unknown: rq.unknown, reason } };
+    if (!rq.ok && !rq.unknown.length) return null;            // known-false: cannot matter
+    if (!(t7CancelOption(graph, r) & 0x40)) {                  // non-stopping row: only its writes are in doubt
+      if (apply) applyListProps(graph, r[F.req], st, false);
+      return null;
+    }
+    return ctx.strict ? block(i, rq.unknown, reason) : null;
   };
   for (let i = 0; i < mv.cancels.length; i++) {
     const r = mv.cancels[i]; const cmd = r[F.cmd];
@@ -122,6 +214,18 @@ export function stepCancel(graph, moveId, ctx) {
     } else {
       if (r[F.start] && f < r[F.start]) continue;
       if (r[F.end] && r[F.end] !== WHOLE && f > r[F.end]) continue;
+      const opt = t7CancelOption(graph, r);
+      if (opt & 0x02) {
+        // Secondary walk 0x14074f040 (called at 0x1407508c5 with the same move and frame) takes these rows; when it
+        // runs relative to the main walk is not traced, so a live candidate there makes the frame's outcome unknown.
+        const rq = evalRequirements(graph, r[F.req], ctx, ctx.evalCond);
+        if (!rq.ok && !rq.unknown.length) continue;
+        let m = cmd >= SEQ0 && cmd <= SEQ_MAX ? matchSequence(graph, r[F.seq], ctx.history) : cmd > AUTO ? null : commandMatch(r, ctx.dir || 'n', down, held);
+        if (m === false) continue;
+        skipped.push({ index: i, reason: 'secondary-walk', unknown: rq.unknown });
+        if (ctx.strict) return block(i, rq.unknown, 'secondary-walk');
+        continue;
+      }
       if (cmd >= SEQ0 && cmd <= SEQ_MAX) {
         const m = matchSequence(graph, r[F.seq], ctx.history);
         if (m === null) { const u = uncertain(i, r, 'seq-mode', { seq: r[F.seq] }); if (u) return u; continue; }
@@ -130,14 +234,9 @@ export function stepCancel(graph, moveId, ctx) {
         if (!KNOWN_SPECIALS[cmd]) { if (ctx.special && ctx.special(cmd)) { const u = uncertain(i, r, 'special', { cmd }); if (u) return u; } continue; }
         if (!(ctx.special && ctx.special(cmd))) continue;
       } else {
-        if (!dirOk(r[F.dir], ctx.dir)) continue;
-        const pp = r[F.buttons], mode = r[F.mode];
-        if (r[F.held] && (held & r[F.held]) !== r[F.held]) continue;
-        if (r[F.notHeld] && (held & r[F.notHeld])) continue;
-        if (mode === MODE_AT_LEAST) { if (!pp || (down & pp) !== pp) continue; }
-        else if (mode === MODE_ANY) { if (!(down & pp)) continue; }
-        else if (mode === 0 && !pp) { if (down) { const u = uncertain(i, r, 'input-semantics'); if (u) return u; continue; } } // P1 (unproven)
-        else { const u = uncertain(i, r, 'mode', { mode }); if (u) return u; continue; }
+        const m = commandMatch(r, ctx.dir || 'n', down, held);
+        if (m === null) { const u = uncertain(i, r, 'input-bits'); if (u) return u; continue; }
+        if (!m) continue;
       }
       const sf = r[F.sf];
       if (sf === 0) at = len || null;
@@ -146,18 +245,29 @@ export function stepCancel(graph, moveId, ctx) {
       if (at == null) { const u = uncertain(i, r, 'timing', { sf }); if (u) return u; continue; }
     }
     const rq = evalRequirements(graph, r[F.req], ctx, ctx.evalCond);
+    const stops = cmd === AUTO || (t7CancelOption(graph, r) & 0x40);
     if (!rq.ok) {
       if (rq.unknown.length) {
         skipped.push({ index: i, reason: 'requirement', unknown: rq.unknown });
-        // Strict precedence: this row's input, window and frame all matched, and only its requirement truth is unknown.
-        // The engine takes the FIRST row whose requirements hold, so no lower row can be presented as the source's choice.
-        if (ctx.strict) return { row: null, index: -1, to: null, at: null, skipped, ambiguous: { index: i, unknown: rq.unknown } };
+        if (!stops) { if (apply) applyListProps(graph, r[F.req], st, false); continue; }
+        if (ctx.strict) return block(i, rq.unknown);
       }
       continue;
     }
-    return { row: r, index: i, to: resolveMoveId(graph, r[F.to]), at: Math.max(at, f), skipped };
+    if (cmd !== AUTO) {
+      const props = apply ? applyListProps(graph, r[F.req], st, true) : [];
+      if (!stops) { effects.push({ index: i, props }); continue; }
+      effects.push({ index: i, props });
+      if (t7CancelOption(graph, r) & 0x80) { const u = uncertain(i, r, 'option-0x80'); if (u) return u; }
+      if ((r[F.extradata] >>> 0) === 0x3fff) { // 0x1407496a0: replaced by this move's AUTO row
+        for (let k = i + 1; k < mv.cancels.length; k++) if (mv.cancels[k][F.cmd] === AUTO) {
+          const a = mv.cancels[k]; return { row: a, index: k, to: resolveMoveId(graph, a[F.to]), at: Math.max(a[F.start] || len, f), skipped, effects, via3fff: i };
+        }
+      }
+    }
+    return { row: r, index: i, to: resolveMoveId(graph, r[F.to]), at: Math.max(at, f), skipped, effects };
   }
-  return { row: null, index: -1, to: null, at: null, skipped };
+  return { row: null, index: -1, to: null, at: null, skipped, effects };
 }
 
 /* Condition ids this runtime evaluates, by their meaning in the community label table (TKMovesets2
@@ -195,6 +305,7 @@ export function makeEvalCond(state) {
     if (!(c & 0x8000) && (c > 0x36b || T7_EXE_DEFAULT_FALSE.has(c))) return false; // exe default case
     if (c & 0x8000) return true; // exe 0x1406f54d9: an id with bit 0x8000 returns 1 before the switch
     switch (c) {
+      case 0: return true;                                                   // exe case 0 (0x1406f55dc): mov bl,1
       case 1: return false;                                                  // Practice mode move demo
       case 35: return state.oppDistT7 == null ? null : state.oppDistT7 <= p; // Opponent distance <= param
       case 36: return state.oppDistT7 == null ? null : state.oppDistT7 >= p; // Opponent distance >= param

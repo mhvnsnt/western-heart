@@ -28,7 +28,7 @@ export function tekkenDirOf(inp, facing) {
   return 'n';
 }
 const LIMBS = /^[1-4](\+[1-4]){0,3}$/;
-export function feedT7GraphInput(p, inp, dt, { onThrowEscape = null } = {}) {
+export function feedT7GraphInput(p, inp, dt, { onThrowEscape = null, opponent = null } = {}) {
   const stick = tekkenDirOf(inp, p.facing);
   p.setStick(stick);
   const had = p.tekken._dash; p.tekken.noteDirection(stick, dt); const dl = p.tekken._dash;
@@ -37,6 +37,6 @@ export function feedT7GraphInput(p, inp, dt, { onThrowEscape = null } = {}) {
     for (const act of q) if (/^[1-4](\+[1-4])?$/.test(act) && p.tryThrowBreak(act) && onThrowEscape) onThrowEscape();
     return stick;
   }
-  p.t7gFeed({ dir: stick, presses: q.filter((a) => LIMBS.test(a)), held: inp.held, dashDir: dl && dl !== had ? dl.dir : null }, dt);
+  p.t7gFeed({ dir: stick, presses: q.filter((a) => LIMBS.test(a)), held: inp.held, dashDir: dl && dl !== had ? dl.dir : null, opponent }, dt);
   return stick;
 }

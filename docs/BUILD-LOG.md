@@ -1,3 +1,10 @@
+## 2026-11-10 — King T7 cancel walk transcribed from the exe: loader cancel_option, matcher, list-property timing; strict neutral→jab→1,2 works with the opponent ahead (MoneyManBusch / Grok) (t386u/t388u)
+
+- **Root cause.** Packed cancel_option is 0 everywhere; the loader `0x140714f5e` derives it. The main walk `0x140749240` stops only on option-0x40 rows; extradata `&0x3C00 == 0x2800` rows only apply their properties. Button word 0 matches on press frames too.
+- **Runtime.** `t7CancelOption`, `commandMatch` and `applyListProps` give exact var/flag values at walk time. The heading comes from world geometry until the first source move.
+- **Strict, opponent ahead:** 1 → Kg_lp00F → 2 → Kg_lprpF; f → walk; f,n,f → dash. After a source move, facing is unknown again (80 blocks the run).
+  See `docs/proof/2026-11-10/t7-walker/README.md`. Not 100%. Opt-in only.
+
 ## 2026-11-10 — King T7 player flags (359) from exe init, 329 exe default-false requirement ids, props-driven writers (MoneyManBusch / Grok) (t386u/t388u)
 
 - **Exe.** Player init `0x140759a50` zeroes the 100 flag words (`rep stosw` at `0x14075a065`) and `[+0x938]`/`[+0x964]`. 359 = flag[param>>16] == sign-extended low word. 329 evaluator jump-table slots are the default (`xor bl,bl`), so those ids are always false; this includes 167 and 254.

@@ -40,6 +40,9 @@ export class T7GraphDriver {
   clipKey(m) { return m && m.clip != null ? `${m.bank}_${m.clip}` : null; }
   clipOf(m) { const k = this.clipKey(m); return k ? this.clips[k] || null : null; }
   reset(moveId = this.graph.stance) {
+    // Heading context: valid from the world only until a source move fires (source turning/tracking: move word 0x56,
+    // extradata 0x8000, per-frame update 0x14074afe0, is not modelled), then UNKNOWN until the next reset.
+    this.headingFromWorld = true;
     this.history = []; this.pending = null; this._enter(moveId);
   }
   _enter(id) {
@@ -70,6 +73,7 @@ export class T7GraphDriver {
   }
   /** Advance one source frame. inp: { dir, down, held, special: [cmd] }. Returns this tick's record. */
   step(inp = {}) {
+    if (!this.headingFromWorld) this.evalState.relHeading16 = null; // see reset()
     const g = this.graph, m = this.move, f = this.frame;
     const clip = this.clipOf(m); const len = clip ? clip.frames : 0;
     const down = buttonsMask(inp.down), held = buttonsMask(inp.held) | down, dir = inp.dir || 'n';
@@ -90,7 +94,10 @@ export class T7GraphDriver {
       if (f >= this.pending.at) fire = this.pending;
     } else {
       const r = stepCancel(g, this.moveId, { frame: f, moveLen: len, dir, down, held, history: this.history,
-        special: (c) => sp.includes(c), evalCond, strict: this.strict });
+        special: (c) => sp.includes(c), evalCond, strict: this.strict,
+        // the walk applies passing rows' requirement-list properties in order (exe 0x14074962e), so later rows see them
+        state: this.evalState, apply: !!this.evalState.trackPlayerVars });
+      if (r.effects && r.effects.length) rec.effects = r.effects;
       rec.skipped = r.skipped;
       if (r.ambiguous) { rec.ambiguous = r.ambiguous; this.stats.ambiguous = (this.stats.ambiguous || 0) + 1; }
       for (const s of r.skipped) {
@@ -112,10 +119,13 @@ export class T7GraphDriver {
       fire = { to: resolveMoveId(g, m.transition), via: 'transition', index: -1 };
     }
     if (fire) {
+      // Re-entering the SAME move through its own transition (the idle loop) with a zero turn word keeps the heading;
+      // any other source move ends the world-heading window.
+      const P = this.props && this.props.moves[fire.to];
+      if (!((fire.via === 'transition' || fire.cmd === 0x8000) && fire.to === this.moveId && P && P.turn_0x56 === 0)) this.headingFromWorld = false;
       rec.fired = { to: fire.to, toName: g.moves[fire.to] ? g.moves[fire.to].name : null, via: fire.via, index: fire.index,
         acceptedFrame: fire.acceptedFrame ?? f, appliedFrame: f, precedenceUnknown: fire.precedenceUnknown || [] };
       if (fire.via === 'transition') this.stats.transitions += 1; else this.stats.fired += 1;
-      if (fire.via === 'cancel') this._varWriters(fire.index, m);
       if (rec.fired.precedenceUnknown.length) this.stats.precedenceUnknown = (this.stats.precedenceUnknown || 0) + 1;
       this._enter(fire.to);
     } else this.frame += 1;
