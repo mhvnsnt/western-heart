@@ -1,0 +1,22 @@
+{
+ "input": "$SCRATCH/thorfix/thor-pelvis-head.glb",
+ "tool": "tools/deploy/fit_cdn_budget.py",
+ "textures": [
+  {
+   "image": 1,
+   "size": [
+    4096,
+    4096
+   ],
+   "jpeg_in_bytes": 3731263,
+   "jpeg_bytes": 3142763,
+   "normal_map": false,
+   "reencoded": true,
+   "channel_err_mean": 0.961
+  }
+ ],
+ "output": "roster/thor/attires/attire1/model-pelvisfix-cdn.glb",
+ "bytes": 19386208,
+ "budget": 19990000,
+ "pass": true
+}
