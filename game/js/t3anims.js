@@ -827,13 +827,17 @@ export function t7NormString(input) {
 /** Dash / run notation, exact (whitespace dropped, CASE KEPT: 'F' = held forward is its own command):
     'f, F+1' -> 'f,F+1'; 'f,f,n,2'; 'f,f,f+3'. Null for anything that is not a dash or run motion. */
 export function t7NormMotion(input) {
-  const s = String(input || '').replace(/\s+/g, '');
+  // RUN ALIAS (2026-11-10, pass 4): the THIRD forward input of a run move is one link in King's table — the dash
+  // Kg_sDASHF's direction-STATE cancel (dir 0x40 tested at frame 12) to sRUN__00F, a state test, not a tap event —
+  // so 'f,f,F+X' (third f held) and 'f,f,f+X' (third f tapped) reach the same run move. Only that position is
+  // canonicalized; 'f,F+X' (held SECOND input, the dash's own F+X) is never folded into anything.
+  const s = String(input || '').replace(/\s+/g, '').replace(/^f,f,F\+/, 'f,f,f+');
   return /^(f,F\+[1-4](\+[1-4])*|f,f,n,[1-4](\+[1-4])*|f,f,f\+[1-4](\+[1-4])*)$/.test(s) ? s : null;
 }
 /* DASH / RUN MOVES (2026-11-10, tools/anim/t7_move_resolve.py --motions): mapped on King's own link tables (stance
    cancel 0x8001 -> Kg_sDASHF; the dash's f+X / n+X cancels; the dash's f cancel -> sRUN__00F, then the run's X),
    checked on the final move's damage + first active frame. A played row with the identical motion input plays
-   that clip (exact input only; 'f,f,F+3' is not 'f,f,f+3'). */
+   that clip (exact input; the one sourced alias is the run's third input, see t7NormMotion). */
 /* STRING STEPS (2026-11-10, tools/anim/t7_move_resolve.py --strings): the pack's string-step moves (e.g.
    '1,2~t7.king.2' = the 2 of 1,2, motbin Kg_lprpF) were mapped by walking the cancel graph from the stance and
    checked on the step's own damage + first active frame. Pressing the same string from neutral reaches the same

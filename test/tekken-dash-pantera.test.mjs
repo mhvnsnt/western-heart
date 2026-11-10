@@ -95,3 +95,30 @@ test('a button can cancel the dash from frame 1 (motbin 1/2/3/4 cancels, window 
   assert.equal(f.attackName, 'f,F+1');
   assert.equal(f._tekDash, null, 'leaving the dash clears it');
 });
+
+// KBD (pass 4): sDASH_00B's group cancels d/b|d|d/f -> crouch transitions, requirement 0, window [1, 32767].
+function frameK(f, stick) {
+  const had = f.tekken._dash; f.tekken.noteDirection(stick, DT); const dl = f.tekken._dash;
+  if (dl && dl !== had) f.trySystemMotion(dl.dir);
+  f.tryCrouch(stick === 'd/b' || stick === 'd' || stick === 'd/f');
+  f.stateT += DT; f._tickState(DT);
+}
+const pressK = (f, seq) => { for (const [d, n] of seq) for (let i = 0; i < n; i++) frameK(f, d); };
+test('KBD: b,b then d/b cancels the backdash into crouch (sourced req-0 link), b,b backdashes again', () => {
+  assert.equal(F.TEKKEN_BACKDASH_CROUCH_CANCEL_FROM.t7_king, 1);
+  const f = pantera();
+  pressK(f, [['b', 2], ['n', 2], ['b', 1]]); assert.equal(f.state, 'tekdash'); const id1 = f._tekDash.id;
+  pressK(f, [['b', 4], ['d/b', 1]]); assert.equal(f.state, 'crouch', 'd/b must cancel the backdash');
+  const x1 = f.root.position.x;
+  pressK(f, [['b', 1], ['n', 2], ['b', 1]]);
+  assert.equal(f.state, 'tekdash'); assert.notEqual(f._tekDash.id, id1, 'a NEW backdash');
+  pressK(f, [['b', 4], ['d/b', 1]]); assert.equal(f.state, 'crouch');
+  assert.ok(f.root.position.x < x1 - 0.01, 'the second backdash travelled further back');
+});
+test('KBD negatives: down does not cancel the FORWARD dash; no backdash-into-backdash link', () => {
+  const f = pantera(); pressK(f, [['f', 2], ['n', 2], ['f', 1], ['f', 3], ['d/b', 2]]);
+  assert.equal(f.state, 'tekdash'); assert.equal(f._tekDash.dir, 'f');
+  const g = pantera(); pressK(g, [['b', 2], ['n', 2], ['b', 1]]); const id = g._tekDash.id;
+  pressK(g, [['n', 2], ['b', 1], ['n', 2], ['b', 1]]);
+  assert.equal(g._tekDash && g._tekDash.id, id, 'b,b mid-backdash must not restart it (not in the table)');
+});
