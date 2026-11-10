@@ -1,3 +1,10 @@
+## 2026-11-10 — GitHub Pages synced to main 63f6ea9c (owner t387u) (MoneyManBusch / Grok)
+
+- Live Pages `847a0aa4` (Nov 8) → `63f6ea9c` through the established API route (`deploy_api.py`, fast-forward, no force). Deploy commit `0969a76e` built 08:59 CST. Manifest and 12 spot files verified byte-identical to main.
+- `deploy_api.py` now adds the own-slot T7 banks `game/assets/anim/t3/t7_*` (256 files, 10.1 MB). The code loads them locally with no remote fallback, and the old rules would have left them off Pages.
+- #1672's six fixes are on Pages now: every added line is still on main, and its `game/tests` round/camera/cache tests pass (6/16/7).
+- Follow-up: `b53755b4` (Pantera pass 4) shipped as deploy `5e4c6a4f`, built 09:19 CST. Pages and Cloudflare are both on `b53755b4`.
+- Not shipped (pre-existing, over headroom): 16 older T3/DW bank dirs, about 92 MB. Cloudflare is unaffected.
 ## 2026-11-10 — Pantera pass 4: run-alias fix, KBD crouch cancel, King T7 sequence/group/requirement decode (MoneyManBusch / Grok) (t386u)
 
 - **Alias.** `t7NormMotion` now canonicalizes only the run's third input (`f,f,F+X` → `f,f,f+X`). It is the dash's f-state link at frame 12 → `sRUN__00F`, so there is no blind case folding. `f,f,F+3` / `f,f,F+3+4` now play King T7 `Kg_666lk` / `Kg_dki11` (they were T3).
