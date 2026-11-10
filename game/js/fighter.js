@@ -2810,7 +2810,10 @@ export class Fighter {
   /* ---- T7 full-graph development integration (see t7GraphDevEnabled) ---- */
   t7gAttach(bank) {
     this._t7gBank = bank;
-    this._t7g = new T7GraphDriver(bank.graph, bank.driverClips, { evalState: { dead: !!this.dead } });
+    // Requirement context (docs/proof/2026-11-10/t7-requirements/README.md): own chara_id from T7_GRAPHS, controller 0 =
+    // player-controlled (this driver only runs for the human player). Backturn, distance, items stay UNKNOWN (null).
+    this._t7g = new T7GraphDriver(bank.graph, bank.driverClips,
+      { evalState: { dead: !!this.dead, charId: T7_GRAPHS[this.char.id].charId ?? null, controller: 0 } });
     this._t7gAcc = 0; this._t7gDown = 0; this._t7gSpecial = []; this._t7gRec = null; this._t7gAtkId = -1;
     this._t7gStatus = { label: 'T7 GRAPH DEV — King T7 source graph (development integration, not full parity)',
       ticks: 0, hitboxes: 0, noHitbox: {}, clipUnbound: 0, suspended: 0 };

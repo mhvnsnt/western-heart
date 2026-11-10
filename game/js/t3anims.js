@@ -827,7 +827,9 @@ export function ensureT7Moves(fid, THREE) {
    (fighter.js t7GraphDevEnabled: ?t7graph=1 or localStorage wh.t7graph=1); the default game is unchanged.
    Every file loads page first, then jsDelivr (fetchT7Json), like the moves packs. */
 export const T7_GRAPHS = {
-  pantera: { bank: 'king', dir: 'assets/anim/t7/king/' },
+  // charId: the T7 chara_id of the moveset owner, which requirement 217 reads at [player+0xD8] (exe). King = 2 in the
+  // community chara-ID table (TekkenMovesetExtractor additionalReqDetails.py); Pantera runs King's own moveset.
+  pantera: { bank: 'king', dir: 'assets/anim/t7/king/', charId: 2 },
 };
 const _t7graphs = {}; const _t7graphLoading = {};
 export function ensureT7Graph(fid, THREE, { fetchJson = fetchT7Json } = {}) {

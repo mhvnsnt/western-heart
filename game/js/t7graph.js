@@ -146,14 +146,33 @@ export function stepCancel(graph, moveId, ctx) {
    in any source on hand. Distances are T7 units (state.oppDistT7); no metre conversion is assumed, so in the game
    (where no T7-unit distance exists) 35 / 36 stay unknown. */
 export const KNOWN_CONDITIONS = { 1: 'practice demo (false)', 35: 'opp dist <= (T7 units)', 36: 'opp dist >= (T7 units)',
-  72: 'backturned', 135: 'on death', 558: 'story battle (false)', 636: 'assist button (false)', 811: 'basic combo (false)' };
+  72: 'backturned', 73: 'not backturned', 217: 'self chara_id == param (exe, needs charId)',
+  225: 'controller type (exe, needs controller)', 609: 'has item (exe, needs the equipped item set)', 135: 'on death', 558: 'story battle (false)', 636: 'assist button (false)', 811: 'basic combo (false)' };
+/* Requirement 217 params 76..90 → the chara_id they test, read from the exe helper 0x1406f46a0's jump table
+   (TekkenGame-Win64-Shipping.exe; see docs/proof/2026-11-10/t7-requirements/README.md). */
+export const T7_CHAR_GROUPS = { 76: 0x21, 77: 0x22, 78: 0x23, 79: 0x3d, 80: 0x4b, 81: 0x1f, 82: 0x4b, 83: 5, 84: 0x4b,
+  85: 0x45, 86: 0x4b, 87: 0x1e, 88: 0x4b, 89: 0x0f, 90: 0x4b };
+
 export function makeEvalCond(state) {
   return (c, p) => {
     switch (c) {
       case 1: return false;                                                  // Practice mode move demo
       case 35: return state.oppDistT7 == null ? null : state.oppDistT7 <= p; // Opponent distance <= param
       case 36: return state.oppDistT7 == null ? null : state.oppDistT7 >= p; // Opponent distance >= param
-      case 72: return state.backturned == null ? null : !!state.backturned;  // Backturned (unknown unless the caller knows)
+      case 72: return state.backturned == null ? null : !!state.backturned;  // Backturned: exe word [self+0x1c4] > 0x4000 (unknown unless the caller knows)
+      case 73: return state.backturned == null ? null : !state.backturned;   // Not backturned: exe word [self+0x1c4] <= 0x4000
+      case 217: {                                                            // Player character ID: exe chara_id [self+0xD8] == param,
+        if (state.charId == null) return null;                               // params 76..90 are exe-coded groups (T7_CHAR_GROUPS)
+        const grp = T7_CHAR_GROUPS[p];
+        return grp != null ? state.charId === grp : state.charId === p;
+      }
+      case 225: {                                                            // Character Controller: exe [self+0x1570] (0 = player)
+        if (state.controller == null) return null;
+        if (state.controller === 0) return p === 0;                          // a player-controlled fighter: true only for param 0 (both exe paths)
+        return p === 0 ? null : state.controller === p;                      // param 0 for a non-player depends on unmodelled exe flags
+      }
+      case 609:                                                              // Has item: exe asks the customization object (side, item id);
+        return Array.isArray(state.items) ? state.items.includes(p) : null;  // false when a global byte is set. Needs the full equipped set.
       case 135: return state.dead == null ? null : !!state.dead;             // On death
       case 558: return false;                                                // Story Battle (WH is never story mode)
       case 636: return false;                                                // Assist button pressed (WH has none)
