@@ -60,8 +60,10 @@ export function routeFor(notation, mv, slots) {
 export function installAddedMoves(fighterId, ms, opts = {}) {
   if (!ms || !ms.moves) return [];
   // slotless moveset (moves keyed by notation, as movesets.js _prepare reads them): seed the
-  // slots from the moves, or the move list and ai.js would only see the added soul moves
-  ms.slots = ms.slots || Object.fromEntries(Object.keys(ms.moves).map(k => [k, k]));
+  // slots from the moves, or the move list and ai.js would only see the added soul moves.
+  // A displaced row ('<key>~base' from tools/moveset-merge/rebase_moveset.py, '<key>~t3proxy' from
+  // t7_sheet_fill.py) stays in the file but is never pressed: the row that took its input is slotted.
+  ms.slots = ms.slots || Object.fromEntries(Object.keys(ms.moves).filter(k => !/~(?:base|t3proxy)$/.test(k)).map(k => [k, k]));
   const n = variantCount(ms, opts), added = [];
   for (const sys of SOUL_SYSTEMS) {
     for (let i = 0; i < n; i++) {
