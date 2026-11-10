@@ -1,3 +1,11 @@
+## 2026-11-10 — King T7 extra properties imported; player vars 809/361 decoded; strict input semantics (MoneyManBusch / Grok) (t386u/t388u)
+
+- **Import.** `tools/anim/t7_graph_props.py` writes `graph.props.json`: all 12,227 extra-property rows and 531 end props, with source indices. It is separate from `graph.json`, so the clip shards stay valid and nothing was rebaked.
+- **Exe.** 809/361 test player vars `[+0x938]`/`[+0x964]`. Props 0x8414-6 / 0x80ed/0x8112/0x8113 write them (switch `0x1407198ac`); reset `0x140746ad0` zeroes them. King's property lists never write them; 667 cancel rows' requirement lists do (apply timing not traced, so they become unknown after such a row fires).
+- **Strict.** The unproven P1 press-frame rule now blocks instead of being applied quietly. Stance row #0 is known-false.
+- **Still 0 stance commands under strict:** row #132 needs 815 (parry), 359 (flag 10) and 553 (RNG).
+  See `docs/proof/2026-11-10/t7-playervars/README.md`. Not 100%.
+
 ## 2026-11-10 — King T7 cancel selection: exe AND lists, 0x8000 ids, STRICT precedence (fail closed) (MoneyManBusch / Grok) (t386u/t388u)
 
 - **Exe list loop** `0x1406f4750`: a requirement list is a plain AND, so a known-false entry decides it even after an unknown one. Ids with bit 0x8000 are true (`0x1406f54d9`).

@@ -353,22 +353,44 @@ test('exe list semantics: any known-false entry makes the list false even after 
   assert.equal(ev(0x8106, 0), true); assert.equal(ev(0x8414, 3), true);
 });
 
-test('STRICT (game default): an outranking row whose input matched but whose requirement is UNKNOWN blocks every lower row; nothing is presented as the source\'s choice', () => {
+test('STRICT (game default), real Fighter: row #0 is now KNOWN-false (player vars zeroed at match start); every input is blocked by row #132 (815 parry-low, 359 flag, 553 RNG); press frames report the unproven P1 rule instead of hiding behind it', () => {
   assert.equal(F.t7GraphStrict(), true, 'strict unless the labelled permissive diagnostic is requested');
   globalThis.WH_T7GRAPH = 'permissive'; assert.equal(F.t7GraphStrict(), false); delete globalThis.WH_T7GRAPH;
-  const row0 = g.moves[g.stance].cancels[0];
-  assert.deepEqual(g.requirements[String(row0[G.F.req])], [[809, 15], [33812, 0], [361, 100]]);
-  for (const [dir, btn] of [['n', ['1']], ['f', []], ['d/f', []], ['n', ['3', '4']], ['f', ['1', '3']]]) {
+  const st = g.moves[g.stance].cancels;
+  assert.deepEqual(g.requirements[String(st[0][G.F.req])], [[809, 15], [33812, 0], [361, 100]]);
+  assert.deepEqual(g.requirements[String(st[132][G.F.req])], [[815, 16], [359, 655361], [553, 800], [33816, 655660], [33030, 655360], [33446, 0]]);
+  for (const [dir, btn] of [['n', []], ['n', ['1']], ['f', []], ['d/f', []], ['n', ['3', '4']], ['f', ['1', '3']]]) {
     const r = rig(true); assert.equal(r.f._t7g.strict, true);
+    assert.deepEqual(r.f._t7g.evalState.playerVars, { [0x938]: 0, [0x964]: 0 }, 'exe reset 0x140746ad0 zeroes both');
     r.tick(4); r.stick(dir); if (btn.length) r.press(...btn); r.tick(2); if (btn.length) r.release(...btn); r.tick(150);
-    const fires = r.log.filter((x) => x.fired && x.fired.via === 'cancel');
-    assert.equal(fires.length, 0, `${dir}+${btn.join('+')}: no cancel fires`);
-    assert.ok(r.log.every((x) => x.name === 'Kg_sKAM00_'), 'stays in the source stance');
-    const amb = r.log.find((x) => x.ambiguous);
-    assert.equal(amb.ambiguous.index, 0); assert.deepEqual(amb.ambiguous.unknown, [809, 361]);
-    assert.ok(r.log.some((x) => x.stalled), 'the AUTO loop / transition is not taken past an ambiguous row: the move holds');
-    assert.ok(!r.f.attack, 'no hitbox');
+    assert.equal(r.log.filter((x) => x.fired && x.fired.via === 'cancel').length, 0, `${dir}+${btn.join('+')}: no cancel fires`);
+    assert.ok(r.log.every((x) => x.name === 'Kg_sKAM00_'));
+    assert.ok(!r.log.some((x) => x.ambiguous && x.ambiguous.index === 0), 'row #0 no longer blocks: 809 is known-false');
+    const amb = r.log.filter((x) => x.ambiguous);
+    assert.ok(amb.length && amb.every((x) => x.ambiguous.index === 132));
+    assert.deepEqual(amb[0].ambiguous.unknown, [815, 359, 553]);
+    if (btn.length) assert.ok(amb.some((x) => x.ambiguous.reason === 'input-semantics'), 'press frame: P1 is reported, not applied');
+    assert.ok(r.log.some((x) => x.stalled)); assert.ok(!r.f.attack);
   }
+});
+
+test('player variables: King\'s extra-property lists never write them; his cancel requirement lists do (fail closed after such a row fires); suspension makes them unknown', () => {
+  const P = JSON.parse(readFileSync(join(KING, 'graph.props.json'), 'utf8'));
+  assert.equal(P.format, 'wh-t7-graph-props/1'); assert.equal(P.moves.length, g.moves.length);
+  assert.equal(P.counts.extra_rows, 12227);
+  const W = new Set(Object.keys(G.T7_VAR_WRITERS).map(Number));
+  assert.equal(P.moves.flatMap((m) => [...m.extra, ...m.start, ...m.end]).filter((x) => W.has(x[2])).length, 0);
+  const rowsWithWriters = [];
+  g.moves.forEach((m, mi) => m.cancels.forEach((r, ri) => {
+    if ((g.requirements[String(r[G.F.req])] || []).some(([c]) => W.has(c))) rowsWithWriters.push([mi, ri]);
+  }));
+  assert.equal(rowsWithWriters.length, 667);
+  const r = rig(true); const D = r.f._t7g;
+  const [mi, ri] = rowsWithWriters.find(([mi, ri]) => g.requirements[String(g.moves[mi].cancels[ri][G.F.req])].some(([c]) => c === 0x8414));
+  D._varWriters(ri, g.moves[mi]);
+  assert.equal(D.evalState.playerVars[0x938], null); assert.equal(G.makeEvalCond(D.evalState)(809, 15), null);
+  const r2 = rig(true); r2.f._t7gSuspended = true; r2.f.state = 'idle'; r2.tick(2);
+  assert.deepEqual(r2.f._t7g.evalState.playerVars, { [0x938]: null, [0x964]: null });
 });
 
 test('PERMISSIVE diagnostic: the same input fires a lower row, and the fire is flagged with the outranking unknown conditions', () => {

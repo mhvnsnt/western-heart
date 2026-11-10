@@ -101,23 +101,33 @@ export function stepCancel(graph, moveId, ctx) {
   const mv = graph.moves[moveId]; if (!mv) return null;
   const skipped = []; const down = buttonsMask(ctx.down), held = buttonsMask(ctx.held) | down;
   const len = ctx.moveLen || 0, f = ctx.frame;
+  // STRICT: a row whose input/timing semantics are not proven (P1 button-less row on a press frame, mode-0 sequence
+  // elements, undecoded specials that were signalled, unknown modes, cancel frames past the clip) could be the source's
+  // choice unless its requirement list is known-false, so it blocks every lower row exactly like an unknown requirement.
+  const uncertain = (i, r, reason, extra) => {
+    skipped.push({ index: i, reason, ...extra });
+    if (!ctx.strict) return null;
+    const rq = evalRequirements(graph, r[F.req], ctx, ctx.evalCond);
+    if (!rq.ok && !rq.unknown.length) return null; // known-false: cannot fire whatever the input semantics are
+    return { row: null, index: -1, to: null, at: null, skipped, ambiguous: { index: i, unknown: rq.unknown, reason } };
+  };
   for (let i = 0; i < mv.cancels.length; i++) {
     const r = mv.cancels[i]; const cmd = r[F.cmd];
     if (cmd === GROUP_END) continue;
     let at;
     if (cmd === AUTO) {
       at = r[F.start] || len;
-      if (!at) { skipped.push({ index: i, reason: 'auto-len' }); continue; }
+      if (!at) { const u = uncertain(i, r, 'auto-len'); if (u) return u; continue; }
       if (f < at) continue;
     } else {
       if (r[F.start] && f < r[F.start]) continue;
       if (r[F.end] && r[F.end] !== WHOLE && f > r[F.end]) continue;
       if (cmd >= SEQ0 && cmd <= SEQ_MAX) {
         const m = matchSequence(graph, r[F.seq], ctx.history);
-        if (m === null) { skipped.push({ index: i, reason: 'seq-mode', seq: r[F.seq] }); continue; }
+        if (m === null) { const u = uncertain(i, r, 'seq-mode', { seq: r[F.seq] }); if (u) return u; continue; }
         if (!m) continue;
       } else if (cmd > AUTO) {
-        if (!KNOWN_SPECIALS[cmd]) { if (ctx.special && ctx.special(cmd)) skipped.push({ index: i, reason: 'special', cmd }); continue; }
+        if (!KNOWN_SPECIALS[cmd]) { if (ctx.special && ctx.special(cmd)) { const u = uncertain(i, r, 'special', { cmd }); if (u) return u; } continue; }
         if (!(ctx.special && ctx.special(cmd))) continue;
       } else {
         if (!dirOk(r[F.dir], ctx.dir)) continue;
@@ -126,14 +136,14 @@ export function stepCancel(graph, moveId, ctx) {
         if (r[F.notHeld] && (held & r[F.notHeld])) continue;
         if (mode === MODE_AT_LEAST) { if (!pp || (down & pp) !== pp) continue; }
         else if (mode === MODE_ANY) { if (!(down & pp)) continue; }
-        else if (mode === 0 && !pp) { if (down) continue; } // P1
-        else { skipped.push({ index: i, reason: 'mode', mode }); continue; }
+        else if (mode === 0 && !pp) { if (down) { const u = uncertain(i, r, 'input-semantics'); if (u) return u; continue; } } // P1 (unproven)
+        else { const u = uncertain(i, r, 'mode', { mode }); if (u) return u; continue; }
       }
       const sf = r[F.sf];
       if (sf === 0) at = len || null;
       else if (len && sf > len) at = null;
       else at = Math.max(sf, f);
-      if (at == null) { skipped.push({ index: i, reason: 'timing', sf }); continue; }
+      if (at == null) { const u = uncertain(i, r, 'timing', { sf }); if (u) return u; continue; }
     }
     const rq = evalRequirements(graph, r[F.req], ctx, ctx.evalCond);
     if (!rq.ok) {
@@ -158,7 +168,7 @@ export function stepCancel(graph, moveId, ctx) {
    (where no T7-unit distance exists) 35 / 36 stay unknown. */
 export const KNOWN_CONDITIONS = { 1: 'practice demo (false)', 35: 'opp dist <= (T7 units)', 36: 'opp dist >= (T7 units)',
   72: 'backturned (exe, needs relHeading16)', 73: 'not backturned (exe, needs relHeading16)', 80: 'rel heading in [0x3fff,0x7fff] (exe)', 81: 'rel heading in [0x8000,0xbfff] (exe)', 217: 'self chara_id == param (exe, needs charId)',
-  225: 'controller type (exe, needs controller)', 609: 'has item (exe, needs the equipped item set)', 135: 'on death', 558: 'story battle (false)', 636: 'assist button (false)', 811: 'basic combo (false)' };
+  225: 'controller type (exe, needs controller)', 809: 'player var [+0x938] == param (exe)', 361: 'player var [+0x964] == param (exe)', 609: 'has item (exe, needs the equipped item set)', 135: 'on death', 558: 'story battle (false)', 636: 'assist button (false)', 811: 'basic combo (false)' };
 /* Requirement 217 params 76..90 → the chara_id they test, read from the exe helper 0x1406f46a0's jump table
    (TekkenGame-Win64-Shipping.exe; see docs/proof/2026-11-10/t7-requirements/README.md). */
 export const T7_CHAR_GROUPS = { 76: 0x21, 77: 0x22, 78: 0x23, 79: 0x3d, 80: 0x4b, 81: 0x1f, 82: 0x4b, 83: 5, 84: 0x4b,
@@ -170,6 +180,9 @@ export function t7FacingFold(state) {
   const rel = state.relHeading16 & 0xffff;
   return rel >= 0x8000 ? (~rel & 0xffff) : rel;
 }
+
+/* Property ids that write player variables (exe property switch 0x1407198ac): id -> variable offset. */
+export const T7_VAR_WRITERS = { 0x8414: 0x938, 0x8415: 0x938, 0x8416: 0x938, 0x80ed: 0x964, 0x8112: 0x964, 0x8113: 0x964 };
 
 export function makeEvalCond(state) {
   return (c, p) => {
@@ -194,6 +207,11 @@ export function makeEvalCond(state) {
         if (state.controller === 0) return p === 0;                          // a player-controlled fighter: true only for param 0 (both exe paths)
         return p === 0 ? null : state.controller === p;                      // param 0 for a non-player depends on unmodelled exe flags
       }
+      // Player variables (exe): 809 = [self+0x938] == param (case 0x1406f7849), 361 = [self+0x964] == param (0x1406f7e2c).
+      // Written ONLY by extra properties 0x8414/0x8415/0x8416 (set/add/sub [0x938]) and 0x80ed/0x8112/0x8113 ([0x964])
+      // in the property switch at 0x1407198ac (id - 0x8001 jump table), and zeroed by the reset 0x140746ad0.
+      case 809: return state.playerVars && state.playerVars[0x938] != null ? state.playerVars[0x938] === p : null;
+      case 361: return state.playerVars && state.playerVars[0x964] != null ? state.playerVars[0x964] === p : null;
       case 609:                                                              // Has item: exe asks the customization object (side, item id);
         return Array.isArray(state.items) ? state.items.includes(p) : null;  // false when a global byte is set. Needs the full equipped set.
       case 135: return state.dead == null ? null : !!state.dead;             // On death

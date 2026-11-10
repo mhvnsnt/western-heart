@@ -2827,7 +2827,8 @@ export class Fighter {
     // Requirement context (docs/proof/2026-11-10/t7-requirements/README.md): own chara_id from T7_GRAPHS, controller 0 =
     // player-controlled (this driver only runs for the human player). relHeading16 (backturn), distance, items stay UNKNOWN.
     this._t7g = new T7GraphDriver(bank.graph, bank.driverClips,
-      { evalState: { dead: !!this.dead, charId: T7_GRAPHS[this.char.id].charId ?? null, controller: 0 }, strict: t7GraphStrict() });
+      { evalState: { dead: !!this.dead, charId: T7_GRAPHS[this.char.id].charId ?? null, controller: 0, trackPlayerVars: true },
+        strict: t7GraphStrict() });
     this._t7gAcc = 0; this._t7gDown = 0; this._t7gSpecial = []; this._t7gRec = null; this._t7gAtkId = -1;
     this._t7gStatus = { label: 'T7 GRAPH DEV — King T7 source graph (development integration, not full parity) — ' +
       (this._t7g.strict ? 'STRICT precedence (ambiguous rows block)' : 'PERMISSIVE: precedence UNVERIFIED'),
@@ -2855,7 +2856,12 @@ export class Fighter {
       (this.state === 'tekgraph' || this.state === 'idle' || this.state === 'walk' || this.state === 'crouch');
     if (!free) { this._t7gSuspended = true; this._t7gAcc = 0; this._t7gDown = 0; this._t7gSpecial = []; return false; }
     if (this.state !== 'tekgraph') {
-      if (this._t7gSuspended || !this._t7gRec) { D.reset(); this._t7gStatus.suspended += this._t7gSuspended ? 1 : 0; }
+      if (this._t7gSuspended || !this._t7gRec) {
+        D.reset(); this._t7gStatus.suspended += this._t7gSuspended ? 1 : 0;
+        // The WH engine ran this fighter (hit stun, cinematics...) with no source moves: anything the source could
+        // have written meanwhile is unknown, so the player variables become UNKNOWN (fail closed, never re-zeroed).
+        if (this._t7gSuspended && D.evalState.playerVars) D.evalState.playerVars = { [0x938]: null, [0x964]: null };
+      }
       this._t7gSuspended = false; this._enter('tekgraph'); this.vx = 0; this.vz = 0;
     }
     D.evalState.dead = !!this.dead;

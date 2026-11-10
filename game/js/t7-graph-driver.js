@@ -15,7 +15,7 @@
    Effects reported per tick (the fighter applies them): source move id/name, clip key + sample, damage and the
    source active window [first_active, last_active] (hit level: see hitLevelOf), forward root travel this tick from
    the clip's raw T7 root channel (root_motion_fwd_m; lateral 0, sign unproven). */
-import { stepCancel, resolveMoveId, makeEvalCond, buttonsMask } from './t7graph.js';
+import { stepCancel, resolveMoveId, makeEvalCond, buttonsMask, F, T7_VAR_WRITERS } from './t7graph.js';
 
 export const T7G_FPS = 60;
 export const T7G_HISTORY = 160; // frames kept; the longest King sequence window is 155
@@ -28,6 +28,8 @@ export class T7GraphDriver {
     this.stats = { ticks: 0, fired: 0, transitions: 0, skipped: {}, unknownConditions: {}, missingClip: 0 };
     this.attackId = 0;
     this.reset();
+    // Match start: the exe reset 0x140746ad0 zeroes both variables (only when the caller asks for tracked variables).
+    if (this.evalState.trackPlayerVars) this.evalState.playerVars = { [0x938]: 0, [0x964]: 0 };
   }
   clipKey(m) { return m && m.clip != null ? `${m.bank}_${m.clip}` : null; }
   clipOf(m) { const k = this.clipKey(m); return k ? this.clips[k] || null : null; }
@@ -40,6 +42,17 @@ export class T7GraphDriver {
     if (m && m.damage > 0) this.attackId += 1;
   }
   get move() { return this.graph.moves[this.moveId]; }
+  /* Player variables [self+0x938] / [self+0x964] (requirements 809 / 361). Exe: zeroed by the reset 0x140746ad0, written
+     only by property ids 0x8414-0x8416 / 0x80ed, 0x8112, 0x8113 (property switch 0x1407198ac). King's extra-move-property
+     lists contain none (graph.props.json, tested); his cancel requirement lists DO (667 rows). WHEN the engine applies a
+     list's property entries is not traced, so after such a row fires the variable becomes UNKNOWN (fail closed). */
+  _varWriters(rowIndex, m) {
+    const row = m.cancels[rowIndex]; const pv = this.evalState.playerVars; if (!row || !pv) return;
+    for (const [c] of this.graph.requirements[String(row[F.req])] || []) {
+      const v = T7_VAR_WRITERS[c];
+      if (v != null && pv[v] !== null) { pv[v] = null; this.stats.varsUnknown = (this.stats.varsUnknown || 0) + 1; }
+    }
+  }
   /** Advance one source frame. inp: { dir, down, held, special: [cmd] }. Returns this tick's record. */
   step(inp = {}) {
     const g = this.graph, m = this.move, f = this.frame;
@@ -87,6 +100,7 @@ export class T7GraphDriver {
       rec.fired = { to: fire.to, toName: g.moves[fire.to] ? g.moves[fire.to].name : null, via: fire.via, index: fire.index,
         acceptedFrame: fire.acceptedFrame ?? f, appliedFrame: f, precedenceUnknown: fire.precedenceUnknown || [] };
       if (fire.via === 'transition') this.stats.transitions += 1; else this.stats.fired += 1;
+      if (fire.via === 'cancel') this._varWriters(fire.index, m);
       if (rec.fired.precedenceUnknown.length) this.stats.precedenceUnknown = (this.stats.precedenceUnknown || 0) + 1;
       this._enter(fire.to);
     } else this.frame += 1;
