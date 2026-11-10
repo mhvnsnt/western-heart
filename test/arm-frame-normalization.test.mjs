@@ -277,3 +277,84 @@ test('pantera (T7 king stance): the mannequin path stays exact and untouched', a
     assert.ok(Math.abs(m.joints[j].mean) <= 1, `${j} T7 twist error ${m.joints[j].mean.toFixed(1)}deg — T7 path must stay exact`);
   }
 });
+
+// 2026-11-10 (owner: "Arms at shoulders, forearms, and hands are all crushed and twisted"). The rig above has
+// IDENTITY rest rotations; real fighter rigs (Blender / Tripo exports) carry bone-aligned rest frames with arbitrary
+// rolls. On those, the local-twist measure behind estimateArmCorr reads the rig's own rest roll as a "transport
+// error": the 2026-11-10 poselab sweep measured 40-200 deg arm constants on 16 of the 17 fighters that play a real
+// T7 stance (diablo R 170, retsu R 177, burger L 173, sha R 135, negativo L 83 / R 85 ...), which rolled their arms,
+// stretched shoulder armour to the ears and folded chest pieces (docs/proof/2026-11-10/t7-arm-roll/). For T7 data the
+// world-delta transfer is already exact (the T7 mannequin and the fighters' rigs are both T-poses), so T7 skeletons
+// are exempt from the arm-frame normalization like they are from the head and spine ones.
+function buildRolledRig() {
+  // Same joint positions as buildCanonicalRig, but every bone's rest frame points local +Y down the bone with a roll
+  // (what Blender's glTF exporter writes), so no rest local rotation is identity.
+  const ref = buildCanonicalRig();
+  const P = {}, par = {}, order = [];
+  ref.traverse((o) => { if (o.isBone) { P[o.name] = o.getWorldPosition(new THREE.Vector3()); par[o.name] = o.parent.isBone ? o.parent.name : null; order.push(o.name); } });
+  const CHILD = {};
+  for (const n of order) if (par[n] && !CHILD[par[n]]) CHILD[par[n]] = n;
+  CHILD.Spine2 = 'Neck';
+  for (const s of ['Left', 'Right']) { CHILD[s + 'Shoulder'] = s + 'Arm'; CHILD[s + 'UpLeg'] = s + 'Leg'; }
+  const Wq = {};
+  order.forEach((n, i) => {
+    const c = CHILD[n];
+    const dir = c ? P[c].clone().sub(P[n]).normalize() : (par[n] ? P[n].clone().sub(P[par[n]]).normalize() : new THREE.Vector3(0, 1, 0));
+    const q = new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir);
+    Wq[n] = new THREE.Quaternion().setFromAxisAngle(dir, ((i * 47) % 180 - 90) * Math.PI / 180).multiply(q); // roll
+  });
+  const root = new THREE.Object3D(); root.name = 'Armature';
+  const bone = {};
+  for (const n of order) {
+    const b = new THREE.Bone(); b.name = n; bone[n] = b;
+    const pq = par[n] ? Wq[par[n]] : new THREE.Quaternion();
+    const pp = par[n] ? P[par[n]] : new THREE.Vector3();
+    b.quaternion.copy(pq.clone().invert().multiply(Wq[n]));
+    b.position.copy(P[n].clone().sub(pp).applyQuaternion(pq.clone().invert()));
+    (par[n] ? bone[par[n]] : root).add(b);
+  }
+  const model = new THREE.Group(); model.name = 'rolled-instance';
+  model.add(root); model.updateMatrixWorld(true);
+  for (const n of order) {
+    const err = bone[n].getWorldPosition(new THREE.Vector3()).distanceTo(P[n]);
+    if (err > 1e-6) throw new Error(`rolled rig ${n} moved ${err}`);
+  }
+  return model;
+}
+
+test('negativo (T7 Negan stance) on a rolled-rest rig: no arm roll fires, every arm joint transfers exactly', async () => {
+  const clips = await T.loadT3Clips(THREE, 'bryan'); // his bound bank; loads the T7 stances bound to it
+  const model = buildRolledRig();
+  let rc = T.retargetT3Clips(clips, 'bryan', model, THREE, 'negativo');
+  rc = T.applyT7Stance('negativo', 'bryan', rc, model, THREE, 'negativo');
+  assert.ok(rc && rc.stance, 'T7 stance applied');
+  const skel = JSON.parse(fs.readFileSync(join(ROOT, 'game/assets/anim/t7/negan/skeleton.json'), 'utf8'));
+  const data = JSON.parse(fs.readFileSync(join(ROOT, 'game/assets/anim/t7/negan/stance.json'), 'utf8'));
+  const J = {}; for (const j of skel.joints) J[j.name] = j;
+  const order = skel.joints.map((j) => j.name);
+  const joints = ['LeftShoulder', 'LeftArm', 'LeftForeArm', 'LeftHand', 'RightShoulder', 'RightArm', 'RightForeArm', 'RightHand'];
+  const bones = {}; for (const j of joints) bones[j] = byCanon(model, j);
+  const restW = {}; for (const j of joints) restW[j] = bones[j].getWorldQuaternion(new THREE.Quaternion());
+  const mixer = new THREE.AnimationMixer(model);
+  mixer.clipAction(rc.stance).play();
+  const n = Math.max(...order.map((j) => (data.rot_xyzw[j] || []).length));
+  let worst = 0, at = '';
+  for (let f = 0; f < n; f += 25) {
+    // Source world rotations (identity rest) at frame f.
+    const G = {};
+    for (const name of order) {
+      const r = data.rot_xyzw[name]; const q = new THREE.Quaternion();
+      if (r && r.length) { const v = r[Math.min(f, r.length - 1)]; q.set(v[0], v[1], v[2], v[3]); }
+      const p = J[name].parent; if (p && G[p]) q.premultiply(G[p]);
+      G[name] = q;
+    }
+    mixer.setTime(f / data.fps); model.updateMatrixWorld(true);
+    for (const j of joints) {
+      const d = bones[j].getWorldQuaternion(new THREE.Quaternion()).multiply(restW[j].clone().invert());
+      const ang = 2 * Math.acos(Math.min(1, Math.abs(d.dot(G[j])))) * DEG;
+      if (ang > worst) { worst = ang; at = `${j} frame ${f}`; }
+    }
+  }
+  mixer.stopAllAction();
+  assert.ok(worst <= 1, `T7 stance arm transfer off by ${worst.toFixed(1)} deg (${at}) — the T7 path must stay exact`);
+});
