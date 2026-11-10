@@ -282,6 +282,7 @@ export const MODEL_URLS = {
   'burger-demon': '../roster/burger/attires/attire1/model.glb',
   // Gyou spirit form (owner 2026-10-19, Tripo pull).
   'gyou-spirit': '../roster/gyou/attires/spirit-form/model.glb',
+  'gyou-attire1': '../roster/gyou/spirit-body/model-rigged.glb', // roster wire-up 2026-11-09: his spirit body (the fighter), rigged from his archived Tripo static — carried from PR #1600, re-verified (audit PASS)
   lili: 'assets/models/lili.glb',   // base T7 Lili build (Silvertongue's Tekken base)
   // SILVERTONGUE (owner 2026-10-18: proprietary name, retired "Lili" — never use the
   // old name; see roster/silvertongue/ATTIRE-SLOTS.md): Slot 1 Tripo Main "Metallic

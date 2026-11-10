@@ -134,3 +134,19 @@ NO Western Heart names. Never invent names for them.
    GLBs, re-run this gate, then wire.
 3. Convert Bass Armstrong zip → vain-abel.glb (T-pose, ~1.93 m).
 4. Owner call: which foreign-skeleton models get retargeted vs re-rigged.
+
+## Roster wire-up (2026-11-09) — GYOU + KAI selectable
+
+Carried from PR #1600 (Wave 3 L3) onto current main after byte-level
+re-verification; full census in docs/ROSTER-WIREUP-CENSUS-2026-11-09.md.
+
+| Soul | Model key | Source (this doc's terms) |
+|---|---|---|
+| GYOU | `gyou-attire1` | his OWN spirit body — the archived Tripo "fiery humanoid" static (roster/gyou/spirit-body/, source sha256 a1bd1432…) rigged on the auto_rig refit pipeline; file roster/gyou/spirit-body/model-rigged.glb (32,476,664 B, 50 joints, material audit PASS); `gyou-spirit` (spirit form) unchanged |
+| KAI | `kai-body` | his own soul-body shell (Eddy body); ModelHair_Base_Material017 repaired with the authored flat colour sampled from the model's OWN hair texture (JSON-chunk-only, +44 B); material audit PASS, quarantine lifted |
+
+BYOU + TOU remain modelPending (no own-body file in holdings; no-wrong-body
+gate #866 — TOU's route is the Tekken 7 Paul extraction, see the census).
+RYUJI stays hidden by owner ruling #6 (same-body hybrid of Cornerstone).
+BF-MAIME stays material-quarantined (15 untextured — texture production,
+not wiring).

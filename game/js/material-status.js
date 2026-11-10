@@ -110,7 +110,6 @@ export const MATERIAL_STATUS = {
   "demonio-bloodline-ember": "2 untextured",
   "jin-bloodline-ember": "2 untextured",
   "jin-t7": "2 untextured",
-  "kai-body": "1 untextured",
   "kinpo-legacy": "5 untextured",
   "kinpo-t8": "15 untextured",
   "kinpo_alt1": "17 untextured",
