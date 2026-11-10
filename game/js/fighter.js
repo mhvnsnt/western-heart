@@ -638,9 +638,21 @@ export const TEKKEN_RUN = { t7_king: { fromDashFrame: 12, chain: ['runStart', 'r
 export function t7GraphDevEnabled() {
   if (globalThis.WH_T7GRAPH != null) return !!globalThis.WH_T7GRAPH;
   try {
-    if (typeof location !== 'undefined' && /[?&]t7graph=1(?:&|$)/.test(location.search || '')) return true;
-    return typeof localStorage !== 'undefined' && localStorage.getItem('wh.t7graph') === '1';
+    if (typeof location !== 'undefined' && /[?&]t7graph=(1|permissive)(?:&|$)/.test(location.search || '')) return true;
+    return typeof localStorage !== 'undefined' && /^(1|permissive)$/.test(localStorage.getItem('wh.t7graph') || '');
   } catch (e) { return false; }
+}
+/* Precedence mode. STRICT (default, ?t7graph=1): the engine takes the FIRST cancel row whose requirement list holds, so when
+   a row whose input matched has an UNKNOWN requirement, nothing below it fires (fail closed; the move holds).
+   PERMISSIVE (?t7graph=permissive, a labelled diagnostic): such rows are skipped and a lower row may fire, flagged
+   "precedence UNVERIFIED". It is never the source's certain choice. */
+export function t7GraphStrict() {
+  if (globalThis.WH_T7GRAPH === 'permissive') return false;
+  try {
+    if (typeof location !== 'undefined' && /[?&]t7graph=permissive(?:&|$)/.test(location.search || '')) return false;
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('wh.t7graph') === 'permissive') return false;
+  } catch (e) { /* default strict */ }
+  return true;
 }
 export const T7G_HIT_LEVELS = { h: 'high', m: 'mid', l: 'low' };
 export function t7BankForwardTravel(root_t, fps, t) {
@@ -2815,9 +2827,10 @@ export class Fighter {
     // Requirement context (docs/proof/2026-11-10/t7-requirements/README.md): own chara_id from T7_GRAPHS, controller 0 =
     // player-controlled (this driver only runs for the human player). relHeading16 (backturn), distance, items stay UNKNOWN.
     this._t7g = new T7GraphDriver(bank.graph, bank.driverClips,
-      { evalState: { dead: !!this.dead, charId: T7_GRAPHS[this.char.id].charId ?? null, controller: 0 } });
+      { evalState: { dead: !!this.dead, charId: T7_GRAPHS[this.char.id].charId ?? null, controller: 0 }, strict: t7GraphStrict() });
     this._t7gAcc = 0; this._t7gDown = 0; this._t7gSpecial = []; this._t7gRec = null; this._t7gAtkId = -1;
-    this._t7gStatus = { label: 'T7 GRAPH DEV — King T7 source graph (development integration, not full parity)',
+    this._t7gStatus = { label: 'T7 GRAPH DEV — King T7 source graph (development integration, not full parity) — ' +
+      (this._t7g.strict ? 'STRICT precedence (ambiguous rows block)' : 'PERMISSIVE: precedence UNVERIFIED'),
       ticks: 0, hitboxes: 0, noHitbox: {}, clipUnbound: 0, suspended: 0, throwNoGrab: 0, unsupported: null,
       // Stated, not hidden: WH keeps the fighter's posture standing and its source facing (relHeading16) is not tracked,
       // so backturn conditions (72/73/80/81) stay UNKNOWN and graph moves are standing for hit detection.
@@ -2870,10 +2883,12 @@ export class Fighter {
     if (this._t7gEl && (this._t7gStatus.ticks % 6 === 0 || (isThrow && rec.frame === 1))) {
       const st = this._t7g.stats;
       this._t7gEl.textContent = `${this._t7gStatus.label} | ${rec.name} f${rec.frame}/${rec.len}` +
-        (rec.unsupported ? ` | UNSUPPORTED ${rec.unsupported}` : '') + ` | fires ${st.fired}` +
+        (rec.unsupported ? ` | UNSUPPORTED ${rec.unsupported}` : '') +
+        (rec.ambiguous ? ` | BLOCKED: row #${rec.ambiguous.index} needs unknown cond ${rec.ambiguous.unknown.join(',')}${rec.stalled ? ' (holding)' : ''}` : '') +
+        ` | fires ${st.fired}` +
         ` (${st.precedenceUnknown || 0} after an unknown row) | rows skipped: unknown cond ${st.skipped.requirement || 0}, timing ${st.skipped.timing || 0}` +
         ` | ${this._t7gStatus.assumptions}`;
-      this._t7gEl.style.color = rec.unsupported ? '#ff6b6b' : '#ffd54a';
+      this._t7gEl.style.color = rec.unsupported || rec.ambiguous ? '#ff6b6b' : '#ffd54a';
     }
     // Travel: the clip's raw T7 root channel, forward along the facing (lateral 0, sign unproven).
     if (rec.dFwd && this.root) this.root.position.x += this.facing * rec.dFwd;
