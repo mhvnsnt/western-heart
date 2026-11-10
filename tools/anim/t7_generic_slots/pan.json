@@ -1,0 +1,159 @@
+{
+ "code": "pan",
+ "stance": "Km_sKAM00_",
+ "slots": {
+  "t3_neutral": {
+   "move": "Km_sKAM00_",
+   "anim": "nakm_kam(DVD)",
+   "how": "stance",
+   "bank": "rotsm",
+   "clip": 201,
+   "fmt": "0xC8"
+  },
+  "t3_walk_fwd": {
+   "move": "Km_sWALKF",
+   "anim": "nakm_walk2fk(DVD)",
+   "how": "stance cancel 0x40",
+   "bank": "rotsm",
+   "clip": 203,
+   "fmt": "0x64"
+  },
+  "t3_walk_back": {
+   "move": "Km_sWALKB",
+   "anim": "kmss_bwalk00_80(DVD)",
+   "how": "stance cancel 0x10",
+   "bank": "rotsm",
+   "clip": 208,
+   "fmt": "0x64"
+  },
+  "t3_crouch": {
+   "move": "Km_st2cr00_",
+   "anim": "kmkb_s3_ta2sya",
+   "how": "stance cancel 0x4",
+   "bank": "motbin",
+   "clip": 113,
+   "fmt": "0x64"
+  },
+  "t3_jump_up": {
+   "move": "sJUMP_00_",
+   "anim": "Bco_newjump2(DVD)",
+   "how": "stance cancel 0x100",
+   "bank": "common",
+   "clip": 137,
+   "fmt": "0x64"
+  },
+  "t3_jump_fwd": {
+   "move": "sJUMP_00F",
+   "anim": "Bco_newjump2(DVD)",
+   "how": "stance cancel 0x200",
+   "bank": "common",
+   "clip": 137,
+   "fmt": "0x64"
+  },
+  "t3_jump_back": {
+   "move": "sJUMP_00B",
+   "anim": "Bco_newjump2(DVD)",
+   "how": "stance cancel 0x80",
+   "bank": "common",
+   "clip": 137,
+   "fmt": "0x64"
+  },
+  "t3_dash_fwd": {
+   "move": "Km_sDASHF",
+   "anim": "nakm_fdash(DVD)",
+   "how": "stance cancel 0x8001",
+   "bank": "rotsm",
+   "clip": 206,
+   "fmt": "0x64"
+  },
+  "t3_backdash": {
+   "move": "Km_sDASHB",
+   "anim": "kmss_bdash(DVD)",
+   "how": "stance cancel 0x8002",
+   "bank": "rotsm",
+   "clip": 211,
+   "fmt": "0x64"
+  },
+  "t3_sidestep_a": {
+   "move": "sSTEP_01L",
+   "anim": "coyt_l_idou_tame_tk75_1f(DVD)",
+   "how": "stance cancel 0x8003",
+   "bank": "common",
+   "clip": 58,
+   "fmt": "0x64"
+  },
+  "t3_sidestep_b": {
+   "move": "sSTEP_01R",
+   "anim": "coyt_r_idou_tame_tk75_1f(DVD)",
+   "how": "stance cancel 0x8004",
+   "bank": "common",
+   "clip": 66,
+   "fmt": "0x64"
+  },
+  "t3_block": {
+   "move": "sGrd_AokihR18",
+   "anim": "Bco_gurd_hl(DVD)",
+   "how": "own state family ^(\\w+_)?sGrd_",
+   "bank": "common",
+   "clip": 312,
+   "fmt": "0x64"
+  },
+  "t3_hit": {
+   "move": "sDm_Aokimid00",
+   "anim": "Tco_styoro(DVD)",
+   "how": "engine state",
+   "bank": "common",
+   "clip": 310,
+   "fmt": "0x64"
+  },
+  "t3_hit_launch": {
+   "move": "sDw_AIR00_",
+   "anim": "dwfkao00(DVD)",
+   "how": "engine state",
+   "bank": "common",
+   "clip": 138,
+   "fmt": "0x64"
+  },
+  "t3_ko": {
+   "move": "Fall_sKAM",
+   "anim": "naco_700dwn2(DVD)",
+   "how": "engine state",
+   "bank": "common",
+   "clip": 170,
+   "fmt": "0x64"
+  },
+  "t3_crouch_hold": {
+   "move": "cKAM__00_",
+   "anim": "kmkb_s3_sykam",
+   "how": "engine state",
+   "bank": "motbin",
+   "clip": 100,
+   "fmt": "0x64"
+  },
+  "t3_light": {
+   "move": "Km_lp00",
+   "anim": "nakm_lp(DVD)",
+   "how": "move pack input 1",
+   "bank": "rotsm",
+   "clip": 316,
+   "fmt": "0x64"
+  },
+  "t3_medium": {
+   "move": "Km_lk00",
+   "anim": "nakm_lk00(DVD)",
+   "how": "move pack input 3",
+   "bank": "rotsm",
+   "clip": 321,
+   "fmt": "0x64"
+  },
+  "t3_heavy": {
+   "move": "Km_rk00",
+   "anim": "nakm_rk01(DVD)",
+   "how": "move pack input 4",
+   "bank": "rotsm",
+   "clip": 322,
+   "fmt": "0x64"
+  }
+ },
+ "unresolved": []
+}

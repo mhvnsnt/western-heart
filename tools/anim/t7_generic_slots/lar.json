@@ -1,0 +1,159 @@
+{
+ "code": "lar",
+ "stance": "La_sKAM00_",
+ "slots": {
+  "t3_neutral": {
+   "move": "La_sKAM00_",
+   "anim": "amla_kamae(DVD)",
+   "how": "stance",
+   "bank": "rotsm",
+   "clip": 123,
+   "fmt": "0xC8"
+  },
+  "t3_walk_fwd": {
+   "move": "La_sWALKF",
+   "anim": "amla_walk00(DVD)",
+   "how": "stance cancel 0x40",
+   "bank": "rotsm",
+   "clip": 202,
+   "fmt": "0x64"
+  },
+  "t3_walk_back": {
+   "move": "La_sWALKB",
+   "anim": "layt_bwalk00_tk7(DVD)",
+   "how": "stance cancel 0x10",
+   "bank": "rotsm",
+   "clip": 207,
+   "fmt": "0x64"
+  },
+  "t3_crouch": {
+   "move": "La_st2cr00_",
+   "anim": "amla_ta_sya(DVD)",
+   "how": "stance cancel 0x4",
+   "bank": "rotsm",
+   "clip": 230,
+   "fmt": "0x64"
+  },
+  "t3_jump_up": {
+   "move": "sJUMP_00_",
+   "anim": "Bco_newjump2(DVD)",
+   "how": "stance cancel 0x100",
+   "bank": "common",
+   "clip": 137,
+   "fmt": "0x64"
+  },
+  "t3_jump_fwd": {
+   "move": "sJUMP_00F",
+   "anim": "Bco_newjump2(DVD)",
+   "how": "stance cancel 0x200",
+   "bank": "common",
+   "clip": 137,
+   "fmt": "0x64"
+  },
+  "t3_jump_back": {
+   "move": "sJUMP_00B",
+   "anim": "Bco_newjump2(DVD)",
+   "how": "stance cancel 0x80",
+   "bank": "common",
+   "clip": 137,
+   "fmt": "0x64"
+  },
+  "t3_dash_fwd": {
+   "move": "La_sDASHF",
+   "anim": "amla_dash125(DVD)",
+   "how": "stance cancel 0x8001",
+   "bank": "rotsm",
+   "clip": 205,
+   "fmt": "0x64"
+  },
+  "t3_backdash": {
+   "move": "La_sDASHB",
+   "anim": "amla_back90(DVD)",
+   "how": "stance cancel 0x8002",
+   "bank": "rotsm",
+   "clip": 210,
+   "fmt": "0x64"
+  },
+  "t3_sidestep_a": {
+   "move": "sSTEP_01L",
+   "anim": "layt_l_idou_tame_tk75_1f(DVD)",
+   "how": "stance cancel 0x8003",
+   "bank": "rotsm",
+   "clip": 610,
+   "fmt": "0x64"
+  },
+  "t3_sidestep_b": {
+   "move": "sSTEP_01R",
+   "anim": "layt_r_idou_tame_tk75_1f(DVD)",
+   "how": "stance cancel 0x8004",
+   "bank": "rotsm",
+   "clip": 616,
+   "fmt": "0x64"
+  },
+  "t3_block": {
+   "move": "sGrd_YC00G",
+   "anim": "Zco_PSgu02(DVD)",
+   "how": "engine state",
+   "bank": "common",
+   "clip": 188,
+   "fmt": "0x64"
+  },
+  "t3_hit": {
+   "move": "sDm_Aokimid00",
+   "anim": "Tco_styoro(DVD)",
+   "how": "engine state",
+   "bank": "common",
+   "clip": 310,
+   "fmt": "0x64"
+  },
+  "t3_hit_launch": {
+   "move": "sDw_AIR00_",
+   "anim": "dwfkao00(DVD)",
+   "how": "engine state",
+   "bank": "common",
+   "clip": 138,
+   "fmt": "0x64"
+  },
+  "t3_ko": {
+   "move": "Fall_sKAM",
+   "anim": "naco_700dwn2(DVD)",
+   "how": "engine state",
+   "bank": "common",
+   "clip": 170,
+   "fmt": "0x64"
+  },
+  "t3_crouch_hold": {
+   "move": "cKAM__00_",
+   "anim": "amla_syagami(DVD)",
+   "how": "engine state",
+   "bank": "rotsm",
+   "clip": 214,
+   "fmt": "0x64"
+  },
+  "t3_light": {
+   "move": "La_lp00",
+   "anim": "amla_lp(DVD)",
+   "how": "move pack input 1",
+   "bank": "rotsm",
+   "clip": 309,
+   "fmt": "0x64"
+  },
+  "t3_medium": {
+   "move": "La_lk00",
+   "anim": "kola_hi(DVD)",
+   "how": "move pack input 3",
+   "bank": "rotsm",
+   "clip": 319,
+   "fmt": "0x64"
+  },
+  "t3_heavy": {
+   "move": "La_rk00",
+   "anim": "amla_rk_mawasi_seed(DVD)",
+   "how": "move pack input 4",
+   "bank": "rotsm",
+   "clip": 324,
+   "fmt": "0x64"
+  }
+ },
+ "unresolved": []
+}
