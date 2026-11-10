@@ -274,3 +274,28 @@ owner's memory record; this section is the repo-home copy.
 - Licence honesty stands: FLAME-family etc. stay documented-not-pulled;
   capability is reached via the licence-clean stack (MediaPipe + GNM
   parametric face + MPFB2 body + Blender).
+
+### 2026-11-09 outcomes — hair verdicts, hero shot, fidelity lane
+
+- HAIR VERDICTS (2026-11-09): afro build12 ACCEPTED (PR #1689 merged;
+  dense black opaque, ~2x head width; reservations: chunky curls at
+  macro, hairline slightly high with centre notch, long side points).
+  Straight v2 REJECTED — renders displaced off her head (black cap slab
+  over bare scalp).
+- HERO SHOT LANDED + DELIVERED 2026-11-09 ~05:20 CST (PR #1690 merged;
+  8 frames, v2 face + tattoos + fixed afro + Angel-brown eyes, bare;
+  parent own-eyes: composition is the ordered set).
+- CONFIRMED DEFECTS (2026-11-09): (1) FOREARM WARP — both forearms
+  bend/melt in S-curve in all full-body frames; (2) glossy/oiled skin
+  sheen; (3) afro fringe notch + dome arc at face-close distance;
+  (4) T4 still blocky.
+- FIDELITY LANE (2026-11-09): one lane now owns all three bind-state
+  defects — pilot GLB forearm warp, v4 body mesh ~0.33 m below its
+  skeleton, straight hair displaced off head — proving which stage
+  introduced each before fixing at that source, no hand edits; the
+  corrected Parvati v4 base-fix landing into the game build rides in
+  the same lane.
+- OWNER RULINGS OWED: face verdict, PR #1678 merge, bio draft 3 flags,
+  T14 glyph accept/replace, whether afro becomes default.
+- Note: eye-brown-angel-daz.png lives only on PR #1678's branch until
+  it merges.
