@@ -1,3 +1,11 @@
+## 2026-11-10 — King T7 cancel selection: exe AND lists, 0x8000 ids, STRICT precedence (fail closed) (MoneyManBusch / Grok) (t386u/t388u)
+
+- **Exe list loop** `0x1406f4750`: a requirement list is a plain AND, so a known-false entry decides it even after an unknown one. Ids with bit 0x8000 are true (`0x1406f54d9`).
+- **STRICT is now the dev default.** When a matched outranking row's requirement is unknown, nothing lower fires and the move holds. `?t7graph=permissive` is a labelled UNVERIFIED diagnostic.
+- **Honest result:** under STRICT, nothing fires from King's stance. Row #0 needs player variables 809 (`[+0x938]`) and 361 (`[+0x964]`), which are set by extra move properties that are not imported.
+- **Next:** import `extra_move_properties` (header 0x1e0) and decode the exe property handler, then throws (0x260/0x270).
+  See `docs/proof/2026-11-10/t7-precedence/README.md`. Not 100%.
+
 ## 2026-11-10 — King T7 facing conditions decoded (72/73/80/81), throws marked unsupported, throw-marker hitbox fix (MoneyManBusch / Grok) (t386u/t388u)
 
 - **Exe facing.** `0x1406ebfe0` writes `[+0x1c2]` = own yaw − bearing to the opponent and `[+0x1c4]` = its fold. 72/73 test the fold against 0x4000; 80/81 are the two back half-turns.

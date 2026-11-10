@@ -22,8 +22,9 @@ export const T7G_HISTORY = 160; // frames kept; the longest King sequence window
 
 export class T7GraphDriver {
   /** graph: wh-t7-graph/2; clips: { key: { frames, fwd: number[] } } (key = '<bank>_<clip>'). */
-  constructor(graph, clips, { evalState = null } = {}) {
+  constructor(graph, clips, { evalState = null, strict = true } = {}) {
     this.graph = graph; this.clips = clips; this.evalState = evalState || {};
+    this.strict = strict; // fail closed when an outranking row's requirement truth is unknown (see stepCancel)
     this.stats = { ticks: 0, fired: 0, transitions: 0, skipped: {}, unknownConditions: {}, missingClip: 0 };
     this.attackId = 0;
     this.reset();
@@ -61,8 +62,9 @@ export class T7GraphDriver {
       if (f >= this.pending.at) fire = this.pending;
     } else {
       const r = stepCancel(g, this.moveId, { frame: f, moveLen: len, dir, down, held, history: this.history,
-        special: (c) => sp.includes(c), evalCond });
+        special: (c) => sp.includes(c), evalCond, strict: this.strict });
       rec.skipped = r.skipped;
+      if (r.ambiguous) { rec.ambiguous = r.ambiguous; this.stats.ambiguous = (this.stats.ambiguous || 0) + 1; }
       for (const s of r.skipped) {
         this.stats.skipped[s.reason] = (this.stats.skipped[s.reason] || 0) + 1;
         for (const c of s.unknown || []) this.stats.unknownConditions[c] = (this.stats.unknownConditions[c] || 0) + 1;
@@ -75,7 +77,12 @@ export class T7GraphDriver {
         if (r.at <= f) fire = p; else this.pending = p;
       }
     }
-    if (!fire && len && f >= len) fire = { to: resolveMoveId(g, m.transition), via: 'transition', index: -1 };
+    if (!fire && len && f >= len) {
+      // At the clip end the source falls through to `transition` only when no cancel fires. If an ambiguous row is still
+      // open, that fall-through is not certain: hold the last frame (counted as a stall) instead of guessing.
+      if (rec.ambiguous) { rec.stalled = true; this.stats.stalled = (this.stats.stalled || 0) + 1; return rec; }
+      fire = { to: resolveMoveId(g, m.transition), via: 'transition', index: -1 };
+    }
     if (fire) {
       rec.fired = { to: fire.to, toName: g.moves[fire.to] ? g.moves[fire.to].name : null, via: fire.via, index: fire.index,
         acceptedFrame: fire.acceptedFrame ?? f, appliedFrame: f, precedenceUnknown: fire.precedenceUnknown || [] };

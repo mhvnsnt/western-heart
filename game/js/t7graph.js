@@ -44,14 +44,17 @@ export function moveByName(graph, name) {
 /* Evaluate one requirement list. evalCond(cond, param, ctx) -> true | false | null (unknown). */
 export function evalRequirements(graph, reqIdx, ctx, evalCond) {
   const rows = graph.requirements[String(reqIdx)] || [];
+  // Exe list semantics (0x1406f4750 and the inline copies at 0x140716fa4 / 0x140721634): acc = 1; for each entry
+  // until id 0x371: acc = acc && eval(entry). So the list is a plain AND: ANY known-false entry makes it false, even
+  // after an unknown one; it is true only when every entry is true; otherwise it is UNKNOWN.
   const unknown = [];
   for (const [c, p] of rows) {
     if (c === 0) continue; // 'always true'
     const v = evalCond ? evalCond(c, p, ctx) : null;
-    if (v === false) return { ok: false, unknown };
-    if (v !== true) { unknown.push(c); return { ok: false, unknown }; }
+    if (v === false) return { ok: false, unknown: [], falseBy: c };
+    if (v !== true) unknown.push(c);
   }
-  return { ok: true, unknown };
+  return unknown.length ? { ok: false, unknown } : { ok: true, unknown };
 }
 
 function dirOk(mask, dir) { return mask === 0 || !!(mask & (DIR_BITS[dir] || 0)); }
@@ -133,7 +136,15 @@ export function stepCancel(graph, moveId, ctx) {
       if (at == null) { skipped.push({ index: i, reason: 'timing', sf }); continue; }
     }
     const rq = evalRequirements(graph, r[F.req], ctx, ctx.evalCond);
-    if (!rq.ok) { if (rq.unknown.length) skipped.push({ index: i, reason: 'requirement', unknown: rq.unknown }); continue; }
+    if (!rq.ok) {
+      if (rq.unknown.length) {
+        skipped.push({ index: i, reason: 'requirement', unknown: rq.unknown });
+        // Strict precedence: this row's input, window and frame all matched, and only its requirement truth is unknown.
+        // The engine takes the FIRST row whose requirements hold, so no lower row can be presented as the source's choice.
+        if (ctx.strict) return { row: null, index: -1, to: null, at: null, skipped, ambiguous: { index: i, unknown: rq.unknown } };
+      }
+      continue;
+    }
     return { row: r, index: i, to: resolveMoveId(graph, r[F.to]), at: Math.max(at, f), skipped };
   }
   return { row: null, index: -1, to: null, at: null, skipped };
@@ -162,6 +173,7 @@ export function t7FacingFold(state) {
 
 export function makeEvalCond(state) {
   return (c, p) => {
+    if (c & 0x8000) return true; // exe 0x1406f54d9: an id with bit 0x8000 returns 1 before the switch
     switch (c) {
       case 1: return false;                                                  // Practice mode move demo
       case 35: return state.oppDistT7 == null ? null : state.oppDistT7 <= p; // Opponent distance <= param

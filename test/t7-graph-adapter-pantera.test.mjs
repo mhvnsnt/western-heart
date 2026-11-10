@@ -32,20 +32,23 @@ const cov = JSON.parse(readFileSync(join(KING, 'graph.coverage.json'), 'utf8'));
 const mid = (n) => G.moveByName(g, n);
 const DT = 1 / 120; // the game's fixed tick; the driver steps every second tick (60 Hz source frames), so tick(n) = n/2 source frames
 
-function pantera() {
+// The input -> row -> clip MECHANICS tests below run in the labelled PERMISSIVE dev mode (precedence UNVERIFIED): under the
+// game default (STRICT) the stance is blocked by its unknown row #0 (conds 809/361), see the strict tests at the end.
+function pantera(strict = false) {
   const f = Object.create(F.Fighter.prototype);
   Object.assign(f, { char: { id: 'pantera' }, _movesetId: 'pantera', t3actions: {}, root: { position: { x: 0, y: 0, z: 0 } },
     facing: 1, dead: false, stun: 0, onGround: true, brawler: false, state: 'idle', stateT: 0, vx: 0, vz: 0, isPlayer: true,
     bones: {}, stats: { reachMult: 1 }, hasHit: false });
   f.tekken = new M.TekkenBuffer('pantera');
   f.t7gAttach(bank);
+  f._t7g.strict = strict;
   return f;
 }
 // The shared input layer, exactly as the handlers use it (keyboard keydown/keyup and the touch limb buttons now do the
 // same thing: held[b] + _tekken(b, t) on press, held[b] = false on release; the stick through _stick8 / stickNeutral).
-function rig() {
+function rig(strict = false) {
   const inp = new IN.InputManager(); inp.enabled = true;
-  const f = pantera(); let t = 1000; const log = [];
+  const f = pantera(strict); let t = 1000; const log = [];
   const tick = (n = 1) => { for (let i = 0; i < n; i++) { t += DT * 1000; GI.feedT7GraphInput(f, inp, DT); if (f._t7gRec) log.push(f._t7gRec); } };
   const stick = (d) => {
     const v = { n: [0, 0], f: [1, 0], b: [-1, 0], d: [0, -1], u: [0, 1], 'd/f': [0.8, -0.8], 'd/b': [-0.8, -0.8], 'u/f': [0.8, 0.8], 'u/b': [-0.8, 0.8] }[d];
@@ -334,4 +337,45 @@ test('throws are visibly UNSUPPORTED: a throw-class source move plays its clip o
   assert.match(r.f._t7gStatus.assumptions, /posture: standing .*undecoded.*facing: unknown/);
   const marked = g.moves.filter((m) => m.damage === 0x4000);
   assert.equal(marked.length, 43, 'source hit conditions with the 0x4000 throw marker');
+});
+
+/* Source-accurate selection: exe requirement lists are a plain AND (0x1406f4750: acc = acc && eval, until 0x371), and the
+   cancel walk takes the first row that holds. STRICT is the game default under the dev flag. */
+test('exe list semantics: any known-false entry makes the list false even after an unknown one; ids with bit 0x8000 are true', () => {
+  const ctx = { charId: 2, controller: 0, relHeading16: 0 };
+  const ev = G.makeEvalCond(ctx);
+  const req221 = g.moves[g.stance].cancels[221][G.F.req];
+  assert.deepEqual(g.requirements[String(req221)], [[609, 146], [72, 0]]);
+  const r = G.evalRequirements(g, req221, ctx, ev);
+  assert.equal(r.ok, false); assert.deepEqual(r.unknown, [], 'facing the opponent: 72 false decides the list, 609 does not matter');
+  const r2 = G.evalRequirements(g, req221, {}, G.makeEvalCond({ charId: 2, controller: 0 }));
+  assert.deepEqual(r2.unknown, [609, 72], 'without a heading both stay unknown');
+  assert.equal(ev(0x8106, 0), true); assert.equal(ev(0x8414, 3), true);
+});
+
+test('STRICT (game default): an outranking row whose input matched but whose requirement is UNKNOWN blocks every lower row; nothing is presented as the source\'s choice', () => {
+  assert.equal(F.t7GraphStrict(), true, 'strict unless the labelled permissive diagnostic is requested');
+  globalThis.WH_T7GRAPH = 'permissive'; assert.equal(F.t7GraphStrict(), false); delete globalThis.WH_T7GRAPH;
+  const row0 = g.moves[g.stance].cancels[0];
+  assert.deepEqual(g.requirements[String(row0[G.F.req])], [[809, 15], [33812, 0], [361, 100]]);
+  for (const [dir, btn] of [['n', ['1']], ['f', []], ['d/f', []], ['n', ['3', '4']], ['f', ['1', '3']]]) {
+    const r = rig(true); assert.equal(r.f._t7g.strict, true);
+    r.tick(4); r.stick(dir); if (btn.length) r.press(...btn); r.tick(2); if (btn.length) r.release(...btn); r.tick(150);
+    const fires = r.log.filter((x) => x.fired && x.fired.via === 'cancel');
+    assert.equal(fires.length, 0, `${dir}+${btn.join('+')}: no cancel fires`);
+    assert.ok(r.log.every((x) => x.name === 'Kg_sKAM00_'), 'stays in the source stance');
+    const amb = r.log.find((x) => x.ambiguous);
+    assert.equal(amb.ambiguous.index, 0); assert.deepEqual(amb.ambiguous.unknown, [809, 361]);
+    assert.ok(r.log.some((x) => x.stalled), 'the AUTO loop / transition is not taken past an ambiguous row: the move holds');
+    assert.ok(!r.f.attack, 'no hitbox');
+  }
+});
+
+test('PERMISSIVE diagnostic: the same input fires a lower row, and the fire is flagged with the outranking unknown conditions', () => {
+  const r = rig(false); r.tick(4); r.press('1'); r.tick(2); r.release('1'); r.tick(4);
+  const fire = r.log.find((x) => x.fired && x.fired.via === 'cancel');
+  assert.equal(fire.fired.toName, 'Kg_lp00F');
+  // On the press frame the button-less row #0 does not take the press (WH policy P1, unproven); rows gated by the
+  // unresolved facing conditions 80/81 outrank the jab row and were skipped.
+  assert.deepEqual(fire.fired.precedenceUnknown, [80, 81]);
 });
