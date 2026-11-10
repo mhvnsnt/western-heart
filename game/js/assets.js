@@ -320,7 +320,9 @@ export const MODEL_URLS = {
   // eastern mind games and canon and images you will see what they really look like"): KAI's own Eastern Mind body,
   // built from Osamu Sato's art (teardown/eastern-mind/prologue-ending/bitmaps/CHARA/CHARA_b006) by
   // tools/souls/build_soul.py. kai-body-cdn.glb / kai-body.glb (the Eddy shell) stay beside it.
-  'kai-body': 'assets/models/kai-soul.glb',
+  // 2026-11-10 (later): with Sato's own speckled surfaces (tools/souls/textures.py, from his pixels); kai-soul.glb
+  // (flat colours) stays beside it.
+  'kai-body': 'assets/models/kai-soul-tex.glb',
   'jin-body': 'assets/models/jin-body.glb',
   'rin-body': 'assets/models/rin-body.glb',
   'jin-t7': 'assets/models/jin.glb',
@@ -360,7 +362,8 @@ export const MODEL_URLS = {
   'sha-body': 'assets/models/sha-body-hairfix-cdn.glb',
   // 2026-11-10: TOU's own Eastern Mind body (CHARA_b012 + R_TOH; tools/souls/build_soul.py), not Paul Phoenix's T7 kit;
   // tou-body-cdn.glb / tou-body.glb (the assembled Paul body, docs/TOU-BODY-BUILD-2026-11-09.md) stay beside it.
-  'tou-body': 'assets/models/tou-soul.glb',
+  // 2026-11-10 (later): with Sato's own speckled surfaces; tou-soul.glb (flat colours) stays beside it.
+  'tou-body': 'assets/models/tou-soul-tex.glb',
   'zen-body': 'assets/models/zen-body.glb',
   'zui_alt1': 'assets/models/zui_alt1.glb',
   'zui_alt2': 'assets/models/zui_alt2.glb',
