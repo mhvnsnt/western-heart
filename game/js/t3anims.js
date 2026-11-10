@@ -1949,6 +1949,12 @@ function estimateArmCorr(rig, skel, stanceClip, probeClip, THREE, shoulderGateDe
       const parBone = bone.parent && bone.parent.isBone ? bone.parent : null;
       const axT = parBone ? dirT.clone().applyQuaternion(rig.rest(parBone).quat.clone().invert()) : dirT.clone();
       const ownAxT = dirT.clone().applyQuaternion(rig.rest(bone).quat.clone().invert());
+      // REST-FRAME INDEPENDENCE (2026-11-10): the twist is read from the motion RELATIVE TO this bone's rest local
+      // (posed local x rest local^-1), not from the posed local itself. On the identity-rest rigs this file was tuned
+      // on the two are the same number; on real exported rigs the rest local carries the bone's roll, and reading the
+      // posed local took that roll for a transport error (constants of 40-200 deg; arms rolled in every clip).
+      const restLocInv = (parBone ? rig.rest(parBone).quat.clone().invert().multiply(rig.rest(bone).quat)
+        : rig.rest(bone).quat.clone()).invert();
       // Parent correction factor: applies only when the chain
       // parent is this bone's actual parent in the rig.
       const parJn = role === 'Shoulder' ? null : side + ARM_CHAIN[ARM_CHAIN.indexOf(role) - 1];
@@ -1978,6 +1984,7 @@ function estimateArmCorr(rig, skel, stanceClip, probeClip, THREE, shoulderGateDe
           lc.copy(Lp[f]);
           if (th) { qo.setFromAxisAngle(dHat[f], th); lc.premultiply(qo); }
           if (qPar) lc.premultiply(qPar);
+          lc.multiply(restLocInv); // the motion from rest, in the parent frame (see REST-FRAME INDEPENDENCE above)
           let d = twist(lc, axT) - ts[f];
           if (d > Math.PI) d -= 2 * Math.PI;
           if (d < -Math.PI) d += 2 * Math.PI;

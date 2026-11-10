@@ -358,3 +358,44 @@ test('negativo (T7 Negan stance) on a rolled-rest rig: no arm roll fires, every 
   mixer.stopAllAction();
   assert.ok(worst <= 1, `T7 stance arm transfer off by ${worst.toFixed(1)} deg (${at}) — the T7 path must stay exact`);
 });
+
+// 2026-11-10: the arm-frame measure itself must not depend on how a rig's bones are rolled at rest. It compared the
+// twist of the target's posed LOCAL rotation, which on a rolled rig includes the rest local's own roll; the measure now
+// reads the twist of the motion relative to the rest local (posed local x rest local^-1). On identity-rest rigs that
+// is the same number (every test above is unchanged); on real rigs the spurious constants disappear and only genuine
+// transport differences (swing alignments that differ between parent and child) are corrected. Pinned here: the SAME
+// bank on the SAME skeleton geometry, identity-rest vs rolled-rest, must pose every arm joint the same in world space.
+async function armWorldDeltas(bankId, instanceKey, model, action) {
+  const clips = await T.loadT3Clips(THREE, bankId);
+  const rc = T.retargetT3Clips(clips, bankId, model, THREE, instanceKey);
+  const joints = ['LeftShoulder', 'LeftArm', 'LeftForeArm', 'LeftHand', 'RightShoulder', 'RightArm', 'RightForeArm', 'RightHand'];
+  const bones = {}; for (const j of joints) bones[j] = byCanon(model, j);
+  model.updateMatrixWorld(true);
+  const restW = {}; for (const j of joints) restW[j] = bones[j].getWorldQuaternion(new THREE.Quaternion());
+  const mixer = new THREE.AnimationMixer(model);
+  mixer.clipAction(rc[action]).play();
+  const out = [];
+  const dur = rc[action].duration;
+  for (let k = 0; k <= 8; k++) {
+    mixer.setTime(dur * k / 8 * 0.999); model.updateMatrixWorld(true);
+    const fr = {};
+    for (const j of joints) fr[j] = bones[j].getWorldQuaternion(new THREE.Quaternion()).multiply(restW[j].clone().invert());
+    out.push(fr);
+  }
+  mixer.stopAllAction();
+  return out;
+}
+for (const [bankId, fid] of [['jin', 'demonio'], ['paul', 'paul-test'], ['bryan', 'thor'], ['gunjack', 'samura1']]) {
+  test(`${bankId} bank: identity-rest and rolled-rest rigs pose the arms the same (measure is rig-frame independent)`, async () => {
+    for (const action of ['stance', 'light']) {
+      const a = await armWorldDeltas(bankId, fid, buildCanonicalRig(), action);
+      const b = await armWorldDeltas(bankId, fid, buildRolledRig(), action);
+      let worst = 0, at = '';
+      a.forEach((fr, k) => { for (const j of Object.keys(fr)) {
+        const ang = 2 * Math.acos(Math.min(1, Math.abs(fr[j].dot(b[k][j])))) * DEG;
+        if (ang > worst) { worst = ang; at = `${action} ${j} sample ${k}`; }
+      } });
+      assert.ok(worst <= 1, `${bankId}: rolled rig differs by ${worst.toFixed(1)} deg (${at}) — the rest roll leaked into the arm correction`);
+    }
+  });
+}
