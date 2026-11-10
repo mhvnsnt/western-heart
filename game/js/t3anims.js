@@ -124,6 +124,25 @@ export const T3_BANKS = {
   // (docs/anim/RAVEN-ANIM-GAP-20261023.md isolation doctrine). raven serves Pond, luckychloe serves Ryusan.
   raven:      'assets/anim/t3/raven/',
   luckychloe: 'assets/anim/t3/luckychloe/',
+  // T7 generic banks (2026-11-10, owner: "negativo should have only had t7 data from negan"): each T7-stance
+  // fighter's base character's OWN walk / dash / crouch / jump / sidestep / guard / damage / KO states, named by its
+  // own motbin stance cancel table (tools/anim/t7_generic_slots.py; plans in tools/anim/t7_generic_slots/<code>.json)
+  // and baked through the same 0x64 game-sampler + 0xC8 mannequin path (tools/anim/t7_generic_bank_bake.py --slots).
+  // fighter.js OWN_SLOT_BANKS lays each over its fighter's bound bank slot by slot, so the base's own T7 state plays
+  // wherever it exists and no Tekken 3 clip does.
+  t7_king:       'assets/anim/t3/t7_king/',
+  t7_heihachi:   'assets/anim/t3/t7_heihachi/',
+  t7_bryan:      'assets/anim/t3/t7_bryan/',
+  t7_bob:        'assets/anim/t3/t7_bob/',
+  t7_xiaoyu:     'assets/anim/t3/t7_xiaoyu/',
+  t7_yoshimitsu: 'assets/anim/t3/t7_yoshimitsu/',
+  t7_hwoarang:   'assets/anim/t3/t7_hwoarang/',
+  t7_kuma:       'assets/anim/t3/t7_kuma/',
+  t7_panda:      'assets/anim/t3/t7_panda/',
+  t7_julia:      'assets/anim/t3/t7_julia/',
+  t7_lee:        'assets/anim/t3/t7_lee/',
+  t7_lars:       'assets/anim/t3/t7_lars/',
+  t7_negan:      'assets/anim/t3/t7_negan/',
   // TTT2-sourced banks (2026-11-04): REAL Tekken Tag Tournament 2 motion decoded with the shipped
   // 0x64/0xC8 MOTA decoders and baked via the calibrated sampler convention (tools/anim/ttt2_bank_bake.py)
   // — each bank is the character's OWN TTT2 state moves per the join tables
@@ -2200,6 +2219,11 @@ const _layerOn = (k) => { const L = globalThis.__WH_RETARGET_LAYERS; return !L |
 export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = null, only = null, opts = null) {
   const skel = _t3skelCache[bankId];
   if (!t3Clips || !skel) return null;
+  // T7 DATA (2026-11-10): the 't7:' stance/move skeletons AND every bank baked by the T7 mannequin path (raven,
+  // luckychloe, the t7_* generic banks: their skeleton.json names tools/anim/t7_c8_stance_bake.py) are exempt from the
+  // Tekken 3 head-frame, spine-pitch and arm-frame normalizations, for the reasons in those blocks: a jointed rig with
+  // no part frames, whose head-vs-chest and arm twists are the character's real acting, transferred exactly.
+  const t7data = String(bankId).startsWith('t7:') || skel.tool === 'tools/anim/t7_c8_stance_bake.py';
   let perModel = _retargetCache.get(model);
   if (!perModel) { perModel = new Map(); _retargetCache.set(model, perModel); }
   const cached = perModel.get(bankId);
@@ -2231,7 +2255,7 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
   // offset once (from the stance-family clips of the first full
   // call) and cache it on the skeleton; 't7:' skeletons are exempt
   // (see the block above estimateHeadOffset).
-  if (skel._headCorr === undefined && !String(bankId).startsWith('t7:')) {
+  if (skel._headCorr === undefined && !t7data) {
     const est = estimateHeadOffset(skel, t3Clips, THREE);
     if (est !== undefined) {
       skel._headCorr = est;
@@ -2553,7 +2577,7 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
   // arm constants exist. 't7:' skeletons are exempt (see
   // estimateSpineCorr).
   let spineCorr = cached ? cached.spineCorr : undefined;
-  if (spineCorr === undefined && _layerOn('spine') && !layerActive && !String(bankId).startsWith('t7:') && t3Clips.stance &&
+  if (spineCorr === undefined && _layerOn('spine') && !layerActive && !t7data && t3Clips.stance &&
       (names.includes('stance') || (cached && cached.out.stance))) {
     const est = estimateSpineCorr(rig, skel, t3Clips.stance, (th) => buildClip('stance', null, th), THREE);
     if (est !== undefined) {
@@ -2572,7 +2596,7 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
   // skeleton the way the head constant does.
   let armCorr = cached ? cached.armCorr : undefined;
   // 't7:' skeletons are exempt (2026-11-10, see the block above estimateArmCorr): the T7 transfer is already exact.
-  if (armCorr === undefined && _layerOn('arm') && !layerActive && !String(bankId).startsWith('t7:') && t3Clips.stance &&
+  if (armCorr === undefined && _layerOn('arm') && !layerActive && !t7data && t3Clips.stance &&
       (names.includes('stance') || (cached && cached.out.stance))) {
     const probe = buildClip('stance', null, spineCorr || 0);
     if (probe) {

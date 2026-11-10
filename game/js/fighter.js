@@ -305,12 +305,29 @@ export function bankIdFor(charId, movesetId) {
 // horizontal, stances hunched: Zui / Kinpo / Purple Rain / Chordz / Bruno / Aotsuki), the fold class the Jun bank had
 // before its re-bake (docs/handoffs/MEGAMI-JUN-BANK-SCALE-FIX-2026-11-04.md). Binding them would make these fighters
 // look worse. A fighter moves into OWN_SLOT_BANKS only when its own clips pass by eye.
+// 2026-11-10: the T7-stance fighters' candidates are their base characters' REAL Tekken 7 generic banks (t3anims.js
+// T3_BANKS t7_*), superseding the TTT2 candidates judged bad on 2026-11-07 for purplerain ('lee'), chordz ('lars'),
+// aotsuki ('panda') and burger ('bob_satsuma'); those TTT2 banks stay registered. The fighters without a T7 base keep
+// their TTT2 candidates.
 export const OWN_SLOT_CANDIDATES = {
-  zui: 'steve_fox', kinpo: 'asuka', purplerain: 'lee', chordz: 'lars', cyborgx: 'alisa', star: 'christie',
-  bruno: 'miguel', thor: 'ganryu', slice: 'dragunov', aotsuki: 'panda', burger: 'bob_satsuma',
+  zui: 'steve_fox', kinpo: 'asuka', cyborgx: 'alisa', star: 'christie',
+  bruno: 'miguel', thor: 'ganryu', slice: 'dragunov',
   'mariposa-monarch': 'zafina', silvertongue: 'emilie',
+  pantera: 't7_king', diablo: 't7_heihachi', skull: 't7_bryan', retsu: 't7_bryan', burger: 't7_bob',
+  sakura: 't7_xiaoyu', sha: 't7_xiaoyu', phantom: 't7_yoshimitsu', gyou: 't7_hwoarang', tobi: 't7_hwoarang',
+  gashadokuro: 't7_kuma', aotsuki: 't7_panda', nightwolf: 't7_julia', purplerain: 't7_lee', chordz: 't7_lars',
+  negativo: 't7_negan',
 };
-export const OWN_SLOT_BANKS = {};
+// 2026-11-10 (owner: "negativo should have only had t7 data from negan"): the T7-stance fighters' base characters' own
+// REAL Tekken 7 generic states (t3anims.js T3_BANKS t7_*: walks, dashes, crouch, jumps, sidesteps, guard, damage, KO,
+// and the base's own 1 / 3 / 4), judged by eye in poselab against the Tekken 3 clips they replace
+// (docs/proof/2026-11-10/t7-generic-banks/).
+export const OWN_SLOT_BANKS = {
+  pantera: 't7_king', diablo: 't7_heihachi', skull: 't7_bryan', retsu: 't7_bryan', burger: 't7_bob',
+  sakura: 't7_xiaoyu', sha: 't7_xiaoyu', phantom: 't7_yoshimitsu', gyou: 't7_hwoarang', tobi: 't7_hwoarang',
+  gashadokuro: 't7_kuma', aotsuki: 't7_panda', nightwolf: 't7_julia', purplerain: 't7_lee', chordz: 't7_lars',
+  negativo: 't7_negan',
+};
 export function ownSlotBankFor(charId, { candidates = false } = {}) {
   const b = (candidates ? OWN_SLOT_CANDIDATES : OWN_SLOT_BANKS)[charId];
   return b && T3_BANKS[b] ? b : null;
