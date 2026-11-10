@@ -5,10 +5,18 @@ the game interprets directly (game/js/t7graph.js). Source-driven and whole-bank:
 identifier is retained (move index + name, cancel/group index, requirement index, sequence index, extradata index).
 
 Decoding (each verified, see docs/proof/2026-11-10/t7-full-graph/README.md):
-  - cancel command: low 32 bits direction mask (bits 1..9 = d/b d d/f b n f u/b u u/f, 0 = any), high 32 bits buttons
-    (bits 0..3 = 1..4, bit 4 = RA) | 0x40000000 press flag; 0x8000 = AUTO (end/transition), 0x8001..0x800C engine
-    specials (0x800B = group-cancel ref, 0x800C = group end), 0x800D..0x8FFF = input sequence (cmd - 0x800D)
-    — same layout as TKMovesets2 Editor_t7_Commands.cpp getCommandString (Kiloutre, a1b1917a);
+  - cancel command: low 32 bits direction mask (bits 1..9 = d/b d d/f b n f u/b u u/f, 0 = any; TKMovesets2
+    Editor_t7_Commands.cpp getCommandString, Kiloutre a1b1917a), high 32 bits the button command 0xMMNNHHPP
+    (TekkenMods "Input Extradata" button-command layout, documented for Tekken 8): PP = buttons PRESSED (bits 0..3 =
+    1..4, bit 4 = RA), HH = buttons that must be HELD (0x02 = 1 .. 0x10 = 4), NN = buttons that must NOT be held
+    (0x04 = 1 .. 0x20 = 4), MM = input mode (0x40 = at least the PP buttons, 0x20 = any one of them, 0x80 = direction
+    only). Every one of King's 15,212 T7 command rows fits that layout: MM is 0x40 or 0x20 exactly when PP is set,
+    0x00 otherwise (state rows), and HH / NN only appear on button-less rows (31 / 6 rows) — the T7 consistency check
+    is in docs/proof/2026-11-10/t7-graph-adapter/README.md. wh-t7-graph/1 kept only PP and a 0x40 'press' bit, so its
+    627 MM=0x20 rows read as HELD and its HH / NN rows lost the held / not-held test: fixed here (wh-t7-graph/2).
+    0x8000 = AUTO, 0x8001 / 0x8002 = double-tap f / b (their targets are Kg_sDASHF / sDASH_00B; same values in the
+    TekkenMods cancel table), other 0x8003..0x800A engine specials kept raw (meaning not proven), 0x800B = group-cancel
+    ref, 0x800C = group end, 0x800D..0x8FFF = input sequence (cmd - 0x800D);
   - group cancels: 40-byte <QQQIIIHH rows (cmd, req, extradata, start, end, starting_frame, move, option);
   - input sequences: {input_window_frames, input_amount, input_idx} -> inputs {direction, button}, chronological;
   - requirements: {condition, param} rows ending at condition 881;
@@ -29,6 +37,11 @@ from t7_move_resolve import Motbin  # noqa: E402  (clip(): bank/clip/format of a
 AUTO, GROUP_REF, GROUP_END, SEQ0, SEQ_MAX = 0x8000, 0x800B, 0x800C, 0x800D, 0x8FFF
 REQ_END = 881
 PRESS = 0x40000000
+
+
+def btn_fields(b):
+    """0xMMNNHHPP -> (pressed mask, mode, held mask, not-held mask) in WH button bits (1 = 1, 2 = 2, 4 = 3, 8 = 4, 16 = RA)."""
+    return b & 0x1F, (b >> 24) & 0xFF, ((b >> 8) & 0xFF) >> 1, ((b >> 16) & 0xFF) >> 2
 
 
 def sha(p):
@@ -59,11 +72,12 @@ def main():
         return req_cache[i]
 
     def cancel_row(d, b, req, xd, ds, de, sf, mid, opt, grp):
-        # [cmd, dir_mask, buttons(0..4 bits), press(0/1), seq(-1|idx), req_idx, start, end, starting_frame, to, option,
-        #  extradata_value(raw), group_row(-1|idx)]
+        # [cmd, dir_mask, pressed(0..4 bits), mode(MM), seq(-1|idx), req_idx, start, end, starting_frame, to, option,
+        #  extradata_value(raw), group_row(-1|idx), held mask, not-held mask, button command raw]
         seq = d - SEQ0 if SEQ0 <= d <= SEQ_MAX else -1
-        return [d, d if d < AUTO else 0, b & 0x1F, 1 if b & PRESS else 0, seq, req, ds, de, sf, mid, opt,
-                CE[xd]['value'] if 0 <= xd < len(CE) else None, grp]
+        pp, mode, held, nheld = btn_fields(b)
+        return [d, d if d < AUTO else 0, pp, mode, seq, req, ds, de, sf, mid, opt,
+                CE[xd]['value'] if 0 <= xd < len(CE) else None, grp, held, nheld, b]
 
     moves = []
     for i, m in enumerate(mv):
@@ -90,16 +104,18 @@ def main():
                       'hitlevel': m['hitlevel'], 'damage': hc['damage'] if hc else 0, 'transition': m['transition'],
                       'airborne': [m['airborne_start'], m['airborne_end']], 'cancels': rows})
     used_reqs = sorted({r[5] for m in moves for r in m['cancels']})
-    graph = {'format': 'wh-t7-graph/1', 'code': a.code,
+    graph = {'format': 'wh-t7-graph/2', 'code': a.code,
              'source': {'json': os.path.basename(jpath), 'json_sha256': sha(jpath), 'bin_sha256': sha(bpath),
-                        'decoder_refs': ['TKMovesets2 a1b1917a Editor_t7_Commands.cpp (command layout)',
+                        'decoder_refs': ['TKMovesets2 a1b1917a Editor_t7_Commands.cpp (direction bits, specials)',
+                                         'TekkenMods Input Extradata (button command 0xMMNNHHPP, Tekken 8 doc; T7 values consistent)',
                                          'TekkenMovesetExtractor motbinExport.py (alias table 0x28 u16[148])']},
-             'cancel_fields': ['cmd', 'dir', 'buttons', 'press', 'seq', 'req', 'start', 'end', 'starting_frame', 'to',
-                               'option', 'extradata', 'group_row'],
+             'cancel_fields': ['cmd', 'dir', 'buttons', 'mode', 'seq', 'req', 'start', 'end', 'starting_frame', 'to',
+                               'option', 'extradata', 'group_row', 'held', 'not_held', 'button_raw'],
+             'sequence_input_fields': ['dir', 'buttons', 'mode', 'held', 'not_held', 'button_raw'],
              'aliases': aliases, 'stance': aliases[1],
              'requirements': {str(i): reqs(i) for i in used_reqs},
-             'sequences': [{'window': s['input_window_frames'], 'inputs': [[e['direction'], e['button'] & 0x1F,
-                            1 if e['button'] & PRESS else 0] for e in inputs[s['input_idx']:s['input_idx'] + s['input_amount']]]}
+             'sequences': [{'window': s['input_window_frames'], 'inputs': [[e['direction'], *btn_fields(e['button']),
+                            e['button']] for e in inputs[s['input_idx']:s['input_idx'] + s['input_amount']]]}
                            for s in seqs],
              'moves': moves}
     os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
@@ -142,7 +158,13 @@ def coverage(graph, out):
     allc = {}
     for rows in graph['requirements'].values():
         for c, _ in rows: allc[c] = allc.get(c, 0) + 1
-    rep = {'moves_total': len(graph['moves']), 'reachable_any_requirement': len(seen),
+    modes, specials = {}, {}
+    for m in graph['moves']:
+        for r in m['cancels']:
+            if r[0] < 0x8000: modes['0x%02x' % r[3]] = modes.get('0x%02x' % r[3], 0) + 1
+            elif 0x8000 < r[0] < 0x800D: specials['0x%04x' % r[0]] = specials.get('0x%04x' % r[0], 0) + 1
+    rep = {'moves_total': len(graph['moves']), 'command_modes': dict(sorted(modes.items())),
+           'engine_special_rows': dict(sorted(specials.items())), 'reachable_any_requirement': len(seen),
            'reachable_requirement_free': len(free_seen), 'unreachable': len(graph['moves']) - len(seen),
            'reachable_clip_formats': fmts, 'reachable_unique_clips': len(anims),
            'requirement_conditions_used': dict(sorted(allc.items())),

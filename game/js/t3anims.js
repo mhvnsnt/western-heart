@@ -814,6 +814,59 @@ export function ensureT7Moves(fid, THREE) {
   })();
   return _t7movesLoading[fid];
 }
+/* T7 FULL GRAPH CLIP BANK (2026-11-10, owner t388u: import EVERY move from the complete source, not per-move picks).
+   A fighter's imported motbin graph (graph.json, tools/anim/t7_graph_import.py) plus EVERY clip that graph reaches
+   (graph-clips/, tools/anim/t7_graph_pack.py: deterministic shards of <= 6 MB, index.json with frames + sha256 per
+   shard). Same skeleton + rest-pose capture as the T7 stance / moves (one skelId per dir), so a clip is only retargeted
+   for a model whose stance rest pose was captured. Loaded ONLY for the explicit development integration
+   (fighter.js t7GraphDevEnabled: ?t7graph=1 or localStorage wh.t7graph=1); the default game is unchanged.
+   Every file loads page first, then jsDelivr (fetchT7Json), like the moves packs. */
+export const T7_GRAPHS = {
+  pantera: { bank: 'king', dir: 'assets/anim/t7/king/' },
+};
+const _t7graphs = {}; const _t7graphLoading = {};
+export function ensureT7Graph(fid, THREE, { fetchJson = fetchT7Json } = {}) {
+  const def = T7_GRAPHS[fid];
+  if (!def) return Promise.resolve(null);
+  if (_t7graphs[fid]) return Promise.resolve(_t7graphs[fid]);
+  if (_t7graphLoading[fid]) return _t7graphLoading[fid];
+  _t7graphLoading[fid] = (async () => {
+    try {
+      const [graph, index] = await Promise.all([fetchJson(def.dir + 'graph.json'), fetchJson(def.dir + 'graph-clips/index.json')]);
+      if (graph.format !== 'wh-t7-graph/2' || index.format !== 'wh-t7-graph-clips/1') throw new Error(`format ${graph.format} / ${index.format}`);
+      const skelId = 't7:' + def.dir;
+      if (!_t3skelCache[skelId]) _t3skelCache[skelId] = await fetchJson(def.dir + 'skeleton.json');
+      const shards = await Promise.all(index.shards.map((sh) => fetchJson(def.dir + 'graph-clips/' + sh.file)));
+      const clips = {}, driverClips = {};
+      for (const sh of shards) {
+        if (sh.graph_sha256 !== index.graph_sha256) throw new Error(`shard ${sh.shard} was packed for another graph`);
+        for (const [key, data] of Object.entries(sh.clips)) {
+          if (data.anim_set && data.anim_set !== 'FIGHT') continue;
+          const clip = THREE ? jsonToClip(`t7g_${fid}_${key}`, data, THREE) : null;
+          if (clip) { clip.userData.loop = false; clip.userData.t7 = data.t7_source || true; clips[key] = clip; }
+          driverClips[key] = { frames: data.root_t.length, fwd: data.root_motion_fwd_m || null };
+        }
+      }
+      const missing = Object.keys(index.clips).filter((k) => !driverClips[k]);
+      _t7graphs[fid] = { fid, bank: def.bank, dir: def.dir, skelId, graph, index, clips, driverClips, missing };
+      console.log(`[WH-T7G] ${fid}: graph ${graph.moves.length} moves, ${Object.keys(driverClips).length} clips in ${index.shards.length} shards (${index.total_bytes} B)`);
+      return _t7graphs[fid];
+    } catch (e) {
+      console.warn(`[WH-T7G] ${fid}: T7 graph bank unavailable, the fighter keeps its current controls:`, e.message || e);
+      return null;
+    }
+  })();
+  return _t7graphLoading[fid];
+}
+export function getT7Graph(fid) { return _t7graphs[fid] || null; }
+/** Retarget one graph clip onto `model` as action 't7g:<key>' (same captured rest pose as the stance), or null. */
+export function t7GraphRetarget(fid, key, model, THREE, instanceKey = null) {
+  const b = _t7graphs[fid]; const clip = b && b.clips[key];
+  if (!clip || !model) return null;
+  const pm = _retargetCache.get(model); if (!pm || !pm.get(b.skelId)) return null;
+  const name = 't7g:' + key;
+  return retargetT3Clips({ [name]: clip }, b.skelId, model, THREE, instanceKey, [name]);
+}
 /** The real T7 clip for one moveset row of this fighter on its bound bank, or null. With `model`, also null
     unless the stance's rest pose was captured for that model (so the move can be retargeted safely). */
 /** Single-input notation in one spelling: 'df+1' / 'D/F+1' -> 'd/f+1'. Strings (',') are not single inputs. */

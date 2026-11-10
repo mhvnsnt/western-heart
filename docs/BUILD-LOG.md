@@ -1,3 +1,19 @@
+## 2026-11-10 — Pantera: King T7 full-graph fighter adapter, opt-in DEVELOPMENT integration (MoneyManBusch / Grok) (t386u/t388u)
+
+- **Decode v2** (`wh-t7-graph/2`). Cancel buttons are now `0xMMNNHHPP` (pressed / held / not-held / mode, per the TekkenMods Input Extradata doc). v1 misread the 627 "any-of" rows as held.
+  - The cancel frame is applied at `starting_frame` (input buffered).
+  - Move length is the clip frames (motbin `anim_max_len` is 0 on disk).
+  - Hit level agrees with the frame data on 48/48 joined moves.
+- **Adapter.** The real shared input (on-screen hold/release now tracked) feeds `t7-graph-input.js`, then `Fighter.t7gFeed`, then `T7GraphDriver`, then the source cancel walk. The source move plays its own clip frame, with source root travel, damage, active frames and hit level.
+  - It is opt-in only: `?t7graph=1`, with a visible on-screen label. Off = unchanged Pantera.
+  - Unknown conditions are skipped and counted, never true. A fire after a skipped unknown row is flagged.
+- **Pack.** 772 clips are in 10 deterministic shards, 57,046,485 B total (max 5,991,270 B; Cloudflare 25 MiB/file, jsDelivr 20 MB/file). They come from the existing bake cache and were not rebaked. They are not added to GitHub Pages (no headroom); jsDelivr is the fallback there.
+- **Commands** generated from the graph: 37,419 rows on 1,196 reachable moves.
+  - Evaluable 7,775; unknown 28,247; known-false 1,039; timing 151; special 134; seq-mode 73.
+  - 66/66 evaluable stance press commands are replayed through the real input path.
+- **Tests:** `test/t7-graph-adapter-pantera.test.mjs` 14/14, `test/t7-graph-king.test.mjs` 10/10. Node only; no touch or model proof; not 100%.
+  See `docs/proof/2026-11-10/t7-graph-adapter/README.md`.
+
 ## 2026-11-10 — King T7 FULL graph import + runtime interpreter (owner t388u method correction) (MoneyManBusch / Grok)
 
 - **Import.** `tools/anim/t7_graph_import.py` imports King's whole motbin graph: 2,787 moves, 42,621 cancel rows with groups inlined, 259 sequences, 868 requirement lists, and the alias table read from the bin header. It is deterministic. Output: `game/assets/anim/t7/king/graph.json` (2.55 MB).

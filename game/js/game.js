@@ -27,6 +27,7 @@ async function gungakuAI() {
   return _GungakuAI;
 }
 import { audio } from './audio.js';
+import { feedT7GraphInput } from './t7-graph-input.js'; // its tekkenDirOf is this file's _tekkenDir (same body, test-checked)
 import { voice } from './voice.js';
 import { music } from './music.js';
 import { getStage } from './stages.js';
@@ -533,6 +534,8 @@ export class Game {
         if (!p1SurgeBefore && this.p1.attackName === 'surge' && this.p1.state === 'attack') {
           this.surgePresentation(this.p1);
         }
+      } else if (this.p1.t7gReady && this.p1.t7gReady()) {
+        this._t7gPlayerInput(this.input, dt); // T7 full-graph DEVELOPMENT integration (fighter.js t7GraphDevEnabled)
       } else {
         const inp = this.input;
         const ms = this.matchStats; // story reincarnation profiling
@@ -754,6 +757,11 @@ export class Game {
         this._hitStop = 0.08 * this.feel.hitstop; rec('vtrigger');
       }
     } else if (f.tryVSkill()) { audio.whiff(); rec('vskill'); }
+  }
+
+  /* T7 full-graph development integration: the shared input into the player's source graph (t7-graph-input.js). */
+  _t7gPlayerInput(inp, dt) {
+    feedT7GraphInput(this.p1, inp, dt, { onThrowEscape: () => { this.ui.throwEscape(true); audio.block(); } });
   }
 
   /* Test attacker's active hitbox against defender's hurtboxes */

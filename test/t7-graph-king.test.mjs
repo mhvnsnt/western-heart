@@ -1,4 +1,4 @@
-// King T7 FULL graph (wh-t7-graph/1) + runtime interpreter (game/js/t7graph.js). Node only: no browser, no touch,
+// King T7 FULL graph (wh-t7-graph/2) + runtime interpreter (game/js/t7graph.js). Node only: no browser, no touch,
 // no model proof. Run: node --test test/t7-graph-king.test.mjs
 // Every expectation below was verified independently from the source tables in earlier passes (dash/run/KBD/strings/
 // motions) or is a direct table fact; the interpreter must reproduce them from the imported graph alone, in source
@@ -19,7 +19,7 @@ const step = (from, ctx) => G.stepCancel(g, id(from), { evalCond: ev, down: [], 
 const H = (a) => a.map(([dir, down]) => ({ dir, down: down || [] }));
 
 test('whole graph imported: every move, cancel (groups inlined), sequence, requirement; source ids kept', () => {
-  assert.equal(g.format, 'wh-t7-graph/1');
+  assert.equal(g.format, 'wh-t7-graph/2');
   assert.equal(g.moves.length, 2787);
   assert.equal(g.moves.reduce((n, m) => n + m.cancels.length, 0), 42621);
   assert.equal(g.sequences.length, 259);
