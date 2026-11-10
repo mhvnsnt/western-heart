@@ -504,6 +504,10 @@ export const MODEL_URLS = {
   // as the earlier named options.
   menajerii: '../roster/vixen/attires/attire1/model-rigged-noplane.glb',
   'menajerii-attire1': '../roster/vixen/attires/attire1/model-rigged-noplane.glb',
+  // MADELYN (2026-11-09, owner order): her FIXED build — restored in
+  // physics-playground-pwa PR #40 (153 morph targets: 92 body + 61 face;
+  // deform-only 170-joint rig) — wired in as-is, bare: no canon written.
+  madelyn: '../roster/madelyn/attires/attire1/model.glb',
   // ——— LANDING WAVE 1 (2026-10-23, docs/CATCHUP-AUDIT-2026-10-23.md) ———
   // Wiring fixes only: keys for models already on main that no key reached.
   // BUFFALO BILL: his moveset file sat on main unlisted; A1/A2 sources named
