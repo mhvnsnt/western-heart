@@ -761,7 +761,7 @@ export class Game {
 
   /* T7 full-graph development integration: the shared input into the player's source graph (t7-graph-input.js). */
   _t7gPlayerInput(inp, dt) {
-    feedT7GraphInput(this.p1, inp, dt, { onThrowEscape: () => { this.ui.throwEscape(true); audio.block(); } });
+    feedT7GraphInput(this.p1, inp, dt, { onThrowEscape: () => { this.ui.throwEscape(true); audio.block(); }, opponent: this.p2 });
   }
 
   /* Test attacker's active hitbox against defender's hurtboxes */

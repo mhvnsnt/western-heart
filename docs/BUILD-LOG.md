@@ -1,3 +1,17 @@
+## 2026-11-10 — King T7 cancel walk transcribed from the exe: loader cancel_option, matcher, list-property timing; strict neutral→jab→1,2 works with the opponent ahead (MoneyManBusch / Grok) (t386u/t388u)
+
+- **Root cause.** Packed cancel_option is 0 everywhere; the loader `0x140714f5e` derives it. The main walk `0x140749240` stops only on option-0x40 rows; extradata `&0x3C00 == 0x2800` rows only apply their properties. Button word 0 matches on press frames too.
+- **Runtime.** `t7CancelOption`, `commandMatch` and `applyListProps` give exact var/flag values at walk time. The heading comes from world geometry until the first source move.
+- **Strict, opponent ahead:** 1 → Kg_lp00F → 2 → Kg_lprpF; f → walk; f,n,f → dash. After a source move, facing is unknown again (80 blocks the run).
+  See `docs/proof/2026-11-10/t7-walker/README.md`. Not 100%. Opt-in only.
+
+## 2026-11-10 — King T7 player flags (359) from exe init, 329 exe default-false requirement ids, props-driven writers (MoneyManBusch / Grok) (t386u/t388u)
+
+- **Exe.** Player init `0x140759a50` zeroes the 100 flag words (`rep stosw` at `0x14075a065`) and `[+0x938]`/`[+0x964]`. 359 = flag[param>>16] == sign-extended low word. 329 evaluator jump-table slots are the default (`xor bl,bl`), so those ids are always false; this includes 167 and 254.
+- **Runtime.** Flags are tracked from init. A writer (0x8106-8) in a fired list, or in an entered move's props (`graph.props.json`, now loaded), makes its flag UNKNOWN; it is never guessed.
+- **Effect.** Stance row #132 is known-false via the AND, with no guess for 815 or 553. Strict still fires 0 stance commands. The blockers are now facing 72/80 (own-yaw `[+0x1b8]` not traced) and 356 (`[+0x390]`, untraced).
+  See `docs/proof/2026-11-10/t7-flags/README.md`. Not 100%. Not deployed (no new working command).
+
 ## 2026-11-10 — King T7 extra properties imported; player vars 809/361 decoded; strict input semantics (MoneyManBusch / Grok) (t386u/t388u)
 
 - **Import.** `tools/anim/t7_graph_props.py` writes `graph.props.json`: all 12,227 extra-property rows and 531 end props, with source indices. It is separate from `graph.json`, so the clip shards stay valid and nothing was rebaked.

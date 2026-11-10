@@ -54,7 +54,9 @@ def main():
     moves = []
     for m in mv:
         moves.append({'extra': plist(EP, m['extra_prop_idx'], 'extra'), 'start': plist(SS, m['start_prop_idx'], 'se'),
-                      'end': plist(SE, m['end_prop_idx'], 'se')})
+                      'end': plist(SE, m['end_prop_idx'], 'se'),
+                      # move word +0x56: on entry the exe turns the yaw by it (0x14074ffe7..0x14075003d)
+                      'turn_0x56': m['u_0x56']})
     g = open(a.graph, 'rb').read()
     out = {'format': 'wh-t7-graph-props/1', 'source_json_sha256': sha(jb), 'graph_sha256': sha(g),
            'fields': {'extra': ['source_index', 'starting_frame_raw', 'id', 'value'],

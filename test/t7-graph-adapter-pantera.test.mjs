@@ -46,10 +46,10 @@ function pantera(strict = false) {
 }
 // The shared input layer, exactly as the handlers use it (keyboard keydown/keyup and the touch limb buttons now do the
 // same thing: held[b] + _tekken(b, t) on press, held[b] = false on release; the stick through _stick8 / stickNeutral).
-function rig(strict = false) {
+function rig(strict = false, { opponent = null } = {}) {
   const inp = new IN.InputManager(); inp.enabled = true;
   const f = pantera(strict); let t = 1000; const log = [];
-  const tick = (n = 1) => { for (let i = 0; i < n; i++) { t += DT * 1000; GI.feedT7GraphInput(f, inp, DT); if (f._t7gRec) log.push(f._t7gRec); } };
+  const tick = (n = 1) => { for (let i = 0; i < n; i++) { t += DT * 1000; GI.feedT7GraphInput(f, inp, DT, { opponent }); if (f._t7gRec) log.push(f._t7gRec); } };
   const stick = (d) => {
     const v = { n: [0, 0], f: [1, 0], b: [-1, 0], d: [0, -1], u: [0, 1], 'd/f': [0.8, -0.8], 'd/b': [-0.8, -0.8], 'u/f': [0.8, 0.8], 'u/b': [-0.8, 0.8] }[d];
     if (d === 'n') inp.stickNeutral(); else inp._stick8(v[0], v[1]);
@@ -303,14 +303,14 @@ test('real fighter, stance n+1+2: the source BT row (stance row 280, req [72] ->
   assert.deepEqual(g.requirements[String(row[G.F.req])], [[72, 0]]);
   assert.equal(G.moveByName(g, 'Kg_Tnrpsp'), G.resolveMoveId(g, row[G.F.to]));
   const run = (rel) => {
-    const r = rig(); if (rel !== undefined) r.f._t7g.evalState.relHeading16 = rel; // TEST INJECTION, not a runtime source
+    const r = rig(); if (rel !== undefined) r.f._t7gHeadingOverride = rel; // TEST INJECTION, not a runtime source
     r.tick(6); r.press('1', '2'); r.tick(2); r.release('1', '2'); r.tick(4);
     const fire = r.log.find((x) => x.fired && x.moveId === g.stance && x.fired.via === 'cancel');
     const sk = r.log.flatMap((x) => (x.moveId === g.stance ? x.skipped || [] : []));
     return { fire, sk, r };
   };
   const game = run();
-  assert.equal(game.r.f._t7g.evalState.relHeading16, undefined, 'the game supplies no heading');
+  assert.equal(game.r.f._t7g.evalState.relHeading16, null, 'no opponent geometry: no heading');
   assert.ok(game.sk.some((k) => k.index === 280 && k.reason === 'requirement' && k.unknown && k.unknown.includes(72)), 'skipped as unknown 72');
   assert.ok(game.fire && game.fire.fired.index !== 280 && game.fire.fired.toName !== 'Kg_Tnrpsp');
   assert.ok(game.fire.fired.precedenceUnknown.length > 0, 'flagged: an unknown row outranked the fired row');
@@ -334,7 +334,7 @@ test('throws are visibly UNSUPPORTED: a throw-class source move plays its clip o
   assert.ok(inThrow > 0); assert.equal(sawHitbox, false, 'no hitbox: there is no grab');
   assert.ok(r.f._t7gStatus.throwNoGrab >= 1);
   assert.match(recs(r).find((x) => x.name === thr.to).unsupported, /NO GRAB/);
-  assert.match(r.f._t7gStatus.assumptions, /posture: standing .*undecoded.*facing: unknown/);
+  assert.match(r.f._t7gStatus.assumptions, /posture: standing .*undecoded.*facing: from the world until the first source move, then unknown/);
   const marked = g.moves.filter((m) => m.damage === 0x4000);
   assert.equal(marked.length, 43, 'source hit conditions with the 0x4000 throw marker');
 });
@@ -353,25 +353,70 @@ test('exe list semantics: any known-false entry makes the list false even after 
   assert.equal(ev(0x8106, 0), true); assert.equal(ev(0x8414, 3), true);
 });
 
-test('STRICT (game default), real Fighter: row #0 is now KNOWN-false (player vars zeroed at match start); every input is blocked by row #132 (815 parry-low, 359 flag, 553 RNG); press frames report the unproven P1 rule instead of hiding behind it', () => {
+test('STRICT, real Fighter, NO opponent geometry (heading unknown): no input fires; every block is a facing (72/80) or item (609) row; neutral no longer blocks (exe walker: button-less rows are non-stopping or known-false)', () => {
   assert.equal(F.t7GraphStrict(), true, 'strict unless the labelled permissive diagnostic is requested');
   globalThis.WH_T7GRAPH = 'permissive'; assert.equal(F.t7GraphStrict(), false); delete globalThis.WH_T7GRAPH;
   const st = g.moves[g.stance].cancels;
-  assert.deepEqual(g.requirements[String(st[0][G.F.req])], [[809, 15], [33812, 0], [361, 100]]);
   assert.deepEqual(g.requirements[String(st[132][G.F.req])], [[815, 16], [359, 655361], [553, 800], [33816, 655660], [33030, 655360], [33446, 0]]);
   for (const [dir, btn] of [['n', []], ['n', ['1']], ['f', []], ['d/f', []], ['n', ['3', '4']], ['f', ['1', '3']]]) {
     const r = rig(true); assert.equal(r.f._t7g.strict, true);
-    assert.deepEqual(r.f._t7g.evalState.playerVars, { [0x938]: 0, [0x964]: 0 }, 'exe reset 0x140746ad0 zeroes both');
     r.tick(4); r.stick(dir); if (btn.length) r.press(...btn); r.tick(2); if (btn.length) r.release(...btn); r.tick(150);
-    assert.equal(r.log.filter((x) => x.fired && x.fired.via === 'cancel').length, 0, `${dir}+${btn.join('+')}: no cancel fires`);
-    assert.ok(r.log.every((x) => x.name === 'Kg_sKAM00_'));
-    assert.ok(!r.log.some((x) => x.ambiguous && x.ambiguous.index === 0), 'row #0 no longer blocks: 809 is known-false');
+    const cf = r.frames().filter((x) => x.fired && x.fired.via === 'cancel' && g.moves[x.moveId].cancels[x.fired.index][G.F.cmd] !== G.AUTO);
+    assert.equal(cf.length, 0, `${dir}+${btn.join('+')}: no cancel fires (${cf.map((x) => x.name + '#' + x.fired.index + '->' + x.fired.toName)})`);
+    assert.equal(r.f._t7g.evalState.playerFlags[10], 0, 'exe init 0x140759a50 zeroes the flag words');
     const amb = r.log.filter((x) => x.ambiguous);
-    assert.ok(amb.length && amb.every((x) => x.ambiguous.index === 132));
-    assert.deepEqual(amb[0].ambiguous.unknown, [815, 359, 553]);
-    if (btn.length) assert.ok(amb.some((x) => x.ambiguous.reason === 'input-semantics'), 'press frame: P1 is reported, not applied');
-    assert.ok(r.log.some((x) => x.stalled)); assert.ok(!r.f.attack);
+    const why = new Set(amb.flatMap((x) => x.ambiguous.unknown));
+    assert.ok([...why].every((c) => [72, 80, 609].includes(c)), `only facing / item block: ${[...why]}`);
+    if (dir === 'n' && !btn.length) assert.equal(amb.length, 0, 'neutral: nothing outranks, nothing blocks');
+    assert.ok(!r.f.attack);
   }
+});
+
+/* End to end under the exe walker semantics, STRICT, with the opponent straight ahead (the round-start geometry: exe
+   0x1406e5623 sets yaw = bearing, so [self+0x1c2] = 0). Heading comes from the world only until the first source move. */
+test('STRICT end to end, opponent ahead: neutral -> 1 = Kg_lp00F; 1,2 string -> Kg_lprpF; f -> walk; after a source move the heading is unknown again (fail closed)', () => {
+  const opp = { root: { position: { x: 3, y: 0, z: 0 } } };
+  let r = rig(true, { opponent: opp }); r.tick(4);
+  assert.equal(r.f._t7g.evalState.relHeading16, 0);
+  r.press('1'); r.tick(2); r.release('1'); r.tick(8); r.press('2'); r.tick(2); r.release('2'); r.tick(60);
+  const fires = r.frames().filter((x) => x.fired && x.fired.via === 'cancel').map((x) => x.fired.toName);
+  assert.deepEqual(fires.slice(0, 2), ['Kg_lp00F', 'Kg_lprpF'], `fired ${fires}`);
+  assert.equal(r.f._t7g.headingFromWorld, false); assert.equal(r.f._t7g.evalState.relHeading16, null);
+  r = rig(true, { opponent: opp }); r.tick(400);
+  assert.ok(r.frames().some((x) => x.fired && x.fired.toName === 'Kg_sKAM00_'), 'the stance looped through its AUTO row');
+  assert.equal(r.f._t7g.headingFromWorld, true, 'idle loop (same move, turn word 0) keeps the world heading');
+  r.press('1'); r.tick(2); r.release('1'); r.tick(4);
+  assert.equal(r.frames().filter((x) => x.fired && x.fired.via === 'cancel').map((x) => x.fired.toName).pop(), 'Kg_lp00F');
+  r = rig(true, { opponent: opp }); r.tick(4); r.stick('f'); r.tick(6);
+  assert.equal(r.log.filter((x) => x.fired && x.fired.via === 'cancel')[0].fired.toName, 'Kg_sWALKF');
+  r = rig(true, { opponent: { root: { position: { x: -3, y: 0, z: 0 } } } }); r.tick(2);
+  assert.equal(r.f._t7g.evalState.relHeading16, null, 'opponent behind: |angle| >= 0x3fff, sign unproven -> unknown');
+});
+
+/* Foundation fixtures transcribed from the exe (not expectations of blocking): loader-derived cancel_option, matcher. */
+test('exe loader cancel_option (0x140714f5e): cmd 0 -> 0x01; ids >= 0x32C -> 0x02; extradata&0x3C00 == 0x2800 -> non-stopping; the packed data carries 0', () => {
+  const st = g.moves[g.stance].cancels;
+  assert.ok(g.moves.every((m) => m.cancels.every((c) => c[G.F.option] === 0)), 'every packed cancel_option is 0 (derived at load)');
+  assert.equal(G.t7CancelOption(g, st[322]) & 0x41, 0x01, '#322: command 0, extradata 0x2800 -> matches always, never stops');
+  assert.equal(st[322][G.F.extradata], 0x2800);
+  assert.ok(G.t7CancelOption(g, st[132]) & 0x02, '#132 holds 815 (>= 0x32C): secondary walk only');
+  assert.ok(G.t7CancelOption(g, st[461]) & 0x40, 'jab row stops the walk');
+  assert.equal(g.moves[G.resolveMoveId(g, st[461][G.F.to])].name, 'Kg_lp00F');
+  const ev = G.makeEvalCond({ charId: 2, controller: 0, relHeading16: 0, playerVars: { [0x938]: 0, [0x964]: 0 }, playerFlags: new Array(100).fill(0) });
+  assert.equal(ev(0, 0), true, 'requirement 0: exe case 0 -> mov bl,1');
+});
+test('exe matcher (0x140742de0 / 0x140743d40): button word 0 matches with or without presses; 0x40 mode = one pressed + all held; 0x20 = any pressed', () => {
+  const ctx = (dir, down, held) => ({ frame: 1, moveLen: 60, dir, down, held, history: [{ dir, down: G.buttonsMask(down), held: G.buttonsMask(held) }],
+    evalCond: () => true, strict: true });
+  const fake = (cmd, raw, xd = 0) => ({ aliases: [], requirements: { 0: [] }, moves: [{ cancels: [[cmd, cmd, raw & 0x1f, raw >>> 24, -1, 0, 1, 32767, 1, 0, 0, xd, -1, 0, 0, raw]] }] });
+  assert.ok(G.stepCancel(fake(0, 0), 0, ctx('n', ['1'], ['1'])).row, 'all-zero command takes a press frame too');
+  assert.ok(G.stepCancel(fake(0x20, 0x40000003), 0, ctx('n', ['1'], ['1', '2'])).row, '1 pressed, 2 held -> 0x40 match');
+  assert.ok(!G.stepCancel(fake(0x20, 0x40000003), 0, ctx('n', ['1'], ['1'])).row, '2 not held -> no match');
+  assert.ok(G.stepCancel(fake(0x20, 0x20000003), 0, ctx('n', ['2'], ['2'])).row, '0x20: any of 1/2 pressed');
+  assert.ok(!G.stepCancel(fake(0x20, 0x00000001), 0, ctx('f', ['1'], ['1'])).row, 'direction n only');
+  const side = fake(0, 0, 0x2800); side.moves[0].cancels.push([0x8000, 0, 0, 0, -1, 0, 1, 32767, 1, 0, 0, 0, -1, 0, 0, 0]);
+  const r = G.stepCancel(side, 0, ctx('n', [], []));
+  assert.equal(r.index, 1, 'a passing non-stopping row (extradata 0x2800) does not end the walk');
 });
 
 test('player variables: King\'s extra-property lists never write them; his cancel requirement lists do (fail closed after such a row fires); suspension makes them unknown', () => {
@@ -393,11 +438,45 @@ test('player variables: King\'s extra-property lists never write them; his cance
   assert.deepEqual(r2.f._t7g.evalState.playerVars, { [0x938]: null, [0x964]: null });
 });
 
-test('PERMISSIVE diagnostic: the same input fires a lower row, and the fire is flagged with the outranking unknown conditions', () => {
+test('PERMISSIVE diagnostic (labelled UNVERIFIED): without heading the same press fires a lower row and is flagged with the outranking unknown facing conditions', () => {
   const r = rig(false); r.tick(4); r.press('1'); r.tick(2); r.release('1'); r.tick(4);
   const fire = r.log.find((x) => x.fired && x.fired.via === 'cancel');
   assert.equal(fire.fired.toName, 'Kg_lp00F');
-  // On the press frame the button-less row #0 does not take the press (WH policy P1, unproven); rows gated by the
-  // unresolved facing conditions 80/81 outrank the jab row and were skipped.
-  assert.deepEqual(fire.fired.precedenceUnknown, [80, 81]);
+  assert.ok(fire.fired.precedenceUnknown.includes(80), 'facing rows outrank the jab row and were skipped');
+});
+
+/* Foundations validated against the shipping exe (fixtures extracted from the binary, not from expectations of blocking). */
+test('exe default case: 329 requirement ids whose jump-table slot is the default (xor bl,bl) are ALWAYS false; decoded ids are not in it', () => {
+  assert.equal(G.T7_EXE_DEFAULT_FALSE.size, 329);
+  for (const c of [1, 167, 254, 739, 742, 568]) assert.equal(G.makeEvalCond({})(c, 0), false, `${c}`);
+  for (const c of [35, 36, 72, 73, 80, 81, 135, 217, 225, 356, 359, 361, 553, 609, 809, 815]) assert.ok(!G.T7_EXE_DEFAULT_FALSE.has(c), `${c} has its own case`);
+  assert.equal(G.makeEvalCond({})(0x36c, 0), false, 'above the table: ja -> default');
+  assert.equal(G.makeEvalCond({})(0x8001, 0), true, 'bit 0x8000 still returns 1 first');
+});
+
+test('player flags (359): idx = param>>16 (<= 0x63), value = sign-extended low word; init zero; a flag writer (0x8106-8) in a fired list or an entered move\'s properties makes that flag UNKNOWN, never a guessed value', () => {
+  const ev = (fl) => G.makeEvalCond({ playerFlags: fl });
+  const z = new Array(100).fill(0);
+  assert.equal(ev(z)(359, (10 << 16) | 1), false); assert.equal(ev(z)(359, 10 << 16), true);
+  assert.equal(ev(z)(359, (0x64 << 16) | 0), false, 'idx > 0x63 -> false (exe bound)');
+  assert.equal(ev(z)(359, (3 << 16) | 0xffff), false, 'value -1 never equals an unsigned word');
+  const u = z.slice(); u[10] = null; assert.equal(ev(u)(359, (10 << 16) | 1), null);
+  assert.equal(ev(null)(359, 0), null, 'untracked -> unknown');
+  const r = rig(true); const D = r.f._t7g;
+  D._applyWriters([[0x8106, (10 << 16) | 1]]); assert.equal(D.evalState.playerFlags[10], null);
+  assert.equal(D.evalState.playerFlags[11], 0);
+  const P = bank.props; assert.equal(P.format, 'wh-t7-graph-props/1');
+  const mi = P.moves.findIndex((m) => m.extra.some((x) => x[2] === 0x8106));
+  assert.ok(mi >= 0); const k = P.moves[mi].extra.find((x) => x[2] === 0x8106)[3] >>> 16;
+  const r2 = rig(true); r2.f._t7g._enter(mi); assert.equal(r2.f._t7g.evalState.playerFlags[k], null, 'entered move with a flag writer');
+});
+
+test('STRICT, opponent ahead: f,n,f double tap reaches Kg_sDASHF through source rows; the run is then held back ONLY by facing (80), unknown after the first source move', () => {
+  const opp = { root: { position: { x: 3, y: 0, z: 0 } } };
+  const r = rig(true, { opponent: opp }); r.tick(4);
+  r.stick('f'); r.tick(4); r.stick('n'); r.tick(4); r.stick('f'); r.tick(80);
+  const names = new Set(recs(r).map((x) => x.name));
+  assert.ok(names.has('Kg_sWALKF') && names.has('Kg_sDASHF'), [...names].join(','));
+  const why = new Set(recs(r).filter((x) => x.ambiguous).flatMap((x) => x.ambiguous.unknown));
+  assert.deepEqual([...why], [80], 'the only open question is the source heading after a source move');
 });
