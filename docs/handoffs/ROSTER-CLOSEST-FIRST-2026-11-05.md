@@ -186,3 +186,5 @@ GRE `tekken3/animations/`: divmot03/04/07/09/12/13/16/99 only (no divmot14 this 
   5. T7-bank sidestep axis.
   6. Full movelist / throws / chains matrix.
   See `docs/proof/2026-11-10/pantera-tekken-dash/INPUT-MATRIX.md`.
+
+- Pass 2 (2026-11-10): 15 King T7 string steps baked and wired; Pantera plain rows on real King T7 41 → 61 / 643. Next: motion (f,F / f,f) rows via resolver motion support, then stance rows, then throws.

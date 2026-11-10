@@ -1,0 +1,593 @@
+{
+ "schema": "wh-t7-move-resolve/1",
+ "code": "kin",
+ "stance": "Kg_sKAM00_",
+ "stats": {
+  "t7_rows": 297,
+  "mapped": 29,
+  "mapped_0xC8": 0,
+  "ambiguous": 0,
+  "no_match": 6,
+  "not_single_input": 262,
+  "string_step_rows": 24,
+  "string_mapped": 17,
+  "string_ambiguous": 0,
+  "string_no_match": 7
+ },
+ "source": "teardown/tekken7-steam/tkdata/mothead/json/kinmot.json (the reverse-engineering repo; motbin_sha256 de4acf32277e1ebd13c0bb5e5eec68b2f37e0fa23d40b0f16ef169919d62ec18)",
+ "string_steps": {
+  "1,2~t7.king.2": {
+   "t7_command": "(1), 2",
+   "damage": 15,
+   "startup": 12,
+   "status": "mapped",
+   "motbin_move": "Kg_lprpF",
+   "motbin_id": 1548,
+   "anim": "ygkg_lprp(DVD)",
+   "bank": "rotsm",
+   "clip": 314,
+   "fmt": "0x64",
+   "prefix_chain": [
+    [
+     "Co_R_lp00R",
+     "Co_R_rp00L",
+     "Kg_jprk00F",
+     "Kg_lp00F"
+    ]
+   ],
+   "verified_candidates": [
+    "Kg_lprpF"
+   ]
+  },
+  "1,2,2+4~t7.king.3": {
+   "t7_command": "(1), (2), 2+4",
+   "damage": 30,
+   "startup": 30,
+   "status": "no_match",
+   "motbin_move": null,
+   "motbin_id": null,
+   "anim": null,
+   "bank": null,
+   "clip": null,
+   "fmt": null,
+   "prefix_chain": [
+    [
+     "Co_R_lp00R",
+     "Co_R_rp00L",
+     "Kg_jprk00F",
+     "Kg_lp00F"
+    ],
+    [
+     "Kg_lprpF"
+    ]
+   ],
+   "verified_candidates": []
+  },
+  "1,2,d+2+4~t7.king.3": {
+   "t7_command": "(1), (2), d+2+4",
+   "damage": 45,
+   "startup": 27,
+   "status": "no_match",
+   "motbin_move": null,
+   "motbin_id": null,
+   "anim": null,
+   "bank": null,
+   "clip": null,
+   "fmt": null,
+   "prefix_chain": [
+    [
+     "Co_R_lp00R",
+     "Co_R_rp00L",
+     "Kg_jprk00F",
+     "Kg_lp00F"
+    ],
+    [
+     "Kg_lprpF"
+    ]
+   ],
+   "verified_candidates": []
+  },
+  "1,2,1~t7.king.3": {
+   "t7_command": "(1), (2), 1",
+   "damage": 10,
+   "startup": 24,
+   "status": "mapped",
+   "motbin_move": "Kg_rplu6",
+   "motbin_id": 1685,
+   "anim": "ygkg_lprplp(DVD)",
+   "bank": "rotsm",
+   "clip": 316,
+   "fmt": "0x64",
+   "prefix_chain": [
+    [
+     "Co_R_lp00R",
+     "Co_R_rp00L",
+     "Kg_jprk00F",
+     "Kg_lp00F"
+    ],
+    [
+     "Kg_lprpF"
+    ]
+   ],
+   "verified_candidates": [
+    "Kg_rplu6"
+   ]
+  },
+  "1,2,1,2+4~t7.king.4": {
+   "t7_command": "(1), (2), (1), 2+4",
+   "damage": 40,
+   "startup": 26,
+   "status": "no_match",
+   "motbin_move": null,
+   "motbin_id": null,
+   "anim": null,
+   "bank": null,
+   "clip": null,
+   "fmt": null,
+   "prefix_chain": [
+    [
+     "Co_R_lp00R",
+     "Co_R_rp00L",
+     "Kg_jprk00F",
+     "Kg_lp00F"
+    ],
+    [
+     "Kg_lprpF"
+    ],
+    [
+     "Kg_rplu6"
+    ]
+   ],
+   "verified_candidates": []
+  },
+  "1,2,1,d+2+4~t7.king.4": {
+   "t7_command": "(1), (2), (1), d+2+4",
+   "damage": 45,
+   "startup": 28,
+   "status": "no_match",
+   "motbin_move": null,
+   "motbin_id": null,
+   "anim": null,
+   "bank": null,
+   "clip": null,
+   "fmt": null,
+   "prefix_chain": [
+    [
+     "Co_R_lp00R",
+     "Co_R_rp00L",
+     "Kg_jprk00F",
+     "Kg_lp00F"
+    ],
+    [
+     "Kg_lprpF"
+    ],
+    [
+     "Kg_rplu6"
+    ]
+   ],
+   "verified_candidates": []
+  },
+  "2,1~t7.king.2": {
+   "t7_command": "(2), 1",
+   "damage": 15,
+   "startup": 23,
+   "status": "mapped",
+   "motbin_move": "Kg_rplu4t",
+   "motbin_id": 1550,
+   "anim": "ygkg_lprplp(DVD)",
+   "bank": "rotsm",
+   "clip": 316,
+   "fmt": "0x64",
+   "prefix_chain": [
+    [
+     "Co_R_lp00R",
+     "Co_R_rp00L",
+     "Kg_rp00",
+     "Kg_t_srp00B",
+     "Kg_t_srpF"
+    ]
+   ],
+   "verified_candidates": [
+    "Kg_rplu4t"
+   ]
+  },
+  "1+2,1~t7.king.2": {
+   "t7_command": "(1+2), 1",
+   "damage": 21,
+   "startup": 22,
+   "status": "mapped",
+   "motbin_move": "Kg_hizilp",
+   "motbin_id": 1722,
+   "anim": "kgkb_s4_hijiupC",
+   "bank": "motbin",
+   "clip": 112,
+   "fmt": "0x64",
+   "prefix_chain": [
+    [
+     "Kg_Tnrpsp",
+     "Kg_hiziru"
+    ]
+   ],
+   "verified_candidates": [
+    "Kg_hizilp"
+   ]
+  },
+  "1+2,3~t7.king.2": {
+   "t7_command": "(1+2), 3",
+   "damage": 25,
+   "startup": 24,
+   "status": "mapped",
+   "motbin_move": "Kg_hizilk",
+   "motbin_id": 1724,
+   "anim": "ikkg_hijiup_kawada(DVD)",
+   "bank": "rotsm",
+   "clip": 475,
+   "fmt": "0x64",
+   "prefix_chain": [
+    [
+     "Kg_Tnrpsp",
+     "Kg_hiziru"
+    ]
+   ],
+   "verified_candidates": [
+    "Kg_hizilk"
+   ]
+  },
+  "f+2,1~t7.king.2": {
+   "t7_command": "(f+2), 1",
+   "damage": 25,
+   "startup": 18,
+   "status": "mapped",
+   "motbin_move": "Kg_6rplp",
+   "motbin_id": 1594,
+   "anim": "naak_6rplp(DVD)",
+   "bank": "rotsm",
+   "clip": 357,
+   "fmt": "0x64",
+   "prefix_chain": [
+    [
+     "Co_R_lp00R",
+     "Co_R_rp00L",
+     "Kg_rp00F",
+     "Kg_t_srp00B",
+     "Kg_t_srpF"
+    ]
+   ],
+   "verified_candidates": [
+    "Kg_6rplp"
+   ]
+  },
+  "f+2,d+1,2~t7.king.3": {
+   "t7_command": "(f+2), (d+1), 2",
+   "damage": 16,
+   "startup": 22,
+   "status": "mapped",
+   "motbin_move": "Kg_6rplprp",
+   "motbin_id": 1596,
+   "anim": "kgke_ren3_upprshoutei(DVD)",
+   "bank": "rotsm",
+   "clip": 359,
+   "fmt": "0x64",
+   "prefix_chain": [
+    [
+     "Co_R_lp00R",
+     "Co_R_rp00L",
+     "Kg_rp00F",
+     "Kg_t_srp00B",
+     "Kg_t_srpF"
+    ],
+    [
+     "Kg_6rp2lp",
+     "Kg_6rplp",
+     "Kg_dhook_lp00",
+     "Kg_dhook_lp01"
+    ]
+   ],
+   "verified_candidates": [
+    "Kg_6rplprp"
+   ]
+  },
+  "d/f+1,2~t7.king": {
+   "t7_command": "(d/f+1), 2",
+   "damage": 15,
+   "startup": 18,
+   "status": "mapped",
+   "motbin_move": "Kg_t_slpF03B",
+   "motbin_id": 1653,
+   "anim": "mokg_trelp00(DVD)",
+   "bank": "rotsm",
+   "clip": 410,
+   "fmt": "0x64",
+   "prefix_chain": [
+    [
+     "Co_R_clp00R",
+     "Co_R_crp00L",
+     "Kg_jprk00F",
+     "Kg_t_slpF"
+    ]
+   ],
+   "verified_candidates": [
+    "Kg_t_slpF03B"
+   ]
+  },
+  "d/f+2,1~t7.king": {
+   "t7_command": "(d/f+2), 1",
+   "damage": 15,
+   "startup": 20,
+   "status": "mapped",
+   "motbin_move": "Kg_dhook_lp01",
+   "motbin_id": 1656,
+   "anim": "ikkg_dhook_lp01(DVD)",
+   "bank": "rotsm",
+   "clip": 413,
+   "fmt": "0x64",
+   "prefix_chain": [
+    [
+     "Co_R_clp00R",
+     "Co_R_crp00L",
+     "Kg_t_srp00B",
+     "Kg_t_srpF"
+    ]
+   ],
+   "verified_candidates": [
+    "Kg_dhook_lp01"
+   ]
+  },
+  "d/f+3,4~t7.king": {
+   "t7_command": "(d/f+3), 4",
+   "damage": 23,
+   "startup": 30,
+   "status": "no_match",
+   "motbin_move": null,
+   "motbin_id": null,
+   "anim": null,
+   "bank": null,
+   "clip": null,
+   "fmt": null,
+   "prefix_chain": [
+    [
+     "Co_R_clk00L",
+     "Co_R_crk00R",
+     "Kg_rp00F",
+     "Kg_t_slkF"
+    ]
+   ],
+   "verified_candidates": []
+  },
+  "d/f+4,3~t7.king": {
+   "t7_command": "(d/f+4), 3",
+   "damage": 11,
+   "startup": 22,
+   "status": "mapped",
+   "motbin_move": "Kg_t_srkF02",
+   "motbin_id": 1661,
+   "anim": "mokg_flwrkhlk(DVD)",
+   "bank": "rotsm",
+   "clip": 418,
+   "fmt": "0x64",
+   "prefix_chain": [
+    [
+     "Kg_Mpl_kata",
+     "Kg_R_loDrop",
+     "Kg_t_srkF"
+    ]
+   ],
+   "verified_candidates": [
+    "Kg_t_srkF02"
+   ]
+  },
+  "d/f+4,3,4~t7.king.2": {
+   "t7_command": "(d/f+4), (3), 4",
+   "damage": 27,
+   "startup": 28,
+   "status": "mapped",
+   "motbin_move": "Kg_t_srkF03",
+   "motbin_id": 1662,
+   "anim": "kokg_lhk2sbk(DVD)",
+   "bank": "rotsm",
+   "clip": 419,
+   "fmt": "0x64",
+   "prefix_chain": [
+    [
+     "Kg_Mpl_kata",
+     "Kg_R_loDrop",
+     "Kg_t_srkF"
+    ],
+    [
+     "Kg_t_srkF02"
+    ]
+   ],
+   "verified_candidates": [
+    "Kg_t_srkF03"
+   ]
+  },
+  "d/f+4,3,d+4~t7.king.2": {
+   "t7_command": "(d/f+4), (3), d+4",
+   "damage": 20,
+   "startup": 33,
+   "status": "mapped",
+   "motbin_move": "Kg_t_srkF04",
+   "motbin_id": 1664,
+   "anim": "mokg_flwrkmdlklwdpk_miss(DVD)",
+   "bank": "rotsm",
+   "clip": 421,
+   "fmt": "0x64",
+   "prefix_chain": [
+    [
+     "Kg_Mpl_kata",
+     "Kg_R_loDrop",
+     "Kg_t_srkF"
+    ],
+    [
+     "Kg_t_srkF02"
+    ]
+   ],
+   "verified_candidates": [
+    "Kg_t_srkF04"
+   ]
+  },
+  "d+3+4,4~t7.king.2": {
+   "t7_command": "(d+3+4), 4",
+   "damage": 7,
+   "startup": 29,
+   "status": "mapped",
+   "motbin_move": "Kg_Ari_kick2C",
+   "motbin_id": 1647,
+   "anim": "sukg_ari2(DVD)",
+   "bank": "rotsm",
+   "clip": 403,
+   "fmt": "0x64",
+   "prefix_chain": [
+    [
+     "Co_R_clk00L",
+     "Kg_Ari_kick"
+    ]
+   ],
+   "verified_candidates": [
+    "Kg_Ari_kick2C",
+    "Kg_Ari_kick2"
+   ]
+  },
+  "d+3+4,4,4~t7.king.3": {
+   "t7_command": "(d+3+4), (4), 4",
+   "damage": 7,
+   "startup": 29,
+   "status": "mapped",
+   "motbin_move": "Kg_Ari_kick3C",
+   "motbin_id": 1649,
+   "anim": "sukg_ari2(DVD)",
+   "bank": "rotsm",
+   "clip": 403,
+   "fmt": "0x64",
+   "prefix_chain": [
+    [
+     "Co_R_clk00L",
+     "Kg_Ari_kick"
+    ],
+    [
+     "Kg_Ari_kick2",
+     "Kg_Ari_kick2C",
+     "Kg_Ari_kick_D"
+    ]
+   ],
+   "verified_candidates": [
+    "Kg_Ari_kick3C",
+    "Kg_Ari_kick3"
+   ]
+  },
+  "b+1,2~t7.king.2": {
+   "t7_command": "(b+1), 2",
+   "damage": 20,
+   "startup": 19,
+   "status": "mapped",
+   "motbin_move": "Kg_rpTap00",
+   "motbin_id": 2552,
+   "anim": "mokg_flprtuki(DVD)",
+   "bank": "rotsm",
+   "clip": 984,
+   "fmt": "0x64",
+   "prefix_chain": [
+    [
+     "Co_R_lp00R",
+     "Co_R_rp00L",
+     "Kg_jprk00F",
+     "Kg_lp00B"
+    ]
+   ],
+   "verified_candidates": [
+    "Kg_rpTap00"
+   ]
+  },
+  "b+1,4~t7.king.2": {
+   "t7_command": "(b+1), 4",
+   "damage": 23,
+   "startup": 16,
+   "status": "no_match",
+   "motbin_move": null,
+   "motbin_id": null,
+   "anim": null,
+   "bank": null,
+   "clip": null,
+   "fmt": null,
+   "prefix_chain": [
+    [
+     "Co_R_lp00R",
+     "Co_R_rp00L",
+     "Kg_jprk00F",
+     "Kg_lp00B"
+    ]
+   ],
+   "verified_candidates": []
+  },
+  "b+2,1~t7.king.2": {
+   "t7_command": "(b+2), 1",
+   "damage": 25,
+   "startup": 20,
+   "status": "mapped",
+   "motbin_move": "Kg_4rplp",
+   "motbin_id": 1698,
+   "anim": "kgkb_s3_4rplp",
+   "bank": "motbin",
+   "clip": 108,
+   "fmt": "0x64",
+   "prefix_chain": [
+    [
+     "Co_R_lp00R",
+     "Co_R_rp00L",
+     "Kg_rp00B",
+     "Kg_t_srp00B",
+     "Kg_t_srpF"
+    ]
+   ],
+   "verified_candidates": [
+    "Kg_4rplp"
+   ]
+  },
+  "b+2,1+2~t7.king.2": {
+   "t7_command": "(b+2), 1+2",
+   "damage": 22,
+   "startup": 19,
+   "status": "no_match",
+   "motbin_move": null,
+   "motbin_id": null,
+   "anim": null,
+   "bank": null,
+   "clip": null,
+   "fmt": null,
+   "prefix_chain": [
+    [
+     "Co_R_lp00R",
+     "Co_R_rp00L",
+     "Kg_rp00B",
+     "Kg_t_srp00B",
+     "Kg_t_srpF"
+    ]
+   ],
+   "verified_candidates": []
+  },
+  "b+2,4~t7.king": {
+   "t7_command": "(b+2), 4",
+   "damage": 18,
+   "startup": 21,
+   "status": "mapped",
+   "motbin_move": "Kg_AmericaRK",
+   "motbin_id": 1702,
+   "anim": "kgkb_s3_raprk",
+   "bank": "motbin",
+   "clip": 110,
+   "fmt": "0x64",
+   "prefix_chain": [
+    [
+     "Co_R_lp00R",
+     "Co_R_rp00L",
+     "Kg_rp00B",
+     "Kg_t_srp00B",
+     "Kg_t_srpF"
+    ]
+   ],
+   "verified_candidates": [
+    "Kg_AmericaRK"
+   ]
+  }
+ }
+}
