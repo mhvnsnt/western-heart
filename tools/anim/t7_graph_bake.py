@@ -5,7 +5,7 @@
 Koenji's mannequin, FK self-check). Resumable + cached: one file per source clip, <bank>_<clip>.json in --cache; a clip
 whose file exists is never re-baked (re-running continues where it stopped). Failures are recorded, never substituted.
 usage: T7_EXE=<exe> python3 tools/anim/t7_graph_bake.py --graph game/assets/anim/t7/king/graph.json \
-         --coverage docs/proof/2026-11-10/t7-full-graph/king-coverage.json --mothead <mothead> --code kin \
+         --coverage game/assets/anim/t7/king/graph.coverage.json --mothead <mothead> --code kin \
          --mannequin <blend> --helper <py> --blender <blender> --cache <dir> [--limit N]"""
 import argparse, json, os, subprocess, sys, time
 

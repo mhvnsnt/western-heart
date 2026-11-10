@@ -11,7 +11,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const G = await import(join(ROOT, 'game/js/t7graph.js'));
 const g = JSON.parse(readFileSync(join(ROOT, 'game/assets/anim/t7/king/graph.json'), 'utf8'));
-const cov = JSON.parse(readFileSync(join(ROOT, 'docs/proof/2026-11-10/t7-full-graph/king-coverage.json'), 'utf8'));
+const cov = JSON.parse(readFileSync(join(ROOT, 'game/assets/anim/t7/king/graph.coverage.json'), 'utf8'));
 const id = (n) => G.moveByName(g, n);
 const name = (i) => (i == null ? null : g.moves[i].name);
 const ev = G.makeEvalCond({});

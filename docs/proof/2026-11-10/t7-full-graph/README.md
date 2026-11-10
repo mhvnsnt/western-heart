@@ -5,7 +5,7 @@ input sequence, requirement, alias, hit datum and animation reference is importe
 identifiers are kept.
 
 ## Pipeline (reusable for any straight-source T7 fighter: change `--code`)
-1. **Import:** `tools/anim/t7_graph_import.py --mothead <mothead> --code kin --out game/assets/anim/t7/king/graph.json --coverage docs/proof/2026-11-10/t7-full-graph/king-coverage.json`.
+1. **Import:** `tools/anim/t7_graph_import.py --mothead <mothead> --code kin --out game/assets/anim/t7/king/graph.json --coverage game/assets/anim/t7/king/graph.coverage.json`.
    - Deterministic: two runs give byte-identical output. Graph sha256 `72ea8576…`, 2.55 MB.
 2. **Bake:** `T7_EXE=<exe> tools/anim/t7_graph_bake.py --graph … --coverage … --cache <dir>`.
    - Covers every reachable clip through the existing community path (`t7_c8_stance_bake.py`: the game's sampler for 0x64, Kiloutre applier, Koenji mannequin, FK check).
@@ -24,7 +24,7 @@ identifiers are kept.
 - **Alias table:** TekkenMovesetExtractor `motbinExport.py` T7 layout, u16[148] at 0x28. Verified: 0x8001 → `Kg_sKAM00_`, 0x8002 → `cKAM__00_`.
 - **Requirement labels:** TKMovesets2 `editor_t7_requirements.txt` @a1b1917a (GPL-3.0). It is kept in the private sources dir and not vendored; only the condition ids and their cited meaning are used.
 
-## Measured completeness (King, from `king-coverage.json`)
+## Measured completeness (King, from `game/assets/anim/t7/king/graph.coverage.json`)
 | Measure | Value |
 |---|---:|
 | moves in source | 2,787 |
