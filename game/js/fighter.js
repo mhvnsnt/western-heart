@@ -2813,12 +2813,15 @@ export class Fighter {
   t7gAttach(bank) {
     this._t7gBank = bank;
     // Requirement context (docs/proof/2026-11-10/t7-requirements/README.md): own chara_id from T7_GRAPHS, controller 0 =
-    // player-controlled (this driver only runs for the human player). Backturn, distance, items stay UNKNOWN (null).
+    // player-controlled (this driver only runs for the human player). relHeading16 (backturn), distance, items stay UNKNOWN.
     this._t7g = new T7GraphDriver(bank.graph, bank.driverClips,
       { evalState: { dead: !!this.dead, charId: T7_GRAPHS[this.char.id].charId ?? null, controller: 0 } });
     this._t7gAcc = 0; this._t7gDown = 0; this._t7gSpecial = []; this._t7gRec = null; this._t7gAtkId = -1;
     this._t7gStatus = { label: 'T7 GRAPH DEV — King T7 source graph (development integration, not full parity)',
-      ticks: 0, hitboxes: 0, noHitbox: {}, clipUnbound: 0, suspended: 0 };
+      ticks: 0, hitboxes: 0, noHitbox: {}, clipUnbound: 0, suspended: 0, throwNoGrab: 0, unsupported: null,
+      // Stated, not hidden: WH keeps the fighter's posture standing and its source facing (relHeading16) is not tracked,
+      // so backturn conditions (72/73/80/81) stay UNKNOWN and graph moves are standing for hit detection.
+      assumptions: 'posture: standing (source posture undecoded) | facing: unknown (backturn rows skipped)' };
     try { // visible, accurately labelled dev marker (never shown without the opt-in flag)
       if (typeof document !== 'undefined' && document.body && !document.getElementById('t7g-dev')) {
         const el = document.createElement('div'); el.id = 't7g-dev';
@@ -2855,10 +2858,22 @@ export class Fighter {
   }
   _t7gApply(rec) {
     this._t7gRec = rec; this._t7gStatus.ticks += 1;
-    if (this._t7gEl && this._t7gStatus.ticks % 6 === 0) {
+    // A throw-class source move (hit-level word) plays its clip only: the throw tables are not decoded, so there is no
+    // grab, no throw damage and no victim animation. Marked UNSUPPORTED, counted, and shown; never a working throw.
+    // Throw-class: the hit-level word decodes to a throw, OR the source hit condition carries damage 0x4000. That value
+    // is on exactly 43 King moves (the Thrmv*/nage/tac grabs and two more), is never real damage, and is treated
+    // here as the throw marker. Its exe meaning is NOT traced, so the move fails closed: it gets no hitbox.
+    const isThrow = attackLevelOfWord(rec.hitlevelRaw & 0xFFF) === 't' || rec.damage === 0x4000;
+    rec.unsupported = isThrow ? 'throw: clip only, NO GRAB (unsupported)' : null;
+    if (isThrow && rec.frame === 1) this._t7gStatus.throwNoGrab += 1;
+    this._t7gStatus.unsupported = rec.unsupported;
+    if (this._t7gEl && (this._t7gStatus.ticks % 6 === 0 || (isThrow && rec.frame === 1))) {
       const st = this._t7g.stats;
-      this._t7gEl.textContent = `${this._t7gStatus.label} | ${rec.name} f${rec.frame}/${rec.len} | fires ${st.fired}` +
-        ` (${st.precedenceUnknown || 0} after an unknown row) | rows skipped: unknown cond ${st.skipped.requirement || 0}, timing ${st.skipped.timing || 0}`;
+      this._t7gEl.textContent = `${this._t7gStatus.label} | ${rec.name} f${rec.frame}/${rec.len}` +
+        (rec.unsupported ? ` | UNSUPPORTED ${rec.unsupported}` : '') + ` | fires ${st.fired}` +
+        ` (${st.precedenceUnknown || 0} after an unknown row) | rows skipped: unknown cond ${st.skipped.requirement || 0}, timing ${st.skipped.timing || 0}` +
+        ` | ${this._t7gStatus.assumptions}`;
+      this._t7gEl.style.color = rec.unsupported ? '#ff6b6b' : '#ffd54a';
     }
     // Travel: the clip's raw T7 root channel, forward along the facing (lateral 0, sign unproven).
     if (rec.dFwd && this.root) this.root.position.x += this.facing * rec.dFwd;
@@ -2866,7 +2881,7 @@ export class Fighter {
     if (rec.attackId !== this._t7gAtkId) { this._t7gAtkId = rec.attackId; this.hasHit = false; this._prevHitPoint = null; }
     const word = rec.damage > 0 ? (rec.hitlevelRaw & 0xFFF) : null;
     const lv = word != null ? attackLevelOfWord(word) : null;
-    if (rec.active && T7G_HIT_LEVELS[lv]) {
+    if (rec.active && T7G_HIT_LEVELS[lv] && !isThrow) {
       if (!this.attack || !this.attack.t7graph || this.attack.t7id !== rec.attackId) {
         this.attack = { t7graph: true, t7id: rec.attackId, name: rec.name, damage: rec.damage, hitWord: word,
           level: T7G_HIT_LEVELS[lv], t7_move: rec.moveId, soulGain: 0, limb: null };
