@@ -314,7 +314,7 @@ export function bankIdFor(charId, movesetId) {
 // their TTT2 candidates.
 export const OWN_SLOT_CANDIDATES = {
   zui: 'steve_fox', kinpo: 'asuka', cyborgx: 'alisa', star: 'christie',
-  bruno: 'miguel', thor: 'ganryu', slice: 'dragunov',
+  bruno: 'miguel', thor: 't7_ganryu', slice: 'dragunov',
   'mariposa-monarch': 'zafina', silvertongue: 'emilie',
   pantera: 't7_king', diablo: 't7_heihachi', skull: 't7_bryan', retsu: 't7_bryan', burger: 't7_bob',
   sakura: 't7_xiaoyu', sha: 't7_xiaoyu', phantom: 't7_yoshimitsu', gyou: 't7_hwoarang', tobi: 't7_hwoarang',
@@ -330,6 +330,8 @@ export const OWN_SLOT_BANKS = {
   sakura: 't7_xiaoyu', sha: 't7_xiaoyu', phantom: 't7_yoshimitsu', gyou: 't7_hwoarang', tobi: 't7_hwoarang',
   gashadokuro: 't7_kuma', aotsuki: 't7_panda', nightwolf: 't7_julia', purplerain: 't7_lee', chordz: 't7_lars',
   negativo: 't7_negan',
+  // 2026-11-10: Thor on his canon base Ganryu's own T7 states (his TTT2 'ganryu' candidate stays registered).
+  thor: 't7_ganryu',
 };
 export function ownSlotBankFor(charId, { candidates = false } = {}) {
   const b = (candidates ? OWN_SLOT_CANDIDATES : OWN_SLOT_BANKS)[charId];

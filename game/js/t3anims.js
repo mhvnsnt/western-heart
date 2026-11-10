@@ -149,6 +149,8 @@ export const T3_BANKS = {
   t7_lee:        'assets/anim/t3/t7_lee/',
   t7_lars:       'assets/anim/t3/t7_lars/',
   t7_negan:      'assets/anim/t3/t7_negan/',
+  // 2026-11-10: Thor's canon base Ganryu (code gan, tools/anim/t7_generic_slots/gan.json), same bake path.
+  t7_ganryu:     'assets/anim/t3/t7_ganryu/',
   // TTT2-sourced banks (2026-11-04): REAL Tekken Tag Tournament 2 motion decoded with the shipped
   // 0x64/0xC8 MOTA decoders and baked via the calibrated sampler convention (tools/anim/ttt2_bank_bake.py)
   // — each bank is the character's OWN TTT2 state moves per the join tables
@@ -677,6 +679,9 @@ export const T7_STANCES = {
   purplerain: { bank: 'jin', dir: 'assets/anim/t7/lee/' },
   chordz: { bank: 'jin', dir: 'assets/anim/t7/lars/' },
   negativo: { bank: 'bryan', dir: 'assets/anim/t7/negan/' },
+  // 2026-11-10: Thor (canon base Ganryu) stands in Ganryu's own T7 kamae (0xC8, ganrotsm clip 198), not the Tekken 3
+  // Bryan stance his retarget could not reproduce (docs/proof/2026-11-09/refit-thor/: torso 12.6 / arms 11-12 deg off).
+  thor: { bank: 'bryan', dir: 'assets/anim/t7/ganryu/' },
   // 2026-11-03 (SmutBase T7 bank production): Pond and Ryusan stand in their OWN T7 stances, baked from
   // their bases' kamae clips (0x64, converted by the game's own sampler like every attack below). Their
   // bound banks are their own T7-sourced banks (T3_BANKS raven / luckychloe above).

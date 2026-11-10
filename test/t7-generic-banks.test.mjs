@@ -17,8 +17,9 @@ const T7_BAKE_TOOL = 'tools/anim/t7_c8_stance_bake.py';
 const t7Banks = Object.keys(T.T3_BANKS).filter((b) => b.startsWith('t7_'));
 const readJson = (rel) => JSON.parse(fs.readFileSync(join(ROOT, 'game', rel), 'utf8'));
 
-test('13 T7 generic banks are registered, each a T7-baked bank with its generic slots', () => {
-  assert.equal(t7Banks.length, 13);
+// 14 (2026-11-10): the 13 T7-stance bases + Ganryu for Thor (tools/anim/t7_generic_slots/gan.json).
+test('14 T7 generic banks are registered, each a T7-baked bank with its generic slots', () => {
+  assert.equal(t7Banks.length, 14);
   for (const b of t7Banks) {
     const dir = T.T3_BANKS[b];
     assert.equal(readJson(dir + 'skeleton.json').tool, T7_BAKE_TOOL, `${b}: baked on the T7 mannequin path`);
