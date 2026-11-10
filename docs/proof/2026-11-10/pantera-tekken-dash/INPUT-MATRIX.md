@@ -44,3 +44,36 @@ Probe: the clip `Fighter._attackClipPlan` plays for each row, with King's T7 mov
 - Strings, dash moves (f,F+1, f,f,F+3), stance moves and throws have no King T7 clip in the repo at all, so they fall to T3 King rows.
 - This is a missing bake, not a wiring bug. It needs `tools/anim/t7_move_resolve.py` and `tools/anim/t7_move_bake.py` run over King's motbin (`kinmot.json`, the reverse-engineering repo) for every row.
 - Bake tool gates: multi-hit moves are skipped (one clip, one hit) and 0x64 clips need T7_EXE.
+
+## Pass 2 (2026-11-10): real King T7 string steps extracted and wired
+- **Resolver v2.** `tools/anim/t7_move_resolve.py --strings` handles T7 string-step rows (`(1), 2` = the 2 of 1,2). It walks King's cancel graph from `Kg_sKAM00_` through the bracketed prefix steps, then requires the final move's damage and first active frame to equal the row's T7 frame data. Default (v1) output is byte-identical.
+  - 24 string-step rows: **17 mapped**, 7 no-match (throw enders 2+4 / d+2+4, `(d/f+3), 4`, `(b+1), 4`, `(b+2), 1+2`). Details: `king-string-resolve.json`.
+- **Bake.** `tools/anim/t7_move_bake.py`, unchanged, with the community path its docs name:
+  - Koenji's TekkenMannequin_no_ik.blend (sha256 `ce817108…`, same as the committed skeleton's provenance);
+  - Kiloutre's TekkenAnimHelper.py at `bebb3d8b` (sha256 `1b447b1f…`);
+  - Blender 4.2.3;
+  - T7_EXE = the game's own sampler (sha256 `7f2b6872…`).
+  - A re-bake of `1~t7.king` reproduced the committed clip exactly before anything new was baked.
+- **Pack** `game/assets/anim/t7/king/moves.pack.json`: 29 → **44 moves** (29 → 43 clips).
+  - All 29 old moves and clips are byte-identical.
+  - `d+3+4,4` / `d+3+4,4,4` (`sukg_ari2`) were rejected by the in-game plausibility gate ("does not start upright"). They are recorded in `skipped` and nothing is substituted.
+- **Wiring.** `t7MoveClip` adds an exact string-input map (`t7NormString`). A played row with the identical string input plays that step's clip; motions (f,F+1), stance prefixes and single inputs never match.
+
+| Plain rows (643) | Real King T7 | T3 King row | Generic light / medium |
+|---|---:|---:|---:|
+| Before (main `b391b820`) | 41 | 521 | 53 / 28 |
+| After | **61** | 516 | 46 / 20 |
+
+The 20 rows that changed (each now plays its exact motbin move; no row moved to a non-T7 clip):
+- 1,2 / 1,2,1 / 2,1
+- 1+2,1 / 1+2,3
+- f+2,1 / f+2,d+1,2
+- d/f+1,2 / d/f+2,1 / d/f+4,3 / d/f+4,3,4 / d/f+4,3,d+4, each spelled both `df+` and `d/f+`
+- b+1,2 / b+2,1 / b+2,4
+
+Test: `test/t7-king-strings.test.mjs`.
+
+**Still not King T7 (next passes):**
+- Motion inputs (f,F+*, f,f,*, qcf), stance moves (WS / FC / SS / BT / JGS), throws (own pair path, 0 T7), and chain-throw branches.
+- 516 rows still on T3 King. Multi-hit single moves are still skipped by the bake gate (one clip, one hit).
+- Touchscreen and rendered-model proof: not done (browser unavailable).

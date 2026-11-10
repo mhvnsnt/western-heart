@@ -1,3 +1,12 @@
+## 2026-11-10 — Pantera pass 2: 15 real King T7 string steps extracted + wired (MoneyManBusch / Grok) (t386u)
+
+- **Resolver.** `t7_move_resolve.py --strings` (cancel-graph walk plus the exact step damage / first active frame) maps 17 of 24 King string-step rows (v1 output unchanged).
+- **Bake.** The bake (unchanged tool, community mannequin, game sampler; re-bake of an old clip reproduced it exactly) adds 15 moves / 14 clips. The King pack goes from 29 to 44 moves, with the old 29 byte-identical. `sukg_ari2` was gated (not upright) and is recorded in `skipped`.
+- **Wiring.** `t3anims.js` gets an exact string-input map. Plain rows on real King T7 go **41 → 61 / 643**, T3 King rows 521 → 516, generics 81 → 66.
+- **Tests:** `test/t7-king-strings.test.mjs`. In `test/t7-moves-king.test.mjs` the "strings never take a single-input clip" assertion is kept, now allowing only the string's own step clip.
+- **Proof:** `docs/proof/2026-11-10/pantera-tekken-dash/INPUT-MATRIX.md`, `king-string-resolve.json`, `clip-provenance.tsv`.
+- **Remaining:** motions (f,F / f,f), stance moves, throws and chains, multi-hit singles, KBD / run / CD. Touch and model proof are not verified.
+
 ## 2026-11-10 — Pantera pass 1b: clip provenance probe (MoneyManBusch / Grok) (t386u)
 
 - `tools/anim/pantera_clip_provenance.mjs` gives every row's planned clip with the T7 pack loaded. Of 643 plain rows: **41 real King T7, 521 T3 King rows, 81 generic**. Throws: 0 T7.

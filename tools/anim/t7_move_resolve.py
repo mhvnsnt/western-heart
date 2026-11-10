@@ -15,6 +15,13 @@ keeps its current animation.
 Scope v1: single-input rows from neutral (direction + buttons, e.g. b+2, d/f+1+2, 1+2, u/f+4). Strings, stance
 prefixes (WS, FC, SS, BT, ...) and motion inputs (f,F; qcf) are reported as 'not single-input' for now.
 
+Scope v2 (--strings, 2026-11-10): STRING STEP rows, the T7 frame-data rows that isolate one hit of a string by
+bracketing the hits before it: '(1), 2' is the 2 of 1,2; '(1), (2), 2+4' is the 2+4 of 1,2,2+4. Every step must be
+a single input. The path walks the cancel graph: the bracketed prefix steps from the neutral stance through each
+reached move's own expanded cancel list (every candidate is followed: prefix steps carry no frame data of their
+own), then the final step must reach a move whose damage and first active frame equal the row's own T7 frame data,
+exactly as in v1. Full-string rows ('1, 2' with several hits' data) and motion / stance rows stay unmapped.
+
 Cancel command (u64): low 32 bits = direction mask (0x2 d/b, 0x4 d, 0x8 d/f, 0x10 b, 0x20 n, 0x40 f, 0x80 u/b,
 0x100 u, 0x200 u/f; 0 = any; >= 0x8000 = special), high 32 bits = buttons (bit 0 = 1/LP, 1 = 2/RP, 2 = 3/LK,
 3 = 4/RK; 0x40000000 = press flag). Bank rule for a move's clip: anim_id & 0xC000 -> 0x4000 <code>rotsm.arc,
@@ -105,6 +112,78 @@ class Motbin:
         return {'bank': BANK[sel], 'clip': i, 'fmt': {0xC8: '0xC8', 0x64: '0x64'}.get(t, hex(t)), 'file': path}
 
 
+def _step_hits(mb, by_id, cancels, d, btn):
+    out = []
+    for cd, cb, mid, req in cancels:
+        if cd >= 0x8000 or mid >= 0x8000 or mid not in by_id: continue
+        if (cb & 0xFF) != btn: continue
+        if cd != 0 and not (cd & d): continue
+        out.append(mid)
+    return out
+
+
+def parse_string_step(cmd):
+    """'(1), (2), 2+4' -> [(NEUTRAL, 1), (NEUTRAL, 2)], (NEUTRAL, 0b1010); None unless every step is a single input,
+    every step but the last is bracketed and the last is not."""
+    steps = [x.strip() for x in str(cmd or '').split(',')]
+    if len(steps) < 2: return None
+    pre = []
+    for x in steps[:-1]:
+        m = re.fullmatch(r'\((.+)\)', x)
+        if not m: return None
+        p = parse_single(m.group(1))
+        if p is None: return None
+        pre.append(p)
+    if steps[-1].startswith('('): return None
+    last = parse_single(steps[-1])
+    return (pre, last) if last else None
+
+
+def resolve_strings(mb, moveset, rows, stats):
+    by_id = {m['id']: m for m in mb.moves}
+    cache = {}
+    def cancels_of(mid):
+        if mid not in cache: cache[mid] = mb.expanded_cancels(by_id[mid])
+        return cache[mid]
+    st = mb.stance()
+    stats.update({'string_step_rows': 0, 'string_mapped': 0, 'string_ambiguous': 0, 'string_no_match': 0})
+    for key, row in moveset['moves'].items():
+        if not isinstance(row, dict) or 't7_damage_raw' not in row or key in rows: continue
+        ps = parse_string_step(row.get('t7_command'))
+        if ps is None: continue
+        stats['string_step_rows'] += 1
+        pre, (d, btn) = ps
+        frontier, chain = [st['id']], []
+        for pd, pb in pre:
+            nxt = []
+            for mid in frontier:
+                for h in _step_hits(mb, by_id, cancels_of(mid), pd, pb):
+                    if h not in nxt: nxt.append(h)
+            frontier = nxt
+            chain.append(sorted({by_id[m]['name'] for m in nxt}))
+        dmg, su = first_int(row.get('t7_damage_raw')), first_int(row.get('t7_startup_frames'))
+        path_hits, verified = [], []
+        for mid in frontier:
+            for h in _step_hits(mb, by_id, cancels_of(mid), d, btn):
+                path_hits.append(h)
+                m = by_id[h]; af = m.get('active_frames') or [None]
+                if m.get('damage') == dmg and af[0] == su and h not in verified: verified.append(h)
+        anims = sorted({by_id[h]['anim'] for h in verified})
+        rec = {'input': row.get('input'), 't7_command': row.get('t7_command'), 'damage': dmg, 'startup': su,
+               'kind': 'string_step', 'prefix_chain': chain, 'path_candidates': len(path_hits),
+               'verified_candidates': [by_id[h]['name'] for h in verified]}
+        if len(anims) == 1:
+            m = by_id[verified[0]]
+            rec.update({'status': 'mapped', 'motbin_move': m['name'], 'motbin_id': m['id'], 'anim': m['anim'],
+                        'active_frames': m.get('active_frames'), **mb.clip(m)})
+            stats['string_mapped'] += 1
+        elif len(anims) > 1:
+            rec.update({'status': 'ambiguous', 'anims': anims}); stats['string_ambiguous'] += 1
+        else:
+            rec.update({'status': 'no_match'}); stats['string_no_match'] += 1
+        rows[key] = rec
+
+
 def resolve(mb, moveset):
     st = mb.stance()
     cancels = mb.expanded_cancels(st)
@@ -149,8 +228,12 @@ def resolve(mb, moveset):
 
 def main():
     if len(sys.argv) < 4: raise SystemExit(__doc__)
+    strings = '--strings' in sys.argv
+    if strings: sys.argv.remove('--strings')
     mb = Motbin(sys.argv[1], sys.argv[2])
-    out = resolve(mb, json.load(open(sys.argv[3])))
+    ms = json.load(open(sys.argv[3]))
+    out = resolve(mb, ms)
+    if strings: resolve_strings(mb, ms, out['rows'], out['stats'])
     out['moveset'] = os.path.basename(sys.argv[3])
     if len(sys.argv) > 4:
         json.dump(out, open(sys.argv[4], 'w'), indent=1)

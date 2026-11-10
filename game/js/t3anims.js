@@ -785,14 +785,17 @@ export function ensureT7Moves(fid, THREE) {
         clip.userData.rootMotionT = Array.isArray(data.root_motion_fwd_m) ? data.root_motion_fwd_m.map(f => [0, 0, f]) : null;
         clips[cname] = clip;
       }
-      const moves = {}, byInput = {};
+      const moves = {}, byInput = {}, byString = {}, dupString = new Set();
       for (const [key, m] of Object.entries(pack.moves || {})) {
         if (!clips[m.clip]) continue;
         moves[key] = { clip: m.clip, active: m.active_frames, motbin: m.motbin_move };
         const ni = t7NormInput(m.input);
         if (ni && !byInput[ni]) byInput[ni] = key;
+        const ns = t7NormString(m.input);
+        if (ns) { if (byString[ns]) dupString.add(ns); else byString[ns] = key; }
       }
-      _t7moves[fid] = { bank: def.bank, skelId, clips, moves, byInput };
+      for (const ns of dupString) delete byString[ns]; // two string steps on one input: no exact mapping, keep current clips
+      _t7moves[fid] = { bank: def.bank, skelId, clips, moves, byInput, byString };
       console.log(`[WH-T7] ${fid}: ${Object.keys(moves).length} real T7 move clips (${def.dir}${packFile})`);
       return _t7moves[fid];
     } catch (e) {
@@ -810,6 +813,18 @@ export function t7NormInput(input) {
   if (!s || s.includes(',')) return null;
   return s.replace(/(^|[^a-z/])([du])([fb])(?=\+|$)/g, '$1$2/$3');
 }
+/** String notation in one spelling, every step through t7NormInput: 'df+4, 3' -> 'd/f+4,3'. Null unless every step
+    is a single input (so motions like 'f,F+1' and stance prefixes never match). */
+export function t7NormString(input) {
+  const steps = String(input || '').toLowerCase().replace(/\s+/g, '').split(',');
+  if (steps.length < 2) return null;
+  const out = steps.map((x) => (/^([du]\/?[fb]|[dubf])?\+?[1-4](\+[1-4])*$/.test(x) ? t7NormInput(x) : null));
+  return out.every(Boolean) ? out.join(',') : null;
+}
+/* STRING STEPS (2026-11-10, tools/anim/t7_move_resolve.py --strings): the pack's string-step moves (e.g.
+   '1,2~t7.king.2' = the 2 of 1,2, motbin Kg_lprpF) were mapped by walking the cancel graph from the stance and
+   checked on the step's own damage + first active frame. Pressing the same string from neutral reaches the same
+   motbin move, so a played row with the identical string input plays that step's clip (exact input only). */
 /* A fighter's moveset can hold several rows for one input (Pantera: '1~t7.king' with T7 frame data, '1~t8.king',
    '1'); the game plays its preferred row, the resolver mapped the T7 row. Same input from the same neutral stance
    = the same move, so a row not in the pack plays the pack's clip for its input (`input`, single inputs only);
@@ -817,7 +832,8 @@ export function t7NormInput(input) {
 export function t7MoveClip(fid, bankId, moveKey, model = null, input = null) {
   const t = _t7moves[fid];
   if (!t || t.bank !== bankId || !moveKey) return null;
-  const key = t.moves[moveKey] ? moveKey : (input && t.byInput ? t.byInput[t7NormInput(input)] : null);
+  const key = t.moves[moveKey] ? moveKey
+    : (input && t.byInput && t.byInput[t7NormInput(input)]) || (t.byString && (t.byString[t7NormString(input)] || t.byString[t7NormString(moveKey)])) || null;
   const m = key ? t.moves[key] : null;
   if (!m || !t.clips[m.clip]) return null;
   if (model) { const pm = _retargetCache.get(model); if (!pm || !pm.get(t.skelId)) return null; }

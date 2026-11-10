@@ -3,7 +3,7 @@ key	name	anim_ref	planned_clip	kind
 2	PANTERA 2 (T3 king r99)	t3:king:row:99	t7:2~t7.king	t7
 3	PANTERA 3 (T3 king r264)	t3:king:row:264	t7:3~t7.king	t7
 4	PANTERA 4 (T3 king r216)	t3:king:row:216	t7:4~t7.king	t7
-2,1	PANTERA 2,1 (T3 king r220)	t3:king:row:220	light	generic:light
+2,1	PANTERA 2,1 (T3 king r220)	t3:king:row:220	t7:2,1~t7.king.2	t7
 1+3	PANTERA 1+3 throw (T3 king r127)	t3:king:row:127	row:127	t3row
 2+4	PANTERA 2+4 throw (T3 king r128)	t3:king:row:128	row:128	t3row
 d/f+2	PANTERA d/f+2 (T3 king r202)	t3:king:row:202	t7:d/f+2~t7.king	t7
@@ -164,13 +164,13 @@ d/b+1_c10	PANTERA d/b+1_c10 (T3 king r488)	t3:king:row:488	row:38	t3row
 1_c58	PANTERA 1_c58 (T3 king r650)	t3:king:row:650	row:38	t3row
 1_c59	PANTERA 1_c59 (T3 king r650)	t3:king:row:650	row:38	t3row
 1+2_t8	Move 1+2 (1+2)	UNMAPPED:t7-clip-pending	t7:1+2~t7.king	t7
-1,2	Palm Strike	UNMAPPED:t7-clip-pending	row:98	t3row
-1+2,1	Head Spinner	UNMAPPED:t7-clip-pending	row:209	t3row
-1,2,1	Palm Strike Uppercut	UNMAPPED:t7-clip-pending	row:198	t3row
+1,2	Palm Strike	UNMAPPED:t7-clip-pending	t7:1,2~t7.king.2	t7
+1+2,1	Head Spinner	UNMAPPED:t7-clip-pending	t7:1+2,1~t7.king.2	t7
+1,2,1	Palm Strike Uppercut	UNMAPPED:t7-clip-pending	t7:1,2,1~t7.king.3	t7
 1,2,1,2+4	Suplex	UNMAPPED:t7-clip-pending	row:127	t3row
 1,2,1,d+2+4	V Driver	UNMAPPED:t7-clip-pending	row:127	t3row
 1,2,2+4	Head Jammer	UNMAPPED:t7-clip-pending	row:127	t3row
-1+2,3	Brutal Sting	UNMAPPED:t7-clip-pending	medium	generic:medium
+1+2,3	Brutal Sting	UNMAPPED:t7-clip-pending	t7:1+2,3~t7.king.2	t7
 1+2+3+4	Ki Charge	UNMAPPED:t7-clip-pending	row:195	t3row
 1,2,d+2+4	V Driver	UNMAPPED:t7-clip-pending	row:127	t3row
 2+3_t8	Heat Burst	t8:king:king-2+3	row:237	t3row
@@ -192,15 +192,15 @@ DHH.2,1,3,4	Giant Swing (From DHH)	t8:king:king-air.d+1+3,2,1,3,4	row:127	t3row
 AIR.f,f,F+2+4	Running Jaguar Bomb	t8:king:king-air.f,f,f+2+4	row:128	t3row
 AIR.f,hcf+1	Aerial Jaguar Bomb	t8:king:king-air.f,hcf+1	row:148	t3row
 b+1	Quick Hook	UNMAPPED:t7-clip-pending	t7:b+1~t7.king	t7
-b+1,2	Uppercut	UNMAPPED:t7-clip-pending	light	generic:light
+b+1,2	Uppercut	UNMAPPED:t7-clip-pending	t7:b+1,2~t7.king.2	t7
 b+1+2,1+2	Back Swing	UNMAPPED:t7-clip-pending	row:127	t3row
 b+1+3	Arm Whip	UNMAPPED:t7-clip-pending	row:35	t3row
 b+1,4	Heel Kick	UNMAPPED:t7-clip-pending	medium	generic:medium
 b+2	Chupacabra	UNMAPPED:t7-clip-pending	t7:b+2~t7.king	t7
-b+2,1	Spinning Back Elbow	UNMAPPED:t7-clip-pending	row:199	t3row
+b+2,1	Spinning Back Elbow	UNMAPPED:t7-clip-pending	t7:b+2,1~t7.king.2	t7
 b+2,1+2	Head Butt	UNMAPPED:t7-clip-pending	row:97	t3row
 b+2+4	Spinning Heel Hold	UNMAPPED:t7-clip-pending	row:35	t3row
-b+2,4	Olympia Slam	UNMAPPED:t7-clip-pending	medium	generic:medium
+b+2,4	Olympia Slam	UNMAPPED:t7-clip-pending	t7:b+2,4~t7.king	t7
 b+2+4:3+4	Figure Four Leg Lock	t8:king:king-b+2+4:3+4	row:195	t3row
 b+3	Toll Kick	UNMAPPED:t7-clip-pending	t7:b+3~t7.king	t7
 b+3,&amp;#58;1+2	Guillotine Drop	t8:king:king-b+3:1+2	row:127	t3row
@@ -243,26 +243,26 @@ db+3	Crouching Low Kick	UNMAPPED:t7-clip-pending	t7:d/b+3	t7
 db+4	Low Drop Kick	UNMAPPED:t7-clip-pending	t7:d/b+4	t7
 db,n,f+2+4	Tombstone Pile Driver	t8:king:king-db,n,f+2+4	row:127	t3row
 df+1	Move df+1 (df+1)	UNMAPPED:t7-clip-pending	t7:d/f+1~t7.king	t7
-df+1,2	Elbow Sting	UNMAPPED:t7-clip-pending	light	generic:light
+df+1,2	Elbow Sting	UNMAPPED:t7-clip-pending	t7:d/f+1,2~t7.king	t7
 df+1+3	Reverse Arm Slam (RAS1)	t8:king:king-df+1+3	row:127	t3row
 df+2	Move df+2 (df+2)	UNMAPPED:t7-clip-pending	t7:d/f+2~t7.king	t7
-df+2,1	Double Hook Disaster	UNMAPPED:t7-clip-pending	light	generic:light
+df+2,1	Double Hook Disaster	UNMAPPED:t7-clip-pending	t7:d/f+2,1~t7.king	t7
 df+2+3	Knee Bash	t8:king:king-df+2+3	row:127	t3row
 df+2+4	Reverse Special Stretch Bomb (RSSB1)	t8:king:king-df+2+4	row:127	t3row
 df+3	Move df+3 (df+3)	UNMAPPED:t7-clip-pending	t7:d/f+3	t7
 df+3+4	Frankensteiner	UNMAPPED:t7-clip-pending	row:127	t3row
 df+3,4	Lasso Kick	UNMAPPED:t7-clip-pending	medium	generic:medium
 df+4	Move df+4 (df+4)	UNMAPPED:t7-clip-pending	t7:d/f+4~t7.king	t7
-df+4,3	Move 3 (3)	UNMAPPED:t7-clip-pending	medium	generic:medium
-df+4,3,4	Mincer	UNMAPPED:t7-clip-pending	medium	generic:medium
-df+4,3,d+4	Mincer Low	t8:king:king-df+4,3,d+4	medium	generic:medium
+df+4,3	Move 3 (3)	UNMAPPED:t7-clip-pending	t7:d/f+4,3~t7.king	t7
+df+4,3,4	Mincer	UNMAPPED:t7-clip-pending	t7:d/f+4,3,4~t7.king.2	t7
+df+4,3,d+4	Mincer Low	t8:king:king-df+4,3,d+4	t7:d/f+4,3,d+4~t7.king.2	t7
 f+1+2	Shadow Lariat	UNMAPPED:t7-clip-pending	row:112	t3row
 f+1+4	Body Check	UNMAPPED:t7-clip-pending	t7:f+1+4~t7.king	t7
 f+2	Move f+2 (f+2)	UNMAPPED:t7-clip-pending	t7:f+2~t7.king	t7
-f+2,1	Elbow Impact	UNMAPPED:t7-clip-pending	row:198	t3row
+f+2,1	Elbow Impact	UNMAPPED:t7-clip-pending	t7:f+2,1~t7.king.2	t7
 f+2+3	Shoulder Tackle	UNMAPPED:t7-clip-pending	t7:f+2+3~t7.king	t7
 f+2,d+1	Move d+1 (d+1)	UNMAPPED:t7-clip-pending	light	generic:light
-f+2,d+1,2	Jaguar Smash Combo	UNMAPPED:t7-clip-pending	light	generic:light
+f+2,d+1,2	Jaguar Smash Combo	UNMAPPED:t7-clip-pending	t7:f+2,d+1,2~t7.king.3	t7
 f+3	Front Kick	UNMAPPED:t7-clip-pending	t7:f+3~t7.king	t7
 f+3,1+2	DDT	UNMAPPED:t7-clip-pending	row:127	t3row
 f+3+4	Jaguar Sprint	UNMAPPED:t7-clip-pending	row:109	t3row
@@ -372,23 +372,23 @@ ws4	Toe Smash	UNMAPPED:t7-clip-pending	row:69	t3row
 1~t8.king	Jab	UNMAPPED:t7-clip-pending	t7:1~t7.king	t7
 1+3~t8.king	Winding Nut	UNMAPPED:t7-clip-pending	row:127	t3row
 2~t8.king	Right Jab	UNMAPPED:t7-clip-pending	t7:2~t7.king	t7
-2,1~t8.king	Right Jab &gt; Uppercut	UNMAPPED:t7-clip-pending	light	generic:light
+2,1~t8.king	Right Jab &gt; Uppercut	UNMAPPED:t7-clip-pending	t7:2,1~t7.king.2	t7
 2+4~t8.king	Suplex	UNMAPPED:t7-clip-pending	row:128	t3row
 3~t8.king	Left Kick	UNMAPPED:t7-clip-pending	t7:3~t7.king	t7
 4~t8.king	Right Kick	UNMAPPED:t7-clip-pending	t7:4~t7.king	t7
 WALL.b,b,u/b	PANTERA WALL.b,b,u/b	t7:king:king_1	row:99	t3row
 1~t7.king	PANTERA 1	t7:king:king_2	t7:1~t7.king	t7
-1,2~t7.king	PANTERA 1,2	t7:king:king_3	row:98	t3row
-1,2~t7.king.2	PANTERA 1,2	t7:king:king_4	row:98	t3row
+1,2~t7.king	PANTERA 1,2	t7:king:king_3	t7:1,2~t7.king.2	t7
+1,2~t7.king.2	PANTERA 1,2	t7:king:king_4	t7:1,2~t7.king.2	t7
 1,2,2+4~t7.king	Palm Strike to Head Jammer	t7:king:king_5	row:128	t3row
 1,2,2+4~t7.king.2	PANTERA 1,2,2+4	t7:king:king_6	row:128	t3row
 1,2,2+4~t7.king.3	PANTERA 1,2,2+4	t7:king:king_7	row:128	t3row
 1,2,d+2+4~t7.king	Palm Strike to V Driver	t7:king:king_8	row:50	t3row
 1,2,d+2+4~t7.king.2	PANTERA 1,2,d+2+4	t7:king:king_9	row:50	t3row
 1,2,d+2+4~t7.king.3	PANTERA 1,2,d+2+4	t7:king:king_10	row:54	t3row
-1,2,1~t7.king	Palm Attack to Uppercut	t7:king:king_11	row:198	t3row
-1,2,1~t7.king.2	PANTERA 1,2,1	t7:king:king_12	row:198	t3row
-1,2,1~t7.king.3	PANTERA 1,2,1	t7:king:king_13	row:198	t3row
+1,2,1~t7.king	Palm Attack to Uppercut	t7:king:king_11	t7:1,2,1~t7.king.3	t7
+1,2,1~t7.king.2	PANTERA 1,2,1	t7:king:king_12	t7:1,2,1~t7.king.3	t7
+1,2,1~t7.king.3	PANTERA 1,2,1	t7:king:king_13	t7:1,2,1~t7.king.3	t7
 1,2,1,2+4~t7.king	Palm Upper to Suplex	t7:king:king_14	row:127	t3row
 1,2,1,2+4~t7.king.2	PANTERA 1,2,1,2+4	t7:king:king_15	row:127	t3row
 1,2,1,2+4~t7.king.3	PANTERA 1,2,1,2+4	t7:king:king_16	row:127	t3row
@@ -398,25 +398,25 @@ WALL.b,b,u/b	PANTERA WALL.b,b,u/b	t7:king:king_1	row:99	t3row
 1,2,1,d+2+4~t7.king.3	PANTERA 1,2,1,d+2+4	t7:king:king_20	row:54	t3row
 1,2,1,d+2+4~t7.king.4	PANTERA 1,2,1,d+2+4	t7:king:king_21	row:146	t3row
 2~t7.king	PANTERA 2	t7:king:king_22	t7:2~t7.king	t7
-2,1~t7.king	Jab Uppercut	t7:king:king_23	light	generic:light
-2,1~t7.king.2	PANTERA 2,1	t7:king:king_24	light	generic:light
+2,1~t7.king	Jab Uppercut	t7:king:king_23	t7:2,1~t7.king.2	t7
+2,1~t7.king.2	PANTERA 2,1	t7:king:king_24	t7:2,1~t7.king.2	t7
 3~t7.king	PANTERA 3	t7:king:king_25	t7:3~t7.king	t7
 4~t7.king	PANTERA 4	t7:king:king_26	t7:4~t7.king	t7
-1+2,1~t7.king	Head Spinner	t7:king:king_27	row:209	t3row
-1+2,1~t7.king.2	PANTERA 1+2,1	t7:king:king_28	row:209	t3row
-1+2,3~t7.king	Brutal Sting	t7:king:king_29	medium	generic:medium
-1+2,3~t7.king.2	PANTERA 1+2,3	t7:king:king_30	medium	generic:medium
+1+2,1~t7.king	Head Spinner	t7:king:king_27	t7:1+2,1~t7.king.2	t7
+1+2,1~t7.king.2	PANTERA 1+2,1	t7:king:king_28	t7:1+2,1~t7.king.2	t7
+1+2,3~t7.king	Brutal Sting	t7:king:king_29	t7:1+2,3~t7.king.2	t7
+1+2,3~t7.king.2	PANTERA 1+2,3	t7:king:king_30	t7:1+2,3~t7.king.2	t7
 u/f+2~t7.king	High Elbow Drop	t7:king:king_31	t7:u/f+2~t7.king	t7
 u/f+3~t7.king	Falling Heel Kick	t7:king:king_32	t7:u/f+3~t7.king	t7
 u/f+4~t7.king	Jumping Knee Lift	t7:king:king_33	t7:u/f+4~t7.king	t7
 u/f+1+2~t7.king	Capital Punishment	t7:king:king_34	t7:u/f+1+2~t7.king	t7
 u/f+3+4~t7.king	Neck Cutter Kick	t7:king:king_35	row:67	t3row
 f+2~t7.king	PANTERA f+2	t7:king:king_36	t7:f+2~t7.king	t7
-f+2,1~t7.king	Elbow Impact	t7:king:king_37	row:198	t3row
-f+2,1~t7.king.2	PANTERA f+2,1	t7:king:king_38	row:198	t3row
-f+2,d+1,2~t7.king	Jaguar Smash Combo	t7:king:king_39	light	generic:light
-f+2,d+1,2~t7.king.2	PANTERA f+2,d+1,2	t7:king:king_40	light	generic:light
-f+2,d+1,2~t7.king.3	PANTERA f+2,d+1,2	t7:king:king_41	light	generic:light
+f+2,1~t7.king	Elbow Impact	t7:king:king_37	t7:f+2,1~t7.king.2	t7
+f+2,1~t7.king.2	PANTERA f+2,1	t7:king:king_38	t7:f+2,1~t7.king.2	t7
+f+2,d+1,2~t7.king	Jaguar Smash Combo	t7:king:king_39	t7:f+2,d+1,2~t7.king.3	t7
+f+2,d+1,2~t7.king.2	PANTERA f+2,d+1,2	t7:king:king_40	t7:f+2,d+1,2~t7.king.3	t7
+f+2,d+1,2~t7.king.3	PANTERA f+2,d+1,2	t7:king:king_41	t7:f+2,d+1,2~t7.king.3	t7
 f+3~t7.king	Front Kick	t7:king:king_42	t7:f+3~t7.king	t7
 f+3,1+2~t7.king	Front Kick to DDT	t7:king:king_43	row:101	t3row
 f+4~t7.king	Rolling Sobat	t7:king:king_44	t7:f+4~t7.king	t7
@@ -443,23 +443,23 @@ f,f,n,1+2~t7.king	Lay Off	t7:king:king_64	row:101	t3row
 f,f,f+3	Strong Knee	t7:king:king_65	row:113	t3row
 f,f,f+3+4	Running Exploder	t7:king:king_66	row:109	t3row
 d/f+1~t7.king	PANTERA d/f+1	t7:king:king_67	t7:d/f+1~t7.king	t7
-d/f+1,2	Elbow Sting	t7:king:king_68	light	generic:light
-d/f+1,2~t7.king	PANTERA d/f+1,2	t7:king:king_69	light	generic:light
+d/f+1,2	Elbow Sting	t7:king:king_68	t7:d/f+1,2~t7.king	t7
+d/f+1,2~t7.king	PANTERA d/f+1,2	t7:king:king_69	t7:d/f+1,2~t7.king	t7
 d/f+2~t7.king	PANTERA d/f+2	t7:king:king_70	t7:d/f+2~t7.king	t7
-d/f+2,1	Double Hook Diaster	t7:king:king_71	light	generic:light
-d/f+2,1~t7.king	PANTERA d/f+2,1	t7:king:king_72	light	generic:light
+d/f+2,1	Double Hook Diaster	t7:king:king_71	t7:d/f+2,1~t7.king	t7
+d/f+2,1~t7.king	PANTERA d/f+2,1	t7:king:king_72	t7:d/f+2,1~t7.king	t7
 d/f+3	PANTERA d/f+3	t7:king:king_73	t7:d/f+3	t7
 d/f+3,4	Lasso Kick	t7:king:king_74	medium	generic:medium
 d/f+3,4~t7.king	PANTERA d/f+3,4	t7:king:king_75	medium	generic:medium
 d/f+4~t7.king	PANTERA d/f+4	t7:king:king_76	t7:d/f+4~t7.king	t7
-d/f+4,3	PANTERA d/f+4,3	t7:king:king_77	medium	generic:medium
-d/f+4,3~t7.king	PANTERA d/f+4,3	t7:king:king_78	medium	generic:medium
-d/f+4,3,4	Mincer	t7:king:king_79	medium	generic:medium
-d/f+4,3,4~t7.king	PANTERA d/f+4,3,4	t7:king:king_80	medium	generic:medium
-d/f+4,3,4~t7.king.2	PANTERA d/f+4,3,4	t7:king:king_81	medium	generic:medium
-d/f+4,3,d+4	Mincer Low	t7:king:king_82	medium	generic:medium
-d/f+4,3,d+4~t7.king	PANTERA d/f+4,3,d+4	t7:king:king_83	medium	generic:medium
-d/f+4,3,d+4~t7.king.2	PANTERA d/f+4,3,d+4	t7:king:king_84	medium	generic:medium
+d/f+4,3	PANTERA d/f+4,3	t7:king:king_77	t7:d/f+4,3~t7.king	t7
+d/f+4,3~t7.king	PANTERA d/f+4,3	t7:king:king_78	t7:d/f+4,3~t7.king	t7
+d/f+4,3,4	Mincer	t7:king:king_79	t7:d/f+4,3,4~t7.king.2	t7
+d/f+4,3,4~t7.king	PANTERA d/f+4,3,4	t7:king:king_80	t7:d/f+4,3,4~t7.king.2	t7
+d/f+4,3,4~t7.king.2	PANTERA d/f+4,3,4	t7:king:king_81	t7:d/f+4,3,4~t7.king.2	t7
+d/f+4,3,d+4	Mincer Low	t7:king:king_82	t7:d/f+4,3,d+4~t7.king.2	t7
+d/f+4,3,d+4~t7.king	PANTERA d/f+4,3,d+4	t7:king:king_83	t7:d/f+4,3,d+4~t7.king.2	t7
+d/f+4,3,d+4~t7.king.2	PANTERA d/f+4,3,d+4	t7:king:king_84	t7:d/f+4,3,d+4~t7.king.2	t7
 d/f+3+4	PANTERA d/f+3+4	t7:king:king_85	row:127	t3row
 d+3~t7.king	Stomp	t7:king:king_86	t7:d+3~t7.king	t7
 d+1+2~t7.king	Atlas' Hammer	t7:king:king_87	t7:d+1+2~t7.king	t7
@@ -476,17 +476,17 @@ d/b+2	Brain Chop	t7:king:king_97	t7:d/b+2	t7
 d/b+3	Crouching Low Kick	t7:king:king_98	t7:d/b+3	t7
 d/b+4	Low Drop Kick	t7:king:king_99	t7:d/b+4	t7
 b+1~t7.king	Quick Hook	t7:king:king_100	t7:b+1~t7.king	t7
-b+1,2~t7.king	Quick Hook Uppercut	t7:king:king_101	light	generic:light
-b+1,2~t7.king.2	PANTERA b+1,2	t7:king:king_102	light	generic:light
+b+1,2~t7.king	Quick Hook Uppercut	t7:king:king_101	t7:b+1,2~t7.king.2	t7
+b+1,2~t7.king.2	PANTERA b+1,2	t7:king:king_102	t7:b+1,2~t7.king.2	t7
 b+1,4~t7.king	Quick Hook Heel Kick	t7:king:king_103	medium	generic:medium
 b+1,4~t7.king.2	PANTERA b+1,4	t7:king:king_104	medium	generic:medium
 b+2~t7.king	PANTERA b+2	t7:king:king_105	t7:b+2~t7.king	t7
-b+2,1~t7.king	Chupacabra to Spinning Back Elbow	t7:king:king_106	row:199	t3row
-b+2,1~t7.king.2	PANTERA b+2,1	t7:king:king_107	row:199	t3row
+b+2,1~t7.king	Chupacabra to Spinning Back Elbow	t7:king:king_106	t7:b+2,1~t7.king.2	t7
+b+2,1~t7.king.2	PANTERA b+2,1	t7:king:king_107	t7:b+2,1~t7.king.2	t7
 b+2,1+2~t7.king	Chupacabra to Head Butt	t7:king:king_108	row:97	t3row
 b+2,1+2~t7.king.2	PANTERA b+2,1+2	t7:king:king_109	row:97	t3row
 t7.king_110	Chupacabra to Olympia Slam	t7:king:king_110	row:99	t3row
-b+2,4~t7.king	PANTERA b+2,4	t7:king:king_111	medium	generic:medium
+b+2,4~t7.king	PANTERA b+2,4	t7:king:king_111	t7:b+2,4~t7.king	t7
 b+3~t7.king	Toll Kick	t7:king:king_112	t7:b+3~t7.king	t7
 u/b+1~t7.king	Water Parting Chop	t7:king:king_113	t7:u/b+1~t7.king	t7
 FC.1	PANTERA FC.1	t7:king:king_114	row:110	t3row
@@ -758,7 +758,7 @@ b~t3.king.6	KING b_r145 (T3 king r145)	t3:king:row:145	row:145	t3row
 b~t3.king.7	KING b_r146 (T3 king r146)	t3:king:row:146	row:146	t3row
 d+3+4,2	KING d+3+4,2_r107 (T3 king r196)	t3:king:row:196	row:196	t3row
 d+3+4,4~t3.king	KING d+3+4,4_r107 (T3 king r197)	t3:king:row:197	medium	generic:medium
-f+2,1~t3.king	KING f+2,1 (T3 king r198)	t3:king:row:198	row:198	t3row
+f+2,1~t3.king	KING f+2,1 (T3 king r198)	t3:king:row:198	t7:f+2,1~t7.king.2	t7
 b+2,1~t3.king	KING b+2,1_r4 (T3 king r199)	t3:king:row:199	row:199	t3row
 d/b+1+2,2	KING d/b+1+2,2 (T3 king r200)	t3:king:row:200	row:281	t3row
 d+3+4,2,1	KING d+3+4,2,1_r107 (T3 king r201)	t3:king:row:201	row:201	t3row

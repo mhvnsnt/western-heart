@@ -127,5 +127,8 @@ test('the real loader builds King move clips for Pantera only', async () => {
     assert.ok(m, `${played} (${input}) -> ${packKey}`);
     assert.equal(m.name, 't7:' + packKey);
   }
-  assert.equal(T.t7MoveClip('pantera', 'king', '1,2', null, '1,2'), null, 'strings never take a single-input clip');
+  // Strings never take a single-input clip. Since 2026-11-10 a string may take ONLY its own verified string-step
+  // clip (t7_move_resolve.py --strings: '1,2' -> '1,2~t7.king.2', motbin Kg_lprpF), never the 1 or the 2 alone.
+  const s12 = T.t7MoveClip('pantera', 'king', '1,2', null, '1,2');
+  if (s12) { const pk = pack.moves[s12.name.slice(3)]; assert.ok(pk && pk.input === '1,2', 'strings never take a single-input clip'); }
 });
