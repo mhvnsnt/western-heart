@@ -67,6 +67,38 @@ def normal_slots(js):
     return out
 
 
+def other_slots(js):
+    """Images any material samples for something other than its normal map."""
+    out = set()
+    for m in js.get('materials', []):
+        pbr = m.get('pbrMetallicRoughness') or {}
+        for ref in (pbr.get('baseColorTexture'), pbr.get('metallicRoughnessTexture'), m.get('occlusionTexture'),
+                    m.get('emissiveTexture')):
+            if ref and ref.get('index') is not None:
+                out.add(js['textures'][ref['index']].get('source'))
+    return out
+
+
+def dedupe_images(js, views, rep):
+    """Point every texture at the first image with identical bytes; gltfpack then drops the unreferenced copies."""
+    import hashlib
+    first = {}
+    remap = {}
+    for ii, im in enumerate(js.get('images', [])):
+        if 'bufferView' not in im:
+            continue
+        h = hashlib.sha256(views[im['bufferView']]).hexdigest()
+        if h in first:
+            remap[ii] = first[h]
+        else:
+            first[h] = ii
+    for t in js.get('textures', []):
+        if t.get('source') in remap:
+            t['source'] = remap[t['source']]
+    if remap:
+        rep['deduped_images'] = {str(k): v for k, v in remap.items()}
+
+
 def main():
     from PIL import Image
     ap = argparse.ArgumentParser()
@@ -80,8 +112,13 @@ def main():
     if 'EXT_meshopt_compression' in (js.get('extensionsUsed') or []):
         sys.exit('input is meshopt-compressed: decode first (tools/anim/gltf_codec.mjs decode)')
     views = [blob[bv.get('byteOffset', 0): bv.get('byteOffset', 0) + bv['byteLength']] for bv in js['bufferViews']]
-    normals = normal_slots(js)
     rep = {'input': a.inp, 'tool': 'tools/deploy/fit_cdn_budget.py', 'textures': []}
+    dedupe_images(js, views, rep)
+    normals = normal_slots(js)
+    # 2026-11-10 (TOU's T7 kit): an image sampled ONLY as a normal map loses nothing when its alpha goes: glTF 2.0
+    # normalTexture reads RGB only (three.js too). T7 packs other data into its normal maps' alpha, which kept 28.6 MB
+    # of them as PNG; they now take the same full-chroma JPEG path, with the normal-angle error reported as before.
+    normal_only = normals - other_slots(js)
     for ii, im in enumerate(js.get('images', [])):
         if im.get('mimeType') != 'image/png' or 'bufferView' not in im:
             continue
@@ -90,10 +127,10 @@ def main():
             continue
         img = Image.open(io.BytesIO(data))
         if img.mode not in ('RGB', 'L'):
-            if 'A' in img.mode and np.asarray(img.getchannel('A')).min() < 255:
+            if 'A' in img.mode and np.asarray(img.getchannel('A')).min() < 255 and ii not in normal_only:
                 rep['textures'].append({'image': ii, 'kept_png': 'has transparency'})
                 continue
-            img = img.convert('RGB')
+            img = img.convert('RGB')  # normal-only images: alpha unused by glTF / three.js normal mapping
         buf = io.BytesIO()
         img.save(buf, 'JPEG', quality=a.jpeg_q, subsampling=0, optimize=True)
         jpg = buf.getvalue()

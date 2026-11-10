@@ -337,7 +337,7 @@ export const MODEL_URLS = {
   'saku-ra-main': 'assets/models/saku-ra-main.glb',
   'sam-ur-a1-body': 'assets/models/sam-ur-a1-body.glb',
   'sha-body': 'assets/models/sha-body.glb',
-  'tou-body': 'assets/models/tou-body.glb', // roster wire-up batch C 2026-11-09: Tou's own body — Paul Phoenix (pau) parts extracted from the held T7 pakchunk0 and assembled on the shared T7 skeleton (213 joints, core bones canonicalized); see docs/TOU-BODY-BUILD-2026-11-09.md
+  'tou-body': 'assets/models/tou-body-cdn.glb', // roster wire-up batch C 2026-11-09: Tou's own body — Paul Phoenix (pau) parts extracted from the held T7 pakchunk0 and assembled on the shared T7 skeleton (213 joints, core bones canonicalized); see docs/TOU-BODY-BUILD-2026-11-09.md. 2026-11-10: served packed (fit_cdn_budget.py: duplicate face textures merged, normal-map alpha dropped (glTF reads RGB only), q93 full-chroma JPEG, gltfpack -cc) 48.8 -> 15.5 MB; tou-body.glb stays beside it
   'zen-body': 'assets/models/zen-body.glb',
   'zui_alt1': 'assets/models/zui_alt1.glb',
   'zui_alt2': 'assets/models/zui_alt2.glb',
