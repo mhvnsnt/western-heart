@@ -1,0 +1,18 @@
+OK t3_neutral: Sm_sKAM00_ -> susm_kamae(DVD) [rotsm#198 0xC8] baked 87 frames, 21 joints -> $SCRATCH/ganbake/t7_ganryu/ (FK self-check max 0.000000 m)
+OK t3_walk_fwd: Sm_sWALKF -> susm_fwalk(DVD) [rotsm#199 0x64] baked 20 frames, 21 joints -> $SCRATCH/ganbake/t7_ganryu/ (FK self-check max 0.000000 m)
+OK t3_walk_back: Sm_sWALKB -> susm_bwalk(DVD) [rotsm#204 0x64] baked 23 frames, 21 joints -> $SCRATCH/ganbake/t7_ganryu/ (FK self-check max 0.000000 m)
+OK t3_crouch: Sm_st2cr00_ -> susm_ta2sya(DVD) [rotsm#227 0x64] baked 10 frames, 21 joints -> $SCRATCH/ganbake/t7_ganryu/ (FK self-check max 0.000000 m)
+OK t3_jump_up: sJUMP_00_ -> Bco_newjump2(DVD) [common#137 0x64] baked 50 frames, 21 joints -> $SCRATCH/ganbake/t7_ganryu/ (FK self-check max 0.000000 m)
+OK t3_jump_fwd: sJUMP_00F -> Bco_newjump2(DVD) [common#137 0x64] baked 50 frames, 21 joints -> $SCRATCH/ganbake/t7_ganryu/ (FK self-check max 0.000000 m)
+OK t3_jump_back: sJUMP_00B -> Bco_newjump2(DVD) [common#137 0x64] baked 50 frames, 21 joints -> $SCRATCH/ganbake/t7_ganryu/ (FK self-check max 0.000000 m)
+OK t3_dash_fwd: Sm_sDASHF -> kzco_dash125(DVD) [rotsm#202 0x64] baked 30 frames, 21 joints -> $SCRATCH/ganbake/t7_ganryu/ (FK self-check max 0.000000 m)
+OK t3_backdash: Sm_sDASHB -> naco_back90(DVD) [rotsm#207 0x64] baked 35 frames, 21 joints -> $SCRATCH/ganbake/t7_ganryu/ (FK self-check max 0.000000 m)
+OK t3_sidestep_a: sSTEP_01L -> coyt_l_idou_tame_tk75_1f(DVD) [common#58 0x64] baked 41 frames, 21 joints -> $SCRATCH/ganbake/t7_ganryu/ (FK self-check max 0.000000 m)
+OK t3_sidestep_b: sSTEP_01R -> coyt_r_idou_tame_tk75_1f(DVD) [common#66 0x64] baked 41 frames, 21 joints -> $SCRATCH/ganbake/t7_ganryu/ (FK self-check max 0.000000 m)
+OK t3_ko: sDm_nkdoBxC -> Sco_nkdown(DVD) [common#727 0x64] baked 80 frames, 21 joints -> $SCRATCH/ganbake/t7_ganryu/ (FK self-check max 0.000000 m)
+OK t3_block: sGrd_YC00G -> Zco_PSgu02(DVD) [common#188 0x64] baked 60 frames, 21 joints -> $SCRATCH/ganbake/t7_ganryu/ (FK self-check max 0.000000 m)
+OK t3_hit: sDm_Aokimid00 -> Tco_styoro(DVD) [common#310 0x64] baked 35 frames, 21 joints -> $SCRATCH/ganbake/t7_ganryu/ (FK self-check max 0.000000 m)
+OK t3_hit_launch: sDw_AIR00_ -> dwfkao00(DVD) [common#138 0x64] baked 50 frames, 21 joints -> $SCRATCH/ganbake/t7_ganryu/ (FK self-check max 0.000000 m)
+OK t3_crouch_hold: Sm_cKAM00_ -> susm_skamae(DVD) [rotsm#211 0xC8] baked 87 frames, 21 joints -> $SCRATCH/ganbake/t7_ganryu/ (FK self-check max 0.000000 m)
+BANK_BAKE_DONE gan $SCRATCH/ganbake/t7_ganryu/
+exit 0

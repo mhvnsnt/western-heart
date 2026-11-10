@@ -164,6 +164,11 @@ export const MODEL_URLS = {
   // tools/auto_rig/refit_rig.py (skeleton fitted to his own body, Blender bone heat, head territory) and packed under
   // the CDN budget by tools/deploy/fit_cdn_budget.py. His head no longer sinks into his chest; torn vertices in his
   // stance 25,703 -> 5,191. docs/proof/2026-11-09/refit-thor/.
+  // 2026-11-10: the same refit with two weight fixes for his own Ganryu sumo stance (docs/proof/2026-11-10/thor-ganryu/):
+  // belly / belt / armoured skirt given back to the Hips (tools/auto_rig/pelvis_skirt_weights.py: the 3.7 cm Hips bone
+  // had lost them to the thighs, so the stance splayed his belt flat), and the refit's height-cut head territory taken
+  // off his shoulders, arms and forearm bracers (tools/auto_rig/head_territory_clean.py: 105,647 vertices, inpainted;
+  // the bracers stretched into fins when his hands went forward). model-rerig-refit.glb stays beside it.
   thor: '../roster/thor/attires/attire1/model-pelvisfix-cdn.glb',
   // Thor Attire 2: phantom-mimic oni mask (owner 2026-10-19).
   'thor-attire2': '../roster/thor/attires/attire2/model.glb',

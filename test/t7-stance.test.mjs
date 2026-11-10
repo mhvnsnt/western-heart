@@ -34,6 +34,8 @@ const CLIPS = {
   // the game's own sampler into 0xC8 form (tools/anim/t7_anim64_to_c8.py; conversion provenance is
   // recorded inside the file). luckychloe is deliberately NOT in this table — see STANCE_EXEMPT below.
   raven: [123, 'frss_kamae(DVD)', 'Nj_sKAM00_'],
+  // 2026-11-10: Thor's canon base Ganryu (ganrotsm.arc), his sumo kamae.
+  ganryu: [198, 'susm_kamae(DVD)', 'Sm_sKAM00_'],
 };
 
 // Dirs wired in T7_STANCES whose source stance is not an orthodox guard, so the per-frame guard
@@ -55,6 +57,8 @@ const WIRED = {
   purplerain: ['jin', 'lee'], chordz: ['jin', 'lars'], negativo: ['bryan', 'negan'],
   // 2026-11-03: Pond and Ryusan on their OWN T7-sourced banks (no proxy, no other character's clips)
   pond: ['raven', 'raven'], ryusan: ['luckychloe', 'luckychloe'],
+  // 2026-11-10: Thor (canon: "Built on Ganryu's sumo frame") on his bound Bryan bank, in Ganryu's own stance
+  thor: ['bryan', 'ganryu'],
 };
 
 // the joints game/js/t3anims.js retargetT3Clips drives (RIG_REQUIRED + spine/neck + shoulders + toes)
