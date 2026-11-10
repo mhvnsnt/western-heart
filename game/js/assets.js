@@ -164,7 +164,7 @@ export const MODEL_URLS = {
   // tools/auto_rig/refit_rig.py (skeleton fitted to his own body, Blender bone heat, head territory) and packed under
   // the CDN budget by tools/deploy/fit_cdn_budget.py. His head no longer sinks into his chest; torn vertices in his
   // stance 25,703 -> 5,191. docs/proof/2026-11-09/refit-thor/.
-  thor: '../roster/thor/attires/attire1/model-rerig-refit.glb',
+  thor: '../roster/thor/attires/attire1/model-pelvisfix-cdn.glb',
   // Thor Attire 2: phantom-mimic oni mask (owner 2026-10-19).
   'thor-attire2': '../roster/thor/attires/attire2/model.glb',
   'doc-frank': 'assets/models/doc-frank.glb',
