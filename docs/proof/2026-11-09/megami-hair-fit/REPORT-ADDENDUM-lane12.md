@@ -148,32 +148,37 @@ hair.glb → REFIT, brown eye, band meshes present). Parent-own-eyes items:
 - The cap's forehead edge is CLEAN: no torn band, no floating shards across
   the forehead (FINAL's face frame shows grey shard planes + a light patch
   at the same place). The temple/side seating reads continuous.
-- BUT the frame shows a smooth black dome over the crown where FINAL's
-  frame shows hair. Measured cause (cap POSITION audit): the ORIGINAL
-  cap's centre-crown verts top at y 1.853; FINAL pulled the whole cap's
-  crown field down (centre-crown 1.752, top band 1651 verts within 30 mm
-  of max — a flattened blanket), and the v5 REFIT recovers only part of
-  it (1.778; top band 605 verts). The refit's mandate was seating the cap
-  shell (rim + surface), and its delta source IS the FINAL field — so the
-  inherited crown flattening persists by construction, and on the proof
-  stage (which hides the body's own AngelHairScalpCap + AngelHairStraight
-  nodes) the exposed crown reads as the body's bare scalp shell under a
-  too-low cap. This is a cap-VOLUME/height defect inherited from the
-  predecessor's FINAL, NOT a seating defect: the rim evidence above stands.
-  It belongs to the same class of decision as the afro rim rebuild (the
-  cap needs its crown height restored toward the authored 1.853 profile —
-  a field change, not a placement change) and is escalated with it.
+- BUT the frames show a smooth black dome over the crown (front frame AND
+  the face34 frame, proof/straight-refit-face34.png — a hard straight
+  vertical cap edge also cuts down in front of the ear there, the same
+  defect family the parent flagged on the GNM face frames). Measured cause
+  (POSITION audit, ALL prims): the flattening is in the STRANDS too and
+  was introduced by the predecessor FINAL, not by v5. Per-prim max y /
+  verts above 1.80: ORIGINAL cap 1.853/654, black strands 1.875/26422,
+  blonde 1.848/1838 → FINAL cap 1.752/0, black 1.783/0, blonde 1.761/0 →
+  REFIT identical strands (byte-proven), cap 1.778/0. FINAL's whole-part
+  field compressed the crown ~90–100 mm; v5 changed only the cap shell
+  and partially recovered it. Everything above y 1.80 was deleted from the
+  part by FINAL, so the strand mass no longer covers the crown and the
+  smooth cap shell shows through as a bald dome. This is a whole-part
+  VOLUME/height defect inherited from FINAL, NOT a seating defect: the
+  rim evidence above stands. It belongs to the same class of decision as
+  the afro rim rebuild (the part needs its crown profile restored toward
+  the authored heights across all prims — a field rebuild, not a
+  placement change) and is escalated with it.
   **RING VERDICT (straight): PASS at the rim (temples/nape exact 1.5 mm,
-  0% inside, no ring/tear at any proof distance on the frames shot);
-  CROWN verdict: FAIL — inherited crown flattening, needs the parent
-  decision below before this can ship as the standard-meeting winner.**
+  0% inside, no ring/tear at the hairline in either frame shot);
+  CROWN verdict: FAIL — inherited whole-part crown flattening (FINAL),
+  needs the parent decision below before this can ship as the
+  standard-meeting winner.**
 
 ## Decisions escalated to the parent (both are field/parametrization changes)
 
 1. AFRO: rim re-parametrization (weave-track rebuild) per the section above.
-2. STRAIGHT: crown-height restoration — re-derive the cap's delta field so
-   the crown profile returns toward the authored cap (top 1.853) while
-   keeping the v5 seating (which is gate-proven). Concretely: a delta field
-   anchored on the ORIGINAL cap instead of FINAL at the crown, or a
-   height-profile blend; either re-opens the field the gate diffuses, so it
-   is a new refit variant (v6), not a tweak of the landed REFIT file.
+2. STRAIGHT: crown-height restoration — re-derive the delta field for ALL
+   prims (cap + strands) so the crown profile returns toward the authored
+   heights (cap 1.853 / black strands 1.875 / blonde 1.848) while keeping
+   the v5 seating (which is gate-proven). Concretely: a delta field
+   anchored on the ORIGINAL part instead of FINAL above the seating band,
+   or a height-profile blend; either re-opens the field the gate diffuses,
+   so it is a new refit variant (v6), not a tweak of the landed REFIT file.
