@@ -46,7 +46,7 @@ import { buttonsMask as t7ButtonsMask } from './t7graph.js';
 import { effectiveStepPlay, playableStepPlay, stepActionName, stepPlanBanksFor } from './step-plan-bank.js';
 import { selectThrow, resolveThrowClips, throwBreaks, throwDamageTimeSec, throwPairDurationSec,
   escapePairFor, anchorAt, sharedFramePos, throwQuadrant, attemptRowForInput, hexSlot, bankDirOf } from './t3-throw.js';
-import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove, resolveMoveKey, hasStrPrefix, variantBase, throwStageTag, throwStageKeys, systemRows, systemTagOf } from './movesets.js';
+import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove, resolveMoveKey, hasStrPrefix, variantBase, throwStageTag, throwStageKeys, systemRows, systemTagOf, gameAssetBase } from './movesets.js';
 import { TransformCinematic } from './transform-cinematic.js';
 import { V, vskillFor, vtriggerEnhance, vreversalMove } from './v-system.js';
 import { JiggleRig } from './jiggle.js';
@@ -357,7 +357,10 @@ export async function loadRealMovesets() {
     // aggregate moveset map silently never built.
     const FILE_FOR = { demonio: 'jin' };
     const data = await Promise.all(
-      names.map(n => fetch(`assets/${FILE_FOR[n] || n}_moves.json`).then(r => r.json()))
+      // GAME-ROOT ANCHOR (moveset path gap, 2026-11-10): same page-relative
+      // base bug as movesets.js MS_BASE — anchor to the module URL so the
+      // fetch resolves to game/assets/ from any page base.
+      names.map(n => fetch(gameAssetBase(`${FILE_FOR[n] || n}_moves.json`)).then(r => r.json()))
     );
     const byName = {};
     names.forEach((n, i) => byName[n] = data[i]);
