@@ -41,8 +41,12 @@ DIR_SLOTS = [('t3_walk_fwd', 0x40, r'sWALK'), ('t3_walk_back', 0x10, r'sWALK'), 
              ('t3_dash_fwd', 0x8001, r'sDASH'), ('t3_backdash', 0x8002, r'sDASH'),
              ('t3_sidestep_a', 0x8003, r'sSTEP'), ('t3_sidestep_b', 0x8004, r'sSTEP')]
 STATE_SLOTS = [('t3_block', 'sGrd_YC00G', r'^(\w+_)?sGrd_'), ('t3_hit', 'sDm_Aokimid00', r'^(\w+_)?sDm_'),
-               ('t3_hit_launch', 'sDw_AIR00_', r'^(\w+_)?sDw_AIR'), ('t3_ko', 'Fall_sKAM', r'^(\w+_)?Fall_s'),
-               ('t3_crouch_hold', 'cKAM__00_', r'^(\w+_)?cKAM')]
+               ('t3_hit_launch', 'sDw_AIR00_', r'^(\w+_)?sDw_AIR'), ('t3_crouch_hold', 'cKAM__00_', r'^(\w+_)?cKAM')]
+# KO (2026-11-10): NOT Fall_sKAM. Its clip (common naco_700dwn2, every base) is a knockdown-and-RECOVER: baked hips
+# 0.98 -> 0.45 -> back up to 1.07 m, so a KO'd fighter stood back up. The KO is the engine's standing KNOCKDOWN damage
+# state: the base's own sDm_ move playing the common Sco_nkdown clip (sDm_nkdoBxC where the table has it), baked hips
+# 1.01 -> 0.15 m and staying down (80 frames). Compared by baking every candidate down state 2026-11-10.
+KO_ANIM, KO_PREFER = 'Sco_nkdown', ('sDm_nkdoBxC', 'sDm_nkdoBxC25', 'sDm_InkdowCE')
 INPUT_SLOTS = [('t3_light', '1'), ('t3_medium', '3'), ('t3_heavy', '4')]
 
 
@@ -74,6 +78,12 @@ def resolve(mothead, code, pack=None):
             put(slot, pick, 'stance cancel %s' % hex(d))
         else:
             out['unresolved'].append(slot)
+    ko = [m['name'] for m in mb.moves if m['name'].startswith('sDm_') and (m.get('anim') or '').startswith(KO_ANIM)]
+    pick = next((n for n in KO_PREFER if n in ko), None) or (ko[0] if ko else None)
+    if pick:
+        put('t3_ko', pick, 'own sDm_ state playing the common standing knockdown ' + KO_ANIM)
+    else:
+        out['unresolved'].append('t3_ko')
     for slot, name, fam in STATE_SLOTS:
         if name in by_name:
             put(slot, name, 'engine state')
