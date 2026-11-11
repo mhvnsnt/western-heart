@@ -76,6 +76,21 @@ jobs:
       - name: Run bake driver
         run: bash .github/scripts/v71-bake-driver.sh "${{ steps.resolve.outputs.model }}"
 
+      - name: Stage slim artifact (fast download)
+        # The full artifact is ~700MB (baked .blend + raw GLB + mini); the
+        # VM's artifact-CDN bandwidth measured ~91KB/s, so a full download
+        # takes ~2h. The slim artifact carries only what the pull-back
+        # needs (final GLB + bake PNGs + MANIFEST + logs, ~25MB); the full
+        # artifact stays on GitHub as the archive.
+        if: always()
+        run: |
+          mkdir -p out-slim/bakes
+          cp out/final/*.glb out-slim/ 2>/dev/null || true
+          cp out/bakes/*.png out-slim/bakes/ 2>/dev/null || true
+          cp out/MANIFEST.json out-slim/ 2>/dev/null || true
+          cp out/*.log out-slim/ 2>/dev/null || true
+          du -sh out-slim/; ls out-slim/ out-slim/bakes/
+
       - name: Upload outputs
         # Always upload: on a driver failure the partial PNGs + logs are the
         # diagnosis (and the hard-won outputs) — never lose them to a skip.
@@ -84,5 +99,14 @@ jobs:
         with:
           name: v71-bake-${{ steps.resolve.outputs.model }}
           path: out/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload slim outputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v71-bake-${{ steps.resolve.outputs.model }}-slim
+          path: out-slim/
           if-no-files-found: error
           retention-days: 30
