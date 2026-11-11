@@ -49,7 +49,7 @@ jobs:
       - name: Download bake inputs from release
         run: |
           case "${{ inputs.model || 'hara' }}" in
-            hara)    FILES="Hara_0.1.blend hara_mini.blend" ;;
+            hara)    FILES="Hara_0.1.blend hara_mini.blend Face-11.png" ;;
             matara)  FILES="MataraKan.blend matara_mini.blend" ;;
             juniper) FILES="JuniperActias.blend" ;;
           esac
@@ -67,6 +67,9 @@ jobs:
         run: bash .github/scripts/v71-bake-driver.sh "${{ inputs.model || 'hara' }}"
 
       - name: Upload outputs
+        # Always upload: on a driver failure the partial PNGs + logs are the
+        # diagnosis (and the hard-won outputs) — never lose them to a skip.
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: v71-bake-${{ inputs.model || 'hara' }}

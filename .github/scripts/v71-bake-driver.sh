@@ -100,6 +100,11 @@ hara)
   for m in Torso-10 Arms-10 Legs-10 Lips-10 Irises-10; do
     bake_p1 "$MINI" hara_mini "$m" 8 || { say "HARA-P1-INCOMPLETE"; manifest; exit 1; }
   done
+  # Face-11.png was baked locally (2026-11-10) and ships as a release
+  # input — p2 needs it in fixups/bakes/ alongside the fresh PNGs.
+  [ -s "$IN/Face-11.png" ] && png_nonzero "$IN/Face-11.png" > /dev/null || { say "FACE11-MISSING"; manifest; exit 1; }
+  cp "$IN/Face-11.png" "$BAKE/fixups/bakes/Face-11.png"
+  say "FACE11-OK $(stat -c%s "$BAKE/fixups/bakes/Face-11.png")"
   bake_p2 "$IN/Hara_0.1.blend" Hara '["Torso-10","Face-11","Arms-10","Legs-10","Lips-10","Irises-10"]' "$OUT/hara_baked.blend" || { manifest; exit 1; }
   export_glb "$OUT/hara_baked.blend" Hara.glb || { manifest; exit 1; }
   finish_glb Hara.glb "Torso-10,Face-11,Arms-10,Legs-10,Lips-10,Irises-10" || { manifest; exit 1; }
