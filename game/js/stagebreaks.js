@@ -221,6 +221,10 @@ export class StageBreaks {
       }
     }
     this._built = true;
+    // LAG FIX (owner 2026-11-11): these overlays appear mid-round, on the first frame after the stage content
+    // streams in. Compile their shaders right here against the fight scene's lights (three r160
+    // compile(object, camera, targetScene)) so the next frame does not stall on it.
+    try { if (arena.renderer && arena.camera) arena.renderer.compile(this.group, arena.camera, arena.scene); } catch (e) { /* optional */ }
   }
 
   _id(def) { return `${def.type}:${def.side ?? ''}${def.x ?? ''},${def.z ?? ''}`; }

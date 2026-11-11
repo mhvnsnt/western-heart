@@ -122,6 +122,50 @@ export class HitFX {
     this._flashT = 0;
     this._flashMax = 0;
     this._flashEl = null;
+    /* POOLED SPRITES (lag fix, owner 2026-11-11: "it lags a lot ... when you're making contact with the hits").
+       Every hit used to make a new SpriteMaterial per spark / debris dot / ring and dispose() them all when the
+       effect ended. Disposing the last material that used three.js's sprite program DELETES that program, so the
+       next hit compiled it again, synchronously, inside render (tools/perf/hit_hitch_probe.mjs: hit frames 6.7 s
+       median vs 14 ms in software WebGL; getProgramInfoLog + getShaderInfoLog = 14% of all CPU). Sprites are now
+       pooled per kind: a finished effect is hidden and reused, never disposed, so its program lives for the whole
+       fight, and prewarm() compiles it before the first hit. Same textures, sizes, colours, timing and draw order. */
+    this._pool = { spark: [], debris: [], ring: [] };
+  }
+
+  /* A pooled sprite of one kind (spark / debris / ring), visible, at full opacity, in the scene. */
+  _take(kind, color) {
+    const pool = this._pool[kind];
+    let s = pool.pop();
+    if (!s) {
+      const map = kind === 'spark' ? this._tex.spark : kind === 'ring' ? this._tex.ring : this._tex.dot;
+      s = new THREE.Sprite(new THREE.SpriteMaterial({
+        map, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false,
+      }));
+      s.renderOrder = kind === 'spark' ? 999 : kind === 'ring' ? 997 : 998;
+      s.frustumCulled = false;
+      this.scene.add(s);
+    }
+    s.material.color.set(color);
+    s.material.opacity = 1;
+    s.material.rotation = 0;
+    s.visible = true;
+    return s;
+  }
+
+  _release(kind, s) {
+    s.visible = false;
+    this._pool[kind].push(s);
+  }
+
+  /* Compile the effect shaders before the first hit: one sprite of each kind is drawn once at zero opacity
+     (renderer.compile), then pooled. Call when the fight scene is ready (game.js _startRound). Idempotent. */
+  prewarm(renderer, camera) {
+    if (this._warm || !renderer || !camera) return;
+    this._warm = true;
+    const made = [this._take('spark', 0xffffff), this._take('debris', 0xffffff), this._take('ring', 0xffffff)];
+    for (const s of made) { s.material.opacity = 0; s.scale.setScalar(0.001); }
+    try { renderer.compile(this.scene, camera); } catch (e) { /* compile is an optimisation: never block a fight */ }
+    this._release('spark', made[0]); this._release('debris', made[1]); this._release('ring', made[2]);
   }
 
   /* Fullscreen impact flash (counter / KO / surge). The div + style are
@@ -151,32 +195,20 @@ export class HitFX {
     const dirX = opts.dirX || 0;
 
     // 1 — the spark: pops to full size in ~2 frames, then dies over `life`
-    const sm = new THREE.SpriteMaterial({
-      map: this._tex.spark, color, transparent: true,
-      blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false,
-    });
-    const spark = new THREE.Sprite(sm);
+    const spark = this._take('spark', color);
     const sparkSize = 1.15 * st.spark * scale;
     spark.position.set(x, y, z);
     spark.scale.setScalar(0.2);
-    spark.renderOrder = 999;
-    this.scene.add(spark);
     this._items.push({ obj: spark, kind: 'spark', t: 0, life: st.life, size: sparkSize });
 
     // 2 — debris sparks, biased away from the attacker
     const n = st.debris;
     for (let i = 0; i < n; i++) {
-      const dm = new THREE.SpriteMaterial({
-        map: this._tex.dot, color, transparent: true,
-        blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false,
-      });
-      const d = new THREE.Sprite(dm);
+      const d = this._take('debris', color);
       d.position.set(x, y, z);
       const a = Math.random() * Math.PI * 2;
       const sp = 2.5 + Math.random() * 4.5;
       d.scale.setScalar(0.10 + Math.random() * 0.14);
-      d.renderOrder = 998;
-      this.scene.add(d);
       this._items.push({
         obj: d, kind: 'debris', t: 0, life: 0.35 + Math.random() * 0.2,
         vx: Math.cos(a) * sp + dirX * 3.0,
@@ -187,15 +219,9 @@ export class HitFX {
 
     // 3 — shockwave ring on heavy hits
     if (st.ring) {
-      const rm = new THREE.SpriteMaterial({
-        map: this._tex.ring, color, transparent: true,
-        blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false,
-      });
-      const ring = new THREE.Sprite(rm);
+      const ring = this._take('ring', color);
       ring.position.set(x, y, z);
       ring.scale.setScalar(0.4);
-      ring.renderOrder = 997;
-      this.scene.add(ring);
       this._items.push({ obj: ring, kind: 'ring', t: 0, life: 0.32, size: 2.6 * scale });
     }
 
@@ -239,8 +265,7 @@ export class HitFX {
       }
     }
     for (const it of dead) {
-      this.scene.remove(it.obj);
-      it.obj.material.dispose();
+      this._release(it.kind, it.obj); // hidden and reused: never disposed (see POOLED SPRITES)
       const i = this._items.indexOf(it);
       if (i >= 0) this._items.splice(i, 1);
     }
