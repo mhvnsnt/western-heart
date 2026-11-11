@@ -21720,7 +21720,7 @@
   "f+1+3": "f+1+3~t7.paul",
   "f+1+3,1": "f+1+3,1_r14",
   "f+1+4": "f+1+4",
-  "f+2": "f+2~t8.paul",
+  "f+2": "f+2~t7.paul",
   "f+2+4": "f+2+4~t7.paul",
   "f+2,3": "f+2,3~t7.paul",
   "f+2,3,1": "f+2,3,1",
@@ -148896,5 +148896,21 @@
   "slots_dropped_dangling": 0,
   "result_moves": 617,
   "result_slots": 334
+ },
+ "t7_throw_slot_fix": {
+  "date": "2026-11-11",
+  "tool": "tools/moveset-merge/t7_throw_slot_fix.py",
+  "why": "a T8 throw/hit-throw held this input but has no clip (the game showed a T3 throw stand-in); the fighter's own T7 strike on the same input has its real clip in the T7 move pack",
+  "reslotted": [
+   {
+    "slot": "f+2",
+    "from": "f+2~t8.paul",
+    "from_name": "Phoenix Hook, Tiger Claw",
+    "from_hit_level": "h,t",
+    "to": "f+2~t7.paul",
+    "to_motbin": "Pl_rp00F",
+    "to_clip": "kopl_6rp_DVD"
+   }
+  ]
  }
 }
