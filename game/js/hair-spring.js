@@ -48,6 +48,19 @@
    `physics` block ({stiffness, drag, gravityPower, windScale}) —
    values below are the defaults.
 
+   COLLISION (2026-11-09, owner collision order): the source
+   games' spring solvers collide hair against the character's
+   physics asset — fitted capsule/sphere colliders — plus a
+   distance-field volume for the torso. opts.collision plugs in
+   the shared collision core (game/js/collision.js): a posed
+   capsule/sphere set fitted per character from the skinned bind
+   pose (the PhAT pattern) and/or a baked BodySDF volume, with
+   PBD friction so hair RESTS and DRAGS on shoulders instead of
+   skating or sinking. Build one from baked data with
+   collisionSetFromData(). Without opts.collision the legacy
+   sphere colliders (opts.colliders, head-sphere default) apply,
+   unchanged.
+
    DIVISION OF LABOUR with game/js/springbones.js (WHSpringBones):
    that system drives secondary motion on WH-AUTHORED rigs — breast /
    butt / belly / cloth chains and hair chains baked through the
@@ -65,6 +78,11 @@ const FACE_BLOCK = /mayu|eye|mabuta|lip|jaw|hana|hoho|chobo|bero|tongue|teeth|mo
 const HEAD_NAME = /^(head|neck)/i;
 
 import * as THREE from 'three';
+import {
+  collideSphere as collideSphereFlat,
+  collideCapsule as collideCapsuleFlat,
+  applyContactFriction,
+} from './collision.js';
 
 const tmpA = new THREE.Vector3();
 const tmpB = new THREE.Vector3();
@@ -177,6 +195,12 @@ export class HairSpringSystem {
       root.traverse((o) => { if (!head && o.isBone && /^head$/i.test(o.name)) head = o; });
       if (head) this.colliders = [{ bone: head, radius: 0.115, offset: new THREE.Vector3(0, 0.03, 0), center: new THREE.Vector3() }];
     }
+    // shared collision core set (see header): posed per substep
+    this.collision = opts.collision || null;
+    this._posedSpheres = [];   // {c:Vector3, r, friction}
+    this._posedCapsules = [];  // {a:Vector3, b:Vector3, r, friction}
+    this._sdfToWorld = new THREE.Matrix4();
+    this._sdfFromWorld = new THREE.Matrix4();
     const found = discoverHairChains(root, opts);
     root.updateMatrixWorld(true);
     for (const { joints } of found) {
@@ -228,9 +252,73 @@ export class HairSpringSystem {
     for (let s = 0; s < steps; s++) { this.time += h; this._step(h); }
   }
 
+  /* Pose the shared collision set for this substep: capsule end
+     points and sphere centres follow their bones (which may live
+     on the BODY's skeleton — colliders are world-space); the SDF
+     frame follows its bone from its bind pose. */
+  _poseCollision() {
+    const set = this.collision;
+    if (!set) return;
+    this._posedSpheres.length = 0;
+    this._posedCapsules.length = 0;
+    for (const s of set.spheres || []) {
+      const c = s.bone.getWorldPosition(new THREE.Vector3());
+      if (s.offset) c.add(tmpA.copy(s.offset).applyQuaternion(s.bone.getWorldQuaternion(tmpQ)));
+      this._posedSpheres.push({ c, r: s.radius + (s.margin || 0), friction: s.friction ?? 0.35 });
+    }
+    for (const cp of set.capsules || []) {
+      const a = cp.boneA.getWorldPosition(new THREE.Vector3());
+      const b = cp.boneB.getWorldPosition(new THREE.Vector3());
+      this._posedCapsules.push({ a, b, r: cp.radius + (cp.margin || 0), friction: cp.friction ?? 0.35 });
+    }
+    if (set.sdf) {
+      this._sdfToWorld.copy(set.sdf.bone.matrixWorld).multiply(set.sdf.bindInv);
+      this._sdfFromWorld.copy(this._sdfToWorld).invert();
+    }
+  }
+
+  /* Collide one joint's simulated tip against the posed set:
+     projection + PBD friction (resting contact). */
+  _collideJoint(j) {
+    const set = this.collision;
+    const p = [j.cur.x, j.cur.y, j.cur.z];
+    const prev = [j.prev.x, j.prev.y, j.prev.z];
+    const n = [0, 0, 0];
+    let touched = false;
+    for (const s of this._posedSpheres) {
+      if (collideSphereFlat(p, [s.c.x, s.c.y, s.c.z], s.r, n) > 0) {
+        applyContactFriction(p, prev, n, s.friction); touched = true;
+      }
+    }
+    for (const cp of this._posedCapsules) {
+      if (collideCapsuleFlat(p, [cp.a.x, cp.a.y, cp.a.z], [cp.b.x, cp.b.y, cp.b.z], cp.r, n) > 0) {
+        applyContactFriction(p, prev, n, cp.friction); touched = true;
+      }
+    }
+    if (set.sdf) {
+      tmpA.set(p[0], p[1], p[2]).applyMatrix4(this._sdfFromWorld);
+      const lp = [tmpA.x, tmpA.y, tmpA.z];
+      const depth = set.sdf.body.project(lp, set.sdf.margin || 0, 2);
+      if (depth > 0) {
+        tmpA.set(lp[0], lp[1], lp[2]).applyMatrix4(this._sdfToWorld);
+        n[0] = tmpA.x - p[0]; n[1] = tmpA.y - p[1]; n[2] = tmpA.z - p[2];
+        const nl = Math.hypot(n[0], n[1], n[2]);
+        if (nl > 1e-9) { n[0] /= nl; n[1] /= nl; n[2] /= nl; }
+        p[0] = tmpA.x; p[1] = tmpA.y; p[2] = tmpA.z;
+        applyContactFriction(p, prev, n, set.sdf.friction ?? 0.35);
+        touched = true;
+      }
+    }
+    if (touched) {
+      j.cur.set(p[0], p[1], p[2]);
+      j.prev.set(prev[0], prev[1], prev[2]);
+    }
+  }
+
   _step(h) {
     const wind = typeof this.wind === 'function' ? this.wind(this.time) : this.wind;
     this._colliderCenters();
+    this._poseCollision();
     for (const chain of this.chains) {
       for (const j of chain) {
         const bone = j.bone;
@@ -253,11 +341,16 @@ export class HairSpringSystem {
         tmpC.copy(j.cur).sub(jointWorld);
         const d = tmpC.length() || 1e-6;
         j.cur.copy(jointWorld).addScaledVector(tmpC, j.tipLen / d);
-        // sphere colliders
-        for (const c of this.colliders) {
-          tmpC.copy(j.cur).sub(c.center);
-          const cd = tmpC.length();
-          if (cd > 1e-6 && cd < c.radius) j.cur.copy(c.center).addScaledVector(tmpC, c.radius / cd);
+        // collision: shared core set when supplied, else the
+        // legacy sphere colliders
+        if (this.collision) {
+          this._collideJoint(j);
+        } else {
+          for (const c of this.colliders) {
+            tmpC.copy(j.cur).sub(c.center);
+            const cd = tmpC.length();
+            if (cd > 1e-6 && cd < c.radius) j.cur.copy(c.center).addScaledVector(tmpC, c.radius / cd);
+          }
         }
         // aim the bone at its simulated tip
         const curDir = tmpC.copy(j.cur).sub(jointWorld).normalize();
@@ -287,6 +380,47 @@ export function attachHairPhysics(root, opts = {}) {
     return sys.active ? sys : null;
   } catch (e) {
     console.warn('[WH-HAIR] attachHairPhysics failed:', e && e.message || e);
+    return null;
+  }
+}
+
+/* Build a live collision set (for opts.collision) from baked
+   per-character data — the JSON written by
+   tools/collision/bake-collision.mjs plus a loaded BodySDF.
+   `bodyRoot` is the BODY's scene root (collider bones live there,
+   not on the hair part). Call in bind pose: the SDF frame's bind
+   inverse is captured from the frame bone's current world matrix.
+   Returns null when a named bone is missing (fail-silent, like
+   attach) — a character without baked data simply gets no set. */
+export function collisionSetFromData(bodyRoot, data, sdfBody) {
+  try {
+    const bone = (name) => bodyRoot.getObjectByName(name);
+    const spheres = [], capsules = [];
+    for (const s of data.spheres || []) {
+      const b = bone(s.bone);
+      if (!b) return null;
+      spheres.push({
+        bone: b,
+        offset: s.offset ? new THREE.Vector3(...s.offset) : undefined,
+        radius: s.radius, margin: s.margin || 0, friction: s.friction,
+      });
+    }
+    for (const c of data.capsules || []) {
+      const a = bone(c.boneA), b = bone(c.boneB);
+      if (!a || !b) return null;
+      capsules.push({ boneA: a, boneB: b, radius: c.radius, margin: c.margin || 0, friction: c.friction });
+    }
+    let sdf = null;
+    if (data.sdf && sdfBody) {
+      const frame = bone(data.sdf.frameBone);
+      if (!frame) return null;
+      bodyRoot.updateMatrixWorld(true);
+      const bindInv = frame.matrixWorld.clone().invert();
+      sdf = { body: sdfBody, bone: frame, bindInv, margin: data.sdf.margin || 0, friction: data.sdf.friction };
+    }
+    return { spheres, capsules, sdf };
+  } catch (e) {
+    console.warn('[WH-HAIR] collisionSetFromData failed:', e && e.message || e);
     return null;
   }
 }
