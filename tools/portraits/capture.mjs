@@ -1,7 +1,12 @@
 // Regenerate select portraits from each fighter's attire-1 model in its own
 // bank stance (game/portrait-capture.html). Serve the repo root on $WH_URL.
 // Usage: node tools/portraits/capture.mjs [id,id,...]
-import { chromium } from 'playwright';
+import { createRequire } from 'module';
+// playwright via require (the pre-installed one resolves from any directory; an ESM bare import needs a local
+// node_modules), the same way tools/portraits/facing_probe.mjs loads it.
+const _req = createRequire(import.meta.url);
+let _pw; try { _pw = _req('playwright'); } catch { _pw = _req(process.env.PLAYWRIGHT_MODULE || '/opt/node-tools/node_modules/playwright'); }
+const { chromium } = _pw;
 import fs from 'node:fs';
 const BASE = process.env.WH_URL || 'http://127.0.0.1:8822';
 const OUT = 'game/assets/portraits';

@@ -374,6 +374,9 @@ export class Game {
     if (this.soulurge) this.soulurge.resetRound();
     if (this.xray) this.xray.cancel();
     if (this.stageBreaks) this.stageBreaks.syncRound();
+    // LAG FIX (owner 2026-11-11): compile the hit-effect shaders now, in the round intro, never at the first hit
+    // (hitfx.js POOLED SPRITES). Idempotent; a failure only skips the optimisation.
+    try { if (this.hitfx && this.arena && this.arena.renderer) this.hitfx.prewarm(this.arena.renderer, this.arena.camera); } catch (e) { /* optional */ }
     const spawns = getStage(this._stageId || 'shrine').spawns;
     const gy = this.stageBreaks ? this.stageBreaks.groundY : 0;
     this.p1.root.position.set(spawns.p1, gy, 0); this.p2.root.position.set(spawns.p2, gy, 0);

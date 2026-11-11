@@ -75,6 +75,7 @@
    an original implementation of the standard MPM algorithm.
    ============================================================ */
 import { getTissueQuality, setTissueQuality, onTissueQuality, TISSUE_QUALITIES } from './tissue-quality.js';
+import { buildRegionNormalPlan, updateRegionNormals } from './region-normals.js';
 
 // ---- tiny vector/matrix helpers (plain arrays; no three.js) ---------
 const _v3 = (x = 0, y = 0, z = 0) => ({ x, y, z });
@@ -304,6 +305,8 @@ export class MpmTissue {
     if (_claimedGeometries) _claimedGeometries.add(geometry);
     this._base = new Float32Array(arr);
     this._geometry = geometry;
+    // lag fix 2026-11-11: normals are recomputed for the moved region only (region-normals.js)
+    this._normalPlan = buildRegionNormalPlan(geometry, regionVerts);
     this._posAttr = posAttr;
     this._ready = true; // no async step: the solver is pure JS
 
@@ -751,7 +754,7 @@ export class MpmTissue {
       this._frame++;
       const every = this._quality === 'high' ? 1 : 3;
       if (maxDisp > 5e-4 && this._frame % every === 0) {
-        try { this._geometry.computeVertexNormals(); } catch (e) {}
+        try { updateRegionNormals(this._geometry, this._normalPlan); } catch (e) {}
       }
     }
   }
