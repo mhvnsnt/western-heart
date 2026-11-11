@@ -237,7 +237,10 @@ export const MODEL_URLS = {
   'bf-finxsse': '../roster/bf-finxsse/attires/attire1/model-rigged.glb',
   'bf-hall-nighter': '../roster/bf-hall-nighter/attires/attire1/model-rigged.glb',
   'bf-hollow': '../roster/bf-hollow/attires/attire1/model-rigged.glb',
-  'bf-jager': '../roster/bf-jager/attires/attire1/model-rigged.glb',
+  // bf-jager: mesh re-centred on its skeleton (2026-11-11, tools/models/realign_mesh_to_skeleton.mjs --center-y: the mesh sat
+  // 0.949 m above the shared Brutal Fist skeleton, so posed vertices swung around joints a metre away). New path:
+  // the remote bucket keeps serving the old file under the old name.
+  'bf-jager': '../roster/bf-jager/attires/attire1/model-rigged-realigned.glb',
   'bf-kobra': '../roster/bf-kobra/attires/attire1/model-rigged.glb',
   'bf-maime': '../roster/bf-maime/attires/attire1/model-rigged.glb',
   'bf-master-sensei': '../roster/bf-master-sensei/attires/attire1/model-rigged.glb',
@@ -246,7 +249,10 @@ export const MODEL_URLS = {
   'bf-stan-combs': '../roster/bf-stan-combs/attires/attire1/model-rigged.glb',
   'bf-static': '../roster/bf-static/attires/attire1/model-rigged.glb',
   'bf-stick-up': '../roster/bf-stick-up/attires/attire1/model-rigged.glb',
-  'bf-tarzanian-devil': '../roster/bf-tarzanian-devil/attires/attire1/model-rigged.glb',
+  // bf-tarzanian-devil: mesh re-centred on its skeleton (2026-11-11, tools/models/realign_mesh_to_skeleton.mjs --center-y: the mesh sat
+  // 0.949 m above the shared Brutal Fist skeleton, so posed vertices swung around joints a metre away). New path:
+  // the remote bucket keeps serving the old file under the old name.
+  'bf-tarzanian-devil': '../roster/bf-tarzanian-devil/attires/attire1/model-rigged-realigned.glb',
   'bf-titan': '../roster/bf-titan/attires/attire1/model-rigged.glb',
   'bf-triple-xxx': '../roster/bf-triple-xxx/attires/attire1/model-rigged.glb',
   'bf-tyneshia': '../roster/bf-tyneshia/attires/attire1/model-rigged.glb',

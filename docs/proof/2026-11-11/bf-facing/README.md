@@ -24,10 +24,22 @@ be pushed to the deployable build".
   resolve without a local `node_modules`.
 - `test/portraits.test.mjs` passes.
 
+## bf-jager and bf-tarzanian-devil: meshes re-aligned to their skeleton
+- **What was wrong:**
+  - Both carry the shared Brutal Fist skeleton, but their meshes sat 0.949 m above it: bounds y 0..1.898, against
+    -0.94..0.94 for every other Brutal Fist mesh.
+  - `tools/models/realign_mesh_to_skeleton.mjs` (new) measures this from the skin itself. Hips-weighted vertices sat
+    +0.944 / +0.948 m above the Hips bind position. A correct model sits within a few cm.
+  - So the head bone sat at chest height (the card framed the legs), and posed vertices swung around joints a metre
+    away (exploded cards, `cards_before.png`).
+- **Fix:** `--center-y` moves the vertices down by the mesh's own bounds centre, 0.949 m, which undoes a "feet to
+  y=0" move. The inverse bind matrices, skeleton and weights are untouched.
+  - After: Hips-weighted vertices sit -0.005 / -0.001 m from the joint, bounds -0.949..0.949.
+  - The files ship under new paths (`model-rigged-realigned.glb`), because the remote bucket keeps serving the old
+    file under the old name.
+- **Result:** rest renders now face +X like the others (`jager_tarzanian_realigned_rest_yaw90_yaw270.png`), so
+  +X is recorded and their cards are re-captured.
+
 ## Not fixed here (stated, not hidden)
-- **bf-jager, bf-tarzanian-devil:** their meshes sit ~0.95 m above their skeleton. The mesh bounds are y 0..1.90
-  while every other Brutal Fist mesh is centred on the same skeleton template (y -0.94..0.94). So the head bone is
-  at chest height, the card frames the legs, and posed vertices swing around joints a metre away (stretched mesh).
-  The model fix is a mesh re-alignment to the skeleton, next.
 - **bf-maime:** hidden from the select screen by the material gate (`game/js/material-status.js`: 15 untextured
   parts). Her model needs its textures from the Brutal Fist source before she can have a card.

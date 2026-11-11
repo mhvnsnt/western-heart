@@ -127,7 +127,9 @@
   "bf-triple-xxx": "+X",
   "bf-tyneshia": "+X",
   "bf-viper": "+X",
-  "bf-wreck-patterson": "+X"
+  "bf-wreck-patterson": "+X",
+  "bf-jager": "+X",
+  "bf-tarzanian-devil": "+X"
  },
  "note_rigged": "Tripo statics rigged by tools/auto_rig/backends/gamerig_backend.py (--facing +X: every Tripo pull faces +X, read from rest renders docs/proof/claude-2026-10-20/rigging/statics_sheet_*.png) come out facing +Z.",
  "corrections": {
@@ -160,6 +162,8 @@
   "bf-triple-xxx": "2026-11-11: unlisted -> +X. Brutal Fist pull-in (2026-11-08): rest renders through tools/portraits/facing_probe.mjs's capture show the face at yaw 90 (camera on +X) and the back at yaw 270, so the mesh faces +X; the feet cue only tells +Z from -Z, so the instance was never turned: the select card showed a profile and the fighter stood side-on. Proof: docs/proof/2026-11-11/bf-facing/.",
   "bf-tyneshia": "2026-11-11: unlisted -> +X. Brutal Fist pull-in (2026-11-08): rest renders through tools/portraits/facing_probe.mjs's capture show the face at yaw 90 (camera on +X) and the back at yaw 270, so the mesh faces +X; the feet cue only tells +Z from -Z, so the instance was never turned: the select card showed a profile and the fighter stood side-on. Proof: docs/proof/2026-11-11/bf-facing/.",
   "bf-viper": "2026-11-11: unlisted -> +X. Brutal Fist pull-in (2026-11-08): rest renders through tools/portraits/facing_probe.mjs's capture show the face at yaw 90 (camera on +X) and the back at yaw 270, so the mesh faces +X; the feet cue only tells +Z from -Z, so the instance was never turned: the select card showed a profile and the fighter stood side-on. Proof: docs/proof/2026-11-11/bf-facing/.",
-  "bf-wreck-patterson": "2026-11-11: unlisted -> +X. Brutal Fist pull-in (2026-11-08): rest renders through tools/portraits/facing_probe.mjs's capture show the face at yaw 90 (camera on +X) and the back at yaw 270, so the mesh faces +X; the feet cue only tells +Z from -Z, so the instance was never turned: the select card showed a profile and the fighter stood side-on. Proof: docs/proof/2026-11-11/bf-facing/."
+  "bf-wreck-patterson": "2026-11-11: unlisted -> +X. Brutal Fist pull-in (2026-11-08): rest renders through tools/portraits/facing_probe.mjs's capture show the face at yaw 90 (camera on +X) and the back at yaw 270, so the mesh faces +X; the feet cue only tells +Z from -Z, so the instance was never turned: the select card showed a profile and the fighter stood side-on. Proof: docs/proof/2026-11-11/bf-facing/.",
+  "bf-jager": "2026-11-11: unlisted -> +X. After tools/models/realign_mesh_to_skeleton.mjs --center-y (their meshes sat 0.949 m above the shared Brutal Fist skeleton), rest renders show the face at yaw 90 and the back at yaw 270, as for the other Brutal Fist models. Proof: docs/proof/2026-11-11/bf-facing/jager_tarzanian_realigned_rest_yaw90_yaw270.png.",
+  "bf-tarzanian-devil": "2026-11-11: unlisted -> +X. After tools/models/realign_mesh_to_skeleton.mjs --center-y (their meshes sat 0.949 m above the shared Brutal Fist skeleton), rest renders show the face at yaw 90 and the back at yaw 270, as for the other Brutal Fist models. Proof: docs/proof/2026-11-11/bf-facing/jager_tarzanian_realigned_rest_yaw90_yaw270.png."
  }
 }
