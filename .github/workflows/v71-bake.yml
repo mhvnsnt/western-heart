@@ -28,6 +28,7 @@ on:
     paths:
       - .github/workflows/v71-bake.yml
       - .github/scripts/v71-bake-driver.sh
+      - .github/scripts/v71-bake-model.txt
 
 jobs:
   bake:
@@ -46,9 +47,18 @@ jobs:
           ./blender-5.2.4-linux-x64/blender --version
           free -m | head -2; nproc
 
+      - name: Resolve model
+        id: resolve
+        run: |
+          M="${{ inputs.model }}"
+          [ -z "$M" ] && M=$(cat .github/scripts/v71-bake-model.txt 2>/dev/null | tr -d '[:space:]')
+          [ -z "$M" ] && M=hara
+          echo "model=$M" >> "$GITHUB_OUTPUT"
+          echo "model=$M"
+
       - name: Download bake inputs from release
         run: |
-          case "${{ inputs.model || 'hara' }}" in
+          case "${{ steps.resolve.outputs.model }}" in
             hara)    FILES="Hara_0.1.blend hara_mini.blend Face-11.png" ;;
             matara)  FILES="MataraKan.blend matara_mini.blend" ;;
             juniper) FILES="JuniperActias.blend" ;;
@@ -64,7 +74,7 @@ jobs:
         run: pip install -q pillow numpy
 
       - name: Run bake driver
-        run: bash .github/scripts/v71-bake-driver.sh "${{ inputs.model || 'hara' }}"
+        run: bash .github/scripts/v71-bake-driver.sh "${{ steps.resolve.outputs.model }}"
 
       - name: Upload outputs
         # Always upload: on a driver failure the partial PNGs + logs are the
@@ -72,7 +82,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: v71-bake-${{ inputs.model || 'hara' }}
+          name: v71-bake-${{ steps.resolve.outputs.model }}
           path: out/
           if-no-files-found: error
           retention-days: 30
