@@ -18,6 +18,16 @@ on:
           - hara
           - matara
           - juniper
+  # Push trigger: workflow_dispatch cannot be resolved while this file lives
+  # only on a non-default branch (GitHub looks the workflow up on main),
+  # and the dispatch API needs a workflow scope this token lacks (403).
+  # A push to this branch runs the workflow from the branch's own file.
+  push:
+    branches:
+      - route-switch/v71-bake
+    paths:
+      - .github/workflows/v71-bake.yml
+      - .github/scripts/v71-bake-driver.sh
 
 jobs:
   bake:
@@ -38,7 +48,7 @@ jobs:
 
       - name: Download bake inputs from release
         run: |
-          case "${{ inputs.model }}" in
+          case "${{ inputs.model || 'hara' }}" in
             hara)    FILES="Hara_0.1.blend hara_mini.blend" ;;
             matara)  FILES="MataraKan.blend matara_mini.blend" ;;
             juniper) FILES="JuniperActias.blend" ;;
@@ -54,12 +64,12 @@ jobs:
         run: pip install -q pillow numpy
 
       - name: Run bake driver
-        run: bash .github/scripts/v71-bake-driver.sh "${{ inputs.model }}"
+        run: bash .github/scripts/v71-bake-driver.sh "${{ inputs.model || 'hara' }}"
 
       - name: Upload outputs
         uses: actions/upload-artifact@v4
         with:
-          name: v71-bake-${{ inputs.model }}
+          name: v71-bake-${{ inputs.model || 'hara' }}
           path: out/
           if-no-files-found: error
           retention-days: 30
