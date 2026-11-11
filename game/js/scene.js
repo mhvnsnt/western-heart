@@ -261,6 +261,20 @@ export class Arena {
     this.camera.aspect = w / h; this.camera.updateProjectionMatrix();
   }
 
+  /* Compile `object`'s shaders now, for the target the fight actually renders into (LAG FIX, owner 2026-11-11).
+     The scene is drawn by the composer's RenderPass into its linear render target, so its programs are the
+     'srgb-linear' variants: renderer.compile() with no target set would build only the unused screen variants.
+     three r160 compile(object, camera, targetScene) takes the lights from the whole scene. Never throws. */
+  compileFor(object = this.scene) {
+    const r = this.renderer;
+    const prev = r.getRenderTarget();
+    try {
+      r.setRenderTarget(this.composer.renderTarget1);
+      r.compile(object, this.camera, this.scene);
+    } catch (e) { /* compiling ahead is an optimisation only */ }
+    finally { r.setRenderTarget(prev); }
+  }
+
   render() {
     if (this._nearClipOn) {
       const f = this._ncF || (this._ncF = new THREE.Vector3()), p = this._ncP || (this._ncP = new THREE.Vector3());

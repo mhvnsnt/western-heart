@@ -157,14 +157,14 @@ export class HitFX {
     this._pool[kind].push(s);
   }
 
-  /* Compile the effect shaders before the first hit: one sprite of each kind is drawn once at zero opacity
-     (renderer.compile), then pooled. Call when the fight scene is ready (game.js _startRound). Idempotent. */
-  prewarm(renderer, camera) {
-    if (this._warm || !renderer || !camera) return;
-    this._warm = true;
+  /* Compile the effect shaders before the first hit: one sprite of each kind is shown at zero opacity while
+     `compile` runs (the arena's compileFor: the composer's render target, where the fight is drawn), then pooled.
+     game.js _startRound calls it once the fight scene is ready. */
+  prewarm(compile) {
+    if (typeof compile !== 'function') return;
     const made = [this._take('spark', 0xffffff), this._take('debris', 0xffffff), this._take('ring', 0xffffff)];
     for (const s of made) { s.material.opacity = 0; s.scale.setScalar(0.001); }
-    try { renderer.compile(this.scene, camera); } catch (e) { /* compile is an optimisation: never block a fight */ }
+    try { compile(); } catch (e) { /* compile is an optimisation: never block a fight */ }
     this._release('spark', made[0]); this._release('debris', made[1]); this._release('ring', made[2]);
   }
 

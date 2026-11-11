@@ -374,9 +374,17 @@ export class Game {
     if (this.soulurge) this.soulurge.resetRound();
     if (this.xray) this.xray.cancel();
     if (this.stageBreaks) this.stageBreaks.syncRound();
-    // LAG FIX (owner 2026-11-11): compile the hit-effect shaders now, in the round intro, never at the first hit
-    // (hitfx.js POOLED SPRITES). Idempotent; a failure only skips the optimisation.
-    try { if (this.hitfx && this.arena && this.arena.renderer) this.hitfx.prewarm(this.arena.renderer, this.arena.camera); } catch (e) { /* optional */ }
+    // LAG FIX (owner 2026-11-11): compile, in the round intro, every shader the first hit would otherwise compile
+    // mid-fight (measured: hit-effect sprites, the fighters' swing trails, the stage-break overlays), for the
+    // composer target the fight is drawn into (scene.js compileFor). A failure only skips the optimisation.
+    try {
+      if (this.stageBreaks && this.stageBreaks._ensureBuilt) this.stageBreaks._ensureBuilt();
+      const trails = [this.p1 && this.p1.trail, this.p2 && this.p2.trail].filter(Boolean);
+      const was = trails.map((t) => t.visible);
+      trails.forEach((t) => { t.visible = true; });
+      if (this.hitfx && this.arena && this.arena.compileFor) this.hitfx.prewarm(() => this.arena.compileFor());
+      trails.forEach((t, i) => { t.visible = was[i]; });
+    } catch (e) { /* optional */ }
     const spawns = getStage(this._stageId || 'shrine').spawns;
     const gy = this.stageBreaks ? this.stageBreaks.groundY : 0;
     this.p1.root.position.set(spawns.p1, gy, 0); this.p2.root.position.set(spawns.p2, gy, 0);
