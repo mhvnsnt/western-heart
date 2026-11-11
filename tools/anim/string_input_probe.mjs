@@ -36,6 +36,10 @@ await page.evaluate(() => {
     requestAnimationFrame(watch);
   };
   requestAnimationFrame(watch);
+  // every notation the input path hands the fighter, and whether it was accepted (tryAttack / the queue)
+  const T = window.__whTries = [];
+  const ta = f0 => function (...a) { const r = f0.apply(this, a); T.push({ t: performance.now(), n: a[0], ok: !!r, state: this.state }); return r; };
+  g.p1.tryAttack = ta(g.p1.tryAttack);
 });
 const DIR = { f: ['ArrowRight'], b: ['ArrowLeft'], d: ['ArrowDown'], u: ['ArrowUp'], 'd/f': ['ArrowDown', 'ArrowRight'], 'd/b': ['ArrowDown', 'ArrowLeft'], 'u/f': ['ArrowUp', 'ArrowRight'], 'u/b': ['ArrowUp', 'ArrowLeft'] };
 const results = [];
@@ -49,6 +53,7 @@ for (const s of list.split('|')) {
     if (window.__whStart) { f.root.position.copy(window.__whStart.p1); g.p2.root.position.x = f.root.position.x + (f.facing || 1) * 1.0; }
   });
   const n0 = await page.evaluate(() => window.__whMoves.length);
+  const k0 = await page.evaluate(() => window.__whTries.length);
   for (const step of s.split(',')) {
     const m = /^(?:(d\/f|d\/b|u\/f|u\/b|[fbud])\+)?([1-4](?:\+[1-4])*)$/.exec(step.trim());
     if (!m) { results.push({ string: s, error: 'cannot type step ' + step }); break; }
@@ -64,7 +69,9 @@ for (const s of list.split('|')) {
   }
   await page.waitForTimeout(2500);
   const moves = await page.evaluate((n) => window.__whMoves.slice(n), n0);
-  const r = { string: s, steps: s.split(',').length, started: moves.length, moves: moves.map((x) => `${x.key || x.attackName || '?'} [${x.kind}]`) };
+  const tries = await page.evaluate((k) => window.__whTries.slice(k), k0);
+  const r = { string: s, steps: s.split(',').length, started: moves.length, moves: moves.map((x) => `${x.key || x.attackName || '?'} [${x.kind}]`),
+    pressed: tries.map((x) => `${x.n}${x.ok ? '' : ' (refused, ' + x.state + ')'}`) };
   results.push(r);
   console.log(JSON.stringify(r));
 }
