@@ -1,0 +1,65 @@
+# v71 cloud bake — GitHub Actions (route-switch lane).
+# Local RAM gate (avail>=4200MB) never arrived overnight; the bake moved here
+# under owner law ROUTE-SWITCHING (2026-11-11). ubuntu-latest: 4 vCPU, 16GB RAM
+# (bake peak measured 6.7GB on Kaggle CPU — fits). Blender 5.2.4 LTS.
+# Inputs come from release v71-bake-inputs on this repo (CC-licensed models,
+# full attribution in the release notes). Outputs go to workflow artifacts.
+name: v71-bake
+
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: "Model to bake"
+        required: true
+        default: hara
+        type: choice
+        options:
+          - hara
+          - matara
+          - juniper
+
+jobs:
+  bake:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - name: Check out branch (driver script)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Download Blender 5.2.4 LTS
+        run: |
+          curl -sL -o blender.tar.xz https://download.blender.org/release/Blender5.2/blender-5.2.4-linux-x64.tar.xz
+          tar -xf blender.tar.xz
+          ./blender-5.2.4-linux-x64/blender --version
+          free -m | head -2; nproc
+
+      - name: Download bake inputs from release
+        run: |
+          case "${{ inputs.model }}" in
+            hara)    FILES="Hara_0.1.blend hara_mini.blend" ;;
+            matara)  FILES="MataraKan.blend matara_mini.blend" ;;
+            juniper) FILES="JuniperActias.blend" ;;
+          esac
+          for f in $FILES bakefix.py export52.py rebuild2.mjs strip_vcol.mjs package.json package-lock.json; do
+            gh release download v71-bake-inputs -R mhvnsnt/western-heart -p "$f" --dir inputs --clobber
+          done
+          ls -la inputs/
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Install Python deps (PNG checks)
+        run: pip install -q pillow numpy
+
+      - name: Run bake driver
+        run: bash .github/scripts/v71-bake-driver.sh "${{ inputs.model }}"
+
+      - name: Upload outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: v71-bake-${{ inputs.model }}
+          path: out/
+          if-no-files-found: error
+          retention-days: 30
