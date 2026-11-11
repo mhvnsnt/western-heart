@@ -716,7 +716,8 @@ export function genericBankAction(bank, clips, limb, grab) {
 /* [self+0x1c2] = own yaw - bearing to the opponent (exe facing writer 0x1406ebfe0; round start sets yaw = bearing,
    0x1406e5623). From WH world geometry: the fighter's facing (+-x) against the vector to the opponent. The sign
    convention between WH and T7 is not proven, so a value is given only when |angle| < 0x3fff, where 72/73/80/81 are
-   decided whatever the sign (fold < 0x3fff); otherwise null. */
+   decided whatever the sign (fold < 0x3fff); otherwise null. Kept as a magnitude-only utility; the driver no longer
+   uses it (it tracks the signed source yaw via t7WorldBearingRad). */
 export function t7RelHeadingFromWorld(f, opp) {
   if (!f || !opp || !f.root || !opp.root || !f.facing) return null;
   const dx = opp.root.position.x - f.root.position.x, dz = opp.root.position.z - f.root.position.z;
@@ -725,6 +726,15 @@ export function t7RelHeadingFromWorld(f, opp) {
   const w = Math.atan2(Math.sin(a), Math.cos(a)); // wrap to (-pi, pi]
   const mag = Math.round(Math.abs(w) / (2 * Math.PI) * 65536);
   return mag < 0x3fff ? mag : null;
+}
+/* Signed world bearing to the opponent (radians, world frame: 0 = +x, atan2(dz, dx) — the same convention as
+   t7RelHeadingFromWorld). The driver tracks the source yaw in this frame and recomputes rel = yaw - bearing every
+   frame (exe facing writer 0x1406ebfe0), so it needs the SIGNED bearing, not the magnitude. Null without geometry. */
+export function t7WorldBearingRad(f, opp) {
+  if (!f || !opp || !f.root || !opp.root) return null;
+  const dx = opp.root.position.x - f.root.position.x, dz = opp.root.position.z - f.root.position.z;
+  if (!(Math.abs(dx) + Math.abs(dz) > 1e-6)) return null;
+  return Math.atan2(dz, dx);
 }
 
 export class Fighter {
@@ -2839,7 +2849,8 @@ export class Fighter {
   t7gAttach(bank) {
     this._t7gBank = bank;
     // Requirement context (docs/proof/2026-11-10/t7-requirements/README.md): own chara_id from T7_GRAPHS, controller 0 =
-    // player-controlled (this driver only runs for the human player). relHeading16 (backturn), distance, items stay UNKNOWN.
+    // player-controlled (this driver only runs for the human player). relHeading16 is tracked by the driver from the
+    // source yaw + the live world bearing (see t7-graph-driver.js); distance and items stay UNKNOWN.
     this._t7g = new T7GraphDriver(bank.graph, bank.driverClips,
       { evalState: { dead: !!this.dead, charId: T7_GRAPHS[this.char.id].charId ?? null, controller: 0, trackPlayerVars: true },
         strict: t7GraphStrict(), props: bank.props || null });
@@ -2847,9 +2858,10 @@ export class Fighter {
     this._t7gStatus = { label: 'T7 GRAPH DEV — King T7 source graph (development integration, not full parity) — ' +
       (this._t7g.strict ? 'STRICT precedence (ambiguous rows block)' : 'PERMISSIVE: precedence UNVERIFIED'),
       ticks: 0, hitboxes: 0, noHitbox: {}, clipUnbound: 0, suspended: 0, throwNoGrab: 0, unsupported: null,
-      // Stated, not hidden: WH keeps the fighter's posture standing. Source facing (relHeading16) comes from the world
-      // only until the first source move fires (t7RelHeadingFromWorld), then 72/73/80/81 are UNKNOWN again.
-      assumptions: 'posture: standing (source posture undecoded) | facing: from the world until the first source move, then unknown (source turning not modelled)' };
+      // Stated, not hidden: WH keeps the fighter's posture standing. Source facing (relHeading16) is the driver's
+      // tracked source yaw (entry turn/flip from the exe, live world bearing) — the per-frame tracking term, the
+      // entry continuity correction on the animation's root yaw, and the [0xdb4] facing modes are unmodelled.
+      assumptions: 'posture: standing (source posture undecoded) | facing: tracked source yaw (entry turn/flip from the exe, live bearing); per-frame tracking + entry continuity correction + [0xdb4] modes unmodelled' };
     try { // visible, accurately labelled dev marker (never shown without the opt-in flag)
       if (typeof document !== 'undefined' && document.body && !document.getElementById('t7g-dev')) {
         const el = document.createElement('div'); el.id = 't7g-dev';
@@ -2879,9 +2891,11 @@ export class Fighter {
       this._t7gSuspended = false; this._enter('tekgraph'); this.vx = 0; this.vz = 0;
     }
     D.evalState.dead = !!this.dead;
-    // (_t7gHeadingOverride: test injection only; never set by the game)
-    D.evalState.relHeading16 = this._t7gHeadingOverride !== undefined ? this._t7gHeadingOverride
-      : D.headingFromWorld ? t7RelHeadingFromWorld(this, inp.opponent) : null;
+    // Heading: the driver owns relHeading16 (tracked source yaw minus the live world bearing). This feed supplies
+    // the signed world bearing (null without opponent geometry) and forwards the test-injection override
+    // (_t7gHeadingOverride: test injection only; never set by the game), which wins over the tracked value.
+    D.evalState.worldBearingRad = t7WorldBearingRad(this, inp.opponent);
+    D.evalState.headingOverride = this._t7gHeadingOverride;
     this._t7gAcc += dt;
     const held = inp.held ? ['1', '2', '3', '4'].filter((b) => inp.held[b]) : [];
     while (this._t7gAcc >= 1 / T7G_FPS - 1e-9) {
