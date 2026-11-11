@@ -1,4 +1,4 @@
-# T7 graph — heading tracking fix (19:35–21:30 CST pass, 2026-11-10)
+# T7 graph — heading tracking fix (2026-11-10)
 
 Disassembly facts + node-harness evidence. No executed-original evidence, no emulator run, no visual/browser/touch
 proof. Graph stays opt-in (`?t7graph=1`). Supersedes the 14:51 CST pass in `../t7-heading/README.md`, which concluded
