@@ -1,6 +1,23 @@
 /* t7-graph-driver.js — drives ONE fighter frame by frame from an imported T7 move graph (wh-t7-graph/2) and its
    shipped clip bank (wh-t7-graph-clips/1). Pure (no DOM / THREE), so the same code runs in the game and in the node
    replay harness (test/t7-graph-adapter-pantera.test.mjs).
+   Source heading (exe, TekkenGame-Win64-Shipping.exe): the fighter carries a source yaw (float [self+0x1b8], word
+   [self+0x1be]); the facing writer 0x1406ebfe0 recomputes rel = yaw - bearing to the opponent ([self+0x1c2]) and its
+   fold ([self+0x1c4]) after every move entry. The driver tracks that yaw in the world frame:
+     - round start: yaw = bearing (exe 0x1406e5623 sets yaw = bearing, so rel = 0); the driver anchors yaw to the
+       live world bearing on the first step that has one, and again after a suspension re-entry (the WH engine ran
+       the fighter meanwhile, so the WH-facing truth is the anchor — labelled, not hidden);
+     - move entry (exe 0x14074ff8c..0x1407500a5): the new move's turn word 0x56 is SUBTRACTED from the yaw when
+       nonzero (unconditional at the entry site), and the taken row's extradata bit 15 (0x8000) adds pi (word +0x7fff);
+     - every frame: relHeading16 = yaw - live world bearing (signed, from the caller via evalState.worldBearingRad).
+   NOT modelled (not in the shipped data, so never guessed): the per-frame tracking term (turns yaw toward the
+   bearing, so it can only shrink |rel|), the entry continuity correction on the animation's root yaw
+   (0x14074d086, sampler 0x140749f70 — the root-yaw track is not in the shipped clip bank; the baked Hips channel
+   is the pelvis twist, not the facing: a run travels exactly straight while Hips yaw sweeps 75deg), and the
+   [0xdb4]&0x3C0 facing-mode switch (0x14074d0f8; [0xdb4] is computed from small constants + move words, not from
+   cancel extradata). For the core loop every entry row has turn 0 and no flip, so the tracked yaw is exact at
+   entry and the residual is bounded by those unmodelled terms (measured ~10-20deg for core entries); see
+   docs/proof/2026-11-10/t7-heading-fix/README.md.
    One tick = one 60 Hz source frame:
      1. this tick plays frame `frame` (1-based) of the current source move; its clip sample is frame - 1;
      2. this tick's input { dir, down, held, special } is recorded and the move's cancel list is evaluated at that frame
@@ -19,6 +36,10 @@ import { stepCancel, resolveMoveId, makeEvalCond, buttonsMask, F, T7_VAR_WRITERS
 
 export const T7G_FPS = 60;
 export const T7G_HISTORY = 160; // frames kept; the longest King sequence window is 155
+
+/* Wrap an angle to (-pi, pi] and convert a signed relative angle (rad) to the exe's 16-bit rel word. */
+const wrapAngle = (a) => Math.atan2(Math.sin(a), Math.cos(a));
+const rel16 = (r) => Math.round(wrapAngle(r) / (2 * Math.PI) * 65536) & 0xffff;
 
 export class T7GraphDriver {
   /** graph: wh-t7-graph/2; clips: { key: { frames, fwd: number[] } } (key = '<bank>_<clip>'). */
@@ -40,16 +61,26 @@ export class T7GraphDriver {
   clipKey(m) { return m && m.clip != null ? `${m.bank}_${m.clip}` : null; }
   clipOf(m) { const k = this.clipKey(m); return k ? this.clips[k] || null : null; }
   reset(moveId = this.graph.stance) {
-    // Heading context: valid from the world only until a source move fires (source turning/tracking: move word 0x56,
-    // extradata 0x8000, per-frame update 0x14074afe0, is not modelled), then UNKNOWN until the next reset.
-    this.headingFromWorld = true;
+    // Source yaw: null until the first step with a live world bearing (see the header note). Entry turn/flip
+    // adjustments made before that anchor accumulate in _yawPending and apply at the anchor.
+    this.yaw = null; this._yawPending = 0;
     this.history = []; this.pending = null; this._enter(moveId);
   }
-  _enter(id) {
+  /* Source-yaw adjustment at a move entry. row: the taken cancel row (or the move's AUTO row for a transition);
+     null at a reset entry (round start: no turn/flip, yaw = bearing). */
+  _yawAdd(d) {
+    if (this.yaw == null) this._yawPending = wrapAngle((this._yawPending || 0) + d);
+    else this.yaw = wrapAngle(this.yaw + d);
+  }
+  _enter(id, row = null) {
     this.moveId = id; this.frame = 1; this.pending = null; this._prevFwd = null;
     const m = this.graph.moves[id];
     if (m && m.damage > 0) this.attackId += 1;
     const P = this.props && this.props.moves[id];
+    // Exe move-entry yaw (0x14074ff8c..0x1407500a5): turn_0x56 subtracted when nonzero, taken row's extradata
+    // bit 15 adds pi. Both are no-ops for the core loop (turn 0, no flip) — the yaw then survives entries unchanged.
+    if (row && (row[F.extradata] & 0x8000)) this._yawAdd(Math.PI);
+    if (P && P.turn_0x56) this._yawAdd(-P.turn_0x56 * (2 * Math.PI / 65536));
     if (P) this._applyWriters([...P.extra.map((x) => [x[2], x[3]]), ...P.start.map((x) => [x[2], x[3]]), ...P.end.map((x) => [x[2], x[3]])]);
   }
   get move() { return this.graph.moves[this.moveId]; }
@@ -73,7 +104,16 @@ export class T7GraphDriver {
   }
   /** Advance one source frame. inp: { dir, down, held, special: [cmd] }. Returns this tick's record. */
   step(inp = {}) {
-    if (!this.headingFromWorld) this.evalState.relHeading16 = null; // see reset()
+    // Source heading this frame: the tracked source yaw minus the live world bearing (exe facing writer
+    // 0x1406ebfe0). No bearing (no opponent geometry) -> unknown, as before. A test-injection override
+    // (evalState.headingOverride, set by the fighter from _t7gHeadingOverride) wins over the tracked value.
+    const bearing = this.evalState.worldBearingRad;
+    if (this.yaw == null && bearing != null && bearing !== undefined) {
+      this.yaw = wrapAngle(bearing + (this._yawPending || 0)); this._yawPending = 0;
+    }
+    if (this.evalState.headingOverride !== undefined) this.evalState.relHeading16 = this.evalState.headingOverride;
+    else if (this.yaw != null && bearing != null && bearing !== undefined) this.evalState.relHeading16 = rel16(this.yaw - bearing);
+    else this.evalState.relHeading16 = null;
     const g = this.graph, m = this.move, f = this.frame;
     const clip = this.clipOf(m); const len = clip ? clip.frames : 0;
     const down = buttonsMask(inp.down), held = buttonsMask(inp.held) | down, dir = inp.dir || 'n';
@@ -86,7 +126,7 @@ export class T7GraphDriver {
     const dFwd = this._prevFwd == null ? 0 : fwd - this._prevFwd; this._prevFwd = fwd;
     const rec = { tick: this.stats.ticks, moveId: this.moveId, name: m.name, frame: f, clipKey: this.clipKey(m), sample,
       len, dFwd, damage: m.damage || 0, active: !!(m.damage > 0 && m.first_active > 0 && f >= m.first_active && f <= m.last_active),
-      attackId: this.attackId, hitlevelRaw: m.hitlevel, fired: null, skipped: [] };
+      attackId: this.attackId, hitlevelRaw: m.hitlevel, fired: null, skipped: [], relHeading16: this.evalState.relHeading16 };
     const sp = inp.special || [];
     const evalCond = makeEvalCond(this.evalState);
     let fire = null;
@@ -119,15 +159,17 @@ export class T7GraphDriver {
       fire = { to: resolveMoveId(g, m.transition), via: 'transition', index: -1 };
     }
     if (fire) {
-      // Re-entering the SAME move through its own transition (the idle loop) with a zero turn word keeps the heading;
-      // any other source move ends the world-heading window.
-      const P = this.props && this.props.moves[fire.to];
-      if (!((fire.via === 'transition' || fire.cmd === 0x8000) && fire.to === this.moveId && P && P.turn_0x56 === 0)) this.headingFromWorld = false;
+      // The taken row drives the entry yaw rules (flip from its extradata bit 15): cancel fires carry their row
+      // index (stepCancel returns it, including the via3fff AUTO-row fire); a transition fall-through uses the
+      // move's AUTO row that resolves to the transition target.
+      let row = null;
+      if (fire.index >= 0) row = m.cancels[fire.index] || null;
+      else if (fire.via === 'transition') row = m.cancels.find((c) => c[F.cmd] === 0x8000 && resolveMoveId(g, c[F.to]) === fire.to) || null;
       rec.fired = { to: fire.to, toName: g.moves[fire.to] ? g.moves[fire.to].name : null, via: fire.via, index: fire.index,
         acceptedFrame: fire.acceptedFrame ?? f, appliedFrame: f, precedenceUnknown: fire.precedenceUnknown || [] };
       if (fire.via === 'transition') this.stats.transitions += 1; else this.stats.fired += 1;
       if (rec.fired.precedenceUnknown.length) this.stats.precedenceUnknown = (this.stats.precedenceUnknown || 0) + 1;
-      this._enter(fire.to);
+      this._enter(fire.to, row);
     } else this.frame += 1;
     return rec;
   }

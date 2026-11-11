@@ -334,7 +334,7 @@ test('throws are visibly UNSUPPORTED: a throw-class source move plays its clip o
   assert.ok(inThrow > 0); assert.equal(sawHitbox, false, 'no hitbox: there is no grab');
   assert.ok(r.f._t7gStatus.throwNoGrab >= 1);
   assert.match(recs(r).find((x) => x.name === thr.to).unsupported, /NO GRAB/);
-  assert.match(r.f._t7gStatus.assumptions, /posture: standing .*undecoded.*facing: from the world until the first source move, then unknown/);
+  assert.match(r.f._t7gStatus.assumptions, /posture: standing \(source posture undecoded\) \| facing: tracked source yaw \(entry turn\/flip from the exe, live bearing\); per-frame tracking \+ entry continuity correction \+ \[0xdb4\] modes unmodelled/);
   const marked = g.moves.filter((m) => m.damage === 0x4000);
   assert.equal(marked.length, 43, 'source hit conditions with the 0x4000 throw marker');
 });
@@ -373,24 +373,53 @@ test('STRICT, real Fighter, NO opponent geometry (heading unknown): no input fir
 });
 
 /* End to end under the exe walker semantics, STRICT, with the opponent straight ahead (the round-start geometry: exe
-   0x1406e5623 sets yaw = bearing, so [self+0x1c2] = 0). Heading comes from the world only until the first source move. */
-test('STRICT end to end, opponent ahead: neutral -> 1 = Kg_lp00F; 1,2 string -> Kg_lprpF; f -> walk; after a source move the heading is unknown again (fail closed)', () => {
+   0x1406e5623 sets yaw = bearing, so [self+0x1c2] = 0). The driver tracks the source yaw across move entries (entry
+   turn/flip, exe 0x14074ff8c..0x1407500a5) and recomputes rel = yaw - live bearing every frame, so the heading stays
+   resolved after every source move and continued play is no longer blocked on facing. */
+test('STRICT end to end, opponent ahead: neutral -> 1 = Kg_lp00F; 1,2 string -> Kg_lprpF; f -> walk; heading stays resolved after every source move', () => {
   const opp = { root: { position: { x: 3, y: 0, z: 0 } } };
   let r = rig(true, { opponent: opp }); r.tick(4);
   assert.equal(r.f._t7g.evalState.relHeading16, 0);
   r.press('1'); r.tick(2); r.release('1'); r.tick(8); r.press('2'); r.tick(2); r.release('2'); r.tick(60);
   const fires = r.frames().filter((x) => x.fired && x.fired.via === 'cancel').map((x) => x.fired.toName);
   assert.deepEqual(fires.slice(0, 2), ['Kg_lp00F', 'Kg_lprpF'], `fired ${fires}`);
-  assert.equal(r.f._t7g.headingFromWorld, false); assert.equal(r.f._t7g.evalState.relHeading16, null);
+  // After the 1,2 string the heading is still resolved (tracked yaw 0, opponent ahead): the stance is not blocked.
+  assert.equal(r.f._t7g.yaw, 0); assert.equal(r.f._t7g.evalState.relHeading16, 0);
+  assert.ok(!r.frames().some((x) => x.ambiguous), 'no ambiguous block after the string');
   r = rig(true, { opponent: opp }); r.tick(400);
   assert.ok(r.frames().some((x) => x.fired && x.fired.toName === 'Kg_sKAM00_'), 'the stance looped through its AUTO row');
-  assert.equal(r.f._t7g.headingFromWorld, true, 'idle loop (same move, turn word 0) keeps the world heading');
+  assert.equal(r.f._t7g.yaw, 0, 'idle loop (same move, turn word 0, no flip) keeps the tracked yaw');
+  assert.equal(r.f._t7g.evalState.relHeading16, 0);
   r.press('1'); r.tick(2); r.release('1'); r.tick(4);
   assert.equal(r.frames().filter((x) => x.fired && x.fired.via === 'cancel').map((x) => x.fired.toName).pop(), 'Kg_lp00F');
   r = rig(true, { opponent: opp }); r.tick(4); r.stick('f'); r.tick(6);
   assert.equal(r.log.filter((x) => x.fired && x.fired.via === 'cancel')[0].fired.toName, 'Kg_sWALKF');
-  r = rig(true, { opponent: { root: { position: { x: -3, y: 0, z: 0 } } } }); r.tick(2);
-  assert.equal(r.f._t7g.evalState.relHeading16, null, 'opponent behind: |angle| >= 0x3fff, sign unproven -> unknown');
+  // The opponent walks behind mid-fight (bearing flips to pi, the tracked yaw stays 0): backturned, 72 true.
+  const opp2 = { root: { position: { x: 3, y: 0, z: 0 } } };
+  r = rig(true, { opponent: opp2 }); r.tick(4);
+  assert.equal(r.f._t7g.evalState.relHeading16, 0);
+  opp2.root.position.x = -3; r.tick(2);
+  assert.equal(r.f._t7g.evalState.relHeading16, 0x8000, 'opponent behind: tracked yaw 0 - bearing pi -> rel 0x8000');
+  assert.equal(G.makeEvalCond(r.f._t7g.evalState)(72, 0), true, 'backturned: 72 true');
+  assert.equal(G.makeEvalCond(r.f._t7g.evalState)(73, 0), false, 'backturned: 73 false');
+});
+
+/* Heading regression (lane B, 2026-11-10): after any source move the heading stays resolved and continued play works
+   through a full sequence — jab, 1,2 string, walk, dash, dash-loop, dashing punch — with no facing block and no
+   stall. Before the fix the 2nd jab / walk / dash never fired (the stance was blocked by row #306/#467 cond 80). */
+test('STRICT heading regression, opponent ahead: 1,2 -> walk -> dash -> dash-loop -> dashing punch completes; heading resolves after every move, zero facing blocks, zero stalls', () => {
+  const opp = { root: { position: { x: 3, y: 0, z: 0 } } };
+  const r = rig(true, { opponent: opp }); r.tick(4);
+  r.press('1'); r.tick(2); r.release('1'); r.tick(8); r.press('2'); r.tick(2); r.release('2'); r.tick(60);
+  r.stick('f'); r.tick(20); r.stick('n'); r.tick(4); r.stick('f'); r.tick(30);
+  r.stick('n'); r.tick(10); r.press('1'); r.tick(2); r.release('1'); r.tick(60);
+  const fires = r.frames().filter((x) => x.fired && x.fired.via === 'cancel').map((x) => x.fired.toName);
+  for (const n of ['Kg_lp00F', 'Kg_lprpF', 'Kg_sWALKF', 'Kg_sDASHF']) assert.ok(fires.includes(n), `fired ${fires}`);
+  assert.ok(fires.length >= 5, `5+ consecutive moves: ${fires}`);
+  assert.ok(!r.frames().some((x) => x.ambiguous && x.ambiguous.unknown.some((c) => [72, 73, 80, 81].includes(c))), 'no facing block at any point');
+  assert.ok(!r.frames().some((x) => x.stalled), 'no stall at any point');
+  assert.ok(r.frames().every((x) => x.relHeading16 !== null && x.relHeading16 !== undefined), 'heading resolved on every frame');
+  assert.equal(r.f._t7g.evalState.relHeading16, 0);
 });
 
 /* Foundation fixtures transcribed from the exe (not expectations of blocking): loader-derived cancel_option, matcher. */
@@ -471,12 +500,20 @@ test('player flags (359): idx = param>>16 (<= 0x63), value = sign-extended low w
   const r2 = rig(true); r2.f._t7g._enter(mi); assert.equal(r2.f._t7g.evalState.playerFlags[k], null, 'entered move with a flag writer');
 });
 
-test('STRICT, opponent ahead: f,n,f double tap reaches Kg_sDASHF through source rows; the run is then held back ONLY by facing (80), unknown after the first source move', () => {
+test('STRICT, opponent ahead: f,n,f double tap reaches Kg_sDASHF through source rows; the run is held back by undecoded cond 124 (dash re-fire row), NOT by facing anymore', () => {
   const opp = { root: { position: { x: 3, y: 0, z: 0 } } };
   const r = rig(true, { opponent: opp }); r.tick(4);
   r.stick('f'); r.tick(4); r.stick('n'); r.tick(4); r.stick('f'); r.tick(80);
   const names = new Set(recs(r).map((x) => x.name));
   assert.ok(names.has('Kg_sWALKF') && names.has('Kg_sDASHF'), [...names].join(','));
+  // Heading is resolved throughout (tracked yaw 0, rel 0): no facing condition blocks anything.
+  assert.ok(!recs(r).some((x) => x.ambiguous && x.ambiguous.unknown.some((c) => [72, 73, 80, 81].includes(c))), 'no facing block');
+  assert.equal(r.f._t7g.evalState.relHeading16, 0);
+  // The run is held back by the dash re-fire row 478 (req 1085 = [[124,0]]): cond 124 (exe evaluator 0x1406f5490,
+  // case 0x1406f60e4 — true iff a float at [fighter+0x12d0/0x12d4/0x12d8] is nonzero) is undecoded, its field untraced,
+  // so it stays unknown and the stopping row blocks the run row 479 at dash frame 12. The dash then falls through
+  // to the walk with no stall. The run still fires in PERMISSIVE (mechanics test above).
   const why = new Set(recs(r).filter((x) => x.ambiguous).flatMap((x) => x.ambiguous.unknown));
-  assert.deepEqual([...why], [80], 'the only open question is the source heading after a source move');
+  assert.ok(why.has(124), `cond 124 blocks the run: ${[...why]}`);
+  assert.ok(!recs(r).some((x) => x.stalled), 'no stall: the dash falls through to the walk');
 });
