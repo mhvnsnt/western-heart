@@ -8,7 +8,8 @@
    • play() never throws: no manifest -> silent no-op; no audio file ->
      subtitle-only + console.info (placeholder policy — we never synth
      fake "voice" and present it as final).
-   • Subtitles: single bottom-center layer, latest line wins.
+   • Subtitles: single bottom-center layer, latest line wins; dialogue only
+     (SUBTITLED_TRIGGERS + playLine / playCue), never combat cries or the announcer.
    • Cutscene hook: playCue() — the cutscene timeline calls it; the
      engine treats cues like lines with explicit timing.
    • Announcer: announce() plays the 'announcer' manifest
@@ -24,6 +25,11 @@ import { audio } from './audio.js';
 
 const SUB_ID = 'wh-voice-sub';
 const SUB_HOLD_MS = 2200;
+/* Subtitles are for DIALOGUE only (owner 2026-11-11: nothing on screen in a fight that the fight itself does not
+   show; the reference game subtitles intro lines, win quotes and story scenes, never combat cries, taunts or the
+   announcer, whose calls the ROUND / FIGHT / K.O. banners already show). Trigger clips outside this set play their
+   audio with no text; playLine / playCue (intros, cutscenes) always subtitle. */
+export const SUBTITLED_TRIGGERS = new Set(['intro', 'win']);
 
 class VoiceEngine {
   constructor() {
@@ -115,7 +121,7 @@ class VoiceEngine {
     if (!this.enabled || !fighterId || !trigger) return;
     this._resolveClip(fighterId, trigger, variantIdx).then(clip => {
       if (!clip) return;
-      this._speak(fighterId, clip, clip.text);
+      this._speak(fighterId, clip, SUBTITLED_TRIGGERS.has(trigger) ? clip.text : '');
     }).catch(() => {});
   }
 
@@ -203,9 +209,9 @@ class VoiceEngine {
       }
       if (this.debugBleeps) this._bleep();
       if (placeholder || !buf) {
-        console.info(`[WH voice] placeholder — '${fighterId}/${clip.id}': "${text}" (no recording yet)`);
+        console.info(`[WH voice] placeholder — '${fighterId}/${clip.id}': "${text || clip.text || ''}" (no recording yet)`);
       }
-      await this._wait(SUB_HOLD_MS);
+      if (text) await this._wait(SUB_HOLD_MS);  // a silent, unsubtitled cry has nothing to hold
     } finally {
       try { if (duck && this.onSpeech) this.onSpeech(false); } catch (e) {}
     }

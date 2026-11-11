@@ -13,9 +13,10 @@
    2. `testLimbVsBody(att, def, limbBones)` — shapecast of the attacker's
       striking limb (capsule segment per bone) against the defender's BVH.
       Returns {hit, point, distance}.
-   3. Verify mode (default ON): after every sphere-test hit, run the BVH
-      test and log disagreements — this is the tuning instrument for the
-      "only ~1/10 attacks land" playtest bug. It never changes outcomes.
+   3. Verify mode (opt-in since 2026-11-11, ?hitverify=1): after every
+      sphere-test hit, run the BVH test and log disagreements — the tuning
+      instrument for the "only ~1/10 attacks land" playtest bug. It never
+      changes outcomes, so it no longer runs in normal fights.
    4. Authority mode (opt-in, needs a lane + proof): the BVH test becomes
       the hit authority for strikes.
 
@@ -40,10 +41,23 @@ const LIMB_HINTS = {
   head: [/head/i],
 };
 
+/* Verify mode is a TUNING INSTRUMENT, opt-in (LAG FIX, owner 2026-11-11: "it's mostly in hits and inputs it's
+   getting slow"). It ran on every landed hit of every normal fight: the first hit on each fighter baked the whole
+   skinned body on the CPU (StaticGeometryGenerator) and built a BVH (50-200 ms for 60k triangles by this file's
+   own note; the heavy roster models are 500k), only to log sphere/BVH disagreements to the console. Off unless
+   ?hitverify=1 or localStorage wh_hit_verify = '1' (authority mode was always opt-in). */
+export const HIT_VERIFY_DEFAULT = (() => {
+  try {
+    if (typeof location !== 'undefined' && new URLSearchParams(location.search).get('hitverify') === '1') return 'verify';
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('wh_hit_verify') === '1') return 'verify';
+  } catch (e) { /* no window */ }
+  return 'off';
+})();
+
 export class WHHitDetect {
   constructor() {
     this.ready = false;
-    this.mode = 'verify';      // 'verify' | 'authority' | 'off'
+    this.mode = HIT_VERIFY_DEFAULT;  // 'verify' | 'authority' | 'off' (default off: see HIT_VERIFY_DEFAULT)
     this.cache = new Map();    // modelKey -> { bvh, meshes, updated }
     this.stats = { sphereHits: 0, bvhAgree: 0, bvhDisagree: 0 };
   }

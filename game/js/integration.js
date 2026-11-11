@@ -355,7 +355,7 @@ async function boot() {
             const S = WHIntegration.systems;
             const dealt = Math.max(0, hpBefore - defender.hp);
             if (dealt > 0 || defender.hp <= 0) {
-              if (S.hitdetect) {
+              if (S.hitdetect && S.hitdetect.mode !== 'off') {  // opt-in tuning instrument (hitdetect.js)
                 S.hitdetect.verify(attacker.root, defender.root, true, null, {
                   move: attacker.attackName, dealt,
                 });

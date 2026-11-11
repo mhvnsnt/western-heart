@@ -46,7 +46,7 @@ import { buttonsMask as t7ButtonsMask } from './t7graph.js';
 import { effectiveStepPlay, playableStepPlay, stepActionName, stepPlanBanksFor } from './step-plan-bank.js';
 import { selectThrow, resolveThrowClips, throwBreaks, throwDamageTimeSec, throwPairDurationSec,
   escapePairFor, anchorAt, sharedFramePos, throwQuadrant, attemptRowForInput, hexSlot, bankDirOf } from './t3-throw.js';
-import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove, resolveMoveKey, hasStrPrefix, variantBase, throwStageTag, throwStageKeys, systemRows, systemTagOf, gameAssetBase } from './movesets.js';
+import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove, resolveMoveKey, pressableNotations, hasStrPrefix, variantBase, throwStageTag, throwStageKeys, systemRows, systemTagOf, gameAssetBase } from './movesets.js';
 import { TransformCinematic } from './transform-cinematic.js';
 import { V, vskillFor, vtriggerEnhance, vreversalMove } from './v-system.js';
 import { JiggleRig } from './jiggle.js';
@@ -415,6 +415,8 @@ function stanceAfterFromNotes(ms, key, mv) {
   }
   return undefined;
 }
+/* How many of a fighter's pressable notations the clip prewarm binds ahead of their first press (prewarmAttackClips). */
+export const PREWARM_NOTATIONS = 120;
 export function getRealMove(charId, moveType, opts) {
   const tekken = LEGACY_TO_TEKKEN[moveType] || moveType;
   const res = resolveMove(charId, tekken, opts);
@@ -1650,9 +1652,9 @@ export class Fighter {
       const srcRejected = src0 && clipIsThrow(src0) !== grab0
         ? [`step row ${sp.playRow} is a ${clipIsThrow(src0) ? 'throw' : 'strike'} row`] : null;
       if (!sp.playName || !src0 || srcRejected) {
-        if (srcRejected) console.log(`[WH-STEP-PLAN] ${this._movesetId} ${move && move.moveKey}: step row ${sp.playRow} rejected — ${srcRejected[0]} for a ${grab0 ? 'throw' : 'strike'} move, never played`);
-        if (sp.unmapped.length) console.log(`[WH-STEP-PLAN] ${this._movesetId} ${move && move.moveKey}: UNMAPPED steps [${sp.unmapped.join(', ')}] — no bank row played, never donor fallback`);
-        else if (sp.playBank !== bank) console.log(`[WH-STEP-PLAN] ${this._movesetId} ${move && move.moveKey}: override bank '${sp.playBank}' row ${sp.playRow} unavailable — no bank row played, never bound-bank fallback`);
+        if (srcRejected && !this._warming) console.log(`[WH-STEP-PLAN] ${this._movesetId} ${move && move.moveKey}: step row ${sp.playRow} rejected — ${srcRejected[0]} for a ${grab0 ? 'throw' : 'strike'} move, never played`);
+        if (sp.unmapped.length && !this._warming) console.log(`[WH-STEP-PLAN] ${this._movesetId} ${move && move.moveKey}: UNMAPPED steps [${sp.unmapped.join(', ')}] — no bank row played, never donor fallback`);
+        else if (sp.playBank !== bank && !this._warming) console.log(`[WH-STEP-PLAN] ${this._movesetId} ${move && move.moveKey}: override bank '${sp.playBank}' row ${sp.playRow} unavailable — no bank row played, never bound-bank fallback`);
         // PRESENTATION FALLBACK (fight-freeze fix, 2026-10-31): the step-plan
         // contract above stands — no bank ROW is ever substituted for an
         // unmapped step. But returning name:null here used to leave the
@@ -1886,6 +1888,42 @@ export class Fighter {
       layer2hit: l2used && l2used.hit ? l2used.hit : null };
     return name;
   }
+
+  /* LAG FIX (owner 2026-11-11: "it's mostly in hits and inputs it's getting slow"): a move's clip was retargeted
+     onto the model and bound to the mixer the FIRST time the move was pressed (_attackClip above), so the first
+     press of every move stalled its frame (measured 3-13 ms here, tools/perf/sim_spike_probe.mjs; several times that
+     on a phone). This binds them ahead of time through the SAME _attackClip path, a slice at a time: each call works
+     through the fighter's pressable notations (shortest first, so single buttons are ready first) until `budgetMs`
+     is spent. It never changes the fighter's state: the attack plan and id are put back after every move. Only
+     the first PREWARM_NOTATIONS presses are warmed (neutral-stance, shortest first: ~100-118 distinct moves per
+     fighter), so a 1000-notation list never parks hundreds of rarely used clips in a phone's memory; the rest bind
+     lazily at their first press, as before. Returns true once the warm list is done. */
+  prewarmAttackClips(budgetMs = 3) {
+    if (!this._movesetId) return true;                              // nothing to warm
+    if (!this._t3 || !this._t3.model || !this.mixer) return false;  // not bound yet: try again later
+    if (!this._warmQ) { this._warmQ = pressableNotations(this._movesetId).slice(0, PREWARM_NOTATIONS); this._warmI = 0; }
+    if (this._warmI >= this._warmQ.length) return true;
+    const t0 = performance.now();
+    const plan = this._atkPlan, id = this._attackId;
+    this._warming = true;
+    try {
+      while (this._warmI < this._warmQ.length) {
+        const n = this._warmQ[this._warmI++];
+        let move = null;
+        try { move = getRealMove(this._movesetId, n); } catch (e) { move = null; }
+        if (move) {
+          this._attackId = -this._warmI;  // a plan id no real attack ever has
+          try { this._attackClip(move, n); } catch (e) { /* binds lazily at its first press instead */ }
+        }
+        if (performance.now() - t0 >= budgetMs) break;
+      }
+    } finally {
+      this._atkPlan = plan; this._attackId = id; this._warming = false;
+    }
+    return this._warmI >= this._warmQ.length;
+  }
+  /** Moves still to warm (0 = done). */
+  get prewarmLeft() { return this._warmQ ? this._warmQ.length - this._warmI : -1; }
 
   /* Drive the attack clip's time from the move's own clock (stateT), before the mixer samples:
      clip hit window -> the move's active frames (attackClipTime). The clip is held at timeScale 0

@@ -62,6 +62,17 @@ export function applyQuality(q) {
   if (!g || !g.arena || !g.arena.renderer) return;
   const r = g.arena.renderer;
   const dpr = window.devicePixelRatio || 1;
+  // LAG FIX (owner 2026-11-11, phone speed): the scale goes through Arena.setRenderScaleRange, which sets the
+  // renderer AND the composer (the fight renders into the composer's targets: a renderer-only pixel ratio never
+  // reduced the scene's resolution) and lets dynamic resolution move between the bounds on phone-width screens.
+  const phone = window.innerWidth <= 844;
+  if (typeof g.arena.setRenderScaleRange === 'function') {
+    const hi = q === 'low' ? Math.min(dpr, 0.75) : q === 'med' ? Math.min(dpr, 1) : Math.min(dpr, phone ? 2 : 1);
+    const lo = !phone ? hi : q === 'low' ? hi : q === 'med' ? Math.min(hi, 0.75) : Math.min(hi, 1);
+    g.arena.setRenderScaleRange(lo, hi);
+    r.shadowMap.enabled = q !== 'low';
+    return;
+  }
   if (q === 'low') { r.setPixelRatio(Math.min(dpr, 0.75)); r.shadowMap.enabled = false; }
   else if (q === 'med') { r.setPixelRatio(Math.min(dpr, 1)); r.shadowMap.enabled = true; }
   // Piece 1 Break 9: HIGH was min(dpr, 2) at any width — at 1919 px the

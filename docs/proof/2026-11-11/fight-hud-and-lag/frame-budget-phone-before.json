@@ -1,0 +1,363 @@
+{
+ "p1": "pantera",
+ "p2": "megami",
+ "stage": "shrine",
+ "frames": 288,
+ "staticLoad": {
+  "pixelRatio": 2,
+  "canvas": [
+   824,
+   1830
+  ],
+  "shadowType": 2,
+  "shadowEnabled": true,
+  "lights": {
+   "PointLight": 11,
+   "HemisphereLight": 1,
+   "DirectionalLight": 3
+  },
+  "shadowLights": [
+   {
+    "type": "DirectionalLight",
+    "map": 1024
+   }
+  ],
+  "shadowCasters": 60,
+  "meshes": 111,
+  "skinned": 27,
+  "materials": {
+   "MeshBasicMaterial": 14,
+   "MeshStandardMaterial": 79,
+   "MeshPhysicalMaterial": 18
+  },
+  "p1": {
+   "tris": 48024,
+   "skinnedMeshes": 1,
+   "bones": 22
+  },
+  "p2": {
+   "tris": 516092,
+   "skinnedMeshes": 26,
+   "bones": 469
+  },
+  "textures": 101,
+  "geometries": 85,
+  "programs": 47,
+  "passes": [
+   "RenderPass",
+   "UnrealBloomPass",
+   "OutputPass"
+  ],
+  "isMobile": true
+ },
+ "perFrame": {
+  "wall": {
+   "median": 3164.3,
+   "p95": 6790
+  },
+  "sim": {
+   "median": 33.33,
+   "p95": 33.33
+  },
+  "update": {
+   "median": 12.5,
+   "p95": 25.2
+  },
+  "steps": {
+   "median": 4,
+   "p95": 4
+  },
+  "render": {
+   "median": 13.4,
+   "p95": 29.7
+  },
+  "calls": {
+   "median": 1,
+   "p95": 1
+  },
+  "tris": {
+   "median": 1,
+   "p95": 1
+  }
+ },
+ "gameSpeed": 0.01,
+ "topFunctions": [
+  {
+   "k": "(idle) ((idle)):0",
+   "ms": 877349,
+   "pct": 97.2
+  },
+  {
+   "k": "getProgramInfoLog (getProgramInfoLog):0",
+   "ms": 11775,
+   "pct": 1.3
+  },
+  {
+   "k": "getShaderInfoLog (getShaderInfoLog):0",
+   "ms": 1864,
+   "pct": 0.2
+  },
+  {
+   "k": "(program) ((program)):0",
+   "ms": 1569,
+   "pct": 0.2
+  },
+  {
+   "k": "update js/faceRig.js:98",
+   "ms": 1384,
+   "pct": 0.2
+  },
+  {
+   "k": "(garbage collector) ((garbage collector)):0",
+   "ms": 1207,
+   "pct": 0.1
+  },
+  {
+   "k": "update vendor/three.module.js:18062",
+   "ms": 1039,
+   "pct": 0.1
+  },
+  {
+   "k": "updateWorldMatrix vendor/three.module.js:7760",
+   "ms": 662,
+   "pct": 0.1
+  },
+  {
+   "k": "multiplyMatrices vendor/three.module.js:6224",
+   "ms": 584,
+   "pct": 0.1
+  },
+  {
+   "k": "update vendor/three.module.js:13683",
+   "ms": 374,
+   "pct": 0
+  },
+  {
+   "k": "texSubImage2D (texSubImage2D):0",
+   "ms": 189,
+   "pct": 0
+  },
+  {
+   "k": "setValueV1fArray vendor/three.module.js:18877",
+   "ms": 163,
+   "pct": 0
+  },
+  {
+   "k": "update vendor/three.module.js:32448",
+   "ms": 154,
+   "pct": 0
+  },
+  {
+   "k": "bufferSubData (bufferSubData):0",
+   "ms": 151,
+   "pct": 0
+  },
+  {
+   "k": "update js/fighter.js:3922",
+   "ms": 137,
+   "pct": 0
+  },
+  {
+   "k": "uniform1fv (uniform1fv):0",
+   "ms": 121,
+   "pct": 0
+  },
+  {
+   "k": "update vendor/three.module.js:17464",
+   "ms": 88,
+   "pct": 0
+  },
+  {
+   "k": "setProgram vendor/three.module.js:30131",
+   "ms": 84,
+   "pct": 0
+  },
+  {
+   "k": "WebGLRenderer.renderBufferDirect vendor/three.module.js:29173",
+   "ms": 79,
+   "pct": 0
+  },
+  {
+   "k": "bindVertexArray (bindVertexArray):0",
+   "ms": 73,
+   "pct": 0
+  },
+  {
+   "k": "setExpression js/faceRig.js:81",
+   "ms": 67,
+   "pct": 0
+  },
+  {
+   "k": "scheduleContextAudio effekseer/effekseer.min.js:14",
+   "ms": 61,
+   "pct": 0
+  },
+  {
+   "k": "bindTexture (bindTexture):0",
+   "ms": 57,
+   "pct": 0
+  },
+  {
+   "k": "getProgram vendor/three.module.js:29985",
+   "ms": 52,
+   "pct": 0
+  },
+  {
+   "k": "setValue vendor/three.module.js:19190",
+   "ms": 50,
+   "pct": 0
+  },
+  {
+   "k": "upload vendor/three.module.js:19316",
+   "ms": 48,
+   "pct": 0
+  },
+  {
+   "k": "ls js/ui-gaps.js:120",
+   "ms": 48,
+   "pct": 0
+  },
+  {
+   "k": "updateMatrixWorld vendor/three.module.js:7720",
+   "ms": 48,
+   "pct": 0
+  },
+  {
+   "k": "texParameteri (texParameteri):0",
+   "ms": 45,
+   "pct": 0
+  },
+  {
+   "k": "get hasFace js/faceRig.js:73",
+   "ms": 43,
+   "pct": 0
+  },
+  {
+   "k": "buildClip js/t3anims.js:2452",
+   "ms": 42,
+   "pct": 0
+  },
+  {
+   "k": "clipStrikeProfile js/t3anims.js:1243",
+   "ms": 41,
+   "pct": 0
+  },
+  {
+   "k": "drawElements (drawElements):0",
+   "ms": 41,
+   "pct": 0
+  },
+  {
+   "k": "_update js/game.js:521",
+   "ms": 40,
+   "pct": 0
+  },
+  {
+   "k": "setValue vendor/three.module.js:19300",
+   "ms": 39,
+   "pct": 0
+  }
+ ],
+ "topFiles": [
+  {
+   "k": "((idle))",
+   "ms": 877349,
+   "pct": 97.2
+  },
+  {
+   "k": "(getProgramInfoLog)",
+   "ms": 11775,
+   "pct": 1.3
+  },
+  {
+   "k": "vendor/three.module.js",
+   "ms": 4482,
+   "pct": 0.5
+  },
+  {
+   "k": "(getShaderInfoLog)",
+   "ms": 1864,
+   "pct": 0.2
+  },
+  {
+   "k": "((program))",
+   "ms": 1569,
+   "pct": 0.2
+  },
+  {
+   "k": "js/faceRig.js",
+   "ms": 1494,
+   "pct": 0.2
+  },
+  {
+   "k": "((garbage collector))",
+   "ms": 1207,
+   "pct": 0.1
+  },
+  {
+   "k": "js/fighter.js",
+   "ms": 247,
+   "pct": 0
+  },
+  {
+   "k": "wasm/00542e1a",
+   "ms": 240,
+   "pct": 0
+  },
+  {
+   "k": "(texSubImage2D)",
+   "ms": 189,
+   "pct": 0
+  },
+  {
+   "k": "js/t3anims.js",
+   "ms": 169,
+   "pct": 0
+  },
+  {
+   "k": "(bufferSubData)",
+   "ms": 151,
+   "pct": 0
+  },
+  {
+   "k": "effekseer/effekseer.min.js",
+   "ms": 142,
+   "pct": 0
+  },
+  {
+   "k": "(uniform1fv)",
+   "ms": 121,
+   "pct": 0
+  },
+  {
+   "k": "js/ui-gaps.js",
+   "ms": 87,
+   "pct": 0
+  },
+  {
+   "k": "(bindVertexArray)",
+   "ms": 73,
+   "pct": 0
+  },
+  {
+   "k": "wasm/007b8c6a",
+   "ms": 62,
+   "pct": 0
+  },
+  {
+   "k": "js/game.js",
+   "ms": 57,
+   "pct": 0
+  },
+  {
+   "k": "(bindTexture)",
+   "ms": 57,
+   "pct": 0
+  },
+  {
+   "k": "js/main.js",
+   "ms": 50,
+   "pct": 0
+  }
+ ]
+}

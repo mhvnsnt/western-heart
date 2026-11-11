@@ -50,6 +50,9 @@ import { V, vskillDispatch, vshiftTap } from './v-system.js';
 // Restored 2026-10-22 (worker 54): the file + wiring were lost to a
 // stale-base clobber; this is the #616 wiring, re-applied surgically.
 import { HitFX } from './hitfx.js';
+// PRACTICE ATTACK DATA (owner 2026-11-11): hit data is a practice-mode panel only, never in a normal fight
+// (the reference game's battle HUD has none: practice-attack-data.js has the evidence).
+import { practiceAttackData, resetPracticeAttackData, isPunish, markBlocked } from './practice-attack-data.js';
 // FRAME-STEP (2026-11-02, lag fix): cap fixed-step catch-up per render
 // frame so a hitch cannot spiral into extra sim steps (see frame-step.js).
 import { drainFixedSteps } from './frame-step.js';
@@ -296,6 +299,7 @@ export class Game {
     if (this.ui.setStageName) this.ui.setStageName(stage.name);
     this.ui.setRounds(this.wins, this.roundsToWin);
     this.matchStats = { attacks: { punch: 0, kick: 0, grab: 0, surge: 0, dodge: 0 }, blockTime: 0, time: 0, dmgDealt: 0, dmgTaken: 0 };
+    resetPracticeAttackData(this);
     this.running = true;
     this.paused = false;
     // Stage content streams in (Tekken retro OBJs fetch async); the fight
@@ -516,6 +520,33 @@ export class Game {
     // zoom wins for this frame. Rendering only — no animation clips.
     if (this.xray) this.xray.update(realDt);
     this.arena.render();
+    this._prewarmTick();
+  }
+
+  /* LAG FIX (owner 2026-11-11: "it's mostly in hits and inputs it's getting slow"): bind both fighters' move clips
+     before their first press (Fighter.prewarmAttackClips). Outside the fight (round intro, round over: nothing is
+     interactive) a 6 ms slice runs after each drawn frame. During the fight it runs ONLY in the browser's idle time
+     after a frame (requestIdleCallback, with a margin), so it never lands on a frame the player is playing; where
+     idle callbacks do not exist the fight phase simply waits for the next intro. Nothing while paused. A fighter
+     that reports done is skipped; a new fighter (next match, tag swap) starts fresh. */
+  _prewarmTick() {
+    if (!this.running || this.paused || this._warmAllDone()) return;
+    if (this.roundState !== 'fight') { this._prewarmSlice(6); return; }
+    if (this._warmIdle || typeof requestIdleCallback !== 'function') return;
+    this._warmIdle = requestIdleCallback((dl) => {
+      this._warmIdle = 0;
+      if (!this.running || this.paused) return;
+      while (dl.timeRemaining() > 8 && !this._warmAllDone()) this._prewarmSlice(2);
+    });
+  }
+  _prewarmSlice(budgetMs) {
+    for (const f of [this.p1, this.p2]) {
+      if (!f || f._warmDone || typeof f.prewarmAttackClips !== 'function') continue;
+      try { f._warmDone = f.prewarmAttackClips(budgetMs) === true; } catch (e) { f._warmDone = true; }
+    }
+  }
+  _warmAllDone() {
+    return [this.p1, this.p2].every((f) => !f || f._warmDone || typeof f.prewarmAttackClips !== 'function');
   }
 
   _update(dt) {
@@ -582,7 +613,7 @@ export class Game {
             if (act === '1' || act === '2' || act === '3' || act === '4' ||
                 act === '1+2' || act === '3+4') {
               if (this.p1.tryThrowBreak(act)) {
-                this.ui.throwEscape(true);
+                if (this.training) this.ui.throwEscape(true); // practice aid only
                 audio.block();
               }
             }
@@ -608,8 +639,8 @@ export class Game {
             // SOUL-SYSTEMS: 霊放 Reihou on 1+4 only while the foe is raging.
             if (act === '1+4' && this.soul && this.soul.tryReihou(this.p1, this.p2)) { rec('reihou'); continue; }
             if (this.p1.tryAttack(act)) { audio.whiff(); rec(act); }
-            // Piece 1 Break 5b: a rejected grab used to fail silently.
-            else if (act === 'grab') { this.ui.attackData({ dmg: null, label: !this.p1.canAct() ? 'GRAB — CAN\'T ACT NOW' : 'GRAB — NO OPENING', total: null, blocked: true }); }
+            // A rejected grab shows nothing (owner 2026-11-11: no debug text in fights; the old
+            // rejected-grab reason note is gone).
           }
           else if (act === 'ss-up') { if (this.p1.trySidestep(-1)) rec('sidestep'); }
           else if (act === 'ss-down') { if (this.p1.trySidestep(1)) rec('sidestep'); }
@@ -618,11 +649,9 @@ export class Game {
               rec('surge');
               audio.soulSurge(this.p1.char.id);
               this.ui.surgeFlash(this.p1.char.surge?.color ?? this.p1.char.colors.trim, this.p1.char.surge?.accent ?? 0xffffff);
-            } else {
-              // Piece 1 Break 5b: a rejected Surge used to fail silently.
-              // Name the reason: the strike costs the full meter (100).
-              this.ui.attackData({ dmg: null, label: this.p1.meter < this.p1.maxMeter ? 'SURGE — METER NOT FULL' : (!this.p1.canAct() ? 'SURGE — CAN\'T ACT NOW' : 'SURGE — NO OPENING'), total: null, blocked: true });
             }
+            // A rejected Surge shows nothing (owner 2026-11-11: no debug text in fights; the meter
+            // itself shows whether it is full).
           }
           else if (act === 'dodge') { if (this.p1.tryDodge()) rec('dodge'); }
           else if (act === 'vskill') { this._vskillAction(this.p1, rec); }
@@ -683,9 +712,8 @@ export class Game {
               { color: atk.char.colors.trim || 0xffffff, scale: 1.2,
                 dirX: Math.sign(def.root.position.x - atk.root.position.x) || 1 });
             const combo = atk.registerCombo();
-            this.ui.combo(Math.max(1, combo));
-            // Piece 1 Break 5a (D11): a landed throw shows its damage too.
-            this.ui.attackData({ dmg: dealt, label: 'CLEAN HIT', total: this.matchStats ? (atk === this.p1 ? this.matchStats.dmgDealt : this.matchStats.dmgTaken) : null, blocked: false });
+            // Practice only: the attack-data panel (a normal fight shows no hit data).
+            practiceAttackData(this, atk, def, dealt, { kind: 'throw', combo });
           }
         }
       }
@@ -772,7 +800,7 @@ export class Game {
 
   /* T7 full-graph development integration: the shared input into the player's source graph (t7-graph-input.js). */
   _t7gPlayerInput(inp, dt) {
-    feedT7GraphInput(this.p1, inp, dt, { onThrowEscape: () => { this.ui.throwEscape(true); audio.block(); }, opponent: this.p2 });
+    feedT7GraphInput(this.p1, inp, dt, { onThrowEscape: () => { if (this.training) this.ui.throwEscape(true); audio.block(); }, opponent: this.p2 });
   }
 
   /* Test attacker's active hitbox against defender's hurtboxes */
@@ -850,13 +878,16 @@ export class Game {
           // overwrite the pair with the legacy lock. Legacy path
           // only: startThrowing sets the 0.3 s break lock.
           if (!attacker._throwPair) attacker.startThrowing(defender);
-          this.ui.throwBreakPrompt(defender.isPlayer, defender.throwBreakInput || hb.move.throw_break || '1');
+          // Practice aid only: a normal fight shows no 'break the throw' prompt (owner 2026-11-11).
+          if (this.training) this.ui.throwBreakPrompt(defender.isPlayer, defender.throwBreakInput || hb.move.throw_break || '1');
           audio.grab();
           this.arena.shake(0.3 * this.feel.shake, 0.2 * this.feel.shake);
           this._hitStop = 0.06 * this.feel.hitstop;
           return;
         }
         const hpBefore = defender.hp;
+        // Practice panel's Punish lamp: read before receiveHit changes the defender's state.
+        const _punish = this.training ? isPunish(defender) : false;
         const result = defender.receiveHit(hb.move, attacker);
         // story reincarnation profiling: who dealt / took what
         const dealt = Math.max(0, hpBefore - defender.hp);
@@ -864,11 +895,6 @@ export class Game {
           if (attacker === this.p1) this.matchStats.dmgDealt += dealt;
           else if (defender === this.p1) this.matchStats.dmgTaken += dealt;
         }
-        // Piece 1 Break 5a (D11 attack data): this attacker's running
-        // TOTAL DMG for the HUD — the current hit is already counted above.
-        const totalDealt = this.matchStats
-          ? (attacker === this.p1 ? this.matchStats.dmgDealt : this.matchStats.dmgTaken)
-          : null;
 
         if (result === 'block') {
           audio.block();
@@ -877,9 +903,9 @@ export class Game {
           this.arena.shake(0.08 * this.feel.shake, 0.12);
           this.hitfx.spawn('block', hb.x, hb.y, hb.z, { dirX: Math.sign(defender.root.position.x - attacker.root.position.x) || 1 });
           attacker.combo = 0;
-          // Piece 1 Break 5a (D11): a blocked hit shows its chip damage
-          // with a BLOCKED label, in pale blue — never reads as a clean hit.
-          this.ui.attackData({ dmg: dealt, label: 'BLOCKED', total: totalDealt, blocked: true });
+          // The blocked attack: a hit on this attacker while it still recovers from it is a punish (practice panel).
+          if (this.training) markBlocked(attacker);
+          practiceAttackData(this, attacker, defender, dealt, { kind: 'block' });
           if (this.soulurge) this.soulurge.onBlockedHit(attacker, hb.move);
         } else if (result === 'dodge') {
           // whiffed into i-frames, nothing
@@ -896,6 +922,7 @@ export class Game {
           // main: rage / xray / stage-break KO hooks (kept; _spawnImpact dropped —
           // it is now a shim over hitfx.spawn and would double-spawn the KO burst).
           if (this.rage) this.rage.onHitKO(attacker, defender);
+          practiceAttackData(this, attacker, defender, dealt, { kind: 'ko', combo: (attacker.combo || 0) + 1, punish: _punish });
           // X-ray lane: rage-art / urge-smash KO blows trigger the X-ray beat.
           if (this.xray) this.xray.onHitKO(attacker, defender, hb);
           if (this.stageBreaks) this.stageBreaks.checkHit(attacker, defender, hb.move, result);
@@ -916,9 +943,11 @@ export class Game {
           this._hitStop = (isCounter ? 0.14 : isGrab ? 0.1 : isHeavy ? 0.11 : 0.08) * this.feel.hitstop;
           // pt217u: Tekken reaction table (stagger/crumple/launch/screw/wall splat/floor bound/
           // knockdown, counter-hit) -> defender._reaction + spark/sound hook bus (combat-systems.js).
+          let _wallHit = false;
           try {
             const reaction = reactionFor(hb.move, { counter: !!isCounter, airborne: !defender.onGround, crouching: defender.state === 'crouch',
               nearWall: !!(this.arena && this.arena.nearWall && this.arena.nearWall(defender)), juggleHits: attacker.combo || 0 });
+            _wallHit = reaction === 'wall_splat';
             const fx = feelFor(reaction, { counter: !!isCounter });
             this._hitStop = Math.max(this._hitStop, fx.stopSec * this.feel.hitstop);
             defender._reaction = reaction;
@@ -938,12 +967,10 @@ export class Game {
           });
 
           const combo = attacker.registerCombo();
-          // HITS counter: show on EVERY landed hit, not just 2+ combos.
-          // Single hits show "1 HITS" briefly; combos accumulate.
-          this.ui.combo(Math.max(1, combo));
-          // Piece 1 Break 5a (D11 attack data): damage number + COUNTER /
-          // CLEAN HIT label + running TOTAL DMG.
-          this.ui.attackData({ dmg: dealt, label: isCounter ? 'COUNTER' : 'CLEAN HIT', total: totalDealt, blocked: false });
+          // Owner 2026-11-11: no hit counter and no damage number in a normal fight (the reference battle HUD
+          // has neither). Practice mode only: the attack-data panel (practice-attack-data.js).
+          practiceAttackData(this, attacker, defender, dealt, { kind: isCounter ? 'counter' : 'hit', combo,
+            wall: _wallHit, punish: _punish, clean: !!(hb.move && hb.move.clean_hit) });
           if (this.stageBreaks) this.stageBreaks.checkHit(attacker, defender, hb.move, result);
           if (this.soulurge) this.soulurge.onHit(attacker, hb.move);
           if (this.rage && attacker.attackName && attacker.attackName.indexOf('R.') === 0) {

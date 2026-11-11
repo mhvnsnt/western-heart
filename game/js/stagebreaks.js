@@ -78,6 +78,7 @@ export class StageBreaks {
     this.groundY = 0;
     this._built = false;
     this._debris = [];
+    this._pool = [];            // pooled burst particles (pre-built in _ensureBuilt, see PREBUILT BREAKS)
     this._barriers = new Map(); // id -> mesh
     this._zones = new Map();    // id -> mesh (floor/balcony markers)
     this._t = 0;
@@ -148,6 +149,7 @@ export class StageBreaks {
   reset() {
     for (const d of this._debris) this.group.remove(d.mesh);
     this._debris = [];
+    this._pool = [];
     for (const f of this._fractures) { this.group.remove(f.group); f.mat.dispose(); }
     this._fractures = [];
     this.destruction.reset();
@@ -220,11 +222,95 @@ export class StageBreaks {
         }
       }
     }
+    const addedLights = this._prebuildBreaks();
     this._built = true;
     // LAG FIX (owner 2026-11-11): these overlays appear mid-round, on the first frame after the stage content
     // streams in. Compile their shaders right here, for the composer target the fight is drawn into (scene.js
-    // compileFor), so the next frame does not stall on it.
-    try { if (arena.compileFor) arena.compileFor(this.group); } catch (e) { /* optional */ }
+    // compileFor), so the next frame does not stall on it. When the pre-built breaks added lights, every lit
+    // shader in the scene changes (three.js keys programs by light count): compile the whole scene now, once,
+    // instead of letting the next frames recompile it piecemeal.
+    try { if (arena.compileFor) arena.compileFor(addedLights ? undefined : this.group); } catch (e) { /* optional */ }
+  }
+
+  /* PREBUILT BREAKS (LAG FIX, owner 2026-11-11: "it's mostly in hits and inputs it's getting slow"). A break used
+     to BUILD its visuals at the moment of the hit: a new floor disc and material, three new point lights (a change
+     in the scene's light count makes three.js recompile EVERY lit shader: the fight froze on the break hit, for
+     seconds on a phone), a new flat-shaded shard material (a shader nothing had compiled), and a new material per
+     burst particle (tools/perf/sim_spike_probe.mjs measured the floor break at 19 ms of CPU before any of that GPU
+     work). Everything a break shows now exists from stage build, compiled with the stage: the ember lights sit at
+     intensity 0 (the light count never changes), the disc, wall chunks and glow are hidden, the shard material is
+     compiled through a hidden probe mesh, burst particles come from a pool. The break only switches them on: the
+     same look, nothing built at the hit. Returns true when lights were added. */
+  _prebuildBreaks() {
+    let addedLights = false;
+    for (const def of this.defs) {
+      const tint = def.type === 'wall' ? 0x8a7458 : def.type === 'balcony' ? 0x7a5a40 : 0x6a5a48;
+      def._shardMat = new THREE.MeshStandardMaterial({ color: tint, roughness: 0.92, flatShading: true, transparent: true });
+      const probe = new THREE.Mesh(new THREE.BoxGeometry(0.01, 0.01, 0.01), def._shardMat);
+      probe.visible = false;
+      this.group.add(probe);
+      if (def.type === 'floor' || def.type === 'balcony') {
+        const r = def.r || 2.5, depth = def.depth || 6, fx = def.x || 0, fz = def.z || 0;
+        const disc = new THREE.Mesh(
+          new THREE.CircleGeometry(r + 7.5, 36),
+          new THREE.MeshStandardMaterial({ color: def.type === 'floor' ? 0x241a14 : 0x1c1620, roughness: 0.95 })
+        );
+        disc.rotation.x = -Math.PI / 2;
+        disc.position.set(fx, -depth - 0.02, fz);   // = groundY - 0.02 once the level drops to -depth
+        disc.receiveShadow = true;
+        disc.visible = false;
+        this.group.add(disc);
+        def._disc = disc;
+        if (def.type === 'floor') {
+          def._embers = [];
+          for (let i = 0; i < 3; i++) {
+            const l = new THREE.PointLight(0xff6a2a, 0, 16, 2);   // dark until the break
+            l.intensity = 0;
+            const a = (i / 3) * Math.PI * 2;
+            l.position.set(fx + Math.cos(a) * (r + 3.5), -depth + 2.2, fz + Math.sin(a) * (r + 3.5));
+            this.group.add(l);
+            def._embers.push(l);
+          }
+          addedLights = true;
+        }
+      } else if (def.type === 'wall') {
+        const bx = def.x, dir = Math.sign(def.x) || 1;
+        def._chunks = [];
+        for (let i = 0; i < 5; i++) {
+          const chunk = new THREE.Mesh(
+            new THREE.BoxGeometry(0.7 + Math.random(), 0.5 + Math.random() * 0.8, 0.7),
+            new THREE.MeshStandardMaterial({ color: 0x5a4a3a, roughness: 0.95, transparent: true, opacity: 1 })
+          );
+          chunk.position.set(bx + dir * (0.4 + Math.random() * 1.2), 1.2 + Math.random() * 1.4, (Math.random() - 0.5) * 4);
+          chunk.rotation.set(Math.random(), Math.random() * 3, Math.random());
+          chunk.castShadow = true;
+          chunk.visible = false;
+          this.group.add(chunk);
+          def._chunks.push(chunk);
+        }
+        const glow = new THREE.Mesh(
+          new THREE.PlaneGeometry(7, 4),
+          new THREE.MeshBasicMaterial({ color: 0xff8a3c, transparent: true, opacity: 0.22, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide })
+        );
+        glow.position.set(bx + dir * 3.5, 2, 0);
+        glow.rotation.y = Math.PI / 2;
+        glow.visible = false;
+        this.group.add(glow);
+        def._glow = glow;
+      }
+    }
+    // burst particles: enough for the biggest break (wall: 34 + 20) plus overlap with a second one
+    const need = this.defs.length ? 64 : 0;
+    while (this._pool.length < need) this._pool.push(this._newParticle());
+    return addedLights;
+  }
+
+  _newParticle() {
+    if (!this._particleGeo) this._particleGeo = new THREE.BoxGeometry(0.22, 0.22, 0.22);
+    const m = new THREE.Mesh(this._particleGeo, new THREE.MeshBasicMaterial({ color: new THREE.Color(0xffffff), transparent: true }));
+    m.visible = false;
+    this.group.add(m);
+    return m;
   }
 
   _id(def) { return `${def.type}:${def.side ?? ''}${def.x ?? ''},${def.z ?? ''}`; }
@@ -241,7 +327,10 @@ export class StageBreaks {
     for (let i = this._debris.length - 1; i >= 0; i--) {
       const d = this._debris[i];
       d.life -= dt;
-      if (d.life <= 0) { this.group.remove(d.mesh); this._debris.splice(i, 1); continue; }
+      if (d.life <= 0) {
+        if (d.pooled) { d.mesh.visible = false; this._pool.push(d.mesh); } else this.group.remove(d.mesh);
+        this._debris.splice(i, 1); continue;
+      }
       d.vel.y -= 18 * dt;
       d.mesh.position.addScaledVector(d.vel, dt);
       d.mesh.rotation.x += d.spin * dt; d.mesh.rotation.z += d.spin * 0.7 * dt;
@@ -276,18 +365,21 @@ export class StageBreaks {
   }
 
   _burst(x, y, z, color, n = 26, spread = 5, depth = 0) {
-    const geo = new THREE.BoxGeometry(0.22, 0.22, 0.22);
     for (let i = 0; i < n; i++) {
-      const mat = new THREE.MeshBasicMaterial({ color, transparent: true });
-      const m = new THREE.Mesh(geo, mat);
+      // pooled (PREBUILT BREAKS): no new mesh or material at the hit; an empty pool grows by one
+      const m = this._pool.pop() || this._newParticle();
+      if (m.material.color && m.material.color.setHex) m.material.color.setHex(color);
+      else m.material.color = color;
+      m.material.opacity = 1;
+      m.visible = true;
       m.position.set(x + (Math.random() - 0.5), y + Math.random() * 0.8, z + (Math.random() - 0.5) * 2);
+      if (m.rotation && m.rotation.set) m.rotation.set(0, 0, 0);
       const a = Math.random() * Math.PI * 2;
       this._debris.push({
-        mesh: m, life: 1.1 + Math.random() * 0.7, depth,
+        mesh: m, life: 1.1 + Math.random() * 0.7, depth, pooled: true,
         vel: new THREE.Vector3(Math.cos(a) * spread * Math.random(), 3 + Math.random() * 5, Math.sin(a) * spread * Math.random()),
         spin: (Math.random() - 0.5) * 12,
       });
-      this.group.add(m);
     }
   }
 
@@ -352,14 +444,16 @@ export class StageBreaks {
    * mount: {pos:[x,y,z], rotX, rotY} mapping the surface-local frame
    *        into world space.
    */
-  _spawnShards(shards, mount, tint) {
+  _spawnShards(shards, mount, tint, preMat = null) {
     if (!shards || !shards.length) return;
     const group = new THREE.Group();
     group.position.set(mount.pos[0], mount.pos[1], mount.pos[2]);
     group.rotation.set(mount.rotX || 0, mount.rotY || 0, 0);
-    const mat = new THREE.MeshStandardMaterial({
+    // PREBUILT BREAKS: the def's shard material, compiled with the stage (same colour / roughness / flat shading)
+    const mat = preMat || new THREE.MeshStandardMaterial({
       color: tint, roughness: 0.92, flatShading: true, transparent: true,
     });
+    mat.opacity = 1;
     for (const sh of shards) {
       const shape = new THREE.Shape(sh.poly.map(([x, y]) => new THREE.Vector2(x, y)));
       const geo = new THREE.ExtrudeGeometry(shape, { depth: sh.depth, bevelEnabled: false });
@@ -386,7 +480,7 @@ export class StageBreaks {
     this._burst(bx, 1.6, 0, tint, 34, 6);
     this._burst(bx, 0.6, 0, 0x6a5a48, 20, 4);
     // Voronoi fracture: the wall itself shatters into shards
-    this._spawnShards(shards, { pos: [bx, 1.7, 0], rotY: Math.PI / 2 }, 0x8a7458);
+    this._spawnShards(shards, { pos: [bx, 1.7, 0], rotY: Math.PI / 2 }, 0x8a7458, def._shardMat);
     // DOA knock-through: the wall is GONE — bounds extend into the new area
     const newLimit = Math.abs(def.x) + WALL_EXTEND;
     if (this.fx) this.fx.setArenaLimit(newLimit);
@@ -397,14 +491,19 @@ export class StageBreaks {
     // static "cracked" props that float in place. Voronoi shards already
     // use DestructionSystem gravity; these dressing chunks join _debris.
     for (let i = 0; i < 5; i++) {
-      const chunk = new THREE.Mesh(
-        new THREE.BoxGeometry(0.7 + Math.random(), 0.5 + Math.random() * 0.8, 0.7),
-        new THREE.MeshStandardMaterial({ color: 0x5a4a3a, roughness: 0.95, transparent: true, opacity: 1 })
-      );
-      chunk.position.set(bx + dir * (0.4 + Math.random() * 1.2), 1.2 + Math.random() * 1.4, (Math.random() - 0.5) * 4);
-      chunk.rotation.set(Math.random(), Math.random() * 3, Math.random());
-      chunk.castShadow = true;
-      this.group.add(chunk);
+      // PREBUILT BREAKS: the chunks were built (hidden) with the stage; a def built without them builds them here
+      let chunk = def._chunks && def._chunks[i];
+      if (chunk) chunk.visible = true;
+      else {
+        chunk = new THREE.Mesh(
+          new THREE.BoxGeometry(0.7 + Math.random(), 0.5 + Math.random() * 0.8, 0.7),
+          new THREE.MeshStandardMaterial({ color: 0x5a4a3a, roughness: 0.95, transparent: true, opacity: 1 })
+        );
+        chunk.position.set(bx + dir * (0.4 + Math.random() * 1.2), 1.2 + Math.random() * 1.4, (Math.random() - 0.5) * 4);
+        chunk.rotation.set(Math.random(), Math.random() * 3, Math.random());
+        chunk.castShadow = true;
+        this.group.add(chunk);
+      }
       this._debris.push({
         mesh: chunk,
         life: 2.4 + Math.random() * 1.2,
@@ -417,13 +516,16 @@ export class StageBreaks {
         spin: (Math.random() - 0.5) * 10,
       });
     }
-    const glow = new THREE.Mesh(
-      new THREE.PlaneGeometry(7, 4),
-      new THREE.MeshBasicMaterial({ color: 0xff8a3c, transparent: true, opacity: 0.22, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide })
-    );
-    glow.position.set(bx + dir * 3.5, 2, 0);
-    glow.rotation.y = Math.PI / 2;
-    this.group.add(glow);
+    if (def._glow) def._glow.visible = true;
+    else {
+      const glow = new THREE.Mesh(
+        new THREE.PlaneGeometry(7, 4),
+        new THREE.MeshBasicMaterial({ color: 0xff8a3c, transparent: true, opacity: 0.22, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide })
+      );
+      glow.position.set(bx + dir * 3.5, 2, 0);
+      glow.rotation.y = Math.PI / 2;
+      this.group.add(glow);
+    }
     const bonus = this._bonusDamage(defender, WALL_BREAK_BONUS, attacker);
     const g = this.game;
     g.arena.shake(0.55, 0.45);
@@ -443,25 +545,33 @@ export class StageBreaks {
     this._burst(fx, 0.4, fz, 0x8a7a68, 30, 5, depth);
     this._burst(fx, 0.2, fz, 0xff7a30, 14, 3, depth);
     // Voronoi fracture: the floor slab shatters, shards drop to the level below
-    this._spawnShards(shards, { pos: [fx, 0.05, fz], rotX: -Math.PI / 2 }, 0x6a5a48);
+    this._spawnShards(shards, { pos: [fx, 0.05, fz], rotX: -Math.PI / 2 }, 0x6a5a48, def._shardMat);
     // T7 floor break: the level drops — physics ground moves down, both
     // fighters fall through the hole, the fight continues below.
     this.groundY = -(depth);
     if (this.fx) this.fx.setGroundY(this.groundY);
-    // lower-tier dressing: dark stone disc + ember lights (the level below)
-    const disc = new THREE.Mesh(
-      new THREE.CircleGeometry(r + 7.5, 36),
-      new THREE.MeshStandardMaterial({ color: 0x241a14, roughness: 0.95 })
-    );
-    disc.rotation.x = -Math.PI / 2;
-    disc.position.set(fx, this.groundY - 0.02, fz);
-    disc.receiveShadow = true;
-    this.group.add(disc);
-    for (let i = 0; i < 3; i++) {
-      const l = new THREE.PointLight(0xff6a2a, 14, 16, 2);
-      const a = (i / 3) * Math.PI * 2;
-      l.position.set(fx + Math.cos(a) * (r + 3.5), this.groundY + 2.2, fz + Math.sin(a) * (r + 3.5));
-      this.group.add(l);
+    // lower-tier dressing: dark stone disc + ember lights (the level below). PREBUILT BREAKS: both exist from stage
+    // build (disc hidden, embers at intensity 0), so the break adds no light and no shader; a def built without
+    // them (stage not streamed in yet) builds them here as before.
+    if (def._disc) def._disc.visible = true;
+    else {
+      const disc = new THREE.Mesh(
+        new THREE.CircleGeometry(r + 7.5, 36),
+        new THREE.MeshStandardMaterial({ color: 0x241a14, roughness: 0.95 })
+      );
+      disc.rotation.x = -Math.PI / 2;
+      disc.position.set(fx, this.groundY - 0.02, fz);
+      disc.receiveShadow = true;
+      this.group.add(disc);
+    }
+    if (def._embers) for (const l of def._embers) l.intensity = 14;
+    else {
+      for (let i = 0; i < 3; i++) {
+        const l = new THREE.PointLight(0xff6a2a, 14, 16, 2);
+        const a = (i / 3) * Math.PI * 2;
+        l.position.set(fx + Math.cos(a) * (r + 3.5), this.groundY + 2.2, fz + Math.sin(a) * (r + 3.5));
+        this.group.add(l);
+      }
     }
     const bonus = this._bonusDamage(defender, FLOOR_BREAK_BONUS, attacker);
     const g = this.game;
@@ -492,17 +602,20 @@ export class StageBreaks {
     const depth = def.depth || 6;
     this._burst(fx, 1.0, fz, 0x7a5a40, 26, 5, depth);
     // Voronoi fracture: the balcony slab shatters outward
-    this._spawnShards(shards, { pos: [fx, 1.0, fz], rotX: -Math.PI / 2 }, 0x7a5a40);
+    this._spawnShards(shards, { pos: [fx, 1.0, fz], rotX: -Math.PI / 2 }, 0x7a5a40, def._shardMat);
     this.groundY = -(depth);
     if (this.fx) this.fx.setGroundY(this.groundY);
-    const disc = new THREE.Mesh(
-      new THREE.CircleGeometry(r + 7.5, 36),
-      new THREE.MeshStandardMaterial({ color: 0x1c1620, roughness: 0.95 })
-    );
-    disc.rotation.x = -Math.PI / 2;
-    disc.position.set(fx, this.groundY - 0.02, fz);
-    disc.receiveShadow = true;
-    this.group.add(disc);
+    if (def._disc) def._disc.visible = true;   // PREBUILT BREAKS
+    else {
+      const disc = new THREE.Mesh(
+        new THREE.CircleGeometry(r + 7.5, 36),
+        new THREE.MeshStandardMaterial({ color: 0x1c1620, roughness: 0.95 })
+      );
+      disc.rotation.x = -Math.PI / 2;
+      disc.position.set(fx, this.groundY - 0.02, fz);
+      disc.receiveShadow = true;
+      this.group.add(disc);
+    }
     const bonus = this._bonusDamage(defender, FLOOR_BREAK_BONUS, attacker);
     const g = this.game;
     g.arena.shake(0.7, 0.6);

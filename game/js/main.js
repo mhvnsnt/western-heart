@@ -126,6 +126,7 @@ const ui = {
     const wrap = document.getElementById(`${id}-meter`);
     wrap.innerHTML = '';
     this._segs[id] = [];
+    delete this._hudLast[`${id}.lit`]; delete this._hudLast[`${id}.full`];
     for (let i = 0; i < SOULS; i++) {
       const s = document.createElement('div');
       s.className = 'soul-seg';
@@ -133,37 +134,56 @@ const ui = {
       this._segs[id].push(s);
     }
   },
+  /* LAG (owner 2026-11-11: "it's mostly in hits and inputs it's getting slow"): game.js calls these HUD writers
+     on every fixed sim step (up to 4 per drawn frame). They used to look every element up and write every value
+     each call (textContent always replaces the timer's text node, so the HUD was re-laid-out every step). Now the
+     elements are looked up once and a value is written only when it changed; same output, near-zero cost per step. */
+  _hudEls: {},
+  _hudLast: {},
+  _el(id) {
+    let el = this._hudEls[id];
+    if (!el || !el.isConnected) { el = document.getElementById(id); if (el) this._hudEls[id] = el; }
+    return el;
+  },
+  _set(key, v, write) { if (this._hudLast[key] === v) return; this._hudLast[key] = v; write(v); },
   updateHP(p1, p2) { this._hp('p1', p1); this._hp('p2', p2); },
   _hp(id, f) {
     const pct = Math.max(0, (f.hp / f.maxHp) * 100);
-    const fill = document.getElementById(`${id}-hp`);
-    const dmg = document.getElementById(`${id}-hp-dmg`);
-    fill.style.width = pct + '%';
+    const fill = this._el(`${id}-hp`);
+    const dmg = this._el(`${id}-hp-dmg`);
+    if (!fill || !dmg) return;
+    // 0.01 % steps: a sub-pixel change on any screen, never a visible stall
+    const w = Math.round(pct * 100) / 100;
+    this._set(`${id}.hp`, w, (v) => { fill.style.width = v + '%'; });
     // COMBAT SYSTEMS 2026-10-24: white recoverable segment = hp +
     // recoverable pool (capped at 100%); empty pool matches fill.
-    dmg.style.width = Math.min(100, pct + Math.max(0, ((f._recoverable || 0) / f.maxHp) * 100)) + '%';
-    fill.classList.toggle('low', pct < 30);
+    const dw = Math.round(Math.min(100, pct + Math.max(0, ((f._recoverable || 0) / f.maxHp) * 100)) * 100) / 100;
+    this._set(`${id}.dmg`, dw, (v) => { dmg.style.width = v + '%'; });
+    this._set(`${id}.low`, pct < 30, (v) => fill.classList.toggle('low', v));
     // BT GUARD strain tell (owner design 2026-11-06, SoulCalibur-style):
     // a multi-arm fighter guarding back-turned strains its back pair;
     // the defender's own health-bar fill glows warning yellow at 60%
     // strain and warning red at 80% (.bt-strain-1 / .bt-strain-2 in
     // styles.css) — the SC yellow/red warning, on the bar this HUD has.
     const _btWarn = f.btGuardState ? f.btGuardState().warn : 0;
-    fill.classList.toggle('bt-strain-1', _btWarn === 1);
-    fill.classList.toggle('bt-strain-2', _btWarn === 2);
+    this._set(`${id}.bt`, _btWarn, (v) => { fill.classList.toggle('bt-strain-1', v === 1); fill.classList.toggle('bt-strain-2', v === 2); });
   },
   updateMeter(p1, p2) { this._meter('p1', p1); this._meter('p2', p2); },
   _meter(id, f) {
     const per = f.maxMeter / SOULS; // ~11 points per soul
-    this._segs[id].forEach((s, i) => {
-      s.classList.toggle('lit', f.meter >= (i + 1) * per - 0.001);
-    });
-    const wrap = document.getElementById(`${id}-meter`);
-    wrap.classList.toggle('full', f.meter >= f.maxMeter - 0.001);
+    const segs = this._segs[id];
+    if (!segs) return;
+    let lit = 0;
+    for (let i = 0; i < segs.length; i++) if (f.meter >= (i + 1) * per - 0.001) lit = i + 1;
+    this._set(`${id}.lit`, lit, (n) => { segs.forEach((s, i) => s.classList.toggle('lit', i < n)); });
+    const wrap = this._el(`${id}-meter`);
+    if (wrap) this._set(`${id}.full`, f.meter >= f.maxMeter - 0.001, (v) => wrap.classList.toggle('full', v));
   },
   setTimer(v) {
-    const t = document.getElementById('timer');
-    t.textContent = (v === '∞' || v === Infinity || (typeof v === 'number' && !isFinite(v))) ? '∞' : String(v).padStart(2, '0');
+    const t = this._el('timer');
+    if (!t) return;
+    const txt = (v === '∞' || v === Infinity || (typeof v === 'number' && !isFinite(v))) ? '∞' : String(v).padStart(2, '0');
+    this._set('timer', txt, (x) => { t.textContent = x; });
   },
   setRounds(wins, target) {
     // Round pips rebuild to the match's round target (T7 HUD shows the
@@ -249,23 +269,48 @@ const ui = {
     clearTimeout(this._comboT);
     this._comboT = setTimeout(() => pop.classList.remove('show'), 900);
   },
-  /* Attack data (Tekken 3 Practice ATTACK DATA, spec D11 — Piece 1 Break 5):
-     damage number + COUNTER / CLEAN HIT / BLOCKED label + running TOTAL DMG.
-     dmg null = a label-only cue (failed Surge / failed grab), no number shown. */
-  attackData({ dmg, label, total, blocked }) {
-    const el = document.getElementById('attack-data');
-    if (!el) return;
-    document.getElementById('attack-data-label').textContent = label;
-    const dmgEl = document.getElementById('attack-data-dmg');
-    dmgEl.textContent = dmg == null ? '' : dmg;
-    el.classList.toggle('note', dmg == null);
-    const tot = document.getElementById('attack-data-total');
-    if (tot) tot.textContent = total != null ? ('TOTAL ' + total) : '';
-    el.classList.toggle('blocked', !!blocked);
-    el.classList.remove('show'); void el.offsetWidth;
+  /* PRACTICE ATTACK DATA (owner 2026-11-11; game/js/practice-attack-data.js has the evidence): practice mode only,
+     never in a normal fight. One small panel per side (P1 left, P2 right) with the reference practice panel's
+     fields: damage, combo damage, hits, max combo damage, total damage, and the clean hit / counter hit / wall hit /
+     punish lamps. It stays on screen through practice (a readout, not a popup); the value that just changed glows. */
+  _adEl(side) {
+    let el = document.getElementById('attack-data-' + side);
+    if (!el) return null;
+    if (!el._built) {
+      el._built = true;
+      const rows = [['damage', 'DAMAGE'], ['comboDamage', 'COMBO DAMAGE'], ['hits', 'HITS'],
+        ['maxComboDamage', 'MAX COMBO DAMAGE'], ['totalDamage', 'TOTAL DAMAGE']];
+      el.innerHTML = rows.map(([k, l]) => `<div class="ad-row" data-k="${k}"><span>${l}</span><b>0</b></div>`).join('')
+        + '<div class="ad-lamps">' + [['clean', 'CLEAN HIT'], ['counter', 'COUNTER HIT'], ['wall', 'WALL HIT'], ['punish', 'PUNISH']]
+          .map(([k, l]) => `<i data-k="${k}">${l}</i>`).join('') + '</div>';
+    }
+    return el;
+  },
+  attackData(side, d) {
+    const el = this._adEl(side === 'p2' ? 'p2' : 'p1');
+    if (!el || !d) return;
     el.classList.add('show');
-    clearTimeout(this._attackDataT);
-    this._attackDataT = setTimeout(() => el.classList.remove('show'), 900);
+    for (const row of el.querySelectorAll('.ad-row')) {
+      const k = row.dataset.k;
+      row.lastChild.textContent = String(d[k] ?? 0);
+      row.classList.remove('glow');
+    }
+    for (const lamp of el.querySelectorAll('.ad-lamps i')) lamp.classList.toggle('on', !!d[lamp.dataset.k]);
+    void el.offsetWidth;
+    for (const k of (d.changed || [])) {
+      const row = el.querySelector(`.ad-row[data-k="${k}"]`);
+      if (row) row.classList.add('glow');
+    }
+  },
+  attackDataClear(practice) {
+    for (const side of ['p1', 'p2']) {
+      const el = this._adEl(side);
+      if (!el) continue;
+      for (const row of el.querySelectorAll('.ad-row')) { row.lastChild.textContent = '0'; row.classList.remove('glow'); }
+      for (const lamp of el.querySelectorAll('.ad-lamps i')) lamp.classList.remove('on');
+      // practice shows the (zeroed) panel on the player's side from the start; a normal fight never shows it
+      el.classList.toggle('show', !!practice && side === 'p1');
+    }
   },
   /* Stream 6: throw-break prompt. show=false clears. breakInput '1'/'2'/'1+2'
      tells the defender which limb button breaks the throw (Tekken rules). */
@@ -1630,12 +1675,15 @@ async function startFight(playerId, enemyId, opts = {}) {
     return false;
   }
 
-  // Control hints: show for 6s at fight start, H toggles
+  // Control hints: practice mode only (owner 2026-11-11: nothing over a normal fight that is not part of the
+  // fight). In practice they show for 6 s at the start; H toggles them in any fight.
   const hints = document.getElementById('control-hints');
   if (hints) {
-    hints.classList.remove('fade');
     clearTimeout(hints._t);
-    hints._t = setTimeout(() => hints.classList.add('fade'), 6000);
+    if (game.training) {
+      hints.classList.remove('fade');
+      hints._t = setTimeout(() => hints.classList.add('fade'), 6000);
+    } else hints.classList.add('fade');
   }
   // The fight started: a future failure may reload straight into its fight again (reloadIntoFight's 60 s guard).
   { const ss = session(); if (ss) fightStarted(ss); }

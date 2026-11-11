@@ -1,0 +1,72 @@
+{
+ "stage": "shrine",
+ "defs": [
+  "floor",
+  "wall",
+  "wall"
+ ],
+ "warmP1": {
+  "left": 898,
+  "done": false,
+  "actions": 87
+ },
+ "warmP2": {
+  "left": 318,
+  "done": false,
+  "actions": 86
+ },
+ "breaks": [
+  {
+   "type": "floor",
+   "broke": true,
+   "breakCallMs": 11,
+   "before": {
+    "programs": 31,
+    "lights": 15
+   },
+   "after": {
+    "programs": 43,
+    "lights": 18
+   },
+   "renderMsNext": [
+    4135.6,
+    922.4
+   ]
+  },
+  {
+   "type": "wall",
+   "broke": true,
+   "breakCallMs": 7.3,
+   "before": {
+    "programs": 43,
+    "lights": 18
+   },
+   "after": {
+    "programs": 45,
+    "lights": 18
+   },
+   "renderMsNext": [
+    5.7,
+    2381.5
+   ]
+  },
+  {
+   "type": "wall",
+   "broke": true,
+   "breakCallMs": 6.7,
+   "before": {
+    "programs": 45,
+    "lights": 18
+   },
+   "after": {
+    "programs": 45,
+    "lights": 18
+   },
+   "renderMsNext": [
+    8.5,
+    5.2
+   ]
+  }
+ ],
+ "secondsSinceFight": 19
+}

@@ -393,21 +393,25 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 .combo-pop span { font-size: 14px; letter-spacing: 4px; }
 @keyframes comboHit { 0%{opacity:0;transform:scale(0.4) rotate(-8deg);} 40%{opacity:1;transform:scale(1.15) rotate(-4deg);} 100%{opacity:1;transform:scale(1) rotate(-4deg);} }
 
-/* Attack data (Tekken 3 Practice ATTACK DATA, spec D11 — Piece 1 Break 5):
-   damage number + COUNTER / CLEAN HIT / BLOCKED label + running TOTAL DMG.
-   Sits under the combo popup; pale blue when the hit was blocked so a
-   blocked jab never reads as a clean one. */
+/* Practice attack data (owner 2026-11-11): practice mode only, never in a normal fight. A small readout at
+   the side under the gauges, like the reference practice panel: label + value rows, four hit lamps, the value
+   that just changed glows. No popping, no big numbers, nothing over the fighters. */
 .attack-data {
-  position: fixed; left: 8%; top: 42%; z-index: 12; text-align: center; opacity: 0;
-  pointer-events: none; color: var(--gold); text-shadow: 0 3px 10px rgba(0,0,0,0.7);
+  position: fixed; top: calc(env(safe-area-inset-top, 0px) + 118px); z-index: 12; display: none;
+  min-width: 132px; padding: 5px 8px 6px; pointer-events: none;
+  background: rgba(8, 8, 14, 0.55); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 4px;
+  font: 600 10px/1.35 system-ui, sans-serif; letter-spacing: 0.06em; color: rgba(255, 255, 255, 0.78);
 }
-.attack-data.show { animation: comboHit 0.4s ease; }
-.attack-data.blocked { color: #9fd8ff; }
-.attack-data span { font-size: 15px; letter-spacing: 2px; font-weight: 700; }
-.attack-data b { font-size: clamp(26px,7vw,44px); font-weight: 900; line-height: 1; }
-.attack-data .attack-total { display: block; font-size: 12px; letter-spacing: 3px; opacity: 0.85; }
-.attack-data.note b { display: none; }
-.attack-data.note span { font-size: 17px; }
+.attack-data.left { left: 8px; }
+.attack-data.right { right: 8px; }
+.attack-data.show { display: block; }
+.attack-data .ad-row { display: flex; justify-content: space-between; gap: 10px; }
+.attack-data .ad-row b { font-weight: 800; color: #fff; font-variant-numeric: tabular-nums; }
+.attack-data .ad-row.glow b { color: var(--gold); text-shadow: 0 0 6px var(--gold); transition: none; }
+.attack-data .ad-row b { transition: color 0.6s ease, text-shadow 0.6s ease; }
+.attack-data .ad-lamps { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 6px; margin-top: 4px; }
+.attack-data .ad-lamps i { font-style: normal; font-size: 9px; opacity: 0.28; }
+.attack-data .ad-lamps i.on { opacity: 1; color: var(--gold); }
 
 /* Control hints — fades after 6s, toggle with H */
 .control-hints {
