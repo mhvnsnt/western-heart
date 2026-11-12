@@ -1,3 +1,5 @@
+> Before touching any model, rig, or animation: read ASSET-PIPELINE.md. Prove with renders you looked at.
+
 # AGENTS.md
 
 > **PIPELINE LAW (2026-11-05):** read `docs/PIPELINE-LAW.md` before OpenKumite / FightingEngine / moveset-template / Pantera / first-play camera-debris work. FE source private until 2026-12-25 — do not hunt leaks. Tag Battle demo chars and WWE superstar names never go on the WH roster. Pantera = exact King T7 via template `t7-grappler-jaguar-mask`.
