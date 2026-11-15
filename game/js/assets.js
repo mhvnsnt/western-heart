@@ -135,7 +135,7 @@ export const MODEL_URLS = {
   // roster/king-tyrant/attires/ATTIRE-SLOTS.md): White Tyrant / Tyrant King /
   // Black Snow / Fight Gear. The in-game base build ladders back. Unrigged
   // statics; auto-rig queued (cape/jacket cloth-rig tasks recorded, not blocking).
-  'king-tyrant-attire1': '../roster/king-tyrant/attires/attire1/model-rigged.glb',
+  'king-tyrant-attire1': '../roster/king-tyrant/attires/attire1/model-rigged-cdn.glb',
   'king-tyrant-attire2': '../roster/king-tyrant/attires/attire2/model.glb',
   'king-tyrant-attire3': '../roster/king-tyrant/attires/attire3/model.glb',
   'king-tyrant-attire4': '../roster/king-tyrant/attires/attire4/model.glb',
@@ -225,7 +225,7 @@ export const MODEL_URLS = {
   dxmmii: 'assets/models/dxmmii.glb',
   rave: 'assets/models/rave.glb',
   // Cain Elias — Vain Abel's brother, Undertaker archetype (owner 2026-10-19, Tripo pulls).
-  'cain-elias': '../roster/cain-elias/attires/attire1/model-rigged.glb',
+  'cain-elias': '../roster/cain-elias/attires/attire1/model-rigged-cdn.glb',
   'bf-aaron-ruben': '../roster/bf-aaron-ruben/attires/attire1/model-rigged.glb',
   'bf-bannon': '../roster/bf-bannon/attires/attire1/model-rigged.glb',
   'bf-brutus': '../roster/bf-brutus/attires/attire1/model-rigged.glb',
@@ -536,8 +536,8 @@ export const MODEL_URLS = {
   // authored cheetah suit + hair + necklace as the blend's view layer
   // saves them). model-rigged.glb and model.glb stay on disk untouched
   // as the earlier named options.
-  menajerii: '../roster/vixen/attires/attire1/model-rigged-noplane.glb',
-  'menajerii-attire1': '../roster/vixen/attires/attire1/model-rigged-noplane.glb',
+  menajerii: '../roster/vixen/attires/attire1/model-rigged-noplane-cdn.glb',
+  'menajerii-attire1': '../roster/vixen/attires/attire1/model-rigged-noplane-cdn.glb',
   // MADELYN (2026-11-09, owner order): her FIXED build — restored in
   // physics-playground-pwa PR #40 (153 morph targets: 92 body + 61 face;
   // deform-only 170-joint rig) — wired in as-is, bare: no canon written.
@@ -564,7 +564,7 @@ export const MODEL_URLS = {
   // Gashadokuro rigged 2026-11-06 (Roster-100 Wave 3, item L2): landmark refit
   // of his own Tripo static on the canonical 50-joint skeleton, 1.95 m; the
   // unrigged source static stays at source/kuma-a1.glb.
-  gashadokuro: '../roster/kuma/attires/attire1/source/gashadokuro-a1-rigged.glb',
+  gashadokuro: '../roster/kuma/attires/attire1/source/gashadokuro-a1-rigged-cdn.glb',
   aotsuki: '../roster/panda/attires/attire1/source/aotsuki-a1-rigged.glb',
   // Attire variant keys for on-main GLBs no key reached (catch-up audit
   // attires-unwired set). Ladder placement lives in game/js/attires.js:
