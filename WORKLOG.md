@@ -4684,3 +4684,23 @@ DOA/VF editor-status verification (web search failed on local disk quota).
 **Accepted shortfalls (owner landing with eyes open):** strict p999 stretch 6.292 vs the 2.5 gate; face slab 71% (Head 63% + Neck 8%) vs the 95% bar. Everything else passes; arms measurably improve on the shipped file.
 
 - Deletions: none (one file replaced in place).
+
+## 2026-11-15 — Four broken big models packed under the jsDelivr limit (all-86 route)
+
+**Owner order (Jay, 2026-11-15):** "You can raise the cap man. Or use a second house. I don't really care whatever is easiest."
+
+**What:** the 4 fighter models with NO working source anywhere (Worker 404, jsDelivr 403 over 20 MB, not on the shell) now have packed `-cdn` copies under 19.5 MB, and `game/js/assets.js` MODEL_URLS points at them. Originals untouched. No cap change, no new host, no credential asked: the second house is jsDelivr, already wired as the loader's last fallback (Worker → local → jsDelivr).
+- `roster/vixen/attires/attire1/model-rigged-noplane-cdn.glb` — menajerii default, 39,136,632 → 13,659,760 B
+- `roster/kuma/attires/attire1/source/gashadokuro-a1-rigged-cdn.glb` — gashadokuro default, 38,740,632 → 18,600,856 B (jpeg-q 85)
+- `roster/cain-elias/attires/attire1/model-rigged-cdn.glb` — cain-elias default, 27,643,320 → 16,373,968 B
+- `roster/king-tyrant/attires/attire1/model-rigged-cdn.glb` — King Tyrant attire 1, 25,398,208 → 15,083,972 B
+
+**Why not raise the cap:** GitHub Pages publishes sites no larger than 1 GB (GitHub's own Pages limits doc) — a hard limit, not our tool's number. All 32 Worker models (970 MB) + the live shell would need ~2 GB. Raising our cap alone would produce a site GitHub refuses to publish. Compression-to-shell is also dead: the 32 Worker models would need to shrink to 2.5% of original to fit the 23.8 MB headroom left after #1744.
+
+**Method:** the repo's own `tools/deploy/fit_cdn_budget.py` (PNG ≥0.5 MB → JPEG q93, gltfpack `-cc -kn -km -ke`), decoding meshopt inputs first with `tools/anim/gltf_codec.mjs`. Gashadokuro needed q85 + JPEG re-encode (its 4K color JPEG barely shrinks at q93).
+
+**Verification:** all 4 packed files gltf-transform validate clean, skins kept (JOINTS_0/WEIGHTS_0 on every primitive); Blender 5.2 Cycles renders of original vs packed viewed side by side — identical for all 4 (proof PNGs in `docs/proof/2026-11-15/cap-cdn-pack/`); worst normal-angle error 1.66° mean / 7.79° p99 (gashadokuro q85). `model-key-guard` failure list: 335 entries on clean main → 321 with this change (the 4 keys now resolve; the 321 left are pre-existing sparse-checkout gaps — every other fighter's file is absent from a sparse tree, same on main).
+
+**Still broken after this PR:** nothing in the 4 — but the 38-entry R2 manifest gap stands (files added since the Oct manifest, incl. all 26 BF fighters): the bucket still doesn't serve them, they load via jsDelivr (≤20 MB) or the shell instead. The manifest regen + bucket upload is a separate follow-up; it needs the owner's B2 write key and changes nothing about what loads. Live-fight proof for the 4 packed models is owed after merge + deploy (they only become loadable from jsDelivr once this lands on main).
+
+- Deletions: none.
