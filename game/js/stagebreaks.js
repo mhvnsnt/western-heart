@@ -221,6 +221,10 @@ export class StageBreaks {
       }
     }
     this._built = true;
+    // LAG FIX (owner 2026-11-11): these overlays appear mid-round, on the first frame after the stage content
+    // streams in. Compile their shaders right here, for the composer target the fight is drawn into (scene.js
+    // compileFor), so the next frame does not stall on it.
+    try { if (arena.compileFor) arena.compileFor(this.group); } catch (e) { /* optional */ }
   }
 
   _id(def) { return `${def.type}:${def.side ?? ''}${def.x ?? ''},${def.z ?? ''}`; }

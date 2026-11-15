@@ -52,7 +52,7 @@ export const FULL_ROSTER = [
         down: { target: 'zen-tentacle', label: 'OVERSOUL RELEASE', powerMult: 0.8, speedMult: 0.95, defenseMult: 0.87, moveset: 'zen' },
       },
     } },
-  { id: 'gyou', name: 'GYOU', title: 'The Moving Soul', base: 'Hwoarang', moveset: 'demonio', model: 'gyou-attire1', tintStrength: 0.25,
+  { id: 'gyou', name: 'GYOU', title: 'The Moving Soul', base: 'Paul Phoenix', moveset: 'gyou', model: 'gyou-attire1', tintStrength: 0.25,
     colors: { suit: 0x1a5a3a, trim: 0x3acc6a }, style: 'Tae Kwon Do', archetype: 'Pressure' },
 
   // ——— MAIN ROSTER ———
@@ -460,6 +460,9 @@ export const FULL_ROSTER = [
   // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): Wreck Patterson — BF role "Wrecking Machine / Demolition Expert", T3 bank king, UR donor ur-char031. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
   { id: 'bf-wreck-patterson', name: 'WRECK PATTERSON', title: 'Wrecking Machine / Demolition Expert', base: 'Wrecking Machine / Demolition', moveset: 'bf-wreck-patterson', model: 'bf-wreck-patterson', tintStrength: 0.25,
     colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Wrecking Machine / Demolition Expert', archetype: 'Power' },
+  // MADELYN (2026-11-09, owner order): wired bare — name + model only.
+  // Her canon is the owner's to write later; nothing invented here.
+  { id: 'madelyn', name: 'MADELYN', model: 'madelyn' },
 ];
 
 /* Unknown / missing id -> a MODEL PENDING soul (no body, kept out of fights),

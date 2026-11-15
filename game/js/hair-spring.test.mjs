@@ -14,7 +14,8 @@ register('data:text/javascript,' + encodeURIComponent(
    }`));
 
 const THREE = await import('three');
-const { attachHairPhysics, discoverHairChains } = await import('./hair-spring.js');
+const { attachHairPhysics, discoverHairChains, collisionSetFromData } = await import('./hair-spring.js');
+const { BodySDF } = await import('./collision.js');
 
 function buildRig() {
   const root = new THREE.Group();
@@ -98,6 +99,62 @@ test('authored-rig jiggle chains stay with WHSpringBones (never claimed)', () =>
   const chains = discoverHairChains(rig.root);
   assert.equal(chains.length, 1, 'only the imported-convention chain is discovered');
   assert.ok(chains[0].joints[0].name.startsWith('Hair_OPT_A'));
+});
+
+test('collision core: a capsule under the chains keeps tips out of the body', () => {
+  const rig = buildRig();
+  // body capsule straight down the spine under the hair (radius .09),
+  // plus the baked-data path: build the set from JSON-shaped data
+  const spine = new THREE.Bone(); spine.name = 'Spine2'; spine.position.set(0, 1.1, 0.02);
+  const neckB = new THREE.Bone(); neckB.name = 'Neck'; neckB.position.set(0, 0.32, 0);
+  spine.add(neckB); rig.root.add(spine); rig.root.updateMatrixWorld(true);
+  const set = collisionSetFromData(rig.root, {
+    capsules: [{ boneA: 'Spine2', boneB: 'Neck', radius: 0.09, margin: 0.01, friction: 0.4 }],
+    spheres: [], sdf: null,
+  }, null);
+  assert.ok(set && set.capsules.length === 1);
+  const sys = attachHairPhysics(rig.root, { collision: set, stiffness: 0.15 });
+  assert.ok(sys);
+  rig.head.rotation.x = 0.9; // nod hard forward: chains swing toward the chest
+  for (let i = 0; i < 180; i++) { rig.root.updateMatrixWorld(true); sys.update(1 / 60, {}); }
+  rig.root.updateMatrixWorld(true);
+  // every simulated tip must be outside the capsule (axis x=0,z=0.02, r=0.10)
+  for (const chain of sys.chains) {
+    for (const j of chain) {
+      const dx = j.cur.x - 0, dz = j.cur.z - 0.02;
+      const radial = Math.sqrt(dx * dx + dz * dz);
+      const along = j.cur.y > 1.1 && j.cur.y < 1.42;
+      if (along) assert.ok(radial >= 0.095, `tip radial ${radial.toFixed(3)} at y=${j.cur.y.toFixed(2)} (inside capsule)`);
+    }
+  }
+});
+
+test('collision core: an SDF volume under the chains keeps tips out', () => {
+  const rig = buildRig();
+  // bake a tiny analytic SDF: a ball of radius .13 at the chest (0,1.28,0.02)
+  const dims = [20, 20, 20], voxel = 0.02, origin = [-0.19, 1.09, -0.17], quant = 0.0005;
+  const data = new Int16Array(dims[0] * dims[1] * dims[2]);
+  let i = 0;
+  for (let z = 0; z < dims[2]; z++) for (let y = 0; y < dims[1]; y++) for (let x = 0; x < dims[0]; x++) {
+    const px = origin[0] + x * voxel, py = origin[1] + y * voxel, pz = origin[2] + z * voxel;
+    data[i++] = Math.round((Math.sqrt(px * px + (py - 1.28) ** 2 + (pz - 0.02) ** 2) - 0.13) / quant);
+  }
+  const sdf = new BodySDF({ origin, voxel, dims, quant }, data);
+  const frame = new THREE.Bone(); frame.name = 'Spine2'; frame.position.set(0, 0, 0);
+  rig.root.add(frame); rig.root.updateMatrixWorld(true);
+  const set = collisionSetFromData(rig.root, {
+    capsules: [], spheres: [], sdf: { frameBone: 'Spine2', margin: 0.005, friction: 0.4 },
+  }, sdf);
+  assert.ok(set && set.sdf);
+  const sys = attachHairPhysics(rig.root, { collision: set, stiffness: 0.15 });
+  rig.head.rotation.x = 0.9;
+  for (let k = 0; k < 180; k++) { rig.root.updateMatrixWorld(true); sys.update(1 / 60, {}); }
+  for (const chain of sys.chains) {
+    for (const j of chain) {
+      const d = sdf.sample(j.cur.x, j.cur.y, j.cur.z);
+      assert.ok(d >= 0.003, `tip sdf=${d.toFixed(4)} (inside the ball)`);
+    }
+  }
 });
 
 test('rigid hair (head-weighted only) attaches no system', () => {

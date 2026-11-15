@@ -27,6 +27,7 @@ async function gungakuAI() {
   return _GungakuAI;
 }
 import { audio } from './audio.js';
+import { feedT7GraphInput } from './t7-graph-input.js'; // its tekkenDirOf is this file's _tekkenDir (same body, test-checked)
 import { voice } from './voice.js';
 import { music } from './music.js';
 import { getStage } from './stages.js';
@@ -373,6 +374,17 @@ export class Game {
     if (this.soulurge) this.soulurge.resetRound();
     if (this.xray) this.xray.cancel();
     if (this.stageBreaks) this.stageBreaks.syncRound();
+    // LAG FIX (owner 2026-11-11): compile, in the round intro, every shader the first hit would otherwise compile
+    // mid-fight (measured: hit-effect sprites, the fighters' swing trails, the stage-break overlays), for the
+    // composer target the fight is drawn into (scene.js compileFor). A failure only skips the optimisation.
+    try {
+      if (this.stageBreaks && this.stageBreaks._ensureBuilt) this.stageBreaks._ensureBuilt();
+      const trails = [this.p1 && this.p1.trail, this.p2 && this.p2.trail].filter(Boolean);
+      const was = trails.map((t) => t.visible);
+      trails.forEach((t) => { t.visible = true; });
+      if (this.hitfx && this.arena && this.arena.compileFor) this.hitfx.prewarm(() => this.arena.compileFor());
+      trails.forEach((t, i) => { t.visible = was[i]; });
+    } catch (e) { /* optional */ }
     const spawns = getStage(this._stageId || 'shrine').spawns;
     const gy = this.stageBreaks ? this.stageBreaks.groundY : 0;
     this.p1.root.position.set(spawns.p1, gy, 0); this.p2.root.position.set(spawns.p2, gy, 0);
@@ -533,6 +545,8 @@ export class Game {
         if (!p1SurgeBefore && this.p1.attackName === 'surge' && this.p1.state === 'attack') {
           this.surgePresentation(this.p1);
         }
+      } else if (this.p1.t7gReady && this.p1.t7gReady()) {
+        this._t7gPlayerInput(this.input, dt); // T7 full-graph DEVELOPMENT integration (fighter.js t7GraphDevEnabled)
       } else {
         const inp = this.input;
         const ms = this.matchStats; // story reincarnation profiling
@@ -754,6 +768,11 @@ export class Game {
         this._hitStop = 0.08 * this.feel.hitstop; rec('vtrigger');
       }
     } else if (f.tryVSkill()) { audio.whiff(); rec('vskill'); }
+  }
+
+  /* T7 full-graph development integration: the shared input into the player's source graph (t7-graph-input.js). */
+  _t7gPlayerInput(inp, dt) {
+    feedT7GraphInput(this.p1, inp, dt, { onThrowEscape: () => { this.ui.throwEscape(true); audio.block(); }, opponent: this.p2 });
   }
 
   /* Test attacker's active hitbox against defender's hurtboxes */

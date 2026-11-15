@@ -475,7 +475,7 @@ export class InputManager {
         e.preventDefault();
         if (action === 'block') this.held.block = true;
         else if (action === 'punch' || action === 'kick') this._strike(action, e.timeStamp);
-        else if (/^[1234]$/.test(action)) this._tekken(action, e.timeStamp); // LP/RP/LK/RK limbs (touch time, see _pressT)
+        else if (/^[1234]$/.test(action)) { this.held[action] = true; this._tekken(action, e.timeStamp); } // LP/RP/LK/RK limbs (touch time, see _pressT); held until release (Tekken held-button rows)
         // TRANSFORM touch button: tap = transform up; tap while crouching
         // (joystick held down) = rare transform-down. No keyboard input.
         else if (action === 'transform') this._push(this.down ? 'transform-down' : 'transform');
@@ -484,6 +484,7 @@ export class InputManager {
       const release = (e) => {
         e.preventDefault();
         if (action === 'block') this.held.block = false;
+        else if (/^[1234]$/.test(action)) this.held[action] = false; // limb released (same as the keyboard keyup)
       };
       btn.addEventListener('touchstart', press, { passive: false });
       btn.addEventListener('touchend', release, { passive: false });

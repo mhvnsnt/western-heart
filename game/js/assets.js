@@ -164,7 +164,12 @@ export const MODEL_URLS = {
   // tools/auto_rig/refit_rig.py (skeleton fitted to his own body, Blender bone heat, head territory) and packed under
   // the CDN budget by tools/deploy/fit_cdn_budget.py. His head no longer sinks into his chest; torn vertices in his
   // stance 25,703 -> 5,191. docs/proof/2026-11-09/refit-thor/.
-  thor: '../roster/thor/attires/attire1/model-rerig-refit.glb',
+  // 2026-11-10: the same refit with two weight fixes for his own Ganryu sumo stance (docs/proof/2026-11-10/thor-ganryu/):
+  // belly / belt / armoured skirt given back to the Hips (tools/auto_rig/pelvis_skirt_weights.py: the 3.7 cm Hips bone
+  // had lost them to the thighs, so the stance splayed his belt flat), and the refit's height-cut head territory taken
+  // off his shoulders, arms and forearm bracers (tools/auto_rig/head_territory_clean.py: 105,647 vertices, inpainted;
+  // the bracers stretched into fins when his hands went forward). model-rerig-refit.glb stays beside it.
+  thor: '../roster/thor/attires/attire1/model-pelvisfix-cdn.glb',
   // Thor Attire 2: phantom-mimic oni mask (owner 2026-10-19).
   'thor-attire2': '../roster/thor/attires/attire2/model.glb',
   'doc-frank': 'assets/models/doc-frank.glb',
@@ -232,7 +237,10 @@ export const MODEL_URLS = {
   'bf-finxsse': '../roster/bf-finxsse/attires/attire1/model-rigged.glb',
   'bf-hall-nighter': '../roster/bf-hall-nighter/attires/attire1/model-rigged.glb',
   'bf-hollow': '../roster/bf-hollow/attires/attire1/model-rigged.glb',
-  'bf-jager': '../roster/bf-jager/attires/attire1/model-rigged.glb',
+  // bf-jager: mesh re-centred on its skeleton (2026-11-11, tools/models/realign_mesh_to_skeleton.mjs --center-y: the mesh sat
+  // 0.949 m above the shared Brutal Fist skeleton, so posed vertices swung around joints a metre away). New path:
+  // the remote bucket keeps serving the old file under the old name.
+  'bf-jager': '../roster/bf-jager/attires/attire1/model-rigged-realigned.glb',
   'bf-kobra': '../roster/bf-kobra/attires/attire1/model-rigged.glb',
   'bf-maime': '../roster/bf-maime/attires/attire1/model-rigged.glb',
   'bf-master-sensei': '../roster/bf-master-sensei/attires/attire1/model-rigged.glb',
@@ -241,7 +249,10 @@ export const MODEL_URLS = {
   'bf-stan-combs': '../roster/bf-stan-combs/attires/attire1/model-rigged.glb',
   'bf-static': '../roster/bf-static/attires/attire1/model-rigged.glb',
   'bf-stick-up': '../roster/bf-stick-up/attires/attire1/model-rigged.glb',
-  'bf-tarzanian-devil': '../roster/bf-tarzanian-devil/attires/attire1/model-rigged.glb',
+  // bf-tarzanian-devil: mesh re-centred on its skeleton (2026-11-11, tools/models/realign_mesh_to_skeleton.mjs --center-y: the mesh sat
+  // 0.949 m above the shared Brutal Fist skeleton, so posed vertices swung around joints a metre away). New path:
+  // the remote bucket keeps serving the old file under the old name.
+  'bf-tarzanian-devil': '../roster/bf-tarzanian-devil/attires/attire1/model-rigged-realigned.glb',
   'bf-titan': '../roster/bf-titan/attires/attire1/model-rigged.glb',
   'bf-triple-xxx': '../roster/bf-triple-xxx/attires/attire1/model-rigged.glb',
   'bf-tyneshia': '../roster/bf-tyneshia/attires/attire1/model-rigged.glb',
@@ -311,7 +322,13 @@ export const MODEL_URLS = {
   // 2026-11-10: Kai's repaired body (roster wire-up, PR #1600 -> #1710: ModelHair_Base given a flat colour from his own
   // hair texture, the one material the gate failed) served under a NEW path, packed 25.6 -> 14.2 MB: the remote asset
   // bucket, which the loader tries first, still holds the unrepaired kai-body.glb (kept unchanged beside it).
-  'kai-body': 'assets/models/kai-body-cdn.glb',
+  // 2026-11-10 (owner: "u have kai and tou looking like Paul Phoenix and Eddy, they are souls and if u research the
+  // eastern mind games and canon and images you will see what they really look like"): KAI's own Eastern Mind body,
+  // built from Osamu Sato's art (teardown/eastern-mind/prologue-ending/bitmaps/CHARA/CHARA_b006) by
+  // tools/souls/build_soul.py. kai-body-cdn.glb / kai-body.glb (the Eddy shell) stay beside it.
+  // 2026-11-10 (later): with Sato's own speckled surfaces (tools/souls/textures.py, from his pixels); kai-soul.glb
+  // (flat colours) stays beside it.
+  'kai-body': 'assets/models/kai-soul-tex.glb',
   'jin-body': 'assets/models/jin-body.glb',
   'rin-body': 'assets/models/rin-body.glb',
   'jin-t7': 'assets/models/jin.glb',
@@ -349,7 +366,10 @@ export const MODEL_URLS = {
   // the lane's file also bound her right arm to the head and her neck to a shoulder). New path for the same reason as
   // kai-body above; sha-body.glb stays unchanged beside it.
   'sha-body': 'assets/models/sha-body-hairfix-cdn.glb',
-  'tou-body': 'assets/models/tou-body-cdn.glb', // roster wire-up batch C 2026-11-09: Tou's own body — Paul Phoenix (pau) parts extracted from the held T7 pakchunk0 and assembled on the shared T7 skeleton (213 joints, core bones canonicalized); see docs/TOU-BODY-BUILD-2026-11-09.md. 2026-11-10: served packed (fit_cdn_budget.py: duplicate face textures merged, normal-map alpha dropped (glTF reads RGB only), q93 full-chroma JPEG, gltfpack -cc) 48.8 -> 15.5 MB; tou-body.glb stays beside it
+  // 2026-11-10: TOU's own Eastern Mind body (CHARA_b012 + R_TOH; tools/souls/build_soul.py), not Paul Phoenix's T7 kit;
+  // tou-body-cdn.glb / tou-body.glb (the assembled Paul body, docs/TOU-BODY-BUILD-2026-11-09.md) stay beside it.
+  // 2026-11-10 (later): with Sato's own speckled surfaces; tou-soul.glb (flat colours) stays beside it.
+  'tou-body': 'assets/models/tou-soul-tex.glb',
   'zen-body': 'assets/models/zen-body.glb',
   'zui_alt1': 'assets/models/zui_alt1.glb',
   'zui_alt2': 'assets/models/zui_alt2.glb',
@@ -518,6 +538,10 @@ export const MODEL_URLS = {
   // as the earlier named options.
   menajerii: '../roster/vixen/attires/attire1/model-rigged-noplane.glb',
   'menajerii-attire1': '../roster/vixen/attires/attire1/model-rigged-noplane.glb',
+  // MADELYN (2026-11-09, owner order): her FIXED build — restored in
+  // physics-playground-pwa PR #40 (153 morph targets: 92 body + 61 face;
+  // deform-only 170-joint rig) — wired in as-is, bare: no canon written.
+  madelyn: '../roster/madelyn/attires/attire1/model.glb',
   // ——— LANDING WAVE 1 (2026-10-23, docs/CATCHUP-AUDIT-2026-10-23.md) ———
   // Wiring fixes only: keys for models already on main that no key reached.
   // BUFFALO BILL: his moveset file sat on main unlisted; A1/A2 sources named
