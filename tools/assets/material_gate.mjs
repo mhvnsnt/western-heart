@@ -127,6 +127,14 @@ const OWNER_OUTFIT_RULE_EXEMPT = new Map([
   // keys at exactly this URL is therefore expected, not broken.
   ['menajerii', '../roster/vixen/attires/attire1/model-rigged-noplane.glb'],
   ['menajerii-attire1', '../roster/vixen/attires/attire1/model-rigged-noplane.glb'],
+  // PACKED COPY (2026-11-15, all-86 PR): the -cdn pack of the same file
+  // (fit_cdn_budget.py + gltfpack) carries the identical 2 clear eye
+  // shells (EyeMoisture-2 / Cornea-2, transmission/clearcoat, no base
+  // texture — verified material-for-material against the original above)
+  // and no 24_/25_ materials, so the same exemption applies at the
+  // packed URL. Originals untouched; the pack is a rebuild of her file.
+  ['menajerii', '../roster/vixen/attires/attire1/model-rigged-noplane-cdn.glb'],
+  ['menajerii-attire1', '../roster/vixen/attires/attire1/model-rigged-noplane-cdn.glb'],
 ]);
 const ownerOutfitRule = [];
 for (const [key, url] of OWNER_OUTFIT_RULE_EXEMPT) {
