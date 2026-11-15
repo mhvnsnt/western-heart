@@ -6,8 +6,8 @@ and a scratch dir (default: a fresh dir under the system temp area).
 This is the scripted form of REPUBLISH.md section 2 — the same route that
 shipped live 32607e2b -> main 847a0aa4 on 2026-11-08 (deploy commit
 60a0c5f8, manifest 847a0aa4, verified live). It replicates
-tools/deploy/deploy_delta.py exactly (same ROOTS, same T7/small add rules,
-same 1 GiB CAP), then adds the module-graph check the delta tool runs on
+tools/deploy/deploy_delta.py exactly (same ROOTS, same T7/small add rules, plus the bundled shell models (cap-aware,
+King Tyrant first), same 1 GiB CAP), then adds the module-graph check the delta tool runs on
 the assembled tree.
 
 Usage:
@@ -72,8 +72,13 @@ def fetch_blob_text(sha):
     return base64.b64decode("".join(r["content"].split())).decode("utf-8", "replace")
 
 
-def compute_delta(live, main, t3anims):
-    """Same rules as tools/deploy/deploy_delta.py. Returns (upd, add, gone)."""
+def compute_delta(live, main, t3anims, asset_config="", live_total=0):
+    """Same rules as tools/deploy/deploy_delta.py. Returns (upd, add, gone).
+
+    live_total is the live tree's byte total; it funds the cap-aware
+    bundled-models step below (CAP - live_total - update delta - T7/small
+    adds is the remaining headroom).
+    """
     upd = sorted(p for p in live if p in main and p.startswith(ROOT_PREFIXES)
                  and live[p][0] != main[p][0])
     blk = re.search(r"export const T7_STANCES = \{(.*?)\n\};", t3anims, re.S)
@@ -99,6 +104,47 @@ def compute_delta(live, main, t3anims):
             add.append(p)
             budget -= main[p][1]
     add = sorted(set(add))
+    # Bundled shell models (SHELL_BUNDLED_MODELS in main's
+    # game/js/asset-config.js — the same list deploy_delta.py reads).
+    # deploy_api.py never ported this step, so every deploy on the API
+    # route skipped bundled models: a model added to the list stayed
+    # missing from the live shell while the loader's other fallbacks were
+    # dead for it (jsDelivr 403s files over 20 MB) — King Tyrant's fight
+    # could only load from the remote Worker, and a stall there dumped
+    # the player to the menu (Piece 1 re-test Bug 4, F2/F3). Add them in
+    # list order (King Tyrant first — he is the first missing entry),
+    # each only if it fits in the remaining headroom: all four missing
+    # bundled models (99,363,008 B) exceed the headroom, so a verbatim
+    # port would make the deploy refuse outright and ship nothing.
+    # Skipped models are printed, not silently dropped.
+    ablk = re.search(r"export const SHELL_BUNDLED_MODELS = \[(.*?)\n\];",
+                     asset_config, re.S)
+    listed = []
+    if ablk:
+        for m in re.finditer(r"^\s*'((?:game|roster|customization|packages)/[^']+)'",
+                             ablk.group(1), re.M):
+            if m.group(1) not in listed:
+                listed.append(m.group(1))
+    else:
+        print("WARNING: SHELL_BUNDLED_MODELS not found in "
+              "game/js/asset-config.js — no bundled models added")
+    headroom = (CAP - live_total
+                - sum(main[p][1] - live[p][1] for p in upd)
+                - sum(main[p][1] for p in add))
+    for p in listed:
+        if p in live or p in add:
+            continue
+        if p not in main:
+            print(f"  BUNDLED MISSING FROM MAIN: {p}")
+            continue
+        size = main[p][1]
+        if size <= headroom:
+            add.append(p)
+            headroom -= size
+            print(f"  BUNDLED SHIP: {p} ({size} B, headroom left {headroom} B)")
+        else:
+            print(f"  BUNDLED SKIP (over cap): {p} ({size} B, "
+                  f"short by {size - headroom} B)")
     gone = sorted(p for p in live if p not in main)
     return upd, add, gone
 
@@ -179,7 +225,9 @@ def main():
 
     # 2. Delta (deploy_delta.py rules).
     t3anims = fetch_blob_text(main["game/js/t3anims.js"][0])
-    upd, add, gone = compute_delta(live, main, t3anims)
+    acfg = (fetch_blob_text(main["game/js/asset-config.js"][0])
+            if "game/js/asset-config.js" in main else "")
+    upd, add, gone = compute_delta(live, main, t3anims, acfg, live_total)
     new_total = (live_total - sum(live[p][1] for p in upd)
                  + sum(main[p][1] for p in upd) + sum(main[p][1] for p in add))
     print(f"updated: {len(upd)}  added: {len(add)}  "
