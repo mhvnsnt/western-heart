@@ -41,6 +41,54 @@ export const lazy = {
   ranks: _cached('ranks', './ranks.js'),
 };
 
+/* Drop a cached lazy import (2026-11-15, modes-import-timeout): a HUNG
+   import stays in _cache forever — the rejection path in _cached only
+   runs when the promise settles, and a hang never settles, so every
+   later call would share the same hung promise (observed live
+   2026-11-15: the first mode tap's modes.js import hung, __modes
+   never became true, and re-clicks never helped). Dropping the entry
+   makes the next call import again. NOTE: the browser's own module
+   map dedupes fetches by URL, so a re-import while the first fetch is
+   still in flight awaits the same fetch — the drop guarantees a FRESH
+   PROMISE and a FRESH TIMEOUT, not a second network fetch. The
+   un-wedge is the timeout bounding every wait, not the re-fetch. */
+export function dropLazy(name) {
+  delete _cache[name];
+}
+
+/* Race a promise against a timeout: the timeout rejects, the timer is
+   cleared whichever side settles first. A hung inner promise stays
+   pending (one dangling promise per timed-out attempt); the underlying
+   import may still resolve later into the browser's module map, which
+   is fine — the next attempt then resolves at once. */
+function raceWithTimeout(promise, ms, label) {
+  let timer = null;
+  const timeout = new Promise((_, reject) => {
+    timer = setTimeout(() => reject(new Error(`[WH] ${label} timed out after ${ms}ms`)), ms);
+  });
+  return Promise.race([promise, timeout]).finally(() => { if (timer !== null) clearTimeout(timer); });
+}
+
+/* Run loader() with a timeout, retrying once (default) on timeout OR
+   rejection, then throw the last error. Each attempt calls loader()
+   fresh — callers that need a fresh import between attempts do the
+   cache drop inside loader(). A rejection settles the race at once, so
+   a fast failure (404, syntax error) does not burn the whole timeout. */
+export async function loadWithRetry(loader, { timeoutMs, retryDelayMs = 0, retries = 1, label = 'load' } = {}) {
+  let lastErr;
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      return await raceWithTimeout(loader(), timeoutMs, label);
+    } catch (e) {
+      lastErr = e;
+      if (attempt < retries && retryDelayMs > 0) {
+        await new Promise((resolve) => setTimeout(resolve, retryDelayMs));
+      }
+    }
+  }
+  throw lastErr;
+}
+
 /* Warm the modules the select screen and first fight need, but only
    when the browser is idle — never at the expense of first paint.
    Called once at the end of boot (main.js). */
