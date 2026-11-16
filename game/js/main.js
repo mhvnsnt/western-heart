@@ -17,7 +17,7 @@ import { ROSTER, getCharacter } from './characters.js';
 // are fight-or-preview-only — they load on demand through lazy.js so the
 // menu shell paints without parsing them (Tekken 3 BNS lesson: the index
 // loads first, records stream on demand). Warmed during idle at boot end.
-import { lazy, warmIdle } from './lazy.js';
+import { lazy, warmIdle, dropLazy, loadWithRetry } from './lazy.js';
 import { loadThrowTables } from './t3-throw.js';
 import { mark } from './loadperf.js';
 import * as THREE from 'three';
@@ -345,22 +345,53 @@ let assetsReady = false;
    doesn't need — no mode runs until a menu button is tapped. The
    controller is built on the first mode tap (getModes) and every use
    site awaits it. window.__modes is set then, as before. */
+/* MODES_LOAD_TIMEOUT_MS (2026-11-15, modes-import-timeout): measured
+   from the live site — game/js/modes.js (73,316 B) fetched from the
+   Pages shell in 0.70–1.70 s over 5 samples (median 0.82 s), and the
+   import resolves in well under 2 s on a healthy load; the silent hang
+   this fixes showed no resolution at 30 s+. 10 s is ~6x the slowest
+   healthy fetch and 3x inside the shortest observed hang, so a healthy
+   load never trips it and a wedged one surfaces fast. One retry + a
+   500 ms beat between attempts: worst case ~20.5 s to the visible
+   menuFail error, versus the old unbounded silent hang. */
+const MODES_LOAD_TIMEOUT_MS = 10000;
+const MODES_LOAD_RETRY_DELAY_MS = 500;
 let modes = null;
 let _modesPromise = null;
 function getModes() {
   if (modes) return Promise.resolve(modes);
   if (!_modesPromise) {
-    _modesPromise = lazy.modes().then(({ ModeController }) => {
-      modes = new ModeController({
-        game, ui, show, startFight: startFightViaStage,
-        roster: ROSTER, getChar: getCharacterWithCustom, audio,
+    // One attempt = drop any cached (possibly hung) modes import, then
+    // import fresh and build the controller. A hung import never
+    // settles, so without the drop + timeout the first tap's promise
+    // would wedge every mode button for the session (observed live
+    // 2026-11-15: 5 Menajerii attempts, __modes never true, no toast).
+    // NOTE: the browser dedupes module fetches by URL, so a re-import
+    // while the first fetch is still in flight awaits the same fetch —
+    // the retry is a second wait window on a fresh promise, and the
+    // un-wedge is the timeout + the visible menuFail error, not a
+    // second network fetch.
+    const buildModes = () => {
+      dropLazy('modes');
+      return lazy.modes().then(({ ModeController }) => {
+        modes = new ModeController({
+          game, ui, show, startFight: startFightViaStage,
+          roster: ROSTER, getChar: getCharacterWithCustom, audio,
+        });
+        window.__modes = modes;
+        return modes;
       });
-      window.__modes = modes;
-      return modes;
+    };
+    _modesPromise = loadWithRetry(buildModes, {
+      timeoutMs: MODES_LOAD_TIMEOUT_MS,
+      retryDelayMs: MODES_LOAD_RETRY_DELAY_MS,
+      retries: 1,
+      label: 'modes.js',
     }).catch((err) => {
       // A failed load must not permanently wedge every mode button for the
       // session: drop the rejected promise so the next tap retries the load.
       _modesPromise = null;
+      dropLazy('modes');
       throw err;
     });
   }
