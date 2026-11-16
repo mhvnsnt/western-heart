@@ -193,3 +193,69 @@ main is branch-protected with required checks (pr-safety-guard, clobber-guard, d
 - Backlog any agent can pull (claim by setting owner + branch): `docs/team/TASKBOARD.md`
 - Hitting a limit / resuming / reconciling parallel branches: `docs/team/HANDOFF.md`
 - Free tools + CI/hosting to keep work going 24/7 at $0: `docs/team/FREE-RESOURCES.md`
+
+## SELF-IMPROVE KIT — WIRED IN (2026-11-16, owner order WIRE-IT-EVERYWHERE)
+
+The see-better / think-better / work-better kit's canonical home is mhvnsnt/physics-playground-pwa, `docs/build-a-bitch/tools/self-improve/` (visual QA, source verification, lane-ops guards, reference library). This repo uses the same methods and the same kit — appended additively 2026-11-16, nothing above was rewritten or deleted. Do not fork the kit into this repo; improvements land in the canonical home and this repo points at it.
+
+## SELF-IMPROVE METHODS (2026-11-16 — method rules under the HIGHEST-STANDARD BAR order, not owner-word laws; the tools live in mhvnsnt/physics-playground-pwa, docs/build-a-bitch/tools/self-improve/ (canonical in-repo home; working mirror at ~/workspace/agent-ops/self-improve/))
+These fix the exact failure modes the owner named on 2026-11-16 ("running me in circles"): search-only research, lanes re-briefed from the top, process reported instead of proof, lists instead of wired work. The scripts are the enforcement; the rules are the requirement.
+
+### EVIDENCE-LABEL LAW
+Every research source carries exactly one label, in those words:
+- **FETCH-VERIFIED** — bytes were fetched in this run (or `git ls-remote` answered). Size + sha256 recorded in the verify log.
+- **SEARCH-VERIFIED** — page text was seen, but no artifact bytes were pulled. Never ranked as pullable, never presented as "we have it."
+- **UNVERIFIED** — fetch failed. The exact error is recorded. Never enters a ranked list.
+- **BROWSER-GATED** — needs a live-browser check (login, JS, download button). Goes on BROWSER-QUEUE.md, never left "unverified" forever.
+A source enters a ranked list ONLY as FETCH-VERIFIED with a licence verdict present. No verdict → NOT-RANKABLE. The tool is `research-verify/verify_sources.py` — a lane that ranks a source without running it (or without the verify log) has not verified it.
+
+### VERIFY-LATER-QUEUE LAW
+A 429, 5xx, timeout, or DNS failure is recorded as RETRY-LATER with the exact error and queued in `verify-queue.jsonl` — then re-run with `--retry-queue` after a pause. "Re-fetch later" written in a report with no queue file and no retry is not a plan, it is a dropped source. Search-verified is the ceiling for a queued source until the retry lands.
+
+### BROWSER-QUEUE LAW
+When a check needs the live browser (Mixamo downloads, login-gated pages, JS-only buttons), the lane writes the exact URL + what must be confirmed into the workdir's `BROWSER-QUEUE.md` and flags it to the parent in its report. The parent runs browser checks; the lane never claims the site is down from a fetch error alone, and never leaves the item UNVERIFIED forever.
+
+### RESUME-BRIEF METHOD
+A successor lane is briefed from the checkpoint, never from the top. The writer of a resume brief MUST: (1) quote the checkpoint's exact next step verbatim; (2) count the disk state themselves (file/frame/cache counts — never the dead lane's numbers); (3) list what is DONE and forbidden to redo. Template: `lane-ops/resume_brief.md`. If the checkpoint is missing or stale, the first step is re-establishing it from disk — not re-briefing the whole task.
+
+### VISUAL-QA-BEFORE-CLAIM LAW
+No visual claim ("matches source," "fixed," "identical," "changed") without a deterministic check run first:
+- Pair claims (before/after, orig/served): `visual-qa/pair_compare.py` with `--expect same|different` — SSIM + pixel-diff + heatmap. The machine gathers the numbers; the agent's eyes judge the same frames. A lane's numbers alone never pass a visual gate (the identity audit proved "loaded OK" ships broken models).
+- Frame-set claims (capture complete, film assembled): `visual-qa/frame_set_gate.py` — contiguity (a count alone is NOT proof; ffmpeg stops silently at the first gap), zero-byte/truncation + PIL decode, frozen sha-identity vs manifest, full-decode + frame count of the assembled mp4.
+- Own-eyes still required on the checked frames. The scripts make the check cheap; they do not replace looking.
+
+### NO-LISTS-WITHOUT-PULLS LAW
+A research deliverable is pull attempts + artifacts (or honest failure records with exact errors), not a list of names. A source the lane never attempted to fetch is UNVERIFIED and unranked. A finding without a pull-in (or a recorded, retried failure) is incomplete work — the RESEARCH-TO-REPO LAW already says so; this is the method that enforces it.
+
+### ADDENDA-MAILBOX RULE
+A coordinator holds late owner addenda in a mailbox file in its workdir and folds them in at synthesis. Never send follow-up instructions to a lane that already completed — the send fails and the angle gets lost. If a completed lane's report lacks the new angle, spawn a follow-up lane for that angle only, or fold it into the synthesis with the gap named.
+
+### PRE-DELIVERY CHECKLIST LAW (round 2, 2026-11-16)
+Nothing reaches the owner without a delivery checklist. The tool is
+`visual-qa/pre_delivery_checklist.py`: it hashes the deliverable, runs the
+applicable kit checks (colour/light, pose, face, video probe, pair vs
+source, reference compare), and REQUIRES `--seen "..."` — the agent's
+own-eyes attestation of what they actually looked at and saw. No `--seen`
+=> DELIVERY-READY NO, nothing is stamped. The checklist cannot verify the
+agent's eyes — but it makes skipping the look a VISIBLE omission, and a
+delivery without one is an incomplete delivery. Intentional frozen holds
+in a film are attested with `--allow-frozen "reason"` (frozen-runs-only
+→ WARN); black/blown frames can never be attested away.
+
+### REFERENCE-METHOD LAW (owner 2026-11-16 ~09:45–09:47 EST)
+The way to learn what's good is the top of the field, worked down the list
+from the top. The library lives in mhvnsnt/physics-playground-pwa, `docs/build-a-bitch/tools/self-improve/reference/` (manifest.json:
+title, source, licence, why it's the top of its field, sha256 — FETCH-VERIFIED
+only; BROWSER-GATED items go on BROWSER-QUEUE.md, never faked). Every visual
+deliverable is compared against the top reference for its field with
+`visual-qa/reference_compare.py` — side-by-side sheet + BELOW / MEETS /
+ABOVE bands. The reference is the FLOOR, not the ceiling: MEETS is industry
+standard reached, ABOVE is better than the top, BELOW is fix-before-delivery.
+The side-by-side sheet is shown to the owner every turn so he can approve —
+TWO PAIRS OF EYES. A number alone is never the verdict.
+
+### REPO-PREFLIGHT + RUN-GUARDED
+Before any lane cuts a branch: `lane-ops/repo_preflight.sh` (clean tree, base branch present, fetch fresh). A dirty or stale clone is a hard stop — cut from a fresh clone or via the API instead. Long-lived runners (capture loops, watchers, servers) always launch under `lane-ops/run_guarded.sh` (flock) — a VM-restart relaunch can never start a second copy (the duplicate-runner race from Life Cut v2.2, twice).
+
+## PRESENT-REFERENCES-EVERY-TURN RULE (owner 2026-11-16 ~09:47 EST)
+Show him the best references when found — EVERY turn we work, no exceptions. Show the references + things found so HE CAN APPROVE them. Then compare them to our work — TWO PAIRS OF EYES. Side-by-side OR one individually then the next — either way works, as long as he sees both and judges. Presenting new information every turn is not optional and not something a lane does for me — it is my job in the reply itself.
