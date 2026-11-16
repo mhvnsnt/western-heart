@@ -200,8 +200,8 @@ export const MODEL_URLS = {
   // DXMMII Slot 1 — Tripo Default (dedup 2026-10-22): the 60MB Tripo pull
   // that replaced the wooden dummy as Slot 1 per owner 2026-10-19
   // (roster/dxmmii/ATTIRE-SLOTS.md). Wired so his select entry defaults to it.
-  'dxmmii-tripo': '../roster/dxmmii/attires/attire1/model-rigged.glb',
-  'cyborg-x': 'assets/models/cyborg-x.glb',
+  'dxmmii-tripo': '../roster/dxmmii/attires/attire1/model-rigged-cdn.glb',
+  'cyborg-x': 'assets/models/cyborg-x-cdn.glb',
   'cape-jones': 'assets/models/cape-jones.glb',
   // CAPE JONES Attire 1 (rig QA 2026-10-23, muse/cape-jones-fight): the
   // auto-rigged Round-2 build (49 bones, -Z facing, sides/knees OK), staged
@@ -520,8 +520,8 @@ export const MODEL_URLS = {
   // the outfit was textureless described the stripped conversion, not
   // the source blend). model-rigged-nooutfit.glb stays on disk untouched
   // as the named no-outfit option from 2026-11-03.
-  megami: '../roster/parvati/attires/attire1/model-rigged.glb',
-  'megami-attire1': '../roster/parvati/attires/attire1/model-rigged.glb',
+  megami: '../roster/parvati/attires/attire1/model-rigged-cdn.glb',
+  'megami-attire1': '../roster/parvati/attires/attire1/model-rigged-cdn.glb',
   // MENAJERII (2026-10-23, SmutBase 6 pipeline fighters 5-6): SmutBase Vixen
   // commission intake (Injustice 2-based). In-repo build = meshopt-compressed
   // (41.7 MB, validated); intake original (629.7 MB) archived on release
@@ -586,8 +586,8 @@ export const MODEL_URLS = {
   'skull-base': 'assets/models/skull.glb',
   'waterfall-attire1': '../roster/waterfall/attires/attire1/model.glb',
   'yukihyo-attire1': '../roster/yukihyo/attires/attire1/source/yukihyo-a1-rigged.glb',
-  'yukihyo-attire2': '../roster/yukihyo/attires/attire2/source/yukihyo-a2-bobcat-pride-rigged.glb',
-  'yukihyo-attire3': '../roster/yukihyo/attires/attire3/source/yukihyo-a3-tiger-king-rigged.glb',
+  'yukihyo-attire2': '../roster/yukihyo/attires/attire2/source/yukihyo-a2-bobcat-pride-rigged-cdn.glb',
+  'yukihyo-attire3': '../roster/yukihyo/attires/attire3/source/yukihyo-a3-tiger-king-rigged-cdn.glb',
   'armor-king-attire1': '../roster/armor-king/attires/attire1/model.glb',
   'zangief-attire1': '../roster/zangief/attires/attire1/model.glb',
   // RYUSAN (owner 2026-10-23): SmutBase Mina Ashido intake — WH name RYUSAN,

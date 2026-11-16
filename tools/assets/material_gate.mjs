@@ -135,6 +135,14 @@ const OWNER_OUTFIT_RULE_EXEMPT = new Map([
   // packed URL. Originals untouched; the pack is a rebuild of her file.
   ['menajerii', '../roster/vixen/attires/attire1/model-rigged-noplane-cdn.glb'],
   ['menajerii-attire1', '../roster/vixen/attires/attire1/model-rigged-noplane-cdn.glb'],
+  // PACKED COPY (2026-11-15, batch 2): the -cdn pack of Megami's file
+  // (fit_cdn_budget.py + gltfpack) carries the identical untextured
+  // findings (EyeMoisture-3/-4, Cornea-2 clear shells; Torso-6 inner
+  // shell — verified material-for-material against the original above)
+  // and all 24_/25_ outfit materials stay textured, so the same
+  // exemption applies at the packed URL. Original untouched.
+  ['megami', '../roster/parvati/attires/attire1/model-rigged-cdn.glb'],
+  ['megami-attire1', '../roster/parvati/attires/attire1/model-rigged-cdn.glb'],
 ]);
 const ownerOutfitRule = [];
 for (const [key, url] of OWNER_OUTFIT_RULE_EXEMPT) {

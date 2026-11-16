@@ -4704,3 +4704,22 @@ DOA/VF editor-status verification (web search failed on local disk quota).
 **Still broken after this PR:** nothing in the 4 — but the 38-entry R2 manifest gap stands (files added since the Oct manifest, incl. all 26 BF fighters): the bucket still doesn't serve them, they load via jsDelivr (≤20 MB) or the shell instead. The manifest regen + bucket upload is a separate follow-up; it needs the owner's B2 write key and changes nothing about what loads. Live-fight proof for the 4 packed models is owed after merge + deploy (they only become loadable from jsDelivr once this lands on main).
 
 - Deletions: none.
+
+## 2026-11-15 — Five more big models packed under the jsDelivr limit (batch 2)
+
+**Owner order (Jay, 2026-11-15 ~19:11 EST):** "whichever one is the best option" — the parent's pick, after Jay asked for a way around the GitHub caps: keep packing models small (free, proven, no new accounts, no migration).
+
+**What:** 5 more fighter models now have packed `-cdn` copies under 19.5 MB, and `game/js/assets.js` MODEL_URLS points at them. Originals untouched. Yukihyo attires 2+3 first — they were the ONLY models with no working source anywhere (skip in every deploy over the 1 GiB shell cap, jsDelivr 403 over 20 MB, not on the shell); then the next-largest Worker-dependent models, biggest-first.
+- `roster/yukihyo/attires/attire2/source/yukihyo-a2-bobcat-pride-rigged-cdn.glb` — Yukihyo attire 2, 33,196,144 → 17,430,768 B (jpeg-q 85)
+- `roster/yukihyo/attires/attire3/source/yukihyo-a3-tiger-king-rigged-cdn.glb` — Yukihyo attire 3, 32,049,712 → 17,184,168 B (jpeg-q 85)
+- `roster/dxmmii/attires/attire1/model-rigged-cdn.glb` — DXMMII, 43,394,464 → 17,741,924 B (jpeg-q 85)
+- `roster/parvati/attires/attire1/model-rigged-cdn.glb` — Megami, 42,298,953 → 17,528,996 B (jpeg-q 85, PNG ≥0.5 MB)
+- `game/assets/models/cyborg-x-cdn.glb` — Cyborg-X, 41,346,180 → 8,343,724 B (jpeg-q 85, PNG ≥0.5 MB)
+
+**Method:** the repo's own `tools/deploy/fit_cdn_budget.py` (PNG ≥0.5 MB → JPEG q85, gltfpack `-cc -kn -km -ke`), decoding meshopt inputs first with `tools/anim/gltf_codec.mjs`. Batch 1 used q93 except gashadokuro (q85); this batch needed q85 throughout — the Tripo-style files' 4K textures don't shrink enough at q93. Megami needed the PNG ≥0.5 MB threshold (the script's 1.0 MB default left 7.6 MB of PNG in the pack: 21.4 MB, over budget); the 0.5 MB threshold is the same one batch 1's PR records.
+
+**Verification:** all 5 packed files gltf-transform validate clean (a2/a3/dxmmii/cyborg-x: every primitive skinned; megami: 26/30 skinned — the same 4 rigid prims, headgear + hair strands, as her original); Blender 5.2 Cycles renders of original vs packed viewed side by side — identical for all 5 (proof PNGs in `docs/proof/2026-11-15/cap-cdn-pack/`); worst normal-angle error 2.17° mean / 10.00° p99 (megami q85 — the batch's worst; the other three with normal maps are 0.80° mean / 6.44° p99 or better; cyborg-x has no normal maps). Megami's pack also fixes 7 source validation errors (clearcoatRoughnessFactor 1.45 out of range on 7 materials — gltfpack clamps them; the original fails gltf-transform validation, the pack reports "No errors found"). Material profiles verified identical original-vs-packed for all 5 (only float32 rounding + dropped redundant alphaMode/baseColorFactor defaults from gltfpack). `tools/assets/material_gate.mjs`: Megami's `-cdn` URL added to the owner outfit-rule exemption (same untextured classes as her original URL — EyeMoisture-3/-4, Cornea-2 clear shells; Torso-6 inner shell); the other 4 need no gate change (fully textured, profiles identical).
+
+**Still broken after this PR:** the remaining 26 Worker-dependent default models over 20 MB still load only from the Worker bucket (no working jsDelivr source); the next batch packs the biggest of those the same way. Live-fight proof for the 5 packed models is owed after merge + deploy (they only become loadable from jsDelivr once this lands on main). Yukihyo attires 2+3 become loadable for the first time anywhere.
+
+- Deletions: none.
