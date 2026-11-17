@@ -1,3 +1,5 @@
+> Before touching any model, rig, or animation: read ASSET-PIPELINE.md. Prove with renders you looked at.
+
 # CLAUDE.md — read this first (Claude Code loads it automatically)
 
 > **PIPELINE LAW (2026-11-05):** `docs/PIPELINE-LAW.md` — OpenKumite v0.1.2 + FE public rules, WWE-style moveset templates, first-play camera/debris, Pantera = exact King T7. FE embargo until 2026-12-25. Do not touch Muse #1096 / `tools/auto_rig` unless Muse asks. Claim work on #866 with MoneyManBusch: prefix.
