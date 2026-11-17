@@ -22,7 +22,7 @@ import * as THREE from 'three';
 import { T3_BANKS, T7_STANCES, loadT3Clips, retargetT3Clips, applyT7Stance } from '../../../game/js/t3anims.js';
 import { savePortrait, getPortrait, clearPortrait } from '../../../game/js/user-portraits.js';
 /* template-fitted hair / facial hair / brows / lashes (HAIR phase 2026-11-02): one module shared with the game */
-import { FITTED_COLOR_KEY, fittedPartPath } from '../../../game/js/fitted-parts.js';
+import { fittedColorKey, fittedPartPath, isFittedClothing } from '../../../game/js/fitted-parts.js';
 
 const LS_KEY = 'wh_creation_suite_v1';
 const START_MONEY = 12400;
@@ -348,7 +348,7 @@ function syncParts3D(){
     // template-fitted parts (hair / facial hair / brows / lashes): parented to the head bone, fitted per template
     const fitUrl = p.fitted && viewer.isTemplate && fittedPartPath(p.id, F.template);
     if(fitUrl){
-      const tint = (attire().colors||{})[FITTED_COLOR_KEY[p.suite_slot]] || null;
+      const tint = (attire().colors||{})[fittedColorKey(p.id, p.suite_slot)] || null;
       if(!viewer.parts.has(partId)) viewer.attachFitted(partId, '../../'+fitUrl, p, tint).catch(()=>{});
       else viewer.setFittedTint(partId, tint);
       continue;
@@ -868,6 +868,8 @@ function renderParts(el){
         : c.key==='facial-hair' ? PARTS.filter(p=>p.suite_slot==='facial_hair')
         : c.key==='brows' ? PARTS.filter(p=>p.suite_slot==='eyebrows')
         : c.key==='lashes' ? PARTS.filter(p=>p.suite_slot==='eyelashes')
+        : c.key==='clothing' ? PARTS.filter(p=>p.library==='wh-generated-clothing' && p.wwe_caw_tab!=='Accessories')
+        : c.key==='accessories' ? PARTS.filter(p=>p.library==='wh-generated-clothing' && p.wwe_caw_tab==='Accessories')
         : PARTS.filter(p=>p.suite_slot==='hair');
       const b=document.createElement('button'); b.className='subcat'; b.id='pcat-'+c.key;
       b.innerHTML=`<span class="sc-ico">${c.icon}</span><span>${c.label}</span><span class="sc-count">${ready(list)} parts</span>`;
@@ -949,6 +951,7 @@ function renderPartGrid(el, cat, list, backKey){
   if(ui.selPart && list.includes(ui.selPart)) renderPartDetail(el.querySelector('#pdetail'), ui.selPart,
     (cat.slotFor && ui.selPart) ? cat.slotFor(ui.selPart) : slotKey);
 }
+const CLOTH_COLORS = ['#111114','#f0f0f0','#7a1e1e','#c0262d','#1e3a8a','#2563eb','#14532d','#ca8a04','#6b21a8','#ea580c','#6b4423','#8f8f8f'];
 const HAIR_COLORS = ['#1a1410','#3b2a1e','#5a3a22','#8a5a32','#b07a45','#d8b878','#e8e0d0','#8f8f8f','#7a1e1e','#c2410c','#1e3a8a','#6b21a8'];
 function renderPartDetail(el, p, slotKey){
   if(p.fitted && p.equip_slot) slotKey = p.equip_slot; // brows and lashes share T7 slot 6 but are separate fitted slots
@@ -960,11 +963,11 @@ function renderPartDetail(el, p, slotKey){
     <div class="kv"><span>Slot</span><b>${esc(SLOT_NAMES[p.suite_slot] || p.suite_slot || '—')}</b></div>
     ${p.eye_kind==='placeable_part'?'<div class="note">👁️ A real eye part: equip it, then use <b>PLACEMENT</b> to set its position, rotation and scale.</div>':''}
     ${p.geometry_pending?'<div class="note">This part is coming soon: equipping it saves it on the attire and marks where it goes.</div>':''}
-    ${p.fitted?'<div class="note">Fitted to every base body: follows the head and the face sliders.</div><div class="sect">COLOR</div><div class="btn-row" id="p-colors"></div>':''}
+    ${p.fitted?`<div class="note">${isFittedClothing(p.id)?'Fitted to every base body: follows the body and its sliders.':'Fitted to every base body: follows the head and the face sliders.'}</div><div class="sect">COLOR</div><div class="btn-row" id="p-colors"></div>`:''}
     <div class="btn-row" id="p-actions"></div>`;
   if(p.fitted){
-    const ck = FITTED_COLOR_KEY[p.suite_slot], row = el.querySelector('#p-colors');
-    HAIR_COLORS.forEach(hex=>{
+    const ck = fittedColorKey(p.id, p.suite_slot), row = el.querySelector('#p-colors');
+    (isFittedClothing(p.id) ? CLOTH_COLORS : HAIR_COLORS).forEach(hex=>{
       const b=document.createElement('button'); b.className='swatch'+(((attire().colors||{})[ck])===hex?' on':'');
       b.style.cssText=`background:${hex};width:28px;height:28px;border-radius:50%;border:2px solid ${((attire().colors||{})[ck])===hex?'#e8b64c':'#333'}`;
       b.setAttribute('aria-label', 'color '+hex); b.dataset.color=hex;

@@ -6,7 +6,8 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 /* The template bodies ship gltfpack -cc (meshopt + quantized morph targets): same decoder the game's assets.js uses
    (game/vendor/addons/libs/meshopt_decoder.js via the suite importmap). */
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.js';
-/* template-fitted hair / facial hair / brows / lashes: head-bone parenting shared with the game (HAIR phase 2026-11-02) */
+/* template-fitted hair / facial hair / brows / lashes + generated clothing / accessories (CLOTHING phase 2026-11-03):
+   skinning, body-slider morphs and body-triangle hiding shared with the game */
 import { findHeadBone, attachFittedScene, setFittedTint, setBaseHidden } from '../../../game/js/fitted-parts.js';
 /* MB-Lab game skeleton (WWE-style CREATE templates) -> the Mixamo bone names SOCKET_BONES and framing use (2026-11-01) */
 const MBLAB_ALIASES = { Hips:['pelvis'], Spine:['spine01'], Spine1:['spine02'], Spine2:['spine03'], Neck:['neck'], Head:['head'],
@@ -356,8 +357,9 @@ export class SuiteViewer {
   detachPart(partId){
     const e = this.parts.get(partId);
     if(e){
-      if(e.fitted && this.model) setBaseHidden(this.model, e.def && e.def.suite_slot, false);
       if(e.group.parent) e.group.parent.remove(e.group); else this.scene.remove(e.group);
+      // after removal: setBaseHidden also re-applies the body-triangle hiding of the garments still worn
+      if(e.fitted && this.model) setBaseHidden(this.model, e.def && e.def.suite_slot, false);
       this.parts.delete(partId);
     }
   }

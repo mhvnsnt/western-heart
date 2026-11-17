@@ -162,6 +162,9 @@ export function customFighterToRoster(F) {
     // tints — Fighter._build parents each to the template's head bone
     // (game/js/fitted-parts.js). Roster-mode saves have no template body,
     // so they carry none (selectFittedParts returns [] off-template).
+    // CLOTHING phase (2026-11-03): the same list carries the generated
+    // clothing / accessories (skinned to the body, follow its sliders,
+    // body triangles under them hidden — fitted-parts.js applyBodyHide).
     fittedParts: F.mode === 'roster' ? [] : selectFittedParts(
       (Array.isArray(F.attires) && F.attires[F.attireIndex || 0]) || null, template),
     // Raw CAW data for appearance application

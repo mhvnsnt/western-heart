@@ -14,9 +14,10 @@
   "teardown/wwf-no-mercy/textures/rom/tattoo": 99,
   "customization/parts-converted/wmxix-textures/TEX/Face_op": 140,
   "customization/parts-converted/wmxix-textures/TEX/64gara": 39,
-  "customization/parts/hair/mpfb2 (fitted CC0 hair, 2026-11-02)": 21
+  "customization/parts/hair/mpfb2 (fitted CC0 hair, 2026-11-02)": 21,
+  "customization/parts/clothing/generated (CC0 clothing + accessories generated on the 9 bodies, 2026-11-03)": 18
  },
- "total": 7723,
+ "total": 7741,
  "notes": "parts-converted/CATALOG.json is a REAL source since PR #398 merged (run #3 absence finding was true at check time; the merge landed after). Eyes: mesh eye/brow parts are placeable (eye_kind=placeable_part); eye texture entries are legacy variants (eye_kind=texture_variant) per the owner 2026-10-20 eye verdict. No eyelash mesh exists in-repo yet. Def Jam CAW library wired 2026-10-22 (worker 33, fight-lab lane): 2,624 conversion entries, all geometry_pending (POINTS topology until the mesh conversion pass lands). Worker 38 (2026-10-22): +272 DOA4 costume GLBs (full-body, real meshes). AshLane hair wired 2026-11-02: +5 real GLBs from the owner's AshLane parts library (INDEX geometryReady), listed in the suite catalog with head socket, offset 0, scale 1 (per customization/parts/ashlane/hair/manifest.json). No Mercy tattoos wired 2026-11-02: 99 tattoo PNGs from teardown/wwf-no-mercy/textures/rom/tattoo/ as decal_logo texture parts (geometry_pending false, chest-socket marker fallback in the suite preview until a placement is authored; they surface under Decals, since PARTS_TREE has no dedicated tattoo category yet).",
  "parts": [
   {
@@ -240963,6 +240964,1320 @@
     "space": "model-bind",
     "skinned": true,
     "texture": "customization/parts/hair/mpfb2/wh-beard-stubble/texture.png"
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-top-compression",
+   "name": "Compression Shirt",
+   "part_class": "mesh_part",
+   "suite_slot": "upper_body",
+   "t7_slot": "9",
+   "equip_slot": "9",
+   "wwe_category": "Shirts",
+   "wwe_region": "Upper Body",
+   "wwe_caw_tab": "Upper",
+   "library": "wh-generated-clothing",
+   "source": "customization/parts/clothing/generated/MANIFEST.json",
+   "glb": "customization/parts/clothing/generated/wh-top-compression/technician.glb",
+   "asset": "customization/parts/clothing/generated/wh-top-compression/technician.glb",
+   "socket": "body",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "clothing",
+   "placement": {
+    "socket": "body",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/clothing/generated/wh-top-compression",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "model-bind",
+    "skinned": true,
+    "hides_body": true,
+    "color": [
+     0.06,
+     0.06,
+     0.07
+    ],
+    "roughness": 0.45
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-top-tee",
+   "name": "Fitted Tee",
+   "part_class": "mesh_part",
+   "suite_slot": "upper_body",
+   "t7_slot": "9",
+   "equip_slot": "9",
+   "wwe_category": "Shirts",
+   "wwe_region": "Upper Body",
+   "wwe_caw_tab": "Upper",
+   "library": "wh-generated-clothing",
+   "source": "customization/parts/clothing/generated/MANIFEST.json",
+   "glb": "customization/parts/clothing/generated/wh-top-tee/technician.glb",
+   "asset": "customization/parts/clothing/generated/wh-top-tee/technician.glb",
+   "socket": "body",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "clothing",
+   "placement": {
+    "socket": "body",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/clothing/generated/wh-top-tee",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "model-bind",
+    "skinned": true,
+    "hides_body": true,
+    "color": [
+     0.85,
+     0.85,
+     0.85
+    ],
+    "roughness": 0.8
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-top-tank",
+   "name": "Tank Top",
+   "part_class": "mesh_part",
+   "suite_slot": "upper_body",
+   "t7_slot": "9",
+   "equip_slot": "9",
+   "wwe_category": "Vests",
+   "wwe_region": "Upper Body",
+   "wwe_caw_tab": "Upper",
+   "library": "wh-generated-clothing",
+   "source": "customization/parts/clothing/generated/MANIFEST.json",
+   "glb": "customization/parts/clothing/generated/wh-top-tank/technician.glb",
+   "asset": "customization/parts/clothing/generated/wh-top-tank/technician.glb",
+   "socket": "body",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "clothing",
+   "placement": {
+    "socket": "body",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/clothing/generated/wh-top-tank",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "model-bind",
+    "skinned": true,
+    "hides_body": true,
+    "color": [
+     0.75,
+     0.1,
+     0.1
+    ],
+    "roughness": 0.75
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-top-crop",
+   "name": "Sports Top",
+   "part_class": "mesh_part",
+   "suite_slot": "upper_body",
+   "t7_slot": "9",
+   "equip_slot": "9",
+   "wwe_category": "Shirts",
+   "wwe_region": "Upper Body",
+   "wwe_caw_tab": "Upper",
+   "library": "wh-generated-clothing",
+   "source": "customization/parts/clothing/generated/MANIFEST.json",
+   "glb": "customization/parts/clothing/generated/wh-top-crop/technician.glb",
+   "asset": "customization/parts/clothing/generated/wh-top-crop/technician.glb",
+   "socket": "body",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "clothing",
+   "placement": {
+    "socket": "body",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/clothing/generated/wh-top-crop",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "model-bind",
+    "skinned": true,
+    "hides_body": true,
+    "color": [
+     0.1,
+     0.2,
+     0.55
+    ],
+    "roughness": 0.5
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-singlet",
+   "name": "Singlet",
+   "part_class": "mesh_part",
+   "suite_slot": "fullbody",
+   "t7_slot": "10",
+   "equip_slot": "10",
+   "wwe_category": "Singlets",
+   "wwe_region": "Upper Body",
+   "wwe_caw_tab": "Upper",
+   "library": "wh-generated-clothing",
+   "source": "customization/parts/clothing/generated/MANIFEST.json",
+   "glb": "customization/parts/clothing/generated/wh-singlet/technician.glb",
+   "asset": "customization/parts/clothing/generated/wh-singlet/technician.glb",
+   "socket": "body",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "clothing",
+   "placement": {
+    "socket": "body",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/clothing/generated/wh-singlet",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "model-bind",
+    "skinned": true,
+    "hides_body": true,
+    "color": [
+     0.1,
+     0.12,
+     0.45
+    ],
+    "roughness": 0.4
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-trunks",
+   "name": "Wrestling Trunks",
+   "part_class": "mesh_part",
+   "suite_slot": "lower_body",
+   "t7_slot": "11",
+   "equip_slot": "11",
+   "wwe_category": "Trunks",
+   "wwe_region": "Lower Body",
+   "wwe_caw_tab": "Lower",
+   "library": "wh-generated-clothing",
+   "source": "customization/parts/clothing/generated/MANIFEST.json",
+   "glb": "customization/parts/clothing/generated/wh-trunks/technician.glb",
+   "asset": "customization/parts/clothing/generated/wh-trunks/technician.glb",
+   "socket": "body",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "clothing",
+   "placement": {
+    "socket": "body",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/clothing/generated/wh-trunks",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "model-bind",
+    "skinned": true,
+    "hides_body": true,
+    "color": [
+     0.08,
+     0.08,
+     0.08
+    ],
+    "roughness": 0.35
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-tights-long",
+   "name": "Long Tights",
+   "part_class": "mesh_part",
+   "suite_slot": "lower_body",
+   "t7_slot": "11",
+   "equip_slot": "11",
+   "wwe_category": "Tights",
+   "wwe_region": "Lower Body",
+   "wwe_caw_tab": "Lower",
+   "library": "wh-generated-clothing",
+   "source": "customization/parts/clothing/generated/MANIFEST.json",
+   "glb": "customization/parts/clothing/generated/wh-tights-long/technician.glb",
+   "asset": "customization/parts/clothing/generated/wh-tights-long/technician.glb",
+   "socket": "body",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "clothing",
+   "placement": {
+    "socket": "body",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/clothing/generated/wh-tights-long",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "model-bind",
+    "skinned": true,
+    "hides_body": true,
+    "color": [
+     0.55,
+     0.08,
+     0.08
+    ],
+    "roughness": 0.35
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-shorts-fight",
+   "name": "Fight Shorts",
+   "part_class": "mesh_part",
+   "suite_slot": "lower_body",
+   "t7_slot": "11",
+   "equip_slot": "11",
+   "wwe_category": "Bottoms",
+   "wwe_region": "Lower Body",
+   "wwe_caw_tab": "Lower",
+   "library": "wh-generated-clothing",
+   "source": "customization/parts/clothing/generated/MANIFEST.json",
+   "glb": "customization/parts/clothing/generated/wh-shorts-fight/technician.glb",
+   "asset": "customization/parts/clothing/generated/wh-shorts-fight/technician.glb",
+   "socket": "body",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "clothing",
+   "placement": {
+    "socket": "body",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/clothing/generated/wh-shorts-fight",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "model-bind",
+    "skinned": true,
+    "hides_body": true,
+    "color": [
+     0.12,
+     0.12,
+     0.14
+    ],
+    "roughness": 0.8
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-gloves-mma",
+   "name": "Open-Finger Gloves",
+   "part_class": "mesh_part",
+   "suite_slot": "gloves",
+   "t7_slot": "H",
+   "equip_slot": "H",
+   "wwe_category": "Gloves",
+   "wwe_region": "Arms & Hands",
+   "wwe_caw_tab": "Hands",
+   "library": "wh-generated-clothing",
+   "source": "customization/parts/clothing/generated/MANIFEST.json",
+   "glb": "customization/parts/clothing/generated/wh-gloves-mma/technician.glb",
+   "asset": "customization/parts/clothing/generated/wh-gloves-mma/technician.glb",
+   "socket": "hand",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "clothing",
+   "placement": {
+    "socket": "hand",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/clothing/generated/wh-gloves-mma",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "model-bind",
+    "skinned": true,
+    "hides_body": true,
+    "color": [
+     0.08,
+     0.08,
+     0.08
+    ],
+    "roughness": 0.35
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-gloves-full",
+   "name": "Full Gloves",
+   "part_class": "mesh_part",
+   "suite_slot": "gloves",
+   "t7_slot": "H",
+   "equip_slot": "H",
+   "wwe_category": "Gloves",
+   "wwe_region": "Arms & Hands",
+   "wwe_caw_tab": "Hands",
+   "library": "wh-generated-clothing",
+   "source": "customization/parts/clothing/generated/MANIFEST.json",
+   "glb": "customization/parts/clothing/generated/wh-gloves-full/technician.glb",
+   "asset": "customization/parts/clothing/generated/wh-gloves-full/technician.glb",
+   "socket": "hand",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "clothing",
+   "placement": {
+    "socket": "hand",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/clothing/generated/wh-gloves-full",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "model-bind",
+    "skinned": true,
+    "hides_body": true,
+    "color": [
+     0.12,
+     0.08,
+     0.06
+    ],
+    "roughness": 0.45
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-boots-knee",
+   "name": "Knee-High Boots",
+   "part_class": "mesh_part",
+   "suite_slot": "shoes",
+   "t7_slot": "F",
+   "equip_slot": "F",
+   "wwe_category": "Boots",
+   "wwe_region": "Legs & Feet",
+   "wwe_caw_tab": "Feet",
+   "library": "wh-generated-clothing",
+   "source": "customization/parts/clothing/generated/MANIFEST.json",
+   "glb": "customization/parts/clothing/generated/wh-boots-knee/technician.glb",
+   "asset": "customization/parts/clothing/generated/wh-boots-knee/technician.glb",
+   "socket": "foot",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "clothing",
+   "placement": {
+    "socket": "foot",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/clothing/generated/wh-boots-knee",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "model-bind",
+    "skinned": true,
+    "hides_body": true,
+    "color": [
+     0.06,
+     0.06,
+     0.06
+    ],
+    "roughness": 0.3
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-boots-ankle",
+   "name": "Ankle Boots",
+   "part_class": "mesh_part",
+   "suite_slot": "shoes",
+   "t7_slot": "F",
+   "equip_slot": "F",
+   "wwe_category": "Boots",
+   "wwe_region": "Legs & Feet",
+   "wwe_caw_tab": "Feet",
+   "library": "wh-generated-clothing",
+   "source": "customization/parts/clothing/generated/MANIFEST.json",
+   "glb": "customization/parts/clothing/generated/wh-boots-ankle/technician.glb",
+   "asset": "customization/parts/clothing/generated/wh-boots-ankle/technician.glb",
+   "socket": "foot",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "clothing",
+   "placement": {
+    "socket": "foot",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/clothing/generated/wh-boots-ankle",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "model-bind",
+    "skinned": true,
+    "hides_body": true,
+    "color": [
+     0.22,
+     0.13,
+     0.07
+    ],
+    "roughness": 0.4
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-kneepads",
+   "name": "Knee Pads",
+   "part_class": "mesh_part",
+   "suite_slot": "accessory",
+   "t7_slot": "13",
+   "equip_slot": "13K",
+   "wwe_category": "Knee Pads",
+   "wwe_region": "Legs & Feet",
+   "wwe_caw_tab": "Accessories",
+   "library": "wh-generated-clothing",
+   "source": "customization/parts/clothing/generated/MANIFEST.json",
+   "glb": "customization/parts/clothing/generated/wh-kneepads/technician.glb",
+   "asset": "customization/parts/clothing/generated/wh-kneepads/technician.glb",
+   "socket": "body",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "clothing",
+   "placement": {
+    "socket": "body",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/clothing/generated/wh-kneepads",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "model-bind",
+    "skinned": true,
+    "hides_body": true,
+    "color": [
+     0.08,
+     0.08,
+     0.08
+    ],
+    "roughness": 0.4
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-elbowpads",
+   "name": "Elbow Pads",
+   "part_class": "mesh_part",
+   "suite_slot": "accessory",
+   "t7_slot": "12",
+   "equip_slot": "12E",
+   "wwe_category": "Elbow Pads",
+   "wwe_region": "Arms & Hands",
+   "wwe_caw_tab": "Accessories",
+   "library": "wh-generated-clothing",
+   "source": "customization/parts/clothing/generated/MANIFEST.json",
+   "glb": "customization/parts/clothing/generated/wh-elbowpads/technician.glb",
+   "asset": "customization/parts/clothing/generated/wh-elbowpads/technician.glb",
+   "socket": "body",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "clothing",
+   "placement": {
+    "socket": "body",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/clothing/generated/wh-elbowpads",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "model-bind",
+    "skinned": true,
+    "hides_body": true,
+    "color": [
+     0.08,
+     0.08,
+     0.08
+    ],
+    "roughness": 0.4
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-wrist-tape",
+   "name": "Wrist Tape",
+   "part_class": "mesh_part",
+   "suite_slot": "accessory",
+   "t7_slot": "12",
+   "equip_slot": "12W",
+   "wwe_category": "Wrist Tape",
+   "wwe_region": "Arms & Hands",
+   "wwe_caw_tab": "Accessories",
+   "library": "wh-generated-clothing",
+   "source": "customization/parts/clothing/generated/MANIFEST.json",
+   "glb": "customization/parts/clothing/generated/wh-wrist-tape/technician.glb",
+   "asset": "customization/parts/clothing/generated/wh-wrist-tape/technician.glb",
+   "socket": "body",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "clothing",
+   "placement": {
+    "socket": "body",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/clothing/generated/wh-wrist-tape",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "model-bind",
+    "skinned": true,
+    "hides_body": true,
+    "color": [
+     0.92,
+     0.92,
+     0.9
+    ],
+    "roughness": 0.85
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-armbands",
+   "name": "Arm Bands",
+   "part_class": "mesh_part",
+   "suite_slot": "accessory",
+   "t7_slot": "12",
+   "equip_slot": "12A",
+   "wwe_category": "Arm Bands",
+   "wwe_region": "Arms & Hands",
+   "wwe_caw_tab": "Accessories",
+   "library": "wh-generated-clothing",
+   "source": "customization/parts/clothing/generated/MANIFEST.json",
+   "glb": "customization/parts/clothing/generated/wh-armbands/technician.glb",
+   "asset": "customization/parts/clothing/generated/wh-armbands/technician.glb",
+   "socket": "body",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "clothing",
+   "placement": {
+    "socket": "body",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/clothing/generated/wh-armbands",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "model-bind",
+    "skinned": true,
+    "hides_body": true,
+    "color": [
+     0.75,
+     0.6,
+     0.1
+    ],
+    "roughness": 0.4
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-headband",
+   "name": "Headband",
+   "part_class": "mesh_part",
+   "suite_slot": "accessory",
+   "t7_slot": "4",
+   "equip_slot": "4",
+   "wwe_category": "Head Accessories",
+   "wwe_region": "Headgear",
+   "wwe_caw_tab": "Accessories",
+   "library": "wh-generated-clothing",
+   "source": "customization/parts/clothing/generated/MANIFEST.json",
+   "glb": "customization/parts/clothing/generated/wh-headband/technician.glb",
+   "asset": "customization/parts/clothing/generated/wh-headband/technician.glb",
+   "socket": "head",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "clothing",
+   "placement": {
+    "socket": "head",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/clothing/generated/wh-headband",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "model-bind",
+    "skinned": true,
+    "hides_body": true,
+    "color": [
+     0.75,
+     0.1,
+     0.1
+    ],
+    "roughness": 0.8
+   },
+   "editable": [
+    "tint",
+    "visible"
+   ],
+   "license": "CC0-1.0"
+  },
+  {
+   "id": "wh-belt",
+   "name": "Waist Belt",
+   "part_class": "mesh_part",
+   "suite_slot": "accessory",
+   "t7_slot": "13",
+   "equip_slot": "13B",
+   "wwe_category": "Belts",
+   "wwe_region": "Lower Body",
+   "wwe_caw_tab": "Accessories",
+   "library": "wh-generated-clothing",
+   "source": "customization/parts/clothing/generated/MANIFEST.json",
+   "glb": "customization/parts/clothing/generated/wh-belt/technician.glb",
+   "asset": "customization/parts/clothing/generated/wh-belt/technician.glb",
+   "socket": "body",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1,
+   "modeled_in_place_for": null,
+   "geometry_pending": false,
+   "kind": "clothing",
+   "placement": {
+    "socket": "body",
+    "mode": "fitted",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1
+   },
+   "fitted": {
+    "dir": "customization/parts/clothing/generated/wh-belt",
+    "templates": [
+     "super-heavyweight",
+     "powerhouse",
+     "showman",
+     "technician",
+     "highflyer",
+     "luchador",
+     "powerhouse-w",
+     "athletic-w",
+     "striker-w"
+    ],
+    "space": "model-bind",
+    "skinned": true,
+    "hides_body": true,
+    "color": [
+     0.12,
+     0.08,
+     0.05
+    ],
+    "roughness": 0.35
    },
    "editable": [
     "tint",
