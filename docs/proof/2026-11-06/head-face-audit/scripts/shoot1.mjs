@@ -1,0 +1,18 @@
+import { chromium } from '/home/hatch/workspace/_roster100-wave2-20261105/node_modules/playwright/index.mjs';
+import { spawn } from 'node:child_process';
+const server = spawn('python3', ['-m', 'http.server', '8932', '--bind', '127.0.0.1'], { cwd: new URL('./wh', import.meta.url).pathname, stdio: 'ignore' });
+await new Promise((r) => setTimeout(r, 1000));
+const browser = await chromium.launch({ executablePath: '/home/hatch/workspace/_playverify-20261030/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell' });
+const page = await browser.newPage({ viewport: { width: 640, height: 760 } });
+page.on('console', (m) => console.log('[page]', m.type(), m.text().slice(0, 200)));
+page.on('pageerror', (e) => console.log('[pageerror]', String(e).slice(0, 300)));
+page.on('requestfailed', (r) => console.log('[reqfail]', r.url().slice(-80), r.failure() && r.failure().errorText));
+const url = 'http://127.0.0.1:8932/game/harness.html?key=kinpo&bank=jin&v=fixed&clip=stance&t=0.3&view=front';
+console.log('goto', url);
+await page.goto(url, { waitUntil: 'load', timeout: 45000 }).catch((e) => console.log('goto err', String(e).slice(0, 200)));
+await page.waitForFunction(() => window.__ready === true, null, { timeout: 45000 }).catch((e) => console.log('ready err', String(e).slice(0, 120)));
+await page.screenshot({ path: new URL('./proof/test-kinpo.png', import.meta.url).pathname }).catch((e) => console.log('shot err', String(e).slice(0, 120)));
+console.log('done');
+await browser.close();
+server.kill();
+process.exit(0);

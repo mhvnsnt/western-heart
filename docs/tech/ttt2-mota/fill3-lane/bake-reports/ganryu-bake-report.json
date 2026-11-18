@@ -1,0 +1,89 @@
+{
+ "bank": "ganryu",
+ "baked": {
+  "t3_walk_back": {
+   "move": "Sm_sWALKB",
+   "anim": "susm_bwalk(DVD)",
+   "bank": 1,
+   "idx": 162,
+   "frames": 30,
+   "fk_selfcheck_max_m": 0.0,
+   "gate_note": "toe graze 0.09 m (frame 20) within TTT2-vs-T7 skeleton proportion delta; ankles >= 0.06 m throughout; all other gate checks pass"
+  },
+  "t3_dash_fwd": {
+   "move": "Sm_sDASHF",
+   "anim": "kzco_dash125(DVD)",
+   "bank": 1,
+   "idx": 160,
+   "frames": 20,
+   "fk_selfcheck_max_m": 0.0,
+   "gate_note": "toe graze 0.10 m (frame 0) within TTT2-vs-T7 skeleton proportion delta; ankles >= 0.02 m throughout; all other gate checks pass"
+  },
+  "t3_backdash": {
+   "move": "Sm_sDASHB",
+   "anim": "naco_back90(DVD)",
+   "bank": 1,
+   "idx": 165,
+   "frames": 22,
+   "fk_selfcheck_max_m": 0.0,
+   "gate_note": "toe graze 0.10 m (frame 0) within TTT2-vs-T7 skeleton proportion delta; ankles >= 0.08 m throughout; all other gate checks pass"
+  },
+  "t3_crouch_hold": {
+   "move": "Sm_cKAM00_",
+   "anim": "susm_skamae(DVD)",
+   "bank": 1,
+   "idx": 169,
+   "frames": 35,
+   "fk_selfcheck_max_m": 0.0,
+   "gate_note": "toe graze 0.08 m (frame 0) within TTT2-vs-T7 skeleton proportion delta; ankles >= 0.08 m throughout; all other gate checks pass"
+  },
+  "t3_jump_up": {
+   "move": "sJUMP_00_",
+   "anim": "Bco_newjump2(DVD)",
+   "bank": 2,
+   "idx": 309,
+   "frames": 120,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_jump_fwd": {
+   "move": "sJUMP_00F",
+   "anim": "Bco_newjump2(DVD)",
+   "bank": 2,
+   "idx": 309,
+   "frames": 120,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_jump_back": {
+   "move": "sJUMP_00B",
+   "anim": "Bco_newjump2(DVD)",
+   "bank": 2,
+   "idx": 309,
+   "frames": 120,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_sidestep_a": {
+   "move": "sSTEP_01L",
+   "anim": "naco_l2idou(DVD)",
+   "bank": 2,
+   "idx": 1807,
+   "frames": 70,
+   "fk_selfcheck_max_m": 0.0
+  }
+ },
+ "skipped": {
+  "t3_neutral": "in-game plausibility gate: does not start upright",
+  "t3_light": "in-game plausibility gate: LeftToeBase 0.08 m below the floor on frame 1 (mannequin proportions)",
+  "t3_heavy": "in-game plausibility gate: LeftToeBase 0.13 m below the floor on frame 3 (mannequin proportions)",
+  "t3_hit": "in-game plausibility gate: LeftToeBase 0.22 m below the floor on frame 0 (mannequin proportions)",
+  "t3_block": "in-game plausibility gate: LeftToeBase 1.11 m below the floor on frame 0 (mannequin proportions)",
+  "t3_walk_fwd": "in-game plausibility gate: LeftToeBase 0.09 m below the floor on frame 1 (mannequin proportions)",
+  "t3_crouch": "in-game plausibility gate: RightToeBase 0.24 m below the floor on frame 0 (mannequin proportions)",
+  "t3_sidestep_b": "in-game plausibility gate: LeftToeBase 0.08 m below the floor on frame 3 (mannequin proportions)"
+ },
+ "gaps": {
+  "t3_medium": "no own-prefix _lk00 record in join",
+  "t3_grab": "no Thrmv_B1_00/Thrmv_B2_00i bank-1 record in join",
+  "t3_ko": "no slot source identified (shipped Roger/Jun banks also ship no t3_ko clip)",
+  "t3_hit_launch": "no slot source identified (shipped Roger/Jun banks also ship no t3_hit_launch clip)"
+ }
+}
