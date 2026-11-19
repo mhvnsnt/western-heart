@@ -230,8 +230,8 @@ d+2+4	V Driver	UNMAPPED:t7-clip-pending	row:128	t3row
 d+3	Stomp	UNMAPPED:t7-clip-pending	t7:d+3~t7.king	t7
 d+3+4	Move d+3+4 (d+3+4)	UNMAPPED:t7-clip-pending	t7:d+3+4~t7.king	t7
 d+3+4,4	Move 4 (4)	UNMAPPED:t7-clip-pending	medium	generic:medium
-d+3+4,4,4	Stagger Kicks	t7:king:d+3+4,4,4	t7:d+3+4,4,4	t7
-d+3+4,4,4,2	Stagger Kick Spinning Uppercut	t7:king:d+3+4,4,4,2	t7:d+3+4,4,4,2	t7
+d+3+4,4,4	Stagger Kicks	UNMAPPED:t7-clip-pending	medium	generic:medium
+d+3+4,4,4,2	Stagger Kick Spinning Uppercut	t8:king:king-d+3+4,4,4,2	light	generic:light
 d+3+4,4,4,4	Stagger Kick Flurry	UNMAPPED:t7-clip-pending	medium	generic:medium
 d+4	Move d+4 (d+4)	t7:king:d+4	t7:d+4	t7
 db+1+2	Muscle Armor	UNMAPPED:t7-clip-pending	row:195	t3row
@@ -785,7 +785,7 @@ d+3+4,4,1,4,4,1	KING d+3+4,4,1,4,4,1_c57 (T3 king r215)	t3:king:row:215	row:215	
 u+1,2+4	KING u+1,2+4 (T3 king r243)	t3:king:row:243	row:243	t3row
 u/f+1,2~t3.king	KING u/f+1,2_r20_r245 (T3 king r245)	t3:king:row:245	row:245	t3row
 u/b+1,2+4	KING u/b+1,2+4 (T3 king r246)	t3:king:row:246	row:246	t3row
-d/f+3+4,1	KING d/f+3+4,1_c2 (T3 king r247)	t7:king:d/f+3+4,1	t7:d/f+3+4,1	t7
+d/f+3+4,1	KING d/f+3+4,1_c2 (T3 king r247)	t3:king:row:247	medium	generic:medium
 1+2~t3.king.3	KING 1+2_c43_r249 (T3 king r249)	t3:king:row:249	row:101	t3row
 f+2,1,1	KING f+2,1,1_r4 (T3 king r257)	t3:king:row:257	light	generic:light
 f+2,1,1,2	KING f+2,1,1,2_r4 (T3 king r258)	t3:king:row:258	light	generic:light

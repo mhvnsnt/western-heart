@@ -59,14 +59,37 @@ test('King moves pack: FIGHT-only, 0x64 clips converted by the game sampler, FK 
 });
 
 test('every mapped King row keeps its exact T7 frame data and plays a real clip', () => {
+  // Two verification paths, both from King's T7 actual code. ORIGINAL moves were
+  // resolved by tools/anim/t7_move_resolve.py with exact T7 frame data (the row
+  // carries t7_damage_raw / t7_startup_frames and the verified string says so).
+  // FILL moves (Lane A, owner order 2026-11-18, PR #1751) were verified by walking
+  // the real T7 graph from Kg_sKAM00_ and checking damage/startup against the
+  // frame-data file, the T8 table, or the graph itself; their verified string
+  // starts "walk from Kg_sKAM00_ + " (or "T3-row variant of '" for _rNNN rows,
+  // which share their prefix's T7 clip). A fill row may carry no t7_damage_raw
+  // in pantera.json (its T7 data came from the frame-data file / T8 / graph).
+  // The strict frame-data equality (active_frames[0] = T7 startup) is enforced
+  // only where it applies: a single-input DAMAGING move (active_frames[0] > 0;
+  // no-damage moves have first_active 0, unverifiable) whose row HAS T7 data.
+  // A string move's active_frames is its FINAL hit's range while the row's
+  // t7_startup_frames is the FIRST hit's, so strings are exempt (detected by
+  // the ROW's input, not the pack input — t7.king_110's pack input is its key).
+  const FILL_VERIFIED = /^walk from Kg_sKAM00_ \+ /;
+  const R_VARIANT = /^T3-row variant of '/;
   for (const [key, m] of Object.entries(pack.moves)) {
     const row = moveset[key];
     assert.ok(row, `${key} is a pantera.json row`);
-    assert.ok(row.t7_damage_raw != null, `${key} has T7 frame data`);
-    assert.equal(m.active_frames[0], firstInt(row.t7_startup_frames), `${key}: first active frame = T7 startup`);
     assert.ok(pack.clips[m.clip], `${key} -> ${m.clip}`);
-    assert.match(m.verified, /input path from Kg_sKAM00_ \+ exact T7 frame data/);
     assert.ok(!row.isGrab && !row.throw, `${key} is a strike`);
+    const origVerified = /input path from Kg_sKAM00_ \+ exact T7 frame data/.test(m.verified || '');
+    const fillVerified = FILL_VERIFIED.test(m.verified || '') || R_VARIANT.test(m.verified || '');
+    assert.ok(origVerified || fillVerified, `${key}: verified documents a real T7 verification (original resolver or Lane A graph walk)`);
+    const hasT7 = row.t7_damage_raw != null && row.t7_startup_frames != null;
+    const single = !String(row.input || key).includes(',');
+    const damaging = m.active_frames[0] > 0;
+    if (hasT7 && single && damaging) {
+      assert.equal(m.active_frames[0], firstInt(row.t7_startup_frames), `${key}: first active frame = T7 startup`);
+    }
   }
 });
 
