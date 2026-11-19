@@ -16,7 +16,7 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| ⏳ running | [#1751](https://github.com/mhvnsnt/western-heart/pull/1751) Pantera T7 clip coverage: 70/643 -> 189/643 (Lane A) | ready | mhvnsnt / `pantera-100/clips-20261118` | `a6921cc` | `main` | ⏳ | ✅ | ⏳ | ⏳ | 2✅ 8⏳ | mergeable (blocked) | 2026-11-19 05:09 UTC |
+| ⏳ running | [#1751](https://github.com/mhvnsnt/western-heart/pull/1751) Pantera T7 clip coverage: 70/643 -> 189/643 (Lane A) | ready | mhvnsnt / `pantera-100/clips-20261118` | `a6921cc` | `main` | ✅ | ✅ | ✅ | ⏳ | 5✅ 5⏳ | mergeable (blocked) | 2026-11-19 05:10 UTC |
 | 🔴 failing | [#1714](https://github.com/mhvnsnt/western-heart/pull/1714) Hair fit v6: straight REFIT6B crown coverage; afro gate closure (no ship) | ready | mhvnsnt / `claude/hair-fit-v6-20261110` | `c6d4234` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-10 07:16 UTC |
 | 🔴 failing | [#1702](https://github.com/mhvnsnt/western-heart/pull/1702) proof: Megami GNM face — corr3_a on v5 body (final proof set + gates) | ready | mhvnsnt / `megami-gnm-face-20261109` | `524b662` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-10 01:11 UTC |
 | 🔴 failing | [#1701](https://github.com/mhvnsnt/western-heart/pull/1701) proof(gnm-face): Megami Angel face corr3_a on v5 — proof set + gates (CAVEATED frames, do  | ready | mhvnsnt / `proof/megami-gnm-face-20261109` | `29de082` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-10 00:48 UTC |
