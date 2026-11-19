@@ -186,9 +186,10 @@ as the No Mercy lane.
   each) — bit-packed, dumped raw + u16; no decoder exists.
 - `moveset/edit_mode_moves.json`: file 0x0061, u16 array (header 133 +
   1007 pairs, pairing is a hypothesis).
-- `moveset/params_moveset_manifest.json`: 101 params/moveset file pairs
-  (0x0281+), 98/130 wrestlers linked by ID4. Bit-packed; no parser
-  exists in VPWStudio (same gap as No Mercy).
+- `moveset/params_moveset_manifest.json`: 98 per-wrestler params/moveset
+  file pairs (0x0281+) + 3 edit-mode pairs (Wrestling / Combo / Shoot,
+  fids 0x0345–0x034A), 98/130 wrestlers linked by ID4. Bit-packed; no
+  parser exists in VPWStudio (same gap as No Mercy).
 - `moveset/code_tables.json` + 7 `.bin` blobs: BitPacking tables +
   MasterMoveMods from the ROM code segment.
 - `roster/blood.json` + 4 PNGs: blood 1bpp masks (256 B each, decoded as
