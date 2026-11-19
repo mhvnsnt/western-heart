@@ -35,7 +35,15 @@ changed file's blob at all three revisions before deciding anything. On a
 binary-heavy PR (5,780 files, mostly .npy) that is ~17k lazy blob fetches,
 which blew the 25-minute job timeout. Known-binary extensions are now
 skipped before fetching (they could never flag: text_lines() skips binary
-content anyway), and main's blobs are reused when main == base.
+content anyway), and main's blobs are reused when main == base. The remaining
+reads go through one `git cat-file --batch` process per revision
+(_read_revision_files): one `git show` per file means one subprocess and one
+lazy-fetch negotiation per file, while a single batch process reads all blobs
+locally — so a 14k-file text diff (the No Mercy model re-extraction, PR
+#1759) costs three subprocesses instead of ~28k. (`git archive` was
+considered and rejected: in a partial clone it triggers a promisor fetch
+that hangs in this environment, and it needs an ls-tree pre-pass because it
+fails on missing paths; cat-file reports missing files itself.)
 """
 import json
 import os
@@ -144,6 +152,49 @@ def _git_show(rev, path):
     return r.stdout if r.returncode == 0 else None
 
 
+def _read_revision_files(rev, paths, cwd=None):
+    """Read many files at one revision through one `git cat-file --batch`.
+
+    One `git show` per file means one subprocess (and one lazy-fetch
+    negotiation in a partial clone) per file — ~17k fetches timed the
+    job out on PR #1755. A single batch process reads all blobs locally.
+    Returns {path: bytes}; files absent at the revision map to None.
+    Paths containing a newline can't travel the line-based batch
+    protocol, so they fall back to _git_show (vanishingly rare).
+    """
+    out = {}
+    batch_paths = [p for p in paths if "\n" not in p]
+    for p in paths:
+        if "\n" in p:
+            out[p] = _git_show(rev, p)
+    if not batch_paths:
+        return out
+    proc = subprocess.Popen(
+        ["git", "cat-file", "--batch"],
+        stdin=subprocess.PIPE, stdout=subprocess.PIPE, cwd=cwd)
+    for p in batch_paths:
+        proc.stdin.write(f"{rev}:{p}\n".encode())
+        proc.stdin.flush()
+        header = proc.stdout.readline().decode().rstrip("\n")
+        parts = header.split(" ")
+        if len(parts) >= 3 and parts[1] == "blob":
+            size = int(parts[2])
+            out[p] = proc.stdout.read(size)
+            proc.stdout.read(1)  # trailing LF after each object's contents
+        elif len(parts) >= 3:
+            # A tree/commit sits at that path: consume its contents and
+            # discard, so the stream stays in sync for the next file.
+            size = int(parts[2])
+            proc.stdout.read(size)
+            proc.stdout.read(1)
+            out[p] = None
+        else:
+            out[p] = None  # "<object> missing": no contents follow
+    proc.stdin.close()
+    proc.wait()
+    return out
+
+
 def main():
     base_sha = os.environ["BASE_SHA"]
     head_sha = os.environ["HEAD_SHA"]
@@ -167,14 +218,14 @@ def main():
         print(f"Skipping {n_skipped} known-binary file(s) before fetch.")
     paths = [p for p in paths if not is_binary_path(p)]
 
-    base_files = {p: _git_show(base_sha, p) for p in paths}
+    base_files = _read_revision_files(base_sha, paths)
     # When main hasn't moved past the fork point, main == base: reuse
     # the blobs instead of fetching them a second time.
     if main_sha == base_sha:
         main_files = dict(base_files)
     else:
-        main_files = {p: _git_show(main_sha, p) for p in paths}
-    head_files = {p: _git_show(head_sha, p) for p in paths}
+        main_files = _read_revision_files(main_sha, paths)
+    head_files = _read_revision_files(head_sha, paths)
 
     bad = check_files(base_files, main_files, head_files, body, labels)
     if not bad:
