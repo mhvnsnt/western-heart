@@ -4143,9 +4143,14 @@ export class Fighter {
   /* LANE B (pantera-throwfix 2026-11-19): thrower clinch yaw correction
      (radians, added to lean.rotation.y in _animate). Windowed bump over
      the thrower's own clock _throwYawT (seconds since 'throwing' started):
-     0 at the connect (no pop), peak +30 deg (0.52 rad) at ~0.43 s — the
-     middle of the bent-over clinch — and back to 0 by 0.85 s, before the
-     slam's own rotation. The source bend and the slam are untouched. */
+     0 at the connect (no pop), peak at ~0.43 s — the middle of the
+     bent-over clinch — and back to 0 by 0.85 s, before the slam's own
+     rotation. The source bend and the slam are untouched. SIGN: negative
+     in lean space on purpose — three.js R_y(+th) moves the chest's world
+     yaw by -th, so -0.52 rad on lean.rotation.y reads as +30 deg of chest
+     yaw toward the side camera. (First version had the sign backwards:
+     AFTER probe 2+4 read clinch chest -50..-1 deg vs BEFORE -28..+4 deg,
+     worst exactly at the correction peak — this flip corrects it.) */
   _throwYawCorrection() {
     if (this.state !== 'throwing' && this.state !== 'throwExec') return 0;
     const t = this._throwYawT || 0;
@@ -4153,7 +4158,7 @@ export class Fighter {
     if (t <= 0 || t >= T) return 0;
     const u = t / T;
     const s = Math.sin(u * Math.PI);
-    return 0.52 * s * s;
+    return -0.52 * s * s;
   }
 
   /* Shared-root-frame drive for a paired throw (doc formula):
@@ -4613,7 +4618,8 @@ export class Fighter {
     // states, so the correction can never leak into the next move.
     if (this.state === 'throwing' || this.state === 'throwExec') this._throwYawT = (this._throwYawT || 0) + dt;
     else this._throwYawT = 0;
-    this.lean.rotation.y = ((typeof this._faceYaw === 'number') ? this._faceYaw : this.facing * Math.PI / 2) + this._throwYawCorrection();
+    this.lean.rotation.y = (typeof this._faceYaw === 'number') ? this._faceYaw : this.facing * Math.PI / 2;
+    this.lean.rotation.y += this._throwYawCorrection();
 
     // 2) Which REAL T3 clip owns this state? (FROZEN-IDLE FIX 2026-10-20:
     // the bank's animated stance/walk clips existed but were NEVER played
