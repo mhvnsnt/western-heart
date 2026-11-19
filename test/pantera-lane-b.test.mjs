@@ -27,7 +27,9 @@ const FT = await import(join(ROOT, 'game/js/frame-tables.js'));
 await FT.frameTablesReady;
 const q = console.log, qw = console.warn; console.log = () => {}; console.warn = () => {};
 await M.loadFighterMovesets(); await M.ensureMovesets(['pantera']);
-const bank = F.bankIdFor('pantera', 'pantera');
+// Dash/run clips live in the t7_king bank (as in tekken-run-pantera.test.mjs); bankIdFor
+// returns 'king', which is not what _tryTekkenDash reads, so the dash never entered.
+const bank = 't7_king';
 const clips = await T.loadT3Clips(THREE, bank);
 await T.ensureT7Moves('pantera', THREE);
 console.log = q; console.warn = qw;
@@ -37,7 +39,8 @@ function pantera() {
   const f = Object.create(F.Fighter.prototype);
   Object.assign(f, { char: { id: 'pantera' }, _movesetId: 'pantera', t3actions: {}, _t3: { bank, clips },
     root: { position: { x: 0, y: 0, z: 0 } }, facing: 1, dead: false, stun: 0, onGround: true,
-    brawler: false, state: 'idle', stateT: 0, vx: 0, _clock: 0 });
+    brawler: false, state: 'idle', stateT: 0, vx: 0, _clock: 0,
+    stats: { speed: 2.8, jump: 7.2, power: 1.1, defense: 1.05 } }); // fighter.js:764 default stats (tryJump reads stats.jump)
   f.tekken = new M.TekkenBuffer('pantera');
   f._opp = null;
   return f;
@@ -135,6 +138,11 @@ test('BT engine: FC.1+2 ends back-turned, BT.1 resolves, crouch/jump/sidestep cl
   };
   const f = enterBT();
   assert.equal(f.tryAttack('1') && f.attackName, 'BT.1', 'BT.1 resolves while back-turned');
+  // A BT chord with a non-crouch direction held: _pressV2's ''-prefix tier would take f+1+2
+  // before the plain 'BT.1+2' row, the same precedence bug as the FC./WR. chords.
+  const c = enterBT();
+  press(c, [['f', 3]]);
+  assert.equal(c.tryAttack('1+2') && c.attackName, 'BT.1+2', 'BT.1+2 resolves while back-turned, not f+1+2');
   f.tryCrouch(true); frame(f, 'd/f');
   assert.equal(f._bt, false, 'crouching from back-turned turns you around');
   const j = enterBT();
