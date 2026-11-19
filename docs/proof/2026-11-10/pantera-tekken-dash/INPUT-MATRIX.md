@@ -195,3 +195,19 @@ Node test: `test/t7-king-motions.test.mjs` (fails 9/10 on main, passes here).
 - a button press from the run firing an attack (which move it resolves to is not asserted).
 
 The 4 positive tests fail on main and pass here. The alias and KBD tests still pass. Run-attack recognition is tested separately in `test/t7-king-motions.test.mjs`. Node only; no touch or model proof.
+
+---
+
+## T7 clip coverage — fill to 189/643 (2026-11-19, Lane A, branch `pantera-100/clips-20261118`)
+
+Owner order (verbatim): "turn around is partial and all the other partial things you need to get them to 100%. filled in from kings T7 actual code."
+
+- **Baseline (main, probe-measured): 70/643 (~11%)** play a real King T7 clip (t7 70 / t3row 507 / generic:light 46 / generic:medium 20). The probe replicates `Fighter._attackClipPlan` tier 1 data-level (slot resolution, grab guard, `t7MoveClip` with the engine's real normalizers) and reproduces the committed `clip-provenance.tsv` exactly.
+- **New: 189/643 (29.4%)** play a real King T7 clip (t7 189 / t3row 399 / generic:light 41 / generic:medium 14). Rows flipped to t7: **119** = 66 v4 fills + 53 qualifying `_rNNN` rows.
+- **Pack:** `game/assets/anim/t7/king/moves.pack.json` 51 → 170 moves (added 119), 50 → 100 clips (added 50, all copied from the T7 graph-clips bank — `graph-clips/index.json`, shards 0–6 + 9; no clip hand-tooled, invented, or faked). Pack validation: every pack move's input walks through the real T7 graph (`t7graph.js` `stepCancel` + `T7GraphDriver`) to its stated motbin move — **170/170 pass**.
+- **Moveset:** `game/assets/movesets/pantera.json` anim_ref updated on 121 rows to `t7:king:<row key>` (66 fills + 53 `_rNNN` + 2 rows that flip via a duplicate's pack move: `uf+1` via `u/f+1`, `d/f+3,4` via `df+3,4`). No other field touched.
+- **Fill method:** each non-t7 row was walked through the real T7 graph from the neutral stance and verified against King T7 damage/startup (the row's t7 block, the frame-data file's per-hit list, or the T8 table as a tie-break; the graph/motbin is ground truth). Promote tiers: verified 27, verified-nodmg 13, verified-t8 11, verified-string 5, verified-walk 10.
+- **Named targets:** all 5 UNMAPPED BT rows now play real T7 clips — BT.1 → Co_R_lp00R, BT.1+2 → Kg_Tnrpsp, BT.1+4 → Kg_BMSP00, BT.3 → Kg_kinlk00, BT.d+4 → Kg_R_loDrop — plus BT.4 → Co_R_rk00R and BT.3+4 → Kg_fstep (the T8 confirms BT.3+4 is "Jaguar Step (BT)", a step).
+- **Gaps (honest, no fake clips):** 304 rows still have no real T7 clip in the bank (unparseable/WH-signature/rage/chain/oki rows, rows with no verification data, and rows whose walk derailed). 72 throw rows are gap-throw (46 reached a throw move with an identified clip for Lane C's paired-throw path; 26 derailed with no identified clip). 106 `_r`/`_c` rows stay gaps (context unknown; needs the T3 row→context map). The full per-row record is in `fill-v4.json` (lane workdir) and the updated `clip-provenance.tsv` (this folder).
+- **Known slot shadowing (flagged, not fixed by this lane):** `u/f+1+2` and `d/f+3+4` have real T7 pack moves (Kg_sjplrp, Kg_frank00) but their `slots` redirect to throws (`uf+1+2`, `df+3+4`), so the engine's T7 tier is skipped and they play T3 rows. The pack moves exist and are correct; the slot is a moveset/engine matter.
+- **Not 100% yet:** 189/643 is the fill the real T7 bank supports today. The remaining 454 rows need either a clip the bank does not hold (extraction path: the T7 graph bank + paired-throw extraction for Lane C), a stance/state entry the neutral walk cannot reach (Rage, JGS/JGR, CD, oki/ground), or a T3-row context map (the 53 non-qualifying `_r`/`_c` rows).
