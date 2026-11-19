@@ -1,0 +1,11 @@
+import { chromium } from 'playwright'; import fs from 'node:fs';
+const b = await chromium.launch({ executablePath: '/usr/bin/google-chrome', args: ['--use-gl=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist'] });
+const p = await b.newPage({ viewport: { width: 960, height: 540 } });
+await p.goto('http://127.0.0.1:8812/game/index.html');
+await p.waitForFunction(() => window.__startFight, null, { timeout: 120000 });
+await p.evaluate(([a, c]) => window.__startFight(a, c, {}), [process.argv[2], 'kronos']);
+await p.waitForFunction(() => { const g = window.__game; return g && g.roundState === 'fight'; }, null, { timeout: 400000, polling: 500 });
+await p.evaluate(fs.readFileSync('test/e2e/moveset-sweep.page.js','utf8')); await p.waitForFunction(() => window.__sweepReady);
+const r = await p.evaluate((keys) => { const L = window.__moveList(); return keys.map(k => { const m = L.find(x => x.key === k); const r = window.__sweepMove(Object.assign({}, m, { trace: true }));
+  r.trace = (r.trace||[]).map(f => `${f.p1.st}/${f.p1.an||''}/${f.p1.risingT ?? ''}`).filter((x,i,a)=>x!==a[i-1]).join(' > ').slice(0,600); return r; }); }, process.argv.slice(3));
+console.log(JSON.stringify(r, null, 1)); await b.close();
