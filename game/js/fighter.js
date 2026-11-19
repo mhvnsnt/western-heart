@@ -4161,6 +4161,207 @@ export class Fighter {
     return -0.52 * s * s;
   }
 
+  /* LANE D (pantera-throwfix 2026-11-19): knee-pole correction for the
+     throws (2+4 / 1+3), thrower AND victim. Live BEFORE (main b5648cce,
+     261 frames per throw, fixed axis = world +X for p1 / -X for p2, the
+     facing at pair start): thrower knees behind the hip-ankle midline
+     2+4 L 27/261 min -0.321 m, R 44/261 min -0.353 m; 1+3 L 27/261,
+     R 27/261, same minima — worst @step 68 in the grab clip's roll
+     (steps 60-78), plus the R knee in the clinch (steps 17-34, worst
+     -0.19 m). The fold is IN THE SOURCE CLIP (source-FK probe: knees
+     behind midline L 25/54, R 21/54 frames, mostly f30+ when prone),
+     so the fix works on the POSED result, never by editing the clip.
+     Method: post-mixer two-bone knee pole, applied at the end of
+     _animate after the mixer has posed the frame (so it rides on top
+     of the grab / paired-slot / hit / launch clips alike, and the
+     mixer re-asserts the clip pose next frame — no drift, no state
+     carried in the bones). The pole is the fighter's OWN forward in
+     3D (hips -Z), recomputed every frame: it rotates WITH the body,
+     so "forward" stays anatomical through the tumble instead of
+     pointing at a world direction the body has turned away from. Per leg, the knee is rotated about the hip-ankle axis until
+     its offset along the pole reaches +0.02 m (clearly forward, not
+     borderline 0.00); hip and ankle positions are EXACTLY preserved
+     (the new knee is recomputed on the same circle: same distance
+     from the hip-ankle axis, same component along it), only the knee
+     moves and the foot orientation follows the shin. Slew-limited
+     (~60 deg/frame) on the ABSOLUTE knee azimuth about the leg axis
+     (measured from the pole), never on the delta from the raw pose:
+     the raw pose rotates with the body, so slewing the delta winds
+     the stored angle up by the body's own rotation. A 0.25 s tail
+     after the throw states eases the correction out as the pose
+     blends back to idle (covers the landing frames at steps 95-97).
+     HISTORY (why the pole is live, not frozen): v1-v3 froze the pole
+     at throw entry (world +X for p1) and measured on that fixed axis.
+     That metric conflates body orientation with knee bend: the hips
+     swing from +49 deg to -134 deg through the throw, so world +X is
+     ~90 deg sideways from the body's forward for most of it — the
+     "clinch R -0.19 m" and "roll -0.32 m" fixed-axis defects are
+     knees that are ALREADY anatomically forward (local offset +0.29
+     in the clinch, +0.03..+0.15 in the roll). v4 (unwrap + no cap on
+     the stored delta) DID clear the fixed axis at s76 (+0.079) — by
+     bending the knee BACKWARD anatomically (local -0.33, the worst
+     value in any run) — and the wound-up delta broke the landing
+     (s100-104 fixed-axis -0.235, local -0.175). The frozen pole
+     cannot be satisfied together with anatomy at s76: the two target
+     azimuths are ~180 deg apart. The only real anatomical defects in
+     the raw clip are s80 (local -0.158 L / -0.086 R, both throws) and
+     s96 L (-0.087); the live pole fixes exactly those. A near-straight
+     leg (flex < 15 deg) is never corrected: it has no bend direction
+     to fix, and rotating it would twist the foot — so the victim,
+     whose legs stay near-straight (flex <= 11.8 deg, constant -0.047 m
+     rest-pose offset), is untouched. No clip changed, no stance
+     flattened, no yaw/floor touched. */
+  _kneePoleThrowState() {
+    return this.state === 'throwing' || this.state === 'throwExec' ||
+      this.state === 'thrown' || this.state === 'thrownExec';
+  }
+
+  _applyKneePole(dt, opponent) {
+    // Tail starts undefined: initialise to 0 so the pre-throw idle
+    // path below early-returns instead of falling through with a NaN
+    // strength (0 * NaN = NaN reaches the bone quaternions; the
+    // thrower is re-posed by its clip next frame, but the victim
+    // plays NO clip in the legacy path, so a NaN quaternion written
+    // to its thigh/shin persists FOREVER — v5 probe: victim shin/foot
+    // NaN on all 261 frames of both throws).
+    if (this._kneePoleTail == null) this._kneePoleTail = 0;
+    const inThrow = this._kneePoleThrowState();
+    if (inThrow) {
+      // New throw entry: the stored absolute azimuths are stale; the
+      // first corrected frame re-seeds them from the raw pose (no snap).
+      if (!this._kneePolePrevThrow) { this._kneePolePhiL = null; this._kneePolePhiR = null; }
+      this._kneePoleTail = 0.25;
+    } else if (this._kneePoleTail > 0) {
+      this._kneePoleTail = Math.max(0, this._kneePoleTail - dt);
+    }
+    this._kneePolePrevThrow = inThrow;
+    if (!inThrow && this._kneePoleTail <= 0) {
+      this._kneePole = null; this._kneePolePhiL = null; this._kneePolePhiR = null; return;
+    }
+    if (!this.bones || !this.bones.Hips) return;
+    // Lean (step 7) changed after the step-5 refresh, so refresh the
+    // world matrices before reading the posed skeleton.
+    this.root.updateWorldMatrix(true, true);
+    // LIVE pole: this fighter's own forward in 3D (hips -Z),
+    // recomputed every frame so it rotates with the body through the
+    // tumble. It is a unit vector straight from the hips quaternion,
+    // so it NEVER degenerates — the horizontal projection does (worst
+    // 0.036 @s93, hips pitched ~88 deg), and holding a stale horizontal
+    // pole while the body spins ~40 deg/frame left s93-94 uncorrected
+    // (local -0.132). The pole pitches with the body; the correction
+    // only ever moves the knee in the plane perpendicular to the leg
+    // axis, so a pitched pole is still a well-defined target azimuth.
+    const hq = this.bones.Hips.getWorldQuaternion(new THREE.Quaternion());
+    this._kneePole = new THREE.Vector3(0, 0, -1).applyQuaternion(hq);
+    const strength = inThrow ? 1 : Math.min(1, this._kneePoleTail / 0.25);
+    if (strength <= 0) { this._kneePole = null; this._kneePolePhiL = null; this._kneePolePhiR = null; return; }
+    this._correctKneePoleLeg(this.bones.LeftUpLeg, this.bones.LeftLeg, this.bones.LeftFoot, '_kneePolePhiL', dt, strength);
+    this._correctKneePoleLeg(this.bones.RightUpLeg, this.bones.RightLeg, this.bones.RightFoot, '_kneePolePhiR', dt, strength);
+    this.root.updateWorldMatrix(true, true);
+  }
+
+  // One leg of the knee-pole correction. Rotates the knee about the
+  // hip-ankle axis toward the live body-forward pole; hip + ankle
+  // stay exactly put (see _applyKneePole). Returns nothing; the
+  // smoothed ABSOLUTE knee azimuth (about the leg axis, measured
+  // from the pole) is kept on `this[phiKey]` so the correction slews
+  // instead of snapping when the target azimuth moves fast. The
+  // azimuth — not the delta from the raw pose — is what gets slewed:
+  // the mixer re-poses the raw knee every frame and the raw pose
+  // rotates with the body, so a slewed delta winds up by the body's
+  // own rotation (v4: stored delta wound past -180 deg, which is the
+  // OPPOSITE rotation mod 360, and broke the landing at s100-104).
+  _correctKneePoleLeg(thigh, shin, foot, phiKey, dt, strength) {
+    if (!thigh || !shin || !foot) return;
+    const pole = this._kneePole;
+    const H = new THREE.Vector3(); thigh.getWorldPosition(H);
+    const K = new THREE.Vector3(); shin.getWorldPosition(K);
+    const A = new THREE.Vector3(); foot.getWorldPosition(A);
+    const axis = new THREE.Vector3().subVectors(A, H);
+    const legLen = axis.length();
+    if (legLen < 1e-4) return;
+    axis.divideScalar(legLen);
+    const M = new THREE.Vector3().addVectors(H, A).multiplyScalar(0.5);
+    const d = new THREE.Vector3().subVectors(K, M);
+    const dPar = d.dot(axis);
+    const dPerp = new THREE.Vector3().copy(d).addScaledVector(axis, -dPar);
+    const r = dPerp.length();
+    if (r < 0.005) { this[phiKey] = null; return; } // leg straight: knee sits on the axis, nothing to pole
+    const n = dPerp.clone().divideScalar(r);
+    const pPerp = new THREE.Vector3().copy(pole).addScaledVector(axis, -pole.dot(axis));
+    const pLen = pPerp.length();
+    if (pLen < 1e-4) { this[phiKey] = null; return; } // pole parallel to the leg axis: rotation cannot move the offset
+    const pDir = pPerp.clone().divideScalar(pLen);
+    const axCrossP = new THREE.Vector3().crossVectors(axis, pDir);
+    // Absolute azimuth of the knee about the leg axis, from the pole.
+    const phi = Math.atan2(axCrossP.dot(n), pDir.dot(n));
+    // Flex gate: a near-straight leg has no bend direction to fix, and
+    // rotating it would twist the foot. Flex is measured EXACTLY as
+    // the probe measures it — angle at the knee between (hip - knee)
+    // and (ankle - knee), flex = 180 - that angle, so a straight leg
+    // reads ~0 deg and a deep bend ~138 deg. (v6 had the first vector
+    // backwards — (knee - hip) — which reads 180 - flex, so the gate
+    // never fired and the victim's straight legs got rotated ~180 deg
+    // in azimuth: local -0.04 -> +0.03, fixed-axis +0.032 -> -0.036,
+    // feet twisted. Caught by the v6 probe, fixed here.) Thrower min
+    // flex is 20.0 deg, victim max flex 11.8 deg (BEFORE log), so 15
+    // deg corrects every bent thrower knee and leaves the victim's
+    // straight legs alone.
+    const f1 = new THREE.Vector3().subVectors(H, K).normalize();
+    const f2 = new THREE.Vector3().subVectors(A, K).normalize();
+    const flex = 180 - Math.acos(Math.max(-1, Math.min(1, f1.dot(f2)))) * 180 / Math.PI;
+    if (flex < 15) { this[phiKey] = phi; return; } // track the raw pose, no correction
+    const MARGIN = 0.02;
+    const off = d.dot(pole);
+    const wrapPi = (a) => Math.atan2(Math.sin(a), Math.cos(a));
+    let phiPrev = this[phiKey];
+    if (phiPrev == null) phiPrev = phi;
+    let phiNew = phi; // no correction needed: track the raw pose
+    if (off < MARGIN) {
+      // Target azimuths: pDir rotated by +/-targetAng about the leg
+      // axis (targetAng from the +0.02 m margin). Pick the nearer to
+      // the current knee azimuth. (A closed-form delta was tried
+      // first and had the sign backwards: verified on live BEFORE
+      // frames it drove the knee the WRONG way — s20R from -0.170 to
+      // -0.294 — while the explicit form takes it to exactly +0.020.)
+      const req = (MARGIN - dPar * axis.dot(pole)) / r;
+      const c = Math.max(-1, Math.min(1, req / pLen));
+      const targetAng = Math.acos(c);
+      const phiStar = Math.abs(wrapPi(targetAng - phi)) <= Math.abs(wrapPi(-targetAng - phi)) ? targetAng : -targetAng;
+      // Slew the ABSOLUTE azimuth toward the target, ~60 deg per
+      // 60 fps frame. With the live pole the azimuth moves only as
+      // fast as the clip's own knee moves relative to the body, so
+      // 60 deg/frame tracks it with room to spare.
+      const maxStep = 1.05 * Math.max(1, dt * 60);
+      phiNew = phiPrev + Math.max(-maxStep, Math.min(maxStep, wrapPi(phiStar - phiPrev)));
+    }
+    const ang = wrapPi(phiNew - phi) * strength;
+    // Never write a non-finite rotation to a bone: a NaN quaternion
+    // is unrecoverable for a clip-less fighter (see _applyKneePole).
+    if (!Number.isFinite(ang)) { this[phiKey] = null; return; }
+    this[phiKey] = phi + ang; // store the azimuth actually placed
+    if (Math.abs(ang) < 1e-4) return;
+    const n2 = n.clone().applyAxisAngle(axis, ang);
+    const K2 = new THREE.Vector3().copy(M).addScaledVector(axis, dPar).addScaledVector(n2, r);
+    // Thigh + shin direction solves: the knee lands exactly on K2, the
+    // ankle stays exactly on A (K2 is on the same circle as K, so
+    // |A - K2| == |A - K|); only the knee moves, the foot orientation
+    // follows the shin by the small delta rotation.
+    const v1 = new THREE.Vector3().subVectors(K, H).normalize();
+    const u1 = new THREE.Vector3().subVectors(K2, H).normalize();
+    const v2 = new THREE.Vector3().subVectors(A, K).normalize();
+    const u2 = new THREE.Vector3().subVectors(A, K2).normalize();
+    const D1 = new THREE.Quaternion().setFromUnitVectors(v1, u1);
+    const D2 = new THREE.Quaternion().setFromUnitVectors(v2, u2);
+    const Q1 = thigh.getWorldQuaternion(new THREE.Quaternion());
+    const Q2 = shin.getWorldQuaternion(new THREE.Quaternion());
+    const Q1n = D1.clone().multiply(Q1);
+    const Q2n = D2.clone().multiply(Q2);
+    const parentQ = thigh.parent ? thigh.parent.getWorldQuaternion(new THREE.Quaternion()) : new THREE.Quaternion();
+    thigh.quaternion.copy(parentQ.invert().multiply(Q1n));
+    shin.quaternion.copy(Q1n.clone().invert().multiply(Q2n));
+  }
+
   /* Shared-root-frame drive for a paired throw (doc formula):
      each fighter's root follows its own clip's ax/az anchor
      around the pair anchor P, at the thrower's anchor scale,
@@ -4952,6 +5153,12 @@ export class Fighter {
       p.needsUpdate = true;
       const as = 1 + Math.sin(k * 12) * 0.08; this.aura.scale.set(as, 1, as);
     }
+
+    // 9) LANE D (pantera-throwfix 2026-11-19): knee-pole correction for
+    // the throws — runs last, after the mixer has posed the frame and
+    // the lean has been applied, so it sees the final posed skeleton.
+    // Throw states only (+ 0.25 s tail); a no-op everywhere else.
+    this._applyKneePole(dt, opponent);
   }
 
   /* World-space forward vector (brawler: from yaw; versus: from x-facing).
