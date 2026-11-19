@@ -53,7 +53,7 @@ lane's.
 
 ## What this PR lands
 
-`game/js/fighter.js` (+197/-0 vs main, one hunk: knee-pole methods +
+`game/js/fighter.js` (+207/-0 vs main, one hunk: knee-pole methods +
 section-9 call at the end of `_animate`): a post-mixer two-bone knee pole
 that enforces forward knees **in 3D**, correctly defined this time:
 
