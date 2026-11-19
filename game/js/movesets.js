@@ -235,7 +235,8 @@ export function splitNotation(n) {
 /** 'f,F+2' -> {prefix:'', dirs:['f','f'], btn:'2', neutral:false}; null if not a motion input. */
 export function parseMotion(n) {
   const { prefix, body } = splitNotation(n);
-  const parts = body.split(',');
+  // ':' = just-frame between motion steps ('f,n,d,d/f:1'); strings like '2:1' fail the dir-head check below
+  const parts = body.split(/[,:]/);
   const last = parts[parts.length - 1];
   const lm = /^(?:(qcf|qcb|hcf|hcb|d\/f|d\/b|u\/f|u\/b|f|b|u|d|D\/F|D\/B|U\/F|U\/B|F|B|U|D)\+)?([1-4](?:\+[1-4])*)\*?$/.exec(last);
   if (!lm) return null;
