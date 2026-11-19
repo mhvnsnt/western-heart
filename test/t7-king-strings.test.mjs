@@ -65,5 +65,9 @@ test('string normalizer: motions, suffixed keys and single inputs never map', ()
 test('a gated clip stays out with its reason (no substitute)', () => {
   assert.match(pack.skipped['d+3+4,4~t7.king.2'], /plausibility gate/);
   const p = plan('d+3+4,4');
-  assert.ok(!p || !String(p.name).startsWith('t7:'));
+  // Lane B 2026-11-18: the old assertion (!name.startsWith('t7:')) predates the 2026-11-02/03
+  // own-button fallback — the plan is now the fighter's OWN '4' clip ('t7:4~t7.king'), never the
+  // gated sukg_ari2 clip. The substance: the gated clip is not what plays.
+  assert.ok(!p || !String(p.name).includes('d+3+4,4~t7.king'), 'gated clip must not be the plan');
+  assert.equal(p && p.name, 't7:4~t7.king', 'own-button fallback for the 4, not a substitute clip');
 });
