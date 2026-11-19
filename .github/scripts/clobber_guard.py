@@ -317,10 +317,16 @@ def main():
 
     # Files main changed after the fork point (tree-only: no blob fetch).
     # When main hasn't moved, there are no main-added lines to revert.
-    changed = [p for p in _diff_names(base_sha, main_sha)
-               if not is_binary_path(p)]
+    # Only files the BRANCH also changed can be reverts: a file the branch
+    # never touched keeps main's version at merge, so flagging it would
+    # fail every PR open while main advances. (The pre-diff guard had the
+    # same restriction — it only read files in the branch's diff.)
+    main_changed = {p for p in _diff_names(base_sha, main_sha)
+                    if not is_binary_path(p)}
+    branch_changed = set(_diff_names(base_sha, head_sha))
+    changed = sorted(main_changed & branch_changed)
     if not changed:
-        print("Clobber guard passed: main added nothing since the fork point.")
+        print("Clobber guard passed: no main-side lines reverted.")
         return 0
     # Files absent at head (deleted by the branch, or added on main after
     # the fork so the branch never had them): the merge keeps main's
