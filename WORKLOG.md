@@ -4755,3 +4755,13 @@ DOA/VF editor-status verification (web search failed on local disk quota).
 **Verification:** 25/25 unit tests (7 new: stale-head flags, keeping-head passes, main==base fast path, branch-deleted file doesn't flag, diff names/line sets incl. a " b/" filename, CRLF + blank lines, bad header raises). End-to-end on real diffs, all under 0.2 s: #1759 diff passes (fast path), #1755 bank diff passes, moved-main case passes via the diff path, and a genuine revert (base 1867590, main 967495e, head b3dd3a4) correctly fails flagging 51 + 62 + 5 lines. Fresh partial clone (blobs missing, CI-like): pass case in seconds with 2 promisor fetches; revert case correctly fails. Gitleaks clean on the commit.
 
 - Deletions: none.
+
+## 2026-11-19 — Clobber guard only checks files the branch also changed (NO-MERCY RE-EXTRACT)
+
+**Owner instruction (verbatim):** "Yeah, get that re-extraction and decoding and everything done"
+
+**What:** PR #1760's diff rewrite dropped a restriction the blob-based guard had: it checked every file MAIN changed, including files the branch never touched — but a file the branch never touched keeps main's version at merge, so flagging it would fail every PR open while main advances. `main()` now intersects main-changed files with branch-changed files (both tree-only diffs, no blobs). Caught before it bit: the #1759 branch would have failed on the guard files themselves. The stale-head test fixture was also fixed to the true PR #579 pattern (the stale head REWRITES the file with branch-only lines while lacking main's lines — a head byte-identical to base changes nothing and cannot revert).
+
+**Verification:** 26/26 unit tests (new: unrelated-head passes; stale-head test asserts the untouched file does not flag). End-to-end on the #1759 scenario (base 967495e, main 4c0375e, head b29f8cb1): correctly fails on WORKLOG.md only (3 lines — the #1760 entry the branch lacks), guard files not flagged. Gitleaks clean on the commit.
+
+- Deletions: none.
