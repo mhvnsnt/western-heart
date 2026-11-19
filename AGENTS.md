@@ -261,3 +261,7 @@ Before any lane cuts a branch: `lane-ops/repo_preflight.sh` (clean tree, base br
 
 ## PRESENT-REFERENCES-EVERY-TURN RULE (owner 2026-11-16 ~09:47 EST)
 Show him the best references when found — EVERY turn we work, no exceptions. Show the references + things found so HE CAN APPROVE them. Then compare them to our work — TWO PAIRS OF EYES. Side-by-side OR one individually then the next — either way works, as long as he sees both and judges. Presenting new information every turn is not optional and not something a lane does for me — it is my job in the reply itself.
+
+## Sourcing rule (Mars, 2026-11-19)
+
+If it isn't accessible on Steam, go find it anywhere else — archive.org, modding communities, wherever it can be gotten from. Don't ask, don't wait. (Mars owns a lot of games on Xbox and there's no way to get those files off an Xbox, so alternate sourcing is the path for all of them.)
