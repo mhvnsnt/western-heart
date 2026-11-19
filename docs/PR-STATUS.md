@@ -4,7 +4,7 @@
 
 **27 open PRs — 🟢 ready to merge: 0 · 🔴 failing: 7 · ⏳ running: 1 · ⚔️ conflicted: 19** (also 🟠 blocked: 0 · 🔗 stacked: 0 · 📝 draft, green-or-idle: 0; 6 of 27 are drafts)
 
-_Generated 2026-11-19 20:32 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
+_Generated 2026-11-19 20:33 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
 
 Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not reported. Ready = not draft, targets `main`, GitHub says MERGEABLE, every check green. Status priority: conflicted > failing > running > draft > stacked > ready.
 
@@ -16,7 +16,7 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| ⏳ running | [#1769](https://github.com/mhvnsnt/western-heart/pull/1769) Land VPW2 teardown: Virtual Pro Wrestling 2 full extraction (28,322 files) | ready | mhvnsnt / `muse/jp-sourcing` | `91e7c08` | `main` | ⏳ | · | ⏳ | ⏳ | 5⏳ | mergeable (blocked) | 2026-11-19 20:32 UTC |
+| ⏳ running | [#1769](https://github.com/mhvnsnt/western-heart/pull/1769) Land VPW2 teardown: Virtual Pro Wrestling 2 full extraction (28,322 files) | ready | mhvnsnt / `muse/jp-sourcing` | `91e7c08` | `main` | ✅ | · | ✅ | ⏳ | 4✅ 1⏳ | mergeable (blocked) | 2026-11-19 20:32 UTC |
 | 🔴 failing | [#1768](https://github.com/mhvnsnt/western-heart/pull/1768) Docs: sourcing rule — if it isn't on Steam, get it from anywhere else | ready | mhvnsnt / `docs/sourcing-rule` | `5ee5f0b` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-19 20:09 UTC |
 | 🔴 failing | [#1762](https://github.com/mhvnsnt/western-heart/pull/1762) DELETION: remove shifted textures/rom/ (superseded by rom-corrected/) | ready | mhvnsnt / `delete-shifted-textures-rom` | `693f84a` | `main` | ⊘ | ❌ | ⊘ | ⊘ | 4✅ 2❌ | mergeable (blocked) | 2026-11-19 14:28 UTC |
 | 🔴 failing | [#1714](https://github.com/mhvnsnt/western-heart/pull/1714) Hair fit v6: straight REFIT6B crown coverage; afro gate closure (no ship) | ready | mhvnsnt / `claude/hair-fit-v6-20261110` | `c6d4234` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-10 07:16 UTC |
