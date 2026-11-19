@@ -610,7 +610,12 @@ export function rootMotionSample(root_t, fps, t) {
    the table and none is added.
    NOT DONE: the f state at frame 12 -> sRUN__00F run (req 0) needs the common-bank clip
    Bco_run00 (anim 0x8043) baked first; the f re-dash (req 1085) and neutral->run (req 2132)
-   are requirement-gated and not wired. */
+   are requirement-gated and not wired. Lane B 2026-11-18, from King's T7 tables
+   (king-t7-tables.json): req 1085 = [[124, 0]] — condition 124 is not in t7graph.js
+   KNOWN_CONDITIONS nor T7_EXE_DEFAULT_FALSE, so makeEvalCond returns null (unknown) and the
+   cancel cannot be evaluated; req 2132 = [[36, 3800]] — condition 36 is 'opp dist >= param,
+   T7 units' but t7graph.js:277-278 states no metre conversion is assumed, so 35/36 stay
+   unknown in-game. Both stay gated until the conditions are decoded — no invented wiring. */
 export const TEKKEN_DASH_END_FRAMES = { t7_king: { f: 30, b: 30 } };
 export const TEKKEN_BACKDASH_CROUCH_CANCEL_FROM = { t7_king: 1 };
 /* Tekken RUN (2026-11-10, Pantera pass 5), from King's T7 motbin (kinmot.json), nothing invented:
@@ -620,9 +625,21 @@ export const TEKKEN_BACKDASH_CROUCH_CANCEL_FROM = { t7_king: 1 };
    - exits (requirement 0, window [1, 32767]): stick b -> sWALK_00B (here: idle, WH's walk-back takes the held b),
      d / d/b / d/f -> crouch transitions (tryCrouch);
    - NOT in the table with requirement 0: a neutral-stick stop. Here releasing f ends the run at the current
-     clip's end (a WH boundary, not a King timing). The gated links (f re-dash 1085, n -> run 2132, run stomp /
+     clip's end (a WH boundary, not a King timing). Lane B 2026-11-18: verified in graph.json —
+     the sRUN__00F -> Kg_sKAM00_ stop rows are req 914/923/932/941/951/961, all containing
+     undecoded conditions 68/69/70/810, so no requirement-0 neutral stop exists in the T7 data
+     and the WH boundary stands. The gated links (f re-dash 1085, n -> run 2132, run stomp /
      tackle 1093/1098/1104) are not wired. */
 export const TEKKEN_RUN = { t7_king: { fromDashFrame: 12, chain: ['runStart', 'runA', 'runB'], loop: ['runA', 'runB'] } };
+/* FRESH-CROUCH GESTURE WINDOW (Lane B 2026-11-18, owner 2026-11-11: "only the punch combos are
+   working"): a down direction held only briefly before the button is ONE input gesture
+   (direction + button together = the standing directional, e.g. d/f+4), not an established
+   crouch. _inputCtx() reports crouching for resolution only once the crouch is established
+   (15 frames, the same 15-frame precedent as the run hold latch). A deliberately held
+   crouch (>= 15 f) still resolves FC. rows; a crouch entered from a backdash cancel or from
+   a run is a state-machine transition, not a fresh gesture, and counts as established at
+   once (tryCrouch sets _crouchEstablished). */
+export const FRESH_CROUCH_WINDOW_S = 0.25;
 /* T7 FULL-GRAPH DEVELOPMENT INTEGRATION (2026-11-10, owner t388u). Opt-in only (?t7graph=1, localStorage
    wh.t7graph=1, or globalThis.WH_T7GRAPH = true for tests): the player's fighter with a T7_GRAPHS entry (Pantera <-
    King) is then driven frame by frame by its imported source graph (t7-graph-driver.js): every press / hold / release
@@ -2049,9 +2066,14 @@ export class Fighter {
       this.stateT * 60 >= TEKKEN_BACKDASH_CROUCH_CANCEL_FROM[ownSlotBankFor(this.char.id)];
     if (kbd || (on && this.onGround && (this.state === 'idle' || this.state === 'walk' || this.state === 'block'))) {
       this._bt = false; // Tekken: crouching from back-turned turns you around into the crouch
+      // A crouch entered from a backdash cancel (kbd) or from a run (runCrouch) is a state-machine
+      // transition, not a fresh direction gesture: it is an established crouch at once, so FC.
+      // rows resolve immediately. A plain direction hold is a gesture until FRESH_CROUCH_WINDOW_S.
+      this._crouchEstablished = !!kbd;
       this._enter('crouch'); this.vx = 0;
     } else if (!on && this.state === 'crouch') {
       this._enter('idle'); this._risingT = 0.35;
+      this._crouchEstablished = false;
       if (this.stance === 'FC') { this.stance = null; this.stanceT = 0; } // standing up ends FC
     }
   }
@@ -2079,13 +2101,26 @@ export class Fighter {
       stance: st && st !== 'BT' && st !== 'FC' && st !== 'SS' ? st : null,
       backturned: !!this._bt || st === 'BT',
       sidestep: this.state === 'sidestep',
-      crouching: this.state === 'crouch' || st === 'FC',
+      // FRESH-CROUCH GESTURE WINDOW (Lane B 2026-11-18, owner 2026-11-11: kick strings):
+      // a d/f+4 pressed as one gesture (direction held < 15 f) is the STANDING directional
+      // 'd/f+4', not 'FC.d/f+4' — the FC. prefix is tried first whenever crouching is true,
+      // so without this window every d/f-held kick string opened with the wrong move and its
+      // continuation ('FC.d/f+4,3' does not exist) failed. An established crouch (held >= 15 f,
+      // stance FC, or a backdash/run crouch cancel) still resolves FC. rows. WS. is unaffected
+      // (gated on _risingT, set on stand-up).
+      crouching: st === 'FC' || (this.state === 'crouch' &&
+        (this._crouchEstablished || this.stateT >= FRESH_CROUCH_WINDOW_S)),
       rising: this._risingT > 0,
       airborne: !this.onGround, // Tekken jump attacks resolve from AIR. while this holds
       rage: !this._rageUsed && this.hp > 0 && this.hp <= this.maxHp * 0.25,
       urgeOn: !!this._urgeOn,
       urgeAvailable: !this._urgeUsed && !this._urgeOn && this.hp > 0,
-      running: !!(this.tekken && this.tekken.running && this.tekken.running() && this.onGround) || (this.state === 'attack' && /^WR\./.test(this.attackName || '') && this.stateT <= 0.14), // Tekken WR (and its chord-upgrade window)
+      // WHILE RUNNING (Lane B 2026-11-18): the buffer's running() latch only fires 250 ms after
+      // the f,f double-tap, so during a real tekrun entered at dash frame 12 the latch is false
+      // for frames 12-15 and a button pressed there resolved the standing/f+ move, not the WR
+      // move. The fighter's own run state is the ground truth while it lasts.
+      running: (this.state === 'tekrun' && this.onGround) ||
+        !!(this.tekken && this.tekken.running && this.tekken.running() && this.onGround) || (this.state === 'attack' && /^WR\./.test(this.attackName || '') && this.stateT <= 0.14), // Tekken WR (and its chord-upgrade window)
       // roster-100 L5: crouch dash — the buffer latches CD when the fighter's own
       // data-declared cd_entry move fires; CD. rows resolve only inside that window.
       crouchDash: !!(this.tekken && this.tekken.cdActive && this.tekken.cdActive() && this.onGround),
@@ -3073,7 +3108,19 @@ export class Fighter {
       // extends an open partial string (no standalone step): consume, keep the grace window open
       if (!grace && this.tekken._strPending) { this._stringGraceUntil = performance.now() + 500; return true; }
     }
-    if (/^[1234]$/.test(notation)) {
+    // WHILE-RUNNING ATTACKS (Lane B 2026-11-18, owner: WR 4 / WR+1+2 not verified): a button
+    // pressed during a real run is the WR. move, not the f+ move. The buffer's _pressV2 tries
+    // the ''-prefix f+ motion/dir tier before the second loop ever tries the plain 'WR.' button,
+    // so even with the row present (WR.1+2) a 1+2 press returned 'f+1+2'. The WR. row is taken
+    // here, from this fighter's own moveset, before the buffer; the rest of the fresh-press flow
+    // (cost, step-chain, _preAtk) is unchanged. No WR. row (WR.4/WR.1/WR.2/WR.3/WR.3+4 are not
+    // in pantera.json — Lane A data spec) -> normal resolution, i.e. the f+ move for now.
+    let wrHit = false;
+    if (ctx.running && /^[1234](\+[1234])*$/.test(notation)) {
+      const wrKey = resolveMoveKey(this._movesetId, 'WR.' + notation);
+      if (wrKey) { this.tekken._recordMove('WR.' + notation); notation = 'WR.' + notation; wrHit = true; }
+    }
+    if (!wrHit && /^[1234]$/.test(notation)) {
       const pathT0 = this.tekken._strPathT;
       const resolved = this.tekken.pressButton(notation, ctx);
       // Moveset sweep 2026-10-28: the press opened a string whose first step has no standalone
@@ -3083,7 +3130,7 @@ export class Fighter {
       // Stream 6: if the fighter has no move on this limb, keep the raw
       // notation so the base-move fallback below still fires (no dead buttons).
       if (resolved) notation = resolved;
-    } else if (/^[1234](\+[1234])+$/.test(notation)) {
+    } else if (!wrHit && /^[1234](\+[1234])+$/.test(notation)) {
       if (notation === '1+2' && ctx.urgeOn && !ctx.rage) return this.tryUrgeDash();
       // GAP-FILL LANE 1 (Soul Urge completeness): LP1+RP2 is the
       // dash (above); LK3+RK4-adjacent chord 2+3 is Burst/Smash.
