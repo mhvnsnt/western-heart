@@ -30,20 +30,28 @@ Usage in CI:
 Library use:
     check_files(base, main, head, body, labels) -> {path: {offending lines}}
 
-Performance note (2026-11-19, PR #1755): the guard used to fetch every
-changed file's blob at all three revisions before deciding anything. On a
-binary-heavy PR (5,780 files, mostly .npy) that is ~17k lazy blob fetches,
-which blew the 25-minute job timeout. Known-binary extensions are now
-skipped before fetching (they could never flag: text_lines() skips binary
-content anyway), and main's blobs are reused when main == base. The remaining
-reads go through one `git cat-file --batch` process per revision
-(_read_revision_files): one `git show` per file means one subprocess and one
-lazy-fetch negotiation per file, while a single batch process reads all blobs
-locally — so a 14k-file text diff (the No Mercy model re-extraction, PR
-#1759) costs three subprocesses instead of ~28k. (`git archive` was
-considered and rejected: in a partial clone it triggers a promisor fetch
-that hangs in this environment, and it needs an ls-tree pre-pass because it
-fails on missing paths; cat-file reports missing files itself.)
+Performance note (2026-11-19, PRs #1755/#1758/#1759): the guard used to
+fetch every changed file's blob at all three revisions before deciding
+anything. On a binary-heavy PR (5,780 files, mostly .npy) that is ~17k
+lazy blob fetches, which blew the 25-minute job timeout. PR #1756 skipped
+known-binary extensions before fetching; PR #1758 batched the reads
+through one `git cat-file --batch` per revision. That saved subprocess
+spawns but NOT the fetches: in the CI checkout (`filter: blob:none`) each
+missing blob still negotiates separately, and the batch reads left the
+#1759 guard running past 8 minutes on a 7k-file text diff. main() now
+works from `git diff` output instead: `git diff` bulk-fetches every blob
+it needs in one or two promisor negotiations (verified: the 12,409-file
+PR #1759 diff in a fresh partial clone took 2 fetches), and the check
+only needs the files main actually changed — additions(base→main) ∩
+deletions(main→head). When main hasn't moved past the fork point the
+guard passes without reading anything. The blob-based check_files() /
+_read_revision_files() remain as the library API and as the fallback for
+a diff header no filename parser can match.
+
+Diff-path note: the diff-based check counts line occurrences where the
+set-based check does not — a line main added twice that the branch keeps
+once now flags. In practice main rarely adds the same line twice to one
+file, and the Reverts callout covers the exception.
 """
 import json
 import os
@@ -195,6 +203,105 @@ def _read_revision_files(rev, paths, cwd=None):
     return out
 
 
+def _diff_names(rev_a, rev_b, diff_filter=None, cwd=None):
+    """File paths changed between two revisions (tree-only, no blobs)."""
+    args = ["git", "diff", "--no-renames", "--name-only", "-z"]
+    if diff_filter:
+        args.append(f"--diff-filter={diff_filter}")
+    args += [rev_a, rev_b]
+    r = subprocess.run(args, capture_output=True, check=True, cwd=cwd)
+    return [p for p in r.stdout.decode().split("\x00") if p]
+
+
+class _UnparseableDiff(Exception):
+    """A diff header could not be matched to a file; fall back to blobs."""
+
+
+def _parse_diff_header(line, known):
+    """Path for a `diff --git a/X b/Y` header line (bytes, no trailing LF).
+
+    With --no-renames the a/ and b/ sides name the same path, so the
+    header is `diff --git a/P b/P` and P is recovered by length: the part
+    after `diff --git a/` is P + " b/" + P. Raises _UnparseableDiff when
+    the header does not fit that shape or names a path outside `known`.
+    """
+    prefix = b"diff --git a/"
+    if not line.startswith(prefix):
+        raise _UnparseableDiff(repr(line[:80]))
+    rest = line[len(prefix):]
+    if len(rest) % 2 == 0:  # 2*len(P)+3 is always odd
+        raise _UnparseableDiff(repr(line[:80]))
+    plen = (len(rest) - 3) // 2
+    path = rest[:plen]
+    if rest[plen:] != b" b/" + path:
+        raise _UnparseableDiff(repr(line[:80]))
+    text = path.decode("utf-8", "replace")
+    if text not in known:
+        raise _UnparseableDiff(repr(line[:80]))
+    return text
+
+
+def _parse_diff_output(lines, known, collect_added=True,
+                       collect_deleted=True):
+    """Parse `git diff -U0` output (bytes lines) into per-file line sets.
+
+    Returns ({path: added lines}, {path: deleted lines}). Blank lines are
+    ignored, matching text_lines(). A trailing CR is stripped, so CRLF
+    files compare equal to their LF form (splitlines() does the same).
+    Raises _UnparseableDiff on a header that cannot be matched.
+    """
+    added, deleted = {}, {}
+    current = None
+    for raw in lines:
+        line = raw.rstrip(b"\n")
+        if line.startswith(b"diff --git "):
+            current = _parse_diff_header(line, known)
+            added.setdefault(current, set())
+            deleted.setdefault(current, set())
+        elif current is None:
+            continue
+        elif line.startswith(b"+++ ") or line.startswith(b"--- "):
+            continue  # file header lines, not content
+        elif line.startswith(b"+") and collect_added:
+            text = line[1:].rstrip(b"\r").decode("utf-8", "replace")
+            if text.strip():
+                added[current].add(text)
+        elif line.startswith(b"-") and collect_deleted:
+            text = line[1:].rstrip(b"\r").decode("utf-8", "replace")
+            if text.strip():
+                deleted[current].add(text)
+    return added, deleted
+
+
+def _diff_line_sets(rev_a, rev_b, paths, collect_added=True,
+                    collect_deleted=True, chunk=2000, cwd=None):
+    """Per-file added/deleted line sets between two revisions, via git diff.
+
+    `git diff` bulk-fetches every blob it needs in one or two promisor
+    negotiations (verified: the 12,409-file PR #1759 diff in a fresh
+    partial clone took 2 fetches), where per-file reads negotiate per
+    blob. Paths are chunked to stay under argv limits.
+    """
+    known = set(paths)
+    added, deleted = {}, {}
+    for i in range(0, len(paths), chunk):
+        batch = paths[i:i + chunk]
+        proc = subprocess.Popen(
+            ["git", "-c", "core.quotePath=false", "diff", "--no-renames",
+             "-U0", rev_a, rev_b, "--"] + batch,
+            stdout=subprocess.PIPE, cwd=cwd)
+        a, d = _parse_diff_output(proc.stdout, known, collect_added,
+                                  collect_deleted)
+        proc.wait()
+        if proc.returncode not in (0, 1):  # 1 = differences found
+            raise subprocess.CalledProcessError(proc.returncode, "git diff")
+        for p, s in a.items():
+            added.setdefault(p, set()).update(s)
+        for p, s in d.items():
+            deleted.setdefault(p, set()).update(s)
+    return added, deleted
+
+
 def main():
     base_sha = os.environ["BASE_SHA"]
     head_sha = os.environ["HEAD_SHA"]
@@ -204,30 +311,49 @@ def main():
     pr = ev["pull_request"]
     body = pr.get("body") or ""
     labels = [l["name"] for l in pr.get("labels", [])]
+    if any(l.lower() == REVERT_LABEL for l in labels):
+        print("Clobber guard passed: owner-approved-revert label present.")
+        return 0
 
-    diff = subprocess.run(
-        ["git", "diff", "--no-renames", "--name-only", "-z",
-         base_sha, head_sha],
-        capture_output=True, check=True, text=True).stdout
-    paths = [p for p in diff.split("\x00") if p]
-    # Skip known-binary paths before fetching any blob: they can never
-    # carry reverted lines (text_lines() skips them), and fetching them
-    # is what times the job out on binary-heavy PRs (see BINARY_EXTS).
-    n_skipped = sum(1 for p in paths if is_binary_path(p))
-    if n_skipped:
-        print(f"Skipping {n_skipped} known-binary file(s) before fetch.")
-    paths = [p for p in paths if not is_binary_path(p)]
+    # Files main changed after the fork point (tree-only: no blob fetch).
+    # When main hasn't moved, there are no main-added lines to revert.
+    changed = [p for p in _diff_names(base_sha, main_sha)
+               if not is_binary_path(p)]
+    if not changed:
+        print("Clobber guard passed: main added nothing since the fork point.")
+        return 0
+    # Files absent at head (deleted by the branch, or added on main after
+    # the fork so the branch never had them): the merge keeps main's
+    # version, so they cannot be reverts — the same skip check_files()
+    # applies to head=None / main=None.
+    deleted_at_head = set(_diff_names(main_sha, head_sha, diff_filter="D"))
+    callout = parse_revert_callout(body)
+    paths = [p for p in changed
+             if p not in deleted_at_head and p not in callout]
+    if not paths:
+        print("Clobber guard passed: no main-side lines reverted.")
+        return 0
 
-    base_files = _read_revision_files(base_sha, paths)
-    # When main hasn't moved past the fork point, main == base: reuse
-    # the blobs instead of fetching them a second time.
-    if main_sha == base_sha:
-        main_files = dict(base_files)
-    else:
-        main_files = _read_revision_files(main_sha, paths)
-    head_files = _read_revision_files(head_sha, paths)
+    try:
+        added, _ = _diff_line_sets(base_sha, main_sha, paths,
+                                   collect_deleted=False)
+        _, deleted = _diff_line_sets(main_sha, head_sha, paths,
+                                     collect_added=False)
+        bad = {p: added[p] & deleted.get(p, set()) for p in paths
+               if added.get(p) and added[p] & deleted.get(p, set())}
+    except _UnparseableDiff as exc:
+        # A diff header could not be matched to a file (pathological
+        # filename): fall back to the exact blob-based check.
+        print(f"::warning::diff header unparseable ({exc}); "
+              "falling back to blob reads")
+        base_files = _read_revision_files(base_sha, paths)
+        if main_sha == base_sha:
+            main_files = dict(base_files)
+        else:
+            main_files = _read_revision_files(main_sha, paths)
+        head_files = _read_revision_files(head_sha, paths)
+        bad = check_files(base_files, main_files, head_files, body, labels)
 
-    bad = check_files(base_files, main_files, head_files, body, labels)
     if not bad:
         print("Clobber guard passed: no main-side lines reverted.")
         return 0

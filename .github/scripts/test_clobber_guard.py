@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Unit tests for clobber_guard.py — includes a synthetic reproduction of the
 PR #579 stale-base clobber pattern (must flag) and legit cases (must not)."""
+import json
 import os
 import shutil
 import subprocess
@@ -10,7 +11,8 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(__file__))
 from clobber_guard import (  # noqa: E402
-    _read_revision_files, check_files, is_binary_path,
+    _UnparseableDiff, _diff_line_sets, _diff_names, _parse_diff_output,
+    _read_revision_files, check_files, is_binary_path, main,
     parse_revert_callout, reverted_lines,
 )
 
@@ -184,6 +186,128 @@ class ReadRevisionFiles(unittest.TestCase):
     def test_empty_paths(self):
         self.assertEqual(_read_revision_files(self.rev1, [], cwd=self.dir),
                          {})
+
+
+class DiffBased(unittest.TestCase):
+    """The diff-based check in main(): three revisions in a temp repo.
+
+    base has f.txt (a, b). main adds NEW-LINE. head-stale is base again
+    (the PR #579 pattern); head-keeping matches main.
+    """
+
+    def setUp(self):
+        self.dir = tempfile.mkdtemp(prefix="clobber-guard-diff-")
+        self._old_cwd = os.getcwd()
+        os.chdir(self.dir)
+        self._git("init", "-q")
+        self._git("config", "user.name", "test")
+        self._git("config", "user.email", "test@example.com")
+        self._write("f.txt", b"a\nb\n")
+        self._write("gone.txt", b"will vanish\n")
+        self._write("my b/file.txt", b"space bee\n")
+        self._git("add", "-A")
+        self._git("commit", "-qm", "base")
+        self.base = self._git("rev-parse", "HEAD")
+        self._write("f.txt", b"a\nb\nNEW-LINE\n")
+        self._write("my b/file.txt", b"space bee\nBEE-LINE\n")
+        self._git("add", "-A")
+        self._git("commit", "-qm", "main")
+        self.main = self._git("rev-parse", "HEAD")
+        # head-stale: back to base content (reverts main's lines)
+        self._git("checkout", "-q", self.base)
+        self._git("checkout", "-qb", "stale")
+        self.stale = self._git("rev-parse", "HEAD")
+        # head-keeping: same content as main
+        self._git("checkout", "-q", self.main)
+        self._git("checkout", "-qb", "keeping")
+        self.keeping = self._git("rev-parse", "HEAD")
+        # head-deleting: main's content minus gone.txt AND f.txt
+        self._write("f.txt", b"a\nb\nNEW-LINE\n")
+        os.remove(os.path.join(self.dir, "gone.txt"))
+        os.remove(os.path.join(self.dir, "f.txt"))
+        self._git("add", "-A")
+        self._git("commit", "-qm", "deleting")
+        self.deleting = self._git("rev-parse", "HEAD")
+        self.event = os.path.join(self.dir, "event.json")
+        with open(self.event, "w") as fh:
+            json.dump({"pull_request": {"body": "", "labels": []}}, fh)
+
+    def tearDown(self):
+        os.chdir(self._old_cwd)
+        shutil.rmtree(self.dir, ignore_errors=True)
+        for k in ("BASE_SHA", "HEAD_SHA", "MAIN_SHA", "GITHUB_EVENT_PATH"):
+            os.environ.pop(k, None)
+
+    def _git(self, *args):
+        r = subprocess.run(["git", "-C", self.dir, *args],
+                           capture_output=True, text=True, check=True)
+        return r.stdout.strip()
+
+    def _write(self, rel, data):
+        p = os.path.join(self.dir, rel)
+        os.makedirs(os.path.dirname(p), exist_ok=True)
+        with open(p, "wb") as f:
+            f.write(data)
+
+    def _run_main(self, base, head, main_sha):
+        os.environ["BASE_SHA"] = base
+        os.environ["HEAD_SHA"] = head
+        os.environ["MAIN_SHA"] = main_sha
+        os.environ["GITHUB_EVENT_PATH"] = self.event
+        return main()
+
+    def test_stale_head_flags(self):
+        self.assertEqual(self._run_main(self.base, self.stale, self.main), 1)
+
+    def test_keeping_head_passes(self):
+        self.assertEqual(self._run_main(self.base, self.keeping, self.main), 0)
+
+    def test_main_equals_base_passes_fast(self):
+        self.assertEqual(self._run_main(self.base, self.stale, self.base), 0)
+
+    def test_branch_deleted_file_does_not_flag(self):
+        # f.txt is gone at head, but the deletion guard owns deletions;
+        # the clobber guard must not flag its main-added line. gone.txt
+        # was never touched by main, so it cannot flag either.
+        self.assertEqual(
+            self._run_main(self.base, self.deleting, self.main), 0)
+
+    def test_diff_names_and_line_sets(self):
+        names = _diff_names(self.base, self.main, cwd=self.dir)
+        self.assertEqual(sorted(names), ["f.txt", "my b/file.txt"])
+        added, deleted = _diff_line_sets(self.base, self.main, names,
+                                         cwd=self.dir)
+        self.assertEqual(added["f.txt"], {"NEW-LINE"})
+        self.assertEqual(added["my b/file.txt"], {"BEE-LINE"})
+        self.assertEqual(deleted["f.txt"], set())
+        # main -> stale: NEW-LINE is deleted (the revert, incl. the
+        # " b/" filename, which the header parser must not mangle).
+        _, deleted2 = _diff_line_sets(self.main, self.stale, names,
+                                      collect_added=False, cwd=self.dir)
+        self.assertEqual(deleted2["f.txt"], {"NEW-LINE"})
+        self.assertEqual(deleted2["my b/file.txt"], {"BEE-LINE"})
+
+    def test_parse_diff_output_crlf_and_blanks(self):
+        lines = [
+            b"diff --git a/f.txt b/f.txt\n",
+            b"index 1111111..2222222 100644\n",
+            b"--- a/f.txt\n",
+            b"+++ b/f.txt\n",
+            b"@@ -1,1 +1,3 @@\n",
+            b" a\n",
+            b"+CRLF-LINE\r\n",
+            b"+\n",
+            b"+   \n",
+            b"-gone\r\n",
+        ]
+        added, deleted = _parse_diff_output(lines, {"f.txt"})
+        self.assertEqual(added["f.txt"], {"CRLF-LINE"})
+        self.assertEqual(deleted["f.txt"], {"gone"})
+
+    def test_parse_diff_output_bad_header_raises(self):
+        lines = [b"diff --git a/f.txt b/other.txt\n"]
+        with self.assertRaises(_UnparseableDiff):
+            _parse_diff_output(lines, {"f.txt"})
 
 
 class Callout(unittest.TestCase):
