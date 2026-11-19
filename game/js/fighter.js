@@ -2380,6 +2380,11 @@ export class Fighter {
      as action `name`. Returns the action name or null. */
   _reactionAction(bankId, slot, name) {
     if (!bankId || !this._t3 || this.t3actions[name]) return this.t3actions[name] ? name : null;
+    // LANE C (2026-11-18): no rig bound yet — the clip is unavailable, so
+    // report it and let the caller keep the legacy lock (its documented
+    // contract). Without this, retargetT3Clips crashes on a null model
+    // (WeakMap.set(null)) instead of failing false.
+    if (!this._t3.model) return null;
     const canonical = getReactionClip(bankId, slot, THREE);
     if (!canonical) return null;
     const rc = retargetT3Clips({ [name]: canonical }, bankId, this._t3.model, THREE, this._t3.modelKey, [name]);
@@ -3300,6 +3305,18 @@ export class Fighter {
     const key = this._chainNext; this._chainNext = null; this._chainSeq = []; this._chainOpen = false;
     const m = key && getRealMove(this._movesetId, key);
     if (!m || !victim || victim.dead || this.dead) return false;
+    // LANE C (2026-11-18, grapple-chain damage race): settle the finished
+    // link's pending damage BEFORE resetting the victim. At 60 fps the
+    // legacy slam can only land via the thrownExec t>=0.9 fallback (the
+    // in-window k>=0.9 slam is unreachable: k maxes at 0.889 before t hits
+    // 0.6), and the thrower's throwExec chain start (stateT>=0.9) lands on
+    // the SAME tick — the thrower ticks first, so without this the link's
+    // slam was dropped whenever a chain was queued (probe: AB1 first link
+    // dealt 0). Same race for a pair whose damage had not landed yet.
+    // Both settles are no-ops when the damage already landed.
+    if (victim._throwPair && !victim._throwPair.hitDone) victim._throwPairDamage();
+    else if (victim.state === 'thrownExec' && !victim._throwHitDone) victim._throwSlamDamage();
+    if (victim.dead || this.dead) return false; // the settle may have KO'd the victim: no chain into a dead fighter
     victim._throwPair = null; victim._throwPairT = 0; victim._throwAttacker = null; victim._throwMove = null;
     victim.stun = 0; victim.vy = 0; victim.onGround = true; victim.root.position.y = GROUND_Y; victim.state = 'idle';
     this._throwPair = null; this._throwPairT = 0; this._throwVictim = null; this._throwMove = null;
