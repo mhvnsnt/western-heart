@@ -16,6 +16,7 @@
    ============================================================ */
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { wireLoader, resolveAssetUrl } from './asset-codecs.js';
 // Unified lighting rig (worker 27): stage light rigs, character key/fill/rim
 // separation, soul glow, grade hooks. See game/js/lighting-rig.js for the
 // T7/SFV/DOA6/T8 teardown audit.
@@ -1052,7 +1053,7 @@ async function buildHelix(g, def, api) {
   let detailed = false;
   if (def.glb) {
     try {
-      const gltf = await new GLTFLoader().loadAsync(def.glb);
+      const gltf = await wireLoader(new GLTFLoader()).loadAsync(await resolveAssetUrl(def.glb));
       const club = gltf.scene;
       club.traverse((o) => {
         if (o.isMesh) {
@@ -1252,7 +1253,7 @@ async function buildNoMercy(g, def, api) {
   if (def.glb) {
     // GLB arena family (arena-pull lane): real N64 arena GLB + ring furniture.
       try {
-        const gltf = await new GLTFLoader().loadAsync(def.glb);
+        const gltf = await wireLoader(new GLTFLoader()).loadAsync(await resolveAssetUrl(def.glb));
         const arena = gltf.scene;
         arena.traverse((o) => {
           if (o.isMesh) {
@@ -1536,7 +1537,7 @@ async function buildSunRa(g, def, api) {
   const eyeLight = new THREE.PointLight(0xff3a22, 25, 40, 2);
   eyeLight.position.set(0, 31.75, -40.4); // owner 2026-10-19: raised 25% on Y with the glow g.add(eyeLight);
   try {
-    const gltf = await new GLTFLoader().loadAsync('assets/stages/sunra/mars-sky.glb');
+    const gltf = await wireLoader(new GLTFLoader()).loadAsync(await resolveAssetUrl('assets/stages/sunra/mars-sky.glb'));
     marsHead = gltf.scene;
     // normalize: fit head height to ~11 units, center it on MARS_POS
     const bbox = new THREE.Box3().setFromObject(marsHead);

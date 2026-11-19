@@ -59,6 +59,43 @@ def git(*args, binary=False):
     return r.stdout if binary else r.stdout.decode()
 
 
+def tree_sizes(sha):
+    """{path: size} for every blob in `sha`, WITHOUT lazily fetching blobs.
+
+    In a --filter=blob:none clone, `git ls-tree -l` downloads every missing
+    blob one request at a time (the whole 5+ GB repo, >25 min). Instead:
+    batch-fetch only the text blobs the closure scan reads (one request per
+    500), and read the other sizes from the local object store; blobs that
+    aren't local report size 0 (only used for the printed totals)."""
+    oid = {}
+    for line in git("ls-tree", "-r", sha).splitlines():
+        meta, path = line.split("\t", 1)
+        parts = meta.split()
+        if parts[1] == "blob":
+            oid[path] = parts[2]
+    env = dict(os.environ, GIT_NO_LAZY_FETCH="1")
+
+    def check(oids):
+        r = subprocess.run(["git", "cat-file", "--batch-check"], input="\n".join(oids) + "\n",
+                           capture_output=True, text=True, env=env)
+        out = {}
+        for l in r.stdout.splitlines():
+            f = l.split()
+            out[f[0]] = int(f[2]) if len(f) == 3 and f[1] == "blob" else None
+        return out
+
+    text = sorted({o for p, o in oid.items() if p.endswith(TEXT)})
+    missing = [o for o, n in check(text).items() if n is None]
+    for i in range(0, len(missing), 500):
+        subprocess.run(["git", "-c", "fetch.negotiationAlgorithm=noop", "fetch", "-q", "--no-tags",
+                        "--no-write-fetch-head", "--filter=blob:none", "origin", *missing[i:i + 500]])
+    got = check(sorted(set(oid.values())))
+    unknown = sum(1 for n in got.values() if n is None)
+    if unknown:
+        print(f"note: {unknown} blobs not fetched locally; their sizes count as 0 in totals")
+    return {p: (got.get(o) or 0) for p, o in oid.items()}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--ref", default="origin/main")
@@ -68,14 +105,15 @@ def main():
     ap.add_argument("--push", action="store_true")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--follow-all", action="store_true")
+    ap.add_argument("--cook", action="store_true",
+                    help="plumbing mode: also add cooked <x>.web.glb sidecars + cooked-manifest.json "
+                         "(tools/deploy/cook_assets.py; docs/tech/ASSET-PIPELINE-2026.md). Originals stay.")
+    ap.add_argument("--cook-mirror", default="https://mhvnsnt.github.io/western-heart/",
+                    help="where to download original GLBs from in parallel (each verified against its git blob "
+                         "SHA; falls back to git cat-file)")
     a = ap.parse_args()
     sha = git("rev-parse", a.ref).strip()
-    sizes = {}
-    for line in git("ls-tree", "-r", "-l", sha).splitlines():
-        meta, path = line.split("\t", 1)
-        parts = meta.split()
-        if parts[1] == "blob":
-            sizes[path] = int(parts[3]) if parts[3] != "-" else 0
+    sizes = tree_sizes(sha)
     files = set(p for p in sizes if p.startswith(ROOTS))
     queue = [p for p in files if p.endswith(TEXT)]
     seen_text = set(queue)
@@ -136,6 +174,48 @@ def main():
     print("written; file list:", os.path.join(a.out, ".deploy-files.txt"))
 
 
+def cook_into_index(a, sha, files, blob, g):
+    """Add cooked sidecars to the temp index. Returns the cooked-manifest blob id."""
+    import hashlib
+    import urllib.request
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import cook_assets
+    src_dir = os.path.join(os.path.expanduser("~/.cache/wh-cook"), "src")
+    os.makedirs(src_dir, exist_ok=True)
+
+    def read(path, obj):
+        p = os.path.join(src_dir, obj)
+        if os.path.exists(p):
+            return open(p, "rb").read()
+        data = None
+        try:
+            with urllib.request.urlopen(a.cook_mirror + urllib.request.quote(path), timeout=300) as r:
+                data = r.read()
+            if cook_assets.git_blob_sha(data) != obj:
+                data = None  # mirror is older/newer than the ref
+        except Exception:
+            data = None
+        if data is None:
+            data = git("cat-file", "blob", obj, binary=True)
+        open(p, "wb").write(data)
+        return data
+
+    items = [(f, blob[f][1]) for f in files if f.lower().endswith(".glb") and not f.endswith(".web.glb")]
+    print(f"cooking {len(items)} GLBs")
+    entries, outputs = cook_assets.cook_all(items, read, jobs=int(os.environ.get("WH_COOK_JOBS", "4")))
+    lines = []
+    for cp, data in outputs.items():
+        obj = g("hash-object", "-w", "--stdin", inp=data).strip()
+        lines.append(f"100644 {obj}\t{cp}")
+    cm = cook_assets.manifest(entries, sha)
+    mobj = g("hash-object", "-w", "--stdin", inp=json.dumps(cm, indent=1).encode()).strip()
+    lines.append(f"100644 {mobj}\tcooked-manifest.json")
+    g("update-index", "--add", "--index-info", inp=("\n".join(lines) + "\n").encode())
+    print(f"cooked {cm['cooked_models']}/{cm['models']} models: {cm['bytes_original']/1e6:.0f} MB -> "
+          f"{cm['bytes_served']/1e6:.0f} MB served")
+    return mobj[:12]
+
+
 def plumbing(a, sha, files, sizes, total):
     import tempfile
     blob = {}
@@ -161,8 +241,11 @@ def plumbing(a, sha, files, sizes, total):
             changed += 1
         lines.append(f"{mode} {obj}\t{f}")
     g("update-index", "--index-info", inp=("\n".join(lines) + "\n").encode())
-    man = json.dumps({"format": "wh-pages-deploy/1", "ref": a.ref, "commit": sha, "files": len(files),
-                      "bytes": total, "tool": "tools/deploy/build_pages.py"}, indent=1).encode()
+    man_d = {"format": "wh-pages-deploy/1", "ref": a.ref, "commit": sha, "files": len(files),
+             "bytes": total, "tool": "tools/deploy/build_pages.py"}
+    if a.cook:
+        man_d["cooked"] = cook_into_index(a, sha, files, blob, g)
+    man = json.dumps(man_d, indent=1).encode()
     mobj = g("hash-object", "-w", "--stdin", inp=man).strip()
     g("update-index", "--add", "--cacheinfo", f"100644,{mobj},deploy-manifest.json")
     after = set(l.split("\t", 1)[1] for l in g("ls-files", "-s").splitlines())

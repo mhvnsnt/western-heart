@@ -34,6 +34,7 @@ import { attiresFor, selectedAttireModel, setAttire, attireLabel } from './attir
 import { loadT3Clips, createT3Actions, retargetT3Clips } from './t3anims.js';
 import { bankIdFor } from './fighter.js';
 import { getMovesetInfo } from './movesets.js';
+import { setCodecRenderer } from './asset-codecs.js';
 
 const DEFAULT_STATS = { speed: 2.8, jump: 7.2, power: 1.1, defense: 1.05 };
 const clamp01 = (v) => Math.max(0, Math.min(1, v));
@@ -77,6 +78,7 @@ class PreviewPane {
     if (this.failed) return false;
     try {
       this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, antialias: true, alpha: true });
+      setCodecRenderer(this.renderer); // KTX2 GPU-format detection
     } catch (e) {
       console.warn('[WH] select preview: WebGL unavailable on this device', e.message || e);
       this.failed = true;

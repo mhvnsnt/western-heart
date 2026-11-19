@@ -525,5 +525,19 @@
     }, 1200);
   })();
   </script>
+<script>
+/* Asset cache service worker (docs/tech/ASSET-PIPELINE-2026.md). Never
+   blocks boot; any failure just means no persistent cache. */
+if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+  addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').then(async (reg) => {
+      const r = await fetch('../deploy-manifest.json', { cache: 'no-store' });
+      const m = r.ok ? await r.json() : null;
+      const sw = reg.active || reg.waiting || reg.installing;
+      if (m && m.commit && sw) sw.postMessage({ type: 'wh-deploy', commit: m.commit + (m.cooked || '') });
+    }).catch(() => {});
+  });
+}
+</script>
 </body>
 </html>

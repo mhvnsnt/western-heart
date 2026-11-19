@@ -65,6 +65,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.js';
+import { wireLoader, resolveAssetUrl } from './asset-codecs.js';
 import { loadCatalog, mergeCatalogs, resolveProfileParts } from '../../packages/creation-suite/src/catalogs.js';
 import { applyPart } from '../../packages/creation-suite/src/parts.js';
 
@@ -122,14 +123,13 @@ let _loader = null;
 const _sceneCache = new Map();
 function gltfLoader() {
   if (_loader) return _loader;
-  _loader = new GLTFLoader();
-  try { _loader.setMeshoptDecoder(MeshoptDecoder); } catch (e) { /* non-meshopt parts still load */ }
+  _loader = wireLoader(new GLTFLoader()); // meshopt + KTX2
   return _loader;
 }
 async function loadPartScene(glbPath) {
   if (_sceneCache.has(glbPath)) return _sceneCache.get(glbPath);
   const url = new URL(glbPath, ROOT).href;
-  const gltf = await gltfLoader().loadAsync(url);
+  const gltf = await gltfLoader().loadAsync(await resolveAssetUrl(url));
   _sceneCache.set(glbPath, gltf.scene);
   return gltf.scene;
 }

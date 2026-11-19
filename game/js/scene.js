@@ -15,12 +15,14 @@ import { getStage, buildStage, disposeStage } from './stages.js';
 // bloom strength from the stage's lighting.grade block. Serves the bible's
 // "luminous darkness" — each land gets its own grade.
 import { applyGrade } from './lighting-rig.js';
+import { setCodecRenderer } from './asset-codecs.js';
 
 export class Arena {
   constructor(canvas, stageId = 'shrine') {
     this.isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
 
     this.renderer = new THREE.WebGLRenderer({ canvas, antialias: !this.isMobile, powerPreference: 'high-performance' });
+    setCodecRenderer(this.renderer); // KTX2 GPU-format detection
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;

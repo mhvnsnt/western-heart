@@ -14,6 +14,7 @@ import { clone as skeletonClone } from 'three/addons/utils/SkeletonUtils.js';
 // saku-ra-main, purple-rain-main, kiko-tanaka*). Vendored locally —
 // the game ships with no CDN (see index.html importmap).
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.js';
+import { wireLoader, resolveAssetUrl } from './asset-codecs.js';
 // Creation Suite Pass: generated registry of baked customization overrides
 // (customization/tools/apply_customization.py). Empty map = exact no-op.
 import { ATTIRE_CUSTOMIZATIONS } from './attire-customizations.js';
@@ -1032,8 +1033,7 @@ function feetFacingCue(root) {
 let _sharedLoader = null;
 function _sharedGLTFLoader() {
   if (!_sharedLoader) {
-    _sharedLoader = new GLTFLoader();
-    _sharedLoader.setMeshoptDecoder(MeshoptDecoder);
+    _sharedLoader = wireLoader(new GLTFLoader()); // meshopt + KTX2
   }
   return _sharedLoader;
 }
@@ -1123,7 +1123,8 @@ class AssetManager {
     const LOAD_TIMEOUT_MS = 90000;
     const attempt = async () => {
       const signal = _anySignal([ctrl.signal, _timeoutSignal(LOAD_TIMEOUT_MS)]);
-      const res = await fetch(url, { signal });
+      const src = await resolveAssetUrl(url); // cooked .web.glb when deployed
+      const res = await fetch(src, { signal });
       if (!res.ok) throw new Error(`HTTP ${res.status} loading ${id}`);
       const totalBytes = Number(res.headers.get('content-length')) || 0;
       let buf;
@@ -1152,7 +1153,7 @@ class AssetManager {
       }
       // Same URL string the old loader.load() used, so external .bin /
       // texture references resolve exactly as before.
-      return _sharedGLTFLoader().parseAsync(buf, url);
+      return _sharedGLTFLoader().parseAsync(buf, src);
     };
     const run = (async () => {
       let gltf;
