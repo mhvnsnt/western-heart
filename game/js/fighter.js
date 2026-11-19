@@ -2360,14 +2360,23 @@ export class Fighter {
     if (!vDir) return { pair: null, reason: `no T3 bank for ${victim.char.id} (UNMAPPED)` };
     let attemptRow = null;
     const planName = this._atkPlan && this._atkPlan.name;
+    // LANE A (2026-11-19, Pantera throw victim clip): for the two plain
+    // front throws the file's throw_inputs is authoritative and is tried
+    // FIRST. The plan's row is the REACH clip's bank row (moveset t3_row
+    // 127/128), not the file's attempt row: row 127 has no throw branches
+    // at all (1+3 never paired — legacy lock, victim frozen), and row 128
+    // selects a generic throw (slot 398, row 150, jin-bank victim 399),
+    // not King's 2+4 (slot 2797, row 417, victim 3051). throw_inputs maps
+    // the pressed chord to the attempt row (1+3 -> 273, 2+4 -> 274). When
+    // it has no entry the plan row is still used, as before.
+    if (this.attackName === '1+3' || this.attackName === '2+4') {
+      attemptRow = attemptRowForInput(R, aDir, this.attackName, this.stance === 'FC', false);
+    }
     // A per-step-bank action name is 'row:<bank>:<row>', which
     // parseInt cannot read ('jin:220' -> NaN); the plan's own stepRow
     // is authoritative whenever the attack came from a step plan.
-    if (this._atkPlan && this._atkPlan.stepRow != null) attemptRow = this._atkPlan.stepRow;
-    else if (planName && planName.startsWith('row:')) attemptRow = parseInt(planName.slice(4), 10);
-    if (attemptRow == null && (this.attackName === '1+3' || this.attackName === '2+4')) {
-      attemptRow = attemptRowForInput(R, aDir, this.attackName, this.stance === 'FC', false);
-    }
+    if (attemptRow == null && this._atkPlan && this._atkPlan.stepRow != null) attemptRow = this._atkPlan.stepRow;
+    else if (attemptRow == null && planName && planName.startsWith('row:')) attemptRow = parseInt(planName.slice(4), 10);
     if (attemptRow == null || Number.isNaN(attemptRow)) {
       return { pair: null, reason: `no T3 attempt row for '${this.attackName}' (UNMAPPED)` };
     }
