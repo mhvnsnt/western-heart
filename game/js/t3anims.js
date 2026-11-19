@@ -2635,6 +2635,21 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
         // whose joints are already above the floor.
         const low = Math.min(...targetPosed(rig, W, rig.contact).map(p => p.y)) + dy;
         if (low < rig.floorY) dy += rig.floorY - low;
+        // LANE B (pantera-throwfix 2026-11-19): the THROWER's throw clips
+        // must not drop the attacker to the floor mid-throw. Live BEFORE
+        // (2+4, main 01c95363): thrower hips 0.215 m @step 87, flat on the
+        // floor for the whole landing while the source roll holds the
+        // hips at 0.12-0.21 m — that is what reads as "Pantera got knocked
+        // down". Clamp the retargeted hips height for the thrower's throw
+        // clips only: 'grab' is the legacy throwExec clip, 'throw:0x…'
+        // are the paired slot clips. The VICTIM's clips are NOT floored
+        // (the victim must hit the floor at the slam), and no other clip
+        // is touched — crouches, knockdowns and attacks keep their own
+        // heights (their names never match this test). Floor 0.45 m is
+        // a deep-crouch height: clearly off the floor, still low.
+        if ((action === 'grab' || (typeof action === 'string' && action.startsWith('throw:'))) && hipsRest.y + dy < 0.45) {
+          dy = 0.45 - hipsRest.y;
+        }
         tmpV.set(hipsRest.x, hipsRest.y + dy, hipsRest.z).applyMatrix4(hipsParentInv);
         hipPos.set([tmpV.x, tmpV.y, tmpV.z], f * 3);
       }

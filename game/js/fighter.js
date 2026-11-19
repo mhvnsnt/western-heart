@@ -4140,6 +4140,27 @@ export class Fighter {
     }
   }
 
+  /* LANE B (pantera-throwfix 2026-11-19): thrower clinch yaw correction
+     (radians, added to lean.rotation.y in _animate). Windowed bump over
+     the thrower's own clock _throwYawT (seconds since 'throwing' started):
+     0 at the connect (no pop), peak at ~0.43 s — the middle of the
+     bent-over clinch — and back to 0 by 0.85 s, before the slam's own
+     rotation. The source bend and the slam are untouched. SIGN: negative
+     in lean space on purpose — three.js R_y(+th) moves the chest's world
+     yaw by -th, so -0.52 rad on lean.rotation.y reads as +30 deg of chest
+     yaw toward the side camera. (First version had the sign backwards:
+     AFTER probe 2+4 read clinch chest -50..-1 deg vs BEFORE -28..+4 deg,
+     worst exactly at the correction peak — this flip corrects it.) */
+  _throwYawCorrection() {
+    if (this.state !== 'throwing' && this.state !== 'throwExec') return 0;
+    const t = this._throwYawT || 0;
+    const T = 0.85;
+    if (t <= 0 || t >= T) return 0;
+    const u = t / T;
+    const s = Math.sin(u * Math.PI);
+    return -0.52 * s * s;
+  }
+
   /* Shared-root-frame drive for a paired throw (doc formula):
      each fighter's root follows its own clip's ax/az anchor
      around the pair anchor P, at the thrower's anchor scale,
@@ -4580,7 +4601,25 @@ export class Fighter {
     // f.yaw per frame); sync it into _faceYaw so the facing line below stays
     // the single source of truth in both modes.
     if (this.brawler) this._faceYaw = this.yaw;
+    // LANE B (pantera-throwfix 2026-11-19): thrower clinch yaw correction.
+    // Live BEFORE (2+4, main 01c95363): the thrower's chest yaw sits at
+    // -28..+4 deg through the clinch while the torso pitches forward
+    // 60-68 deg, so the side camera sees his bare back — "Pantera's back
+    // faces the opponent". The source bend is real motion (kept); the
+    // correction turns the whole posed thrower toward the camera through
+    // the clinch only (peak +30 deg at ~0.43 s, eased to 0 by 0.85 s, so
+    // the slam's own rotation and the landing are untouched), on the
+    // thrower only (states throwing/throwExec — the victim's facing is
+    // Lane A's scope and is never corrected here). It applies on top of
+    // _faceYaw, so it works identically on the pair path (_driveThrowPair
+    // sets _faceYaw = hYaw + yaw0) and the legacy path (_faceYaw stays at
+    // the pre-throw facing). _throwYawT is the thrower's own clock since
+    // 'throwing' started; it resets whenever the fighter leaves the throw
+    // states, so the correction can never leak into the next move.
+    if (this.state === 'throwing' || this.state === 'throwExec') this._throwYawT = (this._throwYawT || 0) + dt;
+    else this._throwYawT = 0;
     this.lean.rotation.y = (typeof this._faceYaw === 'number') ? this._faceYaw : this.facing * Math.PI / 2;
+    this.lean.rotation.y += this._throwYawCorrection();
 
     // 2) Which REAL T3 clip owns this state? (FROZEN-IDLE FIX 2026-10-20:
     // the bank's animated stance/walk clips existed but were NEVER played
