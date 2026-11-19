@@ -4735,3 +4735,13 @@ DOA/VF editor-status verification (web search failed on local disk quota).
 **CI note:** the bank PR (#1755) timed out the clobber-guard job at 25 min (the guard fetched ~17k blobs one by one for 5,780 files). Fixed in PR #1756 (merged): the guard now skips known-binary extensions before fetching and reuses base blobs when main == base — verified end-to-end against the #1755 diff in 0.3s, 15/15 unit tests. This commit re-triggers #1755's checks so the guard runs with the fix.
 
 - Deletions: 1 — `teardown/wwf-no-mercy/animations/clips/anim_4C04.npy` (not a real game file: file IDs only run 1..0x4C02; reading 0x4C04 goes past the file table. PR carries the approved-deletion label.)
+
+## 2026-11-19 — Clobber guard reads blobs through one git cat-file --batch process (NO-MERCY RE-EXTRACT)
+
+**Owner instruction (verbatim):** "Yeah, get that re-extraction and decoding and everything done"
+
+**What:** the clobber guard (` .github/scripts/clobber_guard.py`) used to run one `git show` subprocess per changed file per revision. PR #1756's binary skip fixed the binary-heavy case, but the No Mercy model re-extraction (PR #1759) is ~7,173 TEXT files (OBJ/VC are text) — ~14k fetches at the observed ~90 ms each would have timed the guard out again at 25 min. The guard now reads all files at a revision through a single `git cat-file --batch` process (`_read_revision_files`); missing files map to None, non-blob paths are consumed and discarded, and the vanishingly rare newline-in-filename case falls back to `_git_show`. `git archive` was tried first and rejected: in a partial clone it triggers a promisor fetch that hangs in this environment, and it needs an ls-tree pre-pass because it fails on missing paths.
+
+**Verification:** 18/18 unit tests (3 new: both-revisions read incl. missing files, 50-file single-batch read, empty paths). End-to-end against the real #1755 bank diff: 0.31 s; against the #1757 mapping diff: 0.08 s. Stress test on a synthetic 7,173-file text diff: guard passes in 4.2 s (the old per-file path extrapolates to ~21 min in a lazy-fetch clone). Negative control: a synthetic revert is still flagged. Gitleaks clean on the commit.
+
+- Deletions: none.
