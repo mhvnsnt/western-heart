@@ -3108,19 +3108,34 @@ export class Fighter {
       // extends an open partial string (no standalone step): consume, keep the grace window open
       if (!grace && this.tekken._strPending) { this._stringGraceUntil = performance.now() + 500; return true; }
     }
-    // WHILE-RUNNING ATTACKS (Lane B 2026-11-18, owner: WR 4 / WR+1+2 not verified): a button
-    // pressed during a real run is the WR. move, not the f+ move. The buffer's _pressV2 tries
-    // the ''-prefix f+ motion/dir tier before the second loop ever tries the plain 'WR.' button,
-    // so even with the row present (WR.1+2) a 1+2 press returned 'f+1+2'. The WR. row is taken
-    // here, from this fighter's own moveset, before the buffer; the rest of the fresh-press flow
-    // (cost, step-chain, _preAtk) is unchanged. No WR. row (WR.4/WR.1/WR.2/WR.3/WR.3+4 are not
-    // in pantera.json — Lane A data spec) -> normal resolution, i.e. the f+ move for now.
-    let wrHit = false;
+    // STATE-PREFIX INTERCEPT (Lane B 2026-11-18): a button pressed while running, in a full
+    // crouch, or back-turned is that state's own move, not the standing directional. The buffer's
+    // _pressV2 tries the ''-prefix motion/dir tier first, so a 1+2 press returned 'f+1+2' even
+    // though the WR.1+2 row exists, and a d/f-held 1+2 from an established crouch returned
+    // 'd/f+1+2' even though FC.1+2 is the move (the FC. rows are keyed directionless, 'FC.1+2',
+    // while the single-button FC rows are keyed with the direction, 'FC.d/f+4' — and _pressV2's
+    // plain-FC fallback only covers d / d/b, never d/f). The state's row is taken here, from
+    // this fighter's own moveset, before the buffer; the rest of the fresh-press flow (cost,
+    // step-chain, _preAtk) is unchanged. No state row (WR.4/WR.1/WR.2/WR.3/WR.3+4 are not in
+    // pantera.json — Lane A data spec) -> normal resolution, i.e. the f+ move for now.
+    let stateHit = false;
     if (ctx.running && /^[1234](\+[1234])*$/.test(notation)) {
       const wrKey = resolveMoveKey(this._movesetId, 'WR.' + notation);
-      if (wrKey) { this.tekken._recordMove('WR.' + notation); notation = 'WR.' + notation; wrHit = true; }
+      if (wrKey) { this.tekken._recordMove('WR.' + notation); notation = 'WR.' + notation; stateHit = true; }
     }
-    if (!wrHit && /^[1234]$/.test(notation)) {
+    // Chords only for FC./BT.: single buttons already resolve through _pressV2's prefix loop
+    // (direction-keyed 'FC.d/f+4', plain 'BT.1'), and a blanket single-button intercept would
+    // outrank those rows. The fresh-crouch window decides whether ctx.crouching is true: a
+    // d/f+1+2 pressed as one gesture is the standing move; from an established crouch it is FC.1+2.
+    if (!stateHit && /^[1234](\+[1234])+$/.test(notation)) {
+      for (const p of ['FC.', 'BT.']) {
+        if ((p === 'FC.' && !ctx.crouching) || (p === 'BT.' && !ctx.backturned)) continue;
+        if (resolveMoveKey(this._movesetId, p + notation)) {
+          this.tekken._recordMove(p + notation); notation = p + notation; stateHit = true; break;
+        }
+      }
+    }
+    if (!stateHit && /^[1234]$/.test(notation)) {
       const pathT0 = this.tekken._strPathT;
       const resolved = this.tekken.pressButton(notation, ctx);
       // Moveset sweep 2026-10-28: the press opened a string whose first step has no standalone
@@ -3130,7 +3145,7 @@ export class Fighter {
       // Stream 6: if the fighter has no move on this limb, keep the raw
       // notation so the base-move fallback below still fires (no dead buttons).
       if (resolved) notation = resolved;
-    } else if (!wrHit && /^[1234](\+[1234])+$/.test(notation)) {
+    } else if (!stateHit && /^[1234](\+[1234])+$/.test(notation)) {
       if (notation === '1+2' && ctx.urgeOn && !ctx.rage) return this.tryUrgeDash();
       // GAP-FILL LANE 1 (Soul Urge completeness): LP1+RP2 is the
       // dash (above); LK3+RK4-adjacent chord 2+3 is Burst/Smash.
