@@ -265,3 +265,5 @@ Show him the best references when found — EVERY turn we work, no exceptions. S
 ## Sourcing rule (Mars, 2026-11-19)
 
 If it isn't accessible on Steam, go find it anywhere else — archive.org, modding communities, wherever it can be gotten from. Don't ask, don't wait. (Mars owns a lot of games on Xbox and there's no way to get those files off an Xbox, so alternate sourcing is the path for all of them.)
+
+"I own like hundreds of games on Xbox and anytime I mention certain games you just have to go get them because I own so many games that are like on disc and on Xbox and there's no way to actually get them to you but you have to go use the games in the commercial files and the actual source anyway."
