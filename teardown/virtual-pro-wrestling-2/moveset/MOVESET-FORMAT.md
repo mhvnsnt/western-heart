@@ -112,12 +112,53 @@ markers — needs in-match observation).
   `valid: 98/98`).
 - `tools/decode_all_movesets.py` — regenerates `decoded_movesets.json`.
 
-## Params files (30 bytes) — PARTIALLY decoded
+## Params files (30 bytes) — CRACKED 2026-11-19
 
 The params decoder (0x80006608) unpacks the 30-byte file into 50 u16
-parameters via a 50-case switch (jump table at RAM 0x8005A800). The
-fighting style is among them (seg3 0x8014D1B8 reads style bits from the
-wrestler struct at +0x30 to pick the movegroup table). The full 50-param
-map is still open — see `tools/vpw2_params.py` (WIP) for the current
-state. Moveset decoding does not depend on it (style comes from file
-length, cross-checked against the edit-mode files).
+parameters via a 50-case switch (jump table at ROM 0x4B400). The unpack
+helper (0x800051CC) reads 44 fixed-width bit fields (229 bits of 240; the
+last 11 bits are zero padding, verified on all 98 files) into a 60-byte
+temp buffer, and the switch translates temp bytes into the 50 params.
+The full switch is translated in `tools/vpw2_params_decode.py`.
+
+**Style** lives in param 34's low byte, bits 0–2, one-hot: 1 = wrestling,
+2 = combo, 4 = shoot. Verified: params-derived style matches the
+moveset-length style for **98/98** wrestlers — an independent confirmation
+of the moveset style detection.
+
+**Params map** (index: source → meaning where known):
+
+| Params | Source | Meaning |
+|---|---|---|
+| 0,1,2,5,6,8,9,15,16,35 | u32 bitfield at temp[48] | one-hot/priority decodes; constant for the shipped roster (bitfield is 0 for all 98 — almost certainly edit-mode/CAW flags) |
+| 3 | temp[0]−1 | enum, −1..4 |
+| 4 | temp[1] | enum 1..3 |
+| 7,10,13,14,17,18,36,37,38,40,41,43–49 | temp bytes/u16s | small enums/flags (0–7 ranges); exact meanings open |
+| 11,12 | temp[3], temp[2] | remapped enums (case-specific lookup logic) |
+| 19, 21–29 | temp[9], temp[10..18] | **the 10 visible stats, 1–5 scale** (9 of them; see note) |
+| 20 | temp[8] | 0/1 flag |
+| 30 | temp[19] | 0–4 |
+| 31,32,33 | u16 temp[40,42,44] | 12-bit packed values (high nibble 0–5/10/11, low byte 0–13); meaning open — three parallel slots |
+| 34 | u16 temp[46] | packed: style (low bits 0–2) + flags |
+| 39 | temp[26] (9-bit raw) | 0–256; exactly one of raw27/raw30 is nonzero per wrestler — two halves of one logical field; meaning open |
+| 42 | temp[31] (9-bit raw) | 0–262; see above |
+
+Note on the "10 stats": params 19 and 21–29 are the nine 1–5 stats;
+param 20 is a 0/1 flag and param 30 is 0–4, so the tenth stat slot is
+ambiguous — the exact stat names/order need the edit-mode UI or match
+code. Height/weight are NOT in params (they live in roster/profile data).
+
+**Dropped bits:** the unpack helper stores 9/12/32-bit reads with sb/sh,
+dropping the 9th bit of fields 28/31, the top 4 bits of field 38, and the
+top 16 bits of the 32-bit field 42. The encoder writes those bits from
+its own temp buffer, so they are real edit-mode data the match decoder
+ignores. The raw field values are preserved in `decoded_params.json`
+(`raw_fields`) so nothing is lost.
+
+**Decoded output:**
+
+- `moveset/decoded_params.json` — all 98 wrestlers: 50 params, raw field
+  values, temp buffer hex, style.
+- `tools/vpw2_params.py` — bit-field unpacker.
+- `tools/vpw2_params_decode.py` — the 50-case switch translation.
+- `tools/decode_all_params.py` — regenerates `decoded_params.json`.
