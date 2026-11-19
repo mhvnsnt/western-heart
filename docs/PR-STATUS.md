@@ -4,7 +4,7 @@
 
 **26 open PRs — 🟢 ready to merge: 0 · 🔴 failing: 7 · ⏳ running: 0 · ⚔️ conflicted: 19** (also 🟠 blocked: 0 · 🔗 stacked: 0 · 📝 draft, green-or-idle: 0; 6 of 26 are drafts)
 
-_Generated 2026-11-19 18:04 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
+_Generated 2026-11-19 18:09 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
 
 Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not reported. Ready = not draft, targets `main`, GitHub says MERGEABLE, every check green. Status priority: conflicted > failing > running > draft > stacked > ready.
 
@@ -16,7 +16,7 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 🔴 failing | [#1765](https://github.com/mhvnsnt/western-heart/pull/1765) Proof: Pantera 2+4 victim clip capture + distance-gate diagnosis (docs only) | ready | mhvnsnt / `pantera-throwfix/victimclip-proof-20261119` | `ce22bfa` | `main` | ✅ | ✅ | ✅ | ❌ | 5✅ 4⏳ | mergeable (blocked) | 2026-11-19 18:04 UTC |
+| 🔴 failing | [#1765](https://github.com/mhvnsnt/western-heart/pull/1765) Proof: Pantera 2+4 victim clip capture + distance-gate diagnosis (docs only) | ready | mhvnsnt / `pantera-throwfix/victimclip-proof-20261119` | `ce22bfa` | `main` | ✅ | ✅ | ✅ | ❌ | 7✅ 2⏳ | mergeable (blocked) | 2026-11-19 18:08 UTC |
 | 🔴 failing | [#1762](https://github.com/mhvnsnt/western-heart/pull/1762) DELETION: remove shifted textures/rom/ (superseded by rom-corrected/) | ready | mhvnsnt / `delete-shifted-textures-rom` | `693f84a` | `main` | ⊘ | ❌ | ⊘ | ⊘ | 4✅ 2❌ | mergeable (blocked) | 2026-11-19 14:28 UTC |
 | 🔴 failing | [#1714](https://github.com/mhvnsnt/western-heart/pull/1714) Hair fit v6: straight REFIT6B crown coverage; afro gate closure (no ship) | ready | mhvnsnt / `claude/hair-fit-v6-20261110` | `c6d4234` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-10 07:16 UTC |
 | 🔴 failing | [#1702](https://github.com/mhvnsnt/western-heart/pull/1702) proof: Megami GNM face — corr3_a on v5 body (final proof set + gates) | ready | mhvnsnt / `megami-gnm-face-20261109` | `524b662` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-10 01:11 UTC |
