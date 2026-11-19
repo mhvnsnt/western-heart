@@ -297,6 +297,10 @@ parsed text data (JSON), ACW scripts, indexes, manifests.
 | `tools/koc2_strings.py` | Master string table (file 02010) → JSON |
 | `tools/koc2_text.py` | Music table (01454) + commentary script (02030) → JSON |
 | `tools/koc2_tables.py` | AFS header (02031) + threshold tables (02893–02900) + grade grids (02401–02402) → JSON |
+| `tools/koc2_lzss_enc.py` | Spike LZSS COMPRESSOR (English-patch lane) — round-trip byte-exact vs `koc2_lzss.py` on synthetic edge cases + 100 real compressed game files |
+| `tools/kc2_rebuild.py` | Spike container REBUILDER (English-patch lane) — replaces files, recomputes offsets; empty-manifest rebuild is byte-identical to the original archive |
+| `tools/koc2_strings_build.py` | Master string table (file 02010) BUILDER (English-patch lane) — applies translations, recomputes all 4,021 record offsets, self-verifies |
+| `tools/koc2_iso_patch.py` | Surgical ISO patcher (English-patch lane) — replaces KC2FIRE.000 inside the ISO at the same LBA, updates the directory record; streams, never loads the 4.6 GB ISO into RAM |
 
 ## 9. Open items (not claimed)
 
@@ -326,6 +330,12 @@ parsed text data (JSON), ACW scripts, indexes, manifests.
   **modding Discord/Drive** (English menu mod, texture packs) remain
   BROWSER-GATED — see lane `BROWSER-QUEUE.md`. Not needed for what
   is claimed here.
+- **Patched-ISO boot verification**: the English-patch pipeline is
+  proven structurally (encoder, container, string table + record
+  offsets, ISO patch — see §11), but no patched ISO has been BOOTED
+  yet: no PS2 BIOS is on hand anywhere in the workspace and no PCSX2
+  is installed. Booting needs a BIOS dump + PCSX2 (AppImage) + Xvfb
+  + software rendering, or a test on Mars's PC with PCSX2.
 
 ## 10. Sources (evidence labels)
 
@@ -336,3 +346,68 @@ Full log: lane `VERIFY-LOG.md`. Summary:
   CAGEMATCH (#4, 9.64); ResHax topic 18443; KoC2 modding FAQ;
   bordersdown review thread.
 - BROWSER-GATED: ResHax attachments; modding Discord + Google Drive.
+
+## 11. English patch pipeline (KoC2 English lane, 2026-11-19)
+
+Mars's directive (2026-11-19): build a patched English KoC2 — English
+is the default for every Japanese game in the Universal Console, whether
+a fan translation exists or we make it ourselves. The pipeline is built
+and proven; the translation itself (Milestone 2) follows it.
+
+**Key finding: the text files are stored RAW.** File 02010 (string
+table), 02030 (commentary), 01454 (music) and 01999 (WrestlerData) all
+have flags `0x00000001` in KC2FIRE.000 — not LZSS-compressed. So
+re-inserting translated text needs only the container rebuild, not the
+encoder. (The encoder exists for future compressed-file replacement,
+e.g. TIM2 menu textures.)
+
+**Pipeline (each step proven by round-trip):**
+1. `koc2_lzss_enc.py` — LZSS encoder, mirror of the cracked decoder.
+   Round-trip byte-exact on synthetic edge cases + the real 02010 /
+   02030 files + 100 sampled real compressed game files.
+2. `koc2_strings_build.py` — rebuilds file 02010 from a translation
+   map (PHYSICAL segment index → new text). Recomputes all 4,021
+   record offsets (record u32 @0x00 = byte offset into the physical
+   string table — keeping the record table verbatim would corrupt
+   every string after the first changed one) using the
+   logical→physical map (skip empty physical strings 581 + 1354),
+   updates `string_table_bytes`, self-verifies every offset.
+   No-op check: an empty map reproduces file 02010 byte-for-byte.
+   WARNING: `koc2-strings.json`'s category slices are
+   physical-indexed while the header's boundaries are logical — its
+   category assignments shift by 1 past physical 581 and by 2 past
+   physical 1354. Translate by physical index.
+3. `kc2_rebuild.py` — rebuilds a Spike container with replaced files
+   (unchanged files copied verbatim, offsets recomputed). Empty
+   manifest rebuild of KC2FIRE.000 is byte-identical to the original
+   (sha256 `0beeb52a…`). A test rebuild with 18 translated strings
+   re-extracts via the original `kc2_extract.py` with only file02010
+   differing, equal to the new data, all 4,021 record offsets correct.
+4. `koc2_iso_patch.py` — surgical ISO patch: the ISO is plain ISO9660
+   with PVD only (no Joliet), so one directory tree is updated. The
+   new archive is written at KC2FIRE.000's original LBA (1965965),
+   the leftover extent is zero-filled, the directory record's
+   both-endian size is updated. `KC2FIRE.DIR` lists only filenames —
+   no sizes to update. The 4096-byte tail past the ISO9660 end is
+   preserved. Verified: a patched test ISO differs from the original
+   ONLY in the KC2FIRE.000 extent + its directory record, and
+   KC2FIRE.000 extracted from it with 7z is byte-identical to the
+   rebuilt archive. The tool streams the ISO (an earlier version
+   that loaded the 4.6 GB ISO into RAM was OOM-killed).
+
+**What translates where (Milestone 2 scope):**
+- File 02010 string table: wrestler names (cats 0 + 15), styles,
+  body/costume enums, staff, titles, nicknames, music themes,
+  entrance narration — 4,023 physical segments. Roster romanization
+  already exists (`data/koc2-roster-romanized.json`, lane W2: 363
+  names, 177 FAQ-backed, 186 machine — machine readings need review).
+- File 01999 WrestlerData: 441 records with fixed-width Shift-JIS
+  family/given/nickname/finisher fields — translate in place.
+- File 02030 commentary: 8,983 subtitle lines (phase 2; the ADX
+  audio stays Japanese).
+- Menus proper are NOT in the string table — no menu category exists,
+  and the ELF's `.rodata` holds a character table + kana fragments,
+  not menu strings. Main menu/mode/option text is almost certainly
+  TIM2 texture images (which is why the community's English mod is a
+  texture-replacement pack). Texture translation is a later phase
+  needing the TIM2 encode path.
