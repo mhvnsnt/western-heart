@@ -19,12 +19,25 @@ TIM2 layout (little-endian):
     (128x128, 16384 image bytes, 256-color CLUT).
     pict_format low 3 bits (standard): 0=16-bit RGBA1555, 1=24-bit RGB,
     2=32-bit RGBA, 3=4-bit indexed, 4=8-bit indexed.
-    clut_type: 0=none, 1=16-bit, 2=24-bit, 3=32-bit.
+    clut_type: 0=none, 1=16-bit, 2=24-bit, 3=32-bit; bit 0x40 = CSM2
+    (CLUT stored swizzled). CSM2 appears on ~5% of KoC2 TIM2s, all
+    4-bit indexed with 32-color CLUTs so far; the CSM2 unswizzle is
+    NOT yet verified, so the decoder warns and decodes the CLUT in
+    file order (see TEARDOWN.md).
+    Image data layout: KoC2's 8-bit image data is 4-way byte
+    interleaved (lag-4 neighbours most similar). The --deinterleave
+    option reassembles the 4 streams as quadrants, which improves
+    colour smoothness on every test file (5/5) but looks WRONG on
+    at least one 64x64 file (file10853, where linear order looks
+    coherent) — the layout is NOT settled. Default is linear order;
+    use --deinterleave to experiment. See TEARDOWN.md.
   Then CLUT data (clut_size B), then image data (image_size B).
   Mipmaps (mipmap_count > 1) are ignored: only the base image is decoded.
 
-Usage: tim2_decode.py input.tim2 [output.png] [--all]
+Usage: tim2_decode.py input.tim2 [output.png] [--all] [--deinterleave]
   --all decodes every picture in the file (output_0.png, output_1.png, ...).
+  --deinterleave reassembles 8-bit image data from 4 quadrant streams
+    (experimental; see note above).
 
 Lane E (KoC2), 2026-11-19. Written from the public TIM2 spec; validated
 against KoC2's decompressed .tim2 files (see TEARDOWN.md).
@@ -61,7 +74,27 @@ def _decode_clut(data: bytes, clut_type: int, count: int):
     return clut
 
 
-def decode_picture(buf: bytes, off: int):
+def deinterleave_quadrants(img_data: bytes, width: int, height: int) -> bytes:
+    """Reassemble 4-way byte-interleaved image data as quadrants.
+
+    Stream k (bytes k mod 4) is the (k%2, k//2) quadrant, each
+    (width/2)x(height/2). Experimental: improves smoothness metrics
+    but is not verified correct for all files (see module docstring).
+    """
+    if width % 2 or height % 2 or len(img_data) != width * height:
+        return img_data
+    streams = [img_data[k::4] for k in range(4)]
+    out = bytearray(width * height)
+    hw, hh = width // 2, height // 2
+    for q in range(4):
+        ox, oy = (q % 2) * hw, (q // 2) * hh
+        s = streams[q]
+        for y in range(hh):
+            out[(oy + y) * width + ox:(oy + y) * width + ox + hw] = s[y * hw:(y + 1) * hw]
+    return bytes(out)
+
+
+def decode_picture(buf: bytes, off: int, deinterleave: bool = False):
     """Decode one TIM2 picture at offset off. Returns (Image, next_offset)."""
     (total_size, clut_size, image_size, header_size, clut_colors,
      pict_format, mipmap_count, clut_type, image_type,
@@ -89,9 +122,16 @@ def decode_picture(buf: bytes, off: int):
     body = off + header_size
     clut = []
     if clut_size:
-        clut = _decode_clut(buf[body : body + clut_size], clut_type, clut_colors)
+        if clut_type & 0x40:
+            print(f"warning: CSM2 CLUT (clut_type={clut_type:#x}) — "
+                  "decoding in file order, unswizzle not verified",
+                  file=sys.stderr)
+        clut = _decode_clut(buf[body : body + clut_size], clut_type & 0x3F,
+                            clut_colors)
     img_off = body + clut_size
     img_data = buf[img_off : img_off + image_size]
+    if deinterleave and mode == 4:
+        img_data = deinterleave_quadrants(img_data, width, height)
 
     pixels = []
     if mode == 0:  # 16-bit
@@ -144,7 +184,7 @@ def find_picture(buf: bytes, start: int):
     raise ValueError("no valid TIM2 picture header found")
 
 
-def decode_file(path: Path):
+def decode_file(path: Path, deinterleave: bool = False):
     buf = path.read_bytes()
     if buf[:4] != b"TIM2":
         raise ValueError(f"{path}: not a TIM2 file (magic {buf[:4]!r})")
@@ -153,7 +193,7 @@ def decode_file(path: Path):
     off = 16
     for _ in range(count):
         off = find_picture(buf, off)
-        im, off = decode_picture(buf, off)
+        im, off = decode_picture(buf, off, deinterleave)
         images.append(im)
     return images
 
@@ -164,11 +204,12 @@ def main(argv):
         return 2
     src = Path(argv[1])
     decode_all = "--all" in argv
+    deinterleave = "--deinterleave" in argv
     out = None
     for a in argv[2:]:
         if not a.startswith("--"):
             out = Path(a)
-    images = decode_file(src)
+    images = decode_file(src, deinterleave)
     if decode_all or len(images) > 1:
         base = out or src.with_suffix("")
         for i, im in enumerate(images):

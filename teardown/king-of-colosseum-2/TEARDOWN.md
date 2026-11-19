@@ -28,6 +28,13 @@ lane workdir only. Extracted files and data go here; binaries too large
 for the text-only push path are listed in `FILES-SHA256.txt` with their
 hashes and flagged to the coordinator (see §6).
 
+**Binary store (2026-11-19, lane W2):** the ~2.7 GiB of extracted
+binaries (`kc2fire000/`, `kc2fire001/`, `kc2fireafs/`, `kc2firemvs/` +
+manifests, 49,208 files) are copied to the Oracle VM at
+`/data/koc2/` (host `bannon-oracle-vm`, 132.145.194.139) as the durable
+binary home — the lane workdir is no longer the only copy. The whole-game
+ISO (`iso/`, 4.3 GiB) is NOT in that copy.
+
 ## 2. ISO layout
 
 Disc created 2004-07-28. `SYSTEM.CNF`: `BOOT2 = cdrom0:\SLPM_656.02;1`,
@@ -135,11 +142,28 @@ This lane only needs decompression.
   (mod 4) form stream k, and the 4 streams are the 4 quadrants of
   the 128×128 image (verified by lag analysis: lag-4 neighbours are
   the most similar; quadrant reassembly drops the smoothness error
-  from 51.8 to 22.3). The CLUT is in file order, but the palette is
-  dark and colours render speckled — the colour mapping is still
-  open. File 15974 (the test case) may be a tiled/noisy texture by
-  design; more samples are needed before the TIM2 colour path is
-  claimed solved. The game's own ELF contains the strings
+  from 51.8 to 22.3). **Update (lane W2, 2026-11-19):** quadrant
+  reassembly improves colour smoothness on 5/5 test files of several
+  sizes, but looks WRONG on at least one 64×64 file (file10853, where
+  linear order looks coherent) — the layout is NOT settled.
+  `tim2_decode.py --deinterleave` applies the quadrant reassembly as
+  an option; the default stays linear. The full PS2 GS
+  page/block/column swizzle scores between linear and quadrant and
+  is not the answer either.
+- The CLUT is in file order, but the palette is dark and colours
+  render speckled — the colour mapping is still open. File 15974
+  (the test case) may be a tiled/noisy texture by design; more
+  samples are needed before the TIM2 colour path is claimed solved.
+  **Update (lane W2):** a 60-file survey shows palettes are NOT
+  systematically dark (mean brightness 123/255) — file 15974's dark
+  palette is per-texture, and the CLUT is smooth in file order
+  (mean adjacent-entry diff 10.5; 4-way deinterleave of the CLUT is
+  worse at 27.6). `clut_type` 0x43 (CSM2 flag, bit 0x40) appears on
+  ~5% of TIM2s, all 4-bit indexed with 32-colour CLUTs so far; the
+  CSM2 unswizzle is not verified (best 5-bit permutation only
+  improves palette smoothness 29.2 → 26.3 on the one non-trivial
+  sample) — the decoder warns on CSM2 and decodes in file order.
+  The game's own ELF contains the strings
   `Tim2CheckFileHeaer: TIM2 is broken (2)` and `Illegal clut and
   texture combination`, confirming the loader checks the
   CLUT/texture combination.
@@ -147,14 +171,31 @@ This lane only needs decompression.
 ### `.mdl` models (section structure — file 0 of `.001` as example)
 
 A model file is a chain of sections that tiles the file. Each
-section starts with `(u32 size, u32 type, u32 ?, u32 ?)` followed by
-3 identity quaternions (at +16) and payload. File 0 (56,576 bytes)
+section starts with `(u32 size, u32 type, u32 a, u32 b)` followed by
+3 float vectors at +16 and payload. File 0 (56,576 bytes)
 has 18 sections; types seen: 0 (skeleton/bones?), 1 (mesh parts),
 2, 4. The payload from ~0x88 on is PS2 VIF/GIF DMA packet data
 (`00 10` markers) — the geometry is stored as native display lists,
 which is why `.mdl` → OBJ conversion is still the community's open
 problem (ResHax, May 2026). Section map documented; vertex/face
 extraction is a follow-up RE task, not claimed here.
+
+**Update (lane W2, 2026-11-19 — `tools/koc2_mdl_sections.py`):**
+729 of the first 3,000 non-TIM2 `.001` files parse as clean section
+chains (the rest are other file types). Section counts are mostly 18
+(633), some 17/19/20/21. Every model file has exactly one type-2 and
+one type-4 section (type 4 is always last, with `a`=1), ~4 type-0
+and ~12 type-1 sections. Field `b` ≈ 2.4× section size (hypothesis:
+unpacked VU-memory size after VIF unpack — not verified). The three
++16 vectors are **not** identity quaternions in general: they are
+`(0, y, z, 1)` triples, the middle one always `(0,0,0,1)` — section 0
+is identity, mesh sections are not (per-part transform or YZ
+bounding-box min/max; interpretation open). A trailer of a repeated
+u16 (`0x1066`/`0x1067`, 16–96 bytes) follows the last section. The
+payload is u16 component data with `0x1000` fixed-point-1.0 markers
+and repeated 6-word chunks (shared vertices); no VIFcode words were
+found in the sampled payload, so the VIF unpack commands (if any)
+live elsewhere in the section.
 
 ### IECS sound banks
 
@@ -171,11 +212,22 @@ info table — entries of (u32 offset, `11 2b 00 ff`)), `Smpl`
 prefix (same move, different lengths — truncated variants or shared
 intros). Packed binary with embedded floats; layout open.
 
+**Update (lane W2, 2026-11-19 — see `MVS-FORMAT.md`,
+`tools/koc2_mvs_survey.py`):** only 8,205 distinct contents (max 36
+copies of one motion — shared motions stored per wrestler/move slot).
+Two families by bytes 2–3: A `(0x00,0x02)`, 15,672 files; B
+`(0x01,0x00)`, 964 files, much larger on average; plus 24 rare files
+with `(0x02,0x00)`/`(0x03,0x00)`. Byte 1 is very likely a frame (or
+keyframe) count: corr(byte 1, size) = 0.83, size ≈ 596 + 16.1 × byte
+1. At ~16 bytes/frame the format is keyframed/sparse or
+delta-compressed, not dense per-frame joint data. The bitstream
+itself is still not decoded.
+
 ### Text data (fully parsed — in `data/`)
 
 | File | What it is | Parser output |
 |---|---|---|
-| `.000` file 02010 (197,125 B) | **Master string table**: header (25 categories, 4,021 strings, 68,237 string bytes), 25-category index, binary record region (0xD8–0x1F778, partially mapped — 32-byte records occur throughout, one family starting `04 04 05 05 00 00 00 <index>`, 208 occurrences), string table (4,020 SJIS strings) | `data/koc2-strings.json` |
+| `.000` file 02010 (197,125 B) | **Master string table**: header (25 categories, 4,021 strings, 68,237 string bytes), 25-category index, **32-byte record table, CRACKED (lane W2, 2026-11-19 — see `FILE-02010-FORMAT.md`)**: u32 string offset, u8 category, u16 index-in-category; category 0 (wrestler names) has federation (byte @0x07) and person-id (u16 @0x04, a permutation of 0..427) fields; the real per-wrestler data (movesets, stats) is in file 01999, surveyed in the same doc | `data/koc2-strings.json`, `data/koc2-file02010-records.json`, `data/koc2-file01999-survey.json` |
 | `.000` file 01454 (23,184 B) | **Music table**: 483 slots × 48 bytes, 240 non-empty entrance-theme titles | `data/koc2-music.json` |
 | `.000` file 02030 (331,155 B) | **Commentary script**: 20 ADX refs + 8,983 lines with situation codes (a/b general, fc/kc/nc/oc per-fed, VS versus, *BGM music cues); ends with `KC2OPENING_SFD`, `KACHINUKIOP_SFD` | `data/koc2-commentary.json` |
 | `.000` file 02031 (388,097 B) | **AFS file-ID header** (a C header left in the game data): `#define K06_ADX (0) /* k06.adx */` × 9,003; order verified identical to the AFS index | `data/afs-ids.json` |
@@ -235,7 +287,12 @@ parsed text data (JSON), ACW scripts, indexes, manifests.
 | `tools/kc2_extract.py` | Spike container extractor (decompresses inline) |
 | `tools/koc2_lzss.py` | Spike LZSS decompressor (cracked in this lane) |
 | `tools/kc2_afs.py` | AFS archive extractor (mmap-based, keeps real names) |
-| `tools/tim2_decode.py` | TIM2 → PNG (KoC2 quirks handled: 0x80 header, mode from sizes) |
+| `tools/tim2_decode.py` | TIM2 → PNG (KoC2 quirks handled: 0x80 header, mode from sizes; lane W2: `--deinterleave` quadrant option, CSM2 warning) |
+| `tools/koc2_file02010.py` | File 02010 32-byte record table → JSON (lane W2) |
+| `tools/koc2_file01999.py` | File 01999 WrestlerData survey → JSON (lane W2) |
+| `tools/romanize_koc2.py` | Romanize the 363 KoC2 roster names (FAQ-backed + machine, lane W2) |
+| `tools/koc2_mvs_survey.py` | MVS motion-file structural survey (lane W2) |
+| `tools/koc2_mdl_sections.py` | `.mdl` section-chain parser (lane W2) |
 | `tools/kc2fire_inspect.py` | Archive inspector: header hexdump, magic scan, string sample |
 | `tools/koc2_strings.py` | Master string table (file 02010) → JSON |
 | `tools/koc2_text.py` | Music table (01454) + commentary script (02030) → JSON |
@@ -243,15 +300,25 @@ parsed text data (JSON), ACW scripts, indexes, manifests.
 
 ## 9. Open items (not claimed)
 
-- **TIM2 colour mapping**: layout cracked, colours still speckled
-  (see §5). Needs more samples / the game's CLUT handling.
-- **`.mdl` geometry**: section map done; vertex/face/bone layout
-  open (community open problem since May 2026).
-- **MVS motion layout**: packed format, open.
-- **File 02010 binary records**: the 32-byte records that reference
-  the string table (wrestler parameters, movesets, COM Logic values)
-  are only partially mapped — the record family is identified, the
-  field layout is not yet decoded.
+- **TIM2 colour mapping**: palettes are NOT systematically dark
+  (60-file survey, lane W2) and the CLUT is in file order, but the
+  image-data layout is still not settled (quadrant deinterleave
+  helps smoothness yet looks wrong on one 64×64 file; GS swizzle
+  does not fit either) and the CSM2 CLUT unswizzle is unverified.
+  Needs the ELF TIM2 loader disassembled or a reference
+  implementation.
+- **`.mdl` geometry**: section map done (729-file survey, lane W2);
+  vertex/face/bone layout open — needs a VIF unpack interpreter
+  (community open problem since May 2026).
+- **MVS motion layout**: header families + frame-count field
+  surveyed (lane W2, see `MVS-FORMAT.md`); the bitstream itself is
+  not decoded — needs the ELF `MotionBase` loader (xref 0x1189B8).
+- **File 01999 WrestlerData interior**: the 441×2285-byte records
+  are surveyed (names, finishers located, lane W2) but the interior
+  layout (stats, moveset slots, COM Logic, costume data) is still
+  open — the biggest remaining KoC2 RE job. Cross-checks: Jerrold
+  Ng FAQ per-wrestler movelists; ELF `MoveBase`/`MotionBase`
+  loaders (xrefs 0x118994/0x1189B8).
 - **Threshold tables' purpose**: the venue-scale reading is
   interpretation; the game code path that reads them is not traced.
 - **Grade grids' purpose**: unidentified.
