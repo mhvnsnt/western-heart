@@ -632,14 +632,25 @@ export const TEKKEN_BACKDASH_CROUCH_CANCEL_FROM = { t7_king: 1 };
      tackle 1093/1098/1104) are not wired. */
 export const TEKKEN_RUN = { t7_king: { fromDashFrame: 12, chain: ['runStart', 'runA', 'runB'], loop: ['runA', 'runB'] } };
 /* FRESH-CROUCH GESTURE WINDOW (Lane B 2026-11-18, owner 2026-11-11: "only the punch combos are
-   working"): a down direction held only briefly before the button is ONE input gesture
-   (direction + button together = the standing directional, e.g. d/f+4), not an established
-   crouch. _inputCtx() reports crouching for resolution only once the crouch is established
-   (15 frames, the same 15-frame precedent as the run hold latch). A deliberately held
-   crouch (>= 15 f) still resolves FC. rows; a crouch entered from a backdash cancel or from
-   a run is a state-machine transition, not a fresh gesture, and counts as established at
-   once (tryCrouch sets _crouchEstablished). */
-export const FRESH_CROUCH_WINDOW_S = 0.25;
+   working"; Lane E 2026-11-19 corrected the length from T7 actual code): a down direction held
+   only briefly before the button is ONE input gesture (direction + button together = the
+   standing directional, e.g. d/f+4), not an established crouch. _inputCtx() reports crouching
+   for resolution only once the crouch is established. T7's establishment time is 6 FRAMES, not
+   15: the fastest universal while-rising input in T7 is "any Down for 6 frames, then
+   Neutral+Attack" (wavu tech compendium, frame-perfect / tool-assisted) — the crouch the WS
+   rises from is the same crouch FC attacks come from, so a down-hold shorter than 6 f never
+   counts as crouching, and 6 f does. Corroborated by King's T7 graph itself
+   (game/assets/anim/t7/king/graph.json): the crouch stance dwKAM_00D offers its button cancels
+   from frame 1 (start: 1) — once IN crouch there is no further wait — while d+1+2
+   (Kg_WHummer) is a cancel from the STANDING stance Kg_sKAM00_, so FC. vs d+ is decided by
+   state-at-button-time, with the state flipping at 6 f of down. A deliberately held crouch
+   (>= 6 f) still resolves FC. rows; a crouch entered from a backdash cancel or from a run is
+   a state-machine transition, not a fresh gesture, and counts as established at once
+   (tryCrouch sets _crouchEstablished). The comparison in _inputCtx() carries a 1e-9 epsilon:
+   6 accumulated 1/60 s ticks sum to 0.09999999999999999 in floating point, below 0.1, so a
+   bare >= test would need a 7th frame — the same float-boundary bug the 15 f window had
+   (15 x 1/60 = 0.24999999999999997 < 0.25). */
+export const FRESH_CROUCH_WINDOW_S = 6 / 60;
 /* T7 FULL-GRAPH DEVELOPMENT INTEGRATION (2026-11-10, owner t388u). Opt-in only (?t7graph=1, localStorage
    wh.t7graph=1, or globalThis.WH_T7GRAPH = true for tests): the player's fighter with a T7_GRAPHS entry (Pantera <-
    King) is then driven frame by frame by its imported source graph (t7-graph-driver.js): every press / hold / release
@@ -2101,15 +2112,18 @@ export class Fighter {
       stance: st && st !== 'BT' && st !== 'FC' && st !== 'SS' ? st : null,
       backturned: !!this._bt || st === 'BT',
       sidestep: this.state === 'sidestep',
-      // FRESH-CROUCH GESTURE WINDOW (Lane B 2026-11-18, owner 2026-11-11: kick strings):
-      // a d/f+4 pressed as one gesture (direction held < 15 f) is the STANDING directional
+      // FRESH-CROUCH GESTURE WINDOW (Lane B 2026-11-18, owner 2026-11-11: kick strings;
+      // Lane E 2026-11-19: length corrected to T7's 6 f, see FRESH_CROUCH_WINDOW_S):
+      // a d/f+4 pressed as one gesture (direction held < 6 f) is the STANDING directional
       // 'd/f+4', not 'FC.d/f+4' — the FC. prefix is tried first whenever crouching is true,
       // so without this window every d/f-held kick string opened with the wrong move and its
-      // continuation ('FC.d/f+4,3' does not exist) failed. An established crouch (held >= 15 f,
+      // continuation ('FC.d/f+4,3' does not exist) failed. An established crouch (held >= 6 f,
       // stance FC, or a backdash/run crouch cancel) still resolves FC. rows. WS. is unaffected
-      // (gated on _risingT, set on stand-up).
+      // (gated on _risingT, set on stand-up). The 1e-9 epsilon is load-bearing: 6 accumulated
+      // 1/60 s ticks sum to 0.09999999999999999, below 0.1, so a bare >= test would silently
+      // demand a 7th frame.
       crouching: st === 'FC' || (this.state === 'crouch' &&
-        (this._crouchEstablished || this.stateT >= FRESH_CROUCH_WINDOW_S)),
+        (this._crouchEstablished || this.stateT + 1e-9 >= FRESH_CROUCH_WINDOW_S)),
       rising: this._risingT > 0,
       airborne: !this.onGround, // Tekken jump attacks resolve from AIR. while this holds
       rage: !this._rageUsed && this.hp > 0 && this.hp <= this.maxHp * 0.25,
