@@ -4775,3 +4775,13 @@ DOA/VF editor-status verification (web search failed on local disk quota).
 **Verification:** 26/26 unit tests (new: unrelated-head passes; stale-head test asserts the untouched file does not flag). End-to-end on the #1759 scenario (base 967495e, main 4c0375e, head b29f8cb1): correctly fails on WORKLOG.md only (3 lines — the #1760 entry the branch lacks), guard files not flagged. Gitleaks clean on the commit.
 
 - Deletions: none.
+
+## 2026-11-19 — DELETION: shifted textures/rom/ removed, superseded by rom-corrected/ (NO-MERCY RE-EXTRACT)
+
+**Owner instruction (verbatim):** "Yeah, get that re-extraction and decoding and everything done"
+
+**What:** removes the old `teardown/wwf-no-mercy/textures/rom/` extraction (5,030 PNGs), built with the correct table constants but 0-based indexing — every file labeled N held game file N+1. The corrected set already lives in `textures/rom-corrected/` (PR #1759, 5,035 PNGs + manifest + README); nothing is lost, the names are simply right there. The `characters/` and `environments/` texture dirs (GLB-sourced, not ROM-sourced) are untouched. This PR needs the owner's `owner-approved-deletion` label (deletion-guard: over 20 files) plus the `approved-deletion` label (no-deletion-guard); the owner applies `owner-approved-deletion` himself per repo law.
+
+**Verification:** shift proven on the full sets (texture kinds match 5,029/5,029 under the +1 shift; e.g. old `rom/arena/ArenaAnnouncer_Table_Sides_07B3.png` holds game file 0x07B4, which lives as `rom-corrected/arena/ArenaAnnouncer_Table_Sides_07B4.png` — byte-identical). Gitleaks clean on the commit.
+
+- Deletions: 5,030 — all files under `teardown/wwf-no-mercy/textures/rom/` (superseded PNGs, replaced by `textures/rom-corrected/` in PR #1759).
