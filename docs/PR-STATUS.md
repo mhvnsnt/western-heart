@@ -16,7 +16,7 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| ⏳ running | [#1776](https://github.com/mhvnsnt/western-heart/pull/1776) Docs: Pantera 2+4 old-vs-fixed side-by-side on full A+B+D main (38a6e40) | ready | mhvnsnt / `pantera-throwfix/sidebyside-20261119` | `b5f8e3c` | `main` | ⏳ | ⏳ | ⏳ | ⏳ | 9⏳ | mergeable (blocked) | 2026-11-19 22:04 UTC |
+| ⏳ running | [#1776](https://github.com/mhvnsnt/western-heart/pull/1776) Docs: Pantera 2+4 old-vs-fixed side-by-side on full A+B+D main (38a6e40) | ready | mhvnsnt / `pantera-throwfix/sidebyside-20261119` | `b5f8e3c` | `main` | ✅ | ✅ | ✅ | ✅ | 5✅ 4⏳ | mergeable (unstable) | 2026-11-19 22:04 UTC |
 | 🔴 failing | [#1775](https://github.com/mhvnsnt/western-heart/pull/1775) tools/wwe: YANM keyframe decode + YOBJ v2 bind pose (W4 lane) | ready | mhvnsnt / `muse/w4-yanm-decode` | `0805d73` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-19 21:41 UTC |
 | 🔴 failing | [#1774](https://github.com/mhvnsnt/western-heart/pull/1774) W6: WMXIX gameplay clips (1,905) + faced arenas + Triple H | ready | mhvnsnt / `w6/wmxix-clips-arenas-hhh` | `38c58c3` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-19 21:06 UTC |
 | 🔴 failing | [#1773](https://github.com/mhvnsnt/western-heart/pull/1773) W6: WMXIX textures (9,410 PNGs) + face contact sheets | ready | mhvnsnt / `w6/wmxix-textures` | `b480185` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-19 21:06 UTC |
