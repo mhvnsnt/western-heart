@@ -4723,3 +4723,15 @@ DOA/VF editor-status verification (web search failed on local disk quota).
 **Still broken after this PR:** the remaining 26 Worker-dependent default models over 20 MB still load only from the Worker bucket (no working jsDelivr source); the next batch packs the biggest of those the same way. Live-fight proof for the 5 packed models is owed after merge + deploy (they only become loadable from jsDelivr once this lands on main). Yukihyo attires 2+3 become loadable for the first time anywhere.
 
 - Deletions: none.
+
+## 2026-11-19 — No Mercy animation bank re-extracted with the W3c-corrected decode (NO-MERCY RE-EXTRACT)
+
+**Owner instruction (verbatim):** "Yeah, get that re-extraction and decoding and everything done"
+
+**What:** the full No Mercy animation bank (`teardown/wwf-no-mercy/animations/`) re-extracted from the Rev-A ROM (CRC32 `BACEEA13`) with the game-exact W3c decode (FileTable `0x16C31D8`, FirstFile `0x1BD150`, 1-based file IDs, 12/10/10 channel split). The old bank held the shifted 0-based decode for all but the 11 Rock clips. True bank range is `0x2DD9..0x4473` — **5,787 clips** (1,353 system, 4,434 move), not `0x445A`/5,762: files `0x445B..0x4473` all fit the 4+98N layout and satisfy the Toki2 frame rule, with a hard break at `0x4474` (the old end was an artifact of the buggy window). `FORMAT.md` updated (range, corrected joint table — indices 18–25 were shifted by one, UpperRightLeg missing — u10 retarget note); `tools/extract_all_anims.py` range fixed to `0x4473`.
+
+**Verification:** all 11 Rock clips byte-identical to the W3c re-extraction; exact 4+98N lengths on all 5,787 clips; Toki2 frame rule holds on 95%+; stance control `0x2DD9` reproduces the W3c smoothness numbers exactly (mean step 1.36 u10 units); smoothness spot checks across the range 0.5–12.5 deg/frame (real motion, vs the 74–109 deg/frame garbage the old decode produced); AnimID join clean (0 errors). Gitleaks clean on the commit.
+
+**CI note:** the bank PR (#1755) timed out the clobber-guard job at 25 min (the guard fetched ~17k blobs one by one for 5,780 files). Fixed in PR #1756 (merged): the guard now skips known-binary extensions before fetching and reuses base blobs when main == base — verified end-to-end against the #1755 diff in 0.3s, 15/15 unit tests. This commit re-triggers #1755's checks so the guard runs with the fix.
+
+- Deletions: 1 — `teardown/wwf-no-mercy/animations/clips/anim_4C04.npy` (not a real game file: file IDs only run 1..0x4C02; reading 0x4C04 goes past the file table. PR carries the approved-deletion label.)

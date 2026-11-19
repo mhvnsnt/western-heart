@@ -2,10 +2,13 @@
 """Bulk-export the full WWF No Mercy AKI animation bank to NPY + manifest.
 
 Source: WWF No Mercy (USA) (Rev-A).z64, FileTable @0x16C31D8, FirstFile 0x1BD150, 1-based file IDs (game-exact, W3c — FUN_80003ab0/FUN_80003bd0; see anim_extract.py).
-Bank: file IDs 0x2DD9..0x445A (verified 2026-10-13; files before 0x2DD9 /
-after 0x445A do not fit the 4+N*98 AkiAnimation layout).
+Bank: file IDs 0x2DD9..0x4473 (true range re-verified 2026-11-19 under the
+corrected 1-based window: files 0x445B..0x4473 all fit 4+N*98 AND satisfy the
+Toki2 frame rule, with a hard break at 0x4474; the old 0x445A end was an
+artifact of the buggy 0-based window. Files before 0x2DD9 do not fit, except
+three tiny 1-2 frame files that fail the Toki2 rule.)
   0x2DD9..0x3321 = system animations (stances, entrances, taunts, ...)
-  0x3322..0x445A = move animations (AnimID = file_id - 0x3322, per
+  0x3322..0x4473 = move animations (AnimID = file_id - 0x3322, per
                    VPWStudio MenuItems_Moves.cs)
 
 Output:
@@ -31,7 +34,7 @@ from anim_extract import (FileTable, ORDER, decode_pr, decode_om,
 
 ROM = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                    '..', 'WWF No Mercy (USA) (Rev-A).z64')
-LAST_ANIM = 0x445A
+LAST_ANIM = 0x4473
 
 def encode_frame(fr):
     """raw 98-byte frame -> (26,3) int16"""
