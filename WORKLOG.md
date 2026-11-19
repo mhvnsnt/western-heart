@@ -4755,3 +4755,23 @@ DOA/VF editor-status verification (web search failed on local disk quota).
 **Verification:** model/texture +1 shift proven on the full sets (repo[fid] == fresh[fid+1] for 3,570/3,570 models, texture kinds 5,029/5,029); fresh extraction parses ALL 3,586 AkiModel files (the old "16 unparseable" were palette/texture files under the shift); AnimID joins proven (`Animations[MasterMoveID] == menu AnimID` for 1,642/1,681, 39 off by ±1–2); zero silent WAVs; menu backgrounds visually verified. Gaps (catalogue §8): moveset/params bit-packing (raw dumps only), sng→MIDI (needs SubDrag's N64MidiTool), AkiArchive 0x00F7, 3 undocumented Binary files, 64 B palette semantics, 39 AnimID mismatches. Gitleaks clean on the commit.
 
 - Deletions: none.
+
+## 2026-11-19 — Clobber guard reads git diff output instead of blobs (NO-MERCY RE-EXTRACT)
+
+**Owner instruction (verbatim):** "Yeah, get that re-extraction and decoding and everything done"
+
+**What:** PR #1758's `git cat-file --batch` fix saved subprocess spawns but NOT the fetches: in the CI checkout (`filter: blob:none`) each missing blob still negotiates separately, and the batch reads left the #1759 guard running past 16 minutes on a 7k-file text diff (heading for the 25-minute timeout, same as #1755). `main()` now works from `git diff` output instead: `git diff` bulk-fetches every blob it needs in one or two promisor negotiations (verified: the 12,409-file #1759 diff in a fresh partial clone took 2 fetches), and the check only needs the files main actually changed — additions(base→main) ∩ deletions(main→head). When main hasn't moved past the fork point the guard passes without reading anything, so its cost is decoupled from PR size. The blob-based `check_files()` / `_read_revision_files()` remain as the library API (used by `tools/clobber-check/` and `git_merge.py`) and as the fallback for a diff header no filename parser can match. One semantic note: the diff check counts line occurrences where the set check does not (a line main added twice that the branch keeps once now flags); the Reverts callout covers the exception.
+
+**Verification:** 25/25 unit tests (7 new: stale-head flags, keeping-head passes, main==base fast path, branch-deleted file doesn't flag, diff names/line sets incl. a " b/" filename, CRLF + blank lines, bad header raises). End-to-end on real diffs, all under 0.2 s: #1759 diff passes (fast path), #1755 bank diff passes, moved-main case passes via the diff path, and a genuine revert (base 1867590, main 967495e, head b3dd3a4) correctly fails flagging 51 + 62 + 5 lines. Fresh partial clone (blobs missing, CI-like): pass case in seconds with 2 promisor fetches; revert case correctly fails. Gitleaks clean on the commit.
+
+- Deletions: none.
+
+## 2026-11-19 — Clobber guard only checks files the branch also changed (NO-MERCY RE-EXTRACT)
+
+**Owner instruction (verbatim):** "Yeah, get that re-extraction and decoding and everything done"
+
+**What:** PR #1760's diff rewrite dropped a restriction the blob-based guard had: it checked every file MAIN changed, including files the branch never touched — but a file the branch never touched keeps main's version at merge, so flagging it would fail every PR open while main advances. `main()` now intersects main-changed files with branch-changed files (both tree-only diffs, no blobs). Caught before it bit: the #1759 branch would have failed on the guard files themselves. The stale-head test fixture was also fixed to the true PR #579 pattern (the stale head REWRITES the file with branch-only lines while lacking main's lines — a head byte-identical to base changes nothing and cannot revert).
+
+**Verification:** 26/26 unit tests (new: unrelated-head passes; stale-head test asserts the untouched file does not flag). End-to-end on the #1759 scenario (base 967495e, main 4c0375e, head b29f8cb1): correctly fails on WORKLOG.md only (3 lines — the #1760 entry the branch lacks), guard files not flagged. Gitleaks clean on the commit.
+
+- Deletions: none.
