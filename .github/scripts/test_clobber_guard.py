@@ -7,7 +7,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(__file__))
 from clobber_guard import (  # noqa: E402
-    check_files, parse_revert_callout, reverted_lines,
+    check_files, is_binary_path, parse_revert_callout, reverted_lines,
 )
 
 
@@ -96,6 +96,21 @@ class RevertedLines(unittest.TestCase):
         main = lines("a", "")
         head = lines("a")
         self.assertEqual(reverted_lines(base, main, head), set())
+
+
+class IsBinaryPath(unittest.TestCase):
+    def test_binary_extensions(self):
+        for p in ["clips/anim_37FA.npy", "img/sprite.PNG", "model.glb",
+                  "audio/track.mp3", "data.bin", "rom.z64", "a/b/c.jpg",
+                  "font.woff2", "archive.zip", "weights.safetensors"]:
+            self.assertTrue(is_binary_path(p), p)
+
+    def test_text_extensions_not_skipped(self):
+        # .obj is Wavefront text in this repo; .gltf/.mtl/.json are text.
+        for p in ["game/js/main.js", "index.html", "README.md",
+                  "data.json", "model.obj", "model.gltf", "model.mtl",
+                  "script.py", "notes.txt", "style.css", "noext"]:
+            self.assertFalse(is_binary_path(p), p)
 
 
 class Callout(unittest.TestCase):

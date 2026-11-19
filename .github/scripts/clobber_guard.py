@@ -29,6 +29,13 @@ Usage in CI:
         python3 .github/scripts/clobber_guard.py      # reads GITHUB_EVENT_PATH
 Library use:
     check_files(base, main, head, body, labels) -> {path: {offending lines}}
+
+Performance note (2026-11-19, PR #1755): the guard used to fetch every
+changed file's blob at all three revisions before deciding anything. On a
+binary-heavy PR (5,780 files, mostly .npy) that is ~17k lazy blob fetches,
+which blew the 25-minute job timeout. Known-binary extensions are now
+skipped before fetching (they could never flag: text_lines() skips binary
+content anyway), and main's blobs are reused when main == base.
 """
 import json
 import os
@@ -37,6 +44,31 @@ import subprocess
 import sys
 
 REVERT_LABEL = "owner-approved-revert"
+
+# Extensions that are always binary in this repo. Files with these
+# extensions are skipped BEFORE any blob fetch (see the performance note
+# above). A binary file with a text extension is still caught by
+# text_lines() after fetching; a text file with one of these extensions
+# would be wrongly skipped, so keep this list to formats that are never
+# plain text. (.obj is Wavefront text here; .gltf/.mtl/.json are text —
+# not listed.)
+BINARY_EXTS = frozenset({
+    ".npy", ".npz", ".bin", ".dat", ".z64", ".n64", ".v64",
+    ".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico", ".bmp", ".tga",
+    ".dds", ".exr", ".hdr", ".psd",
+    ".glb", ".fbx", ".blend",
+    ".mp3", ".wav", ".ogg", ".flac", ".m4a",
+    ".mp4", ".mov", ".webm", ".avi",
+    ".zip", ".gz", ".bz2", ".xz", ".7z", ".tar", ".rar",
+    ".pyc", ".pyo", ".onnx", ".pt", ".pth", ".safetensors",
+    ".ttf", ".otf", ".woff", ".woff2", ".eot",
+    ".pdf", ".exe", ".dll", ".so", ".dylib", ".a", ".o",
+})
+
+
+def is_binary_path(path):
+    """True when the path's extension marks it as always-binary."""
+    return os.path.splitext(path)[1].lower() in BINARY_EXTS
 
 
 def text_lines(data):
@@ -127,9 +159,21 @@ def main():
          base_sha, head_sha],
         capture_output=True, check=True, text=True).stdout
     paths = [p for p in diff.split("\x00") if p]
+    # Skip known-binary paths before fetching any blob: they can never
+    # carry reverted lines (text_lines() skips them), and fetching them
+    # is what times the job out on binary-heavy PRs (see BINARY_EXTS).
+    n_skipped = sum(1 for p in paths if is_binary_path(p))
+    if n_skipped:
+        print(f"Skipping {n_skipped} known-binary file(s) before fetch.")
+    paths = [p for p in paths if not is_binary_path(p)]
 
     base_files = {p: _git_show(base_sha, p) for p in paths}
-    main_files = {p: _git_show(main_sha, p) for p in paths}
+    # When main hasn't moved past the fork point, main == base: reuse
+    # the blobs instead of fetching them a second time.
+    if main_sha == base_sha:
+        main_files = dict(base_files)
+    else:
+        main_files = {p: _git_show(main_sha, p) for p in paths}
     head_files = {p: _git_show(head_sha, p) for p in paths}
 
     bad = check_files(base_files, main_files, head_files, body, labels)
