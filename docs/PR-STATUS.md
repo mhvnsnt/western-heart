@@ -4,7 +4,7 @@
 
 **33 open PRs — 🟢 ready to merge: 0 · 🔴 failing: 14 · ⏳ running: 0 · ⚔️ conflicted: 19** (also 🟠 blocked: 0 · 🔗 stacked: 0 · 📝 draft, green-or-idle: 0; 6 of 33 are drafts)
 
-_Generated 2026-11-20 01:21 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
+_Generated 2026-11-20 02:18 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
 
 Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not reported. Ready = not draft, targets `main`, GitHub says MERGEABLE, every check green. Status priority: conflicted > failing > running > draft > stacked > ready.
 
@@ -16,7 +16,7 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 🔴 failing | [#1778](https://github.com/mhvnsnt/western-heart/pull/1778) tools/wwe: J_Hips Part B root-motion decode (yanm_root.py) | ready | mhvnsnt / `muse/jhips-root-motion` | `796df7c` | `muse/w4-yanm-decode` (on #1775) | · | · | ✅ | ❌ | 2✅ 1⏳ | mergeable (unstable) | 2026-11-20 01:20 UTC |
+| 🔴 failing | [#1778](https://github.com/mhvnsnt/western-heart/pull/1778) tools/wwe: J_Hips Part B root-motion decode (yanm_root.py) | ready | mhvnsnt / `muse/jhips-root-motion` | `796df7c` | `muse/w4-yanm-decode` (on #1775) | · | · | ✅ | ❌ | 3✅ | mergeable (unstable) | 2026-11-20 01:20 UTC |
 | 🔴 failing | [#1777](https://github.com/mhvnsnt/western-heart/pull/1777) W7: WMXIX dynamic follow-up — 99 specials (98/99), motion names, calibrated durations, HHH | ready | mhvnsnt / `w7/wmxix-followup` | `ddf19a5` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-20 00:22 UTC |
 | 🔴 failing | [#1775](https://github.com/mhvnsnt/western-heart/pull/1775) tools/wwe: YANM keyframe decode + YOBJ v2 bind pose (W4 lane) | ready | mhvnsnt / `muse/w4-yanm-decode` | `0805d73` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-19 21:41 UTC |
 | 🔴 failing | [#1774](https://github.com/mhvnsnt/western-heart/pull/1774) W6: WMXIX gameplay clips (1,905) + faced arenas + Triple H | ready | mhvnsnt / `w6/wmxix-clips-arenas-hhh` | `38c58c3` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-19 21:06 UTC |
