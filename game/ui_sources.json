@@ -77,9 +77,23 @@
       ],
       "files": [
         "game/index.html",
-        "game/js/movelist-ui.js"
+        "game/js/main.js"
       ],
-      "note": "Move table (grouped rows: input | name | damage) built from real fighter moveset files — the same data the Create-A-Move List editor edits (packages/creation-suite/src/movelist-editor.js, PR #998 merged 2026-10-24; LP1/RP2/LK3/RK4 throughout, context validation: jumping slots take only jumping animations, crouching only crouching, standing only standing, grapple only grapple, directional only matching direction). This screen is the read view; the editor is the write view. Input notation per the Input_Sequence structures doc."
+      "note": "Move table (grouped rows: input | name | damage) built from real fighter moveset files — the same data the Create-A-Move List editor edits (packages/creation-suite/src/movelist-editor.js, PR #998 merged 2026-10-24; LP1/RP2/LK3/RK4 throughout, context validation: jumping slots take only jumping animations, crouching only crouching, standing only standing, grapple only grapple, directional only matching direction). This screen is the read view; the editor is the write view. Input notation per the Input_Sequence structures doc. CORRECTION 2026-11-20 (moveset-editor/skeleton): the live move list is rendered by main.js renderMovelist() — movelist-ui.js is not the live file (its citation was stale per Lane B §5b); movelist-ui.js itself is neither revived nor deleted here (owner decision owed, EDITOR-SPEC §6d.8)."
+    },
+    "screen-moveset-editor": {
+      "status": "sourced",
+      "sources": [
+        "teardown/tekken7/tekkenmods-docs/files/en/Tekken_8/Basic_Information/Overview/Moveset/Structures/Input_Sequence/index.md",
+        "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md"
+      ],
+      "files": [
+        "game/js/moveset-editor-ui.js",
+        "game/js/moveset-editor.js",
+        "game/js/main.js",
+        "game/js/menus.js"
+      ],
+      "note": "Moveset editor skeleton (2026-11-20, moveset-editor/skeleton): in-game WWE-style editor screen — position chips in resolver order, one row per input in MOVESET_GROUPS order, slot detail with move/swap/add from the engine's fixed SLOT_INPUTS, library modal shell (SAME INPUT / ALL MOVES / OTHER FIGHTER + MS_CATS + search + 40/page) with an honest empty state until the regenerated library index lands, save sheet with named movesets (wh_moveset_editor_v1) compiled into the live loadout (wh_moveset_loadout_v1) via setLoadoutSlot + __base. The screen section and styles are created at runtime by moveset-editor-ui.js (same pattern as menus.js buildOverlays); no index.html or styles.css edit. Position/input taxonomy per the moveset schema (resolver prefix order); no live move preview in v1 (move data shown instead); Demonio forms are 4 separate editable fighters with no in-editor form switch."
     },
     "screen-online": {
       "status": "sourced",
