@@ -22,9 +22,17 @@ reverse-engineered 2026-11-19 from the 18,862-clip moves pack:
   jump up to ~45 units/frame -- NOT a direct spatial signal in the
   Part A unit. Meaning still open (see docs/YOBJ-YANM.md "Part B").
 
-  J_Hips Part B: 8-byte records (3 x i16 BE + u16, byte 6 always 0,
-  byte 7 in {0,1,2,4}); the u16 does NOT sum to the frame count
-  (ratio varies 0-0.83, mean 0.40). Root-motion track, format open.
+  J_Hips Part B: 8-byte records (3 x i16 BE + u16 dt). The length
+  field counts 8-byte records, so the true byte span is length*8
+  -- TWICE what yanm.py's length*4 gives. (This decoder used to
+  read only half the track, which is why the u16 column did not
+  sum to the frame count.) The u16 dts sum to the clip's frame
+  count; each record is the root DISPLACEMENT over
+  [frame, frame+dt), so the position is the forward cumulative
+  sum, scaled by the first trailing float of the J_Hips entry
+  (cm/unit), with the absolute start in the next three trailing
+  floats. Full decode: yanm_root.py (see docs/YOBJ-YANM.md
+  "Root motion").
 
   Knee entries (StartingID 0x0001): the data index lives at +0xC
   (not +8); data starts at index+8, confirmed by both neighbours.
@@ -136,18 +144,31 @@ class YANMDecoded(YANM):
         return keys
 
     def hips_b_track(self, bone_entry):
-        """J_Hips Part B raw 8-byte records [(x, y, z, u16), ...]
-        (3 x i16 BE + u16 BE). The u16 does NOT sum to the frame
-        count; the value meaning is still open."""
-        idx, ln = bone_entry["part_b"]
-        if ln == 0 or ln % 8:
+        """J_Hips Part B raw 8-byte records [(x, y, z, dt), ...]
+        (3 x i16 BE + u16 BE dt). The dt column sums to the clip's
+        frame count, and each record is the root displacement over
+        [frame, frame+dt) -- see yanm_root.py for the full decode.
+
+        NOTE: yanm.py stores the Part B length as length*4 (4-byte
+        units), but the J_Hips Part B length field counts 8-byte
+        records, so the true byte span is ln*2. Reading only ln
+        bytes (the old behaviour) returns half the track.
+
+        On 0x5100 entries (header_len 0x30) Part B is 4-byte
+        records -- a different track, not root motion (the root
+        motion lives in the third pair there; see yanm_root.py).
+        Returns None for those."""
+        if bone_entry.get("starting_id") == 0x5100:
             return None
-        part = self.data[idx + 8: idx + 8 + ln]
+        idx, ln = bone_entry["part_b"]
+        if ln == 0 or ln % 4:
+            return None
+        part = self.data[idx + 8: idx + 8 + ln * 2]
         return [(struct.unpack_from(">h", part, j)[0],
                  struct.unpack_from(">h", part, j + 2)[0],
                  struct.unpack_from(">h", part, j + 4)[0],
                  struct.unpack_from(">H", part, j + 6)[0])
-                for j in range(0, len(part), 8)]
+                for j in range(0, len(part) - 7, 8)]
 
     def knee_gap(self, bone_entry):
         """Raw data bytes for a special (knee) entry: the data index

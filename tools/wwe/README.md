@@ -17,6 +17,7 @@ container formats.
 | `yobj_to_gltf.py` | Converts a `.yobj` model to glTF 2.0 (`.glb`): skinned mesh, 421-joint skeleton with the true bind pose (v2), facial morph targets. |
 | `yanm.py` | YANM animation-clip parser (bone table, part offsets). |
 | `yanm_decode.py` | YANM keyframe decoder: frame counts (dt-sum vote), Part A rotation tracks, bone hash mapping. |
+| `yanm_root.py` | J_Hips Part B root-motion decoder: 8-byte displacement records, per-frame root trajectory in cm (shared pair frame). See `docs/YOBJ-YANM.md` § Root motion. |
 | `yanm_to_gltf.py` | Converts a YOBJ + YANM clip to an animated `.glb` (rotation keyframes per joint; see `docs/YOBJ-YANM.md` for the decode). |
 | `catalog_yanm.py` | Catalogs every `.yanm` under given roots into JSON. |
 | `install.sh` | Builds the ooz (Oodle) helper from source. |
@@ -109,13 +110,22 @@ python3 catalog_yanm.py unpacked/moves yanm-catalog.json
   110-frame kick clip: coherent kicking figure, limbs attached,
   no shredding). Elbow -128 flags and the leg-twist 180-degree
   offset are handled (see `docs/YOBJ-YANM.md`).
+- **YANM root motion (2026-11-19)**: J_Hips Part B decoded —
+  8-byte records (i16 dx/dy/dz + u16 dt), displacement over
+  [frame, frame+dt), dt-sum = frame count on 274/279 primary
+  clips, scale + absolute start from the J_Hips trailing floats.
+  Validated on runs, dives, suplexes and dances (see
+  `docs/YOBJ-YANM.md` § Root motion). `yanm_decode.py`
+  `hips_b_track()` now reads the full track (the length field
+  counts 8-byte records, so the span is length×8, not length×4).
 
 ## Known limits
 
-- YANM Part B values, J_Hips Part B root motion, and the knee
-  (StartingID 0x0001) blocks are not decoded yet — animation is
-  Part A rotations only, in place, with straight knees. See
-  `docs/YOBJ-YANM.md` § Still open.
+- YANM Part B values and the knee (StartingID 0x0001) blocks are
+  not decoded yet, and root motion is not yet wired into
+  `yanm_to_gltf.py` — animation is Part A rotations only, in
+  place, with straight knees. See `docs/YOBJ-YANM.md` § Still
+  open (J_Hips Part B itself is decoded — § Root motion).
 - No textures are embedded in the GLBs (the texture-name -> DDS
   mapping lives in the ch PACs). The ch `.bin` files carry a
   header + texture-name string at offset 16 (`all_color`,
