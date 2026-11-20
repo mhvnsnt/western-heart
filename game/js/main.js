@@ -33,6 +33,12 @@ import { stageVisible, CORE_STAGES, CORE_FIGHTERS, quickFightParams } from './co
 // small next to the deferred modules. Stage THUMBS are the real cost there
 // (see the thumb atlas, assets/stages/thumbs/atlas.png + thumbs.json).
 import { initMenus, keepLoading, pauseGame } from './menus.js';
+import { openMovesetEditor, closeMovesetEditor } from './moveset-editor-ui.js';
+// Moveset editor skeleton (2026-11-20): static import so the editor's
+// runtime-created section exists before the screens map below is built
+// (same reason stages.js stays static). The UI module only pulls the
+// small editor engine at import; the ~300KB moveset JSONs stay dynamic
+// (loaded inside openMovesetEditor via movesets.js, like a fight start).
 import { isModuleLoadError, claimReload, resumable, saveResume, takeResume, fightStarted, nextStep } from './fight-recovery.js';
 import './load-progress.js'; // real loading bar (owner pt134u)
 
@@ -63,6 +69,11 @@ const screens = {
   collection: document.getElementById('screen-collection'),
   daily: document.getElementById('screen-daily'),
 replays: document.getElementById('screen-replays'),
+  // Moveset editor skeleton (2026-11-20): the section is created at
+  // runtime by moveset-editor-ui.js ensureScreen() (imported above, so
+  // it exists before this map is built) — same pattern as menus.js
+  // buildOverlays() injecting #wh-loading / #wh-pause.
+  'moveset-editor': document.getElementById('screen-moveset-editor'),
 
 };
 /* Tekken-style select screen controller (js/select-screen.js).
@@ -891,9 +902,24 @@ document.addEventListener('click', (e) => {
       audio.uiClick();
       window.location.href = '../customization/creation-suite-ui/index.html';
     }
+    else if (a === 'mode-moveset') {
+      // Moveset editor skeleton (2026-11-20): open the editor for P1's
+      // fighter (or the last-picked fighter); reveal 'show' leaves
+      // visibility to show() below, like the other screens.
+      audio.uiClick();
+      openMovesetEditor(null, { fromMenu: true, reveal: 'show' })
+        .then(() => show('moveset-editor'))
+        .catch(() => menuFail('Could not load MOVESET EDITOR — tap again'));
+    }
     else if (a === 'howto') { show('howto'); }
     else if (a === 'replays') { showReplays(); }
     else if (a === 'close-movelist') { toggleMovelist(false); }
+    else if (a === 'close-moveset-editor') {
+      // Editor's own BACK: closeMovesetEditor() re-shows #wh-pause when
+      // opened from pause; from the menu it returns to the menu.
+      const origin = closeMovesetEditor();
+      if (origin.fromMenu) show('menu');
+    }
     else if (a === 'back-menu') {
       // CLEAN-INIT: leaving fight → full state reset. No leaked fighters,
       // timers, or listeners carry into the menu.
