@@ -1,1 +1,0 @@
-The folders and documents in the UI directory are related to the look and feel of WWF No Mercy.

@@ -1,3 +1,0 @@
-# Parry-able moves list
-
-More info coming soon...
