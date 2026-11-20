@@ -4,7 +4,7 @@
 
 **31 open PRs — 🟢 ready to merge: 0 · 🔴 failing: 11 · ⏳ running: 1 · ⚔️ conflicted: 19** (also 🟠 blocked: 0 · 🔗 stacked: 0 · 📝 draft, green-or-idle: 0; 6 of 31 are drafts)
 
-_Generated 2026-11-19 23:33 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
+_Generated 2026-11-20 00:15 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
 
 Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not reported. Ready = not draft, targets `main`, GitHub says MERGEABLE, every check green. Status priority: conflicted > failing > running > draft > stacked > ready.
 
@@ -16,7 +16,7 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| ⏳ running | [#1770](https://github.com/mhvnsnt/western-heart/pull/1770) Land KoC2 teardown: King of Colosseum 2 full extraction (49,214 files) | ready | mhvnsnt / `muse/koc2` | `9d84de3` | `main` | ⏳ | ⏳ | ✅ | ⏳ | 2✅ 7⏳ | mergeable (blocked) | 2026-11-19 23:33 UTC |
+| ⏳ running | [#1770](https://github.com/mhvnsnt/western-heart/pull/1770) Land KoC2 teardown: King of Colosseum 2 full extraction (49,214 files) | ready | mhvnsnt / `muse/koc2` | `e121077` | `main` | ⏳ | ⏳ | ⏳ | ⏳ | 9⏳ | mergeable (blocked) | 2026-11-20 00:15 UTC |
 | 🔴 failing | [#1775](https://github.com/mhvnsnt/western-heart/pull/1775) tools/wwe: YANM keyframe decode + YOBJ v2 bind pose (W4 lane) | ready | mhvnsnt / `muse/w4-yanm-decode` | `0805d73` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-19 21:41 UTC |
 | 🔴 failing | [#1774](https://github.com/mhvnsnt/western-heart/pull/1774) W6: WMXIX gameplay clips (1,905) + faced arenas + Triple H | ready | mhvnsnt / `w6/wmxix-clips-arenas-hhh` | `38c58c3` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-19 21:06 UTC |
 | 🔴 failing | [#1773](https://github.com/mhvnsnt/western-heart/pull/1773) W6: WMXIX textures (9,410 PNGs) + face contact sheets | ready | mhvnsnt / `w6/wmxix-textures` | `b480185` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-19 21:06 UTC |
