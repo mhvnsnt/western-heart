@@ -36,10 +36,17 @@ HEADER_SIZE = 0x800
 REPLACEMENTS = {
     "PAC_GAME_MES": WORK / "PAC_GAME_MES.en.bin",
     "TIM_END": WORK / "us-pac-tim" / "TIM_END.bin",
+    # US staff credits (English) — same size/VRAM as JP, drop-in (M2, 2026-11-20)
+    "TIM_STAFF": WORK / "us-pac-tim" / "TIM_STAFF.bin",
+    "TIM_STAFF2": WORK / "us-pac-tim" / "TIM_STAFF2.bin",
+    "TIM_STAFF3": WORK / "us-pac-tim" / "TIM_STAFF3.bin",
+    "TIM_STAFF4": WORK / "us-pac-tim" / "TIM_STAFF4.bin",
+    # EN menu atlas (slot 202) + US T3 staff lines (slot 204) (M2, 2026-11-20)
+    "PAC_WRES": WORK / "PAC_WRES.en.bin",
 }
 
 
-def rebuild(orig: bytes) -> bytes:
+def rebuild(orig: bytes, skip=frozenset()) -> bytes:
     assert orig[:4] == b"DPAC"
     _ver, count, table_size, _total = struct.unpack_from("<IIII", orig, 4)
     assert table_size == count * 32
@@ -49,7 +56,7 @@ def rebuild(orig: bytes) -> bytes:
         raw = orig[off:off + 32]
         name = raw[:16].rstrip(b" \x00").decode("shift_jis")
         size, start_sector, nsec, _d = struct.unpack_from("<IIII", raw, 16)
-        if name not in REPLACEMENTS:
+        if name not in REPLACEMENTS or name in skip:
             continue
         new_blob = REPLACEMENTS[name].read_bytes()
         capacity = nsec * SECTOR
@@ -75,8 +82,10 @@ def main():
         inp = Path(args[args.index("--in") + 1])
     if "--out" in args:
         outp = Path(args[args.index("--out") + 1])
+    skip = frozenset(args[args.index("--skip") + 1].split(",")
+                     ) if "--skip" in args else frozenset()
     orig = inp.read_bytes()
-    new = rebuild(orig)
+    new = rebuild(orig, skip)
     outp.write_bytes(new)
     # verify: only the two replaced entries' ranges differ
     diff_ranges = []

@@ -614,3 +614,446 @@ build script go to western-heart, branch muse/toukon-english.
 - RAM proof: EN names Ｆｕｊｉｎａｍｉ (0x80010514), Ｃｈｏｎｏ (0x80010544), Ｈａｓｈｉｍｏｔｏ (0x80010550) in RAM. JP names 藤波辰爾, 武藤敬司 NOT in RAM.
 - Note: HUD in demo mode still shows kanji (demo uses its own name source). EN names will show on character select / VS screens (EXE strings). Input problem (S/KP_6) blocks navigating to character select for visual confirmation.
 - **DELIVERABLE: partial English patch (names + "The End"). Banners + name sheet + menus remain Japanese (documented blockers).**
+
+## 2026-11-20 ~09:00-09:10 UTC — DELIVERY
+- western-heart: commit 68ed4654 on branch muse/toukon-english (19 files,
+  4815 insertions, 0 deletions). Tools + docs + WORKLOG + README.
+  NOT PUSHED — no git credentials in this environment (HTTPS needs auth,
+  SSH to GitHub blocked by proxy). Parent agent to push via GitHub connector.
+  Note: western-heart-coverage is a SPARSE checkout; committed with
+  `git add --sparse` after verifying index == HEAD (86,432 files).
+  gitleaks not installed; files manually checked (no secrets).
+- Oracle VM /home/ubuntu/toukon-english/: tr1-en-final-track1.bin
+  (SHA-1 17050fec804b94661892ae35cece7ae167d1f952, verified),
+  tr1-jp-track1.bin (SHA-1 284fd4f27d08556326a163f177923f92202e4cc4),
+  testFINAL.cue, toukon-README.txt. VM disk now 1.4GB free (100% used).
+- CHD NOT built (needs real audio tracks re-downloaded + chdman on VM).
+- LANE COMPLETE (partial delivery). See README.md for next steps.
+
+## 2026-11-20 ~14:00-14:25 UTC — M2 lane: PCSX control test + menu RE breakthrough
+
+### PCSX ReARMed control test — BPE HANG IS MEDNAFEN-SPECIFIC (BLOCKER 1 CRACKED)
+- Full-EN disc (all 14 banner/name-sheet replacements + EN EXE names) in PCSX ReARMed
+  on the Oracle VM: boots, title, plays LIVE demo matches for 60+ s with ENGLISH HUD
+  names (JYUSHIN THUNDER LYGER, TATSUMI FUJINAMI, KENSUKE SASAKI, KEIJI MUTOH).
+  Screenshots: work/pcsx-fe-after10.png (02:23), pcsx-fe-after30.png (pin count "1"),
+  pcsx-fe-after60.png (04:34). JP control matches (kanji HUD) in pcsx-jp-after*.png.
+- The first run's "Yuke's logo after Start" was NOT a crash: pressing Start during the
+  DEMO exits to the Yuke's logo (part of the attract loop: Yuke's logo -> title ->
+  demo -> Start -> Yuke's logo). Confirmed in mednafen too (jp-demoexit3.png).
+- Title times out to demo after ~20-30 s idle. Mednafen input: instant `key Return`
+  does NOT register; must use keydown + 0.3 s hold + keyup (emu.sh pattern).
+  F5 save-state does NOT work in this mednafen setup (no .nc file created).
+- CONCLUSION: the BPE banner/name-sheet patch WORKS in the console's core
+  (PCSX ReARMed). The 70+ test Mednafen hang is an emulator-specific artifact.
+  Banners + name sheet + EXE names + TIM_END are DONE for the console.
+- Demo HUD names are ENGLISH in the full-EN build (previous lane's "demo uses its own
+  name source" note is explained: demo HUD uses the NAME SHEET, which is EN now).
+
+### JP vs US EXE diff — WORKLOG CORRECTION
+- JP vs US EXE: 293,154 / 417,792 bytes differ (70%). NOT near-identical as recorded
+  earlier. The 0x8006CE00+ "shared table region" claim is also wrong (inside a
+  12,847-byte diff block). Align by function/structure, not byte diff.
+- PS-X EXE file offset = RAM - 0x80010000 + 0x800 (0x800-byte header). Earlier
+  disassembly in this session used the wrong offset (off by 0x800) — corrected.
+  Verified: name pointer table RAM 0x8006CFB0 = file 0x5D7B0.
+
+### Menu text system — CRACKED (disassembly, capstone MIPS)
+- 0x80011AE8(a0=x, a1=y, a2=?, a3=glyph_code) = glyph/text draw dispatcher.
+  60 callers. a3 selects one of THREE texture-rect tables (8-byte entries =
+  u16 tex_x, u16 tex_y, u16 w, u16 h):
+  - T1 (a3 0-99): base RAM 0x8006A8F8, 65 entries (a3=65 is terminator 0xFFFF).
+    Variable-width 16px-tall rects (16-208 px wide). VRAM x=512-576, y=0-240.
+    => a 256x256 px 4bpp TEXT ATLAS at VRAM (512,0). THE MENU TEXT LIVES HERE.
+  - T2 (a3 100-199): base 0x8006AB08. 16x16 glyphs (digits etc.), U steps of 4.
+  - T3 (a3 200+): base 0x8006AB98. 256x16 full-width strips at VRAM (768,256+16k)
+    => TIM_STAFF2's VRAM slot (768,256). T3 draws STAFF CREDIT lines, not menus.
+    (Confirmed: TIM_STAFF2 JP = kanji staff names, US = English staff names.)
+- 0x80047078 = number-drawing fn (div by 10, calls 0x80011AE8 with a3=digit+100).
+- 0x80049964 = GPU packet builder (textured sprite, 0x2D000000). Table coords are
+  VRAM coords; it splits them into texture-page + offset (x mod 64, y mod 256) and
+  scales U by 4/2/1 depending on texture bpp (struct field +0x18 bits 7+).
+  Texture structs are runtime pointers in globals [0x80079F6C] (T1), [0x8007A14C]
+  (T2), [0x80079F1C] (T3).
+- Menu strings are NOT text anywhere because they are PRE-RENDERED TEXT LINES in
+  the T1 atlas texture. Translation = redraw the atlas in English.
+- T1 atlas is NOT embedded in the EXE (no TIM found). NOT a top-level DTPAC TIM
+  (no 64x256 TIM at VRAM (512,0); TIM_マット is only 32x128 there). Source file
+  still to find: likely a BPE section in a WRES container, loaded at menu time
+  (VRAM (512,0) is reused: wrestler body textures at match time, atlas at menu time).
+- TIM_STAFF2 JP vs US rendered (work/font-hunt/): both are staff credits; US is
+  English — drop-in replacement for the credits is available.
+- PAC_COMMON sheet re-checked: costumes/poster/digits only, no menu text.
+- NEXT: find the T1 atlas source file (string-draw wrapper hunt: callers with
+  variable a3 at 0x800472f4/0x80047364; or search WRES containers for a 256x256
+  4bpp TIM); then redraw in English (port US atlas if it exists) and re-test.
+
+### MENU ATLAS SOURCE — FOUND (2026-11-20 ~15:30 UTC) — BLOCKER 2 CRACKED
+- Full loader chain traced by disassembly (capstone MIPS):
+  - Startup 0x80012120: 0x8004AD10(a1=0x8001000C="\\TOK\\DTPAC.PAC;1", a2=1)
+    creates the DTPAC file record -> global [0x80079F54].
+  - 0x80011F24: 0x800482AC(a0=malloc(0x18), a1=0x80010000="PAC_WRES").
+    NOTE: RAM 0x80010000 holds "PAC_WRES\0" (file 0x800) and 0x8001000C holds
+    the DTPAC path (file 0x80C) — the EXE's first bytes are data, not code.
+  - 0x800482AC: 0x8004AF80(a0=DTPAC record, a1="PAC_WRES") -> 0x8004AE8C looks
+    up "PAC_WRES" by 16-byte name in DTPAC's 145-entry table, reads its sectors
+    from CD into RAM -> 0x8004840c inits the WRES container struct ->
+    global [0x8007B1DC] = PAC_WRES container.
+  - Texture init 0x800119B4: calls 0x800486e0 FOUR times with (a0=[0x8007B1DC]):
+    a1=0xC8 (200) -> [0x8007B03C] (4th texture); a1=0xCA (202) -> T1ptr;
+    a1=0xCB (203) -> T2ptr; a1=0xCC (204) -> T3ptr.
+  - 0x800486e0(a0=container, a1=slot): 0x800483ec = slot DATA POINTER
+    (data_base + u16(table+slot*4+8)*4); 0x800483d4 = slot SIZE
+    (u16(table+slot*4+10)*4). If data starts with "BPE ", decompresses via
+    0x80048a20 into a 0xEAA8-byte stack buffer; else memcpy. Then mallocs a
+    0x1C-byte texture struct and calls 0x800492e4 (TIM parse + VRAM upload).
+  - WRES container struct (0x8004840c): +0=base, +4=base+0x810,
+    +8 (table_ptr)=base+0x880+*(base+0x814), +0xC=base+0x880,
+    +0x10 (data_base)=table_ptr+0x400.
+    PAC_WRES: *(0x814)=169580 (0x2966C), table_ptr=0x29EEC, data_base=0x2A2EC.
+    (PAC_GAME_MES has *(0x814)=0, table 0x888, data 0xC80 — same formula.)
+- PAC_WRES slots (JP, 310,164 B; 102 BPE slots total):
+  - Slot 200: 28,336 B -> TIM 512x216 (55,360 B). = NJPW "KING OF SPORTS /
+    NEW JAPAN PRO-WRESTLING" lion logo on dark texture. ALREADY ENGLISH.
+    (work/font-hunt/tex200.png). No translation needed.
+  - Slot 202 (T1 MENU ATLAS): 7,388 B -> TIM 256x256 4bpp (32,832 B).
+    (work/t1-atlas.bin, work/font-hunt/t1-atlas.png). ALL menu text lines.
+  - Slot 203 (T2 digits): 2,684 B -> TIM 256x128 (16,448 B).
+  - Slot 204 (T3 staff lines): 4,644 B -> TIM 256x256 (32,832 B).
+- US PAC_WRES slots (326,560 B; work/us-pac_wres.bin): SAME decompressed sizes:
+  slot 200 512x216, slot 202 256x256 (32,832 B), slot 203 256x128 (16,448 B),
+  slot 204 256x256 (32,832 B). US slot 202 = ENGLISH menu atlas
+  (work/font-hunt/us-slot202.png): "12 Man Gauntlet", "PPW LEAGUE",
+  "PPW TOURNAMENT", "CHAMPIONSHIP", "BEST BOUTS", "1 PLAYER", "2 PLAYER",
+  "DEMO MATCH", "NO LIMIT", "VENUE", "SAVED GAME", "1st FLOOR", "2nd FLOOR",
+  "DOME", "VITO'S", "SLAM ROCK", "STEREO", "MONO", "EASY", "MEDIUM", "HARD",
+  "GO!", "TIME", "SOUND", "on/off", "WOW! LEVEL", "(cont)", "CROCK".
+- JP T1 atlas text (read from work/font-hunt/t1-atlas.png):
+  y=0: 試練の十二番勝負 | ベストバウト; y=16: G1クライマックス | リーグ戦 | オフ;
+  y=32: G1クライマックス | トーナメント戦 | オン; y=48: IWGP選手権試合 | 試合開始 | BVD;
+  y=64: 戦いの軌跡 | カードロード | 引き分け; y=80: VS プレイヤー2 | セメント | 難易度 | /;
+  y=96: VS コンピュータ | (再開); y=112: 観戦席 | コンピュータ観戦 | モノラル;
+  y=128: NJPW1 NJPW2 NJPW3 | 第 | 時間無制限 | 大阪会場; y=144: (red) 代;
+  y=160: 試合会場 | シリーズ開催中 | リング | 特別リングサイド | ○×□ | スピーカー;
+  y=176: ステレオ | ストロング | 試合時間 | 敗分数 | 東京会場A | 東京会場B | トレーニング;
+  y=192: 2F特別席 | NJPW4 | 初代 | 勝対 | 分; y=208: 屋外特設リング | 開場 | スパーリング | 秒;
+  y=224: 観戦席 | コンピュータ ... (work/font-hunt/jp-bottom.png); y=240: TBD.
+- T1 TABLE = 65 rects (file 0x5B0F8; RAM 0x8006A8F8). Full list in session notes
+  / tools (rect i: atlas_x, atlas_y, w, h — all h=16). Key: 33=(0,0,128) 試練の
+  十二番勝負; 35=(0,16,208); 36=(0,32,208); 37=(0,48,144); 40=(0,64,80);
+  42=(0,80,128); 43=(0,96,144); 30=(0,224,160); 32=(0,240,112). MANY RECTs
+  OVERLAP (substrings / composite drawing, e.g. 34=(32,0,96) inside 33).
+- CAUTION — US atlas is NOT a blind drop-in: the US and JP atlases pack DIFFERENT
+  text at the same rect indices for some rects (verified: rect 33 matches —
+  JP 試練の十二番勝負 = US "12 Man Gauntlet" — but rects 30/32 differ: JP 観戦席/
+  ベストバウト vs US "2nd FLOOR"/"SLAM ROCK"). Activision rearranged the menu.
+  The CORRECT English atlas keeps the JP rect layout and renders NJPW-correct
+  English text per rect (harvest US glyphs for the font). Contact sheets:
+  work/font-hunt/t1-map-*.png (JP vs US per rect), t1-jp-*.png (JP 3x).
+  The 60 callers of 0x80011AE8 (tools/find_menu_calls.py) set a3 via registers/
+  tables, not immediates — per-screen rect mapping needs data-flow tracing.
+- Tools added: tools/scan_atlas.py, tools/scan_atlas_file.py (raw-4bpp atlas
+  scans — EXE: no hit; DTPAC: 15,856 false positives, top hits are STAFF
+  textures), tools/find_texptr_writes.py (lui 0x8008 + negative-offset pattern),
+  tools/find_menu_calls.py (60 jal sites for 0x80011AE8).
+- NEXT: (1) map all 65 JP rects -> English text (FAQ + atlas reading);
+  (2) harvest US font glyphs, render English atlas (same TIM header/palette);
+  (3) rebuild PAC_WRES slot 202 (BPE recompress; US slot 202 is SMALLER than JP
+  — rebuild table offsets or pad to exact size); (4) rebuild DTPAC + ISO;
+  (5) verify menus in PCSX ReARMed (needs input fix, see below).
+  T3 (slot 204): swap US English staff atlas the same way. T2: digits, likely
+  fine as-is (verify). Slot 200: already English, no change.
+
+### RetroArch input — BROKEN on the VM (2026-11-20 ~15:00 UTC)
+- Keyboard input does NOT reach RetroArch in the Xvfb setup. Proven: xdotool
+  keydown/keyup Return, xdotool key --window, xte (XTest) Return, and xte F1
+  (menu toggle) ALL fail — JP disc (known good, reaches menu in mednafen) goes
+  title -> demo every time. Focus is correct (getwindowfocus == RetroArch window);
+  input_driver="x", mappings correct (enter=Start, x=A, z=B). F1 not opening the
+  RA menu proves input never arrives (not a game issue). xte installed via apt
+  (/usr/bin/xte). NEXT: virtual gamepad via uinput (sudo available, /dev/uinput
+  exists, root-only) + RetroArch udev joypad driver — untested. Without input,
+  menu/character-select/VS navigation CANNOT be verified in RetroArch.
+  Mednafen input WORKS (Return hold -> menu) but mednafen HANGS on any BPE-changed
+  disc at title->menu, so it cannot verify the full-EN build either.
+
+### VM disk — CHD BLOCKED (2026-11-20 ~15:17 UTC)
+- VM disk 2.2G free (99%) as of ~10:17 EST (parent heads-up): PPP runner _work
+  re-checked out 12G for a RUNNING job — DO NOT clean while it runs. Do not delete
+  anything to make room without checking with the parent first. CHD build needs
+  ~456MB TR1 zip re-download + ~400MB extraction + ~200MB CHD output — BLOCKED
+  until disk relief. Check df -h before any big VM-side write.
+- Local quota also tight (EDQUOT on small writes); workdir kept small (405M);
+  local .bin copies deleted (all on VM or re-downloadable).
+
+### Full-EN build status (2026-11-20 ~15:30 UTC)
+- Build cf9f6bd6 (on VM /home/ubuntu/toukon-english/tr1-fullen-track1.bin):
+  ENGLISH: EXE names, 14 banners + name sheet, TIM_END, US staff TIMs 1-4.
+  STILL JAPANESE: menus (T1 atlas — source now FOUND, English atlas not yet
+  built), T3 staff lines (US swap pending), JP event poster in PAC_COMMON
+  (US kept it JP too — low priority). CHD not built (disk-blocked).
+- PMPW LESSON (Mars, 2026-11-20 ~09:49, via MEMORY.md): lane 1 burned effort
+  cracking JP menus/banners from scratch instead of porting ALL of PMPW's English
+  assets first. M2 does PMPW-first: US banners, US TIM_END, US staff TIMs, US
+  name-sheet font, US atlas glyphs. Rule: when an official other-language version
+  of the same game exists, port EVERYTHING portable before from-scratch decoding.
+
+## M2 — RetroArch input: FAILED, mednafen navigation: WORKS (2026-11-20 ~15:45–17:05 UTC)
+
+### RetroArch/PCSX input — ALL PATHS FAILED (abandoned)
+- Virtual gamepad (uinput, tools/vgamepad.py): device created (/dev/input/event6),
+  events PROVEN via evtest (BTN_START 315, BTN_EAST 305). RetroArch detects it
+  ("Pad #0", "Virtual Gamepad configured in port 1"). BUT no button reaches the
+  game: tried udev driver with ordinal (0-15), raw-code (304-315/544-547), and
+  SDL2 joypad driver — Start at title never advances; Start+Select menu combo
+  (input_menu_toggle_gamepad_combo=1) never opens the RA menu. Keyboard (xdotool,
+  xte, Return/F1) also fails, with and without openbox WM, with input_driver x
+  AND sdl2. CONCLUSION: RetroArch on headless Xvfb accepts NO input at all.
+  Do not waste more time on it. vgamepad.py gained combo/down/up commands
+  (kept for future use). RA config left with input_driver=sdl2,
+  input_joypad_driver=sdl2, menu combo=1 — harmless, game still boots/plays demos.
+- NOTE: pad6 "Start exits demo to logo" was MISREAD — the logo/title appearances
+  were natural attract-loop cycling, not input. No RA input was ever proven.
+
+### Mednafen navigation — FULLY WORKS (the QA path)
+- Mednafen wiped by VM replacement; reinstalled (apt). Xvfb :99 is the KoC2
+  lane's (PCSX2) — DO NOT touch. Use :98 for mednafen. Launch with
+  DISPLAY=:98 explicitly (forgot once: mednafen opened on a phantom 1024x768
+  display, no window on :98). Boot is SLOW under load (title ~75-135s).
+- Key remap (in ~/.mednafen/mednafen.cfg): circle=X(27), cross=Z(29),
+  square=C(6), triangle=U(24). WASD = D-pad (up=W26, down=S22, left=A4,
+  right=D7), start=Return(40). The numpad defaults (KP_6=circle etc.) do NOT
+  register via xdotool — that's why lane 1's S/KP_6 failed. Use keydown +
+  0.3s hold + keyup (emu.sh pattern); instant `key` does not register.
+- FULL PATH PROVEN (JP disc, screenshots in work/nav2-*.png + nav4-*.png):
+  Title -> Return -> Main menu (4 items: 開場/戦いの軌跡/ベストバウト/
+  カードロード) -> X on 開場 -> Game menu (10 items) -> X on VS Computer ->
+  Options (7 rows: 難易度/試合時間/引き分け/試合会場/リング/観戦席/
+  スピーカー; W/S rows, A/D values, D changed 30分->35分) -> X -> Character
+  select (12 names each side, P1 red when picked, P2 yellow) -> X (P1) ->
+  S,S,X (P2) -> MATCH (Fujinami vs Mutoh, 00:00, nav4-vs2.png).
+- Notes: X (Circle) is confirm; Start does NOT confirm in menus. Best Bout
+  with no saved replays does nothing on confirm (not an input failure).
+  Options screen wraps (7x Down = back to row 1). Character-select names are
+  FULL names (藤波 辰爾) — rendered from the name sheet or T2 glyphs (TBD
+  which; EN name sheet is already in the full-EN build).
+- JP baseline screenshots: nav4-title3 (title), nav2-menu2/nav2-confirm2
+  (main menu), nav2-kaijo/nav4-charsel (game menu), nav4-charsel2/nav4-optright
+  (options), nav4-afterx/nav4-p1pick (char select), nav4-vs2 (match start).
+
+### Next: build the EN T1 atlas
+- Map all 65 JP rects -> NJPW-correct English (FAQ + atlas reading + the
+  JP baseline screenshots above, which show exactly which rects appear where).
+- Harvest US font glyphs from the US atlas (work/font-hunt/us-slot202.png),
+  render EN text into each JP rect (same TIM header/palette as JP slot 202).
+- Rebuild PAC_WRES slot 202 (BPE recompress; US slot 202 is SMALLER than JP,
+  4636 vs 7388 B — update table offsets or pad to exact size; sequential-read
+  rule applies). Also swap US T3 (slot 204, English staff lines).
+- TEST IN MEDNAFEN FIRST (atlas-only build, no PAC_GAME_MES changes): if
+  mednafen does NOT hang on PAC_WRES BPE changes, the EN menus are verifiable
+  there. Then combine atlas + banners for the full build; verify banners in
+  PCSX demos (already proven) + menus in mednafen (atlas-only build).
+
+## 2026-11-20 — FULL ENGLISH v6 COMPLETE (M2 lane, DuckStation QA)
+
+### EN T1 atlas built (tools/build_en_atlas.py)
+- Font harvested from the US atlas, WORD-LEVEL with explicit x-ranges
+  (gap-based grouping fails: word gaps 7-15px overlap the "!" gap 8px and
+  paren gaps 7px). 47 glyphs; X, J, `.`, `#`, `/`, `l` drawn in matching
+  style; L/M/W fixed via manual x-range harvest; "m" via manual harvest
+  (y=192, x=227-236). JP-style red shadow (+1x, idx 2). OXO symbols were
+  copied from JP at first — REMOVED in v6 (see below).
+- TRUE T1 row layout (corrected from the JP atlas + US atlas):
+  y=0 12/MAN GAUNTLET/BEST BOUTS; y=16 G1 CLIMAX/LEAGUE/OFF;
+  y=32 G1 CLIMAX/TOURNAMENT/ON; y=48 IWGP CHAMPIONSHIP/START;
+  y=64 RESULTS/LOAD/DRAWS; y=80 VS PLAYER 2/CEMENT/LEVEL;
+  y=96 VS COMPUTER/(cont.); y=112 VIEW/DEMO MATCH/MONO;
+  y=128 ring digits 1/2/3/#; y=144 NO LIMIT/OSAKA; y=160 VENUE/RING;
+  y=176 RINGSIDE/SOUND; y=192 STEREO/STRONG/TIME/L/m;
+  y=208 TOKYO A/TOKYO B/TRAINING; y=224 2nd FLOOR/4/1st/W vs/D;
+  y=240 OUTDOOR/GO!/SPARRING/s.
+- Options-screen rect model: the options screen does NOT use the 65-rect
+  table at EXE 0x5B0F8 (only two rect tables exist in the EXE: 0x5B0F8
+  with 65 rects and 0x5B308 with 17). It uses JP word-bounds rects
+  (x = JP word start, w = JP word width in 16px kanji units), computed
+  at runtime. The US EXE rect table is IDENTICAL to the JP one — Activision
+  changed no rects; they positioned US words to fit the JP rects.
+- Key positioning fixes (all proven in DuckStation): TIME at x=144 (the
+  options label rect starts ~144; at 128 it showed only "ME"); RING at
+  x=208 (label rect starts ~208; at 192 it showed only "NG"); TRAINING
+  at x=180 spacing 1 (ends 251; x=192 overflowed past 256); CEMENT
+  spacing 0 at x=128 (ends 176, stays out of game-menu rect 42);
+  "MAN GAUNTLET" at x=28 spacing 0 (ends exactly 128, so the game menu
+  shows "12 MAN GAUNTLET"); X glyph redrawn (8 wide, 2px diagonals —
+  the first X read as "Y": "G1 CLIMAY"); I glyph redrawn (5px serif bar —
+  the harvested ~3px I vanished at spacing 0: "TRANNG").
+
+### EN T2 atlas (tools/build_en_t2.py, slot 203)
+- T2 (256x128 TIM) holds digits 0-9, results headers, "( save enabled )",
+  LOAD/SAVE FAILED, FORMATTING. US T2 verbatim except row y=48 re-rendered
+  as "IWGP CHAMPS" (not "PPW CHAMPIONS" — this game is NJPW/IWGP).
+- "IWGP CHAMPIONS" (145px, centered) clipped to "IWGP CHAMPIC" on the
+  results menu; "IWGP CHAMPS" centered (117px, x=69-188) clipped to
+  "IWGP CHAMP" — the results-menu rect's right edge is ~x=176. FIX:
+  "IWGP CHAMPS" LEFT-ALIGNED at x=21 (matching the US rows' left edge),
+  ends x=140, fully visible (v4).
+- rebuild_wres.py replaces slots 202+203+204 (exact-size BPE, roundtrip
+  verified). Slot 204 = US T3 staff lines verbatim (padded to JP size).
+
+### Mednafen hang — concluded (do NOT re-investigate)
+- Mednafen hangs on ANY PAC_WRES slot 202 change (atlas-only build boots
+  to title, black after Start; JP disc reaches the menu fine). Staff TIMs
+  are INNOCENT (staff-only build reaches the menu). The GENUINE US slot
+  202 blob ALSO hangs (freezes on the zoomed title-transition screen).
+  Same unsolved BPE hang mechanism as PAC_GAME_MES. Mednafen CANNOT verify
+  the EN menus. DuckStation does NOT hang on any of these changes.
+
+### DuckStation QA setup (2026-11-20)
+- AppImage from github.com/stenzek/duckstation (latest, 91.5 MB) at
+  ~/workspace/duckstation/; NO FUSE here — extract with --appimage-extract;
+  binary squashfs-root/AppRun. BIOS scph1001.bin in
+  ~/.local/share/duckstation/bios/. Launch: DISPLAY=:98 ./AppRun -batch
+  <cue>. Boot is slow (title ~45-90s; Sony -> TOMY -> Yuke's -> title).
+- Keys (Pad1): Start=Return, Cross=K, Circle=L, Square=J, Triangle=I,
+  D-pad=arrows. Use keydown + 0.3-0.5s hold + keyup. Circle (L) is
+  CONFIRM in menus; Cross (K) is BACK. First Return after a focus-click
+  often fails — press twice. Click the game area to focus first; an open
+  menu eats keypresses. Triangle (I) did NOT register in this setup
+  (binding is correct in settings.ini — input flakiness, not the game).
+  Attract demo starts ~3 min idle at the title; Start during it RESETS
+  the game to the boot logos. pkill/pgrep MUST use the bracket trick
+  ([A]ppRun) and the command must not contain the literal text — and
+  pkill -f on AppRun is unreliable here; kill by PID (kill -9 $(pgrep
+  -f 'AppRu[n]' | head -1)).
+- NO CPU DEBUGGER in this DuckStation build (Tools menu has Memory
+  Editor/Scanner, ISO Browser, Media Capture, Free Camera, Capture GPU
+  Frame — no debugger). The options-screen split was diagnosed with a
+  DIAGNOSTIC ATLAS instead (EN_ATLAS_DIAG=1 renders NJPW2/NJPW3 as
+  ABCDE/FGHIJ).
+
+### RING-row split + row-2 fragments (diagnosed + fixed)
+- Diagnostic build (SHA-1 9b7ce427...) proved: the options RING row draws
+  y=128 in 80px chunks, so any word straddling x=80 or x=160 splits:
+  "ABCDE" -> "AB"+"CDE" (break x=80), "FGHIJ" -> "FGHI"+"J" (break x=160).
+  In the real build: "NJ"+"PW2", "NJP"+"V3". FIX (v2): ring numbers as
+  bare digits at the US positions ("1" x=37, "2" x=116, "3" x=198,
+  "4" x=117 y=224) — single digits can't straddle; matches the US release.
+- Row 2 "TIME LC 3 0 ES": "ES" was the tail of LOSSES (the minutes-unit
+  rect at ~x=224 on y=192 showed LOSSES's last 2 letters); "LC" vanished
+  with the same fix. FIX (v2): LOSSES dropped (as in the US release),
+  "L" at x=209 and "m" at x=227 on y=192 (US positions) — the time now
+  reads "3 0 m".
+- SEATS-row red fragment (v2-v5): a small red glyph between RINGSIDE and
+  2nd FLOOR. Red-pixel scan put it at screenshot x=387-397 = atlas
+  x~125-131, y=176. Blanking "1st" (v5, SHA-1 00f2a495...) did NOT remove
+  it ("1st" innocent, restored). Removing the OXO copy (v6) DID remove
+  it — the fragment was the left edge of the JP ○×□ symbols (copied at
+  y=176, x=112-176), caught by the wide RINGSIDE rect. OXO is now LEFT
+  OUT of the atlas; no verified screen uses it. If a future screen needs
+  ○×□, reposition them off y=176.
+
+### Build history (Track 1 SHA-1s)
+- v1 full+atlas 4eb38716... (atlas-only a0aab0a4..., diag 9b7ce427...)
+- v2 b641a055... (digits RING row, L/m units, X/I redraws, positions)
+- v3 8bfd45ee... ("IWGP CHAMPS" centered — STILL clipped to "IWGP CHAMP")
+- v4 a6b9be21... ("IWGP CHAMPS" left-aligned x=21 — FIXED)
+- v5 00f2a495... (test: "1st" blanked — fragment persisted, "1st" innocent)
+- v6 07f08608fadab90b7998ab740e36d0f49a8390f2 (FINAL: OXO removed, "1st"
+  restored, options screen 100% clean)
+
+### v6 verification (DuckStation, all screenshots work/nav5-v6-*.png + nav5-v2/v4-*.png)
+- Title, main menu (GO!/RESULTS/BEST BOUTS/LOAD), game menu (VS COMPUTER,
+  VS PLAYER 2, 12 MAN GAUNTLET, IWGP CHAMPIONSHIP, G1 CLIMAX LEAGUE,
+  G1 CLIMAX TOURNAMENT, DEMO MATCH), options (all 7 rows clean),
+  char select (12 EN names both sides), VS screen (Fujinami vs Mutoh),
+  match HUD (EN names + timer), demo HUD (EN), attract-demo HUD (EN),
+  RESULTS menu (GAUNTLET RESULTS / IWGP CHAMPS / TOURNAMENT RESULTS),
+  GAUNTLET RESULTS header, IWGP CHAMPS screen ("# 17  KEIJI MUTOH  W
+  SHINYA HASHIMOTO  21m13s" — proves #, W vs, m, s, T2 digits all work),
+  SAVE MATCH? (X = YES / Δ = NO), SAVING, DATA SAVED, BEST BOUTS
+  (empty list, no text). Memory-card save works (DATA SAVED).
+- NOT re-verified in v6: the staff-credits roll + The End (US TIMs in
+  place; The End was verified in the hybrid build; the credits roll
+  needs a championship win). Ring apron + event poster stay Japanese
+  (NJPW branding, as in the US release — intentional).
+
+### Delivery (2026-11-20 ~19:30 UTC, Oracle VM /home/ubuntu/toukon-english/)
+- tr1-fullen-track1.bin = v6 (SHA-1 07f08608...), CUE test-fullen.cue.
+- tr1-fullen.chd (372,039,105 B, SHA-1 1b8217e39f1104ff40d9b9546477fbd7c91d0e1e,
+  Data SHA-1 d5a20ab676a24e1a4590d3ad8b26325518737f00) — full disc, 7
+  tracks, 58:07, EN Track 1 + REAL audio tracks 2-7 (FLAC), chdman 0.264,
+  verify passed (raw + overall). Built from the re-downloaded JP zip
+  (SHA-1 a63d2bf8... verified); the archive.org file lives under a DOUBLED
+  item path: .../2024-sony-playstation-jap-hearto-1g1r-collection/
+  2024-sony-playstation-jap-hearto-1g1r-collection/Sony - Playstation -
+  JAP/Shin Nihon Pro Wrestling - Toukon Retsuden (Japan).zip (the single
+  path 404s). Zip is Zstd method 93 — 7z cannot extract it; used
+  tools/zstd_unzip.py (pip install --user --break-system-packages
+  zstandard on the VM). Intermediates deleted after the CHD verified.
+  VM disk 12G free after delivery.
+- Hybrid build kept as the HYBRID option (tr1-en-final-track1.bin,
+  SHA-1 17050fec..., CUE testFINAL.cue). README updated on the VM.
+- OPEN: PCSX ReARMed (the console's core) has NOT tested the full-EN
+  build — test tr1-fullen.chd there before flipping the console card
+  from coming_soon to playable. Mednafen is NOT usable for this build
+  (hangs — see above).
+
+## Console test prep (2026-11-20 ~14:40 EST, arcade lane)
+
+Goal: test tr1-fullen.chd in PCSX ReARMed (the console's PS1 core) via the
+live arcade, flip the Toukon card to playable if it runs.
+
+### Findings
+- Local arcade source ~/workspace/bannon-arcade-push/ is GONE (no such dir).
+  Worked from the deployed site on the VM (/var/www/arcade) + the repo
+  branch muse/wrestling-arcade via the GitHub API instead. Deployed
+  games.json is byte-identical to the repo's (SHA-256 da4946e5..., blob
+  9049f2e8, commit e37efffb) — no drift.
+- play.html GATES on status: if game.status !== 'playable' it shows
+  "not playable in a phone browser yet" and never creates the START button
+  (the ?rom= override only works after the gate). So the live test REQUIRES
+  the deployed card flipped first — the flip-then-test order is forced by
+  the player, not a choice.
+- CHD integrity: chdman verify PASSED on the VM (raw + overall SHA-1).
+  NOTE on hashes: 1b8217e3... is the CHD's INTERNAL raw SHA-1 (chdman);
+  the FILE-level SHA-1 is 6e2b31dc418a2f1134f93ebbc77603c8d6246390.
+  games.json romSha1 uses the file hash (matches the tekken3 convention —
+  verified: tekken3.chd file sha1sum == its romSha1 a47acb93...).
+- Precedent: Tekken 3 + SF EX2 Plus CHDs already run in this console via
+  the same psx core, so CHD loading through the WASM core is proven here.
+  The Toukon-specific risk is the PAC_WRES slot-202 change that hangs
+  Mednafen — PCSX ReARMed is a different core, DuckStation runs it fine.
+
+### What was done (all verified)
+- nginx (sites-available/arcade, backed up to arcade.bak-toukon): 4 new
+  locations serving IN PLACE from /home/ubuntu/toukon-english/ (no copies):
+  /roms/toukon-fullen.chd, /roms/toukon-hybrid.cue,
+  /roms/tr1-en-final-track1.bin, /roms/dummy-audio/ (prefix). Headers mirror
+  the /roms/ block. chmod o+r on dummy-audio/*.bin (were 660). nginx -t
+  passed, reloaded. (First attempt dropped the closing brace — nginx -t
+  caught it, restored from backup, redid correctly. Running config was
+  never broken: the failed test blocked the reload.)
+- Deployed games.json flipped (VM-only, PROVISIONAL test flip; backup at
+  games.json.bak-toukon-test): toukon -> playable, core psx,
+  rom roms/toukon-fullen.chd, romSha1 6e2b31dc..., romSize 372039105;
+  toukon-hybrid card ADDED as coming_soon (staged, not yet tested in the
+  console core). New file SHA-256 44c295eb...; byte-diff confirms only the
+  Toukon entries changed. Repo branch UNCHANGED (still coming_soon).
+- Serving verified (VM + external): CHD HEAD 200 / 372039105 /
+  Accept-Ranges; ranged SHA head/mid/tail all MATCH the file; CUE served
+  == file (SHA-256 05df453a...); BIN + dummy-audio 200 with correct
+  lengths; live games.json shows toukon playable; arcade root 200;
+  external ranged head hash matches (ccd45612...).
+
+### Remaining: the live browser test (needs the parent — subagents have no browser)
+- Test spec: ~/workspace/toukon-english/BROWSER-QUEUE.md
+  (URL http://132.145.194.139/play.html?game=toukon; boot -> title EN ->
+  menu EN -> VS COMPUTER -> char select -> match; check sound, controls,
+  speed honestly; screenshots each step).
+- On PASS: commit games.json.new to arcade/games.json on branch
+  muse/wrestling-arcade (base blob 9049f2e8) via the GitHub API. No merges
+  without Mars's visual confirmation.
+- On FAIL: revert deployed games.json from games.json.bak-toukon-test;
+  do NOT commit. Report exactly what screen/error at what step.
+- Hybrid card still needs its own PCSX ReARMed test before ITS flip
+  (needs a deployed status flip first — follow-up).
