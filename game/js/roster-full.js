@@ -386,7 +386,8 @@ export const FULL_ROSTER = [
   { id: 'bf-aaron-ruben', name: 'AARON RUBEN', title: 'Technical Grappler / Ring General', base: 'Technical Grappler / Ring General', moveset: 'bf-aaron-ruben', model: 'bf-aaron-ruben', tintStrength: 0.25,
     colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Technical Grappler / Ring General', archetype: 'Power' },
   // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): Bannon — BF role "Protagonist / Power Wrestler", T3 bank king, UR donor ur-char042. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
-  { id: 'bf-bannon', name: 'BANNON', title: 'Protagonist / Power Wrestler', base: 'Power Wrestling / Technical Hybrid', moveset: 'bf-bannon', model: 'bf-bannon', tintStrength: 0.25,
+  { id: 'bannon', name: 'BANNON', title: 'Protagonist / Power Wrestler', base: 'Jeffry McWild (Virtua Fighter 5)', moveset: 'bannon', model: null,
+        modelPending: true, tintStrength: 0.25,
     colors: { suit: 0x1a1a22, trim: 0x5a2a8a }, style: 'Protagonist / Power Wrestler', archetype: 'Power' },
   // BRUTAL FIST (2026-11-08, PR brutal-fist-pullin): Brutus — BF role "Unstoppable Juggernaut", T3 bank king, UR donor ur-char032. Colors are neutral placeholders (BF roster carries none) — Jay's picks owed.
   { id: 'bf-brutus', name: 'BRUTUS', title: 'Unstoppable Juggernaut', base: 'Juggernaut / Pure Power', moveset: 'bf-brutus', model: 'bf-brutus', tintStrength: 0.25,
