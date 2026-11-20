@@ -27,11 +27,21 @@ record table cracked by lane W2 — see docs/FILE-02010-FORMAT.md):
 
 Translation input: a JSON object mapping PHYSICAL segment index (as a
 string) to the new text. Segments not in the map are kept verbatim.
-New text is encoded as Shift-JIS (plain ASCII is a subset, so English
-text encodes directly). The header's category_count and
+New text is converted to FULL-WIDTH uppercase (koc2_fullwidth.py —
+the game's font renders full-width Latin only; half-width ASCII
+shows as blank, boot test 2026-11-20) and encoded as cp932 (the
+Shift-JIS superset the game uses — plain shift_jis can't encode
+U+FF0D). The header's category_count and
 total_logical_strings are kept as-is; string_table_bytes is updated
 to the new table size. After building, the output is re-parsed and
 every record offset is verified against the new table.
+
+Translations are SHORTENED before conversion (koc2_abbrev_02010.py):
+the game's 02010 loader reads the file raw (no decompression — boot
+Test C, 2026-11-20), so the built file must fit its original stored
+slot (198,656 bytes) and the string table is capped at ~69,568 bytes
+via a two-pass fit (per-string original-length cap, then restore by
+category priority).
 
 Usage:
   koc2_strings_build.py <file02010.bin> <translations.json> <output.bin>
@@ -44,6 +54,10 @@ import json
 import struct
 import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from koc2_abbrev_02010 import shorten_all  # noqa: E402
+from koc2_fullwidth import to_fullwidth  # noqa: E402
 
 N_LOGICAL = 4021
 SKIP_PHYSICAL = (581, 1354)  # empty physical strings, not logical
@@ -74,12 +88,14 @@ def parse_segments(data: bytes):
 def build(data: bytes, translations: dict) -> bytes:
     n_cat, n_str, str_bytes, str_base, segments = parse_segments(data)
     assert len(segments) == 4023, f"expected 4023 segments, got {len(segments)}"
+    # Shorten to fit the raw slot (02010's loader does not decompress).
+    translations = shorten_all(translations, segments)
     new_segments = []
     n_changed = 0
     for idx, seg in enumerate(segments):
         key = str(idx)
         if key in translations:
-            new_segments.append(translations[key].encode("shift_jis"))
+            new_segments.append(to_fullwidth(translations[key]).encode("cp932"))
             n_changed += 1
         else:
             new_segments.append(seg)

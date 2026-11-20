@@ -21,6 +21,20 @@ of 32). Set "compress": false on a compressed file to store it raw
 instead (flags bit 16 cleared) — the loader handles either mode, but
 keeping the original mode is the safe default.
 
+Set "pad_to_original": true on a replacement to zero-pad its stored
+blob up to the ORIGINAL stored_size, so the file keeps its original
+offset and no later file shifts. The game (or its loader) appears to
+address some files by absolute position rather than through the entry
+table: a rebuilt archive with shifted offsets hangs on the Appearance
+screen even though the entry table is internally perfect (verified
+2026-11-20). Fails loudly if the new blob is larger than the original
+stored_size. With every replacement padded, the rebuilt archive is
+exactly the original size.
+Set "pad_to": <bytes> to zero-pad the stored blob to an exact size
+instead (e.g. to absorb slack so the total archive size stays
+unchanged when another file grows). Fails loudly if the blob is
+larger than the requested size.
+
 Container layout (from kc2_extract.py, validated 2026-11-19):
   Header (8 bytes): u32 0x800, u32 file_count
   Entry table: count x 16 bytes (offset rel. to data start,
@@ -81,6 +95,19 @@ def rebuild(archive: Path, manifest: dict, output: Path):
         else:
             blob = pad_to(new_data, 2048)
             flags = e["flags"] & ~0x10000
+        if repl.get("pad_to_original"):
+            if len(blob) > e["stored_size"]:
+                raise ValueError(
+                    f"file{e['id']:05d}: new blob {len(blob)} > original "
+                    f"stored {e['stored_size']}, cannot pad_to_original")
+            blob = blob + b"\x00" * (e["stored_size"] - len(blob))
+        elif repl.get("pad_to") is not None:
+            target = int(repl["pad_to"])
+            if len(blob) > target:
+                raise ValueError(
+                    f"file{e['id']:05d}: new blob {len(blob)} > pad_to "
+                    f"{target}")
+            blob = blob + b"\x00" * (target - len(blob))
         new_blobs.append(blob)
         new_meta.append((len(blob), len(new_data), flags))
         print(f"  file{e['id']:05d}: {e['decomp_size']} -> {len(new_data)} "

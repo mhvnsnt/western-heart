@@ -21,8 +21,11 @@ Mirror of koc2_strings_build.py for the 02008 layout (verified
 
 Translation input: a JSON object mapping RECORD index (as a string)
 to the new text. Records not in the map are kept verbatim. New text
-is encoded as Shift-JIS (plain ASCII is a subset, so English text
-encodes directly). The header's category_count and total_strings
+is converted to FULL-WIDTH uppercase (koc2_fullwidth.py — the game's
+font renders full-width Latin only; half-width ASCII shows as blank,
+boot test 2026-11-20) and encoded as cp932 (the Shift-JIS superset
+the game uses — plain shift_jis can't encode U+FF0D). The header's
+category_count and total_strings
 are kept as-is; string_table_bytes is updated to the new table size.
 After building, the output is re-parsed and every record offset is
 verified against the new table.
@@ -38,6 +41,9 @@ import json
 import struct
 import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from koc2_fullwidth import to_fullwidth  # noqa: E402
 
 N_CAT = 85
 N_STR = 3022
@@ -78,7 +84,7 @@ def build(data: bytes, translations: dict) -> bytes:
     for idx, seg in enumerate(segments):
         key = str(idx)
         if key in translations:
-            new_segments.append(translations[key].encode("shift_jis"))
+            new_segments.append(to_fullwidth(translations[key]).encode("cp932"))
             n_changed += 1
         else:
             new_segments.append(seg)

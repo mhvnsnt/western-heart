@@ -11,8 +11,11 @@ Each record carries four fixed-width Shift-JIS name fields:
   finisher +0x49, 32 bytes
 The bytes BETWEEN fields are non-zero data (verified 2026-11-19),
 so fields are strictly fixed-width — this builder writes ONLY the
-field bytes, never the gaps. English text is written as ASCII +
-NUL padding to the field width. A value exactly as wide as the
+field bytes, never the gaps. English text is shortened to the
+full-width limit (koc2_abbrev_01999.py: family/given 6 chars,
+nickname/finisher 16), converted to FULL-WIDTH uppercase
+(koc2_fullwidth.py — the font renders full-width Latin only), and
+written as cp932 + NUL padding to the field width. A value exactly as wide as the
 field is written with no NUL terminator, matching the original
 file's behavior (11 records use the full 12 bytes of family/given
 with no NUL — the game reads these fields fixed-width).
@@ -35,6 +38,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import koc2_file01999 as F99  # noqa: E402
+from koc2_fullwidth import to_fullwidth  # noqa: E402
+from koc2_abbrev_01999 import shorten  # noqa: E402
 
 FIELDS = {
     "family": (0x04, 12),
@@ -59,7 +64,8 @@ def build(data: bytes, translations: dict) -> bytes:
                 f"record {idx} {field}: file has {cur!r}, expected ja {ja!r}"
             if en is None:
                 continue
-            raw = en.encode("ascii")
+            en_fw = to_fullwidth(shorten(field, en))
+            raw = en_fw.encode("cp932")
             assert len(raw) <= width, \
                 f"record {idx} {field}: {en!r} ({len(raw)}B) exceeds {width}B"
             if raw == bytes(data[base + off: base + off + len(raw)]) and \
@@ -86,7 +92,7 @@ def build(data: bytes, translations: dict) -> bytes:
             en = entry["en"][field]
             if en is None:
                 continue
-            assert rec[field] == en, \
+            assert rec[field] == to_fullwidth(shorten(field, en)), \
                 f"record {idx} {field}: re-parse got {rec[field]!r}, want {en!r}"
     print(f"self-check OK: all {len(translations)} records re-parsed, "
           f"English verified")
