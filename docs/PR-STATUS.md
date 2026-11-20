@@ -4,7 +4,7 @@
 
 **37 open PRs — 🟢 ready to merge: 0 · 🔴 failing: 17 · ⏳ running: 1 · ⚔️ conflicted: 19** (also 🟠 blocked: 0 · 🔗 stacked: 0 · 📝 draft, green-or-idle: 0; 6 of 37 are drafts)
 
-_Generated 2026-11-20 15:15 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
+_Generated 2026-11-20 15:18 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
 
 Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not reported. Ready = not draft, targets `main`, GitHub says MERGEABLE, every check green. Status priority: conflicted > failing > running > draft > stacked > ready.
 
@@ -16,10 +16,9 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| ⏳ running | [#1770](https://github.com/mhvnsnt/western-heart/pull/1770) Land KoC2 teardown: King of Colosseum 2 full extraction (49,214 files) | ready | mhvnsnt / `muse/koc2` | `7cc24c5` | `main` | ⏳ | ✅ | ⏳ | ⏳ | 2✅ 7⏳ | mergeable (blocked) | 2026-11-20 15:15 UTC |
-| 🔴 failing | [#1784](https://github.com/mhvnsnt/western-heart/pull/1784) VPW2 English completion: help screens + Royal Road Succession + credits (634 strings) | ready | mhvnsnt / `muse/vpw2-english-complete` | `adfeae4` | `main` | ✅ | ✅ | ✅ | ❌ | 7✅ 2⏳ | mergeable (blocked) | 2026-11-20 15:08 UTC |
-| 🔴 failing | [#1783](https://github.com/mhvnsnt/western-heart/pull/1783) Toukon Retsuden English: partial patch tools + docs (lane 1) | ready | mhvnsnt / `muse/toukon-english` | `4801563` | `main` | ✅ | ✅ | ✅ | ❌ | 7✅ 2⏳ | mergeable (blocked) | 2026-11-20 15:09 UTC |
-| 🔴 failing | [#1782](https://github.com/mhvnsnt/western-heart/pull/1782) Pantera T7 throw clips: standalone rotsm_534/common_709 + victims, resolver + retarget (La | ready | mhvnsnt / `pantera-throwwire/t7-throw-clips-20261120` | `be69034` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ 1❌ | mergeable (blocked) | 2026-11-20 15:04 UTC |
+| ⏳ running | [#1782](https://github.com/mhvnsnt/western-heart/pull/1782) Pantera T7 throw clips: standalone rotsm_534/common_709 + victims, resolver + retarget (La | ready | mhvnsnt / `pantera-throwwire/t7-throw-clips-20261120` | `adfaf58` | `main` | ⏳ | ✅ | ✅ | ⏳ | 3✅ 7⏳ | mergeable (blocked) | 2026-11-20 15:17 UTC |
+| 🔴 failing | [#1784](https://github.com/mhvnsnt/western-heart/pull/1784) VPW2 English completion: help screens + Royal Road Succession + credits (634 strings) | ready | mhvnsnt / `muse/vpw2-english-complete` | `adfeae4` | `main` | ✅ | ✅ | ✅ | ❌ | 8✅ 1⏳ | mergeable (blocked) | 2026-11-20 15:08 UTC |
+| 🔴 failing | [#1783](https://github.com/mhvnsnt/western-heart/pull/1783) Toukon Retsuden English: partial patch tools + docs (lane 1) | ready | mhvnsnt / `muse/toukon-english` | `4801563` | `main` | ✅ | ✅ | ✅ | ❌ | 8✅ 1⏳ | mergeable (blocked) | 2026-11-20 15:09 UTC |
 | 🔴 failing | [#1779](https://github.com/mhvnsnt/western-heart/pull/1779) Docs: pre-made parts first rule (Mars, 2026-11-20) | ready | mhvnsnt / `docs/premade-parts-first` | `b35ae36` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-20 13:49 UTC |
 | 🔴 failing | [#1778](https://github.com/mhvnsnt/western-heart/pull/1778) tools/wwe: J_Hips Part B root-motion decode (yanm_root.py) | ready | mhvnsnt / `muse/jhips-root-motion` | `796df7c` | `muse/w4-yanm-decode` (on #1775) | · | · | ✅ | ❌ | 3✅ | mergeable (unstable) | 2026-11-20 01:20 UTC |
 | 🔴 failing | [#1777](https://github.com/mhvnsnt/western-heart/pull/1777) W7: WMXIX dynamic follow-up — 99 specials (98/99), motion names, calibrated durations, HHH | ready | mhvnsnt / `w7/wmxix-followup` | `ddf19a5` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-20 00:22 UTC |
@@ -27,6 +26,7 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 | 🔴 failing | [#1774](https://github.com/mhvnsnt/western-heart/pull/1774) W6: WMXIX gameplay clips (1,905) + faced arenas + Triple H | ready | mhvnsnt / `w6/wmxix-clips-arenas-hhh` | `38c58c3` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-19 21:06 UTC |
 | 🔴 failing | [#1773](https://github.com/mhvnsnt/western-heart/pull/1773) W6: WMXIX textures (9,410 PNGs) + face contact sheets | ready | mhvnsnt / `w6/wmxix-textures` | `b480185` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-19 21:06 UTC |
 | 🔴 failing | [#1772](https://github.com/mhvnsnt/western-heart/pull/1772) W6: WMXIX CAW meshes (1,141 OBJs) + extraction tools + notes | ready | mhvnsnt / `w6/wmxix-caw-mesh` | `d100623` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-19 21:06 UTC |
+| 🔴 failing | [#1770](https://github.com/mhvnsnt/western-heart/pull/1770) Land KoC2 teardown: King of Colosseum 2 full extraction (49,214 files) | ready | mhvnsnt / `muse/koc2` | `7cc24c5` | `main` | ✅ | ✅ | ✅ | ❌ | 6✅ 3⏳ | mergeable (blocked) | 2026-11-20 15:15 UTC |
 | 🔴 failing | [#1769](https://github.com/mhvnsnt/western-heart/pull/1769) Land VPW2 teardown: Virtual Pro Wrestling 2 full extraction (28,322 files) | ready | mhvnsnt / `muse/jp-sourcing` | `9b58da0` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-19 21:44 UTC |
 | 🔴 failing | [#1762](https://github.com/mhvnsnt/western-heart/pull/1762) DELETION: remove shifted textures/rom/ (superseded by rom-corrected/) | ready | mhvnsnt / `delete-shifted-textures-rom` | `693f84a` | `main` | ⊘ | ❌ | ⊘ | ⊘ | 4✅ 2❌ | mergeable (blocked) | 2026-11-19 14:28 UTC |
 | 🔴 failing | [#1714](https://github.com/mhvnsnt/western-heart/pull/1714) Hair fit v6: straight REFIT6B crown coverage; afro gate closure (no ship) | ready | mhvnsnt / `claude/hair-fit-v6-20261110` | `c6d4234` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-10 07:16 UTC |
