@@ -131,7 +131,7 @@ export function t7ThrowClipPath(key) {
 /**
  * Structural validation of one standalone wh-anim/1 throw clip
  * record (the same checks the node probe runs, minus FK shape).
- * Returns { ok: true } or { ok: false, errors: [...] }. Never throws.
+ * Returns { ok: true, errors: [] } or { ok: false, errors: [...] }. Never throws.
  * Shape (FK chest-bend / root-Y) is verified by
  * test/t7-throw-clips.test.mjs, not here: the runtime loader must
  * stay cheap, and a structurally valid record from the bank is
@@ -175,7 +175,7 @@ export function validateT7ThrowClip(key, rec) {
   const table = Object.values(T7_THROW_PAIRS).flatMap((p) => [p.thrower, ...Object.values(p.victim)]).find((c) => c.key === key);
   if (table && n !== table.frames) errors.push(`frames ${n} != table ${table.frames} for ${key}`);
   if (table && rec.t7_source && rec.t7_source.clip !== table.clip) errors.push(`t7_source.clip ${rec.t7_source.clip} != table ${table.clip}`);
-  return errors.length ? { ok: false, errors } : { ok: true };
+  return errors.length ? { ok: false, errors } : { ok: true, errors: [] };
 }
 
 /* ---- loaders (browser fetch; cached; never throw) ---- */
