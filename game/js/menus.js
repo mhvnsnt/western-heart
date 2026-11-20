@@ -485,6 +485,7 @@ function buildOverlays() {
         <div class="wh-sub">The shrine holds its breath.</div>
         <button class="btn-primary" data-wh="cancel">CANCEL</button>
         <button class="btn-ghost" data-wh="pause-command">COMMAND</button>
+        <button class="btn-ghost" data-wh="pause-moveset">MOVESET EDITOR</button>
         <button class="btn-ghost" data-wh="reset">RESET</button>
         <button class="btn-ghost" data-wh="pause-clothing">CLOTHING</button>
         <button class="btn-ghost" data-wh="pause-options">OPTIONS</button>
@@ -549,6 +550,18 @@ function buildOverlays() {
     // Reuse the movelist button's own path (same as KeyM / tapping ☰ MOVES).
     document.getElementById('movelist-btn').click();
   });
+  // Moveset editor skeleton (2026-11-20): pause → editor for P1's
+  // fighter; closing returns to the pause menu while the fight is still
+  // paused (closeMovesetEditor re-shows #wh-pause). Dynamic import so
+  // the editor module loads on first tap, not at boot.
+  document.querySelector('[data-wh="pause-moveset"]').addEventListener('click', () => {
+    document.getElementById('wh-pause').classList.remove('show');
+    import('./moveset-editor-ui.js').then((m) => {
+      const g = window.__game;
+      const fid = (g && g.p1 && g.p1.char && g.p1.char.id) || null;
+      m.openMovesetEditor(fid, { fromPause: true, reveal: 'toggle' }).catch(() => {});
+    }).catch(() => {});
+  });
   document.querySelector('[data-wh="pause-clothing"]').addEventListener('click', openClothing);
   document.querySelector('[data-wh="pause-options"]').addEventListener('click', () => {
     document.getElementById('wh-pause').classList.remove('show');
@@ -594,6 +607,10 @@ function buildMenuButtons() {
   mk('THE HEART AND MIND INSIDE', 'a descent · beat-em-up', 'mode-heartmind', false, trader);
   mk('CHARACTER EPISODES', 'every soul, their story', 'mode-episodes', false,
     document.querySelector('[data-action="mode-heartmind"]') || trader);
+  // Moveset editor skeleton (2026-11-20): menu hook — the router in
+  // main.js handles 'mode-moveset' (no special delegation needed here).
+  mk('MOVESET EDITOR', 'view · swap · save', 'mode-moveset', false,
+    document.querySelector('[data-action="mode-episodes"]') || trader);
   mk('OPTIONS', null, 'mode-options', true, howto);
   mk('RECORDS', null, 'mode-records', true,
     document.querySelector('[data-action="mode-options"]') || howto);
