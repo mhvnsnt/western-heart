@@ -910,6 +910,29 @@ export async function t7ThrowClipRetarget(fid, key, record, model, THREE, { fetc
   const name = 't7throw:' + key;
   return retargetT3Clips({ [name]: clip }, skelId, model, THREE, null, [name]);
 }
+/** Warm the T7 king skeleton cache for the throw path (Lane 5, 2026-11-20): the skeleton fetch is the only async step inside t7ThrowClipRetarget, so preloading it at fighter bind lets the sync twin below retarget immediately. Fire-and-forget — returns the loading promise; a failure resolves null and the throws keep the T3 pair. Same skelId ('t7:' + dir) and same fetch (fetchT7Json: page, then jsDelivr) as t7ThrowClipRetarget / ensureT7Graph, so all three share one cache entry. */
+export function ensureT7ThrowSkeleton(fid) {
+  const def = T7_GRAPHS[fid];
+  if (!def) return Promise.resolve(null);
+  const skelId = 't7:' + def.dir;
+  if (_t3skelCache[skelId]) return Promise.resolve(_t3skelCache[skelId]);
+  if (!_t7throwSkelLoading[skelId]) {
+    _t7throwSkelLoading[skelId] = fetchT7Json(def.dir + 'skeleton.json').catch(() => null);
+    _t7throwSkelLoading[skelId].then((skel) => { if (skel) _t3skelCache[skelId] = skel; }).catch(() => {});
+  }
+  return _t7throwSkelLoading[skelId];
+}
+/** Synchronous twin of t7ThrowClipRetarget for the throw bind path (fighter.js _bindThrowPair is sync — the DW swap precedent: packs preload at bind, the swap reads the cache). Same clip naming ('t7throw:<key>'), same jsonToClip + retargetT3Clips, so the two can never drift apart in output. Returns the retargeted clips or null: null when the T7 king skeleton is not cached yet (the skeleton load is kicked off for the next throw and the caller keeps the T3 pair), when the record/model is missing, or when the clip fails to build. */
+export function t7ThrowClipRetargetSync(fid, key, record, model, THREE) {
+  const def = T7_GRAPHS[fid];
+  if (!def || !record || !model) return null;
+  const skelId = 't7:' + def.dir;
+  if (!_t3skelCache[skelId]) { ensureT7ThrowSkeleton(fid).catch(() => {}); return null; }
+  const clip = jsonToClip(`t7throw_${fid}_${key}`, record, THREE);
+  if (!clip) return null;
+  const name = 't7throw:' + key;
+  return retargetT3Clips({ [name]: clip }, skelId, model, THREE, null, [name]);
+}
 /** The real T7 clip for one moveset row of this fighter on its bound bank, or null. With `model`, also null
     unless the stance's rest pose was captured for that model (so the move can be retargeted safely). */
 /** Single-input notation in one spelling: 'df+1' / 'D/F+1' -> 'd/f+1'. Strings (',') are not single inputs. */
