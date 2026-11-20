@@ -57,5 +57,5 @@ test('the six S1 data gaps stay unresolved — no fabricated rows', () => {
   assert.equal(M.resolveMoveKey('ryuji-rock', 'd/f+1+2'), 'd/f+1+2'); // Rock Bottom throw intact
   load('deathfang');
   assert.equal(M.resolveMoveKey('deathfang', 'd/f+1'), null); // heihachi r109 not in his curated merge
-  assert.equal(M.resolveMoveKey('deathfang', 'd/f+2'), '29'); // neighbour intact
+  assert.equal(M.resolveMoveKey('deathfang', 'd/f+2'), null); // heihachi r110 (key 29, WEREWOLF MAUL) removed by the owner-ordered moveset fix, PR #1791 - Deathfang plays Iori only now
 });
