@@ -88,9 +88,9 @@ The stub connects, reads registers/memory, interrupts, and continues correctly �
 - SSH via HTTP CONNECT tunnel only; `pkill -f <pattern>` inside an inline ssh command self-matches the remote `sh -c` cmdline and kills the session — use `pkill -x` or script files.
 - Dolphin runs must be killed with `pkill -9 -x dolphin-emu` (TERM doesn't kill the flatpak-wrapped process, and a leftover Dolphin holds the SSH pipe open so the exec session hangs even after the script finishes).
 - Emulation ~0.55–0.65× realtime on the loaded VM; DTM frames are emulation-locked.
-- VM disk was 23 GB free (89% used) at session start; probe screenshots accumulate in `/data/wmxix/w7shots/` — clean unneeded ones.
+- VM disk was 23 GB free (89% used) at session start; by 2026-11-20 ~00:55 EST only **5.0 GB free (98% used)** — the bulk is other lanes' data (`/data/2k` 111 GB, `/data/alt-sources` 22 GB), not W7's. W7's probe screenshots in `/data/wmxix/w7shots/` (274 files, 73 MB) were cleaned at end of session; the key contact sheets were already fetched to the lane dir.
 - Dolphin.ini path (flatpak): `~/.var/app/org.DolphinEmu.dolphin-emu/config/dolphin-emu/Dolphin.ini` (files live directly here, not under `Config/`). File logging via Logger.ini `WriteToFile=True` did not produce output (`dolphin.log` stayed 0 bytes) — movie log messages were never captured; screenshot evidence was used instead.
 
 ## PRs
 
-_To be opened: W7 branch(es) in western-heart with the calibrated manifest, texture binding, UV candidates, and tooling. No merges to main._
+_PR opened: western-heart **#1777** (branch `w7/wmxix-followup`, commit `a44643c6`, 21 files) — https://github.com/mhvnsnt/western-heart/pull/1777. Open, unmerged. No merges to main._
