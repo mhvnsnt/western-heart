@@ -438,3 +438,317 @@ Patched ISO home: Oracle VM `/home/ubuntu/koc2-english/` (never in git).
   PCSX2 by the AppRun PID (pgrep -f 'AppRu[n] -batch'), never by the
   wrapper PID. Never load a save state made with one ISO under a
   different ISO.
+
+## Milestone 3 — HYBRID JP/EN TOGGLE + FULL ENGLISH (in progress, M3 lane, 2026-11-20)
+Mars ordered 2026-11-20 ~08:38 EST: (1) a JP/EN LANGUAGE TOGGLE (hybrid
+version, switchable between Japanese and English); (2) FULL English —
+every remaining Japanese bit on screen (menu TIM2 textures, profile
+enums, commentary 02030) + fix the Appearance truncations if cheap.
+- CORRECTION — WE ARE NOT FIRST (found 2026-11-20 ~08:45, parent
+  lane): an English KoC2 patch PREDATES ours — kactusken/
+  King-of-Colosseum-II-English (GitHub, MIT), v0.1 2026-10-17, v0.2
+  2026-11-01. Our M2 build is INDEPENDENT work (built without
+  knowledge of it) but NOT the first English KoC2. Never claim
+  first-ever again without a GitHub check (AGENTS.md rule).
+  Per Mars's PRE-DECODED FIRST rule, M3 evaluates kactusken FIRST
+  as the pre-done source. Their repo (cloned to
+  work/m3/sources/kactusken/repo, 31M) is a complete open-source
+  translation project: full docs (TECHNICAL/PATCHES/EDITING/
+  TRANSLATION/BUILDING), Python toolchain (extract/build/pak/tim2/
+  gfx/render/textpatch/codepatch/elf/mipsdis/dojo/mmtalk/records/
+  teamdata/mmdata), translated text (16,997 entries) + 292 menu
+  graphics. v0.2 xdelta also downloaded (work/m3/sources/kactusken/
+  v0.2.zip, 6.6MB). Provenance: see work/m3/SOURCES.md.
+- KEY FINDINGS from their docs (read 2026-11-20, TECHNICAL.md +
+  PATCHES.md + EDITING.md + TRANSLATION.md + BUILDING.md):
+  * ASCII FONT PATCH (PATCHES.md): the renderer only draws 2-byte
+    Shift-JIS — their ELF patch hooks the formatter (0x10c65c) +
+    glyph lookup/width (0x10cc20/0x10ccf0) with cave routines at
+    0x31e2b8 (unreferenced 520B lib routine) converting printable
+    ASCII to full-width codes. Text can be stored as ASCII and drawn
+    with the game's own proportional font — this FIXES our
+    truncation problem at the root (15-byte surname field holds 15
+    ASCII chars, not 7 full-width). Verified in game 2026-10-15.
+  * PACK FORMAT corrections: flags low u16 = GROUP SIZE (the loader
+    reads whole groups in one read); groups start on sectors + span
+    whole sectors (their pak.layout_errors checks this; a build
+    that broke it crashed at boot). LZSS ring is written from
+    position 1, copy-from-0 is the end marker (our encoder works
+    in-game anyway — CHEST SLAP proved it — but their pak.py is the
+    proven-correct implementation; prefer it going forward).
+  * DISC HAS ROOM TO GROW: ~100MB free at the end (DVD-5); their
+    disc.py grows KC2FIRE.000 by moving .001/.MVS forward + cutting
+    LAST.DAY padding. Game finds files via sceCdSearchFile (no LBAs
+    in ELF). Both layouts verified in game. THIS ENABLES THE TOGGLE
+    (append EN variants as new archive entries).
+  * TIM2 SOLVED: types 9/10 (4/8bpp) are SWIZZLED (GS memory
+    layout); their tim2.py/gfx.py/render.py decode + re-encode with
+    byte-identical round-trip (gfx.py verify). 292 menu graphics
+    translated + verified in game (70 + 251 + 41 pictures).
+  * PROFILE ENUMS live in entry 1441 (messages pool: weight
+    classes etc.) — their translation/text/messages.txt covers it.
+    Enums are message IDs in the variant block (+0xf weight class,
+    +0x80 nationality, +0x81 build, +0x88-0x8a styles).
+  * COMMENTARY 02030 IS A DEV FILE: entries 2029/2030/2031 are
+    developer source files — "no loader call or data table refers
+    to them" (from the code). 02030 is the transcript script for
+    the ADX clips, NOT loaded by the game. If verified, there is NO
+    commentary translation to do in-game (no subtitles exist).
+  * SIX roster copies: 1999/2016 (base), 2002/2018 (Match Maker),
+    2004/2019 (Survival Road) — real-wrestler blocks byte-identical.
+    We only did 1999. True layout: index records + packed variant
+    blocks (0x8ed), NOT our fixed 2285B records (ours works because
+    blocks are contiguous; their records.py is the clean tool).
+  * MORE TEXT FILES than M2 covered: 1448 (appearance cats), 1450
+    (move slots), 1451 (CPU logic), 1452 (wrestler types/samples),
+    1453 (voices), 1454 (music), 1455 (Dojo dialogue, 1495 recs),
+    2000-2020 (teams/promotions), 2005 (edit templates), 2396-2400
+    (shop), 2797-2844 + 2853-2884 + 2901 (Match Maker), 2011
+    (second move list). Their translation/ covers all of it.
+  * Their scope keeps Japanese BY DESIGN: title/promotion/belt
+    logos, costumes, ring art, movies, audio, kana/kanji keyboards,
+    staff credits (3133/3134), save title (1432), debug screens
+    (02033-02040). Mars wants ALL Japanese gone from screen — the
+    toggle + full-English scope may go further than theirs on
+    credits/debug screens if feasible.
+- M3 PLAN: (1) build their English ISO + boot-test (validate the
+  pre-done source); (2) M3 full-English build on their pipeline
+  (their toolchain + graphics/text where we lack it, our M2
+  translations credited as independent work); (3) toggle: hybrid
+  archive (JP originals at their indices + EN variants appended
+  after the last group) + ELF loader-remap hook + language flag
+  (byte-flip in the ISO and/or pnach; in-game options-menu toggle
+  attempted if tractable); (4) verify both languages boot + play,
+  screenshots; (5) report (no repo pushes — parent handles them).
+
+- 2026-11-20 ~13:50-14:15 UTC (M3, kactusken validation + toggle design):
+  * build.py --unlocks none COMPLETED in 52s (text steps all ran:
+    messages 569, actions 528, matches 69, moves 3022, wrestlers 4020,
+    movelist 4209, roster 13373 fields, fields 1934, dojo 602 pages,
+    mmtalk 525, teamdata 526, mmdata 52/60, elf 379; code patches:
+    Dojo quotes + ASCII text; KC2FIRE.000 grew 253 sectors into
+    LAST.DAY). BUT the first build imported ZERO images: the image
+    dirs (images-rendered/approved/handmade) are GAME ART, NOT IN GIT
+    (paths.py) — the clone has only the generators (graphics.csv,
+    renders.json, translation/hand/*.py scripts, fonts).
+  * v0.2 xdelta (plain English) applied to a clean ISO copy -> SHA-256
+    8184f07a...; my first build fe6eb279... (differ: 11,620,214 bytes,
+    ALL inside KC2FIRE.000; ELF region byte-identical). Cause = the
+    missing renders, not the text/code.
+  * tools/render.py regenerated all 262 automatic renders (~7.7 min,
+    Pillow 10.2.0 + Barlow Condensed); tools/hand.py regenerates the
+    30 hand-approved images from translation/hand/*.py scripts
+    (running at time of writing). Rebuild + hash-compare vs v0.2 next.
+  * v0.2 .000 vs original .000 diff (via disc.py + pak.py): 454
+    changed entries in 392 groups (604 entries total in those groups);
+    mirror data 42,809,344 B sector-aligned; changed range 1441-3131.
+    Disc has ~106 MB free -> mirror fits.
+  * TOGGLE DESIGN DECIDED (loader-remap hook + byte-flip flag):
+    - Pack loader is THE choke point: 0x28b178 (load; a0=pack idx,
+      a1=dest, a2=entry idx, a3=flag; 40+ callers) + 0x28b0a0/0x28b0b8
+      (size calcs, index in a1; external callers incl. roster loader
+      0x1164d0 -> MUST also be hooked or EN entries overflow JP-sized
+      buffers). 0x28aff8/0x28b0d0 have NO direct callers. Pack struct
+      lookup 0x28aea0: struct = 0x408c10 + idx*36. Pack order (from
+      the open routine 0x296f70 + filename strings): 0=kc2fire.mvs,
+      1=kc2fire.000, 2=kc2fire.001. Hook checks a0==1.
+    - Non-first group entries ALL have flags low-u16 == 1 (4,367/4,367),
+      so entry-level translation inside a mirrored group is safe.
+    - Mirror: EN variants of the 392 affected groups appended after
+      the last group of KC2FIRE.000 (same entry order/flags, EN bytes
+      for translated entries, JP bytes verbatim for the rest).
+      Table = 392 x (orig_start u16, mirror_start u16) = 1,568 B.
+    - CAVE FOUND + VERIFIED: 0x285464, 1,956 bytes, no external
+      references (jal/j/branch/data-ptr/lui all checked from outside
+      the region), clean jr-ra boundary before it. Holds hook code
+      (~200 B) + flag word + 1,568 B table. Camera viewer (0x286108,
+      3,784 B) also safe but LEFT ALONE (debugview feature preserved).
+      Scan tools: work/m3/tools/deadcode_scan.py + cave_check.py.
+      NOTE: 0x2c66fc (2,492 B) is NOT safe (branch from 0x2c66e4 in).
+    - ELF strings (379, elf.txt: menu strings, title histories,
+      results, messages, match settings) CANNOT be remapped by the
+      pack hook (they live in the ELF). Solution: the FLIP SCRIPT
+      rewrites the 379 ELF string slots in the ISO file (JP<->EN bytes
+      from embedded blobs) AND flips the 1-byte pack flag together.
+      Also flips the Dojo quote token tables back for JP mode.
+      The ASCII text patch stays ON in both modes (JP two-byte codes
+      unaffected; half-width ASCII in JP text renders full-width
+      instead of being skipped - verify by screenshot vs original).
+    - In-game menu option (task option a) NOT attempted this
+      milestone: needs menu-code RE + save-format work (unbounded);
+      the script+hook hybrid delivers the same outcome (one ISO,
+      switchable language, default EN). Documented as future work.
+
+  v0.2 REFERENCE BOOT TEST (2026-11-20 ~15:00-15:15 UTC, PCSX2 2.8.2,
+  squashfs-root/AppRun -batch, DISPLAY=:99) - the pre-done source WORKS:
+    - Memcard dialog in English ("No data for this game on memory card
+      (PS2)... Start anyway?"). Spike logo, title "KING OF COLOSSEUM".
+    - MODE SELECT fully English: EXHIBITION MATCH / SURVIVAL ROAD /
+      MATCH MAKER / TITLE MATCH / SERIES MODE / EDIT / DO-JO / OPTION /
+      SAVE/LOAD + help line. EXHIBITION submenu fully English (7 match
+      types, o OK / x Back legends). Player select: Red Corner 1P /
+      Blue Corner COM.
+    - SELECT WRESTLER fully English, NO truncations: Chono, Nagata,
+      Tenzan, Nakanishi, Nishimura, Nakamura, Yasuda; profile card
+      "Commander in Black", "Chono Masahiro", "186cm 108kg",
+      "1963.9.17", "STF" (M2 had BLACK COMMANDER / CHONO MASAHI /
+      S.T.F). 3D model renders. Save state slot 1 at wrestler select:
+      ~/.config/PCSX2/sstates/SLPM-65602 (0C2228C7).01.p2s (13,983,353 B).
+    - Screenshots: /tmp/m3-v02-*.png (quota forced /tmp; copy keepers
+      to pcsx2/shots/ when the quota allows).
+  COMMENTARY 02030 CONFIRMED DEV-ONLY (static ELF scan 2026-11-20):
+    zero references to entry indices 2029/2030/2031 anywhere in the
+    ELF code segment (no immediate loads at all; none near any of the
+    65 loader call sites). The game has no code path to load or show
+    02030 - there are NO subtitles to translate. Task evaporates.
+  PCSX2 INPUT RECIPE (this box, Xvfb :99, no window manager):
+    - Launch from the EXTRACTED tree (AppImage FUSE mount fails):
+      ./squashfs-root/AppRun -batch <iso>. Kill by AppRun PID.
+    - Audio dialog (no audio device): click OK at (713,348).
+    - Game window title is "キング オブ コロシアムⅡ" - find it with
+      xdotool search --name 'コロシアム'. windowactivate FAILS (no WM);
+      use windowfocus + plain xdotool key/keydown/keyup (XTEST).
+      xdotool key --window (XSendEvent) does NOT reach the game.
+    - JAPANESE BUTTONS: Circle (L) = confirm/OK, Cross (K) = back.
+      Pressing Cross on a Yes/No dialog moves the cursor to No.
+    - At 1-6% speed (box load 20-66 from sibling blender/ffmpeg jobs),
+      single 2s holds often miss the input poll: send 2-5 repeated
+      3s holds, then wait 40-50s. Turbo (Tab) is on.
+    - Disk quota trips intermittently (EDQUOT, errno 122) near ~103G
+      usage despite 48G free on df - retry writes; use /tmp for
+      working screenshots. Freed 5.1G 2026-11-20 (deleted my rebuild
+      ISO + extracted .bin copies; v0.2 reference is the EN source).
+  HYBRID BUILD (2026-11-20 ~15:15 UTC):
+    - tools/build_hybrid.py: copies the v0.2 reference ISO, applies
+      the toggle patch to its ELF (hook sites + cave verified first),
+      writes back the hybrid .000 + patched ELF via disc.write_file
+      (relocate/donors/shift_into), generates toggle_data.json
+      (flag ISO offset, 379 ELF slots JP/EN bytes, Dojo tokens).
+    - tools/koc2_lang_toggle.py: flips a hybrid ISO en|jp|status -
+      writes the flag byte + 379 slots + 2 Dojo tokens; refuses to
+      touch a non-hybrid ISO (hook check).
+
+  HYBRID BUILD COMPLETE (2026-11-20 ~15:15 UTC, tools/build_hybrid.py):
+    - Output: work/m3/work/King of Colosseum II (Hybrid JP-EN).iso,
+      4,593,778,688 B, SHA-256
+      e0e61a503c6b9276876da75f20bb024bb68a33ce9eb05801a4629a741877019e
+    - Base = v0.2 reference ISO (author's released build). Hook sites +
+      cave verified against the EN ELF, then patched: cave 1,456/1,956
+      bytes, FLAG at 0x285558 (default 1 = English), TABLE at 0x28555c.
+    - .000 relocated LBA 1965965 -> 910413 (140,264 sectors taken from
+      GOOD.BYE zero padding); ELF stays at LBA 285. Disc check:
+      ISO9660 and UDF agree. Pack count 8123, layout clean.
+    - toggle_data.json: flag ISO offset 2,182,488; 436 ELF slots
+      (379 differ JP vs EN, 57 identical - kept JP by design, matches
+      elftext.step's 379); 2 Dojo tokens.
+    - FLIP ROUND-TRIP VERIFIED: status EN -> flip jp (hash a9da902c...)
+      -> flip en -> SHA-256 back to e0e61a50... exactly.
+  VM RESTART ~15:12 UTC: PCSX2 + Xvfb died, /tmp screenshots wiped
+    (v0.2 title/mode/exhib/roster shots lost; 9 shots survive in
+    pcsx2/shots/; v0.2 save state slot 1 survives). Workspace files
+    intact. Xvfb restarted (:99). apt is locked by the boot-time
+    os-intent replay (pid 786, reinstalling recorded packages incl.
+    imagemagick/xdotool/libGL) - WAIT for it; do not kill it.
+    AppRun needs libOpenGL.so.0 (wiped by the restart) - the replay
+    should restore it; if not, apt-get install libgl1 imagemagick
+    xdotool x11-apps after the replay finishes.
+  VM DISK WARNING (parent, 2026-11-20 ~10:17 EST): Oracle VM 2.2G free
+    (99% used) - PPP runner _work re-checked out 12G for a RUNNING job.
+    Do NOT clean it. The 4.6G hybrid ISO CANNOT copy to the VM until
+    disk frees up - report as blocked, do not delete anything.
+
+  RESTART RECOVERY (2026-11-20 ~15:25-15:50 UTC):
+    - Xvfb restarted (:99). import restored (sibling's bulk dpkg -i
+      of /var/cache/apt/archives). libOpenGL.so.0 present.
+    - PCSX2 exited 0 on launch: emulog shows BIOS found, hybrid ISO
+      opened (DVD, 2243056 sectors, SLPM-65602, CRC E75E36C6), then
+      "GS failed to open" - EGL eglGetDisplay() failed. Cause: the
+      Mesa libs (libgl1-mesa-dri, libegl-mesa0, libglx-mesa0) were
+      left UNPACKED (not configured) by the interrupted bulk dpkg,
+      and Xvfb started before the Mesa libs landed (no GLX).
+      Fix: dpkg --configure -a / apt-get install -f, then RESTART
+      Xvfb so it picks up GLX, then relaunch PCSX2.
+    - FALSE ALARM: BIOS looked missing from ~/.config/PCSX2/bios/
+      (ls piped to head -8 cut the .bin line) - it was there all
+      along (also at pcsx2/bios/scph39001.bin + ps2_bios_official.zip).
+
+  HYBRID BOOT TEST 1 FAILED - hook bug found + fixed (2026-11-20 ~16:00 UTC):
+    - Symptom: game booted (BIOS found, ISO opened, SLPM-65602,
+      CRC E75E36C6) then at ~87s the EE trapped: "Unknown R5900
+      SPECIAL: 000E0E0E", "EE: Unrecognized op e0e0e", "Trap
+      exception at 0x00082460" - the CPU was executing garbage.
+    - ROOT CAUSE (hook_load in toggle_patch.py): the stub did
+      `move $a1, $a2` to feed translate the index, but $a1 is the
+      loader's DEST BUFFER. translate never writes $a1, so after
+      the call $a1 still held the index - the loader then wrote
+      the loaded entry to address (index) instead of the dest
+      buffer, corrupting low RAM (exception vectors). The size
+      stubs were fine ($a1 IS the index there).
+    - FIX: hook_load now saves $a1 at 4($sp) before the call and
+      restores it after (`sw $a1, 4($sp)` / `lw $a1, 4($sp)`).
+      Cave grows 1,456 -> 1,464 bytes; FLAG/TABLE shift +8.
+      Rebuilt via build_hybrid.py (same command, re-verifies
+      hook sites + cave SHA-1 against the v0.2 ELF).
+
+  HYBRID BOOT TEST 2 (fixed hook) - EN MODE VERIFIED (2026-11-20 ~16:05-17:12 UTC):
+    - New hybrid SHA-256 4519330547d1974a7f5a40cb4731885a86522129dad6d063e6803c836a082d5c,
+      FLAG ISO offset 2182496. CRC E4BD98EE.
+    - Memcard dialog EN ("No data for this game on memory card..."),
+      Spike logo, title "KING OF COLOSSEUM II / PUSH START", MODE
+      SELECT fully EN (Exhibition/Survival Road/Match Maker/Title
+      Match/Series Mode/Edit/Do-Jo/Option/Save/Load), Exhibition
+      submenu EN (Single/Seconds/Tag/Handicap/Triple Threat/Battle
+      Royal/Elimination), SELECT WRESTLER EN (Chono/Nagata/Tenzan/
+      Nakanishi/Nishimura/Nakamura/Yasuda; profile "Commander in
+      Black", "Chono Masahiro", 186cm 108kg, 1963.9.17, STF),
+      CONFIGURATION EN (Pro Wrestling Rules, 3 Count, 30 min, One
+      Fall, CPU Level 4, 100%, Plain (Blue)), ring announcer in
+      the ring, NO subtitles on screen (02030 dev-only confirmed
+      in-game). Screenshots in pcsx2/shots/m3-hybrid-en-*.
+    - Save states: slot 1 = MODE SELECT, slot 4 = roster
+      (~/.config/PCSX2/sstates/SLPM-65602 (E4BD98EE).0{1,4}.p2s).
+      NOTE: F2 cycled 1->4 on one 2s hold (key repeat) - track the
+      slot number, don't assume.
+    - Appearance screen MISSED (5x Circle blew past it + COM pick
+      to Configuration). Re-capture from slot 4 with ONE Circle.
+    - In-match HUD shot MISSED (reboot hit during match load).
+    - SECOND VM RESTART ~17:12 UTC (uptime 0 min) - Xvfb/PCSX2/
+      tools wiped again. The earlier "mystery deaths" were
+      probably restarts too. Recovery recipe: restart Xvfb, wait
+      for os-intent replay / install imagemagick xdotool x11-apps
+      libgl1-mesa-dri libegl-mesa0 libglx-mesa0, RESTART Xvfb
+      after Mesa lands (GLX), relaunch PCSX2, F3 loads the state.
+    - Keep exec yields <= 120s; a 240s yield got interrupted.
+
+  HYBRID BOOT TEST 3 - JP MODE VERIFIED (2026-11-20 ~17:45-18:05 UTC):
+    - Flipped to JP (status JAPANESE flag=0, hash 68b4ca8ca29cfdea...),
+      booted: memcard dialog fully JP (メモリーカード(PS2)に...),
+      MODE SELECT help line JP, roster fully JP (蝶野/永田/天山/
+      中西/西村/中邑/安田, 黒の総帥, 蝶野 正洋, S・T・F, ○決定/
+      ✕戻る/△ランダム, レスラータイプを選択してください).
+    - Menu labels/headers/field labels stay ENGLISH in JP mode -
+      NOT a bug: kactusken's graphics.csv proves the ORIGINAL game
+      shipped them in English (000_01497 "already English; mode
+      select menu", 000_01503 "SELECT WRESTLER title above is
+      already English", 000_01504 "NICK NAME/NAME/... already
+      English", 000_01659 "already English; italic teal plates").
+      The katakana mode names beside the EN labels (エキシビション
+      マッチ) are the original's own atlas text (entry 1498) - JP
+      mode is faithful to the 2004 original. Toggle is COMPLETE.
+    - EN-mode Appearance/TYPE: costume select is ON the roster
+      screen (Left/Right cycles "TYPE 1/2/..." - numeric labels,
+      no names). The M2 truncations (MASAH/POW/NORM/B) do NOT
+      exist in the hybrid (kactusken's TYPE N design). Tenzan
+      TYPE 2 verified (red trunks in-match).
+    - In-match HUD EN verified (Chono vs Tenzan, 00:04, Caller
+      Yoshinari Tsuji / Color Kazuo Yamazaki, no subtitles).
+    - ROUND-TRIP RE-VERIFIED on the fixed build: JP -> EN returns
+      SHA-256 4519330547d1974a... exactly. ISO left in EN mode.
+    - Save states (EN, CRC E4BD98EE): slot 1 MODE SELECT, slot 4
+      roster, slot 5 in-match (Chono vs Tenzan).
+    - THIRD VM restart ~17:12 UTC wiped tools again. Full restore
+      list for PCSX2: imagemagick xdotool x11-apps libgl1-mesa-dri
+      libegl-mesa0 libglx-mesa0 libopengl0 libgl1 libegl1 libglx0
+      (libopengl0/libegl1/libglx0 are the easy-to-miss dispatch
+      libs - AppRun fails without them). Restart Xvfb AFTER Mesa
+      lands or GLX is missing and GS fails to open.
