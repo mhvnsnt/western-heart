@@ -4,7 +4,7 @@
 
 **38 open PRs — 🟢 ready to merge: 0 · 🔴 failing: 19 · ⏳ running: 0 · ⚔️ conflicted: 19** (also 🟠 blocked: 0 · 🔗 stacked: 0 · 📝 draft, green-or-idle: 0; 6 of 38 are drafts)
 
-_Generated 2026-11-20 15:55 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
+_Generated 2026-11-20 15:57 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
 
 Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not reported. Ready = not draft, targets `main`, GitHub says MERGEABLE, every check green. Status priority: conflicted > failing > running > draft > stacked > ready.
 
@@ -16,7 +16,7 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 🔴 failing | [#1786](https://github.com/mhvnsnt/western-heart/pull/1786) Pantera T7 throw clips as the default path for 1+3 / 2+4 (Lane 5) | ready | mhvnsnt / `pantera-throwwire/t7-throw-default-20261120` | `0414b1f` | `main` | ✅ | ✅ | ✅ | ❌ | 6✅ 4⏳ | mergeable (blocked) | 2026-11-20 15:54 UTC |
+| 🔴 failing | [#1786](https://github.com/mhvnsnt/western-heart/pull/1786) Pantera T7 throw clips as the default path for 1+3 / 2+4 (Lane 5) | ready | mhvnsnt / `pantera-throwwire/t7-throw-default-20261120` | `0414b1f` | `main` | ✅ | ✅ | ✅ | ❌ | 7✅ 3⏳ | mergeable (blocked) | 2026-11-20 15:56 UTC |
 | 🔴 failing | [#1785](https://github.com/mhvnsnt/western-heart/pull/1785) Sweep: VPW2 English-complete push receipts | ready | mhvnsnt / `muse/sweep-vpw2-handoff` | `ec59ab3` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-20 15:25 UTC |
 | 🔴 failing | [#1784](https://github.com/mhvnsnt/western-heart/pull/1784) VPW2 English completion: help screens + Royal Road Succession + credits (634 strings) | ready | mhvnsnt / `muse/vpw2-english-complete` | `adfeae4` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-20 15:08 UTC |
 | 🔴 failing | [#1783](https://github.com/mhvnsnt/western-heart/pull/1783) Toukon Retsuden English: partial patch tools + docs (lane 1) | ready | mhvnsnt / `muse/toukon-english` | `4801563` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-20 15:09 UTC |
