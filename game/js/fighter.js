@@ -40,12 +40,13 @@ import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK, T3_BANKS,
   clipStrikeProfile, clipHitWindow, bankAttackPool, attackLevelOfWord, attackClipTime, clipIsThrow, BUTTON_LIMB,
   loadT3Clips, loadT3ReactionClip, getT3ReactionPackScale, loadReactionPack, getReactionPack, getReactionClip,
   applyT7Stance, ensureT7Moves, t7MoveClip, t7MoveRetarget, ensureDwMoves, dwMoveClip, dwMoveRetarget, dwKindMoveClip, dwKindMoveRetarget, retargetProfileFor,
-  T7_GRAPHS, ensureT7Graph, t7GraphRetarget } from './t3anims.js';
+  T7_GRAPHS, ensureT7Graph, t7GraphRetarget, t7ThrowClipRetargetSync, ensureT7ThrowSkeleton } from './t3anims.js';
 import { T7GraphDriver, T7G_FPS } from './t7-graph-driver.js';
 import { buttonsMask as t7ButtonsMask } from './t7graph.js';
 import { effectiveStepPlay, playableStepPlay, stepActionName, stepPlanBanksFor } from './step-plan-bank.js';
 import { selectThrow, resolveThrowClips, throwBreaks, throwDamageTimeSec, throwPairDurationSec,
   escapePairFor, anchorAt, sharedFramePos, throwQuadrant, attemptRowForInput, hexSlot, bankDirOf } from './t3-throw.js';
+import { resolveT7ThrowPair, loadT7ThrowPair, getT7ThrowClipRecord, t7SituationForQuadrant } from './t7-throw-clips.js';
 import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove, resolveMoveKey, hasStrPrefix, variantBase, throwStageTag, throwStageKeys, systemRows, systemTagOf, gameAssetBase } from './movesets.js';
 import { TransformCinematic } from './transform-cinematic.js';
 import { V, vskillFor, vtriggerEnhance, vreversalMove } from './v-system.js';
@@ -1264,6 +1265,13 @@ export class Fighter {
       try { ensureT7Graph(this.char.id, THREE).then((b) => { if (b) this.t7gAttach(b); }).catch(() => {}); } catch (e) { /* optional */ }
     }
     try { const p = ensureDwMoves(this.char.id, THREE); if (p && p.catch) p.catch(() => {}); } catch (e) { /* optional */ }
+    // T7 THROW CLIPS (Lane 5, 2026-11-20): Pantera's front 1+3/2+4 play the real T7 clips (t7-throw-clips.js), preloaded here in the background — the same DW precedent as ensureDwMoves above (packs load at bind, moves keep their current clips until they arrive). Until the two front pairs + the king skeleton arrive, throws keep the T3 pair; the bind swaps the T7 actions in synchronously from the cache.
+    if (T7_GRAPHS[this.char.id]) {
+      try { const p = ensureT7ThrowSkeleton(this.char.id); if (p && p.catch) p.catch(() => {}); } catch (e) { /* optional */ }
+      for (const input of ['1+3', '2+4']) {
+        try { const p = loadT7ThrowPair(input, 'front'); if (p && p.catch) p.catch(() => {}); } catch (e) { /* optional */ }
+      }
+    }
     this.t3actions = createT3Actions(this.mixer, clips, THREE);
     this._stepBankClips = {}; // per-step-bank source clips (see _attackClip)
     // Reaction pack prefetch (hit-reaction lane): the JSON arrives
@@ -2391,7 +2399,13 @@ export class Fighter {
     if (!sel.throw) return { pair: null, reason: sel.reason };
     const clips = resolveThrowClips(R, sel.throw, aDir, vDir);
     if (!clips.throwerBank || !clips.victimBank) return { pair: null, reason: clips.note || 'unresolved clip bank (UNMAPPED)' };
-    return { pair: { throw: sel.throw, branch: sel.branch, code: sel.code, clips,
+    // T7 DEFAULT (Lane 5, 2026-11-20): for Pantera's plain front throws the real T7 pair is the default — resolved here, swapped in by _bindThrowPair. The T3 pair above still supplies the anchors, damage time, break windows and the fallback, and stays the pair when t7 is null. Front (quadrant 0) and back (quadrant 2) resolve from the graph bank's own pairing; left/right are NOT wired — which physical side "left"/"right" is is unproven (t7-throw-clips README) — and air has no signal on this path, so those situations keep T3. Gated on T7_GRAPHS: the T7 clips are King's, no other fighter's throw may take them.
+    let t7 = null;
+    if ((this.attackName === '1+3' || this.attackName === '2+4') && T7_GRAPHS[this.char.id]) {
+      const situation = t7SituationForQuadrant(quadrant);
+      if (situation) t7 = resolveT7ThrowPair(this.attackName, situation);
+    }
+    return { pair: { throw: sel.throw, branch: sel.branch, code: sel.code, clips, t7,
       breaks: throwBreaks(sel.throw), damageTimeSec: throwDamageTimeSec(sel.throw),
       durationSec: throwPairDurationSec(sel.throw), whMove: move, isEscape: false, hitDone: false }, reason: null };
   }
@@ -2432,6 +2446,34 @@ export class Fighter {
     if (rc && rc[name]) Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
     return this.t3actions[name] ? name : null;
   }
+  /* Retarget the T7 throw pair (pair.t7, attached by _throwPairFor) onto the two rigs as
+     't7throw:<key>' actions. Returns { thrower, victim } action names, or null — the caller
+     keeps the T3 pair. Null when either record is not loaded yet (they preload at _bindT3;
+     a miss kicks the load off again for the next throw), when the king skeleton is not cached
+     yet, when either rig is unbound, or when either retarget fails. Never a half pair, never
+     generic: both actions must exist or the T3 pair plays. Never throws. */
+  _t7ThrowActions(t7, victim) {
+    if (!t7 || !victim) return null;
+    const tRec = getT7ThrowClipRecord(t7.thrower.key);
+    const vRec = getT7ThrowClipRecord(t7.victim.key);
+    if (!tRec || !vRec) {
+      try { const p = loadT7ThrowPair(t7.input, t7.situation); if (p && p.catch) p.catch(() => {}); } catch (e) { /* optional */ }
+      return null;
+    }
+    if (!this._t3 || !this._t3.model || !this.t3actions || !victim._t3 || !victim._t3.model || !victim.t3actions) return null;
+    const tName = 't7throw:' + t7.thrower.key;
+    const vName = 't7throw:' + t7.victim.key;
+    if (!this.t3actions[tName]) {
+      const rc = t7ThrowClipRetargetSync(this.char.id, t7.thrower.key, tRec, this._t3.model, THREE);
+      if (rc && rc[tName]) Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
+    }
+    if (!victim.t3actions[vName]) {
+      const rc = t7ThrowClipRetargetSync(this.char.id, t7.victim.key, vRec, victim._t3.model, THREE);
+      if (rc && rc[vName]) Object.assign(victim.t3actions, createT3Actions(victim.mixer, rc, THREE));
+    }
+    if (!this.t3actions[tName] || !victim.t3actions[vName]) return null;
+    return { thrower: tName, victim: vName };
+  }
   /* Retarget the DW Soul Surge Bloom trigger clip ('dw:surge-trigger') onto this
      fighter. Returns the action name or null (pack not loaded yet). */
   _dwTriggerAction() {
@@ -2468,6 +2510,11 @@ export class Fighter {
     if (thrower.surgeForm) {
       const dwName = thrower._dwThrowAction && thrower._dwThrowAction();
       if (dwName) pair.throwerAction = dwName;
+    }
+    // T7 DEFAULT (Lane 5, 2026-11-20): when the T7 pair resolved (_throwPairFor) and both records are already loaded, the retargeted T7 actions replace the T3 actions — the same DW-style swap as above. On ANY failure _t7ThrowActions returns null and the T3 actions stand: the pair clock, anchors, damage time and break windows stay the T3 pair's either way. Surge Form keeps its DW thrower (above), so the T7 swap does not run there. The thrower clip holds its last frame after f40 (LoopOnce + clampWhenFinished, createT3Actions); the longer victim clip is cut by the pair clock.
+    if (pair.t7 && !thrower.surgeForm) {
+      const t7a = thrower._t7ThrowActions && thrower._t7ThrowActions(pair.t7, victim);
+      if (t7a) { pair.throwerAction = t7a.thrower; pair.victimAction = t7a.victim; pair.t7Active = true; }
     }
     if (!pair.throwerAction || !pair.victimAction) {
       pair.bindReason = `clip retarget failed (throwerAction=${pair.throwerAction} victimAction=${pair.victimAction})`;

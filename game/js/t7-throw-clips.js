@@ -123,6 +123,21 @@ export function resolveT7ThrowPair(input, situation = 'front') {
   return { input, situation, thrower: pair.thrower, victim };
 }
 
+/**
+ * WH throw quadrant (t3-throw.js throwQuadrant: 0 front, 1 side1,
+ * 2 back, 3 side3) -> T7 situation, or null when this lane does
+ * NOT wire the T7 pair for that quadrant. Front and back resolve
+ * from the graph bank's own pairing; left/right return null —
+ * which physical side "left"/"right" is is UNPROVEN (see the
+ * module header), so side throws keep the T3 pair; air has no
+ * quadrant signal on the throw path, so it also keeps T3.
+ */
+export function t7SituationForQuadrant(quadrant) {
+  if (quadrant === 0) return 'front';
+  if (quadrant === 2) return 'back';
+  return null;
+}
+
 /** Asset path for one standalone throw clip. */
 export function t7ThrowClipPath(key) {
   return `${T7_THROW_CLIP_DIR}${key}.json`;
@@ -180,6 +195,11 @@ export function validateT7ThrowClip(key, rec) {
 
 /* ---- loaders (browser fetch; cached; never throw) ---- */
 const _clipCache = new Map();
+const _clipRecords = new Map(); // key -> resolved record (sync read of the async cache)
+/** One standalone throw clip record that already loaded, or null (not loaded yet / failed). Sync read only — never triggers a fetch; the throw bind path (fighter.js _bindThrowPair is sync) swaps the T7 pair in from this cache, and keeps the T3 pair when it is empty. */
+export function getT7ThrowClipRecord(key) {
+  return _clipRecords.get(key) || null;
+}
 /** One standalone throw clip record, validated, or null (missing / fetch fails / invalid). */
 export async function loadT7ThrowClip(key, fetchFn) {
   if (_clipCache.has(key)) return _clipCache.get(key);
@@ -194,6 +214,7 @@ export async function loadT7ThrowClip(key, fetchFn) {
       return rec;
     } catch (e) { return null; }
   })();
+  p.then((rec) => { if (rec) _clipRecords.set(key, rec); }).catch(() => {});
   _clipCache.set(key, p);
   return p;
 }
