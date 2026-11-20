@@ -8,7 +8,8 @@
 
    WHAT CHANGED IN THE REBUILD (old file kept no ground truth here):
    - POSITIONS are the engine's own resolver prefix list (A §3a/§3b,
-     movesets.js _pressV2 order), NOT the old WWE-style words. The old
+     movesets.js _pressV2 order), NOT the old corner/apron/mounted
+     words. The old
      words 'corner', 'apron', 'mounted', 'jumping', 'sidestep-left/right'
      are NOT data prefixes (A §3d, A §8.13) and are REMOVED — a slot
      whose notation carries one is refused by validateNotation().

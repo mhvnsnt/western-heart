@@ -1,5 +1,5 @@
 /* ============================================================
-   WESTERN HEART — Moveset Editor screen (in-game, WWE-style)
+   WESTERN HEART — Moveset Editor screen (in-game)
    SKELETON — 2026-11-20. EDITOR-SPEC §2 (lane-c-design/EDITOR-SPEC.md).
 
    S1 editor main · S2 library modal · S3 slot detail / input-edit ·
