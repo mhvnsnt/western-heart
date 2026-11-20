@@ -1,0 +1,2508 @@
+{
+ "schema": "ttt2-moveset-v1",
+ "source_game": "Tekken Tag Tournament 2",
+ "character": "Marshall Law",
+ "bxml_prefix": "law",
+ "bxml_doc": 1,
+ "mvlt_list": 2,
+ "provenance": {
+  "source_archive": "release ttt2-7z-v1 (mhvnsnt/western-heart)",
+  "pull_tool": "tools/ttt2_virtual_god.py --pull",
+  "pulled_file": "data018.bin",
+  "pulled_bytes": 557332,
+  "pulled_sha256": "7e06ad5336374973bf8f637b898c975585226fc7a260a730ad981365b2056db4",
+  "decoded_file": "decoded-data018.bin",
+  "decoded_bytes": 3027808,
+  "decoded_sha256": "54db09ebc63ee1a05a7b1c00cc2d7b5528d0d97c6ed1949da805daac7709293e",
+  "parser": "teardown/tekken-tag-tournament-2 tools: parse_mvlt_v4.py (authoritative; v1/v2/v3 superseded)",
+  "converter": "convert_mvlt_notation.py (empirical glyph map; see MVLT-GLYPH-MAP-20261030.md)",
+  "note": "Derived data only. No game binaries committed (western-heart AGENTS.md rule 8). Bins stay reproducible from release ttt2-7z-v1."
+ },
+ "counts": {
+  "records": 134,
+  "moves": 127,
+  "sample_combos": 7,
+  "separators": 0
+ },
+ "records": [
+  {
+   "row": 0,
+   "name": "Machine Gun Arrow",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 1, 1, 1, 1",
+   "notation_std": "1, 1, 1, 1, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe015",
+    "0xe015",
+    "0xe015",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:law:row:0",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 0
+  },
+  {
+   "row": 1,
+   "name": "Left Right Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2",
+   "notation_std": "1, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:law:row:1",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 1
+  },
+  {
+   "row": 2,
+   "name": "Left Right Dragon Fist",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2, 2",
+   "notation_std": "1, 2, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:law:row:2",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 2
+  },
+  {
+   "row": 3,
+   "name": "Left Right Dragon Fist Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2, f+2, 2",
+   "notation_std": "1, 2, f+2, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe004",
+    "0xe016",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:law:row:3",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 3
+  },
+  {
+   "row": 4,
+   "name": "Left Right Blazing Fist Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2, f+2, 1+2",
+   "notation_std": "1, 2, f+2, 1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe004",
+    "0xe016",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:law:row:4",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 4
+  },
+  {
+   "row": 5,
+   "name": "Left Right to Knee",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2, 3",
+   "notation_std": "1, 2, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:5",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 5
+  },
+  {
+   "row": 6,
+   "name": "Left Right Combo to Somersault Feint",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2, u/f+3, 4",
+   "notation_std": "1, 2, u/f+3, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe007",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:law:row:6",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 6
+  },
+  {
+   "row": 7,
+   "name": "Rage Dragon Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "2, 2, 1, 2",
+   "notation_std": "2, 2, 1, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe016",
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:law:row:7",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 7
+  },
+  {
+   "row": 8,
+   "name": "Feint to Middle Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "3, 3",
+   "notation_std": "3, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:8",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 8
+  },
+  {
+   "row": 9,
+   "name": "High Kick to Bloody Cleaver",
+   "kind": "move",
+   "section": null,
+   "notation": "3, 4",
+   "notation_std": "3, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:law:row:9",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 9
+  },
+  {
+   "row": 10,
+   "name": "Shaolin Spin Kicks",
+   "kind": "move",
+   "section": null,
+   "notation": "4, 3, 4",
+   "notation_std": "4, 3, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:law:row:10",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 10
+  },
+  {
+   "row": 11,
+   "name": "Crescent Kick Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "4, u+3",
+   "notation_std": "4, u+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe006",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:11",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 11
+  },
+  {
+   "row": 12,
+   "name": "Ab Cruncher",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:law:row:12",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 12
+  },
+  {
+   "row": 13,
+   "name": "Poison Arrow",
+   "kind": "move",
+   "section": null,
+   "notation": "f+2, 1",
+   "notation_std": "f+2, 1",
+   "condition_text": "【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe016",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:law:row:13",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 13
+  },
+  {
+   "row": 14,
+   "name": "Rave War Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "F+2, 2, 2",
+   "notation_std": "f+2, 2, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe00c",
+    "0xe016",
+    "0xe016",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:law:row:14",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 14
+  },
+  {
+   "row": 15,
+   "name": "Blazing Fist Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "F+2, 2, 1+2",
+   "notation_std": "f+2, 2, 1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe00c",
+    "0xe016",
+    "0xe016",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:law:row:15",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 15
+  },
+  {
+   "row": 16,
+   "name": "Dragon Hammer",
+   "kind": "move",
+   "section": null,
+   "notation": "f+1+2",
+   "notation_std": "f+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:law:row:16",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 16
+  },
+  {
+   "row": 17,
+   "name": "Dragon Killer",
+   "kind": "move",
+   "section": null,
+   "notation": "f+3+4",
+   "notation_std": "f+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:law:row:17",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 17
+  },
+  {
+   "row": 18,
+   "name": "Step in Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+3, 3, 3",
+   "notation_std": "d/f+3, 3, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe018",
+    "0xe018",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:18",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 18
+  },
+  {
+   "row": 19,
+   "name": "Mid Kick Combo to Somersault Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+3, 3, 4",
+   "notation_std": "d/f+3, 3, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe018",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:law:row:19",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 19
+  },
+  {
+   "row": 20,
+   "name": "Right Middle Kick to Somersault Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+4, 3",
+   "notation_std": "d/f+4, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:20",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 20
+  },
+  {
+   "row": 21,
+   "name": "Banana Peel",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+3+4",
+   "notation_std": "d/f+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:law:row:21",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 21
+  },
+  {
+   "row": 22,
+   "name": "Low Backhand to High Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "d+1, 3",
+   "notation_std": "d+1, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe015",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:22",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 22
+  },
+  {
+   "row": 23,
+   "name": "Body Blow to Dragon Lift",
+   "kind": "move",
+   "section": null,
+   "notation": "d+2, 3",
+   "notation_std": "d+2, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe016",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:23",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 23
+  },
+  {
+   "row": 24,
+   "name": "Dragon Low Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "d+3",
+   "notation_std": "d+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:24",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 24
+  },
+  {
+   "row": 25,
+   "name": "Dragon Low to Hook Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "d+3, 3",
+   "notation_std": "d+3, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe018",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:25",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 25
+  },
+  {
+   "row": 26,
+   "name": "Construct Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "d+4, 3",
+   "notation_std": "d+4, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:26",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 26
+  },
+  {
+   "row": 27,
+   "name": "Dragon Charge",
+   "kind": "move",
+   "section": null,
+   "notation": "d+1+2",
+   "notation_std": "d+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:law:row:27",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 27
+  },
+  {
+   "row": 28,
+   "name": "Dragon Knuckle",
+   "kind": "move",
+   "section": null,
+   "notation": "1",
+   "notation_std": "1",
+   "condition_text": "During Dragon Charge",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:law:row:28",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 28
+  },
+  {
+   "row": 29,
+   "name": "Dragon Knuckle Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "1, f+1",
+   "notation_std": "1, f+1",
+   "condition_text": "During Dragon Charge",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe004",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:law:row:29",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 29
+  },
+  {
+   "row": 30,
+   "name": "Dragon Knuckle Flight",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 4",
+   "notation_std": "1, 4",
+   "condition_text": "During Dragon Charge",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:law:row:30",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 30
+  },
+  {
+   "row": 31,
+   "name": "Cloud Gates",
+   "kind": "move",
+   "section": null,
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "During Dragon Charge",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:law:row:31",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 31
+  },
+  {
+   "row": 32,
+   "name": "Dragon Knuckle Spin Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "3",
+   "notation_std": "3",
+   "condition_text": "During Dragon Charge",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:32",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 32
+  },
+  {
+   "row": 33,
+   "name": "Dragon Junkyard Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "4, 3",
+   "notation_std": "4, 3",
+   "condition_text": "During Dragon Charge",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:33",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 33
+  },
+  {
+   "row": 34,
+   "name": "Quick Hook",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "During Dragon Charge",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:law:row:34",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 34
+  },
+  {
+   "row": 35,
+   "name": "Ab Cruncher",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "During Dragon Charge",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:law:row:35",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 35
+  },
+  {
+   "row": 36,
+   "name": "Dragon's Fire",
+   "kind": "move",
+   "section": null,
+   "notation": "1+3",
+   "notation_std": "1+3",
+   "condition_text": "During Dragon Charge",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019"
+   ],
+   "anim_ref": "ttt2:law:row:36",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 36
+  },
+  {
+   "row": 37,
+   "name": "Facelift",
+   "kind": "move",
+   "section": null,
+   "notation": "2+4",
+   "notation_std": "2+4",
+   "condition_text": "During Dragon Charge",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:law:row:37",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 37
+  },
+  {
+   "row": 38,
+   "name": "Dragon Roar",
+   "kind": "move",
+   "section": null,
+   "notation": "f+1",
+   "notation_std": "f+1",
+   "condition_text": "During Dragon Charge",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:law:row:38",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 38
+  },
+  {
+   "row": 39,
+   "name": "Dragon Executioner",
+   "kind": "move",
+   "section": null,
+   "notation": "f+2, 2, 1, 2",
+   "notation_std": "f+2, 2, 1, 2",
+   "condition_text": "During Dragon Charge",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe016",
+    "0xe016",
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:law:row:39",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 39
+  },
+  {
+   "row": 40,
+   "name": "Dragon Claw",
+   "kind": "move",
+   "section": null,
+   "notation": "f+2, 1",
+   "notation_std": "f+2, 1",
+   "condition_text": "During Dragon Charge 【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe016",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:law:row:40",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 40
+  },
+  {
+   "row": 41,
+   "name": "Dragon Cannon",
+   "kind": "move",
+   "section": null,
+   "notation": "f+3",
+   "notation_std": "f+3",
+   "condition_text": "During Dragon Charge",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:41",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 41
+  },
+  {
+   "row": 42,
+   "name": "Dragon's Flight",
+   "kind": "move",
+   "section": null,
+   "notation": "f+4",
+   "notation_std": "f+4",
+   "condition_text": "During Dragon Charge",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:law:row:42",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 42
+  },
+  {
+   "row": 43,
+   "name": "Dragon Killer",
+   "kind": "move",
+   "section": null,
+   "notation": "f+3+4",
+   "notation_std": "f+3+4",
+   "condition_text": "During Dragon Charge",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:law:row:43",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 43
+  },
+  {
+   "row": 44,
+   "name": "Dragon Arrow",
+   "kind": "move",
+   "section": null,
+   "notation": "b+3+4",
+   "notation_std": "b+3+4",
+   "condition_text": "During Dragon Charge",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:law:row:44",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 44
+  },
+  {
+   "row": 45,
+   "name": "Dragon's Descent",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3+4",
+   "notation_std": "u/f+3+4",
+   "condition_text": "During Dragon Charge",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:law:row:45",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 45
+  },
+  {
+   "row": 46,
+   "name": "Low Kick to Somersault",
+   "kind": "move",
+   "section": null,
+   "notation": "d+3+4, 3",
+   "notation_std": "d+3+4, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe020",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:46",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 46
+  },
+  {
+   "row": 47,
+   "name": "Elbow Spring Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+2, 4",
+   "notation_std": "d/b+2, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe016",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:law:row:47",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 47
+  },
+  {
+   "row": 48,
+   "name": "Shin Crusher",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+3",
+   "notation_std": "d/b+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:48",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 48
+  },
+  {
+   "row": 49,
+   "name": "Dragon's Tail",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+4",
+   "notation_std": "d/b+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:law:row:49",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 49
+  },
+  {
+   "row": 50,
+   "name": "Dragon's Tail to Somersault Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+4, 4",
+   "notation_std": "d/b+4, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:law:row:50",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 50
+  },
+  {
+   "row": 51,
+   "name": "Charge Power Punch",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+1+2",
+   "notation_std": "d/b+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:law:row:51",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 51
+  },
+  {
+   "row": 52,
+   "name": "Frogman",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+3+4",
+   "notation_std": "d/b+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:law:row:52",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 52
+  },
+  {
+   "row": 53,
+   "name": "Dragon Storm",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1, 2, 2",
+   "notation_std": "b+1, 2, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe015",
+    "0xe016",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:law:row:53",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 53
+  },
+  {
+   "row": 54,
+   "name": "Knuckle Rush",
+   "kind": "move",
+   "section": null,
+   "notation": "b+2, 2",
+   "notation_std": "b+2, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe016",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:law:row:54",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 54
+  },
+  {
+   "row": 55,
+   "name": "Junkyard Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "b+2, 3, 4",
+   "notation_std": "b+2, 3, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe016",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:law:row:55",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 55
+  },
+  {
+   "row": 56,
+   "name": "Dragon Rush Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "b+2, 3, d+4",
+   "notation_std": "b+2, 3, d+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe016",
+    "0xe018",
+    "0xe001",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:law:row:56",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 56
+  },
+  {
+   "row": 57,
+   "name": "Dragon Spin Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "b+3",
+   "notation_std": "b+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:57",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 57
+  },
+  {
+   "row": 58,
+   "name": "Tiger Fang",
+   "kind": "move",
+   "section": null,
+   "notation": "b+4, 3",
+   "notation_std": "b+4, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:58",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 58
+  },
+  {
+   "row": 59,
+   "name": "Fake Step",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1+2",
+   "notation_std": "b+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:law:row:59",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 59
+  },
+  {
+   "row": 60,
+   "name": "Tricky Trap",
+   "kind": "move",
+   "section": null,
+   "notation": "1",
+   "notation_std": "1",
+   "condition_text": "After Fake Step succeeds",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:law:row:60",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 60
+  },
+  {
+   "row": 61,
+   "name": "Tricky Fist",
+   "kind": "move",
+   "section": null,
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "After Fake Step succeeds",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:law:row:61",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 61
+  },
+  {
+   "row": 62,
+   "name": "Tricky Mid Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "3",
+   "notation_std": "3",
+   "condition_text": "After Fake Step succeeds",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:62",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 62
+  },
+  {
+   "row": 63,
+   "name": "Tricky Low Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "4",
+   "notation_std": "4",
+   "condition_text": "After Fake Step succeeds",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:law:row:63",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 63
+  },
+  {
+   "row": 64,
+   "name": "Dragon Knuckle",
+   "kind": "move",
+   "section": null,
+   "notation": "1",
+   "notation_std": "1",
+   "condition_text": "During Fake Step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:law:row:64",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 64
+  },
+  {
+   "row": 65,
+   "name": "Dragon Knuckle Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "1, f+1",
+   "notation_std": "1, f+1",
+   "condition_text": "During Fake Step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe004",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:law:row:65",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 65
+  },
+  {
+   "row": 66,
+   "name": "Dragon Knuckle Flight",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 4",
+   "notation_std": "1, 4",
+   "condition_text": "During Fake Step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:law:row:66",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 66
+  },
+  {
+   "row": 67,
+   "name": "Fake Step Uppercut",
+   "kind": "move",
+   "section": null,
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "During Fake Step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:law:row:67",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 67
+  },
+  {
+   "row": 68,
+   "name": "Dragon Knuckle Spin Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "3",
+   "notation_std": "3",
+   "condition_text": "During Fake Step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:68",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 68
+  },
+  {
+   "row": 69,
+   "name": "Dragon Junkyard Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "4, 3",
+   "notation_std": "4, 3",
+   "condition_text": "During Fake Step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:69",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 69
+  },
+  {
+   "row": 70,
+   "name": "Quick Hook",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "During Fake Step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:law:row:70",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 70
+  },
+  {
+   "row": 71,
+   "name": "Ab Cruncher",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "During Fake Step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:law:row:71",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 71
+  },
+  {
+   "row": 72,
+   "name": "Dragon Roar",
+   "kind": "move",
+   "section": null,
+   "notation": "f+1",
+   "notation_std": "f+1",
+   "condition_text": "During Fake Step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:law:row:72",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 72
+  },
+  {
+   "row": 73,
+   "name": "Dragon Cannon",
+   "kind": "move",
+   "section": null,
+   "notation": "f+3",
+   "notation_std": "f+3",
+   "condition_text": "During Fake Step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:73",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 73
+  },
+  {
+   "row": 74,
+   "name": "Dragon's Flight",
+   "kind": "move",
+   "section": null,
+   "notation": "f+4",
+   "notation_std": "f+4",
+   "condition_text": "During Fake Step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:law:row:74",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 74
+  },
+  {
+   "row": 75,
+   "name": "Dragon Killer",
+   "kind": "move",
+   "section": null,
+   "notation": "f+3+4",
+   "notation_std": "f+3+4",
+   "condition_text": "During Fake Step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:law:row:75",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 75
+  },
+  {
+   "row": 76,
+   "name": "Dragon Arrow",
+   "kind": "move",
+   "section": null,
+   "notation": "b+3+4",
+   "notation_std": "b+3+4",
+   "condition_text": "During Fake Step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:law:row:76",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 76
+  },
+  {
+   "row": 77,
+   "name": "Dragon's Descent",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3+4",
+   "notation_std": "u/f+3+4",
+   "condition_text": "During Fake Step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:law:row:77",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 77
+  },
+  {
+   "row": 78,
+   "name": "Dragon Arrow",
+   "kind": "move",
+   "section": null,
+   "notation": "b+3+4",
+   "notation_std": "b+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:law:row:78",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 78
+  },
+  {
+   "row": 79,
+   "name": "Blackout",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+1, 1",
+   "notation_std": "u/f+1, 1",
+   "condition_text": "(or during Charge Power Punch )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe015",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:law:row:79",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 79
+  },
+  {
+   "row": 80,
+   "name": "Blackout Muggin'",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+1, 3, 1, 3",
+   "notation_std": "u/f+1, 3, 1, 3",
+   "condition_text": "(or during Charge Power Punch )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe015",
+    "0xe018",
+    "0xe015",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:80",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 80
+  },
+  {
+   "row": 81,
+   "name": "Somersault",
+   "kind": "move",
+   "section": null,
+   "notation": "U/F+3",
+   "notation_std": "u/f+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe00f",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:81",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 81
+  },
+  {
+   "row": 82,
+   "name": "Somersault Fake",
+   "kind": "move",
+   "section": null,
+   "notation": "U/F+3, 4",
+   "notation_std": "u/f+3, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe00f",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:law:row:82",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 82
+  },
+  {
+   "row": 83,
+   "name": "Jumping Kick to Somersault",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3, 4",
+   "notation_std": "u/f+3, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:law:row:83",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 83
+  },
+  {
+   "row": 84,
+   "name": "Somersault Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "U/F+4",
+   "notation_std": "u/f+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe00f",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:law:row:84",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 84
+  },
+  {
+   "row": 85,
+   "name": "Backflipper",
+   "kind": "move",
+   "section": null,
+   "notation": "U/F+4, 3",
+   "notation_std": "u/f+4, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe00f",
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:85",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 85
+  },
+  {
+   "row": 86,
+   "name": "Dragon's Descent",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3+4",
+   "notation_std": "u/f+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:law:row:86",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 86
+  },
+  {
+   "row": 87,
+   "name": "Dragon Strike Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+2, 1, 3",
+   "notation_std": "f, f+2, 1, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe016",
+    "0xe015",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:87",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 87
+  },
+  {
+   "row": 88,
+   "name": "Dragon Dagger",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+2, 3",
+   "notation_std": "f, f+2, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe016",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:88",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 88
+  },
+  {
+   "row": 89,
+   "name": "Dragon Cannon",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+3",
+   "notation_std": "f, f+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:89",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 89
+  },
+  {
+   "row": 90,
+   "name": "Sun and Moon",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+4, 3",
+   "notation_std": "f, f+4, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:90",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 90
+  },
+  {
+   "row": 91,
+   "name": "Fury Fist Rush",
+   "kind": "move",
+   "section": null,
+   "notation": "d, d/f, F+1, 2, 1, 2",
+   "notation_std": "d, d/f, f+1, 2, 1, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe002",
+    "0xe00c",
+    "0xe015",
+    "0xe016",
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:law:row:91",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 91
+  },
+  {
+   "row": 92,
+   "name": "Running Side Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "f, f, f+3",
+   "notation_std": "f, f, f+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe004",
+    "0xe004",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:92",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 92
+  },
+  {
+   "row": 93,
+   "name": "Flash Fist",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2",
+   "notation_std": "1, 2",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:law:row:93",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 93
+  },
+  {
+   "row": 94,
+   "name": "Dragon Uppercut",
+   "kind": "move",
+   "section": null,
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:law:row:94",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 94
+  },
+  {
+   "row": 95,
+   "name": "Side Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "3",
+   "notation_std": "3",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:95",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 95
+  },
+  {
+   "row": 96,
+   "name": "Front Kick Somersault Variation",
+   "kind": "move",
+   "section": null,
+   "notation": "4, 3",
+   "notation_std": "4, 3",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:96",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 96
+  },
+  {
+   "row": 97,
+   "name": "Double Impact",
+   "kind": "move",
+   "section": null,
+   "notation": "3, 4",
+   "notation_std": "3, 4",
+   "condition_text": "While crouching",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:law:row:97",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 97
+  },
+  {
+   "row": 98,
+   "name": "Low Kick to Somersault",
+   "kind": "move",
+   "section": null,
+   "notation": "4, 3",
+   "notation_std": "4, 3",
+   "condition_text": "While crouching",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:98",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 98
+  },
+  {
+   "row": 99,
+   "name": "Catapult Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "U/F+4",
+   "notation_std": "u/f+4",
+   "condition_text": "While crouching",
+   "multi_part": false,
+   "glyphs": [
+    "0xe00f",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:law:row:99",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 99
+  },
+  {
+   "row": 100,
+   "name": "Rainbow Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "U/F+3+4",
+   "notation_std": "u/f+3+4",
+   "condition_text": "While crouching",
+   "multi_part": false,
+   "glyphs": [
+    "0xe00f",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:law:row:100",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 100
+  },
+  {
+   "row": 101,
+   "name": "Slide Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f, d, D/F+3",
+   "notation_std": "d/f, d, d/f+3",
+   "condition_text": "While crouching",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe001",
+    "0xe00a",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:101",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 101
+  },
+  {
+   "row": 102,
+   "name": "Dragon Judgement",
+   "kind": "move",
+   "section": null,
+   "notation": "2, 1, 2, 1",
+   "notation_std": "2, 1, 2, 1",
+   "condition_text": "During side step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe015",
+    "0xe016",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:law:row:102",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 102
+  },
+  {
+   "row": 103,
+   "name": "Double Dragon",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "During side step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:law:row:103",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 103
+  },
+  {
+   "row": 104,
+   "name": "Blind Elbow Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "2, 2",
+   "notation_std": "2, 2",
+   "condition_text": "Back towards enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:law:row:104",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 104
+  },
+  {
+   "row": 105,
+   "name": "Wolf Fang",
+   "kind": "move",
+   "section": null,
+   "notation": "4, 3",
+   "notation_std": "4, 3",
+   "condition_text": "Back towards enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:105",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 105
+  },
+  {
+   "row": 106,
+   "name": "Dragon Back Blow",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "Back towards enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:law:row:106",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 106
+  },
+  {
+   "row": 107,
+   "name": "Reverse Low",
+   "kind": "move",
+   "section": null,
+   "notation": "d+4",
+   "notation_std": "d+4",
+   "condition_text": "Back towards enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:law:row:107",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 107
+  },
+  {
+   "row": 108,
+   "name": "Jumping Kick to Somersault",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3, 4",
+   "notation_std": "u/f+3, 4",
+   "condition_text": "Back towards enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:law:row:108",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 108
+  },
+  {
+   "row": 109,
+   "name": "10 Hit Combo 1",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+1, 2, 2, 1, 3, 3, 3, 4, 3, 4",
+   "notation_std": "d/f+1, 2, 2, 1, 3, 3, 3, 4, 3, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe015",
+    "0xe016",
+    "0xe016",
+    "0xe015",
+    "0xe018",
+    "0xe018",
+    "0xe018",
+    "0xe01c",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:law:row:109",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 109
+  },
+  {
+   "row": 110,
+   "name": "10 Hit Combo 2",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+1, 2, 2, 1, 3, 3, d+3, 4, 4, 4",
+   "notation_std": "d/f+1, 2, 2, 1, 3, 3, d+3, 4, 4, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe015",
+    "0xe016",
+    "0xe016",
+    "0xe015",
+    "0xe018",
+    "0xe018",
+    "0xe001",
+    "0xe018",
+    "0xe01c",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:law:row:110",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 110
+  },
+  {
+   "row": 111,
+   "name": "10 Hit Combo 3",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+1, 2, 2, 1, 3, 3, d+3, 3, 4, 4",
+   "notation_std": "d/f+1, 2, 2, 1, 3, 3, d+3, 3, 4, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe015",
+    "0xe016",
+    "0xe016",
+    "0xe015",
+    "0xe018",
+    "0xe018",
+    "0xe001",
+    "0xe018",
+    "0xe018",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:law:row:111",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 111
+  },
+  {
+   "row": 112,
+   "name": "10 Hit Combo 4",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+1, 3, 2, 2, 3, 3, 3, 4, 3, 4",
+   "notation_std": "d/f+1, 3, 2, 2, 3, 3, 3, 4, 3, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe015",
+    "0xe018",
+    "0xe016",
+    "0xe016",
+    "0xe018",
+    "0xe018",
+    "0xe018",
+    "0xe01c",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:law:row:112",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 112
+  },
+  {
+   "row": 113,
+   "name": "10 Hit Combo 5",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+1, 3, 2, 2, 3, 3, d+3, 4, 4, 4",
+   "notation_std": "d/f+1, 3, 2, 2, 3, 3, d+3, 4, 4, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe015",
+    "0xe018",
+    "0xe016",
+    "0xe016",
+    "0xe018",
+    "0xe018",
+    "0xe001",
+    "0xe018",
+    "0xe01c",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:law:row:113",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 113
+  },
+  {
+   "row": 114,
+   "name": "10 Hit Combo 6",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+1, 3, 2, 2, 3, 3, d+3, 3, 4, 4",
+   "notation_std": "d/f+1, 3, 2, 2, 3, 3, d+3, 3, 4, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe015",
+    "0xe018",
+    "0xe016",
+    "0xe016",
+    "0xe018",
+    "0xe018",
+    "0xe001",
+    "0xe018",
+    "0xe018",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:law:row:114",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 114
+  },
+  {
+   "row": 115,
+   "name": "Dragon's Fire",
+   "kind": "move",
+   "section": null,
+   "notation": "1+3",
+   "notation_std": "1+3",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019"
+   ],
+   "anim_ref": "ttt2:law:row:115",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 115
+  },
+  {
+   "row": 116,
+   "name": "Dragon's Fire",
+   "kind": "move",
+   "section": null,
+   "notation": "f+1+3",
+   "notation_std": "f+1+3",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe019"
+   ],
+   "anim_ref": "ttt2:law:row:116",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 116
+  },
+  {
+   "row": 117,
+   "name": "Hopping Frog",
+   "kind": "move",
+   "section": null,
+   "notation": "2+4",
+   "notation_std": "2+4",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:law:row:117",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 117
+  },
+  {
+   "row": 118,
+   "name": "Hopping Frog",
+   "kind": "move",
+   "section": null,
+   "notation": "f+2+4",
+   "notation_std": "f+2+4",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:law:row:118",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 118
+  },
+  {
+   "row": 119,
+   "name": "Headlock Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "1+3 or 2+4",
+   "notation_std": "1+3 or 2+4",
+   "condition_text": "Approach from left side (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:law:row:119",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 119
+  },
+  {
+   "row": 120,
+   "name": "Ball Breaker",
+   "kind": "move",
+   "section": null,
+   "notation": "1+3 or 2+4",
+   "notation_std": "1+3 or 2+4",
+   "condition_text": "Approach from right side (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:law:row:120",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 120
+  },
+  {
+   "row": 121,
+   "name": "Dragon Bites",
+   "kind": "move",
+   "section": null,
+   "notation": "1+3 or 2+4",
+   "notation_std": "1+3 or 2+4",
+   "condition_text": "Approach from behind (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:law:row:121",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 121
+  },
+  {
+   "row": 122,
+   "name": "Run Up to Drop",
+   "kind": "move",
+   "section": null,
+   "notation": "f+2+3",
+   "notation_std": "f+2+3",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01a"
+   ],
+   "anim_ref": "ttt2:law:row:122",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 122
+  },
+  {
+   "row": 123,
+   "name": "Headlock Punch",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+1+2",
+   "notation_std": "d/f+1+2",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:law:row:123",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 123
+  },
+  {
+   "row": 124,
+   "name": "Headlock Drop",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+1+2, 1, 2, 1+2",
+   "notation_std": "d/f+1+2, 1, 2, 1+2",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe017",
+    "0xe015",
+    "0xe016",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:law:row:124",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 124
+  },
+  {
+   "row": 125,
+   "name": "Knee Lift",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+3+4",
+   "notation_std": "f, f+3+4",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:law:row:125",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 125
+  },
+  {
+   "row": 126,
+   "name": "Parry",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1+3, b+2+4",
+   "notation_std": "b+1+3, b+2+4",
+   "condition_text": "Time with enemy attack (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe019",
+    "0xe003",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:law:row:126",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 126
+  },
+  {
+   "row": 127,
+   "name": "Sample Combo 1",
+   "kind": "sample_combo",
+   "section": null,
+   "notation": "d/b+4, 4, b+4, 3",
+   "notation_std": "d/b+4, 4, b+4, 3",
+   "condition_text": "",
+   "multi_part": true,
+   "glyphs": [
+    "0xe000",
+    "0xe01c",
+    "0xe01c",
+    "0xe063",
+    "0xe003",
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:127",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 127
+  },
+  {
+   "row": 128,
+   "name": "Sample Combo 2",
+   "kind": "sample_combo",
+   "section": null,
+   "notation": "U/F+4, 3, 3+4, F+2, 2, 1+2",
+   "notation_std": "u/f+4, 3, 3+4, f+2, 2, 1+2",
+   "condition_text": "",
+   "multi_part": true,
+   "glyphs": [
+    "0xe00f",
+    "0xe01c",
+    "0xe018",
+    "0xe063",
+    "0xe020",
+    "0xe063",
+    "0xe00c",
+    "0xe016",
+    "0xe016",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:law:row:128",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 128
+  },
+  {
+   "row": 129,
+   "name": "Sample Combo 3",
+   "kind": "sample_combo",
+   "section": null,
+   "notation": "d/f+2, d/f+1, f+1, 2, b+2, 2, f, F+2, 1, 3",
+   "notation_std": "d/f+2, d/f+1, f+1, 2, b+2, 2, f, f+2, 1, 3",
+   "condition_text": "",
+   "multi_part": true,
+   "glyphs": [
+    "0xe002",
+    "0xe016",
+    "0xe063",
+    "0xe002",
+    "0xe015",
+    "0xe063",
+    "0xe004",
+    "0xe015",
+    "0xe016",
+    "0xe063",
+    "0xe003",
+    "0xe016",
+    "0xe016",
+    "0xe063",
+    "0xe004",
+    "0xe00c",
+    "0xe016",
+    "0xe015",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:129",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 129
+  },
+  {
+   "row": 130,
+   "name": "Sample Combo 4",
+   "kind": "sample_combo",
+   "section": null,
+   "notation": "U/F+4, 4, F+2, 2, 2, f, F+2, 3",
+   "notation_std": "u/f+4, 4, f+2, 2, 2, f, f+2, 3",
+   "condition_text": "While rising",
+   "multi_part": true,
+   "glyphs": [
+    "0xe00f",
+    "0xe01c",
+    "0xe063",
+    "0xe01c",
+    "0xe063",
+    "0xe00c",
+    "0xe016",
+    "0xe016",
+    "0xe016",
+    "0xe063",
+    "0xe004",
+    "0xe00c",
+    "0xe016",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:130",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 130
+  },
+  {
+   "row": 131,
+   "name": "Sample Combo 5",
+   "kind": "sample_combo",
+   "section": null,
+   "notation": "f, F+4, 3, b+2, 3, 4, b, f, f+3",
+   "notation_std": "f, f+4, 3, b+2, 3, 4, b, f, f+3",
+   "condition_text": "During Dragon Charge",
+   "multi_part": true,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe01c",
+    "0xe018",
+    "0xe063",
+    "0xe003",
+    "0xe016",
+    "0xe018",
+    "0xe01c",
+    "0xe003",
+    "0xe004",
+    "0xe063",
+    "0xe004",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:131",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 131
+  },
+  {
+   "row": 132,
+   "name": "Sample Combo 6",
+   "kind": "sample_combo",
+   "section": null,
+   "notation": "d+2, 3, 4, 3, 4, b, f, 2, U/F+4, 3",
+   "notation_std": "d+2, 3, 4, 3, 4, b, f, 2, u/f+4, 3",
+   "condition_text": "During Dragon Charge",
+   "multi_part": true,
+   "glyphs": [
+    "0xe001",
+    "0xe016",
+    "0xe018",
+    "0xe063",
+    "0xe01c",
+    "0xe018",
+    "0xe01c",
+    "0xe003",
+    "0xe004",
+    "0xe063",
+    "0xe016",
+    "0xe063",
+    "0xe00f",
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:132",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 132
+  },
+  {
+   "row": 133,
+   "name": "Sample Combo 7",
+   "kind": "sample_combo",
+   "section": null,
+   "notation": "2, 4, u+3, f, F+4, 3, 4, 3, b, f, f+3",
+   "notation_std": "2, 4, u+3, f, f+4, 3, 4, 3, b, f, f+3",
+   "condition_text": "While rising During Dragon Charge",
+   "multi_part": true,
+   "glyphs": [
+    "0xe016",
+    "0xe063",
+    "0xe01c",
+    "0xe006",
+    "0xe018",
+    "0xe063",
+    "0xe004",
+    "0xe00c",
+    "0xe01c",
+    "0xe018",
+    "0xe063",
+    "0xe01c",
+    "0xe018",
+    "0xe003",
+    "0xe004",
+    "0xe063",
+    "0xe004",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:law:row:133",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 133
+  }
+ ]
+}

@@ -1,0 +1,109 @@
+$ /usr/bin/python3 /home/user/western-heart/tools/auto_rig/refit_skeleton.py --mesh /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-9jl2kr18/decoded.glb --out /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-9jl2kr18/fit.json --facing=-Z --static-out /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-9jl2kr18/static.glb
+{
+ "height_m": 1.75,
+ "notes": {
+  "template_turned_180": true,
+  "template_relabelled_LR": false,
+  "scale": 1.0,
+  "start_offset_z_m": 0.0176,
+  "Hips": 7397,
+  "Spine": 7626,
+  "Spine1": 5595,
+  "Spine2": 8658,
+  "Neck": 11819,
+  "Head": 21054,
+  "LeftUpLeg": 5522,
+  "LeftLeg": 4838,
+  "LeftFoot": 3459,
+  "LeftToeBase": {
+   "heel_z": -0.142,
+   "tip_z": 0.186
+  },
+  "RightUpLeg": 5669,
+  "RightLeg": 4850,
+  "RightFoot": 3908,
+  "RightToeBase": {
+   "heel_z": -0.142,
+   "tip_z": 0.187
+  },
+  "LeftArm": 6478,
+  "LeftForeArm": 3821,
+  "LeftHand": 0,
+  "RightArm": 6594,
+  "RightForeArm": 3879,
+  "RightHand": 0
+ }
+}
+
+$ /usr/bin/python3 /home/user/western-heart/tools/auto_rig/refit_landmarks.py --fit /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-9jl2kr18/fit.json --out /home/user/western-heart/docs/proof/2026-11-01/refit-batch/kiko-tanaka_alt1/fit_landmarks.json
+{
+ "tool": "tools/auto_rig/refit_landmarks.py",
+ "Left_arm": {
+  "armpit_x": 0.2078,
+  "clean_from_x": 0.203,
+  "fingertip_x": 0.8786,
+  "finger_scale": 0.919,
+  "arm_angle_below_horizontal_deg": 0
+ },
+ "Right_arm": {
+  "armpit_x": 0.2079,
+  "clean_from_x": 0.2012,
+  "fingertip_x": 0.8768,
+  "finger_scale": 1.0,
+  "arm_angle_below_horizontal_deg": 0
+ },
+ "legs": {
+  "crotch_y": 0.7865,
+  "hip_joint_y": 0.8765,
+  "template_hip_joint_y": 1.0086
+ },
+ "neck_head_from": "front profile: neck base y 1.3704, chin y 1.4579",
+ "mirrored_missing_joints": [
+  "LeftHandThumb3"
+ ],
+ "arm_line_y": {
+  "template_fit": 1.359,
+  "mesh": 1.3494
+ }
+}
+Hips           [0.0009, 1.0613, 0.0294] -> [0.00089, 0.92927, 0.01443]  (0.133 m)
+Spine          [0.0009, 1.1562, 0.0062] -> [0.00089, 1.0175, 0.02723]  (0.140 m)
+Spine1         [0.0009, 1.2669, -0.0063] -> [0.00089, 1.12045, 0.03465]  (0.152 m)
+Spine2         [0.0009, 1.3935, -0.0358] -> [0.00089, 1.23808, 0.00493]  (0.161 m)
+Neck           [0.0009, 1.5358, 0.0366] -> [0.00089, 1.37044, -0.0219]  (0.175 m)
+Head           [0.0009, 1.5686, 0.0345] -> [0.00089, 1.45794, -0.01876]  (0.123 m)
+LeftShoulder   [0.0669, 1.3908, -0.0327] -> [0.06685, 1.38087, -0.02213]  (0.015 m)
+LeftArm        [0.2078, 1.359, -0.0296] -> [0.20388, 1.34908, -0.0492]  (0.022 m)
+LeftForeArm    [0.4394, 1.3269, -0.0475] -> [0.45533, 1.33149, -0.04215]  (0.017 m)
+LeftHand       [0.6801, 1.4792, -0.0397] -> [0.67388, 1.3162, -0.03602]  (0.163 m)
+RightShoulder  [-0.0687, 1.3909, -0.0343] -> [-0.06868, 1.38164, -0.02094]  (0.016 m)
+RightArm       [-0.2093, 1.359, -0.0327] -> [-0.20033, 1.3498, -0.0468]  (0.019 m)
+RightForeArm   [-0.4409, 1.3264, -0.0476] -> [-0.43306, 1.33242, -0.04398]  (0.011 m)
+RightHand      [-0.6823, 1.4792, -0.0414] -> [-0.63533, 1.31731, -0.04153]  (0.169 m)
+LeftUpLeg      [0.0725, 1.0086, 0.0254] -> [0.12387, 0.87654, 0.02608]  (0.142 m)
+LeftLeg        [0.1553, 0.5751, 0.026] -> [0.1642, 0.5084, 0.02112]  (0.068 m)
+RightUpLeg     [-0.0716, 1.0086, 0.0254] -> [-0.12222, 0.87654, 0.02617]  (0.141 m)
+RightLeg       [-0.1532, 0.5755, 0.0264] -> [-0.16346, 0.50874, 0.02197]  (0.068 m)
+
+$ xvfb-run -a env -u PYTHONPATH XDG_RUNTIME_DIR=/tmp /tmp/claude-0/-home-user-western-heart/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/blender/blender-4.0.2-linux-x64/blender -b --factory-startup --python-exit-code 1 --python /home/user/western-heart/tools/auto_rig/backends/heat_rebind.py -- --in /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-9jl2kr18/static.glb --fit /home/user/western-heart/docs/proof/2026-11-01/refit-batch/kiko-tanaka_alt1/fit_landmarks.json --out /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-9jl2kr18/rig.glb --metrics-out /home/user/western-heart/docs/proof/2026-11-01/refit-batch/kiko-tanaka_alt1/heat_rebind_metrics.json --height 1.75 --donor /home/user/western-heart/assets/free-pull-1/cmu-mocap/fighting/135_04.bvh
+Blender 4.0.2 (hash 9be62e85b727 built 2023-12-05 08:48:50)
+Data are loaded, start creating Blender stuff
+glTF import finished in 12.64s
+	parsing bvh '/home/user/western-heart/assets/free-pull-1/cmu-mocap/fighting/135_04.bvh'...	zero length node found: Hips
+0.0977
+	importing to blender...	zero length bone found: Spine1
+	zero length bone found: LeftHand
+	zero length bone found: RightHand
+Done in 0.4213
+
+16:47:01 | INFO: Draco mesh compression is available, use library at /tmp/claude-0/-home-user-western-heart/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/blender/blender-4.0.2-linux-x64/4.0/python/lib/python3.10/site-packages/libextern_draco.so
+16:47:03 | INFO: Starting glTF 2.0 export
+16:47:09 | INFO: Extracting primitive: Mesh_0
+16:47:24 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+16:47:41 | INFO: Primitives created: 1
+16:50:27 | INFO: Finished glTF 2.0 export in 204.2879593372345 s
+
+HEAT_REBIND {"bones": 50, "unweighted_fixed": 0, "out_bytes": 87158008}
+
+Blender quit
+

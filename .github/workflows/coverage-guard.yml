@@ -1,0 +1,31 @@
+# coverage-guard (COMPLETE WIRING LAW): fails if a SYSTEMS-COVERAGE row is
+# removed, its status regresses, or a 'wired' row's code/test is missing.
+name: coverage-guard
+on:
+  pull_request:
+    branches: [main]
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  coverage-guard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          filter: blob:none
+          sparse-checkout: |
+            tools/coverage
+            docs/tech/SYSTEMS-COVERAGE.md
+          sparse-checkout-cone-mode: false
+      - name: Check coverage vs base
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+          git show "$BASE_SHA:tools/coverage/systems-coverage.json" > /tmp/base.json 2>/dev/null || echo '{"rows":[]}' > /tmp/base.json
+          node tools/coverage/check_coverage.mjs /tmp/base.json

@@ -1,0 +1,46 @@
+/* WESTERN HEART — UI gaps (Lane 3, 2026-10-24). Phone-first: every
+   tappable target >= 44px (buttons are 48px+), no hover-only controls,
+   portrait AND landscape (overlay scrolls, bar wraps). The favorites
+   bar sits BELOW the select preview panes — it never covers a preview. */
+.wh-gap-btn {
+  min-height: 48px; min-width: 44px; padding: 10px 14px;
+  border: 1px solid #f2b01e; border-radius: 8px;
+  background: #1d1a16; color: #fff; font: inherit; cursor: pointer;
+  display: inline-flex; flex-direction: column; align-items: flex-start; gap: 2px;
+}
+.wh-gap-btn small { font-size: 12px; opacity: .75; }
+.wh-gap-btn.on { background: #f2b01e; color: #111; }
+.wh-gap-screen {
+  display: none; position: fixed; inset: 0; z-index: 90;
+  background: #0d0b09; color: #fff; overflow-y: auto; padding: 16px;
+}
+.wh-gap-screen.show { display: block; }
+.wh-gap-head { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+.wh-gap-head h2 { margin: 0; font-size: 22px; letter-spacing: 1px; }
+.wh-gap-head p { margin: 4px 0 0; opacity: .8; font-size: 14px; }
+.wh-gap-back { min-height: 48px; min-width: 48px; font-size: 28px; background: #1d1a16; color: #fff; border: 1px solid #f2b01e; border-radius: 8px; cursor: pointer; }
+.wh-gap-list { display: flex; flex-direction: column; gap: 10px; }
+.wh-gap-item { border: 1px solid #3a332a; border-radius: 10px; padding: 12px; background: #161310; }
+.wh-gap-item b { display: block; margin-bottom: 4px; }
+.wh-gap-item p { margin: 0 0 8px; opacity: .85; font-size: 14px; }
+.wh-gap-item .wh-gap-btn { margin: 4px 6px 0 0; }
+.wh-gap-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
+.wh-gap-tabs .wh-gap-btn.on { background: #f2b01e; color: #111; }
+.wh-gap-empty { opacity: .8; font-size: 15px; }
+.wh-gap-foot { opacity: .65; font-size: 12px; margin-top: 14px; }
+.wh-gap-timeline { font-size: 12px; opacity: .85; max-height: 160px; overflow-y: auto; margin: 6px 0; }
+.wh-favbar {
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  padding: 10px 12px; border-top: 1px solid #3a332a;
+}
+.wh-fav-label { font-size: 12px; letter-spacing: 1px; opacity: .8; }
+.wh-fav-slots { display: flex; flex-wrap: wrap; gap: 8px; }
+.wh-fav-locked { font-size: 13px; color: #f2b01e; }
+.wh-frame-overlay {
+  display: none; position: fixed; left: 8px; bottom: 8px; z-index: 80;
+  background: rgba(0, 0, 0, .72); color: #fff; border: 1px solid #f2b01e;
+  border-radius: 8px; padding: 8px 10px; font-size: 12px; max-width: 96vw;
+}
+.wh-frame-overlay.show { display: block; }
+.wh-vs-meta { text-align: center; font-size: 13px; letter-spacing: 1px; opacity: .9; margin-top: 8px; }
+.wh-vs-banter { text-align: center; font-size: 14px; font-style: italic; opacity: .9; margin-top: 6px; padding: 0 12px; }

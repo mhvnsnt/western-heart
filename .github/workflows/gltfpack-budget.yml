@@ -1,0 +1,37 @@
+# gltfpack pipeline guard (Lane 5, 2026-10-24).
+# Runs the gltfpack pipeline unit tests on PRs touching the pipeline.
+# The full batch needs a gltfpack binary (fetch-gltfpack.sh) and the
+# game GLBs, so it is NOT run here: the batch is a manual / Kaggle-GPU
+# job whose manifest artifact is what check-budgets.py reads. What CI
+# does pin: validation logic, flag policy (-tc opt-in, -kn skinned
+# only, simplification allow-list only) and budget logic cannot drift
+# silently, because the tests read the real runner source.
+name: gltfpack-budget
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'tools/gltfpack/**'
+      - '.github/workflows/gltfpack-budget.yml'
+    types: [opened, synchronize, reopened]
+  merge_group:
+    types: [checks_requested]
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+permissions:
+  contents: read
+jobs:
+  gltfpack-pipeline-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            tools/gltfpack
+          sparse-checkout-cone-mode: false
+      - name: Pipeline unit tests
+        run: python3 -m unittest discover -s tools/gltfpack -p 'test_gltfpack_pipeline.py' -v

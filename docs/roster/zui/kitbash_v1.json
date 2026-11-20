@@ -1,0 +1,98 @@
+{
+ "character": "zui",
+ "version": "v1",
+ "attire_tier": "A1-wip",
+ "base": {
+  "path": "game/assets/models/demonio.glb",
+  "source": "Tekken 7 Steve Fox import (teardown) - THIRD-PARTY",
+  "canon_base": "Steve Fox (CANON.md ZUI)"
+ },
+ "hide": [
+  "Object_ModelHair__Material015",
+  "Object_ModelGloves_Metal_Material005",
+  "Object_ModelGloves_MetalEnv_Material01"
+ ],
+ "tint": {
+  "Object_ModelShirt_Material011": [
+   0.95,
+   0.55,
+   0.12,
+   0
+  ],
+  "Object_ModelLower_Material008": [
+   0.22,
+   0.14,
+   0.42
+  ],
+  "Object_ModelBelt_Material002": [
+   0.45,
+   0.1,
+   0.55,
+   0
+  ],
+  "Object_ModelGloves_Main_Material004": [
+   0.9,
+   0.85,
+   0.75,
+   0
+  ],
+  "Object_ModelGloves_Material006": [
+   0.9,
+   0.85,
+   0.75,
+   0
+  ]
+ },
+ "pose": {},
+ "props": [
+  {
+   "id": "sake_gourd",
+   "bone": "Hips",
+   "offset": [
+    -0.2,
+    -0.08,
+    0.05
+   ],
+   "kind": "gourd",
+   "color": [
+    0.55,
+    0.32,
+    0.12
+   ],
+   "source": "procedural (WH original)"
+  },
+  {
+   "id": "prayer_beads",
+   "bone": "Neck",
+   "offset": [
+    0,
+    -0.03,
+    0.0
+   ],
+   "kind": "beads",
+   "color": [
+    0.25,
+    0.09,
+    0.05
+   ],
+   "source": "procedural (WH original)"
+  },
+  {
+   "id": "sash",
+   "bone": "Hips",
+   "offset": [
+    0,
+    0.08,
+    0
+   ],
+   "kind": "sash",
+   "color": [
+    0.45,
+    0.1,
+    0.55
+   ],
+   "source": "procedural (WH original)"
+  }
+ ],
+ "notes": "Tint value 4th element 0 = drop source texture (removes Steve Fox crest print). Pose left as T-pose: per-bone euler on this skeleton's local axes broke the arm chain in v1a; arm pose waits for the retarget step."
+}

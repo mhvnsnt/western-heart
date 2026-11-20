@@ -1,0 +1,1473 @@
+{
+  "archive": "TK5DATA2.BIN (romD archive, 244 MB on the Tekken 5 PS2 disc SLUS_210.59)",
+  "source_manifest": "teardown/tekken5/t5_motion_manifest.txt (498 named files, extracted 2026-10-23)",
+  "decoded": "2026-11-08",
+  "canon_note": "Canon law (Jay, 2026-11-08 ~00:04): there is NO Jin Kazama in our game at all — the ONLY Jin is the soul JIN (the Blade Soul), pickable as Phantom. In this index, 'Jin' / 'Devil Jin' / 'fighter' name the SOURCE game's characters (Tekken 5) only — source attributions for the decoded files, never characters in our game. The Devil Jin kit (group ikdv) is moveset donor data only (canon: Surge Kit).",
+  "decode_level": "INDEX LEVEL ONLY — names, romaji glosses, and group assignments. No bytes exist in the repo, so no offsets, sizes, headers, or motion data are resolved. See DW-DECODE-LOG.md for the blocker.",
+  "devil_within_file_count": 242,
+  "manifest_count": 498,
+  "code_anchors": [
+    {
+      "code": "c02",
+      "fighter": "Lei",
+      "evidence": "snd_c02lei.dat"
+    },
+    {
+      "code": "c10",
+      "fighter": "Jin",
+      "evidence": "snd_c10jin.dat"
+    },
+    {
+      "code": "c15",
+      "fighter": "Heihachi",
+      "evidence": "snd_c15hei.dat"
+    },
+    {
+      "code": "c21",
+      "fighter": "JACK",
+      "evidence": "snd_c21jac.dat"
+    },
+    {
+      "code": "c30",
+      "fighter": "Devil Jin",
+      "evidence": "snd_c30dvj.dat"
+    }
+  ],
+  "confidence_key": {
+    "high": "plain English or common romaji; directly readable from the name",
+    "medium": "plausible reading, not proven (prefix/suffix inference)",
+    "opaque": "token not translated; do not guess",
+    "low": "group assignment reasoned from weak evidence; do not treat as fact"
+  },
+  "groups": [
+    {
+      "id": "ikdv",
+      "label": "Surge Kit donor — Devil Within brawler kit (source: Devil Jin's kit; moveset data only, never a character)",
+      "assignment": "Surge Kit donor moveset (source: Devil Jin's Devil Within kit)",
+      "assignment_confidence": "high",
+      "evidence": "Beams (beam / d_beam / all_beam / jump_beam / d_nagi_beam) match the public description of the source Devil Jin's laser attacks; paired with snd_c30dvj (source Devil Jin sound, code c30).",
+      "files": [
+        {
+          "name": "gym_ikdv_36_nage_f.dat",
+          "gloss": "throw, variant 36, _f variant",
+          "confidence": "medium",
+          "note": "_f / _y suffixes: two variants; front/back reading UNCONFIRMED."
+        },
+        {
+          "name": "gym_ikdv_36_nage_y.dat",
+          "gloss": "throw, variant 36, _y variant",
+          "confidence": "medium",
+          "note": "_f / _y suffixes: two variants; front/back reading UNCONFIRMED."
+        },
+        {
+          "name": "gym_ikdv_all_beam.dat",
+          "gloss": "beam hitting all targets",
+          "confidence": "medium",
+          "note": "Matches public description: the source Devil Jin's lasers hit several enemies at once."
+        },
+        {
+          "name": "gym_ikdv_b_nage_f.dat",
+          "gloss": "throw, variant b, _f variant",
+          "confidence": "medium",
+          "note": "_f / _y suffixes: two variants; front/back reading UNCONFIRMED."
+        },
+        {
+          "name": "gym_ikdv_b_nage_y.dat",
+          "gloss": "throw, variant b, _y variant",
+          "confidence": "medium",
+          "note": "_f / _y suffixes: two variants; front/back reading UNCONFIRMED."
+        },
+        {
+          "name": "gym_ikdv_beam.dat",
+          "gloss": "beam / laser",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ikdv_chaku.dat",
+          "gloss": "landing",
+          "confidence": "high",
+          "note": "chaku = landing (chakuriku)."
+        },
+        {
+          "name": "gym_ikdv_d_beam.dat",
+          "gloss": "devil beam",
+          "confidence": "medium",
+          "note": "d- = devil, consistent with d_jump_*."
+        },
+        {
+          "name": "gym_ikdv_d_jump_k.dat",
+          "gloss": "devil jump kick",
+          "confidence": "medium"
+        },
+        {
+          "name": "gym_ikdv_d_jump_p.dat",
+          "gloss": "devil jump punch",
+          "confidence": "medium"
+        },
+        {
+          "name": "gym_ikdv_d_nagi_beam.dat",
+          "gloss": "devil sweeping beam",
+          "confidence": "medium",
+          "note": "nagi = mow down / sweep."
+        },
+        {
+          "name": "gym_ikdv_dsrp.dat",
+          "gloss": "opaque token",
+          "confidence": "opaque"
+        },
+        {
+          "name": "gym_ikdv_dsrp_k.dat",
+          "gloss": "opaque token, kick variant",
+          "confidence": "opaque"
+        },
+        {
+          "name": "gym_ikdv_dv2kam2.dat",
+          "gloss": "opaque token",
+          "confidence": "opaque",
+          "note": "kam may be kamae (stance); unconfirmed."
+        },
+        {
+          "name": "gym_ikdv_dv_jz.dat",
+          "gloss": "opaque token",
+          "confidence": "opaque"
+        },
+        {
+          "name": "gym_ikdv_fstep.dat",
+          "gloss": "forward step",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ikdv_jump_beam.dat",
+          "gloss": "jumping beam",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ikdv_jump_k.dat",
+          "gloss": "jumping kick",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ikdv_jump_p.dat",
+          "gloss": "jumping punch",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ikdv_jz_dv.dat",
+          "gloss": "opaque token",
+          "confidence": "opaque"
+        },
+        {
+          "name": "gym_ikdv_k_1.dat",
+          "gloss": "kick variant 1",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ikdv_k_2.dat",
+          "gloss": "kick variant 2",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ikdv_k_3.dat",
+          "gloss": "kick variant 3",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ikdv_k_4.dat",
+          "gloss": "kick variant 4",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ikdv_l2idou.dat",
+          "gloss": "left movement",
+          "confidence": "medium",
+          "note": "idou = movement; l2 = left variant 2."
+        },
+        {
+          "name": "gym_ikdv_lturn.dat",
+          "gloss": "left turn",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ikdv_lturn90.dat",
+          "gloss": "left turn 90 degrees",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ikdv_lukemi.dat",
+          "gloss": "left breakfall",
+          "confidence": "high",
+          "note": "ukemi = breakfall."
+        },
+        {
+          "name": "gym_ikdv_nara.dat",
+          "gloss": "opaque token",
+          "confidence": "opaque"
+        },
+        {
+          "name": "gym_ikdv_nige00.dat",
+          "gloss": "escape / flee",
+          "confidence": "high",
+          "note": "nige = escape."
+        },
+        {
+          "name": "gym_ikdv_p_1.dat",
+          "gloss": "punch variant 1",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ikdv_p_2.dat",
+          "gloss": "punch variant 2",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ikdv_p_3.dat",
+          "gloss": "punch variant 3",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ikdv_p_4.dat",
+          "gloss": "punch variant 4",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ikdv_p_5.dat",
+          "gloss": "punch variant 5",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ikdv_p_kaitenk.dat",
+          "gloss": "punch into spinning kick",
+          "confidence": "medium",
+          "note": "kaiten = rotation / spin."
+        },
+        {
+          "name": "gym_ikdv_pk.dat",
+          "gloss": "punch-kick combo",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ikdv_ppk.dat",
+          "gloss": "punch-punch-kick combo",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ikdv_ppp_nage_f.dat",
+          "gloss": "3-punch combo into throw, _f variant",
+          "confidence": "high",
+          "note": "_f / _y suffixes: two variants; front/back reading UNCONFIRMED."
+        },
+        {
+          "name": "gym_ikdv_ppp_nage_y.dat",
+          "gloss": "3-punch combo into throw, _y variant",
+          "confidence": "high",
+          "note": "_f / _y suffixes: two variants; front/back reading UNCONFIRMED."
+        },
+        {
+          "name": "gym_ikdv_r2idou.dat",
+          "gloss": "right movement",
+          "confidence": "medium",
+          "note": "idou = movement; r2 = right variant 2."
+        },
+        {
+          "name": "gym_ikdv_rturn.dat",
+          "gloss": "right turn",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ikdv_rturn90.dat",
+          "gloss": "right turn 90 degrees",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ikdv_rukemi.dat",
+          "gloss": "right breakfall",
+          "confidence": "high",
+          "note": "ukemi = breakfall."
+        },
+        {
+          "name": "gym_ikdv_run_p.dat",
+          "gloss": "running punch",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ikdv_shoryu.dat",
+          "gloss": "rising dragon uppercut",
+          "confidence": "high",
+          "note": "shoryu = rising dragon."
+        },
+        {
+          "name": "gym_ikdv_sjk.dat",
+          "gloss": "opaque token",
+          "confidence": "opaque"
+        },
+        {
+          "name": "gym_ikdv_sjk00.dat",
+          "gloss": "opaque token, variant 00",
+          "confidence": "opaque"
+        },
+        {
+          "name": "gym_ikdv_sjk01.dat",
+          "gloss": "opaque token, variant 01",
+          "confidence": "opaque"
+        },
+        {
+          "name": "gym_ikdv_sjk02.dat",
+          "gloss": "opaque token, variant 02",
+          "confidence": "opaque"
+        },
+        {
+          "name": "gym_ikdv_sjk03.dat",
+          "gloss": "opaque token, variant 03",
+          "confidence": "opaque"
+        },
+        {
+          "name": "gym_ikdv_sway.dat",
+          "gloss": "sway",
+          "confidence": "high"
+        }
+      ],
+      "count": 52
+    },
+    {
+      "id": "kmb1",
+      "label": "Modified Gun Jack — stage 1 boss kit",
+      "assignment": "Modified Gun Jack (Devil Within stage 1 boss)",
+      "assignment_confidence": "high",
+      "evidence": "Gun attacks throughout (machinegun, shotgun, charge_shot, hijump_shot, wshot) plus a full walk/run/turn cycle; kmb1 is the only gun-heavy kit in the manifest; stage 1 boss per public sources is Modified Gun Jack.",
+      "files": [
+        {
+          "name": "gym_kmb1_bakutyu.dat",
+          "gloss": "explosion-type attack",
+          "confidence": "medium",
+          "note": "baku = burst / explosion."
+        },
+        {
+          "name": "gym_kmb1_bakutyushot.dat",
+          "gloss": "explosion shot",
+          "confidence": "medium"
+        },
+        {
+          "name": "gym_kmb1_charge_shot_02.dat",
+          "gloss": "charged shot, variant 2",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kmb1_guard_mm.dat",
+          "gloss": "guard",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kmb1_hijump_shot.dat",
+          "gloss": "high-jump shot",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kmb1_histep_l.dat",
+          "gloss": "high step, left",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kmb1_histep_r.dat",
+          "gloss": "high step, right",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kmb1_jumpmachinegun.dat",
+          "gloss": "jumping machine gun",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kmb1_kamae.dat",
+          "gloss": "stance",
+          "confidence": "high",
+          "note": "kamae = stance."
+        },
+        {
+          "name": "gym_kmb1_lk.dat",
+          "gloss": "left kick",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kmb1_lk_histep_r.dat",
+          "gloss": "left kick into right high step",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kmb1_lturn180.dat",
+          "gloss": "left turn 180 degrees",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kmb1_lturn90.dat",
+          "gloss": "left turn 90 degrees",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kmb1_machinegun.dat",
+          "gloss": "machine gun",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kmb1_machinegun_f.dat",
+          "gloss": "machine gun, _f variant",
+          "confidence": "high",
+          "note": "_f suffix meaning unconfirmed."
+        },
+        {
+          "name": "gym_kmb1_rk.dat",
+          "gloss": "right kick",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kmb1_rk_histep_l.dat",
+          "gloss": "right kick into left high step",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kmb1_rturn180.dat",
+          "gloss": "right turn 180 degrees",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kmb1_rturn90.dat",
+          "gloss": "right turn 90 degrees",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kmb1_run01_start.dat",
+          "gloss": "run cycle, start",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kmb1_run02_loop.dat",
+          "gloss": "run cycle, loop",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kmb1_run03_walk.dat",
+          "gloss": "run cycle, walk",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kmb1_shortshot_shot.dat",
+          "gloss": "short shot, shot",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kmb1_shortshot_soten.dat",
+          "gloss": "short shot, soten variant",
+          "confidence": "medium",
+          "note": "soten token opaque."
+        },
+        {
+          "name": "gym_kmb1_shotgun_cyop.dat",
+          "gloss": "shotgun, cyop variant",
+          "confidence": "medium",
+          "note": "cyop token opaque."
+        },
+        {
+          "name": "gym_kmb1_shotgun_shot.dat",
+          "gloss": "shotgun shot",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kmb1_shotgun_soten.dat",
+          "gloss": "shotgun, soten variant",
+          "confidence": "medium",
+          "note": "soten token opaque."
+        },
+        {
+          "name": "gym_kmb1_step_in.dat",
+          "gloss": "step in",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kmb1_step_l.dat",
+          "gloss": "step left",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kmb1_step_r.dat",
+          "gloss": "step right",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kmb1_tojo.dat",
+          "gloss": "entrance / appearance",
+          "confidence": "high",
+          "note": "tojo = toujou, appearance."
+        },
+        {
+          "name": "gym_kmb1_walk_f01_start.dat",
+          "gloss": "walk forward, start",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kmb1_walk_f02_loop.dat",
+          "gloss": "walk forward, loop",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kmb1_walk_l.dat",
+          "gloss": "walk left",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kmb1_walk_r.dat",
+          "gloss": "walk right",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kmb1_wdown.dat",
+          "gloss": "knocked down",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kmb1_wshot.dat",
+          "gloss": "weapon shot",
+          "confidence": "medium",
+          "note": "w- = weapon, unconfirmed."
+        },
+        {
+          "name": "gym_kmb1_yoko_l.dat",
+          "gloss": "side step left",
+          "confidence": "high",
+          "note": "yoko = side."
+        },
+        {
+          "name": "gym_kmb1_yoko_r.dat",
+          "gloss": "side step right",
+          "confidence": "high",
+          "note": "yoko = side."
+        }
+      ],
+      "count": 39
+    },
+    {
+      "id": "kob2",
+      "label": "True Ogre — stage 3 boss kit (INFERENCE)",
+      "assignment": "True Ogre (Devil Within stage 3 boss)",
+      "assignment_confidence": "medium",
+      "evidence": "Flight (fly2center / fly2fire / fly2landing / flykamae) + fire + horn + tail + snake attack match the public description of True Ogre (flies, breathes fire, horned, tailed). INFERENCE, not proven from bytes; kob2 vs ozb3 split is reasoned from the whirlwind/stomp split below.",
+      "files": [
+        {
+          "name": "gym_kob2_180.dat",
+          "gloss": "180-degree turn",
+          "confidence": "medium"
+        },
+        {
+          "name": "gym_kob2_ap.dat",
+          "gloss": "opaque token",
+          "confidence": "opaque"
+        },
+        {
+          "name": "gym_kob2_back2fire.dat",
+          "gloss": "back to fire",
+          "confidence": "medium"
+        },
+        {
+          "name": "gym_kob2_bwalk.dat",
+          "gloss": "back walk",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kob2_escape.dat",
+          "gloss": "escape",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kob2_fire.dat",
+          "gloss": "fire",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kob2_fly2center.dat",
+          "gloss": "fly to center",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kob2_fly2fire.dat",
+          "gloss": "fly to fire",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kob2_fly2landing.dat",
+          "gloss": "fly to landing",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kob2_flykamae.dat",
+          "gloss": "flying stance",
+          "confidence": "medium"
+        },
+        {
+          "name": "gym_kob2_fwalk.dat",
+          "gloss": "forward walk",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kob2_hornatk.dat",
+          "gloss": "horn attack",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kob2_kamae.dat",
+          "gloss": "stance",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kob2_lstep.dat",
+          "gloss": "left step",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kob2_lwalk.dat",
+          "gloss": "left walk",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kob2_rstep.dat",
+          "gloss": "right step",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kob2_run.dat",
+          "gloss": "run",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kob2_rwalk.dat",
+          "gloss": "right walk",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kob2_snakeatk.dat",
+          "gloss": "snake attack",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kob2_stbwalk.dat",
+          "gloss": "stance back walk",
+          "confidence": "medium",
+          "note": "st- = stance, unconfirmed."
+        },
+        {
+          "name": "gym_kob2_stfwalk.dat",
+          "gloss": "stance forward walk",
+          "confidence": "medium"
+        },
+        {
+          "name": "gym_kob2_strun.dat",
+          "gloss": "stance run",
+          "confidence": "medium"
+        },
+        {
+          "name": "gym_kob2_stwarp.dat",
+          "gloss": "stance teleport",
+          "confidence": "medium"
+        },
+        {
+          "name": "gym_kob2_tail1.dat",
+          "gloss": "tail, part 1",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kob2_tail2.dat",
+          "gloss": "tail, part 2",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kob2_tail3.dat",
+          "gloss": "tail, part 3",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kob2_tail4.dat",
+          "gloss": "tail, part 4",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kob2_tailatk.dat",
+          "gloss": "tail attack",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_kob2_warp2fire.dat",
+          "gloss": "teleport to fire",
+          "confidence": "high"
+        }
+      ],
+      "count": 29
+    },
+    {
+      "id": "ozb3",
+      "label": "Monstrous Ogre — stage 5 boss kit (INFERENCE)",
+      "assignment": "Monstrous Ogre (Devil Within stage 5 boss, second form)",
+      "assignment_confidence": "medium",
+      "evidence": "Whirlwind (tatumaki / tatumakiup_teil1) + stomp (fumi) + burn match the public description of Monstrous Ogre (adds whirlwinds, strong stomps, powerful sweeps; taller, more yellow). INFERENCE, not proven from bytes.",
+      "files": [
+        {
+          "name": "gym_ozb3_360.dat",
+          "gloss": "360-degree spin",
+          "confidence": "medium"
+        },
+        {
+          "name": "gym_ozb3_all_teil1.dat",
+          "gloss": "all, part 1",
+          "confidence": "medium",
+          "note": "teil = German 'part'; multi-part motion."
+        },
+        {
+          "name": "gym_ozb3_burn.dat",
+          "gloss": "burning",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ozb3_burn2.dat",
+          "gloss": "burning, variant 2",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ozb3_bwalk00.dat",
+          "gloss": "back walk, variant 00",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ozb3_bwalk01.dat",
+          "gloss": "back walk, variant 01",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ozb3_dead.dat",
+          "gloss": "death animation",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ozb3_demo_teil1.dat",
+          "gloss": "demo / intro, part 1",
+          "confidence": "medium"
+        },
+        {
+          "name": "gym_ozb3_firehado2.dat",
+          "gloss": "fire wave, variant 2",
+          "confidence": "high",
+          "note": "hado = wave."
+        },
+        {
+          "name": "gym_ozb3_fumi.dat",
+          "gloss": "stomp",
+          "confidence": "high",
+          "note": "fumi = stomp / step."
+        },
+        {
+          "name": "gym_ozb3_greaction2.dat",
+          "gloss": "guard reaction, variant 2",
+          "confidence": "medium"
+        },
+        {
+          "name": "gym_ozb3_guardkama2.dat",
+          "gloss": "guard stance, variant 2",
+          "confidence": "medium",
+          "note": "kamae = stance."
+        },
+        {
+          "name": "gym_ozb3_guardpose.dat",
+          "gloss": "guard pose",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ozb3_guardroop2.dat",
+          "gloss": "guard loop, variant 2",
+          "confidence": "medium",
+          "note": "roop = loop (katakana)."
+        },
+        {
+          "name": "gym_ozb3_hado_teil1.dat",
+          "gloss": "wave, part 1",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ozb3_horming_teil1.dat",
+          "gloss": "homing, part 1",
+          "confidence": "medium",
+          "note": "horming = homing."
+        },
+        {
+          "name": "gym_ozb3_houmingf.dat",
+          "gloss": "homing fire",
+          "confidence": "medium"
+        },
+        {
+          "name": "gym_ozb3_issoku.dat",
+          "gloss": "one-foot step",
+          "confidence": "medium",
+          "note": "issoku = one foot / one step."
+        },
+        {
+          "name": "gym_ozb3_kamae.dat",
+          "gloss": "stance",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ozb3_kamaguard2.dat",
+          "gloss": "stance-guard, variant 2",
+          "confidence": "medium"
+        },
+        {
+          "name": "gym_ozb3_lwalk.dat",
+          "gloss": "left walk",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ozb3_run00.dat",
+          "gloss": "run, variant 00",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ozb3_run01.dat",
+          "gloss": "run, variant 01",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ozb3_rwalk.dat",
+          "gloss": "right walk",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ozb3_shipo1.dat",
+          "gloss": "tail, variant 1",
+          "confidence": "high",
+          "note": "shipo = shippo, tail."
+        },
+        {
+          "name": "gym_ozb3_shippo.dat",
+          "gloss": "tail",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ozb3_tatumaki.dat",
+          "gloss": "tornado / whirlwind",
+          "confidence": "high",
+          "note": "tatumaki = tornado. Matches public description: Monstrous Ogre adds whirlwinds."
+        },
+        {
+          "name": "gym_ozb3_tatumakiup_teil1.dat",
+          "gloss": "tornado up, part 1",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ozb3_tobinoki.dat",
+          "gloss": "opaque token",
+          "confidence": "opaque",
+          "note": "tobi- = flying / jump prefix."
+        },
+        {
+          "name": "gym_ozb3_toujyou.dat",
+          "gloss": "entrance / appearance",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ozb3_tunoup_teil1.dat",
+          "gloss": "horn up, part 1",
+          "confidence": "medium",
+          "note": "tuno = tsuno, horn."
+        },
+        {
+          "name": "gym_ozb3_tunoupper2.dat",
+          "gloss": "horn upper, variant 2",
+          "confidence": "medium"
+        },
+        {
+          "name": "gym_ozb3_walk00.dat",
+          "gloss": "walk, variant 00",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ozb3_walk01.dat",
+          "gloss": "walk, variant 01",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ozb3_warp1.dat",
+          "gloss": "teleport 1",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ozb3_warp2.dat",
+          "gloss": "teleport 2",
+          "confidence": "high"
+        }
+      ],
+      "count": 36
+    },
+    {
+      "id": "oz_extra",
+      "label": "Ogre-family extras (unassigned boss)",
+      "assignment": "Ogre-family motions; specific boss unassigned",
+      "assignment_confidence": "low",
+      "evidence": "Shared 'oz' prefix with ozb3; meteorite / power / stance tokens fit a boss kit, but no stage link is provable from names alone.",
+      "files": [
+        {
+          "name": "gym_ozt4_aidoring.dat",
+          "gloss": "opaque token",
+          "confidence": "opaque"
+        },
+        {
+          "name": "gym_ozt4_goron.dat",
+          "gloss": "rumble",
+          "confidence": "medium",
+          "note": "goron = rumbling sound; unconfirmed."
+        },
+        {
+          "name": "gym_ozt4_kamae.dat",
+          "gloss": "stance",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ozhe_1ckj66a.dat",
+          "gloss": "opaque token",
+          "confidence": "opaque"
+        },
+        {
+          "name": "gym_ozhe_power.dat",
+          "gloss": "power",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_oznj_meteorite.dat",
+          "gloss": "meteorite",
+          "confidence": "high"
+        }
+      ],
+      "count": 6
+    },
+    {
+      "id": "ikt5",
+      "label": "Unresolved gun/fly kit — monster variants (UNRESOLVED)",
+      "assignment": "UNRESOLVED — fighter/character not identified from names",
+      "assignment_confidence": "low",
+      "evidence": "Base + _mon pairs throughout (monster variants of the same motions); gun (gunup01, rgun) + fly + stomp. Fits a flying gun-using enemy, but no code anchor exists; do not guess. Needs the romD table / code-to-fighter mapping from the RE bench.",
+      "files": [
+        {
+          "name": "gym_ikt5_PSrlpf00.dat",
+          "gloss": "opaque token",
+          "confidence": "opaque"
+        },
+        {
+          "name": "gym_ikt5_PSrlpf00_mon.dat",
+          "gloss": "opaque token, monster variant",
+          "confidence": "opaque"
+        },
+        {
+          "name": "gym_ikt5_fly3_mon.dat",
+          "gloss": "flying, monster variant",
+          "confidence": "high",
+          "note": "fly = flying; _mon = monster variant."
+        },
+        {
+          "name": "gym_ikt5_fly_mon.dat",
+          "gloss": "flying, monster variant",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ikt5_fumi.dat",
+          "gloss": "stomp / step",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ikt5_fumi_mon.dat",
+          "gloss": "stomp / step, monster variant",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ikt5_gunup01.dat",
+          "gloss": "gun up",
+          "confidence": "medium"
+        },
+        {
+          "name": "gym_ikt5_gunup01_mon.dat",
+          "gloss": "gun up, monster variant",
+          "confidence": "medium"
+        },
+        {
+          "name": "gym_ikt5_guru2.dat",
+          "gloss": "spin",
+          "confidence": "medium",
+          "note": "guru guru = spinning."
+        },
+        {
+          "name": "gym_ikt5_guru2_mon.dat",
+          "gloss": "spin, monster variant",
+          "confidence": "medium"
+        },
+        {
+          "name": "gym_ikt5_hkrp.dat",
+          "gloss": "opaque token",
+          "confidence": "opaque"
+        },
+        {
+          "name": "gym_ikt5_hkrp2hklp.dat",
+          "gloss": "opaque token",
+          "confidence": "opaque"
+        },
+        {
+          "name": "gym_ikt5_hkrp2hklp_mon.dat",
+          "gloss": "opaque token, monster variant",
+          "confidence": "opaque"
+        },
+        {
+          "name": "gym_ikt5_hkrp_mon.dat",
+          "gloss": "opaque token, monster variant",
+          "confidence": "opaque"
+        },
+        {
+          "name": "gym_ikt5_kamae.dat",
+          "gloss": "stance",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ikt5_kamae_mon.dat",
+          "gloss": "stance, monster variant",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_ikt5_kata_mon.dat",
+          "gloss": "form, monster variant",
+          "confidence": "medium",
+          "note": "kata = form."
+        },
+        {
+          "name": "gym_ikt5_katgym_Bbr_bbblow.dat",
+          "gloss": "cross-reference to code Bbr, 'bbblow'",
+          "confidence": "opaque",
+          "note": "References another code's motion; Bbr fighter unidentified."
+        },
+        {
+          "name": "gym_ikt5_katgym_Gan_mekin.dat",
+          "gloss": "cross-reference to code Gan, 'mekin'",
+          "confidence": "opaque",
+          "note": "References another code's motion; Gan fighter unidentified."
+        },
+        {
+          "name": "gym_ikt5_rgun_mon.dat",
+          "gloss": "gun, monster variant",
+          "confidence": "medium",
+          "note": "rgun = rail gun or right gun; unconfirmed."
+        },
+        {
+          "name": "gym_ikt5_rlp_sp2.dat",
+          "gloss": "opaque token",
+          "confidence": "opaque"
+        },
+        {
+          "name": "gym_ikt5_rlp_sp2_mon.dat",
+          "gloss": "opaque token, monster variant",
+          "confidence": "opaque"
+        },
+        {
+          "name": "gym_ikt5_strk01.dat",
+          "gloss": "strike 01",
+          "confidence": "medium"
+        },
+        {
+          "name": "gym_ikt5_strk01_mon.dat",
+          "gloss": "strike 01, monster variant",
+          "confidence": "medium"
+        },
+        {
+          "name": "gym_ikt5_ttlp.dat",
+          "gloss": "opaque token",
+          "confidence": "opaque"
+        },
+        {
+          "name": "gym_ikt5_ttlp_mon.dat",
+          "gloss": "opaque token, monster variant",
+          "confidence": "opaque"
+        }
+      ],
+      "count": 26
+    },
+    {
+      "id": "init_obj",
+      "label": "Init objects — bosses, source 'jin' / 'devil' init objects, monster archetypes",
+      "assignment": "Enemy/boss spawn data: 4 monster archetypes (power / speed / standard / tricky) for DW monsters (mon_*) and versus fighters (tk_*); boss init objects 1/2/3/5; source init objects 'jin' / 'devil'; 3 test characters",
+      "assignment_confidence": "high",
+      "evidence": "Names are explicit. HYPOTHESIS (unproven): boss1 = Modified Gun Jack, boss2 = Heihachi clones, boss3 = True Ogre, boss5 = Monstrous Ogre; boss4 missing because the Soul Sphere (stage 4 boss) is an energy orb with no fighter body, so it needs no init object.",
+      "files": [
+        {
+          "name": "gym_init_obj_boss1.dat",
+          "gloss": "boss init object 1",
+          "confidence": "high",
+          "note": "Boss assignment unconfirmed; hypothesis in group note."
+        },
+        {
+          "name": "gym_init_obj_boss2.dat",
+          "gloss": "boss init object 2",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_init_obj_boss3.dat",
+          "gloss": "boss init object 3",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_init_obj_boss5.dat",
+          "gloss": "boss init object 5",
+          "confidence": "high",
+          "note": "boss4 ABSENT from the manifest — see group note."
+        },
+        {
+          "name": "gym_init_obj_devil.dat",
+          "gloss": "devil init object",
+          "confidence": "medium",
+          "note": "Source Devil Jin / devil-form init object (source data only)."
+        },
+        {
+          "name": "gym_init_obj_jin.dat",
+          "gloss": "Jin init object",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_init_obj_mon_power1.dat",
+          "gloss": "monster archetype: power 1",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_init_obj_mon_power2.dat",
+          "gloss": "monster archetype: power 2",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_init_obj_mon_speed1.dat",
+          "gloss": "monster archetype: speed 1",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_init_obj_mon_standard1.dat",
+          "gloss": "monster archetype: standard 1",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_init_obj_mon_standard2.dat",
+          "gloss": "monster archetype: standard 2",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_init_obj_mon_tricky1.dat",
+          "gloss": "monster archetype: tricky 1",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_init_obj_testchr1.dat",
+          "gloss": "test character 1",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_init_obj_testchr2.dat",
+          "gloss": "test character 2",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_init_obj_testchr3.dat",
+          "gloss": "test character 3",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_init_obj_tk_power1.dat",
+          "gloss": "versus archetype: power 1",
+          "confidence": "medium",
+          "note": "tk- = Tekken / versus side; unconfirmed."
+        },
+        {
+          "name": "gym_init_obj_tk_power2.dat",
+          "gloss": "versus archetype: power 2",
+          "confidence": "medium"
+        },
+        {
+          "name": "gym_init_obj_tk_speed1.dat",
+          "gloss": "versus archetype: speed 1",
+          "confidence": "medium"
+        },
+        {
+          "name": "gym_init_obj_tk_standard1.dat",
+          "gloss": "versus archetype: standard 1",
+          "confidence": "medium"
+        },
+        {
+          "name": "gym_init_obj_tk_standard2.dat",
+          "gloss": "versus archetype: standard 2",
+          "confidence": "medium"
+        },
+        {
+          "name": "gym_init_obj_tk_tricky1.dat",
+          "gloss": "versus archetype: tricky 1",
+          "confidence": "medium"
+        }
+      ],
+      "count": 21
+    },
+    {
+      "id": "djin",
+      "label": "Soul Surge Bloom donor — transform, wings/feathers (source: Devil Jin transformation; moveset data only)",
+      "assignment": "Soul Surge Bloom donor transform / feather-disintegration effect (source: Devil Jin transformation, 4 parts)",
+      "assignment_confidence": "high",
+      "evidence": "hane = wings/feathers; 4 sequential parts; paired with the public description of black-feather disintegration and the source Devil Jin transform.",
+      "files": [
+        {
+          "name": "gym_djin_newhane00.dat",
+          "gloss": "new wings / feathers, part 00",
+          "confidence": "high",
+          "note": "hane = wings / feathers. Matches public description: enemies killed in devil form disintegrate into black feathers."
+        },
+        {
+          "name": "gym_djin_newhane01.dat",
+          "gloss": "new wings / feathers, part 01",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_djin_newhane02.dat",
+          "gloss": "new wings / feathers, part 02",
+          "confidence": "high"
+        },
+        {
+          "name": "gym_djin_newhane03.dat",
+          "gloss": "new wings / feathers, part 03",
+          "confidence": "high"
+        }
+      ],
+      "count": 4
+    },
+    {
+      "id": "dw_singles",
+      "label": "Devil Within singles — face, wave, power-up, opaque",
+      "assignment": "Devil Within shared files (face, wave/laser, power-up) + 3 opaque tokens",
+      "assignment_confidence": "medium",
+      "evidence": "kao (face) and hadoh (wave) are clear romaji; dwup_hei ties the power-up file to Heihachi (clone boss stage). nog00 / raribxk / rarixk are opaque.",
+      "files": [
+        {
+          "name": "gym_dw_nog00.dat",
+          "gloss": "opaque token",
+          "confidence": "opaque"
+        },
+        {
+          "name": "gym_dw_raribxk.dat",
+          "gloss": "opaque token",
+          "confidence": "opaque"
+        },
+        {
+          "name": "gym_dw_rarixk.dat",
+          "gloss": "opaque token",
+          "confidence": "opaque"
+        },
+        {
+          "name": "gym_dwfkao00.dat",
+          "gloss": "face",
+          "confidence": "high",
+          "note": "kao = face. dwf- = Devil Within face, unconfirmed."
+        },
+        {
+          "name": "gym_dwhadoh00.dat",
+          "gloss": "wave",
+          "confidence": "high",
+          "note": "hadoh = wave. Likely the laser/wave file."
+        },
+        {
+          "name": "gym_dwup00.dat",
+          "gloss": "power-up",
+          "confidence": "medium",
+          "note": "up = power-up; could be Devil Gauge UI or a power-up object."
+        },
+        {
+          "name": "gym_dwup_hei.dat",
+          "gloss": "power-up, Heihachi variant",
+          "confidence": "medium",
+          "note": "hei = Heihachi; the Heihachi-clone version of dwup."
+        }
+      ],
+      "count": 7
+    },
+    {
+      "id": "moj_stg",
+      "label": "Stage text — moj_stg00/01/02/04",
+      "assignment": "Stage text/messages for stages 0, 1, 2, 4 (NOT geometry)",
+      "assignment_confidence": "high",
+      "evidence": "moj = text. CORRECTION: the earlier spec draft said stg00/01/02/04.dat stage files exist in romD — they do NOT. No plain stg*.dat file is in the manifest at all. Stage geometry lives in TK5DATA0/1/3, not in romD.",
+      "files": [
+        {
+          "name": "moj_stg00.dat",
+          "gloss": "stage text / messages, stage 0",
+          "confidence": "high",
+          "note": "moj- = moji, text/characters. Stage geometry is NOT in romD — no stg*.dat files exist in the manifest."
+        },
+        {
+          "name": "moj_stg01.dat",
+          "gloss": "stage text / messages, stage 1",
+          "confidence": "high"
+        },
+        {
+          "name": "moj_stg02.dat",
+          "gloss": "stage text / messages, stage 2",
+          "confidence": "high"
+        },
+        {
+          "name": "moj_stg04.dat",
+          "gloss": "stage text / messages, stage 4",
+          "confidence": "high",
+          "note": "moj_stg03 ABSENT — same gap as the stage files; stage 3's text is elsewhere or missing."
+        }
+      ],
+      "count": 4
+    },
+    {
+      "id": "snd",
+      "label": "Sound — background, character, boss, monster, system",
+      "assignment": "Devil Within sound inventory (18 files)",
+      "assignment_confidence": "high",
+      "evidence": "Filenames are explicit. Note: 3 background themes (lab / Egyptian / blue) for 5 stages — the spaceship stages' themes are elsewhere or shared. c_03_ogre / c_04_iseki / c_05_ogre numbering may be stage-linked (3 = True Ogre, 4 = ruins, 5 = Monstrous Ogre) but that mapping is UNPROVEN.",
+      "files": [
+        {
+          "name": "snd_bg_blu_se.dat",
+          "gloss": "background SE, 'blu' (blue)",
+          "confidence": "medium",
+          "note": "Which stage the blue theme belongs to is unconfirmed."
+        },
+        {
+          "name": "snd_bg_egy_se.dat",
+          "gloss": "background SE, Egyptian",
+          "confidence": "high",
+          "note": "egy = Egyptian; fits the ancient-ruins stage (stage 3)."
+        },
+        {
+          "name": "snd_bg_lab_se.dat",
+          "gloss": "background SE, laboratory",
+          "confidence": "high",
+          "note": "lab = laboratory; fits the G Corp lab (stage 1)."
+        },
+        {
+          "name": "snd_c02lei.dat",
+          "gloss": "Lei voice/sound",
+          "confidence": "high",
+          "note": "Anchors char code c02 = Lei."
+        },
+        {
+          "name": "snd_c10jin.dat",
+          "gloss": "Jin voice/sound",
+          "confidence": "high",
+          "note": "Anchors char code c10 = Jin."
+        },
+        {
+          "name": "snd_c15hei.dat",
+          "gloss": "Heihachi voice/sound",
+          "confidence": "high",
+          "note": "Anchors char code c15 = Heihachi."
+        },
+        {
+          "name": "snd_c21jac.dat",
+          "gloss": "JACK voice/sound",
+          "confidence": "high",
+          "note": "Anchors char code c21 = JACK."
+        },
+        {
+          "name": "snd_c30dvj.dat",
+          "gloss": "Devil Jin voice/sound",
+          "confidence": "high",
+          "note": "Anchors char code c30 = Devil Jin."
+        },
+        {
+          "name": "snd_c_03_ogre.dat",
+          "gloss": "ogre sound, 03",
+          "confidence": "high"
+        },
+        {
+          "name": "snd_c_04_iseki.dat",
+          "gloss": "ruins sound, 04",
+          "confidence": "high",
+          "note": "iseki = ruins / remains; fits the ancient-ruins stage."
+        },
+        {
+          "name": "snd_c_05_ogre.dat",
+          "gloss": "ogre sound, 05",
+          "confidence": "high"
+        },
+        {
+          "name": "snd_c_boss.dat",
+          "gloss": "boss sounds",
+          "confidence": "high"
+        },
+        {
+          "name": "snd_c_monst.dat",
+          "gloss": "monster sounds",
+          "confidence": "high"
+        },
+        {
+          "name": "snd_c_tks.dat",
+          "gloss": "opaque token (tks)",
+          "confidence": "opaque",
+          "note": "Possibly Tekken / versus sounds; unconfirmed."
+        },
+        {
+          "name": "snd_chara_se.dat",
+          "gloss": "character sound effects",
+          "confidence": "high"
+        },
+        {
+          "name": "snd_etc_se.dat",
+          "gloss": "miscellaneous sound effects",
+          "confidence": "high"
+        },
+        {
+          "name": "snd_system_se.dat",
+          "gloss": "system sound effects",
+          "confidence": "high"
+        },
+        {
+          "name": "snd_title.dat",
+          "gloss": "title sounds",
+          "confidence": "high"
+        }
+      ],
+      "count": 18
+    }
+  ],
+  "non_dw_groups_counts": {
+    "note": "Remaining manifest groups are versus-mode fighter kits, not Devil Within. Counts only — fighter identities are RE-bench work, not decoded here.",
+    "gym_naco": 60,
+    "gym_amjz": 38,
+    "gym_amt3": 10,
+    "gym_kmt2": 10,
+    "gym_Tco": 9,
+    "gym_kot6": 8,
+    "gym_c": 6,
+    "gym_msco": 5,
+    "gym_nahe": 5,
+    "gym_shen": 5,
+    "gym_sunj": 5,
+    "gym_Mco": 4,
+    "gym_nani": 4,
+    "gym_nkbo": 3,
+    "gym_skbo": 3,
+    "gym_skjc": 3,
+    "gym_ygbo": 3,
+    "gym_bg": 3,
+    "other_singles_and_small_groups": "see t5_motion_manifest.txt for the full 498-name list"
+  },
+  "gaps_found_in_manifest": [
+    "No plain stg*.dat stage-geometry files exist in romD at all (only moj_stg00/01/02/04 stage text). Stage geometry lives in TK5DATA0/1/3, not romD.",
+    "moj_stg03 absent — stage 3's text file is missing from the manifest (stages 0, 1, 2, 4 present).",
+    "gym_init_obj_boss4 absent — boss init objects are 1, 2, 3, 5 only. Hypothesis: the Soul Sphere (stage 4 boss) is an energy orb with no fighter body, so it needs no init object.",
+    "Only 3 background themes (lab / Egyptian / blue) for 5 stages; the spaceship stages' themes are elsewhere or shared.",
+    "No rank-threshold, Force-value, gem-value, or meter-number data anywhere in the manifest — those live in TK5DATA0/1/3 binary, not in romD names."
+  ],
+  "still_blocked": {
+    "blocker": "TK5DATA2.BIN bytes are not in the repo or on disk anywhere found. The ISO was deleted after the 2026-10-23 survey; only the name manifest survives.",
+    "missing_files": [
+      "TK5DATA2.BIN (244 MB, romD archive — the 498 named files themselves)",
+      "TK5DATA0.BIN (2.07 GB — stage geometry, boss AI, meters, rank thresholds)",
+      "TK5DATA1.BIN (1.30 GB — data archive, indexed by the 1571-entry PS2 LUT)",
+      "TK5DATA3.BIN (423 MB — code archive, PKG container holding the LUT overlay)",
+      "SLUS_210.59 (689 KB bootloader ELF)"
+    ],
+    "source_recorded": "Internet Archive item slus-210.59.-tekken-5 (md5 5bce17ccabacea46d621d195c4600ebb, sha1 97ca517151229bc1c6a58396ccf470f91676f047), per repo teardown/tekken5/INVENTORY.md. Re-supply must come from Jay's own disc or that item — do NOT download a Tekken 5 ISO from the internet without Jay supplying it.",
+    "next_step_when_bytes_exist": "Run teardown/tekken5/tools/romd_extract.py against TK5DATA2.BIN: it scans for the romD magic + CRLF manifest + BDPK markers, attempts LUT-table discovery against the 498-name order, validates with the word-sum checksum / sector cipher, and extracts by name. See ROMD-FORMAT.md."
+  }
+}

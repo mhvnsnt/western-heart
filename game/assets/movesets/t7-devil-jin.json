@@ -1,0 +1,4367 @@
+{
+ "fighter": "t7-devil-jin",
+ "display": "Devil Jin (Tekken 7 source moveset)",
+ "tekken_base": "Devil Jin",
+ "source": {
+  "built_by": "FILL 2 (2026-11-06), owner fill order: \"1, 2, 3, then 4, remember then all til we get em done\"",
+  "frame_table": "game/data/t7-frame-data/t7-devil-jin-lp-rp-lk-rk.json",
+  "motbin": "GRE teardown/tekken7-steam/tkdata/mothead/bin/dvjmot.bin + json/dvjmot.json",
+  "mvl": "GRE teardown/tekken7-steam/tkdata/mothead/movelist/dvj.mvl",
+  "banks": "GRE release t7-fighter-banks-v1 (dvj_clips.bin, dvj_bank0_clips.bin); indexes in GRE mask/indexes/",
+  "method": "group-correct string walk (t7_string_walk.py); wired = unique terminal + clip locator; see fill2 fields per move"
+ },
+ "fill2_stats": {
+  "rows": 140,
+  "wired": 47
+ },
+ "moves": {
+  "in rage b+1+2": {
+   "name": "in rage b+1+2",
+   "name_source": "notation-only",
+   "input": "in rage b+1+2",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "-?",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Rage art",
+   "anim_ref": null,
+   "t7": {
+    "notation": "in rage b+1+2",
+    "id": "dvj_1",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1": {
+   "name": "1",
+   "name_source": "notation-only",
+   "input": "1",
+   "damage": 9,
+   "damage_raw": "9",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h",
+   "on_block": "+1",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1",
+    "id": "dvj_2",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_sWALKF",
+     "Dj_lp00F"
+    ]
+   }
+  },
+  "1, 1": {
+   "name": "1, 1",
+   "name_source": "notation-only",
+   "input": "1, 1",
+   "damage": 9,
+   "damage_raw": "9,8",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h",
+   "on_block": "-1",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1, 1",
+    "id": "dvj_3",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_sWALKF",
+     "Dj_lp00F",
+     "Dj_lpf"
+    ]
+   }
+  },
+  "1, 1, 2": {
+   "name": "Flash Punch Combo",
+   "name_source": "mvl",
+   "input": "1, 1, 2",
+   "damage": 9,
+   "damage_raw": "9,8,16",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h, m",
+   "on_block": "-17",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1, 1, 2",
+    "id": "dvj_4",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_rp00B",
+     "Dj_c20",
+     "Dj_rp00",
+     "Dj_lprpF",
+     "Dj_4rplk",
+     "Dj_c20E"
+    ]
+   }
+  },
+  "1, 2": {
+   "name": "Twin Pistons",
+   "name_source": "mvl",
+   "input": "1, 2",
+   "damage": 9,
+   "damage_raw": "9,10",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h",
+   "on_block": "-1",
+   "on_hit": "+7",
+   "on_ch": "+7",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1, 2",
+    "id": "dvj_5",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_rp00B",
+     "Dj_c20",
+     "Dj_rp00",
+     "Dj_lprpF",
+     "Dj_4rplk",
+     "Dj_c20E"
+    ]
+   }
+  },
+  "1, 2, 2": {
+   "name": "Demon Slayer",
+   "name_source": "mvl",
+   "input": "1, 2, 2",
+   "damage": 9,
+   "damage_raw": "9,10,16",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h, h",
+   "on_block": "-12",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1, 2, 2",
+    "id": "dvj_6",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_rprp00",
+     "Dj_rprp01"
+    ]
+   }
+  },
+  "1, 2, 3": {
+   "name": "1, 2, 3",
+   "name_source": "notation-only",
+   "input": "1, 2, 3",
+   "damage": 9,
+   "damage_raw": "9,10,33",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h, m",
+   "on_block": "+4",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1, 2, 3",
+    "id": "dvj_7",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_4rplk",
+     "Dj_kakatL"
+    ]
+   }
+  },
+  "1, 2, 3, 4": {
+   "name": "Shoot the Works",
+   "name_source": "mvl",
+   "input": "1, 2, 3, 4",
+   "damage": 9,
+   "damage_raw": "9,10,33,40",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h, m, m",
+   "on_block": "0~+1",
+   "on_hit": "+11~+12 OC",
+   "on_ch": "+11~+12 OC",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:301",
+   "t7": {
+    "notation": "1, 2, 3, 4",
+    "id": "dvj_8",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "1, 2, 3, 4",
+    "motbin_move_id": 1538,
+    "motbin_move_name": "Dj_mrkS",
+    "anim_name": "Umt_PSlkt2rkt(DVD)",
+    "anim_id": 16685,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 301,
+     "rel_offset": 2575632,
+     "size": 3628,
+     "format_word": 100,
+     "sha256": "a034cd3585ae46f036fe9f8a089fddcaba502e524f3009c9466d4c18ce487494",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "1, 2, 4": {
+   "name": "One Two Knee",
+   "name_source": "mvl",
+   "input": "1, 2, 4",
+   "damage": 9,
+   "damage_raw": "9,10,13",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h, m",
+   "on_block": "-10",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:302",
+   "t7": {
+    "notation": "1, 2, 4",
+    "id": "dvj_9",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "1, 2, 4",
+    "motbin_move_id": 1539,
+    "motbin_move_name": "Dj_lprphiza",
+    "anim_name": "Bmt_hiza(DVD)",
+    "anim_id": 16686,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 302,
+     "rel_offset": 2579260,
+     "size": 2320,
+     "format_word": 100,
+     "sha256": "b778c3ddc943ef3bbf6eff6c44afe0b44c14a4b5caece52b85ae9038a613b4e1",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "1, 2, 4~3": {
+   "name": "1, 2, 4~3",
+   "name_source": "notation-only",
+   "input": "1, 2, 4~3",
+   "damage": 9,
+   "damage_raw": "9,10,28",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h, m (TJ)",
+   "on_block": "-7~-4 OC",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1, 2, 4~3",
+    "id": "dvj_10",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1, 2, 4~1": {
+   "name": "1, 2, 4~1",
+   "name_source": "notation-only",
+   "input": "1, 2, 4~1",
+   "damage": 9,
+   "damage_raw": "9,10,6,6",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h, Sm, h",
+   "on_block": "-4",
+   "on_hit": "+3",
+   "on_ch": "+3",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1, 2, 4~1",
+    "id": "dvj_11",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1, 2, 4~1 (First hit only)": {
+   "name": "1, 2, 4~1 (First hit only)",
+   "name_source": "notation-only",
+   "input": "1, 2, 4~1 (First hit only)",
+   "damage": 9,
+   "damage_raw": "9,10,6",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h, Sm",
+   "on_block": "-18~-17",
+   "on_hit": "-7~-6",
+   "on_ch": "-7~-6",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1, 2, 4~1 (First hit only)",
+    "id": "dvj_12",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "2": {
+   "name": "Uppercut",
+   "name_source": "mvl",
+   "input": "2",
+   "damage": 13,
+   "damage_raw": "13",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h",
+   "on_block": "0",
+   "on_hit": "+9",
+   "on_ch": "+9",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "2",
+    "id": "dvj_13",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_rp00B",
+     "Dj_c20",
+     "Dj_rp00",
+     "Dj_4rplk",
+     "Dj_c20E"
+    ]
+   }
+  },
+  "2, 2": {
+   "name": "Demon Backhand Spin",
+   "name_source": "mvl",
+   "input": "2, 2",
+   "damage": 13,
+   "damage_raw": "13,24",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h",
+   "on_block": "-13",
+   "on_hit": "-2",
+   "on_ch": "-2",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:298",
+   "t7": {
+    "notation": "2, 2",
+    "id": "dvj_14",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "2, 2",
+    "motbin_move_id": 1542,
+    "motbin_move_name": "Dj_rprp00",
+    "anim_name": "ozdv_rprp_ura(DVD)",
+    "anim_id": 16682,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 298,
+     "rel_offset": 2568760,
+     "size": 3284,
+     "format_word": 100,
+     "sha256": "0c02d2285372e9d155806eb60e45b9683f4ee2526ffa752bcc66e6cae62f7e2a",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "4~3 or WS+4~3": {
+   "name": "4~3 or WS+4~3",
+   "name_source": "notation-only",
+   "input": "4~3 or WS+4~3",
+   "damage": 28,
+   "damage_raw": "28",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "-7~-4 OC",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "4~3 or WS+4~3",
+    "id": "dvj_15",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1+4": {
+   "name": "1+4",
+   "name_source": "notation-only",
+   "input": "1+4",
+   "damage": 6,
+   "damage_raw": "6,6",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm, h",
+   "on_block": "-4",
+   "on_hit": "+3",
+   "on_ch": "+3",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1+4",
+    "id": "dvj_16",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_cap01",
+     "Dj_cap02"
+    ]
+   }
+  },
+  "1+4 (First hit only)": {
+   "name": "1+4 (First hit only)",
+   "name_source": "notation-only",
+   "input": "1+4 (First hit only)",
+   "damage": 6,
+   "damage_raw": "6,6",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm",
+   "on_block": "-18~-17",
+   "on_hit": "-7~-6",
+   "on_ch": "-7~-6",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1+4 (First hit only)",
+    "id": "dvj_17",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_cap01",
+     "Dj_cap02"
+    ]
+   }
+  },
+  "1+4, 2": {
+   "name": "1+4, 2",
+   "name_source": "notation-only",
+   "input": "1+4, 2",
+   "damage": 6,
+   "damage_raw": "6,6,13",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm, h, h",
+   "on_block": "-7",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1+4, 2",
+    "id": "dvj_18",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_cap02Y",
+     "Dj_cap02Y2",
+     "Dj_cap03Y",
+     "Dj_cap03"
+    ]
+   }
+  },
+  "1+4, 2, 4": {
+   "name": "Three Ring Circus",
+   "name_source": "mvl",
+   "input": "1+4, 2, 4",
+   "damage": 6,
+   "damage_raw": "6,6,13,28",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm, h, h, m",
+   "on_block": "-11~-10",
+   "on_hit": "+4~+5 OC",
+   "on_ch": "+4~+5 OC",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:418",
+   "t7": {
+    "notation": "1+4, 2, 4",
+    "id": "dvj_19",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "1+4, 2, 4",
+    "motbin_move_id": 1678,
+    "motbin_move_name": "Dj_cap04",
+    "anim_name": "kodv_hakuro4(DVD)",
+    "anim_id": 16802,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 418,
+     "rel_offset": 2885644,
+     "size": 3184,
+     "format_word": 100,
+     "sha256": "796369503b2ddda41fd6c1d716ce0cfbd161a623cca94ef25c6181970651f55e",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "1+4, 2, d+4": {
+   "name": "Three Ring Circus Combo",
+   "name_source": "mvl",
+   "input": "1+4, 2, d+4",
+   "damage": 6,
+   "damage_raw": "6,6,13,18",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm, h, h, l (TC)",
+   "on_block": "-26",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:419",
+   "t7": {
+    "notation": "1+4, 2, d+4",
+    "id": "dvj_20",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "1+4, 2, d+4",
+    "motbin_move_id": 1679,
+    "motbin_move_name": "Dj_cap05",
+    "anim_name": "ozdv_hakuro4ge(DVD)",
+    "anim_id": 16803,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 419,
+     "rel_offset": 2888828,
+     "size": 3180,
+     "format_word": 100,
+     "sha256": "a652d382cd09f6f19e539dd170473a49d75fa074d0f08fa398e8c86b46d9e0c5",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "1+4, 2, d+4 (Far)": {
+   "name": "Dj_cap05",
+   "name_source": "motbin-internal",
+   "input": "1+4, 2, d+4 (Far)",
+   "damage": 6,
+   "damage_raw": "6,6,13,18",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm, h, h, l (TC)",
+   "on_block": "-8",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:419",
+   "t7": {
+    "notation": "1+4, 2, d+4 (Far)",
+    "id": "dvj_21",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "1+4, 2, d+4",
+    "motbin_move_id": 1679,
+    "motbin_move_name": "Dj_cap05",
+    "anim_name": "ozdv_hakuro4ge(DVD)",
+    "anim_id": 16803,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 419,
+     "rel_offset": 2888828,
+     "size": 3180,
+     "format_word": 100,
+     "sha256": "a652d382cd09f6f19e539dd170473a49d75fa074d0f08fa398e8c86b46d9e0c5",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+2": {
+   "name": "Dj_rp00F",
+   "name_source": "motbin-internal",
+   "input": "f+2",
+   "damage": 18,
+   "damage_raw": "18",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-8~-7",
+   "on_hit": "+3~+4",
+   "on_ch": "+3~+4",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:326",
+   "t7": {
+    "notation": "f+2",
+    "id": "dvj_22",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+2",
+    "motbin_move_id": 1566,
+    "motbin_move_name": "Dj_rp00F",
+    "anim_name": "Bmt_sakotu(DVD)",
+    "anim_id": 16710,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 326,
+     "rel_offset": 2643560,
+     "size": 2160,
+     "format_word": 100,
+     "sha256": "2f5c0976c01a0cc0f1642fed537854b570158305a861aa9ee6fa094eec2b7251",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+2, 4": {
+   "name": "893P Knee Kick",
+   "name_source": "mvl",
+   "input": "f+2, 4",
+   "damage": 18,
+   "damage_raw": "18,22",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m",
+   "on_block": "-10",
+   "on_hit": "+1",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:327",
+   "t7": {
+    "notation": "f+2, 4",
+    "id": "dvj_23",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+2, 4",
+    "motbin_move_id": 1567,
+    "motbin_move_name": "Dj_rprk01",
+    "anim_name": "Djz_sakohiza(DVD)",
+    "anim_id": 16711,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 327,
+     "rel_offset": 2645720,
+     "size": 2608,
+     "format_word": 100,
+     "sha256": "27f2aef94de8d16b51165860e3daf77d5b6711eba310d6203bf2bad62dce0ef3",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+3": {
+   "name": "Spinning High Kick",
+   "name_source": "mvl",
+   "input": "f+3",
+   "damage": 40,
+   "damage_raw": "40",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-4~-3",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Tail spin",
+   "anim_ref": "t7:dvj:0x4000:330",
+   "t7": {
+    "notation": "f+3",
+    "id": "dvj_24",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+3",
+    "motbin_move_id": 1571,
+    "motbin_move_name": "Dj_lk00F",
+    "anim_name": "Bmt_spin(DVD)",
+    "anim_id": 16714,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 330,
+     "rel_offset": 2652976,
+     "size": 940,
+     "format_word": 100,
+     "sha256": "e2ffc864f511601169f0acdd001e372b4ca9677ffeb4ae4ee34b6061e0c244c7",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+4": {
+   "name": "Dj_hiza_up",
+   "name_source": "motbin-internal",
+   "input": "f+4",
+   "damage": 13,
+   "damage_raw": "13",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-12~-11",
+   "on_hit": "-1~0",
+   "on_ch": "-1~0",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:332",
+   "t7": {
+    "notation": "f+4",
+    "id": "dvj_25",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+4",
+    "motbin_move_id": 1573,
+    "motbin_move_name": "Dj_hiza_up",
+    "anim_name": "hidv_3rk(DVD)",
+    "anim_id": 16716,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 332,
+     "rel_offset": 2656368,
+     "size": 3256,
+     "format_word": 100,
+     "sha256": "f7720dc49af858687c67b1b1801173616d5e9f59359f90456f405babe3facf92",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+4, 3": {
+   "name": "Twisted Samsara",
+   "name_source": "mvl",
+   "input": "f+4, 3",
+   "damage": 13,
+   "damage_raw": "13,20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m (TJ),  (TC)",
+   "on_block": "-33~-32",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:333",
+   "t7": {
+    "notation": "f+4, 3",
+    "id": "dvj_26",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+4, 3",
+    "motbin_move_id": 1574,
+    "motbin_move_name": "Dj_6rklk",
+    "anim_name": "hidv_3rklk(DVD)",
+    "anim_id": 16717,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 333,
+     "rel_offset": 2659624,
+     "size": 5296,
+     "format_word": 100,
+     "sha256": "9983a63b099daed305aec734b50c98f8bd8836d67c6835aadab7f20e1e4a2ff6",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+4, 3, U": {
+   "name": "f+4, 3, U",
+   "name_source": "notation-only",
+   "input": "f+4, 3, U",
+   "damage": 13,
+   "damage_raw": "13,20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m (TJ), (Special) (TJ)(FLY)",
+   "on_block": "-20~-19 (-93~-92)",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f+4, 3, U",
+    "id": "dvj_27",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f+1+2": {
+   "name": "Tsujikaze",
+   "name_source": "mvl",
+   "input": "f+1+2",
+   "damage": 16,
+   "damage_raw": "16,33",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "mm",
+   "on_block": "-12",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f+1+2",
+    "id": "dvj_28",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_WP00F",
+     "Dj_WP01F"
+    ]
+   }
+  },
+  "f+3+4": {
+   "name": "Hisou",
+   "name_source": "mvl",
+   "input": "f+3+4",
+   "damage": 13,
+   "damage_raw": "13,32",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "mm (TJ)",
+   "on_block": "-16",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f+3+4",
+    "id": "dvj_29",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_WK00F",
+     "Dj_WK01F"
+    ]
+   }
+  },
+  "d/f+1": {
+   "name": "Dj_t_slpF",
+   "name_source": "motbin-internal",
+   "input": "d/f+1",
+   "damage": 14,
+   "damage_raw": "14",
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "m",
+   "on_block": "-3",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:373",
+   "t7": {
+    "notation": "d/f+1",
+    "id": "dvj_30",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+1",
+    "motbin_move_id": 1628,
+    "motbin_move_name": "Dj_t_slpF",
+    "anim_name": "Bmt_oizuki(DVD)",
+    "anim_id": 16757,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 373,
+     "rel_offset": 2764496,
+     "size": 2376,
+     "format_word": 100,
+     "sha256": "59674fe3ff77df9cd40681b08c56e80f9fbf634c98ad6a7da9bdf8c210a365d9",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+1, 2": {
+   "name": "Twin Lancer",
+   "name_source": "mvl",
+   "input": "d/f+1, 2",
+   "damage": 14,
+   "damage_raw": "14,20",
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "m, m",
+   "on_block": "-8~-7",
+   "on_hit": "+3~+4",
+   "on_ch": "+3~+4",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:374",
+   "t7": {
+    "notation": "d/f+1, 2",
+    "id": "dvj_31",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+1, 2",
+    "motbin_move_id": 1629,
+    "motbin_move_name": "Dj_lusako",
+    "anim_name": "Bmt_oi_sako(DVD)",
+    "anim_id": 16758,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 374,
+     "rel_offset": 2766872,
+     "size": 2324,
+     "format_word": 100,
+     "sha256": "2f0b732b8fdf730aef758152e29231a4f69bdffccf4f9cd5d45e0f3b9f465581",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+1, 2, f, f": {
+   "name": "d/f+1, 2, f, f",
+   "name_source": "notation-only",
+   "input": "d/f+1, 2, f, f",
+   "damage": 14,
+   "damage_raw": "14,20",
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "m, m, (Special)",
+   "on_block": "-8~-7?",
+   "on_hit": "+3~+4?",
+   "on_ch": "+3~+4?",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d/f+1, 2, f, f",
+    "id": "dvj_32",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "d/f+3": {
+   "name": "Dj_t_slkF",
+   "name_source": "motbin-internal",
+   "input": "d/f+3",
+   "damage": 13,
+   "damage_raw": "13",
+   "startup": 0.2667,
+   "startup_frames": 16,
+   "hit_level": "m",
+   "on_block": "-9",
+   "on_hit": "+2",
+   "on_ch": "+2",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:378",
+   "t7": {
+    "notation": "d/f+3",
+    "id": "dvj_33",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+3",
+    "motbin_move_id": 1634,
+    "motbin_move_name": "Dj_t_slkF",
+    "anim_name": "ozdv_dvk1_m30cm(DVD)",
+    "anim_id": 16762,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 378,
+     "rel_offset": 2775188,
+     "size": 3164,
+     "format_word": 100,
+     "sha256": "3cc2625392822e152d504a133e1a2499673dc0e6c1fc73fc542be2b7b61cd935",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+3, 2": {
+   "name": "Dj_3lkrp",
+   "name_source": "motbin-internal",
+   "input": "d/f+3, 2",
+   "damage": 13,
+   "damage_raw": "13,10",
+   "startup": 0.2667,
+   "startup_frames": 16,
+   "hit_level": "m, m",
+   "on_block": "-13",
+   "on_hit": "-7",
+   "on_ch": "-7",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:379",
+   "t7": {
+    "notation": "d/f+3, 2",
+    "id": "dvj_34",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+3, 2",
+    "motbin_move_id": 1635,
+    "motbin_move_name": "Dj_3lkrp",
+    "anim_name": "ozdv_dvkp2_body(DVD)",
+    "anim_id": 16763,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 379,
+     "rel_offset": 2778352,
+     "size": 3908,
+     "format_word": 100,
+     "sha256": "ea6c87a73c858a8499d266920c52b0b9141b2349c729a0c58c0d63d5e3dc9551",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+3, 2, 4": {
+   "name": "Rengoku",
+   "name_source": "mvl",
+   "input": "d/f+3, 2, 4",
+   "damage": 13,
+   "damage_raw": "13,10,21",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m, m (TJ)",
+   "on_block": "-33~-32",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:380",
+   "t7": {
+    "notation": "d/f+3, 2, 4",
+    "id": "dvj_35",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+3, 2, 4",
+    "motbin_move_id": 1636,
+    "motbin_move_name": "Dj_3lkrprk",
+    "anim_name": "ozdv_dvkpk3_upk(DVD)",
+    "anim_id": 16764,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 380,
+     "rel_offset": 2782260,
+     "size": 5148,
+     "format_word": 100,
+     "sha256": "f69cc816ce78d7c973391628b189e3383ab937952b27eb2a2d87e359ffdfea3e",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+3, 2, 4, U": {
+   "name": "d/f+3, 2, 4, U",
+   "name_source": "notation-only",
+   "input": "d/f+3, 2, 4, U",
+   "damage": 13,
+   "damage_raw": "13,10,21",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m, m (TJ), (Special) (TJ)(FLY)",
+   "on_block": "-20~-19 (-93~-92)",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d/f+3, 2, 4, U",
+    "id": "dvj_36",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "d/f+4": {
+   "name": "Dj_t_srkF",
+   "name_source": "motbin-internal",
+   "input": "d/f+4",
+   "damage": 13,
+   "damage_raw": "13",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-9~-8",
+   "on_hit": "+2~+3",
+   "on_ch": "+2~+3",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:382",
+   "t7": {
+    "notation": "d/f+4",
+    "id": "dvj_37",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+4",
+    "motbin_move_id": 1638,
+    "motbin_move_name": "Dj_t_srkF",
+    "anim_name": "kaz_k00xk(DVD)",
+    "anim_id": 16766,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 382,
+     "rel_offset": 2792672,
+     "size": 2412,
+     "format_word": 100,
+     "sha256": "49172b66cc33783465fe39c9fccc1ee7f01c78c3ed26e53e042ab767ccf29879",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+4, 4": {
+   "name": "Tsunami Kick",
+   "name_source": "mvl",
+   "input": "d/f+4, 4",
+   "damage": 13,
+   "damage_raw": "13,21",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m",
+   "on_block": "-15~-14",
+   "on_hit": "-4~-3 OC",
+   "on_ch": "-4~-3 OC",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:383",
+   "t7": {
+    "notation": "d/f+4, 4",
+    "id": "dvj_38",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+4, 4",
+    "motbin_move_id": 1639,
+    "motbin_move_name": "Dj_syrrkB",
+    "anim_name": "kz_syllk(DVD)",
+    "anim_id": 16767,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 383,
+     "rel_offset": 2795084,
+     "size": 2228,
+     "format_word": 100,
+     "sha256": "2f725dd4d5d9b8d5807b291735af4c15b8ba6898d8e481e5c465590d8b260d6b",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+1+2": {
+   "name": "Aratama Strike",
+   "name_source": "mvl",
+   "input": "d/f+1+2",
+   "damage": 28,
+   "damage_raw": "28",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-4~-3",
+   "on_hit": "+7~+8 OC",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:377",
+   "t7": {
+    "notation": "d/f+1+2",
+    "id": "dvj_39",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+1+2",
+    "motbin_move_id": 1633,
+    "motbin_move_name": "Dj_t_slrpF",
+    "anim_name": "ozdv_3wp_2(DVD)",
+    "anim_id": 16761,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 377,
+     "rel_offset": 2771804,
+     "size": 3384,
+     "format_word": 100,
+     "sha256": "3dff55f312478b4184a81e3936d4de698a071acd656fb8763c86446062ff1370",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d+1": {
+   "name": "Corpse Thrust",
+   "name_source": "mvl",
+   "input": "d+1",
+   "damage": 27,
+   "damage_raw": "27",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TC)",
+   "on_block": "-10~?",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Power crush",
+   "anim_ref": "t7:dvj:0x4000:362",
+   "t7": {
+    "notation": "d+1",
+    "id": "dvj_40",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+1",
+    "motbin_move_id": 1614,
+    "motbin_move_name": "Dj_bodylp00",
+    "anim_name": "dvyt_2lp(DVD)",
+    "anim_id": 16746,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 362,
+     "rel_offset": 2747380,
+     "size": 3232,
+     "format_word": 100,
+     "sha256": "8e9a447a164461394ca8df3c386b60008843a696190512e08de86cf4a9f5c05f",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d+3": {
+   "name": "Broken Plate",
+   "name_source": "mvl",
+   "input": "d+3",
+   "damage": 18,
+   "damage_raw": "18",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l",
+   "on_block": "-12~-11",
+   "on_hit": "-1~0",
+   "on_ch": "+7~+8 OC",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:370",
+   "t7": {
+    "notation": "d+3",
+    "id": "dvj_41",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+3",
+    "motbin_move_id": 1623,
+    "motbin_move_name": "Dj_t_slk00",
+    "anim_name": "ozdv_2lk_lowk(DVD)",
+    "anim_id": 16754,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 370,
+     "rel_offset": 2757788,
+     "size": 2808,
+     "format_word": 100,
+     "sha256": "5c777ffa26c0e5ac81fc25ea9292a7fbb4253a00e15d038f5559b587b66a5b6d",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d+3+4": {
+   "name": "Double Lift Kick",
+   "name_source": "mvl",
+   "input": "d+3+4",
+   "damage": 6,
+   "damage_raw": "6,27",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m (TJ)",
+   "on_block": "-15",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d+3+4",
+    "id": "dvj_42",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_c20",
+     "Dj_c20E"
+    ]
+   }
+  },
+  "d/b+2": {
+   "name": "Malicious Mace",
+   "name_source": "mvl",
+   "input": "d/b+2",
+   "damage": 21,
+   "damage_raw": "21",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-13?",
+   "on_hit": "+3s?",
+   "on_ch": "+3s?",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:384",
+   "t7": {
+    "notation": "d/b+2",
+    "id": "dvj_43",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+2",
+    "motbin_move_id": 1640,
+    "motbin_move_name": "Dj_gepan00",
+    "anim_name": "ikdv_u_rp(DVD)",
+    "anim_id": 16768,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 384,
+     "rel_offset": 2797312,
+     "size": 3492,
+     "format_word": 100,
+     "sha256": "90bfa8557f5cb8b9ca6f3d768f0962fe7cf018daea5788192c51ad6e543b797d",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+1+2": {
+   "name": "d/b+1+2",
+   "name_source": "notation-only",
+   "input": "d/b+1+2",
+   "damage": null,
+   "damage_raw": null,
+   "startup": 0.3667,
+   "startup_frames": 22,
+   "hit_level": "(Special)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d/b+1+2",
+    "id": "dvj_44",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_zettai_0",
+     "Dj_boost_00"
+    ]
+   }
+  },
+  "d/b*1+2 (Short)": {
+   "name": "d/b*1+2 (Short)",
+   "name_source": "notation-only",
+   "input": "d/b*1+2 (Short)",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-4",
+   "on_hit": "+9",
+   "on_ch": "+9",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d/b*1+2 (Short)",
+    "id": "dvj_45",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "d/b*1+2 (Long)": {
+   "name": "d/b*1+2 (Long)",
+   "name_source": "notation-only",
+   "input": "d/b*1+2 (Long)",
+   "damage": 33,
+   "damage_raw": "33",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "0",
+   "on_hit": "+7",
+   "on_ch": "+7",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d/b*1+2 (Long)",
+    "id": "dvj_46",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "d/b*1+2 (Very long)": {
+   "name": "d/b*1+2 (Very long)",
+   "name_source": "notation-only",
+   "input": "d/b*1+2 (Very long)",
+   "damage": 56,
+   "damage_raw": "56",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "+7",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d/b*1+2 (Very long)",
+    "id": "dvj_47",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "b+1": {
+   "name": "Dj_uraken",
+   "name_source": "motbin-internal",
+   "input": "b+1",
+   "damage": 13,
+   "damage_raw": "13",
+   "startup": 0.2,
+   "startup_frames": 12,
+   "hit_level": "h",
+   "on_block": "-6",
+   "on_hit": "+5",
+   "on_ch": "+5",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:340",
+   "t7": {
+    "notation": "b+1",
+    "id": "dvj_48",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+1",
+    "motbin_move_id": 1581,
+    "motbin_move_name": "Dj_uraken",
+    "anim_name": "ozdv_syoutei(DVD)",
+    "anim_id": 16724,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 340,
+     "rel_offset": 2683504,
+     "size": 2568,
+     "format_word": 100,
+     "sha256": "cfed292c863706a386e75734922751c8b32c1d93f58b0f643fe4c381d9eb0d54",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+1, 2": {
+   "name": "Brimstone Strike",
+   "name_source": "mvl",
+   "input": "b+1, 2",
+   "damage": 13,
+   "damage_raw": "13,27",
+   "startup": 0.2,
+   "startup_frames": 12,
+   "hit_level": "h, m",
+   "on_block": "-14?",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:341",
+   "t7": {
+    "notation": "b+1, 2",
+    "id": "dvj_49",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+1, 2",
+    "motbin_move_id": 1582,
+    "motbin_move_name": "Dj_uraken2",
+    "anim_name": "ozdv_w_syoutei(DVD)",
+    "anim_id": 16725,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 341,
+     "rel_offset": 2686072,
+     "size": 3532,
+     "format_word": 100,
+     "sha256": "35d102d51ab6ead4642ed917ca92d9009ebce814d107b781cd908e2866f8c14e",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+1, 2, B (Cancel)": {
+   "name": "b+1, 2, B (Cancel)",
+   "name_source": "notation-only",
+   "input": "b+1, 2, B (Cancel)",
+   "damage": 13,
+   "damage_raw": "13",
+   "startup": 0.2,
+   "startup_frames": 12,
+   "hit_level": "h, (Special)",
+   "on_block": "-18",
+   "on_hit": "-7",
+   "on_ch": "-7",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "b+1, 2, B (Cancel)",
+    "id": "dvj_50",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "b+2": {
+   "name": "b+2",
+   "name_source": "notation-only",
+   "input": "b+2",
+   "damage": null,
+   "damage_raw": null,
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "h",
+   "on_block": "\u2013",
+   "on_hit": "+",
+   "on_ch": "+",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "b+2",
+    "id": "dvj_51",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_rp00B",
+     "Dj_4rplk"
+    ]
+   }
+  },
+  "b+2, 3": {
+   "name": "Rakshasa's Fury",
+   "name_source": "mvl",
+   "input": "b+2, 3",
+   "damage": null,
+   "damage_raw": ",",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "h, m",
+   "on_block": "-10~?",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Tail spin",
+   "anim_ref": "t7:dvj:0x4000:344",
+   "t7": {
+    "notation": "b+2, 3",
+    "id": "dvj_52",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+2, 3",
+    "motbin_move_id": 1586,
+    "motbin_move_name": "Dj_4rplk",
+    "anim_name": "dvik_4rplk(DVD)",
+    "anim_id": 16728,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 344,
+     "rel_offset": 2695676,
+     "size": 5812,
+     "format_word": 100,
+     "sha256": "8b6dc13f7fe9b9d0f773f8e26920dfbfc5a962a0da6d6200024a1fd9e6b24c54",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+3": {
+   "name": "Jambu Spear",
+   "name_source": "mvl",
+   "input": "b+3",
+   "damage": 32,
+   "damage_raw": "32",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "-16~-15",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:351",
+   "t7": {
+    "notation": "b+3",
+    "id": "dvj_53",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+3",
+    "motbin_move_id": 1593,
+    "motbin_move_name": "Dj_4lrk",
+    "anim_name": "kodv_sorry(DVD)",
+    "anim_id": 16735,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 351,
+     "rel_offset": 2713156,
+     "size": 3688,
+     "format_word": 100,
+     "sha256": "5fc91c0802bf205b59aa0798c13ba9b99c2250af8315a2d4ffe7b0a13059dcf3",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+4": {
+   "name": "Demon Steel Pedal",
+   "name_source": "mvl",
+   "input": "b+4",
+   "damage": 29,
+   "damage_raw": "29",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-11~-10?",
+   "on_hit": "+?",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:352",
+   "t7": {
+    "notation": "b+4",
+    "id": "dvj_54",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+4",
+    "motbin_move_id": 1594,
+    "motbin_move_name": "Dj_keriage0",
+    "anim_name": "Kjz_keriage(DVD)",
+    "anim_id": 16736,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 352,
+     "rel_offset": 2716844,
+     "size": 2972,
+     "format_word": 100,
+     "sha256": "e8ff96c9e3e1d8bdc63a267a570aad4c3c2a43ec95f3084f26c8a1871866a4b9",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "When opponent attacks b+1+3 or b+2+4": {
+   "name": "When opponent attacks b+1+3 or b+2+4",
+   "name_source": "notation-only",
+   "input": "When opponent attacks b+1+3 or b+2+4",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Attack returned",
+   "on_block": "-13?",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Power crush",
+   "anim_ref": null,
+   "t7": {
+    "notation": "When opponent attacks b+1+3 or b+2+4",
+    "id": "dvj_55",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "b+1+4": {
+   "name": "Lightning Uppercut",
+   "name_source": "mvl",
+   "input": "b+1+4",
+   "damage": 40,
+   "damage_raw": "40",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "!",
+   "on_block": "Launch",
+   "on_hit": "Launch",
+   "on_ch": "Launch",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:428",
+   "t7": {
+    "notation": "b+1+4",
+    "id": "dvj_56",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+1+4",
+    "motbin_move_id": 1688,
+    "motbin_move_name": "Dj_kazup00",
+    "anim_name": "kzkz_newkijin0(DVD)",
+    "anim_id": 16812,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 428,
+     "rel_offset": 2916400,
+     "size": 4296,
+     "format_word": 100,
+     "sha256": "60c6bc9332da363cc3705727de5536173b2488155b3a6263a0d315fdda215d91",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "B+1+4": {
+   "name": "Lightning Screw Uppercut",
+   "name_source": "mvl",
+   "input": "B+1+4",
+   "damage": 67,
+   "damage_raw": "67",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "!",
+   "on_block": "Launch",
+   "on_hit": "Launch",
+   "on_ch": "Launch",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "B+1+4",
+    "id": "dvj_57",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "u/b+1+2": {
+   "name": "Hellfire Blast",
+   "name_source": "mvl",
+   "input": "u/b+1+2",
+   "damage": 54,
+   "damage_raw": "54",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h!",
+   "on_block": "KND",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:357",
+   "t7": {
+    "notation": "u/b+1+2",
+    "id": "dvj_58",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/b+1+2",
+    "motbin_move_id": 1606,
+    "motbin_move_name": "Dj_beam_00",
+    "anim_name": "kodv_beam(DVD)",
+    "anim_id": 16741,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 357,
+     "rel_offset": 2726444,
+     "size": 4976,
+     "format_word": 100,
+     "sha256": "d63bcb342d05706a0c088f5179134f4306e374e97a7f7b9cf8268a524920dcd5",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u+4": {
+   "name": "Samsara",
+   "name_source": "mvl",
+   "input": "u+4",
+   "damage": 27,
+   "damage_raw": "27",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "-36~-35",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:286",
+   "t7": {
+    "notation": "u+4",
+    "id": "dvj_59",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u+4",
+    "motbin_move_id": 1511,
+    "motbin_move_name": "Dj_jprk00",
+    "anim_name": "kodv_ssk(DVD)",
+    "anim_id": 16670,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 286,
+     "rel_offset": 2524436,
+     "size": 4848,
+     "format_word": 100,
+     "sha256": "1e6438aeddce678a7b57ad9613b1a0ca079ed12caa32c934d18b9cb03194afab",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u+4, U": {
+   "name": "u+4, U",
+   "name_source": "notation-only",
+   "input": "u+4, U",
+   "damage": 27,
+   "damage_raw": "27",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ), (Special) (TJ)(FLY)",
+   "on_block": "-23~-22 (-71~-70)",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u+4, U",
+    "id": "dvj_60",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "u/b or u or u/f+2": {
+   "name": "u/b or u or u/f+2",
+   "name_source": "notation-only",
+   "input": "u/b or u or u/f+2",
+   "damage": 33,
+   "damage_raw": "33",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-4~-3",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Homing, Tail spin",
+   "anim_ref": null,
+   "t7": {
+    "notation": "u/b or u or u/f+2",
+    "id": "dvj_61",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "u/f+3": {
+   "name": "Reaper's Scythe",
+   "name_source": "mvl",
+   "input": "u/f+3",
+   "damage": 28,
+   "damage_raw": "28",
+   "startup": 0.4667,
+   "startup_frames": 28,
+   "hit_level": "m (TJ)",
+   "on_block": "+3 OC",
+   "on_hit": "+7 OC",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:427",
+   "t7": {
+    "notation": "u/f+3",
+    "id": "dvj_62",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/f+3",
+    "motbin_move_id": 1687,
+    "motbin_move_name": "Dj_4lk00",
+    "anim_name": "ozdv_hokakato(DVD)",
+    "anim_id": 16811,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 427,
+     "rel_offset": 2912552,
+     "size": 3848,
+     "format_word": 100,
+     "sha256": "86ce0505da4e097eb81054974bc0cf99ce9901b2e63929b33cd29df1bfdd9032",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/f+4": {
+   "name": "Wraith Kick",
+   "name_source": "mvl",
+   "input": "u/f+4",
+   "damage": 28,
+   "damage_raw": "28",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "-8",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:430",
+   "t7": {
+    "notation": "u/f+4",
+    "id": "dvj_63",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/f+4",
+    "motbin_move_id": 1690,
+    "motbin_move_name": "Dj_jprk00F",
+    "anim_name": "nadv_ikeri2(DVD)",
+    "anim_id": 16814,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 430,
+     "rel_offset": 2926188,
+     "size": 3096,
+     "format_word": 100,
+     "sha256": "f8d30e7fcf390dfb2a008d79f6acb5dc969f88ab1aa654fb8e43ff61e97a9a26",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u or u/f+1+2": {
+   "name": "Dj_beam_01",
+   "name_source": "motbin-internal",
+   "input": "u or u/f+1+2",
+   "damage": 29,
+   "damage_raw": "29",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "(Sky)!",
+   "on_block": "KND",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:361",
+   "t7": {
+    "notation": "u or u/f+1+2",
+    "id": "dvj_64",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/f+1+2",
+    "motbin_move_id": 1611,
+    "motbin_move_name": "Dj_beam_01",
+    "anim_name": "ozdv_highbeem(DVD)",
+    "anim_id": 16745,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 361,
+     "rel_offset": 2744604,
+     "size": 2776,
+     "format_word": 100,
+     "sha256": "88d013f92ca357029a99c37e9c548b5e05a25a229ec4726379e90b3cdbcda850",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/b+2+4": {
+   "name": "u/b+2+4",
+   "name_source": "notation-only",
+   "input": "u/b+2+4",
+   "damage": 33,
+   "damage_raw": "33",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "-3~-1",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u/b+2+4",
+    "id": "dvj_65",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_Mukurowarib",
+     "Dj_ho_11"
+    ]
+   }
+  },
+  "u+2+4": {
+   "name": "u+2+4",
+   "name_source": "notation-only",
+   "input": "u+2+4",
+   "damage": 40,
+   "damage_raw": "40",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "-3~-1",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u+2+4",
+    "id": "dvj_66",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_Mukurowari",
+     "Dj_ho_11"
+    ]
+   }
+  },
+  "u/f+2+4": {
+   "name": "High Pounce",
+   "name_source": "mvl",
+   "input": "u/f+2+4",
+   "damage": 47,
+   "damage_raw": "47",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "-3~-1",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u/f+2+4",
+    "id": "dvj_67",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_Mukurowarif",
+     "Dj_ho_11"
+    ]
+   }
+  },
+  "f, F+2": {
+   "name": "Demon's Paw",
+   "name_source": "mvl",
+   "input": "f, F+2",
+   "damage": 32,
+   "damage_raw": "32",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-11",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+2",
+    "id": "dvj_68",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, F+3": {
+   "name": "f, F+3",
+   "name_source": "notation-only",
+   "input": "f, F+3",
+   "damage": 21,
+   "damage_raw": "21",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-12",
+   "on_hit": "-6",
+   "on_ch": "-6",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+3",
+    "id": "dvj_69",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, F+3, 1": {
+   "name": "f, F+3, 1",
+   "name_source": "notation-only",
+   "input": "f, F+3, 1",
+   "damage": 21,
+   "damage_raw": "21,14",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, h",
+   "on_block": "0",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+3, 1",
+    "id": "dvj_70",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "f, F+3, 1, f, f": {
+   "name": "f, F+3, 1, f, f",
+   "name_source": "notation-only",
+   "input": "f, F+3, 1, f, f",
+   "damage": 21,
+   "damage_raw": "21,14",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, h, (Special)",
+   "on_block": "-2",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+3, 1, f, f",
+    "id": "dvj_71",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "f, F+3, 1, 2": {
+   "name": "Emperor's Sword",
+   "name_source": "mvl",
+   "input": "f, F+3, 1, 2",
+   "damage": 21,
+   "damage_raw": "21,14,",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, h, h",
+   "on_block": "\u2013",
+   "on_hit": "SD",
+   "on_ch": "SD",
+   "notes": "Homing, Tail spin",
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+3, 1, 2",
+    "id": "dvj_72",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "f, F+3, 1, 3": {
+   "name": "Demon Cyclone",
+   "name_source": "mvl",
+   "input": "f, F+3, 1, 3",
+   "damage": 21,
+   "damage_raw": "21,14,17",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, h, l",
+   "on_block": "-15",
+   "on_hit": "+1 OC",
+   "on_ch": "+1 OC",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+3, 1, 3",
+    "id": "dvj_73",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "f, F+3, 1, 4": {
+   "name": "Hell Spiral",
+   "name_source": "mvl",
+   "input": "f, F+3, 1, 4",
+   "damage": 21,
+   "damage_raw": "21,14,27",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, h, m",
+   "on_block": "-9",
+   "on_hit": "KND",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+3, 1, 4",
+    "id": "dvj_74",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "f, F+3, 1, d/b+1+2": {
+   "name": "Demon Cyclone Spear",
+   "name_source": "mvl",
+   "input": "f, F+3, 1, d/b+1+2",
+   "damage": 21,
+   "damage_raw": "21,14",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, h, (Special)",
+   "on_block": "+4",
+   "on_hit": "+10",
+   "on_ch": "+10",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+3, 1, d/b+1+2",
+    "id": "dvj_75",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "f, F+4": {
+   "name": "Last Rites",
+   "name_source": "mvl",
+   "input": "f, F+4",
+   "damage": 43,
+   "damage_raw": "43",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "+5",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Homing, Tail spin",
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+4",
+    "id": "dvj_76",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, F+3+4": {
+   "name": "Phantom Spear",
+   "name_source": "mvl",
+   "input": "f, F+3+4",
+   "damage": 13,
+   "damage_raw": "13,32",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "mm (TJ)",
+   "on_block": "-13?s",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+3+4",
+    "id": "dvj_77",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "b, f+2": {
+   "name": "Dj_rp00F",
+   "name_source": "motbin-internal",
+   "input": "b, f+2",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-12~-11",
+   "on_hit": "-1~0",
+   "on_ch": "FS(+6~+7) 19~20",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:326",
+   "t7": {
+    "notation": "b, f+2",
+    "id": "dvj_78",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b, f+2",
+    "motbin_move_id": 1566,
+    "motbin_move_name": "Dj_rp00F",
+    "anim_name": "Bmt_sakotu(DVD)",
+    "anim_id": 16710,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 326,
+     "rel_offset": 2643560,
+     "size": 2160,
+     "format_word": 100,
+     "sha256": "2f5c0976c01a0cc0f1642fed537854b570158305a861aa9ee6fa094eec2b7251",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b, f+2, 1": {
+   "name": "b, f+2, 1",
+   "name_source": "notation-only",
+   "input": "b, f+2, 1",
+   "damage": 16,
+   "damage_raw": "16,16",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m",
+   "on_block": "-10?",
+   "on_hit": "+1",
+   "on_ch": "+1",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "b, f+2, 1",
+    "id": "dvj_79",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_WP00F",
+     "Dj_WP01F"
+    ]
+   }
+  },
+  "b, f+2, 1, 2": {
+   "name": "Laser Cannon",
+   "name_source": "mvl",
+   "input": "b, f+2, 1, 2",
+   "damage": 16,
+   "damage_raw": "16,16,32",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m, m",
+   "on_block": "-11",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "b, f+2, 1, 2",
+    "id": "dvj_80",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "b, f+2, 1, d/b or d or d/f+2": {
+   "name": "Dj_st2cr00_",
+   "name_source": "motbin-internal",
+   "input": "b, f+2, 1, d/b or d or d/f+2",
+   "damage": 16,
+   "damage_raw": "16,16,13",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m, m",
+   "on_block": "-14",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:227",
+   "t7": {
+    "notation": "b, f+2, 1, d/b or d or d/f+2",
+    "id": "dvj_81",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d",
+    "motbin_move_id": 1446,
+    "motbin_move_name": "Dj_st2cr00_",
+    "anim_name": "coyt_ta_sya(DVD)",
+    "anim_id": 16611,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 227,
+     "rel_offset": 2483180,
+     "size": 704,
+     "format_word": 100,
+     "sha256": "05a795e2131eb7e4b86c14d3d27f94b38a41a16cf7def897dac75528100a8a38",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b, f+2, 1, 4": {
+   "name": "Laser Crush",
+   "name_source": "mvl",
+   "input": "b, f+2, 1, 4",
+   "damage": 16,
+   "damage_raw": "16,16,28",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m, m (TJ)",
+   "on_block": "-8~-5 OC",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "b, f+2, 1, 4",
+    "id": "dvj_82",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, f, f+3 or 2+4+3 or f, n, d, d/f, U/F+3": {
+   "name": "f, f, f+3 or 2+4+3 or f, n, d, d/f, U/F+3",
+   "name_source": "notation-only",
+   "input": "f, f, f+3 or 2+4+3 or f, n, d, d/f, U/F+3",
+   "damage": 40,
+   "damage_raw": "40",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "+9~+10 GB",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, f, f+3 or 2+4+3 or f, n, d, d/f, U/F+3",
+    "id": "dvj_83",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "WS+1": {
+   "name": "WS+1",
+   "name_source": "notation-only",
+   "input": "WS+1",
+   "damage": 12,
+   "damage_raw": "12",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-6~-5",
+   "on_hit": "+5~+6",
+   "on_ch": "+5~+6",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+1",
+    "id": "dvj_84",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Co_syalp00",
+     "Dj_sWALKF",
+     "Dj_lp00F"
+    ]
+   }
+  },
+  "WS+1, 2": {
+   "name": "WS+1, 2",
+   "name_source": "notation-only",
+   "input": "WS+1, 2",
+   "damage": 12,
+   "damage_raw": "12,14",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m",
+   "on_block": "-7?",
+   "on_hit": "+4?",
+   "on_ch": "+4?",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+1, 2",
+    "id": "dvj_85",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_rp00B",
+     "Dj_c20",
+     "Dj_rp00",
+     "Dj_lprpF",
+     "Dj_4rplk",
+     "Dj_c20E"
+    ]
+   }
+  },
+  "WS+1, 4": {
+   "name": "WS+1, 4",
+   "name_source": "notation-only",
+   "input": "WS+1, 4",
+   "damage": 12,
+   "damage_raw": "12,23",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, h",
+   "on_block": "\u2013",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Tail spin",
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+1, 4",
+    "id": "dvj_86",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_bodylp00",
+     "Dj_rk00",
+     "Dj_cap01",
+     "Dj_cap02"
+    ]
+   }
+  },
+  "WS+2": {
+   "name": "WS+2",
+   "name_source": "notation-only",
+   "input": "WS+2",
+   "damage": 27,
+   "damage_raw": "27",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-12~-11",
+   "on_hit": "SCD",
+   "on_ch": "SCD",
+   "notes": "Tail spin",
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+2",
+    "id": "dvj_87",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Co_syarp00",
+     "Dj_rp00B",
+     "Dj_c20",
+     "Dj_rp00",
+     "Dj_4rplk",
+     "Dj_c20E"
+    ]
+   }
+  },
+  "WS+4": {
+   "name": "WS+4",
+   "name_source": "notation-only",
+   "input": "WS+4",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-3~-2",
+   "on_hit": "+8~+9",
+   "on_ch": "+8~+9",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+4",
+    "id": "dvj_88",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_syark00",
+     "Dj_bodylp00",
+     "Dj_rk00"
+    ]
+   }
+  },
+  "WS+4, 4": {
+   "name": "WS+4, 4",
+   "name_source": "notation-only",
+   "input": "WS+4, 4",
+   "damage": 17,
+   "damage_raw": "17,21",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m",
+   "on_block": "-15~-14",
+   "on_hit": "-4~-3 OC",
+   "on_ch": "-4~-3 OC",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+4, 4",
+    "id": "dvj_89",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "SS+2": {
+   "name": "SS+2",
+   "name_source": "notation-only",
+   "input": "SS+2",
+   "damage": 33,
+   "damage_raw": "33",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-22",
+   "on_hit": "Launch",
+   "on_ch": "Launch",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "SS+2",
+    "id": "dvj_90",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_rp00B",
+     "Dj_c20",
+     "Dj_rp00",
+     "Dj_4rplk",
+     "Dj_c20E"
+    ]
+   }
+  },
+  "SS+2 U(When hit )": {
+   "name": "SS+2 U(When hit )",
+   "name_source": "notation-only",
+   "input": "SS+2 U(When hit )",
+   "damage": 21,
+   "damage_raw": "30(,21,20)",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, (throw)",
+   "on_block": null,
+   "on_hit": "Throw(KND)",
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "SS+2 U(When hit )",
+    "id": "dvj_91",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "Opponent Down d+1+2": {
+   "name": "Opponent Down d+1+2",
+   "name_source": "notation-only",
+   "input": "Opponent Down d+1+2",
+   "damage": 25,
+   "damage_raw": "25",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l(On grounded opponent)",
+   "on_block": "-16~-13",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "Opponent Down d+1+2",
+    "id": "dvj_92",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "Grounded face up u+3+4": {
+   "name": "Grounded face up u+3+4",
+   "name_source": "notation-only",
+   "input": "Grounded face up u+3+4",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "(Special) (TJ)(FLY)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "Grounded face up u+3+4",
+    "id": "dvj_93",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1+2+3+4": {
+   "name": "Dj_SUPER_0",
+   "name_source": "motbin-internal",
+   "input": "1+2+3+4",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "(Special) (TJ)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:631",
+   "t7": {
+    "notation": "1+2+3+4",
+    "id": "dvj_94",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "1+2+3+4",
+    "motbin_move_id": 2129,
+    "motbin_move_name": "Dj_SUPER_0",
+    "anim_name": "kodv_haaaaa(DVD)",
+    "anim_id": 17015,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 631,
+     "rel_offset": 3730008,
+     "size": 3332,
+     "format_word": 100,
+     "sha256": "88de66b215c9a0b0673c84747b25db4702361a9ed0c5ddcd8ac453b22769e1e6",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "3+4 or From certain moves (to FLY)": {
+   "name": "3+4 or From certain moves (to FLY)",
+   "name_source": "notation-only",
+   "input": "3+4 or From certain moves (to FLY)",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "(Special) (TJ)(FLY)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "3+4 or From certain moves (to FLY)",
+    "id": "dvj_95",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "FLY 1": {
+   "name": "FLY 1",
+   "name_source": "notation-only",
+   "input": "FLY 1",
+   "damage": 32,
+   "damage_raw": "32",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h (TJ)",
+   "on_block": "0",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Tail spin",
+   "anim_ref": null,
+   "t7": {
+    "notation": "FLY 1",
+    "id": "dvj_96",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "FLY 2": {
+   "name": "FLY 2",
+   "name_source": "notation-only",
+   "input": "FLY 2",
+   "damage": null,
+   "damage_raw": "27(,30)",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h! (TJ)(, (throw))",
+   "on_block": null,
+   "on_hit": "Throw(KND)",
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FLY 2",
+    "id": "dvj_97",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "FLY 3": {
+   "name": "FLY 3",
+   "name_source": "notation-only",
+   "input": "FLY 3",
+   "damage": 40,
+   "damage_raw": "40",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "-15~-9",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FLY 3",
+    "id": "dvj_98",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "FLY 1+2": {
+   "name": "FLY 1+2",
+   "name_source": "notation-only",
+   "input": "FLY 1+2",
+   "damage": 67,
+   "damage_raw": "67",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "! (TJ)",
+   "on_block": "KND",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FLY 1+2",
+    "id": "dvj_99",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "FLY f+1+2": {
+   "name": "FLY f+1+2",
+   "name_source": "notation-only",
+   "input": "FLY f+1+2",
+   "damage": 67,
+   "damage_raw": "67",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "! (TJ)",
+   "on_block": "KND",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FLY f+1+2",
+    "id": "dvj_100",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, n, d, D/F": {
+   "name": "f, n, d, D/F",
+   "name_source": "notation-only",
+   "input": "f, n, d, D/F",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "(Special)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, n, d, D/F",
+    "id": "dvj_101",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, n, d, d/f, U/F": {
+   "name": "f, n, d, d/f, U/F",
+   "name_source": "notation-only",
+   "input": "f, n, d, d/f, U/F",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "(Special) (TJ)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, n, d, d/f, U/F",
+    "id": "dvj_102",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, n, d, d/f, U/F+3": {
+   "name": "f, n, d, d/f, U/F+3",
+   "name_source": "notation-only",
+   "input": "f, n, d, d/f, U/F+3",
+   "damage": 40,
+   "damage_raw": "40",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "+9~+10 GB",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, n, d, d/f, U/F+3",
+    "id": "dvj_103",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, n, d, d/f+1": {
+   "name": "Dragon Uppercut",
+   "name_source": "mvl",
+   "input": "f, n, d, d/f+1",
+   "damage": 33,
+   "damage_raw": "33",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-15",
+   "on_hit": "Launch",
+   "on_ch": "Launch",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, n, d, d/f+1",
+    "id": "dvj_104",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_t_slpF",
+     "Co_syalp00"
+    ]
+   }
+  },
+  "f, n, d, d/f+1, U/F": {
+   "name": "Dragon Uppercut to Heaven's Door",
+   "name_source": "mvl",
+   "input": "f, n, d, d/f+1, U/F",
+   "damage": 33,
+   "damage_raw": "33,10",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, (throw)",
+   "on_block": "-15",
+   "on_hit": "Throw(KND)",
+   "on_ch": "Throw(KND)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, n, d, d/f+1, U/F",
+    "id": "dvj_105",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, n, d, d/f+1, 3": {
+   "name": "Dragon Uppercut to Middle Kick",
+   "name_source": "mvl",
+   "input": "f, n, d, d/f+1, 3",
+   "damage": 33,
+   "damage_raw": "33,20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m",
+   "on_block": "-14",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, n, d, d/f+1, 3",
+    "id": "dvj_106",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, n, d, d/f+1, 4": {
+   "name": "Dragon Uppercut to Spinning Low Kick",
+   "name_source": "mvl",
+   "input": "f, n, d, d/f+1, 4",
+   "damage": 33,
+   "damage_raw": "33,16",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, l (TC)",
+   "on_block": "-20",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, n, d, d/f+1, 4",
+    "id": "dvj_107",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, n, d, D/F+2": {
+   "name": "f, n, d, D/F+2",
+   "name_source": "notation-only",
+   "input": "f, n, d, D/F+2",
+   "damage": 31,
+   "damage_raw": "31",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-10",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, n, d, D/F+2",
+    "id": "dvj_108",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, n, d, d/f+2": {
+   "name": "f, n, d, d/f+2",
+   "name_source": "notation-only",
+   "input": "f, n, d, d/f+2",
+   "damage": 31,
+   "damage_raw": "31",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "+5",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, n, d, d/f+2",
+    "id": "dvj_109",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_m_p00",
+     "Co_syarp00"
+    ]
+   }
+  },
+  "f, n, d, D/F (Hold as long as possible)2": {
+   "name": "f, n, d, D/F (Hold as long as possible)2",
+   "name_source": "notation-only",
+   "input": "f, n, d, D/F (Hold as long as possible)2",
+   "damage": 31,
+   "damage_raw": "31",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-4",
+   "on_hit": "+12",
+   "on_ch": "+12",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, n, d, D/F (Hold as long as possible)2",
+    "id": "dvj_110",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, n, d, d/f+3": {
+   "name": "f, n, d, d/f+3",
+   "name_source": "notation-only",
+   "input": "f, n, d, d/f+3",
+   "damage": 27,
+   "damage_raw": "27",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "-8~-6 OC",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, n, d, d/f+3",
+    "id": "dvj_111",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_t_slkF",
+     "Co_syalk00"
+    ]
+   }
+  },
+  "f, n, d, D/F+3": {
+   "name": "Demon's Tail",
+   "name_source": "mvl",
+   "input": "f, n, d, D/F+3",
+   "damage": 32,
+   "damage_raw": "32",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-23",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, n, d, D/F+3",
+    "id": "dvj_112",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, n, d, d/f+4": {
+   "name": "f, n, d, d/f+4",
+   "name_source": "notation-only",
+   "input": "f, n, d, d/f+4",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l",
+   "on_block": "-23",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, n, d, d/f+4",
+    "id": "dvj_113",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_t_srkF",
+     "Dj_syark00"
+    ]
+   }
+  },
+  "f, n, d, d/f+4, 4": {
+   "name": "Spinning Demon",
+   "name_source": "mvl",
+   "input": "f, n, d, d/f+4, 4",
+   "damage": 16,
+   "damage_raw": "16,27",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l, m",
+   "on_block": "-16~-15",
+   "on_hit": "+4 OC~+5s",
+   "on_ch": "+4 OC~+5s",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:383",
+   "t7": {
+    "notation": "f, n, d, d/f+4, 4",
+    "id": "dvj_114",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f, n, d, d/f+4, 4",
+    "motbin_move_id": 1639,
+    "motbin_move_name": "Dj_syrrkB",
+    "anim_name": "kz_syllk(DVD)",
+    "anim_id": 16767,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 383,
+     "rel_offset": 2795084,
+     "size": 2228,
+     "format_word": 100,
+     "sha256": "2f725dd4d5d9b8d5807b291735af4c15b8ba6898d8e481e5c465590d8b260d6b",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "in rage f, n, d, d/f+4, 3+4": {
+   "name": "in rage f, n, d, d/f+4, 3+4",
+   "name_source": "notation-only",
+   "input": "in rage f, n, d, d/f+4, 3+4",
+   "damage": 16,
+   "damage_raw": "16,13,32?",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l, mm?",
+   "on_block": "-14?",
+   "on_hit": "BU",
+   "on_ch": "BU",
+   "notes": "Rage art",
+   "anim_ref": null,
+   "t7": {
+    "notation": "in rage f, n, d, d/f+4, 3+4",
+    "id": "dvj_115",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "Command": {
+   "name": "Command",
+   "name_source": "notation-only",
+   "input": "Command",
+   "damage": null,
+   "damage_raw": "Damage",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Hit level",
+   "on_block": "Block frame",
+   "on_hit": "Hit frame",
+   "on_ch": "Counter hit frame",
+   "notes": "Notes",
+   "anim_ref": null,
+   "t7": {
+    "notation": "Command",
+    "id": "dvj_116",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "3": {
+   "name": "3",
+   "name_source": "notation-only",
+   "input": "3",
+   "damage": 21,
+   "damage_raw": "21",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "h",
+   "on_block": "-14",
+   "on_hit": "-3",
+   "on_ch": "-3",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "3",
+    "id": "dvj_117",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_WK00F",
+     "Dj_lk00",
+     "Dj_WK01F"
+    ]
+   }
+  },
+  "4": {
+   "name": "4",
+   "name_source": "notation-only",
+   "input": "4",
+   "damage": 28,
+   "damage_raw": "28",
+   "startup": 0.2667,
+   "startup_frames": 16,
+   "hit_level": "h",
+   "on_block": "-9",
+   "on_hit": "KND",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "4",
+    "id": "dvj_118",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_bodylp00",
+     "Dj_rk00"
+    ]
+   }
+  },
+  "f+1": {
+   "name": "Dj_lp00F",
+   "name_source": "motbin-internal",
+   "input": "f+1",
+   "damage": 9,
+   "damage_raw": "9",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h",
+   "on_block": "+1",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:325",
+   "t7": {
+    "notation": "f+1",
+    "id": "dvj_119",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+1",
+    "motbin_move_id": 1565,
+    "motbin_move_name": "Dj_lp00F",
+    "anim_name": "ozdv_lpjab2(DVD)",
+    "anim_id": 16709,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 325,
+     "rel_offset": 2641404,
+     "size": 2156,
+     "format_word": 100,
+     "sha256": "f209b7d4cc7ba612e48dd597b858e098df00927b25bf0bc1376786f81c797101",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f, F+1": {
+   "name": "f, F+1",
+   "name_source": "notation-only",
+   "input": "f, F+1",
+   "damage": 9,
+   "damage_raw": "9",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "+1",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+1",
+    "id": "dvj_120",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "d+2": {
+   "name": "Co_t_srp00",
+   "name_source": "motbin-internal",
+   "input": "d+2",
+   "damage": 10,
+   "damage_raw": "10",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm (TC)",
+   "on_block": "-4",
+   "on_hit": "+7",
+   "on_ch": "+7",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:355",
+   "t7": {
+    "notation": "d+2",
+    "id": "dvj_121",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+2",
+    "motbin_move_id": 1617,
+    "motbin_move_name": "Co_t_srp00",
+    "anim_name": "naco_syrp(DVD)",
+    "anim_id": 16739,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 355,
+     "rel_offset": 2721952,
+     "size": 2284,
+     "format_word": 100,
+     "sha256": "327dcf0bceebd1010eb934ac7e6fdb0392de5b390920e24feabc6444d640bdae",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b or d+4": {
+   "name": "Dj_st2cr00B",
+   "name_source": "motbin-internal",
+   "input": "d/b or d+4",
+   "damage": 9,
+   "damage_raw": "9",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-13",
+   "on_hit": "-2",
+   "on_ch": "-2",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:227",
+   "t7": {
+    "notation": "d/b or d+4",
+    "id": "dvj_122",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b",
+    "motbin_move_id": 1447,
+    "motbin_move_name": "Dj_st2cr00B",
+    "anim_name": "coyt_ta_sya(DVD)",
+    "anim_id": 16611,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 227,
+     "rel_offset": 2483180,
+     "size": 704,
+     "format_word": 100,
+     "sha256": "05a795e2131eb7e4b86c14d3d27f94b38a41a16cf7def897dac75528100a8a38",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+1": {
+   "name": "Co_t_slp00",
+   "name_source": "motbin-internal",
+   "input": "d/b+1",
+   "damage": 6,
+   "damage_raw": "6",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm (TC)",
+   "on_block": "-5",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:353",
+   "t7": {
+    "notation": "d/b+1",
+    "id": "dvj_123",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+1",
+    "motbin_move_id": 1616,
+    "motbin_move_name": "Co_t_slp00",
+    "anim_name": "kzco_sylp01_10f(DVD)",
+    "anim_id": 16737,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 353,
+     "rel_offset": 2719816,
+     "size": 2136,
+     "format_word": 100,
+     "sha256": "a9b2f6401458dd1d24dbb46ccba3d89c0ea1cae8a3cb6f33c724e372b75b7481",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+3": {
+   "name": "Co_t_slk00",
+   "name_source": "motbin-internal",
+   "input": "d/b+3",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-17",
+   "on_hit": "-3",
+   "on_ch": "-3",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x8000:104",
+   "t7": {
+    "notation": "d/b+3",
+    "id": "dvj_124",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+3",
+    "motbin_move_id": 1618,
+    "motbin_move_name": "Co_t_slk00",
+    "anim_name": "new_tsrk(DVD)",
+    "anim_id": 32872,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x8000",
+     "source": "common.arc",
+     "section": 0,
+     "entry": 104,
+     "rel_offset": 622340,
+     "size": 2768,
+     "format_word": 100,
+     "sha256": "a4d4fb8df70a3c4f3eaa15a1bfd0d9fd664dfa15840a2b8b3011ab9c529c6a59",
+     "blob_file": "common_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "FC+1": {
+   "name": "FC+1",
+   "name_source": "notation-only",
+   "input": "FC+1",
+   "damage": 6,
+   "damage_raw": "6",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm (TC)",
+   "on_block": "-5",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FC+1",
+    "id": "dvj_125",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "FC+2": {
+   "name": "FC+2",
+   "name_source": "notation-only",
+   "input": "FC+2",
+   "damage": 10,
+   "damage_raw": "10",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm (TC)",
+   "on_block": "-4",
+   "on_hit": "+7",
+   "on_ch": "+7",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FC+2",
+    "id": "dvj_126",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "FC+3": {
+   "name": "FC+3",
+   "name_source": "notation-only",
+   "input": "FC+3",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-17",
+   "on_hit": "-3",
+   "on_ch": "-3",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FC+3",
+    "id": "dvj_127",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "FC+4": {
+   "name": "FC+4",
+   "name_source": "notation-only",
+   "input": "FC+4",
+   "damage": 13,
+   "damage_raw": "13",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-15",
+   "on_hit": "-4",
+   "on_ch": "-4",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FC+4",
+    "id": "dvj_128",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "WS+1__2": {
+   "name": "WS+1",
+   "name_source": "notation-only",
+   "input": "WS+1",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-6~-5",
+   "on_hit": "+5~+6",
+   "on_ch": "+5~+6",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+1",
+    "id": "dvj_129",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Co_syalp00",
+     "Dj_sWALKF",
+     "Dj_lp00F"
+    ]
+   }
+  },
+  "WS+3": {
+   "name": "WS+3",
+   "name_source": "notation-only",
+   "input": "WS+3",
+   "damage": 37,
+   "damage_raw": "37",
+   "startup": 0.2667,
+   "startup_frames": 16,
+   "hit_level": "h",
+   "on_block": "-16",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+3",
+    "id": "dvj_130",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Co_syalk00",
+     "Dj_WK00F",
+     "Dj_lk00",
+     "Dj_WK01F"
+    ]
+   }
+  },
+  "d/f+2": {
+   "name": "Dj_m_p00",
+   "name_source": "motbin-internal",
+   "input": "d/f+2",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "m",
+   "on_block": "-7",
+   "on_hit": "+4",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:376",
+   "t7": {
+    "notation": "d/f+2",
+    "id": "dvj_131",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+2",
+    "motbin_move_id": 1632,
+    "motbin_move_name": "Dj_m_p00",
+    "anim_name": "ozdv_3rp_up2(DVD)",
+    "anim_id": 16760,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 376,
+     "rel_offset": 2769196,
+     "size": 2608,
+     "format_word": 100,
+     "sha256": "d3c47fe202bf6221c32466235302c916dbb68f5a297b7e4a4de72fe52df1d154",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/b or u or u/f+1": {
+   "name": "Co_jplp00F",
+   "name_source": "motbin-internal",
+   "input": "u/b or u or u/f+1",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": 0.3,
+   "startup_frames": 18,
+   "hit_level": "m (TJ)",
+   "on_block": "-8",
+   "on_hit": "+3",
+   "on_ch": "+3",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:236",
+   "t7": {
+    "notation": "u/b or u or u/f+1",
+    "id": "dvj_132",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/f+1",
+    "motbin_move_id": 1462,
+    "motbin_move_name": "Co_jplp00F",
+    "anim_name": "Bco_sjplp_n(DVD)",
+    "anim_id": 16620,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 236,
+     "rel_offset": 2485312,
+     "size": 2420,
+     "format_word": 100,
+     "sha256": "a2b788534b5ca56ac91b8b3664c3e44ff1d31201e7cf44f3282a4d1552441554",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/b or u+3 or u/f+3+4": {
+   "name": "Co_jplk00",
+   "name_source": "motbin-internal",
+   "input": "u/b or u+3 or u/f+3+4",
+   "damage": 33,
+   "damage_raw": "33",
+   "startup": 0.35,
+   "startup_frames": 21,
+   "hit_level": "m (TJ)",
+   "on_block": "-17",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:258",
+   "t7": {
+    "notation": "u/b or u+3 or u/f+3+4",
+    "id": "dvj_133",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u+3",
+    "motbin_move_id": 1483,
+    "motbin_move_name": "Co_jplk00",
+    "anim_name": "sjprki10(DVD)",
+    "anim_id": 16642,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 258,
+     "rel_offset": 2498320,
+     "size": 3020,
+     "format_word": 100,
+     "sha256": "808c1358cd95fd6ef901386803f51a75fd9fd16bfb5dde42129faea18ecab81e",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/b+4": {
+   "name": "Co_jprk00B",
+   "name_source": "motbin-internal",
+   "input": "u/b+4",
+   "damage": 14,
+   "damage_raw": "14",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "m (TJ)",
+   "on_block": "-12",
+   "on_hit": "-1",
+   "on_ch": "-1",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:273",
+   "t7": {
+    "notation": "u/b+4",
+    "id": "dvj_134",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/b+4",
+    "motbin_move_id": 1498,
+    "motbin_move_name": "Co_jprk00B",
+    "anim_name": "sjplki00(DVD)",
+    "anim_id": 16657,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 273,
+     "rel_offset": 2512592,
+     "size": 2636,
+     "format_word": 100,
+     "sha256": "a58dfed4693eb7788968b18bd64e607696d5b0a8bf14e6f634eecd6203d2b744",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/f+4__2": {
+   "name": "Wraith Kick",
+   "name_source": "mvl",
+   "input": "u/f+4",
+   "damage": 28,
+   "damage_raw": "28",
+   "startup": 0.3,
+   "startup_frames": 18,
+   "hit_level": "m (TJ)",
+   "on_block": "-8",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:dvj:0x4000:430",
+   "t7": {
+    "notation": "u/f+4",
+    "id": "dvj_135",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/f+4",
+    "motbin_move_id": 1690,
+    "motbin_move_name": "Dj_jprk00F",
+    "anim_name": "nadv_ikeri2(DVD)",
+    "anim_id": 16814,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "dvjrotsm.arc",
+     "section": 0,
+     "entry": 430,
+     "rel_offset": 2926188,
+     "size": 3096,
+     "format_word": 100,
+     "sha256": "f8d30e7fcf390dfb2a008d79f6acb5dc969f88ab1aa654fb8e43ff61e97a9a26",
+     "blob_file": "dvj_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "SS+1": {
+   "name": "SS+1",
+   "name_source": "notation-only",
+   "input": "SS+1",
+   "damage": 9,
+   "damage_raw": "9",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "+1",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "SS+1",
+    "id": "dvj_136",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_sWALKF",
+     "Dj_lp00F"
+    ]
+   }
+  },
+  "SS+3": {
+   "name": "SS+3",
+   "name_source": "notation-only",
+   "input": "SS+3",
+   "damage": 21,
+   "damage_raw": "21",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-14",
+   "on_hit": "-3",
+   "on_ch": "-3",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "SS+3",
+    "id": "dvj_137",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_WK00F",
+     "Dj_lk00",
+     "Dj_WK01F"
+    ]
+   }
+  },
+  "SS+4": {
+   "name": "SS+4",
+   "name_source": "notation-only",
+   "input": "SS+4",
+   "damage": 28,
+   "damage_raw": "28",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-9",
+   "on_hit": "KND",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "SS+4",
+    "id": "dvj_138",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_bodylp00",
+     "Dj_rk00"
+    ]
+   }
+  },
+  "BT 1 or 2": {
+   "name": "BT 1 or 2",
+   "name_source": "notation-only",
+   "input": "BT 1 or 2",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": 0.1333,
+   "startup_frames": 8,
+   "hit_level": "h",
+   "on_block": "-8",
+   "on_hit": "+3",
+   "on_ch": "+3",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "BT 1 or 2",
+    "id": "dvj_139",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_rp00B",
+     "Dj_c20",
+     "Dj_rp00",
+     "Dj_4rplk",
+     "Dj_c20E"
+    ]
+   }
+  },
+  "BT 3 or 4": {
+   "name": "BT 3 or 4",
+   "name_source": "notation-only",
+   "input": "BT 3 or 4",
+   "damage": 33,
+   "damage_raw": "33",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h",
+   "on_block": "-8",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "BT 3 or 4",
+    "id": "dvj_140",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Dj_bodylp00",
+     "Dj_rk00"
+    ]
+   }
+  }
+ }
+}

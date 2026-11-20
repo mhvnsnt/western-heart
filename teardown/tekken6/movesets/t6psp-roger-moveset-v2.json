@@ -1,0 +1,5629 @@
+{
+ "source_game": "Tekken 6 (PSP)",
+ "format": "COM moveset container (round 6/7 decode)",
+ "character": "ROGER",
+ "character_evidence": "in-file string at offset 624 of its own plaintext + author string + build timestamp (round 6, HIGH confidence)",
+ "gzip_idx": 67,
+ "data401_entry": 723,
+ "file": "idx67_entry723.bin",
+ "size": 450636,
+ "sha256": "d79830c4885890f9954318f3a8ac2faad071bae9699294a1b422f86a9ad24187",
+ "header": {
+  "version_be_u32": 1,
+  "magic": "COM\\0",
+  "word_at_8_le": 0,
+  "count_word_at_12_le": 9,
+  "count_word_note": "per-file count 7-16 (sum 176); exact referent UNPROVEN (round 6) - not used as an asset census"
+ },
+ "pointer_table_at_368": [
+  {
+   "slot": 0,
+   "word_a": 1310701,
+   "offset": 19556,
+   "section_len": 15760
+  },
+  {
+   "slot": 1,
+   "word_a": 197,
+   "offset": 35316,
+   "section_len": 7688
+  },
+  {
+   "slot": 2,
+   "word_a": 961,
+   "offset": 43004,
+   "section_len": 5160
+  },
+  {
+   "slot": 3,
+   "word_a": 430,
+   "offset": 48164,
+   "section_len": 2352
+  },
+  {
+   "slot": 4,
+   "word_a": 196,
+   "offset": 50516,
+   "section_len": 3092
+  },
+  {
+   "slot": 5,
+   "word_a": 1546,
+   "offset": 53608,
+   "section_len": 166368
+  },
+  {
+   "slot": 6,
+   "word_a": 5199,
+   "offset": 219976,
+   "section_len": 41984
+  },
+  {
+   "slot": 7,
+   "word_a": 1312,
+   "offset": 261960,
+   "section_len": 176
+  },
+  {
+   "slot": 8,
+   "word_a": 44,
+   "offset": 262136,
+   "section_len": 36372
+  },
+  {
+   "slot": 9,
+   "word_a": 3031,
+   "offset": 298508,
+   "section_len": 396
+  },
+  {
+   "slot": 10,
+   "word_a": 33,
+   "offset": 298904,
+   "section_len": 108
+  },
+  {
+   "slot": 11,
+   "word_a": 9,
+   "offset": 299012,
+   "section_len": 95392
+  },
+  {
+   "slot": 12,
+   "word_a": 1084,
+   "offset": 394404,
+   "section_len": 3792
+  },
+  {
+   "slot": 13,
+   "word_a": 948,
+   "offset": 398196,
+   "section_len": 1168
+  },
+  {
+   "slot": 14,
+   "word_a": 146,
+   "offset": 399364,
+   "section_len": 6176
+  },
+  {
+   "slot": 15,
+   "word_a": 772,
+   "offset": 405540,
+   "section_len": 21692
+  },
+  {
+   "slot": 16,
+   "word_a": 5423,
+   "offset": 427232,
+   "section_len": 2020
+  },
+  {
+   "slot": 17,
+   "word_a": 101,
+   "offset": 429252,
+   "section_len": 7020
+  },
+  {
+   "slot": 18,
+   "word_a": 1170,
+   "offset": 436272,
+   "section_len": 5632
+  },
+  {
+   "slot": 19,
+   "word_a": 88,
+   "offset": 441904,
+   "section_len": 1596
+  },
+  {
+   "slot": 20,
+   "word_a": 0,
+   "offset": 441904,
+   "section_len": 1596
+  },
+  {
+   "slot": 21,
+   "word_a": 0,
+   "offset": 441904,
+   "section_len": 1596
+  },
+  {
+   "slot": 22,
+   "word_a": 0,
+   "offset": 441904,
+   "section_len": 1596
+  },
+  {
+   "slot": 23,
+   "word_a": 133,
+   "offset": 443500,
+   "section_len": 168
+  },
+  {
+   "slot": 24,
+   "word_a": 21,
+   "offset": 443668,
+   "section_len": 20
+  },
+  {
+   "slot": 25,
+   "word_a": 0,
+   "offset": 443688,
+   "section_len": 1812
+  },
+  {
+   "slot": 26,
+   "word_a": 0,
+   "offset": 445500,
+   "section_len": 4432
+  },
+  {
+   "slot": 27,
+   "word_a": 0,
+   "offset": 449932,
+   "section_len": 20
+  },
+  {
+   "slot": 28,
+   "word_a": 0,
+   "offset": 449952,
+   "section_len": 20
+  },
+  {
+   "slot": 29,
+   "word_a": 0,
+   "offset": 449972,
+   "section_len": 20
+  },
+  {
+   "slot": 30,
+   "word_a": 0,
+   "offset": 449992,
+   "section_len": 644
+  },
+  {
+   "slot": 31,
+   "word_a": 0,
+   "offset": 0,
+   "section_len": 19556
+  }
+ ],
+ "name_region": {
+  "start": 624,
+  "end": 43004,
+  "note": "move-name record region: English move names first, then localized name/description variants (all byte-carried strings, verbatim with offsets); records span name offset -> next name offset"
+ },
+ "author_string": "[ROGER]1",
+ "moves": [
+  {
+   "name": "Left Right Combo",
+   "name_offset": 727,
+   "record_len": 157,
+   "record_hex": "4c65667420526967687420436f6d626f0000e383afe383b3e38384e383bce38391e383b3e383810000ee8095ee80960000ee8095ee80960000ee8095ee80960000ee8095ee80960000ee8095ee80960000ee8095ee80960000ee8095ee80960000ee8095ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e383afe383b3e38384e383bce3839ce38387e382a3e38395e38383e382af0000",
+   "input_from_name": "1,2 Combo",
+   "command_glyphs": [
+    "U+E015",
+    "U+E016"
+   ],
+   "command_decoded": "1,2",
+   "command_complete": true
+  },
+  {
+   "name": "Left Right Body Blow",
+   "name_offset": 884,
+   "record_len": 185,
+   "record_hex": "4c65667420526967687420426f647920426c6f770000e383afe383b3e38384e383bce3839ce38387e382a3e38395e38383e382af0000ee8095ee8096ee80950000ee8095ee8096ee80950000ee8095ee8096ee80950000ee8095ee8096ee80950000ee8095ee8096ee80950000ee8095ee8096ee80950000ee8095ee8096ee80950000ee8095ee8096ee80950000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e383afe383b3e38384e383bce382a2e383ade383bc0000",
+   "input_from_name": "1,2 Body Blow",
+   "command_glyphs": [
+    "U+E015",
+    "U+E016",
+    "U+E015"
+   ],
+   "command_decoded": "1,2,1",
+   "command_complete": true
+  },
+  {
+   "name": "Left Right Arrow",
+   "name_offset": 1069,
+   "record_len": 181,
+   "record_hex": "4c656674205269676874204172726f770000e383afe383b3e38384e383bce382a2e383ade383bc0000ee8095ee8096ee80960000ee8095ee8096ee80960000ee8095ee8096ee80960000ee8095ee8096ee80960000ee8095ee8096ee80960000ee8095ee8096ee80960000ee8095ee8096ee80960000ee8095ee8096ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e383afe383b3e38384e383bce38397e383aae3839ee382b3e383b3e3839c0000",
+   "input_from_name": "1,2 Arrow",
+   "command_glyphs": [
+    "U+E015",
+    "U+E016",
+    "U+E016"
+   ],
+   "command_decoded": "1,2,2",
+   "command_complete": true
+  },
+  {
+   "name": "One Two Kangaroo Combo",
+   "name_offset": 1250,
+   "record_len": 202,
+   "record_hex": "4f6e652054776f204b616e6761726f6f20436f6d626f0000e383afe383b3e38384e383bce38397e383aae3839ee382b3e383b3e3839c0000ee8095ee8096ee80980000ee8095ee8096ee80980000ee8095ee8096ee80980000ee8095ee8096ee80980000ee8095ee8096ee80980000ee8095ee8096ee80980000ee8095ee8096ee80980000ee8095ee8096ee80980000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e383afe383b3e38384e383bce383ade382b1e38383e38388e382b9e382bfe383b3e382b90000",
+   "input_from_name": "One Two Kangaroo Combo",
+   "command_glyphs": [
+    "U+E015",
+    "U+E016",
+    "U+E018"
+   ],
+   "command_decoded": "1,2,3",
+   "command_complete": true
+  },
+  {
+   "name": "Left Right Rocket Stance",
+   "name_offset": 1452,
+   "record_len": 246,
+   "record_hex": "4c65667420526967687420526f636b6574205374616e63650000e383afe383b3e38384e383bce383ade382b1e38383e38388e382b9e382bfe383b3e382b90000ee8095ee8096ee8083ee80970000ee8095ee8096ee8083ee80970000ee8095ee8096ee8083ee80970000ee8095ee8096ee8083ee80970000ee8095ee8096ee8083ee80970000ee8095ee8096ee8083ee80970000ee8095ee8096ee8083ee80970000ee8095ee8096ee8083ee80970000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e383a9e382a4e38388e382b9e38388e383ace383bce38388efbd9ee383ace38395e38388e382a2e38383e38391e383bc0000",
+   "input_from_name": "1,2 Rocket Stance",
+   "command_glyphs": [
+    "U+E015",
+    "U+E016",
+    "U+E003",
+    "U+E017"
+   ],
+   "command_decoded": "1,2,b+1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Jab Uppercut",
+   "name_offset": 1698,
+   "record_len": 177,
+   "record_hex": "4a61622055707065726375740000e383a9e382a4e38388e382b9e38388e383ace383bce38388efbd9ee383ace38395e38388e382a2e38383e38391e383bc0000ee8096ee80950000ee8096ee80950000ee8096ee80950000ee8096ee80950000ee8096ee80950000ee8096ee80950000ee8096ee80950000ee8096ee80950000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e383ade383b3e383bbe38389e382a5e383bbe38392e383bce383ab0000",
+   "input_from_name": "Jab Uppercut",
+   "command_glyphs": [
+    "U+E016",
+    "U+E015"
+   ],
+   "command_decoded": "2,1",
+   "command_complete": true
+  },
+  {
+   "name": "Spinning Tail Whip",
+   "name_offset": 1875,
+   "record_len": 222,
+   "record_hex": "5370696e6e696e67205461696c20576869700000e383ade383b3e383bbe38389e382a5e383bbe38392e383bce383ab0000e38090ee8098ee809ce380910000e38090ee8098ee809ce380910000e38090ee8098ee809ce380910000e38090ee8098ee809ce380910000e38090ee8098ee809ce380910000e38090ee8098ee809ce380910000e38090ee8098ee809ce380910000e38090ee8098ee809ce380910000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e38380e38396e383abe382b9e38394e383b3e383bbe382abe382b9e382bfe3838de38383e383880000",
+   "input_from_name": "Spinning Tail Whip",
+   "command_glyphs": [
+    "U+E018",
+    "U+E01C"
+   ],
+   "command_decoded": "3,4",
+   "command_complete": true
+  },
+  {
+   "name": "Double Spin Castanet Kick ",
+   "name_offset": 2097,
+   "record_len": 200,
+   "record_hex": "446f75626c65205370696e2043617374616e6574204b69636b200000e38380e38396e383abe382b9e38394e383b3e383bbe382abe382b9e382bfe3838de38383e383880000ee8097ee80980000ee8097ee80980000ee8097ee80980000ee8097ee80980000ee8097ee80980000ee8097ee80980000ee8097ee80980000ee8097ee80980000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e38380e38396e383abe382b9e38394e383b3e383bbe382a2e3838be3839ee383abe382b9e382a4e383bce383970000",
+   "input_from_name": "Double Spin Castanet Kick ",
+   "command_glyphs": [
+    "U+E017",
+    "U+E018"
+   ],
+   "command_decoded": "1+2,3",
+   "command_complete": true
+  },
+  {
+   "name": "Double Spin Animal Sweep",
+   "name_offset": 2297,
+   "record_len": 186,
+   "record_hex": "446f75626c65205370696e20416e696d616c2053776565700000e38380e38396e383abe382b9e38394e383b3e383bbe382a2e3838be3839ee383abe382b9e382a4e383bce383970000ee8097ee809c0000ee8097ee809c0000ee8097ee809c0000ee8097ee809c0000ee8097ee809c0000ee8097ee809c0000ee8097ee809c0000ee8097ee809c0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382abe382b9e382bfe3838de38383e38388e382ade38383e382af0000",
+   "input_from_name": "Double Spin Animal Sweep",
+   "command_glyphs": [
+    "U+E017",
+    "U+E01C"
+   ],
+   "command_decoded": "1+2,4",
+   "command_complete": true
+  },
+  {
+   "name": "Castanet Kick",
+   "name_offset": 2483,
+   "record_len": 124,
+   "record_hex": "43617374616e6574204b69636b0000e382abe382b9e382bfe3838de38383e38388e382ade38383e382af0000ee80a00000ee80a00000ee80a00000ee80a00000ee80a00000ee80a00000ee80a00000ee80a00000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e38397e383ade383a0e3838ae383bce383890000",
+   "input_from_name": "Castanet Kick",
+   "command_glyphs": [
+    "U+E020"
+   ],
+   "command_decoded": "3+4",
+   "command_complete": true
+  },
+  {
+   "name": "Outback Stomp",
+   "name_offset": 2607,
+   "record_len": 142,
+   "record_hex": "4f75746261636b2053746f6d700000e38397e383ade383a0e3838ae383bce383890000ee8084ee80980000ee8084ee80980000ee8084ee80980000ee8084ee80980000ee8084ee80980000ee8084ee80980000ee8084ee80980000ee8084ee80980000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382a8e382a2e383bce382bae383ade38383e382af0000",
+   "input_from_name": "Outback Stomp",
+   "command_glyphs": [
+    "U+E004",
+    "U+E018"
+   ],
+   "command_decoded": "f+3",
+   "command_complete": true
+  },
+  {
+   "name": "Ayer's Rock",
+   "name_offset": 2749,
+   "record_len": 203,
+   "record_hex": "41796572277320526f636b0000e382a8e382a2e383bce382bae383ade38383e382af0000ee8084ee809cee8098ee80960000ee8084ee809cee8098ee80960000ee8084ee809cee8098ee80960000ee8084ee809cee8098ee80960000ee8084ee809cee8098ee80960000ee8084ee809cee8098ee80960000ee8084ee809cee8098ee80960000ee8084ee809cee8098ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382a2e3838be3839ee383abe383a1e382ace38388e383b3e38391e383b3e383810000",
+   "input_from_name": "Ayer's Rock",
+   "command_glyphs": [
+    "U+E004",
+    "U+E01C",
+    "U+E018",
+    "U+E016"
+   ],
+   "command_decoded": "f+4,3,2",
+   "command_complete": true
+  },
+  {
+   "name": "Animal Gigaton Punch",
+   "name_offset": 2952,
+   "record_len": 200,
+   "record_hex": "416e696d616c2047696761746f6e2050756e63680000e382a2e3838be3839ee383abe383a1e382ace38388e383b3e38391e383b3e383810000ee8084ee8097ee80960000ee8084ee8097ee80960000ee8084ee8097ee80960000ee8084ee8097ee80960000ee8084ee8097ee80960000ee8084ee8097ee80960000ee8084ee8097ee80960000ee8084ee8097ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382a2e3838be3839ee383abe38389e383ade38383e38397e382ade38383e382af0000",
+   "input_from_name": "Animal Gigaton Punch",
+   "command_glyphs": [
+    "U+E004",
+    "U+E017",
+    "U+E016"
+   ],
+   "command_decoded": "f+1+2,2",
+   "command_complete": true
+  },
+  {
+   "name": "Animal Drop Kick",
+   "name_offset": 3152,
+   "record_len": 160,
+   "record_hex": "416e696d616c2044726f70204b69636b0000e382a2e3838be3839ee383abe38389e383ade38383e38397e382ade38383e382af0000ee8084ee80a00000ee8084ee80a00000ee8084ee80a00000ee8084ee80a00000ee8084ee80a00000ee8084ee80a00000ee8084ee80a00000ee8084ee80a00000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382a8e383abe3839ce383bce38393e383b3e382bf0000",
+   "input_from_name": "Animal Drop Kick",
+   "command_glyphs": [
+    "U+E004",
+    "U+E020"
+   ],
+   "command_decoded": "f+3+4",
+   "command_complete": true
+  },
+  {
+   "name": "Elbow Slap Combo",
+   "name_offset": 3312,
+   "record_len": 181,
+   "record_hex": "456c626f7720536c617020436f6d626f0000e382a8e383abe3839ce383bce38393e383b3e382bf0000ee8082ee8095ee80960000ee8082ee8095ee80960000ee8082ee8095ee80960000ee8082ee8095ee80960000ee8082ee8095ee80960000ee8082ee8095ee80960000ee8082ee8095ee80960000ee8082ee8095ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e38390e383b3e38387e382a3e382afe383bce38388e383bbe3839ce383a00000",
+   "input_from_name": "Elbow Slap Combo",
+   "command_glyphs": [
+    "U+E002",
+    "U+E015",
+    "U+E016"
+   ],
+   "command_decoded": "d/f+1,2",
+   "command_complete": true
+  },
+  {
+   "name": "Bandicoot Bomb",
+   "name_offset": 3493,
+   "record_len": 155,
+   "record_hex": "42616e6469636f6f7420426f6d620000e38390e383b3e38387e382a3e382afe383bce38388e383bbe3839ce383a00000ee8082ee80960000ee8082ee80960000ee8082ee80960000ee8082ee80960000ee8082ee80960000ee8082ee80960000ee8082ee80960000ee8082ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e38386e382a4e383abe38395e383ace382a4e383ab0000",
+   "input_from_name": "Bandicoot Bomb",
+   "command_glyphs": [
+    "U+E002",
+    "U+E016"
+   ],
+   "command_decoded": "d/f+2",
+   "command_complete": true
+  },
+  {
+   "name": "Tail Flail",
+   "name_offset": 3648,
+   "record_len": 139,
+   "record_hex": "5461696c20466c61696c0000e38386e382a4e383abe38395e383ace382a4e383ab0000ee8082ee80980000ee8082ee80980000ee8082ee80980000ee8082ee80980000ee8082ee80980000ee8082ee80980000ee8082ee80980000ee8082ee80980000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e38395e382a3e383b3e382ade38383e382af0000",
+   "input_from_name": "Tail Flail",
+   "command_glyphs": [
+    "U+E002",
+    "U+E018"
+   ],
+   "command_decoded": "d/f+3",
+   "command_complete": true
+  },
+  {
+   "name": "Right Cross Kick",
+   "name_offset": 3787,
+   "record_len": 154,
+   "record_hex": "52696768742043726f7373204b69636b0000e38395e382a3e383b3e382ade38383e382af0000ee8082ee809c0000ee8082ee809c0000ee8082ee809c0000ee8082ee809c0000ee8082ee809c0000ee8082ee809c0000ee8082ee809c0000ee8082ee809c0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382a2e3838be3839ee383abe38398e38383e38389e38390e38383e383880000",
+   "input_from_name": "2 Cross Kick",
+   "command_glyphs": [
+    "U+E002",
+    "U+E01C"
+   ],
+   "command_decoded": "d/f+4",
+   "command_complete": true
+  },
+  {
+   "name": "Animal Headbutt",
+   "name_offset": 3941,
+   "record_len": 156,
+   "record_hex": "416e696d616c2048656164627574740000e382a2e3838be3839ee383abe38398e38383e38389e38390e38383e383880000ee8082ee80970000ee8082ee80970000ee8082ee80970000ee8082ee80970000ee8082ee80970000ee8082ee80970000ee8082ee80970000ee8082ee80970000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382a2e3838be3839ee383abe38393e383bce383880000",
+   "input_from_name": "Animal Headbutt",
+   "command_glyphs": [
+    "U+E002",
+    "U+E017"
+   ],
+   "command_decoded": "d/f+1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Animal Rampage",
+   "name_offset": 4097,
+   "record_len": 173,
+   "record_hex": "416e696d616c2052616d706167650000e382a2e3838be3839ee383abe38393e383bce383880000ee8082ee80a00000ee8082ee80a00000ee8082ee80a00000ee8082ee80a00000ee8082ee80a00000ee8082ee80a00000ee8082ee80a00000ee8082ee80a00000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e383ace38395e38388e382b9e38388e383ace383bce38388efbd9ee383a9e382a4e38388e382a2e38383e38391e383bc0000",
+   "input_from_name": "Animal Rampage",
+   "command_glyphs": [
+    "U+E002",
+    "U+E020"
+   ],
+   "command_decoded": "d/f+3+4",
+   "command_complete": true
+  },
+  {
+   "name": "Jab Uppercut",
+   "name_offset": 4270,
+   "record_len": 228,
+   "record_hex": "4a61622055707065726375740000e383ace38395e38388e382b9e38388e383ace383bce38388efbd9ee383a9e382a4e38388e382a2e38383e38391e383bc0000ee8081ee8095e29886ee80960000ee8081ee8095e29886ee80960000ee8081ee8095e29886ee80960000ee8081ee8095e29886ee80960000ee8081ee8095e29886ee80960000ee8081ee8095e29886ee80960000ee8081ee8095e29886ee80960000ee8081ee8095e29886ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e38380e382a4e38393e383b3e382b0e383ade383bce38391e383b3e383810000",
+   "input_from_name": "Jab Uppercut",
+   "command_glyphs": [
+    "U+E001",
+    "U+E015"
+   ],
+   "command_decoded": "d+1",
+   "command_complete": true
+  },
+  {
+   "name": "Diving Low Punch",
+   "name_offset": 4498,
+   "record_len": 160,
+   "record_hex": "446976696e67204c6f772050756e63680000e38380e382a4e38393e383b3e382b0e383ade383bce38391e383b3e383810000ee8081ee80960000ee8081ee80960000ee8081ee80960000ee8081ee80960000ee8081ee80960000ee8081ee80960000ee8081ee80960000ee8081ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382a2e3838be3839ee383abe382b9e38388e383bce383a00000",
+   "input_from_name": "Diving Low Punch",
+   "command_glyphs": [
+    "U+E001",
+    "U+E016"
+   ],
+   "command_decoded": "d+2",
+   "command_complete": true
+  },
+  {
+   "name": "Animal Roundhouse",
+   "name_offset": 4658,
+   "record_len": 203,
+   "record_hex": "416e696d616c20526f756e64686f7573650000e382a2e3838be3839ee383abe382b9e38388e383bce383a00000ee8081ee8097ee8097ee80960000ee8081ee8097ee8097ee80960000ee8081ee8097ee8097ee80960000ee8081ee8097ee8097ee80960000ee8081ee8097ee8097ee80960000ee8081ee8097ee8097ee80960000ee8081ee8097ee8097ee80960000ee8081ee8097ee8097ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e38386e382a4e383abe383a2e38383e38394e383b3e382b00000",
+   "input_from_name": "Animal Roundhouse",
+   "command_glyphs": [
+    "U+E001",
+    "U+E017",
+    "U+E017",
+    "U+E016"
+   ],
+   "command_decoded": "d+1+2,1+2,2",
+   "command_complete": true
+  },
+  {
+   "name": "Tail Mopping",
+   "name_offset": 4861,
+   "record_len": 147,
+   "record_hex": "5461696c204d6f7070696e670000e38386e382a4e383abe383a2e38383e38394e383b3e382b00000ee8081ee80a00000ee8081ee80a00000ee8081ee80a00000ee8081ee80a00000ee8081ee80a00000ee8081ee80a00000ee8081ee80a00000ee8081ee80a00000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e38386e382a4e383abe382abe38383e382bfe383bc0000",
+   "input_from_name": "Tail Mopping",
+   "command_glyphs": [
+    "U+E001",
+    "U+E020"
+   ],
+   "command_decoded": "d+3+4",
+   "command_complete": true
+  },
+  {
+   "name": "Tail Tripper",
+   "name_offset": 5008,
+   "record_len": 156,
+   "record_hex": "5461696c20547269707065720000e38386e382a4e383abe382abe38383e382bfe383bc0000ee8080ee80980000ee8080ee80980000ee8080ee80980000ee8080ee80980000ee8080ee80980000ee8080ee80980000ee8080ee80980000ee8080ee80980000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382a2e3838be3839ee383abe382ade38383e382afe383a9e38383e382b7e383a50000",
+   "input_from_name": "Tail Tripper",
+   "command_glyphs": [
+    "U+E000",
+    "U+E018"
+   ],
+   "command_decoded": "d/b+3",
+   "command_complete": true
+  },
+  {
+   "name": "Animal Kick Rush",
+   "name_offset": 5164,
+   "record_len": 262,
+   "record_hex": "416e696d616c204b69636b20527573680000e382a2e3838be3839ee383abe382ade38383e382afe383a9e38383e382b7e383a50000ee8080ee809cee8098ee809cee8098ee809c0000ee8080ee809cee8098ee809cee8098ee809c0000ee8080ee809cee8098ee809cee8098ee809c0000ee8080ee809cee8098ee809cee8098ee809c0000ee8080ee809cee8098ee809cee8098ee809c0000ee8080ee809cee8098ee809cee8098ee809c0000ee8080ee809cee8098ee809cee8098ee809c0000ee8080ee809cee8098ee809cee8098ee809c0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382abe383b3e382ace383abe383bce382a2e382bfe38383e382af0000",
+   "input_from_name": "Animal Kick Rush",
+   "command_glyphs": [
+    "U+E000",
+    "U+E01C",
+    "U+E018",
+    "U+E01C",
+    "U+E018",
+    "U+E01C"
+   ],
+   "command_decoded": "d/b+4,3,4,3,4",
+   "command_complete": true
+  },
+  {
+   "name": "Kangaroo Attack",
+   "name_offset": 5426,
+   "record_len": 168,
+   "record_hex": "4b616e6761726f6f2041747461636b0000e382abe383b3e382ace383abe383bce382a2e382bfe38383e382af0000ee8080ee80970000ee8080ee80970000ee8080ee80970000ee8080ee80970000ee8080ee80970000ee8080ee80970000ee8080ee80970000ee8080ee80970000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e383aae38390e383bce382b9e38390e382a4e382b7e382afe383abe382ade38383e382af0000",
+   "input_from_name": "Kangaroo Attack",
+   "command_glyphs": [
+    "U+E000",
+    "U+E017"
+   ],
+   "command_decoded": "d/b+1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Reverse Bicycle Kick",
+   "name_offset": 5594,
+   "record_len": 170,
+   "record_hex": "526576657273652042696379636c65204b69636b0000e383aae38390e383bce382b9e38390e382a4e382b7e382afe383abe382ade38383e382af0000ee8083ee80980000ee8083ee80980000ee8083ee80980000ee8083ee80980000ee8083ee80980000ee8083ee80980000ee8083ee80980000ee8083ee80980000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382b9e3838ae38383e38397e382b7e383a7e38383e383880000",
+   "input_from_name": "Reverse Bicycle Kick",
+   "command_glyphs": [
+    "U+E003",
+    "U+E018"
+   ],
+   "command_decoded": "b+3",
+   "command_complete": true
+  },
+  {
+   "name": "Spinning Snap Kick",
+   "name_offset": 5764,
+   "record_len": 156,
+   "record_hex": "5370696e6e696e6720536e6170204b69636b0000e382b9e3838ae38383e38397e382b7e383a7e38383e383880000ee8083ee809c0000ee8083ee809c0000ee8083ee809c0000ee8083ee809c0000ee8083ee809c0000ee8083ee809c0000ee8083ee809c0000ee8083ee809c0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e383ade382b1e38383e38388e382b9e382bfe383b3e382b90000",
+   "input_from_name": "Spinning Snap Kick",
+   "command_glyphs": [
+    "U+E003",
+    "U+E01C"
+   ],
+   "command_decoded": "b+4",
+   "command_complete": true
+  },
+  {
+   "name": "Rocket Stance",
+   "name_offset": 5920,
+   "record_len": 148,
+   "record_hex": "526f636b6574205374616e63650000e383ade382b1e38383e38388e382b9e382bfe383b3e382b90000ee8083ee80970000ee8083ee80970000ee8083ee80970000ee8083ee80970000ee8083ee80970000ee8083ee80970000ee8083ee80970000ee8083ee80970000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e383ade383bce38389e383a9e383b3e3838ae383bc0000",
+   "input_from_name": "Rocket Stance",
+   "command_glyphs": [
+    "U+E003",
+    "U+E017"
+   ],
+   "command_decoded": "b+1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Road Runner",
+   "name_offset": 6068,
+   "record_len": 173,
+   "record_hex": "526f61642052756e6e65720000e383ade383bce38389e383a9e383b3e3838ae383bc0000ee8083ee8097ee808c0000ee8083ee8097ee808c0000ee8083ee8097ee808c0000ee8083ee8097ee808c0000ee8083ee8097ee808c0000ee8083ee8097ee808c0000ee8083ee8097ee808c0000ee8083ee8097ee808c0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e38395e383a9e382a4e383b3e382b0e382b9e382bfe383bce383880000",
+   "input_from_name": "Road Runner",
+   "command_glyphs": [
+    "U+E003",
+    "U+E017",
+    "U+E00C"
+   ],
+   "command_decoded": "b+1+2,~f",
+   "command_complete": true
+  },
+  {
+   "name": "Running Start",
+   "name_offset": 6241,
+   "record_len": 193,
+   "record_hex": "52756e6e696e672053746172740000e38395e383a9e382a4e383b3e382b0e382b9e382bfe383bce383880000ee8083ee8097ee808a0000ee8083ee8097ee808a0000ee8083ee8097ee808a0000ee8083ee8097ee808a0000ee8083ee8097ee808a0000ee8083ee8097ee808a0000ee8083ee8097ee808a0000ee8083ee8097ee808a0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e38395e383a9e382a4e383b3e382b0e383bbe3838fe383b3e3839ee383bce38391e383b3e383810000",
+   "input_from_name": "Running Start",
+   "command_glyphs": [
+    "U+E003",
+    "U+E017",
+    "U+E00A"
+   ],
+   "command_decoded": "b+1+2,U+E00A",
+   "command_complete": false
+  },
+  {
+   "name": "Wind-up Hook",
+   "name_offset": 6434,
+   "record_len": 198,
+   "record_hex": "57696e642d757020486f6f6b0000e38395e383a9e382a4e383b3e382b0e383bbe3838fe383b3e3839ee383bce38391e383b3e383810000ee8083ee8097ee80950000ee8083ee8097ee80950000ee8083ee8097ee80950000ee8083ee8097ee80950000ee8083ee8097ee80950000ee8083ee8097ee80950000ee8083ee8097ee80950000ee8083ee8097ee80950000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e38395e383a9e382a4e383b3e382b0e383bbe382b9e38388e383ace383bce383880000",
+   "input_from_name": "Wind-up Hook",
+   "command_glyphs": [
+    "U+E003",
+    "U+E017",
+    "U+E015"
+   ],
+   "command_decoded": "b+1+2,1",
+   "command_complete": true
+  },
+  {
+   "name": "Wind-up Straight",
+   "name_offset": 6632,
+   "record_len": 196,
+   "record_hex": "57696e642d75702053747261696768740000e38395e383a9e382a4e383b3e382b0e383bbe382b9e38388e383ace383bce383880000ee8083ee8097ee80960000ee8083ee8097ee80960000ee8083ee8097ee80960000ee8083ee8097ee80960000ee8083ee8097ee80960000ee8083ee8097ee80960000ee8083ee8097ee80960000ee8083ee8097ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e38395e383a9e382a4e383b3e382b0e383bbe383ade383bce382ade38383e382af0000",
+   "input_from_name": "Wind-up Straight",
+   "command_glyphs": [
+    "U+E003",
+    "U+E017",
+    "U+E016"
+   ],
+   "command_decoded": "b+1+2,2",
+   "command_complete": true
+  },
+  {
+   "name": "Wind-up Low Kick",
+   "name_offset": 6828,
+   "record_len": 199,
+   "record_hex": "57696e642d7570204c6f77204b69636b0000e38395e383a9e382a4e383b3e382b0e383bbe383ade383bce382ade38383e382af0000ee8083ee8097ee80980000ee8083ee8097ee80980000ee8083ee8097ee80980000ee8083ee8097ee80980000ee8083ee8097ee80980000ee8083ee8097ee80980000ee8083ee8097ee80980000ee8083ee8097ee80980000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e38395e383a9e382a4e383b3e382b0e383bbe3839fe38389e383abe382ade38383e382af0000",
+   "input_from_name": "Wind-up Low Kick",
+   "command_glyphs": [
+    "U+E003",
+    "U+E017",
+    "U+E018"
+   ],
+   "command_decoded": "b+1+2,3",
+   "command_complete": true
+  },
+  {
+   "name": "Wind-up Middle Kick",
+   "name_offset": 7027,
+   "record_len": 190,
+   "record_hex": "57696e642d7570204d6964646c65204b69636b0000e38395e383a9e382a4e383b3e382b0e383bbe3839fe38389e383abe382ade38383e382af0000ee8083ee8097ee809c0000ee8083ee8097ee809c0000ee8083ee8097ee809c0000ee8083ee8097ee809c0000ee8083ee8097ee809c0000ee8083ee8097ee809c0000ee8083ee8097ee809c0000ee8083ee8097ee809c0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e383ade383bce38389e383ade383bce383a9e383bc0000",
+   "input_from_name": "Wind-up Middle Kick",
+   "command_glyphs": [
+    "U+E003",
+    "U+E017",
+    "U+E01C"
+   ],
+   "command_decoded": "b+1+2,4",
+   "command_complete": true
+  },
+  {
+   "name": "Road Roller",
+   "name_offset": 7217,
+   "record_len": 185,
+   "record_hex": "526f616420526f6c6c65720000e383ade383bce38389e383ade383bce383a9e383bc0000ee8083ee8097ee80970000ee8083ee8097ee80970000ee8083ee8097ee80970000ee8083ee8097ee80970000ee8083ee8097ee80970000ee8083ee8097ee80970000ee8083ee8097ee80970000ee8083ee8097ee80970000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e38395e383a9e382a4e383b3e382b0e383bbe38392e38383e38397e382a2e382bfe38383e382af0000",
+   "input_from_name": "Road Roller",
+   "command_glyphs": [
+    "U+E003",
+    "U+E017",
+    "U+E017"
+   ],
+   "command_decoded": "b+1+2,1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Wind-up Hip Press",
+   "name_offset": 7402,
+   "record_len": 188,
+   "record_hex": "57696e642d7570204869702050726573730000e38395e383a9e382a4e383b3e382b0e383bbe38392e38383e38397e382a2e382bfe38383e382af0000ee8083ee8097ee80a00000ee8083ee8097ee80a00000ee8083ee8097ee80a00000ee8083ee8097ee80a00000ee8083ee8097ee80a00000ee8083ee8097ee80a00000ee8083ee8097ee80a00000ee8083ee8097ee80a00000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e3839ce38393e383b3e38380e383b3e382b90000",
+   "input_from_name": "Wind-up Hip Press",
+   "command_glyphs": [
+    "U+E003",
+    "U+E017",
+    "U+E020"
+   ],
+   "command_decoded": "b+1+2,3+4",
+   "command_complete": true
+  },
+  {
+   "name": "Bobbin Dance",
+   "name_offset": 7590,
+   "record_len": 141,
+   "record_hex": "426f6262696e2044616e63650000e3839ce38393e383b3e38380e383b3e382b90000ee8083ee80a00000ee8083ee80a00000ee8083ee80a00000ee8083ee80a00000ee8083ee80a00000ee8083ee80a00000ee8083ee80a00000ee8083ee80a00000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382afe383abe382afe383abe38391e383b3e383810000",
+   "input_from_name": "Bobbin Dance",
+   "command_glyphs": [
+    "U+E003",
+    "U+E020"
+   ],
+   "command_decoded": "b+3+4",
+   "command_complete": true
+  },
+  {
+   "name": "Windmill Punch",
+   "name_offset": 7731,
+   "record_len": 179,
+   "record_hex": "57696e646d696c6c2050756e63680000e382afe383abe382afe383abe38391e383b3e383810000ee8083ee80a0ee80950000ee8083ee80a0ee80950000ee8083ee80a0ee80950000ee8083ee80a0ee80950000ee8083ee80a0ee80950000ee8083ee80a0ee80950000ee8083ee80a0ee80950000ee8083ee80a0ee80950000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382aee383a3e383a9e382afe382b7e383bce382a2e38383e38391e383bc0000",
+   "input_from_name": "Windmill Punch",
+   "command_glyphs": [
+    "U+E003",
+    "U+E020",
+    "U+E015"
+   ],
+   "command_decoded": "b+3+4,1",
+   "command_complete": true
+  },
+  {
+   "name": "Galaxy Uppercut",
+   "name_offset": 7910,
+   "record_len": 192,
+   "record_hex": "47616c6178792055707065726375740000e382aee383a3e383a9e382afe382b7e383bce382a2e38383e38391e383bc0000ee8083ee80a0ee80960000ee8083ee80a0ee80960000ee8083ee80a0ee80960000ee8083ee80a0ee80960000ee8083ee80a0ee80960000ee8083ee80a0ee80960000ee8083ee80a0ee80960000ee8083ee80a0ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382a2e3838be3839ee383abe382aee382ace38388e383b3e38391e383b3e383810000",
+   "input_from_name": "Galaxy Uppercut",
+   "command_glyphs": [
+    "U+E003",
+    "U+E020",
+    "U+E016"
+   ],
+   "command_decoded": "b+3+4,2",
+   "command_complete": true
+  },
+  {
+   "name": "Wind Up Punch",
+   "name_offset": 8102,
+   "record_len": 160,
+   "record_hex": "57696e642055702050756e63680000e382a2e3838be3839ee383abe382aee382ace38388e383b3e38391e383b3e383810000ee8083ee809d0000ee8083ee809d0000ee8083ee809d0000ee8083ee809d0000ee8083ee809d0000ee8083ee809d0000ee8083ee809d0000ee8083ee809d0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382a2e3838be3839ee383abe383a8e383bce383a8e383bc0000",
+   "input_from_name": "Wind Up Punch",
+   "command_glyphs": [
+    "U+E003",
+    "U+E01D"
+   ],
+   "command_decoded": "b,U+E01D",
+   "command_complete": false
+  },
+  {
+   "name": "Animal Yo-Yo",
+   "name_offset": 8262,
+   "record_len": 150,
+   "record_hex": "416e696d616c20596f2d596f0000e382a2e3838be3839ee383abe383a8e383bce383a8e383bc0000ee8085ee80980000ee8085ee80980000ee8085ee80980000ee8085ee80980000ee8085ee80980000ee8085ee80980000ee8085ee80980000ee8085ee80980000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382a8e383abe3839ce383bce38389e383ade38383e383970000",
+   "input_from_name": "Animal Yo-Yo",
+   "command_glyphs": [
+    "U+E005",
+    "U+E018"
+   ],
+   "command_decoded": "u/b+3",
+   "command_complete": true
+  },
+  {
+   "name": "Elbow Drop",
+   "name_offset": 8412,
+   "record_len": 145,
+   "record_hex": "456c626f772044726f700000e382a8e383abe3839ce383bce38389e383ade38383e383970000ee8087ee80960000ee8087ee80960000ee8087ee80960000ee8087ee80960000ee8087ee80960000ee8087ee80960000ee8087ee80960000ee8087ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382afe383abe382afe383abe382ade38383e382af0000",
+   "input_from_name": "Elbow Drop",
+   "command_glyphs": [
+    "U+E007",
+    "U+E016"
+   ],
+   "command_decoded": "u/f+2",
+   "command_complete": true
+  },
+  {
+   "name": "Helicopter Kick",
+   "name_offset": 8557,
+   "record_len": 183,
+   "record_hex": "48656c69636f70746572204b69636b0000e382afe383abe382afe383abe382ade38383e382af0000ee8087ee8098ee80980000ee8087ee8098ee80980000ee8087ee8098ee80980000ee8087ee8098ee80980000ee8087ee8098ee80980000ee8087ee8098ee80980000ee8087ee8098ee80980000ee8087ee8098ee80980000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e383a9e382a4e382b8e383b3e382b0e38388e382a5e383bce382ade38383e382af0000",
+   "input_from_name": "Helicopter Kick",
+   "command_glyphs": [
+    "U+E007",
+    "U+E018",
+    "U+E018"
+   ],
+   "command_decoded": "u/f+3,3",
+   "command_complete": true
+  },
+  {
+   "name": "Rising Toe Kick",
+   "name_offset": 8740,
+   "record_len": 156,
+   "record_hex": "526973696e6720546f65204b69636b0000e383a9e382a4e382b8e383b3e382b0e38388e382a5e383bce382ade38383e382af0000ee8087ee809c0000ee8087ee809c0000ee8087ee809c0000ee8087ee809c0000ee8087ee809c0000ee8087ee809c0000ee8087ee809c0000ee8087ee809c0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e3838ae38383e382afe383abe3839ce383a00000",
+   "input_from_name": "Rising Toe Kick",
+   "command_glyphs": [
+    "U+E007",
+    "U+E01C"
+   ],
+   "command_decoded": "u/f+4",
+   "command_complete": true
+  },
+  {
+   "name": "Capital Punishment",
+   "name_offset": 8896,
+   "record_len": 153,
+   "record_hex": "4361706974616c2050756e6973686d656e740000e3838ae38383e382afe383abe3839ce383a00000ee8087ee80970000ee8087ee80970000ee8087ee80970000ee8087ee80970000ee8087ee80970000ee8087ee80970000ee8087ee80970000ee8087ee80970000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382abe383b3e382ace383abe383bce382b9e382bfe383b3e383970000",
+   "input_from_name": "Capital Punishment",
+   "command_glyphs": [
+    "U+E007",
+    "U+E017"
+   ],
+   "command_decoded": "u/f+1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Kangaroo Stomp",
+   "name_offset": 9049,
+   "record_len": 164,
+   "record_hex": "4b616e6761726f6f2053746f6d700000e382abe383b3e382ace383abe383bce382b9e382bfe383b3e383970000ee8087ee80a00000ee8087ee80a00000ee8087ee80a00000ee8087ee80a00000ee8087ee80a00000ee8087ee80a00000ee8087ee80a00000ee8087ee80a00000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e38380e382a4e3838ae3839fe38383e382afe382b9e3839ee38383e382b7e383a50000",
+   "input_from_name": "Kangaroo Stomp",
+   "command_glyphs": [
+    "U+E007",
+    "U+E020"
+   ],
+   "command_decoded": "u/f+3+4",
+   "command_complete": true
+  },
+  {
+   "name": "Sliding Hook",
+   "name_offset": 9213,
+   "record_len": 180,
+   "record_hex": "536c6964696e6720486f6f6b0000e38380e382a4e3838ae3839fe38383e382afe382b9e3839ee38383e382b7e383a50000ee8084ee808cee80960000ee8084ee808cee80960000ee8084ee808cee80960000ee8084ee808cee80960000ee8084ee808cee80960000ee8084ee808cee80960000ee8084ee808cee80960000ee8084ee808cee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382b8e382a7e382a4e383abe382ade38383e382af0000",
+   "input_from_name": "Sliding Hook",
+   "command_glyphs": [
+    "U+E004",
+    "U+E00C",
+    "U+E016"
+   ],
+   "command_decoded": "f,f+2",
+   "command_complete": true
+  },
+  {
+   "name": "Konvict Kick",
+   "name_offset": 9393,
+   "record_len": 183,
+   "record_hex": "4b6f6e76696374204b69636b0000e382b8e382a7e382a4e383abe382ade38383e382af0000ee8084ee808cee809c0000ee8084ee808cee809c0000ee8084ee808cee809c0000ee8084ee808cee809c0000ee8084ee808cee809c0000ee8084ee808cee809c0000ee8084ee808cee809c0000ee8084ee808cee809c0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e38395e383a9e382a4e383b3e382b0e382afe383ade382b9e38381e383a7e38383e383970000",
+   "input_from_name": "Konvict Kick",
+   "command_glyphs": [
+    "U+E004",
+    "U+E00C",
+    "U+E01C"
+   ],
+   "command_decoded": "f,f+4",
+   "command_complete": true
+  },
+  {
+   "name": "Head First Lunge",
+   "name_offset": 9576,
+   "record_len": 187,
+   "record_hex": "48656164204669727374204c756e67650000e38395e383a9e382a4e383b3e382b0e382afe383ade382b9e38381e383a7e38383e383970000ee8084ee808cee80970000ee8084ee808cee80970000ee8084ee808cee80970000ee8084ee808cee80970000ee8084ee808cee80970000ee8084ee808cee80970000ee8084ee808cee80970000ee8084ee808cee80970000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e38389e383ade38383e38397e382ade38383e382af0000",
+   "input_from_name": "Head First Lunge",
+   "command_glyphs": [
+    "U+E004",
+    "U+E00C",
+    "U+E017"
+   ],
+   "command_decoded": "f,f+1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Exploder",
+   "name_offset": 9763,
+   "record_len": 176,
+   "record_hex": "4578706c6f6465720000e38389e383ade38383e38397e382ade38383e382af0000ee8084ee808cee80a00000ee8084ee808cee80a00000ee8084ee808cee80a00000ee8084ee808cee80a00000ee8084ee808cee80a00000ee8084ee808cee80a00000ee8084ee808cee80a00000ee8084ee808cee80a00000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e383ade383bce383aae383b3e382b0e383bbe38388e383bce38394e38389e383bc0000",
+   "input_from_name": "Exploder",
+   "command_glyphs": [
+    "U+E004",
+    "U+E00C",
+    "U+E020"
+   ],
+   "command_decoded": "f,f+3+4",
+   "command_complete": true
+  },
+  {
+   "name": "Rolling Toe Drop",
+   "name_offset": 9939,
+   "record_len": 196,
+   "record_hex": "526f6c6c696e6720546f652044726f700000e383ade383bce383aae383b3e382b0e383bbe38388e383bce38394e38389e383bc0000ee8083ee808bee809c0000ee8083ee808bee809c0000ee8083ee808bee809c0000ee8083ee808bee809c0000ee8083ee808bee809c0000ee8083ee808bee809c0000ee8083ee808bee809c0000ee8083ee808bee809c0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382a2e3838be3839ee383abe382a2e38383e38391e383bce382abe38383e383880000",
+   "input_from_name": "Rolling Toe Drop",
+   "command_glyphs": [
+    "U+E003",
+    "U+E00B",
+    "U+E01C"
+   ],
+   "command_decoded": "b,U+E00B,4",
+   "command_complete": false
+  },
+  {
+   "name": "Animal Uppercut",
+   "name_offset": 10135,
+   "record_len": 237,
+   "record_hex": "416e696d616c2055707065726375740000e382a2e3838be3839ee383abe382a2e38383e38391e383bce382abe38383e383880000ee8084e29886ee8081ee8082ee80950000ee8084e29886ee8081ee8082ee80950000ee8084e29886ee8081ee8082ee80950000ee8084e29886ee8081ee8082ee80950000ee8084e29886ee8081ee8082ee80950000ee8084e29886ee8081ee8082ee80950000ee8084e29886ee8081ee8082ee80950000ee8084e29886ee8081ee8082ee80950000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382a2e3838be3839ee383abe382b9e3839ee38383e382b7e383a50000",
+   "input_from_name": "Animal Uppercut",
+   "command_glyphs": [
+    "U+E001",
+    "U+E002",
+    "U+E015"
+   ],
+   "command_decoded": "d,d/f+1",
+   "command_complete": true
+  },
+  {
+   "name": "Animal Smash",
+   "name_offset": 10372,
+   "record_len": 228,
+   "record_hex": "416e696d616c20536d6173680000e382a2e3838be3839ee383abe382b9e3839ee38383e382b7e383a50000ee8084e29886ee8081ee8082ee80970000ee8084e29886ee8081ee8082ee80970000ee8084e29886ee8081ee8082ee80970000ee8084e29886ee8081ee8082ee80970000ee8084e29886ee8081ee8082ee80970000ee8084e29886ee8081ee8082ee80970000ee8084e29886ee8081ee8082ee80970000ee8084e29886ee8081ee8082ee80970000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382abe38383e38386e382a3e383b3e382b0e382a8e38383e382b80000",
+   "input_from_name": "Animal Smash",
+   "command_glyphs": [
+    "U+E001",
+    "U+E002",
+    "U+E017"
+   ],
+   "command_decoded": "d,d/f+1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Baiame's Spear",
+   "name_offset": 10600,
+   "record_len": 215,
+   "record_hex": "426169616d6527732053706561720000e382abe38383e38386e382a3e383b3e382b0e382a8e38383e382b80000ee8084ee8084ee8084ee80980000ee8084ee8084ee8084ee80980000ee8084ee8084ee8084ee80980000ee8084ee8084ee8084ee80980000ee8084ee8084ee8084ee80980000ee8084ee8084ee8084ee80980000ee8084ee8084ee8084ee80980000ee8084ee8084ee8084ee80980000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382b5e38386e383a9e382a4e38388e38389e383ade38383e38397e382ade38383e382af0000",
+   "input_from_name": "Baiame's Spear",
+   "command_glyphs": [
+    "U+E004",
+    "U+E004",
+    "U+E004",
+    "U+E018"
+   ],
+   "command_decoded": "f,f,f+3",
+   "command_complete": true
+  },
+  {
+   "name": "Running Exploder",
+   "name_offset": 10815,
+   "record_len": 220,
+   "record_hex": "52756e6e696e67204578706c6f6465720000e382b5e38386e383a9e382a4e38388e38389e383ade38383e38397e382ade38383e382af0000ee8084ee8084ee8084ee80a00000ee8084ee8084ee8084ee80a00000ee8084ee8084ee8084ee80a00000ee8084ee8084ee8084ee80a00000ee8084ee8084ee8084ee80a00000ee8084ee8084ee8084ee80a00000ee8084ee8084ee8084ee80a00000ee8084ee8084ee8084ee80a00000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382b9e38394e3838be383b3e382b0e382b9e3839ee38383e382b7e383a50000",
+   "input_from_name": "Running Exploder",
+   "command_glyphs": [
+    "U+E004",
+    "U+E004",
+    "U+E004",
+    "U+E020"
+   ],
+   "command_decoded": "f,f,f+3+4",
+   "command_complete": true
+  },
+  {
+   "name": "Spinning Uppercut",
+   "name_offset": 11035,
+   "record_len": 72,
+   "record_hex": "5370696e6e696e672055707065726375740000e382b9e38394e3838be383b3e382b0e382b9e3839ee38383e382b7e383a50000e8b5b0e3828ae4b8ade381ab20ee809cee80960000",
+   "input_from_name": "Spinning Uppercut",
+   "command_glyphs": [
+    "U+E01C",
+    "U+E016"
+   ],
+   "command_decoded": "4,2",
+   "command_complete": true
+  },
+  {
+   "name": "Run more than 3 steps ",
+   "name_offset": 11107,
+   "record_len": 30,
+   "record_hex": "52756e206d6f7265207468616e203320737465707320ee809cee80960000",
+   "input_from_name": "Run more than 3 steps ",
+   "command_glyphs": [
+    "U+E01C",
+    "U+E016"
+   ],
+   "command_decoded": "4,2",
+   "command_complete": true
+  },
+  {
+   "name": "Courir plus de 3 pas ",
+   "name_offset": 11137,
+   "record_len": 29,
+   "record_hex": "436f7572697220706c757320646520332070617320ee809cee80960000",
+   "input_from_name": "Courir plus de 3 pas ",
+   "command_glyphs": [
+    "U+E01C",
+    "U+E016"
+   ],
+   "command_decoded": "4,2",
+   "command_complete": true
+  },
+  {
+   "name": "Corri per pi",
+   "name_offset": 11166,
+   "record_len": 14,
+   "record_hex": "436f72726920706572207069c3b9",
+   "input_from_name": "Corri per pi"
+  },
+  {
+   "name": " di 3 passi ",
+   "name_offset": 11180,
+   "record_len": 20,
+   "record_hex": "206469203320706173736920ee809cee80960000",
+   "input_from_name": " di 3 passi ",
+   "command_glyphs": [
+    "U+E01C",
+    "U+E016"
+   ],
+   "command_decoded": "4,2",
+   "command_complete": true
+  },
+  {
+   "name": "Mehr als drei Schritte laufen ",
+   "name_offset": 11200,
+   "record_len": 38,
+   "record_hex": "4d65687220616c732064726569205363687269747465206c617566656e20ee809cee80960000",
+   "input_from_name": "Mehr als drei Schritte laufen ",
+   "command_glyphs": [
+    "U+E01C",
+    "U+E016"
+   ],
+   "command_decoded": "4,2",
+   "command_complete": true
+  },
+  {
+   "name": "Correr m",
+   "name_offset": 11238,
+   "record_len": 10,
+   "record_hex": "436f72726572206dc3a1",
+   "input_from_name": "Correr m"
+  },
+  {
+   "name": "s de tres pasos ",
+   "name_offset": 11248,
+   "record_len": 145,
+   "record_hex": "732064652074726573207061736f7320ee809cee80960000d09fd180d0bed0b1d0b5d0b6d0b0d182d18c20d0b1d0bed0bbd0b5d0b5203320d188d0b0d0b3d0bed0b220ee809cee8096000033ebb09ceca79d20ec9db4ec838120eb8baceba0a4eab08020ee809cee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382a2e383aae382ade38383e382af0000",
+   "input_from_name": "s de tres pasos ",
+   "command_glyphs": [
+    "U+E01C",
+    "U+E016"
+   ],
+   "command_decoded": "4,2",
+   "command_complete": true
+  },
+  {
+   "name": "Stagger Kicks",
+   "name_offset": 11393,
+   "record_len": 56,
+   "record_hex": "53746167676572204b69636b730000e382a2e383aae382ade38383e382af0000e8b5b0e3828ae4b8ade381ab20ee809cee809cee809c0000",
+   "input_from_name": "Stagger Kicks",
+   "command_glyphs": [
+    "U+E01C",
+    "U+E01C",
+    "U+E01C"
+   ],
+   "command_decoded": "4,4,4",
+   "command_complete": true
+  },
+  {
+   "name": "Run more than 3 steps ",
+   "name_offset": 11449,
+   "record_len": 33,
+   "record_hex": "52756e206d6f7265207468616e203320737465707320ee809cee809cee809c0000",
+   "input_from_name": "Run more than 3 steps ",
+   "command_glyphs": [
+    "U+E01C",
+    "U+E01C",
+    "U+E01C"
+   ],
+   "command_decoded": "4,4,4",
+   "command_complete": true
+  },
+  {
+   "name": "Courir plus de 3 pas ",
+   "name_offset": 11482,
+   "record_len": 32,
+   "record_hex": "436f7572697220706c757320646520332070617320ee809cee809cee809c0000",
+   "input_from_name": "Courir plus de 3 pas ",
+   "command_glyphs": [
+    "U+E01C",
+    "U+E01C",
+    "U+E01C"
+   ],
+   "command_decoded": "4,4,4",
+   "command_complete": true
+  },
+  {
+   "name": "Corri per pi",
+   "name_offset": 11514,
+   "record_len": 14,
+   "record_hex": "436f72726920706572207069c3b9",
+   "input_from_name": "Corri per pi"
+  },
+  {
+   "name": " di 3 passi ",
+   "name_offset": 11528,
+   "record_len": 23,
+   "record_hex": "206469203320706173736920ee809cee809cee809c0000",
+   "input_from_name": " di 3 passi ",
+   "command_glyphs": [
+    "U+E01C",
+    "U+E01C",
+    "U+E01C"
+   ],
+   "command_decoded": "4,4,4",
+   "command_complete": true
+  },
+  {
+   "name": "Mehr als drei Schritte laufen ",
+   "name_offset": 11551,
+   "record_len": 41,
+   "record_hex": "4d65687220616c732064726569205363687269747465206c617566656e20ee809cee809cee809c0000",
+   "input_from_name": "Mehr als drei Schritte laufen ",
+   "command_glyphs": [
+    "U+E01C",
+    "U+E01C",
+    "U+E01C"
+   ],
+   "command_decoded": "4,4,4",
+   "command_complete": true
+  },
+  {
+   "name": "Correr m",
+   "name_offset": 11592,
+   "record_len": 10,
+   "record_hex": "436f72726572206dc3a1",
+   "input_from_name": "Correr m"
+  },
+  {
+   "name": "s de tres pasos ",
+   "name_offset": 11602,
+   "record_len": 166,
+   "record_hex": "732064652074726573207061736f7320ee809cee809cee809c0000d09fd180d0bed0b1d0b5d0b6d0b0d182d18c20d0b1d0bed0bbd0b5d0b5203320d188d0b0d0b3d0bed0b220ee809cee809cee809c000033ebb09ceca79d20ec9db4ec838120eb8baceba0a4eab08020ee809cee809cee809c0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e38396e383bce383a1e383a9e383b3e3838ae38383e382afe383ab0000",
+   "input_from_name": "s de tres pasos ",
+   "command_glyphs": [
+    "U+E01C",
+    "U+E01C",
+    "U+E01C"
+   ],
+   "command_decoded": "4,4,4",
+   "command_complete": true
+  },
+  {
+   "name": "Boomerang Punch",
+   "name_offset": 11768,
+   "record_len": 70,
+   "record_hex": "426f6f6d6572616e672050756e63680000e38396e383bce383a1e383a9e383b3e3838ae38383e382afe383ab0000e7ab8be381a1e98094e4b8ade381ab20ee8096ee80960000",
+   "input_from_name": "Boomerang Punch",
+   "command_glyphs": [
+    "U+E016",
+    "U+E016"
+   ],
+   "command_decoded": "2,2",
+   "command_complete": true
+  },
+  {
+   "name": "While rising ",
+   "name_offset": 11838,
+   "record_len": 21,
+   "record_hex": "5768696c6520726973696e6720ee8096ee80960000",
+   "input_from_name": "While rising ",
+   "command_glyphs": [
+    "U+E016",
+    "U+E016"
+   ],
+   "command_decoded": "2,2",
+   "command_complete": true
+  },
+  {
+   "name": "En se relevant ",
+   "name_offset": 11859,
+   "record_len": 23,
+   "record_hex": "456e2073652072656c6576616e7420ee8096ee80960000",
+   "input_from_name": "En se relevant ",
+   "command_glyphs": [
+    "U+E016",
+    "U+E016"
+   ],
+   "command_decoded": "2,2",
+   "command_complete": true
+  },
+  {
+   "name": "Alzandosi ",
+   "name_offset": 11882,
+   "record_len": 18,
+   "record_hex": "416c7a616e646f736920ee8096ee80960000",
+   "input_from_name": "Alzandosi ",
+   "command_glyphs": [
+    "U+E016",
+    "U+E016"
+   ],
+   "command_decoded": "2,2",
+   "command_complete": true
+  },
+  {
+   "name": "Beim Aufstehen ",
+   "name_offset": 11900,
+   "record_len": 23,
+   "record_hex": "4265696d2041756673746568656e20ee8096ee80960000",
+   "input_from_name": "Beim Aufstehen ",
+   "command_glyphs": [
+    "U+E016",
+    "U+E016"
+   ],
+   "command_decoded": "2,2",
+   "command_complete": true
+  },
+  {
+   "name": "Al levantarse ",
+   "name_offset": 11923,
+   "record_len": 115,
+   "record_hex": "416c206c6576616e746172736520ee8096ee80960000d092d181d182d0b0d0b2d0b0d18f20ee8096ee80960000ec9dbcec96b4eb8298eba9b020ee8096ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382b9e38397e383aae383b3e382b0e382b9e382bfe383b3e383970000",
+   "input_from_name": "Al levantarse ",
+   "command_glyphs": [
+    "U+E016",
+    "U+E016"
+   ],
+   "command_decoded": "2,2",
+   "command_complete": true
+  },
+  {
+   "name": "Spring Stomp Kick",
+   "name_offset": 12038,
+   "record_len": 72,
+   "record_hex": "537072696e672053746f6d70204b69636b0000e382b9e38397e383aae383b3e382b0e382b9e382bfe383b3e383970000e7ab8be381a1e98094e4b8ade381ab20ee8098ee80980000",
+   "input_from_name": "Spring Stomp Kick",
+   "command_glyphs": [
+    "U+E018",
+    "U+E018"
+   ],
+   "command_decoded": "3,3",
+   "command_complete": true
+  },
+  {
+   "name": "While rising ",
+   "name_offset": 12110,
+   "record_len": 21,
+   "record_hex": "5768696c6520726973696e6720ee8098ee80980000",
+   "input_from_name": "While rising ",
+   "command_glyphs": [
+    "U+E018",
+    "U+E018"
+   ],
+   "command_decoded": "3,3",
+   "command_complete": true
+  },
+  {
+   "name": "En se relevant ",
+   "name_offset": 12131,
+   "record_len": 23,
+   "record_hex": "456e2073652072656c6576616e7420ee8098ee80980000",
+   "input_from_name": "En se relevant ",
+   "command_glyphs": [
+    "U+E018",
+    "U+E018"
+   ],
+   "command_decoded": "3,3",
+   "command_complete": true
+  },
+  {
+   "name": "Alzandosi ",
+   "name_offset": 12154,
+   "record_len": 18,
+   "record_hex": "416c7a616e646f736920ee8098ee80980000",
+   "input_from_name": "Alzandosi ",
+   "command_glyphs": [
+    "U+E018",
+    "U+E018"
+   ],
+   "command_decoded": "3,3",
+   "command_complete": true
+  },
+  {
+   "name": "Beim Aufstehen ",
+   "name_offset": 12172,
+   "record_len": 23,
+   "record_hex": "4265696d2041756673746568656e20ee8098ee80980000",
+   "input_from_name": "Beim Aufstehen ",
+   "command_glyphs": [
+    "U+E018",
+    "U+E018"
+   ],
+   "command_decoded": "3,3",
+   "command_complete": true
+  },
+  {
+   "name": "Al levantarse ",
+   "name_offset": 12195,
+   "record_len": 112,
+   "record_hex": "416c206c6576616e746172736520ee8098ee80980000d092d181d182d0b0d0b2d0b0d18f20ee8098ee80980000ec9dbcec96b4eb8298eba9b020ee8098ee80980000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e38381e383a3e383bce382b8e382b9e382bfe383b3e383970000",
+   "input_from_name": "Al levantarse ",
+   "command_glyphs": [
+    "U+E018",
+    "U+E018"
+   ],
+   "command_decoded": "3,3",
+   "command_complete": true
+  },
+  {
+   "name": "Charge Stomp Kick",
+   "name_offset": 12307,
+   "record_len": 81,
+   "record_hex": "4368617267652053746f6d70204b69636b0000e38381e383a3e383bce382b8e382b9e382bfe383b3e383970000e7ab8be381a1e98094e4b8ade381ab20ee8098ee8098e3839be383bce383abe383890000",
+   "input_from_name": "Charge Stomp Kick",
+   "command_glyphs": [
+    "U+E018",
+    "U+E018"
+   ],
+   "command_decoded": "3,3",
+   "command_complete": true
+  },
+  {
+   "name": "While rising ",
+   "name_offset": 12388,
+   "record_len": 19,
+   "record_hex": "5768696c6520726973696e6720ee8098ee8098",
+   "input_from_name": "While rising ",
+   "command_glyphs": [
+    "U+E018",
+    "U+E018"
+   ],
+   "command_decoded": "3,3",
+   "command_complete": true
+  },
+  {
+   "name": " Hold",
+   "name_offset": 12407,
+   "record_len": 7,
+   "record_hex": "20486f6c640000",
+   "input_from_name": " Hold"
+  },
+  {
+   "name": "En se relevant ",
+   "name_offset": 12414,
+   "record_len": 21,
+   "record_hex": "456e2073652072656c6576616e7420ee8098ee8098",
+   "input_from_name": "En se relevant ",
+   "command_glyphs": [
+    "U+E018",
+    "U+E018"
+   ],
+   "command_decoded": "3,3",
+   "command_complete": true
+  },
+  {
+   "name": " maintenue",
+   "name_offset": 12435,
+   "record_len": 12,
+   "record_hex": "206d61696e74656e75650000",
+   "input_from_name": " maintenue"
+  },
+  {
+   "name": "Alzandosi ",
+   "name_offset": 12447,
+   "record_len": 16,
+   "record_hex": "416c7a616e646f736920ee8098ee8098",
+   "input_from_name": "Alzandosi ",
+   "command_glyphs": [
+    "U+E018",
+    "U+E018"
+   ],
+   "command_decoded": "3,3",
+   "command_complete": true
+  },
+  {
+   "name": " (tenere premuto)",
+   "name_offset": 12463,
+   "record_len": 19,
+   "record_hex": "202874656e657265207072656d75746f290000",
+   "input_from_name": " (tenere premuto)"
+  },
+  {
+   "name": "Beim Aufstehen ",
+   "name_offset": 12482,
+   "record_len": 21,
+   "record_hex": "4265696d2041756673746568656e20ee8098ee8098",
+   "input_from_name": "Beim Aufstehen ",
+   "command_glyphs": [
+    "U+E018",
+    "U+E018"
+   ],
+   "command_decoded": "3,3",
+   "command_complete": true
+  },
+  {
+   "name": " gedr",
+   "name_offset": 12503,
+   "record_len": 7,
+   "record_hex": "2067656472c3bc",
+   "input_from_name": " gedr"
+  },
+  {
+   "name": "ckt halten",
+   "name_offset": 12510,
+   "record_len": 12,
+   "record_hex": "636b742068616c74656e0000",
+   "input_from_name": "ckt halten"
+  },
+  {
+   "name": "Al levantarse ",
+   "name_offset": 12522,
+   "record_len": 20,
+   "record_hex": "416c206c6576616e746172736520ee8098ee8098",
+   "input_from_name": "Al levantarse ",
+   "command_glyphs": [
+    "U+E018",
+    "U+E018"
+   ],
+   "command_decoded": "3,3",
+   "command_complete": true
+  },
+  {
+   "name": " (Mantener pulsado)",
+   "name_offset": 12542,
+   "record_len": 139,
+   "record_hex": "20284d616e74656e65722070756c7361646f290000d092d181d182d0b0d0b2d0b0d18f20ee8098ee809820d183d0b4d0b5d180d0b6d0b8d0b2d0b0d182d18c0000ec9dbcec96b4eb8298eba9b020ee8098ee809820ed9980eb939c0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e38388e382a5e383bce382b9e3839ee38383e382b7e383a50000",
+   "input_from_name": " (Mantener pulsado)",
+   "command_glyphs": [
+    "U+E018",
+    "U+E018"
+   ],
+   "command_decoded": "3,3",
+   "command_complete": true
+  },
+  {
+   "name": "Toe Smash",
+   "name_offset": 12681,
+   "record_len": 58,
+   "record_hex": "546f6520536d6173680000e38388e382a5e383bce382b9e3839ee38383e382b7e383a50000e7ab8be381a1e98094e4b8ade381ab20ee809c0000",
+   "input_from_name": "Toe Smash",
+   "command_glyphs": [
+    "U+E01C"
+   ],
+   "command_decoded": "4",
+   "command_complete": true
+  },
+  {
+   "name": "While rising ",
+   "name_offset": 12739,
+   "record_len": 18,
+   "record_hex": "5768696c6520726973696e6720ee809c0000",
+   "input_from_name": "While rising ",
+   "command_glyphs": [
+    "U+E01C"
+   ],
+   "command_decoded": "4",
+   "command_complete": true
+  },
+  {
+   "name": "En se relevant ",
+   "name_offset": 12757,
+   "record_len": 20,
+   "record_hex": "456e2073652072656c6576616e7420ee809c0000",
+   "input_from_name": "En se relevant ",
+   "command_glyphs": [
+    "U+E01C"
+   ],
+   "command_decoded": "4",
+   "command_complete": true
+  },
+  {
+   "name": "Alzandosi ",
+   "name_offset": 12777,
+   "record_len": 15,
+   "record_hex": "416c7a616e646f736920ee809c0000",
+   "input_from_name": "Alzandosi ",
+   "command_glyphs": [
+    "U+E01C"
+   ],
+   "command_decoded": "4",
+   "command_complete": true
+  },
+  {
+   "name": "Beim Aufstehen ",
+   "name_offset": 12792,
+   "record_len": 20,
+   "record_hex": "4265696d2041756673746568656e20ee809c0000",
+   "input_from_name": "Beim Aufstehen ",
+   "command_glyphs": [
+    "U+E01C"
+   ],
+   "command_decoded": "4",
+   "command_complete": true
+  },
+  {
+   "name": "Al levantarse ",
+   "name_offset": 12812,
+   "record_len": 109,
+   "record_hex": "416c206c6576616e746172736520ee809c0000d092d181d182d0b0d0b2d0b0d18f20ee809c0000ec9dbcec96b4eb8298eba9b020ee809c0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e38380e382a4e3838ae3839ee382a4e38388e382a2e38383e38391e383bc0000",
+   "input_from_name": "Al levantarse ",
+   "command_glyphs": [
+    "U+E01C"
+   ],
+   "command_decoded": "4",
+   "command_complete": true
+  },
+  {
+   "name": "Crouching Uppercut",
+   "name_offset": 12921,
+   "record_len": 85,
+   "record_hex": "43726f756368696e672055707065726375740000e38380e382a4e3838ae3839ee382a4e38388e382a2e38383e38391e383bc0000e38197e38283e3818ce38293e381a0e78ab6e6858be381a720ee8082ee80960000",
+   "input_from_name": "Crouching Uppercut",
+   "command_glyphs": [
+    "U+E002",
+    "U+E016"
+   ],
+   "command_decoded": "d/f+2",
+   "command_complete": true
+  },
+  {
+   "name": "While crouching ",
+   "name_offset": 13006,
+   "record_len": 24,
+   "record_hex": "5768696c652063726f756368696e6720ee8082ee80960000",
+   "input_from_name": "While crouching ",
+   "command_glyphs": [
+    "U+E002",
+    "U+E016"
+   ],
+   "command_decoded": "d/f+2",
+   "command_complete": true
+  },
+  {
+   "name": "En s'accroupissant ",
+   "name_offset": 13030,
+   "record_len": 27,
+   "record_hex": "456e207327616363726f7570697373616e7420ee8082ee80960000",
+   "input_from_name": "En s'accroupissant ",
+   "command_glyphs": [
+    "U+E002",
+    "U+E016"
+   ],
+   "command_decoded": "d/f+2",
+   "command_complete": true
+  },
+  {
+   "name": "Abbassandosi ",
+   "name_offset": 13057,
+   "record_len": 21,
+   "record_hex": "416262617373616e646f736920ee8082ee80960000",
+   "input_from_name": "Abbassandosi ",
+   "command_glyphs": [
+    "U+E002",
+    "U+E016"
+   ],
+   "command_decoded": "d/f+2",
+   "command_complete": true
+  },
+  {
+   "name": "Hockend ",
+   "name_offset": 13078,
+   "record_len": 16,
+   "record_hex": "486f636b656e6420ee8082ee80960000",
+   "input_from_name": "Hockend ",
+   "command_glyphs": [
+    "U+E002",
+    "U+E016"
+   ],
+   "command_decoded": "d/f+2",
+   "command_complete": true
+  },
+  {
+   "name": "Al agacharse ",
+   "name_offset": 13094,
+   "record_len": 117,
+   "record_hex": "416c2061676163686172736520ee8082ee80960000d09fd180d0b8d181d0b5d0b4d0b0d18f20ee8082ee80960000ebaab8ec9d8420ec8899ec9db4eba9b020ee8082ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382a2e3838be3839ee383abe382b9e382a4e383bce383970000",
+   "input_from_name": "Al agacharse ",
+   "command_glyphs": [
+    "U+E002",
+    "U+E016"
+   ],
+   "command_decoded": "d/f+2",
+   "command_complete": true
+  },
+  {
+   "name": "Animal Sweep",
+   "name_offset": 13211,
+   "record_len": 61,
+   "record_hex": "416e696d616c2053776565700000e382a2e3838be3839ee383abe382b9e382a4e383bce383970000e6a8aae7a7bbe58b95e4b8ade381ab20ee809c0000",
+   "input_from_name": "Animal Sweep",
+   "command_glyphs": [
+    "U+E01C"
+   ],
+   "command_decoded": "4",
+   "command_complete": true
+  },
+  {
+   "name": "During sidestep ",
+   "name_offset": 13272,
+   "record_len": 21,
+   "record_hex": "447572696e6720736964657374657020ee809c0000",
+   "input_from_name": "During sidestep ",
+   "command_glyphs": [
+    "U+E01C"
+   ],
+   "command_decoded": "4",
+   "command_complete": true
+  },
+  {
+   "name": "Pendant pas de c",
+   "name_offset": 13293,
+   "record_len": 27,
+   "record_hex": "50656e64616e74207061732064652063c3b474c3a920ee809c0000",
+   "input_from_name": "Pendant pas de c",
+   "command_glyphs": [
+    "U+E01C"
+   ],
+   "command_decoded": "4",
+   "command_complete": true
+  },
+  {
+   "name": "Durante il movimento laterale ",
+   "name_offset": 13320,
+   "record_len": 38,
+   "record_hex": "447572616e746520696c206d6f76696d656e746f206c61746572616c6520ee809c000057c3a4",
+   "input_from_name": "Durante il movimento laterale ",
+   "command_glyphs": [
+    "U+E01C"
+   ],
+   "command_decoded": "4",
+   "command_complete": true
+  },
+  {
+   "name": "hrend Seitschritt ",
+   "name_offset": 13358,
+   "record_len": 23,
+   "record_hex": "6872656e6420536569747363687269747420ee809c0000",
+   "input_from_name": "hrend Seitschritt ",
+   "command_glyphs": [
+    "U+E01C"
+   ],
+   "command_decoded": "4",
+   "command_complete": true
+  },
+  {
+   "name": "Desplazamiento lateral ",
+   "name_offset": 13381,
+   "record_len": 135,
+   "record_hex": "446573706c617a616d69656e746f206c61746572616c20ee809c0000d09fd180d0b820d188d0b0d0b3d0b520d0b220d181d182d0bed180d0bed0bdd18320ee809c0000ed9aa1ec9db4eb8f9920eb8f84eca49120ee809c0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382b7e383a5e383aae383b3e38397e382ade38383e382af0000",
+   "input_from_name": "Desplazamiento lateral ",
+   "command_glyphs": [
+    "U+E01C"
+   ],
+   "command_decoded": "4",
+   "command_complete": true
+  },
+  {
+   "name": "Shrimp Kick",
+   "name_offset": 13516,
+   "record_len": 69,
+   "record_hex": "536872696d70204b69636b0000e382b7e383a5e383aae383b3e38397e382ade38383e382af0000e79bb8e6898be381abe8838ce38292e59091e38191e381a620ee80a00000",
+   "input_from_name": "Shrimp Kick",
+   "command_glyphs": [
+    "U+E020"
+   ],
+   "command_decoded": "3+4",
+   "command_complete": true
+  },
+  {
+   "name": "Back towards enemy ",
+   "name_offset": 13585,
+   "record_len": 24,
+   "record_hex": "4261636b20746f776172647320656e656d7920ee80a00000",
+   "input_from_name": "Back towards enemy ",
+   "command_glyphs": [
+    "U+E020"
+   ],
+   "command_decoded": "3+4",
+   "command_complete": true
+  },
+  {
+   "name": "Dos ",
+   "name_offset": 13609,
+   "record_len": 6,
+   "record_hex": "446f7320c3a0",
+   "input_from_name": "Dos "
+  },
+  {
+   "name": " l'adversaire ",
+   "name_offset": 13615,
+   "record_len": 19,
+   "record_hex": "206c276164766572736169726520ee80a00000",
+   "input_from_name": " l'adversaire ",
+   "command_glyphs": [
+    "U+E020"
+   ],
+   "command_decoded": "3+4",
+   "command_complete": true
+  },
+  {
+   "name": "Spalle all'avversario ",
+   "name_offset": 13634,
+   "record_len": 27,
+   "record_hex": "5370616c6c6520616c6c276176766572736172696f20ee80a00000",
+   "input_from_name": "Spalle all'avversario ",
+   "command_glyphs": [
+    "U+E020"
+   ],
+   "command_decoded": "3+4",
+   "command_complete": true
+  },
+  {
+   "name": "Mit dem R",
+   "name_offset": 13661,
+   "record_len": 11,
+   "record_hex": "4d69742064656d2052c3bc",
+   "input_from_name": "Mit dem R"
+  },
+  {
+   "name": "cken zum Gegner ",
+   "name_offset": 13672,
+   "record_len": 21,
+   "record_hex": "636b656e207a756d204765676e657220ee80a00000",
+   "input_from_name": "cken zum Gegner ",
+   "command_glyphs": [
+    "U+E020"
+   ],
+   "command_decoded": "3+4",
+   "command_complete": true
+  },
+  {
+   "name": "De espaldas al adversario ",
+   "name_offset": 13693,
+   "record_len": 152,
+   "record_hex": "446520657370616c64617320616c206164766572736172696f20ee80a00000d0a1d0bfd0b8d0bdd0bed0b920d0ba20d0bfd180d0bed182d0b8d0b2d0bdd0b8d0bad18320ee80a00000ec8381eb8c80ebb0a9ec9790eab28c20eb93b1ec9d8420ebb3b4ec9dbc20eb958c20ee80a00000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382ace38383e38384e382ade38383e382af0000",
+   "input_from_name": "De espaldas al adversario ",
+   "command_glyphs": [
+    "U+E020"
+   ],
+   "command_decoded": "3+4",
+   "command_complete": true
+  },
+  {
+   "name": "Dingo Kick",
+   "name_offset": 13845,
+   "record_len": 65,
+   "record_hex": "44696e676f204b69636b0000e382ace38383e38384e382ade38383e382af0000e79bb8e6898be381abe8838ce38292e59091e38191e381a620ee8081ee80980000",
+   "input_from_name": "Dingo Kick",
+   "command_glyphs": [
+    "U+E001",
+    "U+E018"
+   ],
+   "command_decoded": "d+3",
+   "command_complete": true
+  },
+  {
+   "name": "Back towards enemy ",
+   "name_offset": 13910,
+   "record_len": 27,
+   "record_hex": "4261636b20746f776172647320656e656d7920ee8081ee80980000",
+   "input_from_name": "Back towards enemy ",
+   "command_glyphs": [
+    "U+E001",
+    "U+E018"
+   ],
+   "command_decoded": "d+3",
+   "command_complete": true
+  },
+  {
+   "name": "Dos ",
+   "name_offset": 13937,
+   "record_len": 6,
+   "record_hex": "446f7320c3a0",
+   "input_from_name": "Dos "
+  },
+  {
+   "name": " l'adversaire ",
+   "name_offset": 13943,
+   "record_len": 22,
+   "record_hex": "206c276164766572736169726520ee8081ee80980000",
+   "input_from_name": " l'adversaire ",
+   "command_glyphs": [
+    "U+E001",
+    "U+E018"
+   ],
+   "command_decoded": "d+3",
+   "command_complete": true
+  },
+  {
+   "name": "Spalle all'avversario ",
+   "name_offset": 13965,
+   "record_len": 30,
+   "record_hex": "5370616c6c6520616c6c276176766572736172696f20ee8081ee80980000",
+   "input_from_name": "Spalle all'avversario ",
+   "command_glyphs": [
+    "U+E001",
+    "U+E018"
+   ],
+   "command_decoded": "d+3",
+   "command_complete": true
+  },
+  {
+   "name": "Mit dem R",
+   "name_offset": 13995,
+   "record_len": 11,
+   "record_hex": "4d69742064656d2052c3bc",
+   "input_from_name": "Mit dem R"
+  },
+  {
+   "name": "cken zum Gegner ",
+   "name_offset": 14006,
+   "record_len": 24,
+   "record_hex": "636b656e207a756d204765676e657220ee8081ee80980000",
+   "input_from_name": "cken zum Gegner ",
+   "command_glyphs": [
+    "U+E001",
+    "U+E018"
+   ],
+   "command_decoded": "d+3",
+   "command_complete": true
+  },
+  {
+   "name": "De espaldas al adversario ",
+   "name_offset": 14030,
+   "record_len": 166,
+   "record_hex": "446520657370616c64617320616c206164766572736172696f20ee8081ee80980000d0a1d0bfd0b8d0bdd0bed0b920d0ba20d0bfd180d0bed182d0b8d0b2d0bdd0b8d0bad18320ee8081ee80980000ec8381eb8c80ebb0a9ec9790eab28c20eb93b1ec9d8420ebb3b4ec9dbc20eb958c20ee8081ee80980000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000efbc91efbc90e980a3e382b3e383b3e3839c28efbc91290000",
+   "input_from_name": "De espaldas al adversario ",
+   "command_glyphs": [
+    "U+E001",
+    "U+E018"
+   ],
+   "command_decoded": "d+3",
+   "command_complete": true
+  },
+  {
+   "name": "10 Hit Combo 1",
+   "name_offset": 14196,
+   "record_len": 369,
+   "record_hex": "31302048697420436f6d626f20310000efbc91efbc90e3828ce38293e382b3e383b3e3839c28efbc91290000ee8083ee8095ee8096ee8095ee809cee8098ee8098ee8098ee809cee8098ee80960000ee8083ee8095ee8096ee8095ee809cee8098ee8098ee8098ee809cee8098ee80960000ee8083ee8095ee8096ee8095ee809cee8098ee8098ee8098ee809cee8098ee80960000ee8083ee8095ee8096ee8095ee809cee8098ee8098ee8098ee809cee8098ee80960000ee8083ee8095ee8096ee8095ee809cee8098ee8098ee8098ee809cee8098ee80960000ee8083ee8095ee8096ee8095ee809cee8098ee8098ee8098ee809cee8098ee80960000ee8083ee8095ee8096ee8095ee809cee8098ee8098ee8098ee809cee8098ee80960000ee8083ee8095ee8096ee8095ee809cee8098ee8098ee8098ee809cee8098ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000efbc91efbc90e980a3e382b3e383b3e3839c28efbc92290000",
+   "input_from_name": "10 Hit Combo 1",
+   "command_glyphs": [
+    "U+E003",
+    "U+E015",
+    "U+E016",
+    "U+E015",
+    "U+E01C",
+    "U+E018",
+    "U+E018",
+    "U+E018",
+    "U+E01C",
+    "U+E018",
+    "U+E016"
+   ],
+   "command_decoded": "b+1,2,1,4,3,3,3,4,3,2",
+   "command_complete": true
+  },
+  {
+   "name": "10 Hit Combo 2",
+   "name_offset": 14565,
+   "record_len": 334,
+   "record_hex": "31302048697420436f6d626f20320000efbc91efbc90e3828ce38293e382b3e383b3e3839c28efbc92290000ee8083ee8095ee8096ee8095ee809cee8098ee8098ee80a0ee8096ee80970000ee8083ee8095ee8096ee8095ee809cee8098ee8098ee80a0ee8096ee80970000ee8083ee8095ee8096ee8095ee809cee8098ee8098ee80a0ee8096ee80970000ee8083ee8095ee8096ee8095ee809cee8098ee8098ee80a0ee8096ee80970000ee8083ee8095ee8096ee8095ee809cee8098ee8098ee80a0ee8096ee80970000ee8083ee8095ee8096ee8095ee809cee8098ee8098ee80a0ee8096ee80970000ee8083ee8095ee8096ee8095ee809cee8098ee8098ee80a0ee8096ee80970000ee8083ee8095ee8096ee8095ee809cee8098ee8098ee80a0ee8096ee80970000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e8b6b3e381b1e381a1e3818d0000",
+   "input_from_name": "10 Hit Combo 2",
+   "command_glyphs": [
+    "U+E003",
+    "U+E015",
+    "U+E016",
+    "U+E015",
+    "U+E01C",
+    "U+E018",
+    "U+E018",
+    "U+E020",
+    "U+E016",
+    "U+E017"
+   ],
+   "command_decoded": "b+1,2,1,4,3,3,3+4,2,1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Head Stomp",
+   "name_offset": 14899,
+   "record_len": 56,
+   "record_hex": "486561642053746f6d700000e38182e38197e381b1e381a1e3818d0000e79bb8e6898be381abe68ea5e8bf91e38197e381a620ee80990000",
+   "input_from_name": "Head Stomp",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Approach enemy ",
+   "name_offset": 14955,
+   "record_len": 20,
+   "record_hex": "417070726f61636820656e656d7920ee80990000",
+   "input_from_name": "Approach enemy ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Approcher adversaire ",
+   "name_offset": 14975,
+   "record_len": 26,
+   "record_hex": "417070726f63686572206164766572736169726520ee80990000",
+   "input_from_name": "Approcher adversaire ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Vicino all'avversario ",
+   "name_offset": 15001,
+   "record_len": 27,
+   "record_hex": "566963696e6f20616c6c276176766572736172696f20ee80990000",
+   "input_from_name": "Vicino all'avversario ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "An den Gegner ann",
+   "name_offset": 15028,
+   "record_len": 19,
+   "record_hex": "416e2064656e204765676e657220616e6ec3a4",
+   "input_from_name": "An den Gegner ann"
+  },
+  {
+   "name": "hern ",
+   "name_offset": 15047,
+   "record_len": 10,
+   "record_hex": "6865726e20ee80990000",
+   "input_from_name": "hern ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Acercarse al adversario ",
+   "name_offset": 15057,
+   "record_len": 136,
+   "record_hex": "41636572636172736520616c206164766572736172696f20ee80990000d09fd0bed0b4d185d0bed0b420d0ba20d0bfd180d0bed182d0b8d0b2d0bdd0b8d0bad18320ee80990000ec8381eb8c80ebb0a9ec979020eca091eab7bced9598eba9b020ee80990000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e8b6b3e381b1e381a1e3818d0000",
+   "input_from_name": "Acercarse al adversario ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Head Stomp",
+   "name_offset": 15193,
+   "record_len": 59,
+   "record_hex": "486561642053746f6d700000e38182e38197e381b1e381a1e3818d0000e79bb8e6898be381abe68ea5e8bf91e38197e381a620ee8084ee80990000",
+   "input_from_name": "Head Stomp",
+   "command_glyphs": [
+    "U+E004",
+    "U+E019"
+   ],
+   "command_decoded": "f+1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Approach enemy ",
+   "name_offset": 15252,
+   "record_len": 23,
+   "record_hex": "417070726f61636820656e656d7920ee8084ee80990000",
+   "input_from_name": "Approach enemy ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E019"
+   ],
+   "command_decoded": "f+1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Approcher adversaire ",
+   "name_offset": 15275,
+   "record_len": 29,
+   "record_hex": "417070726f63686572206164766572736169726520ee8084ee80990000",
+   "input_from_name": "Approcher adversaire ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E019"
+   ],
+   "command_decoded": "f+1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Vicino all'avversario ",
+   "name_offset": 15304,
+   "record_len": 30,
+   "record_hex": "566963696e6f20616c6c276176766572736172696f20ee8084ee80990000",
+   "input_from_name": "Vicino all'avversario ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E019"
+   ],
+   "command_decoded": "f+1+3",
+   "command_complete": true
+  },
+  {
+   "name": "An den Gegner ann",
+   "name_offset": 15334,
+   "record_len": 19,
+   "record_hex": "416e2064656e204765676e657220616e6ec3a4",
+   "input_from_name": "An den Gegner ann"
+  },
+  {
+   "name": "hern ",
+   "name_offset": 15353,
+   "record_len": 13,
+   "record_hex": "6865726e20ee8084ee80990000",
+   "input_from_name": "hern ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E019"
+   ],
+   "command_decoded": "f+1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Acercarse al adversario ",
+   "name_offset": 15366,
+   "record_len": 166,
+   "record_hex": "41636572636172736520616c206164766572736172696f20ee8084ee80990000d09fd0bed0b4d185d0bed0b420d0ba20d0bfd180d0bed182d0b8d0b2d0bdd0b8d0bad18320ee8084ee80990000ec8381eb8c80ebb0a9ec979020eca091eab7bced9598eba9b020ee8084ee80990000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382bfe382b9e3839ee3838be382a2e383b3e382ace38388e383aae383b3e382b00000",
+   "input_from_name": "Acercarse al adversario ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E019"
+   ],
+   "command_decoded": "f+1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Tasmanian Doormat",
+   "name_offset": 15532,
+   "record_len": 81,
+   "record_hex": "5461736d616e69616e20446f6f726d61740000e382bfe382b9e3839ee3838be382a2e383b3e382ace38388e383aae383b3e382b00000e79bb8e6898be381abe68ea5e8bf91e38197e381a620ee809e0000",
+   "input_from_name": "Tasmanian Doormat",
+   "command_glyphs": [
+    "U+E01E"
+   ],
+   "command_decoded": "2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Approach enemy ",
+   "name_offset": 15613,
+   "record_len": 20,
+   "record_hex": "417070726f61636820656e656d7920ee809e0000",
+   "input_from_name": "Approach enemy ",
+   "command_glyphs": [
+    "U+E01E"
+   ],
+   "command_decoded": "2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Approcher adversaire ",
+   "name_offset": 15633,
+   "record_len": 26,
+   "record_hex": "417070726f63686572206164766572736169726520ee809e0000",
+   "input_from_name": "Approcher adversaire ",
+   "command_glyphs": [
+    "U+E01E"
+   ],
+   "command_decoded": "2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Vicino all'avversario ",
+   "name_offset": 15659,
+   "record_len": 27,
+   "record_hex": "566963696e6f20616c6c276176766572736172696f20ee809e0000",
+   "input_from_name": "Vicino all'avversario ",
+   "command_glyphs": [
+    "U+E01E"
+   ],
+   "command_decoded": "2+4",
+   "command_complete": true
+  },
+  {
+   "name": "An den Gegner ann",
+   "name_offset": 15686,
+   "record_len": 19,
+   "record_hex": "416e2064656e204765676e657220616e6ec3a4",
+   "input_from_name": "An den Gegner ann"
+  },
+  {
+   "name": "hern ",
+   "name_offset": 15705,
+   "record_len": 10,
+   "record_hex": "6865726e20ee809e0000",
+   "input_from_name": "hern ",
+   "command_glyphs": [
+    "U+E01E"
+   ],
+   "command_decoded": "2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Acercarse al adversario ",
+   "name_offset": 15715,
+   "record_len": 157,
+   "record_hex": "41636572636172736520616c206164766572736172696f20ee809e0000d09fd0bed0b4d185d0bed0b420d0ba20d0bfd180d0bed182d0b8d0b2d0bdd0b8d0bad18320ee809e0000ec8381eb8c80ebb0a9ec979020eca091eab7bced9598eba9b020ee809e0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382bfe382b9e3839ee3838be382a2e383b3e382ace38388e383aae383b3e382b00000",
+   "input_from_name": "Acercarse al adversario ",
+   "command_glyphs": [
+    "U+E01E"
+   ],
+   "command_decoded": "2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Tasmanian Doormat",
+   "name_offset": 15872,
+   "record_len": 84,
+   "record_hex": "5461736d616e69616e20446f6f726d61740000e382bfe382b9e3839ee3838be382a2e383b3e382ace38388e383aae383b3e382b00000e79bb8e6898be381abe68ea5e8bf91e38197e381a620ee8084ee809e0000",
+   "input_from_name": "Tasmanian Doormat",
+   "command_glyphs": [
+    "U+E004",
+    "U+E01E"
+   ],
+   "command_decoded": "f+2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Approach enemy ",
+   "name_offset": 15956,
+   "record_len": 23,
+   "record_hex": "417070726f61636820656e656d7920ee8084ee809e0000",
+   "input_from_name": "Approach enemy ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E01E"
+   ],
+   "command_decoded": "f+2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Approcher adversaire ",
+   "name_offset": 15979,
+   "record_len": 29,
+   "record_hex": "417070726f63686572206164766572736169726520ee8084ee809e0000",
+   "input_from_name": "Approcher adversaire ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E01E"
+   ],
+   "command_decoded": "f+2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Vicino all'avversario ",
+   "name_offset": 16008,
+   "record_len": 30,
+   "record_hex": "566963696e6f20616c6c276176766572736172696f20ee8084ee809e0000",
+   "input_from_name": "Vicino all'avversario ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E01E"
+   ],
+   "command_decoded": "f+2+4",
+   "command_complete": true
+  },
+  {
+   "name": "An den Gegner ann",
+   "name_offset": 16038,
+   "record_len": 19,
+   "record_hex": "416e2064656e204765676e657220616e6ec3a4",
+   "input_from_name": "An den Gegner ann"
+  },
+  {
+   "name": "hern ",
+   "name_offset": 16057,
+   "record_len": 13,
+   "record_hex": "6865726e20ee8084ee809e0000",
+   "input_from_name": "hern ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E01E"
+   ],
+   "command_decoded": "f+2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Acercarse al adversario ",
+   "name_offset": 16070,
+   "record_len": 175,
+   "record_hex": "41636572636172736520616c206164766572736172696f20ee8084ee809e0000d09fd0bed0b4d185d0bed0b420d0ba20d0bfd180d0bed182d0b8d0b2d0bdd0b8d0bad18320ee8084ee809e0000ec8381eb8c80ebb0a9ec979020eca091eab7bced9598eba9b020ee8084ee809e0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382a2e3838be3839ee383abe38395e382a7e382a4e382b9e382afe383a9e38383e382b7e383a3e383bc0000",
+   "input_from_name": "Acercarse al adversario ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E01E"
+   ],
+   "command_decoded": "f+2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Animal Face Crusher",
+   "name_offset": 16245,
+   "record_len": 112,
+   "record_hex": "416e696d616c204661636520437275736865720000e382a2e3838be3839ee383abe38395e382a7e382a4e382b9e382afe383a9e38383e382b7e383a3e383bc0000e79bb8e6898be381aee5b7a6e6a8aae3818be38289e68ea5e8bf91e38197e381a620ee8099286f7220ee809e290000",
+   "input_from_name": "Animal Face Crusher",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Approach from left side ",
+   "name_offset": 16357,
+   "record_len": 38,
+   "record_hex": "417070726f6163682066726f6d206c656674207369646520ee809920286f7220ee809e290000",
+   "input_from_name": "Approach from left side ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Approcher par la gauche ",
+   "name_offset": 16395,
+   "record_len": 38,
+   "record_hex": "417070726f6368657220706172206c612067617563686520ee809920286f7520ee809e290000",
+   "input_from_name": "Approcher par la gauche ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Vicino da sinistra ",
+   "name_offset": 16433,
+   "record_len": 32,
+   "record_hex": "566963696e6f2064612073696e697374726120ee809920286f20ee809e290000",
+   "input_from_name": "Vicino da sinistra ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Von der linken Seite ann",
+   "name_offset": 16465,
+   "record_len": 26,
+   "record_hex": "566f6e20646572206c696e6b656e20536569746520616e6ec3a4",
+   "input_from_name": "Von der linken Seite ann"
+  },
+  {
+   "name": "hern ",
+   "name_offset": 16491,
+   "record_len": 8,
+   "record_hex": "6865726e20ee8099",
+   "input_from_name": "hern ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": " (oder ",
+   "name_offset": 16499,
+   "record_len": 13,
+   "record_hex": "20286f64657220ee809e290000",
+   "input_from_name": " (oder ",
+   "command_glyphs": [
+    "U+E01E"
+   ],
+   "command_decoded": "2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Acercarse desde la izqda. ",
+   "name_offset": 16512,
+   "record_len": 200,
+   "record_hex": "416365726361727365206465736465206c6120697a7164612e20ee809920286f20ee809e290000d09fd0bed0b4d185d0bed0b420d181d0bbd0b5d0b2d0b020ee80992028d0b8d0bbd0b820ee809e290000ec99bcecaabdec9cbceba19cebb680ed84b020eca091eab7bced9598eba9b020ee809928ed98b9ec9d8020ee809e290000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382a2e3838be3839ee383abe383ade383bce383aae383b3e382b0e382a2e383bce383a0e3839be382a4e38383e383970000",
+   "input_from_name": "Acercarse desde la izqda. ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Animal Rolling Arm Lock",
+   "name_offset": 16712,
+   "record_len": 122,
+   "record_hex": "416e696d616c20526f6c6c696e672041726d204c6f636b0000e382a2e3838be3839ee383abe383ade383bce383aae383b3e382b0e382a2e383bce383a0e3839be382a4e38383e383970000e79bb8e6898be381aee58fb3e6a8aae3818be38289e68ea5e8bf91e38197e381a620ee8099286f7220ee809e290000",
+   "input_from_name": "Animal Rolling Arm Lock",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Approach from right side ",
+   "name_offset": 16834,
+   "record_len": 39,
+   "record_hex": "417070726f6163682066726f6d207269676874207369646520ee809920286f7220ee809e290000",
+   "input_from_name": "Approach from right side ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Approcher par la droite ",
+   "name_offset": 16873,
+   "record_len": 38,
+   "record_hex": "417070726f6368657220706172206c612064726f69746520ee809920286f7520ee809e290000",
+   "input_from_name": "Approcher par la droite ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Vicino da destra ",
+   "name_offset": 16911,
+   "record_len": 30,
+   "record_hex": "566963696e6f2064612064657374726120ee809920286f20ee809e290000",
+   "input_from_name": "Vicino da destra ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Von der rechten Seite ann",
+   "name_offset": 16941,
+   "record_len": 27,
+   "record_hex": "566f6e20646572207265636874656e20536569746520616e6ec3a4",
+   "input_from_name": "Von der rechten Seite ann"
+  },
+  {
+   "name": "hern ",
+   "name_offset": 16968,
+   "record_len": 8,
+   "record_hex": "6865726e20ee8099",
+   "input_from_name": "hern ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": " (oder ",
+   "name_offset": 16976,
+   "record_len": 13,
+   "record_hex": "20286f64657220ee809e290000",
+   "input_from_name": " (oder ",
+   "command_glyphs": [
+    "U+E01E"
+   ],
+   "command_decoded": "2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Acercarse desde la dcha. ",
+   "name_offset": 16989,
+   "record_len": 168,
+   "record_hex": "416365726361727365206465736465206c6120646368612e20ee809920286f20ee809e290000d09fd0bed0b4d185d0bed0b420d181d0bfd180d0b0d0b2d0b020ee80992028d0b8d0bbd0b820ee809e290000ec98a4eba5b8ecaabdec9cbceba19cebb680ed84b020eca091eab7bced9598eba9b020ee809928ed98b9ec9d8020ee809e290000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e8838ce890bde381a8e381970000",
+   "input_from_name": "Acercarse desde la dcha. ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Reverse Neck Throw",
+   "name_offset": 17157,
+   "record_len": 81,
+   "record_hex": "52657665727365204e65636b205468726f770000e3819be3818ae381a8e381970000e79bb8e6898be381aee8838ce5be8ce3818be38289e68ea5e8bf91e38197e381a620ee8099286f7220ee809e290000",
+   "input_from_name": "Reverse Neck Throw",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Approach from behind ",
+   "name_offset": 17238,
+   "record_len": 35,
+   "record_hex": "417070726f6163682066726f6d20626568696e6420ee809920286f7220ee809e290000",
+   "input_from_name": "Approach from behind ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Approcher par derri",
+   "name_offset": 17273,
+   "record_len": 38,
+   "record_hex": "417070726f6368657220706172206465727269c3a8726520ee809920286f7520ee809e290000",
+   "input_from_name": "Approcher par derri",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Vicino da dietro ",
+   "name_offset": 17311,
+   "record_len": 30,
+   "record_hex": "566963696e6f2064612064696574726f20ee809920286f20ee809e290000",
+   "input_from_name": "Vicino da dietro ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Von hinten ann",
+   "name_offset": 17341,
+   "record_len": 16,
+   "record_hex": "566f6e2068696e74656e20616e6ec3a4",
+   "input_from_name": "Von hinten ann"
+  },
+  {
+   "name": "hern ",
+   "name_offset": 17357,
+   "record_len": 8,
+   "record_hex": "6865726e20ee8099",
+   "input_from_name": "hern ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": " (oder ",
+   "name_offset": 17365,
+   "record_len": 13,
+   "record_hex": "20286f64657220ee809e290000",
+   "input_from_name": " (oder ",
+   "command_glyphs": [
+    "U+E01E"
+   ],
+   "command_decoded": "2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Acercarse desde atr",
+   "name_offset": 17378,
+   "record_len": 170,
+   "record_hex": "41636572636172736520646573646520617472c3a17320ee809920286f20ee809e290000d09fd0bed0b4d185d0bed0b420d181d0b7d0b0d0b4d0b820ee80992028d0b8d0bbd0b820ee809e290000eb92a4ec9790ec849c20eca091eab7bced9598eba9b020ee809928ed98b9ec9d8020ee809e290000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382b8e383a3e382a4e382a2e383b3e38388e382b9e382a4e383b3e382b00000",
+   "input_from_name": "Acercarse desde atr",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Giant Swing",
+   "name_offset": 17548,
+   "record_len": 90,
+   "record_hex": "4769616e74205377696e670000e382b8e383a3e382a4e382a2e383b3e38388e382b9e382a4e383b3e382b00000e79bb8e6898be381abe68ea5e8bf91e38197e381a620ee8084ee8083ee8080ee8081ee8082ee8084ee80950000",
+   "input_from_name": "Giant Swing",
+   "command_glyphs": [
+    "U+E004",
+    "U+E003",
+    "U+E000",
+    "U+E001",
+    "U+E002",
+    "U+E004",
+    "U+E015"
+   ],
+   "command_decoded": "f,b,d/b,d,d/f,f+1",
+   "command_complete": true
+  },
+  {
+   "name": "Approach enemy ",
+   "name_offset": 17638,
+   "record_len": 38,
+   "record_hex": "417070726f61636820656e656d7920ee8084ee8083ee8080ee8081ee8082ee8084ee80950000",
+   "input_from_name": "Approach enemy ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E003",
+    "U+E000",
+    "U+E001",
+    "U+E002",
+    "U+E004",
+    "U+E015"
+   ],
+   "command_decoded": "f,b,d/b,d,d/f,f+1",
+   "command_complete": true
+  },
+  {
+   "name": "Approcher adversaire ",
+   "name_offset": 17676,
+   "record_len": 44,
+   "record_hex": "417070726f63686572206164766572736169726520ee8084ee8083ee8080ee8081ee8082ee8084ee80950000",
+   "input_from_name": "Approcher adversaire ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E003",
+    "U+E000",
+    "U+E001",
+    "U+E002",
+    "U+E004",
+    "U+E015"
+   ],
+   "command_decoded": "f,b,d/b,d,d/f,f+1",
+   "command_complete": true
+  },
+  {
+   "name": "Vicino all'avversario ",
+   "name_offset": 17720,
+   "record_len": 45,
+   "record_hex": "566963696e6f20616c6c276176766572736172696f20ee8084ee8083ee8080ee8081ee8082ee8084ee80950000",
+   "input_from_name": "Vicino all'avversario ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E003",
+    "U+E000",
+    "U+E001",
+    "U+E002",
+    "U+E004",
+    "U+E015"
+   ],
+   "command_decoded": "f,b,d/b,d,d/f,f+1",
+   "command_complete": true
+  },
+  {
+   "name": "An den Gegner ann",
+   "name_offset": 17765,
+   "record_len": 19,
+   "record_hex": "416e2064656e204765676e657220616e6ec3a4",
+   "input_from_name": "An den Gegner ann"
+  },
+  {
+   "name": "hern ",
+   "name_offset": 17784,
+   "record_len": 28,
+   "record_hex": "6865726e20ee8084ee8083ee8080ee8081ee8082ee8084ee80950000",
+   "input_from_name": "hern ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E003",
+    "U+E000",
+    "U+E001",
+    "U+E002",
+    "U+E004",
+    "U+E015"
+   ],
+   "command_decoded": "f,b,d/b,d,d/f,f+1",
+   "command_complete": true
+  },
+  {
+   "name": "Acercarse al adversario ",
+   "name_offset": 17812,
+   "record_len": 205,
+   "record_hex": "41636572636172736520616c206164766572736172696f20ee8084ee8083ee8080ee8081ee8082ee8084ee80950000d09fd0bed0b4d185d0bed0b420d0ba20d0bfd180d0bed182d0b8d0b2d0bdd0b8d0bad18320ee8084ee8083ee8080ee8081ee8082ee8084ee80950000ec8381eb8c80ebb0a9ec979020eca091eab7bced9598eba9b020ee8084ee8083ee8080ee8081ee8082ee8084ee80950000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382b8e383a3e382ace383bce38389e383a9e382a4e38390e383bc0000",
+   "input_from_name": "Acercarse al adversario ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E003",
+    "U+E000",
+    "U+E001",
+    "U+E002",
+    "U+E004",
+    "U+E015"
+   ],
+   "command_decoded": "f,b,d/b,d,d/f,f+1",
+   "command_complete": true
+  },
+  {
+   "name": "Pile Driver",
+   "name_offset": 18017,
+   "record_len": 78,
+   "record_hex": "50696c65204472697665720000e382b8e383a3e382ace383bce38389e383a9e382a4e38390e383bc0000e79bb8e6898be381abe68ea5e8bf91e38197e381a620ee8081ee8082ee8084ee80950000",
+   "input_from_name": "Pile Driver",
+   "command_glyphs": [
+    "U+E001",
+    "U+E002",
+    "U+E004",
+    "U+E015"
+   ],
+   "command_decoded": "d,d/f,f+1",
+   "command_complete": true
+  },
+  {
+   "name": "Approach enemy ",
+   "name_offset": 18095,
+   "record_len": 29,
+   "record_hex": "417070726f61636820656e656d7920ee8081ee8082ee8084ee80950000",
+   "input_from_name": "Approach enemy ",
+   "command_glyphs": [
+    "U+E001",
+    "U+E002",
+    "U+E004",
+    "U+E015"
+   ],
+   "command_decoded": "d,d/f,f+1",
+   "command_complete": true
+  },
+  {
+   "name": "Approcher adversaire ",
+   "name_offset": 18124,
+   "record_len": 35,
+   "record_hex": "417070726f63686572206164766572736169726520ee8081ee8082ee8084ee80950000",
+   "input_from_name": "Approcher adversaire ",
+   "command_glyphs": [
+    "U+E001",
+    "U+E002",
+    "U+E004",
+    "U+E015"
+   ],
+   "command_decoded": "d,d/f,f+1",
+   "command_complete": true
+  },
+  {
+   "name": "Vicino all'avversario ",
+   "name_offset": 18159,
+   "record_len": 36,
+   "record_hex": "566963696e6f20616c6c276176766572736172696f20ee8081ee8082ee8084ee80950000",
+   "input_from_name": "Vicino all'avversario ",
+   "command_glyphs": [
+    "U+E001",
+    "U+E002",
+    "U+E004",
+    "U+E015"
+   ],
+   "command_decoded": "d,d/f,f+1",
+   "command_complete": true
+  },
+  {
+   "name": "An den Gegner ann",
+   "name_offset": 18195,
+   "record_len": 19,
+   "record_hex": "416e2064656e204765676e657220616e6ec3a4",
+   "input_from_name": "An den Gegner ann"
+  },
+  {
+   "name": "hern ",
+   "name_offset": 18214,
+   "record_len": 19,
+   "record_hex": "6865726e20ee8081ee8082ee8084ee80950000",
+   "input_from_name": "hern ",
+   "command_glyphs": [
+    "U+E001",
+    "U+E002",
+    "U+E004",
+    "U+E015"
+   ],
+   "command_decoded": "d,d/f,f+1",
+   "command_complete": true
+  },
+  {
+   "name": "Acercarse al adversario ",
+   "name_offset": 18233,
+   "record_len": 193,
+   "record_hex": "41636572636172736520616c206164766572736172696f20ee8081ee8082ee8084ee80950000d09fd0bed0b4d185d0bed0b420d0ba20d0bfd180d0bed182d0b8d0b2d0bdd0b8d0bad18320ee8081ee8082ee8084ee80950000ec8381eb8c80ebb0a9ec979020eca091eab7bced9598eba9b020ee8081ee8082ee8084ee80950000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e38384e383bce383a0e382b9e38388e383b3e38391e382a4e383abe38389e383a9e382a4e38390e383bc0000",
+   "input_from_name": "Acercarse al adversario ",
+   "command_glyphs": [
+    "U+E001",
+    "U+E002",
+    "U+E004",
+    "U+E015"
+   ],
+   "command_decoded": "d,d/f,f+1",
+   "command_complete": true
+  },
+  {
+   "name": "Tombstone Pile Driver",
+   "name_offset": 18426,
+   "record_len": 100,
+   "record_hex": "546f6d6273746f6e652050696c65204472697665720000e38384e383bce383a0e382b9e38388e383b3e38391e382a4e383abe38389e383a9e382a4e38390e383bc0000e79bb8e6898be381abe68ea5e8bf91e38197e381a620ee8080ee8084ee809e0000",
+   "input_from_name": "Tombstone Pile Driver",
+   "command_glyphs": [
+    "U+E000",
+    "U+E004",
+    "U+E01E"
+   ],
+   "command_decoded": "d/b,f+2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Approach enemy ",
+   "name_offset": 18526,
+   "record_len": 26,
+   "record_hex": "417070726f61636820656e656d7920ee8080ee8084ee809e0000",
+   "input_from_name": "Approach enemy ",
+   "command_glyphs": [
+    "U+E000",
+    "U+E004",
+    "U+E01E"
+   ],
+   "command_decoded": "d/b,f+2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Approcher adversaire ",
+   "name_offset": 18552,
+   "record_len": 32,
+   "record_hex": "417070726f63686572206164766572736169726520ee8080ee8084ee809e0000",
+   "input_from_name": "Approcher adversaire ",
+   "command_glyphs": [
+    "U+E000",
+    "U+E004",
+    "U+E01E"
+   ],
+   "command_decoded": "d/b,f+2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Vicino all'avversario ",
+   "name_offset": 18584,
+   "record_len": 33,
+   "record_hex": "566963696e6f20616c6c276176766572736172696f20ee8080ee8084ee809e0000",
+   "input_from_name": "Vicino all'avversario ",
+   "command_glyphs": [
+    "U+E000",
+    "U+E004",
+    "U+E01E"
+   ],
+   "command_decoded": "d/b,f+2+4",
+   "command_complete": true
+  },
+  {
+   "name": "An den Gegner ann",
+   "name_offset": 18617,
+   "record_len": 19,
+   "record_hex": "416e2064656e204765676e657220616e6ec3a4",
+   "input_from_name": "An den Gegner ann"
+  },
+  {
+   "name": "hern ",
+   "name_offset": 18636,
+   "record_len": 16,
+   "record_hex": "6865726e20ee8080ee8084ee809e0000",
+   "input_from_name": "hern ",
+   "command_glyphs": [
+    "U+E000",
+    "U+E004",
+    "U+E01E"
+   ],
+   "command_decoded": "d/b,f+2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Acercarse al adversario ",
+   "name_offset": 18652,
+   "record_len": 200,
+   "record_hex": "41636572636172736520616c206164766572736172696f20ee8080ee8084ee809e0000d09fd0bed0b4d185d0bed0b420d0ba20d0bfd180d0bed182d0b8d0b2d0bdd0b8d0bad18320ee8080ee8084ee809e0000ec8381eb8c80ebb0a9ec979020eca091eab7bced9598eba9b020ee8080ee8084ee809e0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000efbca4efbca4efbcb400004444540000efbca4efbca4efbcb40000e79bb8e6898be381abe68ea5e8bf91e38197e381a620ee8080ee8080ee80970000",
+   "input_from_name": "Acercarse al adversario ",
+   "command_glyphs": [
+    "U+E000",
+    "U+E004",
+    "U+E01E"
+   ],
+   "command_decoded": "d/b,f+2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Approach enemy ",
+   "name_offset": 18852,
+   "record_len": 26,
+   "record_hex": "417070726f61636820656e656d7920ee8080ee8080ee80970000",
+   "input_from_name": "Approach enemy ",
+   "command_glyphs": [
+    "U+E000",
+    "U+E000",
+    "U+E017"
+   ],
+   "command_decoded": "d/b,d/b+1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Approcher adversaire ",
+   "name_offset": 18878,
+   "record_len": 32,
+   "record_hex": "417070726f63686572206164766572736169726520ee8080ee8080ee80970000",
+   "input_from_name": "Approcher adversaire ",
+   "command_glyphs": [
+    "U+E000",
+    "U+E000",
+    "U+E017"
+   ],
+   "command_decoded": "d/b,d/b+1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Vicino all'avversario ",
+   "name_offset": 18910,
+   "record_len": 33,
+   "record_hex": "566963696e6f20616c6c276176766572736172696f20ee8080ee8080ee80970000",
+   "input_from_name": "Vicino all'avversario ",
+   "command_glyphs": [
+    "U+E000",
+    "U+E000",
+    "U+E017"
+   ],
+   "command_decoded": "d/b,d/b+1+2",
+   "command_complete": true
+  },
+  {
+   "name": "An den Gegner ann",
+   "name_offset": 18943,
+   "record_len": 19,
+   "record_hex": "416e2064656e204765676e657220616e6ec3a4",
+   "input_from_name": "An den Gegner ann"
+  },
+  {
+   "name": "hern ",
+   "name_offset": 18962,
+   "record_len": 16,
+   "record_hex": "6865726e20ee8080ee8080ee80970000",
+   "input_from_name": "hern ",
+   "command_glyphs": [
+    "U+E000",
+    "U+E000",
+    "U+E017"
+   ],
+   "command_decoded": "d/b,d/b+1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Acercarse al adversario ",
+   "name_offset": 18978,
+   "record_len": 168,
+   "record_hex": "41636572636172736520616c206164766572736172696f20ee8080ee8080ee80970000d09fd0bed0b4d185d0bed0b420d0ba20d0bfd180d0bed182d0b8d0b2d0bdd0b8d0bad18320ee8080ee8080ee80970000ec8381eb8c80ebb0a9ec979020eca091eab7bced9598eba9b020ee8080ee8080ee80970000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382b5e383b3e38397e383abe382b3e383b3e3839c28efbc91290000",
+   "input_from_name": "Acercarse al adversario ",
+   "command_glyphs": [
+    "U+E000",
+    "U+E000",
+    "U+E017"
+   ],
+   "command_decoded": "d/b,d/b+1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Sample Combo 1",
+   "name_offset": 19146,
+   "record_len": 132,
+   "record_hex": "53616d706c6520436f6d626f20310000e382b5e383b3e38397e383abe382b3e383b3e3839c28efbc91290000ee8087ee809ce28692ee8097e28692ee8095ee8096ee809800000000000000000000000000000000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382b5e383b3e38397e383abe382b3e383b3e3839c28efbc92290000",
+   "input_from_name": "Sample Combo 1",
+   "command_glyphs": [
+    "U+E015",
+    "U+E016",
+    "U+E018"
+   ],
+   "command_decoded": "1,2,3",
+   "command_complete": true
+  },
+  {
+   "name": "Sample Combo 2",
+   "name_offset": 19278,
+   "record_len": 138,
+   "record_hex": "53616d706c6520436f6d626f20320000e382b5e383b3e38397e383abe382b3e383b3e3839c28efbc92290000ee8087ee809ce28692ee8084ee809cee8098ee8096e28692ee8080ee809700000000000000000000000000000000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382b5e383b3e38397e383abe382b3e383b3e3839c28efbc93290000",
+   "input_from_name": "Sample Combo 2",
+   "command_glyphs": [
+    "U+E004",
+    "U+E01C",
+    "U+E018",
+    "U+E016"
+   ],
+   "command_decoded": "f+4,3,2",
+   "command_complete": true
+  },
+  {
+   "name": "Sample Combo 3",
+   "name_offset": 19416,
+   "record_len": 132,
+   "record_hex": "53616d706c6520436f6d626f20330000e382b5e383b3e38397e383abe382b3e383b3e3839c28efbc93290000ee8080ee8098e28692ee8082ee8097e28692ee8087ee80a000000000000000000000000000000000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382b5e383b3e38397e383abe382b3e383b3e3839c28efbc94290000",
+   "input_from_name": "Sample Combo 3",
+   "command_glyphs": [
+    "U+E000",
+    "U+E018"
+   ],
+   "command_decoded": "d/b+3",
+   "command_complete": true
+  },
+  {
+   "name": "Sample Combo 4",
+   "name_offset": 19548,
+   "record_len": 163,
+   "record_hex": "53616d706c6520436f6d626f20340000e382b5e383b3e38397e383abe382b3e383b3e3839c28efbc942900002eee8082ee8096e382abe382a6e383b3e382bfe383bce28692ee8097e28692ee8084ee809cee8098ee8096e28692ee8084ee8097ee809600000000000000000000000000000000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382b5e383b3e38397e383abe382b3e383b3e3839c28efbc95290000",
+   "input_from_name": "Sample Combo 4",
+   "command_glyphs": [
+    "U+E004",
+    "U+E01C",
+    "U+E018",
+    "U+E016"
+   ],
+   "command_decoded": "f+4,3,2",
+   "command_complete": true
+  },
+  {
+   "name": "Sample Combo 5",
+   "name_offset": 19711,
+   "record_len": 156,
+   "record_hex": "53616d706c6520436f6d626f20350000e382b5e383b3e38397e383abe382b3e383b3e3839c28efbc95290000ee80a0e28692ee8097e28692ee8095ee8096ee8083ee8097ee8097e28692e38197e38283e3818ce381bfe4b8adee809700000000000000000000000000000000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382b5e383b3e38397e383abe382b3e383b3e3839c28efbc96290000",
+   "input_from_name": "Sample Combo 5",
+   "command_glyphs": [
+    "U+E015",
+    "U+E016",
+    "U+E003",
+    "U+E017",
+    "U+E017"
+   ],
+   "command_decoded": "1,2,b+1+2,1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Sample Combo 6",
+   "name_offset": 19867,
+   "record_len": 156,
+   "record_hex": "53616d706c6520436f6d626f20360000e382b5e383b3e38397e383abe382b3e383b3e3839c28efbc96290000ee8083ee8097ee8095e28692ee8083ee80a0ee8095e28692ee8082ee8097e28692ee8084e29886ee8081ee8082ee809500000000000000000000000000000000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382b5e383b3e38397e383abe382b3e383b3e3839c28efbc97290000",
+   "input_from_name": "Sample Combo 6",
+   "command_glyphs": [
+    "U+E003",
+    "U+E017",
+    "U+E015"
+   ],
+   "command_decoded": "b+1+2,1",
+   "command_complete": true
+  },
+  {
+   "name": "Sample Combo 7",
+   "name_offset": 20023,
+   "record_len": 22981,
+   "record_hex": "53616d706c6520436f6d626f20370000e382b5e383b3e38397e383abe382b3e383b3e3839c28efbc97290000e38090ee8098ee809ce38091e28692ee8083ee80a0ee8095e28692e7ab8be381a1e98094e4b8adee8098ee8098e3839be383bce383abe38389e28692ee8084ee8084e28692ee8097ee809800000000000000000000000000000000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b00004b6500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009e0000009e0000009e0000009e000000000000000000000000000000000000000000000000000000000000000000000070fe000007000b000000000009000b000a000b0008000b000000000000000000a0000000a0000000a0000000a0000000000000000000000000000000000000000000000000000000000000000000000070fe00000c000d00000000000c000d000c000d000c000d000000000000000000a1000000a1000000a1000000a10000000000000000000000000000000000000000000000000000000000000000000000000000000e000e00000000000e000e000e000e000e000e000000000000000000a5000000a5000000a5000000a50000000000000000000000000000000000000000000000000000000000000000000000000000000e000e00000000000e000e000e000e000e000e000000000000000000a8000000a8000000a8000000a8000000000000000000000000000000abeaabeaabeaabea000000000000000000000000000000000f000f00000000000f000f000f000f000f000f000000000000000000a8000000a8000000a8000000a800000000000000000000000000000055155515551555150000000000000000000000000000000010001000000000001000100010001000100010000000000000000000ad000000ad000000ad000000ad00000000000000000000000000000000000000000000000000000000000000000000006400000011001100000000001100110011001100120012000000000000000000bb000000bb000000bb000000bb00000000000000000000000000000000000000000000000000000000000000000000000100000013001300000000001300130013001300130013000000000000000000bb000000bb000000bb000000bb000000000000000000000000000000000000000000000000000000000000000000000001000000130013000000000013001300130013001300130000000000000000000200000002000000020000000200000002000000400000000e000000000000000000000000000000000000000000000000000000dc00dc00dc00dc00de00de00dd00dd00d600d6001f011f01ad00af001c0000001c0000001c0000001c0000001c000000340000000e000000000000000000000000000000000000000000000000000000cb00cb00cb00cb00cb00cb00cb00cb00cb00cb009a028f02ad00af000c0000000c0000000c0000000c00000002000000340000000a00000056d556d556d556d501e056d50000000000000000000000009b009b00c902c9029c009c009d009d009e009e009f009f00ad00af000c000000bc0000000c0000000c0000001c000000340000000a00000001e0000001e001e0000001e0000000000000000000000000a000a000cb00cb00a000a000a000a000a100a100a200a200ad00af000c0000000c0000000c0000000c0000000c000000340000000a000000aa2aaa2aaa2aaa2aabeaaa2a000000000000000000000000a300a300cd02cd02a400a400a500a500a600a600a700a700ad00af000200000002000000020000000200000002000000340000000e000000aa2aaa2aaa2aaa2aaa2aaa2a000000000000000000000000c602d802c602d802c702d902c802da02c302d5028e029402ad00af0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b100230123012301230123012301230123012301230123012301230100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b300230123012301230123012301230123012301230123012301230100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b500230123012301230123012301230123012301230123012301230100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b700230123012301230123012301230123012301230123012301230100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000bd00230123012301230123012301230123012301230123012301230100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b900230123012301230123012301230123012301230123012301230100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c100230123012301230123012301230123012301230123012301230100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c300230123012301230123012301230123012301230123012301230100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c500230123012301230123012301230123012301230123012301230100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c70023012301230123012301230123012301230123012301230123010c0000000c0000000c0000000c0000000c0000003400000012000000000000000000000000000000000000000000000000000000d800d800d800d800d900d900da00da00db00db0022012201ad00af000200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000a102a102a102a102a202a202a302a302ad02ad027f028f02ad00af00020000000200000002000000020000001c000000340000000e000000000000000000000000000000000000000000000000000000a102a102cb00cb00a202a202a302a302ac02ac027f028f02ad00af00020000000200000002000000020000001c000000340000000e00000001e001e001e001e0000001e0000000000000000000000000af02af02cb00cb00b102b102b202b202b402b40285028f02ad00af000200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000bc02cf02bc02cf02bd02d002be02d102c202cf0287028f02ad00af000200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000bf02d202bc02cf02c002d302c102d402c202cf0287028f02ad00af000200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000c302d502c302d502c402d602c502d702c602d8028c028f02ad00af000200000002000000020000000200000002000000340000000e00000056d556d556d556d556d556d5000000000000000000000000c302d502c302d502c402d602c502d702c602d8028d029102ad00af000200000002000000020000000200000002000000340000000e00000056d556d556d556d501e056d5000000000000000000000000c302d502c902c902c402d602c502d702c602d8028c028f02ad00af000200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000a102a102a102a102a202a202a302a302a102c20287028f02ad00af000200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000b402b402b402b402a202a202a302a302a102c2028b029302ad00af000200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000bc02a102bc02a102bd02a202be02a302c202c20287028f02ad00af001c0000001c0000001c0000001c0000001c000000340000000e000000000000000000000000000000000000000000000000000000cb00cb00cb00cb00cb00cb00cb00cb00cb00cb007f028f02ad00af002200000022000000220000002200000030000000340000000e000000000000000000000000000000000000000000000000000000cb00cb00ca00ca00cb00cb00cb00cb00cb00cb007f028f02ad00af00020000000200000002000000020000001c000000340000000e000000000000000000000000000000000000000000000000000000a102a102cb00cb00a102a102a102a102cb00cb007f028f02ad00af00020000000200000002000000020000001c000000020000004a000000000000000000000000000000000000000000000000000000db02db02cb00cb00dd02dd02df02df02c202c2027f028f02ad00af001c0000001c0000001c0000001c0000001c000000340000000e000000aa2aaa2aaa2aaa2aaa2aaa2a000000000000000000000000cb00cb00cb00cb00cb00cb00cb00cb00cb00cb0086029302ad00af001c0000001c0000001c0000001c0000001c000000340000000e000000e338e338e338e338ff3fff3f000000000000000000000000cb00cb00cb00cb00cb00cb00cb00cb00cb00cb0086029302ad00af001c0000001c0000001c0000001c0000001c000000340000000e00000056d556d556d556d556d556d5000000000000000000000000cb00cb00cb00cb00cb00cb00cb00cb00cb00cb0085028f02ad00af002300000023000000230000002300000023000000340000000e000000000000000000000000000000000000000000000000000000c900c900c900c900c900c900c900c900c900c90087028f02ad00af004000000040000000400000004000000040000000340000000e00000000000000000000000000000000000000000000000000000030033003300330033103310332033203330333039f028f02ad00af003000000030000000300000003000000030000000340000000e000000000000000000000000000000000000000000000000000000ca00ca00ca00ca00ca00ca00ca00ca00ca00ca007f02ca00ad00af003a0000003a0000003a0000003a0000003a000000340000000e000000000000000000000000000000000000000000000000000000ca02ca02ca02ca02cb02cb02cc02cc02ce02ce027f029202ad00af000200000002000000020000000200000002000000400000000e000000000000000000000000000000000000000000000000000000e102e702e102e702e302e802e502e902e102e7027f028f02ad00af000200000002000000020000000200000040000000400000001a000000000000000000000000000000000000000000000000000000ec02ec02ea02ea02ec02ec02ec02ec02ec02ec0284028f02ae00af0029000000290000002900000029000000380000003400000047000000000000000000000000000000000000000000000000000000f102f102f502f502f202f202f302f302f402f40287028f02ad00af000e0000000e0000000e0000000e0000000e000000340000000e000000e4f8e4f8e4f8e4f8e4f8e4f800000000000000000000000002030203010301030303030304030403c602d80285028f02ad00af000e0000000e0000000e0000000e0000000e000000340000000e000000e4f8e4f8e4f8e4f8e4f8e4f8000000000000000000000000060306030603060307030703080308030903090385028f02ad00af001c0000001c0000001c0000001c0000001c0000003400000013000000000000000000000000000000000000000000000000000000cb00cb00cb00cb00cb00cb00cb00cb00cb00cb0096028f02ad00af001c0000001c0000001c0000001c0000001c0000003400000013000000000000000000000000000000000000000000000000000000cb00cb00cb00cb00cb00cb00cb00cb00cb00cb0095028f02ad00af002100000021000000210000002100000021000000400000000e000000000000000000000000000000000000000000000000000000cb00cb00cb00cb00cb00cb00cb00cb00cb00cb007f028f02ad00af0029000000290000002900000029000000380000003400000013000000000000000000000000000000000000000000000000000000f102f102f502f502f202f202f302f302f402f40299028f02ad00af0039000000390000003900000039000000390000003400000047000000000000000000000000000000000000000000000000000000f602f602f602f602f702f702f802f802f902f90287028f02ad00af000400000004000000040000000400000004000000340000000e0000000000000000000000000000000000000000000000000000001d031d031d031d03a202d002a302d102aa02aa027f027f02ad00af000400000004000000040000000400000004000000340000000e0000000000000000000000000000000000000000000000000000001e031e031e031e03a202d002a302d102aa02aa027f027f02ad00af0040000000400000004000000040000000400000004000000040000000000000000000000000000000000000000000000000000000ff02ff02ff02ff020b030b030c030c030a030a0386029302ad00af0040000000400000004000000040000000400000004000000040000000000000000000000000000000000000000000000000000000000300030003000300030003000300030a030a0386029302ad00af000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000035032301230123012301230123012301230123012301230123012301000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003903230123012301230123012301230123012301230123012301230157000000570000005700000057000000570000003400000047000000ffffffffffffffffffffffff000000000000000000000000d300d300d700d700d500d500d400d400d600d60088028f02ad00af009600000096000000960000009600000096000000340000004d000000000000000000000000000000000000000000000000000000dc00dc00dc00dc00de00de00dd00dd00d600d6009d028f02ad00af00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003d032301230123012301230123012301230123012301230123012301000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003f0323012301230123012301230123012301230123012301230123010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000043032301230123012301230123012301230123012301230123012301000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004c032301230123012301230123012301230123012301230123012301000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004103230123012301230123012301230123012301230123012301230100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000230123012301230123012301230123012301230123012301230123010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000028012301230123012301230123012301230123012301230123012301000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002a012301230123012301230123012301230123012301230123012301be000000be000000be000000be000000000000000000000000000000abeaabeaabeaabea000000000000000000000000000000000f000f00000000000f000f000f000f000f000f0000000000000000000c0000000c0000000c0000000c0000000c000000340000000e000000000000000000000000000000000000000000000000000000b002b002b002b002a202a202a302a302aa02aa0285028f02ad00af000400000004000000040000000400000004000000340000000f0000000000000000000000000000000000000000000000000000001d031d031d031d03a202d002a302d102aa02aa0258037f02ad00af004000000040000000400000004000000040000000340000000e000000000000000000000000000000000000000000000000000000b002b002b002b002a202a202a302a302aa02aa0285028f02ad00af001c0000001c0000001c0000001c0000001c000000340000000e0000008fe38fe38fe38fe38fe30000000000000000000000000000d000d000d000d000d000d000d000d000d100d10085028f02ad00af000900000009000000090000000900000009000000340000000e000000000000000000000000000000000000000000000000000000a301a301a301a301a401a401a501a501a601a601a7018f02ad00af000c0000000c0000000c0000000c0000000c000000340000000e000000000000000000000000000000000000000000000000000000b702b702b602b602a602a602ae02ae02a702a70280028f02ad00af000c0000000c0000000c0000000c0000000c000000340000000e000000000000000000000000000000000000000000000000000000b602b602b602b602a802a802a902a902a702a70280028f02ad00af000c0000000c0000000c0000000c0000000c000000340000000e000000000000000000000000000000000000000000000000000000b702b702b702b702a602a602ae02ae02a702a70280028f02ad00af000200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000b602b602b602b602a802a802a902a902a702a7027f028f02ad00af001c0000001c0000001c0000001c000000c1000000340000000a0000008fe38fe38fe38fe38fe30000000000000000000000000000d000d000d000d000d000d000d000d000d100d10086029302ad00af000a0000000a0000000a0000000a0000000a000000340000000a000000000000000000000000000000000000000000000000000000b101b101b001b001b101b101b101b101b101b10186029302ad00af0002000000020000000200000002000000bf000000340000000e00000001e001e001e001e0000001e0000000000000000000000000b002b002cf00cf00b102b102b202b202b402b40285028f02ad00af000a0000000a0000000a0000000a0000000a0000003400000011000000000000000000000000000000000000000000000000000000b902b902b902b902ba02ba02bb02bb02ac02ac028b028f02ad00af000200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000b402b402b402b402a202a202a302a302a102c202bf019302ad00af000a0000000a0000000a0000000a0000000a0000003400000011000000000000000000000000000000000000000000000000000000cb01cb01cb01cb01bb02bb02ba02ba02ac02ac028a029302ad00af000200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000b002b002b002b002a302a302a202a202a102c202cc019302ad00af000200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000b502b502b402b402a202a202a302a302a102c202bf019302ad00af001c0000001c0000001c0000001c0000001c000000340000000e0000008fe38fe38fe38fe38fe30000000000000000000000000000d000d000d000d000d000d000d000d000d100d100cc018f02ad00af00020000000200000002000000020000000200000034000000470000000000000000000000000000000000000000000000000000002803280328032803290329032a032a032b032b0388028f02ad00af0057000000570000005700000057000000c0000000340000004b000000ffffffffffffffff0000ffff000000000000000000000000d300d30015021502d500d500d400d400d600d60088028f02ad00af004000000040000000400000004000000002000000340000000e0000000000000000000000000000000000000000000000000000002403240316021602250325032603260327032703d301d301ad00af000b0000000b0000000b0000000b0000000b000000340000000a000000000000000000000000000000000000000000000000000000b602b602b602b602a802a802a902a902a702a702d201d201ad00af003000000030000000300000003000000030000000340000000c000000000000000000000000000000000000000000000000000000ca00ca00ca00ca00ca00ca00ca00ca00ca00ca009e025a03ad00af004000000057000000570000005700000040000000400000000c000000000000000000000000000000000000000000000000000000df00df00df00df00d500d500d400d400d600d60059038f02ad00af000e0000000e0000000e0000000e0000000e000000340000000e000000000000000000000000000000000000000000000000000000bf02d202bc02cf02c002d302c102d402c202cf028702da01ad00af001300000013000000130000001300000013000000340000001100000001e001e001e001e001e001e0000000000000000000000000c302d502c302d502c402d602c502d702c602d8028c028f02ad00af006200000062000000620000006200000089000000340000000e000000000000000000000000000000000000000000000000000000120312031a031a0317031703180318031903190387028f02ad00af008900000089000000890000008900000089000000340000000b000000000000000000000000000000000000000000000000000000130313031b031b0314031403150315031603160387028f02ad00af000200000002000000020000000200000002000000340000004000000001e001e001e001e001e001e0000000000000000000000000c302d502c302d502c402d602c502d702c602d8028c028f02ad00af0002000000020000000200000002000000020000003400000009000000e4f8e4f8e4f8e4f8e4f8e4f8000000000000000000000000ed01ed01ed01ed010303030304030403c602d80291029102ad00af000b0000000b0000000b0000000b0000000b000000340000000e000000000000000000000000000000000000000000000000000000e202e202e202e202e402e402e602e602e102e702ef018f02ad00af008900000089000000890000008900000002000000340000000e0000000000000000000000000000000000000000000000000000002003200316021602210321032203220323032303d201d201ad00af00020000000200000002000000020000001c000000340000000e0000000000000000000000711c0000000000000000000000000000b402b402d100d100a202a202a302a302a102c2028b029302ad00af000200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000e102e702e102e702e302e802e502e902e102e7027f028f02ad00af0009000000090000000900000009000000090000003400000017000000000000000000000000000000000000000000000000000000ed02ed02ed02ed02ed02ed02ed02ed02ed02ed029b028f02ad00af00400000004000000040000000400000004000000034000000110000000000000000000000000000000000000000000000000000001d031d034f034f03a202d002a302d102aa02aa027f027f02ad00af00400000004000000040000000400000004000000034000000110000000000000000000000000000000000000000000000000000001d031d031d031d03a202d002a302d102aa02aa0286029302ad00af0002000000020000000200000002000000020000003400000017000000000000000000000000000000000000000000000000000000d800d800d800d800d900d900da00da00db00db0082028f02ad00af000200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000b802b802b802b802a802a802a902a902ab02ab028b029302ad00af004000000040000000400000004000000040000000340000000e0000000000000000000000000000000000000000000000000000002e032e03040204022c032c032f032f032d032d0387028f02ad00af000200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000b802b802b802b802a802a802a902a902a702a70286029302ad00af001c0000001c0000001c0000001c000000c100000034000000400000008fe38fe38fe38fe38fe30000000000000000000000000000d000d000d000d000d000d000d000d000d100d10058038f02ad00af000b0000000b0000000b0000000b0000000b000000340000000e000000000000000000000000000000000000000000000000000000bc02bc02bc02bc02bd02bd02be02be02c202c20289028902ad00af0057000000570000005700000057000000570000003400000040000000ffffffffffffffffffffffff000000000000000000000000d300d300d300d300d500d500d400d400d600d60059038f02ad00af000e0000000e0000000e0000000e0000000e000000340000000e000000e4f8e4f8e4f8e4f8e4f8e4f800000000000000000000000005030503050305030503050305030503ce02ce0285028f02ad00af004300000045000000430000004300000038000000000000000b00000000000000000000000000000000000000000000000000000012021202f502f5021302130214021402f402f40258038f02ad00af000200000002000000020000000200000040000000340000000e0000000000000000000000000000000000000000000000000000001a021a021a021a02fb02fb02fc02fc021a021a0284028f02ad00af0057000000570000005700000057000000570000003400000013000000ffffffffffffffffffff0000000000000000000000000000d300d300d300d300d500d500d400d400d600d60096028f02ad00af001c0000001c0000001c0000001c0000001c0000003400000018000000000000000000000000000000000000000000000000000000cb00cb00cb00cb00cb00cb00cb00cb00cb00cb0097028f02ad00af0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000230223012301230123012301230123012301230123012301230123010200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000b302b302b302b302a402a402a502a502a102a1027f028f02ad00af003a0000003a0000003a0000003a0000003a000000340000000e000000000000000000000000000000000000000000000000000000ca02ca02ca02ca02cb02cb02cc02cc02ce02ce027f028f02ad00af000200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000b302b302b302b302a402a402a502a502a102a1027f028f02ad00af000200000002000000020000000200000040000000400000000e000000000000000000000000000000000000000000000000000000f002f002f002f002f002f002f002f002f002f0027f028f02ae00af004000000040000000400000004000000040000000340000000e0000000000000000000000000000000000000000000000000000000e030e030e030e030f030f03100310031103110387028f02ad00af0002000000020000000200000002000000020000003400000017000000000000000000000000000000000000000000000000000000ee02ee02ea02ea02ee02ee02ee02ee02ee02ee0283028f02ad00af009800000098000000980000009800000098000000340000000e000000000000000000000000000000000000000000000000000000e100e100e100e100e200e200e100e100e200e2007f029002ad00af001c0000001c0000001c0000001c0000001c000000340000000b000000000000000000000000000000000000000000000000000000cb00cb00cb00cb00cc00cc00cd00cd00ce00ce0042028f02ad00af001c0000001c0000001c0000001c0000001c000000340000000b000000000000000000000000000000000000000000000000000000cb00cb00cb00cb00cc00cc00cd00cd00ce00ce0095028f02ad00af006a0000006a0000006a0000006a0000006a00000034000000080000008fe38fe38fe38fe38fe30000000000000000000000000000d000d000d000d000d000d000d000d000d100d1005d028f02ad00af00280000002800000028000000280000002800000034000000080000008fe38fe38fe38fe38fe3000000000000000000000000000045024502450245024502450245024502450245025d028f02ad00af000200000002000000020000000200000002000000340000000e00000000000000000000000000000000000000000000000000000047024702bc02cf02bd02d002be02d102c202cf0287028f02ad00af006200000062000000620000006200000062000000340000000a0000000000000000000000000000000000000000000000000000000e030e030e030e030f030f03100310031103110354028f02ad00af0029000000290000002900000029000000380000003400000002000000000000000000000000000000000000000000000000000000f102f102f502f502f202f202f302f302f402f40298028f02ad00af003a0000003a0000003a0000003a0000003a000000340000000e000000000000000000000000000000000000000000000000000000ca02ca02ca02ca02cb02cb02cc02cc02ce02ce027f028f02ad00af0040000000400000004000000040000000400000003400000015000000000000000000000000000000000000000000000000000000e102e702e102e702e302e802e502e902e102e70287028f02ad00af009400000094000000940000009400000094000000340000000e000000000000000000000000000000000000000000000000000000d200d200d200d200d200d200d200d200d200d2007f028f02ad00af0057000000570000005700000057000000570000003400000047000000ffffffffffffffff0000ffff000000000000000000000000d300d300d300d300d500d500d400d400d600d60088028f02ad00af005900000059000000590000005900000059000000340000000e000000000000000000000000000000000000000000000000000000fa02fa02fa02fa02fa02fa02fa02fa02fa02fa0265028f02ad00af001c0000001c0000001c0000001c0000001c0000003400000040000000000000000000000000000000000000000000000000000000f102f102f102f102f202f202f302f302f402f40264026402ad00af000200000002000000020000000200000002000000340000000e00000056d556d556d556d556d556d5000000000000000000000000c302d502c302d502c402d602c502d702c602d8028c028f02ad00af00400000004000000040000000400000004000000034000000170000000000000000000000000000000000000000000000000000001f031f031f031f031f031f031f031f031f031f0383028f02ad00af002900000029000000290000002900000038000000340000000e000000000000000000000000000000000000000000000000000000f102f102f502f502f202f202f302f302f402f4026d026d02ad00af000a0000000a0000000a0000000a00000021000000340000000e000000000000000000000000000000000000000000000000000000ef02ef02fa02fa02ef02ef02ef02ef02ef02ef0284028f02ad00af000200000002000000020000000200000002000000340000000e000000000000000000000001e000000000000000000000000000006f026f02cd02cd027002700271027102720272028b028f02ad00af004000000040000000400000004000000040000000340000000e00000000000000000000000000000000000000000000000000000074027402740274027402740274027402740274027f028f02ad00af000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000037032301230123012301230123012301230123012301230123012301000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003b03230123012301230123012301230123012301230123012301230100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000460323012301230123012301230123012301230123012301230123010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000048032301230123012301230123012301230123012301230123012301000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004a03230123012301230123012301230123012301230123012301230140000000400000004000000040000000400000003400000047000000000000000000000000000000000000000000000000000000530353035303530354035403550355035603560357030d03ad00af0033000000330000003300000033000000330000003400000047000000000000000000000000000000000000000000000000000000ca00ca00ca00ca00ca00ca00ca00ca00ca00ca007f02ca00ad00af005900000059000000590000005900000059000000340000000e000000000000000000000000000000000000000000000000000000fa02fa02fa02fa02fa02fa02fa02fa02fa02fa027f028f02ad00af00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005d032301230123012301230123012301230123012301230123012301000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005f0323012301230123012301230123012301230123012301230123010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000061032301230123012301230123012301230123012301230123012301000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006403230123012301230123012301230123012301230123012301230100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000660323012301230123012301230123012301230123012301230123010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000068032301230123012301230123012301230123012301230123012301000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006a032301230123012301230123012301230123012301230123012301000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006c03230123012301230123012301230123012301230123012301230100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000760323012301230123012301230123012301230123012301230123010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000073032301230123012301230123012301230123012301230123012301000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000007d0323012301230123012301230123012301230123012301230123010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000070032301230123012301230123012301230123012301230123012301000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000007a03230123012301230123012301230123012301230123012301230100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000810323012301230123012301230123012301230123012301230123010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000082032301230123012301230123012301230123012301230123012301000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008403230123012301230123012301230123012301230123012301230100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000860323012301230123012301230123012301230123012301230123010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000088032301230123012301230123012301230123012301230123012301000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008a032301230123012301230123012301230123012301230123012301000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002a802301230123012301230123012301230123012301230123012301000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008e0323012301230123012301230123012301230123012301230123010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000096032301230123012301230123012301230123012301230123012301000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009d032301230123012301230123012301230123012301230123012301000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009e032301230123012301230123012301230123012301230123012301000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009f03230123012301230123012301230123012301230123012301230100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a003230123012301230123012301230123012301230123012301230100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a203230123012301230123012301230123012301230123012301230100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a403230123012301230123012301230123012301230123012301230102000000020000000200000002000000020000003400000004000000000000000000000000000000000000000000000000000000290429042904290429042904290429042904290487028f02ad00af00400000004000000040000000400000000000000000000000000000000000000000000000000000000000000000000000730000002b042b04000000002b042b042b042b042b042b0400000000000000000200000002000000020000000200000002000000340000000e0000000000000000000000000000000000000000000000000000002e042e042e042e042e042e042e042e042e042e0487028f02ad00af000200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000300430043004300430043004300430043004300487028f02ad00af00c2000000c2000000c2000000c2000000000000000000000000000000000000000000000000000000000000000000000069000000310431040000000031043104310431043104310400000000000000000200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000330433043304330433043304330433043304330487028f02ad00af00c2000000c2000000c2000000c2000000000000000000000000000000000000000000000000000000000000000000000069000000340434040000000034043404340434043404340400000000000000002900000029000000290000002900000029000000340000000e000000000000000000000000000000000000000000000000000000370437043704370438043804390439043a043a0436043604ad00af00a1000000a1000000a1000000a10000000000000000000000000000000000000000000000000000000000000000000000000000003b043b04000000003b043b043b043b043b043b04000000000000000000000000000000008d010000000000009800000000000000d60000000000000068800000010000008f000000040000008d010000000000009800000000000000d60000000000000068800000010000008f000000080000008d010000000000009800000000000000d60000000000000068800000010000008f000000020000008d010000000000009800000000000000d60000000000000068800000010000008f000000010000008d0100000000000075000000000000008d0100000000000082000000000000008d0100000000000083000000000000008d0100000000000080000000000000008d0100000000000081000000000000008d0100000000000049000000000000008d010000000000004c000000000000008d010000000000004b000000000000008d010000000000004a000000000000008d010000000000003d000000000000008d010000000000008d010000000000008d010000000000008e000000000000008d0100000000000099000000090000003d000000000000008d0100000000000099000000090000008d01000000000000990000001a0000008d01000000000000990000001c0000008d0100000000000099000000000000008d0100000000000099000000050000008d0100000000000099000000030000008d01000000000000990000001d0000008d0100000000000099000000170000008d0100000000000099000000140000008d0100000000000099000000150000008d0100000000000099000000160000008d01000000000000990000001f0000008d01000000000000990000001e0000008d0100000000000099000000250000008d01000000000000990000001b0000008d0100000000000099000000290000008d0100000000000099000000110000008d0100000000000099000000070000008d0100000000000099000000010000008d01000000000000990000000c0000008d0100000000000099000000100000008d0100000000000099000000030000006c000000000000008d01000000000000990000001d0000006c000000000000008d0100000000000099000000110000006c000000000000008d0100000000000099000000120000008d01000000000000990000000a0000008d0100000000000099000000080000008d0100000000000099000000020000003d000000000000008d0100000000000099000000100000003d000000000000008d0100000000000099000000160000003d000000000000008d01000000000000990000001e0000003d000000000000008d0100000000000099000000040000003d000000000000008d01000000000000990000001d0000003d000000000000008d0100000000000099000000030000003d000000000000008d0100000000000099000000290000003d000000000000008d01000000000000990000001c0000003d000000000000008d0100000000000045000000000000008d0100000000000046000000000000008d01000000000000990000001000000045000000000000008d01000000000000990000001000000046000000000000008d01000000000000990000001d00000045000000000000008d01000000000000990000000700000045000000000000008d01000000000000990000000700000046000000000000008d01000000000000990000001d00000046000000000000008d0100000000000099000000020000008d0100000000000099000000040000008d01000000000000a1000000000000003d000000000000008d01000000000000a1000000000000008d0100000000000060000000060000008d01000000000000600000000600000099000000020000008d010000000000006000000006000000a1000000000000008d0100000000000060000000050000008d01000000000000380000000000000023000000d007000055000000010000008d010000000000008500000000000000c4000000000000008d010000000000008400000000000000c4000000000000008d01000000000000820000000000000099000000070000008d01000000000000830000000000000099000000070000008d0100000000000070800000000000008d010000000000008200000000000000990000000700000060000000080000008d010000000000008300000000000000990000000700000060000000080000008d01000000000000820000000000000060000000080000008d01000000000000830000000000000060000000080000008d010000000000008400000000000000c40000000000000060000000080000008d010000000000008500000000000000c40000000000000060000000080000008d01000000000000a1000000010000006c000000000000008d0100000000000082000000000000009a000000070000008d0100000000000083000000000000009a000000070000008d0100000000000084000000000000008d0100000000000085000000000000008d0100000000000052000000000000008d010000000000003b010000740000008d010000000000003b010000170000008d010000000000002c000000000000000380000000000000e481000010000007e48100003200000c8d0100000000000043010000000000008d0100000000000099000000280000008d0100000000000099000000130000008d010000000000006a000000000000008d010000000000009a000000050000008d010000000000006e000000080700008d0100000000000023000000080700008d0100000000000099000000070000003d0000000000000080000000000000008d0100000000000099000000070000003d0000000000000081000000000000008d01000000000000990000000700000080000000000000008d01000000000000990000000700000081000000000000008d0100000000000068000000000000008d01000000000000a10000000100000023000000c4090000320000000000000045000000000000008d01000000000000a10000000100000023000000c4090000320000000000000046000000000000008d01000000000000a10000000100000023000000c409000032000000000000008d010000000000009d000000040000008d01000000000000990000000b0000008d010000000000009800000000000000a10000000100000023000000c409000032000000000000003b0000000000000059000000000000008d010000000000009800000000000000a10000000100000023000000c4090000320000000000000059000000000000008d01000000000000a10000000100000023000000c4090000320000000000000059000000000000008d01000000000000230000004c0400008d0100000000000023000000b00400008d01000000000000230000009c0400008d010000000000008f00000004000000d280000000800000d380000000000000cb80000000000000d60000000000000068800000010000008d010000000000002c000000000000008d0100000000000036000000000000008d0100000000000099000000150000003b0100001900000075000000000000008d010000000000009d000000220000002f81000000000000408100006800000054810000010000008d010000000000009800000000000000d6000000000000006880000001000000028200000100000090000000040000008d010000000000009800000000000000d600000000000000688000000100000002820000010000008f000000040000008d010000000000009800000000000000d600000000000000688000000100000002820000010000008f000000010000008d010000000000009800000000000000d600000000000000688000000100000002820000010000008f000000020000008d010000000000009800000000000000d600000000000000688000000100000002820000010000008f000000080000008d0100000000000091800000293000008d0100000000000091800000293900008d0100000000000091800000212800008d0100000000000091800000521000008d0100000000000091800000420800008d0100000000000091800000521900008d010000000000009d00000020000000a90000000100000016820000020000008d010000000000009d00000020000000a90000000100000016820000010000008d010000000000002c000000000000000380000000000000e4810000100000078d010000000000002d0000000000000002800000000000008d010000000000002400000008070000b8000000010000008d0100000000000072000000000000008d0100000000000024000000d80e00008d010000000000001e0100000200000096000000040000008d01000000000000620100009f0100008d0100000000000062010000790100008d0100000000000060010000100000008d0100000000000060010000130000008d01000000000000600100000d0000008d0100000000000060010000090000008d010000000000002c000000000000000380000000000000e5810000100000078d0100000000000070000000000000008d010000000000009800000000000000d60000000000000068800000010000008f00000004000000c08000000b040000cb80000000000000cc80000000000000cb800000010000000d800000000000008d010000000000009800000000000000d60000000000000068800000010000008f00000002000000c080000011040000cb80000000000000cc80000000000000cb800000010000000d800000000000008d010000000000009800000000000000d60000000000000068800000010000008f00000008000000c080000014040000cb80000000000000cc80000000000000cb800000010000000d800000000000008d010000000000009800000000000000d60000000000000068800000010000008f00000004000000c08000000d040000cb80000000000000cc80000000000000cb800000010000000d800000000000008d010000000000009800000000000000d60000000000000068800000010000008f00000004000000c08000000c040000cb80000000000000cc80000000000000cb800000010000000d800000000000008d010000000000002c000000000000000380000000000000e58100000f0000078d010000000000002d000000000000008d010000000000002c000000000000000380000000000000e5810000170000018d010000000000002c000000000000000380000000000000e5810000000000098d010000000000002c0000000000000037000000000000000380000000000000e5810000180000018d010000000000002c0000000000000036000000000000000380000000000000e5810000180000018d0100000000000044010000000000008d01000000000000020000000000000003000000000600008d01000000000000bb800000a8fdffffeb000000e8030000d6000000000000008d01000000000000d6000000000000006880000001000000ba8000002c1000008d01000000000000d6000000000000008d0100000000000019000000000600008d010000000000001a000000000600008d0100000000000018000000000600008d0100000000000017000000800500008d0100000000000024000000080700008d0100000000000070000000000000000380000000000000e58100000f0000078d010000000000002e000000000000008d0100000000000000000000000000002c000000000000000380000000000000e58100000f0000078d0100000000000000000000000000002d000000000000008d010000000000002c00000000000000e5810000100000078d010000000000002c0000000000000003800000000000008d010000000000009800000000000000d60000000000000068800000010000008f00000004000000c08000000e040000cb80000000000000cc80000000000000cb800000010000000d800000000000008d010000000000009800000000000000d60000000000000068800000010000008f00000002000000c080000012040000cb80000000000000cc80000000000000cb800000010000000d800000000000008d010000000000009800000000000000d60000000000000068800000010000008f00000008000000c080000015040000cb80000000000000cc80000000000000cb800000010000000d800000000000008d010000000000002d0000000000000003800000000000008d0100000000000005000000000600008d0100000000000006000000000600008d0100000000000004000000000600008d0100000000000003000000000600008d0100000000000003000000000600003b010000540000008d010000000000009800000000000000d60000000000000068800000010000008f00000004000000c08000000f040000cb80000000000000cc80000000000000cb800000010000000d800000000000008d010000000000009800000000000000d60000000000000068800000010000008f00000002000000c080000013040000cb80000000000000cc80000000000000cb800000010000000d800000000000008d010000000000009800000000000000d60000000000000068800000010000008f00000008000000c080000016040000cb80000000000000cc80000000000000cb800000010000000d800000000000008d010000000000009800000000000000d60000000000000068800000010000008f00000004000000c080000010040000cb80000000000000cc80000000000000cb800000010000000d800000000000008d01000000000000ea810000000000008d010000000000008f000000080000008d010000000000008f000000020000008d010000000000008f000000040000008d0100000000000071000000000000008d010000000000002c010000000000008d0100000000000029010000000000008d0100000000000073000000000000008d0100000000000074000000000000008d01000000000000a100000004000000fa000000eeff12008d01000000000000a100000004000000fa0000000b0113008d01000000000000a100000004000000fa000000050113008d01000000000000a100000004000000fa000000070113008d01000000000000a100000004000000fa000000090113008d01000000000000a100000004000000fa000000fd0013008d01000000000000a100000004000000fa000000fe0013008d01000000000000a100000004000000fa000000ff0013008d01000000000000a100000004000000fa0000000b0413008d01000000000000a100000004000000fa0000000c0413008d01000000000000a100000004000000fa0000000d0413008d01000000000000a100000004000000fa0000000e0413008d01000000000000a100000004000000fa0000000f0413008d01000000000000a100000004000000fa000000100413008d01000000000000a100000004000000fa000000110413008d01000000000000a100000004000000fa000000120413008d01000000000000a100000004000000fa000000130413008d01000000000000a100000004000000fa000000140413008d01000000000000a1000000040000008d01000000000000a1000000050000008d010000000000009d000000120000000a0100000e0000008d010000000000000a0100000e0000008d010000000000000a010000100000008d0100000000000009010000000000000a010000070000000c0100000000000010010000000000009f000000260000008d0100000000000009010000000000000a010000070000000c0100000000000010010000000000009f000000270000008d0100000000000009010000000000000a010000070000000c0100000000000010010000000000008d01000000000000020100000000000009010000000000000a010000070000000c0100000000000010010000000000008d01000000000000020100000100000009010000000000000a010000070000000c0100000000000010010000000000008d01000000000000020100000200000009010000000000000a010000070000000c0100000000000010010000000000008d01000000000000020100000300000009010000000000000a010000070000000c0100000000000010010000000000008d01000000000000020100000400000009010000000000000a010000070000000c0100000000000010010000000000008d01000000000000020100000500000009010000000000000a010000070000000c0100000000000010010000000000008d0100000000000009010000000000000a010000070000000c0100000200000010010000000000008d01000000000000090100000000000011010000000000000e010000000000008d01000000000000fe00000000000000090100000000000011010000000000008d01000000000000fe00000001000000090100000000000011010000000000008d01000000000000090100000000000011010000000000008d01000000000000000100000000000009010000000000000a0100000a0000000d010000010000008d01000000000000000100000100000009010000000000000a0100000a0000000d010000010000008d01000000000000000100000200000009010000000000000a0100000a0000000d010000010000008d01000000000000000100000300000009010000000000000a0100000a0000000d010000010000008d0100000000000009010000000000000a0100000a0000000d010000010000008d01000000000000000100000000000009010000000000000a0100000a0000000d010000000000008d01000000000000000100000100000009010000000000000a0100000a0000000d010000000000008d01000000000000000100000200000009010000000000000a0100000a0000000d010000000000008d01000000000000000100000300000009010000000000000a0100000a0000000d010000000000008d0100000000000009010000000000000a0100000a0000000d010000000000008d0100000000000009010000000000000a0100000a0000000d010000020000008d01000000000000ff0000000000000009010000000000000f010000000000008d01000000000000ff0000000100000009010000000000000f010000000000008d01000000000000ff0000000200000009010000000000000f010000000000008d0100000000000009010000000000000f010000000000008d01000000000000f90000000f0013008d01000000000000f90000000d0013008d01000000000000f9000000100013008d01000000000000f9000000100213008d01000000000000f9000000150113008d01000000000000fb000000000000008d01000000000000f7000000000000008d01000000000000f6000000000000008d01000000000000f5000000000000008d01000000000000f4000000000000008d01000000000000f9000000240113008d01000000000000f90000002d0113008d01000000000000f90000002b0113008d01000000000000f90000002c0113008d0100000000000006010000500000008d0100000000000006010000320000008d01000000000000060100004d0100008d0100000000000006010000c80000008d01000000000000f8000000000000008d0100000000000006010000640000008d01000000000000a100000004000000f900000018011300",
+   "input_from_name": "Sample Combo 7",
+   "command_glyphs": [
+    "U+E003",
+    "U+E020",
+    "U+E015"
+   ],
+   "command_decoded": "b+3+4,1",
+   "command_complete": true
+  }
+ ],
+ "move_count_from_name_strings": 219,
+ "tekken_input_conversion": {
+  "method": "name-token substitution ONLY (Left=1/LP, Right=2/RP, Left Right=1,2); logged conversion of the English move-name strings, NOT a decode of the binary command records - the verbatim record hex is the byte truth",
+  "tokens": {
+   "Left": "1 (LP)",
+   "Right": "2 (RP)",
+   "Left Right": "1,2"
+  }
+ },
+ "all_ascii_strings_ge4": [
+  {
+   "offset": 301,
+   "text": "'8Nq<"
+  },
+  {
+   "offset": 624,
+   "text": "[ROGER]1"
+  },
+  {
+   "offset": 633,
+   "text": "YONE"
+  },
+  {
+   "offset": 638,
+   "text": "2009/08/26"
+  },
+  {
+   "offset": 649,
+   "text": "Sun Nov 01 22:16:14 JST 2009"
+  },
+  {
+   "offset": 727,
+   "text": "Left Right Combo"
+  },
+  {
+   "offset": 884,
+   "text": "Left Right Body Blow"
+  },
+  {
+   "offset": 1069,
+   "text": "Left Right Arrow"
+  },
+  {
+   "offset": 1250,
+   "text": "One Two Kangaroo Combo"
+  },
+  {
+   "offset": 1452,
+   "text": "Left Right Rocket Stance"
+  },
+  {
+   "offset": 1698,
+   "text": "Jab Uppercut"
+  },
+  {
+   "offset": 1875,
+   "text": "Spinning Tail Whip"
+  },
+  {
+   "offset": 2097,
+   "text": "Double Spin Castanet Kick "
+  },
+  {
+   "offset": 2297,
+   "text": "Double Spin Animal Sweep"
+  },
+  {
+   "offset": 2483,
+   "text": "Castanet Kick"
+  },
+  {
+   "offset": 2607,
+   "text": "Outback Stomp"
+  },
+  {
+   "offset": 2749,
+   "text": "Ayer's Rock"
+  },
+  {
+   "offset": 2952,
+   "text": "Animal Gigaton Punch"
+  },
+  {
+   "offset": 3152,
+   "text": "Animal Drop Kick"
+  },
+  {
+   "offset": 3312,
+   "text": "Elbow Slap Combo"
+  },
+  {
+   "offset": 3493,
+   "text": "Bandicoot Bomb"
+  },
+  {
+   "offset": 3648,
+   "text": "Tail Flail"
+  },
+  {
+   "offset": 3787,
+   "text": "Right Cross Kick"
+  },
+  {
+   "offset": 3941,
+   "text": "Animal Headbutt"
+  },
+  {
+   "offset": 4097,
+   "text": "Animal Rampage"
+  },
+  {
+   "offset": 4270,
+   "text": "Jab Uppercut"
+  },
+  {
+   "offset": 4498,
+   "text": "Diving Low Punch"
+  },
+  {
+   "offset": 4658,
+   "text": "Animal Roundhouse"
+  },
+  {
+   "offset": 4861,
+   "text": "Tail Mopping"
+  },
+  {
+   "offset": 5008,
+   "text": "Tail Tripper"
+  },
+  {
+   "offset": 5164,
+   "text": "Animal Kick Rush"
+  },
+  {
+   "offset": 5426,
+   "text": "Kangaroo Attack"
+  },
+  {
+   "offset": 5594,
+   "text": "Reverse Bicycle Kick"
+  },
+  {
+   "offset": 5764,
+   "text": "Spinning Snap Kick"
+  },
+  {
+   "offset": 5920,
+   "text": "Rocket Stance"
+  },
+  {
+   "offset": 6068,
+   "text": "Road Runner"
+  },
+  {
+   "offset": 6241,
+   "text": "Running Start"
+  },
+  {
+   "offset": 6434,
+   "text": "Wind-up Hook"
+  },
+  {
+   "offset": 6632,
+   "text": "Wind-up Straight"
+  },
+  {
+   "offset": 6828,
+   "text": "Wind-up Low Kick"
+  },
+  {
+   "offset": 7027,
+   "text": "Wind-up Middle Kick"
+  },
+  {
+   "offset": 7217,
+   "text": "Road Roller"
+  },
+  {
+   "offset": 7402,
+   "text": "Wind-up Hip Press"
+  },
+  {
+   "offset": 7590,
+   "text": "Bobbin Dance"
+  },
+  {
+   "offset": 7731,
+   "text": "Windmill Punch"
+  },
+  {
+   "offset": 7910,
+   "text": "Galaxy Uppercut"
+  },
+  {
+   "offset": 8102,
+   "text": "Wind Up Punch"
+  },
+  {
+   "offset": 8262,
+   "text": "Animal Yo-Yo"
+  },
+  {
+   "offset": 8412,
+   "text": "Elbow Drop"
+  },
+  {
+   "offset": 8557,
+   "text": "Helicopter Kick"
+  },
+  {
+   "offset": 8740,
+   "text": "Rising Toe Kick"
+  },
+  {
+   "offset": 8896,
+   "text": "Capital Punishment"
+  },
+  {
+   "offset": 9049,
+   "text": "Kangaroo Stomp"
+  },
+  {
+   "offset": 9213,
+   "text": "Sliding Hook"
+  },
+  {
+   "offset": 9393,
+   "text": "Konvict Kick"
+  },
+  {
+   "offset": 9576,
+   "text": "Head First Lunge"
+  },
+  {
+   "offset": 9763,
+   "text": "Exploder"
+  },
+  {
+   "offset": 9939,
+   "text": "Rolling Toe Drop"
+  },
+  {
+   "offset": 10135,
+   "text": "Animal Uppercut"
+  },
+  {
+   "offset": 10372,
+   "text": "Animal Smash"
+  },
+  {
+   "offset": 10600,
+   "text": "Baiame's Spear"
+  },
+  {
+   "offset": 10815,
+   "text": "Running Exploder"
+  },
+  {
+   "offset": 11035,
+   "text": "Spinning Uppercut"
+  },
+  {
+   "offset": 11107,
+   "text": "Run more than 3 steps "
+  },
+  {
+   "offset": 11137,
+   "text": "Courir plus de 3 pas "
+  },
+  {
+   "offset": 11166,
+   "text": "Corri per pi"
+  },
+  {
+   "offset": 11180,
+   "text": " di 3 passi "
+  },
+  {
+   "offset": 11200,
+   "text": "Mehr als drei Schritte laufen "
+  },
+  {
+   "offset": 11238,
+   "text": "Correr m"
+  },
+  {
+   "offset": 11248,
+   "text": "s de tres pasos "
+  },
+  {
+   "offset": 11393,
+   "text": "Stagger Kicks"
+  },
+  {
+   "offset": 11449,
+   "text": "Run more than 3 steps "
+  },
+  {
+   "offset": 11482,
+   "text": "Courir plus de 3 pas "
+  },
+  {
+   "offset": 11514,
+   "text": "Corri per pi"
+  },
+  {
+   "offset": 11528,
+   "text": " di 3 passi "
+  },
+  {
+   "offset": 11551,
+   "text": "Mehr als drei Schritte laufen "
+  },
+  {
+   "offset": 11592,
+   "text": "Correr m"
+  },
+  {
+   "offset": 11602,
+   "text": "s de tres pasos "
+  },
+  {
+   "offset": 11768,
+   "text": "Boomerang Punch"
+  },
+  {
+   "offset": 11838,
+   "text": "While rising "
+  },
+  {
+   "offset": 11859,
+   "text": "En se relevant "
+  },
+  {
+   "offset": 11882,
+   "text": "Alzandosi "
+  },
+  {
+   "offset": 11900,
+   "text": "Beim Aufstehen "
+  },
+  {
+   "offset": 11923,
+   "text": "Al levantarse "
+  },
+  {
+   "offset": 12038,
+   "text": "Spring Stomp Kick"
+  },
+  {
+   "offset": 12110,
+   "text": "While rising "
+  },
+  {
+   "offset": 12131,
+   "text": "En se relevant "
+  },
+  {
+   "offset": 12154,
+   "text": "Alzandosi "
+  },
+  {
+   "offset": 12172,
+   "text": "Beim Aufstehen "
+  },
+  {
+   "offset": 12195,
+   "text": "Al levantarse "
+  },
+  {
+   "offset": 12307,
+   "text": "Charge Stomp Kick"
+  },
+  {
+   "offset": 12388,
+   "text": "While rising "
+  },
+  {
+   "offset": 12407,
+   "text": " Hold"
+  },
+  {
+   "offset": 12414,
+   "text": "En se relevant "
+  },
+  {
+   "offset": 12435,
+   "text": " maintenue"
+  },
+  {
+   "offset": 12447,
+   "text": "Alzandosi "
+  },
+  {
+   "offset": 12463,
+   "text": " (tenere premuto)"
+  },
+  {
+   "offset": 12482,
+   "text": "Beim Aufstehen "
+  },
+  {
+   "offset": 12503,
+   "text": " gedr"
+  },
+  {
+   "offset": 12510,
+   "text": "ckt halten"
+  },
+  {
+   "offset": 12522,
+   "text": "Al levantarse "
+  },
+  {
+   "offset": 12542,
+   "text": " (Mantener pulsado)"
+  },
+  {
+   "offset": 12681,
+   "text": "Toe Smash"
+  },
+  {
+   "offset": 12739,
+   "text": "While rising "
+  },
+  {
+   "offset": 12757,
+   "text": "En se relevant "
+  },
+  {
+   "offset": 12777,
+   "text": "Alzandosi "
+  },
+  {
+   "offset": 12792,
+   "text": "Beim Aufstehen "
+  },
+  {
+   "offset": 12812,
+   "text": "Al levantarse "
+  },
+  {
+   "offset": 12921,
+   "text": "Crouching Uppercut"
+  },
+  {
+   "offset": 13006,
+   "text": "While crouching "
+  },
+  {
+   "offset": 13030,
+   "text": "En s'accroupissant "
+  },
+  {
+   "offset": 13057,
+   "text": "Abbassandosi "
+  },
+  {
+   "offset": 13078,
+   "text": "Hockend "
+  },
+  {
+   "offset": 13094,
+   "text": "Al agacharse "
+  },
+  {
+   "offset": 13211,
+   "text": "Animal Sweep"
+  },
+  {
+   "offset": 13272,
+   "text": "During sidestep "
+  },
+  {
+   "offset": 13293,
+   "text": "Pendant pas de c"
+  },
+  {
+   "offset": 13320,
+   "text": "Durante il movimento laterale "
+  },
+  {
+   "offset": 13358,
+   "text": "hrend Seitschritt "
+  },
+  {
+   "offset": 13381,
+   "text": "Desplazamiento lateral "
+  },
+  {
+   "offset": 13516,
+   "text": "Shrimp Kick"
+  },
+  {
+   "offset": 13585,
+   "text": "Back towards enemy "
+  },
+  {
+   "offset": 13609,
+   "text": "Dos "
+  },
+  {
+   "offset": 13615,
+   "text": " l'adversaire "
+  },
+  {
+   "offset": 13634,
+   "text": "Spalle all'avversario "
+  },
+  {
+   "offset": 13661,
+   "text": "Mit dem R"
+  },
+  {
+   "offset": 13672,
+   "text": "cken zum Gegner "
+  },
+  {
+   "offset": 13693,
+   "text": "De espaldas al adversario "
+  },
+  {
+   "offset": 13845,
+   "text": "Dingo Kick"
+  },
+  {
+   "offset": 13910,
+   "text": "Back towards enemy "
+  },
+  {
+   "offset": 13937,
+   "text": "Dos "
+  },
+  {
+   "offset": 13943,
+   "text": " l'adversaire "
+  },
+  {
+   "offset": 13965,
+   "text": "Spalle all'avversario "
+  },
+  {
+   "offset": 13995,
+   "text": "Mit dem R"
+  },
+  {
+   "offset": 14006,
+   "text": "cken zum Gegner "
+  },
+  {
+   "offset": 14030,
+   "text": "De espaldas al adversario "
+  },
+  {
+   "offset": 14196,
+   "text": "10 Hit Combo 1"
+  },
+  {
+   "offset": 14565,
+   "text": "10 Hit Combo 2"
+  },
+  {
+   "offset": 14899,
+   "text": "Head Stomp"
+  },
+  {
+   "offset": 14955,
+   "text": "Approach enemy "
+  },
+  {
+   "offset": 14975,
+   "text": "Approcher adversaire "
+  },
+  {
+   "offset": 15001,
+   "text": "Vicino all'avversario "
+  },
+  {
+   "offset": 15028,
+   "text": "An den Gegner ann"
+  },
+  {
+   "offset": 15047,
+   "text": "hern "
+  },
+  {
+   "offset": 15057,
+   "text": "Acercarse al adversario "
+  },
+  {
+   "offset": 15193,
+   "text": "Head Stomp"
+  },
+  {
+   "offset": 15252,
+   "text": "Approach enemy "
+  },
+  {
+   "offset": 15275,
+   "text": "Approcher adversaire "
+  },
+  {
+   "offset": 15304,
+   "text": "Vicino all'avversario "
+  },
+  {
+   "offset": 15334,
+   "text": "An den Gegner ann"
+  },
+  {
+   "offset": 15353,
+   "text": "hern "
+  },
+  {
+   "offset": 15366,
+   "text": "Acercarse al adversario "
+  },
+  {
+   "offset": 15532,
+   "text": "Tasmanian Doormat"
+  },
+  {
+   "offset": 15613,
+   "text": "Approach enemy "
+  },
+  {
+   "offset": 15633,
+   "text": "Approcher adversaire "
+  },
+  {
+   "offset": 15659,
+   "text": "Vicino all'avversario "
+  },
+  {
+   "offset": 15686,
+   "text": "An den Gegner ann"
+  },
+  {
+   "offset": 15705,
+   "text": "hern "
+  },
+  {
+   "offset": 15715,
+   "text": "Acercarse al adversario "
+  },
+  {
+   "offset": 15872,
+   "text": "Tasmanian Doormat"
+  },
+  {
+   "offset": 15956,
+   "text": "Approach enemy "
+  },
+  {
+   "offset": 15979,
+   "text": "Approcher adversaire "
+  },
+  {
+   "offset": 16008,
+   "text": "Vicino all'avversario "
+  },
+  {
+   "offset": 16038,
+   "text": "An den Gegner ann"
+  },
+  {
+   "offset": 16057,
+   "text": "hern "
+  },
+  {
+   "offset": 16070,
+   "text": "Acercarse al adversario "
+  },
+  {
+   "offset": 16245,
+   "text": "Animal Face Crusher"
+  },
+  {
+   "offset": 16347,
+   "text": "(or "
+  },
+  {
+   "offset": 16357,
+   "text": "Approach from left side "
+  },
+  {
+   "offset": 16384,
+   "text": " (or "
+  },
+  {
+   "offset": 16395,
+   "text": "Approcher par la gauche "
+  },
+  {
+   "offset": 16422,
+   "text": " (ou "
+  },
+  {
+   "offset": 16433,
+   "text": "Vicino da sinistra "
+  },
+  {
+   "offset": 16455,
+   "text": " (o "
+  },
+  {
+   "offset": 16465,
+   "text": "Von der linken Seite ann"
+  },
+  {
+   "offset": 16491,
+   "text": "hern "
+  },
+  {
+   "offset": 16499,
+   "text": " (oder "
+  },
+  {
+   "offset": 16512,
+   "text": "Acercarse desde la izqda. "
+  },
+  {
+   "offset": 16541,
+   "text": " (o "
+  },
+  {
+   "offset": 16712,
+   "text": "Animal Rolling Arm Lock"
+  },
+  {
+   "offset": 16824,
+   "text": "(or "
+  },
+  {
+   "offset": 16834,
+   "text": "Approach from right side "
+  },
+  {
+   "offset": 16862,
+   "text": " (or "
+  },
+  {
+   "offset": 16873,
+   "text": "Approcher par la droite "
+  },
+  {
+   "offset": 16900,
+   "text": " (ou "
+  },
+  {
+   "offset": 16911,
+   "text": "Vicino da destra "
+  },
+  {
+   "offset": 16931,
+   "text": " (o "
+  },
+  {
+   "offset": 16941,
+   "text": "Von der rechten Seite ann"
+  },
+  {
+   "offset": 16968,
+   "text": "hern "
+  },
+  {
+   "offset": 16976,
+   "text": " (oder "
+  },
+  {
+   "offset": 16989,
+   "text": "Acercarse desde la dcha. "
+  },
+  {
+   "offset": 17017,
+   "text": " (o "
+  },
+  {
+   "offset": 17157,
+   "text": "Reverse Neck Throw"
+  },
+  {
+   "offset": 17228,
+   "text": "(or "
+  },
+  {
+   "offset": 17238,
+   "text": "Approach from behind "
+  },
+  {
+   "offset": 17262,
+   "text": " (or "
+  },
+  {
+   "offset": 17273,
+   "text": "Approcher par derri"
+  },
+  {
+   "offset": 17300,
+   "text": " (ou "
+  },
+  {
+   "offset": 17311,
+   "text": "Vicino da dietro "
+  },
+  {
+   "offset": 17331,
+   "text": " (o "
+  },
+  {
+   "offset": 17341,
+   "text": "Von hinten ann"
+  },
+  {
+   "offset": 17357,
+   "text": "hern "
+  },
+  {
+   "offset": 17365,
+   "text": " (oder "
+  },
+  {
+   "offset": 17378,
+   "text": "Acercarse desde atr"
+  },
+  {
+   "offset": 17404,
+   "text": " (o "
+  },
+  {
+   "offset": 17548,
+   "text": "Giant Swing"
+  },
+  {
+   "offset": 17638,
+   "text": "Approach enemy "
+  },
+  {
+   "offset": 17676,
+   "text": "Approcher adversaire "
+  },
+  {
+   "offset": 17720,
+   "text": "Vicino all'avversario "
+  },
+  {
+   "offset": 17765,
+   "text": "An den Gegner ann"
+  },
+  {
+   "offset": 17784,
+   "text": "hern "
+  },
+  {
+   "offset": 17812,
+   "text": "Acercarse al adversario "
+  },
+  {
+   "offset": 18017,
+   "text": "Pile Driver"
+  },
+  {
+   "offset": 18095,
+   "text": "Approach enemy "
+  },
+  {
+   "offset": 18124,
+   "text": "Approcher adversaire "
+  },
+  {
+   "offset": 18159,
+   "text": "Vicino all'avversario "
+  },
+  {
+   "offset": 18195,
+   "text": "An den Gegner ann"
+  },
+  {
+   "offset": 18214,
+   "text": "hern "
+  },
+  {
+   "offset": 18233,
+   "text": "Acercarse al adversario "
+  },
+  {
+   "offset": 18426,
+   "text": "Tombstone Pile Driver"
+  },
+  {
+   "offset": 18526,
+   "text": "Approach enemy "
+  },
+  {
+   "offset": 18552,
+   "text": "Approcher adversaire "
+  },
+  {
+   "offset": 18584,
+   "text": "Vicino all'avversario "
+  },
+  {
+   "offset": 18617,
+   "text": "An den Gegner ann"
+  },
+  {
+   "offset": 18636,
+   "text": "hern "
+  },
+  {
+   "offset": 18652,
+   "text": "Acercarse al adversario "
+  },
+  {
+   "offset": 18852,
+   "text": "Approach enemy "
+  },
+  {
+   "offset": 18878,
+   "text": "Approcher adversaire "
+  },
+  {
+   "offset": 18910,
+   "text": "Vicino all'avversario "
+  },
+  {
+   "offset": 18943,
+   "text": "An den Gegner ann"
+  },
+  {
+   "offset": 18962,
+   "text": "hern "
+  },
+  {
+   "offset": 18978,
+   "text": "Acercarse al adversario "
+  },
+  {
+   "offset": 19146,
+   "text": "Sample Combo 1"
+  },
+  {
+   "offset": 19278,
+   "text": "Sample Combo 2"
+  },
+  {
+   "offset": 19416,
+   "text": "Sample Combo 3"
+  },
+  {
+   "offset": 19548,
+   "text": "Sample Combo 4"
+  },
+  {
+   "offset": 19711,
+   "text": "Sample Combo 5"
+  },
+  {
+   "offset": 19867,
+   "text": "Sample Combo 6"
+  },
+  {
+   "offset": 20023,
+   "text": "Sample Combo 7"
+  },
+  {
+   "offset": 444292,
+   "text": "MOTA"
+  },
+  {
+   "offset": 444388,
+   "text": "~I/8"
+  },
+  {
+   "offset": 444478,
+   "text": "~I/8"
+  },
+  {
+   "offset": 445099,
+   "text": "08@NBA"
+  },
+  {
+   "offset": 445327,
+   "text": "s\\X)="
+  },
+  {
+   "offset": 445421,
+   "text": " Ni\""
+  },
+  {
+   "offset": 445553,
+   "text": "}!Hy"
+  },
+  {
+   "offset": 445578,
+   "text": "8,Hi"
+  },
+  {
+   "offset": 445641,
+   "text": "%Zs;"
+  },
+  {
+   "offset": 446029,
+   "text": "F~ev"
+  },
+  {
+   "offset": 446124,
+   "text": "MOTA"
+  },
+  {
+   "offset": 446395,
+   "text": "Y.:y"
+  },
+  {
+   "offset": 446582,
+   "text": "cCXw"
+  },
+  {
+   "offset": 446638,
+   "text": "WBOH"
+  },
+  {
+   "offset": 446727,
+   "text": "G0Cjv"
+  },
+  {
+   "offset": 446822,
+   "text": "((,`q"
+  },
+  {
+   "offset": 446832,
+   "text": "@(3)o"
+  },
+  {
+   "offset": 446946,
+   "text": ",7RcU"
+  },
+  {
+   "offset": 446952,
+   "text": "5Sr3"
+  },
+  {
+   "offset": 446961,
+   "text": "78sX"
+  },
+  {
+   "offset": 446967,
+   "text": ",7RcU"
+  },
+  {
+   "offset": 446973,
+   "text": "5Sr3"
+  },
+  {
+   "offset": 447015,
+   "text": ",P(4|gps"
+  },
+  {
+   "offset": 447027,
+   "text": "7[$9&"
+  },
+  {
+   "offset": 447047,
+   "text": ",P(7"
+  },
+  {
+   "offset": 447059,
+   "text": "7[$9&"
+  },
+  {
+   "offset": 447156,
+   "text": "Op,1Q4"
+  },
+  {
+   "offset": 447169,
+   "text": "$!FK"
+  },
+  {
+   "offset": 447177,
+   "text": "@(.Aw"
+  },
+  {
+   "offset": 447326,
+   "text": "5z+P"
+  },
+  {
+   "offset": 447368,
+   "text": ",&r^"
+  },
+  {
+   "offset": 447753,
+   "text": "8dR]:"
+  },
+  {
+   "offset": 447793,
+   "text": "9{~%9'"
+  },
+  {
+   "offset": 447800,
+   "text": "/9r|e9"
+  },
+  {
+   "offset": 447807,
+   "text": "rH9%"
+  },
+  {
+   "offset": 447828,
+   "text": ")9gX"
+  },
+  {
+   "offset": 447863,
+   "text": "hozYBf"
+  },
+  {
+   "offset": 447917,
+   "text": "HozY"
+  },
+  {
+   "offset": 447951,
+   "text": "+hQy"
+  },
+  {
+   "offset": 448106,
+   "text": "1\\#C"
+  },
+  {
+   "offset": 448240,
+   "text": "hAG3"
+  },
+  {
+   "offset": 448276,
+   "text": "?h8V~B"
+  },
+  {
+   "offset": 448368,
+   "text": "}_>BT\\"
+  },
+  {
+   "offset": 448421,
+   "text": "^8V~"
+  },
+  {
+   "offset": 448594,
+   "text": ",7Bk"
+  },
+  {
+   "offset": 448599,
+   "text": "{3Bkut,6"
+  },
+  {
+   "offset": 448660,
+   "text": "FP,7"
+  },
+  {
+   "offset": 448672,
+   "text": "H,4g{s"
+  },
+  {
+   "offset": 448679,
+   "text": "4g{34"
+  },
+  {
+   "offset": 448704,
+   "text": "7@7M"
+  },
+  {
+   "offset": 448714,
+   "text": "II7kp7j"
+  },
+  {
+   "offset": 448791,
+   "text": ",5D#"
+  },
+  {
+   "offset": 448826,
+   "text": "W,4e/sZ"
+  },
+  {
+   "offset": 448849,
+   "text": ",4{_p"
+  },
+  {
+   "offset": 448953,
+   "text": "<+P`v"
+  },
+  {
+   "offset": 449108,
+   "text": "@7k/"
+  },
+  {
+   "offset": 449162,
+   "text": "p/K."
+  },
+  {
+   "offset": 449180,
+   "text": "e@7_"
+  },
+  {
+   "offset": 449185,
+   "text": "9:`kP"
+  },
+  {
+   "offset": 449193,
+   "text": "[@7P"
+  },
+  {
+   "offset": 449215,
+   "text": "6=wSQ@"
+  },
+  {
+   "offset": 449285,
+   "text": "sbp6"
+  },
+  {
+   "offset": 449295,
+   "text": "Ki|W"
+  },
+  {
+   "offset": 449322,
+   "text": "(7\\f"
+  },
+  {
+   "offset": 449377,
+   "text": "N!6/_X"
+  },
+  {
+   "offset": 449464,
+   "text": "V8@7"
+  },
+  {
+   "offset": 449521,
+   "text": "dgZ "
+  },
+  {
+   "offset": 449559,
+   "text": "\\(,7##"
+  },
+  {
+   "offset": 449571,
+   "text": "L,7PC"
+  },
+  {
+   "offset": 449682,
+   "text": "+F97"
+  },
+  {
+   "offset": 449735,
+   "text": "U4@2"
+  },
+  {
+   "offset": 449742,
+   "text": "#Fpl"
+  },
+  {
+   "offset": 449772,
+   "text": "f z@"
+  },
+  {
+   "offset": 449873,
+   "text": "9'IQ~"
+  },
+  {
+   "offset": 449928,
+   "text": "\"Kp7P"
+  },
+  {
+   "offset": 449977,
+   "text": "  JFJ"
+  },
+  {
+   "offset": 450005,
+   "text": ",4Y3"
+  },
+  {
+   "offset": 450064,
+   "text": "<,01"
+  },
+  {
+   "offset": 450073,
+   "text": "u| ,7.{Z1(`"
+  },
+  {
+   "offset": 450086,
+   "text": "`,4|"
+  },
+  {
+   "offset": 450133,
+   "text": "VjU`"
+  },
+  {
+   "offset": 450274,
+   "text": "r;u(4"
+  },
+  {
+   "offset": 450285,
+   "text": "f$ \""
+  },
+  {
+   "offset": 450302,
+   "text": "@7gq"
+  },
+  {
+   "offset": 450327,
+   "text": "i@/1"
+  },
+  {
+   "offset": 450368,
+   "text": "s6j-"
+  },
+  {
+   "offset": 450447,
+   "text": "c,,7"
+  },
+  {
+   "offset": 450498,
+   "text": "<,,b"
+  },
+  {
+   "offset": 450519,
+   "text": "L$,4t"
+  },
+  {
+   "offset": 450555,
+   "text": "<MOTA"
+  },
+  {
+   "offset": 450576,
+   "text": "MOTA"
+  },
+  {
+   "offset": 450596,
+   "text": "MOTA"
+  },
+  {
+   "offset": 450616,
+   "text": "MOTA"
+  }
+ ],
+ "utf8_japanese_runs": [
+  {
+   "offset": 704,
+   "text": "ワンツーパンチ"
+  },
+  {
+   "offset": 745,
+   "text": "ワンツーパンチ"
+  },
+  {
+   "offset": 832,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 852,
+   "text": "ワンツーボディフック"
+  },
+  {
+   "offset": 906,
+   "text": "ワンツーボディフック"
+  },
+  {
+   "offset": 1026,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 1046,
+   "text": "ワンツーアロー"
+  },
+  {
+   "offset": 1087,
+   "text": "ワンツーアロー"
+  },
+  {
+   "offset": 1198,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 1218,
+   "text": "ワンツープリマコンボ"
+  },
+  {
+   "offset": 1274,
+   "text": "ワンツープリマコンボ"
+  },
+  {
+   "offset": 1394,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 1414,
+   "text": "ワンツーロケットスタンス"
+  },
+  {
+   "offset": 1478,
+   "text": "ワンツーロケットスタンス"
+  },
+  {
+   "offset": 1628,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 1648,
+   "text": "ライトストレート"
+  },
+  {
+   "offset": 1675,
+   "text": "レフトアッパー"
+  },
+  {
+   "offset": 1712,
+   "text": "ライトストレート"
+  },
+  {
+   "offset": 1739,
+   "text": "レフトアッパー"
+  },
+  {
+   "offset": 1826,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 1846,
+   "text": "ロン・ドゥ・ヒール"
+  },
+  {
+   "offset": 1895,
+   "text": "ロン・ドゥ・ヒール"
+  },
+  {
+   "offset": 2036,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 2056,
+   "text": "ダブルスピン・カスタネット"
+  },
+  {
+   "offset": 2125,
+   "text": "ダブルスピン・カスタネット"
+  },
+  {
+   "offset": 2230,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 2250,
+   "text": "ダブルスピン・アニマルスイープ"
+  },
+  {
+   "offset": 2323,
+   "text": "ダブルスピン・アニマルスイープ"
+  },
+  {
+   "offset": 2434,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 2454,
+   "text": "カスタネットキック"
+  },
+  {
+   "offset": 2498,
+   "text": "カスタネットキック"
+  },
+  {
+   "offset": 2567,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 2587,
+   "text": "プロムナード"
+  },
+  {
+   "offset": 2622,
+   "text": "プロムナード"
+  },
+  {
+   "offset": 2706,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 2726,
+   "text": "エアーズロック"
+  },
+  {
+   "offset": 2762,
+   "text": "エアーズロック"
+  },
+  {
+   "offset": 2897,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 2917,
+   "text": "アニマルメガトンパンチ"
+  },
+  {
+   "offset": 2974,
+   "text": "アニマルメガトンパンチ"
+  },
+  {
+   "offset": 3097,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 3117,
+   "text": "アニマルドロップキック"
+  },
+  {
+   "offset": 3170,
+   "text": "アニマルドロップキック"
+  },
+  {
+   "offset": 3269,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 3289,
+   "text": "エルボービンタ"
+  },
+  {
+   "offset": 3330,
+   "text": "エルボービンタ"
+  },
+  {
+   "offset": 3441,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 3461,
+   "text": "バンディクート・ボム"
+  },
+  {
+   "offset": 3509,
+   "text": "バンディクート・ボム"
+  },
+  {
+   "offset": 3605,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 3625,
+   "text": "テイルフレイル"
+  },
+  {
+   "offset": 3660,
+   "text": "テイルフレイル"
+  },
+  {
+   "offset": 3747,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 3767,
+   "text": "フィンキック"
+  },
+  {
+   "offset": 3805,
+   "text": "フィンキック"
+  },
+  {
+   "offset": 3889,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 3909,
+   "text": "アニマルヘッドバット"
+  },
+  {
+   "offset": 3958,
+   "text": "アニマルヘッドバット"
+  },
+  {
+   "offset": 4054,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 4074,
+   "text": "アニマルビート"
+  },
+  {
+   "offset": 4113,
+   "text": "アニマルビート"
+  },
+  {
+   "offset": 4200,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 4220,
+   "text": "レフトストレート"
+  },
+  {
+   "offset": 4247,
+   "text": "ライトアッパー"
+  },
+  {
+   "offset": 4284,
+   "text": "レフトストレート"
+  },
+  {
+   "offset": 4311,
+   "text": "ライトアッパー"
+  },
+  {
+   "offset": 4446,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 4466,
+   "text": "ダイビングローパンチ"
+  },
+  {
+   "offset": 4516,
+   "text": "ダイビングローパンチ"
+  },
+  {
+   "offset": 4612,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 4632,
+   "text": "アニマルストーム"
+  },
+  {
+   "offset": 4677,
+   "text": "アニマルストーム"
+  },
+  {
+   "offset": 4815,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 4835,
+   "text": "テイルモッピング"
+  },
+  {
+   "offset": 4875,
+   "text": "テイルモッピング"
+  },
+  {
+   "offset": 4965,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 4985,
+   "text": "テイルカッター"
+  },
+  {
+   "offset": 5022,
+   "text": "テイルカッター"
+  },
+  {
+   "offset": 5109,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 5129,
+   "text": "アニマルキックラッシュ"
+  },
+  {
+   "offset": 5182,
+   "text": "アニマルキックラッシュ"
+  },
+  {
+   "offset": 5377,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 5397,
+   "text": "カンガルーアタック"
+  },
+  {
+   "offset": 5443,
+   "text": "カンガルーアタック"
+  },
+  {
+   "offset": 5536,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 5556,
+   "text": "リバースバイシクルキック"
+  },
+  {
+   "offset": 5616,
+   "text": "リバースバイシクルキック"
+  },
+  {
+   "offset": 5718,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 5738,
+   "text": "スナップショット"
+  },
+  {
+   "offset": 5784,
+   "text": "スナップショット"
+  },
+  {
+   "offset": 5874,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 5894,
+   "text": "ロケットスタンス"
+  },
+  {
+   "offset": 5935,
+   "text": "ロケットスタンス"
+  },
+  {
+   "offset": 6025,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 6045,
+   "text": "ロードランナー"
+  },
+  {
+   "offset": 6081,
+   "text": "ロードランナー"
+  },
+  {
+   "offset": 6192,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 6212,
+   "text": "フライングスタート"
+  },
+  {
+   "offset": 6256,
+   "text": "フライングスタート"
+  },
+  {
+   "offset": 6373,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 6393,
+   "text": "フライング・ハンマーパンチ"
+  },
+  {
+   "offset": 6448,
+   "text": "フライング・ハンマーパンチ"
+  },
+  {
+   "offset": 6577,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 6597,
+   "text": "フライング・ストレート"
+  },
+  {
+   "offset": 6650,
+   "text": "フライング・ストレート"
+  },
+  {
+   "offset": 6773,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 6793,
+   "text": "フライング・ローキック"
+  },
+  {
+   "offset": 6846,
+   "text": "フライング・ローキック"
+  },
+  {
+   "offset": 6969,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 6989,
+   "text": "フライング・ミドルキック"
+  },
+  {
+   "offset": 7048,
+   "text": "フライング・ミドルキック"
+  },
+  {
+   "offset": 7174,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 7194,
+   "text": "ロードローラー"
+  },
+  {
+   "offset": 7230,
+   "text": "ロードローラー"
+  },
+  {
+   "offset": 7341,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 7361,
+   "text": "フライング・ヒップアタック"
+  },
+  {
+   "offset": 7421,
+   "text": "フライング・ヒップアタック"
+  },
+  {
+   "offset": 7550,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 7570,
+   "text": "ボビンダンス"
+  },
+  {
+   "offset": 7604,
+   "text": "ボビンダンス"
+  },
+  {
+   "offset": 7688,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 7708,
+   "text": "クルクルパンチ"
+  },
+  {
+   "offset": 7747,
+   "text": "クルクルパンチ"
+  },
+  {
+   "offset": 7858,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 7878,
+   "text": "ギャラクシーアッパー"
+  },
+  {
+   "offset": 7927,
+   "text": "ギャラクシーアッパー"
+  },
+  {
+   "offset": 8047,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 8067,
+   "text": "アニマルギガトンパンチ"
+  },
+  {
+   "offset": 8117,
+   "text": "アニマルギガトンパンチ"
+  },
+  {
+   "offset": 8216,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 8236,
+   "text": "アニマルヨーヨー"
+  },
+  {
+   "offset": 8276,
+   "text": "アニマルヨーヨー"
+  },
+  {
+   "offset": 8366,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 8386,
+   "text": "エルボードロップ"
+  },
+  {
+   "offset": 8424,
+   "text": "エルボードロップ"
+  },
+  {
+   "offset": 8514,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 8534,
+   "text": "クルクルキック"
+  },
+  {
+   "offset": 8574,
+   "text": "クルクルキック"
+  },
+  {
+   "offset": 8685,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 8705,
+   "text": "ライジングトゥーキック"
+  },
+  {
+   "offset": 8757,
+   "text": "ライジングトゥーキック"
+  },
+  {
+   "offset": 8856,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 8876,
+   "text": "ナックルボム"
+  },
+  {
+   "offset": 8916,
+   "text": "ナックルボム"
+  },
+  {
+   "offset": 9000,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 9020,
+   "text": "カンガルースタンプ"
+  },
+  {
+   "offset": 9065,
+   "text": "カンガルースタンプ"
+  },
+  {
+   "offset": 9158,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 9178,
+   "text": "ダイナミックスマッシュ"
+  },
+  {
+   "offset": 9227,
+   "text": "ダイナミックスマッシュ"
+  },
+  {
+   "offset": 9350,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 9370,
+   "text": "ジェイルキック"
+  },
+  {
+   "offset": 9407,
+   "text": "ジェイルキック"
+  },
+  {
+   "offset": 9518,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 9538,
+   "text": "フライングクロスチョップ"
+  },
+  {
+   "offset": 9594,
+   "text": "フライングクロスチョップ"
+  },
+  {
+   "offset": 9720,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 9740,
+   "text": "ドロップキック"
+  },
+  {
+   "offset": 9773,
+   "text": "ドロップキック"
+  },
+  {
+   "offset": 9884,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 9904,
+   "text": "ローリング・トーピドー"
+  },
+  {
+   "offset": 9957,
+   "text": "ローリング・トーピドー"
+  },
+  {
+   "offset": 10080,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 10100,
+   "text": "アニマルアッパーカット"
+  },
+  {
+   "offset": 10152,
+   "text": "アニマルアッパーカット"
+  },
+  {
+   "offset": 10323,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 10343,
+   "text": "アニマルスマッシュ"
+  },
+  {
+   "offset": 10386,
+   "text": "アニマルスマッシュ"
+  },
+  {
+   "offset": 10551,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 10571,
+   "text": "カッティングエッジ"
+  },
+  {
+   "offset": 10616,
+   "text": "カッティングエッジ"
+  },
+  {
+   "offset": 10757,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 10777,
+   "text": "サテライトドロップキック"
+  },
+  {
+   "offset": 10833,
+   "text": "サテライトドロップキック"
+  },
+  {
+   "offset": 10983,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 11003,
+   "text": "スピニングスマッシュ"
+  },
+  {
+   "offset": 11054,
+   "text": "スピニングスマッシュ"
+  },
+  {
+   "offset": 11086,
+   "text": "走り中に"
+  },
+  {
+   "offset": 11356,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 11376,
+   "text": "アリキック"
+  },
+  {
+   "offset": 11408,
+   "text": "アリキック"
+  },
+  {
+   "offset": 11425,
+   "text": "走り中に"
+  },
+  {
+   "offset": 11719,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 11739,
+   "text": "ブーメランナックル"
+  },
+  {
+   "offset": 11785,
+   "text": "ブーメランナックル"
+  },
+  {
+   "offset": 11814,
+   "text": "立ち途中に"
+  },
+  {
+   "offset": 11989,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 12009,
+   "text": "スプリングスタンプ"
+  },
+  {
+   "offset": 12057,
+   "text": "スプリングスタンプ"
+  },
+  {
+   "offset": 12086,
+   "text": "立ち途中に"
+  },
+  {
+   "offset": 12261,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 12281,
+   "text": "チャージスタンプ"
+  },
+  {
+   "offset": 12326,
+   "text": "チャージスタンプ"
+  },
+  {
+   "offset": 12352,
+   "text": "立ち途中に"
+  },
+  {
+   "offset": 12374,
+   "text": "ホールド"
+  },
+  {
+   "offset": 12635,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 12655,
+   "text": "トゥースマッシュ"
+  },
+  {
+   "offset": 12692,
+   "text": "トゥースマッシュ"
+  },
+  {
+   "offset": 12718,
+   "text": "立ち途中に"
+  },
+  {
+   "offset": 12869,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 12889,
+   "text": "ダイナマイトアッパー"
+  },
+  {
+   "offset": 12941,
+   "text": "ダイナマイトアッパー"
+  },
+  {
+   "offset": 12973,
+   "text": "しゃがんだ状態で"
+  },
+  {
+   "offset": 13165,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 13185,
+   "text": "アニマルスイープ"
+  },
+  {
+   "offset": 13225,
+   "text": "アニマルスイープ"
+  },
+  {
+   "offset": 13251,
+   "text": "横移動中に"
+  },
+  {
+   "offset": 13470,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 13490,
+   "text": "シュリンプキック"
+  },
+  {
+   "offset": 13529,
+   "text": "シュリンプキック"
+  },
+  {
+   "offset": 13555,
+   "text": "相手に背を向けて"
+  },
+  {
+   "offset": 13805,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 13825,
+   "text": "ガッツキック"
+  },
+  {
+   "offset": 13857,
+   "text": "ガッツキック"
+  },
+  {
+   "offset": 13877,
+   "text": "相手に背を向けて"
+  },
+  {
+   "offset": 14151,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 14177,
+   "text": "連コンボ"
+  },
+  {
+   "offset": 14218,
+   "text": "れんコンボ"
+  },
+  {
+   "offset": 14520,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 14546,
+   "text": "連コンボ"
+  },
+  {
+   "offset": 14587,
+   "text": "れんコンボ"
+  },
+  {
+   "offset": 14865,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 14885,
+   "text": "足ぱちき"
+  },
+  {
+   "offset": 14911,
+   "text": "あしぱちき"
+  },
+  {
+   "offset": 14928,
+   "text": "相手に接近して"
+  },
+  {
+   "offset": 15159,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 15179,
+   "text": "足ぱちき"
+  },
+  {
+   "offset": 15205,
+   "text": "あしぱちき"
+  },
+  {
+   "offset": 15222,
+   "text": "相手に接近して"
+  },
+  {
+   "offset": 15477,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 15497,
+   "text": "タスマニアンガトリング"
+  },
+  {
+   "offset": 15551,
+   "text": "タスマニアンガトリング"
+  },
+  {
+   "offset": 15586,
+   "text": "相手に接近して"
+  },
+  {
+   "offset": 15817,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 15837,
+   "text": "タスマニアンガトリング"
+  },
+  {
+   "offset": 15891,
+   "text": "タスマニアンガトリング"
+  },
+  {
+   "offset": 15926,
+   "text": "相手に接近して"
+  },
+  {
+   "offset": 16181,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 16201,
+   "text": "アニマルフェイスクラッシャー"
+  },
+  {
+   "offset": 16266,
+   "text": "アニマルフェイスクラッシャー"
+  },
+  {
+   "offset": 16310,
+   "text": "相手の左横から接近して"
+  },
+  {
+   "offset": 16642,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 16662,
+   "text": "アニマルローリングアームホイップ"
+  },
+  {
+   "offset": 16737,
+   "text": "アニマルローリングアームホイップ"
+  },
+  {
+   "offset": 16787,
+   "text": "相手の右横から接近して"
+  },
+  {
+   "offset": 17123,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 17143,
+   "text": "背落とし"
+  },
+  {
+   "offset": 17177,
+   "text": "せおとし"
+  },
+  {
+   "offset": 17191,
+   "text": "相手の背後から接近して"
+  },
+  {
+   "offset": 17496,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 17516,
+   "text": "ジャイアントスイング"
+  },
+  {
+   "offset": 17561,
+   "text": "ジャイアントスイング"
+  },
+  {
+   "offset": 17593,
+   "text": "相手に接近して"
+  },
+  {
+   "offset": 17968,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 17988,
+   "text": "ジャガードライバー"
+  },
+  {
+   "offset": 18030,
+   "text": "ジャガードライバー"
+  },
+  {
+   "offset": 18059,
+   "text": "相手に接近して"
+  },
+  {
+   "offset": 18362,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 18382,
+   "text": "ツームストンパイルドライバー"
+  },
+  {
+   "offset": 18449,
+   "text": "ツームストンパイルドライバー"
+  },
+  {
+   "offset": 18493,
+   "text": "相手に接近して"
+  },
+  {
+   "offset": 18772,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 18819,
+   "text": "相手に接近して"
+  },
+  {
+   "offset": 19098,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 19118,
+   "text": "サンプルコンボ"
+  },
+  {
+   "offset": 19162,
+   "text": "サンプルコンボ"
+  },
+  {
+   "offset": 19230,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 19250,
+   "text": "サンプルコンボ"
+  },
+  {
+   "offset": 19294,
+   "text": "サンプルコンボ"
+  },
+  {
+   "offset": 19368,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 19388,
+   "text": "サンプルコンボ"
+  },
+  {
+   "offset": 19432,
+   "text": "サンプルコンボ"
+  },
+  {
+   "offset": 19500,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 19520,
+   "text": "サンプルコンボ"
+  },
+  {
+   "offset": 19564,
+   "text": "サンプルコンボ"
+  },
+  {
+   "offset": 19599,
+   "text": "カウンター"
+  },
+  {
+   "offset": 19663,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 19683,
+   "text": "サンプルコンボ"
+  },
+  {
+   "offset": 19727,
+   "text": "サンプルコンボ"
+  },
+  {
+   "offset": 19785,
+   "text": "しゃがみ中"
+  },
+  {
+   "offset": 19819,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 19839,
+   "text": "サンプルコンボ"
+  },
+  {
+   "offset": 19883,
+   "text": "サンプルコンボ"
+  },
+  {
+   "offset": 19975,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 19995,
+   "text": "サンプルコンボ"
+  },
+  {
+   "offset": 20039,
+   "text": "サンプルコンボ"
+  },
+  {
+   "offset": 20094,
+   "text": "立ち途中"
+  },
+  {
+   "offset": 20112,
+   "text": "ホールド"
+  },
+  {
+   "offset": 20158,
+   "text": "帶動經濟起飛"
+  }
+ ],
+ "mota": {
+  "offsets": [
+   444292,
+   446124,
+   450556,
+   450576,
+   450596,
+   450616
+  ],
+  "chunks": [
+   {
+    "offset": 444292,
+    "header_hex": "4d4f544101000000140000000000000000010000010001000f000f00480000000800080008000800080008000800080008000800080008000800080008000000",
+    "words_le": [
+     1096044365,
+     1,
+     20,
+     0,
+     256,
+     65537,
+     983055,
+     72
+    ]
+   },
+   {
+    "offset": 446124,
+    "header_hex": "4d4f5441010000001400000021000000000100009800000064050000640500006405000064050000640500006405000064050000640500006405000064050000",
+    "words_le": [
+     1096044365,
+     1,
+     20,
+     33,
+     256,
+     152,
+     1380,
+     1380
+    ]
+   },
+   {
+    "offset": 450556,
+    "header_hex": "4d4f5441010000001400000000000000000100004d4f5441010000001400000000000000000100004d4f5441010000001400000000000000000100004d4f5441",
+    "words_le": [
+     1096044365,
+     1,
+     20,
+     0,
+     256,
+     1096044365,
+     1,
+     20
+    ]
+   },
+   {
+    "offset": 450576,
+    "header_hex": "4d4f5441010000001400000000000000000100004d4f5441010000001400000000000000000100004d4f544101000000140000000000000000010000",
+    "words_le": [
+     1096044365,
+     1,
+     20,
+     0,
+     256,
+     1096044365,
+     1,
+     20
+    ]
+   },
+   {
+    "offset": 450596,
+    "header_hex": "4d4f5441010000001400000000000000000100004d4f544101000000140000000000000000010000",
+    "words_le": [
+     1096044365,
+     1,
+     20,
+     0,
+     256,
+     1096044365,
+     1,
+     20
+    ]
+   },
+   {
+    "offset": 450616,
+    "header_hex": "4d4f544101000000140000000000000000010000",
+    "words_le": [
+     1096044365,
+     1,
+     20,
+     0,
+     256
+    ]
+   }
+  ],
+  "tail_records_20b": [
+   {
+    "offset": 450556,
+    "hex": "4d4f544101000000140000000000000000010000"
+   },
+   {
+    "offset": 450576,
+    "hex": "4d4f544101000000140000000000000000010000"
+   },
+   {
+    "offset": 450596,
+    "hex": "4d4f544101000000140000000000000000010000"
+   },
+   {
+    "offset": 450616,
+    "hex": "4d4f544101000000140000000000000000010000"
+   }
+  ],
+  "tail_note": "four 20B MOTA records end exactly at EOF in 18/18 files (round 6)"
+ },
+ "round14_notation": {
+  "source": "game-font PUA glyphs (U+E000-U+E023) in per-move name records",
+  "glyph_map": {
+   "U+E000": "d/b",
+   "U+E001": "d",
+   "U+E002": "d/f",
+   "U+E003": "b",
+   "U+E004": "f",
+   "U+E005": "u/b",
+   "U+E007": "u/f",
+   "U+E015": "1",
+   "U+E016": "2",
+   "U+E017": "1+2",
+   "U+E018": "3",
+   "U+E019": "1+3",
+   "U+E01B": "1+2+3",
+   "U+E01C": "4",
+   "U+E01E": "2+4",
+   "U+E020": "3+4"
+  },
+  "special": {
+   "U+E00C": "repeat/hold mark: decoded \"f\" when following U+E004 (the f,f input), \"~f\" otherwise"
+  },
+  "unproven_codepoints": "kept as U+Exxx tokens in command_decoded; command_complete=false marks those moves",
+  "evidence": "tools/round14-evidence/JOB3-GLYPH-MAP.md"
+ }
+}

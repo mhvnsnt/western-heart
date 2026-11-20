@@ -1,0 +1,47 @@
+{
+ "game": "Gang Beasts",
+ "ownership_basis": "Steam snapshot: owned, 11.2h",
+ "status": "spec-only — no game files were accessible from this VM (phone-only user, Steam remote download unreachable); this pack is the teardown path + conversion/wire schema, NOT extracted commercial assets",
+ "teardown_toolchain": [
+  "No game-file extraction is proposed: Gang Beasts value is a PATTERN, not assets. Reference implementations: Unity active-ragdoll prefabs (per-bone Rigidbody + Configurable/Hinge joints, kinematic-until-triggered), Unreal physical-animation discussion (hidden animated mesh driving a simulated ragdoll mesh)"
+ ],
+ "extractable": [
+  "Active-ragdoll pattern: floppy limbs, grab/hold, throw momentum, environmental knockouts",
+  "Grab/clinch system: hold, lift, drag, throw — maps to WH grapple chains (King-style chain throws)"
+ ],
+ "wh_wire": {
+  "combat": "Ragdoll ONLY in Tekken-appropriate moments (launches, KOs, wall splats, KESSHOU finishers) — contextual, never always-on, per the user's ragdoll vision (Euphoria + Gang Beasts + Human Fall Flat + Tekken)",
+  "creation": "UNMAPPED — no parts pulled",
+  "stages": "Hazard arenas (moving vehicles, heights, grinders) as Heart and Mind Within / side-mode arena ideas, canon-renamed",
+  "audio": "UNMAPPED",
+  "systems": "Active-ragdoll state machine spec in this pack's wire note; implementation belongs to the physics/combat lane"
+ },
+ "blocker": "No local game install is reachable from this VM and no game files were supplied with this task. Steam remote download previously reported 'Unable to reach your PC'; user rule is phone-only, no PC paths. Even with files, do not lift Gang Beasts models — implement the pattern on WH rigs.",
+ "unblock": "Implement the ragdoll state machine from the wire note below on WH rigs; no game files needed for the pattern itself.",
+ "canon_rule": "Anything brought in with another game's name is renamed to Eastern Mind / Western Heart canon in user-facing writing. Tekken/proprietary names stay in technical files only. Game ships with NO famous names. All characters adults. User's own models (Tripo + SmutBase) display FIRST; Tekken models are back-slot attires. Sole exception: Pantera Attire 1 (user-customized King reskin).",
+ "combat_inputs": "LP1=Left Punch=Tekken 1, RP2=Right Punch=Tekken 2, LK3=Left Kick=Tekken 3, RK4=Right Kick=Tekken 4. Frame data / MOD damage: UNMAPPED unless a source file in this pack contains it — never estimated as measured.",
+ "community_sources": [
+  "https://edmek55555.itch.io/active-ragdoll-prefab-for-beginners",
+  "https://forums.unrealengine.com/t/gang-beasts-human-fall-flat-ragdoll-characters-in-ue4/155641"
+ ],
+ "ragdoll_spec": {
+  "states": [
+   "animated (kinematic bodies, animator drives bones)",
+   "blending (physics takes over with inherited velocity on trigger)",
+   "ragdoll (simulated bodies, joints limited)",
+   "recovery (blend back to a get-up animation — WH get-up, not a Gang Beasts flop) "
+  ],
+  "triggers_allowed": [
+   "launch",
+   "KO",
+   "wall splat",
+   "KESSHOU finisher",
+   "ring-out / hazard knockout"
+  ],
+  "triggers_forbidden": [
+   "every hit",
+   "neutral state",
+   "during a Tekken string"
+  ]
+ }
+}

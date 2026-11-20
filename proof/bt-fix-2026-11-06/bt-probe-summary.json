@@ -1,0 +1,291 @@
+{
+ "generated": "2026-11-06 BT system fix lane (game's own TekkenBuffer probe, ctx facing vs backturned)",
+ "method": "Every moveset file on main probed through game/js/movesets.js TekkenBuffer: fresh presses of 1/2/3/4 and chords 1+2/1+3/2+4/3+4 with ctx {} (facing) and {backturned:true}; the resolved move KEY is recorded.",
+ "totals": {
+  "moveset_files": 163,
+  "fighters_probed": 129,
+  "bt_rows_moves_keys_BT_prefix": 634,
+  "facing_presses_resolving_to_bt_rows": 0,
+  "resolution_changes_from_fix": 21,
+  "bt_press_fallthrough_remaining": [
+   "koreshi:4",
+   "tobi:1",
+   "tobi:2",
+   "t3-hwoarang:1",
+   "t3-hwoarang:2"
+  ]
+ },
+ "resolution_changes": [
+  {
+   "fighter": "demonio-bloodline-ember",
+   "context": "bt",
+   "input": "2",
+   "before": "2~t8.jin",
+   "after": "BT.1"
+  },
+  {
+   "fighter": "demonio-bloodline-ember",
+   "context": "bt",
+   "input": "4",
+   "before": "4~t8.jin",
+   "after": "BT.3"
+  },
+  {
+   "fighter": "demonio-human",
+   "context": "bt",
+   "input": "2",
+   "before": "2",
+   "after": "BT.1"
+  },
+  {
+   "fighter": "demonio-human",
+   "context": "bt",
+   "input": "4",
+   "before": "4",
+   "after": "BT.3"
+  },
+  {
+   "fighter": "demonio-winged",
+   "context": "bt",
+   "input": "2",
+   "before": "2~t8.deviljin",
+   "after": "BT.1"
+  },
+  {
+   "fighter": "demonio-winged",
+   "context": "bt",
+   "input": "4",
+   "before": "4~t8.deviljin",
+   "after": "BT.3"
+  },
+  {
+   "fighter": "gyou-spirit-body",
+   "context": "bt",
+   "input": "2",
+   "before": "2~t8.paul",
+   "after": "BT.1"
+  },
+  {
+   "fighter": "gyou-spirit-body",
+   "context": "bt",
+   "input": "4",
+   "before": "4~t8.paul",
+   "after": "BT.3"
+  },
+  {
+   "fighter": "sakura",
+   "context": "bt",
+   "input": "2+4",
+   "before": "2+4~t8.xiaoyu",
+   "after": "BT.1+3"
+  },
+  {
+   "fighter": "sha",
+   "context": "bt",
+   "input": "2+4",
+   "before": "2+4~t8.xiaoyu",
+   "after": "BT.1+3"
+  },
+  {
+   "fighter": "star",
+   "context": "bt",
+   "input": "2+4",
+   "before": "2+4~t8.xiaoyu",
+   "after": "BT.1+3"
+  },
+  {
+   "fighter": "t3-anna",
+   "context": "bt",
+   "input": "2",
+   "before": "2~t8.anna",
+   "after": "BT.1"
+  },
+  {
+   "fighter": "t3-anna",
+   "context": "bt",
+   "input": "4",
+   "before": "4~t8.anna",
+   "after": "BT.3"
+  },
+  {
+   "fighter": "t3-eddy",
+   "context": "bt",
+   "input": "2",
+   "before": "2~t8.eddy",
+   "after": "BT.1"
+  },
+  {
+   "fighter": "t3-eddy",
+   "context": "bt",
+   "input": "4",
+   "before": "4~t8.eddy",
+   "after": "BT.3"
+  },
+  {
+   "fighter": "t3-julia",
+   "context": "bt",
+   "input": "2",
+   "before": "2~t7.julia",
+   "after": "BT.1"
+  },
+  {
+   "fighter": "t3-julia",
+   "context": "bt",
+   "input": "4",
+   "before": "4~t7.julia",
+   "after": "BT.3"
+  },
+  {
+   "fighter": "t3-nina",
+   "context": "bt",
+   "input": "2",
+   "before": "2~t8.nina",
+   "after": "BT.1"
+  },
+  {
+   "fighter": "t3-nina",
+   "context": "bt",
+   "input": "4",
+   "before": "4~t8.nina",
+   "after": "BT.3"
+  },
+  {
+   "fighter": "t3-paul",
+   "context": "bt",
+   "input": "2",
+   "before": "2~t8.paul",
+   "after": "BT.1"
+  },
+  {
+   "fighter": "t3-paul",
+   "context": "bt",
+   "input": "4",
+   "before": "4~t8.paul",
+   "after": "BT.3"
+  }
+ ],
+ "named_five_bt_presses": {
+  "pantera": {
+   "1": "BT.1",
+   "2": "BT.1",
+   "3": "BT.3",
+   "4": "BT.4",
+   "1+2": "BT.1+2",
+   "1+3": "1+3~t8.king",
+   "2+4": "2+4~t8.king",
+   "3+4": "BT.3+4",
+   "2+3": "2+3_t8",
+   "1+4": "BT.1+4"
+  },
+  "demonio": {
+   "1": "BT.1",
+   "2": "BT.1",
+   "3": "BT.3",
+   "4": "BT.3",
+   "1+2": "1+2",
+   "1+3": "1+3~t8.jin",
+   "2+4": "2+4~t8.jin",
+   "3+4": "3+4",
+   "2+3": "2+3",
+   "1+4": "1+4"
+  },
+  "pond": {
+   "1": "BT.1",
+   "2": "BT.2",
+   "3": "BT.3",
+   "4": "BT.4",
+   "1+2": "BT.1+2",
+   "1+3": "1+3~t8.raven",
+   "2+4": "2+4~t8.raven",
+   "3+4": "BT.3+4",
+   "2+3": "2+3",
+   "1+4": null
+  },
+  "ryusan": {
+   "1": "BT 1",
+   "2": "BT 2",
+   "3": "BT 3",
+   "4": "BT 4",
+   "1+2": "BT 1+2",
+   "1+3": "1+3",
+   "2+4": "2+4",
+   "3+4": "BT 3+4",
+   "2+3": null,
+   "1+4": null
+  },
+  "tobi": {
+   "1": "1~t8.hwoarang",
+   "2": "2~t8.hwoarang",
+   "3": "BT.3",
+   "4": "BT.4",
+   "1+2": "1+2",
+   "1+3": "1+3~t8.hwoarang",
+   "2+4": "2+4~t8.hwoarang",
+   "3+4": "3+4",
+   "2+3": "2+3",
+   "1+4": "1+4"
+  }
+ },
+ "named_five_facing_presses": {
+  "pantera": {
+   "1": "1~t8.king",
+   "2": "2~t8.king",
+   "3": "3~t8.king",
+   "4": "4~t8.king",
+   "1+2": "1+2",
+   "1+3": "1+3~t8.king",
+   "2+4": "2+4~t8.king",
+   "3+4": "3+4_t8",
+   "2+3": "2+3_t8",
+   "1+4": "1+4"
+  },
+  "demonio": {
+   "1": "1~t8.jin",
+   "2": "2~t8.jin",
+   "3": "3~t8.jin",
+   "4": "4~t8.jin",
+   "1+2": "1+2",
+   "1+3": "1+3~t8.jin",
+   "2+4": "2+4~t8.jin",
+   "3+4": "3+4",
+   "2+3": "2+3",
+   "1+4": "1+4"
+  },
+  "pond": {
+   "1": "1~t8.raven",
+   "2": "2~t8.raven",
+   "3": "3~t8.raven",
+   "4": "4~t8.raven",
+   "1+2": "1+2~t8.raven",
+   "1+3": "1+3~t8.raven",
+   "2+4": "2+4~t8.raven",
+   "3+4": "3+4~t8.raven",
+   "2+3": "2+3",
+   "1+4": null
+  },
+  "ryusan": {
+   "1": "1",
+   "2": "2",
+   "3": "3",
+   "4": "4",
+   "1+2": "1+2",
+   "1+3": "1+3",
+   "2+4": "2+4",
+   "3+4": null,
+   "2+3": null,
+   "1+4": null
+  },
+  "tobi": {
+   "1": "1~t8.hwoarang",
+   "2": "2~t8.hwoarang",
+   "3": "3~t8.hwoarang",
+   "4": "4~t8.hwoarang",
+   "1+2": "1+2",
+   "1+3": "1+3~t8.hwoarang",
+   "2+4": "2+4~t8.hwoarang",
+   "3+4": "3+4",
+   "2+3": "2+3",
+   "1+4": "1+4"
+  }
+ }
+}

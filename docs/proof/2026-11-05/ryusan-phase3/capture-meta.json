@@ -1,0 +1,38 @@
+{
+  "fighter": "ryusan",
+  "select_path": "game/assets/portraits/ryusan.png",
+  "select_loader": "game/js/select-screen.js portraitSrcFor \u2192 assets/portraits/${id}.png",
+  "sha256": "82ed443be85d61e976adeb07a7a3ea1598b6cc215b8cb1161473a4c81f63c290",
+  "bytes": 86889,
+  "capture": {
+    "id": "ryusan",
+    "model": "ryusan",
+    "bones": 521,
+    "stance": false,
+    "stanceSource": null,
+    "framed": true,
+    "bank": "luckychloe",
+    "armDeg": {
+      "L": 87,
+      "R": 87
+    }
+  },
+  "prev_sha256_stale": "f156bf5ec70c770ec4b4658ada7f486f83ff3588ab8d0dbde32de2067ace8bda",
+  "prev_bytes": 90289,
+  "model_loaded": "roster/mina-ashido/attires/attire1/model-rerig.glb (local; 521 joints)",
+  "note": "Remote B2 still serves a stale 2,121,260 B / ~73-bone model-rerig.glb \u2014 capture forced local via temporary remoteBase placeholder (not committed). Live Pages will keep showing old model until B2 is refreshed from main.",
+  "stance": "false \u2014 luckychloe bank stance fails fit gate on 521-bone fidelity rig (Left shoulder ~1.23 rad); framed head+shoulders from bind/aim fallback. Not invented.",
+  "unmapped_anims": {
+    "multi_hit_pack_skips_one_clip_one_hit_rule": {
+      "1+2": "multi-hit (high, high): one clip could show only the first hit",
+      "u+3+4": "multi-hit (mid, mid): one clip could show only the first hit",
+      "f+3+4": "multi-hit (mid, mid, low): one clip could show only the first hit",
+      "b+1+2": "multi-hit (high, high, high, high): one clip could show only the first hit"
+    },
+    "show_slots_no_body_clip_in_motbin": [
+      "intro (t3_stance.json)",
+      "win (t3_win_rp.json)"
+    ],
+    "sequenced_press_probe": "follow-up tooling \u2014 not a clip invent"
+  }
+}

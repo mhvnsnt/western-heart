@@ -1,0 +1,173 @@
+{
+ "thrower": "demonio",
+ "victim": "pantera",
+ "base": "http://127.0.0.1:8777/game/",
+ "ready": true,
+ "trials": [
+  {
+   "n": "d+1",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "d+1",
+    "damage": 24,
+    "isGrab": true,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": null,
+   "pairSeen": false,
+   "lockSeen": true,
+   "hpDelta": 21,
+   "firstDmgT": 1.242,
+   "vThrowHitDone": true,
+   "whLogs": [
+    "[WH-THROW] demonio vs pantera: no file pair (attempt row 139 has no throw branches in bank 'jin' (UNMAPPED)) \u2014 legacy lock"
+   ],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.35,
+     "p1": "throwing",
+     "p2": "thrown",
+     "pair": false
+    },
+    {
+     "t": 0.65,
+     "p1": "throwExec",
+     "p2": "thrownExec",
+     "pair": false
+    },
+    {
+     "t": 1.558,
+     "p1": "idle",
+     "p2": "knockdown",
+     "pair": false
+    },
+    {
+     "t": 2.108,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "1+3",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "1+3",
+    "damage": 19,
+    "isGrab": true,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "row:139",
+    "kind": "anim",
+    "why": ""
+   },
+   "pairSeen": false,
+   "lockSeen": true,
+   "hpDelta": 16.6,
+   "firstDmgT": 1.1,
+   "vThrowHitDone": true,
+   "whLogs": [
+    "[WH-THROW] demonio vs pantera: no file pair (attempt row 117 has no throw branches in bank 'jin' (UNMAPPED)) \u2014 legacy lock"
+   ],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.208,
+     "p1": "throwing",
+     "p2": "thrown",
+     "pair": false
+    },
+    {
+     "t": 0.508,
+     "p1": "throwExec",
+     "p2": "thrownExec",
+     "pair": false
+    },
+    {
+     "t": 1.417,
+     "p1": "idle",
+     "p2": "knockdown",
+     "pair": false
+    },
+    {
+     "t": 1.967,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  }
+ ],
+ "setup": {
+  "roundState": "fight",
+  "p1": {
+   "id": "demonio",
+   "t3dir": "jin",
+   "t3bank": "jin",
+   "t3actions": 22
+  },
+  "p2": {
+   "id": "pantera",
+   "t3dir": "king_on_pantera_leoman",
+   "t3bank": "king",
+   "t3actions": 22
+  }
+ },
+ "logs": [
+  "[http 404] http://127.0.0.1:8777/game/assets/movesets/zui.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/movesets/torch.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/movesets/waterfall.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/movesets/scimitar.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/movesets/demonio-winged.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/movesets/armor-king.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/movesets/hugo.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/movesets/kronos.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/movesets/kronos-attire2.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/movesets/marduk.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/movesets/zangief.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/movesets/kutz.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/movesets/yukihyo.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/movesets/cainelias.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/movesets/ryuji-rock.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/portraits/demonio.png",
+  "[http 404] http://127.0.0.1:8777/game/assets/portraits/pantera.png",
+  "[http 404] http://127.0.0.1:8777/game/assets/anim/t7/king/moves.pack.json",
+  "[http 404] http://127.0.0.1:8777/roster/demonio/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8777/roster/pantera/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8777/customization/profiles/index.json",
+  "[http 404] http://127.0.0.1:8777/customization/profiles/demonio.json",
+  "[http 404] http://127.0.0.1:8777/customization/profiles/pantera.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/music/battle-volatile.mp3",
+  "[http 404] http://127.0.0.1:8777/game/js/intro-interactions.js",
+  "[http 404] http://127.0.0.1:8777/game/assets/fx/effekseer/ToonHit.efkefc",
+  "[http 404] http://127.0.0.1:8777/roster/demonio/attires/winged-devil/model-rigged.glb",
+  "[http 404] http://127.0.0.1:8777/roster/demonio/attires/human/model-rerig.glb",
+  "[http 404] http://127.0.0.1:8777/roster/demonio/attires/winged-devil/model-rigged.glb",
+  "[http 404] http://127.0.0.1:8777/roster/demonio/attires/human/model-rerig.glb"
+ ]
+}

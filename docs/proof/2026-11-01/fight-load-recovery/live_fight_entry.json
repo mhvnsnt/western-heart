@@ -1,0 +1,35 @@
+{
+ "url": "https://mhvnsnt.github.io/western-heart/game/index.html",
+ "p1": "negativo",
+ "p2": "pantera",
+ "phases": {
+  "page_load": 5.8,
+  "menu_ready": 6.9,
+  "select_ready": 24.1,
+  "stage_ready": 159.3
+ },
+ "results": [
+  {
+   "attempt": 1,
+   "outcome": "FIGHT",
+   "seconds": 20.2,
+   "hint": ""
+  }
+ ],
+ "events": [
+  "38.5s [http 404] https://western-heart-assets.mhvnsnt.workers.dev/roster/negativo/attires/attire1/source/negativo-a1-refit.glb",
+  "38.5s [error] Failed to load resource: the server responded with a status of 404 (Not Found)",
+  "38.7s [http 404] https://mhvnsnt.github.io/western-heart/roster/negativo/attires/attire1/source/negativo-a1-refit.glb",
+  "38.7s [error] Failed to load resource: the server responded with a status of 404 (Not Found)",
+  "179.5s [http 404] https://mhvnsnt.github.io/western-heart/roster/negativo/anatomy/anatomy-layers.json",
+  "179.5s [error] Failed to load resource: the server responded with a status of 404 (Not Found)",
+  "179.6s [http 404] https://mhvnsnt.github.io/western-heart/roster/pantera/anatomy/anatomy-layers.json",
+  "179.6s [error] Failed to load resource: the server responded with a status of 404 (Not Found)",
+  "179.6s [log] [WH-T7] negativo: 26 real T7 move clips (assets/anim/t7/negan/moves.pack.json)",
+  "179.6s [log] [WH-T7] pantera: 29 real T7 move clips (assets/anim/t7/king/moves.pack.json)",
+  "179.9s [http 404] https://mhvnsnt.github.io/western-heart/game/js/intro-interactions.js",
+  "179.9s [error] Failed to load resource: the server responded with a status of 404 (Not Found)",
+  "179.9s [requestfailed] https://mhvnsnt.github.io/western-heart/game/js/intro-interactions.js net::ERR_ABORTED",
+  "238.1s [requestfailed] https://mhvnsnt.github.io/western-heart/game/assets/audio/eastern-mind/tong-nou-esoteric-mix.mp3 net::ERR_ABORTED"
+ ]
+}

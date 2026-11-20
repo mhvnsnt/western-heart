@@ -1,0 +1,22 @@
+{
+ "game": "Yu-Gi-Oh! Master Duel",
+ "ownership_basis": "Steam snapshot: owned, 3.8h",
+ "status": "spec-only — no game files were accessible from this VM (phone-only user, Steam remote download unreachable); this pack is the teardown path + conversion/wire schema, NOT extracted commercial assets",
+ "teardown_toolchain": [
+  "Candidate toolchain to TEST on the owned install (not asserted as verified for this title): FModel/UModel for UE titles, AssetStudio/AssetRipper for Unity titles, game-specific community tools where the note names one; confirm the engine/format from the installed files first"
+ ],
+ "extractable": [
+  "Card-duel system only — same as Duel Links pack."
+ ],
+ "wh_wire": {
+  "combat": "UNMAPPED unless the note names a combat pattern — this game is NOT part of the Tekken base",
+  "creation": "UNMAPPED unless the note names parts/templates",
+  "stages": "UNMAPPED unless the note names stage value",
+  "audio": "UNMAPPED",
+  "systems": "Card-duel system only — same as Duel Links pack."
+ },
+ "blocker": "No local game install is reachable from this VM and no game files were supplied with this task. Steam remote download previously reported 'Unable to reach your PC'; user rule is phone-only, no PC paths. Engine/format for this title is UNMAPPED in this pack and must be confirmed from the installed files before any extraction claim is made.",
+ "unblock": "On a machine with the owned game installed: run the toolchain below against the installed files, export to the WH schema in this pack, and drop converted (non-commercial-name) data under game/assets/pulls/<slug>/ as a follow-up PR. Raw commercial files go ONLY in the PRIVATE game-reverse-engineering repo, never in public western-heart.",
+ "canon_rule": "Anything brought in with another game's name is renamed to Eastern Mind / Western Heart canon in user-facing writing. Tekken/proprietary names stay in technical files only. Game ships with NO famous names. All characters adults. User's own models (Tripo + SmutBase) display FIRST; Tekken models are back-slot attires. Sole exception: Pantera Attire 1 (user-customized King reskin).",
+ "combat_inputs": "LP1=Left Punch=Tekken 1, RP2=Right Punch=Tekken 2, LK3=Left Kick=Tekken 3, RK4=Right Kick=Tekken 4. Frame data / MOD damage: UNMAPPED unless a source file in this pack contains it — never estimated as measured."
+}

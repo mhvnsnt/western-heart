@@ -1,0 +1,1289 @@
+{
+ "schema": "wh-t7-clip-map/1",
+ "fighter": "thor",
+ "base_code": "gan",
+ "sources": {
+  "mapping": "FILL 2 / F5 (2026-11-06): group-walk joins for moves that carried no animation reference at all",
+  "char_index": "GRE mask/indexes/gan_index.json",
+  "bank0_index": "GRE mask/indexes/gan_bank0_index.json"
+ },
+ "stats": {
+  "mapped_clip_resolved": 14,
+  "mapped_bank0_noclip": 0,
+  "unmapped": 64
+ },
+ "moves": [
+  {
+   "wh_key": "F:1+3",
+   "wh_name": "Body Drop",
+   "wh_input": "1+3",
+   "t7_notation": "1+3",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1757,
+   "motbin_move_name": "ThrmvLB2_00",
+   "anim_name": "naco_tukami2l(DVD)",
+   "anim_id": 33477,
+   "bank_index": 709,
+   "bank": "0x8000",
+   "motbin_startup": 12,
+   "motbin_damage": 16384,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x8000",
+    "source": "common.arc",
+    "section": 0,
+    "entry": 709,
+    "rel_offset": 3523552,
+    "size": 2176,
+    "format_word": 100,
+    "sha256": "2d57080bd30ef0c00900c403fc03108b0222c3a964c27df36116b1f9745d58a7",
+    "blob_file": "common_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "F:f+1+3",
+   "wh_name": "Body Drop",
+   "wh_input": "f+1+3",
+   "t7_notation": "f+1+3",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1758,
+   "motbin_move_name": "ThrmvLB2_00F",
+   "anim_name": "naco_tukami2long(DVD)",
+   "anim_id": 33478,
+   "bank_index": 710,
+   "bank": "0x8000",
+   "motbin_startup": 15,
+   "motbin_damage": 16384,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x8000",
+    "source": "common.arc",
+    "section": 0,
+    "entry": 710,
+    "rel_offset": 3525728,
+    "size": 2752,
+    "format_word": 100,
+    "sha256": "73e1defdbe2ad43626ed40a57d7748c99f8c8679a6dee6d917e4ee1f7f4e1d40",
+    "blob_file": "common_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "F:2+4",
+   "wh_name": "Hip Roll",
+   "wh_input": "2+4",
+   "t7_notation": "2+4",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1759,
+   "motbin_move_name": "ThrmvRB2_00",
+   "anim_name": "msco_rtukami(DVD)",
+   "anim_id": 16869,
+   "bank_index": 485,
+   "bank": "0x4000",
+   "motbin_startup": 12,
+   "motbin_damage": 16384,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "ganrotsm.arc",
+    "section": 0,
+    "entry": 485,
+    "rel_offset": 3158512,
+    "size": 2152,
+    "format_word": 100,
+    "sha256": "955128cb324a5f0fd65352096ae812134ff51db2493f8a6f3cb34d6a60fd7de0",
+    "blob_file": "gan_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "F:f+2+4",
+   "wh_name": "Hip Roll",
+   "wh_input": "f+2+4",
+   "t7_notation": "f+2+4",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1760,
+   "motbin_move_name": "ThrmvRB2_00F",
+   "anim_name": "naco_rtukami(DVD)",
+   "anim_id": 32788,
+   "bank_index": 20,
+   "bank": "0x8000",
+   "motbin_startup": 15,
+   "motbin_damage": 16384,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x8000",
+    "source": "common.arc",
+    "section": 0,
+    "entry": 20,
+    "rel_offset": 137336,
+    "size": 2748,
+    "format_word": 100,
+    "sha256": "6887aea20d728e44edfbdfbbe16f243f192f5ccd092945be3e0f0a22c1a1df53",
+    "blob_file": "common_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "F:f,f+1+4",
+   "wh_name": "Jizo Hug",
+   "wh_input": "f,f+1+4",
+   "t7_notation": "f,f+1+4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: unique-but-held.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "unique-but-held"
+   }
+  },
+  {
+   "wh_key": "F:f,f+2+3",
+   "wh_name": "Face Slam",
+   "wh_input": "f,f+2+3",
+   "t7_notation": "f,f+2+3",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: unique-but-held.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "unique-but-held"
+   }
+  },
+  {
+   "wh_key": "L:1+3",
+   "wh_name": "Upper Stream",
+   "wh_input": "1+3",
+   "t7_notation": "1+3",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1757,
+   "motbin_move_name": "ThrmvLB2_00",
+   "anim_name": "naco_tukami2l(DVD)",
+   "anim_id": 33477,
+   "bank_index": 709,
+   "bank": "0x8000",
+   "motbin_startup": 12,
+   "motbin_damage": 16384,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x8000",
+    "source": "common.arc",
+    "section": 0,
+    "entry": 709,
+    "rel_offset": 3523552,
+    "size": 2176,
+    "format_word": 100,
+    "sha256": "2d57080bd30ef0c00900c403fc03108b0222c3a964c27df36116b1f9745d58a7",
+    "blob_file": "common_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "L:2+4",
+   "wh_name": "Upper Stream",
+   "wh_input": "2+4",
+   "t7_notation": "2+4",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1759,
+   "motbin_move_name": "ThrmvRB2_00",
+   "anim_name": "msco_rtukami(DVD)",
+   "anim_id": 16869,
+   "bank_index": 485,
+   "bank": "0x4000",
+   "motbin_startup": 12,
+   "motbin_damage": 16384,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "ganrotsm.arc",
+    "section": 0,
+    "entry": 485,
+    "rel_offset": 3158512,
+    "size": 2152,
+    "format_word": 100,
+    "sha256": "955128cb324a5f0fd65352096ae812134ff51db2493f8a6f3cb34d6a60fd7de0",
+    "blob_file": "gan_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "R:1+3",
+   "wh_name": "Crotch Toss",
+   "wh_input": "1+3",
+   "t7_notation": "1+3",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1757,
+   "motbin_move_name": "ThrmvLB2_00",
+   "anim_name": "naco_tukami2l(DVD)",
+   "anim_id": 33477,
+   "bank_index": 709,
+   "bank": "0x8000",
+   "motbin_startup": 12,
+   "motbin_damage": 16384,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x8000",
+    "source": "common.arc",
+    "section": 0,
+    "entry": 709,
+    "rel_offset": 3523552,
+    "size": 2176,
+    "format_word": 100,
+    "sha256": "2d57080bd30ef0c00900c403fc03108b0222c3a964c27df36116b1f9745d58a7",
+    "blob_file": "common_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "R:2+4",
+   "wh_name": "Crotch Toss",
+   "wh_input": "2+4",
+   "t7_notation": "2+4",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1759,
+   "motbin_move_name": "ThrmvRB2_00",
+   "anim_name": "msco_rtukami(DVD)",
+   "anim_id": 16869,
+   "bank_index": 485,
+   "bank": "0x4000",
+   "motbin_startup": 12,
+   "motbin_damage": 16384,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "ganrotsm.arc",
+    "section": 0,
+    "entry": 485,
+    "rel_offset": 3158512,
+    "size": 2152,
+    "format_word": 100,
+    "sha256": "955128cb324a5f0fd65352096ae812134ff51db2493f8a6f3cb34d6a60fd7de0",
+    "blob_file": "gan_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "B:1+3",
+   "wh_name": "Okurigake",
+   "wh_input": "1+3",
+   "t7_notation": "1+3",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1757,
+   "motbin_move_name": "ThrmvLB2_00",
+   "anim_name": "naco_tukami2l(DVD)",
+   "anim_id": 33477,
+   "bank_index": 709,
+   "bank": "0x8000",
+   "motbin_startup": 12,
+   "motbin_damage": 16384,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x8000",
+    "source": "common.arc",
+    "section": 0,
+    "entry": 709,
+    "rel_offset": 3523552,
+    "size": 2176,
+    "format_word": 100,
+    "sha256": "2d57080bd30ef0c00900c403fc03108b0222c3a964c27df36116b1f9745d58a7",
+    "blob_file": "common_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "B:2+4",
+   "wh_name": "Reverse Choke Slam",
+   "wh_input": "2+4",
+   "t7_notation": "2+4",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1759,
+   "motbin_move_name": "ThrmvRB2_00",
+   "anim_name": "msco_rtukami(DVD)",
+   "anim_id": 16869,
+   "bank_index": 485,
+   "bank": "0x4000",
+   "motbin_startup": 12,
+   "motbin_damage": 16384,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "ganrotsm.arc",
+    "section": 0,
+    "entry": 485,
+    "rel_offset": 3158512,
+    "size": 2152,
+    "format_word": 100,
+    "sha256": "955128cb324a5f0fd65352096ae812134ff51db2493f8a6f3cb34d6a60fd7de0",
+    "blob_file": "gan_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "B:d+1+2",
+   "wh_name": "Pedal Press",
+   "wh_input": "d+1+2",
+   "t7_notation": "d+1+2",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1663,
+   "motbin_move_name": "Sm_okuri00",
+   "anim_name": "Msm_okuri1(DVD)",
+   "anim_id": 16853,
+   "bank_index": 469,
+   "bank": "0x4000",
+   "motbin_startup": 16,
+   "motbin_damage": 22,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "ganrotsm.arc",
+    "section": 0,
+    "entry": 469,
+    "rel_offset": 3130192,
+    "size": 2984,
+    "format_word": 100,
+    "sha256": "d6b5ba498e516e721589c33e04cc87b9d2dffa25957fc9e444cf9eba1243774f",
+    "blob_file": "gan_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "d+1,2",
+   "wh_name": "Mountain Cleaver",
+   "wh_input": "d+1,2",
+   "t7_notation": "d+1,2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "FC,d/b+1+2",
+   "wh_name": "Midare Uchi",
+   "wh_input": "FC,d/b+1+2",
+   "t7_notation": "FC,d/b+1+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "FC+1,1,1,2",
+   "wh_name": "Sumo Rush",
+   "wh_input": "FC+1,1,1,2",
+   "t7_notation": "FC+1,1,1,2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "FC+1,1,1,2,D+1",
+   "wh_name": "(L_M_H Ending)",
+   "wh_input": "FC+1,1,1,2,D+1",
+   "t7_notation": "FC+1,1,1,2,D+1",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "FC+1,1,1,2,D/F+1",
+   "wh_name": "(L_M_H Ending)",
+   "wh_input": "FC+1,1,1,2,D/F+1",
+   "t7_notation": "FC+1,1,1,2,D/F+1",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "FC+1,1,1,2,F+1",
+   "wh_name": "(L_M_H Ending)",
+   "wh_input": "FC+1,1,1,2,F+1",
+   "t7_notation": "FC+1,1,1,2,F+1",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "d/f+1>4>1",
+   "wh_name": "Short Upper, Ganny Grinder",
+   "wh_input": "d/f+1>4>1",
+   "t7_notation": "d/f+1>4>1",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "FC,D/F+1,2,1",
+   "wh_name": "Nodowa Mid Combo",
+   "wh_input": "FC,D/F+1,2,1",
+   "t7_notation": "FC,D/F+1,2,1",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "u+1",
+   "wh_name": "Leaping Palm Shield",
+   "wh_input": "u+1",
+   "t7_notation": "u+1",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: unique-but-held.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "unique-but-held"
+   }
+  },
+  {
+   "wh_key": "f,f+1+2",
+   "wh_name": "Sumo Scissors",
+   "wh_input": "f,f+1+2",
+   "t7_notation": "f,f+1+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-multi-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-multi-terminal"
+   }
+  },
+  {
+   "wh_key": "FC+1+2",
+   "wh_name": "Palm Lift",
+   "wh_input": "FC+1+2",
+   "t7_notation": "FC+1+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "1+2>1+2",
+   "wh_name": "Double Uppercut",
+   "wh_input": "1+2>1+2",
+   "t7_notation": "1+2>1+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "1+2,b+1+2",
+   "wh_name": "Giant Tackle",
+   "wh_input": "1+2,b+1+2",
+   "t7_notation": "1+2,b+1+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "1+2,db+1+2",
+   "wh_name": "Giant Tackle",
+   "wh_input": "1+2,db+1+2",
+   "t7_notation": "1+2,db+1+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "1+2,b+1+2~d",
+   "wh_name": "Split",
+   "wh_input": "1+2,b+1+2~d",
+   "t7_notation": "1+2,b+1+2~d",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "1+2,b+1+2~1+2",
+   "wh_name": "Hopping Hug",
+   "wh_input": "1+2,b+1+2~1+2",
+   "t7_notation": "1+2,b+1+2~1+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "1+2,b+1+2~2",
+   "wh_name": "Stunning Uppercut",
+   "wh_input": "1+2,b+1+2~2",
+   "t7_notation": "1+2,b+1+2~2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "WS+1+2>1+2",
+   "wh_name": "Hammer",
+   "wh_input": "WS+1+2>1+2",
+   "t7_notation": "WS+1+2>1+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "RN 1+2",
+   "wh_name": "Ozuchi Strike",
+   "wh_input": "RN 1+2",
+   "t7_notation": "RN 1+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "FU/FT 1+2",
+   "wh_name": "Spring Hammer Punch",
+   "wh_input": "FU/FT 1+2",
+   "t7_notation": "FU/FT 1+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "FU/FT 1+2,2",
+   "wh_name": "Low Hitting Swipe",
+   "wh_input": "FU/FT 1+2,2",
+   "t7_notation": "FU/FT 1+2,2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "FU/FT 1+2~d",
+   "wh_name": "Split",
+   "wh_input": "FU/FT 1+2~d",
+   "t7_notation": "FU/FT 1+2~d",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "FU/FT 1+2~d,u_d",
+   "wh_name": "Sidestep",
+   "wh_input": "FU/FT 1+2~d,u_d",
+   "t7_notation": "FU/FT 1+2~d,u_d",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "FU/FT 1+2~d,f",
+   "wh_name": "Ganny Rise",
+   "wh_input": "FU/FT 1+2~d,f",
+   "t7_notation": "FU/FT 1+2~d,f",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "FU/FT 1+2~d,f,1+2",
+   "wh_name": "Embracing Claw",
+   "wh_input": "FU/FT 1+2~d,f,1+2",
+   "t7_notation": "FU/FT 1+2~d,f,1+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "b+1+3,1+2",
+   "wh_name": "High/Mid Punch Reversal, Rushing Back Grab",
+   "wh_input": "b+1+3,1+2",
+   "t7_notation": "b+1+3,1+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "b+2+4,1+2",
+   "wh_name": "High/Mid Punch Reversal, Rushing Back Grab",
+   "wh_input": "b+2+4,1+2",
+   "t7_notation": "b+2+4,1+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "f+2>1",
+   "wh_name": "Palm Cancel, Ear Boxing",
+   "wh_input": "f+2>1",
+   "t7_notation": "f+2>1",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "f,f+2",
+   "wh_name": "Embracing Claw",
+   "wh_input": "f,f+2",
+   "t7_notation": "f,f+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-multi-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-multi-terminal"
+   }
+  },
+  {
+   "wh_key": "f,f+2,1",
+   "wh_name": "Bottom Lift",
+   "wh_input": "f,f+2,1",
+   "t7_notation": "f,f+2,1",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-multi-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-multi-terminal"
+   }
+  },
+  {
+   "wh_key": "f,f+2,1+2",
+   "wh_name": "Air Lift",
+   "wh_input": "f,f+2,1+2",
+   "t7_notation": "f,f+2,1+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "f,f+2,2",
+   "wh_name": "Spin Lift",
+   "wh_input": "f,f+2,2",
+   "t7_notation": "f,f+2,2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "b,f+2",
+   "wh_name": "Salt Shaker",
+   "wh_input": "b,f+2",
+   "t7_notation": "b,f+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: unique-but-held.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "unique-but-held"
+   }
+  },
+  {
+   "wh_key": "d+2,1,2",
+   "wh_name": "Kabuki Slaps",
+   "wh_input": "d+2,1,2",
+   "t7_notation": "d+2,1,2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: unique-but-held.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "unique-but-held"
+   }
+  },
+  {
+   "wh_key": "d+2,1,2,1",
+   "wh_name": "Cross Cut Saw",
+   "wh_input": "d+2,1,2,1",
+   "t7_notation": "d+2,1,2,1",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "d+2,1,2,d/f+1",
+   "wh_name": "Short Upper",
+   "wh_input": "d+2,1,2,d/f+1",
+   "t7_notation": "d+2,1,2,d/f+1",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: unique-but-held.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "unique-but-held"
+   }
+  },
+  {
+   "wh_key": "d+2,1,2,d+1",
+   "wh_name": "Low Fisher",
+   "wh_input": "d+2,1,2,d+1",
+   "t7_notation": "d+2,1,2,d+1",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: unique-but-held.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "unique-but-held"
+   }
+  },
+  {
+   "wh_key": "d+2,2,2,2...",
+   "wh_name": "Hopping Palms",
+   "wh_input": "d+2,2,2,2...",
+   "t7_notation": "d+2,2,2,2...",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "d/f+2,1,2,1,2,1,2,1,2,1",
+   "wh_name": "Devil Thrusts",
+   "wh_input": "d/f+2,1,2,1,2,1,2,1,2,1",
+   "t7_notation": "d/f+2,1,2,1,2,1,2,1,2,1",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "u+2",
+   "wh_name": "Sober Slap",
+   "wh_input": "u+2",
+   "t7_notation": "u+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "u/b+2",
+   "wh_name": "Sober Slap",
+   "wh_input": "u/b+2",
+   "t7_notation": "u/b+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "FC,d/f+2",
+   "wh_name": "Kimen Hari",
+   "wh_input": "FC,d/f+2",
+   "t7_notation": "FC,d/f+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "3,4,3,4,3...",
+   "wh_name": "Giant Highkick Chain",
+   "wh_input": "3,4,3,4,3...",
+   "t7_notation": "3,4,3,4,3...",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "3,4,3,4,3...,4>4",
+   "wh_name": "Mud Stomp",
+   "wh_input": "3,4,3,4,3...,4>4",
+   "t7_notation": "3,4,3,4,3...,4>4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "3+4",
+   "wh_name": "Sit Down",
+   "wh_input": "3+4",
+   "t7_notation": "3+4",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1696,
+   "motbin_move_name": "Sm_kamasi00",
+   "anim_name": "smkb_s3_tatiai_kam",
+   "anim_id": 124,
+   "bank_index": 124,
+   "bank": "0x0000",
+   "motbin_startup": null,
+   "motbin_damage": 0,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x0000",
+    "source": "ganmot.bin",
+    "section": 0,
+    "entry": 124,
+    "rel_offset": 1996112,
+    "size": 9920,
+    "format_word": 100,
+    "sha256": "e82d4b6bc64b2ef27d438671d0ef97e1cfaa9139765d47891009e82b342a5372",
+    "blob_file": "gan_bank0_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "3+4,1",
+   "wh_name": "Megaton Palm",
+   "wh_input": "3+4,1",
+   "t7_notation": "3+4,1",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: unique-but-held.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "unique-but-held"
+   }
+  },
+  {
+   "wh_key": "3+4,1+2",
+   "wh_name": "Board Drop, (FU/FT)",
+   "wh_input": "3+4,1+2",
+   "t7_notation": "3+4,1+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: unique-but-held.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "unique-but-held"
+   }
+  },
+  {
+   "wh_key": "3+4,2",
+   "wh_name": "Low Hitting Swipe",
+   "wh_input": "3+4,2",
+   "t7_notation": "3+4,2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: unique-but-held.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "unique-but-held"
+   }
+  },
+  {
+   "wh_key": "3+4~d",
+   "wh_name": "Split",
+   "wh_input": "3+4~d",
+   "t7_notation": "3+4~d",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "3+4~d,u_d",
+   "wh_name": "Sidestep",
+   "wh_input": "3+4~d,u_d",
+   "t7_notation": "3+4~d,u_d",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "3+4~d,f",
+   "wh_name": "Ganny Rise",
+   "wh_input": "3+4~d,f",
+   "t7_notation": "3+4~d,f",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "3+4~d,f,1+2",
+   "wh_name": "Embracing Claw",
+   "wh_input": "3+4~d,f,1+2",
+   "t7_notation": "3+4~d,f,1+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "3+4,3+4",
+   "wh_name": "Tootsie Roll",
+   "wh_input": "3+4,3+4",
+   "t7_notation": "3+4,3+4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: unique-but-held.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "unique-but-held"
+   }
+  },
+  {
+   "wh_key": "d+3+4",
+   "wh_name": "Ganny Stomp",
+   "wh_input": "d+3+4",
+   "t7_notation": "d+3+4",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1579,
+   "motbin_move_name": "Sm_hp00",
+   "anim_name": "susm_suwari(DVD)",
+   "anim_id": 16703,
+   "bank_index": 319,
+   "bank": "0x4000",
+   "motbin_startup": null,
+   "motbin_damage": 0,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "ganrotsm.arc",
+    "section": 0,
+    "entry": 319,
+    "rel_offset": 2681816,
+    "size": 3912,
+    "format_word": 100,
+    "sha256": "79b486da75842c3b3f13f1d224fb0bf26103422d3a811adc303f05c445fc34f1",
+    "blob_file": "gan_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "u+3+4",
+   "wh_name": "Hip Press, Sit Down",
+   "wh_input": "u+3+4",
+   "t7_notation": "u+3+4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: unique-but-held.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "unique-but-held"
+   }
+  },
+  {
+   "wh_key": "f,f+3+4",
+   "wh_name": "Thunder Drop",
+   "wh_input": "f,f+3+4",
+   "t7_notation": "f,f+3+4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-multi-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-multi-terminal"
+   }
+  },
+  {
+   "wh_key": "4,3,4,3...",
+   "wh_name": "Giant Hightkick Chain",
+   "wh_input": "4,3,4,3...",
+   "t7_notation": "4,3,4,3...",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "4,3,4,3...,4>4",
+   "wh_name": "Mud Stomp",
+   "wh_input": "4,3,4,3...,4>4",
+   "t7_notation": "4,3,4,3...,4>4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "4>4",
+   "wh_name": "Mud Stomp",
+   "wh_input": "4>4",
+   "t7_notation": "4>4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "f,f+4",
+   "wh_name": "Kamikaze Kick",
+   "wh_input": "f,f+4",
+   "t7_notation": "f,f+4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-multi-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-multi-terminal"
+   }
+  },
+  {
+   "wh_key": "b,b~u/b",
+   "wh_name": "Twisting Splash",
+   "wh_input": "b,b~u/b",
+   "t7_notation": "b,b~u/b",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "d/b+1+2",
+   "wh_name": "Giant Tackle",
+   "wh_input": "d/b+1+2",
+   "t7_notation": "d/b+1+2",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1692,
+   "motbin_move_name": "Sm_t_slp00B",
+   "anim_name": "susm_t2syalp(DVD)",
+   "anim_id": 16723,
+   "bank_index": 339,
+   "bank": "0x4000",
+   "motbin_startup": 10,
+   "motbin_damage": 5,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "ganrotsm.arc",
+    "section": 0,
+    "entry": 339,
+    "rel_offset": 2745572,
+    "size": 2096,
+    "format_word": 100,
+    "sha256": "6797bd3b64a08c2983c55490d883e42e3df0853cdc16a542bd0935e8d463c90b",
+    "blob_file": "gan_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "d/b+1+2~d",
+   "wh_name": "Split",
+   "wh_input": "d/b+1+2~d",
+   "t7_notation": "d/b+1+2~d",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "d/b+1+2~1+2",
+   "wh_name": "Hopping Hug",
+   "wh_input": "d/b+1+2~1+2",
+   "t7_notation": "d/b+1+2~1+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "d/b+1+2~2",
+   "wh_name": "Stunning Uppercut",
+   "wh_input": "d/b+1+2~2",
+   "t7_notation": "d/b+1+2~2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  }
+ ]
+}

@@ -1,0 +1,584 @@
+{
+ "generated": "phase3 attempt9",
+ "method": "phase-1 skinned GLB (PR #429 branch ur-sweep1-char-decode, teardown/urban-reign/models/) + banked texture set per character; geometry/skinning untouched (verts/indices/joints verified identical per character); textures embedded as PNG images with per-component material assignment (edge-continuity + neighbourhood vote)",
+ "total_embedded_images": 733,
+ "characters": {
+  "char001": {
+   "verts": 4094,
+   "indices": 6027,
+   "joints": 37,
+   "images_embedded": 10,
+   "banked_pngs": 10,
+   "geom_match": true
+  },
+  "char002": {
+   "verts": 4108,
+   "indices": 6006,
+   "joints": 38,
+   "images_embedded": 10,
+   "banked_pngs": 10,
+   "geom_match": true
+  },
+  "char003": {
+   "verts": 3287,
+   "indices": 4848,
+   "joints": 31,
+   "images_embedded": 12,
+   "banked_pngs": 12,
+   "geom_match": true
+  },
+  "char004": {
+   "verts": 3267,
+   "indices": 4482,
+   "joints": 25,
+   "images_embedded": 11,
+   "banked_pngs": 11,
+   "geom_match": true
+  },
+  "char005": {
+   "verts": 3844,
+   "indices": 5637,
+   "joints": 39,
+   "images_embedded": 10,
+   "banked_pngs": 10,
+   "geom_match": true
+  },
+  "char006": {
+   "verts": 3696,
+   "indices": 5598,
+   "joints": 34,
+   "images_embedded": 9,
+   "banked_pngs": 9,
+   "geom_match": true
+  },
+  "char007": {
+   "verts": 3506,
+   "indices": 5244,
+   "joints": 41,
+   "images_embedded": 12,
+   "banked_pngs": 12,
+   "geom_match": true
+  },
+  "char008": {
+   "verts": 3570,
+   "indices": 5247,
+   "joints": 44,
+   "images_embedded": 10,
+   "banked_pngs": 10,
+   "geom_match": true
+  },
+  "char009": {
+   "verts": 3790,
+   "indices": 5493,
+   "joints": 45,
+   "images_embedded": 9,
+   "banked_pngs": 9,
+   "geom_match": true
+  },
+  "char010": {
+   "verts": 3320,
+   "indices": 4938,
+   "joints": 39,
+   "images_embedded": 17,
+   "banked_pngs": 17,
+   "geom_match": true
+  },
+  "char011": {
+   "verts": 3388,
+   "indices": 5124,
+   "joints": 44,
+   "images_embedded": 16,
+   "banked_pngs": 16,
+   "geom_match": true
+  },
+  "char012": {
+   "verts": 3882,
+   "indices": 5463,
+   "joints": 45,
+   "images_embedded": 9,
+   "banked_pngs": 9,
+   "geom_match": true
+  },
+  "char013": {
+   "verts": 3548,
+   "indices": 5199,
+   "joints": 35,
+   "images_embedded": 8,
+   "banked_pngs": 8,
+   "geom_match": true
+  },
+  "char014": {
+   "verts": 3945,
+   "indices": 5796,
+   "joints": 53,
+   "images_embedded": 10,
+   "banked_pngs": 10,
+   "geom_match": true
+  },
+  "char015": {
+   "verts": 4329,
+   "indices": 6399,
+   "joints": 53,
+   "images_embedded": 10,
+   "banked_pngs": 10,
+   "geom_match": true
+  },
+  "char016": {
+   "verts": 3651,
+   "indices": 5211,
+   "joints": 37,
+   "images_embedded": 15,
+   "banked_pngs": 15,
+   "geom_match": true
+  },
+  "char017": {
+   "verts": 4248,
+   "indices": 6390,
+   "joints": 35,
+   "images_embedded": 9,
+   "banked_pngs": 9,
+   "geom_match": true
+  },
+  "char018": {
+   "verts": 4076,
+   "indices": 6135,
+   "joints": 40,
+   "images_embedded": 8,
+   "banked_pngs": 8,
+   "geom_match": true
+  },
+  "char019": {
+   "verts": 4376,
+   "indices": 6468,
+   "joints": 27,
+   "images_embedded": 9,
+   "banked_pngs": 9,
+   "geom_match": true
+  },
+  "char020": {
+   "verts": 4268,
+   "indices": 6234,
+   "joints": 32,
+   "images_embedded": 10,
+   "banked_pngs": 10,
+   "geom_match": true
+  },
+  "char021": {
+   "verts": 3978,
+   "indices": 5958,
+   "joints": 37,
+   "images_embedded": 10,
+   "banked_pngs": 10,
+   "geom_match": true
+  },
+  "char022": {
+   "verts": 3839,
+   "indices": 5793,
+   "joints": 36,
+   "images_embedded": 8,
+   "banked_pngs": 8,
+   "geom_match": true
+  },
+  "char023": {
+   "verts": 3984,
+   "indices": 5949,
+   "joints": 36,
+   "images_embedded": 10,
+   "banked_pngs": 10,
+   "geom_match": true
+  },
+  "char024": {
+   "verts": 3850,
+   "indices": 5781,
+   "joints": 39,
+   "images_embedded": 6,
+   "banked_pngs": 6,
+   "geom_match": true
+  },
+  "char025": {
+   "verts": 3910,
+   "indices": 5799,
+   "joints": 46,
+   "images_embedded": 10,
+   "banked_pngs": 10,
+   "geom_match": true
+  },
+  "char026": {
+   "verts": 3171,
+   "indices": 4770,
+   "joints": 34,
+   "images_embedded": 9,
+   "banked_pngs": 9,
+   "geom_match": true
+  },
+  "char027": {
+   "verts": 4126,
+   "indices": 5808,
+   "joints": 38,
+   "images_embedded": 7,
+   "banked_pngs": 7,
+   "geom_match": true
+  },
+  "char028": {
+   "verts": 3936,
+   "indices": 5823,
+   "joints": 39,
+   "images_embedded": 8,
+   "banked_pngs": 8,
+   "geom_match": true
+  },
+  "char029": {
+   "verts": 4268,
+   "indices": 6162,
+   "joints": 37,
+   "images_embedded": 11,
+   "banked_pngs": 11,
+   "geom_match": true
+  },
+  "char030": {
+   "verts": 4230,
+   "indices": 6174,
+   "joints": 54,
+   "images_embedded": 10,
+   "banked_pngs": 10,
+   "geom_match": true
+  },
+  "char031": {
+   "verts": 4352,
+   "indices": 6360,
+   "joints": 44,
+   "images_embedded": 10,
+   "banked_pngs": 10,
+   "geom_match": true
+  },
+  "char032": {
+   "verts": 3611,
+   "indices": 5280,
+   "joints": 44,
+   "images_embedded": 19,
+   "banked_pngs": 19,
+   "geom_match": true
+  },
+  "char033": {
+   "verts": 4052,
+   "indices": 5973,
+   "joints": 37,
+   "images_embedded": 10,
+   "banked_pngs": 10,
+   "geom_match": true
+  },
+  "char034": {
+   "verts": 4036,
+   "indices": 6240,
+   "joints": 40,
+   "images_embedded": 9,
+   "banked_pngs": 9,
+   "geom_match": true
+  },
+  "char035": {
+   "verts": 4212,
+   "indices": 6426,
+   "joints": 40,
+   "images_embedded": 8,
+   "banked_pngs": 8,
+   "geom_match": true
+  },
+  "char036": {
+   "verts": 4138,
+   "indices": 6294,
+   "joints": 40,
+   "images_embedded": 8,
+   "banked_pngs": 8,
+   "geom_match": true
+  },
+  "char037": {
+   "verts": 4204,
+   "indices": 6474,
+   "joints": 40,
+   "images_embedded": 8,
+   "banked_pngs": 8,
+   "geom_match": true
+  },
+  "char038": {
+   "verts": 4377,
+   "indices": 6573,
+   "joints": 39,
+   "images_embedded": 9,
+   "banked_pngs": 9,
+   "geom_match": true
+  },
+  "char039": {
+   "verts": 4200,
+   "indices": 6354,
+   "joints": 47,
+   "images_embedded": 11,
+   "banked_pngs": 11,
+   "geom_match": true
+  },
+  "char040": {
+   "verts": 4302,
+   "indices": 6471,
+   "joints": 45,
+   "images_embedded": 9,
+   "banked_pngs": 9,
+   "geom_match": true
+  },
+  "char041": {
+   "verts": 3777,
+   "indices": 5643,
+   "joints": 48,
+   "images_embedded": 11,
+   "banked_pngs": 11,
+   "geom_match": true
+  },
+  "char042": {
+   "verts": 1260,
+   "indices": 1737,
+   "joints": 14,
+   "images_embedded": 13,
+   "banked_pngs": 13,
+   "geom_match": true
+  },
+  "char043": {
+   "verts": 4144,
+   "indices": 5844,
+   "joints": 25,
+   "images_embedded": 13,
+   "banked_pngs": 13,
+   "geom_match": true
+  },
+  "char044": {
+   "verts": 3964,
+   "indices": 5967,
+   "joints": 38,
+   "images_embedded": 11,
+   "banked_pngs": 11,
+   "geom_match": true
+  },
+  "char045": {
+   "verts": 4284,
+   "indices": 6228,
+   "joints": 33,
+   "images_embedded": 10,
+   "banked_pngs": 10,
+   "geom_match": true
+  },
+  "char046": {
+   "verts": 4071,
+   "indices": 5904,
+   "joints": 37,
+   "images_embedded": 9,
+   "banked_pngs": 9,
+   "geom_match": true
+  },
+  "char047": {
+   "verts": 3956,
+   "indices": 5802,
+   "joints": 36,
+   "images_embedded": 7,
+   "banked_pngs": 7,
+   "geom_match": true
+  },
+  "char048": {
+   "verts": 4082,
+   "indices": 5937,
+   "joints": 33,
+   "images_embedded": 8,
+   "banked_pngs": 8,
+   "geom_match": true
+  },
+  "char049": {
+   "verts": 4053,
+   "indices": 5868,
+   "joints": 39,
+   "images_embedded": 8,
+   "banked_pngs": 8,
+   "geom_match": true
+  },
+  "char050": {
+   "verts": 3946,
+   "indices": 5781,
+   "joints": 26,
+   "images_embedded": 8,
+   "banked_pngs": 8,
+   "geom_match": true
+  },
+  "char051": {
+   "verts": 3574,
+   "indices": 5304,
+   "joints": 41,
+   "images_embedded": 10,
+   "banked_pngs": 10,
+   "geom_match": true
+  },
+  "char052": {
+   "verts": 3427,
+   "indices": 4926,
+   "joints": 37,
+   "images_embedded": 12,
+   "banked_pngs": 12,
+   "geom_match": true
+  },
+  "char053": {
+   "verts": 3128,
+   "indices": 4731,
+   "joints": 27,
+   "images_embedded": 12,
+   "banked_pngs": 12,
+   "geom_match": true
+  },
+  "char054": {
+   "verts": 3925,
+   "indices": 5853,
+   "joints": 46,
+   "images_embedded": 10,
+   "banked_pngs": 10,
+   "geom_match": true
+  },
+  "char055": {
+   "verts": 1629,
+   "indices": 2304,
+   "joints": 22,
+   "images_embedded": 11,
+   "banked_pngs": 11,
+   "geom_match": true
+  },
+  "char056": {
+   "verts": 4230,
+   "indices": 6228,
+   "joints": 40,
+   "images_embedded": 11,
+   "banked_pngs": 11,
+   "geom_match": true
+  },
+  "char057": {
+   "verts": 4092,
+   "indices": 5670,
+   "joints": 43,
+   "images_embedded": 15,
+   "banked_pngs": 15,
+   "geom_match": true
+  },
+  "char058": {
+   "verts": 3660,
+   "indices": 5274,
+   "joints": 36,
+   "images_embedded": 18,
+   "banked_pngs": 18,
+   "geom_match": true
+  },
+  "char059": {
+   "verts": 3547,
+   "indices": 5169,
+   "joints": 37,
+   "images_embedded": 10,
+   "banked_pngs": 10,
+   "geom_match": true
+  },
+  "char060": {
+   "verts": 1588,
+   "indices": 2118,
+   "joints": 15,
+   "images_embedded": 8,
+   "banked_pngs": 8,
+   "geom_match": true
+  },
+  "char061": {
+   "verts": 4924,
+   "indices": 7371,
+   "joints": 38,
+   "images_embedded": 8,
+   "banked_pngs": 8,
+   "geom_match": true
+  },
+  "char062": {
+   "verts": 4150,
+   "indices": 6051,
+   "joints": 35,
+   "images_embedded": 11,
+   "banked_pngs": 11,
+   "geom_match": true
+  },
+  "char063": {
+   "verts": 4464,
+   "indices": 6597,
+   "joints": 39,
+   "images_embedded": 9,
+   "banked_pngs": 9,
+   "geom_match": true
+  },
+  "char064": {
+   "verts": 1260,
+   "indices": 1737,
+   "joints": 14,
+   "images_embedded": 13,
+   "banked_pngs": 13,
+   "geom_match": true,
+   "phase5_recovery": "Phase 5 Job 3a: group0 packet3 (63 verts, two batched rigid sub-objects) recovered by run split at the uvflag segment break (vert 42); textured GLB rebuilt with ur_build_textured.py from the recovered phase-1 GLB. Delta vs previous file: +63 verts (1197->1260), +63 indices (1674->1737), joints 14 unchanged, images 13 unchanged. See PHASE5-JOB3-EXECUTIONS.md."
+  },
+  "char065": {
+   "verts": 4080,
+   "indices": 6129,
+   "joints": 47,
+   "images_embedded": 8,
+   "banked_pngs": 8,
+   "geom_match": true
+  },
+  "char066": {
+   "verts": 4076,
+   "indices": 6135,
+   "joints": 40,
+   "images_embedded": 8,
+   "banked_pngs": 8,
+   "geom_match": true
+  },
+  "char067": {
+   "verts": 3968,
+   "indices": 5703,
+   "joints": 40,
+   "images_embedded": 9,
+   "banked_pngs": 9,
+   "geom_match": true
+  },
+  "char068": {
+   "verts": 1260,
+   "indices": 1737,
+   "joints": 14,
+   "images_embedded": 13,
+   "banked_pngs": 13,
+   "geom_match": true
+  },
+  "char069": {
+   "verts": 4374,
+   "indices": 6192,
+   "joints": 38,
+   "images_embedded": 9,
+   "banked_pngs": 9,
+   "geom_match": true
+  },
+  "char070": {
+   "verts": 4546,
+   "indices": 6780,
+   "joints": 39,
+   "images_embedded": 9,
+   "banked_pngs": 9,
+   "geom_match": true
+  },
+  "char071": {
+   "verts": 4310,
+   "indices": 6639,
+   "joints": 30,
+   "images_embedded": 8,
+   "banked_pngs": 8,
+   "geom_match": true
+  },
+  "char072": {
+   "verts": 4279,
+   "indices": 6495,
+   "joints": 33,
+   "images_embedded": 9,
+   "banked_pngs": 9,
+   "geom_match": true
+  }
+ }
+}

@@ -1,0 +1,701 @@
+{
+ "format": "wh-refit/1",
+ "tool": "tools/auto_rig/refit_skeleton.py",
+ "mesh": "/tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-he3a3e16/decoded.glb",
+ "template": "/home/user/western-heart/game/assets/models/pantera.glb",
+ "mesh_facing_in": "-Z",
+ "mesh_rot_y_deg": 180,
+ "height_m": 1.75,
+ "space": "glTF (Y-up, metres), mesh facing +Z, character's left = +X, feet at y=0",
+ "joints": [
+  {
+   "name": "Hips",
+   "parent": null,
+   "pos": [
+    0.00057,
+    1.06131,
+    -0.00686
+   ]
+  },
+  {
+   "name": "Spine",
+   "parent": "Hips",
+   "pos": [
+    0.00057,
+    1.12153,
+    -0.03502
+   ]
+  },
+  {
+   "name": "Spine1",
+   "parent": "Spine",
+   "pos": [
+    0.00057,
+    1.1918,
+    -0.01088
+   ]
+  },
+  {
+   "name": "Spine2",
+   "parent": "Spine1",
+   "pos": [
+    0.00057,
+    1.27209,
+    -0.01769
+   ]
+  },
+  {
+   "name": "Neck",
+   "parent": "Spine2",
+   "pos": [
+    0.00057,
+    1.36243,
+    -0.08101
+   ]
+  },
+  {
+   "name": "Head",
+   "parent": "Neck",
+   "pos": [
+    0.00057,
+    1.48143,
+    -0.11079
+   ]
+  },
+  {
+   "name": "LeftShoulder",
+   "parent": "Spine2",
+   "pos": [
+    0.06653,
+    1.38689,
+    -0.03715
+   ]
+  },
+  {
+   "name": "LeftArm",
+   "parent": "LeftShoulder",
+   "pos": [
+    0.20218,
+    1.3551,
+    -0.05661
+   ]
+  },
+  {
+   "name": "LeftForeArm",
+   "parent": "LeftArm",
+   "pos": [
+    0.47235,
+    1.34321,
+    -0.06914
+   ]
+  },
+  {
+   "name": "LeftHand",
+   "parent": "LeftForeArm",
+   "pos": [
+    0.70718,
+    1.33287,
+    -0.08003
+   ]
+  },
+  {
+   "name": "LeftHandThumb1",
+   "parent": "LeftHand",
+   "pos": [
+    0.73994,
+    1.31775,
+    -0.06817
+   ]
+  },
+  {
+   "name": "LeftHandThumb2",
+   "parent": "LeftHandThumb1",
+   "pos": [
+    0.76348,
+    1.30416,
+    -0.05457
+   ]
+  },
+  {
+   "name": "LeftHandThumb3",
+   "parent": "LeftHandThumb2",
+   "pos": [
+    0.79195,
+    1.28499,
+    -0.03805
+   ]
+  },
+  {
+   "name": "LeftHandIndex1",
+   "parent": "LeftHand",
+   "pos": [
+    0.82236,
+    1.32976,
+    -0.0576
+   ]
+  },
+  {
+   "name": "LeftHandIndex2",
+   "parent": "LeftHandIndex1",
+   "pos": [
+    0.84787,
+    1.32976,
+    -0.0576
+   ]
+  },
+  {
+   "name": "LeftHandIndex3",
+   "parent": "LeftHandIndex2",
+   "pos": [
+    0.86875,
+    1.32976,
+    -0.0576
+   ]
+  },
+  {
+   "name": "LeftHandMiddle1",
+   "parent": "LeftHand",
+   "pos": [
+    0.82033,
+    1.33287,
+    -0.08003
+   ]
+  },
+  {
+   "name": "LeftHandMiddle2",
+   "parent": "LeftHandMiddle1",
+   "pos": [
+    0.84592,
+    1.33287,
+    -0.08003
+   ]
+  },
+  {
+   "name": "LeftHandMiddle3",
+   "parent": "LeftHandMiddle2",
+   "pos": [
+    0.86665,
+    1.33287,
+    -0.08003
+   ]
+  },
+  {
+   "name": "LeftHandRing1",
+   "parent": "LeftHand",
+   "pos": [
+    0.81075,
+    1.33537,
+    -0.10598
+   ]
+  },
+  {
+   "name": "LeftHandRing2",
+   "parent": "LeftHandRing1",
+   "pos": [
+    0.8321,
+    1.33537,
+    -0.10598
+   ]
+  },
+  {
+   "name": "LeftHandRing3",
+   "parent": "LeftHandRing2",
+   "pos": [
+    0.84885,
+    1.33537,
+    -0.10598
+   ]
+  },
+  {
+   "name": "LeftHandPinky1",
+   "parent": "LeftHand",
+   "pos": [
+    0.79854,
+    1.32877,
+    -0.12411
+   ]
+  },
+  {
+   "name": "LeftHandPinky2",
+   "parent": "LeftHandPinky1",
+   "pos": [
+    0.81079,
+    1.32877,
+    -0.12411
+   ]
+  },
+  {
+   "name": "RightShoulder",
+   "parent": "Spine2",
+   "pos": [
+    -0.06899,
+    1.38759,
+    -0.03706
+   ]
+  },
+  {
+   "name": "RightArm",
+   "parent": "RightShoulder",
+   "pos": [
+    -0.19989,
+    1.35576,
+    -0.05643
+   ]
+  },
+  {
+   "name": "RightForeArm",
+   "parent": "RightArm",
+   "pos": [
+    -0.47006,
+    1.34278,
+    -0.06913
+   ]
+  },
+  {
+   "name": "RightHand",
+   "parent": "RightForeArm",
+   "pos": [
+    -0.70489,
+    1.3315,
+    -0.08018
+   ]
+  },
+  {
+   "name": "RightHandThumb1",
+   "parent": "RightHand",
+   "pos": [
+    -0.73795,
+    1.31552,
+    -0.06857
+   ]
+  },
+  {
+   "name": "RightHandThumb2",
+   "parent": "RightHandThumb1",
+   "pos": [
+    -0.76182,
+    1.30174,
+    -0.05479
+   ]
+  },
+  {
+   "name": "RightHandThumb3",
+   "parent": "RightHandThumb2",
+   "pos": [
+    -0.79081,
+    1.28499,
+    -0.03805
+   ]
+  },
+  {
+   "name": "RightHandIndex1",
+   "parent": "RightHand",
+   "pos": [
+    -0.8203,
+    1.32828,
+    -0.05587
+   ]
+  },
+  {
+   "name": "RightHandIndex2",
+   "parent": "RightHandIndex1",
+   "pos": [
+    -0.84566,
+    1.32828,
+    -0.05587
+   ]
+  },
+  {
+   "name": "RightHandIndex3",
+   "parent": "RightHandIndex2",
+   "pos": [
+    -0.86646,
+    1.32828,
+    -0.05587
+   ]
+  },
+  {
+   "name": "RightHandMiddle1",
+   "parent": "RightHand",
+   "pos": [
+    -0.81946,
+    1.3315,
+    -0.08018
+   ]
+  },
+  {
+   "name": "RightHandMiddle2",
+   "parent": "RightHandMiddle1",
+   "pos": [
+    -0.84412,
+    1.3315,
+    -0.08018
+   ]
+  },
+  {
+   "name": "RightHandMiddle3",
+   "parent": "RightHandMiddle2",
+   "pos": [
+    -0.86519,
+    1.3315,
+    -0.08018
+   ]
+  },
+  {
+   "name": "RightHandRing1",
+   "parent": "RightHand",
+   "pos": [
+    -0.80559,
+    1.33304,
+    -0.10357
+   ]
+  },
+  {
+   "name": "RightHandRing2",
+   "parent": "RightHandRing1",
+   "pos": [
+    -0.8254,
+    1.33304,
+    -0.10357
+   ]
+  },
+  {
+   "name": "RightHandRing3",
+   "parent": "RightHandRing2",
+   "pos": [
+    -0.84272,
+    1.33304,
+    -0.10357
+   ]
+  },
+  {
+   "name": "RightHandPinky1",
+   "parent": "RightHand",
+   "pos": [
+    -0.79754,
+    1.32786,
+    -0.12474
+   ]
+  },
+  {
+   "name": "RightHandPinky2",
+   "parent": "RightHandPinky1",
+   "pos": [
+    -0.81079,
+    1.32786,
+    -0.12474
+   ]
+  },
+  {
+   "name": "LeftUpLeg",
+   "parent": "Hips",
+   "pos": [
+    0.09706,
+    1.00858,
+    -0.01911
+   ]
+  },
+  {
+   "name": "LeftLeg",
+   "parent": "LeftUpLeg",
+   "pos": [
+    0.09763,
+    0.57514,
+    -0.0646
+   ]
+  },
+  {
+   "name": "LeftFoot",
+   "parent": "LeftLeg",
+   "pos": [
+    0.04031,
+    0.13222,
+    -0.04165
+   ]
+  },
+  {
+   "name": "LeftToeBase",
+   "parent": "LeftFoot",
+   "pos": [
+    0.04032,
+    0.01407,
+    0.09933
+   ]
+  },
+  {
+   "name": "RightUpLeg",
+   "parent": "Hips",
+   "pos": [
+    -0.09879,
+    1.00858,
+    -0.02123
+   ]
+  },
+  {
+   "name": "RightLeg",
+   "parent": "RightUpLeg",
+   "pos": [
+    -0.09943,
+    0.57553,
+    -0.0715
+   ]
+  },
+  {
+   "name": "RightFoot",
+   "parent": "RightLeg",
+   "pos": [
+    -0.04213,
+    0.13222,
+    -0.04149
+   ]
+  },
+  {
+   "name": "RightToeBase",
+   "parent": "RightFoot",
+   "pos": [
+    -0.04213,
+    0.01407,
+    0.09931
+   ]
+  }
+ ],
+ "leaf_tail": {
+  "Head": [
+   0.00057,
+   1.64257,
+   -0.11079
+  ]
+ },
+ "notes": {
+  "template_turned_180": true,
+  "template_relabelled_LR": false,
+  "scale": 1.0,
+  "start_offset_z_m": -0.0206,
+  "Hips": 4472,
+  "Spine": 5558,
+  "Spine1": 13866,
+  "Spine2": 22388,
+  "Neck": 17203,
+  "Head": 13781,
+  "LeftUpLeg": 1980,
+  "LeftLeg": 2102,
+  "LeftFoot": 3561,
+  "LeftToeBase": {
+   "heel_z": -0.131,
+   "tip_z": 0.189
+  },
+  "RightUpLeg": 1972,
+  "RightLeg": 2672,
+  "RightFoot": 4017,
+  "RightToeBase": {
+   "heel_z": -0.131,
+   "tip_z": 0.189
+  },
+  "LeftArm": 8359,
+  "LeftForeArm": 3442,
+  "LeftHand": 21556,
+  "RightArm": 8594,
+  "RightForeArm": 3429,
+  "RightHand": 21704,
+  "landmark_refit": {
+   "tool": "tools/auto_rig/refit_landmarks.py",
+   "Left_arm": {
+    "armpit_x": 0.2523,
+    "clean_from_x": 0.2016,
+    "fingertip_x": 0.8822,
+    "finger_scale": 0.785,
+    "arm_angle_below_horizontal_deg": 0
+   },
+   "Right_arm": {
+    "armpit_x": 0.2541,
+    "clean_from_x": 0.2005,
+    "fingertip_x": 0.8811,
+    "finger_scale": 0.788,
+    "arm_angle_below_horizontal_deg": 0
+   },
+   "legs": {
+    "skipped": "mid-line filled down to the knee (skirt/coat?): crotch not measurable"
+   },
+   "neck_head_from": "front profile: neck base y 1.3624, chin y 1.4814",
+   "mirrored_missing_joints": [
+    "LeftHandThumb3"
+   ],
+   "arm_line_y": {
+    "template_fit": 1.4344,
+    "mesh": 1.3554
+   },
+   "moved": {
+    "Spine": {
+     "from": [
+      0.0006,
+      1.1562,
+      -0.0126
+     ],
+     "to": [
+      0.00057,
+      1.12153,
+      -0.03502
+     ],
+     "moved_m": 0.0413
+    },
+    "Spine1": {
+     "from": [
+      0.0006,
+      1.2669,
+      -0.0149
+     ],
+     "to": [
+      0.00057,
+      1.1918,
+      -0.01088
+     ],
+     "moved_m": 0.0752
+    },
+    "Spine2": {
+     "from": [
+      0.0006,
+      1.3935,
+      -0.0467
+     ],
+     "to": [
+      0.00057,
+      1.27209,
+      -0.01769
+     ],
+     "moved_m": 0.1248
+    },
+    "Neck": {
+     "from": [
+      0.0006,
+      1.5358,
+      -0.0379
+     ],
+     "to": [
+      0.00057,
+      1.36243,
+      -0.08101
+     ],
+     "moved_m": 0.1787
+    },
+    "Head": {
+     "from": [
+      0.0006,
+      1.5686,
+      -0.028
+     ],
+     "to": [
+      0.00057,
+      1.48143,
+      -0.11079
+     ],
+     "moved_m": 0.1203
+    },
+    "LeftShoulder": {
+     "from": [
+      0.0665,
+      1.4665,
+      -0.0432
+     ],
+     "to": [
+      0.06653,
+      1.38689,
+      -0.03715
+     ],
+     "moved_m": 0.0798
+    },
+    "LeftArm": {
+     "from": [
+      0.2075,
+      1.4347,
+      -0.0397
+     ],
+     "to": [
+      0.20218,
+      1.3551,
+      -0.05661
+     ],
+     "moved_m": 0.0816
+    },
+    "LeftForeArm": {
+     "from": [
+      0.4391,
+      1.3557,
+      -0.0731
+     ],
+     "to": [
+      0.47235,
+      1.34321,
+      -0.06914
+     ],
+     "moved_m": 0.0358
+    },
+    "LeftHand": {
+     "from": [
+      0.6798,
+      1.3665,
+      -0.0732
+     ],
+     "to": [
+      0.70718,
+      1.33287,
+      -0.08003
+     ],
+     "moved_m": 0.0439
+    },
+    "RightShoulder": {
+     "from": [
+      -0.069,
+      1.466,
+      -0.0442
+     ],
+     "to": [
+      -0.06899,
+      1.38759,
+      -0.03706
+     ],
+     "moved_m": 0.0787
+    },
+    "RightArm": {
+     "from": [
+      -0.2096,
+      1.4341,
+      -0.0417
+     ],
+     "to": [
+      -0.19989,
+      1.35576,
+      -0.05643
+     ],
+     "moved_m": 0.0803
+    },
+    "RightForeArm": {
+     "from": [
+      -0.4412,
+      1.3558,
+      -0.0731
+     ],
+     "to": [
+      -0.47006,
+      1.34278,
+      -0.06913
+     ],
+     "moved_m": 0.0319
+    },
+    "RightHand": {
+     "from": [
+      -0.6826,
+      1.3658,
+      -0.0737
+     ],
+     "to": [
+      -0.70489,
+      1.3315,
+      -0.08018
+     ],
+     "moved_m": 0.0414
+    }
+   }
+  }
+ },
+ "static_mesh": "/tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-he3a3e16/static.glb"
+}

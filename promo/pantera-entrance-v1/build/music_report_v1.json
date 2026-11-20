@@ -1,0 +1,23 @@
+{
+  "generator": "deterministic numpy/scipy synthesis (no samples, loops, MIDI, or network)",
+  "seed": 20261014,
+  "sample_rate_hz": 48000,
+  "duration_samples": 2400000,
+  "duration_seconds": 50.0,
+  "key": "D natural minor",
+  "tempo_bpm": 120,
+  "integrated_lufs": -14.0,
+  "lufs_target": -14.0,
+  "lufs_method": "BS.1770-4 K-weighting + absolute (-70) / relative (-10) gating, 400 ms blocks, 75% overlap, scipy (no pyloudnorm)",
+  "true_peak_dbtp": -1.06,
+  "true_peak_ceiling_dbtp": -1.0,
+  "true_peak_method": "4x polyphase oversampling per channel",
+  "rms_intro_0_to_5_5s_dbfs": -38.04,
+  "rms_hit_6_to_7s_dbfs": -9.83,
+  "sha256_wav": "2bc76c77eb0c3ad46c041ff60c25a0d3c1da932c113909567262909b61315fff",
+  "sha256_mp3": "a534397f8d9544e37cc3640f0e2bca48316e95527d6b6b634e537a026fe06308",
+  "files": {
+    "wav": "promo/pantera-entrance-v1/build/pantera_theme_v1.wav",
+    "mp3": "promo/pantera-entrance-v1/build/pantera_theme_v1.mp3"
+  }
+}

@@ -1,0 +1,84 @@
+{
+ "p1": "rin",
+ "p2": "pantera",
+ "base": "http://127.0.0.1:8836/game/",
+ "ready": true,
+ "run": {
+  "fid": "rin",
+  "steps": [
+   {
+    "tag": "dirs:f,n,d,d/f",
+    "state": "idle",
+    "atk": null,
+    "stance": null,
+    "cd": true,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 0
+   },
+   {
+    "tag": "hold:d/f",
+    "state": "idle",
+    "atk": null,
+    "stance": null,
+    "cd": true,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 0
+   },
+   {
+    "tag": "attack:2",
+    "state": "attack",
+    "atk": "CD.d/f+2",
+    "stance": null,
+    "cd": true,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 0,
+    "ok": true
+   },
+   {
+    "tag": "step110",
+    "state": "idle",
+    "atk": null,
+    "stance": null,
+    "cd": false,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 8.1
+   },
+   {
+    "tag": "settle",
+    "state": "idle",
+    "atk": null,
+    "stance": null,
+    "cd": false,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 0
+   },
+   {
+    "tag": "attack:d/f+2",
+    "state": "attack",
+    "atk": "d/f+2",
+    "stance": null,
+    "cd": false,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 0,
+    "ok": true
+   },
+   {
+    "tag": "step110",
+    "state": "idle",
+    "atk": null,
+    "stance": null,
+    "cd": false,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 0
+   }
+  ]
+ },
+ "logs": []
+}

@@ -1,0 +1,6 @@
+$ cp game/assets/portraits/pantera.png game/assets/portraits/skull.png   # two select cards byte-identical, unregistered
+$ node test/portraits.test.mjs
+portraits: 50 select fighters, 6 pose blockers, 7 registered placeholders
+FAIL
+  byte-identical portraits shared by pantera,skull - not the placeholder set and not a registered duplicate group in KNOWN-PLACEHOLDERS.json
+exit=1

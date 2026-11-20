@@ -1,0 +1,36 @@
+{"ready":true,"systems":["springbones","efx","hits","surgefx","lipsync","grapple","cinematic","brawlerCam","navmesh","dialogue"],"failed":{"physics":"Failed to resolve module specifier 'cannon-es'","hitdetect":"Failed to resolve module specifier 'three-mesh-bvh'","hitfx":"Failed to resolve module specifier 'three-nebula'","labels":"Failed to resolve module specifier 'troika-three-text'","camdirector":"Failed to resolve module specifier 'camera-controls'"},"fps":0.2,"round":"fight"}
+[http 404] http://127.0.0.1:8765/deploy-manifest.json
+[error] Failed to load resource: the server responded with a status of 404 (File not found)
+[warning] [WHIntegration] physics unavailable: TypeError: Failed to resolve module specifier 'cannon-es'
+    at loadCannon (http://127.0.0.1:8765/game/js/physics.js:18:3)
+    at WHPhysics.init (http://127.0.0.1:8765/game/js/physic
+[warning] [WHIntegration] hitdetect unavailable: TypeError: Failed to resolve module specifier 'three-mesh-bvh'
+    at loadBVH (http://127.0.0.1:8765/game/js/hitdetect.js:30:3)
+    at WHHitDetect.init (http://127.0.0.1:8765/game/j
+[info] [WHIntegration] springbones ready
+[error] Failed to load resource: net::ERR_FAILED
+[warning] [WHIntegration] hitfx unavailable: TypeError: Failed to resolve module specifier 'three-nebula'
+    at loadNebula (http://127.0.0.1:8765/game/js/hitfx-nebula.js:29:3)
+    at WHHitFX.init (http://127.0.0.1:8765/game/js/hi
+[info] [WHIntegration] efx ready
+[info] [WHIntegration] hits ready
+[http 404] http://127.0.0.1:8765/roster/negativo/anatomy/anatomy-layers.json
+[error] Failed to load resource: the server responded with a status of 404 (File not found)
+[info] [WHIntegration] surgefx ready
+[warning] [WHIntegration] labels unavailable: TypeError: Failed to resolve module specifier 'troika-three-text'
+    at loadTroika (http://127.0.0.1:8765/game/js/labels3d.js:16:3)
+    at WHLabels.init (http://127.0.0.1:8765/game/js
+[http 404] http://127.0.0.1:8765/game/js/intro-interactions.js
+[error] Failed to load resource: the server responded with a status of 404 (File not found)
+[warning] [WHIntegration] camdirector unavailable: TypeError: Failed to resolve module specifier 'camera-controls'
+    at loadCC (http://127.0.0.1:8765/game/js/camdirector.js:20:3)
+    at WHCamDirector.init (http://127.0.0.1:8765/
+[info] [WHIntegration] lipsync ready
+[info] [WHIntegration] grapple ready
+[info] [WHIntegration] cinematic ready
+[info] [WHIntegration] brawlerCam ready
+[info] [WHIntegration] navmesh ready
+[info] [WHIntegration] dialogue ready
+[info] [WHIntegration] Game.prototype hooks installed
+[info] [WHIntegration] SoulUrge FX hooks installed
+[info] [WHIntegration] Fighter urge-dash FX hook installed

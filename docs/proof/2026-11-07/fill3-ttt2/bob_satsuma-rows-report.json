@@ -1,0 +1,178 @@
+{
+ "bank": "bob_satsuma",
+ "fighter": "bob_satsuma",
+ "tool": "tools/anim/ttt2_bank_rows.py",
+ "join_records": 602,
+ "join_mapped": 585,
+ "join_unmapped": [
+  {
+   "i": 0,
+   "name": "[BOB_SATSUMA]",
+   "ref": 33261
+  },
+  {
+   "i": 12,
+   "name": "dwup_heiB_xe",
+   "ref": 33084
+  },
+  {
+   "i": 13,
+   "name": "dwup_heiL_xe",
+   "ref": 33084
+  },
+  {
+   "i": 14,
+   "name": "dwup_heiR_xe",
+   "ref": 33084
+  },
+  {
+   "i": 20,
+   "name": "Dw_AIR00_Png",
+   "ref": 33078
+  },
+  {
+   "i": 33,
+   "name": "Fall_sKAMcrh",
+   "ref": 33111
+  },
+  {
+   "i": 35,
+   "name": "Fall_rdwKAM",
+   "ref": 33095
+  },
+  {
+   "i": 36,
+   "name": "Fall_Thr_dwKAM",
+   "ref": 33094
+  },
+  {
+   "i": 37,
+   "name": "Fall_Thr_rdwKAM",
+   "ref": 33095
+  },
+  {
+   "i": 816,
+   "name": "[BOB_SATSUMA]",
+   "ref": 0
+  },
+  {
+   "i": 824,
+   "name": "[BOB_SATSUMA]",
+   "ref": 0
+  },
+  {
+   "i": 826,
+   "name": "[BOB_SATSUMA]",
+   "ref": 0
+  },
+  {
+   "i": 834,
+   "name": "[BOB_SATSUMA]",
+   "ref": 0
+  },
+  {
+   "i": 840,
+   "name": "[BOB_SATSUMA]",
+   "ref": 0
+  },
+  {
+   "i": 862,
+   "name": "[BOB_SATSUMA]",
+   "ref": 0
+  },
+  {
+   "i": 864,
+   "name": "[BOB_SATSUMA]",
+   "ref": 0
+  },
+  {
+   "i": 884,
+   "name": "[BOB_SATSUMA]",
+   "ref": 0
+  }
+ ],
+ "grid_valid_records": 585,
+ "slot_sources": {
+  "t3_jump_back": 151,
+  "t3_jump_fwd": 150,
+  "t3_jump_up": 148,
+  "t3_neutral": 478
+ },
+ "slots_without_grid_record": [],
+ "row_set": 41,
+ "fields_unlocated": [],
+ "unique_entries": 36,
+ "pack_rows": 36,
+ "hit_rows": 38,
+ "missing": {
+  "48": "grid row 48 withheld: the legacy row-48 class stamp (roster-100 owner ruling pending); this record is not an attack (first_active 0)",
+  "146": "inter-frame jump check failed: LeftFoot jumps 1.60 m on frame 71",
+  "245": "inter-frame jump check failed: RightHand jumps 1.56 m on frame 16",
+  "246": "inter-frame jump check failed: LeftFoot jumps 1.50 m on frame 16",
+  "256": "inter-frame jump check failed: LeftFoot jumps 1.60 m on frame 56",
+  "259": "inter-frame jump check failed: RightToeBase jumps 1.51 m on frame 22"
+ },
+ "presentation_gate_failures": {
+  "104": "LeftToeBase 0.09 m below the floor on frame 19 (mannequin proportions)",
+  "105": "LeftToeBase 0.33 m below the floor on frame 0 (mannequin proportions)",
+  "244": "does not start upright",
+  "247": "RightToeBase 0.70 m below the floor on frame 0 (mannequin proportions)",
+  "248": "LeftToeBase 0.58 m below the floor on frame 0 (mannequin proportions)",
+  "249": "does not start upright",
+  "252": "does not start upright",
+  "254": "does not start upright",
+  "255": "does not start upright",
+  "257": "does not start upright",
+  "258": "RightToeBase 0.14 m below the floor on frame 49 (mannequin proportions)",
+  "261": "does not start upright",
+  "262": "does not start upright",
+  "263": "LeftToeBase 0.77 m below the floor on frame 0 (mannequin proportions)",
+  "265": "LeftToeBase 0.12 m below the floor on frame 9 (mannequin proportions)",
+  "267": "does not start upright",
+  "269": "does not start upright",
+  "271": "does not start upright",
+  "273": "does not start upright",
+  "287": "LeftToeBase 0.27 m below the floor on frame 0 (mannequin proportions)",
+  "294": "LeftToeBase 0.73 m below the floor on frame 0 (mannequin proportions)",
+  "407": "does not start upright",
+  "439": "RightToeBase 0.08 m below the floor on frame 1 (mannequin proportions)"
+ },
+ "sanity": {
+  "first_gt_last": 0,
+  "first_gt_stream": 3,
+  "word_classes": {
+   "u": 13,
+   "m": 13,
+   "h": 2,
+   "t": 1,
+   "l": 9
+  }
+ },
+ "buttons_assigned": {},
+ "move_rows_stamped": [
+  {
+   "slot": "t3_jump_back",
+   "move_row": 151
+  },
+  {
+   "slot": "t3_jump_fwd",
+   "move_row": 150
+  },
+  {
+   "slot": "t3_jump_up",
+   "move_row": 148
+  },
+  {
+   "slot": "t3_neutral",
+   "move_row": 478
+  }
+ ],
+ "pack_bytes": 487427,
+ "hit_bytes": 1693,
+ "sha256": {
+  "data004-decoded.bin": "18b18d0ff2356219e9fac852eaa48f6b0a839479ea41f6d4b94069b5f86b2b21",
+  "data005-decoded.bin": "a7fc54d76b204056a9d45abc63c3e114d38e0fe253fe8e3922ccf9f2779afdfc",
+  "data006-decoded.bin": "fa486948e1fced19116a5304a9779f2b04bede2328a6c43ff4818a68913ebdb2"
+ },
+ "elapsed_s": 45.6
+}

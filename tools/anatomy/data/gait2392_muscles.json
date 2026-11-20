@@ -1,0 +1,3874 @@
+{
+ "schema": "wh.anatomy-muscles/1",
+ "generated": "2026-10-23",
+ "source": {
+  "tool": "OpenSim",
+  "model": "Gait2392",
+  "file": "gait2392.osim",
+  "license": "Apache-2.0",
+  "repo": "opensim-org/opensim-models"
+ },
+ "units": "meters",
+ "conventions": {
+  "up": "+Y (OpenSim default; matches three.js / WH bind pose)",
+  "origin": "first path-point (P1), insertion: last path-point",
+  "side": "name suffix _r/_l, else C"
+ },
+ "muscle_count": 92,
+ "muscles": [
+  {
+   "name": "glut_med1_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0408,
+     0.0304,
+     0.1209
+    ]
+   },
+   "insertion": {
+    "bone": "femur_r",
+    "point": [
+     -0.0218,
+     -0.0117,
+     0.0555
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 819.0,
+    "optimal_fiber_length": 0.0535,
+    "tendon_slack_length": 0.078,
+    "pennation_angle": 0.13962634,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "glut_med2_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0855,
+     0.0445,
+     0.0766
+    ]
+   },
+   "insertion": {
+    "bone": "femur_r",
+    "point": [
+     -0.0258,
+     -0.0058,
+     0.0527
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 573.0,
+    "optimal_fiber_length": 0.0845,
+    "tendon_slack_length": 0.053,
+    "pennation_angle": 0.0,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "glut_med3_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.1223,
+     0.0105,
+     0.0648
+    ]
+   },
+   "insertion": {
+    "bone": "femur_r",
+    "point": [
+     -0.0309,
+     -0.0047,
+     0.0518
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 653.0,
+    "optimal_fiber_length": 0.0646,
+    "tendon_slack_length": 0.053,
+    "pennation_angle": 0.33161256,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "glut_min1_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0467,
+     -0.008,
+     0.1056
+    ]
+   },
+   "insertion": {
+    "bone": "femur_r",
+    "point": [
+     -0.0072,
+     -0.0104,
+     0.056
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 270.0,
+    "optimal_fiber_length": 0.068,
+    "tendon_slack_length": 0.016,
+    "pennation_angle": 0.17453293,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "glut_min2_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0633,
+     -0.0065,
+     0.0991
+    ]
+   },
+   "insertion": {
+    "bone": "femur_r",
+    "point": [
+     -0.0096,
+     -0.0104,
+     0.056
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 285.0,
+    "optimal_fiber_length": 0.056,
+    "tendon_slack_length": 0.026,
+    "pennation_angle": 0.0,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "glut_min3_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0834,
+     -0.0063,
+     0.0856
+    ]
+   },
+   "insertion": {
+    "bone": "femur_r",
+    "point": [
+     -0.0135,
+     -0.0083,
+     0.055
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 323.0,
+    "optimal_fiber_length": 0.038,
+    "tendon_slack_length": 0.051,
+    "pennation_angle": 0.01745329,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "semimem_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.1192,
+     -0.09747,
+     0.07151
+    ]
+   },
+   "insertion": {
+    "bone": "tibia_r",
+    "point": [
+     -0.027,
+     -0.04771,
+     -0.01957
+    ]
+   },
+   "via": [
+    {
+     "bone": "tibia_r",
+     "point": [
+      -0.0348,
+      -0.03519,
+      -0.01891
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 1288.0,
+    "optimal_fiber_length": 0.08,
+    "tendon_slack_length": 0.359,
+    "pennation_angle": 0.26179939,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "semiten_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.12635,
+     -0.10988,
+     0.06039
+    ]
+   },
+   "insertion": {
+    "bone": "tibia_r",
+    "point": [
+     0.0027,
+     -0.0956,
+     -0.0193
+    ]
+   },
+   "via": [
+    {
+     "bone": "tibia_r",
+     "point": [
+      -0.04203,
+      -0.02859,
+      -0.02277
+     ]
+    },
+    {
+     "bone": "tibia_r",
+     "point": [
+      -0.03322,
+      -0.05282,
+      -0.02288
+     ]
+    },
+    {
+     "bone": "tibia_r",
+     "point": [
+      -0.0113,
+      -0.0746,
+      -0.0245
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 410.0,
+    "optimal_fiber_length": 0.201,
+    "tendon_slack_length": 0.2555,
+    "pennation_angle": 0.08726646,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "bifemlh_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.12596,
+     -0.10257,
+     0.06944
+    ]
+   },
+   "insertion": {
+    "bone": "tibia_r",
+    "point": [
+     -0.0234,
+     -0.0563,
+     0.0343
+    ]
+   },
+   "via": [
+    {
+     "bone": "tibia_r",
+     "point": [
+      -0.0301,
+      -0.036,
+      0.02943
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 896.0,
+    "optimal_fiber_length": 0.109,
+    "tendon_slack_length": 0.326,
+    "pennation_angle": 0.0,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "bifemsh_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "femur_r",
+    "point": [
+     0.005,
+     -0.2111,
+     0.0234
+    ]
+   },
+   "insertion": {
+    "bone": "tibia_r",
+    "point": [
+     -0.0234,
+     -0.0563,
+     0.0343
+    ]
+   },
+   "via": [
+    {
+     "bone": "tibia_r",
+     "point": [
+      -0.0301,
+      -0.036,
+      0.02943
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 804.0,
+    "optimal_fiber_length": 0.173,
+    "tendon_slack_length": 0.089,
+    "pennation_angle": 0.40142573,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "sar_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0153,
+     -0.0013,
+     0.1242
+    ]
+   },
+   "insertion": {
+    "bone": "tibia_r",
+    "point": [
+     0.0243,
+     -0.084,
+     -0.0252
+    ]
+   },
+   "via": [
+    {
+     "bone": "femur_r",
+     "point": [
+      -0.003,
+      -0.3568,
+      -0.0421
+     ]
+    },
+    {
+     "bone": "tibia_r",
+     "point": [
+      -0.0056,
+      -0.0419,
+      -0.0399
+     ]
+    },
+    {
+     "bone": "tibia_r",
+     "point": [
+      0.006,
+      -0.0589,
+      -0.0383
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 156.0,
+    "optimal_fiber_length": 0.52,
+    "tendon_slack_length": 0.1,
+    "pennation_angle": 0.0,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "add_long_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0316,
+     -0.0836,
+     0.0169
+    ]
+   },
+   "insertion": {
+    "bone": "femur_r",
+    "point": [
+     0.005,
+     -0.2111,
+     0.0234
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 627.0,
+    "optimal_fiber_length": 0.138,
+    "tendon_slack_length": 0.11,
+    "pennation_angle": 0.10471976,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "add_brev_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0587,
+     -0.0915,
+     0.0164
+    ]
+   },
+   "insertion": {
+    "bone": "femur_r",
+    "point": [
+     0.0009,
+     -0.1196,
+     0.0294
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 429.0,
+    "optimal_fiber_length": 0.133,
+    "tendon_slack_length": 0.02,
+    "pennation_angle": 0.0,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "add_mag1_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0732,
+     -0.1174,
+     0.0255
+    ]
+   },
+   "insertion": {
+    "bone": "femur_r",
+    "point": [
+     -0.0045,
+     -0.1211,
+     0.0339
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 381.0,
+    "optimal_fiber_length": 0.087,
+    "tendon_slack_length": 0.06,
+    "pennation_angle": 0.08726646,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "add_mag2_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0831,
+     -0.1192,
+     0.0308
+    ]
+   },
+   "insertion": {
+    "bone": "femur_r",
+    "point": [
+     0.0054,
+     -0.2285,
+     0.0227
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 343.0,
+    "optimal_fiber_length": 0.121,
+    "tendon_slack_length": 0.12,
+    "pennation_angle": 0.05235988,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "add_mag3_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.11108,
+     -0.11413,
+     0.04882
+    ]
+   },
+   "insertion": {
+    "bone": "femur_r",
+    "point": [
+     0.007,
+     -0.3837,
+     -0.0266
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 488.0,
+    "optimal_fiber_length": 0.131,
+    "tendon_slack_length": 0.249,
+    "pennation_angle": 0.08726646,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "tfl_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0311,
+     0.0214,
+     0.1241
+    ]
+   },
+   "insertion": {
+    "bone": "tibia_r",
+    "point": [
+     0.006,
+     -0.0487,
+     0.0297
+    ]
+   },
+   "via": [
+    {
+     "bone": "femur_r",
+     "point": [
+      0.0294,
+      -0.0995,
+      0.0597
+     ]
+    },
+    {
+     "bone": "femur_r",
+     "point": [
+      0.0054,
+      -0.4049,
+      0.0357
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 233.0,
+    "optimal_fiber_length": 0.095,
+    "tendon_slack_length": 0.425,
+    "pennation_angle": 0.05235988,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "pect_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0431,
+     -0.0768,
+     0.0451
+    ]
+   },
+   "insertion": {
+    "bone": "femur_r",
+    "point": [
+     -0.0122,
+     -0.0822,
+     0.0253
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 266.0,
+    "optimal_fiber_length": 0.1,
+    "tendon_slack_length": 0.033,
+    "pennation_angle": 0.0,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "grac_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.07401,
+     -0.1187,
+     0.02794
+    ]
+   },
+   "insertion": {
+    "bone": "tibia_r",
+    "point": [
+     0.006,
+     -0.0836,
+     -0.0228
+    ]
+   },
+   "via": [
+    {
+     "bone": "tibia_r",
+     "point": [
+      -0.02657,
+      -0.0319,
+      -0.03774
+     ]
+    },
+    {
+     "bone": "tibia_r",
+     "point": [
+      -0.01943,
+      -0.05153,
+      -0.0358
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 162.0,
+    "optimal_fiber_length": 0.352,
+    "tendon_slack_length": 0.126,
+    "pennation_angle": 0.05235988,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "glut_max1_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.1195,
+     0.0612,
+     0.07
+    ]
+   },
+   "insertion": {
+    "bone": "femur_r",
+    "point": [
+     -0.0277,
+     -0.0566,
+     0.047
+    ]
+   },
+   "via": [
+    {
+     "bone": "pelvis",
+     "point": [
+      -0.1291,
+      0.0012,
+      0.0886
+     ]
+    },
+    {
+     "bone": "femur_r",
+     "point": [
+      -0.0457,
+      -0.0248,
+      0.0392
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 573.0,
+    "optimal_fiber_length": 0.142,
+    "tendon_slack_length": 0.125,
+    "pennation_angle": 0.08726646,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "glut_max2_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.1349,
+     0.0176,
+     0.0563
+    ]
+   },
+   "insertion": {
+    "bone": "femur_r",
+    "point": [
+     -0.0156,
+     -0.1016,
+     0.0419
+    ]
+   },
+   "via": [
+    {
+     "bone": "pelvis",
+     "point": [
+      -0.1376,
+      -0.052,
+      0.0914
+     ]
+    },
+    {
+     "bone": "femur_r",
+     "point": [
+      -0.0426,
+      -0.053,
+      0.0293
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 819.0,
+    "optimal_fiber_length": 0.147,
+    "tendon_slack_length": 0.127,
+    "pennation_angle": 0.0,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "glut_max3_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.1556,
+     -0.0314,
+     0.0058
+    ]
+   },
+   "insertion": {
+    "bone": "femur_r",
+    "point": [
+     -0.006,
+     -0.1419,
+     0.0411
+    ]
+   },
+   "via": [
+    {
+     "bone": "pelvis",
+     "point": [
+      -0.1529,
+      -0.1052,
+      0.0403
+     ]
+    },
+    {
+     "bone": "femur_r",
+     "point": [
+      -0.0299,
+      -0.1041,
+      0.0135
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 552.0,
+    "optimal_fiber_length": 0.144,
+    "tendon_slack_length": 0.145,
+    "pennation_angle": 0.08726646,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "iliacus_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0674,
+     0.0365,
+     0.0854
+    ]
+   },
+   "insertion": {
+    "bone": "femur_r",
+    "point": [
+     -0.0193,
+     -0.0621,
+     0.0129
+    ]
+   },
+   "via": [
+    {
+     "bone": "pelvis",
+     "point": [
+      -0.0258,
+      -0.055,
+      0.0811
+     ]
+    },
+    {
+     "bone": "pelvis",
+     "point": [
+      -0.0288,
+      -0.0805,
+      0.0816
+     ]
+    },
+    {
+     "bone": "femur_r",
+     "point": [
+      0.0017,
+      -0.0543,
+      0.0057
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 1073.0,
+    "optimal_fiber_length": 0.1,
+    "tendon_slack_length": 0.1,
+    "pennation_angle": 0.12217305,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "psoas_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0647,
+     0.0887,
+     0.0289
+    ]
+   },
+   "insertion": {
+    "bone": "femur_r",
+    "point": [
+     -0.0188,
+     -0.0597,
+     0.0104
+    ]
+   },
+   "via": [
+    {
+     "bone": "pelvis",
+     "point": [
+      -0.0238,
+      -0.057,
+      0.0759
+     ]
+    },
+    {
+     "bone": "pelvis",
+     "point": [
+      -0.0288,
+      -0.0805,
+      0.0816
+     ]
+    },
+    {
+     "bone": "femur_r",
+     "point": [
+      0.0016,
+      -0.0507,
+      0.0038
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 1113.0,
+    "optimal_fiber_length": 0.1,
+    "tendon_slack_length": 0.16,
+    "pennation_angle": 0.13962634,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "quad_fem_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.1143,
+     -0.1151,
+     0.052
+    ]
+   },
+   "insertion": {
+    "bone": "femur_r",
+    "point": [
+     -0.0381,
+     -0.0359,
+     0.0366
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 381.0,
+    "optimal_fiber_length": 0.054,
+    "tendon_slack_length": 0.024,
+    "pennation_angle": 0.0,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "gem_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.1133,
+     -0.082,
+     0.0714
+    ]
+   },
+   "insertion": {
+    "bone": "femur_r",
+    "point": [
+     -0.0142,
+     -0.0033,
+     0.0443
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 164.0,
+    "optimal_fiber_length": 0.024,
+    "tendon_slack_length": 0.039,
+    "pennation_angle": 0.0,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "peri_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.1396,
+     0.0003,
+     0.0235
+    ]
+   },
+   "insertion": {
+    "bone": "femur_r",
+    "point": [
+     -0.0148,
+     -0.0036,
+     0.0437
+    ]
+   },
+   "via": [
+    {
+     "bone": "pelvis",
+     "point": [
+      -0.1193,
+      -0.0276,
+      0.0657
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 444.0,
+    "optimal_fiber_length": 0.026,
+    "tendon_slack_length": 0.115,
+    "pennation_angle": 0.17453293,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "rect_fem_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0295,
+     -0.0311,
+     0.0968
+    ]
+   },
+   "insertion": {
+    "bone": "femur_r",
+    "point": [
+     0.0334,
+     -0.403,
+     0.0019
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 1169.0,
+    "optimal_fiber_length": 0.114,
+    "tendon_slack_length": 0.31,
+    "pennation_angle": 0.08726646,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "vas_med_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "femur_r",
+    "point": [
+     0.014,
+     -0.2099,
+     0.0188
+    ]
+   },
+   "insertion": {
+    "bone": "femur_r",
+    "point": [
+     0.0274,
+     -0.4255,
+     -0.0131
+    ]
+   },
+   "via": [
+    {
+     "bone": "femur_r",
+     "point": [
+      0.0356,
+      -0.2769,
+      0.0009
+     ]
+    },
+    {
+     "bone": "femur_r",
+     "point": [
+      0.037,
+      -0.4048,
+      -0.0125
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 1294.0,
+    "optimal_fiber_length": 0.089,
+    "tendon_slack_length": 0.126,
+    "pennation_angle": 0.08726646,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "vas_int_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "femur_r",
+    "point": [
+     0.029,
+     -0.1924,
+     0.031
+    ]
+   },
+   "insertion": {
+    "bone": "femur_r",
+    "point": [
+     0.0343,
+     -0.403,
+     0.0055
+    ]
+   },
+   "via": [
+    {
+     "bone": "femur_r",
+     "point": [
+      0.0335,
+      -0.2084,
+      0.0285
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 1365.0,
+    "optimal_fiber_length": 0.087,
+    "tendon_slack_length": 0.136,
+    "pennation_angle": 0.05235988,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "vas_lat_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "femur_r",
+    "point": [
+     0.0048,
+     -0.1854,
+     0.0349
+    ]
+   },
+   "insertion": {
+    "bone": "femur_r",
+    "point": [
+     0.0253,
+     -0.4243,
+     0.0184
+    ]
+   },
+   "via": [
+    {
+     "bone": "femur_r",
+     "point": [
+      0.0269,
+      -0.2591,
+      0.0409
+     ]
+    },
+    {
+     "bone": "femur_r",
+     "point": [
+      0.0361,
+      -0.403,
+      0.0205
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 1871.0,
+    "optimal_fiber_length": 0.084,
+    "tendon_slack_length": 0.157,
+    "pennation_angle": 0.08726646,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "med_gas_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "femur_r",
+    "point": [
+     -0.019,
+     -0.3929,
+     -0.0235
+    ]
+   },
+   "insertion": {
+    "bone": "calcn_r",
+    "point": [
+     0.0,
+     0.031,
+     -0.0053
+    ]
+   },
+   "via": [
+    {
+     "bone": "femur_r",
+     "point": [
+      -0.03,
+      -0.4022,
+      -0.0258
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 1558.0,
+    "optimal_fiber_length": 0.06,
+    "tendon_slack_length": 0.39,
+    "pennation_angle": 0.29670597,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "lat_gas_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "femur_r",
+    "point": [
+     -0.022,
+     -0.3946,
+     0.0272
+    ]
+   },
+   "insertion": {
+    "bone": "calcn_r",
+    "point": [
+     0.0,
+     0.031,
+     -0.0053
+    ]
+   },
+   "via": [
+    {
+     "bone": "femur_r",
+     "point": [
+      -0.03,
+      -0.4018,
+      0.0274
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 683.0,
+    "optimal_fiber_length": 0.064,
+    "tendon_slack_length": 0.38,
+    "pennation_angle": 0.13962634,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "soleus_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "tibia_r",
+    "point": [
+     -0.0024,
+     -0.1533,
+     0.0071
+    ]
+   },
+   "insertion": {
+    "bone": "calcn_r",
+    "point": [
+     0.0,
+     0.031,
+     -0.0053
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 3549.0,
+    "optimal_fiber_length": 0.05,
+    "tendon_slack_length": 0.25,
+    "pennation_angle": 0.43633231,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "tib_post_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "tibia_r",
+    "point": [
+     -0.0094,
+     -0.1348,
+     0.0019
+    ]
+   },
+   "insertion": {
+    "bone": "calcn_r",
+    "point": [
+     0.0772,
+     0.0159,
+     -0.0281
+    ]
+   },
+   "via": [
+    {
+     "bone": "tibia_r",
+     "point": [
+      -0.0144,
+      -0.4051,
+      -0.0229
+     ]
+    },
+    {
+     "bone": "calcn_r",
+     "point": [
+      0.0417,
+      0.0334,
+      -0.0286
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 1588.0,
+    "optimal_fiber_length": 0.031,
+    "tendon_slack_length": 0.31,
+    "pennation_angle": 0.20943951,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "flex_dig_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "tibia_r",
+    "point": [
+     -0.0083,
+     -0.2046,
+     -0.0018
+    ]
+   },
+   "insertion": {
+    "bone": "toes_r",
+    "point": [
+     0.0441,
+     -0.006,
+     0.0242
+    ]
+   },
+   "via": [
+    {
+     "bone": "tibia_r",
+     "point": [
+      -0.0154,
+      -0.4051,
+      -0.0196
+     ]
+    },
+    {
+     "bone": "calcn_r",
+     "point": [
+      0.0436,
+      0.0315,
+      -0.028
+     ]
+    },
+    {
+     "bone": "calcn_r",
+     "point": [
+      0.0708,
+      0.0176,
+      -0.0263
+     ]
+    },
+    {
+     "bone": "calcn_r",
+     "point": [
+      0.1658,
+      -0.0081,
+      0.0116
+     ]
+    },
+    {
+     "bone": "toes_r",
+     "point": [
+      -0.0019,
+      -0.0078,
+      0.0147
+     ]
+    },
+    {
+     "bone": "toes_r",
+     "point": [
+      0.0285,
+      -0.0071,
+      0.0215
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 310.0,
+    "optimal_fiber_length": 0.034,
+    "tendon_slack_length": 0.4,
+    "pennation_angle": 0.12217305,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "flex_hal_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "tibia_r",
+    "point": [
+     -0.0079,
+     -0.2334,
+     0.0244
+    ]
+   },
+   "insertion": {
+    "bone": "toes_r",
+    "point": [
+     0.0562,
+     -0.0102,
+     -0.0181
+    ]
+   },
+   "via": [
+    {
+     "bone": "tibia_r",
+     "point": [
+      -0.0186,
+      -0.4079,
+      -0.0174
+     ]
+    },
+    {
+     "bone": "calcn_r",
+     "point": [
+      0.0374,
+      0.0276,
+      -0.0241
+     ]
+    },
+    {
+     "bone": "calcn_r",
+     "point": [
+      0.1038,
+      0.0068,
+      -0.0256
+     ]
+    },
+    {
+     "bone": "calcn_r",
+     "point": [
+      0.1726,
+      -0.0053,
+      -0.0269
+     ]
+    },
+    {
+     "bone": "toes_r",
+     "point": [
+      0.0155,
+      -0.0064,
+      -0.0265
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 322.0,
+    "optimal_fiber_length": 0.043,
+    "tendon_slack_length": 0.38,
+    "pennation_angle": 0.17453293,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "tib_ant_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "tibia_r",
+    "point": [
+     0.0179,
+     -0.1624,
+     0.0115
+    ]
+   },
+   "insertion": {
+    "bone": "calcn_r",
+    "point": [
+     0.1166,
+     0.0178,
+     -0.0305
+    ]
+   },
+   "via": [
+    {
+     "bone": "tibia_r",
+     "point": [
+      0.0329,
+      -0.3951,
+      -0.0177
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 905.0,
+    "optimal_fiber_length": 0.098,
+    "tendon_slack_length": 0.223,
+    "pennation_angle": 0.08726646,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "per_brev_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "tibia_r",
+    "point": [
+     -0.007,
+     -0.2646,
+     0.0325
+    ]
+   },
+   "insertion": {
+    "bone": "calcn_r",
+    "point": [
+     0.0677,
+     0.0219,
+     0.0343
+    ]
+   },
+   "via": [
+    {
+     "bone": "tibia_r",
+     "point": [
+      -0.0198,
+      -0.4184,
+      0.0283
+     ]
+    },
+    {
+     "bone": "tibia_r",
+     "point": [
+      -0.0144,
+      -0.4295,
+      0.0289
+     ]
+    },
+    {
+     "bone": "calcn_r",
+     "point": [
+      0.0471,
+      0.027,
+      0.0233
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 435.0,
+    "optimal_fiber_length": 0.05,
+    "tendon_slack_length": 0.161,
+    "pennation_angle": 0.08726646,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "per_long_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "tibia_r",
+    "point": [
+     0.0005,
+     -0.1568,
+     0.0362
+    ]
+   },
+   "insertion": {
+    "bone": "calcn_r",
+    "point": [
+     0.1203,
+     0.0085,
+     -0.0184
+    ]
+   },
+   "via": [
+    {
+     "bone": "tibia_r",
+     "point": [
+      -0.0207,
+      -0.4205,
+      0.0286
+     ]
+    },
+    {
+     "bone": "tibia_r",
+     "point": [
+      -0.0162,
+      -0.4319,
+      0.0289
+     ]
+    },
+    {
+     "bone": "calcn_r",
+     "point": [
+      0.0438,
+      0.023,
+      0.0221
+     ]
+    },
+    {
+     "bone": "calcn_r",
+     "point": [
+      0.0681,
+      0.0106,
+      0.0284
+     ]
+    },
+    {
+     "bone": "calcn_r",
+     "point": [
+      0.0852,
+      0.0069,
+      0.0118
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 943.0,
+    "optimal_fiber_length": 0.049,
+    "tendon_slack_length": 0.345,
+    "pennation_angle": 0.17453293,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "per_tert_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "tibia_r",
+    "point": [
+     0.001,
+     -0.2804,
+     0.0231
+    ]
+   },
+   "insertion": {
+    "bone": "calcn_r",
+    "point": [
+     0.0857,
+     0.0228,
+     0.0299
+    ]
+   },
+   "via": [
+    {
+     "bone": "tibia_r",
+     "point": [
+      0.0229,
+      -0.4069,
+      0.0159
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 180.0,
+    "optimal_fiber_length": 0.079,
+    "tendon_slack_length": 0.1,
+    "pennation_angle": 0.2268928,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "ext_dig_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "tibia_r",
+    "point": [
+     0.0032,
+     -0.1381,
+     0.0276
+    ]
+   },
+   "insertion": {
+    "bone": "toes_r",
+    "point": [
+     0.0443,
+     -0.0004,
+     0.025
+    ]
+   },
+   "via": [
+    {
+     "bone": "tibia_r",
+     "point": [
+      0.0289,
+      -0.4007,
+      0.0072
+     ]
+    },
+    {
+     "bone": "calcn_r",
+     "point": [
+      0.0922,
+      0.0388,
+      -0.0001
+     ]
+    },
+    {
+     "bone": "calcn_r",
+     "point": [
+      0.1616,
+      0.0055,
+      0.013
+     ]
+    },
+    {
+     "bone": "toes_r",
+     "point": [
+      0.0003,
+      0.0047,
+      0.0153
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 512.0,
+    "optimal_fiber_length": 0.102,
+    "tendon_slack_length": 0.345,
+    "pennation_angle": 0.13962634,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "ext_hal_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "tibia_r",
+    "point": [
+     0.0012,
+     -0.1767,
+     0.0228
+    ]
+   },
+   "insertion": {
+    "bone": "toes_r",
+    "point": [
+     0.0563,
+     0.0034,
+     -0.0186
+    ]
+   },
+   "via": [
+    {
+     "bone": "tibia_r",
+     "point": [
+      0.0326,
+      -0.3985,
+      -0.0085
+     ]
+    },
+    {
+     "bone": "calcn_r",
+     "point": [
+      0.097,
+      0.0389,
+      -0.0211
+     ]
+    },
+    {
+     "bone": "calcn_r",
+     "point": [
+      0.1293,
+      0.0309,
+      -0.0257
+     ]
+    },
+    {
+     "bone": "calcn_r",
+     "point": [
+      0.1734,
+      0.0139,
+      -0.028
+     ]
+    },
+    {
+     "bone": "toes_r",
+     "point": [
+      0.0298,
+      0.0041,
+      -0.0245
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 162.0,
+    "optimal_fiber_length": 0.111,
+    "tendon_slack_length": 0.305,
+    "pennation_angle": 0.10471976,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "glut_med1_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0408,
+     0.0304,
+     -0.1209
+    ]
+   },
+   "insertion": {
+    "bone": "femur_l",
+    "point": [
+     -0.0218,
+     -0.0117,
+     -0.0555
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 819.0,
+    "optimal_fiber_length": 0.0535,
+    "tendon_slack_length": 0.078,
+    "pennation_angle": 0.13962634,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "glut_med2_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0855,
+     0.0445,
+     -0.0766
+    ]
+   },
+   "insertion": {
+    "bone": "femur_l",
+    "point": [
+     -0.0258,
+     -0.0058,
+     -0.0527
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 573.0,
+    "optimal_fiber_length": 0.0845,
+    "tendon_slack_length": 0.053,
+    "pennation_angle": 0.0,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "glut_med3_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.1223,
+     0.0105,
+     -0.0648
+    ]
+   },
+   "insertion": {
+    "bone": "femur_l",
+    "point": [
+     -0.0309,
+     -0.0047,
+     -0.0518
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 653.0,
+    "optimal_fiber_length": 0.0646,
+    "tendon_slack_length": 0.053,
+    "pennation_angle": 0.33161256,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "glut_min1_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0467,
+     -0.008,
+     -0.1056
+    ]
+   },
+   "insertion": {
+    "bone": "femur_l",
+    "point": [
+     -0.0072,
+     -0.0104,
+     -0.056
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 270.0,
+    "optimal_fiber_length": 0.068,
+    "tendon_slack_length": 0.016,
+    "pennation_angle": 0.17453293,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "glut_min2_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0633,
+     -0.0065,
+     -0.0991
+    ]
+   },
+   "insertion": {
+    "bone": "femur_l",
+    "point": [
+     -0.0096,
+     -0.0104,
+     -0.056
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 285.0,
+    "optimal_fiber_length": 0.056,
+    "tendon_slack_length": 0.026,
+    "pennation_angle": 0.0,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "glut_min3_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0834,
+     -0.0063,
+     -0.0856
+    ]
+   },
+   "insertion": {
+    "bone": "femur_l",
+    "point": [
+     -0.0135,
+     -0.0083,
+     -0.055
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 323.0,
+    "optimal_fiber_length": 0.038,
+    "tendon_slack_length": 0.051,
+    "pennation_angle": 0.01745329,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "semimem_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.1192,
+     -0.09747,
+     -0.07151
+    ]
+   },
+   "insertion": {
+    "bone": "tibia_l",
+    "point": [
+     -0.027,
+     -0.04771,
+     0.01957
+    ]
+   },
+   "via": [
+    {
+     "bone": "tibia_l",
+     "point": [
+      -0.0348,
+      -0.03519,
+      0.01891
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 1288.0,
+    "optimal_fiber_length": 0.08,
+    "tendon_slack_length": 0.359,
+    "pennation_angle": 0.26179939,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "semiten_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.12635,
+     -0.10988,
+     -0.06039
+    ]
+   },
+   "insertion": {
+    "bone": "tibia_l",
+    "point": [
+     0.0027,
+     -0.0956,
+     0.0193
+    ]
+   },
+   "via": [
+    {
+     "bone": "tibia_l",
+     "point": [
+      -0.04203,
+      -0.02859,
+      0.02277
+     ]
+    },
+    {
+     "bone": "tibia_l",
+     "point": [
+      -0.03322,
+      -0.05282,
+      0.02288
+     ]
+    },
+    {
+     "bone": "tibia_l",
+     "point": [
+      -0.0113,
+      -0.0746,
+      0.0245
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 410.0,
+    "optimal_fiber_length": 0.201,
+    "tendon_slack_length": 0.2555,
+    "pennation_angle": 0.08726646,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "bifemlh_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.12596,
+     -0.10257,
+     -0.06944
+    ]
+   },
+   "insertion": {
+    "bone": "tibia_l",
+    "point": [
+     -0.0234,
+     -0.0563,
+     -0.0343
+    ]
+   },
+   "via": [
+    {
+     "bone": "tibia_l",
+     "point": [
+      -0.0301,
+      -0.036,
+      -0.02943
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 896.0,
+    "optimal_fiber_length": 0.109,
+    "tendon_slack_length": 0.326,
+    "pennation_angle": 0.0,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "bifemsh_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "femur_l",
+    "point": [
+     0.005,
+     -0.2111,
+     -0.0234
+    ]
+   },
+   "insertion": {
+    "bone": "tibia_l",
+    "point": [
+     -0.0234,
+     -0.0563,
+     -0.0343
+    ]
+   },
+   "via": [
+    {
+     "bone": "tibia_l",
+     "point": [
+      -0.0301,
+      -0.036,
+      -0.02943
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 804.0,
+    "optimal_fiber_length": 0.173,
+    "tendon_slack_length": 0.089,
+    "pennation_angle": 0.40142573,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "sar_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0153,
+     -0.0013,
+     -0.1242
+    ]
+   },
+   "insertion": {
+    "bone": "tibia_l",
+    "point": [
+     0.0243,
+     -0.084,
+     0.0252
+    ]
+   },
+   "via": [
+    {
+     "bone": "femur_l",
+     "point": [
+      -0.003,
+      -0.3568,
+      0.0421
+     ]
+    },
+    {
+     "bone": "tibia_l",
+     "point": [
+      -0.0056,
+      -0.0419,
+      0.0399
+     ]
+    },
+    {
+     "bone": "tibia_l",
+     "point": [
+      0.006,
+      -0.0589,
+      0.0383
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 156.0,
+    "optimal_fiber_length": 0.52,
+    "tendon_slack_length": 0.1,
+    "pennation_angle": 0.0,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "add_long_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0316,
+     -0.0836,
+     -0.0169
+    ]
+   },
+   "insertion": {
+    "bone": "femur_l",
+    "point": [
+     0.005,
+     -0.2111,
+     -0.0234
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 627.0,
+    "optimal_fiber_length": 0.138,
+    "tendon_slack_length": 0.11,
+    "pennation_angle": 0.10471976,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "add_brev_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0587,
+     -0.0915,
+     -0.0164
+    ]
+   },
+   "insertion": {
+    "bone": "femur_l",
+    "point": [
+     0.0009,
+     -0.1196,
+     -0.0294
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 429.0,
+    "optimal_fiber_length": 0.133,
+    "tendon_slack_length": 0.02,
+    "pennation_angle": 0.0,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "add_mag1_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0732,
+     -0.1174,
+     -0.0255
+    ]
+   },
+   "insertion": {
+    "bone": "femur_l",
+    "point": [
+     -0.0045,
+     -0.1211,
+     -0.0339
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 381.0,
+    "optimal_fiber_length": 0.087,
+    "tendon_slack_length": 0.06,
+    "pennation_angle": 0.08726646,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "add_mag2_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0831,
+     -0.1192,
+     -0.0308
+    ]
+   },
+   "insertion": {
+    "bone": "femur_l",
+    "point": [
+     0.0054,
+     -0.2285,
+     -0.0227
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 343.0,
+    "optimal_fiber_length": 0.121,
+    "tendon_slack_length": 0.12,
+    "pennation_angle": 0.05235988,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "add_mag3_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.11108,
+     -0.11413,
+     -0.04882
+    ]
+   },
+   "insertion": {
+    "bone": "femur_l",
+    "point": [
+     0.007,
+     -0.3837,
+     0.0266
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 488.0,
+    "optimal_fiber_length": 0.131,
+    "tendon_slack_length": 0.249,
+    "pennation_angle": 0.08726646,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "tfl_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0311,
+     0.0214,
+     -0.1241
+    ]
+   },
+   "insertion": {
+    "bone": "tibia_l",
+    "point": [
+     0.006,
+     -0.0487,
+     -0.0297
+    ]
+   },
+   "via": [
+    {
+     "bone": "femur_l",
+     "point": [
+      0.0294,
+      -0.0995,
+      -0.0597
+     ]
+    },
+    {
+     "bone": "femur_l",
+     "point": [
+      0.0054,
+      -0.4049,
+      -0.0357
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 233.0,
+    "optimal_fiber_length": 0.095,
+    "tendon_slack_length": 0.425,
+    "pennation_angle": 0.05235988,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "pect_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0431,
+     -0.0768,
+     -0.0451
+    ]
+   },
+   "insertion": {
+    "bone": "femur_l",
+    "point": [
+     -0.0122,
+     -0.0822,
+     -0.0253
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 266.0,
+    "optimal_fiber_length": 0.1,
+    "tendon_slack_length": 0.033,
+    "pennation_angle": 0.0,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "grac_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.07401,
+     -0.1187,
+     -0.02794
+    ]
+   },
+   "insertion": {
+    "bone": "tibia_l",
+    "point": [
+     0.006,
+     -0.0836,
+     0.0228
+    ]
+   },
+   "via": [
+    {
+     "bone": "tibia_l",
+     "point": [
+      -0.02657,
+      -0.0319,
+      0.03774
+     ]
+    },
+    {
+     "bone": "tibia_l",
+     "point": [
+      -0.01943,
+      -0.05153,
+      0.0358
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 162.0,
+    "optimal_fiber_length": 0.352,
+    "tendon_slack_length": 0.126,
+    "pennation_angle": 0.05235988,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "glut_max1_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.1195,
+     0.0612,
+     -0.07
+    ]
+   },
+   "insertion": {
+    "bone": "femur_l",
+    "point": [
+     -0.0277,
+     -0.0566,
+     -0.047
+    ]
+   },
+   "via": [
+    {
+     "bone": "pelvis",
+     "point": [
+      -0.1291,
+      0.0012,
+      -0.0886
+     ]
+    },
+    {
+     "bone": "femur_l",
+     "point": [
+      -0.0457,
+      -0.0248,
+      -0.0392
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 573.0,
+    "optimal_fiber_length": 0.142,
+    "tendon_slack_length": 0.125,
+    "pennation_angle": 0.08726646,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "glut_max2_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.1349,
+     0.0176,
+     -0.0563
+    ]
+   },
+   "insertion": {
+    "bone": "femur_l",
+    "point": [
+     -0.0156,
+     -0.1016,
+     -0.0419
+    ]
+   },
+   "via": [
+    {
+     "bone": "pelvis",
+     "point": [
+      -0.1376,
+      -0.052,
+      -0.0914
+     ]
+    },
+    {
+     "bone": "femur_l",
+     "point": [
+      -0.0426,
+      -0.053,
+      -0.0293
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 819.0,
+    "optimal_fiber_length": 0.147,
+    "tendon_slack_length": 0.127,
+    "pennation_angle": 0.0,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "glut_max3_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.1556,
+     -0.0314,
+     -0.0058
+    ]
+   },
+   "insertion": {
+    "bone": "femur_l",
+    "point": [
+     -0.006,
+     -0.1419,
+     -0.0411
+    ]
+   },
+   "via": [
+    {
+     "bone": "pelvis",
+     "point": [
+      -0.1529,
+      -0.1052,
+      -0.0403
+     ]
+    },
+    {
+     "bone": "femur_l",
+     "point": [
+      -0.0299,
+      -0.1041,
+      -0.0135
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 552.0,
+    "optimal_fiber_length": 0.144,
+    "tendon_slack_length": 0.145,
+    "pennation_angle": 0.08726646,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "iliacus_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0674,
+     0.0365,
+     -0.0854
+    ]
+   },
+   "insertion": {
+    "bone": "femur_l",
+    "point": [
+     -0.0193,
+     -0.0621,
+     -0.0129
+    ]
+   },
+   "via": [
+    {
+     "bone": "pelvis",
+     "point": [
+      -0.0258,
+      -0.055,
+      -0.0811
+     ]
+    },
+    {
+     "bone": "pelvis",
+     "point": [
+      -0.0288,
+      -0.0805,
+      -0.0816
+     ]
+    },
+    {
+     "bone": "femur_l",
+     "point": [
+      0.0017,
+      -0.0543,
+      -0.0057
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 1073.0,
+    "optimal_fiber_length": 0.1,
+    "tendon_slack_length": 0.1,
+    "pennation_angle": 0.12217305,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "psoas_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0647,
+     0.0887,
+     -0.0289
+    ]
+   },
+   "insertion": {
+    "bone": "femur_l",
+    "point": [
+     -0.0188,
+     -0.0597,
+     -0.0104
+    ]
+   },
+   "via": [
+    {
+     "bone": "pelvis",
+     "point": [
+      -0.0238,
+      -0.057,
+      -0.0759
+     ]
+    },
+    {
+     "bone": "pelvis",
+     "point": [
+      -0.0288,
+      -0.0805,
+      -0.0816
+     ]
+    },
+    {
+     "bone": "femur_l",
+     "point": [
+      0.0016,
+      -0.0507,
+      -0.0038
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 1113.0,
+    "optimal_fiber_length": 0.1,
+    "tendon_slack_length": 0.16,
+    "pennation_angle": 0.13962634,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "quad_fem_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.1143,
+     -0.1151,
+     -0.052
+    ]
+   },
+   "insertion": {
+    "bone": "femur_l",
+    "point": [
+     -0.0381,
+     -0.0359,
+     -0.0366
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 381.0,
+    "optimal_fiber_length": 0.054,
+    "tendon_slack_length": 0.024,
+    "pennation_angle": 0.0,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "gem_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.1133,
+     -0.082,
+     -0.0714
+    ]
+   },
+   "insertion": {
+    "bone": "femur_l",
+    "point": [
+     -0.0142,
+     -0.0033,
+     -0.0443
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 164.0,
+    "optimal_fiber_length": 0.024,
+    "tendon_slack_length": 0.039,
+    "pennation_angle": 0.0,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "peri_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.1396,
+     0.0003,
+     -0.0235
+    ]
+   },
+   "insertion": {
+    "bone": "femur_l",
+    "point": [
+     -0.0148,
+     -0.0036,
+     -0.0437
+    ]
+   },
+   "via": [
+    {
+     "bone": "pelvis",
+     "point": [
+      -0.1193,
+      -0.0276,
+      -0.0657
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 444.0,
+    "optimal_fiber_length": 0.026,
+    "tendon_slack_length": 0.115,
+    "pennation_angle": 0.17453293,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "rect_fem_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.0295,
+     -0.0311,
+     -0.0968
+    ]
+   },
+   "insertion": {
+    "bone": "femur_l",
+    "point": [
+     0.0334,
+     -0.403,
+     -0.0019
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 1169.0,
+    "optimal_fiber_length": 0.114,
+    "tendon_slack_length": 0.31,
+    "pennation_angle": 0.08726646,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "vas_med_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "femur_l",
+    "point": [
+     0.014,
+     -0.2099,
+     -0.0188
+    ]
+   },
+   "insertion": {
+    "bone": "femur_l",
+    "point": [
+     0.0274,
+     -0.4255,
+     0.0131
+    ]
+   },
+   "via": [
+    {
+     "bone": "femur_l",
+     "point": [
+      0.0356,
+      -0.2769,
+      -0.0009
+     ]
+    },
+    {
+     "bone": "femur_l",
+     "point": [
+      0.037,
+      -0.4048,
+      0.0125
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 1294.0,
+    "optimal_fiber_length": 0.089,
+    "tendon_slack_length": 0.126,
+    "pennation_angle": 0.08726646,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "vas_int_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "femur_l",
+    "point": [
+     0.029,
+     -0.1924,
+     -0.031
+    ]
+   },
+   "insertion": {
+    "bone": "femur_l",
+    "point": [
+     0.0343,
+     -0.403,
+     -0.0055
+    ]
+   },
+   "via": [
+    {
+     "bone": "femur_l",
+     "point": [
+      0.0335,
+      -0.2084,
+      -0.0285
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 1365.0,
+    "optimal_fiber_length": 0.087,
+    "tendon_slack_length": 0.136,
+    "pennation_angle": 0.05235988,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "vas_lat_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "femur_l",
+    "point": [
+     0.0048,
+     -0.1854,
+     -0.0349
+    ]
+   },
+   "insertion": {
+    "bone": "femur_l",
+    "point": [
+     0.0253,
+     -0.4243,
+     -0.0184
+    ]
+   },
+   "via": [
+    {
+     "bone": "femur_l",
+     "point": [
+      0.0269,
+      -0.2591,
+      -0.0409
+     ]
+    },
+    {
+     "bone": "femur_l",
+     "point": [
+      0.0361,
+      -0.403,
+      -0.0205
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 1871.0,
+    "optimal_fiber_length": 0.084,
+    "tendon_slack_length": 0.157,
+    "pennation_angle": 0.08726646,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "med_gas_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "femur_l",
+    "point": [
+     -0.019,
+     -0.3929,
+     0.0235
+    ]
+   },
+   "insertion": {
+    "bone": "calcn_l",
+    "point": [
+     0.0,
+     0.031,
+     0.0053
+    ]
+   },
+   "via": [
+    {
+     "bone": "femur_l",
+     "point": [
+      -0.03,
+      -0.4022,
+      0.0258
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 1558.0,
+    "optimal_fiber_length": 0.06,
+    "tendon_slack_length": 0.39,
+    "pennation_angle": 0.29670597,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "lat_gas_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "femur_l",
+    "point": [
+     -0.022,
+     -0.3946,
+     -0.0272
+    ]
+   },
+   "insertion": {
+    "bone": "calcn_l",
+    "point": [
+     0.0,
+     0.031,
+     0.0053
+    ]
+   },
+   "via": [
+    {
+     "bone": "femur_l",
+     "point": [
+      -0.03,
+      -0.4018,
+      -0.0274
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 683.0,
+    "optimal_fiber_length": 0.064,
+    "tendon_slack_length": 0.38,
+    "pennation_angle": 0.13962634,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "soleus_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "tibia_l",
+    "point": [
+     -0.0024,
+     -0.1533,
+     -0.0071
+    ]
+   },
+   "insertion": {
+    "bone": "calcn_l",
+    "point": [
+     0.0,
+     0.031,
+     0.0053
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 3549.0,
+    "optimal_fiber_length": 0.05,
+    "tendon_slack_length": 0.25,
+    "pennation_angle": 0.43633231,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "tib_post_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "tibia_l",
+    "point": [
+     -0.0094,
+     -0.1348,
+     -0.0019
+    ]
+   },
+   "insertion": {
+    "bone": "calcn_l",
+    "point": [
+     0.0772,
+     0.0159,
+     0.0281
+    ]
+   },
+   "via": [
+    {
+     "bone": "tibia_l",
+     "point": [
+      -0.0144,
+      -0.4051,
+      0.0229
+     ]
+    },
+    {
+     "bone": "calcn_l",
+     "point": [
+      0.0417,
+      0.0334,
+      0.0286
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 1588.0,
+    "optimal_fiber_length": 0.031,
+    "tendon_slack_length": 0.31,
+    "pennation_angle": 0.20943951,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "flex_dig_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "tibia_l",
+    "point": [
+     -0.0083,
+     -0.2046,
+     0.0018
+    ]
+   },
+   "insertion": {
+    "bone": "toes_l",
+    "point": [
+     0.0441,
+     -0.006,
+     -0.0242
+    ]
+   },
+   "via": [
+    {
+     "bone": "tibia_l",
+     "point": [
+      -0.0154,
+      -0.4051,
+      0.0196
+     ]
+    },
+    {
+     "bone": "calcn_l",
+     "point": [
+      0.0436,
+      0.0315,
+      0.028
+     ]
+    },
+    {
+     "bone": "calcn_l",
+     "point": [
+      0.0708,
+      0.0176,
+      0.0263
+     ]
+    },
+    {
+     "bone": "calcn_l",
+     "point": [
+      0.1658,
+      -0.0081,
+      -0.0116
+     ]
+    },
+    {
+     "bone": "toes_l",
+     "point": [
+      -0.0019,
+      -0.0078,
+      -0.0147
+     ]
+    },
+    {
+     "bone": "toes_l",
+     "point": [
+      0.0285,
+      -0.0071,
+      -0.0215
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 310.0,
+    "optimal_fiber_length": 0.034,
+    "tendon_slack_length": 0.4,
+    "pennation_angle": 0.12217305,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "flex_hal_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "tibia_l",
+    "point": [
+     -0.0079,
+     -0.2334,
+     -0.0244
+    ]
+   },
+   "insertion": {
+    "bone": "toes_l",
+    "point": [
+     0.0562,
+     -0.0102,
+     0.0181
+    ]
+   },
+   "via": [
+    {
+     "bone": "tibia_l",
+     "point": [
+      -0.0186,
+      -0.4079,
+      0.0174
+     ]
+    },
+    {
+     "bone": "calcn_l",
+     "point": [
+      0.0374,
+      0.0276,
+      0.0241
+     ]
+    },
+    {
+     "bone": "calcn_l",
+     "point": [
+      0.1038,
+      0.0068,
+      0.0256
+     ]
+    },
+    {
+     "bone": "calcn_l",
+     "point": [
+      0.1726,
+      -0.0053,
+      0.0269
+     ]
+    },
+    {
+     "bone": "toes_l",
+     "point": [
+      0.0155,
+      -0.0064,
+      0.0265
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 322.0,
+    "optimal_fiber_length": 0.043,
+    "tendon_slack_length": 0.38,
+    "pennation_angle": 0.17453293,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "tib_ant_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "tibia_l",
+    "point": [
+     0.0179,
+     -0.1624,
+     -0.0115
+    ]
+   },
+   "insertion": {
+    "bone": "calcn_l",
+    "point": [
+     0.1166,
+     0.0178,
+     0.0305
+    ]
+   },
+   "via": [
+    {
+     "bone": "tibia_l",
+     "point": [
+      0.0329,
+      -0.3951,
+      0.0177
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 905.0,
+    "optimal_fiber_length": 0.098,
+    "tendon_slack_length": 0.223,
+    "pennation_angle": 0.08726646,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "per_brev_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "tibia_l",
+    "point": [
+     -0.007,
+     -0.2646,
+     -0.0325
+    ]
+   },
+   "insertion": {
+    "bone": "calcn_l",
+    "point": [
+     0.0677,
+     0.0219,
+     -0.0343
+    ]
+   },
+   "via": [
+    {
+     "bone": "tibia_l",
+     "point": [
+      -0.0198,
+      -0.4184,
+      -0.0283
+     ]
+    },
+    {
+     "bone": "tibia_l",
+     "point": [
+      -0.0144,
+      -0.4295,
+      -0.0289
+     ]
+    },
+    {
+     "bone": "calcn_l",
+     "point": [
+      0.0471,
+      0.027,
+      -0.0233
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 435.0,
+    "optimal_fiber_length": 0.05,
+    "tendon_slack_length": 0.161,
+    "pennation_angle": 0.08726646,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "per_long_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "tibia_l",
+    "point": [
+     0.0005,
+     -0.1568,
+     -0.0362
+    ]
+   },
+   "insertion": {
+    "bone": "calcn_l",
+    "point": [
+     0.1203,
+     0.0085,
+     0.0184
+    ]
+   },
+   "via": [
+    {
+     "bone": "tibia_l",
+     "point": [
+      -0.0207,
+      -0.4205,
+      -0.0286
+     ]
+    },
+    {
+     "bone": "tibia_l",
+     "point": [
+      -0.0162,
+      -0.4319,
+      -0.0289
+     ]
+    },
+    {
+     "bone": "calcn_l",
+     "point": [
+      0.0438,
+      0.023,
+      -0.0221
+     ]
+    },
+    {
+     "bone": "calcn_l",
+     "point": [
+      0.0681,
+      0.0106,
+      -0.0284
+     ]
+    },
+    {
+     "bone": "calcn_l",
+     "point": [
+      0.0852,
+      0.0069,
+      -0.0118
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 943.0,
+    "optimal_fiber_length": 0.049,
+    "tendon_slack_length": 0.345,
+    "pennation_angle": 0.17453293,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "per_tert_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "tibia_l",
+    "point": [
+     0.001,
+     -0.2804,
+     -0.0231
+    ]
+   },
+   "insertion": {
+    "bone": "calcn_l",
+    "point": [
+     0.0857,
+     0.0228,
+     -0.0299
+    ]
+   },
+   "via": [
+    {
+     "bone": "tibia_l",
+     "point": [
+      0.0229,
+      -0.4069,
+      -0.0159
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 180.0,
+    "optimal_fiber_length": 0.079,
+    "tendon_slack_length": 0.1,
+    "pennation_angle": 0.2268928,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "ext_dig_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "tibia_l",
+    "point": [
+     0.0032,
+     -0.1381,
+     -0.0276
+    ]
+   },
+   "insertion": {
+    "bone": "toes_l",
+    "point": [
+     0.0443,
+     -0.0004,
+     -0.025
+    ]
+   },
+   "via": [
+    {
+     "bone": "tibia_l",
+     "point": [
+      0.0289,
+      -0.4007,
+      -0.0072
+     ]
+    },
+    {
+     "bone": "calcn_l",
+     "point": [
+      0.0922,
+      0.0388,
+      0.0001
+     ]
+    },
+    {
+     "bone": "calcn_l",
+     "point": [
+      0.1616,
+      0.0055,
+      -0.013
+     ]
+    },
+    {
+     "bone": "toes_l",
+     "point": [
+      0.0003,
+      0.0047,
+      -0.0153
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 512.0,
+    "optimal_fiber_length": 0.102,
+    "tendon_slack_length": 0.345,
+    "pennation_angle": 0.13962634,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "ext_hal_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "tibia_l",
+    "point": [
+     0.0012,
+     -0.1767,
+     -0.0228
+    ]
+   },
+   "insertion": {
+    "bone": "toes_l",
+    "point": [
+     0.0563,
+     0.0034,
+     0.0186
+    ]
+   },
+   "via": [
+    {
+     "bone": "tibia_l",
+     "point": [
+      0.0326,
+      -0.3985,
+      0.0085
+     ]
+    },
+    {
+     "bone": "calcn_l",
+     "point": [
+      0.097,
+      0.0389,
+      0.0211
+     ]
+    },
+    {
+     "bone": "calcn_l",
+     "point": [
+      0.1293,
+      0.0309,
+      0.0257
+     ]
+    },
+    {
+     "bone": "calcn_l",
+     "point": [
+      0.1734,
+      0.0139,
+      0.028
+     ]
+    },
+    {
+     "bone": "toes_l",
+     "point": [
+      0.0298,
+      0.0041,
+      0.0245
+     ]
+    }
+   ],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 162.0,
+    "optimal_fiber_length": 0.111,
+    "tendon_slack_length": 0.305,
+    "pennation_angle": 0.10471976,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "ercspn_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.14,
+     0.0439,
+     0.0436
+    ]
+   },
+   "insertion": {
+    "bone": "torso",
+    "point": [
+     -0.055,
+     0.11,
+     0.0241
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 2500.0,
+    "optimal_fiber_length": 0.12,
+    "tendon_slack_length": 0.03,
+    "pennation_angle": 0.0,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "ercspn_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.14,
+     0.0439,
+     -0.0436
+    ]
+   },
+   "insertion": {
+    "bone": "torso",
+    "point": [
+     -0.055,
+     0.11,
+     -0.0241
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 2500.0,
+    "optimal_fiber_length": 0.12,
+    "tendon_slack_length": 0.03,
+    "pennation_angle": 0.0,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "intobl_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.04,
+     0.07,
+     0.1157
+    ]
+   },
+   "insertion": {
+    "bone": "torso",
+    "point": [
+     0.07,
+     0.16,
+     0.015
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 900.0,
+    "optimal_fiber_length": 0.1,
+    "tendon_slack_length": 0.1,
+    "pennation_angle": 0.0,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "intobl_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.04,
+     0.07,
+     -0.1157
+    ]
+   },
+   "insertion": {
+    "bone": "torso",
+    "point": [
+     0.07,
+     0.16,
+     -0.015
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 900.0,
+    "optimal_fiber_length": 0.1,
+    "tendon_slack_length": 0.1,
+    "pennation_angle": 0.0,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "extobl_r",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "R",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.03,
+     -0.0636,
+     0.01
+    ]
+   },
+   "insertion": {
+    "bone": "torso",
+    "point": [
+     0.065,
+     0.11,
+     0.11
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 900.0,
+    "optimal_fiber_length": 0.12,
+    "tendon_slack_length": 0.14,
+    "pennation_angle": 0.0,
+    "max_contraction_velocity": 10.0
+   }
+  },
+  {
+   "name": "extobl_l",
+   "type": "Millard2012EquilibriumMuscle",
+   "side": "L",
+   "origin": {
+    "bone": "pelvis",
+    "point": [
+     -0.03,
+     -0.0636,
+     -0.01
+    ]
+   },
+   "insertion": {
+    "bone": "torso",
+    "point": [
+     0.065,
+     0.11,
+     -0.11
+    ]
+   },
+   "via": [],
+   "wraps": [],
+   "hill": {
+    "max_isometric_force": 900.0,
+    "optimal_fiber_length": 0.12,
+    "tendon_slack_length": 0.14,
+    "pennation_angle": 0.0,
+    "max_contraction_velocity": 10.0
+   }
+  }
+ ]
+}

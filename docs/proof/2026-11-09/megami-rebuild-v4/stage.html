@@ -1,0 +1,109 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#14121c;overflow:hidden}canvas{display:block}</style></head><body>
+<script type="importmap">{"imports":{"three":"http://127.0.0.1:8843/_megami-liveproof-20261106/serve/game/vendor/three.module.js","three/addons/":"http://127.0.0.1:8843/_megami-liveproof-20261106/serve/game/vendor/addons/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.js';
+const qs = new URLSearchParams(location.search);
+const W = parseInt(qs.get('w') || '820'), H = parseInt(qs.get('h') || '1230');
+window.__ready = false; window.__log = []; window.__facts = {};
+const HIDE = new Set(['Hair001','Hair.001','Full','AngelHairScalpCap','AngelHairStraight','AngelHeadband','Goggles','Bottom','Gaunlet','Shoes','Top']);
+(async () => {
+  const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+  renderer.setSize(W, H);
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.NeutralToneMapping;
+  renderer.toneMappingExposure = 1.1;
+  document.body.appendChild(renderer.domElement);
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x14121c);
+  const camera = new THREE.PerspectiveCamera(35, W / H, 0.02, 60);
+  scene.add(new THREE.HemisphereLight(0xdfe8ff, 0x2a2118, 1.15));
+  const key = new THREE.DirectionalLight(0xffffff, 2.2); key.position.set(1.6, 2.4, 2.6); scene.add(key);
+  const fill = new THREE.DirectionalLight(0xcfd8ff, 0.55); fill.position.set(-2.2, 1.2, 1.4); scene.add(fill);
+  const rim = new THREE.DirectionalLight(0xffe0b8, 0.9); rim.position.set(-0.8, 2.0, -2.4); scene.add(rim);
+  const loader = new GLTFLoader(); loader.setMeshoptDecoder(MeshoptDecoder);
+
+  // ---- BODY (Pilot 2 v2 GLB, exported state: AngelFace=1, AngelBody=1) ----
+  const bodyG = await loader.loadAsync('assets/body.glb');
+  const body = bodyG.scene;
+  body.traverse(o => {
+    if (HIDE.has(o.name)) { o.visible = false; window.__log.push('hid: ' + o.name + ' (' + o.type + ')'); }
+  });
+  // Angel-brown eye part on Irises-2 (Pilot 2 v2 radial-remap texture; tiger NOT used here)
+  const tex = await new THREE.TextureLoader().loadAsync('assets/eye-brown.png');
+  tex.flipY = false; tex.colorSpace = THREE.SRGBColorSpace;
+  tex.wrapS = THREE.RepeatWrapping; tex.wrapT = THREE.RepeatWrapping;
+  body.traverse(o => {
+    if (o.isMesh || o.isSkinnedMesh) {
+      const ms = Array.isArray(o.material) ? o.material : [o.material];
+      ms.forEach(m => { if (m && m.name === 'Irises-2') { m.map = tex; m.color = new THREE.Color(0xffffff); m.needsUpdate = true; window.__log.push('eye part applied to Irises-2'); } });
+      if (o.name === 'Parvati Mesh' && o.morphTargetDictionary) {
+        const d = o.morphTargetDictionary;
+        window.__facts.morphs = { AngelFace: o.morphTargetInfluences[d['AngelFace']], AngelBody: o.morphTargetInfluences[d['AngelBody']] };
+      }
+    }
+  });
+  scene.add(body);
+  scene.updateMatrixWorld(true);
+  const boneWorld = (root, name) => { let p = null; root.traverse(o => { if (!p && o.isBone && o.name === name) { p = new THREE.Vector3(); o.getWorldPosition(p); } }); return p; };
+  const headBody = boneWorld(body, 'Head');
+  const hipsBody = boneWorld(body, 'Hips');
+  const pelvisBody = boneWorld(body, 'pelvis') || hipsBody;
+  const chestBody = boneWorld(body, 'Chest') || boneWorld(body, 'Spine2');
+  const neckBody = boneWorld(body, 'Neck');
+  const foreBody = boneWorld(body, 'forearmfkL');
+  const handBody = boneWorld(body, 'handfkL');
+  const elbowBody = boneWorld(body, 'forearmfkL');
+  const upperArmBody = boneWorld(body, 'upper_armfkL');
+  window.__facts.arm = { upperArm: upperArmBody && upperArmBody.toArray(), forearm: foreBody && foreBody.toArray(), hand: handBody && handBody.toArray() };
+  let botY = Infinity; body.traverse(o => { if (o.isBone) { const p = new THREE.Vector3(); o.getWorldPosition(p); if (p.y < botY) botY = p.y; } });
+  window.__facts.bones = { Head: headBody && headBody.toArray(), Hips: hipsBody && hipsBody.toArray(), pelvis: pelvisBody && pelvisBody.toArray(), Chest: chestBody && chestBody.toArray(), Neck: neckBody && neckBody.toArray(), minBoneY: botY };
+
+  // ---- AFRO (fixed build12 part) fitted by measured head-joint delta ----
+  const afroG = await loader.loadAsync('assets/afro.glb');
+  const afro = afroG.scene;
+  afro.updateMatrixWorld(true);
+  const headAfro = boneWorld(afro, 'head');
+  const hipAfro = boneWorld(afro, 'hip');
+  const delta = new THREE.Vector3().subVectors(headBody, headAfro);
+  afro.position.copy(delta);
+  window.__facts.afroFit = { afroHeadBind: headAfro.toArray(), bodyHead: headBody.toArray(), appliedDelta: delta.toArray(), afroHipBind: hipAfro && hipAfro.toArray(), bodyHips: hipsBody && hipsBody.toArray() };
+  window.__log.push('afro root delta applied: ' + delta.toArray().map(v => v.toFixed(4)).join(','));
+  scene.add(afro);
+  scene.updateMatrixWorld(true);
+  const afroBox = new THREE.Box3().setFromObject(afro);
+  const topY = afroBox.max.y + 0.02;
+  window.__facts.frame = { botY, topY, height: topY - botY };
+
+  // ---- CAMERAS (framed from measured bones/box) ----
+  const fovR = THREE.MathUtils.degToRad(35 / 2);
+  const midY = (topY + botY) / 2, fullH = topY - botY;
+  const fullDist = (fullH / 2) / Math.tan(fovR) * (parseFloat(qs.get('fm') || '1.05'));
+  const F = {
+    front:  { pos: [0, midY,  fullDist], look: [0, midY, 0] },
+    back:   { pos: [0, midY, -fullDist], look: [0, midY, 0] },
+    left:   { pos: [ fullDist, midY, 0], look: [0, midY, 0] },
+    right:  { pos: [-fullDist, midY, 0], look: [0, midY, 0] },
+    face:   { pos: [headBody.x, headBody.y - 0.09, headBody.z + 0.55], look: [headBody.x, headBody.y + 0.01, headBody.z] },
+    chest:  { pos: [chestBody.x, chestBody.y + 0.10, chestBody.z + 0.62], look: [chestBody.x, chestBody.y - 0.07, chestBody.z] },
+    pelvisf:{ pos: [pelvisBody.x, pelvisBody.y - 0.06, pelvisBody.z + 0.52], look: [pelvisBody.x, pelvisBody.y - 0.06, pelvisBody.z + 0.02] },
+    pelvisb:{ pos: [pelvisBody.x, pelvisBody.y + 0.03, pelvisBody.z - 0.55], look: [pelvisBody.x, pelvisBody.y - 0.05, pelvisBody.z - 0.02] },
+    arm:    { pos: [(upperArmBody.x + handBody.x) / 2 + 0.16, (upperArmBody.y + handBody.y) / 2, (upperArmBody.z + handBody.z) / 2 + 0.38], look: [(foreBody.x + handBody.x) / 2, (foreBody.y + handBody.y) / 2, (foreBody.z + handBody.z) / 2] },
+    hipside:  { pos: [pelvisBody.x + 0.68, pelvisBody.y + 0.17, pelvisBody.z + 0.06], look: [pelvisBody.x, pelvisBody.y + 0.09, pelvisBody.z] },
+    hipback34:{ pos: [pelvisBody.x + 0.50, pelvisBody.y + 0.24, pelvisBody.z - 0.54], look: [pelvisBody.x, pelvisBody.y + 0.05, pelvisBody.z] },
+    hipfront: { pos: [pelvisBody.x, pelvisBody.y + 0.17, pelvisBody.z + 0.58], look: [pelvisBody.x, pelvisBody.y + 0.08, pelvisBody.z] },
+    elbow:    { pos: [foreBody.x + 0.17, foreBody.y + 0.02, foreBody.z + 0.30], look: [foreBody.x, foreBody.y - 0.01, foreBody.z] },
+  };
+  window.__cam = (n) => {
+    const c = F[n]; if (!c) return 'no cam ' + n;
+    if (qs.get('cd')) { const m = parseFloat(qs.get('cd')); const L = new THREE.Vector3(...c.look); const P = new THREE.Vector3(...c.pos); P.sub(L).multiplyScalar(m).add(L); c.pos = P.toArray(); }
+    if (qs.get('dy')) c.pos[1] += parseFloat(qs.get('dy'));
+    camera.position.set(...c.pos); camera.lookAt(...c.look);
+    renderer.render(scene, camera);
+    return 'cam ' + n + ' pos ' + c.pos.map(v => v.toFixed(3)).join(',') + ' look ' + c.look.map(v => v.toFixed(3)).join(',');
+  };
+  window.__cam('front');
+  window.__ready = true;
+})();
+</script></body></html>

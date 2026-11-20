@@ -1,0 +1,2248 @@
+{
+ "schema": "wh-t8-clip-map/1",
+ "fighter": "demonio",
+ "base": "Jin",
+ "base_code_tkdata": "ANT",
+ "sources": {
+  "export": "kaiutzi21/Tekken8Movesets t8_JINBOSLICE/t8_JIN.json (CC BY-NC 4.0)",
+  "movelist": "wavu.wiki via pbruvoll/tekkendocs json_movelist (unlicensed community frame data)",
+  "name_keys": "AliK3112/tekken-8-movesets-scripts name_keys.json (45,716 entries)",
+  "t7_record": "game/assets/anim/t7/clip-maps/demonio-clip-map.json"
+ },
+ "stats": {
+  "mapped_medium": 10,
+  "unmapped": 12,
+  "mapped_high": 10
+ },
+ "moves": [
+  {
+   "wh_key": "1,2",
+   "wh_name": "Left Right Combo",
+   "wh_input": "1,2",
+   "t7_id": "jin_3",
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_JIN",
+   "t8_move_index": 1636,
+   "t8_move_name": "Jz_lprpF",
+   "t8_anim_name": "antcb_at_lprp00",
+   "startup": 10,
+   "damage": 12,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1687,
+     "name": "Jz_10comb7"
+    },
+    {
+     "move": 1840,
+     "name": "Jz_karate03"
+    },
+    {
+     "move": 1847,
+     "name": "Jz_lusako"
+    },
+    {
+     "move": 1876,
+     "name": "Jz_4lkrp"
+    },
+    {
+     "move": 2363,
+     "name": "Jz_Karate_zan_LP_RP"
+    },
+    {
+     "move": 2376,
+     "name": "Jz_Mishima_Std_LP_LP_RP"
+    },
+    {
+     "move": 2377,
+     "name": "Jz_Mishima_Std_LP_RP"
+    },
+    {
+     "move": 2424,
+     "name": "Jz_Mishima_CrSt_LP_RP"
+    },
+    {
+     "move": 2499,
+     "name": "Jz_Kazama_zan_LP_RP"
+    }
+   ]
+  },
+  {
+   "wh_key": "1+3+4",
+   "wh_name": "State of Zanshin",
+   "wh_input": "1+3+4",
+   "t7_id": "jin_197",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "no_evidence",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "b+1_t8",
+   "wh_name": "Move b+1 (b+1)",
+   "wh_input": "b+1",
+   "t7_id": "jin_153",
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "mvl_matched_graph_gap",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_JIN",
+   "t8_move_index": 1612,
+   "t8_move_name": "Jz_4lp",
+   "t8_anim_name": "antss_at_4lp",
+   "startup": 12,
+   "damage": 11,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 246,
+     "name": "Co_R_lp00R_"
+    },
+    {
+     "move": 1526,
+     "name": "Co_jplp00B"
+    },
+    {
+     "move": 1538,
+     "name": "Co_jpRlp00B"
+    },
+    {
+     "move": 1583,
+     "name": "Jz_lp00F"
+    },
+    {
+     "move": 1655,
+     "name": "Co_R_rp00L"
+    },
+    {
+     "move": 1656,
+     "name": "Co_R_lp00R"
+    },
+    {
+     "move": 1802,
+     "name": "kaz_up02"
+    },
+    {
+     "move": 2348,
+     "name": "Jz_Karate_CrSt_LP"
+    }
+   ]
+  },
+  {
+   "wh_key": "b+1+2",
+   "wh_name": "Suigetsu Strike",
+   "wh_input": "b+1+2",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "notation_differs",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_JIN",
+   "t8_move_index": 1634,
+   "t8_move_name": "Jz_3lrp",
+   "t8_anim_name": "anthi_at_3wp",
+   "startup": 23,
+   "damage": 20,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 246,
+     "name": "Co_R_lp00R_"
+    },
+    {
+     "move": 1755,
+     "name": "Jz_pppp"
+    },
+    {
+     "move": 1802,
+     "name": "kaz_up02"
+    },
+    {
+     "move": 1903,
+     "name": "Jz_guard_00"
+    },
+    {
+     "move": 2348,
+     "name": "Jz_Karate_CrSt_LP"
+    }
+   ]
+  },
+  {
+   "wh_key": "b+1+3",
+   "wh_name": "Parry",
+   "wh_input": "b+1+3",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_JIN",
+   "t8_move_index": 2502,
+   "t8_move_name": "Jz_Kazama_Atemi_pre",
+   "t8_anim_name": "jnoz_co_atepose",
+   "startup": 12,
+   "damage": 0,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "wavu_conflict": true
+  },
+  {
+   "wh_key": "b,f+2,1",
+   "wh_name": "Move 1 (1)",
+   "wh_input": "b,f+2,1",
+   "t7_id": "jin_118",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "no_evidence",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "b,f+2,1,2",
+   "wh_name": "Evil Intent",
+   "wh_input": "b,f+2,1,2",
+   "t7_id": "jin_120",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "mvl_matched_graph_gap",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "b,f+2,3",
+   "wh_name": "Keito",
+   "wh_input": "b,f+2,3",
+   "t7_id": "jin_123",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "mvl_matched_graph_gap",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "db+2,2",
+   "wh_name": "Move 2 (2)",
+   "wh_input": "db+2,2",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_JIN",
+   "t8_move_index": 1826,
+   "t8_move_name": "Jz_new_com2",
+   "t8_anim_name": "antoz_at_counter",
+   "startup": 8,
+   "damage": 11,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1830,
+     "name": "Jz_new_com1_H"
+    }
+   ]
+  },
+  {
+   "wh_key": "db+2,3",
+   "wh_name": "Cascade Kick",
+   "wh_input": "db+2,3",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_JIN",
+   "t8_move_index": 1829,
+   "t8_move_name": "Jz_1rplk",
+   "t8_anim_name": "anthk_un_heelstomp",
+   "startup": 27,
+   "damage": 23,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   }
+  },
+  {
+   "wh_key": "df+1",
+   "wh_name": "Mid Left Punch",
+   "wh_input": "df+1",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_JIN",
+   "t8_move_index": 1740,
+   "t8_move_name": "Jz_t_slpF",
+   "t8_anim_name": "antss_at_3lp",
+   "startup": 13,
+   "damage": 10,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1702,
+     "name": "Co_syalp00"
+    },
+    {
+     "move": 1843,
+     "name": "Jz_dslpS"
+    },
+    {
+     "move": 1846,
+     "name": "Jz_dslp"
+    },
+    {
+     "move": 2216,
+     "name": "Jz_Story_623_LP_fast"
+    },
+    {
+     "move": 2401,
+     "name": "Jz_Mishima_Std_3LP"
+    },
+    {
+     "move": 2427,
+     "name": "Jz_Mishima_623_LP"
+    },
+    {
+     "move": 2530,
+     "name": "Jz_FinalKarate_Std_3LP"
+    }
+   ]
+  },
+  {
+   "wh_key": "df+2",
+   "wh_name": "Fiendish Rend",
+   "wh_input": "df+2",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_JIN",
+   "t8_move_index": 1779,
+   "t8_move_name": "Jz_t_srpF",
+   "t8_anim_name": "antss_at_3rp_d1",
+   "startup": 16,
+   "damage": 12,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1705,
+     "name": "Co_syarp00"
+    },
+    {
+     "move": 1841,
+     "name": "Jz_karate05"
+    },
+    {
+     "move": 1925,
+     "name": "Jz_shoryu34f2p"
+    },
+    {
+     "move": 1928,
+     "name": "Jz_shoryu24"
+    },
+    {
+     "move": 2344,
+     "name": "Jz_Karate_Std_3RP"
+    },
+    {
+     "move": 2429,
+     "name": "Jz_Mishima_623_RP_fast"
+    }
+   ]
+  },
+  {
+   "wh_key": "df+3",
+   "wh_name": "Left Roundhouse",
+   "wh_input": "df+3",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "notation_differs",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_JIN",
+   "t8_move_index": 1692,
+   "t8_move_name": "Jz_t_slkF",
+   "t8_anim_name": "antcb_at_mikadukilk01",
+   "startup": 12,
+   "damage": 16,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 2405,
+     "name": "Jz_Mishima_Std_3LK"
+    },
+    {
+     "move": 255,
+     "name": "Co_syalkF_"
+    }
+   ]
+  },
+  {
+   "wh_key": "f+3,1",
+   "wh_name": "Tanden Nidan-uchi",
+   "wh_input": "f+3,1",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_JIN",
+   "t8_move_index": 1783,
+   "t8_move_name": "Jz_3lklp",
+   "t8_anim_name": "antss_at_3lklp",
+   "startup": 22,
+   "damage": 17,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1861,
+     "name": "Jz_ka_2_lp"
+    }
+   ]
+  },
+  {
+   "wh_key": "FC.df+4",
+   "wh_name": "Right Sweep (2)",
+   "wh_input": "FC.df+4",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "notation_differs",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_JIN",
+   "t8_move_index": 1623,
+   "t8_move_name": "Jz_zan_srk00EX",
+   "t8_anim_name": "antss_at_sy3rk_po2",
+   "startup": 21,
+   "damage": 20,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1799,
+     "name": "Jz_3rk"
+    },
+    {
+     "move": 1897,
+     "name": "Jz_m_k20"
+    },
+    {
+     "move": 1938,
+     "name": "ThrmvRB2_09"
+    },
+    {
+     "move": 2358,
+     "name": "Jz_Karate_623_RK"
+    },
+    {
+     "move": 2434,
+     "name": "Jz_Mishima_623_RK"
+    }
+   ]
+  },
+  {
+   "wh_key": "f,F+3,1",
+   "wh_name": "Left Jab",
+   "wh_input": "f,F+3,1",
+   "t7_id": "jin_69",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "graph_only_held",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "f,f,F+3",
+   "wh_name": "Leaping Side Kick",
+   "wh_input": "f,f,F+3",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "notation_differs",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "f,n,d,df",
+   "wh_name": "Crouch Dash",
+   "wh_input": "f,n,d,df",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "no_evidence",
+   "evidence": [
+    "wavu_notation_exists",
+    "export_cancel_graph_chain",
+    "graph_chain_motion_terminal"
+   ],
+   "source": "kaiutzi21-t8_JIN",
+   "t8_move_index": 1818,
+   "t8_move_name": "Jz_shoryu01",
+   "t8_anim_name": "shoryu_co01",
+   "startup": null,
+   "damage": 0,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "wavu_conflict": true,
+   "alternates": [
+    {
+     "move": 2425,
+     "name": "Jz_Mishima_623"
+    }
+   ]
+  },
+  {
+   "wh_key": "f,n,d,df,UF",
+   "wh_name": "Crouch Dash (UF)",
+   "wh_input": "f,n,d,df,UF",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "no_evidence",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "H.f,F+1+2",
+   "wh_name": "Awakened Black Wing",
+   "wh_input": "H.f,F+1+2",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "in_t8_movelist_no_graph_path",
+   "t7_class": "no_evidence",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "ws1",
+   "wh_name": "Solar Plexus Strike",
+   "wh_input": "ws1",
+   "t7_id": "jin_136",
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_JIN",
+   "t8_move_index": 1583,
+   "t8_move_name": "Jz_lp00F",
+   "t8_anim_name": "antyg_at_lp00",
+   "startup": 10,
+   "damage": 5,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1702,
+     "name": "Co_syalp00"
+    },
+    {
+     "move": 2371,
+     "name": "Jz_Mishima_Std_LP"
+    },
+    {
+     "move": 1524,
+     "name": "Co_jplp00"
+    },
+    {
+     "move": 1525,
+     "name": "Co_jplp00F"
+    },
+    {
+     "move": 1526,
+     "name": "Co_jplp00B"
+    },
+    {
+     "move": 1527,
+     "name": "Co_jplp01"
+    },
+    {
+     "move": 1528,
+     "name": "Co_jplp01F"
+    },
+    {
+     "move": 1529,
+     "name": "Co_jplp01B"
+    },
+    {
+     "move": 1530,
+     "name": "Co_jplp02"
+    },
+    {
+     "move": 1531,
+     "name": "Co_jplp02F"
+    },
+    {
+     "move": 1532,
+     "name": "Co_jplp02B"
+    },
+    {
+     "move": 1533,
+     "name": "Co_jplp03"
+    },
+    {
+     "move": 1534,
+     "name": "Co_jplp03F"
+    },
+    {
+     "move": 1535,
+     "name": "Co_jplp03B"
+    },
+    {
+     "move": 1536,
+     "name": "Co_jpRlp00"
+    },
+    {
+     "move": 1537,
+     "name": "Co_jpRlp00F"
+    },
+    {
+     "move": 1538,
+     "name": "Co_jpRlp00B"
+    },
+    {
+     "move": 1572,
+     "name": "Co_sjplp01F"
+    },
+    {
+     "move": 1573,
+     "name": "Co_sjplp02F"
+    },
+    {
+     "move": 1574,
+     "name": "Co_sjplp03F"
+    },
+    {
+     "move": 1603,
+     "name": "Jz_narucom_04"
+    },
+    {
+     "move": 1615,
+     "name": "Jz_zan_dslp"
+    },
+    {
+     "move": 1644,
+     "name": "Jz_lprplp"
+    },
+    {
+     "move": 1648,
+     "name": "Jz_rp_2_lp"
+    },
+    {
+     "move": 1658,
+     "name": "Jz_lk00_lp"
+    },
+    {
+     "move": 1686,
+     "name": "Jz_10comb6"
+    },
+    {
+     "move": 1701,
+     "name": "Jz_4rplp"
+    },
+    {
+     "move": 1783,
+     "name": "Jz_3lklp"
+    },
+    {
+     "move": 1802,
+     "name": "kaz_up02"
+    },
+    {
+     "move": 1834,
+     "name": "Jz_karate01_R_A"
+    },
+    {
+     "move": 1838,
+     "name": "Jz_karate02"
+    },
+    {
+     "move": 1843,
+     "name": "Jz_dslpS"
+    },
+    {
+     "move": 1845,
+     "name": "Jz_dslpS_Easy"
+    },
+    {
+     "move": 1846,
+     "name": "Jz_dslp"
+    },
+    {
+     "move": 1861,
+     "name": "Jz_ka_2_lp"
+    },
+    {
+     "move": 1910,
+     "name": "Dj_dslpdvl"
+    },
+    {
+     "move": 2216,
+     "name": "Jz_Story_623_LP_fast"
+    },
+    {
+     "move": 2348,
+     "name": "Jz_Karate_CrSt_LP"
+    },
+    {
+     "move": 2354,
+     "name": "Jz_Karate_CrSt_LP_LK_RP_LP"
+    },
+    {
+     "move": 2362,
+     "name": "Jz_Karate_zan_LP"
+    },
+    {
+     "move": 2372,
+     "name": "Jz_Mishima_Std_LP_LP"
+    },
+    {
+     "move": 2411,
+     "name": "Jz_Mishima_Std_46RP_yoyaku"
+    },
+    {
+     "move": 2413,
+     "name": "Jz_Mishima_Std_46RP_LP"
+    },
+    {
+     "move": 2427,
+     "name": "Jz_Mishima_623_LP"
+    },
+    {
+     "move": 2436,
+     "name": "Jz_Mishima_623_RK_LP"
+    },
+    {
+     "move": 2496,
+     "name": "Jz_Kazama_zan_LP"
+    },
+    {
+     "move": 2514,
+     "name": "Jz_Kazama_LPLP"
+    },
+    {
+     "move": 2525,
+     "name": "Jz_FinalKarate_Std_46RP_yoyaku"
+    },
+    {
+     "move": 2526,
+     "name": "Jz_FinalKarate_Std_46RP_LP"
+    }
+   ]
+  },
+  {
+   "wh_key": "ws1,2",
+   "wh_name": "Twin Lancer",
+   "wh_input": "ws1,2",
+   "t7_id": "jin_137",
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_JIN",
+   "t8_move_index": 1636,
+   "t8_move_name": "Jz_lprpF",
+   "t8_anim_name": "antcb_at_lprp00",
+   "startup": 10,
+   "damage": 12,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1687,
+     "name": "Jz_10comb7"
+    },
+    {
+     "move": 1840,
+     "name": "Jz_karate03"
+    },
+    {
+     "move": 1847,
+     "name": "Jz_lusako"
+    },
+    {
+     "move": 1876,
+     "name": "Jz_4lkrp"
+    },
+    {
+     "move": 2363,
+     "name": "Jz_Karate_zan_LP_RP"
+    },
+    {
+     "move": 2376,
+     "name": "Jz_Mishima_Std_LP_LP_RP"
+    },
+    {
+     "move": 2377,
+     "name": "Jz_Mishima_Std_LP_RP"
+    },
+    {
+     "move": 2424,
+     "name": "Jz_Mishima_CrSt_LP_RP"
+    },
+    {
+     "move": 2499,
+     "name": "Jz_Kazama_zan_LP_RP"
+    }
+   ]
+  },
+  {
+   "wh_key": "ws3",
+   "wh_name": "Bamboo Splitter",
+   "wh_input": "ws3",
+   "t7_id": "jin_140",
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_JIN",
+   "t8_move_index": 198,
+   "t8_move_name": "Co_Aokilk00",
+   "t8_anim_name": "cmnna_at_aolowk1",
+   "startup": 22,
+   "damage": 8,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "wavu_conflict": true,
+   "alternates": [
+    {
+     "move": 200,
+     "name": "Co_AokilkL0"
+    },
+    {
+     "move": 202,
+     "name": "Co_ADwSlk00"
+    },
+    {
+     "move": 205,
+     "name": "Co_ADwSlkR1"
+    },
+    {
+     "move": 208,
+     "name": "Co_FRollk00"
+    },
+    {
+     "move": 210,
+     "name": "Co_FRollkL0"
+    },
+    {
+     "move": 212,
+     "name": "Co_BRollk00"
+    },
+    {
+     "move": 214,
+     "name": "Co_BRollkL0"
+    },
+    {
+     "move": 219,
+     "name": "Co_Rol_lrk"
+    },
+    {
+     "move": 222,
+     "name": "Co_Uokilk01"
+    },
+    {
+     "move": 227,
+     "name": "Co_UokilkR1"
+    },
+    {
+     "move": 247,
+     "name": "Co_R_lk00L_"
+    },
+    {
+     "move": 254,
+     "name": "Co_syalk00_"
+    },
+    {
+     "move": 256,
+     "name": "Co_jpRlk01"
+    },
+    {
+     "move": 257,
+     "name": "Co_jpRlk01F"
+    },
+    {
+     "move": 258,
+     "name": "Co_jpRlk01B"
+    },
+    {
+     "move": 1546,
+     "name": "Co_jplk00"
+    },
+    {
+     "move": 1547,
+     "name": "Co_jplk00F"
+    },
+    {
+     "move": 1550,
+     "name": "Co_jplk01"
+    },
+    {
+     "move": 1551,
+     "name": "Co_jplk01F"
+    },
+    {
+     "move": 1552,
+     "name": "Co_jplk01B"
+    },
+    {
+     "move": 1553,
+     "name": "Co_jplk02"
+    },
+    {
+     "move": 1554,
+     "name": "Co_jplk02F"
+    },
+    {
+     "move": 1555,
+     "name": "Co_jplk02B"
+    },
+    {
+     "move": 1556,
+     "name": "Co_jplk04"
+    },
+    {
+     "move": 1557,
+     "name": "Co_jplk04F"
+    },
+    {
+     "move": 1558,
+     "name": "Co_jplk04B"
+    },
+    {
+     "move": 1577,
+     "name": "Co_sjplk11F"
+    },
+    {
+     "move": 1578,
+     "name": "Co_sjplk12F"
+    },
+    {
+     "move": 1579,
+     "name": "Co_sjplk13F"
+    },
+    {
+     "move": 1590,
+     "name": "Jz_TK5_LPLK"
+    },
+    {
+     "move": 1616,
+     "name": "Jz_zan_dslplk"
+    },
+    {
+     "move": 1657,
+     "name": "Jz_lk00"
+    },
+    {
+     "move": 1680,
+     "name": "Jz_10comb2"
+    },
+    {
+     "move": 1681,
+     "name": "Jz_10comb3"
+    },
+    {
+     "move": 1688,
+     "name": "Jz_10comb8"
+    },
+    {
+     "move": 1722,
+     "name": "Jz_2lkrklk"
+    },
+    {
+     "move": 1784,
+     "name": "Jz_t_slkF_lk"
+    },
+    {
+     "move": 1803,
+     "name": "Jz_narucom_01up"
+    },
+    {
+     "move": 1809,
+     "name": "Co_s_tlk00"
+    },
+    {
+     "move": 1815,
+     "name": "Co_runlk00"
+    },
+    {
+     "move": 1827,
+     "name": "Jz_new_com3"
+    },
+    {
+     "move": 1829,
+     "name": "Jz_1rplk"
+    },
+    {
+     "move": 1835,
+     "name": "Jz_karate01_R_C"
+    },
+    {
+     "move": 1836,
+     "name": "Jz_karatekick"
+    },
+    {
+     "move": 1855,
+     "name": "Bmt_hasai"
+    },
+    {
+     "move": 1864,
+     "name": "kz_kakatL"
+    },
+    {
+     "move": 1868,
+     "name": "Jz_2lrplk"
+    },
+    {
+     "move": 1871,
+     "name": "Jz_tate_kick"
+    },
+    {
+     "move": 1900,
+     "name": "Jz_steprkY"
+    },
+    {
+     "move": 1916,
+     "name": "Dj_sjk01dvl"
+    },
+    {
+     "move": 2234,
+     "name": "Jz_1RKLK_story"
+    },
+    {
+     "move": 2349,
+     "name": "Jz_Karate_CrSt_LP_yoyaku"
+    },
+    {
+     "move": 2359,
+     "name": "Jz_Karate_623_RK_yoyaku"
+    },
+    {
+     "move": 2366,
+     "name": "Jz_Karate_zan_LK"
+    },
+    {
+     "move": 2384,
+     "name": "Jz_Mishima_Std_LP_RP_LK"
+    },
+    {
+     "move": 2396,
+     "name": "Jz_Mishima_Std_RK_LK"
+    },
+    {
+     "move": 2406,
+     "name": "Jz_Mishima_Std_3LKsLK"
+    },
+    {
+     "move": 2447,
+     "name": "Jz_Kazama_Std_LK"
+    },
+    {
+     "move": 2495,
+     "name": "Jz_Kazama_CrSt_LK"
+    }
+   ]
+  },
+  {
+   "wh_key": "ws4,4",
+   "wh_name": "Double Cross Kicks",
+   "wh_input": "ws4,4",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_JIN",
+   "t8_move_index": 1748,
+   "t8_move_name": "Jz_3lprkrk",
+   "t8_anim_name": "antam_at_3lp_rkmid",
+   "startup": 20,
+   "damage": 24,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1754,
+     "name": "Jz_rkrk_01"
+    },
+    {
+     "move": 1813,
+     "name": "Jz_s_trkrk"
+    },
+    {
+     "move": 2422,
+     "name": "Jz_Mishima_Jmp_9RK_RK_RK"
+    },
+    {
+     "move": 2423,
+     "name": "Jz_Mishima_Jmp_9RK_RK_RK_RK"
+    },
+    {
+     "move": 2437,
+     "name": "Jz_Mishima_623_RK_RK"
+    }
+   ]
+  },
+  {
+   "wh_key": "1~t8.jin",
+   "wh_name": "Jab",
+   "wh_input": "1",
+   "t7_id": "jin_2",
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_JIN",
+   "t8_move_index": 1583,
+   "t8_move_name": "Jz_lp00F",
+   "t8_anim_name": "antyg_at_lp00",
+   "startup": 10,
+   "damage": 5,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1702,
+     "name": "Co_syalp00"
+    },
+    {
+     "move": 2371,
+     "name": "Jz_Mishima_Std_LP"
+    },
+    {
+     "move": 1524,
+     "name": "Co_jplp00"
+    },
+    {
+     "move": 1525,
+     "name": "Co_jplp00F"
+    },
+    {
+     "move": 1526,
+     "name": "Co_jplp00B"
+    },
+    {
+     "move": 1527,
+     "name": "Co_jplp01"
+    },
+    {
+     "move": 1528,
+     "name": "Co_jplp01F"
+    },
+    {
+     "move": 1529,
+     "name": "Co_jplp01B"
+    },
+    {
+     "move": 1530,
+     "name": "Co_jplp02"
+    },
+    {
+     "move": 1531,
+     "name": "Co_jplp02F"
+    },
+    {
+     "move": 1532,
+     "name": "Co_jplp02B"
+    },
+    {
+     "move": 1533,
+     "name": "Co_jplp03"
+    },
+    {
+     "move": 1534,
+     "name": "Co_jplp03F"
+    },
+    {
+     "move": 1535,
+     "name": "Co_jplp03B"
+    },
+    {
+     "move": 1536,
+     "name": "Co_jpRlp00"
+    },
+    {
+     "move": 1537,
+     "name": "Co_jpRlp00F"
+    },
+    {
+     "move": 1538,
+     "name": "Co_jpRlp00B"
+    },
+    {
+     "move": 1572,
+     "name": "Co_sjplp01F"
+    },
+    {
+     "move": 1573,
+     "name": "Co_sjplp02F"
+    },
+    {
+     "move": 1574,
+     "name": "Co_sjplp03F"
+    },
+    {
+     "move": 1603,
+     "name": "Jz_narucom_04"
+    },
+    {
+     "move": 1615,
+     "name": "Jz_zan_dslp"
+    },
+    {
+     "move": 1644,
+     "name": "Jz_lprplp"
+    },
+    {
+     "move": 1648,
+     "name": "Jz_rp_2_lp"
+    },
+    {
+     "move": 1658,
+     "name": "Jz_lk00_lp"
+    },
+    {
+     "move": 1686,
+     "name": "Jz_10comb6"
+    },
+    {
+     "move": 1701,
+     "name": "Jz_4rplp"
+    },
+    {
+     "move": 1783,
+     "name": "Jz_3lklp"
+    },
+    {
+     "move": 1802,
+     "name": "kaz_up02"
+    },
+    {
+     "move": 1834,
+     "name": "Jz_karate01_R_A"
+    },
+    {
+     "move": 1838,
+     "name": "Jz_karate02"
+    },
+    {
+     "move": 1843,
+     "name": "Jz_dslpS"
+    },
+    {
+     "move": 1845,
+     "name": "Jz_dslpS_Easy"
+    },
+    {
+     "move": 1846,
+     "name": "Jz_dslp"
+    },
+    {
+     "move": 1861,
+     "name": "Jz_ka_2_lp"
+    },
+    {
+     "move": 1910,
+     "name": "Dj_dslpdvl"
+    },
+    {
+     "move": 2216,
+     "name": "Jz_Story_623_LP_fast"
+    },
+    {
+     "move": 2348,
+     "name": "Jz_Karate_CrSt_LP"
+    },
+    {
+     "move": 2354,
+     "name": "Jz_Karate_CrSt_LP_LK_RP_LP"
+    },
+    {
+     "move": 2362,
+     "name": "Jz_Karate_zan_LP"
+    },
+    {
+     "move": 2372,
+     "name": "Jz_Mishima_Std_LP_LP"
+    },
+    {
+     "move": 2411,
+     "name": "Jz_Mishima_Std_46RP_yoyaku"
+    },
+    {
+     "move": 2413,
+     "name": "Jz_Mishima_Std_46RP_LP"
+    },
+    {
+     "move": 2427,
+     "name": "Jz_Mishima_623_LP"
+    },
+    {
+     "move": 2436,
+     "name": "Jz_Mishima_623_RK_LP"
+    },
+    {
+     "move": 2496,
+     "name": "Jz_Kazama_zan_LP"
+    },
+    {
+     "move": 2514,
+     "name": "Jz_Kazama_LPLP"
+    },
+    {
+     "move": 2525,
+     "name": "Jz_FinalKarate_Std_46RP_yoyaku"
+    },
+    {
+     "move": 2526,
+     "name": "Jz_FinalKarate_Std_46RP_LP"
+    }
+   ]
+  },
+  {
+   "wh_key": "2~t8.jin",
+   "wh_name": "Right Jab",
+   "wh_input": "2",
+   "t7_id": "jin_38",
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_JIN",
+   "t8_move_index": 1646,
+   "t8_move_name": "Jz_rp00",
+   "t8_anim_name": "antyg_at_rp00",
+   "startup": 10,
+   "damage": 9,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 1542,
+     "name": "Co_jprp03"
+    },
+    {
+     "move": 1543,
+     "name": "Co_jprp03F"
+    },
+    {
+     "move": 1544,
+     "name": "Co_jprp03B"
+    },
+    {
+     "move": 1575,
+     "name": "Co_sjprp03F"
+    },
+    {
+     "move": 1600,
+     "name": "Jz_narucom_03"
+    },
+    {
+     "move": 1606,
+     "name": "Jz_narucom_05narakuY"
+    },
+    {
+     "move": 1613,
+     "name": "Jz_4lprp"
+    },
+    {
+     "move": 1621,
+     "name": "Jz_zan_arm"
+    },
+    {
+     "move": 1636,
+     "name": "Jz_lprpF"
+    },
+    {
+     "move": 1676,
+     "name": "Jz_rp00F"
+    },
+    {
+     "move": 1683,
+     "name": "Jz_10comb4_3"
+    },
+    {
+     "move": 1685,
+     "name": "Jz_10comb5"
+    },
+    {
+     "move": 1687,
+     "name": "Jz_10comb7"
+    },
+    {
+     "move": 1690,
+     "name": "Jz_10comb10"
+    },
+    {
+     "move": 1691,
+     "name": "Jz_yokerp"
+    },
+    {
+     "move": 1705,
+     "name": "Co_syarp00"
+    },
+    {
+     "move": 1807,
+     "name": "JIN_up06"
+    },
+    {
+     "move": 1826,
+     "name": "Jz_new_com2"
+    },
+    {
+     "move": 1830,
+     "name": "Jz_new_com1_H"
+    },
+    {
+     "move": 1840,
+     "name": "Jz_karate03"
+    },
+    {
+     "move": 1847,
+     "name": "Jz_lusako"
+    },
+    {
+     "move": 1875,
+     "name": "Jz_uchi_LK_B"
+    },
+    {
+     "move": 1876,
+     "name": "Jz_4lkrp"
+    },
+    {
+     "move": 1911,
+     "name": "move_1911"
+    },
+    {
+     "move": 1925,
+     "name": "Jz_shoryu34f2p"
+    },
+    {
+     "move": 1928,
+     "name": "Jz_shoryu24"
+    },
+    {
+     "move": 1930,
+     "name": "Jz_shoryu24_Easy"
+    },
+    {
+     "move": 2223,
+     "name": "Jz_steprkY_story"
+    },
+    {
+     "move": 2352,
+     "name": "Jz_Karate_CrSt_LP_LK_RP"
+    },
+    {
+     "move": 2363,
+     "name": "Jz_Karate_zan_LP_RP"
+    },
+    {
+     "move": 2364,
+     "name": "Jz_Karate_zan_RP"
+    },
+    {
+     "move": 2376,
+     "name": "Jz_Mishima_Std_LP_LP_RP"
+    },
+    {
+     "move": 2377,
+     "name": "Jz_Mishima_Std_LP_RP"
+    },
+    {
+     "move": 2382,
+     "name": "Jz_Mishima_Std_LP_RP_RP"
+    },
+    {
+     "move": 2389,
+     "name": "Jz_Mishima_Std_RP"
+    },
+    {
+     "move": 2390,
+     "name": "Jz_Mishima_Std_RP_RP"
+    },
+    {
+     "move": 2402,
+     "name": "Jz_Mishima_Std_3LP_RP"
+    },
+    {
+     "move": 2424,
+     "name": "Jz_Mishima_CrSt_LP_RP"
+    },
+    {
+     "move": 2429,
+     "name": "Jz_Mishima_623_RP_fast"
+    },
+    {
+     "move": 2432,
+     "name": "Jz_Mishima_623_RP"
+    },
+    {
+     "move": 2460,
+     "name": "Jz_Kazama_Std_LPRK_yoyaku"
+    },
+    {
+     "move": 2464,
+     "name": "Jz_Kazama_Std_LPRK2_yoyaku"
+    },
+    {
+     "move": 2475,
+     "name": "Jz_Kazama_Std_6RP"
+    },
+    {
+     "move": 2499,
+     "name": "Jz_Kazama_zan_LP_RP"
+    },
+    {
+     "move": 2531,
+     "name": "Jz_FinalKarate_Std_3LP_RP"
+    }
+   ]
+  },
+  {
+   "wh_key": "3~t8.jin",
+   "wh_name": "DEMONIO 3",
+   "wh_input": "3",
+   "t7_id": "jin_49",
+   "status": "mapped",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_JIN",
+   "t8_move_index": 198,
+   "t8_move_name": "Co_Aokilk00",
+   "t8_anim_name": "cmnna_at_aolowk1",
+   "startup": 22,
+   "damage": 8,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "wavu_conflict": true,
+   "alternates": [
+    {
+     "move": 200,
+     "name": "Co_AokilkL0"
+    },
+    {
+     "move": 202,
+     "name": "Co_ADwSlk00"
+    },
+    {
+     "move": 205,
+     "name": "Co_ADwSlkR1"
+    },
+    {
+     "move": 208,
+     "name": "Co_FRollk00"
+    },
+    {
+     "move": 210,
+     "name": "Co_FRollkL0"
+    },
+    {
+     "move": 212,
+     "name": "Co_BRollk00"
+    },
+    {
+     "move": 214,
+     "name": "Co_BRollkL0"
+    },
+    {
+     "move": 219,
+     "name": "Co_Rol_lrk"
+    },
+    {
+     "move": 222,
+     "name": "Co_Uokilk01"
+    },
+    {
+     "move": 227,
+     "name": "Co_UokilkR1"
+    },
+    {
+     "move": 247,
+     "name": "Co_R_lk00L_"
+    },
+    {
+     "move": 254,
+     "name": "Co_syalk00_"
+    },
+    {
+     "move": 256,
+     "name": "Co_jpRlk01"
+    },
+    {
+     "move": 257,
+     "name": "Co_jpRlk01F"
+    },
+    {
+     "move": 258,
+     "name": "Co_jpRlk01B"
+    },
+    {
+     "move": 1546,
+     "name": "Co_jplk00"
+    },
+    {
+     "move": 1547,
+     "name": "Co_jplk00F"
+    },
+    {
+     "move": 1550,
+     "name": "Co_jplk01"
+    },
+    {
+     "move": 1551,
+     "name": "Co_jplk01F"
+    },
+    {
+     "move": 1552,
+     "name": "Co_jplk01B"
+    },
+    {
+     "move": 1553,
+     "name": "Co_jplk02"
+    },
+    {
+     "move": 1554,
+     "name": "Co_jplk02F"
+    },
+    {
+     "move": 1555,
+     "name": "Co_jplk02B"
+    },
+    {
+     "move": 1556,
+     "name": "Co_jplk04"
+    },
+    {
+     "move": 1557,
+     "name": "Co_jplk04F"
+    },
+    {
+     "move": 1558,
+     "name": "Co_jplk04B"
+    },
+    {
+     "move": 1577,
+     "name": "Co_sjplk11F"
+    },
+    {
+     "move": 1578,
+     "name": "Co_sjplk12F"
+    },
+    {
+     "move": 1579,
+     "name": "Co_sjplk13F"
+    },
+    {
+     "move": 1590,
+     "name": "Jz_TK5_LPLK"
+    },
+    {
+     "move": 1616,
+     "name": "Jz_zan_dslplk"
+    },
+    {
+     "move": 1657,
+     "name": "Jz_lk00"
+    },
+    {
+     "move": 1680,
+     "name": "Jz_10comb2"
+    },
+    {
+     "move": 1681,
+     "name": "Jz_10comb3"
+    },
+    {
+     "move": 1688,
+     "name": "Jz_10comb8"
+    },
+    {
+     "move": 1722,
+     "name": "Jz_2lkrklk"
+    },
+    {
+     "move": 1784,
+     "name": "Jz_t_slkF_lk"
+    },
+    {
+     "move": 1803,
+     "name": "Jz_narucom_01up"
+    },
+    {
+     "move": 1809,
+     "name": "Co_s_tlk00"
+    },
+    {
+     "move": 1815,
+     "name": "Co_runlk00"
+    },
+    {
+     "move": 1827,
+     "name": "Jz_new_com3"
+    },
+    {
+     "move": 1829,
+     "name": "Jz_1rplk"
+    },
+    {
+     "move": 1835,
+     "name": "Jz_karate01_R_C"
+    },
+    {
+     "move": 1836,
+     "name": "Jz_karatekick"
+    },
+    {
+     "move": 1855,
+     "name": "Bmt_hasai"
+    },
+    {
+     "move": 1864,
+     "name": "kz_kakatL"
+    },
+    {
+     "move": 1868,
+     "name": "Jz_2lrplk"
+    },
+    {
+     "move": 1871,
+     "name": "Jz_tate_kick"
+    },
+    {
+     "move": 1900,
+     "name": "Jz_steprkY"
+    },
+    {
+     "move": 1916,
+     "name": "Dj_sjk01dvl"
+    },
+    {
+     "move": 2234,
+     "name": "Jz_1RKLK_story"
+    },
+    {
+     "move": 2349,
+     "name": "Jz_Karate_CrSt_LP_yoyaku"
+    },
+    {
+     "move": 2359,
+     "name": "Jz_Karate_623_RK_yoyaku"
+    },
+    {
+     "move": 2366,
+     "name": "Jz_Karate_zan_LK"
+    },
+    {
+     "move": 2384,
+     "name": "Jz_Mishima_Std_LP_RP_LK"
+    },
+    {
+     "move": 2396,
+     "name": "Jz_Mishima_Std_RK_LK"
+    },
+    {
+     "move": 2406,
+     "name": "Jz_Mishima_Std_3LKsLK"
+    },
+    {
+     "move": 2447,
+     "name": "Jz_Kazama_Std_LK"
+    },
+    {
+     "move": 2495,
+     "name": "Jz_Kazama_CrSt_LK"
+    }
+   ]
+  },
+  {
+   "wh_key": "WS.1,3,2",
+   "wh_name": "DEMONIO WS.1,3,2",
+   "wh_input": "WS.1,3,2",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "ambiguous_pool",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "WS.1,3,2,1",
+   "wh_name": "DEMONIO WS.1,3,2,1",
+   "wh_input": "WS.1,3,2,1",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "no_evidence",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "WS.1,3,2,1,4",
+   "wh_name": "DEMONIO WS.1,3,2,1,4",
+   "wh_input": "WS.1,3,2,1,4",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "no_evidence",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "WS.4",
+   "wh_name": "DEMONIO WS.4",
+   "wh_input": "WS.4",
+   "t7_id": null,
+   "status": "mapped",
+   "confidence": "high",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "wavu_fingerprint_match",
+    "wavu_notation_exists",
+    "export_cancel_graph_chain"
+   ],
+   "source": "kaiutzi21-t8_JIN",
+   "t8_move_index": 1667,
+   "t8_move_name": "Jz_round_RK",
+   "t8_anim_name": "antam_at_kaiten_new",
+   "startup": 13,
+   "damage": 15,
+   "clip": {
+    "status": "anim_name_resolved_no_bytes",
+    "note": "T8 animation bytes live in the character anmbin/mota banks; only TKData packages carry anmbin (King package stored in GRE release t8-community-pieces-v1)."
+   },
+   "alternates": [
+    {
+     "move": 199,
+     "name": "Co_Aokirk00"
+    },
+    {
+     "move": 201,
+     "name": "Co_AokirkL0"
+    },
+    {
+     "move": 203,
+     "name": "Co_ADwSrk00"
+    },
+    {
+     "move": 207,
+     "name": "Co_ADwSrkR1"
+    },
+    {
+     "move": 209,
+     "name": "Co_FRolrk00"
+    },
+    {
+     "move": 210,
+     "name": "Co_FRollkL0"
+    },
+    {
+     "move": 211,
+     "name": "Co_FRolrkL0"
+    },
+    {
+     "move": 213,
+     "name": "Co_BRolrk00"
+    },
+    {
+     "move": 215,
+     "name": "Co_BRolrkL0"
+    },
+    {
+     "move": 219,
+     "name": "Co_Rol_lrk"
+    },
+    {
+     "move": 225,
+     "name": "Co_Uokirk01"
+    },
+    {
+     "move": 233,
+     "name": "Co_UokirkR1"
+    },
+    {
+     "move": 248,
+     "name": "Co_R_rk00R_"
+    },
+    {
+     "move": 251,
+     "name": "Co_syark00_"
+    },
+    {
+     "move": 259,
+     "name": "Co_jpRrk01"
+    },
+    {
+     "move": 260,
+     "name": "Co_jpRrk01F"
+    },
+    {
+     "move": 261,
+     "name": "Co_jpRrk01B"
+    },
+    {
+     "move": 1559,
+     "name": "Co_jprk01"
+    },
+    {
+     "move": 1560,
+     "name": "Co_jprk01F"
+    },
+    {
+     "move": 1561,
+     "name": "Co_jprk01B"
+    },
+    {
+     "move": 1562,
+     "name": "Co_jprk02"
+    },
+    {
+     "move": 1563,
+     "name": "Co_jprk02F"
+    },
+    {
+     "move": 1564,
+     "name": "Co_jprk02B"
+    },
+    {
+     "move": 1565,
+     "name": "Co_jprk04"
+    },
+    {
+     "move": 1566,
+     "name": "Co_jprk04F"
+    },
+    {
+     "move": 1567,
+     "name": "Co_jprk04B"
+    },
+    {
+     "move": 1568,
+     "name": "Jz_jprk00"
+    },
+    {
+     "move": 1570,
+     "name": "Jz_jprk00F"
+    },
+    {
+     "move": 1580,
+     "name": "Co_sjprk01F"
+    },
+    {
+     "move": 1581,
+     "name": "Co_sjprk02F"
+    },
+    {
+     "move": 1582,
+     "name": "Co_sjprk03F"
+    },
+    {
+     "move": 1591,
+     "name": "Jz_TK5_LPLKRK"
+    },
+    {
+     "move": 1605,
+     "name": "Jz_narucom_05naraku"
+    },
+    {
+     "move": 1637,
+     "name": "Jz_rp_2_rk"
+    },
+    {
+     "move": 1650,
+     "name": "Jz_rp_2_lk"
+    },
+    {
+     "move": 1664,
+     "name": "Jz_lk00_lprk"
+    },
+    {
+     "move": 1689,
+     "name": "Jz_10comb9"
+    },
+    {
+     "move": 1716,
+     "name": "Jz_2lkrk"
+    },
+    {
+     "move": 1747,
+     "name": "Jz_3lprk"
+    },
+    {
+     "move": 1748,
+     "name": "Jz_3lprkrk"
+    },
+    {
+     "move": 1749,
+     "name": "Jz_t_slprk2"
+    },
+    {
+     "move": 1754,
+     "name": "Jz_rkrk_01"
+    },
+    {
+     "move": 1776,
+     "name": "Jz_66lrp_EXkick"
+    },
+    {
+     "move": 1781,
+     "name": "Jz_3RPRK"
+    },
+    {
+     "move": 1811,
+     "name": "Jz_s_trk"
+    },
+    {
+     "move": 1813,
+     "name": "Jz_s_trkrk"
+    },
+    {
+     "move": 1893,
+     "name": "Jz_migikakato"
+    },
+    {
+     "move": 1912,
+     "name": "Dj_m_k00dvl"
+    },
+    {
+     "move": 2355,
+     "name": "Jz_Karate_CrSt_LP_LK_RP_LP_RK"
+    },
+    {
+     "move": 2367,
+     "name": "Jz_Karate_zan_RK"
+    },
+    {
+     "move": 2386,
+     "name": "Jz_Mishima_Std_LP_RP_LK_RK"
+    },
+    {
+     "move": 2387,
+     "name": "Jz_Mishima_Std_LP_RP_RK"
+    },
+    {
+     "move": 2395,
+     "name": "Jz_Mishima_Std_RK"
+    },
+    {
+     "move": 2400,
+     "name": "Jz_Mishima_Std_6RP_RK"
+    },
+    {
+     "move": 2421,
+     "name": "Jz_Mishima_Jmp_9RK_RK"
+    },
+    {
+     "move": 2422,
+     "name": "Jz_Mishima_Jmp_9RK_RK_RK"
+    },
+    {
+     "move": 2423,
+     "name": "Jz_Mishima_Jmp_9RK_RK_RK_RK"
+    },
+    {
+     "move": 2434,
+     "name": "Jz_Mishima_623_RK"
+    },
+    {
+     "move": 2437,
+     "name": "Jz_Mishima_623_RK_RK"
+    },
+    {
+     "move": 2452,
+     "name": "Jz_Kazama_Std_RK"
+    },
+    {
+     "move": 2472,
+     "name": "Jz_Kazama_Std_LPRK_RP_RK"
+    }
+   ]
+  },
+  {
+   "wh_key": "f,n,d,d/f+1+2",
+   "wh_name": "Spiral of Madness",
+   "wh_input": "f,n,d,d/f+1+2",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "graph_only_held",
+   "evidence": [],
+   "source": null,
+   "clip": {
+    "status": "unresolved"
+   }
+  }
+ ]
+}

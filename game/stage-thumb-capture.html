@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>WH stage thumbnail capture harness (dev tool)</title>
+<!-- Captures one thumbnail per stage from the REAL stage scene:
+     the game's own Arena (js/scene.js) + buildStage (js/stages.js),
+     fight camera settled with both fighters standing at their spawns.
+     Lives at game/ root on purpose: stage asset paths in the registry
+     are relative to game/, exactly like index.html. Driven by a
+     Playwright script calling window.__cap(id) per stage. Output PNGs
+     land in game/assets/stages/thumbs/<stage-id>.png — the exact files
+     the stage-select screen serves. No debug text is drawn. -->
+<script type="importmap">
+{ "imports": {
+    "three": "./vendor/three.module.js",
+    "three/addons/": "./vendor/addons/"
+} }
+</script>
+<style>html,body{margin:0;padding:0;background:#000}#cap-canvas{display:block}</style>
+</head>
+<body>
+<canvas id="cap-canvas"></canvas>
+<script type="module">
+import * as THREE from 'three';
+import { Arena } from './js/scene.js';
+import { STAGES, getStage } from './js/stages.js';
+
+const canvas = document.getElementById('cap-canvas');
+const arena = new Arena(canvas, 'shrine');
+window.__arena = arena;
+window.__stageIds = STAGES.map(s => s.id);
+
+/* Capture one stage: swap the arena to it, run its animated elements
+   with fake fighters at the spawn points (Arena.update only reads
+   root.position), then shoot it and return a PNG data URL.
+   Modes: 'fight' = the game's own fight camera, settled.
+          'wide'  = elevated 3/4 beauty shot of the whole arena (the
+                    Tekken stage-select thumbnail framing), scaled to
+                    the stage's own dims.
+          'auto'  = fight camera for interiors / stages with their own
+                    camera direction (camPos, small camDist), wide for
+                    open arenas. */
+window.__cap = async (id, mode = 'auto') => {
+  const def = getStage(id);
+  await arena.setStage(id);
+  for (let i = 0; i < 120 && arena.stageDef.id !== id; i++) {
+    await new Promise(r => setTimeout(r, 100));
+  }
+  if (arena.stageDef.id !== id) throw new Error('stage did not load: ' + id);
+  const sp = def.spawns || { p1: -2.8, p2: 2.8 };
+  const fA = { root: { position: new THREE.Vector3(sp.p1, 0, 0) } };
+  const fB = { root: { position: new THREE.Vector3(sp.p2, 0, 0) } };
+  for (let i = 0; i < 90; i++) arena.update(1 / 30, fA, fB);
+  let m = mode;
+  if (m === 'auto') {
+    m = (def.interior || def.camPos || (def.camDist && def.camDist < 5)) ? 'fight' : 'wide';
+  }
+  if (m === 'wide') {
+    const w = (def.dims && def.dims.width) || 16.8;
+    const d = Math.min(26, Math.max(12, w * 1.05));
+    const az = 33 * Math.PI / 180, el = 21 * Math.PI / 180;
+    arena.camera.position.set(
+      d * Math.cos(el) * Math.sin(az), d * Math.sin(el), d * Math.cos(el) * Math.cos(az));
+    arena.camera.lookAt(0, 0.5, 0);
+  }
+  if (m === 'up') {
+    /* Fight-cam position, tilted up: for stages whose signature set
+       piece towers over the arena (Tong-Nou's giant head). */
+    const p = arena.camera.position;
+    arena.camera.lookAt(p.x * 0.4, 3.4, -8);
+  }
+  if (m === 'set') {
+    /* Signature view for the ring arenas: elevated behind the ring,
+       looking down the arena toward the stage set / tron end. */
+    const w = (def.dims && def.dims.width) || 16.8;
+    const d = Math.min(24, Math.max(12, w * 1.0));
+    arena.camera.position.set(0, 3.4, d * 0.78);
+    arena.camera.lookAt(0, 1.0, -d * 0.35);
+  }
+  arena.render();
+  return canvas.toDataURL('image/png');
+};
+window.__ready = true;
+</script>
+</body>
+</html>

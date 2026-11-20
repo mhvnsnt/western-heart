@@ -1,0 +1,57 @@
+{
+ "input": "/tmp/wh-refit-ao_yya34/static.glb",
+ "fit": "work-item2/kingtyrant/manual/fit_corrected.json",
+ "mesh_bbox_blender": [
+  [
+   -0.48040771484375,
+   -0.09856414049863815,
+   0.0
+  ],
+  [
+   0.480316162109375,
+   0.09845733642578125,
+   0.979461669921875
+  ]
+ ],
+ "scaled_to_height_m": 1.644,
+ "scale_factor": 1.6784730331827387,
+ "bones": 50,
+ "unweighted_fixed": 0,
+ "heat_proxy": [
+  {
+   "voxel_m": 0.008,
+   "continuous_limit_verts": 252238,
+   "faces_remeshed": 48758,
+   "faces_proxy_after_decimate": 34083,
+   "proxy_verts": 23997,
+   "unweighted_proxy_verts": 0,
+   "mesh_scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "mesh_dims": [
+    1.612549066543579,
+    0.3306952118873596,
+    1.6439999341964722
+   ],
+   "proxy_groups": 50,
+   "attempts": [
+    {
+     "tri_target": 48000,
+     "proxy_verts": 23997,
+     "unweighted": 0
+    }
+   ]
+  }
+ ],
+ "continuous_limit_verts": 0,
+ "test_clip": {
+  "action": "CMU135_04_boxing",
+  "frames": 72,
+  "bones": 26,
+  "donor": "wh-tools/assets/free-pull-1/cmu-mocap/fighting/135_04.bvh"
+ },
+ "out": "work-item2/kingtyrant/manual/rig.glb",
+ "out_bytes": 92194032
+}

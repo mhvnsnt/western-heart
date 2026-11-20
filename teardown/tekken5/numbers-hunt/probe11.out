@@ -1,0 +1,43 @@
+decrypted rec0 header: ['0x0', '0x0', '0x4400', '0x0', '0x35f6ff2', '0x0', '0x0', '0x0']
+first non-zero byte in dec rec0 at offset 66 (payload+34)
+dec rec0[50:114] = 0000000000000000000000000000000001b32801c0240ea623811011111212121313131314141414141515151515151616161616161617171717171717171818
+dec rec0 u32s [32:96]: ['0x0', '0x0', '0x0', '0x0', '0x0', '0x0', '0x0', '0x0', '0xb3010000', '0x24c00128', '0x8123a60e', '0x12111110', '0x13131212', '0x14141313', '0x15141414', '0x15151515']
+  block @0x0000 zeros=92 printable=350
+  block @0x0400 zeros=10 printable=384
+  block @0x0800 zeros=10 printable=383
+  block @0x0c00 zeros=8 printable=385
+  block @0x1000 zeros=10 printable=383
+  block @0x1400 zeros=10 printable=385
+  block @0x1800 zeros=201 printable=240
+  block @0x1c00 zeros=195 printable=254
+  block @0x2000 zeros=112 printable=342
+  block @0x2400 zeros=64 printable=367
+  block @0x2800 zeros=20 printable=370
+  block @0x2c00 zeros=17 printable=386
+  block @0x3000 zeros=17 printable=400
+  block @0x3400 zeros=12 printable=392
+  block @0x3800 zeros=32 printable=405
+  block @0x3c00 zeros=17 printable=413
+  block @0x4000 zeros=26 printable=409
+  block @0x4400 zeros=960 printable=25
+dec rec0 tail[-64:] = 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+dec rec0 bytes around 17408 boundary [17400:17480] = 275530f9cf54c1004e4f4c1704b2a40b04c81084488a61b2a84d30f9554c1629203e4010a609eea7098cbaa60b1465d1069c1384b1522982e113a8814c314ea0234c24276a6105950000000000000000
+
+== scan decrypted records 0..113 (2MB) ==
+  b'TK5RESU1': none
+  b'GYM1': none
+  b'BDPK': none
+  b'NUDP': none
+  b'item_force': none
+  b'RankingMode': none
+  b'Force': none
+  b'COM ': none
+  b'TIM2': none
+  u32 1000000 total count: 0
+  float 1.0 count: 0
+
+== streaming word-sum variants over entry 0 (seed 1) ==
+entry 0: size=163878912 ck[0]=0x41c55fea
+  full: 0x6615f44a match=False
+  no-headers: 0x29d15f89 match=False
+  data-only[32:17440]: 0x0bd527ae match=False

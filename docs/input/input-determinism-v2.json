@@ -1,0 +1,4573 @@
+{
+ "resolver": "v2",
+ "generated": "2026-10-23T19:15:09.292Z",
+ "fighters": {
+  "armor-king": {
+   "tested": 225,
+   "pass": 220,
+   "fail": [
+    {
+     "cmd": "COBRA_CLUTCH.2+4,1+2,1+2",
+     "kind": "string",
+     "fired": "1+2",
+     "firedMove": "ARMOR KING 1+2"
+    },
+    {
+     "cmd": "NECK_DROP.4,3,3+4,1+2",
+     "kind": "string",
+     "fired": "1+2",
+     "firedMove": "ARMOR KING 1+2"
+    },
+    {
+     "cmd": "SLEEPER.3,4,1+2,3+4",
+     "kind": "string",
+     "fired": "3+4",
+     "firedMove": "Round Out Kick"
+    },
+    {
+     "cmd": "d/f+2,1,3,2,2,3,4,1+2,2,1+2",
+     "kind": "string",
+     "fired": "1+2",
+     "firedMove": "ARMOR KING 1+2"
+    },
+    {
+     "cmd": "d/f+2,1,3,2,2,4,2,1,3+4,2",
+     "kind": "string",
+     "fired": "3+4,2",
+     "firedMove": "Round Out Elbow"
+    }
+   ],
+   "skipped": 274,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "buttonHold": [
+    "3+4*",
+    "H.u/b+1+2*",
+    "R.f,n,d,d/f+1+2*",
+    "u+1+2*",
+    "u/b+1+2*",
+    "u/f+1+2*"
+   ]
+  },
+  "awapop": {
+   "tested": 355,
+   "pass": 349,
+   "fail": [
+    {
+     "cmd": "ARM_BREAK.3,1,4,1+2,1+2",
+     "kind": "string",
+     "fired": "1+2",
+     "firedMove": "Pop! [WH SIGNATURE]"
+    },
+    {
+     "cmd": "BETRAYER.2,1,1+2,1+2+3",
+     "kind": "string",
+     "fired": "1+2+3",
+     "firedMove": "AWA POP 1+2+3 (T3 jin r255)"
+    },
+    {
+     "cmd": "HEEL_HOLD.1,3,2+4,3+4,1+2",
+     "kind": "string",
+     "fired": "1+2",
+     "firedMove": "Pop! [WH SIGNATURE]"
+    },
+    {
+     "cmd": "TRIPLE_SLAPS.1,3+4,1,2,1+2",
+     "kind": "string",
+     "fired": "1+2",
+     "firedMove": "Pop! [WH SIGNATURE]"
+    },
+    {
+     "cmd": "TWISTED_NIGHTMARE.1,3+4,1,2,1+2",
+     "kind": "string",
+     "fired": "1+2",
+     "firedMove": "Pop! [WH SIGNATURE]"
+    }
+   ],
+   "skipped": 571,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "conflicts": [
+    {
+     "cmd": "d/f,d/f+1",
+     "winner": "n,d/f,n,d/f+1"
+    }
+   ],
+   "buttonHold": [
+    "f,F+1+2*"
+   ]
+  },
+  "baek-master-white": {
+   "tested": 34,
+   "pass": 34,
+   "fail": [],
+   "skipped": 101,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "baek": {
+   "tested": 31,
+   "pass": 31,
+   "fail": [],
+   "skipped": 80,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "blanka": {
+   "tested": 42,
+   "pass": 42,
+   "fail": [],
+   "skipped": 157,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "bob": {
+   "tested": 207,
+   "pass": 205,
+   "fail": [
+    {
+     "cmd": "u/f+2,1,2,2,1,1+2,3,1,2,3+4",
+     "kind": "string",
+     "fired": "3+4",
+     "firedMove": "BIG BOB / SLIM BOB 3+4"
+    },
+    {
+     "cmd": "u/f+2,3,3+4,4",
+     "kind": "string",
+     "fired": "3+4,4",
+     "firedMove": "BIG BOB / SLIM BOB 3+4,4"
+    }
+   ],
+   "skipped": 354,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "buttonHold": [
+    "1+2+3+4*",
+    "f,n,d,d/f+1+2*"
+   ]
+  },
+  "bruno": {
+   "tested": 135,
+   "pass": 135,
+   "fail": [],
+   "skipped": 257,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "buttonHold": [
+    "SAV.1+2*",
+    "d/b+1*",
+    "SAV 1+2*"
+   ]
+  },
+  "buffalo-bill": {
+   "tested": 78,
+   "pass": 78,
+   "fail": [],
+   "skipped": 150,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "burger-demon": {
+   "tested": 208,
+   "pass": 206,
+   "fail": [
+    {
+     "cmd": "u/f+2,1,2,2,1,1+2,3,1,2,3+4",
+     "kind": "string",
+     "fired": "3+4",
+     "firedMove": "BURGER (Demon Mode) 3+4"
+    },
+    {
+     "cmd": "u/f+2,3,3+4,4",
+     "kind": "string",
+     "fired": "3+4,4",
+     "firedMove": "BURGER (Demon Mode) 3+4,4"
+    }
+   ],
+   "skipped": 265,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "buttonHold": [
+    "1+2+3+4*",
+    "f,n,d,d/f+1+2*"
+   ]
+  },
+  "burger-speed-demon": {
+   "tested": 204,
+   "pass": 202,
+   "fail": [
+    {
+     "cmd": "u/f+2,1,2,2,1,1+2,3,1,2,3+4",
+     "kind": "string",
+     "fired": "3+4",
+     "firedMove": "BURGER (Speed Demon) 3+4"
+    },
+    {
+     "cmd": "u/f+2,3,3+4,4",
+     "kind": "string",
+     "fired": "3+4,4",
+     "firedMove": "BURGER (Speed Demon) 3+4,4"
+    }
+   ],
+   "skipped": 253,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "buttonHold": [
+    "1+2+3+4*",
+    "f,n,d,d/f+1+2*"
+   ]
+  },
+  "burger-the-mouth": {
+   "tested": 202,
+   "pass": 200,
+   "fail": [
+    {
+     "cmd": "u/f+2,1,2,2,1,1+2,3,1,2,3+4",
+     "kind": "string",
+     "fired": "3+4",
+     "firedMove": "BURGER (The Mouth) 3+4"
+    },
+    {
+     "cmd": "u/f+2,3,3+4,4",
+     "kind": "string",
+     "fired": "3+4,4",
+     "firedMove": "BURGER (The Mouth) 3+4,4"
+    }
+   ],
+   "skipped": 252,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "buttonHold": [
+    "1+2+3+4*",
+    "f,n,d,d/f+1+2*"
+   ]
+  },
+  "burger": {
+   "tested": 210,
+   "pass": 208,
+   "fail": [
+    {
+     "cmd": "u/f+2,1,2,2,1,1+2,3,1,2,3+4",
+     "kind": "string",
+     "fired": "3+4",
+     "firedMove": "Move 3+4 (3+4)"
+    },
+    {
+     "cmd": "u/f+2,3,3+4,4",
+     "kind": "string",
+     "fired": "3+4,4",
+     "firedMove": "Move 4 (4)"
+    }
+   ],
+   "skipped": 360,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "buttonHold": [
+    "1+2+3+4*",
+    "f,n,d,d/f+1+2*",
+    "f,n,d,df+1+2*"
+   ]
+  },
+  "byou": {
+   "tested": 60,
+   "pass": 60,
+   "fail": [],
+   "skipped": 97,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "cainelias": {
+   "tested": 41,
+   "pass": 41,
+   "fail": [],
+   "skipped": 0,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "charger-attire2": {
+   "tested": 42,
+   "pass": 42,
+   "fail": [],
+   "skipped": 157,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "charger": {
+   "tested": 42,
+   "pass": 42,
+   "fail": [],
+   "skipped": 157,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "chatur": {
+   "tested": 126,
+   "pass": 126,
+   "fail": [],
+   "skipped": 26,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "chordz": {
+   "tested": 180,
+   "pass": 179,
+   "fail": [
+    {
+     "cmd": "u/f+1,2,1,1,2,2,3,3,1+2,1+2",
+     "kind": "string",
+     "fired": "1+2",
+     "firedMove": "Power Chord [WH SIGNATURE]"
+    }
+   ],
+   "skipped": 289,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "buttonHold": [
+    "d/b+2,3*",
+    "u/f+3+4*"
+   ]
+  },
+  "cyborgx": {
+   "tested": 270,
+   "pass": 269,
+   "fail": [
+    {
+     "cmd": "DES.2:1",
+     "kind": "string",
+     "fired": "DES.2,1",
+     "firedMove": "Shredding Sky Punch"
+    }
+   ],
+   "skipped": 364,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "buttonHold": [
+    "1,2,2*",
+    "1,2,d+2*",
+    "DES.d+2*",
+    "WS.1+2*",
+    "WS.1+2**",
+    "ws1+2*",
+    "ws1+2**"
+   ]
+  },
+  "deathfang-werewolf": {
+   "tested": 8,
+   "pass": 8,
+   "fail": [],
+   "skipped": 119,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "deathfang": {
+   "tested": 4,
+   "pass": 4,
+   "fail": [],
+   "skipped": 118,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "demonio-bloodline-ember": {
+   "tested": 250,
+   "pass": 249,
+   "fail": [],
+   "skipped": 432,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "conflicts": [
+    {
+     "cmd": "qcb+1+3",
+     "winner": "d,d/b,b+1+3"
+    }
+   ]
+  },
+  "demonio-human": {
+   "tested": 250,
+   "pass": 249,
+   "fail": [],
+   "skipped": 429,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "conflicts": [
+    {
+     "cmd": "qcb+1+3",
+     "winner": "d,d/b,b+1+3"
+    }
+   ]
+  },
+  "demonio-winged": {
+   "tested": 308,
+   "pass": 305,
+   "fail": [
+    {
+     "cmd": "3,2,4,3,1+4,1,2,1,2",
+     "kind": "string",
+     "fired": "2,1,2",
+     "firedMove": "JIN 2,1,2 (T3 jin r222)"
+    }
+   ],
+   "skipped": 763,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "buttonHold": [
+    "D/B+1+2*",
+    "d/b+1+2*",
+    "d/b+1+2**"
+   ],
+   "conflicts": [
+    {
+     "cmd": "f,F+1+2",
+     "winner": "n,f,n,f+1+2"
+    },
+    {
+     "cmd": "qcb+1+3",
+     "winner": "d,d/b,b+1+3"
+    }
+   ]
+  },
+  "demonio": {
+   "tested": 250,
+   "pass": 249,
+   "fail": [],
+   "skipped": 432,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "conflicts": [
+    {
+     "cmd": "qcb+1+3",
+     "winner": "d,d/b,b+1+3"
+    }
+   ]
+  },
+  "diablo": {
+   "tested": 236,
+   "pass": 235,
+   "fail": [],
+   "skipped": 423,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "buttonHold": [
+    "1,2,4*",
+    "4*",
+    "b+2*",
+    "b:2*",
+    "d/f+1,2*",
+    "u/b+1+2*",
+    "df+1,2*",
+    "df+1,&amp;#58;2*",
+    "ub+1+2*"
+   ],
+   "conflicts": [
+    {
+     "cmd": "f,F+1+2",
+     "winner": "n,f,n,f+1+2"
+    }
+   ]
+  },
+  "dio": {
+   "tested": 119,
+   "pass": 119,
+   "fail": [],
+   "skipped": 203,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "buttonHold": [
+    "1+2*"
+   ]
+  },
+  "doa-ayane": {
+   "tested": 23,
+   "pass": 23,
+   "fail": [],
+   "skipped": 0,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    }
+   }
+  },
+  "doa-bass": {
+   "tested": 20,
+   "pass": 20,
+   "fail": [],
+   "skipped": 2,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    }
+   }
+  },
+  "doa-hayabusa": {
+   "tested": 16,
+   "pass": 16,
+   "fail": [],
+   "skipped": 2,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    }
+   }
+  },
+  "doa-jannlee": {
+   "tested": 21,
+   "pass": 21,
+   "fail": [],
+   "skipped": 0,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    }
+   }
+  },
+  "doa-kasumi": {
+   "tested": 18,
+   "pass": 18,
+   "fail": [],
+   "skipped": 2,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    }
+   }
+  },
+  "doa-tina": {
+   "tested": 25,
+   "pass": 25,
+   "fail": [],
+   "skipped": 1,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    }
+   }
+  },
+  "doc-frank-frankenstein": {
+   "tested": 143,
+   "pass": 142,
+   "fail": [
+    {
+     "cmd": "D/B+3,4,3,4,3,4",
+     "kind": "string",
+     "fired": "4,3,4,3,4",
+     "firedMove": "BOSCONOVITCH 4,3,4,3,4 (T3 bosconovitch r401)"
+    }
+   ],
+   "skipped": 645,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "doc-frank-hood": {
+   "tested": 143,
+   "pass": 142,
+   "fail": [
+    {
+     "cmd": "D/B+3,4,3,4,3,4",
+     "kind": "string",
+     "fired": "4,3,4,3,4",
+     "firedMove": "BOSCONOVITCH 4,3,4,3,4 (T3 bosconovitch r401)"
+    }
+   ],
+   "skipped": 645,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "doc-frank-machine-shop": {
+   "tested": 163,
+   "pass": 162,
+   "fail": [
+    {
+     "cmd": "D/B+3,4,3,4,3,4",
+     "kind": "string",
+     "fired": "4,3,4,3,4",
+     "firedMove": "BOSCONOVITCH 4,3,4,3,4 (T3 bosconovitch r401)"
+    }
+   ],
+   "skipped": 666,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "doc-frank-wowomomo": {
+   "tested": 143,
+   "pass": 142,
+   "fail": [
+    {
+     "cmd": "D/B+3,4,3,4,3,4",
+     "kind": "string",
+     "fired": "4,3,4,3,4",
+     "firedMove": "BOSCONOVITCH 4,3,4,3,4 (T3 bosconovitch r401)"
+    }
+   ],
+   "skipped": 645,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "docfrank": {
+   "tested": 143,
+   "pass": 143,
+   "fail": [],
+   "skipped": 244,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "dorowani": {
+   "tested": 23,
+   "pass": 23,
+   "fail": [],
+   "skipped": 2,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "dxmmii-patchwork": {
+   "tested": 54,
+   "pass": 54,
+   "fail": [],
+   "skipped": 113,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "dxmmii": {
+   "tested": 53,
+   "pass": 53,
+   "fail": [],
+   "skipped": 97,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "gyou-spirit-body": {
+   "tested": 84,
+   "pass": 84,
+   "fail": [],
+   "skipped": 77,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "gyou": {
+   "tested": 314,
+   "pass": 313,
+   "fail": [],
+   "skipped": 558,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "conflicts": [
+    {
+     "cmd": "qcb+3",
+     "winner": "d,d/b,b+3"
+    }
+   ]
+  },
+  "hugo": {
+   "tested": 9,
+   "pass": 9,
+   "fail": [],
+   "skipped": 121,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "iori": {
+   "tested": 7,
+   "pass": 7,
+   "fail": [],
+   "skipped": 189,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "jin_soul": {
+   "tested": 439,
+   "pass": 416,
+   "fail": [
+    {
+     "cmd": "BT.2,D/B+2,2",
+     "kind": "string",
+     "fired": "BT.2",
+     "firedMove": "Manji Backfist 2"
+    },
+    {
+     "cmd": "BT.2,D/B+2,2,2",
+     "kind": "string",
+     "fired": "BT.2",
+     "firedMove": "Manji Backfist 2"
+    },
+    {
+     "cmd": "BT.2,D/B+2,2,2,2",
+     "kind": "string",
+     "fired": "BT.2",
+     "firedMove": "Manji Backfist 2"
+    },
+    {
+     "cmd": "BT.2,D/B+2,2,2,2,2",
+     "kind": "string",
+     "fired": "BT.2",
+     "firedMove": "Manji Backfist 2"
+    },
+    {
+     "cmd": "WS.1,2,D/B+2,2",
+     "kind": "string",
+     "fired": "WS.2",
+     "firedMove": "Exorcism Fist"
+    },
+    {
+     "cmd": "WS.1,2,D/B+2,2,2",
+     "kind": "string",
+     "fired": "WS.2",
+     "firedMove": "Exorcism Fist"
+    },
+    {
+     "cmd": "WS.1,2,D/B+2,2,2,2",
+     "kind": "string",
+     "fired": "WS.2",
+     "firedMove": "Exorcism Fist"
+    },
+    {
+     "cmd": "WS.1,2,D/B+2,2,2,2,2",
+     "kind": "string",
+     "fired": "WS.2",
+     "firedMove": "Exorcism Fist"
+    },
+    {
+     "cmd": "WS.1,2,D/B+2,2,2,2,2,2",
+     "kind": "string",
+     "fired": "WS.2",
+     "firedMove": "Exorcism Fist"
+    },
+    {
+     "cmd": "d+1+4,B+1,1",
+     "kind": "string",
+     "fired": "1",
+     "firedMove": "Jab"
+    },
+    {
+     "cmd": "d+1+4,B+1,1,1",
+     "kind": "string",
+     "fired": "1,1",
+     "firedMove": "Naguri Kabuto Wari"
+    },
+    {
+     "cmd": "d+1+4,B+1,1,1,1",
+     "kind": "string",
+     "fired": "1",
+     "firedMove": "Jab"
+    },
+    {
+     "cmd": "d+1+4,B+1,1,1,1,1",
+     "kind": "string",
+     "fired": "1,1",
+     "firedMove": "Naguri Kabuto Wari"
+    },
+    {
+     "cmd": "f+2,D/B+2,2",
+     "kind": "string",
+     "fired": "2",
+     "firedMove": "Right Jab"
+    },
+    {
+     "cmd": "f+2,D/B+2,2,2",
+     "kind": "string",
+     "fired": "2,2",
+     "firedMove": "Mushibami"
+    },
+    {
+     "cmd": "f+2,D/B+2,2,2,2",
+     "kind": "string",
+     "fired": "2",
+     "firedMove": "Right Jab"
+    },
+    {
+     "cmd": "f+2,D/B+2,2,2,2,2",
+     "kind": "string",
+     "fired": "2,2",
+     "firedMove": "Mushibami"
+    },
+    {
+     "cmd": "f+2,D/B+2,2,2,2,2,2",
+     "kind": "string",
+     "fired": "2",
+     "firedMove": "Right Jab"
+    }
+   ],
+   "skipped": 569,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "buttonHold": [
+    "IND.D+3+4*",
+    "INS.3+4*",
+    "KIN.2,1+2*",
+    "KIN.2,NSS.1+2*",
+    "KIN.f+1*"
+   ],
+   "conflicts": [
+    {
+     "cmd": "WS.1,2,D/B+2",
+     "winner": "WS.1,2,d/b+2"
+    },
+    {
+     "cmd": "d+1+4,B+1",
+     "winner": "d+1+4,b+1"
+    },
+    {
+     "cmd": "f+2,D/B+2",
+     "winner": "f+2,d/b+2"
+    },
+    {
+     "cmd": "qcb+1+2",
+     "winner": "n,d,d/b,b+1+2"
+    },
+    {
+     "cmd": "qcf+1",
+     "winner": "n,d,d/f,f+1"
+    }
+   ]
+  },
+  "kai": {
+   "tested": 287,
+   "pass": 287,
+   "fail": [],
+   "skipped": 568,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "kingtyrant": {
+   "tested": 273,
+   "pass": 273,
+   "fail": [],
+   "skipped": 589,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "kinpo": {
+   "tested": 197,
+   "pass": 195,
+   "fail": [
+    {
+     "cmd": "CHARGE.d/f+3+4,3+4,1+2",
+     "kind": "string",
+     "fired": "1+2",
+     "firedMove": "Buttercup Finishes [WH SIGNATURE]"
+    }
+   ],
+   "skipped": 344,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "buttonHold": [
+    "1,2,3*",
+    "FC.d/f+3*",
+    "b+1+3*",
+    "f+3*",
+    "f+3**",
+    "f,F+2,3*",
+    "FC.df+3*"
+   ],
+   "conflicts": [
+    {
+     "cmd": "f,F+1+2",
+     "winner": "n,f,n,f+1+2"
+    }
+   ]
+  },
+  "koreshi": {
+   "tested": 273,
+   "pass": 273,
+   "fail": [],
+   "skipped": 771,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "buttonHold": [
+    "IND.D+3+4*",
+    "KIN.2,1+2*",
+    "KIN.2,NSS.1+2*",
+    "KIN.f+1*"
+   ]
+  },
+  "kronos-attire2": {
+   "tested": 68,
+   "pass": 67,
+   "fail": [
+    {
+     "cmd": "1+2,1+2,1+2",
+     "kind": "string",
+     "fired": "1+2",
+     "firedMove": "KRONOS 13 — CYCLONE SPIN LARIAT"
+    }
+   ],
+   "skipped": 1787,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "kronos": {
+   "tested": 68,
+   "pass": 67,
+   "fail": [
+    {
+     "cmd": "1+2,1+2,1+2",
+     "kind": "string",
+     "fired": "1+2",
+     "firedMove": "KRONOS 13 — CYCLONE SPIN LARIAT"
+    }
+   ],
+   "skipped": 706,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "kutz": {
+   "tested": 48,
+   "pass": 48,
+   "fail": [],
+   "skipped": 112,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "lili": {
+   "tested": 178,
+   "pass": 177,
+   "fail": [
+    {
+     "cmd": "4,1,3,3+4,3,4,3,1,3+4,4",
+     "kind": "string",
+     "fired": "4",
+     "firedMove": "LILI 4"
+    }
+   ],
+   "skipped": 355,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "buttonHold": [
+    "H.b+3*",
+    "b+3*",
+    "u+1+2*",
+    "u+1+2**"
+   ]
+  },
+  "marduk": {
+   "tested": 145,
+   "pass": 145,
+   "fail": [],
+   "skipped": 199,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "buttonHold": [
+    "d/f+3,d/f+1,2*"
+   ]
+  },
+  "mariposa-monarch": {
+   "tested": 191,
+   "pass": 191,
+   "fail": [],
+   "skipped": 344,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "mariposa": {
+   "tested": 180,
+   "pass": 180,
+   "fail": [],
+   "skipped": 220,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "megami": {
+   "tested": 101,
+   "pass": 101,
+   "fail": [],
+   "skipped": 49,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "menajerii": {
+   "tested": 94,
+   "pass": 94,
+   "fail": [],
+   "skipped": 60,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "michiko": {
+   "tested": 143,
+   "pass": 143,
+   "fail": [],
+   "skipped": 237,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "negativo": {
+   "tested": 116,
+   "pass": 116,
+   "fail": [],
+   "skipped": 198,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "buttonHold": [
+    "1,2*",
+    "WS.1,2*",
+    "WS.2*",
+    "d/b+1+2*",
+    "d/f+1,2*",
+    "d/f+2*",
+    "d/f+4,2*",
+    "WS 1,2*",
+    "WS 2*"
+   ]
+  },
+  "nightwolf": {
+   "tested": 200,
+   "pass": 200,
+   "fail": [],
+   "skipped": 356,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "pantera": {
+   "tested": 364,
+   "pass": 346,
+   "fail": [
+    {
+     "cmd": "AB2b.3,4,3+4,1+2",
+     "kind": "string",
+     "fired": "1+2",
+     "firedMove": "Battle Itself [WH SIGNATURE]"
+    },
+    {
+     "cmd": "ARM_BREAKER.1+2,4,2+4",
+     "kind": "string",
+     "fired": "2+4",
+     "firedMove": "Suplex"
+    },
+    {
+     "cmd": "BACKDROP.1+2,4,1+2,1+2+3",
+     "kind": "string",
+     "fired": null,
+     "firedMove": null
+    },
+    {
+     "cmd": "BURNING_HAMMER.2+4,3+4,1+3,1+2,1+2+3",
+     "kind": "string",
+     "fired": null,
+     "firedMove": null
+    },
+    {
+     "cmd": "CANNONBALL_BUSTER.3+4,1+2,1+2+4",
+     "kind": "string",
+     "fired": null,
+     "firedMove": null
+    },
+    {
+     "cmd": "CHICKEN_WING_FACE_LOCK.1+3,3+4,2+4,1+2,1+2+3",
+     "kind": "string",
+     "fired": null,
+     "firedMove": null
+    },
+    {
+     "cmd": "CHICKEN_WING_FACE_LOCK.2,1,3,1+2+4,1+2+4",
+     "kind": "string",
+     "fired": null,
+     "firedMove": null
+    },
+    {
+     "cmd": "COBRA_CLUTCH.2+4,1+2,1+2",
+     "kind": "string",
+     "fired": "1+2",
+     "firedMove": "Battle Itself [WH SIGNATURE]"
+    },
+    {
+     "cmd": "HEAD_JAMMER.4,3,4,3+4,1+2",
+     "kind": "string",
+     "fired": "1+2",
+     "firedMove": "Battle Itself [WH SIGNATURE]"
+    },
+    {
+     "cmd": "INDIAN_DEATH_LOCK.1,3,4,1+2,3+4",
+     "kind": "string",
+     "fired": "3+4",
+     "firedMove": "Jaguar Step"
+    },
+    {
+     "cmd": "MANHATTAN_DROP.1,2,3+4,1+2",
+     "kind": "string",
+     "fired": "1+2",
+     "firedMove": "Battle Itself [WH SIGNATURE]"
+    },
+    {
+     "cmd": "PD.1+2,3,4,1+2",
+     "kind": "string",
+     "fired": "PD.1+2,1+2",
+     "firedMove": "Double Arm Face Buster (from PD)"
+    },
+    {
+     "cmd": "PILE_DRIVER.1+2,3,4,1+2",
+     "kind": "string",
+     "fired": "PILE_DRIVER.1+2,1+2",
+     "firedMove": "Double Arm Face Buster"
+    },
+    {
+     "cmd": "POWER_BOMB.3,1,2,3+4,1+2+3+4",
+     "kind": "string",
+     "fired": "1+2+3+4",
+     "firedMove": "Ki Charge"
+    },
+    {
+     "cmd": "SHH2c.3,4,1+2,3+4",
+     "kind": "string",
+     "fired": "3+4",
+     "firedMove": "Jaguar Step"
+    },
+    {
+     "cmd": "SLEEPER.3,4,1+2,3+4",
+     "kind": "string",
+     "fired": "3+4",
+     "firedMove": "Jaguar Step"
+    },
+    {
+     "cmd": "VICTORY_BOMB.3,1,2,3+4,1+2+3+4",
+     "kind": "string",
+     "fired": "1+2+3+4",
+     "firedMove": "Ki Charge"
+    }
+   ],
+   "skipped": 532,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "buttonHold": [
+    "3,2,2*",
+    "JGR.1*",
+    "JGR.2*",
+    "JGR.3*",
+    "JGR.4*",
+    "f+1+2*",
+    "u+1+2*",
+    "u/f+1+2*"
+   ],
+   "conflicts": [
+    {
+     "cmd": "qcf+1",
+     "winner": "n,d,d/f,f+1"
+    }
+   ]
+  },
+  "phantom": {
+   "tested": 441,
+   "pass": 418,
+   "fail": [
+    {
+     "cmd": "BT.2,D/B+2,2",
+     "kind": "string",
+     "fired": "BT.2",
+     "firedMove": "Manji Backfist 2"
+    },
+    {
+     "cmd": "BT.2,D/B+2,2,2",
+     "kind": "string",
+     "fired": "BT.2",
+     "firedMove": "Manji Backfist 2"
+    },
+    {
+     "cmd": "BT.2,D/B+2,2,2,2",
+     "kind": "string",
+     "fired": "BT.2",
+     "firedMove": "Manji Backfist 2"
+    },
+    {
+     "cmd": "BT.2,D/B+2,2,2,2,2",
+     "kind": "string",
+     "fired": "BT.2",
+     "firedMove": "Manji Backfist 2"
+    },
+    {
+     "cmd": "WS.1,2,D/B+2,2",
+     "kind": "string",
+     "fired": "WS.2",
+     "firedMove": "Exorcism Fist"
+    },
+    {
+     "cmd": "WS.1,2,D/B+2,2,2",
+     "kind": "string",
+     "fired": "WS.2",
+     "firedMove": "Exorcism Fist"
+    },
+    {
+     "cmd": "WS.1,2,D/B+2,2,2,2",
+     "kind": "string",
+     "fired": "WS.2",
+     "firedMove": "Exorcism Fist"
+    },
+    {
+     "cmd": "WS.1,2,D/B+2,2,2,2,2",
+     "kind": "string",
+     "fired": "WS.2",
+     "firedMove": "Exorcism Fist"
+    },
+    {
+     "cmd": "WS.1,2,D/B+2,2,2,2,2,2",
+     "kind": "string",
+     "fired": "WS.2",
+     "firedMove": "Exorcism Fist"
+    },
+    {
+     "cmd": "d+1+4,B+1,1",
+     "kind": "string",
+     "fired": "1",
+     "firedMove": "Jab"
+    },
+    {
+     "cmd": "d+1+4,B+1,1,1",
+     "kind": "string",
+     "fired": "1,1",
+     "firedMove": "Naguri Kabuto Wari"
+    },
+    {
+     "cmd": "d+1+4,B+1,1,1,1",
+     "kind": "string",
+     "fired": "1",
+     "firedMove": "Jab"
+    },
+    {
+     "cmd": "d+1+4,B+1,1,1,1,1",
+     "kind": "string",
+     "fired": "1,1",
+     "firedMove": "Naguri Kabuto Wari"
+    },
+    {
+     "cmd": "f+2,D/B+2,2",
+     "kind": "string",
+     "fired": "2",
+     "firedMove": "Right Jab"
+    },
+    {
+     "cmd": "f+2,D/B+2,2,2",
+     "kind": "string",
+     "fired": "2,2",
+     "firedMove": "Mushibami"
+    },
+    {
+     "cmd": "f+2,D/B+2,2,2,2",
+     "kind": "string",
+     "fired": "2",
+     "firedMove": "Right Jab"
+    },
+    {
+     "cmd": "f+2,D/B+2,2,2,2,2",
+     "kind": "string",
+     "fired": "2,2",
+     "firedMove": "Mushibami"
+    },
+    {
+     "cmd": "f+2,D/B+2,2,2,2,2,2",
+     "kind": "string",
+     "fired": "2",
+     "firedMove": "Right Jab"
+    }
+   ],
+   "skipped": 629,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "buttonHold": [
+    "IND.D+3+4*",
+    "INS.3+4*",
+    "KIN.2,1+2*",
+    "KIN.2,NSS.1+2*",
+    "KIN.f+1*"
+   ],
+   "conflicts": [
+    {
+     "cmd": "WS.1,2,D/B+2",
+     "winner": "WS.1,2,d/b+2"
+    },
+    {
+     "cmd": "d+1+4,B+1",
+     "winner": "d+1+4,b+1"
+    },
+    {
+     "cmd": "f+2,D/B+2",
+     "winner": "f+2,d/b+2"
+    },
+    {
+     "cmd": "qcb+1+2",
+     "winner": "n,d,d/b,b+1+2"
+    },
+    {
+     "cmd": "qcf+1",
+     "winner": "n,d,d/f,f+1"
+    }
+   ]
+  },
+  "pond": {
+   "tested": 79,
+   "pass": 79,
+   "fail": [],
+   "skipped": 72,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "purplerain": {
+   "tested": 225,
+   "pass": 225,
+   "fail": [],
+   "skipped": 363,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "buttonHold": [
+    "1,2,4*"
+   ]
+  },
+  "raiden": {
+   "tested": 13,
+   "pass": 13,
+   "fail": [],
+   "skipped": 101,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "rave": {
+   "tested": 342,
+   "pass": 341,
+   "fail": [
+    {
+     "cmd": "b+1,2,1,3+4,2,1,4,1,4,4",
+     "kind": "string",
+     "fired": "4,4",
+     "firedMove": "LEI 4,4 (T3 lei r220)"
+    }
+   ],
+   "skipped": 925,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "realizzt": {
+   "tested": 59,
+   "pass": 59,
+   "fail": [],
+   "skipped": 97,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "retsu": {
+   "tested": 255,
+   "pass": 255,
+   "fail": [],
+   "skipped": 428,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "buttonHold": [
+    "3+4,SNE.2*",
+    "4,3,4*",
+    "b+1+4*",
+    "f,F+3*"
+   ]
+  },
+  "rin": {
+   "tested": 258,
+   "pass": 257,
+   "fail": [],
+   "skipped": 403,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "conflicts": [
+    {
+     "cmd": "qcb+1+3",
+     "winner": "d,d/b,b+1+3"
+    }
+   ]
+  },
+  "ryuji-rock": {
+   "tested": 16,
+   "pass": 16,
+   "fail": [],
+   "skipped": 8,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "ryuji": {
+   "tested": 0,
+   "pass": 0,
+   "fail": [],
+   "skipped": 103,
+   "neutral": {
+    "1": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    },
+    "2": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    },
+    "3": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    },
+    "4": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    }
+   }
+  },
+  "ryusan": {
+   "tested": 65,
+   "pass": 62,
+   "fail": [
+    {
+     "cmd": "2:2",
+     "kind": "string",
+     "fired": "2,2",
+     "firedMove": "RYUSAN 2, 2"
+    },
+    {
+     "cmd": "f+3,1,2,1+2,3,2:4,3,1",
+     "kind": "string",
+     "fired": "1",
+     "firedMove": "RYUSAN 1"
+    },
+    {
+     "cmd": "d+3+4:d+3+4",
+     "kind": "string",
+     "fired": "d+3+4,d+3+4",
+     "firedMove": "RYUSAN d+3+4, d+3+4"
+    }
+   ],
+   "skipped": 129,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "sakura": {
+   "tested": 273,
+   "pass": 270,
+   "fail": [
+    {
+     "cmd": "u+4,1,2,4,4,2,1+2,1,4,2",
+     "kind": "string",
+     "fired": "2",
+     "firedMove": "SAKU RA 2"
+    }
+   ],
+   "skipped": 501,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "conflicts": [
+    {
+     "cmd": "1,D+2",
+     "winner": "1,d+2"
+    },
+    {
+     "cmd": "qcb+2",
+     "winner": "d,d/b,b+2"
+    }
+   ],
+   "buttonHold": [
+    "WS.2*",
+    "ws2*"
+   ]
+  },
+  "samura1": {
+   "tested": 320,
+   "pass": 312,
+   "fail": [
+    {
+     "cmd": "1+4:d/f+1",
+     "kind": "string",
+     "fired": "1+4,d/f+1",
+     "firedMove": "Windup Uppercut"
+    },
+    {
+     "cmd": "d+2,1,1,1,2,1,2,1,1+2,1+2",
+     "kind": "string",
+     "fired": "1+2",
+     "firedMove": "Undefined Soul Protocol [WH SIGNATURE]"
+    },
+    {
+     "cmd": "d+2,1,1,1,2,1,2,1,d+1+2,d+1+2",
+     "kind": "string",
+     "fired": "d+1+2",
+     "firedMove": "Double Axe"
+    }
+   ],
+   "skipped": 561,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "buttonHold": [
+    "FC.d/f+3+4*",
+    "b+2*",
+    "b+3,2,2*",
+    "d/b+2*",
+    "d/f+2,1*",
+    "f+1,2,2*",
+    "f,F+2*",
+    "hFC.d/b+1,1,1*",
+    "u/f+1*",
+    "db+2*",
+    "df+2,1*",
+    "FC.df+3+4*",
+    "hFC.db+1,1,1*",
+    "uf+1*"
+   ],
+   "conflicts": [
+    {
+     "cmd": "d/f,D/F+2+4",
+     "winner": "n,d/f,n,d/f+2+4"
+    },
+    {
+     "cmd": "n,b,d/b,d,d/f,1",
+     "winner": "b,d/b,d,d/f+1"
+    },
+    {
+     "cmd": "n,d/b,n,f+1+2",
+     "winner": "d/b,n,f+1+2"
+    },
+    {
+     "cmd": "qcb+2",
+     "winner": "n,d,d/b,b+2"
+    },
+    {
+     "cmd": "qcf+1",
+     "winner": "n,d,d/f,f+1"
+    }
+   ]
+  },
+  "scimitar": {
+   "tested": 142,
+   "pass": 141,
+   "fail": [
+    {
+     "cmd": "2,1,4,1,3,3,3,3+4,4",
+     "kind": "string",
+     "fired": "4",
+     "firedMove": "Hallux Kick"
+    }
+   ],
+   "skipped": 238,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "sf-akuma": {
+   "tested": 102,
+   "pass": 102,
+   "fail": [],
+   "skipped": 67,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "buttonHold": [
+    "1+2*"
+   ]
+  },
+  "sf-blanka": {
+   "tested": 31,
+   "pass": 31,
+   "fail": [],
+   "skipped": 6,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "sf-cammy": {
+   "tested": 7,
+   "pass": 7,
+   "fail": [],
+   "skipped": 3,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "sf-chunli": {
+   "tested": 8,
+   "pass": 8,
+   "fail": [],
+   "skipped": 2,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "sf-dhalsim": {
+   "tested": 7,
+   "pass": 7,
+   "fail": [],
+   "skipped": 3,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "sf-guile": {
+   "tested": 7,
+   "pass": 7,
+   "fail": [],
+   "skipped": 4,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "sf-ken": {
+   "tested": 25,
+   "pass": 25,
+   "fail": [],
+   "skipped": 7,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "sf-mbison": {
+   "tested": 5,
+   "pass": 5,
+   "fail": [],
+   "skipped": 7,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "sf-ryu": {
+   "tested": 27,
+   "pass": 27,
+   "fail": [],
+   "skipped": 7,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "sf-sagat": {
+   "tested": 7,
+   "pass": 7,
+   "fail": [],
+   "skipped": 3,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "sf-vega": {
+   "tested": 28,
+   "pass": 28,
+   "fail": [],
+   "skipped": 8,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "sf-zangief": {
+   "tested": 28,
+   "pass": 27,
+   "fail": [
+    {
+     "cmd": "1+2,1+2,1+2",
+     "kind": "string",
+     "fired": "1+2",
+     "firedMove": "ZANGIEF Double Lariat"
+    }
+   ],
+   "skipped": 8,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "sha": {
+   "tested": 273,
+   "pass": 270,
+   "fail": [
+    {
+     "cmd": "u+4,1,2,4,4,2,1+2,1,4,2",
+     "kind": "string",
+     "fired": "2",
+     "firedMove": "SHA 2"
+    }
+   ],
+   "skipped": 499,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "conflicts": [
+    {
+     "cmd": "1,D+2",
+     "winner": "1,d+2"
+    },
+    {
+     "cmd": "qcb+2",
+     "winner": "d,d/b,b+2"
+    }
+   ],
+   "buttonHold": [
+    "WS.2*",
+    "ws2*"
+   ]
+  },
+  "skull": {
+   "tested": 254,
+   "pass": 254,
+   "fail": [],
+   "skipped": 455,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "buttonHold": [
+    "3+4,SNE.2*",
+    "4,3,4*",
+    "b+1+4*",
+    "f,F+3*"
+   ]
+  },
+  "slice": {
+   "tested": 178,
+   "pass": 178,
+   "fail": [],
+   "skipped": 335,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "star": {
+   "tested": 341,
+   "pass": 339,
+   "fail": [
+    {
+     "cmd": "u+4,1,2,4,4,2,1+2,1,4,2",
+     "kind": "string",
+     "fired": "2",
+     "firedMove": "STAR 2"
+    }
+   ],
+   "skipped": 579,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "conflicts": [
+    {
+     "cmd": "1,D+2",
+     "winner": "1,d+2"
+    }
+   ],
+   "buttonHold": [
+    "WS.2*"
+   ]
+  },
+  "sunra": {
+   "tested": 44,
+   "pass": 44,
+   "fail": [],
+   "skipped": 95,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "t3-anna": {
+   "tested": 78,
+   "pass": 78,
+   "fail": [],
+   "skipped": 146,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "t3-bosconovitch": {
+   "tested": 91,
+   "pass": 91,
+   "fail": [],
+   "skipped": 175,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "t3-eddy": {
+   "tested": 90,
+   "pass": 90,
+   "fail": [],
+   "skipped": 128,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "t3-forestlaw": {
+   "tested": 44,
+   "pass": 44,
+   "fail": [],
+   "skipped": 58,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "t3-gon": {
+   "tested": 61,
+   "pass": 61,
+   "fail": [],
+   "skipped": 90,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "t3-hwoarang": {
+   "tested": 78,
+   "pass": 78,
+   "fail": [],
+   "skipped": 110,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "t3-julia": {
+   "tested": 74,
+   "pass": 74,
+   "fail": [],
+   "skipped": 109,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "t3-kuma": {
+   "tested": 70,
+   "pass": 70,
+   "fail": [],
+   "skipped": 93,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "t3-law": {
+   "tested": 78,
+   "pass": 78,
+   "fail": [],
+   "skipped": 150,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "t3-lei": {
+   "tested": 101,
+   "pass": 101,
+   "fail": [],
+   "skipped": 165,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "t3-nina": {
+   "tested": 71,
+   "pass": 71,
+   "fail": [],
+   "skipped": 138,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "t3-ogre": {
+   "tested": 65,
+   "pass": 65,
+   "fail": [],
+   "skipped": 96,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "t3-paul": {
+   "tested": 56,
+   "pass": 56,
+   "fail": [],
+   "skipped": 113,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "thor": {
+   "tested": 97,
+   "pass": 97,
+   "fail": [],
+   "skipped": 147,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "tobi": {
+   "tested": 82,
+   "pass": 82,
+   "fail": [],
+   "skipped": 112,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "torch": {
+   "tested": 335,
+   "pass": 329,
+   "fail": [
+    {
+     "cmd": "1,2,1,2,4,1,2,2,3+4,2",
+     "kind": "string",
+     "fired": "2",
+     "firedMove": "TORCH 2"
+    },
+    {
+     "cmd": "CHIN_BASH.1+2,4,3,1+2,1+2,1+2",
+     "kind": "string",
+     "fired": null,
+     "firedMove": null
+    },
+    {
+     "cmd": "CHIN_BASH.4,3,4,3+4,1+2",
+     "kind": "string",
+     "fired": null,
+     "firedMove": null
+    },
+    {
+     "cmd": "REVERSE_ARM_LOCK.2,3,1+2,3+4,1+2",
+     "kind": "string",
+     "fired": "1+2",
+     "firedMove": "Nail File [WH SIGNATURE]"
+    },
+    {
+     "cmd": "REVERSE_ARM_LOCK.3,1,4,1+2,1+2",
+     "kind": "string",
+     "fired": "1+2",
+     "firedMove": "Nail File [WH SIGNATURE]"
+    }
+   ],
+   "skipped": 582,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "conflicts": [
+    {
+     "cmd": "d/f,d/f+1",
+     "winner": "n,d/f,n,d/f+1"
+    }
+   ],
+   "buttonHold": [
+    "f,F+1+2*"
+   ]
+  },
+  "tou": {
+   "tested": 230,
+   "pass": 228,
+   "fail": [
+    {
+     "cmd": "d+4,2:1+2",
+     "kind": "string",
+     "fired": "d+4,2,1+2",
+     "firedMove": "Demolition Man"
+    }
+   ],
+   "skipped": 401,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "buttonHold": [
+    "1+2*",
+    "1+2**",
+    "H.1+2*",
+    "H.1+2**",
+    "H.b+2,1*",
+    "H.d+1,2*",
+    "H.f+1+2*",
+    "b+2,1*",
+    "d+1,2*",
+    "d/f+3,4*",
+    "f+1+2*",
+    "u/b+2*"
+   ],
+   "conflicts": [
+    {
+     "cmd": "f,F+1+2",
+     "winner": "n,f,n,f+1+2"
+    }
+   ]
+  },
+  "vainabel": {
+   "tested": 50,
+   "pass": 50,
+   "fail": [],
+   "skipped": 2,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "vega": {
+   "tested": 32,
+   "pass": 32,
+   "fail": [],
+   "skipped": 175,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "vf-akira": {
+   "tested": 18,
+   "pass": 18,
+   "fail": [],
+   "skipped": 2,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    }
+   }
+  },
+  "vf-elblaze": {
+   "tested": 25,
+   "pass": 25,
+   "fail": [],
+   "skipped": 3,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    }
+   }
+  },
+  "vf-jeffry": {
+   "tested": 24,
+   "pass": 24,
+   "fail": [],
+   "skipped": 1,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    }
+   }
+  },
+  "vf-kage": {
+   "tested": 12,
+   "pass": 12,
+   "fail": [],
+   "skipped": 2,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    }
+   }
+  },
+  "vf-leifei": {
+   "tested": 20,
+   "pass": 20,
+   "fail": [],
+   "skipped": 2,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    }
+   }
+  },
+  "vf-sarah": {
+   "tested": 12,
+   "pass": 12,
+   "fail": [],
+   "skipped": 2,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    }
+   }
+  },
+  "vf-wolf": {
+   "tested": 19,
+   "pass": 19,
+   "fail": [],
+   "skipped": 2,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": null,
+     "ok": true,
+     "dead": true
+    }
+   }
+  },
+  "waterfall": {
+   "tested": 146,
+   "pass": 146,
+   "fail": [],
+   "skipped": 197,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "yukihyo": {
+   "tested": 241,
+   "pass": 236,
+   "fail": [
+    {
+     "cmd": "COBRA_CLUTCH.2+4,1+2,1+2",
+     "kind": "string",
+     "fired": "1+2",
+     "firedMove": "Whiteout [WH SIGNATURE]"
+    },
+    {
+     "cmd": "NECK_DROP.4,3,3+4,1+2",
+     "kind": "string",
+     "fired": "1+2",
+     "firedMove": "Whiteout [WH SIGNATURE]"
+    },
+    {
+     "cmd": "SLEEPER.3,4,1+2,3+4",
+     "kind": "string",
+     "fired": "3+4",
+     "firedMove": "Round Out Kick"
+    },
+    {
+     "cmd": "d/f+2,1,3,2,2,3,4,1+2,2,1+2",
+     "kind": "string",
+     "fired": "1+2",
+     "firedMove": "Whiteout [WH SIGNATURE]"
+    },
+    {
+     "cmd": "d/f+2,1,3,2,2,4,2,1,3+4,2",
+     "kind": "string",
+     "fired": "3+4,2",
+     "firedMove": "Round Out Elbow"
+    }
+   ],
+   "skipped": 323,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "buttonHold": [
+    "3+4*",
+    "H.u/b+1+2*",
+    "R.f,n,d,d/f+1+2*",
+    "u+1+2*",
+    "u/b+1+2*",
+    "u/f+1+2*",
+    "(During Rage) f,n,d,d/f+1+2*"
+   ]
+  },
+  "zangief": {
+   "tested": 27,
+   "pass": 27,
+   "fail": [],
+   "skipped": 190,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  },
+  "zen": {
+   "tested": 235,
+   "pass": 234,
+   "fail": [],
+   "skipped": 400,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   },
+   "buttonHold": [
+    "1,2,4*",
+    "4*",
+    "b+2*",
+    "b:2*",
+    "d/f+1,2*",
+    "d/f+1:2*",
+    "u/b+1+2*"
+   ],
+   "conflicts": [
+    {
+     "cmd": "f,F+1+2",
+     "winner": "n,f,n,f+1+2"
+    }
+   ]
+  },
+  "zui": {
+   "tested": 254,
+   "pass": 254,
+   "fail": [],
+   "skipped": 474,
+   "neutral": {
+    "1": {
+     "fired": "1",
+     "ok": true,
+     "dead": false
+    },
+    "2": {
+     "fired": "2",
+     "ok": true,
+     "dead": false
+    },
+    "3": {
+     "fired": "3",
+     "ok": true,
+     "dead": false
+    },
+    "4": {
+     "fired": "4",
+     "ok": true,
+     "dead": false
+    }
+   }
+  }
+ },
+ "touchRecenter": true,
+ "summary": {
+  "fighters": 125,
+  "fightersOk": 93,
+  "commandsPass": 15419,
+  "commandsFail": 107,
+  "dataConflicts": 34,
+  "buttonHoldNotWired": 142,
+  "neutralFail": 0,
+  "touchRecenter": true
+ }
+}

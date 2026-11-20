@@ -1,0 +1,5518 @@
+{
+ "fighter": "t7-leo",
+ "display": "Leo Kliesen (Tekken 7 source moveset)",
+ "tekken_base": "Leo Kliesen",
+ "source": {
+  "built_by": "FILL 2 (2026-11-06), owner fill order: \"1, 2, 3, then 4, remember then all til we get em done\"",
+  "frame_table": "game/data/t7-frame-data/t7-leo-lp-rp-lk-rk.json",
+  "motbin": "GRE teardown/tekken7-steam/tkdata/mothead/bin/leomot.bin + json/leomot.json",
+  "mvl": "GRE teardown/tekken7-steam/tkdata/mothead/movelist/leo.mvl",
+  "banks": "GRE release t7-fighter-banks-v1 (leo_clips.bin, leo_bank0_clips.bin); indexes in GRE mask/indexes/",
+  "method": "group-correct string walk (t7_string_walk.py); wired = unique terminal + clip locator; see fill2 fields per move"
+ },
+ "fill2_stats": {
+  "rows": 167,
+  "wired": 79,
+  "pass2": {
+   "sequence": 13,
+   "slide": 0
+  }
+ },
+ "moves": {
+  "in rage d/f+1+2": {
+   "name": "in rage d/f+1+2",
+   "name_source": "notation-only",
+   "input": "in rage d/f+1+2",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "\u2013",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Rage art",
+   "anim_ref": null,
+   "t7": {
+    "notation": "in rage d/f+1+2",
+    "id": "leo_1",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1": {
+   "name": "Un_lp00F",
+   "name_source": "motbin-internal",
+   "input": "1",
+   "damage": 7,
+   "damage_raw": "7",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h",
+   "on_block": "+1",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:320",
+   "t7": {
+    "notation": "1",
+    "id": "leo_2",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "1",
+    "motbin_move_id": 1574,
+    "motbin_move_name": "Un_lp00F",
+    "anim_name": "kmun_lpnf(DVD)",
+    "anim_id": 16704,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 320,
+     "rel_offset": 2686472,
+     "size": 2312,
+     "format_word": 100,
+     "sha256": "24d30c43db28b9558b59851716c89294871db03a60ca68316ceccf3ceb206b2c",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [7]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1574
+    ]
+   }
+  },
+  "1, 2": {
+   "name": "He Zi Shou",
+   "name_source": "mvl",
+   "input": "1, 2",
+   "damage": 7,
+   "damage_raw": "7,10",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h",
+   "on_block": "-1",
+   "on_hit": "+7",
+   "on_ch": "+7",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:321",
+   "t7": {
+    "notation": "1, 2",
+    "id": "leo_3",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "1, 2",
+    "motbin_move_id": 1580,
+    "motbin_move_name": "Un_lprp",
+    "anim_name": "kmun_lpnrpn(DVD)",
+    "anim_id": 16705,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 321,
+     "rel_offset": 2688784,
+     "size": 2440,
+     "format_word": 100,
+     "sha256": "6c1363208eb814e05194734ab8241cbb24c9c9673e7a3d3c7d7ce30a02330464",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "1, 2, B": {
+   "name": "1, 2, B",
+   "name_source": "notation-only",
+   "input": "1, 2, B",
+   "damage": 7,
+   "damage_raw": "7,10",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h, (KNK)",
+   "on_block": "-10",
+   "on_hit": "-2",
+   "on_ch": "-2",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1, 2, B",
+    "id": "leo_4",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1, 2, 1": {
+   "name": "Un_lprplp",
+   "name_source": "motbin-internal",
+   "input": "1, 2, 1",
+   "damage": 7,
+   "damage_raw": "7,10,16",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h, h",
+   "on_block": "-5",
+   "on_hit": "+6",
+   "on_ch": "+9",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:324",
+   "t7": {
+    "notation": "1, 2, 1",
+    "id": "leo_5",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "1, 2, 1",
+    "motbin_move_id": 1585,
+    "motbin_move_name": "Un_lprplp",
+    "anim_name": "kmun_lprp_ura(DVD)",
+    "anim_id": 16708,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 324,
+     "rel_offset": 2699020,
+     "size": 3316,
+     "format_word": 100,
+     "sha256": "e6b9933b4e827525cc4acbcb10feeb72de26e56db39687a985b5f60573373193",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "1, 2, 1, 1": {
+   "name": "Liang Yi Zhou",
+   "name_source": "mvl",
+   "input": "1, 2, 1, 1",
+   "damage": 7,
+   "damage_raw": "7,10,16,21",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h, h, m",
+   "on_block": "-13",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:326",
+   "t7": {
+    "notation": "1, 2, 1, 1",
+    "id": "leo_6",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "1, 2, 1, 1",
+    "motbin_move_id": 1588,
+    "motbin_move_name": "Un_lprplplp",
+    "anim_name": "kmun_lprplplp(DVD)",
+    "anim_id": 16710,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 326,
+     "rel_offset": 2705640,
+     "size": 3060,
+     "format_word": 100,
+     "sha256": "16d92d1a0f343aaf234dc16e858943ab23cb1a4bea0cec1e1dc2185a6aa17091",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "1, 2, 1, 4": {
+   "name": "Wai Bai Tui",
+   "name_source": "mvl",
+   "input": "1, 2, 1, 4",
+   "damage": 7,
+   "damage_raw": "7,10,16,30",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h, h, h",
+   "on_block": "-6",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:325",
+   "t7": {
+    "notation": "1, 2, 1, 4",
+    "id": "leo_7",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "1, 2, 1, 4",
+    "motbin_move_id": 1587,
+    "motbin_move_name": "Un_lprplprk",
+    "anim_name": "kmun_lprplprk(DVD)",
+    "anim_id": 16709,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 325,
+     "rel_offset": 2702336,
+     "size": 3304,
+     "format_word": 100,
+     "sha256": "fceb0261311d7f7496b51408cea2d000f5b364684c570b4857ac029f5e14f280",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "1, 2, 4": {
+   "name": "Ye Chui",
+   "name_source": "mvl",
+   "input": "1, 2, 4",
+   "damage": 7,
+   "damage_raw": "7,10,15",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h, l",
+   "on_block": "-13",
+   "on_hit": "+3",
+   "on_ch": "+3",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:322",
+   "t7": {
+    "notation": "1, 2, 4",
+    "id": "leo_8",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "1, 2, 4",
+    "motbin_move_id": 1583,
+    "motbin_move_name": "Un_lprprklo",
+    "anim_name": "kmun_lprprk(DVD)",
+    "anim_id": 16706,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 322,
+     "rel_offset": 2691224,
+     "size": 3688,
+     "format_word": 100,
+     "sha256": "b9330539b0550837c7f62f0901efbcd903db9c4c3f3ad72e2dc6cbac90c6587d",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "1, 4": {
+   "name": "Lian Tan",
+   "name_source": "mvl",
+   "input": "1, 4",
+   "damage": 7,
+   "damage_raw": "7,17",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h",
+   "on_block": "-4",
+   "on_hit": "+5",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:327",
+   "t7": {
+    "notation": "1, 4",
+    "id": "leo_9",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "1, 4",
+    "motbin_move_id": 1589,
+    "motbin_move_name": "Un_lprk",
+    "anim_name": "moun_lprk(DVD)",
+    "anim_id": 16711,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 327,
+     "rel_offset": 2708700,
+     "size": 2792,
+     "format_word": 100,
+     "sha256": "7b7d862d31fe89b8a63349a95a2b790a113c9f6ae08cd13858d7b048607dd213",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "2": {
+   "name": "Heng Quan",
+   "name_source": "mvl",
+   "input": "2",
+   "damage": 9,
+   "damage_raw": "9",
+   "startup": 0.1833,
+   "startup_frames": 11,
+   "hit_level": "h",
+   "on_block": "-1",
+   "on_hit": "+5",
+   "on_ch": "+5",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:328",
+   "t7": {
+    "notation": "2",
+    "id": "leo_10",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "2",
+    "motbin_move_id": 1593,
+    "motbin_move_name": "Un_rp00",
+    "anim_name": "moun_rp(DVD)",
+    "anim_id": 16712,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 328,
+     "rel_offset": 2711492,
+     "size": 2488,
+     "format_word": 100,
+     "sha256": "784eab56a6c66df5b8f395f44674d86c5346bb088830c137053a092ce02033b7",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [9]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1593
+    ]
+   }
+  },
+  "2, 1": {
+   "name": "Xiang Long Shi Chong Tian Zhang",
+   "name_source": "mvl",
+   "input": "2, 1",
+   "damage": 9,
+   "damage_raw": "9,12",
+   "startup": 0.1833,
+   "startup_frames": 11,
+   "hit_level": "h, h",
+   "on_block": "-7",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:329",
+   "t7": {
+    "notation": "2, 1",
+    "id": "leo_11",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "2, 1",
+    "motbin_move_id": 1595,
+    "motbin_move_name": "Un_rplp",
+    "anim_name": "moun_rplp(DVD)",
+    "anim_id": 16713,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 329,
+     "rel_offset": 2713980,
+     "size": 2744,
+     "format_word": 100,
+     "sha256": "cb76499efde3a0e6a34f421bedfbb5641080be8bc96df4205ab50337cfdc78d5",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [9, 12]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1593,
+     1595
+    ]
+   }
+  },
+  "2, 2": {
+   "name": "Xiang Long Shi Ling Zhou",
+   "name_source": "mvl",
+   "input": "2, 2",
+   "damage": 9,
+   "damage_raw": "9,20",
+   "startup": 0.1833,
+   "startup_frames": 11,
+   "hit_level": "h, m",
+   "on_block": "-13",
+   "on_hit": "+4",
+   "on_ch": "KND?",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:413",
+   "t7": {
+    "notation": "2, 2",
+    "id": "leo_12",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "2, 2",
+    "motbin_move_id": 1741,
+    "motbin_move_name": "Un_tukihiji",
+    "anim_name": "kmun_senpo_hiji(DVD)",
+    "anim_id": 16797,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 413,
+     "rel_offset": 2912180,
+     "size": 3444,
+     "format_word": 100,
+     "sha256": "176d08c98ad049121ab553647a093e5392af1e48f22bf7fcaab353a72b7afc94",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [9, 20]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1593,
+     1741
+    ]
+   }
+  },
+  "3": {
+   "name": "Startled Crane",
+   "name_source": "mvl",
+   "input": "3",
+   "damage": 15,
+   "damage_raw": "15",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "h",
+   "on_block": "-8",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:331",
+   "t7": {
+    "notation": "3",
+    "id": "leo_13",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "3",
+    "motbin_move_id": 1599,
+    "motbin_move_name": "Un_lk00",
+    "anim_name": "moun_lk(DVD)",
+    "anim_id": 16715,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 331,
+     "rel_offset": 2720064,
+     "size": 2692,
+     "format_word": 100,
+     "sha256": "88fbf2fdeed2a7a35c6e4ac845985b233ac1462ba13ac60908d1bd216f2c6d0d",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [15]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1599
+    ]
+   }
+  },
+  "3, 2": {
+   "name": "Un_LKRP",
+   "name_source": "motbin-internal",
+   "input": "3, 2",
+   "damage": 15,
+   "damage_raw": "15,10",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "h, h",
+   "on_block": "-2",
+   "on_hit": "+9",
+   "on_ch": "+9",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:332",
+   "t7": {
+    "notation": "3, 2",
+    "id": "leo_14",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "3, 2",
+    "motbin_move_id": 1600,
+    "motbin_move_name": "Un_LKRP",
+    "anim_name": "moun_lkrp(DVD)",
+    "anim_id": 16716,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 332,
+     "rel_offset": 2722756,
+     "size": 3072,
+     "format_word": 100,
+     "sha256": "ce956bcd7f147ea0e9be99bf5bbb1c224ff34db7a1e45b1bea75d02b8c69c394",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [15, 10]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1599,
+     1600
+    ]
+   }
+  },
+  "3, 2, D": {
+   "name": "3, 2, D",
+   "name_source": "notation-only",
+   "input": "3, 2, D",
+   "damage": 15,
+   "damage_raw": "15,10",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "h, h, (BOK)",
+   "on_block": "-6",
+   "on_hit": "+5",
+   "on_ch": "+5",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "3, 2, D",
+    "id": "leo_15",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "3, 2, 3": {
+   "name": "Wu Dang Xuan Feng Jiao",
+   "name_source": "mvl",
+   "input": "3, 2, 3",
+   "damage": 15,
+   "damage_raw": "15,10,26",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "h, h, m (TJ)",
+   "on_block": "-7",
+   "on_hit": "KND",
+   "on_ch": "KFUD",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:334",
+   "t7": {
+    "notation": "3, 2, 3",
+    "id": "leo_16",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "3, 2, 3",
+    "motbin_move_id": 1603,
+    "motbin_move_name": "Un_LKRPLK",
+    "anim_name": "kmun_lkrplk(DVD)",
+    "anim_id": 16718,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 334,
+     "rel_offset": 2728416,
+     "size": 3312,
+     "format_word": 100,
+     "sha256": "8347b4a24d7980c0f8dcad8b99d2004c1769ec33b90d4996c36bd87acb0705f6",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "3, 2, 3, B (Cancel)": {
+   "name": "3, 2, 3, B (Cancel)",
+   "name_source": "notation-only",
+   "input": "3, 2, 3, B (Cancel)",
+   "damage": 15,
+   "damage_raw": "15,10",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "h, h",
+   "on_block": "-15",
+   "on_hit": "-4",
+   "on_ch": "-4",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "3, 2, 3, B (Cancel)",
+    "id": "leo_17",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "3, 2, 4": {
+   "name": "Wu Dang Jin Ji Du Li",
+   "name_source": "mvl",
+   "input": "3, 2, 4",
+   "damage": 15,
+   "damage_raw": "15,10,14",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "h, h, m, (KNK)",
+   "on_block": "+8",
+   "on_hit": "+14",
+   "on_ch": "+14",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:323",
+   "t7": {
+    "notation": "3, 2, 4",
+    "id": "leo_18",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "3, 2, 4",
+    "motbin_move_id": 1584,
+    "motbin_move_name": "Un_lprprk",
+    "anim_name": "moun_lpnrpnrhiza(DVD)",
+    "anim_id": 16707,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 323,
+     "rel_offset": 2694912,
+     "size": 4108,
+     "format_word": 100,
+     "sha256": "e36fc2792b879c8c9644dd6d9823936365ccf810e6b48adacf698d8200663cc3",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "1+2": {
+   "name": "Dual Rising Fists",
+   "name_source": "mvl",
+   "input": "1+2",
+   "damage": 25,
+   "damage_raw": "25",
+   "startup": 0.4167,
+   "startup_frames": 25,
+   "hit_level": "m",
+   "on_block": "-12",
+   "on_hit": "+?",
+   "on_ch": "+?",
+   "notes": "Power crush",
+   "anim_ref": "t7:leo:0x4000:609",
+   "t7": {
+    "notation": "1+2",
+    "id": "leo_19",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "1+2",
+    "motbin_move_id": 2160,
+    "motbin_move_name": "Un_spam",
+    "anim_name": "unsj_koboku_01(DVD)",
+    "anim_id": 16993,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 609,
+     "rel_offset": 3545988,
+     "size": 4716,
+     "format_word": 100,
+     "sha256": "1a00ac1fb56f93845e225d2991db139b0107977f8d3b994b6a0f52d0e3dba544",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "2+3": {
+   "name": "Ye Kua",
+   "name_source": "mvl",
+   "input": "2+3",
+   "damage": 21,
+   "damage_raw": "21",
+   "startup": 0.5,
+   "startup_frames": 30,
+   "hit_level": "m(Absorbs 1 h/m hit)",
+   "on_block": "-8",
+   "on_hit": "+5(KND)",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:417",
+   "t7": {
+    "notation": "2+3",
+    "id": "leo_20",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "2+3",
+    "motbin_move_id": 1746,
+    "motbin_move_name": "Un_koushu0",
+    "anim_name": "kmun_ieko(DVD)",
+    "anim_id": 16801,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 417,
+     "rel_offset": 2924784,
+     "size": 3924,
+     "format_word": 100,
+     "sha256": "72e1cb3fe72be2761c24ef79e3ea99a25f079fc1d2b516e1ef685bc0d90b52d1",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+2": {
+   "name": "Un_rp00F",
+   "name_source": "motbin-internal",
+   "input": "f+2",
+   "damage": 14,
+   "damage_raw": "14",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-5~-4",
+   "on_hit": "+6~+7",
+   "on_ch": "+6~+7",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:410",
+   "t7": {
+    "notation": "f+2",
+    "id": "leo_21",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+2",
+    "motbin_move_id": 1738,
+    "motbin_move_name": "Un_rp00F",
+    "anim_name": "kmun_yokorp(DVD)",
+    "anim_id": 16794,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 410,
+     "rel_offset": 2902648,
+     "size": 2652,
+     "format_word": 100,
+     "sha256": "05133988b16f279569091c7fd780fe189aa8cc5e26ec67c06f07aaae8edaf51f",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+2, 2": {
+   "name": "Heng Da Er Lang Dan Shan",
+   "name_source": "mvl",
+   "input": "f+2, 2",
+   "damage": 14,
+   "damage_raw": "14,21",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h, m",
+   "on_block": "-12",
+   "on_hit": "+6",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:411",
+   "t7": {
+    "notation": "f+2, 2",
+    "id": "leo_22",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+2, 2",
+    "motbin_move_id": 1739,
+    "motbin_move_name": "Un_hokkou",
+    "anim_name": "moun_yrprp(DVD)",
+    "anim_id": 16795,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 411,
+     "rel_offset": 2905300,
+     "size": 3624,
+     "format_word": 100,
+     "sha256": "9213fdd661d978fe9eed6a804c43802a77ad4b9fbd76257cf0a3e774c888f38d",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+3": {
+   "name": "Bai Tui",
+   "name_source": "mvl",
+   "input": "f+3",
+   "damage": 23,
+   "damage_raw": "23",
+   "startup": 0.3333,
+   "startup_frames": 20,
+   "hit_level": "h",
+   "on_block": "0",
+   "on_hit": "+4",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:472",
+   "t7": {
+    "notation": "f+3",
+    "id": "leo_23",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+3",
+    "motbin_move_id": 1818,
+    "motbin_move_name": "Un_lk00F",
+    "anim_name": "kmun_lkboku_ta(DVD)",
+    "anim_id": 16856,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 472,
+     "rel_offset": 3047072,
+     "size": 3336,
+     "format_word": 100,
+     "sha256": "0049c018749686ddddbc0d583ce7339a47d4bc0fd18685c5766124a928acd209",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+3, D": {
+   "name": "f+3, D",
+   "name_source": "notation-only",
+   "input": "f+3, D",
+   "damage": 23,
+   "damage_raw": "23",
+   "startup": 0.3333,
+   "startup_frames": 20,
+   "hit_level": "h, (BOK)",
+   "on_block": "+1",
+   "on_hit": "+5",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f+3, D",
+    "id": "leo_24",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f+1+2": {
+   "name": "Bei Zhe Kao",
+   "name_source": "mvl",
+   "input": "f+1+2",
+   "damage": 32,
+   "damage_raw": "32",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-15~-14?",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:leo:0x0000:115",
+   "t7": {
+    "notation": "f+1+2",
+    "id": "leo_25",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+1+2",
+    "motbin_move_id": 1727,
+    "motbin_move_name": "Un_kou",
+    "anim_name": "unod_s4_6wp",
+    "anim_id": 115,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x0000",
+     "source": "leomot.bin",
+     "section": 0,
+     "entry": 115,
+     "rel_offset": 1982020,
+     "size": 4616,
+     "format_word": 100,
+     "sha256": "c998635e0b256d06dd58b53394e9d3ba632e86343244a303b8aa5c14c8f2a6ce",
+     "blob_file": "leo_bank0_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+2+3": {
+   "name": "Xiang Chui",
+   "name_source": "mvl",
+   "input": "f+2+3",
+   "damage": 21,
+   "damage_raw": "21",
+   "startup": 0.3333,
+   "startup_frames": 20,
+   "hit_level": "h",
+   "on_block": "-9",
+   "on_hit": "KND(KND)",
+   "on_ch": "KND(KND)",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:405",
+   "t7": {
+    "notation": "f+2+3",
+    "id": "leo_26",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+2+3",
+    "motbin_move_id": 1731,
+    "motbin_move_name": "Un_jikutac",
+    "anim_name": "kmun_kousui(DVD)",
+    "anim_id": 16789,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 405,
+     "rel_offset": 2892800,
+     "size": 3356,
+     "format_word": 100,
+     "sha256": "aaf515fbc4c9ec5065555dc4eb1d664065585729d55fcee35762f54e05b5507a",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+1": {
+   "name": "Un_t_slpF",
+   "name_source": "motbin-internal",
+   "input": "d/f+1",
+   "damage": 13,
+   "damage_raw": "13",
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "m",
+   "on_block": "-1",
+   "on_hit": "+7",
+   "on_ch": "+7",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:364",
+   "t7": {
+    "notation": "d/f+1",
+    "id": "leo_27",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+1",
+    "motbin_move_id": 1672,
+    "motbin_move_name": "Un_t_slpF",
+    "anim_name": "kmun_3lp(DVD)",
+    "anim_id": 16748,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 364,
+     "rel_offset": 2800072,
+     "size": 2868,
+     "format_word": 100,
+     "sha256": "7025ddbd535ab8cc259ab4ef1ebeaeaee2a46b3728568d9b15a898ffe6c1f6e1",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+1, 2": {
+   "name": "Shuang Huan Da",
+   "name_source": "mvl",
+   "input": "d/f+1, 2",
+   "damage": 13,
+   "damage_raw": "13,20",
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "m, h",
+   "on_block": "-6",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:365",
+   "t7": {
+    "notation": "d/f+1, 2",
+    "id": "leo_28",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+1, 2",
+    "motbin_move_id": 1673,
+    "motbin_move_name": "Un_3lprp",
+    "anim_name": "kmun_3lprp(DVD)",
+    "anim_id": 16749,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 365,
+     "rel_offset": 2802940,
+     "size": 3796,
+     "format_word": 100,
+     "sha256": "7950758766fd0d14ea62b3fd4069327321c004184300f5ac292173fdec38d40f",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+2": {
+   "name": "Sheng Pao",
+   "name_source": "mvl",
+   "input": "d/f+2",
+   "damage": 14,
+   "damage_raw": "14",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-13~-12",
+   "on_hit": "Launch (JG?)(-2a)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:409",
+   "t7": {
+    "notation": "d/f+2",
+    "id": "leo_29",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+2",
+    "motbin_move_id": 1737,
+    "motbin_move_name": "Un_t_srpF",
+    "anim_name": "moun_hantei(DVD)",
+    "anim_id": 16793,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 409,
+     "rel_offset": 2899516,
+     "size": 3132,
+     "format_word": 100,
+     "sha256": "9d9d6f2d4fc6e387df9e4cad1cf8323bdd7cd94b22106fb7fb95702ee8726b33",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+3": {
+   "name": "Chuan Pao",
+   "name_source": "mvl",
+   "input": "d/f+3",
+   "damage": 22,
+   "damage_raw": "22",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-9~-8",
+   "on_hit": "KND",
+   "on_ch": "KFUD",
+   "notes": "Homing, Tail spin",
+   "anim_ref": "t7:leo:0x0000:110",
+   "t7": {
+    "notation": "d/f+3",
+    "id": "leo_30",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+3",
+    "motbin_move_id": 1684,
+    "motbin_move_name": "Un_t_slkF",
+    "anim_name": "unss_s3_3lk",
+    "anim_id": 110,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x0000",
+     "source": "leomot.bin",
+     "section": 0,
+     "entry": 110,
+     "rel_offset": 1954800,
+     "size": 5180,
+     "format_word": 100,
+     "sha256": "8be369fccef2dd65b34e917e759da9e1e2f6e86d4c3d6f2e0a16d27d8470c063",
+     "blob_file": "leo_bank0_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+2+3": {
+   "name": "Gui Xi",
+   "name_source": "mvl",
+   "input": "d/f+2+3",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-14",
+   "on_hit": "KND",
+   "on_ch": "aUD",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:448",
+   "t7": {
+    "notation": "d/f+2+3",
+    "id": "leo_31",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+2+3",
+    "motbin_move_id": 1786,
+    "motbin_move_name": "Un_kisitsu",
+    "anim_name": "unhk_kisitu(DVD)",
+    "anim_id": 16832,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 448,
+     "rel_offset": 2982896,
+     "size": 4560,
+     "format_word": 100,
+     "sha256": "2308de26e12dc9dedec779a348d65f96927921262db7f4368ca801859878da6a",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d+1": {
+   "name": "Fu Hu",
+   "name_source": "mvl",
+   "input": "d+1",
+   "damage": 18,
+   "damage_raw": "18",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-3~?",
+   "on_hit": "+4~+5?s",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:356",
+   "t7": {
+    "notation": "d+1",
+    "id": "leo_32",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+1",
+    "motbin_move_id": 1651,
+    "motbin_move_name": "Un_t_slp00",
+    "anim_name": "kmun_fukkolp(DVD)",
+    "anim_id": 16740,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 356,
+     "rel_offset": 2781468,
+     "size": 3076,
+     "format_word": 100,
+     "sha256": "851b48042d0b28a6bf6a33fc03aeb5197b4bfe0adff008f1f61735340e4eff9f",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d+1, D": {
+   "name": "d+1, D",
+   "name_source": "notation-only",
+   "input": "d+1, D",
+   "damage": 18,
+   "damage_raw": "18",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-5~?",
+   "on_hit": "+4~+5?s",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d+1, D",
+    "id": "leo_33",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "d+2": {
+   "name": "Pi Zhong",
+   "name_source": "mvl",
+   "input": "d+2",
+   "damage": 23,
+   "damage_raw": "23",
+   "startup": 0.35,
+   "startup_frames": 21,
+   "hit_level": "m",
+   "on_block": "+2",
+   "on_hit": "+8?s",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:359",
+   "t7": {
+    "notation": "d+2",
+    "id": "leo_34",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+2",
+    "motbin_move_id": 1655,
+    "motbin_move_name": "Un_t_srp00",
+    "anim_name": "moun_midrp(DVD)",
+    "anim_id": 16743,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 359,
+     "rel_offset": 2786516,
+     "size": 3616,
+     "format_word": 100,
+     "sha256": "a6559cfc4ded3b08fd8e7e06c50e297813db5d43a546d4e624d385922441b540",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d+4": {
+   "name": "Co_t_srk00",
+   "name_source": "motbin-internal",
+   "input": "d+4",
+   "damage": 10,
+   "damage_raw": "10",
+   "startup": 0.2667,
+   "startup_frames": 16,
+   "hit_level": "l",
+   "on_block": "-12",
+   "on_hit": "-1",
+   "on_ch": "-1",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:361",
+   "t7": {
+    "notation": "d+4",
+    "id": "leo_35",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+4",
+    "motbin_move_id": 1659,
+    "motbin_move_name": "Co_t_srk00",
+    "anim_name": "kmun_2rk(DVD)",
+    "anim_id": 16745,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 361,
+     "rel_offset": 2793264,
+     "size": 3024,
+     "format_word": 100,
+     "sha256": "5e29d31ec92a45f4284834fd2aa509d1ae5fb1a45a206ec4448da0a49b7f6d28",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d+4, 2": {
+   "name": "Sao Tang Ti to Shang Bu Zhuang Zhang",
+   "name_source": "mvl",
+   "input": "d+4, 2",
+   "damage": 10,
+   "damage_raw": "10,23",
+   "startup": 0.2667,
+   "startup_frames": 16,
+   "hit_level": "l, h",
+   "on_block": "-5",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d+4, 2",
+    "id": "leo_36",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Un_shoRv",
+     "Un_sho",
+     "Un_shotameRv"
+    ]
+   }
+  },
+  "d/b+2": {
+   "name": "Co_t_srp00B",
+   "name_source": "motbin-internal",
+   "input": "d/b+2",
+   "damage": 11,
+   "damage_raw": "11",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "h",
+   "on_block": "-17",
+   "on_hit": "+2",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:344",
+   "t7": {
+    "notation": "d/b+2",
+    "id": "leo_37",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+2",
+    "motbin_move_id": 1618,
+    "motbin_move_name": "Co_t_srp00B",
+    "anim_name": "kmun_tyuten(DVD)",
+    "anim_id": 16728,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 344,
+     "rel_offset": 2746832,
+     "size": 3352,
+     "format_word": 100,
+     "sha256": "e710f1fcec2eff27b61debebe2ecd0f944b3949dc33a89177a5e4e0c9e9fe0ab",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+2, 2": {
+   "name": "Chong Tian Zhang to Fu Bo",
+   "name_source": "mvl",
+   "input": "d/b+2, 2",
+   "damage": 11,
+   "damage_raw": "11,17",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "h, m",
+   "on_block": "-7",
+   "on_hit": "+5 OC",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:345",
+   "t7": {
+    "notation": "d/b+2, 2",
+    "id": "leo_38",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+2, 2",
+    "motbin_move_id": 1623,
+    "motbin_move_name": "Un_FUKKO",
+    "anim_name": "kmun_fukko(DVD)",
+    "anim_id": 16729,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 345,
+     "rel_offset": 2750184,
+     "size": 3752,
+     "format_word": 100,
+     "sha256": "4c971f962dce5c5a49b68f4a141755be04eb35151b2bbc6a36ce762f4d435061",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+3": {
+   "name": "Lie Huo Fan Jiao",
+   "name_source": "mvl",
+   "input": "d/b+3",
+   "damage": 23,
+   "damage_raw": "23",
+   "startup": 0.55,
+   "startup_frames": 33,
+   "hit_level": "h",
+   "on_block": "-8",
+   "on_hit": "Launch",
+   "on_ch": "Launch",
+   "notes": null,
+   "anim_ref": "t7:leo:0x0000:111",
+   "t7": {
+    "notation": "d/b+3",
+    "id": "leo_39",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+3",
+    "motbin_move_id": 1688,
+    "motbin_move_name": "Co_t_slk00B",
+    "anim_name": "unss_s3_1lk",
+    "anim_id": 111,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x0000",
+     "source": "leomot.bin",
+     "section": 0,
+     "entry": 111,
+     "rel_offset": 1959980,
+     "size": 5852,
+     "format_word": 100,
+     "sha256": "c41b8f9983822bbe92a53a84aecd78ab545a0c07a3dca7fb26355c662194cacd",
+     "blob_file": "leo_bank0_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+4 (Close)": {
+   "name": "Un_t_srk00B",
+   "name_source": "motbin-internal",
+   "input": "d/b+4 (Close)",
+   "damage": 18,
+   "damage_raw": "18",
+   "startup": 0.3333,
+   "startup_frames": 20,
+   "hit_level": "l (TC)",
+   "on_block": "-31",
+   "on_hit": "+2(KND)",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:374",
+   "t7": {
+    "notation": "d/b+4 (Close)",
+    "id": "leo_40",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+4",
+    "motbin_move_id": 1692,
+    "motbin_move_name": "Un_t_srk00B",
+    "anim_name": "kmun_djrklkrk_tan(DVD)",
+    "anim_id": 16758,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 374,
+     "rel_offset": 2830512,
+     "size": 3620,
+     "format_word": 100,
+     "sha256": "fa68e5d08afedf06d9b9debc6b551b733cf4f7f02de7b6b5ae3727123e2bf799",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+4": {
+   "name": "Un_t_srk00B",
+   "name_source": "motbin-internal",
+   "input": "d/b+4",
+   "damage": 12,
+   "damage_raw": "12",
+   "startup": 0.3333,
+   "startup_frames": 20,
+   "hit_level": "l (TC)",
+   "on_block": "-31",
+   "on_hit": "+2(KND)",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:374",
+   "t7": {
+    "notation": "d/b+4",
+    "id": "leo_41",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+4",
+    "motbin_move_id": 1692,
+    "motbin_move_name": "Un_t_srk00B",
+    "anim_name": "kmun_djrklkrk_tan(DVD)",
+    "anim_id": 16758,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 374,
+     "rel_offset": 2830512,
+     "size": 3620,
+     "format_word": 100,
+     "sha256": "fa68e5d08afedf06d9b9debc6b551b733cf4f7f02de7b6b5ae3727123e2bf799",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+4, 1": {
+   "name": "Qian Sao Lei Wang Quan",
+   "name_source": "mvl",
+   "input": "d/b+4, 1",
+   "damage": 27,
+   "damage_raw": "12(18),27",
+   "startup": 0.3333,
+   "startup_frames": 20,
+   "hit_level": "l (TC), m",
+   "on_block": "-16",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d/b+4, 1",
+    "id": "leo_42",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Un_gurupRv",
+     "Un_gurup"
+    ]
+   }
+  },
+  "d/b+1+2": {
+   "name": "Un_daisekkou",
+   "name_source": "motbin-internal",
+   "input": "d/b+1+2",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-9~-8",
+   "on_hit": "+7~+8",
+   "on_ch": "+7~+8",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:453",
+   "t7": {
+    "notation": "d/b+1+2",
+    "id": "leo_43",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+1+2",
+    "motbin_move_id": 1794,
+    "motbin_move_name": "Un_daisekkou",
+    "anim_name": "kmun_daisekkou_down(DVD)",
+    "anim_id": 16837,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 453,
+     "rel_offset": 2999288,
+     "size": 3344,
+     "format_word": 100,
+     "sha256": "0b578d60e8101e0335eb1c25bc8641ec29816ca854b702edb4c076be3aa7462f",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+1+2, 1": {
+   "name": "Ba Wang Zhe Jiang",
+   "name_source": "mvl",
+   "input": "d/b+1+2, 1",
+   "damage": 17,
+   "damage_raw": "17,20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m",
+   "on_block": "-12",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:455",
+   "t7": {
+    "notation": "d/b+1+2, 1",
+    "id": "leo_44",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+1+2, 1",
+    "motbin_move_id": 1797,
+    "motbin_move_name": "Un_daisekkou2",
+    "anim_name": "kmun_daisekkou_side(DVD)",
+    "anim_id": 16839,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 455,
+     "rel_offset": 3004188,
+     "size": 3180,
+     "format_word": 100,
+     "sha256": "87994d522309054620e6f970bdcbccc3c1322d0dee265d23540444a6f8bc6b33",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+1+2, D": {
+   "name": "d/b+1+2, D",
+   "name_source": "notation-only",
+   "input": "d/b+1+2, D",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, (BOK)",
+   "on_block": "-12~-11",
+   "on_hit": "+4~+5",
+   "on_ch": "+4~+5",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d/b+1+2, D",
+    "id": "leo_45",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "b+1": {
+   "name": "Un_lp00B",
+   "name_source": "motbin-internal",
+   "input": "b+1",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": 0.3,
+   "startup_frames": 18,
+   "hit_level": "m",
+   "on_block": "-12",
+   "on_hit": "+1",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:431",
+   "t7": {
+    "notation": "b+1",
+    "id": "leo_46",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+1",
+    "motbin_move_id": 1764,
+    "motbin_move_name": "Un_lp00B",
+    "anim_name": "hiun_4lp(DVD)",
+    "anim_id": 16815,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 431,
+     "rel_offset": 2957152,
+     "size": 3108,
+     "format_word": 100,
+     "sha256": "ea63f70aef91b75361033b1e64a7f180abab8d060ef328c74267ff18e7bfb716",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+1, 4": {
+   "name": "Ding Zhou Jin Ji Du Li",
+   "name_source": "mvl",
+   "input": "b+1, 4",
+   "damage": 17,
+   "damage_raw": "17,14",
+   "startup": 0.3,
+   "startup_frames": 18,
+   "hit_level": "m, m, (KNK)",
+   "on_block": "+8",
+   "on_hit": "+14",
+   "on_ch": "+14",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:433",
+   "t7": {
+    "notation": "b+1, 4",
+    "id": "leo_47",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+1, 4",
+    "motbin_move_id": 1765,
+    "motbin_move_name": "Un_4lpkin",
+    "anim_name": "hiun_4lprk(DVD)",
+    "anim_id": 16817,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 433,
+     "rel_offset": 2960260,
+     "size": 4204,
+     "format_word": 100,
+     "sha256": "27da5c0a2bed895ff9eb14a5c559947ce26b760360a01755b5f70e93f48000e3",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+2": {
+   "name": "Un_rp00B",
+   "name_source": "motbin-internal",
+   "input": "b+2",
+   "damage": 11,
+   "damage_raw": "11",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "m",
+   "on_block": "-11",
+   "on_hit": "0",
+   "on_ch": "0",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:366",
+   "t7": {
+    "notation": "b+2",
+    "id": "leo_48",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+2",
+    "motbin_move_id": 1679,
+    "motbin_move_name": "Un_rp00B",
+    "anim_name": "unhk_houtei(DVD)",
+    "anim_id": 16750,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 366,
+     "rel_offset": 2806736,
+     "size": 4188,
+     "format_word": 100,
+     "sha256": "a5059e9480f7c773fee5bb43374ea6ca34f2660df9709cfd94908b0c517d88fa",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+2, 1": {
+   "name": "Wu Hu Chu Dong",
+   "name_source": "mvl",
+   "input": "b+2, 1",
+   "damage": 11,
+   "damage_raw": "11,11",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "m, h",
+   "on_block": "-4",
+   "on_hit": "+7",
+   "on_ch": "+7",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:369",
+   "t7": {
+    "notation": "b+2, 1",
+    "id": "leo_49",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+2, 1",
+    "motbin_move_id": 1683,
+    "motbin_move_name": "Un_4rplp",
+    "anim_name": "kmun_goko(DVD)",
+    "anim_id": 16753,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 369,
+     "rel_offset": 2814460,
+     "size": 3224,
+     "format_word": 100,
+     "sha256": "0fb1d1e159d6506ecf9bdecd999854af08c8f2bf1876f70eac7c5d05f78fbcbd",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+2, 1+2": {
+   "name": "Er Lang Dan Shan",
+   "name_source": "mvl",
+   "input": "b+2, 1+2",
+   "damage": 11,
+   "damage_raw": "11,21",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "m, m",
+   "on_block": "-11s",
+   "on_hit": "+8s",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:367",
+   "t7": {
+    "notation": "b+2, 1+2",
+    "id": "leo_50",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+2, 1+2",
+    "motbin_move_id": 1680,
+    "motbin_move_name": "Un_4rplrp",
+    "anim_name": "moun_houtanzan(DVD)",
+    "anim_id": 16751,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 367,
+     "rel_offset": 2810924,
+     "size": 3536,
+     "format_word": 100,
+     "sha256": "58d920b180fc312eb298daee25fec4bb88e986f644c339972462638ae3ab65e8",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+3": {
+   "name": "Un_lk00B",
+   "name_source": "motbin-internal",
+   "input": "b+3",
+   "damage": 15,
+   "damage_raw": "15",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "m",
+   "on_block": "-7",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:336",
+   "t7": {
+    "notation": "b+3",
+    "id": "leo_51",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+3",
+    "motbin_move_id": 1608,
+    "motbin_move_name": "Un_lk00B",
+    "anim_name": "moun_4lk(DVD)",
+    "anim_id": 16720,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 336,
+     "rel_offset": 2733244,
+     "size": 2568,
+     "format_word": 100,
+     "sha256": "dd1607ea73c51ac25d63f65c244f624cf17d76a9429a855f9d470d7b558b674f",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [15]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1608
+    ]
+   }
+  },
+  "b+3, 1": {
+   "name": "Ying Mian Tui",
+   "name_source": "mvl",
+   "input": "b+3, 1",
+   "damage": 15,
+   "damage_raw": "15,16",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "m, m",
+   "on_block": "-7",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "b+3, 1",
+    "id": "leo_52",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "b+3, 1, B": {
+   "name": "b+3, 1, B",
+   "name_source": "notation-only",
+   "input": "b+3, 1, B",
+   "damage": 15,
+   "damage_raw": "15,16",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "m, m, (KNK)",
+   "on_block": "-11",
+   "on_hit": "0",
+   "on_ch": "0",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "b+3, 1, B",
+    "id": "leo_53",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "b+3, 1, D": {
+   "name": "b+3, 1, D",
+   "name_source": "notation-only",
+   "input": "b+3, 1, D",
+   "damage": 15,
+   "damage_raw": "15,16",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "m, m, (BOK)",
+   "on_block": "-6",
+   "on_hit": "+5",
+   "on_ch": "+5",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "b+3, 1, D",
+    "id": "leo_54",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "b+4": {
+   "name": "Un_rk00B",
+   "name_source": "motbin-internal",
+   "input": "b+4",
+   "damage": 15,
+   "damage_raw": "15",
+   "startup": 0.3,
+   "startup_frames": 18,
+   "hit_level": "m",
+   "on_block": "-8",
+   "on_hit": "+5",
+   "on_ch": "+5",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:346",
+   "t7": {
+    "notation": "b+4",
+    "id": "leo_55",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+4",
+    "motbin_move_id": 1626,
+    "motbin_move_name": "Un_rk00B",
+    "anim_name": "kmun_4rk(DVD)",
+    "anim_id": 16730,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 346,
+     "rel_offset": 2753936,
+     "size": 3312,
+     "format_word": 100,
+     "sha256": "52be3e842408b533bd8e478041a7460c830508474142fa1bc637b7681e7f3e20",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+4, 1+2": {
+   "name": "Dragon's Impact",
+   "name_source": "mvl",
+   "input": "b+4, 1+2",
+   "damage": 15,
+   "damage_raw": "15,21",
+   "startup": 0.3,
+   "startup_frames": 18,
+   "hit_level": "m, m",
+   "on_block": "-9",
+   "on_hit": "KND?",
+   "on_ch": "KND?",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:347",
+   "t7": {
+    "notation": "b+4, 1+2",
+    "id": "leo_56",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+4, 1+2",
+    "motbin_move_id": 1631,
+    "motbin_move_name": "Un_rkhiji",
+    "anim_name": "kmun_4rk_wp(DVD)",
+    "anim_id": 16731,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 347,
+     "rel_offset": 2757248,
+     "size": 4048,
+     "format_word": 100,
+     "sha256": "20c82300ffa6cd4ad5b0abd6721a830e5f8e94ca0b02374485ed201605f082d6",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+1+4": {
+   "name": "Cuo Zhang",
+   "name_source": "mvl",
+   "input": "b+1+4",
+   "damage": 10,
+   "damage_raw": "10,12",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "hl",
+   "on_block": "-13",
+   "on_hit": "+3",
+   "on_ch": "+16 OC",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "b+1+4",
+    "id": "leo_57",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Un_hakuro",
+     "Un_hakuro2"
+    ]
+   }
+  },
+  "b+1+4 (First hit only)": {
+   "name": "b+1+4 (First hit only)",
+   "name_source": "notation-only",
+   "input": "b+1+4 (First hit only)",
+   "damage": 10,
+   "damage_raw": "10",
+   "startup": 0.3167,
+   "startup_frames": 19,
+   "hit_level": "h",
+   "on_block": "-15",
+   "on_hit": "-4",
+   "on_ch": "-4",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "b+1+4 (First hit only)",
+    "id": "leo_58",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Un_hakuro",
+     "Un_hakuro2"
+    ]
+   }
+  },
+  "b+1+4 (Second hit only)": {
+   "name": "b+1+4 (Second hit only)",
+   "name_source": "notation-only",
+   "input": "b+1+4 (Second hit only)",
+   "damage": 12,
+   "damage_raw": "12",
+   "startup": 0.35,
+   "startup_frames": 21,
+   "hit_level": "l",
+   "on_block": "-13",
+   "on_hit": "+3",
+   "on_ch": "+3",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "b+1+4 (Second hit only)",
+    "id": "leo_59",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Un_hakuro",
+     "Un_hakuro2"
+    ]
+   }
+  },
+  "b+2+3": {
+   "name": "Xiao Jia Er Lu Liang Yi Zhou",
+   "name_source": "mvl",
+   "input": "b+2+3",
+   "damage": 60,
+   "damage_raw": "60",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "!",
+   "on_block": "KND",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:452",
+   "t7": {
+    "notation": "b+2+3",
+    "id": "leo_60",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+2+3",
+    "motbin_move_id": 1793,
+    "motbin_move_name": "Un_sphizi",
+    "anim_name": "unss_notel(DVD)",
+    "anim_id": 16836,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 452,
+     "rel_offset": 2990540,
+     "size": 8748,
+     "format_word": 100,
+     "sha256": "d4ec09a021923a0367a9d1f0680dab8af8303abef1d7a3b3ea19a6924c2a8548",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/f+1": {
+   "name": "Un_lptuki",
+   "name_source": "motbin-internal",
+   "input": "u/f+1",
+   "damage": 8,
+   "damage_raw": "8",
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "h",
+   "on_block": "-1",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:398",
+   "t7": {
+    "notation": "u/f+1",
+    "id": "leo_61",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/f+1",
+    "motbin_move_id": 1725,
+    "motbin_move_name": "Un_lptuki",
+    "anim_name": "kmun_lpf(DVD)",
+    "anim_id": 16782,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 398,
+     "rel_offset": 2874280,
+     "size": 2404,
+     "format_word": 100,
+     "sha256": "4b48e1dea4268700bc968e5af157304fb1029ec5ff255a780a534274d974eb08",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [8]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1725
+    ]
+   }
+  },
+  "u/f+1, 1": {
+   "name": "Dragon Backfist",
+   "name_source": "mvl",
+   "input": "u/f+1, 1",
+   "damage": 8,
+   "damage_raw": "8,17",
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "h, h",
+   "on_block": "-9",
+   "on_hit": "+k",
+   "on_ch": "SCD",
+   "notes": "Tail spin",
+   "anim_ref": "t7:leo:0x4000:399",
+   "t7": {
+    "notation": "u/f+1, 1",
+    "id": "leo_62",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/f+1, 1",
+    "motbin_move_id": 1726,
+    "motbin_move_name": "Un_9lplp",
+    "anim_name": "unkb_uraken_75(DVD)",
+    "anim_id": 16783,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 399,
+     "rel_offset": 2876684,
+     "size": 4912,
+     "format_word": 100,
+     "sha256": "8e2456666e63fd9dab911a70c372987175d00e8be7385c9983b1ddc543e5e68f",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/f+1, 2": {
+   "name": "Chuan Chong Quan",
+   "name_source": "mvl",
+   "input": "u/f+1, 2",
+   "damage": 8,
+   "damage_raw": "8,21",
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "h, m",
+   "on_block": "-14",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:440",
+   "t7": {
+    "notation": "u/f+1, 2",
+    "id": "leo_63",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/f+1, 2",
+    "motbin_move_id": 1776,
+    "motbin_move_name": "Un_Wtuki",
+    "anim_name": "kmun_lpfrp(DVD)",
+    "anim_id": 16824,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 440,
+     "rel_offset": 2975152,
+     "size": 3720,
+     "format_word": 100,
+     "sha256": "c1aef16df1011cd45a884f90fd0a460f9c31b00a046862de8f45485bfb682c43",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/f+2": {
+   "name": "u/f+2",
+   "name_source": "notation-only",
+   "input": "u/f+2",
+   "damage": 18,
+   "damage_raw": "18",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "-14~-13",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u/f+2",
+    "id": "leo_64",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "u/f+2, 1": {
+   "name": "Yue Bu Si Quan",
+   "name_source": "mvl",
+   "input": "u/f+2, 1",
+   "damage": 18,
+   "damage_raw": "18,18?",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ), m",
+   "on_block": "-8",
+   "on_hit": "+4",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u/f+2, 1",
+    "id": "leo_65",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "u+3": {
+   "name": "Co_jplk00",
+   "name_source": "motbin-internal",
+   "input": "u+3",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": 0.2833,
+   "startup_frames": 17,
+   "hit_level": "m (TJ)",
+   "on_block": "-9",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:280",
+   "t7": {
+    "notation": "u+3",
+    "id": "leo_66",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u+3",
+    "motbin_move_id": 1530,
+    "motbin_move_name": "Co_jplk00",
+    "anim_name": "moun_jmplk(DVD)",
+    "anim_id": 16664,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 280,
+     "rel_offset": 2626696,
+     "size": 3180,
+     "format_word": 100,
+     "sha256": "0e499b85b04be01f38204d4c42140f48647799677ccef1f3cd8eea093b0aa21a",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/f+3": {
+   "name": "Yi Qi Jiao",
+   "name_source": "mvl",
+   "input": "u/f+3",
+   "damage": 21,
+   "damage_raw": "21",
+   "startup": 0.2833,
+   "startup_frames": 17,
+   "hit_level": "m (TJ)",
+   "on_block": "-9",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:280",
+   "t7": {
+    "notation": "u/f+3",
+    "id": "leo_67",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/f+3",
+    "motbin_move_id": 1531,
+    "motbin_move_name": "Co_jplk00F",
+    "anim_name": "moun_jmplk(DVD)",
+    "anim_id": 16664,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 280,
+     "rel_offset": 2626696,
+     "size": 3180,
+     "format_word": 100,
+     "sha256": "0e499b85b04be01f38204d4c42140f48647799677ccef1f3cd8eea093b0aa21a",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/b+4": {
+   "name": "Un_jprk00B",
+   "name_source": "motbin-internal",
+   "input": "u/b+4",
+   "damage": 11,
+   "damage_raw": "11",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "-19~-18",
+   "on_hit": "-8~-7",
+   "on_ch": "-8~-7",
+   "notes": null,
+   "anim_ref": "t7:leo:0x0000:103",
+   "t7": {
+    "notation": "u/b+4",
+    "id": "leo_68",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/b+4",
+    "motbin_move_id": 1560,
+    "motbin_move_name": "Un_jprk00B",
+    "anim_name": "unkb_s4_8rk",
+    "anim_id": 103,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x0000",
+     "source": "leomot.bin",
+     "section": 0,
+     "entry": 103,
+     "rel_offset": 1934548,
+     "size": 4148,
+     "format_word": 100,
+     "sha256": "d24ceb843aebcf5482a7ce4946607182128384bb543928dd90e38e01263d28d2",
+     "blob_file": "leo_bank0_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u+4": {
+   "name": "Un_jprk00",
+   "name_source": "motbin-internal",
+   "input": "u+4",
+   "damage": 15,
+   "damage_raw": "15",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "-13~-12",
+   "on_hit": "KND",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": "t7:leo:0x0000:101",
+   "t7": {
+    "notation": "u+4",
+    "id": "leo_69",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u+4",
+    "motbin_move_id": 1558,
+    "motbin_move_name": "Un_jprk00",
+    "anim_name": "unkb_s4_8rk",
+    "anim_id": 101,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x0000",
+     "source": "leomot.bin",
+     "section": 0,
+     "entry": 101,
+     "rel_offset": 1934548,
+     "size": 4148,
+     "format_word": 100,
+     "sha256": "d24ceb843aebcf5482a7ce4946607182128384bb543928dd90e38e01263d28d2",
+     "blob_file": "leo_bank0_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/f+4": {
+   "name": "Yue Bu San Jing Ti",
+   "name_source": "mvl",
+   "input": "u/f+4",
+   "damage": 13,
+   "damage_raw": "13",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "-13~-12",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": "t7:leo:0x0000:104",
+   "t7": {
+    "notation": "u/f+4",
+    "id": "leo_70",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/f+4",
+    "motbin_move_id": 1561,
+    "motbin_move_name": "Un_jprk00F",
+    "anim_name": "unkb_s4_8rk",
+    "anim_id": 104,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x0000",
+     "source": "leomot.bin",
+     "section": 0,
+     "entry": 104,
+     "rel_offset": 1934548,
+     "size": 4148,
+     "format_word": 100,
+     "sha256": "d24ceb843aebcf5482a7ce4946607182128384bb543928dd90e38e01263d28d2",
+     "blob_file": "leo_bank0_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u or u/f+3+4": {
+   "name": "Un_9lrk",
+   "name_source": "motbin-internal",
+   "input": "u or u/f+3+4",
+   "damage": 26,
+   "damage_raw": "26",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "-1s",
+   "on_hit": "+5s",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:283",
+   "t7": {
+    "notation": "u or u/f+3+4",
+    "id": "leo_71",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/f+3+4",
+    "motbin_move_id": 1533,
+    "motbin_move_name": "Un_9lrk",
+    "anim_name": "unss_doshin(DVD)",
+    "anim_id": 16667,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 283,
+     "rel_offset": 2632896,
+     "size": 5220,
+     "format_word": 100,
+     "sha256": "87c5ba0a8c43d502741167385e0a61b0809c146edbd35382d1c0220e96935747",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f, F+2": {
+   "name": "Rage Drive",
+   "name_source": "mvl",
+   "input": "f, F+2",
+   "damage": 25,
+   "damage_raw": "25",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-10",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+2",
+    "id": "leo_72",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "in rage f, F+2*": {
+   "name": "in rage f, F+2*",
+   "name_source": "notation-only",
+   "input": "in rage f, F+2*",
+   "damage": null,
+   "damage_raw": "35?",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "+?",
+   "on_hit": "KFUD",
+   "on_ch": "KFUD?",
+   "notes": "Rage art",
+   "anim_ref": null,
+   "t7": {
+    "notation": "in rage f, F+2*",
+    "id": "leo_73",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "f, F+3": {
+   "name": "Tiao Shan Fu Ren",
+   "name_source": "mvl",
+   "input": "f, F+3",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "-4~-1s",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+3",
+    "id": "leo_74",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, F+3, D": {
+   "name": "f, F+3, D",
+   "name_source": "notation-only",
+   "input": "f, F+3, D",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ), (BOK)",
+   "on_block": "+1~+4s",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+3, D",
+    "id": "leo_75",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "f, F+4": {
+   "name": "f, F+4",
+   "name_source": "notation-only",
+   "input": "f, F+4",
+   "damage": 12,
+   "damage_raw": "12",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-?",
+   "on_hit": "-2?a",
+   "on_ch": "+?a",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+4",
+    "id": "leo_76",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, F+4, 3": {
+   "name": "f, F+4, 3",
+   "name_source": "notation-only",
+   "input": "f, F+4, 3",
+   "damage": 12,
+   "damage_raw": "12,23",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, h",
+   "on_block": "-12~-11?",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Tail spin",
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+4, 3",
+    "id": "leo_77",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "f, F+4, 3, 4": {
+   "name": "Tiao Shan Pu Bu",
+   "name_source": "mvl",
+   "input": "f, F+4, 3, 4",
+   "damage": 12,
+   "damage_raw": "12,23,20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, h, l (TC)",
+   "on_block": "-12?",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+4, 3, 4",
+    "id": "leo_78",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "b, f+1+2": {
+   "name": "Un_kou",
+   "name_source": "motbin-internal",
+   "input": "b, f+1+2",
+   "damage": 13,
+   "damage_raw": "13",
+   "startup": 0.2833,
+   "startup_frames": 17,
+   "hit_level": "m",
+   "on_block": "-23",
+   "on_hit": "-11",
+   "on_ch": "-11",
+   "notes": null,
+   "anim_ref": "t7:leo:0x0000:115",
+   "t7": {
+    "notation": "b, f+1+2",
+    "id": "leo_79",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b, f+1+2",
+    "motbin_move_id": 1727,
+    "motbin_move_name": "Un_kou",
+    "anim_name": "unod_s4_6wp",
+    "anim_id": 115,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x0000",
+     "source": "leomot.bin",
+     "section": 0,
+     "entry": 115,
+     "rel_offset": 1982020,
+     "size": 4616,
+     "format_word": 100,
+     "sha256": "c998635e0b256d06dd58b53394e9d3ba632e86343244a303b8aa5c14c8f2a6ce",
+     "blob_file": "leo_bank0_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b, f+1+2, 1+2": {
+   "name": "b, f+1+2, 1+2",
+   "name_source": "notation-only",
+   "input": "b, f+1+2, 1+2",
+   "damage": 13,
+   "damage_raw": "13,11",
+   "startup": 0.2833,
+   "startup_frames": 17,
+   "hit_level": "m, m",
+   "on_block": "-14",
+   "on_hit": "+?",
+   "on_ch": "+5",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "b, f+1+2, 1+2",
+    "id": "leo_80",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "b, f+1+2, 1+2, 2": {
+   "name": "Jin Gang Hua Shan Tuo Tian Zhang",
+   "name_source": "mvl",
+   "input": "b, f+1+2, 1+2, 2",
+   "damage": 13,
+   "damage_raw": "13,11,20",
+   "startup": 0.2833,
+   "startup_frames": 17,
+   "hit_level": "m, m, m",
+   "on_block": "-16",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "b, f+1+2, 1+2, 2",
+    "id": "leo_81",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "b, f+1+2, 1+2, qcf+2": {
+   "name": "b, f+1+2, 1+2, qcf+2",
+   "name_source": "notation-only",
+   "input": "b, f+1+2, 1+2, qcf+2",
+   "damage": 13,
+   "damage_raw": "13,11,25",
+   "startup": 0.2833,
+   "startup_frames": 17,
+   "hit_level": "m, m, m",
+   "on_block": "-16",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "b, f+1+2, 1+2, qcf+2",
+    "id": "leo_82",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "f, f, f+3": {
+   "name": "Tiao Shan Jiang Jiao",
+   "name_source": "mvl",
+   "input": "f, f, f+3",
+   "damage": 30,
+   "damage_raw": "30",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "+9~+12g",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, f, f+3",
+    "id": "leo_83",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "WS+1": {
+   "name": "WS+1",
+   "name_source": "notation-only",
+   "input": "WS+1",
+   "damage": 13,
+   "damage_raw": "13",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-8~-7",
+   "on_hit": "+4~+5",
+   "on_ch": "+4~+5",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+1",
+    "id": "leo_84",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Un_syalp00",
+     "Un_t_srpF",
+     "Un_lp00F"
+    ]
+   }
+  },
+  "WS+1, 4": {
+   "name": "Un_lprk",
+   "name_source": "motbin-internal",
+   "input": "WS+1, 4",
+   "damage": 13,
+   "damage_raw": "13,12",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, l",
+   "on_block": "-12",
+   "on_hit": "-1",
+   "on_ch": "-1",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:327",
+   "t7": {
+    "notation": "WS+1, 4",
+    "id": "leo_85",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "WS+1, 4",
+    "motbin_move_id": 1589,
+    "motbin_move_name": "Un_lprk",
+    "anim_name": "moun_lprk(DVD)",
+    "anim_id": 16711,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 327,
+     "rel_offset": 2708700,
+     "size": 2792,
+     "format_word": 100,
+     "sha256": "7b7d862d31fe89b8a63349a95a2b790a113c9f6ae08cd13858d7b048607dd213",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "WS+1, 4, 1": {
+   "name": "WS+1, 4, 1",
+   "name_source": "notation-only",
+   "input": "WS+1, 4, 1",
+   "damage": 13,
+   "damage_raw": "13,12,24",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, l, m",
+   "on_block": "-14",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+1, 4, 1",
+    "id": "leo_86",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "WS+2": {
+   "name": "WS+2",
+   "name_source": "notation-only",
+   "input": "WS+2",
+   "damage": null,
+   "damage_raw": "15?",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-13~-12",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+2",
+    "id": "leo_87",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Co_syarp00",
+     "Un_lptuki",
+     "Un_jprk00F",
+     "Un_rp00",
+     "Un_9lplp"
+    ]
+   }
+  },
+  "WS+3": {
+   "name": "WS+3",
+   "name_source": "notation-only",
+   "input": "WS+3",
+   "damage": 9,
+   "damage_raw": "9",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-6~-5",
+   "on_hit": "+5~+6",
+   "on_ch": "+5~+6",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+3",
+    "id": "leo_88",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Un_syalk00",
+     "Un_kou",
+     "Un_lk00",
+     "Un_LKRP",
+     "Un_lprprk"
+    ]
+   }
+  },
+  "WS+3, 1": {
+   "name": "WS+3, 1",
+   "name_source": "notation-only",
+   "input": "WS+3, 1",
+   "damage": 9,
+   "damage_raw": "9,9",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m",
+   "on_block": "-15",
+   "on_hit": "+3",
+   "on_ch": "+3",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+3, 1",
+    "id": "leo_89",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "WS+3, 1, 2": {
+   "name": "WS+3, 1, 2",
+   "name_source": "notation-only",
+   "input": "WS+3, 1, 2",
+   "damage": 9,
+   "damage_raw": "9,9,20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m, h",
+   "on_block": "-17",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+3, 1, 2",
+    "id": "leo_90",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "WS+4": {
+   "name": "WS+4",
+   "name_source": "notation-only",
+   "input": "WS+4",
+   "damage": 15,
+   "damage_raw": "15",
+   "startup": 0.1833,
+   "startup_frames": 11,
+   "hit_level": "m",
+   "on_block": "-10",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+4",
+    "id": "leo_91",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Un_syark00",
+     "Un_spam",
+     "Un_rk00"
+    ]
+   }
+  },
+  "WS+4, 1+2": {
+   "name": "WS+4, 1+2",
+   "name_source": "notation-only",
+   "input": "WS+4, 1+2",
+   "damage": 15,
+   "damage_raw": "15,28",
+   "startup": 0.1833,
+   "startup_frames": 11,
+   "hit_level": "m, m",
+   "on_block": "-10",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+4, 1+2",
+    "id": "leo_92",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "WS+1+2": {
+   "name": "Un_spam",
+   "name_source": "motbin-internal",
+   "input": "WS+1+2",
+   "damage": 28,
+   "damage_raw": "28",
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "m",
+   "on_block": "-15",
+   "on_hit": "+18(KND)",
+   "on_ch": "+18(KND)",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:609",
+   "t7": {
+    "notation": "WS+1+2",
+    "id": "leo_93",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "WS+1+2",
+    "motbin_move_id": 2160,
+    "motbin_move_name": "Un_spam",
+    "anim_name": "unsj_koboku_01(DVD)",
+    "anim_id": 16993,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 609,
+     "rel_offset": 3545988,
+     "size": 4716,
+     "format_word": 100,
+     "sha256": "1a00ac1fb56f93845e225d2991db139b0107977f8d3b994b6a0f52d0e3dba544",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "FC+d/f+3": {
+   "name": "FC+d/f+3",
+   "name_source": "notation-only",
+   "input": "FC+d/f+3",
+   "damage": 24,
+   "damage_raw": "24",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l",
+   "on_block": "-23~?",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FC+d/f+3",
+    "id": "leo_94",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "SS+1+2": {
+   "name": "Un_spam",
+   "name_source": "motbin-internal",
+   "input": "SS+1+2",
+   "damage": 30,
+   "damage_raw": "30",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-10",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:609",
+   "t7": {
+    "notation": "SS+1+2",
+    "id": "leo_95",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "SS+1+2",
+    "motbin_move_id": 2160,
+    "motbin_move_name": "Un_spam",
+    "anim_name": "unsj_koboku_01(DVD)",
+    "anim_id": 16993,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 609,
+     "rel_offset": 3545988,
+     "size": 4716,
+     "format_word": 100,
+     "sha256": "1a00ac1fb56f93845e225d2991db139b0107977f8d3b994b6a0f52d0e3dba544",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "BT 1+2": {
+   "name": "Dual Rising Fists",
+   "name_source": "mvl",
+   "input": "BT 1+2",
+   "damage": 21,
+   "damage_raw": "21",
+   "startup": 0.1833,
+   "startup_frames": 11,
+   "hit_level": "m",
+   "on_block": "-20",
+   "on_hit": "KND",
+   "on_ch": "KFUD",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "BT 1+2",
+    "id": "leo_96",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "Opponent Down d+3+4": {
+   "name": "Opponent Down d+3+4",
+   "name_source": "notation-only",
+   "input": "Opponent Down d+3+4",
+   "damage": 19,
+   "damage_raw": "19",
+   "startup": 0.4,
+   "startup_frames": 24,
+   "hit_level": "On grounded opponent(l)",
+   "on_block": "-13",
+   "on_hit": "+3",
+   "on_ch": "+3",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "Opponent Down d+3+4",
+    "id": "leo_97",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1+2+3+4": {
+   "name": "Un_SUPER_0",
+   "name_source": "motbin-internal",
+   "input": "1+2+3+4",
+   "damage": null,
+   "damage_raw": null,
+   "startup": 0.4,
+   "startup_frames": 24,
+   "hit_level": "(Special)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:608",
+   "t7": {
+    "notation": "1+2+3+4",
+    "id": "leo_98",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "1+2+3+4",
+    "motbin_move_id": 2159,
+    "motbin_move_name": "Un_SUPER_0",
+    "anim_name": "kmun_charge(DVD)",
+    "anim_id": 16992,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 608,
+     "rel_offset": 3542156,
+     "size": 3832,
+     "format_word": 100,
+     "sha256": "edbfba6d40ba35b5708e40830f376e01e6c74c02ae4f13850add7d52ca0383c5",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "1+2+3+4, b+3": {
+   "name": "1+2+3+4, b+3",
+   "name_source": "notation-only",
+   "input": "1+2+3+4, b+3",
+   "damage": 18,
+   "damage_raw": "18",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-7",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1+2+3+4, b+3",
+    "id": "leo_99",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1+2+3+4, b+3, 1": {
+   "name": "1+2+3+4, b+3, 1",
+   "name_source": "notation-only",
+   "input": "1+2+3+4, b+3, 1",
+   "damage": 18,
+   "damage_raw": "18,16",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m",
+   "on_block": "-7",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1+2+3+4, b+3, 1",
+    "id": "leo_100",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "1+2+3+4, b+3, 1, 2": {
+   "name": "1+2+3+4, b+3, 1, 2",
+   "name_source": "notation-only",
+   "input": "1+2+3+4, b+3, 1, 2",
+   "damage": 18,
+   "damage_raw": "18,16,20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m, m",
+   "on_block": "-15",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1+2+3+4, b+3, 1, 2",
+    "id": "leo_101",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "1+2+3+4, d/b+4": {
+   "name": "1+2+3+4, d/b+4",
+   "name_source": "notation-only",
+   "input": "1+2+3+4, d/b+4",
+   "damage": null,
+   "damage_raw": "15?(21)",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-31",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1+2+3+4, d/b+4",
+    "id": "leo_102",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1+2+3+4, d/b+4, 1": {
+   "name": "1+2+3+4, d/b+4, 1",
+   "name_source": "notation-only",
+   "input": "1+2+3+4, d/b+4, 1",
+   "damage": 30,
+   "damage_raw": "15?(21),30",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l, m",
+   "on_block": "-16",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1+2+3+4, d/b+4, 1",
+    "id": "leo_103",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "1+2+3+4, d/b+4, 1, 2": {
+   "name": "1+2+3+4, d/b+4, 1, 2",
+   "name_source": "notation-only",
+   "input": "1+2+3+4, d/b+4, 1, 2",
+   "damage": 30,
+   "damage_raw": "15?(21),30,20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l, m, m",
+   "on_block": "-15",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1+2+3+4, d/b+4, 1, 2",
+    "id": "leo_104",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "f+4": {
+   "name": "Jin Ji Du Li",
+   "name_source": "mvl",
+   "input": "f+4",
+   "damage": 14,
+   "damage_raw": "14",
+   "startup": 0.2833,
+   "startup_frames": 17,
+   "hit_level": "m, (KNK)",
+   "on_block": "+8",
+   "on_hit": "+14",
+   "on_ch": "+14",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:471",
+   "t7": {
+    "notation": "f+4",
+    "id": "leo_105",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+4",
+    "motbin_move_id": 1817,
+    "motbin_move_name": "Un_rk00F",
+    "anim_name": "moun_kinrhiza(DVD)",
+    "anim_id": 16855,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 471,
+     "rel_offset": 3043268,
+     "size": 3804,
+     "format_word": 100,
+     "sha256": "95d252e3ef345f8668d0682d80551f15fa5027b7d60ec5b1e8b3f16b7330b288",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+3+4": {
+   "name": "Tui Bu Jin Ji Du Li",
+   "name_source": "mvl",
+   "input": "b+3+4",
+   "damage": null,
+   "damage_raw": null,
+   "startup": 0.2833,
+   "startup_frames": 17,
+   "hit_level": "(KNK)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": "t7:leo:0x0000:119",
+   "t7": {
+    "notation": "b+3+4",
+    "id": "leo_106",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+3+4",
+    "motbin_move_id": 1824,
+    "motbin_move_name": "Un_kinkei",
+    "anim_name": "ungc_s3_kinkeiB",
+    "anim_id": 119,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x0000",
+     "source": "leomot.bin",
+     "section": 0,
+     "entry": 119,
+     "rel_offset": 1996380,
+     "size": 4728,
+     "format_word": 100,
+     "sha256": "5be75e39936c1316306f4e4fbb969ec17a46aadc3e85e732a998b38e939e3684",
+     "blob_file": "leo_bank0_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+4, d/f or KNK d/f (to CD)": {
+   "name": "f+4, d/f or KNK d/f (to CD)",
+   "name_source": "notation-only",
+   "input": "f+4, d/f or KNK d/f (to CD)",
+   "damage": 14,
+   "damage_raw": "14",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, (KNK)",
+   "on_block": "-5",
+   "on_hit": "+1",
+   "on_ch": "+1",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f+4, d/f or KNK d/f (to CD)",
+    "id": "leo_107",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "KNK 1": {
+   "name": "KNK 1",
+   "name_source": "notation-only",
+   "input": "KNK 1",
+   "damage": 14,
+   "damage_raw": "14",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-9~-8",
+   "on_hit": "+2~+3",
+   "on_ch": "+2~+3",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "KNK 1",
+    "id": "leo_108",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "KNK 1, 2": {
+   "name": "KNK 1, 2",
+   "name_source": "notation-only",
+   "input": "KNK 1, 2",
+   "damage": 14,
+   "damage_raw": "14,17",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h, m",
+   "on_block": "-12",
+   "on_hit": "+7",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "KNK 1, 2",
+    "id": "leo_109",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "KNK 1, D": {
+   "name": "KNK 1, D",
+   "name_source": "notation-only",
+   "input": "KNK 1, D",
+   "damage": 14,
+   "damage_raw": "14",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, (BOK)",
+   "on_block": "-7~-6",
+   "on_hit": "+4~+5",
+   "on_ch": "+4~+5",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "KNK 1, D",
+    "id": "leo_110",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "KNK 2": {
+   "name": "KNK 2",
+   "name_source": "notation-only",
+   "input": "KNK 2",
+   "damage": 18,
+   "damage_raw": "18",
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "h",
+   "on_block": "-4",
+   "on_hit": "+k",
+   "on_ch": "CS",
+   "notes": "Tail spin",
+   "anim_ref": null,
+   "t7": {
+    "notation": "KNK 2",
+    "id": "leo_111",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "KNK 3": {
+   "name": "KNK 3",
+   "name_source": "notation-only",
+   "input": "KNK 3",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": 0.3333,
+   "startup_frames": 20,
+   "hit_level": "m (TJ)",
+   "on_block": "-13",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "KNK 3",
+    "id": "leo_112",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "KNK 3, 4": {
+   "name": "KNK 3, 4",
+   "name_source": "notation-only",
+   "input": "KNK 3, 4",
+   "damage": 17,
+   "damage_raw": "17,20",
+   "startup": 0.3333,
+   "startup_frames": 20,
+   "hit_level": "m (TJ), m",
+   "on_block": "-12?",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "KNK 3, 4",
+    "id": "leo_113",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "KNK 4": {
+   "name": "KNK 4",
+   "name_source": "notation-only",
+   "input": "KNK 4",
+   "damage": 18,
+   "damage_raw": "18",
+   "startup": 0.3333,
+   "startup_frames": 20,
+   "hit_level": "l",
+   "on_block": "-12?",
+   "on_hit": "+4?",
+   "on_ch": "+14?g",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "KNK 4",
+    "id": "leo_114",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "d+1+2 or FC+d/b or d+1+2": {
+   "name": "d+1+2 or FC+d/b or d+1+2",
+   "name_source": "notation-only",
+   "input": "d+1+2 or FC+d/b or d+1+2",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "(Special) (TC)(BOK)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d+1+2 or FC+d/b or d+1+2",
+    "id": "leo_115",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "BOK 1": {
+   "name": "BOK 1",
+   "name_source": "notation-only",
+   "input": "BOK 1",
+   "damage": 14,
+   "damage_raw": "14",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-4",
+   "on_hit": "+9",
+   "on_ch": "+9",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "BOK 1",
+    "id": "leo_116",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "BOK 1, 2": {
+   "name": "BOK 1, 2",
+   "name_source": "notation-only",
+   "input": "BOK 1, 2",
+   "damage": 14,
+   "damage_raw": "14,20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m",
+   "on_block": "-14",
+   "on_hit": "+2",
+   "on_ch": "+2",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "BOK 1, 2",
+    "id": "leo_117",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "BOK 2": {
+   "name": "BOK 2",
+   "name_source": "notation-only",
+   "input": "BOK 2",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-9",
+   "on_hit": "Launch(JG?)",
+   "on_ch": "Launch(JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "BOK 2",
+    "id": "leo_118",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "BOK 3": {
+   "name": "BOK 3",
+   "name_source": "notation-only",
+   "input": "BOK 3",
+   "damage": 30,
+   "damage_raw": "30",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h (TJ)",
+   "on_block": "+9",
+   "on_hit": "SCD",
+   "on_ch": "SCD",
+   "notes": "Homing, Tail spin",
+   "anim_ref": null,
+   "t7": {
+    "notation": "BOK 3",
+    "id": "leo_119",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "BOK 4": {
+   "name": "BOK 4",
+   "name_source": "notation-only",
+   "input": "BOK 4",
+   "damage": 14,
+   "damage_raw": "14",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, (KNK)",
+   "on_block": "+8",
+   "on_hit": "+14",
+   "on_ch": "+14",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "BOK 4",
+    "id": "leo_120",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "BOK 1+2": {
+   "name": "BOK 1+2",
+   "name_source": "notation-only",
+   "input": "BOK 1+2",
+   "damage": 30,
+   "damage_raw": "30",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-9",
+   "on_hit": "ATD",
+   "on_ch": "ATD",
+   "notes": "Power crush",
+   "anim_ref": null,
+   "t7": {
+    "notation": "BOK 1+2",
+    "id": "leo_121",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "qcf or KNK D/F": {
+   "name": "qcf or KNK D/F",
+   "name_source": "notation-only",
+   "input": "qcf or KNK D/F",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "(CD)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "qcf or KNK D/F",
+    "id": "leo_122",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "qcf+1": {
+   "name": "Lei Zhang",
+   "name_source": "mvl",
+   "input": "qcf+1",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-13?",
+   "on_hit": "-3?",
+   "on_ch": "+10?",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "qcf+1",
+    "id": "leo_123",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Un_236LP",
+     "Un_lp00F"
+    ]
+   }
+  },
+  "qcf+2": {
+   "name": "Shang Bu Zhuang Zhang",
+   "name_source": "mvl",
+   "input": "qcf+2",
+   "damage": 14,
+   "damage_raw": "14",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-8,9?",
+   "on_hit": "+9?",
+   "on_ch": "+?",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "qcf+2",
+    "id": "leo_124",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Un_236RP",
+     "Un_rp00F",
+     "Un_236rplp"
+    ]
+   }
+  },
+  "qcf+2, B": {
+   "name": "qcf+2, B",
+   "name_source": "notation-only",
+   "input": "qcf+2, B",
+   "damage": 14,
+   "damage_raw": "14",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, (KNK)",
+   "on_block": "-9,10?",
+   "on_hit": "+8?",
+   "on_ch": "+?",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "qcf+2, B",
+    "id": "leo_125",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "qcf+2, 1": {
+   "name": "Lightning Spear",
+   "name_source": "mvl",
+   "input": "qcf+2, 1",
+   "damage": 14,
+   "damage_raw": "14,17",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m",
+   "on_block": "-9?",
+   "on_hit": "+2~+4?",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "qcf+2, 1",
+    "id": "leo_126",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "qcf+1+2": {
+   "name": "qcf+1+2",
+   "name_source": "notation-only",
+   "input": "qcf+1+2",
+   "damage": 28,
+   "damage_raw": "28",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-14",
+   "on_hit": "+18(KND)",
+   "on_ch": "+18(KND)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "qcf+1+2",
+    "id": "leo_127",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Un_s_tlrp00",
+     "Un_kou"
+    ]
+   }
+  },
+  "qcf+3+4": {
+   "name": "Swallow Step",
+   "name_source": "mvl",
+   "input": "qcf+3+4",
+   "damage": 6,
+   "damage_raw": "6,20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "mm (TJ)",
+   "on_block": "-6~-5",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "qcf+3+4",
+    "id": "leo_128",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Un_236WK",
+     "Un_lk00F",
+     "Un_236WK2"
+    ]
+   }
+  },
+  "qcf+3+4 (First hit only, Second hit miss)": {
+   "name": "qcf+3+4 (First hit only, Second hit miss)",
+   "name_source": "notation-only",
+   "input": "qcf+3+4 (First hit only, Second hit miss)",
+   "damage": 6,
+   "damage_raw": "6",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "\u2013",
+   "on_hit": "\u2013",
+   "on_ch": "\u2013",
+   "notes": "Homing",
+   "anim_ref": null,
+   "t7": {
+    "notation": "qcf+3+4 (First hit only, Second hit miss)",
+    "id": "leo_129",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Un_236WK",
+     "Un_lk00F",
+     "Un_236WK2"
+    ]
+   }
+  },
+  "QCF+3": {
+   "name": "QCF+3",
+   "name_source": "notation-only",
+   "input": "QCF+3",
+   "damage": 9,
+   "damage_raw": "9",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-6~-5",
+   "on_hit": "+5~+6",
+   "on_ch": "+5~+6",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "QCF+3",
+    "id": "leo_130",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "QCF+3, 1": {
+   "name": "QCF+3, 1",
+   "name_source": "notation-only",
+   "input": "QCF+3, 1",
+   "damage": 9,
+   "damage_raw": "9,9",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m",
+   "on_block": "-15",
+   "on_hit": "+3",
+   "on_ch": "+3",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "QCF+3, 1",
+    "id": "leo_131",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "QCF+3, 1, 2": {
+   "name": "QCF+3, 1, 2",
+   "name_source": "notation-only",
+   "input": "QCF+3, 1, 2",
+   "damage": 9,
+   "damage_raw": "9,9,20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m, h",
+   "on_block": "-18",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "QCF+3, 1, 2",
+    "id": "leo_132",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "QCF+4": {
+   "name": "QCF+4",
+   "name_source": "notation-only",
+   "input": "QCF+4",
+   "damage": 15,
+   "damage_raw": "15",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-5",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "QCF+4",
+    "id": "leo_133",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "Command": {
+   "name": "Command",
+   "name_source": "notation-only",
+   "input": "Command",
+   "damage": null,
+   "damage_raw": "Damage",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Hit level",
+   "on_block": "Block frame",
+   "on_hit": "Hit frame",
+   "on_ch": "Counter hit frame",
+   "notes": "Notes",
+   "anim_ref": null,
+   "t7": {
+    "notation": "Command",
+    "id": "leo_134",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "4": {
+   "name": "Cuo Ti Fu Ren",
+   "name_source": "mvl",
+   "input": "4",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": 0.2,
+   "startup_frames": 12,
+   "hit_level": "h",
+   "on_block": "-8",
+   "on_hit": "+6",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:341",
+   "t7": {
+    "notation": "4",
+    "id": "leo_135",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "4",
+    "motbin_move_id": 1614,
+    "motbin_move_name": "Un_rk00",
+    "anim_name": "moun_rk(DVD)",
+    "anim_id": 16725,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 341,
+     "rel_offset": 2741484,
+     "size": 2636,
+     "format_word": 100,
+     "sha256": "117b4fb3d6ae14680329fb44b9159562436e25f7f0a5b4870ac216224e3fae84",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [17]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1614
+    ]
+   }
+  },
+  "f+1": {
+   "name": "Un_lp00F",
+   "name_source": "motbin-internal",
+   "input": "f+1",
+   "damage": 7,
+   "damage_raw": "7",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h",
+   "on_block": "+1",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:320",
+   "t7": {
+    "notation": "f+1",
+    "id": "leo_136",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+1",
+    "motbin_move_id": 1574,
+    "motbin_move_name": "Un_lp00F",
+    "anim_name": "kmun_lpnf(DVD)",
+    "anim_id": 16704,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 320,
+     "rel_offset": 2686472,
+     "size": 2312,
+     "format_word": 100,
+     "sha256": "24d30c43db28b9558b59851716c89294871db03a60ca68316ceccf3ceb206b2c",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+2__2": {
+   "name": "Un_rp00F",
+   "name_source": "motbin-internal",
+   "input": "f+2",
+   "damage": 14,
+   "damage_raw": "14",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-5~-4",
+   "on_hit": "+6~+7",
+   "on_ch": "+6~+7",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:410",
+   "t7": {
+    "notation": "f+2",
+    "id": "leo_137",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+2",
+    "motbin_move_id": 1738,
+    "motbin_move_name": "Un_rp00F",
+    "anim_name": "kmun_yokorp(DVD)",
+    "anim_id": 16794,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 410,
+     "rel_offset": 2902648,
+     "size": 2652,
+     "format_word": 100,
+     "sha256": "05133988b16f279569091c7fd780fe189aa8cc5e26ec67c06f07aaae8edaf51f",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f, F+1": {
+   "name": "f, F+1",
+   "name_source": "notation-only",
+   "input": "f, F+1",
+   "damage": 7,
+   "damage_raw": "7",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "+1",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+1",
+    "id": "leo_138",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, F+2__2": {
+   "name": "Rage Drive",
+   "name_source": "mvl",
+   "input": "f, F+2",
+   "damage": 31,
+   "damage_raw": "31",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-10",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+2",
+    "id": "leo_139",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, F+3__2": {
+   "name": "Tiao Shan Fu Ren",
+   "name_source": "mvl",
+   "input": "f, F+3",
+   "damage": 27,
+   "damage_raw": "27",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "-4~-1 OC",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+3",
+    "id": "leo_140",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, F+4__2": {
+   "name": "f, F+4",
+   "name_source": "notation-only",
+   "input": "f, F+4",
+   "damage": 21,
+   "damage_raw": "21",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-?",
+   "on_hit": "-2?a",
+   "on_ch": "+?a",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+4",
+    "id": "leo_141",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "d+3": {
+   "name": "Co_t_slk00",
+   "name_source": "motbin-internal",
+   "input": "d+3",
+   "damage": 12,
+   "damage_raw": "12",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-17",
+   "on_hit": "-3",
+   "on_ch": "-3",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:360",
+   "t7": {
+    "notation": "d+3",
+    "id": "leo_142",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+3",
+    "motbin_move_id": 1657,
+    "motbin_move_name": "Co_t_slk00",
+    "anim_name": "moun_tslk(DVD)",
+    "anim_id": 16744,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 360,
+     "rel_offset": 2790132,
+     "size": 3132,
+     "format_word": 100,
+     "sha256": "d4ab7cad67f4c2950f0290c855bd460026059ea12674d269cbf254b1380c4745",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d+3+4": {
+   "name": "Zhen Jiao",
+   "name_source": "mvl",
+   "input": "d+3+4",
+   "damage": 7,
+   "damage_raw": "7",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-13",
+   "on_hit": "-2",
+   "on_ch": "-2",
+   "notes": null,
+   "anim_ref": "t7:leo:0x8000:93",
+   "t7": {
+    "notation": "d+3+4",
+    "id": "leo_143",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+3+4",
+    "motbin_move_id": 1658,
+    "motbin_move_name": "Co_t_slrk00",
+    "anim_name": "ygco_tsrk(DVD)",
+    "anim_id": 32861,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x8000",
+     "source": "common.arc",
+     "section": 0,
+     "entry": 93,
+     "rel_offset": 584104,
+     "size": 2340,
+     "format_word": 100,
+     "sha256": "97ee309b5c5cfb36f2e6756f2046dd971edda51f1abe89874dbf844fcbb493ed",
+     "blob_file": "common_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+1": {
+   "name": "Un_t_slp00B",
+   "name_source": "motbin-internal",
+   "input": "d/b+1",
+   "damage": 5,
+   "damage_raw": "5",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm (TC)",
+   "on_block": "-5",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:349",
+   "t7": {
+    "notation": "d/b+1",
+    "id": "leo_144",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+1",
+    "motbin_move_id": 1654,
+    "motbin_move_name": "Un_t_slp00B",
+    "anim_name": "kzco_sylp01_10f(DVD)",
+    "anim_id": 16733,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 349,
+     "rel_offset": 2765436,
+     "size": 2136,
+     "format_word": 100,
+     "sha256": "a9b2f6401458dd1d24dbb46ccba3d89c0ea1cae8a3cb6f33c724e372b75b7481",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+4__2": {
+   "name": "Un_t_srk00B",
+   "name_source": "motbin-internal",
+   "input": "d/b+4",
+   "damage": null,
+   "damage_raw": "12(18)",
+   "startup": 0.3333,
+   "startup_frames": 20,
+   "hit_level": "l (TC)",
+   "on_block": "-31",
+   "on_hit": "+2(KND)",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:374",
+   "t7": {
+    "notation": "d/b+4",
+    "id": "leo_145",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+4",
+    "motbin_move_id": 1692,
+    "motbin_move_name": "Un_t_srk00B",
+    "anim_name": "kmun_djrklkrk_tan(DVD)",
+    "anim_id": 16758,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 374,
+     "rel_offset": 2830512,
+     "size": 3620,
+     "format_word": 100,
+     "sha256": "fa68e5d08afedf06d9b9debc6b551b733cf4f7f02de7b6b5ae3727123e2bf799",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "FC+1": {
+   "name": "FC+1",
+   "name_source": "notation-only",
+   "input": "FC+1",
+   "damage": 5,
+   "damage_raw": "5",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm (TC)",
+   "on_block": "-5",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FC+1",
+    "id": "leo_146",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "FC+2": {
+   "name": "FC+2",
+   "name_source": "notation-only",
+   "input": "FC+2",
+   "damage": 8,
+   "damage_raw": "8",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm (TC)",
+   "on_block": "-4",
+   "on_hit": "+7",
+   "on_ch": "+7",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FC+2",
+    "id": "leo_147",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "FC+d/b or d+3": {
+   "name": "Co_t_slk00",
+   "name_source": "motbin-internal",
+   "input": "FC+d/b or d+3",
+   "damage": 12,
+   "damage_raw": "12",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-17",
+   "on_hit": "-3",
+   "on_ch": "-3",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:360",
+   "t7": {
+    "notation": "FC+d/b or d+3",
+    "id": "leo_148",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+3",
+    "motbin_move_id": 1657,
+    "motbin_move_name": "Co_t_slk00",
+    "anim_name": "moun_tslk(DVD)",
+    "anim_id": 16744,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 360,
+     "rel_offset": 2790132,
+     "size": 3132,
+     "format_word": 100,
+     "sha256": "d4ab7cad67f4c2950f0290c855bd460026059ea12674d269cbf254b1380c4745",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "FC+4": {
+   "name": "FC+4",
+   "name_source": "notation-only",
+   "input": "FC+4",
+   "damage": 10,
+   "damage_raw": "10",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-15",
+   "on_hit": "-4",
+   "on_ch": "-4",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FC+4",
+    "id": "leo_149",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "WS+1__2": {
+   "name": "WS+1",
+   "name_source": "notation-only",
+   "input": "WS+1",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-8~-7",
+   "on_hit": "+4~+5",
+   "on_ch": "+4~+5",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+1",
+    "id": "leo_150",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Un_syalp00",
+     "Un_t_srpF",
+     "Un_lp00F"
+    ]
+   }
+  },
+  "WS+2__2": {
+   "name": "WS+2",
+   "name_source": "notation-only",
+   "input": "WS+2",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-13~-12",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+2",
+    "id": "leo_151",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Co_syarp00",
+     "Un_lptuki",
+     "Un_jprk00F",
+     "Un_rp00",
+     "Un_9lplp"
+    ]
+   }
+  },
+  "WS+3__2": {
+   "name": "WS+3",
+   "name_source": "notation-only",
+   "input": "WS+3",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-6~-5",
+   "on_hit": "+5~+6",
+   "on_ch": "+5~+6",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+3",
+    "id": "leo_152",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Un_syalk00",
+     "Un_kou",
+     "Un_lk00",
+     "Un_LKRP",
+     "Un_lprprk"
+    ]
+   }
+  },
+  "WS+4__2": {
+   "name": "WS+4",
+   "name_source": "notation-only",
+   "input": "WS+4",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": 0.1833,
+   "startup_frames": 11,
+   "hit_level": "m",
+   "on_block": "-10",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+4",
+    "id": "leo_153",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Un_syark00",
+     "Un_spam",
+     "Un_rk00"
+    ]
+   }
+  },
+  "d/f+4": {
+   "name": "Co_t_srkF",
+   "name_source": "motbin-internal",
+   "input": "d/f+4",
+   "damage": 14,
+   "damage_raw": "14",
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "m",
+   "on_block": "-6",
+   "on_hit": "+5",
+   "on_ch": "+5",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:372",
+   "t7": {
+    "notation": "d/f+4",
+    "id": "leo_154",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+4",
+    "motbin_move_id": 1687,
+    "motbin_move_name": "Co_t_srkF",
+    "anim_name": "moun_midrtok(DVD)",
+    "anim_id": 16756,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 372,
+     "rel_offset": 2823740,
+     "size": 2560,
+     "format_word": 100,
+     "sha256": "abc1c8bd1b35c819fdf1be4b0e83893229600c4b591e4b47f612c8a9fcd186ac",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/b+1": {
+   "name": "Bao Zhou",
+   "name_source": "mvl",
+   "input": "u/b+1",
+   "damage": null,
+   "damage_raw": null,
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "(Special)(h or m punch parry)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:423",
+   "t7": {
+    "notation": "u/b+1",
+    "id": "leo_155",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/b+1",
+    "motbin_move_id": 1752,
+    "motbin_move_name": "Un_lpsabaki",
+    "anim_name": "kmun_sabaki(DVD)",
+    "anim_id": 16807,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 423,
+     "rel_offset": 2940536,
+     "size": 2752,
+     "format_word": 100,
+     "sha256": "35f07fc655f93357fb6919eb9943841cc5372e9c58811061703628d70348fdb6",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u+1 or u/f+1+2": {
+   "name": "Co_jplp00",
+   "name_source": "motbin-internal",
+   "input": "u+1 or u/f+1+2",
+   "damage": 12,
+   "damage_raw": "12",
+   "startup": 0.3,
+   "startup_frames": 18,
+   "hit_level": "m (TJ)",
+   "on_block": "-8",
+   "on_hit": "+3",
+   "on_ch": "+3",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:251",
+   "t7": {
+    "notation": "u+1 or u/f+1+2",
+    "id": "leo_156",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u+1",
+    "motbin_move_id": 1499,
+    "motbin_move_name": "Co_jplp00",
+    "anim_name": "Bco_sjplp_n(DVD)",
+    "anim_id": 16635,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 251,
+     "rel_offset": 2592104,
+     "size": 2420,
+     "format_word": 100,
+     "sha256": "a2b788534b5ca56ac91b8b3664c3e44ff1d31201e7cf44f3282a4d1552441554",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/b or u+2": {
+   "name": "u/b or u+2",
+   "name_source": "notation-only",
+   "input": "u/b or u+2",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "h",
+   "on_block": "-12",
+   "on_hit": "+9",
+   "on_ch": "+9",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u/b or u+2",
+    "id": "leo_157",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "u/f+2__2": {
+   "name": "u/f+2",
+   "name_source": "notation-only",
+   "input": "u/f+2",
+   "damage": 15,
+   "damage_raw": "15",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "-14~-13",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u/f+2",
+    "id": "leo_158",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "u/b+3": {
+   "name": "Co_jplk00B",
+   "name_source": "motbin-internal",
+   "input": "u/b+3",
+   "damage": 25,
+   "damage_raw": "25",
+   "startup": 0.35,
+   "startup_frames": 21,
+   "hit_level": "m",
+   "on_block": "-17",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:282",
+   "t7": {
+    "notation": "u/b+3",
+    "id": "leo_159",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/b+3",
+    "motbin_move_id": 1532,
+    "motbin_move_name": "Co_jplk00B",
+    "anim_name": "sjprki10(DVD)",
+    "anim_id": 16666,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 282,
+     "rel_offset": 2629876,
+     "size": 3020,
+     "format_word": 100,
+     "sha256": "808c1358cd95fd6ef901386803f51a75fd9fd16bfb5dde42129faea18ecab81e",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u+3__2": {
+   "name": "Co_jplk00",
+   "name_source": "motbin-internal",
+   "input": "u+3",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": 0.2833,
+   "startup_frames": 17,
+   "hit_level": "m",
+   "on_block": "-9",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:280",
+   "t7": {
+    "notation": "u+3",
+    "id": "leo_160",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u+3",
+    "motbin_move_id": 1530,
+    "motbin_move_name": "Co_jplk00",
+    "anim_name": "moun_jmplk(DVD)",
+    "anim_id": 16664,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 280,
+     "rel_offset": 2626696,
+     "size": 3180,
+     "format_word": 100,
+     "sha256": "0e499b85b04be01f38204d4c42140f48647799677ccef1f3cd8eea093b0aa21a",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/f+3__2": {
+   "name": "Yi Qi Jiao",
+   "name_source": "mvl",
+   "input": "u/f+3",
+   "damage": 21,
+   "damage_raw": "21",
+   "startup": 0.2833,
+   "startup_frames": 17,
+   "hit_level": "m",
+   "on_block": "-9",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:280",
+   "t7": {
+    "notation": "u/f+3",
+    "id": "leo_161",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/f+3",
+    "motbin_move_id": 1531,
+    "motbin_move_name": "Co_jplk00F",
+    "anim_name": "moun_jmplk(DVD)",
+    "anim_id": 16664,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 280,
+     "rel_offset": 2626696,
+     "size": 3180,
+     "format_word": 100,
+     "sha256": "0e499b85b04be01f38204d4c42140f48647799677ccef1f3cd8eea093b0aa21a",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "SS+1": {
+   "name": "Un_lp00F",
+   "name_source": "motbin-internal",
+   "input": "SS+1",
+   "damage": 7,
+   "damage_raw": "7",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "+1",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:320",
+   "t7": {
+    "notation": "SS+1",
+    "id": "leo_162",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "SS+1",
+    "motbin_move_id": 1574,
+    "motbin_move_name": "Un_lp00F",
+    "anim_name": "kmun_lpnf(DVD)",
+    "anim_id": 16704,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 320,
+     "rel_offset": 2686472,
+     "size": 2312,
+     "format_word": 100,
+     "sha256": "24d30c43db28b9558b59851716c89294871db03a60ca68316ceccf3ceb206b2c",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [7]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1574
+    ]
+   }
+  },
+  "SS+2": {
+   "name": "Un_rp00",
+   "name_source": "motbin-internal",
+   "input": "SS+2",
+   "damage": 9,
+   "damage_raw": "9",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-1",
+   "on_hit": "+5",
+   "on_ch": "+5",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:328",
+   "t7": {
+    "notation": "SS+2",
+    "id": "leo_163",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "SS+2",
+    "motbin_move_id": 1593,
+    "motbin_move_name": "Un_rp00",
+    "anim_name": "moun_rp(DVD)",
+    "anim_id": 16712,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 328,
+     "rel_offset": 2711492,
+     "size": 2488,
+     "format_word": 100,
+     "sha256": "784eab56a6c66df5b8f395f44674d86c5346bb088830c137053a092ce02033b7",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [9]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1593
+    ]
+   }
+  },
+  "SS+3": {
+   "name": "Un_lk00",
+   "name_source": "motbin-internal",
+   "input": "SS+3",
+   "damage": 15,
+   "damage_raw": "15",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-8",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:331",
+   "t7": {
+    "notation": "SS+3",
+    "id": "leo_164",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "SS+3",
+    "motbin_move_id": 1599,
+    "motbin_move_name": "Un_lk00",
+    "anim_name": "moun_lk(DVD)",
+    "anim_id": 16715,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 331,
+     "rel_offset": 2720064,
+     "size": 2692,
+     "format_word": 100,
+     "sha256": "88fbf2fdeed2a7a35c6e4ac845985b233ac1462ba13ac60908d1bd216f2c6d0d",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [15]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1599
+    ]
+   }
+  },
+  "SS+4": {
+   "name": "Un_rk00",
+   "name_source": "motbin-internal",
+   "input": "SS+4",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-8",
+   "on_hit": "+6",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": "t7:leo:0x4000:341",
+   "t7": {
+    "notation": "SS+4",
+    "id": "leo_165",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "SS+4",
+    "motbin_move_id": 1614,
+    "motbin_move_name": "Un_rk00",
+    "anim_name": "moun_rk(DVD)",
+    "anim_id": 16725,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "leorotsm.arc",
+     "section": 0,
+     "entry": 341,
+     "rel_offset": 2741484,
+     "size": 2636,
+     "format_word": 100,
+     "sha256": "117b4fb3d6ae14680329fb44b9159562436e25f7f0a5b4870ac216224e3fae84",
+     "blob_file": "leo_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [17]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1614
+    ]
+   }
+  },
+  "BT 1 or 2": {
+   "name": "BT 1 or 2",
+   "name_source": "notation-only",
+   "input": "BT 1 or 2",
+   "damage": 15,
+   "damage_raw": "15",
+   "startup": 0.1333,
+   "startup_frames": 8,
+   "hit_level": "h",
+   "on_block": "-8",
+   "on_hit": "+3",
+   "on_ch": "+3",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "BT 1 or 2",
+    "id": "leo_166",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Un_lptuki",
+     "Un_jprk00F",
+     "Un_rp00",
+     "Un_9lplp"
+    ]
+   }
+  },
+  "BT 3 or 4": {
+   "name": "BT 3 or 4",
+   "name_source": "notation-only",
+   "input": "BT 3 or 4",
+   "damage": 25,
+   "damage_raw": "25",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h",
+   "on_block": "-8",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "BT 3 or 4",
+    "id": "leo_167",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Un_spam",
+     "Un_rk00"
+    ]
+   }
+  }
+ }
+}

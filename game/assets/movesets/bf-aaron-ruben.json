@@ -1,0 +1,348 @@
+{
+ "fighter": "bf-aaron-ruben",
+ "display": "AARON RUBEN",
+ "brutal_fist_id": "aaron_ruben",
+ "brutal_fist_role": "Technical Grappler / Ring General",
+ "brutal_fist_style": "Technical Grappler / Ring General. Submission holds, precise strikes, and ring control. The Ruben Lock submission is nearly impossible to escape.",
+ "tekken_base": "king",
+ "donor": "ur-char002",
+ "donor_moveset": "ur-char002.json",
+ "proxy": true,
+ "proxy_note": "Brutal Fist character pulled from Jay's own brutalfistgrokversiontenpointfive. Inputs in Tekken 7 notation; animations + full move-list data from Urban Reign / Urban Reign Redux donor ur-char002. BF frame data (frames @60fps) converted to WH seconds; BF damage not portable (BF HP 10000 vs WH 100) so WH damage is donor-sourced.",
+ "variant": 1,
+ "moves": {
+  "1": {
+   "name": "Aaron Ruben Jab (BF bf_jab)",
+   "input": "1",
+   "bf_source": "bf_jab",
+   "bf_category": "strike",
+   "bf_frames": {
+    "startup": 3,
+    "active": 2,
+    "recovery": 8
+   },
+   "bf_damage": 8,
+   "donor": "ur-char002",
+   "donor_move": "moco_huntingh2",
+   "startup": 0.05,
+   "active": 0.033,
+   "recovery": 0.133,
+   "damage": 7,
+   "donor_framed": false,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char002:ur_m041",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "2": {
+   "name": "Aaron Ruben Elbow Strike (BF bf_elbow)",
+   "input": "2",
+   "bf_source": "bf_elbow",
+   "bf_category": "strike",
+   "bf_frames": {
+    "startup": 7,
+    "active": 3,
+    "recovery": 16
+   },
+   "bf_damage": 20,
+   "donor": "ur-char002",
+   "donor_move": "cbco_mapahanchi",
+   "startup": 0.117,
+   "active": 0.05,
+   "recovery": 0.267,
+   "damage": 15,
+   "donor_framed": false,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char002:ur_m010",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "4": {
+   "name": "Aaron Ruben Mid Kick (BF bf_mid_kick)",
+   "input": "4",
+   "bf_source": "bf_mid_kick",
+   "bf_category": "kick",
+   "bf_frames": {
+    "startup": 7,
+    "active": 3,
+    "recovery": 16
+   },
+   "bf_damage": 18,
+   "donor": "ur-char002",
+   "donor_move": "hahr_dash_rk",
+   "startup": 0.117,
+   "active": 0.05,
+   "recovery": 0.267,
+   "damage": 24,
+   "donor_framed": false,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char002:ur_m022",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "d+3": {
+   "name": "Aaron Ruben Low Kick (BF bf_low_kick)",
+   "input": "d+3",
+   "bf_source": "bf_low_kick",
+   "bf_category": "kick",
+   "bf_frames": {
+    "startup": 4,
+    "active": 3,
+    "recovery": 10
+   },
+   "bf_damage": 10,
+   "donor": "ur-char002",
+   "donor_move": "moco_dvkhit",
+   "startup": 0.067,
+   "active": 0.05,
+   "recovery": 0.167,
+   "damage": 7,
+   "donor_framed": false,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char002:ur_m038",
+   "input_slots": [
+    "d+3"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "b+1+2": {
+   "name": "Aaron Ruben Reversal (BF bf_reversal)",
+   "input": "b+1+2",
+   "bf_source": "bf_reversal",
+   "bf_category": "counter",
+   "bf_frames": {
+    "startup": 1,
+    "active": 2,
+    "recovery": 20
+   },
+   "bf_damage": 18,
+   "donor": "ur-char002",
+   "donor_move": "hahr_sp_charge_rp",
+   "startup": 0.017,
+   "active": 0.033,
+   "recovery": 0.333,
+   "damage": 15,
+   "donor_framed": false,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char002:ur_m023",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "f+1+2": {
+   "name": "Aaron Ruben Clinch (BF bf_clinch)",
+   "input": "f+1+2",
+   "bf_source": "bf_clinch",
+   "bf_category": "grapple",
+   "bf_frames": {
+    "startup": 6,
+    "active": 4,
+    "recovery": 14
+   },
+   "bf_damage": 0,
+   "donor": "ur-char002",
+   "donor_move": "moco_salbrolreg",
+   "startup": 0.1,
+   "active": 0.067,
+   "recovery": 0.233,
+   "damage": 15,
+   "donor_framed": false,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char002:ur_m042",
+   "input_slots": [
+    "f+1+2"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "1+3": {
+   "name": "Aaron Ruben Suplex (BF bf_suplex)",
+   "input": "1+3",
+   "bf_source": "bf_suplex",
+   "bf_category": "throw",
+   "bf_frames": {
+    "startup": 14,
+    "active": 2,
+    "recovery": 32
+   },
+   "bf_damage": 38,
+   "donor": "ur-char002",
+   "donor_move": "moco_salbrolreg_z",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 24,
+   "donor_framed": false,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 11,
+   "anim_ref": "ur:ur-char002:ur_m043",
+   "input_slots": [
+    "1+3"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "f+2": {
+   "name": "Aaron Ruben Full Nelson (BF bf_full_nelson)",
+   "input": "f+2",
+   "bf_source": "bf_full_nelson",
+   "bf_category": "grapple",
+   "bf_frames": {
+    "startup": 10,
+    "active": 3,
+    "recovery": 22
+   },
+   "bf_damage": 18,
+   "donor": "ur-char002",
+   "donor_move": "cbco_dwngnuke_asi_y",
+   "startup": 0.167,
+   "active": 0.05,
+   "recovery": 0.367,
+   "damage": 15,
+   "donor_framed": false,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char002:ur_m004",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "f+4": {
+   "name": "Aaron Ruben Brainbuster (BF bf_brainbuster)",
+   "input": "f+4",
+   "bf_source": "bf_brainbuster",
+   "bf_category": "throw",
+   "bf_frames": {
+    "startup": 20,
+    "active": 2,
+    "recovery": 42
+   },
+   "bf_damage": 55,
+   "donor": "ur-char002",
+   "donor_move": "cbco_bckrariat",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.7,
+   "damage": 24,
+   "donor_framed": false,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "ur:ur-char002:ur_m000",
+   "input_slots": [
+    "f+4"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "1,2": {
+   "name": "Aaron Ruben Jab-Cross (BF bf_jab_cross)",
+   "input": "1,2",
+   "bf_source": "bf_jab_cross",
+   "bf_category": "combo",
+   "bf_frames": {
+    "startup": 3,
+    "active": 5,
+    "recovery": 16
+   },
+   "bf_damage": 22,
+   "donor": "ur-char002",
+   "donor_move": "mohr_tp_spaink_b",
+   "startup": 0.05,
+   "active": 0.083,
+   "recovery": 0.267,
+   "damage": 24,
+   "donor_framed": false,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char002:ur_m047",
+   "input_slots": [
+    "1,2"
+   ],
+   "move_class": "string",
+   "set": "FIGHT"
+  },
+  "d/b+1+2": {
+   "name": "Aaron Ruben bf_ruben_lock (BF bf_ruben_lock)",
+   "input": "d/b+1+2",
+   "bf_source": "bf_ruben_lock",
+   "bf_category": "unmeasured",
+   "bf_frames": null,
+   "bf_damage": null,
+   "donor": "ur-char002",
+   "donor_move": "mohr_tp_spaink_f",
+   "startup": 0.333,
+   "active": 0.045,
+   "recovery": 0.763,
+   "damage": 32,
+   "donor_framed": true,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 7.5,
+   "soulGain": 13,
+   "anim_ref": "ur:ur-char002:ur_m048",
+   "input_slots": [
+    "d/b+1+2"
+   ],
+   "move_class": "signature",
+   "set": "FIGHT"
+  }
+ },
+ "strings": [
+  {
+   "input": "1,2",
+   "hits": [
+    "1",
+    "2"
+   ],
+   "bf_combo": "bf_jab_cross"
+  }
+ ],
+ "specials": [],
+ "frame_convention": "BF frames @60fps -> seconds; damage donor-sourced (UR/Redux); WH 100HP",
+ "schema_version": 2,
+ "canon_note": "Brutal Fist pull-in. Model: AARON_RUBEN.glb.",
+ "anim_set_lock": {
+  "bank": "pmot002.ppk",
+  "donor": "ur-char002"
+ }
+}

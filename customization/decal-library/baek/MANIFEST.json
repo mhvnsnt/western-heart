@@ -1,0 +1,512 @@
+{
+  "library": "baek-decal-library",
+  "character": "Baek (Western Heart roster/baek, The Master Soul)",
+  "created": "2026-10-18",
+  "source": "Owner directive 2026-10-18: reskin wave (Pantera Attire-3 pattern) \u2014 texture-only recolor, options saved Tekken/WWE-style, nothing overwritten.",
+  "coordinate_system": {
+    "pixel_space": "x right, y DOWN, origin top-left of the PNG as stored in the GLB",
+    "notes": "Each entry is a FULL diffuse texture that replaces the named texture in the GLB (same pattern as pantera tights entries). No UV sub-rects \u2014 whole-texture swap."
+  },
+  "entries": [
+    {
+      "id": "dobok-masterwhite-trim-tabs",
+      "name": "Dobok \u2014 Master's White trim-tabs",
+      "type": "trim",
+      "png": "dobok-masterwhite-trim-tabs.png",
+      "size_px": [
+        96,
+        128
+      ],
+      "replaces_texture": "pek1u_25",
+      "default_placement": "full-replace",
+      "notes": "CURRENTLY APPLIED on the Master's White attire. Jacket front tabs."
+    },
+    {
+      "id": "dobok-masterwhite-trim",
+      "name": "Dobok \u2014 Master's White trim",
+      "type": "trim",
+      "png": "dobok-masterwhite-trim.png",
+      "size_px": [
+        96,
+        128
+      ],
+      "replaces_texture": "pek1u_1",
+      "default_placement": "full-replace",
+      "notes": "CURRENTLY APPLIED on the Master's White attire. Collar trim, sleeve cuffs, jacket hem."
+    },
+    {
+      "id": "dobok-masterwhite-dobok-fabric",
+      "name": "Dobok \u2014 Master's White dobok-fabric",
+      "type": "dobok",
+      "png": "dobok-masterwhite-dobok-fabric.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_0",
+      "default_placement": "full-replace",
+      "notes": "CURRENTLY APPLIED on the Master's White attire. Dobok body fabric."
+    },
+    {
+      "id": "dobok-masterwhite-dobok-fabric-b",
+      "name": "Dobok \u2014 Master's White dobok-fabric-b",
+      "type": "dobok",
+      "png": "dobok-masterwhite-dobok-fabric-b.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_30",
+      "default_placement": "full-replace",
+      "notes": "CURRENTLY APPLIED on the Master's White attire. Dobok body fabric."
+    },
+    {
+      "id": "dobok-masterwhite-dobok-fabric-c",
+      "name": "Dobok \u2014 Master's White dobok-fabric-c",
+      "type": "dobok",
+      "png": "dobok-masterwhite-dobok-fabric-c.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_10",
+      "default_placement": "full-replace",
+      "notes": "CURRENTLY APPLIED on the Master's White attire. Dobok body fabric."
+    },
+    {
+      "id": "dobok-masterwhite-dobok-fabric-d",
+      "name": "Dobok \u2014 Master's White dobok-fabric-d",
+      "type": "dobok",
+      "png": "dobok-masterwhite-dobok-fabric-d.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_9",
+      "default_placement": "full-replace",
+      "notes": "CURRENTLY APPLIED on the Master's White attire. Dobok body fabric."
+    },
+    {
+      "id": "dobok-masterwhite-dobok-fabric-e",
+      "name": "Dobok \u2014 Master's White dobok-fabric-e",
+      "type": "dobok",
+      "png": "dobok-masterwhite-dobok-fabric-e.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_4",
+      "default_placement": "full-replace",
+      "notes": "CURRENTLY APPLIED on the Master's White attire. Dobok body fabric."
+    },
+    {
+      "id": "dobok-masterwhite-dobok-back-logo",
+      "name": "Dobok \u2014 Master's White dobok-back-logo",
+      "type": "dobok",
+      "png": "dobok-masterwhite-dobok-back-logo.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_8",
+      "default_placement": "full-replace",
+      "notes": "CURRENTLY APPLIED on the Master's White attire. Dobok back (logo patch area)."
+    },
+    {
+      "id": "dobok-masterwhite-dobok-back-korea",
+      "name": "Dobok \u2014 Master's White dobok-back-korea",
+      "type": "dobok",
+      "png": "dobok-masterwhite-dobok-back-korea.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_6",
+      "default_placement": "full-replace",
+      "notes": "CURRENTLY APPLIED on the Master's White attire. Dobok back with red KOREA + black han."
+    },
+    {
+      "id": "dobok-masterwhite-dobok-back-logo-b",
+      "name": "Dobok \u2014 Master's White dobok-back-logo-b",
+      "type": "dobok",
+      "png": "dobok-masterwhite-dobok-back-logo-b.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_5",
+      "default_placement": "full-replace",
+      "notes": "CURRENTLY APPLIED on the Master's White attire. Dobok back with KOREA logo."
+    },
+    {
+      "id": "dobok-masterwhite-collar-red",
+      "name": "Dobok \u2014 Master's White collar-red",
+      "type": "trim",
+      "png": "dobok-masterwhite-collar-red.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_32",
+      "default_placement": "full-replace",
+      "notes": "CURRENTLY APPLIED on the Master's White attire. Collar red lining."
+    },
+    {
+      "id": "dobok-masterwhite-collar-red-b",
+      "name": "Dobok \u2014 Master's White collar-red-b",
+      "type": "trim",
+      "png": "dobok-masterwhite-collar-red-b.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_27",
+      "default_placement": "full-replace",
+      "notes": "CURRENTLY APPLIED on the Master's White attire. Collar red lining."
+    },
+    {
+      "id": "dobok-fallenmaster-trim-tabs",
+      "name": "Dobok \u2014 Fallen Master trim-tabs (option)",
+      "type": "trim",
+      "png": "dobok-fallenmaster-trim-tabs.png",
+      "size_px": [
+        96,
+        128
+      ],
+      "replaces_texture": "pek1u_25",
+      "default_placement": "full-replace",
+      "notes": "OPTION (not applied). Fallen-master variant: near-black dobok, oxblood trim. Jacket front tabs."
+    },
+    {
+      "id": "dobok-fallenmaster-trim",
+      "name": "Dobok \u2014 Fallen Master trim (option)",
+      "type": "trim",
+      "png": "dobok-fallenmaster-trim.png",
+      "size_px": [
+        96,
+        128
+      ],
+      "replaces_texture": "pek1u_1",
+      "default_placement": "full-replace",
+      "notes": "OPTION (not applied). Fallen-master variant: near-black dobok, oxblood trim. Collar trim, sleeve cuffs, jacket hem."
+    },
+    {
+      "id": "dobok-fallenmaster-dobok-fabric",
+      "name": "Dobok \u2014 Fallen Master dobok-fabric (option)",
+      "type": "dobok",
+      "png": "dobok-fallenmaster-dobok-fabric.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_0",
+      "default_placement": "full-replace",
+      "notes": "OPTION (not applied). Fallen-master variant: near-black dobok, oxblood trim. Dobok body fabric."
+    },
+    {
+      "id": "dobok-fallenmaster-dobok-fabric-b",
+      "name": "Dobok \u2014 Fallen Master dobok-fabric-b (option)",
+      "type": "dobok",
+      "png": "dobok-fallenmaster-dobok-fabric-b.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_30",
+      "default_placement": "full-replace",
+      "notes": "OPTION (not applied). Fallen-master variant: near-black dobok, oxblood trim. Dobok body fabric."
+    },
+    {
+      "id": "dobok-fallenmaster-dobok-fabric-c",
+      "name": "Dobok \u2014 Fallen Master dobok-fabric-c (option)",
+      "type": "dobok",
+      "png": "dobok-fallenmaster-dobok-fabric-c.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_10",
+      "default_placement": "full-replace",
+      "notes": "OPTION (not applied). Fallen-master variant: near-black dobok, oxblood trim. Dobok body fabric."
+    },
+    {
+      "id": "dobok-fallenmaster-dobok-fabric-d",
+      "name": "Dobok \u2014 Fallen Master dobok-fabric-d (option)",
+      "type": "dobok",
+      "png": "dobok-fallenmaster-dobok-fabric-d.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_9",
+      "default_placement": "full-replace",
+      "notes": "OPTION (not applied). Fallen-master variant: near-black dobok, oxblood trim. Dobok body fabric."
+    },
+    {
+      "id": "dobok-fallenmaster-dobok-fabric-e",
+      "name": "Dobok \u2014 Fallen Master dobok-fabric-e (option)",
+      "type": "dobok",
+      "png": "dobok-fallenmaster-dobok-fabric-e.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_4",
+      "default_placement": "full-replace",
+      "notes": "OPTION (not applied). Fallen-master variant: near-black dobok, oxblood trim. Dobok body fabric."
+    },
+    {
+      "id": "dobok-fallenmaster-dobok-back-logo",
+      "name": "Dobok \u2014 Fallen Master dobok-back-logo (option)",
+      "type": "dobok",
+      "png": "dobok-fallenmaster-dobok-back-logo.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_8",
+      "default_placement": "full-replace",
+      "notes": "OPTION (not applied). Fallen-master variant: near-black dobok, oxblood trim. Dobok back (logo patch area)."
+    },
+    {
+      "id": "dobok-fallenmaster-dobok-back-korea",
+      "name": "Dobok \u2014 Fallen Master dobok-back-korea (option)",
+      "type": "dobok",
+      "png": "dobok-fallenmaster-dobok-back-korea.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_6",
+      "default_placement": "full-replace",
+      "notes": "OPTION (not applied). Fallen-master variant: near-black dobok, oxblood trim. Dobok back with red KOREA + black han."
+    },
+    {
+      "id": "dobok-fallenmaster-dobok-back-logo-b",
+      "name": "Dobok \u2014 Fallen Master dobok-back-logo-b (option)",
+      "type": "dobok",
+      "png": "dobok-fallenmaster-dobok-back-logo-b.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_5",
+      "default_placement": "full-replace",
+      "notes": "OPTION (not applied). Fallen-master variant: near-black dobok, oxblood trim. Dobok back with KOREA logo."
+    },
+    {
+      "id": "dobok-fallenmaster-collar-red",
+      "name": "Dobok \u2014 Fallen Master collar-red (option)",
+      "type": "trim",
+      "png": "dobok-fallenmaster-collar-red.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_32",
+      "default_placement": "full-replace",
+      "notes": "OPTION (not applied). Fallen-master variant: near-black dobok, oxblood trim. Collar red lining."
+    },
+    {
+      "id": "dobok-fallenmaster-collar-red-b",
+      "name": "Dobok \u2014 Fallen Master collar-red-b (option)",
+      "type": "trim",
+      "png": "dobok-fallenmaster-collar-red-b.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_27",
+      "default_placement": "full-replace",
+      "notes": "OPTION (not applied). Fallen-master variant: near-black dobok, oxblood trim. Collar red lining."
+    },
+    {
+      "id": "dobok-original-trim-tabs",
+      "name": "Dobok \u2014 ORIGINAL trim-tabs (restore)",
+      "type": "trim",
+      "png": "dobok-original-trim-tabs.png",
+      "size_px": [
+        96,
+        128
+      ],
+      "replaces_texture": "pek1u_25",
+      "default_placement": "full-replace",
+      "notes": "Original texture from game/assets/models/baek.glb (pre-reskin). Re-embed to restore. Jacket front tabs."
+    },
+    {
+      "id": "dobok-original-trim",
+      "name": "Dobok \u2014 ORIGINAL trim (restore)",
+      "type": "trim",
+      "png": "dobok-original-trim.png",
+      "size_px": [
+        96,
+        128
+      ],
+      "replaces_texture": "pek1u_1",
+      "default_placement": "full-replace",
+      "notes": "Original texture from game/assets/models/baek.glb (pre-reskin). Re-embed to restore. Collar trim, sleeve cuffs, jacket hem."
+    },
+    {
+      "id": "dobok-original-dobok-fabric",
+      "name": "Dobok \u2014 ORIGINAL dobok-fabric (restore)",
+      "type": "dobok",
+      "png": "dobok-original-dobok-fabric.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_0",
+      "default_placement": "full-replace",
+      "notes": "Original texture from game/assets/models/baek.glb (pre-reskin). Re-embed to restore. Dobok body fabric."
+    },
+    {
+      "id": "dobok-original-dobok-fabric-b",
+      "name": "Dobok \u2014 ORIGINAL dobok-fabric-b (restore)",
+      "type": "dobok",
+      "png": "dobok-original-dobok-fabric-b.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_30",
+      "default_placement": "full-replace",
+      "notes": "Original texture from game/assets/models/baek.glb (pre-reskin). Re-embed to restore. Dobok body fabric."
+    },
+    {
+      "id": "dobok-original-dobok-fabric-c",
+      "name": "Dobok \u2014 ORIGINAL dobok-fabric-c (restore)",
+      "type": "dobok",
+      "png": "dobok-original-dobok-fabric-c.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_10",
+      "default_placement": "full-replace",
+      "notes": "Original texture from game/assets/models/baek.glb (pre-reskin). Re-embed to restore. Dobok body fabric."
+    },
+    {
+      "id": "dobok-original-dobok-fabric-d",
+      "name": "Dobok \u2014 ORIGINAL dobok-fabric-d (restore)",
+      "type": "dobok",
+      "png": "dobok-original-dobok-fabric-d.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_9",
+      "default_placement": "full-replace",
+      "notes": "Original texture from game/assets/models/baek.glb (pre-reskin). Re-embed to restore. Dobok body fabric."
+    },
+    {
+      "id": "dobok-original-dobok-fabric-e",
+      "name": "Dobok \u2014 ORIGINAL dobok-fabric-e (restore)",
+      "type": "dobok",
+      "png": "dobok-original-dobok-fabric-e.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_4",
+      "default_placement": "full-replace",
+      "notes": "Original texture from game/assets/models/baek.glb (pre-reskin). Re-embed to restore. Dobok body fabric."
+    },
+    {
+      "id": "dobok-original-dobok-back-logo",
+      "name": "Dobok \u2014 ORIGINAL dobok-back-logo (restore)",
+      "type": "dobok",
+      "png": "dobok-original-dobok-back-logo.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_8",
+      "default_placement": "full-replace",
+      "notes": "Original texture from game/assets/models/baek.glb (pre-reskin). Re-embed to restore. Dobok back (logo patch area)."
+    },
+    {
+      "id": "dobok-original-dobok-back-korea",
+      "name": "Dobok \u2014 ORIGINAL dobok-back-korea (restore)",
+      "type": "dobok",
+      "png": "dobok-original-dobok-back-korea.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_6",
+      "default_placement": "full-replace",
+      "notes": "Original texture from game/assets/models/baek.glb (pre-reskin). Re-embed to restore. Dobok back with red KOREA + black han."
+    },
+    {
+      "id": "dobok-original-dobok-back-logo-b",
+      "name": "Dobok \u2014 ORIGINAL dobok-back-logo-b (restore)",
+      "type": "dobok",
+      "png": "dobok-original-dobok-back-logo-b.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_5",
+      "default_placement": "full-replace",
+      "notes": "Original texture from game/assets/models/baek.glb (pre-reskin). Re-embed to restore. Dobok back with KOREA logo."
+    },
+    {
+      "id": "dobok-original-collar-red",
+      "name": "Dobok \u2014 ORIGINAL collar-red (restore)",
+      "type": "trim",
+      "png": "dobok-original-collar-red.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_32",
+      "default_placement": "full-replace",
+      "notes": "Original texture from game/assets/models/baek.glb (pre-reskin). Re-embed to restore. Collar red lining."
+    },
+    {
+      "id": "dobok-original-collar-red-b",
+      "name": "Dobok \u2014 ORIGINAL collar-red-b (restore)",
+      "type": "trim",
+      "png": "dobok-original-collar-red-b.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_27",
+      "default_placement": "full-replace",
+      "notes": "Original texture from game/assets/models/baek.glb (pre-reskin). Re-embed to restore. Collar red lining."
+    },
+    {
+      "id": "dobok-original-belt-tips",
+      "name": "Dobok \u2014 ORIGINAL belt-tips (restore)",
+      "type": "belt",
+      "png": "dobok-original-belt-tips.png",
+      "size_px": [
+        128,
+        128
+      ],
+      "replaces_texture": "pek1u_28",
+      "default_placement": "full-replace",
+      "notes": "Original texture from game/assets/models/baek.glb (pre-reskin). Re-embed to restore. Belt tips \u2014 kept BLACK in all variants."
+    },
+    {
+      "id": "dobok-original-belt-band",
+      "name": "Dobok \u2014 ORIGINAL belt-band (restore)",
+      "type": "belt",
+      "png": "dobok-original-belt-band.png",
+      "size_px": [
+        128,
+        96
+      ],
+      "replaces_texture": "pek1u_3",
+      "default_placement": "full-replace",
+      "notes": "Original texture from game/assets/models/baek.glb (pre-reskin). Re-embed to restore. Belt band \u2014 kept BLACK in all variants."
+    }
+  ],
+  "how_to_swap": [
+    "1. Pick a dobok option PNG.",
+    "2. Re-embed it as the entry's replaces_texture in roster/baek/attires/master-white/baek-master-white.glb (full replace, same size).",
+    "3. To restore the original look: re-embed all fourteen dobok-original-* PNGs.",
+    "4. To apply the Fallen Master option: re-embed all twelve dobok-fallenmaster-* PNGs."
+  ]
+}

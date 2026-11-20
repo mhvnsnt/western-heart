@@ -1,0 +1,244 @@
+{
+ "fighter": "buffalo-bill",
+ "base": "http://127.0.0.1:8906/game/",
+ "ready": true,
+ "rows": [
+  {
+   "n": "1",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:161",
+   "kind": "own",
+   "why": "",
+   "timing": {
+    "S": 0.167,
+    "A": 0.017,
+    "t0": 0.133,
+    "t1": 0.133,
+    "D": 0.533,
+    "src": "decoded"
+   },
+   "moveDmg": 3,
+   "hitWord": 1042,
+   "isGrab": false,
+   "atkName": "1",
+   "hasHit": true,
+   "distAtHit": 1.46,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 2.8,
+   "hits": [
+    {
+     "dmg": 3,
+     "word": 1042,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:161",
+   "kind": "own",
+   "why": "",
+   "timing": {
+    "S": 0.167,
+    "A": 0.017,
+    "t0": 0.133,
+    "t1": 0.133,
+    "D": 0.533,
+    "src": "decoded"
+   },
+   "moveDmg": 3,
+   "hitWord": 1042,
+   "isGrab": false,
+   "atkName": "1",
+   "hasHit": true,
+   "distAtHit": 1.62,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 2.8,
+   "hits": [
+    {
+     "dmg": 3,
+     "word": 1042,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1+2",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:99",
+   "kind": "anim",
+   "why": "",
+   "timing": {
+    "S": 0.267,
+    "A": 0.033,
+    "t0": 0.133,
+    "t1": 0.133,
+    "D": 0.633,
+    "src": "decoded"
+   },
+   "moveDmg": 11,
+   "hitWord": 535,
+   "isGrab": false,
+   "atkName": "1+2",
+   "hasHit": true,
+   "distAtHit": 1.48,
+   "defStates": [
+    "knockdown"
+   ],
+   "hpDelta": 22.1,
+   "hits": [
+    {
+     "dmg": 11,
+     "word": 535,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1+2",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:99",
+   "kind": "anim",
+   "why": "",
+   "timing": {
+    "S": 0.267,
+    "A": 0.033,
+    "t0": 0.133,
+    "t1": 0.133,
+    "D": 0.633,
+    "src": "decoded"
+   },
+   "moveDmg": 11,
+   "hitWord": 535,
+   "isGrab": false,
+   "atkName": "1+2",
+   "hasHit": true,
+   "distAtHit": 1.6,
+   "defStates": [
+    "knockdown"
+   ],
+   "hpDelta": 10.1,
+   "hits": [
+    {
+     "dmg": 11,
+     "word": 535,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "u/f+4",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:86",
+   "kind": "own",
+   "why": "",
+   "timing": {
+    "S": 0.25,
+    "A": 0.033,
+    "t0": 0.25,
+    "t1": 0.283,
+    "D": 0.9,
+    "src": "decoded"
+   },
+   "moveDmg": 8,
+   "hitWord": 535,
+   "isGrab": false,
+   "atkName": "u/f+4",
+   "hasHit": true,
+   "distAtHit": 1.45,
+   "defStates": [
+    "knockdown"
+   ],
+   "hpDelta": 7.3,
+   "hits": [
+    {
+     "dmg": 8,
+     "word": 535,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "u/f+4",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:86",
+   "kind": "own",
+   "why": "",
+   "timing": {
+    "S": 0.25,
+    "A": 0.033,
+    "t0": 0.25,
+    "t1": 0.283,
+    "D": 0.9,
+    "src": "decoded"
+   },
+   "moveDmg": 8,
+   "hitWord": 535,
+   "isGrab": false,
+   "atkName": "u/f+4",
+   "hasHit": true,
+   "distAtHit": 1.8,
+   "defStates": [
+    "knockdown"
+   ],
+   "hpDelta": 7.3,
+   "hits": [
+    {
+     "dmg": 8,
+     "word": 535,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  }
+ ],
+ "setup": {
+  "roundState": "fight",
+  "p1id": "buffalo-bill",
+  "t3actionsCount": 20,
+  "bank": "law"
+ },
+ "logs": [
+  "[http 404] http://127.0.0.1:8906/deploy-manifest.json",
+  "[http 404] http://127.0.0.1:8906/roster/buffalo-bill/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8906/roster/pantera/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/index.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/buffalo-bill.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/pantera.json",
+  "[http 404] http://127.0.0.1:8906/game/js/intro-interactions.js"
+ ]
+}

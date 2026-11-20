@@ -1,0 +1,26 @@
+{
+ "game": "WWE WrestleMania XIX (banked — WIRE NOTE ONLY, do not edit the bank)",
+ "ownership_basis": "Repo bank game/data/moveset-library/banks/wmxix.json: 169 moves, 0 with input (per task brief)",
+ "status": "spec-only — no game files were accessible from this VM (phone-only user, Steam remote download unreachable); this pack is the teardown path + conversion/wire schema, NOT extracted commercial assets",
+ "teardown_toolchain": [
+  "Already banked — no extraction tool needed for the wire step",
+  "Public preset-moveset catalogues (caws.ws) as a cross-check source for real move names"
+ ],
+ "extractable": [
+  "169 banked rows — currently LABELS ONLY"
+ ],
+ "wh_wire": {
+  "combat": "BLOCKED for direct wiring until inputs are assigned: rows carry PROVISIONAL labels, NOT real move names",
+  "creation": "UNMAPPED until names/inputs are verified",
+  "stages": "UNMAPPED",
+  "audio": "UNMAPPED",
+  "systems": "UNMAPPED"
+ },
+ "blocker": "SPECIFIC BLOCKER: WMXIX rows have 0 inputs and PROVISIONAL labels, not real move names. Wiring them as-is would put fake names into the game — the exact failure the honesty rules exist to prevent.",
+ "unblock": "Verification job (coordinator browser delegation, GitHub/Google tap-to-sign-in only where a sign-in is required): cross-check each of the 169 rows against public WMXIX move documentation (caws.ws preset sets + published movelists); only rows with a sourced real name + input graduate from PROVISIONAL to WIRED. Rows that cannot be sourced stay PROVISIONAL and are NOT shown in-game.",
+ "canon_rule": "Anything brought in with another game's name is renamed to Eastern Mind / Western Heart canon in user-facing writing. Tekken/proprietary names stay in technical files only. Game ships with NO famous names. All characters adults. User's own models (Tripo + SmutBase) display FIRST; Tekken models are back-slot attires. Sole exception: Pantera Attire 1 (user-customized King reskin).",
+ "combat_inputs": "LP1=Left Punch=Tekken 1, RP2=Right Punch=Tekken 2, LK3=Left Kick=Tekken 3, RK4=Right Kick=Tekken 4. Frame data / MOD damage: UNMAPPED unless a source file in this pack contains it — never estimated as measured.",
+ "community_sources": [
+  "https://www.caws.ws/svr/presetmovesets.php"
+ ]
+}

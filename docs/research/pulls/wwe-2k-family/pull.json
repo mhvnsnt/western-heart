@@ -1,0 +1,26 @@
+{
+ "game": "Every other WWE 2K game (2K14–2K25, 2K Battlegrounds, WWE '12/'13, SmackDown vs Raw era, WrestleMania XIX — see also wmxix pack)",
+ "ownership_basis": "User word 2026-10-24: user owns EVERY WWE 2K game; absent from the Steam snapshot except 2K19/20/22 — absence does NOT mean not owned",
+ "status": "spec-only — no game files were accessible from this VM (phone-only user, Steam remote download unreachable); this pack is the teardown path + conversion/wire schema, NOT extracted commercial assets",
+ "teardown_toolchain": [
+  "Era toolchains: 2K19-era = PAC + CCT + Data Editor; 2K20/22/26-era = CAK + Caketools/DataCtrlLink/Aurora Forge; pre-2K19 console-era titles = community save/CAW data (caws.ws preset movesets) — exact tool per title is UNMAPPED until the title's install/format is confirmed"
+ ],
+ "extractable": [
+  "The same CAW/moveset structure as the 2K19/20/22/26 packs, era by era; older titles contribute move-name catalogues and preset moveset archetypes (e.g. caws.ws preset sets 1–74+)",
+  "No Mercy / WrestleMania XIX are covered by the banked packs below — do not duplicate their rows"
+ ],
+ "wh_wire": {
+  "combat": "Same as 2K19/20/22/26 packs",
+  "creation": "Same template schema; era templates are additive, never replacements for the base",
+  "stages": "UNMAPPED per title",
+  "audio": "UNMAPPED per title",
+  "systems": "Same pofo/attribute schema"
+ },
+ "blocker": "Per-title format confirmation is the blocker: this family pack deliberately does NOT assert a single tool for titles whose install has not been inspected. No local game install is reachable from this VM and no game files were supplied with this task. Steam remote download previously reported 'Unable to reach your PC'; user rule is phone-only, no PC paths.",
+ "unblock": "Confirm each title's format from its installed files, then file a per-title pull.json under this family (same schema) — do not bulk-assert tools.",
+ "canon_rule": "Anything brought in with another game's name is renamed to Eastern Mind / Western Heart canon in user-facing writing. Tekken/proprietary names stay in technical files only. Game ships with NO famous names. All characters adults. User's own models (Tripo + SmutBase) display FIRST; Tekken models are back-slot attires. Sole exception: Pantera Attire 1 (user-customized King reskin).",
+ "combat_inputs": "LP1=Left Punch=Tekken 1, RP2=Right Punch=Tekken 2, LK3=Left Kick=Tekken 3, RK4=Right Kick=Tekken 4. Frame data / MOD damage: UNMAPPED unless a source file in this pack contains it — never estimated as measured.",
+ "community_sources": [
+  "https://www.caws.ws/svr/presetmovesets.php"
+ ]
+}

@@ -1,0 +1,24 @@
+[warning] [WH] No custom fighter found in either suite slot
+[log] [WH] stage loaded: SHRINE OF THE BLADE (shrine)
+[warning] [WH] No custom fighter found in either suite slot
+[warning] [WH] No custom fighter found in either suite slot
+[warning] [WH] No custom fighter found in either suite slot
+[log] [WH] Real T3 movesets loaded for 36 fighters (7 T3 sources)
+[log] [WH] Moveset index: 128 fighters (full sets load per fight)
+[warning] [WH] select preview: bank 'king' stance does not fit pantera's rig (Left shoulder swung 0.69 rad from bind) — falling back
+[log] [WH] Fighter demonio: 22 real T3 actions from bank 'jin' (retargeted onto demonio-a1)
+[log] [WH] Fighter pantera: 22 real T3 actions from bank 'king' (retargeted onto pantera-leoman)
+[log] [WH] stage loaded: SHRINE OF THE BLADE (shrine)
+[warning] [WH] lab/replay attach failed: TypeError: Cannot read properties of undefined (reading 'push')
+    at new ReplayRecorder (http://127.0.0.1:8765/game/js/replay.js:99:21)
+    at ReplayRecorder.attach (http://127.0.0.1:8765/game/js/replay.js:79:15)
+    at startFight (http://127.0.0.1:8765/game/js/main.js:1520:22)
+[warning] [WHHitDetect] verify failed, keeping sphere result TypeError: baked.computeBoundsTree is not a function
+    at WHHitDetect.buildFighterBVH (http://127.0.0.1:8765/game/js/hitdetect.js:81:11)
+    at async WHHitDetect.testLimbVsBody (http://127.0.0.1:8765/game/js/hitdetect.js:106:17)
+    at async WHHitDetect.verify (http://127.0.0.1:8765/game/js/hitdetect.js:149:17)
+[log] [WH] Moveset index: 128 fighters (full sets load per fight)
+[warning] [WHHitDetect] verify failed, keeping sphere result TypeError: baked.computeBoundsTree is not a function
+    at WHHitDetect.buildFighterBVH (http://127.0.0.1:8765/game/js/hitdetect.js:81:11)
+    at async WHHitDetect.testLimbVsBody (http://127.0.0.1:8765/game/js/hitdetect.js:106:17)
+    at async WHHitDetect.verify (http://127.0.0.1:8765/game/js/hitdetect.js:149:17)

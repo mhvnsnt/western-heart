@@ -1,0 +1,142 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#14121c;overflow:hidden}canvas{display:block}</style></head><body>
+<script type="importmap">{"imports":{"three":"http://127.0.0.1:8843/_megami-liveproof-20261106/serve/game/vendor/three.module.js","three/addons/":"http://127.0.0.1:8843/_megami-liveproof-20261106/serve/game/vendor/addons/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.js';
+// V5 SHOW stage (lane 9; hair asset swapped lane 11): body = megami-angel-pilot2-v5.glb,
+// hair = gate-passed REFIT straight (megami-hair-angel-straight-REFIT.glb, hair lane
+// PR #1705; crown caveat disclosed in the report). STALLION STANCE is a
+// RENDER POSE applied to joint-node rotations only — the GLB bind is never changed.
+// Pose method mirrors the v4 stage's camera logic: measured bones/box frame the cams;
+// hip cams offset along world +X (deliberate stallion widening), full cams frame the
+// measured posed box with a 0.24 side margin so wide feet stay in frame.
+const qs = new URLSearchParams(location.search);
+const W = parseInt(qs.get('w') || '640'), H = parseInt(qs.get('h') || '960');
+window.__ready = false; window.__log = []; window.__facts = {};
+const HIDE = new Set(['Hair001','Hair.001','Full','AngelHairScalpCap','AngelHairStraight','AngelHeadband','Goggles','Bottom','Gaunlet','Shoes','Top']);
+(async () => {
+  const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+  renderer.setSize(W, H);
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.NeutralToneMapping;
+  renderer.toneMappingExposure = 1.1;
+  document.body.appendChild(renderer.domElement);
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x14121c);
+  const camera = new THREE.PerspectiveCamera(35, W / H, 0.02, 60);
+  scene.add(new THREE.HemisphereLight(0xdfe8ff, 0x2a2118, 1.15));
+  const key = new THREE.DirectionalLight(0xffffff, 2.2); key.position.set(1.6, 2.4, 2.6); scene.add(key);
+  const fill = new THREE.DirectionalLight(0xcfd8ff, 0.55); fill.position.set(-2.2, 1.2, 1.4); scene.add(fill);
+  const rim = new THREE.DirectionalLight(0xffe0b8, 0.9); rim.position.set(-0.8, 2.0, -2.4); scene.add(rim);
+  const loader = new GLTFLoader(); loader.setMeshoptDecoder(MeshoptDecoder);
+
+  // ---- BODY (v5 GLB; exported state: AngelFace=1, AngelBody=1) ----
+  const bodyG = await loader.loadAsync('assets/body.glb');
+  const body = bodyG.scene;
+  body.traverse(o => {
+    if (HIDE.has(o.name)) { o.visible = false; window.__log.push('hid: ' + o.name + ' (' + o.type + ')'); }
+  });
+  const tex = await new THREE.TextureLoader().loadAsync('assets/eye-brown.png');
+  tex.flipY = false; tex.colorSpace = THREE.SRGBColorSpace;
+  tex.wrapS = THREE.RepeatWrapping; tex.wrapT = THREE.RepeatWrapping;
+  body.traverse(o => {
+    if (o.isMesh || o.isSkinnedMesh) {
+      const ms = Array.isArray(o.material) ? o.material : [o.material];
+      ms.forEach(m => { if (m && m.name === 'Irises-2') { m.map = tex; m.color = new THREE.Color(0xffffff); m.needsUpdate = true; window.__log.push('eye part applied to Irises-2'); } });
+      if (o.name === 'Parvati Mesh' && o.morphTargetDictionary) {
+        const d = o.morphTargetDictionary;
+        window.__facts.morphs = { AngelFace: o.morphTargetInfluences[d['AngelFace']], AngelBody: o.morphTargetInfluences[d['AngelBody']] };
+      }
+    }
+  });
+  scene.add(body);
+  scene.updateMatrixWorld(true);
+  const bone = (root, name) => { let r = null; root.traverse(o => { if (!r && o.isBone && o.name === name) r = o; }); if (!r) { window.__log.push('BONE MISS: ' + name); } return r; };
+  const boneReq = (root, name) => { const b = bone(root, name); if (!b) throw new Error('required bone missing: ' + name); return b; };
+  const boneWorld = (root, name) => { const b = bone(root, name); if (!b) return null; const p = new THREE.Vector3(); b.getWorldPosition(p); return p; };
+
+  // ---- STALLION STANCE (render pose, joint rotations only) ----
+  // DEFORM bones, NOT the FK control chain: the mesh is skinned to the DAZ-style
+  // deform chain (LeftUpLeg/LeftLeg/LeftFoot + *.bend/twist.twk helpers); the FK
+  // bones (thighfkL etc.) carry ZERO skin weight (diag9), so rotating them moves
+  // bone matrices but deforms nothing. Verified by diag10 (feet span 140 -> 538 px).
+  const thL = boneReq(body, 'LeftUpLeg'), thR = boneReq(body, 'RightUpLeg');
+  const shL = boneReq(body, 'LeftLeg'), shR = boneReq(body, 'RightLeg');
+  const ftL = bone(body, 'LeftFoot'), ftR = bone(body, 'RightFoot');
+  const toeL = bone(body, 'tarsalL'), toeR = bone(body, 'tarsalR');
+  const RAD = Math.PI / 180;
+  const q0 = {}; [['thL',thL],['thR',thR],['shL',shL],['shR',shR],['ftL',ftL],['ftR',ftR],['toeL',toeL],['toeR',toeR]].forEach(([k,b]) => { if (b) q0[k] = b.quaternion.clone(); });
+  const X = new THREE.Vector3(1, 0, 0), Y = new THREE.Vector3(0, 1, 0), Z = new THREE.Vector3(0, 0, 1);
+  const rot = (obj, axis, deg) => { const q = new THREE.Quaternion().setFromAxisAngle(axis, deg * RAD); obj.quaternion.premultiply(q); };
+  const hipW = (parseFloat(qs.get('hipw') || '18')) * RAD;       // thigh abduction (world Z)
+  const kneeC = (parseFloat(qs.get('kneec') || '0.35'));         // knee compensation factor of hipW
+  const toeOut = (parseFloat(qs.get('toe') || '10')) * RAD;      // foot yaw outward
+  rot(thL, Z,  hipW / RAD); rot(thR, Z, -hipW / RAD);
+  rot(shL, Z, -kneeC * hipW / RAD); rot(shR, Z, kneeC * hipW / RAD);
+  const comp = (1 - kneeC) * hipW;
+  if (ftL) rot(ftL, Z, -comp / RAD); if (ftR) rot(ftR, Z, comp / RAD);
+  if (ftL) rot(ftL, Y, -toeOut / RAD); if (ftR) rot(ftR, Y, toeOut / RAD);
+  if (toeL) rot(toeL, Y, -toeOut / RAD); if (toeR) rot(toeR, Y, toeOut / RAD);
+  scene.updateMatrixWorld(true);
+  const groundY = (b) => { const p = new THREE.Vector3(); // sole proxy: lowest of foot/toe joint world Y
+    const a = boneWorld(body, b); return a ? a.y : 0; };
+  const footYL = Math.min(groundY('LeftFoot'), groundY('tarsalL'));
+  const footYR = Math.min(groundY('RightFoot'), groundY('tarsalR'));
+  const drop = (footYL + footYR) / 2;
+  body.position.y -= drop;
+  scene.updateMatrixWorld(true);
+  window.__facts.pose = { hipAbductionDeg: hipW / RAD, kneeCompFactor: kneeC, footLevelCompDeg: comp / RAD, toeOutDeg: toeOut / RAD, bodyDropM: drop,
+    footYL, footYR, feetLevelDeltaMm: Math.abs(footYL - footYR) * 1000,
+    footL: (boneWorld(body, 'LeftFoot') || boneWorld(body, 'LeftLeg')).toArray(), footR: (boneWorld(body, 'RightFoot') || boneWorld(body, 'RightLeg')).toArray(),
+    stanceWidthM: Math.abs((boneWorld(body, 'LeftFoot') || boneWorld(body, 'LeftLeg')).x - (boneWorld(body, 'RightFoot') || boneWorld(body, 'RightLeg')).x),
+    stanceNote: 'POSE BONES (lane 11, diag9/diag10): the stance rotates the DEFORM chain (LeftUpLeg/LeftLeg/LeftFoot/tarsal), NOT the FK chain. diag9 proved the FK bones (thighfkL etc.) carry ZERO skin weight - the mesh is skinned to the DAZ-style deform/tweak bones (thighbendtwk, pelvistwk, foottwk, tarsal...). Rotating FK bones moved bone matrices (facts looked right) but deformed nothing (diag5/diag8: even 45 deg + forced bone-texture refresh = zero pixels). diag10: deform-chain 18 deg pose moves the render (feet span 140 -> 538 px, knees 162 -> 304 px). Full stance executes: abduction 18 + knee comp x0.35 + foot level + toe-out 10 + foot/tarsal-joint ground drop. Runtime bone names are dot-stripped by the loader (thigh.fk.L -> thighfkL; tarsal.L -> tarsalL).' };
+
+  const headBody = boneWorld(body, 'Head');
+  const hipsBody = boneWorld(body, 'Hips');
+  const pelvisBody = boneWorld(body, 'pelvis') || hipsBody;
+  const chestBody = boneWorld(body, 'Chest') || boneWorld(body, 'Spine2');
+  let botY = Infinity; body.traverse(o => { if (o.isBone) { const p = new THREE.Vector3(); o.getWorldPosition(p); if (p.y < botY) botY = p.y; } });
+  window.__facts.bones = { Head: headBody && headBody.toArray(), Hips: hipsBody && hipsBody.toArray(), pelvis: pelvisBody && pelvisBody.toArray(), Chest: chestBody && chestBody.toArray(), minBoneY: botY };
+
+  // ---- STRAIGHT HAIR (saved FINAL, PENDING-STANDARD) fitted by measured head-joint delta ----
+  const hairG = await loader.loadAsync('assets/hair-straight.glb');
+  const hair = hairG.scene;
+  hair.updateMatrixWorld(true);
+  const headHair = boneWorld(hair, 'head');
+  const hipHair = boneWorld(hair, 'hip');
+  const delta = new THREE.Vector3().subVectors(headBody, headHair);
+  hair.position.copy(delta);
+  window.__facts.hairFit = { hairHeadBind: headHair.toArray(), bodyHead: headBody.toArray(), appliedDelta: delta.toArray(), hairHipBind: hipHair && hipHair.toArray(), bodyHips: hipsBody && hipsBody.toArray() };
+  window.__log.push('hair root delta applied: ' + delta.toArray().map(v => v.toFixed(4)).join(','));
+  scene.add(hair);
+  scene.updateMatrixWorld(true);
+  const hairBox = new THREE.Box3().setFromObject(hair);
+  const topY = hairBox.max.y + 0.02;
+  window.__facts.frame = { botY, topY, height: topY - botY };
+
+  // ---- CAMERAS (framed from measured bones/box) ----
+  const fovR = THREE.MathUtils.degToRad(35 / 2);
+  const midY = (topY + botY) / 2, fullH = topY - botY;
+  const fullDist = (fullH / 2) / Math.tan(fovR) * 1.16; // same 1.05 base as v4 + 0.24 side-margin allowance for the wide stance
+  const F = {
+    front:  { pos: [0, midY,  fullDist], look: [0, midY, 0] },
+    back:   { pos: [0, midY, -fullDist], look: [0, midY, 0] },
+    side:   { pos: [ fullDist, midY, 0], look: [0, midY, 0] },
+    left:   { pos: [ fullDist, midY, 0], look: [0, midY, 0] },
+    face:   { pos: [headBody.x, headBody.y - 0.09, headBody.z + 0.55], look: [headBody.x, headBody.y + 0.01, headBody.z] },
+    hipfront: { pos: [pelvisBody.x, pelvisBody.y + 0.17, pelvisBody.z + 0.58], look: [pelvisBody.x, pelvisBody.y + 0.08, pelvisBody.z] },
+    hipside:  { pos: [pelvisBody.x + 0.68, pelvisBody.y + 0.17, pelvisBody.z + 0.06], look: [pelvisBody.x, pelvisBody.y + 0.09, pelvisBody.z] },
+  };
+  window.__cam = (n) => {
+    const c = F[n]; if (!c) return 'no cam ' + n;
+    if (qs.get('cd')) { const m = parseFloat(qs.get('cd')); const L = new THREE.Vector3(...c.look); const P = new THREE.Vector3(...c.pos); P.sub(L).multiplyScalar(m).add(L); c.pos = P.toArray(); }
+    if (qs.get('dy')) c.pos[1] += parseFloat(qs.get('dy'));
+    camera.position.set(...c.pos); camera.lookAt(...c.look);
+    renderer.render(scene, camera);
+    return 'cam ' + n + ' pos ' + c.pos.map(v => v.toFixed(3)).join(',') + ' look ' + c.look.map(v => v.toFixed(3)).join(',');
+  };
+  window.__cam('front');
+  window.__ready = true;
+})();
+</script></body></html>

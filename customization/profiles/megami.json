@@ -1,0 +1,95 @@
+{
+ "version": 1,
+ "app": "wh-creation-suite",
+ "fighter": "megami",
+ "attire": "attire2-roses-bows-default",
+ "_doc": "Megami's base default attire (owner decision 2026-11-08): Roses & Bows pantie + garter belt + stockings (bra REMOVED by owner order), Sugar choker, Flora hair (her main default hairstyle), black-panel gauntlets, on the fixed v4 base/skin. Spec: ~/workspace/_parvati-redress-20261107/megami-default-attire-20261108.md (workspace). Shoe slot open \u2014 owner picking next. Pieces are individually registered under library megami-default; this profile composes them in the suite. The composed single-GLB attire export is pending a quiet-VM window (full-blend export OOMs on the 8 GB VM); until it lands, MODEL_URLS 'megami' stays on attire1 and this profile carries the default composition.",
+ "parts": {
+  "hair": {
+   "part_id": "megami-hair-flora",
+   "glb": "customization/parts/megami-default/flora-hair/flora-hair.glb",
+   "placement": {
+    "px": 0,
+    "py": 0,
+    "pz": 0,
+    "rx": 0,
+    "ry": 0,
+    "rz": 0,
+    "s": 1
+   }
+  },
+  "lower_body": {
+   "part_id": "megami-roses-bows-pantie",
+   "glb": "customization/parts/megami-default/roses-bows-pantie/roses-bows-pantie.glb",
+   "placement": {
+    "px": 0,
+    "py": 0,
+    "pz": 0,
+    "rx": 0,
+    "ry": 0,
+    "rz": 0,
+    "s": 1
+   }
+  },
+  "waist": {
+   "part_id": "megami-roses-bows-garter-belt",
+   "glb": "customization/parts/megami-default/roses-bows-garter-belt/roses-bows-garter-belt.glb",
+   "placement": {
+    "px": 0,
+    "py": 0,
+    "pz": 0,
+    "rx": 0,
+    "ry": 0,
+    "rz": 0,
+    "s": 1
+   }
+  },
+  "legs": {
+   "part_id": "megami-roses-bows-stockings",
+   "glb": "customization/parts/megami-default/roses-bows-stockings/roses-bows-stockings.glb",
+   "placement": {
+    "px": 0,
+    "py": 0,
+    "pz": 0,
+    "rx": 0,
+    "ry": 0,
+    "rz": 0,
+    "s": 1
+   }
+  },
+  "accessory": {
+   "part_id": "megami-sugar-choker",
+   "glb": "customization/parts/megami-default/sugar-choker/sugar-choker.glb",
+   "placement": {
+    "px": 0,
+    "py": 0,
+    "pz": 0,
+    "rx": 0,
+    "ry": 0,
+    "rz": 0,
+    "s": 1
+   }
+  },
+  "gauntlets": {
+   "part_id": "megami-gauntlets-black",
+   "glb": "customization/parts/megami-default/gauntlets-black/gauntlets-black.glb",
+   "placement": {
+    "px": 0,
+    "py": 0,
+    "pz": 0,
+    "rx": 0,
+    "ry": 0,
+    "rz": 0,
+    "s": 1
+   }
+  }
+ },
+ "textures": [
+  {
+   "part_id": "megami-eye-yellow-tiger",
+   "kind": "eye",
+   "image": "customization/parts/megami-eyes/eye-yellow-tiger-daz.png"
+  }
+ ],
+ "colors": {}
+}

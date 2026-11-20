@@ -1,0 +1,57 @@
+{
+ "input": "static.glb",
+ "fit": "fit_corrected.json",
+ "mesh_bbox_blender": [
+  [
+   -0.6086260676383972,
+   -0.20666520297527313,
+   0.0
+  ],
+  [
+   0.6085126399993896,
+   0.20557361841201782,
+   1.8189599514007568
+  ]
+ ],
+ "scaled_to_height_m": 1.819,
+ "scale_factor": 1.0000220173067649,
+ "bones": 50,
+ "unweighted_fixed": 0,
+ "heat_proxy": [
+  {
+   "voxel_m": 0.006,
+   "continuous_limit_verts": 349268,
+   "faces_remeshed": 118580,
+   "faces_proxy_after_decimate": 63772,
+   "proxy_verts": 39998,
+   "unweighted_proxy_verts": 0,
+   "mesh_scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "mesh_dims": [
+    1.2171657085418701,
+    0.412247896194458,
+    1.8190001249313354
+   ],
+   "proxy_groups": 50,
+   "attempts": [
+    {
+     "tri_target": 80000,
+     "proxy_verts": 39998,
+     "unweighted": 0
+    }
+   ]
+  }
+ ],
+ "continuous_limit_verts": 0,
+ "test_clip": {
+  "action": "CMU135_04_boxing",
+  "frames": 72,
+  "bones": 26,
+  "donor": "../../../wh-tools/assets/free-pull-1/cmu-mocap/fighting/135_04.bvh"
+ },
+ "out": "rig.glb",
+ "out_bytes": 91937748
+}

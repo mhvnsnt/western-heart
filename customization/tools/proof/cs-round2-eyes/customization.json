@@ -1,0 +1,56 @@
+{
+ "version": 1,
+ "app": "wh-creation-suite",
+ "fighter": "deathfang",
+ "attire": "round2-eyes",
+ "base_glb": "deathfang-human.glb",
+ "out_glb": "deathfang-eyed.glb",
+ "body": {
+  "body_type": "Medium 1",
+  "skin_tone": "#c98d5e"
+ },
+ "morphs": {},
+ "textures": [],
+ "colors": {},
+ "parts": {
+  "eye_r": {
+   "part_id": "wh-eyeball-mesh",
+   "glb": "customization/parts/eyes/eyeball.glb",
+   "placement": {
+    "px": 0.034,
+    "py": 0.038,
+    "pz": -0.088,
+    "rx": 0,
+    "ry": 180,
+    "rz": 0,
+    "s": 1
+   }
+  },
+  "eye_l": {
+   "part_id": "wh-eyeball-mesh",
+   "glb": "customization/parts/eyes/eyeball.glb",
+   "placement": {
+    "px": -0.034,
+    "py": 0.038,
+    "pz": -0.088,
+    "rx": 0,
+    "ry": 180,
+    "rz": 0,
+    "s": 1
+   }
+  },
+  "lash_r": {
+   "part_id": "wh-eyelash-mesh",
+   "glb": "customization/parts/eyes/eyelash.glb",
+   "placement": {
+    "px": 0.034,
+    "py": 0.038,
+    "pz": -0.088,
+    "rx": 0,
+    "ry": 180,
+    "rz": 0,
+    "s": 1
+   }
+  }
+ }
+}

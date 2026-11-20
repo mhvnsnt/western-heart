@@ -1,0 +1,36 @@
+{
+ "game": "TEKKEN 7",
+ "ownership_basis": "Steam snapshot: owned, bought 2026-10-23 for extraction, app 389730 (vil3m)",
+ "status": "spec-only — no game files were accessible from this VM (phone-only user, Steam remote download unreachable); this pack is the teardown path + conversion/wire schema, NOT extracted commercial assets",
+ "teardown_toolchain": [
+  "UModel/UE Viewer (UE4 profile 'Tekken 7', no pak encryption except Geese/Noctis files)",
+  "Kiloutre TKMovesets / TekkenMovesetExtractor — STRUCTS + already-extracted outputs only; it extracts from a RUNNING game, which a VM cannot run",
+  "Teardown lane outputs: western-heart teardown/tekken7-steam/, frv.json (Raven, 2,338 moves, 11,573 cancels), dnc.json (Chloe, 2,183 moves, 10,034 cancels), kin.mvl (King, 231 moves, display-only), TheBigTuna 36 chars (no DLC, no anim fields)"
+ ],
+ "extractable": [
+  "Movesets, cancels, hit conditions, reactions, pushback — via TKMovesets structs",
+  "Stages, models, animations — via UModel from installed paks",
+  "DLC characters: NOT in TheBigTuna set; need T8-mod or live-memory path"
+ ],
+ "wh_wire": {
+  "combat": "BASE — movesets map directly to LP1/RP2/LK3/RK4 + strings; frame data where present, else UNMAPPED",
+  "creation": "Back-slot attires only (user models first)",
+  "stages": "Stage geometry/lighting reference for arena upgrades (colors/mood locked unless owner says otherwise)",
+  "audio": "Hit/VO cues as reference only",
+  "systems": "Reaction/pushback tables feed the hit-reaction lane (wire note, do not edit its files)"
+ },
+ "blocker": "Move→anim mapping still blocked at bank-0x8000: anim_ref − 0x8000 is the exact key and needs a pakchunk or live-game memory read; kin.mvl has no move→anim mapping.",
+ "unblock": "Teardown-decipher lane: resolve bank-0x8000 with a pakchunk or live-game memory capture; until then use display-only kin.mvl + frv/dnc move/cancel tables, and mark every anim_ref UNMAPPED.",
+ "canon_rule": "Anything brought in with another game's name is renamed to Eastern Mind / Western Heart canon in user-facing writing. Tekken/proprietary names stay in technical files only. Game ships with NO famous names. All characters adults. User's own models (Tripo + SmutBase) display FIRST; Tekken models are back-slot attires. Sole exception: Pantera Attire 1 (user-customized King reskin).",
+ "combat_inputs": "LP1=Left Punch=Tekken 1, RP2=Right Punch=Tekken 2, LK3=Left Kick=Tekken 3, RK4=Right Kick=Tekken 4. Frame data / MOD damage: UNMAPPED unless a source file in this pack contains it — never estimated as measured.",
+ "community_sources": [
+  "https://github-wiki-see.page/m/CDDTreborn/Tekken7_PC-Modding-Guides/wiki/Umodel-UE-Viewer-Quick-Start-Guide-or-Reference---Tekken-7",
+  "https://github.com/Kiloutre/TKMovesets"
+ ],
+ "known_decoded_anchors": {
+  "frv_json": "Raven, 2,338 moves, 11,573 cancels, move level",
+  "dnc_json": "Chloe, 2,183 moves, 10,034 cancels, move level",
+  "kin_mvl": "King T7, 231 moves, display-only, no move→anim mapping",
+  "big_tuna": "36 chars, no DLC, no anim fields"
+ }
+}

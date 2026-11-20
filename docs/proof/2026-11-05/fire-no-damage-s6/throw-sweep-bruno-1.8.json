@@ -1,0 +1,36 @@
+{
+ "fighter": "bruno",
+ "input": "1+3",
+ "spacing": 1.8,
+ "ready": true,
+ "setup": {
+  "p1id": "bruno",
+  "p2id": "pantera",
+  "bank": "bryan",
+  "vbank": "king"
+ },
+ "run": {
+  "ok": true,
+  "plan": "1+3",
+  "log": [
+   {
+    "fn": "startThrowLock",
+    "moveName": null,
+    "moveDmg": 21,
+    "pairAfter": true,
+    "dState": "thrown",
+    "dLockT": 0
+   },
+   {
+    "fn": "pairDamage",
+    "ret": "throw",
+    "hpBefore": 1000000,
+    "hpAfter": 999980.75
+   }
+  ],
+  "seq": "atta/idle atta/idle thro/thro thro/thro thro/thro thro/thro thro/thro thro/thro thro/thro thro/thro thro/thro thro/thro thro/thro thro/thro thro/thro thro/thro thro/thro thro/thro thro/thro thro/thro thro/thro thro/thro thro/thro thro/thro thro/thro thro/thro thro/thro idle/knoc idle/knoc idle/knoc idle/knoc idle/knoc idle/knoc",
+  "hpDelta": 19.3,
+  "fEnd": "idle",
+  "dEnd": "idle"
+ }
+}

@@ -1,0 +1,592 @@
+{
+ "schema": "wh-t8-clip-map/1",
+ "fighter": "burger",
+ "base": "Bob",
+ "base_code_tkdata": null,
+ "sources": {
+  "export": "no community export exists (Bob = T8 Season 3 DLC 2026-08); wavu movelist only",
+  "movelist": "wavu.wiki via pbruvoll/tekkendocs json_movelist (unlicensed community frame data)",
+  "name_keys": "AliK3112/tekken-8-movesets-scripts name_keys.json (45,716 entries)",
+  "t7_record": "game/assets/anim/t7/clip-maps/burger-clip-map.json"
+ },
+ "stats": {
+  "movelist_only": 22,
+  "unmapped": 6
+ },
+ "moves": [
+  {
+   "wh_key": "1+2_t8",
+   "wh_name": "Move 1+2 (1+2)",
+   "wh_input": "1+2",
+   "t7_id": "bob_37",
+   "status": "movelist_only",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_notation_match"
+   ],
+   "source": "wavu-tekkendocs-bob",
+   "t8_id": "Bob-1+2",
+   "t8_move_name": null,
+   "startup": 19,
+   "damage": "18",
+   "clip": {
+    "status": "no_t8_export",
+    "note": "movelist-level resolution only; no moveset export circulates for this character"
+   }
+  },
+  {
+   "wh_key": "1,2",
+   "wh_name": "One Two Punch",
+   "wh_input": "1,2",
+   "t7_id": "bob_8",
+   "status": "movelist_only",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "wavu_name_notation_exact"
+   ],
+   "source": "wavu-tekkendocs-bob",
+   "t8_id": "Bob-1,2",
+   "t8_move_name": "One Two Punch",
+   "startup": 13,
+   "damage": "10",
+   "clip": {
+    "status": "no_t8_export",
+    "note": "movelist-level resolution only; no moveset export circulates for this character"
+   }
+  },
+  {
+   "wh_key": "1,d+4",
+   "wh_name": "Course Achuto",
+   "wh_input": "1,d+4",
+   "t7_id": "bob_20",
+   "status": "movelist_only",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "mvl_matched_graph_gap",
+   "evidence": [
+    "wavu_name_notation_exact"
+   ],
+   "source": "wavu-tekkendocs-bob",
+   "t8_id": "Bob-1,d+4",
+   "t8_move_name": "Course Achuto",
+   "startup": 22,
+   "damage": "13",
+   "clip": {
+    "status": "no_t8_export",
+    "note": "movelist-level resolution only; no moveset export circulates for this character"
+   }
+  },
+  {
+   "wh_key": "4,3",
+   "wh_name": "Move 3 (3)",
+   "wh_input": "4,3",
+   "t7_id": "bob_32",
+   "status": "movelist_only",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "wavu_notation_match"
+   ],
+   "source": "wavu-tekkendocs-bob",
+   "t8_id": "Bob-4,3",
+   "t8_move_name": null,
+   "startup": 19,
+   "damage": "15",
+   "clip": {
+    "status": "no_t8_export",
+    "note": "movelist-level resolution only; no moveset export circulates for this character"
+   }
+  },
+  {
+   "wh_key": "b,B+2+3",
+   "wh_name": "Quick Langouste",
+   "wh_input": "b,B+2+3",
+   "t7_id": "bob_266",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "mvl_matched_graph_gap",
+   "evidence": [],
+   "source": "wavu-tekkendocs-bob",
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "d+1+2,2,1",
+   "wh_name": "Apicius Special",
+   "wh_input": "d+1+2,2,1",
+   "t7_id": "bob_128",
+   "status": "movelist_only",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "mvl_matched_graph_gap",
+   "evidence": [
+    "wavu_name_notation_exact"
+   ],
+   "source": "wavu-tekkendocs-bob",
+   "t8_id": "Bob-d+1+2,2,1",
+   "t8_move_name": "Apicius Special",
+   "startup": 7,
+   "damage": "20",
+   "clip": {
+    "status": "no_t8_export",
+    "note": "movelist-level resolution only; no moveset export circulates for this character"
+   }
+  },
+  {
+   "wh_key": "df+1",
+   "wh_name": "Move df+1 (df+1)",
+   "wh_input": "df+1",
+   "t7_id": null,
+   "status": "movelist_only",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_notation_match"
+   ],
+   "source": "wavu-tekkendocs-bob",
+   "t8_id": "Bob-df+1",
+   "t8_move_name": null,
+   "startup": 14,
+   "damage": "13",
+   "clip": {
+    "status": "no_t8_export",
+    "note": "movelist-level resolution only; no moveset export circulates for this character"
+   }
+  },
+  {
+   "wh_key": "df+3",
+   "wh_name": "Shrimp Turnover",
+   "wh_input": "df+3",
+   "t7_id": null,
+   "status": "movelist_only",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_name_notation_exact"
+   ],
+   "source": "wavu-tekkendocs-bob",
+   "t8_id": "Bob-df+3",
+   "t8_move_name": "Shrimp Turnover",
+   "startup": 19,
+   "damage": "19",
+   "clip": {
+    "status": "no_t8_export",
+    "note": "movelist-level resolution only; no moveset export circulates for this character"
+   }
+  },
+  {
+   "wh_key": "df+4",
+   "wh_name": "Move df+4 (df+4)",
+   "wh_input": "df+4",
+   "t7_id": null,
+   "status": "movelist_only",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_notation_match"
+   ],
+   "source": "wavu-tekkendocs-bob",
+   "t8_id": "Bob-df+4",
+   "t8_move_name": null,
+   "startup": 13,
+   "damage": "12",
+   "clip": {
+    "status": "no_t8_export",
+    "note": "movelist-level resolution only; no moveset export circulates for this character"
+   }
+  },
+  {
+   "wh_key": "FC.df+4",
+   "wh_name": "Gourmand Swing",
+   "wh_input": "FC.df+4",
+   "t7_id": null,
+   "status": "movelist_only",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_notation_match"
+   ],
+   "source": "wavu-tekkendocs-bob",
+   "t8_id": "Bob-df+4",
+   "t8_move_name": null,
+   "startup": 13,
+   "damage": "12",
+   "clip": {
+    "status": "no_t8_export",
+    "note": "movelist-level resolution only; no moveset export circulates for this character"
+   }
+  },
+  {
+   "wh_key": "f,F+3",
+   "wh_name": "Jumbo Pancake",
+   "wh_input": "f,F+3",
+   "t7_id": "bob_67",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "graph_only_held",
+   "evidence": [],
+   "source": "wavu-tekkendocs-bob",
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "f,F+4",
+   "wh_name": "Move f,F+4 (f,F+4)",
+   "wh_input": "f,F+4",
+   "t7_id": "bob_68",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "graph_only_held",
+   "evidence": [],
+   "source": "wavu-tekkendocs-bob",
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "f,n,d,df",
+   "wh_name": "United Step",
+   "wh_input": "f,n,d,df",
+   "t7_id": null,
+   "status": "movelist_only",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "no_evidence",
+   "evidence": [
+    "wavu_name_notation_exact"
+   ],
+   "source": "wavu-tekkendocs-bob",
+   "t8_id": "Bob-f,n,d,df",
+   "t8_move_name": "United Step",
+   "startup": null,
+   "damage": null,
+   "clip": {
+    "status": "no_t8_export",
+    "note": "movelist-level resolution only; no moveset export circulates for this character"
+   }
+  },
+  {
+   "wh_key": "f,n,d,df+1+2*",
+   "wh_name": "Granchi Canon (charged)",
+   "wh_input": "f,n,d,df+1+2*",
+   "t7_id": null,
+   "status": "movelist_only",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_name_notation_exact"
+   ],
+   "source": "wavu-tekkendocs-bob",
+   "t8_id": "Bob-f,n,d,df+1+2*",
+   "t8_move_name": "Granchi Canon (charged)",
+   "startup": 28,
+   "damage": "33",
+   "clip": {
+    "status": "no_t8_export",
+    "note": "movelist-level resolution only; no moveset export circulates for this character"
+   }
+  },
+  {
+   "wh_key": "f,n,d,df+3",
+   "wh_name": "Move f,n,d,df+3 (f,n,d,df+3)",
+   "wh_input": "f,n,d,df+3",
+   "t7_id": null,
+   "status": "movelist_only",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_notation_match"
+   ],
+   "source": "wavu-tekkendocs-bob",
+   "t8_id": "Bob-f,n,d,df+3",
+   "t8_move_name": null,
+   "startup": 16,
+   "damage": "16",
+   "clip": {
+    "status": "no_t8_export",
+    "note": "movelist-level resolution only; no moveset export circulates for this character"
+   }
+  },
+  {
+   "wh_key": "f,n,d,df+3,2",
+   "wh_name": "Gambero Knee Rush",
+   "wh_input": "f,n,d,df+3,2",
+   "t7_id": null,
+   "status": "movelist_only",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_name_notation_exact"
+   ],
+   "source": "wavu-tekkendocs-bob",
+   "t8_id": "Bob-f,n,d,df+3,2",
+   "t8_move_name": "Gambero Knee Rush",
+   "startup": 23,
+   "damage": "27 (18)",
+   "clip": {
+    "status": "no_t8_export",
+    "note": "movelist-level resolution only; no moveset export circulates for this character"
+   }
+  },
+  {
+   "wh_key": "f,n,d,DF+4",
+   "wh_name": "Move f,n,d,DF+4 (f,n,d,DF+4)",
+   "wh_input": "f,n,d,DF+4",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "no_evidence",
+   "evidence": [],
+   "source": "wavu-tekkendocs-bob",
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "f,n,d,DF+4,1+2",
+   "wh_name": "Cutting Coppa",
+   "wh_input": "f,n,d,DF+4,1+2",
+   "t7_id": null,
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "notation_differs",
+   "evidence": [],
+   "source": "wavu-tekkendocs-bob",
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "u+1+2",
+   "wh_name": "Move u+1+2 (u+1+2)",
+   "wh_input": "u+1+2",
+   "t7_id": "bob_41",
+   "status": "movelist_only",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "mvl_matched_graph_gap",
+   "evidence": [
+    "wavu_notation_match"
+   ],
+   "source": "wavu-tekkendocs-bob",
+   "t8_id": "Bob-u+1+2",
+   "t8_move_name": null,
+   "startup": 16,
+   "damage": "15",
+   "clip": {
+    "status": "no_t8_export",
+    "note": "movelist-level resolution only; no moveset export circulates for this character"
+   }
+  },
+  {
+   "wh_key": "ws1,2",
+   "wh_name": "Slash Butcher",
+   "wh_input": "ws1,2",
+   "t7_id": "bob_208",
+   "status": "movelist_only",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "wavu_notation_match"
+   ],
+   "source": "wavu-tekkendocs-bob",
+   "t8_id": "Bob-1,2",
+   "t8_move_name": "One Two Punch",
+   "startup": 13,
+   "damage": "10",
+   "clip": {
+    "status": "no_t8_export",
+    "note": "movelist-level resolution only; no moveset export circulates for this character"
+   }
+  },
+  {
+   "wh_key": "ws1,3",
+   "wh_name": "Hot Guimauve",
+   "wh_input": "ws1,3",
+   "t7_id": "bob_210",
+   "status": "unmapped",
+   "confidence": null,
+   "reason": "no_t8_evidence",
+   "t7_class": "ambiguous_pool",
+   "evidence": [],
+   "source": "wavu-tekkendocs-bob",
+   "clip": {
+    "status": "unresolved"
+   }
+  },
+  {
+   "wh_key": "ws2,1",
+   "wh_name": "Spinach Upper",
+   "wh_input": "ws2,1",
+   "t7_id": "bob_213",
+   "status": "movelist_only",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "wavu_notation_match"
+   ],
+   "source": "wavu-tekkendocs-bob",
+   "t8_id": "Bob-2,1",
+   "t8_move_name": null,
+   "startup": 23,
+   "damage": "10",
+   "clip": {
+    "status": "no_t8_export",
+    "note": "movelist-level resolution only; no moveset export circulates for this character"
+   }
+  },
+  {
+   "wh_key": "ws3",
+   "wh_name": "Move ws3 (ws3)",
+   "wh_input": "ws3",
+   "t7_id": "bob_217",
+   "status": "movelist_only",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "wavu_notation_match"
+   ],
+   "source": "wavu-tekkendocs-bob",
+   "t8_id": "Bob-3",
+   "t8_move_name": null,
+   "startup": 15,
+   "damage": "14",
+   "clip": {
+    "status": "no_t8_export",
+    "note": "movelist-level resolution only; no moveset export circulates for this character"
+   }
+  },
+  {
+   "wh_key": "ws4",
+   "wh_name": "Toe Smash",
+   "wh_input": "ws4",
+   "t7_id": "bob_220",
+   "status": "movelist_only",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "wavu_notation_match"
+   ],
+   "source": "wavu-tekkendocs-bob",
+   "t8_id": "Bob-4",
+   "t8_move_name": null,
+   "startup": 13,
+   "damage": "15",
+   "clip": {
+    "status": "no_t8_export",
+    "note": "movelist-level resolution only; no moveset export circulates for this character"
+   }
+  },
+  {
+   "wh_key": "2~t8.bob",
+   "wh_name": "BURGER 2",
+   "wh_input": "2",
+   "t7_id": "bob_22",
+   "status": "movelist_only",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_notation_match"
+   ],
+   "source": "wavu-tekkendocs-bob",
+   "t8_id": "Bob-2",
+   "t8_move_name": null,
+   "startup": 10,
+   "damage": "8",
+   "clip": {
+    "status": "no_t8_export",
+    "note": "movelist-level resolution only; no moveset export circulates for this character"
+   }
+  },
+  {
+   "wh_key": "2,1~t8.bob",
+   "wh_name": "BURGER 2,1",
+   "wh_input": "2,1",
+   "t7_id": "bob_23",
+   "status": "movelist_only",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "ambiguous_pool",
+   "evidence": [
+    "wavu_notation_match"
+   ],
+   "source": "wavu-tekkendocs-bob",
+   "t8_id": "Bob-2,1",
+   "t8_move_name": null,
+   "startup": 23,
+   "damage": "10",
+   "clip": {
+    "status": "no_t8_export",
+    "note": "movelist-level resolution only; no moveset export circulates for this character"
+   }
+  },
+  {
+   "wh_key": "3~t8.bob",
+   "wh_name": "BURGER 3",
+   "wh_input": "3",
+   "t7_id": "bob_28",
+   "status": "movelist_only",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_notation_match"
+   ],
+   "source": "wavu-tekkendocs-bob",
+   "t8_id": "Bob-3",
+   "t8_move_name": null,
+   "startup": 15,
+   "damage": "14",
+   "clip": {
+    "status": "no_t8_export",
+    "note": "movelist-level resolution only; no moveset export circulates for this character"
+   }
+  },
+  {
+   "wh_key": "4~t8.bob",
+   "wh_name": "BURGER 4",
+   "wh_input": "4",
+   "t7_id": "bob_31",
+   "status": "movelist_only",
+   "confidence": "medium",
+   "reason": null,
+   "t7_class": "graph_only_held",
+   "evidence": [
+    "wavu_notation_match"
+   ],
+   "source": "wavu-tekkendocs-bob",
+   "t8_id": "Bob-4",
+   "t8_move_name": null,
+   "startup": 13,
+   "damage": "15",
+   "clip": {
+    "status": "no_t8_export",
+    "note": "movelist-level resolution only; no moveset export circulates for this character"
+   }
+  }
+ ]
+}

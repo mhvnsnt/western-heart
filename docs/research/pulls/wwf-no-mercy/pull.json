@@ -1,0 +1,28 @@
+{
+ "game": "WWF No Mercy (banked — WIRE NOTE ONLY, do not edit the bank)",
+ "ownership_basis": "Repo bank game/data/moveset-library/banks/wrestling.json: 4,409 moves, 4,153 with input (per task brief; verify count from the bank file at wire time, do not re-assert from memory)",
+ "status": "spec-only — no game files were accessible from this VM (phone-only user, Steam remote download unreachable); this pack is the teardown path + conversion/wire schema, NOT extracted commercial assets",
+ "teardown_toolchain": [
+  "Already banked — no extraction tool needed for the wire step",
+  "Public move documentation (GameFAQs CAW guides, Prima guide text) as the human-readable cross-check for move names/inputs (front/back weak/strong grapple, ground face-up/face-down, running, turnbuckle, apron slots)"
+ ],
+ "extractable": [
+  "Banked 4,409-move catalogue with inputs → WH grapple/string library (the repo's largest wrestling bank)",
+  "CAW structure (body/head/face/hair/attire, fighting style, stance, counters, speed, submission skill, Irish-whip evasion, recovery, endurance, offense/defense by region) → creation-suite fighter schema"
+ ],
+ "wh_wire": {
+  "combat": "Map each bank slot to a WH input: standing strikes → LP1/RP2/LK3/RK4; grapple slots → grapple chains; ground slots → ground game; specials → KESSHOU-gated finishers. UNMAPPED fields stay UNMAPPED — do not invent frame data",
+  "creation": "CAW schema is the creation-suite template skeleton",
+  "stages": "UNMAPPED",
+  "audio": "UNMAPPED",
+  "systems": "CPU logic / personality fields → WH AI"
+ },
+ "blocker": "NONE for the wire step — the bank is already in-repo. Extraction of NEW No Mercy data (beyond the bank) is blocked by No local game install is reachable from this VM and no game files were supplied with this task. Steam remote download previously reported 'Unable to reach your PC'; user rule is phone-only, no PC paths.",
+ "unblock": "Lane-2 / moveset lane wires the bank using this note; this lane does NOT edit banks/wrestling.json or index.json.",
+ "canon_rule": "Anything brought in with another game's name is renamed to Eastern Mind / Western Heart canon in user-facing writing. Tekken/proprietary names stay in technical files only. Game ships with NO famous names. All characters adults. User's own models (Tripo + SmutBase) display FIRST; Tekken models are back-slot attires. Sole exception: Pantera Attire 1 (user-customized King reskin).",
+ "combat_inputs": "LP1=Left Punch=Tekken 1, RP2=Right Punch=Tekken 2, LK3=Left Kick=Tekken 3, RK4=Right Kick=Tekken 4. Frame data / MOD damage: UNMAPPED unless a source file in this pack contains it — never estimated as measured.",
+ "community_sources": [
+  "https://gamefaqs.gamespot.com/n64/914112-wwf-no-mercy/faqs/9824",
+  "https://archive.org/stream/WWFNoMercyOfficialPrimaGuide/WWF%20No%20Mercy%20Official%20Prima%20Guide_djvu.txt"
+ ]
+}

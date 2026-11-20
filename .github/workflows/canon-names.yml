@@ -1,0 +1,39 @@
+name: canon-names
+# OWNER RULE (Oct 23 2026): imported names must use EMWH canon names in player-facing UI.
+on:
+  pull_request:
+  merge_group:
+    types: [checks_requested]
+permissions:
+  contents: read
+jobs:
+  canon-names:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Fast path: fetch-depth: 0 pulled every branch of a ~13 GB repo and timed out at 10 min.
+          # Check out only the tools it runs; history for the diff is fetched below.
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: tools/canon
+          sparse-checkout-cone-mode: true
+      - name: Fetch base and head (shallow, deepen until merge-base exists; fail closed)
+        env:
+          BASE: ${{ github.event.pull_request.base.sha || github.event.merge_group.base_sha }}
+          HEAD: ${{ github.event.pull_request.head.sha || github.event.merge_group.head_sha }}
+        run: |
+          set -eo pipefail
+          git fetch -q --no-tags --filter=blob:none --depth=1 origin "$BASE" "$HEAD"
+          for d in 50 200 1000 5000; do
+            git merge-base "$BASE" "$HEAD" >/dev/null 2>&1 && break
+            git fetch -q --no-tags --filter=blob:none --deepen=$d origin "$BASE" "$HEAD"
+          done
+          git merge-base "$BASE" "$HEAD" >/dev/null 2>&1 || git fetch -q --no-tags --filter=blob:none --unshallow origin "$BASE" "$HEAD"
+          git merge-base "$BASE" "$HEAD"
+      - run: node tools/canon/test.mjs
+      - env:
+          BASE: ${{ github.event.pull_request.base.sha || github.event.merge_group.base_sha }}
+          HEAD: ${{ github.event.pull_request.head.sha || github.event.merge_group.head_sha }}
+        run: python3 tools/canon/check.py "$BASE" "$HEAD"

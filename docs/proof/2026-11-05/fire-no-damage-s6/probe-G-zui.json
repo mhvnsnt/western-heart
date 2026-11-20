@@ -1,0 +1,170 @@
+{
+ "fighter": "zui",
+ "base": "http://127.0.0.1:8906/game/",
+ "ready": true,
+ "rows": [
+  {
+   "n": "3",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:195",
+   "kind": "notation",
+   "why": "same input '3'",
+   "timing": {
+    "S": 0.2,
+    "A": 0.033,
+    "t0": 0.317,
+    "t1": 0.383,
+    "D": 1.033,
+    "src": "decoded"
+   },
+   "moveDmg": 0,
+   "hitWord": 799,
+   "isGrab": false,
+   "atkName": "3",
+   "hasHit": true,
+   "distAtHit": 1.52,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 0,
+   "hits": [
+    {
+     "dmg": 0,
+     "word": 799,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "3",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:195",
+   "kind": "notation",
+   "why": "same input '3'",
+   "timing": {
+    "S": 0.2,
+    "A": 0.033,
+    "t0": 0.317,
+    "t1": 0.383,
+    "D": 1.033,
+    "src": "decoded"
+   },
+   "moveDmg": 0,
+   "hitWord": 799,
+   "isGrab": false,
+   "atkName": "3",
+   "hasHit": true,
+   "distAtHit": 1.52,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 0,
+   "hits": [
+    {
+     "dmg": 0,
+     "word": 799,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "4",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:199",
+   "kind": "notation",
+   "why": "same input '4'",
+   "timing": {
+    "S": 0.2,
+    "A": 0.033,
+    "t0": 0.183,
+    "t1": 0.183,
+    "D": 0.833,
+    "src": "decoded"
+   },
+   "moveDmg": 0,
+   "hitWord": 799,
+   "isGrab": false,
+   "atkName": "4",
+   "hasHit": true,
+   "distAtHit": 1.47,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 0,
+   "hits": [
+    {
+     "dmg": 0,
+     "word": 799,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "4",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:199",
+   "kind": "notation",
+   "why": "same input '4'",
+   "timing": {
+    "S": 0.2,
+    "A": 0.033,
+    "t0": 0.183,
+    "t1": 0.183,
+    "D": 0.833,
+    "src": "decoded"
+   },
+   "moveDmg": 0,
+   "hitWord": 799,
+   "isGrab": false,
+   "atkName": "4",
+   "hasHit": true,
+   "distAtHit": 1.47,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 0,
+   "hits": [
+    {
+     "dmg": 0,
+     "word": 799,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  }
+ ],
+ "setup": {
+  "roundState": "fight",
+  "p1id": "zui",
+  "t3actionsCount": 22,
+  "bank": "jin"
+ },
+ "logs": [
+  "[http 404] http://127.0.0.1:8906/deploy-manifest.json",
+  "[http 404] http://127.0.0.1:8906/roster/zui/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8906/roster/pantera/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/index.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/zui.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/pantera.json",
+  "[http 404] http://127.0.0.1:8906/game/js/intro-interactions.js"
+ ]
+}

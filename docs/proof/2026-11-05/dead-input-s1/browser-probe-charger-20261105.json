@@ -1,0 +1,141 @@
+{
+ "p1": "charger",
+ "p2": "pantera",
+ "gate": {
+  "id": "charger",
+  "p2id": "pantera",
+  "rs": "fight",
+  "stage": null
+ },
+ "rows": [
+  {
+   "input": "1",
+   "press": "true",
+   "key": "1",
+   "notation": "1",
+   "name": "BLANKA 1 (T3 bryan r44)",
+   "anim": "row 44",
+   "word": 535,
+   "state": "attack",
+   "dmg": 10
+  },
+  {
+   "input": "2",
+   "press": "true",
+   "key": "2",
+   "notation": "2",
+   "name": "BLANKA 2 (T3 bryan r48)",
+   "anim": "row 48",
+   "word": 535,
+   "state": "attack",
+   "dmg": 11
+  },
+  {
+   "input": "3",
+   "press": "true",
+   "key": "3",
+   "notation": "3",
+   "name": "BLANKA 3 (T3 bryan r54)",
+   "anim": "row 54",
+   "word": 535,
+   "state": "attack",
+   "dmg": 12
+  },
+  {
+   "input": "4",
+   "press": "true",
+   "key": "4",
+   "notation": "4",
+   "name": "BLANKA 4 (T3 bryan r60)",
+   "anim": "row 60",
+   "word": 535,
+   "state": "attack",
+   "dmg": 10
+  },
+  {
+   "input": "1+2",
+   "press": "true",
+   "key": "1+2",
+   "notation": "1+2",
+   "name": "BLANKA 1+2 (T3 bryan r41)",
+   "anim": "row 41",
+   "word": 535,
+   "state": "attack",
+   "dmg": 0
+  },
+  {
+   "input": "d+1",
+   "press": "true",
+   "key": "7",
+   "notation": "d+1",
+   "name": "BLANKA 7 (T3 bryan r78)",
+   "anim": "row 78",
+   "word": 535,
+   "state": "attack",
+   "dmg": 14
+  },
+  {
+   "input": "d+2",
+   "press": "true",
+   "key": "8",
+   "notation": "d+2",
+   "name": "BLANKA 8 (T3 bryan r84)",
+   "anim": "row 84",
+   "word": 535,
+   "state": "attack",
+   "dmg": 12
+  },
+  {
+   "input": "d/f+1",
+   "press": "true",
+   "key": "1",
+   "notation": "1",
+   "name": "BLANKA 1 (T3 bryan r44)",
+   "anim": "row 44",
+   "word": 535,
+   "state": "attack",
+   "dmg": 10
+  },
+  {
+   "input": "d/f+2",
+   "press": "true",
+   "key": "d/f+2",
+   "notation": "d/f+2",
+   "name": "BLANKA d/f+2 (T3 bryan r149)",
+   "anim": "row 149",
+   "word": 535,
+   "state": "attack",
+   "dmg": 0
+  }
+ ],
+ "logs": [
+  "[warning] [WH] No custom fighter found in either suite slot",
+  "[log] [WH] stage loaded: SHRINE OF THE BLADE (shrine)",
+  "[warning] [WH] No custom fighter found in either suite slot",
+  "[warning] [WH] No custom fighter found in either suite slot",
+  "[warning] [WH] No custom fighter found in either suite slot",
+  "[warning] [WH] pantera-leoman load failed, retrying: HTTP 404 loading pantera-leoman from ../roster/pantera/attires/leomon/model.glb (fallback also failed: HTTP 404 loading pantera-leoman from http://127.0.0.1:8768/roster/pantera/attires/leomon/model.glb)",
+  "[log] [WH] Real T3 movesets loaded for 36 fighters (7 T3 sources)",
+  "[log] [WH] Moveset index: 128 fighters (full sets load per fight)",
+  "[warning] [WH] select preview failed for pantera-leoman HTTP 404 loading pantera-leoman from ../roster/pantera/attires/leomon/model.glb (fallback also failed: HTTP 404 loading pantera-leoman from http://127.0.0.1:8768/roster/pantera/attires/leomon/model.glb)",
+  "[error] [WH] fight load failed: Error: HTTP 404 loading pantera-leoman from ../roster/pantera/attires/leomon/model.glb (fallback also failed: HTTP 404 loading pantera-leoman from http://127.0.0.1:8768/roster/pantera/attires/leomon/model.glb)\n    at attemptBody (http://127.0.0.1:8768/game/js/assets.js:1468:15)\n    at async attempt (http://127.0.0.1:8768/game/js/assets.js:1392:16)\n    at async http://127.0.0.1:8768/game/js/assets.js:1485:16\n    at async AssetManager.loadModels (http://127.0.0.1:8768/game/js/assets.js:1347:7)\n    at async PreviewPane.show (http://127.0.0.1:8768/game/js/select-screen.js:166:7)\n    at async showOnSide (http://127.0.0.1:8768/game/js/select-screen.js:687:16)",
+  "[log] [WH] Moveset index: 128 fighters (full sets load per fight)",
+  "[log] [WH] Real T3 movesets loaded for 36 fighters (7 T3 sources)",
+  "[log] [WH] Moveset index: 128 fighters (full sets load per fight)",
+  "[warning] [WH] pantera-leoman load failed, retrying: HTTP 404 loading pantera-leoman from ../roster/pantera/attires/leomon/model.glb (fallback also failed: HTTP 404 loading pantera-leoman from http://127.0.0.1:8768/roster/pantera/attires/leomon/model.glb)",
+  "[error] [WH] fight load failed: Error: HTTP 404 loading pantera-leoman from ../roster/pantera/attires/leomon/model.glb (fallback also failed: HTTP 404 loading pantera-leoman from http://127.0.0.1:8768/roster/pantera/attires/leomon/model.glb)\n    at attemptBody (http://127.0.0.1:8768/game/js/assets.js:1468:15)\n    at async attempt (http://127.0.0.1:8768/game/js/assets.js:1392:16)\n    at async http://127.0.0.1:8768/game/js/assets.js:1485:16\n    at async AssetManager.loadModels (http://127.0.0.1:8768/game/js/assets.js:1347:7)\n    at async startFight (http://127.0.0.1:8768/game/js/main.js:1401:5)",
+  "[log] [WH] Real T3 movesets loaded for 36 fighters (7 T3 sources)",
+  "[log] [WH] Moveset index: 128 fighters (full sets load per fight)",
+  "[log] [WH] Fighter charger: 22 real T3 actions from bank 'bryan' (retargeted onto charger)",
+  "[log] [WH] stage loaded: SHRINE OF THE BLADE (shrine)",
+  "[warning] [WH] lab/replay attach failed: TypeError: Cannot read properties of undefined (reading 'push')\n    at new ReplayRecorder (http://127.0.0.1:8768/game/js/replay.js:99:21)\n    at ReplayRecorder.attach (http://127.0.0.1:8768/game/js/replay.js:79:15)\n    at startFight (http://127.0.0.1:8768/game/js/main.js:1520:22)",
+  "[warning] [WHHitDetect] verify failed, keeping sphere result TypeError: baked.computeBoundsTree is not a function\n    at WHHitDetect.buildFighterBVH (http://127.0.0.1:8768/game/js/hitdetect.js:81:11)\n    at async WHHitDetect.testLimbVsBody (http://127.0.0.1:8768/game/js/hitdetect.js:106:17)\n    at async WHHitDetect.verify (http://127.0.0.1:8768/game/js/hitdetect.js:149:17)",
+  "[warning] [WHHitDetect] verify failed, keeping sphere result TypeError: baked.computeBoundsTree is not a function\n    at WHHitDetect.buildFighterBVH (http://127.0.0.1:8768/game/js/hitdetect.js:81:11)\n    at async WHHitDetect.testLimbVsBody (http://127.0.0.1:8768/game/js/hitdetect.js:106:17)\n    at async WHHitDetect.verify (http://127.0.0.1:8768/game/js/hitdetect.js:149:17)",
+  "[warning] [WHHitDetect] verify failed, keeping sphere result TypeError: baked.computeBoundsTree is not a function\n    at WHHitDetect.buildFighterBVH (http://127.0.0.1:8768/game/js/hitdetect.js:81:11)\n    at async WHHitDetect.testLimbVsBody (http://127.0.0.1:8768/game/js/hitdetect.js:106:17)\n    at async WHHitDetect.verify (http://127.0.0.1:8768/game/js/hitdetect.js:149:17)",
+  "[warning] [WHHitDetect] verify failed, keeping sphere result TypeError: baked.computeBoundsTree is not a function\n    at WHHitDetect.buildFighterBVH (http://127.0.0.1:8768/game/js/hitdetect.js:81:11)\n    at async WHHitDetect.testLimbVsBody (http://127.0.0.1:8768/game/js/hitdetect.js:106:17)\n    at async WHHitDetect.verify (http://127.0.0.1:8768/game/js/hitdetect.js:149:17)",
+  "[warning] [WHHitDetect] verify failed, keeping sphere result TypeError: baked.computeBoundsTree is not a function\n    at WHHitDetect.buildFighterBVH (http://127.0.0.1:8768/game/js/hitdetect.js:81:11)\n    at async WHHitDetect.testLimbVsBody (http://127.0.0.1:8768/game/js/hitdetect.js:106:17)\n    at async WHHitDetect.verify (http://127.0.0.1:8768/game/js/hitdetect.js:149:17)",
+  "[warning] [WHHitDetect] verify failed, keeping sphere result TypeError: baked.computeBoundsTree is not a function\n    at WHHitDetect.buildFighterBVH (http://127.0.0.1:8768/game/js/hitdetect.js:81:11)\n    at async WHHitDetect.testLimbVsBody (http://127.0.0.1:8768/game/js/hitdetect.js:106:17)\n    at async WHHitDetect.verify (http://127.0.0.1:8768/game/js/hitdetect.js:149:17)",
+  "[warning] [WHHitDetect] verify failed, keeping sphere result TypeError: baked.computeBoundsTree is not a function\n    at WHHitDetect.buildFighterBVH (http://127.0.0.1:8768/game/js/hitdetect.js:81:11)\n    at async WHHitDetect.testLimbVsBody (http://127.0.0.1:8768/game/js/hitdetect.js:106:17)\n    at async WHHitDetect.verify (http://127.0.0.1:8768/game/js/hitdetect.js:149:17)",
+  "[warning] [WHHitDetect] verify failed, keeping sphere result TypeError: baked.computeBoundsTree is not a function\n    at WHHitDetect.buildFighterBVH (http://127.0.0.1:8768/game/js/hitdetect.js:81:11)\n    at async WHHitDetect.testLimbVsBody (http://127.0.0.1:8768/game/js/hitdetect.js:106:17)\n    at async WHHitDetect.verify (http://127.0.0.1:8768/game/js/hitdetect.js:149:17)"
+ ]
+}

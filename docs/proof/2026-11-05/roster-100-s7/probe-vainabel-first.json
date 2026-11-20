@@ -1,0 +1,112 @@
+{
+ "thrower": "vainabel",
+ "victim": "pantera",
+ "base": "http://127.0.0.1:8777/game/",
+ "ready": true,
+ "trials": [
+  {
+   "n": "1+3",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "1+3",
+    "damage": 21,
+    "isGrab": true,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": null,
+   "pairSeen": false,
+   "lockSeen": true,
+   "hpDelta": 19.3,
+   "firstDmgT": 1.125,
+   "vThrowHitDone": true,
+   "whLogs": [
+    "[WH-THROW] vainabel vs pantera: no file pair (no T3 bank for vainabel (UNMAPPED)) \u2014 legacy lock"
+   ],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.233,
+     "p1": "throwing",
+     "p2": "thrown",
+     "pair": false
+    },
+    {
+     "t": 0.533,
+     "p1": "throwExec",
+     "p2": "thrownExec",
+     "pair": false
+    },
+    {
+     "t": 1.442,
+     "p1": "idle",
+     "p2": "knockdown",
+     "pair": false
+    },
+    {
+     "t": 1.992,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  }
+ ],
+ "setup": {
+  "roundState": "fight",
+  "p1": {
+   "id": "vainabel",
+   "t3dir": null,
+   "t3bank": null,
+   "t3actions": 0
+  },
+  "p2": {
+   "id": "pantera",
+   "t3dir": null,
+   "t3bank": null,
+   "t3actions": 0
+  }
+ },
+ "logs": [
+  "[http 404] http://127.0.0.1:8777/game/assets/anim/t7/king/skeleton.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/anim/t3/king_on_pantera_leoman/reactions.pack.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/fx/effekseer/ToonHit.efkefc",
+  "[http 404] http://127.0.0.1:8777/roster/pantera/attires/leomon/model.glb",
+  "[pageerror] HTTP 404 loading pantera-leoman from ../roster/pantera/attires/leomon/model.glb (fallback also failed: Failed to fetch)",
+  "[http 404] http://127.0.0.1:8777/game/assets/king_moves.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/heihachi_moves.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/xiaoyu_moves.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/bryan_moves.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/yoshimitsu_moves.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/jin_moves.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/gunjack_moves.json",
+  "[http 404] http://127.0.0.1:8777/roster/pantera/attires/leomon/model.glb",
+  "[http 404] http://127.0.0.1:8777/roster/pantera/attires/leomon/model.glb",
+  "[http 404] http://127.0.0.1:8777/game/assets/heihachi_moves.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/xiaoyu_moves.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/yoshimitsu_moves.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/jin_moves.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/bryan_moves.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/king_moves.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/gunjack_moves.json",
+  "[http 404] http://127.0.0.1:8777/game/assets/portraits/vainabel.png",
+  "[http 404] http://127.0.0.1:8777/game/assets/portraits/pantera.png",
+  "[http 404] http://127.0.0.1:8777/roster/pantera/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8777/customization/profiles/index.json",
+  "[http 404] http://127.0.0.1:8777/roster/vainabel/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8777/customization/profiles/vainabel.json",
+  "[http 404] http://127.0.0.1:8777/customization/profiles/pantera.json",
+  "[http 404] http://127.0.0.1:8777/game/js/intro-interactions.js",
+  "[http 404] http://127.0.0.1:8777/game/assets/music/battle-volatile.mp3"
+ ]
+}

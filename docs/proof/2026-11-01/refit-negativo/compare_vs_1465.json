@@ -1,0 +1,160 @@
+{
+ "reference_regions_from": "claude-1463 (this rig, decoded)",
+ "rigs": [
+  "claude-1463 (this rig, decoded)",
+  "muse-1465 (main's negativo-a1-rigged.glb, decoded)"
+ ],
+ "regions": {
+  "face (front of head)": {
+   "should_be": "Head",
+   "verts": 52311,
+   "claude-1463": {
+    "share_%": {
+     "Head": 99.4
+    },
+    "on_the_right_bones_%": 99.4
+   },
+   "muse-1465": {
+    "share_%": {
+     "Head": 4.2,
+     "Torso": 31.5,
+     "Clav": 64.3
+    },
+    "on_the_right_bones_%": 4.2
+   }
+  },
+  "head + hair": {
+   "should_be": "Head",
+   "verts": 454164,
+   "claude-1463": {
+    "share_%": {
+     "Head": 97.3,
+     "Clav": 2.2
+    },
+    "on_the_right_bones_%": 97.3
+   },
+   "muse-1465": {
+    "share_%": {
+     "Head": 26.9,
+     "Neck": 0.6,
+     "Torso": 26.3,
+     "Clav": 30.9,
+     "Arm": 15.4
+    },
+    "on_the_right_bones_%": 26.9
+   }
+  },
+  "chin / jaw underside": {
+   "should_be": "Head+Neck",
+   "verts": 2428,
+   "claude-1463": {
+    "share_%": {
+     "Head": 62.3,
+     "Neck": 35.4,
+     "Clav": 1.9
+    },
+    "on_the_right_bones_%": 97.7
+   },
+   "muse-1465": {
+    "share_%": {
+     "Torso": 97.2,
+     "Clav": 2.8
+    },
+    "on_the_right_bones_%": 0
+   }
+  },
+  "neck": {
+   "should_be": "Head+Neck+Torso",
+   "verts": 15944,
+   "claude-1463": {
+    "share_%": {
+     "Head": 40.2,
+     "Neck": 17.0,
+     "Torso": 20.8,
+     "Clav": 22.0
+    },
+    "on_the_right_bones_%": 78.0
+   },
+   "muse-1465": {
+    "share_%": {
+     "Torso": 99.5
+    },
+    "on_the_right_bones_%": 99.5
+   }
+  },
+  "upper arms": {
+   "should_be": "Arm",
+   "verts": 65140,
+   "claude-1463": {
+    "share_%": {
+     "Head": 10.7,
+     "Clav": 6.5,
+     "Arm": 82.8
+    },
+    "on_the_right_bones_%": 82.8
+   },
+   "muse-1465": {
+    "share_%": {
+     "Torso": 82.4,
+     "Arm": 17.6
+    },
+    "on_the_right_bones_%": 17.6
+   }
+  },
+  "forearms": {
+   "should_be": "Arm",
+   "verts": 47693,
+   "claude-1463": {
+    "share_%": {
+     "Arm": 100.0
+    },
+    "on_the_right_bones_%": 100.0
+   },
+   "muse-1465": {
+    "share_%": {
+     "Torso": 45.4,
+     "Arm": 54.6
+    },
+    "on_the_right_bones_%": 54.6
+   }
+  },
+  "abdomen": {
+   "should_be": "Torso",
+   "verts": 50502,
+   "claude-1463": {
+    "share_%": {
+     "Torso": 87.5,
+     "Leg": 12.5
+    },
+    "on_the_right_bones_%": 87.5
+   },
+   "muse-1465": {
+    "share_%": {
+     "Torso": 37.9,
+     "Leg": 62.1
+    },
+    "on_the_right_bones_%": 37.9
+   }
+  },
+  "chest": {
+   "should_be": "Torso",
+   "verts": 88585,
+   "claude-1463": {
+    "share_%": {
+     "Head": 5.6,
+     "Torso": 75.8,
+     "Clav": 18.0,
+     "Arm": 0.6
+    },
+    "on_the_right_bones_%": 75.8
+   },
+   "muse-1465": {
+    "share_%": {
+     "Torso": 94.3,
+     "Leg": 5.7
+    },
+    "on_the_right_bones_%": 94.3
+   }
+  }
+ }
+}

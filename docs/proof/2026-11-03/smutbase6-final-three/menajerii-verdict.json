@@ -1,0 +1,300 @@
+{
+ "fighter": "menajerii",
+ "ready": true,
+ "setup": {
+  "roundState": "fight",
+  "p1id": "menajerii",
+  "p2id": "pantera",
+  "p1keys": [
+   "mixer",
+   "t3actions",
+   "_t3current",
+   "_t3stateKey",
+   "_stepBankClips",
+   "_t3",
+   "model"
+  ],
+  "t3actionsCount": 22,
+  "t3sample": [
+   "intro",
+   "stance",
+   "light",
+   "medium",
+   "heavy",
+   "grab",
+   "block",
+   "hit",
+   "ko",
+   "launch",
+   "walkFwd",
+   "walkBack"
+  ],
+  "bankId": null,
+  "modelChildren": 1,
+  "mixerActions": 22
+ },
+ "attackShot": true,
+ "rows": [
+  {
+   "n": "1",
+   "ok": true,
+   "state": "attack",
+   "moveKey": "1",
+   "plan": "row:34",
+   "kind": "match",
+   "bindFrac": 0.08,
+   "why": "btn 1 armL m hit@11f",
+   "hasAction": true,
+   "running": 0,
+   "weight": 1,
+   "act": {
+    "enabled": true,
+    "w": 1,
+    "t": 0.667,
+    "d": 0.667,
+    "paused": false
+   },
+   "outcome": "OK"
+  },
+  {
+   "n": "2",
+   "ok": true,
+   "state": "attack",
+   "moveKey": "2",
+   "plan": "row:108",
+   "kind": "match",
+   "bindFrac": 0.08,
+   "why": "btn 2 armR h hit@12f",
+   "hasAction": true,
+   "running": 0,
+   "weight": 1,
+   "act": {
+    "enabled": true,
+    "w": 1,
+    "t": 0.7,
+    "d": 0.7,
+    "paused": false
+   },
+   "outcome": "OK"
+  },
+  {
+   "n": "3",
+   "ok": true,
+   "state": "attack",
+   "moveKey": "3",
+   "plan": "row:225",
+   "kind": "match",
+   "bindFrac": 0.08,
+   "why": "btn 4 legL l hit@19f",
+   "hasAction": true,
+   "running": 0,
+   "weight": 1,
+   "act": {
+    "enabled": true,
+    "w": 1,
+    "t": 1.067,
+    "d": 1.067,
+    "paused": false
+   },
+   "outcome": "OK"
+  },
+  {
+   "n": "4",
+   "ok": true,
+   "state": "attack",
+   "moveKey": "4",
+   "plan": "row:230",
+   "kind": "match",
+   "bindFrac": 0.08,
+   "why": "btn 8 legR m hit@14f",
+   "hasAction": true,
+   "running": 0,
+   "weight": 1,
+   "act": {
+    "enabled": true,
+    "w": 1,
+    "t": 0.967,
+    "d": 0.967,
+    "paused": false
+   },
+   "outcome": "OK"
+  },
+  {
+   "n": "1+2",
+   "ok": true,
+   "state": "attack",
+   "moveKey": "1+2",
+   "plan": "row:101",
+   "kind": "match",
+   "bindFrac": 0.08,
+   "why": "btn 3 null m hit@17f",
+   "hasAction": true,
+   "running": 0,
+   "weight": 1,
+   "act": {
+    "enabled": true,
+    "w": 1,
+    "t": 1.033,
+    "d": 1.033,
+    "paused": false
+   },
+   "outcome": "OK"
+  },
+  {
+   "n": "d/f+1",
+   "ok": true,
+   "state": "attack",
+   "moveKey": "d/f+1",
+   "plan": "row:129",
+   "kind": "match",
+   "bindFrac": 0.08,
+   "why": "btn 1 armL m hit@15f",
+   "hasAction": true,
+   "running": 0,
+   "weight": 1,
+   "act": {
+    "enabled": true,
+    "w": 1,
+    "t": 0.9,
+    "d": 0.9,
+    "paused": false
+   },
+   "outcome": "OK"
+  },
+  {
+   "n": "d+1",
+   "ok": false,
+   "state": "idle",
+   "round": "fight",
+   "canAct": true,
+   "outcome": "NOFIRE"
+  },
+  {
+   "n": "d/f+2",
+   "ok": true,
+   "state": "attack",
+   "moveKey": "d/f+2",
+   "plan": "row:159",
+   "kind": "match",
+   "bindFrac": 0.08,
+   "why": "btn 2 armR m hit@17f",
+   "hasAction": true,
+   "running": 0,
+   "weight": 1,
+   "act": {
+    "enabled": true,
+    "w": 1,
+    "t": 0.8,
+    "d": 0.8,
+    "paused": false
+   },
+   "outcome": "OK"
+  },
+  {
+   "n": "u/f+4",
+   "ok": false,
+   "state": "idle",
+   "round": "fight",
+   "canAct": true,
+   "outcome": "NOFIRE"
+  },
+  {
+   "n": "1+3",
+   "ok": true,
+   "state": "throwing",
+   "moveKey": "1+3",
+   "plan": "row:211",
+   "kind": "match",
+   "bindFrac": 0.08,
+   "why": "throw btn 5 null t hit@12f",
+   "hasAction": true,
+   "running": 0,
+   "weight": 1,
+   "act": {
+    "enabled": true,
+    "w": 1,
+    "t": 0.7,
+    "d": 0.7,
+    "paused": false
+   },
+   "outcome": "OK"
+  },
+  {
+   "n": "1,2",
+   "ok": true,
+   "state": "attack",
+   "moveKey": "1,2",
+   "plan": "row:108",
+   "kind": "match",
+   "bindFrac": 0.08,
+   "why": "btn 2 armR h hit@12f",
+   "hasAction": true,
+   "running": 0,
+   "weight": 1,
+   "act": {
+    "enabled": true,
+    "w": 1,
+    "t": 0.7,
+    "d": 0.7,
+    "paused": false
+   },
+   "outcome": "OK"
+  },
+  {
+   "n": "b+1+2,1",
+   "ok": false,
+   "state": "idle",
+   "round": "fight",
+   "canAct": true,
+   "outcome": "NOFIRE"
+  },
+  {
+   "n": "d,d/f,f+1",
+   "ok": true,
+   "state": "throwing",
+   "moveKey": "d,d/f,f+1",
+   "plan": "row:141",
+   "kind": "match",
+   "bindFrac": 0.08,
+   "why": "throw btn ? armL(measured) t hit@6f",
+   "hasAction": true,
+   "running": 0,
+   "weight": 1,
+   "act": {
+    "enabled": true,
+    "w": 1,
+    "t": 0.833,
+    "d": 0.833,
+    "paused": false
+   },
+   "outcome": "OK"
+  }
+ ],
+ "logs": [
+  "[http 404] http://127.0.0.1:8766/game/assets/anim/t7/king/skeleton.json",
+  "[warning] [WH-T7] pantera: real T7 stance unavailable, keeps the bank stance: skeleton.json: HTTP 404",
+  "[http 404] http://127.0.0.1:8766/game/assets/anim/t7/king/stance.json",
+  "[http 404] http://127.0.0.1:8766/game/assets/anim/t7/kuma/skeleton.json",
+  "[warning] [WH-T7] gashadokuro: real T7 stance unavailable, keeps the bank stance: skeleton.json: HTTP 404",
+  "[http 404] http://127.0.0.1:8766/game/assets/anim/t7/kuma/stance.json",
+  "[http 404] http://127.0.0.1:8766/game/assets/anim/t7/panda/skeleton.json",
+  "[warning] [WH-T7] aotsuki: real T7 stance unavailable, keeps the bank stance: skeleton.json: HTTP 404",
+  "[http 404] http://127.0.0.1:8766/game/assets/anim/t7/panda/stance.json",
+  "[log] [WH-T3] bank 'kuma': 10 row clips baked >135\u00b0 from the stance heading \u2014 turned 180\u00b0 to match",
+  "[log] [WH-T3] bank 'kuma': 164 move-row clips",
+  "[log] [WH-T3] bank 'kuma': loaded 186 real T3 clips",
+  "[log] [WH-T3] bank 'king': 256 move-row clips",
+  "[log] [WH-T3] bank 'king': loaded 278 real T3 clips",
+  "[log] [WH-T3] bank 'kuma': reaction pack loaded (246 slots)",
+  "[log] [WH-T3] bank 'king': reaction pack loaded (568 slots)",
+  "[log] [WH] Fighter menajerii: 22 real T3 actions from bank 'kuma' (retargeted onto menajerii)",
+  "[log] [WH] Fighter pantera: 22 real T3 actions from bank 'king' (retargeted onto pantera-leoman)",
+  "[http 404] http://127.0.0.1:8766/game/assets/anim/t7/king/moves.pack.json",
+  "[http 404] http://127.0.0.1:8766/roster/menajerii/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8766/roster/pantera/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8766/game/js/intro-interactions.js",
+  "[warning] [WH-T7] pantera: real T7 move clips unavailable, moves keep their current clips: HTTP 404 for assets/anim/t7/king/moves.pack.json",
+  "[http 404] http://127.0.0.1:8766/customization/parts/no-mercy/glb/body_parts/model_1171.glb",
+  "[warning] [WH-CS] pantera part FAILED upper_body:no-mercy:0x1171:body_parts/model_1171.obj: Failed to fetch (fallback also failed: Failed to fetch)"
+ ]
+}

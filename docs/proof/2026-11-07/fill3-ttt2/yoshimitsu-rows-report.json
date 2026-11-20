@@ -1,0 +1,83 @@
+{
+ "bank": "yoshimitsu_ttt2",
+ "fighter": "yoshimitsu",
+ "tool": "tools/anim/ttt2_bank_rows.py",
+ "join_records": 259,
+ "join_mapped": 259,
+ "join_unmapped": [],
+ "grid_valid_records": 259,
+ "slot_sources": {
+  "t3_jump_back": 151,
+  "t3_jump_fwd": 150,
+  "t3_jump_up": 148
+ },
+ "slots_without_grid_record": [],
+ "row_set": 34,
+ "fields_unlocated": [],
+ "unique_entries": 29,
+ "pack_rows": 32,
+ "hit_rows": 32,
+ "missing": {
+  "48": "grid row 48 withheld: the legacy row-48 class stamp (roster-100 owner ruling pending); this record is not an attack (first_active 0)",
+  "246": "inter-frame jump check failed: LeftFoot jumps 1.50 m on frame 16",
+  "256": "inter-frame jump check failed: LeftFoot jumps 1.57 m on frame 47"
+ },
+ "presentation_gate_failures": {
+  "118": "RightToeBase 0.11 m below the floor on frame 2 (mannequin proportions)",
+  "119": "LeftToeBase 0.31 m below the floor on frame 0 (mannequin proportions)",
+  "146": "does not start upright",
+  "244": "does not start upright",
+  "245": "does not start upright",
+  "247": "RightToeBase 0.65 m below the floor on frame 0 (mannequin proportions)",
+  "248": "RightToeBase 0.62 m below the floor on frame 0 (mannequin proportions)",
+  "249": "does not start upright",
+  "252": "does not start upright",
+  "254": "does not start upright",
+  "255": "does not start upright",
+  "257": "does not start upright",
+  "258": "LeftLeg 0.14 m below the floor on frame 49 (mannequin proportions)",
+  "259": "does not start upright",
+  "261": "does not start upright",
+  "262": "does not start upright",
+  "263": "RightToeBase 0.70 m below the floor on frame 0 (mannequin proportions)",
+  "265": "RightToeBase 0.08 m below the floor on frame 11 (mannequin proportions)",
+  "267": "does not start upright",
+  "269": "does not start upright",
+  "271": "does not start upright",
+  "273": "does not start upright"
+ },
+ "sanity": {
+  "first_gt_last": 0,
+  "first_gt_stream": 3,
+  "word_classes": {
+   "u": 8,
+   "m": 13,
+   "h": 2,
+   "t": 1,
+   "l": 8
+  }
+ },
+ "buttons_assigned": {},
+ "move_rows_stamped": [
+  {
+   "slot": "t3_jump_back",
+   "move_row": 151
+  },
+  {
+   "slot": "t3_jump_fwd",
+   "move_row": 150
+  },
+  {
+   "slot": "t3_jump_up",
+   "move_row": 148
+  }
+ ],
+ "pack_bytes": 467907,
+ "hit_bytes": 1553,
+ "sha256": {
+  "data004-decoded.bin": "18b18d0ff2356219e9fac852eaa48f6b0a839479ea41f6d4b94069b5f86b2b21",
+  "data005-decoded.bin": "a7fc54d76b204056a9d45abc63c3e114d38e0fe253fe8e3922ccf9f2779afdfc",
+  "data006-decoded.bin": "fa486948e1fced19116a5304a9779f2b04bede2328a6c43ff4818a68913ebdb2"
+ },
+ "elapsed_s": 38.1
+}

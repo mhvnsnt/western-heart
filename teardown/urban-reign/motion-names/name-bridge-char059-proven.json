@@ -1,0 +1,1267 @@
+{
+ "schema": 1,
+ "fighter": "ur-char059",
+ "bank": "pmot059.ppk (pmot059.gyu, 35 motions, 21 bones)",
+ "motdatList": "motion/test/motdatP59 (33 records)",
+ "infoBinNameParity": true,
+ "gate": "maxDev <= 0.1 mm over all frames/components, unique under gate",
+ "provenPairs": [
+  {
+   "record": 0,
+   "name": "cbco_dwngnuke_asi_y",
+   "globalId": 92,
+   "frames": 20,
+   "bankMotion": 0,
+   "clip": "ur_m000",
+   "maxDev": 0.0019,
+   "rootType": 8
+  },
+  {
+   "record": 1,
+   "name": "cbco_dwngnuke_atama_y",
+   "globalId": 93,
+   "frames": 20,
+   "bankMotion": 1,
+   "clip": "ur_m001",
+   "maxDev": 0.0019,
+   "rootType": 8
+  },
+  {
+   "record": 2,
+   "name": "cbco_dwngnuke_left_y",
+   "globalId": 94,
+   "frames": 20,
+   "bankMotion": 2,
+   "clip": "ur_m002",
+   "maxDev": 0.0019,
+   "rootType": 8
+  },
+  {
+   "record": 3,
+   "name": "cbco_dwngnuke_right_y",
+   "globalId": 95,
+   "frames": 20,
+   "bankMotion": 3,
+   "clip": "ur_m003",
+   "maxDev": 0.0019,
+   "rootType": 8
+  },
+  {
+   "record": 24,
+   "name": "moco_kangaruk",
+   "globalId": 628,
+   "frames": 66,
+   "bankMotion": 26,
+   "clip": "ur_m026",
+   "maxDev": 0.0166,
+   "rootType": 8
+  }
+ ],
+ "unprovenRecords": [
+  {
+   "record": 4,
+   "name": "cbco_jumpslk",
+   "globalId": 130,
+   "frames": 65,
+   "reason": "frame-count candidate(s) in own bank but root stream does not meet gate: best m025 maxDev 3677.165 mm (rootType 8)",
+   "ownBankBest": {
+    "motion": 25,
+    "maxDev": 3677.165,
+    "rootType": 8
+   },
+   "crossBankHits": [
+    {
+     "bank": "pmot016",
+     "bankMotion": 7,
+     "clip": "ur_m007",
+     "maxDev": 0.0635,
+     "rootType": 8
+    }
+   ]
+  },
+  {
+   "record": 5,
+   "name": "cbco_spd_moushuk",
+   "globalId": 201,
+   "frames": 82,
+   "reason": "frame-count candidate(s) in own bank but root stream does not meet gate: best m016 maxDev 1941.9747 mm (rootType 8)",
+   "ownBankBest": {
+    "motion": 16,
+    "maxDev": 1941.9747,
+    "rootType": 8
+   },
+   "crossBankHits": [
+    {
+     "bank": "pmot032",
+     "bankMotion": 21,
+     "clip": "ur_m021",
+     "maxDev": 0.0102,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot055",
+     "bankMotion": 20,
+     "clip": "ur_m020",
+     "maxDev": 0.0102,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot057",
+     "bankMotion": 13,
+     "clip": "ur_m013",
+     "maxDev": 0.0102,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot010",
+     "bankMotion": 17,
+     "clip": "ur_m017",
+     "maxDev": 0.0102,
+     "rootType": 8
+    }
+   ]
+  },
+  {
+   "record": 6,
+   "name": "cbco_wp2h_kokyu01",
+   "globalId": 290,
+   "frames": 80,
+   "reason": "no own-bank motion with this frame count",
+   "ownBankBest": null,
+   "crossBankHits": [
+    {
+     "bank": "general_weapon",
+     "bankMotion": 33,
+     "clip": "ur_m033",
+     "maxDev": 0.0014,
+     "rootType": 14
+    }
+   ]
+  },
+  {
+   "record": 7,
+   "name": "haco_bookerkick_hara_y",
+   "globalId": 345,
+   "frames": 130,
+   "reason": "no own-bank motion with this frame count",
+   "ownBankBest": null,
+   "crossBankHits": []
+  },
+  {
+   "record": 8,
+   "name": "haco_bookerkick_head_y",
+   "globalId": 347,
+   "frames": 129,
+   "reason": "no own-bank motion with this frame count",
+   "ownBankBest": null,
+   "crossBankHits": [
+    {
+     "bank": "pmot001",
+     "bankMotion": 21,
+     "clip": "ur_m021",
+     "maxDev": 0.0293,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot002",
+     "bankMotion": 21,
+     "clip": "ur_m021",
+     "maxDev": 0.0293,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot003",
+     "bankMotion": 21,
+     "clip": "ur_m021",
+     "maxDev": 0.0293,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot016",
+     "bankMotion": 12,
+     "clip": "ur_m012",
+     "maxDev": 0.0293,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot042",
+     "bankMotion": 21,
+     "clip": "ur_m021",
+     "maxDev": 0.0293,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot003",
+     "bankMotion": 8,
+     "clip": "ur_m008",
+     "maxDev": 0.0293,
+     "rootType": 8
+    }
+   ]
+  },
+  {
+   "record": 9,
+   "name": "moco_cutback",
+   "globalId": 483,
+   "frames": 72,
+   "reason": "no own-bank motion with this frame count",
+   "ownBankBest": null,
+   "crossBankHits": [
+    {
+     "bank": "pmot042",
+     "bankMotion": 25,
+     "clip": "ur_m025",
+     "maxDev": 0.0419,
+     "rootType": 8
+    }
+   ]
+  },
+  {
+   "record": 10,
+   "name": "moco_dvbkick2",
+   "globalId": 513,
+   "frames": 62,
+   "reason": "no own-bank motion with this frame count",
+   "ownBankBest": null,
+   "crossBankHits": [
+    {
+     "bank": "pmot016",
+     "bankMotion": 19,
+     "clip": "ur_m019",
+     "maxDev": 0.0444,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot032",
+     "bankMotion": 26,
+     "clip": "ur_m026",
+     "maxDev": 0.0444,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot054",
+     "bankMotion": 21,
+     "clip": "ur_m021",
+     "maxDev": 0.0444,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot057",
+     "bankMotion": 17,
+     "clip": "ur_m017",
+     "maxDev": 0.0444,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot061",
+     "bankMotion": 39,
+     "clip": "ur_m039",
+     "maxDev": 0.0444,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot003",
+     "bankMotion": 15,
+     "clip": "ur_m015",
+     "maxDev": 0.0444,
+     "rootType": 8
+    }
+   ]
+  },
+  {
+   "record": 11,
+   "name": "moco_dvbkick2_z",
+   "globalId": 514,
+   "frames": 62,
+   "reason": "no own-bank motion with this frame count",
+   "ownBankBest": null,
+   "crossBankHits": [
+    {
+     "bank": "pmot016",
+     "bankMotion": 20,
+     "clip": "ur_m020",
+     "maxDev": 0.0275,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot032",
+     "bankMotion": 27,
+     "clip": "ur_m027",
+     "maxDev": 0.0275,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot054",
+     "bankMotion": 22,
+     "clip": "ur_m022",
+     "maxDev": 0.0275,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot057",
+     "bankMotion": 18,
+     "clip": "ur_m018",
+     "maxDev": 0.0275,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot061",
+     "bankMotion": 40,
+     "clip": "ur_m040",
+     "maxDev": 0.0275,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot003",
+     "bankMotion": 16,
+     "clip": "ur_m016",
+     "maxDev": 0.0275,
+     "rootType": 8
+    }
+   ]
+  },
+  {
+   "record": 12,
+   "name": "moco_dvbknee",
+   "globalId": 515,
+   "frames": 84,
+   "reason": "no own-bank motion with this frame count",
+   "ownBankBest": null,
+   "crossBankHits": [
+    {
+     "bank": "pmot016",
+     "bankMotion": 21,
+     "clip": "ur_m021",
+     "maxDev": 0.06,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot042",
+     "bankMotion": 30,
+     "clip": "ur_m030",
+     "maxDev": 0.06,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot054",
+     "bankMotion": 23,
+     "clip": "ur_m023",
+     "maxDev": 0.06,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot057",
+     "bankMotion": 19,
+     "clip": "ur_m019",
+     "maxDev": 0.06,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot058",
+     "bankMotion": 21,
+     "clip": "ur_m021",
+     "maxDev": 0.06,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot061",
+     "bankMotion": 41,
+     "clip": "ur_m041",
+     "maxDev": 0.06,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot063",
+     "bankMotion": 23,
+     "clip": "ur_m023",
+     "maxDev": 0.06,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot070",
+     "bankMotion": 23,
+     "clip": "ur_m023",
+     "maxDev": 0.06,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot001",
+     "bankMotion": 19,
+     "clip": "ur_m019",
+     "maxDev": 0.06,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot002",
+     "bankMotion": 22,
+     "clip": "ur_m022",
+     "maxDev": 0.06,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot003",
+     "bankMotion": 17,
+     "clip": "ur_m017",
+     "maxDev": 0.06,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot004",
+     "bankMotion": 24,
+     "clip": "ur_m024",
+     "maxDev": 0.06,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot005",
+     "bankMotion": 29,
+     "clip": "ur_m029",
+     "maxDev": 0.06,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot006",
+     "bankMotion": 24,
+     "clip": "ur_m024",
+     "maxDev": 0.06,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot010",
+     "bankMotion": 30,
+     "clip": "ur_m030",
+     "maxDev": 0.06,
+     "rootType": 8
+    }
+   ]
+  },
+  {
+   "record": 13,
+   "name": "moco_dvbknee_z",
+   "globalId": 516,
+   "frames": 84,
+   "reason": "no own-bank motion with this frame count",
+   "ownBankBest": null,
+   "crossBankHits": [
+    {
+     "bank": "pmot016",
+     "bankMotion": 22,
+     "clip": "ur_m022",
+     "maxDev": 0.0359,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot042",
+     "bankMotion": 31,
+     "clip": "ur_m031",
+     "maxDev": 0.0359,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot054",
+     "bankMotion": 24,
+     "clip": "ur_m024",
+     "maxDev": 0.0359,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot057",
+     "bankMotion": 20,
+     "clip": "ur_m020",
+     "maxDev": 0.0359,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot058",
+     "bankMotion": 22,
+     "clip": "ur_m022",
+     "maxDev": 0.0359,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot061",
+     "bankMotion": 42,
+     "clip": "ur_m042",
+     "maxDev": 0.0359,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot063",
+     "bankMotion": 24,
+     "clip": "ur_m024",
+     "maxDev": 0.0359,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot070",
+     "bankMotion": 24,
+     "clip": "ur_m024",
+     "maxDev": 0.0359,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot001",
+     "bankMotion": 20,
+     "clip": "ur_m020",
+     "maxDev": 0.0359,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot002",
+     "bankMotion": 23,
+     "clip": "ur_m023",
+     "maxDev": 0.0359,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot003",
+     "bankMotion": 18,
+     "clip": "ur_m018",
+     "maxDev": 0.0359,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot004",
+     "bankMotion": 25,
+     "clip": "ur_m025",
+     "maxDev": 0.0359,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot005",
+     "bankMotion": 30,
+     "clip": "ur_m030",
+     "maxDev": 0.0359,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot006",
+     "bankMotion": 25,
+     "clip": "ur_m025",
+     "maxDev": 0.0359,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot010",
+     "bankMotion": 31,
+     "clip": "ur_m031",
+     "maxDev": 0.0359,
+     "rootType": 8
+    }
+   ]
+  },
+  {
+   "record": 14,
+   "name": "moco_dvkbdvkick2_z",
+   "globalId": 545,
+   "frames": 59,
+   "reason": "frame-count candidate(s) in own bank but root stream does not meet gate: best m034 maxDev 2054.0 mm (rootType 14)",
+   "ownBankBest": {
+    "motion": 34,
+    "maxDev": 2054.0,
+    "rootType": 14
+   },
+   "crossBankHits": [
+    {
+     "bank": "pmot016",
+     "bankMotion": 24,
+     "clip": "ur_m024",
+     "maxDev": 0.0276,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot032",
+     "bankMotion": 30,
+     "clip": "ur_m030",
+     "maxDev": 0.0276,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot057",
+     "bankMotion": 21,
+     "clip": "ur_m021",
+     "maxDev": 0.0276,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot061",
+     "bankMotion": 43,
+     "clip": "ur_m043",
+     "maxDev": 0.0276,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot003",
+     "bankMotion": 20,
+     "clip": "ur_m020",
+     "maxDev": 0.0276,
+     "rootType": 8
+    }
+   ]
+  },
+  {
+   "record": 15,
+   "name": "moco_dvkdvkick2_z",
+   "globalId": 551,
+   "frames": 57,
+   "reason": "no own-bank motion with this frame count",
+   "ownBankBest": null,
+   "crossBankHits": [
+    {
+     "bank": "pmot016",
+     "bankMotion": 25,
+     "clip": "ur_m025",
+     "maxDev": 0.0272,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot032",
+     "bankMotion": 31,
+     "clip": "ur_m031",
+     "maxDev": 0.0272,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot057",
+     "bankMotion": 22,
+     "clip": "ur_m022",
+     "maxDev": 0.0272,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot061",
+     "bankMotion": 44,
+     "clip": "ur_m044",
+     "maxDev": 0.0272,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot003",
+     "bankMotion": 21,
+     "clip": "ur_m021",
+     "maxDev": 0.0272,
+     "rootType": 8
+    }
+   ]
+  },
+  {
+   "record": 16,
+   "name": "moco_dvkhit",
+   "globalId": 552,
+   "frames": 44,
+   "reason": "no own-bank motion with this frame count",
+   "ownBankBest": null,
+   "crossBankHits": [
+    {
+     "bank": "pmot001",
+     "bankMotion": 38,
+     "clip": "ur_m038",
+     "maxDev": 0.0169,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot002",
+     "bankMotion": 38,
+     "clip": "ur_m038",
+     "maxDev": 0.0169,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot003",
+     "bankMotion": 38,
+     "clip": "ur_m038",
+     "maxDev": 0.0169,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot016",
+     "bankMotion": 26,
+     "clip": "ur_m026",
+     "maxDev": 0.0169,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot030",
+     "bankMotion": 31,
+     "clip": "ur_m031",
+     "maxDev": 0.0169,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot031",
+     "bankMotion": 31,
+     "clip": "ur_m031",
+     "maxDev": 0.0169,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot032",
+     "bankMotion": 32,
+     "clip": "ur_m032",
+     "maxDev": 0.0169,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot042",
+     "bankMotion": 40,
+     "clip": "ur_m040",
+     "maxDev": 0.0169,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot054",
+     "bankMotion": 28,
+     "clip": "ur_m028",
+     "maxDev": 0.0169,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot057",
+     "bankMotion": 23,
+     "clip": "ur_m023",
+     "maxDev": 0.0169,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot061",
+     "bankMotion": 45,
+     "clip": "ur_m045",
+     "maxDev": 0.0169,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot003",
+     "bankMotion": 22,
+     "clip": "ur_m022",
+     "maxDev": 0.0169,
+     "rootType": 8
+    }
+   ]
+  },
+  {
+   "record": 17,
+   "name": "moco_dvkick2",
+   "globalId": 553,
+   "frames": 62,
+   "reason": "no own-bank motion with this frame count",
+   "ownBankBest": null,
+   "crossBankHits": [
+    {
+     "bank": "pmot016",
+     "bankMotion": 27,
+     "clip": "ur_m027",
+     "maxDev": 0.0455,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot032",
+     "bankMotion": 33,
+     "clip": "ur_m033",
+     "maxDev": 0.0455,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot054",
+     "bankMotion": 29,
+     "clip": "ur_m029",
+     "maxDev": 0.0455,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot057",
+     "bankMotion": 24,
+     "clip": "ur_m024",
+     "maxDev": 0.0455,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot061",
+     "bankMotion": 46,
+     "clip": "ur_m046",
+     "maxDev": 0.0455,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot003",
+     "bankMotion": 23,
+     "clip": "ur_m023",
+     "maxDev": 0.0455,
+     "rootType": 8
+    }
+   ]
+  },
+  {
+   "record": 18,
+   "name": "moco_dvkick2_z",
+   "globalId": 554,
+   "frames": 62,
+   "reason": "no own-bank motion with this frame count",
+   "ownBankBest": null,
+   "crossBankHits": [
+    {
+     "bank": "pmot016",
+     "bankMotion": 28,
+     "clip": "ur_m028",
+     "maxDev": 0.0272,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot032",
+     "bankMotion": 34,
+     "clip": "ur_m034",
+     "maxDev": 0.0272,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot054",
+     "bankMotion": 30,
+     "clip": "ur_m030",
+     "maxDev": 0.0272,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot057",
+     "bankMotion": 25,
+     "clip": "ur_m025",
+     "maxDev": 0.0272,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot061",
+     "bankMotion": 47,
+     "clip": "ur_m047",
+     "maxDev": 0.0272,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot003",
+     "bankMotion": 24,
+     "clip": "ur_m024",
+     "maxDev": 0.0272,
+     "rootType": 8
+    }
+   ]
+  },
+  {
+   "record": 19,
+   "name": "moco_dvknee",
+   "globalId": 555,
+   "frames": 80,
+   "reason": "no own-bank motion with this frame count",
+   "ownBankBest": null,
+   "crossBankHits": [
+    {
+     "bank": "pmot016",
+     "bankMotion": 29,
+     "clip": "ur_m029",
+     "maxDev": 0.0615,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot042",
+     "bankMotion": 41,
+     "clip": "ur_m041",
+     "maxDev": 0.0615,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot054",
+     "bankMotion": 31,
+     "clip": "ur_m031",
+     "maxDev": 0.0615,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot057",
+     "bankMotion": 26,
+     "clip": "ur_m026",
+     "maxDev": 0.0615,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot058",
+     "bankMotion": 27,
+     "clip": "ur_m027",
+     "maxDev": 0.0615,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot061",
+     "bankMotion": 48,
+     "clip": "ur_m048",
+     "maxDev": 0.0615,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot063",
+     "bankMotion": 28,
+     "clip": "ur_m028",
+     "maxDev": 0.0615,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot070",
+     "bankMotion": 28,
+     "clip": "ur_m028",
+     "maxDev": 0.0615,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot001",
+     "bankMotion": 24,
+     "clip": "ur_m024",
+     "maxDev": 0.0615,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot002",
+     "bankMotion": 27,
+     "clip": "ur_m027",
+     "maxDev": 0.0615,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot003",
+     "bankMotion": 25,
+     "clip": "ur_m025",
+     "maxDev": 0.0615,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot004",
+     "bankMotion": 29,
+     "clip": "ur_m029",
+     "maxDev": 0.0615,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot005",
+     "bankMotion": 34,
+     "clip": "ur_m034",
+     "maxDev": 0.0615,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot006",
+     "bankMotion": 29,
+     "clip": "ur_m029",
+     "maxDev": 0.0615,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot010",
+     "bankMotion": 34,
+     "clip": "ur_m034",
+     "maxDev": 0.0615,
+     "rootType": 8
+    }
+   ]
+  },
+  {
+   "record": 20,
+   "name": "moco_dvknee_z",
+   "globalId": 556,
+   "frames": 80,
+   "reason": "no own-bank motion with this frame count",
+   "ownBankBest": null,
+   "crossBankHits": [
+    {
+     "bank": "pmot016",
+     "bankMotion": 30,
+     "clip": "ur_m030",
+     "maxDev": 0.0343,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot042",
+     "bankMotion": 42,
+     "clip": "ur_m042",
+     "maxDev": 0.0343,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot054",
+     "bankMotion": 32,
+     "clip": "ur_m032",
+     "maxDev": 0.0343,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot057",
+     "bankMotion": 27,
+     "clip": "ur_m027",
+     "maxDev": 0.0343,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot058",
+     "bankMotion": 28,
+     "clip": "ur_m028",
+     "maxDev": 0.0343,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot061",
+     "bankMotion": 49,
+     "clip": "ur_m049",
+     "maxDev": 0.0343,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot063",
+     "bankMotion": 29,
+     "clip": "ur_m029",
+     "maxDev": 0.0343,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot070",
+     "bankMotion": 29,
+     "clip": "ur_m029",
+     "maxDev": 0.0343,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot001",
+     "bankMotion": 25,
+     "clip": "ur_m025",
+     "maxDev": 0.0343,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot002",
+     "bankMotion": 28,
+     "clip": "ur_m028",
+     "maxDev": 0.0343,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot003",
+     "bankMotion": 26,
+     "clip": "ur_m026",
+     "maxDev": 0.0343,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot004",
+     "bankMotion": 30,
+     "clip": "ur_m030",
+     "maxDev": 0.0343,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot005",
+     "bankMotion": 35,
+     "clip": "ur_m035",
+     "maxDev": 0.0343,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot006",
+     "bankMotion": 30,
+     "clip": "ur_m030",
+     "maxDev": 0.0343,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot010",
+     "bankMotion": 35,
+     "clip": "ur_m035",
+     "maxDev": 0.0343,
+     "rootType": 8
+    }
+   ]
+  },
+  {
+   "record": 21,
+   "name": "moco_girotin",
+   "globalId": 600,
+   "frames": 111,
+   "reason": "no own-bank motion with this frame count",
+   "ownBankBest": null,
+   "crossBankHits": [
+    {
+     "bank": "pmot005",
+     "bankMotion": 21,
+     "clip": "ur_m021",
+     "maxDev": 0.0195,
+     "rootType": 8
+    }
+   ]
+  },
+  {
+   "record": 22,
+   "name": "moco_huntingh2",
+   "globalId": 608,
+   "frames": 57,
+   "reason": "no own-bank motion with this frame count",
+   "ownBankBest": null,
+   "crossBankHits": [
+    {
+     "bank": "pmot001",
+     "bankMotion": 41,
+     "clip": "ur_m041",
+     "maxDev": 0.0248,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot002",
+     "bankMotion": 41,
+     "clip": "ur_m041",
+     "maxDev": 0.0248,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot003",
+     "bankMotion": 41,
+     "clip": "ur_m041",
+     "maxDev": 0.0248,
+     "rootType": 8
+    },
+    {
+     "bank": "pmot042",
+     "bankMotion": 44,
+     "clip": "ur_m044",
+     "maxDev": 0.0248,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot004",
+     "bankMotion": 31,
+     "clip": "ur_m031",
+     "maxDev": 0.0248,
+     "rootType": 8
+    },
+    {
+     "bank": "tmot005",
+     "bankMotion": 36,
+     "clip": "ur_m036",
+     "maxDev": 0.0248,
+     "rootType": 8
+    }
+   ]
+  },
+  {
+   "record": 23,
+   "name": "moco_huntingh3",
+   "globalId": 609,
+   "frames": 67,
+   "reason": "no own-bank motion with this frame count",
+   "ownBankBest": null,
+   "crossBankHits": [
+    {
+     "bank": "pmot042",
+     "bankMotion": 45,
+     "clip": "ur_m045",
+     "maxDev": 0.0264,
+     "rootType": 8
+    }
+   ]
+  },
+  {
+   "record": 25,
+   "name": "moco_rreversk",
+   "globalId": 697,
+   "frames": 56,
+   "reason": "no own-bank motion with this frame count",
+   "ownBankBest": null,
+   "crossBankHits": [
+    {
+     "bank": "general_normal",
+     "bankMotion": 297,
+     "clip": "ur_m297",
+     "maxDev": 0.0126,
+     "rootType": 8
+    }
+   ]
+  },
+  {
+   "record": 26,
+   "name": "moco_siranui_f",
+   "globalId": 724,
+   "frames": 121,
+   "reason": "no own-bank motion with this frame count",
+   "ownBankBest": null,
+   "crossBankHits": []
+  },
+  {
+   "record": 27,
+   "name": "moco_siranui_y1",
+   "globalId": 725,
+   "frames": 121,
+   "reason": "no own-bank motion with this frame count",
+   "ownBankBest": null,
+   "crossBankHits": []
+  },
+  {
+   "record": 28,
+   "name": "moco_siranui_y2",
+   "globalId": 726,
+   "frames": 121,
+   "reason": "no own-bank motion with this frame count",
+   "ownBankBest": null,
+   "crossBankHits": []
+  },
+  {
+   "record": 29,
+   "name": "moco_somersaultk",
+   "globalId": 732,
+   "frames": 67,
+   "reason": "no own-bank motion with this frame count",
+   "ownBankBest": null,
+   "crossBankHits": []
+  },
+  {
+   "record": 30,
+   "name": "moco_sp_bokosuka_f1",
+   "globalId": 736,
+   "frames": 277,
+   "reason": "no own-bank motion with this frame count",
+   "ownBankBest": null,
+   "crossBankHits": [
+    {
+     "bank": "tmot004",
+     "bankMotion": 37,
+     "clip": "ur_m037",
+     "maxDev": 0.022,
+     "rootType": 8
+    }
+   ]
+  },
+  {
+   "record": 31,
+   "name": "moco_sp_bokosuka_f2",
+   "globalId": 737,
+   "frames": 277,
+   "reason": "no own-bank motion with this frame count",
+   "ownBankBest": null,
+   "crossBankHits": [
+    {
+     "bank": "tmot004",
+     "bankMotion": 38,
+     "clip": "ur_m038",
+     "maxDev": 0.0197,
+     "rootType": 8
+    }
+   ]
+  },
+  {
+   "record": 32,
+   "name": "moco_sp_bokosuka_y",
+   "globalId": 738,
+   "frames": 277,
+   "reason": "no own-bank motion with this frame count",
+   "ownBankBest": null,
+   "crossBankHits": [
+    {
+     "bank": "tmot004",
+     "bankMotion": 39,
+     "clip": "ur_m039",
+     "maxDev": 0.0168,
+     "rootType": 8
+    }
+   ]
+  }
+ ],
+ "provenance": "UR Phase 5 Job 1: motdat test records vs own pmot bank root streams (ur_gyu decode; type-14 = Phase-5 fixed BE double-integrator decode, see PHASE5-JOB2-TYPE14.md). Proof = per-frame sampled ROOT track identity x1000, max deviation in mm."
+}

@@ -1,0 +1,30 @@
+== seed-1 check on entries 1 and 3 first records ==
+  entry 1: dec-header=['0x3', '0x5', '0x446f', '0x18d', '0x19fd693b', '0x34cd', '0xcd17', '0x15135'] pattern_ok=False
+  entry 3: dec-header=['0x5', '0x1f', '0x445d', '0x28b', '0x688a2356', '0x2ca7', '0x14b25', '0x7bf9b'] pattern_ok=False
+
+== decrypt + scan entries 1 and 3 ==
+  entry 1: size=2691072 ck[ei]=0xb1933860 word_sum(dec)=0x8f07b0e6 match=False
+    head=03000000050000006f4400008d0100003b69fd19cd34000017cd000035510100630a1a00a5d365001f0d9d00dd32170d53ce73319df742b717c6d494f5ca03e5
+    u32 1000000 count: 0 []
+    printable runs >=12 chars: 4
+      len=13 @966225: b'$}^`0.48T3lcP'
+      len=13 @661042: b'Xo$Ak8"C#:$x^'
+      len=12 @1921217: b'B_@Lv!?a2qIm'
+      len=12 @135950: b'z_F2hN4N"E>A'
+  entry 3: size=2580480 ck[ei]=0x419f3165 word_sum(dec)=0xfdbea7be match=False
+    head=050000001f0000005d4400008b02000056238a68a72c0000254b01009bbf0700a5211600efa8b9002d0bc7039bdcc4080d63685c47efcf26454aafbceb5d08af
+    u32 1000000 count: 0 []
+    printable runs >=12 chars: 12
+      len=13 @2134943: b'>AG-XpR" (XT!'
+      len=13 @1443574: b'T+N>iqPH#[G&L'
+      len=12 @1969977: b'5?n}`+QE4:jc'
+      len=12 @1927712: b'X;gdKp_+,Q>/'
+      len=12 @1698595: b'`ITh15N4?k4w'
+      len=12 @1503658: b'%V!hg%]d%8it'
+      len=12 @1448745: b'e0ES!~<nZ/?G'
+      len=12 @1422481: b'fDyS&z10B3r.'
+
+== checksum-value search in code ==
+  e0 dec word_sum 0x6615f44a found at: []
+  e0 raw word_sum 0x5748f144 found at: []
+  CK[0] 0x41c55fea found at: ['0x27fec4']

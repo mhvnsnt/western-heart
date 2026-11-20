@@ -1,0 +1,172 @@
+{
+ "fighter": "dxmmii-patchwork",
+ "base": "http://127.0.0.1:8906/game/",
+ "ready": true,
+ "rows": [
+  {
+   "n": "1",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:221",
+   "kind": "own",
+   "why": "",
+   "timing": {
+    "S": 0.233,
+    "A": 0.017,
+    "t0": 0.233,
+    "t1": 0.233,
+    "D": 0.733,
+    "src": "decoded"
+   },
+   "moveDmg": 5,
+   "hitWord": 1042,
+   "isGrab": false,
+   "atkName": "1",
+   "hasHit": true,
+   "distAtHit": 1.5,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 4.6,
+   "hits": [
+    {
+     "dmg": 5,
+     "word": 1042,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:221",
+   "kind": "own",
+   "why": "",
+   "timing": {
+    "S": 0.233,
+    "A": 0.017,
+    "t0": 0.233,
+    "t1": 0.233,
+    "D": 0.733,
+    "src": "decoded"
+   },
+   "moveDmg": 5,
+   "hitWord": 1042,
+   "isGrab": false,
+   "atkName": "1",
+   "hasHit": true,
+   "distAtHit": 1.5,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 4.6,
+   "hits": [
+    {
+     "dmg": 5,
+     "word": 1042,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1+2",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:32",
+   "kind": "notation",
+   "why": "same input '1+2'",
+   "timing": {
+    "S": 0.3,
+    "A": 0.1,
+    "t0": 0.3,
+    "t1": 0.3,
+    "D": 0.867,
+    "src": "decoded"
+   },
+   "moveDmg": 18,
+   "hitWord": null,
+   "isGrab": false,
+   "atkName": "1+2",
+   "hasHit": true,
+   "distAtHit": 1.48,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 16.5,
+   "hits": [
+    {
+     "dmg": 18,
+     "word": null,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1+2",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:32",
+   "kind": "notation",
+   "why": "same input '1+2'",
+   "timing": {
+    "S": 0.3,
+    "A": 0.1,
+    "t0": 0.3,
+    "t1": 0.3,
+    "D": 0.867,
+    "src": "decoded"
+   },
+   "moveDmg": 18,
+   "hitWord": null,
+   "isGrab": false,
+   "atkName": "1+2",
+   "hasHit": true,
+   "distAtHit": 1.83,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 16.5,
+   "hits": [
+    {
+     "dmg": 18,
+     "word": null,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  }
+ ],
+ "setup": {
+  "roundState": "fight",
+  "p1id": "dxmmii-patchwork",
+  "t3actionsCount": 22,
+  "bank": "jin"
+ },
+ "logs": [
+  "[http 404] http://127.0.0.1:8906/deploy-manifest.json",
+  "[http 404] http://127.0.0.1:8906/roster/dxmmii-patchwork/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8906/roster/pantera/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/index.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/dxmmii-patchwork.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/pantera.json",
+  "[http 404] http://127.0.0.1:8906/game/js/intro-interactions.js",
+  "[http 404] http://127.0.0.1:8906/roster/dxmmii/attires/patchwork-dj/dxmmii-patchwork-rigged.glb",
+  "[http 404] http://127.0.0.1:8906/roster/dxmmii/attires/patchwork-dj/dxmmii-patchwork-rigged.glb"
+ ]
+}

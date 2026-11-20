@@ -1,0 +1,241 @@
+{
+ "fighter": "baek-master-white",
+ "base": "http://127.0.0.1:8906/game/",
+ "ready": true,
+ "rows": [
+  {
+   "n": "1",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:46",
+   "kind": "own",
+   "why": "",
+   "timing": {
+    "S": 0.183,
+    "A": 0.033,
+    "t0": 0.183,
+    "t1": 0.2,
+    "D": 0.667,
+    "src": "decoded"
+   },
+   "moveDmg": 7,
+   "hitWord": 535,
+   "isGrab": false,
+   "atkName": "1",
+   "hasHit": true,
+   "distAtHit": 1.47,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 6.4,
+   "hits": [
+    {
+     "dmg": 7,
+     "word": 535,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:46",
+   "kind": "own",
+   "why": "",
+   "timing": {
+    "S": 0.183,
+    "A": 0.033,
+    "t0": 0.183,
+    "t1": 0.2,
+    "D": 0.667,
+    "src": "decoded"
+   },
+   "moveDmg": 7,
+   "hitWord": 535,
+   "isGrab": false,
+   "atkName": "1",
+   "hasHit": false,
+   "distAtHit": null,
+   "defStates": [],
+   "hpDelta": 0,
+   "hits": []
+  },
+  {
+   "n": "4",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:81",
+   "kind": "own",
+   "why": "",
+   "timing": {
+    "S": 0.15,
+    "A": 0.033,
+    "t0": 0.15,
+    "t1": 0.167,
+    "D": 0.8,
+    "src": "decoded"
+   },
+   "moveDmg": 15,
+   "hitWord": 535,
+   "isGrab": false,
+   "atkName": "4",
+   "hasHit": true,
+   "distAtHit": 1.48,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 13.8,
+   "hits": [
+    {
+     "dmg": 15,
+     "word": 535,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "4",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:81",
+   "kind": "own",
+   "why": "",
+   "timing": {
+    "S": 0.15,
+    "A": 0.033,
+    "t0": 0.15,
+    "t1": 0.167,
+    "D": 0.8,
+    "src": "decoded"
+   },
+   "moveDmg": 15,
+   "hitWord": 535,
+   "isGrab": false,
+   "atkName": "4",
+   "hasHit": true,
+   "distAtHit": 1.83,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 13.8,
+   "hits": [
+    {
+     "dmg": 15,
+     "word": 535,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1+2",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:41",
+   "kind": "notation",
+   "why": "same input '1+2'",
+   "timing": {
+    "S": 0.26,
+    "A": 0.017,
+    "t0": 0.3,
+    "t1": 0.3,
+    "D": 0.867,
+    "src": "decoded"
+   },
+   "moveDmg": 17,
+   "hitWord": null,
+   "isGrab": false,
+   "atkName": "1+2",
+   "hasHit": true,
+   "distAtHit": 1.48,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 15.6,
+   "hits": [
+    {
+     "dmg": 17,
+     "word": null,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1+2",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:41",
+   "kind": "notation",
+   "why": "same input '1+2'",
+   "timing": {
+    "S": 0.26,
+    "A": 0.017,
+    "t0": 0.3,
+    "t1": 0.3,
+    "D": 0.867,
+    "src": "decoded"
+   },
+   "moveDmg": 17,
+   "hitWord": null,
+   "isGrab": false,
+   "atkName": "1+2",
+   "hasHit": true,
+   "distAtHit": 1.83,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 15.6,
+   "hits": [
+    {
+     "dmg": 17,
+     "word": null,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  }
+ ],
+ "setup": {
+  "roundState": "fight",
+  "p1id": "baek-master-white",
+  "t3actionsCount": 22,
+  "bank": "bryan"
+ },
+ "logs": [
+  "[http 404] http://127.0.0.1:8906/deploy-manifest.json",
+  "[http 404] http://127.0.0.1:8906/roster/baek/attires/attire1/model-rigged.glb",
+  "[http 404] http://127.0.0.1:8906/roster/baek/attires/attire1/model-rigged.glb",
+  "[http 404] http://127.0.0.1:8906/roster/baek/attires/attire1/model-rigged.glb",
+  "[http 404] http://127.0.0.1:8906/roster/baek/attires/attire1/model-rigged.glb",
+  "[http 404] http://127.0.0.1:8906/roster/baek-master-white/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8906/roster/pantera/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/index.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/baek-master-white.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/pantera.json",
+  "[http 404] http://127.0.0.1:8906/game/js/intro-interactions.js",
+  "[http 404] http://127.0.0.1:8906/roster/baek/attires/master-white/model-kevin-diff.glb",
+  "[http 404] http://127.0.0.1:8906/roster/baek/attires/master-white/model-kevin-diff.glb"
+ ]
+}

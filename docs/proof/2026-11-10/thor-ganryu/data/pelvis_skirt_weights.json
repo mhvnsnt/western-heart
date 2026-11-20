@@ -1,0 +1,24 @@
+{
+ "tool": "tools/auto_rig/pelvis_skirt_weights.py",
+ "params": {
+  "belt_y": 0.95,
+  "hem_y": 0.62,
+  "hem_f": 0.5,
+  "hem_fade": 10.0,
+  "r_leg": 0.16,
+  "r_blend": 0.08,
+  "split_sigma": 0.07
+ },
+ "prims": [
+  {
+   "verts": 1384013,
+   "changed": 839949,
+   "hips_mean_belt_to_hem_before": 0.010676070877452728,
+   "thigh_mean_belt_to_hem_before": 0.6859093843394759,
+   "hips_mean_belt_to_hem_after": 0.4933071793957083,
+   "thigh_mean_belt_to_hem_after": 0.20327827582122016
+  }
+ ],
+ "input": "$SCRATCH/thorfix/plain.glb",
+ "output": "$SCRATCH/thorfix/thor-pelvis2.glb"
+}

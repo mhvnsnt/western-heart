@@ -1,0 +1,105 @@
+{
+ "template_id": "creation-suite/wwe2k-firepro-template",
+ "purpose": "Direct answer to the user complaint: the creation suite still uses a Mixamo soldier and has no real WWE 2K / No Mercy / WrestleMania XIX templates. This pack defines the template SCHEMA; the code lane implements it. No famous names, no real wrestler likenesses.",
+ "templates": [
+  {
+   "id": "wwe2k-caw",
+   "source": "WWE 2K CAW structure (Genesis/CAK/Pofo): body proportions, head/face/hair, attire layers, pofo attributes, 18-category moveset, entrance (music/motion/titantron/pyro/lighting)",
+   "slots": [
+    "body",
+    "head",
+    "face",
+    "hair",
+    "facial_hair",
+    "mask",
+    "upper_attire",
+    "lower_attire",
+    "gloves",
+    "wristbands",
+    "armpads",
+    "kneepads",
+    "feet",
+    "entrance_attire",
+    "tattoos",
+    "patterns_logos"
+   ],
+   "attribute_axes": [
+    "style",
+    "stance",
+    "speed",
+    "submission_skill",
+    "recovery",
+    "endurance",
+    "offense_head",
+    "offense_body",
+    "offense_arms",
+    "offense_legs",
+    "offense_flying",
+    "defense_head",
+    "defense_body",
+    "defense_arms",
+    "defense_legs",
+    "defense_flying"
+   ]
+  },
+  {
+   "id": "no-mercy-caw",
+   "source": "No Mercy CAW structure (banked wrestling.json + GameFAQs CAW guides)",
+   "slots": [
+    "body_template",
+    "head",
+    "face",
+    "hair",
+    "front_hair",
+    "facial_hair",
+    "mask",
+    "ring_attire",
+    "upper_body",
+    "tattoos",
+    "gloves",
+    "wristbands",
+    "armpads",
+    "kneepads",
+    "feet",
+    "entrance_attire",
+    "weapons"
+   ],
+   "style_axes": [
+    "stance",
+    "ring_entry",
+    "counter_level",
+    "speed",
+    "submission_skill",
+    "irish_whip_evasion",
+    "recovery_rate",
+    "bleeding",
+    "reaction_to_blood",
+    "endurance",
+    "turnbuckle_climbing",
+    "jumping_distance"
+   ]
+  },
+  {
+   "id": "firepro-edit",
+   "source": "Fire Pro edit-wrestler + Move Craft",
+   "slots": [
+    "move_craft_custom_moves",
+    "cpu_logic",
+    "skills",
+    "parameters",
+    "personality"
+   ],
+   "move_craft_guard": "Fail-closed compatibility check on custom-move attribute combos (Fire Pro warns incompatible combos can freeze — WH must refuse invalid combos, not crash)"
+  },
+  {
+   "id": "wrestling-empire-default",
+   "source": "Wrestling Empire 350 editable defaults + match creator",
+   "slots": [
+    "editable_default_roster",
+    "match_creator_rules"
+   ]
+  }
+ ],
+ "defaults_rule": "The suite's default fighter MUST be one of these templates (owner picks which first), NEVER the Mixamo soldier. The Mixamo soldier is removed from the default slot; it may remain only as an explicitly-labelled legacy import, if at all.",
+ "status": "SCHEMA ONLY — implementation belongs to the creation-suite/code lane; this lane does not edit suite code or existing moveset files."
+}

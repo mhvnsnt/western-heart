@@ -1,0 +1,157 @@
+{
+  "schema": "wh.morph-sliders/1",
+  "span": 0.5,
+  "meta_max": 1.25,
+  "_comment": "Creation-suite BODY MORPHING + FACE DEFORMATION slider catalog. ONE source of truth for (a) tools/mb-lab/bake_morph_templates.py, which bakes every slider into the 9 template GLBs as glTF morph targets '<id>+' (slider -> +1) and '<id>-' (slider -> -1), and (b) the suite (customization/creation-suite-ui/js/morph-targets.js), which drives mesh.morphTargetInfluences from the slider value. Slider value is relative to the template: 0 = the template's own shape. Labels are generic player-facing names (names law: no source-game or real-person names). 'mb' = MB-Lab character_data property (or meta:mass / meta:tone for the global transformations). Window / group structure follows the source games: WWE 2K22 Create-A-Superstar APPEARANCE -> Body (Body Type, Body Morphing per region) and Face (Face Deformation per region, Facial Parts eyes/eyebrows/nose/cheek/mouth/jaw/ears/eyelids/lips); region list from the WrestleMania XIX CAW FIGURE editor (crown/head/neck/shoulder/upperarm/forearm/hand/chest/waist/abdomen/thigh/calf/foot) — see sources.",
+  "sources": {
+    "WWE_FACEBODY": "customization/creation-suite-ui/js/menu-data.js MENU_SRC.WWE_FACEBODY + docs/research/WWE2K22-CREATION-SUITE-2026-10-23.md §2.2 Face (Face Template, Facial Parts eyes/eyebrows/nose/cheek/mouth/jaw/ears/eyelids/lips position+size, Face Deformation morph sliders per facial region) and §2.3 Body (Body Type, body morphing)",
+    "WMXIX_CAW": "customization/creation-suite-ui/js/menu-data.js MENU_SRC.WMXIX_CAW — FIGURE: per-region width/length/depth sliders crown/head/neck/shoulder/upperarm/forearm/hand/chest/waist/abdomen/thigh/calf/foot",
+    "WWE_CAW_TECH": "customization/wwe2k-caw/CAW-SUITE-BREAKDOWN.md §3 — base template + parametric morph targets; height/weight scale the skeleton (kept as the PROPORTIONS bone sliders)",
+    "T7_LAYOUT": "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md + packages/creation-suite/src/t7layout.js — category list left, live fighter preview, item/sub-window panel (window chrome)",
+    "MB_LAB": "MB-Lab 1.8.1 morph database (data/morphs/human_*_morphs.json, *_ca01_morphs.json; AGPL-3.0 database) baked headless by tools/mb-lab/bake_morph_templates.py"
+  },
+  "windows": [
+    {
+      "key": "body-morph",
+      "label": "Body Morphing",
+      "src": ["WWE_FACEBODY", "WMXIX_CAW", "WWE_CAW_TECH"],
+      "groups": [
+        { "key": "overall", "label": "Overall", "sliders": [
+          { "id": "b_weight", "label": "Weight", "mb": "meta:mass" },
+          { "id": "b_tone", "label": "Muscle Tone", "mb": "meta:tone" }
+        ]},
+        { "key": "neck", "label": "Head & Neck", "sliders": [
+          { "id": "b_head_size", "label": "Head Size", "mb": "Head_Size" },
+          { "id": "b_neck", "label": "Neck Thickness", "mb": "Neck_Size" },
+          { "id": "b_traps", "label": "Trapezius", "mb": "Neck_TrapeziousSize" }
+        ]},
+        { "key": "shoulder", "label": "Shoulders", "sliders": [
+          { "id": "b_shoulder_w", "label": "Shoulder Width", "mb": "Shoulders_SizeX" },
+          { "id": "b_shoulder", "label": "Shoulder Size", "mb": "Shoulders_Size" },
+          { "id": "b_delts", "label": "Shoulder Muscle", "mb": "Shoulders_Mass" }
+        ]},
+        { "key": "chest", "label": "Chest", "sliders": [
+          { "id": "b_chest", "label": "Chest Size", "mb": "Chest_Girth" },
+          { "id": "b_chest_w", "label": "Chest Width", "mb": "Chest_SizeX" },
+          { "id": "b_chest_d", "label": "Chest Depth", "mb": "Chest_SizeY" },
+          { "id": "b_pecs", "label": "Pectorals", "label_female": "Bust", "mb": "Torso_BreastMass" },
+          { "id": "b_lats", "label": "Back Width", "mb": "Torso_Dorsi" },
+          { "id": "b_vtaper", "label": "V-Taper", "mb": "Torso_Vshape" }
+        ]},
+        { "key": "upperarm", "label": "Upper Arms", "sliders": [
+          { "id": "b_upperarm", "label": "Upper Arm Size", "mb": "Arms_UpperarmGirth" },
+          { "id": "b_biceps", "label": "Upper Arm Muscle", "mb": "Arms_UpperarmMass" }
+        ]},
+        { "key": "forearm", "label": "Forearms & Hands", "sliders": [
+          { "id": "b_forearm", "label": "Forearm Size", "mb": "Arms_ForearmSize" },
+          { "id": "b_forearm_m", "label": "Forearm Muscle", "mb": "Arms_ForearmMass" },
+          { "id": "b_hands", "label": "Hand Size", "mb": "Hands_Size" }
+        ]},
+        { "key": "waist", "label": "Waist & Abdomen", "sliders": [
+          { "id": "b_waist", "label": "Waist", "mb": "Waist_Size" },
+          { "id": "b_belly", "label": "Belly", "mb": "Stomach_Volume" },
+          { "id": "b_belly_fat", "label": "Belly Fat", "mb": "Stomach_LocalFat" },
+          { "id": "b_abs", "label": "Abdominals", "mb": "Abdomen_Tone" }
+        ]},
+        { "key": "hips", "label": "Hips & Glutes", "sliders": [
+          { "id": "b_hips", "label": "Hips", "mb": "Pelvis_Girth" },
+          { "id": "b_hip_w", "label": "Hip Width", "mb": "Pelvis_SizeX" },
+          { "id": "b_glutes", "label": "Glutes", "mb": "Pelvis_GluteusSize" },
+          { "id": "b_glute_m", "label": "Glute Muscle", "mb": "Pelvis_GluteusMass" }
+        ]},
+        { "key": "thigh", "label": "Thighs", "sliders": [
+          { "id": "b_thigh", "label": "Thigh Size", "mb": "Legs_UpperThighGirth" },
+          { "id": "b_quads", "label": "Thigh Muscle", "mb": "Legs_UpperlegsMass" }
+        ]},
+        { "key": "calf", "label": "Calves & Feet", "sliders": [
+          { "id": "b_calf", "label": "Calf Size", "mb": "Legs_CalfGirth" },
+          { "id": "b_calf_m", "label": "Calf Muscle", "mb": "Legs_LowerlegsMass" },
+          { "id": "b_feet", "label": "Foot Size", "mb": "Feet_Size" }
+        ]}
+      ]
+    },
+    {
+      "key": "face-morph",
+      "label": "Face Deformation",
+      "src": ["WWE_FACEBODY"],
+      "groups": [
+        { "key": "shape", "label": "Face Shape", "sliders": [
+          { "id": "f_round", "label": "Round", "mb": "Face_Ellipsoid" },
+          { "id": "f_square", "label": "Square", "mb": "Face_Parallelepiped" },
+          { "id": "f_tri", "label": "Tapered", "mb": "Face_Triangle" },
+          { "id": "f_head_w", "label": "Head Width", "mb": "Head_SizeX" },
+          { "id": "f_head_h", "label": "Head Height", "mb": "Head_SizeZ" }
+        ]},
+        { "key": "forehead", "label": "Forehead", "sliders": [
+          { "id": "f_fh_height", "label": "Forehead Height", "mb": "Forehead_SizeZ" },
+          { "id": "f_fh_slope", "label": "Forehead Slope", "mb": "Forehead_Angle" },
+          { "id": "f_temples", "label": "Temples", "mb": "Forehead_Temple" }
+        ]},
+        { "key": "brows", "label": "Eyebrows", "sliders": [
+          { "id": "f_brow_h", "label": "Brow Height", "mb": "Eyebrows_PosZ" },
+          { "id": "f_brow_a", "label": "Brow Angle", "mb": "Eyebrows_Angle" },
+          { "id": "f_brow_ridge", "label": "Brow Ridge", "mb": "Eyebrows_Ridge" },
+          { "id": "f_brow_droop", "label": "Brow Droop", "mb": "Eyebrows_Droop" }
+        ]},
+        { "key": "eyes", "label": "Eyes", "sliders": [
+          { "id": "f_eye_size", "label": "Eye Size", "mb": "Eyes_Size" },
+          { "id": "f_eye_space", "label": "Eye Spacing", "mb": "Eyes_PosX" },
+          { "id": "f_eye_h", "label": "Eye Height", "mb": "Eyes_PosZ" },
+          { "id": "f_eye_tilt", "label": "Eye Tilt", "mb": "Eyes_OuterPosZ" },
+          { "id": "f_eye_open", "label": "Eye Opening", "mb": "Eyes_SizeZ" },
+          { "id": "f_eye_almond", "label": "Almond Shape", "mb": "Eyes_TypeAlmond" }
+        ]},
+        { "key": "lids", "label": "Eyelids", "sliders": [
+          { "id": "f_lid_crease", "label": "Lid Crease", "mb": "Eyelids_Crease" },
+          { "id": "f_lid_angle", "label": "Lid Angle", "mb": "Eyelids_Angle" },
+          { "id": "f_eye_bags", "label": "Under-Eye", "mb": "Eyes_BagSize" }
+        ]},
+        { "key": "nose", "label": "Nose", "sliders": [
+          { "id": "f_nose_w", "label": "Nose Width", "mb": "Nose_BaseSizeX" },
+          { "id": "f_nose_bridge", "label": "Bridge Width", "mb": "Nose_BridgeSizeX" },
+          { "id": "f_nose_curve", "label": "Bridge Curve", "mb": "Nose_Curve" },
+          { "id": "f_nose_depth", "label": "Nose Depth", "mb": "Nose_PosY" },
+          { "id": "f_nose_h", "label": "Nose Height", "mb": "Nose_BasePosZ" },
+          { "id": "f_nose_tip", "label": "Tip Size", "mb": "Nose_TipSize" },
+          { "id": "f_nose_tip_h", "label": "Tip Angle", "mb": "Nose_TipPosZ" },
+          { "id": "f_nostrils", "label": "Nostril Width", "mb": "Nose_NostrilSizeX" }
+        ]},
+        { "key": "cheeks", "label": "Cheeks", "sliders": [
+          { "id": "f_cheekbone", "label": "Cheekbones", "mb": "Cheeks_Zygom" },
+          { "id": "f_cheekbone_h", "label": "Cheekbone Height", "mb": "Cheeks_ZygomPosZ" },
+          { "id": "f_cheek_full", "label": "Cheek Fullness", "mb": "Cheeks_Mass" },
+          { "id": "f_cheek_hollow", "label": "Cheek Hollow", "mb": "Cheeks_InfraVolume" }
+        ]},
+        { "key": "mouth", "label": "Mouth", "sliders": [
+          { "id": "f_mouth_w", "label": "Mouth Width", "mb": "Mouth_SizeX" },
+          { "id": "f_mouth_h", "label": "Mouth Height", "mb": "Mouth_PosZ" },
+          { "id": "f_mouth_d", "label": "Mouth Depth", "mb": "Mouth_Protusion" },
+          { "id": "f_mouth_corner", "label": "Mouth Corners", "mb": "Mouth_CornersPosZ" }
+        ]},
+        { "key": "lips", "label": "Lips", "sliders": [
+          { "id": "f_lip_up", "label": "Upper Lip", "mb": "Mouth_UpperlipVolume" },
+          { "id": "f_lip_low", "label": "Lower Lip", "mb": "Mouth_LowerlipVolume" }
+        ]},
+        { "key": "jaw", "label": "Jaw", "sliders": [
+          { "id": "f_jaw_w", "label": "Jaw Width", "mb": "Jaw_ScaleX" },
+          { "id": "f_jaw_def", "label": "Jaw Definition", "mb": "Jaw_Prominence" },
+          { "id": "f_jaw_angle", "label": "Jaw Angle", "mb": "Jaw_Angle" },
+          { "id": "f_jaw_fwd", "label": "Jaw Forward", "mb": "Jaw_LocY" }
+        ]},
+        { "key": "chin", "label": "Chin", "sliders": [
+          { "id": "f_chin_proj", "label": "Chin Projection", "mb": "Chin_Prominence" },
+          { "id": "f_chin_w", "label": "Chin Width", "mb": "Chin_SizeX" },
+          { "id": "f_chin_h", "label": "Chin Height", "mb": "Chin_SizeZ" },
+          { "id": "f_chin_cleft", "label": "Chin Cleft", "mb": "Chin_Cleft" }
+        ]},
+        { "key": "ears", "label": "Ears", "sliders": [
+          { "id": "f_ear_size", "label": "Ear Size", "mb": "Ears_SizeZ" },
+          { "id": "f_ear_w", "label": "Ear Width", "mb": "Ears_SizeY" },
+          { "id": "f_ear_angle", "label": "Ear Angle", "mb": "Ears_RotX" },
+          { "id": "f_ear_h", "label": "Ear Height", "mb": "Ears_LocZ" },
+          { "id": "f_ear_lobe", "label": "Earlobe", "mb": "Ears_Lobe" }
+        ]}
+      ]
+    }
+  ]
+}

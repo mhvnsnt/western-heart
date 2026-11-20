@@ -1,0 +1,301 @@
+{
+  "2,1": {
+    "steps": [
+      {
+        "step": "2",
+        "prefix": "2",
+        "bank": "jin",
+        "bound_bank": "anna",
+        "row": null,
+        "status": "review",
+        "bank_verified_row": 220,
+        "candidate_row": 220,
+        "candidate_source": "recorded-path",
+        "reasons": [
+          "BANK-BLOCKED: gate-verified in jin bank (row 220) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 220 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 220."
+        ]
+      },
+      {
+        "step": "1",
+        "prefix": "2,1",
+        "bank": "jin",
+        "bound_bank": "anna",
+        "row": null,
+        "status": "review",
+        "bank_verified_row": 221,
+        "candidate_row": 221,
+        "candidate_source": "recorded-path",
+        "reasons": [
+          "BANK-BLOCKED: gate-verified in jin bank (row 221) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 221 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 221."
+        ]
+      }
+    ],
+    "string_status": "review-only",
+    "triage": "REVIEW",
+    "jumping_context": false,
+    "last_step_row": null,
+    "last_step_status": "review"
+  },
+  "2,1,2": {
+    "steps": [
+      {
+        "step": "2",
+        "prefix": "2",
+        "bank": "jin",
+        "bound_bank": "anna",
+        "row": null,
+        "status": "review",
+        "bank_verified_row": 220,
+        "candidate_row": 220,
+        "candidate_source": "recorded-path",
+        "reasons": [
+          "BANK-BLOCKED: gate-verified in jin bank (row 220) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 220 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 220."
+        ]
+      },
+      {
+        "step": "1",
+        "prefix": "2,1",
+        "bank": "jin",
+        "bound_bank": "anna",
+        "row": null,
+        "status": "review",
+        "bank_verified_row": 221,
+        "candidate_row": 221,
+        "candidate_source": "recorded-path",
+        "reasons": [
+          "BANK-BLOCKED: gate-verified in jin bank (row 221) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 221 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 221."
+        ]
+      },
+      {
+        "step": "2",
+        "prefix": "2,1,2",
+        "bank": "jin",
+        "bound_bank": "anna",
+        "row": null,
+        "status": "review",
+        "bank_verified_row": 222,
+        "candidate_row": 222,
+        "candidate_source": "recorded-path",
+        "reasons": [
+          "BANK-BLOCKED: gate-verified in jin bank (row 222) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 222 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 222."
+        ]
+      }
+    ],
+    "string_status": "review-only",
+    "triage": "REVIEW",
+    "jumping_context": false,
+    "last_step_row": null,
+    "last_step_status": "review"
+  },
+  "2,1,2,2": {
+    "steps": [
+      {
+        "step": "2",
+        "prefix": "2",
+        "bank": "jin",
+        "bound_bank": "anna",
+        "row": null,
+        "status": "review",
+        "bank_verified_row": 220,
+        "candidate_row": 220,
+        "candidate_source": "prefix-move",
+        "reasons": [
+          "BANK-BLOCKED: gate-verified in jin bank (row 220) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 220 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 220."
+        ]
+      },
+      {
+        "step": "1",
+        "prefix": "2,1",
+        "bank": "jin",
+        "bound_bank": "anna",
+        "row": null,
+        "status": "review",
+        "bank_verified_row": 221,
+        "candidate_row": 221,
+        "candidate_source": "prefix-move",
+        "reasons": [
+          "BANK-BLOCKED: gate-verified in jin bank (row 221) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 221 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 221."
+        ]
+      },
+      {
+        "step": "2",
+        "prefix": "2,1,2",
+        "bank": "jin",
+        "bound_bank": "anna",
+        "row": null,
+        "status": "review",
+        "bank_verified_row": 222,
+        "candidate_row": 222,
+        "candidate_source": "prefix-move",
+        "reasons": [
+          "BANK-BLOCKED: gate-verified in jin bank (row 222) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 222 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 222."
+        ]
+      },
+      {
+        "step": "2",
+        "prefix": "2,1,2,2",
+        "bank": "jin",
+        "bound_bank": "anna",
+        "row": null,
+        "status": "review",
+        "bank_verified_row": 223,
+        "candidate_row": 223,
+        "candidate_source": "recorded-dest",
+        "reasons": [
+          "BANK-BLOCKED: gate-verified in jin bank (row 223) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 223 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 223."
+        ]
+      }
+    ],
+    "string_status": "review-only",
+    "triage": "REVIEW",
+    "jumping_context": false,
+    "last_step_row": null,
+    "last_step_status": "review"
+  },
+  "b+1+2,1": {
+    "steps": [
+      {
+        "step": "b+1+2",
+        "prefix": "b+1+2",
+        "bank": null,
+        "bound_bank": "anna",
+        "row": null,
+        "status": "unmapped",
+        "bank_verified_row": null,
+        "candidate_row": null,
+        "candidate_source": null,
+        "reasons": [
+          "no candidate row (recorded path + prefix move both absent)"
+        ]
+      },
+      {
+        "step": "1",
+        "prefix": "b+1+2,1",
+        "bank": "anna",
+        "bound_bank": "anna",
+        "row": 355,
+        "status": "verified",
+        "bank_verified_row": null,
+        "candidate_row": 355,
+        "candidate_source": "prefix-move",
+        "reasons": []
+      }
+    ],
+    "string_status": "partial",
+    "triage": "REVIEW",
+    "jumping_context": false,
+    "last_step_row": 355,
+    "last_step_status": "verified"
+  },
+  "d/f+1+2,2": {
+    "steps": [
+      {
+        "step": "d/f+1+2",
+        "prefix": "d/f+1+2",
+        "bank": "jin",
+        "bound_bank": "anna",
+        "row": null,
+        "status": "unmapped",
+        "bank_verified_row": null,
+        "candidate_row": 117,
+        "candidate_source": "prefix-move",
+        "reasons": [
+          "throw flag 1 (row is a throw row)"
+        ]
+      },
+      {
+        "step": "2",
+        "prefix": "d/f+1+2,2",
+        "bank": "anna",
+        "bound_bank": "anna",
+        "row": 174,
+        "status": "verified",
+        "bank_verified_row": null,
+        "candidate_row": 174,
+        "candidate_source": "prefix-move",
+        "reasons": [
+          "GATE-NOTE: standing row verified for crouch-context step (demonio Batch 1 / diablo Batch 1 precedent \u2014 re-adjudicate if the gate is ever tightened)"
+        ]
+      }
+    ],
+    "string_status": "partial",
+    "triage": "REVIEW",
+    "jumping_context": false,
+    "last_step_row": 174,
+    "last_step_status": "verified"
+  },
+  "1,2": {
+    "steps": [
+      {
+        "step": "1",
+        "prefix": "1",
+        "bank": "jin",
+        "bound_bank": "anna",
+        "row": null,
+        "status": "unmapped",
+        "bank_verified_row": null,
+        "candidate_row": 248,
+        "candidate_source": "recorded-path",
+        "reasons": [
+          "button 12 != step bits 1 (jin bank)"
+        ]
+      },
+      {
+        "step": "2",
+        "prefix": "1,2",
+        "bank": "jin",
+        "bound_bank": "anna",
+        "row": null,
+        "status": "review",
+        "bank_verified_row": 249,
+        "candidate_row": 249,
+        "candidate_source": "recorded-path",
+        "reasons": [
+          "BANK-BLOCKED: gate-verified in jin bank (row 249) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 249 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 249."
+        ]
+      }
+    ],
+    "string_status": "partial",
+    "triage": "REVIEW",
+    "jumping_context": false,
+    "last_step_row": null,
+    "last_step_status": "review"
+  },
+  "u+1,1": {
+    "steps": [
+      {
+        "step": "u+1",
+        "prefix": "u+1",
+        "bank": null,
+        "bound_bank": "anna",
+        "row": null,
+        "status": "unmapped",
+        "bank_verified_row": null,
+        "candidate_row": null,
+        "candidate_source": null,
+        "reasons": [
+          "no candidate row (recorded path + prefix move both absent)"
+        ]
+      },
+      {
+        "step": "1",
+        "prefix": "u+1,1",
+        "bank": "anna",
+        "bound_bank": "anna",
+        "row": 32,
+        "status": "verified",
+        "bank_verified_row": null,
+        "candidate_row": 32,
+        "candidate_source": "prefix-move",
+        "reasons": [
+          "SOFT gate waived (jump context)"
+        ]
+      }
+    ],
+    "string_status": "partial",
+    "triage": "REVIEW",
+    "jumping_context": true,
+    "last_step_row": 32,
+    "last_step_status": "verified"
+  }
+}

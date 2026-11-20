@@ -1,0 +1,33 @@
+{
+ "game": "Yakuza Kiwami (Legacy)",
+ "ownership_basis": "Steam snapshot: owned (Kiwami 26.7h; Kiwami 2 19 min + owned-no-playtime entry; Yakuza 0 owned-no-playtime)",
+ "status": "spec-only — no game files were accessible from this VM (phone-only user, Steam remote download unreachable); this pack is the teardown path + conversion/wire schema, NOT extracted commercial assets",
+ "teardown_toolchain": [
+  "Ryu Mod Manager / RyuModManagerCLI + ModLoadOrder for mod loading",
+  "ParTool / PARC Archive Importer (.par: chara, hact heat-action archives)",
+  "GMD Blender plugin (SutandoTsukai181 / TheTurboTurnip) for .gmd skinned models",
+  "CriPakTools for bgm.cpk → .hca audio; Eternity Audio Tool / vgmstream for .hca → .wav",
+  "AuthEdit, HactBridge, PibView, Fightercommander, CMN Editor (community toolchain cited by Kiwami mod credits)"
+ ],
+ "extractable": [
+  "Heat actions (hact.par) → WH finisher-adjacent systems: context-gated heavy attacks, NOT one-hit kills, Tekken-style complex inputs",
+  "Style/stance sets: Brawler / Rush / Beast / Dragon (Kiwami) as stance-variant templates — each stance changes the LP1/RP2/LK3/RK4 string set",
+  "Adventure structure: hub city, side stories, minigames, progression → Heart and Mind Within mode structure",
+  "City/stage dressing, music (bgm.cpk) as arena/audio reference"
+ ],
+ "wh_wire": {
+  "combat": "Stance-variant string sets; heat actions gated like KESSHOU gates (meter + victim HP window), never one-button",
+  "creation": "Street/city outfit parts as creation-suite dressing (canon-renamed)",
+  "stages": "Kamurocho-style hub/street arenas for Heart and Mind Within",
+  "audio": "bgm.cpk track list → arena music rotation (canon-renamed)",
+  "systems": "Heat meter pattern → Nine-Soul meter design reference; adventure hub structure → Heart and Mind Within"
+ },
+ "blocker": "No local game install is reachable from this VM and no game files were supplied with this task. Steam remote download previously reported 'Unable to reach your PC'; user rule is phone-only, no PC paths.",
+ "unblock": "On a machine with the owned game installed: run the toolchain below against the installed files, export to the WH schema in this pack, and drop converted (non-commercial-name) data under game/assets/pulls/<slug>/ as a follow-up PR. Raw commercial files go ONLY in the PRIVATE game-reverse-engineering repo, never in public western-heart.",
+ "canon_rule": "Anything brought in with another game's name is renamed to Eastern Mind / Western Heart canon in user-facing writing. Tekken/proprietary names stay in technical files only. Game ships with NO famous names. All characters adults. User's own models (Tripo + SmutBase) display FIRST; Tekken models are back-slot attires. Sole exception: Pantera Attire 1 (user-customized King reskin).",
+ "combat_inputs": "LP1=Left Punch=Tekken 1, RP2=Right Punch=Tekken 2, LK3=Left Kick=Tekken 3, RK4=Right Kick=Tekken 4. Frame data / MOD damage: UNMAPPED unless a source file in this pack contains it — never estimated as measured.",
+ "community_sources": [
+  "https://steamcommunity.com/sharedfiles/filedetails/?l=greek&id=2813243580",
+  "https://www.nexusmods.com/yakuzakiwami/mods/585"
+ ]
+}

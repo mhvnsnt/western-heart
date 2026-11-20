@@ -1,0 +1,50 @@
+{
+  "format": "wh-anim-sets/1",
+  "bank": "law",
+  "source_priority": "TTT2 PRIMARY (pending extraction) > T5/T6 > T3 FALLBACK — THIS BANK IS T3-FALLBACK, PROVISIONAL",
+  "provenance": {
+    "status": "PROVISIONAL — T3 fallback",
+    "source": "teardown/tekken3/animations/divmot01_law.bin (owner's Tekken 3 disc teardown)",
+    "why_t3": "TTT2 Law motion data not yet extracted (TTT2 teardown ~15% — STFS extraction pending). Per owner source-priority law (2026-10-23): TTT2 first, T5/T6 next, T3 last. This bank stands in until the extraction lane delivers TTT2 Law.",
+    "backfill": "When TTT2 Law motion lands, re-bake this bank from the TTT2 source and demote these clips to archive. Gap filed in docs/decisions/2026-10-23-law-pull-buffalo-bill.md."
+  },
+  "lock": "SHOW-ANIMATION LOCK (owner 2026-10-23): show animations and fight moves are SEPARATE LOCKED SETS. SHOW clips (win/intro/taunt/cutscene) go to intros/cutscenes ONLY and must NEVER enter a fighter's moveset without the user's explicit approval. FIGHT clips (moveset moves, combat stances) go in the moveset/combat bank. The game-code lock enforces this via the anim_set tag on each clip.",
+  "FIGHT": [
+    "t3_backdash.json",
+    "t3_block.json",
+    "t3_block_b.json",
+    "t3_crouch.json",
+    "t3_crouch_hold.json",
+    "t3_dash_fwd.json",
+    "t3_grab.json",
+    "t3_heavy.json",
+    "t3_hit.json",
+    "t3_hit_launch.json",
+    "t3_jump_back.json",
+    "t3_jump_fwd.json",
+    "t3_jump_up.json",
+    "t3_ko.json",
+    "t3_light.json",
+    "t3_medium.json",
+    "t3_neutral.json",
+    "t3_sidestep_a.json",
+    "t3_sidestep_b.json",
+    "t3_sidestep_c.json",
+    "t3_sidestep_d.json",
+    "t3_walk_back.json",
+    "t3_walk_fwd.json"
+  ],
+  "SHOW": [
+    "t3_stance.json",
+    "t3_stance_b.json",
+    "t3_stance_c.json",
+    "t3_win_lk.json",
+    "t3_win_lp.json",
+    "t3_win_rk.json",
+    "t3_win_rp.json"
+  ],
+  "shared": [
+    "skeleton.json"
+  ],
+  "note": "rows.pack.json holds per-move FIGHT clips only (built from moveset t3_row refs); SHOW rows (449-455) appear in no moveset and no pack."
+}

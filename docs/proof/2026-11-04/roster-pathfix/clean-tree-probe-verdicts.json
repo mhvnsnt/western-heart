@@ -1,0 +1,462 @@
+{
+ "tree": "clean tree assembled from mhvnsnt/western-heart main fa150d8e80ad801b1c294588f42c4bfd69415544 tree listings; every file placed only after git-blob SHA-1 verification (audit: 3513 desired / 0 missing / 0 bad); zero manual placements; served locally on :8799",
+ "method": "identity-gated BASICS probe (p1.char.id + roundState fight), roster_main.py harness identical to PR #1559 roster pass; verdicts classified with the roster pass rules (assemble_verdicts.py classify())",
+ "fighters": [
+  {
+   "fighter": "thor",
+   "gate": {
+    "id": "thor",
+    "rs": "fight"
+   },
+   "setup": {
+    "p1": "thor",
+    "p2": "pantera",
+    "bank": null
+   },
+   "probe": [
+    {
+     "input": "1",
+     "press": "true",
+     "row": null,
+     "dmg": 8.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "2",
+     "press": "true",
+     "row": null,
+     "dmg": 11,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "3",
+     "press": "true",
+     "row": null,
+     "dmg": 13.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "4",
+     "press": "true",
+     "row": null,
+     "dmg": 38.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "1+2",
+     "press": "true",
+     "row": null,
+     "dmg": 19.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "d/f+1",
+     "press": "true",
+     "row": null,
+     "dmg": 8.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "d+1",
+     "press": "true",
+     "row": null,
+     "dmg": 20.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "d/f+2",
+     "press": "true",
+     "row": null,
+     "dmg": 8.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "u/f+4",
+     "press": "true",
+     "row": null,
+     "dmg": 19.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "1+3",
+     "press": "true",
+     "row": null,
+     "dmg": 19.3,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true,
+     "verdict": "throw connects (damage)"
+    }
+   ]
+  },
+  {
+   "fighter": "cyborgx",
+   "gate": {
+    "id": "cyborgx",
+    "rs": "fight"
+   },
+   "setup": {
+    "p1": "cyborgx",
+    "p2": "pantera",
+    "bank": null
+   },
+   "probe": [
+    {
+     "input": "1",
+     "press": "true",
+     "row": null,
+     "dmg": 2.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "2",
+     "press": "true",
+     "row": null,
+     "dmg": 5.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "3",
+     "press": "true",
+     "row": null,
+     "dmg": 5.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "4",
+     "press": "true",
+     "row": null,
+     "dmg": 23.9,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "1+2",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": null,
+     "verdict": "fires-no-damage"
+    },
+    {
+     "input": "d/f+1",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "fires-no-damage"
+    },
+    {
+     "input": "d+1",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "fires-no-damage"
+    },
+    {
+     "input": "d/f+2",
+     "press": "true",
+     "row": null,
+     "dmg": 14.7,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "u/f+4",
+     "press": "true",
+     "row": null,
+     "dmg": 7.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "1+3",
+     "press": "true",
+     "row": null,
+     "dmg": 17.4,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true,
+     "verdict": "throw connects (damage)"
+    }
+   ]
+  },
+  {
+   "fighter": "mariposa-monarch",
+   "gate": {
+    "id": "mariposa-monarch",
+    "rs": "fight"
+   },
+   "setup": {
+    "p1": "mariposa-monarch",
+    "p2": "pantera",
+    "bank": null
+   },
+   "probe": [
+    {
+     "input": "1",
+     "press": "true",
+     "row": null,
+     "dmg": 2.2,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "2",
+     "press": "true",
+     "row": null,
+     "dmg": 3.7,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "3",
+     "press": "true",
+     "row": null,
+     "dmg": 8.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "4",
+     "press": "true",
+     "row": null,
+     "dmg": 22.1,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "1+2",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "fires-no-damage"
+    },
+    {
+     "input": "d/f+1",
+     "press": "true",
+     "row": null,
+     "dmg": 5.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "d+1",
+     "press": "true",
+     "row": null,
+     "dmg": 5.5,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "d/f+2",
+     "press": "true",
+     "row": null,
+     "dmg": 14.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "u/f+4",
+     "press": "true",
+     "row": null,
+     "dmg": 7.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "1+3",
+     "press": "true",
+     "row": null,
+     "dmg": 17.4,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true,
+     "verdict": "throw connects (damage)"
+    }
+   ]
+  },
+  {
+   "fighter": "buffalo-bill",
+   "gate": {
+    "id": "buffalo-bill",
+    "rs": "fight"
+   },
+   "setup": {
+    "p1": "buffalo-bill",
+    "p2": "pantera",
+    "bank": null
+   },
+   "probe": [
+    {
+     "input": "1",
+     "press": "true",
+     "row": null,
+     "dmg": 2.8,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "2",
+     "press": "true",
+     "row": null,
+     "dmg": 3.7,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "3",
+     "press": "true",
+     "row": null,
+     "dmg": 6.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "4",
+     "press": "true",
+     "row": null,
+     "dmg": 7.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "1+2",
+     "press": "true",
+     "row": null,
+     "dmg": 10.1,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "d/f+1",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "fires-no-damage"
+    },
+    {
+     "input": "d+1",
+     "press": "true",
+     "row": null,
+     "dmg": 7.3,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "d/f+2",
+     "press": "true",
+     "row": null,
+     "dmg": 14.4,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "correct"
+    },
+    {
+     "input": "u/f+4",
+     "press": "true",
+     "row": null,
+     "dmg": 0,
+     "sawThrow": false,
+     "atkName": null,
+     "isGrab": false,
+     "verdict": "fires-no-damage"
+    },
+    {
+     "input": "1+3",
+     "press": "true",
+     "row": null,
+     "dmg": 17.4,
+     "sawThrow": true,
+     "atkName": "1+3",
+     "isGrab": true,
+     "verdict": "throw connects (damage)"
+    }
+   ]
+  }
+ ]
+}

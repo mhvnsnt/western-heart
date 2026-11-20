@@ -1,0 +1,29 @@
+{
+ "model": "roster/kuma/attires/attire1/source/gashadokuro-a1-rigged.glb",
+ "source": "roster/kuma/attires/attire1/source/kuma-a1.glb (his own Tripo static, blob a6acba6d)",
+ "pipeline": "tools/auto_rig refit path: gltf_codec decode -> refit_skeleton (pantera 49-joint template) -> refit_landmarks -> measured fit correction (16 joints, slice centroids; TW channel all-zero let the tail pollute the automatic leg windows) -> heat_rebind (Blender bone heat via voxel proxy 0.006 m / 80k faces, CMU 135_04 gate clip baked) -> head_territory -> gltf_codec encode",
+ "skeleton": "50 joints, canonical WH names (pantera template set + restored finger mirrors)",
+ "height_m": 1.95,
+ "height_anchor": "aotsuki (same bear-bank family, Panda 277 cm) authored ~1.95 m in file; gashadokuro canon entry 280 cm (game/data/canon-sizing.js, apply:false)",
+ "validate_py": {
+  "pass": true,
+  "height_m": 1.95,
+  "foot_y": 0.0,
+  "fingers_symmetric": true
+ },
+ "anim_check_official_cmuboxing": {
+  "edge_stretch_p999": 3.29,
+  "max": 5.059,
+  "gate": 2.5,
+  "pass": false,
+  "note": "stress-clip ratio gate; shipped-fighter baseline aotsuki = 1.784 on the same clip. Absolute elongations stay small: rig_inspect stretch median over-2x elongation 5.35 mm, p90 11.28 mm on a 1.95 m model (v2 bake). Tearing spikes 40, all RightFoot kick-motion class - the same count the shipped aotsuki rig shows; refit_rig.py documents 30-80 foot spikes on every rig under this clip (root pinned, feet swung = motion, not tears)."
+ },
+ "rig_inspect_seams": {
+  "pass": true,
+  "copies_disagreeing_over_0.01": 0
+ },
+ "head_pivot": "Head joint at mid-skull (fit 0.710, 0.155) after the skull-base pivot (0.605, 0.140) made portrait-capture frame a ~0.22 m window (Head-Hips metric) that cropped the skull out of his first card (gashadokuro-card-v1-misframed.png)",
+ "tail": "no tail bones in the template set; tail verts heat-weight to Hips/Spine and ride the pelvis (posed renders + fight stills show it following cleanly). secondary_chains.py was run and REJECTED for this model: it mis-detected the dorsal plates + back + tail as long hair (576,593 verts, 6 strands rooted on Head, chain tails below the floor) - the refit fail-safe path (unmodified territory output) was used instead",
+ "secondary_chains": "rejected (mis-detect, see tail note)",
+ "seam_safe_smooth": "not in the shipped path: two solo runs on this 8 GB VM died silently mid-rounds (OOM-class, concurrent with other lanes' RAM work); the smoother's own log showed strict p99.9 plateauing 5.104 -> 4.395 over 18 rounds on the v1 bake - recorded honestly rather than retried indefinitely"
+}

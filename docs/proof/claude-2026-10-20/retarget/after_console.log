@@ -1,0 +1,18 @@
+[warning] [WH] No custom fighter found in either suite slot
+[log] [WH] stage loaded: SHRINE OF THE BLADE (shrine)
+[log] [WH] Real T3 movesets loaded for 36 fighters (7 T3 sources)
+[log] [WH] Per-fighter movesets wired: 77 fighters
+[error] Failed to load resource: the server responded with a status of 404 (File not found)
+[log] [WH-T3] bank 'king': loaded 18/18 real T3 clips
+[log] [WH-T3] bank 'jin': loaded 18/18 real T3 clips
+[log] [WH] Fighter pantera: 18 real T3 actions from bank 'king' (retargeted onto pantera)
+[log] [WH] Fighter rin: 18 real T3 actions from bank 'jin' (retargeted onto steve-fox)
+[log] [WH] stage loaded: SHRINE OF THE BLADE (shrine)
+STATE 0 {"p1":{"id":"pantera","model":"pantera","st":"walk","atk":null,"hipsY":0.98,"headY":1.49,"t3":18,"cur":"t3_king_walkFwd@pantera"},"p2":{"id":"rin","model":"steve-fox","st":"walk","atk":null,"hipsY":0.99,"headY":1.49,"t3":18,"cur":"t3_jin_walkFwd@steve-fox"},"round":"fight"}
+STATE 1 {"p1":{"id":"pantera","model":"pantera","st":"walk","atk":null,"hipsY":0.99,"headY":1.5,"t3":18,"cur":"t3_king_walkFwd@pantera"},"p2":{"id":"rin","model":"steve-fox","st":"walk","atk":null,"hipsY":1,"headY":1.5,"t3":18,"cur":"t3_jin_walkFwd@steve-fox"},"round":"fight"}
+STATE 2 {"p1":{"id":"pantera","model":"pantera","st":"walk","atk":null,"hipsY":1.02,"headY":1.53,"t3":18,"cur":"t3_king_walkFwd@pantera"},"p2":{"id":"rin","model":"steve-fox","st":"walk","atk":null,"hipsY":1.03,"headY":1.54,"t3":18,"cur":"t3_jin_walkFwd@steve-fox"},"round":"fight"}
+STATE 3 {"p1":{"id":"pantera","model":"pantera","st":"dodge","atk":null,"hipsY":1,"headY":1.51,"t3":18,"cur":"t3_king_backdash@pantera"},"p2":{"id":"rin","model":"steve-fox","st":"attack","atk":"1","hipsY":0.88,"headY":1.38,"t3":18,"cur":"t3_jin_light@steve-fox"},"round":"fight"}
+STATE 4 {"p1":{"id":"pantera","model":"pantera","st":"dodge","atk":null,"hipsY":1.01,"headY":1.52,"t3":18,"cur":"t3_king_backdash@pantera"},"p2":{"id":"rin","model":"steve-fox","st":"attack","atk":"1","hipsY":1.07,"headY":1.4,"t3":18,"cur":"t3_jin_light@steve-fox"},"round":"fight"}
+STATE 5 {"p1":{"id":"pantera","model":"pantera","st":"walk","atk":null,"hipsY":0.98,"headY":1.48,"t3":18,"cur":"t3_king_walkFwd@pantera"},"p2":{"id":"rin","model":"steve-fox","st":"attack","atk":"1","hipsY":1.06,"headY":1.45,"t3":18,"cur":"t3_jin_light@steve-fox"},"round":"fight"}
+STATE 6 {"p1":{"id":"pantera","model":"pantera","st":"attack","atk":"4","hipsY":0.86,"headY":1.31,"t3":18,"cur":"t3_king_medium@pantera"},"p2":{"id":"rin","model":"steve-fox","st":"block","atk":null,"hipsY":0.99,"headY":1.49,"t3":18,"cur":"t3_jin_block@steve-fox"},"round":"fight"}
+STATE 7 {"p1":{"id":"pantera","model":"pantera","st":"attack","atk":"4","hipsY":0.95,"headY":1.4,"t3":18,"cur":"t3_king_medium@pantera"},"p2":{"id":"rin","model":"steve-fox","st":"idle","atk":null,"hipsY":1.06,"headY":1.57,"t3":18,"cur":"t3_jin_stance@steve-fox"},"round":"fight"}

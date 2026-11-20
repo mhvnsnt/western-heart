@@ -1,0 +1,17 @@
+{
+ "format": "western-heart dw-lut-gym-scan v1",
+ "source": "TK5DATA1.BIN via PS2 LUT (Code blob TABLESTART 0x0027B5B0), Internet Archive item slus-210.59.-tekken-5",
+ "method": "first 2048 bytes per LUT entry, range-fetch + discard; GYM1 magic at offset 64, raw then sector-cipher (seed = entry index)",
+ "note": "No entry can be attributed to one of the 6 missing DW files by name: their names appear nowhere in TK5DATA1 (0 gym_ hits in the full string stream-scan) and the index records no sizes.",
+ "summary": {
+  "entries": 1571,
+  "skipped": 237,
+  "fetch_errors": 0,
+  "not_gym": 1334,
+  "gym": 0,
+  "gym_raw": 0,
+  "gym_encrypted": 0
+ },
+ "gym_entries": [],
+ "fetch_errors": []
+}

@@ -1,0 +1,3557 @@
+{
+ "schema": "ttt2-moveset-v1",
+ "source_game": "Tekken Tag Tournament 2",
+ "character": "King",
+ "bxml_prefix": "kin",
+ "bxml_doc": 3,
+ "mvlt_list": 4,
+ "provenance": {
+  "source_archive": "release ttt2-7z-v1 (mhvnsnt/western-heart)",
+  "pull_tool": "tools/ttt2_virtual_god.py --pull",
+  "pulled_file": "data018.bin",
+  "pulled_bytes": 557332,
+  "pulled_sha256": "7e06ad5336374973bf8f637b898c975585226fc7a260a730ad981365b2056db4",
+  "decoded_file": "decoded-data018.bin",
+  "decoded_bytes": 3027808,
+  "decoded_sha256": "54db09ebc63ee1a05a7b1c00cc2d7b5528d0d97c6ed1949da805daac7709293e",
+  "parser": "teardown/tekken-tag-tournament-2 tools: parse_mvlt_v4.py (authoritative; v1/v2/v3 superseded)",
+  "converter": "convert_mvlt_notation.py (empirical glyph map; see MVLT-GLYPH-MAP-20261030.md)",
+  "note": "Derived data only. No game binaries committed (western-heart AGENTS.md rule 8). Bins stay reproducible from release ttt2-7z-v1."
+ },
+ "counts": {
+  "records": 194,
+  "moves": 181,
+  "sample_combos": 7,
+  "separators": 6
+ },
+ "records": [
+  {
+   "row": 0,
+   "name": "Palm Attack",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2",
+   "notation_std": "1, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kin:row:0",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 0
+  },
+  {
+   "row": 1,
+   "name": "Palm Strike to Head Jammer",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2, 2+4",
+   "notation_std": "1, 2, 2+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:1",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 1
+  },
+  {
+   "row": 2,
+   "name": "Palm Strike to Jumping Power Bomb",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2, d+2+4",
+   "notation_std": "1, 2, d+2+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe001",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:2",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 2
+  },
+  {
+   "row": 3,
+   "name": "Palm Attack to Uppercut",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2, 1",
+   "notation_std": "1, 2, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kin:row:3",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 3
+  },
+  {
+   "row": 4,
+   "name": "Palm Upper to Suplex",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2, 1, 2+4",
+   "notation_std": "1, 2, 1, 2+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe015",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:4",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 4
+  },
+  {
+   "row": 5,
+   "name": "Palm Upper to Jumping Power Bomb",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2, 1, d+2+4",
+   "notation_std": "1, 2, 1, d+2+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe015",
+    "0xe001",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:5",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 5
+  },
+  {
+   "row": 6,
+   "name": "Jab Uppercut",
+   "kind": "move",
+   "section": null,
+   "notation": "2, 1",
+   "notation_std": "2, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kin:row:6",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 6
+  },
+  {
+   "row": 7,
+   "name": "Head Spinner",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2, 1",
+   "notation_std": "1+2, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kin:row:7",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 7
+  },
+  {
+   "row": 8,
+   "name": "Brutal Sting",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2, 3",
+   "notation_std": "1+2, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:kin:row:8",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 8
+  },
+  {
+   "row": 9,
+   "name": "Jaguar Step",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:kin:row:9",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 9
+  },
+  {
+   "row": 10,
+   "name": "Reverse Jaguar Step",
+   "kind": "move",
+   "section": null,
+   "notation": "b+3+4",
+   "notation_std": "b+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:kin:row:10",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 10
+  },
+  {
+   "row": 11,
+   "name": "Jaguar Step to Hook",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4, 1",
+   "notation_std": "3+4, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kin:row:11",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 11
+  },
+  {
+   "row": 12,
+   "name": "Jaguar Step to Elbow",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4, 2",
+   "notation_std": "3+4, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kin:row:12",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 12
+  },
+  {
+   "row": 13,
+   "name": "Jaguar Step to Sobat",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4, 3",
+   "notation_std": "3+4, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:kin:row:13",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 13
+  },
+  {
+   "row": 14,
+   "name": "Jaguar Step to Sobat & Press",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4, 3, 2+3",
+   "notation_std": "3+4, 3, 2+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020",
+    "0xe018",
+    "0xe01a"
+   ],
+   "anim_ref": "ttt2:kin:row:14",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 14
+  },
+  {
+   "row": 15,
+   "name": "Jaguar Step to High Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4, 4",
+   "notation_std": "3+4, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kin:row:15",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 15
+  },
+  {
+   "row": 16,
+   "name": "Jaguar Step to Mid Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4, d/f+4",
+   "notation_std": "3+4, d/f+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020",
+    "0xe002",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kin:row:16",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 16
+  },
+  {
+   "row": 17,
+   "name": "Moonsault Body Press",
+   "kind": "move",
+   "section": null,
+   "notation": "1+4",
+   "notation_std": "1+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01d"
+   ],
+   "anim_ref": "ttt2:kin:row:17",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 17
+  },
+  {
+   "row": 18,
+   "name": "Striking Elbow Rush",
+   "kind": "move",
+   "section": null,
+   "notation": "f+2, 2, 1",
+   "notation_std": "f+2, 2, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe016",
+    "0xe016",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kin:row:18",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 18
+  },
+  {
+   "row": 19,
+   "name": "Rolling Elbow Rush",
+   "kind": "move",
+   "section": null,
+   "notation": "f+2, 2, 2",
+   "notation_std": "f+2, 2, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe016",
+    "0xe016",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kin:row:19",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 19
+  },
+  {
+   "row": 20,
+   "name": "Front Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "f+3",
+   "notation_std": "f+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:kin:row:20",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 20
+  },
+  {
+   "row": 21,
+   "name": "Front Kick to DDT",
+   "kind": "move",
+   "section": null,
+   "notation": "f+3, 1+2",
+   "notation_std": "f+3, 1+2",
+   "condition_text": "during hit from front",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe018",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:21",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 21
+  },
+  {
+   "row": 22,
+   "name": "Rolling Sobat",
+   "kind": "move",
+   "section": null,
+   "notation": "f+4",
+   "notation_std": "f+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kin:row:22",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 22
+  },
+  {
+   "row": 23,
+   "name": "Shadow Lariat",
+   "kind": "move",
+   "section": null,
+   "notation": "f+1+2",
+   "notation_std": "f+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:23",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 23
+  },
+  {
+   "row": 24,
+   "name": "Jaguar Lariat",
+   "kind": "move",
+   "section": null,
+   "notation": "f+1+2",
+   "notation_std": "f+1+2",
+   "condition_text": "Hold",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:24",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 24
+  },
+  {
+   "row": 25,
+   "name": "Exploder",
+   "kind": "move",
+   "section": null,
+   "notation": "f+3+4",
+   "notation_std": "f+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:kin:row:25",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 25
+  },
+  {
+   "row": 26,
+   "name": "Body Check",
+   "kind": "move",
+   "section": null,
+   "notation": "f+1+4",
+   "notation_std": "f+1+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01d"
+   ],
+   "anim_ref": "ttt2:kin:row:26",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 26
+  },
+  {
+   "row": 27,
+   "name": "Shoulder Tackle",
+   "kind": "move",
+   "section": null,
+   "notation": "f+2+3",
+   "notation_std": "f+2+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01a"
+   ],
+   "anim_ref": "ttt2:kin:row:27",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 27
+  },
+  {
+   "row": 28,
+   "name": "Elbow Sting",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+1, 2",
+   "notation_std": "d/f+1, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kin:row:28",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 28
+  },
+  {
+   "row": 29,
+   "name": "Smashing Hook",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+2",
+   "notation_std": "d/f+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kin:row:29",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 29
+  },
+  {
+   "row": 30,
+   "name": "Double Hook Disaster",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+2, 1",
+   "notation_std": "d/f+2, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe016",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kin:row:30",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 30
+  },
+  {
+   "row": 31,
+   "name": "Lasso Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+3, 4",
+   "notation_std": "d/f+3, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kin:row:31",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 31
+  },
+  {
+   "row": 32,
+   "name": "Mincer",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+4, 3, 4",
+   "notation_std": "d/f+4, 3, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe01c",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kin:row:32",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 32
+  },
+  {
+   "row": 33,
+   "name": "Mincer Low",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+4, 3, d+4",
+   "notation_std": "d/f+4, 3, d+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe01c",
+    "0xe018",
+    "0xe001",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kin:row:33",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 33
+  },
+  {
+   "row": 34,
+   "name": "Frankensteiner",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+3+4",
+   "notation_std": "d/f+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:kin:row:34",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 34
+  },
+  {
+   "row": 35,
+   "name": "Jab Uppercut",
+   "kind": "move",
+   "section": null,
+   "notation": "d+1, 2",
+   "notation_std": "d+1, 2",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kin:row:35",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 35
+  },
+  {
+   "row": 36,
+   "name": "Atlas' Hammer",
+   "kind": "move",
+   "section": null,
+   "notation": "d+1+2",
+   "notation_std": "d+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:36",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 36
+  },
+  {
+   "row": 37,
+   "name": "Stagger Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "d+3+4, 4, 4",
+   "notation_std": "d+3+4, 4, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe020",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kin:row:37",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 37
+  },
+  {
+   "row": 38,
+   "name": "Stagger Kicks",
+   "kind": "move",
+   "section": null,
+   "notation": "d+3+4, 4, 4, 4",
+   "notation_std": "d+3+4, 4, 4, 4",
+   "condition_text": "During Counter Hit",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe020",
+    "0xe01c",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kin:row:38",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 38
+  },
+  {
+   "row": 39,
+   "name": "Stagger Kick Spinning Uppercut",
+   "kind": "move",
+   "section": null,
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "During Stagger Kick",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kin:row:39",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 39
+  },
+  {
+   "row": 40,
+   "name": "Corporate Elbow",
+   "kind": "move",
+   "section": null,
+   "notation": "d+2+3",
+   "notation_std": "d+2+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe01a"
+   ],
+   "anim_ref": "ttt2:kin:row:40",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 40
+  },
+  {
+   "row": 41,
+   "name": "Brain Chop",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+2",
+   "notation_std": "d/b+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kin:row:41",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 41
+  },
+  {
+   "row": 42,
+   "name": "Crouching Low Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+3",
+   "notation_std": "d/b+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:kin:row:42",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 42
+  },
+  {
+   "row": 43,
+   "name": "Low Drop Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+4",
+   "notation_std": "d/b+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kin:row:43",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 43
+  },
+  {
+   "row": 44,
+   "name": "Quick Hook",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1",
+   "notation_std": "b+1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kin:row:44",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 44
+  },
+  {
+   "row": 45,
+   "name": "Quick Hook Uppercut",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1, 2",
+   "notation_std": "b+1, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kin:row:45",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 45
+  },
+  {
+   "row": 46,
+   "name": "Quick Hook Heel Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1, 4",
+   "notation_std": "b+1, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe015",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kin:row:46",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 46
+  },
+  {
+   "row": 47,
+   "name": "Chupacabra to Head Butt",
+   "kind": "move",
+   "section": null,
+   "notation": "b+2, 1+2",
+   "notation_std": "b+2, 1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe016",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:47",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 47
+  },
+  {
+   "row": 48,
+   "name": "Chupacabra to Toe Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "b+2, 4",
+   "notation_std": "b+2, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe016",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kin:row:48",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 48
+  },
+  {
+   "row": 49,
+   "name": "Olympia Slam",
+   "kind": "move",
+   "section": null,
+   "notation": "b+2, 4",
+   "notation_std": "b+2, 4",
+   "condition_text": "During Counter Hit",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe016",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kin:row:49",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 49
+  },
+  {
+   "row": 50,
+   "name": "Toll Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "b+3",
+   "notation_std": "b+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:kin:row:50",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 50
+  },
+  {
+   "row": 51,
+   "name": "Disgraceful Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "b+4",
+   "notation_std": "b+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kin:row:51",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 51
+  },
+  {
+   "row": 52,
+   "name": "Water Parting Chop",
+   "kind": "move",
+   "section": null,
+   "notation": "u/b+1",
+   "notation_std": "u/b+1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe005",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kin:row:52",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 52
+  },
+  {
+   "row": 53,
+   "name": "Falling Heel Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3",
+   "notation_std": "u/f+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:kin:row:53",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 53
+  },
+  {
+   "row": 54,
+   "name": "Jumping Knee Lift",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+4",
+   "notation_std": "u/f+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kin:row:54",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 54
+  },
+  {
+   "row": 55,
+   "name": "Capital Punishment",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+1+2",
+   "notation_std": "u/f+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:55",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 55
+  },
+  {
+   "row": 56,
+   "name": "Burning Knuckle",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+1+2",
+   "notation_std": "u/f+1+2",
+   "condition_text": "Hold",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:56",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 56
+  },
+  {
+   "row": 57,
+   "name": "Neck Cutter Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3+4",
+   "notation_std": "u/f+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:kin:row:57",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 57
+  },
+  {
+   "row": 58,
+   "name": "High Elbow Drop",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+2",
+   "notation_std": "u/f+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kin:row:58",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 58
+  },
+  {
+   "row": 59,
+   "name": "Stomach Smash",
+   "kind": "move",
+   "section": null,
+   "notation": "f, f+2",
+   "notation_std": "f, f+2",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe004",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kin:row:59",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 59
+  },
+  {
+   "row": 60,
+   "name": "Hi-Jack Backbreaker",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "During Stomach Smash Counter Hit",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:60",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 60
+  },
+  {
+   "row": 61,
+   "name": "Jaguar Driver",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2, u, d+3+4",
+   "notation_std": "1+2, u, d+3+4",
+   "condition_text": "During Stomach Smash Counter Hit ☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017",
+    "0xe006",
+    "0xe001",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:kin:row:61",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 61
+  },
+  {
+   "row": 62,
+   "name": "Lay Off",
+   "kind": "move",
+   "section": null,
+   "notation": "f, f+1+2",
+   "notation_std": "f, f+1+2",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe004",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:62",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 62
+  },
+  {
+   "row": 63,
+   "name": "Jaguar Hook",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+1",
+   "notation_std": "f, f+1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kin:row:63",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 63
+  },
+  {
+   "row": 64,
+   "name": "Rolling Elbow",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+2",
+   "notation_std": "f, f+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kin:row:64",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 64
+  },
+  {
+   "row": 65,
+   "name": "Clothesline Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+2, 1",
+   "notation_std": "f, f+2, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe016",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kin:row:65",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 65
+  },
+  {
+   "row": 66,
+   "name": "Konvict Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+4",
+   "notation_std": "f, f+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kin:row:66",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 66
+  },
+  {
+   "row": 67,
+   "name": "Konvict Kick to DDT",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+4",
+   "notation_std": "f, f+4",
+   "condition_text": "During Counter Hit",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kin:row:67",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 67
+  },
+  {
+   "row": 68,
+   "name": "Flying Cross Chop",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+1+2",
+   "notation_std": "f, f+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:68",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 68
+  },
+  {
+   "row": 69,
+   "name": "Diving Body Press",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+2+3",
+   "notation_std": "f, f+2+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe01a"
+   ],
+   "anim_ref": "ttt2:kin:row:69",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 69
+  },
+  {
+   "row": 70,
+   "name": "Jumping Knee",
+   "kind": "move",
+   "section": null,
+   "notation": "f, d, D/F+4",
+   "notation_std": "f, d, d/f+4",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe001",
+    "0xe00a",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kin:row:70",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 70
+  },
+  {
+   "row": 71,
+   "name": "Black Bomb",
+   "kind": "move",
+   "section": null,
+   "notation": "f, d, D/F+1+2",
+   "notation_std": "f, d, d/f+1+2",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe001",
+    "0xe00a",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:71",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 71
+  },
+  {
+   "row": 72,
+   "name": "Running Exploder",
+   "kind": "move",
+   "section": null,
+   "notation": "f, f, f+3+4",
+   "notation_std": "f, f, f+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe004",
+    "0xe004",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:kin:row:72",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 72
+  },
+  {
+   "row": 73,
+   "name": "Round Trip Chop",
+   "kind": "move",
+   "section": null,
+   "notation": "2, 2",
+   "notation_std": "2, 2",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kin:row:73",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 73
+  },
+  {
+   "row": 74,
+   "name": "Snap Uppercut",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:74",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 74
+  },
+  {
+   "row": 75,
+   "name": "Leg Breaker",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+1",
+   "notation_std": "d/f+1",
+   "condition_text": "While crouching",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kin:row:75",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 75
+  },
+  {
+   "row": 76,
+   "name": "Body Blow",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+2",
+   "notation_std": "d/f+2",
+   "condition_text": "While crouching",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kin:row:76",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 76
+  },
+  {
+   "row": 77,
+   "name": "Victory Palm",
+   "kind": "move",
+   "section": null,
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "During side step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kin:row:77",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 77
+  },
+  {
+   "row": 78,
+   "name": "Deadly Boomerang",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "During side step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:kin:row:78",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 78
+  },
+  {
+   "row": 79,
+   "name": "Blind Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "3",
+   "notation_std": "3",
+   "condition_text": "Back towards enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:kin:row:79",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 79
+  },
+  {
+   "row": 80,
+   "name": "Blind Kick to Neck Breaker",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "During Blind Kick hit",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:80",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 80
+  },
+  {
+   "row": 81,
+   "name": "Atomic Blaster",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "Back towards enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:81",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 81
+  },
+  {
+   "row": 82,
+   "name": "10 Hit Combo 1",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2, 1, 1, 2, 4, 4, 4, 1, 3",
+   "notation_std": "1, 2, 1, 1, 2, 4, 4, 4, 1, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe015",
+    "0xe015",
+    "0xe016",
+    "0xe01c",
+    "0xe01c",
+    "0xe01c",
+    "0xe015",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:kin:row:82",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 82
+  },
+  {
+   "row": 83,
+   "name": "10 Hit Combo 2",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2, 1, 1, 2, 4, 4, 4, 1, 1",
+   "notation_std": "1, 2, 1, 1, 2, 4, 4, 4, 1, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe015",
+    "0xe015",
+    "0xe016",
+    "0xe01c",
+    "0xe01c",
+    "0xe01c",
+    "0xe015",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kin:row:83",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 83
+  },
+  {
+   "row": 84,
+   "name": "10 Hit Combo 3",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2, 1, 1, 3, 3, 4, 4, 1, 3",
+   "notation_std": "1, 2, 1, 1, 3, 3, 4, 4, 1, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe015",
+    "0xe015",
+    "0xe018",
+    "0xe018",
+    "0xe01c",
+    "0xe01c",
+    "0xe015",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:kin:row:84",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 84
+  },
+  {
+   "row": 85,
+   "name": "10 Hit Combo 4",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2, 1, 1, 3, 3, 4, 4, 1, 1",
+   "notation_std": "1, 2, 1, 1, 3, 3, 4, 4, 1, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe015",
+    "0xe015",
+    "0xe018",
+    "0xe018",
+    "0xe01c",
+    "0xe01c",
+    "0xe015",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kin:row:85",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 85
+  },
+  {
+   "row": 86,
+   "name": "10 Hit Combo 5",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2, 1, 1, 3, 3, 4, 3, 2, 1+2",
+   "notation_std": "1, 2, 1, 1, 3, 3, 4, 3, 2, 1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe015",
+    "0xe015",
+    "0xe018",
+    "0xe018",
+    "0xe01c",
+    "0xe018",
+    "0xe016",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:86",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 86
+  },
+  {
+   "row": 87,
+   "name": "Winding Nut",
+   "kind": "move",
+   "section": null,
+   "notation": "1+3",
+   "notation_std": "1+3",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019"
+   ],
+   "anim_ref": "ttt2:kin:row:87",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 87
+  },
+  {
+   "row": 88,
+   "name": "Winding Nut",
+   "kind": "move",
+   "section": null,
+   "notation": "f+1+3",
+   "notation_std": "f+1+3",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe019"
+   ],
+   "anim_ref": "ttt2:kin:row:88",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 88
+  },
+  {
+   "row": 89,
+   "name": "Suplex",
+   "kind": "move",
+   "section": null,
+   "notation": "2+4",
+   "notation_std": "2+4",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:89",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 89
+  },
+  {
+   "row": 90,
+   "name": "Suplex",
+   "kind": "move",
+   "section": null,
+   "notation": "f+2+4",
+   "notation_std": "f+2+4",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:90",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 90
+  },
+  {
+   "row": 91,
+   "name": "Argentina Backbreaker",
+   "kind": "move",
+   "section": null,
+   "notation": "1+3 or 2+4",
+   "notation_std": "1+3 or 2+4",
+   "condition_text": "Approach from left side (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:91",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 91
+  },
+  {
+   "row": 92,
+   "name": "Knee Crusher",
+   "kind": "move",
+   "section": null,
+   "notation": "1+3 or 2+4",
+   "notation_std": "1+3 or 2+4",
+   "condition_text": "Approach from right side (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:92",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 92
+  },
+  {
+   "row": 93,
+   "name": "Half Boston Crab",
+   "kind": "move",
+   "section": null,
+   "notation": "1+3, f+1+3",
+   "notation_std": "1+3, f+1+3",
+   "condition_text": "Approach from behind (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019",
+    "0xe004",
+    "0xe019"
+   ],
+   "anim_ref": "ttt2:kin:row:93",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 93
+  },
+  {
+   "row": 94,
+   "name": "Cobra Twist",
+   "kind": "move",
+   "section": null,
+   "notation": "2+4, f+2+4",
+   "notation_std": "2+4, f+2+4",
+   "condition_text": "Approach from behind (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01e",
+    "0xe004",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:94",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 94
+  },
+  {
+   "row": 95,
+   "name": "Stretch Buster",
+   "kind": "move",
+   "section": null,
+   "notation": "b, F+1+2",
+   "notation_std": "b, f+1+2",
+   "condition_text": "Approach from behind",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe00c",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:95",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 95
+  },
+  {
+   "row": 96,
+   "name": "Knee Bash",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+2+3",
+   "notation_std": "d/f+2+3",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe01a"
+   ],
+   "anim_ref": "ttt2:kin:row:96",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 96
+  },
+  {
+   "row": 97,
+   "name": "Figure Four Leg Lock",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+1+2",
+   "notation_std": "d/b+1+2",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:97",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 97
+  },
+  {
+   "row": 98,
+   "name": "Throw Away",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1+2",
+   "notation_std": "b+1+2",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:98",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 98
+  },
+  {
+   "row": 99,
+   "name": "Throw Away Feint",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1+2, 1+3",
+   "notation_std": "b+1+2, 1+3",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe017",
+    "0xe019"
+   ],
+   "anim_ref": "ttt2:kin:row:99",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 99
+  },
+  {
+   "row": 100,
+   "name": "Throw Away Knockdown",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1+2, 2+4",
+   "notation_std": "b+1+2, 2+4",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe017",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:100",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 100
+  },
+  {
+   "row": 101,
+   "name": "Throw and Destroy",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1+2, 3+4",
+   "notation_std": "b+1+2, 3+4",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe017",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:kin:row:101",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 101
+  },
+  {
+   "row": 102,
+   "name": "Turn Around",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1+2, 1+2",
+   "notation_std": "b+1+2, 1+2",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe017",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:102",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 102
+  },
+  {
+   "row": 103,
+   "name": "Executioner Drop",
+   "kind": "move",
+   "section": null,
+   "notation": "u+1+2",
+   "notation_std": "u+1+2",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe006",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:103",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 103
+  },
+  {
+   "row": 104,
+   "name": "Tombstone Piledriver",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b, f+2+4",
+   "notation_std": "d/b, f+2+4",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe004",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:104",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 104
+  },
+  {
+   "row": 105,
+   "name": "Pile Driver",
+   "kind": "move",
+   "section": null,
+   "notation": "d, d/f, F+1",
+   "notation_std": "d, d/f, f+1",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe002",
+    "0xe00c",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kin:row:105",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 105
+  },
+  {
+   "row": 106,
+   "name": "Double Arm Face Buster",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2, 1+2",
+   "notation_std": "1+2, 1+2",
+   "condition_text": "During Pile Driver",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:106",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 106
+  },
+  {
+   "row": 107,
+   "name": "Boston Crab",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2, 3, 4, 1+2",
+   "notation_std": "1+2, 3, 4, 1+2",
+   "condition_text": "During Pile Driver",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017",
+    "0xe018",
+    "0xe01c",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:107",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 107
+  },
+  {
+   "row": 108,
+   "name": "Muscle Buster",
+   "kind": "move",
+   "section": null,
+   "notation": "d, d/b, b+1+2",
+   "notation_std": "d, d/b, b+1+2",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe000",
+    "0xe003",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:108",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 108
+  },
+  {
+   "row": 109,
+   "name": "Giant Swing",
+   "kind": "move",
+   "section": null,
+   "notation": "f, b, d/b, d, d/f, f+1",
+   "notation_std": "f, b, d/b, d, d/f, f+1",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe003",
+    "0xe000",
+    "0xe001",
+    "0xe002",
+    "0xe004",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kin:row:109",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 109
+  },
+  {
+   "row": 110,
+   "name": "Tijuana Twister",
+   "kind": "move",
+   "section": null,
+   "notation": "f, b, d/b, d, d/f, f+2",
+   "notation_std": "f, b, d/b, d, d/f, f+2",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe003",
+    "0xe000",
+    "0xe001",
+    "0xe002",
+    "0xe004",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kin:row:110",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 110
+  },
+  {
+   "row": 111,
+   "name": "Tomahawk",
+   "kind": "move",
+   "section": null,
+   "notation": "f, f, f+2+4",
+   "notation_std": "f, f, f+2+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe004",
+    "0xe004",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:111",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 111
+  },
+  {
+   "row": 112,
+   "name": "Clothesline Press",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b, d, d/b+1+2",
+   "notation_std": "d/b, d, d/b+1+2",
+   "condition_text": "While crouching",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe001",
+    "0xe000",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:112",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 112
+  },
+  {
+   "row": 113,
+   "name": "Ultimate Tackle",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "While crouching",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:113",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 113
+  },
+  {
+   "row": 114,
+   "name": "Ultimate Punch",
+   "kind": "move",
+   "section": null,
+   "notation": "2, 1, 2, 1",
+   "notation_std": "2, 1, 2, 1",
+   "condition_text": "During tackle",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe015",
+    "0xe016",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kin:row:114",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 114
+  },
+  {
+   "row": 115,
+   "name": "Cross Arm Lock",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "During tackle",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:115",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 115
+  },
+  {
+   "row": 116,
+   "name": "Arm Twist",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "During Cross Arm Lock",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:116",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 116
+  },
+  {
+   "row": 117,
+   "name": "Leg Cross Hold",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "During tackle",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:kin:row:117",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 117
+  },
+  {
+   "row": 118,
+   "name": "Stretch Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "During Leg Cross Hold",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:118",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 118
+  },
+  {
+   "row": 119,
+   "name": "Iron Lariat",
+   "kind": "move",
+   "section": null,
+   "notation": "d+1+3",
+   "notation_std": "d+1+3",
+   "condition_text": "Approach (crouching enemy)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe019"
+   ],
+   "anim_ref": "ttt2:kin:row:119",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 119
+  },
+  {
+   "row": 120,
+   "name": "V Driver",
+   "kind": "move",
+   "section": null,
+   "notation": "d+2+4",
+   "notation_std": "d+2+4",
+   "condition_text": "Approach (crouching enemy)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:120",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 120
+  },
+  {
+   "row": 121,
+   "name": "Swing Away",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+1+3, d/b+2+4",
+   "notation_std": "d/b+1+3, d/b+2+4",
+   "condition_text": "(Enemy on back) by the feet (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe019",
+    "0xe000",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:121",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 121
+  },
+  {
+   "row": 122,
+   "name": "Head Bomber",
+   "kind": "move",
+   "section": null,
+   "notation": "D/B+1+3",
+   "notation_std": "d/b+1+3",
+   "condition_text": "(Enemy on back) by the feet",
+   "multi_part": false,
+   "glyphs": [
+    "0xe008",
+    "0xe019"
+   ],
+   "anim_ref": "ttt2:kin:row:122",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 122
+  },
+  {
+   "row": 123,
+   "name": "Figure Four Leg Lock",
+   "kind": "move",
+   "section": null,
+   "notation": "D/B+2+4",
+   "notation_std": "d/b+2+4",
+   "condition_text": "(Enemy on back) by the feet",
+   "multi_part": false,
+   "glyphs": [
+    "0xe008",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:123",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 123
+  },
+  {
+   "row": 124,
+   "name": "Shoulder Cracker",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+1+3, d/b+2+4",
+   "notation_std": "d/b+1+3, d/b+2+4",
+   "condition_text": "(Enemy on back) by the head (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe019",
+    "0xe000",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:124",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 124
+  },
+  {
+   "row": 125,
+   "name": "Turn Over",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+1+3, d/b+2+4",
+   "notation_std": "d/b+1+3, d/b+2+4",
+   "condition_text": "(Enemy on back) by enemy's side (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe019",
+    "0xe000",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:125",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 125
+  },
+  {
+   "row": 126,
+   "name": "Half Boston Crab",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+1+3, d/b+2+4",
+   "notation_std": "d/b+1+3, d/b+2+4",
+   "condition_text": "(Enemy face down) by the feet (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe019",
+    "0xe000",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:126",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 126
+  },
+  {
+   "row": 127,
+   "name": "Wing Tearer",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+1+3, d/b+2+4",
+   "notation_std": "d/b+1+3, d/b+2+4",
+   "condition_text": "(Enemy face down) by the head (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe019",
+    "0xe000",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:127",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 127
+  },
+  {
+   "row": 128,
+   "name": "Camel Clutch",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+1+3, d/b+2+4",
+   "notation_std": "d/b+1+3, d/b+2+4",
+   "condition_text": "(Enemy face down) from the left (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe019",
+    "0xe000",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:128",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 128
+  },
+  {
+   "row": 129,
+   "name": "Bow & Arrow Stretch Hold",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+1+3, d/b+2+4",
+   "notation_std": "d/b+1+3, d/b+2+4",
+   "condition_text": "(Enemy face down) from the right (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe019",
+    "0xe000",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:129",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 129
+  },
+  {
+   "row": 130,
+   "name": "Mid-Air Leg Cross Hold",
+   "kind": "move",
+   "section": null,
+   "notation": "1+3, f+1+3",
+   "notation_std": "1+3, f+1+3",
+   "condition_text": "Approach mid-air enemy (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019",
+    "0xe004",
+    "0xe019"
+   ],
+   "anim_ref": "ttt2:kin:row:130",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 130
+  },
+  {
+   "row": 131,
+   "name": "Mid-Air Leg Screw",
+   "kind": "move",
+   "section": null,
+   "notation": "2+4, f+2+4",
+   "notation_std": "2+4, f+2+4",
+   "condition_text": "Approach mid-air enemy (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01e",
+    "0xe004",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:131",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 131
+  },
+  {
+   "row": 132,
+   "name": "Aerial Jaguar Bomb",
+   "kind": "move",
+   "section": null,
+   "notation": "f, b, d/b, d, d/f, f+1",
+   "notation_std": "f, b, d/b, d, d/f, f+1",
+   "condition_text": "Approach mid-air enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe003",
+    "0xe000",
+    "0xe001",
+    "0xe002",
+    "0xe004",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kin:row:132",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 132
+  },
+  {
+   "row": 133,
+   "name": "Running Jaguar Bomb",
+   "kind": "move",
+   "section": null,
+   "notation": "f, f, f+2+4",
+   "notation_std": "f, f, f+2+4",
+   "condition_text": "Approach mid-air enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe004",
+    "0xe004",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:133",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 133
+  },
+  {
+   "row": 134,
+   "name": "Double Heel Hold",
+   "kind": "move",
+   "section": null,
+   "notation": "d+1+3, d+2+4",
+   "notation_std": "d+1+3, d+2+4",
+   "condition_text": "Approach mid-air enemy (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe019",
+    "0xe001",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:134",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 134
+  },
+  {
+   "row": 135,
+   "name": "Flapjack",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2, 1+2",
+   "notation_std": "1+2, 1+2",
+   "condition_text": "During Double Heel Hold",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:135",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 135
+  },
+  {
+   "row": 136,
+   "name": "Giant Swing",
+   "kind": "move",
+   "section": null,
+   "notation": "2, 1, 3, 4",
+   "notation_std": "2, 1, 3, 4",
+   "condition_text": "During Double Heel Hold",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe015",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kin:row:136",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 136
+  },
+  {
+   "row": 137,
+   "name": "Shining Torpedo",
+   "kind": "move",
+   "section": null,
+   "notation": "f, b, d/b, d, d/f, f+1",
+   "notation_std": "f, b, d/b, d, d/f, f+1",
+   "condition_text": "During enemy wall stun",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe003",
+    "0xe000",
+    "0xe001",
+    "0xe002",
+    "0xe004",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kin:row:137",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 137
+  },
+  {
+   "row": 138,
+   "name": "Arm Whip",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1+3",
+   "notation_std": "b+1+3",
+   "condition_text": "Time with enemy right punch",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe019"
+   ],
+   "anim_ref": "ttt2:kin:row:138",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 138
+  },
+  {
+   "row": 139,
+   "name": "Spinning Heel Hold",
+   "kind": "move",
+   "section": null,
+   "notation": "b+2+4",
+   "notation_std": "b+2+4",
+   "condition_text": "Time with enemy left kick",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:139",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 139
+  },
+  {
+   "row": 140,
+   "name": "Leg Screw",
+   "kind": "move",
+   "section": null,
+   "notation": "b+2+4",
+   "notation_std": "b+2+4",
+   "condition_text": "Time with enemy right kick",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:140",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 140
+  },
+  {
+   "row": 141,
+   "name": "■ Standing Heel Hold Combo ■",
+   "kind": "separator"
+  },
+  {
+   "row": 142,
+   "name": "Standing Heel Hold",
+   "kind": "move",
+   "section": "■ Standing Heel Hold Combo ■",
+   "notation": "f, d, D/F+2+3",
+   "notation_std": "f, d, d/f+2+3",
+   "condition_text": "Approach enemy ☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe001",
+    "0xe00a",
+    "0xe01a"
+   ],
+   "anim_ref": "ttt2:kin:row:142",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 142
+  },
+  {
+   "row": 143,
+   "name": "Indian Death Lock",
+   "kind": "move",
+   "section": "■ Standing Heel Hold Combo ■",
+   "notation": "1+2, 1, 3, 1+2",
+   "notation_std": "1+2, 1, 3, 1+2",
+   "condition_text": "During Standing Heel Hold",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017",
+    "0xe015",
+    "0xe018",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:143",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 143
+  },
+  {
+   "row": 144,
+   "name": "King's Bridge",
+   "kind": "move",
+   "section": "■ Standing Heel Hold Combo ■",
+   "notation": "1, 3, 4, 1+2, 3+4",
+   "notation_std": "1, 3, 4, 1+2, 3+4",
+   "condition_text": "During Indian Death Lock",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe018",
+    "0xe01c",
+    "0xe017",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:kin:row:144",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 144
+  },
+  {
+   "row": 145,
+   "name": "S・T・F・",
+   "kind": "move",
+   "section": "■ Standing Heel Hold Combo ■",
+   "notation": "1, 2, 3, 1+2",
+   "notation_std": "1, 2, 3, 1+2",
+   "condition_text": "During Standing Heel Hold",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe018",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:145",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 145
+  },
+  {
+   "row": 146,
+   "name": "Scorpion Death Lock",
+   "kind": "move",
+   "section": "■ Standing Heel Hold Combo ■",
+   "notation": "1+2, 3, 1, 1+3",
+   "notation_std": "1+2, 3, 1, 1+3",
+   "condition_text": "During Standing Heel Hold",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017",
+    "0xe018",
+    "0xe015",
+    "0xe019"
+   ],
+   "anim_ref": "ttt2:kin:row:146",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 146
+  },
+  {
+   "row": 147,
+   "name": "■ Arm Breaker Combo ■",
+   "kind": "separator"
+  },
+  {
+   "row": 148,
+   "name": "Arm Breaker",
+   "kind": "move",
+   "section": "■ Arm Breaker Combo ■",
+   "notation": "f, d, D/F+1+4",
+   "notation_std": "f, d, d/f+1+4",
+   "condition_text": "Approach enemy ☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe001",
+    "0xe00a",
+    "0xe01d"
+   ],
+   "anim_ref": "ttt2:kin:row:148",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 148
+  },
+  {
+   "row": 149,
+   "name": "Triple Arm Breaker",
+   "kind": "move",
+   "section": "■ Arm Breaker Combo ■",
+   "notation": "1+2, 1+2",
+   "notation_std": "1+2, 1+2",
+   "condition_text": "During Arm Breaker",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:149",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 149
+  },
+  {
+   "row": 150,
+   "name": "Head Jammer",
+   "kind": "move",
+   "section": "■ Arm Breaker Combo ■",
+   "notation": "1+2, 4, 2+4",
+   "notation_std": "1+2, 4, 2+4",
+   "condition_text": "During Arm Breaker",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017",
+    "0xe01c",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:150",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 150
+  },
+  {
+   "row": 151,
+   "name": "Struggle Combination",
+   "kind": "move",
+   "section": "■ Arm Breaker Combo ■",
+   "notation": "4, 3, 4, 3+4, 1+2",
+   "notation_std": "4, 3, 4, 3+4, 1+2",
+   "condition_text": "During Head Jammer",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe018",
+    "0xe01c",
+    "0xe020",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:151",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 151
+  },
+  {
+   "row": 152,
+   "name": "Chicken Wing Face Lock",
+   "kind": "move",
+   "section": "■ Arm Breaker Combo ■",
+   "notation": "2, 1, 1+2+3",
+   "notation_std": "2, 1, 1+2+3",
+   "condition_text": "During Arm Breaker",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe015",
+    "0xe01b"
+   ],
+   "anim_ref": "ttt2:kin:row:152",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 152
+  },
+  {
+   "row": 153,
+   "name": "Dragon Sleeper Finish",
+   "kind": "move",
+   "section": "■ Arm Breaker Combo ■",
+   "notation": "2, 1, 3, 1+2+4, 1+2+4",
+   "notation_std": "2, 1, 3, 1+2+4, 1+2+4",
+   "condition_text": "During Chicken Wing Face Lock",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe015",
+    "0xe018",
+    "0xe01f",
+    "0xe01f"
+   ],
+   "anim_ref": "ttt2:kin:row:153",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 153
+  },
+  {
+   "row": 154,
+   "name": "Rolling Death Cradle",
+   "kind": "move",
+   "section": "■ Arm Breaker Combo ■",
+   "notation": "1+3, 3+4, 2+4, 1+2, 1+2+3",
+   "notation_std": "1+3, 3+4, 2+4, 1+2, 1+2+3",
+   "condition_text": "During Chicken Wing Face Lock",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019",
+    "0xe020",
+    "0xe01e",
+    "0xe017",
+    "0xe01b"
+   ],
+   "anim_ref": "ttt2:kin:row:154",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 154
+  },
+  {
+   "row": 155,
+   "name": "■ Reverse Arm Slam Combo ■",
+   "kind": "separator"
+  },
+  {
+   "row": 156,
+   "name": "Reverse Arm Slam",
+   "kind": "move",
+   "section": "■ Reverse Arm Slam Combo ■",
+   "notation": "f, D/F+1+3 or D/F+2+4",
+   "notation_std": "f, d/f+1+3 or d/f+2+4",
+   "condition_text": "Approach enemy (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00a",
+    "0xe019",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:156",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 156
+  },
+  {
+   "row": 157,
+   "name": "Backdrop",
+   "kind": "move",
+   "section": "■ Reverse Arm Slam Combo ■",
+   "notation": "2, 1, 1+2",
+   "notation_std": "2, 1, 1+2",
+   "condition_text": "During Reverse Arm Slam",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe015",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:157",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 157
+  },
+  {
+   "row": 158,
+   "name": "German Suplex",
+   "kind": "move",
+   "section": "■ Reverse Arm Slam Combo ■",
+   "notation": "3+4, 1+2",
+   "notation_std": "3+4, 1+2",
+   "condition_text": "During Backdrop",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:158",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 158
+  },
+  {
+   "row": 159,
+   "name": "Power Bomb",
+   "kind": "move",
+   "section": "■ Reverse Arm Slam Combo ■",
+   "notation": "1, 2, 3+4",
+   "notation_std": "1, 2, 3+4",
+   "condition_text": "During German Suplex",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:kin:row:159",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 159
+  },
+  {
+   "row": 160,
+   "name": "Giant Swing",
+   "kind": "move",
+   "section": "■ Reverse Arm Slam Combo ■",
+   "notation": "2, 1, 3, 4",
+   "notation_std": "2, 1, 3, 4",
+   "condition_text": "During Power Bomb",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe015",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kin:row:160",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 160
+  },
+  {
+   "row": 161,
+   "name": "Muscle Buster",
+   "kind": "move",
+   "section": "■ Reverse Arm Slam Combo ■",
+   "notation": "3, 1, 2, 3+4, 1+2+3+4",
+   "notation_std": "3, 1, 2, 3+4, 1+2+3+4",
+   "condition_text": "During Power Bomb",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe015",
+    "0xe016",
+    "0xe020",
+    "0xe023"
+   ],
+   "anim_ref": "ttt2:kin:row:161",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 161
+  },
+  {
+   "row": 162,
+   "name": "■ Reverse Special Stretch Bomb Combo ■",
+   "kind": "separator"
+  },
+  {
+   "row": 163,
+   "name": "Reverse Special Stretch Bomb",
+   "kind": "move",
+   "section": "■ Reverse Special Stretch Bomb Combo ■",
+   "notation": "d/f+1+2",
+   "notation_std": "d/f+1+2",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:163",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 163
+  },
+  {
+   "row": 164,
+   "name": "Reverse Special Stretch Bomb",
+   "kind": "move",
+   "section": "■ Reverse Special Stretch Bomb Combo ■",
+   "notation": "d/f, D/F+1+3 or D/F+2+4",
+   "notation_std": "d/f, d/f+1+3 or d/f+2+4",
+   "condition_text": "Approach (crouching enemy) (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe00a",
+    "0xe019",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:164",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 164
+  },
+  {
+   "row": 165,
+   "name": "Reverse Special Stretch Bomb",
+   "kind": "move",
+   "section": "■ Reverse Special Stretch Bomb Combo ■",
+   "notation": "2+4",
+   "notation_std": "2+4",
+   "condition_text": "During side step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:165",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 165
+  },
+  {
+   "row": 166,
+   "name": "Cannonball Buster",
+   "kind": "move",
+   "section": "■ Reverse Special Stretch Bomb Combo ■",
+   "notation": "2, 2, 1+2",
+   "notation_std": "2, 2, 1+2",
+   "condition_text": "During Reverse Special Stretch Bomb",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe016",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:166",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 166
+  },
+  {
+   "row": 167,
+   "name": "Manhattan Drop",
+   "kind": "move",
+   "section": "■ Reverse Special Stretch Bomb Combo ■",
+   "notation": "3+4, 1+2, 1+2+4",
+   "notation_std": "3+4, 1+2, 1+2+4",
+   "condition_text": "During Cannonball Buster",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020",
+    "0xe017",
+    "0xe01f"
+   ],
+   "anim_ref": "ttt2:kin:row:167",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 167
+  },
+  {
+   "row": 168,
+   "name": "Victory Bomb",
+   "kind": "move",
+   "section": "■ Reverse Special Stretch Bomb Combo ■",
+   "notation": "1, 2, 3+4, 1+2",
+   "notation_std": "1, 2, 3+4, 1+2",
+   "condition_text": "During Manhattan Drop",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe020",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:168",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 168
+  },
+  {
+   "row": 169,
+   "name": "Giant Swing",
+   "kind": "move",
+   "section": "■ Reverse Special Stretch Bomb Combo ■",
+   "notation": "2, 1, 3, 4",
+   "notation_std": "2, 1, 3, 4",
+   "condition_text": "During Victory Bomb",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe015",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kin:row:169",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 169
+  },
+  {
+   "row": 170,
+   "name": "Muscle Buster",
+   "kind": "move",
+   "section": "■ Reverse Special Stretch Bomb Combo ■",
+   "notation": "3, 1, 2, 3+4, 1+2+3+4",
+   "notation_std": "3, 1, 2, 3+4, 1+2+3+4",
+   "condition_text": "During Victory Bomb",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe015",
+    "0xe016",
+    "0xe020",
+    "0xe023"
+   ],
+   "anim_ref": "ttt2:kin:row:170",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 170
+  },
+  {
+   "row": 171,
+   "name": "■ Mexican Magma Drive 1 ■",
+   "kind": "separator"
+  },
+  {
+   "row": 172,
+   "name": "Cobra Clutch",
+   "kind": "move",
+   "section": "■ Mexican Magma Drive 1 ■",
+   "notation": "3+4, 1+4, 3+4, 2+3",
+   "notation_std": "3+4, 1+4, 3+4, 2+3",
+   "condition_text": "Approach enemy (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020",
+    "0xe01d",
+    "0xe020",
+    "0xe01a"
+   ],
+   "anim_ref": "ttt2:kin:row:172",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 172
+  },
+  {
+   "row": 173,
+   "name": "Flinging Half Nelson",
+   "kind": "move",
+   "section": "■ Mexican Magma Drive 1 ■",
+   "notation": "2+4, 1+2, 1+2",
+   "notation_std": "2+4, 1+2, 1+2",
+   "condition_text": "During Cobra Clutch",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01e",
+    "0xe017",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:173",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 173
+  },
+  {
+   "row": 174,
+   "name": "Sleeper",
+   "kind": "move",
+   "section": "■ Mexican Magma Drive 1 ■",
+   "notation": "3+4, 3+4, 1+2",
+   "notation_std": "3+4, 3+4, 1+2",
+   "condition_text": "During Cobra Clutch",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020",
+    "0xe020",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:174",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 174
+  },
+  {
+   "row": 175,
+   "name": "Triple Trouble",
+   "kind": "move",
+   "section": "■ Mexican Magma Drive 1 ■",
+   "notation": "1, 1, 1+2",
+   "notation_std": "1, 1, 1+2",
+   "condition_text": "During Sleeper",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe015",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:175",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 175
+  },
+  {
+   "row": 176,
+   "name": "Human Necktie",
+   "kind": "move",
+   "section": "■ Mexican Magma Drive 1 ■",
+   "notation": "3, 4, 1+2, 3+4",
+   "notation_std": "3, 4, 1+2, 3+4",
+   "condition_text": "During Sleeper",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe01c",
+    "0xe017",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:kin:row:176",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 176
+  },
+  {
+   "row": 177,
+   "name": "■ Mexican Magma Drive 2 ■",
+   "kind": "separator"
+  },
+  {
+   "row": 178,
+   "name": "Cobra Clutch",
+   "kind": "move",
+   "section": "■ Mexican Magma Drive 2 ■",
+   "notation": "3+4, 1+4, 3+4, 2+3",
+   "notation_std": "3+4, 1+4, 3+4, 2+3",
+   "condition_text": "Approach enemy (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020",
+    "0xe01d",
+    "0xe020",
+    "0xe01a"
+   ],
+   "anim_ref": "ttt2:kin:row:178",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 178
+  },
+  {
+   "row": 179,
+   "name": "Cobra Twist",
+   "kind": "move",
+   "section": "■ Mexican Magma Drive 2 ■",
+   "notation": "1, 4, 2, 3",
+   "notation_std": "1, 4, 2, 3",
+   "condition_text": "During Cobra Clutch",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe01c",
+    "0xe016",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:kin:row:179",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 179
+  },
+  {
+   "row": 180,
+   "name": "Reverse DDT",
+   "kind": "move",
+   "section": "■ Mexican Magma Drive 2 ■",
+   "notation": "2, 1, 1+3, 2, 1, 2+4",
+   "notation_std": "2, 1, 1+3, 2, 1, 2+4",
+   "condition_text": "During Cobra Twist (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe015",
+    "0xe019",
+    "0xe016",
+    "0xe015",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:180",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 180
+  },
+  {
+   "row": 181,
+   "name": "Reverse Special Stretch Bomb",
+   "kind": "move",
+   "section": "■ Mexican Magma Drive 2 ■",
+   "notation": "1+2, 1, 2, 1+2+3, 1+2, 1, 2, 1+2+4",
+   "notation_std": "1+2, 1, 2, 1+2+3, 1+2, 1, 2, 1+2+4",
+   "condition_text": "During Reverse DDT (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017",
+    "0xe015",
+    "0xe016",
+    "0xe01b",
+    "0xe017",
+    "0xe015",
+    "0xe016",
+    "0xe01f"
+   ],
+   "anim_ref": "ttt2:kin:row:181",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 181
+  },
+  {
+   "row": 182,
+   "name": "Samurai Rock",
+   "kind": "move",
+   "section": "■ Mexican Magma Drive 2 ■",
+   "notation": "2, 3, 1, 1+2",
+   "notation_std": "2, 3, 1, 1+2",
+   "condition_text": "During Reverse DDT",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe018",
+    "0xe015",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:182",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 182
+  },
+  {
+   "row": 183,
+   "name": "Backdrop",
+   "kind": "move",
+   "section": "■ Mexican Magma Drive 2 ■",
+   "notation": "3+4, 1+2",
+   "notation_std": "3+4, 1+2",
+   "condition_text": "During Reverse Special Stretch Bomb",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kin:row:183",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 183
+  },
+  {
+   "row": 184,
+   "name": "Sol Naciente",
+   "kind": "move",
+   "section": "■ Mexican Magma Drive 2 ■",
+   "notation": "1+2, 4, 1+2, 1+2+3",
+   "notation_std": "1+2, 4, 1+2, 1+2+3",
+   "condition_text": "During Backdrop",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017",
+    "0xe01c",
+    "0xe017",
+    "0xe01b"
+   ],
+   "anim_ref": "ttt2:kin:row:184",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 184
+  },
+  {
+   "row": 185,
+   "name": "Burning Hammer",
+   "kind": "move",
+   "section": "■ Mexican Magma Drive 2 ■",
+   "notation": "1+2, 3, 4, 1+3, 1+2, 3, 4, 2+4",
+   "notation_std": "1+2, 3, 4, 1+3, 1+2, 3, 4, 2+4",
+   "condition_text": "During Backdrop (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017",
+    "0xe018",
+    "0xe01c",
+    "0xe019",
+    "0xe017",
+    "0xe018",
+    "0xe01c",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:185",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 185
+  },
+  {
+   "row": 186,
+   "name": "Screwdriver",
+   "kind": "move",
+   "section": "■ Mexican Magma Drive 2 ■",
+   "notation": "2+4, 3+4, 1+3, 1+2, 1+2+3, 2+4, 3+4, 1+3, 1+2, 1+2+4",
+   "notation_std": "2+4, 3+4, 1+3, 1+2, 1+2+3, 2+4, 3+4, 1+3, 1+2, 1+2+4",
+   "condition_text": "During Burning Hammer (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01e",
+    "0xe020",
+    "0xe019",
+    "0xe017",
+    "0xe01b",
+    "0xe01e",
+    "0xe020",
+    "0xe019",
+    "0xe017",
+    "0xe01f"
+   ],
+   "anim_ref": "ttt2:kin:row:186",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 186
+  },
+  {
+   "row": 187,
+   "name": "Sample Combo 1",
+   "kind": "sample_combo",
+   "section": "■ Mexican Magma Drive 2 ■",
+   "notation": "u/f+4, f+1, 2, b+1, 4",
+   "notation_std": "u/f+4, f+1, 2, b+1, 4",
+   "condition_text": "",
+   "multi_part": true,
+   "glyphs": [
+    "0xe007",
+    "0xe01c",
+    "0xe063",
+    "0xe004",
+    "0xe015",
+    "0xe016",
+    "0xe063",
+    "0xe003",
+    "0xe015",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kin:row:187",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 187
+  },
+  {
+   "row": 188,
+   "name": "Sample Combo 2",
+   "kind": "sample_combo",
+   "section": "■ Mexican Magma Drive 2 ■",
+   "notation": "d/f+2, 1, d+3+4, 4, 2",
+   "notation_std": "d/f+2, 1, d+3+4, 4, 2",
+   "condition_text": "",
+   "multi_part": true,
+   "glyphs": [
+    "0xe002",
+    "0xe016",
+    "0xe015",
+    "0xe063",
+    "0xe001",
+    "0xe020",
+    "0xe01c",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kin:row:188",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 188
+  },
+  {
+   "row": 189,
+   "name": "Sample Combo 3",
+   "kind": "sample_combo",
+   "section": "■ Mexican Magma Drive 2 ■",
+   "notation": "u/f+4, d/f+2, 1, f+1, b+2, 1+2, f+2+3",
+   "notation_std": "u/f+4, d/f+2, 1, f+1, b+2, 1+2, f+2+3",
+   "condition_text": "",
+   "multi_part": true,
+   "glyphs": [
+    "0xe007",
+    "0xe01c",
+    "0xe063",
+    "0xe002",
+    "0xe016",
+    "0xe015",
+    "0xe063",
+    "0xe004",
+    "0xe015",
+    "0xe063",
+    "0xe003",
+    "0xe016",
+    "0xe017",
+    "0xe063",
+    "0xe004",
+    "0xe01a"
+   ],
+   "anim_ref": "ttt2:kin:row:189",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 189
+  },
+  {
+   "row": 190,
+   "name": "Sample Combo 4",
+   "kind": "sample_combo",
+   "section": "■ Mexican Magma Drive 2 ■",
+   "notation": "d/f+1, 4, d/f+4, 3, d+3+4, 2",
+   "notation_std": "d/f+1, 4, d/f+4, 3, d+3+4, 2",
+   "condition_text": "While crouching While rising",
+   "multi_part": true,
+   "glyphs": [
+    "0xe002",
+    "0xe015",
+    "0xe063",
+    "0xe01c",
+    "0xe063",
+    "0xe002",
+    "0xe01c",
+    "0xe018",
+    "0xe063",
+    "0xe001",
+    "0xe020",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kin:row:190",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 190
+  },
+  {
+   "row": 191,
+   "name": "Sample Combo 5",
+   "kind": "sample_combo",
+   "section": "■ Mexican Magma Drive 2 ■",
+   "notation": "d/f+2, d/b+2, 2, 1, f+2, 2, 1, b+3",
+   "notation_std": "d/f+2, d/b+2, 2, 1, f+2, 2, 1, b+3",
+   "condition_text": "While crouching",
+   "multi_part": true,
+   "glyphs": [
+    "0xe002",
+    "0xe016",
+    "0xe063",
+    "0xe000",
+    "0xe016",
+    "0xe063",
+    "0xe016",
+    "0xe015",
+    "0xe063",
+    "0xe004",
+    "0xe016",
+    "0xe016",
+    "0xe015",
+    "0xe063",
+    "0xe003",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:kin:row:191",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 191
+  },
+  {
+   "row": 192,
+   "name": "Sample Combo 6",
+   "kind": "sample_combo",
+   "section": "■ Mexican Magma Drive 2 ■",
+   "notation": "1+2, f+2, f+1, f+2, 2, 2, d+1+3, 2, 1, 3, 4",
+   "notation_std": "1+2, f+2, f+1, f+2, 2, 2, d+1+3, 2, 1, 3, 4",
+   "condition_text": "While rising Approach mid-air enemy During Double Heel Hold",
+   "multi_part": true,
+   "glyphs": [
+    "0xe017",
+    "0xe063",
+    "0xe004",
+    "0xe016",
+    "0xe063",
+    "0xe004",
+    "0xe015",
+    "0xe063",
+    "0xe004",
+    "0xe016",
+    "0xe016",
+    "0xe016",
+    "0xe063",
+    "0xe001",
+    "0xe019",
+    "0xe063",
+    "0xe016",
+    "0xe015",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kin:row:192",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 192
+  },
+  {
+   "row": 193,
+   "name": "Sample Combo 7",
+   "kind": "sample_combo",
+   "section": "■ Mexican Magma Drive 2 ■",
+   "notation": "d+1+2, U/F+4, b+2, 1+2, f, f, f+2+4",
+   "notation_std": "d+1+2, u/f+4, b+2, 1+2, f, f, f+2+4",
+   "condition_text": "Approach mid-air enemy",
+   "multi_part": true,
+   "glyphs": [
+    "0xe001",
+    "0xe017",
+    "0xe063",
+    "0xe00f",
+    "0xe01c",
+    "0xe063",
+    "0xe003",
+    "0xe016",
+    "0xe017",
+    "0xe063",
+    "0xe004",
+    "0xe004",
+    "0xe004",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kin:row:193",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 193
+  }
+ ]
+}

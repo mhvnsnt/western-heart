@@ -1,0 +1,29 @@
+{
+ "game": "Fire Pro Wrestling World",
+ "ownership_basis": "Steam snapshot: owned, 133.5h — the user's most-played wrestling title",
+ "status": "spec-only — no game files were accessible from this VM (phone-only user, Steam remote download unreachable); this pack is the teardown path + conversion/wire schema, NOT extracted commercial assets",
+ "teardown_toolchain": [
+  "Steam Workshop edit/move-craft data (edit wrestlers carry full moveset + CPU logic; Move Craft DLC builds custom moves from existing-move frames)",
+  "Banked repo data (DO NOT EDIT — wire note only): game/data/moveset-library/banks/wrestling.json (No Mercy, 4,409 moves) and banks/wmxix.json (169 moves) — see wwf-no-mercy + wmxix packs",
+  "Move Craft frame model: thumbnail animation up to 8 images, FZ/X coordinates, looping — as a CUSTOM-MOVE BUILDER pattern for WH creation suite"
+ ],
+ "extractable": [
+  "1,000+ move creation catalogue + edit-wrestler logic (personality: crowd-play vs dirty play, skills, parameters) → WH creation suite logic layer",
+  "Match types: deathmatch (cage/barbed wire/landmines), MMA rules, no-holds-barred, SWA homebrew (pro-wrestling + MMA mix) → WH side modes",
+  "Move Craft → WH custom-move builder: build a move from existing frames + attributes, with compatibility checks (Fire Pro warns incompatible attribute combos can freeze — WH needs the same fail-closed check)"
+ ],
+ "wh_wire": {
+  "combat": "Largest grapple/move library in the project: strikes/grapples/ground/subs map to LP1/RP2/LK3/RK4 + grapple chains; CPU logic → WH AI personality",
+  "creation": "Move Craft pattern + edit-wrestler parts/logic = the custom-move builder inside the creation suite",
+  "stages": "Ring/mat/referee customization",
+  "audio": "UNMAPPED",
+  "systems": "Edit logic (skills/parameters/personality) + match-type rules"
+ },
+ "blocker": "No local game install is reachable from this VM and no game files were supplied with this task. Steam remote download previously reported 'Unable to reach your PC'; user rule is phone-only, no PC paths.",
+ "unblock": "Wire the already-banked No Mercy/WMXIX rows first (no extraction needed); Workshop/Move Craft pulls wait on an owned install + Move Craft DLC confirmation.",
+ "canon_rule": "Anything brought in with another game's name is renamed to Eastern Mind / Western Heart canon in user-facing writing. Tekken/proprietary names stay in technical files only. Game ships with NO famous names. All characters adults. User's own models (Tripo + SmutBase) display FIRST; Tekken models are back-slot attires. Sole exception: Pantera Attire 1 (user-customized King reskin).",
+ "combat_inputs": "LP1=Left Punch=Tekken 1, RP2=Right Punch=Tekken 2, LK3=Left Kick=Tekken 3, RK4=Right Kick=Tekken 4. Frame data / MOD damage: UNMAPPED unless a source file in this pack contains it — never estimated as measured.",
+ "community_sources": [
+  "https://steamcommunity.com/sharedfiles/filedetails/?id=2149091435"
+ ]
+}

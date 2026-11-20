@@ -1,0 +1,2275 @@
+{
+ "$schema": "wh.anatomy-layers/2",
+ "schema_version": "wh.anatomy-layers/2",
+ "fighter": "deathfang",
+ "generated": "2026-10-31",
+ "generator": "tools/anatomy/generate_layers.py",
+ "units": "meters",
+ "source": {
+  "glb": "roster/deathfang/attires/attire1/model.glb",
+  "mesh": 0,
+  "skin": 0,
+  "joint_name_map": {
+   "Hips": "hips",
+   "Spine": "spine",
+   "Spine2": "chest",
+   "LeftShoulder": "shoulder.L",
+   "RightShoulder": "shoulder.R",
+   "Neck": "neck",
+   "Head": "head",
+   "LeftUpLeg": "thigh.L",
+   "LeftLeg": "shin.L",
+   "LeftFoot": "foot.L",
+   "RightUpLeg": "thigh.R",
+   "RightLeg": "shin.R",
+   "RightFoot": "foot.R"
+  },
+  "joints": 73,
+  "vertices": 67755,
+  "mesh_rectification_y_deg": 0,
+  "mesh_rectification_note": "mesh verts rotated about Y by this angle into skeleton space; 0 = already aligned",
+  "rig_front": [
+   0.0,
+   0.0,
+   1.0
+  ],
+  "rig_front_note": "rig facing from bilateral naming; muscle \"front\" offsets use this direction"
+ },
+ "skeleton": {
+  "hips": {
+   "pos": [
+    0.0,
+    0.9183,
+    -0.0502
+   ],
+   "parent": null
+  },
+  "spine": {
+   "pos": [
+    0.0,
+    1.0523,
+    -0.0156
+   ],
+   "parent": "hips"
+  },
+  "Spine1": {
+   "pos": [
+    0.0,
+    1.1756,
+    -0.0004
+   ],
+   "parent": "spine"
+  },
+  "chest": {
+   "pos": [
+    0.0,
+    1.3327,
+    -0.0054
+   ],
+   "parent": null
+  },
+  "LeftBreast": {
+   "pos": [
+    0.1077,
+    1.3272,
+    -0.0441
+   ],
+   "parent": "chest"
+  },
+  "RightBreast": {
+   "pos": [
+    -0.1077,
+    1.3272,
+    -0.0441
+   ],
+   "parent": "chest"
+  },
+  "shoulder.L": {
+   "pos": [
+    0.0189,
+    1.4595,
+    0.0622
+   ],
+   "parent": "chest"
+  },
+  "LeftArm": {
+   "pos": [
+    0.2013,
+    1.4408,
+    -0.0243
+   ],
+   "parent": "shoulder.L"
+  },
+  "LeftArm.001": {
+   "pos": [
+    0.359,
+    1.4395,
+    -0.0249
+   ],
+   "parent": null
+  },
+  "LeftForeArm": {
+   "pos": [
+    0.5167,
+    1.4381,
+    -0.0255
+   ],
+   "parent": null
+  },
+  "LeftForeArm.001": {
+   "pos": [
+    0.6434,
+    1.4366,
+    -0.0251
+   ],
+   "parent": null
+  },
+  "LeftHand": {
+   "pos": [
+    0.7702,
+    1.4351,
+    -0.0247
+   ],
+   "parent": null
+  },
+  "LeftHandPalm1": {
+   "pos": [
+    0.7132,
+    1.2036,
+    -0.0178
+   ],
+   "parent": null
+  },
+  "LeftHandIndex1": {
+   "pos": [
+    0.7692,
+    1.1672,
+    -0.002
+   ],
+   "parent": null
+  },
+  "LeftHandIndex2": {
+   "pos": [
+    0.9015,
+    1.1659,
+    0.004
+   ],
+   "parent": null
+  },
+  "LeftHandIndex3": {
+   "pos": [
+    0.9157,
+    1.1428,
+    0.0055
+   ],
+   "parent": null
+  },
+  "LeftHandThumb1": {
+   "pos": [
+    0.691,
+    1.1905,
+    -0.0168
+   ],
+   "parent": null
+  },
+  "LeftHandThumb2": {
+   "pos": [
+    0.8009,
+    1.1924,
+    0.0039
+   ],
+   "parent": null
+  },
+  "LeftHandThumb3": {
+   "pos": [
+    0.8241,
+    1.1689,
+    0.0104
+   ],
+   "parent": null
+  },
+  "LeftHandPalm2": {
+   "pos": [
+    0.7183,
+    1.2032,
+    -0.0328
+   ],
+   "parent": null
+  },
+  "LeftHandMiddle1": {
+   "pos": [
+    0.7748,
+    1.1677,
+    -0.0226
+   ],
+   "parent": null
+  },
+  "LeftHandMiddle2": {
+   "pos": [
+    0.9066,
+    1.161,
+    -0.0161
+   ],
+   "parent": null
+  },
+  "LeftHandMiddle3": {
+   "pos": [
+    0.917,
+    1.1329,
+    -0.0146
+   ],
+   "parent": null
+  },
+  "LeftHandPalm3": {
+   "pos": [
+    0.7176,
+    1.2029,
+    -0.0469
+   ],
+   "parent": null
+  },
+  "LeftHandRing1": {
+   "pos": [
+    0.777,
+    1.1672,
+    -0.0448
+   ],
+   "parent": null
+  },
+  "LeftHandRing2": {
+   "pos": [
+    0.9011,
+    1.1621,
+    -0.0402
+   ],
+   "parent": null
+  },
+  "LeftHandRing3": {
+   "pos": [
+    0.9103,
+    1.1341,
+    -0.0397
+   ],
+   "parent": null
+  },
+  "LeftHandPalm4": {
+   "pos": [
+    0.7141,
+    1.2026,
+    -0.0607
+   ],
+   "parent": null
+  },
+  "LeftHandPinky1": {
+   "pos": [
+    0.7758,
+    1.1623,
+    -0.0668
+   ],
+   "parent": null
+  },
+  "LeftHandPinky2": {
+   "pos": [
+    0.8864,
+    1.1699,
+    -0.0643
+   ],
+   "parent": null
+  },
+  "LeftHandPinky3": {
+   "pos": [
+    0.8898,
+    1.1495,
+    -0.0648
+   ],
+   "parent": null
+  },
+  "shoulder.R": {
+   "pos": [
+    -0.0189,
+    1.4595,
+    0.0622
+   ],
+   "parent": "chest"
+  },
+  "RightArm": {
+   "pos": [
+    -0.2013,
+    1.4408,
+    -0.0243
+   ],
+   "parent": "shoulder.R"
+  },
+  "RightArm.001": {
+   "pos": [
+    -0.359,
+    1.4395,
+    -0.0249
+   ],
+   "parent": null
+  },
+  "RightForeArm": {
+   "pos": [
+    -0.5167,
+    1.4381,
+    -0.0255
+   ],
+   "parent": null
+  },
+  "RightForeArm.001": {
+   "pos": [
+    -0.6434,
+    1.4366,
+    -0.0251
+   ],
+   "parent": null
+  },
+  "RightHand": {
+   "pos": [
+    -0.7702,
+    1.4351,
+    -0.0247
+   ],
+   "parent": null
+  },
+  "RightHandPalm1": {
+   "pos": [
+    -0.7132,
+    1.2036,
+    -0.0178
+   ],
+   "parent": null
+  },
+  "RightHandIndex1": {
+   "pos": [
+    -0.7692,
+    1.1672,
+    -0.002
+   ],
+   "parent": null
+  },
+  "RightHandIndex2": {
+   "pos": [
+    -0.9015,
+    1.1659,
+    0.0041
+   ],
+   "parent": null
+  },
+  "RightHandIndex3": {
+   "pos": [
+    -0.9157,
+    1.1428,
+    0.0055
+   ],
+   "parent": null
+  },
+  "RightHandThumb1": {
+   "pos": [
+    -0.691,
+    1.1905,
+    -0.0168
+   ],
+   "parent": null
+  },
+  "RightHandThumb2": {
+   "pos": [
+    -0.8009,
+    1.1924,
+    0.0039
+   ],
+   "parent": null
+  },
+  "RightHandThumb3": {
+   "pos": [
+    -0.8241,
+    1.1689,
+    0.0104
+   ],
+   "parent": null
+  },
+  "RightHandPalm2": {
+   "pos": [
+    -0.7183,
+    1.2032,
+    -0.0328
+   ],
+   "parent": null
+  },
+  "RightHandMiddle1": {
+   "pos": [
+    -0.7748,
+    1.1677,
+    -0.0226
+   ],
+   "parent": null
+  },
+  "RightHandMiddle2": {
+   "pos": [
+    -0.9066,
+    1.161,
+    -0.016
+   ],
+   "parent": null
+  },
+  "RightHandMiddle3": {
+   "pos": [
+    -0.917,
+    1.1329,
+    -0.0146
+   ],
+   "parent": null
+  },
+  "RightHandPalm3": {
+   "pos": [
+    -0.7176,
+    1.2029,
+    -0.0469
+   ],
+   "parent": null
+  },
+  "RightHandRing1": {
+   "pos": [
+    -0.777,
+    1.1672,
+    -0.0448
+   ],
+   "parent": null
+  },
+  "RightHandRing2": {
+   "pos": [
+    -0.9011,
+    1.1621,
+    -0.0402
+   ],
+   "parent": null
+  },
+  "RightHandRing3": {
+   "pos": [
+    -0.9103,
+    1.1341,
+    -0.0397
+   ],
+   "parent": null
+  },
+  "RightHandPalm4": {
+   "pos": [
+    -0.7141,
+    1.2026,
+    -0.0607
+   ],
+   "parent": null
+  },
+  "RightHandPinky1": {
+   "pos": [
+    -0.7758,
+    1.1623,
+    -0.0668
+   ],
+   "parent": null
+  },
+  "RightHandPinky2": {
+   "pos": [
+    -0.8864,
+    1.1699,
+    -0.0643
+   ],
+   "parent": null
+  },
+  "RightHandPinky3": {
+   "pos": [
+    -0.8898,
+    1.1495,
+    -0.0648
+   ],
+   "parent": null
+  },
+  "neck": {
+   "pos": [
+    0.0,
+    1.5078,
+    -0.0104
+   ],
+   "parent": "chest"
+  },
+  "head": {
+   "pos": [
+    0.0,
+    1.5637,
+    0.0118
+   ],
+   "parent": "neck"
+  },
+  "HeadTop": {
+   "pos": [
+    0.0,
+    1.6197,
+    0.0225
+   ],
+   "parent": "head"
+  },
+  "LeftPelvis": {
+   "pos": [
+    0.0,
+    0.9183,
+    -0.0502
+   ],
+   "parent": "hips"
+  },
+  "RightPelvis": {
+   "pos": [
+    0.0,
+    0.9183,
+    -0.0502
+   ],
+   "parent": "hips"
+  },
+  "thigh.L": {
+   "pos": [
+    0.1034,
+    0.9747,
+    -0.0113
+   ],
+   "parent": "hips"
+  },
+  "LeftUpLeg.001": {
+   "pos": [
+    0.1117,
+    0.7316,
+    0.0074
+   ],
+   "parent": "thigh.L"
+  },
+  "shin.L": {
+   "pos": [
+    0.1201,
+    0.4885,
+    0.026
+   ],
+   "parent": "thigh.L"
+  },
+  "LeftLeg.001": {
+   "pos": [
+    0.1201,
+    0.283,
+    0.0056
+   ],
+   "parent": "shin.L"
+  },
+  "foot.L": {
+   "pos": [
+    0.1201,
+    0.0775,
+    -0.0147
+   ],
+   "parent": "shin.L"
+  },
+  "LeftToeBase": {
+   "pos": [
+    0.1201,
+    0.0152,
+    0.0849
+   ],
+   "parent": "foot.L"
+  },
+  "thigh.R": {
+   "pos": [
+    -0.1034,
+    0.9747,
+    -0.0113
+   ],
+   "parent": "hips"
+  },
+  "RightUpLeg.001": {
+   "pos": [
+    -0.1117,
+    0.7316,
+    0.0074
+   ],
+   "parent": "thigh.R"
+  },
+  "shin.R": {
+   "pos": [
+    -0.1201,
+    0.4885,
+    0.026
+   ],
+   "parent": "thigh.R"
+  },
+  "RightLeg.001": {
+   "pos": [
+    -0.1201,
+    0.283,
+    0.0056
+   ],
+   "parent": "shin.R"
+  },
+  "foot.R": {
+   "pos": [
+    -0.1201,
+    0.0775,
+    -0.0147
+   ],
+   "parent": "shin.R"
+  },
+  "RightToeBase": {
+   "pos": [
+    -0.1201,
+    0.0152,
+    0.0849
+   ],
+   "parent": "foot.R"
+  }
+ },
+ "layers": {
+  "bone": {
+   "primitives": [
+    {
+     "kind": "capsule",
+     "a": [
+      0.0189,
+      1.4595,
+      0.0622
+     ],
+     "b": [
+      0.8205,
+      1.355,
+      -0.0528
+     ],
+     "r": 0.0504,
+     "id": "bone_shoulder.L",
+     "joint": "shoulder.L",
+     "morph": "bone_scale_limbs"
+    },
+    {
+     "kind": "capsule",
+     "a": [
+      0.1034,
+      0.9747,
+      -0.0113
+     ],
+     "b": [
+      0.1201,
+      0.4885,
+      0.026
+     ],
+     "r": 0.0667,
+     "id": "bone_thigh.L",
+     "joint": "thigh.L",
+     "morph": "bone_scale_limbs"
+    },
+    {
+     "kind": "capsule",
+     "a": [
+      0.1201,
+      0.4885,
+      0.026
+     ],
+     "b": [
+      0.1201,
+      0.0775,
+      -0.0147
+     ],
+     "r": 0.0562,
+     "id": "bone_shin.L",
+     "joint": "shin.L",
+     "morph": "bone_scale_limbs"
+    },
+    {
+     "kind": "capsule",
+     "a": [
+      -0.0189,
+      1.4595,
+      0.0622
+     ],
+     "b": [
+      -0.8207,
+      1.3657,
+      -0.014
+     ],
+     "r": 0.0504,
+     "id": "bone_shoulder.R",
+     "joint": "shoulder.R",
+     "morph": "bone_scale_limbs"
+    },
+    {
+     "kind": "capsule",
+     "a": [
+      -0.1034,
+      0.9747,
+      -0.0113
+     ],
+     "b": [
+      -0.1201,
+      0.4885,
+      0.026
+     ],
+     "r": 0.0736,
+     "id": "bone_thigh.R",
+     "joint": "thigh.R",
+     "morph": "bone_scale_limbs"
+    },
+    {
+     "kind": "capsule",
+     "a": [
+      -0.1201,
+      0.4885,
+      0.026
+     ],
+     "b": [
+      -0.1201,
+      0.0775,
+      -0.0147
+     ],
+     "r": 0.0559,
+     "id": "bone_shin.R",
+     "joint": "shin.R",
+     "morph": "bone_scale_limbs"
+    },
+    {
+     "kind": "capsule",
+     "a": [
+      0.0,
+      0.9183,
+      -0.0502
+     ],
+     "b": [
+      0.0,
+      1.0523,
+      -0.0156
+     ],
+     "r": 0.0249,
+     "id": "bone_spine",
+     "joint": "spine",
+     "morph": "bone_scale_spine"
+    },
+    {
+     "kind": "capsule",
+     "a": [
+      0.0,
+      1.0523,
+      -0.0156
+     ],
+     "b": [
+      0.0,
+      1.1756,
+      -0.0004
+     ],
+     "r": 0.0224,
+     "id": "bone_Spine1",
+     "joint": "Spine1",
+     "morph": "bone_scale_spine"
+    },
+    {
+     "kind": "capsule",
+     "a": [
+      0.0,
+      1.3327,
+      -0.0054
+     ],
+     "b": [
+      0.0,
+      1.5078,
+      -0.0104
+     ],
+     "r": 0.0315,
+     "id": "bone_neck",
+     "joint": "neck",
+     "morph": "bone_scale_spine"
+    },
+    {
+     "kind": "ellipsoid",
+     "center": [
+      0.0,
+      1.5847,
+      0.0218
+     ],
+     "radii": [
+      0.0361,
+      0.0457,
+      0.0409
+     ],
+     "id": "bone_skull",
+     "joint": "head",
+     "morph": "bone_scale_skull"
+    },
+    {
+     "kind": "ellipsoid",
+     "center": [
+      0.0,
+      1.3527,
+      -0.0054
+     ],
+     "radii": [
+      0.0074,
+      0.009,
+      0.0058
+     ],
+     "id": "bone_ribcage",
+     "joint": "chest",
+     "morph": "bone_scale_ribcage"
+    },
+    {
+     "kind": "ellipsoid",
+     "center": [
+      0.0,
+      0.9183,
+      -0.0502
+     ],
+     "radii": [
+      0.0077,
+      0.0058,
+      0.0055
+     ],
+     "id": "bone_pelvis",
+     "joint": "hips",
+     "morph": "bone_scale_pelvis"
+    }
+   ]
+  },
+  "muscle": {
+   "groups": [
+    {
+     "id": "trapezius",
+     "label": "Trapezius",
+     "side": "C",
+     "primitives": [
+      {
+       "kind": "ellipsoid",
+       "center": [
+        0.0,
+        1.4778,
+        -0.0104
+       ],
+       "radii": [
+        0.0665,
+        0.038,
+        0.042
+       ]
+      }
+     ],
+     "bulk_param": "muscle_trapezius",
+     "base_radius": 0.0488
+    },
+    {
+     "id": "neck",
+     "label": "Neck",
+     "side": "C",
+     "primitives": [
+      {
+       "kind": "capsule",
+       "a": [
+        0.0,
+        1.5078,
+        -0.0104
+       ],
+       "b": [
+        0.0,
+        1.5581,
+        0.0096
+       ],
+       "r": 0.0168
+      }
+     ],
+     "bulk_param": "muscle_neck",
+     "base_radius": 0.0168
+    },
+    {
+     "id": "deltoid.L",
+     "label": "Deltoid",
+     "side": "L",
+     "primitives": [
+      {
+       "kind": "ellipsoid",
+       "center": [
+        0.067,
+        1.4532,
+        0.0553
+       ],
+       "radii": [
+        0.072,
+        0.0874,
+        0.072
+       ]
+      }
+     ],
+     "bulk_param": "muscle_deltoid_L",
+     "base_radius": 0.0771
+    },
+    {
+     "id": "biceps.L",
+     "label": "Biceps",
+     "side": "L",
+     "primitives": [
+      {
+       "kind": "capsule",
+       "a": [
+        0.1344,
+        1.4444,
+        0.0699
+       ],
+       "b": [
+        0.391,
+        1.411,
+        0.0331
+       ],
+       "r": 0.0535
+      }
+     ],
+     "bulk_param": "muscle_biceps_L",
+     "base_radius": 0.0535
+    },
+    {
+     "id": "triceps.L",
+     "label": "Triceps",
+     "side": "L",
+     "primitives": [
+      {
+       "kind": "capsule",
+       "a": [
+        0.128,
+        1.4452,
+        0.0241
+       ],
+       "b": [
+        0.3845,
+        1.4118,
+        -0.0127
+       ],
+       "r": 0.0494
+      }
+     ],
+     "bulk_param": "muscle_triceps_L",
+     "base_radius": 0.0494
+    },
+    {
+     "id": "forearm.L",
+     "label": "Forearm",
+     "side": "L",
+     "primitives": [
+      {
+       "kind": "capsule",
+       "a": [
+        0.4357,
+        1.4051,
+        0.0024
+       ],
+       "b": [
+        0.7724,
+        1.3612,
+        -0.0459
+       ],
+       "r": 0.0432
+      }
+     ],
+     "bulk_param": "muscle_forearm_L",
+     "base_radius": 0.0432
+    },
+    {
+     "id": "deltoid.R",
+     "label": "Deltoid",
+     "side": "R",
+     "primitives": [
+      {
+       "kind": "ellipsoid",
+       "center": [
+        -0.067,
+        1.4539,
+        0.0576
+       ],
+       "radii": [
+        0.072,
+        0.0874,
+        0.072
+       ]
+      }
+     ],
+     "bulk_param": "muscle_deltoid_R",
+     "base_radius": 0.0771
+    },
+    {
+     "id": "biceps.R",
+     "label": "Biceps",
+     "side": "R",
+     "primitives": [
+      {
+       "kind": "capsule",
+       "a": [
+        -0.1334,
+        1.4461,
+        0.0755
+       ],
+       "b": [
+        -0.39,
+        1.4161,
+        0.0511
+       ],
+       "r": 0.0535
+      }
+     ],
+     "bulk_param": "muscle_biceps_R",
+     "base_radius": 0.0535
+    },
+    {
+     "id": "triceps.R",
+     "label": "Triceps",
+     "side": "R",
+     "primitives": [
+      {
+       "kind": "capsule",
+       "a": [
+        -0.129,
+        1.4466,
+        0.0294
+       ],
+       "b": [
+        -0.3856,
+        1.4166,
+        0.005
+       ],
+       "r": 0.0494
+      }
+     ],
+     "bulk_param": "muscle_triceps_R",
+     "base_radius": 0.0494
+    },
+    {
+     "id": "forearm.R",
+     "label": "Forearm",
+     "side": "R",
+     "primitives": [
+      {
+       "kind": "capsule",
+       "a": [
+        -0.4358,
+        1.4107,
+        0.0226
+       ],
+       "b": [
+        -0.7726,
+        1.3714,
+        -0.0095
+       ],
+       "r": 0.0432
+      }
+     ],
+     "bulk_param": "muscle_forearm_R",
+     "base_radius": 0.0432
+    },
+    {
+     "id": "pectoralis.L",
+     "label": "Pectoralis",
+     "side": "L",
+     "primitives": [
+      {
+       "kind": "ellipsoid",
+       "center": [
+        -0.004,
+        1.3627,
+        0.0003
+       ],
+       "radii": [
+        0.0036,
+        0.0034,
+        0.0025
+       ]
+      }
+     ],
+     "bulk_param": "muscle_pectoralis_L",
+     "base_radius": 0.0031
+    },
+    {
+     "id": "latissimus.L",
+     "label": "Latissimus",
+     "side": "L",
+     "primitives": [
+      {
+       "kind": "ellipsoid",
+       "center": [
+        -0.0066,
+        1.3027,
+        -0.0089
+       ],
+       "radii": [
+        0.0028,
+        0.0045,
+        0.0026
+       ]
+      }
+     ],
+     "bulk_param": "muscle_latissimus_L",
+     "base_radius": 0.0033
+    },
+    {
+     "id": "pectoralis.R",
+     "label": "Pectoralis",
+     "side": "R",
+     "primitives": [
+      {
+       "kind": "ellipsoid",
+       "center": [
+        0.004,
+        1.3627,
+        0.0003
+       ],
+       "radii": [
+        0.0036,
+        0.0034,
+        0.0025
+       ]
+      }
+     ],
+     "bulk_param": "muscle_pectoralis_R",
+     "base_radius": 0.0031
+    },
+    {
+     "id": "latissimus.R",
+     "label": "Latissimus",
+     "side": "R",
+     "primitives": [
+      {
+       "kind": "ellipsoid",
+       "center": [
+        0.0066,
+        1.3027,
+        -0.0089
+       ],
+       "radii": [
+        0.0028,
+        0.0045,
+        0.0026
+       ]
+      }
+     ],
+     "bulk_param": "muscle_latissimus_R",
+     "base_radius": 0.0033
+    },
+    {
+     "id": "abdominals",
+     "label": "Abdominals",
+     "side": "C",
+     "primitives": [
+      {
+       "kind": "capsule",
+       "a": [
+        0.0,
+        1.0523,
+        -0.0105
+       ],
+       "b": [
+        0.0,
+        1.3327,
+        -0.0002
+       ],
+       "r": 0.0049
+      }
+     ],
+     "bulk_param": "muscle_abdominals",
+     "base_radius": 0.0049
+    },
+    {
+     "id": "obliques.L",
+     "label": "Obliques",
+     "side": "L",
+     "primitives": [
+      {
+       "kind": "capsule",
+       "a": [
+        -0.0068,
+        1.0523,
+        -0.0139
+       ],
+       "b": [
+        -0.0068,
+        1.3327,
+        -0.0037
+       ],
+       "r": 0.0028
+      }
+     ],
+     "bulk_param": "muscle_obliques_L",
+     "base_radius": 0.0028
+    },
+    {
+     "id": "obliques.R",
+     "label": "Obliques",
+     "side": "R",
+     "primitives": [
+      {
+       "kind": "capsule",
+       "a": [
+        0.0068,
+        1.0523,
+        -0.0139
+       ],
+       "b": [
+        0.0068,
+        1.3327,
+        -0.0037
+       ],
+       "r": 0.0028
+      }
+     ],
+     "bulk_param": "muscle_obliques_R",
+     "base_radius": 0.0028
+    },
+    {
+     "id": "gluteus.L",
+     "label": "Gluteus",
+     "side": "L",
+     "primitives": [
+      {
+       "kind": "ellipsoid",
+       "center": [
+        -0.085,
+        0.8833,
+        -0.1252
+       ],
+       "radii": [
+        0.072,
+        0.0669,
+        0.0566
+       ]
+      }
+     ],
+     "bulk_param": "muscle_gluteus_L",
+     "base_radius": 0.0651
+    },
+    {
+     "id": "gluteus.R",
+     "label": "Gluteus",
+     "side": "R",
+     "primitives": [
+      {
+       "kind": "ellipsoid",
+       "center": [
+        0.085,
+        0.8833,
+        -0.1252
+       ],
+       "radii": [
+        0.072,
+        0.0669,
+        0.0566
+       ]
+      }
+     ],
+     "bulk_param": "muscle_gluteus_R",
+     "base_radius": 0.0651
+    },
+    {
+     "id": "quadriceps.L",
+     "label": "Quadriceps",
+     "side": "L",
+     "primitives": [
+      {
+       "kind": "capsule",
+       "a": [
+        0.105,
+        0.9286,
+        0.0245
+       ],
+       "b": [
+        0.1175,
+        0.5639,
+        0.0524
+       ],
+       "r": 0.0802
+      }
+     ],
+     "bulk_param": "muscle_quadriceps_L",
+     "base_radius": 0.0802
+    },
+    {
+     "id": "hamstrings.L",
+     "label": "Hamstrings",
+     "side": "L",
+     "primitives": [
+      {
+       "kind": "capsule",
+       "a": [
+        0.1052,
+        0.924,
+        -0.0346
+       ],
+       "b": [
+        0.1176,
+        0.5593,
+        -0.0067
+       ],
+       "r": 0.0679
+      }
+     ],
+     "bulk_param": "muscle_hamstrings_L",
+     "base_radius": 0.0679
+    },
+    {
+     "id": "calves.L",
+     "label": "Calves",
+     "side": "L",
+     "primitives": [
+      {
+       "kind": "capsule",
+       "a": [
+        0.1201,
+        0.4417,
+        -0.0042
+       ],
+       "b": [
+        0.1201,
+        0.2115,
+        -0.027
+       ],
+       "r": 0.0566
+      }
+     ],
+     "bulk_param": "muscle_calves_L",
+     "base_radius": 0.0566
+    },
+    {
+     "id": "quadriceps.R",
+     "label": "Quadriceps",
+     "side": "R",
+     "primitives": [
+      {
+       "kind": "capsule",
+       "a": [
+        -0.105,
+        0.9286,
+        0.0245
+       ],
+       "b": [
+        -0.1175,
+        0.5639,
+        0.0524
+       ],
+       "r": 0.0802
+      }
+     ],
+     "bulk_param": "muscle_quadriceps_R",
+     "base_radius": 0.0802
+    },
+    {
+     "id": "hamstrings.R",
+     "label": "Hamstrings",
+     "side": "R",
+     "primitives": [
+      {
+       "kind": "capsule",
+       "a": [
+        -0.1052,
+        0.924,
+        -0.0346
+       ],
+       "b": [
+        -0.1176,
+        0.5593,
+        -0.0067
+       ],
+       "r": 0.0679
+      }
+     ],
+     "bulk_param": "muscle_hamstrings_R",
+     "base_radius": 0.0679
+    },
+    {
+     "id": "calves.R",
+     "label": "Calves",
+     "side": "R",
+     "primitives": [
+      {
+       "kind": "capsule",
+       "a": [
+        -0.1201,
+        0.4417,
+        -0.0042
+       ],
+       "b": [
+        -0.1201,
+        0.2115,
+        -0.027
+       ],
+       "r": 0.0566
+      }
+     ],
+     "bulk_param": "muscle_calves_R",
+     "base_radius": 0.0566
+    }
+   ]
+  },
+  "organ": {
+   "groups": [
+    {
+     "id": "heart",
+     "label": "Heart",
+     "side": "L",
+     "primitives": [
+      {
+       "kind": "ellipsoid",
+       "center": [
+        0.0028,
+        1.3294,
+        -0.0044
+       ],
+       "radii": [
+        0.015,
+        0.015,
+        0.015
+       ]
+      }
+     ],
+     "bulk_param": "organ_heart",
+     "base_radius": 0.0518
+    },
+    {
+     "id": "lung.L",
+     "label": "Lung",
+     "side": "L",
+     "primitives": [
+      {
+       "kind": "ellipsoid",
+       "center": [
+        0.0038,
+        1.3339,
+        -0.0054
+       ],
+       "radii": [
+        0.015,
+        0.015,
+        0.015
+       ]
+      }
+     ],
+     "bulk_param": "organ_lung_L",
+     "base_radius": 0.0042
+    },
+    {
+     "id": "lung.R",
+     "label": "Lung",
+     "side": "R",
+     "primitives": [
+      {
+       "kind": "ellipsoid",
+       "center": [
+        -0.0038,
+        1.3339,
+        -0.0054
+       ],
+       "radii": [
+        0.015,
+        0.015,
+        0.015
+       ]
+      }
+     ],
+     "bulk_param": "organ_lung_R",
+     "base_radius": 0.0042
+    },
+    {
+     "id": "liver",
+     "label": "Liver",
+     "side": "R",
+     "primitives": [
+      {
+       "kind": "ellipsoid",
+       "center": [
+        -0.0028,
+        1.142,
+        -0.0116
+       ],
+       "radii": [
+        0.015,
+        0.015,
+        0.015
+       ]
+      }
+     ],
+     "bulk_param": "organ_liver",
+     "base_radius": 0.0036
+    },
+    {
+     "id": "stomach",
+     "label": "Stomach",
+     "side": "L",
+     "primitives": [
+      {
+       "kind": "ellipsoid",
+       "center": [
+        0.0021,
+        1.2065,
+        -0.0087
+       ],
+       "radii": [
+        0.015,
+        0.015,
+        0.015
+       ]
+      }
+     ],
+     "bulk_param": "organ_stomach",
+     "base_radius": 0.0025
+    },
+    {
+     "id": "intestines.1",
+     "label": "Intestines",
+     "side": "C",
+     "primitives": [
+      {
+       "kind": "capsule",
+       "a": [
+        0.0,
+        0.9683,
+        -0.0492
+       ],
+       "b": [
+        0.0,
+        1.0123,
+        -0.0147
+       ],
+       "r": 0.015
+      }
+     ],
+     "bulk_param": "organ_intestines_1",
+     "base_radius": 0.0028
+    },
+    {
+     "id": "intestines.2",
+     "label": "Intestines",
+     "side": "C",
+     "primitives": [
+      {
+       "kind": "capsule",
+       "a": [
+        0.003,
+        1.0023,
+        -0.0149
+       ],
+       "b": [
+        -0.003,
+        0.9823,
+        -0.0149
+       ],
+       "r": 0.015
+      }
+     ],
+     "bulk_param": "organ_intestines_2",
+     "base_radius": 0.0023
+    }
+   ]
+  },
+  "fat": {
+   "baseline_global": 0.0103,
+   "regions": {
+    "head": {
+     "thickness": 0.0062,
+     "param": "fat_head"
+    },
+    "torso": {
+     "thickness": 0.0123,
+     "param": "fat_torso"
+    },
+    "arm.L": {
+     "thickness": 0.0082,
+     "param": "fat_arm_L"
+    },
+    "arm.R": {
+     "thickness": 0.0082,
+     "param": "fat_arm_R"
+    },
+    "leg.L": {
+     "thickness": 0.0103,
+     "param": "fat_leg_L"
+    },
+    "leg.R": {
+     "thickness": 0.0103,
+     "param": "fat_leg_R"
+    }
+   },
+   "thickness_param": "fat_thickness",
+   "note": "Per-region subcutaneous fat thickness. Morph params scale these baselines; the skin rides muscle+fat via bake_displacement."
+  },
+  "skin": {
+   "mesh_ref": "roster/deathfang/attires/attire1/model.glb#mesh0",
+   "morph_targets": [
+    "MPFB_bulk",
+    "MPFB_muscle",
+    "MPFB_fat"
+   ],
+   "note": "The skin layer IS the character mesh (referenced). MPFB shape keys stay the surface-morph path; anatomy morphs bake to per-vertex displacement along normals."
+  }
+ },
+ "morph_params": [
+  {
+   "id": "muscle_trapezius",
+   "layer": "muscle",
+   "label": "Trapezius bulk",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "group radius *= 1 + 0.55*v",
+   "applies_to": [
+    "trapezius"
+   ],
+   "suite_dial": "body.trapezius"
+  },
+  {
+   "id": "muscle_neck",
+   "layer": "muscle",
+   "label": "Neck bulk",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "group radius *= 1 + 0.55*v",
+   "applies_to": [
+    "neck"
+   ],
+   "suite_dial": "body.neck"
+  },
+  {
+   "id": "muscle_deltoid_L",
+   "layer": "muscle",
+   "label": "Deltoid bulk (L)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "group radius *= 1 + 0.55*v",
+   "applies_to": [
+    "deltoid.L"
+   ],
+   "suite_dial": "body.deltoid_L"
+  },
+  {
+   "id": "muscle_biceps_L",
+   "layer": "muscle",
+   "label": "Biceps bulk (L)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "group radius *= 1 + 0.55*v",
+   "applies_to": [
+    "biceps.L"
+   ],
+   "suite_dial": "body.biceps_L"
+  },
+  {
+   "id": "muscle_triceps_L",
+   "layer": "muscle",
+   "label": "Triceps bulk (L)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "group radius *= 1 + 0.55*v",
+   "applies_to": [
+    "triceps.L"
+   ],
+   "suite_dial": "body.triceps_L"
+  },
+  {
+   "id": "muscle_forearm_L",
+   "layer": "muscle",
+   "label": "Forearm bulk (L)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "group radius *= 1 + 0.55*v",
+   "applies_to": [
+    "forearm.L"
+   ],
+   "suite_dial": "body.forearm_L"
+  },
+  {
+   "id": "muscle_deltoid_R",
+   "layer": "muscle",
+   "label": "Deltoid bulk (R)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "group radius *= 1 + 0.55*v",
+   "applies_to": [
+    "deltoid.R"
+   ],
+   "suite_dial": "body.deltoid_R"
+  },
+  {
+   "id": "muscle_biceps_R",
+   "layer": "muscle",
+   "label": "Biceps bulk (R)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "group radius *= 1 + 0.55*v",
+   "applies_to": [
+    "biceps.R"
+   ],
+   "suite_dial": "body.biceps_R"
+  },
+  {
+   "id": "muscle_triceps_R",
+   "layer": "muscle",
+   "label": "Triceps bulk (R)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "group radius *= 1 + 0.55*v",
+   "applies_to": [
+    "triceps.R"
+   ],
+   "suite_dial": "body.triceps_R"
+  },
+  {
+   "id": "muscle_forearm_R",
+   "layer": "muscle",
+   "label": "Forearm bulk (R)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "group radius *= 1 + 0.55*v",
+   "applies_to": [
+    "forearm.R"
+   ],
+   "suite_dial": "body.forearm_R"
+  },
+  {
+   "id": "muscle_pectoralis_L",
+   "layer": "muscle",
+   "label": "Pectoralis bulk (L)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "group radius *= 1 + 0.55*v",
+   "applies_to": [
+    "pectoralis.L"
+   ],
+   "suite_dial": "body.pectoralis_L"
+  },
+  {
+   "id": "muscle_latissimus_L",
+   "layer": "muscle",
+   "label": "Latissimus bulk (L)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "group radius *= 1 + 0.55*v",
+   "applies_to": [
+    "latissimus.L"
+   ],
+   "suite_dial": "body.latissimus_L"
+  },
+  {
+   "id": "muscle_pectoralis_R",
+   "layer": "muscle",
+   "label": "Pectoralis bulk (R)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "group radius *= 1 + 0.55*v",
+   "applies_to": [
+    "pectoralis.R"
+   ],
+   "suite_dial": "body.pectoralis_R"
+  },
+  {
+   "id": "muscle_latissimus_R",
+   "layer": "muscle",
+   "label": "Latissimus bulk (R)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "group radius *= 1 + 0.55*v",
+   "applies_to": [
+    "latissimus.R"
+   ],
+   "suite_dial": "body.latissimus_R"
+  },
+  {
+   "id": "muscle_abdominals",
+   "layer": "muscle",
+   "label": "Abdominals bulk",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "group radius *= 1 + 0.55*v",
+   "applies_to": [
+    "abdominals"
+   ],
+   "suite_dial": "body.abdominals"
+  },
+  {
+   "id": "muscle_obliques_L",
+   "layer": "muscle",
+   "label": "Obliques bulk (L)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "group radius *= 1 + 0.55*v",
+   "applies_to": [
+    "obliques.L"
+   ],
+   "suite_dial": "body.obliques_L"
+  },
+  {
+   "id": "muscle_obliques_R",
+   "layer": "muscle",
+   "label": "Obliques bulk (R)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "group radius *= 1 + 0.55*v",
+   "applies_to": [
+    "obliques.R"
+   ],
+   "suite_dial": "body.obliques_R"
+  },
+  {
+   "id": "muscle_gluteus_L",
+   "layer": "muscle",
+   "label": "Gluteus bulk (L)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "group radius *= 1 + 0.55*v",
+   "applies_to": [
+    "gluteus.L"
+   ],
+   "suite_dial": "body.gluteus_L"
+  },
+  {
+   "id": "muscle_gluteus_R",
+   "layer": "muscle",
+   "label": "Gluteus bulk (R)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "group radius *= 1 + 0.55*v",
+   "applies_to": [
+    "gluteus.R"
+   ],
+   "suite_dial": "body.gluteus_R"
+  },
+  {
+   "id": "muscle_quadriceps_L",
+   "layer": "muscle",
+   "label": "Quadriceps bulk (L)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "group radius *= 1 + 0.55*v",
+   "applies_to": [
+    "quadriceps.L"
+   ],
+   "suite_dial": "body.quadriceps_L"
+  },
+  {
+   "id": "muscle_hamstrings_L",
+   "layer": "muscle",
+   "label": "Hamstrings bulk (L)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "group radius *= 1 + 0.55*v",
+   "applies_to": [
+    "hamstrings.L"
+   ],
+   "suite_dial": "body.hamstrings_L"
+  },
+  {
+   "id": "muscle_calves_L",
+   "layer": "muscle",
+   "label": "Calves bulk (L)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "group radius *= 1 + 0.55*v",
+   "applies_to": [
+    "calves.L"
+   ],
+   "suite_dial": "body.calves_L"
+  },
+  {
+   "id": "muscle_quadriceps_R",
+   "layer": "muscle",
+   "label": "Quadriceps bulk (R)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "group radius *= 1 + 0.55*v",
+   "applies_to": [
+    "quadriceps.R"
+   ],
+   "suite_dial": "body.quadriceps_R"
+  },
+  {
+   "id": "muscle_hamstrings_R",
+   "layer": "muscle",
+   "label": "Hamstrings bulk (R)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "group radius *= 1 + 0.55*v",
+   "applies_to": [
+    "hamstrings.R"
+   ],
+   "suite_dial": "body.hamstrings_R"
+  },
+  {
+   "id": "muscle_calves_R",
+   "layer": "muscle",
+   "label": "Calves bulk (R)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "group radius *= 1 + 0.55*v",
+   "applies_to": [
+    "calves.R"
+   ],
+   "suite_dial": "body.calves_R"
+  },
+  {
+   "id": "fat_head",
+   "layer": "fat",
+   "label": "Fat: head",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "region thickness *= 1 + 0.8*v",
+   "applies_to": [
+    "head"
+   ],
+   "suite_dial": "body.fat_head"
+  },
+  {
+   "id": "fat_torso",
+   "layer": "fat",
+   "label": "Fat: torso",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "region thickness *= 1 + 0.8*v",
+   "applies_to": [
+    "torso"
+   ],
+   "suite_dial": "body.fat_torso"
+  },
+  {
+   "id": "fat_arm_L",
+   "layer": "fat",
+   "label": "Fat: arm.L",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "region thickness *= 1 + 0.8*v",
+   "applies_to": [
+    "arm.L"
+   ],
+   "suite_dial": "body.fat_arm_L"
+  },
+  {
+   "id": "fat_arm_R",
+   "layer": "fat",
+   "label": "Fat: arm.R",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "region thickness *= 1 + 0.8*v",
+   "applies_to": [
+    "arm.R"
+   ],
+   "suite_dial": "body.fat_arm_R"
+  },
+  {
+   "id": "fat_leg_L",
+   "layer": "fat",
+   "label": "Fat: leg.L",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "region thickness *= 1 + 0.8*v",
+   "applies_to": [
+    "leg.L"
+   ],
+   "suite_dial": "body.fat_leg_L"
+  },
+  {
+   "id": "fat_leg_R",
+   "layer": "fat",
+   "label": "Fat: leg.R",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "region thickness *= 1 + 0.8*v",
+   "applies_to": [
+    "leg.R"
+   ],
+   "suite_dial": "body.fat_leg_R"
+  },
+  {
+   "id": "fat_thickness",
+   "layer": "fat",
+   "label": "Fat (global)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "all regions thickness *= 1 + 0.8*v",
+   "applies_to": [
+    "head",
+    "torso",
+    "arm.L",
+    "arm.R",
+    "leg.L",
+    "leg.R"
+   ],
+   "suite_dial": "body.fat_thickness"
+  },
+  {
+   "id": "bone_scale_limbs",
+   "layer": "bone",
+   "label": "Bone: limbs",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "bone radii *= 1 + 0.25*v",
+   "applies_to": [
+    "bone_shoulder.L",
+    "bone_thigh.L",
+    "bone_shin.L",
+    "bone_shoulder.R",
+    "bone_thigh.R",
+    "bone_shin.R"
+   ],
+   "suite_dial": "body.bone_scale_limbs"
+  },
+  {
+   "id": "bone_scale_pelvis",
+   "layer": "bone",
+   "label": "Bone: pelvis",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "bone radii *= 1 + 0.25*v",
+   "applies_to": [
+    "bone_pelvis"
+   ],
+   "suite_dial": "body.bone_scale_pelvis"
+  },
+  {
+   "id": "bone_scale_ribcage",
+   "layer": "bone",
+   "label": "Bone: ribcage",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "bone radii *= 1 + 0.25*v",
+   "applies_to": [
+    "bone_ribcage"
+   ],
+   "suite_dial": "body.bone_scale_ribcage"
+  },
+  {
+   "id": "bone_scale_skull",
+   "layer": "bone",
+   "label": "Bone: skull",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "bone radii *= 1 + 0.25*v",
+   "applies_to": [
+    "bone_skull"
+   ],
+   "suite_dial": "body.bone_scale_skull"
+  },
+  {
+   "id": "bone_scale_spine",
+   "layer": "bone",
+   "label": "Bone: spine",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "bone radii *= 1 + 0.25*v",
+   "applies_to": [
+    "bone_spine",
+    "bone_Spine1",
+    "bone_neck"
+   ],
+   "suite_dial": "body.bone_scale_spine"
+  },
+  {
+   "id": "organ_heart",
+   "layer": "organ",
+   "label": "Organ: Heart (L)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "organ radii *= 1 + 0.25*v",
+   "applies_to": [
+    "heart"
+   ],
+   "suite_dial": "body.organ_heart"
+  },
+  {
+   "id": "organ_lung_L",
+   "layer": "organ",
+   "label": "Organ: Lung (L)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "organ radii *= 1 + 0.25*v",
+   "applies_to": [
+    "lung.L"
+   ],
+   "suite_dial": "body.organ_lung_L"
+  },
+  {
+   "id": "organ_lung_R",
+   "layer": "organ",
+   "label": "Organ: Lung (R)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "organ radii *= 1 + 0.25*v",
+   "applies_to": [
+    "lung.R"
+   ],
+   "suite_dial": "body.organ_lung_R"
+  },
+  {
+   "id": "organ_liver",
+   "layer": "organ",
+   "label": "Organ: Liver (R)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "organ radii *= 1 + 0.25*v",
+   "applies_to": [
+    "liver"
+   ],
+   "suite_dial": "body.organ_liver"
+  },
+  {
+   "id": "organ_stomach",
+   "layer": "organ",
+   "label": "Organ: Stomach (L)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "organ radii *= 1 + 0.25*v",
+   "applies_to": [
+    "stomach"
+   ],
+   "suite_dial": "body.organ_stomach"
+  },
+  {
+   "id": "organ_intestines_1",
+   "layer": "organ",
+   "label": "Organ: Intestines",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "organ radii *= 1 + 0.25*v",
+   "applies_to": [
+    "intestines.1"
+   ],
+   "suite_dial": "body.organ_intestines_1"
+  },
+  {
+   "id": "organ_intestines_2",
+   "layer": "organ",
+   "label": "Organ: Intestines",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "organ radii *= 1 + 0.25*v",
+   "applies_to": [
+    "intestines.2"
+   ],
+   "suite_dial": "body.organ_intestines_2"
+  }
+ ]
+}

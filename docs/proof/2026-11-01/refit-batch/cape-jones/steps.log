@@ -1,0 +1,428 @@
+$ /usr/bin/python3 /home/user/western-heart/tools/auto_rig/refit_skeleton.py --mesh /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-qh3lhozq/decoded.glb --out /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-qh3lhozq/fit.json --facing=-Z --static-out /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-qh3lhozq/static.glb
+{
+ "height_m": 1.75,
+ "notes": {
+  "template_turned_180": true,
+  "template_relabelled_LR": false,
+  "scale": 1.0,
+  "start_offset_z_m": 0.0274,
+  "Hips": 4520,
+  "Spine": 9044,
+  "Spine1": 8551,
+  "Spine2": 6586,
+  "Neck": 5593,
+  "Head": 4933,
+  "LeftUpLeg": 3346,
+  "LeftLeg": 3955,
+  "LeftFoot": 1308,
+  "LeftToeBase": {
+   "heel_z": -0.035,
+   "tip_z": 0.252
+  },
+  "RightUpLeg": 3473,
+  "RightLeg": 4057,
+  "RightFoot": 1274,
+  "RightToeBase": {
+   "heel_z": -0.035,
+   "tip_z": 0.252
+  },
+  "LeftArm": 5901,
+  "LeftForeArm": 4149,
+  "LeftHand": 3376,
+  "RightArm": 5990,
+  "RightForeArm": 4196,
+  "RightHand": 3779
+ }
+}
+
+$ /usr/bin/python3 /home/user/western-heart/tools/auto_rig/refit_landmarks.py --fit /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-qh3lhozq/fit.json --out /home/user/western-heart/docs/proof/2026-11-01/refit-batch/cape-jones/fit_landmarks.json
+{
+ "tool": "tools/auto_rig/refit_landmarks.py",
+ "Left_arm": {
+  "armpit_x": 0.3324,
+  "clean_from_x": 0.3124,
+  "fingertip_x": 0.928,
+  "finger_scale": 0.964,
+  "arm_angle_below_horizontal_deg": 0
+ },
+ "Right_arm": {
+  "armpit_x": 0.3337,
+  "clean_from_x": 0.3117,
+  "fingertip_x": 0.9273,
+  "finger_scale": 0.968,
+  "arm_angle_below_horizontal_deg": 0
+ },
+ "legs": {
+  "skipped": "mid-line filled down to the knee (skirt/coat?): crotch not measurable"
+ },
+ "neck_head_from": "front profile: neck base y 1.4113, chin y 1.4883",
+ "mirrored_missing_joints": [
+  "LeftHandThumb3"
+ ],
+ "arm_line_y": {
+  "template_fit": 1.4143,
+  "mesh": 1.3623
+ }
+}
+Spine          [0.0004, 1.1562, 0.0337] -> [0.00038, 1.13131, 0.09638]  (0.067 m)
+Spine1         [0.0004, 1.2669, 0.0349] -> [0.00038, 1.21298, 0.08713]  (0.075 m)
+Spine2         [0.0004, 1.3935, 0.0264] -> [0.00038, 1.30631, 0.06276]  (0.095 m)
+Neck           [0.0004, 1.5358, 0.0699] -> [0.00038, 1.41131, 0.00706]  (0.140 m)
+Head           [0.0004, 1.5686, 0.0904] -> [0.00038, 1.48831, -0.00079]  (0.121 m)
+LeftShoulder   [0.0663, 1.4462, 0.0309] -> [0.06634, 1.39487, 0.05311]  (0.056 m)
+LeftArm        [0.2073, 1.4144, 0.0355] -> [0.3128, 1.36308, 0.04346]  (0.118 m)
+LeftForeArm    [0.4389, 1.3672, 0.0607] -> [0.5268, 1.36798, 0.05817]  (0.088 m)
+LeftHand       [0.6796, 1.3721, 0.0678] -> [0.7128, 1.37224, 0.07096]  (0.033 m)
+RightShoulder  [-0.0692, 1.4461, 0.0303] -> [-0.06919, 1.39338, 0.05269]  (0.057 m)
+RightArm       [-0.2098, 1.4143, 0.0343] -> [-0.31128, 1.36154, 0.04262]  (0.115 m)
+RightForeArm   [-0.4414, 1.367, 0.0605] -> [-0.52528, 1.36773, 0.05771]  (0.084 m)
+RightHand      [-0.6828, 1.3722, 0.0679] -> [-0.71128, 1.37311, 0.07082]  (0.029 m)
+
+$ xvfb-run -a env -u PYTHONPATH XDG_RUNTIME_DIR=/tmp /tmp/claude-0/-home-user-western-heart/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/blender/blender-4.0.2-linux-x64/blender -b --factory-startup --python-exit-code 1 --python /home/user/western-heart/tools/auto_rig/backends/heat_rebind.py -- --in /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-qh3lhozq/static.glb --fit /home/user/western-heart/docs/proof/2026-11-01/refit-batch/cape-jones/fit_landmarks.json --out /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-qh3lhozq/rig.glb --metrics-out /home/user/western-heart/docs/proof/2026-11-01/refit-batch/cape-jones/heat_rebind_metrics.json --height 1.75 --donor /home/user/western-heart/assets/free-pull-1/cmu-mocap/fighting/135_04.bvh
+Blender 4.0.2 (hash 9be62e85b727 built 2023-12-05 08:48:50)
+Data are loaded, start creating Blender stuff
+glTF import finished in 10.38s
+	parsing bvh '/home/user/western-heart/assets/free-pull-1/cmu-mocap/fighting/135_04.bvh'...	zero length node found: Hips
+0.0846
+	importing to blender...	zero length bone found: Spine1
+	zero length bone found: LeftHand
+	zero length bone found: RightHand
+Done in 0.3314
+
+16:18:53 | INFO: Draco mesh compression is available, use library at /tmp/claude-0/-home-user-western-heart/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/blender/blender-4.0.2-linux-x64/4.0/python/lib/python3.10/site-packages/libextern_draco.so
+16:18:54 | INFO: Starting glTF 2.0 export
+16:18:59 | INFO: Extracting primitive: Mesh_0
+16:19:14 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+16:19:28 | INFO: Primitives created: 1
+16:21:33 | INFO: Finished glTF 2.0 export in 158.98902082443237 s
+
+HEAT_REBIND {"bones": 50, "unweighted_fixed": 0, "out_bytes": 82436176}
+
+Blender quit
+
+$ /usr/bin/python3 /home/user/western-heart/tools/auto_rig/head_territory.py --in /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-qh3lhozq/rig.glb --out /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-qh3lhozq/rig_t.glb --report /home/user/western-heart/docs/proof/2026-11-01/refit-batch/cape-jones/head_territory.json
+{
+ "input": "/tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-qh3lhozq/rig.glb",
+ "tool": "tools/auto_rig/head_territory.py",
+ "primitives": [
+  {
+   "neck_r_m": 0.105,
+   "arm_r_m": 0.0751,
+   "welded_verts": 957603,
+   "barrier": {
+    "neck": 56897,
+    "arm": 50745,
+    "torso": 807434
+   },
+   "back_plane_samples": 8,
+   "seeds": 59103,
+   "territory_welded": 108365,
+   "territory_below_neck_joint": 0,
+   "territory_lowest_y": 1.4114,
+   "contact_sources": 1496,
+   "band_m": 0.14,
+   "territory_within_band": 76443,
+   "parts": 1,
+   "verts": 993780,
+   "territory_verts": 111452,
+   "neck_band_verts": 916,
+   "territory_faded_verts": 78994,
+   "head_weight_mean_in_territory_before": 0.398,
+   "territory_verts_that_had_head_below_0.5": 68164
+  }
+ ]
+}
+
+$ /usr/bin/python3 /home/user/western-heart/tools/auto_rig/backends/seam_safe_smooth.py --in /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-qh3lhozq/rig_t.glb --out /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-qh3lhozq/rig_s.glb --gate 2.5 --rounds 24 --report /home/user/western-heart/docs/proof/2026-11-01/refit-batch/cape-jones/seam_safe_smooth.json
+round 0: p99.9 2.760, edges > 2.0: 21256
+round 1: smoothed 35983 welded verts -> p99.9 2.789, edges > 2.0: 18615
+round 2: smoothed 38487 welded verts -> p99.9 2.780, edges > 2.0: 18731
+round 3: smoothed 41575 welded verts -> p99.9 2.768, edges > 2.0: 18749
+round 4: smoothed 43364 welded verts -> p99.9 2.763, edges > 2.0: 18719
+round 5: smoothed 44755 welded verts -> p99.9 2.755, edges > 2.0: 18667
+round 6: smoothed 45811 welded verts -> p99.9 2.756, edges > 2.0: 18633
+round 7: smoothed 46506 welded verts -> p99.9 2.751, edges > 2.0: 18609
+round 8: smoothed 47384 welded verts -> p99.9 2.749, edges > 2.0: 18563
+round 9: smoothed 47836 welded verts -> p99.9 2.746, edges > 2.0: 18500
+round 10: smoothed 48267 welded verts -> p99.9 2.745, edges > 2.0: 18437
+round 11: smoothed 48547 welded verts -> p99.9 2.743, edges > 2.0: 18398
+round 12: smoothed 49008 welded verts -> p99.9 2.741, edges > 2.0: 18320
+round 13: smoothed 49093 welded verts -> p99.9 2.739, edges > 2.0: 18217
+round 14: smoothed 49228 welded verts -> p99.9 2.738, edges > 2.0: 18167
+round 15: smoothed 49286 welded verts -> p99.9 2.735, edges > 2.0: 18103
+round 16: smoothed 49518 welded verts -> p99.9 2.731, edges > 2.0: 18055
+round 17: smoothed 49568 welded verts -> p99.9 2.731, edges > 2.0: 17998
+round 18: smoothed 49633 welded verts -> p99.9 2.728, edges > 2.0: 17905
+round 19: smoothed 49543 welded verts -> p99.9 2.724, edges > 2.0: 17863
+round 20: smoothed 49641 welded verts -> p99.9 2.724, edges > 2.0: 17789
+round 21: smoothed 49784 welded verts -> p99.9 2.723, edges > 2.0: 17754
+round 22: smoothed 49889 welded verts -> p99.9 2.723, edges > 2.0: 17684
+round 23: smoothed 49851 welded verts -> p99.9 2.721, edges > 2.0: 17641
+round 24: smoothed 50047 welded verts -> p99.9 2.718, edges > 2.0: 17570
+{
+ "input": "/tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-qh3lhozq/rig_t.glb",
+ "output": "/tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-qh3lhozq/rig_s.glb",
+ "tool": "tools/auto_rig/backends/seam_safe_smooth.py",
+ "gate": 2.5,
+ "threshold": 2.0,
+ "rings": 2,
+ "iters": 10,
+ "lam": 0.5,
+ "frames_per_clip": 10,
+ "welded_verts": 957603,
+ "rounds": [
+  {
+   "round": 0,
+   "p999": 2.76,
+   "over_threshold": 21256
+  },
+  {
+   "round": 1,
+   "p999": 2.789,
+   "over_threshold": 18615,
+   "smoothed_welded_verts": 35983
+  },
+  {
+   "round": 2,
+   "p999": 2.78,
+   "over_threshold": 18731,
+   "smoothed_welded_verts": 38487
+  },
+  {
+   "round": 3,
+   "p999": 2.768,
+   "over_threshold": 18749,
+   "smoothed_welded_verts": 41575
+  },
+  {
+   "round": 4,
+   "p999": 2.763,
+   "over_threshold": 18719,
+   "smoothed_welded_verts": 43364
+  },
+  {
+   "round": 5,
+   "p999": 2.755,
+   "over_threshold": 18667,
+   "smoothed_welded_verts": 44755
+  },
+  {
+   "round": 6,
+   "p999": 2.756,
+   "over_threshold": 18633,
+   "smoothed_welded_verts": 45811
+  },
+  {
+   "round": 7,
+   "p999": 2.751,
+   "over_threshold": 18609,
+   "smoothed_welded_verts": 46506
+  },
+  {
+   "round": 8,
+   "p999": 2.749,
+   "over_threshold": 18563,
+   "smoothed_welded_verts": 47384
+  },
+  {
+   "round": 9,
+   "p999": 2.746,
+   "over_threshold": 18500,
+   "smoothed_welded_verts": 47836
+  },
+  {
+   "round": 10,
+   "p999": 2.745,
+   "over_threshold": 18437,
+   "smoothed_welded_verts": 48267
+  },
+  {
+   "round": 11,
+   "p999": 2.743,
+   "over_threshold": 18398,
+   "smoothed_welded_verts": 48547
+  },
+  {
+   "round": 12,
+   "p999": 2.741,
+   "over_threshold": 18320,
+   "smoothed_welded_verts": 49008
+  },
+  {
+   "round": 13,
+   "p999": 2.739,
+   "over_threshold": 18217,
+   "smoothed_welded_verts": 49093
+  },
+  {
+   "round": 14,
+   "p999": 2.738,
+   "over_threshold": 18167,
+   "smoothed_welded_verts": 49228
+  },
+  {
+   "round": 15,
+   "p999": 2.735,
+   "over_threshold": 18103,
+   "smoothed_welded_verts": 49286
+  },
+  {
+   "round": 16,
+   "p999": 2.731,
+   "over_threshold": 18055,
+   "smoothed_welded_verts": 49518
+  },
+  {
+   "round": 17,
+   "p999": 2.731,
+   "over_threshold": 17998,
+   "smoothed_welded_verts": 49568
+  },
+  {
+   "round": 18,
+   "p999": 2.728,
+   "over_threshold": 17905,
+   "smoothed_welded_verts": 49633
+  },
+  {
+   "round": 19,
+   "p999": 2.724,
+   "over_threshold": 17863,
+   "smoothed_welded_verts": 49543
+  },
+  {
+   "round": 20,
+   "p999": 2.724,
+   "over_threshold": 17789,
+   "smoothed_welded_verts": 49641
+  },
+  {
+   "round": 21,
+   "p999": 2.723,
+   "over_threshold": 17754,
+   "smoothed_welded_verts": 49784
+  },
+  {
+   "round": 22,
+   "p999": 2.723,
+   "over_threshold": 17684,
+   "smoothed_welded_verts": 49889
+  },
+  {
+   "round": 23,
+   "p999": 2.721,
+   "over_threshold": 17641,
+   "smoothed_welded_verts": 49851
+  },
+  {
+   "round": 24,
+   "p999": 2.718,
+   "over_threshold": 17570,
+   "smoothed_welded_verts": 50047
+  }
+ ],
+ "pass": false
+}
+
+$ /usr/bin/python3 /home/user/western-heart/tools/auto_rig/validate.py --in /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-qh3lhozq/rig_s.glb
+{
+  "file": "/tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-qh3lhozq/rig_s.glb",
+  "checks": {
+    "valid_gltf": true,
+    "skinned_mesh": true,
+    "bones_present": true,
+    "height_ok": true,
+    "fingers_symmetric": true,
+    "stretch_ok": "unknown (no clips supplied)"
+  },
+  "pass": true,
+  "missing_bones": [],
+  "unmapped_bones": [],
+  "height_m": 1.75,
+  "foot_y": 0.0,
+  "finger_asymmetry": []
+}
+
+$ /usr/bin/python3 /home/user/western-heart/tools/auto_rig/anim_check.py --in /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-qh3lhozq/rig_s.glb --json-out /home/user/western-heart/docs/proof/2026-11-01/refit-batch/cape-jones/anim_check.json --max-frames 18 --quiet
+
+$ /usr/bin/python3 /home/user/western-heart/tools/auto_rig/rig_inspect.py seams --glb /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-qh3lhozq/rig_s.glb
+{
+ "glb": "/tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-qh3lhozq/rig_s.glb",
+ "seam_copy_verts": 71395,
+ "copies_disagreeing_over_0.01": 0,
+ "copies_disagreeing_over_0.1": 0,
+ "max_l1_disagreement": 0.0,
+ "pass": true
+}
+
+$ /usr/bin/python3 /home/user/western-heart/tools/auto_rig/rig_inspect.py stretch --glb /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-qh3lhozq/rig_s.glb
+{
+ "glb": "/tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-qh3lhozq/rig_s.glb",
+ "edges_measured": 2630001,
+ "edge_cutoff_mm": 1.228,
+ "median_rest_edge_mm": 2.583,
+ "stretch_p999": 2.718,
+ "stretch_max": 8.31,
+ "edges_over_2x": 17570,
+ "edges_over_4x": 168,
+ "elongation_mm": {
+  "median_of_over_2x": 2.59,
+  "p90_of_over_2x": 4.19,
+  "max": 11.54
+ },
+ "edges_elongated_over_mm": {
+  "2": 37366,
+  "5": 836,
+  "10": 5,
+  "20": 0
+ },
+ "over_2x_by_dominant_bones": {
+  "LeftUpLeg | LeftUpLeg": 4177,
+  "RightUpLeg | RightUpLeg": 3853,
+  "Spine1 | Spine1": 3616,
+  "RightShoulder | RightShoulder": 1589,
+  "Head | Head": 1334,
+  "LeftShoulder | LeftShoulder": 1036,
+  "Spine | Spine": 493,
+  "Hips | Hips": 478,
+  "RightHandIndex1 | RightHandIndex1": 204,
+  "RightArm | RightArm": 173,
+  "LeftArm | LeftArm": 105,
+  "LeftUpLeg | RightUpLeg": 96,
+  "RightUpLeg | Spine1": 76,
+  "Head | LeftShoulder": 59
+ },
+ "over_2x_by_height": {
+  "0.00-0.35": 0,
+  "0.35-0.70": 15,
+  "0.70-1.05": 7129,
+  "1.05-1.40": 6344,
+  "1.40-1.75": 4082
+ }
+}
+
+$ /usr/bin/python3 /home/user/western-heart/tools/auto_rig/rig_inspect.py shares --glb /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-qh3lhozq/rig_s.glb
+head + hair above the Head joint   n=   60390  Head 94.7%  LeftShoulder 2.1%  RightShoulder 1.9%  Neck 1.2%
+face (front of head)               n=   28546  Head 96.8%  LeftShoulder 1.2%  RightShoulder 1.1%  Neck 0.9%
+chin / jaw underside               n=    1550  Head 54.5%  LeftShoulder 17.7%  RightShoulder 16.2%  Neck 11.6%
+neck                               n=    9735  Head 33.2%  LeftShoulder 23.3%  RightShoulder 21.4%  Neck 12.4%  Spine2 7.8%  Spine1 2.0%
+chest front                        n=   12217  Spine1 45.8%  Spine 20.3%  RightShoulder 15.2%  LeftShoulder 14.0%  Spine2 4.1%  Hips 0.6%
+L upper arm                        n=   28705  LeftArm 81.9%  LeftForeArm 11.2%  LeftShoulder 6.7%
+L forearm                          n=   30337  LeftForeArm 86.9%  LeftArm 8.1%  LeftHand 2.9%  LeftHandThumb1 2.1%
+R upper arm                        n=   28672  RightArm 81.9%  RightForeArm 11.1%  RightShoulder 6.7%
+abdomen (Hips..Spine1)             n=   30862  Spine 28.8%  Hips 23.4%  Spine1 18.5%  RightShoulder 7.9%  LeftShoulder 7.7%  Spine2 4.8%
+
+$ /usr/bin/python3 /home/user/western-heart/tools/auto_rig/rig_inspect.py fit --fit /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-qh3lhozq/fit.json --fit2 /home/user/western-heart/docs/proof/2026-11-01/refit-batch/cape-jones/fit_landmarks.json --out /home/user/western-heart/docs/proof/2026-11-01/refit-batch/cape-jones/fit_template_vs_landmarks.png
+wrote /home/user/western-heart/docs/proof/2026-11-01/refit-batch/cape-jones/fit_template_vs_landmarks.png
+
+$ /usr/bin/python3 /home/user/western-heart/tools/auto_rig/rig_inspect.py sections --fit /home/user/western-heart/docs/proof/2026-11-01/refit-batch/cape-jones/fit_landmarks.json --out /home/user/western-heart/docs/proof/2026-11-01/refit-batch/cape-jones/sections.png
+wrote /home/user/western-heart/docs/proof/2026-11-01/refit-batch/cape-jones/sections.png
+
+$ /usr/bin/python3 /home/user/western-heart/tools/auto_rig/rig_inspect.py weights --glb /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-qh3lhozq/rig_s.glb --out /home/user/western-heart/docs/proof/2026-11-01/refit-batch/cape-jones/weights.png
+wrote /home/user/western-heart/docs/proof/2026-11-01/refit-batch/cape-jones/weights.png
+
+$ node /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-qh3lhozq/codec/gltf_codec.mjs encode /tmp/claude-0/-home-user/0e2ac5b9-e898-5469-94b9-4c1c13f1e581/scratchpad/refit/batchtmp/wh-refit-qh3lhozq/rig_s.glb /home/user/western-heart/game/assets/models/cape-jones-refit.glb
+prune: Removed types... Accessor (6)
+prune: Removed types... Skin (1), Accessor (5)
+encode ok -> /home/user/western-heart/game/assets/models/cape-jones-refit.glb
+

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Western Heart — Customization Consumer Harness (fighter-completeness proof)</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #000; overflow: hidden; }
+  #game-canvas { position: fixed; inset: 0; width: 100vw; height: 100vh; display: block; }
+  #status { position: fixed; top: 8px; left: 8px; color: #0f0; font: 13px monospace;
+            background: rgba(0,0,0,0.6); padding: 6px 10px; border-radius: 6px; z-index: 10; }
+</style>
+<script type="importmap">
+{ "imports": {
+    "three": "./vendor/three.module.js",
+    "three/addons/": "./vendor/addons/"
+} }
+</script>
+</head>
+<body>
+<canvas id="game-canvas"></canvas>
+<div id="status">boot…</div>
+<script type="module">
+/* Customization consumer harness — boots a REAL match through the game's
+ * own path (Game.startMatch, the same loaders main.js uses) so the
+ * Creation Suite consumer (js/customization-consumer.js) applies the
+ * fighters' suite profiles exactly as it does in the shipped game.
+ *
+ * URL params:
+ *   ?demo=1                 both fighters CPU-driven (Game's demo mode)
+ *   &p1=pantera&p2=demonio  roster ids (defaults: pantera vs demonio)
+ *   &profile=ui             seed localStorage 'wh_creation_suite_v1' with
+ *                           the suite UI's own built profile
+ *                           (packages/creation-suite/ui/proof/ui-built-profile.json)
+ *   &profile=repo           no seeding — the consumer falls back to
+ *                           customization/profiles/<fighter>.json
+ *   &profile=none           no profile anywhere the consumer looks first
+ *                           for p1 (repo fallback still applies per fighter)
+ *   &stage=shrine           stage id (default shrine)
+ *   &tweak=<kit-id>        FIX MODE: load crew-staged tweak kit
+ *                           customization/tweak-kits/<kit-id>.json and mount
+ *                           the fix panel — per-part rotate/flip controls for
+ *                           the 8 part groups (head, torso, upper arms,
+ *                           forearms, hands, thighs, shins, feet) plus the ONE
+ *                           "EXPORT TWEAK PATCH" button. The downloaded
+ *                           wh-tweak-patch JSON goes back to the crew, who
+ *                           apply it with tools/customization/import_tweak_patch.py.
+ *                           See customization/TWEAK-PATCH-SPEC.md.
+ *                           (Use with &p1=<kit fighter>, e.g. &p1=nightwolf.)
+ *
+ * Drive it: wait for window.__ready, read window.__test.state(), and
+ * watch the console for [WH-CS] and [HARNESS] STATE lines.
+ */
+import * as THREE from 'three';
+import { Game } from './js/game.js';
+import { InputManager } from './js/input.js';
+import { assets } from './js/assets.js';
+import { getFighter } from './js/roster-full.js';
+import { resolveFighterAttire } from './js/attires.js';
+import { loadRealMovesets, bankIdFor } from './js/fighter.js';
+import { loadFighterMovesets } from './js/movesets.js';
+import { loadT3Clips } from './js/t3anims.js';
+import { mountFixPanel } from './js/fix-panel.js';
+
+const errors = [];
+window.addEventListener('error', (e) => errors.push(String(e.message || e.error)));
+window.addEventListener('unhandledrejection', (e) => errors.push('rejection: ' + String(e.reason && e.reason.message || e.reason)));
+
+const qs = new URLSearchParams(location.search);
+const status = document.getElementById('status');
+const canvas = document.getElementById('game-canvas');
+
+/* Permissive UI stub: Game only calls methods on it. */
+const ui = new Proxy({}, { get: (t, k) => (k in t ? t[k] : () => {}) });
+
+async function boot() {
+  if (qs.get('profile') === 'ui') {
+    const t = await (await fetch('../packages/creation-suite/ui/proof/ui-built-profile.json')).text();
+    localStorage.setItem('wh_creation_suite_v1', t);
+    console.log('[HARNESS] seeded wh_creation_suite_v1 from the suite UI proof profile');
+  }
+  const input = new InputManager();
+  input.init();
+  const game = new Game(canvas, input, ui);
+
+  const player = resolveFighterAttire(getFighter(qs.get('p1') || 'pantera'));
+  const enemy = resolveFighterAttire(getFighter(qs.get('p2') || 'demonio'));
+
+  loadRealMovesets();
+  await loadFighterMovesets();
+
+  const need = [...new Set([player.model || 'pantera', enemy.model || 'pantera'])];
+  // &forms=0 skips preloading mid-match transform targets (a main.js
+  // readiness concern, not the consumer's); the base fight path is
+  // otherwise byte-identical to the game's.
+  if (qs.get('forms') !== '0') for (const c of [player, enemy]) {
+    if (c.transform && c.transform.targetModel) need.push(c.transform.targetModel);
+    if (c.forms) for (const fk of Object.keys(c.forms)) {
+      const fe = c.forms[fk];
+      const tgts = fe.target ? [fe] : [fe.up, fe.down].filter(Boolean);
+      for (const t of tgts) if (t.target) need.push(t.target);
+    }
+  }
+  status.textContent = 'loading models…';
+  await assets.loadModels(need, () => {});
+  const banks = [...new Set([bankIdFor(player.id), bankIdFor(enemy.id)].filter(Boolean))];
+  console.log('[HARNESS] T3 banks for this match:', banks.join(', ') || '(none)');
+  await Promise.all(banks.map((b) => loadT3Clips(THREE, b)));
+
+  await game.startMatch(player, enemy, qs.get('stage') || 'shrine', {});
+  status.textContent = `fight: ${player.id} vs ${enemy.id}`;
+  window.__game = game;
+
+  /* Tweak-kit round trip (?tweak=<kit-id>): mount the fix panel — per-part
+   * rotate/flip controls for the 8 part groups + the ONE export button.
+   * Without ?tweak= this block is skipped and the harness is unchanged. */
+  const tweakKit = qs.get('tweak');
+  if (tweakKit) {
+    try {
+      status.textContent = `fix mode: ${tweakKit} — loading…`;
+      await mountFixPanel({ game, kitId: tweakKit,
+        suiteBuild: `${location.origin}${location.pathname} (tweak=${tweakKit})` });
+      status.textContent = `fix mode: ${tweakKit} — ${player.id} vs ${enemy.id}`;
+    } catch (e) {
+      status.textContent = 'FIX PANEL FAILED: ' + (e.message || e);
+      console.error('[HARNESS] fix panel failed', e);
+    }
+  }
+
+  const describe = (f) => f ? {
+    id: f.char.id, name: f.char.name, hp: Math.round(f.hp), maxHp: Math.round(f.maxHp),
+    x: +f.root.position.x.toFixed(2), z: +f.root.position.z.toFixed(2),
+    state: f.state, bank: f._t3 ? f._t3.bank : null, movesetId: f._movesetId,
+    csParts: Object.keys(f.model.userData.csParts || {}),
+    csAttire: Object.keys(f.model.userData.csAttire || {}),
+  } : null;
+  let simSteps = 0;
+  window.__test = {
+    errors,
+    state() {
+      return { roundState: game.roundState, timer: Math.ceil(game.timer), round: game.round,
+               wins: game.wins, simSteps, p1: describe(game.p1), p2: describe(game.p2) };
+    },
+    /* Deterministic harness clock: advance the game's OWN fixed-step
+       combat update + arena render by `seconds` of game time. Used when
+       the host cannot sustain requestAnimationFrame (software GL on a
+       loaded CI box); every step is the game's real _update code. */
+    step(seconds) {
+      const FIXED = 1 / 120;
+      const n = Math.max(1, Math.round(seconds / FIXED));
+      for (let i = 0; i < n; i++) { game._update(FIXED); simSteps++; }
+      game.arena.update(1 / 60, game.p1, game.p2);
+      game.arena.render();
+      return this.state();
+    },
+  };
+  setInterval(() => console.log('[HARNESS] STATE ' + JSON.stringify(window.__test.state())), 2000);
+  window.__ready = true;
+  window.__game = game;
+  console.log('[HARNESS] ready');
+}
+boot().catch((e) => { status.textContent = 'BOOT FAILED: ' + (e.message || e); console.error('[HARNESS] boot failed', e); });
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+{
+ "bank": "nina",
+ "baked": {
+  "t3_neutral": {
+   "move": "Ni_IKI00",
+   "anim": "hani_kamae3(DVD)",
+   "bank": 1,
+   "idx": 49,
+   "frames": 61,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_heavy": {
+   "move": "Ni_Dwn_rk00",
+   "anim": "Tco_PSdwrkA(DVD)",
+   "bank": 2,
+   "idx": 496,
+   "frames": 100,
+   "fk_selfcheck_max_m": 0.0,
+   "gate_note": "toe graze 0.08 m (frame 97) within TTT2-vs-T7 skeleton proportion delta; ankles >= 0.06 m throughout; all other gate checks pass"
+  },
+  "t3_jump_up": {
+   "move": "sJUMP_00_",
+   "anim": "Bco_newjump2(DVD)",
+   "bank": 2,
+   "idx": 309,
+   "frames": 120,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_jump_fwd": {
+   "move": "sJUMP_00F",
+   "anim": "Bco_newjump2(DVD)",
+   "bank": 2,
+   "idx": 309,
+   "frames": 120,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_jump_back": {
+   "move": "sJUMP_00B",
+   "anim": "Bco_newjump2(DVD)",
+   "bank": 2,
+   "idx": 309,
+   "frames": 120,
+   "fk_selfcheck_max_m": 0.0
+  }
+ },
+ "skipped": {
+  "t3_hit": "in-game plausibility gate: LeftToeBase 0.23 m below the floor on frame 0 (mannequin proportions)",
+  "t3_block": "in-game plausibility gate: LeftToeBase 1.11 m below the floor on frame 0 (mannequin proportions)",
+  "t3_grab": "in-game plausibility gate: LeftToeBase 0.08 m below the floor on frame 0 (mannequin proportions)"
+ },
+ "gaps": {
+  "t3_light": "no own-prefix _lp00 record in join",
+  "t3_medium": "no own-prefix _lk00 record in join",
+  "t3_walk_fwd": "no sWALK*F record in join",
+  "t3_walk_back": "no sWALK*B record in join",
+  "t3_dash_fwd": "no sDASHF record in join",
+  "t3_backdash": "no sDASHB/sDASH_00B record in join",
+  "t3_crouch": "no *st2cr* record in join",
+  "t3_crouch_hold": "no cKAM hold record in join",
+  "t3_sidestep_a": "no sSTEP_01L record in join",
+  "t3_sidestep_b": "no sSTEP_01R record in join",
+  "t3_ko": "no slot source identified (shipped Roger/Jun banks also ship no t3_ko clip)",
+  "t3_hit_launch": "no slot source identified (shipped Roger/Jun banks also ship no t3_hit_launch clip)"
+ }
+}

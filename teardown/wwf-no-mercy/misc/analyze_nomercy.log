@@ -1,0 +1,65 @@
+ROM size: 33554432 bytes, CRC32: BACEEA13
+
+wrestler table: 42 entries, ends 0x0168DA84
+  id=  0  None
+  id=  1  ACOLYTES
+  id=  2  AL
+  id=  3  ANGLE
+  id=  4  AUSTIN
+  id= 39  BENOIT
+  id=  6  BLACKMAN
+  id=  7  BOSS MAN
+  id=  8  BULLDOG
+  id=  9  CACTUS
+  id= 10  CHYNA
+  id= 11  CORPORATE
+  id= 12  D'LO
+  id= 13  DUDLEY BOYZ
+  id= 14  DX
+  id= 15  EDGE
+  id= 17  GODFATHER
+  id= 41  GUERRERO
+  id= 18  HARDY BOYZ
+  id= 19  HBK
+  id= 25  HENRY
+  id= 20  HHH
+  id= 21  HOLLYS
+  id= 22  JERICHO
+  id= 23  KANE
+  id= 28  MALENKO
+  id= 24  MANKIND
+  id= 26  MR. ASS
+  id= 27  N.A.O.
+  id= 43  RICHARDS
+  id= 16  RIOS
+  id= 29  ROCK
+  id= 42  SATURN
+  id= 30  SHAMROCK
+  id= 40  T&A
+  id= 31  TAKA
+  id= 32  TAZZ
+  id= 33  TOO COOL
+  id= 38  UNDERTAKER
+  id= 34  VENIS
+  id= 35  VISCERA
+  id= 36  X-PAC
+saved /home/hatch/workspace/no-mercy-reextract/full-rom/tools/../extracted/misc/wrestler-id-table.json
+
+0x13E000 segment records:
+  0x0013E008 len=    16  u32 small-int list (move/attr IDs)
+  0x0013E01C len=    16  u32 small-int list (move/attr IDs)
+  0x0013E030 len=     8  u32 small-int list (move/attr IDs)
+  0x0013E044 len=    12  u32 small-int list (move/attr IDs)
+  0x0013E058 len=    12  u32 small-int list (move/attr IDs)
+  0x0013E06C len=    56  u32 small-int list (move/attr IDs)
+  0x0013E0A8 len=    16  u32 small-int list (move/attr IDs)
+  0x0013E0BC len=     8  u32 small-int list (move/attr IDs)
+  0x0013E0D0 len=   340  mixed/binary
+  0x0013E228 len=    68  u32 small-int list (move/attr IDs)
+  0x0013E270 len=    44  u32 small-int list (move/attr IDs)
+  0x0013E2A0 len=     4  u32 small-int list (move/attr IDs)
+  0x0013E2A8 len=    16  mixed/binary
+  0x0013E2BC len=   468  float table (positions/anim keys?)
+  0x0013E494 len=     4  u32 small-int list (move/attr IDs)
+  0x0013E4A0 len=    44  RAM pointer table (0x80xxxxxx, KSEG0)
+  0x0013E4D4 len= 15148  float table (positions/anim keys?)

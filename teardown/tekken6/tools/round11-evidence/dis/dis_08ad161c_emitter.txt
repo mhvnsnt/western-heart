@@ -1,0 +1,69 @@
+0x08ad161c: 8c870000 lw           $a3, ($a0)
+0x08ad1620: 00061180 sll          $v0, $a2, 6
+0x08ad1624: 00063100 sll          $a2, $a2, 4
+0x08ad1628: 00461023 subu         $v0, $v0, $a2
+0x08ad162c: 00e23821 addu         $a3, $a3, $v0
+0x08ad1630: d8f80001 ldc2         $24, 1($a3)
+0x08ad1634: d8f90011 ldc2         $25, 0x11($a3)
+0x08ad1638: d8fa0021 ldc2         $26, 0x21($a3)
+0x08ad163c: 48630018 vfpu         fn=0x18 grp[25:16]=0x063 vd=99 vs=0 vt=24 raw=48630018
+0x08ad1640: 3c072b00 lui          $a3, 0x2b00
+0x08ad1644: 00031a02 srl          $v1, $v1, 8
+0x08ad1648: 00671825 or           $v1, $v1, $a3
+0x08ad164c: aca30000 sw           $v1, ($a1)
+0x08ad1650: 48620038 vfpu         fn=0x38 grp[25:16]=0x062 vd=98 vs=0 vt=56 raw=48620038
+0x08ad1654: 00021202 srl          $v0, $v0, 8
+0x08ad1658: 00471025 or           $v0, $v0, $a3
+0x08ad165c: aca20004 sw           $v0, 4($a1)
+0x08ad1660: 48630058 vfpu         fn=0x58 grp[25:16]=0x063 vd=99 vs=0 vt=88 raw=48630058
+0x08ad1664: 00031a02 srl          $v1, $v1, 8
+0x08ad1668: 00671825 or           $v1, $v1, $a3
+0x08ad166c: aca30008 sw           $v1, 8($a1)
+0x08ad1670: 48620019 vfpu         fn=0x19 grp[25:16]=0x062 vd=98 vs=0 vt=25 raw=48620019
+0x08ad1674: 00021202 srl          $v0, $v0, 8
+0x08ad1678: 00471025 or           $v0, $v0, $a3
+0x08ad167c: aca2000c sw           $v0, 0xc($a1)
+0x08ad1680: 48630039 vfpu         fn=0x39 grp[25:16]=0x063 vd=99 vs=0 vt=57 raw=48630039
+0x08ad1684: 00031a02 srl          $v1, $v1, 8
+0x08ad1688: 00671825 or           $v1, $v1, $a3
+0x08ad168c: aca30010 sw           $v1, 0x10($a1)
+0x08ad1690: 48620059 vfpu         fn=0x59 grp[25:16]=0x062 vd=98 vs=0 vt=89 raw=48620059
+0x08ad1694: 00021202 srl          $v0, $v0, 8
+0x08ad1698: 00471025 or           $v0, $v0, $a3
+0x08ad169c: aca20014 sw           $v0, 0x14($a1)
+0x08ad16a0: 4863001a vfpu         fn=0x1a grp[25:16]=0x063 vd=99 vs=0 vt=26 raw=4863001a
+0x08ad16a4: 00031a02 srl          $v1, $v1, 8
+0x08ad16a8: 00671825 or           $v1, $v1, $a3
+0x08ad16ac: aca30018 sw           $v1, 0x18($a1)
+0x08ad16b0: 4862003a vfpu         fn=0x3a grp[25:16]=0x062 vd=98 vs=0 vt=58 raw=4862003a
+0x08ad16b4: 00021202 srl          $v0, $v0, 8
+0x08ad16b8: 00471025 or           $v0, $v0, $a3
+0x08ad16bc: aca2001c sw           $v0, 0x1c($a1)
+0x08ad16c0: 4863005a vfpu         fn=0x5a grp[25:16]=0x063 vd=99 vs=0 vt=90 raw=4863005a
+0x08ad16c4: 00031a02 srl          $v1, $v1, 8
+0x08ad16c8: 00671825 or           $v1, $v1, $a3
+0x08ad16cc: aca30020 sw           $v1, 0x20($a1)
+0x08ad16d0: 24860418 addiu        $a2, $a0, 0x418
+0x08ad16d4: 8c830004 lw           $v1, 4($a0)
+0x08ad16d8: d8790000 ldc2         $25, ($v1)
+0x08ad16dc: c8da0003 lwc2         $26, 3($a2)
+0x08ad16e0: 60999b1a ???
+0x08ad16e4: 657a9a1b ???
+0x08ad16e8: 4862001b vfpu         fn=0x1b grp[25:16]=0x062 vd=98 vs=0 vt=27 raw=4862001b
+0x08ad16ec: 00021202 srl          $v0, $v0, 8
+0x08ad16f0: 00471025 or           $v0, $v0, $a3
+0x08ad16f4: aca20024 sw           $v0, 0x24($a1)
+0x08ad16f8: 4863003b vfpu         fn=0x3b grp[25:16]=0x063 vd=99 vs=0 vt=59 raw=4863003b
+0x08ad16fc: 00031a02 srl          $v1, $v1, 8
+0x08ad1700: 00671825 or           $v1, $v1, $a3
+0x08ad1704: aca30028 sw           $v1, 0x28($a1)
+0x08ad1708: 4862005b vfpu         fn=0x5b grp[25:16]=0x062 vd=98 vs=0 vt=91 raw=4862005b
+0x08ad170c: 00021202 srl          $v0, $v0, 8
+0x08ad1710: 00471025 or           $v0, $v0, $a3
+0x08ad1714: 3c030b00 lui          $v1, 0xb00
+0x08ad1718: aca30030 sw           $v1, 0x30($a1)
+0x08ad171c: 03e00008 jr           $ra
+0x08ad1720: aca2002c sw           $v0, 0x2c($a1)
+0x08ad1724: 8c820000 lw           $v0, ($a0)
+0x08ad1728: 00063180 sll          $a2, $a2, 6
+0x08ad172c: 00804021 move         $t0, $a0

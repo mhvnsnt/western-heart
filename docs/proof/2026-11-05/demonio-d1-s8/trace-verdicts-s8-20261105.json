@@ -1,0 +1,565 @@
+{
+ "generated": "2026-11-05",
+ "lane": "roster-100 S8",
+ "tree": "main 108024c5 engine (game/js/movesets.js) in Node; before = moveset data at main, after = re-slotted data",
+ "slots": {
+  "demonio d+1": {
+   "before": {
+    "press": "true",
+    "key": "d+1",
+    "name": "Black Wing Flash",
+    "damage": 24,
+    "move_class": "throw",
+    "isGrab": true,
+    "t3_row": 139
+   },
+   "after": {
+    "press": "true",
+    "key": "d+1~t7.jin",
+    "name": "Corpse Thrust",
+    "damage": 24,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 188
+   }
+  },
+  "demonio-bloodline-ember d+1": {
+   "before": {
+    "press": "true",
+    "key": "d+1",
+    "name": "Corpse Thrust &gt; Black Wing Flash",
+    "damage": 17,
+    "move_class": "throw",
+    "isGrab": true,
+    "t3_row": 117
+   },
+   "after": {
+    "press": "true",
+    "key": "d+1~t7.jin",
+    "name": "Corpse Thrust",
+    "damage": 14,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 188
+   }
+  },
+  "demonio-human d+1": {
+   "before": {
+    "press": "true",
+    "key": "d+1",
+    "name": "Black Wing Flash",
+    "damage": 31,
+    "move_class": "throw",
+    "isGrab": true,
+    "t3_row": 139
+   },
+   "after": {
+    "press": "true",
+    "key": "d+1~donor.demonio",
+    "name": "Corpse Thrust",
+    "damage": 14,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 188
+   }
+  },
+  "demonio-winged d+1": {
+   "before": {
+    "press": "true",
+    "key": "d+1",
+    "name": "Black Wing Flash",
+    "damage": 31,
+    "move_class": "throw",
+    "isGrab": true,
+    "t3_row": 139
+   },
+   "after": {
+    "press": "true",
+    "key": "d+1~t7.jin",
+    "name": "Corpse Thrust",
+    "damage": 14,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 188
+   }
+  }
+ },
+ "full_probe_after": {
+  "demonio": {
+   "1": {
+    "press": "true",
+    "key": "1~t8.jin",
+    "name": "Jab",
+    "damage": 7,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 165
+   },
+   "2": {
+    "press": "true",
+    "key": "2~t8.jin",
+    "name": "Right Jab",
+    "damage": 9,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 96
+   },
+   "3": {
+    "press": "true",
+    "key": "3~t8.jin",
+    "name": "DEMONIO 3",
+    "damage": 19,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 195
+   },
+   "4": {
+    "press": "true",
+    "key": "4~t8.jin",
+    "name": "High Right Roundhouse",
+    "damage": 18,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 199
+   },
+   "1+2": {
+    "press": "true",
+    "key": "1+2",
+    "name": "RIN's Baseline [WH SIGNATURE]",
+    "damage": 5,
+    "move_class": "signature",
+    "isGrab": null,
+    "t3_row": 32
+   },
+   "d+1": {
+    "press": "true",
+    "key": "d+1~t7.jin",
+    "name": "Corpse Thrust",
+    "damage": 24,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 188
+   },
+   "d+2": {
+    "press": "true",
+    "key": "d+2",
+    "name": "Scourge",
+    "damage": 22,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 137
+   },
+   "d+3": {
+    "press": "true",
+    "key": "d+3",
+    "name": "Move d+3 (d+3)",
+    "damage": 7,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 195
+   },
+   "d+4": {
+    "press": "true",
+    "key": "d+4",
+    "name": "Right Sweep",
+    "damage": 13,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 339
+   },
+   "d/f+1": {
+    "press": "true",
+    "key": "df+1",
+    "name": "Mid Left Punch",
+    "damage": 10,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 43
+   },
+   "d/f+2": {
+    "press": "true",
+    "key": "df+2",
+    "name": "Fiendish Rend",
+    "damage": 12,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 106
+   },
+   "1+3": {
+    "press": "true",
+    "key": "1+3~t8.jin",
+    "name": "Double Face Kick",
+    "damage": 19,
+    "move_class": "throw",
+    "isGrab": true,
+    "t3_row": 273
+   },
+   "2+4": {
+    "press": "true",
+    "key": "2+4~t8.jin",
+    "name": "Over the Shoulder Reverse",
+    "damage": 19,
+    "move_class": "throw",
+    "isGrab": true,
+    "t3_row": 274
+   }
+  },
+  "demonio-bloodline-ember": {
+   "1": {
+    "press": "true",
+    "key": "1~t8.jin",
+    "name": "Jab",
+    "damage": 3,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 165
+   },
+   "2": {
+    "press": "true",
+    "key": "2~t8.jin",
+    "name": "Right Jab",
+    "damage": 5,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 96
+   },
+   "3": {
+    "press": "true",
+    "key": "3~t8.jin",
+    "name": "DEMONIO BLOODLINE EMBER 3",
+    "damage": 9,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 195
+   },
+   "4": {
+    "press": "true",
+    "key": "4~t8.jin",
+    "name": "High Right Roundhouse",
+    "damage": 8,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 199
+   },
+   "1+2": {
+    "press": "true",
+    "key": "1+2",
+    "name": "Ember Bloodline [WH SIGNATURE]",
+    "damage": 20,
+    "move_class": "signature",
+    "isGrab": null,
+    "t3_row": 32
+   },
+   "d+1": {
+    "press": "true",
+    "key": "d+1~t7.jin",
+    "name": "Corpse Thrust",
+    "damage": 14,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 188
+   },
+   "d+2": {
+    "press": "true",
+    "key": "d+2",
+    "name": "Scourge",
+    "damage": 12,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 137
+   },
+   "d+3": {
+    "press": "true",
+    "key": "d+3",
+    "name": "DEMONIO BLOODLINE EMBER d+3",
+    "damage": 4,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 124
+   },
+   "d+4": {
+    "press": "true",
+    "key": "d+4",
+    "name": "Right Sweep",
+    "damage": 6,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 126
+   },
+   "d/f+1": {
+    "press": "true",
+    "key": "d/f+1~t8.jin",
+    "name": "Mid Left Punch",
+    "damage": 6,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 107
+   },
+   "d/f+2": {
+    "press": "true",
+    "key": "d/f+2~t8.jin",
+    "name": "Fiendish Rend",
+    "damage": 7,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 108
+   },
+   "1+3": {
+    "press": "true",
+    "key": "1+3~t8.jin",
+    "name": "Double Face Kick",
+    "damage": 19,
+    "move_class": "throw",
+    "isGrab": true,
+    "t3_row": 273
+   },
+   "2+4": {
+    "press": "true",
+    "key": "2+4~t8.jin",
+    "name": "Over the Shoulder Reverse",
+    "damage": 19,
+    "move_class": "throw",
+    "isGrab": true,
+    "t3_row": 274
+   }
+  },
+  "demonio-human": {
+   "1": {
+    "press": "true",
+    "key": "1",
+    "name": "DEMONIO 1 (T3 jin r35)",
+    "damage": 7,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": null
+   },
+   "2": {
+    "press": "true",
+    "key": "2",
+    "name": "DEMONIO 2 (T3 jin r47)",
+    "damage": 11,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": null
+   },
+   "3": {
+    "press": "true",
+    "key": "3",
+    "name": "DEMONIO 3 (T3 jin r57)",
+    "damage": 15,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": null
+   },
+   "4": {
+    "press": "true",
+    "key": "4",
+    "name": "DEMONIO 4 (T3 jin r67)",
+    "damage": 15,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": null
+   },
+   "1+2": {
+    "press": "true",
+    "key": "1+2~donor.demonio",
+    "name": "RIN's Baseline [WH SIGNATURE]",
+    "damage": 17,
+    "move_class": "signature",
+    "isGrab": null,
+    "t3_row": 32
+   },
+   "d+1": {
+    "press": "true",
+    "key": "d+1~donor.demonio",
+    "name": "Corpse Thrust",
+    "damage": 14,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 188
+   },
+   "d+2": {
+    "press": "true",
+    "key": "d+2",
+    "name": "Scourge",
+    "damage": 22,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 137
+   },
+   "d+3": {
+    "press": "true",
+    "key": "d+3",
+    "name": "Move d+3 (d+3)",
+    "damage": 7,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 195
+   },
+   "d+4": {
+    "press": "true",
+    "key": "d+4",
+    "name": "Right Sweep",
+    "damage": 11,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 339
+   },
+   "d/f+1": {
+    "press": "true",
+    "key": "d/f+1",
+    "name": "DEMONIO d/f+1 (T3 jin r179)",
+    "damage": 21,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": null
+   },
+   "d/f+2": {
+    "press": "true",
+    "key": "d/f+2",
+    "name": "DEMONIO d/f+2 (T3 jin r269)",
+    "damage": 18,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": null
+   },
+   "1+3": {
+    "press": "true",
+    "key": "1+3",
+    "name": "DEMONIO 1+3 throw (T3 jin r117)",
+    "damage": 21,
+    "move_class": "throw",
+    "isGrab": true,
+    "t3_row": null
+   },
+   "2+4": {
+    "press": "true",
+    "key": "2+4",
+    "name": "DEMONIO 2+4 throw (T3 jin r118)",
+    "damage": 21,
+    "move_class": "throw",
+    "isGrab": true,
+    "t3_row": null
+   }
+  },
+  "demonio-winged": {
+   "1": {
+    "press": "true",
+    "key": "1~t8.deviljin",
+    "name": "Jab",
+    "damage": 3,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 165
+   },
+   "2": {
+    "press": "true",
+    "key": "2~t8.deviljin",
+    "name": "DEMONIO (Devil) 2",
+    "damage": 5,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 96
+   },
+   "3": {
+    "press": "true",
+    "key": "3~t8.deviljin",
+    "name": "DEMONIO (Devil) 3",
+    "damage": 9,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 195
+   },
+   "4": {
+    "press": "true",
+    "key": "4~t8.deviljin",
+    "name": "Last Rites",
+    "damage": 13,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 114
+   },
+   "1+2": {
+    "press": "true",
+    "key": "1+2~donor.demonio",
+    "name": "RIN's Baseline [WH SIGNATURE]",
+    "damage": 17,
+    "move_class": "signature",
+    "isGrab": null,
+    "t3_row": 92
+   },
+   "d+1": {
+    "press": "true",
+    "key": "d+1~t7.jin",
+    "name": "Corpse Thrust",
+    "damage": 14,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 188
+   },
+   "d+2": {
+    "press": "true",
+    "key": "d+2",
+    "name": "Scourge",
+    "damage": 22,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 137
+   },
+   "d+3": {
+    "press": "true",
+    "key": "d+3",
+    "name": "Move d+3 (d+3)",
+    "damage": 7,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 195
+   },
+   "d+4": {
+    "press": "true",
+    "key": "d+4",
+    "name": "Right Sweep",
+    "damage": 11,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 339
+   },
+   "d/f+1": {
+    "press": "true",
+    "key": "df+1",
+    "name": "Mid Left Punch",
+    "damage": 10,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 43
+   },
+   "d/f+2": {
+    "press": "true",
+    "key": "df+2",
+    "name": "Fiendish Rend",
+    "damage": 12,
+    "move_class": "strike",
+    "isGrab": null,
+    "t3_row": 106
+   },
+   "1+3": {
+    "press": "true",
+    "key": "1+3~t8.deviljin",
+    "name": "Double High Sweep",
+    "damage": 19,
+    "move_class": "throw",
+    "isGrab": true,
+    "t3_row": 273
+   },
+   "2+4": {
+    "press": "true",
+    "key": "2+4~t8.deviljin",
+    "name": "Judgment",
+    "damage": 19,
+    "move_class": "throw",
+    "isGrab": true,
+    "t3_row": 274
+   }
+  }
+ }
+}

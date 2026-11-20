@@ -1,0 +1,137 @@
+{
+ "p1": "purplerain",
+ "p2": "pantera",
+ "base": "http://127.0.0.1:8835/game/",
+ "ready": true,
+ "run": {
+  "fid": "purplerain",
+  "steps": [
+   {
+    "tag": "sidestep:1",
+    "state": "sidestep",
+    "atk": null,
+    "stance": null,
+    "cd": false,
+    "ssSide": "SSL",
+    "flank": null,
+    "hpDelta": 0,
+    "ok": true
+   },
+   {
+    "tag": "step20",
+    "state": "sidestep",
+    "atk": null,
+    "stance": null,
+    "cd": false,
+    "ssSide": "SSL",
+    "flank": null,
+    "hpDelta": 0
+   },
+   {
+    "tag": "attack:3+4",
+    "state": "attack",
+    "atk": "SSL.3+4",
+    "stance": null,
+    "cd": false,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 0,
+    "ok": true
+   },
+   {
+    "tag": "step110",
+    "state": "idle",
+    "atk": null,
+    "stance": null,
+    "cd": false,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 25.8
+   },
+   {
+    "tag": "settle",
+    "state": "idle",
+    "atk": null,
+    "stance": null,
+    "cd": false,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 0
+   },
+   {
+    "tag": "sidestep:-1",
+    "state": "idle",
+    "atk": null,
+    "stance": null,
+    "cd": false,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 0,
+    "ok": false
+   },
+   {
+    "tag": "step20",
+    "state": "idle",
+    "atk": null,
+    "stance": null,
+    "cd": false,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 0
+   },
+   {
+    "tag": "attack:3+4",
+    "state": "attack",
+    "atk": "3+4",
+    "stance": null,
+    "cd": false,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 0,
+    "ok": true
+   },
+   {
+    "tag": "step110",
+    "state": "idle",
+    "atk": null,
+    "stance": "HMS",
+    "cd": false,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 0
+   },
+   {
+    "tag": "settle",
+    "state": "idle",
+    "atk": null,
+    "stance": "HMS",
+    "cd": false,
+    "ssSide": null,
+    "flank": null,
+    "hpDelta": 0
+   },
+   {
+    "tag": "sidestep:1",
+    "state": "sidestep",
+    "atk": null,
+    "stance": "HMS",
+    "cd": false,
+    "ssSide": "SSL",
+    "flank": null,
+    "hpDelta": 0,
+    "ok": true
+   },
+   {
+    "tag": "step80",
+    "state": "idle",
+    "atk": null,
+    "stance": null,
+    "cd": false,
+    "ssSide": null,
+    "flank": "L",
+    "hpDelta": 0
+   }
+  ]
+ },
+ "logs": []
+}

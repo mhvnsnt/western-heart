@@ -1,0 +1,1335 @@
+{
+ "source": "GRE mhvnsnt/game-reverse-engineering tekken7/customization/items.json + summary.json (Tekken 7 Steam tkdata list)",
+ "slot": {
+  "slot_code": 8,
+  "slot_title": "Face Paint",
+  "asset_type": "CharacterItemTex"
+ },
+ "total_slot8_entries": 459,
+ "distinct_designs": 47,
+ "note": "Reference index ONLY. No Tekken face-paint texture files are in western-heart, and no texture path is claimed here. texture_status is texture_pending for every design. Do not treat this as a selectable decal catalog until a texture file is actually present in the repo.",
+ "scar_named": [
+  {
+   "item_no": 90016,
+   "mesh": "kaz_fam_scar"
+  }
+ ],
+ "scar_adjacent": [
+  {
+   "item_no": 10014,
+   "mesh": "law_fam_suture_eye"
+  },
+  {
+   "item_no": 180012,
+   "mesh": "lar_fam_splinters"
+  },
+  {
+   "item_no": 180013,
+   "mesh": "lar_fam_injured"
+  },
+  {
+   "item_no": 220017,
+   "mesh": "dnc_fam_plaster"
+  },
+  {
+   "item_no": 260013,
+   "mesh": "kzm_fam_unhealthy"
+  }
+ ],
+ "designs": [
+  {
+   "design": "fam_stamp",
+   "count": 46,
+   "characters": [
+    "ann",
+    "arb",
+    "asa",
+    "ask",
+    "bob",
+    "bry",
+    "cmn",
+    "crz",
+    "dnc",
+    "dra",
+    "dvj",
+    "edd",
+    "elz",
+    "fen",
+    "frv",
+    "gan",
+    "hei",
+    "hwo",
+    "ita",
+    "jac",
+    "jin",
+    "jul",
+    "kaz",
+    "knm",
+    "kzm",
+    "lar",
+    "law",
+    "lee",
+    "lei",
+    "leo",
+    "lil",
+    "ltn",
+    "mar",
+    "mig",
+    "mrx",
+    "mut",
+    "nin",
+    "nsa",
+    "nsb",
+    "nsc",
+    "nsd",
+    "pau",
+    "ste",
+    "xia",
+    "yos",
+    "zaf"
+   ],
+   "item_nos": [
+    372,
+    10369,
+    30344,
+    40369,
+    50380,
+    60372,
+    70370,
+    80368,
+    90365,
+    100367,
+    110367,
+    120382,
+    130370,
+    140368,
+    150373,
+    160380,
+    170379,
+    180363,
+    190450,
+    200363,
+    210377,
+    220392,
+    230380,
+    240388,
+    250342,
+    260378,
+    280365,
+    290366,
+    300347,
+    310351,
+    320318,
+    350341,
+    360352,
+    370341,
+    450331,
+    460313,
+    470335,
+    490333,
+    500153,
+    510326,
+    520344,
+    530341,
+    540334,
+    550331,
+    560322,
+    2550376
+   ]
+  },
+  {
+   "design": "fam_anger_m",
+   "count": 30,
+   "characters": [
+    "arb",
+    "bob",
+    "bry",
+    "cmn",
+    "crz",
+    "dra",
+    "dvj",
+    "edd",
+    "fen",
+    "gan",
+    "hei",
+    "hwo",
+    "ita",
+    "jac",
+    "jin",
+    "kaz",
+    "lar",
+    "law",
+    "lee",
+    "lei",
+    "leo",
+    "mar",
+    "mig",
+    "mrx",
+    "mry",
+    "nsb",
+    "nsc",
+    "pau",
+    "ste",
+    "yos"
+   ],
+   "item_nos": [
+    238,
+    10232,
+    30202,
+    40233,
+    60236,
+    70232,
+    80235,
+    90234,
+    100233,
+    110230,
+    130238,
+    140236,
+    160242,
+    170237,
+    180228,
+    200231,
+    230243,
+    250205,
+    300222,
+    310057,
+    320056,
+    350222,
+    370222,
+    380071,
+    460305,
+    470226,
+    520237,
+    530234,
+    540227,
+    2550257
+   ]
+  },
+  {
+   "design": "fam_g_rock",
+   "count": 30,
+   "characters": [
+    "arb",
+    "bob",
+    "bry",
+    "cmn",
+    "crz",
+    "dra",
+    "dvj",
+    "edd",
+    "fen",
+    "gan",
+    "hei",
+    "hwo",
+    "ita",
+    "jac",
+    "jin",
+    "kaz",
+    "lar",
+    "law",
+    "lee",
+    "lei",
+    "mar",
+    "mig",
+    "mrx",
+    "mry",
+    "nsa",
+    "nsb",
+    "nsc",
+    "pau",
+    "ste",
+    "yos"
+   ],
+   "item_nos": [
+    239,
+    10233,
+    30203,
+    40234,
+    60237,
+    70233,
+    80236,
+    90235,
+    100234,
+    110231,
+    130239,
+    140237,
+    160243,
+    180229,
+    200232,
+    230244,
+    250206,
+    300223,
+    310058,
+    320057,
+    350223,
+    370223,
+    380072,
+    460306,
+    470227,
+    500083,
+    520238,
+    530235,
+    540228,
+    2550251
+   ]
+  },
+  {
+   "design": "fam_kabuki",
+   "count": 30,
+   "characters": [
+    "arb",
+    "bob",
+    "bry",
+    "cmn",
+    "crz",
+    "dra",
+    "dvj",
+    "edd",
+    "fen",
+    "gan",
+    "hei",
+    "hwo",
+    "ita",
+    "jac",
+    "jin",
+    "kaz",
+    "lar",
+    "law",
+    "lee",
+    "lei",
+    "leo",
+    "mar",
+    "mig",
+    "mrx",
+    "mry",
+    "nsb",
+    "nsc",
+    "pau",
+    "ste",
+    "yos"
+   ],
+   "item_nos": [
+    240,
+    10234,
+    30204,
+    40235,
+    60238,
+    70234,
+    80237,
+    90236,
+    100235,
+    110232,
+    130240,
+    140238,
+    160244,
+    170239,
+    180230,
+    200233,
+    230245,
+    250207,
+    300224,
+    310059,
+    320058,
+    350224,
+    370224,
+    380073,
+    460307,
+    470228,
+    520239,
+    530236,
+    540229,
+    2550245
+   ]
+  },
+  {
+   "design": "fam_kyou_m",
+   "count": 30,
+   "characters": [
+    "arb",
+    "bob",
+    "bry",
+    "cmn",
+    "crz",
+    "dra",
+    "dvj",
+    "edd",
+    "fen",
+    "gan",
+    "hei",
+    "hwo",
+    "ita",
+    "jac",
+    "jin",
+    "kaz",
+    "lar",
+    "law",
+    "lee",
+    "lei",
+    "leo",
+    "mar",
+    "mig",
+    "mrx",
+    "mry",
+    "nsb",
+    "nsc",
+    "pau",
+    "ste",
+    "yos"
+   ],
+   "item_nos": [
+    241,
+    10235,
+    30205,
+    40236,
+    60239,
+    70235,
+    80238,
+    90237,
+    100236,
+    110233,
+    130241,
+    140239,
+    160245,
+    170242,
+    180231,
+    200234,
+    230246,
+    250208,
+    300225,
+    310060,
+    320059,
+    350225,
+    370225,
+    380074,
+    460308,
+    470229,
+    520240,
+    530237,
+    540230,
+    2550246
+   ]
+  },
+  {
+   "design": "fam_skull_m",
+   "count": 30,
+   "characters": [
+    "arb",
+    "bob",
+    "bry",
+    "cmn",
+    "crz",
+    "dra",
+    "dvj",
+    "edd",
+    "fen",
+    "gan",
+    "hei",
+    "hwo",
+    "ita",
+    "jac",
+    "jin",
+    "kaz",
+    "lar",
+    "law",
+    "lee",
+    "lei",
+    "mar",
+    "mig",
+    "mrx",
+    "mry",
+    "nsa",
+    "nsb",
+    "nsc",
+    "pau",
+    "ste",
+    "yos"
+   ],
+   "item_nos": [
+    243,
+    10237,
+    30207,
+    40238,
+    60240,
+    70237,
+    80240,
+    90239,
+    100238,
+    110235,
+    130243,
+    140241,
+    160247,
+    180233,
+    200236,
+    230248,
+    250210,
+    300227,
+    310062,
+    320061,
+    350227,
+    370227,
+    380076,
+    460310,
+    470231,
+    500084,
+    520242,
+    530239,
+    540232,
+    2550259
+   ]
+  },
+  {
+   "design": "fam_tribal",
+   "count": 30,
+   "characters": [
+    "arb",
+    "bob",
+    "bry",
+    "cmn",
+    "crz",
+    "dra",
+    "dvj",
+    "edd",
+    "fen",
+    "gan",
+    "hei",
+    "hwo",
+    "ita",
+    "jac",
+    "jin",
+    "kaz",
+    "lar",
+    "law",
+    "lee",
+    "lei",
+    "leo",
+    "mar",
+    "mig",
+    "mrx",
+    "mry",
+    "nsb",
+    "nsc",
+    "pau",
+    "ste",
+    "yos"
+   ],
+   "item_nos": [
+    245,
+    10239,
+    30209,
+    40240,
+    60242,
+    70239,
+    80242,
+    90241,
+    100240,
+    110236,
+    130245,
+    140243,
+    160249,
+    170247,
+    180235,
+    200238,
+    230250,
+    250212,
+    300229,
+    310064,
+    320063,
+    350229,
+    370229,
+    380078,
+    460312,
+    470233,
+    520244,
+    530241,
+    540234,
+    2550254
+   ]
+  },
+  {
+   "design": "fam_out_anim_m",
+   "count": 29,
+   "characters": [
+    "arb",
+    "bob",
+    "bry",
+    "cmn",
+    "crz",
+    "dra",
+    "dvj",
+    "edd",
+    "fen",
+    "gan",
+    "hei",
+    "hwo",
+    "ita",
+    "jac",
+    "jin",
+    "kaz",
+    "lar",
+    "law",
+    "lee",
+    "lei",
+    "mar",
+    "mig",
+    "mrx",
+    "mry",
+    "nsb",
+    "nsc",
+    "pau",
+    "ste",
+    "yos"
+   ],
+   "item_nos": [
+    242,
+    10236,
+    30206,
+    40237,
+    60315,
+    70236,
+    80239,
+    90238,
+    100237,
+    110234,
+    130242,
+    140240,
+    160246,
+    180232,
+    200235,
+    230247,
+    250209,
+    300226,
+    310061,
+    320060,
+    350226,
+    370226,
+    380075,
+    460309,
+    470230,
+    520241,
+    530238,
+    540231,
+    2550253
+   ]
+  },
+  {
+   "design": "fam_tetu_m",
+   "count": 29,
+   "characters": [
+    "arb",
+    "bob",
+    "bry",
+    "cmn",
+    "crz",
+    "dra",
+    "dvj",
+    "edd",
+    "fen",
+    "gan",
+    "hei",
+    "hwo",
+    "ita",
+    "jin",
+    "kaz",
+    "lar",
+    "law",
+    "lee",
+    "lei",
+    "leo",
+    "mar",
+    "mig",
+    "mrx",
+    "mry",
+    "nsb",
+    "nsc",
+    "pau",
+    "ste",
+    "yos"
+   ],
+   "item_nos": [
+    244,
+    10238,
+    30208,
+    40239,
+    60241,
+    70238,
+    80241,
+    90240,
+    100239,
+    130244,
+    140242,
+    160248,
+    170246,
+    180234,
+    200237,
+    230249,
+    250211,
+    300228,
+    310063,
+    320062,
+    350228,
+    370228,
+    380077,
+    460311,
+    470232,
+    520243,
+    530240,
+    540233,
+    2550248
+   ]
+  },
+  {
+   "design": "fam_half",
+   "count": 18,
+   "characters": [
+    "ann",
+    "asa",
+    "ask",
+    "cmn",
+    "dnc",
+    "elz",
+    "frv",
+    "jul",
+    "knm",
+    "kzm",
+    "leo",
+    "lil",
+    "ltn",
+    "mut",
+    "nin",
+    "nsd",
+    "xia",
+    "zaf"
+   ],
+   "item_nos": [
+    50243,
+    120251,
+    150243,
+    170238,
+    190315,
+    210243,
+    220252,
+    240252,
+    260245,
+    280064,
+    290061,
+    360230,
+    450324,
+    490326,
+    510319,
+    550324,
+    560315,
+    2550256
+   ]
+  },
+  {
+   "design": "fam_kira",
+   "count": 18,
+   "characters": [
+    "ann",
+    "asa",
+    "ask",
+    "cmn",
+    "dnc",
+    "elz",
+    "frv",
+    "jul",
+    "knm",
+    "kzm",
+    "leo",
+    "lil",
+    "ltn",
+    "mut",
+    "nin",
+    "nsd",
+    "xia",
+    "zaf"
+   ],
+   "item_nos": [
+    50244,
+    120252,
+    150244,
+    170240,
+    190316,
+    210244,
+    220253,
+    240253,
+    260246,
+    280065,
+    290062,
+    360231,
+    450325,
+    490327,
+    510320,
+    550325,
+    560316,
+    2550250
+   ]
+  },
+  {
+   "design": "fam_kyou_f",
+   "count": 18,
+   "characters": [
+    "ann",
+    "asa",
+    "ask",
+    "cmn",
+    "dnc",
+    "elz",
+    "frv",
+    "jul",
+    "knm",
+    "kzm",
+    "leo",
+    "lil",
+    "ltn",
+    "mut",
+    "nin",
+    "nsd",
+    "xia",
+    "zaf"
+   ],
+   "item_nos": [
+    50245,
+    120253,
+    150245,
+    170241,
+    190317,
+    210245,
+    220254,
+    240254,
+    260247,
+    280066,
+    290063,
+    360232,
+    450326,
+    490328,
+    510321,
+    550326,
+    560317,
+    2550247
+   ]
+  },
+  {
+   "design": "fam_out_anim_f",
+   "count": 18,
+   "characters": [
+    "ann",
+    "asa",
+    "ask",
+    "cmn",
+    "dnc",
+    "elz",
+    "frv",
+    "jul",
+    "knm",
+    "kzm",
+    "leo",
+    "lil",
+    "ltn",
+    "mut",
+    "nin",
+    "nsd",
+    "xia",
+    "zaf"
+   ],
+   "item_nos": [
+    50246,
+    120329,
+    150246,
+    170243,
+    190318,
+    210246,
+    220255,
+    240255,
+    260248,
+    280067,
+    290064,
+    360301,
+    450327,
+    490329,
+    510322,
+    550327,
+    560318,
+    2550252
+   ]
+  },
+  {
+   "design": "fam_skull_f",
+   "count": 18,
+   "characters": [
+    "ann",
+    "asa",
+    "ask",
+    "cmn",
+    "dnc",
+    "elz",
+    "frv",
+    "jul",
+    "knm",
+    "kzm",
+    "leo",
+    "lil",
+    "ltn",
+    "mut",
+    "nin",
+    "nsd",
+    "xia",
+    "zaf"
+   ],
+   "item_nos": [
+    50247,
+    120254,
+    150247,
+    170244,
+    190319,
+    210247,
+    220256,
+    240256,
+    260249,
+    280068,
+    290065,
+    360233,
+    450328,
+    490330,
+    510323,
+    550328,
+    560319,
+    2550260
+   ]
+  },
+  {
+   "design": "fam_spider",
+   "count": 18,
+   "characters": [
+    "ann",
+    "asa",
+    "ask",
+    "cmn",
+    "dnc",
+    "elz",
+    "frv",
+    "jul",
+    "knm",
+    "kzm",
+    "leo",
+    "lil",
+    "ltn",
+    "mut",
+    "nin",
+    "nsd",
+    "xia",
+    "zaf"
+   ],
+   "item_nos": [
+    50248,
+    120255,
+    150248,
+    170245,
+    190320,
+    210248,
+    220257,
+    240257,
+    260250,
+    280069,
+    290066,
+    360234,
+    450329,
+    490331,
+    510324,
+    550329,
+    560320,
+    2550255
+   ]
+  },
+  {
+   "design": "fam_anger_f",
+   "count": 17,
+   "characters": [
+    "ann",
+    "asa",
+    "ask",
+    "cmn",
+    "dnc",
+    "elz",
+    "frv",
+    "jul",
+    "knm",
+    "kzm",
+    "lil",
+    "ltn",
+    "mut",
+    "nin",
+    "nsd",
+    "xia",
+    "zaf"
+   ],
+   "item_nos": [
+    50242,
+    120250,
+    150242,
+    190314,
+    210242,
+    220251,
+    240251,
+    260244,
+    280063,
+    290060,
+    360229,
+    450323,
+    490325,
+    510318,
+    550323,
+    560314,
+    2550258
+   ]
+  },
+  {
+   "design": "fam_tetu_f",
+   "count": 17,
+   "characters": [
+    "ann",
+    "asa",
+    "ask",
+    "cmn",
+    "dnc",
+    "elz",
+    "frv",
+    "jul",
+    "knm",
+    "kzm",
+    "lil",
+    "ltn",
+    "mut",
+    "nin",
+    "nsd",
+    "xia",
+    "zaf"
+   ],
+   "item_nos": [
+    50249,
+    120256,
+    150249,
+    190321,
+    210249,
+    220258,
+    240258,
+    260251,
+    280070,
+    290067,
+    360235,
+    450330,
+    490332,
+    510325,
+    550330,
+    560321,
+    2550249
+   ]
+  },
+  {
+   "design": "fam_crown",
+   "count": 2,
+   "characters": [
+    "dra",
+    "xia"
+   ],
+   "item_nos": [
+    50011,
+    160014
+   ]
+  },
+  {
+   "design": "fam_flower",
+   "count": 2,
+   "characters": [
+    "lil",
+    "mut"
+   ],
+   "item_nos": [
+    150014,
+    240014
+   ]
+  },
+  {
+   "design": "fam_glam_rock",
+   "count": 2,
+   "characters": [
+    "dvj",
+    "hwo"
+   ],
+   "item_nos": [
+    40015,
+    130015
+   ]
+  },
+  {
+   "design": "fam_black",
+   "count": 1,
+   "characters": [
+    "xia"
+   ],
+   "item_nos": [
+    50012
+   ]
+  },
+  {
+   "design": "fam_blush",
+   "count": 1,
+   "characters": [
+    "jac"
+   ],
+   "item_nos": [
+    110014
+   ]
+  },
+  {
+   "design": "fam_brazil",
+   "count": 1,
+   "characters": [
+    "ltn"
+   ],
+   "item_nos": [
+    210013
+   ]
+  },
+  {
+   "design": "fam_btymark_hallown",
+   "count": 1,
+   "characters": [
+    "ltn"
+   ],
+   "item_nos": [
+    210015
+   ]
+  },
+  {
+   "design": "fam_btymark_heart",
+   "count": 1,
+   "characters": [
+    "ltn"
+   ],
+   "item_nos": [
+    210014
+   ]
+  },
+  {
+   "design": "fam_death",
+   "count": 1,
+   "characters": [
+    "crz"
+   ],
+   "item_nos": [
+    250020
+   ]
+  },
+  {
+   "design": "fam_devil",
+   "count": 1,
+   "characters": [
+    "jin"
+   ],
+   "item_nos": [
+    60014
+   ]
+  },
+  {
+   "design": "fam_eyefold",
+   "count": 1,
+   "characters": [
+    "ask"
+   ],
+   "item_nos": [
+    120015
+   ]
+  },
+  {
+   "design": "fam_flame",
+   "count": 1,
+   "characters": [
+    "crz"
+   ],
+   "item_nos": [
+    250021
+   ]
+  },
+  {
+   "design": "fam_franken",
+   "count": 1,
+   "characters": [
+    "bry"
+   ],
+   "item_nos": [
+    70015
+   ]
+  },
+  {
+   "design": "fam_galj_bk",
+   "count": 1,
+   "characters": [
+    "ask"
+   ],
+   "item_nos": [
+    120014
+   ]
+  },
+  {
+   "design": "fam_galj_wh",
+   "count": 1,
+   "characters": [
+    "asa"
+   ],
+   "item_nos": [
+    190016
+   ]
+  },
+  {
+   "design": "fam_galj_wh_smilemk",
+   "count": 1,
+   "characters": [
+    "dnc"
+   ],
+   "item_nos": [
+    220018
+   ]
+  },
+  {
+   "design": "fam_geisha",
+   "count": 1,
+   "characters": [
+    "kzm"
+   ],
+   "item_nos": [
+    260014
+   ]
+  },
+  {
+   "design": "fam_gothic",
+   "count": 1,
+   "characters": [
+    "lil"
+   ],
+   "item_nos": [
+    150013
+   ]
+  },
+  {
+   "design": "fam_injured",
+   "count": 1,
+   "characters": [
+    "lar"
+   ],
+   "item_nos": [
+    180013
+   ]
+  },
+  {
+   "design": "fam_joker",
+   "count": 1,
+   "characters": [
+    "ita"
+   ],
+   "item_nos": [
+    200014
+   ]
+  },
+  {
+   "design": "fam_kitten",
+   "count": 1,
+   "characters": [
+    "mut"
+   ],
+   "item_nos": [
+    240015
+   ]
+  },
+  {
+   "design": "fam_nature",
+   "count": 1,
+   "characters": [
+    "jul"
+   ],
+   "item_nos": [
+    490035
+   ]
+  },
+  {
+   "design": "fam_nomake",
+   "count": 1,
+   "characters": [
+    "lei"
+   ],
+   "item_nos": [
+    460304
+   ]
+  },
+  {
+   "design": "fam_plaster",
+   "count": 1,
+   "characters": [
+    "dnc"
+   ],
+   "item_nos": [
+    220017
+   ]
+  },
+  {
+   "design": "fam_replicant",
+   "count": 1,
+   "characters": [
+    "leo"
+   ],
+   "item_nos": [
+    170013
+   ]
+  },
+  {
+   "design": "fam_scar",
+   "count": 1,
+   "characters": [
+    "kaz"
+   ],
+   "item_nos": [
+    90016
+   ]
+  },
+  {
+   "design": "fam_splinters",
+   "count": 1,
+   "characters": [
+    "lar"
+   ],
+   "item_nos": [
+    180012
+   ]
+  },
+  {
+   "design": "fam_stamp2",
+   "count": 1,
+   "characters": [
+    "gan"
+   ],
+   "item_nos": [
+    520345
+   ]
+  },
+  {
+   "design": "fam_suture_eye",
+   "count": 1,
+   "characters": [
+    "law"
+   ],
+   "item_nos": [
+    10014
+   ]
+  },
+  {
+   "design": "fam_unhealthy",
+   "count": 1,
+   "characters": [
+    "kzm"
+   ],
+   "item_nos": [
+    260013
+   ]
+  }
+ ]
+}

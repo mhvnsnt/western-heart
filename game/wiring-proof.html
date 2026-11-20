@@ -1,0 +1,22 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wiring proof</title>
+<style>body{margin:0;background:#0b0610;color:#eee;font:14px system-ui}#b{margin:16px;padding:18px;text-align:center;font-size:34px;font-weight:800;letter-spacing:2px;border:2px solid #f0b040;color:#ffd27a}
+pre{margin:12px;white-space:pre-wrap;font-size:12px}</style>
+<div id="b"></div><pre id="o"></pre>
+<script type="module">
+import { spiritLabel, SPIRIT_FONT_STACK, SPIRIT_LABEL, trySpirit } from './js/spirit-actions.js';
+import { simulateMatch } from './js/sim-match.js';
+import { resolvePersonality } from './js/ai/cpu-personality.js';
+import { GrabHold } from './js/grab-hold.js';
+import { SoulSystems, loadVariants, LABELS } from './js/soul-systems.js';
+await loadVariants();
+const b = document.getElementById('b'); b.style.fontFamily = SPIRIT_FONT_STACK; b.textContent = spiritLabel('en');
+const ss = new SoulSystems({}); const mk=(id,o)=>({char:{id},meter:100,hp:100,maxHp:100,canAct:()=>true,receiveHit(m){this.hp-=m.damage},...o});
+const A=mk('demonio'),D=mk('pantera',{_rageOn:true}); const rel=ss.release(A,D); A.meter=60; const rei=ss.tryReihou(A,D);
+document.getElementById('b').insertAdjacentHTML('afterend',`<div id="b2" style="margin:0 16px;padding:10px;text-align:center;font:800 22px ${SPIRIT_FONT_STACK};color:#9ff">${LABELS.ready}<br>${LABELS.release} · ${LABELS.reihou} · ${LABELS.seal}</div>`);
+const g = new GrabHold(); g.grab('L','foe','legL'); g.grab('R','foe','armR'); g.update(0.5, 0.5);
+const o = { ja: SPIRIT_LABEL.ja, spirit: trySpirit({_urgeOn:true},{urgeOn:true,foeWall:.4,dist:1}),
+  personality: ['brawler','grappler','turtle'].map(a => resolvePersonality('x',{archetype:a})).map(p=>({a:p.archetype,ag:p.aggression,gr:p.grabBias})),
+  simulate: simulateMatch('pantera','buffalo-bill',{seed:23}), soul: { release: rel && rel.name, reihou: rei && rei.name, foeRageAfterReihou: D._rageOn }, grab: g.release({x:1,y:.4,z:0},8) };
+document.getElementById('o').textContent = JSON.stringify(o, null, 1); window.__done = true;
+</script>

@@ -1,0 +1,35 @@
+{
+ "tool": "tools/auto_rig/head_territory_clean.py",
+ "params": {
+  "joint": "Head",
+  "profile": false,
+  "top_y": 1.5,
+  "r_top": 0.28,
+  "x_neck": 0.16,
+  "z_back": -0.2,
+  "z_front": 0.25,
+  "floor_y": 1.3,
+  "inpaint_below": 0.5,
+  "iters": 200
+ },
+ "prims": [
+  {
+   "verts": 1384013,
+   "head_weighted": 233725,
+   "outside_territory": 105647,
+   "renormalized": 54385,
+   "inpainted": 51262,
+   "unfilled_fallback": 0,
+   "new_dominant": {
+    "RightShoulder": 24105,
+    "LeftShoulder": 23399,
+    "LeftArm": 16922,
+    "RightArm": 16895,
+    "RightForeArm": 9955,
+    "LeftForeArm": 9887,
+    "Neck": 2299,
+    "Spine1": 1763
+   }
+  }
+ ]
+}

@@ -1,0 +1,135 @@
+{
+ "code": "gan",
+ "stance": "Sm_sKAM00_",
+ "slots": {
+  "t3_neutral": {
+   "move": "Sm_sKAM00_",
+   "anim": "susm_kamae(DVD)",
+   "how": "stance",
+   "bank": "rotsm",
+   "clip": 198,
+   "fmt": "0xC8"
+  },
+  "t3_walk_fwd": {
+   "move": "Sm_sWALKF",
+   "anim": "susm_fwalk(DVD)",
+   "how": "stance cancel 0x40",
+   "bank": "rotsm",
+   "clip": 199,
+   "fmt": "0x64"
+  },
+  "t3_walk_back": {
+   "move": "Sm_sWALKB",
+   "anim": "susm_bwalk(DVD)",
+   "how": "stance cancel 0x10",
+   "bank": "rotsm",
+   "clip": 204,
+   "fmt": "0x64"
+  },
+  "t3_crouch": {
+   "move": "Sm_st2cr00_",
+   "anim": "susm_ta2sya(DVD)",
+   "how": "stance cancel 0x4",
+   "bank": "rotsm",
+   "clip": 227,
+   "fmt": "0x64"
+  },
+  "t3_jump_up": {
+   "move": "sJUMP_00_",
+   "anim": "Bco_newjump2(DVD)",
+   "how": "stance cancel 0x100",
+   "bank": "common",
+   "clip": 137,
+   "fmt": "0x64"
+  },
+  "t3_jump_fwd": {
+   "move": "sJUMP_00F",
+   "anim": "Bco_newjump2(DVD)",
+   "how": "stance cancel 0x200",
+   "bank": "common",
+   "clip": 137,
+   "fmt": "0x64"
+  },
+  "t3_jump_back": {
+   "move": "sJUMP_00B",
+   "anim": "Bco_newjump2(DVD)",
+   "how": "stance cancel 0x80",
+   "bank": "common",
+   "clip": 137,
+   "fmt": "0x64"
+  },
+  "t3_dash_fwd": {
+   "move": "Sm_sDASHF",
+   "anim": "kzco_dash125(DVD)",
+   "how": "stance cancel 0x8001",
+   "bank": "rotsm",
+   "clip": 202,
+   "fmt": "0x64"
+  },
+  "t3_backdash": {
+   "move": "Sm_sDASHB",
+   "anim": "naco_back90(DVD)",
+   "how": "stance cancel 0x8002",
+   "bank": "rotsm",
+   "clip": 207,
+   "fmt": "0x64"
+  },
+  "t3_sidestep_a": {
+   "move": "sSTEP_01L",
+   "anim": "coyt_l_idou_tame_tk75_1f(DVD)",
+   "how": "stance cancel 0x8003",
+   "bank": "common",
+   "clip": 58,
+   "fmt": "0x64"
+  },
+  "t3_sidestep_b": {
+   "move": "sSTEP_01R",
+   "anim": "coyt_r_idou_tame_tk75_1f(DVD)",
+   "how": "stance cancel 0x8004",
+   "bank": "common",
+   "clip": 66,
+   "fmt": "0x64"
+  },
+  "t3_ko": {
+   "move": "sDm_nkdoBxC",
+   "anim": "Sco_nkdown(DVD)",
+   "how": "own sDm_ state playing the common standing knockdown Sco_nkdown",
+   "bank": "common",
+   "clip": 727,
+   "fmt": "0x64"
+  },
+  "t3_block": {
+   "move": "sGrd_YC00G",
+   "anim": "Zco_PSgu02(DVD)",
+   "how": "engine state",
+   "bank": "common",
+   "clip": 188,
+   "fmt": "0x64"
+  },
+  "t3_hit": {
+   "move": "sDm_Aokimid00",
+   "anim": "Tco_styoro(DVD)",
+   "how": "engine state",
+   "bank": "common",
+   "clip": 310,
+   "fmt": "0x64"
+  },
+  "t3_hit_launch": {
+   "move": "sDw_AIR00_",
+   "anim": "dwfkao00(DVD)",
+   "how": "engine state",
+   "bank": "common",
+   "clip": 138,
+   "fmt": "0x64"
+  },
+  "t3_crouch_hold": {
+   "move": "Sm_cKAM00_",
+   "anim": "susm_skamae(DVD)",
+   "how": "own state family ^(\\w+_)?cKAM",
+   "bank": "rotsm",
+   "clip": 211,
+   "fmt": "0xC8"
+  }
+ },
+ "unresolved": []
+}

@@ -1,0 +1,748 @@
+{
+ "draft_date": "2026-10-22",
+ "source": "mhvnsnt/western-heart @ main 92bf1f777191552cb6a4469d10e543da8276cdb6 (stages.js blob 6497507d280daa3cfb8d20109e0353725971d09d verified identical)",
+ "description": "Arena drafts: every playable arena EXACTLY as it was before the upgrade pipeline. Revertible baseline.",
+ "file_count": 148,
+ "files": [
+  {
+   "path": "code/stages.js",
+   "sha256": "7aeab61cf5d5dc9a38a2c1de8130a799de971bc5e0274e149cac586e1357e414",
+   "bytes": 82284
+  },
+  {
+   "path": "assets/eastern-mind/stages.json",
+   "sha256": "f39870e18875cfb634983bc3eaf597d5467e7d12edd1b5a111604f3e6afcb59c",
+   "bytes": 14572
+  },
+  {
+   "path": "assets/eastern-mind/helix-palace/pano.png",
+   "sha256": "82eec853ee4dee8f3391143a0f65f84c8e4fd07a209940b0f2cc187812eb7a13",
+   "bytes": 75786
+  },
+  {
+   "path": "assets/eastern-mind/octagonal-shrine/pano.png",
+   "sha256": "2e700284439b8de08406f291c605bcddfc2dceb5dc9ffee270bd64a363da9b28",
+   "bytes": 62283
+  },
+  {
+   "path": "assets/eastern-mind/palace-of-dreaming/pano.png",
+   "sha256": "67a7953f49af052055a7f6d97961fb6bb5baf8d2cbd364d974e7bf60be3cbaea",
+   "bytes": 78038
+  },
+  {
+   "path": "assets/eastern-mind/phantom-marketplace/pano.png",
+   "sha256": "78d782098c36c2e1e1a21e5d45df5b86f08ac30e2386acfc4036490e41c83132",
+   "bytes": 42461
+  },
+  {
+   "path": "assets/eastern-mind/plains-of-chi-u/pano.png",
+   "sha256": "18899931a8d2c68e0a3fc47d6871b5606a0740a8e85108306e2f2724587f1773",
+   "bytes": 37565
+  },
+  {
+   "path": "assets/eastern-mind/tree-of-life/pano.png",
+   "sha256": "3c743c9fc38d6b28b307ed403c83ec749038dea3a80a37a92ec78a0d02417c77",
+   "bytes": 39344
+  },
+  {
+   "path": "assets/mat-legends/stages.json",
+   "sha256": "ee76ebd7bc90edc2778fb11640ea0ae93c0fb3f761dc970a6159ea53a1b759c3",
+   "bytes": 5588
+  },
+  {
+   "path": "assets/no-mercy/arena_armageddon.obj",
+   "sha256": "3520be38320c54750efafc165fc60c833c1aef9f6031921043f06d6783e55681",
+   "bytes": 132500
+  },
+  {
+   "path": "assets/no-mercy/arena_backlash.obj",
+   "sha256": "b816aa207ad37d0ee714cc32b7c5f9d55118b452792cdf6bee380c50486a7bd2",
+   "bytes": 129550
+  },
+  {
+   "path": "assets/no-mercy/arena_cage.obj",
+   "sha256": "627894372bb994399ea0541d344bed9f1ff7eaeda456f083c079fdb0770cb51e",
+   "bytes": 125511
+  },
+  {
+   "path": "assets/no-mercy/arena_king_of_the_ring.obj",
+   "sha256": "bb60b9b4d6bf6dc7e60de1807e1ea278a6b8b3835ce5f2d28c590eee23f903f5",
+   "bytes": 129068
+  },
+  {
+   "path": "assets/no-mercy/arena_no_mercy.obj",
+   "sha256": "2a57b2d167ca99011b93d1dbc0b425c46b3c0ef1ff23ad53c68ba881a25401ac",
+   "bytes": 142203
+  },
+  {
+   "path": "assets/no-mercy/arena_raw.obj",
+   "sha256": "11eed591c55a410150d32d9b0080205f50469ad28257fbfa3e735deeec8f9b6f",
+   "bytes": 288801
+  },
+  {
+   "path": "assets/no-mercy/arena_royal_rumble.obj",
+   "sha256": "47d54af1299280ac9a8eb72df459878cff84f8e894ee68c68f84b6f3e1d9a6a2",
+   "bytes": 128382
+  },
+  {
+   "path": "assets/no-mercy/arena_smackdown.obj",
+   "sha256": "39fa8126fa224e59a065497edcc2e74c5644cf92bb213ef64b72f05020287415",
+   "bytes": 132181
+  },
+  {
+   "path": "assets/no-mercy/arena_summerslam.obj",
+   "sha256": "398ba6eb0f819e33e93cb5ae023ef4a3be429a4522f2c3393ded2f29d6eadf70",
+   "bytes": 126698
+  },
+  {
+   "path": "assets/no-mercy/arena_survivor_series.obj",
+   "sha256": "c43c072d34ff370253be8ebc147c8458a0af5b198ec4e77489f7d31ac019dbe5",
+   "bytes": 127558
+  },
+  {
+   "path": "assets/no-mercy/arena_wrestlemania.obj",
+   "sha256": "81abe1fc52e4d865c70c5f2abbf79873b7f2f1732e34165a2776f26f5e3bf3a0",
+   "bytes": 132107
+  },
+  {
+   "path": "assets/no-mercy/backstage_bar_lounge.obj",
+   "sha256": "ed079f36b30cb104910a57f9dd0e4e3f9ab3d8819d4cb57e27793445b2a0f20f",
+   "bytes": 98119
+  },
+  {
+   "path": "assets/no-mercy/backstage_boiler_room.obj",
+   "sha256": "3ac65d1a096c909d532198b3e9c72b40c26280e1123165d6c66da98e35dcda6b",
+   "bytes": 88148
+  },
+  {
+   "path": "assets/no-mercy/backstage_hallway.obj",
+   "sha256": "2d1c9f2f56ac80a9ac1cc0a90c52bf60e8473b7802e7f258b9578d987aad5338",
+   "bytes": 58733
+  },
+  {
+   "path": "assets/no-mercy/backstage_locker_room.obj",
+   "sha256": "7e31d8b361336ae24b7e2f3d23844f58a84e3bd29d3b567f7370f62595b65990",
+   "bytes": 97670
+  },
+  {
+   "path": "assets/no-mercy/backstage_parking_lot.obj",
+   "sha256": "256e8791f551a1b93994ab60c26729cc2ded8e2f05086fc1b0f8373ffa4bc676",
+   "bytes": 100456
+  },
+  {
+   "path": "assets/no-mercy/lobby.obj",
+   "sha256": "f3f51087adb31c3fde7432574704db89131fda85b96cc0a2e6dccd8c043f03bd",
+   "bytes": 95688
+  },
+  {
+   "path": "assets/nomercy/arena_armageddon.glb",
+   "sha256": "37101fcd29f139ae7efec25bf8773447b0de337065daabbeb93528176e3eb4ff",
+   "bytes": 97304
+  },
+  {
+   "path": "assets/nomercy/arena_backlash.glb",
+   "sha256": "6d1e54e053e9804a59768762142660fd69a83a52c779247ce39d68d030470d8c",
+   "bytes": 90000
+  },
+  {
+   "path": "assets/nomercy/arena_cage.glb",
+   "sha256": "d264662231cc86cf5bffffca467bca0b84db96a323ab9f554b42320c7069852f",
+   "bytes": 2940
+  },
+  {
+   "path": "assets/nomercy/arena_king_of_the_ring.glb",
+   "sha256": "c27436bcfa2f7b58f0d4e243c76204a4af94e5f8bb0a77c5bf8896672410d13f",
+   "bytes": 90376
+  },
+  {
+   "path": "assets/nomercy/arena_no_mercy.glb",
+   "sha256": "dd9fd1f3a62a97593c415a1c4d494b55900b04ec432e52ecf35646cdc23050d6",
+   "bytes": 109196
+  },
+  {
+   "path": "assets/nomercy/arena_raw.glb",
+   "sha256": "35984b5f36637c983f2f264985fb0a2760c2d577ebe26bc4e58c45562368dfa4",
+   "bytes": 405224
+  },
+  {
+   "path": "assets/nomercy/arena_royal_rumble.glb",
+   "sha256": "74f5b4aad8ca464499d1a0323337c911ac16fd14175a782ce41abdde158c6e41",
+   "bytes": 84540
+  },
+  {
+   "path": "assets/nomercy/arena_smackdown.glb",
+   "sha256": "7dc996fae3d118105603ac4fe5765e434ef961fc79dda61a4d815c7510126bef",
+   "bytes": 95500
+  },
+  {
+   "path": "assets/nomercy/arena_summerslam.glb",
+   "sha256": "78f3ababa50c13abc6e39aa91a31328fb615dbf27e14b458025c8bb730b1848f",
+   "bytes": 87784
+  },
+  {
+   "path": "assets/nomercy/arena_survivor_series.glb",
+   "sha256": "e77efcd2f1ac2e9d1eff5c33c3853b0bb2dfa81014056618a67c731eb6d59f05",
+   "bytes": 86620
+  },
+  {
+   "path": "assets/nomercy/arena_wrestlemania.glb",
+   "sha256": "535d6e793e9d4e6cb8a074afd6dd640557243f223b8c05d279695ffeb824b502",
+   "bytes": 91972
+  },
+  {
+   "path": "assets/nomercy/backstage_bar_lounge.glb",
+   "sha256": "c9da3bba1c504b2e11e0595d3d5aec57c041f17d8b9958792f786cc1dc792529",
+   "bytes": 247848
+  },
+  {
+   "path": "assets/nomercy/backstage_boiler_room.glb",
+   "sha256": "0232b14a74b73bf772f8d3829ec2a1a0c2de34dcdc3d079ce5bd511f4cf21f13",
+   "bytes": 206972
+  },
+  {
+   "path": "assets/nomercy/backstage_hallway.glb",
+   "sha256": "aa813af1fbeb683e3853bbd4cceb5f52e9f6b236b3bdcefd472038f38dcd79e3",
+   "bytes": 155496
+  },
+  {
+   "path": "assets/nomercy/backstage_locker_room.glb",
+   "sha256": "9265a8ae873c2bff49cc401c359fb1fe91d510dcfa71e8480551c4eeee54d22f",
+   "bytes": 243996
+  },
+  {
+   "path": "assets/nomercy/backstage_parking_lot.glb",
+   "sha256": "2c4aa276eeb09244bc845266c1c1aea368a30e018bb9008d0b65034092ed68f5",
+   "bytes": 97920
+  },
+  {
+   "path": "assets/nomercy/lobby.glb",
+   "sha256": "1446e52c1077ad2cf434e1da6e8fa332cf9ba4210afc7b89d0e62b4fc5205f79",
+   "bytes": 204340
+  },
+  {
+   "path": "assets/nomercy/manifest.json",
+   "sha256": "0d746250026a713742580d2a9d1786fdeeb4a8528a4295c227c274f00e3592ce",
+   "bytes": 2833
+  },
+  {
+   "path": "assets/sf-ex/README.md",
+   "sha256": "d13a8b09b50eb67fe7b54062c4c1ec5c4021b9c2631aa9827d479871c7e5f496",
+   "bytes": 1054
+  },
+  {
+   "path": "assets/sf-ex/stages.json",
+   "sha256": "8c02e46744dc2c16bd32e194180c6a83710d30217ccaa50ecb78df257390862f",
+   "bytes": 13468
+  },
+  {
+   "path": "assets/sunra/README.md",
+   "sha256": "133cc9dfc8ef8103379adae0f1d32fe790b79d7a6d1861ddffb9248a25e6242c",
+   "bytes": 6218
+  },
+  {
+   "path": "assets/sunra/WORKLOG.md",
+   "sha256": "c5f2dad89731c33457179aa4286af489fd4b878ea62308c5abf66291a6db92d2",
+   "bytes": 2521
+  },
+  {
+   "path": "assets/sunra/mars-sky.glb",
+   "sha256": "8d24a5cc2dce68aefe94b1b2a404bc4e2c74624e0f688cfc86f93946527b5fb9",
+   "bytes": 4974016
+  },
+  {
+   "path": "assets/sunra/planets/earth.jpg",
+   "sha256": "9a94a536c44524a555a0a1a7f26702edc9db6cb9a9e5e1f7479f996b4ca9ea39",
+   "bytes": 344080
+  },
+  {
+   "path": "assets/sunra/planets/jupiter.jpg",
+   "sha256": "b1664ff4c1a25f5d81c1e6bd7ab57f7717d410eaa6d23c1fdd9477648b1ec9a5",
+   "bytes": 157780
+  },
+  {
+   "path": "assets/sunra/planets/mars.jpg",
+   "sha256": "34ffa87602a965eeb3d6b38d742e8d8aa385a6cc4c8d3f5dbe220ac0c4a00b3f",
+   "bytes": 525256
+  },
+  {
+   "path": "assets/sunra/planets/mercury.jpg",
+   "sha256": "5a5c80607f643496bac9a631e71957def35ed788895f18b678ac849c2b38e48a",
+   "bytes": 872555
+  },
+  {
+   "path": "assets/sunra/planets/neptune.jpg",
+   "sha256": "c1c9acc0b5ae817c80c07940bd605097ec0a2fe15401c87d532e89ef9f90baf5",
+   "bytes": 48069
+  },
+  {
+   "path": "assets/sunra/planets/pluto.jpg",
+   "sha256": "fa8407a68065f6785b9655b65a2c4abf3fcf97efeb4bb1363790f01894952ff1",
+   "bytes": 325111
+  },
+  {
+   "path": "assets/sunra/planets/saturn.jpg",
+   "sha256": "405299498875756885cef1cdc1a735335ca3326760a5bf0b912e669a032114ed",
+   "bytes": 70548
+  },
+  {
+   "path": "assets/sunra/planets/saturn_ring.jpg",
+   "sha256": "801a5562b7c1356e3abeee0d08720fa82ea4f52bdcd47d7b7a4dd3e991a12076",
+   "bytes": 9307
+  },
+  {
+   "path": "assets/sunra/planets/uranus.jpg",
+   "sha256": "492a6dc5e31bc9c4d67f54d62d377fd4f58781111c05c7ba6335491766cd18ae",
+   "bytes": 8942
+  },
+  {
+   "path": "assets/sunra/planets/venus.jpg",
+   "sha256": "11f97521c56b7f2e8b3857b724f159cb7cb835bf87c20607c66681edcd590b45",
+   "bytes": 255067
+  },
+  {
+   "path": "assets/sunra/preview/README.md",
+   "sha256": "6732437fbb05138ad591d91e79b43379b0dbb7d7c81e919e0d6766e7d000edd9",
+   "bytes": 2482
+  },
+  {
+   "path": "assets/sunra/preview/sunra-kevin-fight-still.png",
+   "sha256": "324f7917c4542dd21551c285f2be7309ef2809b765d553b16b25d24f30a6c54a",
+   "bytes": 247086
+  },
+  {
+   "path": "assets/sunra/preview/sunra-kevin-fight.mp4",
+   "sha256": "7856341a8fd40050c8f95ef5dec395e804cd87df4969924f96c3e90dc9319ba9",
+   "bytes": 1032813
+  },
+  {
+   "path": "assets/t3/stg_a_atlas.png",
+   "sha256": "514e6566f9897512fbcfd325973075d09b5cc2054924835d2030e98a1b09a691",
+   "bytes": 323686
+  },
+  {
+   "path": "assets/t3/stg_a_panorama.obj",
+   "sha256": "91e155102364e72c66cf391caef7708b3f6873072b6249b26a5724275cebc1f6",
+   "bytes": 206211
+  },
+  {
+   "path": "assets/t3/stg_b_atlas.png",
+   "sha256": "1cbe6f01182f9a2384be2c7b923856233c4ca398161c3fd73e4596546549bc27",
+   "bytes": 540136
+  },
+  {
+   "path": "assets/t3/stg_b_panorama.obj",
+   "sha256": "d301c378d8bc3c29fd85466b6e9ebbd6f64d5e36bbbc9bea430acd6394132b81",
+   "bytes": 239767
+  },
+  {
+   "path": "assets/t3/stg_c_atlas.png",
+   "sha256": "18c6233a623902f62d0753a6c53b6cc0a25852d52c432617e43d587ca8ca74e0",
+   "bytes": 600165
+  },
+  {
+   "path": "assets/t3/stg_c_panorama.obj",
+   "sha256": "3e01e9f2e461f4f7306b9cbe621567b15b14e3b00fa5dc4de8532eec13ed2174",
+   "bytes": 277578
+  },
+  {
+   "path": "assets/t3/stg_d_atlas.png",
+   "sha256": "95242962f90aa10fc449628fc4c28bb0d6b636fa4f7c497d1cd49e07a5d5d891",
+   "bytes": 184695
+  },
+  {
+   "path": "assets/t3/stg_d_panorama.obj",
+   "sha256": "6af0667835c5923db12624ca1849312ce7ce9ad478141bfec87e97ea9a0cbe9f",
+   "bytes": 241139
+  },
+  {
+   "path": "assets/t3/stg_e_atlas.png",
+   "sha256": "cd34e37100d31669a60adf1b56c36304c43b99cb9f77cdca6ee37500ba0881c9",
+   "bytes": 174255
+  },
+  {
+   "path": "assets/t3/stg_e_panorama.obj",
+   "sha256": "89fe364e5fffc83afaf8a9e48a1e3f05909de3fc4983da4e1cf111006504a3c8",
+   "bytes": 203845
+  },
+  {
+   "path": "assets/t3/stg_f_atlas.png",
+   "sha256": "916e2b24ce34234cf2969a5ff1b714120551b9c42a1c0d11e51cbdcf932ad53e",
+   "bytes": 349076
+  },
+  {
+   "path": "assets/t3/stg_f_panorama.obj",
+   "sha256": "431463d2e9977e25f586d56515034ce6fab68117d6e3ea324922cdbe137e42a8",
+   "bytes": 169611
+  },
+  {
+   "path": "assets/t3/stg_g_atlas.png",
+   "sha256": "33a7ce0441e929feb338e55ac08a53dc77fae77f15f64df621bd76e71bc818af",
+   "bytes": 75884
+  },
+  {
+   "path": "assets/t3/stg_g_panorama.obj",
+   "sha256": "9045693aaaa868b0fc506a0653cf786ad427a336a9dbf9a6764899970c852fa0",
+   "bytes": 203216
+  },
+  {
+   "path": "assets/t3/stg_i_atlas.png",
+   "sha256": "014a89343891720b946bd159525036509654b9c5406fb21b191309bc4deae9de",
+   "bytes": 156758
+  },
+  {
+   "path": "assets/t3/stg_i_panorama.obj",
+   "sha256": "68cf712a331710c2e9ccc7ae00efccf033d0ea754d59555c1e7d0ba568154066",
+   "bytes": 206662
+  },
+  {
+   "path": "assets/t3/stg_j_atlas.png",
+   "sha256": "7d0aa036983e8332837e99ffce7a66a8d2d312e90d839bc1153eaf59ed014bc4",
+   "bytes": 148068
+  },
+  {
+   "path": "assets/t3/stg_j_panorama.obj",
+   "sha256": "37e88f6efddb7c3c5785e9ee67a6eb9349d3a91192222db38b2a8310da8281b7",
+   "bytes": 218164
+  },
+  {
+   "path": "assets/t3/stg_k_atlas.png",
+   "sha256": "fdc1581d580f844631d68be524862d38d5c57e94612f1bca180f26b2be598e07",
+   "bytes": 396120
+  },
+  {
+   "path": "assets/t3/stg_k_panorama.obj",
+   "sha256": "a188e83cb10482080876169b21a662bd0750742f0f78ed9affce3d6fa6a0ab1f",
+   "bytes": 233935
+  },
+  {
+   "path": "assets/t3/stg_l_atlas.png",
+   "sha256": "eaa80786b2e3a9cc62faa33e6cfba13bd7a71b7c365542ef6c793e77b69ccf24",
+   "bytes": 29974
+  },
+  {
+   "path": "assets/t3/stg_l_panorama.obj",
+   "sha256": "ef07b77add6e59e10a76b22f823ddfed64b0ee8ce7cd40737098989ea989118e",
+   "bytes": 85027
+  },
+  {
+   "path": "assets/t3/stg_m_atlas.png",
+   "sha256": "c16ebcea8eaed7f46fc8dea7748870a4c3020823c62b917e89e411c638638a83",
+   "bytes": 165760
+  },
+  {
+   "path": "assets/t3/stg_m_panorama.obj",
+   "sha256": "f2e2dbab71a3461bffeb55d77817c9c7c4831a45277bc170de031e60b37529ec",
+   "bytes": 220441
+  },
+  {
+   "path": "assets/t3/stg_n_atlas.png",
+   "sha256": "790d4dd8e400d545065f58a2970647fce61a28d2111dd0fa980d24c60671e39a",
+   "bytes": 429336
+  },
+  {
+   "path": "assets/t3/stg_n_panorama.obj",
+   "sha256": "a0b5873803103035ecbf77c692efb39336ac1d2b5a2d1ef1327d4eaeeac8c05d",
+   "bytes": 243233
+  },
+  {
+   "path": "assets/t3/stg_t_atlas.png",
+   "sha256": "148cd96fa8cfcc75da32e5c9efe2bf0a31899d93a531df8d88616bea5f71796f",
+   "bytes": 326751
+  },
+  {
+   "path": "assets/t3/stg_t_panorama.obj",
+   "sha256": "e34f7d7c2fc04450a52e34717c8bc989b8415532720fb28e684e31b89c0843d5",
+   "bytes": 227110
+  },
+  {
+   "path": "assets/t3/stg_u_atlas.png",
+   "sha256": "ff5cd75155a850c1ae7946aac917d7bdb1b27db6371dbe0d8b983b359658f343",
+   "bytes": 157621
+  },
+  {
+   "path": "assets/t3/stg_u_panorama.obj",
+   "sha256": "2e6d26c7f397d7250fef5a67bdac421615e905986dd8bf5d879b397b82940316",
+   "bytes": 251320
+  },
+  {
+   "path": "assets/thumbs/helix-palace.png",
+   "sha256": "e5ca1a7abc1a138c3a748d9660e441eafc59c58fdae4215bb59591e92cc51f56",
+   "bytes": 100651
+  },
+  {
+   "path": "assets/thumbs/nm-armageddon.png",
+   "sha256": "b843650aa03f3b88d767b6b3ab29d8ed3bdf21a69e90a0455cb0ae033baa73cc",
+   "bytes": 49256
+  },
+  {
+   "path": "assets/thumbs/nm-backlash.png",
+   "sha256": "5fee26d26613e5e806bdb2b456dd596aad51a41148216e4e5f0390cfeaba9c95",
+   "bytes": 47865
+  },
+  {
+   "path": "assets/thumbs/nm-bar.png",
+   "sha256": "a81392ba7df3a8551754b9928b81b8b26a4d946911e54ef258230ca011a965c7",
+   "bytes": 73209
+  },
+  {
+   "path": "assets/thumbs/nm-boiler-room.png",
+   "sha256": "5fa58d24af9f22639d190c23e9be4e2af00b8b9204f43cf35696f3a5c3f46fb8",
+   "bytes": 99927
+  },
+  {
+   "path": "assets/thumbs/nm-cage.png",
+   "sha256": "4eff3c4696fcf4de2e66da33bd756ec43753181442a62ffcaa26a5b784525320",
+   "bytes": 180351
+  },
+  {
+   "path": "assets/thumbs/nm-hallway.png",
+   "sha256": "f16bb6fa53680c141773e477ac9fd8a3a1ade0943001b2b2b07d71e342ba6d75",
+   "bytes": 96439
+  },
+  {
+   "path": "assets/thumbs/nm-king-of-the-ring.png",
+   "sha256": "ddbb1925fcb73d9d0ab358abfc5f7b1d58d5c6d20fa4c896542ff9ad2236bc38",
+   "bytes": 51541
+  },
+  {
+   "path": "assets/thumbs/nm-lobby.png",
+   "sha256": "bd9f7b4a6499c81308f39b8525a506c17a7edc49684b758ce62ccec1e386cec0",
+   "bytes": 85605
+  },
+  {
+   "path": "assets/thumbs/nm-locker-room.png",
+   "sha256": "78fa385caa04bf927981766fb11cfe3032893df9fe3ad5e3148b4c909d46502a",
+   "bytes": 75862
+  },
+  {
+   "path": "assets/thumbs/nm-no-mercy.png",
+   "sha256": "f02e9413460fbfc055286aeab61ff31a4027e92a0945c0230aad062b329386e5",
+   "bytes": 49049
+  },
+  {
+   "path": "assets/thumbs/nm-parking-lot.png",
+   "sha256": "ac326391e03f6a73a820c521afbcea85221965f6bd84661a985f1b0a004fa01d",
+   "bytes": 58105
+  },
+  {
+   "path": "assets/thumbs/nm-raw.png",
+   "sha256": "d20a84e31686274ad3b630ab1993411d628ce9bcc6b812c94e131e1baf6ba344",
+   "bytes": 29817
+  },
+  {
+   "path": "assets/thumbs/nm-royal-rumble.png",
+   "sha256": "df364af2684a33e01e96e45e3e6a8602d7e98eb6973e0ca5e82f86e9b7966c02",
+   "bytes": 55669
+  },
+  {
+   "path": "assets/thumbs/nm-smackdown.png",
+   "sha256": "b1b1235410779acc9204b6ed68e2b4b81fe23b3f8bb1dc46c6a5cd5c02276ece",
+   "bytes": 56742
+  },
+  {
+   "path": "assets/thumbs/nm-summerslam.png",
+   "sha256": "e20055388e5207df7a3532aed8516b42c783b295213bfc9647f57f5ca8c8d94f",
+   "bytes": 49045
+  },
+  {
+   "path": "assets/thumbs/nm-survivor-series.png",
+   "sha256": "f1bc4deb3bd0abf0242c858482e2e95ca0a729aecc3cad8887770d91d95b531a",
+   "bytes": 50177
+  },
+  {
+   "path": "assets/thumbs/nm-wrestlemania.png",
+   "sha256": "2dcd617cc6710d4a35f0a69c14ecc4b25519a3418180ff57db8478d51693448b",
+   "bytes": 53119
+  },
+  {
+   "path": "assets/thumbs/octagonal-shrine.png",
+   "sha256": "b3b94dbbd2a877d9746ae94972bbae346872081026f26624fefa08004d509f94",
+   "bytes": 94242
+  },
+  {
+   "path": "assets/thumbs/palace-of-dreaming.png",
+   "sha256": "03386ecfe9138455fec4c63519f3f1a987a91c7f535dc360a149b3d3a2525ad9",
+   "bytes": 119682
+  },
+  {
+   "path": "assets/thumbs/phantom-marketplace.png",
+   "sha256": "5df7efd7d886f74b9ee0a21ba36c77250583f55d5d5b688265ccf7c56e9e8528",
+   "bytes": 134590
+  },
+  {
+   "path": "assets/thumbs/plains-of-chi-u.png",
+   "sha256": "131b7312d19e485d9b64c0c1237592bdf8854739e24517b1063204cbcf01ecf2",
+   "bytes": 99487
+  },
+  {
+   "path": "assets/thumbs/shrine.png",
+   "sha256": "5ddf8d62e4fdc416c3a8ca86289130f9a8591be0de93f5f7856a7734426e535f",
+   "bytes": 85289
+  },
+  {
+   "path": "assets/thumbs/sunra.png",
+   "sha256": "5d50b72d0bea45bf9fee7f11628867f0606eb572e61a2436550a7d36e1469991",
+   "bytes": 68590
+  },
+  {
+   "path": "assets/thumbs/t3-a.png",
+   "sha256": "8151d01c8151cbd17a02075d7e20aa62d5a6c6c6ed7c2963c65d428318139210",
+   "bytes": 89259
+  },
+  {
+   "path": "assets/thumbs/t3-b.png",
+   "sha256": "7fc27c10f01ca608bd062f7e5fe6ed6a662ebd0f6ec450373d62bfd532fdd63e",
+   "bytes": 98458
+  },
+  {
+   "path": "assets/thumbs/t3-c.png",
+   "sha256": "99d17fdbd75f7312ac593e2bc0880678d7276553c9c26d518cecde1f1959435d",
+   "bytes": 83919
+  },
+  {
+   "path": "assets/thumbs/t3-d.png",
+   "sha256": "61f93d5f902732d9848e0945d38171cf6a266e402b9d80b92c48aabc837a22d2",
+   "bytes": 116621
+  },
+  {
+   "path": "assets/thumbs/t3-e.png",
+   "sha256": "4472e0d3c603ed7f2087e3f900781b22b5a563a2d2b49f8e8d2e141f21f25182",
+   "bytes": 107806
+  },
+  {
+   "path": "assets/thumbs/t3-f.png",
+   "sha256": "6fff53aa55131326419514004f6a4427077a5f758260c471a2422498d65c7340",
+   "bytes": 98632
+  },
+  {
+   "path": "assets/thumbs/t3-g.png",
+   "sha256": "143ea9552b5b66f04bc913eca1dee4eb6f7de5264c7bcb0acf5551057fd677fe",
+   "bytes": 65049
+  },
+  {
+   "path": "assets/thumbs/t3-i.png",
+   "sha256": "77c76849cbdf452b9e3b28805c1b28808db50df40ef634a0828823113487f18d",
+   "bytes": 111032
+  },
+  {
+   "path": "assets/thumbs/t3-j.png",
+   "sha256": "4e72b6d841a4517eadb93cdd46d938b64f931ba0296e8ea0655a05b0463ee1da",
+   "bytes": 77681
+  },
+  {
+   "path": "assets/thumbs/t3-k.png",
+   "sha256": "f0ca9ee941314ed4aaa6c2b92f554e8d48b9fcecb918745a679683f6c63adea4",
+   "bytes": 130216
+  },
+  {
+   "path": "assets/thumbs/t3-l.png",
+   "sha256": "fadda5ee73428bc9ae586da008fa14649fac2caacfe71f7ac9229073cd7142bf",
+   "bytes": 70379
+  },
+  {
+   "path": "assets/thumbs/t3-m.png",
+   "sha256": "01d8fe0a5afd06b25c2966bc2ebb7a5dea53f09630bb233f56404d0fca2416bb",
+   "bytes": 76414
+  },
+  {
+   "path": "assets/thumbs/t3-n.png",
+   "sha256": "33a7c424a8ae34efd5019bc9a620a9e524d1a9a6fbec5c8b681ff81dc2c5e49b",
+   "bytes": 106565
+  },
+  {
+   "path": "assets/thumbs/t3-t.png",
+   "sha256": "390ba587cf189d74b228984610f4c2e3d7b4d770a81da824f040130db58fe019",
+   "bytes": 78911
+  },
+  {
+   "path": "assets/thumbs/t3-u.png",
+   "sha256": "d44d7efde496d9373225c7bfa860602c82b864034d7d7a052bfc462f0f20b0e2",
+   "bytes": 92664
+  },
+  {
+   "path": "assets/thumbs/tong-nou.png",
+   "sha256": "c674b9c5b53842db464e976e862c29a8e934837bf04e9727cb9edc96d1e6feb0",
+   "bytes": 17983
+  },
+  {
+   "path": "assets/thumbs/tree-of-life.png",
+   "sha256": "06c29a1331510980fad49fc93bd657c79d32a71245e2ff92be19b5dddbb85ee9",
+   "bytes": 120668
+  },
+  {
+   "path": "prototype-stages/STAGE-TEMPLATE.md",
+   "sha256": "61caac96afc77cf7f9f793548854c54ed75368bb1fd098e8ba364b9ab7c0527a",
+   "bytes": 1367
+  },
+  {
+   "path": "prototype-stages/helix-palace.json",
+   "sha256": "c5368769d50b03bc62f4a12f6aca3723120c71ccac6b84d050bcfe47b598dc1d",
+   "bytes": 1231
+  },
+  {
+   "path": "prototype-stages/octagonal-shrine.json",
+   "sha256": "fd3d622403a138f6c661c053360e343ac7683f6f9452be4505d93289043ab57e",
+   "bytes": 1286
+  },
+  {
+   "path": "prototype-stages/palace-of-dreaming.json",
+   "sha256": "68fdcbd1cc49f956781158b316025759d57ea85051fb63bf9acb0bfbe77dfe72",
+   "bytes": 1195
+  },
+  {
+   "path": "prototype-stages/phantom-marketplace.json",
+   "sha256": "50915cf0ad296db18002619d0bbb4d80c42d99f4c0608eb3d933e29b7a882d5a",
+   "bytes": 1282
+  },
+  {
+   "path": "prototype-stages/plains-of-chi-u.json",
+   "sha256": "85c4c930bb0fd9422cf22f6f7278886a357508c2bdd7b0a5076e62df1fc70489",
+   "bytes": 1151
+  },
+  {
+   "path": "prototype-stages/shrine.json",
+   "sha256": "f83ba35638574a78a4dd251b2b2a33ea2f9ddf1064ef6f40e5dc758ab5f16384",
+   "bytes": 1428
+  },
+  {
+   "path": "prototype-stages/t3-retro-manifest.json",
+   "sha256": "59607692fcc914f37ca300da82196672c94f8b15fc8236dfedfc49b8e9a52699",
+   "bytes": 1889
+  },
+  {
+   "path": "prototype-stages/tong-nou.json",
+   "sha256": "18f0a5eac282dd604aead28fbc80ea52e080187bc19f5bf72372ec3e7cdf9454",
+   "bytes": 1025
+  },
+  {
+   "path": "prototype-stages/tree-of-life.json",
+   "sha256": "ebac95e48772ff95abb59de88232206c5aa5999e43e4c1553f510eae325efe50",
+   "bytes": 1085
+  },
+  {
+   "path": "docs-arenas/RESEARCH.md",
+   "sha256": "86b551f89107ffcb63954aa3338b5ceb92b43ad369f6f258683cce8e12c13a19",
+   "bytes": 5300
+  },
+  {
+   "path": "docs-arenas/t3-texture-pipeline/build_t3_atlas.py",
+   "sha256": "52cb3100804ff3fc720e274c0fc17b2e1937bb7c06327a9f8c5e694b74428a99",
+   "bytes": 12282
+  },
+  {
+   "path": "docs-arenas/t3-texture-pipeline/dbg_harness.py",
+   "sha256": "e9daedfdde01cb426b39659c254f0101e21d5d381746493ff67c291a449814c6",
+   "bytes": 1432
+  },
+  {
+   "path": "docs-arenas/t3-texture-pipeline/shoot_stages.py",
+   "sha256": "ff69b8791d0727ea0686aa508fa9a5348b2749f173245930982ea8aeb8d951bf",
+   "bytes": 2399
+  },
+  {
+   "path": "docs-arenas/t3-texture-pipeline/shoot_t3.py",
+   "sha256": "5228e93b679fd3f0ecda0a83cfac0bfff19d7befa8e6c7b12647c04c510f571e",
+   "bytes": 1376
+  }
+ ]
+}

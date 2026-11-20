@@ -1,0 +1,354 @@
+{
+ "fighter": "bf-finxsse",
+ "display": "FINXSSE",
+ "brutal_fist_id": "finxsse",
+ "brutal_fist_role": "Showman / Power-Agility Hybrid",
+ "brutal_fist_style": "Power + speed hybrid. Signature Chainsnatcher (jumping double-knee backstabber). Finisher Getbackk — a violent fireman-carry tornado slam, a modified F-5.",
+ "tekken_base": "xiaoyu",
+ "donor": "ur-char060",
+ "donor_moveset": "ur-char060.json",
+ "proxy": true,
+ "proxy_note": "Brutal Fist character pulled from Jay's own brutalfistgrokversiontenpointfive. Inputs in Tekken 7 notation; animations + full move-list data from Urban Reign / Urban Reign Redux donor ur-char060. BF frame data (frames @60fps) converted to WH seconds; BF damage not portable (BF HP 10000 vs WH 100) so WH damage is donor-sourced.",
+ "variant": 1,
+ "moves": {
+  "1": {
+   "name": "Finxsse Jab (BF bf_jab)",
+   "input": "1",
+   "bf_source": "bf_jab",
+   "bf_category": "strike",
+   "bf_frames": {
+    "startup": 3,
+    "active": 2,
+    "recovery": 8
+   },
+   "bf_damage": 8,
+   "donor": "ur-char060",
+   "donor_move": "cbco_dwngnuke_asi_y",
+   "startup": 0.05,
+   "active": 0.033,
+   "recovery": 0.133,
+   "damage": 6,
+   "donor_framed": false,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char060:ur_m000",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "2": {
+   "name": "Finxsse Cross (BF bf_cross)",
+   "input": "2",
+   "bf_source": "bf_cross",
+   "bf_category": "strike",
+   "bf_frames": {
+    "startup": 6,
+    "active": 3,
+    "recovery": 14
+   },
+   "bf_damage": 16,
+   "donor": "ur-char060",
+   "donor_move": "cbco_dwngnuke_atama_y",
+   "startup": 0.1,
+   "active": 0.05,
+   "recovery": 0.233,
+   "damage": 15,
+   "donor_framed": false,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char060:ur_m001",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "4": {
+   "name": "Finxsse High Kick (BF bf_high_kick)",
+   "input": "4",
+   "bf_source": "bf_high_kick",
+   "bf_category": "kick",
+   "bf_frames": {
+    "startup": 12,
+    "active": 3,
+    "recovery": 24
+   },
+   "bf_damage": 26,
+   "donor": "ur-char060",
+   "donor_move": "cbco_dwngnuke_right_y",
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.4,
+   "damage": 24,
+   "donor_framed": false,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char060:ur_m003",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "d+3": {
+   "name": "Finxsse Low Kick (BF bf_low_kick)",
+   "input": "d+3",
+   "bf_source": "bf_low_kick",
+   "bf_category": "kick",
+   "bf_frames": {
+    "startup": 4,
+    "active": 3,
+    "recovery": 10
+   },
+   "bf_damage": 10,
+   "donor": "ur-char060",
+   "donor_move": "cbco_dwngnuke_left_y",
+   "startup": 0.067,
+   "active": 0.05,
+   "recovery": 0.167,
+   "damage": 6,
+   "donor_framed": false,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char060:ur_m002",
+   "input_slots": [
+    "d+3"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "b+1+2": {
+   "name": "Finxsse Reversal (BF bf_reversal)",
+   "input": "b+1+2",
+   "bf_source": "bf_reversal",
+   "bf_category": "counter",
+   "bf_frames": {
+    "startup": 1,
+    "active": 2,
+    "recovery": 20
+   },
+   "bf_damage": 18,
+   "donor": "ur-char060",
+   "donor_move": null,
+   "startup": 0.017,
+   "active": 0.033,
+   "recovery": 0.333,
+   "damage": 15,
+   "donor_framed": false,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char060:ur_m026",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "f+1+2": {
+   "name": "Finxsse Clinch (BF bf_clinch)",
+   "input": "f+1+2",
+   "bf_source": "bf_clinch",
+   "bf_category": "grapple",
+   "bf_frames": {
+    "startup": 6,
+    "active": 4,
+    "recovery": 14
+   },
+   "bf_damage": 0,
+   "donor": "ur-char060",
+   "donor_move": null,
+   "startup": 0.1,
+   "active": 0.067,
+   "recovery": 0.233,
+   "damage": 15,
+   "donor_framed": false,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char060:ur_m007",
+   "input_slots": [
+    "f+1+2"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "1+3": {
+   "name": "Finxsse Suplex (BF bf_suplex)",
+   "input": "1+3",
+   "bf_source": "bf_suplex",
+   "bf_category": "throw",
+   "bf_frames": {
+    "startup": 14,
+    "active": 2,
+    "recovery": 32
+   },
+   "bf_damage": 38,
+   "donor": "ur-char060",
+   "donor_move": null,
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 24,
+   "donor_framed": false,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 11,
+   "anim_ref": "ur:ur-char060:ur_m012",
+   "input_slots": [
+    "1+3"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "f+2": {
+   "name": "Finxsse Chainsnatcher (BF bf_chainsnatcher)",
+   "input": "f+2",
+   "bf_source": "bf_chainsnatcher",
+   "bf_category": "signature",
+   "bf_frames": {
+    "startup": 14,
+    "active": 3,
+    "recovery": 28
+   },
+   "bf_damage": 42,
+   "donor": "ur-char060",
+   "donor_move": null,
+   "startup": 0.233,
+   "active": 0.05,
+   "recovery": 0.467,
+   "damage": 15,
+   "donor_framed": false,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 11,
+   "anim_ref": "ur:ur-char060:ur_m008",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "f+4": {
+   "name": "Finxsse Uppercut (BF bf_uppercut)",
+   "input": "f+4",
+   "bf_source": "bf_uppercut",
+   "bf_category": "strike",
+   "bf_frames": {
+    "startup": 10,
+    "active": 3,
+    "recovery": 22
+   },
+   "bf_damage": 28,
+   "donor": "ur-char060",
+   "donor_move": null,
+   "startup": 0.167,
+   "active": 0.05,
+   "recovery": 0.367,
+   "damage": 24,
+   "donor_framed": false,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "ur:ur-char060:ur_m011",
+   "input_slots": [
+    "f+4"
+   ],
+   "move_class": "strike",
+   "set": "FIGHT"
+  },
+  "1,1,2,4": {
+   "name": "Finxsse Rush Combo (BF bf_rush_combo)",
+   "input": "1,1,2,4",
+   "bf_source": "bf_rush_combo",
+   "bf_category": "combo",
+   "bf_frames": {
+    "startup": 5,
+    "active": 10,
+    "recovery": 28
+   },
+   "bf_damage": 55,
+   "donor": "ur-char060",
+   "donor_move": null,
+   "startup": 0.083,
+   "active": 0.167,
+   "recovery": 0.467,
+   "damage": 24,
+   "donor_framed": false,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 11,
+   "anim_ref": "ur:ur-char060:ur_m023",
+   "input_slots": [
+    "1,1,2,4"
+   ],
+   "move_class": "string",
+   "set": "FIGHT"
+  },
+  "f,f+1+2": {
+   "name": "Finxsse Getbackk (BF bf_getbackk)",
+   "input": "f,f+1+2",
+   "bf_source": "bf_getbackk",
+   "bf_category": "signature",
+   "bf_frames": {
+    "startup": 20,
+    "active": 3,
+    "recovery": 48
+   },
+   "bf_damage": 82,
+   "donor": "ur-char060",
+   "donor_move": null,
+   "startup": 0.333,
+   "active": 0.05,
+   "recovery": 0.8,
+   "damage": 30,
+   "donor_framed": false,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 7.5,
+   "soulGain": 13,
+   "anim_ref": "ur:ur-char060:ur_m022",
+   "input_slots": [
+    "f,f+1+2"
+   ],
+   "move_class": "signature",
+   "set": "FIGHT"
+  }
+ },
+ "strings": [
+  {
+   "input": "1,1,2,4",
+   "hits": [
+    "1",
+    "1",
+    "2",
+    "4"
+   ],
+   "bf_combo": "bf_rush_combo"
+  }
+ ],
+ "specials": [],
+ "frame_convention": "BF frames @60fps -> seconds; damage donor-sourced (UR/Redux); WH 100HP",
+ "schema_version": 2,
+ "canon_note": "Brutal Fist pull-in. Model: NPC_FINXSSE.glb.",
+ "anim_set_lock": {
+  "bank": "pmot060.ppk",
+  "donor": "ur-char060"
+ }
+}

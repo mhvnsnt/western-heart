@@ -1,0 +1,879 @@
+{
+ "25": {
+  "lens": [
+   2652,
+   2456,
+   2456,
+   2464,
+   2444,
+   2508,
+   2444,
+   2504,
+   1812,
+   2460,
+   2452,
+   2508,
+   2452,
+   2420,
+   2456,
+   1812,
+   2496,
+   2456
+  ],
+  "len_min": 1812,
+  "len_max": 2652,
+  "correlations": {
+   "moves": 0.183,
+   "name_bytes": 0.3,
+   "size": 0.352,
+   "count_word": 0.274,
+   "strings": 0.225
+  },
+  "windows": [
+   {
+    "char": "ARMOR_KING",
+    "min": 1.9,
+    "max": 6.66,
+    "mean": 5.12,
+    "frac_lt6": 0.37,
+    "first_hi": null
+   },
+   {
+    "char": "Asuka",
+    "min": 1.93,
+    "max": 6.69,
+    "mean": 5.04,
+    "frac_lt6": 0.39,
+    "first_hi": null
+   },
+   {
+    "char": "BAEK_DOO_SAN",
+    "min": 2.01,
+    "max": 6.62,
+    "mean": 5.03,
+    "frac_lt6": 0.39,
+    "first_hi": null
+   },
+   {
+    "char": "Dragunov",
+    "min": 1.74,
+    "max": 6.58,
+    "mean": 5.0,
+    "frac_lt6": 0.39,
+    "first_hi": null
+   },
+   {
+    "char": "EDDY",
+    "min": 1.86,
+    "max": 6.82,
+    "mean": 5.08,
+    "frac_lt6": 0.39,
+    "first_hi": null
+   },
+   {
+    "char": "HEIHACHI",
+    "min": 1.88,
+    "max": 6.62,
+    "mean": 5.02,
+    "frac_lt6": 0.39,
+    "first_hi": null
+   },
+   {
+    "char": "JIN",
+    "min": 1.81,
+    "max": 6.72,
+    "mean": 5.06,
+    "frac_lt6": 0.39,
+    "first_hi": null
+   },
+   {
+    "char": "KING",
+    "min": 1.77,
+    "max": 6.65,
+    "mean": 4.94,
+    "frac_lt6": 0.39,
+    "first_hi": null
+   },
+   {
+    "char": "Kuma",
+    "min": 2.04,
+    "max": 6.47,
+    "mean": 4.54,
+    "frac_lt6": 0.54,
+    "first_hi": null
+   },
+   {
+    "char": "LAW",
+    "min": 1.84,
+    "max": 6.6,
+    "mean": 5.03,
+    "frac_lt6": 0.39,
+    "first_hi": null
+   },
+   {
+    "char": "LEE",
+    "min": 1.86,
+    "max": 6.67,
+    "mean": 5.02,
+    "frac_lt6": 0.39,
+    "first_hi": null
+   },
+   {
+    "char": "Lin_Xiaoyu",
+    "min": 1.88,
+    "max": 6.7,
+    "mean": 5.01,
+    "frac_lt6": 0.39,
+    "first_hi": null
+   },
+   {
+    "char": "MARDUK",
+    "min": 1.58,
+    "max": 6.67,
+    "mean": 4.97,
+    "frac_lt6": 0.39,
+    "first_hi": null
+   },
+   {
+    "char": "NINA",
+    "min": 1.8,
+    "max": 6.49,
+    "mean": 4.98,
+    "frac_lt6": 0.41,
+    "first_hi": null
+   },
+   {
+    "char": "RAVEN",
+    "min": 1.99,
+    "max": 6.62,
+    "mean": 5.04,
+    "frac_lt6": 0.39,
+    "first_hi": null
+   },
+   {
+    "char": "ROGER",
+    "min": 1.86,
+    "max": 6.49,
+    "mean": 4.49,
+    "frac_lt6": 0.54,
+    "first_hi": null
+   },
+   {
+    "char": "Wang",
+    "min": 1.95,
+    "max": 6.72,
+    "mean": 5.02,
+    "frac_lt6": 0.39,
+    "first_hi": null
+   },
+   {
+    "char": "ZAFINA",
+    "min": 2.01,
+    "max": 6.69,
+    "mean": 5.05,
+    "frac_lt6": 0.39,
+    "first_hi": null
+   }
+  ],
+  "autocorr_top": [
+   [
+    36,
+    0.2448
+   ],
+   [
+    12,
+    0.2394
+   ],
+   [
+    48,
+    0.2345
+   ],
+   [
+    24,
+    0.2305
+   ],
+   [
+    96,
+    0.2185
+   ],
+   [
+    60,
+    0.2141
+   ]
+  ],
+  "autocorr_baseline": 0.0039,
+  "first4_classes": {
+   "16008908": 3,
+   "89080000": 1,
+   "82080000": 1,
+   "16008808": 1,
+   "16000808": 2,
+   "16000408": 1,
+   "00000000": 2,
+   "16009008": 1,
+   "01000000": 4,
+   "80080000": 1,
+   "88080000": 1
+  },
+  "mota_offsets": {
+   "ARMOR_KING": [
+    604
+   ],
+   "Asuka": [
+    604
+   ],
+   "BAEK_DOO_SAN": [
+    604
+   ],
+   "Dragunov": [
+    604
+   ],
+   "EDDY": [
+    604
+   ],
+   "HEIHACHI": [
+    604
+   ],
+   "JIN": [
+    604
+   ],
+   "KING": [
+    604
+   ],
+   "Kuma": [
+    604
+   ],
+   "LAW": [
+    604
+   ],
+   "LEE": [
+    604
+   ],
+   "Lin_Xiaoyu": [
+    604
+   ],
+   "MARDUK": [
+    604
+   ],
+   "NINA": [
+    604
+   ],
+   "RAVEN": [
+    604
+   ],
+   "ROGER": [
+    604
+   ],
+   "Wang": [
+    604
+   ],
+   "ZAFINA": [
+    604
+   ]
+  }
+ },
+ "26": {
+  "lens": [
+   4384,
+   4596,
+   4516,
+   4560,
+   4564,
+   4580,
+   4624,
+   4384,
+   4168,
+   4592,
+   4532,
+   4660,
+   4696,
+   4708,
+   4556,
+   4432,
+   4616,
+   4548
+  ],
+  "len_min": 4168,
+  "len_max": 4708,
+  "correlations": {
+   "moves": -0.144,
+   "name_bytes": -0.064,
+   "size": -0.028,
+   "count_word": 0.001,
+   "strings": -0.12
+  },
+  "windows": [
+   {
+    "char": "ARMOR_KING",
+    "min": 2.97,
+    "max": 6.84,
+    "mean": 5.93,
+    "frac_lt6": 0.36,
+    "first_hi": null
+   },
+   {
+    "char": "Asuka",
+    "min": 3.09,
+    "max": 6.89,
+    "mean": 5.99,
+    "frac_lt6": 0.35,
+    "first_hi": null
+   },
+   {
+    "char": "BAEK_DOO_SAN",
+    "min": 2.99,
+    "max": 6.91,
+    "mean": 5.97,
+    "frac_lt6": 0.38,
+    "first_hi": null
+   },
+   {
+    "char": "Dragunov",
+    "min": 3.03,
+    "max": 6.77,
+    "mean": 5.99,
+    "frac_lt6": 0.41,
+    "first_hi": null
+   },
+   {
+    "char": "EDDY",
+    "min": 2.99,
+    "max": 6.79,
+    "mean": 6.01,
+    "frac_lt6": 0.35,
+    "first_hi": null
+   },
+   {
+    "char": "HEIHACHI",
+    "min": 3.04,
+    "max": 6.79,
+    "mean": 5.97,
+    "frac_lt6": 0.32,
+    "first_hi": null
+   },
+   {
+    "char": "JIN",
+    "min": 2.99,
+    "max": 6.95,
+    "mean": 6.04,
+    "frac_lt6": 0.37,
+    "first_hi": null
+   },
+   {
+    "char": "KING",
+    "min": 2.97,
+    "max": 6.84,
+    "mean": 5.93,
+    "frac_lt6": 0.39,
+    "first_hi": null
+   },
+   {
+    "char": "Kuma",
+    "min": 2.99,
+    "max": 6.72,
+    "mean": 5.81,
+    "frac_lt6": 0.42,
+    "first_hi": null
+   },
+   {
+    "char": "LAW",
+    "min": 3.05,
+    "max": 6.86,
+    "mean": 6.06,
+    "frac_lt6": 0.24,
+    "first_hi": null
+   },
+   {
+    "char": "LEE",
+    "min": 3.04,
+    "max": 6.84,
+    "mean": 5.97,
+    "frac_lt6": 0.38,
+    "first_hi": null
+   },
+   {
+    "char": "Lin_Xiaoyu",
+    "min": 3.0,
+    "max": 6.93,
+    "mean": 6.03,
+    "frac_lt6": 0.34,
+    "first_hi": null
+   },
+   {
+    "char": "MARDUK",
+    "min": 3.0,
+    "max": 6.87,
+    "mean": 6.15,
+    "frac_lt6": 0.29,
+    "first_hi": null
+   },
+   {
+    "char": "NINA",
+    "min": 3.02,
+    "max": 6.92,
+    "mean": 6.04,
+    "frac_lt6": 0.34,
+    "first_hi": null
+   },
+   {
+    "char": "RAVEN",
+    "min": 3.06,
+    "max": 6.88,
+    "mean": 6.0,
+    "frac_lt6": 0.38,
+    "first_hi": null
+   },
+   {
+    "char": "ROGER",
+    "min": 2.99,
+    "max": 6.84,
+    "mean": 5.86,
+    "frac_lt6": 0.36,
+    "first_hi": null
+   },
+   {
+    "char": "Wang",
+    "min": 2.97,
+    "max": 7.01,
+    "mean": 6.03,
+    "frac_lt6": 0.29,
+    "first_hi": 26
+   },
+   {
+    "char": "ZAFINA",
+    "min": 2.92,
+    "max": 6.83,
+    "mean": 6.0,
+    "frac_lt6": 0.35,
+    "first_hi": null
+   }
+  ],
+  "autocorr_top": [
+   [
+    4,
+    0.1406
+   ],
+   [
+    36,
+    0.119
+   ],
+   [
+    12,
+    0.1174
+   ],
+   [
+    8,
+    0.1163
+   ],
+   [
+    16,
+    0.0972
+   ],
+   [
+    32,
+    0.0964
+   ]
+  ],
+  "autocorr_baseline": 0.0039,
+  "first4_classes": {
+   "10000100": 1,
+   "07bf7401": 2,
+   "1e001000": 8,
+   "10003001": 1,
+   "1df5a93d": 2,
+   "ac9b1df5": 1,
+   "00e067d5": 1,
+   "7dc4355b": 1,
+   "67d5a7ff": 1
+  },
+  "mota_offsets": {
+   "ARMOR_KING": [
+    624
+   ],
+   "Asuka": [
+    624
+   ],
+   "BAEK_DOO_SAN": [
+    624
+   ],
+   "Dragunov": [
+    624
+   ],
+   "EDDY": [
+    624
+   ],
+   "HEIHACHI": [
+    624
+   ],
+   "JIN": [
+    624
+   ],
+   "KING": [
+    624
+   ],
+   "Kuma": [
+    624
+   ],
+   "LAW": [
+    624
+   ],
+   "LEE": [
+    624
+   ],
+   "Lin_Xiaoyu": [
+    624
+   ],
+   "MARDUK": [
+    624
+   ],
+   "NINA": [
+    624
+   ],
+   "RAVEN": [
+    624
+   ],
+   "ROGER": [
+    624
+   ],
+   "Wang": [
+    624
+   ],
+   "ZAFINA": [
+    624
+   ]
+  }
+ },
+ "30": {
+  "lens": [
+   644,
+   644,
+   644,
+   644,
+   644,
+   644,
+   644,
+   644,
+   644,
+   644,
+   644,
+   644,
+   644,
+   644,
+   644,
+   644,
+   644,
+   644
+  ],
+  "len_min": 644,
+  "len_max": 644,
+  "correlations": {
+   "moves": 0.0,
+   "name_bytes": 0.0,
+   "size": 0.0,
+   "count_word": 0.0,
+   "strings": 0.0
+  },
+  "windows": [
+   {
+    "char": "ARMOR_KING",
+    "min": 5.81,
+    "max": 6.85,
+    "mean": 6.57,
+    "frac_lt6": 0.25,
+    "first_hi": null
+   },
+   {
+    "char": "Asuka",
+    "min": 5.82,
+    "max": 6.91,
+    "mean": 6.61,
+    "frac_lt6": 0.25,
+    "first_hi": null
+   },
+   {
+    "char": "BAEK_DOO_SAN",
+    "min": 5.79,
+    "max": 6.84,
+    "mean": 6.56,
+    "frac_lt6": 0.25,
+    "first_hi": null
+   },
+   {
+    "char": "Dragunov",
+    "min": 5.8,
+    "max": 6.95,
+    "mean": 6.62,
+    "frac_lt6": 0.25,
+    "first_hi": null
+   },
+   {
+    "char": "EDDY",
+    "min": 5.91,
+    "max": 6.86,
+    "mean": 6.6,
+    "frac_lt6": 0.25,
+    "first_hi": null
+   },
+   {
+    "char": "HEIHACHI",
+    "min": 5.85,
+    "max": 6.84,
+    "mean": 6.55,
+    "frac_lt6": 0.25,
+    "first_hi": null
+   },
+   {
+    "char": "JIN",
+    "min": 5.79,
+    "max": 6.87,
+    "mean": 6.57,
+    "frac_lt6": 0.25,
+    "first_hi": null
+   },
+   {
+    "char": "KING",
+    "min": 5.81,
+    "max": 6.85,
+    "mean": 6.57,
+    "frac_lt6": 0.25,
+    "first_hi": null
+   },
+   {
+    "char": "Kuma",
+    "min": 5.65,
+    "max": 6.95,
+    "mean": 6.56,
+    "frac_lt6": 0.25,
+    "first_hi": null
+   },
+   {
+    "char": "LAW",
+    "min": 5.89,
+    "max": 7.0,
+    "mean": 6.65,
+    "frac_lt6": 0.25,
+    "first_hi": null
+   },
+   {
+    "char": "LEE",
+    "min": 5.73,
+    "max": 6.93,
+    "mean": 6.59,
+    "frac_lt6": 0.25,
+    "first_hi": null
+   },
+   {
+    "char": "Lin_Xiaoyu",
+    "min": 5.74,
+    "max": 6.9,
+    "mean": 6.56,
+    "frac_lt6": 0.25,
+    "first_hi": null
+   },
+   {
+    "char": "MARDUK",
+    "min": 5.79,
+    "max": 6.8,
+    "mean": 6.5,
+    "frac_lt6": 0.25,
+    "first_hi": null
+   },
+   {
+    "char": "NINA",
+    "min": 5.79,
+    "max": 6.83,
+    "mean": 6.53,
+    "frac_lt6": 0.25,
+    "first_hi": null
+   },
+   {
+    "char": "RAVEN",
+    "min": 5.88,
+    "max": 6.85,
+    "mean": 6.57,
+    "frac_lt6": 0.25,
+    "first_hi": null
+   },
+   {
+    "char": "ROGER",
+    "min": 5.67,
+    "max": 6.97,
+    "mean": 6.61,
+    "frac_lt6": 0.25,
+    "first_hi": null
+   },
+   {
+    "char": "Wang",
+    "min": 5.8,
+    "max": 7.03,
+    "mean": 6.65,
+    "frac_lt6": 0.25,
+    "first_hi": 0
+   },
+   {
+    "char": "ZAFINA",
+    "min": 5.86,
+    "max": 6.95,
+    "mean": 6.63,
+    "frac_lt6": 0.25,
+    "first_hi": null
+   }
+  ],
+  "autocorr_top": [
+   [
+    20,
+    0.105
+   ],
+   [
+    2,
+    0.0861
+   ],
+   [
+    4,
+    0.0841
+   ],
+   [
+    40,
+    0.0752
+   ],
+   [
+    6,
+    0.0733
+   ],
+   [
+    8,
+    0.0705
+   ]
+  ],
+  "autocorr_baseline": 0.0039,
+  "first4_classes": {
+   "a9cd7997": 2,
+   "a82425f7": 1,
+   "24e3cfc2": 1,
+   "b749d430": 1,
+   "242c4ef2": 1,
+   "242a6db1": 1,
+   "0b34b5bc": 1,
+   "2c3775d3": 1,
+   "7b2e7af0": 1,
+   "a81ec338": 1,
+   "2c1c1605": 1,
+   "34202483": 1,
+   "a33022dc": 1,
+   "a65f8caf": 1,
+   "6ac02c34": 1,
+   "201dbebe": 1,
+   "20201c52": 1
+  },
+  "mota_offsets": {
+   "ARMOR_KING": [
+    564,
+    584,
+    604,
+    624
+   ],
+   "Asuka": [
+    564,
+    584,
+    604,
+    624
+   ],
+   "BAEK_DOO_SAN": [
+    564,
+    584,
+    604,
+    624
+   ],
+   "Dragunov": [
+    564,
+    584,
+    604,
+    624
+   ],
+   "EDDY": [
+    564,
+    584,
+    604,
+    624
+   ],
+   "HEIHACHI": [
+    564,
+    584,
+    604,
+    624
+   ],
+   "JIN": [
+    564,
+    584,
+    604,
+    624
+   ],
+   "KING": [
+    564,
+    584,
+    604,
+    624
+   ],
+   "Kuma": [
+    564,
+    584,
+    604,
+    624
+   ],
+   "LAW": [
+    564,
+    584,
+    604,
+    624
+   ],
+   "LEE": [
+    564,
+    584,
+    604,
+    624
+   ],
+   "Lin_Xiaoyu": [
+    564,
+    584,
+    604,
+    624
+   ],
+   "MARDUK": [
+    564,
+    584,
+    604,
+    624
+   ],
+   "NINA": [
+    564,
+    584,
+    604,
+    624
+   ],
+   "RAVEN": [
+    564,
+    584,
+    604,
+    624
+   ],
+   "ROGER": [
+    564,
+    584,
+    604,
+    624
+   ],
+   "Wang": [
+    564,
+    584,
+    604,
+    624
+   ],
+   "ZAFINA": [
+    564,
+    584,
+    604,
+    624
+   ]
+  }
+ }
+}

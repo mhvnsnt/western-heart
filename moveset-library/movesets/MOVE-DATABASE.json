@@ -1,0 +1,93 @@
+{
+ "_meta": {
+  "sources": [
+   "WWF No Mercy move database (re-docs/docs/moves/move-database.md) - 400+ named moves with Power/KO/Bleed/Feature",
+   "WWE WrestleMania XIX - 170 YANM clips (animation only, names from in-game CAW)",
+   "Tekken 7 - move data format (production-study: moves are DATA not code)",
+   "Tekken 3 - divmot banks per character"
+  ],
+  "move_entry_format": {
+   "move_id": "unique ID (NM-###, WMXIX-###, T7-###, T3-###, WH-###)",
+   "move_name": "display name",
+   "source": "game of origin",
+   "slot_eligibility": [
+    "list of slot names from MOVE-SLOTS.json"
+   ],
+   "anim_ref": "path to animation clip or null",
+   "power": "F/E/D/C/B/A/S tier (wrestling) or damage number (tekken)",
+   "properties": [
+    "finisher",
+    "throw",
+    "counter",
+    "taunt",
+    "rage_art",
+    "armor",
+    "homing",
+    "power_crush"
+   ]
+  }
+ },
+ "sample_moves": [
+  {
+   "move_id": "NM-001",
+   "move_name": "Scoop Slam",
+   "source": "wwf_no_mercy",
+   "slot_eligibility": [
+    "frontStrongGrappleSlot1",
+    "frontStrongGrappleSlot2"
+   ],
+   "anim_ref": "teardown/wwf-no-mercy/animations/clips/anim_339F.npy",
+   "power": "E",
+   "properties": []
+  },
+  {
+   "move_id": "NM-002",
+   "move_name": "Arm Drag",
+   "source": "wwf_no_mercy",
+   "slot_eligibility": [
+    "frontWeakGrappleSlot1"
+   ],
+   "anim_ref": "teardown/wwf-no-mercy/animations/clips/anim_33A9.npy",
+   "power": "F",
+   "properties": []
+  },
+  {
+   "move_id": "NM-003",
+   "move_name": "Piledriver 01",
+   "source": "wwf_no_mercy",
+   "slot_eligibility": [
+    "frontStrongGrappleSlot5"
+   ],
+   "anim_ref": "teardown/wwf-no-mercy/animations/clips/anim_33E1.npy",
+   "power": "D",
+   "properties": []
+  },
+  {
+   "move_id": "T7-KING-T1",
+   "move_name": "Reverse Arm Slam",
+   "source": "tekken7",
+   "slot_eligibility": [
+    "throwSlot1"
+   ],
+   "anim_ref": null,
+   "power": 35,
+   "properties": [
+    "throw"
+   ]
+  },
+  {
+   "move_id": "WH-PAN-001",
+   "move_name": "Pantera Claw Driver",
+   "source": "western_heart_original",
+   "slot_eligibility": [
+    "frontFinisherSlot"
+   ],
+   "anim_ref": null,
+   "power": "A",
+   "properties": [
+    "finisher"
+   ]
+  }
+ ],
+ "_note": "Full move database: No Mercy re-docs list 400+ moves in move-database.md. This JSON is the programmatic skeleton - populate slot_eligibility and anim_ref per move as the library grows. FULL mat-kings database (all 4,409 move clips + 1,353 system clips, DB labels, Tekken-style inputs, slot eligibility, power joins): moveset-library/movesets/mat-kings-move-database.json (2026-10-20 wiring lane). NM-001/002/003 anim_refs corrected 2026-10-20 against tools/NoMercy-FileTableDB.txt (3351 was a turnbuckle kick, not Scoop Slam)."
+}

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>WH — Tripo Auto-Intake</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #14161c; color: #d8dce6;
+               font: 14px/1.5 system-ui, sans-serif; }
+  main { max-width: 860px; margin: 0 auto; padding: 24px 16px 64px; }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  h2 { font-size: 17px; margin-top: 32px; border-bottom: 1px solid #2c303c; padding-bottom: 6px; }
+  blockquote { border-left: 3px solid #7a5cff; margin: 12px 0; padding: 8px 14px;
+               background: #1c1f29; color: #cfd4e2; }
+  #drop { border: 2px dashed #4a5064; border-radius: 10px; padding: 28px;
+          text-align: center; cursor: pointer; background: #1a1d26; }
+  #drop.over { border-color: #7a5cff; background: #22263a; }
+  .row { margin: 10px 0; }
+  label { display: inline-block; width: 200px; color: #9aa0b5; }
+  input[type=text], input[type=number] { background: #0f1117; color: #d8dce6;
+      border: 1px solid #3a3f52; border-radius: 6px; padding: 6px 10px; width: 260px; }
+  button { background: #7a5cff; color: #fff; border: 0; border-radius: 6px;
+           padding: 8px 16px; font-size: 14px; cursor: pointer; margin-right: 8px; }
+  button:disabled { background: #3a3f52; cursor: default; }
+  pre { background: #0f1117; border: 1px solid #2c303c; border-radius: 8px;
+        padding: 12px; overflow-x: auto; font-size: 12.5px; white-space: pre-wrap; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  th, td { border: 1px solid #2c303c; padding: 6px 10px; text-align: left; }
+  th { background: #1c1f29; color: #9aa0b5; }
+  .ok { color: #7be495; } .warn { color: #ffcf6b; } .bad { color: #ff8f8f; }
+  .muted { color: #9aa0b5; font-size: 12.5px; }
+  img.proof { max-width: 100%; border: 1px solid #2c303c; border-radius: 8px; margin: 6px 0; }
+  a { color: #9d8cff; }
+</style>
+</head>
+<body>
+<main>
+<h1>Tripo Auto-Intake</h1>
+<blockquote>“As soon as a Tripo model comes in you need to get it rigged
+automatically ASAP to the character rig that it goes to.” — owner, 2026-10-21</blockquote>
+<p class="muted">Runbook: <a href="../tools/tripo-intake/README.md">tools/tripo-intake/README.md</a>.
+The intake never guesses the fighter, never clobbers a staged rig, and REFUSEs
+instead of guessing facing. Wiring the game stays a reviewed step.</p>
+
+<h2>1 · Drop a Tripo model</h2>
+<div id="drop">Drop a <b>.glb</b> here, or click to choose one.<br>
+<span class="muted">The page reads the GLB header locally (nothing is uploaded)
+and checks it is an unrigged Tripo static before you stage it.</span></div>
+<input type="file" id="file" accept=".glb" style="display:none">
+<div id="fileinfo" style="margin-top:12px"></div>
+<div class="row"><label>Fighter (roster dir):</label>
+  <input type="text" id="fighter" placeholder="kinpo" spellcheck="false"></div>
+<div class="row"><label>Attire slot:</label>
+  <input type="number" id="attire" min="1" value="1" style="width:80px"></div>
+<div class="row"><label>Tripo UUID (optional):</label>
+  <input type="text" id="uuid" placeholder="2cb681d2-…" spellcheck="false"></div>
+<div class="row">
+  <button id="plan" disabled>Show intake commands</button>
+  <button id="sidecar" disabled>Download sidecar JSON</button>
+</div>
+<pre id="cmd" style="display:none"></pre>
+
+<h2>2 · Recent intakes</h2>
+<div id="ledger"><span class="muted">loading…</span></div>
+
+<h2>3 · Demo: intake-rigged Kinpo attire 1</h2>
+<p>Rigged end-to-end by the intake (Blender 4.0.2 + GameRig backend, facing
+<b>+X</b> measured by the intake's own two-cue gate — the earlier k-NN batch
+assumed +Z). The model itself loads in the
+<a href="customization-viewer.html?fighter=kinpo-intake-demo">suite viewer</a>
+(<code>?fighter=kinpo-intake-demo</code>). Renders below were viewed before
+wiring (rest pose + the anim_check spike frames):</p>
+<div id="demo-imgs">
+<img class="proof" src="../docs/proof/muse-2026-10-21/tripo-intake/kinpo-attire1-20261022-044848/pose_t0.00_back.png" alt="intake rig rest pose (face)">
+<img class="proof" src="../docs/proof/muse-2026-10-21/tripo-intake/kinpo-attire1-20261022-044848/pose_t1.21_side.png" alt="intake rig at anim spike frame">
+<p class="muted">Full proof: <a href="../docs/proof/muse-2026-10-21/tripo-intake/DRYRUN.md">DRYRUN.md</a>
+(facing report, gate JSONs, all 9 renders, steps.log).</p>
+</div>
+
+<h2>4 · How it works</h2>
+<pre>inbox/&lt;fighter&gt;/attire&lt;N&gt;.glb
+  → env check → claim (fighter id = roster dir, never guessed)
+  → sha256 + ledger.json → gltf_codec decode
+  → facing_check.py (cue1: gamerig foot-vs-shin · cue2: assets.js feetFacingCue)
+       confidence gate: cues agree AND residual ≤ 15° AND toe offset ≥ 1.5% height
+       else REFUSE — never guess (a wrong rotation bakes backwards weights)
+  → rig_tripo_static.py --facing (Blender 4.0.2 + GameRig, the proven Zui path)
+  → validate + anim_check gates on rig_report.json (all green or FAILED)
+  → stage roster/&lt;fighter&gt;/attires/attire&lt;N&gt;/model-rigged.glb + WIRING-CHECKLIST.md
+  → archive the inbox original to outbox/ (never modified, never deleted)</pre>
+<p class="muted">Manual trigger is recommended (<code>python3 tools/tripo-intake/intake.py --scan</code>);
+a cron should only notify, never auto-rig unattended. Exit codes: 0 done · 2 refused · 3 failed.</p>
+</main>
+<script type="module">
+const $ = (id) => document.getElementById(id);
+const drop = $('drop'), fileInput = $('file');
+let glb = null; // {name, size, sha256, json}
+
+drop.addEventListener('click', () => fileInput.click());
+for (const ev of ['dragover', 'dragenter']) drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.add('over'); });
+for (const ev of ['dragleave', 'drop']) drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.remove('over'); });
+drop.addEventListener('drop', (e) => handle(e.dataTransfer.files[0]));
+fileInput.addEventListener('change', () => handle(fileInput.files[0]));
+
+async function handle(f) {
+  if (!f) return;
+  glb = null; $('plan').disabled = true; $('sidecar').disabled = true; $('cmd').style.display = 'none';
+  const info = $('fileinfo');
+  info.innerHTML = `<span class="muted">reading ${f.name} (${(f.size/1048576).toFixed(1)} MB)…</span>`;
+  try {
+    const buf = await f.arrayBuffer();
+    const dv = new DataView(buf);
+    const magic = String.fromCharCode(dv.getUint8(0), dv.getUint8(1), dv.getUint8(2), dv.getUint8(3));
+    if (magic !== 'glTF') throw new Error('not a GLB file (bad magic)');
+    const jlen = dv.getUint32(12, true);
+    const j = JSON.parse(new TextDecoder().decode(buf.slice(20, 20 + jlen)));
+    const meshes = (j.meshes || []).length, skins = (j.skins || []).length;
+    const digest = [...new Uint8Array(await crypto.subtle.digest('SHA-256', buf))]
+      .map(b => b.toString(16).padStart(2, '0')).join('');
+    glb = { name: f.name, size: f.size, sha256: digest, meshes, skins };
+    const unrigged = skins === 0;
+    info.innerHTML =
+      `<b>${f.name}</b> — ${(f.size/1048576).toFixed(1)} MB<br>` +
+      `meshes: ${meshes} · skins: <b class="${unrigged ? 'ok' : 'bad'}">${skins}</b> ` +
+      (unrigged ? '<span class="ok">✓ unrigged static — intakeable</span>'
+                : '<span class="bad">✗ already rigged — the intake only takes unrigged statics</span>') +
+      `<br><span class="muted">sha256: ${digest.slice(0, 32)}…</span>`;
+    $('plan').disabled = !unrigged; $('sidecar').disabled = !unrigged;
+  } catch (e) { info.innerHTML = `<span class="bad">could not read GLB: ${e.message}</span>`; }
+}
+
+$('plan').addEventListener('click', () => {
+  const fighter = $('fighter').value.trim(), attire = $('attire').value.trim() || '1';
+  if (!fighter) { alert('Fighter (roster dir) is required — the intake never guesses it.'); return; }
+  const inbox = `tools/tripo-intake/inbox/${fighter}/attire${attire}.glb`;
+  $('cmd').style.display = 'block';
+  $('cmd').textContent =
+`# 1. stage the file EXACTLY here (fighter id = roster dir name, never guessed):
+cp "${glb.name}" ${inbox}
+#    (+ the sidecar from the button below, same name with .json)
+
+# 2. run the intake (manual trigger — recommended over cron):
+python3 tools/tripo-intake/intake.py --scan
+
+# what happens: env check → claim → sha256 → decode → facing gate
+#   → rig_tripo_static.py (Blender 4.0.2 + GameRig) → validate/anim_check gates
+#   → roster/${fighter}/attires/attire${attire}/model-rigged.glb + WIRING-CHECKLIST.md
+# refuses (exit 2) on unknown fighter / clobber risk / low facing confidence.`;
+});
+
+$('sidecar').addEventListener('click', () => {
+  const fighter = $('fighter').value.trim(), attire = $('attire').value.trim() || '1';
+  const sidecar = { fighter, attire: Number(attire), source_file: glb.name,
+    sha256: glb.sha256, tripo_uuid: $('uuid').value.trim() || null,
+    staged_by: 'tripo-intake dropzone', date: new Date().toISOString().slice(0, 10) };
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(sidecar, null, 2)], { type: 'application/json' }));
+  a.download = `attire${attire}.json`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+});
+
+/* recent intakes from the committed ledger */
+try {
+  const r = await fetch('../tools/tripo-intake/ledger.json', { cache: 'no-store' });
+  if (!r.ok) throw new Error('HTTP ' + r.status);
+  const led = await r.json();
+  const rows = Object.entries(led).filter(([k]) => !k.startsWith('_'));
+  if (!rows.length) { $('ledger').innerHTML = '<span class="muted">no intakes recorded yet.</span>'; }
+  else {
+    $('ledger').innerHTML = '<table><tr><th>date</th><th>fighter</th><th>attire</th>' +
+      '<th>facing</th><th>verdict</th><th>sha256</th></tr>' +
+      rows.map(([sha, e]) => `<tr><td>${e.date || '—'}</td><td>${e.fighter || '—'}</td>` +
+        `<td>${e.attire ?? '—'}</td><td>${e.facing || '—'}</td>` +
+        `<td class="${e.verdict === 'CONFIDENT' ? 'ok' : 'warn'}">${e.verdict || '—'}</td>` +
+        `<td class="muted">${sha.slice(0, 12)}…</td></tr>`).join('') + '</table>';
+  }
+} catch (e) { $('ledger').innerHTML = `<span class="muted">ledger unavailable (${e.message}).</span>`; }
+</script>
+</body>
+</html>

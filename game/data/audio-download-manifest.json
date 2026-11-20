@@ -1,0 +1,369 @@
+{
+ "version": 1,
+ "signInRule": "STANDING RULE (user directive 2026-10-24 20:06 CDT): for ANY browser sign-in during these downloads, ALWAYS use GitHub sign-in (account mhvnsnt) OR Google / Gmail sign-in (fmmg.mars@gmail.com, username marsfmmg, saved logins, tap-to-sign-in). NEVER ask the user for an email/password, NEVER request a secure-entry password card first. If a site genuinely offers NO GitHub/Google SSO option after a thorough check (login page + sign-up flow), report that exact finding — do not silently fall back to password entry. Free Music Archive downloads normally need no sign-in at all; the rule applies only if a sign-in wall appears.",
+ "destDir": "game/assets/music/",
+ "groups": {
+  "nosferatu-25": {
+   "description": "25 Nosferatu VHS synth score cuts. Cut job script: tools/music/kaggle-cut-tracks.py (PR #1030). A browser Kaggle GPU run for this cut is ALREADY tasked to the coordinator — do NOT start a duplicate run; check with the coordinator first. Kaggle notebook: https://www.kaggle.com/code/marsfmmg/notebook2ff3176461/edit (T4 x2). Until the cuts land, the engine falls back to its procedural loop.",
+   "status": "pending-kaggle-cut",
+   "tracks": [
+    {
+     "id": "nos-t01",
+     "file": "nosferatu-t01-opening-credits.mp3",
+     "cutRangeSec": [
+      0,
+      211
+     ],
+     "sourceScore": "nosferatu-exact.mp3",
+     "m4Piece": "P01"
+    },
+    {
+     "id": "nos-t02",
+     "file": "nosferatu-t02-destiny-warning.mp3",
+     "cutRangeSec": [
+      211,
+      367
+     ],
+     "sourceScore": "nosferatu-exact.mp3",
+     "m4Piece": "P02"
+    },
+    {
+     "id": "nos-t03",
+     "file": "nosferatu-t03-destiny-warning-part2.mp3",
+     "cutRangeSec": [
+      367,
+      549
+     ],
+     "sourceScore": "nosferatu-exact.mp3",
+     "m4Piece": "P02"
+    },
+    {
+     "id": "nos-t04",
+     "file": "nosferatu-t04-hutter-nina-home.mp3",
+     "cutRangeSec": [
+      549,
+      697
+     ],
+     "sourceScore": "nosferatu-exact.mp3",
+     "m4Piece": "P03"
+    },
+    {
+     "id": "nos-t05",
+     "file": "nosferatu-t05-hutter-nina-home-part2.mp3",
+     "cutRangeSec": [
+      697,
+      955
+     ],
+     "sourceScore": "nosferatu-exact.mp3",
+     "m4Piece": "P03"
+    },
+    {
+     "id": "nos-t06",
+     "file": "nosferatu-t06-mountain-road.mp3",
+     "cutRangeSec": [
+      955,
+      1158
+     ],
+     "sourceScore": "nosferatu-exact.mp3",
+     "m4Piece": "P04"
+    },
+    {
+     "id": "nos-t07",
+     "file": "nosferatu-t07-coach-ride-negative.mp3",
+     "cutRangeSec": [
+      1158,
+      1303
+     ],
+     "sourceScore": "nosferatu-exact.mp3",
+     "m4Piece": "P05"
+    },
+    {
+     "id": "nos-t08",
+     "file": "nosferatu-t08-the-inn.mp3",
+     "cutRangeSec": [
+      1303,
+      1555
+     ],
+     "sourceScore": "nosferatu-exact.mp3",
+     "m4Piece": "P06"
+    },
+    {
+     "id": "nos-t09",
+     "file": "nosferatu-t09-at-the-castle.mp3",
+     "cutRangeSec": [
+      1555,
+      1734
+     ],
+     "sourceScore": "nosferatu-exact.mp3",
+     "m4Piece": "P07"
+    },
+    {
+     "id": "nos-t10",
+     "file": "nosferatu-t10-castle-night.mp3",
+     "cutRangeSec": [
+      1734,
+      1947
+     ],
+     "sourceScore": "nosferatu-exact.mp3",
+     "m4Piece": "P08"
+    },
+    {
+     "id": "nos-t11",
+     "file": "nosferatu-t11-nosferatus-shadow.mp3",
+     "cutRangeSec": [
+      1947,
+      2073
+     ],
+     "sourceScore": "nosferatu-exact.mp3",
+     "m4Piece": "P09"
+    },
+    {
+     "id": "nos-t12",
+     "file": "nosferatu-t12-nosferatus-shadow-part2.mp3",
+     "cutRangeSec": [
+      2073,
+      2325
+     ],
+     "sourceScore": "nosferatu-exact.mp3",
+     "m4Piece": "P09"
+    },
+    {
+     "id": "nos-t13",
+     "file": "nosferatu-t13-nosferatus-shadow-part3.mp3",
+     "cutRangeSec": [
+      2325,
+      2438
+     ],
+     "sourceScore": "nosferatu-exact.mp3",
+     "m4Piece": "P09"
+    },
+    {
+     "id": "nos-t14",
+     "file": "nosferatu-t14-wisborg-household.mp3",
+     "cutRangeSec": [
+      2438,
+      2559
+     ],
+     "sourceScore": "nosferatu-exact.mp3",
+     "m4Piece": "P10"
+    },
+    {
+     "id": "nos-t15",
+     "file": "nosferatu-t15-wisborg-household-part2.mp3",
+     "cutRangeSec": [
+      2559,
+      2820
+     ],
+     "sourceScore": "nosferatu-exact.mp3",
+     "m4Piece": "P10"
+    },
+    {
+     "id": "nos-t16",
+     "file": "nosferatu-t16-renfield-cell.mp3",
+     "cutRangeSec": [
+      2820,
+      3082
+     ],
+     "sourceScore": "nosferatu-exact.mp3",
+     "m4Piece": "P11"
+    },
+    {
+     "id": "nos-t17",
+     "file": "nosferatu-t17-ship-hold.mp3",
+     "cutRangeSec": [
+      3082,
+      3257
+     ],
+     "sourceScore": "nosferatu-exact.mp3",
+     "m4Piece": "P12"
+    },
+    {
+     "id": "nos-t18",
+     "file": "nosferatu-t18-ship-hold-part2.mp3",
+     "cutRangeSec": [
+      3257,
+      3529
+     ],
+     "sourceScore": "nosferatu-exact.mp3",
+     "m4Piece": "P12"
+    },
+    {
+     "id": "nos-t19",
+     "file": "nosferatu-t19-wisborg-by-night.mp3",
+     "cutRangeSec": [
+      3529,
+      3747
+     ],
+     "sourceScore": "nosferatu-exact.mp3",
+     "m4Piece": "P13"
+    },
+    {
+     "id": "nos-t20",
+     "file": "nosferatu-t20-wisborg-by-night-part2.mp3",
+     "cutRangeSec": [
+      3747,
+      3855
+     ],
+     "sourceScore": "nosferatu-exact.mp3",
+     "m4Piece": "P13"
+    },
+    {
+     "id": "nos-t21",
+     "file": "nosferatu-t21-plague-dead.mp3",
+     "cutRangeSec": [
+      3855,
+      4052
+     ],
+     "sourceScore": "nosferatu-exact.mp3",
+     "m4Piece": "P14"
+    },
+    {
+     "id": "nos-t22",
+     "file": "nosferatu-t22-wisborg-street.mp3",
+     "cutRangeSec": [
+      4052,
+      4213
+     ],
+     "sourceScore": "nosferatu-exact.mp3",
+     "m4Piece": "P15"
+    },
+    {
+     "id": "nos-t23",
+     "file": "nosferatu-t23-hutter-returned.mp3",
+     "cutRangeSec": [
+      4213,
+      4423
+     ],
+     "sourceScore": "nosferatu-exact.mp3",
+     "m4Piece": "P16"
+    },
+    {
+     "id": "nos-t24",
+     "file": "nosferatu-t24-ninas-vigil.mp3",
+     "cutRangeSec": [
+      4423,
+      4906
+     ],
+     "sourceScore": "nosferatu-exact.mp3",
+     "m4Piece": "P17"
+    },
+    {
+     "id": "nos-t25",
+     "file": "nosferatu-t25-finale-dawn.mp3",
+     "cutRangeSec": [
+      4906,
+      5067
+     ],
+     "sourceScore": "nosferatu-exact.mp3",
+     "m4Piece": "P18"
+    }
+   ]
+  },
+  "cape-jones-8": {
+   "description": "8 Cape Jones Loyalty Freak Music tracks, each individually verified CC0 1.0 Universal on its Free Music Archive page (see FMA page URLs). Download each track from its FMA page (the page URL is an HTML page, not an audio file — use the page's download control) and commit to game/assets/music/ with the EXACT filename. Ghost Surf Rock is the theme/main track; the other 7 interchange around it. No download is claimed done until the bytes are in the repo.",
+   "status": "pending-browser-download",
+   "tracks": [
+    {
+     "id": "cape-jones-ghost-surf-rock",
+     "title": "Ghost Surf Rock",
+     "file": "cape-jones-ghost-surf-rock.mp3",
+     "fmaPage": "https://freemusicarchive.org/music/Loyalty_Freak_Music/WITCHY_BATTY_SPOOKY_HALLOWEEN_IN_SEPTEMBER_/Ghost_Surf_Rock",
+     "license": "CC0-1.0",
+     "durationSeconds": 247
+    },
+    {
+     "id": "cape-jones-ghost-waltz",
+     "title": "A ghost Waltz",
+     "file": "cape-jones-ghost-waltz.mp3",
+     "fmaPage": "https://freemusicarchive.org/music/Loyalty_Freak_Music/WITCHY_BATTY_SPOOKY_HALLOWEEN_IN_SEPTEMBER_/A_ghost_Waltz/",
+     "license": "CC0-1.0",
+     "durationSeconds": 96
+    },
+    {
+     "id": "cape-jones-hello-regan",
+     "title": "Hello Regan !",
+     "file": "cape-jones-hello-regan.mp3",
+     "fmaPage": "http://freemusicarchive.org/music/Loyalty_Freak_Music/WITCHY_BATTY_SPOOKY_HALLOWEEN_IN_SEPTEMBER_/Hello_Regan_",
+     "license": "CC0-1.0",
+     "durationSeconds": 427
+    },
+    {
+     "id": "cape-jones-dark-alley",
+     "title": "A really dark alley",
+     "file": "cape-jones-dark-alley.mp3",
+     "fmaPage": "https://freemusicarchive.org/music/Loyalty_Freak_Music/WITCHY_BATTY_SPOOKY_HALLOWEEN_IN_SEPTEMBER_/A_really_dark_alley",
+     "license": "CC0-1.0",
+     "durationSeconds": 256
+    },
+    {
+     "id": "cape-jones-graveyard",
+     "title": "The graveyard",
+     "file": "cape-jones-graveyard.mp3",
+     "fmaPage": "https://freemusicarchive.org/index.php/music/Loyalty_Freak_Music/WITCHY_BATTY_SPOOKY_HALLOWEEN_IN_SEPTEMBER_/The_graveyard/",
+     "license": "CC0-1.0",
+     "durationSeconds": 220
+    },
+    {
+     "id": "cape-jones-old-witch-place",
+     "title": "The Old Witch Place",
+     "file": "cape-jones-old-witch-place.mp3",
+     "fmaPage": "https://freemusicarchive.org/music/Loyalty_Freak_Music/WITCHY_BATTY_SPOOKY_HALLOWEEN_IN_SEPTEMBER_/The_Old_Witch_Place/",
+     "license": "CC0-1.0",
+     "durationSeconds": 96
+    },
+    {
+     "id": "cape-jones-witch-magical",
+     "title": "The Witch Are Going Magical",
+     "file": "cape-jones-witch-magical.mp3",
+     "fmaPage": "https://freemusicarchive.org/music/Loyalty_Freak_Music/WITCHY_BATTY_SPOOKY_HALLOWEEN_IN_SEPTEMBER_/The_Witch_Are_Going_Magical/",
+     "license": "CC0-1.0",
+     "durationSeconds": 129
+    },
+    {
+     "id": "cape-jones-sweat-time",
+     "title": "Sweat Time !",
+     "file": "cape-jones-sweat-time.mp3",
+     "fmaPage": "https://freemusicarchive.org/music/Loyalty_Freak_Music/ROLLER_DISCO_DANCE_DANCE/Loyalty_Freak_Music_-_ROLLER_DISCO_DANCE_DANCE_-_07_Sweat_Time_/",
+     "license": "CC0-1.0",
+     "durationSeconds": 127
+    }
+   ]
+  },
+  "tekken-data-only-5": {
+   "description": "5 Tekken 7 data-only library slots. No download URL is claimed here and no source is invented: bytes are pending an owner pull, and the slots stay data-only until then. The engine NEVER picks them (status pending-download excluded from every pick in game/js/music.js).",
+   "status": "pending-download",
+   "tracks": [
+    {
+     "id": "t7-dojo-1st",
+     "title": "Mishima Dojo — Round 1 (Tekken 7)",
+     "file": null,
+     "status": "pending-download"
+    },
+    {
+     "id": "t7-dojo-final",
+     "title": "Mishima Dojo — Final Round (Tekken 7)",
+     "file": null,
+     "status": "pending-download"
+    },
+    {
+     "id": "t7-title",
+     "title": "New World Order (Tekken 7 main menu)",
+     "file": null,
+     "status": "pending-download"
+    },
+    {
+     "id": "t7-select",
+     "title": "Blood, Sweat, and Fists (Tekken 7 character select)",
+     "file": null,
+     "status": "pending-download"
+    },
+    {
+     "id": "t7-online",
+     "title": "Kodama Starship (Tekken 7 online menu)",
+     "file": null,
+     "status": "pending-download"
+    }
+   ]
+  }
+ }
+}

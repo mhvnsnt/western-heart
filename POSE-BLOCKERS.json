@@ -1,0 +1,4 @@
+{
+  "_doc": "Fighters whose select portrait is still bind-posed because their moveset-bank stance does not retarget cleanly onto their attire-1 rig (rig/anim lane). test/portraits.test.mjs fails if a fighter is bind-posed and NOT listed, or listed but fixed. Re-run tools/portraits/capture.mjs after rig fixes and remove entries. Since the CMU aim fallback (game/js/stance-aim.js), only unrigged or unloadable models remain here.",
+  "blocked": {}
+}

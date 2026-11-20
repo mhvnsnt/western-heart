@@ -1,0 +1,413 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+html,body{margin:0;background:#14121c;overflow:hidden;font-family:Arial,Helvetica,sans-serif}
+canvas{display:block}
+#label{position:absolute;top:14px;left:14px;color:#fff;background:rgba(0,0,0,.55);padding:10px 14px;border-radius:8px;font-size:19px;line-height:1.35;max-width:86%}
+#label b{font-size:21px}
+#label .sub{font-size:15px;color:#cfd8ff}
+</style></head><body>
+<div id="label">loading…</div>
+<script type="importmap">{"imports":{
+"three":"http://127.0.0.1:8843/_collision-20261109/work/node_modules/three/build/three.module.js",
+"three/addons/":"http://127.0.0.1:8843/_collision-20261109/work/node_modules/three/examples/jsm/"
+}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { HairSpringSystem, collisionSetFromData } from '../build/game/js/hair-spring.js';
+import { BodySDF } from '../build/game/js/collision.js';
+import { StrandHairSystem } from '../build/game/js/hair-strands.js';
+
+const qs = new URLSearchParams(location.search);
+const MODE = qs.get('mode') || 'after';            // 'before' | 'after'
+const W = parseInt(qs.get('w') || '640'), H = parseInt(qs.get('h') || '960');
+const BASE = 'http://127.0.0.1:8843';
+window.__ready = false; window.__log = []; window.__facts = {};
+const label = document.getElementById('label');
+
+const renderer = new THREE.WebGLRenderer({ antialias: false, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1);
+renderer.setSize(W, H);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.NeutralToneMapping;
+renderer.toneMappingExposure = 1.1;
+document.body.appendChild(renderer.domElement);
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x14121c);
+const camera = new THREE.PerspectiveCamera(35, W / H, 0.02, 60);
+scene.add(new THREE.HemisphereLight(0xdfe8ff, 0x2a2118, 1.15));
+const key = new THREE.DirectionalLight(0xffffff, 2.2); key.position.set(1.6, 2.4, 2.6); scene.add(key);
+const fill = new THREE.DirectionalLight(0xcfd8ff, 0.55); fill.position.set(-2.2, 1.2, 1.4); scene.add(fill);
+const rim = new THREE.DirectionalLight(0xffe0b8, 0.9); rim.position.set(-0.8, 2.0, -2.4); scene.add(rim);
+
+// ---- BODY (v5; its bundled hair copy carries stub textures — hidden,
+//      the real straight part below replaces it, the game's composition) ----
+const HIDE = new Set(['Hair001', 'Hair.001', 'AngelHairScalpCap', 'AngelHairStraight', 'AngelHeadband', 'Top', 'Bottom', 'Gaunlet', 'Shoes', 'Full', 'Goggles']);
+const loader = new GLTFLoader();
+const bodyG = await loader.loadAsync(BASE + '/_megami-rebuild-20261109/glb/megami-angel-pilot2-v5.glb');
+const body = bodyG.scene;
+const hidden = [];
+body.traverse(o => { if (HIDE.has(o.name) || o.name.startsWith('GZM_')) { o.visible = false; hidden.push(o.name + ':' + o.type); } });
+window.__facts.hidden = hidden;
+// SwiftShader survival (presentation only): transmission forces extra
+// full-screen passes; physics and measurement never touch materials.
+// (clearcoat kept; only the transmission pass is disabled.)
+let matsSimplified = 0;
+body.traverse(o => {
+  if (o.isMesh || o.isSkinnedMesh) {
+    const ms = Array.isArray(o.material) ? o.material : [o.material];
+    for (const m of ms) { if (m && m.transmission) { m.transmission = 0; m.needsUpdate = true; matsSimplified++; } }
+  }
+});
+window.__facts.matsSimplified = matsSimplified;
+scene.add(body);
+scene.updateMatrixWorld(true);
+
+const bone = (root, name) => { let f = null; root.traverse(o => { if (!f && o.isBone && o.name === name) f = o; }); return f; };
+const bHead = bone(body, 'Head'), bNeck = bone(body, 'Neck'), bSpine2 = bone(body, 'Spine2'), bChest = bone(body, 'Chest');
+window.__facts.bonesFound = { Head: !!bHead, Neck: !!bNeck, Spine2: !!bSpine2, Chest: !!bChest };
+const wp = (b) => { const v = new THREE.Vector3(); b.getWorldPosition(v); return v; };
+const headP = wp(bHead), neckP = wp(bNeck);
+
+// ---- STRAIGHT HAIR PART (the registered part GLB, real textures) ----
+// FRAME VERDICT (measured with the baker's exact glTF math, 2026-11-09):
+// both GLBs are Blender exports whose skin SURFACE sits ~0.19 BELOW
+// their joint skeletons (the offset lives in the IBMs; mesh nodes are
+// identity). Body: joints crown 1.6088 / skin crown 1.414. Part: on ITS
+// skeleton the hair seats correctly (hairline 1.629 = its head joint).
+// Worn here, the part's skeleton aligns with the body's skeleton, so the
+// part must sink by the body's skin-sink (1.6088 − 1.4142 = 0.1946) to
+// sit on the RENDERED skull. That uniform root sink is applied below —
+// presentation compensation for an export-pipeline defect (meshes
+// exported low vs their own IBMs), disclosed in the proof README.
+// Chains, colliders and the SDF all live in the baker's bind frame and
+// are unaffected by where the part root is drawn.
+const SKIN_SINK = 0.1946;
+const partG = await loader.loadAsync(BASE + '/_hair-fit-20261109/glb/megami-hair-angel-straight.glb');
+const part = partG.scene;
+part.position.y -= SKIN_SINK;
+scene.add(part);
+scene.updateMatrixWorld(true);
+const pHead = bone(part, 'head');
+window.__facts.partHeadWorld = wp(pHead).toArray();
+window.__facts.bodyHeadWorld = headP.toArray();
+window.__facts.partHipWorld = (() => { const h = bone(part, 'hip'); return h ? wp(h).toArray() : null; })();
+window.__facts.bodyHipsWorld = (() => { const h = bone(body, 'Hips'); return h ? wp(h).toArray() : null; })();
+// bind worlds AFTER alignment, for the per-frame head retarget
+const bodyHeadBindInv = bHead.matrixWorld.clone().invert();
+const partHeadBindWorld = pHead.matrixWorld.clone();
+const _m = new THREE.Matrix4(), _p = new THREE.Vector3(), _q = new THREE.Quaternion(), _s = new THREE.Vector3();
+function drivePartHead() {
+  _m.copy(bHead.matrixWorld).multiply(bodyHeadBindInv).multiply(partHeadBindWorld);
+  pHead.parent.updateWorldMatrix(true, false);
+  _m.premultiply(new THREE.Matrix4().copy(pHead.parent.matrixWorld).invert());
+  _m.decompose(_p, _q, _s);
+  pHead.position.copy(_p); pHead.quaternion.copy(_q);
+  pHead.updateWorldMatrix(false, true);
+}
+
+// ---- texture memory cap (presentation only) ----
+// Two GLBs' native textures OOM the SwiftShader tab on this loaded box;
+// cap every texture at 1024 px before first render. Physics/measurement
+// never touch textures. Disclosed in the proof README.
+function capTextures(root, maxDim) {
+  const seen = new Set(); let capped = 0;
+  root.traverse(o => {
+    if (o.isMesh || o.isSkinnedMesh) {
+      const ms = Array.isArray(o.material) ? o.material : [o.material];
+      for (const m of ms) {
+        if (!m) continue;
+        for (const k of ['map', 'normalMap', 'roughnessMap', 'metalnessMap', 'emissiveMap', 'aoMap']) {
+          const t = m[k];
+          if (t && t.image && !seen.has(t)) {
+            seen.add(t);
+            const w = t.image.width, h = t.image.height;
+            if (w && h && Math.max(w, h) > maxDim) {
+              const c = document.createElement('canvas');
+              const s = maxDim / Math.max(w, h);
+              c.width = Math.max(1, Math.round(w * s)); c.height = Math.max(1, Math.round(h * s));
+              c.getContext('2d').drawImage(t.image, 0, 0, c.width, c.height);
+              t.image = c; t.needsUpdate = true; capped++;
+            }
+          }
+        }
+      }
+    }
+  });
+  return capped;
+}
+window.__facts.texCapped = capTextures(scene, 512);
+window.__part = part; window.__body = body; window.__sys = () => sys; window.__scene = scene; window.__renderer = renderer; window.__camera = camera;
+
+// ---- collision data (v5 bake) ----
+const sdfHeader = await (await fetch(BASE + '/_collision-20261109/baked/megami-v5/megami-body.sdf.json')).json();
+const sdfBin = await (await fetch(BASE + '/_collision-20261109/baked/megami-v5/megami-body.sdf.bin')).arrayBuffer();
+const collisionData = await (await fetch(BASE + '/_collision-20261109/baked/megami-v5/megami-collision.json')).json();
+const sdf = new BodySDF(BodySDF.headerFromJSON(sdfHeader), new Int16Array(sdfBin));
+window.__facts.sdfBakedFrom = sdfHeader.bakedFrom;
+const frameBone = bone(body, collisionData.sdf.frameBone);
+const bindInv = frameBone.matrixWorld.clone().invert();
+
+// ---- hair system on the PART (production wiring: per-part attach) ----
+let sys;
+if (MODE === 'after') {
+  const set = collisionSetFromData(body, collisionData, sdf);
+  window.__facts.collisionSet = set ? { spheres: set.spheres.length, capsules: set.capsules.length, sdf: !!set.sdf } : null;
+  sys = new HairSpringSystem(part, { collision: set });
+} else {
+  sys = new HairSpringSystem(part, {});   // legacy: default head-sphere only
+}
+window.__facts.chains = sys.chains.map(c => c.map(j => j.bone.name));
+window.__facts.jointCount = sys.count;
+
+
+// ---- STRAND SYSTEM (Phase B2): guides simulated, cards follow ----
+// Mode 'after'/'before' in THIS stage = strand sim with collision
+// ON / OFF (the brief's labels). The legacy spring-bone system above
+// stays constructed (unchanged wiring); the strands replace the two
+// strand prims' rendering. Cap/headband keep normal skinning to the
+// part head (drivePartHead) — rigid parts, as in the source games.
+const strandsHeader = await (await fetch(BASE + '/_collision-20261109/baked/megami-v5/megami-strands.json')).json();
+const strandsBin = await (await fetch(BASE + '/_collision-20261109/baked/megami-v5/megami-strands.bin')).arrayBuffer();
+const strandSys = new StrandHairSystem(strandsHeader, strandsBin, { substeps: 3, iterations: 6, bendStiffness: 0.15, collision: MODE === 'after' });
+window.__facts.strandGuides = strandsHeader.counts.guides;
+window.__facts.strandParticles = strandsHeader.counts.particles;
+window.__facts.strandVerts = strandsHeader.counts.verts;
+// WEAR BAKE anchors: the bake space IS the body-joint frame (strand
+// verts were seated by skinning the part with the body skeleton at
+// bind). So bindToSim = IDENTITY and headBind = the body Head bone's
+// BIND matrix in joint space — which is inverse(IBM_Head), NOT the
+// three.js bone world matrix (bone worlds here carry the scene/
+// gizmo offsets; the joint frame is IBM-exact, per the baker).
+// headBind is recovered from the sim itself: resetToBind with an
+// identity anchor places particles exactly at the bake points;
+// headBind := that root frame's matrix is identity by construction.
+// The posed head matrix per frame = bHead world composed in the
+// same joint frame via bodyHeadBindInv (below): poseM =
+// headBindWorld_joint * inv(bind) — the stage supplies, per frame,
+// M = T(-sink) * bHead.matrixWorld * inv(bHeadBindWorld) so that
+// rootM = headPose * inv(headBind) * bindToSim maps bind joint
+// space -> posed joint space, then the -SKIN_SINK presentation
+// shift applies when converting to render space (invRoot).
+scene.updateMatrixWorld(true);
+const _col = (m) => { const e = m.elements; return new Float64Array([e[0],e[1],e[2],e[3],e[4],e[5],e[6],e[7],e[8],e[9],e[10],e[11],e[12],e[13],e[14],e[15]]); };
+const IDENT16 = new Float64Array(16); IDENT16[0] = IDENT16[5] = IDENT16[10] = IDENT16[15] = 1;
+strandSys.setAnchor(IDENT16, IDENT16);
+window.__facts.strandAnchor = 'wear-bake: bindToSim=identity, headBind=identity (joint frame)';
+// strand meshes: replace the two cards prims with plain Meshes whose
+// positions the deform writes (converted sim->part-local by inv root).
+const strandMeshes = [];
+part.updateMatrixWorld(true);
+const invRoot = part.matrixWorld.clone().invert();
+{
+  let acc = 0;
+  for (const prim of strandsHeader.prims) { prim.base = acc; acc += prim.verts; }
+}
+for (const prim of strandsHeader.prims) {
+  let found = null;
+  part.traverse(o => { if (!found && (o.isMesh || o.isSkinnedMesh) && o.geometry && o.geometry.attributes.position && o.geometry.attributes.position.count === prim.verts) found = o; });
+  if (!found) throw new Error('strand prim not found: ' + prim.verts);
+  const g = found.geometry.clone();
+  // strip skinning attributes: as a plain Mesh, three.js still runs
+  // the material's skinning shader chunk when skinIndex/skinWeight
+  // attributes exist (USE_SKINNING is attribute-driven) — with no
+  // skeleton bound the bone matrices are identity/garbage and the
+  // vertices explode. The deform writes final positions; skinning
+  // must be fully off.
+  g.deleteAttribute('skinIndex');
+  g.deleteAttribute('skinWeight');
+  const m = new THREE.Mesh(g, found.material);
+  m.position.copy(part.position); m.quaternion.copy(part.quaternion); m.scale.copy(part.scale);
+  m.frustumCulled = false;
+  scene.add(m);
+  strandMeshes.push({ mesh: m, base: prim.base });
+  found.visible = false;
+}
+window.__facts.strandMeshes = strandMeshes.map(x => x.mesh.geometry.attributes.position.count);
+// posed collision set in the strand system's flat-array shape
+const posedSet = collisionSetFromData(body, collisionData, sdf);
+window.__facts.collisionSet = posedSet ? { spheres: posedSet.spheres.length, capsules: posedSet.capsules.length, sdf: !!posedSet.sdf } : null;
+const _sv = new THREE.Vector3();
+function poseCollisionForStrands() {
+  if (!posedSet) return;
+  // STRAND posed set = SDF + head sphere ONLY. The fitted capsules
+  // are EXCLUDED for strands (measured, node diags 2026-11-09):
+  // fitted radii up to 0.3313 m put capsule surfaces inside the
+  // head volume and teleport root-adjacent particles ~155 mm;
+  // capsules are body-scale colliders (collision core, PR #1703),
+  // unfit at 15-30 mm hair-segment scale. The SDF is the true
+  // body surface. Posed bone worlds are three.js scene worlds;
+  // the sim frame is the body-JOINT frame — at bind the two differ
+  // by the scene offset, so all posed quantities are expressed
+  // RELATIVE to bind: jointFrame(x) = bindInvJoint * x, with the
+  // sphere centre carried by (posed * inv(bind)) from its bind
+  // joint-frame position (collision.json offset on the Head joint,
+  // whose joint-frame bind position is inverse(IBM)).
+  const spheres = [];
+  for (const sp of posedSet.spheres) {
+    // sphere bind centre in JOINT frame: Head joint pos (IBM-exact,
+    // measured) + the bake's offset for that bone.
+    const cBind = new THREE.Vector3(HEAD_JOINT_POS[0] + (sp.offset ? sp.offset.x : 0), HEAD_JOINT_POS[1] + (sp.offset ? sp.offset.y : 0), HEAD_JOINT_POS[2] + (sp.offset ? sp.offset.z : 0));
+    const delta = sp.bone.matrixWorld.clone().multiply(sp.bone.userData.bindWorldInv);
+    const c = cBind.clone().applyMatrix4(delta);
+    spheres.push({ c: [c.x, c.y, c.z], r: sp.radius + (sp.margin || 0), friction: sp.friction ?? 0.35 });
+  }
+  let sdfFlat = null;
+  if (posedSet.sdf) {
+    // SDF frame bone (Spine2) posed in joint frame, relative to bind
+    const toW = frameBone.matrixWorld.clone().multiply(frameBone.userData.bindWorldInv);
+    sdfFlat = { body: sdf, fromWorld: _col(toW.clone().invert()), toWorld: _col(toW), margin: collisionData.sdf.margin || 0, friction: collisionData.sdf.friction ?? 0.35 };
+  }
+  strandSys.setCollision({ spheres, capsules: [], sdf: sdfFlat });
+}
+// JOINT-FRAME anchors: per-bone bind worlds captured at scene bind
+// (all posed quantities for the strand sim are deltas from these),
+// and the IBM-exact Head joint position (baker-measured).
+const HEAD_JOINT_POS = [0, 1.4802, -0.0025];
+scene.updateMatrixWorld(true);
+for (const b of [bHead, bNeck, bSpine2, bChest, frameBone]) if (b) b.userData.bindWorldInv = b.matrixWorld.clone().invert();
+const headDeltaM = () => bHead.matrixWorld.clone().multiply(bHead.userData.bindWorldInv);
+window.__facts.headJointPos = HEAD_JOINT_POS;
+// deform plumbing: full-buffer deform -> per-prim slice -> invRoot
+const deformBuf = new Float32Array(strandsHeader.counts.verts * 3);
+const _dv = new THREE.Vector3();
+window.__deformMs = 0;
+function applyStrandDeform() {
+  const t0 = performance.now();
+  strandSys.deform(deformBuf);
+  for (const sm of strandMeshes) {
+    const attr = sm.mesh.geometry.attributes.position;
+    const arr = attr.array;
+    const n = attr.count;
+    for (let i = 0; i < n; i++) {
+      _dv.set(deformBuf[(sm.base + i) * 3], deformBuf[(sm.base + i) * 3 + 1], deformBuf[(sm.base + i) * 3 + 2]).applyMatrix4(invRoot);
+      arr[i * 3] = _dv.x; arr[i * 3 + 1] = _dv.y; arr[i * 3 + 2] = _dv.z;
+    }
+    attr.needsUpdate = true;
+    sm.mesh.geometry.computeVertexNormals();
+  }
+  window.__deformMs = performance.now() - t0;
+}
+window.__strandSys = strandSys; window.__strandMeshes = strandMeshes;
+window.__strandSrc0 = strandMeshes[0] ? Float32Array.from(strandMeshes[0].mesh.geometry.attributes.position.array) : null;
+window.__deformBuf = deformBuf;
+
+// ---- camera: three-quarter front on head / shoulders / upper chest ----
+// Camera aims at the RENDERED anatomy: the skin surface sits SKIN_SINK
+// below the joint frame (see the part-frame note), so aim 0.19 lower
+// than the raw Neck joint suggests.
+const TY = parseFloat(qs.get('ty') || '0');
+const target = neckP.clone().add(new THREE.Vector3(0, -0.04 - 0.19 + TY, 0));
+window.__facts.targetLift = TY;
+const camPos = target.clone().add(new THREE.Vector3(
+  parseFloat(qs.get('cx') || '0.34'), parseFloat(qs.get('cy') || '0.12'), parseFloat(qs.get('cz') || '0.60')));
+camera.position.copy(camPos); camera.lookAt(target);
+window.__facts.camera = { pos: camPos.toArray(), target: target.toArray(), head: headP.toArray(), neck: neckP.toArray() };
+
+// ---- posing the BODY (world-axis deltas over stored bind quaternions) ----
+const posedBones = [bSpine2, bChest, bNeck, bHead].filter(Boolean);
+for (const b of posedBones) b.userData.bindQ = b.quaternion.clone();
+const _pw = new THREE.Quaternion(), _bw = new THREE.Quaternion();
+function applyWorldDelta(b, deltaQ) {
+  b.updateWorldMatrix(true, false);
+  b.parent.getWorldQuaternion(_pw); b.getWorldQuaternion(_bw);
+  const t = deltaQ.clone().multiply(_bw);
+  b.quaternion.copy(_pw.invert().multiply(t));
+  b.updateWorldMatrix(false, false);
+}
+const sstep = (a, b, t) => { const x = Math.min(1, Math.max(0, (t - a) / (b - a))); return x * x * (3 - 2 * x); };
+const Y = new THREE.Vector3(0, 1, 0), Z = new THREE.Vector3(0, 0, 1);
+function poseAt(t) {
+  for (const b of posedBones) b.quaternion.copy(b.userData.bindQ);
+  scene.updateMatrixWorld(true);
+  const yaw = 0.55 * (sstep(1.0, 2.2, t) - sstep(3.4, 4.6, t));   // head turn in / hold / out
+  let roll = 0, twist = 0;
+  if (t > 4.6 && t < 7.0) { const ph = 2 * Math.PI * (t - 4.6) / 1.2; roll = 0.10 * Math.sin(ph); twist = 0.05 * Math.sin(ph - 0.4); }
+  if (roll || twist) {
+    applyWorldDelta(bSpine2, new THREE.Quaternion().setFromAxisAngle(Z, roll).multiply(new THREE.Quaternion().setFromAxisAngle(Y, twist)));
+    applyWorldDelta(bChest, new THREE.Quaternion().setFromAxisAngle(Z, roll * 1.15).multiply(new THREE.Quaternion().setFromAxisAngle(Y, twist * 1.15)));
+  }
+  if (yaw) {
+    applyWorldDelta(bNeck, new THREE.Quaternion().setFromAxisAngle(Y, yaw * 0.35));
+    applyWorldDelta(bHead, new THREE.Quaternion().setFromAxisAngle(Y, yaw * 0.65));
+  }
+  scene.updateMatrixWorld(true);
+  drivePartHead();
+  scene.updateMatrixWorld(true);
+}
+function phaseName(t) {
+  if (t < 1.0) return 'SETTLE';
+  if (t < 2.2) return 'HEAD TURN — in';
+  if (t < 3.4) return 'HEAD TURN — hold';
+  if (t < 4.6) return 'HEAD TURN — return';
+  if (t < 7.0) return 'TORSO SWAY';
+  return 'SETTLE';
+}
+
+// ---- measurement: ALL deformed STRAND VERTS vs the body SDF ----
+// The v2 instrument: every one of the 174,406 visible hair vertices,
+// deformed by the sim, sampled against the same BodySDF the solver
+// collides with (world -> SDF frame by the v1 stage's transform).
+// Reported per captured frame by shoot (summary aggregates there).
+const _mv = new THREE.Vector3();
+function measure() {
+  scene.updateMatrixWorld(true);
+  // deformBuf is in the body-JOINT frame (sim frame); the SDF is
+  // static in that same frame at bind and posed by the Spine2
+  // delta: SDF frame point = inv(delta) * joint point.
+  const w2s = frameBone.matrixWorld.clone().multiply(frameBone.userData.bindWorldInv).invert();
+  let n = 0, inside = 0, maxPen = 0, sumPen = 0, minD = Infinity;
+  for (let i = 0; i < deformBuf.length; i += 3) {
+    _mv.set(deformBuf[i], deformBuf[i + 1], deformBuf[i + 2]).applyMatrix4(w2s);
+    const d = sdf.sample(_mv.x, _mv.y, _mv.z);
+    n++; if (d < minD) minD = d;
+    if (d < 0) { inside++; sumPen += -d; if (-d > maxPen) maxPen = -d; }
+  }
+  return { n, inside, maxPenM: +maxPen.toFixed(4), meanPenInsideM: inside ? +(sumPen / inside).toFixed(4) : 0, minDM: +minD.toFixed(4) };
+}
+
+// ---- deterministic stepping: 3 sim steps (60 Hz) per captured frame ----
+// SETTLE: the sim starts at bind pose with zero velocity; long straight
+// chains need ~2 s of sim time to fall onto the shoulders. Settle BEFORE
+// the scripted motion (200 substeps, pose still bind) so frame 0 of the
+// captured run already wears the hair at rest. The step is counted in
+// __facts.settleSubsteps and disclosed in the proof README; the measured
+// run (simT / phases / SDF sampling) is untouched. (Placed here, after
+// poseAt/posedBones exist — finisher-8's first attempt sat it next to
+// the HairSpringSystem construction and hit a TDZ error on posedBones.)
+let simT = 0; const DT = 1 / 60;
+for (let s = 0; s < 200; s++) { poseAt(0); sys.update(DT); }
+// strand settle: 200 strand steps at bind (pose still), collision
+// posed fresh each step — the hair falls and rests before frame 0.
+poseAt(0); scene.updateMatrixWorld(true);
+for (let s = 0; s < 200; s++) {
+  scene.updateMatrixWorld(true);
+  strandSys.setHeadPose(_col(headDeltaM()));
+  poseCollisionForStrands();
+  strandSys.step(DT);
+}
+applyStrandDeform();
+scene.updateMatrixWorld(true);
+window.__facts.settleSubsteps = 200;
+window.__facts.strandSettleSteps = 200;
+window.__stepFrame = () => {
+  for (let s = 0; s < 3; s++) {
+    simT += DT; poseAt(simT); sys.update(DT);
+    scene.updateMatrixWorld(true);
+    strandSys.setHeadPose(_col(headDeltaM()));
+    poseCollisionForStrands();
+    strandSys.step(DT);
+  }
+  applyStrandDeform();
+  scene.updateMatrixWorld(true);
+  renderer.render(scene, camera);
+  const m = measure();
+  const modeTxt = MODE === 'after'
+    ? '<b>AFTER — strand sim + collision ON</b><br><span class="sub">guide strands simulated · SDF + fitted colliders · hair rests on shoulders</span>'
+    : '<b>BEFORE — strand sim, collision OFF</b><br><span class="sub">same simulated hair, no body collision · strands fall through</span>';
+  label.innerHTML = modeTxt + '<br>' + phaseName(simT) + ' · t=' + simT.toFixed(2) + 's'
+    + '<br><span class="sub">strand verts inside body: ' + m.inside + '/' + m.n + ' · max penetration ' + (m.maxPenM * 1000).toFixed(0) + ' mm</span>';
+  return { t: +simT.toFixed(3), phase: phaseName(simT), ...m, deformMs: +window.__deformMs.toFixed(1) };
+};
+poseAt(0); applyStrandDeform(); renderer.render(scene, camera);
+window.__ready = true;
+</script></body></html>

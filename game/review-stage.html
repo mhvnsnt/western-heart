@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Western Heart — Practice Review Stage</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #0a0a10; overflow: hidden;
+               font-family: system-ui, sans-serif; color: #eee; }
+  canvas.stage { position: fixed; inset: 0; width: 100vw; height: 100vh; display: block; }
+  #tabs { position: fixed; top: 8px; left: 8px; z-index: 30; display: flex; gap: 6px; }
+  #tabs button { padding: 8px 18px; background: #1a1a26; color: #aaa; border: 1px solid #444;
+                 border-radius: 6px; font-size: 13px; font-weight: 700; cursor: pointer; }
+  #tabs button.active { background: #4a2; color: #fff; border-color: #4a2; }
+  #status { position: fixed; top: 8px; left: 50%; transform: translateX(-50%); color: #0f0;
+            font: 13px monospace; background: rgba(0,0,0,0.6); padding: 6px 10px;
+            border-radius: 6px; z-index: 30; }
+  .panel { position: fixed; top: 52px; right: 8px; width: 330px; max-height: calc(100vh - 60px);
+           overflow-y: auto; background: rgba(8,12,20,0.93); border: 1px solid #46a;
+           border-radius: 8px; padding: 10px 12px; z-index: 20; font-size: 12px; }
+  .panel h3 { margin: 8px 0 6px; color: #fe8; font-size: 13px; }
+  .panel select { width: 100%; padding: 6px; background: #111; color: #eee;
+                  border: 1px solid #444; border-radius: 4px; margin-bottom: 8px; }
+  .clipbtn { display: inline-block; margin: 2px; padding: 5px 10px; background: #222; color: #ccc;
+             border: 1px solid #555; border-radius: 4px; font-size: 11px; cursor: pointer; }
+  .clipbtn.active { background: #46a; color: #fff; border-color: #46a; }
+  .clipbtn.strike { border-color: #a64; }
+  .tbtn { padding: 8px 12px; background: #333; color: #eee; border: 1px solid #666;
+          border-radius: 6px; font-size: 12px; cursor: pointer; margin: 2px; }
+  .tbtn.big { background: #a33; border-color: #a33; font-weight: 700; width: 100%;
+              padding: 12px; font-size: 14px; margin-top: 8px; }
+  .tbtn.go { background: #2a6; border-color: #2a6; font-weight: 700; width: 100%;
+             padding: 12px; font-size: 14px; margin-top: 8px; }
+  .row { display: flex; align-items: center; gap: 6px; margin: 4px 0; }
+  .row label { width: 92px; flex: none; color: #9cf; font-size: 11px; }
+  .row input[type=range] { flex: 1; accent-color: #4af; }
+  .row .val { width: 76px; text-align: right; color: #cfc; font-size: 11px;
+              font-variant-numeric: tabular-nums; }
+  .base { color: #777; font-size: 10px; margin: 0 0 6px 98px; }
+  .note { color: #8aa; font-size: 11px; margin: 6px 0; line-height: 1.4; }
+  #readout { color: #cfc; font: 11px monospace; margin: 6px 0; }
+</style>
+<script type="importmap">
+{ "imports": {
+    "three": "./vendor/three.module.js",
+    "three/addons/": "./vendor/addons/"
+} }
+</script>
+</head>
+<body>
+<div id="tabs">
+  <button id="tab-review" class="active">REVIEW</button>
+  <button id="tab-feel">HIT FEEL</button>
+</div>
+<div id="status">boot…</div>
+
+<div id="review-wrap">
+  <canvas id="review-canvas" class="stage"></canvas>
+  <div class="panel" id="review-panel">
+    <h3>Fighter</h3>
+    <select id="fighter-sel"></select>
+    <h3>Clips</h3>
+    <div id="clip-btns"></div>
+    <h3>Transport</h3>
+    <div>
+      <button class="tbtn" id="btn-play">⏸ pause</button>
+      <button class="tbtn" id="btn-step-b">◀ 1f</button>
+      <button class="tbtn" id="btn-step-f">1f ▶</button>
+    </div>
+    <div class="row"><label>speed</label>
+      <input type="range" id="speed" min="0.1" max="2" step="0.05" value="1">
+      <span class="val" id="speed-v">1.00x</span></div>
+    <div class="row"><label>loop</label>
+      <input type="checkbox" id="loop" checked></div>
+    <div id="readout">—</div>
+    <div class="note">Drag to orbit · wheel to zoom · right-drag to pan.
+      Stance plays by default — this is the fighter as the game animates them, not a T-pose.</div>
+  </div>
+</div>
+
+<div id="feel-wrap" hidden>
+  <canvas id="game-canvas" class="stage"></canvas>
+  <div class="panel" id="feel-panel">
+    <h3>Hit-feel tuning <span style="color:#777">(deltas on wired values)</span></h3>
+    <div class="note">Tekken's numbers come from teardown data (retargeting lane) — you never
+      build from zero. These are <b>multipliers</b>: 1.00 = wired value untouched.
+      Tweak, then hit the dummy and feel it instantly.</div>
+    <div id="feel-sliders"></div>
+    <button class="tbtn big" id="btn-hit">👊 HIT DUMMY (jab)</button>
+    <button class="tbtn" id="btn-reset-dummy" style="width:100%">reset dummy</button>
+    <h3>Export</h3>
+    <div class="note">Sends your deltas through the same round-trip patch as everything else.</div>
+    <button class="tbtn go" id="btn-export-feel">⬇ EXPORT FEEL PATCH</button>
+    <div id="feel-status" style="color:#8f8;font-size:11px;margin-top:6px;min-height:16px"></div>
+  </div>
+</div>
+
+<script type="module">
+/* Practice Review Stage — the creation suite's in-game review + tuning room.
+ *
+ * REVIEW tab: any fighter in their fighting stance (bank stance clip, never a
+ * T-pose), clip transport (play/pause/step idle, walk, strikes), free orbit
+ * camera. This is where fighter-by-fighter review happens interactively.
+ *
+ * HIT FEEL tab: a real training match vs a passive dummy. The tuning section
+ * shows each hit-feel param's wired (teardown-derived) base value and lets the
+ * user nudge it as a multiplier; HIT DUMMY lands it immediately.
+ *
+ * URL params: ?fighter=<id> (default pantera), ?clip=<name>, ?tab=feel
+ */
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { Game } from './js/game.js';
+import { InputManager } from './js/input.js';
+import { assets } from './js/assets.js';
+import { getFighter, FULL_ROSTER } from './js/roster-full.js';
+import { resolveFighterAttire } from './js/attires.js';
+import { loadRealMovesets, bankIdFor } from './js/fighter.js';
+import { loadFighterMovesets, getFighterMoveset } from './js/movesets.js';
+import { loadT3Clips, retargetT3Clips, createT3Actions } from './js/t3anims.js';
+import { FEEL_PARAMS, feelPatch } from './js/hit-feel.js';
+import { downloadJson } from './js/fix-panel.js';
+
+const qs = new URLSearchParams(location.search);
+const status = document.getElementById('status');
+const errors = [];
+window.addEventListener('error', (e) => errors.push(String(e.message || e.error)));
+window.addEventListener('unhandledrejection', (e) => errors.push('rejection: ' + String(e.reason && e.reason.message || e.reason)));
+
+const $ = (id) => document.getElementById(id);
+function el(tag, attrs, text) {
+  const n = document.createElement(tag);
+  if (attrs) for (const [k, v] of Object.entries(attrs)) {
+    if (k === 'style') n.style.cssText = v; else if (k === 'class') n.className = v; else n.setAttribute(k, v);
+  }
+  if (text != null) n.textContent = text;
+  return n;
+}
+
+/* ---------- tabs ---------- */
+const reviewWrap = $('review-wrap'), feelWrap = $('feel-wrap');
+let feelBooted = false;
+function showTab(which) {
+  const review = which === 'review';
+  $('tab-review').classList.toggle('active', review);
+  $('tab-feel').classList.toggle('active', !review);
+  reviewWrap.hidden = !review;
+  feelWrap.hidden = review;
+  if (!review && !feelBooted) { feelBooted = true; bootFeel(); }
+}
+$('tab-review').addEventListener('click', () => showTab('review'));
+$('tab-feel').addEventListener('click', () => showTab('feel'));
+
+/* ---------- REVIEW tab ---------- */
+const rCanvas = $('review-canvas');
+const renderer = new THREE.WebGLRenderer({ canvas: rCanvas, antialias: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.shadowMap.enabled = true;
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x101018);
+scene.fog = new THREE.Fog(0x101018, 8, 22);
+scene.add(new THREE.HemisphereLight(0xffffff, 0x334, 1.2));
+const key = new THREE.DirectionalLight(0xffffff, 2.0);
+key.position.set(3, 5, 4); key.castShadow = true;
+key.shadow.mapSize.set(1024, 1024);
+scene.add(key);
+const rim = new THREE.DirectionalLight(0x88aaff, 0.8);
+rim.position.set(-4, 3, -4); scene.add(rim);
+const grid = new THREE.GridHelper(10, 20, 0x446688, 0x223344);
+scene.add(grid);
+const ground = new THREE.Mesh(
+  new THREE.PlaneGeometry(30, 30),
+  new THREE.ShadowMaterial({ opacity: 0.35 }));
+ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true;
+scene.add(ground);
+
+const camera = new THREE.PerspectiveCamera(42, innerWidth / innerHeight, 0.05, 100);
+camera.position.set(2.4, 1.7, 3.4);
+const controls = new OrbitControls(camera, rCanvas);
+controls.target.set(0, 1.0, 0);
+controls.enableDamping = true;
+controls.minDistance = 0.8; controls.maxDistance = 12;
+controls.maxPolarAngle = Math.PI * 0.55;
+
+let R = null; // review state { char, modelId, inst, mixer, actions, clipNames, current, playing, speed }
+
+function stopAll(mixer, actions) {
+  for (const a of Object.values(actions)) { a.stop(); a.setEffectiveWeight(0); }
+}
+function playClip(name) {
+  if (!R || !R.actions[name]) return;
+  stopAll(R.mixer, R.actions);
+  const a = R.actions[name];
+  a.reset(); a.setEffectiveWeight(1); a.play();
+  R.current = name; R.playing = true;
+  $('btn-play').textContent = '⏸ pause';
+  document.querySelectorAll('#clip-btns .clipbtn').forEach((b) =>
+    b.classList.toggle('active', b.dataset.clip === name));
+  console.log('[REVIEW] clip:', name);
+}
+
+async function loadReviewFighter(fighterId) {
+  status.textContent = `loading ${fighterId}…`;
+  if (R) { scene.remove(R.inst.model); R.mixer.stopAllAction(); }
+  const char = resolveFighterAttire(getFighter(fighterId));
+  const modelId = char.model || 'pantera';
+  await assets.loadModels([modelId], () => {});
+  const colors = char.colors || {};
+  const inst = assets.createInstance(modelId,
+    colors.suit || '#ffffff', colors.trim || '#f2b01e',
+    char.colorize ? (char.tintStrength ?? 0.3) : 0);
+  inst.model.traverse((o) => { if (o.isMesh) { o.castShadow = true; } });
+  scene.add(inst.model);
+
+  const actions = { ...inst.actions };
+  const clipNames = [];
+  for (const n of Object.keys(inst.actions)) clipNames.push({ name: n, strike: false });
+
+  let bank = null, rawClips = null;
+  try {
+    bank = bankIdFor(char.id);
+    rawClips = bank ? await loadT3Clips(THREE, bank) : null;
+  } catch (e) { console.warn('[REVIEW] bank clips failed:', e.message || e); }
+  if (rawClips) {
+    let retargeted = {};
+    try { retargeted = retargetT3Clips(rawClips, bank, inst.model, THREE, modelId) || {}; }
+    catch (e) { console.warn('[REVIEW] retarget failed:', e.message || e); }
+    Object.assign(actions, createT3Actions(inst.mixer, retargeted, THREE));
+    for (const n of ['stance', 'walkFwd', 'crouchHold', 'block']) {
+      if (actions[n]) clipNames.push({ name: n, strike: false });
+    }
+    // Strikes: first 8 moveset moves with a decoded T3 row, retargeted on demand.
+    try {
+      const ms = getFighterMoveset(char.id);
+      const moves = ms && ms.moves ? Object.entries(ms.moves) : [];
+      let added = 0;
+      for (const [mkey, mv] of moves) {
+        if (added >= 8 || mv.t3_row == null) continue;
+        const rowName = 'row:' + mv.t3_row;
+        if (!rawClips[rowName] || actions[rowName]) continue;
+        try {
+          const rc = retargetT3Clips(rawClips, bank, inst.model, THREE, modelId, [rowName]);
+          if (rc && rc[rowName]) {
+            Object.assign(actions, createT3Actions(inst.mixer, rc, THREE));
+            const label = mv.name || mkey;
+            actions[label] = actions[rowName];
+            clipNames.push({ name: label, strike: true });
+            added++;
+          }
+        } catch (e) { /* skip unusable rows */ }
+      }
+    } catch (e) { console.warn('[REVIEW] strikes failed:', e.message || e); }
+  }
+
+  R = { char, modelId, inst, mixer: inst.mixer, actions, current: null, playing: true, speed: 1 };
+
+  const btns = $('clip-btns'); btns.innerHTML = '';
+  for (const { name, strike } of clipNames) {
+    const b = el('button', { class: 'clipbtn' + (strike ? ' strike' : '') }, name);
+    b.dataset.clip = name;
+    b.addEventListener('click', () => playClip(name));
+    btns.appendChild(b);
+  }
+  const sel = $('fighter-sel'); sel.value = fighterId;
+
+  // Default: fighting stance (bank stance > embedded Idle), never a T-pose.
+  const def = qs.get('clip')
+    || (actions.stance ? 'stance' : null)
+    || (actions.Idle ? 'Idle' : null)
+    || clipNames[0]?.name;
+  if (def) playClip(def);
+  status.textContent = `review: ${char.name || fighterId} — ${R.current || 'no clips'}`;
+  window.__review = {
+    errors, fighter: fighterId,
+    clips: clipNames.map((c) => c.name),
+    play: playClip,
+    pause() { R.playing = false; $('btn-play').textContent = '▶ play'; },
+    resume() { R.playing = true; $('btn-play').textContent = '⏸ pause'; },
+    step(frames = 1) { R.playing = false; $('btn-play').textContent = '▶ play'; R.mixer.update(frames / 60); },
+  };
+}
+
+function buildFighterSelect() {
+  const sel = $('fighter-sel');
+  for (const f of FULL_ROSTER) {
+    const o = el('option', { value: f.id }, `${f.name || f.id} (${f.id})`);
+    sel.appendChild(o);
+  }
+  sel.value = qs.get('fighter') || 'pantera';
+  sel.addEventListener('change', () => {
+    const url = new URL(location.href);
+    url.searchParams.set('fighter', sel.value);
+    history.replaceState(null, '', url);
+    loadReviewFighter(sel.value);
+  });
+}
+
+$('btn-play').addEventListener('click', () => {
+  if (!R) return;
+  R.playing = !R.playing;
+  $('btn-play').textContent = R.playing ? '⏸ pause' : '▶ play';
+});
+$('btn-step-f').addEventListener('click', () => window.__review?.step(1));
+$('btn-step-b').addEventListener('click', () => window.__review?.step(-1));
+$('speed').addEventListener('input', (e) => {
+  const v = parseFloat(e.target.value);
+  $('speed-v').textContent = v.toFixed(2) + 'x';
+  if (R) R.speed = v;
+});
+$('loop').addEventListener('change', (e) => {
+  if (!R || !R.current) return;
+  const a = R.actions[R.current];
+  a.setLoop(e.target.checked ? THREE.LoopRepeat : THREE.LoopOnce, Infinity);
+  a.clampWhenFinished = !e.target.checked;
+});
+
+const clock = new THREE.Clock();
+function reviewLoop() {
+  requestAnimationFrame(reviewLoop);
+  if (reviewWrap.hidden) return;
+  const dt = Math.min(clock.getDelta(), 0.1);
+  if (R && R.playing) R.mixer.update(dt * R.speed);
+  if (R && R.current) {
+    const a = R.actions[R.current];
+    $('readout').textContent =
+      `${R.current}  t=${a.time.toFixed(2)}s / ${a.getClip().duration.toFixed(2)}s` +
+      (a.paused || !R.playing ? '  ⏸' : '');
+  }
+  controls.update();
+  renderer.render(scene, camera);
+}
+
+/* ---------- HIT FEEL tab ---------- */
+let G = null; // { game, feelValues }
+const uiStub = new Proxy({}, { get: (t, k) => (k in t ? t[k] : () => {}) });
+
+async function bootFeel() {
+  const canvas = $('game-canvas');
+  const input = new InputManager();
+  input.init();
+  const game = new Game(canvas, input, uiStub);
+  game.training = true; // endless rounds vs a passive dummy; auto-reset
+  const fighterId = $('fighter-sel').value || qs.get('fighter') || 'pantera';
+  const p1 = resolveFighterAttire(getFighter(fighterId));
+  // Training dummy: never fights back (modes.js pattern).
+  const p2 = { ...resolveFighterAttire(getFighter('demonio')),
+               ai: { aggression: 0, grabBias: 0, reaction: 0, passive: true } };
+  loadRealMovesets();
+  await loadFighterMovesets();
+  const need = [...new Set([p1.model || 'pantera', p2.model || 'pantera'])];
+  status.textContent = 'loading training match…';
+  await assets.loadModels(need, () => {});
+  await game.startMatch(p1, p2, qs.get('stage') || 'shrine', {});
+  status.textContent = `hit feel: ${p1.id} vs dummy ${p2.id} — tweak, then HIT DUMMY`;
+  G = { game };
+
+  // Tuner sliders from FEEL_PARAMS.
+  const wrap = $('feel-sliders'); wrap.innerHTML = '';
+  const vals = {};
+  for (const p of FEEL_PARAMS) {
+    vals[p.key] = p.def;
+    const row = el('div', { class: 'row' });
+    row.appendChild(el('label', null, p.label));
+    const s = el('input', { type: 'range', min: p.min, max: p.max, step: p.step, value: p.def });
+    const v = el('span', { class: 'val' });
+    const base = el('div', { class: 'base' }, p.baseNote);
+    const paint = () => {
+      const x = parseFloat(s.value);
+      vals[p.key] = x;
+      game.feel[p.key] = x;
+      v.textContent = x.toFixed(2) + p.unit;
+    };
+    s.addEventListener('input', paint);
+    paint();
+    row.append(s, v);
+    wrap.append(row, base);
+  }
+  G.feelValues = vals;
+  G.fighterId = fighterId;
+
+  $('btn-hit').addEventListener('click', () => {
+    if (game.p1 && !game.p1.dead) game.p1.tryAttack('1');
+  });
+  $('btn-reset-dummy').addEventListener('click', () => game._startRound());
+  $('btn-export-feel').addEventListener('click', () => {
+    const patch = feelPatch({ fighter: fighterId, values: vals, notes: '' });
+    const st = $('feel-status');
+    if (!patch) { st.textContent = 'nothing changed — nudge a slider first'; return; }
+    const fname = `${fighterId}-hitfeel-patch.json`;
+    downloadJson(fname, patch);
+    st.textContent = `exported ${fname} — send it back in chat`;
+    console.log('[REVIEW] exported feel patch', patch);
+  });
+
+  window.__feel = {
+    errors, game,
+    set: (k, v) => { game.feel[k] = v; },
+    hit: () => game.p1.tryAttack('1'),
+    patch: (notes) => feelPatch({ fighter: fighterId, values: vals, notes }),
+  };
+}
+
+/* ---------- boot ---------- */
+async function boot() {
+  try {
+    buildFighterSelect();
+    loadRealMovesets();
+    await loadFighterMovesets();
+    await loadReviewFighter($('fighter-sel').value);
+    reviewLoop();
+    if (qs.get('tab') === 'feel') showTab('feel');
+    window.__ready = true;
+    console.log('[REVIEW] ready');
+  } catch (e) {
+    status.textContent = 'BOOT FAILED: ' + (e.message || e);
+    console.error('[REVIEW] boot failed', e);
+  }
+}
+addEventListener('resize', () => {
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+boot();
+</script>
+</body>
+</html>

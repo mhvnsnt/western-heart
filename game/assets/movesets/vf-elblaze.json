@@ -1,0 +1,573 @@
+{
+  "fighter": "vf-elblaze",
+  "display": "EL BLAZE (VF)",
+  "tekken_base": "El Blaze (Virtua Fighter 5)",
+  "vf_source": "VF5 PS3 (BLES00029) community movelists (GameFAQs/GameRevolution) + VF5 PS3 manual; see docs/research/VF5-MOVESET-CONVERSION-2026-10-22.md",
+  "vf_style": "Lucha Libre",
+  "ashlane_mapping": "ASHLANE LOCKED 2026-10-22: Pablo -> El Blaze (msk.farc; msk=mask per release README, verified render). Big/fat powerhouse who TRIES to be aerial (comedy+heart); Goldust theatricality + Black Reign/Abyss/Mankind darkness.",
+  "proxy": false,
+  "proxy_note": null,
+  "schema_version": 2,
+  "moves": {
+    "1": {
+      "name": "Jab",
+      "input": "1",
+      "vf_move": "Jab",
+      "vf_input": "P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 7,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:elblaze/jab",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1,2": {
+      "name": "Quick Hook",
+      "input": "1,2",
+      "vf_move": "Quick Hook",
+      "vf_input": "P,P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 13,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:elblaze/quick-hook",
+      "input_slots": [
+        "1,2"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1,2,1": {
+      "name": "Keen Edge Combo",
+      "input": "1,2,1",
+      "vf_move": "Keen Edge Combo",
+      "vf_input": "P,P,P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 19,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:elblaze/keen-edge-combo",
+      "input_slots": [
+        "1,2,1"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1,2,1,4": {
+      "name": "Burnout Combo",
+      "input": "1,2,1,4",
+      "vf_move": "Burnout Combo",
+      "vf_input": "P,P,P,K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 25,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:elblaze/burnout-combo",
+      "input_slots": [
+        "1,2,1,4"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1,4": {
+      "name": "Jab High Kick",
+      "input": "1,4",
+      "vf_move": "Jab High Kick",
+      "vf_input": "P,K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:elblaze/jab-high-kick",
+      "input_slots": [
+        "1,4"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1,d+3": {
+      "name": "Jab Low Kick",
+      "input": "1,d+3",
+      "vf_move": "Jab Low Kick",
+      "vf_input": "P,2K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 14,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:elblaze/jab-low-kick",
+      "input_slots": [
+        "1,d+3"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f+1": {
+      "name": "Shadow Strike",
+      "input": "f+1",
+      "vf_move": "Shadow Strike",
+      "vf_input": "6P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:elblaze/shadow-strike",
+      "input_slots": [
+        "f+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f+1,3": {
+      "name": "Shadow Fang",
+      "input": "f+1,3",
+      "vf_move": "Shadow Fang",
+      "vf_input": "6P,K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 18,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:elblaze/shadow-fang",
+      "input_slots": [
+        "f+1,3"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "b+1": {
+      "name": "Back Knuckle",
+      "input": "b+1",
+      "vf_move": "Back Knuckle",
+      "vf_input": "4P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 13,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:elblaze/back-knuckle",
+      "input_slots": [
+        "b+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "b+1,3": {
+      "name": "Shadow Spin Kick",
+      "input": "b+1,3",
+      "vf_move": "Shadow Spin Kick",
+      "vf_input": "4P,K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 18,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:elblaze/shadow-spin-kick",
+      "input_slots": [
+        "b+1,3"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "b+1,3,2": {
+      "name": "Shadow Storm Combo",
+      "input": "b+1,3,2",
+      "vf_move": "Shadow Storm Combo",
+      "vf_input": "4P,K,P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 24,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:elblaze/shadow-storm-combo",
+      "input_slots": [
+        "b+1,3,2"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "b+,f+1": {
+      "name": "High-Speed Jab",
+      "input": "b+,f+1",
+      "vf_move": "High-Speed Jab",
+      "vf_input": "4,6P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 14,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:elblaze/high-speed-jab",
+      "input_slots": [
+        "b+,f+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "b+,f+1,1,4": {
+      "name": "Rising Back Spin Kick",
+      "input": "b+,f+1,1,4",
+      "vf_move": "Rising Back Spin Kick",
+      "vf_input": "4,6P,P,K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 26,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:elblaze/rising-back-spin-kick",
+      "input_slots": [
+        "b+,f+1,1,4"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "b+,f+1,3": {
+      "name": "Flame Toe Kick",
+      "input": "b+,f+1,3",
+      "vf_move": "Flame Toe Kick",
+      "vf_input": "4,6P,K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 20,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:elblaze/flame-toe-kick",
+      "input_slots": [
+        "b+,f+1,3"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d+1": {
+      "name": "Sit Jab",
+      "input": "d+1",
+      "vf_move": "Sit Jab",
+      "vf_input": "2P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 7,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:elblaze/sit-jab",
+      "input_slots": [
+        "d+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d/f+1": {
+      "name": "Body Blow",
+      "input": "d/f+1",
+      "vf_move": "Body Blow",
+      "vf_input": "3P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:elblaze/body-blow",
+      "input_slots": [
+        "d/f+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "3": {
+      "name": "High Kick",
+      "input": "3",
+      "vf_move": "High Kick",
+      "vf_input": "K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 12,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:elblaze/high-kick",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f+3": {
+      "name": "Shadow Spear",
+      "input": "f+3",
+      "vf_move": "Shadow Spear",
+      "vf_input": "6K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:elblaze/shadow-spear",
+      "input_slots": [
+        "f+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f,f+3": {
+      "name": "Shadow Lance",
+      "input": "f,f+3",
+      "vf_move": "Shadow Lance",
+      "vf_input": "66K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 18,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 3.0,
+      "soulGain": 8,
+      "anim_ref": "vf:elblaze/shadow-lance",
+      "input_slots": [
+        "f,f+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "b+3": {
+      "name": "Toe Kick",
+      "input": "b+3",
+      "vf_move": "Toe Kick",
+      "vf_input": "4K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 10,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:elblaze/toe-kick",
+      "input_slots": [
+        "b+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d+3": {
+      "name": "Low Kick",
+      "input": "d+3",
+      "vf_move": "Low Kick",
+      "vf_input": "2K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 8,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:elblaze/low-kick",
+      "input_slots": [
+        "d+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d+3,1": {
+      "name": "Hook",
+      "input": "d+3,1",
+      "vf_move": "Hook",
+      "vf_input": "2K,P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 14,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:elblaze/hook",
+      "input_slots": [
+        "d+3,1"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "3+4": {
+      "name": "Rocket Discharge",
+      "input": "3+4",
+      "vf_move": "Rocket Discharge",
+      "vf_input": "P+K+G",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 0,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:elblaze/rocket-discharge",
+      "input_slots": [
+        "3+4"
+      ],
+      "move_class": "stance",
+      "note": "running stance; follow-ups: P (Flying Cross Chop), K (Drop Kick), 2K (Low Drop Kick), P+G (throw)"
+    },
+    "3+4,1": {
+      "name": "Flying Cross Chop",
+      "input": "3+4,1",
+      "vf_move": "Flying Cross Chop",
+      "vf_input": "P+K+G,P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 18,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:elblaze/flying-cross-chop",
+      "input_slots": [
+        "3+4,1"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "3+4,3": {
+      "name": "Drop Kick",
+      "input": "3+4,3",
+      "vf_move": "Drop Kick",
+      "vf_input": "P+K+G,K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 22,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 8,
+      "anim_ref": "vf:elblaze/drop-kick",
+      "input_slots": [
+        "3+4,3"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1+3": {
+      "name": "Whirlwind",
+      "input": "1+3",
+      "vf_move": "Whirlwind",
+      "vf_input": "P+G",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 32,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.0,
+      "soulGain": 8,
+      "anim_ref": "vf:elblaze/whirlwind",
+      "input_slots": [
+        "1+3"
+      ],
+      "move_class": "throw",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f+1+3": {
+      "name": "Just Face Lock",
+      "input": "f+1+3",
+      "vf_move": "Just Face Lock",
+      "vf_input": "6P+G",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 35,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.0,
+      "soulGain": 8,
+      "anim_ref": "vf:elblaze/just-face-lock",
+      "input_slots": [
+        "f+1+3"
+      ],
+      "move_class": "throw",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "u/f+1+2": {
+      "name": "450 Splash",
+      "input": "u/f+1+2",
+      "vf_move": "450 Splash",
+      "vf_input": "9P+K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.0,
+      "soulGain": 8,
+      "anim_ref": "vf:elblaze/450-splash",
+      "input_slots": [
+        "u/f+1+2"
+      ],
+      "move_class": "special",
+      "note": "aerial splash; Pablo canon: big/fat powerhouse attempting lucha aerials"
+    }
+  }
+}

@@ -1,0 +1,157 @@
+0x08ad161c: 8c870000  lw           $a3, ($a0)
+0x08ad1620: 00061180  sll          $v0, $a2, 6
+0x08ad1624: 00063100  sll          $a2, $a2, 4
+0x08ad1628: 00461023  subu         $v0, $v0, $a2
+0x08ad162c: 00e23821  addu         $a3, $a3, $v0
+0x08ad1630: d8f80001  ldc2         $24, 1($a3)
+0x08ad1634: d8f90011  ldc2         $25, 0x11($a3)
+0x08ad1638: d8fa0021  ldc2         $26, 0x21($a3)
+0x08ad163c: 48630018  .byte        0x18, 0x00, 0x63, 0x48
+0x08ad1640: 3c072b00  lui          $a3, 0x2b00
+0x08ad1644: 00031a02  srl          $v1, $v1, 8
+0x08ad1648: 00671825  or           $v1, $v1, $a3
+0x08ad164c: aca30000  sw           $v1, ($a1)
+0x08ad1650: 48620038  .byte        0x38, 0x00, 0x62, 0x48
+0x08ad1654: 00021202  srl          $v0, $v0, 8
+0x08ad1658: 00471025  or           $v0, $v0, $a3
+0x08ad165c: aca20004  sw           $v0, 4($a1)
+0x08ad1660: 48630058  .byte        0x58, 0x00, 0x63, 0x48
+0x08ad1664: 00031a02  srl          $v1, $v1, 8
+0x08ad1668: 00671825  or           $v1, $v1, $a3
+0x08ad166c: aca30008  sw           $v1, 8($a1)
+0x08ad1670: 48620019  .byte        0x19, 0x00, 0x62, 0x48
+0x08ad1674: 00021202  srl          $v0, $v0, 8
+0x08ad1678: 00471025  or           $v0, $v0, $a3
+0x08ad167c: aca2000c  sw           $v0, 0xc($a1)
+0x08ad1680: 48630039  .byte        0x39, 0x00, 0x63, 0x48
+0x08ad1684: 00031a02  srl          $v1, $v1, 8
+0x08ad1688: 00671825  or           $v1, $v1, $a3
+0x08ad168c: aca30010  sw           $v1, 0x10($a1)
+0x08ad1690: 48620059  .byte        0x59, 0x00, 0x62, 0x48
+0x08ad1694: 00021202  srl          $v0, $v0, 8
+0x08ad1698: 00471025  or           $v0, $v0, $a3
+0x08ad169c: aca20014  sw           $v0, 0x14($a1)
+0x08ad16a0: 4863001a  .byte        0x1a, 0x00, 0x63, 0x48
+0x08ad16a4: 00031a02  srl          $v1, $v1, 8
+0x08ad16a8: 00671825  or           $v1, $v1, $a3
+0x08ad16ac: aca30018  sw           $v1, 0x18($a1)
+0x08ad16b0: 4862003a  .byte        0x3a, 0x00, 0x62, 0x48
+0x08ad16b4: 00021202  srl          $v0, $v0, 8
+0x08ad16b8: 00471025  or           $v0, $v0, $a3
+0x08ad16bc: aca2001c  sw           $v0, 0x1c($a1)
+0x08ad16c0: 4863005a  .byte        0x5a, 0x00, 0x63, 0x48
+0x08ad16c4: 00031a02  srl          $v1, $v1, 8
+0x08ad16c8: 00671825  or           $v1, $v1, $a3
+0x08ad16cc: aca30020  sw           $v1, 0x20($a1)
+0x08ad16d0: 24860418  addiu        $a2, $a0, 0x418
+0x08ad16d4: 8c830004  lw           $v1, 4($a0)
+0x08ad16d8: d8790000  ldc2         $25, ($v1)
+0x08ad16dc: c8da0003  lwc2         $26, 3($a2)
+0x08ad16e0: 60999b1a  .byte        0x1a, 0x9b, 0x99, 0x60
+0x08ad16e4: 657a9a1b  .byte        0x1b, 0x9a, 0x7a, 0x65
+0x08ad16e8: 4862001b  .byte        0x1b, 0x00, 0x62, 0x48
+0x08ad16ec: 00021202  srl          $v0, $v0, 8
+0x08ad16f0: 00471025  or           $v0, $v0, $a3
+0x08ad16f4: aca20024  sw           $v0, 0x24($a1)
+0x08ad16f8: 4863003b  .byte        0x3b, 0x00, 0x63, 0x48
+0x08ad16fc: 00031a02  srl          $v1, $v1, 8
+0x08ad1700: 00671825  or           $v1, $v1, $a3
+0x08ad1704: aca30028  sw           $v1, 0x28($a1)
+0x08ad1708: 4862005b  .byte        0x5b, 0x00, 0x62, 0x48
+0x08ad170c: 00021202  srl          $v0, $v0, 8
+0x08ad1710: 00471025  or           $v0, $v0, $a3
+0x08ad1714: 3c030b00  lui          $v1, 0xb00
+0x08ad1718: aca30030  sw           $v1, 0x30($a1)
+0x08ad171c: 03e00008  jr           $ra
+0x08ad1720: aca2002c  sw           $v0, 0x2c($a1)
+0x08ad1724: 8c820000  lw           $v0, ($a0)
+0x08ad1728: 00063180  sll          $a2, $a2, 6
+0x08ad172c: 00804021  move         $t0, $a0
+0x08ad1730: 00a04821  move         $t1, $a1
+0x08ad1734: 00462021  addu         $a0, $v0, $a2
+0x08ad1738: 3c072b00  lui          $a3, 0x2b00
+0x08ad173c: 00003021  move         $a2, $zero
+0x08ad1740: 240a0003  addiu        $t2, $zero, 3
+0x08ad1744: 8c820000  lw           $v0, ($a0)
+0x08ad1748: 24c60001  addiu        $a2, $a2, 1
+0x08ad174c: 00021202  srl          $v0, $v0, 8
+0x08ad1750: 00471025  or           $v0, $v0, $a3
+0x08ad1754: aca20000  sw           $v0, ($a1)
+0x08ad1758: 8c830004  lw           $v1, 4($a0)
+0x08ad175c: 00031a02  srl          $v1, $v1, 8
+0x08ad1760: 00671825  or           $v1, $v1, $a3
+0x08ad1764: aca30004  sw           $v1, 4($a1)
+0x08ad1768: 8c820008  lw           $v0, 8($a0)
+0x08ad176c: 24840010  addiu        $a0, $a0, 0x10
+0x08ad1770: 00021202  srl          $v0, $v0, 8
+0x08ad1774: 00471025  or           $v0, $v0, $a3
+0x08ad1778: aca20008  sw           $v0, 8($a1)
+0x08ad177c: 14cafff1  bne          $a2, $t2, 0x8ad1744
+0x08ad1780: 24a5000c  addiu        $a1, $a1, 0xc
+0x08ad1784: 25250024  addiu        $a1, $t1, 0x24
+0x08ad1788: d89b0000  ldc2         $27, ($a0)
+0x08ad178c: 25040418  addiu        $a0, $t0, 0x418
+0x08ad1790: 8d030004  lw           $v1, 4($t0)
+0x08ad1794: d8790000  ldc2         $25, ($v1)
+0x08ad1798: c89a0003  lwc2         $26, 3($a0)
+0x08ad179c: 60999b1a  .byte        0x1a, 0x9b, 0x99, 0x60
+0x08ad17a0: 657a9a1b  .byte        0x1b, 0x9a, 0x7a, 0x65
+0x08ad17a4: 4862001b  .byte        0x1b, 0x00, 0x62, 0x48
+0x08ad17a8: 00021202  srl          $v0, $v0, 8
+0x08ad17ac: 00471025  or           $v0, $v0, $a3
+0x08ad17b0: ad220024  sw           $v0, 0x24($t1)
+0x08ad17b4: 4863003b  .byte        0x3b, 0x00, 0x63, 0x48
+0x08ad17b8: 00031a02  srl          $v1, $v1, 8
+0x08ad17bc: 00671825  or           $v1, $v1, $a3
+0x08ad17c0: aca30004  sw           $v1, 4($a1)
+0x08ad17c4: 4862005b  .byte        0x5b, 0x00, 0x62, 0x48
+0x08ad17c8: 00021202  srl          $v0, $v0, 8
+0x08ad17cc: 00471025  or           $v0, $v0, $a3
+0x08ad17d0: 3c030b00  lui          $v1, 0xb00
+0x08ad17d4: aca20008  sw           $v0, 8($a1)
+0x08ad17d8: 03e00008  jr           $ra
+0x08ad17dc: ad230030  sw           $v1, 0x30($t1)
+0x08ad17e0: 00071880  sll          $v1, $a3, 2
+0x08ad17e4: 00071100  sll          $v0, $a3, 4
+0x08ad17e8: 00431023  subu         $v0, $v0, $v1
+0x08ad17ec: 00c45821  addu         $t3, $a2, $a0
+0x08ad17f0: 00804821  move         $t1, $a0
+0x08ad17f4: 00471021  addu         $v0, $v0, $a3
+0x08ad17f8: 91640010  lbu          $a0, 0x10($t3)
+0x08ad17fc: 00021080  sll          $v0, $v0, 2
+0x08ad1800: 7c02fe04  ins          $v0, $zero, 0x18, 8
+0x08ad1804: 3c030a00  lui          $v1, 0xa00
+0x08ad1808: 24cc0001  addiu        $t4, $a2, 1
+0x08ad180c: 00435025  or           $t2, $v0, $v1
+0x08ad1810: 1087000e  beq          $a0, $a3, 0x8ad184c
+0x08ad1814: 00a04021  move         $t0, $a1
+0x08ad1818: 8d25000c  lw           $a1, 0xc($t1)
+0x08ad181c: 00062080  sll          $a0, $a2, 2
+0x08ad1820: 00061100  sll          $v0, $a2, 4
+0x08ad1824: 00441023  subu         $v0, $v0, $a0
+0x08ad1828: 3c032a00  lui          $v1, 0x2a00
+0x08ad182c: 10c50003  beq          $a2, $a1, 0x8ad183c
+0x08ad1830: 00431025  or           $v0, $v0, $v1
+0x08ad1834: ad020000  sw           $v0, ($t0)
+0x08ad1838: 25080004  addiu        $t0, $t0, 4
+0x08ad183c: ad0a0000  sw           $t2, ($t0)
+0x08ad1840: 25080004  addiu        $t0, $t0, 4
+0x08ad1844: ad2c000c  sw           $t4, 0xc($t1)
+0x08ad1848: a1670010  sb           $a3, 0x10($t3)
+0x08ad184c: 03e00008  jr           $ra
+0x08ad1850: 01001021  move         $v0, $t0
+0x08ad1854: 3c0208bd  lui          $v0, 0x8bd
+0x08ad1858: 2442fdf0  addiu        $v0, $v0, -0x210
+0x08ad185c: 00403821  move         $a3, $v0
+0x08ad1860: 3c0300ff  lui          $v1, 0xff
+0x08ad1864: 00021202  srl          $v0, $v0, 8
+0x08ad1868: 00431024  and          $v0, $v0, $v1
+0x08ad186c: 3c031040  lui          $v1, 0x1040
+0x08ad1870: 00431025  or           $v0, $v0, $v1
+0x08ad1874: 3c060a00  lui          $a2, 0xa00
+0x08ad1878: 7c07fe04  ins          $a3, $zero, 0x18, 8
+0x08ad187c: aca20000  sw           $v0, ($a1)
+0x08ad1880: 00e63825  or           $a3, $a3, $a2
+0x08ad1884: 24a20008  addiu        $v0, $a1, 8
+0x08ad1888: aca70004  sw           $a3, 4($a1)
+0x08ad188c: 03e00008  jr           $ra

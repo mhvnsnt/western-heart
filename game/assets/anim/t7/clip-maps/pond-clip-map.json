@@ -1,0 +1,2789 @@
+{
+ "schema": "wh-t7-clip-map/1",
+ "fighter": "pond",
+ "base_code": "frv",
+ "sources": {
+  "mapping": "FILL 2 / F5 (2026-11-06): group-walk joins for moves that carried no animation reference at all",
+  "char_index": "GRE mask/indexes/frv_index.json",
+  "bank0_index": "GRE mask/indexes/frv_bank0_index.json"
+ },
+ "stats": {
+  "mapped_clip_resolved": 40,
+  "mapped_bank0_noclip": 0,
+  "unmapped": 111
+ },
+ "moves": [
+  {
+   "wh_key": "1",
+   "wh_name": "Still Jab",
+   "wh_input": "1",
+   "t7_notation": "1",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-multi-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-multi-terminal"
+   }
+  },
+  {
+   "wh_key": "1,2",
+   "wh_name": "Ripple Pair",
+   "wh_input": "1,2",
+   "t7_notation": "1,2",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1581,
+   "motbin_move_name": "Nj_lprpF",
+   "anim_name": "nonj_natooz(DVD)",
+   "anim_id": 16716,
+   "bank_index": 332,
+   "bank": "0x4000",
+   "motbin_startup": 12,
+   "motbin_damage": 12,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 332,
+    "rel_offset": 2622168,
+    "size": 2400,
+    "format_word": 100,
+    "sha256": "5889f46bb9f132d678bac44500adfe4ddbc2cee0a71fa79febdd5fbf3f329e6e",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "2,3",
+   "wh_name": "Current and Stone",
+   "wh_input": "2,3",
+   "t7_notation": "2,3",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-multi-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-multi-terminal"
+   }
+  },
+  {
+   "wh_key": "2,4",
+   "wh_name": "Pond Skater",
+   "wh_input": "2,4",
+   "t7_notation": "2,4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-multi-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-multi-terminal"
+   }
+  },
+  {
+   "wh_key": "3,3,4",
+   "wh_name": "Lily Pad Lance",
+   "wh_input": "3,3,4",
+   "t7_notation": "3,3,4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-multi-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-multi-terminal"
+   }
+  },
+  {
+   "wh_key": "4~3,1",
+   "wh_name": "Tadpole Bite Low",
+   "wh_input": "4~3,1",
+   "t7_notation": "4~3,1",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "4~3,3",
+   "wh_name": "Tadpole Bite High",
+   "wh_input": "4~3,3",
+   "t7_notation": "4~3,3",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "4~3,4",
+   "wh_name": "Tadpole Bite Mid",
+   "wh_input": "4~3,4",
+   "t7_notation": "4~3,4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "4,1",
+   "wh_name": "Reed Connect",
+   "wh_input": "4,1",
+   "t7_notation": "4,1",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-multi-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-multi-terminal"
+   }
+  },
+  {
+   "wh_key": "1+2",
+   "wh_name": "Crossing Current",
+   "wh_input": "1+2",
+   "t7_notation": "1+2",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1882,
+   "motbin_move_name": "Nj_shinrp00",
+   "anim_name": "frss_wp",
+   "anim_id": 123,
+   "bank_index": 123,
+   "bank": "0x0000",
+   "motbin_startup": 14,
+   "motbin_damage": 23,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x0000",
+    "source": "frvmot.bin",
+    "section": 0,
+    "entry": 123,
+    "rel_offset": 2101980,
+    "size": 4120,
+    "format_word": 100,
+    "sha256": "853f745b480bc82538bcdd3aff6d3b23207300bf4b4160af73c6afec6996891b",
+    "blob_file": "frv_bank0_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "f+2,3",
+   "wh_name": "Deep Water",
+   "wh_input": "f+2,3",
+   "t7_notation": "f+2,3",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1653,
+   "motbin_move_name": "Nj_6rplk",
+   "anim_name": "frsd_p_kaka(DVD)",
+   "anim_id": 16766,
+   "bank_index": 382,
+   "bank": "0x4000",
+   "motbin_startup": 21,
+   "motbin_damage": 19,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 382,
+    "rel_offset": 2746988,
+    "size": 4072,
+    "format_word": 100,
+    "sha256": "1ec36fc23992c7a2a4e65fc6d4fef29c0f2850206f3dcb52e625921cbfbbe8bb",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "f+3,2",
+   "wh_name": "Circling Heron",
+   "wh_input": "f+3,2",
+   "t7_notation": "f+3,2",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1661,
+   "motbin_move_name": "Nj_lkrp",
+   "anim_name": "amnj_mox02(DVD)",
+   "anim_id": 16770,
+   "bank_index": 386,
+   "bank": "0x4000",
+   "motbin_startup": 30,
+   "motbin_damage": 21,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 386,
+    "rel_offset": 2756988,
+    "size": 4248,
+    "format_word": 100,
+    "sha256": "195db96fe9ce2223cc3cbddb310f9a41360acdd813c52680dcb8574f71fc1a86",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "f+4",
+   "wh_name": "Heron Kick",
+   "wh_input": "f+4",
+   "t7_notation": "f+4",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1663,
+   "motbin_move_name": "Nj_rk00F",
+   "anim_name": "frss_6rk",
+   "anim_id": 110,
+   "bank_index": 110,
+   "bank": "0x0000",
+   "motbin_startup": 15,
+   "motbin_damage": 25,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x0000",
+    "source": "frvmot.bin",
+    "section": 0,
+    "entry": 110,
+    "rel_offset": 2034284,
+    "size": 4608,
+    "format_word": 100,
+    "sha256": "642facd9a0b0853e6bf588a1982f2b3fa271c561968575d74b3e9532c9537cdc",
+    "blob_file": "frv_bank0_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "f,F+2",
+   "wh_name": "Spearfish",
+   "wh_input": "f,F+2",
+   "t7_notation": "f,F+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "f,F+3",
+   "wh_name": "Sudden Ripple",
+   "wh_input": "f,F+3",
+   "t7_notation": "f,F+3",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "f,F+4",
+   "wh_name": "Mud Maul",
+   "wh_input": "f,F+4",
+   "t7_notation": "f,F+4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "d/f+1",
+   "wh_name": "Pebble Drop",
+   "wh_input": "d/f+1",
+   "t7_notation": "d/f+1",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1755,
+   "motbin_move_name": "Nj_bodylp",
+   "anim_name": "oznj_hara(DVD)",
+   "anim_id": 16817,
+   "bank_index": 433,
+   "bank": "0x4000",
+   "motbin_startup": 14,
+   "motbin_damage": 15,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 433,
+    "rel_offset": 2860556,
+    "size": 2864,
+    "format_word": 100,
+    "sha256": "14399337abca89d5d25f4ed4cadd73da5eee94a9158dea6baa734a106408e36d",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "d/f+2,3",
+   "wh_name": "Snapping Turtle",
+   "wh_input": "d/f+2,3",
+   "t7_notation": "d/f+2,3",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1771,
+   "motbin_move_name": "Nj_t_srpFS2",
+   "anim_name": "nanj_upsp(DVD)",
+   "anim_id": 16827,
+   "bank_index": 443,
+   "bank": "0x4000",
+   "motbin_startup": null,
+   "motbin_damage": 0,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 443,
+    "rel_offset": 2882140,
+    "size": 3204,
+    "format_word": 100,
+    "sha256": "879668730026a33e5cc698407532afb078af1d7c708cc5809783804e5c558dd7",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "d/f+2,4",
+   "wh_name": "Electric Eel",
+   "wh_input": "d/f+2,4",
+   "t7_notation": "d/f+2,4",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1773,
+   "motbin_move_name": "Nj_t_srpFS3",
+   "anim_name": "nanj_upsp(DVD)",
+   "anim_id": 16827,
+   "bank_index": 443,
+   "bank": "0x4000",
+   "motbin_startup": null,
+   "motbin_damage": 0,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 443,
+    "rel_offset": 2882140,
+    "size": 3204,
+    "format_word": 100,
+    "sha256": "879668730026a33e5cc698407532afb078af1d7c708cc5809783804e5c558dd7",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "d/f+3",
+   "wh_name": "Skipping Stone",
+   "wh_input": "d/f+3",
+   "t7_notation": "d/f+3",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1763,
+   "motbin_move_name": "Nj_t_slkF",
+   "anim_name": "frkb_s3_3lk2",
+   "anim_id": 111,
+   "bank_index": 111,
+   "bank": "0x0000",
+   "motbin_startup": 15,
+   "motbin_damage": 21,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x0000",
+    "source": "frvmot.bin",
+    "section": 0,
+    "entry": 111,
+    "rel_offset": 2038892,
+    "size": 4268,
+    "format_word": 100,
+    "sha256": "37b21dac1fe7e6a21227dce50f22c2ba1a1faa6aec60e92de1ec4fc43a613481",
+    "blob_file": "frv_bank0_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "d/f+4,4,3",
+   "wh_name": "Pendulum Lily",
+   "wh_input": "d/f+4,4,3",
+   "t7_notation": "d/f+4,4,3",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-multi-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-multi-terminal"
+   }
+  },
+  {
+   "wh_key": "d+3",
+   "wh_name": "Mud Poke",
+   "wh_input": "d+3",
+   "t7_notation": "d+3",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1748,
+   "motbin_move_name": "Nj_t_slk00",
+   "anim_name": "sunj_kansetulow(DVD)",
+   "anim_id": 16814,
+   "bank_index": 430,
+   "bank": "0x4000",
+   "motbin_startup": 14,
+   "motbin_damage": 12,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 430,
+    "rel_offset": 2854300,
+    "size": 2764,
+    "format_word": 100,
+    "sha256": "6fbbfe8d94103edbcc590c44c90491742e17187bcdcc6ddaa16d60d15325b483",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "d+4",
+   "wh_name": "Basilisk Fang",
+   "wh_input": "d+4",
+   "t7_notation": "d+4",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1754,
+   "motbin_move_name": "Nj_t_srk00",
+   "anim_name": "oznj_angel(DVD)",
+   "anim_id": 16816,
+   "bank_index": 432,
+   "bank": "0x4000",
+   "motbin_startup": 21,
+   "motbin_damage": 18,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 432,
+    "rel_offset": 2857064,
+    "size": 3492,
+    "format_word": 100,
+    "sha256": "77fed1cf89332c8095a43c5fae4adf98275bbd9cea5eb5284e58acc27e39453c",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "d/b+2,1",
+   "wh_name": "Assassin's Sting",
+   "wh_input": "d/b+2,1",
+   "t7_notation": "d/b+2,1",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1762,
+   "motbin_move_name": "Nj_hiziura00",
+   "anim_name": "oznj_1rplp(DVD)",
+   "anim_id": 16820,
+   "bank_index": 436,
+   "bank": "0x4000",
+   "motbin_startup": 22,
+   "motbin_damage": 15,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 436,
+    "rel_offset": 2868056,
+    "size": 2964,
+    "format_word": 100,
+    "sha256": "fe814923419f5ba1e08b8a4b1bd7ce1778ebf309926ee43142b19399a4985363",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "d/b+3",
+   "wh_name": "Dragonfly",
+   "wh_input": "d/b+3",
+   "t7_notation": "d/b+3",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1775,
+   "motbin_move_name": "Nj_t_slkB",
+   "anim_name": "frss_s4_1lk",
+   "anim_id": 112,
+   "bank_index": 112,
+   "bank": "0x0000",
+   "motbin_startup": 29,
+   "motbin_damage": 19,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x0000",
+    "source": "frvmot.bin",
+    "section": 0,
+    "entry": 112,
+    "rel_offset": 2043160,
+    "size": 5000,
+    "format_word": 100,
+    "sha256": "8921c681bd82f14b8a4920efe6bfcbdaa0e2bff585548595e7fd274fce750655",
+    "blob_file": "frv_bank0_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "d/b+4",
+   "wh_name": "Whirlpool",
+   "wh_input": "d/b+4",
+   "t7_notation": "d/b+4",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1777,
+   "motbin_move_name": "Nj_t_srkB",
+   "anim_name": "oznj_egui(DVD)",
+   "anim_id": 16833,
+   "bank_index": 449,
+   "bank": "0x4000",
+   "motbin_startup": 24,
+   "motbin_damage": 21,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 449,
+    "rel_offset": 2895200,
+    "size": 3484,
+    "format_word": 100,
+    "sha256": "b4cb947ce827906ad9ea60550a7eb9afeaf694ad0c4fdab2d225c0962bfac9cc",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "b+1",
+   "wh_name": "Reed Elbow",
+   "wh_input": "b+1",
+   "t7_notation": "b+1",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1667,
+   "motbin_move_name": "Nj_hizi00",
+   "anim_name": "sunj_lhijioroshi(DVD)",
+   "anim_id": 16772,
+   "bank_index": 388,
+   "bank": "0x4000",
+   "motbin_startup": 16,
+   "motbin_damage": 25,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 388,
+    "rel_offset": 2761236,
+    "size": 3188,
+    "format_word": 100,
+    "sha256": "0e05c7f38d957a2a9592a8028c9145aa2fd5155e0ce199f67993130473483605",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "b+2,2,3",
+   "wh_name": "Unicorn's Tail",
+   "wh_input": "b+2,2,3",
+   "t7_notation": "b+2,2,3",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1709,
+   "motbin_move_name": "Nj_hizilk00",
+   "anim_name": "sunj_chophijiupk(DVD)",
+   "anim_id": 16790,
+   "bank_index": 406,
+   "bank": "0x4000",
+   "motbin_startup": 21,
+   "motbin_damage": 20,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 406,
+    "rel_offset": 2787452,
+    "size": 4312,
+    "format_word": 100,
+    "sha256": "24364ad33295d17e7eda2d3c5b01b1c44a9827d0129fb32669e551556b364da9",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "b+2,2,1+2",
+   "wh_name": "Deadly Talon",
+   "wh_input": "b+2,2,1+2",
+   "t7_notation": "b+2,2,1+2",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1707,
+   "motbin_move_name": "Nj_hizilrp00",
+   "anim_name": "oznj_4rprpwp(DVD)",
+   "anim_id": 16789,
+   "bank_index": 405,
+   "bank": "0x4000",
+   "motbin_startup": 20,
+   "motbin_damage": 15,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 405,
+    "rel_offset": 2783164,
+    "size": 4288,
+    "format_word": 100,
+    "sha256": "1e72f6c7eeee941e6575b827424ca70a8d8afa0edf41590c495803cc66913b66",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "b+3",
+   "wh_name": "Hades Heel",
+   "wh_input": "b+3",
+   "t7_notation": "b+3",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1717,
+   "motbin_move_name": "Nj_lk00B",
+   "anim_name": "sunj_lkakato(DVD)",
+   "anim_id": 16794,
+   "bank_index": 410,
+   "bank": "0x4000",
+   "motbin_startup": 27,
+   "motbin_damage": 23,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 410,
+    "rel_offset": 2803016,
+    "size": 3392,
+    "format_word": 100,
+    "sha256": "cc2b69e0ceddb2421db32604b55b5ec03398e7945d76b904612f816dc40cb88a",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "b+4,B+4,3,4,2",
+   "wh_name": "Skull Rave",
+   "wh_input": "b+4,B+4,3,4,2",
+   "t7_notation": "b+4,B+4,3,4,2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "b+1+2,3",
+   "wh_name": "Mud Sweep",
+   "wh_input": "b+1+2,3",
+   "t7_notation": "b+1+2,3",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1929,
+   "motbin_move_name": "Nj_katasra",
+   "anim_name": "sunj_sura(DVD)",
+   "anim_id": 16946,
+   "bank_index": 562,
+   "bank": "0x4000",
+   "motbin_startup": 17,
+   "motbin_damage": 17,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 562,
+    "rel_offset": 3149608,
+    "size": 4224,
+    "format_word": 100,
+    "sha256": "b7d25073d496e7e1e94cb4c6b08df52670245baef0f2a7f198cff192a7f29a12",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "b+1+2,2",
+   "wh_name": "Mud Strike",
+   "wh_input": "b+1+2,2",
+   "t7_notation": "b+1+2,2",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1928,
+   "motbin_move_name": "Nj_katahizi",
+   "anim_name": "oznj_mushihiji_se(DVD)",
+   "anim_id": 16945,
+   "bank_index": 561,
+   "bank": "0x4000",
+   "motbin_startup": 33,
+   "motbin_damage": 12,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 561,
+    "rel_offset": 3145892,
+    "size": 3716,
+    "format_word": 100,
+    "sha256": "92f6571339e5fd7d4aa12c7354997cdb4e6e7bf57ec61a8b78d6bc7b2919ed3c",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "u/f+3",
+   "wh_name": "Shadow Scythe",
+   "wh_input": "u/f+3",
+   "t7_notation": "u/f+3",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1525,
+   "motbin_move_name": "Nj_jplk00F",
+   "anim_name": "oznj_otikakato2(DVD)",
+   "anim_id": 16673,
+   "bank_index": 289,
+   "bank": "0x4000",
+   "motbin_startup": 29,
+   "motbin_damage": 20,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 289,
+    "rel_offset": 2545916,
+    "size": 3948,
+    "format_word": 100,
+    "sha256": "88960546756ac437f219b8ee1fb33119f8aa693281a80bcd3795d2992d9c5ecf",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "u/f+4,4",
+   "wh_name": "Stormbringer",
+   "wh_input": "u/f+4,4",
+   "t7_notation": "u/f+4,4",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1559,
+   "motbin_move_name": "Nj_jpstrk00",
+   "anim_name": "sunj_mawark(DVD)",
+   "anim_id": 16707,
+   "bank_index": 323,
+   "bank": "0x4000",
+   "motbin_startup": 16,
+   "motbin_damage": 20,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 323,
+    "rel_offset": 2591260,
+    "size": 3196,
+    "format_word": 100,
+    "sha256": "e3716d4798383901e523b7afac2d3c086093a6407107e325bc2fab67b2c7f10f",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "u+3,3",
+   "wh_name": "Deathbringer Mid",
+   "wh_input": "u+3,3",
+   "t7_notation": "u+3,3",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1529,
+   "motbin_move_name": "Nj_lkmdlki00",
+   "anim_name": "konj_jmawa2mdlk(DVD)",
+   "anim_id": 16677,
+   "bank_index": 293,
+   "bank": "0x4000",
+   "motbin_startup": 26,
+   "motbin_damage": 20,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 293,
+    "rel_offset": 2558148,
+    "size": 3992,
+    "format_word": 100,
+    "sha256": "fa87ec860fa2bbbb32befb5541a07359b8cbf3559496e56061aaecb87af762c2",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "u+3,4",
+   "wh_name": "Deathbringer High",
+   "wh_input": "u+3,4",
+   "t7_notation": "u+3,4",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1530,
+   "motbin_move_name": "Nj_lksobat00",
+   "anim_name": "sunj_sobasoba(DVD)",
+   "anim_id": 16678,
+   "bank_index": 294,
+   "bank": "0x4000",
+   "motbin_startup": 38,
+   "motbin_damage": 37,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 294,
+    "rel_offset": 2562140,
+    "size": 3704,
+    "format_word": 100,
+    "sha256": "b617db98169937f0b12c8272bb2f91cc3fcb6682d0cc5ee5c9b24bb00e8fef35",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "u+3,d+3",
+   "wh_name": "Deathbringer Low",
+   "wh_input": "u+3,d+3",
+   "t7_notation": "u+3,d+3",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1527,
+   "motbin_move_name": "Nj_lklowki00",
+   "anim_name": "frkb_nonj_harai_75(DVD)",
+   "anim_id": 16675,
+   "bank_index": 291,
+   "bank": "0x4000",
+   "motbin_startup": 31,
+   "motbin_damage": 18,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 291,
+    "rel_offset": 2549864,
+    "size": 6560,
+    "format_word": 100,
+    "sha256": "9d017b9e6582cf4945db29f14bf189cb3c73b057bd302ba17492313d0fd89a39",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "WS+1",
+   "wh_name": "Rising Uppercut",
+   "wh_input": "WS+1",
+   "t7_notation": "WS+1",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-multi-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-multi-terminal"
+   }
+  },
+  {
+   "wh_key": "WS+2",
+   "wh_name": "Jackknife Elbow",
+   "wh_input": "WS+2",
+   "t7_notation": "WS+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-multi-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-multi-terminal"
+   }
+  },
+  {
+   "wh_key": "WS+3",
+   "wh_name": "Trident Kick",
+   "wh_input": "WS+3",
+   "t7_notation": "WS+3",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-multi-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-multi-terminal"
+   }
+  },
+  {
+   "wh_key": "WS+4",
+   "wh_name": "Rising Snap",
+   "wh_input": "WS+4",
+   "t7_notation": "WS+4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-multi-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-multi-terminal"
+   }
+  },
+  {
+   "wh_key": "FC d/f+3+4",
+   "wh_name": "Quicksand Catastrophe",
+   "wh_input": "FC d/f+3+4",
+   "t7_notation": "FC d/f+3+4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "3+4",
+   "wh_name": "MIST",
+   "wh_input": "3+4",
+   "t7_notation": "3+4",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1806,
+   "motbin_move_name": "Nj_commetSP",
+   "anim_name": "frsd_in50(DVD)",
+   "anim_id": 16717,
+   "bank_index": 333,
+   "bank": "0x4000",
+   "motbin_startup": null,
+   "motbin_damage": 0,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 333,
+    "rel_offset": 2624568,
+    "size": 3456,
+    "format_word": 100,
+    "sha256": "000baba040248771076dc0d87faad23a3e51ee720dc375852ed7cdb4704c4b07",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "b+3+4",
+   "wh_name": "DEEP WATER",
+   "wh_input": "b+3+4",
+   "t7_notation": "b+3+4",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1799,
+   "motbin_move_name": "Nj_Turn00",
+   "anim_name": "oznj_turn(DVD)",
+   "anim_id": 16841,
+   "bank_index": 457,
+   "bank": "0x4000",
+   "motbin_startup": null,
+   "motbin_damage": 0,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 457,
+    "rel_offset": 2913264,
+    "size": 1328,
+    "format_word": 100,
+    "sha256": "9e55a2278422f87f3776b4e01a4e5756b995b41782ac1964e10d314402f8a3e0",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "qcf",
+   "wh_name": "WATER STRIDE",
+   "wh_input": "qcf",
+   "t7_notation": "qcf",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-multi-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-multi-terminal"
+   }
+  },
+  {
+   "wh_key": "MIST 1",
+   "wh_name": "Kronos Cutter",
+   "wh_input": "MIST 1",
+   "t7_notation": "MIST 1",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "MIST 3",
+   "wh_name": "Aqua Spider",
+   "wh_input": "MIST 3",
+   "t7_notation": "MIST 3",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "MIST 4",
+   "wh_name": "Blind Ghost",
+   "wh_input": "MIST 4",
+   "t7_notation": "MIST 4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "MIST 1+2",
+   "wh_name": "Crossing Paths",
+   "wh_input": "MIST 1+2",
+   "t7_notation": "MIST 1+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "MIST 2",
+   "wh_name": "Death from Above",
+   "wh_input": "MIST 2",
+   "t7_notation": "MIST 2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "DEEP 1",
+   "wh_name": "Blind Lance",
+   "wh_input": "DEEP 1",
+   "t7_notation": "DEEP 1",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "DEEP f+1",
+   "wh_name": "Soul Steal",
+   "wh_input": "DEEP f+1",
+   "t7_notation": "DEEP f+1",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "DEEP f+3+4",
+   "wh_name": "Reverse Chakram",
+   "wh_input": "DEEP f+3+4",
+   "t7_notation": "DEEP f+3+4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "DEEP b+3",
+   "wh_name": "Tadpole Tail",
+   "wh_input": "DEEP b+3",
+   "t7_notation": "DEEP b+3",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "DEEP 3,4,4",
+   "wh_name": "Fafnir",
+   "wh_input": "DEEP 3,4,4",
+   "t7_notation": "DEEP 3,4,4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "STRIDE 1",
+   "wh_name": "Fatal Elbow",
+   "wh_input": "STRIDE 1",
+   "t7_notation": "STRIDE 1",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "STRIDE 1,2",
+   "wh_name": "Fatal Elbow to Elbow Storm",
+   "wh_input": "STRIDE 1,2",
+   "t7_notation": "STRIDE 1,2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "STRIDE 2",
+   "wh_name": "Buzzsaw",
+   "wh_input": "STRIDE 2",
+   "t7_notation": "STRIDE 2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "STRIDE 2~1",
+   "wh_name": "Laevateinn",
+   "wh_input": "STRIDE 2~1",
+   "t7_notation": "STRIDE 2~1",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "STRIDE 3",
+   "wh_name": "Poison Needle",
+   "wh_input": "STRIDE 3",
+   "t7_notation": "STRIDE 3",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "STRIDE 1+2",
+   "wh_name": "Hellhound",
+   "wh_input": "STRIDE 1+2",
+   "t7_notation": "STRIDE 1+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "1+3",
+   "wh_name": "Grave Digger",
+   "wh_input": "1+3",
+   "t7_notation": "1+3",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1963,
+   "motbin_move_name": "ThrmvLB2_00",
+   "anim_name": "naco_tukami2l(DVD)",
+   "anim_id": 33477,
+   "bank_index": 709,
+   "bank": "0x8000",
+   "motbin_startup": 12,
+   "motbin_damage": 16384,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x8000",
+    "source": "common.arc",
+    "section": 0,
+    "entry": 709,
+    "rel_offset": 3523552,
+    "size": 2176,
+    "format_word": 100,
+    "sha256": "2d57080bd30ef0c00900c403fc03108b0222c3a964c27df36116b1f9745d58a7",
+    "blob_file": "common_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "2+4",
+   "wh_name": "Salamander",
+   "wh_input": "2+4",
+   "t7_notation": "2+4",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1965,
+   "motbin_move_name": "ThrmvRB2_00",
+   "anim_name": "msco_rtukami(DVD)",
+   "anim_id": 16967,
+   "bank_index": 583,
+   "bank": "0x4000",
+   "motbin_startup": 12,
+   "motbin_damage": 16384,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 583,
+    "rel_offset": 3217848,
+    "size": 2152,
+    "format_word": 100,
+    "sha256": "955128cb324a5f0fd65352096ae812134ff51db2493f8a6f3cb34d6a60fd7de0",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "hcb,f+1+2",
+   "wh_name": "Undertaker",
+   "wh_input": "hcb,f+1+2",
+   "t7_notation": "hcb,f+1+2",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1880,
+   "motbin_move_name": "Nj_SP_takai",
+   "anim_name": "frkb_s3_6wp",
+   "anim_id": 121,
+   "bank_index": 121,
+   "bank": "0x0000",
+   "motbin_startup": 19,
+   "motbin_damage": 24,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x0000",
+    "source": "frvmot.bin",
+    "section": 0,
+    "entry": 121,
+    "rel_offset": 2096680,
+    "size": 5300,
+    "format_word": 100,
+    "sha256": "c3548b3d5c3585f23b8254626faaf859765c73f65ec1763c0a7f874e58b8e4de",
+    "blob_file": "frv_bank0_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "d/f+1+4",
+   "wh_name": "Orbiting Moon",
+   "wh_input": "d/f+1+4",
+   "t7_notation": "d/f+1+4",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1967,
+   "motbin_move_name": "Thrmv_B1_L0",
+   "anim_name": "naco_tukami2l(DVD)",
+   "anim_id": 33477,
+   "bank_index": 709,
+   "bank": "0x8000",
+   "motbin_startup": 11,
+   "motbin_damage": 16384,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x8000",
+    "source": "common.arc",
+    "section": 0,
+    "entry": 709,
+    "rel_offset": 3523552,
+    "size": 2176,
+    "format_word": 100,
+    "sha256": "2d57080bd30ef0c00900c403fc03108b0222c3a964c27df36116b1f9745d58a7",
+    "blob_file": "common_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "d/b+1+2",
+   "wh_name": "Ultimate Tackle",
+   "wh_input": "d/b+1+2",
+   "t7_notation": "d/b+1+2",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1743,
+   "motbin_move_name": "tac02xk",
+   "anim_name": "naco_altimate(DVD)",
+   "anim_id": 16811,
+   "bank_index": 427,
+   "bank": "0x4000",
+   "motbin_startup": 26,
+   "motbin_damage": 16384,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 427,
+    "rel_offset": 2850800,
+    "size": 3500,
+    "format_word": 100,
+    "sha256": "c11ba5b579b071ab45981e1b174cd9d8904fec3f1aac9f7c271c5581e44355c0",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "RAGE d/b+3+4",
+   "wh_name": "Rage Art",
+   "wh_input": "RAGE d/b+3+4",
+   "t7_notation": "RAGE d/b+3+4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "RAGE f+3+4",
+   "wh_name": "Rage Drive",
+   "wh_input": "RAGE f+3+4",
+   "t7_notation": "RAGE f+3+4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "LAB 1",
+   "wh_name": "Ripple Sting",
+   "wh_input": "LAB 1",
+   "t7_notation": "LAB 1",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "LAB 2",
+   "wh_name": "Still Palm",
+   "wh_input": "LAB 2",
+   "t7_notation": "LAB 2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "LAB 3",
+   "wh_name": "Marsh Step Slash",
+   "wh_input": "LAB 3",
+   "t7_notation": "LAB 3",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "2",
+   "wh_name": "Mudlark Jab",
+   "wh_input": "2",
+   "t7_notation": "2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-multi-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-multi-terminal"
+   }
+  },
+  {
+   "wh_key": "FC 1",
+   "wh_name": "Reed Rise",
+   "wh_input": "FC 1",
+   "t7_notation": "FC 1",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "FC 2",
+   "wh_name": "Cattail Cut",
+   "wh_input": "FC 2",
+   "t7_notation": "FC 2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "4",
+   "wh_name": "Heron Heel",
+   "wh_input": "4",
+   "t7_notation": "4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-multi-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-multi-terminal"
+   }
+  },
+  {
+   "wh_key": "FC 4",
+   "wh_name": "Mudskipper Low",
+   "wh_input": "FC 4",
+   "t7_notation": "FC 4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "d/b+2",
+   "wh_name": "Water Moccasin",
+   "wh_input": "d/b+2",
+   "t7_notation": "d/b+2",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1759,
+   "motbin_move_name": "Nj_t_srpB",
+   "anim_name": "oznj_1rp(DVD)",
+   "anim_id": 16818,
+   "bank_index": 434,
+   "bank": "0x4000",
+   "motbin_startup": 13,
+   "motbin_damage": 13,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 434,
+    "rel_offset": 2863420,
+    "size": 2916,
+    "format_word": 100,
+    "sha256": "b505c31d6d194a878af5014319b0d1e1ccd8c9d0271831b0eaf17f97c7bfcb8c",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "LAB f+3",
+   "wh_name": "Lotus Knee",
+   "wh_input": "LAB f+3",
+   "t7_notation": "LAB f+3",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "3",
+   "wh_name": "Pond Skimmer",
+   "wh_input": "3",
+   "t7_notation": "3",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-multi-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-multi-terminal"
+   }
+  },
+  {
+   "wh_key": "b+4",
+   "wh_name": "Reed Snap",
+   "wh_input": "b+4",
+   "t7_notation": "b+4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: unique-but-held.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "unique-but-held"
+   }
+  },
+  {
+   "wh_key": "WR 4",
+   "wh_name": "Kappa Dive",
+   "wh_input": "WR 4",
+   "t7_notation": "WR 4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "f+2",
+   "wh_name": "Current Jab",
+   "wh_input": "f+2",
+   "t7_notation": "f+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: unique-but-held.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "unique-but-held"
+   }
+  },
+  {
+   "wh_key": "d/f+4",
+   "wh_name": "Marsh Thrust",
+   "wh_input": "d/f+4",
+   "t7_notation": "d/f+4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: unique-but-held.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "unique-but-held"
+   }
+  },
+  {
+   "wh_key": "b+2",
+   "wh_name": "Blackwater Punch",
+   "wh_input": "b+2",
+   "t7_notation": "b+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-multi-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-multi-terminal"
+   }
+  },
+  {
+   "wh_key": "u/b+2",
+   "wh_name": "Dragonfly Wheel",
+   "wh_input": "u/b+2",
+   "t7_notation": "u/b+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "LAB 1+2",
+   "wh_name": "Pale Diver",
+   "wh_input": "LAB 1+2",
+   "t7_notation": "LAB 1+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "u/b+1",
+   "wh_name": "Gate of Reeds",
+   "wh_input": "u/b+1",
+   "t7_notation": "u/b+1",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: unique-but-held.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "unique-but-held"
+   }
+  },
+  {
+   "wh_key": "FC 3",
+   "wh_name": "Tadpole Nibble",
+   "wh_input": "FC 3",
+   "t7_notation": "FC 3",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "WS 3+4",
+   "wh_name": "Whirlpool Kick",
+   "wh_input": "WS 3+4",
+   "t7_notation": "WS 3+4",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1806,
+   "motbin_move_name": "Nj_commetSP",
+   "anim_name": "frsd_in50(DVD)",
+   "anim_id": 16717,
+   "bank_index": 333,
+   "bank": "0x4000",
+   "motbin_startup": null,
+   "motbin_damage": 0,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 333,
+    "rel_offset": 2624568,
+    "size": 3456,
+    "format_word": 100,
+    "sha256": "000baba040248771076dc0d87faad23a3e51ee720dc375852ed7cdb4704c4b07",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "d/f+2",
+   "wh_name": "Geyser Palm",
+   "wh_input": "d/f+2",
+   "t7_notation": "d/f+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: unique-but-held.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "unique-but-held"
+   }
+  },
+  {
+   "wh_key": "LAB f+4",
+   "wh_name": "Leeches",
+   "wh_input": "LAB f+4",
+   "t7_notation": "LAB f+4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "LAB b+2",
+   "wh_name": "Deepwater Blow",
+   "wh_input": "LAB b+2",
+   "t7_notation": "LAB b+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "f+3",
+   "wh_name": "Monsoon Knee",
+   "wh_input": "f+3",
+   "t7_notation": "f+3",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1655,
+   "motbin_move_name": "Nj_lk00F",
+   "anim_name": "amnj_mox01(DVD)",
+   "anim_id": 16768,
+   "bank_index": 384,
+   "bank": "0x4000",
+   "motbin_startup": 17,
+   "motbin_damage": 18,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 384,
+    "rel_offset": 2751060,
+    "size": 3780,
+    "format_word": 100,
+    "sha256": "a36bd3f6aaf3f32fa0c67d2ddec707b617630df6184ed7e2e92cb3c8a03cad42",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "LAB f+2",
+   "wh_name": "Mist Knee",
+   "wh_input": "LAB f+2",
+   "t7_notation": "LAB f+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "LAB f+4,3",
+   "wh_name": "Kama Tide",
+   "wh_input": "LAB f+4,3",
+   "t7_notation": "LAB f+4,3",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "WR 1+2",
+   "wh_name": "Diving Cormorant",
+   "wh_input": "WR 1+2",
+   "t7_notation": "WR 1+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "u+4",
+   "wh_name": "Raincaller",
+   "wh_input": "u+4",
+   "t7_notation": "u+4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: unique-but-held.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "unique-but-held"
+   }
+  },
+  {
+   "wh_key": "u/f+4",
+   "wh_name": "Falling Petal",
+   "wh_input": "u/f+4",
+   "t7_notation": "u/f+4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: unique-but-held.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "unique-but-held"
+   }
+  },
+  {
+   "wh_key": "qcf+4",
+   "wh_name": "Vortex Wheel",
+   "wh_input": "qcf+4",
+   "t7_notation": "qcf+4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-multi-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-multi-terminal"
+   }
+  },
+  {
+   "wh_key": "f+1+2",
+   "wh_name": "Moonlit Spear",
+   "wh_input": "f+1+2",
+   "t7_notation": "f+1+2",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1880,
+   "motbin_move_name": "Nj_SP_takai",
+   "anim_name": "frkb_s3_6wp",
+   "anim_id": 121,
+   "bank_index": 121,
+   "bank": "0x0000",
+   "motbin_startup": 19,
+   "motbin_damage": 24,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x0000",
+    "source": "frvmot.bin",
+    "section": 0,
+    "entry": 121,
+    "rel_offset": 2096680,
+    "size": 5300,
+    "format_word": 100,
+    "sha256": "c3548b3d5c3585f23b8254626faaf859765c73f65ec1763c0a7f874e58b8e4de",
+    "blob_file": "frv_bank0_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "u/f+3+4",
+   "wh_name": "Halo Chakram",
+   "wh_input": "u/f+3+4",
+   "t7_notation": "u/f+3+4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: unique-but-held.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "unique-but-held"
+   }
+  },
+  {
+   "wh_key": "u+3",
+   "wh_name": "Egret Plunge",
+   "wh_input": "u+3",
+   "t7_notation": "u+3",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: unique-but-held.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "unique-but-held"
+   }
+  },
+  {
+   "wh_key": "b+1+2",
+   "wh_name": "Swamp Boulder",
+   "wh_input": "b+1+2",
+   "t7_notation": "b+1+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: unique-but-held.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "unique-but-held"
+   }
+  },
+  {
+   "wh_key": "1+2+3+4",
+   "wh_name": "POND STILLNESS",
+   "wh_input": "1+2+3+4",
+   "t7_notation": "1+2+3+4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: unique-but-held.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "unique-but-held"
+   }
+  },
+  {
+   "wh_key": "1,2,3+4",
+   "wh_name": "PAIR TO MIST",
+   "wh_input": "1,2,3+4",
+   "t7_notation": "1,2,3+4",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1582,
+   "motbin_move_name": "Nj_12commet",
+   "anim_name": "frsd_in50(DVD)",
+   "anim_id": 16717,
+   "bank_index": 333,
+   "bank": "0x4000",
+   "motbin_startup": null,
+   "motbin_damage": 0,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 333,
+    "rel_offset": 2624568,
+    "size": 3456,
+    "format_word": 100,
+    "sha256": "000baba040248771076dc0d87faad23a3e51ee720dc375852ed7cdb4704c4b07",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "3,3,4,B",
+   "wh_name": "SKIMMER VEIL",
+   "wh_input": "3,3,4,B",
+   "t7_notation": "3,3,4,B",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "LAB 2,1,B",
+   "wh_name": "BACKFIST VANISH",
+   "wh_input": "LAB 2,1,B",
+   "t7_notation": "LAB 2,1,B",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "LAB f+1+2,B",
+   "wh_name": "SIXTH SENSE VEIL",
+   "wh_input": "LAB f+1+2,B",
+   "t7_notation": "LAB f+1+2,B",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "LAB f+3,B",
+   "wh_name": "LOTUS VANISH",
+   "wh_input": "LAB f+3,B",
+   "t7_notation": "LAB f+3,B",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "WS 3+4,B",
+   "wh_name": "WHIRLPOOL VEIL",
+   "wh_input": "WS 3+4,B",
+   "t7_notation": "WS 3+4,B",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "b+4,B+4,3,3+4",
+   "wh_name": "SWAMP SPIN",
+   "wh_input": "b+4,B+4,3,3+4",
+   "t7_notation": "b+4,B+4,3,3+4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "f+3,B",
+   "wh_name": "MONSOON VANISH",
+   "wh_input": "f+3,B",
+   "t7_notation": "f+3,B",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "qcf+1,3+4",
+   "wh_name": "ELBOW TO MIST",
+   "wh_input": "qcf+1,3+4",
+   "t7_notation": "qcf+1,3+4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "qcf+2,B",
+   "wh_name": "BLACKWATER FADE",
+   "wh_input": "qcf+2,B",
+   "t7_notation": "qcf+2,B",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "u/b,b",
+   "wh_name": "WATER SKIP",
+   "wh_input": "u/b,b",
+   "t7_notation": "u/b,b",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "u/f+3+4,3+4",
+   "wh_name": "HALO TO MIST",
+   "wh_input": "u/f+3+4,3+4",
+   "t7_notation": "u/f+3+4,3+4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "u/f+4,4,b",
+   "wh_name": "PETAL FADE",
+   "wh_input": "u/f+4,4,b",
+   "t7_notation": "u/f+4,4,b",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: unique-but-held.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "unique-but-held"
+   }
+  },
+  {
+   "wh_key": "HAZ F",
+   "wh_name": "MIST WALK",
+   "wh_input": "HAZ F",
+   "t7_notation": "HAZ F",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "HAZ U",
+   "wh_name": "PALE DOOR",
+   "wh_input": "HAZ U",
+   "t7_notation": "HAZ U",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "LAB f+1+2",
+   "wh_name": "SIXTH SENSE",
+   "wh_input": "LAB f+1+2",
+   "t7_notation": "LAB f+1+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "LAB b+3+4",
+   "wh_name": "DEEPER WATER",
+   "wh_input": "LAB b+3+4",
+   "t7_notation": "LAB b+3+4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "FC d/f,d,d/f",
+   "wh_name": "REED DRIFT",
+   "wh_input": "FC d/f,d,d/f",
+   "t7_notation": "FC d/f,d,d/f",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "1+2+3+4,b,f+1+2",
+   "wh_name": "Drowned Charge",
+   "wh_input": "1+2+3+4,b,f+1+2",
+   "t7_notation": "1+2+3+4,b,f+1+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "u/b,b+3+4",
+   "wh_name": "Pandora's Tide",
+   "wh_input": "u/b,b+3+4",
+   "t7_notation": "u/b,b+3+4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "LAB 2,1",
+   "wh_name": "Still Pair",
+   "wh_input": "LAB 2,1",
+   "t7_notation": "LAB 2,1",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "LAB 2,2",
+   "wh_name": "Blinding Reeds",
+   "wh_input": "LAB 2,2",
+   "t7_notation": "LAB 2,2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "LAB 3,4",
+   "wh_name": "Marsh Crescent",
+   "wh_input": "LAB 3,4",
+   "t7_notation": "LAB 3,4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "LAB 3,4,3",
+   "wh_name": "Moonrise Crescent",
+   "wh_input": "LAB 3,4,3",
+   "t7_notation": "LAB 3,4,3",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "3,3",
+   "wh_name": "Twin Skimmers",
+   "wh_input": "3,3",
+   "t7_notation": "3,3",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-multi-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-multi-terminal"
+   }
+  },
+  {
+   "wh_key": "b+4,B+4,3",
+   "wh_name": "Blackwater Chain",
+   "wh_input": "b+4,B+4,3",
+   "t7_notation": "b+4,B+4,3",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "b+4,4",
+   "wh_name": "Heron Smasher",
+   "wh_input": "b+4,4",
+   "t7_notation": "b+4,4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-multi-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-multi-terminal"
+   }
+  },
+  {
+   "wh_key": "b+4,B+4",
+   "wh_name": "Smasher Feint",
+   "wh_input": "b+4,B+4",
+   "t7_notation": "b+4,B+4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "d/f+4,4",
+   "wh_name": "Tide Pair",
+   "wh_input": "d/f+4,4",
+   "t7_notation": "d/f+4,4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: unique-but-held.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "unique-but-held"
+   }
+  },
+  {
+   "wh_key": "b+2,4",
+   "wh_name": "Dark Pair",
+   "wh_input": "b+2,4",
+   "t7_notation": "b+2,4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-multi-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-multi-terminal"
+   }
+  },
+  {
+   "wh_key": "b+2,2",
+   "wh_name": "Night Heron",
+   "wh_input": "b+2,2",
+   "t7_notation": "b+2,2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-multi-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-multi-terminal"
+   }
+  },
+  {
+   "wh_key": "b+2,4,2",
+   "wh_name": "Talon to Spear",
+   "wh_input": "b+2,4,2",
+   "t7_notation": "b+2,4,2",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1816,
+   "motbin_move_name": "Nj_SP_takai2",
+   "anim_name": "frkb_suihei(DVD)",
+   "anim_id": 16857,
+   "bank_index": 473,
+   "bank": "0x4000",
+   "motbin_startup": 20,
+   "motbin_damage": 20,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 473,
+    "rel_offset": 2966020,
+    "size": 5236,
+    "format_word": 100,
+    "sha256": "9bc92344ca49747fa48d39e4f694efdcff00bc0b00dfb6f1c7e9ef3bae897dc5",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "u/b+1,2",
+   "wh_name": "Reed Gate",
+   "wh_input": "u/b+1,2",
+   "t7_notation": "u/b+1,2",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1646,
+   "motbin_move_name": "Nj_lprp00F",
+   "anim_name": "oznj_7lprp(DVD)",
+   "anim_id": 16763,
+   "bank_index": 379,
+   "bank": "0x4000",
+   "motbin_startup": 18,
+   "motbin_damage": 13,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 379,
+    "rel_offset": 2736976,
+    "size": 3236,
+    "format_word": 100,
+    "sha256": "8950273c23073e0d32b5d4d874c5b9426b5ea03cb687cf6065548a8c3a4775be",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "LAB b+2,3",
+   "wh_name": "Deepwater Cannon",
+   "wh_input": "LAB b+2,3",
+   "t7_notation": "LAB b+2,3",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "LAB b+2,4",
+   "wh_name": "Abyss Spear",
+   "wh_input": "LAB b+2,4",
+   "t7_notation": "LAB b+2,4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "4~3",
+   "wh_name": "Snakebite Wheel",
+   "wh_input": "4~3",
+   "t7_notation": "4~3",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "b,B+2",
+   "wh_name": "Marsh Hound",
+   "wh_input": "b,B+2",
+   "t7_notation": "b,B+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  },
+  {
+   "wh_key": "LAB f+2,3",
+   "wh_name": "Cold Tide",
+   "wh_input": "LAB f+2,3",
+   "t7_notation": "LAB f+2,3",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "LAB f+2,4,2",
+   "wh_name": "Massacre Spear",
+   "wh_input": "LAB f+2,4,2",
+   "t7_notation": "LAB f+2,4,2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "u/f+3+4,4,2",
+   "wh_name": "Halo Cycle",
+   "wh_input": "u/f+3+4,4,2",
+   "t7_notation": "u/f+3+4,4,2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "u/f+3+4,f+4,2",
+   "wh_name": "Heavy Halo",
+   "wh_input": "u/f+3+4,f+4,2",
+   "t7_notation": "u/f+3+4,f+4,2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "u+3,d+3,3",
+   "wh_name": "Egret Descent",
+   "wh_input": "u+3,d+3,3",
+   "t7_notation": "u+3,d+3,3",
+   "status": "mapped",
+   "reason": null,
+   "motbin_move_id": 1837,
+   "motbin_move_name": "Nj_comrollk",
+   "anim_name": "oznj_guruguru_warp_k(DVD)",
+   "anim_id": 16877,
+   "bank_index": 493,
+   "bank": "0x4000",
+   "motbin_startup": 27,
+   "motbin_damage": 22,
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "frvrotsm.arc",
+    "section": 0,
+    "entry": 493,
+    "rel_offset": 2997764,
+    "size": 3592,
+    "format_word": 100,
+    "sha256": "11ce793e23cfe40562e6e3b92cde68b8b9f2096d4a817fa34fc26dc18cf14256",
+    "blob_file": "frv_clips.bin"
+   },
+   "confidence": "high",
+   "evidence": [
+    "FILL 2 / F5 (2026-11-06) group-correct walk: unique terminal + clip locator.",
+    "Corroboration: notation attested in the character's MVL movelist."
+   ],
+   "fill2_20261106": {
+    "kind": "f5-promotion"
+   }
+  },
+  {
+   "wh_key": "LAB 3,4,4,F",
+   "wh_name": "Swamp Serpent",
+   "wh_input": "LAB 3,4,4,F",
+   "t7_notation": "LAB 3,4,4,F",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "LAB 2,2,1,2,4,2,3,4,2,1+2",
+   "wh_name": "Flood Season",
+   "wh_input": "LAB 2,2,1,2,4,2,3,4,2,1+2",
+   "t7_notation": "LAB 2,2,1,2,4,2,3,4,2,1+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-dies.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-dies"
+   }
+  },
+  {
+   "wh_key": "u/b+1,2,2,2,4,2,3,4,2,1+2",
+   "wh_name": "Monsoon Season",
+   "wh_input": "u/b+1,2,2,2,4,2,3,4,2,1+2",
+   "t7_notation": "u/b+1,2,2,2,4,2,3,4,2,1+2",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-multi-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-multi-terminal"
+   }
+  },
+  {
+   "wh_key": "3~4",
+   "wh_name": "Mud Chariot",
+   "wh_input": "3~4",
+   "t7_notation": "3~4",
+   "status": "unmapped",
+   "reason": "FILL 2 / F5 (2026-11-06) group-walk verdict: walk-no-terminal.",
+   "fill2_20261106": {
+    "kind": "f5-held",
+    "class": "walk-no-terminal"
+   }
+  }
+ ]
+}

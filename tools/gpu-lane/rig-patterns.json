@@ -1,0 +1,97 @@
+{
+ "provenance": "Generated from game/js/rig-compat.js RIG_TYPES by gen_rig_patterns.py. Do NOT hand-edit: regenerate. Patterns are full-file-derived for t7-160 (Alisa bonemap) and cape-94 (CapeJones_Rig nodes); t3/tripo remain provisional (see rig-compat.js header).",
+ "rigs": {
+  "t7-160": {
+   "bones": 160,
+   "patterns": {
+    "hips": "Hips",
+    "spine": "Spine",
+    "chest": "Pectoral",
+    "neck": "Neck",
+    "head": "Head",
+    "shoulderL": "LeftShoulder",
+    "elbowL": "LeftForeArm",
+    "wristL": "LeftHand",
+    "shoulderR": "RightShoulder",
+    "elbowR": "RightForeArm",
+    "wristR": "RightHand",
+    "hipL": "LeftUpLeg",
+    "kneeL": "LeftLeg",
+    "ankleL": "LeftFoot",
+    "hipR": "RightUpLeg",
+    "kneeR": "RightLeg",
+    "ankleR": "RightFoot"
+   }
+  },
+  "t3": {
+   "bones": null,
+   "patterns": {
+    "hips": "hips",
+    "spine": "spine",
+    "chest": "chest",
+    "neck": "neck",
+    "head": "head",
+    "shoulderL": "shoulderl",
+    "elbowL": "elbowl",
+    "wristL": "wristl",
+    "shoulderR": "shoulderr",
+    "elbowR": "elbowr",
+    "wristR": "wristr",
+    "hipL": "hipl",
+    "kneeL": "kneel",
+    "ankleL": "anklel",
+    "hipR": "hipr",
+    "kneeR": "kneer",
+    "ankleR": "ankler"
+   }
+  },
+  "cape-94": {
+   "bones": 94,
+   "patterns": {
+    "hips": "pelvis",
+    "spine": "spine_1",
+    "chest": "chest",
+    "neck": "neck_1",
+    "head": "head",
+    "shoulderL": "clavicle_L",
+    "elbowL": "forearm_L",
+    "wristL": "hand_L",
+    "shoulderR": "clavicle_R",
+    "elbowR": "forearm_R",
+    "wristR": "hand_R",
+    "hipL": "thigh_L",
+    "kneeL": "shin_L",
+    "ankleL": "foot_L",
+    "hipR": "thigh_R",
+    "kneeR": "shin_R",
+    "ankleR": "foot_R"
+   }
+  },
+  "tripo": {
+   "bones": null,
+   "patterns": {
+    "hips": "root",
+    "spine": "spine",
+    "chest": "chest",
+    "neck": "neck",
+    "head": "head",
+    "shoulderL": "left_shoulder",
+    "elbowL": "left_elbow",
+    "wristL": "left_wrist",
+    "shoulderR": "right_shoulder",
+    "elbowR": "right_elbow",
+    "wristR": "right_wrist",
+    "hipL": "left_hip",
+    "kneeL": "left_knee",
+    "ankleL": "left_ankle",
+    "hipR": "right_hip",
+    "kneeR": "right_knee",
+    "ankleR": "right_ankle"
+   }
+  },
+  "custom": {
+   "bones": null,
+   "patterns": {}
+  }
+ }
+}

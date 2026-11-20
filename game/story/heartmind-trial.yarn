@@ -1,0 +1,40 @@
+title: Start
+---
+The Trader stands at the crossroads between the Five Lands. The road down is open. The Trial gate hums ahead.
+[[Ask the Trader about the road|TraderRoad]]
+[[Enter the Trial gate|TrialGate]]
+[[Walk the road in silence|Descent]]
+===
+title: TraderRoad
+---
+<<set $souls = 1>>
+The Trader smiles. "Every road has a price, traveler. But the first lesson is free: the road is the trial, walked down, not crossed."
+Souls gathered: {$souls}.
+[[Enter the Trial gate|TrialGate]]
+[[Walk the road in silence|Descent]]
+===
+title: TrialGate
+---
+<<set $souls = 3>>
+<<set $trial_done = true>>
+The gate opens. Nine lights flicker — one burns brighter.
+<<if $souls == 3>>
+The Trial seals behind you. Souls gathered: {$souls}.
+<<endif>>
+[[Descend|Descent]]
+===
+title: Descent
+---
+The descent has five rooms: the Threshold, the Gallery of Masks, the Drowning Room, the Furnace, and the Still Point. At the Still Point waits your shadow self — yourself, unmasked.
+<<if $trial_done == true>>
+You descend with the gate sealed behind you. The dark keeps what it catches, and it is waiting.
+<<else>>
+You descend unsealed. The dark keeps what it catches, and it is waiting.
+<<endif>>
+[[Begin the descent|End]]
+===
+title: End
+---
+Named. Faced. Put down. Purification is not becoming someone else. It is meeting yourself and staying.
+<<stop>>
+===

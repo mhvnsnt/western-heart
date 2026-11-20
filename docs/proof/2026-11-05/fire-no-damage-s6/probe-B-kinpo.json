@@ -1,0 +1,170 @@
+{
+ "fighter": "kinpo",
+ "base": "http://127.0.0.1:8906/game/",
+ "ready": true,
+ "rows": [
+  {
+   "n": "1",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:221",
+   "kind": "donor",
+   "why": "donor row 221",
+   "timing": {
+    "S": 0.167,
+    "A": 0.017,
+    "t0": 0.233,
+    "t1": 0.233,
+    "D": 0.733,
+    "src": "decoded"
+   },
+   "moveDmg": 10,
+   "hitWord": 1042,
+   "isGrab": false,
+   "atkName": "1",
+   "hasHit": true,
+   "distAtHit": 1.48,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 9.2,
+   "hits": [
+    {
+     "dmg": 10,
+     "word": 1042,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:221",
+   "kind": "donor",
+   "why": "donor row 221",
+   "timing": {
+    "S": 0.167,
+    "A": 0.017,
+    "t0": 0.233,
+    "t1": 0.233,
+    "D": 0.733,
+    "src": "decoded"
+   },
+   "moveDmg": 10,
+   "hitWord": 1042,
+   "isGrab": false,
+   "atkName": "1",
+   "hasHit": true,
+   "distAtHit": 1.48,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 9.2,
+   "hits": [
+    {
+     "dmg": 10,
+     "word": 1042,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1+2",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:32",
+   "kind": "notation",
+   "why": "same input '1+2'",
+   "timing": {
+    "S": 0.267,
+    "A": 0.033,
+    "t0": 0.3,
+    "t1": 0.3,
+    "D": 0.867,
+    "src": "decoded"
+   },
+   "moveDmg": 21,
+   "hitWord": 535,
+   "isGrab": false,
+   "atkName": "1+2",
+   "hasHit": true,
+   "distAtHit": 1.45,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 19.3,
+   "hits": [
+    {
+     "dmg": 21,
+     "word": 535,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1+2",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:32",
+   "kind": "notation",
+   "why": "same input '1+2'",
+   "timing": {
+    "S": 0.267,
+    "A": 0.033,
+    "t0": 0.3,
+    "t1": 0.3,
+    "D": 0.867,
+    "src": "decoded"
+   },
+   "moveDmg": 21,
+   "hitWord": 535,
+   "isGrab": false,
+   "atkName": "1+2",
+   "hasHit": true,
+   "distAtHit": 1.8,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 19.3,
+   "hits": [
+    {
+     "dmg": 21,
+     "word": 535,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  }
+ ],
+ "setup": {
+  "roundState": "fight",
+  "p1id": "kinpo",
+  "t3actionsCount": 22,
+  "bank": "jin"
+ },
+ "logs": [
+  "[http 404] http://127.0.0.1:8906/deploy-manifest.json",
+  "[http 404] http://127.0.0.1:8906/roster/kinpo/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8906/roster/pantera/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/index.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/pantera.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/kinpo.json",
+  "[http 404] http://127.0.0.1:8906/game/js/intro-interactions.js"
+ ]
+}

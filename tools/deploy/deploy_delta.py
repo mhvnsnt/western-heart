@@ -1,0 +1,139 @@
+"""Guarded delta deploy of origin/main onto the live Pages branch (tools/deploy/REPUBLISH.md, git plumbing).
+Run from anywhere inside the repo checkout; dry run by default.
+- update: every file in the deploy roots present on BOTH main and the live branch whose blob differs (vs the live
+  branch's ACTUAL blobs, not its manifest commit);
+- add: files missing on live under ADD_PREFIXES (new data the shipped code fetches) + bundled shell models
+  (SHELL_BUNDLED_MODELS in main's game/js/asset-config.js) + any target the module-graph check reports missing;
+- refuse: any removal, a tree over the size cap, or a non-zero tools/deploy/check_module_graph.py on the new tree;
+- push fast-forward only (no force). Usage: python3 deploy_delta.py [--push] [--note TEXT] [--pr N]"""
+import json, os, subprocess, sys, tempfile, datetime
+
+REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..'))
+LIVE, MAIN, BRANCH = 'origin/gh-pages-m1-20261029', 'origin/main', 'gh-pages-m1-20261029'
+ROOTS = ('game/', 'customization/', 'packages/', 'roster/')
+ADD_PREFIXES = ('game/assets/anim/t7/',)
+# NEW small runtime files the shipped pages load by URL (a <link> stylesheet, fetched JSON), which the module-graph
+# check cannot see (2026-11-02: the creation suite's suite-t7.css and the template list were never added, so the live
+# suite lost its skin and its base bodies). Code/data/style only, never models (the template GLBs load from jsDelivr:
+# the site is at its 1 GB cap), each file at most SMALL_MAX, all of them together at most SMALL_TOTAL.
+SMALL_ADD_PREFIXES = ('customization/creation-suite-ui/', 'customization/templates/', 'game/js/', 'game/data/', 'game/css/')
+SMALL_EXT = ('.js', '.mjs', '.json', '.css', '.html')
+SMALL_MAX, SMALL_TOTAL = 256 * 1024, 2_500_000
+# CAP raised 2026-11-08 by Jay's deploy-cap call ("Raise the cap in the repo"):
+# 1 GiB (1,073,741,824) is the platform's own limit; the 1,003,598,282-byte
+# tree from main fcaa8b1d is under it.
+CAP = 1_073_741_824
+CODE_EXT = ('.js', '.mjs', '.html', '.json', '.css')
+
+
+def git(*a, inp=None, env=None):
+    r = subprocess.run(['git', *a], cwd=REPO, capture_output=True, text=inp is not None or True, input=inp, env=env)
+    if r.returncode: raise SystemExit('git %s failed: %s' % (' '.join(a), r.stderr))
+    return r.stdout
+
+
+def tree(ref):
+    out = {}
+    for line in git('ls-tree', '-r', '-l', ref).splitlines():
+        meta, path = line.split('\t', 1)
+        mode, typ, sha, size = meta.split()
+        if typ == 'blob': out[path] = (sha, int(size) if size != '-' else 0, mode)
+    return out
+
+
+def main():
+    push = '--push' in sys.argv
+    note = sys.argv[sys.argv.index('--note') + 1] if '--note' in sys.argv else ''
+    pr = int(sys.argv[sys.argv.index('--pr') + 1]) if '--pr' in sys.argv else None
+    git('fetch', '-q', 'origin', 'main', BRANCH)
+    tip, main_c = git('rev-parse', LIVE).strip(), git('rev-parse', MAIN).strip()
+    L, M = tree(LIVE), tree(MAIN)
+    upd = sorted(p for p in L if p in M and p.startswith(ROOTS) and L[p][0] != M[p][0])
+    # add only the T7 stance files the shipped code fetches (T7_STANCES dirs in main's t3anims.js)
+    import re as _re
+    t3 = git('show', MAIN + ':game/js/t3anims.js')
+    blk = _re.search(r'export const T7_STANCES = \{(.*?)\n\};', t3, _re.S)
+    dirs = sorted(set(_re.findall(r"dir:\s*'(assets/anim/t7/[\w-]+/)'", blk.group(1)))) if blk else []
+    want = ['game/' + d + f for d in dirs for f in ('skeleton.json', 'stance.json')]
+    # ... and the skeleton each fighter's real T7 per-move pack uses (T7_MOVES dirs). The packs themselves are NOT
+    # added (2026-11-01): the site is at its 1 GB cap, so new packs load from jsDelivr (game/js/t3anims.js
+    # fetchT7Json: page first, then cdn.jsdelivr.net @main). Packs already live (king, negan) stay updated above.
+    mblk = _re.search(r'export const T7_MOVES = \{(.*?)\n\};', t3, _re.S)
+    mdirs = sorted(set(_re.findall(r"dir:\s*'(assets/anim/t7/[\w-]+/)'", mblk.group(1)))) if mblk else []
+    want += ['game/' + d + 'skeleton.json' for d in mdirs]
+    # Piece 1 re-test Bug 4 (King Tyrant): bundled shell models the shipped
+    # loader fetches same-origin (SHELL_BUNDLED_MODELS in main's
+    # game/js/asset-config.js — the same list build_pages.py reads). The
+    # delta never shipped new models before, so a model added to the list
+    # stayed missing from the live shell (local 404) while the loader's
+    # other fallbacks were dead for it (jsDelivr 403s files over 20 MB) —
+    # the King Tyrant fight could only load from the remote Worker, and a
+    # stall there dumped the player to the menu. The CAP check at the end
+    # still refuses a tree over 1 GiB, so a bundled model that busts the
+    # cap blocks the deploy instead of shipping a shell that cannot load it.
+    acfg = git('show', MAIN + ':game/js/asset-config.js')
+    ablk = _re.search(r'export const SHELL_BUNDLED_MODELS = \[(.*?)\n\];', acfg, _re.S)
+    want += sorted(set(_re.findall(r"^\s*'((?:game|roster|customization|packages)/[^']+)'", ablk.group(1), _re.M))) if ablk else []
+    add = sorted(p for p in want if p in M and p not in L)
+    small = sorted(p for p in M if p not in L and p.startswith(SMALL_ADD_PREFIXES) and p.endswith(SMALL_EXT)
+                   and '/tests/' not in p and '/proof' not in p and M[p][1] <= SMALL_MAX)
+    budget = SMALL_TOTAL
+    for p in small:
+        if M[p][1] <= budget and p not in add:
+            add.append(p); budget -= M[p][1]
+    env = dict(os.environ, GIT_INDEX_FILE=tempfile.mktemp(prefix='deploy.index.'))
+    git('read-tree', tip, env=env)
+    for p in upd + add:
+        git('update-index', '--add', '--cacheinfo', '%s,%s,%s' % (M[p][2], M[p][0], p), env=env)
+    # module-graph check on the assembled tree (code/data files only)
+    new = dict(L); new.update({p: M[p] for p in upd + add})
+    with tempfile.TemporaryDirectory() as td:
+        for p, (sha, _, _) in new.items():
+            if p.endswith(CODE_EXT):  # every code/data file of the assembled tree (game/, packages/, customization/, root)
+                dst = os.path.join(td, p); os.makedirs(os.path.dirname(dst), exist_ok=True)
+                with open(dst, 'wb') as f: f.write(subprocess.run(['git', 'cat-file', 'blob', sha], cwd=REPO, capture_output=True).stdout)
+        r = subprocess.run([sys.executable, os.path.join(REPO, 'tools/deploy/check_module_graph.py'), td], capture_output=True, text=True)
+        print(r.stdout[-1500:])
+        missing = [l for l in r.stdout.splitlines() if 'MISSING MODULE (static)' in l]
+        if r.returncode or missing:
+            extra = []
+            for l in missing:
+                tgt = l.split('-> ')[-1].split(' ')[0]
+                if tgt in M and tgt not in new: extra.append(tgt)
+            if not extra: raise SystemExit('module graph check FAILED and the missing targets are not on main: refusing')
+            for p in extra:
+                git('update-index', '--add', '--cacheinfo', '%s,%s,%s' % (M[p][2], M[p][0], p), env=env)
+                add.append(p)
+            print('added module-graph targets:', extra, '(re-run to re-check)')
+            if not push: return
+    size = sum(v[1] for v in new.values()) + sum(M[p][1] for p in add if p not in new)
+    man = json.loads(git('show', LIVE + ':deploy-manifest.json'))
+    man.update({'commit': main_c, 'files': man['files'] + len(add), 'bytes': size,
+                'built': datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
+                'delta_note': ('Delta deploy (Claude, git plumbing, REPUBLISH.md section 2 logic) live %s -> main %s: '
+                               '%d updated, %d added, 0 removed; module graph checked. %s' % (tip[:8], main_c[:8], len(upd), len(add), note)).strip()})
+    if pr: man['source_pr'] = pr
+    b = subprocess.run(['git', 'hash-object', '-w', '--stdin'], cwd=REPO, capture_output=True, text=True, input=json.dumps(man, indent=1) + '\n').stdout.strip()
+    git('update-index', '--add', '--cacheinfo', '100644,%s,deploy-manifest.json' % b, env=env)
+    t = git('write-tree', env=env).strip()
+    removed = git('diff', '--diff-filter=D', '--name-only', tip, t).split()
+    total = sum(int(l.split()[3]) for l in git('ls-tree', '-r', '-l', t).splitlines() if l.split()[3] != '-')
+    print('updated %d, added %d, removed %d, new tree %d bytes (%.1f MB)' % (len(upd), len(add), len(removed), total, total / 1e6))
+    for p in upd[:60]: print('  M', p)
+    for p in add[:60]: print('  A', p)
+    if removed: raise SystemExit('refusing: the deploy would remove files')
+    if total > CAP: raise SystemExit('refusing: %d bytes is over the Pages cap' % total)
+    if not push: print('dry run (pass --push to deploy)'); return
+    msg = ('Pages shell deploy: main %s%s - %d updated, %d added, 0 removed\n\n%s\nModule graph checked '
+           '(tools/deploy/check_module_graph.py on the assembled tree). Fast-forward only.\n\n'
+           'Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\n'
+           'Claude-Session: https://claude.ai/code/session_01CLThWtX97Fi7zFw5wnvydL\n') % (
+        main_c[:8], (' (#%d)' % pr) if pr else '', len(upd), len(add), man['delta_note'])
+    c = subprocess.run(['git', '-c', 'user.name=mhvnsnt', '-c', 'user.email=197314870+mhvnsnt@users.noreply.github.com',
+                        'commit-tree', t, '-p', tip, '-F', '-'], cwd=REPO, capture_output=True, text=True, input=msg).stdout.strip()
+    r = subprocess.run(['git', 'push', 'origin', '%s:refs/heads/%s' % (c, BRANCH)], cwd=REPO, capture_output=True, text=True)
+    print('push', c[:9], r.returncode, (r.stderr or r.stdout).strip()[-300:])
+
+
+if __name__ == '__main__':
+    main()

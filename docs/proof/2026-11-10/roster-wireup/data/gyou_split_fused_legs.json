@@ -1,0 +1,12 @@
+{
+ "tool": "tools/auto_rig/split_fused_legs.py",
+ "input": "$SCRATCH/gyoufix3/rigged-clean-iso.glb",
+ "output": "$SCRATCH/gyoufix3/rigged-split.glb",
+ "dominance": 0.5,
+ "prims": [
+  {
+   "triangles": 1938092,
+   "removed_cross_leg": 2238
+  }
+ ]
+}

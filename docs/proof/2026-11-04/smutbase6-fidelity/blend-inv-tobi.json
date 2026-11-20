@@ -1,0 +1,996 @@
+{
+ "blender_version": [
+  5,
+  2,
+  3
+ ],
+ "file": "/home/hatch/workspace/_smutbase6-fidelity-20261104/blends/tobi-mirko.blend",
+ "armatures": [
+  {
+   "name": "Miruko Rig",
+   "bone_count": 254,
+   "bones": [
+    "AC_tail_A",
+    "Root",
+    "HandIK.L",
+    "HandTip.L",
+    "FootIK.L",
+    "LegIK.L",
+    "FootTip.L",
+    "HandIK.R",
+    "HandTip.R",
+    "FootIK.R",
+    "LegIK.R",
+    "FootTip.R",
+    "properties",
+    "facial_panel",
+    "bottomlip",
+    "toplip",
+    "cornermouth.L",
+    "lidbottom.L",
+    "lidtop.L",
+    "browinner.L",
+    "browmid.L",
+    "cornermouth.R",
+    "lidbottom.R",
+    "lidtop.R",
+    "browmid.R",
+    "browouter.L",
+    "browinner.R",
+    "browouter.R",
+    "mouth_template",
+    "u_switch",
+    "o_switch",
+    "ch_switch",
+    "e_switch",
+    "a_switch",
+    "hip-ctrl",
+    "spine2",
+    "spine",
+    "chest",
+    "neck",
+    "Head",
+    "face",
+    "forehead",
+    "L_browskin_A",
+    "L_eyebrow_A",
+    "L_browskin_B",
+    "L_eyebrow_B",
+    "L_browskin_C",
+    "L_eyebrow_C",
+    "L_browskin_D",
+    "L_eyebrow_D",
+    "L_browskin_E",
+    "R_browskin_A",
+    "R_eyebrow_A",
+    "R_browskin_B",
+    "R_eyebrow_B",
+    "R_browskin_C",
+    "R_eyebrow_C",
+    "R_browskin_D",
+    "R_eyebrow_D",
+    "R_browskin_E",
+    "LI_eyelid",
+    "LT_eyelid_A",
+    "LT_eyelid_B",
+    "LT_eyelid_C",
+    "LT_eyelid_D",
+    "LO_eyelid",
+    "LU_eyelid_A",
+    "LU_eyelid_B",
+    "LU_eyelid_C",
+    "LU_eyelid_D",
+    "L_eye",
+    "RI_eyelid",
+    "RT_eyelid_A",
+    "RT_eyelid_B",
+    "RT_eyelid_C",
+    "RT_eyelid_D",
+    "RO_eyelid",
+    "RU_eyelid_A",
+    "RU_eyelid_B",
+    "RU_eyelid_C",
+    "RU_eyelid_D",
+    "R_eye",
+    "nose_A",
+    "L_cheek_A",
+    "L_cheek_B",
+    "L_cheek_C",
+    "L_cheek_D",
+    "R_cheek_A",
+    "R_cheek_B",
+    "R_cheek_C",
+    "R_cheek_D",
+    "T_lip",
+    "LT_lip_A",
+    "LT_lip_B",
+    "LT_lip_C",
+    "LT_lip_D",
+    "RT_lip_A",
+    "RT_lip_B",
+    "RT_lip_C",
+    "RT_lip_D",
+    "T_teeth",
+    "L_DeyelidLine_A",
+    "L_DeyelidLine_B",
+    "L_DeyelidLine_C",
+    "L_DeyelidLine_D",
+    "L_DeyelidLine_E",
+    "R_DeyelidLine_A",
+    "R_DeyelidLine_B",
+    "R_DeyelidLine_C",
+    "R_DeyelidLine_D",
+    "R_DeyelidLine_E",
+    "RT_faceline_A",
+    "LT_faceline_A",
+    "T_mouth",
+    "LT_mouth_A",
+    "LT_mouth_B",
+    "LT_mouth_C",
+    "LT_mouth_D",
+    "RT_mouth_A",
+    "RT_mouth_B",
+    "RT_mouth_C",
+    "RT_mouth_D",
+    "jaw_A",
+    "U_lip",
+    "Bot_lip_A.L",
+    "Bot_lip_B.L",
+    "Bot_lip_C.L",
+    "Bot_lip_A.R",
+    "Bot_lip_B.R",
+    "Bot_lip_C.R",
+    "U_teeth",
+    "U_mouth",
+    "LU_mouth_A",
+    "LU_mouth_B",
+    "RU_mouth_A",
+    "RU_mouth_B",
+    "LU_faceline_A",
+    "RU_faceline_A",
+    "L_chin_A",
+    "R_chin_A",
+    "tongue_A",
+    "tongue_B",
+    "AC_hair_A.R",
+    "AC_hair_B.R",
+    "AC_hair_C.R",
+    "AC_hair_D.R",
+    "AC_hair_A.L",
+    "AC_hair_B.L",
+    "AC_hair_C.L",
+    "AC_hair_D.L",
+    "AC_CB_hair_A",
+    "AC_CB_hair_B",
+    "AC_CB_hair_C",
+    "AC_CB_hair_D",
+    "AC_L_ear_A",
+    "AC_L_ear_B",
+    "AC_L_ear_C",
+    "AC_R_ear_A",
+    "AC_R_ear_B",
+    "AC_R_ear_C",
+    "eye-ctrl",
+    "shoulder.L",
+    "upper_arm.L",
+    "Elbow.L",
+    "forearm.L",
+    "hand.L",
+    "thumb.01.L",
+    "thumb.02.L",
+    "thumb.03.L",
+    "Palm.01.L",
+    "f_index.01.L",
+    "f_index.02.L",
+    "f_index.03.L",
+    "palm.02.L",
+    "f_middle.01.L",
+    "f_middle.02.L",
+    "f_middle.03.L",
+    "palm.03.L",
+    "f_ring.01.L",
+    "f_ring.02.L",
+    "f_ring.03.L",
+    "palm.04.L",
+    "f_pinky.01.L",
+    "f_pinky.02.L",
+    "f_pinky.03.L",
+    "Twist.L.002",
+    "Twist.L",
+    "Twist.L.001",
+    "shoulder.R",
+    "upper_arm.R",
+    "Elbow.R",
+    "forearm.R",
+    "hand.R",
+    "thumb.01.R",
+    "thumb.02.R",
+    "thumb.03.R",
+    "Palm.01.R",
+    "f_index.01.R",
+    "f_index.02.R",
+    "f_index.03.R",
+    "palm.02.R",
+    "f_middle.01.R",
+    "f_middle.02.R",
+    "f_middle.03.R",
+    "palm.03.R",
+    "f_ring.01.R",
+    "f_ring.02.R",
+    "f_ring.03.R",
+    "palm.04.R",
+    "f_pinky.01.R",
+    "f_pinky.02.R",
+    "f_pinky.03.R",
+    "Twist.R.002",
+    "Twist.R",
+    "Twist.R.001",
+    "Breast.L",
+    "Breast2.L",
+    "Breast3.L",
+    "Breast4.L",
+    "Breast.R",
+    "Breast2.R",
+    "Breast3.R",
+    "Breast4.R",
+    "ArmiIK.L",
+    "ArmiIK.R",
+    "CB-track-to",
+    "hip-thrust",
+    "hips",
+    "thigh.L",
+    "Knee.L",
+    "shin.L",
+    "foot.L",
+    "toe.L",
+    "thigh.R",
+    "Knee.R",
+    "shin.R",
+    "foot.R",
+    "toe.R",
+    "Butt.L",
+    "Butt2.L",
+    "Butt.R",
+    "Butt2.R",
+    "pelvis.L",
+    "pelvis.R",
+    "Penis0",
+    "Penis1",
+    "Penis2",
+    "Penis3",
+    "Penis4",
+    "Penis5",
+    "Balls",
+    "Balls.L",
+    "Balls.R",
+    "Bulge1"
+   ],
+   "pose_bone_count": 254
+  }
+ ],
+ "meshes": [
+  {
+   "name": "belt",
+   "verts": 524,
+   "polys": 518,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [
+    "belt"
+   ],
+   "uv_layers": [
+    "UVMap"
+   ],
+   "shape_keys": [],
+   "vertex_groups": 1,
+   "parent": "Miruko Rig",
+   "modifiers": [
+    "ARMATURE"
+   ]
+  },
+  {
+   "name": "Bulge",
+   "verts": 4144,
+   "polys": 8284,
+   "hide_viewport": true,
+   "hide_render": true,
+   "hide_get": false,
+   "materials": [
+    "miruko-hero-suit"
+   ],
+   "uv_layers": [
+    "Mesh0000_000-mesh-map-0"
+   ],
+   "shape_keys": [],
+   "vertex_groups": 11,
+   "parent": "Miruko Rig",
+   "modifiers": [
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE"
+   ]
+  },
+  {
+   "name": "directional",
+   "verts": 24,
+   "polys": 0,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [],
+   "uv_layers": [],
+   "shape_keys": [],
+   "vertex_groups": 0,
+   "parent": null,
+   "modifiers": []
+  },
+  {
+   "name": "Ears",
+   "verts": 890,
+   "polys": 1744,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [
+    "Body"
+   ],
+   "uv_layers": [
+    "UVMap"
+   ],
+   "shape_keys": [],
+   "vertex_groups": 189,
+   "parent": "Miruko Rig",
+   "modifiers": [
+    "ARMATURE"
+   ]
+  },
+  {
+   "name": "face_template",
+   "verts": 98,
+   "polys": 0,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [],
+   "uv_layers": [
+    "UVMap"
+   ],
+   "shape_keys": [],
+   "vertex_groups": 0,
+   "parent": null,
+   "modifiers": [
+    "SUBSURF"
+   ]
+  },
+  {
+   "name": "foot wear",
+   "verts": 2016,
+   "polys": 2076,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [
+    "miruko-hero-suit"
+   ],
+   "uv_layers": [
+    "UVMap"
+   ],
+   "shape_keys": [],
+   "vertex_groups": 4,
+   "parent": "Miruko Rig",
+   "modifiers": [
+    "ARMATURE"
+   ]
+  },
+  {
+   "name": "Gloves",
+   "verts": 2764,
+   "polys": 2824,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [
+    "miruko-hero-suit"
+   ],
+   "uv_layers": [
+    "UVMap"
+   ],
+   "shape_keys": [
+    "Basis",
+    "Armature"
+   ],
+   "vertex_groups": 3752,
+   "parent": "Miruko Rig",
+   "modifiers": [
+    "ARMATURE"
+   ]
+  },
+  {
+   "name": "Hair",
+   "verts": 2099,
+   "polys": 4166,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [
+    "body",
+    "Body",
+    "Face",
+    "Eyeshadow",
+    "Eyes",
+    "Hair",
+    "Neck"
+   ],
+   "uv_layers": [
+    "UVMap"
+   ],
+   "shape_keys": [
+    "base",
+    "PussySpread",
+    "AnusSpread",
+    "BreastFlat",
+    "NipplePenetraion.L",
+    "NipplePenetraion.R",
+    "NipplesFlat",
+    "NipplesErect",
+    "Mouth Widen",
+    "Mouth Thin",
+    "Eyebrows Surprised",
+    "Eyebrows Serious",
+    "Eyebrows Angry",
+    "Eyebrows Sad",
+    "Eyebrows Confused 1",
+    "Eyebrows Confused 2",
+    "Eyes Closed",
+    "Eyes Widen",
+    "Jaw Drop",
+    "A",
+    "E",
+    "I",
+    "O",
+    "U",
+    "M",
+    "Smile 1",
+    "Smile 2",
+    "Smile 3",
+    "Frown 1",
+    "Argh",
+    "Long Eyelashes HIDE",
+    "Nose Movement",
+    "Pupils Small",
+    "Pupils Big",
+    "Look Up",
+    "Look Down",
+    "Look Left",
+    "Look Right"
+   ],
+   "vertex_groups": 3737,
+   "parent": "Miruko Rig",
+   "modifiers": [
+    "ARMATURE"
+   ]
+  },
+  {
+   "name": "Mirko",
+   "verts": 21706,
+   "polys": 24308,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [
+    "body",
+    "Body",
+    "Face",
+    "Eyeshadow",
+    "Eyes",
+    "Hair",
+    "Neck"
+   ],
+   "uv_layers": [
+    "UVMap"
+   ],
+   "shape_keys": [
+    "base",
+    "PussySpread",
+    "AnusSpread",
+    "BreastFlat",
+    "NipplePenetraion.L",
+    "NipplePenetraion.R",
+    "NipplesFlat",
+    "NipplesErect",
+    "Mouth Widen",
+    "Mouth Thin",
+    "Eyebrows Surprised",
+    "Eyebrows Serious",
+    "Eyebrows Angry",
+    "Eyebrows Sad",
+    "Eyebrows Confused 1",
+    "Eyebrows Confused 2",
+    "Eyes Closed",
+    "Eyes Widen",
+    "Jaw Drop",
+    "A",
+    "E",
+    "I",
+    "O",
+    "U",
+    "M",
+    "Smile 1",
+    "Smile 2",
+    "Smile 3",
+    "Frown 1",
+    "Argh",
+    "Long Eyelashes HIDE",
+    "Nose Movement",
+    "Pupils Small",
+    "Pupils Big",
+    "Look Up",
+    "Look Down",
+    "Look Left",
+    "Look Right",
+    "mucles ",
+    "tights-fit",
+    "suit-fit",
+    "mouth widen.L",
+    "mouth widen.R",
+    "Eyebrows Surprised.L",
+    "Eyebrows Surprised.R",
+    "Eyebrows Serious.L",
+    "Eyebrows Serious.R",
+    "Eyebrows Angry.L",
+    "Eyebrows Angry.R",
+    "Eyebrows Sad.L",
+    "Eyebrows Sad.R",
+    "Eyes Closed.L",
+    "Eyes Closed.R",
+    "eyes widen.L",
+    "eyes widen.R"
+   ],
+   "vertex_groups": 216,
+   "parent": "Miruko Rig",
+   "modifiers": [
+    "ARMATURE",
+    "MASK",
+    "MASK",
+    "MASK"
+   ]
+  },
+  {
+   "name": "mouth_template",
+   "verts": 1706,
+   "polys": 8,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [],
+   "uv_layers": [
+    "UVMap"
+   ],
+   "shape_keys": [],
+   "vertex_groups": 0,
+   "parent": null,
+   "modifiers": []
+  },
+  {
+   "name": "neck fluff",
+   "verts": 576,
+   "polys": 576,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [],
+   "uv_layers": [
+    "UVMap"
+   ],
+   "shape_keys": [],
+   "vertex_groups": 1,
+   "parent": "Miruko Rig",
+   "modifiers": [
+    "ARMATURE"
+   ]
+  },
+  {
+   "name": "Penis",
+   "verts": 5120,
+   "polys": 10236,
+   "hide_viewport": true,
+   "hide_render": true,
+   "hide_get": false,
+   "materials": [
+    "Penis"
+   ],
+   "uv_layers": [
+    "Mesh0000_003-mesh-map-0"
+   ],
+   "shape_keys": [
+    "Basis",
+    "PenisForward",
+    "PenisBackwards",
+    "Urethra0",
+    "Urethra1",
+    "Urethra2",
+    "Urethra3",
+    "BallsGrowth"
+   ],
+   "vertex_groups": 9,
+   "parent": "Miruko Rig",
+   "modifiers": [
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE",
+    "ARMATURE"
+   ]
+  },
+  {
+   "name": "Suit",
+   "verts": 1957,
+   "polys": 1868,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [
+    "miruko-hero-suit"
+   ],
+   "uv_layers": [
+    "UVMap"
+   ],
+   "shape_keys": [],
+   "vertex_groups": 3754,
+   "parent": "Miruko Rig",
+   "modifiers": [
+    "ARMATURE"
+   ]
+  },
+  {
+   "name": "switch",
+   "verts": 24,
+   "polys": 0,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [],
+   "uv_layers": [
+    "UVMap"
+   ],
+   "shape_keys": [],
+   "vertex_groups": 0,
+   "parent": null,
+   "modifiers": []
+  },
+  {
+   "name": "tail",
+   "verts": 1254,
+   "polys": 2504,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [
+    "Body"
+   ],
+   "uv_layers": [
+    "UVMap"
+   ],
+   "shape_keys": [
+    "base",
+    "Mouth Widen",
+    "Mouth Thin",
+    "Eyebrows Surprised",
+    "Eyebrows Serious",
+    "Eyebrows Angry",
+    "Eyebrows Sad",
+    "Eyebrows Confused 1",
+    "Eyebrows Confused 2",
+    "Eyes Closed",
+    "Eyes Widen",
+    "Jaw Drop",
+    "A",
+    "E",
+    "I",
+    "O",
+    "U",
+    "M",
+    "Smile 1",
+    "Smile 2",
+    "Smile 3",
+    "Frown 1",
+    "Argh",
+    "Long Eyelashes HIDE",
+    "Nose Movement",
+    "Pupils Small",
+    "Pupils Big",
+    "Look Up",
+    "Look Down",
+    "Look Left",
+    "Look Right"
+   ],
+   "vertex_groups": 189,
+   "parent": "Miruko Rig",
+   "modifiers": [
+    "ARMATURE"
+   ]
+  },
+  {
+   "name": "tights",
+   "verts": 3752,
+   "polys": 3790,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [
+    "miruko-hero-suit"
+   ],
+   "uv_layers": [
+    "UVMap"
+   ],
+   "shape_keys": [],
+   "vertex_groups": 10,
+   "parent": "Miruko Rig",
+   "modifiers": [
+    "ARMATURE"
+   ]
+  },
+  {
+   "name": "up/down",
+   "verts": 12,
+   "polys": 0,
+   "hide_viewport": false,
+   "hide_render": false,
+   "hide_get": false,
+   "materials": [],
+   "uv_layers": [
+    "UVMap"
+   ],
+   "shape_keys": [],
+   "vertex_groups": 0,
+   "parent": null,
+   "modifiers": []
+  }
+ ],
+ "mesh_count": 17,
+ "total_verts": 48666,
+ "object_count": 21,
+ "objects_by_type": {
+  "MESH": 17,
+  "CAMERA": 1,
+  "LIGHT": 2,
+  "ARMATURE": 1
+ },
+ "images": [
+  {
+   "name": "Body",
+   "size": [
+    2048,
+    2048
+   ],
+   "filepath": "",
+   "packed": true,
+   "source": "FILE"
+  },
+  {
+   "name": "Eyes",
+   "size": [
+    1024,
+    512
+   ],
+   "filepath": "",
+   "packed": true,
+   "source": "FILE"
+  },
+  {
+   "name": "Eyeshadow",
+   "size": [
+    512,
+    512
+   ],
+   "filepath": "",
+   "packed": true,
+   "source": "FILE"
+  },
+  {
+   "name": "Face",
+   "size": [
+    1024,
+    1024
+   ],
+   "filepath": "//textures/Mirko face.png",
+   "packed": true,
+   "source": "FILE"
+  },
+  {
+   "name": "Hair",
+   "size": [
+    1024,
+    1024
+   ],
+   "filepath": "",
+   "packed": true,
+   "source": "FILE"
+  },
+  {
+   "name": "Mirko body.png",
+   "size": [
+    0,
+    0
+   ],
+   "filepath": "//textures/Mirko body.png",
+   "packed": false,
+   "source": "FILE"
+  },
+  {
+   "name": "mirko penis",
+   "size": [
+    2048,
+    2048
+   ],
+   "filepath": "//textures/mirko penis.png",
+   "packed": true,
+   "source": "FILE"
+  },
+  {
+   "name": "mirko-belt_Base_color.png",
+   "size": [
+    2048,
+    2048
+   ],
+   "filepath": "//textures//mirko-belt_Base_color.png",
+   "packed": true,
+   "source": "FILE"
+  },
+  {
+   "name": "mirko-belt_Metallic.png",
+   "size": [
+    2048,
+    2048
+   ],
+   "filepath": "//textures//mirko-belt_Metallic.png",
+   "packed": true,
+   "source": "FILE"
+  },
+  {
+   "name": "miruko-hero-suit_Base_color.png",
+   "size": [
+    2048,
+    2048
+   ],
+   "filepath": "//textures//miruko-hero-suit_Base_color.png",
+   "packed": true,
+   "source": "FILE"
+  },
+  {
+   "name": "miruko-hero-suit_Metallic.png",
+   "size": [
+    2048,
+    2048
+   ],
+   "filepath": "//textures//miruko-hero-suit_Metallic.png",
+   "packed": true,
+   "source": "FILE"
+  },
+  {
+   "name": "miruko-hero-suit_Roughness.png",
+   "size": [
+    2048,
+    2048
+   ],
+   "filepath": "//textures//miruko-hero-suit_Roughness.png",
+   "packed": true,
+   "source": "FILE"
+  },
+  {
+   "name": "Neck",
+   "size": [
+    512,
+    512
+   ],
+   "filepath": "//textures/Neck.png",
+   "packed": true,
+   "source": "FILE"
+  },
+  {
+   "name": "Render Result",
+   "size": [
+    0,
+    0
+   ],
+   "filepath": "",
+   "packed": false,
+   "source": "VIEWER"
+  }
+ ],
+ "materials": [
+  {
+   "name": "belt",
+   "tex_images": [
+    "mirko-belt_Base_color.png",
+    "mirko-belt_Metallic.png"
+   ],
+   "use_nodes": true
+  },
+  {
+   "name": "Body",
+   "tex_images": [
+    "Body"
+   ],
+   "use_nodes": true
+  },
+  {
+   "name": "body",
+   "tex_images": [
+    "Mirko body.png"
+   ],
+   "use_nodes": true
+  },
+  {
+   "name": "Eyes",
+   "tex_images": [
+    "Eyes"
+   ],
+   "use_nodes": true
+  },
+  {
+   "name": "Eyeshadow",
+   "tex_images": [
+    "Eyeshadow"
+   ],
+   "use_nodes": true
+  },
+  {
+   "name": "Face",
+   "tex_images": [
+    "Face"
+   ],
+   "use_nodes": true
+  },
+  {
+   "name": "Hair",
+   "tex_images": [
+    "Hair"
+   ],
+   "use_nodes": true
+  },
+  {
+   "name": "miruko-hero-suit",
+   "tex_images": [
+    "miruko-hero-suit_Base_color.png",
+    "miruko-hero-suit_Metallic.png",
+    "miruko-hero-suit_Roughness.png"
+   ],
+   "use_nodes": true
+  },
+  {
+   "name": "Neck",
+   "tex_images": [
+    "Neck"
+   ],
+   "use_nodes": true
+  },
+  {
+   "name": "Penis",
+   "tex_images": [
+    "mirko penis"
+   ],
+   "use_nodes": true
+  }
+ ],
+ "actions": [
+  {
+   "name": "Mirok RigAction",
+   "frame_range": [
+    0.0,
+    0.0
+   ]
+  }
+ ]
+}

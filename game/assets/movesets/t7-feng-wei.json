@@ -1,0 +1,5271 @@
+{
+ "fighter": "t7-feng-wei",
+ "display": "Feng Wei (Tekken 7 source moveset)",
+ "tekken_base": "Feng Wei",
+ "source": {
+  "built_by": "FILL 2 (2026-11-06), owner fill order: \"1, 2, 3, then 4, remember then all til we get em done\"",
+  "frame_table": "game/data/t7-frame-data/t7-feng-lp-rp-lk-rk.json",
+  "motbin": "GRE teardown/tekken7-steam/tkdata/mothead/bin/fenmot.bin + json/fenmot.json",
+  "mvl": "GRE teardown/tekken7-steam/tkdata/mothead/movelist/fen.mvl",
+  "banks": "GRE release t7-fighter-banks-v1 (fen_clips.bin, fen_bank0_clips.bin); indexes in GRE mask/indexes/",
+  "method": "group-correct string walk (t7_string_walk.py); wired = unique terminal + clip locator; see fill2 fields per move"
+ },
+ "fill2_stats": {
+  "rows": 166,
+  "wired": 60,
+  "pass2": {
+   "sequence": 1,
+   "slide": 0
+  }
+ },
+ "moves": {
+  "in rage d+1+2": {
+   "name": "in rage d+1+2",
+   "name_source": "notation-only",
+   "input": "in rage d+1+2",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": null,
+   "on_block": "\u2013",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Rage art",
+   "anim_ref": null,
+   "t7": {
+    "notation": "in rage d+1+2",
+    "id": "fen_1",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1": {
+   "name": "Backfist",
+   "name_source": "mvl",
+   "input": "1",
+   "damage": 9,
+   "damage_raw": "9",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h",
+   "on_block": "+1",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1",
+    "id": "fen_2",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_st2cr00_",
+     "Ta_lp00F",
+     "Ta_hadoh00",
+     "Ta_hadoh02",
+     "Ta_step_RP"
+    ]
+   }
+  },
+  "1, 1": {
+   "name": "Jab Spear Fist",
+   "name_source": "mvl",
+   "input": "1, 1",
+   "damage": 9,
+   "damage_raw": "9,28",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, m",
+   "on_block": "-11",
+   "on_hit": "+2",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1, 1",
+    "id": "fen_3",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_st2cr00_",
+     "Ta_lp00F",
+     "Ta_renda",
+     "Ta_lplp_10",
+     "Ta_step_LP",
+     "Ta_step_Zutuki",
+     "Ta_hadoh00",
+     "Ta_hadoh02"
+    ]
+   }
+  },
+  "1, 2": {
+   "name": "1, 2",
+   "name_source": "notation-only",
+   "input": "1, 2",
+   "damage": 9,
+   "damage_raw": "9,12",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h",
+   "on_block": "-1",
+   "on_hit": "+7",
+   "on_ch": "+7",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1, 2",
+    "id": "fen_4",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_6lrp",
+     "Ta_tukilk",
+     "Ta_rp00",
+     "Ta_s_trp00",
+     "Ta_lprp",
+     "Ta_step_RP"
+    ]
+   }
+  },
+  "1, 2, 2": {
+   "name": "Firestorm",
+   "name_source": "mvl",
+   "input": "1, 2, 2",
+   "damage": 9,
+   "damage_raw": "9,12,13",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h, h",
+   "on_block": "-13",
+   "on_hit": "+1",
+   "on_ch": "+1",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:322",
+   "t7": {
+    "notation": "1, 2, 2",
+    "id": "fen_5",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "1, 2, 2",
+    "motbin_move_id": 1571,
+    "motbin_move_name": "Ta_lprprp",
+    "anim_name": "kjta_lprprp01(DVD)",
+    "anim_id": 16706,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 322,
+     "rel_offset": 2646852,
+     "size": 3016,
+     "format_word": 100,
+     "sha256": "450a70df5d6418aed054212dad1e8b41803f90632595102f9bd3299f336b1836",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "1, 2, 2, b": {
+   "name": "Ta_lprprp_E",
+   "name_source": "motbin-internal",
+   "input": "1, 2, 2, b",
+   "damage": 9,
+   "damage_raw": "9,12,13",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h, h, h",
+   "on_block": "-11",
+   "on_hit": "+3",
+   "on_ch": "+3",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:323",
+   "t7": {
+    "notation": "1, 2, 2, b",
+    "id": "fen_6",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "1, 2, 2, b",
+    "motbin_move_id": 1572,
+    "motbin_move_name": "Ta_lprprp_E",
+    "anim_name": "kmta_lprprp_se(DVD)",
+    "anim_id": 16707,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 323,
+     "rel_offset": 2649868,
+     "size": 1552,
+     "format_word": 100,
+     "sha256": "ef57c809162a51b164757c0a41ee1137b3ed3720a4603a040c526036cc3b79b2",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "1, 3": {
+   "name": "Jab Roundhouse Combo",
+   "name_source": "mvl",
+   "input": "1, 3",
+   "damage": 9,
+   "damage_raw": "9,22",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h",
+   "on_block": "-6",
+   "on_hit": "+5",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1, 3",
+    "id": "fen_7",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_sWALKF",
+     "Ta_lk00",
+     "Ta_s_tlk",
+     "Ta_lplk"
+    ]
+   }
+  },
+  "2": {
+   "name": "Adamantine Uppercut",
+   "name_source": "mvl",
+   "input": "2",
+   "damage": 10,
+   "damage_raw": "10",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h",
+   "on_block": "-3",
+   "on_hit": "+5",
+   "on_ch": "+5",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:457",
+   "t7": {
+    "notation": "2",
+    "id": "fen_8",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "2",
+    "motbin_move_id": 1718,
+    "motbin_move_name": "Ta_tukilk",
+    "anim_name": "kmta_tukilk(DVD)",
+    "anim_id": 16841,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 457,
+     "rel_offset": 2930824,
+     "size": 3472,
+     "format_word": 100,
+     "sha256": "ce5de700ee2efc34c77584025839ded2a6a21f4e75f968191173b5b3bc868066",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [10]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1718
+    ]
+   }
+  },
+  "2, 4": {
+   "name": "2, 4",
+   "name_source": "notation-only",
+   "input": "2, 4",
+   "damage": 10,
+   "damage_raw": "10,13",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, m",
+   "on_block": "-12",
+   "on_hit": "-1",
+   "on_ch": "-1",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "2, 4",
+    "id": "fen_9",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_tukilk2",
+     "Ta_rprk"
+    ]
+   }
+  },
+  "2, 4, 1": {
+   "name": "San Lian Heng",
+   "name_source": "mvl",
+   "input": "2, 4, 1",
+   "damage": 10,
+   "damage_raw": "10,13,27",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h, m, m",
+   "on_block": "-13",
+   "on_hit": "KND",
+   "on_ch": "KFUD",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:344",
+   "t7": {
+    "notation": "2, 4, 1",
+    "id": "fen_10",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "2, 4, 1",
+    "motbin_move_id": 1594,
+    "motbin_move_name": "Ta_syourinCom",
+    "anim_name": "mota_rprklp(DVD)",
+    "anim_id": 16728,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 344,
+     "rel_offset": 2710804,
+     "size": 3880,
+     "format_word": 100,
+     "sha256": "e333a873017825754618631ff6849e579a4bd371fc2f7035f23552a1a54491c0",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "2, 4, 1, b (Cancel)": {
+   "name": "Ta_syourinCom_Turn",
+   "name_source": "motbin-internal",
+   "input": "2, 4, 1, b (Cancel)",
+   "damage": 10,
+   "damage_raw": "10,13",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h, m",
+   "on_block": "-13",
+   "on_hit": "-2",
+   "on_ch": "-2",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:345",
+   "t7": {
+    "notation": "2, 4, 1, b (Cancel)",
+    "id": "fen_11",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "2, 4, 1, b",
+    "motbin_move_id": 1595,
+    "motbin_move_name": "Ta_syourinCom_Turn",
+    "anim_name": "kmta_rprklp_b(DVD)",
+    "anim_id": 16729,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 345,
+     "rel_offset": 2714684,
+     "size": 1576,
+     "format_word": 100,
+     "sha256": "1841b2479833f8ec4dfc0222c343e565ea227625bc4400ab26a01c1bff60d4a4",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "3": {
+   "name": "Bow Kick",
+   "name_source": "mvl",
+   "input": "3",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": 0.2667,
+   "startup_frames": 16,
+   "hit_level": "h",
+   "on_block": "-11",
+   "on_hit": "0",
+   "on_ch": "0",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "3",
+    "id": "fen_12",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_sWALKF",
+     "Ta_lk00"
+    ]
+   }
+  },
+  "3, 3": {
+   "name": "3, 3",
+   "name_source": "notation-only",
+   "input": "3, 3",
+   "damage": 20,
+   "damage_raw": "20,24",
+   "startup": 0.2667,
+   "startup_frames": 16,
+   "hit_level": "h, h",
+   "on_block": "-10",
+   "on_hit": "+1",
+   "on_ch": "+1",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "3, 3",
+    "id": "fen_13",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_sWALKF",
+     "Ta_lk00",
+     "Ta_lk01"
+    ]
+   }
+  },
+  "3, 3, 4": {
+   "name": "Peacock Sweep",
+   "name_source": "mvl",
+   "input": "3, 3, 4",
+   "damage": 20,
+   "damage_raw": "20,24,31",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h, h, l",
+   "on_block": "-12",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "3, 3, 4",
+    "id": "fen_14",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_sWALKF",
+     "Ta_rk00",
+     "Ta_senpu",
+     "Ta_lk02"
+    ]
+   }
+  },
+  "3, 3, 4, b (Cancel)": {
+   "name": "3, 3, 4, b (Cancel)",
+   "name_source": "notation-only",
+   "input": "3, 3, 4, b (Cancel)",
+   "damage": 20,
+   "damage_raw": "20,24",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h, h",
+   "on_block": "-17",
+   "on_hit": "-6",
+   "on_ch": "-6",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "3, 3, 4, b (Cancel)",
+    "id": "fen_15",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_sWALKB",
+     "Ta_senpu_Turn",
+     "Ta_lk02_Turn"
+    ]
+   }
+  },
+  "2~1": {
+   "name": "2~1",
+   "name_source": "notation-only",
+   "input": "2~1",
+   "damage": 13,
+   "damage_raw": "13",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-4~-2 OC",
+   "on_hit": "+4~+6 OC",
+   "on_ch": "+4~+6 OC",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "2~1",
+    "id": "fen_16",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "2~1, 1": {
+   "name": "2~1, 1",
+   "name_source": "notation-only",
+   "input": "2~1, 1",
+   "damage": 13,
+   "damage_raw": "13,27",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m",
+   "on_block": "-12",
+   "on_hit": "Launch",
+   "on_ch": "Launch",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "2~1, 1",
+    "id": "fen_17",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "3~4": {
+   "name": "3~4",
+   "name_source": "notation-only",
+   "input": "3~4",
+   "damage": 43,
+   "damage_raw": "43",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "-12~-10 OC",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "3~4",
+    "id": "fen_18",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "3~4, b": {
+   "name": "3~4, b",
+   "name_source": "notation-only",
+   "input": "3~4, b",
+   "damage": 43,
+   "damage_raw": "43",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "-7~-5 OC",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "3~4, b",
+    "id": "fen_19",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "3~4, 3": {
+   "name": "3~4, 3",
+   "name_source": "notation-only",
+   "input": "3~4, 3",
+   "damage": 43,
+   "damage_raw": "43,28",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ), l",
+   "on_block": "-15",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "3~4, 3",
+    "id": "fen_20",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "4~3": {
+   "name": "4~3",
+   "name_source": "notation-only",
+   "input": "4~3",
+   "damage": 33,
+   "damage_raw": "33",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TC)",
+   "on_block": "-4~+2",
+   "on_hit": "+4~+10 OC",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "4~3",
+    "id": "fen_21",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1+2": {
+   "name": "Iron Shield",
+   "name_source": "mvl",
+   "input": "1+2",
+   "damage": 32,
+   "damage_raw": "32",
+   "startup": 0.35,
+   "startup_frames": 21,
+   "hit_level": "m(Absorbs 1 h/m hit)",
+   "on_block": "-13",
+   "on_hit": "CS(KND)",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:334",
+   "t7": {
+    "notation": "1+2",
+    "id": "fen_22",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "1+2",
+    "motbin_move_id": 1583,
+    "motbin_move_name": "Ta_kaityuu",
+    "anim_name": "suta_kaityuu(DVD)",
+    "anim_id": 16718,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 334,
+     "rel_offset": 2683528,
+     "size": 3520,
+     "format_word": 100,
+     "sha256": "49d245dd6bc37107e6b03e43645530300c6b194c95a58fd870b17f37972f6692",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "1+4": {
+   "name": "Xuan Jiao Xiao Yan Shou",
+   "name_source": "mvl",
+   "input": "1+4",
+   "damage": 9,
+   "damage_raw": "9,13",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "lh",
+   "on_block": "-31 OC",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1+4",
+    "id": "fen_23",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_RKsLP",
+     "Ta_RKsLP2"
+    ]
+   }
+  },
+  "1+4 (Second hit only)": {
+   "name": "1+4 (Second hit only)",
+   "name_source": "notation-only",
+   "input": "1+4 (Second hit only)",
+   "damage": 13,
+   "damage_raw": "13",
+   "startup": 0.6833,
+   "startup_frames": 41,
+   "hit_level": "h",
+   "on_block": "-11?",
+   "on_hit": "+6?",
+   "on_ch": "+6?",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1+4 (Second hit only)",
+    "id": "fen_24",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_RKsLP",
+     "Ta_RKsLP2"
+    ]
+   }
+  },
+  "f+2": {
+   "name": "Ta_rp00F",
+   "name_source": "motbin-internal",
+   "input": "f+2",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-8~-7",
+   "on_hit": "+3~+4",
+   "on_ch": "FS (+10~+11 GB) 23~24",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:452",
+   "t7": {
+    "notation": "f+2",
+    "id": "fen_25",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+2",
+    "motbin_move_id": 1713,
+    "motbin_move_name": "Ta_rp00F",
+    "anim_name": "suta_keiirp(DVD)",
+    "anim_id": 16836,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 452,
+     "rel_offset": 2921776,
+     "size": 2692,
+     "format_word": 100,
+     "sha256": "0f34c0c14b334760936dce75c32adfe51494d19389bcbe438c233d1644263db7",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+2, 1": {
+   "name": "f+2, 1",
+   "name_source": "notation-only",
+   "input": "f+2, 1",
+   "damage": 16,
+   "damage_raw": "16,17",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m",
+   "on_block": "-7",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f+2, 1",
+    "id": "fen_26",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_rp00FH",
+     "Ta_keiipon"
+    ]
+   }
+  },
+  "f+2, 1, 2": {
+   "name": "Boar's Tusk",
+   "name_source": "mvl",
+   "input": "f+2, 1, 2",
+   "damage": 16,
+   "damage_raw": "16,17,27",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m, m",
+   "on_block": "-19",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f+2, 1, 2",
+    "id": "fen_27",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_keiipon_Y",
+     "Ta_tetuzan3"
+    ]
+   }
+  },
+  "f+3": {
+   "name": "Ta_tukilk",
+   "name_source": "motbin-internal",
+   "input": "f+3",
+   "damage": 13,
+   "damage_raw": "13",
+   "startup": 0.35,
+   "startup_frames": 21,
+   "hit_level": "m (TJ)",
+   "on_block": "-3",
+   "on_hit": "+9",
+   "on_ch": "+9",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:457",
+   "t7": {
+    "notation": "f+3",
+    "id": "fen_28",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+3",
+    "motbin_move_id": 1718,
+    "motbin_move_name": "Ta_tukilk",
+    "anim_name": "kmta_tukilk(DVD)",
+    "anim_id": 16841,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 457,
+     "rel_offset": 2930824,
+     "size": 3472,
+     "format_word": 100,
+     "sha256": "ce5de700ee2efc34c77584025839ded2a6a21f4e75f968191173b5b3bc868066",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+3, 4": {
+   "name": "Climbing Dragon",
+   "name_source": "mvl",
+   "input": "f+3, 4",
+   "damage": 13,
+   "damage_raw": "13,27",
+   "startup": 0.35,
+   "startup_frames": 21,
+   "hit_level": "m (TJ), m (TJ)",
+   "on_block": "-16~-15",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:458",
+   "t7": {
+    "notation": "f+3, 4",
+    "id": "fen_29",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+3, 4",
+    "motbin_move_id": 1723,
+    "motbin_move_name": "Ta_tukilk2",
+    "anim_name": "mbta_6lkrk(DVD)",
+    "anim_id": 16842,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 458,
+     "rel_offset": 2934296,
+     "size": 3712,
+     "format_word": 100,
+     "sha256": "fc40d0e3787a19a18c895e240bc39c020e4fb7053a34597046d9a54c4a2268d6",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+4": {
+   "name": "Ta_rk00F",
+   "name_source": "motbin-internal",
+   "input": "f+4",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": 0.3,
+   "startup_frames": 18,
+   "hit_level": "h (TJ)",
+   "on_block": "-9",
+   "on_hit": "CS",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:460",
+   "t7": {
+    "notation": "f+4",
+    "id": "fen_30",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+4",
+    "motbin_move_id": 1725,
+    "motbin_move_name": "Ta_rk00F",
+    "anim_name": "nata_com2rk(DVD)",
+    "anim_id": 16844,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 460,
+     "rel_offset": 2938008,
+     "size": 3252,
+     "format_word": 100,
+     "sha256": "50a29bd95f48e9dd61d911ee20c7c6b6c858c47f6ebc4e490ae1c23ec7e13003",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+4, B": {
+   "name": "f+4, B",
+   "name_source": "notation-only",
+   "input": "f+4, B",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h (TJ)",
+   "on_block": "-5",
+   "on_hit": "CS",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f+4, B",
+    "id": "fen_31",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f+4, 3": {
+   "name": "Tornado Stomp",
+   "name_source": "mvl",
+   "input": "f+4, 3",
+   "damage": 20,
+   "damage_raw": "20,28",
+   "startup": 0.3,
+   "startup_frames": 18,
+   "hit_level": "h (TJ), m",
+   "on_block": "-10~-8",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:461",
+   "t7": {
+    "notation": "f+4, 3",
+    "id": "fen_32",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+4, 3",
+    "motbin_move_id": 1730,
+    "motbin_move_name": "Ta_rk00F_2",
+    "anim_name": "nata_com2rklk(DVD)",
+    "anim_id": 16845,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 461,
+     "rel_offset": 2941260,
+     "size": 3124,
+     "format_word": 100,
+     "sha256": "1b4b8d28648744c05edcaa16f514d9950a8ca7e1cbbcb59e5a8f3565447daf82",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+4, 4": {
+   "name": "Tornado Sweep",
+   "name_source": "mvl",
+   "input": "f+4, 4",
+   "damage": 20,
+   "damage_raw": "20,20",
+   "startup": 0.3,
+   "startup_frames": 18,
+   "hit_level": "h (TJ), l (TC)",
+   "on_block": "-12",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:462",
+   "t7": {
+    "notation": "f+4, 4",
+    "id": "fen_33",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+4, 4",
+    "motbin_move_id": 1731,
+    "motbin_move_name": "Ta_zensoutai2",
+    "anim_name": "kjta_6rk2zensou01(DVD)",
+    "anim_id": 16846,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 462,
+     "rel_offset": 2944384,
+     "size": 3904,
+     "format_word": 100,
+     "sha256": "2415d014dc5bd08412903184bff226e839b7e4f049120bd15fa81e3b95bd37f2",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+4, 4 (Far)": {
+   "name": "Ta_zensoutai2",
+   "name_source": "motbin-internal",
+   "input": "f+4, 4 (Far)",
+   "damage": 20,
+   "damage_raw": "20,20",
+   "startup": 0.3,
+   "startup_frames": 18,
+   "hit_level": "h (TJ), l (TC)",
+   "on_block": "-11",
+   "on_hit": "0",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:462",
+   "t7": {
+    "notation": "f+4, 4 (Far)",
+    "id": "fen_34",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+4, 4",
+    "motbin_move_id": 1731,
+    "motbin_move_name": "Ta_zensoutai2",
+    "anim_name": "kjta_6rk2zensou01(DVD)",
+    "anim_id": 16846,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 462,
+     "rel_offset": 2944384,
+     "size": 3904,
+     "format_word": 100,
+     "sha256": "2415d014dc5bd08412903184bff226e839b7e4f049120bd15fa81e3b95bd37f2",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+1+2": {
+   "name": "Tiger's Claw",
+   "name_source": "mvl",
+   "input": "f+1+2",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-9?",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Tail spin, Homing",
+   "anim_ref": "t7:fen:0x4000:520",
+   "t7": {
+    "notation": "f+1+2",
+    "id": "fen_35",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+1+2",
+    "motbin_move_id": 1806,
+    "motbin_move_name": "Ta_6lrp",
+    "anim_name": "tahk_tigerclaw(DVD)",
+    "anim_id": 16904,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 520,
+     "rel_offset": 3092804,
+     "size": 5488,
+     "format_word": 100,
+     "sha256": "53fe4697d6531129f5e267582c6a6d97dcfa616a3ade0e609d24e717883c831a",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+1": {
+   "name": "Silent Arrow",
+   "name_source": "mvl",
+   "input": "d/f+1",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "m",
+   "on_block": "0",
+   "on_hit": "+6",
+   "on_ch": "+(sm)",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:486",
+   "t7": {
+    "notation": "d/f+1",
+    "id": "fen_36",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+1",
+    "motbin_move_id": 1763,
+    "motbin_move_name": "Ta_t_slpF",
+    "anim_name": "kjta_lpup01(DVD)",
+    "anim_id": 16870,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 486,
+     "rel_offset": 3009488,
+     "size": 2452,
+     "format_word": 100,
+     "sha256": "caa92f7c0044a921ea18b1954ff8c5a7d0c892d8865f52707f1158c8fc77a5b6",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+2": {
+   "name": "Monkey Strike",
+   "name_source": "mvl",
+   "input": "d/f+2",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": 0.3333,
+   "startup_frames": 20,
+   "hit_level": "m",
+   "on_block": "-9",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:487",
+   "t7": {
+    "notation": "d/f+2",
+    "id": "fen_37",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+2",
+    "motbin_move_id": 1764,
+    "motbin_move_name": "Ta_shokinda",
+    "anim_name": "kota_shokinda(DVD)",
+    "anim_id": 16871,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 487,
+     "rel_offset": 3011940,
+     "size": 3100,
+     "format_word": 100,
+     "sha256": "d4f96fc0444be4cf2c16815109930071ff62f2905b4cc0268eac341a148af18e",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+2, 2": {
+   "name": "Ta_sunkei1",
+   "name_source": "motbin-internal",
+   "input": "d/f+2, 2",
+   "damage": 20,
+   "damage_raw": "20,28",
+   "startup": 0.3333,
+   "startup_frames": 20,
+   "hit_level": "m, m",
+   "on_block": "-6",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:488",
+   "t7": {
+    "notation": "d/f+2, 2",
+    "id": "fen_38",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+2, 2",
+    "motbin_move_id": 1765,
+    "motbin_move_name": "Ta_sunkei1",
+    "anim_name": "kjta_rpshoukin01(DVD)",
+    "anim_id": 16872,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 488,
+     "rel_offset": 3015040,
+     "size": 2632,
+     "format_word": 100,
+     "sha256": "72dd92fd5269f0d97a4db91d1d6074ad67ffd31ecd014c805eb59d27bf847bd0",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+3": {
+   "name": "Ta_sokuteki",
+   "name_source": "motbin-internal",
+   "input": "d/f+3",
+   "damage": 28,
+   "damage_raw": "28",
+   "startup": 0.3,
+   "startup_frames": 18,
+   "hit_level": "m",
+   "on_block": "-7",
+   "on_hit": "Launch",
+   "on_ch": "Launch",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:489",
+   "t7": {
+    "notation": "d/f+3",
+    "id": "fen_39",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+3",
+    "motbin_move_id": 1766,
+    "motbin_move_name": "Ta_sokuteki",
+    "anim_name": "kjta_lkup01(DVD)",
+    "anim_id": 16873,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 489,
+     "rel_offset": 3017672,
+     "size": 3260,
+     "format_word": 100,
+     "sha256": "4840ad58c406fa4224d1965d03408d3bae883b07f504abecd3d427ebcd27da6a",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+4": {
+   "name": "Ta_t_srkF",
+   "name_source": "motbin-internal",
+   "input": "d/f+4",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "m",
+   "on_block": "-6",
+   "on_hit": "+5",
+   "on_ch": "+5",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:490",
+   "t7": {
+    "notation": "d/f+4",
+    "id": "fen_40",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+4",
+    "motbin_move_id": 1767,
+    "motbin_move_name": "Ta_t_srkF",
+    "anim_name": "nata_k06(DVD)",
+    "anim_id": 16874,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 490,
+     "rel_offset": 3020932,
+     "size": 2840,
+     "format_word": 100,
+     "sha256": "ed033a60872ca4cc0ca9931f711201a7c036a4d95fef7516b50d2e799b8108cd",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+3+4": {
+   "name": "Ruinous Halberd",
+   "name_source": "mvl",
+   "input": "d/f+3+4",
+   "damage": 31,
+   "damage_raw": "31",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-8~-7",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Homing",
+   "anim_ref": "t7:fen:0x4000:491",
+   "t7": {
+    "notation": "d/f+3+4",
+    "id": "fen_41",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+3+4",
+    "motbin_move_id": 1774,
+    "motbin_move_name": "Ta_CircleKick",
+    "anim_name": "kmta_360rk(DVD)",
+    "anim_id": 16875,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 491,
+     "rel_offset": 3023772,
+     "size": 3428,
+     "format_word": 100,
+     "sha256": "06753bf7d625f9c77a8757c4e1745a25e9241d28292c596aac482d483923dd12",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d+2": {
+   "name": "Heavy Hammer",
+   "name_source": "mvl",
+   "input": "d+2",
+   "damage": 22,
+   "damage_raw": "22",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-13~-12?",
+   "on_hit": "+2~+3?",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:479",
+   "t7": {
+    "notation": "d+2",
+    "id": "fen_42",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+2",
+    "motbin_move_id": 1754,
+    "motbin_move_name": "Ta_hebi",
+    "anim_name": "nota_hebi_s(DVD)",
+    "anim_id": 16863,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 479,
+     "rel_offset": 2985056,
+     "size": 2992,
+     "format_word": 100,
+     "sha256": "f48a9f8df7b9462098a261c839eb82e767cfbfd093ff05714b321e72bb69a5a7",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d+4": {
+   "name": "Ta_rakuyou",
+   "name_source": "motbin-internal",
+   "input": "d+4",
+   "damage": 9,
+   "damage_raw": "9",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l",
+   "on_block": "-11~-10",
+   "on_hit": "0~+1",
+   "on_ch": "0~+1",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:481",
+   "t7": {
+    "notation": "d+4",
+    "id": "fen_43",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+4",
+    "motbin_move_id": 1757,
+    "motbin_move_name": "Ta_rakuyou",
+    "anim_name": "kmta_lowrk(DVD)",
+    "anim_id": 16865,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 481,
+     "rel_offset": 2991100,
+     "size": 2648,
+     "format_word": 100,
+     "sha256": "cb70c3ef0196d59aa6182679771591cf8cfc4260b72082caefab68ef8d007009",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d+4, 1+2": {
+   "name": "Parting Heavens",
+   "name_source": "mvl",
+   "input": "d+4, 1+2",
+   "damage": 9,
+   "damage_raw": "9,29",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l, m",
+   "on_block": "-10",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:482",
+   "t7": {
+    "notation": "d+4, 1+2",
+    "id": "fen_44",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+4, 1+2",
+    "motbin_move_id": 1758,
+    "motbin_move_name": "Ta_rakuyou_P",
+    "anim_name": "kmta_lowrk_lrp(DVD)",
+    "anim_id": 16866,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 482,
+     "rel_offset": 2993748,
+     "size": 3800,
+     "format_word": 100,
+     "sha256": "0818a75ea85da1976c84b8477658eefcfaae7bddf3ef27544f075138a188084d",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+1": {
+   "name": "d/b+1",
+   "name_source": "notation-only",
+   "input": "d/b+1",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": 0.2667,
+   "startup_frames": 16,
+   "hit_level": "m",
+   "on_block": "-12",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d/b+1",
+    "id": "fen_45",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_t_slp00B",
+     "Ta_1lprk"
+    ]
+   }
+  },
+  "d/b+1, 2": {
+   "name": "Spear of Lu Bu",
+   "name_source": "mvl",
+   "input": "d/b+1, 2",
+   "damage": 16,
+   "damage_raw": "16,24",
+   "startup": 0.2667,
+   "startup_frames": 16,
+   "hit_level": "m, m",
+   "on_block": "-12",
+   "on_hit": "+7",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:329",
+   "t7": {
+    "notation": "d/b+1, 2",
+    "id": "fen_46",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+1, 2",
+    "motbin_move_id": 1578,
+    "motbin_move_name": "Ta_shokinda2",
+    "anim_name": "mbta_1lprp(DVD)",
+    "anim_id": 16713,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 329,
+     "rel_offset": 2667052,
+     "size": 3320,
+     "format_word": 100,
+     "sha256": "2b537be0a7393bb4c126b213a10ecf872a5c1806bcc496534662e59a975501f6",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+1, F": {
+   "name": "d/b+1, F",
+   "name_source": "notation-only",
+   "input": "d/b+1, F",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": 0.2667,
+   "startup_frames": 16,
+   "hit_level": "m, (STC)",
+   "on_block": "-16",
+   "on_hit": "0",
+   "on_ch": "0",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d/b+1, F",
+    "id": "fen_47",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "d/b+1, F (After stance ends)": {
+   "name": "d/b+1, F (After stance ends)",
+   "name_source": "notation-only",
+   "input": "d/b+1, F (After stance ends)",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": 0.2667,
+   "startup_frames": 16,
+   "hit_level": "m, (STC)",
+   "on_block": "-41",
+   "on_hit": "-25",
+   "on_ch": "-25",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d/b+1, F (After stance ends)",
+    "id": "fen_48",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "d/b+1, B": {
+   "name": "d/b+1, B",
+   "name_source": "notation-only",
+   "input": "d/b+1, B",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": 0.2667,
+   "startup_frames": 16,
+   "hit_level": "m, (KNP)",
+   "on_block": "-9",
+   "on_hit": "+7",
+   "on_ch": "+7",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d/b+1, B",
+    "id": "fen_49",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "d/b+1, B (After stance ends)": {
+   "name": "d/b+1, B (After stance ends)",
+   "name_source": "notation-only",
+   "input": "d/b+1, B (After stance ends)",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": 0.2667,
+   "startup_frames": 16,
+   "hit_level": "m, (KNP)",
+   "on_block": "-35",
+   "on_hit": "-19",
+   "on_ch": "-19",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d/b+1, B (After stance ends)",
+    "id": "fen_50",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "d/b+1, 4": {
+   "name": "Spinning Neck Strike",
+   "name_source": "mvl",
+   "input": "d/b+1, 4",
+   "damage": null,
+   "damage_raw": ",",
+   "startup": 0.2667,
+   "startup_frames": 16,
+   "hit_level": "m, h",
+   "on_block": "-2",
+   "on_hit": "KND",
+   "on_ch": "KND?",
+   "notes": "Tail spin",
+   "anim_ref": "t7:fen:0x4000:328",
+   "t7": {
+    "notation": "d/b+1, 4",
+    "id": "fen_51",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+1, 4",
+    "motbin_move_id": 1577,
+    "motbin_move_name": "Ta_1lprk",
+    "anim_name": "taik_1lprk(DVD)",
+    "anim_id": 16712,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 328,
+     "rel_offset": 2662304,
+     "size": 4748,
+     "format_word": 100,
+     "sha256": "5f113c0e00ee76cdfa6c36e7148bb19c9484f88bb0f289dc1b2c56150dbbb2f5",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+2": {
+   "name": "Ta_senkai",
+   "name_source": "motbin-internal",
+   "input": "d/b+2",
+   "damage": 6,
+   "damage_raw": "6",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-11~-10",
+   "on_hit": "0~+1",
+   "on_ch": "0~+1",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:350",
+   "t7": {
+    "notation": "d/b+2",
+    "id": "fen_52",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+2",
+    "motbin_move_id": 1601,
+    "motbin_move_name": "Ta_senkai",
+    "anim_name": "suta_senkai(DVD)",
+    "anim_id": 16734,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 350,
+     "rel_offset": 2727880,
+     "size": 3780,
+     "format_word": 100,
+     "sha256": "c133d8eaff7829c8635f92bf79c4e2ad696155ada3a1639fa3251e941ebfb345",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+2, 2": {
+   "name": "Ta_senkai2",
+   "name_source": "motbin-internal",
+   "input": "d/b+2, 2",
+   "damage": 6,
+   "damage_raw": "6,13",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC), l (TC)",
+   "on_block": "-16~-15",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:351",
+   "t7": {
+    "notation": "d/b+2, 2",
+    "id": "fen_53",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+2, 2",
+    "motbin_move_id": 1602,
+    "motbin_move_name": "Ta_senkai2",
+    "anim_name": "suta_senkai2(DVD)",
+    "anim_id": 16735,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 351,
+     "rel_offset": 2731660,
+     "size": 4152,
+     "format_word": 100,
+     "sha256": "c0ba08cd31d4904d5990bf4e2ed8259c1238b90f702e8e28d3eef3e311233642",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+2, 2, 2": {
+   "name": "Hellwinds",
+   "name_source": "mvl",
+   "input": "d/b+2, 2, 2",
+   "damage": 6,
+   "damage_raw": "6,13,27",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC), l (TC), m",
+   "on_block": "-8~-7",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:353",
+   "t7": {
+    "notation": "d/b+2, 2, 2",
+    "id": "fen_54",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+2, 2, 2",
+    "motbin_move_id": 1604,
+    "motbin_move_name": "Ta_senkai3",
+    "anim_name": "suta_senkai2oro(DVD)",
+    "anim_id": 16737,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 353,
+     "rel_offset": 2737316,
+     "size": 3480,
+     "format_word": 100,
+     "sha256": "9ba07f27ff4d910296393502ade14e99d6edc3c5ded8dc0dd41167e759f5deae",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+2, 2, B (Cancel)": {
+   "name": "d/b+2, 2, B (Cancel)",
+   "name_source": "notation-only",
+   "input": "d/b+2, 2, B (Cancel)",
+   "damage": 6,
+   "damage_raw": "6",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-17~-16",
+   "on_hit": "-6~-5",
+   "on_ch": "-6~-5",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d/b+2, 2, B (Cancel)",
+    "id": "fen_55",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "d/b+3": {
+   "name": "Piercing Arrow",
+   "name_source": "mvl",
+   "input": "d/b+3",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-15~-14",
+   "on_hit": "+4~+5 OC",
+   "on_ch": "+4~+5 OC",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:492",
+   "t7": {
+    "notation": "d/b+3",
+    "id": "fen_56",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+3",
+    "motbin_move_id": 1775,
+    "motbin_move_name": "Ta_tessa",
+    "anim_name": "kmta_10tessa(DVD)",
+    "anim_id": 16876,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 492,
+     "rel_offset": 3027200,
+     "size": 3308,
+     "format_word": 100,
+     "sha256": "5e4938899d27461039e84aca6659b676eee7304733cff67f7ff1a90fa6835a31",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+4": {
+   "name": "Sweep Kick",
+   "name_source": "mvl",
+   "input": "d/b+4",
+   "damage": 33,
+   "damage_raw": "33",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-21",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Homing",
+   "anim_ref": "t7:fen:0x0000:114",
+   "t7": {
+    "notation": "d/b+4",
+    "id": "fen_57",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+4",
+    "motbin_move_id": 1760,
+    "motbin_move_name": "Ta_t_srk00B",
+    "anim_name": "tass_s4_1rk",
+    "anim_id": 114,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x0000",
+     "source": "fenmot.bin",
+     "section": 0,
+     "entry": 114,
+     "rel_offset": 1973556,
+     "size": 5144,
+     "format_word": 100,
+     "sha256": "7de389a1200f73859eece0d9762862e647b17b52279cb91141794c73a95b9e35",
+     "blob_file": "fen_bank0_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+1+2": {
+   "name": "Ta_housui",
+   "name_source": "motbin-internal",
+   "input": "d/b+1+2",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "0~+1",
+   "on_hit": "+8~+9",
+   "on_ch": "+8~+9",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:332",
+   "t7": {
+    "notation": "d/b+1+2",
+    "id": "fen_58",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+1+2",
+    "motbin_move_id": 1581,
+    "motbin_move_name": "Ta_housui",
+    "anim_name": "suta_housui(DVD)",
+    "anim_id": 16716,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 332,
+     "rel_offset": 2677528,
+     "size": 2644,
+     "format_word": 100,
+     "sha256": "ef24cb3cc1fd3587c9b642e3a902b8a6dd272d51aa3bbb050f2167d13e00b3d6",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b+1+2, 2": {
+   "name": "Dragon Slayer",
+   "name_source": "mvl",
+   "input": "d/b+1+2, 2",
+   "damage": 20,
+   "damage_raw": "20,20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, l (TC)",
+   "on_block": "-11",
+   "on_hit": "0",
+   "on_ch": "0",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:333",
+   "t7": {
+    "notation": "d/b+1+2, 2",
+    "id": "fen_59",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b+1+2, 2",
+    "motbin_move_id": 1582,
+    "motbin_move_name": "Ta_hebi2",
+    "anim_name": "kjta_housui2hebi01(DVD)",
+    "anim_id": 16717,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 333,
+     "rel_offset": 2680172,
+     "size": 3356,
+     "format_word": 100,
+     "sha256": "881129f9a5631f02a472f76efce615eb791c7c322b02f12275cd640493775c8c",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+1": {
+   "name": "Iron Palm",
+   "name_source": "mvl",
+   "input": "b+1",
+   "damage": 22,
+   "damage_raw": "22",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h",
+   "on_block": "-10?",
+   "on_hit": "+2?",
+   "on_ch": "ATD",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:465",
+   "t7": {
+    "notation": "b+1",
+    "id": "fen_60",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+1",
+    "motbin_move_id": 1733,
+    "motbin_move_name": "Ta_hakkei",
+    "anim_name": "mota_lpfast10(DVD)",
+    "anim_id": 16849,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 465,
+     "rel_offset": 2949828,
+     "size": 2512,
+     "format_word": 100,
+     "sha256": "b59929583e31e1a60e2bdd9ef4aa3cfcbd7d23ed04831f419510dd4a3b3791f3",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+2": {
+   "name": "b+2",
+   "name_source": "notation-only",
+   "input": "b+2",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": 0.2833,
+   "startup_frames": 17,
+   "hit_level": "m",
+   "on_block": "-11",
+   "on_hit": "0 OC",
+   "on_ch": "0 OC",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "b+2",
+    "id": "fen_61",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_combo1",
+     "Ta_combo2",
+     "Ta_combo3",
+     "Ta_combo4"
+    ]
+   }
+  },
+  "b+2, 3": {
+   "name": "b+2, 3",
+   "name_source": "notation-only",
+   "input": "b+2, 3",
+   "damage": 20,
+   "damage_raw": "20,10",
+   "startup": 0.2833,
+   "startup_frames": 17,
+   "hit_level": "m, l",
+   "on_block": "-11",
+   "on_hit": "0",
+   "on_ch": "+8 OC",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "b+2, 3",
+    "id": "fen_62",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_combo2",
+     "Ta_combo3",
+     "Ta_combo4"
+    ]
+   }
+  },
+  "b+2, 3, 4": {
+   "name": "b+2, 3, 4",
+   "name_source": "notation-only",
+   "input": "b+2, 3, 4",
+   "damage": 20,
+   "damage_raw": "20,10,16",
+   "startup": 0.2833,
+   "startup_frames": 17,
+   "hit_level": "m, l, m",
+   "on_block": "-12",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "b+2, 3, 4",
+    "id": "fen_63",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_combo3",
+     "Ta_combo4"
+    ]
+   }
+  },
+  "b+2, 3, 4, 2": {
+   "name": "Hungry Tiger",
+   "name_source": "mvl",
+   "input": "b+2, 3, 4, 2",
+   "damage": 20,
+   "damage_raw": "20,10,16,28",
+   "startup": 0.2833,
+   "startup_frames": 17,
+   "hit_level": "m, l, m, m",
+   "on_block": "-6~-5 OC",
+   "on_hit": "+4~+5 OC",
+   "on_ch": "+4~+5 OC",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:469",
+   "t7": {
+    "notation": "b+2, 3, 4, 2",
+    "id": "fen_64",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+2, 3, 4, 2",
+    "motbin_move_id": 1737,
+    "motbin_move_name": "Ta_combo4",
+    "anim_name": "suta_asunacom4(DVD)",
+    "anim_id": 16853,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 469,
+     "rel_offset": 2962652,
+     "size": 3956,
+     "format_word": 100,
+     "sha256": "c9585f6276201a682467d10c3cca8346e67fa853c728dd858a310774718e3647",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+3": {
+   "name": "Ta_lk00B",
+   "name_source": "motbin-internal",
+   "input": "b+3",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": 0.3833,
+   "startup_frames": 23,
+   "hit_level": "m",
+   "on_block": "-8",
+   "on_hit": "+3",
+   "on_ch": "+3",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:470",
+   "t7": {
+    "notation": "b+3",
+    "id": "fen_65",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+3",
+    "motbin_move_id": 1738,
+    "motbin_move_name": "Ta_lk00B",
+    "anim_name": "kmta_4lk2(DVD)",
+    "anim_id": 16854,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 470,
+     "rel_offset": 2966608,
+     "size": 3412,
+     "format_word": 100,
+     "sha256": "e90c2b7f6c795d4127ef3e4947f68332c67cb505daa00e258f1a8c9982c2e8a9",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+3, 3": {
+   "name": "Zhuan Shen Lian Wu",
+   "name_source": "mvl",
+   "input": "b+3, 3",
+   "damage": 16,
+   "damage_raw": "16,20",
+   "startup": 0.3833,
+   "startup_frames": 23,
+   "hit_level": "m, h",
+   "on_block": "-6",
+   "on_hit": "+3",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:471",
+   "t7": {
+    "notation": "b+3, 3",
+    "id": "fen_66",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+3, 3",
+    "motbin_move_id": 1739,
+    "motbin_move_name": "Ta_lk01B",
+    "anim_name": "kmta_4lklk(DVD)",
+    "anim_id": 16855,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 471,
+     "rel_offset": 2970020,
+     "size": 3384,
+     "format_word": 100,
+     "sha256": "f576e8becdb5a1140f425d2f8dd49cebddb17ec7e7bf92512e50878aef05733c",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "B+3~4": {
+   "name": "B+3~4",
+   "name_source": "notation-only",
+   "input": "B+3~4",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "(Special)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "B+3~4",
+    "id": "fen_67",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "b+4": {
+   "name": "Fish Hook",
+   "name_source": "mvl",
+   "input": "b+4",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": 0.2,
+   "startup_frames": 12,
+   "hit_level": "m",
+   "on_block": "-9",
+   "on_hit": "+2",
+   "on_ch": "+2",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:528",
+   "t7": {
+    "notation": "b+4",
+    "id": "fen_68",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+4",
+    "motbin_move_id": 1815,
+    "motbin_move_name": "Ta_hikyaku",
+    "anim_name": "kjta_rksinknee01(DVD)",
+    "anim_id": 16912,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 528,
+     "rel_offset": 3105052,
+     "size": 2716,
+     "format_word": 100,
+     "sha256": "5715daba70ccde322bfbffb7c408414ee97d7efd8dfb79cf190678021ce00a2b",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+1+2": {
+   "name": "Rage Drive",
+   "name_source": "mvl",
+   "input": "b+1+2",
+   "damage": 40,
+   "damage_raw": "40",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "~-22?",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "b+1+2",
+    "id": "fen_69",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_tetuzan2",
+     "Ta_tetuzan4"
+    ]
+   }
+  },
+  "in rage b+1+2*": {
+   "name": "in rage b+1+2*",
+   "name_source": "notation-only",
+   "input": "in rage b+1+2*",
+   "damage": null,
+   "damage_raw": "40?",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "+9?",
+   "on_hit": "KFUD",
+   "on_ch": "KFUD",
+   "notes": "Rage art",
+   "anim_ref": null,
+   "t7": {
+    "notation": "in rage b+1+2*",
+    "id": "fen_70",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "u/b+2": {
+   "name": "Throat Gouge",
+   "name_source": "mvl",
+   "input": "u/b+2",
+   "damage": 17,
+   "damage_raw": "17,28",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "mh",
+   "on_block": "-10",
+   "on_hit": "+9",
+   "on_ch": "+9",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u/b+2",
+    "id": "fen_71",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_tuki",
+     "Ta_tuki2"
+    ]
+   }
+  },
+  "u/b+2 (First hit only, Second hit miss)": {
+   "name": "u/b+2 (First hit only, Second hit miss)",
+   "name_source": "notation-only",
+   "input": "u/b+2 (First hit only, Second hit miss)",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": 0.2667,
+   "startup_frames": 16,
+   "hit_level": "m",
+   "on_block": "-37",
+   "on_hit": "-26",
+   "on_ch": "-26",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u/b+2 (First hit only, Second hit miss)",
+    "id": "fen_72",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_tuki",
+     "Ta_tuki2"
+    ]
+   }
+  },
+  "u/b+1+2": {
+   "name": "Death Palm",
+   "name_source": "mvl",
+   "input": "u/b+1+2",
+   "damage": 67,
+   "damage_raw": "67",
+   "startup": 1.3167,
+   "startup_frames": 79,
+   "hit_level": "!",
+   "on_block": "CS",
+   "on_hit": "CS",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:259",
+   "t7": {
+    "notation": "u/b+1+2",
+    "id": "fen_73",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/b+1+2",
+    "motbin_move_id": 1499,
+    "motbin_move_name": "Ta_a_tetsuzan",
+    "anim_name": "kjta_gfunou01(DVD)",
+    "anim_id": 16643,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 259,
+     "rel_offset": 2569012,
+     "size": 6184,
+     "format_word": 100,
+     "sha256": "3200df8d74b12d77ace7cc7ac662d79afc2af5505607a56c97ad9500b0c6a77b",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u+2": {
+   "name": "Leaping Hammer Fist",
+   "name_source": "mvl",
+   "input": "u+2",
+   "damage": 40,
+   "damage_raw": "40",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "0~+2",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u+2",
+    "id": "fen_74",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "u/b or u or u/f+1": {
+   "name": "Ta_jplp00F",
+   "name_source": "motbin-internal",
+   "input": "u/b or u or u/f+1",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": 0.3,
+   "startup_frames": 18,
+   "hit_level": "m (TJ)",
+   "on_block": "-7",
+   "on_hit": "+4(+12)",
+   "on_ch": "+4(+12)",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:256",
+   "t7": {
+    "notation": "u/b or u or u/f+1",
+    "id": "fen_75",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/f+1",
+    "motbin_move_id": 1497,
+    "motbin_move_name": "Ta_jplp00F",
+    "anim_name": "kjta_8lp01(DVD)",
+    "anim_id": 16640,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 256,
+     "rel_offset": 2566316,
+     "size": 2696,
+     "format_word": 100,
+     "sha256": "ded93bf6dabc401d00e601d365ac5d088097fac09673e07b19e1222a91af0e9c",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/f+2": {
+   "name": "Evading Palm Strike",
+   "name_source": "mvl",
+   "input": "u/f+2",
+   "damage": 24,
+   "damage_raw": "24",
+   "startup": 0.3,
+   "startup_frames": 18,
+   "hit_level": "m",
+   "on_block": "-10",
+   "on_hit": "+3",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u/f+2",
+    "id": "fen_76",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "u/b or u or u/f+3": {
+   "name": "Ta_jplk00F",
+   "name_source": "motbin-internal",
+   "input": "u/b or u or u/f+3",
+   "damage": 29,
+   "damage_raw": "29",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "-2~-1",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:fen:0x0000:103",
+   "t7": {
+    "notation": "u/b or u or u/f+3",
+    "id": "fen_77",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/f+3",
+    "motbin_move_id": 1535,
+    "motbin_move_name": "Ta_jplk00F",
+    "anim_name": "tass_s4_8lk",
+    "anim_id": 103,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x0000",
+     "source": "fenmot.bin",
+     "section": 0,
+     "entry": 103,
+     "rel_offset": 1947156,
+     "size": 4264,
+     "format_word": 100,
+     "sha256": "9f7214cb8aa2dbc2bb7621a6895db453f1a7e55de4112d7cc625be1812aed764",
+     "blob_file": "fen_bank0_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/b+4": {
+   "name": "Ta_jprk00B",
+   "name_source": "motbin-internal",
+   "input": "u/b+4",
+   "damage": 14,
+   "damage_raw": "14",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "m (TJ)",
+   "on_block": "-20",
+   "on_hit": "-8",
+   "on_ch": "-8",
+   "notes": null,
+   "anim_ref": "t7:fen:0x0000:109",
+   "t7": {
+    "notation": "u/b+4",
+    "id": "fen_78",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/b+4",
+    "motbin_move_id": 1553,
+    "motbin_move_name": "Ta_jprk00B",
+    "anim_name": "tass_s4_8rk",
+    "anim_id": 109,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x0000",
+     "source": "fenmot.bin",
+     "section": 0,
+     "entry": 109,
+     "rel_offset": 1951420,
+     "size": 4012,
+     "format_word": 100,
+     "sha256": "73760a040c181e2d7773219ffa259e25c240b88407f4cab0404bf55caf32b2ce",
+     "blob_file": "fen_bank0_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u+4": {
+   "name": "Ta_jprk00",
+   "name_source": "motbin-internal",
+   "input": "u+4",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "-13~-12",
+   "on_hit": "KND",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": "t7:fen:0x0000:105",
+   "t7": {
+    "notation": "u+4",
+    "id": "fen_79",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u+4",
+    "motbin_move_id": 1549,
+    "motbin_move_name": "Ta_jprk00",
+    "anim_name": "tass_s4_8rk",
+    "anim_id": 105,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x0000",
+     "source": "fenmot.bin",
+     "section": 0,
+     "entry": 105,
+     "rel_offset": 1951420,
+     "size": 4012,
+     "format_word": 100,
+     "sha256": "73760a040c181e2d7773219ffa259e25c240b88407f4cab0404bf55caf32b2ce",
+     "blob_file": "fen_bank0_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/f+4": {
+   "name": "Soaring Eagle",
+   "name_source": "mvl",
+   "input": "u/f+4",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "-13~-12",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": "t7:fen:0x0000:107",
+   "t7": {
+    "notation": "u/f+4",
+    "id": "fen_80",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "u/f+4",
+    "motbin_move_id": 1551,
+    "motbin_move_name": "Ta_jprk00F",
+    "anim_name": "tass_s4_8rk",
+    "anim_id": 107,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x0000",
+     "source": "fenmot.bin",
+     "section": 0,
+     "entry": 107,
+     "rel_offset": 1951420,
+     "size": 4012,
+     "format_word": 100,
+     "sha256": "73760a040c181e2d7773219ffa259e25c240b88407f4cab0404bf55caf32b2ce",
+     "blob_file": "fen_bank0_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "u/f+3+4": {
+   "name": "u/f+3+4",
+   "name_source": "notation-only",
+   "input": "u/f+3+4",
+   "damage": 13,
+   "damage_raw": "13,13,13",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "mhh",
+   "on_block": "-10",
+   "on_hit": "Launch",
+   "on_ch": "Launch",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u/f+3+4",
+    "id": "fen_81",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_step_RK00",
+     "Ta_step_RK02",
+     "Ta_step_RK03",
+     "Ta_step_RK04"
+    ]
+   }
+  },
+  "u/f+3+4 (Third hit miss)": {
+   "name": "u/f+3+4 (Third hit miss)",
+   "name_source": "notation-only",
+   "input": "u/f+3+4 (Third hit miss)",
+   "damage": 13,
+   "damage_raw": "13,13",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "mh",
+   "on_block": "-16",
+   "on_hit": "Launch",
+   "on_ch": "Launch",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u/f+3+4 (Third hit miss)",
+    "id": "fen_82",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_step_RK00",
+     "Ta_step_RK02",
+     "Ta_step_RK03",
+     "Ta_step_RK04"
+    ]
+   }
+  },
+  "u/f+3+4 (second and third hit miss)": {
+   "name": "u/f+3+4 (second and third hit miss)",
+   "name_source": "notation-only",
+   "input": "u/f+3+4 (second and third hit miss)",
+   "damage": 13,
+   "damage_raw": "13",
+   "startup": 0.4,
+   "startup_frames": 24,
+   "hit_level": "m",
+   "on_block": "-28",
+   "on_hit": "-17",
+   "on_ch": "-17",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u/f+3+4 (second and third hit miss)",
+    "id": "fen_83",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_step_RK00",
+     "Ta_step_RK02",
+     "Ta_step_RK03",
+     "Ta_step_RK04"
+    ]
+   }
+  },
+  "u/f+3+4, 3": {
+   "name": "Assassin's Bow",
+   "name_source": "mvl",
+   "input": "u/f+3+4, 3",
+   "damage": 13,
+   "damage_raw": "13,13,13,28",
+   "startup": 0.4,
+   "startup_frames": 24,
+   "hit_level": "mhh, h",
+   "on_block": "-6",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u/f+3+4, 3",
+    "id": "fen_84",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_step_RK00Y",
+     "Ta_step_RK02Y",
+     "Ta_step_RK03Y",
+     "Ta_step_RK04Y"
+    ]
+   }
+  },
+  "f, F+2": {
+   "name": "Exploding Dagger",
+   "name_source": "mvl",
+   "input": "f, F+2",
+   "damage": 31,
+   "damage_raw": "31",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-10",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+2",
+    "id": "fen_85",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, F+3": {
+   "name": "Tremor Stomp",
+   "name_source": "mvl",
+   "input": "f, F+3",
+   "damage": 40,
+   "damage_raw": "40",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "+4~+5 OC",
+   "on_hit": "+8~+9 OC",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+3",
+    "id": "fen_86",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, F+4": {
+   "name": "f, F+4",
+   "name_source": "notation-only",
+   "input": "f, F+4",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-15",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+4",
+    "id": "fen_87",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, F+4, 3": {
+   "name": "Spreading Wings",
+   "name_source": "mvl",
+   "input": "f, F+4, 3",
+   "damage": 17,
+   "damage_raw": "17,28",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m",
+   "on_block": "-12?-14?",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+4, 3",
+    "id": "fen_88",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "f, F+1+2": {
+   "name": "Nian Zhang Mie Ba",
+   "name_source": "mvl",
+   "input": "f, F+1+2",
+   "damage": 31,
+   "damage_raw": "31",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-10",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Power crush",
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+1+2",
+    "id": "fen_89",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f, F+1+2* (Very long hold)": {
+   "name": "f, F+1+2* (Very long hold)",
+   "name_source": "notation-only",
+   "input": "f, F+1+2* (Very long hold)",
+   "damage": 37,
+   "damage_raw": "37",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "+1",
+   "on_hit": "+23",
+   "on_ch": "+23",
+   "notes": "Power crush",
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+1+2* (Very long hold)",
+    "id": "fen_90",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "b, f+1": {
+   "name": "Falcon's Beak",
+   "name_source": "mvl",
+   "input": "b, f+1",
+   "damage": 33,
+   "damage_raw": "33",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-15",
+   "on_hit": "KND",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:451",
+   "t7": {
+    "notation": "b, f+1",
+    "id": "fen_91",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b, f+1",
+    "motbin_move_id": 1712,
+    "motbin_move_name": "Ta_lp00F",
+    "anim_name": "mota_lp01(DVD)",
+    "anim_id": 16835,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 451,
+     "rel_offset": 2919636,
+     "size": 2140,
+     "format_word": 100,
+     "sha256": "952fbaaa638d3cfe35e79c3c1f2d79fd6edfffb1e6837a3cc6bc2b09cbaae91a",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f, f, f+3": {
+   "name": "Severing Sword",
+   "name_source": "mvl",
+   "input": "f, f, f+3",
+   "damage": 40,
+   "damage_raw": "40",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "+6~+11 GB",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, f, f+3",
+    "id": "fen_92",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "WS+1": {
+   "name": "WS+1",
+   "name_source": "notation-only",
+   "input": "WS+1",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "m",
+   "on_block": "-1",
+   "on_hit": "+5",
+   "on_ch": "+5",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+1",
+    "id": "fen_93",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Co_syalp00",
+     "Ta_st2cr00_",
+     "Ta_lp00F",
+     "Ta_hadoh00",
+     "Ta_hadoh02",
+     "Ta_step_RP"
+    ]
+   }
+  },
+  "WS+1, 2": {
+   "name": "WS+1, 2",
+   "name_source": "notation-only",
+   "input": "WS+1, 2",
+   "damage": 17,
+   "damage_raw": "17,18",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "m, m",
+   "on_block": "-10",
+   "on_hit": "+1",
+   "on_ch": "+1",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+1, 2",
+    "id": "fen_94",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_6lrp",
+     "Ta_tukilk",
+     "Ta_rp00",
+     "Ta_s_trp00",
+     "Ta_lprp",
+     "Ta_step_RP"
+    ]
+   }
+  },
+  "WS+1, 2, 1": {
+   "name": "WS+1, 2, 1",
+   "name_source": "notation-only",
+   "input": "WS+1, 2, 1",
+   "damage": 17,
+   "damage_raw": "17,18,27",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "m, m, m",
+   "on_block": "-12",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+1, 2, 1",
+    "id": "fen_95",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_t_srpF",
+     "Ta_step_Zutuki"
+    ]
+   }
+  },
+  "WS+2": {
+   "name": "WS+2",
+   "name_source": "notation-only",
+   "input": "WS+2",
+   "damage": 22,
+   "damage_raw": "22",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "m",
+   "on_block": "-9",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+2",
+    "id": "fen_96",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Co_syarp00",
+     "Ta_6lrp",
+     "Ta_tukilk",
+     "Ta_rp00"
+    ]
+   }
+  },
+  "WS+3": {
+   "name": "WS+3",
+   "name_source": "notation-only",
+   "input": "WS+3",
+   "damage": 27,
+   "damage_raw": "27",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-12~-11",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+3",
+    "id": "fen_97",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_sWALKF",
+     "Co_syalk00",
+     "Ta_lk00"
+    ]
+   }
+  },
+  "WS+4": {
+   "name": "WS+4",
+   "name_source": "notation-only",
+   "input": "WS+4",
+   "damage": 24,
+   "damage_raw": "24",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-7~-6",
+   "on_hit": "+4~+5",
+   "on_ch": "+(sm)?",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+4",
+    "id": "fen_98",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_sWALKF",
+     "Co_syark00",
+     "Ta_rk00"
+    ]
+   }
+  },
+  "WS+1+2": {
+   "name": "Ta_kaityuu",
+   "name_source": "motbin-internal",
+   "input": "WS+1+2",
+   "damage": 33,
+   "damage_raw": "33",
+   "startup": 0.3833,
+   "startup_frames": 23,
+   "hit_level": "m(h or m punch parry?)",
+   "on_block": "-10",
+   "on_hit": "KND(+32)",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:334",
+   "t7": {
+    "notation": "WS+1+2",
+    "id": "fen_99",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "WS+1+2",
+    "motbin_move_id": 1583,
+    "motbin_move_name": "Ta_kaityuu",
+    "anim_name": "suta_kaityuu(DVD)",
+    "anim_id": 16718,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 334,
+     "rel_offset": 2683528,
+     "size": 3520,
+     "format_word": 100,
+     "sha256": "49d245dd6bc37107e6b03e43645530300c6b194c95a58fd870b17f37972f6692",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "FC+d/f+1": {
+   "name": "FC+d/f+1",
+   "name_source": "notation-only",
+   "input": "FC+d/f+1",
+   "damage": 24,
+   "damage_raw": "24",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l",
+   "on_block": "-13",
+   "on_hit": "-2",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FC+d/f+1",
+    "id": "fen_100",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "FC+d/f+2": {
+   "name": "FC+d/f+2",
+   "name_source": "notation-only",
+   "input": "FC+d/f+2",
+   "damage": null,
+   "damage_raw": null,
+   "startup": 0.3,
+   "startup_frames": 18,
+   "hit_level": "m",
+   "on_block": "-14",
+   "on_hit": "hKZD",
+   "on_ch": "hKZD",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FC+d/f+2",
+    "id": "fen_101",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "SS+2": {
+   "name": "SS+2",
+   "name_source": "notation-only",
+   "input": "SS+2",
+   "damage": 21,
+   "damage_raw": "21",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-1",
+   "on_hit": "+9",
+   "on_ch": "+9",
+   "notes": "Homing",
+   "anim_ref": null,
+   "t7": {
+    "notation": "SS+2",
+    "id": "fen_102",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_6lrp",
+     "Ta_tukilk",
+     "Ta_rp00"
+    ]
+   }
+  },
+  "SS+3": {
+   "name": "SS+3",
+   "name_source": "notation-only",
+   "input": "SS+3",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-13",
+   "on_hit": "-2",
+   "on_ch": "-2",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "SS+3",
+    "id": "fen_103",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_sWALKF",
+     "Ta_lk00"
+    ]
+   }
+  },
+  "SS+3, b": {
+   "name": "Ta_sWALKB",
+   "name_source": "motbin-internal",
+   "input": "SS+3, b",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-11",
+   "on_hit": "0",
+   "on_ch": "0",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:224",
+   "t7": {
+    "notation": "SS+3, b",
+    "id": "fen_104",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "SS+3, b",
+    "motbin_move_id": 1454,
+    "motbin_move_name": "Ta_sWALKB",
+    "anim_name": "coyt_bwalk00_tk7_80(DVD)",
+    "anim_id": 16608,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 224,
+     "rel_offset": 2549684,
+     "size": 1556,
+     "format_word": 100,
+     "sha256": "bfcb66b1a57908a1d99c2e11cdf6fc597d54041105fa60648b427faaee1112a7",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "SS+3, 2": {
+   "name": "SS+3, 2",
+   "name_source": "notation-only",
+   "input": "SS+3, 2",
+   "damage": 16,
+   "damage_raw": "16,27",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h, m",
+   "on_block": "-5",
+   "on_hit": "CS",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "SS+3, 2",
+    "id": "fen_105",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_6lrp",
+     "Ta_tukilk",
+     "Ta_rp00"
+    ]
+   }
+  },
+  "SS+4": {
+   "name": "SS+4",
+   "name_source": "notation-only",
+   "input": "SS+4",
+   "damage": 18,
+   "damage_raw": "18",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l",
+   "on_block": "-31",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "SS+4",
+    "id": "fen_106",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_sWALKF",
+     "Ta_rk00"
+    ]
+   }
+  },
+  "SS+4 (Far)": {
+   "name": "SS+4 (Far)",
+   "name_source": "notation-only",
+   "input": "SS+4 (Far)",
+   "damage": 18,
+   "damage_raw": "18",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l",
+   "on_block": "-31",
+   "on_hit": "-2",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "SS+4 (Far)",
+    "id": "fen_107",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_sWALKF",
+     "Ta_rk00"
+    ]
+   }
+  },
+  "SS+1+2": {
+   "name": "Ta_kaityuu",
+   "name_source": "motbin-internal",
+   "input": "SS+1+2",
+   "damage": 32,
+   "damage_raw": "32",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "0?",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:334",
+   "t7": {
+    "notation": "SS+1+2",
+    "id": "fen_108",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "SS+1+2",
+    "motbin_move_id": 1583,
+    "motbin_move_name": "Ta_kaityuu",
+    "anim_name": "suta_kaityuu(DVD)",
+    "anim_id": 16718,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 334,
+     "rel_offset": 2683528,
+     "size": 3520,
+     "format_word": 100,
+     "sha256": "49d245dd6bc37107e6b03e43645530300c6b194c95a58fd870b17f37972f6692",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "Grounded face up 3+4": {
+   "name": "Grounded face up 3+4",
+   "name_source": "notation-only",
+   "input": "Grounded face up 3+4",
+   "damage": 27,
+   "damage_raw": "27",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-4~-3",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "Grounded face up 3+4",
+    "id": "fen_109",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "Opponent Down d+3+4": {
+   "name": "Opponent Down d+3+4",
+   "name_source": "notation-only",
+   "input": "Opponent Down d+3+4",
+   "damage": 24,
+   "damage_raw": "24",
+   "startup": 0.4,
+   "startup_frames": 24,
+   "hit_level": "On grounded opponent(l)",
+   "on_block": "-13",
+   "on_hit": "-2",
+   "on_ch": "-2",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "Opponent Down d+3+4",
+    "id": "fen_110",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1+3+4": {
+   "name": "Taunt",
+   "name_source": "mvl",
+   "input": "1+3+4",
+   "damage": null,
+   "damage_raw": null,
+   "startup": 0.4,
+   "startup_frames": 24,
+   "hit_level": "(Special)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:630",
+   "t7": {
+    "notation": "1+3+4",
+    "id": "fen_111",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "1+3+4",
+    "motbin_move_id": 2199,
+    "motbin_move_name": "Ta_ap",
+    "anim_name": "kmta_ap(DVD)",
+    "anim_id": 17014,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 630,
+     "rel_offset": 3512608,
+     "size": 7684,
+     "format_word": 100,
+     "sha256": "c203d0c7fe0050b512c074df36f8ac01adbcc1d708006fb3daf48c921199f3cd",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "1+2+3+4": {
+   "name": "1+2+3+4",
+   "name_source": "notation-only",
+   "input": "1+2+3+4",
+   "damage": null,
+   "damage_raw": null,
+   "startup": 0.4,
+   "startup_frames": 24,
+   "hit_level": "(Special)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1+2+3+4",
+    "id": "fen_112",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_SUPER_0",
+     "Ta_SUPER_01",
+     "Ta_SUPER_02",
+     "Ta_SUPER_03"
+    ]
+   }
+  },
+  "1+2+3+4*": {
+   "name": "1+2+3+4*",
+   "name_source": "notation-only",
+   "input": "1+2+3+4*",
+   "damage": null,
+   "damage_raw": null,
+   "startup": 0.4,
+   "startup_frames": 24,
+   "hit_level": "(Special)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1+2+3+4*",
+    "id": "fen_113",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f+3+4": {
+   "name": "Shifting Clouds",
+   "name_source": "mvl",
+   "input": "f+3+4",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "(STC)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:381",
+   "t7": {
+    "notation": "f+3+4",
+    "id": "fen_114",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+3+4",
+    "motbin_move_id": 1636,
+    "motbin_move_name": "Ta_RSTEP",
+    "anim_name": "mbta_6wk(DVD)",
+    "anim_id": 16765,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 381,
+     "rel_offset": 2829024,
+     "size": 3068,
+     "format_word": 100,
+     "sha256": "851830acd8ad296ff4aaa8c29945a9008bce7bba5a56931684194dec6d107b4b",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+3+4__2": {
+   "name": "Shifting Clouds",
+   "name_source": "mvl",
+   "input": "f+3+4",
+   "damage": 25,
+   "damage_raw": "25",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Parry, m(STC)",
+   "on_block": "-17",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:381",
+   "t7": {
+    "notation": "f+3+4",
+    "id": "fen_115",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+3+4",
+    "motbin_move_id": 1636,
+    "motbin_move_name": "Ta_RSTEP",
+    "anim_name": "mbta_6wk(DVD)",
+    "anim_id": 16765,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 381,
+     "rel_offset": 2829024,
+     "size": 3068,
+     "format_word": 100,
+     "sha256": "851830acd8ad296ff4aaa8c29945a9008bce7bba5a56931684194dec6d107b4b",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "STC b": {
+   "name": "STC b",
+   "name_source": "notation-only",
+   "input": "STC b",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "(KNP)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "STC b",
+    "id": "fen_116",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "STC 1": {
+   "name": "STC 1",
+   "name_source": "notation-only",
+   "input": "STC 1",
+   "damage": 27,
+   "damage_raw": "27",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-14",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "STC 1",
+    "id": "fen_117",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "STC 2": {
+   "name": "STC 2",
+   "name_source": "notation-only",
+   "input": "STC 2",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-13",
+   "on_hit": "Launch",
+   "on_ch": "Launch",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "STC 2",
+    "id": "fen_118",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "STC 3": {
+   "name": "STC 3",
+   "name_source": "notation-only",
+   "input": "STC 3",
+   "damage": 40,
+   "damage_raw": "40",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "+8",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "STC 3",
+    "id": "fen_119",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "STC 4": {
+   "name": "STC 4",
+   "name_source": "notation-only",
+   "input": "STC 4",
+   "damage": 27,
+   "damage_raw": "27",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l",
+   "on_block": "-14",
+   "on_hit": "+2",
+   "on_ch": "aUD",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "STC 4",
+    "id": "fen_120",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "STC 4 (Far)": {
+   "name": "STC 4 (Far)",
+   "name_source": "notation-only",
+   "input": "STC 4 (Far)",
+   "damage": 27,
+   "damage_raw": "27",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l",
+   "on_block": "-8",
+   "on_hit": "+3",
+   "on_ch": "KND?",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "STC 4 (Far)",
+    "id": "fen_121",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "STC 1+2": {
+   "name": "STC 1+2",
+   "name_source": "notation-only",
+   "input": "STC 1+2",
+   "damage": 9,
+   "damage_raw": "9",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-9~-8",
+   "on_hit": "+2~+3",
+   "on_ch": "+2~+3",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "STC 1+2",
+    "id": "fen_122",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "STC 1+2, 1": {
+   "name": "STC 1+2, 1",
+   "name_source": "notation-only",
+   "input": "STC 1+2, 1",
+   "damage": 9,
+   "damage_raw": "9,10",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, h",
+   "on_block": "-11",
+   "on_hit": "0",
+   "on_ch": "0",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "STC 1+2, 1",
+    "id": "fen_123",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "STC 1+2, 1, 2": {
+   "name": "STC 1+2, 1, 2",
+   "name_source": "notation-only",
+   "input": "STC 1+2, 1, 2",
+   "damage": 9,
+   "damage_raw": "9,10,24",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, h, h",
+   "on_block": "-11",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "STC 1+2, 1, 2",
+    "id": "fen_124",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "b+3+4": {
+   "name": "Deceptive Step",
+   "name_source": "mvl",
+   "input": "b+3+4",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "(KNP)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:383",
+   "t7": {
+    "notation": "b+3+4",
+    "id": "fen_125",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+3+4",
+    "motbin_move_id": 1638,
+    "motbin_move_name": "Ta_BSTEP",
+    "anim_name": "mbta_hoverb(DVD)",
+    "anim_id": 16767,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 383,
+     "rel_offset": 2834900,
+     "size": 3384,
+     "format_word": 100,
+     "sha256": "3f75eaccb9a9b32fef3b89d4f32f4a4c3faec9395111052a233d43ab987745f3",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "KNP f": {
+   "name": "KNP f",
+   "name_source": "notation-only",
+   "input": "KNP f",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "(Special)(Parry)(KNP)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "KNP f",
+    "id": "fen_126",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "KNP 1": {
+   "name": "KNP 1",
+   "name_source": "notation-only",
+   "input": "KNP 1",
+   "damage": 29,
+   "damage_raw": "29",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-13",
+   "on_hit": "+8s",
+   "on_ch": "aUD",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "KNP 1",
+    "id": "fen_127",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "KNP 2": {
+   "name": "KNP 2",
+   "name_source": "notation-only",
+   "input": "KNP 2",
+   "damage": 27,
+   "damage_raw": "27",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-9",
+   "on_hit": "ATD",
+   "on_ch": "ATD",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "KNP 2",
+    "id": "fen_128",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "KNP 3": {
+   "name": "KNP 3",
+   "name_source": "notation-only",
+   "input": "KNP 3",
+   "damage": 22,
+   "damage_raw": "22",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "-12",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "KNP 3",
+    "id": "fen_129",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "KNP 4": {
+   "name": "KNP 4",
+   "name_source": "notation-only",
+   "input": "KNP 4",
+   "damage": 40,
+   "damage_raw": "40",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "-7~-4",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "KNP 4",
+    "id": "fen_130",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "KNP 4, 3+4": {
+   "name": "KNP 4, 3+4",
+   "name_source": "notation-only",
+   "input": "KNP 4, 3+4",
+   "damage": 40,
+   "damage_raw": "40,27",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ), m",
+   "on_block": "-7~-4",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "KNP 4, 3+4",
+    "id": "fen_131",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "qcf": {
+   "name": "Lingering Shadow",
+   "name_source": "mvl",
+   "input": "qcf",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "(Special)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "qcf",
+    "id": "fen_132",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_hadoh02",
+     "Ta_sWALKF",
+     "st2cr_00FRv",
+     "Ta_step_RP"
+    ]
+   }
+  },
+  "qcf+1": {
+   "name": "Landslide",
+   "name_source": "mvl",
+   "input": "qcf+1",
+   "damage": null,
+   "damage_raw": "33?",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-14",
+   "on_hit": "+2",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "qcf+1",
+    "id": "fen_133",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_step_LP",
+     "Ta_lp00F",
+     "Ta_renda"
+    ]
+   }
+  },
+  "qcf+2": {
+   "name": "Mountain Crusher",
+   "name_source": "mvl",
+   "input": "qcf+2",
+   "damage": 29,
+   "damage_raw": "29",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-14~-13",
+   "on_hit": "Launch",
+   "on_ch": "Launch",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "qcf+2",
+    "id": "fen_134",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_step_RP",
+     "Ta_rp00F",
+     "Ta_s_trp00"
+    ]
+   }
+  },
+  "qcf, 3": {
+   "name": "qcf, 3",
+   "name_source": "notation-only",
+   "input": "qcf, 3",
+   "damage": 27,
+   "damage_raw": "27",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-12~-11",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "qcf, 3",
+    "id": "fen_135",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_lk00",
+     "Ta_sWALKF",
+     "Ta_s_tlk"
+    ]
+   }
+  },
+  "qcf, 4": {
+   "name": "qcf, 4",
+   "name_source": "notation-only",
+   "input": "qcf, 4",
+   "damage": 24,
+   "damage_raw": "24",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-7~-6",
+   "on_hit": "+4~+5",
+   "on_ch": "+4~+5",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "qcf, 4",
+    "id": "fen_136",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_rk00",
+     "Ta_sWALKF",
+     "Ta_s_trk"
+    ]
+   }
+  },
+  "qcf+1+2": {
+   "name": "Yan Wang's Wrath",
+   "name_source": "mvl",
+   "input": "qcf+1+2",
+   "damage": 31,
+   "damage_raw": "31",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "+4 OC",
+   "on_hit": "+9 OC",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "qcf+1+2",
+    "id": "fen_137",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_step_Zutuki",
+     "Ta_6lrp"
+    ]
+   }
+  },
+  "qcf+3+4": {
+   "name": "Ta_RSTEP",
+   "name_source": "motbin-internal",
+   "input": "qcf+3+4",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "(STC)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:381",
+   "t7": {
+    "notation": "qcf+3+4",
+    "id": "fen_138",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "qcf+3+4",
+    "motbin_move_id": 1636,
+    "motbin_move_name": "Ta_RSTEP",
+    "anim_name": "mbta_6wk(DVD)",
+    "anim_id": 16765,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 381,
+     "rel_offset": 2829024,
+     "size": 3068,
+     "format_word": 100,
+     "sha256": "851830acd8ad296ff4aaa8c29945a9008bce7bba5a56931684194dec6d107b4b",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "qcf+1+4": {
+   "name": "qcf+1+4",
+   "name_source": "notation-only",
+   "input": "qcf+1+4",
+   "damage": 9,
+   "damage_raw": "9,13",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "lh",
+   "on_block": "-31 OC",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "qcf+1+4",
+    "id": "fen_139",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "qcf+1+4 (Second hit only)": {
+   "name": "qcf+1+4 (Second hit only)",
+   "name_source": "notation-only",
+   "input": "qcf+1+4 (Second hit only)",
+   "damage": 13,
+   "damage_raw": "13",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-2",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "qcf+1+4 (Second hit only)",
+    "id": "fen_140",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "BT 1": {
+   "name": "Backfist",
+   "name_source": "mvl",
+   "input": "BT 1",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": 0.2,
+   "startup_frames": 12,
+   "hit_level": "h",
+   "on_block": "-1",
+   "on_hit": "+14",
+   "on_ch": "+14",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "BT 1",
+    "id": "fen_141",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "BT 2": {
+   "name": "Adamantine Uppercut",
+   "name_source": "mvl",
+   "input": "BT 2",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-6",
+   "on_hit": "+5",
+   "on_ch": "+5",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "BT 2",
+    "id": "fen_142",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "BT 2, 2": {
+   "name": "Circling Tiger",
+   "name_source": "mvl",
+   "input": "BT 2, 2",
+   "damage": 16,
+   "damage_raw": "16,22",
+   "startup": 0.2667,
+   "startup_frames": 16,
+   "hit_level": "m, m",
+   "on_block": "-13 OC",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "BT 2, 2",
+    "id": "fen_143",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "BT 3": {
+   "name": "Bow Kick",
+   "name_source": "mvl",
+   "input": "BT 3",
+   "damage": 40,
+   "damage_raw": "40",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "+4~+5 OC",
+   "on_hit": "+8~+9 OC",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "BT 3",
+    "id": "fen_144",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "BT 1+2": {
+   "name": "Iron Shield",
+   "name_source": "mvl",
+   "input": "BT 1+2",
+   "damage": 29,
+   "damage_raw": "29",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-5",
+   "on_hit": "CS",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "BT 1+2",
+    "id": "fen_145",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "BT d+3": {
+   "name": "Reverse Sweep Kick",
+   "name_source": "mvl",
+   "input": "BT d+3",
+   "damage": 18,
+   "damage_raw": "18",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-26",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "BT d+3",
+    "id": "fen_146",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "BT d+3 (Far)": {
+   "name": "BT d+3 (Far)",
+   "name_source": "notation-only",
+   "input": "BT d+3 (Far)",
+   "damage": 18,
+   "damage_raw": "18",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-26",
+   "on_hit": "-3",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "BT d+3 (Far)",
+    "id": "fen_147",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "BT 1+4 or 2+3": {
+   "name": "BT 1+4 or 2+3",
+   "name_source": "notation-only",
+   "input": "BT 1+4 or 2+3",
+   "damage": 50,
+   "damage_raw": "50",
+   "startup": 0.2167,
+   "startup_frames": 13,
+   "hit_level": "h(Throw)",
+   "on_block": "Throw",
+   "on_hit": "Throw",
+   "on_ch": "Throw",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "BT 1+4 or 2+3",
+    "id": "fen_148",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "Command": {
+   "name": "Command",
+   "name_source": "notation-only",
+   "input": "Command",
+   "damage": null,
+   "damage_raw": "Damage",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Hit level",
+   "on_block": "Block frame",
+   "on_hit": "Hit frame",
+   "on_ch": "Counter hit frame",
+   "notes": "Notes",
+   "anim_ref": null,
+   "t7": {
+    "notation": "Command",
+    "id": "fen_149",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "4": {
+   "name": "Rising Heel Kick",
+   "name_source": "mvl",
+   "input": "4",
+   "damage": 22,
+   "damage_raw": "22",
+   "startup": 0.1833,
+   "startup_frames": 11,
+   "hit_level": "h",
+   "on_block": "-6",
+   "on_hit": "+5",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "4",
+    "id": "fen_150",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_sWALKF",
+     "Ta_rk00"
+    ]
+   }
+  },
+  "f+1": {
+   "name": "Ta_lp00F",
+   "name_source": "motbin-internal",
+   "input": "f+1",
+   "damage": 9,
+   "damage_raw": "9",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h",
+   "on_block": "+1",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:451",
+   "t7": {
+    "notation": "f+1",
+    "id": "fen_151",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+1",
+    "motbin_move_id": 1712,
+    "motbin_move_name": "Ta_lp00F",
+    "anim_name": "mota_lp01(DVD)",
+    "anim_id": 16835,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 451,
+     "rel_offset": 2919636,
+     "size": 2140,
+     "format_word": 100,
+     "sha256": "952fbaaa638d3cfe35e79c3c1f2d79fd6edfffb1e6837a3cc6bc2b09cbaae91a",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+3__2": {
+   "name": "Ta_tukilk",
+   "name_source": "motbin-internal",
+   "input": "f+3",
+   "damage": 13,
+   "damage_raw": "13",
+   "startup": 0.35,
+   "startup_frames": 21,
+   "hit_level": "m",
+   "on_block": "-3",
+   "on_hit": "+9",
+   "on_ch": "+9",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:457",
+   "t7": {
+    "notation": "f+3",
+    "id": "fen_152",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+3",
+    "motbin_move_id": 1718,
+    "motbin_move_name": "Ta_tukilk",
+    "anim_name": "kmta_tukilk(DVD)",
+    "anim_id": 16841,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 457,
+     "rel_offset": 2930824,
+     "size": 3472,
+     "format_word": 100,
+     "sha256": "ce5de700ee2efc34c77584025839ded2a6a21f4e75f968191173b5b3bc868066",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f, F+1": {
+   "name": "f, F+1",
+   "name_source": "notation-only",
+   "input": "f, F+1",
+   "damage": 9,
+   "damage_raw": "9",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "+1",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f, F+1",
+    "id": "fen_153",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "d+1": {
+   "name": "Co_t_slp00",
+   "name_source": "motbin-internal",
+   "input": "d+1",
+   "damage": 6,
+   "damage_raw": "6",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm (TC)",
+   "on_block": "-5",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:473",
+   "t7": {
+    "notation": "d+1",
+    "id": "fen_154",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+1",
+    "motbin_move_id": 1753,
+    "motbin_move_name": "Co_t_slp00",
+    "anim_name": "kzco_sylp01_10f(DVD)",
+    "anim_id": 16857,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 473,
+     "rel_offset": 2975196,
+     "size": 2136,
+     "format_word": 100,
+     "sha256": "a9b2f6401458dd1d24dbb46ccba3d89c0ea1cae8a3cb6f33c724e372b75b7481",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d+3": {
+   "name": "Reverse Sweep Kick",
+   "name_source": "mvl",
+   "input": "d+3",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-17",
+   "on_hit": "-3",
+   "on_ch": "-3",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:480",
+   "t7": {
+    "notation": "d+3",
+    "id": "fen_155",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+3",
+    "motbin_move_id": 1755,
+    "motbin_move_name": "Co_t_slk00",
+    "anim_name": "kjta_lktslk01(DVD)",
+    "anim_id": 16864,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 480,
+     "rel_offset": 2988048,
+     "size": 3052,
+     "format_word": 100,
+     "sha256": "4f8cd60dd90fbfee09ea5b3e35778c215e8b1fee6df2acb48da1d98c86046c2a",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d+3+4": {
+   "name": "Thunder Stomp",
+   "name_source": "mvl",
+   "input": "d+3+4",
+   "damage": 9,
+   "damage_raw": "9",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-13",
+   "on_hit": "-2",
+   "on_ch": "-2",
+   "notes": null,
+   "anim_ref": "t7:fen:0x8000:93",
+   "t7": {
+    "notation": "d+3+4",
+    "id": "fen_156",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+3+4",
+    "motbin_move_id": 1756,
+    "motbin_move_name": "Co_t_srk00",
+    "anim_name": "ygco_tsrk(DVD)",
+    "anim_id": 32861,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x8000",
+     "source": "common.arc",
+     "section": 0,
+     "entry": 93,
+     "rel_offset": 584104,
+     "size": 2340,
+     "format_word": 100,
+     "sha256": "97ee309b5c5cfb36f2e6756f2046dd971edda51f1abe89874dbf844fcbb493ed",
+     "blob_file": "common_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "FC+d/b or d+1": {
+   "name": "Co_t_slp00",
+   "name_source": "motbin-internal",
+   "input": "FC+d/b or d+1",
+   "damage": 6,
+   "damage_raw": "6",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm (TC)",
+   "on_block": "-5",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:473",
+   "t7": {
+    "notation": "FC+d/b or d+1",
+    "id": "fen_157",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+1",
+    "motbin_move_id": 1753,
+    "motbin_move_name": "Co_t_slp00",
+    "anim_name": "kzco_sylp01_10f(DVD)",
+    "anim_id": 16857,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 473,
+     "rel_offset": 2975196,
+     "size": 2136,
+     "format_word": 100,
+     "sha256": "a9b2f6401458dd1d24dbb46ccba3d89c0ea1cae8a3cb6f33c724e372b75b7481",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "FC+d/b or d+2": {
+   "name": "Ta_hebi",
+   "name_source": "motbin-internal",
+   "input": "FC+d/b or d+2",
+   "damage": 10,
+   "damage_raw": "10",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm (TC)",
+   "on_block": "-4",
+   "on_hit": "+7",
+   "on_ch": "+7",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:479",
+   "t7": {
+    "notation": "FC+d/b or d+2",
+    "id": "fen_158",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+2",
+    "motbin_move_id": 1754,
+    "motbin_move_name": "Ta_hebi",
+    "anim_name": "nota_hebi_s(DVD)",
+    "anim_id": 16863,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 479,
+     "rel_offset": 2985056,
+     "size": 2992,
+     "format_word": 100,
+     "sha256": "f48a9f8df7b9462098a261c839eb82e767cfbfd093ff05714b321e72bb69a5a7",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "FC+3": {
+   "name": "FC+3",
+   "name_source": "notation-only",
+   "input": "FC+3",
+   "damage": 16,
+   "damage_raw": "16",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-17",
+   "on_hit": "-3",
+   "on_ch": "-3",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FC+3",
+    "id": "fen_159",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "FC+4": {
+   "name": "FC+4",
+   "name_source": "notation-only",
+   "input": "FC+4",
+   "damage": 13,
+   "damage_raw": "13",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l (TC)",
+   "on_block": "-15",
+   "on_hit": "-4",
+   "on_ch": "-4",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FC+4",
+    "id": "fen_160",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "WS+3__2": {
+   "name": "WS+3",
+   "name_source": "notation-only",
+   "input": "WS+3",
+   "damage": 27,
+   "damage_raw": "27",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ)",
+   "on_block": "-12~-11",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+3",
+    "id": "fen_161",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_sWALKF",
+     "Co_syalk00",
+     "Ta_lk00"
+    ]
+   }
+  },
+  "u+2__2": {
+   "name": "Leaping Hammer Fist",
+   "name_source": "mvl",
+   "input": "u+2",
+   "damage": 40,
+   "damage_raw": "40",
+   "startup": 0.6333,
+   "startup_frames": 38,
+   "hit_level": "m (TJ)",
+   "on_block": "+1",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "u+2",
+    "id": "fen_162",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "SS+1": {
+   "name": "SS+1",
+   "name_source": "notation-only",
+   "input": "SS+1",
+   "damage": 9,
+   "damage_raw": "9",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "+1",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "SS+1",
+    "id": "fen_163",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_st2cr00_",
+     "Ta_lp00F",
+     "Ta_hadoh00",
+     "Ta_hadoh02",
+     "Ta_step_RP"
+    ]
+   }
+  },
+  "SS+2__2": {
+   "name": "SS+2",
+   "name_source": "notation-only",
+   "input": "SS+2",
+   "damage": 24,
+   "damage_raw": "24",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-1",
+   "on_hit": "+9",
+   "on_ch": "+9",
+   "notes": "Homing",
+   "anim_ref": null,
+   "t7": {
+    "notation": "SS+2",
+    "id": "fen_164",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "Ta_6lrp",
+     "Ta_tukilk",
+     "Ta_rp00"
+    ]
+   }
+  },
+  "SS+3+4": {
+   "name": "Ta_lk00",
+   "name_source": "motbin-internal",
+   "input": "SS+3+4",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-11",
+   "on_hit": "0",
+   "on_ch": "0",
+   "notes": null,
+   "anim_ref": "t7:fen:0x4000:362",
+   "t7": {
+    "notation": "SS+3+4",
+    "id": "fen_165",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "SS+3+4",
+    "motbin_move_id": 1615,
+    "motbin_move_name": "Ta_lk00",
+    "anim_name": "kmta_lk(DVD)",
+    "anim_id": 16746,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "fenrotsm.arc",
+     "section": 0,
+     "entry": 362,
+     "rel_offset": 2763352,
+     "size": 3272,
+     "format_word": 100,
+     "sha256": "fc6e6a4e08458fa433e16419bf7fdcad5c6f78391d2425a236a4a2d959adc0dc",
+     "blob_file": "fen_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "BT 4": {
+   "name": "Rising Heel Kick",
+   "name_source": "mvl",
+   "input": "BT 4",
+   "damage": 33,
+   "damage_raw": "33",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h",
+   "on_block": "-8",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "BT 4",
+    "id": "fen_166",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  }
+ }
+}

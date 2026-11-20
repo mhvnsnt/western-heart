@@ -1,0 +1,174 @@
+{
+ "fighter": "megami",
+ "gate": {
+  "roundState": "fight",
+  "p1id": "megami",
+  "skinned": 52,
+  "paused": false
+ },
+ "setup": {
+  "p1": "megami",
+  "paused": false,
+  "roundState": "fight",
+  "t3actions": 12,
+  "actionNames": [
+   "light",
+   "stance",
+   "grab",
+   "heavy",
+   "medium",
+   "walkBack",
+   "crouchHold",
+   "backdash",
+   "jumpUp",
+   "jumpFwd",
+   "jumpBack",
+   "sidestepA"
+  ]
+ },
+ "rows": [
+  {
+   "notation": "1",
+   "fired": {
+    "ok": true,
+    "err": null,
+    "state": "attack"
+   },
+   "pre_plan": null,
+   "plan": "light",
+   "planKind": "generic",
+   "planWhy": "generic light for armL",
+   "state": "attack"
+  },
+  {
+   "notation": "2",
+   "fired": {
+    "ok": true,
+    "err": null,
+    "state": "attack"
+   },
+   "pre_plan": "light",
+   "plan": "light",
+   "planKind": "generic",
+   "planWhy": "generic light for armR",
+   "state": "attack"
+  },
+  {
+   "notation": "3",
+   "fired": {
+    "ok": false,
+    "err": null,
+    "state": "attack"
+   },
+   "pre_plan": "light",
+   "plan": "light",
+   "planKind": "generic",
+   "planWhy": "generic light for armR",
+   "state": "attack"
+  },
+  {
+   "notation": "4",
+   "fired": {
+    "ok": false,
+    "err": null,
+    "state": "attack"
+   },
+   "pre_plan": "light",
+   "plan": "light",
+   "planKind": "generic",
+   "planWhy": "generic light for armR",
+   "state": "attack"
+  },
+  {
+   "notation": "1+2",
+   "fired": {
+    "ok": false,
+    "err": null,
+    "state": "attack"
+   },
+   "pre_plan": "medium",
+   "plan": "medium",
+   "planKind": "generic",
+   "planWhy": "generic medium for legR",
+   "state": "attack"
+  },
+  {
+   "notation": "d/f+1",
+   "fired": {
+    "ok": false,
+    "err": null,
+    "state": "attack"
+   },
+   "pre_plan": "medium",
+   "plan": "medium",
+   "planKind": "generic",
+   "planWhy": "generic medium for legR",
+   "state": "attack"
+  },
+  {
+   "notation": "d+1",
+   "fired": {
+    "ok": false,
+    "err": null,
+    "state": "attack"
+   },
+   "pre_plan": "medium",
+   "plan": "medium",
+   "planKind": "generic",
+   "planWhy": "generic medium for legR",
+   "state": "attack"
+  },
+  {
+   "notation": "d/f+2",
+   "fired": {
+    "ok": false,
+    "err": null,
+    "state": "attack"
+   },
+   "pre_plan": "medium",
+   "plan": "medium",
+   "planKind": "generic",
+   "planWhy": "generic medium for legR",
+   "state": "attack"
+  },
+  {
+   "notation": "u/f+4",
+   "fired": {
+    "ok": false,
+    "err": null,
+    "state": "attack"
+   },
+   "pre_plan": "medium",
+   "plan": "medium",
+   "planKind": "generic",
+   "planWhy": "generic medium for legR",
+   "state": "attack"
+  },
+  {
+   "notation": "1+3",
+   "fired": {
+    "ok": false,
+    "err": null,
+    "state": "attack"
+   },
+   "pre_plan": "medium",
+   "plan": "medium",
+   "planKind": "generic",
+   "planWhy": "generic medium for legR",
+   "state": "attack"
+  },
+  {
+   "notation": "2+4",
+   "fired": {
+    "ok": false,
+    "err": null,
+    "state": "attack"
+   },
+   "pre_plan": "medium",
+   "plan": "grab",
+   "planKind": "generic",
+   "planWhy": "generic grab for armL (NOT a throw row)",
+   "state": "attack"
+  }
+ ]
+}

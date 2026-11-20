@@ -1,0 +1,197 @@
+{
+ "format": "western-heart heartmind-dw-teardown v1",
+ "source": "Tekken 5 disc, TK5DATA2.BIN (romD), Internet Archive item slus-210.59.-tekken-5",
+ "canon_law": "\"Devil\" only in our own way/language, never the source game's way. There is NO Jin Kazama in our game at all — the ONLY Jin is the soul JIN (the Blade Soul), pickable as Phantom (Law 2, Jay 2026-11-08 ~00:04). The Devil Jin kit is moveset donor data only, never a character.",
+ "ready": false,
+ "enemyAi": null,
+ "waveTables": null,
+ "doorSystems": null,
+ "not_ready_reason": "enemyAi (per-enemy AI patterns) and doorSystems (platforming/door progression) live in TK5DATA0/1 (not decoded \u2014 disk quota blocks the full fetch; stream-scan found no readable DW strings in TK5DATA1). waveTables (per-stage wave composition) needs the load-list-to-stage assignment resolved; spawn counts/order are not in the load lists. Nothing is guessed. See DW-DECODE-LOG.md.",
+ "dw_data": {
+  "moveset_bank": "game/data/moveset-library/banks/dw.json (165 moves, v1 schema)",
+  "motion_bank": "teardown/tekken5/dw-motion-bank.json (220 clips, 214 extracted)",
+  "wave_echo_archetypes": [
+   {
+    "source_file": "gym_init_obj_mon_power1.dat",
+    "canon": "Wave echo \u2014 archetype (power 1)",
+    "bones": 78,
+    "frames": 1
+   },
+   {
+    "source_file": "gym_init_obj_mon_power2.dat",
+    "canon": "Wave echo \u2014 archetype (power 2)",
+    "bones": 78,
+    "frames": 1
+   },
+   {
+    "source_file": "gym_init_obj_mon_speed1.dat",
+    "canon": "Wave echo \u2014 archetype (speed 1)",
+    "bones": 78,
+    "frames": 1
+   },
+   {
+    "source_file": "gym_init_obj_mon_standard1.dat",
+    "canon": "Wave echo \u2014 archetype (standard 1)",
+    "bones": 78,
+    "frames": 1
+   },
+   {
+    "source_file": "gym_init_obj_mon_standard2.dat",
+    "canon": "Wave echo \u2014 archetype (standard 2)",
+    "bones": 78,
+    "frames": 1
+   },
+   {
+    "source_file": "gym_init_obj_mon_tricky1.dat",
+    "canon": "Wave echo \u2014 archetype (tricky 1)",
+    "bones": 78,
+    "frames": 1
+   },
+   {
+    "source_file": "gym_init_obj_tk_power1.dat",
+    "canon": "Wave echo \u2014 archetype (power 1, second family)",
+    "bones": 78,
+    "frames": 1
+   },
+   {
+    "source_file": "gym_init_obj_tk_power2.dat",
+    "canon": "Wave echo \u2014 archetype (power 2, second family)",
+    "bones": 78,
+    "frames": 1
+   },
+   {
+    "source_file": "gym_init_obj_tk_speed1.dat",
+    "canon": "Wave echo \u2014 archetype (speed 1, second family)",
+    "bones": 78,
+    "frames": 1
+   },
+   {
+    "source_file": "gym_init_obj_tk_standard1.dat",
+    "canon": "Wave echo \u2014 archetype (standard 1, second family)",
+    "bones": 78,
+    "frames": 1
+   },
+   {
+    "source_file": "gym_init_obj_tk_standard2.dat",
+    "canon": "Wave echo \u2014 archetype (standard 2, second family)",
+    "bones": 78,
+    "frames": 1
+   },
+   {
+    "source_file": "gym_init_obj_tk_tricky1.dat",
+    "canon": "Wave echo \u2014 archetype (tricky 1, second family)",
+    "bones": 78,
+    "frames": 1
+   }
+  ],
+  "wave_echo_archetype_count": 12,
+  "boss_kits": {
+   "surge": {
+    "canon_kit": "Surge Kit",
+    "clips": 52,
+    "frames": 3488,
+    "duration_s": 58.132
+   },
+   "warden": {
+    "canon_kit": "Warden Kit",
+    "clips": 39,
+    "frames": 3186,
+    "duration_s": 53.099
+   },
+   "drowned_ogre": {
+    "canon_kit": "Drowned Ogre Kit",
+    "clips": 29,
+    "frames": 3245,
+    "duration_s": 54.084
+   },
+   "unmasked": {
+    "canon_kit": "Unmasked Kit",
+    "clips": 42,
+    "frames": 4517,
+    "duration_s": 75.283
+   },
+   "surge_bloom": {
+    "canon_kit": "Soul Surge Bloom",
+    "clips": 4,
+    "frames": 52,
+    "duration_s": 0.868
+   }
+  },
+  "boss_bodies": [
+   {
+    "source_file": "gym_init_obj_boss1.dat",
+    "canon": "WARDEN OF THE THRESHOLD \u2014 body/init",
+    "bones": 78
+   },
+   {
+    "source_file": "gym_init_obj_boss2.dat",
+    "canon": "THE MASKS \u2014 body/init",
+    "bones": 78
+   },
+   {
+    "source_file": "gym_init_obj_boss3.dat",
+    "canon": "THE DROWNED OGRE \u2014 body/init",
+    "bones": 111
+   },
+   {
+    "source_file": "gym_init_obj_boss5.dat",
+    "canon": "THE UNMASKED \u2014 body/init",
+    "bones": 111
+   }
+  ],
+  "stages": [
+   {
+    "source_file": "moj_stg00.dat",
+    "canon_stage": "THE THRESHOLD",
+    "size_bytes": 1916672,
+    "nudp_count": 29,
+    "tim2_count": 29,
+    "mif_count": 29,
+    "nudp_tiling_ok": true
+   },
+   {
+    "source_file": "moj_stg01.dat",
+    "canon_stage": "THE GALLERY OF MASKS",
+    "size_bytes": 872320,
+    "nudp_count": 18,
+    "tim2_count": 18,
+    "mif_count": 18,
+    "nudp_tiling_ok": true
+   },
+   {
+    "source_file": "moj_stg02.dat",
+    "canon_stage": "THE DROWNING ROOM",
+    "size_bytes": 1392384,
+    "nudp_count": 20,
+    "tim2_count": 20,
+    "mif_count": 20,
+    "nudp_tiling_ok": true
+   },
+   {
+    "source_file": "moj_stg04.dat",
+    "canon_stage": "THE STILL POINT",
+    "size_bytes": 200192,
+    "nudp_count": 3,
+    "tim2_count": 3,
+    "mif_count": 3,
+    "nudp_tiling_ok": true
+   }
+  ],
+  "stage_note": "THE FURNACE (stage 4) has no DW donor: no boss4 init, no moj_stg03. The SOUL SPHERE is an orb that spawns monsters; the missing body is the design.",
+  "load_list_evidence": {
+   "blocks_with_mon_archetypes": 120,
+   "blocks_with_tk_archetypes": 76,
+   "blocks_with_boss": 16,
+   "note": "Counts of romD name-list blocks referencing each family. The lists record which files load together, not spawn counts or order."
+  },
+  "missing_files": [
+   "gym_ozhe_1ckj66a.dat",
+   "gym_ikt5_katgym_Bbr_bbblow.dat",
+   "gym_ikt5_katgym_Gan_mekin.dat",
+   "gym_init_obj_testchr1.dat",
+   "gym_init_obj_testchr2.dat",
+   "gym_init_obj_testchr3.dat"
+  ],
+  "decode_status": "Structural decode complete (header, record table, bone table, data section, first-frame float32 values for type-3/11 bones). Inner keyframe packing (delta frames, type-7 6-byte encoding) NOT yet reversed \u2014 see DW-DECODE-LOG.md \u00a7keyframe."
+ }
+}

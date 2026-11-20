@@ -1,0 +1,5705 @@
+{
+ "source_game": "Tekken 6 (PSP)",
+ "format": "COM moveset container (round 6/7 decode)",
+ "character": "HEIHACHI",
+ "character_evidence": "in-file string at offset 624 of its own plaintext + author string + build timestamp (round 6, HIGH confidence)",
+ "gzip_idx": 64,
+ "data401_entry": 718,
+ "file": "idx64_entry718.bin",
+ "size": 475520,
+ "sha256": "1ee749068feccfcf82cdf2fcc53a5ef7350866085539e6300444c12f605579b4",
+ "header": {
+  "version_be_u32": 1,
+  "magic": "COM\\0",
+  "word_at_8_le": 0,
+  "count_word_at_12_le": 12,
+  "count_word_note": "per-file count 7-16 (sum 176); exact referent UNPROVEN (round 6) - not used as an asset census"
+ },
+ "pointer_table_at_368": [
+  {
+   "slot": 0,
+   "word_a": 917491,
+   "offset": 18752,
+   "section_len": 17120
+  },
+  {
+   "slot": 1,
+   "word_a": 214,
+   "offset": 35872,
+   "section_len": 10480
+  },
+  {
+   "slot": 2,
+   "word_a": 1310,
+   "offset": 46352,
+   "section_len": 5556
+  },
+  {
+   "slot": 3,
+   "word_a": 463,
+   "offset": 51908,
+   "section_len": 2352
+  },
+  {
+   "slot": 4,
+   "word_a": 196,
+   "offset": 54260,
+   "section_len": 3100
+  },
+  {
+   "slot": 5,
+   "word_a": 1550,
+   "offset": 57360,
+   "section_len": 181792
+  },
+  {
+   "slot": 6,
+   "word_a": 5681,
+   "offset": 239152,
+   "section_len": 42016
+  },
+  {
+   "slot": 7,
+   "word_a": 1313,
+   "offset": 281168,
+   "section_len": 172
+  },
+  {
+   "slot": 8,
+   "word_a": 43,
+   "offset": 281340,
+   "section_len": 39888
+  },
+  {
+   "slot": 9,
+   "word_a": 3324,
+   "offset": 321228,
+   "section_len": 288
+  },
+  {
+   "slot": 10,
+   "word_a": 24,
+   "offset": 321516,
+   "section_len": 108
+  },
+  {
+   "slot": 11,
+   "word_a": 9,
+   "offset": 321624,
+   "section_len": 95920
+  },
+  {
+   "slot": 12,
+   "word_a": 1090,
+   "offset": 417544,
+   "section_len": 4084
+  },
+  {
+   "slot": 13,
+   "word_a": 1021,
+   "offset": 421628,
+   "section_len": 1176
+  },
+  {
+   "slot": 14,
+   "word_a": 147,
+   "offset": 422804,
+   "section_len": 6208
+  },
+  {
+   "slot": 15,
+   "word_a": 776,
+   "offset": 429012,
+   "section_len": 21708
+  },
+  {
+   "slot": 16,
+   "word_a": 5427,
+   "offset": 450720,
+   "section_len": 2000
+  },
+  {
+   "slot": 17,
+   "word_a": 100,
+   "offset": 452720,
+   "section_len": 7368
+  },
+  {
+   "slot": 18,
+   "word_a": 1228,
+   "offset": 460088,
+   "section_len": 5440
+  },
+  {
+   "slot": 19,
+   "word_a": 85,
+   "offset": 465528,
+   "section_len": 1980
+  },
+  {
+   "slot": 20,
+   "word_a": 0,
+   "offset": 465528,
+   "section_len": 1980
+  },
+  {
+   "slot": 21,
+   "word_a": 0,
+   "offset": 465528,
+   "section_len": 1980
+  },
+  {
+   "slot": 22,
+   "word_a": 0,
+   "offset": 465528,
+   "section_len": 1980
+  },
+  {
+   "slot": 23,
+   "word_a": 165,
+   "offset": 467508,
+   "section_len": 200
+  },
+  {
+   "slot": 24,
+   "word_a": 25,
+   "offset": 467708,
+   "section_len": 20
+  },
+  {
+   "slot": 25,
+   "word_a": 0,
+   "offset": 467728,
+   "section_len": 2508
+  },
+  {
+   "slot": 26,
+   "word_a": 0,
+   "offset": 470236,
+   "section_len": 4580
+  },
+  {
+   "slot": 27,
+   "word_a": 0,
+   "offset": 474816,
+   "section_len": 20
+  },
+  {
+   "slot": 28,
+   "word_a": 0,
+   "offset": 474836,
+   "section_len": 20
+  },
+  {
+   "slot": 29,
+   "word_a": 0,
+   "offset": 474856,
+   "section_len": 20
+  },
+  {
+   "slot": 30,
+   "word_a": 0,
+   "offset": 474876,
+   "section_len": 644
+  },
+  {
+   "slot": 31,
+   "word_a": 0,
+   "offset": 0,
+   "section_len": 18752
+  }
+ ],
+ "name_region": {
+  "start": 624,
+  "end": 46352,
+  "note": "move-name record region: English move names first, then localized name/description variants (all byte-carried strings, verbatim with offsets); records span name offset -> next name offset"
+ },
+ "author_string": "[HEIHACHI]1",
+ "moves": [
+  {
+   "name": "Flash Punch Combo",
+   "name_offset": 726,
+   "record_len": 176,
+   "record_hex": "466c6173682050756e636820436f6d626f0000e3819be38293e38193e38186e3828ce381a3e38191e382930000ee8095ee8095ee80960000ee8095ee8095ee80960000ee8095ee8095ee80960000ee8095ee8095ee80960000ee8095ee8095ee80960000ee8095ee8095ee80960000ee8095ee8095ee80960000ee8095ee8095ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e383afe383b3e38384e383bce38391e383b3e383810000",
+   "input_from_name": "Flash Punch Combo",
+   "command_glyphs": [
+    "U+E015",
+    "U+E015",
+    "U+E016"
+   ],
+   "command_decoded": "1,1,2",
+   "command_complete": true
+  },
+  {
+   "name": "Left Right Combo",
+   "name_offset": 902,
+   "record_len": 139,
+   "record_hex": "4c65667420526967687420436f6d626f0000e383afe383b3e38384e383bce38391e383b3e383810000ee8095ee80960000ee8095ee80960000ee8095ee80960000ee8095ee80960000ee8095ee80960000ee8095ee80960000ee8095ee80960000ee8095ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e9acbce593ade980a3e68bb30000",
+   "input_from_name": "1,2 Combo",
+   "command_glyphs": [
+    "U+E015",
+    "U+E016"
+   ],
+   "command_decoded": "1,2",
+   "command_complete": true
+  },
+  {
+   "name": "Demon Slayer",
+   "name_offset": 1041,
+   "record_len": 162,
+   "record_hex": "44656d6f6e20536c617965720000e3818de38193e3818fe3828ce38293e38191e382930000ee8095ee8096ee80960000ee8095ee8096ee80960000ee8095ee8096ee80960000ee8095ee8096ee80960000ee8095ee8096ee80960000ee8095ee8096ee80960000ee8095ee8096ee80960000ee8095ee8096ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e9acbce593ade5899be68e8ce7a0b40000",
+   "input_from_name": "Demon Slayer",
+   "command_glyphs": [
+    "U+E015",
+    "U+E016",
+    "U+E016"
+   ],
+   "command_decoded": "1,2,2",
+   "command_complete": true
+  },
+  {
+   "name": "Demon Executioner",
+   "name_offset": 1203,
+   "record_len": 203,
+   "record_hex": "44656d6f6e20457865637574696f6e65720000e3818de38193e3818fe38194e38186e38197e38287e38186e381af0000ee8095ee8096ee8096ee80970000ee8095ee8096ee8096ee80970000ee8095ee8096ee8096ee80970000ee8095ee8096ee8096ee80970000ee8095ee8096ee8096ee80970000ee8095ee8096ee8096ee80970000ee8095ee8096ee8096ee80970000ee8095ee8096ee8096ee80970000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e9acbce593ade5899be68e8ce7a0b4e383bbe590a60000",
+   "input_from_name": "Demon Executioner",
+   "command_glyphs": [
+    "U+E015",
+    "U+E016",
+    "U+E016",
+    "U+E017"
+   ],
+   "command_decoded": "1,2,2,1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Fake Executioner",
+   "name_offset": 1406,
+   "record_len": 173,
+   "record_hex": "46616b6520457865637574696f6e65720000e3818de38193e3818fe38194e38186e38197e38287e38186e381afe383bbe38184e381aa0000ee8095ee8096ee8096ee8097ee808e286f7220ee8089290000ee8095ee8096ee8096ee8097ee808e20286f7220ee8089290000ee8095ee8096ee8096ee8097ee808e20286f7520ee8089290000ee8095ee8096ee8096ee8097ee808e20286f20ee8089290000ee8095ee8096ee8096ee8097ee808e",
+   "input_from_name": "Fake Executioner",
+   "command_glyphs": [
+    "U+E015",
+    "U+E016",
+    "U+E016",
+    "U+E017",
+    "U+E00E"
+   ],
+   "command_decoded": "1,2,2,1+2,U",
+   "command_complete": true
+  },
+  {
+   "name": " (oder ",
+   "name_offset": 1579,
+   "record_len": 131,
+   "record_hex": "20286f64657220ee8089290000ee8095ee8096ee8096ee8097ee808e20286f20ee8089290000ee8095ee8096ee8096ee8097ee808e2028d0b8d0bbd0b820ee8089290000ee8095ee8096ee8096ee8097ee808e28ed98b9ec9d8020ee8089290000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e9acbce593ade980a3e8b9b40000",
+   "input_from_name": " (oder ",
+   "command_glyphs": [
+    "U+E015",
+    "U+E016",
+    "U+E016",
+    "U+E017",
+    "U+E00E"
+   ],
+   "command_decoded": "1,2,2,1+2,U",
+   "command_complete": true
+  },
+  {
+   "name": "Demon Kicker",
+   "name_offset": 1710,
+   "record_len": 165,
+   "record_hex": "44656d6f6e204b69636b65720000e3818de38193e3818fe3828ce38293e38197e38285e381860000ee8095ee8096ee809c0000ee8095ee8096ee809c0000ee8095ee8096ee809c0000ee8095ee8096ee809c0000ee8095ee8096ee809c0000ee8095ee8096ee809c0000ee8095ee8096ee809c0000ee8095ee8096ee809c0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e5a49ae8819ee6aebae383bbe5a3b10000",
+   "input_from_name": "Demon Kicker",
+   "command_glyphs": [
+    "U+E015",
+    "U+E016",
+    "U+E01C"
+   ],
+   "command_decoded": "1,2,4",
+   "command_complete": true
+  },
+  {
+   "name": "Demon Massacre",
+   "name_offset": 1875,
+   "record_len": 191,
+   "record_hex": "44656d6f6e204d617373616372650000e3819fe38282e38293e38195e381a4e383bbe38184e381a10000ee8095ee8083ee8096ee80950000ee8095ee8083ee8096ee80950000ee8095ee8083ee8096ee80950000ee8095ee8083ee8096ee80950000ee8095ee8083ee8096ee80950000ee8095ee8083ee8096ee80950000ee8095ee8083ee8096ee80950000ee8095ee8083ee8096ee80950000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e5a49ae8819ee6aebae383bbe5bc900000",
+   "input_from_name": "Demon Massacre",
+   "command_glyphs": [
+    "U+E015",
+    "U+E003",
+    "U+E016",
+    "U+E015"
+   ],
+   "command_decoded": "1,b+2,1",
+   "command_complete": true
+  },
+  {
+   "name": "Demon Lair",
+   "name_offset": 2066,
+   "record_len": 181,
+   "record_hex": "44656d6f6e204c6169720000e3819fe38282e38293e38195e381a4e383bbe381ab0000ee8095ee8083ee8096ee809c0000ee8095ee8083ee8096ee809c0000ee8095ee8083ee8096ee809c0000ee8095ee8083ee8096ee809c0000ee8095ee8083ee8096ee809c0000ee8095ee8083ee8096ee809c0000ee8095ee8083ee8096ee809c0000ee8095ee8083ee8096ee809c0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e8a38fe68bb3e4ba8ce6aeb50000",
+   "input_from_name": "Demon Lair",
+   "command_glyphs": [
+    "U+E015",
+    "U+E003",
+    "U+E016",
+    "U+E01C"
+   ],
+   "command_decoded": "1,b+2,4",
+   "command_complete": true
+  },
+  {
+   "name": "Demon Backhand Spin",
+   "name_offset": 2247,
+   "record_len": 145,
+   "record_hex": "44656d6f6e204261636b68616e64205370696e0000e38186e38289e38191e38293e381abe381a0e382930000ee8096ee80960000ee8096ee80960000ee8096ee80960000ee8096ee80960000ee8096ee80960000ee8096ee80960000ee8096ee80960000ee8096ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e5bc90e980a3e5899be68e8ce7a0b40000",
+   "input_from_name": "Demon Backhand Spin",
+   "command_glyphs": [
+    "U+E016",
+    "U+E016"
+   ],
+   "command_decoded": "2,2",
+   "command_complete": true
+  },
+  {
+   "name": "Quick Executioner",
+   "name_offset": 2392,
+   "record_len": 179,
+   "record_hex": "517569636b20457865637574696f6e65720000e381abe3828ce38293e38194e38186e38197e38287e38186e381af0000ee8096ee8096ee80970000ee8096ee8096ee80970000ee8096ee8096ee80970000ee8096ee8096ee80970000ee8096ee8096ee80970000ee8096ee8096ee80970000ee8096ee8096ee80970000ee8096ee8096ee80970000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e5bc90e980a3e5899be68e8ce7a0b4e383bbe590a60000",
+   "input_from_name": "Quick Executioner",
+   "command_glyphs": [
+    "U+E016",
+    "U+E016",
+    "U+E017"
+   ],
+   "command_decoded": "2,2,1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Quick Executioner Feint",
+   "name_offset": 2571,
+   "record_len": 165,
+   "record_hex": "517569636b20457865637574696f6e6572204665696e740000e381abe3828ce38293e38194e38186e38197e38287e38186e381afe383bbe38184e381aa0000ee8096ee8096ee8097ee808e286f7220ee8089290000ee8096ee8096ee8097ee808e20286f7220ee8089290000ee8096ee8096ee8097ee808e20286f7520ee8089290000ee8096ee8096ee8097ee808e20286f20ee8089290000ee8096ee8096ee8097ee808e",
+   "input_from_name": "Quick Executioner Feint",
+   "command_glyphs": [
+    "U+E016",
+    "U+E016",
+    "U+E017",
+    "U+E00E"
+   ],
+   "command_decoded": "2,2,1+2,U",
+   "command_complete": true
+  },
+  {
+   "name": " (oder ",
+   "name_offset": 2736,
+   "record_len": 122,
+   "record_hex": "20286f64657220ee8089290000ee8096ee8096ee8097ee808e20286f20ee8089290000ee8096ee8096ee8097ee808e2028d0b8d0bbd0b820ee8089290000ee8096ee8096ee8097ee808e28ed98b9ec9d8020ee8089290000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e99680e5898de68995e381840000",
+   "input_from_name": " (oder ",
+   "command_glyphs": [
+    "U+E016",
+    "U+E016",
+    "U+E017",
+    "U+E00E"
+   ],
+   "command_decoded": "2,2,1+2,U",
+   "command_complete": true
+  },
+  {
+   "name": "Monzenbarai",
+   "name_offset": 2858,
+   "record_len": 131,
+   "record_hex": "4d6f6e7a656e62617261690000e38282e38293e3819ce38293e381b0e38289e381840000ee8098ee809c0000ee8098ee809c0000ee8098ee809c0000ee8098ee809c0000ee8098ee809c0000ee8098ee809c0000ee8098ee809c0000ee8098ee809c0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e7a0b4e7a095e8b9b40000",
+   "input_from_name": "Monzenbarai",
+   "command_glyphs": [
+    "U+E018",
+    "U+E01C"
+   ],
+   "command_decoded": "3,4",
+   "command_complete": true
+  },
+  {
+   "name": "Demon Scissors",
+   "name_offset": 2989,
+   "record_len": 179,
+   "record_hex": "44656d6f6e2053636973736f72730000e381afe38195e38184e38197e38285e381860000e38090ee809cee8098e380910000e38090ee809cee8098e380910000e38090ee809cee8098e380910000e38090ee809cee8098e380910000e38090ee809cee8098e380910000e38090ee809cee8098e380910000e38090ee809cee8098e380910000e38090ee809cee8098e380910000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e5899be68e8ce7a0b40000",
+   "input_from_name": "Demon Scissors",
+   "command_glyphs": [
+    "U+E01C",
+    "U+E018"
+   ],
+   "command_decoded": "4,3",
+   "command_complete": true
+  },
+  {
+   "name": "Demon Breath",
+   "name_offset": 3168,
+   "record_len": 108,
+   "record_hex": "44656d6f6e204272656174680000e38194e38186e38197e38287e38186e381af0000ee80970000ee80970000ee80970000ee80970000ee80970000ee80970000ee80970000ee80970000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e6bf80e5899be68e8ce7a0b40000",
+   "input_from_name": "Demon Breath",
+   "command_glyphs": [
+    "U+E017"
+   ],
+   "command_decoded": "1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Demon Shout",
+   "name_offset": 3276,
+   "record_len": 167,
+   "record_hex": "44656d6f6e2053686f75740000e38192e3818de38194e38186e38197e38287e38186e381af0000ee8084ee8096ee80970000ee8084ee8096ee80970000ee8084ee8096ee80970000ee8084ee8096ee80970000ee8084ee8096ee80970000ee8084ee8096ee80970000ee8084ee8096ee80970000ee8084ee8096ee80970000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e6bf80e5899be68e8ce7a0b4e383bbe590a60000",
+   "input_from_name": "Demon Shout",
+   "command_glyphs": [
+    "U+E004",
+    "U+E016",
+    "U+E017"
+   ],
+   "command_decoded": "f+2,1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Demon Shout Feint",
+   "name_offset": 3443,
+   "record_len": 156,
+   "record_hex": "44656d6f6e2053686f7574204665696e740000e38192e3818de38194e38186e38197e38287e38186e381afe383bbe38184e381aa0000ee8084ee8096ee8097ee808e286f7220ee8089290000ee8084ee8096ee8097ee808e20286f7220ee8089290000ee8084ee8096ee8097ee808e20286f7520ee8089290000ee8084ee8096ee8097ee808e20286f20ee8089290000ee8084ee8096ee8097ee808e",
+   "input_from_name": "Demon Shout Feint",
+   "command_glyphs": [
+    "U+E004",
+    "U+E016",
+    "U+E017",
+    "U+E00E"
+   ],
+   "command_decoded": "f+2,1+2,U",
+   "command_complete": true
+  },
+  {
+   "name": " (oder ",
+   "name_offset": 3599,
+   "record_len": 122,
+   "record_hex": "20286f64657220ee8089290000ee8084ee8096ee8097ee808e20286f20ee8089290000ee8084ee8096ee8097ee808e2028d0b8d0bbd0b820ee8089290000ee8084ee8096ee8097ee808e28ed98b9ec9d8020ee8089290000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e4ba94e88793e8a180e5a18a0000",
+   "input_from_name": " (oder ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E016",
+    "U+E017",
+    "U+E00E"
+   ],
+   "command_decoded": "f+2,1+2,U",
+   "command_complete": true
+  },
+  {
+   "name": "Lightning Crush",
+   "name_offset": 3721,
+   "record_len": 141,
+   "record_hex": "4c696768746e696e672043727573680000e38194e3819ee38186e38191e381a3e3818be381840000ee8084ee80980000ee8084ee80980000ee8084ee80980000ee8084ee80980000ee8084ee80980000ee8084ee80980000ee8084ee80980000ee8084ee80980000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e58fb3e8b8b5e890bde381a8e381970000",
+   "input_from_name": "Lightning Crush",
+   "command_glyphs": [
+    "U+E004",
+    "U+E018"
+   ],
+   "command_decoded": "f+3",
+   "command_complete": true
+  },
+  {
+   "name": "Right Splits Kick",
+   "name_offset": 3862,
+   "record_len": 140,
+   "record_hex": "52696768742053706c697473204b69636b0000e381bfe3818ee3818be3818be381a8e3818ae381a8e381970000ee8084ee809c0000ee8084ee809c0000ee8084ee809c0000ee8084ee809c0000ee8084ee809c0000ee8084ee809c0000ee8084ee809c0000ee8084ee809c0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e381b1e381a1e3818d0000",
+   "input_from_name": "2 Splits Kick",
+   "command_glyphs": [
+    "U+E004",
+    "U+E01C"
+   ],
+   "command_decoded": "f+4",
+   "command_complete": true
+  },
+  {
+   "name": "Chrome Dome",
+   "name_offset": 4002,
+   "record_len": 122,
+   "record_hex": "4368726f6d6520446f6d650000e381b1e381a1e3818d0000ee8084ee80970000ee8084ee80970000ee8084ee80970000ee8084ee80970000ee8084ee80970000ee8084ee80970000ee8084ee80970000ee8084ee80970000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e784a1e58f8ce68e8ce7a0b40000",
+   "input_from_name": "Chrome Dome",
+   "command_glyphs": [
+    "U+E004",
+    "U+E017"
+   ],
+   "command_decoded": "f+1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Double Palm Strike",
+   "name_offset": 4124,
+   "record_len": 165,
+   "record_hex": "446f75626c652050616c6d20537472696b650000e38280e3819de38186e38197e38287e38186e381af0000ee8082ee8095ee80950000ee8082ee8095ee80950000ee8082ee8095ee80950000ee8082ee8095ee80950000ee8082ee8095ee80950000ee8082ee8095ee80950000ee8082ee8095ee80950000ee8082ee8095ee80950000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e784a1e58f8ce98984e6a78c0000",
+   "input_from_name": "Double Palm Strike",
+   "command_glyphs": [
+    "U+E002",
+    "U+E015",
+    "U+E015"
+   ],
+   "command_decoded": "d/f+1,1",
+   "command_complete": true
+  },
+  {
+   "name": "Muso Tettsui",
+   "name_offset": 4289,
+   "record_len": 156,
+   "record_hex": "4d75736f20546574747375690000e38280e3819de38186e381a6e381a3e381a4e381840000ee8082ee8095ee80960000ee8082ee8095ee80960000ee8082ee8095ee80960000ee8082ee8095ee80960000ee8082ee8095ee80960000ee8082ee8095ee80960000ee8082ee8095ee80960000ee8082ee8095ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e586a5e9b3b3e7bfbc0000",
+   "input_from_name": "Muso Tettsui",
+   "command_glyphs": [
+    "U+E002",
+    "U+E015",
+    "U+E016"
+   ],
+   "command_decoded": "d/f+1,2",
+   "command_complete": true
+  },
+  {
+   "name": "Demon's Wings",
+   "name_offset": 4445,
+   "record_len": 130,
+   "record_hex": "44656d6f6e27732057696e67730000e38281e38184e381bbe38186e38288e3818f0000ee8082ee80970000ee8082ee80970000ee8082ee80970000ee8082ee80970000ee8082ee80970000ee8082ee80970000ee8082ee80970000ee8082ee80970000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e793a6e589b2e3828a0000",
+   "input_from_name": "Demon's Wings",
+   "command_glyphs": [
+    "U+E002",
+    "U+E017"
+   ],
+   "command_decoded": "d/f+1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Hammer Punch",
+   "name_offset": 4575,
+   "record_len": 126,
+   "record_hex": "48616d6d65722050756e63680000e3818be3828fe38289e3828fe3828a0000ee8081ee80950000ee8081ee80950000ee8081ee80950000ee8081ee80950000ee8081ee80950000ee8081ee80950000ee8081ee80950000ee8081ee80950000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e59cb0e98eaee7a0950000",
+   "input_from_name": "Hammer Punch",
+   "command_glyphs": [
+    "U+E001",
+    "U+E015"
+   ],
+   "command_decoded": "d+1",
+   "command_complete": true
+  },
+  {
+   "name": "Jichinsai",
+   "name_offset": 4701,
+   "record_len": 144,
+   "record_hex": "4a696368696e7361690000e38198e381a1e38293e38195e381840000ee8081ee80980000ee8081ee80980000ee8081ee80980000ee8081ee80980000ee8081ee80980000ee8081ee80980000ee8081ee80980000ee8081ee80980000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e4b889e5b3b6e6b581e383bbe5b081e6aebae999a3e381aee6a78be381880000",
+   "input_from_name": "Jichinsai",
+   "command_glyphs": [
+    "U+E001",
+    "U+E018"
+   ],
+   "command_decoded": "d+3",
+   "command_complete": true
+  },
+  {
+   "name": "Raijin Stance",
+   "name_offset": 4845,
+   "record_len": 175,
+   "record_hex": "5261696a696e205374616e63650000e381bfe38197e381bee3828ae38285e38186e383bbe381b5e38186e38195e381a4e38198e38293e381aee3818be381bee381880000ee8081ee80a00000ee8081ee80a00000ee8081ee80a00000ee8081ee80a00000ee8081ee80a00000ee8081ee80a00000ee8081ee80a00000ee8081ee80a00000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e5b081e6aebae999a3e383bbe7b289e7a095e68bb30000",
+   "input_from_name": "Raijin Stance",
+   "command_glyphs": [
+    "U+E001",
+    "U+E020"
+   ],
+   "command_decoded": "d+3+4",
+   "command_complete": true
+  },
+  {
+   "name": "Pulverizer",
+   "name_offset": 5020,
+   "record_len": 95,
+   "record_hex": "50756c766572697a65720000e381b5e38186e38195e381a4e38198e38293e383bbe381b5e38293e38195e38184e38191e382930000e4b889e5b3b6e6b581e383bbe5b081e6aebae999a3e381aee6a78be38188e4b8ade381ab20ee80950000",
+   "input_from_name": "Pulverizer",
+   "command_glyphs": [
+    "U+E015"
+   ],
+   "command_decoded": "1",
+   "command_complete": true
+  },
+  {
+   "name": "During Raijin Stance ",
+   "name_offset": 5115,
+   "record_len": 26,
+   "record_hex": "447572696e67205261696a696e205374616e636520ee80950000",
+   "input_from_name": "During Raijin Stance ",
+   "command_glyphs": [
+    "U+E015"
+   ],
+   "command_decoded": "1",
+   "command_complete": true
+  },
+  {
+   "name": "Pendant Raijin Stance ",
+   "name_offset": 5141,
+   "record_len": 27,
+   "record_hex": "50656e64616e74205261696a696e205374616e636520ee80950000",
+   "input_from_name": "Pendant Raijin Stance ",
+   "command_glyphs": [
+    "U+E015"
+   ],
+   "command_decoded": "1",
+   "command_complete": true
+  },
+  {
+   "name": "Durante Raijin Stance ",
+   "name_offset": 5168,
+   "record_len": 30,
+   "record_hex": "447572616e7465205261696a696e205374616e636520ee8095000057c3a4",
+   "input_from_name": "Durante Raijin Stance ",
+   "command_glyphs": [
+    "U+E015"
+   ],
+   "command_decoded": "1",
+   "command_complete": true
+  },
+  {
+   "name": "hrend Raijin Stance ",
+   "name_offset": 5198,
+   "record_len": 25,
+   "record_hex": "6872656e64205261696a696e205374616e636520ee80950000",
+   "input_from_name": "hrend Raijin Stance ",
+   "command_glyphs": [
+    "U+E015"
+   ],
+   "command_decoded": "1",
+   "command_complete": true
+  },
+  {
+   "name": "Durante Raijin Stance ",
+   "name_offset": 5223,
+   "record_len": 42,
+   "record_hex": "447572616e7465205261696a696e205374616e636520ee80950000d092d0be20d0b2d180d0b5d0bcd18f",
+   "input_from_name": "Durante Raijin Stance ",
+   "command_glyphs": [
+    "U+E015"
+   ],
+   "command_decoded": "1",
+   "command_complete": true
+  },
+  {
+   "name": " Raijin Stance ",
+   "name_offset": 5265,
+   "record_len": 20,
+   "record_hex": "205261696a696e205374616e636520ee80950000",
+   "input_from_name": " Raijin Stance ",
+   "command_glyphs": [
+    "U+E015"
+   ],
+   "command_decoded": "1",
+   "command_complete": true
+  },
+  {
+   "name": "Raijin Stance ",
+   "name_offset": 5285,
+   "record_len": 69,
+   "record_hex": "5261696a696e205374616e636520eb8f84eca49120ee80950000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e5b081e6aebae999a3e383bbe78886e7a095e68bb30000",
+   "input_from_name": "Raijin Stance ",
+   "command_glyphs": [
+    "U+E015"
+   ],
+   "command_decoded": "1",
+   "command_complete": true
+  },
+  {
+   "name": "Raijin's Wrath",
+   "name_offset": 5354,
+   "record_len": 102,
+   "record_hex": "5261696a696e27732057726174680000e381b5e38186e38195e381a4e38198e38293e383bbe381b0e3818fe38195e38184e38191e382930000e4b889e5b3b6e6b581e383bbe5b081e6aebae999a3e381aee6a78be38188e4b8ade381ab20ee8095ee80960000",
+   "input_from_name": "Raijin's Wrath",
+   "command_glyphs": [
+    "U+E015",
+    "U+E016"
+   ],
+   "command_decoded": "1,2",
+   "command_complete": true
+  },
+  {
+   "name": "During Raijin Stance ",
+   "name_offset": 5456,
+   "record_len": 29,
+   "record_hex": "447572696e67205261696a696e205374616e636520ee8095ee80960000",
+   "input_from_name": "During Raijin Stance ",
+   "command_glyphs": [
+    "U+E015",
+    "U+E016"
+   ],
+   "command_decoded": "1,2",
+   "command_complete": true
+  },
+  {
+   "name": "Pendant Raijin Stance ",
+   "name_offset": 5485,
+   "record_len": 30,
+   "record_hex": "50656e64616e74205261696a696e205374616e636520ee8095ee80960000",
+   "input_from_name": "Pendant Raijin Stance ",
+   "command_glyphs": [
+    "U+E015",
+    "U+E016"
+   ],
+   "command_decoded": "1,2",
+   "command_complete": true
+  },
+  {
+   "name": "Durante Raijin Stance ",
+   "name_offset": 5515,
+   "record_len": 33,
+   "record_hex": "447572616e7465205261696a696e205374616e636520ee8095ee8096000057c3a4",
+   "input_from_name": "Durante Raijin Stance ",
+   "command_glyphs": [
+    "U+E015",
+    "U+E016"
+   ],
+   "command_decoded": "1,2",
+   "command_complete": true
+  },
+  {
+   "name": "hrend Raijin Stance ",
+   "name_offset": 5548,
+   "record_len": 28,
+   "record_hex": "6872656e64205261696a696e205374616e636520ee8095ee80960000",
+   "input_from_name": "hrend Raijin Stance ",
+   "command_glyphs": [
+    "U+E015",
+    "U+E016"
+   ],
+   "command_decoded": "1,2",
+   "command_complete": true
+  },
+  {
+   "name": "Durante Raijin Stance ",
+   "name_offset": 5576,
+   "record_len": 45,
+   "record_hex": "447572616e7465205261696a696e205374616e636520ee8095ee80960000d092d0be20d0b2d180d0b5d0bcd18f",
+   "input_from_name": "Durante Raijin Stance ",
+   "command_glyphs": [
+    "U+E015",
+    "U+E016"
+   ],
+   "command_decoded": "1,2",
+   "command_complete": true
+  },
+  {
+   "name": " Raijin Stance ",
+   "name_offset": 5621,
+   "record_len": 23,
+   "record_hex": "205261696a696e205374616e636520ee8095ee80960000",
+   "input_from_name": " Raijin Stance ",
+   "command_glyphs": [
+    "U+E015",
+    "U+E016"
+   ],
+   "command_decoded": "1,2",
+   "command_complete": true
+  },
+  {
+   "name": "Raijin Stance ",
+   "name_offset": 5644,
+   "record_len": 72,
+   "record_hex": "5261696a696e205374616e636520eb8f84eca49120ee8095ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e5b081e6aebae999a3e383bbe9a0ade6a78ce7a0950000",
+   "input_from_name": "Raijin Stance ",
+   "command_glyphs": [
+    "U+E015",
+    "U+E016"
+   ],
+   "command_decoded": "1,2",
+   "command_complete": true
+  },
+  {
+   "name": "Lightning Bolt",
+   "name_offset": 5716,
+   "record_len": 99,
+   "record_hex": "4c696768746e696e6720426f6c740000e381b5e38186e38195e381a4e38198e38293e383bbe381a8e38186e381a4e38184e38195e381840000e4b889e5b3b6e6b581e383bbe5b081e6aebae999a3e381aee6a78be38188e4b8ade381ab20ee80960000",
+   "input_from_name": "Lightning Bolt",
+   "command_glyphs": [
+    "U+E016"
+   ],
+   "command_decoded": "2",
+   "command_complete": true
+  },
+  {
+   "name": "During Raijin Stance ",
+   "name_offset": 5815,
+   "record_len": 26,
+   "record_hex": "447572696e67205261696a696e205374616e636520ee80960000",
+   "input_from_name": "During Raijin Stance ",
+   "command_glyphs": [
+    "U+E016"
+   ],
+   "command_decoded": "2",
+   "command_complete": true
+  },
+  {
+   "name": "Pendant Raijin Stance ",
+   "name_offset": 5841,
+   "record_len": 27,
+   "record_hex": "50656e64616e74205261696a696e205374616e636520ee80960000",
+   "input_from_name": "Pendant Raijin Stance ",
+   "command_glyphs": [
+    "U+E016"
+   ],
+   "command_decoded": "2",
+   "command_complete": true
+  },
+  {
+   "name": "Durante Raijin Stance ",
+   "name_offset": 5868,
+   "record_len": 30,
+   "record_hex": "447572616e7465205261696a696e205374616e636520ee8096000057c3a4",
+   "input_from_name": "Durante Raijin Stance ",
+   "command_glyphs": [
+    "U+E016"
+   ],
+   "command_decoded": "2",
+   "command_complete": true
+  },
+  {
+   "name": "hrend Raijin Stance ",
+   "name_offset": 5898,
+   "record_len": 25,
+   "record_hex": "6872656e64205261696a696e205374616e636520ee80960000",
+   "input_from_name": "hrend Raijin Stance ",
+   "command_glyphs": [
+    "U+E016"
+   ],
+   "command_decoded": "2",
+   "command_complete": true
+  },
+  {
+   "name": "Durante Raijin Stance ",
+   "name_offset": 5923,
+   "record_len": 42,
+   "record_hex": "447572616e7465205261696a696e205374616e636520ee80960000d092d0be20d0b2d180d0b5d0bcd18f",
+   "input_from_name": "Durante Raijin Stance ",
+   "command_glyphs": [
+    "U+E016"
+   ],
+   "command_decoded": "2",
+   "command_complete": true
+  },
+  {
+   "name": " Raijin Stance ",
+   "name_offset": 5965,
+   "record_len": 20,
+   "record_hex": "205261696a696e205374616e636520ee80960000",
+   "input_from_name": " Raijin Stance ",
+   "command_glyphs": [
+    "U+E016"
+   ],
+   "command_decoded": "2",
+   "command_complete": true
+  },
+  {
+   "name": "Raijin Stance ",
+   "name_offset": 5985,
+   "record_len": 54,
+   "record_hex": "5261696a696e205374616e636520eb8f84eca49120ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e9acbce793a60000",
+   "input_from_name": "Raijin Stance ",
+   "command_glyphs": [
+    "U+E016"
+   ],
+   "command_decoded": "2",
+   "command_complete": true
+  },
+  {
+   "name": "Lightning Hammer",
+   "name_offset": 6039,
+   "record_len": 130,
+   "record_hex": "4c696768746e696e672048616d6d65720000e3818ae381abe3818ce3828fe382890000ee8081ee809d0000ee8081ee809d0000ee8081ee809d0000ee8081ee809d0000ee8081ee809d0000ee8081ee809d0000ee8081ee809d0000ee8081ee809d0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e5bdb1e7949fe996800000",
+   "input_from_name": "Lightning Hammer",
+   "command_glyphs": [
+    "U+E001",
+    "U+E01D"
+   ],
+   "command_decoded": "d+1+4",
+   "command_complete": true
+  },
+  {
+   "name": "Eisho Mon",
+   "name_offset": 6169,
+   "record_len": 132,
+   "record_hex": "456973686f204d6f6e0000e38188e38184e38197e38287e38186e38282e382930000ee8080ee80960000ee8080ee80960000ee8080ee80960000ee8080ee80960000ee8080ee80960000ee8080ee80960000ee8080ee80960000ee8080ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e5888ee9a09ae8a38fe68bb30000",
+   "input_from_name": "Eisho Mon",
+   "command_glyphs": [
+    "U+E000",
+    "U+E016"
+   ],
+   "command_decoded": "d/b+2",
+   "command_complete": true
+  },
+  {
+   "name": "Funkei Uraken",
+   "name_offset": 6301,
+   "record_len": 166,
+   "record_hex": "46756e6b6569205572616b656e0000e381b5e38293e38191e38184e38186e38289e38191e382930000ee8083ee8095ee80960000ee8083ee8095ee80960000ee8083ee8095ee80960000ee8083ee8095ee80960000ee8083ee8095ee80960000ee8083ee8095ee80960000ee8083ee8095ee80960000ee8083ee8095ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e5888ee9a09ae8869de7a095e3818d0000",
+   "input_from_name": "Funkei Uraken",
+   "command_glyphs": [
+    "U+E003",
+    "U+E015",
+    "U+E016"
+   ],
+   "command_decoded": "b+1,2",
+   "command_complete": true
+  },
+  {
+   "name": "Debilitator",
+   "name_offset": 6467,
+   "record_len": 161,
+   "record_hex": "446562696c697461746f720000e381b5e38293e38191e38184e381b2e38196e3818fe381a0e3818d0000ee8083ee8095ee809c0000ee8083ee8095ee809c0000ee8083ee8095ee809c0000ee8083ee8095ee809c0000ee8083ee8095ee809c0000ee8083ee8095ee809c0000ee8083ee8095ee809c0000ee8083ee8095ee809c0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e7a59fe6aebae381970000",
+   "input_from_name": "Debilitator",
+   "command_glyphs": [
+    "U+E003",
+    "U+E015",
+    "U+E01C"
+   ],
+   "command_decoded": "b+1,4",
+   "command_complete": true
+  },
+  {
+   "name": "Tatarigoroshi",
+   "name_offset": 6628,
+   "record_len": 130,
+   "record_hex": "546174617269676f726f7368690000e3819fe3819fe3828ae38194e3828de381970000ee8083ee80960000ee8083ee80960000ee8083ee80960000ee8083ee80960000ee8083ee80960000ee8083ee80960000ee8083ee80960000ee8083ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e9b090e4b88be9a7840000",
+   "input_from_name": "Tatarigoroshi",
+   "command_glyphs": [
+    "U+E003",
+    "U+E016"
+   ],
+   "command_decoded": "b+2",
+   "command_complete": true
+  },
+  {
+   "name": "Hooking Crescent Kick",
+   "name_offset": 6758,
+   "record_len": 156,
+   "record_hex": "486f6f6b696e67204372657363656e74204b69636b0000e3828fe381abe38192e3819f0000ee8083ee8098ee80980000ee8083ee8098ee80980000ee8083ee8098ee80980000ee8083ee8098ee80980000ee8083ee8098ee80980000ee8083ee8098ee80980000ee8083ee8098ee80980000ee8083ee8098ee80980000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e79c9fe69c88e6978b0000",
+   "input_from_name": "Hooking Crescent Kick",
+   "command_glyphs": [
+    "U+E003",
+    "U+E018",
+    "U+E018"
+   ],
+   "command_decoded": "b+3,3",
+   "command_complete": true
+  },
+  {
+   "name": "Shingetsusen",
+   "name_offset": 6914,
+   "record_len": 132,
+   "record_hex": "5368696e676574737573656e0000e38197e38293e38192e381a4e3819be382930000ee8083ee809c0000ee8083ee809c0000ee8083ee809c0000ee8083ee809c0000ee8083ee809c0000ee8083ee809c0000ee8083ee809c0000ee8083ee809c0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e5899be68e8ce78388e7a0b40000",
+   "input_from_name": "Shingetsusen",
+   "command_glyphs": [
+    "U+E003",
+    "U+E01C"
+   ],
+   "command_decoded": "b+4",
+   "command_complete": true
+  },
+  {
+   "name": "Twin Hammers",
+   "name_offset": 7046,
+   "record_len": 144,
+   "record_hex": "5477696e2048616d6d6572730000e38194e38186e38197e38287e38186e3828ce381a3e381b10000ee8083ee80970000ee8083ee80970000ee8083ee80970000ee8083ee80970000ee8083ee80970000ee8083ee80970000ee8083ee80970000ee8083ee80970000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e5899be68e8ce78388e7a0b4e383bbe980a30000",
+   "input_from_name": "Twin Hammers",
+   "command_glyphs": [
+    "U+E003",
+    "U+E017"
+   ],
+   "command_decoded": "b+1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Twin Hammer Volley",
+   "name_offset": 7190,
+   "record_len": 183,
+   "record_hex": "5477696e2048616d6d657220566f6c6c65790000e38194e38186e38197e38287e38186e3828ce381a3e381b1e383bbe381a4e38289e381ad0000ee8083ee8097ee80970000ee8083ee8097ee80970000ee8083ee8097ee80970000ee8083ee8097ee80970000ee8083ee8097ee80970000ee8083ee8097ee80970000ee8083ee8097ee80970000ee8083ee8097ee80970000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e8a38fe6978be7a9bae58883e8849a0000",
+   "input_from_name": "Twin Hammer Volley",
+   "command_glyphs": [
+    "U+E003",
+    "U+E017",
+    "U+E017"
+   ],
+   "command_decoded": "b+1+2,1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Hell Axle",
+   "name_offset": 7373,
+   "record_len": 162,
+   "record_hex": "48656c6c2041786c650000e3828ae3819be38293e3818fe38186e38198e38293e3818de38283e3818f0000ee8087ee8098ee809c0000ee8087ee8098ee809c0000ee8087ee8098ee809c0000ee8087ee8098ee809c0000ee8087ee8098ee809c0000ee8087ee8098ee809c0000ee8087ee8098ee809c0000ee8087ee8098ee809c0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e78e84e7a9bae8849a0000",
+   "input_from_name": "Hell Axle",
+   "command_glyphs": [
+    "U+E007",
+    "U+E018",
+    "U+E01C"
+   ],
+   "command_decoded": "u/f+3,4",
+   "command_complete": true
+  },
+  {
+   "name": "Wind Slicer",
+   "name_offset": 7535,
+   "record_len": 131,
+   "record_hex": "57696e6420536c696365720000e38192e38293e3818fe38186e3818de38283e3818f0000ee8087ee809c0000ee8087ee809c0000ee8087ee809c0000ee8087ee809c0000ee8087ee809c0000ee8087ee809c0000ee8087ee809c0000ee8087ee809c0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e9acbce7a59ee68bb30000",
+   "input_from_name": "Wind Slicer",
+   "command_glyphs": [
+    "U+E007",
+    "U+E01C"
+   ],
+   "command_decoded": "u/f+4",
+   "command_complete": true
+  },
+  {
+   "name": "Demon Uppercut",
+   "name_offset": 7666,
+   "record_len": 158,
+   "record_hex": "44656d6f6e2055707065726375740000e3818de38198e38293e38191e382930000ee8084ee808cee80960000ee8084ee808cee80960000ee8084ee808cee80960000ee8084ee808cee80960000ee8084ee808cee80960000ee8084ee808cee80960000ee8084ee808cee80960000ee8084ee808cee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e5b7a6e8b8b5e890bde381a8e381970000",
+   "input_from_name": "Demon Uppercut",
+   "command_glyphs": [
+    "U+E004",
+    "U+E00C",
+    "U+E016"
+   ],
+   "command_decoded": "f,F+2",
+   "command_complete": true
+  },
+  {
+   "name": "Left Splits Kick",
+   "name_offset": 7824,
+   "record_len": 166,
+   "record_hex": "4c6566742053706c697473204b69636b0000e381b2e381a0e3828ae3818be3818be381a8e3818ae381a8e381970000ee8084ee808cee80980000ee8084ee808cee80980000ee8084ee808cee80980000ee8084ee808cee80980000ee8084ee808cee80980000ee8084ee808cee80980000ee8084ee808cee80980000ee8084ee808cee80980000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e7a095e7a59ee68e8c0000",
+   "input_from_name": "1 Splits Kick",
+   "command_glyphs": [
+    "U+E004",
+    "U+E00C",
+    "U+E018"
+   ],
+   "command_decoded": "f,F+3",
+   "command_complete": true
+  },
+  {
+   "name": "Deity Slayer",
+   "name_offset": 7990,
+   "record_len": 150,
+   "record_hex": "446569747920536c617965720000e381afe38197e38293e38197e38287e381860000ee8083ee808bee80970000ee8083ee808bee80970000ee8083ee808bee80970000ee8083ee808bee80970000ee8083ee808bee80970000ee8083ee808bee80970000ee8083ee808bee80970000ee8083ee808bee80970000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e5bdb1e8b6b30000",
+   "input_from_name": "Deity Slayer",
+   "command_glyphs": [
+    "U+E003",
+    "U+E00B",
+    "U+E017"
+   ],
+   "command_decoded": "b,B+1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Shadow Step",
+   "name_offset": 8140,
+   "record_len": 173,
+   "record_hex": "536861646f7720537465700000e3818be38192e38182e381970000ee8083ee8083e29886ee80a00000ee8083ee8083e29886ee80a00000ee8083ee8083e29886ee80a00000ee8083ee8083e29886ee80a00000ee8083ee8083e29886ee80a00000ee8083ee8083e29886ee80a00000ee8083ee8083e29886ee80a00000ee8083ee8083e29886ee80a00000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e5a4a9e9ad94e8a686e6bb850000",
+   "input_from_name": "Shadow Step",
+   "command_glyphs": [
+    "U+E003",
+    "U+E003"
+   ],
+   "command_decoded": "b,b",
+   "command_complete": true
+  },
+  {
+   "name": "Tenma Destroyer",
+   "name_offset": 8313,
+   "record_len": 186,
+   "record_hex": "54656e6d612044657374726f7965720000e381a6e38293e381bee381b5e3818fe38281e381a40000ee8083ee8084ee8096ee80950000ee8083ee8084ee8096ee80950000ee8083ee8084ee8096ee80950000ee8083ee8084ee8096ee80950000ee8083ee8084ee8096ee80950000ee8083ee8084ee8096ee80950000ee8083ee8084ee8096ee80950000ee8083ee8084ee8096ee80950000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e5a4a9e9ad94e9998de4bc8f0000",
+   "input_from_name": "Tenma Destroyer",
+   "command_glyphs": [
+    "U+E003",
+    "U+E004",
+    "U+E016",
+    "U+E015"
+   ],
+   "command_decoded": "b,f+2,1",
+   "command_complete": true
+  },
+  {
+   "name": "Subjugator",
+   "name_offset": 8499,
+   "record_len": 181,
+   "record_hex": "5375626a756761746f720000e381a6e38293e381bee38194e38186e381b6e3818f0000ee8083ee8084ee8096ee80960000ee8083ee8084ee8096ee80960000ee8083ee8084ee8096ee80960000ee8083ee8084ee8096ee80960000ee8083ee8084ee8096ee80960000ee8083ee8084ee8096ee80960000ee8083ee8084ee8096ee80960000ee8083ee8084ee8096ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e98791e5899be6a78de68e8c0000",
+   "input_from_name": "Subjugator",
+   "command_glyphs": [
+    "U+E003",
+    "U+E004",
+    "U+E016",
+    "U+E016"
+   ],
+   "command_decoded": "b,f+2,2",
+   "command_complete": true
+  },
+  {
+   "name": "Iron Hand",
+   "name_offset": 8680,
+   "record_len": 183,
+   "record_hex": "49726f6e2048616e640000e38193e38293e38194e38186e3819de38186e38197e38287e381860000ee8081ee8082ee8084ee80960000ee8081ee8082ee8084ee80960000ee8081ee8082ee8084ee80960000ee8081ee8082ee8084ee80960000ee8081ee8082ee8084ee80960000ee8081ee8082ee8084ee80960000ee8081ee8082ee8084ee80960000ee8081ee8082ee8084ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e99bb7e7a59ee68bb30000",
+   "input_from_name": "Iron Hand",
+   "command_glyphs": [
+    "U+E001",
+    "U+E002",
+    "U+E004",
+    "U+E016"
+   ],
+   "command_decoded": "d,d/f,f+2",
+   "command_complete": true
+  },
+  {
+   "name": "Dragon Uppercut",
+   "name_offset": 8863,
+   "record_len": 204,
+   "record_hex": "447261676f6e2055707065726375740000e38289e38184e38198e38293e38191e382930000ee8084e29886ee8081ee8082ee80950000ee8084e29886ee8081ee8082ee80950000ee8084e29886ee8081ee8082ee80950000ee8084e29886ee8081ee8082ee80950000ee8084e29886ee8081ee8082ee80950000ee8084e29886ee8081ee8082ee80950000ee8084e29886ee8081ee8082ee80950000ee8084e29886ee8081ee8082ee80950000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e9a2a8e7a59ee68bb30000",
+   "input_from_name": "Dragon Uppercut",
+   "command_glyphs": [
+    "U+E001",
+    "U+E002",
+    "U+E015"
+   ],
+   "command_decoded": "d,d/f+1",
+   "command_complete": true
+  },
+  {
+   "name": "Rising Uppercut",
+   "name_offset": 9067,
+   "record_len": 204,
+   "record_hex": "526973696e672055707065726375740000e381b5e38186e38198e38293e38191e382930000ee8084e29886ee8081ee8082ee80960000ee8084e29886ee8081ee8082ee80960000ee8084e29886ee8081ee8082ee80960000ee8084e29886ee8081ee8082ee80960000ee8084e29886ee8081ee8082ee80960000ee8084e29886ee8081ee8082ee80960000ee8084e29886ee8081ee8082ee80960000ee8084e29886ee8081ee8082ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e6bf80e696ace8849a0000",
+   "input_from_name": "Rising Uppercut",
+   "command_glyphs": [
+    "U+E001",
+    "U+E002",
+    "U+E016"
+   ],
+   "command_decoded": "d,d/f+2",
+   "command_complete": true
+  },
+  {
+   "name": "Jumping Mid Kick",
+   "name_offset": 9271,
+   "record_len": 208,
+   "record_hex": "4a756d70696e67204d6964204b69636b0000e38192e3818de38196e38293e3818de38283e3818f0000ee8084e29886ee8081ee8082ee80980000ee8084e29886ee8081ee8082ee80980000ee8084e29886ee8081ee8082ee80980000ee8084e29886ee8081ee8082ee80980000ee8084e29886ee8081ee8082ee80980000ee8084e29886ee8081ee8082ee80980000ee8084e29886ee8081ee8082ee80980000ee8084e29886ee8081ee8082ee80980000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e59cb0e696ace8849a0000",
+   "input_from_name": "Jumping Mid Kick",
+   "command_glyphs": [
+    "U+E001",
+    "U+E002",
+    "U+E018"
+   ],
+   "command_decoded": "d,d/f+3",
+   "command_complete": true
+  },
+  {
+   "name": "Jumping Low Kick",
+   "name_offset": 9479,
+   "record_len": 217,
+   "record_hex": "4a756d70696e67204c6f77204b69636b0000e381a1e38196e38293e3818de38283e3818f0000ee8084e29886ee8081ee808aee80980000ee8084e29886ee8081ee808aee80980000ee8084e29886ee8081ee808aee80980000ee8084e29886ee8081ee808aee80980000ee8084e29886ee8081ee808aee80980000ee8084e29886ee8081ee808aee80980000ee8084e29886ee8081ee808aee80980000ee8084e29886ee8081ee808aee80980000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e5a588e890bde68995e38184e99bb7e7a59ee68bb30000",
+   "input_from_name": "Jumping Low Kick",
+   "command_glyphs": [
+    "U+E001",
+    "U+E00A",
+    "U+E018"
+   ],
+   "command_decoded": "d,D/F+3",
+   "command_complete": true
+  },
+  {
+   "name": "Spinning Demon Uppercut",
+   "name_offset": 9696,
+   "record_len": 266,
+   "record_hex": "5370696e6e696e672044656d6f6e2055707065726375740000e381aae38289e3818fe381b0e38289e38184e38289e38184e38198e38293e38191e382930000ee8084e29886ee8081ee8082ee809cee80950000ee8084e29886ee8081ee8082ee809cee80950000ee8084e29886ee8081ee8082ee809cee80950000ee8084e29886ee8081ee8082ee809cee80950000ee8084e29886ee8081ee8082ee809cee80950000ee8084e29886ee8081ee8082ee809cee80950000ee8084e29886ee8081ee8082ee809cee80950000ee8084e29886ee8081ee8082ee809cee80950000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e5a588e890bde68995e38184e8b8b5e58887e3828a0000",
+   "input_from_name": "Spinning Demon Uppercut",
+   "command_glyphs": [
+    "U+E001",
+    "U+E002",
+    "U+E01C",
+    "U+E015"
+   ],
+   "command_decoded": "d,d/f+4,1",
+   "command_complete": true
+  },
+  {
+   "name": "Tsunami Kick",
+   "name_offset": 9962,
+   "record_len": 291,
+   "record_hex": "5473756e616d69204b69636b0000e381aae38289e3818fe381b0e38289e38184e3818be3818be381a8e3818ee3828a0000ee8084e29886ee8081ee8082ee809ce29886ee809cee809c0000ee8084e29886ee8081ee8082ee809ce29886ee809cee809c0000ee8084e29886ee8081ee8082ee809ce29886ee809cee809c0000ee8084e29886ee8081ee8082ee809ce29886ee809cee809c0000ee8084e29886ee8081ee8082ee809ce29886ee809cee809c0000ee8084e29886ee8081ee8082ee809ce29886ee809cee809c0000ee8084e29886ee8081ee8082ee809ce29886ee809cee809c0000ee8084e29886ee8081ee8082ee809ce29886ee809cee809c0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e5a588e890bde68995e381840000",
+   "input_from_name": "Tsunami Kick",
+   "command_glyphs": [
+    "U+E001",
+    "U+E002",
+    "U+E01C"
+   ],
+   "command_decoded": "d,d/f+4",
+   "command_complete": true
+  },
+  {
+   "name": "Spinning Demon",
+   "name_offset": 10253,
+   "record_len": 251,
+   "record_hex": "5370696e6e696e672044656d6f6e0000e381aae38289e3818fe381b0e38289e381840000ee8084e29886ee8081ee808aee809cee809cee809c0000ee8084e29886ee8081ee808aee809cee809cee809c0000ee8084e29886ee8081ee808aee809cee809cee809c0000ee8084e29886ee8081ee808aee809cee809cee809c0000ee8084e29886ee8081ee808aee809cee809cee809c0000ee8084e29886ee8081ee808aee809cee809cee809c0000ee8084e29886ee8081ee808aee809cee809cee809c0000ee8084e29886ee8081ee808aee809cee809cee809c0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e7a9bae696ace8849a0000",
+   "input_from_name": "Spinning Demon",
+   "command_glyphs": [
+    "U+E001",
+    "U+E00A",
+    "U+E01C",
+    "U+E01C",
+    "U+E01C"
+   ],
+   "command_decoded": "d,D/F+4,4,4",
+   "command_complete": true
+  },
+  {
+   "name": "Leaping Side Kick",
+   "name_offset": 10504,
+   "record_len": 185,
+   "record_hex": "4c656170696e672053696465204b69636b0000e3818fe38186e38196e38293e3818de38283e3818f0000ee8084ee8084ee8084ee80980000ee8084ee8084ee8084ee80980000ee8084ee8084ee8084ee80980000ee8084ee8084ee8084ee80980000ee8084ee8084ee8084ee80980000ee8084ee8084ee8084ee80980000ee8084ee8084ee8084ee80980000ee8084ee8084ee8084ee80980000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e98791e5899be68e8c0000",
+   "input_from_name": "Leaping Side Kick",
+   "command_glyphs": [
+    "U+E004",
+    "U+E004",
+    "U+E004",
+    "U+E018"
+   ],
+   "command_decoded": "f,f,f+3",
+   "command_complete": true
+  },
+  {
+   "name": "Quick Iron Fist",
+   "name_offset": 10689,
+   "record_len": 61,
+   "record_hex": "517569636b2049726f6e20466973740000e38193e38293e38194e38186e38197e38287e381860000e7ab8be381a1e98094e4b8ade381ab20ee80950000",
+   "input_from_name": "Quick Iron Fist",
+   "command_glyphs": [
+    "U+E015"
+   ],
+   "command_decoded": "1",
+   "command_complete": true
+  },
+  {
+   "name": "While rising ",
+   "name_offset": 10750,
+   "record_len": 18,
+   "record_hex": "5768696c6520726973696e6720ee80950000",
+   "input_from_name": "While rising ",
+   "command_glyphs": [
+    "U+E015"
+   ],
+   "command_decoded": "1",
+   "command_complete": true
+  },
+  {
+   "name": "En se relevant ",
+   "name_offset": 10768,
+   "record_len": 20,
+   "record_hex": "456e2073652072656c6576616e7420ee80950000",
+   "input_from_name": "En se relevant ",
+   "command_glyphs": [
+    "U+E015"
+   ],
+   "command_decoded": "1",
+   "command_complete": true
+  },
+  {
+   "name": "Alzandosi ",
+   "name_offset": 10788,
+   "record_len": 15,
+   "record_hex": "416c7a616e646f736920ee80950000",
+   "input_from_name": "Alzandosi ",
+   "command_glyphs": [
+    "U+E015"
+   ],
+   "command_decoded": "1",
+   "command_complete": true
+  },
+  {
+   "name": "Beim Aufstehen ",
+   "name_offset": 10803,
+   "record_len": 20,
+   "record_hex": "4265696d2041756673746568656e20ee80950000",
+   "input_from_name": "Beim Aufstehen ",
+   "command_glyphs": [
+    "U+E015"
+   ],
+   "command_decoded": "1",
+   "command_complete": true
+  },
+  {
+   "name": "Al levantarse ",
+   "name_offset": 10823,
+   "record_len": 91,
+   "record_hex": "416c206c6576616e746172736520ee80950000d092d181d182d0b0d0b2d0b0d18f20ee80950000ec9dbcec96b4eb8298eba9b020ee80950000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e8a6b3e99fb3e7a095e3818d0000",
+   "input_from_name": "Al levantarse ",
+   "command_glyphs": [
+    "U+E015"
+   ],
+   "command_decoded": "1",
+   "command_complete": true
+  },
+  {
+   "name": "Dark Thrust",
+   "name_offset": 10914,
+   "record_len": 57,
+   "record_hex": "4461726b205468727573740000e3818be38293e381aee38293e3818fe381a0e3818d0000e7ab8be381a1e98094e4b8ade381ab20ee80960000",
+   "input_from_name": "Dark Thrust",
+   "command_glyphs": [
+    "U+E016"
+   ],
+   "command_decoded": "2",
+   "command_complete": true
+  },
+  {
+   "name": "While rising ",
+   "name_offset": 10971,
+   "record_len": 18,
+   "record_hex": "5768696c6520726973696e6720ee80960000",
+   "input_from_name": "While rising ",
+   "command_glyphs": [
+    "U+E016"
+   ],
+   "command_decoded": "2",
+   "command_complete": true
+  },
+  {
+   "name": "En se relevant ",
+   "name_offset": 10989,
+   "record_len": 20,
+   "record_hex": "456e2073652072656c6576616e7420ee80960000",
+   "input_from_name": "En se relevant ",
+   "command_glyphs": [
+    "U+E016"
+   ],
+   "command_decoded": "2",
+   "command_complete": true
+  },
+  {
+   "name": "Alzandosi ",
+   "name_offset": 11009,
+   "record_len": 15,
+   "record_hex": "416c7a616e646f736920ee80960000",
+   "input_from_name": "Alzandosi ",
+   "command_glyphs": [
+    "U+E016"
+   ],
+   "command_decoded": "2",
+   "command_complete": true
+  },
+  {
+   "name": "Beim Aufstehen ",
+   "name_offset": 11024,
+   "record_len": 20,
+   "record_hex": "4265696d2041756673746568656e20ee80960000",
+   "input_from_name": "Beim Aufstehen ",
+   "command_glyphs": [
+    "U+E016"
+   ],
+   "command_decoded": "2",
+   "command_complete": true
+  },
+  {
+   "name": "Al levantarse ",
+   "name_offset": 11044,
+   "record_len": 91,
+   "record_hex": "416c206c6576616e746172736520ee80960000d092d181d182d0b0d0b2d0b0d18f20ee80960000ec9dbcec96b4eb8298eba9b020ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e8b8b5e890bde381a8e381970000",
+   "input_from_name": "Al levantarse ",
+   "command_glyphs": [
+    "U+E016"
+   ],
+   "command_decoded": "2",
+   "command_complete": true
+  },
+  {
+   "name": "Tsunami Kick",
+   "name_offset": 11135,
+   "record_len": 58,
+   "record_hex": "5473756e616d69204b69636b0000e3818be3818be381a8e3818ae381a8e381970000e7ab8be381a1e98094e4b8ade381ab20ee809cee809c0000",
+   "input_from_name": "Tsunami Kick",
+   "command_glyphs": [
+    "U+E01C",
+    "U+E01C"
+   ],
+   "command_decoded": "4,4",
+   "command_complete": true
+  },
+  {
+   "name": "While rising ",
+   "name_offset": 11193,
+   "record_len": 21,
+   "record_hex": "5768696c6520726973696e6720ee809cee809c0000",
+   "input_from_name": "While rising ",
+   "command_glyphs": [
+    "U+E01C",
+    "U+E01C"
+   ],
+   "command_decoded": "4,4",
+   "command_complete": true
+  },
+  {
+   "name": "En se relevant ",
+   "name_offset": 11214,
+   "record_len": 23,
+   "record_hex": "456e2073652072656c6576616e7420ee809cee809c0000",
+   "input_from_name": "En se relevant ",
+   "command_glyphs": [
+    "U+E01C",
+    "U+E01C"
+   ],
+   "command_decoded": "4,4",
+   "command_complete": true
+  },
+  {
+   "name": "Alzandosi ",
+   "name_offset": 11237,
+   "record_len": 18,
+   "record_hex": "416c7a616e646f736920ee809cee809c0000",
+   "input_from_name": "Alzandosi ",
+   "command_glyphs": [
+    "U+E01C",
+    "U+E01C"
+   ],
+   "command_decoded": "4,4",
+   "command_complete": true
+  },
+  {
+   "name": "Beim Aufstehen ",
+   "name_offset": 11255,
+   "record_len": 23,
+   "record_hex": "4265696d2041756673746568656e20ee809cee809c0000",
+   "input_from_name": "Beim Aufstehen ",
+   "command_glyphs": [
+    "U+E01C",
+    "U+E01C"
+   ],
+   "command_decoded": "4,4",
+   "command_complete": true
+  },
+  {
+   "name": "Al levantarse ",
+   "name_offset": 11278,
+   "record_len": 97,
+   "record_hex": "416c206c6576616e746172736520ee809cee809c0000d092d181d182d0b0d0b2d0b0d18f20ee809cee809c0000ec9dbcec96b4eb8298eba9b020ee809cee809c0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e4bc8fe9be8de8849a0000",
+   "input_from_name": "Al levantarse ",
+   "command_glyphs": [
+    "U+E01C",
+    "U+E01C"
+   ],
+   "command_decoded": "4,4",
+   "command_complete": true
+  },
+  {
+   "name": "Crouching Dragon Kick",
+   "name_offset": 11375,
+   "record_len": 82,
+   "record_hex": "43726f756368696e6720447261676f6e204b69636b0000e381b5e3818fe3828ae38285e38186e3818de38283e3818f0000e38197e38283e3818ce38293e381a0e78ab6e6858be381a720ee8082ee809c0000",
+   "input_from_name": "Crouching Dragon Kick",
+   "command_glyphs": [
+    "U+E002",
+    "U+E01C"
+   ],
+   "command_decoded": "d/f+4",
+   "command_complete": true
+  },
+  {
+   "name": "While crouching ",
+   "name_offset": 11457,
+   "record_len": 24,
+   "record_hex": "5768696c652063726f756368696e6720ee8082ee809c0000",
+   "input_from_name": "While crouching ",
+   "command_glyphs": [
+    "U+E002",
+    "U+E01C"
+   ],
+   "command_decoded": "d/f+4",
+   "command_complete": true
+  },
+  {
+   "name": "En s'accroupissant ",
+   "name_offset": 11481,
+   "record_len": 27,
+   "record_hex": "456e207327616363726f7570697373616e7420ee8082ee809c0000",
+   "input_from_name": "En s'accroupissant ",
+   "command_glyphs": [
+    "U+E002",
+    "U+E01C"
+   ],
+   "command_decoded": "d/f+4",
+   "command_complete": true
+  },
+  {
+   "name": "Abbassandosi ",
+   "name_offset": 11508,
+   "record_len": 21,
+   "record_hex": "416262617373616e646f736920ee8082ee809c0000",
+   "input_from_name": "Abbassandosi ",
+   "command_glyphs": [
+    "U+E002",
+    "U+E01C"
+   ],
+   "command_decoded": "d/f+4",
+   "command_complete": true
+  },
+  {
+   "name": "Hockend ",
+   "name_offset": 11529,
+   "record_len": 16,
+   "record_hex": "486f636b656e6420ee8082ee809c0000",
+   "input_from_name": "Hockend ",
+   "command_glyphs": [
+    "U+E002",
+    "U+E01C"
+   ],
+   "command_decoded": "d/f+4",
+   "command_complete": true
+  },
+  {
+   "name": "Al agacharse ",
+   "name_offset": 11545,
+   "record_len": 102,
+   "record_hex": "416c2061676163686172736520ee8082ee809c0000d09fd180d0b8d181d0b5d0b4d0b0d18f20ee8082ee809c0000ebaab8ec9d8420ec8899ec9db4eba9b020ee8082ee809c0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e4b887e6bca2e68e8c0000",
+   "input_from_name": "Al agacharse ",
+   "command_glyphs": [
+    "U+E002",
+    "U+E01C"
+   ],
+   "command_decoded": "d/f+4",
+   "command_complete": true
+  },
+  {
+   "name": "Kidney Smasher",
+   "name_offset": 11647,
+   "record_len": 60,
+   "record_hex": "4b69646e657920536d61736865720000e381b0e38293e3818be38293e38197e38287e381860000e6a8aae7a7bbe58b95e4b8ade381ab20ee80960000",
+   "input_from_name": "Kidney Smasher",
+   "command_glyphs": [
+    "U+E016"
+   ],
+   "command_decoded": "2",
+   "command_complete": true
+  },
+  {
+   "name": "During sidestep ",
+   "name_offset": 11707,
+   "record_len": 21,
+   "record_hex": "447572696e6720736964657374657020ee80960000",
+   "input_from_name": "During sidestep ",
+   "command_glyphs": [
+    "U+E016"
+   ],
+   "command_decoded": "2",
+   "command_complete": true
+  },
+  {
+   "name": "Pendant pas de c",
+   "name_offset": 11728,
+   "record_len": 27,
+   "record_hex": "50656e64616e74207061732064652063c3b474c3a920ee80960000",
+   "input_from_name": "Pendant pas de c",
+   "command_glyphs": [
+    "U+E016"
+   ],
+   "command_decoded": "2",
+   "command_complete": true
+  },
+  {
+   "name": "Durante il movimento laterale ",
+   "name_offset": 11755,
+   "record_len": 38,
+   "record_hex": "447572616e746520696c206d6f76696d656e746f206c61746572616c6520ee8096000057c3a4",
+   "input_from_name": "Durante il movimento laterale ",
+   "command_glyphs": [
+    "U+E016"
+   ],
+   "command_decoded": "2",
+   "command_complete": true
+  },
+  {
+   "name": "hrend Seitschritt ",
+   "name_offset": 11793,
+   "record_len": 23,
+   "record_hex": "6872656e6420536569747363687269747420ee80960000",
+   "input_from_name": "hrend Seitschritt ",
+   "command_glyphs": [
+    "U+E016"
+   ],
+   "command_decoded": "2",
+   "command_complete": true
+  },
+  {
+   "name": "Desplazamiento lateral ",
+   "name_offset": 11816,
+   "record_len": 126,
+   "record_hex": "446573706c617a616d69656e746f206c61746572616c20ee80960000d09fd180d0b820d188d0b0d0b3d0b520d0b220d181d182d0bed180d0bed0bdd18320ee80960000ed9aa1ec9db4eb8f9920eb8f84eca49120ee80960000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e4b887e6bca2e89ebae6978be68e8c0000",
+   "input_from_name": "Desplazamiento lateral ",
+   "command_glyphs": [
+    "U+E016"
+   ],
+   "command_decoded": "2",
+   "command_complete": true
+  },
+  {
+   "name": "Kidney Crush Combo",
+   "name_offset": 11942,
+   "record_len": 76,
+   "record_hex": "4b69646e657920437275736820436f6d626f0000e381b0e38293e3818be38293e38289e3819be38293e38197e38287e381860000e6a8aae7a7bbe58b95e4b8ade381ab20ee8096ee80950000",
+   "input_from_name": "Kidney Crush Combo",
+   "command_glyphs": [
+    "U+E016",
+    "U+E015"
+   ],
+   "command_decoded": "2,1",
+   "command_complete": true
+  },
+  {
+   "name": "During sidestep ",
+   "name_offset": 12018,
+   "record_len": 24,
+   "record_hex": "447572696e6720736964657374657020ee8096ee80950000",
+   "input_from_name": "During sidestep ",
+   "command_glyphs": [
+    "U+E016",
+    "U+E015"
+   ],
+   "command_decoded": "2,1",
+   "command_complete": true
+  },
+  {
+   "name": "Pendant pas de c",
+   "name_offset": 12042,
+   "record_len": 30,
+   "record_hex": "50656e64616e74207061732064652063c3b474c3a920ee8096ee80950000",
+   "input_from_name": "Pendant pas de c",
+   "command_glyphs": [
+    "U+E016",
+    "U+E015"
+   ],
+   "command_decoded": "2,1",
+   "command_complete": true
+  },
+  {
+   "name": "Durante il movimento laterale ",
+   "name_offset": 12072,
+   "record_len": 41,
+   "record_hex": "447572616e746520696c206d6f76696d656e746f206c61746572616c6520ee8096ee8095000057c3a4",
+   "input_from_name": "Durante il movimento laterale ",
+   "command_glyphs": [
+    "U+E016",
+    "U+E015"
+   ],
+   "command_decoded": "2,1",
+   "command_complete": true
+  },
+  {
+   "name": "hrend Seitschritt ",
+   "name_offset": 12113,
+   "record_len": 26,
+   "record_hex": "6872656e6420536569747363687269747420ee8096ee80950000",
+   "input_from_name": "hrend Seitschritt ",
+   "command_glyphs": [
+    "U+E016",
+    "U+E015"
+   ],
+   "command_decoded": "2,1",
+   "command_complete": true
+  },
+  {
+   "name": "Desplazamiento lateral ",
+   "name_offset": 12139,
+   "record_len": 129,
+   "record_hex": "446573706c617a616d69656e746f206c61746572616c20ee8096ee80950000d09fd180d0b820d188d0b0d0b3d0b520d0b220d181d182d0bed180d0bed0bdd18320ee8096ee80950000ed9aa1ec9db4eb8f9920eb8f84eca49120ee8096ee80950000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e9acbce4b88be9a7840000",
+   "input_from_name": "Desplazamiento lateral ",
+   "command_glyphs": [
+    "U+E016",
+    "U+E015"
+   ],
+   "command_decoded": "2,1",
+   "command_complete": true
+  },
+  {
+   "name": "Geta Stomp",
+   "name_offset": 12268,
+   "record_len": 54,
+   "record_hex": "476574612053746f6d700000e3818ae381abe38192e3819f000028e79bb8e6898be38380e382a6e383b3e4b8ad29ee8081ee809c0000",
+   "input_from_name": "Geta Stomp",
+   "command_glyphs": [
+    "U+E001",
+    "U+E01C"
+   ],
+   "command_decoded": "d+4",
+   "command_complete": true
+  },
+  {
+   "name": "(While enemy is down) ",
+   "name_offset": 12322,
+   "record_len": 30,
+   "record_hex": "285768696c6520656e656d7920697320646f776e2920ee8081ee809c0000",
+   "input_from_name": "(While enemy is down) ",
+   "command_glyphs": [
+    "U+E001",
+    "U+E01C"
+   ],
+   "command_decoded": "d+4",
+   "command_complete": true
+  },
+  {
+   "name": "(Avec adversaire ",
+   "name_offset": 12352,
+   "record_len": 19,
+   "record_hex": "2841766563206164766572736169726520c3a0",
+   "input_from_name": "(Avec adversaire "
+  },
+  {
+   "name": " terre) ",
+   "name_offset": 12371,
+   "record_len": 16,
+   "record_hex": "2074657272652920ee8081ee809c0000",
+   "input_from_name": " terre) ",
+   "command_glyphs": [
+    "U+E001",
+    "U+E01C"
+   ],
+   "command_decoded": "d+4",
+   "command_complete": true
+  },
+  {
+   "name": "(Con l'avversario a terra) ",
+   "name_offset": 12387,
+   "record_len": 35,
+   "record_hex": "28436f6e206c276176766572736172696f20612074657272612920ee8081ee809c0000",
+   "input_from_name": "(Con l'avversario a terra) ",
+   "command_glyphs": [
+    "U+E001",
+    "U+E01C"
+   ],
+   "command_decoded": "d+4",
+   "command_complete": true
+  },
+  {
+   "name": "(Gegner auf dem Boden) ",
+   "name_offset": 12422,
+   "record_len": 31,
+   "record_hex": "284765676e6572206175662064656d20426f64656e2920ee8081ee809c0000",
+   "input_from_name": "(Gegner auf dem Boden) ",
+   "command_glyphs": [
+    "U+E001",
+    "U+E01C"
+   ],
+   "command_decoded": "d+4",
+   "command_complete": true
+  },
+  {
+   "name": "(Adversario en el suelo) ",
+   "name_offset": 12453,
+   "record_len": 158,
+   "record_hex": "284164766572736172696f20656e20656c207375656c6f2920ee8081ee809c000028d09fd180d0b820d0bbd0b5d0b6d0b0d189d0b5d0bc20d0bfd180d0bed182d0b8d0b2d0bdd0b8d0bad0b52920ee8081ee809c000028ec8381eb8c80ebb0a9ec9db420ec93b0eb9faceca0b820ec9e88ec9d8420eb958c2920ee8081ee809c0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e68c91e799ba0000",
+   "input_from_name": "(Adversario en el suelo) ",
+   "command_glyphs": [
+    "U+E001",
+    "U+E01C"
+   ],
+   "command_decoded": "d+4",
+   "command_complete": true
+  },
+  {
+   "name": "Auger",
+   "name_offset": 12611,
+   "record_len": 109,
+   "record_hex": "41756765720000e381a1e38287e38186e381afe381a40000ee80a20000ee80a20000ee80a20000ee80a20000ee80a20000ee80a20000ee80a20000ee80a20000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000efbc91efbc90e980a3e382b3e383b3e3839c28efbc91290000",
+   "input_from_name": "Auger",
+   "command_glyphs": [
+    "U+E022"
+   ],
+   "command_decoded": "2+3+4",
+   "command_complete": true
+  },
+  {
+   "name": "10 Hit Combo 1",
+   "name_offset": 12720,
+   "record_len": 417,
+   "record_hex": "31302048697420436f6d626f20310000efbc91efbc90e3828ce38293e382b3e383b3e3839c28efbc91290000ee8084ee8084e29886ee8096ee8095ee8096ee8096ee8098ee809cee809cee8095ee8096ee80950000ee8084ee8084e29886ee8096ee8095ee8096ee8096ee8098ee809cee809cee8095ee8096ee80950000ee8084ee8084e29886ee8096ee8095ee8096ee8096ee8098ee809cee809cee8095ee8096ee80950000ee8084ee8084e29886ee8096ee8095ee8096ee8096ee8098ee809cee809cee8095ee8096ee80950000ee8084ee8084e29886ee8096ee8095ee8096ee8096ee8098ee809cee809cee8095ee8096ee80950000ee8084ee8084e29886ee8096ee8095ee8096ee8096ee8098ee809cee809cee8095ee8096ee80950000ee8084ee8084e29886ee8096ee8095ee8096ee8096ee8098ee809cee809cee8095ee8096ee80950000ee8084ee8084e29886ee8096ee8095ee8096ee8096ee8098ee809cee809cee8095ee8096ee80950000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000efbc91efbc90e980a3e382b3e383b3e3839c28efbc92290000",
+   "input_from_name": "10 Hit Combo 1",
+   "command_glyphs": [
+    "U+E016",
+    "U+E015",
+    "U+E016",
+    "U+E016",
+    "U+E018",
+    "U+E01C",
+    "U+E01C",
+    "U+E015",
+    "U+E016",
+    "U+E015"
+   ],
+   "command_decoded": "2,1,2,2,3,4,4,1,2,1",
+   "command_complete": true
+  },
+  {
+   "name": "10 Hit Combo 2",
+   "name_offset": 13137,
+   "record_len": 369,
+   "record_hex": "31302048697420436f6d626f20320000efbc91efbc90e3828ce38293e382b3e383b3e3839c28efbc92290000ee8082ee8098ee8096ee8096ee809cee809cee8095ee809cee8095ee8096ee809c0000ee8082ee8098ee8096ee8096ee809cee809cee8095ee809cee8095ee8096ee809c0000ee8082ee8098ee8096ee8096ee809cee809cee8095ee809cee8095ee8096ee809c0000ee8082ee8098ee8096ee8096ee809cee809cee8095ee809cee8095ee8096ee809c0000ee8082ee8098ee8096ee8096ee809cee809cee8095ee809cee8095ee8096ee809c0000ee8082ee8098ee8096ee8096ee809cee809cee8095ee809cee8095ee8096ee809c0000ee8082ee8098ee8096ee8096ee809cee809cee8095ee809cee8095ee8096ee809c0000ee8082ee8098ee8096ee8096ee809cee809cee8095ee809cee8095ee8096ee809c0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000efbc91efbc90e980a3e382b3e383b3e3839c28efbc93290000",
+   "input_from_name": "10 Hit Combo 2",
+   "command_glyphs": [
+    "U+E002",
+    "U+E018",
+    "U+E016",
+    "U+E016",
+    "U+E01C",
+    "U+E01C",
+    "U+E015",
+    "U+E01C",
+    "U+E015",
+    "U+E016",
+    "U+E01C"
+   ],
+   "command_decoded": "d/f+3,2,2,4,4,1,4,1,2,4",
+   "command_complete": true
+  },
+  {
+   "name": "10 Hit Combo 3",
+   "name_offset": 13506,
+   "record_len": 369,
+   "record_hex": "31302048697420436f6d626f20330000efbc91efbc90e3828ce38293e382b3e383b3e3839c28efbc93290000ee8082ee8098ee8096ee8096ee809cee809cee8095ee809cee8095ee8096ee80950000ee8082ee8098ee8096ee8096ee809cee809cee8095ee809cee8095ee8096ee80950000ee8082ee8098ee8096ee8096ee809cee809cee8095ee809cee8095ee8096ee80950000ee8082ee8098ee8096ee8096ee809cee809cee8095ee809cee8095ee8096ee80950000ee8082ee8098ee8096ee8096ee809cee809cee8095ee809cee8095ee8096ee80950000ee8082ee8098ee8096ee8096ee809cee809cee8095ee809cee8095ee8096ee80950000ee8082ee8098ee8096ee8096ee809cee809cee8095ee809cee8095ee8096ee80950000ee8082ee8098ee8096ee8096ee809cee809cee8095ee809cee8095ee8096ee80950000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000efbc91efbc90e980a3e382b3e383b3e3839c28efbc94290000",
+   "input_from_name": "10 Hit Combo 3",
+   "command_glyphs": [
+    "U+E002",
+    "U+E018",
+    "U+E016",
+    "U+E016",
+    "U+E01C",
+    "U+E01C",
+    "U+E015",
+    "U+E01C",
+    "U+E015",
+    "U+E016",
+    "U+E015"
+   ],
+   "command_decoded": "d/f+3,2,2,4,4,1,4,1,2,1",
+   "command_complete": true
+  },
+  {
+   "name": "10 Hit Combo 4",
+   "name_offset": 13875,
+   "record_len": 355,
+   "record_hex": "31302048697420436f6d626f20340000efbc91efbc90e3828ce38293e382b3e383b3e3839c28efbc94290000ee8082ee8098ee8096ee8096ee809cee809cee8095ee8096ee8095ee8096ee80950000ee8082ee8098ee8096ee8096ee809cee809cee8095ee8096ee8095ee8096ee80950000ee8082ee8098ee8096ee8096ee809cee809cee8095ee8096ee8095ee8096ee80950000ee8082ee8098ee8096ee8096ee809cee809cee8095ee8096ee8095ee8096ee80950000ee8082ee8098ee8096ee8096ee809cee809cee8095ee8096ee8095ee8096ee80950000ee8082ee8098ee8096ee8096ee809cee809cee8095ee8096ee8095ee8096ee80950000ee8082ee8098ee8096ee8096ee809cee809cee8095ee8096ee8095ee8096ee80950000ee8082ee8098ee8096ee8096ee809cee809cee8095ee8096ee8095ee8096ee80950000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e8a3b8e7b7a0e382810000",
+   "input_from_name": "10 Hit Combo 4",
+   "command_glyphs": [
+    "U+E002",
+    "U+E018",
+    "U+E016",
+    "U+E016",
+    "U+E01C",
+    "U+E01C",
+    "U+E015",
+    "U+E016",
+    "U+E015",
+    "U+E016",
+    "U+E015"
+   ],
+   "command_decoded": "d/f+3,2,2,4,4,1,2,1,2,1",
+   "command_complete": true
+  },
+  {
+   "name": "Neck Breaker",
+   "name_offset": 14230,
+   "record_len": 58,
+   "record_hex": "4e65636b20427265616b65720000e381afe381a0e3818be38198e382810000e79bb8e6898be381abe68ea5e8bf91e38197e381a620ee80990000",
+   "input_from_name": "Neck Breaker",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Approach enemy ",
+   "name_offset": 14288,
+   "record_len": 20,
+   "record_hex": "417070726f61636820656e656d7920ee80990000",
+   "input_from_name": "Approach enemy ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Approcher adversaire ",
+   "name_offset": 14308,
+   "record_len": 26,
+   "record_hex": "417070726f63686572206164766572736169726520ee80990000",
+   "input_from_name": "Approcher adversaire ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Vicino all'avversario ",
+   "name_offset": 14334,
+   "record_len": 27,
+   "record_hex": "566963696e6f20616c6c276176766572736172696f20ee80990000",
+   "input_from_name": "Vicino all'avversario ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "An den Gegner ann",
+   "name_offset": 14361,
+   "record_len": 19,
+   "record_hex": "416e2064656e204765676e657220616e6ec3a4",
+   "input_from_name": "An den Gegner ann"
+  },
+  {
+   "name": "hern ",
+   "name_offset": 14380,
+   "record_len": 10,
+   "record_hex": "6865726e20ee80990000",
+   "input_from_name": "hern ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Acercarse al adversario ",
+   "name_offset": 14390,
+   "record_len": 133,
+   "record_hex": "41636572636172736520616c206164766572736172696f20ee80990000d09fd0bed0b4d185d0bed0b420d0ba20d0bfd180d0bed182d0b8d0b2d0bdd0b8d0bad18320ee80990000ec8381eb8c80ebb0a9ec979020eca091eab7bced9598eba9b020ee80990000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e8a3b8e7b7a0e382810000",
+   "input_from_name": "Acercarse al adversario ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Neck Breaker",
+   "name_offset": 14523,
+   "record_len": 61,
+   "record_hex": "4e65636b20427265616b65720000e381afe381a0e3818be38198e382810000e79bb8e6898be381abe68ea5e8bf91e38197e381a620ee8084ee80990000",
+   "input_from_name": "Neck Breaker",
+   "command_glyphs": [
+    "U+E004",
+    "U+E019"
+   ],
+   "command_decoded": "f+1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Approach enemy ",
+   "name_offset": 14584,
+   "record_len": 23,
+   "record_hex": "417070726f61636820656e656d7920ee8084ee80990000",
+   "input_from_name": "Approach enemy ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E019"
+   ],
+   "command_decoded": "f+1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Approcher adversaire ",
+   "name_offset": 14607,
+   "record_len": 29,
+   "record_hex": "417070726f63686572206164766572736169726520ee8084ee80990000",
+   "input_from_name": "Approcher adversaire ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E019"
+   ],
+   "command_decoded": "f+1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Vicino all'avversario ",
+   "name_offset": 14636,
+   "record_len": 30,
+   "record_hex": "566963696e6f20616c6c276176766572736172696f20ee8084ee80990000",
+   "input_from_name": "Vicino all'avversario ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E019"
+   ],
+   "command_decoded": "f+1+3",
+   "command_complete": true
+  },
+  {
+   "name": "An den Gegner ann",
+   "name_offset": 14666,
+   "record_len": 19,
+   "record_hex": "416e2064656e204765676e657220616e6ec3a4",
+   "input_from_name": "An den Gegner ann"
+  },
+  {
+   "name": "hern ",
+   "name_offset": 14685,
+   "record_len": 13,
+   "record_hex": "6865726e20ee8084ee80990000",
+   "input_from_name": "hern ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E019"
+   ],
+   "command_decoded": "f+1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Acercarse al adversario ",
+   "name_offset": 14698,
+   "record_len": 148,
+   "record_hex": "41636572636172736520616c206164766572736172696f20ee8084ee80990000d09fd0bed0b4d185d0bed0b420d0ba20d0bfd180d0bed182d0b8d0b2d0bdd0b8d0bad18320ee8084ee80990000ec8381eb8c80ebb0a9ec979020eca091eab7bced9598eba9b020ee8084ee80990000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e98791e5899be890bde381a8e381970000",
+   "input_from_name": "Acercarse al adversario ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E019"
+   ],
+   "command_decoded": "f+1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Jumping Powerbomb",
+   "name_offset": 14846,
+   "record_len": 69,
+   "record_hex": "4a756d70696e6720506f776572626f6d620000e38193e38293e38194e38186e3818ae381a8e381970000e79bb8e6898be381abe68ea5e8bf91e38197e381a620ee809e0000",
+   "input_from_name": "Jumping Powerbomb",
+   "command_glyphs": [
+    "U+E01E"
+   ],
+   "command_decoded": "2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Approach enemy ",
+   "name_offset": 14915,
+   "record_len": 20,
+   "record_hex": "417070726f61636820656e656d7920ee809e0000",
+   "input_from_name": "Approach enemy ",
+   "command_glyphs": [
+    "U+E01E"
+   ],
+   "command_decoded": "2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Approcher adversaire ",
+   "name_offset": 14935,
+   "record_len": 26,
+   "record_hex": "417070726f63686572206164766572736169726520ee809e0000",
+   "input_from_name": "Approcher adversaire ",
+   "command_glyphs": [
+    "U+E01E"
+   ],
+   "command_decoded": "2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Vicino all'avversario ",
+   "name_offset": 14961,
+   "record_len": 27,
+   "record_hex": "566963696e6f20616c6c276176766572736172696f20ee809e0000",
+   "input_from_name": "Vicino all'avversario ",
+   "command_glyphs": [
+    "U+E01E"
+   ],
+   "command_decoded": "2+4",
+   "command_complete": true
+  },
+  {
+   "name": "An den Gegner ann",
+   "name_offset": 14988,
+   "record_len": 19,
+   "record_hex": "416e2064656e204765676e657220616e6ec3a4",
+   "input_from_name": "An den Gegner ann"
+  },
+  {
+   "name": "hern ",
+   "name_offset": 15007,
+   "record_len": 10,
+   "record_hex": "6865726e20ee809e0000",
+   "input_from_name": "hern ",
+   "command_glyphs": [
+    "U+E01E"
+   ],
+   "command_decoded": "2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Acercarse al adversario ",
+   "name_offset": 15017,
+   "record_len": 139,
+   "record_hex": "41636572636172736520616c206164766572736172696f20ee809e0000d09fd0bed0b4d185d0bed0b420d0ba20d0bfd180d0bed182d0b8d0b2d0bdd0b8d0bad18320ee809e0000ec8381eb8c80ebb0a9ec979020eca091eab7bced9598eba9b020ee809e0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e98791e5899be890bde381a8e381970000",
+   "input_from_name": "Acercarse al adversario ",
+   "command_glyphs": [
+    "U+E01E"
+   ],
+   "command_decoded": "2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Jumping Powerbomb",
+   "name_offset": 15156,
+   "record_len": 72,
+   "record_hex": "4a756d70696e6720506f776572626f6d620000e38193e38293e38194e38186e3818ae381a8e381970000e79bb8e6898be381abe68ea5e8bf91e38197e381a620ee8084ee809e0000",
+   "input_from_name": "Jumping Powerbomb",
+   "command_glyphs": [
+    "U+E004",
+    "U+E01E"
+   ],
+   "command_decoded": "f+2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Approach enemy ",
+   "name_offset": 15228,
+   "record_len": 23,
+   "record_hex": "417070726f61636820656e656d7920ee8084ee809e0000",
+   "input_from_name": "Approach enemy ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E01E"
+   ],
+   "command_decoded": "f+2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Approcher adversaire ",
+   "name_offset": 15251,
+   "record_len": 29,
+   "record_hex": "417070726f63686572206164766572736169726520ee8084ee809e0000",
+   "input_from_name": "Approcher adversaire ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E01E"
+   ],
+   "command_decoded": "f+2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Vicino all'avversario ",
+   "name_offset": 15280,
+   "record_len": 30,
+   "record_hex": "566963696e6f20616c6c276176766572736172696f20ee8084ee809e0000",
+   "input_from_name": "Vicino all'avversario ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E01E"
+   ],
+   "command_decoded": "f+2+4",
+   "command_complete": true
+  },
+  {
+   "name": "An den Gegner ann",
+   "name_offset": 15310,
+   "record_len": 19,
+   "record_hex": "416e2064656e204765676e657220616e6ec3a4",
+   "input_from_name": "An den Gegner ann"
+  },
+  {
+   "name": "hern ",
+   "name_offset": 15329,
+   "record_len": 13,
+   "record_hex": "6865726e20ee8084ee809e0000",
+   "input_from_name": "hern ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E01E"
+   ],
+   "command_decoded": "f+2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Acercarse al adversario ",
+   "name_offset": 15342,
+   "record_len": 142,
+   "record_hex": "41636572636172736520616c206164766572736172696f20ee8084ee809e0000d09fd0bed0b4d185d0bed0b420d0ba20d0bfd180d0bed182d0b8d0b2d0bdd0b8d0bad18320ee8084ee809e0000ec8381eb8c80ebb0a9ec979020eca091eab7bced9598eba9b020ee8084ee809e0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e696ade9a0ade6898b0000",
+   "input_from_name": "Acercarse al adversario ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E01E"
+   ],
+   "command_decoded": "f+2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Guillotine Chop",
+   "name_offset": 15484,
+   "record_len": 84,
+   "record_hex": "4775696c6c6f74696e652043686f700000e381a0e38293e381a8e38186e38197e382850000e79bb8e6898be381aee5b7a6e6a8aae3818be38289e68ea5e8bf91e38197e381a620ee8099286f7220ee809e290000",
+   "input_from_name": "Guillotine Chop",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Approach from left side ",
+   "name_offset": 15568,
+   "record_len": 38,
+   "record_hex": "417070726f6163682066726f6d206c656674207369646520ee809920286f7220ee809e290000",
+   "input_from_name": "Approach from left side ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Approcher par la gauche ",
+   "name_offset": 15606,
+   "record_len": 38,
+   "record_hex": "417070726f6368657220706172206c612067617563686520ee809920286f7520ee809e290000",
+   "input_from_name": "Approcher par la gauche ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Vicino da sinistra ",
+   "name_offset": 15644,
+   "record_len": 32,
+   "record_hex": "566963696e6f2064612073696e697374726120ee809920286f20ee809e290000",
+   "input_from_name": "Vicino da sinistra ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Von der linken Seite ann",
+   "name_offset": 15676,
+   "record_len": 26,
+   "record_hex": "566f6e20646572206c696e6b656e20536569746520616e6ec3a4",
+   "input_from_name": "Von der linken Seite ann"
+  },
+  {
+   "name": "hern ",
+   "name_offset": 15702,
+   "record_len": 8,
+   "record_hex": "6865726e20ee8099",
+   "input_from_name": "hern ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": " (oder ",
+   "name_offset": 15710,
+   "record_len": 13,
+   "record_hex": "20286f64657220ee809e290000",
+   "input_from_name": " (oder ",
+   "command_glyphs": [
+    "U+E01E"
+   ],
+   "command_decoded": "2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Acercarse desde la izqda. ",
+   "name_offset": 15723,
+   "record_len": 158,
+   "record_hex": "416365726361727365206465736465206c6120697a7164612e20ee809920286f20ee809e290000d09fd0bed0b4d185d0bed0b420d181d0bbd0b5d0b2d0b020ee80992028d0b8d0bbd0b820ee809e290000ec99bcecaabdec9cbceba19cebb680ed84b020eca091eab7bced9598eba9b020ee809928ed98b9ec9d8020ee809e290000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e5a588e890bd0000",
+   "input_from_name": "Acercarse desde la izqda. ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Freefall",
+   "name_offset": 15881,
+   "record_len": 68,
+   "record_hex": "4672656566616c6c0000e381aae38289e3818f0000e79bb8e6898be381aee58fb3e6a8aae3818be38289e68ea5e8bf91e38197e381a620ee8099286f7220ee809e290000",
+   "input_from_name": "Freefall",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Approach from right side ",
+   "name_offset": 15949,
+   "record_len": 39,
+   "record_hex": "417070726f6163682066726f6d207269676874207369646520ee809920286f7220ee809e290000",
+   "input_from_name": "Approach from right side ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Approcher par la droite ",
+   "name_offset": 15988,
+   "record_len": 38,
+   "record_hex": "417070726f6368657220706172206c612064726f69746520ee809920286f7520ee809e290000",
+   "input_from_name": "Approcher par la droite ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Vicino da destra ",
+   "name_offset": 16026,
+   "record_len": 30,
+   "record_hex": "566963696e6f2064612064657374726120ee809920286f20ee809e290000",
+   "input_from_name": "Vicino da destra ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Von der rechten Seite ann",
+   "name_offset": 16056,
+   "record_len": 27,
+   "record_hex": "566f6e20646572207265636874656e20536569746520616e6ec3a4",
+   "input_from_name": "Von der rechten Seite ann"
+  },
+  {
+   "name": "hern ",
+   "name_offset": 16083,
+   "record_len": 8,
+   "record_hex": "6865726e20ee8099",
+   "input_from_name": "hern ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": " (oder ",
+   "name_offset": 16091,
+   "record_len": 13,
+   "record_hex": "20286f64657220ee809e290000",
+   "input_from_name": " (oder ",
+   "command_glyphs": [
+    "U+E01E"
+   ],
+   "command_decoded": "2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Acercarse desde la dcha. ",
+   "name_offset": 16104,
+   "record_len": 168,
+   "record_hex": "416365726361727365206465736465206c6120646368612e20ee809920286f20ee809e290000d09fd0bed0b4d185d0bed0b420d181d0bfd180d0b0d0b2d0b020ee80992028d0b8d0bbd0b820ee809e290000ec98a4eba5b8ecaabdec9cbceba19cebb680ed84b020eca091eab7bced9598eba9b020ee809928ed98b9ec9d8020ee809e290000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e4bb81e78e8be7a095e3818d0000",
+   "input_from_name": "Acercarse desde la dcha. ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Atomic Drop",
+   "name_offset": 16272,
+   "record_len": 80,
+   "record_hex": "41746f6d69632044726f700000e381abe3818ae38186e3818fe381a0e3818d0000e79bb8e6898be381aee8838ce5be8ce3818be38289e68ea5e8bf91e38197e381a620ee8099286f7220ee809e290000",
+   "input_from_name": "Atomic Drop",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Approach from behind ",
+   "name_offset": 16352,
+   "record_len": 35,
+   "record_hex": "417070726f6163682066726f6d20626568696e6420ee809920286f7220ee809e290000",
+   "input_from_name": "Approach from behind ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Approcher par derri",
+   "name_offset": 16387,
+   "record_len": 38,
+   "record_hex": "417070726f6368657220706172206465727269c3a8726520ee809920286f7520ee809e290000",
+   "input_from_name": "Approcher par derri",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Vicino da dietro ",
+   "name_offset": 16425,
+   "record_len": 30,
+   "record_hex": "566963696e6f2064612064696574726f20ee809920286f20ee809e290000",
+   "input_from_name": "Vicino da dietro ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Von hinten ann",
+   "name_offset": 16455,
+   "record_len": 16,
+   "record_hex": "566f6e2068696e74656e20616e6ec3a4",
+   "input_from_name": "Von hinten ann"
+  },
+  {
+   "name": "hern ",
+   "name_offset": 16471,
+   "record_len": 8,
+   "record_hex": "6865726e20ee8099",
+   "input_from_name": "hern ",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": " (oder ",
+   "name_offset": 16479,
+   "record_len": 13,
+   "record_hex": "20286f64657220ee809e290000",
+   "input_from_name": " (oder ",
+   "command_glyphs": [
+    "U+E01E"
+   ],
+   "command_decoded": "2+4",
+   "command_complete": true
+  },
+  {
+   "name": "Acercarse desde atr",
+   "name_offset": 16492,
+   "record_len": 152,
+   "record_hex": "41636572636172736520646573646520617472c3a17320ee809920286f20ee809e290000d09fd0bed0b4d185d0bed0b420d181d0b7d0b0d0b4d0b820ee80992028d0b8d0bbd0b820ee809e290000eb92a4ec9790ec849c20eca091eab7bced9598eba9b020ee809928ed98b9ec9d8020ee809e290000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e781abe68993e381a1e79fb30000",
+   "input_from_name": "Acercarse desde atr",
+   "command_glyphs": [
+    "U+E019"
+   ],
+   "command_decoded": "1+3",
+   "command_complete": true
+  },
+  {
+   "name": "Fire Starter",
+   "name_offset": 16644,
+   "record_len": 61,
+   "record_hex": "4669726520537461727465720000e381b2e38186e381a1e38184e381970000e79bb8e6898be381abe68ea5e8bf91e38197e381a620ee8082ee809a0000",
+   "input_from_name": "Fire Starter",
+   "command_glyphs": [
+    "U+E002",
+    "U+E01A"
+   ],
+   "command_decoded": "d/f+2+3",
+   "command_complete": true
+  },
+  {
+   "name": "Approach enemy ",
+   "name_offset": 16705,
+   "record_len": 23,
+   "record_hex": "417070726f61636820656e656d7920ee8082ee809a0000",
+   "input_from_name": "Approach enemy ",
+   "command_glyphs": [
+    "U+E002",
+    "U+E01A"
+   ],
+   "command_decoded": "d/f+2+3",
+   "command_complete": true
+  },
+  {
+   "name": "Approcher adversaire ",
+   "name_offset": 16728,
+   "record_len": 29,
+   "record_hex": "417070726f63686572206164766572736169726520ee8082ee809a0000",
+   "input_from_name": "Approcher adversaire ",
+   "command_glyphs": [
+    "U+E002",
+    "U+E01A"
+   ],
+   "command_decoded": "d/f+2+3",
+   "command_complete": true
+  },
+  {
+   "name": "Vicino all'avversario ",
+   "name_offset": 16757,
+   "record_len": 30,
+   "record_hex": "566963696e6f20616c6c276176766572736172696f20ee8082ee809a0000",
+   "input_from_name": "Vicino all'avversario ",
+   "command_glyphs": [
+    "U+E002",
+    "U+E01A"
+   ],
+   "command_decoded": "d/f+2+3",
+   "command_complete": true
+  },
+  {
+   "name": "An den Gegner ann",
+   "name_offset": 16787,
+   "record_len": 19,
+   "record_hex": "416e2064656e204765676e657220616e6ec3a4",
+   "input_from_name": "An den Gegner ann"
+  },
+  {
+   "name": "hern ",
+   "name_offset": 16806,
+   "record_len": 13,
+   "record_hex": "6865726e20ee8082ee809a0000",
+   "input_from_name": "hern ",
+   "command_glyphs": [
+    "U+E002",
+    "U+E01A"
+   ],
+   "command_decoded": "d/f+2+3",
+   "command_complete": true
+  },
+  {
+   "name": "Acercarse al adversario ",
+   "name_offset": 16819,
+   "record_len": 145,
+   "record_hex": "41636572636172736520616c206164766572736172696f20ee8082ee809a0000d09fd0bed0b4d185d0bed0b420d0ba20d0bfd180d0bed182d0b8d0b2d0bdd0b8d0bad18320ee8082ee809a0000ec8381eb8c80ebb0a9ec979020eca091eab7bced9598eba9b020ee8082ee809a0000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e8b685e381b1e381a1e3818d0000",
+   "input_from_name": "Acercarse al adversario ",
+   "command_glyphs": [
+    "U+E002",
+    "U+E01A"
+   ],
+   "command_decoded": "d/f+2+3",
+   "command_complete": true
+  },
+  {
+   "name": "Stonehead",
+   "name_offset": 16964,
+   "record_len": 64,
+   "record_hex": "53746f6e65686561640000e381a1e38287e38186e381b1e381a1e3818d0000e79bb8e6898be381abe68ea5e8bf91e38197e381a620ee8084ee808cee80970000",
+   "input_from_name": "Stonehead",
+   "command_glyphs": [
+    "U+E004",
+    "U+E00C",
+    "U+E017"
+   ],
+   "command_decoded": "f,F+1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Approach enemy ",
+   "name_offset": 17028,
+   "record_len": 26,
+   "record_hex": "417070726f61636820656e656d7920ee8084ee808cee80970000",
+   "input_from_name": "Approach enemy ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E00C",
+    "U+E017"
+   ],
+   "command_decoded": "f,F+1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Approcher adversaire ",
+   "name_offset": 17054,
+   "record_len": 32,
+   "record_hex": "417070726f63686572206164766572736169726520ee8084ee808cee80970000",
+   "input_from_name": "Approcher adversaire ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E00C",
+    "U+E017"
+   ],
+   "command_decoded": "f,F+1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Vicino all'avversario ",
+   "name_offset": 17086,
+   "record_len": 33,
+   "record_hex": "566963696e6f20616c6c276176766572736172696f20ee8084ee808cee80970000",
+   "input_from_name": "Vicino all'avversario ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E00C",
+    "U+E017"
+   ],
+   "command_decoded": "f,F+1+2",
+   "command_complete": true
+  },
+  {
+   "name": "An den Gegner ann",
+   "name_offset": 17119,
+   "record_len": 19,
+   "record_hex": "416e2064656e204765676e657220616e6ec3a4",
+   "input_from_name": "An den Gegner ann"
+  },
+  {
+   "name": "hern ",
+   "name_offset": 17138,
+   "record_len": 16,
+   "record_hex": "6865726e20ee8084ee808cee80970000",
+   "input_from_name": "hern ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E00C",
+    "U+E017"
+   ],
+   "command_decoded": "f,F+1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Acercarse al adversario ",
+   "name_offset": 17154,
+   "record_len": 151,
+   "record_hex": "41636572636172736520616c206164766572736172696f20ee8084ee808cee80970000d09fd0bed0b4d185d0bed0b420d0ba20d0bfd180d0bed182d0b8d0b2d0bdd0b8d0bad18320ee8084ee808cee80970000ec8381eb8c80ebb0a9ec979020eca091eab7bced9598eba9b020ee8084ee808cee80970000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e694bee5ae99e6898b0000",
+   "input_from_name": "Acercarse al adversario ",
+   "command_glyphs": [
+    "U+E004",
+    "U+E00C",
+    "U+E017"
+   ],
+   "command_decoded": "f,F+1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Broken Toy",
+   "name_offset": 17305,
+   "record_len": 71,
+   "record_hex": "42726f6b656e20546f790000e381bbe38186e381a1e38285e38186e38197e382850000e79bb8e6898be381abe68ea5e8bf91e38197e381a620ee8081ee8082ee8084ee80950000",
+   "input_from_name": "Broken Toy",
+   "command_glyphs": [
+    "U+E001",
+    "U+E002",
+    "U+E004",
+    "U+E015"
+   ],
+   "command_decoded": "d,d/f,f+1",
+   "command_complete": true
+  },
+  {
+   "name": "Approach enemy ",
+   "name_offset": 17376,
+   "record_len": 29,
+   "record_hex": "417070726f61636820656e656d7920ee8081ee8082ee8084ee80950000",
+   "input_from_name": "Approach enemy ",
+   "command_glyphs": [
+    "U+E001",
+    "U+E002",
+    "U+E004",
+    "U+E015"
+   ],
+   "command_decoded": "d,d/f,f+1",
+   "command_complete": true
+  },
+  {
+   "name": "Approcher adversaire ",
+   "name_offset": 17405,
+   "record_len": 35,
+   "record_hex": "417070726f63686572206164766572736169726520ee8081ee8082ee8084ee80950000",
+   "input_from_name": "Approcher adversaire ",
+   "command_glyphs": [
+    "U+E001",
+    "U+E002",
+    "U+E004",
+    "U+E015"
+   ],
+   "command_decoded": "d,d/f,f+1",
+   "command_complete": true
+  },
+  {
+   "name": "Vicino all'avversario ",
+   "name_offset": 17440,
+   "record_len": 36,
+   "record_hex": "566963696e6f20616c6c276176766572736172696f20ee8081ee8082ee8084ee80950000",
+   "input_from_name": "Vicino all'avversario ",
+   "command_glyphs": [
+    "U+E001",
+    "U+E002",
+    "U+E004",
+    "U+E015"
+   ],
+   "command_decoded": "d,d/f,f+1",
+   "command_complete": true
+  },
+  {
+   "name": "An den Gegner ann",
+   "name_offset": 17476,
+   "record_len": 19,
+   "record_hex": "416e2064656e204765676e657220616e6ec3a4",
+   "input_from_name": "An den Gegner ann"
+  },
+  {
+   "name": "hern ",
+   "name_offset": 17495,
+   "record_len": 19,
+   "record_hex": "6865726e20ee8081ee8082ee8084ee80950000",
+   "input_from_name": "hern ",
+   "command_glyphs": [
+    "U+E001",
+    "U+E002",
+    "U+E004",
+    "U+E015"
+   ],
+   "command_decoded": "d,d/f,f+1",
+   "command_complete": true
+  },
+  {
+   "name": "Acercarse al adversario ",
+   "name_offset": 17514,
+   "record_len": 181,
+   "record_hex": "41636572636172736520616c206164766572736172696f20ee8081ee8082ee8084ee80950000d09fd0bed0b4d185d0bed0b420d0ba20d0bfd180d0bed182d0b8d0b2d0bdd0b8d0bad18320ee8081ee8082ee8084ee80950000ec8381eb8c80ebb0a9ec979020eca091eab7bced9598eba9b020ee8081ee8082ee8084ee80950000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e4b889e5b3b6e6b581e383bbe98791e5899be5a381e381aee6a78be381880000",
+   "input_from_name": "Acercarse al adversario ",
+   "command_glyphs": [
+    "U+E001",
+    "U+E002",
+    "U+E004",
+    "U+E015"
+   ],
+   "command_decoded": "d,d/f,f+1",
+   "command_complete": true
+  },
+  {
+   "name": "Heaven's Wrath ",
+   "name_offset": 17695,
+   "record_len": 120,
+   "record_hex": "48656176656e2773205772617468200000e381bfe38197e381bee3828ae38285e38186e383bbe38193e38293e38194e38186e381b8e3818de381aee3818be381bee381880000e79bb8e6898be381aee694bbe69283e381abe59088e3828fe3819be381a620ee8083ee809d286f7220ee8083ee809a290000",
+   "input_from_name": "Heaven's Wrath ",
+   "command_glyphs": [
+    "U+E003",
+    "U+E01D"
+   ],
+   "command_decoded": "b+1+4",
+   "command_complete": true
+  },
+  {
+   "name": "Time with enemy attack ",
+   "name_offset": 17815,
+   "record_len": 43,
+   "record_hex": "54696d65207769746820656e656d792061747461636b20ee8083ee809d20286f7220ee8083ee809a290000",
+   "input_from_name": "Time with enemy attack ",
+   "command_glyphs": [
+    "U+E003",
+    "U+E01D"
+   ],
+   "command_decoded": "b+1+4",
+   "command_complete": true
+  },
+  {
+   "name": "Synchro avec l'attaque de l'adversaire ",
+   "name_offset": 17858,
+   "record_len": 59,
+   "record_hex": "53796e6368726f2061766563206c2761747461717565206465206c276164766572736169726520ee8083ee809d20286f7520ee8083ee809a290000",
+   "input_from_name": "Synchro avec l'attaque de l'adversaire ",
+   "command_glyphs": [
+    "U+E003",
+    "U+E01D"
+   ],
+   "command_decoded": "b+1+4",
+   "command_complete": true
+  },
+  {
+   "name": "Mentre l'avversario sferra un attacco ",
+   "name_offset": 17917,
+   "record_len": 57,
+   "record_hex": "4d656e747265206c276176766572736172696f2073666572726120756e206174746163636f20ee8083ee809d20286f20ee8083ee809a290000",
+   "input_from_name": "Mentre l'avversario sferra un attacco ",
+   "command_glyphs": [
+    "U+E003",
+    "U+E01D"
+   ],
+   "command_decoded": "b+1+4",
+   "command_complete": true
+  },
+  {
+   "name": "Mit Angriff des Gegners abstimmen ",
+   "name_offset": 17974,
+   "record_len": 40,
+   "record_hex": "4d697420416e677269666620646573204765676e6572732061627374696d6d656e20ee8083ee809d",
+   "input_from_name": "Mit Angriff des Gegners abstimmen ",
+   "command_glyphs": [
+    "U+E003",
+    "U+E01D"
+   ],
+   "command_decoded": "b+1+4",
+   "command_complete": true
+  },
+  {
+   "name": " (oder ",
+   "name_offset": 18014,
+   "record_len": 16,
+   "record_hex": "20286f64657220ee8083ee809a290000",
+   "input_from_name": " (oder ",
+   "command_glyphs": [
+    "U+E003",
+    "U+E01A"
+   ],
+   "command_decoded": "b+2+3",
+   "command_complete": true
+  },
+  {
+   "name": "Sincro. con ataque adversario ",
+   "name_offset": 18030,
+   "record_len": 216,
+   "record_hex": "53696e63726f2e20636f6e20617461717565206164766572736172696f20ee8083ee809d20286f20ee8083ee809a290000d09fd180d0b820d0b0d182d0b0d0bad0b520d0bfd180d0bed182d0b8d0b2d0bdd0b8d0bad0b020ee8083ee809d2028d0b8d0bbd0b820ee8083ee809a290000ec8381eb8c80ebb0a9ec9d9820eab3b5eab2a9eab3bc20eb8f99ec8b9cec979020ee8083ee809d28ed98b9ec9d8020ee8083ee809a290000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382b5e383b3e38397e383abe382b3e383b3e3839c28efbc91290000",
+   "input_from_name": "Sincro. con ataque adversario ",
+   "command_glyphs": [
+    "U+E003",
+    "U+E01D"
+   ],
+   "command_decoded": "b+1+4",
+   "command_complete": true
+  },
+  {
+   "name": "Sample Combo 1",
+   "name_offset": 18246,
+   "record_len": 123,
+   "record_hex": "53616d706c6520436f6d626f20310000e382b5e383b3e38397e383abe382b3e383b3e3839c28efbc91290000ee8084ee8097e28692ee8081ee809800000000000000000000000000000000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382b5e383b3e38397e383abe382b3e383b3e3839c28efbc92290000",
+   "input_from_name": "Sample Combo 1",
+   "command_glyphs": [
+    "U+E004",
+    "U+E017"
+   ],
+   "command_decoded": "f+1+2",
+   "command_complete": true
+  },
+  {
+   "name": "Sample Combo 2",
+   "name_offset": 18369,
+   "record_len": 144,
+   "record_hex": "53616d706c6520436f6d626f20320000e382b5e383b3e38397e383abe382b3e383b3e3839c28efbc92290000ee8097e28692ee8081ee8095e38390e382a6e383b3e38389e28692ee8087ee8098ee809c00000000000000000000000000000000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382b5e383b3e38397e383abe382b3e383b3e3839c28efbc93290000",
+   "input_from_name": "Sample Combo 2",
+   "command_glyphs": [
+    "U+E007",
+    "U+E018",
+    "U+E01C"
+   ],
+   "command_decoded": "u/f+3,4",
+   "command_complete": true
+  },
+  {
+   "name": "Sample Combo 3",
+   "name_offset": 18513,
+   "record_len": 159,
+   "record_hex": "53616d706c6520436f6d626f20330000e382b5e383b3e38397e383abe382b3e383b3e3839c28efbc93290000ee8084ee808cee8098e28692ee8083ee8084ee8096ee8096e38390e382a6e383b3e38389e28692ee8083ee8084ee8096ee809500000000000000000000000000000000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382b5e383b3e38397e383abe382b3e383b3e3839c28efbc94290000",
+   "input_from_name": "Sample Combo 3",
+   "command_glyphs": [
+    "U+E003",
+    "U+E004",
+    "U+E016",
+    "U+E016"
+   ],
+   "command_decoded": "b,f+2,2",
+   "command_complete": true
+  },
+  {
+   "name": "Sample Combo 4",
+   "name_offset": 18672,
+   "record_len": 192,
+   "record_hex": "53616d706c6520436f6d626f20340000e382b5e383b3e38397e383abe382b3e383b3e3839c28efbc94290000e7ab8be381a1e98094e4b8adee8096e382abe382a6e383b3e382bfe383bce28692ee8082ee8095e28692ee8082ee8095ee8096e38390e382a6e383b3e38389e28692e8bbb8e7a7bbe58b95e4b8adee8096ee809500000000000000000000000000000000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382b5e383b3e38397e383abe382b3e383b3e3839c28efbc95290000",
+   "input_from_name": "Sample Combo 4",
+   "command_glyphs": [
+    "U+E002",
+    "U+E015",
+    "U+E016"
+   ],
+   "command_decoded": "d/f+1,2",
+   "command_complete": true
+  },
+  {
+   "name": "Sample Combo 5",
+   "name_offset": 18864,
+   "record_len": 156,
+   "record_hex": "53616d706c6520436f6d626f20350000e382b5e383b3e38397e383abe382b3e383b3e3839c28efbc95290000ee8084e29886ee8081ee8082ee8096e28692ee8084ee809ce28692ee8082ee8095e28692ee8095ee8083ee8096ee809500000000000000000000000000000000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382b5e383b3e38397e383abe382b3e383b3e3839c28efbc96290000",
+   "input_from_name": "Sample Combo 5",
+   "command_glyphs": [
+    "U+E015",
+    "U+E003",
+    "U+E016",
+    "U+E015"
+   ],
+   "command_decoded": "1,b+2,1",
+   "command_complete": true
+  },
+  {
+   "name": "Sample Combo 6",
+   "name_offset": 19020,
+   "record_len": 180,
+   "record_hex": "53616d706c6520436f6d626f20360000e382b5e383b3e38397e383abe382b3e383b3e3839c28efbc96290000ee8084ee808cee8096e28692ee8083ee8095ee8096e28692ee8082ee8095ee8096e38390e382a6e383b3e38389e28692ee8084e29886ee8081ee8082ee809ce29886ee809cee809c00000000000000000000000000000000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b0000e382b5e383b3e38397e383abe382b3e383b3e3839c28efbc97290000",
+   "input_from_name": "Sample Combo 6",
+   "command_glyphs": [
+    "U+E004",
+    "U+E00C",
+    "U+E016"
+   ],
+   "command_decoded": "f,F+2",
+   "command_complete": true
+  },
+  {
+   "name": "Sample Combo 7",
+   "name_offset": 19200,
+   "record_len": 27152,
+   "record_hex": "53616d706c6520436f6d626f20370000e382b5e383b3e38397e383abe382b3e383b3e3839c28efbc97290000ee8084e29886ee8081ee8082ee8096e28692ee8084e29886ee8081ee8082ee8096e28692ee8084e29886ee8081ee8082ee8096e28692ee8081ee8095e38390e382a6e383b3e38389e28692ee8084e29886ee8081ee808aee809cee809cee809500000000000000000000000000000000e5b8b6e58b95e7b693e6bf9fe8b5b7e9a39b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009e0000009e0000009e0000009e000000000000000000000000000000000000000000000000000000000000000000000070fe000007000b000000000009000b000a000b0008000b0000000000000000009f0000009f0000009f0000009f0000000000000000000000000000000000000000000000000000000000000000000000e8fe00000c001000000000000e0010000f0010000d0010000000000000000000a0000000a0000000a0000000a0000000000000000000000000000000000000000000000000000000000000000000000070fe000011001200000000001100120011001200110012000000000000000000a1000000a1000000a1000000a100000000000000000000000000000000000000000000000000000000000000000000000000000013001300000000001300130013001300130013000000000000000000a8000000a8000000a8000000a8000000000000000000000000000000abeaabeaabeaabea0000000000000000000000000000000014001400000000001400140014001400140014000000000000000000a8000000a8000000a8000000a800000000000000000000000000000055155515551555150000000000000000000000000000000015001500000000001500150015001500150015000000000000000000ad000000ad000000ad000000ad00000000000000000000000000000000000000000000000000000000000000000000006400000016001600000000001600160016001600170017000000000000000000ae000000ae000000ae000000ae00000000000000000000000000000000000000000000000000000000000000000000005000000018001800000000001800180018001800180018000000000000000000af000000af000000af000000af00000000000000000000000000000000000000000000000000000000000000000000003200000019001900000000001900190019001900190019000000000000000000bb000000bb000000bb000000bb0000000000000000000000000000000000000000000000000000000000000000000000010000001a001a00000000001a001a001a001a001a001a000000000000000000bb000000bb000000bb000000bb0000000000000000000000000000000000000000000000000000000000000000000000010000001a001a00000000001a001a001a001a001a001a0000000000000000000200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000210021002100210021002100210021002100210028012801b600b8001c0000001c0000001c0000001c0000001c000000340000000e000000000000000000000000000000000000000000000000000000d600d600d600d600d600d600d600d600d600d600ff02f602b600b8000c0000000c0000000c0000000c00000002000000340000000a00000056d556d556d556d501e056d5000000000000000000000000a400a4002e032e03a500a500a600a600a700a700a800a800b600b8000c000000bc0000000c0000000c0000001c000000340000000a00000001e0000001e001e0000001e0000000000000000000000000a900a900d600d600a900a900a900a900aa00aa00ab00ab00b600b8000c0000000c0000000c0000000c0000000c000000340000000a000000aa2aaa2aaa2aaa2aabeaaa2a000000000000000000000000ac00ac0032033203ad00ad00ae00ae00af00af00b000b000b600b8000200000002000000020000000200000002000000340000000e00000000d000d000d000d000000000000000000000000000000000bb00bb00bb00bb00bb00bb00bb00bb00bb00bb00ee02f602b600b8000200000002000000020000000200000002000000340000000e000000aa2aaa2aaa2aaa2aaa2aaa2a00000000000000000000000028033a0328033a0329033b032a033c0325033703f402fa02b600b80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000bd002a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000bf002a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c1002a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c3002a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c9002a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c5002a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000cd002a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000cf002a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d1002a012a012a012a012a012a012a012a012a012a012a012a012a012a0000002a0000002a0000002a0000002a0000003400000012000000000000000000000000000000000000000000000000000000db00db00db00db00dd00dd00dc00dc00de00de002901f602b600b8000200000002000000020000000200000002000000340000000e0000000000000000000000000000000000000000000000000000000803080308030803090309030a030a0316031603eb02f602b600b800020000000200000002000000020000001c000000340000000e00000000000000000000000000000000000000000000000000000008030803d600d600090309030a030a0317031703eb02f602b600b8000200000002000000020000000200000002000000340000000e0000000000000000000000000000000000000000000000000000000b030b03080308030c030c030d030d0316031603eb02f602b600b8005d0000005d0000005d0000005d0000005d0000003400000002000000000000000000000000000000000000000000000000000000c701c70108030803090309030a030a0316031603eb02f602b600b8000200000002000000020000000200000002000000340000000e000000aa2aaa2aaa2aaa2aaa2aaa2a00000000000000000000000007030703080308030c030c030d030d0308030803ef02f902b600b800020000000200000002000000020000001c000000340000000e00000001e001e001e001e0000001e00000000000000000000000001b031b03d600d6001c031c031d031d031e031e03ee02f602b600b8000200000002000000020000000200000002000000340000000e000000ff1fff1fff1fff1fff1fff1f00000000000000000000000019021e0319021e03ba01ba01bc01bc01bb01bb01ef02f902b600b8000200000002000000020000000200000002000000340000000e0000000000000000000000000000000000000000000000000000002103340321033403220335032303360324033403f002f602b600b8005d0000005d0000005d0000005d0000005d000000340000000e0000000000000000000000000000000000000000000000000000002503370325033703260338032703390328033a03f202f602b600b8000200000002000000020000000200000002000000340000000e0000000000000000000000000000000000000000000000000000002503370325033703260338032703390328033a03f202f602b600b8000200000002000000020000000200000002000000340000000e00000056d556d556d556d556d556d50000000000000000000000002503370325033703260338032703390328033a03f302f802b600b8000200000002000000020000000200000002000000340000000e00000056d556d556d556d501e056d5000000000000000000000000250337032e032e03260338032703390328033a03f202f602b600b8003a0000000200000002000000020000003a000000340000000e000000abea000000000000abea000000000000000000000000000028033a0328033a0333033303330333032f032f03f402f902b600b8000200000002000000020000000200000002000000340000000e0000000000000000000000000000000000000000000000000000002b033d0328033a032c033e032d033f0325033703f402f902b600b8004000000040000000400000004000000040000000340000000e0000000000000000000000000000000000000000000000000000006f036f036f036f03090309030a030a0308032403f002f602b600b8000200000002000000020000000200000002000000340000000e0000000000000000000000000000000000000000000000000000001f031f031f031f0312031203140314031a021a02f102f902b600b8000200000002000000020000000200000002000000340000000e00000000000000000000000000000000000000000000000000000021030803210308032203090323030a0324032403f002f602b600b8001c0000001c0000001c0000001c0000001c000000340000000e000000000000000000000000000000000000000000000000000000d600d600d600d600d600d600d600d600d600d600eb02f602b600b8002200000022000000220000002200000030000000340000000e000000000000000000000000000000000000000000000000000000d600d600d400d400d600d600d600d600d600d600eb02f602b600b800020000000200000002000000020000001c000000340000000e00000000000000000000000000000000000000000000000000000008030803d600d6000803080308030803d600d600eb02f602b600b800020000000200000002000000020000001c000000020000004a00000000000000000000000000000000000000000000000000000040034003d600d600420342034403440324032403eb02f602b600b8005500000055000000550000005500000055000000550000000e000000000000000000000000000000000000000000000000000000d600d600d600d600d600d600d600d600d600d600eb02f602b600b8001c0000001c0000001c0000001c0000001c000000340000000e00000077177717771777177717aa2a000000000000000000000000d700d700d700d700d700d700d700d700d700d700c202f902b600b8001c0000001c0000001c0000001c0000001c000000340000000e000000aa2aaa2aaa2aaa2aaa2aaa2a000000000000000000000000d600d600d600d600d600d600d600d600d600d600ef02f902b600b8001c0000001c0000001c0000001c0000000e000000340000000e0000007717771777177717aa2aaa2a000000000000000000000000d700d70071037103d700d700d700d700d700d700c202c202b600b8001c0000001c0000001c0000001c0000001c000000340000000e000000e338e338e338e338ff3fff3f000000000000000000000000d600d600d600d600d600d600d600d600d600d600ef02f902b600b8001c0000001c0000001c0000001c0000001c000000340000000e000000ff3fff3fff3fff3fff3fff3f000000000000000000000000d600d600d600d600d600d600d600d600d600d600ef02f902b600b8001c0000001c0000001c0000001c0000001c000000340000000e00000056d556d556d556d556d556d5000000000000000000000000d600d600d600d600d600d600d600d600d600d600ee02f602b600b8000300000003000000030000000300000023000000340000000e0000000000000000000000000000000000000000000000000000006f036f03d300d300090309030a030a0316031603f002f602b600b8004000000040000000400000004000000040000000340000000e00000000000000000000000000000000000000000000000000000075037503750375037603760377037703780378030303f602b600b8003000000030000000300000003000000030000000340000000e000000000000000000000000000000000000000000000000000000d400d400d400d400d400d400d400d400d400d400eb02d400b600b80033000000330000003300000033000000330000003400000047000000000000000000000000000000000000000000000000000000d400d400d400d400d400d400d400d400d400d400eb02d400b600b8003a0000003a0000003a0000003a0000003a000000340000000e0000000000000000000000000000000000000000000000000000002f032f032f032f03300330033103310333033303eb02f702b600b8003b0000003b0000003b0000003b0000003b000000340000000e0000000000000000000000000000000000000000000000000000002f032f032f032f03300330033103310333033303eb02f702b600b8003a0000003a0000003a0000003a0000003a000000340000000e000000abeaabeaabeaabeaabeaabea000000000000000000000000330333033303330333033303330333032f032f03f502fb02b600b8000200000002000000020000000200000002000000340000000e00000000000000000000000000000000000000000000000000000046034c0346034c0347034d0348034e0346034c03f002f602b600b8005d0000005d0000005d0000005d0000005d000000340000000e00000000000000000000000000000000000000000000000000000049034f0346034c034a0350034b03510349034f03f002f602b600b8000200000002000000020000000200000002000000400000000e00000000000000000000000000000000000000000000000000000046034c0346034c0347034d0348034e0346034c03eb02f602b600b800290000002900000029000000290000003800000034000000470000000000000000000000000000000000000000000000000000005503550359035903560356035703570358035803f002f602b600b8004000000040000000400000004000000040000000340000000e0000000000000000000000000000000000000000000000000000006403640364036403650365036603660364036403eb02f602b600b8000e0000000e0000000e0000000e0000000e000000340000000e000000e4f8e4f8e4f8e4f8e4f8e4f80000000000000000000000006003600360036003610361036203620363036303ee02f602b600b80050000000500000005000000050000000500000003400000047000000000000000000000000000000000000000000000000000000d500d500d500d500d500d500d500d500d500d500eb02d500b600b800be000000be000000be000000be000000be000000340000001a000000000000000000000000000000000000000000000000000000d500d500d500d500d500d500d500d500d500d500eb02d500b600b8001c0000001c0000001c0000001c0000001c0000003400000018000000000000000000000000000000000000000000000000000000d600d600d600d600d600d600d600d600d600d600fc02f602b600b8001c0000001c0000001c0000001c0000001c0000003400000018000000000000000000000000000000000000000000000000000000d600d600d600d600d600d600d600d600d600d600fc02f602b600b8002100000021000000210000002100000021000000400000000e000000000000000000000000000000000000000000000000000000d600d600d600d600d600d600d600d600d600d600eb02f602b600b800bf000000bf000000bf000000bf000000bf000000340000000e0000000000000000000000000000000000000000000000000000003101310131013101310131013101310131013101f002f602b600b800130000001300000013000000130000001300000034000000130000000000000000000000000000000000000000000000000000006703670367036703670367036703670367036703eb02f602b700b900130000001300000013000000130000001300000034000000130000000000000000000000000000000000000000000000000000006803680368036803680368036803680368036803ac026803b700b900400000004000000040000000400000003a000000340000005e0000008e238e238e238e238e238e230000000000000000000000006d036d03330333032c012c012d012d01d801d801f402fb02b600b800290000002900000029000000290000003800000034000000130000000000000000000000000000000000000000000000000000005503550359035903560356035703570358035803fe02f602b600b8000400000004000000040000000400000004000000340000000e0000000000000000000000000000000000000000000000000000006f036f036f036f03090335030a03360316031603eb02eb02b600b8000400000004000000040000000400000004000000340000000e0000000000000000000000000000000000000000000000000000007003700370037003090335030a03360316031603eb02eb02b600b800400000004000000040000000400000004000000040000000400000000000000000000000000000000000000000000000000000005e035e035e035e03650365036603660364036403ef02f902b600b800400000004000000040000000400000004000000040000000400000000000000000000000000000000000000000000000000000005f035f035f035f035f035f035f035f0364036403ef02f902b600b800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000007a032a012a012a012a012a012a012a012a012a012a012a012a012a01000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000007e032a012a012a012a012a012a012a012a012a012a012a012a012a010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000088032a012a012a012a012a012a012a012a012a012a012a012a012a0157000000570000005700000057000000570000003400000047000000ffffffffffffffffffffffff000000000000000000000000db00db00db00db00db00db00db00db005b035b03db00db00b600b800bf000000bf000000bf000000bf000000bf000000340000001800000000000000000000000000ffff0000000000000000000000003101310131013101310131013101310131013101d901f602b600b8005a0000005a0000005a0000005a0000005a0000003400000047000000ffffffffffffffffffffffff000000000000000000000000db00db00db00db00db00db00db00db005b035b03db00db00b600b80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000de022a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e3022a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e8022a012a012a012a012a012a012a012a012a012a012a012a012a010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000082032a012a012a012a012a012a012a012a012a012a012a012a012a010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000084032a012a012a012a012a012a012a012a012a012a012a012a012a010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000086032a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a4022a012a012a012a012a012a012a012a012a012a012a012a012a01000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002a012a012a012a012a012a012a012a012a012a012a012a012a012a01bf000000bf000000bf000000bf000000bf000000340000000e0000000000000000000000000000000000000000000000000000003001300130013001300130013001300130013001f002f602b600b8000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000033012a012a012a012a012a012a012a012a012a012a012a012a012a011c0000001c0000001c0000001c0000001c0000003400000040000000771777177717771777170000000000000000000000000000d700d700d700d700d700d700d700d700d700d7009e010103b600b8000900000009000000090000000900000009000000340000000e000000000000000000000000000000000000000000000000000000ab01ab01ac01ac01ad01ad01ae01ae01af01af01b001f602b600b8000200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000b401b401b301b301b601b601b801b8011a031a03eb02f602b600b8000200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000b501b501b501b501b701b701b901b90118031803eb02f602b600b8000200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000be01be01be01be01bf01bf01c001c00119031903eb02f602b600b8000200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000c701c701c701c701090309030a030a0316031603eb02f602b600b8000200000002000000020000000200000002000000340000000e0000000000000000000000000000000000000000000000000000005203520352035203520352035203520352035203c901f602b600b8001c0000001c0000001c0000001c0000001c000000340000000e00000077177717771777177717aa2a000000000000000000000000d700d700d700d700d700d700d700d700d700d700f102f902b600b8000200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000200320031f031f031303130315031503d001d001f102f902b600b8000200000002000000020000000200000040000000340000000e000000ff1fff1fff1fff1f0000ff1f00000000000000000000000019021e03da007103ba01ba01bc01bc01bb01bb01ef02f902b600b8000200000002000000020000000200000002000000340000000e000000ff1fff1fff1fff1fff1fff1f00000000000000000000000019021e0319021e03ba01ba01bc01bc01bb01bb01ef02f902b600b8004000000040000000400000004000000040000000340000000e000000000000000000000000000000000000000000000000000000ad02ad02ad02ad02d501d501d601d601b002b002f002f602b600b800c00000001c0000001c0000001c000000020000003400000040000000000000000000000000000000000000000000000000000000e200e200c002c00256035603570357035803580344024402b600b8000e0000000e0000000e0000000e0000000e000000340000000e0000000000000000000000000000000000000000000000000000002103340321033403220335032303360324033403f002f602b600b8000200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000e701e701e801e801e701e701e701e701e701e701f002f602b600b8000200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000ed01ed01ed01ed01ee01ee01ef01ef01f001f001f102f602b600b8000200000002000000020000000200000002000000340000000e00000000000000000000000000000000000000000000000000000052035203520352035203520352035203520352032502f602b600b8002a0000002a0000002a0000002a0000002a000000340000000e000000ff1fff3fff3fff3fff1fff3f000000000000000000000000f501f501f501f501f501f501f501f501f401f401f502fb02b600b8001300000013000000130000001300000013000000340000001000000001e001e001e001e001e001e00000000000000000000000002503370325033703260338032703390328033a03f202f602b600b80040000000090000000900000009000000400000004000000010000000000000000000000000000000000000000000000000000000e300e300e300e300e100e100e000e000de00de002b02f602b600b8000200000002000000020000000200000002000000340000000e0000000000000000000000000000000000000000000000000000001f031f031f031f0312031203140314031a021a02fb01f902b600b8000200000002000000020000000200000002000000340000000e0000000000000000000000000000000000000000000000000000000e030e030e030e030f030f03100310030e030e03eb02f602b600b8000400000029000000290000002900000004000000340000000e000000000000000000000000000000000000000000000000000000d900d900d900d900560356035703570358035803f002f602b600b8004000000040000000400000004000000040000000340000000e0000000000000000000000000000000000000000000000000000006f036f036f036f03090309030a030a0308032403f002f602b600b8004000000040000000400000004000000040000000340000000c0000000000000000000000000000000000000000000000000000000802080208020802090209020a020a020b020b0212021202b600b80040000000200000002000000020000000020000003400000012000000ffff0000ffffffffffffffff0000000000000000000000006202620262026202560356035703570358035803f002f602b600b8004300000045000000430000004300000043000000340000004700000056d556d556d556d556d556d5000000000000000000000000100210021002100210021002110211025803580312021202b600b8000c0000000c0000000c0000000c0000000c000000340000000e0000000000000000000000000000000000000000000000000000001402140211031103150215021602160218031803b001b001b600b800c10000001c0000001c0000001c000000c1000000340000000e000000000000000000000000000000000000000000000000000000d800d800d800d800560356035703570358035803eb02f602b600b8000200000002000000020000000200000002000000340000000e0000000000000000000000000000000000000000000000000000005a035a035a035a031f021f02200220025a035a03eb02f602b600b8000200000002000000020000000200000002000000340000000e0000000000000000000000000000000000000000000000000000005a035a035a035a035a035a035a035a035a035a032502f602b600b8000200000002000000020000000200000002000000340000001700000000000000000000000000000000000000000000000000000046034603520352034703470348034803460346032a02f602b600b8003000000030000000300000003000000030000000340000000e000000000000000000000000000000000000000000000000000000d400d400d400d400d400d400d400d400d400d400ec020103b600b80033000000330000003300000033000000330000003400000014000000000000000000000000000000000000000000000000000000d400d400d400d400d400d400d400d400d400d40044024402b600b8000200000002000000020000000200000002000000340000000e0000000000000000000000000000000000000000000000000000004a024b0221033403220335032303360324033403f002f602b600b8000200000002000000020000000200000009000000340000000e00000000000000000000000000000000000000000000000000000054035403260226025403540354035403540354032902f602b600b80029000000290000002900000029000000290000003400000013000000ffffffffffffffffffff0000000000000000000000000000630263026302630256035603570357035803580344024402b600b800290000002900000029000000290000002000000034000000470000000000000000000000000000000000000000000000000000005202520252025202560356035703570358035803f002f602b600b800290000002900000029000000290000002000000034000000470000000000000000000000000000000000000000000000000000005202520252025202560356035703570358035803f002f602b600b8000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000055022a012a012a012a012a012a012a012a012a012a012a012a012a010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000057022a012a012a012a012a012a012a012a012a012a012a012a012a013000000030000000300000003000000030000000340000004a000000000000000000000000000000000000000000000000000000d400d400d400d400d400d400d400d400d400d4005d020403b600b8003a0000003a0000003a0000003a0000003a000000340000000e00000000000000000000000000000000000000000000000000000069036903690369036a036a036b036b036c036c03f202f602b600b8005e000000200000002000000020000000020000003400000040000000ff1f0000ffffffffffffffff000000000000000000000000610261026102610256035603570357035803580302030203b600b8000200000002000000020000000200000002000000400000000e0000000000000000000000000000000000000000000000000000002503370325033703260338032703390328033a03eb02f602b600b8001c0000001c0000001c0000001c0000001c0000003400000018000000771777177717771777170000000000000000000000000000d700d700d700d700d700d700d700d700d700d700fd02f602b600b8004000000020000000200000002000000002000000340000000e000000ffff0000ffffffffffffffff0000000000000000000000006202620262026202560356035703570358035803f002f602b600b8000200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000e500e500e500e500e500e500e500e500e500e5002b02f602b600b8000200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000c101c101c101c101c101c101c101c101c101c101eb02eb02b600b80002000000200000002000000020000000020000003400000040000000ffff0000ffffffffffffffff00000000000000000000000062026202620262025603560357035703580358038e028e02b600b8000200000002000000020000000200000002000000340000000e00000000000000000000000000000000000000000000000000000021033403210334032203350323033603240334039002f602b600b8000200000002000000020000000200000002000000340000000e000000000000000000000000000000000000000000000000000000e500e500e500e500e500e500e500e500e500e5009502f602b600b800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009b022a012a012a012a012a012a012a012a012a012a012a012a012a01000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009d022a012a012a012a012a012a012a012a012a012a012a012a012a01000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009f022a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a1022a012a012a012a012a012a012a012a012a012a012a012a012a010c0000000c0000000c0000000c0000000c000000340000000e000000000000000000000000000000000000000000000000000000e500e500e500e500e500e500e500e500e500e5002b02f602b600b80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a6022a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a8022a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000aa022a012a012a012a012a012a012a012a012a012a012a012a012a014000000040000000400000004000000040000000340000000e000000000000000000000000000000000000000000000000000000ad02ad02ad02ad02ae02ae02af02af02b002b002ac02ac02b600b80002000000200000002000000020000000020000003400000040000000ffff0000ffffffffffffffff000000000000000000000000620262026202620256035603570357035803580302030203b600b800020000000200000002000000020000000200000034000000690000000000000000000000000000000000000000000000000000002103340321033403220335032303360324033403f002f602b600b8002900000029000000290000002900000020000000340000004000000000000000000000000000000000000000000000000000000052025202520252025603560357035703580358034f02f602b600b8000900000009000000090000000900000009000000400000000e000000000000000000000000000000000000000000000000000000df00df00df00df00e100e100e000e000de00de00eb02f602b600b8002900000029000000290000002900000029000000340000000a0000000000000000000000000000000000000000000000000000005202520252025202560356035703570358035803b802b802b600b8004000000040000000400000004000000040000000340000000e0000000000000000000000000000000000000000000000000000007303730371037103740374037303730374037403c102f602b600b8000200000002000000020000000200000002000000340000000e0000000000000000000000000000000000000000000000000000000803080308030803090309030a030a0316031603eb02f602b600b8000200000002000000020000000200000002000000340000000e0000000000000000000000000000000000000000000000000000000b030b03080308030c030c030d030d0316031603eb02f602b600b80002000000200000002000000020000000020000003400000040000000ffff0000ffffffffffffffff00000000000000000000000062026202620262025603560357035703580358030203f602b600b8000200000002000000020000000200000002000000340000000e0000000000000000000000000000000000000000000000000000000803080308030803090309030a030a0316031603eb02f602b600b800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000007c032a012a012a012a012a012a012a012a012a012a012a012a012a010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080032a012a012a012a012a012a012a012a012a012a012a012a012a01000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008a032a012a012a012a012a012a012a012a012a012a012a012a012a01000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008d032a012a012a012a012a012a012a012a012a012a012a012a012a01000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008f032a012a012a012a012a012a012a012a012a012a012a012a012a010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000095032a012a012a012a012a012a012a012a012a012a012a012a012a010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000097032a012a012a012a012a012a012a012a012a012a012a012a012a010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000099032a012a012a012a012a012a012a012a012a012a012a012a012a01000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009c032a012a012a012a012a012a012a012a012a012a012a012a012a01000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009e032a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a0032a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a2032a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a4032a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ae032a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ab032a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b5032a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a8032a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b2032a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b9032a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ba032a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000bc032a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000be032a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c0032a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c2032a012a012a012a012a012a012a012a012a012a012a012a012a01000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002a802a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c6032a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ce032a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d5032a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d6032a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d7032a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d8032a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000da032a012a012a012a012a012a012a012a012a012a012a012a012a0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000dc032a012a012a012a012a012a012a012a012a012a012a012a012a010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000028042a012a012a012a012a012a012a012a012a012a012a012a012a01020000000200000002000000020000000200000034000000040000000000000000000000000000000000000000000000000000002f042f042f042f042f042f042f042f042f042f04f002f602b600b80040000000400000004000000040000000000000000000000000000000000000000000000000000000000000000000000073000000310431040000000031043104310431043104310400000000000000000200000002000000020000000200000002000000340000000e0000000000000000000000000000000000000000000000000000003404340434043404340434043404340434043404f002f602b600b8000200000002000000020000000200000002000000340000000e0000000000000000000000000000000000000000000000000000003604360436043604360436043604360436043604f002f602b600b800c2000000c2000000c2000000c2000000000000000000000000000000000000000000000000000000000000000000000069000000370437040000000037043704370437043704370400000000000000000200000002000000020000000200000002000000340000000e0000000000000000000000000000000000000000000000000000003904390439043904390439043904390439043904f002f602b600b800c2000000c2000000c2000000c20000000000000000000000000000000000000000000000000000000000000000000000690000003a043a04000000003a043a043a043a043a043a0400000000000000002900000029000000290000002900000029000000340000000e0000000000000000000000000000000000000000000000000000003d043d043d043d043e043e043f043f04400440043c043c04b600b800a1000000a1000000a1000000a10000000000000000000000000000000000000000000000000000000000000000000000000000004104410400000000410441044104410441044104000000000000000000000000000000008d010000000000009800000000000000d60000000000000068800000010000008f000000040000008d010000000000009800000000000000d60000000000000068800000010000008f000000080000008d010000000000009800000000000000d60000000000000068800000010000008f000000020000008d010000000000009800000000000000d60000000000000068800000010000008f000000010000008d0100000000000075000000000000008d0100000000000082000000000000008d0100000000000083000000000000008d0100000000000080000000000000008d0100000000000081000000000000008d0100000000000049000000000000008d010000000000004c000000000000008d010000000000004b000000000000008d010000000000004a000000000000008d010000000000003d000000000000008d010000000000008d010000000000008d010000000000008e000000000000008d0100000000000099000000090000003d000000000000008d0100000000000099000000090000008d01000000000000990000001a0000008d01000000000000990000001c0000008d0100000000000099000000000000008d0100000000000099000000050000008d0100000000000099000000030000008d01000000000000990000001d0000008d0100000000000099000000170000008d0100000000000099000000140000008d0100000000000099000000150000008d0100000000000099000000160000008d01000000000000990000001f0000008d01000000000000990000001e0000008d0100000000000099000000250000008d01000000000000990000001b0000008d0100000000000099000000290000008d0100000000000099000000110000008d0100000000000099000000070000008d0100000000000099000000010000008d01000000000000990000000c0000008d0100000000000099000000100000008d0100000000000099000000030000006c000000000000008d01000000000000990000001d0000006c000000000000008d0100000000000099000000110000006c000000000000008d0100000000000099000000120000008d01000000000000990000000a0000008d0100000000000099000000080000008d0100000000000099000000020000003d000000000000008d0100000000000099000000100000003d000000000000008d0100000000000099000000160000003d000000000000008d01000000000000990000001e0000003d000000000000008d0100000000000099000000040000003d000000000000008d01000000000000990000001d0000003d000000000000008d0100000000000099000000030000003d000000000000008d0100000000000099000000290000003d000000000000008d01000000000000990000001c0000003d000000000000008d0100000000000045000000000000008d0100000000000046000000000000008d01000000000000990000001000000045000000000000008d01000000000000990000001000000046000000000000008d01000000000000990000001d00000045000000000000008d01000000000000990000000700000045000000000000008d01000000000000990000000700000046000000000000008d01000000000000990000001d00000046000000000000008d0100000000000099000000020000008d0100000000000099000000040000008d01000000000000a1000000000000003d000000000000008d01000000000000a1000000000000008d0100000000000060000000060000008d01000000000000600000000600000099000000020000008d010000000000006000000006000000a1000000000000008d0100000000000060000000050000008d01000000000000380000000000000023000000d007000055000000010000008d010000000000008500000000000000c4000000000000008d010000000000008400000000000000c4000000000000008d01000000000000820000000000000099000000070000008d01000000000000830000000000000099000000070000008d0100000000000070800000000000008d010000000000008200000000000000990000000700000060000000080000008d010000000000008300000000000000990000000700000060000000080000008d01000000000000820000000000000060000000080000008d01000000000000830000000000000060000000080000008d010000000000008400000000000000c40000000000000060000000080000008d010000000000008500000000000000c40000000000000060000000080000008d01000000000000a1000000010000006c000000000000008d0100000000000082000000000000009a000000070000008d0100000000000083000000000000009a000000070000008d0100000000000084000000000000008d0100000000000085000000000000008d0100000000000052000000000000008d010000000000003b010000710000008d010000000000003b010000100000008d010000000000002c000000000000000380000000000000e481000003000009e58100000f0000078d010000000000002d0000000000000001800000000000008d0100000000000043010000000000008d0100000000000099000000280000008d010000000000006a000000000000008d010000000000009a000000050000008d010000000000006e000000080700008d0100000000000023000000080700008d0100000000000099000000070000003d0000000000000080000000000000008d0100000000000099000000070000003d0000000000000081000000000000008d01000000000000990000000700000080000000000000008d01000000000000990000000700000081000000000000008d0100000000000068000000000000008d01000000000000a10000000100000023000000c4090000320000000000000045000000000000008d01000000000000a10000000100000023000000c4090000320000000000000046000000000000008d01000000000000a10000000100000023000000c409000032000000000000008d010000000000009d000000040000008d01000000000000990000000b0000008d010000000000009800000000000000a10000000100000023000000c409000032000000000000003b0000000000000059000000000000008d010000000000009800000000000000a10000000100000023000000c4090000320000000000000059000000000000008d01000000000000a10000000100000023000000c4090000320000000000000059000000000000008d01000000000000230000004c0400008d0100000000000023000000b00400008d01000000000000230000009c0400008d010000000000008f00000004000000d280000000800000d380000000000000cb80000000000000d60000000000000068800000010000008d010000000000002c000000000000008d0100000000000036000000000000008d0100000000000099000000150000003b0100001900000075000000000000008d010000000000009d000000220000002f81000000000000408100006800000054810000010000008d010000000000009800000000000000d6000000000000006880000001000000028200000100000090000000040000008d010000000000009800000000000000d600000000000000688000000100000002820000010000008f000000040000008d010000000000009800000000000000d600000000000000688000000100000002820000010000008f000000010000008d010000000000009800000000000000d600000000000000688000000100000002820000010000008f000000020000008d010000000000009800000000000000d600000000000000688000000100000002820000010000008f000000080000008d0100000000000091800000293000008d0100000000000091800000293900008d0100000000000091800000212800008d0100000000000091800000521000008d0100000000000091800000420800008d0100000000000091800000521900008d010000000000009d00000020000000a90000000100000016820000000000008d010000000000009d00000020000000a90000000100000016820000020000008d010000000000009d00000020000000a90000000100000016820000010000008d010000000000002c000000000000000380000000000000e4810000100000078d010000000000002d0000000000000002800000000000008d010000000000002400000008070000b8000000010000008d010000000000009b000000000000008d010000000000009b000000010000008d010000000000009b000000020000008d010000000000009b000000030000008d010000000000009b000000040000008d010000000000009b000000060000008d010000000000009b000000090000008d010000000000009b0000000b0000008d010000000000009b0000000c0000008d010000000000009b0000000e0000008d010000000000009b0000000f0000008d010000000000009b000000100000008d010000000000009b000000110000008d010000000000009b000000120000008d010000000000009b000000150000008d010000000000009b000000160000008d010000000000009b000000180000008d010000000000009b000000190000008d010000000000009b0000001a0000008d010000000000009b0000001b0000008d010000000000009b0000001c0000008d010000000000009b0000001d0000008d010000000000009b0000001f0000008d010000000000009b000000220000008d010000000000009b000000240000008d010000000000009b000000250000008d010000000000009b000000280000008d01000000000000b7000000000000008d010000000000009b0000000d0000008d0100000000000024000000d80e00008d010000000000001e0100000200000096000000040000008d01000000000000620100009f0100008d0100000000000062010000790100008d0100000000000060010000100000008d0100000000000060010000130000008d01000000000000600100000d0000008d0100000000000060010000090000008d0100000000000099000000060000008d010000000000002d000000000000008d010000000000002c000000000000000380000000000000e58100000f0000078d010000000000009800000000000000d60000000000000068800000010000008f00000004000000c080000016040000cb80000000000000cc80000000000000cb800000010000000d800000000000008d010000000000009800000000000000d60000000000000068800000010000008f00000002000000c08000001c040000cb80000000000000cc80000000000000cb800000010000000d800000000000008d010000000000009800000000000000d60000000000000068800000010000008f00000008000000c08000001f040000cb80000000000000cc80000000000000cb800000010000000d800000000000008d010000000000009800000000000000d60000000000000068800000010000008f00000004000000c080000018040000cb80000000000000cc80000000000000cb800000010000000d800000000000008d010000000000009800000000000000d60000000000000068800000010000008f00000004000000c080000017040000cb80000000000000cc80000000000000cb800000010000000d800000000000008d010000000000002c000000000000000180000000000000e581000000000009e58100000f0000078d010000000000002c000000000000000380000000000000e48100000f0000078d010000000000002c000000000000000380000000000000e581000000000009e58100000f0000078d010000000000002c0000000000000002800000000000008d010000000000002c0000000000000037000000000000000380000000000000e5810000180000018d010000000000002c0000000000000036000000000000000380000000000000e5810000180000018d010000000000002c0000000000000003800000000000008d0100000000000044010000000000008d010000000000006c000000000000008d010000000000002c000000000000000480000000000000e581000000000009e5810000180000018d0100000000000019000000000600008d010000000000001a000000000600008d0100000000000018000000000600008d0100000000000017000000800500008d010000000000002c00000000000000e58100000f0000078d010000000000002c000000000000003700000000000000e5810000180000018d010000000000002c000000000000003600000000000000e5810000180000018d010000000000002c000000000000000880000000000000e581000000000009e5810000180000018d010000000000006e01000069020000b78000000f0200008d01000000000000990000000e0000008d010000000000002c000000000000003600000000000000e581000000000009e5810000180000018d010000000000002c00000000000000e581000000000009e58100000000000a8d010000000000002c00000000000000e5810000100000078d0100000000000000000000000000002c0000000000000003800000000000008d0100000000000000000000000000002d0000000000000003800000000000008d010000000000002c00000000000000e48100001100000701800000000000001e800000100000008d010000000000002c000000000000000180000000000000e48100000f0000078d01000000000000a1000000000000008d010000000000002c0000000000000001800000000000008d010000000000002a800000141300008d010000000000009800000000000000d60000000000000068800000010000008f00000004000000c080000019040000cb80000000000000cc80000000000000cb800000010000000d800000000000008d010000000000009800000000000000d60000000000000068800000010000008f00000002000000c08000001d040000cb80000000000000cc80000000000000cb800000010000000d800000000000008d010000000000009800000000000000d60000000000000068800000010000008f00000008000000c080000020040000cb80000000000000cc80000000000000cb800000010000000d800000000000008d0100000000000005000000000600008d0100000000000006000000000600008d0100000000000004000000000600008d0100000000000003000000000600008d0100000000000071000000000000008d010000000000009800000000000000d60000000000000068800000010000008f00000004000000e2800000ff7f00008d010000000000009800000000000000d60000000000000068800000010000008f00000008000000e2800000ff7f00008d010000000000009800000000000000d60000000000000068800000010000008f00000002000000e2800000ff7f00008d010000000000009800000000000000d60000000000000068800000010000008f00000001000000e2800000ff7f00008d010000000000009800000000000000d60000000000000068800000010000008f00000004000000e2800000ffbf00008d010000000000009800000000000000d60000000000000068800000010000008f00000008000000e2800000ffbf00008d010000000000009800000000000000d60000000000000068800000010000008f00000002000000e2800000ffbf00008d010000000000009800000000000000d60000000000000068800000010000008f00000001000000e2800000ffbf00008d010000000000009800000000000000d600000000000000688000000100000036010000e8030000e7800000e80300008d010000000000002201000016000000ab800000170000008d010000000000002201000004000000ab800000170000008d01000000000000220100000b000000ab800000170000008d010000000000002201000007000000ab800000170000008d010000000000002201000001000000ab800000170000008d010000000000002e000000000000008d010000000000002c000000000000000380000000000000e481000017000001e48100000f0000078d010000000000002c00000000000000e58100000f000007e5810000000000098d010000000000002c00000000000000e481000011000007e48100000000000903800000000000008d010000000000002c00000000000000e48100000f000007e4810000000000098d010000000000002a800000140d00008d010000000000002a800000140900008d010000000000009b0000002c0000008d010000000000002c00000000000000e581000000000009e5810000180000018d01000000000000000000000000000062010000391400008d01000000000000000000000000000062010000611400008d010000000000000000000000000000620100002b0000008d01000000000000000000000000000062010000111400008d01000000000000000000000000000062010000630800008d01000000000000000000000000000062010000550900008d01000000000000000000000000000062010000a90b00008d010000000000000000000000000000620100005f0c00008d01000000000000000000000000000062010000010d00008d010000000000000000000000000000620100006f0d00008d01000000000000000000000000000062010000f90d00008d01000000000000000000000000000062010000210200008d01000000000000000000000000000062010000030000008d01000000000000000000000000000062010000050000008d01000000000000000000000000000062010000070000008d01000000000000000000000000000061010000100000008d01000000000000000000000000000068010000351400008d01000000000000000000000000000062010000170400008d01000000000000000000000000000062010000830000008d010000000000000000000000000000620100008f0000008d01000000000000000000000000000062010000470200008d01000000000000000000000000000062010000311400008d010000000000000000000000000000620100001d1400008d010000000000000000000000000000610100000f0000008d010000000000000000000000000000620100002d1400008d010000000000000000000000000000620100004d0100008d01000000000000000000000000000062010000bb0000008d01000000000000000000000000000061010000130000008d01000000000000000000000000000061010000120000008d01000000000000000000000000000062010000211400008d01000000000000000000000000000062010000630000008d01000000000000000000000000000062010000130400008d01000000000000000000000000000062010000a90000008d01000000000000000000000000000062010000131400008d010000000000000000000000000000610100000d0000008d010000000000000000000000000000610100000c0000008d01000000000000000000000000000062010000291400008d01000000000000000000000000000062010000251400008d01000000000000000000000000000062010000170000008d01000000000000000000000000000062010000d70000008d01000000000000000000000000000062010000191400008d01000000000000000000000000000062010000151400008d01000000000000000000000000000061010000090000008d01000000000000000000000000000061010000080000008d010000000000002c000000000000001e800000090000008d010000000000002c0000000000000008800000000000008d010000000000002c0000000000000003800000000000001e80000016000000e58100000f0000078d010000000000002c00000000000000e4810000170000018d0100000000000003000000000600003b0100004b0000008d010000000000009800000000000000d60000000000000068800000010000008f00000004000000c08000001a040000cb80000000000000cc80000000000000cb800000010000000d800000000000008d010000000000009800000000000000d60000000000000068800000010000008f00000002000000c08000001e040000cb80000000000000cc80000000000000cb800000010000000d800000000000008d010000000000009800000000000000d60000000000000068800000010000008f00000008000000c080000021040000cb80000000000000cc80000000000000cb800000010000000d800000000000008d010000000000009800000000000000d60000000000000068800000010000008f00000004000000c08000001b040000cb80000000000000cc80000000000000cb800000010000000d800000000000008d01000000000000ea810000000000008d0100000000000072000000000000008d0100000000000073000000000000008d0100000000000074000000000000008d01000000000000a1000000050000008d010000000000009d000000120000000a0100000e0000008d010000000000000a0100000e0000008d010000000000000a010000100000008d0100000000000009010000000000000a010000070000000c0100000000000010010000000000009f000000260000008d0100000000000009010000000000000a010000070000000c0100000000000010010000000000009f000000270000008d0100000000000009010000000000000a010000070000000c0100000000000010010000000000008d01000000000000a7000000000b000009010000000000000a010000070000000c0100000000000010010000000000008d01000000000000a7000000010b000009010000000000000a010000070000000c0100000000000010010000000000008d01000000000000a70000000004000009010000000000000a010000070000000c0100000000000010010000000000008d01000000000000a70000000104000009010000000000000a010000070000000c0100000000000010010000000000008d0100000000000009010000000000000a010000070000000c0100000000000010010000000000003d0100002f0000008d0100000000000009010000000000000a010000070000000c01000000000000100100000000000014010000000000008d0100000000000009010000000000000a010000070000000c01000000000000100100000000000014010000030000008d01000000000000a7000000000b0000010100000000000009010000000000000a010000070000000c0100000000000010010000000000008d01000000000000a7000000010b0000010100000000000009010000000000000a010000070000000c0100000000000010010000000000008d01000000000000a700000000040000010100000000000009010000000000000a010000070000000c0100000000000010010000000000008d01000000000000a700000001040000010100000000000009010000000000000a010000070000000c0100000000000010010000000000008d01000000000000010100000000000009010000000000000a010000070000000c0100000000000010010000000000003d0100002f0000008d01000000000000010100000000000009010000000000000a010000070000000c01000000000000100100000000000014010000000000008d01000000000000010100000000000009010000000000000a010000070000000c01000000000000100100000000000014010000030000008d01000000000000010100000000000009010000000000000a010000070000000c0100000000000010010000000000008d01000000000000010100000100000009010000000000000a010000070000000c0100000000000010010000000000008d01000000000000010100000200000009010000000000000a010000070000000c0100000000000010010000000000008d01000000000000010100000300000009010000000000000a010000070000000c0100000000000010010000000000008d01000000000000010100000400000009010000000000000a010000070000000c0100000000000010010000000000008d0100000000000009010000000000000a010000070000000c0100000200000010010000000000008d01000000000000fd00000000000000090100000000000011010000000000000e010000000000008d01000000000000090100000000000011010000000000000e010000000000008d01000000000000ff00000000000000090100000000000011010000000000009d0000000b0000008d01000000000000ff00000000000000090100000000000011010000000000009d00000004000000a9000000010000008d01000000000000ff00000002000000090100000000000011010000000000009d0000001b0000008d01000000000000ff00000000000000090100000000000011010000000000008d01000000000000ff00000001000000090100000000000011010000000000008d01000000000000ff00000002000000090100000000000011010000000000008d01000000000000090100000000000011010000000000008d01000000000000040100000000000009010000000000000a0100000a0000000d010000010000008d01000000000000040100000100000009010000000000000a0100000a0000000d010000010000008d01000000000000040100000200000009010000000000000a0100000a0000000d010000010000008d01000000000000040100000300000009010000000000000a0100000a0000000d010000010000008d01000000000000040100000400000009010000000000000a0100000a0000000d010000010000008d01000000000000040100000500000009010000000000000a0100000a0000000d010000010000008d01000000000000040100000600000009010000000000000a0100000a0000000d010000010000008d01000000000000040100000700000009010000000000000a0100000a0000000d010000010000008d0100000000000009010000000000000a0100000a0000000d010000010000008d01000000000000fe0000000000000009010000000000000a0100000a0000000d010000000000008d01000000000000fe0000000100000009010000000000000a0100000a0000000d010000000000008d0100000000000009010000000000000a0100000a0000000d010000000000008d0100000000000009010000000000000a0100000a0000000d010000020000008d01000000000000fd0000000000000009010000000000000f010000000000008d0100000000000009010000000000000f010000000000008d0100000000000099000000180000008d010000000000009900000023000000",
+   "input_from_name": "Sample Combo 7",
+   "command_glyphs": [
+    "U+E001",
+    "U+E00A",
+    "U+E01C",
+    "U+E01C",
+    "U+E015"
+   ],
+   "command_decoded": "d,D/F+4,4,1",
+   "command_complete": true
+  }
+ ],
+ "move_count_from_name_strings": 213,
+ "tekken_input_conversion": {
+  "method": "name-token substitution ONLY (Left=1/LP, Right=2/RP, Left Right=1,2); logged conversion of the English move-name strings, NOT a decode of the binary command records - the verbatim record hex is the byte truth",
+  "tokens": {
+   "Left": "1 (LP)",
+   "Right": "2 (RP)",
+   "Left Right": "1,2"
+  }
+ },
+ "all_ascii_strings_ge4": [
+  {
+   "offset": 301,
+   "text": "'8Nq<"
+  },
+  {
+   "offset": 624,
+   "text": "[HEIHACHI]1"
+  },
+  {
+   "offset": 636,
+   "text": "Kanayama"
+  },
+  {
+   "offset": 645,
+   "text": "2009/08/26"
+  },
+  {
+   "offset": 656,
+   "text": "Sun Nov 01 22:08:40 JST 2009"
+  },
+  {
+   "offset": 726,
+   "text": "Flash Punch Combo"
+  },
+  {
+   "offset": 902,
+   "text": "Left Right Combo"
+  },
+  {
+   "offset": 1041,
+   "text": "Demon Slayer"
+  },
+  {
+   "offset": 1203,
+   "text": "Demon Executioner"
+  },
+  {
+   "offset": 1406,
+   "text": "Fake Executioner"
+  },
+  {
+   "offset": 1477,
+   "text": "(or "
+  },
+  {
+   "offset": 1502,
+   "text": " (or "
+  },
+  {
+   "offset": 1528,
+   "text": " (ou "
+  },
+  {
+   "offset": 1554,
+   "text": " (o "
+  },
+  {
+   "offset": 1579,
+   "text": " (oder "
+  },
+  {
+   "offset": 1607,
+   "text": " (o "
+  },
+  {
+   "offset": 1710,
+   "text": "Demon Kicker"
+  },
+  {
+   "offset": 1875,
+   "text": "Demon Massacre"
+  },
+  {
+   "offset": 2066,
+   "text": "Demon Lair"
+  },
+  {
+   "offset": 2247,
+   "text": "Demon Backhand Spin"
+  },
+  {
+   "offset": 2392,
+   "text": "Quick Executioner"
+  },
+  {
+   "offset": 2571,
+   "text": "Quick Executioner Feint"
+  },
+  {
+   "offset": 2646,
+   "text": "(or "
+  },
+  {
+   "offset": 2668,
+   "text": " (or "
+  },
+  {
+   "offset": 2691,
+   "text": " (ou "
+  },
+  {
+   "offset": 2714,
+   "text": " (o "
+  },
+  {
+   "offset": 2736,
+   "text": " (oder "
+  },
+  {
+   "offset": 2761,
+   "text": " (o "
+  },
+  {
+   "offset": 2858,
+   "text": "Monzenbarai"
+  },
+  {
+   "offset": 2989,
+   "text": "Demon Scissors"
+  },
+  {
+   "offset": 3168,
+   "text": "Demon Breath"
+  },
+  {
+   "offset": 3276,
+   "text": "Demon Shout"
+  },
+  {
+   "offset": 3443,
+   "text": "Demon Shout Feint"
+  },
+  {
+   "offset": 3509,
+   "text": "(or "
+  },
+  {
+   "offset": 3531,
+   "text": " (or "
+  },
+  {
+   "offset": 3554,
+   "text": " (ou "
+  },
+  {
+   "offset": 3577,
+   "text": " (o "
+  },
+  {
+   "offset": 3599,
+   "text": " (oder "
+  },
+  {
+   "offset": 3624,
+   "text": " (o "
+  },
+  {
+   "offset": 3721,
+   "text": "Lightning Crush"
+  },
+  {
+   "offset": 3862,
+   "text": "Right Splits Kick"
+  },
+  {
+   "offset": 4002,
+   "text": "Chrome Dome"
+  },
+  {
+   "offset": 4124,
+   "text": "Double Palm Strike"
+  },
+  {
+   "offset": 4289,
+   "text": "Muso Tettsui"
+  },
+  {
+   "offset": 4445,
+   "text": "Demon's Wings"
+  },
+  {
+   "offset": 4575,
+   "text": "Hammer Punch"
+  },
+  {
+   "offset": 4701,
+   "text": "Jichinsai"
+  },
+  {
+   "offset": 4845,
+   "text": "Raijin Stance"
+  },
+  {
+   "offset": 5020,
+   "text": "Pulverizer"
+  },
+  {
+   "offset": 5115,
+   "text": "During Raijin Stance "
+  },
+  {
+   "offset": 5141,
+   "text": "Pendant Raijin Stance "
+  },
+  {
+   "offset": 5168,
+   "text": "Durante Raijin Stance "
+  },
+  {
+   "offset": 5198,
+   "text": "hrend Raijin Stance "
+  },
+  {
+   "offset": 5223,
+   "text": "Durante Raijin Stance "
+  },
+  {
+   "offset": 5265,
+   "text": " Raijin Stance "
+  },
+  {
+   "offset": 5285,
+   "text": "Raijin Stance "
+  },
+  {
+   "offset": 5354,
+   "text": "Raijin's Wrath"
+  },
+  {
+   "offset": 5456,
+   "text": "During Raijin Stance "
+  },
+  {
+   "offset": 5485,
+   "text": "Pendant Raijin Stance "
+  },
+  {
+   "offset": 5515,
+   "text": "Durante Raijin Stance "
+  },
+  {
+   "offset": 5548,
+   "text": "hrend Raijin Stance "
+  },
+  {
+   "offset": 5576,
+   "text": "Durante Raijin Stance "
+  },
+  {
+   "offset": 5621,
+   "text": " Raijin Stance "
+  },
+  {
+   "offset": 5644,
+   "text": "Raijin Stance "
+  },
+  {
+   "offset": 5716,
+   "text": "Lightning Bolt"
+  },
+  {
+   "offset": 5815,
+   "text": "During Raijin Stance "
+  },
+  {
+   "offset": 5841,
+   "text": "Pendant Raijin Stance "
+  },
+  {
+   "offset": 5868,
+   "text": "Durante Raijin Stance "
+  },
+  {
+   "offset": 5898,
+   "text": "hrend Raijin Stance "
+  },
+  {
+   "offset": 5923,
+   "text": "Durante Raijin Stance "
+  },
+  {
+   "offset": 5965,
+   "text": " Raijin Stance "
+  },
+  {
+   "offset": 5985,
+   "text": "Raijin Stance "
+  },
+  {
+   "offset": 6039,
+   "text": "Lightning Hammer"
+  },
+  {
+   "offset": 6169,
+   "text": "Eisho Mon"
+  },
+  {
+   "offset": 6301,
+   "text": "Funkei Uraken"
+  },
+  {
+   "offset": 6467,
+   "text": "Debilitator"
+  },
+  {
+   "offset": 6628,
+   "text": "Tatarigoroshi"
+  },
+  {
+   "offset": 6758,
+   "text": "Hooking Crescent Kick"
+  },
+  {
+   "offset": 6914,
+   "text": "Shingetsusen"
+  },
+  {
+   "offset": 7046,
+   "text": "Twin Hammers"
+  },
+  {
+   "offset": 7190,
+   "text": "Twin Hammer Volley"
+  },
+  {
+   "offset": 7373,
+   "text": "Hell Axle"
+  },
+  {
+   "offset": 7535,
+   "text": "Wind Slicer"
+  },
+  {
+   "offset": 7666,
+   "text": "Demon Uppercut"
+  },
+  {
+   "offset": 7824,
+   "text": "Left Splits Kick"
+  },
+  {
+   "offset": 7990,
+   "text": "Deity Slayer"
+  },
+  {
+   "offset": 8140,
+   "text": "Shadow Step"
+  },
+  {
+   "offset": 8313,
+   "text": "Tenma Destroyer"
+  },
+  {
+   "offset": 8499,
+   "text": "Subjugator"
+  },
+  {
+   "offset": 8680,
+   "text": "Iron Hand"
+  },
+  {
+   "offset": 8863,
+   "text": "Dragon Uppercut"
+  },
+  {
+   "offset": 9067,
+   "text": "Rising Uppercut"
+  },
+  {
+   "offset": 9271,
+   "text": "Jumping Mid Kick"
+  },
+  {
+   "offset": 9479,
+   "text": "Jumping Low Kick"
+  },
+  {
+   "offset": 9696,
+   "text": "Spinning Demon Uppercut"
+  },
+  {
+   "offset": 9962,
+   "text": "Tsunami Kick"
+  },
+  {
+   "offset": 10253,
+   "text": "Spinning Demon"
+  },
+  {
+   "offset": 10504,
+   "text": "Leaping Side Kick"
+  },
+  {
+   "offset": 10689,
+   "text": "Quick Iron Fist"
+  },
+  {
+   "offset": 10750,
+   "text": "While rising "
+  },
+  {
+   "offset": 10768,
+   "text": "En se relevant "
+  },
+  {
+   "offset": 10788,
+   "text": "Alzandosi "
+  },
+  {
+   "offset": 10803,
+   "text": "Beim Aufstehen "
+  },
+  {
+   "offset": 10823,
+   "text": "Al levantarse "
+  },
+  {
+   "offset": 10914,
+   "text": "Dark Thrust"
+  },
+  {
+   "offset": 10971,
+   "text": "While rising "
+  },
+  {
+   "offset": 10989,
+   "text": "En se relevant "
+  },
+  {
+   "offset": 11009,
+   "text": "Alzandosi "
+  },
+  {
+   "offset": 11024,
+   "text": "Beim Aufstehen "
+  },
+  {
+   "offset": 11044,
+   "text": "Al levantarse "
+  },
+  {
+   "offset": 11135,
+   "text": "Tsunami Kick"
+  },
+  {
+   "offset": 11193,
+   "text": "While rising "
+  },
+  {
+   "offset": 11214,
+   "text": "En se relevant "
+  },
+  {
+   "offset": 11237,
+   "text": "Alzandosi "
+  },
+  {
+   "offset": 11255,
+   "text": "Beim Aufstehen "
+  },
+  {
+   "offset": 11278,
+   "text": "Al levantarse "
+  },
+  {
+   "offset": 11375,
+   "text": "Crouching Dragon Kick"
+  },
+  {
+   "offset": 11457,
+   "text": "While crouching "
+  },
+  {
+   "offset": 11481,
+   "text": "En s'accroupissant "
+  },
+  {
+   "offset": 11508,
+   "text": "Abbassandosi "
+  },
+  {
+   "offset": 11529,
+   "text": "Hockend "
+  },
+  {
+   "offset": 11545,
+   "text": "Al agacharse "
+  },
+  {
+   "offset": 11647,
+   "text": "Kidney Smasher"
+  },
+  {
+   "offset": 11707,
+   "text": "During sidestep "
+  },
+  {
+   "offset": 11728,
+   "text": "Pendant pas de c"
+  },
+  {
+   "offset": 11755,
+   "text": "Durante il movimento laterale "
+  },
+  {
+   "offset": 11793,
+   "text": "hrend Seitschritt "
+  },
+  {
+   "offset": 11816,
+   "text": "Desplazamiento lateral "
+  },
+  {
+   "offset": 11942,
+   "text": "Kidney Crush Combo"
+  },
+  {
+   "offset": 12018,
+   "text": "During sidestep "
+  },
+  {
+   "offset": 12042,
+   "text": "Pendant pas de c"
+  },
+  {
+   "offset": 12072,
+   "text": "Durante il movimento laterale "
+  },
+  {
+   "offset": 12113,
+   "text": "hrend Seitschritt "
+  },
+  {
+   "offset": 12139,
+   "text": "Desplazamiento lateral "
+  },
+  {
+   "offset": 12268,
+   "text": "Geta Stomp"
+  },
+  {
+   "offset": 12322,
+   "text": "(While enemy is down) "
+  },
+  {
+   "offset": 12352,
+   "text": "(Avec adversaire "
+  },
+  {
+   "offset": 12371,
+   "text": " terre) "
+  },
+  {
+   "offset": 12387,
+   "text": "(Con l'avversario a terra) "
+  },
+  {
+   "offset": 12422,
+   "text": "(Gegner auf dem Boden) "
+  },
+  {
+   "offset": 12453,
+   "text": "(Adversario en el suelo) "
+  },
+  {
+   "offset": 12611,
+   "text": "Auger"
+  },
+  {
+   "offset": 12720,
+   "text": "10 Hit Combo 1"
+  },
+  {
+   "offset": 13137,
+   "text": "10 Hit Combo 2"
+  },
+  {
+   "offset": 13506,
+   "text": "10 Hit Combo 3"
+  },
+  {
+   "offset": 13875,
+   "text": "10 Hit Combo 4"
+  },
+  {
+   "offset": 14230,
+   "text": "Neck Breaker"
+  },
+  {
+   "offset": 14288,
+   "text": "Approach enemy "
+  },
+  {
+   "offset": 14308,
+   "text": "Approcher adversaire "
+  },
+  {
+   "offset": 14334,
+   "text": "Vicino all'avversario "
+  },
+  {
+   "offset": 14361,
+   "text": "An den Gegner ann"
+  },
+  {
+   "offset": 14380,
+   "text": "hern "
+  },
+  {
+   "offset": 14390,
+   "text": "Acercarse al adversario "
+  },
+  {
+   "offset": 14523,
+   "text": "Neck Breaker"
+  },
+  {
+   "offset": 14584,
+   "text": "Approach enemy "
+  },
+  {
+   "offset": 14607,
+   "text": "Approcher adversaire "
+  },
+  {
+   "offset": 14636,
+   "text": "Vicino all'avversario "
+  },
+  {
+   "offset": 14666,
+   "text": "An den Gegner ann"
+  },
+  {
+   "offset": 14685,
+   "text": "hern "
+  },
+  {
+   "offset": 14698,
+   "text": "Acercarse al adversario "
+  },
+  {
+   "offset": 14846,
+   "text": "Jumping Powerbomb"
+  },
+  {
+   "offset": 14915,
+   "text": "Approach enemy "
+  },
+  {
+   "offset": 14935,
+   "text": "Approcher adversaire "
+  },
+  {
+   "offset": 14961,
+   "text": "Vicino all'avversario "
+  },
+  {
+   "offset": 14988,
+   "text": "An den Gegner ann"
+  },
+  {
+   "offset": 15007,
+   "text": "hern "
+  },
+  {
+   "offset": 15017,
+   "text": "Acercarse al adversario "
+  },
+  {
+   "offset": 15156,
+   "text": "Jumping Powerbomb"
+  },
+  {
+   "offset": 15228,
+   "text": "Approach enemy "
+  },
+  {
+   "offset": 15251,
+   "text": "Approcher adversaire "
+  },
+  {
+   "offset": 15280,
+   "text": "Vicino all'avversario "
+  },
+  {
+   "offset": 15310,
+   "text": "An den Gegner ann"
+  },
+  {
+   "offset": 15329,
+   "text": "hern "
+  },
+  {
+   "offset": 15342,
+   "text": "Acercarse al adversario "
+  },
+  {
+   "offset": 15484,
+   "text": "Guillotine Chop"
+  },
+  {
+   "offset": 15558,
+   "text": "(or "
+  },
+  {
+   "offset": 15568,
+   "text": "Approach from left side "
+  },
+  {
+   "offset": 15595,
+   "text": " (or "
+  },
+  {
+   "offset": 15606,
+   "text": "Approcher par la gauche "
+  },
+  {
+   "offset": 15633,
+   "text": " (ou "
+  },
+  {
+   "offset": 15644,
+   "text": "Vicino da sinistra "
+  },
+  {
+   "offset": 15666,
+   "text": " (o "
+  },
+  {
+   "offset": 15676,
+   "text": "Von der linken Seite ann"
+  },
+  {
+   "offset": 15702,
+   "text": "hern "
+  },
+  {
+   "offset": 15710,
+   "text": " (oder "
+  },
+  {
+   "offset": 15723,
+   "text": "Acercarse desde la izqda. "
+  },
+  {
+   "offset": 15752,
+   "text": " (o "
+  },
+  {
+   "offset": 15881,
+   "text": "Freefall"
+  },
+  {
+   "offset": 15939,
+   "text": "(or "
+  },
+  {
+   "offset": 15949,
+   "text": "Approach from right side "
+  },
+  {
+   "offset": 15977,
+   "text": " (or "
+  },
+  {
+   "offset": 15988,
+   "text": "Approcher par la droite "
+  },
+  {
+   "offset": 16015,
+   "text": " (ou "
+  },
+  {
+   "offset": 16026,
+   "text": "Vicino da destra "
+  },
+  {
+   "offset": 16046,
+   "text": " (o "
+  },
+  {
+   "offset": 16056,
+   "text": "Von der rechten Seite ann"
+  },
+  {
+   "offset": 16083,
+   "text": "hern "
+  },
+  {
+   "offset": 16091,
+   "text": " (oder "
+  },
+  {
+   "offset": 16104,
+   "text": "Acercarse desde la dcha. "
+  },
+  {
+   "offset": 16132,
+   "text": " (o "
+  },
+  {
+   "offset": 16272,
+   "text": "Atomic Drop"
+  },
+  {
+   "offset": 16342,
+   "text": "(or "
+  },
+  {
+   "offset": 16352,
+   "text": "Approach from behind "
+  },
+  {
+   "offset": 16376,
+   "text": " (or "
+  },
+  {
+   "offset": 16387,
+   "text": "Approcher par derri"
+  },
+  {
+   "offset": 16414,
+   "text": " (ou "
+  },
+  {
+   "offset": 16425,
+   "text": "Vicino da dietro "
+  },
+  {
+   "offset": 16445,
+   "text": " (o "
+  },
+  {
+   "offset": 16455,
+   "text": "Von hinten ann"
+  },
+  {
+   "offset": 16471,
+   "text": "hern "
+  },
+  {
+   "offset": 16479,
+   "text": " (oder "
+  },
+  {
+   "offset": 16492,
+   "text": "Acercarse desde atr"
+  },
+  {
+   "offset": 16518,
+   "text": " (o "
+  },
+  {
+   "offset": 16644,
+   "text": "Fire Starter"
+  },
+  {
+   "offset": 16705,
+   "text": "Approach enemy "
+  },
+  {
+   "offset": 16728,
+   "text": "Approcher adversaire "
+  },
+  {
+   "offset": 16757,
+   "text": "Vicino all'avversario "
+  },
+  {
+   "offset": 16787,
+   "text": "An den Gegner ann"
+  },
+  {
+   "offset": 16806,
+   "text": "hern "
+  },
+  {
+   "offset": 16819,
+   "text": "Acercarse al adversario "
+  },
+  {
+   "offset": 16964,
+   "text": "Stonehead"
+  },
+  {
+   "offset": 17028,
+   "text": "Approach enemy "
+  },
+  {
+   "offset": 17054,
+   "text": "Approcher adversaire "
+  },
+  {
+   "offset": 17086,
+   "text": "Vicino all'avversario "
+  },
+  {
+   "offset": 17119,
+   "text": "An den Gegner ann"
+  },
+  {
+   "offset": 17138,
+   "text": "hern "
+  },
+  {
+   "offset": 17154,
+   "text": "Acercarse al adversario "
+  },
+  {
+   "offset": 17305,
+   "text": "Broken Toy"
+  },
+  {
+   "offset": 17376,
+   "text": "Approach enemy "
+  },
+  {
+   "offset": 17405,
+   "text": "Approcher adversaire "
+  },
+  {
+   "offset": 17440,
+   "text": "Vicino all'avversario "
+  },
+  {
+   "offset": 17476,
+   "text": "An den Gegner ann"
+  },
+  {
+   "offset": 17495,
+   "text": "hern "
+  },
+  {
+   "offset": 17514,
+   "text": "Acercarse al adversario "
+  },
+  {
+   "offset": 17695,
+   "text": "Heaven's Wrath "
+  },
+  {
+   "offset": 17802,
+   "text": "(or "
+  },
+  {
+   "offset": 17815,
+   "text": "Time with enemy attack "
+  },
+  {
+   "offset": 17844,
+   "text": " (or "
+  },
+  {
+   "offset": 17858,
+   "text": "Synchro avec l'attaque de l'adversaire "
+  },
+  {
+   "offset": 17903,
+   "text": " (ou "
+  },
+  {
+   "offset": 17917,
+   "text": "Mentre l'avversario sferra un attacco "
+  },
+  {
+   "offset": 17961,
+   "text": " (o "
+  },
+  {
+   "offset": 17974,
+   "text": "Mit Angriff des Gegners abstimmen "
+  },
+  {
+   "offset": 18014,
+   "text": " (oder "
+  },
+  {
+   "offset": 18030,
+   "text": "Sincro. con ataque adversario "
+  },
+  {
+   "offset": 18066,
+   "text": " (o "
+  },
+  {
+   "offset": 18246,
+   "text": "Sample Combo 1"
+  },
+  {
+   "offset": 18369,
+   "text": "Sample Combo 2"
+  },
+  {
+   "offset": 18513,
+   "text": "Sample Combo 3"
+  },
+  {
+   "offset": 18672,
+   "text": "Sample Combo 4"
+  },
+  {
+   "offset": 18864,
+   "text": "Sample Combo 5"
+  },
+  {
+   "offset": 19020,
+   "text": "Sample Combo 6"
+  },
+  {
+   "offset": 19200,
+   "text": "Sample Combo 7"
+  },
+  {
+   "offset": 468332,
+   "text": "MOTA"
+  },
+  {
+   "offset": 468428,
+   "text": "~I/8"
+  },
+  {
+   "offset": 468618,
+   "text": "{x\\nx/{"
+  },
+  {
+   "offset": 468670,
+   "text": "Ep2&"
+  },
+  {
+   "offset": 468686,
+   "text": "U>FO4"
+  },
+  {
+   "offset": 469369,
+   "text": "\\Xs\\X)="
+  },
+  {
+   "offset": 469469,
+   "text": " Ni\""
+  },
+  {
+   "offset": 469621,
+   "text": "}!Hy"
+  },
+  {
+   "offset": 469650,
+   "text": "8,Hi"
+  },
+  {
+   "offset": 469719,
+   "text": "%Zs;"
+  },
+  {
+   "offset": 470155,
+   "text": "F~ev"
+  },
+  {
+   "offset": 470174,
+   "text": "i/Gn"
+  },
+  {
+   "offset": 470769,
+   "text": " 88t"
+  },
+  {
+   "offset": 470860,
+   "text": "MOTA"
+  },
+  {
+   "offset": 471125,
+   "text": "9YM*:"
+  },
+  {
+   "offset": 471149,
+   "text": "8z!+:/?"
+  },
+  {
+   "offset": 471161,
+   "text": ":Z|z;[|z;"
+  },
+  {
+   "offset": 471261,
+   "text": "-@Dj"
+  },
+  {
+   "offset": 471273,
+   "text": "-@DJ)"
+  },
+  {
+   "offset": 471294,
+   "text": "JCN`"
+  },
+  {
+   "offset": 471318,
+   "text": "yC;Z"
+  },
+  {
+   "offset": 471605,
+   "text": "nmz>"
+  },
+  {
+   "offset": 471634,
+   "text": "nmz>"
+  },
+  {
+   "offset": 471671,
+   "text": "wMX,1"
+  },
+  {
+   "offset": 471715,
+   "text": "<($)"
+  },
+  {
+   "offset": 471731,
+   "text": "<(%s"
+  },
+  {
+   "offset": 471765,
+   "text": "r_6%>"
+  },
+  {
+   "offset": 471781,
+   "text": "P(6;sx"
+  },
+  {
+   "offset": 471823,
+   "text": "]@,5"
+  },
+  {
+   "offset": 471828,
+   "text": "3LZ7"
+  },
+  {
+   "offset": 471923,
+   "text": "qX$+o"
+  },
+  {
+   "offset": 472024,
+   "text": "@$$W"
+  },
+  {
+   "offset": 472055,
+   "text": "<,5iCR"
+  },
+  {
+   "offset": 472100,
+   "text": ",7Gw"
+  },
+  {
+   "offset": 472110,
+   "text": " ,5eK"
+  },
+  {
+   "offset": 472116,
+   "text": "5sd8"
+  },
+  {
+   "offset": 472121,
+   "text": "X,5hc"
+  },
+  {
+   "offset": 472148,
+   "text": "4icy"
+  },
+  {
+   "offset": 472167,
+   "text": ",7t/"
+  },
+  {
+   "offset": 472209,
+   "text": "$(7k"
+  },
+  {
+   "offset": 472238,
+   "text": "(4h/r"
+  },
+  {
+   "offset": 472558,
+   "text": "'v-7"
+  },
+  {
+   "offset": 472570,
+   "text": "6f@2R"
+  },
+  {
+   "offset": 472636,
+   "text": "B:r{"
+  },
+  {
+   "offset": 472641,
+   "text": "9YM-:"
+  },
+  {
+   "offset": 472673,
+   "text": "9FG-:~"
+  },
+  {
+   "offset": 472697,
+   "text": "4(RQACM"
+  },
+  {
+   "offset": 472733,
+   "text": "q?^bBd"
+  },
+  {
+   "offset": 472784,
+   "text": "/6iC"
+  },
+  {
+   "offset": 472951,
+   "text": "&]AW"
+  },
+  {
+   "offset": 473202,
+   "text": "^CCB"
+  },
+  {
+   "offset": 473306,
+   "text": "$3%Q"
+  },
+  {
+   "offset": 473342,
+   "text": "zCXC^CC"
+  },
+  {
+   "offset": 473433,
+   "text": "?%yz?X"
+  },
+  {
+   "offset": 473527,
+   "text": ",.j7"
+  },
+  {
+   "offset": 473574,
+   "text": "T,7d"
+  },
+  {
+   "offset": 473602,
+   "text": "0ix  6S"
+  },
+  {
+   "offset": 473611,
+   "text": "e?$$"
+  },
+  {
+   "offset": 473669,
+   "text": ">($*"
+  },
+  {
+   "offset": 473679,
+   "text": "$,.u7"
+  },
+  {
+   "offset": 473716,
+   "text": "*~Z3@$+"
+  },
+  {
+   "offset": 473758,
+   "text": "]+w]"
+  },
+  {
+   "offset": 473790,
+   "text": "<,6?+x"
+  },
+  {
+   "offset": 473829,
+   "text": "@3Fi)"
+  },
+  {
+   "offset": 473845,
+   "text": "rv-l"
+  },
+  {
+   "offset": 473885,
+   "text": "w*7v"
+  },
+  {
+   "offset": 474009,
+   "text": "(0@4cou"
+  },
+  {
+   "offset": 474041,
+   "text": "$)Ct"
+  },
+  {
+   "offset": 474130,
+   "text": "\"a8\"t"
+  },
+  {
+   "offset": 474188,
+   "text": "N8$#?"
+  },
+  {
+   "offset": 474233,
+   "text": "d(.g+"
+  },
+  {
+   "offset": 474351,
+   "text": "y;t~p,7!"
+  },
+  {
+   "offset": 474515,
+   "text": "y @,4z"
+  },
+  {
+   "offset": 474556,
+   "text": "Esl#g"
+  },
+  {
+   "offset": 474571,
+   "text": "sD,5"
+  },
+  {
+   "offset": 474584,
+   "text": "  &S*"
+  },
+  {
+   "offset": 474590,
+   "text": "dS(3"
+  },
+  {
+   "offset": 474629,
+   "text": "es@,6"
+  },
+  {
+   "offset": 474684,
+   "text": " ,6D"
+  },
+  {
+   "offset": 474702,
+   "text": "+@$$"
+  },
+  {
+   "offset": 474708,
+   "text": "RO:|@$%;"
+  },
+  {
+   "offset": 474744,
+   "text": ",4Z+wc/S"
+  },
+  {
+   "offset": 474754,
+   "text": "|$*m"
+  },
+  {
+   "offset": 474763,
+   "text": "X$(l"
+  },
+  {
+   "offset": 474802,
+   "text": "Ix,6"
+  },
+  {
+   "offset": 474836,
+   "text": "tv[wE"
+  },
+  {
+   "offset": 474844,
+   "text": "(0{*m"
+  },
+  {
+   "offset": 474865,
+   "text": ",/67"
+  },
+  {
+   "offset": 474870,
+   "text": "+F8p"
+  },
+  {
+   "offset": 474875,
+   "text": "@$*m"
+  },
+  {
+   "offset": 474884,
+   "text": "`$(e"
+  },
+  {
+   "offset": 474930,
+   "text": "+;qP"
+  },
+  {
+   "offset": 475081,
+   "text": ",6yc"
+  },
+  {
+   "offset": 475115,
+   "text": ",1(t"
+  },
+  {
+   "offset": 475134,
+   "text": "],6P+u"
+  },
+  {
+   "offset": 475170,
+   "text": "D@,37"
+  },
+  {
+   "offset": 475177,
+   "text": "'dQt"
+  },
+  {
+   "offset": 475207,
+   "text": ">0]ZHP"
+  },
+  {
+   "offset": 475226,
+   "text": "+u,7J"
+  },
+  {
+   "offset": 475238,
+   "text": "@,70;"
+  },
+  {
+   "offset": 475295,
+   "text": "thsj"
+  },
+  {
+   "offset": 475303,
+   "text": ",.\\w@SY]"
+  },
+  {
+   "offset": 475314,
+   "text": "(,Os-,7s"
+  },
+  {
+   "offset": 475411,
+   "text": "p(6#"
+  },
+  {
+   "offset": 475439,
+   "text": "<MOTA"
+  },
+  {
+   "offset": 475460,
+   "text": "MOTA"
+  },
+  {
+   "offset": 475480,
+   "text": "MOTA"
+  },
+  {
+   "offset": 475500,
+   "text": "MOTA"
+  }
+ ],
+ "utf8_japanese_runs": [
+  {
+   "offset": 712,
+   "text": "閃光烈拳"
+  },
+  {
+   "offset": 745,
+   "text": "せんこうれっけん"
+  },
+  {
+   "offset": 859,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 879,
+   "text": "ワンツーパンチ"
+  },
+  {
+   "offset": 920,
+   "text": "ワンツーパンチ"
+  },
+  {
+   "offset": 1007,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 1027,
+   "text": "鬼哭連拳"
+  },
+  {
+   "offset": 1055,
+   "text": "きこくれんけん"
+  },
+  {
+   "offset": 1166,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 1186,
+   "text": "鬼哭剛掌破"
+  },
+  {
+   "offset": 1222,
+   "text": "きこくごうしょうは"
+  },
+  {
+   "offset": 1363,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 1383,
+   "text": "鬼哭剛掌破・否"
+  },
+  {
+   "offset": 1424,
+   "text": "きこくごうしょうは・いな"
+  },
+  {
+   "offset": 1676,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 1696,
+   "text": "鬼哭連蹴"
+  },
+  {
+   "offset": 1724,
+   "text": "きこくれんしゅう"
+  },
+  {
+   "offset": 1838,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 1858,
+   "text": "多聞殺・壱"
+  },
+  {
+   "offset": 1891,
+   "text": "たもんさつ・いち"
+  },
+  {
+   "offset": 2029,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 2049,
+   "text": "多聞殺・弐"
+  },
+  {
+   "offset": 2078,
+   "text": "たもんさつ・に"
+  },
+  {
+   "offset": 2213,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 2233,
+   "text": "裏拳二段"
+  },
+  {
+   "offset": 2268,
+   "text": "うらけんにだん"
+  },
+  {
+   "offset": 2355,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 2375,
+   "text": "弐連剛掌破"
+  },
+  {
+   "offset": 2411,
+   "text": "にれんごうしょうは"
+  },
+  {
+   "offset": 2528,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 2548,
+   "text": "弐連剛掌破・否"
+  },
+  {
+   "offset": 2596,
+   "text": "にれんごうしょうは・いな"
+  },
+  {
+   "offset": 2824,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 2844,
+   "text": "門前払い"
+  },
+  {
+   "offset": 2871,
+   "text": "もんぜんばらい"
+  },
+  {
+   "offset": 2958,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 2978,
+   "text": "破砕蹴"
+  },
+  {
+   "offset": 3005,
+   "text": "はさいしゅう"
+  },
+  {
+   "offset": 3137,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 3157,
+   "text": "剛掌破"
+  },
+  {
+   "offset": 3182,
+   "text": "ごうしょうは"
+  },
+  {
+   "offset": 3242,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 3262,
+   "text": "激剛掌破"
+  },
+  {
+   "offset": 3289,
+   "text": "げきごうしょうは"
+  },
+  {
+   "offset": 3403,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 3423,
+   "text": "激剛掌破・否"
+  },
+  {
+   "offset": 3462,
+   "text": "げきごうしょうは・いな"
+  },
+  {
+   "offset": 3687,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 3707,
+   "text": "五臓血塊"
+  },
+  {
+   "offset": 3738,
+   "text": "ごぞうけっかい"
+  },
+  {
+   "offset": 3825,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 3845,
+   "text": "右踵落とし"
+  },
+  {
+   "offset": 3881,
+   "text": "みぎかかとおとし"
+  },
+  {
+   "offset": 3971,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 3991,
+   "text": "ぱちき"
+  },
+  {
+   "offset": 4015,
+   "text": "ぱちき"
+  },
+  {
+   "offset": 4090,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 4110,
+   "text": "無双掌破"
+  },
+  {
+   "offset": 4144,
+   "text": "むそうしょうは"
+  },
+  {
+   "offset": 4255,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 4275,
+   "text": "無双鉄槌"
+  },
+  {
+   "offset": 4303,
+   "text": "むそうてっつい"
+  },
+  {
+   "offset": 4414,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 4434,
+   "text": "冥鳳翼"
+  },
+  {
+   "offset": 4460,
+   "text": "めいほうよく"
+  },
+  {
+   "offset": 4544,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 4564,
+   "text": "瓦割り"
+  },
+  {
+   "offset": 4589,
+   "text": "かわらわり"
+  },
+  {
+   "offset": 4670,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 4690,
+   "text": "地鎮砕"
+  },
+  {
+   "offset": 4712,
+   "text": "じちんさい"
+  },
+  {
+   "offset": 4793,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 4813,
+   "text": "三島流・封殺陣の構え"
+  },
+  {
+   "offset": 4860,
+   "text": "みしまりゅう・ふうさつじんのかまえ"
+  },
+  {
+   "offset": 4977,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 4997,
+   "text": "封殺陣・粉砕拳"
+  },
+  {
+   "offset": 5032,
+   "text": "ふうさつじん・ふんさいけん"
+  },
+  {
+   "offset": 5073,
+   "text": "三島流・封殺陣の構え中に"
+  },
+  {
+   "offset": 5311,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 5331,
+   "text": "封殺陣・爆砕拳"
+  },
+  {
+   "offset": 5370,
+   "text": "ふうさつじん・ばくさいけん"
+  },
+  {
+   "offset": 5411,
+   "text": "三島流・封殺陣の構え中に"
+  },
+  {
+   "offset": 5673,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 5693,
+   "text": "封殺陣・頭槌砕"
+  },
+  {
+   "offset": 5732,
+   "text": "ふうさつじん・とうついさい"
+  },
+  {
+   "offset": 5773,
+   "text": "三島流・封殺陣の構え中に"
+  },
+  {
+   "offset": 6011,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 6031,
+   "text": "鬼瓦"
+  },
+  {
+   "offset": 6057,
+   "text": "おにがわら"
+  },
+  {
+   "offset": 6138,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 6158,
+   "text": "影生門"
+  },
+  {
+   "offset": 6180,
+   "text": "えいしょうもん"
+  },
+  {
+   "offset": 6267,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 6287,
+   "text": "刎頚裏拳"
+  },
+  {
+   "offset": 6316,
+   "text": "ふんけいうらけん"
+  },
+  {
+   "offset": 6430,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 6450,
+   "text": "刎頚膝砕き"
+  },
+  {
+   "offset": 6480,
+   "text": "ふんけいひざくだき"
+  },
+  {
+   "offset": 6597,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 6617,
+   "text": "祟殺し"
+  },
+  {
+   "offset": 6643,
+   "text": "たたりごろし"
+  },
+  {
+   "offset": 6727,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 6747,
+   "text": "鰐下駄"
+  },
+  {
+   "offset": 6781,
+   "text": "わにげた"
+  },
+  {
+   "offset": 6883,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 6903,
+   "text": "真月旋"
+  },
+  {
+   "offset": 6928,
+   "text": "しんげつせん"
+  },
+  {
+   "offset": 7012,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 7032,
+   "text": "剛掌烈破"
+  },
+  {
+   "offset": 7060,
+   "text": "ごうしょうれっぱ"
+  },
+  {
+   "offset": 7150,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 7170,
+   "text": "剛掌烈破・連"
+  },
+  {
+   "offset": 7210,
+   "text": "ごうしょうれっぱ・つらね"
+  },
+  {
+   "offset": 7336,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 7356,
+   "text": "裏旋空刃脚"
+  },
+  {
+   "offset": 7384,
+   "text": "りせんくうじんきゃく"
+  },
+  {
+   "offset": 7504,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 7524,
+   "text": "玄空脚"
+  },
+  {
+   "offset": 7548,
+   "text": "げんくうきゃく"
+  },
+  {
+   "offset": 7635,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 7655,
+   "text": "鬼神拳"
+  },
+  {
+   "offset": 7682,
+   "text": "きじんけん"
+  },
+  {
+   "offset": 7787,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 7807,
+   "text": "左踵落とし"
+  },
+  {
+   "offset": 7842,
+   "text": "ひだりかかとおとし"
+  },
+  {
+   "offset": 7959,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 7979,
+   "text": "砕神掌"
+  },
+  {
+   "offset": 8004,
+   "text": "はしんしょう"
+  },
+  {
+   "offset": 8112,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 8132,
+   "text": "影足"
+  },
+  {
+   "offset": 8153,
+   "text": "かげあし"
+  },
+  {
+   "offset": 8279,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 8299,
+   "text": "天魔覆滅"
+  },
+  {
+   "offset": 8330,
+   "text": "てんまふくめつ"
+  },
+  {
+   "offset": 8465,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 8485,
+   "text": "天魔降伏"
+  },
+  {
+   "offset": 8511,
+   "text": "てんまごうぶく"
+  },
+  {
+   "offset": 8646,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 8666,
+   "text": "金剛槍掌"
+  },
+  {
+   "offset": 8691,
+   "text": "こんごうそうしょう"
+  },
+  {
+   "offset": 8832,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 8852,
+   "text": "雷神拳"
+  },
+  {
+   "offset": 8880,
+   "text": "らいじんけん"
+  },
+  {
+   "offset": 9036,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 9056,
+   "text": "風神拳"
+  },
+  {
+   "offset": 9084,
+   "text": "ふうじんけん"
+  },
+  {
+   "offset": 9240,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 9260,
+   "text": "激斬脚"
+  },
+  {
+   "offset": 9289,
+   "text": "げきざんきゃく"
+  },
+  {
+   "offset": 9448,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 9468,
+   "text": "地斬脚"
+  },
+  {
+   "offset": 9497,
+   "text": "ちざんきゃく"
+  },
+  {
+   "offset": 9653,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 9673,
+   "text": "奈落払い雷神拳"
+  },
+  {
+   "offset": 9721,
+   "text": "ならくばらいらいじんけん"
+  },
+  {
+   "offset": 9919,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 9939,
+   "text": "奈落払い踵切り"
+  },
+  {
+   "offset": 9976,
+   "text": "ならくばらいかかとぎり"
+  },
+  {
+   "offset": 10219,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 10239,
+   "text": "奈落払い"
+  },
+  {
+   "offset": 10269,
+   "text": "ならくばらい"
+  },
+  {
+   "offset": 10473,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 10493,
+   "text": "空斬脚"
+  },
+  {
+   "offset": 10523,
+   "text": "くうざんきゃく"
+  },
+  {
+   "offset": 10658,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 10678,
+   "text": "金剛掌"
+  },
+  {
+   "offset": 10706,
+   "text": "こんごうしょう"
+  },
+  {
+   "offset": 10729,
+   "text": "立ち途中に"
+  },
+  {
+   "offset": 10880,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 10900,
+   "text": "観音砕き"
+  },
+  {
+   "offset": 10927,
+   "text": "かんのんくだき"
+  },
+  {
+   "offset": 10950,
+   "text": "立ち途中に"
+  },
+  {
+   "offset": 11101,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 11121,
+   "text": "踵落とし"
+  },
+  {
+   "offset": 11149,
+   "text": "かかとおとし"
+  },
+  {
+   "offset": 11169,
+   "text": "立ち途中に"
+  },
+  {
+   "offset": 11344,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 11364,
+   "text": "伏龍脚"
+  },
+  {
+   "offset": 11398,
+   "text": "ふくりゅうきゃく"
+  },
+  {
+   "offset": 11424,
+   "text": "しゃがんだ状態で"
+  },
+  {
+   "offset": 11616,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 11636,
+   "text": "万漢掌"
+  },
+  {
+   "offset": 11663,
+   "text": "ばんかんしょう"
+  },
+  {
+   "offset": 11686,
+   "text": "横移動中に"
+  },
+  {
+   "offset": 11905,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 11925,
+   "text": "万漢螺旋掌"
+  },
+  {
+   "offset": 11962,
+   "text": "ばんかんらせんしょう"
+  },
+  {
+   "offset": 11994,
+   "text": "横移動中に"
+  },
+  {
+   "offset": 12237,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 12257,
+   "text": "鬼下駄"
+  },
+  {
+   "offset": 12280,
+   "text": "おにげた"
+  },
+  {
+   "offset": 12295,
+   "text": "相手ダウン中"
+  },
+  {
+   "offset": 12583,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 12603,
+   "text": "挑発"
+  },
+  {
+   "offset": 12618,
+   "text": "ちょうはつ"
+  },
+  {
+   "offset": 12675,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 12701,
+   "text": "連コンボ"
+  },
+  {
+   "offset": 12742,
+   "text": "れんコンボ"
+  },
+  {
+   "offset": 13092,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 13118,
+   "text": "連コンボ"
+  },
+  {
+   "offset": 13159,
+   "text": "れんコンボ"
+  },
+  {
+   "offset": 13461,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 13487,
+   "text": "連コンボ"
+  },
+  {
+   "offset": 13528,
+   "text": "れんコンボ"
+  },
+  {
+   "offset": 13830,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 13856,
+   "text": "連コンボ"
+  },
+  {
+   "offset": 13897,
+   "text": "れんコンボ"
+  },
+  {
+   "offset": 14199,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 14219,
+   "text": "裸締め"
+  },
+  {
+   "offset": 14244,
+   "text": "はだかじめ"
+  },
+  {
+   "offset": 14261,
+   "text": "相手に接近して"
+  },
+  {
+   "offset": 14492,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 14512,
+   "text": "裸締め"
+  },
+  {
+   "offset": 14537,
+   "text": "はだかじめ"
+  },
+  {
+   "offset": 14554,
+   "text": "相手に接近して"
+  },
+  {
+   "offset": 14809,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 14829,
+   "text": "金剛落とし"
+  },
+  {
+   "offset": 14865,
+   "text": "こんごうおとし"
+  },
+  {
+   "offset": 14888,
+   "text": "相手に接近して"
+  },
+  {
+   "offset": 15119,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 15139,
+   "text": "金剛落とし"
+  },
+  {
+   "offset": 15175,
+   "text": "こんごうおとし"
+  },
+  {
+   "offset": 15198,
+   "text": "相手に接近して"
+  },
+  {
+   "offset": 15453,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 15473,
+   "text": "断頭手"
+  },
+  {
+   "offset": 15501,
+   "text": "だんとうしゅ"
+  },
+  {
+   "offset": 15521,
+   "text": "相手の左横から接近して"
+  },
+  {
+   "offset": 15853,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 15873,
+   "text": "奈落"
+  },
+  {
+   "offset": 15891,
+   "text": "ならく"
+  },
+  {
+   "offset": 15902,
+   "text": "相手の右横から接近して"
+  },
+  {
+   "offset": 16238,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 16258,
+   "text": "仁王砕き"
+  },
+  {
+   "offset": 16285,
+   "text": "におうくだき"
+  },
+  {
+   "offset": 16305,
+   "text": "相手の背後から接近して"
+  },
+  {
+   "offset": 16610,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 16630,
+   "text": "火打ち石"
+  },
+  {
+   "offset": 16658,
+   "text": "ひうちいし"
+  },
+  {
+   "offset": 16675,
+   "text": "相手に接近して"
+  },
+  {
+   "offset": 16930,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 16950,
+   "text": "超ぱちき"
+  },
+  {
+   "offset": 16975,
+   "text": "ちょうぱちき"
+  },
+  {
+   "offset": 16995,
+   "text": "相手に接近して"
+  },
+  {
+   "offset": 17274,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 17294,
+   "text": "放宙手"
+  },
+  {
+   "offset": 17317,
+   "text": "ほうちゅうしゅ"
+  },
+  {
+   "offset": 17340,
+   "text": "相手に接近して"
+  },
+  {
+   "offset": 17643,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 17663,
+   "text": "三島流・金剛壁の構え"
+  },
+  {
+   "offset": 17712,
+   "text": "みしまりゅう・こんごうへきのかまえ"
+  },
+  {
+   "offset": 17765,
+   "text": "相手の攻撃に合わせて"
+  },
+  {
+   "offset": 18198,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 18218,
+   "text": "サンプルコンボ"
+  },
+  {
+   "offset": 18262,
+   "text": "サンプルコンボ"
+  },
+  {
+   "offset": 18321,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 18341,
+   "text": "サンプルコンボ"
+  },
+  {
+   "offset": 18385,
+   "text": "サンプルコンボ"
+  },
+  {
+   "offset": 18425,
+   "text": "バウンド"
+  },
+  {
+   "offset": 18465,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 18485,
+   "text": "サンプルコンボ"
+  },
+  {
+   "offset": 18529,
+   "text": "サンプルコンボ"
+  },
+  {
+   "offset": 18581,
+   "text": "バウンド"
+  },
+  {
+   "offset": 18624,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 18644,
+   "text": "サンプルコンボ"
+  },
+  {
+   "offset": 18688,
+   "text": "サンプルコンボ"
+  },
+  {
+   "offset": 18716,
+   "text": "立ち途中"
+  },
+  {
+   "offset": 18731,
+   "text": "カウンター"
+  },
+  {
+   "offset": 18767,
+   "text": "バウンド"
+  },
+  {
+   "offset": 18782,
+   "text": "軸移動中"
+  },
+  {
+   "offset": 18816,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 18836,
+   "text": "サンプルコンボ"
+  },
+  {
+   "offset": 18880,
+   "text": "サンプルコンボ"
+  },
+  {
+   "offset": 18972,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 18992,
+   "text": "サンプルコンボ"
+  },
+  {
+   "offset": 19036,
+   "text": "サンプルコンボ"
+  },
+  {
+   "offset": 19097,
+   "text": "バウンド"
+  },
+  {
+   "offset": 19152,
+   "text": "帶動經濟起飛"
+  },
+  {
+   "offset": 19172,
+   "text": "サンプルコンボ"
+  },
+  {
+   "offset": 19216,
+   "text": "サンプルコンボ"
+  },
+  {
+   "offset": 19304,
+   "text": "バウンド"
+  },
+  {
+   "offset": 19356,
+   "text": "帶動經濟起飛"
+  }
+ ],
+ "mota": {
+  "offsets": [
+   468332,
+   470860,
+   475440,
+   475460,
+   475480,
+   475500
+  ],
+  "chunks": [
+   {
+    "offset": 468332,
+    "header_hex": "4d4f544101000000140000000000000000010000010001000f000f00480000000800080008000800080008000800080008000800080008000800080008000000",
+    "words_le": [
+     1096044365,
+     1,
+     20,
+     0,
+     256,
+     65537,
+     983055,
+     72
+    ]
+   },
+   {
+    "offset": 470860,
+    "header_hex": "4d4f54410100000014000000210000000001000098000000d8050000d8050000d8050000d8050000d8050000d8050000d8050000d8050000d8050000d8050000",
+    "words_le": [
+     1096044365,
+     1,
+     20,
+     33,
+     256,
+     152,
+     1496,
+     1496
+    ]
+   },
+   {
+    "offset": 475440,
+    "header_hex": "4d4f5441010000001400000000000000000100004d4f5441010000001400000000000000000100004d4f5441010000001400000000000000000100004d4f5441",
+    "words_le": [
+     1096044365,
+     1,
+     20,
+     0,
+     256,
+     1096044365,
+     1,
+     20
+    ]
+   },
+   {
+    "offset": 475460,
+    "header_hex": "4d4f5441010000001400000000000000000100004d4f5441010000001400000000000000000100004d4f544101000000140000000000000000010000",
+    "words_le": [
+     1096044365,
+     1,
+     20,
+     0,
+     256,
+     1096044365,
+     1,
+     20
+    ]
+   },
+   {
+    "offset": 475480,
+    "header_hex": "4d4f5441010000001400000000000000000100004d4f544101000000140000000000000000010000",
+    "words_le": [
+     1096044365,
+     1,
+     20,
+     0,
+     256,
+     1096044365,
+     1,
+     20
+    ]
+   },
+   {
+    "offset": 475500,
+    "header_hex": "4d4f544101000000140000000000000000010000",
+    "words_le": [
+     1096044365,
+     1,
+     20,
+     0,
+     256
+    ]
+   }
+  ],
+  "tail_records_20b": [
+   {
+    "offset": 475440,
+    "hex": "4d4f544101000000140000000000000000010000"
+   },
+   {
+    "offset": 475460,
+    "hex": "4d4f544101000000140000000000000000010000"
+   },
+   {
+    "offset": 475480,
+    "hex": "4d4f544101000000140000000000000000010000"
+   },
+   {
+    "offset": 475500,
+    "hex": "4d4f544101000000140000000000000000010000"
+   }
+  ],
+  "tail_note": "four 20B MOTA records end exactly at EOF in 18/18 files (round 6)"
+ },
+ "round15_notation": {
+  "source": "game-font PUA glyphs (U+E000-U+E023) in per-move name records",
+  "glyph_map": {
+   "U+E000": "d/b",
+   "U+E001": "d",
+   "U+E002": "d/f",
+   "U+E003": "b",
+   "U+E004": "f",
+   "U+E005": "u/b",
+   "U+E006": "u",
+   "U+E007": "u/f",
+   "U+E008": "D/B",
+   "U+E009": "D",
+   "U+E00A": "D/F",
+   "U+E00B": "B",
+   "U+E00C": "F",
+   "U+E00D": "U/B",
+   "U+E00E": "U",
+   "U+E00F": "U/F",
+   "U+E015": "1",
+   "U+E016": "2",
+   "U+E017": "1+2",
+   "U+E018": "3",
+   "U+E019": "1+3",
+   "U+E01A": "2+3",
+   "U+E01B": "1+2+3",
+   "U+E01C": "4",
+   "U+E01D": "1+4",
+   "U+E01E": "2+4",
+   "U+E01F": "1+2+4",
+   "U+E020": "3+4",
+   "U+E021": "1+3+4",
+   "U+E022": "2+3+4",
+   "U+E023": "1+2+3+4"
+  },
+  "special": {
+   "U+E00C": "hold-form of f: rendered \"F\" when following U+E004 (the f,F dash), \"~F\" otherwise (slide/hold transition)",
+   "U+E00D": "U/B (hold u/b) by ring position; never occurs in the 18 files' records (0 occurrences in the v2 census)"
+  },
+  "unproven_codepoints": "none - the map is complete over every codepoint occurring in the corpus",
+  "evidence": "tools/round15-evidence/JOB1-GLYPH-TAIL.md (supersedes the round-14 tail in tools/round14-evidence/JOB3-GLYPH-MAP.md)"
+ }
+}

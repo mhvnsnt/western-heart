@@ -1,0 +1,171 @@
+/* ============================================================
+   WESTERN HEART — Character Select (Lane I, Round 2, 2026-10-18)
+   Tekken 8-style rebuild: bisected live-3D fighters zone (P1 left /
+   P2 right) + contained bottom card strip with internal scroll.
+   Layout lineage: T8 (bisected 3D zone, hints bar), T6 ("?" random),
+   TTT2 (two-cursor flow). Rebuilt — no real Tekken UI files exist
+   in our teardowns (see docs/select-redesign/UI-ASSET-INVENTORY.md).
+   Replaces the old 1920x1080 promo-card page (retired: repeated
+   renders, no names — the owner-flagged embarrassment).
+   ============================================================ */
+#select-root {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  overflow: hidden; /* the page NEVER scrolls — only the strip does */
+  background: transparent;
+  font-family: "WHDisplay", Oswald, sans-serif;
+  color: var(--bone, #f4e6c8);
+  --p1: #3aa0ff; --p2: #9e1b2c; --gold: #f2b24a;
+  user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent;
+}
+
+/* ---- header ---- */
+.whsel-head {
+  flex: 0 0 auto; padding: 1.2vh 3vw .8vh;
+  display: flex; align-items: baseline; gap: 2vw;
+  border-bottom: 2px solid rgba(242,178,74,.35);
+  background: linear-gradient(180deg, rgba(5,2,12,.85), rgba(5,2,12,.35));
+  z-index: 5;
+}
+.whsel-head h2 { font-size: clamp(18px, 4.6vw, 30px); font-weight: 700; letter-spacing: .12em; margin: 0; white-space: nowrap; }
+.whsel-head h2 i { font-style: normal; color: var(--gold); font-size: .62em; margin-left: .6em; letter-spacing: .3em; white-space: nowrap; }
+.whsel-head .sub { margin-left: auto; font-size: clamp(10px, 2.4vw, 13px); opacity: .65; letter-spacing: .2em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* ---- fighters zone (~76%) ---- */
+.whsel-zone { flex: 1 1 auto; min-height: 0; position: relative; overflow: hidden; }
+.whsel-gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.whsel-bisect {
+  position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; transform: translateX(-50%);
+  background: linear-gradient(180deg, transparent, rgba(242,178,74,.5), transparent);
+  pointer-events: none; z-index: 2;
+}
+.whsel-side-tag {
+  position: absolute; top: 1vh; z-index: 3;
+  font-size: clamp(14px, 3.6vw, 22px); font-weight: 700; letter-spacing: .18em;
+  padding: .4vh 2.4vw; border: 2px solid; background: rgba(5,2,12,.72);
+}
+.whsel-side-tag.p1 { left: 2vw; color: var(--p1); border-color: var(--p1); }
+.whsel-side-tag.p2 { right: 2vw; color: #ff8f9a; border-color: var(--p2); }
+.whsel-side-tag .lock { display: block; font-size: .55em; letter-spacing: .3em; color: var(--gold); }
+
+/* P1/P2 cursor toggle (mobile-first: tap which side you are picking) */
+.whsel-cursor-toggle {
+  position: absolute; top: 1vh; left: 50%; transform: translateX(-50%); z-index: 4;
+  display: flex; border: 2px solid rgba(244,230,200,.4); background: rgba(5,2,12,.72);
+}
+.whsel-cursor-toggle button {
+  appearance: none; border: 0; background: transparent; color: var(--bone, #f4e6c8);
+  font: inherit; font-size: clamp(12px, 3vw, 15px); font-weight: 700; letter-spacing: .14em;
+  padding: 1vh 4vw; min-height: 44px; cursor: pointer;
+}
+.whsel-cursor-toggle button.on-p1 { background: var(--p1); color: #04101f; }
+.whsel-cursor-toggle button.on-p2 { background: var(--p2); color: #fff; }
+
+/* stats panel under each big model */
+.whsel-stats {
+  position: absolute; bottom: 1vh; z-index: 3; max-width: 44vw;
+  background: rgba(5,2,12,.82); padding: 1vh 1.6vw; border-top: 3px solid var(--p1);
+}
+.whsel-stats.right { right: 2vw; border-top-color: var(--p2); text-align: right; }
+.whsel-stats.left { left: 2vw; }
+.whsel-stats .nm { font-size: clamp(15px, 4vw, 24px); font-weight: 700; letter-spacing: .06em; }
+.whsel-stats .nm .k { color: var(--gold); font-size: .8em; margin-right: .4em; }
+.whsel-stats .soul { color: var(--gold); font-size: clamp(10px, 2.6vw, 14px); letter-spacing: .1em; }
+.whsel-stats dl { display: flex; gap: 2.4vw; margin-top: .5vh; font-size: clamp(9px, 2.4vw, 12px); }
+.whsel-stats.right dl { justify-content: flex-end; }
+.whsel-stats dt { opacity: .55; letter-spacing: .18em; font-size: .85em; }
+.whsel-stats dd { margin: .1em 0 0; font-weight: 600; }
+.whsel-pending {
+  display: inline-block; margin-top: .6vh; font-size: clamp(9px, 2.4vw, 11px);
+  color: #ff8f9a; border: 1px solid var(--p2); padding: .2em .8em; letter-spacing: .22em;
+}
+/* attire chips — T8-style slots, chosen right on the select */
+.whsel-attires { display: flex; gap: 1.4vw; margin-top: .8vh; align-items: center; }
+.whsel-stats.right .whsel-attires { justify-content: flex-end; }
+.whsel-attires .lbl { font-size: clamp(9px, 2.4vw, 11px); opacity: .55; letter-spacing: .2em; }
+.whsel-attires button {
+  appearance: none; cursor: pointer; min-width: 44px; min-height: 34px;
+  border: 2px solid rgba(244,230,200,.45); background: rgba(20,8,30,.8); color: var(--bone, #f4e6c8);
+  font: inherit; font-size: clamp(11px, 2.8vw, 13px); font-weight: 700; padding: .3em .7em;
+}
+.whsel-attires button.on { border-color: var(--gold); color: var(--gold); box-shadow: 0 0 8px rgba(242,178,74,.55); }
+.whsel-attires button:disabled { opacity: .35; cursor: default; }
+.whsel-attires button .an { display: block; font-size: .68em; font-weight: 400; opacity: .8; letter-spacing: .04em; }
+
+/* click zones over each half: tap the big model to lock that side */
+.whsel-half { position: absolute; top: 0; bottom: 0; width: 50%; z-index: 2; cursor: pointer; }
+.whsel-half.l { left: 0; } .whsel-half.r { right: 0; }
+
+/* ---- hints bar (T8 bottom-hints convention) ---- */
+.whsel-hints {
+  flex: 0 0 auto; z-index: 5;
+  display: flex; align-items: center; gap: 3vw; justify-content: center;
+  padding: .9vh 2vw; font-size: clamp(10px, 2.7vw, 14px); letter-spacing: .08em;
+  background: rgba(5,2,12,.88); border-top: 1px solid rgba(242,178,74,.3);
+}
+.whsel-hints b { color: var(--gold); font-weight: 700; }
+.whsel-hints .confirm {
+  appearance: none; cursor: pointer; border: 2px solid var(--gold); background: var(--gold);
+  color: #1c0a04; font: inherit; font-weight: 700; letter-spacing: .14em;
+  padding: 1vh 5vw; min-height: 44px; font-size: clamp(12px, 3.2vw, 16px);
+}
+
+/* ---- card strip (~21%, the ONLY scroll, contained in its box) ---- */
+.whsel-strip {
+  flex: 0 0 21%; min-height: 120px;
+  overflow-y: auto; overflow-x: hidden; /* internal scroll only */
+  -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
+  background: linear-gradient(180deg, rgba(10,4,20,.94), rgba(5,2,12,.97));
+  border-top: 2px solid rgba(242,178,74,.4);
+  padding: 1vh 2vw 2vh; z-index: 5;
+}
+.whsel-strip .cards {
+  /* position:static guard — ui.css has a mode-select `.cards{position:absolute}`
+     rule that would otherwise lift this grid out of the strip (no clipping). */
+  position: static;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+  gap: 1.6vw;
+}
+.whsel-card {
+  position: relative; cursor: pointer; border: 2px solid #3a1a4a; background: #160826;
+  min-height: 44px;
+}
+.whsel-card .pic { display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; object-position: 50% 22%; background: #0b0518; }
+.whsel-card .nm {
+  display: block; font-size: clamp(10px, 2.7vw, 12px); font-weight: 700; text-align: center;
+  letter-spacing: .05em; padding: .45em .2em; background: rgba(5,2,12,.9);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.whsel-card .k { position: absolute; top: 2px; right: 5px; color: var(--gold); font-size: 13px; text-shadow: 0 1px 2px #000; }
+.whsel-card.cur-p1 { border-color: var(--p1); box-shadow: 0 0 10px var(--p1); }
+.whsel-card.cur-p2 { border-color: var(--p2); box-shadow: 0 0 10px var(--p2); }
+.whsel-card.locked-p1::after, .whsel-card.locked-p2::after {
+  content: "1P"; position: absolute; left: 4px; top: 4px; font-size: 11px; font-weight: 700;
+  background: var(--p1); color: #04101f; padding: .1em .5em;
+}
+.whsel-card.locked-p2::after { content: "2P"; background: var(--p2); color: #fff; }
+.whsel-card.random .pic { object-fit: contain; padding: 12%; }
+.whsel-card.random .nm { color: var(--gold); }
+.whsel-card .pend {
+  position: absolute; left: 0; right: 0; bottom: 26px; text-align: center;
+  font-size: 9px; letter-spacing: .2em; color: #ff8f9a; background: rgba(5,2,12,.8); padding: .2em 0;
+}
+
+/* flash on model swap */
+.whsel-flash { position: absolute; inset: 0; z-index: 4; pointer-events: none; opacity: 0;
+  background: radial-gradient(ellipse at center, rgba(242,178,74,.35), transparent 70%); }
+.whsel-flash.go { animation: whsel-flash .28s ease-out; }
+@keyframes whsel-flash { 0% { opacity: 1; } 100% { opacity: 0; } }
+
+.whsel-loading {
+  position: absolute; inset: 0; z-index: 6; display: flex; align-items: center; justify-content: center;
+  background: rgba(5,2,12,.7); font-size: clamp(13px, 3.4vw, 17px); letter-spacing: .24em; color: var(--gold);
+}
+
+@media (min-width: 760px) {
+  .whsel-strip .cards { grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); }
+  .whsel-stats { max-width: 30vw; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .whsel-flash.go { animation: none; }
+}

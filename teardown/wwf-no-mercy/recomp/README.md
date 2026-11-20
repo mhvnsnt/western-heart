@@ -1,0 +1,221 @@
+# WWF No Mercy: Recompiled — 60Hz Edition (unofficial fork)
+
+> This is an **unofficial fork** of [jessetbh's WWF No Mercy: Recompiled](https://github.com/jessetbh/WWFNoMercyRecomp).
+> The recompilation itself is jessetbh's work, built on [N64Recomp](https://github.com/N64Recomp/N64Recomp),
+> [N64ModernRuntime](https://github.com/N64Recomp/N64ModernRuntime) and [RT64](https://github.com/rt64/rt64).
+> This fork adds:
+>
+> - **Smooth framerates**: 60, 90 or 120 fps through frame interpolation in RT64, fed by small hooks in the
+>   recompiled game code (`tools/readd_hand_edits.py`). Pick it under **Settings > Graphics > Framerate**.
+> - **Resolution option**: **Settings > Graphics > Resolution** sets the screen resolution (in fullscreen the
+>   display switches to it, and back afterwards).
+> - **Mods and texture packs**: per-mod texture packs and saves, picked in the launcher. See
+>   [Mods and texture packs](#mods-and-texture-packs).
+> - **Linux / Steam Deck**: release 0.2.1 ships for Windows and Steam Deck / Linux, with every feature above
+>   (mods included). Build it yourself with `tools/linux/build_linux.sh` (see `README_STEAM_DECK.txt`).
+>
+> Modified by Gadge64, 2026. Licensed under GPL-3.0 like the original (see `COPYING`). Developed with AI assistance.
+>
+> **Please report problems with this edition here, not to the original project.**
+
+## Mods and texture packs
+
+Each mod is a folder inside `modpacks`, next to the executable (or in `%LOCALAPPDATA%\NoMercyRecompiled\` when not
+running portable). The launcher's **Mod** option lists every mod folder plus **Base Game**, and remembers your choice.
+
+```
+modpacks\
+    <Mod Name>\
+        textures\   PNG texture replacements, any subfolders
+        save\       optional starting save: a Project64 .fla, or a .bin from this game
+```
+
+**Adding textures** needs no tools or code:
+
+1. Dump the texture you want to replace with Project64 (GLideN64 or Rice Video texture dumping). The dump's file name,
+   for example `WWF No Mercy#2220AF21#2#0#14BCB5C9_ciByRGBA.png`, identifies the texture.
+2. Edit or redraw it at any size (hi-res is fine), keeping the same file name.
+3. Put it in `modpacks\<Mod Name>\textures\` and restart the game.
+
+The part of the name between the first `#` and the last `_` is what matters. Jabo Direct3D8 packs (32-character
+hash names) work too. If the same name appears in two folders, the one whose path sorts last alphabetically wins.
+
+**Saves:** each mod gets its own save in `saves\<Mod Name>\`, created from the mod's `save\` folder **the first time
+the mod is started**. If you start a mod before putting its save in `save\`, it creates a blank save and keeps using it,
+so custom wrestlers and their textures won't appear. To fix it, close the game, delete `saves\<Mod Name>\` and start
+the mod again. Base Game keeps its own save and is never changed by mods.
+
+Textures for created or edited wrestlers only show when those wrestlers are in the roster, which comes from the mod's
+save.
+
+Thanks to **3jabo** ([Reddit](https://www.reddit.com/user/3jabo/), [GitHub](https://github.com/3jabo), [YouTube](https://www.youtube.com/@3jabo)) for testing mod support and his excellent input.
+
+---
+
+# WWF No Mercy: Recompiled
+
+WWF No Mercy: Recompiled is a project that uses
+[N64Recomp](https://github.com/N64Recomp/N64Recomp) to **statically recompile** the
+Nintendo 64 game *WWF No Mercy* into a native PC port, running on the
+[N64ModernRuntime](https://github.com/N64Recomp/N64ModernRuntime) with
+[RT64](https://github.com/rt64/rt64) as the rendering engine. It is the fifth
+project in the AKI wrestling recompilation family, after
+[WCW vs. nWo World Tour: Recompiled](https://github.com/jessetbh/WCWvsNWOWorldTourRecomp),
+[WCW/nWo Revenge: Recompiled](https://github.com/jessetbh/WCWnWoRevengeRecomp),
+[WWF WrestleMania 2000: Recompiled](https://github.com/jessetbh/WWFWrestleMania2000Recomp),
+and
+[Virtual Pro Wrestling 64: Recompiled](https://github.com/jessetbh/VPW64Recomp),
+sharing their runtime stack and conventions. No Mercy is WrestleMania 2000's direct
+sequel, so that project is this one's closest reference.
+
+### **This repository and its releases do not contain game assets. The original game is required to build or run this project.**
+
+> **Status: beta.** The game boots, renders at high resolution, plays music and
+> sound effects, takes keyboard and gamepad input through the menus and matches,
+> rumbles, and the cartridge flash save persists automatically across sessions.
+> See [Known Issues](#known-issues) for what's still rough.
+
+<div align="center">
+  <img src="docs/screenshots/gameplay.png" width="640" alt="In-ring gameplay rendered at high resolution">
+  <br>
+  <img src="docs/screenshots/title.png" width="318" alt="Title screen">
+  <img src="docs/screenshots/wrestler-select.png" width="318" alt="Superstar select">
+</div>
+
+## Table of Contents
+* [System Requirements](#system-requirements)
+* [Features](#features)
+* [FAQ](#faq)
+* [Known Issues](#known-issues)
+* [Building](#building)
+* [Libraries Used and Projects Referenced](#libraries-used-and-projects-referenced)
+* [Special Thanks](#special-thanks)
+
+## System Requirements
+
+Currently a **Windows** build is targeted; other operating systems may be supported
+later.
+
+A GPU supporting Direct3D 12.0 (Shader Model 6) or Vulkan 1.2 is required. A CPU
+supporting the SSE4.1 instruction set is also required (Intel Core 2 Penryn series or
+AMD Bulldozer and newer).
+
+## Features
+
+* Plug and play — assets load directly from your ROM, no extraction step
+* Hardware-accelerated high-resolution rendering through RT64 with the original
+  N64 visual effects intact
+* Widescreen support
+* In-game config menus with full input rebinding for keyboard and controller
+* Default mappings tailored to the AKI control scheme (d-pad movement, analog taunts)
+* Flash cartridge save emulation with automatic persistence, plus rumble
+* 30 (original), 60, 90 or 120 fps, and a screen resolution option (this fork)
+* Texture packs and per-mod saves (this fork)
+
+## Planned Features
+
+* Code and ROM-hack mods
+
+## FAQ
+
+#### What is static recompilation?
+
+Static recompilation is the process of automatically translating an application from
+one platform to another — here, the game's original MIPS machine code is translated
+into C and compiled for modern PCs. For details, see
+[N64Recomp](https://github.com/N64Recomp/N64Recomp). **This is not an emulator and not
+a decompilation.**
+
+#### How is this related to a decompilation project?
+
+It isn't — no public decompilation of WWF No Mercy exists. Unlike most
+recompilation ports, which borrow symbol names from a decomp, this project generates
+its own symbol metadata from scratch via a [splat](https://github.com/ethteck/splat)
+disassembly (see `disasm/` and `syms/`), transferring libultra identifications from
+its sister project WWF WrestleMania 2000 by machine-code fingerprinting.
+
+#### Which ROM does it use?
+
+This project is **only** a port of WWF No Mercy, and it only accepts one specific
+ROM: the USA **Rev 1** release
+(SHA1 `91CEE3D096F4A76644D8B35B9AEAD6448909ABD1`). The original USA release (Rev 0,
+which shipped the infamous save-erasure bug) and other regions are **not** accepted.
+**It is not an emulator and it cannot run any arbitrary ROM.**
+
+#### Where is the savefile stored?
+
+- Windows: `%LOCALAPPDATA%\NoMercyRecompiled\saves\`
+
+No Mercy saves everything — game progress, unlocks ("SmackDown Mall" purchases), and
+created wrestlers — to the cartridge's flash memory; the port persists that flash
+image to disk automatically. Configuration files and the log file live one level up
+in the same app folder.
+
+#### Can you run this project as a portable application?
+
+Yes — place a file named `portable.txt` in the same folder as the executable and
+saves, config files, and the stored ROM will be kept next to the executable instead.
+
+## Known Issues
+
+This is a beta. Known rough edges:
+
+* **Multi-controller sessions** are still being stabilized and can crash; single
+  controller (or keyboard) play is solid.
+* First launch may pause briefly while shaders compile for your GPU.
+* Only the USA Rev 1 ROM is accepted (see the FAQ) — other dumps are rejected at
+  intake by design.
+
+Please report anything else through the issue tracker.
+
+## Building
+
+See [BUILDING.md](BUILDING.md).
+
+## Libraries Used and Projects Referenced
+
+* [N64Recomp](https://github.com/N64Recomp/N64Recomp) — the static recompiler this
+  port is built with
+* [N64ModernRuntime](https://github.com/N64Recomp/N64ModernRuntime) — the modern
+  runtime (ultramodern + librecomp)
+* [RT64](https://github.com/rt64/rt64) — the rendering engine
+* [RecompFrontend](https://github.com/N64Recomp/RecompFrontend) — launcher, config
+  menus, and input stack
+* [RmlUi](https://github.com/mikke89/RmlUi) for building the menus and launcher
+* [lunasvg](https://github.com/sammycage/lunasvg) for SVG rendering, used by RmlUi
+* [FreeType](https://freetype.org/) for font rendering, used by RmlUi
+* [SDL2](https://www.libsdl.org/) for windowing, input, and audio
+* [moodycamel::ConcurrentQueue](https://github.com/cameron314/concurrentqueue) for
+  semaphores and fast, lock-free MPMC queues
+* [Gamepad Motion Helpers](https://github.com/JibbSmart/GamepadMotionHelpers) for
+  sensor fusion and calibration algorithms
+* [DirectX Shader Compiler](https://github.com/microsoft/DirectXShaderCompiler),
+  [zstd](https://github.com/facebook/zstd),
+  [nativefiledialog-extended](https://github.com/btzy/nativefiledialog-extended), and
+  [plume](https://github.com/renderbag/plume) via RT64
+* [splat](https://github.com/ethteck/splat) / spimdisasm for the disassembly that
+  produces this project's symbol metadata
+* [Inter](https://rsms.me/inter/), [Noto Emoji](https://fonts.google.com/noto), and
+  [PromptFont](https://shinmera.com/promptfont) fonts (OFL; PromptFont license in
+  `assets/promptfont/`)
+* [SDL_GameControllerDB](https://github.com/gabomdq/SDL_GameControllerDB) for
+  community controller mappings
+* [WCW vs. nWo World Tour: Recompiled](https://github.com/jessetbh/WCWvsNWOWorldTourRecomp),
+  [WCW/nWo Revenge: Recompiled](https://github.com/jessetbh/WCWnWoRevengeRecomp),
+  [WWF WrestleMania 2000: Recompiled](https://github.com/jessetbh/WWFWrestleMania2000Recomp),
+  [Virtual Pro Wrestling 64: Recompiled](https://github.com/jessetbh/VPW64Recomp),
+  [Bomberman Hero: Recompiled](https://github.com/RevoSucks/BMHeroRecomp), and
+  [Zelda64Recomp](https://github.com/Zelda64Recomp/Zelda64Recomp) as reference
+  projects for structure and conventions
+
+## Special Thanks
+
+* [Wiseguy](https://github.com/Mr-Wiseguy) and
+  [DarioSamo](https://github.com/DarioSamo) for creating N64Recomp and RT64.
+* [RevoSucks](https://github.com/RevoSucks) and the Bomberman Hero: Recompiled
+  project, the template for this port's sister projects and therefore for this one.
+* The Zelda64Recomp team for establishing the conventions the whole recomp ecosystem
+  follows.
+* ethteck and the splat/spimdisasm contributors — the disassembly tooling that made a
+  no-decomp recompilation possible.
+* **3jabo** ([Reddit](https://www.reddit.com/user/3jabo/), [GitHub](https://github.com/3jabo), [YouTube](https://www.youtube.com/@3jabo)) for testing this fork's mod support and his excellent input.

@@ -1,0 +1,163 @@
+{
+ "fighter": "bruno",
+ "base": "http://127.0.0.1:8906/game/",
+ "ready": true,
+ "rows": [
+  {
+   "n": "1",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:47",
+   "kind": "notation",
+   "why": "same input '1'",
+   "timing": {
+    "S": 0.167,
+    "A": 0.017,
+    "t0": 0.15,
+    "t1": 0.15,
+    "D": 0.633,
+    "src": "decoded"
+   },
+   "moveDmg": 4,
+   "hitWord": 1042,
+   "isGrab": false,
+   "atkName": "1",
+   "hasHit": true,
+   "distAtHit": 1.45,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 3.7,
+   "hits": [
+    {
+     "dmg": 4,
+     "word": 1042,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:47",
+   "kind": "notation",
+   "why": "same input '1'",
+   "timing": {
+    "S": 0.167,
+    "A": 0.017,
+    "t0": 0.15,
+    "t1": 0.15,
+    "D": 0.633,
+    "src": "decoded"
+   },
+   "moveDmg": 4,
+   "hitWord": 1042,
+   "isGrab": false,
+   "atkName": "1",
+   "hasHit": false,
+   "distAtHit": null,
+   "defStates": [],
+   "hpDelta": 0,
+   "hits": []
+  },
+  {
+   "n": "1+3",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": -1,
+   "df": -1,
+   "plan": "row:210",
+   "kind": "notation",
+   "why": "same input '1+3'",
+   "timing": {
+    "S": 0.2,
+    "A": 0.017,
+    "t0": 0.2,
+    "t1": 0.233,
+    "D": 0.7,
+    "src": "decoded"
+   },
+   "moveDmg": 21,
+   "hitWord": 2048,
+   "isGrab": true,
+   "atkName": "1+3",
+   "hasHit": true,
+   "distAtHit": 1.45,
+   "defStates": [
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "hpDelta": 19.3,
+   "hits": [
+    {
+     "lock": true,
+     "dmg": 21,
+     "res": "undefined"
+    }
+   ]
+  },
+  {
+   "n": "1+3",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": -1,
+   "df": -1,
+   "plan": "row:210",
+   "kind": "notation",
+   "why": "same input '1+3'",
+   "timing": {
+    "S": 0.2,
+    "A": 0.017,
+    "t0": 0.2,
+    "t1": 0.233,
+    "D": 0.7,
+    "src": "decoded"
+   },
+   "moveDmg": 21,
+   "hitWord": 2048,
+   "isGrab": true,
+   "atkName": "1+3",
+   "hasHit": true,
+   "distAtHit": 1.45,
+   "defStates": [
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "hpDelta": 19.3,
+   "hits": [
+    {
+     "lock": true,
+     "dmg": 21,
+     "res": "undefined"
+    }
+   ]
+  }
+ ],
+ "setup": {
+  "roundState": "fight",
+  "p1id": "bruno",
+  "t3actionsCount": 22,
+  "bank": "bryan"
+ },
+ "logs": [
+  "[http 404] http://127.0.0.1:8906/deploy-manifest.json",
+  "[http 404] http://127.0.0.1:8906/roster/bruno/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8906/roster/pantera/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/index.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/bruno.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/pantera.json",
+  "[http 404] http://127.0.0.1:8906/game/js/intro-interactions.js"
+ ]
+}

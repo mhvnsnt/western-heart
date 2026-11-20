@@ -1,0 +1,187 @@
+{
+ "pantera": {
+  "id": "pantera",
+  "model": "pantera-leoman",
+  "bones": 22,
+  "stance": true,
+  "stanceSource": "tekken-bank",
+  "framed": true,
+  "bank": "king",
+  "armDeg": {
+   "L": 52,
+   "R": 48
+  },
+  "gateWarns": []
+ },
+ "demonio": {
+  "id": "demonio",
+  "model": "demonio-a1",
+  "bones": 73,
+  "stance": true,
+  "stanceSource": "tekken-bank",
+  "framed": true,
+  "bank": "jin",
+  "armDeg": {
+   "L": 42,
+   "R": 39
+  },
+  "gateWarns": []
+ },
+ "pond": {
+  "id": "pond",
+  "model": "pond",
+  "bones": 224,
+  "stance": true,
+  "stanceSource": "tekken-bank",
+  "framed": true,
+  "bank": "raven",
+  "armDeg": {
+   "L": 24,
+   "R": 59
+  },
+  "gateWarns": [
+   "[WH-T3] failed to load raven/t3_stance.json: HTTP 404",
+   "[WH-T3] raven/rows.pack.json unavailable: HTTP 404",
+   "[WH-T3] failed to load raven/t3_win_rp.json: HTTP 404"
+  ]
+ },
+ "ryusan": {
+  "id": "ryusan",
+  "model": "ryusan",
+  "bones": 521,
+  "stance": true,
+  "stanceSource": "tekken-bank",
+  "framed": true,
+  "bank": "luckychloe",
+  "armDeg": {
+   "L": 29,
+   "R": 20
+  },
+  "gateWarns": [
+   "[WH-T3] failed to load luckychloe/t3_win_rp.json: HTTP 404",
+   "[WH-T3] failed to load luckychloe/t3_stance.json: HTTP 404",
+   "[WH-T3] luckychloe/rows.pack.json unavailable: HTTP 404"
+  ]
+ },
+ "tobi": {
+  "id": "tobi",
+  "model": "tobi",
+  "bones": 255,
+  "stance": true,
+  "stanceSource": "tekken-bank",
+  "framed": true,
+  "bank": "hwoarang",
+  "armDeg": {
+   "L": 39,
+   "R": 42
+  },
+  "gateWarns": []
+ },
+ "megami": {
+  "id": "megami",
+  "model": "megami",
+  "bones": 469,
+  "stance": true,
+  "stanceSource": "cmu-14_01",
+  "framed": true,
+  "bank": "jun",
+  "armDeg": {
+   "L": 23,
+   "R": 12
+  },
+  "gateWarns": [
+   "[WH-T3] failed to load jun/t3_block.json: HTTP 404",
+   "[WH-T3] failed to load jun/t3_hit.json: HTTP 404",
+   "[WH-T3] failed to load jun/t3_ko.json: HTTP 404",
+   "[WH-T3] failed to load jun/t3_stance.json: HTTP 404",
+   "[WH-T3] failed to load jun/t3_win_rp.json: HTTP 404",
+   "[WH-T3] failed to load jun/t3_hit_launch.json: HTTP 404",
+   "[WH-T3] failed to load jun/t3_walk_fwd.json: HTTP 404",
+   "[WH-T3] failed to load jun/t3_dash_fwd.json: HTTP 404",
+   "[WH-T3] failed to load jun/t3_crouch.json: HTTP 404",
+   "[WH-T3] failed to load jun/t3_sidestep_b.json: HTTP 404",
+   "[WH] select preview: bank 'jun' stance does not fit megami's rig (Left shoulder swung 2.38 rad in the source clip itself) \u2014 falling back"
+  ]
+ },
+ "menajerii": {
+  "id": "menajerii",
+  "model": "menajerii",
+  "bones": 450,
+  "stance": true,
+  "stanceSource": "cmu-14_01",
+  "framed": true,
+  "bank": "roger",
+  "armDeg": {
+   "L": 23,
+   "R": 12
+  },
+  "gateWarns": [
+   "[WH-T3] failed to load roger/t3_stance.json: HTTP 404",
+   "[WH-T3] failed to load roger/t3_block.json: HTTP 404",
+   "[WH-T3] failed to load roger/t3_ko.json: HTTP 404",
+   "[WH-T3] failed to load roger/t3_hit_launch.json: HTTP 404",
+   "[WH-T3] failed to load roger/t3_sidestep_b.json: HTTP 404",
+   "[WH-T3] failed to load roger/t3_win_rp.json: HTTP 404",
+   "[WH-T3] failed to load roger/t3_light.json: HTTP 404",
+   "[WH] select preview: bank 'roger' stance does not fit menajerii's rig (Left shoulder swung 2.23 rad in the source clip itself) \u2014 falling back"
+  ]
+ },
+ "star": {
+  "id": "star",
+  "model": "star-attire1",
+  "bones": 50,
+  "stance": true,
+  "stanceSource": "tekken-bank",
+  "framed": true,
+  "bank": "xiaoyu",
+  "armDeg": {
+   "L": 38,
+   "R": 84
+  },
+  "gateWarns": []
+ },
+ "negativo": {
+  "id": "negativo",
+  "model": "negativo-attire1",
+  "bones": 50,
+  "stance": true,
+  "stanceSource": "tekken-bank",
+  "framed": true,
+  "bank": "bryan",
+  "armDeg": {
+   "L": 17,
+   "R": 17
+  },
+  "gateWarns": []
+ },
+ "purplerain": {
+  "id": "purplerain",
+  "model": "purple-rain",
+  "bones": 73,
+  "stance": true,
+  "stanceSource": "tekken-bank",
+  "framed": true,
+  "bank": "jin",
+  "armDeg": {
+   "L": 19,
+   "R": 32
+  },
+  "gateWarns": []
+ },
+ "awapop": {
+  "id": "awapop",
+  "model": "awa-pop-attire2",
+  "bones": 73,
+  "stance": true,
+  "stanceSource": "cmu-14_01",
+  "framed": true,
+  "bank": "nina",
+  "armDeg": {
+   "L": 23,
+   "R": 12
+  },
+  "gateWarns": [
+   "[WH] select preview: bank 'nina' stance does not fit awapop's rig (Left shoulder swung 0.85 rad in the source clip itself) \u2014 falling back"
+  ]
+ }
+}

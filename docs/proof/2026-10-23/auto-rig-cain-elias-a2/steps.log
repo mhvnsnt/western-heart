@@ -1,0 +1,202 @@
+$ node /home/hatch/workspace/wave2-work/tmp/wh-rig-vtwoq5f_/codec/gltf_codec.mjs decode roster/cain-elias/attires/attire2/model.glb /home/hatch/workspace/wave2-work/tmp/wh-rig-vtwoq5f_/decoded.glb
+decode ok -> /home/hatch/workspace/wave2-work/tmp/wh-rig-vtwoq5f_/decoded.glb
+
+$ xvfb-run -a env -u PYTHONPATH XDG_RUNTIME_DIR=/tmp /home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/blender -b --factory-startup --python-exit-code 1 --python /home/hatch/workspace/wave2-work/wh/tools/auto_rig/backends/gamerig_backend.py -- --in /home/hatch/workspace/wave2-work/tmp/wh-rig-vtwoq5f_/decoded.glb --out /home/hatch/workspace/wave2-work/tmp/wh-rig-vtwoq5f_/rigged.glb --height 2.0 --donor /home/hatch/workspace/wave2-work/wh/assets/free-pull-1/cmu-mocap/fighting/135_04.bvh --clip CMU135_04_boxing --clip-start 240 --clip-frames 72 --clip-step 4 --metrics-out docs/proof/2026-10-23/auto-rig-cain-elias-a2/gamerig_metrics.json
+NT"].targets[4].weight[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-upper_arm_ik_target.parent.L"].constraints["SWITCH_PARENT"].targets[3].weight[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-upper_arm_ik_target.parent.L"].constraints["SWITCH_PARENT"].targets[2].weight[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-upper_arm_ik_target.parent.L"].constraints["SWITCH_PARENT"].targets[1].weight[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-upper_arm_ik_target.parent.L"].constraints["SWITCH_PARENT"].targets[0].weight[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-hand_ik.parent.L"].constraints["SWITCH_PARENT"].targets[5].weight[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-hand_ik.parent.L"].constraints["SWITCH_PARENT"].targets[4].weight[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-hand_ik.parent.L"].constraints["SWITCH_PARENT"].targets[3].weight[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-hand_ik.parent.L"].constraints["SWITCH_PARENT"].targets[2].weight[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-hand_ik.parent.L"].constraints["SWITCH_PARENT"].targets[1].weight[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-hand_ik.parent.L"].constraints["SWITCH_PARENT"].targets[0].weight[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-torso.parent"].constraints["SWITCH_PARENT"].targets[0].weight[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["ORG-toe.R"].constraints["Copy Transforms.001"].influence[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["ORG-foot.R"].constraints["Copy Transforms.001"].influence[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["ORG-shin.R"].constraints["Copy Transforms.001"].influence[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["ORG-thigh.R"].constraints["Copy Transforms.001"].influence[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-shin_ik.R"].constraints["IK.001"].mute[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-shin_ik.R"].constraints["IK"].mute[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-thigh_ik_target.R"].constraints["Limit Distance"].influence[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-thigh_parent.R"].constraints["Copy Rotation"].influence[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["ORG-toe.L"].constraints["Copy Transforms.001"].influence[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["ORG-foot.L"].constraints["Copy Transforms.001"].influence[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["ORG-shin.L"].constraints["Copy Transforms.001"].influence[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["ORG-thigh.L"].constraints["Copy Transforms.001"].influence[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-shin_ik.L"].constraints["IK.001"].mute[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-shin_ik.L"].constraints["IK"].mute[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-thigh_ik_target.L"].constraints["Limit Distance"].influence[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-thigh_parent.L"].constraints["Copy Rotation"].influence[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-ROT-head"].constraints["Copy Rotation"].influence[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-ROT-neck"].constraints["Copy Rotation"].influence[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-f_pinky.03_drv.R"].rotation_euler[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-f_pinky.02_drv.R"].rotation_euler[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-f_ring.03_drv.R"].rotation_euler[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-f_ring.02_drv.R"].rotation_euler[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-f_middle.03_drv.R"].rotation_euler[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-f_middle.02_drv.R"].rotation_euler[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-thumb.03_drv.R"].rotation_euler[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-thumb.02_drv.R"].rotation_euler[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-f_index.03_drv.R"].rotation_euler[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-f_index.02_drv.R"].rotation_euler[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["ORG-hand.R"].constraints["Copy Transforms.001"].influence[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["ORG-forearm.R"].constraints["Copy Transforms.001"].influence[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["ORG-upper_arm.R"].constraints["Copy Transforms.001"].influence[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-forearm_ik.R"].constraints["IK.001"].mute[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-forearm_ik.R"].constraints["IK"].mute[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-upper_arm_ik_target.R"].constraints["Limit Distance"].influence[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-upper_arm_parent.R"].constraints["Copy Rotation"].influence[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-f_pinky.03_drv.L"].rotation_euler[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-f_pinky.02_drv.L"].rotation_euler[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-f_ring.03_drv.L"].rotation_euler[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-f_ring.02_drv.L"].rotation_euler[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-f_middle.03_drv.L"].rotation_euler[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-f_middle.02_drv.L"].rotation_euler[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-thumb.03_drv.L"].rotation_euler[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-thumb.02_drv.L"].rotation_euler[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-f_index.03_drv.L"].rotation_euler[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-f_index.02_drv.L"].rotation_euler[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["ORG-hand.L"].constraints["Copy Transforms.001"].influence[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["ORG-forearm.L"].constraints["Copy Transforms.001"].influence[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["ORG-upper_arm.L"].constraints["Copy Transforms.001"].influence[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-upper_arm_parent.L"].constraints["Copy Rotation"].influence[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-forearm_ik.L"].constraints["IK.001"].mute[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-forearm_ik.L"].constraints["IK"].mute[0]
+WARN (bke.anim_sys): source/blender/blenkernel/intern/anim_sys.cc:4203 BKE_animsys_eval_driver: invalid driver - pose.bones["MCH-upper_arm_ik_target.L"].constraints["Limit Distance"].influence[0]
+multiple addons with the same name:
+  '/home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/4.0/scripts/addons/DragonFF/__init__.py'
+  '/home/hatch/.config/blender/4.0/scripts/addons/DragonFF/__init__.py'
+multiple addons with the same name:
+  '/home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/4.0/scripts/addons/SourceIO/__init__.py'
+  '/home/hatch/.config/blender/4.0/scripts/addons/SourceIO/__init__.py'
+multiple addons with the same name:
+  '/home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/4.0/scripts/addons/fspy_blender/__init__.py'
+  '/home/hatch/.config/blender/4.0/scripts/addons/fspy_blender/__init__.py'
+multiple addons with the same name:
+  '/home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/4.0/scripts/addons/DragonFF/__init__.py'
+  '/home/hatch/.config/blender/4.0/scripts/addons/DragonFF/__init__.py'
+multiple addons with the same name:
+  '/home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/4.0/scripts/addons/SourceIO/__init__.py'
+  '/home/hatch/.config/blender/4.0/scripts/addons/SourceIO/__init__.py'
+multiple addons with the same name:
+  '/home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/4.0/scripts/addons/fspy_blender/__init__.py'
+  '/home/hatch/.config/blender/4.0/scripts/addons/fspy_blender/__init__.py'
+registering <class 'rigify.feature_sets.gamerig.gamerig_generate.GAMERIG_OT_generate'>
+Reloading external rigs...
+Reloading external metarigs...
+Reloading external rigs...
+Reloading external metarigs...
+Data are loaded, start creating Blender stuff
+glTF import finished in 8.71s
+Fetch rig.
+Clear rig animation data.
+Create widgets collection: 0.001
+Duplicate rig: 0.007
+Instantiate rigs: 0.001
+Initialize rigs: 0.001
+Prepare bones: 0.002
+Generate bones: 0.021
+Parent bones: 0.017
+Configure bones: 0.015
+Preapply bones: 0.005
+Apply bones: 0.003
+Rig bones: 0.022
+Generate widgets: 0.021
+Assign layers: 0.020
+Finalize: 0.035
+The rest: 0.023
+Info: 868917 vertex weights limited
+	parsing bvh '/home/hatch/workspace/wave2-work/wh/assets/free-pull-1/cmu-mocap/fighting/135_04.bvh'...	zero length node found: Hips
+0.0700
+	importing to blender...	zero length bone found: Spine1
+	zero length bone found: LeftHand
+	zero length bone found: RightHand
+Done in 0.3452
+
+16:28:10 | INFO: Draco mesh compression is available, use library at /home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/4.0/python/lib/python3.10/site-packages/libextern_draco.so
+16:28:12 | INFO: Starting glTF 2.0 export
+16:28:16 | INFO: Extracting primitive: Mesh_0
+16:28:27 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+16:28:37 | INFO: Primitives created: 1
+16:31:08 | INFO: Finished glTF 2.0 export in 175.95121383666992 s
+
+GAMERIG_METRICS {"backend": "gamerig", "input": "/home/hatch/workspace/wave2-work/tmp/wh-rig-vtwoq5f_/decoded.glb", "output": "/home/hatch/workspace/wave2-work/tmp/wh-rig-vtwoq5f_/rigged.glb", "gamerig_install": "/home/hatch/.config/blender/4.0/scripts/rigify/gamerig", "game_rig_types": 27, "shim": "Generator_gamerig.create_root_bone = stock 4.0.2", "input_meshes": 1, "input_verts": 965230, "normalize": {"scale_applied": 2.0433386337417767, "yaw_deg": -83.7405172640059, "height_m": 1.9999999055216904, "span_m": 1.3325621894570077, "bbox_min": [-0.6523198825169629, -0.2521506417588171, -4.0578015614300966e-08], "bbox_max": [0.6802423069400447, 0.23894419163087832, 1.9999998649436748], "facing_source": "estimated (foot vs shin)"}, "face_bones_stripped": 92, "fit": {"metarig_scale": 1.010305088558997, "kx_arm": 1.4049882924565227, "kx_leg": 1.4, "template_height": 1.979599952697754, "template_span": 1.5784000158309937, "arm_droop_deg": {".L": 53.0, ".R": 54.0}, "a_pose": true, "leg_anchors": {".L": {"knee_x": 0.1624, "ankle_x": 0.2011}, ".R": {"knee_x": -0.1606, "ankle_x": -0.2036}}}, "metarig_bones": 67, "rig_bones_total": 410, "def_bones": 73, "def_bones_with_nondef_parent": [], "strip": {"kept_def_bones": 73, "removed_control_bones": 337}, "heat_proxy": {"verts": 200000, "voxel": 0.008, "faces": 48000}, "unweighted_fixed": 0, "heat_proxy_stats": [{"voxel_m": 0.008, "faces_remeshed": 80624, "faces_proxy_after_decimate": 47999, "proxy_verts": 24002, "unweighted_proxy_verts": 0, "mesh_scale": [2.0433385372161865, 2.0433385372161865, 2.0433385372161865], "mesh_dims": [0.4683378338813782, 1.3404422998428345, 1.9999998807907104], "proxy_groups": 73, "attempts": [{"tri_target": 48000, "proxy_verts": 24002, "unweighted": 0}]}], "clip": {"action": "CMU135_04_boxing", "frames": 72, "bones": 26, "donor": "/home/hatch/workspace/wave2-work/wh/assets/free-pull-1/cmu-mocap/fighting/135_04.bvh"}, "renamed_joints": {"DEF-spine": "Hips", "DEF-spine.001": "Spine", "DEF-spine.002": "Spine1", "DEF-spine.003": "Spine2", "DEF-breast.L": "LeftBreast", "DEF-breast.R": "RightBreast", "DEF-shoulder.L": "LeftShoulder", "DEF-upper_arm.L": "LeftArm", "DEF-upper_arm.L.001": "LeftArm.001", "DEF-forearm.L": "LeftForeArm", "DEF-forearm.L.001": "LeftForeArm.001", "DEF-hand.L": "LeftHand", "DEF-palm.01.L": "LeftHandPalm1", "DEF-f_index.01.L": "LeftHandIndex1", "DEF-f_index.02.L": "LeftHandIndex2", "DEF-f_index.03.L": "LeftHandIndex3", "DEF-thumb.01.L": "LeftHandThumb1", "DEF-thumb.02.L": "LeftHandThumb2", "DEF-thumb.03.L": "LeftHandThumb3", "DEF-palm.02.L": "LeftHandPalm2", "DEF-f_middle.01.L": "LeftHandMiddle1", "DEF-f_middle.02.L": "LeftHandMiddle2", "DEF-f_middle.03.L": "LeftHandMiddle3", "DEF-palm.03.L": "LeftHandPalm3", "DEF-f_ring.01.L": "LeftHandRing1", "DEF-f_ring.02.L": "LeftHandRing2", "DEF-f_ring.03.L": "LeftHandRing3", "DEF-palm.04.L": "LeftHandPalm4", "DEF-f_pinky.01.L": "LeftHandPinky1", "DEF-f_pinky.02.L": "LeftHandPinky2", "DEF-f_pinky.03.L": "LeftHandPinky3", "DEF-shoulder.R": "RightShoulder", "DEF-upper_arm.R": "RightArm", "DEF-upper_arm.R.001": "RightArm.001", "DEF-forearm.R": "RightForeArm", "DEF-forearm.R.001": "RightForeArm.001", "DEF-hand.R": "RightHand", "DEF-palm.01.R": "RightHandPalm1", "DEF-f_index.01.R": "RightHandIndex1", "DEF-f_index.02.R": "RightHandIndex2", "DEF-f_index.03.R": "RightHandIndex3", "DEF-thumb.01.R": "RightHandThumb1", "DEF-thumb.02.R": "RightHandThumb2", "DEF-thumb.03.R": "RightHandThumb3", "DEF-palm.02.R": "RightHandPalm2", "DEF-f_middle.01.R": "RightHandMiddle1", "DEF-f_middle.02.R": "RightHandMiddle2", "DEF-f_middle.03.R": "RightHandMiddle3", "DEF-palm.03.R": "RightHandPalm3", "DEF-f_ring.01.R": "RightHandRing1", "DEF-f_ring.02.R": "RightHandRing2", "DEF-f_ring.03.R": "RightHandRing3", "DEF-palm.04.R": "RightHandPalm4", "DEF-f_pinky.01.R": "RightHandPinky1", "DEF-f_pinky.02.R": "RightHandPinky2", "DEF-f_pinky.03.R": "RightHandPinky3", "DEF-spine.004": "Neck", "DEF-spine.005": "Head", "DEF-spine.006": "HeadTop", "DEF-pelvis.L": "LeftPelvis", "DEF-pelvis.R": "RightPelvis", "DEF-thigh.L": "LeftUpLeg", "DEF-thigh.L.001": "LeftUpLeg.001", "DEF-shin.L": "LeftLeg", "DEF-shin.L.001": "LeftLeg.001", "DEF-foot.L": "LeftFoot", "DEF-toe.L": "LeftToeBase", "DEF-thigh.R": "RightUpLeg", "DEF-thigh.R.001": "RightUpLeg.001", "DEF-shin.R": "RightLeg", "DEF-shin.R.001": "RightLeg.001", "DEF-foot.R": "RightFoot", "DEF-toe.R": "RightToeBase"}, "joint_count": 73, "joints": ["Hips", "Spine", "Spine1", "Spine2", "LeftBreast", "RightBreast", "LeftShoulder", "LeftArm", "LeftArm.001", "LeftForeArm", "LeftForeArm.001", "LeftHand", "LeftHandPalm1", "LeftHandIndex1", "LeftHandIndex2", "LeftHandIndex3", "LeftHandThumb1", "LeftHandThumb2", "LeftHandThumb3", "LeftHandPalm2", "LeftHandMiddle1", "LeftHandMiddle2", "LeftHandMiddle3", "LeftHandPalm3", "LeftHandRing1", "LeftHandRing2", "LeftHandRing3", "LeftHandPalm4", "LeftHandPinky1", "LeftHandPinky2", "LeftHandPinky3", "RightShoulder", "RightArm", "RightArm.001", "RightForeArm", "RightForeArm.001", "RightHand", "RightHandPalm1", "RightHandIndex1", "RightHandIndex2", "RightHandIndex3", "RightHandThumb1", "RightHandThumb2", "RightHandThumb3", "RightHandPalm2", "RightHandMiddle1", "RightHandMiddle2", "RightHandMiddle3", "RightHandPalm3", "RightHandRing1", "RightHandRing2", "RightHandRing3", "RightHandPalm4", "RightHandPinky1", "RightHandPinky2", "RightHandPinky3", "Neck", "Head", "HeadTop", "LeftPelvis", "RightPelvis", "LeftUpLeg", "LeftUpLeg.001", "LeftLeg", "LeftLeg.001", "LeftFoot", "LeftToeBase", "RightUpLeg", "RightUpLeg.001", "RightLeg", "RightLeg.001", "RightFoot", "RightToeBase"]}
+GAMERIG_OK /home/hatch/workspace/wave2-work/tmp/wh-rig-vtwoq5f_/rigged.glb
+
+Blender quit
+Error: Not freed memory blocks: 430, total unfreed memory 0.009842 MB
+
+$ /usr/bin/python3 /home/hatch/workspace/wave2-work/wh/tools/auto_rig/backends/smooth_weights.py --in /home/hatch/workspace/wave2-work/tmp/wh-rig-vtwoq5f_/rigged.glb --threshold 2.0 --rounds 12 --frames-per-clip 10 --gate 2.5
+clip CMU135_04_boxing: 10 sampled frames
+bind-consistency max dev: 4.43e-07 m
+round 0: edge p99.9 = 15.18 (edges > 2.0: {0: 41})
+  prim 0: averaged 81 verts
+round 1: edge p99.9 = 5.43 (edges > 2.0: {0: 1})
+  prim 0: averaged 2 verts
+round 2: edge p99.9 = 3.09 (edges > 2.0: {0: 1})
+  prim 0: averaged 2 verts
+round 3: edge p99.9 = 1.64 (edges > 2.0: {0: 0})
+SMOOTH_OK — no edges above threshold
+smooth complete
+
+$ xvfb-run -a env -u PYTHONPATH XDG_RUNTIME_DIR=/tmp /home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/blender -b --factory-startup --python-exit-code 1 --python /home/hatch/workspace/wave2-work/wh/tools/auto_rig/render_poses.py -- /home/hatch/workspace/wave2-work/tmp/wh-rig-vtwoq5f_/rigged.glb /home/hatch/workspace/wave2-work/tmp/wh-rig-vtwoq5f_/poses 0.0,0.17,0.33
+Blender 4.0.2 (hash 9be62e85b727 built 2023-12-05 08:48:50)
+Saved: '/home/hatch/workspace/wave2-work/tmp/wh-rig-vtwoq5f_/poses/pose_t0.00_front.png'
+Time: 00:20.76 (Saving: 00:00.21)
+
+Saved: '/home/hatch/workspace/wave2-work/tmp/wh-rig-vtwoq5f_/poses/pose_t0.00_back.png'
+Time: 00:09.28 (Saving: 00:00.08)
+
+Saved: '/home/hatch/workspace/wave2-work/tmp/wh-rig-vtwoq5f_/poses/pose_t0.00_side.png'
+Time: 00:10.99 (Saving: 00:00.08)
+
+Saved: '/home/hatch/workspace/wave2-work/tmp/wh-rig-vtwoq5f_/poses/pose_t0.17_front.png'
+Time: 00:10.04 (Saving: 00:00.09)
+
+Saved: '/home/hatch/workspace/wave2-work/tmp/wh-rig-vtwoq5f_/poses/pose_t0.17_back.png'
+Time: 00:09.20 (Saving: 00:00.13)
+
+Saved: '/home/hatch/workspace/wave2-work/tmp/wh-rig-vtwoq5f_/poses/pose_t0.17_side.png'
+Time: 00:09.43 (Saving: 00:00.13)
+
+Saved: '/home/hatch/workspace/wave2-work/tmp/wh-rig-vtwoq5f_/poses/pose_t0.33_front.png'
+Time: 00:08.95 (Saving: 00:00.08)
+
+Saved: '/home/hatch/workspace/wave2-work/tmp/wh-rig-vtwoq5f_/poses/pose_t0.33_back.png'
+Time: 00:10.09 (Saving: 00:00.09)
+
+Saved: '/home/hatch/workspace/wave2-work/tmp/wh-rig-vtwoq5f_/poses/pose_t0.33_side.png'
+Time: 00:09.12 (Saving: 00:00.10)
+
+multiple addons with the same name:
+  '/home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/4.0/scripts/addons/DragonFF/__init__.py'
+  '/home/hatch/.config/blender/4.0/scripts/addons/DragonFF/__init__.py'
+multiple addons with the same name:
+  '/home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/4.0/scripts/addons/SourceIO/__init__.py'
+  '/home/hatch/.config/blender/4.0/scripts/addons/SourceIO/__init__.py'
+multiple addons with the same name:
+  '/home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/4.0/scripts/addons/fspy_blender/__init__.py'
+  '/home/hatch/.config/blender/4.0/scripts/addons/fspy_blender/__init__.py'
+multiple addons with the same name:
+  '/home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/4.0/scripts/addons/DragonFF/__init__.py'
+  '/home/hatch/.config/blender/4.0/scripts/addons/DragonFF/__init__.py'
+multiple addons with the same name:
+  '/home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/4.0/scripts/addons/SourceIO/__init__.py'
+  '/home/hatch/.config/blender/4.0/scripts/addons/SourceIO/__init__.py'
+multiple addons with the same name:
+  '/home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/4.0/scripts/addons/fspy_blender/__init__.py'
+  '/home/hatch/.config/blender/4.0/scripts/addons/fspy_blender/__init__.py'
+Data are loaded, start creating Blender stuff
+glTF import finished in 17.96s
+POSE_DONE
+
+Blender quit
+
+$ node /home/hatch/workspace/wave2-work/tmp/wh-rig-vtwoq5f_/codec/gltf_codec.mjs encode /home/hatch/workspace/wave2-work/tmp/wh-rig-vtwoq5f_/rigged.glb roster/cain-elias/attires/attire2/model-rigged.glb
+prune: Removed types... Accessor (6)
+prune: Removed types... Skin (1), Accessor (5)
+encode ok -> roster/cain-elias/attires/attire2/model-rigged.glb
+

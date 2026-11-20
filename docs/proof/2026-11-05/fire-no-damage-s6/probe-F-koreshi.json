@@ -1,0 +1,161 @@
+{
+ "fighter": "koreshi",
+ "base": "http://127.0.0.1:8906/game/",
+ "ready": true,
+ "rows": [
+  {
+   "n": "1",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:43",
+   "kind": "own",
+   "why": "",
+   "timing": {
+    "S": 0.183,
+    "A": 0.033,
+    "t0": 0.15,
+    "t1": 0.15,
+    "D": 0.633,
+    "src": "decoded"
+   },
+   "moveDmg": 11,
+   "hitWord": 535,
+   "isGrab": false,
+   "atkName": "1",
+   "hasHit": true,
+   "distAtHit": 1.47,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 10.1,
+   "hits": [
+    {
+     "dmg": 11,
+     "word": 535,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:43",
+   "kind": "own",
+   "why": "",
+   "timing": {
+    "S": 0.183,
+    "A": 0.033,
+    "t0": 0.15,
+    "t1": 0.15,
+    "D": 0.633,
+    "src": "decoded"
+   },
+   "moveDmg": 11,
+   "hitWord": 535,
+   "isGrab": false,
+   "atkName": "1",
+   "hasHit": false,
+   "distAtHit": null,
+   "defStates": [],
+   "hpDelta": 0,
+   "hits": []
+  },
+  {
+   "n": "1+2",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:105",
+   "kind": "donor",
+   "why": "donor row 105",
+   "timing": {
+    "S": 0.167,
+    "A": 0.3,
+    "t0": 0.167,
+    "t1": 0.167,
+    "D": 0.9,
+    "src": "decoded"
+   },
+   "moveDmg": 0,
+   "hitWord": null,
+   "isGrab": false,
+   "atkName": "1+2",
+   "hasHit": true,
+   "distAtHit": 1.51,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 0,
+   "hits": [
+    {
+     "dmg": 0,
+     "word": null,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1+2",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:105",
+   "kind": "donor",
+   "why": "donor row 105",
+   "timing": {
+    "S": 0.2,
+    "A": 0.033,
+    "t0": 0.167,
+    "t1": 0.167,
+    "D": 0.9,
+    "src": "decoded"
+   },
+   "moveDmg": 36,
+   "hitWord": null,
+   "isGrab": false,
+   "atkName": "KIN.1+2",
+   "hasHit": true,
+   "distAtHit": 1.86,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 33,
+   "hits": [
+    {
+     "dmg": 36,
+     "word": null,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  }
+ ],
+ "setup": {
+  "roundState": "fight",
+  "p1id": "koreshi",
+  "t3actionsCount": 22,
+  "bank": "heihachi"
+ },
+ "logs": [
+  "[http 404] http://127.0.0.1:8906/deploy-manifest.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/index.json",
+  "[http 404] http://127.0.0.1:8906/roster/pantera/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8906/roster/koreshi/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/koreshi.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/pantera.json",
+  "[http 404] http://127.0.0.1:8906/game/js/intro-interactions.js"
+ ]
+}

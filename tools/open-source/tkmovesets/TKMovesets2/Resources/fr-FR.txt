@@ -1,0 +1,562 @@
+# Français
+# Ceci est un commentaire
+# clé = Texte
+# Chaque ligne représente une entrée différente
+# '\n' peut être utilisé pour insérer un retour à la ligne dans un paragraphe. Les espaces en début et fin des clés et textes sont supprimés.
+
+
+# Utilitaires #
+
+item = Item
+end = FIN
+yes = Oui
+no = Non
+mota_00 = Anims 1
+mota_01 = Anims 2
+mota_02 = Mains 1
+mota_03 = Mains 2
+mota_04 = Visage 1
+mota_05 = Visage 2
+mota_06 = Ailes 1
+mota_07 = Ailes 2
+mota_08 = Caméra 1
+mota_09 = Caméra 2
+mota_10 = Inconnu 1
+mota_11 = Inconnu 2
+close = Fermer
+close_window = Fermer fenêtre
+1p = Joueur 1
+2p = Joueur 2
+3p = Joueur 3
+4p = Joueur 4
+select_game = Sélectionner un jeu
+hash = Hachage
+
+# Processus #
+
+process.status = Status:
+process.game_not_attached = Sélectionnez un jeu.
+process.game_not_running = Le jeu n'est pas lancé ou n'a pas pu être trouvé.
+process.game_version_mismatch = La version actuelle du jeu n'est pas compatible avec ce logiciel.
+process.game_attach_err = Jeu trouvé mais impossible de s'y attacher. Cela peut être causé par un manque de droits du processus.
+process.dll_version_mismatch = La version DLL injectée dans le jeu ne correspond pas à la version du programme. Redémarrez le jeu et ce logiciel.
+
+# Moveset #
+moveset.origin = Origine
+moveset.target_character = Personnage cible
+moveset.original_character = Personnage original
+moveset.date = Date
+moveset.extraction_date = Date d'extraction
+moveset.invalid = INVALIDE
+moveset.size = Taille
+moveset.size_mb = MO
+moveset.size_kb = KO
+moveset.rename = Renommer
+moveset.convert = Convertir
+moveset.duplicate = Dupliquer
+moveset.import = Importer
+moveset.edit = Modifier
+moveset.delete = Suppr.
+moveset.version = Version
+persistent.hash = Hachage
+
+## Principal ##
+
+# Navmenu #
+navmenu.category_moveset = Personnages
+navmenu.category_play = Jouer
+navmenu.extraction = Extraction
+navmenu.import = Importation
+navmenu.online = Jeu en ligne
+navmenu.persistent_play = Jeu persistant
+
+navmenu.category_tools = Outils
+navmenu.moveset_edit = Modif. de perso
+navmenu.camera = Caméra
+
+navmenu.category_other = Autre
+navmenu.documentation = Documentation
+navmenu.about = À propos
+
+settings.general = Paramètres généraux
+settings.language = Langue
+settings.vsync = Synchro verticale
+settings.vsync_explanation = Peut être utile dans le cas où ce logiciel utilise trop de ressources graphiques.
+settings.file_association = Associer .tkmvst / .tkanimXX
+settings.file_association_explanation = Associe les fichiers movesets (.tkmvst) et d'animations avec ce logiciel.\nExécuter ces fichiers les copiera dans les dossiers de ce logiciel automatiquement.
+settings.auto_update_check = Avertir mises à jour
+settings.auto_addr_update_check = Mise à jour addr. auto
+settings.importation = Paramètres d'importation
+settings.apply_instantly = Appliquer instantanément
+settings.apply_instantly_explanation = Désactiver ceci indiquera au jeu de transitionner vers le nouveau personnage de manière lente, attendant la fin de votre animation actuelle.\nCela peut prendre du temps, alors préférez laisser cette option activée.
+settings.free_unused_movesets = Déallouer les personnages non-utilisés
+settings.free_unused_movesets_explanation = Si activé, les personnages anciennements importés mais maintenant inutilisés seront déalloués de la mémoire, vous économisant de la mémoire vive.
+settings.exportation = Paramètres d'exportation
+settings.overwrite_duplicate = Écraser les personnages avec un nom identique
+settings.overwrite_explanation = Activer pour écraser les personnages présents si ceux extraits ont le même nom.\nDésactiver pour que le conflit de nom soit résolu avec des suffixes.\nExemple: T7_JIN (2)
+settings.keybinds = Raccourcis clavier
+settings.keybind_rebind = Modifier
+settings.reset_keybinds = Réinitialiser les raccourcis
+settings.finish_keybind = Terminer le raccourci
+
+keybind_editor.import_p1 = Importer sur J1
+keybind_editor.import_p2 = Importer sur J2
+keybind_editor.import_both = Importer sur J1 & J2
+keybind_editor.save = Sauvegarder
+keybind_editor.change_data_type = Changer le type
+
+sidemenu.settings = Paramètres
+sidemenu.up_to_date = À jour
+sidemenu.updated_addr = Addresses à jour !
+sidemenu.update_check = Vérification...
+sidemenu.update = Mettre à jour
+sidemenu.update_error = MÀJ Erreur 
+sidemenu.update_explanation = Une mise à jour a été trouvée.\nVoulez-vous la télécharger et relancer le programme maintenant ?
+sidemenu.update_bad_file = La mise à jour n'a pas pu s'effectuer automatiquement.\nMettez à jour manuellement.
+
+sidemenu.changelog = Changements
+
+## Sous-menus ##
+
+# Extraction #
+extraction.explanation = Les personnages doivent d'abord se faire extraire du jeu pour être utilisés. N'extrait que les animations/mouvements : pas les modèles, effets visuels, audio, etc.\nL'extraction est faite depuis la mémoire avec le jeu lancé, en ayant les personnages chargés et visibles à l'écran (le mode de jeu n'importe pas).\nIdéalement, les personnages devraient rester immobile pendant l'extraction (ou jeu en pause).
+extraction.extraction = Extraction
+extraction.extract = Extraire
+extraction.extract_all = Extraire (tout)
+extraction.extract_from = Extraire depuis:
+extraction.progress = Progrès: (%u%%)
+extraction.progress_error = Erreur (%u%%)
+extraction.progress_done = Progrès: Fini !
+extraction.extracted_movesets = Personnages extraits 
+extraction.cant_extract = Impossible d'extraire car aucun personnage chargé.
+extraction.error_file_creation = Il y a eu une erreur lors de la création du fichier du personnage
+extraction.error_compression = Il y a eu une erreur lors de la compression
+extraction.error_allocation = Il y a eu une erreur d'allocation lors de la copie des données du personnage
+extraction.mota_explanation = Animations additionnelles 
+extraction.settings = Paramètres d'extraction
+extraction.settings.other = Autre
+extraction.settings.compress_moveset = Compresser le fichier
+extraction.settings.displayable_movelist = Liste des coups
+extraction.settings.compression_type = Type de compression
+extraction.settings.compression_type.none = Pas de compression
+extraction.settings.extract_unsupported_motas = Extraire les MOTAs non-supportés
+
+# Importation #
+importation.explanation = Après que les personnages aient été extraits, ils peuvent être chargés dans une partie en cours (ne doit pas être en ligne) à l'aide de ce sous-menu. Les personnages chargés ici seront dé-chargés dès le passage par un écran de chargement, alors préférez utiliser ce sous-menu dans le mode entraînement.\nPour le jeu en ligne, allez dans la section appropriée.
+importation.importation = Importation
+importation.select_moveset = Choisissez le personnage à importer
+importation.cant_import = Impossible d'importer car pas dans une partie active (mode entraînement, mode histoire, etc...)
+importation.import_to = Importer sur :
+importation.progress = Progrès: (%u%%)
+importation.progress_error = Erreur (%u%%)
+importation.progress_done = Progrès: Fini !
+importation.error_file_reading = Il y a eu une erreur lors de la création du fichier du personnage
+importation.error_allocation = Il y a eu une erreur d'allocation lors de lecture des données du personnage
+importation.error_game_allocation = Il y a eu une erreur d'allocation dans le jeu lors de l'écriture des données du personnage
+importation.error_decompression = Il y a eu une erreur lors de la decompression
+
+# Jeu persistant #
+persistent.explanation = Le mode persistant permet de sélectionner deux moveset et de les garder appliqués à travers les écrans de chargement et différents modes de jeu.\nSi le joueur distant possède aussi ce programme, ce menu peut être utilisé pour jouer en ligne: il faudra alors que vous et le joueur disant possédiez tous les deux les movesets à appliquer sur l'un et l'autre. Appliquez ensuite votre moveset (ou aucun) sur 'Joueur 1', et son moveset (ou aucun) sur 'Joueur 2', puis verrouillez.
+persistent.player_1 = Joueur 1:
+persistent.player_2 = Joueur 2:
+persistent.player_3 = Joueur 3:
+persistent.player_4 = Joueur 4:
+persistent.none = Aucun personnage
+persistent.lock = Verrouiller les personnages
+persistent.unlock = Déverrouiller
+persistent.hash = Hachage:
+persistent.select_moveset = Sélectionner personnage
+persistent.clear_moveset = Enlever personnage
+
+# Jeu en ligne #
+online.explanation = Le jeu en ligne nécessite que les deux joueurs possèdent cet outil de lancé.\nVous devez chacun de vôtre côté selectionner un personnage à charger (ou aucun) avant le chargement du match, cet outil se chargera de synchroniser les personnages que vous avez modifié.\nLes moveset personnalisés ne seront pas chargés si vous ou l'adversaire n'avez pas cet outil de lancé, ou si un de vous deux n'a pas verrouillé sa selection dans cet outil.
+online.select_moveset = Sélectionner un personnage
+online.no_selected_moveset = Pas de personnage selectionné
+online.dll_not_loaded = DLL non-chargée, injectez la
+online.inject_dll = Injecter
+online.injecting_dll = Injection...
+online.select_moveset = Sélectionner
+online.selected_moveset = Sélectionné:
+online.lock_to_play = Verrouillez votre sélection pour jouer.
+
+# Modification de moveset : Renommage #
+edition.rename.new_moveset_name = Nouveau nom
+edition.rename.empty_name = Nom est vide
+edition.rename.already_exists = Le nom est déjà utilisé par un autre fichier
+edition.rename.rename_err = Erreur lors du renommage
+edition.rename.invalid_name = Le nom contient des charactères invalide. (/\|<>:"?*)
+edition.convert.format_target = Format cible
+
+# Modifcation de moveset #
+edition.explanation = Vous pouvez ici modifier les personnage extraits. Consultez la documentation pour les information utiles et les tutoriels.\nActivez le mode 'Prévisualisation directe' pour rapidement modifier le personnage choisi : Les petits changement seront immédiatement appliqués dans le jeu, sans temps de chargement.
+edition.select_moveset = Choisissez un personnage
+edition.last_saved = Dernière sauvegarde le:
+edition.save = Sauvegarder
+edition.saving_error = Err. de sauvegarde
+edition.discard_changes = Abandonner les changements ?\nSi l'édition en direct est activée, cela ne remettra pas la structure dans son état original en jeu.
+edition.process_err = Erreur
+edition.live_edition = Édition en direct
+edition.live_edition_explanation = Les petites modifications telles que les simples changements de valeur peuvent être appliquées directement en jeu, sans nécéssiter une nouvelle importation.\nAjouter/supprimer des éléments d'une liste ou toute action agrandissant le moveset nécessitera une ré-importation.
+edition.move_name = Nom
+edition.move_generic_id = Alias
+edition.moves_all = Tout
+edition.moves_attacks = Attaques
+edition.moves_generic = Génériques
+edition.moves_throws = Prises
+edition.moves_custom = Crées
+edition.moves_char_specific = Personnage
+edition.move_id_hint = ID/Nom...
+edition.move_current = Actuel
+edition.move_current_1p = Actuel (P1)
+edition.move_current_2p = Actuel (P2)
+edition.play_move_1p = Lancer (J1)
+edition.play_move_2p = Lancer (J2)
+edition.window_title = Édition
+edition.apply = Appliquer
+edition.window_controls_explanation = Cliquez sur un Move dans la liste des moves pour ouvrir sa fenêtre associée. Elle viendra écraser toute fenêtre précédemment ouverte, sauf si cette ancienne fenêtre contient du contenu non-sauvegardé OU si vous maintenez CTRL GAUCHE avant de cliquer. Les fenêtres ouvertes peuvent être déplacées où vous le souhaitez, peuvent être assemblées et il est possible de les positionner de diverses manières.
+
+edition.tools = Outils
+edition.extract_animations = Extraire animations
+edition.extract_animations_finished = Extraction d'animation terminée !
+edition.animation_extraction.extraction_status = Status de l'extraction
+edition.animation_extraction.not_started = Pas commencé
+edition.animation_extraction.skipped = Passé
+edition.animation_extraction.skipped_exists = Existe
+edition.animation_extraction.error = Erreur
+edition.animation_extraction.interrupt = Interrompre
+edition.open_characters_directory = Ouvrir le dossier des personnages
+edition.open_editor_library = Ouvrir la bibliothèque de l'éditeur
+edition.open_editor_backups = Ouvrir les sauvegardes auto de l'éditeur
+edition.refresh_movesets = Rafraîchir la liste
+
+edition.form_popup.copy_structure_clipboard = Copier la structure
+edition.form_popup.copy_single_item_clipboard = Copier un seul élément
+edition.form_popup.paste_structure_clipboard = Coller la structure
+edition.form_popup.duplicate_structure = Dupliquer la structure
+edition.form_popup.delete_structure = Supprimer la structure
+edition.form_popup.what_references_this_move = Quelles structures utilisent ce Move ?
+edition.form_popup.what_references_this_cancel = Quelles structures utilisent cette liste de Cancel ?
+edition.form_popup.deletion_are_you_sure = Êtes-vous sûr de vouloir supprimer cette structure ?\nIl est recommandé d'éviter de supprimer une structure en cas où elle possède de nombreuses références ailleurs.
+edition.form_popup.yes_delete = Oui, supprimez.
+
+edition.create_new = Créer 
+edition.requirement = Liste de conditions
+edition.move = Move
+edition.voiceclips = Voix
+edition.cancel_list = Liste de cancels
+edition.grouped_cancel_list = Liste de cancels groupés
+edition.cancel_extradata = Cancel extra
+edition.extra_properties = Propriété
+edition.move_begin_properties = Propriété de début
+edition.move_end_properties = Propriété de fin
+edition.hit_conditions = Liste de Hit Condition 
+edition.reactions = Réactions
+edition.pushback = Poussée
+edition.pushback_extra = Poussée: extra
+edition.input_sequence = Séquence de commande
+edition.inputs = Commande
+edition.projectile = Projectile
+edition.throw_camera = Caméra de prise
+edition.camera_data = Donnée de caméra
+edition.mvl_playable = Liste de coups: Jouable
+edition.mvl_inputs = Liste de coups: Commandes
+
+edition.update_labels = Mettre à jour les propriétés
+edition.updating_labels = Propriétés: MÀJ...
+edition.updating_labels_err = Propriétés: ERREUR
+edition.up_to_date_labels = Propriétés: À jour
+edition.updated_labels = Propriétés: Mis à jour !
+
+edition.open_movelist = Liste des coups
+
+edition.move.window_name = Move
+edition.move.category_2 = Références
+edition.move.category_3 = Extras
+edition.move.category_5 = Sans-noms
+edition.move.move_name = Nom
+edition.move.move_name.description = Nom du move, n'affecte pas le jeu.
+edition.move.anim_name = Animation
+edition.move.anim_name.description = Animation qui sera jouée par ce Move.
+edition.move.vulnerability = Vulnérabilité
+edition.move.vulnerability.description = Envers quel type d'attaque ce move sera vulnérable
+edition.move.hitlevel = Hauteur de coup
+edition.move.hitlevel.description = Determine le type d'attaque (Haut/Bas/Inbloquable/etc...)
+edition.move.transition = Transition
+edition.move.transition.description = Transition visuelle vers un autre Move à la fin de celui-ci
+edition.move.anim_len = Durée d'animation
+edition.move.hitbox_location = Emplacement de hitbox
+edition.move.hitbox_location.description = Où les hitbox (qui font des dégâts) de ce Move sont localisées
+edition.move.first_active_frame = Première image active
+edition.move.last_active_frame = Dernière image active
+edition.move.airborne_start = Aérien (début)
+edition.move.airborne_end = Aérien (fin)
+edition.move.ground_fall = "Ground fall"
+edition.move.distance = Distance
+edition.move.hit_condition_addr = ID de hit-conditions
+edition.move.hit_condition_addr.description = Dégâts / Comportement de l'adversaire après s'être fait toucher par ce Move
+edition.move.extra_properties_addr = ID de propriété
+edition.move.extra_properties_addr.description = Propriétés jouées pendant ce Move
+edition.move.move_start_extraprop_addr = ID de propriété (pré)
+edition.move.move_end_extraprop_addr = ID de propriété (post)
+edition.move.voiceclip_addr = ID de voix
+edition.move.voiceclip_addr.description = La voix jouée pendant ce move
+edition.move.cancel_addr = ID de cancel
+edition.move.cancel_addr_2 = ID de cancel 2
+edition.move.cancel_related_id_2 = ID de cancel 2 (lié)
+edition.move.cancel_addr_3 = ID de cancel 3
+edition.move.cancel_related_id_3 = ID de cancel 3 (lié)
+edition.move.cancel_addr_4 = ID de cancel 4
+edition.move.cancel_related_id_4 = ID de cancel 4 (lié)
+edition.move._0x98_int = "Facing/Extras?"
+
+edition.voiceclip.window_name = Voix
+edition.voiceclip.id = ID
+edition.voiceclip.limb_swinging = Coup raté SFX
+edition.voiceclip.hit = Coup SFX
+edition.voiceclip.end = FIN
+
+edition.extraproperty.window_name = Liste de propriété
+edition.extraproperty.starting_frame = Frame de début
+edition.extraproperty.id = ID
+edition.extraproperty.throw_camera_id = ID de caméra de prise
+edition.extraproperty.throw_camera_id.description = ID de camera
+edition.extraproperty.projectile_id = ID de projectile
+edition.extraproperty.projectile_id.description = ID du projectile à conjurer 
+edition.extraproperty.instant = INSTANTANÉ
+edition.extraproperty.every_frame = CHAQUE FRAME
+edition.extraproperty.every_nth_frame = TOUTE LES %d FRAMES
+edition.extraproperty.value_unsigned = Valeur (U32)
+edition.extraproperty.value_signed = Valeur (S32)
+edition.extraproperty.value_hex = Valeur (H32)
+edition.extraproperty.value_float = Valeur (Float)
+
+edition.move_start_extraprop.window_name = Liste de propriété de début
+edition.move_start_extraprop.requirements_addr = ID de condition
+edition.move_start_extraprop.extraprop = Propriété / Condition
+edition.move_start_extraprop.value = Valeur
+
+edition.move_end_extraprop.window_name = Liste de propriété de fin
+edition.move_end_extraprop.requirements_addr = ID de condition
+edition.move_end_extraprop.extraprop =  Propriété / Condition
+edition.move_end_extraprop.value = Valeur
+
+edition.cancel.window_name = Liste de Cancel
+edition.cancel.command = Commande
+edition.cancel.requirements_addr = ID de conditions
+edition.cancel.requirements_addr.description = ID des conditions que ce Cancel doit satisfaire pour qu'il soit exécuté.
+edition.cancel.extradata_addr = ID d'extradata
+edition.cancel.extradata_addr.description = ID vers un indicateur binaire spécifiant des propriétés à ce cancel (garder la frame actuelle, autoguidage)
+edition.cancel.detection_start = Début de détection
+edition.cancel.detection_start.description = 1ère frame où ce Cancel sera détecté (commande & conditions valides)
+edition.cancel.detection_end = Fin de détection
+edition.cancel.detection_end.description = Dernière frame où ce Cancel sera détecté
+edition.cancel.starting_frame = Frame de commencement
+edition.cancel.starting_frame.description = 1ère frame ou ce Cancel pourra commencer, si il a été détecté au préalable.
+edition.cancel.move_id = ID de move
+edition.cancel.group_id = ID de cancel de groupe
+edition.cancel.group_id.description = ID du groupe de Cancel référencé par ce Cancel
+edition.cancel.sequence_id = ID de sequence
+edition.cancel.cancel_option = Option de cancel
+edition.cancel.invalid_sequence_id = ID invalide
+
+edition.grouped_cancel.window_name = Liste de Cancel groupés
+edition.grouped_cancel.command = Commande
+edition.grouped_cancel.requirements_addr = ID de conditions
+edition.grouped_cancel.requirements_addr.description = ID des conditions que ce Cancel doit satisfaire pour qu'il soit exécuté.
+edition.grouped_cancel.extradata_addr = ID d'extradata
+edition.grouped_cancel.extradata_addr.description = ID vers un indicateur binaire spécifiant des propriétés à ce cancel (garder la frame actuelle, autoguidage)
+edition.grouped_cancel.detection_start = Début de détection
+edition.grouped_cancel.detection_start.description = 1ère frame où ce Cancel sera détecté (commande & conditions valides)
+edition.grouped_cancel.detection_end = Fin de détection
+edition.grouped_cancel.detection_end.description = Dernière frame où ce Cancel sera détecté
+edition.grouped_cancel.starting_frame = Frame de commencement
+edition.grouped_cancel.starting_frame.description = 1ère frame ou ce Cancel pourra commencer, si il a été détecté au préalable.
+edition.grouped_cancel.move_id = ID de move
+edition.grouped_cancel.cancel_option = Option de cancel
+
+edition.cancel_extra.window_name = Cancel extra
+edition.cancel_extra.value = Valeur
+
+edition.requirement.window_name = Liste de condition
+edition.requirement.condition = Condition
+edition.requirement.condition.description = ID de la condition qui doit être remplie
+edition.requirement.param_unsigned = Paramètre
+edition.requirement.param_float = Paramètre (Float)
+
+edition.hit_condition.window_name = Liste de Hit-condition
+edition.hit_condition.requirements_addr = ID de conditions
+edition.hit_condition.requirements_addr.description = ID dees conditions qui doivent être remplies pour que ce Hit-condition puisse se déclencher
+edition.hit_condition.damage = Damage
+edition.hit_condition.reactions_addr = Réactions ID
+edition.hit_condition.reactions_addr.description = ID des réactions qui determineront le comportement de l'adversaire après être touché / avoir bloqué
+
+edition.reactions.window_name = Réactions
+edition.reactions.category_1 = Pushback ID
+edition.reactions.category_3 = IDs de move
+edition.reactions.category_5 = Direction
+edition.reactions.category_7 = Autre
+edition.reactions.front_pushback = Face
+edition.reactions.backturned_pushback = Retourné
+edition.reactions.left_side_pushback = Côté gauche
+edition.reactions.right_side_pushback = Côté droit
+edition.reactions.front_counterhit_pushback = Face (contre attaque)
+edition.reactions.downed_pushback = À terre
+edition.reactions.block_pushback = Garde
+edition.reactions.front_direction = Face
+edition.reactions.back_direction = Retourné
+edition.reactions.left_side_direction = Côté gauche
+edition.reactions.right_side_direction = Côté droit
+edition.reactions.front_counterhit_direction = Face (contre attaque)
+edition.reactions.downed_direction = À terre
+edition.reactions.0x44_long = _0x44_long
+edition.reactions.vertical_pushback = Poussée verticale
+edition.reactions.standing_moveid = Debout
+edition.reactions.default_moveid = Générique
+edition.reactions.crouch_moveid = Accroupi
+edition.reactions.counterhit_moveid = Contre-attaque
+edition.reactions.crouch_counterhit_moveid = Contre-attaque accroupi
+edition.reactions.left_side_moveid = Côté gauche
+edition.reactions.crouch_left_side_moveid = Côté gauche accroupi
+edition.reactions.right_side_moveid = Côté droit accroupi
+edition.reactions.crouch_right_side_moveid = Côté gauche accroupi
+edition.reactions.backturned_moveid = Retourné
+edition.reactions.crouch_backturned_moveid = Retourné accroupi
+edition.reactions.block_moveid = Garde
+edition.reactions.crouch_block_moveid = Garde accroupi
+edition.reactions.wallslump_moveid = Bas du mur
+edition.reactions.downed_moveid = À terre
+
+edition.input_sequence.window_name = Séquence de commandes
+edition.input_sequence.input_window_frames = Fenêtre de temps
+edition.input_sequence.input_amount = Nombre de commandes
+edition.input_sequence.input_addr = ID de commande
+
+edition.input.window_name = Commande
+edition.input.direction = Direction
+edition.input.button = Boutons
+edition.input.inputs = Commandes
+
+edition.projectile.window_name = Projectile
+edition.projectile.category_2 = Références
+edition.projectile.category_3 = Sans-noms
+edition.projectile.vfx_id = ID de VFX
+edition.projectile.vfx_variation_id = ID de variation VFX 
+edition.projectile.delay = Délai
+edition.projectile.vertical_velocity = Vélocité verticale
+edition.projectile.horizontal_velocity = Vélocité horizontale
+edition.projectile.duration = Durée
+edition.projectile.no_collision = Pas de collision
+edition.projectile.size = Taille
+edition.projectile.hash = Hachage
+edition.projectile.can_hitbox_connect = "Can hitbox connect"
+edition.projectile.gravity = Gravité
+edition.projectile.hit_level = Hauteur de coup
+edition.projectile.hit_condition_addr = ID de Hit Conditions
+edition.projectile.cancel_addr = ID de Cancels
+edition.projectile.voiceclip_on_hit = Voiceclip (HIT)
+
+edition.pushback.window_name = Poussé
+edition.pushback.duration = Durée
+edition.pushback.num_of_loops = Nombre de boucles
+edition.pushback.displacement = Déplacement
+edition.pushback.extradata_addr = Poussée Extra ID
+
+edition.pushback_extradata.window_name = Poussée Extra
+edition.pushback_extradata.horizontal_offset = Valeur horizontale
+
+edition.form_list.item = Élément
+edition.form_list.end = FIN
+edition.form_list.invalid = INVALIDE
+edition.form_list.controls_disabled_explanation = Seule les listes dont l'ID de début dépasse 1 ont accès aux boutons de contrôle
+
+edition.animation_list.anim_name = Nom de l'animation
+edition.animation_list.duration = Durée (images)
+edition.animation_list.size = Taille
+edition.animation_list.import = Importer dans move
+edition.animation_list.search_animation = Rechercher le nom de l'animation à importer dans ce move...
+edition.animation_list.no_anim = Aucune animation n'a encore été extraite dans la bibliothèque. Allez dans le sous-menu 'Modif. de Perso' pour extraire les animations des personnages.
+edition.animation_list.loading = Chargement de la liste d'animation...
+edition.animation_list.clear_filter = Effacer le filtre
+
+edition.throw_camera.window_name = Caméra de prise
+edition.throw_camera.side = Côté
+edition.throw_camera.cameradata_addr = ID de donnée de caméra
+
+edition.camera_data.window_name = Donnée de caméra
+edition.camera_data._0x0_int = _0x0_int
+edition.camera_data._0x4_short = _0x4_short
+edition.camera_data.left_side_camera_data = Côté gauche
+edition.camera_data.right_side_camera_data = Côté droit
+edition.camera_data._0xA_short = _0xA_short
+
+edition.mvl_displayable.window_name = Liste de coups: Entrée
+edition.mvl_displayable.type = Type
+edition.mvl_displayable.playable_id = ID de Jouable
+edition.mvl_displayable.playable = (Jouable)
+edition.mvl_displayable.not_playable = (Non-Jouable)
+edition.mvl_displayable.category_1 = Inconnu
+edition.mvl_displayable.title_translation_0 = Titre Japonais
+edition.mvl_displayable.title_translation_1 = Titre
+edition.mvl_displayable.title_translation_2 = Titre Japonais 2
+edition.mvl_displayable.title_translation_3 = Titre 2
+edition.mvl_displayable.translation_0 = Japonais
+edition.mvl_displayable.translation_1 = Anglais
+edition.mvl_displayable.translation_2 = Portugais
+edition.mvl_displayable.translation_3 = Espagnol
+edition.mvl_displayable.translation_4 = Français
+edition.mvl_displayable.translation_5 = Italien
+edition.mvl_displayable.translation_6 = Allemand
+edition.mvl_displayable.translation_7 = Mexicain
+edition.mvl_displayable.translation_8 = Cyrillique
+edition.mvl_displayable.translation_9 = Arabe
+edition.mvl_displayable.translation_10 = Chinois
+edition.mvl_displayable.translation_11 = Coréen
+edition.mvl_displayable.icons = Icônes
+edition.mvl_displayable.icons_2 = Icônes 2
+edition.mvl_displayable.combo_difficulty = Difficulté
+edition.mvl_displayable.combo_damage = Dégâts
+edition.mvl_displayable.p2_action = J2 action
+
+edition.mvl_playable.window_name = Liste de coups: Jouable
+edition.mvl_playable.distance = Distance
+edition.mvl_playable.p2_rotation = J2 Rotation
+edition.mvl_playable.input_count = Nombre de commandes
+edition.mvl_playable.input_count.description = Nombre d'input à lire dans la séquence
+edition.mvl_playable.input_sequence_id = Sequence de commande ID
+edition.mvl_playable.has_rage = Rage
+
+edition.mvl_input.window_name = Liste de coups: Commande
+edition.mvl_input.directions = Directions
+edition.mvl_input.buttons = Boutons
+edition.mvl_input.frame_duration = Durée
+edition.mvl_input.trigger_highlight = Déclencher son
+edition.mvl_input.frame = Image
+edition.mvl_input.frames = images
+
+references.used_by = Utilisé par
+references.no_reference = Pas de référence
+references.move.title = Références: Move
+references.move.view_move = Voir Move
+references.reactions = Réactions
+references.reactions.situations = Situations
+references.list_start = Liste (début)
+references.moves = Moves
+references.cancel.title = Cancel
+references.cancels = Cancels
+references.cancels.view_cancel = Voir Cancel
+references.cancels.requirements = Conditions
+references.grouped_cancels = Cancels groupés
+references.projectiles = Projectiles
+
+# Documentation #
+
+# À propos #
+
+about.explanation = TKMovesets est un logiciel conçu par des moddeurs indépendants, aucunement associés légalement aux jeux affectés.\nCe logiciel est licensé selon la GPLv3: C'est un logiciel libre, gratuit d'accès, dont la modification et redistribution est permise tant que la license dans votre projet dérivé ne change pas.\nSi vous avez payé pour ce logiciel, vous avez été arnaqués.
+about.credits = Crédits:
+about.kilo_explanation = Développeur principal de ce logiciel, a éffectué le plus gros du travail de rétroingénierie sur les structures de donnée du jeu, a établi la méthodologie d'importation et d'exportation de personnage.
+about.ali_explanation = Entre autres, a aidé à la rétro-ingénierie des structures de moveset, a contribué de manière significative à la compréhension des IDs pour l'édition de moveset, a créé des tutoriels d'édition de moveset et a apporté de nombreuses fonctionnalités telles que les animations de caméra et de mains.
+about.fletch_explanation = A poussé l'édition de moveset à un niveau supérieur en documentant un nombre important de propriétéss et en créant de nombreux tutoriels et guides.
+about.koenji_explanation = À été un pionnier de la modification de moveset a trouvé de nombreuses techniques, en plus de contribuer à déchiffrer de nombreuses propriétés
+about.sadamitsu_explanation = A aidé à mieux comprendre les animations de différents types, comment elles étaient structurées et où elles étaient stockées
+about.dennis_stanistan_explanation = Sans le savoir, a aidé par un message de discorde aléatoire qui a ensuite permis au premier extracteur de moveset de démarrer

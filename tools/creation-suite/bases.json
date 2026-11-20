@@ -1,0 +1,506 @@
+{
+ "_comment": "Creation-suite base families: the selectable parametric bases behind the BODY panel. Each family is one entry; each base inside a family is selectable by id through that family's select_base.py, which emits a suite job spec (tools/suite-jobs/run_job.py) and a fighter-JSON fragment. Licence is recorded PER FAMILY and PER BASE \u2014 never blanket-label a family CC0. MB-Lab base data is AGPL-3.0 (see tools/mb-lab/README.md): generated template meshes from it stay AGPL-3.0 and are not laundered into a CC0 claim.",
+ "families": [
+  {
+   "bases": [
+    {
+     "base_mesh": "customization/templates/meshes/charmorph-vitruvian.glb",
+     "charmorph": {
+      "character": "vitruvian",
+      "rig": "rigify"
+     },
+     "gender": "unspecified",
+     "id": "vitruvian",
+     "job": {
+      "out": "customization/templates/meshes/charmorph-vitruvian.glb",
+      "params": {
+       "character": "vitruvian"
+      },
+      "tool": "charmorph"
+     },
+     "name": "Vitruvian"
+    }
+   ],
+   "blender": "not pinned \u2014 CharMorph 0.4 targets Blender 4.4 per upstream; WH 4.0.2 compatibility is NOT verified; the job fails at addon/character lookup if it does not run \u2014 see tools/charmorph/README.md",
+   "fetch": "bash tools/charmorph/fetch-charmorph.sh (then download Vitruvian in Blender \u2014 see README)",
+   "id": "charmorph",
+   "license_base_data": "CC0",
+   "license_code": "see license.txt in the CharMorph checkout (per-base licences differ)",
+   "license_note": "Only the Vitruvian base is wired in this family, and it is CC0. CharMorph's other bases are CC-BY (Antonia, Reom) or AGPL (MB-Lab base) and are NOT in this family \u2014 do not use this family's CC0 label for them, and do not select them through this family's selector (it rejects non-Vitruvian characters).",
+   "name": "CharMorph \u2014 Vitruvian",
+   "runner": "tools/charmorph/run_charmorph_job.py",
+   "selector": "tools/charmorph/select_base.py",
+   "tool": "charmorph",
+   "upstream": "github.com/Upliner/CharMorph"
+  },
+  {
+   "bases": [
+    {
+     "base_mesh": "customization/templates/meshes/super-heavyweight.glb",
+     "gender": "male",
+     "id": "super-heavyweight",
+     "job": {
+      "out": "customization/templates/meshes/super-heavyweight.glb",
+      "params": {
+       "character": "m_ca01",
+       "finalize": true,
+       "morphs": {
+        "Age": 0.35,
+        "Mass": 0.85,
+        "Tone": 0.25
+       }
+      },
+      "tool": "mb-lab"
+     },
+     "mb_lab": {
+      "character": "m_ca01",
+      "morphs": {
+       "Age": 0.35,
+       "Mass": 0.85,
+       "Tone": 0.25
+      }
+     },
+     "name": "Super Heavyweight",
+     "template_id": "super-heavyweight"
+    },
+    {
+     "base_mesh": "customization/templates/meshes/powerhouse.glb",
+     "gender": "male",
+     "id": "powerhouse",
+     "job": {
+      "out": "customization/templates/meshes/powerhouse.glb",
+      "params": {
+       "character": "m_ca01",
+       "finalize": true,
+       "morphs": {
+        "Age": 0.3,
+        "Mass": 0.45,
+        "Tone": 0.75
+       }
+      },
+      "tool": "mb-lab"
+     },
+     "mb_lab": {
+      "character": "m_ca01",
+      "morphs": {
+       "Age": 0.3,
+       "Mass": 0.45,
+       "Tone": 0.75
+      }
+     },
+     "name": "Brawler",
+     "template_id": "powerhouse"
+    },
+    {
+     "base_mesh": "customization/templates/meshes/showman.glb",
+     "gender": "male",
+     "id": "showman",
+     "job": {
+      "out": "customization/templates/meshes/showman.glb",
+      "params": {
+       "character": "m_ca01",
+       "finalize": true,
+       "morphs": {
+        "Age": 0.15,
+        "Mass": 0.5,
+        "Tone": 0.9
+       }
+      },
+      "tool": "mb-lab"
+     },
+     "mb_lab": {
+      "character": "m_ca01",
+      "morphs": {
+       "Age": 0.15,
+       "Mass": 0.5,
+       "Tone": 0.9
+      }
+     },
+     "name": "Showman",
+     "template_id": "showman"
+    },
+    {
+     "base_mesh": "customization/templates/meshes/technician.glb",
+     "gender": "male",
+     "id": "technician",
+     "job": {
+      "out": "customization/templates/meshes/technician.glb",
+      "params": {
+       "character": "m_ca01",
+       "finalize": true,
+       "morphs": {
+        "Age": 0.0,
+        "Mass": 0.0,
+        "Tone": 0.5
+       }
+      },
+      "tool": "mb-lab"
+     },
+     "mb_lab": {
+      "character": "m_ca01",
+      "morphs": {
+       "Age": 0.0,
+       "Mass": 0.0,
+       "Tone": 0.5
+      }
+     },
+     "name": "Technician",
+     "template_id": "technician"
+    },
+    {
+     "base_mesh": "customization/templates/meshes/highflyer.glb",
+     "gender": "male",
+     "id": "highflyer",
+     "job": {
+      "out": "customization/templates/meshes/highflyer.glb",
+      "params": {
+       "character": "m_ca01",
+       "finalize": true,
+       "morphs": {
+        "Age": -0.1,
+        "Mass": -0.25,
+        "Tone": 0.8
+       }
+      },
+      "tool": "mb-lab"
+     },
+     "mb_lab": {
+      "character": "m_ca01",
+      "morphs": {
+       "Age": -0.1,
+       "Mass": -0.25,
+       "Tone": 0.8
+      }
+     },
+     "name": "High-Flyer",
+     "template_id": "highflyer"
+    },
+    {
+     "base_mesh": "customization/templates/meshes/luchador.glb",
+     "gender": "male",
+     "id": "luchador",
+     "job": {
+      "out": "customization/templates/meshes/luchador.glb",
+      "params": {
+       "character": "m_ca01",
+       "finalize": true,
+       "morphs": {
+        "Age": -0.15,
+        "Mass": -0.5,
+        "Tone": 0.55
+       }
+      },
+      "tool": "mb-lab"
+     },
+     "mb_lab": {
+      "character": "m_ca01",
+      "morphs": {
+       "Age": -0.15,
+       "Mass": -0.5,
+       "Tone": 0.55
+      }
+     },
+     "name": "Luchador",
+     "template_id": "luchador"
+    },
+    {
+     "base_mesh": "customization/templates/meshes/powerhouse-w.glb",
+     "gender": "female",
+     "id": "powerhouse-w",
+     "job": {
+      "out": "customization/templates/meshes/powerhouse-w.glb",
+      "params": {
+       "character": "f_ca01",
+       "finalize": true,
+       "morphs": {
+        "Age": 0.2,
+        "Mass": 0.55,
+        "Tone": 0.85
+       }
+      },
+      "tool": "mb-lab"
+     },
+     "mb_lab": {
+      "character": "f_ca01",
+      "morphs": {
+       "Age": 0.2,
+       "Mass": 0.55,
+       "Tone": 0.85
+      }
+     },
+     "name": "Powerhouse (Women's)",
+     "template_id": "powerhouse-w"
+    },
+    {
+     "base_mesh": "customization/templates/meshes/athletic-w.glb",
+     "gender": "female",
+     "id": "athletic-w",
+     "job": {
+      "out": "customization/templates/meshes/athletic-w.glb",
+      "params": {
+       "character": "f_ca01",
+       "finalize": true,
+       "morphs": {
+        "Age": 0.0,
+        "Mass": 0.05,
+        "Tone": 0.7
+       }
+      },
+      "tool": "mb-lab"
+     },
+     "mb_lab": {
+      "character": "f_ca01",
+      "morphs": {
+       "Age": 0.0,
+       "Mass": 0.05,
+       "Tone": 0.7
+      }
+     },
+     "name": "Athlete (Women's)",
+     "template_id": "athletic-w"
+    },
+    {
+     "base_mesh": "customization/templates/meshes/striker-w.glb",
+     "gender": "female",
+     "id": "striker-w",
+     "job": {
+      "out": "customization/templates/meshes/striker-w.glb",
+      "params": {
+       "character": "f_ca01",
+       "finalize": true,
+       "morphs": {
+        "Age": -0.1,
+        "Mass": -0.35,
+        "Tone": 0.65
+       }
+      },
+      "tool": "mb-lab"
+     },
+     "mb_lab": {
+      "character": "f_ca01",
+      "morphs": {
+       "Age": -0.1,
+       "Mass": -0.35,
+       "Tone": 0.65
+      }
+     },
+     "name": "Striker (Women's)",
+     "template_id": "striker-w"
+    }
+   ],
+   "blender": "4.0.2 for MB-Lab jobs (verified path); 5.2.3 is the WH rig/render standard, NOT verified for MB-Lab \u2014 see tools/mb-lab/README.md (split documented 2026-11-02)",
+   "fetch": "bash tools/mb-lab/fetch-mb-lab.sh",
+   "id": "mb-lab",
+   "license_base_data": "AGPL-3.0",
+   "license_code": "GPL-3.0",
+   "license_note": "MB-Lab addon code is GPL-3.0; its database (meshes, .blend library, images, JSON morph data) is AGPL-3.0. Bases below are generated from that AGPL database, so the shipped template meshes are AGPL-3.0. The generation scripts and param specs that reproduce every base live in this repo. If a licence-clean base is required, use the mpfb2 or charmorph-vitruvian family (CC0 base data) instead \u2014 never relabel an MB-Lab base as CC0.",
+   "name": "MB-Lab",
+   "runner": "tools/mb-lab/run_mblab_job.py",
+   "selector": "tools/mb-lab/select_base.py",
+   "tool": "mb-lab",
+   "upstream": "github.com/animate1978/MB-Lab"
+  },
+  {
+   "bases": [
+    {
+     "base_mesh": "customization/templates/meshes/mpfb2-super-heavyweight.glb",
+     "gender": "male",
+     "id": "mpfb2-super-heavyweight",
+     "job": {
+      "out": "customization/templates/meshes/mpfb2-super-heavyweight.glb",
+      "params": {
+       "macro": {
+        "age": 0.6,
+        "gender": 1.0,
+        "height": 0.65,
+        "muscle": 0.7,
+        "proportions": 0.6,
+        "weight": 0.9
+       },
+       "rig": "game_engine"
+      },
+      "tool": "mpfb2-live"
+     },
+     "mpfb2": {
+      "macro": {
+       "age": 0.6,
+       "gender": 1.0,
+       "height": 0.65,
+       "muscle": 0.7,
+       "proportions": 0.6,
+       "weight": 0.9
+      }
+     },
+     "name": "Super Heavyweight (MPFB2)"
+    },
+    {
+     "base_mesh": "customization/templates/meshes/mpfb2-powerhouse.glb",
+     "gender": "male",
+     "id": "mpfb2-powerhouse",
+     "job": {
+      "out": "customization/templates/meshes/mpfb2-powerhouse.glb",
+      "params": {
+       "macro": {
+        "age": 0.5,
+        "gender": 1.0,
+        "height": 0.6,
+        "muscle": 0.85,
+        "proportions": 0.6,
+        "weight": 0.7
+       },
+       "rig": "game_engine"
+      },
+      "tool": "mpfb2-live"
+     },
+     "mpfb2": {
+      "macro": {
+       "age": 0.5,
+       "gender": 1.0,
+       "height": 0.6,
+       "muscle": 0.85,
+       "proportions": 0.6,
+       "weight": 0.7
+      }
+     },
+     "name": "Powerhouse (MPFB2)"
+    },
+    {
+     "base_mesh": "customization/templates/meshes/mpfb2-technician.glb",
+     "gender": "male",
+     "id": "mpfb2-technician",
+     "job": {
+      "out": "customization/templates/meshes/mpfb2-technician.glb",
+      "params": {
+       "macro": {
+        "age": 0.5,
+        "gender": 1.0,
+        "height": 0.5,
+        "muscle": 0.5,
+        "proportions": 0.5,
+        "weight": 0.5
+       },
+       "rig": "game_engine"
+      },
+      "tool": "mpfb2-live"
+     },
+     "mpfb2": {
+      "macro": {
+       "age": 0.5,
+       "gender": 1.0,
+       "height": 0.5,
+       "muscle": 0.5,
+       "proportions": 0.5,
+       "weight": 0.5
+      }
+     },
+     "name": "Technician (MPFB2)"
+    },
+    {
+     "base_mesh": "customization/templates/meshes/mpfb2-highflyer.glb",
+     "gender": "male",
+     "id": "mpfb2-highflyer",
+     "job": {
+      "out": "customization/templates/meshes/mpfb2-highflyer.glb",
+      "params": {
+       "macro": {
+        "age": 0.4,
+        "gender": 1.0,
+        "height": 0.55,
+        "muscle": 0.6,
+        "proportions": 0.5,
+        "weight": 0.3
+       },
+       "rig": "game_engine"
+      },
+      "tool": "mpfb2-live"
+     },
+     "mpfb2": {
+      "macro": {
+       "age": 0.4,
+       "gender": 1.0,
+       "height": 0.55,
+       "muscle": 0.6,
+       "proportions": 0.5,
+       "weight": 0.3
+      }
+     },
+     "name": "High-Flyer (MPFB2)"
+    },
+    {
+     "base_mesh": "customization/templates/meshes/mpfb2-powerhouse-w.glb",
+     "gender": "female",
+     "id": "mpfb2-powerhouse-w",
+     "job": {
+      "out": "customization/templates/meshes/mpfb2-powerhouse-w.glb",
+      "params": {
+       "macro": {
+        "age": 0.5,
+        "gender": 0.0,
+        "height": 0.55,
+        "muscle": 0.8,
+        "proportions": 0.4,
+        "weight": 0.65
+       },
+       "rig": "game_engine"
+      },
+      "tool": "mpfb2-live"
+     },
+     "mpfb2": {
+      "macro": {
+       "age": 0.5,
+       "gender": 0.0,
+       "height": 0.55,
+       "muscle": 0.8,
+       "proportions": 0.4,
+       "weight": 0.65
+      }
+     },
+     "name": "Powerhouse (Women's, MPFB2)"
+    },
+    {
+     "base_mesh": "customization/templates/meshes/mpfb2-striker-w.glb",
+     "gender": "female",
+     "id": "mpfb2-striker-w",
+     "job": {
+      "out": "customization/templates/meshes/mpfb2-striker-w.glb",
+      "params": {
+       "macro": {
+        "age": 0.4,
+        "gender": 0.0,
+        "height": 0.5,
+        "muscle": 0.6,
+        "proportions": 0.4,
+        "weight": 0.35
+       },
+       "rig": "game_engine"
+      },
+      "tool": "mpfb2-live"
+     },
+     "mpfb2": {
+      "macro": {
+       "age": 0.4,
+       "gender": 0.0,
+       "height": 0.5,
+       "muscle": 0.6,
+       "proportions": 0.4,
+       "weight": 0.35
+      }
+     },
+     "name": "Striker (Women's, MPFB2)"
+    }
+   ],
+   "blender": "4.2+ for the live path (MPFB2 needs Blender >= 4.2); the data path (MPFB morph targets baked as shape keys) works on the 4.0.2 pipeline standard \u2014 see tools/mpfb2/README.md",
+   "fetch": "bash tools/mpfb2/fetch-mpfb2.sh [--with-blender]",
+   "id": "mpfb2",
+   "license_base_data": "CC0",
+   "license_code": "GPL-3.0",
+   "license_note": "MPFB2 addon code is GPL-3.0; bundled core assets (targets, skins, clothes) are CC0. Bases below are generated from those CC0 assets, so the base meshes carry no copyleft \u2014 this is the licence-clean alternative to MB-Lab's AGPL bases. The CC0 label is for base data only, never for the addon code, and never for MB-Lab bases.",
+   "name": "MPFB 2",
+   "runner": "tools/mpfb2/run_mpfb2_job.py",
+   "selector": "tools/mpfb2/select_base.py",
+   "tool": "mpfb2-live",
+   "upstream": "github.com/makehumancommunity/mpfb2"
+  }
+ ],
+ "version": 1
+}

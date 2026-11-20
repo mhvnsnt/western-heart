@@ -1,0 +1,161 @@
+{
+ "fighter": "samura1",
+ "base": "http://127.0.0.1:8906/game/",
+ "ready": true,
+ "rows": [
+  {
+   "n": "1",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:43",
+   "kind": "notation",
+   "why": "same input '1'",
+   "timing": {
+    "S": 0.2,
+    "A": 0.017,
+    "t0": 0.117,
+    "t1": 0.117,
+    "D": 0.6,
+    "src": "decoded"
+   },
+   "moveDmg": 6,
+   "hitWord": 1042,
+   "isGrab": false,
+   "atkName": "1",
+   "hasHit": true,
+   "distAtHit": 1.45,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 5.5,
+   "hits": [
+    {
+     "dmg": 6,
+     "word": 1042,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:43",
+   "kind": "notation",
+   "why": "same input '1'",
+   "timing": {
+    "S": 0.2,
+    "A": 0.017,
+    "t0": 0.117,
+    "t1": 0.117,
+    "D": 0.6,
+    "src": "decoded"
+   },
+   "moveDmg": 6,
+   "hitWord": 1042,
+   "isGrab": false,
+   "atkName": "1",
+   "hasHit": false,
+   "distAtHit": null,
+   "defStates": [],
+   "hpDelta": 0,
+   "hits": []
+  },
+  {
+   "n": "1+2",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:49",
+   "kind": "notation",
+   "why": "same input '1+2'",
+   "timing": {
+    "S": 0.36,
+    "A": 0.1,
+    "t0": 0.433,
+    "t1": 0.467,
+    "D": 1.167,
+    "src": "decoded"
+   },
+   "moveDmg": 20,
+   "hitWord": null,
+   "isGrab": false,
+   "atkName": "1+2",
+   "hasHit": true,
+   "distAtHit": 1.5,
+   "defStates": [
+    "knockdown"
+   ],
+   "hpDelta": 30.3,
+   "hits": [
+    {
+     "dmg": 20,
+     "word": null,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1+2",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:49",
+   "kind": "notation",
+   "why": "same input '1+2'",
+   "timing": {
+    "S": 0.36,
+    "A": 0.1,
+    "t0": 0.433,
+    "t1": 0.467,
+    "D": 1.167,
+    "src": "decoded"
+   },
+   "moveDmg": 20,
+   "hitWord": null,
+   "isGrab": false,
+   "atkName": "1+2",
+   "hasHit": true,
+   "distAtHit": 1.85,
+   "defStates": [
+    "knockdown"
+   ],
+   "hpDelta": 18.3,
+   "hits": [
+    {
+     "dmg": 20,
+     "word": null,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  }
+ ],
+ "setup": {
+  "roundState": "fight",
+  "p1id": "samura1",
+  "t3actionsCount": 22,
+  "bank": "gunjack"
+ },
+ "logs": [
+  "[http 404] http://127.0.0.1:8906/deploy-manifest.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/index.json",
+  "[http 404] http://127.0.0.1:8906/roster/pantera/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8906/roster/samura1/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/samura1.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/pantera.json",
+  "[http 404] http://127.0.0.1:8906/game/js/intro-interactions.js"
+ ]
+}

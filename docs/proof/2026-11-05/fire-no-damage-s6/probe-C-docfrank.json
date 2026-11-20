@@ -1,0 +1,173 @@
+{
+ "fighter": "docfrank",
+ "base": "http://127.0.0.1:8906/game/",
+ "ready": true,
+ "rows": [
+  {
+   "n": "1",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:170",
+   "kind": "notation",
+   "why": "same input '1'",
+   "timing": {
+    "S": 0.1,
+    "A": 0.017,
+    "t0": 0.65,
+    "t1": 0.733,
+    "D": 1.433,
+    "src": "decoded"
+   },
+   "moveDmg": 2,
+   "hitWord": 1543,
+   "isGrab": false,
+   "atkName": "1",
+   "hasHit": true,
+   "distAtHit": 1.52,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 1.8,
+   "hits": [
+    {
+     "dmg": 2,
+     "word": 1543,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:170",
+   "kind": "notation",
+   "why": "same input '1'",
+   "timing": {
+    "S": 0.1,
+    "A": 0.017,
+    "t0": 0.65,
+    "t1": 0.733,
+    "D": 1.433,
+    "src": "decoded"
+   },
+   "moveDmg": 2,
+   "hitWord": 1543,
+   "isGrab": false,
+   "atkName": "1",
+   "hasHit": true,
+   "distAtHit": 1.76,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 1.8,
+   "hits": [
+    {
+     "dmg": 2,
+     "word": 1543,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1+2",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:320",
+   "kind": "notation",
+   "why": "same input '1+2'",
+   "timing": {
+    "S": 0.1,
+    "A": 0.3,
+    "t0": 0.167,
+    "t1": 0.167,
+    "D": 0.5,
+    "src": "decoded"
+   },
+   "moveDmg": 0,
+   "hitWord": null,
+   "isGrab": false,
+   "atkName": "1+2",
+   "hasHit": true,
+   "distAtHit": 1.47,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 0,
+   "hits": [
+    {
+     "dmg": 0,
+     "word": null,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1+2",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:320",
+   "kind": "notation",
+   "why": "same input '1+2'",
+   "timing": {
+    "S": 0.1,
+    "A": 0.3,
+    "t0": 0.167,
+    "t1": 0.167,
+    "D": 0.5,
+    "src": "decoded"
+   },
+   "moveDmg": 0,
+   "hitWord": null,
+   "isGrab": false,
+   "atkName": "1+2",
+   "hasHit": true,
+   "distAtHit": 1.56,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 0,
+   "hits": [
+    {
+     "dmg": 0,
+     "word": null,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  }
+ ],
+ "setup": {
+  "roundState": "fight",
+  "p1id": "docfrank",
+  "t3actionsCount": 22,
+  "bank": "bosconovitch"
+ },
+ "logs": [
+  "[http 404] http://127.0.0.1:8906/deploy-manifest.json",
+  "[http 404] http://127.0.0.1:8906/roster/docfrank/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8906/roster/pantera/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/index.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/docfrank.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/pantera.json",
+  "[http 404] http://127.0.0.1:8906/game/js/intro-interactions.js",
+  "[http 404] http://127.0.0.1:8906/roster/doc-frank/attires/attire2/transformed/model-rigged.glb",
+  "[http 404] http://127.0.0.1:8906/roster/doc-frank/attires/attire3/transformed/model-rigged.glb",
+  "[http 404] http://127.0.0.1:8906/roster/doc-frank/attires/attire4/transformed/model-rerig.glb"
+ ]
+}

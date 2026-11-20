@@ -1,0 +1,24 @@
+record 0 (@0x0) header u32s: ['0x1', '0x8', '0x442b', '0xda', '0x35f6bb7', '0x155c', '0x6acf', '0x2160e']
+    X=0x035f6bb7 vs word_sum(payload[32:REC])=0xe448e108 match=False
+    X=0x035f6bb7 vs word_sum(whole-rec-minus-X)=0xe44bbc4f match=False
+    X=0x035f6bb7 vs word_sum(whole-record)=0xe7ab2806 match=False
+    X=0x035f6bb7 vs word_sum(payload[16:REC])=0xe7aae2f8 match=False
+    decrypt(seed=X) payload[32:96]: 762981634e438cf10a309db92210169eaeb07f1e76f7785caac27ad3423965005622f1b316b83018b4b3ecafb2511e786c5c19a1655af57e0e06781297b80900
+    decrypt(seed=X) payload head as u32: ['0x63812976', '0xf18c434e', '0xb99d300a', '0x9e161022', '0x1e7fb0ae', '0x5c78f776', '0xd37ac2aa', '0x653942']
+    NLZ1(payload) FAIL invalid backref offset=385 length=5 dstlen=0
+record 1 (@0x4800) header u32s: ['0x1', '0x8', '0x442b', '0xda', '0x3c0b57c4', '0x155c', '0x6acf', '0x2160e']
+    X=0x3c0b57c4 vs word_sum(payload[32:REC])=0xc61f2479 match=False
+    X=0x3c0b57c4 vs word_sum(whole-rec-minus-X)=0xc621ffc0 match=False
+    X=0x3c0b57c4 vs word_sum(whole-record)=0x022d5784 match=False
+    X=0x3c0b57c4 vs word_sum(payload[16:REC])=0x022d1276 match=False
+    decrypt(seed=X) payload[32:96]: e541c5572fc93fb7ed623f925b9d3de5cd26a47987bd749b85a50108ab720328357c856b06b2b8087cd3be0089457e7fe77309dd5d932aa5f1fd32cde5a672fe
+    decrypt(seed=X) payload head as u32: ['0x57c541e5', '0xb73fc92f', '0x923f62ed', '0xe53d9d5b', '0x79a426cd', '0x9b74bd87', '0x801a585', '0x280372ab']
+    NLZ1(payload) FAIL invalid backref offset=1367 length=24 dstlen=1
+record 4 (@0x12000) header u32s: ['0x1', '0x8', '0x442b', '0xda', '0x94655386', '0x155c', '0x6acf', '0x2160e']
+    X=0x94655386 vs word_sum(payload[32:REC])=0x7f3af6a9 match=False
+    X=0x94655386 vs word_sum(whole-rec-minus-X)=0x7f3dd1f0 match=False
+    X=0x94655386 vs word_sum(whole-record)=0x13a32576 match=False
+    X=0x94655386 vs word_sum(payload[16:REC])=0x13a2e068 match=False
+    decrypt(seed=X) payload[32:96]: 7771aa0799bc1426a3cea7bfd1e338bc2f639b84e9efc86a334faa10416d777347de97ac2aefada946fcdca1995979bbb3d04d93854d8006e297acaf49b71e1b
+    decrypt(seed=X) payload head as u32: ['0x7aa7177', '0x2614bc99', '0xbfa7cea3', '0xbc38e3d1', '0x849b632f', '0x6ac8efe9', '0x10aa4f33', '0x73776d41']
+    NLZ1(payload) FAIL invalid backref offset=444 length=19 dstlen=3

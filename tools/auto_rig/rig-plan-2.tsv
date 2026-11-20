@@ -1,0 +1,27 @@
+# rig-plan-2.tsv — pose-isolation rig queue (recovery lane, 2026-10-20)
+# id <TAB> src <TAB> facing <TAB> meshopt(1=decompress first)
+# Facings read own-eyes from probes/sheet_probes_01..04.png (+ prior lane probes):
+#   +X CONFIRMED front: demonio-a1, kronos-attire2, koreshi, doc-frank-hood, kevin-tripo, sam-ur-a1 (proven pass)
+#   +X Tripo-family assumed (gate render verifies before ship): demonio-human, demonio-winged, kronos,
+#     dxmmii-a2, doc-frank-big, doc-frank-frankenstein, doc-frank-frankenstein-big, doc-frank-hood-big,
+#     doc-frank-wowomomo, doc-frank-wowomomo-big
+#   +Z CONFIRMED front: scimitar (sheet 01 PosZ shows face/chest; it is the Shaheen/SFMLab build, not Tripo)
+#   BLOCKED on re-probe (probe camera framing broken): zangief (all 4 views empty), blanka (cropped to legs),
+#     armor-king (extreme close-up) — fix probe framing to bbox-fit, read facing, then append rows here.
+sam-ur-a1	/home/hatch/workspace/wh-pose-survey/models/sam-ur-a1_raw.glb	+X	1
+demonio-a1	/home/hatch/workspace/wh-pose-survey/models/demonio-a1.glb	+X	0
+kevin-tripo	/home/hatch/workspace/wh-pose-survey/models/kevin-tripo.glb	+X	1
+demonio-human	/home/hatch/workspace/wh-pose-survey/models/demonio-human.glb	+X	1
+demonio-winged	/home/hatch/workspace/wh-pose-survey/models/demonio-winged.glb	+X	1
+kronos	/home/hatch/workspace/wh-pose-survey/models/kronos.glb	+X	1
+kronos-attire2	/home/hatch/workspace/wh-pose-survey/models/kronos-attire2_raw.glb	+X	1
+koreshi	/home/hatch/workspace/wh-pose-survey/models/koreshi_raw.glb	+X	1
+doc-frank-hood	/home/hatch/workspace/wh-pose-survey/models/doc-frank-hood.glb	+X	0
+doc-frank-big	/home/hatch/workspace/wh-pose-survey/models/doc-frank-big.glb	+X	1
+doc-frank-frankenstein	/home/hatch/workspace/wh-pose-survey/models/doc-frank-frankenstein.glb	+X	1
+doc-frank-frankenstein-big	/home/hatch/workspace/wh-pose-survey/models/doc-frank-frankenstein-big.glb	+X	1
+doc-frank-hood-big	/home/hatch/workspace/wh-pose-survey/models/doc-frank-hood-big.glb	+X	1
+doc-frank-wowomomo	/home/hatch/workspace/wh-pose-survey/models/doc-frank-wowomomo.glb	+X	1
+doc-frank-wowomomo-big	/home/hatch/workspace/wh-pose-survey/models/doc-frank-wowomomo-big.glb	+X	1
+dxmmii-a2	/home/hatch/workspace/wh-pose-survey/models/dxmmii-a2.glb	+X	1
+scimitar	/home/hatch/workspace/wh-pose-survey/models/scimitar.glb	+Z	1

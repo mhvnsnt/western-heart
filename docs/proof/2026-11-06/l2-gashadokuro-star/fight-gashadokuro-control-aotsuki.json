@@ -1,0 +1,235 @@
+{
+ "p1": "aotsuki",
+ "p2": "pantera",
+ "base": "http://127.0.0.1:8831/game/",
+ "ready": true,
+ "trials": [
+  {
+   "n": "4",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "4",
+    "damage": 11,
+    "isGrab": false,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": null,
+   "pairSeen": false,
+   "lockSeen": false,
+   "hpDelta": 10.1,
+   "firstDmgT": 0.233,
+   "vThrowHitDone": null,
+   "whLogs": [],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.233,
+     "p1": "attack",
+     "p2": "knockdown",
+     "pair": false
+    },
+    {
+     "t": 0.783,
+     "p1": "idle",
+     "p2": "knockdown",
+     "pair": false
+    },
+    {
+     "t": 0.975,
+     "p1": "idle",
+     "p2": "wallsplat",
+     "pair": false
+    },
+    {
+     "t": 1.525,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "3",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "3",
+    "damage": 14,
+    "isGrab": false,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "t7:4~t7.kuma",
+    "kind": "t7",
+    "why": "real T7 Km_rk00 (nakm_rk01_DVD)"
+   },
+   "pairSeen": false,
+   "lockSeen": false,
+   "hpDelta": 20.8,
+   "firstDmgT": 0.3,
+   "vThrowHitDone": null,
+   "whLogs": [],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.3,
+     "p1": "attack",
+     "p2": "knockdown",
+     "pair": false
+    },
+    {
+     "t": 0.858,
+     "p1": "idle",
+     "p2": "knockdown",
+     "pair": false
+    },
+    {
+     "t": 1.05,
+     "p1": "idle",
+     "p2": "wallsplat",
+     "pair": false
+    },
+    {
+     "t": 1.6,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  },
+  {
+   "n": "1",
+   "ok": true,
+   "err": null,
+   "atk": {
+    "name": "1",
+    "damage": 3,
+    "isGrab": false,
+    "move_class": null,
+    "throw": false,
+    "anim_ref": null,
+    "t3_row": null
+   },
+   "plan": {
+    "name": "t7:3~t7.kuma",
+    "kind": "t7",
+    "why": "real T7 Km_lk00 (nakm_lk00_DVD)"
+   },
+   "pairSeen": false,
+   "lockSeen": false,
+   "hpDelta": 2.8,
+   "firstDmgT": 0.175,
+   "vThrowHitDone": null,
+   "whLogs": [],
+   "trans": [
+    {
+     "t": 0.008,
+     "p1": "attack",
+     "p2": "idle",
+     "pair": false
+    },
+    {
+     "t": 0.175,
+     "p1": "attack",
+     "p2": "hitstun",
+     "pair": false
+    },
+    {
+     "t": 0.542,
+     "p1": "idle",
+     "p2": "hitstun",
+     "pair": false
+    },
+    {
+     "t": 0.642,
+     "p1": "idle",
+     "p2": "idle",
+     "pair": false
+    }
+   ],
+   "p1state": "idle",
+   "p2state": "idle"
+  }
+ ],
+ "setup": {
+  "roundState": "fight",
+  "p1": {
+   "id": "aotsuki",
+   "t3dir": "kuma",
+   "t3bank": "kuma",
+   "t3actions": 22,
+   "bones": 73
+  },
+  "p2": {
+   "id": "pantera",
+   "t3dir": "king_on_pantera_leoman",
+   "t3bank": "king",
+   "t3actions": 22,
+   "bones": 22
+  }
+ },
+ "measure": {
+  "boneRange": {
+   "Hips": [
+    0,
+    0.11,
+    0
+   ],
+   "Head": [
+    0.123,
+    0.183,
+    0.024
+   ],
+   "LeftHand": [
+    0.267,
+    0.133,
+    0.207
+   ],
+   "RightHand": [
+    0.182,
+    0.189,
+    0.238
+   ],
+   "LeftFoot": [
+    0.034,
+    0.057,
+    0.044
+   ],
+   "RightFoot": [
+    0.053,
+    0.043,
+    0.057
+   ]
+  },
+  "maxBoneRange": 0.267,
+  "stanceHeight": 1.619,
+  "stanceMinY": 0.018
+ },
+ "logs": [
+  "[http 404] http://127.0.0.1:8831/deploy-manifest.json",
+  "[http 404] http://127.0.0.1:8831/roster/aotsuki/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8831/roster/aotsuki/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8831/game/js/intro-interactions.js"
+ ]
+}

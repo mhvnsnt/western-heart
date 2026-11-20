@@ -1,0 +1,18 @@
+{
+ "name": "WH-Canonical-22",
+ "notes": "One humanoid skeleton for every Western Heart Lab fighter. Mixamo-compatible names (no 'mixamorig:' prefix). Y-up, meters, character faces +Z, character left = +X. Bind pose = Tekken 3 fighting stance; every joint rest rotation = identity (world-aligned), so clips are authored in world axes and retarget by name with no rest-pose correction.",
+ "bones": [
+  {"name":"Root","parent":null},
+  {"name":"Hips","parent":"Root"},
+  {"name":"Spine","parent":"Hips"},
+  {"name":"Chest","parent":"Spine"},
+  {"name":"Neck","parent":"Chest"},
+  {"name":"Head","parent":"Neck"},
+  {"name":"LeftShoulder","parent":"Chest"},{"name":"LeftArm","parent":"LeftShoulder"},{"name":"LeftForeArm","parent":"LeftArm"},{"name":"LeftHand","parent":"LeftForeArm"},
+  {"name":"RightShoulder","parent":"Chest"},{"name":"RightArm","parent":"RightShoulder"},{"name":"RightForeArm","parent":"RightArm"},{"name":"RightHand","parent":"RightForeArm"},
+  {"name":"LeftUpLeg","parent":"Hips"},{"name":"LeftLeg","parent":"LeftUpLeg"},{"name":"LeftFoot","parent":"LeftLeg"},{"name":"LeftToeBase","parent":"LeftFoot"},
+  {"name":"RightUpLeg","parent":"Hips"},{"name":"RightLeg","parent":"RightUpLeg"},{"name":"RightFoot","parent":"RightLeg"},{"name":"RightToeBase","parent":"RightFoot"}
+ ],
+ "optional": ["Spine","Neck","LeftToeBase","RightToeBase"],
+ "required_for_rig_check": ["Hips","Chest","Head","LeftArm","LeftForeArm","LeftHand","RightArm","RightForeArm","RightHand","LeftUpLeg","LeftLeg","LeftFoot","RightUpLeg","RightLeg","RightFoot"]
+}

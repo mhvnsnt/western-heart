@@ -1,0 +1,8 @@
+{
+  "source": "release doa4-phase6-models-20261021 / doa4-phase6-chrone.zip+chrone.z01, asset chrone-pkg00-skinned.glb (skinned DOA4 Xbox 360 model, 125 nodes / 58 skin joints)",
+  "bone_naming": "generic (node0..node57) — DOA4 export does not preserve Team Ninja's internal bone names",
+  "arm_structure": "shoulder -> elbow -> wrist chains terminate in 2-3 short leaf chains of up to 3 segments each (translations ~0.247m per segment)",
+  "finger_articulation": "LIMITED — no 5-finger named chains; hand ends in stub leaf chains (mitten-style segments), consistent with DOA4's camera distance and hold/throw-focused design",
+  "extraction_method": "glTF JSON parse: skin joint list + node child hierarchy + per-node translations",
+  "holds_throws_note": "DOA4's hand posing for holds/throws is authored animation on these stub chains; the mot.afs entries (release doa4-mot-20261022, all 197) carry the throw/hold motion data but the .mot bone map is not yet decoded (see teardown/dead-or-alive-4/MODELS-ANIMATIONS.md: 'Skeletons/bone weights — not yet located')"
+}

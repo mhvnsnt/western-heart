@@ -1,0 +1,94 @@
+{
+ "bank": "unknown",
+ "baked": {
+  "t3_neutral": {
+   "move": "Uj_sKAM00_",
+   "anim": "amju_kamae_test(DVD)",
+   "bank": 1,
+   "idx": 134,
+   "frames": 97,
+   "fk_selfcheck_max_m": 0.0,
+   "gate_note": "toe graze 0.08 m (frame 37) within TTT2-vs-T7 skeleton proportion delta; ankles >= -0.01 m throughout; all other gate checks pass"
+  },
+  "t3_light": {
+   "move": "Uj_lp00",
+   "anim": "amlu_lp2(DVD)",
+   "bank": 1,
+   "idx": 219,
+   "frames": 71,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_medium": {
+   "move": "Uj_lk00",
+   "anim": "amju_lk(DVD)",
+   "bank": 1,
+   "idx": 234,
+   "frames": 55,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_heavy": {
+   "move": "Uj_rk00",
+   "anim": "toju_rk(DVD)",
+   "bank": 1,
+   "idx": 235,
+   "frames": 65,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_walk_fwd": {
+   "move": "Uj_sWALKFLp",
+   "anim": "toju_fwalk01(DVD)",
+   "bank": 1,
+   "idx": 137,
+   "frames": 20,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_walk_back": {
+   "move": "Uj_sWALKB",
+   "anim": "toju_bwalk00(DVD)",
+   "bank": 1,
+   "idx": 140,
+   "frames": 30,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_dash_fwd": {
+   "move": "Uj_sDASHF",
+   "anim": "toju_dash125(DVD)",
+   "bank": 1,
+   "idx": 138,
+   "frames": 20,
+   "fk_selfcheck_max_m": 0.0,
+   "gate_note": "toe graze 0.08 m (frame 8) within TTT2-vs-T7 skeleton proportion delta; ankles >= 0.05 m throughout; all other gate checks pass"
+  },
+  "t3_backdash": {
+   "move": "Uj_sDASHB",
+   "anim": "toju_back90(DVD)",
+   "bank": 1,
+   "idx": 143,
+   "frames": 22,
+   "fk_selfcheck_max_m": 0.0
+  },
+  "t3_crouch_hold": {
+   "move": "cKAM__00_",
+   "anim": "ozco_syagami(DVD)",
+   "bank": 1,
+   "idx": 147,
+   "frames": 35,
+   "fk_selfcheck_max_m": 0.0
+  }
+ },
+ "skipped": {
+  "t3_block": "in-game plausibility gate: LeftToeBase 1.05 m below the floor on frame 0 (mannequin proportions)",
+  "t3_crouch": "in-game plausibility gate: LeftToeBase jumps 1.65 m on frame 8"
+ },
+ "gaps": {
+  "t3_hit": "no sDm_Aokimid00 record in join",
+  "t3_jump_up": "no *sJUMP_ record in join",
+  "t3_jump_fwd": "no *sJUMPF record in join",
+  "t3_jump_back": "no *sJUMPB record in join",
+  "t3_sidestep_a": "no sSTEP_01L record in join",
+  "t3_sidestep_b": "no sSTEP_01R record in join",
+  "t3_grab": "no Thrmv_B1_00/Thrmv_B2_00i bank-1 record in join",
+  "t3_ko": "no slot source identified (shipped Roger/Jun banks also ship no t3_ko clip)",
+  "t3_hit_launch": "no slot source identified (shipped Roger/Jun banks also ship no t3_hit_launch clip)"
+ }
+}

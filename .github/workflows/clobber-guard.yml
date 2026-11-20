@@ -1,0 +1,58 @@
+# Clobber guard: blocks PRs that revert lines main added after the PR's base.
+# Catches the PR #579 failure mode (2026-10-22): a PR branched from a stale
+# base overwrote whole files with stale full-file copies, deleting 427 lines
+# of game/js/assets.js, 113 of game/js/main.js, 32 of game/js/game.js,
+# 25 of index.html and 316 of WORKLOG.md that main had added since the fork
+# point. Torch broke live.
+#
+# The check diffs three revisions per changed file (fork point / current main
+# tip / PR head) and fails when the PR's version lacks lines main added after
+# the fork. Moves and refactors do not flag (line-text comparison).
+#
+# Explicit escapes: the "owner-approved-revert" label, or a "## Reverts"
+# section in the PR body naming each offending file path in backticks.
+name: clobber-guard
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+  merge_group:
+    types: [checks_requested]
+# CI minute diet (Plan B): superseded PR runs are cancelled, not billed.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+permissions:
+  contents: read
+  pull-requests: read
+jobs:
+  clobber-guard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          filter: blob:none
+          # 2026-10-23: full working-tree checkout timed out (GBs of models). The guard
+          # reads every file via git show/git diff (lazy blob fetch), so only .github/
+          # needs to be on disk.
+          sparse-checkout: .github
+          sparse-checkout-cone-mode: true
+      - name: Guard self-test
+        run: python3 -m unittest discover -s .github/scripts -p 'test_clobber_guard.py' -v
+      - name: Check for reverted main-side lines
+        env:
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          MAIN_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+          # The PR's base commit = fork point (merge-base), not the moving base tip.
+          if FORK=$(git merge-base "$HEAD_SHA" "$MAIN_SHA" 2>/dev/null); then
+            echo "Fork point: $FORK"
+          else
+            echo "::warning::merge-base failed; falling back to base tip (check degraded)"
+            FORK="$MAIN_SHA"
+          fi
+          BASE_SHA="$FORK" HEAD_SHA="$HEAD_SHA" MAIN_SHA="$MAIN_SHA" \
+            python3 .github/scripts/clobber_guard.py

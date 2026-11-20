@@ -1,0 +1,47 @@
+{
+  "roundState": "fight",
+  "p1": {
+    "charId": "custom",
+    "model": "custom-template-powerhouse",
+    "name": "PHASE4B PROOF",
+    "template": "powerhouse",
+    "morphTargets": {
+      "b_weight": 0.8,
+      "b_tone": 0.4
+    },
+    "morphApplied": 20,
+    "t3bank": "jin",
+    "t3modelKey": "custom-template-powerhouse",
+    "t3actions": 22,
+    "state": "idle"
+  },
+  "bonesPresent": [
+    "Hips",
+    "Spine",
+    "Spine1",
+    "Spine2",
+    "Chest",
+    "Neck",
+    "Head",
+    "LeftArm",
+    "RightArm",
+    "LeftForeArm",
+    "RightForeArm",
+    "LeftHand",
+    "RightHand",
+    "LeftUpLeg",
+    "RightUpLeg",
+    "LeftLeg",
+    "RightLeg",
+    "LeftFoot",
+    "RightFoot"
+  ],
+  "bonesMissing": [],
+  "p2": {
+    "charId": "pantera",
+    "model": "pantera-leoman",
+    "t3bank": "king",
+    "t3actions": 22,
+    "state": "idle"
+  }
+}

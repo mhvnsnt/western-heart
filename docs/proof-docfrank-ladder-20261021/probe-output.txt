@@ -1,0 +1,35 @@
+(node:3646) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/hatch/workspace/_docfrank-ladder/wh/game/js/attires.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/hatch/workspace/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+LADDER (10):
+  1. doc-frank-a1 — ATTIRE 1 · OLD MAN
+  2. doc-frank-big — ATTIRE 1 · TRANSFORMED (TRIPO)
+  3. doc-frank-wowomomo — ATTIRE 2 · WOWOMOMO (TRIPO)
+  4. doc-frank-wowomomo-big — ATTIRE 2 · WOWOMOMO XL (TRIPO)
+  5. doc-frank-hood — ATTIRE 3 · HOOD SCIENTIST (TRIPO)
+  6. doc-frank-hood-big — ATTIRE 3 · HOOD XL (TRIPO)
+  7. doc-frank-frankenstein — ATTIRE 4 · FRANKENSTEIN'S CYBORG (TRIPO)
+  8. doc-frank-frankenstein-big — ATTIRE 4 · FRANKENSTEIN XL (TRIPO)
+  9. doc-frank — BOSCONOVITCH BASE (TEKKEN BASE)
+  10. doc-frank-machine-shop — MACHINE SHOP (RESKIN)
+
+player default (ladder[0]): doc-frank-a1
+enemy/roster model: doc-frank-a1
+transform target: doc-frank-big
+PASS player default is doc-frank-a1
+PASS roster model is doc-frank-a1
+PASS transform target is doc-frank-big
+PASS MODEL_URLS has 'doc-frank-a1' -> ../roster/doc-frank/attires/attire1/pre-transform/model.glb
+PASS MODEL_URLS has 'doc-frank-big' -> ../roster/doc-frank/attires/attire1/post-transform/model.glb
+PASS MODEL_URLS has 'doc-frank-wowomomo' -> ../roster/doc-frank/attires/attire2/base/model.glb
+PASS MODEL_URLS has 'doc-frank-wowomomo-big' -> ../roster/doc-frank/attires/attire2/transformed/model.glb
+PASS MODEL_URLS has 'doc-frank-hood' -> ../roster/doc-frank/attires/attire3/base/model.glb
+PASS MODEL_URLS has 'doc-frank-hood-big' -> ../roster/doc-frank/attires/attire3/transformed/model.glb
+PASS MODEL_URLS has 'doc-frank-frankenstein' -> ../roster/doc-frank/attires/attire4/base/model.glb
+PASS MODEL_URLS has 'doc-frank-frankenstein-big' -> ../roster/doc-frank/attires/attire4/transformed/model.glb
+PASS MODEL_URLS has 'doc-frank' -> assets/models/doc-frank.glb
+PASS MODEL_URLS has 'doc-frank-machine-shop' -> ../roster/doc-frank/attires/machine-shop/doc-frank-machine-shop-rigged.glb
+PASS transform target in MODEL_URLS
+
+ALL PROBE CHECKS PASS

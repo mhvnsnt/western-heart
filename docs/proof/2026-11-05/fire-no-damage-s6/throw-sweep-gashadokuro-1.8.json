@@ -1,0 +1,55 @@
+{
+ "fighter": "gashadokuro",
+ "input": "1+3",
+ "spacing": 1.8,
+ "ready": true,
+ "setup": {
+  "p1id": "gashadokuro",
+  "p2id": "pantera",
+  "bank": null,
+  "vbank": "king"
+ },
+ "run": {
+  "ok": true,
+  "plan": "1+3",
+  "log": [
+   {
+    "fn": "startThrowLock",
+    "moveName": null,
+    "moveDmg": 19,
+    "pairAfter": false,
+    "dState": "thrown",
+    "dLockT": 0.3
+   },
+   {
+    "fn": "startThrowing",
+    "st": "throwing",
+    "lockMoveDmg": 19
+   },
+   {
+    "fn": "completeThrow-call",
+    "st": "throwing",
+    "lockT": -8.673617379884035e-17,
+    "lockMoveDmg": 19,
+    "lockMoveName": null
+   },
+   {
+    "fn": "slam",
+    "ret": "throw",
+    "moveName": null,
+    "moveDmg": 19,
+    "hpBefore": 1000000,
+    "hpAfter": 999982.5833333334,
+    "atkPower": 1.1,
+    "defDef": 1.2,
+    "dPair": false,
+    "fPair": false,
+    "hitDone": true
+   }
+  ],
+  "seq": "atta/idle atta/idle thro/thro thro/thro thro/thro thro/thro thro/thro thro/thro thro/thro thro/thro thro/thro thro/thro thro/thro thro/thro idle/knoc idle/knoc idle/knoc idle/knoc idle/knoc idle/idle",
+  "hpDelta": 17.4,
+  "fEnd": "idle",
+  "dEnd": "idle"
+ }
+}

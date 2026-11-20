@@ -1,0 +1,1825 @@
+{
+ "schema": "ttt2-moveset-v1",
+ "source_game": "Tekken Tag Tournament 2",
+ "character": "Zafina",
+ "bxml_prefix": "zaf",
+ "bxml_doc": 35,
+ "mvlt_list": 36,
+ "provenance": {
+  "source_archive": "release ttt2-7z-v1 (mhvnsnt/western-heart)",
+  "pull_tool": "tools/ttt2_virtual_god.py --pull",
+  "pulled_file": "data018.bin",
+  "pulled_bytes": 557332,
+  "pulled_sha256": "7e06ad5336374973bf8f637b898c975585226fc7a260a730ad981365b2056db4",
+  "decoded_file": "decoded-data018.bin",
+  "decoded_bytes": 3027808,
+  "decoded_sha256": "54db09ebc63ee1a05a7b1c00cc2d7b5528d0d97c6ed1949da805daac7709293e",
+  "parser": "teardown/tekken-tag-tournament-2 tools: parse_mvlt_v4.py (authoritative; v1/v2/v3 superseded)",
+  "converter": "convert_mvlt_notation.py (empirical glyph map; see MVLT-GLYPH-MAP-20261030.md)",
+  "note": "Derived data only. No game binaries committed (western-heart AGENTS.md rule 8). Bins stay reproducible from release ttt2-7z-v1."
+ },
+ "counts": {
+  "records": 101,
+  "moves": 91,
+  "sample_combos": 7,
+  "separators": 3
+ },
+ "records": [
+  {
+   "row": 0,
+   "name": "Left Right Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2",
+   "notation_std": "1, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:zaf:row:0",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 0
+  },
+  {
+   "row": 1,
+   "name": "Left Right Scarecrow",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2, 3",
+   "notation_std": "1, 2, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:zaf:row:1",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 1
+  },
+  {
+   "row": 2,
+   "name": "Anzu",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 3",
+   "notation_std": "1, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:zaf:row:2",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 2
+  },
+  {
+   "row": 3,
+   "name": "Ecdysis",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 4",
+   "notation_std": "1, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:zaf:row:3",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 3
+  },
+  {
+   "row": 4,
+   "name": "Kapara",
+   "kind": "move",
+   "section": null,
+   "notation": "2, 1, 3",
+   "notation_std": "2, 1, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe015",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:zaf:row:4",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 4
+  },
+  {
+   "row": 5,
+   "name": "Anamalech",
+   "kind": "move",
+   "section": null,
+   "notation": "2, 2, 1+2",
+   "notation_std": "2, 2, 1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe016",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:zaf:row:5",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 5
+  },
+  {
+   "row": 6,
+   "name": "Manticore",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2, 4, 4",
+   "notation_std": "1+2, 4, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:zaf:row:6",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 6
+  },
+  {
+   "row": 7,
+   "name": "Ettimu",
+   "kind": "move",
+   "section": null,
+   "notation": "f+2, 3, 4",
+   "notation_std": "f+2, 3, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe016",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:zaf:row:7",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 7
+  },
+  {
+   "row": 8,
+   "name": "Scarecrow Side Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "f+3",
+   "notation_std": "f+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:zaf:row:8",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 8
+  },
+  {
+   "row": 9,
+   "name": "Aqrabuamelu",
+   "kind": "move",
+   "section": null,
+   "notation": "f+4",
+   "notation_std": "f+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:zaf:row:9",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 9
+  },
+  {
+   "row": 10,
+   "name": "Gugal-Ana",
+   "kind": "move",
+   "section": null,
+   "notation": "f+1+2",
+   "notation_std": "f+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:zaf:row:10",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 10
+  },
+  {
+   "row": 11,
+   "name": "Bloody Saif",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+1, 2",
+   "notation_std": "d/f+1, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:zaf:row:11",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 11
+  },
+  {
+   "row": 12,
+   "name": "Bloody Saif - Execution",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+1, 2, 1",
+   "notation_std": "d/f+1, 2, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe015",
+    "0xe016",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:zaf:row:12",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 12
+  },
+  {
+   "row": 13,
+   "name": "Shamshir",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+1, 4",
+   "notation_std": "d/f+1, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe015",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:zaf:row:13",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 13
+  },
+  {
+   "row": 14,
+   "name": "Lamashtu Claw",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+2",
+   "notation_std": "d/f+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:zaf:row:14",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 14
+  },
+  {
+   "row": 15,
+   "name": "Dueling Scimitars",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+3, 4",
+   "notation_std": "d/f+3, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:zaf:row:15",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 15
+  },
+  {
+   "row": 16,
+   "name": "Pukku",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+3, d+4",
+   "notation_std": "d/f+3, d+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe018",
+    "0xe001",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:zaf:row:16",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 16
+  },
+  {
+   "row": 17,
+   "name": "Mikku",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+4, 1",
+   "notation_std": "d/f+4, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe01c",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:zaf:row:17",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 17
+  },
+  {
+   "row": 18,
+   "name": "Kur",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+1+2",
+   "notation_std": "d/f+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:zaf:row:18",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 18
+  },
+  {
+   "row": 19,
+   "name": "Ningishzida",
+   "kind": "move",
+   "section": null,
+   "notation": "d+1, 1",
+   "notation_std": "d+1, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe015",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:zaf:row:19",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 19
+  },
+  {
+   "row": 20,
+   "name": "Poison Rosette",
+   "kind": "move",
+   "section": null,
+   "notation": "d+2, 4, 3",
+   "notation_std": "d+2, 4, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe016",
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:zaf:row:20",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 20
+  },
+  {
+   "row": 21,
+   "name": "Earwig Pincer",
+   "kind": "move",
+   "section": null,
+   "notation": "d+3",
+   "notation_std": "d+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:zaf:row:21",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 21
+  },
+  {
+   "row": 22,
+   "name": "Iskur",
+   "kind": "move",
+   "section": null,
+   "notation": "d+4, 3",
+   "notation_std": "d+4, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:zaf:row:22",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 22
+  },
+  {
+   "row": 23,
+   "name": "Backhand Thrust",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+2",
+   "notation_std": "d/b+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:zaf:row:23",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 23
+  },
+  {
+   "row": 24,
+   "name": "Acinaces",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+3",
+   "notation_std": "d/b+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:zaf:row:24",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 24
+  },
+  {
+   "row": 25,
+   "name": "Euphrates Cannon",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+4, 2",
+   "notation_std": "d/b+4, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe01c",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:zaf:row:25",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 25
+  },
+  {
+   "row": 26,
+   "name": "Sirrush",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+1+2, 1+2",
+   "notation_std": "d/b+1+2, 1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe017",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:zaf:row:26",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 26
+  },
+  {
+   "row": 27,
+   "name": "Cursed Crow",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1",
+   "notation_std": "b+1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:zaf:row:27",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 27
+  },
+  {
+   "row": 28,
+   "name": "Backfist",
+   "kind": "move",
+   "section": null,
+   "notation": "b+2",
+   "notation_std": "b+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:zaf:row:28",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 28
+  },
+  {
+   "row": 29,
+   "name": "Ereshkigal Stomp",
+   "kind": "move",
+   "section": null,
+   "notation": "b+3",
+   "notation_std": "b+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:zaf:row:29",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 29
+  },
+  {
+   "row": 30,
+   "name": "Tiamat's Tail",
+   "kind": "move",
+   "section": null,
+   "notation": "b+4, 4",
+   "notation_std": "b+4, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:zaf:row:30",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 30
+  },
+  {
+   "row": 31,
+   "name": "Inanna's Fury",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1+2",
+   "notation_std": "b+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:zaf:row:31",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 31
+  },
+  {
+   "row": 32,
+   "name": "Spear of Alu",
+   "kind": "move",
+   "section": null,
+   "notation": "b+2+3",
+   "notation_std": "b+2+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe01a"
+   ],
+   "anim_ref": "ttt2:zaf:row:32",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 32
+  },
+  {
+   "row": 33,
+   "name": "Lapis Dagger",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+1",
+   "notation_std": "u/f+1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:zaf:row:33",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 33
+  },
+  {
+   "row": 34,
+   "name": "Arali",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3",
+   "notation_std": "u/f+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:zaf:row:34",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 34
+  },
+  {
+   "row": 35,
+   "name": "Phyllobates",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+1+2",
+   "notation_std": "u/f+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:zaf:row:35",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 35
+  },
+  {
+   "row": 36,
+   "name": "Gilgamesh Blast",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+2",
+   "notation_std": "f, f+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:zaf:row:36",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 36
+  },
+  {
+   "row": 37,
+   "name": "Sagaris Smash",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+3, 1",
+   "notation_std": "f, f+3, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe018",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:zaf:row:37",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 37
+  },
+  {
+   "row": 38,
+   "name": "Roundhouse Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+4",
+   "notation_std": "f, f+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:zaf:row:38",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 38
+  },
+  {
+   "row": 39,
+   "name": "Gallu",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+3+4",
+   "notation_std": "f, f+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:zaf:row:39",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 39
+  },
+  {
+   "row": 40,
+   "name": "Leaping Side Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "f, f, f+3",
+   "notation_std": "f, f, f+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe004",
+    "0xe004",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:zaf:row:40",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 40
+  },
+  {
+   "row": 41,
+   "name": "Tarantula Dive",
+   "kind": "move",
+   "section": null,
+   "notation": "4",
+   "notation_std": "4",
+   "condition_text": "Run more than 3 steps",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:zaf:row:41",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 41
+  },
+  {
+   "row": 42,
+   "name": "Ereshkigal Smack",
+   "kind": "move",
+   "section": null,
+   "notation": "1",
+   "notation_std": "1",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:zaf:row:42",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 42
+  },
+  {
+   "row": 43,
+   "name": "Alraune",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2",
+   "notation_std": "1, 2",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:zaf:row:43",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 43
+  },
+  {
+   "row": 44,
+   "name": "Rising Claw",
+   "kind": "move",
+   "section": null,
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:zaf:row:44",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 44
+  },
+  {
+   "row": 45,
+   "name": "Spinning Sweep",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+3",
+   "notation_std": "d/f+3",
+   "condition_text": "While crouching",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:zaf:row:45",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 45
+  },
+  {
+   "row": 46,
+   "name": "Adramelech",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "During side step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:zaf:row:46",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 46
+  },
+  {
+   "row": 47,
+   "name": "■ Commands during Tarantula Stance ■",
+   "kind": "separator"
+  },
+  {
+   "row": 48,
+   "name": "Tarantula Stance",
+   "kind": "move",
+   "section": "■ Commands during Tarantula Stance ■",
+   "notation": "d+1+2",
+   "notation_std": "d+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:zaf:row:48",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 48
+  },
+  {
+   "row": 49,
+   "name": "Tarantula Shotel",
+   "kind": "move",
+   "section": "■ Commands during Tarantula Stance ■",
+   "notation": "1",
+   "notation_std": "1",
+   "condition_text": "During Tarantula Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:zaf:row:49",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 49
+  },
+  {
+   "row": 50,
+   "name": "Tarantula Cutlass",
+   "kind": "move",
+   "section": "■ Commands during Tarantula Stance ■",
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "During Tarantula Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:zaf:row:50",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 50
+  },
+  {
+   "row": 51,
+   "name": "Deathstalker",
+   "kind": "move",
+   "section": "■ Commands during Tarantula Stance ■",
+   "notation": "3",
+   "notation_std": "3",
+   "condition_text": "During Tarantula Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:zaf:row:51",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 51
+  },
+  {
+   "row": 52,
+   "name": "Tarantula's Bite",
+   "kind": "move",
+   "section": "■ Commands during Tarantula Stance ■",
+   "notation": "4, 3",
+   "notation_std": "4, 3",
+   "condition_text": "During Tarantula Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:zaf:row:52",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 52
+  },
+  {
+   "row": 53,
+   "name": "Tarantula Claw",
+   "kind": "move",
+   "section": "■ Commands during Tarantula Stance ■",
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "During Tarantula Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:zaf:row:53",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 53
+  },
+  {
+   "row": 54,
+   "name": "Tarantula Scimitar",
+   "kind": "move",
+   "section": "■ Commands during Tarantula Stance ■",
+   "notation": "d+1+2",
+   "notation_std": "d+1+2",
+   "condition_text": "During Tarantula Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:zaf:row:54",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 54
+  },
+  {
+   "row": 55,
+   "name": "■ Commands during Scarecrow Stance ■",
+   "kind": "separator"
+  },
+  {
+   "row": 56,
+   "name": "Scarecrow Stance",
+   "kind": "move",
+   "section": "■ Commands during Scarecrow Stance ■",
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:zaf:row:56",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 56
+  },
+  {
+   "row": 57,
+   "name": "Scarecrow Slap",
+   "kind": "move",
+   "section": "■ Commands during Scarecrow Stance ■",
+   "notation": "1",
+   "notation_std": "1",
+   "condition_text": "During Scarecrow Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:zaf:row:57",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 57
+  },
+  {
+   "row": 58,
+   "name": "Circling Cutlass",
+   "kind": "move",
+   "section": "■ Commands during Scarecrow Stance ■",
+   "notation": "2, 2",
+   "notation_std": "2, 2",
+   "condition_text": "During Scarecrow Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:zaf:row:58",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 58
+  },
+  {
+   "row": 59,
+   "name": "Scarecrow Sweep",
+   "kind": "move",
+   "section": "■ Commands during Scarecrow Stance ■",
+   "notation": "3, 3, 4",
+   "notation_std": "3, 3, 4",
+   "condition_text": "During Scarecrow Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:zaf:row:59",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 59
+  },
+  {
+   "row": 60,
+   "name": "Gizal",
+   "kind": "move",
+   "section": "■ Commands during Scarecrow Stance ■",
+   "notation": "3, f+3",
+   "notation_std": "3, f+3",
+   "condition_text": "During Scarecrow Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe004",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:zaf:row:60",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 60
+  },
+  {
+   "row": 61,
+   "name": "Spinning Sappara",
+   "kind": "move",
+   "section": "■ Commands during Scarecrow Stance ■",
+   "notation": "4",
+   "notation_std": "4",
+   "condition_text": "During Scarecrow Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:zaf:row:61",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 61
+  },
+  {
+   "row": 62,
+   "name": "Huwawa",
+   "kind": "move",
+   "section": "■ Commands during Scarecrow Stance ■",
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "During Scarecrow Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:zaf:row:62",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 62
+  },
+  {
+   "row": 63,
+   "name": "Kigal",
+   "kind": "move",
+   "section": "■ Commands during Scarecrow Stance ■",
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "During Scarecrow Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:zaf:row:63",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 63
+  },
+  {
+   "row": 64,
+   "name": "Abzu Abyss",
+   "kind": "move",
+   "section": "■ Commands during Scarecrow Stance ■",
+   "notation": "d/f+3",
+   "notation_std": "d/f+3",
+   "condition_text": "During Scarecrow Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:zaf:row:64",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 64
+  },
+  {
+   "row": 65,
+   "name": "Scarecrow Scythe",
+   "kind": "move",
+   "section": "■ Commands during Scarecrow Stance ■",
+   "notation": "d/f+4",
+   "notation_std": "d/f+4",
+   "condition_text": "During Scarecrow Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:zaf:row:65",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 65
+  },
+  {
+   "row": 66,
+   "name": "Sag-Giga Sickle",
+   "kind": "move",
+   "section": "■ Commands during Scarecrow Stance ■",
+   "notation": "d+3, 3",
+   "notation_std": "d+3, 3",
+   "condition_text": "During Scarecrow Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe018",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:zaf:row:66",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 66
+  },
+  {
+   "row": 67,
+   "name": "Double Shin Kick",
+   "kind": "move",
+   "section": "■ Commands during Scarecrow Stance ■",
+   "notation": "d+3, d+3",
+   "notation_std": "d+3, d+3",
+   "condition_text": "During Scarecrow Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe018",
+    "0xe001",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:zaf:row:67",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 67
+  },
+  {
+   "row": 68,
+   "name": "Scarecrow Slide",
+   "kind": "move",
+   "section": "■ Commands during Scarecrow Stance ■",
+   "notation": "d+4",
+   "notation_std": "d+4",
+   "condition_text": "During Scarecrow Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:zaf:row:68",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 68
+  },
+  {
+   "row": 69,
+   "name": "Scarecrow Stance to Mantis Stance",
+   "kind": "move",
+   "section": "■ Commands during Scarecrow Stance ■",
+   "notation": "d+3+4",
+   "notation_std": "d+3+4",
+   "condition_text": "During Scarecrow Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:zaf:row:69",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 69
+  },
+  {
+   "row": 70,
+   "name": "■ Commands during Mantis Stance ■",
+   "kind": "separator"
+  },
+  {
+   "row": 71,
+   "name": "Mantis Stance",
+   "kind": "move",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "d+3+4",
+   "notation_std": "d+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:zaf:row:71",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 71
+  },
+  {
+   "row": 72,
+   "name": "Butterfly Capture",
+   "kind": "move",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "1",
+   "notation_std": "1",
+   "condition_text": "During Mantis Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:zaf:row:72",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 72
+  },
+  {
+   "row": 73,
+   "name": "Mantis Sting",
+   "kind": "move",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "2, 1, 4",
+   "notation_std": "2, 1, 4",
+   "condition_text": "During Mantis Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe015",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:zaf:row:73",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 73
+  },
+  {
+   "row": 74,
+   "name": "Lilith",
+   "kind": "move",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "3, 4, 4",
+   "notation_std": "3, 4, 4",
+   "condition_text": "During Mantis Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:zaf:row:74",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 74
+  },
+  {
+   "row": 75,
+   "name": "Tigris Sweep",
+   "kind": "move",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "3, 4, d+4",
+   "notation_std": "3, 4, d+4",
+   "condition_text": "During Mantis Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe01c",
+    "0xe001",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:zaf:row:75",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 75
+  },
+  {
+   "row": 76,
+   "name": "Neti",
+   "kind": "move",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "4, 3",
+   "notation_std": "4, 3",
+   "condition_text": "During Mantis Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:zaf:row:76",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 76
+  },
+  {
+   "row": 77,
+   "name": "Paradox",
+   "kind": "move",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "2+3",
+   "notation_std": "2+3",
+   "condition_text": "During Mantis Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01a"
+   ],
+   "anim_ref": "ttt2:zaf:row:77",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 77
+  },
+  {
+   "row": 78,
+   "name": "Enlil",
+   "kind": "move",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "d/f+2",
+   "notation_std": "d/f+2",
+   "condition_text": "During Mantis Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:zaf:row:78",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 78
+  },
+  {
+   "row": 79,
+   "name": "Negal's Lance",
+   "kind": "move",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "d/f+3",
+   "notation_std": "d/f+3",
+   "condition_text": "During Mantis Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:zaf:row:79",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 79
+  },
+  {
+   "row": 80,
+   "name": "Mantis Sickle",
+   "kind": "move",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "d+1, 4",
+   "notation_std": "d+1, 4",
+   "condition_text": "During Mantis Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe015",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:zaf:row:80",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 80
+  },
+  {
+   "row": 81,
+   "name": "Sweeping Claw",
+   "kind": "move",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "d+3, 1",
+   "notation_std": "d+3, 1",
+   "condition_text": "During Mantis Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe018",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:zaf:row:81",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 81
+  },
+  {
+   "row": 82,
+   "name": "Mantis Slide",
+   "kind": "move",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "d+4",
+   "notation_std": "d+4",
+   "condition_text": "During Mantis Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:zaf:row:82",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 82
+  },
+  {
+   "row": 83,
+   "name": "Enki",
+   "kind": "move",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "u/f+3",
+   "notation_std": "u/f+3",
+   "condition_text": "During Mantis Stance",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:zaf:row:83",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 83
+  },
+  {
+   "row": 84,
+   "name": "10 Hit Combo 1",
+   "kind": "move",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "d/f+1, 4, 2, 3, 4, 1, 3, 2, 4, 2",
+   "notation_std": "d/f+1, 4, 2, 3, 4, 1, 3, 2, 4, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe015",
+    "0xe01c",
+    "0xe016",
+    "0xe018",
+    "0xe01c",
+    "0xe015",
+    "0xe018",
+    "0xe016",
+    "0xe01c",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:zaf:row:84",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 84
+  },
+  {
+   "row": 85,
+   "name": "10 Hit Combo 2",
+   "kind": "move",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "d/f+1, 4, 2, 3, 4, 1, d+3, 3, 2, 2",
+   "notation_std": "d/f+1, 4, 2, 3, 4, 1, d+3, 3, 2, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe015",
+    "0xe01c",
+    "0xe016",
+    "0xe018",
+    "0xe01c",
+    "0xe015",
+    "0xe001",
+    "0xe018",
+    "0xe018",
+    "0xe016",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:zaf:row:85",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 85
+  },
+  {
+   "row": 86,
+   "name": "Diabolos",
+   "kind": "move",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "1+3",
+   "notation_std": "1+3",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019"
+   ],
+   "anim_ref": "ttt2:zaf:row:86",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 86
+  },
+  {
+   "row": 87,
+   "name": "Diabolos",
+   "kind": "move",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "f+1+3",
+   "notation_std": "f+1+3",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe019"
+   ],
+   "anim_ref": "ttt2:zaf:row:87",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 87
+  },
+  {
+   "row": 88,
+   "name": "Akhazu",
+   "kind": "move",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "2+4",
+   "notation_std": "2+4",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:zaf:row:88",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 88
+  },
+  {
+   "row": 89,
+   "name": "Akhazu",
+   "kind": "move",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "f+2+4",
+   "notation_std": "f+2+4",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:zaf:row:89",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 89
+  },
+  {
+   "row": 90,
+   "name": "Labasu",
+   "kind": "move",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "1+3 or 2+4",
+   "notation_std": "1+3 or 2+4",
+   "condition_text": "Approach from left side (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:zaf:row:90",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 90
+  },
+  {
+   "row": 91,
+   "name": "Labartu",
+   "kind": "move",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "1+3 or 2+4",
+   "notation_std": "1+3 or 2+4",
+   "condition_text": "Approach from right side (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:zaf:row:91",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 91
+  },
+  {
+   "row": 92,
+   "name": "Namtar",
+   "kind": "move",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "1+3 or 2+4",
+   "notation_std": "1+3 or 2+4",
+   "condition_text": "Approach from behind (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:zaf:row:92",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 92
+  },
+  {
+   "row": 93,
+   "name": "Dumuzi's Fate",
+   "kind": "move",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "f, F+1+2",
+   "notation_std": "f, f+1+2",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:zaf:row:93",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 93
+  },
+  {
+   "row": 94,
+   "name": "Sample Combo 1",
+   "kind": "sample_combo",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "u/f+4, f+1, 2, f+1+2",
+   "notation_std": "u/f+4, f+1, 2, f+1+2",
+   "condition_text": "",
+   "multi_part": true,
+   "glyphs": [
+    "0xe007",
+    "0xe01c",
+    "0xe063",
+    "0xe004",
+    "0xe015",
+    "0xe016",
+    "0xe063",
+    "0xe004",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:zaf:row:94",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 94
+  },
+  {
+   "row": 95,
+   "name": "Sample Combo 2",
+   "kind": "sample_combo",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "d/b+1+2, d+3, 1, 4, 3",
+   "notation_std": "d/b+1+2, d+3, 1, 4, 3",
+   "condition_text": "During Mantis Stance During Mantis Stance",
+   "multi_part": true,
+   "glyphs": [
+    "0xe000",
+    "0xe017",
+    "0xe063",
+    "0xe001",
+    "0xe018",
+    "0xe015",
+    "0xe063",
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:zaf:row:95",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 95
+  },
+  {
+   "row": 96,
+   "name": "Sample Combo 3",
+   "kind": "sample_combo",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "d/f+2, u/f+1, f+2, 3, 3+4, d/f+1, 4",
+   "notation_std": "d/f+2, u/f+1, f+2, 3, 3+4, d/f+1, 4",
+   "condition_text": "During Scarecrow Stance",
+   "multi_part": true,
+   "glyphs": [
+    "0xe002",
+    "0xe016",
+    "0xe063",
+    "0xe007",
+    "0xe015",
+    "0xe063",
+    "0xe004",
+    "0xe016",
+    "0xe018",
+    "0xe063",
+    "0xe020",
+    "0xe063",
+    "0xe002",
+    "0xe015",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:zaf:row:96",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 96
+  },
+  {
+   "row": 97,
+   "name": "Sample Combo 4",
+   "kind": "sample_combo",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "f+3, 3+4, d/f+1, 2, 1",
+   "notation_std": "f+3, 3+4, d/f+1, 2, 1",
+   "condition_text": "During Scarecrow Stance",
+   "multi_part": true,
+   "glyphs": [
+    "0xe004",
+    "0xe018",
+    "0xe063",
+    "0xe020",
+    "0xe063",
+    "0xe002",
+    "0xe015",
+    "0xe016",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:zaf:row:97",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 97
+  },
+  {
+   "row": 98,
+   "name": "Sample Combo 5",
+   "kind": "sample_combo",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "1, 2, f+1, 2, 3, 3+4, d/f+4, 1",
+   "notation_std": "1, 2, f+1, 2, 3, 3+4, d/f+4, 1",
+   "condition_text": "While rising During Scarecrow Stance",
+   "multi_part": true,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe063",
+    "0xe004",
+    "0xe015",
+    "0xe016",
+    "0xe018",
+    "0xe063",
+    "0xe020",
+    "0xe063",
+    "0xe002",
+    "0xe01c",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:zaf:row:98",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 98
+  },
+  {
+   "row": 99,
+   "name": "Sample Combo 6",
+   "kind": "sample_combo",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "d+1+2, 2, f, F+2, 1+2, f+2, 3, 4",
+   "notation_std": "d+1+2, 2, f, f+2, 1+2, f+2, 3, 4",
+   "condition_text": "During Tarantula Stance",
+   "multi_part": true,
+   "glyphs": [
+    "0xe001",
+    "0xe017",
+    "0xe063",
+    "0xe016",
+    "0xe063",
+    "0xe004",
+    "0xe00c",
+    "0xe016",
+    "0xe063",
+    "0xe017",
+    "0xe063",
+    "0xe004",
+    "0xe016",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:zaf:row:99",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 99
+  },
+  {
+   "row": 100,
+   "name": "Sample Combo 7",
+   "kind": "sample_combo",
+   "section": "■ Commands during Mantis Stance ■",
+   "notation": "2, f+1, u/f+1, f+2, 3, 3+4, b+4, 4",
+   "notation_std": "2, f+1, u/f+1, f+2, 3, 3+4, b+4, 4",
+   "condition_text": "While rising During Scarecrow Stance",
+   "multi_part": true,
+   "glyphs": [
+    "0xe016",
+    "0xe063",
+    "0xe004",
+    "0xe015",
+    "0xe063",
+    "0xe007",
+    "0xe015",
+    "0xe063",
+    "0xe004",
+    "0xe016",
+    "0xe018",
+    "0xe063",
+    "0xe020",
+    "0xe063",
+    "0xe003",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:zaf:row:100",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 100
+  }
+ ]
+}

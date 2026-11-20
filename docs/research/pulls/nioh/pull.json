@@ -1,0 +1,35 @@
+{
+ "game": "Nioh: Complete Edition",
+ "ownership_basis": "Steam snapshot: owned, 3.1h",
+ "status": "spec-only — no game files were accessible from this VM (phone-only user, Steam remote download unreachable); this pack is the teardown path + conversion/wire schema, NOT extracted commercial assets",
+ "teardown_toolchain": [
+  "Community stance/skill documentation (Fextralife combat wiki) as the design source — no public model/animation extractor is claimed in this pack",
+  "On a local install: inspect installed data layout first; do NOT assert a tool until the format is confirmed from the files"
+ ],
+ "extractable": [
+  "Stance system: High (slow, heavy damage, heavy Ki cost) / Mid (balanced, guard-strong, wide sweeps) / Low (fast, weak, low Ki, best dodge) — switchable mid-combo",
+  "Ki + Ki Pulse: timed Ki restore on a stance-switch input — the core loop (attack → pulse → stance-switch → follow-up)",
+  "Weapon skill trees (sword/dual sword/spear/axe/kusarigama) as per-weapon string variants",
+  "Shrine/mission structure → Heart and Mind Within mission gating"
+ ],
+ "wh_wire": {
+  "combat": "WH stance layer ON TOP of the Tekken base: same LP1/RP2/LK3/RK4 buttons, different string properties per stance; Ki Pulse mapped to a timed input window after a string, NOT a new button",
+  "creation": "Weapon-type templates (sword/spear/axe/kusarigama) for creation-suite weapon slots",
+  "stages": "Shrine/mission arena dressing",
+  "audio": "UNMAPPED",
+  "systems": "Ki/stamina economy + stance-switch mid-combo; guardian-spirit passives → transformation-state reference only"
+ },
+ "blocker": "No local game install is reachable from this VM and no game files were supplied with this task. Steam remote download previously reported 'Unable to reach your PC'; user rule is phone-only, no PC paths.",
+ "unblock": "Design-first wire: implement the stance/Ki spec from this pack with TUNING UNMAPPED (multipliers to be set by playing, not guessed here); any model/animation pull waits on a confirmed local-install format inspection.",
+ "canon_rule": "Anything brought in with another game's name is renamed to Eastern Mind / Western Heart canon in user-facing writing. Tekken/proprietary names stay in technical files only. Game ships with NO famous names. All characters adults. User's own models (Tripo + SmutBase) display FIRST; Tekken models are back-slot attires. Sole exception: Pantera Attire 1 (user-customized King reskin).",
+ "combat_inputs": "LP1=Left Punch=Tekken 1, RP2=Right Punch=Tekken 2, LK3=Left Kick=Tekken 3, RK4=Right Kick=Tekken 4. Frame data / MOD damage: UNMAPPED unless a source file in this pack contains it — never estimated as measured.",
+ "community_sources": [
+  "https://nioh.wiki.fextralife.com/combat"
+ ],
+ "stance_spec": {
+  "high": "damage UP, speed DOWN, Ki cost UP, dodge/block WEAKER",
+  "mid": "balanced, guard UP, wide sweeps, crowd-control",
+  "low": "damage DOWN, speed UP, Ki cost DOWN, dodge UP"
+ },
+ "tuning": "PROPOSED_NOT_MEASURED — no multipliers are asserted in this pack; set by playtest, then record measured values here"
+}

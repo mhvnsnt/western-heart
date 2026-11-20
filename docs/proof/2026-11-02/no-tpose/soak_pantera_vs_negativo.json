@@ -1,0 +1,32 @@
+{
+ "fighter": "pantera",
+ "opponent": "negativo",
+ "seconds": 180,
+ "samples": 1110,
+ "fighterSamples": 2220,
+ "tposeSamples": 0,
+ "stateTally": {
+  "p1:jump": 132,
+  "p2:walk": 233,
+  "p1:walk": 279,
+  "p1:vshift": 124,
+  "p2:attack": 651,
+  "p1:idle": 104,
+  "p2:idle": 55,
+  "p1:attack": 239,
+  "p2:dodge": 171,
+  "p1:hitstun": 169,
+  "p1:block": 63
+ },
+ "tposeTally": {},
+ "incidents": [],
+ "logs": [
+  "[error] Failed to load resource: the server responded with a status of 404 (File not found)",
+  "[error] Failed to load resource: net::ERR_FAILED",
+  "[error] Failed to load resource: the server responded with a status of 404 (File not found)",
+  "[error] Failed to load resource: the server responded with a status of 404 (File not found)",
+  "[error] Failed to load resource: net::ERR_FAILED",
+  "[warning] [WH-CS] pantera texture FAILED eye-classic-original: no material matched texture \"King_Eye_D\" / material \"Modeleyes_Material003\"",
+  "[warning] [WHHitDetect] verify failed, keeping sphere result TypeError: baked.computeBoundsTree is not a function\n    at WHHitDetect.buildFighterBVH (http://127.0.0.1:8765/game/js/hitdetect.js:81:11)\n    at async WHHitDetect.testL"
+ ]
+}

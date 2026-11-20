@@ -1,0 +1,185 @@
+{
+ "format": "wh-anim-skel/1",
+ "source_glb": "lab/game/assets/t3_xiaoyu_t3real.glb",
+ "source_glb_sha256": "d5f999bbb09a1db5041009a6ccf6fd2fcb18b4e1fe647030522b85ed2ec79d8d",
+ "tool": "tools/anim/t3_bank_skeleton.py",
+ "note": "Rest pose of the rig the bank's clips were baked onto. All joint rest rotations are identity; rest = world joint positions (glTF space, meters, faces +Z, character left = +X).",
+ "root": "Root",
+ "root_rest_y": 0.989226,
+ "joints": [
+  {
+   "name": "Root",
+   "parent": null,
+   "rest": [
+    0.0,
+    0.989226,
+    0.0
+   ]
+  },
+  {
+   "name": "Chest",
+   "parent": "Root",
+   "rest": [
+    3.4e-05,
+    0.989204,
+    -1.7e-05
+   ]
+  },
+  {
+   "name": "Hips",
+   "parent": "Root",
+   "rest": [
+    0.0,
+    0.989226,
+    0.0
+   ]
+  },
+  {
+   "name": "RightUpLeg",
+   "parent": "Hips",
+   "rest": [
+    -0.095068,
+    0.840379,
+    -0.051428
+   ]
+  },
+  {
+   "name": "RightLeg",
+   "parent": "RightUpLeg",
+   "rest": [
+    -0.126234,
+    0.498536,
+    0.209373
+   ]
+  },
+  {
+   "name": "RightFoot",
+   "parent": "RightLeg",
+   "rest": [
+    -0.086139,
+    0.127657,
+    -0.006302
+   ]
+  },
+  {
+   "name": "LeftUpLeg",
+   "parent": "Hips",
+   "rest": [
+    0.098783,
+    0.844178,
+    -0.055587
+   ]
+  },
+  {
+   "name": "LeftLeg",
+   "parent": "LeftUpLeg",
+   "rest": [
+    0.147241,
+    0.486946,
+    0.181576
+   ]
+  },
+  {
+   "name": "LeftFoot",
+   "parent": "LeftLeg",
+   "rest": [
+    0.132284,
+    0.117089,
+    -0.040456
+   ]
+  },
+  {
+   "name": "RightShoulder",
+   "parent": "Chest",
+   "rest": [
+    -0.036717,
+    1.2338,
+    0.122329
+   ]
+  },
+  {
+   "name": "RightArm",
+   "parent": "RightShoulder",
+   "rest": [
+    -0.152052,
+    1.213036,
+    0.131746
+   ]
+  },
+  {
+   "name": "RightForeArm",
+   "parent": "RightArm",
+   "rest": [
+    -0.220259,
+    0.981283,
+    0.121029
+   ]
+  },
+  {
+   "name": "RightHand",
+   "parent": "RightForeArm",
+   "rest": [
+    -0.038799,
+    0.927908,
+    0.244569
+   ]
+  },
+  {
+   "name": "LeftShoulder",
+   "parent": "Chest",
+   "rest": [
+    0.029256,
+    1.234847,
+    0.122329
+   ]
+  },
+  {
+   "name": "LeftArm",
+   "parent": "LeftShoulder",
+   "rest": [
+    0.145548,
+    1.196718,
+    0.130599
+   ]
+  },
+  {
+   "name": "LeftForeArm",
+   "parent": "LeftArm",
+   "rest": [
+    0.236564,
+    0.972835,
+    0.141002
+   ]
+  },
+  {
+   "name": "LeftHand",
+   "parent": "LeftForeArm",
+   "rest": [
+    0.042581,
+    0.957186,
+    0.255537
+   ]
+  },
+  {
+   "name": "Head",
+   "parent": "Chest",
+   "rest": [
+    -0.004756,
+    1.301387,
+    0.155824
+   ]
+  }
+ ],
+ "foot_tip": {
+  "LeftFoot": [
+   0.12047,
+   0.075983,
+   -0.012583
+  ],
+  "RightFoot": [
+   -0.078101,
+   0.087884,
+   0.024656
+  ]
+ }
+}

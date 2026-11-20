@@ -1,0 +1,691 @@
+{
+ "display": "WESTERN HEART — THE HEAD-WORLD (Eastern Mind foundation)",
+ "pack": "eastern-mind",
+ "canon": "CANON.md §1 The World, §4 The Nine Souls, §5 The Story, §8 The Head-World As the Trial Found It",
+ "source": {
+  "teardown": "teardown/eastern-mind/",
+  "teardown_doc": "teardown/eastern-mind/TEARDOWN.md",
+  "inventory": "teardown/eastern-mind/WIRING-INVENTORY.md",
+  "conversion_log": "teardown/eastern-mind/CANON-CONVERSION.md",
+  "files_total": 5707
+ },
+ "note": "Registry following the game/assets/stages/sf-ex/stages.json pattern. Stage identities and systems are live in game/js/stages.js and game/js/modes.js (cited per stage). The teardown bitmap/sound files listed here are the visual/audio source for each land; no game code loads them individually yet — that texture/audio consumption step is the flagged follow-up in CANON-CONVERSION.md, not a completed wire.",
+ "stages": [
+  {
+   "id": "tree-of-life",
+   "name": "TREE OF LIFE",
+   "canon_name": "Tree of Life (Ming-ken)",
+   "element": "Wood",
+   "force": "wood",
+   "ladder_order": 1,
+   "land": "Land of Life",
+   "game_stage_def": "game/js/stages.js def `tree-of-life` (builder `treelife`)",
+   "story_stage": "game/js/modes.js STORY_STAGES 1",
+   "teardown_dir": "teardown/eastern-mind/stage-4-tree-of-life/",
+   "counts": {
+    "files": 505,
+    "bytes": 13047382,
+    "bitmaps": 475,
+    "sounds": 27,
+    "text": 3,
+    "video": 0
+   },
+   "areas": [
+    {
+     "source_area": "L_FIELD",
+     "files": 55,
+     "bytes": 1871790
+    },
+    {
+     "source_area": "L_FOREST",
+     "files": 160,
+     "bytes": 2090697
+    },
+    {
+     "source_area": "L_INNER",
+     "files": 38,
+     "bytes": 1176901
+    },
+    {
+     "source_area": "L_KING",
+     "files": 67,
+     "bytes": 1641096
+    },
+    {
+     "source_area": "L_OGRE",
+     "files": 43,
+     "bytes": 947400
+    },
+    {
+     "source_area": "L_TONNEL",
+     "files": 42,
+     "bytes": 1837145
+    },
+    {
+     "source_area": "L_WOOD",
+     "files": 78,
+     "bytes": 2737755
+    },
+    {
+     "source_area": "L_WTOR",
+     "files": 19,
+     "bytes": 744369
+    }
+   ]
+  },
+  {
+   "id": "plains-of-chi-u",
+   "name": "PLAINS OF CHI-U",
+   "canon_name": "Plains of Chi-U (Shi-chieng)",
+   "element": "Fire",
+   "force": "fire",
+   "ladder_order": 2,
+   "land": "Land of Time",
+   "game_stage_def": "game/js/stages.js def `plains-of-chi-u` (builder `chiu`)",
+   "story_stage": "game/js/modes.js STORY_STAGES 2",
+   "teardown_dir": "teardown/eastern-mind/stage-1-plains-of-chi-u/",
+   "counts": {
+    "files": 518,
+    "bytes": 11578079,
+    "bitmaps": 495,
+    "sounds": 23,
+    "text": 0,
+    "video": 0
+   },
+   "areas": [
+    {
+     "source_area": "F_FIELD",
+     "files": 151,
+     "bytes": 2690398
+    },
+    {
+     "source_area": "F_KING",
+     "files": 148,
+     "bytes": 2623466
+    },
+    {
+     "source_area": "F_TONNEL",
+     "files": 69,
+     "bytes": 1752662
+    },
+    {
+     "source_area": "F_TOWER1",
+     "files": 36,
+     "bytes": 1345320
+    },
+    {
+     "source_area": "F_TOWER2",
+     "files": 80,
+     "bytes": 1770081
+    },
+    {
+     "source_area": "F_TOWER3",
+     "files": 34,
+     "bytes": 1396152
+    }
+   ]
+  },
+  {
+   "id": "octagonal-shrine",
+   "name": "OCTAGONAL SHRINE PAR-FANG",
+   "canon_name": "Octagonal Shrine Par-fang (Central Mountain)",
+   "element": "Earth",
+   "force": "earth",
+   "ladder_order": 3,
+   "land": "The Source",
+   "game_stage_def": "game/js/stages.js defs `octagonal-shrine` (builder `parfang`) and `shrine` / SHRINE OF THE BLADE (builder `buildShrine`); also def `tong-nou`",
+   "story_stage": "game/js/modes.js STORY_STAGES 3 and 7 (final ascent / Assembled Soul)",
+   "teardown_dir": "teardown/eastern-mind/stage-6-octagonal-shrine-par-fang/",
+   "counts": {
+    "files": 223,
+    "bytes": 13719312,
+    "bitmaps": 210,
+    "sounds": 10,
+    "text": 3,
+    "video": 0
+   },
+   "areas": [
+    {
+     "source_area": "E_LAST",
+     "files": 27,
+     "bytes": 7461536
+    },
+    {
+     "source_area": "E_MOUNT",
+     "files": 32,
+     "bytes": 1575629
+    },
+    {
+     "source_area": "E_RM1",
+     "files": 51,
+     "bytes": 1047641
+    },
+    {
+     "source_area": "E_RM2",
+     "files": 58,
+     "bytes": 759666
+    },
+    {
+     "source_area": "E_STAIRS",
+     "files": 52,
+     "bytes": 2874688
+    }
+   ]
+  },
+  {
+   "id": "helix-palace",
+   "name": "HELIX PALACE",
+   "canon_name": "Helix Palace (Yui-wang)",
+   "element": "Metal",
+   "force": "metal",
+   "ladder_order": 4,
+   "land": "Land of Desire",
+   "rooms": [
+    "Greed",
+    "Appetite",
+    "Immortality",
+    "Sexual Desire",
+    "Destruction"
+   ],
+   "game_stage_def": "game/js/stages.js def `helix-palace` (builder `helix`)",
+   "story_stage": "game/js/modes.js STORY_STAGES 4",
+   "teardown_dir": "teardown/eastern-mind/stage-2-helix-palace/",
+   "counts": {
+    "files": 1282,
+    "bytes": 26718267,
+    "bitmaps": 1221,
+    "sounds": 59,
+    "text": 2,
+    "video": 0
+   },
+   "areas": [
+    {
+     "source_area": "G_BOULDE",
+     "files": 52,
+     "bytes": 1319328
+    },
+    {
+     "source_area": "G_CASTLE",
+     "files": 51,
+     "bytes": 1731960
+    },
+    {
+     "source_area": "G_CHIFA1",
+     "files": 19,
+     "bytes": 1799024
+    },
+    {
+     "source_area": "G_CHIFA2",
+     "files": 142,
+     "bytes": 2175482
+    },
+    {
+     "source_area": "G_ENTRAN",
+     "files": 28,
+     "bytes": 1250785
+    },
+    {
+     "source_area": "G_FLOWER",
+     "files": 54,
+     "bytes": 1381854
+    },
+    {
+     "source_area": "G_KING",
+     "files": 109,
+     "bytes": 1760027
+    },
+    {
+     "source_area": "G_NONFAI",
+     "files": 43,
+     "bytes": 1393130
+    },
+    {
+     "source_area": "G_PALACE",
+     "files": 56,
+     "bytes": 1897493
+    },
+    {
+     "source_area": "G_PALM",
+     "files": 12,
+     "bytes": 891763
+    },
+    {
+     "source_area": "G_PURYAO",
+     "files": 46,
+     "bytes": 1275965
+    },
+    {
+     "source_area": "G_RMBUD",
+     "files": 33,
+     "bytes": 1070229
+    },
+    {
+     "source_area": "G_RMSHA",
+     "files": 37,
+     "bytes": 1437322
+    },
+    {
+     "source_area": "G_ROOF",
+     "files": 47,
+     "bytes": 946389
+    },
+    {
+     "source_area": "G_SHOWMI",
+     "files": 116,
+     "bytes": 2152612
+    },
+    {
+     "source_area": "G_SSAVER",
+     "files": 317,
+     "bytes": 1117267
+    },
+    {
+     "source_area": "G_TONGSI",
+     "files": 55,
+     "bytes": 1675287
+    },
+    {
+     "source_area": "G_TONNEL",
+     "files": 63,
+     "bytes": 1442194
+    }
+   ]
+  },
+  {
+   "id": "palace-of-dreaming",
+   "name": "PALACE OF DREAMING",
+   "canon_name": "Palace of Dreaming (Mon-chien)",
+   "element": "Water",
+   "force": "water",
+   "ladder_order": 5,
+   "land": "Land of Dreaming",
+   "game_stage_def": "game/js/stages.js def `palace-of-dreaming` (builder `dreaming`)",
+   "story_stage": "game/js/modes.js STORY_STAGES 5",
+   "teardown_dir": "teardown/eastern-mind/stage-3-palace-of-dreaming/",
+   "counts": {
+    "files": 676,
+    "bytes": 30060794,
+    "bitmaps": 620,
+    "sounds": 40,
+    "text": 6,
+    "video": 10
+   },
+   "areas": [
+    {
+     "source_area": "W_AUN",
+     "files": 53,
+     "bytes": 953196
+    },
+    {
+     "source_area": "W_KING",
+     "files": 118,
+     "bytes": 1985812
+    },
+    {
+     "source_area": "W_LAKE1",
+     "files": 34,
+     "bytes": 2094346
+    },
+    {
+     "source_area": "W_LAKE2",
+     "files": 26,
+     "bytes": 2200232
+    },
+    {
+     "source_area": "W_PALAC1",
+     "files": 64,
+     "bytes": 3442181
+    },
+    {
+     "source_area": "W_PALAC2",
+     "files": 19,
+     "bytes": 1501534
+    },
+    {
+     "source_area": "W_RM1",
+     "files": 24,
+     "bytes": 579665
+    },
+    {
+     "source_area": "W_RM2",
+     "files": 37,
+     "bytes": 701344
+    },
+    {
+     "source_area": "W_RM3",
+     "files": 11,
+     "bytes": 401904
+    },
+    {
+     "source_area": "W_RM4",
+     "files": 6,
+     "bytes": 417900
+    },
+    {
+     "source_area": "W_RM5",
+     "files": 6,
+     "bytes": 417932
+    },
+    {
+     "source_area": "W_RM6",
+     "files": 6,
+     "bytes": 417876
+    },
+    {
+     "source_area": "W_RM7",
+     "files": 6,
+     "bytes": 417004
+    },
+    {
+     "source_area": "W_RMAUN",
+     "files": 18,
+     "bytes": 506551
+    },
+    {
+     "source_area": "W_RMDUMP",
+     "files": 15,
+     "bytes": 393582
+    },
+    {
+     "source_area": "W_RMEYE",
+     "files": 10,
+     "bytes": 628739
+    },
+    {
+     "source_area": "W_RMILL",
+     "files": 18,
+     "bytes": 761018
+    },
+    {
+     "source_area": "W_RMKAI",
+     "files": 26,
+     "bytes": 726159
+    },
+    {
+     "source_area": "W_RMMAGA",
+     "files": 42,
+     "bytes": 875039
+    },
+    {
+     "source_area": "W_RMMAP",
+     "files": 8,
+     "bytes": 503669
+    },
+    {
+     "source_area": "W_RMMIN",
+     "files": 13,
+     "bytes": 773859
+    },
+    {
+     "source_area": "W_RMSHA",
+     "files": 13,
+     "bytes": 518319
+    },
+    {
+     "source_area": "W_RMYUI",
+     "files": 17,
+     "bytes": 764873
+    },
+    {
+     "source_area": "W_TONNEL",
+     "files": 70,
+     "bytes": 1959014
+    }
+   ]
+  },
+  {
+   "id": "phantom-marketplace",
+   "name": "PHANTOM MARKETPLACE",
+   "canon_name": "Phantom Marketplace (under the Eyeball Mountains)",
+   "element": null,
+   "force": "trade (no force claimed; trade one force for another)",
+   "ladder_order": 6,
+   "land": "Liminal — the Trader's bazaar",
+   "game_stage_def": "game/js/stages.js def `phantom-marketplace` (builder `marketplace`)",
+   "story_stage": "game/js/modes.js STORY_STAGES 6 + TRADER_CFG / Trader's Mimic mode",
+   "teardown_dir": "teardown/eastern-mind/stage-5-phantom-marketplace/",
+   "counts": {
+    "files": 100,
+    "bytes": 1748647,
+    "bitmaps": 98,
+    "sounds": 2,
+    "text": 0,
+    "video": 0
+   },
+   "areas": [
+    {
+     "source_area": "D_MARKET",
+     "files": 19,
+     "bytes": 937827
+    },
+    {
+     "source_area": "D_MERCHA",
+     "files": 81,
+     "bytes": 810820
+    }
+   ]
+  }
+ ],
+ "systems": [
+  {
+   "id": "incarnation-system",
+   "name": "THE INCARNATION SYSTEM (nine souls, faces, portraits)",
+   "canon": "CANON.md §1 Death, §4 The Nine Souls, §8",
+   "game_system": "game/js/modes.js — chooseReincarnation / VESSEL_AFFINITY / reincarnationReason / styleProfile",
+   "teardown_dir": "teardown/eastern-mind/incarnation-system/",
+   "counts": {
+    "files": 512,
+    "bytes": 11543374,
+    "bitmaps": 494,
+    "sounds": 18,
+    "text": 0,
+    "video": 0
+   },
+   "areas": [
+    {
+     "source_area": "R_BYOU",
+     "files": 25,
+     "bytes": 346890
+    },
+    {
+     "source_area": "R_GYOU",
+     "files": 22,
+     "bytes": 413345
+    },
+    {
+     "source_area": "R_GYOU2",
+     "files": 39,
+     "bytes": 1726384
+    },
+    {
+     "source_area": "R_JIN",
+     "files": 46,
+     "bytes": 1205837
+    },
+    {
+     "source_area": "R_KAI",
+     "files": 26,
+     "bytes": 346362
+    },
+    {
+     "source_area": "R_LETS",
+     "files": 22,
+     "bytes": 337386
+    },
+    {
+     "source_area": "R_LETSA",
+     "files": 15,
+     "bytes": 765488
+    },
+    {
+     "source_area": "R_LETSB",
+     "files": 32,
+     "bytes": 1672392
+    },
+    {
+     "source_area": "R_RTOG",
+     "files": 138,
+     "bytes": 1262398
+    },
+    {
+     "source_area": "R_SHA",
+     "files": 26,
+     "bytes": 401061
+    },
+    {
+     "source_area": "R_SYSTEM",
+     "files": 41,
+     "bytes": 724716
+    },
+    {
+     "source_area": "R_TOH",
+     "files": 25,
+     "bytes": 362522
+    },
+    {
+     "source_area": "R_ZEN",
+     "files": 21,
+     "bytes": 367520
+    },
+    {
+     "source_area": "R_ZEN2",
+     "files": 34,
+     "bytes": 1611073
+    }
+   ]
+  },
+  {
+   "id": "prologue-ending",
+   "name": "THE THRESHOLD (prologue and ending material)",
+   "canon": "CANON.md §8 The Threshold",
+   "game_system": null,
+   "teardown_dir": "teardown/eastern-mind/prologue-ending/",
+   "counts": {
+    "files": 661,
+    "bytes": 16301046,
+    "bitmaps": 593,
+    "sounds": 47,
+    "text": 17,
+    "video": 4
+   },
+   "areas": [
+    {
+     "source_area": "CHARA",
+     "files": 21,
+     "bytes": 816907
+    },
+    {
+     "source_area": "D_BOOK",
+     "files": 83,
+     "bytes": 3962099
+    },
+    {
+     "source_area": "D_ENDING",
+     "files": 10,
+     "bytes": 99532
+    },
+    {
+     "source_area": "D_FACE",
+     "files": 112,
+     "bytes": 1624612
+    },
+    {
+     "source_area": "D_LOGO",
+     "files": 58,
+     "bytes": 832175
+    },
+    {
+     "source_area": "D_MIRROR",
+     "files": 40,
+     "bytes": 1165291
+    },
+    {
+     "source_area": "D_ROCK",
+     "files": 39,
+     "bytes": 1204488
+    },
+    {
+     "source_area": "D_SEA",
+     "files": 59,
+     "bytes": 1314784
+    },
+    {
+     "source_area": "D_SUMIE",
+     "files": 48,
+     "bytes": 626301
+    },
+    {
+     "source_area": "MAIN",
+     "files": 25,
+     "bytes": 63895
+    },
+    {
+     "source_area": "PORT",
+     "files": 26,
+     "bytes": 1164374
+    },
+    {
+     "source_area": "PROF",
+     "files": 17,
+     "bytes": 138362
+    },
+    {
+     "source_area": "SHARED",
+     "files": 102,
+     "bytes": 1533550
+    }
+   ]
+  }
+ ],
+ "audio": {
+  "teardown_dir": "teardown/eastern-mind/soundtrack/",
+  "canon": "CANON.md §8 The Music of the Head-World",
+  "tracks": [
+   {
+    "file": "cda-tong-nou-theme.wav",
+    "wh_role": "Head-world theme — the trial's main musical identity"
+   },
+   {
+    "file": "cda-transmigration-ending.wav",
+    "wh_role": "Transmigration / ending theme — played over absorption and rest"
+   },
+   {
+    "file": "cda-tong-nou-esoteric-mix.wav",
+    "wh_role": "Esoteric mix — long-form ambient for the lands between fights"
+   },
+   {
+    "file": "ending-theme.wav",
+    "wh_role": "Ending theme (from ENDING.AIF)"
+   }
+  ],
+  "engine_status": "Not yet consumed by game/js/audio.js — flagged follow-up in CANON-CONVERSION.md."
+ },
+ "palettes": {
+  "teardown_dir": "teardown/eastern-mind/palettes/",
+  "canon": "CANON.md §8 Colour Is Law",
+  "counts": {
+   "files": 97,
+   "bytes": 111360,
+   "bitmaps": 0,
+   "sounds": 0,
+   "text": 0,
+   "video": 0
+  },
+  "engine_status": "Not yet consumed by any texture pipeline in game code — flagged follow-up in CANON-CONVERSION.md."
+ },
+ "archive": [
+  {
+   "id": "transcript-promo",
+   "teardown_dir": "teardown/eastern-mind/transcript-promo/",
+   "counts": {
+    "files": 1128,
+    "bytes": 100864123,
+    "bitmaps": 1115,
+    "sounds": 3,
+    "text": 0,
+    "video": 10
+   },
+   "status": "FLAGGED — archival promo/transcript material (AUTODEMO, promo and Sato-works videos). Retained as source archive; no canon or game consumer by design. See CANON-CONVERSION.md."
+  }
+ ]
+}

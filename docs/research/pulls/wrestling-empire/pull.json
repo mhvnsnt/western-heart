@@ -1,0 +1,28 @@
+{
+ "game": "Wrestling Empire",
+ "ownership_basis": "Steam snapshot: owned, 71.4h — the user's stated mobile-UX reference (audio just works, no tap-to-unlock; phone-first controls)",
+ "status": "spec-only — no game files were accessible from this VM (phone-only user, Steam remote download unreachable); this pack is the teardown path + conversion/wire schema, NOT extracted commercial assets",
+ "teardown_toolchain": [
+  "Steam Workshop CAW/mod data (350 default wrestlers editable, match creator, custom textures/movesets via WECCL-dependent mods) — Workshop download via coordinator browser delegation",
+  "No binary extraction is proposed: Wrestling Empire value is DESIGN + WORKSHOP DATA, not models"
+ ],
+ "extractable": [
+  "350-default-roster CAW model: every default editable, match creator (incl. War Games-style 2-ring, octagon KO/sub-only, 30-person Royal Rumble variants) → WH match-type system",
+  "Workshop CAW packs (full moveset + attires + textures) as creation-suite content pattern",
+  "Mobile UX pattern: audio on/off in SETTINGS, no tap-for-audio gate; phone-first controls"
+ ],
+ "wh_wire": {
+  "combat": "Match-type rules + CAW moveset pattern feed WH side modes and grapple systems",
+  "creation": "350-editable-default model = the WH creation-suite goal state (no Mixamo-soldier default)",
+  "stages": "Match-creator arena variants",
+  "audio": "Audio UX law: settings toggle, no unlock gate (already a user directive 2026-10-24)",
+  "systems": "Match creator + career/GM structure → WH mode structure"
+ },
+ "blocker": "No local game install is reachable from this VM and no game files were supplied with this task. Steam remote download previously reported 'Unable to reach your PC'; user rule is phone-only, no PC paths.",
+ "unblock": "Workshop CAW/match-type data via coordinator delegation; UX laws from this pack apply immediately (they need no game files).",
+ "canon_rule": "Anything brought in with another game's name is renamed to Eastern Mind / Western Heart canon in user-facing writing. Tekken/proprietary names stay in technical files only. Game ships with NO famous names. All characters adults. User's own models (Tripo + SmutBase) display FIRST; Tekken models are back-slot attires. Sole exception: Pantera Attire 1 (user-customized King reskin).",
+ "combat_inputs": "LP1=Left Punch=Tekken 1, RP2=Right Punch=Tekken 2, LK3=Left Kick=Tekken 3, RK4=Right Kick=Tekken 4. Frame data / MOD damage: UNMAPPED unless a source file in this pack contains it — never estimated as measured.",
+ "community_sources": [
+  "https://steamcommunity.com/workshop/filedetails/?id=3566898748"
+ ]
+}

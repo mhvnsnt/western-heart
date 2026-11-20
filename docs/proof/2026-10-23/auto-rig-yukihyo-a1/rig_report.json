@@ -1,0 +1,34 @@
+{
+ "input": "roster/yukihyo/attires/attire1/source/yukihyo-a1.glb",
+ "output": "roster/yukihyo/attires/attire1/source/yukihyo-a1-rigged.glb",
+ "output_exists": true,
+ "output_bytes": 33174092,
+ "tool": "tools/auto_rig/rig_tripo_static.py (gamerig backend, CMU donor, smooth-weights gate)",
+ "validate": {
+  "checks": {
+   "valid_gltf": true,
+   "skinned_mesh": true,
+   "bones_present": true,
+   "height_ok": true,
+   "fingers_symmetric": true,
+   "stretch_ok": "unknown (no clips supplied)"
+  },
+  "pass": true,
+  "missing_bones": [],
+  "height_m": 1.8
+ },
+ "anim_check_note": "anim_check.py crashes deterministically on this model (IndexError at anim_check.py:550 \u2014 np.percentile over an empty edge array: this mesh's tessellation is so dense that zero edges pass the checker's minimum-length filter). Before AND after runs both crash; the traceback is filed as anim_check_crash.txt. Substitute stretch evidence: smooth_weights' own edge metric \u2014 round 0 edge p99.9 = 1.00, zero edges above 2.0, SMOOTH_OK (see smooth_weights.log). Checker needs a shared-layer empty-array guard; the rig itself is validate-clean and own-eyes clean.",
+ "pose_renders": [
+  "pose_t0.00_back.png",
+  "pose_t0.00_front.png",
+  "pose_t0.00_side.png",
+  "pose_t1.21_back.png",
+  "pose_t1.21_front.png",
+  "pose_t1.21_side.png",
+  "pose_t1.38_back.png",
+  "pose_t1.38_front.png",
+  "pose_t1.38_side.png"
+ ],
+ "verdict_note": true,
+ "wire_line": "'yukihyo-attire1': 'roster/yukihyo/attires/attire1/source/yukihyo-a1-rigged.glb'"
+}

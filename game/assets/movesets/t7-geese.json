@@ -1,0 +1,3172 @@
+{
+ "fighter": "t7-geese",
+ "display": "Geese Howard (Tekken 7 source moveset)",
+ "tekken_base": "Geese Howard",
+ "source": {
+  "built_by": "FILL 2 (2026-11-06), owner fill order: \"1, 2, 3, then 4, remember then all til we get em done\"",
+  "frame_table": "game/data/t7-frame-data/t7-geese-lp-rp-lk-rk.json",
+  "motbin": "GRE teardown/tekken7-steam/tkdata/mothead/bin/mrymot.bin + json/mrymot.json",
+  "mvl": "GRE teardown/tekken7-steam/tkdata/mothead/movelist/mry.mvl",
+  "banks": "GRE release t7-fighter-banks-v1 (mry_clips.bin, mry_bank0_clips.bin); indexes in GRE mask/indexes/",
+  "method": "group-correct string walk (t7_string_walk.py); wired = unique terminal + clip locator; see fill2 fields per move"
+ },
+ "fill2_stats": {
+  "rows": 106,
+  "wired": 31,
+  "pass2": {
+   "sequence": 5,
+   "slide": 0
+  }
+ },
+ "moves": {
+  "in rage d/b+1+2 or FC+d/b+1+2": {
+   "name": "in rage d/b+1+2 or FC+d/b+1+2",
+   "name_source": "notation-only",
+   "input": "in rage d/b+1+2 or FC+d/b+1+2",
+   "damage": 55,
+   "damage_raw": "55",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h!",
+   "on_block": "KND",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Rage art",
+   "anim_ref": null,
+   "t7": {
+    "notation": "in rage d/b+1+2 or FC+d/b+1+2",
+    "id": "mry_1",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "in rage hcb, f+3+4": {
+   "name": "in rage hcb, f+3+4",
+   "name_source": "notation-only",
+   "input": "in rage hcb, f+3+4",
+   "damage": 10,
+   "damage_raw": "10",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-22~-18",
+   "on_hit": "-16~-12",
+   "on_ch": "-16~-12",
+   "notes": "Rage art",
+   "anim_ref": null,
+   "t7": {
+    "notation": "in rage hcb, f+3+4",
+    "id": "mry_2",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "When first part hits 1": {
+   "name": "When first part hits 1",
+   "name_source": "notation-only",
+   "input": "When first part hits 1",
+   "damage": 10,
+   "damage_raw": "10,4",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, h",
+   "on_block": null,
+   "on_hit": "+5",
+   "on_ch": null,
+   "notes": "Rage art",
+   "anim_ref": null,
+   "t7": {
+    "notation": "When first part hits 1",
+    "id": "mry_3",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "When first part hits 1, 2": {
+   "name": "When first part hits 1, 2",
+   "name_source": "notation-only",
+   "input": "When first part hits 1, 2",
+   "damage": 10,
+   "damage_raw": "10,4,4",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, h, m",
+   "on_block": null,
+   "on_hit": "-8~-7",
+   "on_ch": null,
+   "notes": "Rage art",
+   "anim_ref": null,
+   "t7": {
+    "notation": "When first part hits 1, 2",
+    "id": "mry_4",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "When first part hits 1, 2, 4": {
+   "name": "When first part hits 1, 2, 4",
+   "name_source": "notation-only",
+   "input": "When first part hits 1, 2, 4",
+   "damage": 10,
+   "damage_raw": "10,4,4,4",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, h, m, m",
+   "on_block": null,
+   "on_hit": "-9",
+   "on_ch": null,
+   "notes": "Rage art",
+   "anim_ref": null,
+   "t7": {
+    "notation": "When first part hits 1, 2, 4",
+    "id": "mry_5",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "When first part hits 1, 2, 4, 1": {
+   "name": "When first part hits 1, 2, 4, 1",
+   "name_source": "notation-only",
+   "input": "When first part hits 1, 2, 4, 1",
+   "damage": 10,
+   "damage_raw": "10,4,4,4,4",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, h, m, m, m",
+   "on_block": null,
+   "on_hit": "-8",
+   "on_ch": null,
+   "notes": "Rage art",
+   "anim_ref": null,
+   "t7": {
+    "notation": "When first part hits 1, 2, 4, 1",
+    "id": "mry_6",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "When first part hits 1, 2, 4, 1, 4": {
+   "name": "When first part hits 1, 2, 4, 1, 4",
+   "name_source": "notation-only",
+   "input": "When first part hits 1, 2, 4, 1, 4",
+   "damage": 10,
+   "damage_raw": "10,4,4,4,4,4",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, h, m, m, m, l",
+   "on_block": null,
+   "on_hit": "-13",
+   "on_ch": null,
+   "notes": "Rage art",
+   "anim_ref": null,
+   "t7": {
+    "notation": "When first part hits 1, 2, 4, 1, 4",
+    "id": "mry_7",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "When first part hits 1, 2, 4, 1, 4 , 1": {
+   "name": "When first part hits 1, 2, 4, 1, 4 , 1",
+   "name_source": "notation-only",
+   "input": "When first part hits 1, 2, 4, 1, 4 , 1",
+   "damage": 10,
+   "damage_raw": "10,4,4,4,4,4,4",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, h, m, m, m, l, m",
+   "on_block": null,
+   "on_hit": "-9",
+   "on_ch": null,
+   "notes": "Rage art",
+   "anim_ref": null,
+   "t7": {
+    "notation": "When first part hits 1, 2, 4, 1, 4 , 1",
+    "id": "mry_8",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "When first part hits 1, 2, 4, 1, 4 , 1, 3": {
+   "name": "When first part hits 1, 2, 4, 1, 4 , 1, 3",
+   "name_source": "notation-only",
+   "input": "When first part hits 1, 2, 4, 1, 4 , 1, 3",
+   "damage": 10,
+   "damage_raw": "10,4,4,4,4,4,4,4",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, h, m, m, m, l, m, h",
+   "on_block": null,
+   "on_hit": "-1~+2",
+   "on_ch": null,
+   "notes": "Rage art",
+   "anim_ref": null,
+   "t7": {
+    "notation": "When first part hits 1, 2, 4, 1, 4 , 1, 3",
+    "id": "mry_9",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "When first part hits 1, 2, 4, 1, 4 , 1, 3, 2": {
+   "name": "When first part hits 1, 2, 4, 1, 4 , 1, 3, 2",
+   "name_source": "notation-only",
+   "input": "When first part hits 1, 2, 4, 1, 4 , 1, 3, 2",
+   "damage": 10,
+   "damage_raw": "10,4,4,4,4,4,4,4,4",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, h, m, m, m, l, m, h, h",
+   "on_block": null,
+   "on_hit": "+29g",
+   "on_ch": null,
+   "notes": "Rage art",
+   "anim_ref": null,
+   "t7": {
+    "notation": "When first part hits 1, 2, 4, 1, 4 , 1, 3, 2",
+    "id": "mry_10",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "When first part hits 1, 2, 4, 1, 4 , 1, 3, 2, 1+2": {
+   "name": "When first part hits 1, 2, 4, 1, 4 , 1, 3, 2, 1+2",
+   "name_source": "notation-only",
+   "input": "When first part hits 1, 2, 4, 1, 4 , 1, 3, 2, 1+2",
+   "damage": 10,
+   "damage_raw": "10,4,4,4,4,4,4,4,4,20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, h, m, m, m, l, m, h, h, !",
+   "on_block": null,
+   "on_hit": "KND",
+   "on_ch": null,
+   "notes": "Rage art",
+   "anim_ref": null,
+   "t7": {
+    "notation": "When first part hits 1, 2, 4, 1, 4 , 1, 3, 2, 1+2",
+    "id": "mry_11",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "1 or BT 1 or 2": {
+   "name": "1 or BT 1 or 2",
+   "name_source": "notation-only",
+   "input": "1 or BT 1 or 2",
+   "damage": 7,
+   "damage_raw": "7",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h",
+   "on_block": "+1",
+   "on_hit": "+8",
+   "on_ch": "+8",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1 or BT 1 or 2",
+    "id": "mry_12",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "My_rk00B",
+     "My_rp00",
+     "My_rk02B"
+    ]
+   }
+  },
+  "1, 1+2": {
+   "name": "1, 1+2",
+   "name_source": "notation-only",
+   "input": "1, 1+2",
+   "damage": 7,
+   "damage_raw": "7",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, (MAX )",
+   "on_block": "-2",
+   "on_hit": "+5",
+   "on_ch": "+5",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1, 1+2",
+    "id": "mry_13",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1, 1": {
+   "name": "1, 1",
+   "name_source": "notation-only",
+   "input": "1, 1",
+   "damage": 7,
+   "damage_raw": "7,7",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h",
+   "on_block": "-1",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1, 1",
+    "id": "mry_14",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1, 1, 2": {
+   "name": "Tenha Jinchusen",
+   "name_source": "mvl",
+   "input": "1, 1, 2",
+   "damage": 7,
+   "damage_raw": "7,7,9",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, h, h",
+   "on_block": "-12",
+   "on_hit": "+7",
+   "on_ch": "+7",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1, 1, 2",
+    "id": "mry_15",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1, 2": {
+   "name": "1, 2",
+   "name_source": "notation-only",
+   "input": "1, 2",
+   "damage": 7,
+   "damage_raw": "7,10",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, m",
+   "on_block": "-7",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1, 2",
+    "id": "mry_16",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1, 2, 1": {
+   "name": "1, 2, 1",
+   "name_source": "notation-only",
+   "input": "1, 2, 1",
+   "damage": 7,
+   "damage_raw": "7,10,15",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, m, m",
+   "on_block": "-19~-18",
+   "on_hit": "-8~-7",
+   "on_ch": "-8~-7",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1, 2, 1",
+    "id": "mry_17",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1, 2, 1, 1": {
+   "name": "Jyurin Midaretsuki",
+   "name_source": "mvl",
+   "input": "1, 2, 1, 1",
+   "damage": 7,
+   "damage_raw": "7,10,15,20",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, m, m, h",
+   "on_block": "-15",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1, 2, 1, 1",
+    "id": "mry_18",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1, 2, 3": {
+   "name": "Jyurin Niren to Raikou Mawashi-Geri",
+   "name_source": "mvl",
+   "input": "1, 2, 3",
+   "damage": 7,
+   "damage_raw": "7,10,15",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, m, h",
+   "on_block": "+1~+3",
+   "on_hit": "+20~+22kg",
+   "on_ch": "+20~+22kg",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1, 2, 3",
+    "id": "mry_19",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1, 2, 3, 1+2": {
+   "name": "1, 2, 3, 1+2",
+   "name_source": "notation-only",
+   "input": "1, 2, 3, 1+2",
+   "damage": 7,
+   "damage_raw": "7,10,15",
+   "startup": 0.1667,
+   "startup_frames": 10,
+   "hit_level": "h, m, h, (MAX )",
+   "on_block": "+5~+7",
+   "on_hit": "+24~+26kg",
+   "on_ch": "+24~+26kg",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1, 2, 3, 1+2",
+    "id": "mry_20",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "2": {
+   "name": "Fuwa",
+   "name_source": "mvl",
+   "input": "2",
+   "damage": 13,
+   "damage_raw": "13",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "Sm",
+   "on_block": "-13",
+   "on_hit": "-4",
+   "on_ch": "-4",
+   "notes": null,
+   "anim_ref": "t7:mry:0x4000:268",
+   "t7": {
+    "notation": "2",
+    "id": "mry_21",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "2",
+    "motbin_move_id": 1470,
+    "motbin_move_name": "My_rp00",
+    "anim_name": "mykb_midrp(DVD)",
+    "anim_id": 16652,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 268,
+     "rel_offset": 2525852,
+     "size": 4096,
+     "format_word": 100,
+     "sha256": "ef3afc0f9bfce574efd2eeca075384161980c6626858886ca6d307f9699c20d6",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [13]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1470
+    ]
+   }
+  },
+  "2, 1+2": {
+   "name": "2, 1+2",
+   "name_source": "notation-only",
+   "input": "2, 1+2",
+   "damage": 15,
+   "damage_raw": "15",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "Sm, (MAX )",
+   "on_block": "+2",
+   "on_hit": "+11",
+   "on_ch": "+11",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "2, 1+2",
+    "id": "mry_22",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "3": {
+   "name": "Jayanagi",
+   "name_source": "mvl",
+   "input": "3",
+   "damage": 10,
+   "damage_raw": "10",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-8~-7",
+   "on_hit": "0~+1",
+   "on_ch": "0~+1",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "3",
+    "id": "mry_23",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "st2cr_00_",
+     "My_lk00",
+     "My_Jyaei_D",
+     "My_Reppuu"
+    ]
+   }
+  },
+  "3, 3": {
+   "name": "Mikazuki Nidan-Geri",
+   "name_source": "mvl",
+   "input": "3, 3",
+   "damage": 10,
+   "damage_raw": "10,10",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h, m",
+   "on_block": "-13~-12",
+   "on_hit": "0~+1",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "3, 3",
+    "id": "mry_24",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "st2cr_00_",
+     "My_lk00",
+     "My_s_tlk00",
+     "My_lk02",
+     "My_Jyaei_D",
+     "My_Reppuu"
+    ]
+   }
+  },
+  "4 or BT 3 or 4": {
+   "name": "4 or BT 3 or 4",
+   "name_source": "notation-only",
+   "input": "4 or BT 3 or 4",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-8~-7",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Tail spin, Homing",
+   "anim_ref": null,
+   "t7": {
+    "notation": "4 or BT 3 or 4",
+    "id": "mry_25",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1+2": {
+   "name": "Kassatsuakken : Suigetsu Uchi",
+   "name_source": "mvl",
+   "input": "1+2",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "m",
+   "on_block": "-14",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:mry:0x4000:271",
+   "t7": {
+    "notation": "1+2",
+    "id": "mry_26",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "1+2",
+    "motbin_move_id": 1473,
+    "motbin_move_name": "My_Gosyouha",
+    "anim_name": "mykb_kameha_14f(DVD)",
+    "anim_id": 16655,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 271,
+     "rel_offset": 2532712,
+     "size": 4088,
+     "format_word": 100,
+     "sha256": "6ac46ae27a6bfb47328a4ef37b0d1e49996bace066abb3af26a269741be9f661",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+1": {
+   "name": "Tendoh Kudaki",
+   "name_source": "mvl",
+   "input": "f+1",
+   "damage": 12,
+   "damage_raw": "12",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-17~-16",
+   "on_hit": "-4~-3",
+   "on_ch": "-4~-3",
+   "notes": null,
+   "anim_ref": "t7:mry:0x4000:489",
+   "t7": {
+    "notation": "f+1",
+    "id": "mry_27",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+1",
+    "motbin_move_id": 1897,
+    "motbin_move_name": "My_HItataki",
+    "anim_name": "mykb_wfurip_f(DVD)",
+    "anim_id": 16873,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 489,
+     "rel_offset": 3234000,
+     "size": 4844,
+     "format_word": 100,
+     "sha256": "7a430b72bd312925ff31dee2d71a1b5673ed6c696e08e0d5ade1164d7507b384",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+1, 1+2": {
+   "name": "f+1, 1+2",
+   "name_source": "notation-only",
+   "input": "f+1, 1+2",
+   "damage": 12,
+   "damage_raw": "12",
+   "startup": 0.4,
+   "startup_frames": 24,
+   "hit_level": "m, (MAX )",
+   "on_block": "+2~+3",
+   "on_hit": "+15~+16",
+   "on_ch": "+15~+16",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f+1, 1+2",
+    "id": "mry_28",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f+2": {
+   "name": "Nioh Kuzushi",
+   "name_source": "MVL display name (GRE teardown/tekken7-steam/tkdata/mothead/movelist/mry.mvl), restored by owner ruling 2026-11-06; withheld earlier as a canon-names gate false positive documented in PR #1618",
+   "input": "f+2",
+   "damage": 5,
+   "damage_raw": "5,10",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "mh",
+   "on_block": "-14~-13",
+   "on_hit": "SH",
+   "on_ch": "SH",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f+2",
+    "id": "mry_29",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "My_rp00F",
+     "My_rp02F"
+    ]
+   }
+  },
+  "f+2 (Second hit only)": {
+   "name": "Nioh Kuzushi (Second hit only)",
+   "name_source": "MVL display name + WH second-hit qualifier (restored by owner ruling 2026-11-06; see PR #1618)",
+   "input": "f+2 (Second hit only)",
+   "damage": 10,
+   "damage_raw": "10",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-14~-13",
+   "on_hit": "SH",
+   "on_ch": "SH",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f+2 (Second hit only)",
+    "id": "mry_30",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "My_rp00F",
+     "My_rp02F"
+    ]
+   }
+  },
+  "f+2, 1+2": {
+   "name": "f+2, 1+2",
+   "name_source": "notation-only",
+   "input": "f+2, 1+2",
+   "damage": 5,
+   "damage_raw": "5,10",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "mh, (MAX )",
+   "on_block": "+2~+3",
+   "on_hit": "SH",
+   "on_ch": "SH",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f+2, 1+2",
+    "id": "mry_31",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f+2When con, nects1": {
+   "name": "f+2When con, nects1",
+   "name_source": "notation-only",
+   "input": "f+2When con, nects1",
+   "damage": 5,
+   "damage_raw": "5,10,15",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "mh, h",
+   "on_block": "-9",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f+2When con, nects1",
+    "id": "mry_32",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "f+3": {
+   "name": "Raikou Mawashi-Geri",
+   "name_source": "mvl",
+   "input": "f+3",
+   "damage": 15,
+   "damage_raw": "15",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "+1~+3",
+   "on_hit": "+20~+22kg",
+   "on_ch": "+20~+22kg",
+   "notes": null,
+   "anim_ref": "t7:mry:0x4000:281",
+   "t7": {
+    "notation": "f+3",
+    "id": "mry_33",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+3",
+    "motbin_move_id": 1486,
+    "motbin_move_name": "My_lk00F",
+    "anim_name": "mykb_mawasilk(DVD)",
+    "anim_id": 16665,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 281,
+     "rel_offset": 2567088,
+     "size": 4460,
+     "format_word": 100,
+     "sha256": "843cc7dd18d12d58bf2f8390bd156045dc6d0ca2cb634d9c8fde6b04e61e33e1",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+3, 1+2": {
+   "name": "f+3, 1+2",
+   "name_source": "notation-only",
+   "input": "f+3, 1+2",
+   "damage": 15,
+   "damage_raw": "15",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h, (MAX )",
+   "on_block": "+5~+7",
+   "on_hit": "+24~+26kg",
+   "on_ch": "+24~+26kg",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f+3, 1+2",
+    "id": "mry_34",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "f+4": {
+   "name": "Zettou Sokutou-Geri",
+   "name_source": "mvl",
+   "input": "f+4",
+   "damage": 21,
+   "damage_raw": "21",
+   "startup": 0.3167,
+   "startup_frames": 19,
+   "hit_level": "m",
+   "on_block": "-13",
+   "on_hit": "KND",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": "t7:mry:0x4000:282",
+   "t7": {
+    "notation": "f+4",
+    "id": "mry_35",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+4",
+    "motbin_move_id": 1487,
+    "motbin_move_name": "My_rk00F",
+    "anim_name": "myss_6rk(DVD)",
+    "anim_id": 16666,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 282,
+     "rel_offset": 2571548,
+     "size": 4428,
+     "format_word": 100,
+     "sha256": "f6fa78c0934e92643dd4704bc72b9df7b3481ce5901a38bdf977105ff56cc920",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f+1+2": {
+   "name": "Hien Shikkyaku",
+   "name_source": "mvl",
+   "input": "f+1+2",
+   "damage": 15,
+   "damage_raw": "15",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-9~-8",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:mry:0x4000:280",
+   "t7": {
+    "notation": "f+1+2",
+    "id": "mry_36",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f+1+2",
+    "motbin_move_id": 1484,
+    "motbin_move_name": "My_WPF",
+    "anim_name": "mykb_kurp(DVD)",
+    "anim_id": 16664,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 280,
+     "rel_offset": 2562112,
+     "size": 4976,
+     "format_word": 100,
+     "sha256": "3a108a16c573c15ebccc7e93fd714654169707344244251aa2c9c51cdc2060c1",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+1": {
+   "name": "Shoten Myojyo Uchi",
+   "name_source": "mvl",
+   "input": "d/f+1",
+   "damage": 10,
+   "damage_raw": "10",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-3~-2",
+   "on_hit": "+5~+6",
+   "on_ch": "+5~+6",
+   "notes": null,
+   "anim_ref": "t7:mry:0x4000:312",
+   "t7": {
+    "notation": "d/f+1",
+    "id": "mry_37",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+1",
+    "motbin_move_id": 1518,
+    "motbin_move_name": "My_t_slpF",
+    "anim_name": "myss_3lp(DVD)",
+    "anim_id": 16696,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 312,
+     "rel_offset": 2637792,
+     "size": 3236,
+     "format_word": 100,
+     "sha256": "298b1febba73074cf82cb36f885baf23d925b3833d953ab1310564a03eef3c1d",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+1, 1": {
+   "name": "Murasame Raisou",
+   "name_source": "mvl",
+   "input": "d/f+1, 1",
+   "damage": 10,
+   "damage_raw": "10,8",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, h",
+   "on_block": "-4",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "notes": null,
+   "anim_ref": "t7:mry:0x4000:314",
+   "t7": {
+    "notation": "d/f+1, 1",
+    "id": "mry_38",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+1, 1",
+    "motbin_move_id": 1520,
+    "motbin_move_name": "My_t_slp02F",
+    "anim_name": "myss_3lplp(DVD)",
+    "anim_id": 16698,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 314,
+     "rel_offset": 2641028,
+     "size": 3240,
+     "format_word": 100,
+     "sha256": "f16aa1008d1f47b9177da3ea10ff0393f670bc43992d900abe390793a07ef2a2",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [10, 8]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1518,
+     1520
+    ]
+   }
+  },
+  "d/f+1, 4": {
+   "name": "Murasame Zettou",
+   "name_source": "mvl",
+   "input": "d/f+1, 4",
+   "damage": 10,
+   "damage_raw": "10,21",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m",
+   "on_block": "-13",
+   "on_hit": "KND",
+   "on_ch": "CS",
+   "notes": null,
+   "anim_ref": "t7:mry:0x4000:315",
+   "t7": {
+    "notation": "d/f+1, 4",
+    "id": "mry_39",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+1, 4",
+    "motbin_move_id": 1521,
+    "motbin_move_name": "My_t_slprk",
+    "anim_name": "mykb_3rprk(DVD)",
+    "anim_id": 16699,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 315,
+     "rel_offset": 2644268,
+     "size": 4952,
+     "format_word": 100,
+     "sha256": "68a02d6b1d23af3f2ff7bfaea77a9759488c6d0ab4466524ae1f46985631394f",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+2": {
+   "name": "Fusumae Yaburi",
+   "name_source": "mvl",
+   "input": "d/f+2",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-9~-8",
+   "on_hit": "+11~+12g (+23~+25 wc)",
+   "on_ch": "+11~+12g (+23~+25 wc)",
+   "notes": "Tail spin, Homing, Wall Crush",
+   "anim_ref": "t7:mry:0x4000:316",
+   "t7": {
+    "notation": "d/f+2",
+    "id": "mry_40",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+2",
+    "motbin_move_id": 1522,
+    "motbin_move_name": "My_t_srpF",
+    "anim_name": "myss_claw(DVD)",
+    "anim_id": 16700,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 316,
+     "rel_offset": 2649220,
+     "size": 4100,
+     "format_word": 100,
+     "sha256": "417443b384140b93242fad145440565b99db18cbf9cde8aebe33a076328d4938",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+3": {
+   "name": "My_t_slkF",
+   "name_source": "motbin-internal",
+   "input": "d/f+3",
+   "damage": 11,
+   "damage_raw": "11",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "l",
+   "on_block": "-13",
+   "on_hit": "-2",
+   "on_ch": "-2",
+   "notes": null,
+   "anim_ref": "t7:mry:0x4000:317",
+   "t7": {
+    "notation": "d/f+3",
+    "id": "mry_41",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+3",
+    "motbin_move_id": 1524,
+    "motbin_move_name": "My_t_slkF",
+    "anim_name": "myss_3lk(DVD)",
+    "anim_id": 16701,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 317,
+     "rel_offset": 2653320,
+     "size": 4028,
+     "format_word": 100,
+     "sha256": "bfec8d2cd618d2fd93009f125c313fe100146fe170e9377631f1e69dd3794bda",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+3, 4": {
+   "name": "Kekkai Shomon Nidan-Geri",
+   "name_source": "mvl",
+   "input": "d/f+3, 4",
+   "damage": 11,
+   "damage_raw": "11,14",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "l, m",
+   "on_block": "-13",
+   "on_hit": "-2",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:mry:0x4000:318",
+   "t7": {
+    "notation": "d/f+3, 4",
+    "id": "mry_42",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+3, 4",
+    "motbin_move_id": 1525,
+    "motbin_move_name": "My_t_slkF2",
+    "anim_name": "myss_3lkrk(DVD)",
+    "anim_id": 16702,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 318,
+     "rel_offset": 2657348,
+     "size": 4428,
+     "format_word": 100,
+     "sha256": "33d35551c7115c65221575bde79bf1f2d38e8d278937e16f8458c276434ddcdf",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/f+3, 4~2": {
+   "name": "d/f+3, 4~2",
+   "name_source": "notation-only",
+   "input": "d/f+3, 4~2",
+   "damage": 11,
+   "damage_raw": "11,25",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "l, m",
+   "on_block": "+2",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d/f+3, 4~2",
+    "id": "mry_43",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "d/f+3, 4~3": {
+   "name": "d/f+3, 4~3",
+   "name_source": "notation-only",
+   "input": "d/f+3, 4~3",
+   "damage": 11,
+   "damage_raw": "11,15",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "l, h",
+   "on_block": "+1~+3",
+   "on_hit": "+20~+22kg",
+   "on_ch": "+20~+22kg",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d/f+3, 4~3",
+    "id": "mry_44",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "d/f+3, 4~3, 1+2": {
+   "name": "d/f+3, 4~3, 1+2",
+   "name_source": "notation-only",
+   "input": "d/f+3, 4~3, 1+2",
+   "damage": 11,
+   "damage_raw": "11,15",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "l, h, (MAX )",
+   "on_block": "+5~+7",
+   "on_hit": "+24~+26kg",
+   "on_ch": "+24~+26kg",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d/f+3, 4~3, 1+2",
+    "id": "mry_45",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "d/f+4": {
+   "name": "My_t_srkF",
+   "name_source": "motbin-internal",
+   "input": "d/f+4",
+   "damage": 15,
+   "damage_raw": "15",
+   "startup": 0.2333,
+   "startup_frames": 14,
+   "hit_level": "m",
+   "on_block": "-7",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "notes": null,
+   "anim_ref": "t7:mry:0x4000:319",
+   "t7": {
+    "notation": "d/f+4",
+    "id": "mry_46",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/f+4",
+    "motbin_move_id": 1526,
+    "motbin_move_name": "My_t_srkF",
+    "anim_name": "myss_3rk(DVD)",
+    "anim_id": 16703,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 319,
+     "rel_offset": 2661776,
+     "size": 4012,
+     "format_word": 100,
+     "sha256": "df98040d824b6cc0165c1a2c841087ff32c473f77d7bc21c36bfaa98e397afb1",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b or d+1 or FC+d/b or d+1 BT d+1 or 2": {
+   "name": "st2cr_00B",
+   "name_source": "motbin-internal",
+   "input": "d/b or d+1 or FC+d/b or d+1 BT d+1 or 2",
+   "damage": 5,
+   "damage_raw": "5",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm",
+   "on_block": "-5",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": "t7:mry:0x4000:233",
+   "t7": {
+    "notation": "d/b or d+1 or FC+d/b or d+1 BT d+1 or 2",
+    "id": "mry_47",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b",
+    "motbin_move_id": 1435,
+    "motbin_move_name": "st2cr_00B",
+    "anim_name": "myss_ta_sya(DVD)",
+    "anim_id": 16617,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 233,
+     "rel_offset": 2491876,
+     "size": 900,
+     "format_word": 100,
+     "sha256": "a6d4aeb5369dfe470413eedfcd103dc76fc5724772cb190cf57439415fffeabd",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b or d+1, 1+2": {
+   "name": "st2cr_00B",
+   "name_source": "motbin-internal",
+   "input": "d/b or d+1, 1+2",
+   "damage": 5,
+   "damage_raw": "5",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm, (MAX )",
+   "on_block": "-1",
+   "on_hit": "+10g",
+   "on_ch": "+10",
+   "notes": null,
+   "anim_ref": "t7:mry:0x4000:233",
+   "t7": {
+    "notation": "d/b or d+1, 1+2",
+    "id": "mry_48",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b",
+    "motbin_move_id": 1435,
+    "motbin_move_name": "st2cr_00B",
+    "anim_name": "myss_ta_sya(DVD)",
+    "anim_id": 16617,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 233,
+     "rel_offset": 2491876,
+     "size": 900,
+     "format_word": 100,
+     "sha256": "a6d4aeb5369dfe470413eedfcd103dc76fc5724772cb190cf57439415fffeabd",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b or d+2 or FC+2": {
+   "name": "st2cr_00B",
+   "name_source": "motbin-internal",
+   "input": "d/b or d+2 or FC+2",
+   "damage": 13,
+   "damage_raw": "13",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l",
+   "on_block": "-14",
+   "on_hit": "-3",
+   "on_ch": "-3",
+   "notes": null,
+   "anim_ref": "t7:mry:0x4000:233",
+   "t7": {
+    "notation": "d/b or d+2 or FC+2",
+    "id": "mry_49",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b",
+    "motbin_move_id": 1435,
+    "motbin_move_name": "st2cr_00B",
+    "anim_name": "myss_ta_sya(DVD)",
+    "anim_id": 16617,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 233,
+     "rel_offset": 2491876,
+     "size": 900,
+     "format_word": 100,
+     "sha256": "a6d4aeb5369dfe470413eedfcd103dc76fc5724772cb190cf57439415fffeabd",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b or d+3 or FC+3": {
+   "name": "st2cr_00B",
+   "name_source": "motbin-internal",
+   "input": "d/b or d+3 or FC+3",
+   "damage": 12,
+   "damage_raw": "12",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l",
+   "on_block": "-15",
+   "on_hit": "-5",
+   "on_ch": "-5",
+   "notes": null,
+   "anim_ref": "t7:mry:0x4000:233",
+   "t7": {
+    "notation": "d/b or d+3 or FC+3",
+    "id": "mry_50",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b",
+    "motbin_move_id": 1435,
+    "motbin_move_name": "st2cr_00B",
+    "anim_name": "myss_ta_sya(DVD)",
+    "anim_id": 16617,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 233,
+     "rel_offset": 2491876,
+     "size": 900,
+     "format_word": 100,
+     "sha256": "a6d4aeb5369dfe470413eedfcd103dc76fc5724772cb190cf57439415fffeabd",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d+3, 1": {
+   "name": "Kokotsuharai to Yakoutsuki",
+   "name_source": "mvl",
+   "input": "d+3, 1",
+   "damage": 12,
+   "damage_raw": "12,5",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l, Sm",
+   "on_block": "-9",
+   "on_hit": "+2",
+   "on_ch": "+2",
+   "notes": null,
+   "anim_ref": "t7:mry:0x4000:293",
+   "t7": {
+    "notation": "d+3, 1",
+    "id": "mry_51",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+3, 1",
+    "motbin_move_id": 1515,
+    "motbin_move_name": "My_t_slk_LP",
+    "anim_name": "myss_kopa(DVD)",
+    "anim_id": 16677,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 293,
+     "rel_offset": 2607736,
+     "size": 2684,
+     "format_word": 100,
+     "sha256": "41a4fe9ec09fe626b028078514a6ba83f438c420a71060389e651dd9be486138",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [12, 5]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1513,
+     1515
+    ]
+   }
+  },
+  "d+3, 1, 1+2": {
+   "name": "d+3, 1, 1+2",
+   "name_source": "notation-only",
+   "input": "d+3, 1, 1+2",
+   "damage": 12,
+   "damage_raw": "12,5",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l, Sm, (MAX )",
+   "on_block": "-1",
+   "on_hit": "+10g",
+   "on_ch": "+10",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d+3, 1, 1+2",
+    "id": "mry_52",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "d/b or d+4 or FC+4 BT d+3 or 4": {
+   "name": "st2cr_00B",
+   "name_source": "motbin-internal",
+   "input": "d/b or d+4 or FC+4 BT d+3 or 4",
+   "damage": 15,
+   "damage_raw": "15",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l, (Special)",
+   "on_block": "-31",
+   "on_hit": "-5~-4",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:mry:0x4000:233",
+   "t7": {
+    "notation": "d/b or d+4 or FC+4 BT d+3 or 4",
+    "id": "mry_53",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b",
+    "motbin_move_id": 1435,
+    "motbin_move_name": "st2cr_00B",
+    "anim_name": "myss_ta_sya(DVD)",
+    "anim_id": 16617,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 233,
+     "rel_offset": 2491876,
+     "size": 900,
+     "format_word": 100,
+     "sha256": "a6d4aeb5369dfe470413eedfcd103dc76fc5724772cb190cf57439415fffeabd",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d/b or d+4, 1+2": {
+   "name": "st2cr_00B",
+   "name_source": "motbin-internal",
+   "input": "d/b or d+4, 1+2",
+   "damage": 15,
+   "damage_raw": "15",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l(MAX )",
+   "on_block": null,
+   "on_hit": "+15~+16g",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:mry:0x4000:233",
+   "t7": {
+    "notation": "d/b or d+4, 1+2",
+    "id": "mry_54",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d/b",
+    "motbin_move_id": 1435,
+    "motbin_move_name": "st2cr_00B",
+    "anim_name": "myss_ta_sya(DVD)",
+    "anim_id": 16617,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 233,
+     "rel_offset": 2491876,
+     "size": 900,
+     "format_word": 100,
+     "sha256": "a6d4aeb5369dfe470413eedfcd103dc76fc5724772cb190cf57439415fffeabd",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "d+1+2": {
+   "name": "Kouten Bakusai",
+   "name_source": "mvl",
+   "input": "d+1+2",
+   "damage": 15,
+   "damage_raw": "15",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l",
+   "on_block": "-18~-17",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:mry:0x4000:307",
+   "t7": {
+    "notation": "d+1+2",
+    "id": "mry_55",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "d+1+2",
+    "motbin_move_id": 1512,
+    "motbin_move_name": "My_t_sWP00",
+    "anim_name": "myss_shlow(DVD)",
+    "anim_id": 16691,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 307,
+     "rel_offset": 2632840,
+     "size": 4952,
+     "format_word": 100,
+     "sha256": "1b3c97a429dba2c11542618407432893e678f9af6a492b190ea304ccbef3a137",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+1": {
+   "name": "My_lp00B",
+   "name_source": "motbin-internal",
+   "input": "b+1",
+   "damage": 8,
+   "damage_raw": "8",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-7~-6",
+   "on_hit": "+4~+5",
+   "on_ch": "+4~+5",
+   "notes": null,
+   "anim_ref": "t7:mry:0x4000:283",
+   "t7": {
+    "notation": "b+1",
+    "id": "mry_56",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+1",
+    "motbin_move_id": 1488,
+    "motbin_move_name": "My_lp00B",
+    "anim_name": "myss_4lp(DVD)",
+    "anim_id": 16667,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 283,
+     "rel_offset": 2575976,
+     "size": 3724,
+     "format_word": 100,
+     "sha256": "d682fa8ebb092f6a94bdd1334bd79bfb33378bff75338e939900b17f0564fc78",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+1, 2": {
+   "name": "Kobokurenpatsuki",
+   "name_source": "mvl",
+   "input": "b+1, 2",
+   "damage": 8,
+   "damage_raw": "8,23",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h, m",
+   "on_block": "-12",
+   "on_hit": "+1",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:mry:0x4000:284",
+   "t7": {
+    "notation": "b+1, 2",
+    "id": "mry_57",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+1, 2",
+    "motbin_move_id": 1489,
+    "motbin_move_name": "My_4lprp",
+    "anim_name": "myss_4lprp(DVD)",
+    "anim_id": 16668,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 284,
+     "rel_offset": 2579700,
+     "size": 4300,
+     "format_word": 100,
+     "sha256": "3f4a054b310654a7d080eaa067edeb122ca1d12b429cf59a7127a9f593982bd7",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+1, 3": {
+   "name": "Kobokutsuki to Raikou Mawashi-Geri",
+   "name_source": "mvl",
+   "input": "b+1, 3",
+   "damage": 8,
+   "damage_raw": "8,15",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h, h",
+   "on_block": "+1",
+   "on_hit": "+20g",
+   "on_ch": "+20g",
+   "notes": null,
+   "anim_ref": "t7:mry:0x0000:103",
+   "t7": {
+    "notation": "b+1, 3",
+    "id": "mry_58",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+1, 3",
+    "motbin_move_id": 1490,
+    "motbin_move_name": "My_4lplk",
+    "anim_name": "mykb_s4_4lplk",
+    "anim_id": 103,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x0000",
+     "source": "mrymot.bin",
+     "section": 0,
+     "entry": 103,
+     "rel_offset": 1959896,
+     "size": 5032,
+     "format_word": 100,
+     "sha256": "83f04e82e75f3247f45e65df3481506505f8efe2ee444f69d1da8dd5d7723e7c",
+     "blob_file": "mry_bank0_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+2": {
+   "name": "Fudo Kassatsu Uraken",
+   "name_source": "mvl",
+   "input": "b+2",
+   "damage": 23,
+   "damage_raw": "23",
+   "startup": 0.4,
+   "startup_frames": 24,
+   "hit_level": "m",
+   "on_block": "+2",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:mry:0x0000:104",
+   "t7": {
+    "notation": "b+2",
+    "id": "mry_59",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+2",
+    "motbin_move_id": 1491,
+    "motbin_move_name": "My_rp00B",
+    "anim_name": "myss_s3_fdksturken",
+    "anim_id": 104,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x0000",
+     "source": "mrymot.bin",
+     "section": 0,
+     "entry": 104,
+     "rel_offset": 1964928,
+     "size": 4820,
+     "format_word": 100,
+     "sha256": "929e6d6c2b44b1df9ec4ad894f29a3c42f394844f249169b83d1b89da4dabf76",
+     "blob_file": "mry_bank0_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+3": {
+   "name": "My_lk00B",
+   "name_source": "motbin-internal",
+   "input": "b+3",
+   "damage": 11,
+   "damage_raw": "11",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-12~-11",
+   "on_hit": "-1~0",
+   "on_ch": "-1~0",
+   "notes": null,
+   "anim_ref": "t7:mry:0x4000:288",
+   "t7": {
+    "notation": "b+3",
+    "id": "mry_60",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+3",
+    "motbin_move_id": 1494,
+    "motbin_move_name": "My_lk00B",
+    "anim_name": "mykb_lhiza(DVD)",
+    "anim_id": 16672,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 288,
+     "rel_offset": 2591108,
+     "size": 3532,
+     "format_word": 100,
+     "sha256": "241e2a4b4bce0d0b6de0bddeca7ded6d2c519e7de633bfe7b446d1a932a11c0b",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "b+3, 2": {
+   "name": "Inazumageri to Tenyaburi",
+   "name_source": "mvl",
+   "input": "b+3, 2",
+   "damage": 11,
+   "damage_raw": "11,15",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m",
+   "on_block": "-15~-14",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "b+3, 2",
+    "id": "mry_61",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "b+3, 2, 1+2": {
+   "name": "b+3, 2, 1+2",
+   "name_source": "notation-only",
+   "input": "b+3, 2, 1+2",
+   "damage": 11,
+   "damage_raw": "11,15",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, m, (MAX )",
+   "on_block": "+2~+3",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "b+3, 2, 1+2",
+    "id": "mry_62",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "b+4": {
+   "name": "My_rk00B",
+   "name_source": "motbin-internal",
+   "input": "b+4",
+   "damage": 10,
+   "damage_raw": "10",
+   "startup": 0.3167,
+   "startup_frames": 19,
+   "hit_level": "l",
+   "on_block": "-13",
+   "on_hit": "-4",
+   "on_ch": "-2",
+   "notes": null,
+   "anim_ref": "t7:mry:0x4000:291",
+   "t7": {
+    "notation": "b+4",
+    "id": "mry_63",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+4",
+    "motbin_move_id": 1496,
+    "motbin_move_name": "My_rk00B",
+    "anim_name": "myss_4rk(DVD)",
+    "anim_id": 16675,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 291,
+     "rel_offset": 2599460,
+     "size": 3996,
+     "format_word": 100,
+     "sha256": "c6238d733b64a03550899b7c4b742d0fde9f1e3a5c8c54cc195e43a1046556d9",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [10]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1496
+    ]
+   }
+  },
+  "b+4, 4": {
+   "name": "Fukuto : Hitchugeri to Ryuzukake-Geri",
+   "name_source": "mvl",
+   "input": "b+4, 4",
+   "damage": 10,
+   "damage_raw": "10,17",
+   "startup": 0.3167,
+   "startup_frames": 19,
+   "hit_level": "l, h",
+   "on_block": "-3~-2",
+   "on_hit": "+16~+17kg",
+   "on_ch": "KND",
+   "notes": "Tail spin",
+   "anim_ref": "t7:mry:0x4000:292",
+   "t7": {
+    "notation": "b+4, 4",
+    "id": "mry_64",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "b+4, 4",
+    "motbin_move_id": 1497,
+    "motbin_move_name": "My_rk02B",
+    "anim_name": "myss_4rkrk(DVD)",
+    "anim_id": 16676,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 292,
+     "rel_offset": 2603456,
+     "size": 4280,
+     "format_word": 100,
+     "sha256": "ef111611f7380e24545a2026a3c5de173dde10e563798aa3d999dfa5cc994f18",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "f, f, f+1": {
+   "name": "Rouendou",
+   "name_source": "mvl",
+   "input": "f, f, f+1",
+   "damage": 26,
+   "damage_raw": "26",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-8~-7",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": "t7:mry:0x4000:489",
+   "t7": {
+    "notation": "f, f, f+1",
+    "id": "mry_65",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "f, f, f+1",
+    "motbin_move_id": 1897,
+    "motbin_move_name": "My_HItataki",
+    "anim_name": "mykb_wfurip_f(DVD)",
+    "anim_id": 16873,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 489,
+     "rel_offset": 3234000,
+     "size": 4844,
+     "format_word": 100,
+     "sha256": "7a430b72bd312925ff31dee2d71a1b5673ed6c696e08e0d5ade1164d7507b384",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "WS+1": {
+   "name": "WS+1",
+   "name_source": "notation-only",
+   "input": "WS+1",
+   "damage": 12,
+   "damage_raw": "12",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-8~-7",
+   "on_hit": "+3~+4",
+   "on_ch": "+3~+4",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+1",
+    "id": "mry_66",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "My_syalp00",
+     "My_WPF",
+     "My_lp00"
+    ]
+   }
+  },
+  "WS+1, 1+2": {
+   "name": "WS+1, 1+2",
+   "name_source": "notation-only",
+   "input": "WS+1, 1+2",
+   "damage": 12,
+   "damage_raw": "12",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, (MAX )",
+   "on_block": "-3~-2",
+   "on_hit": "+8~+9",
+   "on_ch": "+8~+9",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+1, 1+2",
+    "id": "mry_67",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "WS+2": {
+   "name": "WS+2",
+   "name_source": "notation-only",
+   "input": "WS+2",
+   "damage": 15,
+   "damage_raw": "15",
+   "startup": 0.3,
+   "startup_frames": 18,
+   "hit_level": "m",
+   "on_block": "-14",
+   "on_hit": "-3",
+   "on_ch": "-3",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+2",
+    "id": "mry_68",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "My_syarp00",
+     "My_rk00B",
+     "My_rp00",
+     "My_rk02B"
+    ]
+   }
+  },
+  "WS+2 When hit F+2": {
+   "name": "WS+2 When hit F+2",
+   "name_source": "notation-only",
+   "input": "WS+2 When hit F+2",
+   "damage": 15,
+   "damage_raw": "15,10,10",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m, (throw)",
+   "on_block": null,
+   "on_hit": "Launch",
+   "on_ch": "Launch",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+2 When hit F+2",
+    "id": "mry_69",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "WS+3": {
+   "name": "My_Reppuu",
+   "name_source": "motbin-internal",
+   "input": "WS+3",
+   "damage": 14,
+   "damage_raw": "14",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h",
+   "on_block": "-8~-7",
+   "on_hit": "Tail spin",
+   "on_ch": "Tail spin",
+   "notes": "Tail spin",
+   "anim_ref": "t7:mry:0x4000:491",
+   "t7": {
+    "notation": "WS+3",
+    "id": "mry_70",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "WS+3",
+    "motbin_move_id": 1899,
+    "motbin_move_name": "My_Reppuu",
+    "anim_name": "myss_rpken(DVD)",
+    "anim_id": 16875,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 491,
+     "rel_offset": 3238844,
+     "size": 4332,
+     "format_word": 100,
+     "sha256": "741836e05715229963500acba5e3e71bf36dfdaf7cc8ebd904345886f1550dfa",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "pass-2 per-hit damage-sequence discrimination: exactly one attack/playable path through the group-walk matches the frame table per-hit list [14]; final move has a concrete clip locator",
+    "path_move_ids": [
+     1899
+    ]
+   }
+  },
+  "WS+4": {
+   "name": "WS+4",
+   "name_source": "notation-only",
+   "input": "WS+4",
+   "damage": 18,
+   "damage_raw": "18",
+   "startup": 0.1833,
+   "startup_frames": 11,
+   "hit_level": "m",
+   "on_block": "-5",
+   "on_hit": "+6",
+   "on_ch": "+6",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "WS+4",
+    "id": "mry_71",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "sWALK_00F",
+     "My_syark00",
+     "My_rk00",
+     "st2cr_00F",
+     "st2cr_00_"
+    ]
+   }
+  },
+  "FC+d/f+1": {
+   "name": "FC+d/f+1",
+   "name_source": "notation-only",
+   "input": "FC+d/f+1",
+   "damage": 17,
+   "damage_raw": "17",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "m",
+   "on_block": "-14",
+   "on_hit": "Launch (JG?)",
+   "on_ch": "Launch (JG?)",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "FC+d/f+1",
+    "id": "mry_72",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "SS+3": {
+   "name": "SS+3",
+   "name_source": "notation-only",
+   "input": "SS+3",
+   "damage": 18,
+   "damage_raw": "18",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "l",
+   "on_block": "-12",
+   "on_hit": "+4",
+   "on_ch": "+4",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "SS+3",
+    "id": "mry_73",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "st2cr_00_",
+     "My_lk00",
+     "My_Jyaei_D",
+     "My_Reppuu"
+    ]
+   }
+  },
+  "Jump 1": {
+   "name": "Jump 1",
+   "name_source": "notation-only",
+   "input": "Jump 1",
+   "damage": 10,
+   "damage_raw": "10",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-21~+2",
+   "on_hit": "-11~+12",
+   "on_ch": "-11~+12",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "Jump 1",
+    "id": "mry_74",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "Jump 2": {
+   "name": "Jump 2",
+   "name_source": "notation-only",
+   "input": "Jump 2",
+   "damage": 10,
+   "damage_raw": "10,10",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "mm",
+   "on_block": "-12~",
+   "on_hit": "0~",
+   "on_ch": "0~",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "Jump 2",
+    "id": "mry_75",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "Jump 2 (Second hit miss)": {
+   "name": "Jump 2 (Second hit miss)",
+   "name_source": "notation-only",
+   "input": "Jump 2 (Second hit miss)",
+   "damage": 10,
+   "damage_raw": "10",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-17~+7",
+   "on_hit": "-7~+17",
+   "on_ch": "-7~+17",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "Jump 2 (Second hit miss)",
+    "id": "mry_76",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "Jump 3": {
+   "name": "Jump 3",
+   "name_source": "notation-only",
+   "input": "Jump 3",
+   "damage": 10,
+   "damage_raw": "10",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-23~+2",
+   "on_hit": "-13~+12",
+   "on_ch": "-13~+12",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "Jump 3",
+    "id": "mry_77",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "Jump 4": {
+   "name": "Jump 4",
+   "name_source": "notation-only",
+   "input": "Jump 4",
+   "damage": 15,
+   "damage_raw": "15",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-14~+7",
+   "on_hit": "-4~+17",
+   "on_ch": "-4~+17",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "Jump 4",
+    "id": "mry_78",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "Back to wall b, b, u/b": {
+   "name": "Back to wall b, b, u/b",
+   "name_source": "notation-only",
+   "input": "Back to wall b, b, u/b",
+   "damage": 25,
+   "damage_raw": "25",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m",
+   "on_block": "-12~+4",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "Back to wall b, b, u/b",
+    "id": "mry_79",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "1+3+4": {
+   "name": "Taunt",
+   "name_source": "mvl",
+   "input": "1+3+4",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "(Special)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": "t7:mry:0x4000:488",
+   "t7": {
+    "notation": "1+3+4",
+    "id": "mry_80",
+    "wired": true,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "walked_as": "1+3+4",
+    "motbin_move_id": 1896,
+    "motbin_move_name": "My_Taunt",
+    "anim_name": "mykb_chouhatu(DVD)",
+    "anim_id": 16872,
+    "clip": {
+     "status": "resolved",
+     "bank": "0x4000",
+     "source": "mryrotsm.arc",
+     "section": 0,
+     "entry": 488,
+     "rel_offset": 3227492,
+     "size": 6508,
+     "format_word": 100,
+     "sha256": "1664f986451a28dee3b7d94379bedaaabea9f85efa3e1489b859cc4d2fd6e722",
+     "blob_file": "mry_clips.bin"
+    },
+    "evidence": "group-correct walk: unique attack/playable terminal at tier<=stage + concrete clip locator"
+   }
+  },
+  "qcf+1": {
+   "name": "Reppuu Ken",
+   "name_source": "mvl",
+   "input": "qcf+1",
+   "damage": 14,
+   "damage_raw": "14",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm",
+   "on_block": "-13~",
+   "on_hit": "-5~",
+   "on_ch": "-5~",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "qcf+1",
+    "id": "mry_81",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "qcf+2": {
+   "name": "Double Reppuu Ken",
+   "name_source": "mvl",
+   "input": "qcf+2",
+   "damage": 10,
+   "damage_raw": "10,8",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm x 2",
+   "on_block": "-19~",
+   "on_hit": "-8~",
+   "on_ch": "-8~",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "qcf+2",
+    "id": "mry_82",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "dp+1": {
+   "name": "dp+1",
+   "name_source": "notation-only",
+   "input": "dp+1",
+   "damage": 10,
+   "damage_raw": "10,15",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm, h",
+   "on_block": "-6",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Tail spin",
+   "anim_ref": null,
+   "t7": {
+    "notation": "dp+1",
+    "id": "mry_83",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "dp+2": {
+   "name": "dp+2",
+   "name_source": "notation-only",
+   "input": "dp+2",
+   "damage": 10,
+   "damage_raw": "10,15",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm, h",
+   "on_block": "-6",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Tail spin",
+   "anim_ref": null,
+   "t7": {
+    "notation": "dp+2",
+    "id": "mry_84",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "qcb+1": {
+   "name": "Fudou Ken",
+   "name_source": "mvl",
+   "input": "qcb+1",
+   "damage": 20,
+   "damage_raw": "20",
+   "startup": 0.25,
+   "startup_frames": 15,
+   "hit_level": "h",
+   "on_block": "-15",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "qcb+1",
+    "id": "mry_85",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "qcb+2": {
+   "name": "qcb+2",
+   "name_source": "notation-only",
+   "input": "qcb+2",
+   "damage": 10,
+   "damage_raw": "10",
+   "startup": 0.3333,
+   "startup_frames": 20,
+   "hit_level": "h",
+   "on_block": "-15",
+   "on_hit": "-5",
+   "on_ch": "-5",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "qcb+2",
+    "id": "mry_86",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "qcb+2, 1": {
+   "name": "Fudou Ken\u30fbA",
+   "name_source": "mvl",
+   "input": "qcb+2, 1",
+   "damage": 10,
+   "damage_raw": "10,15",
+   "startup": 0.3333,
+   "startup_frames": 20,
+   "hit_level": "h, m",
+   "on_block": "-15",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "qcb+2, 1",
+    "id": "mry_87",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "qcb+2, 3": {
+   "name": "Fudou Ken\u30fbUn",
+   "name_source": "mvl",
+   "input": "qcb+2, 3",
+   "damage": 10,
+   "damage_raw": "10,20",
+   "startup": 0.3333,
+   "startup_frames": 20,
+   "hit_level": "h, m",
+   "on_block": "-8~-6s",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "qcb+2, 3",
+    "id": "mry_88",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "qcb+2, 4": {
+   "name": "Fudou Ken\u30fbBa",
+   "name_source": "mvl",
+   "input": "qcb+2, 4",
+   "damage": 10,
+   "damage_raw": "10,20",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h, l",
+   "on_block": "-18~-17",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "qcb+2, 4",
+    "id": "mry_89",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "hcb+3": {
+   "name": "Jaei Ken",
+   "name_source": "mvl",
+   "input": "hcb+3",
+   "damage": 10,
+   "damage_raw": "10,15",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Smh",
+   "on_block": "-9",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Power crush",
+   "anim_ref": null,
+   "t7": {
+    "notation": "hcb+3",
+    "id": "mry_90",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "hcb+4": {
+   "name": "Jaei Ken",
+   "name_source": "mvl",
+   "input": "hcb+4",
+   "damage": 10,
+   "damage_raw": "10,5,12",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Smmm",
+   "on_block": "-14",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Power crush",
+   "anim_ref": null,
+   "t7": {
+    "notation": "hcb+4",
+    "id": "mry_91",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "Jump qcb+1 or 2": {
+   "name": "Jump qcb+1 or 2",
+   "name_source": "notation-only",
+   "input": "Jump qcb+1 or 2",
+   "damage": 14,
+   "damage_raw": "14",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm (TJ)",
+   "on_block": "-34~",
+   "on_hit": "-23~",
+   "on_ch": "-23~",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "Jump qcb+1 or 2",
+    "id": "mry_92",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "My_rk00B",
+     "My_rp00",
+     "My_rk02B"
+    ]
+   }
+  },
+  "f+1+2, qcb+1 or 2": {
+   "name": "f+1+2, qcb+1 or 2",
+   "name_source": "notation-only",
+   "input": "f+1+2, qcb+1 or 2",
+   "damage": 15,
+   "damage_raw": "15,14",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ), Sm (TJ)",
+   "on_block": "-27~",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "f+1+2, qcb+1 or 2",
+    "id": "mry_93",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-multi-terminal",
+    "candidates": [
+     "My_rk00B",
+     "My_rp00",
+     "My_rk02B"
+    ]
+   }
+  },
+  "1+2+3": {
+   "name": "Use MAX mode",
+   "name_source": "mvl",
+   "input": "1+2+3",
+   "damage": null,
+   "damage_raw": null,
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "(MAX)",
+   "on_block": null,
+   "on_hit": null,
+   "on_ch": null,
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1+2+3",
+    "id": "mry_94",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "MAX qcf+1+2": {
+   "name": "MAX qcf+1+2",
+   "name_source": "notation-only",
+   "input": "MAX qcf+1+2",
+   "damage": 10,
+   "damage_raw": "10,10",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm x 2",
+   "on_block": "+1~",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "MAX qcf+1+2",
+    "id": "mry_95",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "MAX dp+1+2": {
+   "name": "MAX dp+1+2",
+   "name_source": "notation-only",
+   "input": "MAX dp+1+2",
+   "damage": 10,
+   "damage_raw": "10,15",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm, h",
+   "on_block": "-2",
+   "on_hit": "Tail spin",
+   "on_ch": "Tail spin",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "MAX dp+1+2",
+    "id": "mry_96",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "MAX qcb+1+2": {
+   "name": "MAX qcb+1+2",
+   "name_source": "notation-only",
+   "input": "MAX qcb+1+2",
+   "damage": 10,
+   "damage_raw": "10",
+   "startup": 0.3167,
+   "startup_frames": 19,
+   "hit_level": "h",
+   "on_block": "-12",
+   "on_hit": "-2",
+   "on_ch": "-2",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "MAX qcb+1+2",
+    "id": "mry_97",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "MAX qcb+1+2, 1": {
+   "name": "MAX qcb+1+2, 1",
+   "name_source": "notation-only",
+   "input": "MAX qcb+1+2, 1",
+   "damage": 10,
+   "damage_raw": "10,10",
+   "startup": 0.3167,
+   "startup_frames": 19,
+   "hit_level": "h, m",
+   "on_block": "-2",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Wall bounce",
+   "anim_ref": null,
+   "t7": {
+    "notation": "MAX qcb+1+2, 1",
+    "id": "mry_98",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "MAX qcb+1+2, 3": {
+   "name": "MAX qcb+1+2, 3",
+   "name_source": "notation-only",
+   "input": "MAX qcb+1+2, 3",
+   "damage": 10,
+   "damage_raw": "10,20",
+   "startup": 0.3167,
+   "startup_frames": 19,
+   "hit_level": "h, m",
+   "on_block": "-8~-6s",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "MAX qcb+1+2, 3",
+    "id": "mry_99",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "MAX qcb+1+2, 4": {
+   "name": "MAX qcb+1+2, 4",
+   "name_source": "notation-only",
+   "input": "MAX qcb+1+2, 4",
+   "damage": 10,
+   "damage_raw": "10,15",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h, l",
+   "on_block": "-18~-17",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "MAX qcb+1+2, 4",
+    "id": "mry_100",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "MAX hcb+3+4": {
+   "name": "MAX hcb+3+4",
+   "name_source": "notation-only",
+   "input": "MAX hcb+3+4",
+   "damage": 10,
+   "damage_raw": "10,5,15",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Smmm",
+   "on_block": "-2",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": "Power crush",
+   "anim_ref": null,
+   "t7": {
+    "notation": "MAX hcb+3+4",
+    "id": "mry_101",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "MAX Jump qcb+1+2": {
+   "name": "MAX Jump qcb+1+2",
+   "name_source": "notation-only",
+   "input": "MAX Jump qcb+1+2",
+   "damage": 14,
+   "damage_raw": "14",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm",
+   "on_block": "-34~",
+   "on_hit": "-23~",
+   "on_ch": "-23~",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "MAX Jump qcb+1+2",
+    "id": "mry_102",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "MAX f+1+2, qcb+1+2": {
+   "name": "MAX f+1+2, qcb+1+2",
+   "name_source": "notation-only",
+   "input": "MAX f+1+2, qcb+1+2",
+   "damage": 15,
+   "damage_raw": "15,14",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "m (TJ), Sm (TJ)",
+   "on_block": "+4~",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "MAX f+1+2, qcb+1+2",
+    "id": "mry_103",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-dies"
+   }
+  },
+  "qcf, qcf+1+2": {
+   "name": "Raigou Reppuu Ken",
+   "name_source": "mvl",
+   "input": "qcf, qcf+1+2",
+   "damage": null,
+   "damage_raw": "13*5",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm x 5",
+   "on_block": "+1~",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "qcf, qcf+1+2",
+    "id": "mry_104",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "d/b, hcb, d/f+1+2": {
+   "name": "Raging Storm",
+   "name_source": "mvl",
+   "input": "d/b, hcb, d/f+1+2",
+   "damage": 43,
+   "damage_raw": "43",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "Sm",
+   "on_block": "-18",
+   "on_hit": "Launch",
+   "on_ch": "Launch",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "d/b, hcb, d/f+1+2",
+    "id": "mry_105",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  },
+  "1, 2, 1, 2": {
+   "name": "Raigou Midaretsuki",
+   "name_source": "mvl",
+   "input": "1, 2, 1, 2",
+   "damage": 7,
+   "damage_raw": "7,10,15,14*5",
+   "startup": null,
+   "startup_frames": null,
+   "hit_level": "h, m, m, Sm x 5",
+   "on_block": "+1~",
+   "on_hit": "KND",
+   "on_ch": "KND",
+   "notes": null,
+   "anim_ref": null,
+   "t7": {
+    "notation": "1, 2, 1, 2",
+    "id": "mry_106",
+    "wired": false,
+    "mod_source": "FILL 2 (2026-11-06): WH frame table x MVL x motbin group-walk"
+   },
+   "fill2": {
+    "held": "walk-no-terminal"
+   }
+  }
+ }
+}

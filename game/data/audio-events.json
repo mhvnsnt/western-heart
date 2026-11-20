@@ -1,0 +1,809 @@
+{
+  "banks": {
+    "hits": [
+      "hits_light.opus",
+      "hits_medium.opus",
+      "hits_heavy.opus"
+    ],
+    "pantera_voice": [
+      "pantera-sounds-from-king-t2-grunts-sampler.mp3"
+    ],
+    "stage_bgm": [
+      "stage_default_base.opus",
+      "stage_default_drums.opus",
+      "stage_default_lead.opus"
+    ],
+    "stingers": [
+      "round_start.opus",
+      "fight.opus",
+      "ko.opus",
+      "time_up.opus",
+      "win.opus"
+    ],
+    "ui": [
+      "ui_move.opus",
+      "ui_confirm.opus",
+      "ui_cancel.opus"
+    ]
+  },
+  "events": {
+    "fighter_grunt": {
+      "container": "switch",
+      "switchGroup": "fighter",
+      "variations": [
+        {
+          "bank": "pantera-sounds-from-king-t2-grunts-sampler.mp3",
+          "bus": "voice",
+          "note": "cue range TBD from manifest \u2014 see note_on_pantera_bank",
+          "switchValue": "pantera",
+          "volume": 1.0
+        }
+      ],
+      "note": "Legacy switch event (whole sampler file). Prefer pantera_grunt_cued (per-clip cues) or the PR #1028 split files; this entry is kept so older call sites keep resolving."
+    },
+    "hit_block": {
+      "container": "random",
+      "variations": [
+        {
+          "bank": "hits_light.opus",
+          "bus": "sfx",
+          "pitch": {
+            "max": 1.0,
+            "min": 0.9
+          },
+          "volume": 0.6
+        }
+      ]
+    },
+    "hit_counter": {
+      "container": "random",
+      "variations": [
+        {
+          "bank": "hits_heavy.opus",
+          "bus": "sfx",
+          "pitch": {
+            "max": 1.05,
+            "min": 0.95
+          },
+          "volume": 1.1
+        }
+      ]
+    },
+    "hit_heavy": {
+      "container": "random",
+      "variations": [
+        {
+          "bank": "hits_heavy.opus",
+          "bus": "sfx",
+          "pitch": {
+            "max": 1.03,
+            "min": 0.97
+          },
+          "volume": 1.0
+        }
+      ]
+    },
+    "hit_light": {
+      "container": "random",
+      "variations": [
+        {
+          "bank": "hits_light.opus",
+          "bus": "sfx",
+          "pitch": {
+            "max": 1.06,
+            "min": 0.94
+          },
+          "volume": 0.9
+        },
+        {
+          "bank": "hits_light.opus",
+          "bus": "sfx",
+          "pitch": {
+            "max": 1.08,
+            "min": 0.92
+          },
+          "volume": 0.9
+        }
+      ]
+    },
+    "hit_medium": {
+      "container": "random",
+      "variations": [
+        {
+          "bank": "hits_medium.opus",
+          "bus": "sfx",
+          "pitch": {
+            "max": 1.05,
+            "min": 0.95
+          },
+          "volume": 1.0
+        }
+      ]
+    },
+    "hit_whiff": {
+      "container": "random",
+      "variations": [
+        {
+          "bank": "hits_light.opus",
+          "bus": "sfx",
+          "pitch": {
+            "max": 1.1,
+            "min": 1.0
+          },
+          "volume": 0.35
+        }
+      ]
+    },
+    "ko": {
+      "container": "random",
+      "variations": [
+        {
+          "bank": "ko.opus",
+          "bus": "music",
+          "volume": 1.0
+        }
+      ]
+    },
+    "round_start": {
+      "container": "sequence",
+      "variations": [
+        {
+          "bank": "round_start.opus",
+          "bus": "music",
+          "volume": 1.0
+        },
+        {
+          "bank": "fight.opus",
+          "bus": "music",
+          "volume": 1.0
+        }
+      ]
+    },
+    "throw_chain": {
+      "container": "sequence",
+      "variations": [
+        {
+          "bank": "hits_medium.opus",
+          "bus": "sfx",
+          "volume": 1.0
+        },
+        {
+          "bank": "hits_heavy.opus",
+          "bus": "sfx",
+          "volume": 1.0
+        }
+      ]
+    },
+    "ui_confirm": {
+      "container": "random",
+      "variations": [
+        {
+          "bank": "ui_confirm.opus",
+          "bus": "ui",
+          "volume": 0.8
+        }
+      ]
+    },
+    "ui_move": {
+      "container": "random",
+      "variations": [
+        {
+          "bank": "ui_move.opus",
+          "bus": "ui",
+          "volume": 0.7
+        }
+      ]
+    },
+    "win": {
+      "container": "random",
+      "variations": [
+        {
+          "bank": "win.opus",
+          "bus": "music",
+          "volume": 1.0
+        }
+      ]
+    },
+    "pantera_grunt_cued": {
+      "container": "random",
+      "note": "Preferred Pantera grunt event: random no-repeat over the 26 Set B sampler cues (voice bus). Use instead of fighter_grunt when the sampler file is the bank; use the split files in panteraSplitFiles when they are present (voice.js manifest).",
+      "variations": [
+        {
+          "bank": "pantera-sounds-from-king-t2-grunts-sampler.mp3",
+          "cue": [
+            0.0,
+            0.801088
+          ],
+          "bus": "voice",
+          "volume": 1.0,
+          "position": 1
+        },
+        {
+          "bank": "pantera-sounds-from-king-t2-grunts-sampler.mp3",
+          "cue": [
+            1.401088,
+            6.266667
+          ],
+          "bus": "voice",
+          "volume": 1.0,
+          "position": 2
+        },
+        {
+          "bank": "pantera-sounds-from-king-t2-grunts-sampler.mp3",
+          "cue": [
+            8.267755,
+            1.123265
+          ],
+          "bus": "voice",
+          "volume": 1.0,
+          "position": 3
+        },
+        {
+          "bank": "pantera-sounds-from-king-t2-grunts-sampler.mp3",
+          "cue": [
+            9.99102,
+            0.526
+          ],
+          "bus": "voice",
+          "volume": 1.0,
+          "position": 4
+        },
+        {
+          "bank": "pantera-sounds-from-king-t2-grunts-sampler.mp3",
+          "cue": [
+            11.11702,
+            0.64
+          ],
+          "bus": "voice",
+          "volume": 1.0,
+          "position": 5
+        },
+        {
+          "bank": "pantera-sounds-from-king-t2-grunts-sampler.mp3",
+          "cue": [
+            12.35702,
+            2.189932
+          ],
+          "bus": "voice",
+          "volume": 1.0,
+          "position": 6
+        },
+        {
+          "bank": "pantera-sounds-from-king-t2-grunts-sampler.mp3",
+          "cue": [
+            15.146952,
+            1.338
+          ],
+          "bus": "voice",
+          "volume": 1.0,
+          "position": 7
+        },
+        {
+          "bank": "pantera-sounds-from-king-t2-grunts-sampler.mp3",
+          "cue": [
+            17.084952,
+            1.509297
+          ],
+          "bus": "voice",
+          "volume": 1.0,
+          "position": 8
+        },
+        {
+          "bank": "pantera-sounds-from-king-t2-grunts-sampler.mp3",
+          "cue": [
+            19.194249,
+            5.162
+          ],
+          "bus": "voice",
+          "volume": 1.0,
+          "position": 9
+        },
+        {
+          "bank": "pantera-sounds-from-king-t2-grunts-sampler.mp3",
+          "cue": [
+            24.956249,
+            2.470023
+          ],
+          "bus": "voice",
+          "volume": 1.0,
+          "position": 10
+        },
+        {
+          "bank": "pantera-sounds-from-king-t2-grunts-sampler.mp3",
+          "cue": [
+            28.026272,
+            3.741333
+          ],
+          "bus": "voice",
+          "volume": 1.0,
+          "position": 11
+        },
+        {
+          "bank": "pantera-sounds-from-king-t2-grunts-sampler.mp3",
+          "cue": [
+            32.367605,
+            0.74449
+          ],
+          "bus": "voice",
+          "volume": 1.0,
+          "position": 12
+        },
+        {
+          "bank": "pantera-sounds-from-king-t2-grunts-sampler.mp3",
+          "cue": [
+            33.712095,
+            2.136
+          ],
+          "bus": "voice",
+          "volume": 1.0,
+          "position": 13
+        },
+        {
+          "bank": "pantera-sounds-from-king-t2-grunts-sampler.mp3",
+          "cue": [
+            36.448095,
+            3.166667
+          ],
+          "bus": "voice",
+          "volume": 1.0,
+          "position": 14
+        },
+        {
+          "bank": "pantera-sounds-from-king-t2-grunts-sampler.mp3",
+          "cue": [
+            40.214762,
+            1.782132
+          ],
+          "bus": "voice",
+          "volume": 1.0,
+          "position": 15
+        },
+        {
+          "bank": "pantera-sounds-from-king-t2-grunts-sampler.mp3",
+          "cue": [
+            42.596894,
+            3.874667
+          ],
+          "bus": "voice",
+          "volume": 1.0,
+          "position": 16
+        },
+        {
+          "bank": "pantera-sounds-from-king-t2-grunts-sampler.mp3",
+          "cue": [
+            47.071561,
+            0.218
+          ],
+          "bus": "voice",
+          "volume": 1.0,
+          "position": 17
+        },
+        {
+          "bank": "pantera-sounds-from-king-t2-grunts-sampler.mp3",
+          "cue": [
+            47.889561,
+            3.568
+          ],
+          "bus": "voice",
+          "volume": 1.0,
+          "position": 18
+        },
+        {
+          "bank": "pantera-sounds-from-king-t2-grunts-sampler.mp3",
+          "cue": [
+            52.057561,
+            2.950667
+          ],
+          "bus": "voice",
+          "volume": 1.0,
+          "position": 19
+        },
+        {
+          "bank": "pantera-sounds-from-king-t2-grunts-sampler.mp3",
+          "cue": [
+            55.608228,
+            0.439728
+          ],
+          "bus": "voice",
+          "volume": 1.0,
+          "position": 20
+        },
+        {
+          "bank": "pantera-sounds-from-king-t2-grunts-sampler.mp3",
+          "cue": [
+            56.647956,
+            0.635646
+          ],
+          "bus": "voice",
+          "volume": 1.0,
+          "position": 21
+        },
+        {
+          "bank": "pantera-sounds-from-king-t2-grunts-sampler.mp3",
+          "cue": [
+            57.883602,
+            0.216
+          ],
+          "bus": "voice",
+          "volume": 1.0,
+          "position": 22
+        },
+        {
+          "bank": "pantera-sounds-from-king-t2-grunts-sampler.mp3",
+          "cue": [
+            58.699602,
+            0.683537
+          ],
+          "bus": "voice",
+          "volume": 1.0,
+          "position": 23
+        },
+        {
+          "bank": "pantera-sounds-from-king-t2-grunts-sampler.mp3",
+          "cue": [
+            59.983139,
+            0.439728
+          ],
+          "bus": "voice",
+          "volume": 1.0,
+          "position": 24
+        },
+        {
+          "bank": "pantera-sounds-from-king-t2-grunts-sampler.mp3",
+          "cue": [
+            61.022867,
+            0.863492
+          ],
+          "bus": "voice",
+          "volume": 1.0,
+          "position": 25
+        },
+        {
+          "bank": "pantera-sounds-from-king-t2-grunts-sampler.mp3",
+          "cue": [
+            62.486359,
+            1.123265
+          ],
+          "bus": "voice",
+          "volume": 1.0,
+          "position": 26
+        }
+      ]
+    }
+  },
+  "musicPools": {
+    "default": {
+      "tracks": [
+        {
+          "layers": [
+            {
+              "bank": "stage_default_base.opus",
+              "baseGain": 1.0,
+              "name": "base"
+            },
+            {
+              "bank": "stage_default_drums.opus",
+              "baseGain": 0.0,
+              "name": "drums"
+            },
+            {
+              "bank": "stage_default_lead.opus",
+              "baseGain": 0.0,
+              "name": "lead"
+            }
+          ]
+        }
+      ]
+    },
+    "note": "One pool per stage. Rotation = random track pick at round start + re-pick at next bar boundary between rounds. All layers of a track start at the same ctx time so they stay in sync; layer gains are RTPC-driven (below). Keep every layer the same length/BPM or the crossfade drifts."
+  },
+  "note_on_pantera_bank": "Sampler MP3s in ~/workspace/king-mods/ are CONCATENATED samplers, not split clips. The manifest in king-mods/pantera-sounds-manifest.md gives per-clip durations for Set B (Tekken 2 grunts, 26 clips, owner-preferred 2026-10-24). Before this JSON is usable, split the sampler into 26 files OR add cue:[start,dur] ranges computed by cumulatively summing Set B durations in file order. Do NOT invent cue offsets \u2014 compute them from the manifest. Set A (classic) is the fallback bank; Set C is the single T8 death scream (2.529s). Clip labels (greeting/growl/roar) are NOT in the bank data \u2014 identify by position number only.",
+  "rtpcCurves": {
+    "intensity": {
+      "base": {
+        "inMax": 1.0,
+        "inMin": 0.0,
+        "outMax": 0.85,
+        "outMin": 1.0
+      },
+      "drums": {
+        "inMax": 0.7,
+        "inMin": 0.3,
+        "outMax": 1.0,
+        "outMin": 0.0
+      },
+      "lead": {
+        "inMax": 1.0,
+        "inMin": 0.6,
+        "outMax": 1.0,
+        "outMin": 0.0
+      }
+    },
+    "note_intensity_drivers": "intensity = clamp(0.35*comboHeat + 0.35*healthDeficit + 0.30*roundTimerPressure), each 0..1. comboHeat decays over ~3s without a hit; healthDeficit = 1 - (ownHP/maxHP) of the LOSING fighter; roundTimerPressure rises in the last 15s. Recompute once per frame from game state \u2014 cheap, no audio-thread work."
+  },
+  "states": {
+    "Fight": {
+      "busDb": {
+        "music": 0,
+        "sfx": 0,
+        "voice": 0
+      },
+      "musicLowpassHz": 20000
+    },
+    "KO": {
+      "busDb": {
+        "music": -18,
+        "sfx": 0,
+        "voice": 0
+      },
+      "musicLowpassHz": 4000
+    },
+    "Menu": {
+      "busDb": {
+        "music": -6,
+        "sfx": -60,
+        "voice": -60
+      },
+      "musicLowpassHz": 20000
+    },
+    "Pause": {
+      "busDb": {
+        "music": -12,
+        "sfx": -60,
+        "voice": -60
+      },
+      "musicLowpassHz": 800
+    },
+    "RoundEnd": {
+      "busDb": {
+        "music": -6,
+        "sfx": 0,
+        "voice": 0
+      },
+      "musicLowpassHz": 20000
+    },
+    "Select": {
+      "busDb": {
+        "music": -3,
+        "sfx": 0,
+        "voice": 0
+      },
+      "musicLowpassHz": 20000
+    }
+  },
+  "panteraSamplerCues": {
+    "file": "pantera-sounds-from-king-t2-grunts-sampler.mp3",
+    "set": "Set B \u2014 Tekken 2 grunts (TekkenMods mod 1242, AkBankVoiceKIN.bnk), owner-preferred 2026-10-24",
+    "source": "king-mods/pantera-sounds-manifest.md (durations) + king-mods/f2-list.txt (file order) + king-mods/silence.wav (0.6s gap)",
+    "method": "cue start[n] = sum of durations[1..n-1] + 0.6s silence after each earlier clip. Sampler total computed 64.209624s vs ffprobe 64.210045s (difference 0.000421s = MP3 padding). No offsets invented.",
+    "silenceGapSeconds": 0.6,
+    "samplerDurationSeconds_ffprobe": 64.210045,
+    "computedTotalSeconds": 64.209624,
+    "note": "Clips are identified by position number only. The bank carries slot IDs, not content names, and no content label is assigned to any clip in this table.",
+    "cues": [
+      {
+        "position": 1,
+        "bankSlot": "1003837159",
+        "start": 0.0,
+        "duration": 0.801088
+      },
+      {
+        "position": 2,
+        "bankSlot": "1036113453",
+        "start": 1.401088,
+        "duration": 6.266667
+      },
+      {
+        "position": 3,
+        "bankSlot": "1038614577",
+        "start": 8.267755,
+        "duration": 1.123265
+      },
+      {
+        "position": 4,
+        "bankSlot": "1041454593",
+        "start": 9.99102,
+        "duration": 0.526
+      },
+      {
+        "position": 5,
+        "bankSlot": "235945735",
+        "start": 11.11702,
+        "duration": 0.64
+      },
+      {
+        "position": 6,
+        "bankSlot": "279611602",
+        "start": 12.35702,
+        "duration": 2.189932
+      },
+      {
+        "position": 7,
+        "bankSlot": "328585857",
+        "start": 15.146952,
+        "duration": 1.338
+      },
+      {
+        "position": 8,
+        "bankSlot": "366622006",
+        "start": 17.084952,
+        "duration": 1.509297
+      },
+      {
+        "position": 9,
+        "bankSlot": "37512952",
+        "start": 19.194249,
+        "duration": 5.162
+      },
+      {
+        "position": 10,
+        "bankSlot": "378194677",
+        "start": 24.956249,
+        "duration": 2.470023
+      },
+      {
+        "position": 11,
+        "bankSlot": "402346307",
+        "start": 28.026272,
+        "duration": 3.741333
+      },
+      {
+        "position": 12,
+        "bankSlot": "427436342",
+        "start": 32.367605,
+        "duration": 0.74449
+      },
+      {
+        "position": 13,
+        "bankSlot": "453627518",
+        "start": 33.712095,
+        "duration": 2.136
+      },
+      {
+        "position": 14,
+        "bankSlot": "460445785",
+        "start": 36.448095,
+        "duration": 3.166667
+      },
+      {
+        "position": 15,
+        "bankSlot": "463573614",
+        "start": 40.214762,
+        "duration": 1.782132
+      },
+      {
+        "position": 16,
+        "bankSlot": "46466028",
+        "start": 42.596894,
+        "duration": 3.874667
+      },
+      {
+        "position": 17,
+        "bankSlot": "479375596",
+        "start": 47.071561,
+        "duration": 0.218
+      },
+      {
+        "position": 18,
+        "bankSlot": "496614466",
+        "start": 47.889561,
+        "duration": 3.568
+      },
+      {
+        "position": 19,
+        "bankSlot": "68450745",
+        "start": 52.057561,
+        "duration": 2.950667
+      },
+      {
+        "position": 20,
+        "bankSlot": "703890652",
+        "start": 55.608228,
+        "duration": 0.439728
+      },
+      {
+        "position": 21,
+        "bankSlot": "718397289",
+        "start": 56.647956,
+        "duration": 0.635646
+      },
+      {
+        "position": 22,
+        "bankSlot": "741838950",
+        "start": 57.883602,
+        "duration": 0.216
+      },
+      {
+        "position": 23,
+        "bankSlot": "786104316",
+        "start": 58.699602,
+        "duration": 0.683537
+      },
+      {
+        "position": 24,
+        "bankSlot": "812504634",
+        "start": 59.983139,
+        "duration": 0.439728
+      },
+      {
+        "position": 25,
+        "bankSlot": "853156273",
+        "start": 61.022867,
+        "duration": 0.863492
+      },
+      {
+        "position": 26,
+        "bankSlot": "926471152",
+        "start": 62.486359,
+        "duration": 1.123265
+      }
+    ]
+  },
+  "panteraSplitFiles": {
+    "note": "Shipped splits are PR #1028 (open at time of writing): OGG Vorbis in game/assets/voices/pantera/, pantera-t2-01..26.ogg (Set B, primary) + pantera-classic-01..26.ogg (Set A, alternate), manifest game/data/voices/pantera.json. This audio-events file does NOT ship a second copy of those clips: a local Opus re-encode of Set B (libopus 48k, from king-mods/f2-t2grunts/norm/) totals 274,958 bytes and matches manifest durations within Opus frame padding, and is kept as the fallback encode if the OGG set is ever rejected. The cue table above is the sampler fallback for engines that play the concatenated sampler file.",
+    "primary": [
+      "assets/voices/pantera/pantera-t2-01.ogg",
+      "assets/voices/pantera/pantera-t2-02.ogg",
+      "assets/voices/pantera/pantera-t2-03.ogg",
+      "assets/voices/pantera/pantera-t2-04.ogg",
+      "assets/voices/pantera/pantera-t2-05.ogg",
+      "assets/voices/pantera/pantera-t2-06.ogg",
+      "assets/voices/pantera/pantera-t2-07.ogg",
+      "assets/voices/pantera/pantera-t2-08.ogg",
+      "assets/voices/pantera/pantera-t2-09.ogg",
+      "assets/voices/pantera/pantera-t2-10.ogg",
+      "assets/voices/pantera/pantera-t2-11.ogg",
+      "assets/voices/pantera/pantera-t2-12.ogg",
+      "assets/voices/pantera/pantera-t2-13.ogg",
+      "assets/voices/pantera/pantera-t2-14.ogg",
+      "assets/voices/pantera/pantera-t2-15.ogg",
+      "assets/voices/pantera/pantera-t2-16.ogg",
+      "assets/voices/pantera/pantera-t2-17.ogg",
+      "assets/voices/pantera/pantera-t2-18.ogg",
+      "assets/voices/pantera/pantera-t2-19.ogg",
+      "assets/voices/pantera/pantera-t2-20.ogg",
+      "assets/voices/pantera/pantera-t2-21.ogg",
+      "assets/voices/pantera/pantera-t2-22.ogg",
+      "assets/voices/pantera/pantera-t2-23.ogg",
+      "assets/voices/pantera/pantera-t2-24.ogg",
+      "assets/voices/pantera/pantera-t2-25.ogg",
+      "assets/voices/pantera/pantera-t2-26.ogg"
+    ],
+    "alternate": [
+      "assets/voices/pantera/pantera-classic-01.ogg",
+      "assets/voices/pantera/pantera-classic-02.ogg",
+      "assets/voices/pantera/pantera-classic-03.ogg",
+      "assets/voices/pantera/pantera-classic-04.ogg",
+      "assets/voices/pantera/pantera-classic-05.ogg",
+      "assets/voices/pantera/pantera-classic-06.ogg",
+      "assets/voices/pantera/pantera-classic-07.ogg",
+      "assets/voices/pantera/pantera-classic-08.ogg",
+      "assets/voices/pantera/pantera-classic-09.ogg",
+      "assets/voices/pantera/pantera-classic-10.ogg",
+      "assets/voices/pantera/pantera-classic-11.ogg",
+      "assets/voices/pantera/pantera-classic-12.ogg",
+      "assets/voices/pantera/pantera-classic-13.ogg",
+      "assets/voices/pantera/pantera-classic-14.ogg",
+      "assets/voices/pantera/pantera-classic-15.ogg",
+      "assets/voices/pantera/pantera-classic-16.ogg",
+      "assets/voices/pantera/pantera-classic-17.ogg",
+      "assets/voices/pantera/pantera-classic-18.ogg",
+      "assets/voices/pantera/pantera-classic-19.ogg",
+      "assets/voices/pantera/pantera-classic-20.ogg",
+      "assets/voices/pantera/pantera-classic-21.ogg",
+      "assets/voices/pantera/pantera-classic-22.ogg",
+      "assets/voices/pantera/pantera-classic-23.ogg",
+      "assets/voices/pantera/pantera-classic-24.ogg",
+      "assets/voices/pantera/pantera-classic-25.ogg",
+      "assets/voices/pantera/pantera-classic-26.ogg"
+    ]
+  },
+  "announcer": {
+    "note": "Announcer is NOT a WHAudio event: it lives in game/data/voices/announcer.json and is driven by voice.announce(), wired into round flow by menus.js hookAnnouncer (2026-10-24). Triggers: round-1, round-2, round-3, final-round, fight, ko, double-ko, perfect, time-up, draw, you-win. All clips are subtitle-only placeholders \u2014 proprietary announcer recording is NEEDS RECORDING (see docs/decisions/2026-10-24-audio-jukebox-streaming.md).",
+    "manifest": "data/voices/announcer.json"
+  },
+  "jukeboxPools": {
+    "note": "Pool selection lives in game/data/jukebox-pools.json + game/js/jukebox.js (installed from menus.js). This entry is a pointer, not a second pool definition \u2014 pools are defined once, in jukebox-pools.json.",
+    "file": "data/jukebox-pools.json"
+  }
+}

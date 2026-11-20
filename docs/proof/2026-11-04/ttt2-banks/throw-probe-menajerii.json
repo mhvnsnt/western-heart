@@ -1,0 +1,67 @@
+{
+ "fighter": "menajerii",
+ "gate": {
+  "roundState": "fight",
+  "p1id": "menajerii",
+  "skinned": 69,
+  "paused": false
+ },
+ "rows": [
+  {
+   "notation": "1+3",
+   "fired": {
+    "ok": true,
+    "err": null,
+    "state": "attack"
+   },
+   "plan": "grab",
+   "planKind": "generic",
+   "planWhy": "generic grab for legR (NOT a throw row)",
+   "p2hp_before": 1000000,
+   "p2hp_min": 1000000,
+   "damage": 0
+  },
+  {
+   "notation": "2+4",
+   "fired": {
+    "ok": false,
+    "err": null,
+    "state": "throwing"
+   },
+   "plan": "grab",
+   "planKind": "generic",
+   "planWhy": "generic grab for legR (NOT a throw row)",
+   "p2hp_before": 1000000,
+   "p2hp_min": 1000000,
+   "damage": 0
+  },
+  {
+   "notation": "2",
+   "fired": {
+    "ok": false,
+    "err": null,
+    "state": "throwing"
+   },
+   "plan": "grab",
+   "planKind": "generic",
+   "planWhy": "generic grab for legR (NOT a throw row)",
+   "p2hp_before": 1000000,
+   "p2hp_min": 1000000,
+   "damage": 0
+  },
+  {
+   "notation": "d/f+2",
+   "fired": {
+    "ok": false,
+    "err": null,
+    "state": "throwing"
+   },
+   "plan": "grab",
+   "planKind": "generic",
+   "planWhy": "generic grab for legR (NOT a throw row)",
+   "p2hp_before": 1000000,
+   "p2hp_min": 1000000,
+   "damage": 0
+  }
+ ]
+}

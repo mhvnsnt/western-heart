@@ -1,0 +1,217 @@
+{
+ "fighter": "charger",
+ "base": "http://127.0.0.1:8906/game/",
+ "ready": true,
+ "rows": [
+  {
+   "n": "1",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:44",
+   "kind": "own",
+   "why": "",
+   "timing": {
+    "S": 0.183,
+    "A": 0.033,
+    "t0": 0.183,
+    "t1": 0.2,
+    "D": 0.667,
+    "src": "decoded"
+   },
+   "moveDmg": 10,
+   "hitWord": 535,
+   "isGrab": false,
+   "atkName": "1",
+   "hasHit": true,
+   "distAtHit": 1.47,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 10,
+   "hits": [
+    {
+     "dmg": 10,
+     "word": 535,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "1",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:44",
+   "kind": "own",
+   "why": "",
+   "timing": {
+    "S": 0.183,
+    "A": 0.033,
+    "t0": 0.183,
+    "t1": 0.2,
+    "D": 0.667,
+    "src": "decoded"
+   },
+   "moveDmg": 10,
+   "hitWord": 535,
+   "isGrab": false,
+   "atkName": "1",
+   "hasHit": false,
+   "distAtHit": null,
+   "defStates": [],
+   "hpDelta": 0,
+   "hits": []
+  },
+  {
+   "n": "2",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:48",
+   "kind": "own",
+   "why": "",
+   "timing": {
+    "S": 0.183,
+    "A": 0.033,
+    "t0": 0.15,
+    "t1": 0.15,
+    "D": 0.633,
+    "src": "decoded"
+   },
+   "moveDmg": 11,
+   "hitWord": 535,
+   "isGrab": false,
+   "atkName": "2",
+   "hasHit": true,
+   "distAtHit": 1.47,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 11,
+   "hits": [
+    {
+     "dmg": 11,
+     "word": 535,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "2",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:48",
+   "kind": "own",
+   "why": "",
+   "timing": {
+    "S": 0.183,
+    "A": 0.033,
+    "t0": 0.15,
+    "t1": 0.15,
+    "D": 0.633,
+    "src": "decoded"
+   },
+   "moveDmg": 11,
+   "hitWord": 535,
+   "isGrab": false,
+   "atkName": "2",
+   "hasHit": false,
+   "distAtHit": null,
+   "defStates": [],
+   "hpDelta": 0,
+   "hits": []
+  },
+  {
+   "n": "d/f+2",
+   "spacing": 1.1,
+   "ok": true,
+   "dist0": 1.45,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:149",
+   "kind": "own",
+   "why": "",
+   "timing": {
+    "S": 0.383,
+    "A": 0.017,
+    "t0": 0.383,
+    "t1": 0.383,
+    "D": 1.033,
+    "src": "decoded"
+   },
+   "moveDmg": 9,
+   "hitWord": 535,
+   "isGrab": false,
+   "atkName": "d/f+2",
+   "hasHit": true,
+   "distAtHit": 1.53,
+   "defStates": [
+    "hitstun"
+   ],
+   "hpDelta": 9,
+   "hits": [
+    {
+     "dmg": 9,
+     "word": 535,
+     "grab": false,
+     "res": "hit"
+    }
+   ]
+  },
+  {
+   "n": "d/f+2",
+   "spacing": 1.8,
+   "ok": true,
+   "dist0": 1.8,
+   "ff": 1,
+   "df": -1,
+   "plan": "row:149",
+   "kind": "own",
+   "why": "",
+   "timing": {
+    "S": 0.383,
+    "A": 0.017,
+    "t0": 0.383,
+    "t1": 0.383,
+    "D": 1.033,
+    "src": "decoded"
+   },
+   "moveDmg": 9,
+   "hitWord": 535,
+   "isGrab": false,
+   "atkName": "d/f+2",
+   "hasHit": false,
+   "distAtHit": null,
+   "defStates": [],
+   "hpDelta": 0,
+   "hits": []
+  }
+ ],
+ "setup": {
+  "roundState": "fight",
+  "p1id": "charger",
+  "t3actionsCount": 22,
+  "bank": "bryan"
+ },
+ "logs": [
+  "[http 404] http://127.0.0.1:8906/deploy-manifest.json",
+  "[http 404] http://127.0.0.1:8906/roster/charger/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8906/roster/pantera/anatomy/anatomy-layers.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/index.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/charger.json",
+  "[http 404] http://127.0.0.1:8906/customization/profiles/pantera.json",
+  "[http 404] http://127.0.0.1:8906/game/js/intro-interactions.js"
+ ]
+}

@@ -1,0 +1,337 @@
+{
+ "schema": "wh-t7-move-resolve/1",
+ "code": "kin",
+ "stance": "Kg_sKAM00_",
+ "stats": {
+  "t7_rows": 297,
+  "mapped": 29,
+  "mapped_0xC8": 0,
+  "ambiguous": 0,
+  "no_match": 6,
+  "not_single_input": 262,
+  "string_step_rows": 24,
+  "string_mapped": 17,
+  "string_ambiguous": 0,
+  "string_no_match": 7,
+  "motion_rows": 11,
+  "motion_mapped": 8,
+  "motion_ambiguous": 0,
+  "motion_no_match": 3
+ },
+ "source": "teardown/tekken7-steam/tkdata/mothead/json/kinmot.json (the reverse-engineering repo; motbin_sha256 de4acf32277e1ebd13c0bb5e5eec68b2f37e0fa23d40b0f16ef169919d62ec18)",
+ "motions": {
+  "f,F+1~t7.king": {
+   "t7_command": "f, F+1",
+   "damage": 21,
+   "startup": 22,
+   "status": "mapped",
+   "motbin_move": "Kg_lygerlp00",
+   "motbin_id": 1684,
+   "anim": "kgss_66lp(DVD)",
+   "bank": "rotsm",
+   "clip": 439,
+   "fmt": "0x64",
+   "prefix_chain": [
+    [
+     "Kg_sDASHF"
+    ]
+   ],
+   "path_moves": [
+    "Co_R_lp00R",
+    "Co_R_rp00L",
+    "Kg_jprk00F",
+    "Kg_lp00F",
+    "Kg_lygerlp00"
+   ],
+   "verified_candidates": [
+    "Kg_lygerlp00"
+   ]
+  },
+  "f,F+2~t7.king": {
+   "t7_command": "f, F+2",
+   "damage": 19,
+   "startup": 31,
+   "status": "mapped",
+   "motbin_move": "Kg_p00",
+   "motbin_id": 1687,
+   "anim": "sukg_falleru(DVD)",
+   "bank": "rotsm",
+   "clip": 442,
+   "fmt": "0x64",
+   "prefix_chain": [
+    [
+     "Kg_sDASHF"
+    ]
+   ],
+   "path_moves": [
+    "Co_R_lp00R",
+    "Co_R_rp00L",
+    "Kg_p00",
+    "Kg_rp00F",
+    "Kg_t_srp00B",
+    "Kg_t_srpF"
+   ],
+   "verified_candidates": [
+    "Kg_p00"
+   ]
+  },
+  "f,F+2,1~t7.king": {
+   "t7_command": "(f, F+2), 1",
+   "damage": 25,
+   "startup": 19,
+   "status": "mapped",
+   "motbin_move": "Kg_fallerurari",
+   "motbin_id": 1691,
+   "anim": "sukg_fallerurari(DVD)",
+   "bank": "rotsm",
+   "clip": 446,
+   "fmt": "0x64",
+   "prefix_chain": [
+    [
+     "Kg_sDASHF"
+    ],
+    [
+     "Co_R_lp00R",
+     "Co_R_rp00L",
+     "Kg_p00",
+     "Kg_rp00F",
+     "Kg_t_srp00B",
+     "Kg_t_srpF"
+    ]
+   ],
+   "path_moves": [
+    "Kg_6rplp",
+    "Kg_dhook_lp00",
+    "Kg_dhook_lp01",
+    "Kg_fallerurari",
+    "Kg_p00Y"
+   ],
+   "verified_candidates": [
+    "Kg_fallerurari"
+   ]
+  },
+  "f,F+4~t7.king": {
+   "t7_command": "f, F+4",
+   "damage": 25,
+   "startup": 15,
+   "status": "mapped",
+   "motbin_move": "Kg_tkr01",
+   "motbin_id": 1706,
+   "anim": "mokg_tkr(DVD)",
+   "bank": "rotsm",
+   "clip": 458,
+   "fmt": "0x64",
+   "prefix_chain": [
+    [
+     "Kg_sDASHF"
+    ]
+   ],
+   "path_moves": [
+    "Co_R_lk00L",
+    "Co_R_rk00R",
+    "Kg_Mpl_kata",
+    "Kg_rsbt",
+    "Kg_tkr01"
+   ],
+   "verified_candidates": [
+    "Kg_tkr01"
+   ]
+  },
+  "f,F+3+4~t7.king": {
+   "t7_command": "f, F+3+4",
+   "damage": 25,
+   "startup": 28,
+   "status": "mapped",
+   "motbin_move": "Kg_dki10",
+   "motbin_id": 1732,
+   "anim": "kin_dki10(DVD)",
+   "bank": "rotsm",
+   "clip": 481,
+   "fmt": "0x64",
+   "prefix_chain": [
+    [
+     "Kg_sDASHF"
+    ]
+   ],
+   "path_moves": [
+    "Kg_DASHdki",
+    "Kg_dki10",
+    "Kg_fstep"
+   ],
+   "verified_candidates": [
+    "Kg_dki10"
+   ]
+  },
+  "f,f,n,2~t7.king": {
+   "t7_command": "f, f, n, 2",
+   "damage": 15,
+   "startup": 18,
+   "status": "mapped",
+   "motbin_move": "Kg_p01",
+   "motbin_id": 1692,
+   "anim": "k_p01(DVD)",
+   "bank": "rotsm",
+   "clip": 447,
+   "fmt": "0x64",
+   "prefix_chain": [
+    [
+     "Kg_sDASHF"
+    ]
+   ],
+   "path_moves": [
+    "Co_R_lp00R",
+    "Co_R_rp00L",
+    "Kg_p01",
+    "Kg_rp00",
+    "Kg_t_srp00B",
+    "Kg_t_srpF"
+   ],
+   "verified_candidates": [
+    "Kg_p01"
+   ]
+  },
+  "f,f,n,1+2~t7.king": {
+   "t7_command": "f, f, n, 1+2",
+   "damage": null,
+   "startup": 9,
+   "status": "no_match",
+   "motbin_move": null,
+   "motbin_id": null,
+   "anim": null,
+   "bank": null,
+   "clip": null,
+   "fmt": null,
+   "prefix_chain": [
+    [
+     "Kg_sDASHF"
+    ]
+   ],
+   "path_moves": [
+    "Kg_BodyAt00",
+    "Kg_Tnrpsp",
+    "Kg_hiziru"
+   ],
+   "verified_candidates": []
+  },
+  "f,f,f+3": {
+   "t7_command": "f, f, f+3 (or WR 3)",
+   "damage": 25,
+   "startup": 20,
+   "status": "mapped",
+   "motbin_move": "Kg_666lk",
+   "motbin_id": 2565,
+   "anim": "kgss_bomaknee(DVD)",
+   "bank": "rotsm",
+   "clip": 997,
+   "fmt": "0x64",
+   "prefix_chain": [
+    [
+     "Kg_sDASHF"
+    ],
+    [
+     "sRUN__00F",
+     "sTRN_L00F",
+     "sTRN_R00F"
+    ]
+   ],
+   "path_moves": [
+    "Kg_666lk",
+    "Kg_kinlk00",
+    "Kg_lk00",
+    "Kg_lk00F",
+    "Kg_rp00F"
+   ],
+   "verified_candidates": [
+    "Kg_666lk"
+   ]
+  },
+  "f,f,f+3+4": {
+   "t7_command": "f, f, f+3+4 (or WR 3+4)",
+   "damage": 40,
+   "startup": 28,
+   "status": "mapped",
+   "motbin_move": "Kg_dki11",
+   "motbin_id": 1735,
+   "anim": "kgss_s4_666wk",
+   "bank": "motbin",
+   "clip": 118,
+   "fmt": "0x64",
+   "prefix_chain": [
+    [
+     "Kg_sDASHF"
+    ],
+    [
+     "sRUN__00F",
+     "sTRN_L00F",
+     "sTRN_R00F"
+    ]
+   ],
+   "path_moves": [
+    "Kg_DASHdki",
+    "Kg_dki11",
+    "Kg_fstep"
+   ],
+   "verified_candidates": [
+    "Kg_dki11"
+   ]
+  },
+  "4~t7.king.2": {
+   "t7_command": "WR 4",
+   "damage": 22,
+   "startup": 16,
+   "status": "no_match",
+   "motbin_move": null,
+   "motbin_id": null,
+   "anim": null,
+   "bank": null,
+   "clip": null,
+   "fmt": null,
+   "prefix_chain": [
+    [
+     "Kg_sDASHF"
+    ],
+    [
+     "sRUN__00F",
+     "sTRN_L00F",
+     "sTRN_R00F"
+    ]
+   ],
+   "path_moves": [
+    "Co_R_lk00L",
+    "Co_R_rk00R",
+    "Kg_Mpl_kata",
+    "Kg_rk00",
+    "Kg_rsbt"
+   ],
+   "verified_candidates": []
+  },
+  "WR.1+2": {
+   "t7_command": "WR+1+2",
+   "damage": 24,
+   "startup": 18,
+   "status": "no_match",
+   "motbin_move": null,
+   "motbin_id": null,
+   "anim": null,
+   "bank": null,
+   "clip": null,
+   "fmt": null,
+   "prefix_chain": [
+    [
+     "Kg_sDASHF"
+    ],
+    [
+     "sRUN__00F",
+     "sTRN_L00F",
+     "sTRN_R00F"
+    ]
+   ],
+   "path_moves": [
+    "Kg_Tnrpsp",
+    "Kg_hiziru",
+    "Kg_rpspxk"
+   ],
+   "verified_candidates": []
+  }
+ }
+}

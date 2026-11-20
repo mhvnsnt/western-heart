@@ -1,0 +1,30 @@
+loading page
+starting fight
+fight started, waiting for round
+round state: fight
+RH [{"n":"1","r":"hit","w":1042,"st":"hitstun","stick":"n"}]
+{"su":0.1667,"ac":0.017,"rc":0.317,"dmg":3,"lvl":"h","dist":1.45,"dz":0,"p2s":"idle","p2s2":"idle"}
+1                    -> 1            1~t8.bob           Jab                          word=0x412 anim=null state=attack p2hp 100->96.9
+RH [{"n":"1","r":"hit","w":1042,"st":"hitstun","stick":"n"},{"n":"1,2","r":"hit","st":"hitstun","stick":"n"}]
+{"su":0.1667,"ac":0.033,"rc":0.367,"dmg":15,"dist":1.58,"dz":0,"p2s":"hitstun","p2s2":"idle"}
+1,2 (string)         -> 1,2          1,2                One Two Punch                word=- anim=null state=attack p2hp 100->81.1
+RH [{"n":"d/f+1","r":"hit","st":"hitstun","stick":"n"}]
+{"su":0.233,"ac":0.033,"rc":0.367,"dmg":13,"dist":1.45,"dz":0,"p2s":"idle","p2s2":"idle"}
+d/f+1                -> d/f+1        df+1               Move df+1 (df+1)             word=- anim=null state=attack p2hp 100->86.4
+RH [{"n":"f,F+2","r":"hit","st":"hitstun","stick":"n"}]
+{"su":0.2333,"ac":0.033,"rc":0.6,"dmg":21,"dist":1.45,"dz":0,"p2s":"idle","p2s2":"hitstun"}
+f,F+2 (dash)         -> f,F+2        f,F+2              Zip Cutter                   word=- anim=null state=attack p2hp 100->78
+RH [{"n":"d+3","r":"hit","st":"hitstun","stick":"n"}]
+{"su":0.3167,"ac":0.033,"rc":0.6,"dmg":12,"dist":1.45,"dz":0,"p2s":"idle","p2s2":"idle"}
+crouch then 3 (FC)   -> d+3          d+3                Move d+3 (d+3)               word=- anim=null state=attack p2hp 100->100
+RH [{"n":"4","r":"hit","w":1042,"st":"hitstun","stick":"n"}]
+{"su":0.2167,"ac":0.017,"rc":0.433,"dmg":8,"lvl":"h","dist":1.45,"dz":0,"p2s":"idle","p2s2":"idle"}
+WS.4 (rise + 4)      -> 4            4~t8.bob           BURGER 4                     word=0x412 anim=null state=attack p2hp 100->100
+RH [{"n":"1","r":"hit","w":1042,"st":"hitstun","stick":"n"},{"n":"1,3","r":"hit","w":271,"st":"hitstun","stick":"n"}]
+{"su":0.1667,"ac":0.017,"rc":0.317,"dmg":3,"lvl":"h","dist":1.5,"dz":0,"p2s":"hitstun","p2s2":"hitstun"}
+1+3 (throw)          -> 1            1~t8.bob           Jab                          word=0x412 anim=null state=attack p2hp 100->96.9
+RH [{"n":"b+1+2","r":"hit","st":"hitstun","stick":"n"}]
+{"su":0.2833,"ac":0.033,"rc":0.533,"dmg":20,"dist":1.59,"dz":0,"p2s":"idle","p2s2":"idle"}
+b+1+2                -> b+1+2        b+1+2__main        Move b+1+2 (b+1+2)           word=- anim=null state=attack p2hp 100->79
+T3 guard/posture rules: {"high_vs_crouch_connects":false,"high_vs_stand_connects":true,"mid_vs_neutral_human":"block","low_vs_neutral_human":"hit","low_vs_downback":"block","mid_vs_downback":"hit","mid_vs_walking_fwd":"hit"}
+console lines: 11; errors: 0

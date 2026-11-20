@@ -1,0 +1,497 @@
+{
+ "format": "wh-refit/1",
+ "tool": "tools/auto_rig/refit_skeleton.py",
+ "mesh": "normalized.glb",
+ "template": "/home/hatch/workspace/_roster100-wave3-20261105/wh-tools/game/assets/models/pantera.glb",
+ "mesh_facing_in": "+X",
+ "mesh_rot_y_deg": -90,
+ "height_m": 1.819,
+ "space": "glTF (Y-up, metres), mesh facing +Z, character's left = +X, feet at y=0",
+ "joints": [
+  {
+   "name": "Hips",
+   "parent": null,
+   "pos": [
+    -6e-05,
+    1.10313,
+    0.02599
+   ]
+  },
+  {
+   "name": "Spine",
+   "parent": "Hips",
+   "pos": [
+    -6e-05,
+    1.20177,
+    0.01321
+   ]
+  },
+  {
+   "name": "Spine1",
+   "parent": "Spine",
+   "pos": [
+    -6e-05,
+    1.31686,
+    0.00387
+   ]
+  },
+  {
+   "name": "Spine2",
+   "parent": "Spine1",
+   "pos": [
+    -6e-05,
+    1.44838,
+    -0.04157
+   ]
+  },
+  {
+   "name": "Neck",
+   "parent": "Spine2",
+   "pos": [
+    -6e-05,
+    1.59635,
+    -0.01191
+   ]
+  },
+  {
+   "name": "Head",
+   "parent": "Neck",
+   "pos": [
+    -6e-05,
+    1.63045,
+    0.01119
+   ]
+  },
+  {
+   "name": "LeftShoulder",
+   "parent": "Spine2",
+   "pos": [
+    0.0685,
+    1.47142,
+    -0.03784
+   ]
+  },
+  {
+   "name": "LeftArm",
+   "parent": "LeftShoulder",
+   "pos": [
+    0.222,
+    1.44,
+    -0.005
+   ]
+  },
+  {
+   "name": "LeftForeArm",
+   "parent": "LeftArm",
+   "pos": [
+    0.208,
+    1.152,
+    -0.002
+   ]
+  },
+  {
+   "name": "LeftHand",
+   "parent": "LeftForeArm",
+   "pos": [
+    0.196,
+    0.905,
+    0.004
+   ]
+  },
+  {
+   "name": "LeftHandThumb1",
+   "parent": "LeftHand",
+   "pos": [
+    0.158,
+    0.868,
+    0.042
+   ]
+  },
+  {
+   "name": "LeftHandThumb2",
+   "parent": "LeftHandThumb1",
+   "pos": [
+    0.15,
+    0.83,
+    0.048
+   ]
+  },
+  {
+   "name": "LeftHandThumb3",
+   "parent": "LeftHandThumb2",
+   "pos": [
+    0.146,
+    0.796,
+    0.05
+   ]
+  },
+  {
+   "name": "LeftHandIndex1",
+   "parent": "LeftHand",
+   "pos": [
+    0.216,
+    0.862,
+    0.018
+   ]
+  },
+  {
+   "name": "LeftHandIndex2",
+   "parent": "LeftHandIndex1",
+   "pos": [
+    0.218,
+    0.82,
+    0.018
+   ]
+  },
+  {
+   "name": "LeftHandIndex3",
+   "parent": "LeftHandIndex2",
+   "pos": [
+    0.219,
+    0.784,
+    0.016
+   ]
+  },
+  {
+   "name": "LeftHandMiddle1",
+   "parent": "LeftHand",
+   "pos": [
+    0.202,
+    0.856,
+    -0.002
+   ]
+  },
+  {
+   "name": "LeftHandMiddle2",
+   "parent": "LeftHandMiddle1",
+   "pos": [
+    0.203,
+    0.812,
+    -0.002
+   ]
+  },
+  {
+   "name": "LeftHandMiddle3",
+   "parent": "LeftHandMiddle2",
+   "pos": [
+    0.204,
+    0.774,
+    -0.004
+   ]
+  },
+  {
+   "name": "LeftHandRing1",
+   "parent": "LeftHand",
+   "pos": [
+    0.187,
+    0.86,
+    -0.02
+   ]
+  },
+  {
+   "name": "LeftHandRing2",
+   "parent": "LeftHandRing1",
+   "pos": [
+    0.187,
+    0.82,
+    -0.021
+   ]
+  },
+  {
+   "name": "LeftHandRing3",
+   "parent": "LeftHandRing2",
+   "pos": [
+    0.187,
+    0.786,
+    -0.022
+   ]
+  },
+  {
+   "name": "LeftHandPinky1",
+   "parent": "LeftHand",
+   "pos": [
+    0.172,
+    0.868,
+    -0.036
+   ]
+  },
+  {
+   "name": "LeftHandPinky2",
+   "parent": "LeftHandPinky1",
+   "pos": [
+    0.171,
+    0.832,
+    -0.037
+   ]
+  },
+  {
+   "name": "RightShoulder",
+   "parent": "Spine2",
+   "pos": [
+    -0.07236,
+    1.47066,
+    -0.04214
+   ]
+  },
+  {
+   "name": "RightArm",
+   "parent": "RightShoulder",
+   "pos": [
+    -0.222,
+    1.44,
+    -0.005
+   ]
+  },
+  {
+   "name": "RightForeArm",
+   "parent": "RightArm",
+   "pos": [
+    -0.208,
+    1.152,
+    -0.002
+   ]
+  },
+  {
+   "name": "RightHand",
+   "parent": "RightForeArm",
+   "pos": [
+    -0.196,
+    0.905,
+    0.004
+   ]
+  },
+  {
+   "name": "RightHandThumb1",
+   "parent": "RightHand",
+   "pos": [
+    -0.158,
+    0.868,
+    0.042
+   ]
+  },
+  {
+   "name": "RightHandThumb2",
+   "parent": "RightHandThumb1",
+   "pos": [
+    -0.15,
+    0.83,
+    0.048
+   ]
+  },
+  {
+   "name": "RightHandThumb3",
+   "parent": "RightHandThumb2",
+   "pos": [
+    -0.82342,
+    1.47619,
+    0.00774
+   ]
+  },
+  {
+   "name": "RightHandIndex1",
+   "parent": "RightHand",
+   "pos": [
+    -0.216,
+    0.862,
+    0.018
+   ]
+  },
+  {
+   "name": "RightHandIndex2",
+   "parent": "RightHandIndex1",
+   "pos": [
+    -0.218,
+    0.82,
+    0.018
+   ]
+  },
+  {
+   "name": "RightHandIndex3",
+   "parent": "RightHandIndex2",
+   "pos": [
+    -0.219,
+    0.784,
+    0.016
+   ]
+  },
+  {
+   "name": "RightHandMiddle1",
+   "parent": "RightHand",
+   "pos": [
+    -0.202,
+    0.856,
+    -0.002
+   ]
+  },
+  {
+   "name": "RightHandMiddle2",
+   "parent": "RightHandMiddle1",
+   "pos": [
+    -0.203,
+    0.812,
+    -0.002
+   ]
+  },
+  {
+   "name": "RightHandMiddle3",
+   "parent": "RightHandMiddle2",
+   "pos": [
+    -0.204,
+    0.774,
+    -0.004
+   ]
+  },
+  {
+   "name": "RightHandRing1",
+   "parent": "RightHand",
+   "pos": [
+    -0.187,
+    0.86,
+    -0.02
+   ]
+  },
+  {
+   "name": "RightHandRing2",
+   "parent": "RightHandRing1",
+   "pos": [
+    -0.187,
+    0.82,
+    -0.021
+   ]
+  },
+  {
+   "name": "RightHandRing3",
+   "parent": "RightHandRing2",
+   "pos": [
+    -0.187,
+    0.786,
+    -0.022
+   ]
+  },
+  {
+   "name": "RightHandPinky1",
+   "parent": "RightHand",
+   "pos": [
+    -0.172,
+    0.868,
+    -0.036
+   ]
+  },
+  {
+   "name": "RightHandPinky2",
+   "parent": "RightHandPinky1",
+   "pos": [
+    -0.171,
+    0.832,
+    -0.037
+   ]
+  },
+  {
+   "name": "LeftUpLeg",
+   "parent": "Hips",
+   "pos": [
+    0.10001,
+    1.04833,
+    0.02698
+   ]
+  },
+  {
+   "name": "LeftLeg",
+   "parent": "LeftUpLeg",
+   "pos": [
+    0.13759,
+    0.5978,
+    0.01431
+   ]
+  },
+  {
+   "name": "LeftFoot",
+   "parent": "LeftLeg",
+   "pos": [
+    0.16793,
+    0.13743,
+    -0.04607
+   ]
+  },
+  {
+   "name": "LeftToeBase",
+   "parent": "LeftFoot",
+   "pos": [
+    0.19543,
+    0.01463,
+    0.09486
+   ]
+  },
+  {
+   "name": "RightUpLeg",
+   "parent": "Hips",
+   "pos": [
+    -0.10035,
+    1.04832,
+    0.01922
+   ]
+  },
+  {
+   "name": "RightLeg",
+   "parent": "RightUpLeg",
+   "pos": [
+    -0.13807,
+    0.59821,
+    0.01384
+   ]
+  },
+  {
+   "name": "RightFoot",
+   "parent": "RightLeg",
+   "pos": [
+    -0.16843,
+    0.13743,
+    -0.04612
+   ]
+  },
+  {
+   "name": "RightToeBase",
+   "parent": "RightFoot",
+   "pos": [
+    -0.19524,
+    0.01463,
+    0.09494
+   ]
+  }
+ ],
+ "leaf_tail": {},
+ "notes": {
+  "template_turned_180": true,
+  "template_relabelled_LR": false,
+  "scale": 1.0394,
+  "start_offset_z_m": 0.0135,
+  "Hips": 8398,
+  "Spine": 6616,
+  "Spine1": 7922,
+  "Spine2": 9023,
+  "Neck": 17986,
+  "Head": 16966,
+  "LeftUpLeg": 8394,
+  "LeftLeg": 6775,
+  "LeftFoot": 6325,
+  "LeftToeBase": {
+   "heel_z": -0.135,
+   "tip_z": 0.184
+  },
+  "RightUpLeg": 7612,
+  "RightLeg": 6615,
+  "RightFoot": 6066,
+  "RightToeBase": {
+   "heel_z": -0.134,
+   "tip_z": 0.184
+  },
+  "LeftArm": 7934,
+  "LeftForeArm": 0,
+  "LeftHand": 0,
+  "RightArm": 8444,
+  "RightForeArm": 0,
+  "RightHand": 0
+ },
+ "static_mesh": "static.glb",
+ "lane_note": "Wave-3 manual fit: TEMPLATE fit body (legs/spine/head verified against the mesh: thigh 0.45 + shin 0.46 = the figure's leg; the landmark pass compressed the legs and put its Neck inside the chest). The template's arm chains ghosted a T-pose in empty air - this mesh's arms HANG (A-pose). Both arm chains were re-placed from the landmark pass's arm direction + mesh slice-band centroids (measure_arms.py): shoulder (0.222, 1.440), elbow (0.208, 1.152), wrist (0.196, 0.905), finger fans continuing down inside the glove mass to y ~0.78; right side mirrored. LeftHandThumb3 inserted at the fan position (the template fit dropped it on this mesh; the canonical 50-joint set has no Pinky3 on either side - pinkies carry 2 segments in this skeleton standard, verified against the shipped nightwolf/kingtyrant refits). Landmark's own arm chain over-extended into the boot mass (its Hand sat at y 0.163) and was not used directly. Input was S3's shipped GLB with its node transform baked into the geometry first (world bbox verified 1.819 m, feet at 0 - his shipped presentation)."
+}
