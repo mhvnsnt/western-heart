@@ -24,13 +24,16 @@ Bone entry:
   +0x08  u32 BE Part A index (data starts at index+8)
   +0x0C  u32 BE Part A length in 4-byte units
   +0x10  u32 BE Part B index (absent on 0x10-long entries)
-  +0x14  u32 BE Part B length in 4-byte units
+  +0x14  u32 BE Part B length in 4-byte units (J_Hips Part B:
+         8-byte records -- see below)
 
 Part lengths are x4 bytes (NOT x8 as WrestleMINUS assumes): the
 gaps between consecutive part indices equal length*4 for every
 part checked (e.g. Part B len 39 fills the 156 bytes before the
-next part). One exception seen: J_Hips' Part B in one clip spans
-352 bytes for length 44 (x8) -- see docs/YOBJ-YANM.md.
+next part). One systematic exception: J_Hips' Part B length
+field counts 8-byte records, so its true span is length*8 --
+the stored part_b length (length*4) is HALF the track. See
+docs/YOBJ-YANM.md "Root motion" and yanm_decode.py hips_b_track.
 
 Channel header part (A or B, see StartingID):
   +0/+2/+4  u16 LE X/Y/Z translation present (1) or absent (0xFF00)
