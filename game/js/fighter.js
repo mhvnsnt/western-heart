@@ -69,6 +69,20 @@ import { FE_AIR_BLEND_WEIGHT, beginAirCatch, sampleAirBlend } from './air-reacti
 import { soulStates } from './full-movelist.js';
 import { t3ConditionHolds } from './t3-conditions.js';
 import { btGuardFor } from './bt-guard.js';
+// T7 THROW DEFAULT — OFF (owner verdict 2026-11-20; Lane A cause + Lane C
+// live-game check, _pantera-t7fix-20261120): the real T7 pair plays the victim
+// spinning while the thrower stands still — the thrower barely twists
+// (common_709 33.6 deg, rotsm_534 58.4 deg) while the victim carries the spin
+// (rotsm_574 280.8 deg, rotsm_578 193.3 deg, 147.2 deg before the 1.8 s
+// pair-clock cut) — and the owner judged it broken against the T3 pair, where
+// the thrower does the spinning spiral (307.6 deg) and the victim inverts
+// (172.6 deg). The clips are correctly identified (Lane A: graph cancels +
+// motion signatures), so this is a content mismatch, not a swap — no T7 clip
+// supplies the T3 look. T3 is the default again until a T7 content decision
+// lands. The T7 module stays wired (preload + resolve + swap) so re-enable is
+// flipping this one flag back to true. Never call the old motion a "forward
+// roll" — it is a spinning spiral / corkscrew.
+const T7_THROW_DEFAULT_ENABLED = false;
 
 // ---- Frame data: REAL Tekken 3 data (teardown/tekken3/movesets/moveset_king.json, moveset_jin.json)
 // NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO in Western Heart. The 'jin' moveset family is now 'demonio'.
@@ -2401,7 +2415,7 @@ export class Fighter {
     if (!clips.throwerBank || !clips.victimBank) return { pair: null, reason: clips.note || 'unresolved clip bank (UNMAPPED)' };
     // T7 DEFAULT (Lane 5, 2026-11-20): for Pantera's plain front throws the real T7 pair is the default — resolved here, swapped in by _bindThrowPair. The T3 pair above still supplies the anchors, damage time, break windows and the fallback, and stays the pair when t7 is null. Front (quadrant 0) and back (quadrant 2) resolve from the graph bank's own pairing; left/right are NOT wired — which physical side "left"/"right" is is unproven (t7-throw-clips README) — and air has no signal on this path, so those situations keep T3. Gated on T7_GRAPHS: the T7 clips are King's, no other fighter's throw may take them.
     let t7 = null;
-    if ((this.attackName === '1+3' || this.attackName === '2+4') && T7_GRAPHS[this.char.id]) {
+    if (T7_THROW_DEFAULT_ENABLED && (this.attackName === '1+3' || this.attackName === '2+4') && T7_GRAPHS[this.char.id]) {
       const situation = t7SituationForQuadrant(quadrant);
       if (situation) t7 = resolveT7ThrowPair(this.attackName, situation);
     }
