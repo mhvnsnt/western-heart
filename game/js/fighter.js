@@ -2325,6 +2325,7 @@ export class Fighter {
       return;
     }
     if (pair && pair.reason) console.log(`[WH-THROW] ${attacker.char.id} vs ${this.char.id}: no file pair (${pair.reason}) — legacy lock`);
+    if (pair && pair.pair && pair.pair.bindReason) console.log(`[WH-THROW] ${attacker.char.id} vs ${this.char.id}: pair selected (slot ${pair.pair.throw.slot}) but bind failed (${pair.pair.bindReason}) — legacy lock`);
     this.state = 'thrown'; this.stateT = 0;
     this._throwHitDone = false; // A1: each new lock may slam again
     this.lockT = 0.3; this.lockMove = move; this.lockPartner = attacker;
@@ -2446,10 +2447,16 @@ export class Fighter {
     const vBank = victim._bankIdForDir(pair.clips.victimBank);
     const tRp = tBank && getReactionPack(tBank);
     const vRp = vBank && getReactionPack(vBank);
-    if (!tRp || !vRp) return false;
+    if (!tRp || !vRp) {
+      pair.bindReason = `reaction pack not loaded (throwerBank=${pair.clips.throwerBank} tRp=${!!tRp} victimBank=${pair.clips.victimBank} vRp=${!!vRp})`;
+      return false;
+    }
     pair.throwerPackRow = tRp.pack.rows[hexSlot(pair.clips.throwerSlot)];
     pair.victimPackRow = vRp.pack.rows[hexSlot(pair.clips.victimSlot)];
-    if (!pair.throwerPackRow || !pair.victimPackRow) return false;
+    if (!pair.throwerPackRow || !pair.victimPackRow) {
+      pair.bindReason = `pack row missing (thrower slot ${pair.clips.throwerSlot} row=${!!pair.throwerPackRow}, victim slot ${pair.clips.victimSlot} row=${!!pair.victimPackRow})`;
+      return false;
+    }
     pair.anchorScale = tRp.pack.anchor_mm_to_rig_m;
     pair.throwerAction = thrower._reactionAction(tBank, pair.clips.throwerSlot, 'throw:' + hexSlot(pair.clips.throwerSlot));
     pair.victimAction = victim._reactionAction(vBank, pair.clips.victimSlot, 'victim:' + hexSlot(pair.clips.victimSlot));
@@ -2461,6 +2468,9 @@ export class Fighter {
     if (thrower.surgeForm) {
       const dwName = thrower._dwThrowAction && thrower._dwThrowAction();
       if (dwName) pair.throwerAction = dwName;
+    }
+    if (!pair.throwerAction || !pair.victimAction) {
+      pair.bindReason = `clip retarget failed (throwerAction=${pair.throwerAction} victimAction=${pair.victimAction})`;
     }
     return !!(pair.throwerAction && pair.victimAction);
   }
