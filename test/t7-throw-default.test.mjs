@@ -1,10 +1,14 @@
-// Pantera T7 throw clips as the DEFAULT pair (Lane 5, 2026-11-20).
+// Pantera T7 throw clips (Lane 5, 2026-11-20) — live default OFF since the
+// 2026-11-20 owner verdict (Lane C, T7-fix): the real T7 pair is broken vs the
+// T3 pair (thrower barely twists, victim carries the spin), so the T3 pair
+// (slots 2795/2797 + victims 3018/3051) is the live default again. The T7
+// module below still resolves + loads the pair — only the live default
+// changed, gated by T7_THROW_DEFAULT_ENABLED = false in fighter.js.
 // Node only: no browser, no THREE, no model proof. Run: node --test test/t7-throw-default.test.mjs
 // Proves the selection contract fighter.js wires in: for Pantera 1+3 / 2+4 the
-// T7 pair is selected by default (front: common_709 + rotsm_574 / rotsm_534 +
-// rotsm_578), and when T7 loading fails the T3 pair (slots 2795/2797 +
-// victims 3018/3051) stands as the working fallback — real T3 motion, never
-// generic, never invented. The live bind itself (fighter.js _throwPairFor /
+// T7 pair resolves (front: common_709 + rotsm_574 / rotsm_534 + rotsm_578),
+// and when T7 loading fails the T3 pair stands as the working fallback —
+// real T3 motion, never generic, never invented. The live bind itself (fighter.js _throwPairFor /
 // _bindThrowPair) cannot run in node (it imports THREE + the game), so the
 // seam it calls is tested here — resolveT7ThrowPair, t7SituationForQuadrant,
 // loadT7ThrowPair, getT7ThrowClipRecord — plus a guard that the call-site
@@ -152,4 +156,13 @@ test('wiring presence: fighter.js calls the T7 default path (guard against the c
   assert.ok(dwAt > 0 && t7At > dwAt, 'T7 swap must follow the T3/DW bind');
   const bindAt = src.indexOf('_bindThrowPair(pair, victim)');
   assert.ok(bindAt > 0 && bindAt < t7At, 'T7 swap must be inside _bindThrowPair');
+});
+
+test('live default OFF (owner verdict 2026-11-20): fighter.js gates the T7 resolution — T3 pair stands', () => {
+  const src = readFileSync(join(ROOT, 'game/js/fighter.js'), 'utf8');
+  assert.ok(src.includes('const T7_THROW_DEFAULT_ENABLED = false'), 'T7 default gate must be off');
+  assert.ok(src.includes('T7_THROW_DEFAULT_ENABLED && (this.attackName'), 'T7 resolution must be gated on the flag');
+  // The T7 pair still resolves in the module (above) — only the live default changed.
+  assert.equal(t3FrontPair('1+3').sel.throw.slot, 2795);
+  assert.equal(t3FrontPair('2+4').sel.throw.slot, 2797);
 });
