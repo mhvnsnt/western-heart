@@ -232,3 +232,25 @@ translation tables + build script only — NEVER the ROM).
 - Deliver patched ROM (+ .zip) to Oracle VM
   /home/ubuntu/vpw2-english-complete/.
 - Report to parent agent.
+
+## 2026-11-19 ~20:20–20:30 — pushed + delivered (DONE)
+
+- Build made self-contained: the 40 clean-0068 degenerate indices are
+  now embedded in build_patched.py / verify_patched.py (no work/
+  dependency). Rebuild produces the IDENTICAL SHA-1
+  (303c699157e8489c7f9eae47503f2b7427113606).
+- PUSHED to western-heart branch muse/vpw2-english-complete (from
+  muse/jp-sourcing @ 9b58da0b, Mars approved both cards):
+  commit adfeae4cc2f5f61fc3af34701f98650dc5750ad1, 28 files under
+  teardown/virtual-pro-wrestling-2/english-complete/ (README,
+  WORKLOG, 10 tools incl. aki_lzss.c + akitext.c, 16 translation
+  tables). Via github push-files (snapshot-push procedure); sync
+  record at ~/workspace/vpw2-english-complete-push.muse-github-snapshot-sync.json.
+  Branch head verified by re-reading list_commits.
+- DELIVERED to Oracle VM /home/ubuntu/vpw2-english-complete/:
+  vpw2-english-complete.z64 (33,554,432 B, SHA-1
+  303c699157e8489c7f9eae47503f2b7427113606) + .zip (25,954,991 B,
+  SHA-1 3b90d3e03649e9159326390bcb804dcf2fcdd6dd) — SHA-1s verified
+  on the server after rsync. Host confirmed bannon-oracle-vm.
+- LANE COMPLETE. Boot-testing in the browser emulator is the parent
+  agent's step — not done here, not claimed.
