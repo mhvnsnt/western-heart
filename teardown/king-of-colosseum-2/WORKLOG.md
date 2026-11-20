@@ -208,3 +208,43 @@ Patched ISO home: Oracle VM `/home/ubuntu/koc2-english/` (never in git).
   'Fujinami Tatsumi' (Japanese order) while the 02010 roster lists
   read Western order. Accepted inconsistency; swapping fields per
   wrestler would mislabel the data.
+- TRANSLATIONS PUSHED (continuation lane, 2026-11-19 ~19:25):
+  western-heart muse/koc2 commit e121077d (Mars approved) — the 3
+  translators + 02008 patch + 01999 surveyor + all 3 translation
+  JSONs + moves-02008.json + roster/survey data + WORKLOG.
+- BUILDERS DONE (continuation lane, 2026-11-19 ~19:30):
+  tools/koc2_strings_build_02008.py (mirrors the 02010 builder:
+  header 0x10 + 85x8B cat index + 3022x12B records + string table;
+  only the u32 @0x00 offset is recomputed, the other two record
+  fields are metadata copied verbatim — the translator docstring's
+  'index / 0' guess was wrong) and
+  tools/koc2_file01999_build.py (in-place fixed-width writes, only
+  field bytes touched, NUL-pad; verifies the Japanese input matches
+  before writing and re-parses after). Both proven: no-op builds
+  are BYTE-IDENTICAL to the originals. Built files in
+  work/built/: file02010-en.bin (202,850 B, 4,018 changed),
+  file02008-en.bin (90,955 B, 3,019 changed),
+  file01999-en.bin (1,252,521 B, 1,733 fields).
+  Gotcha found while building: 5 em dashes (U+2014) in 02010
+  WHOLE entries can't encode as Shift-JIS — replaced with ASCII
+  ' - ' in koc2_translate_02010.py at the source and regenerated
+  the JSON (still 4,018/4,021, 0 failed). 02008 + 01999 are pure
+  ASCII. Rule: translations must stay ASCII-only.
+- PATCHED ISO BUILT + VERIFIED (continuation lane, 2026-11-19 ~19:45):
+  work/built/King of Colosseum II (English).iso (4,593,778,688 B,
+  same size as the original). Rebuilt KC2FIRE.000 via
+  kc2_rebuild.py with manifest work/rebuild-manifest.json, then
+  koc2_iso_patch.py (streaming). SIZE TRAP: the first rebuild was
+  +2,048 B (02010 stored +6,144, 02008 stored -4,096) and the ISO
+  is fully packed — KC2FIRE.001 starts immediately after
+  KC2FIRE.000's extent, zero slack — so the archive MUST fit the
+  original size. Fixed by trimming 7 long 02010 announcement
+  sentences in the translator source (171 B total across repeats);
+  rebuilt archive is now EXACTLY 244,441,088 B (delta +0).
+  Verification: prefix hash identical, suffix hash identical
+  (incl. the 4096-B tail), embedded archive SHA-256 matches the
+  built KC2FIRE-en.000 (fd888ba7...), all diffs inside the extent
+  only. (One false alarm during verification: an arithmetic slip
+  put the extent start 245,760 B too far — the 'outside' diff was
+  the container's own entry table shifting. Always recompute
+  1965965*2048 = 4026296320.)

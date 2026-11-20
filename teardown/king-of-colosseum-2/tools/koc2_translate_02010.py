@@ -3,7 +3,7 @@
 
 Builds work/translations-02010.json: {physical_index: english_text}.
 Translate by PHYSICAL index (see docs/FILE-02010-FORMAT.md).
-Feed the result to tools/koc2_strings_build.py — never hand-edit strings.
+Feed the result to tools/koc2_strings_build.py - never hand-edit strings.
 
 Name sources: data/koc2-roster-romanized.json (FAQ-backed + machine readings
 reviewed/corrected 2026-11-19) + EXTRA_NAMES below (non-roster names that
@@ -353,11 +353,11 @@ WHOLE = {
  'ＦＬＡＭＥ\u3000ＯＦ\u3000ＭＩＮＤ': 'FLAME OF MIND',
  # cat 23/24 entrance narration lines
  'さぁ、１＋１が３にも４にもなる好タッグ、今日も阿吽の呼吸を見せつけていくのでありましょうか':
-  'Now, a great tag team where 1+1 becomes 3 or 4 — will they show their perfect harmony again today?',
+  'Now, a great tag team where 1+1 becomes 3 or 4 - will they show their perfect harmony today?',
  'さぁ、魅力的なユニットが姿を現しました。館内のファンも大声援を送っております':
   'Now, an exciting unit has appeared. The fans in the arena are cheering loudly.',
  'さぁ、タッグの頂点を目指して手を組んだ男達。今入ってまいりました':
-  'Now, the men who joined forces aiming for the top of the tag division. They are entering now.',
+  'Now, the men who joined forces aiming for the top of the tag division enter.',
  'さぁ、ガッチリ手を組んだこの男達。果たしてどんな戦いを見せるのでありましょうか':
   'Now, these men have joined forces tight. What kind of fight will they show us?',
  'さぁ、強烈なユニットが結成されました。その姿をいま現します。':
@@ -367,20 +367,20 @@ WHOLE = {
  'さぁ、プロレス界の至宝、こんじきに輝くＩＷＧＰベルトを腰に今チャンピオンが入場してまいります':
   'Now, the champion enters, wearing the golden IWGP belt, the treasure of pro-wrestling.',
  'さぁ、その腰に輝くは伝説のＮＷＦ。ＮＷＦの新たな歴史はこの男が刻んでまいります':
-  'Now, shining at his waist is the legendary NWF. This man will carve a new history for the NWF.',
+  'Now, shining at his waist is the legendary NWF. This man will carve a new NWF history.',
  '腰に巻かれるベルトとともに、今二つの魂をひとつにして、チャンピオンチームが入ってまいりました':
-  'With their belts around their waists, two souls as one, the champion team has entered.',
+  'With belts around their waists, two souls as one, the champion team has entered.',
  'さぁ、ジュニアの頂点の証でありますこのベルトを腰に、今チャンピオンが入ってまいります':
-  'Now, the champion enters, wearing this belt, the proof of being at the top of the juniors.',
+  'Now, the champion enters, wearing this belt, proof of being the top junior.',
  '通常の入場実況を再生': 'Play normal entrance commentary',
  'グローバルオナードクラウン。世界規模の崇高なる王者が、ＧＨＣのベルトを腰に入場してまいります':
   'Global Honored Crown. The noble champion of the world enters, wearing the GHC belt.',
  'ＰＷＦ、インター、ＵＮ、この三本のベルトを持つ王者、三冠ヘビー級チャンピオンが今入ってまいりました':
-  'The champion holding all three belts — PWF, Inter, and UN — the Triple Crown Heavyweight Champion has entered.',
+  'The champion holding all three belts - PWF, Inter, and UN - the Triple Crown Champion has entered.',
  '問答無用の天下一王者、いまチャンピオンが堂々の入場であります':
   'The undisputed Tenkaichi champion now makes a grand entrance.',
  'ＷＭＧワールド・マグマ・ザ・グレーテスト、プロレス界のド真ん中を突き進む王者が入場してまいります':
-  'WMG — World Magma the Greatest — the champion charging down the dead center of pro-wrestling enters now.',
+  'WMG - World Magma the Greatest - the champion charging down the center of pro-wrestling enters now.',
 }
 
 # ---------------------------------------------------------------- terms

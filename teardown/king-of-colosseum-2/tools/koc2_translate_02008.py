@@ -3,7 +3,8 @@
 
 File 02008 layout (cracked 2026-11-19): header (u32 ncat=85, u32 nstr=3022,
 u32 table_bytes) + 85 x 8B category index (u16 type, u16 count, u32 first)
-+ 3022 x 12B records (u32 str_offset, u32 index, u32 0) + string table.
++ 3022 x 12B records (u32 str_offset + two metadata u32s, copied
+verbatim — only the offset is recomputed) + string table.
 Rebuild with tools/koc2_strings_build_02008.py (same offset-recompute rule
 as 02010: the u32 @0x00 is the string-table byte offset).
 
