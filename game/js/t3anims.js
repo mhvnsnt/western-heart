@@ -888,6 +888,28 @@ export function t7GraphRetarget(fid, key, model, THREE, instanceKey = null) {
   const name = 't7g:' + key;
   return retargetT3Clips({ [name]: clip }, b.skelId, model, THREE, instanceKey, [name]);
 }
+/** Retarget ONE standalone T7 throw clip (game/assets/anim/t7/king/throws/<key>.json, wh-anim/1) onto
+    `model` as action 't7throw:<key>', or null. Lane 3 (2026-11-20, pantera-throwwire): the throw path
+    must not load the whole 57 MB graph bank (ensureT7Graph), so the clip record is handed in directly.
+    Mirrors ensureDwMoves: the T7 king skeleton is fetched once into _t3skelCache under the same
+    't7:assets/anim/t7/king/' id the graph bank uses, then jsonToClip + retargetT3Clips (which analyzes
+    the rig on first use — no captured rest pose needed). The caller keeps its current clips when this
+    returns null (T3 fallback). */
+const _t7throwSkelLoading = {};
+export async function t7ThrowClipRetarget(fid, key, record, model, THREE, { fetchJson = fetchT7Json } = {}) {
+  const def = T7_GRAPHS[fid];
+  if (!def || !record || !model) return null;
+  const skelId = 't7:' + def.dir;
+  if (!_t3skelCache[skelId]) {
+    if (!_t7throwSkelLoading[skelId]) _t7throwSkelLoading[skelId] = fetchJson(def.dir + 'skeleton.json').catch(() => null);
+    _t3skelCache[skelId] = await _t7throwSkelLoading[skelId];
+    if (!_t3skelCache[skelId]) return null;
+  }
+  const clip = jsonToClip(`t7throw_${fid}_${key}`, record, THREE);
+  if (!clip) return null;
+  const name = 't7throw:' + key;
+  return retargetT3Clips({ [name]: clip }, skelId, model, THREE, null, [name]);
+}
 /** The real T7 clip for one moveset row of this fighter on its bound bank, or null. With `model`, also null
     unless the stance's rest pose was captured for that model (so the move can be retargeted safely). */
 /** Single-input notation in one spelling: 'df+1' / 'D/F+1' -> 'd/f+1'. Strings (',') are not single inputs. */
