@@ -368,7 +368,8 @@ export function advanceMission(run) {
   const r = cloneRun(run);
   r.missionStep += 1;
   if (r.missionStep < c.steps.length) {
-    say(r, `${c.name} — step ${r.missionStep + 1} of ${c.steps.length}: ${c.steps[r.missionStep]}`);
+    // missionStep now counts COMPLETED steps; the step just taken is steps[missionStep - 1].
+    say(r, `${c.name} — step ${r.missionStep} of ${c.steps.length} done: ${c.steps[r.missionStep - 1]}`);
     return { ok: true, run: r, done: false, earned: null };
   }
   r.lives += 1;
