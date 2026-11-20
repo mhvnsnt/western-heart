@@ -4,7 +4,7 @@
 
 **40 open PRs — 🟢 ready to merge: 0 · 🔴 failing: 20 · ⏳ running: 1 · ⚔️ conflicted: 19** (also 🟠 blocked: 0 · 🔗 stacked: 0 · 📝 draft, green-or-idle: 0; 6 of 40 are drafts)
 
-_Generated 2026-11-20 19:44 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
+_Generated 2026-11-20 19:45 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
 
 Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not reported. Ready = not draft, targets `main`, GitHub says MERGEABLE, every check green. Status priority: conflicted > failing > running > draft > stacked > ready.
 
@@ -16,7 +16,7 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| ⏳ running | [#1793](https://github.com/mhvnsnt/western-heart/pull/1793) moveset-editor(skeleton): in-game WWE-style editor — S1 screen, S2 library shell, S3 slot  | ready | mhvnsnt / `wh-moveset-editor/skeleton-20261120` | `8c3f730` | `main` | ✅ | ✅ | ✅ | ✅ | 5✅ 5⏳ | mergeable (blocked) | 2026-11-20 19:44 UTC |
+| ⏳ running | [#1793](https://github.com/mhvnsnt/western-heart/pull/1793) moveset-editor(skeleton): in-game WWE-style editor — S1 screen, S2 library shell, S3 slot  | ready | mhvnsnt / `wh-moveset-editor/skeleton-20261120` | `8c3f730` | `main` | ✅ | ✅ | ✅ | ✅ | 5✅ 5⏳ | mergeable (blocked) | 2026-11-20 19:45 UTC |
 | 🔴 failing | [#1792](https://github.com/mhvnsnt/western-heart/pull/1792) Moveset fix P2: Goh/Brad VF kits, Baek rebuild (T6 PSP), Bannon wiring (Jeffry) | ready | mhvnsnt / `wh-moveset-fix/p2-rebuilds-20261120` | `ac5a7c1` | `main` | ✅ | ✅ | ✅ | ✅ | 9✅ 1❌ | mergeable (unstable) | 2026-11-20 19:26 UTC |
 | 🔴 failing | [#1791](https://github.com/mhvnsnt/western-heart/pull/1791) Moveset fix P1B: Lili, Mariposa-monarch, Deathfang, Demonio re-attribution (owner: gave ev | ready | mhvnsnt / `wh-moveset-fix/p1b-lili-deathfang-demonio-20261120` | `4bd7d18` | `main` | ✅ | ✅ | ✅ | ✅ | 9✅ 1❌ | mergeable (unstable) | 2026-11-20 19:20 UTC |
 | 🔴 failing | [#1785](https://github.com/mhvnsnt/western-heart/pull/1785) Sweep: VPW2 English-complete push receipts | ready | mhvnsnt / `muse/sweep-vpw2-handoff` | `ec59ab3` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-20 15:25 UTC |
