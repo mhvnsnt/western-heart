@@ -4,7 +4,7 @@
 
 **41 open PRs — 🟢 ready to merge: 0 · 🔴 failing: 22 · ⏳ running: 0 · ⚔️ conflicted: 19** (also 🟠 blocked: 0 · 🔗 stacked: 0 · 📝 draft, green-or-idle: 0; 6 of 41 are drafts)
 
-_Generated 2026-11-20 19:19 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
+_Generated 2026-11-20 19:21 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
 
 Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not reported. Ready = not draft, targets `main`, GitHub says MERGEABLE, every check green. Status priority: conflicted > failing > running > draft > stacked > ready.
 
@@ -16,10 +16,10 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 🔴 failing | [#1794](https://github.com/mhvnsnt/western-heart/pull/1794) deploy_api: retry transient blob/tree fetches with backoff | ready | mhvnsnt / `lane-e-fetch-retry` | `fdbb3de` | `main` | ✅ | ✅ | ✅ | ❌ | 7✅ 2⏳ | mergeable (blocked) | 2026-11-20 19:19 UTC |
+| 🔴 failing | [#1794](https://github.com/mhvnsnt/western-heart/pull/1794) deploy_api: retry transient blob/tree fetches with backoff | ready | mhvnsnt / `lane-e-fetch-retry` | `fdbb3de` | `main` | ✅ | ✅ | ✅ | ❌ | 7✅ 2⏳ | mergeable (unstable) | 2026-11-20 19:19 UTC |
 | 🔴 failing | [#1793](https://github.com/mhvnsnt/western-heart/pull/1793) moveset-editor(skeleton): in-game WWE-style editor — S1 screen, S2 library shell, S3 slot  | ready | mhvnsnt / `wh-moveset-editor/skeleton-20261120` | `cdafdda` | `main` | ✅ | ✅ | ✅ | ❌ | 8✅ 2❌ | mergeable (unstable) | 2026-11-20 18:51 UTC |
 | 🔴 failing | [#1792](https://github.com/mhvnsnt/western-heart/pull/1792) Moveset fix P2: Goh/Brad VF kits, Baek rebuild (T6 PSP), Bannon wiring (Jeffry) | ready | mhvnsnt / `wh-moveset-fix/p2-rebuilds-20261120` | `0c76921` | `main` | ✅ | ✅ | ✅ | ✅ | 9✅ 1❌ | mergeable (unstable) | 2026-11-20 18:11 UTC |
-| 🔴 failing | [#1791](https://github.com/mhvnsnt/western-heart/pull/1791) Moveset fix P1B: Lili, Mariposa-monarch, Deathfang, Demonio re-attribution (owner: gave ev | ready | mhvnsnt / `wh-moveset-fix/p1b-lili-deathfang-demonio-20261120` | `4bd7d18` | `main` | ✅ | ✅ | ✅ | ✅ | 6✅ 1❌ 3⏳ | mergeable (unstable) | 2026-11-20 19:15 UTC |
+| 🔴 failing | [#1791](https://github.com/mhvnsnt/western-heart/pull/1791) Moveset fix P1B: Lili, Mariposa-monarch, Deathfang, Demonio re-attribution (owner: gave ev | ready | mhvnsnt / `wh-moveset-fix/p1b-lili-deathfang-demonio-20261120` | `4bd7d18` | `main` | ✅ | ✅ | ✅ | ⏳ | 6✅ 1❌ 3⏳ | mergeable (blocked) | 2026-11-20 19:20 UTC |
 | 🔴 failing | [#1785](https://github.com/mhvnsnt/western-heart/pull/1785) Sweep: VPW2 English-complete push receipts | ready | mhvnsnt / `muse/sweep-vpw2-handoff` | `ec59ab3` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-20 15:25 UTC |
 | 🔴 failing | [#1784](https://github.com/mhvnsnt/western-heart/pull/1784) VPW2 English completion: help screens + Royal Road Succession + credits (634 strings) | ready | mhvnsnt / `muse/vpw2-english-complete` | `adfeae4` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-20 15:08 UTC |
 | 🔴 failing | [#1783](https://github.com/mhvnsnt/western-heart/pull/1783) Toukon Retsuden English: partial patch tools + docs (lane 1) | ready | mhvnsnt / `muse/toukon-english` | `4801563` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-20 15:09 UTC |
