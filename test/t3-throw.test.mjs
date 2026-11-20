@@ -57,9 +57,24 @@ test('situation branches: side and back pick different throws, crouch does not m
   assert.match(crouch.reason, /UNMAPPED/);
 });
 
-test('distance gate: beyond the file param the throw does not connect', () => {
+test('distance is advisory: beyond the file param the situation-matching throw still pairs', () => {
+  // WHY the old contract is overturned (Lane G / Lane 1, 2026-11-20): the
+  // file's throw param caps at 1.2748 m (param 1536 x anchor 0.000829923)
+  // but live grounded connects happen at 1.45 m — the grounded body
+  // pushout (fighter.js, minDist = 1.45 m) makes live distanceM NEVER
+  // below 1.45 m at a grounded front-throw connect. The old gate was
+  // therefore structurally unsatisfiable: no Pantera throw could ever
+  // pair live. Distance is now a preference, not a veto: out-of-range
+  // still pairs the first situation-matching branch, flagged advisory.
   const sel = selectThrow(R, KING, 273, { posture: 'standing', quadrant: 0, distanceM: 2.0, anchorScale: SCALE });
-  assert.equal(sel.throw, null);
+  assert.equal(sel.throw.slot, 2795);
+  assert.equal(sel.advisory, true);
+  const live = selectThrow(R, KING, 274, { posture: 'standing', quadrant: 0, distanceM: 1.45, anchorScale: SCALE });
+  assert.equal(live.throw.slot, 2797);
+  assert.equal(live.advisory, true);
+  const inRange = selectThrow(R, KING, 274, { posture: 'standing', quadrant: 0, distanceM: 1.0, anchorScale: SCALE });
+  assert.equal(inRange.throw.slot, 2797);
+  assert.equal(inRange.advisory, undefined);
 });
 
 test('unknown attempt row is UNMAPPED, never a guessed pair', () => {
