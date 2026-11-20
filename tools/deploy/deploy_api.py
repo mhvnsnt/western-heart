@@ -95,6 +95,14 @@ def compute_delta(live, main, t3anims, asset_config="", live_total=0):
     # bank on Pages (2026-11-10: 13 banks, 256 files, 10.1 MB, shipped in deploy 0969a76e).
     bdirs = sorted(set(re.findall(r"'(assets/anim/t3/t7_[\w-]+/)'", t3anims)))
     add += sorted(p for p in main for d in bdirs if p.startswith("game/" + d) and p not in live)
+    # T7 throw clips (game/assets/anim/t7/king/throws/): the loader
+    # (game/js/t7-throw-clips.js loadT7ThrowClip) fetches them with a plain
+    # relative fetch and NO remote fallback, so the shell must carry them or
+    # the T7 default silently falls back to the T3 pair on Pages.
+    # Added 2026-11-20 (gh-pages sync); same rationale as the T7 banks rule.
+    add += sorted(p for p in main
+                  if p.startswith("game/assets/anim/t7/king/throws/")
+                  and p not in live)
     budget = SMALL_TOTAL
     for p in sorted(p for p in main if p not in live
                     and p.startswith(SMALL_ADD_PREFIXES)
