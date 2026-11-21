@@ -4,7 +4,7 @@
 
 **48 open PRs — 🟢 ready to merge: 1 · 🔴 failing: 28 · ⏳ running: 0 · ⚔️ conflicted: 19** (also 🟠 blocked: 0 · 🔗 stacked: 0 · 📝 draft, green-or-idle: 0; 6 of 48 are drafts)
 
-_Generated 2026-11-21 09:22 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
+_Generated 2026-11-21 09:23 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
 
 Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not reported. Ready = not draft, targets `main`, GitHub says MERGEABLE, every check green. Status priority: conflicted > failing > running > draft > stacked > ready.
 
@@ -17,7 +17,7 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 🟢 ready to merge | [#1792](https://github.com/mhvnsnt/western-heart/pull/1792) Moveset fix P2: Goh/Brad VF kits, Baek rebuild (T6 PSP), Bannon wiring (Jeffry) | ready | mhvnsnt / `wh-moveset-fix/p2-rebuilds-20261120` | `7f7bf8b` | `main` | ✅ | ✅ | ✅ | ✅ | 10✅ | mergeable (clean) | 2026-11-21 06:43 UTC |
-| 🔴 failing | [#1812](https://github.com/mhvnsnt/western-heart/pull/1812) Record USFIV teardown hunt (docs-only findings record) | ready | mhvnsnt / `lane-3-usfiv-docs` | `c7f7a8a` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-21 07:14 UTC |
+| 🔴 failing | [#1812](https://github.com/mhvnsnt/western-heart/pull/1812) Record USFIV teardown hunt (docs-only findings record) | ready | mhvnsnt / `lane-3-usfiv-docs` | `c7f7a8a` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-21 09:23 UTC |
 | 🔴 failing | [#1811](https://github.com/mhvnsnt/western-heart/pull/1811) Record SFxT teardown hunt (docs-only findings record) | ready | mhvnsnt / `lane-3-sfxt-docs` | `a6b021b` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-21 09:22 UTC |
 | 🔴 failing | [#1810](https://github.com/mhvnsnt/western-heart/pull/1810) Vendor Dantarion sf4tools (SFIV bac/bcm toolchain) + teardown records | ready | mhvnsnt / `lane-3-sfiv-sf4tools` | `4f5474e` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-21 09:21 UTC |
 | 🔴 failing | [#1806](https://github.com/mhvnsnt/western-heart/pull/1806) Fix Zen / Gyou / Saku Ra / Jin_soul canon confusion (documents + data) | ready | mhvnsnt / `canon-fix/zen-gyou-sakura-20261120` | `56e55a5` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (clean) | 2026-11-21 08:59 UTC |
