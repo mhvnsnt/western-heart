@@ -1,4 +1,5 @@
-# MANIFEST - split-file archive
-# Columns: relative_path<TAB>size_bytes<TAB>sha256<TAB>piece_count<TAB>piece_size_bytes
 # A file appears here only once it is FULLY in the repo (all pieces pushed).
+# Columns: relative_path<TAB>size_bytes<TAB>sha256<TAB>piece_count<TAB>piece_size_bytes
+# MANIFEST - split-file archive
 # Rebuild with: cat <file>.part* > <file>  (then verify vs MANIFEST sha256)
+teardown/tna-impact/tna-impact-ps2.rar	3516743481	edc27224e45e168969125c5644bfb42ef5b445cdc1294423a02644304dcdd9b7	36	99000000
