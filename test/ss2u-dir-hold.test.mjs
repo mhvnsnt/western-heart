@@ -5,7 +5,10 @@
 //   1. the REAL Fighter._dirHoldUpgrade (game/js/fighter.js), driven frame by frame through
 //      the REAL setStick entry point, on a prototype instance (the attack-anim pattern —
 //      no 3D scene, no models, no fight load);
-//   2. the REAL resolveMoveKey rows for Demonio (game/assets/movesets/demonio.json);
+//   2. the REAL resolveMoveKey rows for Demonio's winged Devil form
+//      (game/assets/movesets/demonio-winged.json) — the SS.2:u / SS.2,U rows
+//      are Devil Jin rows; the base file is pure human Jin now (P1B, 2026-11-20),
+//      so the test follows the rows to the Devil form that holds them.
 //   3. the sweep-page contract itself: test/e2e/moveset-sweep.page.js must hold a capital
 //      direction-only step 12f, and 12f at 60 Hz must clear the fighter's 0.08 s threshold
 //      while the old flat 4f hold could not.
@@ -26,11 +29,11 @@ const M = await import(join(ROOT, 'game/js/movesets.js'));
 const F = await import(join(ROOT, 'game/js/fighter.js'));
 
 await M.loadFighterMovesets();
-const [demonio] = await M.ensureMovesets(['demonio']);
-assert.ok(demonio && demonio.moves, 'demonio moveset did not load');
+const [winged] = await M.ensureMovesets(['demonio-winged']);
+assert.ok(winged && winged.moves, 'demonio-winged moveset did not load');
 
-const tappedKey = M.resolveMoveKey('demonio', 'SS.2:u');
-const heldKey = M.resolveMoveKey('demonio', 'SS.2,U');
+const tappedKey = M.resolveMoveKey('demonio-winged', 'SS.2:u');
+const heldKey = M.resolveMoveKey('demonio-winged', 'SS.2,U');
 
 // Fighter source + sweep page source, read from the tree under test (same pattern as
 // test/input-timing.test.mjs reading game.js for its constants).
@@ -42,7 +45,7 @@ function freshFighter() {
   // with the lowercase stick direction and the clock at press time; _dirHoldUpgrade then
   // swaps the queued row for the held row once the stick has been held long enough.
   const f = Object.create(F.Fighter.prototype);
-  f._movesetId = 'demonio';
+  f._movesetId = 'demonio-winged';
   f._dirFollowQ = { c: tappedKey, b: 'SS.2', sep: ':', d: 'u', t: 0 };
   f._queuedNext = tappedKey;
   f._queuedAfter = null;
@@ -54,8 +57,8 @@ function freshFighter() {
 }
 
 test('Demonio has both the tapped and held SS.2 rows, and they are different rows', () => {
-  assert.ok(tappedKey, 'SS.2:u does not resolve for demonio');
-  assert.ok(heldKey, 'SS.2,U does not resolve for demonio');
+  assert.ok(tappedKey, 'SS.2:u does not resolve for demonio-winged');
+  assert.ok(heldKey, 'SS.2,U does not resolve for demonio-winged');
   assert.notEqual(heldKey, tappedKey, 'held row must differ from tapped row');
 });
 
