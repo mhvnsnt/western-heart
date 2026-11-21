@@ -9,6 +9,13 @@
 // the SAME code the game runs (_attackClipPlan + _rootMotionApply)
 // on Pantera's real bank, and asserts the distance each move travels.
 // LP1/RP2/LK3/RK4 button names per owner directive 2026-10-24.
+// NOTE (Lane X1, PR #1807): the King T3 pack was re-baked onto the shipped
+// pantera.glb (hip 0.9805 m -> 1.06130751 m), so every root-motion distance
+// scales by exactly 1.082414594. The bands below are the CORRECTED-scale
+// values, measured through this same simulate() on the re-baked pack
+// (LP1 peak 0.287, Beast Elbow 0.917/0.935/-0.432, Konvict Kick
+// 0.445/0.654/-0.212, wall 8.237185). The pre-fix bands (calibrated to the
+// old wrong-scale pack) are in the comments next to each assertion.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { dirname, join } from 'node:path';
@@ -81,12 +88,13 @@ test('Pantera LP1 jab (1) plays row:110 (T3 f+1) and steps forward ~0.11 m', asy
   const r = simulate(f, '1');
   // Row 44 was a jumping-1 clip (feet 0.75/0.78 m off the ground at frame 0),
   // not a standing jab. Row 110 is T3 f+1: a standing armL jab, active 10 =
-  // T7 i10. Measured through _rootMotionApply: steps in to a 0.265 m peak
-  // and settles at 0.106 m forward, -0.028 m lateral (PR #1022 audit).
+  // T7 i10. Measured through _rootMotionApply: steps in to a 0.287 m peak
+  // and settles at 0.115 m forward, -0.030 m lateral (PR #1022 audit values
+  // 0.265 / 0.106 / -0.028 scaled by 1.082414594, Lane X1 re-bake).
   assert.equal(r.plan.name, 'row:110', `LP1 plan: ${r.plan.name} (${r.plan.kind})`);
   assert.ok(r.x > 0.09 && r.x < 0.12, `LP1 travelled ${r.x} m, expected 0.09-0.12`);
   assert.ok(r.z < -0.01 && r.z > -0.05, `LP1 lateral ${r.z} m, expected ~-0.03`);
-  assert.ok(r.peakX > 0.25 && r.peakX < 0.28, `LP1 peak ${r.peakX} m, expected 0.25-0.28`);
+  assert.ok(r.peakX > 0.27 && r.peakX < 0.30, `LP1 peak ${r.peakX} m, expected 0.27-0.30`);
 });
 
 test('Pantera RP2 (2) plays row:99 (T3 b+2) and travels forward ~0.15 m, mirrored when facing left', async () => {
@@ -103,34 +111,37 @@ test('Pantera RP2 (2) plays row:99 (T3 b+2) and travels forward ~0.15 m, mirrore
   assert.ok(m.x < -0.13 && m.x > -0.17, `RP2 mirrored travelled ${m.x} m`);
 });
 
-test('Pantera f,F+2 Beast Elbow (RP2 dash elbow): T3 dash row:203 travels forward (0.85 m net, 0.86 m peak)', async () => {
+test('Pantera f,F+2 Beast Elbow (RP2 dash elbow): T3 dash row:203 travels forward (0.92 m net, 0.94 m peak)', async () => {
   const f = await fighter();
   const r = simulate(f, 'f,F+2');
   assert.equal(r.plan.name, 'row:203', `Beast Elbow plan: ${r.plan.name} (${r.plan.kind})`);
   assert.equal(r.plan.kind, 'anim', 'Beast Elbow has its own T3 dash row (divmot03 branch graph: dash state row 3, RP -> row 203)');
   // Row 203 is T3 f,f+2 K's Flicker: damage 20, mid (attack_word 0x217),
   // RP2 button, armR limb, grounded (feet lifts 0.07/0.08 m), travel
-  // measured through _rootMotionApply: 0.847 m forward, 0.864 m peak,
-  // -0.399 m lateral. The old donor row:111 (T3 f+2, HIGH step punch) and
+  // measured through _rootMotionApply: 0.917 m forward, 0.935 m peak,
+  // -0.432 m lateral (PR #1022 audit values 0.847 / 0.864 / -0.399 scaled
+  // by 1.082414594, Lane X1 re-bake). The old donor row:111 (T3 f+2, HIGH step punch) and
   // the #988 row:0 (non-strike clip) are both wrong for a dash input.
-  assert.ok(r.x > 0.83 && r.x < 0.87, `Beast Elbow travelled ${r.x} m, expected 0.83-0.87`);
-  assert.ok(r.peakX > 0.84 && r.peakX < 0.88, `Beast Elbow peak ${r.peakX} m, expected 0.84-0.88`);
-  assert.ok(r.z < -0.38 && r.z > -0.42, `Beast Elbow lateral ${r.z} m, expected ~-0.40`);
+  assert.ok(r.x > 0.90 && r.x < 0.94, `Beast Elbow travelled ${r.x} m, expected 0.90-0.94`);
+  assert.ok(r.peakX > 0.92 && r.peakX < 0.96, `Beast Elbow peak ${r.peakX} m, expected 0.92-0.96`);
+  assert.ok(r.z < -0.41 && r.z > -0.45, `Beast Elbow lateral ${r.z} m, expected ~-0.43`);
   // Mirrored when facing left (same pattern as the RP2 test).
   const m = simulate(f, 'f,F+2', -1);
-  assert.ok(m.x < -0.83 && m.x > -0.87, `Beast Elbow mirrored travelled ${m.x} m`);
+  assert.ok(m.x < -0.90 && m.x > -0.94, `Beast Elbow mirrored travelled ${m.x} m`);
   // Whiff vs hit: root motion never reads hasHit, so both travel identically.
   f.hasHit = true;
   const hit = simulate(f, 'f,F+2');
   assert.ok(Math.abs(hit.x - r.x) < 1e-9, `hit (${hit.x}) != whiff (${r.x})`);
 });
 
-test('Pantera f,F+4 Konvict Kick (RK4): T3 dash row:216 travels forward ~0.41 m, peak ~0.60 m', async () => {
+test('Pantera f,F+4 Konvict Kick (RK4): T3 dash row:216 travels forward ~0.45 m, peak ~0.65 m', async () => {
   const f = await fighter();
   const r = simulate(f, 'f,F+4');
   // Row 216 is T3 f,f+4 Konvict Kick: damage 30, mid (attack_word 0x217),
   // RK4 button, legR limb, standing, travel measured through
-  // _rootMotionApply: 0.411 m forward, 0.604 m peak, -0.196 m lateral.
+  // _rootMotionApply: 0.445 m forward, 0.654 m peak, -0.212 m lateral
+  // (PR #1022 audit values 0.411 / 0.604 / -0.196 scaled by 1.082414594,
+  // Lane X1 re-bake).
   // The old donor row:114 (T3 f+4, HIGH step kick) and the #988 row:69
   // (u+4 jump kick in place, 0.000 m travel) are both wrong for a dash input.
   // Classification note (kept from the donor version): the hitbox lane
@@ -141,8 +152,8 @@ test('Pantera f,F+4 Konvict Kick (RK4): T3 dash row:216 travels forward ~0.41 m,
   // the base kick, because the decoded/T7 level wins first.
   assert.equal(r.plan.name, 'row:216', `Konvict Kick plan: ${r.plan.name} (${r.plan.kind})`);
   assert.equal(r.plan.kind, 'anim', 'Konvict Kick has its own T3 dash row (divmot03 branch graph: dash state row 3, RK -> row 216)');
-  assert.ok(r.x > 0.39 && r.x < 0.43, `Konvict Kick travelled ${r.x} m, expected 0.39-0.43`);
-  assert.ok(r.peakX > 0.58 && r.peakX < 0.62, `Konvict Kick peak ${r.peakX} m, expected 0.58-0.62`);
+  assert.ok(r.x > 0.43 && r.x < 0.47, `Konvict Kick travelled ${r.x} m, expected 0.43-0.47`);
+  assert.ok(r.peakX > 0.63 && r.peakX < 0.67, `Konvict Kick peak ${r.peakX} m, expected 0.63-0.67`);
   assert.ok(r.z < -0.18 && r.z > -0.22, `Konvict Kick lateral ${r.z} m, expected ~-0.20`);
 });
 
@@ -159,15 +170,15 @@ test('Pantera dash shadow entries play the same T3 dash rows (f,F+2~t7.king -> r
   const a = simulate(f, 'f,F+2~t7.king');
   assert.equal(a.plan.name, 'row:203', `f,F+2~t7.king plan: ${a.plan.name} (${a.plan.kind})`);
   assert.equal(a.plan.kind, 'anim');
-  assert.ok(a.x > 0.83 && a.x < 0.87, `f,F+2~t7.king travelled ${a.x} m, expected 0.83-0.87`);
+  assert.ok(a.x > 0.90 && a.x < 0.94, `f,F+2~t7.king travelled ${a.x} m, expected 0.90-0.94`);
   const b = simulate(f, 'f,F+4~t7.king');
   assert.equal(b.plan.name, 'row:216', `f,F+4~t7.king plan: ${b.plan.name} (${b.plan.kind})`);
   assert.equal(b.plan.kind, 'anim');
-  assert.ok(b.x > 0.39 && b.x < 0.43, `f,F+4~t7.king travelled ${b.x} m, expected 0.39-0.43`);
+  assert.ok(b.x > 0.43 && b.x < 0.47, `f,F+4~t7.king travelled ${b.x} m, expected 0.43-0.47`);
   const c = simulate(f, 'CH.f,F+4');
   assert.equal(c.plan.name, 'row:216', `CH.f,F+4 plan: ${c.plan.name} (${c.plan.kind})`);
   assert.equal(c.plan.kind, 'anim');
-  assert.ok(c.x > 0.39 && c.x < 0.43, `CH.f,F+4 travelled ${c.x} m, expected 0.39-0.43`);
+  assert.ok(c.x > 0.43 && c.x < 0.47, `CH.f,F+4 travelled ${c.x} m, expected 0.43-0.47`);
 });
 
 test('Generic fallback clips get NO root motion (heavy/grab are the row:230 throw-execution clip)', async () => {
@@ -208,13 +219,14 @@ test('Wall: _physics clamps root-motion travel to ARENA_LIMIT (8.4) instead of l
   let peakX = 8.3;
   for (let t = 0; t <= total + 1e-9; t += 1 / 60) { f.stateT = t; f._physics(1 / 60, null); peakX = Math.max(peakX, f.root.position.x); }
   assert.ok(f.root.position.x <= 8.4 + 1e-9, `wall: x=${f.root.position.x}`);
-  // Row 99 (T3 b+2, PR #1022) peaks at 0.300 m mid-clip then settles to
-  // 0.151 m; at the wall the clamp discards the overshoot above 8.4, so the
-  // clip's natural settle-back lands at 8.4 - (0.300 - 0.151) = 8.251 —
+  // Row 99 (T3 b+2, PR #1022) peaks at 0.326 m mid-clip then settles to
+  // 0.163 m (PR #1022 values 0.300 / 0.151 scaled by 1.082414594, Lane X1
+  // re-bake); at the wall the clamp discards the overshoot above 8.4, so the
+  // clip's natural settle-back lands at 8.4 - (0.326 - 0.163) = 8.237 —
   // inside the stage, not lost. The old x >= 8.3 assertion assumed row 203's
   // monotonic 0.85 m travel and is wrong for a peak-and-settle clip.
   assert.ok(peakX > 8.39, `wall: peak x=${peakX} (clamp never engaged)`);
-  assert.ok(f.root.position.x > 8.24 && f.root.position.x < 8.26, `wall: x=${f.root.position.x}, expected 8.24-8.26`);
+  assert.ok(f.root.position.x > 8.23 && f.root.position.x < 8.25, `wall: x=${f.root.position.x}, expected 8.23-8.25`);
 });
 
 test('Fixed bank (bosconovitch, #497 baked facing +Z at source): no runtime flip, root motion reads the canonical frame', async () => {
