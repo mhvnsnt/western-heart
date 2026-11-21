@@ -1,0 +1,146 @@
+{
+ "verify_by_type": {
+  "Binary": {
+   "ok": 895
+  },
+  "AkiText": {
+   "ok": 32
+  },
+  "AkiModel": {
+   "ok": 3586
+  },
+  "Ci4Palette": {
+   "ok": 1716,
+   "BAD": 1885
+  },
+  "Ci4Texture": {
+   "ok": 3530,
+   "BAD": 1
+  },
+  "Ci8Palette": {
+   "ok": 387
+  },
+  "Ci8Texture": {
+   "ok": 400
+  },
+  "I4Texture": {
+   "ok": 228
+  },
+  "AkiTexture": {
+   "ok": 833
+  },
+  "RawCi4TexPal": {
+   "ok": 1
+  },
+  "AkiArchive": {
+   "ok": 1
+  },
+  "AkiAnimation": {
+   "ok": 5787
+  },
+  "AkiLargeFont": {
+   "ok": 10
+  },
+  "AkiSmallFont": {
+   "ok": 2
+  },
+  "MenuBackground": {
+   "BAD": 16
+  },
+  "Ci4Background": {
+   "ok": 4
+  },
+  "MenuItems_NoGroup": {
+   "ok": 3
+  },
+  "MenuItems_Shop": {
+   "ok": 3
+  },
+  "MenuItems_Moves": {
+   "ok": 138
+  }
+ },
+ "binary_magics": {
+  "other": 868,
+  "sng_sequence (00 00 02 15)": 27
+ },
+ "binary_large_unidentified": [
+  {
+   "file_id": "0x69",
+   "label": "???",
+   "len": 33640,
+   "head": "0000000000000000000000000000000000000000000100000000000000000000"
+  },
+  {
+   "file_id": "0x1da",
+   "label": "(raw CI4 texture) Story Mode title font|w:24,h:1024",
+   "len": 23364,
+   "head": "0000210941cf52937b539391ab839419b453d445bcdbdccbdd57e621eea9f773"
+  },
+  {
+   "file_id": "0x1ef",
+   "label": "Move damage values",
+   "len": 76896,
+   "head": "0000000000000000000000000000000000000000000000000000010000000000"
+  },
+  {
+   "file_id": "0x1f0",
+   "label": "Move animation values",
+   "len": 33640,
+   "head": "0000000000000000000000000000000000000000008700000000000000000000"
+  },
+  {
+   "file_id": "0x1f1",
+   "label": "Move properties values",
+   "len": 33640,
+   "head": "0000000000000000000000000000000000000000000100000000000000000000"
+  },
+  {
+   "file_id": "0x1f8",
+   "label": "some weird text file",
+   "len": 19224,
+   "head": "5a5a5a5a5a5a5a5a004e303333392d4100004e303334372d4100004e30333438"
+  },
+  {
+   "file_id": "0x2bf",
+   "label": "Toki1 values",
+   "len": 208332,
+   "head": "00800000000000000000ff000000000000ff0000000000000000000000000000"
+  }
+ ],
+ "moves_total": 1682,
+ "moves_files": 138,
+ "akitext_strings": 6658,
+ "sound_banks": [
+  {
+   "bank": "bank1_proset",
+   "name": "",
+   "ptr_offset": "0x16f32a0",
+   "tbl_offset": "0x16f6f10",
+   "count": 85,
+   "ctl_size": 15472,
+   "wavs": 85,
+   "empty_slots": 0
+  },
+  {
+   "bank": "bank2_sepack",
+   "name": "",
+   "ptr_offset": "0x1858030",
+   "tbl_offset": "0x185edb0",
+   "count": 165,
+   "ctl_size": 28032,
+   "wavs": 165,
+   "empty_slots": 0
+  },
+  {
+   "bank": "bank3_music",
+   "name": "",
+   "ptr_offset": "0x1967410",
+   "tbl_offset": "0x1969880",
+   "count": 43,
+   "ctl_size": 9328,
+   "wavs": 43,
+   "empty_slots": 0
+  }
+ ]
+}
