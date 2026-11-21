@@ -91,6 +91,24 @@ The fit is research-based, from two bodies of practice:
    per azimuth sector against the scalp-cap boundary; if rim travel exceeds
    what local edge slack can fund (~2× the local edge length), escalate to
    re-parametrization instead of iterating placement.
+10. **Re-sheeting inside-fold rim patches (2026-11-10, lanes 13–14).** A rim
+    band can be authored INSIDE the head where the scalp folds on itself
+    (the afro dome's temple pits, sd −10..−15 mm): two surface sheets pass
+    within millimetres there, and any nearest-point placement is
+    discontinuous across the fold. Rebuild those groups onto their own
+    sheet BEFORE fitting: target = closest point + tangential authored
+    offset + sheet normal × standoff — the offset's normal component is
+    REPLACED by the standoff, never carried (carrying it is an algebraic
+    identity that moves nothing — that bug cost one full run). Extend the
+    re-sheet to the near band (sd < +5 mm, depth ≤ 1) so the patch edge
+    does not sit inside the fold, and drop the previous fit's delta for
+    the re-sheeted set in the prevfit input (prevfit := rebuilt state) —
+    the old delta is the torn artifact being replaced, and the placement
+    assignment reads the state that delta builds. Where a fan of rim
+    triangles still cannot fund the fitted path length, re-space the
+    fan's stations toward the measured fitted loci (fan w = 0.6,
+    neighbours w = 0.3) and disclose the new authored distribution's
+    self-ratios in the landing report.
 
 ## Hard gate (refuses to write on failure)
 
