@@ -129,8 +129,13 @@ changing the tools; whether they land is a follow-up decision.
    of the shipped rig (Root rest = Hips rest). `used_by` restored from
    the old pack (same rows, same movesets — metadata preservation).
    Reactions `ax`/`ay`/`az` copied verbatim (rig-independent decode);
-   `yaw0 = wrap(yaw0_old + pi)` (validated on 28 sampled slots, worst
-   5e-06 rad).
+   `yaw0` stays `yaw0_old` for the final +Z bank (see step 5). (The
+   F-aware form `wrap(yaw0_old + pi)` was validated on 28 sampled slots,
+   worst 5e-06 rad, for the -Z intermediate; the final +Z bank keeps
+   `yaw0_old`. Note: the converter's original yaw0 line
+   `((yaw0+pi) % 2pi) - pi` was a no-op — it wraps yaw0+pi then subtracts
+   pi, returning yaw0 — so the pack's yaw0 was yaw0_old all along,
+   accidentally correct for the +Z bank.)
 3. **Head re-derivation** (287 units: 32 clips + 255 rows; reactions +
    row 183 already match and are untouched): `D_new[Head] = Y_new @
    orth(G_Head) @ F.T` where `G_Head` is the slot-path head-part global
@@ -138,7 +143,34 @@ changing the tools; whether they land is a follow-up decision.
    `local[Head] = quat(D_new[Neck].T @ D_new[Head])`, Neck = Chest.
    No other bone is re-derived from the slot path — the old pack already
    matches the tool there.
-4. **Why not a full per-frame re-decode:** measured ~1.3 s/frame (OBJ
+4. **Clavicle flattening** (skeleton only): the shipped rig's clavicle
+   droops 12.7° (Shoulder y 1.511 vs Arm y 1.4793), but the T3 source's
+   clavicle is horizontal (the old rig's Shoulder→Arm is pure ±X) and
+   the runtime's arm correction uses the skeleton's Shoulder direction
+   as the SOURCE axis. A drooping skeleton Shoulder makes the runtime
+   measure a spurious ~13° arm constant (proven: old pack + only the
+   drooping Shoulder rests → yukihyo fails LeftArm 4.3° with RightArm
+   16.5° constants). The skeleton describes the BANK (source) geometry;
+   the shipped rig's droop is a TARGET property the swing adapts to.
+   So each Shoulder's rest y is set to its Arm's rest y
+   (Shoulder→Arm horizontal), keeping the shipped rig's x/z.
+5. **+Z flip** (after verify; the flip is an involution): the bank must
+   be in the declared +Z frame ("faces +Z, character left = +X") or the
+   runtime's load-time facing correction — which assumes a -Z bank was
+   mislabelled by the old baker and swaps Left/Right — swaps the
+   anatomical left/right (measured on the -Z intermediate: hinge L/R
+   swapped 8.8/13.7 → 13.7/8.8). The flip mirrors the GEOMETRY ONLY:
+   rests and root_t (x,z)→(-x,-z), every local conjugated
+   (x,y,z,w)→(-x,y,-z,w), rows/reactions rx/rz negated (base64 int16).
+   It does NOT swap Left/Right track names or q slices — the converter
+   assigned the tracks anatomically correctly (Mixamo Left = anatomical
+   left), and the runtime's turnData swaps names only because the OLD
+   baker mislabelled them. (The first +Z flip, which swapped the names,
+   still showed the hinge L/R swapped 13.7/8.8 while the twist passed —
+   the symmetric stance hid the mirror in the twist; the asymmetric
+   hinge caught it.) Reactions ax/ay/az are NOT flipped (decoded source
+   channels, already +Z); yaw0 stays yaw0_old.
+6. **Why not a full per-frame re-decode:** measured ~1.3 s/frame (OBJ
    text round-trip) → ~23k frames ≈ 8+ hours. The fast path is the
    tool's own retarget equations applied to the verified decoded motion
    (`D_old`), with direct-tool references as proof. No hand-keyed
@@ -158,7 +190,9 @@ changing the tools; whether they land is a follow-up decision.
 | Stance `root_t[0]` height | 0.47924 m | 0.51874 m |
 | Head track deviation vs decode | 50.91° (32 clips + 255 rows) | ≤ 0.0082° (slot noise) |
 
-Verification (all measured 2026-11-21, lane workdir):
+Verification (all measured 2026-11-21, lane workdir). V1/V2/V3 validate
+the -Z intermediate against the direct tool (the flip is applied after
+verify); the +Z pack is validated through the real runtime (yukihyo):
 
 - **V1** — converted `t3_stance` forwarded to Mixamo space vs the
   direct-tool smoke bake: max quat angle **0.006944°** (mean 0.000070°),
@@ -172,6 +206,22 @@ Verification (all measured 2026-11-21, lane workdir):
 - **V3** — 568 reactions: `ax`/`ay`/`az` identical, roles identical,
   anchor 0.000898321, Chest non-identity (max |q−identity| 0.6540 —
   chest motion preserved). 256 rows: keys + `used_by` identical.
+- **yukihyo** (the game's own guard, `test/arm-frame-normalization.test.mjs`,
+  run against the final +Z pack through the real runtime's
+  `retargetT3Clips` on the game's synthetic canonical rig): **PASSES**.
+  Twist means **0.000° on all eight arm joints** (LeftShoulder 0.000,
+  LeftArm -0.000, LeftForeArm -0.000, LeftHand 0.000, RightShoulder
+  0.000, RightArm -0.000, RightForeArm -0.000, RightHand 0.000; spreads
+  ≤ 0.176°). Hinge **Left 8.82°** (band 5–13) / **Right 13.69°** (band
+  9–18) — exactly King's measured hinge (8.8 / 13.7), correct
+  orientation. The runtime's ±13° arm constants (LeftShoulder -13.1°,
+  LeftArm -13.0°, LeftForeArm -13.0°, LeftHand -13.0°, RightShoulder
+  +13.2°, RightArm +13.3°, RightForeArm +13.3°, RightHand +13.3°) are
+  the arm correction correctly normalizing the shipped rig's geometry
+  difference; the post-correction residual is zero. (The head-frame
+  constant 57.0° and spine-pitch constant -15.0° remain as runtime
+  normalizations, not asserted by the test; the old pack measured a
+  spine-pitch constant of -19.3° and no head/arm constants.)
 - Counts: 32 clips (same slots/move_rows/stream_frames/frame counts),
   256 rows / 0 missing, 568 reactions / 0 missing.
 
