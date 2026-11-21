@@ -4,7 +4,7 @@
 
 **45 open PRs — 🟢 ready to merge: 1 · 🔴 failing: 23 · ⏳ running: 1 · ⚔️ conflicted: 20** (also 🟠 blocked: 0 · 🔗 stacked: 0 · 📝 draft, green-or-idle: 0; 6 of 45 are drafts)
 
-_Generated 2026-11-21 15:10 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
+_Generated 2026-11-21 16:56 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
 
 Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not reported. Ready = not draft, targets `main`, GitHub says MERGEABLE, every check green. Status priority: conflicted > failing > running > draft > stacked > ready.
 
@@ -17,7 +17,8 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 🟢 ready to merge | [#1792](https://github.com/mhvnsnt/western-heart/pull/1792) Moveset fix P2: Goh/Brad VF kits, Baek rebuild (T6 PSP), Bannon wiring (Jeffry) | ready | mhvnsnt / `wh-moveset-fix/p2-rebuilds-20261120` | `7f7bf8b` | `main` | ✅ | ✅ | ✅ | ✅ | 10✅ | mergeable (clean) | 2026-11-21 06:43 UTC |
-| ⏳ running | [#1816](https://github.com/mhvnsnt/western-heart/pull/1816) Docs: add the license rule to AGENTS.md | ready | mhvnsnt / `muse/license-no-block` | `3728e77` | `main` | ⏳ | ✅ | ⏳ | ⏳ | 3✅ 6⏳ | mergeable (blocked) | 2026-11-21 15:10 UTC |
+| ⏳ running | [#1770](https://github.com/mhvnsnt/western-heart/pull/1770) Land KoC2 teardown: King of Colosseum 2 full extraction (49,214 files) | ready | mhvnsnt / `muse/koc2` | `083ea36` | `main` | ✅ | ✅ | ✅ | ⏳ | 2✅ 7⏳ | mergeable (blocked) | 2026-11-21 16:55 UTC |
+| 🔴 failing | [#1816](https://github.com/mhvnsnt/western-heart/pull/1816) Docs: add the license rule to AGENTS.md | ready | mhvnsnt / `muse/license-no-block` | `3728e77` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-21 15:10 UTC |
 | 🔴 failing | [#1814](https://github.com/mhvnsnt/western-heart/pull/1814) Land KoC2 raw files (ISOs, extracts, kactusken v0.2) | ready | mhvnsnt / `muse/koc2-raw` | `22bbad2` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-21 11:44 UTC |
 | 🔴 failing | [#1803](https://github.com/mhvnsnt/western-heart/pull/1803) Lane C Phase 2: Windows workflow to extract real King .tkmvst from tkdata.bin (TKMovesets2 | ready | mhvnsnt / `lane-c/t7-extract-king` | `32a5fd6` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-21 02:56 UTC |
 | 🔴 failing | [#1798](https://github.com/mhvnsnt/western-heart/pull/1798) Sweep: No Mercy re-extract leftovers (mat-kings DB, AKI bake, full-ROM pass) | ready | mhvnsnt / `muse/sweep-nomercy-uvpw` | `f7c2045` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-20 23:16 UTC |
@@ -33,7 +34,6 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 | 🔴 failing | [#1774](https://github.com/mhvnsnt/western-heart/pull/1774) W6: WMXIX gameplay clips (1,905) + faced arenas + Triple H | ready | mhvnsnt / `w6/wmxix-clips-arenas-hhh` | `38c58c3` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-19 21:06 UTC |
 | 🔴 failing | [#1773](https://github.com/mhvnsnt/western-heart/pull/1773) W6: WMXIX textures (9,410 PNGs) + face contact sheets | ready | mhvnsnt / `w6/wmxix-textures` | `b480185` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-19 21:06 UTC |
 | 🔴 failing | [#1772](https://github.com/mhvnsnt/western-heart/pull/1772) W6: WMXIX CAW meshes (1,141 OBJs) + extraction tools + notes | ready | mhvnsnt / `w6/wmxix-caw-mesh` | `d100623` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-19 21:06 UTC |
-| 🔴 failing | [#1770](https://github.com/mhvnsnt/western-heart/pull/1770) Land KoC2 teardown: King of Colosseum 2 full extraction (49,214 files) | ready | mhvnsnt / `muse/koc2` | `2a8cfed` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-20 21:52 UTC |
 | 🔴 failing | [#1769](https://github.com/mhvnsnt/western-heart/pull/1769) Land VPW2 teardown: Virtual Pro Wrestling 2 full extraction (28,322 files) | ready | mhvnsnt / `muse/jp-sourcing` | `9b58da0` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-19 21:44 UTC |
 | 🔴 failing | [#1762](https://github.com/mhvnsnt/western-heart/pull/1762) DELETION: remove shifted textures/rom/ (superseded by rom-corrected/) | ready | mhvnsnt / `delete-shifted-textures-rom` | `693f84a` | `main` | ⊘ | ❌ | ⊘ | ⊘ | 4✅ 2❌ | mergeable (blocked) | 2026-11-19 14:28 UTC |
 | 🔴 failing | [#1714](https://github.com/mhvnsnt/western-heart/pull/1714) Hair fit v6: straight REFIT6B crown coverage; afro gate closure (no ship) | ready | mhvnsnt / `claude/hair-fit-v6-20261110` | `c6d4234` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-10 07:16 UTC |
