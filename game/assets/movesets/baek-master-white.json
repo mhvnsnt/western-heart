@@ -1168,6 +1168,44 @@
       },
       "note": "Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings."
     },
+    "2": {
+      "name": "Jab",
+      "input": "2",
+      "t3_source": "hwoarang",
+      "t3_row": 91,
+      "t3_command": "RP",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 7,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:hwoarang:row:91",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike",
+      "t6_frame_data": {
+        "command": "2",
+        "damage": 8,
+        "startup_frames": 10,
+        "block": "+0",
+        "hit": "+7",
+        "source": "Tekken 6 frame data (tekkendocs.com/t6/baek)"
+      },
+      "ttt2_frame_data": {
+        "command": "2",
+        "damage": 9,
+        "startup_frames": 10,
+        "block": "+0",
+        "hit": "+7",
+        "counter_hit": "+7",
+        "source": "Tekken Tag Tournament 2 movelist (wavu.wiki/t/Baek_movelist_(Tag_2))"
+      },
+      "note": "Baek's bare right-punch jab. The T6 PSP movelist decode (81 commands) and the TTT2 bae.json movelist (102 records) list no bare '2' — both are movelist-only extractions and the standalone jabs are not separate movelist entries. The game's own frame data lists the bare '2' in Tekken 6 (8 dmg, i10, +0 block, +7 hit) and TTT2 (9 dmg, i10, +0/+7/+7). Frames/damage/anim are the T3 Hwoarang proxy (row 91, RP) — no Baek frame/anim bank exists in holdings."
+    },
     "S": {
       "name": "Master's White [WH SIGNATURE]",
       "input": "S",
@@ -3952,6 +3990,7 @@
   "slots": {
     "1+2": "1+2",
     "1+4": "1+4",
+    "2": "2",
     "2,1": "2,1",
     "3": "3",
     "4": "4",
@@ -5118,7 +5157,8 @@
     "method": [
       "Replaced the T3 Bryan proxy bank with real Baek Doo San data: the in-repo Tekken 6 PSP COM decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json, 276 records / 81 unique commands) as the baek_kit layer, plus the TTT2 Baek movelist (game/assets/ttt2/movesets/bae.json; 153 moves already carried in baek-master-white.json).",
       "Every playable row carries a REAL Baek name+input. Frame/damage/anim come from the T3 Hwoarang bank (Taekwondo — the closest T3 bank, verified: t3-hwoarang.json, 723 moves, t3_source hwoarang, anim_bank hwoarang) on the same input, disclosed per row — the same proxy-bank pattern the 2026-11-06 wang_rebuild record sanctions for Byou (Jin bank). No Baek frame/anim bank exists in holdings, so no Baek frames or anims were invented.",
-      "Commands with no same-input Hwoarang row stay kit-only data (playable_entry false), never invented. WH-original signatures preserved verbatim. stance_after stays empty: no Baek stance table exists in sources (same gap the wang_rebuild records for Wang). hit_words dropped: keyed to the old Bryan inputs and unsourceable for the new rows."
+      "Commands with no same-input Hwoarang row stay kit-only data (playable_entry false), never invented. WH-original signatures preserved verbatim. stance_after stays empty: no Baek stance table exists in sources (same gap the wang_rebuild records for Wang). hit_words dropped: keyed to the old Bryan inputs and unsourceable for the new rows.",
+      "The bare '2' jab is the one playable row whose name+input does not come from the T6 decode or the TTT2 movelist (both movelist-only extractions omit standalone jabs): it comes from the commercial games' published frame data — Tekken 6 (8 dmg, i10, +0/+7) and TTT2 (9 dmg, i10, +0/+7/+7) — with frames/anim the declared T3 Hwoarang proxy (row 91, RP) and Baek's real values recorded in the row. The bare '1' jab has the same status and is not added: no test route needs it."
     ],
     "removed_bryan_layer": {
       "moves_removed": 114,
@@ -5126,20 +5166,22 @@
     },
     "counts": {
       "moves_before": 291,
-      "moves_after": 205,
+      "moves_after": 206,
       "t6_records": 276,
       "t6_unique_commands": 81,
       "t6_commands_playable": 28,
       "ttt2_playable": 23,
-      "signatures_preserved": 24
+      "signatures_preserved": 24,
+      "frame_data_jabs": 1
     },
     "gaps": [
       "No Baek frame data or damage exists in any source held (the T6 PSP COM decode yields names + glyph commands only; the TTT2 movelist yields names + inputs + throw escapes only).",
+      "The bare '2' jab is the one exception to the no-frame-data gap: its frame data comes from the commercial games' published frame data (Tekken 6: 8 dmg, i10, +0/+7; TTT2: 9 dmg, i10, +0/+7/+7), because the repo's movelist-only extractions omit standalone jabs. Its anim is the declared Hwoarang proxy (T3 row 91). The bare '1' jab has the same status and is not added: no test route needs it.",
       "No Baek animation bank exists in holdings (T6 MOTA motion chunks are listed but not decoded; TTT2 motbin extraction pending per the baek-master-white row notes). Playable rows therefore run Hwoarang motion, disclosed per row.",
       "38 of 81 T6 commands have no same-input Hwoarang row (mostly long Flamingo strings, e.g. 3,3,3,4 Butterfly Kicks) and are kit-only until a Baek motion/frame source lands.",
       "TTT2 Baek rows upgraded with Hwoarang proxy anim/frames where a same-input row exists: 23 of 153; the remaining 130 stay no-anim kit data.",
       "T6 commands skipped as playable rows (input already covered by a TTT2 row): ['1+3', '1,1', '2+4', '2,2', '2,3', 'b+1', 'd+2', 'd/b+1+3', 'd/b+2', 'd/f+1,3', 'd/f+3+4', 'f+1+3', 'f+2+3', 'f+2+4', 'u/f+2'].",
-      "Slots pruned: 25 of 36 slot entries pointed at deleted Bryan rows and were removed (['1', '1+3', '2', '2+4', '2,1,2', '2,4', '3+4', 'b', 'b+1+2', 'b+1+4', 'd,d/f,d,d/f+1+2', 'd/f+1', 'd/f+1+2', 'd/f+2', 'f', 'f+1+4', 'f+2', 'n,d/b,n,f+1+2', 'u/b+1', 'u/b+1+2', 'u/b+3', 'u/b+3+4', 'u/f+1', 'u/f+1+2', 'u/f+3+4']); the 11 surviving slots are the playable base list. Pruning changes no test counts — the test already skipped dangling slots.",
+      "Slots pruned: 24 of 36 slot entries pointed at deleted Bryan rows and were removed (['1', '1+3', '2+4', '2,1,2', '2,4', '3+4', 'b', 'b+1+2', 'b+1+4', 'd,d/f,d,d/f+1+2', 'd/f+1', 'd/f+1+2', 'd/f+2', 'f', 'f+1+4', 'f+2', 'n,d/b,n,f+1+2', 'u/b+1', 'u/b+1+2', 'u/b+3', 'u/b+3+4', 'u/f+1', 'u/f+1+2', 'u/f+3+4']); the 12 surviving slots are the playable base list. Pruning changes no test counts — the test already skipped dangling slots.",
       "Pre-existing merge artifact untouched: the 24 wh: rows include donor.baek duplicates of the two Baek signatures (merge_sources.py 2026-10-23); dedup is a separate lane's job."
     ]
   }
