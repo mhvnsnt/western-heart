@@ -999,6 +999,7 @@ The trial didn't call him. A student followed the pull — and Baek followed the
 ---
 
 ### JIN KAZAMA — The Bloodline Soul
+> FLAG — CANON CONFLICT (2026-11-20): this section presents Jin Kazama as a person in the trial, which contradicts Law 2 ('There is NO Jin Kazama in our game at all — the ONLY Jin is the soul JIN'). Flagged, not resolved — owner call: retire this section or amend Law 2.
 **Not one of the nine. The bloodline. (Not the SOUL JIN — the soul JIN (刃 — the blade) wears Phantom. This Jin wears a curse.)**
 
 **Backstory.** Jin Kazama — heir of the Mishima bloodline, the Devil Gene made flesh, the boy who threw his grandfather off a cliff and then spent his life trying to throw the devil off himself. He started a world war to draw the devil out. It worked. That's the problem with Jin's plans: they work.
@@ -1565,8 +1566,8 @@ bank on this disc image (BNS record 295 is size 0).
 The canon identities of the T3 sources are the ones already established in this bible and
 the roster: King→PANTERA, Jin→DEMONIO (soul RIN), Yoshimitsu→PHANTOM, Heihachi→DIABLO,
 Bryan→SKULL, Gun Jack→SAM-UR-A1, Xiaoyu→SAKU RA, Paul→TOU, Eddy→KING TYRANT (soul KAI),
-Hwoarang→GYOU, Julia→NIGHTWOLF / soul ZEN (a three-way doc conflict is flagged in the
-conversion record, unresolved), Lei→soul BYOU (vessel name pending the owner's Lei naming
+Hwoarang→TOBI (the old Hwoarang→GYOU mapping is superseded — Gyou's Paul holding is owner-sanctioned 2026-10-23/2026-11-10, fighter.js:211),
+Julia→NIGHTWOLF (Zen's base is Eleven/Twelve→Dural per the owner decision 2026-10-24, docs/decisions/2026-10-24-zen-base-decision.md — the three-way conflict is resolved), Lei→soul BYOU (vessel name pending the owner's Lei naming
 decision, as noted in §4 of this bible), Nina→AWA POP, Anna→TORCH, Dr. Bosconovitch→DOC
 FRANK. Law, Ogre, Gon, Panda, and Mokujin have **no** Western Heart mapping in canon —
 flagged for the owner's decision, never invented. The bear's name is now locked: GASHADOKURO (owner name lock 2026-10-22; internal ID remains `kuma` — plumbing only, never renamed; the game layer resolves the display name).
