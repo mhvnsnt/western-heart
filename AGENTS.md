@@ -267,3 +267,13 @@ Show him the best references when found — EVERY turn we work, no exceptions. S
 If it isn't accessible on Steam, go find it anywhere else — archive.org, modding communities, wherever it can be gotten from. Don't ask, don't wait. (Mars owns a lot of games on Xbox and there's no way to get those files off an Xbox, so alternate sourcing is the path for all of them.)
 
 "I own like hundreds of games on Xbox and anytime I mention certain games you just have to go get them because I own so many games that are like on disc and on Xbox and there's no way to actually get them to you but you have to go use the games in the commercial files and the actual source anyway."
+
+## COMMUNITY-CRACKED RULE (owner 2026-11-20 ~22:13, extended 2026-11-21)
+
+> "Fully already-decomped/recomped/decrypted/extracted community work FIRST, always — pull it in and wire it up 100% instead of decoding from scratch."
+
+Before any decoding, decrypting, decompiling, or extracting from scratch, check what the community has already cracked — decompilations, recompilations, decrypted dumps, extracted files, fan tools and docs, modding-community releases. If the already-cracked version exists, pull it in and wire it up 100%. That is the work, not a shortcut.
+
+Extension (owner 2026-11-21):
+
+> "For ANY encrypted file, find where it is already decrypted and pull that in."
