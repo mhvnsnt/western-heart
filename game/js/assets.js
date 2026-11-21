@@ -37,8 +37,11 @@ import { resolveAssetCandidates, looksLikeModel } from './asset-config.js';
 export const MODEL_URLS = {
   pantera: 'assets/models/pantera.glb',
   'steve-fox': 'assets/models/steve-fox.glb',
-  // NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO — the old `jin:` key was removed;
-  // `demonio: 'assets/models/demonio.glb'` (below) is the canonical model.
+  // NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO — the old `jin:` key was removed.
+  // `demonio: 'assets/models/demonio.glb'` (below) is the old Steve Fox stand-in body
+  // (byte-identical to steve-fox.glb; wrong canon per owner 2026-10-15) — NOT the
+  // canonical model. The canonical default is `demonio-a1`
+  // (roster/demonio/attires/attire1/model.glb).
   // Per-fighter models wired from teardown extractions + Tripo rescans.
   // Keys match FULL_ROSTER `model` ids in roster-full.js (lane 2).
   demonio: 'assets/models/demonio.glb',
