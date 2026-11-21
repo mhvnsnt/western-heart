@@ -31,10 +31,13 @@
    - toManifest() -> assembleFighter() is RETIRED (B §6.2: the fight
      wiring was never done; EDITOR-SPEC §3a). toManifest() is kept
      exported, marked RETIRED below, and is never called by the editor.
-   - Positions with data but NO resolver path (GROUNDED., FUFT., FDFA.,
-     CH., TACKLE., REV. — A §8.1, EDITOR-SPEC §6a) are never offered as
+   - Positions with data but NO resolver path (GROUNDED., FDFL., FDFR.,
+     FUFL., CH., TACKLE., REV. — A §8.1, EDITOR-SPEC §6a) are never offered as
      assignable positions; validateNotation() refuses them (engine work
-     owed, not this skeleton).
+     owed, not this skeleton). Lane C 2026-11-20: FUFT./FUFA./FDFT./FDFA.
+     left this list — they fire from the knockdown-exit stance window
+     (fighter.js:4503-4517) via the generic stance line, so they are
+     assignable now (RESOLVER_POSITIONS entries below).
    - Demonio forms are FOUR SEPARATE FIGHTERS (A §6): demonio,
      demonio-human, demonio-winged, demonio-bloodline-ember. No form
      field, no in-editor form switch (transform wiring untraced).
@@ -70,6 +73,14 @@ export const RESOLVER_POSITIONS = [
   { id: 'SOUL', prefix: null, label: 'Soul state', soul: true },
   { id: 'BT', prefix: 'BT.', label: 'Back-turned' },
   { id: 'STANCE', prefix: null, label: 'Stance', stance: true },
+  // Ground orientations (Lane C 2026-11-20): the four canonical Tekken grounded stances
+  // (wavu "Wake-up"; TKMovesets req 148/149). They fire from the knockdown-exit stance
+  // window (fighter.js:4503-4517, 0.6 s, via the generic stance line in _pressV2) — a slot
+  // under one of these fires ONLY inside that window, never as a standing position.
+  { id: 'FUFT', prefix: 'FUFT.', label: 'Face-up, feet-toward' },
+  { id: 'FUFA', prefix: 'FUFA.', label: 'Face-up, feet-away' },
+  { id: 'FDFT', prefix: 'FDFT.', label: 'Face-down, feet-toward' },
+  { id: 'FDFA', prefix: 'FDFA.', label: 'Face-down, feet-away' },
   { id: 'R', prefix: 'R.', label: 'Rage' },
   { id: 'H', prefix: 'H.', label: 'Heat / Soul Urge' },
   { id: 'RD', prefix: 'RD.', label: 'Rage Drive', synthesized: true },
@@ -90,9 +101,18 @@ export const RESOLVER_POSITIONS = [
 export const SOUL_STATES = ['SPIRIT', 'KESSHOU', 'SOUL9', 'REIHOU', 'SEAL'];
 
 /* Prefixes with data but NO resolver path — never assignable (A §8.1,
-   EDITOR-SPEC §6a). Engine work owed, not this skeleton. */
+   EDITOR-SPEC §6a). Engine work owed, not this skeleton.
+   Lane C 2026-11-20: FUFT/FUFA/FDFT/FDFA left this list — they fire
+   from the knockdown-exit stance window (fighter.js:4503-4517) via the
+   generic stance line, so they are assignable now. The seven left here
+   still have no live path: GROUNDED (needs the fighter.js ctx field +
+   canAct decision), FDFL/FDFR/FUFL (need a lateral fall bit — no Tekken
+   source implements a feet-left/right grounded stance), CH (a hit
+   property, not a position — owner/engine design decision owed),
+   TACKLE (fires today only as a throw chain, not a press), REV (no
+   stance_after ever sets REV — reversal-route design decision owed). */
 export const NO_RESOLVER_PATH = [
-  'GROUNDED', 'FUFT', 'FDFA', 'FDFL', 'FDFR', 'FDFT', 'FUFA', 'FUFL',
+  'GROUNDED', 'FDFL', 'FDFR', 'FUFL',
   'CH', 'TACKLE', 'REV',
 ];
 

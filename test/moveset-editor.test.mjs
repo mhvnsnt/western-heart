@@ -88,15 +88,16 @@ test('template index: bank-backed counts match the banks, prefixes resolve', () 
 
 test('slot catalog: resolver positions in order, plain notations, fixed inputs', () => {
   assert.deepEqual(RESOLVER_POSITIONS.map((p) => p.id),
-    ['WR', 'CD', 'SOUL', 'BT', 'STANCE', 'R', 'H', 'RD', 'SSL', 'SSR', 'SS', 'FC', 'OTG', 'WALL', 'WS', 'AIR', 'STAND'],
-    'resolver positions must be in _pressV2 order (A §3a/§3b)');
+    ['WR', 'CD', 'SOUL', 'BT', 'STANCE', 'FUFT', 'FUFA', 'FDFT', 'FDFA', 'R', 'H', 'RD', 'SSL', 'SSR', 'SS', 'FC', 'OTG', 'WALL', 'WS', 'AIR', 'STAND'],
+    'resolver positions must be in _pressV2 order (A §3a/§3b); ground stances ride the generic stance slot, so they sit with STANCE (Lane C 2026-11-20)');
   for (const p of RESOLVER_POSITIONS) {
     if (p.prefix !== null) assert.ok(p.prefix === '' || p.prefix.endsWith('.'), `${p.id}: prefix ${p.prefix} must end with '.'`);
   }
   assert.ok(RESOLVER_POSITIONS.find((p) => p.id === 'RD').synthesized, 'Rage Drive is synthesized — no data keys');
   assert.deepEqual(SOUL_STATES, ['SPIRIT', 'KESSHOU', 'SOUL9', 'REIHOU', 'SEAL']);
-  assert.equal(NO_RESOLVER_PATH.length, 11, 'eleven no-resolver-path prefixes (A §8.1)');
-  for (const pre of ['GROUNDED', 'FUFT', 'FDFA', 'CH', 'TACKLE', 'REV']) assert.ok(NO_RESOLVER_PATH.includes(pre), `${pre} must be quarantined`);
+  assert.equal(NO_RESOLVER_PATH.length, 7, 'seven no-resolver-path prefixes left (Lane C 2026-11-20 unquarantined FUFT/FUFA/FDFT/FDFA — knockdown-exit stance window)');
+  for (const pre of ['GROUNDED', 'FDFL', 'FDFR', 'FUFL', 'CH', 'TACKLE', 'REV']) assert.ok(NO_RESOLVER_PATH.includes(pre), `${pre} must be quarantined`);
+  for (const pre of ['FUFT', 'FUFA', 'FDFT', 'FDFA']) assert.ok(!NO_RESOLVER_PATH.includes(pre), `${pre} must NOT be quarantined (Lane C: stance-window path)`);
   for (const w of ['corner', 'apron', 'mounted', 'jumping', 'sidestep-left', 'sidestep-right']) {
     assert.ok(RETIRED_POSITION_WORDS.includes(w), `${w} must be listed as a retired word`);
   }
@@ -105,6 +106,14 @@ test('slot catalog: resolver positions in order, plain notations, fixed inputs',
   // the slot key IS the notation now; the old '|' form is migration-only
   assert.equal(slotKey('df+2'), 'df+2');
   assert.equal(slotKey('WS.1'), 'WS.1');
+  // ground orientations are assignable now (Lane C): slot key builds, validates, buckets
+  assert.equal(slotKey('FUFT.3'), 'FUFT.3');
+  assert.equal(validateNotation('FUFT.3'), 'FUFT.3');
+  assert.equal(validateNotation('FDFA.4'), 'FDFA.4');
+  assert.equal(positionOfNotation('FUFT.3').id, 'FUFT');
+  assert.equal(positionOfNotation('FUFA.db+1+3_2+4').id, 'FUFA');
+  assert.equal(positionOfNotation('FDFT.db+1+3_2+4').id, 'FDFT');
+  assert.equal(positionOfNotation('FDFA.3').id, 'FDFA');
   assert.throws(() => slotKey('standing|neutral|df+2'), /legacy/);
   assert.throws(() => slotKey('GROUNDED.1'), /no resolver path/);
   assert.throws(() => slotKey('corner.1'), /not a data prefix/);
@@ -161,6 +170,10 @@ test('eligibility: input gate + position-prefix gate, input-less moves fit by po
   // quarantined notations are never eligible
   assert.ok(!isEligible(moves[0], 'GROUNDED.1'), 'quarantined notation is never eligible');
   assert.ok(!isEligible(moves[1], '1', 'GROUNDED.1'), 'quarantined move key is never eligible');
+  // ground-orientation move keys fill their own slot, not a sibling orientation (Lane C)
+  assert.ok(isEligible({ input: 'FUFT.3' }, 'FUFT.3', 'FUFT.3'), 'FUFT move key fills its own FUFT slot');
+  assert.ok(!isEligible({ input: 'FUFT.3' }, 'FDFA.3', 'FUFT.3'), 'FUFT move key must not fill an FDFA slot');
+  assert.ok(isEligible({ input: 'FDFA.4' }, 'FDFA.4', 'FDFA.4'), 'FDFA move key fills its own FDFA slot');
 });
 
 test('create + assign + validate: named doc, source law at validate, store round-trip', () => {

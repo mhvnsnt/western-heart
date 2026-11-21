@@ -29,7 +29,9 @@
      fighter, RESET ALL deleting every loadout entry except __base.
    - Positions: the resolver prefix list (A §3a/§3b) via the rebuilt
      moveset-editor.js engine. Positions with data but no resolver
-     path (GROUNDED./FUFT./CH./TACKLE. etc.) get no chip (A §8.1).
+     path (GROUNDED./FDFL./CH./TACKLE./REV. etc.) get no chip (A §8.1).
+     Lane C 2026-11-20: FUFT./FUFA./FDFT./FDFA. DO get chips now — they
+     fire from the knockdown-exit stance window (fighter.js:4503-4517).
    - Save: ONE canonical save (wh_moveset_loadout_v1, the only thing
      a fight reads) + the named-document store (wh_moveset_editor_v1,
      EDITOR-SPEC §3). A named moveset plays ONLY by compiling into
