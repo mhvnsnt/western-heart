@@ -250,7 +250,9 @@ test('integration: custom moveset from t3-hwoarang assembles, source law green',
   const lib = await loadLibrary({ root: ROOT });
   const claimedMap = await loadClaimedMap({ root: ROOT });
   const hwMoves = lib.banks.t3.moves.filter((m) => m.id.startsWith('t3:hwoarang:'));
-  assert.ok(hwMoves.length === 221, `expected 221 Hwoarang moves, got ${hwMoves.length}`);
+  // 376 entries (183 distinct T3 rows — the same row appears under
+  // several move keys/inputs); the old bank carried only 221.
+  assert.ok(hwMoves.length === 376, `expected 376 Hwoarang moves, got ${hwMoves.length}`);
   let ms = createCustomMoveset({ name: 'Test Custom', fighterId: 'custom', baseTemplate: 'demonio', base: { bank: 't3', character: 'hwoarang' } });
   ms = assignMove(ms, 'df+2', hwMoves[0].id, lib.byId);
   const manifest = toManifest(ms);
@@ -260,13 +262,13 @@ test('integration: custom moveset from t3-hwoarang assembles, source law green',
   const kit = await assembleFighter(manifest, { root: ROOT });
   assert.ok(kit.report.source_law.passed, JSON.stringify(kit.report.source_law));
   assert.ok(kit.moves['df+2'], 'the swapped-in move must be in the assembled kit');
-  /* HONEST LIMIT, measured: T3 rows carry input null (0/4,648 have
-     an input — the #615 fidelity engine owns that decode), so the
-     assembler's base-kit loop (`if (m.input ...)`) adds nothing
-     from a T3 base. A T3-based custom moveset today assembles to
-     exactly its explicitly-assigned overlay moves. That is the
-     #615 gap, asserted here so it cannot silently change. */
-  assert.equal(kit.report.assembled, 1, 'T3 base kit contributes nothing until inputs are decoded — only the overlay move assembles');
+  /* The #615 gap is CLOSED for the library fill (2026-11-20): the new
+     index carries inputs decoded from the moveset files, so the T3
+     base kit now assembles like the vf5 one does — 188 distinct
+     inputs from 376 Hwoarang entries (183 distinct T3 rows). The
+     overlay at df+2 is a 189th slot (df+2 is not a base input).
+     Asserted here so it cannot silently change. */
+  assert.equal(kit.report.assembled, 189, 'T3 base kit assembles 188 distinct inputs + the df+2 overlay = 189');
 });
 
 test('integration: vf5-based custom moveset assembles its FULL base kit', async () => {
