@@ -1,0 +1,29 @@
+{
+ "original": "KC2FIRE.AFS",
+ "size": 1874507776,
+ "sha256": "1f6fa07dad36e3033a3c66a2d996b1599f6fbef78898ecd62fece285e7b64e17",
+ "piece_size": 99000000,
+ "piece_count": 19,
+ "pieces": [
+  "KC2FIRE.AFS.part000",
+  "KC2FIRE.AFS.part001",
+  "KC2FIRE.AFS.part002",
+  "KC2FIRE.AFS.part003",
+  "KC2FIRE.AFS.part004",
+  "KC2FIRE.AFS.part005",
+  "KC2FIRE.AFS.part006",
+  "KC2FIRE.AFS.part007",
+  "KC2FIRE.AFS.part008",
+  "KC2FIRE.AFS.part009",
+  "KC2FIRE.AFS.part010",
+  "KC2FIRE.AFS.part011",
+  "KC2FIRE.AFS.part012",
+  "KC2FIRE.AFS.part013",
+  "KC2FIRE.AFS.part014",
+  "KC2FIRE.AFS.part015",
+  "KC2FIRE.AFS.part016",
+  "KC2FIRE.AFS.part017",
+  "KC2FIRE.AFS.part018"
+ ],
+ "reassemble": "cat KC2FIRE.AFS.part* > KC2FIRE.AFS"
+}
