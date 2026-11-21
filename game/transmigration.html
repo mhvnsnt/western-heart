@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en" data-cb="none">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#14091f" />
+  <title>WESTERN HEART — Transmigration: Nine Lives of Tong-Nou</title>
+  <link rel="stylesheet" href="css/identity.css" />
+  <script src="js/identity.js"></script>
+  <style>
+    .tm-status { font-weight: 800; color: var(--wh-gold); line-height: 1.7; }
+    .tm-face-row { display: flex; gap: 10px; margin: 8px 0; align-items: center; }
+    .tm-face-row .tm-label { width: 64px; font-weight: 800; letter-spacing: .08em; font-size: 12px; }
+    .tm-opt { border: 2px solid var(--wh-border, #444); border-radius: 8px; padding: 6px; cursor: pointer; background: rgba(255,255,255,.04); text-align: center; min-width: 92px; }
+    .tm-opt img { display: block; margin: 0 auto; max-width: 96px; max-height: 72px; image-rendering: pixelated; }
+    .tm-opt.sel { border-color: var(--wh-gold); background: rgba(255,215,0,.12); }
+    .tm-opt.spent { opacity: .45; }
+    .tm-opt .tm-idx { font-size: 11px; opacity: .75; }
+    .tm-call { font-weight: 800; min-height: 1.5em; }
+    .tm-steps { margin: 8px 0 8px 18px; }
+    .tm-steps li { margin: 4px 0; }
+    .tm-steps li.done { text-decoration: line-through; opacity: .6; }
+    .tm-steps li.now { font-weight: 800; }
+    .tm-log { max-height: 220px; overflow-y: auto; font-size: 13px; line-height: 1.6; }
+    .tm-log p { margin: 4px 0; }
+    .tm-hidden { display: none !important; }
+    .tm-plate { display: inline-block; border: 1px solid var(--wh-gold); border-radius: 6px; padding: 2px 8px; margin: 2px; font-weight: 700; font-size: 12px; }
+    .tm-mag { display: inline-block; border: 1px solid #9ad7ff; border-radius: 6px; padding: 2px 8px; margin: 2px; font-weight: 700; font-size: 12px; }
+  </style>
+</head>
+<body class="wh-page">
+<div class="wh-wrap">
+  <div class="wh-topbar">
+    <a class="wh-back" href="side-games.html">← SIDE GAMES</a>
+    <h1>TRANS<span class="soul">MIGRATION</span></h1>
+  </div>
+
+  <div class="wh-card">
+    <div class="wh-tag">🜏 NINE LIVES OF TONG-NOU · EASTERN MIND, WIRED INTO WESTERN HEART</div>
+    <h2>Die. Pick a face. Live again.</h2>
+    <p class="sub">Rin lost his soul to the island Tong-Nou. A friend lent him a
+      temporary soul — 49 days. The only way home is through death:
+      <b>die and be reincarnated 9 times</b>, once as each of the eight
+      creatures of Tong-Nou, and then as yourself. Death here is not a
+      game-over. <b>Death is the progression.</b></p>
+    <p class="sub">On each death, assemble the next life on the face-pick screen —
+      one pair of eyes, one nose, one mouth, from the original
+      D_FACE art. The face you build calls the vessel. Finish that
+      creature's mission to earn its <b>Nameplate</b>. With all eight,
+      the seal opens, the five <b>Magatamas</b> are gathered, they forge
+      the <b>Katana of Five Forces</b>, and the soul is recovered at the
+      Octagonal Shrine Par-fang.</p>
+    <p class="sub">WH rule, stated plainly: the original game offers two options
+      per face part (eight faces, eight creatures). This screen offers
+      three — the third part of each kind is <b>Rin's own face</b>, and
+      it only answers once all eight creature Nameplates are held.</p>
+    <div class="tm-status" id="tm-status"></div>
+    <div id="tm-plates"></div>
+    <div id="tm-mags"></div>
+  </div>
+
+  <div class="wh-card tm-hidden" id="tm-card-rin">
+    <div class="wh-tag">LIFE 1 · RIN</div>
+    <h2>The first death</h2>
+    <p class="sub">Rin stands in Tong-Nou's fire room. The left flame is the way
+      out of this life — and the amulet Yashiro's friend gave him will
+      catch him on the other side. Die, and the Rin Nameplate is yours.</p>
+    <div class="playrow"><button class="wh-btn" id="tm-die-rin">DIE IN THE LEFT FLAME</button></div>
+  </div>
+
+  <div class="wh-card tm-hidden" id="tm-card-face">
+    <div class="wh-tag">D_FACE · THE FACE-PICK</div>
+    <h2>Assemble the next life</h2>
+    <p class="sub">Pick one eye, one nose, one mouth. The screen tells you what
+      the face calls <i>before</i> you commit — a spent vessel (its
+      Nameplate already yours) cannot be picked again, and your own
+      face will not answer until the eight are done.</p>
+    <div id="tm-face"></div>
+    <div class="tm-call" id="tm-call"></div>
+    <div class="playrow"><button class="wh-btn" id="tm-reincarnate">BE REBORN</button></div>
+  </div>
+
+  <div class="wh-card tm-hidden" id="tm-card-mission">
+    <div class="wh-tag" id="tm-mission-tag">MISSION</div>
+    <h2 id="tm-mission-name"></h2>
+    <p class="sub" id="tm-mission-home"></p>
+    <p id="tm-mission-text"></p>
+    <p class="sub" id="tm-mission-born"></p>
+    <ol class="tm-steps" id="tm-mission-steps"></ol>
+    <div class="playrow">
+      <button class="wh-btn" id="tm-advance">TAKE THE NEXT STEP</button>
+      <button class="wh-btn" id="tm-die-mid">DIE MID-MISSION</button>
+    </div>
+    <p class="sub">Dying mid-mission spends the life and undoes the mission —
+      the vessel can be picked again, but its work starts over.</p>
+  </div>
+
+  <div class="wh-card tm-hidden" id="tm-card-again">
+    <div class="wh-tag">THE LIFE IS SPENT</div>
+    <h2>Die again</h2>
+    <p class="sub" id="tm-again-text"></p>
+    <div class="playrow"><button class="wh-btn" id="tm-die-again">DIE AGAIN</button></div>
+  </div>
+
+  <div class="wh-card tm-hidden" id="tm-card-seal">
+    <div class="wh-tag">NINTH LIFE · RIN RETURNS</div>
+    <h2>The seal on Central Mountain</h2>
+    <p class="sub">Eight Nameplates, eight lives lived. Rin is himself again —
+      the ninth life. Set the Nameplates in the seal and it opens.</p>
+    <div class="playrow"><button class="wh-btn" id="tm-seal">UNLOCK THE SEAL</button></div>
+  </div>
+
+  <div class="wh-card tm-hidden" id="tm-card-mags">
+    <div class="wh-tag">THE FIVE MAGATAMAS · ONE PER LAND</div>
+    <h2>Gather what is scattered</h2>
+    <p class="sub">Water and Wood already came home inside Byou's life. Metal
+      waits on the Helix Palace roof, Fire by a candle in the Land of
+      Time, Earth on Central Mountain itself. Take each one.</p>
+    <div class="playrow" id="tm-mag-btns"></div>
+  </div>
+
+  <div class="wh-card tm-hidden" id="tm-card-katana">
+    <div class="wh-tag">FIVE MAGATAMAS · COMPLETE</div>
+    <h2>Forge the Katana of Five Forces</h2>
+    <p class="sub">The Tou-gyou emblems are consulted in the five lands in
+      sequence — Desire, Dreaming, Life, Time — and back to Central
+      Mountain. Then the blade is given.</p>
+    <div class="playrow"><button class="wh-btn" id="tm-katana">FORGE THE KATANA</button></div>
+  </div>
+
+  <div class="wh-card tm-hidden" id="tm-card-shrine">
+    <div class="wh-tag">OCTAGONAL SHRINE PAR-FANG · CENTRAL MOUNTAIN</div>
+    <h2>Enter through the window</h2>
+    <p class="sub">Use the katana. Then use the five Magatamas. What Tong-Nou
+      took, it returns — it was never a devourer. It is a purifier
+      of souls.</p>
+    <div class="playrow"><button class="wh-btn" id="tm-recover">RECOVER THE SOUL</button></div>
+  </div>
+
+  <div class="wh-card tm-hidden" id="tm-card-done">
+    <div class="wh-tag">🜏 THE SOUL IS RECOVERED</div>
+    <h2>Rin is whole.</h2>
+    <p>Nine lives. Nine deaths. Eight Nameplates, five Magatamas, one
+      katana — and a soul, purified, come home. The head-world keeps
+      turning, and the Trial remembers every life you lived in it.</p>
+    <p class="sub" id="tm-done-shards"></p>
+    <div class="playrow"><button class="wh-btn" id="tm-again-run">LIVE THE NINE LIVES AGAIN</button></div>
+  </div>
+
+  <div class="wh-card">
+    <div class="wh-tag">THE EIGHT CREATURES · KNOW THE VESSELS</div>
+    <h2>Who you may become</h2>
+    <p class="sub">Lands and missions are the original's (GameFAQs walkthrough,
+      lordgod666 v1.02; Osamu Sato Wiki). The face each vessel answers
+      to is discovered on the face-pick screen — the screen tells you
+      before you commit.</p>
+    <div id="tm-roster"></div>
+  </div>
+
+  <div class="wh-card">
+    <div class="wh-tag">THE JOURNEY SO FAR</div>
+    <h2>Log</h2>
+    <div class="tm-log" id="tm-log"></div>
+  </div>
+
+  <div class="wh-approval">
+    <b>SOURCES.</b> Face → creature map, missions, endgame: GameFAQs
+    “Eastern Mind: The Lost Souls of Tong Nou — Guide and Walkthrough”
+    by lordgod666 v1.02 (§2–§4); walkthroughking.com; Osamu Sato Wiki
+    (Kai); Wikipedia plot summary. Face art: the original D_FACE
+    bitmaps, already in-repo under teardown/eastern-mind/ (see
+    game/js/modes.js EM_FACE). Sound slots: game/data/eastern-mind-sfx.json
+    (reincarn.death / reincarn.rebirth). Chu-Teng drops transmigration
+    (fetch-the-parts instead) — the mechanic carried forward lives in
+    Tong-Nou. WH characters in the vessel roles; never clones.
+  </div>
+</div>
+<div class="wh-toast" id="toast"></div>
+
+<script type="module">
+import {
+  FACE_ART, CREATURES, CREATURE_IDS, SELF_ID, LANDS,
+  faceToCreature, creatureByVessel, nameOf,
+  createRun, die, reincarnate, advanceMission, dieAgain,
+  unlockSeal, collectMagatama, forgeKatana, recoverSoul,
+  creatureNameplates, runSummary,
+} from './js/transmigration.js';
+
+var I = window.WHIdentity;
+function toast(m){ var t=document.getElementById('toast'); t.textContent=m; t.classList.add('show'); setTimeout(function(){t.classList.remove('show');},2600); }
+function shards(n, why){ try { if (I && I.addShards) I.addShards(n, why); } catch (e) { /* identity absent — the run still counts */ } }
+
+var run = createRun();
+var pick = { eye: null, nose: null, mouth: null };
+var paidPlates = 0; // 10 Soul Shards per Nameplate earned (WH design choice; owner-adjustable)
+
+var $ = function (id) { return document.getElementById(id); };
+
+/* ---- roster reference (lands + missions, no face answers) ---- */
+(function roster() {
+  var html = '';
+  CREATURE_IDS.forEach(function (id) {
+    var c = CREATURES[id];
+    html += '<div class="wh-game"><div class="home">' + LANDS[c.land].name.toUpperCase() + ' · ' +
+      LANDS[c.land].title.toUpperCase() + ' · ' + LANDS[c.land].element.toUpperCase() + '</div><h3>' +
+      c.name + '</h3><p>' + c.home + '.<br><b>Mission:</b> ' + c.mission +
+      '<br><b>Born with:</b> ' + c.bornWith + '.</p></div>';
+  });
+  $('tm-roster').innerHTML = html;
+})();
+
+/* ---- face-pick grid ---- */
+var PART_NAMES = [['eye', 'eyes'], ['nose', 'nose'], ['mouth', 'mouth']];
+(function buildFace() {
+  var host = $('tm-face');
+  PART_NAMES.forEach(function (pair) {
+    var key = pair[0], artKey = pair[1];
+    var row = document.createElement('div');
+    row.className = 'tm-face-row';
+    row.innerHTML = '<div class="tm-label">' + key.toUpperCase() + '</div>';
+    FACE_ART[artKey].forEach(function (src, i) {
+      var d = document.createElement('div');
+      d.className = 'tm-opt';
+      d.dataset.part = key; d.dataset.idx = i;
+      d.innerHTML = '<img src="' + src + '" alt="' + key + ' option ' + (i + 1) + '" onerror="this.style.display=\'none\'" /><div class="tm-idx">option ' + (i + 1) + '</div>';
+      d.addEventListener('click', function () {
+        pick[key] = i;
+        row.querySelectorAll('.tm-opt').forEach(function (o) { o.classList.remove('sel'); });
+        d.classList.add('sel');
+        updateCall();
+      });
+      row.appendChild(d);
+    });
+    host.appendChild(row);
+  });
+})();
+
+function updateCall() {
+  var el = $('tm-call');
+  if (pick.eye === null || pick.nose === null || pick.mouth === null) {
+    el.textContent = 'Pick one of each — eye, nose, mouth.';
+    return;
+  }
+  var vessel = faceToCreature(pick.eye, pick.nose, pick.mouth);
+  if (vessel === SELF_ID) {
+    var done = creatureNameplates(run);
+    el.textContent = done >= 8
+      ? 'This face is YOUR OWN. Rin returns — the ninth life.'
+      : 'This face is YOUR OWN — but it will not answer yet. ' + (8 - done) + ' creature Nameplate(s) still to earn.';
+    return;
+  }
+  var c = creatureByVessel(vessel);
+  el.textContent = run.nameplates.includes(vessel)
+    ? 'This face calls ' + c.name + ' — SPENT. Its Nameplate is already yours.'
+    : 'This face calls ' + c.name + ' — ' + c.home + '.';
+}
+
+function render() {
+  var s = runSummary(run);
+  $('tm-status').textContent = 'Life ' + Math.min(9, s.lives + (s.phase === 'rin-life' || s.phase === 'mission' ? 1 : 0)) + ' of 9 · Deaths ' + s.deaths +
+    ' · Nameplates ' + s.nameplates.length + '/9 (' + s.creatureNameplates + ' creatures) · Magatamas ' + s.magatamas.length + '/5' +
+    (s.katana ? ' · KATANA FORGED' : '');
+  $('tm-plates').innerHTML = s.nameplates.map(function (v) { return '<span class="tm-plate">' + nameOf(v) + ' ✓</span>'; }).join('') || '<span class="tm-plate">no Nameplates yet</span>';
+  $('tm-mags').innerHTML = s.magatamas.map(function (m) { return '<span class="tm-mag">' + LANDS[m].element + '</span>'; }).join('');
+  var show = function (id, on) { $(id).classList.toggle('tm-hidden', !on); };
+  show('tm-card-rin', s.phase === 'rin-life');
+  show('tm-card-face', s.phase === 'face-pick');
+  show('tm-card-mission', s.phase === 'mission');
+  show('tm-card-again', s.phase === 'face-pick-ready');
+  show('tm-card-seal', s.phase === 'seal');
+  show('tm-card-mags', s.phase === 'magatamas');
+  show('tm-card-katana', s.phase === 'katana');
+  show('tm-card-shrine', s.phase === 'shrine');
+  show('tm-card-done', s.phase === 'done');
+  if (s.phase === 'mission' && run.missionCreature) {
+    var c = creatureByVessel(run.missionCreature);
+    $('tm-mission-tag').textContent = c.name + ' · ' + LANDS[c.land].name.toUpperCase() + ' · ' + LANDS[c.land].title.toUpperCase();
+    $('tm-mission-name').textContent = c.name;
+    $('tm-mission-home').textContent = c.home + '.';
+    $('tm-mission-text').textContent = c.mission;
+    $('tm-mission-born').textContent = 'Born with: ' + c.bornWith + '.';
+    $('tm-mission-steps').innerHTML = c.steps.map(function (st, i) {
+      var cls = i < run.missionStep ? 'done' : (i === run.missionStep ? 'now' : '');
+      return '<li class="' + cls + '">' + st + '</li>';
+    }).join('');
+    $('tm-advance').textContent = run.missionStep === 0 ? 'BEGIN — ' + c.steps[0] : 'NEXT — ' + (c.steps[run.missionStep] || 'finish');
+  }
+  if (s.phase === 'face-pick-ready') {
+    $('tm-again-text').textContent = nameOf(s.nameplates[s.nameplates.length - 1]) + '\'s mission is done and its Nameplate is yours. ' +
+      s.creatureNameplates + ' of 8 creature lives lived. Die, and pick the next face.';
+  }
+  if (s.phase === 'magatamas') {
+    var host = $('tm-mag-btns');
+    if (!host.children.length) {
+      ['earth', 'metal', 'water', 'wood', 'fire'].forEach(function (land) {
+        var b = document.createElement('button');
+        b.className = 'wh-btn'; b.textContent = LANDS[land].element.toUpperCase() + ' — ' + LANDS[land].name;
+        b.addEventListener('click', function () { doCollect(land); });
+        host.appendChild(b);
+      });
+    }
+    Array.prototype.forEach.call(host.children, function (b, i) {
+      var land = ['earth', 'metal', 'water', 'wood', 'fire'][i];
+      b.disabled = s.magatamas.includes(land);
+      b.style.opacity = s.magatamas.includes(land) ? .45 : 1;
+    });
+  }
+  var log = $('tm-log');
+  log.innerHTML = run.log.map(function (l) { return '<p>· ' + l + '</p>'; }).join('');
+  log.scrollTop = log.scrollHeight;
+  updateCall();
+}
+
+function payForPlates() {
+  var s = runSummary(run);
+  var owed = s.nameplates.length * 10 - paidPlates;
+  if (owed > 0) { paidPlates = s.nameplates.length * 10; shards(owed, 'transmigration-nameplate'); }
+}
+function fail(r) { toast(r.reason || 'The head-world refuses.'); render(); }
+
+$('tm-die-rin').addEventListener('click', function () {
+  var r = die(run);
+  if (!r.ok) return fail(r);
+  run = r.run; payForPlates();
+  toast('RIN died — the amulet saved him. The Rin Nameplate is yours.');
+  pick = { eye: null, nose: null, mouth: null };
+  document.querySelectorAll('.tm-opt.sel').forEach(function (o) { o.classList.remove('sel'); });
+  render();
+});
+$('tm-reincarnate').addEventListener('click', function () {
+  if (pick.eye === null || pick.nose === null || pick.mouth === null) { toast('Pick one eye, one nose, one mouth first.'); return; }
+  var r = reincarnate(run, pick.eye, pick.nose, pick.mouth);
+  if (!r.ok) return fail(r);
+  run = r.run;
+  toast(r.vessel === SELF_ID ? 'Rin returns — the ninth life.' : 'Reborn as ' + nameOf(r.vessel) + '.');
+  render();
+});
+$('tm-advance').addEventListener('click', function () {
+  var r = advanceMission(run);
+  if (!r.ok) return fail(r);
+  run = r.run; payForPlates();
+  toast(r.done ? 'Mission done — the Nameplate is yours.' : 'Step taken.');
+  render();
+});
+$('tm-die-mid').addEventListener('click', function () {
+  var r = die(run);
+  if (!r.ok) return fail(r);
+  run = r.run;
+  toast('Died mid-mission — the life is spent, the mission undone.');
+  pick = { eye: null, nose: null, mouth: null };
+  document.querySelectorAll('.tm-opt.sel').forEach(function (o) { o.classList.remove('sel'); });
+  render();
+});
+$('tm-die-again').addEventListener('click', function () {
+  var r = dieAgain(run);
+  if (!r.ok) return fail(r);
+  run = r.run;
+  toast('The life ends. Pick the next face.');
+  pick = { eye: null, nose: null, mouth: null };
+  document.querySelectorAll('.tm-opt.sel').forEach(function (o) { o.classList.remove('sel'); });
+  render();
+});
+$('tm-seal').addEventListener('click', function () {
+  var r = unlockSeal(run);
+  if (!r.ok) return fail(r);
+  run = r.run;
+  toast('The seal opens. Gather the five Magatamas.');
+  render();
+});
+function doCollect(land) {
+  var r = collectMagatama(run, land);
+  if (!r.ok) return fail(r);
+  run = r.run;
+  toast(LANDS[land].element + ' Magatama gathered.');
+  render();
+}
+$('tm-katana').addEventListener('click', function () {
+  var r = forgeKatana(run);
+  if (!r.ok) return fail(r);
+  run = r.run;
+  toast('The Katana of Five Forces is yours.');
+  render();
+});
+$('tm-recover').addEventListener('click', function () {
+  var r = recoverSoul(run);
+  if (!r.ok) return fail(r);
+  run = r.run;
+  $('tm-done-shards').textContent = 'The run paid ' + paidPlates + ' Soul Shards (10 per Nameplate).';
+  toast('RIN’S SOUL IS RECOVERED.');
+  render();
+});
+$('tm-again-run').addEventListener('click', function () {
+  run = createRun(); paidPlates = 0;
+  pick = { eye: null, nose: null, mouth: null };
+  document.querySelectorAll('.tm-opt.sel').forEach(function (o) { o.classList.remove('sel'); });
+  render();
+});
+
+render();
+</script>
+</body>
+</html>
