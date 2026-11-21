@@ -1,0 +1,123 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#14121c;overflow:hidden}</style></head><body>
+<script type="importmap">{"imports":{"three":"http://127.0.0.1:8843/_megami-liveproof-20261106/serve/game/vendor/three.module.js","three/addons/":"http://127.0.0.1:8843/_megami-liveproof-20261106/serve/game/vendor/addons/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+// gnmproof2 = gnmproof.html (gate stage) + optional fitted hair part (?hair=)
+// + exposure control (?exp=). SKIN/material treatment IDENTICAL to gate stage
+// so clean proofs stay comparable with gate frames.
+const SKIN = ['Torso-3','Face-2','Lips-2','Teeth-2','Legs-2','EyeSocket-2','Arms-3','Pupils-2','EyeMoisture-3','Fingernails-2','Cornea-2','Irises-2','Sclera-2','Toenails-2','GP_Torso-1','GP_Torso_Back-1'];
+const qs = new URLSearchParams(location.search);
+const GLB = qs.get('glb') || '_gnmface-20261109/work/megami-angel-gnmface-v1.glb';
+const HAIR = qs.get('hair');
+const EXP = parseFloat(qs.get('exp') || '1.1');
+let renderer, scene, camera, root, allObjs = [];
+window.__ready = false;
+window.__log = [];
+(async () => {
+  const canvas = document.createElement('canvas');
+  renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
+  renderer.setSize(540, 960);
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.NeutralToneMapping;
+  renderer.toneMappingExposure = EXP;
+  scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x14121c);
+  camera = new THREE.PerspectiveCamera(55, 540/960, 0.01, 100);
+  camera.position.set(0, 1.24, 1.2); camera.lookAt(0, 1.24, 0);
+  scene.add(new THREE.HemisphereLight(0xdfe8ff, 0x2a2118, 1.15));
+  const key = new THREE.DirectionalLight(0xffffff, 2.2); key.position.set(1.6, 2.4, 2.6); scene.add(key);
+  const fill = new THREE.DirectionalLight(0xcfd8ff, 0.55); fill.position.set(-2.2, 1.2, 1.4); scene.add(fill);
+  const rim = new THREE.DirectionalLight(0xffe0b8, 0.9); rim.position.set(-0.8, 2.0, -2.4); scene.add(rim);
+  const loader = new GLTFLoader();
+  const gltf = await loader.loadAsync('http://127.0.0.1:8843/' + GLB);
+  root = gltf.scene;
+  root.traverse(o => {
+    if (o.isMesh || o.isSkinnedMesh) {
+      allObjs.push(o);
+      const mats = Array.isArray(o.material) ? o.material : [o.material];
+      mats.forEach(m => {
+        if (!m) return;
+        m.vertexColors = false;
+        if (SKIN.includes(m.name)) m.normalMap = null;
+        if (m.name === 'GP_Torso-1' || m.name === 'GP_Torso_Back-1') { if (m.map) m.map.channel = 0; }
+        if (m.name === 'Torso-6') { m.color = new THREE.Color(0x050505); m.map = null; }
+        m.needsUpdate = true;
+      });
+    }
+  });
+  scene.add(root);
+  scene.updateMatrixWorld(true);
+  const boneWorld = (r, name) => { let p = null; r.traverse(o => { if (!p && o.isBone && o.name === name) { p = new THREE.Vector3(); o.getWorldPosition(p); } }); return p; };
+  if (HAIR) {
+    // composition rule: equipping a hair part hides the body's own hair nodes
+    root.traverse(o => { if (o.name === 'Hair.001' || o.name === 'Hair001') { o.visible = false; window.__log.push('hid body hair: ' + o.name); } });
+    const hairG = await loader.loadAsync('http://127.0.0.1:8843/' + HAIR);
+    const hair = hairG.scene;
+    hair.updateMatrixWorld(true);
+    const headBody = boneWorld(root, 'Head');
+    const headHair = boneWorld(hair, 'head');
+    if (headBody && headHair) {
+      const delta = new THREE.Vector3().subVectors(headBody, headHair);
+      hair.position.copy(delta);
+      window.__log.push('hair delta: ' + delta.toArray().map(v => v.toFixed(4)).join(','));
+    } else {
+      window.__log.push('HAIR FIT FAILED: head joints not found');
+    }
+    hair.traverse(o => { if (o.isMesh || o.isSkinnedMesh) allObjs.push(o); });
+    scene.add(hair);
+    scene.updateMatrixWorld(true);
+  }
+  window.setAngel = (v) => {
+    let n = 0;
+    root.traverse(o => {
+      if ((o.isMesh || o.isSkinnedMesh) && o.morphTargetDictionary && 'AngelFace' in o.morphTargetDictionary) {
+        o.morphTargetInfluences[o.morphTargetDictionary['AngelFace']] = v; n++;
+      }
+    });
+    renderer.render(scene, camera);
+    return 'setAngel ' + v + ' on ' + n + ' meshes';
+  };
+  window.setBody = (v) => {
+    let n = 0;
+    root.traverse(o => {
+      if ((o.isMesh || o.isSkinnedMesh) && o.morphTargetDictionary && 'AngelBody' in o.morphTargetDictionary) {
+        o.morphTargetInfluences[o.morphTargetDictionary['AngelBody']] = v; n++;
+      }
+    });
+    renderer.render(scene, camera);
+    return 'setBody ' + v + ' on ' + n + ' meshes';
+  };
+  window.setCam = (pos, tgt, fov) => {
+    camera.position.set(pos[0], pos[1], pos[2]);
+    camera.lookAt(tgt[0], tgt[1], tgt[2]);
+    if (fov) { camera.fov = fov; }
+    camera.updateProjectionMatrix();
+    renderer.render(scene, camera);
+    return 'cam set';
+  };
+  window.setVis = (spec) => {
+    allObjs.forEach(o => {
+      for (const [prefix, vis] of Object.entries(spec)) {
+        if (o.name === prefix || o.name.startsWith(prefix)) { o.visible = vis; }
+      }
+    });
+    renderer.render(scene, camera);
+    return 'vis set';
+  };
+  window.setEye = async (url) => {
+    if (url) {
+      const t = await new THREE.TextureLoader().loadAsync(url);
+      t.flipY = false; t.colorSpace = THREE.SRGBColorSpace;
+      t.wrapS = THREE.RepeatWrapping; t.wrapT = THREE.RepeatWrapping;
+      root.traverse(o => { if (o.isMesh || o.isSkinnedMesh) { const ms = Array.isArray(o.material) ? o.material : [o.material]; ms.forEach(m => { if (m && m.name === 'Irises-2') { m.map = t; m.color = new THREE.Color(0xffffff); m.needsUpdate = true; } }); } });
+    }
+    renderer.render(scene, camera);
+    return 'eye set';
+  };
+  window.setSize = (w, h) => { renderer.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix(); renderer.render(scene, camera); return 'size ' + w + 'x' + h; };
+  window.shot = () => { renderer.render(scene, camera); return renderer.domElement.toDataURL('image/png').split(',')[1]; };
+  window.__objNames = allObjs.map(o => o.name);
+  window.__ready = true;
+})();
+</script></body></html>
