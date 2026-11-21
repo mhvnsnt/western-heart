@@ -4,7 +4,7 @@
 
 **45 open PRs — 🟢 ready to merge: 0 · 🔴 failing: 25 · ⏳ running: 1 · ⚔️ conflicted: 19** (also 🟠 blocked: 0 · 🔗 stacked: 0 · 📝 draft, green-or-idle: 0; 6 of 45 are drafts)
 
-_Generated 2026-11-21 02:56 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
+_Generated 2026-11-21 02:58 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
 
 Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not reported. Ready = not draft, targets `main`, GitHub says MERGEABLE, every check green. Status priority: conflicted > failing > running > draft > stacked > ready.
 
@@ -16,9 +16,9 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| ⏳ running | [#1803](https://github.com/mhvnsnt/western-heart/pull/1803) Lane C Phase 2: Windows workflow to extract real King .tkmvst from tkdata.bin (TKMovesets2 | ready | mhvnsnt / `lane-c/t7-extract-king` | `32a5fd6` | `main` | ⏳ | ⏳ | ⏳ | ⏳ | 1✅ 9⏳ | mergeable (blocked) | 2026-11-21 02:56 UTC |
+| ⏳ running | [#1800](https://github.com/mhvnsnt/western-heart/pull/1800) Library fill: generated moveset index (54,455 moves / 128 fighters) | ready | mhvnsnt / `wh-library-fill/generate-index-20261120` | `e34afaa` | `main` | ⏳ | ✅ | ✅ | ⏳ | 3✅ 7⏳ | mergeable (blocked) | 2026-11-21 02:58 UTC |
+| 🔴 failing | [#1803](https://github.com/mhvnsnt/western-heart/pull/1803) Lane C Phase 2: Windows workflow to extract real King .tkmvst from tkdata.bin (TKMovesets2 | ready | mhvnsnt / `lane-c/t7-extract-king` | `32a5fd6` | `main` | ✅ | ✅ | ✅ | ❌ | 7✅ 3⏳ | mergeable (blocked) | 2026-11-21 02:56 UTC |
 | 🔴 failing | [#1802](https://github.com/mhvnsnt/western-heart/pull/1802) docs(research): VF5 teardown hunt 2026-11-20 — no complete working VF5 teardown exists | ready | mhvnsnt / `lane-1-vf5-teardown-hunt-20261120` | `d37a334` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-21 01:29 UTC |
-| 🔴 failing | [#1800](https://github.com/mhvnsnt/western-heart/pull/1800) Library fill: generated moveset index (54,455 moves / 128 fighters) | ready | mhvnsnt / `wh-library-fill/generate-index-20261120` | `f58ef35` | `main` | ✅ | ✅ | ✅ | ✅ | 9✅ 1❌ | mergeable (unstable) | 2026-11-21 00:27 UTC |
 | 🔴 failing | [#1798](https://github.com/mhvnsnt/western-heart/pull/1798) Sweep: No Mercy re-extract leftovers (mat-kings DB, AKI bake, full-ROM pass) | ready | mhvnsnt / `muse/sweep-nomercy-uvpw` | `f7c2045` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-20 23:16 UTC |
 | 🔴 failing | [#1797](https://github.com/mhvnsnt/western-heart/pull/1797) Phase 2: Tong-Nou transmigration sequences (Sato → Western Heart) | ready | mhvnsnt / `sato/transmigration-sequences` | `67054ea` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-20 22:44 UTC |
 | 🔴 failing | [#1796](https://github.com/mhvnsnt/western-heart/pull/1796) Phase 2: Roly-Polys world hub + minigames (Sato → Western Heart) | ready | mhvnsnt / `p2/rolypolys-world-hub` | `6f94ead` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-20 22:43 UTC |
