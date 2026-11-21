@@ -1,0 +1,13 @@
+{
+ "original": "KC2FIRE.000",
+ "size": 244441088,
+ "sha256": "0beeb52a862cc1c266d1844148a2d4f275d4b6b2f854cf8c132ec78c8bac0dbe",
+ "piece_size": 99000000,
+ "piece_count": 3,
+ "pieces": [
+  "KC2FIRE.000.part000",
+  "KC2FIRE.000.part001",
+  "KC2FIRE.000.part002"
+ ],
+ "reassemble": "cat KC2FIRE.000.part* > KC2FIRE.000"
+}
