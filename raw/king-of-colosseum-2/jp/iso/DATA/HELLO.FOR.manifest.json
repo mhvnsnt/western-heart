@@ -1,0 +1,21 @@
+{
+ "original": "HELLO.FOR",
+ "size": 1073741824,
+ "sha256": "49bc20df15e412a64472421e13fe86ff1c5165e18b2afccf160d4dc19fe68a14",
+ "piece_size": 99000000,
+ "piece_count": 11,
+ "pieces": [
+  "HELLO.FOR.part000",
+  "HELLO.FOR.part001",
+  "HELLO.FOR.part002",
+  "HELLO.FOR.part003",
+  "HELLO.FOR.part004",
+  "HELLO.FOR.part005",
+  "HELLO.FOR.part006",
+  "HELLO.FOR.part007",
+  "HELLO.FOR.part008",
+  "HELLO.FOR.part009",
+  "HELLO.FOR.part010"
+ ],
+ "reassemble": "cat HELLO.FOR.part* > HELLO.FOR"
+}
