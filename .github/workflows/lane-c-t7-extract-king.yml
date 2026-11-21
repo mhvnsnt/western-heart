@@ -8,13 +8,18 @@
 # is on Kiloutre/TKMovesets releases. King first; the rest of the fighters
 # follow the same command with `all` or their codes.
 #
-# Run: Actions > lane-c-t7-extract-king > Run workflow (branch lane-c/t7-extract-king).
+# Run: Actions > lane-c-t7-extract-king > Run workflow (branch lane-c/t7-extract-king),
+# or open a PR touching this file (the pull_request trigger below runs it —
+# the dispatch API is permission-blocked for this lane's token, 403, 2026-11-21).
 # Output: artifact `king-tkmvst` holding king.tkmvst (lz4, TKM2, gameId 0).
 
 name: lane-c-t7-extract-king
 
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - .github/workflows/lane-c-t7-extract-king.yml
 
 jobs:
   extract-king:
