@@ -4,7 +4,7 @@
 
 **49 open PRs — 🟢 ready to merge: 1 · 🔴 failing: 29 · ⏳ running: 0 · ⚔️ conflicted: 19** (also 🟠 blocked: 0 · 🔗 stacked: 0 · 📝 draft, green-or-idle: 0; 6 of 49 are drafts)
 
-_Generated 2026-11-21 05:47 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
+_Generated 2026-11-21 05:56 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
 
 Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not reported. Ready = not draft, targets `main`, GitHub says MERGEABLE, every check green. Status priority: conflicted > failing > running > draft > stacked > ready.
 
@@ -17,10 +17,10 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 🟢 ready to merge | [#1800](https://github.com/mhvnsnt/western-heart/pull/1800) Library fill: generated moveset index (54,455 moves / 128 fighters) | ready | mhvnsnt / `wh-library-fill/generate-index-20261120` | `e34afaa` | `main` | ✅ | ✅ | ✅ | ✅ | 10✅ | mergeable (clean) | 2026-11-21 03:09 UTC |
-| 🔴 failing | [#1808](https://github.com/mhvnsnt/western-heart/pull/1808) Lane 2: DOA6 extraction toolchain (Project-G1M + RDBExplorer) — teardown pull; SCVI has no | ready | mhvnsnt / `lane-2-doa6-teardown-pull` | `cfaeef1` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-21 05:26 UTC |
+| 🔴 failing | [#1808](https://github.com/mhvnsnt/western-heart/pull/1808) Lane 2: DOA6 extraction toolchain (Project-G1M + RDBExplorer) — teardown pull; SCVI has no | ready | mhvnsnt / `lane-2-doa6-teardown-pull` | `cfaeef1` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-21 05:56 UTC |
 | 🔴 failing | [#1807](https://github.com/mhvnsnt/western-heart/pull/1807) Lane X1: King T3 pack re-baked onto shipped pantera.glb + docs/decode/ skeleton | ready | mhvnsnt / `lane-x1-king-rebake` | `215524c` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ 1❌ | mergeable (blocked) | 2026-11-21 05:17 UTC |
 | 🔴 failing | [#1806](https://github.com/mhvnsnt/western-heart/pull/1806) Fix Zen / Gyou / Saku Ra / Jin_soul canon confusion (documents + data) | ready | mhvnsnt / `canon-fix/zen-gyou-sakura-20261120` | `56e55a5` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-21 04:23 UTC |
-| 🔴 failing | [#1805](https://github.com/mhvnsnt/western-heart/pull/1805) Demonio attachment fixes: wire 20 Devil slots, remove Steve-body BASE attire, fix winged m | ready | mhvnsnt / `demonio-attachment-fixes-20261120` | `af45db2` | `main` | ✅ | ✅ | ✅ | ❌ | 6✅ 4⏳ | mergeable (unstable) | 2026-11-21 05:47 UTC |
+| 🔴 failing | [#1805](https://github.com/mhvnsnt/western-heart/pull/1805) Demonio attachment fixes: wire 20 Devil slots, remove Steve-body BASE attire, fix winged m | ready | mhvnsnt / `demonio-attachment-fixes-20261120` | `af45db2` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (clean) | 2026-11-21 05:47 UTC |
 | 🔴 failing | [#1803](https://github.com/mhvnsnt/western-heart/pull/1803) Lane C Phase 2: Windows workflow to extract real King .tkmvst from tkdata.bin (TKMovesets2 | ready | mhvnsnt / `lane-c/t7-extract-king` | `32a5fd6` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-21 02:56 UTC |
 | 🔴 failing | [#1802](https://github.com/mhvnsnt/western-heart/pull/1802) docs(research): VF5 teardown hunt 2026-11-20 — no complete working VF5 teardown exists | ready | mhvnsnt / `lane-1-vf5-teardown-hunt-20261120` | `d37a334` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-21 01:29 UTC |
 | 🔴 failing | [#1798](https://github.com/mhvnsnt/western-heart/pull/1798) Sweep: No Mercy re-extract leftovers (mat-kings DB, AKI bake, full-ROM pass) | ready | mhvnsnt / `muse/sweep-nomercy-uvpw` | `f7c2045` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-20 23:16 UTC |
