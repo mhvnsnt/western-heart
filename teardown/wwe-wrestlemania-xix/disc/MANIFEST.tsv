@@ -1,4 +1,5 @@
-# MANIFEST - split-file archive
-# Columns: relative_path<TAB>size_bytes<TAB>sha256<TAB>piece_count<TAB>piece_size_bytes
 # A file appears here only once it is FULLY in the repo (all pieces pushed).
+# Columns: relative_path<TAB>size_bytes<TAB>sha256<TAB>piece_count<TAB>piece_size_bytes
+# MANIFEST - split-file archive
 # Rebuild with: cat <file>.part* > <file>  (then verify vs MANIFEST sha256)
+teardown/wwe-wrestlemania-xix/disc/WWE WrestleMania XIX (USA).rvz	1149575108	0fd3540dbf053dfee0fc76ef51ec5ee617cf9ce667e2675ff43e9ce5f1e16f82	12	99000000
