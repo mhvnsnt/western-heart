@@ -4,7 +4,7 @@
 
 **45 open PRs — 🟢 ready to merge: 1 · 🔴 failing: 23 · ⏳ running: 1 · ⚔️ conflicted: 20** (also 🟠 blocked: 0 · 🔗 stacked: 0 · 📝 draft, green-or-idle: 0; 6 of 45 are drafts)
 
-_Generated 2026-11-21 17:40 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
+_Generated 2026-11-21 17:41 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
 
 Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not reported. Ready = not draft, targets `main`, GitHub says MERGEABLE, every check green. Status priority: conflicted > failing > running > draft > stacked > ready.
 
@@ -17,7 +17,7 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 🟢 ready to merge | [#1792](https://github.com/mhvnsnt/western-heart/pull/1792) Moveset fix P2: Goh/Brad VF kits, Baek rebuild (T6 PSP), Bannon wiring (Jeffry) | ready | mhvnsnt / `wh-moveset-fix/p2-rebuilds-20261120` | `7f7bf8b` | `main` | ✅ | ✅ | ✅ | ✅ | 10✅ | mergeable (clean) | 2026-11-21 06:43 UTC |
-| ⏳ running | [#1783](https://github.com/mhvnsnt/western-heart/pull/1783) Toukon Retsuden English: partial patch tools + docs (lane 1) | ready | mhvnsnt / `muse/toukon-english` | `7ea93f6` | `main` | ⏳ | ⏳ | ⏳ | ⏳ | 2✅ 3⏳ | mergeable (blocked) | 2026-11-21 17:40 UTC |
+| ⏳ running | [#1783](https://github.com/mhvnsnt/western-heart/pull/1783) Toukon Retsuden English: partial patch tools + docs (lane 1) | ready | mhvnsnt / `muse/toukon-english` | `295f613` | `main` | ⏳ | ✅ | ⏳ | ⏳ | 1✅ 4⏳ | mergeable (blocked) | 2026-11-21 17:40 UTC |
 | 🔴 failing | [#1816](https://github.com/mhvnsnt/western-heart/pull/1816) Docs: add the license rule to AGENTS.md | ready | mhvnsnt / `muse/license-no-block` | `3728e77` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-21 15:10 UTC |
 | 🔴 failing | [#1814](https://github.com/mhvnsnt/western-heart/pull/1814) Land KoC2 raw files (ISOs, extracts, kactusken v0.2) | ready | mhvnsnt / `muse/koc2-raw` | `22bbad2` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-21 11:44 UTC |
 | 🔴 failing | [#1803](https://github.com/mhvnsnt/western-heart/pull/1803) Lane C Phase 2: Windows workflow to extract real King .tkmvst from tkdata.bin (TKMovesets2 | ready | mhvnsnt / `lane-c/t7-extract-king` | `32a5fd6` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-21 02:56 UTC |
