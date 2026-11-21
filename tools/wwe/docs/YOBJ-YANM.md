@@ -1,6 +1,7 @@
 # YOBJ models and YANM animation clips (WWE 2K19)
 
-Format reference for `yobj.py`, `yobj_to_gltf.py`, and `yanm.py`.
+Format reference for `yobj.py`, `yobj_to_gltf.py`, `yanm.py`,
+`yanm_decode.py`, and `yanm_to_gltf.py`.
 Verified against real 2K19 data (see README for the verification
 summary). All YOBJ/YANM integers are big-endian unless noted.
 
@@ -73,20 +74,47 @@ against stored normals (head mesh: 7,649 agree, 0 disagree).
 
 ### Bones (0x50 bytes each)
 
-Name (16 chars) @0. **Parent index = u32 BE @0x30**
-(0xFFFFFFFF = root). N/O/P floats @0x44/0x48/0x4C: N = mesh Y
-(height), O = mesh Z (depth); P is NOT a mesh coordinate
-(identical for L/R pairs). 87 parented bones (J_* + H_*) form one
-tree rooted at J_Hips; 334 `m###_####` morph bones are
-parentless. The bone structure order list (420 entries) covers
-all bones except bone 0 ('vector'); it is NOT a topological order
-(29 parent-after-child violations) — use explicit parents for
-hierarchy, the order list only for weight decoding.
+Name (16 chars) @0. **Parent-relative offset = 3 BE floats @0x10**
+(in the parent's local frame; every bone's long axis is local +X
+— knee/foot/toe/shoulder/elbow/wrist offsets are (length, 0, 0),
+e.g. knee (43.65, 0, 0), foot (48.48, 0, 0)). **Rest orientation
+= 3 BE floats @0x20** (Euler XYZ radians, relative to the
+parent; J_Hips (pi, 0, -pi/2), J_Leg_L/R (0, 0, -/+175 deg),
+J_Foot (0, -62 deg, 0), J_Wrist_L/R (-/+90 deg, 0, 0),
+J_Clavicle (0, 161 deg, +/-80 deg)). **Parent index = u32 BE
+@0x30** (0xFFFFFFFF = root). Mesh position (X, N, O) @0x40/0x44/
+0x48: N = mesh Y (height), O = mesh Z (depth); P @0x4C is NOT a
+mesh coordinate (identical for L/R pairs). 87 parented bones
+(J_* + H_*) form one tree rooted at J_Hips; 334 `m###_####`
+morph bones are parentless. The bone structure order list (420
+entries) covers all bones except bone 0 ('vector'); it is NOT a
+topological order (29 parent-after-child violations) — use
+explicit parents for hierarchy, the order list only for weight
+decoding.
 
-**Joint bind positions:** measured as weighted vertex centroids
-— validated anatomical for all 23 checked skeleton bones (J_Hips
-centroid (0,-106,2) vs N=-103.9; J_Head (0,-180.7,-12.1) vs
-N=-180.5; J_Eye_L (3.3,-184.7,-13.9); perfect L/R mirroring).
+**Joint bind positions:** the rest orientations + offsets
+reproduce the bind pose exactly by forward kinematics
+(`YOBJ.rest_fk()`, verified 2026-11-19: mean error 3.6 cm vs the
+mesh, all of it centroid-vs-joint offset — the FK joints sit on
+the true pivots: hips (0,-108.7,0), knee height 58.2 cm, wrist
+within 2 cm of its centroid). The weighted vertex centroids are
+NOT the pivots for long bones: leg/shoulder/knee centroids sit
+mid-segment (thigh centroid height 66 cm vs the 101.6 cm hip
+joint; shoulder centroid X +/-42.8 vs the +/-20 joint), so the
+v1 claim that centroids are anatomical is corrected here — use
+the FK for pivots, centroids only for the parentless morph
+bones (whose offsets are not mesh positions).
+
+**Morph bones** (`m###_####`, 332 in ch10002) carry heavy skin
+weights all over the body, not just the face (435 vertices are
+100% morph-weighted; sub01 has 2583/4698 morph-weighted slots).
+They are parentless leaves in the file, so the converter parents
+each to its nearest skeleton bone (by bind-pose distance) with a
+local transform reproducing its exact world bind pose (centroid
+position, identity rotation) — otherwise the mesh rips apart the
+moment the skeleton animates. Their true runtime parenting is
+still unknown; the proximity attachment is a v1 approximation
+that keeps the bind pose exact and the animation coherent.
 
 ### YOBJ array files (separate format, ModelArrayView)
 
@@ -100,22 +128,32 @@ geometry.
 ### glTF conversion (`yobj_to_gltf.py`)
 
 Mapping (x, y, z) -> (x, -y, -z) x 0.01 (cm -> m, right-handed,
-no mirror). One mesh per sub-object; skin over all 421 joints
-(hierarchy from the parent field, all roots parented under bone
-0 'vector'); inverse bind matrices are pure translations
-(rotations identity in v1 — bind pose renders correctly); weights
-top-4 -> JOINTS_0/WEIGHTS_0, next up to 4 -> JOINTS_1/WEIGHTS_1;
-morph targets as POSITION deltas with emote names in
+no mirror — the map is diag(1,-1,-1), a 180-degree rotation
+about X, so rotations conjugate cleanly: R_gltf = C @ R @ C).
+One mesh per sub-object; skin over all 421 joints (hierarchy
+from the parent field, all roots parented under bone 0 'vector'
+except morph bones, which attach to their nearest skeleton bone
+— see above); inverse bind matrices are the full inverse of
+each joint's world transform; weights top-4 -> JOINTS_0/
+WEIGHTS_0, next up to 4 -> JOINTS_1/WEIGHTS_1; morph targets
+as POSITION deltas with emote names in
 `mesh.extras.targetNames`; materials named `{shader}_mat{material}`
 with shader/material in extras, no textures embedded (the
 name->DDS mapping lives in the ch PACs, not yet unpacked).
 
-**v1 limits:** joint rotations unknown (the A–L bone fields are
-undecoded — J_Hips has values pi and -pi/2 among them, suggesting
-rotation data); no textures; morph-target normals not emitted.
+**v2 skeleton (2026-11-19):** joints use the decoded bind pose
+(local offsets + rest orientations) instead of the v1 centroid
+positions + identity rotations. Node translation = parent-frame
+offset, node rotation = rest orientation (quaternion); IBMs are
+the full rigid inverse. The bind pose renders identically to v1
+(verified in Blender); the skeleton is now animation-ready (see
+`yanm_to_gltf.py`).
+
+**v2 limits:** no textures; morph-target normals not emitted.
 Boundary edges exist on every mesh (229 on the head) — a mix of
 natural part seams and strip-parser splits; the render shows a
-solid model.
+solid model. 5 of the 47 entrance-prop YOBJs fail conversion
+(truncated files / out-of-range indices — see the W4 lane notes).
 
 ## YANM (animation clip, magic `YANM`)
 
@@ -154,13 +192,15 @@ question, possibly an 8-byte record type on that bone.
 
 ### Special entries (StartingID 0x0001)
 
-Two per standard clip (positions 16 and 20 in the sample clip).
-Their +8 fields are NOT (index, length) pairs (they read as
-absurd offsets like 63,504,439). They may be event/marker
-records interleaved in the table. The parser flags them
-(`special`) and does not validate their parts. Their data occupies
-~404-408 bytes each in the data section (measured from the index
-gaps around them).
+Two per standard clip (positions 16 and 20 in the sample clip):
+the two knee bones. Their data index lives at **+0xC** (not +8);
+data starts at index+8 (confirmed by both neighbours: knee L
+index 2140 -> data at 2148, knee R 2864 -> 2872). The +8 field
+reads (0x03C9 = 969, keyframe count 55/56?). The ~404-408-byte
+knee block is NOT 4-byte records (no window sums to the frame
+count under any dt byte position) — its format is still open.
+The parser flags them (`special`); `yanm_decode.py` exposes the
+raw block via `knee_gap()`.
 
 ### 61-bone variant clips
 
@@ -170,56 +210,112 @@ layout (e.g. a 0x80000000 length sentinel, lengths like 0x900004).
 Probably a 2K20-format clip. The parser flags their out-of-range
 parts (`part_a_ok`/`part_b_ok`) instead of failing the clip.
 
-### Known bone hashes (14, from WrestleMINUS's enum)
+### Known bone hashes (position-mapped, standard 23-bone order)
 
-vector 0x0C5879E5, J_Hips 0xF91A7A26, Ch_rotation 0x0DAECC2E,
-J_Spine1 0x3D185308, J_Head 0xF9D973BE, J_Neck 0xF91972B1,
-J_Clavicle_L 0xD153E363, J_Shoulder_L 0xA46A2F43, J_Elbow_L
-0x6742F8AA, J_Wrist_L 0xD4C2705A, J_MiddleF0–F3_L 0xB10CEB4C /
-0xB10CAB4C / 0xB10C6B4C / 0xB10C2B4C. The rest of that enum is
-sequential ordinals, not hashes. 159 distinct hashes seen across
-the moves pack; 70 in a 200-clip sample.
+Standard 23-bone order: vector, J_Hips, Ch_rotation, 0DAECC2D,
+J_Spine1, J_Head, J_Neck, Clavicle_L, Shoulder_L, Elbow_L,
+Wrist_L, Clavicle_R, Shoulder_R, Elbow_R, Wrist_R, J_Leg_L,
+J_Knee_L (special), J_Foot_L, J_Toe_L, J_Leg_R, J_Knee_R
+(special), J_Foot_R, J_Toe_R. Known by name (WrestleMINUS enum
++ position mapping): vector 0x0C5879E5, J_Hips 0xF91A7A26,
+Ch_rotation 0x0DAECC2E, J_Spine1 0x3D185308, J_Head 0xF9D973BE,
+J_Neck 0xF91972B1, J_Clavicle_L 0xD153E363, J_Shoulder_L
+0xA46A2F43, J_Elbow_L 0x6742F8AA, J_Wrist_L 0xD4C2705A,
+J_Clavicle_R 0xD153E37D, J_Shoulder_R 0xA46A2F5D, J_Elbow_R
+0x6742F8B4, J_Wrist_R 0xD4C27044, J_Leg_L 0xCCB8C530,
+J_Leg_R 0xCCB8C52E, J_Knee_L 0xEC2C1192, J_Knee_R 0xEC2C118C,
+J_Foot_L 0xFD6851FA, J_Foot_R 0xFD6851E4, J_Toe_L 0x4DF84531,
+J_Toe_R 0x4DF8452F, J_MiddleF0–F3_L 0xB10CEB4C / 0xB10CAB4C /
+0xB10C6B4C / 0xB10C2B4C. 0DAECC2D (twin of Ch_rotation
+0x0DAECC2E, adjacent entry, same clips) is still unnamed —
+likely the character-position twin of the character-rotation
+track. 159 distinct hashes seen across the moves pack; 70 in a
+200-clip sample.
 
 **The hash function is unknown** — CRC32, Adler32, FNV-1,
 FNV-1a, DJB2, SDBM, and Jenkins one-at-a-time were all tested
-against the 14 known name/hash pairs: 0 matches. But the hash is
+against the known name/hash pairs: 0 matches. But the hash is
 "smooth": right-side bones sit a few units from their left-side
-counterparts (J_Clavicle_R is D153E37D vs J_Clavicle_L D153E363;
-J_Shoulder_R A46A2F5D vs _L A46A2F43; J_Elbow_R 6742F8B4 vs _L
-6742F8AA; J_Wrist_R D4C27044 vs _L D4C2705A), so L/R pairs can
-still be identified by proximity + position in the chain. A
-standard hash of the name is ruled out; a custom polynomial or
-seeded hash is the remaining lead.
+counterparts (see the L/R pairs above), so L/R pairs can still
+be identified by proximity + position in the chain. A standard
+hash of the name is ruled out; a custom polynomial or seeded
+hash is the remaining lead.
 
-### Frame counts (do NOT trust)
+### Frame counts (decoded 2026-11-19)
 
-WrestleMINUS reads channel flags (u16 LE 1/0xFF00) and a frame
-count (u16 BE @+14) from Part A (StartingID < 1000) or Part B
-(>= 1000). On 2K19 clips that read yields garbage (frame counts
-like 61954, 52994). The parser returns `frames = 0` and exposes
-the raw part bytes instead.
+Every Part A and Part B (except J_Hips Part B) is a sequence of
+4-byte records `(v0, v1, v2, dt)` where dt = frames until the
+next keyframe; **the dts of any part sum to the clip's total
+frame count**. Validated on 200 random clips: 197/200 have ALL
+parts agreeing on one frame total. `yanm_decode.py` takes the
+majority vote of the part dt-sums (293/300 random clips have
+trusted counts, >=80% agreement). Frame counts range 1-926.
+(WrestleMINUS's channel-flag/frame-count read yields garbage on
+2K19 clips — do not use it.)
 
-### Keyframe value decode — build plan (the remaining deep job)
+### Keyframe value decode — Part A (decoded 2026-11-19)
 
-Part A/B data look like a bitstream (J_Hips Part A:
-`c9 cc f6 00 b6 cb 00 05 b4 c9 01 04...`) with possible
-(float, u16, u16) 8-byte records in Part B (the last u16
-increments 1,1,2 — frame numbers?). Turning these into
-per-frame rotations/translations (→ glTF animation) needs:
+Part A values are 3 signed bytes: **Euler rotation angles, 1
+unit = 360/256 degrees, wrapping at +/-180 degrees** (values
+near +/-127/-128 are near the wrap point — the clavicle X flips
+between +127 and -128 as it passes 180 degrees). Zero = rest
+pose (all-zero clips reproduce the T-pose exactly). Quaternion
+encoding is ruled out (12.8% of records have |v|/127 > 1).
 
-1. **A known-pose clip pair**: two clips of the same move where
-   one is a single static pose — the delta isolates the value
-   encoding. The 0/1/2/3-bone clips in the catalog (109 of them)
-   are candidates for near-static data.
-2. **A second tool's output as ground truth**: run a reference
-   YANM reader (WrestleMINUS's AnimationView) on the same clip
-   and compare its channel values against the raw bytes.
-3. **Bit-level differential analysis**: flip one input byte at a
-   time in a short clip and watch which output values move.
-4. Once values decode, emit glTF animation (rotation quaternions
-   per joint per frame) and validate by rendering the first and
-   last frames against a known move.
+**Rotation formula** (validated by forward-kinematics stick
+figures against the decoded skeleton, then by Blender mesh
+renders — the identity mapping gives crumpled impossible poses,
+this mapping gives coherent standing/kicking/walking poses):
 
-Estimate: a multi-hour reverse-engineering job, not a stub fix.
-The parser + catalog are the foundation; do not claim keyframe
-values work until a clip renders as a recognizable move.
+```
+R_anim = Rx(v2) @ Ry(v0) @ Rz(v1)   # byte0 = Y, byte1 = Z, byte2 = X
+R_local = R_rest @ R_anim           # R_rest = YOBJ rest orientation
+```
+
+Euler order for R_rest is XYZ; R_anim is composed as
+Rx(v2)·Ry(v0)·Rz(v1) (matrix product). `yanm_to_gltf.py`
+emits R_local per joint per frame as glTF rotation keyframes
+(times at 60 fps, quaternions kept on one hemisphere so the
+wrap slerps correctly; keyframe values are unwrapped before
+interpolation so a wrap jump does not swing through 0 degrees).
+
+**Elbow quirk:** elbow bytes 0 and 2 are binary flags (-128 or
+0, flipping in blocks), not rotations — treat -128 as 0, leaving
+a clean 1-DOF hinge on byte1. (Confirmed across clips: elbow
+X/Z are never any other value.)
+
+**Leg twist quirk:** the leg bones' byte2 (local-X twist)
+carries a 180-degree offset — stored values cluster near
++/-180 degrees, which points the feet backward; adding 180
+degrees (mod 360) makes the feet point forward (toe-vs-hips
+facing metric over 3 clips: mean dot -0.27 raw, +0.25 with the
+offset). V1 approximation: the exact mechanism is not yet
+understood, but the twist does not affect joint positions.
+
+**Validation:** stick-figure FK on 5+ clips (moves + entrance)
+under 96 composition/order/permutation/sign combinations — the
+winning formula is the only one giving coherent human poses;
+Blender mesh renders of an animated GLB (ch10002 + clip
+00100000, 110 frames) show a coherent kicking figure with
+limbs attached and no shredding (the morph-bone proximity
+parenting in the v2 converter is what makes the mesh hold
+together — without it the static morph bones rip the mesh).
+
+### Still open
+
+- **Part B values:** same 4-byte dt structure (sums to the frame
+  count), but values jump up to ~45 units/frame — not a direct
+  spatial signal in the Part A unit. Cumsums wander (not
+  delta-encoded). Ch_rotation B Z shows a low-frequency trend
+  (+/-100) plus high-frequency noise (+/-30). Meaning unknown.
+- **J_Hips Part B (root motion):** 8-byte records (3x i16 BE +
+  u16 BE; byte 6 always 0, byte 7 in {0,1,2,4}). The u16 does NOT
+  sum to the frame count (ratio 0-0.83, mean 0.40 over 107
+  clips). Pure quaternions ruled out (BE |v|^2 > 1 in 47/1218
+  records, max 1.82). Values jump wildly (not smooth
+  translations). Until this decodes, `yanm_to_gltf.py` animates
+  in place (no root motion).
+- **Knee-gap format:** see Special entries above. Knees stay
+  straight in v1 animation (no bend data applied).
+- **0DAECC2D:** unnamed bone hash (see above).
+- **Hash function:** unknown (see above).

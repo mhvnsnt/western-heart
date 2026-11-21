@@ -22,10 +22,18 @@ Weight record (8 bytes): 4-byte Num + f32 weight. Num is a
 structure-order index with a mixed-endian quirk: if byte1 == 0 the
 index is byte0, otherwise it is (byte0 << 8) | byte1. The bone is
 structure_order[index]. (0xFF, 0xFF) is the unused sentinel (its
-weights are float noise summing to ~0). Verified: with this decode,
-every skeleton bone's weighted vertex centroid lands on its
-anatomical position (J_Hips (0,-106,2), J_Head (0,-181,-12), eyes
-(+/-3.3,-184.7,-13.9), ...).
+weights are float noise summing to ~0).
+
+Bone record (0x50 bytes): name at +0x00 (16 bytes); parent-relative
+offset at +0x10 (3 BE floats, in the parent's local frame -- the
+bone's long axis is local +X: knee/foot/toe/shoulder/elbow/wrist
+offsets are (length, 0, 0)); rest orientation at +0x20 (3 BE floats,
+Euler XYZ radians, relative to the parent); parent index at +0x30
+(u32, 0xFFFFFFFF = root); mesh position at +0x40 (3 BE floats:
+X, N=Y, O=Z). The rest orientations + offsets reproduce the bind
+pose exactly (verified 2026-11-19: FK mean error 3.6 cm vs mesh,
+all error being centroid-vs-joint offset on legs/shoulders -- the
+centroids sit mid-segment, the FK joints sit on the true pivots).
 
 Faces are triangle strips (u16 BE indices, 1-based in the strip
 parser's terms) converted to triangles with WrestleMINUS's winding
@@ -90,12 +98,73 @@ class YOBJ:
             "index": i,
             "name": _name(d, o),
             "parent": None if parent == 0xFFFFFFFF else parent,
+            # Parent-relative offset (+0x10) in the parent's local
+            # frame; the bone's long axis is local +X.
+            "offset": (_f32be(d, o + 0x10), _f32be(d, o + 0x14),
+                       _f32be(d, o + 0x18)),
+            # Rest orientation (+0x20), Euler XYZ radians, relative
+            # to the parent.
+            "rest_euler": (_f32be(d, o + 0x20), _f32be(d, o + 0x24),
+                           _f32be(d, o + 0x28)),
             # N/O/P floats: N is the mesh-Y (height), O the mesh-Z
             # (depth); P is not a mesh coordinate (same for L/R pairs).
             "n": _f32be(d, o + 0x44),
             "o": _f32be(d, o + 0x48),
             "p": _f32be(d, o + 0x4C),
         }
+
+    def rest_fk(self):
+        """Bind-pose forward kinematics.
+
+        Returns {bone_index: (world_pos, world_rot)} in file coords
+        (cm), world_pos a 3-tuple, world_rot a 3x3 matrix (list of
+        3 rows). Chains the per-bone rest orientations and local
+        offsets through the parent hierarchy; roots (parent None)
+        take their offset/rest as world. Verified against the mesh:
+        reproduces the true joint pivots (hips (0,-108.7,0), knee
+        height 58.2 cm, wrist within 2 cm of its centroid).
+
+        Morph bones (m###_####, parent None, leaves) get their raw
+        offset/rest here; callers that need their bind position
+        should use bone_centroids() instead (their offsets are not
+        mesh positions).
+        """
+        import math as _math
+        world = {}
+
+        def rot_x(a):
+            c, s = _math.cos(a), _math.sin(a)
+            return [[1, 0, 0], [0, c, -s], [0, s, c]]
+
+        def rot_y(a):
+            c, s = _math.cos(a), _math.sin(a)
+            return [[c, 0, s], [0, 1, 0], [-s, 0, c]]
+
+        def rot_z(a):
+            c, s = _math.cos(a), _math.sin(a)
+            return [[c, -s, 0], [s, c, 0], [0, 0, 1]]
+
+        def mm(a, b):
+            return [[sum(a[i][k] * b[k][j] for k in range(3))
+                     for j in range(3)] for i in range(3)]
+
+        def mv(m, v):
+            return tuple(sum(m[i][k] * v[k] for k in range(3))
+                         for i in range(3))
+
+        for b in self.bones:
+            rx, ry, rz = b["rest_euler"]
+            rr = mm(rot_z(rz), mm(rot_y(ry), rot_x(rx)))
+            p = b["parent"]
+            if p is None or p not in world:
+                world[b["index"]] = (b["offset"], rr)
+            else:
+                pp, pr = world[p]
+                off = mv(pr, b["offset"])
+                world[b["index"]] = (
+                    (pp[0] + off[0], pp[1] + off[1], pp[2] + off[2]),
+                    mm(pr, rr))
+        return world
 
     def _parse_subobj(self, i):
         o = self.header_off + i * SUBOBJ_LEN
