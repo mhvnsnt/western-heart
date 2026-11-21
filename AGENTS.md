@@ -277,3 +277,9 @@ Before any decoding, decrypting, decompiling, or extracting from scratch, check 
 Extension (owner 2026-11-21):
 
 > "For ANY encrypted file, find where it is already decrypted and pull that in."
+
+## LICENSE RULE (owner 2026-11-21 ~09:37)
+
+> "I don't care about licenses, bro. Get it anyway. I don't care if it can be licensed or not."
+
+Licensing status never blocks pulling something in — get it anyway. This supersedes the PR #217 note that Euphoria/Endorphin can't be licensed.
