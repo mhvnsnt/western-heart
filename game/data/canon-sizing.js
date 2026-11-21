@@ -48,6 +48,7 @@ const BASE = {
   negativo: ['Negan', 183], thor: ['Ganryu', 183, 1.3, 'roster/thor/CANON.md: sumo frame, Burger\'s sumo brother'],
   yukihyo: ['Armor King', 195], slice: ['Dragunov', 182], docfrank: ['Bosconovitch', 160],
   'baek-master-white': ['Baek', 184], 'mariposa-monarch': ['Zafina', 172], 'dxmmii-patchwork': ['Mokujin', 175],
+  bannon: ['Jeffry McWild', 183, 1.1, 'Jeffry McWild VF5 official profile 183 cm / 111 kg (GameFAQs VF5 Jeffry guide, Sanctuary_Remix); Bannon wired to Jeffry (lane P2, 2026-11-20); girth 1.1 heavyweight wrestler build'],
   charger: ['Blanka', 192, 1.15, 'Blanka body (SF profile 192 cm), beast build'],
   dorowani: ['Gon', 120, 1.1, 'roster/dorowani/README.md: small, fast, goofy, short chompy'],
   chatur: ['True Ogre', 240, 1.25], pond: ['Raven', 185], ryusan: ['Lucky Chloe', 155], tobi: ['Hwoarang', 181],

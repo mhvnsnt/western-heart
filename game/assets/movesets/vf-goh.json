@@ -1,0 +1,512 @@
+{
+  "fighter": "vf-goh",
+  "display": "GOH (VF)",
+  "tekken_base": "Goh Hinogami (Virtua Fighter 5)",
+  "vf_source": "VF5 PS3 (BLES00029) community movelists (GameFAQs — Sanctuary_Remix VF5 Guide and Walkthrough, faqs/50154, Goh Hinogami move set) + VF5 PS3 manual; see docs/movesets/DOA-VF-CONVERSION-2026-10-19.md",
+  "vf_style": "Judo",
+  "proxy": false,
+  "proxy_note": null,
+  "schema_version": 2,
+  "moves": {
+    "1": {
+      "name": "Shouda",
+      "input": "1",
+      "vf_move": "Shouda",
+      "vf_input": "P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 8,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:goh/shouda",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1,2": {
+      "name": "Tsurane Shouda",
+      "input": "1,2",
+      "vf_move": "Tsurane Shouda",
+      "vf_input": "P,P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 14,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:goh/tsurane-shouda",
+      "input_slots": [
+        "1,2"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1,4": {
+      "name": "Shouda~Kasumigoroshi",
+      "input": "1,4",
+      "vf_move": "Shouda~Kasumigoroshi",
+      "vf_input": "P,K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:goh/shouda-kasumigoroshi",
+      "input_slots": [
+        "1,4"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f+1": {
+      "name": "Hibara'uchi",
+      "input": "f+1",
+      "vf_move": "Hibara'uchi",
+      "vf_input": "6P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 14,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:goh/hibara-uchi",
+      "input_slots": [
+        "f+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f+1,2": {
+      "name": "Rengoku",
+      "input": "f+1,2",
+      "vf_move": "Rengoku",
+      "vf_input": "6P,P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 16,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:goh/rengoku",
+      "input_slots": [
+        "f+1,2"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f,f+1": {
+      "name": "Abara Kudaki",
+      "input": "f,f+1",
+      "vf_move": "Abara Kudaki",
+      "vf_input": "66P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 16,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:goh/abara-kudaki",
+      "input_slots": [
+        "f,f+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "b+1": {
+      "name": "Kui'uchi",
+      "input": "b+1",
+      "vf_move": "Kui'uchi",
+      "vf_input": "4P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 14,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:goh/kui-uchi",
+      "input_slots": [
+        "b+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "b+1,4": {
+      "name": "Aragami",
+      "input": "b+1,4",
+      "vf_move": "Aragami",
+      "vf_input": "4P,K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 20,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:goh/aragami",
+      "input_slots": [
+        "b+1,4"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "b,f+1": {
+      "name": "Soukyu",
+      "input": "b,f+1",
+      "vf_move": "Soukyu",
+      "vf_input": "4,6P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 14,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:goh/soukyu",
+      "input_slots": [
+        "b,f+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d+1": {
+      "name": "Sune'uchi",
+      "input": "d+1",
+      "vf_move": "Sune'uchi",
+      "vf_input": "2P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 7,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:goh/sune-uchi",
+      "input_slots": [
+        "d+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d/f+1": {
+      "name": "Raika",
+      "input": "d/f+1",
+      "vf_move": "Raika",
+      "vf_input": "3P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 15,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:goh/raika",
+      "input_slots": [
+        "d/f+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "3": {
+      "name": "Inazuma (Migi Hibara) Geri",
+      "input": "3",
+      "vf_move": "Inazuma (Migi Hibara) Geri",
+      "vf_input": "K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 12,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:goh/inazuma-migi-hibara-geri",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f+3": {
+      "name": "Tsukikage",
+      "input": "f+3",
+      "vf_move": "Tsukikage",
+      "vf_input": "6K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 14,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:goh/tsukikage",
+      "input_slots": [
+        "f+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f,f+3": {
+      "name": "Garyu",
+      "input": "f,f+3",
+      "vf_move": "Garyu",
+      "vf_input": "66K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 18,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:goh/garyu",
+      "input_slots": [
+        "f,f+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "b+3": {
+      "name": "Yamibaraigeri",
+      "input": "b+3",
+      "vf_move": "Yamibaraigeri",
+      "vf_input": "4K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 12,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:goh/yamibaraigeri",
+      "input_slots": [
+        "b+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d/f+3": {
+      "name": "Ura Inazuma (Migi Hibara) Geri",
+      "input": "d/f+3",
+      "vf_move": "Ura Inazuma (Migi Hibara) Geri",
+      "vf_input": "3K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 16,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:goh/ura-inazuma-migi-hibara-geri",
+      "input_slots": [
+        "d/f+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d/b+3": {
+      "name": "Senryukeri",
+      "input": "d/b+3",
+      "vf_move": "Senryukeri",
+      "vf_input": "1K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 8,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:goh/senryukeri",
+      "input_slots": [
+        "d/b+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f+1+2": {
+      "name": "Hayabusa",
+      "input": "f+1+2",
+      "vf_move": "Hayabusa",
+      "vf_input": "6P+K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 18,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:goh/hayabusa",
+      "input_slots": [
+        "f+1+2"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "b+1+2": {
+      "name": "Karura",
+      "input": "b+1+2",
+      "vf_move": "Karura",
+      "vf_input": "4P+K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 20,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:goh/karura",
+      "input_slots": [
+        "b+1+2"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "b,f+1+2": {
+      "name": "Kokuryusatsu Ichi",
+      "input": "b,f+1+2",
+      "vf_move": "Kokuryusatsu Ichi",
+      "vf_input": "4,6P+K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 20,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:goh/kokuryusatsu-ichi",
+      "input_slots": [
+        "b,f+1+2"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "3+4": {
+      "name": "Kiribarai",
+      "input": "3+4",
+      "vf_move": "Kiribarai",
+      "vf_input": "K+G",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 16,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:goh/kiribarai",
+      "input_slots": [
+        "3+4"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d+3+4": {
+      "name": "De'ashibarai",
+      "input": "d+3+4",
+      "vf_move": "De'ashibarai",
+      "vf_input": "2K+G",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 10,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:goh/de-ashibarai",
+      "input_slots": [
+        "d+3+4"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d/f+3+4": {
+      "name": "Ni'oudaoshi",
+      "input": "d/f+3+4",
+      "vf_move": "Ni'oudaoshi",
+      "vf_input": "3K+G",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 20,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:goh/ni-oudaoshi",
+      "input_slots": [
+        "d/f+3+4"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1+3": {
+      "name": "Makikomi",
+      "input": "1+3",
+      "vf_move": "Makikomi",
+      "vf_input": "P+G",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 35,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:goh/makikomi",
+      "input_slots": [
+        "1+3"
+      ],
+      "move_class": "throw",
+      "note": "VF throw -> Tekken 1+3 per DOA-VF-CONVERSION mapping"
+    },
+    "f,f+1+3": {
+      "name": "Tsuchikumo",
+      "input": "f,f+1+3",
+      "vf_move": "Tsuchikumo",
+      "vf_input": "66P+G",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 40,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:goh/tsuchikumo",
+      "input_slots": [
+        "f,f+1+3"
+      ],
+      "move_class": "throw",
+      "note": "VF throw -> Tekken f,f+1+3 per DOA-VF-CONVERSION mapping"
+    }
+  }
+}
