@@ -4,7 +4,7 @@
 
 **47 open PRs — 🟢 ready to merge: 0 · 🔴 failing: 27 · ⏳ running: 1 · ⚔️ conflicted: 19** (also 🟠 blocked: 0 · 🔗 stacked: 0 · 📝 draft, green-or-idle: 0; 6 of 47 are drafts)
 
-_Generated 2026-11-21 06:32 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
+_Generated 2026-11-21 06:37 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
 
 Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not reported. Ready = not draft, targets `main`, GitHub says MERGEABLE, every check green. Status priority: conflicted > failing > running > draft > stacked > ready.
 
@@ -16,7 +16,8 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| ⏳ running | [#1810](https://github.com/mhvnsnt/western-heart/pull/1810) Vendor Dantarion sf4tools (SFIV bac/bcm toolchain) + teardown records | ready | mhvnsnt / `lane-3-sfiv-sf4tools` | `4f5474e` | `main` | ⏳ | ⏳ | ⏳ | ⏳ | 9⏳ | mergeable (blocked) | 2026-11-21 06:31 UTC |
+| ⏳ running | [#1792](https://github.com/mhvnsnt/western-heart/pull/1792) Moveset fix P2: Goh/Brad VF kits, Baek rebuild (T6 PSP), Bannon wiring (Jeffry) | ready | mhvnsnt / `wh-moveset-fix/p2-rebuilds-20261120` | `7f7bf8b` | `main` | ⏳ | ✅ | ⏳ | ⏳ | 1✅ 9⏳ | mergeable (blocked) | 2026-11-21 06:36 UTC |
+| 🔴 failing | [#1810](https://github.com/mhvnsnt/western-heart/pull/1810) Vendor Dantarion sf4tools (SFIV bac/bcm toolchain) + teardown records | ready | mhvnsnt / `lane-3-sfiv-sf4tools` | `4f5474e` | `main` | ✅ | ✅ | ✅ | ❌ | 7✅ 2⏳ | mergeable (blocked) | 2026-11-21 06:31 UTC |
 | 🔴 failing | [#1807](https://github.com/mhvnsnt/western-heart/pull/1807) Lane X1: King T3 pack re-baked onto shipped pantera.glb + docs/decode/ skeleton | ready | mhvnsnt / `lane-x1-king-rebake` | `215524c` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ 1❌ | mergeable (blocked) | 2026-11-21 05:17 UTC |
 | 🔴 failing | [#1806](https://github.com/mhvnsnt/western-heart/pull/1806) Fix Zen / Gyou / Saku Ra / Jin_soul canon confusion (documents + data) | ready | mhvnsnt / `canon-fix/zen-gyou-sakura-20261120` | `56e55a5` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-21 04:23 UTC |
 | 🔴 failing | [#1803](https://github.com/mhvnsnt/western-heart/pull/1803) Lane C Phase 2: Windows workflow to extract real King .tkmvst from tkdata.bin (TKMovesets2 | ready | mhvnsnt / `lane-c/t7-extract-king` | `32a5fd6` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-21 02:56 UTC |
@@ -25,7 +26,6 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 | 🔴 failing | [#1797](https://github.com/mhvnsnt/western-heart/pull/1797) Phase 2: Tong-Nou transmigration sequences (Sato → Western Heart) | ready | mhvnsnt / `sato/transmigration-sequences` | `67054ea` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-20 22:44 UTC |
 | 🔴 failing | [#1796](https://github.com/mhvnsnt/western-heart/pull/1796) Phase 2: Roly-Polys world hub + minigames (Sato → Western Heart) | ready | mhvnsnt / `p2/rolypolys-world-hub` | `6f94ead` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-20 22:43 UTC |
 | 🔴 failing | [#1795](https://github.com/mhvnsnt/western-heart/pull/1795) Phase 2: LSD dream system core (Sato → Western Heart) | ready | mhvnsnt / `phase2/lsd-dream-core` | `798e94b` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-20 22:41 UTC |
-| 🔴 failing | [#1792](https://github.com/mhvnsnt/western-heart/pull/1792) Moveset fix P2: Goh/Brad VF kits, Baek rebuild (T6 PSP), Bannon wiring (Jeffry) | ready | mhvnsnt / `wh-moveset-fix/p2-rebuilds-20261120` | `be1261e` | `main` | ✅ | ✅ | ✅ | ✅ | 9✅ 1❌ | mergeable (unstable) | 2026-11-21 02:17 UTC |
 | 🔴 failing | [#1785](https://github.com/mhvnsnt/western-heart/pull/1785) Sweep: VPW2 English-complete push receipts | ready | mhvnsnt / `muse/sweep-vpw2-handoff` | `ec59ab3` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-20 15:25 UTC |
 | 🔴 failing | [#1784](https://github.com/mhvnsnt/western-heart/pull/1784) VPW2 English completion: help screens + Royal Road Succession + credits (634 strings) | ready | mhvnsnt / `muse/vpw2-english-complete` | `0e7c8e6` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-20 21:37 UTC |
 | 🔴 failing | [#1783](https://github.com/mhvnsnt/western-heart/pull/1783) Toukon Retsuden English: partial patch tools + docs (lane 1) | ready | mhvnsnt / `muse/toukon-english` | `7ae20cc` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-20 21:31 UTC |
