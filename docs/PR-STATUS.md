@@ -4,7 +4,7 @@
 
 **43 open PRs — 🟢 ready to merge: 0 · 🔴 failing: 23 · ⏳ running: 1 · ⚔️ conflicted: 19** (also 🟠 blocked: 0 · 🔗 stacked: 0 · 📝 draft, green-or-idle: 0; 6 of 43 are drafts)
 
-_Generated 2026-11-20 23:55 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
+_Generated 2026-11-21 00:02 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
 
 Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not reported. Ready = not draft, targets `main`, GitHub says MERGEABLE, every check green. Status priority: conflicted > failing > running > draft > stacked > ready.
 
@@ -16,7 +16,7 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| ⏳ running | [#1791](https://github.com/mhvnsnt/western-heart/pull/1791) Moveset fix P1B: Lili, Mariposa-monarch, Deathfang, Demonio re-attribution (owner: gave ev | ready | mhvnsnt / `wh-moveset-fix/p1b-lili-deathfang-demonio-20261120` | `fd9b1f7` | `main` | ⏳ | ⏳ | ⏳ | ⏳ | 10⏳ | mergeable (blocked) | 2026-11-20 23:55 UTC |
+| ⏳ running | [#1791](https://github.com/mhvnsnt/western-heart/pull/1791) Moveset fix P1B: Lili, Mariposa-monarch, Deathfang, Demonio re-attribution (owner: gave ev | ready | mhvnsnt / `wh-moveset-fix/p1b-lili-deathfang-demonio-20261120` | `fd9b1f7` | `main` | ✅ | ✅ | ✅ | ⏳ | 8✅ 2⏳ | mergeable (blocked) | 2026-11-21 00:02 UTC |
 | 🔴 failing | [#1798](https://github.com/mhvnsnt/western-heart/pull/1798) Sweep: No Mercy re-extract leftovers (mat-kings DB, AKI bake, full-ROM pass) | ready | mhvnsnt / `muse/sweep-nomercy-uvpw` | `f7c2045` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-20 23:16 UTC |
 | 🔴 failing | [#1797](https://github.com/mhvnsnt/western-heart/pull/1797) Phase 2: Tong-Nou transmigration sequences (Sato → Western Heart) | ready | mhvnsnt / `sato/transmigration-sequences` | `67054ea` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-20 22:44 UTC |
 | 🔴 failing | [#1796](https://github.com/mhvnsnt/western-heart/pull/1796) Phase 2: Roly-Polys world hub + minigames (Sato → Western Heart) | ready | mhvnsnt / `p2/rolypolys-world-hub` | `6f94ead` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-20 22:43 UTC |
