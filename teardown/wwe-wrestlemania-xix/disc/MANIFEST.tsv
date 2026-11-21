@@ -1,0 +1,4 @@
+# MANIFEST - split-file archive
+# Columns: relative_path<TAB>size_bytes<TAB>sha256<TAB>piece_count<TAB>piece_size_bytes
+# A file appears here only once it is FULLY in the repo (all pieces pushed).
+# Rebuild with: cat <file>.part* > <file>  (then verify vs MANIFEST sha256)
