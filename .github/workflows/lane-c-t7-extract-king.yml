@@ -1,0 +1,58 @@
+# Lane C — Phase 2 T7 unblock: extract the real King .tkmvst from the game's own files.
+#
+# Why this exists: the 94 T7 scramble files are game-gated on ONE input — a real
+# per-fighter .tkmvst (TKMovesets2 v1.1, pinned 8e6bfc1). The tool's headless mode
+# builds T7 movesets straight from tkdata.bin (disk-only: no running game, no
+# Steam, no GPU, no GUI). tkdata.bin is already in-repo on release
+# tekken7-gamefiles-v1 (owner's Steam depot 389731 pull); the prebuilt v1.1 exe
+# is on Kiloutre/TKMovesets releases. King first; the rest of the fighters
+# follow the same command with `all` or their codes.
+#
+# Run: Actions > lane-c-t7-extract-king > Run workflow (branch lane-c/t7-extract-king).
+# Output: artifact `king-tkmvst` holding king.tkmvst (lz4, TKM2, gameId 0).
+
+name: lane-c-t7-extract-king
+
+on:
+  workflow_dispatch:
+
+jobs:
+  extract-king:
+    runs-on: windows-latest
+    steps:
+      - name: Download tkdata.bin (owner Steam depot pull, release tekken7-gamefiles-v1)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release download tekken7-gamefiles-v1 --repo mhvnsnt/western-heart --pattern "tkdata.bin" --dir gamefiles
+        shell: pwsh
+
+      - name: Record tkdata.bin sha256 + size
+        run: |
+          Get-FileHash gamefiles\tkdata.bin -Algorithm SHA256 | Format-List
+          (Get-Item gamefiles\tkdata.bin).Length
+        shell: pwsh
+
+      - name: Download TKMovesets2 v1.1 (pinned 8e6bfc1)
+        run: Invoke-WebRequest -Uri "https://github.com/Kiloutre/TKMovesets/releases/download/1.1/TKMovesets2.exe" -OutFile "TKMovesets2.exe"
+        shell: pwsh
+
+      - name: Verify tkdata.bin magic (_TEKKEN7CSFILES_)
+        run: |
+          $bytes = [System.IO.File]::ReadAllBytes("gamefiles\tkdata.bin")[0..15]
+          $magic = [System.Text.Encoding]::ASCII.GetString($bytes)
+          if ($magic -ne "_TEKKEN7CSFILES_") { throw "tkdata.bin magic mismatch: $magic" }
+          Write-Output "tkdata.bin magic OK: $magic"
+        shell: pwsh
+
+      - name: Extract King moveset (headless, disk-only)
+        run: |
+          $p = Start-Process -FilePath ".\TKMovesets2.exe" -ArgumentList "--headless","build-disk-movesets-t7","gamefiles\tkdata.bin","out","kin" -Wait -PassThru -NoNewWindow -RedirectStandardOutput "headless-out.json" -RedirectStandardError "headless-err.txt"
+          Get-Content "headless-out.json"
+          if ($p.ExitCode -ne 0) { Get-Content "headless-err.txt"; throw "TKMovesets2 exited $($p.ExitCode)" }
+        shell: pwsh
+
+      - name: Upload King .tkmvst
+        uses: actions/upload-artifact@v4
+        with:
+          name: king-tkmvst
+          path: out/
