@@ -4,7 +4,7 @@
 
 **48 open PRs — 🟢 ready to merge: 1 · 🔴 failing: 28 · ⏳ running: 0 · ⚔️ conflicted: 19** (also 🟠 blocked: 0 · 🔗 stacked: 0 · 📝 draft, green-or-idle: 0; 6 of 48 are drafts)
 
-_Generated 2026-11-21 09:23 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
+_Generated 2026-11-21 09:36 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
 
 Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not reported. Ready = not draft, targets `main`, GitHub says MERGEABLE, every check green. Status priority: conflicted > failing > running > draft > stacked > ready.
 
@@ -22,7 +22,7 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 | 🔴 failing | [#1810](https://github.com/mhvnsnt/western-heart/pull/1810) Vendor Dantarion sf4tools (SFIV bac/bcm toolchain) + teardown records | ready | mhvnsnt / `lane-3-sfiv-sf4tools` | `4f5474e` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-21 09:21 UTC |
 | 🔴 failing | [#1806](https://github.com/mhvnsnt/western-heart/pull/1806) Fix Zen / Gyou / Saku Ra / Jin_soul canon confusion (documents + data) | ready | mhvnsnt / `canon-fix/zen-gyou-sakura-20261120` | `56e55a5` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (clean) | 2026-11-21 08:59 UTC |
 | 🔴 failing | [#1803](https://github.com/mhvnsnt/western-heart/pull/1803) Lane C Phase 2: Windows workflow to extract real King .tkmvst from tkdata.bin (TKMovesets2 | ready | mhvnsnt / `lane-c/t7-extract-king` | `32a5fd6` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-21 02:56 UTC |
-| 🔴 failing | [#1802](https://github.com/mhvnsnt/western-heart/pull/1802) docs(research): VF5 teardown hunt 2026-11-20 — no complete working VF5 teardown exists | ready | mhvnsnt / `lane-1-vf5-teardown-hunt-20261120` | `d37a334` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-21 09:19 UTC |
+| 🔴 failing | [#1802](https://github.com/mhvnsnt/western-heart/pull/1802) docs(research): VF5 teardown hunt 2026-11-20 — no complete working VF5 teardown exists | ready | mhvnsnt / `lane-1-vf5-teardown-hunt-20261120` | `d37a334` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-21 09:36 UTC |
 | 🔴 failing | [#1798](https://github.com/mhvnsnt/western-heart/pull/1798) Sweep: No Mercy re-extract leftovers (mat-kings DB, AKI bake, full-ROM pass) | ready | mhvnsnt / `muse/sweep-nomercy-uvpw` | `f7c2045` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-20 23:16 UTC |
 | 🔴 failing | [#1797](https://github.com/mhvnsnt/western-heart/pull/1797) Phase 2: Tong-Nou transmigration sequences (Sato → Western Heart) | ready | mhvnsnt / `sato/transmigration-sequences` | `67054ea` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-20 22:44 UTC |
 | 🔴 failing | [#1796](https://github.com/mhvnsnt/western-heart/pull/1796) Phase 2: Roly-Polys world hub + minigames (Sato → Western Heart) | ready | mhvnsnt / `p2/rolypolys-world-hub` | `6f94ead` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-20 22:43 UTC |
