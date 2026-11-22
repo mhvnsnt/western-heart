@@ -10,19 +10,25 @@
 
 export const FULL_ROSTER = [
   // ——— THE NINE SOULS ———
-  { id: 'rin', name: 'RIN', title: 'The Protagonist Soul', base: 'Jin Kazama', moveset: 'demonio', model: 'rin-body', tintStrength: 0.6,
+  { id: 'rin', name: 'RIN', title: 'The Protagonist Soul', base: 'Jin Kazama', moveset: 'demonio', model: 'demonio-a1', tintStrength: 0.6,
     colors: { suit: 0x1a3a6b, trim: 0x9fd8ff }, style: 'Karate', archetype: 'Balanced' },
   { id: 'byou', name: 'BYOU', title: 'The Sick Soul', base: 'Wang Jinrei', moveset: 'demonio', model: null, modelPending: true, tintStrength: 0.6,
     colors: { suit: 0x4a5a1a, trim: 0x8a9a3a }, style: 'Xingyiquan', archetype: 'Trickster' },
   { id: 'tou', name: 'TOU', title: 'The Fighting Soul', base: 'Paul Phoenix', moveset: 'heihachi', model: 'tou-body', tintStrength: 0.25,
     colors: { suit: 0x8a1a1a, trim: 0xcc4400 }, style: 'Power Karate', archetype: 'Power' },
-  { id: 'sha', name: 'SHA', title: 'The Sand Soul', base: 'Xiaoyu', moveset: 'xiaoyu', model: 'sha-body', tintStrength: 0.6,
-    colors: { suit: 0xc2a36b, trim: 0x8a6a3a }, style: 'Hakkesho', archetype: 'Evasive' },
+  // SHA card RETIRED 2026-11-20 (owner order: Saku Ra is ONE fighter).
+  // SHA is the SOUL shared by three sisters (Saku Ra + Kinpo + Awa Pop),
+  // not a fighter. The single fighter is SAKU RA (sakura, MAIN_IDS).
+  // sha.json is KEPT until the single-fighter load is verified.
   { id: 'kai', name: 'KAI', title: 'The Sea Soul', base: 'Eddy Gordo', moveset: 'demonio', model: 'kai-body', tintStrength: 0.25,
     colors: { suit: 0x1a4a6b, trim: 0x3a8acc }, style: 'Capoeira', archetype: 'Rushdown' },
   { id: 'retsu', name: 'RETSU', title: 'The Violent Soul', base: 'Bryan Fury', moveset: 'bryan', model: 'retsu-body', tintStrength: 0.25,
     colors: { suit: 0x3a1a1a, trim: 0xcc2222 }, style: 'Kickboxing', archetype: 'Rushdown' },
-  { id: 'zen', name: 'ZEN', title: 'The Still Soul', base: 'Heihachi', moveset: 'heihachi', model: 'zen', tintStrength: 0.6,
+  // ZEN base corrected 2026-11-20 (owner decision 2026-10-24,
+  // docs/decisions/2026-10-24-zen-base-decision.md): Eleven/Twelve ->
+  // Dural -> Zen's own canon moves; NOT Heihachi, NOT Julia.
+  // Labels are display-only; the loader uses id.
+  { id: 'zen', name: 'ZEN', title: 'The Still Soul', base: 'Dural', moveset: 'zen', model: 'zen', tintStrength: 0.6,
     colors: { suit: 0xd0d0d0, trim: 0x8a8a8a }, style: 'Karate', archetype: 'Defensive',
     // ZEN TRANSFORMATION MODES (owner canon 2026-10-21, roster/zen/CANON.md):
     // ALL of Zen's versions are modes WITHIN Attire 1 — not separate
@@ -56,7 +62,7 @@ export const FULL_ROSTER = [
     colors: { suit: 0x1a5a3a, trim: 0x3acc6a }, style: 'Tae Kwon Do', archetype: 'Pressure' },
 
   // ——— MAIN ROSTER ———
-  { id: 'pantera', name: 'PANTERA', title: 'The Panther Soul', base: 'King', moveset: 'king', model: 'pantera', tintStrength: 0.25,
+  { id: 'pantera', name: 'PANTERA', title: 'The Panther Soul', base: 'King', moveset: 'king', model: 'pantera-leoman', tintStrength: 0.25,
     colors: { suit: 0x6b2d8f, trim: 0xcc0000 }, style: 'Grappler',
     surge: { name: "PANTHER'S WRATH", color: 0x8b2bd8, accent: 0xff2222 },
     stats: { speed: 4.0, jump: 6.8, power: 1.3, defense: 1.2 },
@@ -107,7 +113,7 @@ export const FULL_ROSTER = [
     colors: { suit: 0xd44d8a, trim: 0xffd700 }, style: 'Traditional Martial Arts', archetype: 'Counter' },
   { id: 'waterfall', name: 'WATERFALL', title: "Grief of Nine", base: 'Josie', moveset: 'demonio', model: 'waterfall', tintStrength: 0.6,
     colors: { suit: 0x3a6acc, trim: 0x9fd8ff }, style: 'Eskrima', archetype: 'Rushdown' },
-  { id: 'kingtyrant', name: 'KING TYRANT', title: 'Showman King', base: 'Eddy Gordo', moveset: 'xiaoyu', model: 'king-tyrant', tintStrength: 0.25,
+  { id: 'kingtyrant', name: 'KING TYRANT', title: 'Showman King', base: 'Eddy Gordo', moveset: 'xiaoyu', model: 'king-tyrant-attire1', tintStrength: 0.25,
     colors: { suit: 0x8a6a1a, trim: 0xffd700 }, style: 'Capoeira', archetype: 'Showman' },
   { id: 'burger', name: 'BURGER', title: 'Hunger is a Curse', base: 'Bob', moveset: 'bryan', model: 'burger', tintStrength: 0.25,
     colors: { suit: 0xcc8833, trim: 0xff4400 }, style: 'Sumo/Brawler', archetype: 'Power',
@@ -136,7 +142,7 @@ export const FULL_ROSTER = [
     colors: { suit: 0x2a2a3a, trim: 0xc2a36b }, style: 'Military', archetype: 'Balanced' },
   { id: 'purplerain', name: 'PURPLE RAIN', title: 'MJ x Prince x Pimp', base: 'Lee', moveset: 'demonio', model: 'purple-rain', tintStrength: 0.6,
     colors: { suit: 0x6b2d8f, trim: 0xff00ff }, style: 'Martial Arts', archetype: 'Stylish' },
-  { id: 'nightwolf', name: 'NIGHTWOLF', title: 'Storm Shadow', base: 'Julia', moveset: 'xiaoyu', model: 'nightwolf', tintStrength: 0.6,
+  { id: 'nightwolf', name: 'NIGHTWOLF', title: 'Storm Shadow', base: 'Julia', moveset: 'xiaoyu', model: 'nightwolf-attire1', tintStrength: 0.6,
     colors: { suit: 0x1a3a5a, trim: 0x6accff }, style: 'Xinyi Liuhe', archetype: 'Balanced' },
   { id: 'dio', name: 'DIO', title: 'Raging Demon', base: 'Akuma', moveset: 'heihachi', model: 'dio-attire1', tintStrength: 0.6,
     colors: { suit: 0x1a1a1a, trim: 0xff0000 }, style: 'Satsui no Hado', archetype: 'Shoto' },
@@ -195,7 +201,7 @@ export const FULL_ROSTER = [
   // demonio-winged, demonio-human -> 'demonio' ladder; doc-frank-wowomomo,
   // doc-frank-hood, doc-frank-frankenstein, doc-frank-machine-shop ->
   // 'docfrank' ladder. Models preserved, just re-homed.
-  { id: 'baek-master-white', name: 'KEVIN', title: "The Master Soul", base: 'Kevin', moveset: 'bryan', model: 'baek', tintStrength: 0.25,
+  { id: 'baek-master-white', name: 'KEVIN', title: "The Master Soul", base: 'Kevin', moveset: 'kevin', model: 'baek', tintStrength: 0.25,
     colors: { suit: 0xf0f0f0, trim: 0x8a1a1a }, style: 'Tae Kwon Do', archetype: 'Pressure' },
   { id: 'mariposa-monarch', name: 'MARIPOSA', title: 'Monarch', base: 'Zafina', moveset: 'xiaoyu', model: 'mariposa-butterfly-default', tintStrength: 0.25,
     colors: { suit: 0x2a1a3a, trim: 0xff8800 }, style: 'Azazel Arts', archetype: 'Tricky' },
@@ -482,7 +488,9 @@ export function getFighter(id) {
    attire ladder per owner directive 2026-10-22: "Yoshimitsu is supposed to
    ladder into Phantom's attires, not stand alone"). MAIN_IDS = the original
    main-roster block. Everything else is bonus. */
-export const SOUL_IDS = ['rin', 'byou', 'tou', 'sha', 'kai', 'retsu', 'zen', 'gyou'];
+// SHA retired 2026-11-20: the soul SHA is not a fighter; its vessels are
+// SAKU RA (sakura, MAIN_IDS), KINPO and AWA POP (bonus tier).
+export const SOUL_IDS = ['rin', 'byou', 'tou', 'kai', 'retsu', 'zen', 'gyou'];
 export const MAIN_IDS = ['pantera', 'demonio', 'phantom', 'diablo', 'skull', 'samura1', 'sakura'];
 
 export function getRosterByTier() {

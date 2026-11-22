@@ -15,6 +15,21 @@
      {pending:true} placeholders — the manifest stays valid, the
      fighter is playable from the overlay moves.
 
+   2026-11-20 (library fill, PR #1800): the index was regenerated
+   into a NEW SHAPE — a flat moves dict keyed by `fighter::key`
+   (54,455 moves / 128 fighters), no `banks` key, no banks/*.json
+   files to load. loadLibrary() now ADAPTS that shape back into
+   the banks + byId contract the assembler (and the editor) expect:
+   banks are derived from each move's anim_ref (the motion's game),
+   each bank move carries its LEGACY id (anim_ref for T3/T7/T8,
+   synthesized `vf5:<char>:<key>` / `doa:<char>:<key>` for VF/DOA),
+   and byId registers BOTH the legacy id and the new `fighter::key`
+   id, so old manifests (legacy ids) and editor manifests (new ids)
+   both resolve. Quarantined moves are never loaded — the assembler
+   must not silently serve a move the audit flagged as wrong.
+   The OLD banks shape is still supported (legacy branch below)
+   if an index carries `banks`.
+
    Usage (browser, ES module):
      import { assembleFighter } from './js/moveset-library.js';
      const kit = await assembleFighter('pablo'); // {fighter, moves, strings, pending, report}
@@ -46,12 +61,97 @@ async function fetchJson(url, root) {
   return JSON.parse(readFileSync(join(base, url), 'utf8'));
 }
 
+/* ---- new-index adapter (2026-11-20 library fill) ---- */
+
+// VF5 roster: new fighter key -> legacy bank character slug.
+// The legacy slugs are hyphenated display names (El Blaze, Lei-Fei);
+// the new fighter keys drop the hyphen (vf-elblaze, vf-leifei).
+// Verified against the old banks/vf5.json (96 moves: el-blaze 28,
+// jeffry 25, lei-fei 22, wolf 21); akira/kage/sarah are new in the
+// fill and take their plain slug.
+const VF_CHAR = {
+  'vf-akira': 'akira',
+  'vf-elblaze': 'el-blaze',
+  'vf-jeffry': 'jeffry',
+  'vf-kage': 'kage',
+  'vf-leifei': 'lei-fei',
+  'vf-sarah': 'sarah',
+  'vf-wolf': 'wolf',
+};
+
+// anim_ref prefix -> bank id. sf6/sfv/sf4 fold into the single 'sf'
+// bank; urban-reign folds into 'ur'. Prefixes not listed here fall
+// through to the source-label fallback in legacyIdFor().
+const ANIM_BANK = {
+  t3: 't3', t7: 't7', t8: 't8',
+  sf6: 'sf', sfv: 'sf', sf: 'sf', sf4: 'sf',
+  wh: 'wh', kofxv: 'kofxv', samsho: 'samsho',
+  'urban-reign': 'ur', ur: 'ur', ttt2: 'ttt2', mk: 'mk',
+};
+
+// Derive {bank, id} (the LEGACY id the assembler contract uses)
+// for one new-index move entry. `newId` is the entry's `fighter::key`
+// id. Returns null only when no id can be derived at all.
+function legacyIdFor(m, newId) {
+  const anim = (m && m.anim_ref) || '';
+  const prefix = anim.split(':')[0];
+  // Namespaced anim_refs ARE the legacy id (T3/T7/T8/SF/WH/...).
+  if (anim && ANIM_BANK[prefix]) {
+    return { bank: ANIM_BANK[prefix], id: anim };
+  }
+  // VF: anim_ref is a path (vf:elblaze/jab), not an id — synthesize
+  // the legacy `vf5:<char>:<key>` form from the old banks/vf5.json.
+  if (prefix === 'vf') {
+    const char = VF_CHAR[m.fighter] || String(m.fighter || '').replace(/^vf-/, '');
+    const key = m.key || anim.split('/')[1] || newId;
+    return { bank: 'vf5', id: `vf5:${char}:${key}` };
+  }
+  // DOA: same shape — anim_ref is a path (doa:ayane/ayane-p).
+  if (prefix === 'doa') {
+    const char = String(m.fighter || '').replace(/^doa-/, '');
+    const key = m.key || anim.split('/')[1] || newId;
+    return { bank: 'doa', id: `doa:${char}:${key}` };
+  }
+  // No usable anim_ref (UNMAPPED / missing): bank by source label,
+  // id stays the new `fighter::key` id — it resolves in byId, but
+  // it cannot match a legacy base-kit prefix, which is correct:
+  // a move with no decoded anim cannot be a base-kit move.
+  const src = (m && Array.isArray(m.source) && m.source[0]) || 'wh';
+  return { bank: String(src).toLowerCase(), id: newId };
+}
+
 export async function loadLibrary(opts = {}) {
   if (_lib && !opts.reload) return _lib;
   const root = opts.root || null;
   const index = await fetchJson(`${LIB_ROOT}/index.json`, root);
   const banks = {};
   const byId = new Map();
+
+  // NEW SHAPE (library fill 2026-11-20): flat moves dict, no banks key.
+  if (index.moves && typeof index.moves === 'object' && !Array.isArray(index.moves)) {
+    for (const [newId, m] of Object.entries(index.moves)) {
+      // Quarantined moves are never loaded: the assembler must not
+      // silently serve a move the audit flagged as wrong. The editor
+      // UI reads the index directly and shows quarantined moves with
+      // their flag — that path is separate from the assembler.
+      if (m && m.quarantined) continue;
+      const legacy = legacyIdFor(m, newId);
+      if (!legacy) continue;
+      const entry = { ...m, id: legacy.id };
+      if (!banks[legacy.bank]) banks[legacy.bank] = { bank: legacy.bank, count: 0, moves: [] };
+      banks[legacy.bank].moves.push(entry);
+      // byId registers BOTH ids (first wins on duplicates, as the
+      // legacy loader did): the legacy id for old manifests and the
+      // new `fighter::key` id for editor-produced manifests.
+      if (!byId.has(legacy.id)) byId.set(legacy.id, { ...entry, _bank: legacy.bank });
+      if (!byId.has(newId)) byId.set(newId, { ...entry, _bank: legacy.bank });
+    }
+    for (const b of Object.values(banks)) b.count = b.moves.length;
+    _lib = { index, banks, byId };
+    return _lib;
+  }
+
+  // OLD SHAPE (pre-fill): {banks: [{id, file}]} + banks/*.json files.
   for (const b of index.banks) {
     try {
       const data = await fetchJson(`${LIB_ROOT}/${b.file}`, root);
