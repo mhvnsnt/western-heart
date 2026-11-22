@@ -42,9 +42,10 @@ const OWNERSHIP = {
   "awapop": {
     "own": [
       "awa-pop",
+      "awa-pop-attire1",
       "awa-pop-attire2"
     ]
-  },
+  }, // 2026-10-23 select-card audit: Tripo A1 wired as default
   "baek-master-white": {
     "own": [
       "kevin-tripo",
