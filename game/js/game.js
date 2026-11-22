@@ -300,6 +300,9 @@ export class Game {
     this.ui.setRounds(this.wins, this.roundsToWin);
     this.matchStats = { attacks: { punch: 0, kick: 0, grab: 0, surge: 0, dodge: 0 }, blockTime: 0, time: 0, dmgDealt: 0, dmgTaken: 0 };
     resetPracticeAttackData(this);
+    // Owner 2026-11-11 ("this type of stuff is still popping up on screen"): mode pills (#mode-badge, #wh-mode-tag)
+    // show only in practice; a normal fight shows the fight HUD alone (styles.css #hud:not(.practice)).
+    try { const hud = typeof document !== 'undefined' && document.getElementById('hud'); if (hud) hud.classList.toggle('practice', !!this.training); } catch (e) { /* headless */ }
     this.running = true;
     this.paused = false;
     // Stage content streams in (Tekken retro OBJs fetch async); the fight

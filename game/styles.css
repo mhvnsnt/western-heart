@@ -725,6 +725,12 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
   padding: 6px 14px; white-space: nowrap; max-width: 92vw;
   overflow: hidden; text-overflow: ellipsis;
 }
+/* Owner 2026-11-11 ("this type of stuff is still popping up on screen when it shouldn't", with a phone screenshot of
+   the VERSUS pills over a fight): mode pills are a practice aid only. A normal fight (versus, arcade, story,
+   survival, ranked, online) shows the fight HUD alone; the VS screen before the round already names the mode.
+   game.js startMatch puts .practice on #hud for training / fight lab. !important beats the inline display the
+   mode controllers set. */
+#hud:not(.practice) #mode-badge, #hud:not(.practice) #wh-mode-tag { display: none !important; }
 /* Training quit: HUD is pointer-events:none, so this re-enables itself */
 .training-quit {
   position: absolute; top: 44px; right: 10px; z-index: 12;
