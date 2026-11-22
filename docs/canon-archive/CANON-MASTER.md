@@ -900,6 +900,16 @@ in the credits at the end of some stories and in the settings credits
 - **Base / moves.** Baek Doo San (Tekken) — flawless taekwondo, the
   kicks are textbooks. Philosophy: "The kick is the question. Discipline
   is the answer." Element: Fire.
+- **Canon correction — Bake folds into Kevin (owner, 2026-11-21).**
+  "Bake is not a separate Western Heart character — Bake folds into Kevin,
+  who replaces him; Kevin gets his full canon moveset wired from decomped,
+  recomped, already-extracted and decrypted sources." Recorded under the
+  owner's word "Bake"; the repo holds no separate Bake character (roster
+  holds `baek/` only) — the matching fold on file is Baek → Kevin
+  (2026-10-18) above. **Moveset wired:** Kevin's full canon moveset is on
+  main at `game/assets/movesets/kevin.json` (159,289 B, PR #1822, merged
+  2026-11-22) with the write-up at
+  `docs/movesets/KEVIN-MOVESET-2026-11-21.md`.
 - **Open gaps.** A1 rig: his Tripo model was recorded static/needs
   auto-rig in the 2026-10-20 record; the Byou-placement conflict (an
   earlier lane put Byou's moves on Kevin/Rave) was superseded by canon —
