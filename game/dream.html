@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en" data-cb="none">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#14091f" />
+  <title>WESTERN HEART — Dream of the Palace</title>
+  <link rel="stylesheet" href="css/identity.css" />
+  <script src="js/identity.js"></script>
+</head>
+<body class="wh-page">
+<div class="wh-wrap">
+  <div class="wh-topbar">
+    <a class="wh-back" href="side-games.html">← SIDE GAMES</a>
+    <h1>DREAM <span class="soul">OF THE PALACE</span></h1>
+  </div>
+
+  <div class="wh-card">
+    <div class="wh-tag">🌙 PALACE OF DREAMING · WATER — PLAYABLE NOW</div>
+    <h2>One dream is one day</h2>
+    <p class="sub">The dream system of Western Heart, built from LSD: Dream
+      Emulator's verified dream loop — DreamSys state, mood → graph →
+      tomorrow's start, six kinds of dream links, chunk-and-tile dream
+      stages. WH places, WH characters, WH canon. Never a clone.</p>
+    <p class="sub"><b>How it plays:</b> walk with WASD / arrow keys (or the
+      pad below). Every chunk you enter logs its mood; touching a soul logs
+      theirs. When the dream timer ends, the day plots a point on your
+      graph — and <i>that point picks where tomorrow's dream starts</i>.
+      Walk into walls to find fixed and random links. Step on a marked
+      tile facing the right way for a facing link. Fall off the edge of
+      the world and the day ends. Earn Soul Shards for every day dreamed.</p>
+    <div class="wh-row" id="dreamer-row">
+      <span style="align-self:center"><b>Dreamer:</b></span>
+      <button class="wh-btn" data-dreamer="pantera">PANTERA</button>
+      <button class="wh-btn" data-dreamer="demonio">DEMONIO</button>
+      <button class="wh-btn" data-dreamer="soul">WANDERING SOUL</button>
+    </div>
+    <div style="height:10px"></div>
+    <div class="wh-row">
+      <button class="wh-btn" id="dream-start">🌙 BEGIN THE DREAM</button>
+      <button class="wh-btn" id="dream-flashback" disabled>🎞 FLASHBACK</button>
+      <span id="dream-status" style="align-self:center;color:var(--wh-gold);font-weight:800"></span>
+    </div>
+  </div>
+
+  <div class="wh-card">
+    <div class="wh-tag" id="dream-stage-tag">PALACE OF DREAMING</div>
+    <h2 id="dream-stage-name">No dream yet — begin above.</h2>
+    <p class="sub" id="dream-hud">Day 1 · Year 0 · no dream running.</p>
+    <canvas id="dream-canvas" width="640" height="400" style="width:100%;background:#0a0618"></canvas>
+    <div style="height:10px"></div>
+    <canvas id="dream-graph" width="640" height="90" style="width:100%;background:#0a0618"></canvas>
+    <p class="sub" id="dream-graph-label">The graph: one point per day dreamed. Tomorrow starts where yesterday's point says.</p>
+    <div style="height:10px"></div>
+    <div class="wh-row" id="dream-pad">
+      <button class="wh-btn" data-dir="up">▲</button>
+      <button class="wh-btn" data-dir="left">◀</button>
+      <button class="wh-btn" data-dir="down">▼</button>
+      <button class="wh-btn" data-dir="right">▶</button>
+      <span id="dream-msg" style="align-self:center;color:var(--wh-gold)"></span>
+    </div>
+    <div style="height:10px"></div>
+    <div class="wh-row">
+      <button class="wh-btn" id="dream-end">⏰ END THE DREAM NOW</button>
+      <span id="dream-shards" style="align-self:center"></span>
+    </div>
+  </div>
+
+  <div class="wh-card" id="dream-dayend" style="display:none">
+    <div class="wh-tag">🌅 THE DAY IS PLOTTED</div>
+    <h2 id="dream-dayend-title">Day 1 dreamed.</h2>
+    <p class="sub" id="dream-dayend-body"></p>
+    <div class="wh-row">
+      <button class="wh-btn" id="dream-again">🌙 SLEEP AGAIN</button>
+    </div>
+  </div>
+
+  <div class="wh-card" id="dream-special" style="display:none">
+    <div class="wh-tag">✦ A SPECIAL DAY</div>
+    <h2 id="dream-special-title"></h2>
+    <p class="sub" id="dream-special-body"></p>
+    <div class="wh-row">
+      <button class="wh-btn" id="dream-special-ok">🌙 WAKE AND DREAM ON</button>
+    </div>
+  </div>
+
+  <div class="wh-approval">
+    <b>HOW THE LOOP WORKS</b> — chunk moods and entity moods log as you
+    walk and touch; the day point is the mean of the two resolves; its
+    3×3 colour band is the day's colour; tomorrow starts at the first
+    chunk with yesterday's mood. Fixed + facing links are the 30
+    navigation goals (flag 13 can never be completed — the decomp says
+    so, and WH keeps the quirk honestly). Full provenance + mapping:
+    <b>docs/DREAM-SYSTEM-LSD-CORE.md</b>.
+  </div>
+</div>
+<div class="wh-toast" id="toast"></div>
+
+<script type="module">
+import {
+  DreamSys, Journal, CHUNK_TILES, TICKS_PER_SECOND, TRANSITION,
+  dayColorName, chunkMood, ambienceFor,
+} from './js/dream-system.js';
+
+const I = window.WHIdentity;
+const SAVE_KEY = 'wh_dream_journal_v1';
+const $ = (id) => document.getElementById(id);
+function toast(m) {
+  const t = $('toast'); t.textContent = m; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+const cv = $('dream-canvas'), ctx = cv.getContext('2d');
+const gv = $('dream-graph'), gtx = gv.getContext('2d');
+const W = cv.width, H = cv.height, TW = W / CHUNK_TILES, TH = H / CHUNK_TILES;
+
+let DATA = null, sys = null, dreamer = { id: 'pantera', name: 'Pantera' };
+let timerId = null, lastChunk = null, lastTouchedTile = null, running = false;
+
+const DIRS = {
+  up: { dx: 0, dy: -1, yaw: 0 }, right: { dx: 1, dy: 0, yaw: 90 },
+  down: { dx: 0, dy: 1, yaw: 180 }, left: { dx: -1, dy: 0, yaw: 270 },
+};
+const ENTITY_GLYPH = { trader: 'T', scimitar: 'S', phantom: 'P', koi: 'K', orb: 'o', eyeball: 'E', daruma: 'D' };
+const DAY_COLOR_HEX = { black: '#111111', blue: '#2a4a9a', green: '#2a7a3a', cyan: '#2a9a9a', red: '#9a2a2a', pink: '#d44a8a', yellow: '#c9a52a', white: '#e8e8e8' };
+
+function saveJournal() {
+  if (!sys) return;
+  try { localStorage.setItem(SAVE_KEY, JSON.stringify(sys.toJSON())); } catch (e) { /* private mode */ }
+}
+function loadJournalJson() {
+  try { return JSON.parse(localStorage.getItem(SAVE_KEY) || 'null'); } catch (e) { return null; }
+}
+
+/* ---------- walls: borders + a deterministic few interior blocks ----------
+   Arrival, link and entity tiles are always kept clear. */
+function wallTiles(stage, col, row) {
+  const walls = new Set();
+  for (let x = 0; x < CHUNK_TILES; x++) {
+    walls.add(x + ',0'); walls.add(x + ',' + (CHUNK_TILES - 1));
+  }
+  for (let y = 0; y < CHUNK_TILES; y++) {
+    walls.add('0,' + y); walls.add((CHUNK_TILES - 1) + ',' + y);
+  }
+  let h = (stage.moodSeed || 0) * 31 + col * 17 + row * 7;
+  for (let i = 0; i < 14; i++) {
+    h = (Math.imul(h, 1103515245) + 12345) >>> 0;
+    const x = 2 + (h % 16), y = 2 + ((h >>> 8) % 16);
+    walls.add(x + ',' + y);
+  }
+  const clear = (x, y) => walls.delete(x + ',' + y);
+  (stage.arrivalPoints || []).forEach((a) => {
+    if (a.chunk[0] === col && a.chunk[1] === row) clear(a.tile[0], a.tile[1]);
+  });
+  for (const kind of ['fixed', 'facing', 'extra', 'scripted']) {
+    ((DATA.links[kind] || [])[DATA.stages.indexOf(stage)] || []).forEach((e) => {
+      if (e.chunk[0] === col && e.chunk[1] === row && e.tile) clear(e.tile[0], e.tile[1]);
+    });
+  }
+  (stage.entitySpawns || []).forEach((e) => {
+    if (e.chunk[0] === col && e.chunk[1] === row) clear(e.tile[0], e.tile[1]);
+  });
+  clear(10, 10); clear(5, 5);
+  return walls;
+}
+function isWall(stage, col, row, x, y) {
+  if (x < 0 || y < 0 || x >= CHUNK_TILES || y >= CHUNK_TILES) return 'edge';
+  return wallTiles(stage, col, row).has(x + ',' + y) ? 'wall' : false;
+}
+function entityAt(stage, col, row, x, y) {
+  return (stage.entitySpawns || []).find((e) => e.chunk[0] === col && e.chunk[1] === row && e.tile[0] === x && e.tile[1] === y) || null;
+}
+function linkMark(stage, col, row, x, y) {
+  for (const kind of ['facing', 'scripted', 'extra']) {
+    const list = ((DATA.links[kind] || [])[DATA.stages.indexOf(stage)] || []);
+    if (list.some((e) => e.chunk[0] === col && e.chunk[1] === row && e.tile && e.tile[0] === x && e.tile[1] === y)) return kind;
+  }
+  return null;
+}
+
+/* ---------- movement ---------- */
+function step(dirName) {
+  if (!running || !sys || !sys.inDream || !sys.place) return;
+  const d = DIRS[dirName];
+  const p = sys.place, stage = sys.currentStage;
+  const nx = p.tileX + d.dx, ny = p.tileY + d.dy;
+  sys.place.yawDeg = d.yaw;
+  // Off the chunk: next chunk of the same stage, or off the world.
+  let ncol = p.chunkCol, nrow = p.chunkRow, ntx = nx, nty = ny;
+  if (nx < 0) { ncol--; ntx = CHUNK_TILES - 1; }
+  if (nx >= CHUNK_TILES) { ncol++; ntx = 0; }
+  if (ny < 0) { nrow--; nty = CHUNK_TILES - 1; }
+  if (ny >= CHUNK_TILES) { nrow++; nty = 0; }
+  if (ncol < 0 || nrow < 0 || ncol >= stage.cols || nrow >= stage.rows) {
+    const fell = sys.linkFall();
+    if (fell) { $('dream-msg').textContent = 'You fell off the edge of the world.'; endDreamUI(fell); }
+    else $('dream-msg').textContent = 'No ground that way — the dream holds you back.';
+    draw(); return;
+  }
+  const w = isWall(stage, ncol, nrow, ntx, nty);
+  if (w) {
+    // A wall touch: fixed link first, then a random link on timer%16==0.
+    const res = sys.linksOnWallTouch();
+    if (res) {
+      $('dream-msg').textContent = res.kind === 'fixed'
+        ? 'A fixed link opens — the wall gives way.'
+        : 'A random link takes you — the wall gives way.';
+      afterLink();
+    } else {
+      $('dream-msg').textContent = 'A wall. Press against it and the dream may link…';
+    }
+    draw(); return;
+  }
+  const chunkChanged = ncol !== p.chunkCol || nrow !== p.chunkRow;
+  sys.place = { chunkCol: ncol, chunkRow: nrow, tileX: ntx, tileY: nty, yawDeg: d.yaw };
+  if (chunkChanged) { sys.logCurrentChunk(); lastChunk = ncol + ',' + nrow; }
+  // Links on the tile stood on: scripted, then extra, then facing.
+  const link = sys.linksOnStep({ walkingForward: true, yawDeg: d.yaw });
+  if (link) {
+    if (link.kind === 'scripted-start') $('dream-msg').textContent = 'A scripted walk takes your feet…';
+    else $('dream-msg').textContent = 'A ' + link.kind + ' link carries you away.';
+    afterLink(); draw(); return;
+  }
+  // Touch an entity on this tile (once per entry onto the tile).
+  const tileId = ncol + ',' + nrow + ',' + ntx + ',' + nty;
+  const ent = entityAt(stage, ncol, nrow, ntx, nty);
+  if (ent && tileId !== lastTouchedTile) {
+    lastTouchedTile = tileId;
+    const rec = DATA.entities.find((e) => e.id === ent.type);
+    const res = sys.touchEntity(ent.type);
+    $('dream-msg').textContent = (rec ? rec.name + ': ' + rec.blurb : 'Something stirs.') +
+      (res && res.kind ? ' — it sends you elsewhere!' : '');
+    if (res && res.kind) { afterLink(); draw(); return; }
+    saveJournal();
+  }
+  draw();
+}
+function afterLink() {
+  lastChunk = sys.place.chunkCol + ',' + sys.place.chunkRow;
+  lastTouchedTile = null;
+  saveJournal();
+  updateHud();
+}
+
+/* ---------- tick + day end ---------- */
+function tickLoop() {
+  if (!sys || !sys.inDream) return;
+  const r = sys.tick();
+  if (r.ended) { endDreamUI(r); return; }
+  updateHud();
+  draw();
+}
+function endDreamUI(result) {
+  running = false;
+  clearInterval(timerId); timerId = null;
+  saveJournal();
+  const shards = 20 + result.dayPoint[0] * 0 + (sys.journal.navFlags.filter(Boolean).length * 5);
+  I.addShards(Math.max(20, shards), 'dream');
+  const p = I.get(); p.stats.sideGames++; I.save();
+  $('dream-shards').textContent = 'Soul Shards: ' + p.shards;
+  $('dream-dayend').style.display = '';
+  $('dream-dayend-title').textContent = 'Day ' + result.day + ' dreamed — point (' + result.dayPoint[0] + ', ' + result.dayPoint[1] + '), ' + result.dayColor + '.';
+  const next = sys.journal.previousPoint();
+  $('dream-dayend-body').textContent =
+    (result.reason === 'fall' ? 'You fell off the edge of the world. ' : 'The dream timer ran out. ') +
+    'Unlock score ' + result.unlockScore + ' · navigation ' + result.navScore +
+    ' · ' + sys.journal.navFlags.filter(Boolean).length + '/30 navigation goals' +
+    (result.canFlashback ? ' · FLASHBACK is open (score above 9,999,999 + a kept memory).' : '') +
+    ' Tomorrow the dream starts where yesterday\'s point (' + next[0] + ', ' + next[1] + ') says.' +
+    ' You earned at least 20 Soul Shards for dreaming.';
+  $('dream-flashback').disabled = !sys.journal.canFlashback();
+  $('dream-status').textContent = 'Day ' + sys.journal.dayNumber + ' awaits.';
+  updateHud(); drawGraph(); draw();
+}
+function startDream() {
+  if (!DATA || !sys) return;
+  const r = sys.startDay();
+  $('dream-dayend').style.display = 'none';
+  if (r.specialDay) {
+    $('dream-special').style.display = '';
+    $('dream-special-title').textContent = r.specialDay.title;
+    $('dream-special-body').textContent = r.specialDay.text;
+    drawGraph();
+    return;
+  }
+  beginPlayable();
+}
+function beginPlayable() {
+  running = true;
+  lastChunk = sys.place.chunkCol + ',' + sys.place.chunkRow;
+  lastTouchedTile = null;
+  $('dream-status').textContent = 'Dreaming as ' + sys.dreamer.name + ' — ' + sys.currentStage.name + '.';
+  $('dream-msg').textContent = 'Walk. The dream is counting.';
+  clearInterval(timerId);
+  timerId = setInterval(tickLoop, 1000 / TICKS_PER_SECOND);
+  updateHud(); draw(); drawGraph();
+}
+
+/* ---------- drawing ---------- */
+function draw() {
+  ctx.fillStyle = '#0a0618'; ctx.fillRect(0, 0, W, H);
+  if (!sys || !sys.place || !sys.currentStage) {
+    ctx.fillStyle = '#8a7aa8'; ctx.font = '15px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('No dream running. Press BEGIN THE DREAM.', W / 2, H / 2);
+    return;
+  }
+  const stage = sys.currentStage, p = sys.place;
+  const amb = ambienceFor(sys.journal.dayNumber, sys.stageIndex, DATA.ambienceFamilies);
+  const mood = chunkMood(stage, p.chunkCol, p.chunkRow);
+  ctx.fillStyle = amb ? amb.clear : '#0a1830';
+  ctx.fillRect(0, 0, W, H);
+  const walls = wallTiles(stage, p.chunkCol, p.chunkRow);
+  for (let y = 0; y < CHUNK_TILES; y++) {
+    for (let x = 0; x < CHUNK_TILES; x++) {
+      const px = x * TW, py = y * TH;
+      if (walls.has(x + ',' + y)) {
+        ctx.fillStyle = '#3a3048'; ctx.fillRect(px + 1, py + 1, TW - 2, TH - 2);
+        ctx.fillStyle = '#5a4a72'; ctx.fillRect(px + 1, py + 1, TW - 2, 4);
+      } else {
+        const mark = linkMark(stage, p.chunkCol, p.chunkRow, x, y);
+        if (mark) {
+          ctx.fillStyle = mark === 'facing' ? 'rgba(201,165,42,0.35)' : 'rgba(212,74,138,0.35)';
+          ctx.fillRect(px + 1, py + 1, TW - 2, TH - 2);
+        }
+        ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+        ctx.strokeRect(px + 0.5, py + 0.5, TW - 1, TH - 1);
+      }
+      const ent = entityAt(stage, p.chunkCol, p.chunkRow, x, y);
+      if (ent) {
+        ctx.fillStyle = '#ffe996';
+        ctx.beginPath(); ctx.arc(px + TW / 2, py + TH / 2, 8, 0, 7); ctx.fill();
+        ctx.fillStyle = '#14091f'; ctx.font = 'bold 11px sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText(ENTITY_GLYPH[ent.type] || '?', px + TW / 2, py + TH / 2 + 4);
+      }
+    }
+  }
+  // The dreamer.
+  const dx = p.tileX * TW + TW / 2, dy = p.tileY * TH + TH / 2;
+  ctx.fillStyle = '#ffffff';
+  ctx.beginPath(); ctx.arc(dx, dy, 9, 0, 7); ctx.fill();
+  ctx.strokeStyle = '#8b2bd8'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(dx, dy);
+  ctx.lineTo(dx + Math.sin((p.yawDeg || 0) * Math.PI / 180) * 12, dy - Math.cos((p.yawDeg || 0) * Math.PI / 180) * 12);
+  ctx.stroke(); ctx.lineWidth = 1;
+  // Caption.
+  ctx.fillStyle = 'rgba(255,255,255,0.85)'; ctx.font = '12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(stage.name + ' · chunk (' + p.chunkCol + ',' + p.chunkRow + ') mood (' + mood[0] + ',' + mood[1] + ')' +
+    ' · texture ' + (sys.textureSet || '—'), 8, H - 8);
+}
+function drawGraph() {
+  gtx.fillStyle = '#0a0618'; gtx.fillRect(0, 0, gv.width, gv.height);
+  const pts = sys ? sys.journal.graph : [];
+  gtx.strokeStyle = 'rgba(255,255,255,0.25)';
+  gtx.beginPath(); gtx.moveTo(0, gv.height / 2); gtx.lineTo(gv.width, gv.height / 2); gtx.stroke();
+  gtx.beginPath(); gtx.moveTo(gv.width / 2, 0); gtx.lineTo(gv.width / 2, gv.height); gtx.stroke();
+  pts.forEach((pt, i) => {
+    if (!pt) return;
+    const x = (i / 364) * gv.width;
+    const y = gv.height / 2 - (pt[1] / 9) * (gv.height / 2 - 6);
+    const px2 = gv.width / 2 + (pt[0] / 9) * (gv.width / 2 - 6);
+    gtx.fillStyle = DAY_COLOR_HEX[dayColorName(pt)] || '#fff';
+    gtx.beginPath(); gtx.arc(x, y, 3, 0, 7); gtx.fill();
+    void px2;
+  });
+  if (sys) {
+    gtx.fillStyle = '#fff'; gtx.font = '11px sans-serif'; gtx.textAlign = 'left';
+    gtx.fillText('Day ' + sys.journal.dayNumber + ' · Year ' + sys.journal.yearNumber, 6, 12);
+  }
+}
+function updateHud() {
+  if (!sys) return;
+  const st = sys.currentStage;
+  $('dream-stage-tag').textContent = st ? st.home : 'PALACE OF DREAMING';
+  $('dream-stage-name').textContent = st ? st.name + ' — dreamer ' + sys.dreamer.name : 'No dream yet.';
+  const left = sys.timeLimitTicks >= 0
+    ? Math.max(0, Math.ceil((sys.timeLimitTicks - sys.timerTicks) / TICKS_PER_SECOND)) + 's left'
+    : 'no limit';
+  const point = sys.sequence ? sys.sequence.evaluateGraphPosition() : [0, 0];
+  $('dream-hud').textContent = 'Day ' + sys.journal.dayNumber + ' · Year ' + sys.journal.yearNumber +
+    ' · ' + left + ' · day point so far (' + point[0] + ', ' + point[1] + ') ' + dayColorName(point) +
+    ' · nav ' + sys.journal.navFlags.filter(Boolean).length + '/30 · dynamic links ' + sys.journal.dynamicLinkCount +
+    ' · unlock ' + sys.journal.calcUnlockScore();
+  const p = I.get();
+  $('dream-shards').textContent = 'Soul Shards: ' + p.shards;
+}
+
+/* ---------- wiring ---------- */
+document.querySelectorAll('#dreamer-row [data-dreamer]').forEach((b) => {
+  b.addEventListener('click', () => {
+    dreamer = { id: b.dataset.dreamer, name: b.textContent.trim() };
+    if (sys) sys.dreamer = dreamer;
+    toast('Dreamer: ' + dreamer.name);
+  });
+});
+document.querySelectorAll('#dream-pad [data-dir]').forEach((b) => {
+  b.addEventListener('click', () => step(b.dataset.dir));
+});
+document.addEventListener('keydown', (e) => {
+  const map = { ArrowUp: 'up', KeyW: 'up', ArrowDown: 'down', KeyS: 'down', ArrowLeft: 'left', KeyA: 'left', ArrowRight: 'right', KeyD: 'right' };
+  const dir = map[e.code];
+  if (dir && running) { e.preventDefault(); step(dir); }
+});
+$('dream-start').addEventListener('click', startDream);
+$('dream-again').addEventListener('click', startDream);
+$('dream-end').addEventListener('click', () => {
+  if (sys && sys.inDream) endDreamUI(sys.endDay('time-up'));
+});
+$('dream-flashback').addEventListener('click', () => {
+  if (!sys) return;
+  const r = sys.beginFlashback();
+  if (r) { toast('Flashback — a kept moment, replayed.'); beginPlayable(); }
+});
+$('dream-special-ok').addEventListener('click', () => {
+  $('dream-special').style.display = 'none';
+  const r = sys.endSpecialDay();
+  saveJournal();
+  if (r) {
+    $('dream-dayend').style.display = '';
+    $('dream-dayend-title').textContent = 'Day ' + r.day + ' — a special day, plotted as (0, 0).';
+    $('dream-dayend-body').textContent = 'Special days log (0, 0) in both moods. Tomorrow begins from there.';
+  }
+  updateHud(); drawGraph();
+});
+
+(async function boot() {
+  try {
+    const res = await fetch('./data/dream-stages.json');
+    DATA = await res.json();
+    sys = DreamSys.fromJournalJson(DATA, loadJournalJson(), { seed: (Date.now() % 2147483647) | 0, dreamer });
+    $('dream-flashback').disabled = !sys.journal.canFlashback();
+    updateHud(); draw(); drawGraph();
+  } catch (e) {
+    $('dream-status').textContent = 'Could not load dream data: ' + e.message;
+  }
+})();
+
+if (window.WHColorblind) window.WHColorblind.apply();
+</script>
+</body>
+</html>
