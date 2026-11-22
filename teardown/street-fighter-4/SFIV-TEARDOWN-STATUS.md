@@ -38,8 +38,10 @@ SFxT status is recorded separately in `../street-fighter-x-tekken/`.
    (SF4 PC install or the owner's Xbox 360 disc files) and dump bac/bcm →
    JSON. That run has not happened yet.
 2. **WH bank converter.** bac/bcm JSON → WH moveset bank. Not built.
-   The SF EX `PL/*.PAC` clips have the same gap (no WH bank converter,
-   P00X index → names not established).
-3. **Animations/models.** `.emo`/`.emz` extraction needs piecemontee's
-   SF4 Asset Explorer (SourceForge mercurial source, v0.38 binary on
-   mediafire) — not vendored here; no GitHub mirror found.
+
+## Update 2026-11-22 — Lane 1B (vanilla SFIV solved, movesets wired)
+
+- **Extracted moveset data: DONE.** Vanilla SFIV (Build 3584) stores char data in `.emz` containers; Kaggle kernel `marsfmmg/sfiv-bac-bcm-extract-v2-emz` unpacked all 25 chars (EMZ `skip=16 wbits=-15`, raw deflate after a 16-byte header; #BAC/#BCM carved magic-to-next-magic) and the vanilla parser (`tools/sfiv_bac_bcm.py`) parsed 50/50 files: 1,922 moves, 5,403 named scripts.
+- **Vanilla format solved** (hex-verified on RYU.bac 174,464 B / RYU.bcm 7,948 B): BAC `#BAC`+FE FF, 687-entry script/name tables (196 nonzero, indices align exactly); script header (first,last,iasa,total) + directory in vanilla order (frameOff, type, count, dataOff); BCM counts/offsets solved; input bits use the AE layout exactly.
+- **WH bank converter: BUILT.** `tools/bac_bcm_to_wh.py` `--sfiv-dir` mode (tested on all 25 parsed JSONs); SFIV WH movesets wired in `moveset-library/movesets-v2/sf4-*.json` (25 files, 1,922 moves, 1,663 linked to scripts).
+- **Frame data/damage: honest placeholders.** BAC script bodies are NOT decoded (open RE task; one focused attempt 2026-11-22 failed — recorded in the lane workdir). Each move note quotes the raw BAC header values. The 5LP header field order (first=9 last=12 iasa=26 total=32) is UNVERIFIED — the USFIV AE cross-check that was supposed to settle it could not run (USFIV parsed 0; see `../ultra-street-fighter-4/USFIV-TEARDOWN-STATUS.md`).
