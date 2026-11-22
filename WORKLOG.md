@@ -4684,3 +4684,94 @@ DOA/VF editor-status verification (web search failed on local disk quota).
 **Accepted shortfalls (owner landing with eyes open):** strict p999 stretch 6.292 vs the 2.5 gate; face slab 71% (Head 63% + Neck 8%) vs the 95% bar. Everything else passes; arms measurably improve on the shipped file.
 
 - Deletions: none (one file replaced in place).
+
+## 2026-11-15 — Four broken big models packed under the jsDelivr limit (all-86 route)
+
+**Owner order (Jay, 2026-11-15):** "You can raise the cap man. Or use a second house. I don't really care whatever is easiest."
+
+**What:** the 4 fighter models with NO working source anywhere (Worker 404, jsDelivr 403 over 20 MB, not on the shell) now have packed `-cdn` copies under 19.5 MB, and `game/js/assets.js` MODEL_URLS points at them. Originals untouched. No cap change, no new host, no credential asked: the second house is jsDelivr, already wired as the loader's last fallback (Worker → local → jsDelivr).
+- `roster/vixen/attires/attire1/model-rigged-noplane-cdn.glb` — menajerii default, 39,136,632 → 13,659,760 B
+- `roster/kuma/attires/attire1/source/gashadokuro-a1-rigged-cdn.glb` — gashadokuro default, 38,740,632 → 18,600,856 B (jpeg-q 85)
+- `roster/cain-elias/attires/attire1/model-rigged-cdn.glb` — cain-elias default, 27,643,320 → 16,373,968 B
+- `roster/king-tyrant/attires/attire1/model-rigged-cdn.glb` — King Tyrant attire 1, 25,398,208 → 15,083,972 B
+
+**Why not raise the cap:** GitHub Pages publishes sites no larger than 1 GB (GitHub's own Pages limits doc) — a hard limit, not our tool's number. All 32 Worker models (970 MB) + the live shell would need ~2 GB. Raising our cap alone would produce a site GitHub refuses to publish. Compression-to-shell is also dead: the 32 Worker models would need to shrink to 2.5% of original to fit the 23.8 MB headroom left after #1744.
+
+**Method:** the repo's own `tools/deploy/fit_cdn_budget.py` (PNG ≥0.5 MB → JPEG q93, gltfpack `-cc -kn -km -ke`), decoding meshopt inputs first with `tools/anim/gltf_codec.mjs`. Gashadokuro needed q85 + JPEG re-encode (its 4K color JPEG barely shrinks at q93).
+
+**Verification:** all 4 packed files gltf-transform validate clean, skins kept (JOINTS_0/WEIGHTS_0 on every primitive); Blender 5.2 Cycles renders of original vs packed viewed side by side — identical for all 4 (proof PNGs in `docs/proof/2026-11-15/cap-cdn-pack/`); worst normal-angle error 1.66° mean / 7.79° p99 (gashadokuro q85). `model-key-guard` failure list: 335 entries on clean main → 321 with this change (the 4 keys now resolve; the 321 left are pre-existing sparse-checkout gaps — every other fighter's file is absent from a sparse tree, same on main).
+
+**Still broken after this PR:** nothing in the 4 — but the 38-entry R2 manifest gap stands (files added since the Oct manifest, incl. all 26 BF fighters): the bucket still doesn't serve them, they load via jsDelivr (≤20 MB) or the shell instead. The manifest regen + bucket upload is a separate follow-up; it needs the owner's B2 write key and changes nothing about what loads. Live-fight proof for the 4 packed models is owed after merge + deploy (they only become loadable from jsDelivr once this lands on main).
+
+- Deletions: none.
+
+## 2026-11-15 — Five more big models packed under the jsDelivr limit (batch 2)
+
+**Owner order (Jay, 2026-11-15 ~19:11 EST):** "whichever one is the best option" — the parent's pick, after Jay asked for a way around the GitHub caps: keep packing models small (free, proven, no new accounts, no migration).
+
+**What:** 5 more fighter models now have packed `-cdn` copies under 19.5 MB, and `game/js/assets.js` MODEL_URLS points at them. Originals untouched. Yukihyo attires 2+3 first — they were the ONLY models with no working source anywhere (skip in every deploy over the 1 GiB shell cap, jsDelivr 403 over 20 MB, not on the shell); then the next-largest Worker-dependent models, biggest-first.
+- `roster/yukihyo/attires/attire2/source/yukihyo-a2-bobcat-pride-rigged-cdn.glb` — Yukihyo attire 2, 33,196,144 → 17,430,768 B (jpeg-q 85)
+- `roster/yukihyo/attires/attire3/source/yukihyo-a3-tiger-king-rigged-cdn.glb` — Yukihyo attire 3, 32,049,712 → 17,184,168 B (jpeg-q 85)
+- `roster/dxmmii/attires/attire1/model-rigged-cdn.glb` — DXMMII, 43,394,464 → 17,741,924 B (jpeg-q 85)
+- `roster/parvati/attires/attire1/model-rigged-cdn.glb` — Megami, 42,298,953 → 17,528,996 B (jpeg-q 85, PNG ≥0.5 MB)
+- `game/assets/models/cyborg-x-cdn.glb` — Cyborg-X, 41,346,180 → 8,343,724 B (jpeg-q 85, PNG ≥0.5 MB)
+
+**Method:** the repo's own `tools/deploy/fit_cdn_budget.py` (PNG ≥0.5 MB → JPEG q85, gltfpack `-cc -kn -km -ke`), decoding meshopt inputs first with `tools/anim/gltf_codec.mjs`. Batch 1 used q93 except gashadokuro (q85); this batch needed q85 throughout — the Tripo-style files' 4K textures don't shrink enough at q93. Megami needed the PNG ≥0.5 MB threshold (the script's 1.0 MB default left 7.6 MB of PNG in the pack: 21.4 MB, over budget); the 0.5 MB threshold is the same one batch 1's PR records.
+
+**Verification:** all 5 packed files gltf-transform validate clean (a2/a3/dxmmii/cyborg-x: every primitive skinned; megami: 26/30 skinned — the same 4 rigid prims, headgear + hair strands, as her original); Blender 5.2 Cycles renders of original vs packed viewed side by side — identical for all 5 (proof PNGs in `docs/proof/2026-11-15/cap-cdn-pack/`); worst normal-angle error 2.17° mean / 10.00° p99 (megami q85 — the batch's worst; the other three with normal maps are 0.80° mean / 6.44° p99 or better; cyborg-x has no normal maps). Megami's pack also fixes 7 source validation errors (clearcoatRoughnessFactor 1.45 out of range on 7 materials — gltfpack clamps them; the original fails gltf-transform validation, the pack reports "No errors found"). Material profiles verified identical original-vs-packed for all 5 (only float32 rounding + dropped redundant alphaMode/baseColorFactor defaults from gltfpack). `tools/assets/material_gate.mjs`: Megami's `-cdn` URL added to the owner outfit-rule exemption (same untextured classes as her original URL — EyeMoisture-3/-4, Cornea-2 clear shells; Torso-6 inner shell); the other 4 need no gate change (fully textured, profiles identical).
+
+**Still broken after this PR:** the remaining 26 Worker-dependent default models over 20 MB still load only from the Worker bucket (no working jsDelivr source); the next batch packs the biggest of those the same way. Live-fight proof for the 5 packed models is owed after merge + deploy (they only become loadable from jsDelivr once this lands on main). Yukihyo attires 2+3 become loadable for the first time anywhere.
+
+- Deletions: none.
+
+## 2026-11-19 — No Mercy animation bank re-extracted with the W3c-corrected decode (NO-MERCY RE-EXTRACT)
+
+**Owner instruction (verbatim):** "Yeah, get that re-extraction and decoding and everything done"
+
+**What:** the full No Mercy animation bank (`teardown/wwf-no-mercy/animations/`) re-extracted from the Rev-A ROM (CRC32 `BACEEA13`) with the game-exact W3c decode (FileTable `0x16C31D8`, FirstFile `0x1BD150`, 1-based file IDs, 12/10/10 channel split). The old bank held the shifted 0-based decode for all but the 11 Rock clips. True bank range is `0x2DD9..0x4473` — **5,787 clips** (1,353 system, 4,434 move), not `0x445A`/5,762: files `0x445B..0x4473` all fit the 4+98N layout and satisfy the Toki2 frame rule, with a hard break at `0x4474` (the old end was an artifact of the buggy window). `FORMAT.md` updated (range, corrected joint table — indices 18–25 were shifted by one, UpperRightLeg missing — u10 retarget note); `tools/extract_all_anims.py` range fixed to `0x4473`.
+
+**Verification:** all 11 Rock clips byte-identical to the W3c re-extraction; exact 4+98N lengths on all 5,787 clips; Toki2 frame rule holds on 95%+; stance control `0x2DD9` reproduces the W3c smoothness numbers exactly (mean step 1.36 u10 units); smoothness spot checks across the range 0.5–12.5 deg/frame (real motion, vs the 74–109 deg/frame garbage the old decode produced); AnimID join clean (0 errors). Gitleaks clean on the commit.
+
+**CI note:** the bank PR (#1755) timed out the clobber-guard job at 25 min (the guard fetched ~17k blobs one by one for 5,780 files). Fixed in PR #1756 (merged): the guard now skips known-binary extensions before fetching and reuses base blobs when main == base — verified end-to-end against the #1755 diff in 0.3s, 15/15 unit tests. This commit re-triggers #1755's checks so the guard runs with the fix.
+
+- Deletions: 1 — `teardown/wwf-no-mercy/animations/clips/anim_4C04.npy` (not a real game file: file IDs only run 1..0x4C02; reading 0x4C04 goes past the file table. PR carries the approved-deletion label.)
+
+## 2026-11-19 — Clobber guard reads blobs through one git cat-file --batch process (NO-MERCY RE-EXTRACT)
+
+**Owner instruction (verbatim):** "Yeah, get that re-extraction and decoding and everything done"
+
+**What:** the clobber guard (` .github/scripts/clobber_guard.py`) used to run one `git show` subprocess per changed file per revision. PR #1756's binary skip fixed the binary-heavy case, but the No Mercy model re-extraction (PR #1759) is ~7,173 TEXT files (OBJ/VC are text) — ~14k fetches at the observed ~90 ms each would have timed the guard out again at 25 min. The guard now reads all files at a revision through a single `git cat-file --batch` process (`_read_revision_files`); missing files map to None, non-blob paths are consumed and discarded, and the vanishingly rare newline-in-filename case falls back to `_git_show`. `git archive` was tried first and rejected: in a partial clone it triggers a promisor fetch that hangs in this environment, and it needs an ls-tree pre-pass because it fails on missing paths.
+
+**Verification:** 18/18 unit tests (3 new: both-revisions read incl. missing files, 50-file single-batch read, empty paths). End-to-end against the real #1755 bank diff: 0.31 s; against the #1757 mapping diff: 0.08 s. Stress test on a synthetic 7,173-file text diff: guard passes in 4.2 s (the old per-file path extrapolates to ~21 min in a lazy-fetch clone). Negative control: a synthetic revert is still flagged. Gitleaks clean on the commit.
+
+- Deletions: none.
+
+## 2026-11-19 — Full No Mercy ROM extraction lands in the teardown (NO-MERCY RE-EXTRACT)
+
+**Owner instruction (verbatim):** "Yeah, get that re-extraction and decoding and everything done"
+
+**What:** the whole ROM, not just the animations — 12,408 files changed, 0 deletions. Models (`models/`, 3,586 OBJs + .vc sidecars + manifest) re-extracted with the W3c-correct 1-based window: the old files were built with the right table constants but 0-based indexing, so every file labeled N held game file N+1 — 6,900 files changed content, 241 were byte-identical (neighboring game files with identical bytes), 32 files are new (16 models the old set missed, incl. arena/backstage/stage/lobby/weapon pieces). Arenas re-assembled (17 OBJs, manifest refreshed; the fresh extractor's `ring_cage` renamed back to the repo's `arena_cage` so nothing deletes; `ARENAS.md` kept). Textures re-extracted (5,035 PNGs + manifest) into the NEW dir `textures/rom-corrected/` — the old `textures/rom/` names are off by one and cannot be fixed in place (see that dir's README); removing old `rom/` needs the owner's `owner-approved-deletion` label, so it stays until the follow-up deletion PR. New data dirs: `moves/` (full 2,875-move universe, damage table, reversals), `sound/` (293 WAVs + 29 sequences from the 3 N64 sound banks, 730 s total), `ui/` (menu backgrounds, fonts, shop catalogue, 6,658 text strings), `caw/` (260 default costumes), `misc/` (wrestler defs, movesets/params raw dumps, archive). Catalogue: `FILE-TABLE-CATALOGUE.md` + `file-table.csv` (19,458 files). Survey scripts landed rewired to repo paths in `tools/` (`phaseA.py`, `full_pass.py`, `fixups.py`, `game_data.py`); the repo's extractors already used the W3c-correct `FileTable` — only their stale OUTPUT was wrong, so no extractor changes were needed. 25 hidden wrestlers found (VPW2 leftovers: Raven, Vader, Big Show, Misawa, Kobashi, …). Bannon-usable pieces flagged in the catalogue §9 (move library data + damage joins to the corrected bank, wrestler defs, costumes, shop catalogue, sound, fonts, strings).
+
+**Verification:** model/texture +1 shift proven on the full sets (repo[fid] == fresh[fid+1] for 3,570/3,570 models, texture kinds 5,029/5,029); fresh extraction parses ALL 3,586 AkiModel files (the old "16 unparseable" were palette/texture files under the shift); AnimID joins proven (`Animations[MasterMoveID] == menu AnimID` for 1,642/1,681, 39 off by ±1–2); zero silent WAVs; menu backgrounds visually verified. Gaps (catalogue §8): moveset/params bit-packing (raw dumps only), sng→MIDI (needs SubDrag's N64MidiTool), AkiArchive 0x00F7, 3 undocumented Binary files, 64 B palette semantics, 39 AnimID mismatches. Gitleaks clean on the commit.
+
+- Deletions: none.
+
+## 2026-11-19 — Clobber guard reads git diff output instead of blobs (NO-MERCY RE-EXTRACT)
+
+**Owner instruction (verbatim):** "Yeah, get that re-extraction and decoding and everything done"
+
+**What:** PR #1758's `git cat-file --batch` fix saved subprocess spawns but NOT the fetches: in the CI checkout (`filter: blob:none`) each missing blob still negotiates separately, and the batch reads left the #1759 guard running past 16 minutes on a 7k-file text diff (heading for the 25-minute timeout, same as #1755). `main()` now works from `git diff` output instead: `git diff` bulk-fetches every blob it needs in one or two promisor negotiations (verified: the 12,409-file #1759 diff in a fresh partial clone took 2 fetches), and the check only needs the files main actually changed — additions(base→main) ∩ deletions(main→head). When main hasn't moved past the fork point the guard passes without reading anything, so its cost is decoupled from PR size. The blob-based `check_files()` / `_read_revision_files()` remain as the library API (used by `tools/clobber-check/` and `git_merge.py`) and as the fallback for a diff header no filename parser can match. One semantic note: the diff check counts line occurrences where the set check does not (a line main added twice that the branch keeps once now flags); the Reverts callout covers the exception.
+
+**Verification:** 25/25 unit tests (7 new: stale-head flags, keeping-head passes, main==base fast path, branch-deleted file doesn't flag, diff names/line sets incl. a " b/" filename, CRLF + blank lines, bad header raises). End-to-end on real diffs, all under 0.2 s: #1759 diff passes (fast path), #1755 bank diff passes, moved-main case passes via the diff path, and a genuine revert (base 1867590, main 967495e, head b3dd3a4) correctly fails flagging 51 + 62 + 5 lines. Fresh partial clone (blobs missing, CI-like): pass case in seconds with 2 promisor fetches; revert case correctly fails. Gitleaks clean on the commit.
+
+- Deletions: none.
+
+## 2026-11-19 — Clobber guard only checks files the branch also changed (NO-MERCY RE-EXTRACT)
+
+**Owner instruction (verbatim):** "Yeah, get that re-extraction and decoding and everything done"
+
+**What:** PR #1760's diff rewrite dropped a restriction the blob-based guard had: it checked every file MAIN changed, including files the branch never touched — but a file the branch never touched keeps main's version at merge, so flagging it would fail every PR open while main advances. `main()` now intersects main-changed files with branch-changed files (both tree-only diffs, no blobs). Caught before it bit: the #1759 branch would have failed on the guard files themselves. The stale-head test fixture was also fixed to the true PR #579 pattern (the stale head REWRITES the file with branch-only lines while lacking main's lines — a head byte-identical to base changes nothing and cannot revert).
+
+**Verification:** 26/26 unit tests (new: unrelated-head passes; stale-head test asserts the untouched file does not flag). End-to-end on the #1759 scenario (base 967495e, main 4c0375e, head b29f8cb1): correctly fails on WORKLOG.md only (3 lines — the #1760 entry the branch lacks), guard files not flagged. Gitleaks clean on the commit.
+
+- Deletions: none.

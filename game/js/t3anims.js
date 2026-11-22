@@ -888,6 +888,51 @@ export function t7GraphRetarget(fid, key, model, THREE, instanceKey = null) {
   const name = 't7g:' + key;
   return retargetT3Clips({ [name]: clip }, b.skelId, model, THREE, instanceKey, [name]);
 }
+/** Retarget ONE standalone T7 throw clip (game/assets/anim/t7/king/throws/<key>.json, wh-anim/1) onto
+    `model` as action 't7throw:<key>', or null. Lane 3 (2026-11-20, pantera-throwwire): the throw path
+    must not load the whole 57 MB graph bank (ensureT7Graph), so the clip record is handed in directly.
+    Mirrors ensureDwMoves: the T7 king skeleton is fetched once into _t3skelCache under the same
+    't7:assets/anim/t7/king/' id the graph bank uses, then jsonToClip + retargetT3Clips (which analyzes
+    the rig on first use — no captured rest pose needed). The caller keeps its current clips when this
+    returns null (T3 fallback). */
+const _t7throwSkelLoading = {};
+export async function t7ThrowClipRetarget(fid, key, record, model, THREE, { fetchJson = fetchT7Json } = {}) {
+  const def = T7_GRAPHS[fid];
+  if (!def || !record || !model) return null;
+  const skelId = 't7:' + def.dir;
+  if (!_t3skelCache[skelId]) {
+    if (!_t7throwSkelLoading[skelId]) _t7throwSkelLoading[skelId] = fetchJson(def.dir + 'skeleton.json').catch(() => null);
+    _t3skelCache[skelId] = await _t7throwSkelLoading[skelId];
+    if (!_t3skelCache[skelId]) return null;
+  }
+  const clip = jsonToClip(`t7throw_${fid}_${key}`, record, THREE);
+  if (!clip) return null;
+  const name = 't7throw:' + key;
+  return retargetT3Clips({ [name]: clip }, skelId, model, THREE, null, [name]);
+}
+/** Warm the T7 king skeleton cache for the throw path (Lane 5, 2026-11-20): the skeleton fetch is the only async step inside t7ThrowClipRetarget, so preloading it at fighter bind lets the sync twin below retarget immediately. Fire-and-forget — returns the loading promise; a failure resolves null and the throws keep the T3 pair. Same skelId ('t7:' + dir) and same fetch (fetchT7Json: page, then jsDelivr) as t7ThrowClipRetarget / ensureT7Graph, so all three share one cache entry. */
+export function ensureT7ThrowSkeleton(fid) {
+  const def = T7_GRAPHS[fid];
+  if (!def) return Promise.resolve(null);
+  const skelId = 't7:' + def.dir;
+  if (_t3skelCache[skelId]) return Promise.resolve(_t3skelCache[skelId]);
+  if (!_t7throwSkelLoading[skelId]) {
+    _t7throwSkelLoading[skelId] = fetchT7Json(def.dir + 'skeleton.json').catch(() => null);
+    _t7throwSkelLoading[skelId].then((skel) => { if (skel) _t3skelCache[skelId] = skel; }).catch(() => {});
+  }
+  return _t7throwSkelLoading[skelId];
+}
+/** Synchronous twin of t7ThrowClipRetarget for the throw bind path (fighter.js _bindThrowPair is sync — the DW swap precedent: packs preload at bind, the swap reads the cache). Same clip naming ('t7throw:<key>'), same jsonToClip + retargetT3Clips, so the two can never drift apart in output. Returns the retargeted clips or null: null when the T7 king skeleton is not cached yet (the skeleton load is kicked off for the next throw and the caller keeps the T3 pair), when the record/model is missing, or when the clip fails to build. */
+export function t7ThrowClipRetargetSync(fid, key, record, model, THREE) {
+  const def = T7_GRAPHS[fid];
+  if (!def || !record || !model) return null;
+  const skelId = 't7:' + def.dir;
+  if (!_t3skelCache[skelId]) { ensureT7ThrowSkeleton(fid).catch(() => {}); return null; }
+  const clip = jsonToClip(`t7throw_${fid}_${key}`, record, THREE);
+  if (!clip) return null;
+  const name = 't7throw:' + key;
+  return retargetT3Clips({ [name]: clip }, skelId, model, THREE, null, [name]);
+}
 /** The real T7 clip for one moveset row of this fighter on its bound bank, or null. With `model`, also null
     unless the stance's rest pose was captured for that model (so the move can be retargeted safely). */
 /** Single-input notation in one spelling: 'df+1' / 'D/F+1' -> 'd/f+1'. Strings (',') are not single inputs. */
@@ -2635,6 +2680,21 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
         // whose joints are already above the floor.
         const low = Math.min(...targetPosed(rig, W, rig.contact).map(p => p.y)) + dy;
         if (low < rig.floorY) dy += rig.floorY - low;
+        // LANE B (pantera-throwfix 2026-11-19): the THROWER's throw clips
+        // must not drop the attacker to the floor mid-throw. Live BEFORE
+        // (2+4, main 01c95363): thrower hips 0.215 m @step 87, flat on the
+        // floor for the whole landing while the source roll holds the
+        // hips at 0.12-0.21 m — that is what reads as "Pantera got knocked
+        // down". Clamp the retargeted hips height for the thrower's throw
+        // clips only: 'grab' is the legacy throwExec clip, 'throw:0x…'
+        // are the paired slot clips. The VICTIM's clips are NOT floored
+        // (the victim must hit the floor at the slam), and no other clip
+        // is touched — crouches, knockdowns and attacks keep their own
+        // heights (their names never match this test). Floor 0.45 m is
+        // a deep-crouch height: clearly off the floor, still low.
+        if ((action === 'grab' || (typeof action === 'string' && action.startsWith('throw:'))) && hipsRest.y + dy < 0.45) {
+          dy = 0.45 - hipsRest.y;
+        }
         tmpV.set(hipsRest.x, hipsRest.y + dy, hipsRest.z).applyMatrix4(hipsParentInv);
         hipPos.set([tmpV.x, tmpV.y, tmpV.z], f * 3);
       }

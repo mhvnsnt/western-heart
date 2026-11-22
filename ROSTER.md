@@ -5,7 +5,7 @@ Nine fighters. Each is a lost soul of Tong-Nou. Each soul's **body** is a Tekken
 
 **Asset rule:** No new models. No new textures. Body + skin + moveset are all recombined extractions. See `asset-manifest.md` for source tracing.
 
-**Note on soul details:** Full visual/personality reference for each soul comes from the Eastern Mind extraction (in-game sprites, the Illustrated Book). Style assignments below are the design framework; the extraction refines them.
+**Note on soul details:** Full visual/personality reference for each soul comes from the Eastern Mind extraction (in-game sprites, the Illustrated Book). Style assignments below are the design framework; the extraction refines them. (§8 ZEN and §9 GYOU are the exceptions: settled canon per owner decisions 2026-10-24 and 2026-11-10, not framework.)
 
 ---
 
@@ -32,9 +32,10 @@ Nine fighters. Each is a lost soul of Tong-Nou. Each soul's **body** is a Tekken
 - **Skin:** Eastern Mind warrior-sprite extractions. Blood reds, scorched oranges (Fire force).
 - **Archetype:** The grappler/brawler. High damage, honest.
 
-### 4. SHA — The Sand Soul
+### 4. SHA — The Sand Soul (a SOUL, not a fighter)
 - **Nature:** 沙 — sand, desert. From the Sha-mo Desert of the Land of Life. A soul that flows, erodes, surrounds. Never where you struck.
-- **Fighting style:** Ling Xiaoyu's Baguazhang (Tekken) — flowing, circular, evasive. The art of not being hit.
+- **SHA is the soul shared by three sisters — Saku Ra (the bloom), Kinpo (the thorn), Awa Pop (the bubble). One soul, three moods, three sisters. SHA is not a fighter and has no select card of its own: the `sha` roster card was retired 2026-11-20 (owner order: Saku Ra is ONE fighter), and the single fighter is SAKU RA below. (CANON.md §4, "On SHA's three-way split.")**
+- **Fighting style (of the soul's vessels):** Ling Xiaoyu's Baguazhang (Tekken) — flowing, circular, evasive. The art of not being hit.
 - **Body donor:** Saku Ra (T7-style Ling Xiaoyu GLB, `game/assets/models/sha-body.glb`). **Legacy:** Ling Xiaoyu TMD (last attire only).
 - **Skin:** Eastern Mind desert-sprite extractions. Sand ochres, bleached bone whites.
 - **Archetype:** The evasive. Movement as defense.
@@ -47,7 +48,7 @@ Nine fighters. Each is a lost soul of Tong-Nou. Each soul's **body** is a Tekken
 - **Archetype:** The rushdown. Relentless rhythm offense.
 
 ### 6. JIN — The Blade Soul
-- **Nature:** 刃 — the blade. A soul that cuts. Precise, ritual, terrifying. (Not to be confused with RIN, the protagonist.)
+- **Nature:** 刃 — the blade. A soul that cuts. Precise, ritual, terrifying. (Not to be confused with RIN, the protagonist.) The soul JIN (刃) is NOT Jin Kazama and NOT a soul form of Jin Kazama — the soul JIN, the Blade Soul, whose vessel is Phantom. (CANON.md Law 2, owner 2026-11-08.)
 - **Fighting style:** Yoshimitsu's advanced ninjutsu (Tekken) — sword techniques, teleportation stances, self-damaging power moves. The blade that cuts both ways.
 - **Body donor:** Yoshimitsu TMD — armored, masked, inhuman.
 - **Skin:** Eastern Mind blade/spirit extractions. Polished steel grays, shrine-vermillion accents.
@@ -62,17 +63,21 @@ Nine fighters. Each is a lost soul of Tong-Nou. Each soul's **body** is a Tekken
 
 ### 8. ZEN — The Still Soul
 - **Nature:** 禅 — meditation, stillness. A soul that barely moves — and doesn't need to. The calm center of the storm.
-- **Fighting style:** Julia Chang's Xingyiquan (Tekken) — internal martial art, minimal movement, explosive short power. Stillness that kills.
-- **Body donor:** Julia Chang TMD — compact, grounded.
+- **Zen is NEITHER Julia NOR Heihachi.** (Owner decision 2026-10-24, `docs/decisions/2026-10-24-zen-base-decision.md`, resolving PR #1016.) Zen is the Still Soul, unvesseled — the soul that refused the trial: "Stillness does not compete." (CANON.md §4, "On ZEN and GYOU.")
+- **Fighting base (settled canon):** Eleven / Twelve (Street Fighter, 2D concept: shapeshifting mimicry) → Dural (Virtua Fighter 5, 3D implementation: chrome humanoid, the closest 3D thing to Eleven/Twelve — Dural is NOT a separate pick, it is the 3D stand-in for Eleven/Twelve) → Zen's OWN canon moves on top. X.COPY (Twelve's copy super) as ONE super, NOT the identity. Plus Tentacle Mode, Oversoul, transformation, spirit-form stand (canon).
+- **Default body:** T7 Julia model (`game/assets/models/zen-body.glb`) — a BODY, not a vessel, not the fighter's identity. (CANON.md §4, "Soul bodies," owner order 2026-10-15.) Legacy: Julia Chang TMD (last attire only).
 - **Skin:** Eastern Mind meditation-sprite extractions. Temple-stone grays, incense-smoke whites (Earth force).
 - **Archetype:** The counter-fighter. Punish, don't chase.
+- **Open:** Zen is hidden from the select grid (`SELECT_HIDDEN` in `game/js/select-screen.js`) while the comment above that set says Zen stays selectable — contradiction reported, not fixed silently (owner call). Zen's pronoun is unsettled in the records ("she" in the owner order of 2026-11-20; "his" in the 2026-10-24 decision doc) — no pronoun is used in this entry until the owner settles it.
 
 ### 9. GYOU — The Moving Soul
 - **Nature:** 行 — going, action, motion itself. A soul that cannot stop moving. Speed as identity.
-- **Fighting style:** Hwoarang's Taekwondo (Tekken) — kick-dominant, constantly advancing, stance-switching pressure.
-- **Body donor:** Hwoarang TMD — lean, fast, aggressive posture.
+- **Gyou is NOT Hwoarang.** (Owner 2026-11-10; `game/js/fighter.js:211`.) Gyou is the Moving Soul, unvesseled as a whole — a splinter is trapped in CYBORG X ("a machine is a nowhere"). (CANON.md §4, "On the GYOU splinter.") Hwoarang's holder is Tobi.
+- **Fighting base (settled canon):** Paul Phoenix's power karate/judo, mixed with fire attacks — Gyou's spirit-body variant. Owner-sanctioned 2026-10-23 ("he can have Paul Phoenix moves mixed with like flame attacks") and 2026-11-10 ("Gyou was probably Paul Phoenix and fire attacks"). Gyou is a SECOND Paul holder alongside Tou — Tou holds Paul in canon (ROSTER.md §3; CANON.md Paul→TOU) — so Gyou's Paul standing rests on the owner's explicit words, not on "no one else has Paul."
+- **Body:** Gyou's own spirit body (`gyou-attire1`), rigged and wired 2026-11-09. Legacy: Hwoarang TMD (last attire only; framework-era donor, superseded).
 - **Skin:** Eastern Mind wind/motion extractions. Storm grays, lightning whites (Wood force — the growing, reaching element).
 - **Archetype:** The speedster. Frame-trap pressure.
+- **Open:** the owner said "probably Paul" / "whatever" — the Paul holding is NOT locked as permanent in this doc. Owner call still open.
 
 ---
 
@@ -129,7 +134,32 @@ Nine fighters. Each is a lost soul of Tong-Nou. Each soul's **body** is a Tekken
 - **Look direction:** Chinese/Japanese K-pop idol Powerpuff Girl. Use CN gigaleak Powerpuff Girls study materials for the PPG construction.
 - **Fighting style:** Xiaoyu's playful kung fu — evasive, acrobatic, tricky stances
 - **Body donor:** Ling Xiaoyu TMD
+- **One fighter:** Saku Ra is ONE fighter (owner order 2026-11-20 ~19:30). She is the bloom — one of three sisters sharing the SHA soul (with Kinpo and Awa Pop). The `sha` roster card is retired; SAKU RA is the single fighter and `sakura.json` is her file (it holds the only copy of the xiamot wiring and her three signatures: Bloom Opening, Called By Name, You Can't Hit A Song).
 - **In the Western Heart universe**
+
+## ROSTER ADDITIONS — SIX STAGED FIGHTERS (owner addendum 2026-11-20 ~19:34 EST)
+
+This section supersedes the P3 hygiene proposal's net "add NONE of the six" (P3 PR-BODY, workdir only — no repo file carried that listing). Owner addendum 2026-11-20: Kutz + Realizzt COUNT and join the playable roster; DXMMII is already in the game; Lili + Baek fold in as OTHER custom characters, not named fighters.
+
+### KUTZ + REALIZZT - JOINING the playable roster (not yet added)
+- Owner addendum 2026-11-20: both join the playable roster. Roster entries are NOT added in this change — blocked, in order:
+  1. **Correct moveset (P2 rebuild owed):** `kutz.json` (160 moves) plays King (98%); `realizzt.json` (156 moves) plays Jin. Both need their real Virtua Fighter source (Goh Hinogami / Brad Burns).
+  2. **Model:** no `kutz.glb` / `realizzt.glb` on main.
+- Index entries already exist for both, so once the kit + model land, only the `roster-full.js` entry (+ tier, + attire ladder) is left to add.
+
+### DXMMII - ALREADY on the menu (do not treat as waiting to join)
+- DXMMII the fighter IS already rostered and selectable as `dxmmii-patchwork` (`game/js/roster-full.js:206`, Patchwork DJ, model `dxmmii-tripo`, 3-slot attire ladder, not hidden, file loads).
+- The BARE `dxmmii` id is staged and never loads (index + MOVESET_IDS only; `dxmmii.json`, 150 moves, fixed Jin bank). The P3 listing ("STAY STAGED under the bare `dxmmii` id") was correct about the bare id — the confusion was the id split: playable fighter `dxmmii-patchwork` vs staged file `dxmmii`.
+- OPEN (needs a live check, not touched here): the `mimic` section in `dxmmii-patchwork.json` (2026-10-23) says "the roster does not play it [this file]" while the loader (`fighter.js:899`, `_movesetId = charData.id`) says it does. The mimicry system itself is owed.
+
+### LILI + BAEK - custom-character material, NOT roster entries
+- Neither has a roster entry today, so nothing is removed. Their move lists fold in as OTHER custom characters (their successors Silvertongue and KEVIN are separate rostered fighters and are untouched by this).
+- Fold-in requirements (all still owed — no ingestion or assembler work in this change):
+  1. Ingest via `tools/moveset-library/ingest.mjs` as library banks / editor templates.
+  2. Source-law exception needed for Lili's 133-move T3 Xiaoyu proxy layer ("Ling Xiaoyu" is claimed by Saku-ra in `game/data/moveset-library/claimed-map.json`); Baek/Bryan are unlisted in the claimed map (neither claimed nor free).
+  3. No custom-material marker exists in code today — one must be created (precedent: `silvertongue.json` `replaces`/`canon_note` headers).
+  4. Assembler gap: custom manifests into fights needs `movesets.js` integration + a live fight proof (`game/js/custom-fighter.js`); until then a custom fighter fights on the `'jin'` fallback.
+  5. Baek's kit is wrong first: `baek.json` plays Bryan (107/111) — P2 rebuild owed before the fold-in means anything.
 
 **Why these nine styles:** Tekken 3's roster covers every major fighting-game archetype (shoto, grappler, rushdown, zoner, trickster, bruiser, counter-fighter, wildcard, speedster). Mapping the nine souls to these nine archetypes gives Western Heart a competitively complete roster on day one — because Tekken 3 already solved the balance.
 

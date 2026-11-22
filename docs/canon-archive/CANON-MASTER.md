@@ -134,6 +134,14 @@ in the credits at the end of some stories and in the settings credits
   Pantera path. Owner directive: keep improving him, keep giving him more
   moves, prove moves on another fighter who receives them correctly
   (two-fighter interaction proof is his standing proof format).
+- **Status record (2026-11-19).** Owner order: partials filled to 100% from
+  King's Tekken 7 actual code — verbatim: "You said, turn around is partial
+  and all the other partial things you need to get them to 100%. filled in
+  from kings T7 actual code". Real T7 clip coverage 70 → 185 of 643 rows
+  (~29%) across five merged PRs (kick strings, grapple chains, KBD, f,f dash,
+  run proven live); 458 rows still clip-less; throws still play Tekken 3 on
+  screen — paired victim-side T7 throw clips do not exist in the repo yet.
+  T3 remains fallback only, never the source for fills.
 - **Open gaps.** Feet splayed sideways — owner ordered a fix across all
   his models (2026-10-21); defect map recorded (forearms/hands and
   waist-down stretch/weight issues; hand weighted to tail on one build).

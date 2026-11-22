@@ -1,0 +1,72 @@
+name: Reassemble library index
+
+# One-off reassembly for the 60 MB moveset library index. The index was too
+# large for any upload path from the build box (Contents API 422, blobs API
+# 401 cap, git HTTPS down), so it was split into 3 byte-exact chunks under
+# 25 MB and uploaded to game/data/moveset-library/.index-parts/. This
+# workflow reassembles them, verifies sha256, commits the result to the
+# branch, and deletes the chunks. It no-ops cleanly until all parts exist.
+on:
+  push:
+    branches: [wh-library-fill/generate-index-20261120]
+    paths:
+      - 'game/data/moveset-library/.index-parts/**'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: reassemble-library-index
+  cancel-in-progress: false
+
+jobs:
+  reassemble:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          ref: wh-library-fill/generate-index-20261120
+          fetch-depth: 0
+      - name: Guard — all parts present
+        id: guard
+        run: |
+          for p in part00 part01 part02; do
+            if [ ! -f "game/data/moveset-library/.index-parts/index.json.$p" ]; then
+              echo "missing part $p — no-op"
+              echo "all_present=false" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          done
+          echo "all_present=true" >> "$GITHUB_OUTPUT"
+      - name: Reassemble and verify sha256
+        if: steps.guard.outputs.all_present == 'true'
+        run: |
+          cat game/data/moveset-library/.index-parts/index.json.part00 \
+              game/data/moveset-library/.index-parts/index.json.part01 \
+              game/data/moveset-library/.index-parts/index.json.part02 \
+            > /tmp/index.json
+          ACTUAL="$(sha256sum /tmp/index.json | awk '{print $1}')"
+          EXPECTED="8f8983146c2419f4222ca0f88143401c759c558797d5c7f4bb561f0e98ef2c5d"
+          if [ "$ACTUAL" != "$EXPECTED" ]; then
+            echo "SHA256 MISMATCH: got $ACTUAL, expected $EXPECTED — refusing to commit"
+            exit 1
+          fi
+          echo "sha256 verified: $ACTUAL"
+          cp /tmp/index.json game/data/moveset-library/index.json
+      - name: Commit reassembled index and delete parts
+        if: ${{ success() && steps.guard.outputs.all_present == 'true' }}
+        run: |
+          git config user.name "muse-library-fill"
+          git config user.email "muse-library-fill@users.noreply.github.com"
+          for p in part00 part01 part02; do
+            f="game/data/moveset-library/.index-parts/index.json.$p"
+            [ -f "$f" ] && git rm -q "$f"
+          done
+          git add game/data/moveset-library/index.json
+          if git diff --cached --quiet; then
+            echo "index already current — nothing to commit"
+          else
+            git commit -m "Reassemble moveset library index (60,249,618 B, sha256 8f8983146c2419f4222ca0f88143401c759c558797d5c7f4bb561f0e98ef2c5d)"
+            git push origin wh-library-fill/generate-index-20261120
+          fi

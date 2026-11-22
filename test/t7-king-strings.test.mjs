@@ -52,9 +52,14 @@ test('every string press plays its exact King T7 motbin move clip', () => {
   }
 });
 
-test('the 29 single-input King T7 moves are still in the pack unchanged in kind', () => {
+test('the 127 single-input King T7 moves are still in the pack unchanged in kind', () => {
+  // 29 original single-input moves + 98 added by the Lane A fill (owner order
+  // 2026-11-18: fill the partials from King's T7 actual code; PR #1751). All 29
+  // originals are still present and every new one is a real T7 move verified by
+  // walking the graph (motbin_move + verified on each). The count grows because
+  // the pack legitimately holds more real T7 moves now — the KIND is unchanged.
   const singles = Object.keys(pack.moves).filter((k) => !pack.moves[k].input.includes(','));
-  assert.equal(singles.length, 29);
+  assert.equal(singles.length, 127);
 });
 
 test('string normalizer: motions, suffixed keys and single inputs never map', () => {
@@ -65,5 +70,8 @@ test('string normalizer: motions, suffixed keys and single inputs never map', ()
 test('a gated clip stays out with its reason (no substitute)', () => {
   assert.match(pack.skipped['d+3+4,4~t7.king.2'], /plausibility gate/);
   const p = plan('d+3+4,4');
-  assert.ok(!p || !String(p.name).startsWith('t7:'));
+  // Lane B 2026-11-18: assert the substance, not the fallback's name — what the own-'4'
+  // fallback resolves to depends on the asset set (a sparse tree plans 't7:4~t7.king', the
+  // full repo plans the T3 action 'medium'). Either way the gated sukg_ari2 clip is not played.
+  assert.ok(!p || !String(p.name).includes('d+3+4,4~t7.king'), 'gated clip must not be the plan');
 });

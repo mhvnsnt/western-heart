@@ -1290,6 +1290,14 @@ export class TekkenBuffer {
     // before the bare stance prefix, or the facing stance row would win from behind.
     if (ctx.backturned) { if (ctx.stance) prefixes.push('BT_' + ctx.stance + '.', ctx.stance + '.BT.'); prefixes.push('BT.'); }
     if (ctx.stance) prefixes.push(ctx.stance + '.');
+    // GROUNDED. (Lane C 2026-11-20): the attacker themself is down and presses a getup attack
+    // — the generic grounded fallback. The four orientation stances (FUFT./FUFA./FDFT./FDFA.)
+    // ride the stance line above and shadow it (most specific first); GROUNDED. only fires
+    // when no orientation row matches that input. TKMovesets mechanism: requirement 148/149
+    // "On ground (right/left side)" on the cancel's requirement list. ctx.grounded is fed by
+    // Fighter._inputCtx (PROPOSED fighter.js change — this line is inert until that lands,
+    // and the editor keeps GROUNDED. quarantined until the fighter half exists).
+    if (ctx.grounded) prefixes.push('GROUNDED.');
     if (ctx.rage) prefixes.push('R.');
     // T8 Heat moves ('H.2+3', 'f,f,F+2,H.1+2'): the WH heat state is Soul Urge (stance audit 2026-11-01: 99 rows, 33 fighters)
     if (ctx.urgeOn) prefixes.push('H.');
@@ -1441,6 +1449,11 @@ export class TekkenBuffer {
     // BT dominates the stance (see _pressV2): composed 'BT_RFF.' / 'NSS.BT.' spellings, then BT.
     if (ctx.backturned) { if (ctx.stance) prefixes.push('BT_' + ctx.stance + '.', ctx.stance + '.BT.'); prefixes.push('BT.'); }
     if (ctx.stance) prefixes.push(ctx.stance + '.');
+    // GROUNDED. (Lane C 2026-11-20, as in _pressV2): generic grounded fallback — the four
+    // orientation stances ride the stance line above and shadow it; GROUNDED. only fires when
+    // no orientation row matches. TKMovesets req 148/149. ctx.grounded is fed by Fighter._inputCtx
+    // (PROPOSED fighter.js change — inert until that lands; editor keeps GROUNDED. quarantined).
+    if (ctx.grounded) prefixes.push('GROUNDED.');
     if (ctx.rage) prefixes.push('R.');
     // T8 Heat moves ('H.2+3', 'f,f,F+2,H.1+2'): the WH heat state is Soul Urge (stance audit 2026-11-01: 99 rows, 33 fighters)
     if (ctx.urgeOn) prefixes.push('H.');

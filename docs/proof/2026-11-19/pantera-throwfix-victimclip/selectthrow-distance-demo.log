@@ -1,0 +1,16 @@
+node selectThrow demo — real modules (game/js/t3-throw.js) + real file data
+(game/assets/anim/t3/reactions.json), pack anchor_mm_to_rig_m = 0.000829923
+(game/assets/anim/t3/king_on_pantera_leoman/reactions.pack.json).
+Max throw range = 1536 * 0.000829923 = 1.274761728 m.
+
+2+4 attempt274 @1m -> slot 2797 row 417
+2+4 attempt274 @1.27m -> slot 2797 row 417
+2+4 attempt274 @1.28m -> NULL: no branch matches situation 2 at this distance (UNMAPPED for this situation)
+2+4 attempt274 @1.45m -> NULL: no branch matches situation 2 at this distance (UNMAPPED for this situation)
+1+3 attempt273 @1m -> slot 2795 row 415
+1+3 attempt273 @1.45m -> NULL: no branch matches situation 2 at this distance (UNMAPPED for this situation)
+
+Live connect gap measured in the 2+4 capture (video-pantera-log.json):
+1.45 m from the first frame through connect (frame 11) — 0.175 m over the
+file throw's max range. The node tests place the victim at 1.0 m (in range),
+which is why they pass while the live game never pairs.

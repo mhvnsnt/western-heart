@@ -40,12 +40,13 @@ import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK, T3_BANKS,
   clipStrikeProfile, clipHitWindow, bankAttackPool, attackLevelOfWord, attackClipTime, clipIsThrow, BUTTON_LIMB,
   loadT3Clips, loadT3ReactionClip, getT3ReactionPackScale, loadReactionPack, getReactionPack, getReactionClip,
   applyT7Stance, ensureT7Moves, t7MoveClip, t7MoveRetarget, ensureDwMoves, dwMoveClip, dwMoveRetarget, dwKindMoveClip, dwKindMoveRetarget, retargetProfileFor,
-  T7_GRAPHS, ensureT7Graph, t7GraphRetarget } from './t3anims.js';
+  T7_GRAPHS, ensureT7Graph, t7GraphRetarget, t7ThrowClipRetargetSync, ensureT7ThrowSkeleton } from './t3anims.js';
 import { T7GraphDriver, T7G_FPS } from './t7-graph-driver.js';
 import { buttonsMask as t7ButtonsMask } from './t7graph.js';
 import { effectiveStepPlay, playableStepPlay, stepActionName, stepPlanBanksFor } from './step-plan-bank.js';
 import { selectThrow, resolveThrowClips, throwBreaks, throwDamageTimeSec, throwPairDurationSec,
   escapePairFor, anchorAt, sharedFramePos, throwQuadrant, attemptRowForInput, hexSlot, bankDirOf } from './t3-throw.js';
+import { resolveT7ThrowPair, loadT7ThrowPair, getT7ThrowClipRecord, t7SituationForQuadrant } from './t7-throw-clips.js';
 import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove, resolveMoveKey, pressableNotations, hasStrPrefix, variantBase, throwStageTag, throwStageKeys, systemRows, systemTagOf, gameAssetBase } from './movesets.js';
 import { TransformCinematic } from './transform-cinematic.js';
 import { V, vskillFor, vtriggerEnhance, vreversalMove } from './v-system.js';
@@ -612,7 +613,12 @@ export function rootMotionSample(root_t, fps, t) {
    the table and none is added.
    NOT DONE: the f state at frame 12 -> sRUN__00F run (req 0) needs the common-bank clip
    Bco_run00 (anim 0x8043) baked first; the f re-dash (req 1085) and neutral->run (req 2132)
-   are requirement-gated and not wired. */
+   are requirement-gated and not wired. Lane B 2026-11-18, from King's T7 tables
+   (king-t7-tables.json): req 1085 = [[124, 0]] — condition 124 is not in t7graph.js
+   KNOWN_CONDITIONS nor T7_EXE_DEFAULT_FALSE, so makeEvalCond returns null (unknown) and the
+   cancel cannot be evaluated; req 2132 = [[36, 3800]] — condition 36 is 'opp dist >= param,
+   T7 units' but t7graph.js:277-278 states no metre conversion is assumed, so 35/36 stay
+   unknown in-game. Both stay gated until the conditions are decoded — no invented wiring. */
 export const TEKKEN_DASH_END_FRAMES = { t7_king: { f: 30, b: 30 } };
 export const TEKKEN_BACKDASH_CROUCH_CANCEL_FROM = { t7_king: 1 };
 /* Tekken RUN (2026-11-10, Pantera pass 5), from King's T7 motbin (kinmot.json), nothing invented:
@@ -622,9 +628,32 @@ export const TEKKEN_BACKDASH_CROUCH_CANCEL_FROM = { t7_king: 1 };
    - exits (requirement 0, window [1, 32767]): stick b -> sWALK_00B (here: idle, WH's walk-back takes the held b),
      d / d/b / d/f -> crouch transitions (tryCrouch);
    - NOT in the table with requirement 0: a neutral-stick stop. Here releasing f ends the run at the current
-     clip's end (a WH boundary, not a King timing). The gated links (f re-dash 1085, n -> run 2132, run stomp /
+     clip's end (a WH boundary, not a King timing). Lane B 2026-11-18: verified in graph.json —
+     the sRUN__00F -> Kg_sKAM00_ stop rows are req 914/923/932/941/951/961, all containing
+     undecoded conditions 68/69/70/810, so no requirement-0 neutral stop exists in the T7 data
+     and the WH boundary stands. The gated links (f re-dash 1085, n -> run 2132, run stomp /
      tackle 1093/1098/1104) are not wired. */
 export const TEKKEN_RUN = { t7_king: { fromDashFrame: 12, chain: ['runStart', 'runA', 'runB'], loop: ['runA', 'runB'] } };
+/* FRESH-CROUCH GESTURE WINDOW (Lane B 2026-11-18, owner 2026-11-11: "only the punch combos are
+   working"; Lane E 2026-11-19 corrected the length from T7 actual code): a down direction held
+   only briefly before the button is ONE input gesture (direction + button together = the
+   standing directional, e.g. d/f+4), not an established crouch. _inputCtx() reports crouching
+   for resolution only once the crouch is established. T7's establishment time is 6 FRAMES, not
+   15: the fastest universal while-rising input in T7 is "any Down for 6 frames, then
+   Neutral+Attack" (wavu tech compendium, frame-perfect / tool-assisted) — the crouch the WS
+   rises from is the same crouch FC attacks come from, so a down-hold shorter than 6 f never
+   counts as crouching, and 6 f does. Corroborated by King's T7 graph itself
+   (game/assets/anim/t7/king/graph.json): the crouch stance dwKAM_00D offers its button cancels
+   from frame 1 (start: 1) — once IN crouch there is no further wait — while d+1+2
+   (Kg_WHummer) is a cancel from the STANDING stance Kg_sKAM00_, so FC. vs d+ is decided by
+   state-at-button-time, with the state flipping at 6 f of down. A deliberately held crouch
+   (>= 6 f) still resolves FC. rows; a crouch entered from a backdash cancel or from a run is
+   a state-machine transition, not a fresh gesture, and counts as established at once
+   (tryCrouch sets _crouchEstablished). The comparison in _inputCtx() carries a 1e-9 epsilon:
+   6 accumulated 1/60 s ticks sum to 0.09999999999999999 in floating point, below 0.1, so a
+   bare >= test would need a 7th frame — the same float-boundary bug the 15 f window had
+   (15 x 1/60 = 0.24999999999999997 < 0.25). */
+export const FRESH_CROUCH_WINDOW_S = 6 / 60;
 /* T7 FULL-GRAPH DEVELOPMENT INTEGRATION (2026-11-10, owner t388u). Opt-in only (?t7graph=1, localStorage
    wh.t7graph=1, or globalThis.WH_T7GRAPH = true for tests): the player's fighter with a T7_GRAPHS entry (Pantera <-
    King) is then driven frame by frame by its imported source graph (t7-graph-driver.js): every press / hold / release
@@ -1238,6 +1267,13 @@ export class Fighter {
       try { ensureT7Graph(this.char.id, THREE).then((b) => { if (b) this.t7gAttach(b); }).catch(() => {}); } catch (e) { /* optional */ }
     }
     try { const p = ensureDwMoves(this.char.id, THREE); if (p && p.catch) p.catch(() => {}); } catch (e) { /* optional */ }
+    // T7 THROW CLIPS (Lane 5, 2026-11-20): Pantera's front 1+3/2+4 play the real T7 clips (t7-throw-clips.js), preloaded here in the background — the same DW precedent as ensureDwMoves above (packs load at bind, moves keep their current clips until they arrive). Until the two front pairs + the king skeleton arrive, throws keep the T3 pair; the bind swaps the T7 actions in synchronously from the cache.
+    if (T7_GRAPHS[this.char.id]) {
+      try { const p = ensureT7ThrowSkeleton(this.char.id); if (p && p.catch) p.catch(() => {}); } catch (e) { /* optional */ }
+      for (const input of ['1+3', '2+4']) {
+        try { const p = loadT7ThrowPair(input, 'front'); if (p && p.catch) p.catch(() => {}); } catch (e) { /* optional */ }
+      }
+    }
     this.t3actions = createT3Actions(this.mixer, clips, THREE);
     this._stepBankClips = {}; // per-step-bank source clips (see _attackClip)
     // Reaction pack prefetch (hit-reaction lane): the JSON arrives
@@ -2087,9 +2123,14 @@ export class Fighter {
       this.stateT * 60 >= TEKKEN_BACKDASH_CROUCH_CANCEL_FROM[ownSlotBankFor(this.char.id)];
     if (kbd || (on && this.onGround && (this.state === 'idle' || this.state === 'walk' || this.state === 'block'))) {
       this._bt = false; // Tekken: crouching from back-turned turns you around into the crouch
+      // A crouch entered from a backdash cancel (kbd) or from a run (runCrouch) is a state-machine
+      // transition, not a fresh direction gesture: it is an established crouch at once, so FC.
+      // rows resolve immediately. A plain direction hold is a gesture until FRESH_CROUCH_WINDOW_S.
+      this._crouchEstablished = !!kbd;
       this._enter('crouch'); this.vx = 0;
     } else if (!on && this.state === 'crouch') {
       this._enter('idle'); this._risingT = 0.35;
+      this._crouchEstablished = false;
       if (this.stance === 'FC') { this.stance = null; this.stanceT = 0; } // standing up ends FC
     }
   }
@@ -2117,13 +2158,29 @@ export class Fighter {
       stance: st && st !== 'BT' && st !== 'FC' && st !== 'SS' ? st : null,
       backturned: !!this._bt || st === 'BT',
       sidestep: this.state === 'sidestep',
-      crouching: this.state === 'crouch' || st === 'FC',
+      // FRESH-CROUCH GESTURE WINDOW (Lane B 2026-11-18, owner 2026-11-11: kick strings;
+      // Lane E 2026-11-19: length corrected to T7's 6 f, see FRESH_CROUCH_WINDOW_S):
+      // a d/f+4 pressed as one gesture (direction held < 6 f) is the STANDING directional
+      // 'd/f+4', not 'FC.d/f+4' — the FC. prefix is tried first whenever crouching is true,
+      // so without this window every d/f-held kick string opened with the wrong move and its
+      // continuation ('FC.d/f+4,3' does not exist) failed. An established crouch (held >= 6 f,
+      // stance FC, or a backdash/run crouch cancel) still resolves FC. rows. WS. is unaffected
+      // (gated on _risingT, set on stand-up). The 1e-9 epsilon is load-bearing: 6 accumulated
+      // 1/60 s ticks sum to 0.09999999999999999, below 0.1, so a bare >= test would silently
+      // demand a 7th frame.
+      crouching: st === 'FC' || (this.state === 'crouch' &&
+        (this._crouchEstablished || this.stateT + 1e-9 >= FRESH_CROUCH_WINDOW_S)),
       rising: this._risingT > 0,
       airborne: !this.onGround, // Tekken jump attacks resolve from AIR. while this holds
       rage: !this._rageUsed && this.hp > 0 && this.hp <= this.maxHp * 0.25,
       urgeOn: !!this._urgeOn,
       urgeAvailable: !this._urgeUsed && !this._urgeOn && this.hp > 0,
-      running: !!(this.tekken && this.tekken.running && this.tekken.running() && this.onGround) || (this.state === 'attack' && /^WR\./.test(this.attackName || '') && this.stateT <= 0.14), // Tekken WR (and its chord-upgrade window)
+      // WHILE RUNNING (Lane B 2026-11-18): the buffer's running() latch only fires 250 ms after
+      // the f,f double-tap, so during a real tekrun entered at dash frame 12 the latch is false
+      // for frames 12-15 and a button pressed there resolved the standing/f+ move, not the WR
+      // move. The fighter's own run state is the ground truth while it lasts.
+      running: (this.state === 'tekrun' && this.onGround) ||
+        !!(this.tekken && this.tekken.running && this.tekken.running() && this.onGround) || (this.state === 'attack' && /^WR\./.test(this.attackName || '') && this.stateT <= 0.14), // Tekken WR (and its chord-upgrade window)
       // roster-100 L5: crouch dash — the buffer latches CD when the fighter's own
       // data-declared cd_entry move fires; CD. rows resolve only inside that window.
       crouchDash: !!(this.tekken && this.tekken.cdActive && this.tekken.cdActive() && this.onGround),
@@ -2314,6 +2371,7 @@ export class Fighter {
       return;
     }
     if (pair && pair.reason) console.log(`[WH-THROW] ${attacker.char.id} vs ${this.char.id}: no file pair (${pair.reason}) — legacy lock`);
+    if (pair && pair.pair && pair.pair.bindReason) console.log(`[WH-THROW] ${attacker.char.id} vs ${this.char.id}: pair selected (slot ${pair.pair.throw.slot}) but bind failed (${pair.pair.bindReason}) — legacy lock`);
     this.state = 'thrown'; this.stateT = 0;
     this._throwHitDone = false; // A1: each new lock may slam again
     this.lockT = 0.3; this.lockMove = move; this.lockPartner = attacker;
@@ -2349,14 +2407,23 @@ export class Fighter {
     if (!vDir) return { pair: null, reason: `no T3 bank for ${victim.char.id} (UNMAPPED)` };
     let attemptRow = null;
     const planName = this._atkPlan && this._atkPlan.name;
+    // LANE A (2026-11-19, Pantera throw victim clip): for the two plain
+    // front throws the file's throw_inputs is authoritative and is tried
+    // FIRST. The plan's row is the REACH clip's bank row (moveset t3_row
+    // 127/128), not the file's attempt row: row 127 has no throw branches
+    // at all (1+3 never paired — legacy lock, victim frozen), and row 128
+    // selects a generic throw (slot 398, row 150, jin-bank victim 399),
+    // not King's 2+4 (slot 2797, row 417, victim 3051). throw_inputs maps
+    // the pressed chord to the attempt row (1+3 -> 273, 2+4 -> 274). When
+    // it has no entry the plan row is still used, as before.
+    if (this.attackName === '1+3' || this.attackName === '2+4') {
+      attemptRow = attemptRowForInput(R, aDir, this.attackName, this.stance === 'FC', false);
+    }
     // A per-step-bank action name is 'row:<bank>:<row>', which
     // parseInt cannot read ('jin:220' -> NaN); the plan's own stepRow
     // is authoritative whenever the attack came from a step plan.
-    if (this._atkPlan && this._atkPlan.stepRow != null) attemptRow = this._atkPlan.stepRow;
-    else if (planName && planName.startsWith('row:')) attemptRow = parseInt(planName.slice(4), 10);
-    if (attemptRow == null && (this.attackName === '1+3' || this.attackName === '2+4')) {
-      attemptRow = attemptRowForInput(R, aDir, this.attackName, this.stance === 'FC', false);
-    }
+    if (attemptRow == null && this._atkPlan && this._atkPlan.stepRow != null) attemptRow = this._atkPlan.stepRow;
+    else if (attemptRow == null && planName && planName.startsWith('row:')) attemptRow = parseInt(planName.slice(4), 10);
     if (attemptRow == null || Number.isNaN(attemptRow)) {
       return { pair: null, reason: `no T3 attempt row for '${this.attackName}' (UNMAPPED)` };
     }
@@ -2370,7 +2437,13 @@ export class Fighter {
     if (!sel.throw) return { pair: null, reason: sel.reason };
     const clips = resolveThrowClips(R, sel.throw, aDir, vDir);
     if (!clips.throwerBank || !clips.victimBank) return { pair: null, reason: clips.note || 'unresolved clip bank (UNMAPPED)' };
-    return { pair: { throw: sel.throw, branch: sel.branch, code: sel.code, clips,
+    // T7 DEFAULT (Lane 5, 2026-11-20): for Pantera's plain front throws the real T7 pair is the default — resolved here, swapped in by _bindThrowPair. The T3 pair above still supplies the anchors, damage time, break windows and the fallback, and stays the pair when t7 is null. Front (quadrant 0) and back (quadrant 2) resolve from the graph bank's own pairing; left/right are NOT wired — which physical side "left"/"right" is is unproven (t7-throw-clips README) — and air has no signal on this path, so those situations keep T3. Gated on T7_GRAPHS: the T7 clips are King's, no other fighter's throw may take them.
+    let t7 = null;
+    if ((this.attackName === '1+3' || this.attackName === '2+4') && T7_GRAPHS[this.char.id]) {
+      const situation = t7SituationForQuadrant(quadrant);
+      if (situation) t7 = resolveT7ThrowPair(this.attackName, situation);
+    }
+    return { pair: { throw: sel.throw, branch: sel.branch, code: sel.code, clips, t7,
       breaks: throwBreaks(sel.throw), damageTimeSec: throwDamageTimeSec(sel.throw),
       durationSec: throwPairDurationSec(sel.throw), whMove: move, isEscape: false, hitDone: false }, reason: null };
   }
@@ -2383,6 +2456,11 @@ export class Fighter {
      as action `name`. Returns the action name or null. */
   _reactionAction(bankId, slot, name) {
     if (!bankId || !this._t3 || this.t3actions[name]) return this.t3actions[name] ? name : null;
+    // LANE C (2026-11-18): no rig bound yet — the clip is unavailable, so
+    // report it and let the caller keep the legacy lock (its documented
+    // contract). Without this, retargetT3Clips crashes on a null model
+    // (WeakMap.set(null)) instead of failing false.
+    if (!this._t3.model) return null;
     const canonical = getReactionClip(bankId, slot, THREE);
     if (!canonical) return null;
     const rc = retargetT3Clips({ [name]: canonical }, bankId, this._t3.model, THREE, this._t3.modelKey, [name]);
@@ -2406,6 +2484,34 @@ export class Fighter {
     if (rc && rc[name]) Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
     return this.t3actions[name] ? name : null;
   }
+  /* Retarget the T7 throw pair (pair.t7, attached by _throwPairFor) onto the two rigs as
+     't7throw:<key>' actions. Returns { thrower, victim } action names, or null — the caller
+     keeps the T3 pair. Null when either record is not loaded yet (they preload at _bindT3;
+     a miss kicks the load off again for the next throw), when the king skeleton is not cached
+     yet, when either rig is unbound, or when either retarget fails. Never a half pair, never
+     generic: both actions must exist or the T3 pair plays. Never throws. */
+  _t7ThrowActions(t7, victim) {
+    if (!t7 || !victim) return null;
+    const tRec = getT7ThrowClipRecord(t7.thrower.key);
+    const vRec = getT7ThrowClipRecord(t7.victim.key);
+    if (!tRec || !vRec) {
+      try { const p = loadT7ThrowPair(t7.input, t7.situation); if (p && p.catch) p.catch(() => {}); } catch (e) { /* optional */ }
+      return null;
+    }
+    if (!this._t3 || !this._t3.model || !this.t3actions || !victim._t3 || !victim._t3.model || !victim.t3actions) return null;
+    const tName = 't7throw:' + t7.thrower.key;
+    const vName = 't7throw:' + t7.victim.key;
+    if (!this.t3actions[tName]) {
+      const rc = t7ThrowClipRetargetSync(this.char.id, t7.thrower.key, tRec, this._t3.model, THREE);
+      if (rc && rc[tName]) Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
+    }
+    if (!victim.t3actions[vName]) {
+      const rc = t7ThrowClipRetargetSync(this.char.id, t7.victim.key, vRec, victim._t3.model, THREE);
+      if (rc && rc[vName]) Object.assign(victim.t3actions, createT3Actions(victim.mixer, rc, THREE));
+    }
+    if (!this.t3actions[tName] || !victim.t3actions[vName]) return null;
+    return { thrower: tName, victim: vName };
+  }
   /* Retarget the DW Soul Surge Bloom trigger clip ('dw:surge-trigger') onto this
      fighter. Returns the action name or null (pack not loaded yet). */
   _dwTriggerAction() {
@@ -2421,10 +2527,16 @@ export class Fighter {
     const vBank = victim._bankIdForDir(pair.clips.victimBank);
     const tRp = tBank && getReactionPack(tBank);
     const vRp = vBank && getReactionPack(vBank);
-    if (!tRp || !vRp) return false;
+    if (!tRp || !vRp) {
+      pair.bindReason = `reaction pack not loaded (throwerBank=${pair.clips.throwerBank} tRp=${!!tRp} victimBank=${pair.clips.victimBank} vRp=${!!vRp})`;
+      return false;
+    }
     pair.throwerPackRow = tRp.pack.rows[hexSlot(pair.clips.throwerSlot)];
     pair.victimPackRow = vRp.pack.rows[hexSlot(pair.clips.victimSlot)];
-    if (!pair.throwerPackRow || !pair.victimPackRow) return false;
+    if (!pair.throwerPackRow || !pair.victimPackRow) {
+      pair.bindReason = `pack row missing (thrower slot ${pair.clips.throwerSlot} row=${!!pair.throwerPackRow}, victim slot ${pair.clips.victimSlot} row=${!!pair.victimPackRow})`;
+      return false;
+    }
     pair.anchorScale = tRp.pack.anchor_mm_to_rig_m;
     pair.throwerAction = thrower._reactionAction(tBank, pair.clips.throwerSlot, 'throw:' + hexSlot(pair.clips.throwerSlot));
     pair.victimAction = victim._reactionAction(vBank, pair.clips.victimSlot, 'victim:' + hexSlot(pair.clips.victimSlot));
@@ -2436,6 +2548,14 @@ export class Fighter {
     if (thrower.surgeForm) {
       const dwName = thrower._dwThrowAction && thrower._dwThrowAction();
       if (dwName) pair.throwerAction = dwName;
+    }
+    // T7 DEFAULT (Lane 5, 2026-11-20): when the T7 pair resolved (_throwPairFor) and both records are already loaded, the retargeted T7 actions replace the T3 actions — the same DW-style swap as above. On ANY failure _t7ThrowActions returns null and the T3 actions stand: the pair clock, anchors, damage time and break windows stay the T3 pair's either way. Surge Form keeps its DW thrower (above), so the T7 swap does not run there. The thrower clip holds its last frame after f40 (LoopOnce + clampWhenFinished, createT3Actions); the longer victim clip is cut by the pair clock.
+    if (pair.t7 && !thrower.surgeForm) {
+      const t7a = thrower._t7ThrowActions && thrower._t7ThrowActions(pair.t7, victim);
+      if (t7a) { pair.throwerAction = t7a.thrower; pair.victimAction = t7a.victim; pair.t7Active = true; }
+    }
+    if (!pair.throwerAction || !pair.victimAction) {
+      pair.bindReason = `clip retarget failed (throwerAction=${pair.throwerAction} victimAction=${pair.victimAction})`;
     }
     return !!(pair.throwerAction && pair.victimAction);
   }
@@ -3111,7 +3231,34 @@ export class Fighter {
       // extends an open partial string (no standalone step): consume, keep the grace window open
       if (!grace && this.tekken._strPending) { this._stringGraceUntil = performance.now() + 500; return true; }
     }
-    if (/^[1234]$/.test(notation)) {
+    // STATE-PREFIX INTERCEPT (Lane B 2026-11-18): a button pressed while running, in a full
+    // crouch, or back-turned is that state's own move, not the standing directional. The buffer's
+    // _pressV2 tries the ''-prefix motion/dir tier first, so a 1+2 press returned 'f+1+2' even
+    // though the WR.1+2 row exists, and a d/f-held 1+2 from an established crouch returned
+    // 'd/f+1+2' even though FC.1+2 is the move (the FC. rows are keyed directionless, 'FC.1+2',
+    // while the single-button FC rows are keyed with the direction, 'FC.d/f+4' — and _pressV2's
+    // plain-FC fallback only covers d / d/b, never d/f). The state's row is taken here, from
+    // this fighter's own moveset, before the buffer; the rest of the fresh-press flow (cost,
+    // step-chain, _preAtk) is unchanged. No state row (WR.4/WR.1/WR.2/WR.3/WR.3+4 are not in
+    // pantera.json — Lane A data spec) -> normal resolution, i.e. the f+ move for now.
+    let stateHit = false;
+    if (ctx.running && /^[1234](\+[1234])*$/.test(notation)) {
+      const wrKey = resolveMoveKey(this._movesetId, 'WR.' + notation);
+      if (wrKey) { this.tekken._recordMove('WR.' + notation); notation = 'WR.' + notation; stateHit = true; }
+    }
+    // Chords only for FC./BT.: single buttons already resolve through _pressV2's prefix loop
+    // (direction-keyed 'FC.d/f+4', plain 'BT.1'), and a blanket single-button intercept would
+    // outrank those rows. The fresh-crouch window decides whether ctx.crouching is true: a
+    // d/f+1+2 pressed as one gesture is the standing move; from an established crouch it is FC.1+2.
+    if (!stateHit && /^[1234](\+[1234])+$/.test(notation)) {
+      for (const p of ['FC.', 'BT.']) {
+        if ((p === 'FC.' && !ctx.crouching) || (p === 'BT.' && !ctx.backturned)) continue;
+        if (resolveMoveKey(this._movesetId, p + notation)) {
+          this.tekken._recordMove(p + notation); notation = p + notation; stateHit = true; break;
+        }
+      }
+    }
+    if (!stateHit && /^[1234]$/.test(notation)) {
       const pathT0 = this.tekken._strPathT;
       const resolved = this.tekken.pressButton(notation, ctx);
       // Moveset sweep 2026-10-28: the press opened a string whose first step has no standalone
@@ -3121,7 +3268,7 @@ export class Fighter {
       // Stream 6: if the fighter has no move on this limb, keep the raw
       // notation so the base-move fallback below still fires (no dead buttons).
       if (resolved) notation = resolved;
-    } else if (/^[1234](\+[1234])+$/.test(notation)) {
+    } else if (!stateHit && /^[1234](\+[1234])+$/.test(notation)) {
       if (notation === '1+2' && ctx.urgeOn && !ctx.rage) return this.tryUrgeDash();
       // GAP-FILL LANE 1 (Soul Urge completeness): LP1+RP2 is the
       // dash (above); LK3+RK4-adjacent chord 2+3 is Burst/Smash.
@@ -3276,6 +3423,18 @@ export class Fighter {
     const key = this._chainNext; this._chainNext = null; this._chainSeq = []; this._chainOpen = false;
     const m = key && getRealMove(this._movesetId, key);
     if (!m || !victim || victim.dead || this.dead) return false;
+    // LANE C (2026-11-18, grapple-chain damage race): settle the finished
+    // link's pending damage BEFORE resetting the victim. At 60 fps the
+    // legacy slam can only land via the thrownExec t>=0.9 fallback (the
+    // in-window k>=0.9 slam is unreachable: k maxes at 0.889 before t hits
+    // 0.6), and the thrower's throwExec chain start (stateT>=0.9) lands on
+    // the SAME tick — the thrower ticks first, so without this the link's
+    // slam was dropped whenever a chain was queued (probe: AB1 first link
+    // dealt 0). Same race for a pair whose damage had not landed yet.
+    // Both settles are no-ops when the damage already landed.
+    if (victim._throwPair && !victim._throwPair.hitDone) victim._throwPairDamage();
+    else if (victim.state === 'thrownExec' && !victim._throwHitDone) victim._throwSlamDamage();
+    if (victim.dead || this.dead) return false; // the settle may have KO'd the victim: no chain into a dead fighter
     victim._throwPair = null; victim._throwPairT = 0; victim._throwAttacker = null; victim._throwMove = null;
     victim.stun = 0; victim.vy = 0; victim.onGround = true; victim.root.position.y = GROUND_Y; victim.state = 'idle';
     this._throwPair = null; this._throwPairT = 0; this._throwVictim = null; this._throwMove = null;
@@ -4076,6 +4235,228 @@ export class Fighter {
     }
   }
 
+  /* LANE B (pantera-throwfix 2026-11-19): thrower clinch yaw correction
+     (radians, added to lean.rotation.y in _animate). Windowed bump over
+     the thrower's own clock _throwYawT (seconds since 'throwing' started):
+     0 at the connect (no pop), peak at ~0.43 s — the middle of the
+     bent-over clinch — and back to 0 by 0.85 s, before the slam's own
+     rotation. The source bend and the slam are untouched. SIGN: negative
+     in lean space on purpose — three.js R_y(+th) moves the chest's world
+     yaw by -th, so -0.52 rad on lean.rotation.y reads as +30 deg of chest
+     yaw toward the side camera. (First version had the sign backwards:
+     AFTER probe 2+4 read clinch chest -50..-1 deg vs BEFORE -28..+4 deg,
+     worst exactly at the correction peak — this flip corrects it.) */
+  _throwYawCorrection() {
+    if (this.state !== 'throwing' && this.state !== 'throwExec') return 0;
+    const t = this._throwYawT || 0;
+    const T = 0.85;
+    if (t <= 0 || t >= T) return 0;
+    const u = t / T;
+    const s = Math.sin(u * Math.PI);
+    return -0.52 * s * s;
+  }
+
+  /* LANE D (pantera-throwfix 2026-11-19): knee-pole correction for the
+     throws (2+4 / 1+3), thrower AND victim. Live BEFORE (main b5648cce,
+     261 frames per throw, fixed axis = world +X for p1 / -X for p2, the
+     facing at pair start): thrower knees behind the hip-ankle midline
+     2+4 L 27/261 min -0.321 m, R 44/261 min -0.353 m; 1+3 L 27/261,
+     R 27/261, same minima — worst @step 68 in the grab clip's roll
+     (steps 60-78), plus the R knee in the clinch (steps 17-34, worst
+     -0.19 m). The fold is IN THE SOURCE CLIP (source-FK probe: knees
+     behind midline L 25/54, R 21/54 frames, mostly f30+ when prone),
+     so the fix works on the POSED result, never by editing the clip.
+     Method: post-mixer two-bone knee pole, applied at the end of
+     _animate after the mixer has posed the frame (so it rides on top
+     of the grab / paired-slot / hit / launch clips alike, and the
+     mixer re-asserts the clip pose next frame — no drift, no state
+     carried in the bones). The pole is the fighter's OWN forward in
+     3D (hips -Z), recomputed every frame: it rotates WITH the body,
+     so "forward" stays anatomical through the tumble instead of
+     pointing at a world direction the body has turned away from. Per leg, the knee is rotated about the hip-ankle axis until
+     its offset along the pole reaches +0.02 m (clearly forward, not
+     borderline 0.00); hip and ankle positions are EXACTLY preserved
+     (the new knee is recomputed on the same circle: same distance
+     from the hip-ankle axis, same component along it), only the knee
+     moves and the foot orientation follows the shin. Slew-limited
+     (~60 deg/frame) on the ABSOLUTE knee azimuth about the leg axis
+     (measured from the pole), never on the delta from the raw pose:
+     the raw pose rotates with the body, so slewing the delta winds
+     the stored angle up by the body's own rotation. A 0.25 s tail
+     after the throw states eases the correction out as the pose
+     blends back to idle (covers the landing frames at steps 95-97).
+     HISTORY (why the pole is live, not frozen): v1-v3 froze the pole
+     at throw entry (world +X for p1) and measured on that fixed axis.
+     That metric conflates body orientation with knee bend: the hips
+     swing from +49 deg to -134 deg through the throw, so world +X is
+     ~90 deg sideways from the body's forward for most of it — the
+     "clinch R -0.19 m" and "roll -0.32 m" fixed-axis defects are
+     knees that are ALREADY anatomically forward (local offset +0.29
+     in the clinch, +0.03..+0.15 in the roll). v4 (unwrap + no cap on
+     the stored delta) DID clear the fixed axis at s76 (+0.079) — by
+     bending the knee BACKWARD anatomically (local -0.33, the worst
+     value in any run) — and the wound-up delta broke the landing
+     (s100-104 fixed-axis -0.235, local -0.175). The frozen pole
+     cannot be satisfied together with anatomy at s76: the two target
+     azimuths are ~180 deg apart. The only real anatomical defects in
+     the raw clip are s80 (local -0.158 L / -0.086 R, both throws) and
+     s96 L (-0.087); the live pole fixes exactly those. A near-straight
+     leg (flex < 15 deg) is never corrected: it has no bend direction
+     to fix, and rotating it would twist the foot — so the victim,
+     whose legs stay near-straight (flex <= 11.8 deg, constant -0.047 m
+     rest-pose offset), is untouched. No clip changed, no stance
+     flattened, no yaw/floor touched. */
+  _kneePoleThrowState() {
+    return this.state === 'throwing' || this.state === 'throwExec' ||
+      this.state === 'thrown' || this.state === 'thrownExec';
+  }
+
+  _applyKneePole(dt, opponent) {
+    // Tail starts undefined: initialise to 0 so the pre-throw idle
+    // path below early-returns instead of falling through with a NaN
+    // strength (0 * NaN = NaN reaches the bone quaternions; the
+    // thrower is re-posed by its clip next frame, but the victim
+    // plays NO clip in the legacy path, so a NaN quaternion written
+    // to its thigh/shin persists FOREVER — v5 probe: victim shin/foot
+    // NaN on all 261 frames of both throws).
+    if (this._kneePoleTail == null) this._kneePoleTail = 0;
+    const inThrow = this._kneePoleThrowState();
+    if (inThrow) {
+      // New throw entry: the stored absolute azimuths are stale; the
+      // first corrected frame re-seeds them from the raw pose (no snap).
+      if (!this._kneePolePrevThrow) { this._kneePolePhiL = null; this._kneePolePhiR = null; }
+      this._kneePoleTail = 0.25;
+    } else if (this._kneePoleTail > 0) {
+      this._kneePoleTail = Math.max(0, this._kneePoleTail - dt);
+    }
+    this._kneePolePrevThrow = inThrow;
+    if (!inThrow && this._kneePoleTail <= 0) {
+      this._kneePole = null; this._kneePolePhiL = null; this._kneePolePhiR = null; return;
+    }
+    if (!this.bones || !this.bones.Hips) return;
+    // Lean (step 7) changed after the step-5 refresh, so refresh the
+    // world matrices before reading the posed skeleton.
+    this.root.updateWorldMatrix(true, true);
+    // LIVE pole: this fighter's own forward in 3D (hips -Z),
+    // recomputed every frame so it rotates with the body through the
+    // tumble. It is a unit vector straight from the hips quaternion,
+    // so it NEVER degenerates — the horizontal projection does (worst
+    // 0.036 @s93, hips pitched ~88 deg), and holding a stale horizontal
+    // pole while the body spins ~40 deg/frame left s93-94 uncorrected
+    // (local -0.132). The pole pitches with the body; the correction
+    // only ever moves the knee in the plane perpendicular to the leg
+    // axis, so a pitched pole is still a well-defined target azimuth.
+    const hq = this.bones.Hips.getWorldQuaternion(new THREE.Quaternion());
+    this._kneePole = new THREE.Vector3(0, 0, -1).applyQuaternion(hq);
+    const strength = inThrow ? 1 : Math.min(1, this._kneePoleTail / 0.25);
+    if (strength <= 0) { this._kneePole = null; this._kneePolePhiL = null; this._kneePolePhiR = null; return; }
+    this._correctKneePoleLeg(this.bones.LeftUpLeg, this.bones.LeftLeg, this.bones.LeftFoot, '_kneePolePhiL', dt, strength);
+    this._correctKneePoleLeg(this.bones.RightUpLeg, this.bones.RightLeg, this.bones.RightFoot, '_kneePolePhiR', dt, strength);
+    this.root.updateWorldMatrix(true, true);
+  }
+
+  // One leg of the knee-pole correction. Rotates the knee about the
+  // hip-ankle axis toward the live body-forward pole; hip + ankle
+  // stay exactly put (see _applyKneePole). Returns nothing; the
+  // smoothed ABSOLUTE knee azimuth (about the leg axis, measured
+  // from the pole) is kept on `this[phiKey]` so the correction slews
+  // instead of snapping when the target azimuth moves fast. The
+  // azimuth — not the delta from the raw pose — is what gets slewed:
+  // the mixer re-poses the raw knee every frame and the raw pose
+  // rotates with the body, so a slewed delta winds up by the body's
+  // own rotation (v4: stored delta wound past -180 deg, which is the
+  // OPPOSITE rotation mod 360, and broke the landing at s100-104).
+  _correctKneePoleLeg(thigh, shin, foot, phiKey, dt, strength) {
+    if (!thigh || !shin || !foot) return;
+    const pole = this._kneePole;
+    const H = new THREE.Vector3(); thigh.getWorldPosition(H);
+    const K = new THREE.Vector3(); shin.getWorldPosition(K);
+    const A = new THREE.Vector3(); foot.getWorldPosition(A);
+    const axis = new THREE.Vector3().subVectors(A, H);
+    const legLen = axis.length();
+    if (legLen < 1e-4) return;
+    axis.divideScalar(legLen);
+    const M = new THREE.Vector3().addVectors(H, A).multiplyScalar(0.5);
+    const d = new THREE.Vector3().subVectors(K, M);
+    const dPar = d.dot(axis);
+    const dPerp = new THREE.Vector3().copy(d).addScaledVector(axis, -dPar);
+    const r = dPerp.length();
+    if (r < 0.005) { this[phiKey] = null; return; } // leg straight: knee sits on the axis, nothing to pole
+    const n = dPerp.clone().divideScalar(r);
+    const pPerp = new THREE.Vector3().copy(pole).addScaledVector(axis, -pole.dot(axis));
+    const pLen = pPerp.length();
+    if (pLen < 1e-4) { this[phiKey] = null; return; } // pole parallel to the leg axis: rotation cannot move the offset
+    const pDir = pPerp.clone().divideScalar(pLen);
+    const axCrossP = new THREE.Vector3().crossVectors(axis, pDir);
+    // Absolute azimuth of the knee about the leg axis, from the pole.
+    const phi = Math.atan2(axCrossP.dot(n), pDir.dot(n));
+    // Flex gate: a near-straight leg has no bend direction to fix, and
+    // rotating it would twist the foot. Flex is measured EXACTLY as
+    // the probe measures it — angle at the knee between (hip - knee)
+    // and (ankle - knee), flex = 180 - that angle, so a straight leg
+    // reads ~0 deg and a deep bend ~138 deg. (v6 had the first vector
+    // backwards — (knee - hip) — which reads 180 - flex, so the gate
+    // never fired and the victim's straight legs got rotated ~180 deg
+    // in azimuth: local -0.04 -> +0.03, fixed-axis +0.032 -> -0.036,
+    // feet twisted. Caught by the v6 probe, fixed here.) Thrower min
+    // flex is 20.0 deg, victim max flex 11.8 deg (BEFORE log), so 15
+    // deg corrects every bent thrower knee and leaves the victim's
+    // straight legs alone.
+    const f1 = new THREE.Vector3().subVectors(H, K).normalize();
+    const f2 = new THREE.Vector3().subVectors(A, K).normalize();
+    const flex = 180 - Math.acos(Math.max(-1, Math.min(1, f1.dot(f2)))) * 180 / Math.PI;
+    if (flex < 15) { this[phiKey] = phi; return; } // track the raw pose, no correction
+    const MARGIN = 0.02;
+    const off = d.dot(pole);
+    const wrapPi = (a) => Math.atan2(Math.sin(a), Math.cos(a));
+    let phiPrev = this[phiKey];
+    if (phiPrev == null) phiPrev = phi;
+    let phiNew = phi; // no correction needed: track the raw pose
+    if (off < MARGIN) {
+      // Target azimuths: pDir rotated by +/-targetAng about the leg
+      // axis (targetAng from the +0.02 m margin). Pick the nearer to
+      // the current knee azimuth. (A closed-form delta was tried
+      // first and had the sign backwards: verified on live BEFORE
+      // frames it drove the knee the WRONG way — s20R from -0.170 to
+      // -0.294 — while the explicit form takes it to exactly +0.020.)
+      const req = (MARGIN - dPar * axis.dot(pole)) / r;
+      const c = Math.max(-1, Math.min(1, req / pLen));
+      const targetAng = Math.acos(c);
+      const phiStar = Math.abs(wrapPi(targetAng - phi)) <= Math.abs(wrapPi(-targetAng - phi)) ? targetAng : -targetAng;
+      // Slew the ABSOLUTE azimuth toward the target, ~60 deg per
+      // 60 fps frame. With the live pole the azimuth moves only as
+      // fast as the clip's own knee moves relative to the body, so
+      // 60 deg/frame tracks it with room to spare.
+      const maxStep = 1.05 * Math.max(1, dt * 60);
+      phiNew = phiPrev + Math.max(-maxStep, Math.min(maxStep, wrapPi(phiStar - phiPrev)));
+    }
+    const ang = wrapPi(phiNew - phi) * strength;
+    // Never write a non-finite rotation to a bone: a NaN quaternion
+    // is unrecoverable for a clip-less fighter (see _applyKneePole).
+    if (!Number.isFinite(ang)) { this[phiKey] = null; return; }
+    this[phiKey] = phi + ang; // store the azimuth actually placed
+    if (Math.abs(ang) < 1e-4) return;
+    const n2 = n.clone().applyAxisAngle(axis, ang);
+    const K2 = new THREE.Vector3().copy(M).addScaledVector(axis, dPar).addScaledVector(n2, r);
+    // Thigh + shin direction solves: the knee lands exactly on K2, the
+    // ankle stays exactly on A (K2 is on the same circle as K, so
+    // |A - K2| == |A - K|); only the knee moves, the foot orientation
+    // follows the shin by the small delta rotation.
+    const v1 = new THREE.Vector3().subVectors(K, H).normalize();
+    const u1 = new THREE.Vector3().subVectors(K2, H).normalize();
+    const v2 = new THREE.Vector3().subVectors(A, K).normalize();
+    const u2 = new THREE.Vector3().subVectors(A, K2).normalize();
+    const D1 = new THREE.Quaternion().setFromUnitVectors(v1, u1);
+    const D2 = new THREE.Quaternion().setFromUnitVectors(v2, u2);
+    const Q1 = thigh.getWorldQuaternion(new THREE.Quaternion());
+    const Q2 = shin.getWorldQuaternion(new THREE.Quaternion());
+    const Q1n = D1.clone().multiply(Q1);
+    const Q2n = D2.clone().multiply(Q2);
+    const parentQ = thigh.parent ? thigh.parent.getWorldQuaternion(new THREE.Quaternion()) : new THREE.Quaternion();
+    thigh.quaternion.copy(parentQ.invert().multiply(Q1n));
+    shin.quaternion.copy(Q1n.clone().invert().multiply(Q2n));
+  }
+
   /* Shared-root-frame drive for a paired throw (doc formula):
      each fighter's root follows its own clip's ax/az anchor
      around the pair anchor P, at the thrower's anchor scale,
@@ -4516,7 +4897,25 @@ export class Fighter {
     // f.yaw per frame); sync it into _faceYaw so the facing line below stays
     // the single source of truth in both modes.
     if (this.brawler) this._faceYaw = this.yaw;
+    // LANE B (pantera-throwfix 2026-11-19): thrower clinch yaw correction.
+    // Live BEFORE (2+4, main 01c95363): the thrower's chest yaw sits at
+    // -28..+4 deg through the clinch while the torso pitches forward
+    // 60-68 deg, so the side camera sees his bare back — "Pantera's back
+    // faces the opponent". The source bend is real motion (kept); the
+    // correction turns the whole posed thrower toward the camera through
+    // the clinch only (peak +30 deg at ~0.43 s, eased to 0 by 0.85 s, so
+    // the slam's own rotation and the landing are untouched), on the
+    // thrower only (states throwing/throwExec — the victim's facing is
+    // Lane A's scope and is never corrected here). It applies on top of
+    // _faceYaw, so it works identically on the pair path (_driveThrowPair
+    // sets _faceYaw = hYaw + yaw0) and the legacy path (_faceYaw stays at
+    // the pre-throw facing). _throwYawT is the thrower's own clock since
+    // 'throwing' started; it resets whenever the fighter leaves the throw
+    // states, so the correction can never leak into the next move.
+    if (this.state === 'throwing' || this.state === 'throwExec') this._throwYawT = (this._throwYawT || 0) + dt;
+    else this._throwYawT = 0;
     this.lean.rotation.y = (typeof this._faceYaw === 'number') ? this._faceYaw : this.facing * Math.PI / 2;
+    this.lean.rotation.y += this._throwYawCorrection();
 
     // 2) Which REAL T3 clip owns this state? (FROZEN-IDLE FIX 2026-10-20:
     // the bank's animated stance/walk clips existed but were NEVER played
@@ -4849,6 +5248,12 @@ export class Fighter {
       p.needsUpdate = true;
       const as = 1 + Math.sin(k * 12) * 0.08; this.aura.scale.set(as, 1, as);
     }
+
+    // 9) LANE D (pantera-throwfix 2026-11-19): knee-pole correction for
+    // the throws — runs last, after the mixer has posed the frame and
+    // the lean has been applied, so it sees the final posed skeleton.
+    // Throw states only (+ 0.25 s tail); a no-op everywhere else.
+    this._applyKneePole(dt, opponent);
   }
 
   /* World-space forward vector (brawler: from yaw; versus: from x-facing).

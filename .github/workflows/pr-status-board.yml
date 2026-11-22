@@ -1,0 +1,50 @@
+# PR status board (owner 2026-11-03: "no I don't want that on the game home screen but in the repo yes").
+# Lists every open PR with its required checks, mergeable state and stacked-PR merge order.
+# Publishes ONLY when the board content changed, and never to main (branch-protected, bot pushes refused):
+#   1. docs/PR-STATUS.md on the dedicated branch `pr-status-board`
+#   2. the body of the pinned issue "PR Status Board"
+# Loop-safe: there is no push trigger; commits made with GITHUB_TOKEN never start workflows; the board's
+# own branch is never a PR head; bot-triggered events are skipped; and PRs that only touch the board
+# file are ignored. Its own check run is left off the board.
+name: pr-status-board
+on:
+  schedule:
+    - cron: '17 * * * *'   # hourly
+  workflow_dispatch:
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review, converted_to_draft, closed, edited]
+    paths-ignore:
+      - 'docs/PR-STATUS.md'
+concurrency:
+  group: pr-status-board
+  cancel-in-progress: false
+permissions:
+  contents: write
+  issues: write
+  pull-requests: read
+  checks: read
+  statuses: read
+jobs:
+  pr-status-board:
+    if: >-
+      github.actor != 'github-actions[bot]' &&
+      (github.event_name != 'pull_request' ||
+       (github.event.pull_request.head.repo.full_name == github.repository &&
+        github.event.pull_request.head.ref != 'pr-status-board'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: .github
+      - name: Self-test
+        run: python3 -m unittest discover -s .github/scripts -p 'test_pr_status_board.py' -v
+      - name: Build and publish board
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/board"
+          python3 .github/scripts/pr_status_board.py --out "$RUNNER_TEMP/board/PR-STATUS.md" --publish
+          cat "$RUNNER_TEMP/board/PR-STATUS.md" >> "$GITHUB_STEP_SUMMARY"

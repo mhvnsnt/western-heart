@@ -6,7 +6,7 @@ Three forms, one fighter. Transform system supports both directions
 | # | Form | Model | Moveset | Access |
 |---|------|-------|---------|--------|
 | 1 | **Attire 1: unwinged demon** (base/default) | `attires/attire1/model.glb` | demonio (base) | Start |
-| 2 | **Winged devil** (transform UP) | `attires/winged-devil/model.glb` | demonio-devil (devil Jin base: flight, laser) | Mid-battle transform from Attire 1, OR start as this form |
+| 2 | **Winged devil** (transform UP) | `attires/winged-devil/model.glb` | demonio-winged (devil Jin base: flight, laser) | Mid-battle transform from Attire 1, OR start as this form |
 | 3 | **Human** (transform DOWN, rare depower) | `attires/human/model.glb` | demonio (basic) | Rare reverse transform from base demon form, OR start as this form |
 
 ## Canon notes (owner verbatim)

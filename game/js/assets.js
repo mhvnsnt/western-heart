@@ -37,8 +37,11 @@ import { resolveAssetCandidates, looksLikeModel } from './asset-config.js';
 export const MODEL_URLS = {
   pantera: 'assets/models/pantera.glb',
   'steve-fox': 'assets/models/steve-fox.glb',
-  // NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO — the old `jin:` key was removed;
-  // `demonio: 'assets/models/demonio.glb'` (below) is the canonical model.
+  // NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO — the old `jin:` key was removed.
+  // `demonio: 'assets/models/demonio.glb'` (below) is the old Steve Fox stand-in body
+  // (byte-identical to steve-fox.glb; wrong canon per owner 2026-10-15) — NOT the
+  // canonical model. The canonical default is `demonio-a1`
+  // (roster/demonio/attires/attire1/model.glb).
   // Per-fighter models wired from teardown extractions + Tripo rescans.
   // Keys match FULL_ROSTER `model` ids in roster-full.js (lane 2).
   demonio: 'assets/models/demonio.glb',
@@ -135,7 +138,7 @@ export const MODEL_URLS = {
   // roster/king-tyrant/attires/ATTIRE-SLOTS.md): White Tyrant / Tyrant King /
   // Black Snow / Fight Gear. The in-game base build ladders back. Unrigged
   // statics; auto-rig queued (cape/jacket cloth-rig tasks recorded, not blocking).
-  'king-tyrant-attire1': '../roster/king-tyrant/attires/attire1/model-rigged.glb',
+  'king-tyrant-attire1': '../roster/king-tyrant/attires/attire1/model-rigged-cdn.glb',
   'king-tyrant-attire2': '../roster/king-tyrant/attires/attire2/model.glb',
   'king-tyrant-attire3': '../roster/king-tyrant/attires/attire3/model.glb',
   'king-tyrant-attire4': '../roster/king-tyrant/attires/attire4/model.glb',
@@ -200,8 +203,8 @@ export const MODEL_URLS = {
   // DXMMII Slot 1 — Tripo Default (dedup 2026-10-22): the 60MB Tripo pull
   // that replaced the wooden dummy as Slot 1 per owner 2026-10-19
   // (roster/dxmmii/ATTIRE-SLOTS.md). Wired so his select entry defaults to it.
-  'dxmmii-tripo': '../roster/dxmmii/attires/attire1/model-rigged.glb',
-  'cyborg-x': 'assets/models/cyborg-x.glb',
+  'dxmmii-tripo': '../roster/dxmmii/attires/attire1/model-rigged-cdn.glb',
+  'cyborg-x': 'assets/models/cyborg-x-cdn.glb',
   'cape-jones': 'assets/models/cape-jones.glb',
   // CAPE JONES Attire 1 (rig QA 2026-10-23, muse/cape-jones-fight): the
   // auto-rigged Round-2 build (49 bones, -Z facing, sides/knees OK), staged
@@ -225,7 +228,7 @@ export const MODEL_URLS = {
   dxmmii: 'assets/models/dxmmii.glb',
   rave: 'assets/models/rave.glb',
   // Cain Elias — Vain Abel's brother, Undertaker archetype (owner 2026-10-19, Tripo pulls).
-  'cain-elias': '../roster/cain-elias/attires/attire1/model-rigged.glb',
+  'cain-elias': '../roster/cain-elias/attires/attire1/model-rigged-cdn.glb',
   'bf-aaron-ruben': '../roster/bf-aaron-ruben/attires/attire1/model-rigged.glb',
   'bf-bannon': '../roster/bf-bannon/attires/attire1/model-rigged.glb',
   'bf-brutus': '../roster/bf-brutus/attires/attire1/model-rigged.glb',
@@ -520,8 +523,8 @@ export const MODEL_URLS = {
   // the outfit was textureless described the stripped conversion, not
   // the source blend). model-rigged-nooutfit.glb stays on disk untouched
   // as the named no-outfit option from 2026-11-03.
-  megami: '../roster/parvati/attires/attire1/model-rigged.glb',
-  'megami-attire1': '../roster/parvati/attires/attire1/model-rigged.glb',
+  megami: '../roster/parvati/attires/attire1/model-rigged-cdn.glb',
+  'megami-attire1': '../roster/parvati/attires/attire1/model-rigged-cdn.glb',
   // MENAJERII (2026-10-23, SmutBase 6 pipeline fighters 5-6): SmutBase Vixen
   // commission intake (Injustice 2-based). In-repo build = meshopt-compressed
   // (41.7 MB, validated); intake original (629.7 MB) archived on release
@@ -536,8 +539,8 @@ export const MODEL_URLS = {
   // authored cheetah suit + hair + necklace as the blend's view layer
   // saves them). model-rigged.glb and model.glb stay on disk untouched
   // as the earlier named options.
-  menajerii: '../roster/vixen/attires/attire1/model-rigged-noplane.glb',
-  'menajerii-attire1': '../roster/vixen/attires/attire1/model-rigged-noplane.glb',
+  menajerii: '../roster/vixen/attires/attire1/model-rigged-noplane-cdn.glb',
+  'menajerii-attire1': '../roster/vixen/attires/attire1/model-rigged-noplane-cdn.glb',
   // MADELYN (2026-11-09, owner order): her FIXED build — restored in
   // physics-playground-pwa PR #40 (153 morph targets: 92 body + 61 face;
   // deform-only 170-joint rig) — wired in as-is, bare: no canon written.
@@ -564,7 +567,7 @@ export const MODEL_URLS = {
   // Gashadokuro rigged 2026-11-06 (Roster-100 Wave 3, item L2): landmark refit
   // of his own Tripo static on the canonical 50-joint skeleton, 1.95 m; the
   // unrigged source static stays at source/kuma-a1.glb.
-  gashadokuro: '../roster/kuma/attires/attire1/source/gashadokuro-a1-rigged.glb',
+  gashadokuro: '../roster/kuma/attires/attire1/source/gashadokuro-a1-rigged-cdn.glb',
   aotsuki: '../roster/panda/attires/attire1/source/aotsuki-a1-rigged.glb',
   // Attire variant keys for on-main GLBs no key reached (catch-up audit
   // attires-unwired set). Ladder placement lives in game/js/attires.js:
@@ -586,8 +589,8 @@ export const MODEL_URLS = {
   'skull-base': 'assets/models/skull.glb',
   'waterfall-attire1': '../roster/waterfall/attires/attire1/model.glb',
   'yukihyo-attire1': '../roster/yukihyo/attires/attire1/source/yukihyo-a1-rigged.glb',
-  'yukihyo-attire2': '../roster/yukihyo/attires/attire2/source/yukihyo-a2-bobcat-pride-rigged.glb',
-  'yukihyo-attire3': '../roster/yukihyo/attires/attire3/source/yukihyo-a3-tiger-king-rigged.glb',
+  'yukihyo-attire2': '../roster/yukihyo/attires/attire2/source/yukihyo-a2-bobcat-pride-rigged-cdn.glb',
+  'yukihyo-attire3': '../roster/yukihyo/attires/attire3/source/yukihyo-a3-tiger-king-rigged-cdn.glb',
   'armor-king-attire1': '../roster/armor-king/attires/attire1/model.glb',
   'zangief-attire1': '../roster/zangief/attires/attire1/model.glb',
   // RYUSAN (owner 2026-10-23): SmutBase Mina Ashido intake — WH name RYUSAN,

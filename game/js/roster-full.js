@@ -16,13 +16,19 @@ export const FULL_ROSTER = [
     colors: { suit: 0x4a5a1a, trim: 0x8a9a3a }, style: 'Xingyiquan', archetype: 'Trickster' },
   { id: 'tou', name: 'TOU', title: 'The Fighting Soul', base: 'Paul Phoenix', moveset: 'heihachi', model: 'tou-body', tintStrength: 0.25,
     colors: { suit: 0x8a1a1a, trim: 0xcc4400 }, style: 'Power Karate', archetype: 'Power' },
-  { id: 'sha', name: 'SHA', title: 'The Sand Soul', base: 'Xiaoyu', moveset: 'xiaoyu', model: 'sha-body', tintStrength: 0.6,
-    colors: { suit: 0xc2a36b, trim: 0x8a6a3a }, style: 'Hakkesho', archetype: 'Evasive' },
+  // SHA card RETIRED 2026-11-20 (owner order: Saku Ra is ONE fighter).
+  // SHA is the SOUL shared by three sisters (Saku Ra + Kinpo + Awa Pop),
+  // not a fighter. The single fighter is SAKU RA (sakura, MAIN_IDS).
+  // sha.json is KEPT until the single-fighter load is verified.
   { id: 'kai', name: 'KAI', title: 'The Sea Soul', base: 'Eddy Gordo', moveset: 'demonio', model: 'kai-body', tintStrength: 0.25,
     colors: { suit: 0x1a4a6b, trim: 0x3a8acc }, style: 'Capoeira', archetype: 'Rushdown' },
   { id: 'retsu', name: 'RETSU', title: 'The Violent Soul', base: 'Bryan Fury', moveset: 'bryan', model: 'retsu-body', tintStrength: 0.25,
     colors: { suit: 0x3a1a1a, trim: 0xcc2222 }, style: 'Kickboxing', archetype: 'Rushdown' },
-  { id: 'zen', name: 'ZEN', title: 'The Still Soul', base: 'Heihachi', moveset: 'heihachi', model: 'zen', tintStrength: 0.6,
+  // ZEN base corrected 2026-11-20 (owner decision 2026-10-24,
+  // docs/decisions/2026-10-24-zen-base-decision.md): Eleven/Twelve ->
+  // Dural -> Zen's own canon moves; NOT Heihachi, NOT Julia.
+  // Labels are display-only; the loader uses id.
+  { id: 'zen', name: 'ZEN', title: 'The Still Soul', base: 'Dural', moveset: 'zen', model: 'zen', tintStrength: 0.6,
     colors: { suit: 0xd0d0d0, trim: 0x8a8a8a }, style: 'Karate', archetype: 'Defensive',
     // ZEN TRANSFORMATION MODES (owner canon 2026-10-21, roster/zen/CANON.md):
     // ALL of Zen's versions are modes WITHIN Attire 1 — not separate
@@ -120,7 +126,7 @@ export const FULL_ROSTER = [
       },
       'burger-speed-demon': {
         up: { target: 'burger-the-mouth', label: 'THE MOUTH', powerMult: 1.18, speedMult: 0.65, defenseMult: 1.22, bodyScale: 1.1, moveset: 'burger-the-mouth' },
-        down: { target: 'pantera', label: 'POWER DOWN', powerMult: 0.91, speedMult: 0.77, defenseMult: 1.11, moveset: 'bryan' },
+        down: { target: 'burger', label: 'POWER DOWN', powerMult: 0.91, speedMult: 0.77, defenseMult: 1.11, moveset: 'burger' },
       },
       'burger-the-mouth': {
         up: { target: 'burger-demon', label: 'DEMON ASCENSION', powerMult: 1.23, speedMult: 1.06, defenseMult: 1.18, bodyScale: 1.14, moveset: 'burger-demon' },
@@ -482,7 +488,9 @@ export function getFighter(id) {
    attire ladder per owner directive 2026-10-22: "Yoshimitsu is supposed to
    ladder into Phantom's attires, not stand alone"). MAIN_IDS = the original
    main-roster block. Everything else is bonus. */
-export const SOUL_IDS = ['rin', 'byou', 'tou', 'sha', 'kai', 'retsu', 'zen', 'gyou'];
+// SHA retired 2026-11-20: the soul SHA is not a fighter; its vessels are
+// SAKU RA (sakura, MAIN_IDS), KINPO and AWA POP (bonus tier).
+export const SOUL_IDS = ['rin', 'byou', 'tou', 'kai', 'retsu', 'zen', 'gyou'];
 export const MAIN_IDS = ['pantera', 'demonio', 'phantom', 'diablo', 'skull', 'samura1', 'sakura'];
 
 export function getRosterByTier() {
