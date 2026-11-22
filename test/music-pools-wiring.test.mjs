@@ -16,7 +16,7 @@
 //     property conditionally once the Cape entries land on main.)
 //  3. Cutscene hook: playCutscene(name) plays an ordered sequence and
 //     resumes battle rotation on the last battle stage when it ends.
-//  4. Shipped library: 52 tracks; every Nosferatu track carries exactly
+//  4. Shipped library: 62 tracks; every Nosferatu track carries exactly
 //     one stage tag (the pool assignment); title/menu orphans fixed
 //     (title-meditation -> title, menu-deliberate -> online); EVERY
 //     mode pool and EVERY playable stage pool contains at least one
@@ -29,11 +29,11 @@
 //     counts them as the pool's live track.
 //
 // Run: node test/music-pools-wiring.test.mjs (from repo root; CI runs
-// the loop). NOTE on the track count: this branch sets 52 = 44 on main
-// + 8 new tracks here. The audio lane's open PR #1058 adds 8 Cape
-// tracks to the same count line; whichever merges second must bump
-// the count to 60 (44 + 8 + 8). Do not "fix" this by editing the
-// count to 60 here while the Cape entries are not on main yet.
+// the loop). NOTE on the track count: this branch sets 62 = 54 on main
+// + 8 new tracks here (54 = 44 + 8 Cape + 2 Loyalty Freak followup,
+// landed by the audio lane). The audio lane's PR #1058 added 8 Cape
+// tracks to the same count line; the pre-landing estimate of 60
+// (44 + 8 + 8) was superseded because the lane landed 10 tracks.
 
 import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
@@ -134,7 +134,7 @@ ok(await music.playCutscene('no-such-cutscene') === false,
 // ---- 4. Shipped library ----
 console.log('== shipped library ==');
 const lib = JSON.parse(readFileSync(join(root, 'game', 'data', 'music-library.json'), 'utf8'));
-ok(lib.tracks.length === 52, 'library has 52 tracks (44 on main + 8 new here)');
+ok(lib.tracks.length === 62, 'library has 62 tracks (54 on main + 8 new here)');
 const ids = lib.tracks.map(t => t.id);
 ok(new Set(ids).size === ids.length, 'all track ids unique');
 const onDisk = (t) => !!(t.file && existsSync(join(root, 'game', t.file)));

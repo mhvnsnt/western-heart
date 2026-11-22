@@ -17,7 +17,7 @@ const ok = (cond, msg) => { n++; assert.ok(cond, msg); console.log(`ok ${n} - ${
 const lib = JSON.parse(read('game/data/music-library.json'));
 const T = lib.tracks;
 const cape = T.filter((t) => (t.stages || []).includes('cape-jones-arena'));
-ok(cape.length === 8, `cape-jones-arena pool has 8 tracks (got ${cape.length})`);
+ok(cape.length === 16, `cape-jones-arena pool has 16 tracks (got ${cape.length})`);
 ok(cape[0].id === 'cape-jones-ghost-surf-rock', 'first cape-jones-arena track is Ghost Surf Rock (main theme)');
 const gsr = T.find((t) => t.id === 'cape-jones-ghost-surf-rock');
 ok(!!gsr, 'Ghost Surf Rock entry exists');
