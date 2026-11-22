@@ -23,7 +23,9 @@ Removed from normal fights (versus, arcade, story, survival, ranked, online):
 - the "BREAK THE THROW — TAP LP" prompt and the "ESCAPED!" text;
 - subtitles for hit cries, KO cries, taunts and announcer calls (the ROUND / FIGHT / K.O. banners already show those;
   subtitles stay for intro lines, win quotes and story scenes);
-- the 6 s control-hints bar at fight start; the frame-data option.
+- the 6 s control-hints bar at fight start; the frame-data option;
+- the mode pills ("VERSUS", "VERSUS · PANTERA VS CAPE JONES", arcade / survival badges) that sat over the fight
+  in the owner's phone screenshot (practice keeps its badge).
 
 Practice mode (training and the fight lab) shows the practice panel built from that field list, one per side, at the
 screen edge under the gauges, the changed value glowing; the throw-break prompt, control hints and frame-data option
@@ -43,7 +45,7 @@ taken out, P2's AI fighting, P1 pressing a move every 450 ms; 1800 frames) and t
 | three-mesh-bvh CPU over the run | 430 ms | 0 |
 | worst frame on a floor-break hit (sim only) | 29.7 ms: `stageBreaks.checkHit` 21.9 (`sim-spikes-attributed.json`) | shards still built at the hit (inside the 0.18 s break freeze); lights and materials no longer |
 | shader programs compiled AT a floor break | +12 (31 -> 43), lights 15 -> 18 (`break-compile-old.json`) | 0 (46 -> 46, lights 18 from stage build; `break-compile-new.json`) |
-| first press of a move (clip retarget + bind at the press) | 3-14 ms per first press, 23 ms worst (`sim-spikes-before.json` byKind) | bound ahead: `sim-spikes-prewarmed.json` |
+| first press of a move (clip retarget + bind at the press) | 3-14 ms per first press, 23 ms worst (`sim-spikes-before.json` byKind) | bound ahead of the press: in the real game loop both fighters' warm lists were done before the first screenshot (`overlays.json` normalFrame.warm: left 0, done) |
 
 Fixes:
 - `game/js/hitdetect.js`: the BVH "verify" tuning instrument is opt-in (`?hitverify=1`). It ran after every landed hit
