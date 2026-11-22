@@ -112,7 +112,7 @@ ok(isPlayableTrack({ file: 'x.mp3', status: 'pending-download' }) === false &&
 const shippedPending = tracks.filter((t) => t.status === 'pending-download');
 ok(shippedPending.length === 7 && shippedPending.every((t) => t.file === null && t.remote === null),
   'shipped library: exactly 7 pending-download slots, all fileless (5 tekken + 2 loyalty-freak followup)');
-ok(tracks.length === 54, 'shipped library: 54 tracks after cape 8 + loyalty-freak followup 2');
+ok(tracks.length === 62, 'shipped library: 62 tracks after cape 8 + loyalty-freak followup 2 + 8 new interchange here');
 
 // ---- 3. Announcer events ----
 console.log('== announcer events ==');
