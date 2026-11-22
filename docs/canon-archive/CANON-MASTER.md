@@ -1404,8 +1404,12 @@ in the credits at the end of some stories and in the settings credits
 
 ### CHORDZ
 - **Identity.** Lars → **Chordz** (rename locked, owner, 2026-10-15).
-- **Open gaps.** At the rename, no Lars model existed (recorded BLOCKED
-  then). No further canon — story, appearance, moves — is recorded yet.
+- **Identity (owner, 2026-11-22).** Kutz Chordz is one guy — Kutz for
+  short; some call him Kutz, some Chordz, both are him. The 'two halves'
+  are his personality (guitarist side / moshpit side), not two people.
+  Emo guy based on Lars; he has a model and transformations.
+- **Open gaps.** Story and moves not yet recorded; model +
+  transformations exist (owner, 2026-11-22).
 
 ### ZEN — The Unvesseled
 - **Identity.** ZEN (禅), stillness — one of the nine souls, and
@@ -1533,8 +1537,13 @@ in the credits at the end of some stories and in the settings credits
   because the names are similar (his speech-to-text also renders Zen as
   ran/rain/Wren) — attribution follows the TRAITS (yellow + octopus =
   Zen), never the typed name alone.
-- **Open gaps.** Beyond the separation above, **no canon recorded yet** —
-  the owner has NOT started on Ren (2026-10-21).
+- **Appearance — functioning Truth mouth (owner, 2026-11-22).** Ren
+  gets a real, functioning mouth like Truth from Fullmetal Alchemist —
+  the white being in the Gate with the big creepy smile as his default;
+  it opens, teeth are 3D, inside of the mouth is black, with a tongue
+  and a uvula.
+- **Open gaps.** Beyond the separation above and the Truth mouth
+  (2026-11-22), no further canon recorded yet.
 
 ### MARS
 - **Identity (owner, 2026-10-19).** Mars is like a **Stand (JoJo) for
