@@ -4,7 +4,7 @@
 
 **53 open PRs — 🟢 ready to merge: 1 · 🔴 failing: 32 · ⏳ running: 0 · ⚔️ conflicted: 20** (also 🟠 blocked: 0 · 🔗 stacked: 0 · 📝 draft, green-or-idle: 0; 6 of 53 are drafts)
 
-_Generated 2026-11-22 02:01 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
+_Generated 2026-11-22 02:03 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
 
 Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not reported. Ready = not draft, targets `main`, GitHub says MERGEABLE, every check green. Status priority: conflicted > failing > running > draft > stacked > ready.
 
@@ -17,9 +17,9 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 🟢 ready to merge | [#1792](https://github.com/mhvnsnt/western-heart/pull/1792) Moveset fix P2: Goh/Brad VF kits, Baek rebuild (T6 PSP), Bannon wiring (Jeffry) | ready | mhvnsnt / `wh-moveset-fix/p2-rebuilds-20261120` | `7f7bf8b` | `main` | ✅ | ✅ | ✅ | ✅ | 10✅ | mergeable (clean) | 2026-11-21 06:43 UTC |
-| 🔴 failing | [#1827](https://github.com/mhvnsnt/western-heart/pull/1827) VF5 complete teardown (Lane 1A): MikuMikuLibrary toolchain + motion inventory — motion pro | ready | mhvnsnt / `lane-1a-vf5-complete` | `04699df` | `main` | ✅ | ✅ | ✅ | ❌ | 4✅ 5⏳ | mergeable (blocked) | 2026-11-22 02:00 UTC |
-| 🔴 failing | [#1826](https://github.com/mhvnsnt/western-heart/pull/1826) Lane 1C: SCVI complete moveset teardown — Scuffle vendored, 22 fighters parsed, WH banks w | ready | mhvnsnt / `lane-1c-scvi-complete` | `35d50c3` | `main` | ✅ | ✅ | ✅ | ❌ | 7✅ 3⏳ | mergeable (blocked) | 2026-11-22 01:57 UTC |
-| 🔴 failing | [#1825](https://github.com/mhvnsnt/western-heart/pull/1825) Canon fix: Zen's own Tripo body, Gyou's conditional Paul, RIN Steve-body retire + body-vs- | ready | mhvnsnt / `canon-fix/zen-gyou-rin-20261121` | `5e6aeed` | `main` | ✅ | ✅ | ✅ | ✅ | 5✅ 2❌ 3⏳ | mergeable (unstable) | 2026-11-22 01:55 UTC |
+| 🔴 failing | [#1827](https://github.com/mhvnsnt/western-heart/pull/1827) VF5 complete teardown (Lane 1A): MikuMikuLibrary toolchain + motion inventory — motion pro | ready | mhvnsnt / `lane-1a-vf5-complete` | `04699df` | `main` | ✅ | ✅ | ✅ | ❌ | 6✅ 3⏳ | mergeable (blocked) | 2026-11-22 02:00 UTC |
+| 🔴 failing | [#1826](https://github.com/mhvnsnt/western-heart/pull/1826) Lane 1C: SCVI complete moveset teardown — Scuffle vendored, 22 fighters parsed, WH banks w | ready | mhvnsnt / `lane-1c-scvi-complete` | `35d50c3` | `main` | ✅ | ✅ | ✅ | ❌ | 7✅ 3⏳ | mergeable (blocked) | 2026-11-22 02:03 UTC |
+| 🔴 failing | [#1825](https://github.com/mhvnsnt/western-heart/pull/1825) Canon fix: Zen's own Tripo body, Gyou's conditional Paul, RIN Steve-body retire + body-vs- | ready | mhvnsnt / `canon-fix/zen-gyou-rin-20261121` | `5e6aeed` | `main` | ✅ | ✅ | ✅ | ✅ | 8✅ 2❌ | mergeable (unstable) | 2026-11-22 01:55 UTC |
 | 🔴 failing | [#1824](https://github.com/mhvnsnt/western-heart/pull/1824) docs(decode): log T7 receiver fix as the permanent fix | ready | mhvnsnt / `docs/t7-receiver-fix` | `8bc5175` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (clean) | 2026-11-22 01:48 UTC |
 | 🔴 failing | [#1823](https://github.com/mhvnsnt/western-heart/pull/1823) Lane 2B: canon-moveset character inventory (Kevin + canon movesets job) | ready | mhvnsnt / `lane-2b/canon-moveset-inventory` | `4789081` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (clean) | 2026-11-22 01:48 UTC |
 | 🔴 failing | [#1822](https://github.com/mhvnsnt/western-heart/pull/1822) Kevin full canon moveset: wire Baek rebuild data to KEVIN (kevin.json + roster) | ready | mhvnsnt / `kevin/canon-moveset-20261121` | `d439ee0` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (clean) | 2026-11-22 01:42 UTC |
