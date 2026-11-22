@@ -1,0 +1,708 @@
+{
+ "format": "wh-doa6-anim-index/1",
+ "headline": "DOA6 animation bank: 12,816 converted clips (GTAinside GTAV06 .ifp packs) covering the complete DOA6 roster (31 fighters + Common pool). GTA:SA-format keyframes on the GTA ped skeleton \u2014 NOT DOA6-native, NOT WH-rig retargets. Numbered clips only; no number->DOA-move mapping exists, so only verified stance (loop idle) clips are mapped in moves.pack.json.",
+ "source": {
+  "game": "Dead or Alive 6 (Team Ninja, 2019)",
+  "packs": "GTAinside DOA6->GTA:SA .ifp by GTAV06 (32 zips, 258 MB)",
+  "author": "GTAV06 (Bojan Vasiljevic) https://www.gtainside.com/user/GTAV06",
+  "converter": "tools/anim/doa6-ifp-convert.py + tools/anim/doa6-ifp-multi.py (rwfury ANP3)",
+  "release": "doa6-gtainside-ifp-20261122 (bank JSONs + source zips as release assets)",
+  "docs": "teardown/doa6/GTAINSIDE-IFP.md + teardown/doa6/EXTRACTION-ROUTE.md"
+ },
+ "bank_files": {
+  "doa6-Ayane.json": {
+   "clips": 466,
+   "bytes": 35203162,
+   "sha256": "c154400b5d2ce2bfefbf9041d360fc6c47cc5790e14136088b47b8d44186654b",
+   "failed": [],
+   "multi_anim": {
+    "added": 168,
+    "already_present": 0,
+    "failed": 0
+   }
+  },
+  "doa6-Bass.json": {
+   "clips": 606,
+   "bytes": 69570751,
+   "sha256": "4b1155d5b31f3b8b333693efbada8fb1887484acf772e306a01118d751ebdeee",
+   "failed": [],
+   "multi_anim": {
+    "added": 259,
+    "already_present": 0,
+    "failed": 0
+   }
+  },
+  "doa6-Bayman.json": {
+   "clips": 685,
+   "bytes": 72420489,
+   "sha256": "5fbc1844d47bf4c6052fc7409630c4596e4422724ab57ed7f2a0246d78f94ce7",
+   "failed": [],
+   "multi_anim": {
+    "added": 288,
+    "already_present": 0,
+    "failed": 0
+   }
+  },
+  "doa6-BradWong.json": {
+   "clips": 608,
+   "bytes": 52020402,
+   "sha256": "45888dfec9d35e435aa6de7ce34216ab6dbb672a36ec6287194b338e8b83aaf1",
+   "failed": [],
+   "multi_anim": {
+    "added": 189,
+    "already_present": 0,
+    "failed": 0
+   }
+  },
+  "doa6-Christie.json": {
+   "clips": 438,
+   "bytes": 30870356,
+   "sha256": "0d9091f9226b2c22ef45af06bb1d9887498b01053baca0ffdc736841efad2e84",
+   "failed": [],
+   "multi_anim": {
+    "added": 161,
+    "already_present": 0,
+    "failed": 1
+   }
+  },
+  "doa6-Common.json": {
+   "clips": 924,
+   "bytes": 68666802,
+   "sha256": "0a12d2a69b802524f4d58fc94bc09c9fb524dacf1a8a2498247da3154ceb227a",
+   "failed": [],
+   "multi_anim": null
+  },
+  "doa6-Diego.json": {
+   "clips": 163,
+   "bytes": 16270045,
+   "sha256": "7b84d5606ac32f91512e0769974e69d97b99d6146403f7b0fccf077822d24add",
+   "failed": [],
+   "multi_anim": null
+  },
+  "doa6-Eliot.json": {
+   "clips": 411,
+   "bytes": 26146903,
+   "sha256": "b5d1157ccaf302ba3abd5565587518530250cbc14b9cc2e85b524e954bb845fb",
+   "failed": [],
+   "multi_anim": {
+    "added": 152,
+    "already_present": 0,
+    "failed": 0
+   }
+  },
+  "doa6-Hayabusa.json": {
+   "clips": 540,
+   "bytes": 50678098,
+   "sha256": "e59dcc2bd50a5c3bc92a374099b3d07abd0cf6a8d0875ced9bbed9dfe738df2a",
+   "failed": [],
+   "multi_anim": {
+    "added": 219,
+    "already_present": 0,
+    "failed": 0
+   }
+  },
+  "doa6-Hayate.json": {
+   "clips": 408,
+   "bytes": 32750933,
+   "sha256": "1cd5ee024c18a8a90e8811698bd33e717e8fd3738c668d1ce6324b9f59f8c454",
+   "failed": [],
+   "multi_anim": {
+    "added": 168,
+    "already_present": 0,
+    "failed": 0
+   }
+  },
+  "doa6-Helena.json": {
+   "clips": 412,
+   "bytes": 25970885,
+   "sha256": "cc9cd3d32c4e566371d38191b36714025e5bc2ddb5a2365a2601e63a9637c445",
+   "failed": [],
+   "multi_anim": {
+    "added": 145,
+    "already_present": 0,
+    "failed": 0
+   }
+  },
+  "doa6-Hitomi.json": {
+   "clips": 382,
+   "bytes": 26625058,
+   "sha256": "1d97c837d82c7fea9361464371a76ad11b483e0fa292ef839f2ff5eda4d423dd",
+   "failed": [],
+   "multi_anim": {
+    "added": 150,
+    "already_present": 0,
+    "failed": 0
+   }
+  },
+  "doa6-Honoka.json": {
+   "clips": 327,
+   "bytes": 32340461,
+   "sha256": "1d60cb8d721e1066635dfec500742ae9d657f0c3855b2ce26baf71eedeaba7e0",
+   "failed": [],
+   "multi_anim": null
+  },
+  "doa6-JannLee.json": {
+   "clips": 409,
+   "bytes": 32109858,
+   "sha256": "ac03610fae49582ee04f77c12ff2a7a50ed27f9b0c3b7c71a39d44ea2cefe894",
+   "failed": [],
+   "multi_anim": {
+    "added": 153,
+    "already_present": 0,
+    "failed": 0
+   }
+  },
+  "doa6-Kasumi.json": {
+   "clips": 494,
+   "bytes": 37810102,
+   "sha256": "7b2ed415dfc2c107a847f2b1c6a4adc94c26cbc6e11868cea204a3203c65ac46",
+   "failed": [],
+   "multi_anim": {
+    "added": 173,
+    "already_present": 0,
+    "failed": 0
+   }
+  },
+  "doa6-Kokoro.json": {
+   "clips": 404,
+   "bytes": 23697813,
+   "sha256": "8615b6e8ccec3084dc41389306666e7bddad656ec940bae7f1eea8fc26f78b9c",
+   "failed": [],
+   "multi_anim": {
+    "added": 152,
+    "already_present": 0,
+    "failed": 0
+   }
+  },
+  "doa6-Kula.json": {
+   "clips": 167,
+   "bytes": 14573454,
+   "sha256": "2429e69f8b70f5b0e9bddd9d5e838bdb9c7e8f9fd2f87fc71b6074db10334a59",
+   "failed": [],
+   "multi_anim": null
+  },
+  "doa6-Leifang.json": {
+   "clips": 430,
+   "bytes": 32177955,
+   "sha256": "d9d80c348fc4e179b1fd5a9cb5637adeb5b9f52f384ff61729892c05643cdecc",
+   "failed": [],
+   "multi_anim": {
+    "added": 170,
+    "already_present": 0,
+    "failed": 0
+   }
+  },
+  "doa6-Lisa.json": {
+   "clips": 552,
+   "bytes": 48765883,
+   "sha256": "fe20761062144b615cb4077dc2d45487d164134ed6b8aba2c4b9b15d4b98fb78",
+   "failed": [],
+   "multi_anim": {
+    "added": 210,
+    "already_present": 0,
+    "failed": 0
+   }
+  },
+  "doa6-Mai.json": {
+   "clips": 162,
+   "bytes": 14092317,
+   "sha256": "6e27a4a66c1080bf9178d6440aa4daaff1bf3794c63d1e78d2bef49c4322145f",
+   "failed": [],
+   "multi_anim": null
+  },
+  "doa6-MarieRose.json": {
+   "clips": 363,
+   "bytes": 29405669,
+   "sha256": "9d49262142a3aedd4a1016b189778dabdcb0f7a558577e4f143fba82a58a27d6",
+   "failed": [],
+   "multi_anim": {
+    "added": 152,
+    "already_present": 0,
+    "failed": 0
+   }
+  },
+  "doa6-Mila.json": {
+   "clips": 425,
+   "bytes": 45532433,
+   "sha256": "5a8a30f74d91c84a77d5f0679df66b36f153a49264e05358504505910e281915",
+   "failed": [],
+   "multi_anim": {
+    "added": 173,
+    "already_present": 0,
+    "failed": 0
+   }
+  },
+  "doa6-Momiji.json": {
+   "clips": 190,
+   "bytes": 19772738,
+   "sha256": "43ccf612085cd048d76abd46a92de5d9a176b92021290c7b553a8d6cef1ad83f",
+   "failed": [],
+   "multi_anim": null
+  },
+  "doa6-NiCO.json": {
+   "clips": 157,
+   "bytes": 15669461,
+   "sha256": "4067cb3d16c0e1a40077164dfe29baed906a9f9b5e427ad79d836d1cd52833b3",
+   "failed": [],
+   "multi_anim": null
+  },
+  "doa6-Nyotengu.json": {
+   "clips": 238,
+   "bytes": 27162710,
+   "sha256": "6ac6e981696312299f892110c839b2929fbf1c91d84416e038af80b91c2b7d60",
+   "failed": [],
+   "multi_anim": null
+  },
+  "doa6-Phase4.json": {
+   "clips": 388,
+   "bytes": 33488273,
+   "sha256": "2d8fce4084367dbd2cc03c422b33b6d4cfd411fc01100ca56c09d7e14dd145b3",
+   "failed": [],
+   "multi_anim": null
+  },
+  "doa6-Rachel.json": {
+   "clips": 176,
+   "bytes": 17111014,
+   "sha256": "2b8c65c6e66bc682ca2f8dbc0cdbb21de4efd833275173dc304aa958f562a310",
+   "failed": [],
+   "multi_anim": null
+  },
+  "doa6-Raidou.json": {
+   "clips": 181,
+   "bytes": 17687023,
+   "sha256": "4fe6115e804da1154f8633fa8b58d2f20cb1e3fa9adc60c956e793750eef8208",
+   "failed": [],
+   "multi_anim": null
+  },
+  "doa6-Rig.json": {
+   "clips": 367,
+   "bytes": 26682414,
+   "sha256": "fb64c5115032616224dacdc196c7b3871eace856a35bec37917d7307b83abfb6",
+   "failed": [],
+   "multi_anim": {
+    "added": 143,
+    "already_present": 0,
+    "failed": 0
+   }
+  },
+  "doa6-Tamaki.json": {
+   "clips": 167,
+   "bytes": 18189370,
+   "sha256": "3cb10e9cf46b76b4b37d065a0dbd0e20b70f55ccef720f3ca2e7f5b0db8115b1",
+   "failed": [],
+   "multi_anim": null
+  },
+  "doa6-Tina.json": {
+   "clips": 693,
+   "bytes": 83523144,
+   "sha256": "78cab3387e9b3514ab3f5d37bd94062042ab245959e5c8c7df32150a9b3a747e",
+   "failed": [],
+   "multi_anim": {
+    "added": 304,
+    "already_present": 0,
+    "failed": 0
+   }
+  },
+  "doa6-Zack.json": {
+   "clips": 483,
+   "bytes": 34531886,
+   "sha256": "ef63f79b3bc20344e0f256a99cb1008f2dd6ec3587a5b86da977cf29f251a7ae",
+   "failed": [],
+   "multi_anim": {
+    "added": 155,
+    "already_present": 0,
+    "failed": 0
+   }
+  }
+ },
+ "per_fighter": {
+  "doa6-Ayane": {
+   "display": "Ayane",
+   "bank_file": "doa6-Ayane.json",
+   "clips": 466,
+   "stance_clip": "AYA/Custom/AYA00000_AYA (loop)",
+   "stance_verified": {
+    "Normal_first_last_dot": 0.9999,
+    "Pelvis_first_last_dot": 0.9998,
+    "root_z_min": -0.3652,
+    "root_z_max": -0.2461,
+    "frames": 80,
+    "fps": 60.0
+   },
+   "anim_status": "BANKED"
+  },
+  "doa6-Bass": {
+   "display": "Bass",
+   "bank_file": "doa6-Bass.json",
+   "clips": 606,
+   "stance_clip": null,
+   "stance_verified": null,
+   "anim_status": "BANKED"
+  },
+  "doa6-Bayman": {
+   "display": "Bayman",
+   "bank_file": "doa6-Bayman.json",
+   "clips": 685,
+   "stance_clip": null,
+   "stance_verified": null,
+   "anim_status": "BANKED"
+  },
+  "doa6-BradWong": {
+   "display": "Brad Wong",
+   "bank_file": "doa6-BradWong.json",
+   "clips": 608,
+   "stance_clip": null,
+   "stance_verified": null,
+   "anim_status": "BANKED"
+  },
+  "doa6-Christie": {
+   "display": "Christie",
+   "bank_file": "doa6-Christie.json",
+   "clips": 438,
+   "stance_clip": null,
+   "stance_verified": null,
+   "anim_status": "BANKED"
+  },
+  "doa6-Common": {
+   "display": "Common (shared)",
+   "bank_file": "doa6-Common.json",
+   "clips": 924,
+   "stance_clip": "CMN/Custom/CMN01282_CMN (loop)",
+   "stance_verified": {
+    "Normal_first_last_dot": 0.9995,
+    "Pelvis_first_last_dot": 0.9994,
+    "root_z_min": 0.0,
+    "root_z_max": 0.0,
+    "frames": 16,
+    "fps": 60.0
+   },
+   "anim_status": "BANKED"
+  },
+  "doa6-Diego": {
+   "display": "Diego",
+   "bank_file": "doa6-Diego.json",
+   "clips": 163,
+   "stance_clip": "DGO/Custom/DGO00000_DGO (loop)",
+   "stance_verified": {
+    "Normal_first_last_dot": 0.9995,
+    "Pelvis_first_last_dot": 0.9996,
+    "root_z_min": -0.1953,
+    "root_z_max": -0.0723,
+    "frames": 600,
+    "fps": 60.0
+   },
+   "anim_status": "BANKED"
+  },
+  "doa6-Eliot": {
+   "display": "Eliot",
+   "bank_file": "doa6-Eliot.json",
+   "clips": 411,
+   "stance_clip": null,
+   "stance_verified": null,
+   "anim_status": "BANKED"
+  },
+  "doa6-Hayabusa": {
+   "display": "Ryu Hayabusa",
+   "bank_file": "doa6-Hayabusa.json",
+   "clips": 540,
+   "stance_clip": null,
+   "stance_verified": null,
+   "anim_status": "BANKED"
+  },
+  "doa6-Hayate": {
+   "display": "Hayate",
+   "bank_file": "doa6-Hayate.json",
+   "clips": 408,
+   "stance_clip": "HYT/Custom/HYT00000_HYT (loop)",
+   "stance_verified": {
+    "Normal_first_last_dot": 0.9997,
+    "Pelvis_first_last_dot": 0.9998,
+    "root_z_min": -0.2812,
+    "root_z_max": -0.2012,
+    "frames": 464,
+    "fps": 60.0
+   },
+   "anim_status": "BANKED"
+  },
+  "doa6-Helena": {
+   "display": "Helena",
+   "bank_file": "doa6-Helena.json",
+   "clips": 412,
+   "stance_clip": null,
+   "stance_verified": null,
+   "anim_status": "BANKED"
+  },
+  "doa6-Hitomi": {
+   "display": "Hitomi",
+   "bank_file": "doa6-Hitomi.json",
+   "clips": 382,
+   "stance_clip": null,
+   "stance_verified": null,
+   "anim_status": "BANKED"
+  },
+  "doa6-Honoka": {
+   "display": "Honoka",
+   "bank_file": "doa6-Honoka.json",
+   "clips": 327,
+   "stance_clip": "HON/Custom/HON00002_HON (loop)",
+   "stance_verified": {
+    "Normal_first_last_dot": 0.9996,
+    "Pelvis_first_last_dot": 0.9998,
+    "root_z_min": -0.1377,
+    "root_z_max": -0.0215,
+    "frames": 318,
+    "fps": 60.0
+   },
+   "anim_status": "BANKED"
+  },
+  "doa6-JannLee": {
+   "display": "Jann Lee",
+   "bank_file": "doa6-JannLee.json",
+   "clips": 409,
+   "stance_clip": null,
+   "stance_verified": null,
+   "anim_status": "BANKED"
+  },
+  "doa6-Kasumi": {
+   "display": "Kasumi",
+   "bank_file": "doa6-Kasumi.json",
+   "clips": 494,
+   "stance_clip": "KAS/Custom/KAS00000_KAS (loop)",
+   "stance_verified": {
+    "Normal_first_last_dot": 0.9995,
+    "Pelvis_first_last_dot": 0.9993,
+    "root_z_min": -0.3154,
+    "root_z_max": -0.2539,
+    "frames": 80,
+    "fps": 60.0
+   },
+   "anim_status": "BANKED"
+  },
+  "doa6-Kokoro": {
+   "display": "Kokoro",
+   "bank_file": "doa6-Kokoro.json",
+   "clips": 404,
+   "stance_clip": null,
+   "stance_verified": null,
+   "anim_status": "BANKED"
+  },
+  "doa6-Kula": {
+   "display": "Kula Diamond",
+   "bank_file": "doa6-Kula.json",
+   "clips": 167,
+   "stance_clip": "SNK/Custom/SNK00000_SNK (loop)",
+   "stance_verified": {
+    "Normal_first_last_dot": 0.9996,
+    "Pelvis_first_last_dot": 0.9993,
+    "root_z_min": -0.0332,
+    "root_z_max": -0.0273,
+    "frames": 166,
+    "fps": 60.0
+   },
+   "anim_status": "BANKED"
+  },
+  "doa6-Leifang": {
+   "display": "Leifang",
+   "bank_file": "doa6-Leifang.json",
+   "clips": 430,
+   "stance_clip": "LEI/Custom/LEI00000_LEI (loop)",
+   "stance_verified": {
+    "Normal_first_last_dot": 0.9999,
+    "Pelvis_first_last_dot": 0.9993,
+    "root_z_min": -0.3545,
+    "root_z_max": -0.1689,
+    "frames": 475,
+    "fps": 60.0
+   },
+   "anim_status": "BANKED"
+  },
+  "doa6-Lisa": {
+   "display": "Lisa Hamilton",
+   "bank_file": "doa6-Lisa.json",
+   "clips": 552,
+   "stance_clip": null,
+   "stance_verified": null,
+   "anim_status": "BANKED"
+  },
+  "doa6-Mai": {
+   "display": "Mai Shiranui",
+   "bank_file": "doa6-Mai.json",
+   "clips": 162,
+   "stance_clip": "MAI/Custom/MAI00000_MAI (loop)",
+   "stance_verified": {
+    "Normal_first_last_dot": 0.9997,
+    "Pelvis_first_last_dot": 0.9993,
+    "root_z_min": -0.3477,
+    "root_z_max": -0.2549,
+    "frames": 62,
+    "fps": 60.0
+   },
+   "anim_status": "BANKED"
+  },
+  "doa6-MarieRose": {
+   "display": "Marie Rose",
+   "bank_file": "doa6-MarieRose.json",
+   "clips": 363,
+   "stance_clip": "MAR/Custom/MAR00000_MAR (loop)",
+   "stance_verified": {
+    "Normal_first_last_dot": 0.9995,
+    "Pelvis_first_last_dot": 0.9995,
+    "root_z_min": -0.0762,
+    "root_z_max": -0.0654,
+    "frames": 266,
+    "fps": 60.0
+   },
+   "anim_status": "BANKED"
+  },
+  "doa6-Mila": {
+   "display": "Mila",
+   "bank_file": "doa6-Mila.json",
+   "clips": 425,
+   "stance_clip": "MIL/Custom/MIL00000_MIL (loop)",
+   "stance_verified": {
+    "Normal_first_last_dot": 0.9998,
+    "Pelvis_first_last_dot": 0.9998,
+    "root_z_min": -0.1582,
+    "root_z_max": -0.0176,
+    "frames": 635,
+    "fps": 60.0
+   },
+   "anim_status": "BANKED"
+  },
+  "doa6-Momiji": {
+   "display": "Momiji",
+   "bank_file": "doa6-Momiji.json",
+   "clips": 190,
+   "stance_clip": "MOM/Custom/MOM00000_MOM (loop)",
+   "stance_verified": {
+    "Normal_first_last_dot": 0.9999,
+    "Pelvis_first_last_dot": 0.9995,
+    "root_z_min": -0.2061,
+    "root_z_max": -0.1465,
+    "frames": 533,
+    "fps": 60.0
+   },
+   "anim_status": "BANKED"
+  },
+  "doa6-NiCO": {
+   "display": "NiCO",
+   "bank_file": "doa6-NiCO.json",
+   "clips": 157,
+   "stance_clip": "NIC/Custom/NIC00000_NIC (loop)",
+   "stance_verified": {
+    "Normal_first_last_dot": 0.9998,
+    "Pelvis_first_last_dot": 0.9997,
+    "root_z_min": -0.1113,
+    "root_z_max": -0.0732,
+    "frames": 509,
+    "fps": 60.0
+   },
+   "anim_status": "BANKED"
+  },
+  "doa6-Nyotengu": {
+   "display": "Nyotengu",
+   "bank_file": "doa6-Nyotengu.json",
+   "clips": 238,
+   "stance_clip": "NYO/Custom/NYO00000_NYO (loop)",
+   "stance_verified": {
+    "Normal_first_last_dot": 0.9997,
+    "Pelvis_first_last_dot": 0.9996,
+    "root_z_min": -0.1592,
+    "root_z_max": -0.0762,
+    "frames": 511,
+    "fps": 60.0
+   },
+   "anim_status": "BANKED"
+  },
+  "doa6-Phase4": {
+   "display": "Phase 4",
+   "bank_file": "doa6-Phase4.json",
+   "clips": 388,
+   "stance_clip": "PHF/Custom/PHF00000_PHF (loop)",
+   "stance_verified": {
+    "Normal_first_last_dot": 0.9999,
+    "Pelvis_first_last_dot": 0.9996,
+    "root_z_min": -0.2822,
+    "root_z_max": -0.2197,
+    "frames": 108,
+    "fps": 60.0
+   },
+   "anim_status": "BANKED"
+  },
+  "doa6-Rachel": {
+   "display": "Rachel",
+   "bank_file": "doa6-Rachel.json",
+   "clips": 176,
+   "stance_clip": "RAC/Custom/RAC00000_RAC (loop)",
+   "stance_verified": {
+    "Normal_first_last_dot": 0.9998,
+    "Pelvis_first_last_dot": 0.9995,
+    "root_z_min": -0.1191,
+    "root_z_max": 0.0127,
+    "frames": 102,
+    "fps": 60.0
+   },
+   "anim_status": "BANKED"
+  },
+  "doa6-Raidou": {
+   "display": "Raidou",
+   "bank_file": "doa6-Raidou.json",
+   "clips": 181,
+   "stance_clip": null,
+   "stance_verified": null,
+   "anim_status": "BANKED"
+  },
+  "doa6-Rig": {
+   "display": "Rig",
+   "bank_file": "doa6-Rig.json",
+   "clips": 367,
+   "stance_clip": null,
+   "stance_verified": null,
+   "anim_status": "BANKED"
+  },
+  "doa6-Tamaki": {
+   "display": "Tamaki",
+   "bank_file": "doa6-Tamaki.json",
+   "clips": 167,
+   "stance_clip": "SKD/Custom/SKD00000_SKD (loop)",
+   "stance_verified": {
+    "Normal_first_last_dot": 0.9998,
+    "Pelvis_first_last_dot": 0.9998,
+    "root_z_min": -0.0996,
+    "root_z_max": -0.0537,
+    "frames": 798,
+    "fps": 60.0
+   },
+   "anim_status": "BANKED"
+  },
+  "doa6-Tina": {
+   "display": "Tina Armstrong",
+   "bank_file": "doa6-Tina.json",
+   "clips": 693,
+   "stance_clip": "TIN/Custom/TIN01200_TIN (loop)",
+   "stance_verified": {
+    "Normal_first_last_dot": 0.9997,
+    "Pelvis_first_last_dot": 0.9996,
+    "root_z_min": -0.1133,
+    "root_z_max": -0.0283,
+    "frames": 177,
+    "fps": 60.0
+   },
+   "anim_status": "BANKED"
+  },
+  "doa6-Zack": {
+   "display": "Zack",
+   "bank_file": "doa6-Zack.json",
+   "clips": 483,
+   "stance_clip": null,
+   "stance_verified": null,
+   "anim_status": "BANKED"
+  }
+ },
+ "totals": {
+  "clips": 12816,
+  "bank_files": 32,
+  "fighters": 32,
+  "stance_mapped": 18
+ }
+}
