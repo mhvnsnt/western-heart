@@ -2,63 +2,184 @@
   "fighter": "baek-master-white",
   "display": "BAEK MASTER WHITE",
   "tekken_base": "Baek",
-  "t3_source": "bryan",
+  "t3_source": "hwoarang",
   "proxy": false,
   "proxy_note": null,
   "variant": 8,
   "strings": [
     {
-      "input": "2,1",
+      "input": "d/f+3,4",
       "hits": [
-        "2",
-        "1"
-      ],
-      "t3_rows": [
-        152,
-        153
-      ]
-    },
-    {
-      "input": "2,1,2",
-      "hits": [
-        "2",
-        "1",
-        "2"
-      ],
-      "t3_rows": [
-        152,
-        153,
-        151
-      ]
-    },
-    {
-      "input": "2,4",
-      "hits": [
-        "2",
+        "d/f+3",
         "4"
       ],
+      "proxy_rows": [
+        "t7:hwoarang:hwoarang_291",
+        "t7:hwoarang:hwoarang_66"
+      ],
       "t3_rows": [
-        182
+        null,
+        null
+      ]
+    },
+    {
+      "input": "3,3,4",
+      "hits": [
+        "3",
+        "3",
+        "4"
+      ],
+      "proxy_rows": [
+        "t3:hwoarang:row:207",
+        "t3:hwoarang:row:228",
+        "t7:hwoarang:hwoarang_151"
+      ],
+      "t3_rows": [
+        207,
+        228,
+        null
+      ]
+    },
+    {
+      "input": "u/f+3,4,3",
+      "hits": [
+        "u/f+3",
+        "4",
+        "3"
+      ],
+      "proxy_rows": [
+        "t3:hwoarang:row:62",
+        "t3:hwoarang:row:144",
+        "t7:hwoarang:hwoarang_54"
+      ],
+      "t3_rows": [
+        62,
+        144,
+        null
+      ]
+    },
+    {
+      "input": "4,4,3",
+      "hits": [
+        "4",
+        "4",
+        "3"
+      ],
+      "proxy_rows": [
+        "t3:hwoarang:row:95",
+        "t3:hwoarang:row:263",
+        "t7:hwoarang:hwoarang_43"
+      ],
+      "t3_rows": [
+        95,
+        263,
+        null
       ]
     }
   ],
   "specials": [
     {
-      "input": "d,d/f,d,d/f+1+2",
-      "t3_row": 211,
+      "input": "F:1+3",
+      "t3_row": null,
+      "proxy_row": "t3:hwoarang:row:294",
       "damage": 21,
       "throw": true
     },
     {
-      "input": "n,d/b,n,f+1+2",
-      "t3_row": 211,
+      "input": "F:f+1+3",
+      "t3_row": null,
+      "proxy_row": "t7:hwoarang:hwoarang_311",
       "damage": 21,
+      "throw": true
+    },
+    {
+      "input": "F:2+4",
+      "t3_row": null,
+      "proxy_row": "t3:hwoarang:row:295",
+      "damage": 21,
+      "throw": true
+    },
+    {
+      "input": "F:f+2+4",
+      "t3_row": null,
+      "proxy_row": "t7:hwoarang:hwoarang_313",
+      "damage": 21,
+      "throw": true
+    },
+    {
+      "input": "F:d/b+1+3",
+      "t3_row": null,
+      "proxy_row": "t7:hwoarang:hwoarang_315",
+      "damage": 24,
+      "throw": true
+    },
+    {
+      "input": "F:2+4~B",
+      "t3_row": null,
+      "proxy_row": null,
+      "damage": null,
+      "throw": true
+    },
+    {
+      "input": "F:f+2+3",
+      "t3_row": null,
+      "proxy_row": "t7:hwoarang:hwoarang_312",
+      "damage": 24,
+      "throw": true
+    },
+    {
+      "input": "L:1+3",
+      "t3_row": null,
+      "proxy_row": "t3:hwoarang:row:294",
+      "damage": 21,
+      "throw": true
+    },
+    {
+      "input": "L:2+4",
+      "t3_row": null,
+      "proxy_row": "t3:hwoarang:row:295",
+      "damage": 21,
+      "throw": true
+    },
+    {
+      "input": "R:1+3",
+      "t3_row": null,
+      "proxy_row": "t3:hwoarang:row:294",
+      "damage": 21,
+      "throw": true
+    },
+    {
+      "input": "R:2+4",
+      "t3_row": null,
+      "proxy_row": "t3:hwoarang:row:295",
+      "damage": 21,
+      "throw": true
+    },
+    {
+      "input": "B:1+3",
+      "t3_row": null,
+      "proxy_row": "t3:hwoarang:row:294",
+      "damage": 21,
+      "throw": true
+    },
+    {
+      "input": "B:2+4",
+      "t3_row": null,
+      "proxy_row": "t3:hwoarang:row:295",
+      "damage": 21,
+      "throw": true
+    },
+    {
+      "input": "A:d/f+3+4",
+      "t3_row": null,
+      "proxy_row": "t3:hwoarang:row:112",
+      "damage": 7,
       "throw": true
     }
   ],
   "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
   "schema_version": 2,
-  "t3_bank": "moveset_bryan.json",
+  "t3_bank": "moveset_hwoarang.json",
   "t3_bank_rows": 365,
   "t3_bank_attack_rows": 82,
   "generated_full_moveset": {
@@ -77,284 +198,1051 @@
     "note": "Additive expansion from real T3 teardown bank rows. Existing moves untouched."
   },
   "moves": {
-    "1": {
-      "name": "BAEK MASTER WHITE 1 (T3 bryan r46)",
-      "input": "1",
-      "t3_source": "bryan",
-      "t3_row": 46,
-      "t3_command": "LP",
-      "startup": 0.183,
-      "active": 0.033,
-      "recovery": 0.45,
-      "damage": 7,
-      "t3_damage": 12,
+    "1,2": {
+      "name": "One Two Combo",
+      "input": "1,2",
+      "t3_source": "hwoarang",
+      "t3_row": 285,
+      "t3_command": "RP",
+      "startup": 0.367,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 4,
       "limb": "armL",
       "heavy": false,
       "knock": 2.2,
       "soulGain": 8,
-      "anim_ref": "t3:bryan:row:46",
+      "anim_ref": "t3:hwoarang:row:285",
       "input_slots": [
-        "1"
+        "1,2"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "t6_baek": {
+        "command": "1,2",
+        "name": "One Two Combo",
+        "records": 1
+      },
+      "note": "Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings."
     },
-    "2": {
-      "name": "BAEK MASTER WHITE 2 (T3 bryan r152)",
-      "input": "2",
-      "t3_source": "bryan",
-      "t3_row": 152,
-      "t3_command": "RP",
-      "startup": 0.283,
+    "4,4": {
+      "name": "Falling Axe",
+      "input": "4,4",
+      "t3_source": "hwoarang",
+      "t3_row": 263,
+      "t3_command": "RK",
+      "startup": 0.267,
       "active": 0.017,
       "recovery": 0.65,
-      "damage": 12,
-      "t3_damage": 21,
-      "limb": "armR",
+      "damage": 6,
+      "limb": "legR",
       "heavy": false,
       "knock": 2.2,
       "soulGain": 8,
-      "anim_ref": "t3:bryan:row:152",
+      "anim_ref": "t3:hwoarang:row:263",
       "input_slots": [
-        "2"
+        "4,4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "t6_baek": {
+        "command": "4,4",
+        "name": "Falling Axe",
+        "records": 1
+      },
+      "note": "Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings."
     },
-    "2,1": {
-      "name": "BAEK MASTER WHITE 2,1 (T3 bryan r153)",
-      "input": "2,1",
-      "t3_source": "bryan",
-      "t3_row": 153,
-      "t3_command": "LP",
-      "startup": 0.317,
+    "3+4": {
+      "name": "Lightning Halberd",
+      "input": "3+4",
+      "startup": 0.2,
       "active": 0.017,
-      "recovery": 0.65,
-      "damage": 12,
-      "t3_damage": 21,
-      "limb": "armL",
+      "recovery": 0.167,
+      "damage": 0,
+      "damage_raw": 0,
+      "limb": "both",
       "heavy": false,
       "knock": 2.2,
-      "soulGain": 8,
-      "string_hit": "2",
-      "anim_ref": "t3:bryan:row:153",
+      "soulGain": 2,
+      "hit_level": "-",
+      "on_block": "-",
+      "on_hit": "-",
+      "on_ch": "-",
+      "crush": null,
+      "anim_ref": "t7:hwoarang:hwoarang_204",
       "input_slots": [
-        "2,1",
-        "2",
-        "1"
+        "3+4"
       ],
-      "move_class": "string"
+      "move_class": "strike",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "hwoarang_204",
+      "t7_command": "3+4",
+      "t7_hit_level": "-",
+      "t7_damage_raw": "-",
+      "t7_startup_frames": "-",
+      "t7_on_block": "-",
+      "t7_on_hit": "-",
+      "t7_on_ch": "-",
+      "merge_source": "t7:hwoarang_204",
+      "recovery_from": "same-notation T8 recv",
+      "t6_baek": {
+        "command": "3+4",
+        "name": "Lightning Halberd",
+        "records": 7
+      },
+      "note": "Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings."
     },
-    "2,1,2": {
-      "name": "BAEK MASTER WHITE 2,1,2 (T3 bryan r151)",
-      "input": "2,1,2",
-      "t3_source": "bryan",
-      "t3_row": 151,
-      "t3_command": "RP",
-      "startup": 0.217,
-      "active": 0.017,
-      "recovery": 0.783,
-      "damage": 12,
-      "t3_damage": 21,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "string_hit": "2,1",
-      "anim_ref": "t3:bryan:row:151",
-      "input_slots": [
-        "2,1,2",
-        "2",
-        "1",
-        "2"
-      ],
-      "move_class": "string"
-    },
-    "3": {
-      "name": "BAEK MASTER WHITE 3 (T3 bryan r67)",
-      "input": "3",
-      "t3_source": "bryan",
-      "t3_row": 67,
+    "f+4,3": {
+      "name": "Heel Drop to Middle Kick",
+      "input": "f+4,3",
+      "t3_source": "hwoarang",
+      "t3_row": 240,
       "t3_command": "LK",
+      "startup": 0.267,
+      "active": 0.067,
+      "recovery": 0.717,
+      "damage": 12,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:hwoarang:row:240",
+      "input_slots": [
+        "f+4,3"
+      ],
+      "move_class": "strike",
+      "t6_baek": {
+        "command": "f+4,3",
+        "name": "Heel Drop to Middle Kick",
+        "records": 1
+      },
+      "note": "Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings."
+    },
+    "f+4,4": {
+      "name": "Heel Drop to Low Kick",
+      "input": "f+4,4",
+      "t3_source": "hwoarang",
+      "t3_row": 248,
+      "t3_command": "RK",
       "startup": 0.25,
       "active": 0.017,
-      "recovery": 0.817,
-      "damage": 15,
-      "t3_damage": 25,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 4.2,
-      "soulGain": 11,
-      "anim_ref": "t3:bryan:row:67",
-      "input_slots": [
-        "3"
-      ],
-      "move_class": "strike"
-    },
-    "4": {
-      "name": "BAEK MASTER WHITE 4 (T3 bryan r81)",
-      "input": "4",
-      "t3_source": "bryan",
-      "t3_row": 81,
-      "t3_command": "RK",
-      "startup": 0.15,
-      "active": 0.033,
       "recovery": 0.617,
-      "damage": 15,
-      "t3_damage": 25,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:hwoarang:row:248",
+      "input_slots": [
+        "f+4,4"
+      ],
+      "move_class": "strike",
+      "t6_baek": {
+        "command": "f+4,4",
+        "name": "Heel Drop to Low Kick",
+        "records": 1
+      },
+      "note": "Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings."
+    },
+    "d/f+3,4": {
+      "name": "Double Claymore",
+      "input": "d/f+3,4",
+      "startup": 0.4,
+      "active": 0.017,
+      "recovery": 0.583,
+      "damage": 12,
+      "damage_raw": 20,
       "limb": "legR",
       "heavy": true,
-      "knock": 4.2,
-      "soulGain": 11,
-      "anim_ref": "t3:bryan:row:81",
+      "knock": 5.0,
+      "soulGain": 9,
+      "hit_level": "mid",
+      "on_block": "-14",
+      "on_hit": "KND",
+      "on_ch": "KND",
+      "crush": null,
+      "anim_ref": "t7:hwoarang:hwoarang_66",
       "input_slots": [
-        "4"
+        "d/f+3,4"
       ],
-      "move_class": "strike"
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "hwoarang_66",
+      "t7_command": "(d/f+3), 4",
+      "t7_hit_level": "mid",
+      "t7_damage_raw": "20 [24]",
+      "t7_startup_frames": "24",
+      "t7_on_block": "-14",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "KND",
+      "merge_source": "t7:hwoarang_66",
+      "recovery_from": "same-notation T8 recv",
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "hwoarang",
+        "row": 279,
+        "match": "nearest limb/class/startup (approximate)"
+      },
+      "t6_baek": {
+        "command": "d/f+3,4",
+        "name": "Double Claymore",
+        "records": 1
+      },
+      "note": "Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings."
     },
-    "1+3": {
-      "name": "BAEK MASTER WHITE 1+3 throw (T3 bryan r138)",
-      "input": "1+3",
-      "t3_source": "bryan",
-      "t3_row": 138,
-      "t3_command": "LP+LK",
-      "startup": 0.1,
+    "d+1": {
+      "name": "Race Hammer",
+      "input": "d+1",
+      "startup": 0.167,
       "active": 0.017,
-      "recovery": 0.733,
-      "damage": 21,
-      "t3_damage": 35,
+      "recovery": 0.4,
+      "damage": 3,
+      "damage_raw": 5,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": "sl",
+      "on_block": "-5",
+      "on_hit": "+6",
+      "on_ch": null,
+      "crush": "cs4~",
+      "anim_ref": "t8:hwoarang:hwoarang-d+1",
+      "input_slots": [
+        "d+1"
+      ],
+      "move_class": "strike",
+      "t8_source": "hwoarang",
+      "t8_id": "Hwoarang-d+1",
+      "t8_damage": "5",
+      "t8_input": "d+1",
+      "merge_source": "t8:Hwoarang-d+1",
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Transition to standing r24 with f; +6c on crouching hit&lt;/div&gt Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings.",
+      "anim_t3": {
+        "bank": "hwoarang",
+        "row": 89,
+        "match": "nearest limb/class/startup (approximate)"
+      },
+      "t6_baek": {
+        "command": "d+1",
+        "name": "Race Hammer",
+        "records": 1
+      }
+    },
+    "d/b+4": {
+      "name": "Dark Halberd",
+      "input": "d/b+4",
+      "t3_source": "hwoarang",
+      "t3_row": 123,
+      "t3_command": "1+RK",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.783,
+      "damage": 6,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:hwoarang:row:123",
+      "input_slots": [
+        "d/b+4"
+      ],
+      "move_class": "strike",
+      "t6_baek": {
+        "command": "d/b+4",
+        "name": "Dark Halberd",
+        "records": 1
+      },
+      "note": "Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings."
+    },
+    "d/b+3+4": {
+      "name": "Dynamite Heel",
+      "input": "d/b+3+4",
+      "t3_source": "hwoarang",
+      "t3_row": 124,
+      "t3_command": "1+LK+RK",
+      "startup": 1.017,
+      "active": 0.05,
+      "recovery": 0.617,
+      "damage": 24,
       "limb": "legL",
       "heavy": true,
-      "knock": 6.5,
-      "soulGain": 11,
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
-      "anim_ref": "t3:bryan:row:138",
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:hwoarang:row:124",
       "input_slots": [
-        "1+3"
+        "d/b+3+4"
       ],
-      "move_class": "throw",
-      "throw_break": "1"
+      "move_class": "strike",
+      "t6_baek": {
+        "command": "d/b+3+4",
+        "name": "Dynamite Heel",
+        "records": 6
+      },
+      "note": "Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings."
     },
-    "2+4": {
-      "name": "BAEK MASTER WHITE 2+4 throw (T3 bryan r210)",
-      "input": "2+4",
-      "t3_source": "bryan",
-      "t3_row": 210,
-      "t3_command": "RP+RK",
-      "startup": 0.2,
-      "active": 0.05,
-      "recovery": 0.467,
-      "damage": 21,
-      "t3_damage": 35,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 6.5,
-      "soulGain": 11,
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
-      "anim_ref": "t3:bryan:row:210",
-      "input_slots": [
-        "2+4"
-      ],
-      "move_class": "throw",
-      "throw_break": "2"
-    },
-    "d/f+2": {
-      "name": "BAEK MASTER WHITE d/f+2 (T3 bryan r149)",
-      "input": "d/f+2",
-      "t3_source": "bryan",
-      "t3_row": 149,
-      "t3_command": "3+RP",
-      "startup": 0.383,
+    "b+2": {
+      "name": "Bolt Cut",
+      "input": "b+2",
+      "t3_source": "hwoarang",
+      "t3_row": 102,
+      "t3_command": "4+RP",
+      "startup": 0.283,
       "active": 0.017,
-      "recovery": 0.633,
-      "damage": 9,
-      "t3_damage": 16,
+      "recovery": 0.717,
+      "damage": 7,
       "limb": "armR",
       "heavy": false,
       "knock": 2.2,
       "soulGain": 8,
-      "anim_ref": "t3:bryan:row:149",
+      "anim_ref": "t3:hwoarang:row:102",
       "input_slots": [
-        "d/f+2"
+        "b+2"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "t6_baek": {
+        "command": "b+2",
+        "name": "Bolt Cut",
+        "records": 1
+      },
+      "note": "Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings."
     },
-    "u/f+4": {
-      "name": "BAEK MASTER WHITE u/f+4 (T3 bryan r183)",
-      "input": "u/f+4",
-      "t3_source": "bryan",
-      "t3_row": 183,
-      "t3_command": "9+RK",
-      "startup": 0.4,
+    "b+3": {
+      "name": "Flamingo",
+      "input": "b+3",
+      "t3_source": "hwoarang",
+      "t3_row": 94,
+      "t3_command": "4+LK",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 9,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:hwoarang:row:94",
+      "input_slots": [
+        "b+3"
+      ],
+      "move_class": "strike",
+      "t6_baek": {
+        "command": "b+3",
+        "name": "Flamingo",
+        "records": 9
+      },
+      "note": "Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings."
+    },
+    "3,3,4": {
+      "name": "Flamingo to High Low Kick",
+      "input": "3,3,4",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.15,
+      "damage": 25,
+      "damage_raw": 42,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 13,
+      "hit_level": "high, mid, high",
+      "on_block": "-36",
+      "on_hit": "-25",
+      "on_ch": "-",
+      "crush": null,
+      "anim_ref": "t7:hwoarang:hwoarang_151",
+      "input_slots": [
+        "3,3,4"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "hwoarang_151",
+      "t7_command": "3, 3, 4",
+      "t7_hit_level": "high, mid, high",
+      "t7_damage_raw": "15 [18], 12, 15",
+      "t7_startup_frames": "14",
+      "t7_on_block": "-36",
+      "t7_on_hit": "-25",
+      "t7_on_ch": "-",
+      "merge_source": "t7:hwoarang_151",
+      "recovery_from": "same-notation T8 recv",
+      "multi_hit": {
+        "hits": [
+          15,
+          12,
+          15
+        ],
+        "total": 42
+      },
+      "anim_t3": {
+        "bank": "hwoarang",
+        "row": 253,
+        "match": "nearest limb/class/startup (approximate)"
+      },
+      "mod_damage": "20,16,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "t6_baek": {
+        "command": "3,3,4",
+        "name": "Flamingo to High Low Kick",
+        "records": 14
+      },
+      "note": "Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings."
+    },
+    "f+3": {
+      "name": "Flamingo Rocket",
+      "input": "f+3",
+      "t3_source": "hwoarang",
+      "t3_row": 209,
+      "t3_command": "6+LK",
+      "startup": 0.233,
+      "active": 0.067,
+      "recovery": 0.683,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:hwoarang:row:209",
+      "input_slots": [
+        "f+3"
+      ],
+      "move_class": "strike",
+      "t6_baek": {
+        "command": "f+3",
+        "name": "Flamingo Rocket",
+        "records": 8
+      },
+      "note": "Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings."
+    },
+    "f+4": {
+      "name": "Crimson Lance",
+      "input": "f+4",
+      "t3_source": "hwoarang",
+      "t3_row": 101,
+      "t3_command": "6+RK",
+      "startup": 0.283,
+      "active": 0.117,
+      "recovery": 0.617,
+      "damage": 12,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:hwoarang:row:101",
+      "input_slots": [
+        "f+4"
+      ],
+      "move_class": "strike",
+      "t6_baek": {
+        "command": "f+4",
+        "name": "Crimson Lance",
+        "records": 8
+      },
+      "note": "Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings."
+    },
+    "u/f+3": {
+      "name": "Flamingo Jaw Breaker",
+      "input": "u/f+3",
+      "t3_source": "hwoarang",
+      "t3_row": 62,
+      "t3_command": "9+LK",
+      "startup": 0.467,
+      "active": 0.033,
+      "recovery": 0.733,
+      "damage": 9,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:hwoarang:row:62",
+      "input_slots": [
+        "u/f+3"
+      ],
+      "move_class": "strike",
+      "t6_baek": {
+        "command": "u/f+3",
+        "name": "Flamingo Jaw Breaker",
+        "records": 8
+      },
+      "note": "Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings."
+    },
+    "b+4": {
+      "name": "Heel Lance",
+      "input": "b+4",
+      "t3_source": "hwoarang",
+      "t3_row": 103,
+      "t3_command": "4+RK",
+      "startup": 0.2,
       "active": 0.05,
       "recovery": 0.567,
-      "damage": 13,
-      "t3_damage": 22,
+      "damage": 16,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:hwoarang:row:103",
+      "input_slots": [
+        "b+4"
+      ],
+      "move_class": "strike",
+      "t6_baek": {
+        "command": "b+4",
+        "name": "Heel Lance",
+        "records": 1
+      },
+      "note": "Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings."
+    },
+    "u/b+4": {
+      "name": "Family Jewels",
+      "input": "u/b+4",
+      "startup": 0.283,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 11,
+      "damage_raw": 18,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 9,
+      "hit_level": "mid",
+      "on_block": "-8",
+      "on_hit": "+10",
+      "on_ch": "+10",
+      "crush": "low*",
+      "anim_ref": "t7:hwoarang:hwoarang_82",
+      "input_slots": [
+        "u/b+4"
+      ],
+      "move_class": "strike",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "hwoarang_82",
+      "t7_command": "u/b+4",
+      "t7_hit_level": "mid",
+      "t7_damage_raw": "18 [21]",
+      "t7_startup_frames": "17",
+      "t7_on_block": "-8",
+      "t7_on_hit": "+10",
+      "t7_on_ch": "+10",
+      "merge_source": "t7:hwoarang_82",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "hwoarang",
+        "row": 101,
+        "match": "nearest limb/class/startup (approximate)"
+      },
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "t6_baek": {
+        "command": "u/b+4",
+        "name": "Family Jewels",
+        "records": 1
+      },
+      "note": "Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings."
+    },
+    "u/f+3,4,3": {
+      "name": "Hunting Hawk",
+      "input": "u/f+3,4,3",
+      "startup": 0.467,
+      "active": 0.017,
+      "recovery": 0.55,
+      "damage": 21,
+      "damage_raw": 36,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "hit_level": "mid, mid, mid",
+      "on_block": "-",
+      "on_hit": "KND",
+      "on_ch": "-",
+      "crush": "low",
+      "anim_ref": "t7:hwoarang:hwoarang_54",
+      "input_slots": [
+        "u/f+3,4,3"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "hwoarang_54",
+      "t7_command": "u/f+3, 4, 3",
+      "t7_hit_level": "mid, mid, mid",
+      "t7_damage_raw": "15 [18], 9, 12",
+      "t7_startup_frames": "28",
+      "t7_on_block": "-",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "-",
+      "merge_source": "t7:hwoarang_54",
+      "recovery_from": "same-notation T8 recv",
+      "multi_hit": {
+        "hits": [
+          15,
+          9,
+          12
+        ],
+        "total": 36
+      },
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "hwoarang",
+        "row": 62,
+        "match": "nearest limb/class/startup (approximate)"
+      },
+      "mod_damage": "20,18,33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "t6_baek": {
+        "command": "u/f+3,4,3",
+        "name": "Hunting Hawk",
+        "records": 1
+      },
+      "note": "Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings."
+    },
+    "u/f+4": {
+      "name": "Leaping Snap Kick",
+      "input": "u/f+4",
+      "startup": 0.367,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 7,
+      "damage_raw": 12,
       "limb": "legR",
       "heavy": false,
-      "knock": 4.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:183",
+      "knock": 2.2,
+      "soulGain": 6,
+      "hit_level": "high",
+      "on_block": "-13",
+      "on_hit": "-7",
+      "on_ch": "-7",
+      "crush": "low",
+      "anim_ref": "t7:hwoarang:hwoarang_214",
       "input_slots": [
         "u/f+4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "hwoarang_214",
+      "t7_command": "u/f+4",
+      "t7_hit_level": "high",
+      "t7_damage_raw": "12 [14]",
+      "t7_startup_frames": "22",
+      "t7_on_block": "-13",
+      "t7_on_hit": "-7",
+      "t7_on_ch": "-7",
+      "merge_source": "t7:hwoarang_214",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "hwoarang",
+        "row": 273,
+        "match": "nearest limb/class/startup (approximate)"
+      },
+      "mod_damage": "16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "t6_baek": {
+        "command": "u/f+4",
+        "name": "Leaping Snap Kick",
+        "records": 1
+      },
+      "note": "Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings."
     },
-    "d,d/f,d,d/f+1+2": {
-      "name": "BAEK MASTER WHITE d,d/f,d,d/f+1+2 throw (T3 bryan r211)",
-      "input": "d,d/f,d,d/f+1+2",
-      "t3_source": "bryan",
-      "t3_row": 211,
-      "t3_command": "[2 3 2 3+LP+RP](59f)",
-      "startup": 0.183,
+    "3,4": {
+      "name": "Hopping Double Kick",
+      "input": "3,4",
+      "t3_source": "hwoarang",
+      "t3_row": 277,
+      "t3_command": "RK",
+      "startup": 0.433,
+      "active": 0.1,
+      "recovery": 0.567,
+      "damage": 21,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:hwoarang:row:277",
+      "input_slots": [
+        "3,4"
+      ],
+      "move_class": "strike",
+      "t6_baek": {
+        "command": "3,4",
+        "name": "Hopping Double Kick",
+        "records": 1
+      },
+      "note": "Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings."
+    },
+    "f,F+3": {
+      "name": "Left Heel Drop",
+      "input": "f,F+3",
+      "startup": 0.367,
+      "active": 0.017,
+      "recovery": 0.367,
+      "damage": 14,
+      "damage_raw": 24,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 10,
+      "hit_level": "mid",
+      "on_block": "+6",
+      "on_hit": "+6 (OC)",
+      "on_ch": "+6 (OC)",
+      "crush": null,
+      "anim_ref": "t7:hwoarang:hwoarang_221",
+      "input_slots": [
+        "f,F+3"
+      ],
+      "move_class": "special",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "hwoarang_221",
+      "t7_command": "f, F+3",
+      "t7_hit_level": "mid",
+      "t7_damage_raw": "24 [28]",
+      "t7_startup_frames": "22",
+      "t7_on_block": "+6",
+      "t7_on_hit": "+6 (OC)",
+      "t7_on_ch": "+6 (OC)",
+      "merge_source": "t7:hwoarang_221",
+      "recovery_from": "same-notation T8 recv",
+      "anim_t3": {
+        "bank": "hwoarang",
+        "row": 230,
+        "match": "nearest limb/class/startup (approximate)"
+      },
+      "mod_damage": "32",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "t6_baek": {
+        "command": "f,F+3",
+        "name": "Left Heel Drop",
+        "records": 1
+      },
+      "note": "Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings."
+    },
+    "f,F+4": {
+      "name": "Hammer Heel",
+      "input": "f,F+4",
+      "startup": 0.283,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 13,
+      "damage_raw": 22,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "hit_level": "mid",
+      "on_block": "-7",
+      "on_hit": "KND",
+      "on_ch": "KND",
+      "crush": null,
+      "anim_ref": "t7:hwoarang:hwoarang_222",
+      "input_slots": [
+        "f,F+4"
+      ],
+      "move_class": "special",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "hwoarang_222",
+      "t7_command": "f, F+4",
+      "t7_hit_level": "mid",
+      "t7_damage_raw": "22 [26]",
+      "t7_startup_frames": "17",
+      "t7_on_block": "-7",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "KND",
+      "merge_source": "t7:hwoarang_222",
+      "recovery_from": "same-notation T8 recv",
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "hwoarang",
+        "row": 200,
+        "match": "nearest limb/class/startup (approximate)"
+      },
+      "t6_baek": {
+        "command": "f,F+4",
+        "name": "Hammer Heel",
+        "records": 1
+      },
+      "note": "Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings."
+    },
+    "f,f,f+3": {
+      "name": "Killing Blade",
+      "input": "f,f,f+3",
+      "startup": 0.367,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 18,
+      "damage_raw": 30,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "hit_level": "mid",
+      "on_block": "+6",
+      "on_hit": "KND",
+      "on_ch": "KND",
+      "crush": "low",
+      "anim_ref": "t7:hwoarang:hwoarang_61",
+      "input_slots": [
+        "f,f,f+3"
+      ],
+      "move_class": "special",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "hwoarang_61",
+      "t7_command": "f, f, f+3 (or WR+3)",
+      "t7_hit_level": "mid",
+      "t7_damage_raw": "30 [36]",
+      "t7_startup_frames": "22",
+      "t7_on_block": "+6",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "KND",
+      "merge_source": "t7:hwoarang_61",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "knockdown": true,
+      "input_note": "(or WR+3)",
+      "anim_t3": {
+        "bank": "hwoarang",
+        "row": 230,
+        "match": "nearest limb/class/startup (approximate)"
+      },
+      "mod_damage": "37",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "t6_baek": {
+        "command": "f,f,f+3",
+        "name": "Killing Blade",
+        "records": 1
+      },
+      "note": "Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings."
+    },
+    "2,1": {
+      "name": "Chonsan",
+      "input": "2,1",
+      "t3_source": "hwoarang",
+      "t3_row": 206,
+      "t3_command": "LP",
+      "startup": 0.167,
       "active": 0.017,
       "recovery": 0.483,
-      "damage": 21,
-      "t3_damage": 35,
+      "damage": 6,
       "limb": "armR",
-      "heavy": true,
-      "knock": 6.5,
-      "soulGain": 11,
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
-      "anim_ref": "t3:bryan:row:211",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:hwoarang:row:206",
       "input_slots": [
-        "d,d/f,d,d/f+1+2"
+        "2,1"
       ],
-      "move_class": "throw",
-      "throw_break": "1+2"
+      "move_class": "strike",
+      "t6_baek": {
+        "command": "2,1",
+        "name": "Chonsan",
+        "records": 6
+      },
+      "note": "Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings."
     },
-    "n,d/b,n,f+1+2": {
-      "name": "BAEK MASTER WHITE n,d/b,n,f+1+2 throw (T3 bryan r211)",
-      "input": "n,d/b,n,f+1+2",
-      "t3_source": "bryan",
-      "t3_row": 211,
-      "t3_command": "[5 1 5 6+LP+RP](25f)",
+    "4,4,3": {
+      "name": "Albatross",
+      "input": "4,4,3",
       "startup": 0.183,
       "active": 0.017,
-      "recovery": 0.483,
-      "damage": 21,
-      "t3_damage": 35,
-      "limb": "armR",
+      "recovery": 0.5,
+      "damage": 26,
+      "damage_raw": 45,
+      "limb": "legL",
       "heavy": true,
-      "knock": 6.5,
-      "soulGain": 11,
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
-      "anim_ref": "t3:bryan:row:211",
+      "knock": 5.0,
+      "soulGain": 13,
+      "hit_level": "high, high, mid",
+      "on_block": "-15",
+      "on_hit": "KND",
+      "on_ch": "-",
+      "crush": null,
+      "anim_ref": "t7:hwoarang:hwoarang_43",
       "input_slots": [
-        "n,d/b,n,f+1+2"
+        "4,4,3"
       ],
-      "move_class": "throw",
-      "throw_break": "1+2"
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "hwoarang_43",
+      "t7_command": "4, 4, 3",
+      "t7_hit_level": "high, high, mid",
+      "t7_damage_raw": "12 [14], 13, 20",
+      "t7_startup_frames": "11",
+      "t7_on_block": "-15",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "-",
+      "merge_source": "t7:hwoarang_43",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "multi_hit": {
+        "hits": [
+          12,
+          13,
+          20
+        ],
+        "total": 45
+      },
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "hwoarang",
+        "row": 214,
+        "match": "nearest limb/class/startup (approximate)"
+      },
+      "mod_damage": "18,13,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "t6_baek": {
+        "command": "4,4,3",
+        "name": "Albatross",
+        "records": 6
+      },
+      "note": "Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings."
+    },
+    "4,4,4": {
+      "name": "Javelin",
+      "input": "4,4,4",
+      "t3_source": "hwoarang",
+      "t3_row": 267,
+      "t3_command": "RK",
+      "startup": 0.317,
+      "active": 0.017,
+      "recovery": 0.6,
+      "damage": 6,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:hwoarang:row:267",
+      "input_slots": [
+        "4,4,4"
+      ],
+      "move_class": "strike",
+      "t6_baek": {
+        "command": "4,4,4",
+        "name": "Javelin",
+        "records": 6
+      },
+      "note": "Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings."
+    },
+    "3": {
+      "name": "Chipping Sweep",
+      "input": "3",
+      "t3_source": "hwoarang",
+      "t3_row": 207,
+      "t3_command": "LK",
+      "startup": 0.283,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 9,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:hwoarang:row:207",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike",
+      "t6_baek": {
+        "command": "3",
+        "name": "Chipping Sweep",
+        "records": 6
+      },
+      "note": "Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings."
+    },
+    "4": {
+      "name": "Reverse Middle Kick",
+      "input": "4",
+      "t3_source": "hwoarang",
+      "t3_row": 95,
+      "t3_command": "RK",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 8,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:hwoarang:row:95",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike",
+      "t6_baek": {
+        "command": "4",
+        "name": "Reverse Middle Kick",
+        "records": 6
+      },
+      "note": "Baek name+input are real T6 PSP decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json); frame/damage/anim are the T3 Hwoarang proxy (Taekwondo) — no Baek frame/anim bank exists in holdings."
+    },
+    "2": {
+      "name": "Jab",
+      "input": "2",
+      "t3_source": "hwoarang",
+      "t3_row": 91,
+      "t3_command": "RP",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 7,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:hwoarang:row:91",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike",
+      "t6_frame_data": {
+        "command": "2",
+        "damage": 8,
+        "startup_frames": 10,
+        "block": "+0",
+        "hit": "+7",
+        "source": "Tekken 6 frame data (tekkendocs.com/t6/baek)"
+      },
+      "ttt2_frame_data": {
+        "command": "2",
+        "damage": 9,
+        "startup_frames": 10,
+        "block": "+0",
+        "hit": "+7",
+        "counter_hit": "+7",
+        "source": "Tekken Tag Tournament 2 movelist (wavu.wiki/t/Baek_movelist_(Tag_2))"
+      },
+      "note": "Baek's bare right-punch jab. The T6 PSP movelist decode (81 commands) and the TTT2 bae.json movelist (102 records) list no bare '2' — both are movelist-only extractions and the standalone jabs are not separate movelist entries. The game's own frame data lists the bare '2' in Tekken 6 (8 dmg, i10, +0 block, +7 hit) and TTT2 (9 dmg, i10, +0/+7/+7). Frames/damage/anim are the T3 Hwoarang proxy (row 91, RP) — no Baek frame/anim bank exists in holdings."
+    },
+    "1": {
+      "name": "Jab",
+      "input": "1",
+      "t3_source": "hwoarang",
+      "t3_row": 203,
+      "t3_command": "LP",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:hwoarang:row:203",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t6_frame_data": {
+        "command": "1",
+        "damage": 8,
+        "startup_frames": 10,
+        "block": "+1",
+        "hit": "+8",
+        "source": "Tekken 6 frame data (tekkendocs.com/t6/baek)"
+      },
+      "ttt2_frame_data": {
+        "command": "1",
+        "damage": 9,
+        "startup_frames": 10,
+        "block": "+1",
+        "hit": "+8",
+        "counter_hit": "+8",
+        "source": "Tekken Tag Tournament 2 movelist (wavu.wiki/t/Baek_movelist_(Tag_2))"
+      },
+      "note": "Baek's bare left-punch jab. The T6 PSP movelist decode (81 commands) and the TTT2 bae.json movelist (102 records) list no bare '1' — both are movelist-only extractions and the standalone jabs are not separate movelist entries. The game's own frame data lists the bare '1' in Tekken 6 (8 dmg, i10, +1 block, +8 hit) and TTT2 (9 dmg, i10, +1/+8/+8). Frames/damage/anim are the T3 Hwoarang proxy (row 203, LP) — no Baek frame/anim bank exists in holdings."
     },
     "S": {
       "name": "Master's White [WH SIGNATURE]",
@@ -440,26 +1328,6 @@
         "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
-    "1+2__main": {
-      "name": "BAEK MASTER WHITE 1+2 (T3 bryan r41)",
-      "input": "1+2",
-      "t3_source": "bryan",
-      "t3_row": 41,
-      "t3_command": "LP+RP",
-      "startup": 0.3,
-      "active": 0.017,
-      "recovery": 0.567,
-      "damage": 7,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:41",
-      "input_slots": [
-        "1+2"
-      ],
-      "move_class": "strike"
-    },
     "1+4": {
       "name": "Eleventh Lecture [WH SIGNATURE]",
       "input": "1+4",
@@ -490,1974 +1358,6 @@
         "row": 141,
         "match": "F6 throw-repick (burn-down 2026-10-30): prior row bryan 75 hit_frames throw=0; group twin of P+K, same repicked row bryan 141, hit_frames throw=1"
       }
-    },
-    "b+2": {
-      "name": "BAEK MASTER WHITE b+2 (T3 bryan r158)",
-      "input": "b+2",
-      "t3_source": "bryan",
-      "t3_row": 158,
-      "t3_command": "4+RP",
-      "startup": 0.317,
-      "active": 0.017,
-      "recovery": 0.7,
-      "damage": 11,
-      "t3_damage": 18,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:158",
-      "input_slots": [
-        "b+2"
-      ],
-      "move_class": "strike"
-    },
-    "b+4": {
-      "name": "BAEK MASTER WHITE b+4 (T3 bryan r111)",
-      "input": "b+4",
-      "t3_source": "bryan",
-      "t3_row": 111,
-      "t3_command": "4+RK",
-      "startup": 0.35,
-      "active": 0.2,
-      "recovery": 0.633,
-      "damage": 15,
-      "t3_damage": 25,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 4.2,
-      "soulGain": 11,
-      "anim_ref": "t3:bryan:row:111",
-      "input_slots": [
-        "b+4"
-      ],
-      "move_class": "strike"
-    },
-    "f+2": {
-      "name": "BAEK MASTER WHITE f+2 (T3 bryan r150)",
-      "input": "f+2",
-      "t3_source": "bryan",
-      "t3_row": 150,
-      "t3_command": "6+RP",
-      "startup": 0.217,
-      "active": 0.017,
-      "recovery": 0.783,
-      "damage": 18,
-      "t3_damage": 30,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 4.2,
-      "soulGain": 11,
-      "anim_ref": "t3:bryan:row:150",
-      "input_slots": [
-        "f+2"
-      ],
-      "move_class": "strike"
-    },
-    "f+2__main": {
-      "name": "BAEK MASTER WHITE f+2 (T3 bryan r150)",
-      "input": "f+2",
-      "t3_source": "bryan",
-      "t3_row": 150,
-      "t3_command": "6+RP",
-      "startup": 0.217,
-      "active": 0.017,
-      "recovery": 0.783,
-      "damage": 18,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:150",
-      "input_slots": [
-        "f+2"
-      ],
-      "move_class": "strike"
-    },
-    "f+3": {
-      "name": "BAEK MASTER WHITE f+3 (T3 bryan r191)",
-      "input": "f+3",
-      "t3_source": "bryan",
-      "t3_row": 191,
-      "t3_command": "6+LK",
-      "startup": 0.367,
-      "active": 0.05,
-      "recovery": 0.867,
-      "damage": 21,
-      "t3_damage": 36,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 4.2,
-      "soulGain": 11,
-      "anim_ref": "t3:bryan:row:191",
-      "input_slots": [
-        "f+3"
-      ],
-      "move_class": "strike"
-    },
-    "f+3__main": {
-      "name": "BAEK MASTER WHITE f+3 (T3 bryan r191)",
-      "input": "f+3",
-      "t3_source": "bryan",
-      "t3_row": 191,
-      "t3_command": "6+LK",
-      "startup": 0.367,
-      "active": 0.05,
-      "recovery": 0.867,
-      "damage": 21,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:191",
-      "input_slots": [
-        "f+3"
-      ],
-      "move_class": "strike"
-    },
-    "b+1+2": {
-      "name": "BAEK MASTER WHITE b+1+2 (T3 bryan r167)",
-      "input": "b+1+2",
-      "t3_source": "bryan",
-      "t3_row": 167,
-      "t3_command": "4+LP+RP",
-      "startup": 0.3,
-      "active": 0.033,
-      "recovery": 0.1,
-      "damage": 8,
-      "t3_damage": 14,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:167",
-      "input_slots": [
-        "b+1+2"
-      ],
-      "move_class": "strike"
-    },
-    "b+1+4": {
-      "name": "BAEK MASTER WHITE b+1+4 (T3 bryan r178)",
-      "input": "b+1+4",
-      "t3_source": "bryan",
-      "t3_row": 178,
-      "t3_command": "4+LP+RK",
-      "startup": 0.85,
-      "active": 0.083,
-      "recovery": 0.833,
-      "damage": 35,
-      "t3_damage": 60,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 4.2,
-      "soulGain": 11,
-      "anim_ref": "t3:bryan:row:178",
-      "input_slots": [
-        "b+1+4"
-      ],
-      "move_class": "strike"
-    },
-    "b+1+4__main": {
-      "name": "BAEK MASTER WHITE b+1+4 (T3 bryan r178)",
-      "input": "b+1+4",
-      "t3_source": "bryan",
-      "t3_row": 178,
-      "t3_command": "4+LP+RK",
-      "startup": 0.85,
-      "active": 0.083,
-      "recovery": 0.833,
-      "damage": 35,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:178",
-      "input_slots": [
-        "b+1+4"
-      ],
-      "move_class": "strike"
-    },
-    "d/f+1": {
-      "name": "BAEK MASTER WHITE d/f+1 (T3 bryan r147)",
-      "input": "d/f+1",
-      "t3_source": "bryan",
-      "t3_row": 147,
-      "t3_command": "3+LP",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 0.517,
-      "damage": 7,
-      "t3_damage": 12,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:147",
-      "input_slots": [
-        "d/f+1"
-      ],
-      "move_class": "strike"
-    },
-    "f+1+4": {
-      "name": "BAEK MASTER WHITE f+1+4 (T3 bryan r179)",
-      "input": "f+1+4",
-      "t3_source": "bryan",
-      "t3_row": 179,
-      "t3_command": "6+LP+RK",
-      "startup": 0.467,
-      "active": 0.017,
-      "recovery": 0.833,
-      "damage": 12,
-      "t3_damage": 21,
-      "limb": "legR",
-      "heavy": false,
-      "knock": 4.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:179",
-      "input_slots": [
-        "f+1+4"
-      ],
-      "move_class": "strike"
-    },
-    "f+1+4__main": {
-      "name": "BAEK MASTER WHITE f+1+4 (T3 bryan r179)",
-      "input": "f+1+4",
-      "t3_source": "bryan",
-      "t3_row": 179,
-      "t3_command": "6+LP+RK",
-      "startup": 0.467,
-      "active": 0.017,
-      "recovery": 0.833,
-      "damage": 12,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:179",
-      "input_slots": [
-        "f+1+4"
-      ],
-      "move_class": "strike"
-    },
-    "u/b+1": {
-      "name": "BAEK MASTER WHITE u/b+1 (T3 bryan r55)",
-      "input": "u/b+1",
-      "t3_source": "bryan",
-      "t3_row": 55,
-      "t3_command": "4/7+LP",
-      "startup": 0.3,
-      "active": 0.017,
-      "recovery": 0.567,
-      "damage": 7,
-      "t3_damage": 12,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:55",
-      "input_slots": [
-        "u/b+1"
-      ],
-      "move_class": "strike"
-    },
-    "u/b+3": {
-      "name": "BAEK MASTER WHITE u/b+3 (T3 bryan r65)",
-      "input": "u/b+3",
-      "t3_source": "bryan",
-      "t3_row": 65,
-      "t3_command": "4/7+LK",
-      "startup": 0.15,
-      "active": 0.017,
-      "recovery": 0.717,
-      "damage": 15,
-      "t3_damage": 25,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 4.2,
-      "soulGain": 11,
-      "anim_ref": "t3:bryan:row:65",
-      "input_slots": [
-        "u/b+3"
-      ],
-      "move_class": "strike"
-    },
-    "u/b+4": {
-      "name": "BAEK MASTER WHITE u/b+4 (T3 bryan r75)",
-      "input": "u/b+4",
-      "t3_source": "bryan",
-      "t3_row": 75,
-      "t3_command": "4/7+RK",
-      "startup": 0.25,
-      "active": 0.05,
-      "recovery": 0.6,
-      "damage": 6,
-      "t3_damage": 11,
-      "limb": "legR",
-      "heavy": false,
-      "knock": 4.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:75",
-      "input_slots": [
-        "u/b+4"
-      ],
-      "move_class": "strike"
-    },
-    "u/f+1": {
-      "name": "BAEK MASTER WHITE u/f+1 (T3 bryan r54)",
-      "input": "u/f+1",
-      "t3_source": "bryan",
-      "t3_row": 54,
-      "t3_command": "6/9+LP",
-      "startup": 0.3,
-      "active": 0.017,
-      "recovery": 0.567,
-      "damage": 7,
-      "t3_damage": 12,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:54",
-      "input_slots": [
-        "u/f+1"
-      ],
-      "move_class": "strike"
-    },
-    "u/f+3": {
-      "name": "BAEK MASTER WHITE u/f+3 (T3 bryan r186)",
-      "input": "u/f+3",
-      "t3_source": "bryan",
-      "t3_row": 186,
-      "t3_command": "6/9+LK",
-      "startup": 0.45,
-      "active": 0.033,
-      "recovery": 0.55,
-      "damage": 15,
-      "t3_damage": 25,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 4.2,
-      "soulGain": 11,
-      "anim_ref": "t3:bryan:row:186",
-      "input_slots": [
-        "u/f+3"
-      ],
-      "move_class": "strike"
-    },
-    "d/f+1+2": {
-      "name": "BAEK MASTER WHITE d/f+1+2 (T3 bryan r113)",
-      "input": "d/f+1+2",
-      "t3_source": "bryan",
-      "t3_row": 113,
-      "t3_command": "3+LP+RP",
-      "startup": 0.133,
-      "active": 0.017,
-      "recovery": 0.483,
-      "damage": 2,
-      "t3_damage": 3,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:113",
-      "input_slots": [
-        "d/f+1+2"
-      ],
-      "move_class": "strike"
-    },
-    "u/b+1+2": {
-      "name": "BAEK MASTER WHITE u/b+1+2 (T3 bryan r43)",
-      "input": "u/b+1+2",
-      "t3_source": "bryan",
-      "t3_row": 43,
-      "t3_command": "4/7+LP+RP",
-      "startup": 0.3,
-      "active": 0.017,
-      "recovery": 0.567,
-      "damage": 7,
-      "t3_damage": 12,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:43",
-      "input_slots": [
-        "u/b+1+2"
-      ],
-      "move_class": "strike"
-    },
-    "u/b+3+4": {
-      "name": "BAEK MASTER WHITE u/b+3+4 (T3 bryan r62)",
-      "input": "u/b+3+4",
-      "t3_source": "bryan",
-      "t3_row": 62,
-      "t3_command": "4/7+LK+RK",
-      "startup": 0.35,
-      "active": 0.017,
-      "recovery": 0.733,
-      "damage": 15,
-      "t3_damage": 25,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 4.2,
-      "soulGain": 11,
-      "anim_ref": "t3:bryan:row:62",
-      "input_slots": [
-        "u/b+3+4"
-      ],
-      "move_class": "strike"
-    },
-    "u/f+1+2": {
-      "name": "BAEK MASTER WHITE u/f+1+2 (T3 bryan r42)",
-      "input": "u/f+1+2",
-      "t3_source": "bryan",
-      "t3_row": 42,
-      "t3_command": "6/9+LP+RP",
-      "startup": 0.3,
-      "active": 0.017,
-      "recovery": 0.567,
-      "damage": 7,
-      "t3_damage": 12,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:42",
-      "input_slots": [
-        "u/f+1+2"
-      ],
-      "move_class": "strike"
-    },
-    "u/f+3+4": {
-      "name": "BAEK MASTER WHITE u/f+3+4 (T3 bryan r61)",
-      "input": "u/f+3+4",
-      "t3_source": "bryan",
-      "t3_row": 61,
-      "t3_command": "6/9+LK+RK",
-      "startup": 0.35,
-      "active": 0.017,
-      "recovery": 0.733,
-      "damage": 15,
-      "t3_damage": 25,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 4.2,
-      "soulGain": 11,
-      "anim_ref": "t3:bryan:row:61",
-      "input_slots": [
-        "u/f+3+4"
-      ],
-      "move_class": "strike"
-    },
-    "2,4": {
-      "name": "BAEK MASTER WHITE 2,4 (T3 bryan r182)",
-      "input": "2,4",
-      "t3_source": "bryan",
-      "t3_row": 182,
-      "t3_command": "RK",
-      "startup": 0.367,
-      "active": 0.05,
-      "recovery": 0.717,
-      "damage": 15,
-      "t3_damage": 26,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 4.2,
-      "soulGain": 11,
-      "anim_ref": "t3:bryan:row:182",
-      "input_slots": [
-        "2,4",
-        "2",
-        "4"
-      ],
-      "move_class": "string",
-      "string_hit": "2"
-    },
-    "f": {
-      "name": "BAEK MASTER WHITE f (T3 bryan r42)",
-      "input": "f",
-      "t3_source": "bryan",
-      "t3_row": 42,
-      "t3_command": "6/9+LP+RP",
-      "startup": 0.3,
-      "active": 0.017,
-      "recovery": 0.567,
-      "damage": 7,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:42",
-      "input_slots": [
-        "f"
-      ],
-      "move_class": "strike"
-    },
-    "b": {
-      "name": "BAEK MASTER WHITE b (T3 bryan r43)",
-      "input": "b",
-      "t3_source": "bryan",
-      "t3_row": 43,
-      "t3_command": "4/7+LP+RP",
-      "startup": 0.3,
-      "active": 0.017,
-      "recovery": 0.567,
-      "damage": 7,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:43",
-      "input_slots": [
-        "b"
-      ],
-      "move_class": "strike"
-    },
-    "1_r45": {
-      "name": "BAEK MASTER WHITE 1_r45 (T3 bryan r45)",
-      "input": "1_r45",
-      "t3_source": "bryan",
-      "t3_row": 45,
-      "t3_command": "LP",
-      "startup": 0.183,
-      "active": 0.033,
-      "recovery": 0.45,
-      "damage": 7,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:45",
-      "input_slots": [
-        "1"
-      ],
-      "move_class": "strike"
-    },
-    "1_r46": {
-      "name": "BAEK MASTER WHITE 1_r46 (T3 bryan r46)",
-      "input": "1_r46",
-      "t3_source": "bryan",
-      "t3_row": 46,
-      "t3_command": "LP",
-      "startup": 0.183,
-      "active": 0.033,
-      "recovery": 0.45,
-      "damage": 7,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:46",
-      "input_slots": [
-        "1"
-      ],
-      "move_class": "strike"
-    },
-    "1_r47": {
-      "name": "BAEK MASTER WHITE 1_r47 (T3 bryan r47)",
-      "input": "1_r47",
-      "t3_source": "bryan",
-      "t3_row": 47,
-      "t3_command": "LP",
-      "startup": 0.15,
-      "active": 0.017,
-      "recovery": 0.467,
-      "damage": 9,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:47",
-      "input_slots": [
-        "1"
-      ],
-      "move_class": "strike"
-    },
-    "1_r48": {
-      "name": "BAEK MASTER WHITE 1_r48 (T3 bryan r48)",
-      "input": "1_r48",
-      "t3_source": "bryan",
-      "t3_row": 48,
-      "t3_command": "LP",
-      "startup": 0.15,
-      "active": 0.017,
-      "recovery": 0.467,
-      "damage": 9,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:48",
-      "input_slots": [
-        "1"
-      ],
-      "move_class": "strike"
-    },
-    "1_r49": {
-      "name": "BAEK MASTER WHITE 1_r49 (T3 bryan r49)",
-      "input": "1_r49",
-      "t3_source": "bryan",
-      "t3_row": 49,
-      "t3_command": "LP",
-      "startup": 0.15,
-      "active": 0.017,
-      "recovery": 0.467,
-      "damage": 9,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:49",
-      "input_slots": [
-        "1"
-      ],
-      "move_class": "strike"
-    },
-    "1_r50": {
-      "name": "BAEK MASTER WHITE 1_r50 (T3 bryan r50)",
-      "input": "1_r50",
-      "t3_source": "bryan",
-      "t3_row": 50,
-      "t3_command": "LP",
-      "startup": 0.117,
-      "active": 0.017,
-      "recovery": 0.467,
-      "damage": 11,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:50",
-      "input_slots": [
-        "1"
-      ],
-      "move_class": "strike"
-    },
-    "1_r51": {
-      "name": "BAEK MASTER WHITE 1_r51 (T3 bryan r51)",
-      "input": "1_r51",
-      "t3_source": "bryan",
-      "t3_row": 51,
-      "t3_command": "LP",
-      "startup": 0.117,
-      "active": 0.017,
-      "recovery": 0.467,
-      "damage": 11,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:51",
-      "input_slots": [
-        "1"
-      ],
-      "move_class": "strike"
-    },
-    "1_r52": {
-      "name": "BAEK MASTER WHITE 1_r52 (T3 bryan r52)",
-      "input": "1_r52",
-      "t3_source": "bryan",
-      "t3_row": 52,
-      "t3_command": "LP",
-      "startup": 0.117,
-      "active": 0.017,
-      "recovery": 0.467,
-      "damage": 11,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:52",
-      "input_slots": [
-        "1"
-      ],
-      "move_class": "strike"
-    },
-    "1_c36_r53": {
-      "name": "BAEK MASTER WHITE 1_c36_r53 (T3 bryan r53)",
-      "input": "1_c36_r53",
-      "t3_source": "bryan",
-      "t3_row": 53,
-      "t3_command": "LP",
-      "startup": 0.3,
-      "active": 0.017,
-      "recovery": 0.567,
-      "damage": 7,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:53",
-      "input_slots": [
-        "1"
-      ],
-      "move_class": "strike",
-      "t3_condition": 36
-    },
-    "f_c36_r54": {
-      "name": "BAEK MASTER WHITE f_c36_r54 (T3 bryan r54)",
-      "input": "f_c36_r54",
-      "t3_source": "bryan",
-      "t3_row": 54,
-      "t3_command": "6/9+LP",
-      "startup": 0.3,
-      "active": 0.017,
-      "recovery": 0.567,
-      "damage": 7,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:54",
-      "input_slots": [
-        "f"
-      ],
-      "move_class": "strike",
-      "t3_condition": 36
-    },
-    "b_c36_r55": {
-      "name": "BAEK MASTER WHITE b_c36_r55 (T3 bryan r55)",
-      "input": "b_c36_r55",
-      "t3_source": "bryan",
-      "t3_row": 55,
-      "t3_command": "4/7+LP",
-      "startup": 0.3,
-      "active": 0.017,
-      "recovery": 0.567,
-      "damage": 7,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:55",
-      "input_slots": [
-        "b"
-      ],
-      "move_class": "strike",
-      "t3_condition": 36
-    },
-    "2_r57": {
-      "name": "BAEK MASTER WHITE 2_r57 (T3 bryan r57)",
-      "input": "2_r57",
-      "t3_source": "bryan",
-      "t3_row": 57,
-      "t3_command": "RP",
-      "startup": 0.183,
-      "active": 0.05,
-      "recovery": 0.667,
-      "damage": 11,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:57",
-      "input_slots": [
-        "2"
-      ],
-      "move_class": "strike"
-    },
-    "2_r58": {
-      "name": "BAEK MASTER WHITE 2_r58 (T3 bryan r58)",
-      "input": "2_r58",
-      "t3_source": "bryan",
-      "t3_row": 58,
-      "t3_command": "RP",
-      "startup": 0.183,
-      "active": 0.05,
-      "recovery": 0.667,
-      "damage": 11,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:58",
-      "input_slots": [
-        "2"
-      ],
-      "move_class": "strike"
-    },
-    "3+4_r107": {
-      "name": "BAEK MASTER WHITE 3+4_r107 (T3 bryan r60)",
-      "input": "3+4_r107",
-      "t3_source": "bryan",
-      "t3_row": 60,
-      "t3_command": "LK+RK",
-      "startup": 0.35,
-      "active": 0.017,
-      "recovery": 0.733,
-      "damage": 15,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:60",
-      "input_slots": [
-        "3+4"
-      ],
-      "move_class": "strike",
-      "t3_restriction": 107
-    },
-    "f_r61": {
-      "name": "BAEK MASTER WHITE f_r61 (T3 bryan r61)",
-      "input": "f_r61",
-      "t3_source": "bryan",
-      "t3_row": 61,
-      "t3_command": "6/9+LK+RK",
-      "startup": 0.35,
-      "active": 0.017,
-      "recovery": 0.733,
-      "damage": 15,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:61",
-      "input_slots": [
-        "f"
-      ],
-      "move_class": "strike"
-    },
-    "b_r62": {
-      "name": "BAEK MASTER WHITE b_r62 (T3 bryan r62)",
-      "input": "b_r62",
-      "t3_source": "bryan",
-      "t3_row": 62,
-      "t3_command": "4/7+LK+RK",
-      "startup": 0.35,
-      "active": 0.017,
-      "recovery": 0.733,
-      "damage": 15,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:62",
-      "input_slots": [
-        "b"
-      ],
-      "move_class": "strike"
-    },
-    "3_c36": {
-      "name": "BAEK MASTER WHITE 3_c36 (T3 bryan r63)",
-      "input": "3_c36",
-      "t3_source": "bryan",
-      "t3_row": 63,
-      "t3_command": "LK",
-      "startup": 0.15,
-      "active": 0.017,
-      "recovery": 0.717,
-      "damage": 15,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:63",
-      "input_slots": [
-        "3"
-      ],
-      "move_class": "strike",
-      "t3_condition": 36
-    },
-    "f_c36_r64": {
-      "name": "BAEK MASTER WHITE f_c36_r64 (T3 bryan r64)",
-      "input": "f_c36_r64",
-      "t3_source": "bryan",
-      "t3_row": 64,
-      "t3_command": "6/9+LK",
-      "startup": 0.15,
-      "active": 0.017,
-      "recovery": 0.717,
-      "damage": 15,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:64",
-      "input_slots": [
-        "f"
-      ],
-      "move_class": "strike",
-      "t3_condition": 36
-    },
-    "b_c36_r65": {
-      "name": "BAEK MASTER WHITE b_c36_r65 (T3 bryan r65)",
-      "input": "b_c36_r65",
-      "t3_source": "bryan",
-      "t3_row": 65,
-      "t3_command": "4/7+LK",
-      "startup": 0.15,
-      "active": 0.017,
-      "recovery": 0.717,
-      "damage": 15,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:65",
-      "input_slots": [
-        "b"
-      ],
-      "move_class": "strike",
-      "t3_condition": 36
-    },
-    "3_r67": {
-      "name": "BAEK MASTER WHITE 3_r67 (T3 bryan r67)",
-      "input": "3_r67",
-      "t3_source": "bryan",
-      "t3_row": 67,
-      "t3_command": "LK",
-      "startup": 0.25,
-      "active": 0.017,
-      "recovery": 0.817,
-      "damage": 15,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:67",
-      "input_slots": [
-        "3"
-      ],
-      "move_class": "strike"
-    },
-    "3_r68": {
-      "name": "BAEK MASTER WHITE 3_r68 (T3 bryan r68)",
-      "input": "3_r68",
-      "t3_source": "bryan",
-      "t3_row": 68,
-      "t3_command": "LK",
-      "startup": 0.25,
-      "active": 0.017,
-      "recovery": 0.817,
-      "damage": 15,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:68",
-      "input_slots": [
-        "3"
-      ],
-      "move_class": "strike"
-    },
-    "3_r69": {
-      "name": "BAEK MASTER WHITE 3_r69 (T3 bryan r69)",
-      "input": "3_r69",
-      "t3_source": "bryan",
-      "t3_row": 69,
-      "t3_command": "LK",
-      "startup": 0.233,
-      "active": 0.017,
-      "recovery": 0.8,
-      "damage": 15,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:69",
-      "input_slots": [
-        "3"
-      ],
-      "move_class": "strike"
-    },
-    "3_r70": {
-      "name": "BAEK MASTER WHITE 3_r70 (T3 bryan r70)",
-      "input": "3_r70",
-      "t3_source": "bryan",
-      "t3_row": 70,
-      "t3_command": "LK",
-      "startup": 0.233,
-      "active": 0.017,
-      "recovery": 0.8,
-      "damage": 15,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:70",
-      "input_slots": [
-        "3"
-      ],
-      "move_class": "strike"
-    },
-    "3_r71": {
-      "name": "BAEK MASTER WHITE 3_r71 (T3 bryan r71)",
-      "input": "3_r71",
-      "t3_source": "bryan",
-      "t3_row": 71,
-      "t3_command": "LK",
-      "startup": 0.233,
-      "active": 0.017,
-      "recovery": 0.8,
-      "damage": 15,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:71",
-      "input_slots": [
-        "3"
-      ],
-      "move_class": "strike"
-    },
-    "3_r72": {
-      "name": "BAEK MASTER WHITE 3_r72 (T3 bryan r72)",
-      "input": "3_r72",
-      "t3_source": "bryan",
-      "t3_row": 72,
-      "t3_command": "LK",
-      "startup": 0.25,
-      "active": 0.017,
-      "recovery": 0.817,
-      "damage": 15,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:72",
-      "input_slots": [
-        "3"
-      ],
-      "move_class": "strike"
-    },
-    "3_r73": {
-      "name": "BAEK MASTER WHITE 3_r73 (T3 bryan r73)",
-      "input": "3_r73",
-      "t3_source": "bryan",
-      "t3_row": 73,
-      "t3_command": "LK",
-      "startup": 0.25,
-      "active": 0.017,
-      "recovery": 0.817,
-      "damage": 9,
-      "limb": "legL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:73",
-      "input_slots": [
-        "3"
-      ],
-      "move_class": "strike"
-    },
-    "3_r74": {
-      "name": "BAEK MASTER WHITE 3_r74 (T3 bryan r74)",
-      "input": "3_r74",
-      "t3_source": "bryan",
-      "t3_row": 74,
-      "t3_command": "LK",
-      "startup": 0.25,
-      "active": 0.017,
-      "recovery": 0.817,
-      "damage": 15,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:74",
-      "input_slots": [
-        "3"
-      ],
-      "move_class": "strike"
-    },
-    "b_r75": {
-      "name": "BAEK MASTER WHITE b_r75 (T3 bryan r75)",
-      "input": "b_r75",
-      "t3_source": "bryan",
-      "t3_row": 75,
-      "t3_command": "4/7+RK",
-      "startup": 0.25,
-      "active": 0.05,
-      "recovery": 0.6,
-      "damage": 6,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:75",
-      "input_slots": [
-        "b"
-      ],
-      "move_class": "strike"
-    },
-    "b_c36": {
-      "name": "BAEK MASTER WHITE b_c36 (T3 bryan r75)",
-      "input": "b_c36",
-      "t3_source": "bryan",
-      "t3_row": 75,
-      "t3_command": "4/7+RK",
-      "startup": 0.25,
-      "active": 0.05,
-      "recovery": 0.6,
-      "damage": 6,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:75",
-      "input_slots": [
-        "b"
-      ],
-      "move_class": "special",
-      "t3_condition": 36
-    },
-    "4_r77": {
-      "name": "BAEK MASTER WHITE 4_r77 (T3 bryan r77)",
-      "input": "4_r77",
-      "t3_source": "bryan",
-      "t3_row": 77,
-      "t3_command": "RK",
-      "startup": 0.133,
-      "active": 0.033,
-      "recovery": 0.617,
-      "damage": 15,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:77",
-      "input_slots": [
-        "4"
-      ],
-      "move_class": "strike"
-    },
-    "4_r78": {
-      "name": "BAEK MASTER WHITE 4_r78 (T3 bryan r78)",
-      "input": "4_r78",
-      "t3_source": "bryan",
-      "t3_row": 78,
-      "t3_command": "RK",
-      "startup": 0.133,
-      "active": 0.033,
-      "recovery": 0.617,
-      "damage": 15,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:78",
-      "input_slots": [
-        "4"
-      ],
-      "move_class": "strike"
-    },
-    "4_r79": {
-      "name": "BAEK MASTER WHITE 4_r79 (T3 bryan r79)",
-      "input": "4_r79",
-      "t3_source": "bryan",
-      "t3_row": 79,
-      "t3_command": "RK",
-      "startup": 0.15,
-      "active": 0.033,
-      "recovery": 0.617,
-      "damage": 15,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:79",
-      "input_slots": [
-        "4"
-      ],
-      "move_class": "strike"
-    },
-    "4_r80": {
-      "name": "BAEK MASTER WHITE 4_r80 (T3 bryan r80)",
-      "input": "4_r80",
-      "t3_source": "bryan",
-      "t3_row": 80,
-      "t3_command": "RK",
-      "startup": 0.15,
-      "active": 0.033,
-      "recovery": 0.617,
-      "damage": 15,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:80",
-      "input_slots": [
-        "4"
-      ],
-      "move_class": "strike"
-    },
-    "4_r81": {
-      "name": "BAEK MASTER WHITE 4_r81 (T3 bryan r81)",
-      "input": "4_r81",
-      "t3_source": "bryan",
-      "t3_row": 81,
-      "t3_command": "RK",
-      "startup": 0.15,
-      "active": 0.033,
-      "recovery": 0.617,
-      "damage": 15,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:81",
-      "input_slots": [
-        "4"
-      ],
-      "move_class": "strike"
-    },
-    "4_r82": {
-      "name": "BAEK MASTER WHITE 4_r82 (T3 bryan r82)",
-      "input": "4_r82",
-      "t3_source": "bryan",
-      "t3_row": 82,
-      "t3_command": "RK",
-      "startup": 0.15,
-      "active": 0.033,
-      "recovery": 0.567,
-      "damage": 9,
-      "limb": "legR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:82",
-      "input_slots": [
-        "4"
-      ],
-      "move_class": "strike"
-    },
-    "4_r83": {
-      "name": "BAEK MASTER WHITE 4_r83 (T3 bryan r83)",
-      "input": "4_r83",
-      "t3_source": "bryan",
-      "t3_row": 83,
-      "t3_command": "RK",
-      "startup": 0.15,
-      "active": 0.033,
-      "recovery": 0.567,
-      "damage": 9,
-      "limb": "legR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:83",
-      "input_slots": [
-        "4"
-      ],
-      "move_class": "strike"
-    },
-    "4_r84": {
-      "name": "BAEK MASTER WHITE 4_r84 (T3 bryan r84)",
-      "input": "4_r84",
-      "t3_source": "bryan",
-      "t3_row": 84,
-      "t3_command": "RK",
-      "startup": 0.15,
-      "active": 0.033,
-      "recovery": 0.567,
-      "damage": 9,
-      "limb": "legR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:84",
-      "input_slots": [
-        "4"
-      ],
-      "move_class": "strike"
-    },
-    "4_c36_r85": {
-      "name": "BAEK MASTER WHITE 4_c36_r85 (T3 bryan r85)",
-      "input": "4_c36_r85",
-      "t3_source": "bryan",
-      "t3_row": 85,
-      "t3_command": "RK",
-      "startup": 0.15,
-      "active": 0.017,
-      "recovery": 0.717,
-      "damage": 12,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:85",
-      "input_slots": [
-        "4"
-      ],
-      "move_class": "strike",
-      "t3_condition": 36
-    },
-    "f_c36_r86": {
-      "name": "BAEK MASTER WHITE f_c36_r86 (T3 bryan r86)",
-      "input": "f_c36_r86",
-      "t3_source": "bryan",
-      "t3_row": 86,
-      "t3_command": "6/9+RK",
-      "startup": 0.15,
-      "active": 0.017,
-      "recovery": 0.717,
-      "damage": 12,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:86",
-      "input_slots": [
-        "f"
-      ],
-      "move_class": "strike",
-      "t3_condition": 36
-    },
-    "b_c36_r87": {
-      "name": "BAEK MASTER WHITE b_c36_r87 (T3 bryan r87)",
-      "input": "b_c36_r87",
-      "t3_source": "bryan",
-      "t3_row": 87,
-      "t3_command": "4/7+RK",
-      "startup": 0.15,
-      "active": 0.017,
-      "recovery": 0.717,
-      "damage": 11,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:87",
-      "input_slots": [
-        "b"
-      ],
-      "move_class": "strike",
-      "t3_condition": 36
-    },
-    "3+4_r8": {
-      "name": "BAEK MASTER WHITE 3+4_r8 (T3 bryan r107)",
-      "input": "3+4_r8",
-      "t3_source": "bryan",
-      "t3_row": 107,
-      "t3_command": "LK+RK",
-      "startup": 0.267,
-      "active": 0.017,
-      "recovery": 0.567,
-      "damage": 15,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:107",
-      "input_slots": [
-        "3+4"
-      ],
-      "move_class": "strike",
-      "t3_restriction": 8
-    },
-    "b+4_r13": {
-      "name": "BAEK MASTER WHITE b+4_r13 (T3 bryan r111)",
-      "input": "b+4_r13",
-      "t3_source": "bryan",
-      "t3_row": 111,
-      "t3_command": "4+RK",
-      "startup": 0.35,
-      "active": 0.2,
-      "recovery": 0.633,
-      "damage": 15,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:111",
-      "input_slots": [
-        "b+4"
-      ],
-      "move_class": "strike",
-      "t3_restriction": 13
-    },
-    "d/f+1+2_r17": {
-      "name": "BAEK MASTER WHITE d/f+1+2_r17 (T3 bryan r113)",
-      "input": "d/f+1+2_r17",
-      "t3_source": "bryan",
-      "t3_row": 113,
-      "t3_command": "3+LP+RP",
-      "startup": 0.133,
-      "active": 0.017,
-      "recovery": 0.483,
-      "damage": 2,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:113",
-      "input_slots": [
-        "d/f+1+2"
-      ],
-      "move_class": "strike",
-      "t3_restriction": 17
-    },
-    "3_r127": {
-      "name": "BAEK MASTER WHITE 3_r127 (T3 bryan r127)",
-      "input": "3_r127",
-      "t3_source": "bryan",
-      "t3_row": 127,
-      "t3_command": "LK",
-      "startup": 0.267,
-      "active": 0.017,
-      "recovery": 0.733,
-      "damage": 9,
-      "limb": "legL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:127",
-      "input_slots": [
-        "3"
-      ],
-      "move_class": "strike"
-    },
-    "2_r149": {
-      "name": "BAEK MASTER WHITE 2_r149 (T3 bryan r149)",
-      "input": "2_r149",
-      "t3_source": "bryan",
-      "t3_row": 149,
-      "t3_command": "RP",
-      "startup": 0.383,
-      "active": 0.017,
-      "recovery": 0.633,
-      "damage": 9,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:149",
-      "input_slots": [
-        "2"
-      ],
-      "move_class": "strike"
-    },
-    "2_r151": {
-      "name": "BAEK MASTER WHITE 2_r151 (T3 bryan r151)",
-      "input": "2_r151",
-      "t3_source": "bryan",
-      "t3_row": 151,
-      "t3_command": "RP",
-      "startup": 0.217,
-      "active": 0.017,
-      "recovery": 0.783,
-      "damage": 12,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:151",
-      "input_slots": [
-        "2"
-      ],
-      "move_class": "strike"
-    },
-    "2_r13_r156": {
-      "name": "BAEK MASTER WHITE 2_r13_r156 (T3 bryan r156)",
-      "input": "2_r13_r156",
-      "t3_source": "bryan",
-      "t3_row": 156,
-      "t3_command": "RP",
-      "startup": 0.333,
-      "active": 0.033,
-      "recovery": 0.75,
-      "damage": 15,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:156",
-      "input_slots": [
-        "2"
-      ],
-      "move_class": "strike",
-      "t3_restriction": 13
-    },
-    "1_c2_r160": {
-      "name": "BAEK MASTER WHITE 1_c2_r160 (T3 bryan r160)",
-      "input": "1_c2_r160",
-      "t3_source": "bryan",
-      "t3_row": 160,
-      "t3_command": "any-button",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 1.667,
-      "damage": 12,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:160",
-      "input_slots": [
-        "1"
-      ],
-      "move_class": "strike",
-      "t3_condition": 2
-    },
-    "2_r166": {
-      "name": "BAEK MASTER WHITE 2_r166 (T3 bryan r166)",
-      "input": "2_r166",
-      "t3_source": "bryan",
-      "t3_row": 166,
-      "t3_command": "RP",
-      "startup": 0.25,
-      "active": 0.017,
-      "recovery": 0.683,
-      "damage": 16,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:166",
-      "input_slots": [
-        "2"
-      ],
-      "move_class": "strike"
-    },
-    "1_r168": {
-      "name": "BAEK MASTER WHITE 1_r168 (T3 bryan r168)",
-      "input": "1_r168",
-      "t3_source": "bryan",
-      "t3_row": 168,
-      "t3_command": "any-button",
-      "startup": 0.183,
-      "active": 0.05,
-      "recovery": 0.65,
-      "damage": 12,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:168",
-      "input_slots": [
-        "1"
-      ],
-      "move_class": "strike"
-    },
-    "2_r177": {
-      "name": "BAEK MASTER WHITE 2_r177 (T3 bryan r177)",
-      "input": "2_r177",
-      "t3_source": "bryan",
-      "t3_row": 177,
-      "t3_command": "RP",
-      "startup": 0.317,
-      "active": 0.017,
-      "recovery": 0.683,
-      "damage": 8,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:177",
-      "input_slots": [
-        "2"
-      ],
-      "move_class": "strike"
-    },
-    "4_r180": {
-      "name": "BAEK MASTER WHITE 4_r180 (T3 bryan r180)",
-      "input": "4_r180",
-      "t3_source": "bryan",
-      "t3_row": 180,
-      "t3_command": "RK",
-      "startup": 0.367,
-      "active": 0.017,
-      "recovery": 0.483,
-      "damage": 7,
-      "limb": "legR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:180",
-      "input_slots": [
-        "4"
-      ],
-      "move_class": "strike"
-    },
-    "4_r13_r182": {
-      "name": "BAEK MASTER WHITE 4_r13_r182 (T3 bryan r182)",
-      "input": "4_r13_r182",
-      "t3_source": "bryan",
-      "t3_row": 182,
-      "t3_command": "RK",
-      "startup": 0.367,
-      "active": 0.05,
-      "recovery": 0.717,
-      "damage": 15,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:182",
-      "input_slots": [
-        "4"
-      ],
-      "move_class": "strike",
-      "t3_restriction": 13
-    },
-    "f_r183": {
-      "name": "BAEK MASTER WHITE f_r183 (T3 bryan r183)",
-      "input": "f_r183",
-      "t3_source": "bryan",
-      "t3_row": 183,
-      "t3_command": "6/9+RK",
-      "startup": 0.4,
-      "active": 0.05,
-      "recovery": 0.567,
-      "damage": 13,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:183",
-      "input_slots": [
-        "f"
-      ],
-      "move_class": "strike"
-    },
-    "4_r184": {
-      "name": "BAEK MASTER WHITE 4_r184 (T3 bryan r184)",
-      "input": "4_r184",
-      "t3_source": "bryan",
-      "t3_row": 184,
-      "t3_command": "RK",
-      "startup": 0.4,
-      "active": 0.05,
-      "recovery": 0.567,
-      "damage": 12,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:184",
-      "input_slots": [
-        "4"
-      ],
-      "move_class": "strike"
-    },
-    "3_r185": {
-      "name": "BAEK MASTER WHITE 3_r185 (T3 bryan r185)",
-      "input": "3_r185",
-      "t3_source": "bryan",
-      "t3_row": 185,
-      "t3_command": "LK",
-      "startup": 0.45,
-      "active": 0.033,
-      "recovery": 0.55,
-      "damage": 15,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:185",
-      "input_slots": [
-        "3"
-      ],
-      "move_class": "strike"
-    },
-    "f_r186": {
-      "name": "BAEK MASTER WHITE f_r186 (T3 bryan r186)",
-      "input": "f_r186",
-      "t3_source": "bryan",
-      "t3_row": 186,
-      "t3_command": "6/9+LK",
-      "startup": 0.45,
-      "active": 0.033,
-      "recovery": 0.55,
-      "damage": 15,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:186",
-      "input_slots": [
-        "f"
-      ],
-      "move_class": "strike"
-    },
-    "4_r190": {
-      "name": "BAEK MASTER WHITE 4_r190 (T3 bryan r190)",
-      "input": "4_r190",
-      "t3_source": "bryan",
-      "t3_row": 190,
-      "t3_command": "RK",
-      "startup": 0.567,
-      "active": 0.033,
-      "recovery": 0.583,
-      "damage": 9,
-      "limb": "legR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:190",
-      "input_slots": [
-        "4"
-      ],
-      "move_class": "strike"
-    },
-    "3_r192": {
-      "name": "BAEK MASTER WHITE 3_r192 (T3 bryan r192)",
-      "input": "3_r192",
-      "t3_source": "bryan",
-      "t3_row": 192,
-      "t3_command": "LK",
-      "startup": 0.383,
-      "active": 0.017,
-      "recovery": 0.617,
-      "damage": 9,
-      "limb": "legL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:192",
-      "input_slots": [
-        "3"
-      ],
-      "move_class": "strike"
-    },
-    "4_r194": {
-      "name": "BAEK MASTER WHITE 4_r194 (T3 bryan r194)",
-      "input": "4_r194",
-      "t3_source": "bryan",
-      "t3_row": 194,
-      "t3_command": "RK",
-      "startup": 0.4,
-      "active": 0.017,
-      "recovery": 0.667,
-      "damage": 11,
-      "limb": "legR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:194",
-      "input_slots": [
-        "4"
-      ],
-      "move_class": "strike"
-    },
-    "2_r195": {
-      "name": "BAEK MASTER WHITE 2_r195 (T3 bryan r195)",
-      "input": "2_r195",
-      "t3_source": "bryan",
-      "t3_row": 195,
-      "t3_command": "RP",
-      "startup": 0.267,
-      "active": 0.033,
-      "recovery": 0.683,
-      "damage": 12,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:195",
-      "input_slots": [
-        "2"
-      ],
-      "move_class": "strike"
-    },
-    "2_r208": {
-      "name": "BAEK MASTER WHITE 2_r208 (T3 bryan r208)",
-      "input": "2_r208",
-      "t3_source": "bryan",
-      "t3_row": 208,
-      "t3_command": "RP",
-      "startup": 0.217,
-      "active": 0.017,
-      "recovery": 0.783,
-      "damage": 12,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:208",
-      "input_slots": [
-        "2"
-      ],
-      "move_class": "strike"
-    },
-    "1_c36_r224": {
-      "name": "BAEK MASTER WHITE 1_c36_r224 (T3 bryan r224)",
-      "input": "1_c36_r224",
-      "t3_source": "bryan",
-      "t3_row": 224,
-      "t3_command": "any-button",
-      "startup": 0.367,
-      "active": 0.017,
-      "recovery": 0.667,
-      "damage": 5,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:224",
-      "input_slots": [
-        "1"
-      ],
-      "move_class": "strike",
-      "t3_condition": 36
-    },
-    "1_c36_r225": {
-      "name": "BAEK MASTER WHITE 1_c36_r225 (T3 bryan r225)",
-      "input": "1_c36_r225",
-      "t3_source": "bryan",
-      "t3_row": 225,
-      "t3_command": "any-button",
-      "startup": 0.3,
-      "active": 0.017,
-      "recovery": 0.733,
-      "damage": 8,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:225",
-      "input_slots": [
-        "1"
-      ],
-      "move_class": "strike",
-      "t3_condition": 36
-    },
-    "1_c36_r228": {
-      "name": "BAEK MASTER WHITE 1_c36_r228 (T3 bryan r228)",
-      "input": "1_c36_r228",
-      "t3_source": "bryan",
-      "t3_row": 228,
-      "t3_command": "any-button",
-      "startup": 0.233,
-      "active": 0.017,
-      "recovery": 0.667,
-      "damage": 4,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:228",
-      "input_slots": [
-        "1"
-      ],
-      "move_class": "strike",
-      "t3_condition": 36
-    },
-    "1_c36_r229": {
-      "name": "BAEK MASTER WHITE 1_c36_r229 (T3 bryan r229)",
-      "input": "1_c36_r229",
-      "t3_source": "bryan",
-      "t3_row": 229,
-      "t3_command": "any-button",
-      "startup": 0.183,
-      "active": 0.017,
-      "recovery": 0.733,
-      "damage": 6,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:229",
-      "input_slots": [
-        "1"
-      ],
-      "move_class": "strike",
-      "t3_condition": 36
-    },
-    "1_c2_r343": {
-      "name": "BAEK MASTER WHITE 1_c2_r343 (T3 bryan r343)",
-      "input": "1_c2_r343",
-      "t3_source": "bryan",
-      "t3_row": 343,
-      "t3_command": "any-button",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 2.333,
-      "damage": 18,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:343",
-      "input_slots": [
-        "1"
-      ],
-      "move_class": "strike",
-      "t3_condition": 2
-    },
-    "1_c2_r345": {
-      "name": "BAEK MASTER WHITE 1_c2_r345 (T3 bryan r345)",
-      "input": "1_c2_r345",
-      "t3_source": "bryan",
-      "t3_row": 345,
-      "t3_command": "any-button",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 2.567,
-      "damage": 18,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:345",
-      "input_slots": [
-        "1"
-      ],
-      "move_class": "strike",
-      "t3_condition": 2
-    },
-    "1_c4_r347": {
-      "name": "BAEK MASTER WHITE 1_c4_r347 (T3 bryan r347)",
-      "input": "1_c4_r347",
-      "t3_source": "bryan",
-      "t3_row": 347,
-      "t3_command": "any-button",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 2.75,
-      "damage": 24,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:347",
-      "input_slots": [
-        "1"
-      ],
-      "move_class": "strike",
-      "t3_condition": 4
-    },
-    "1_c5_r349": {
-      "name": "BAEK MASTER WHITE 1_c5_r349 (T3 bryan r349)",
-      "input": "1_c5_r349",
-      "t3_source": "bryan",
-      "t3_row": 349,
-      "t3_command": "any-button",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 1.45,
-      "damage": 24,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:349",
-      "input_slots": [
-        "1"
-      ],
-      "move_class": "strike",
-      "t3_condition": 5
-    },
-    "1_c3_r351": {
-      "name": "BAEK MASTER WHITE 1_c3_r351 (T3 bryan r351)",
-      "input": "1_c3_r351",
-      "t3_source": "bryan",
-      "t3_row": 351,
-      "t3_command": "any-button",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 1.5,
-      "damage": 35,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:351",
-      "input_slots": [
-        "1"
-      ],
-      "move_class": "strike",
-      "t3_condition": 3
     },
     "donor.baek.S": {
       "name": "Kick Is the Question [WH SIGNATURE]",
@@ -2563,121 +1463,6 @@
         "row": 75,
         "match": "true-map class-only (anim-fix 2026-10-23)"
       }
-    },
-    "d/f+1~donor.baek": {
-      "name": "BAEK d/f+1 (T3 bryan r148)",
-      "input": "d/f+1",
-      "t3_source": "bryan",
-      "t3_row": 148,
-      "t3_command": "3+LP",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 0.517,
-      "damage": 6,
-      "t3_damage": 11,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:148",
-      "input_slots": [
-        "d/f+1"
-      ],
-      "move_class": "strike",
-      "merge_source": "donor:baek:d/f+1",
-      "donor_fighter": "baek"
-    },
-    "u/b+1~donor.baek": {
-      "name": "BAEK u/b+1 (T3 bryan r43)",
-      "input": "u/b+1",
-      "t3_source": "bryan",
-      "t3_row": 43,
-      "t3_command": "4/7+LP",
-      "startup": 0.3,
-      "active": 0.017,
-      "recovery": 0.567,
-      "damage": 7,
-      "t3_damage": 12,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:43",
-      "input_slots": [
-        "u/b+1"
-      ],
-      "move_class": "strike",
-      "merge_source": "donor:baek:u/b+1",
-      "donor_fighter": "baek"
-    },
-    "u/b+4~donor.baek": {
-      "name": "BAEK u/b+4 (T3 bryan r87)",
-      "input": "u/b+4",
-      "t3_source": "bryan",
-      "t3_row": 87,
-      "t3_command": "4/7+RK",
-      "startup": 0.15,
-      "active": 0.017,
-      "recovery": 0.717,
-      "damage": 11,
-      "t3_damage": 18,
-      "limb": "legR",
-      "heavy": false,
-      "knock": 4.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:87",
-      "input_slots": [
-        "u/b+4"
-      ],
-      "move_class": "strike",
-      "merge_source": "donor:baek:u/b+4",
-      "donor_fighter": "baek"
-    },
-    "u/f+1~donor.baek": {
-      "name": "BAEK u/f+1 (T3 bryan r42)",
-      "input": "u/f+1",
-      "t3_source": "bryan",
-      "t3_row": 42,
-      "t3_command": "6/9+LP",
-      "startup": 0.3,
-      "active": 0.017,
-      "recovery": 0.567,
-      "damage": 7,
-      "t3_damage": 12,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:42",
-      "input_slots": [
-        "u/f+1"
-      ],
-      "move_class": "strike",
-      "merge_source": "donor:baek:u/f+1",
-      "donor_fighter": "baek"
-    },
-    "u/f+3~donor.baek": {
-      "name": "BAEK u/f+3 (T3 bryan r64)",
-      "input": "u/f+3",
-      "t3_source": "bryan",
-      "t3_row": 64,
-      "t3_command": "6/9+LK",
-      "startup": 0.15,
-      "active": 0.017,
-      "recovery": 0.717,
-      "damage": 15,
-      "t3_damage": 25,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 4.2,
-      "soulGain": 11,
-      "anim_ref": "t3:bryan:row:64",
-      "input_slots": [
-        "u/f+3"
-      ],
-      "move_class": "strike",
-      "merge_source": "donor:baek:u/f+3",
-      "donor_fighter": "baek"
     },
     "None~donor.baek.2": {
       "name": "Kick Is the Question [WH SIGNATURE]",
@@ -3151,7 +1936,17 @@
       "merge_source": "ttt2:baek",
       "throw_type": "front",
       "escape": "1",
-      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Front throw."
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Front throw. Playable anim/frames are the T3 Hwoarang proxy (Taekwondo) on the same input; no Baek frame/anim bank exists in holdings.",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.467,
+      "damage": 21,
+      "limb": "both",
+      "heavy": false,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:hwoarang:row:294",
+      "proxy_source": "t3:hwoarang:row:294"
     },
     "F:f+1+3": {
       "name": "Hammer Head",
@@ -3165,7 +1960,17 @@
       "merge_source": "ttt2:baek",
       "throw_type": "front",
       "escape": "1",
-      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Front throw."
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Front throw. Playable anim/frames are the T3 Hwoarang proxy (Taekwondo) on the same input; no Baek frame/anim bank exists in holdings.",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 21,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 13,
+      "anim_ref": "t7:hwoarang:hwoarang_311",
+      "proxy_source": "t7:hwoarang:hwoarang_311"
     },
     "F:2+4": {
       "name": "Blue Shark Claw",
@@ -3179,7 +1984,17 @@
       "merge_source": "ttt2:baek",
       "throw_type": "front",
       "escape": "2",
-      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Front throw."
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Front throw. Playable anim/frames are the T3 Hwoarang proxy (Taekwondo) on the same input; no Baek frame/anim bank exists in holdings.",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.467,
+      "damage": 21,
+      "limb": "both",
+      "heavy": false,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:hwoarang:row:295",
+      "proxy_source": "t3:hwoarang:row:295"
     },
     "F:f+2+4": {
       "name": "Blue Shark Claw",
@@ -3193,7 +2008,17 @@
       "merge_source": "ttt2:baek",
       "throw_type": "front",
       "escape": "2",
-      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Front throw."
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Front throw. Playable anim/frames are the T3 Hwoarang proxy (Taekwondo) on the same input; no Baek frame/anim bank exists in holdings.",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 21,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 13,
+      "anim_ref": "t7:hwoarang:hwoarang_313",
+      "proxy_source": "t7:hwoarang:hwoarang_313"
     },
     "F:d/b+1+3": {
       "name": "Swordfish Catch",
@@ -3207,7 +2032,17 @@
       "merge_source": "ttt2:baek",
       "throw_type": "front",
       "escape": "1+2",
-      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Front throw."
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Front throw. Playable anim/frames are the T3 Hwoarang proxy (Taekwondo) on the same input; no Baek frame/anim bank exists in holdings.",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 24,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 13,
+      "anim_ref": "t7:hwoarang:hwoarang_315",
+      "proxy_source": "t7:hwoarang:hwoarang_315"
     },
     "F:2+4~B": {
       "name": "COBRA BITE",
@@ -3235,7 +2070,17 @@
       "merge_source": "ttt2:baek",
       "throw_type": "front",
       "escape": "1+2",
-      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Front throw."
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Front throw. Playable anim/frames are the T3 Hwoarang proxy (Taekwondo) on the same input; no Baek frame/anim bank exists in holdings.",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.45,
+      "damage": 24,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 13,
+      "anim_ref": "t7:hwoarang:hwoarang_312",
+      "proxy_source": "t7:hwoarang:hwoarang_312"
     },
     "L:1+3": {
       "name": "Snake Revenge",
@@ -3249,7 +2094,17 @@
       "merge_source": "ttt2:baek",
       "throw_type": "left",
       "escape": "1",
-      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Left throw."
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Left throw. Playable anim/frames are the T3 Hwoarang proxy (Taekwondo) on the same input; no Baek frame/anim bank exists in holdings.",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.467,
+      "damage": 21,
+      "limb": "both",
+      "heavy": false,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:hwoarang:row:294",
+      "proxy_source": "t3:hwoarang:row:294"
     },
     "L:2+4": {
       "name": "Snake Revenge",
@@ -3263,7 +2118,17 @@
       "merge_source": "ttt2:baek",
       "throw_type": "left",
       "escape": "1",
-      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Left throw."
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Left throw. Playable anim/frames are the T3 Hwoarang proxy (Taekwondo) on the same input; no Baek frame/anim bank exists in holdings.",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.467,
+      "damage": 21,
+      "limb": "both",
+      "heavy": false,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:hwoarang:row:295",
+      "proxy_source": "t3:hwoarang:row:295"
     },
     "R:1+3": {
       "name": "Hunting Serpent",
@@ -3277,7 +2142,17 @@
       "merge_source": "ttt2:baek",
       "throw_type": "right",
       "escape": "2",
-      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Right throw."
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Right throw. Playable anim/frames are the T3 Hwoarang proxy (Taekwondo) on the same input; no Baek frame/anim bank exists in holdings.",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.467,
+      "damage": 21,
+      "limb": "both",
+      "heavy": false,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:hwoarang:row:294",
+      "proxy_source": "t3:hwoarang:row:294"
     },
     "R:2+4": {
       "name": "Hunting Serpent",
@@ -3291,7 +2166,17 @@
       "merge_source": "ttt2:baek",
       "throw_type": "right",
       "escape": "2",
-      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Right throw."
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Right throw. Playable anim/frames are the T3 Hwoarang proxy (Taekwondo) on the same input; no Baek frame/anim bank exists in holdings.",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.467,
+      "damage": 21,
+      "limb": "both",
+      "heavy": false,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:hwoarang:row:295",
+      "proxy_source": "t3:hwoarang:row:295"
     },
     "B:1+3": {
       "name": "Triple Pain",
@@ -3304,7 +2189,17 @@
       "ttt2_source": "baek",
       "merge_source": "ttt2:baek",
       "throw_type": "back",
-      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Back throw."
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Back throw. Playable anim/frames are the T3 Hwoarang proxy (Taekwondo) on the same input; no Baek frame/anim bank exists in holdings.",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.467,
+      "damage": 21,
+      "limb": "both",
+      "heavy": false,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:hwoarang:row:294",
+      "proxy_source": "t3:hwoarang:row:294"
     },
     "B:2+4": {
       "name": "Triple Pain",
@@ -3317,7 +2212,17 @@
       "ttt2_source": "baek",
       "merge_source": "ttt2:baek",
       "throw_type": "back",
-      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Back throw."
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Back throw. Playable anim/frames are the T3 Hwoarang proxy (Taekwondo) on the same input; no Baek frame/anim bank exists in holdings.",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.467,
+      "damage": 21,
+      "limb": "both",
+      "heavy": false,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:hwoarang:row:295",
+      "proxy_source": "t3:hwoarang:row:295"
     },
     "A:d/f+3+4": {
       "name": "Hawk's Talons",
@@ -3330,7 +2235,17 @@
       "ttt2_source": "baek",
       "merge_source": "ttt2:baek",
       "throw_type": "air",
-      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Air throw."
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Air throw. Playable anim/frames are the T3 Hwoarang proxy (Taekwondo) on the same input; no Baek frame/anim bank exists in holdings.",
+      "startup": 0.267,
+      "active": 0.017,
+      "recovery": 0.0,
+      "damage": 7,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:hwoarang:row:112",
+      "proxy_source": "t3:hwoarang:row:112"
     },
     "1,1": {
       "name": "Double Punches",
@@ -3342,7 +2257,17 @@
       "set": "FIGHT",
       "ttt2_source": "baek",
       "merge_source": "ttt2:baek",
-      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Playable anim/frames are the T3 Hwoarang proxy (Taekwondo) on the same input; no Baek frame/anim bank exists in holdings.",
+      "startup": 0.317,
+      "active": 0.017,
+      "recovery": 0.6,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:hwoarang:row:204",
+      "proxy_source": "t3:hwoarang:row:204"
     },
     "3,3,3": {
       "name": "Butterfly Kicks",
@@ -3354,7 +2279,17 @@
       "set": "FIGHT",
       "ttt2_source": "baek",
       "merge_source": "ttt2:baek",
-      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Playable anim/frames are the T3 Hwoarang proxy (Taekwondo) on the same input; no Baek frame/anim bank exists in holdings.",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.7,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:hwoarang:row:229",
+      "proxy_source": "t3:hwoarang:row:229"
     },
     "3,3,3~f_b": {
       "name": "BUTTERFLY CANCEL, (FLA)",
@@ -3462,7 +2397,17 @@
       "set": "FIGHT",
       "ttt2_source": "baek",
       "merge_source": "ttt2:baek",
-      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Playable anim/frames are the T3 Hwoarang proxy (Taekwondo) on the same input; no Baek frame/anim bank exists in holdings.",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 10,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t7:hwoarang:hwoarang_104",
+      "proxy_source": "t7:hwoarang:hwoarang_104"
     },
     "1,2,3~(f_b)": {
       "name": "Highkick Cancel, (FLA)",
@@ -3486,7 +2431,17 @@
       "set": "FIGHT",
       "ttt2_source": "baek",
       "merge_source": "ttt2:baek",
-      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Bounds"
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Bounds Playable anim/frames are the T3 Hwoarang proxy (Taekwondo) on the same input; no Baek frame/anim bank exists in holdings.",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 3,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:hwoarang:row:89",
+      "proxy_source": "t3:hwoarang:row:89"
     },
     "d+1>4": {
       "name": "Raise Hammer, Trick Kick",
@@ -3510,7 +2465,17 @@
       "set": "FIGHT",
       "ttt2_source": "baek",
       "merge_source": "ttt2:baek",
-      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Playable anim/frames are the T3 Hwoarang proxy (Taekwondo) on the same input; no Baek frame/anim bank exists in holdings.",
+      "startup": 0.217,
+      "active": 0.017,
+      "recovery": 0.333,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t7:hwoarang:hwoarang_111",
+      "proxy_source": "t7:hwoarang:hwoarang_111"
     },
     "WS+1,3": {
       "name": "Mid Slug, Slapkick, (FLA)",
@@ -3558,7 +2523,17 @@
       "set": "FIGHT",
       "ttt2_source": "baek",
       "merge_source": "ttt2:baek",
-      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Playable anim/frames are the T3 Hwoarang proxy (Taekwondo) on the same input; no Baek frame/anim bank exists in holdings.",
+      "startup": 0.333,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 4,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:hwoarang:row:284",
+      "proxy_source": "t3:hwoarang:row:284"
     },
     "2,3": {
       "name": "Jab, (FLA)",
@@ -3570,7 +2545,17 @@
       "set": "FIGHT",
       "ttt2_source": "baek",
       "merge_source": "ttt2:baek",
-      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Playable anim/frames are the T3 Hwoarang proxy (Taekwondo) on the same input; no Baek frame/anim bank exists in holdings.",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.633,
+      "damage": 9,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:hwoarang:row:241",
+      "proxy_source": "t3:hwoarang:row:241"
     },
     "b,b+2": {
       "name": "Backhand Spin",
@@ -3630,7 +2615,17 @@
       "set": "FIGHT",
       "ttt2_source": "baek",
       "merge_source": "ttt2:baek",
-      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Playable anim/frames are the T3 Hwoarang proxy (Taekwondo) on the same input; no Baek frame/anim bank exists in holdings.",
+      "startup": 0.183,
+      "active": 0.017,
+      "recovery": 0.383,
+      "damage": 4,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "anim_ref": "t8:hwoarang:hwoarang-d+2",
+      "proxy_source": "t8:hwoarang:hwoarang-d+2"
     },
     "d/b+2": {
       "name": "Stomach Blaster",
@@ -3642,7 +2637,17 @@
       "set": "FIGHT",
       "ttt2_source": "baek",
       "merge_source": "ttt2:baek",
-      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Juggles"
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Juggles Playable anim/frames are the T3 Hwoarang proxy (Taekwondo) on the same input; no Baek frame/anim bank exists in holdings.",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 6,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:hwoarang:row:115",
+      "proxy_source": "t3:hwoarang:row:115"
     },
     "u/f+2": {
       "name": "Bone Stagger",
@@ -3654,7 +2659,17 @@
       "set": "FIGHT",
       "ttt2_source": "baek",
       "merge_source": "ttt2:baek",
-      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Bounds"
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Bounds Playable anim/frames are the T3 Hwoarang proxy (Taekwondo) on the same input; no Baek frame/anim bank exists in holdings.",
+      "startup": 0.433,
+      "active": 0.017,
+      "recovery": 0.433,
+      "damage": 13,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t7:hwoarang:hwoarang_51",
+      "proxy_source": "t7:hwoarang:hwoarang_51"
     },
     "WS+2,1": {
       "name": "Rising Fists",
@@ -5013,39 +4028,16 @@
   "slots": {
     "1": "1",
     "1+2": "1+2",
-    "1+3": "1+3",
     "1+4": "1+4",
     "2": "2",
-    "2+4": "2+4",
     "2,1": "2,1",
-    "2,1,2": "2,1,2",
-    "2,4": "2,4",
     "3": "3",
-    "3+4": "3+4_r107",
     "4": "4",
-    "b": "b",
-    "b+1+2": "b+1+2",
-    "b+1+4": "b+1+4",
     "b+2": "b+2",
     "b+4": "b+4",
-    "d,d/f,d,d/f+1+2": "d,d/f,d,d/f+1+2",
-    "d/f+1": "d/f+1",
-    "d/f+1+2": "d/f+1+2",
-    "d/f+2": "d/f+2",
-    "f": "f",
-    "f+1+4": "f+1+4",
-    "f+2": "f+2",
     "f+3": "f+3",
-    "n,d/b,n,f+1+2": "n,d/b,n,f+1+2",
-    "u/b+1": "u/b+1",
-    "u/b+1+2": "u/b+1+2",
-    "u/b+3": "u/b+3",
-    "u/b+3+4": "u/b+3+4",
     "u/b+4": "u/b+4",
-    "u/f+1": "u/f+1",
-    "u/f+1+2": "u/f+1+2",
     "u/f+3": "u/f+3",
-    "u/f+3+4": "u/f+3+4",
     "u/f+4": "u/f+4"
   },
   "merge_sources": {
@@ -5072,139 +4064,11 @@
     "owner_excluded_inputs": [],
     "note": "Existing moves untouched. New moves carry merge_source; slots = default input map (editor can reassign any move). Damage scaled to WH 100 HP, raw in damage_raw."
   },
-  "hit_words": {
-    "1": 535,
-    "2": 1042,
-    "2,1": 1042,
-    "2,1,2": 1042,
-    "3": 535,
-    "4": 535,
-    "1+3": 535,
-    "2+4": 1042,
-    "d/f+2": 535,
-    "u/f+4": 535,
-    "d,d/f,d,d/f+1+2": 1042,
-    "n,d/b,n,f+1+2": 1042,
-    "P+K": 2048,
-    "1+2__main": 535,
-    "1+4": 2048,
-    "b+2": 535,
-    "b+4": 1042,
-    "f+2": 1042,
-    "f+2__main": 1042,
-    "f+3": 535,
-    "f+3__main": 535,
-    "b+1+2": 535,
-    "b+1+4": 1543,
-    "b+1+4__main": 1543,
-    "d/f+1": 535,
-    "f+1+4": 1543,
-    "f+1+4__main": 1543,
-    "u/b+1": 535,
-    "u/b+3": 535,
-    "u/b+4": 535,
-    "u/f+1": 535,
-    "u/f+3": 535,
-    "d/f+1+2": 799,
-    "u/b+1+2": 535,
-    "u/b+3+4": 535,
-    "u/f+1+2": 535,
-    "u/f+3+4": 535,
-    "2,4": 535,
-    "f": 535,
-    "b": 535,
-    "1_r45": 535,
-    "1_r46": 535,
-    "1_r47": 535,
-    "1_r48": 535,
-    "1_r49": 535,
-    "1_r50": 535,
-    "1_r51": 535,
-    "1_r52": 535,
-    "1_c36_r53": 535,
-    "f_c36_r54": 535,
-    "b_c36_r55": 535,
-    "2_r57": 535,
-    "2_r58": 535,
-    "3+4_r107": 535,
-    "f_r61": 535,
-    "b_r62": 535,
-    "3_c36": 535,
-    "f_c36_r64": 535,
-    "b_c36_r65": 535,
-    "3_r67": 535,
-    "3_r68": 535,
-    "3_r69": 535,
-    "3_r70": 535,
-    "3_r71": 535,
-    "3_r72": 271,
-    "3_r73": 271,
-    "3_r74": 271,
-    "b_r75": 535,
-    "b_c36": 535,
-    "4_r77": 535,
-    "4_r78": 535,
-    "4_r79": 535,
-    "4_r80": 535,
-    "4_r81": 535,
-    "4_r82": 535,
-    "4_r83": 535,
-    "4_r84": 535,
-    "4_c36_r85": 535,
-    "f_c36_r86": 535,
-    "b_c36_r87": 535,
-    "3+4_r8": 535,
-    "b+4_r13": 1042,
-    "d/f+1+2_r17": 799,
-    "3_r127": 271,
-    "2_r149": 535,
-    "2_r151": 1042,
-    "2_r13_r156": 1042,
-    "1_c2_r160": 2048,
-    "2_r166": 535,
-    "1_r168": 535,
-    "2_r177": 535,
-    "4_r180": 271,
-    "4_r13_r182": 535,
-    "f_r183": 535,
-    "4_r184": 535,
-    "3_r185": 535,
-    "f_r186": 535,
-    "4_r190": 535,
-    "3_r192": 1042,
-    "4_r194": 1042,
-    "2_r195": 1042,
-    "2_r208": 1042,
-    "1_c36_r224": 271,
-    "1_c36_r225": 535,
-    "1_c36_r228": 271,
-    "1_c36_r229": 535,
-    "1_c2_r343": 2048,
-    "1_c2_r345": 2048,
-    "1_c4_r347": 2048,
-    "1_c5_r349": 2048,
-    "1_c3_r351": 2048,
-    "donor.baek.P+K": 2048,
-    "1+4~donor.baek": 2048,
-    "d/f+1~donor.baek": 535,
-    "u/b+1~donor.baek": 535,
-    "u/b+4~donor.baek": 535,
-    "u/f+1~donor.baek": 535,
-    "u/f+3~donor.baek": 535,
-    "None~donor.baek.3": 2048,
-    "1+4~donor.baek.2": 2048,
-    "None~donor.baek.5": 2048,
-    "1+4~donor.baek.3": 2048,
-    "None~donor.baek.7": 2048,
-    "1+4~donor.baek.4": 2048,
-    "None~donor.baek.9": 2048,
-    "1+4~donor.baek.5": 2048
-  },
   "stance_after": {},
   "anim_set_lock": {
     "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
-    "FIGHT": "every move in this file: moveset moves and combat stances \u2014 the combat animation bank",
-    "SHOW": "win poses, intro poses, taunts, cutscene animations \u2014 intro/win slots and cutscenes ONLY; tracked in docs/anim/TTT2-BAEK-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
+    "FIGHT": "every move in this file: moveset moves and combat stances — the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations — intro/win slots and cutscenes ONLY; tracked in docs/anim/TTT2-BAEK-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
     "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set"
   },
   "canon_moves": [
@@ -5265,5 +4129,1099 @@
     "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
     "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
     "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
+  },
+  "baek_kit": {
+    "source": "teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json",
+    "source_game": "Tekken 6 (PSP)",
+    "records_total": 276,
+    "records_with_decoded_command": 262,
+    "unique_commands": 81,
+    "commands": [
+      {
+        "command": "1,1",
+        "names": [
+          "Double Jab"
+        ],
+        "records": 1,
+        "first_name_offset": 736,
+        "primary_name": "Double Jab",
+        "playable_entry": true
+      },
+      {
+        "command": "1,2",
+        "names": [
+          "One Two Combo "
+        ],
+        "records": 1,
+        "first_name_offset": 875,
+        "primary_name": "One Two Combo",
+        "playable_entry": true
+      },
+      {
+        "command": "1,2,3,~F",
+        "names": [
+          "One Two Flamingo Step",
+          " (oder "
+        ],
+        "records": 2,
+        "first_name_offset": 1048,
+        "primary_name": "One Two Flamingo Step",
+        "playable_entry": false
+      },
+      {
+        "command": "1,2,3,3,3,4",
+        "names": [
+          "One Two Butterfly Kicks"
+        ],
+        "records": 1,
+        "first_name_offset": 1381,
+        "primary_name": "One Two Butterfly Kicks",
+        "playable_entry": false
+      },
+      {
+        "command": "1,2,3,3,3,d+4",
+        "names": [
+          "One Two Butterfly Needle"
+        ],
+        "records": 1,
+        "first_name_offset": 1689,
+        "primary_name": "One Two Butterfly Needle",
+        "playable_entry": false
+      },
+      {
+        "command": "1,2,3,3,4,4,3",
+        "names": [
+          "One Two Black Widow"
+        ],
+        "records": 1,
+        "first_name_offset": 2022,
+        "primary_name": "One Two Black Widow",
+        "playable_entry": false
+      },
+      {
+        "command": "1,2,3,3,4,4,4",
+        "names": [
+          "One Two Maelstrom"
+        ],
+        "records": 1,
+        "first_name_offset": 2350,
+        "primary_name": "One Two Maelstrom",
+        "playable_entry": false
+      },
+      {
+        "command": "1,2,3,4,3",
+        "names": [
+          "One Two Butterfly Blade"
+        ],
+        "records": 1,
+        "first_name_offset": 2676,
+        "primary_name": "One Two Butterfly Blade",
+        "playable_entry": false
+      },
+      {
+        "command": "2,2",
+        "names": [
+          "Right Punch Back Fist"
+        ],
+        "records": 1,
+        "first_name_offset": 2954,
+        "primary_name": "Right Punch Back Fist",
+        "playable_entry": true
+      },
+      {
+        "command": "2,3",
+        "names": [
+          "Jab to Flamingo"
+        ],
+        "records": 1,
+        "first_name_offset": 3143,
+        "primary_name": "Jab to Flamingo",
+        "playable_entry": true
+      },
+      {
+        "command": "3,3,3,4",
+        "names": [
+          "Butterfly Kicks",
+          "Trick Butterfly Kicks"
+        ],
+        "records": 2,
+        "first_name_offset": 3305,
+        "primary_name": "Butterfly Kicks",
+        "playable_entry": false
+      },
+      {
+        "command": "3,3,3,d+4",
+        "names": [
+          "Butterfly Kicks to Low Kick",
+          "Trick Butterfly Needle"
+        ],
+        "records": 2,
+        "first_name_offset": 3509,
+        "primary_name": "Butterfly Kicks to Low Kick",
+        "playable_entry": false
+      },
+      {
+        "command": "3,3,4,4,3",
+        "names": [
+          "Black Widow",
+          "Trick Black Widow"
+        ],
+        "records": 2,
+        "first_name_offset": 3749,
+        "primary_name": "Black Widow",
+        "playable_entry": false
+      },
+      {
+        "command": "3,3,4,4,4",
+        "names": [
+          "Maelstrom",
+          "Trick Maelstrom"
+        ],
+        "records": 2,
+        "first_name_offset": 3973,
+        "primary_name": "Maelstrom",
+        "playable_entry": false
+      },
+      {
+        "command": "3,4,3",
+        "names": [
+          "Launching Rocket"
+        ],
+        "records": 1,
+        "first_name_offset": 4195,
+        "primary_name": "Launching Rocket",
+        "playable_entry": false
+      },
+      {
+        "command": "4,4",
+        "names": [
+          "Falling Axe"
+        ],
+        "records": 1,
+        "first_name_offset": 4370,
+        "primary_name": "Falling Axe",
+        "playable_entry": true
+      },
+      {
+        "command": "1+2,4",
+        "names": [
+          "Spinning Axe Combo"
+        ],
+        "records": 1,
+        "first_name_offset": 4516,
+        "primary_name": "Spinning Axe Combo",
+        "playable_entry": false
+      },
+      {
+        "command": "3+4",
+        "names": [
+          "Lightning Halberd",
+          "Airborne Trident",
+          "During sidestep ",
+          "Pendant pas de c",
+          "Durante il movimento laterale ",
+          "hrend Seitschritt ",
+          "Desplazamiento lateral "
+        ],
+        "records": 7,
+        "first_name_offset": 4681,
+        "primary_name": "Lightning Halberd",
+        "playable_entry": true
+      },
+      {
+        "command": "f+2,1,2",
+        "names": [
+          "Crushing Flail",
+          "Sample Combo 1"
+        ],
+        "records": 2,
+        "first_name_offset": 4824,
+        "primary_name": "Crushing Flail",
+        "playable_entry": false
+      },
+      {
+        "command": "f+2,1,4",
+        "names": [
+          "Crushing Low Kick"
+        ],
+        "records": 1,
+        "first_name_offset": 5045,
+        "primary_name": "Crushing Low Kick",
+        "playable_entry": false
+      },
+      {
+        "command": "f+3,3,2",
+        "names": [
+          "Trident Rush"
+        ],
+        "records": 1,
+        "first_name_offset": 5272,
+        "primary_name": "Trident Rush",
+        "playable_entry": false
+      },
+      {
+        "command": "f+3,3,b+2",
+        "names": [
+          "Feint Trident Rush"
+        ],
+        "records": 1,
+        "first_name_offset": 5497,
+        "primary_name": "Feint Trident Rush",
+        "playable_entry": false
+      },
+      {
+        "command": "f+4,3",
+        "names": [
+          "Heel Drop to Middle Kick"
+        ],
+        "records": 1,
+        "first_name_offset": 5740,
+        "primary_name": "Heel Drop to Middle Kick",
+        "playable_entry": true
+      },
+      {
+        "command": "f+4,4",
+        "names": [
+          "Heel Drop to Low Kick"
+        ],
+        "records": 1,
+        "first_name_offset": 5917,
+        "primary_name": "Heel Drop to Low Kick",
+        "playable_entry": true
+      },
+      {
+        "command": "f+3+4",
+        "names": [
+          "Spinning Hook Kick"
+        ],
+        "records": 1,
+        "first_name_offset": 6097,
+        "primary_name": "Spinning Hook Kick",
+        "playable_entry": false
+      },
+      {
+        "command": "d/f+1,3",
+        "names": [
+          "Left Uppercut & High Kick to Flamingo",
+          "Sample Combo 3"
+        ],
+        "records": 2,
+        "first_name_offset": 6286,
+        "primary_name": "Sample Combo 3",
+        "playable_entry": true
+      },
+      {
+        "command": "d/f+3,4",
+        "names": [
+          "Double Claymore"
+        ],
+        "records": 1,
+        "first_name_offset": 6518,
+        "primary_name": "Double Claymore",
+        "playable_entry": true
+      },
+      {
+        "command": "d/f+3+4",
+        "names": [
+          "Heel Hunter",
+          "Heel Hunter",
+          "Approach mid-air enemy ",
+          "Approcher (Adversaire en l'air) ",
+          "Vicino all'avversario a mezz'aria ",
+          "hern ",
+          "Abordar enemigo en el aire "
+        ],
+        "records": 7,
+        "first_name_offset": 6695,
+        "primary_name": "Heel Hunter",
+        "playable_entry": true
+      },
+      {
+        "command": "d+1",
+        "names": [
+          "Race Hammer"
+        ],
+        "records": 1,
+        "first_name_offset": 6841,
+        "primary_name": "Race Hammer",
+        "playable_entry": true
+      },
+      {
+        "command": "d+1,4",
+        "names": [
+          "Hammer Chase"
+        ],
+        "records": 1,
+        "first_name_offset": 6993,
+        "primary_name": "Hammer Chase",
+        "playable_entry": false
+      },
+      {
+        "command": "d+2",
+        "names": [
+          "Siege Mortar "
+        ],
+        "records": 1,
+        "first_name_offset": 7182,
+        "primary_name": "Siege Mortar",
+        "playable_entry": true
+      },
+      {
+        "command": "d+3,3,3",
+        "names": [
+          "Snake Rocket",
+          "Sample Combo 2"
+        ],
+        "records": 2,
+        "first_name_offset": 7342,
+        "primary_name": "Snake Rocket",
+        "playable_entry": false
+      },
+      {
+        "command": "d+3,3,d+3",
+        "names": [
+          "Snake Kick"
+        ],
+        "records": 1,
+        "first_name_offset": 7537,
+        "primary_name": "Snake Kick",
+        "playable_entry": false
+      },
+      {
+        "command": "d+4,3,3,3",
+        "names": [
+          "Baek's Rush"
+        ],
+        "records": 1,
+        "first_name_offset": 7748,
+        "primary_name": "Baek's Rush",
+        "playable_entry": false
+      },
+      {
+        "command": "d+4,3,3,d+3",
+        "names": [
+          "Baek's Rush Low"
+        ],
+        "records": 1,
+        "first_name_offset": 7969,
+        "primary_name": "Baek's Rush Low",
+        "playable_entry": false
+      },
+      {
+        "command": "d+4,4,4",
+        "names": [
+          "Axe Kick Combo"
+        ],
+        "records": 1,
+        "first_name_offset": 8245,
+        "primary_name": "Axe Kick Combo",
+        "playable_entry": false
+      },
+      {
+        "command": "d/b+2",
+        "names": [
+          "Pike Uppercut"
+        ],
+        "records": 1,
+        "first_name_offset": 8463,
+        "primary_name": "Pike Uppercut",
+        "playable_entry": true
+      },
+      {
+        "command": "d/b+3,3",
+        "names": [
+          "Sand Storm"
+        ],
+        "records": 1,
+        "first_name_offset": 8608,
+        "primary_name": "Sand Storm",
+        "playable_entry": false
+      },
+      {
+        "command": "d/b+4",
+        "names": [
+          "Dark Halberd"
+        ],
+        "records": 1,
+        "first_name_offset": 8777,
+        "primary_name": "Dark Halberd",
+        "playable_entry": true
+      },
+      {
+        "command": "d/b+3+4",
+        "names": [
+          "Dynamite Heel",
+          " to cancel)",
+          " annuler)",
+          " per annullare)",
+          " Abbrechen)",
+          " para cancelar)"
+        ],
+        "records": 6,
+        "first_name_offset": 8939,
+        "primary_name": "Dynamite Heel",
+        "playable_entry": true
+      },
+      {
+        "command": "b+1",
+        "names": [
+          "Stealth Needle"
+        ],
+        "records": 1,
+        "first_name_offset": 9272,
+        "primary_name": "Stealth Needle",
+        "playable_entry": true
+      },
+      {
+        "command": "b+2",
+        "names": [
+          "Bolt Cut"
+        ],
+        "records": 1,
+        "first_name_offset": 9418,
+        "primary_name": "Bolt Cut",
+        "playable_entry": true
+      },
+      {
+        "command": "b+3",
+        "names": [
+          "Flamingo",
+          "Head Crusher",
+          "During Flamingo ",
+          "Pendant Flamingo ",
+          "Durante Flamingo ",
+          "hrend Flamingo ",
+          "Durante Flamingo ",
+          " Flamingo ",
+          "Flamingo "
+        ],
+        "records": 9,
+        "first_name_offset": 9549,
+        "primary_name": "Flamingo",
+        "playable_entry": true
+      },
+      {
+        "command": "3,3,4",
+        "names": [
+          "Flamingo to High Low Kick",
+          "During Flamingo ",
+          "Pendant Flamingo ",
+          "Durante Flamingo ",
+          "hrend Flamingo ",
+          "Durante Flamingo ",
+          " Flamingo ",
+          "Flamingo ",
+          "Double High to Low Kick",
+          "While rising ",
+          "En se relevant ",
+          "Alzandosi ",
+          "Beim Aufstehen ",
+          "Al levantarse "
+        ],
+        "records": 14,
+        "first_name_offset": 9701,
+        "primary_name": "Flamingo to High Low Kick",
+        "playable_entry": true
+      },
+      {
+        "command": "3,4,4,3",
+        "names": [
+          "Flamingo Eliminator",
+          "During Flamingo ",
+          "Pendant Flamingo ",
+          "Durante Flamingo ",
+          "hrend Flamingo ",
+          "Durante Flamingo ",
+          " Flamingo ",
+          "Flamingo ",
+          "Eliminator",
+          "While rising ",
+          "En se relevant ",
+          "Alzandosi ",
+          "Beim Aufstehen ",
+          "Al levantarse "
+        ],
+        "records": 14,
+        "first_name_offset": 10069,
+        "primary_name": "Flamingo Eliminator",
+        "playable_entry": false
+      },
+      {
+        "command": "3,4,4,4",
+        "names": [
+          "Flamingo Maelstrom",
+          "During Flamingo ",
+          "Pendant Flamingo ",
+          "Durante Flamingo ",
+          "hrend Flamingo ",
+          "Durante Flamingo ",
+          " Flamingo ",
+          "Flamingo ",
+          "Knee Javelin",
+          "While rising ",
+          "En se relevant ",
+          "Alzandosi ",
+          "Beim Aufstehen ",
+          "Al levantarse "
+        ],
+        "records": 14,
+        "first_name_offset": 10458,
+        "primary_name": "Flamingo Maelstrom",
+        "playable_entry": false
+      },
+      {
+        "command": "f+3",
+        "names": [
+          "Flamingo Rocket",
+          "During Flamingo ",
+          "Pendant Flamingo ",
+          "Durante Flamingo ",
+          "hrend Flamingo ",
+          "Durante Flamingo ",
+          " Flamingo ",
+          "Flamingo "
+        ],
+        "records": 8,
+        "first_name_offset": 10831,
+        "primary_name": "Flamingo Rocket",
+        "playable_entry": true
+      },
+      {
+        "command": "f+4",
+        "names": [
+          "Crimson Lance",
+          "During Flamingo ",
+          "Pendant Flamingo ",
+          "Durante Flamingo ",
+          "hrend Flamingo ",
+          "Durante Flamingo ",
+          " Flamingo ",
+          "Flamingo "
+        ],
+        "records": 8,
+        "first_name_offset": 11135,
+        "primary_name": "Crimson Lance",
+        "playable_entry": true
+      },
+      {
+        "command": "u/f+3",
+        "names": [
+          "Flamingo Jaw Breaker",
+          "During Flamingo ",
+          "Pendant Flamingo ",
+          "Durante Flamingo ",
+          "hrend Flamingo ",
+          "Durante Flamingo ",
+          " Flamingo ",
+          "Flamingo "
+        ],
+        "records": 8,
+        "first_name_offset": 11741,
+        "primary_name": "Flamingo Jaw Breaker",
+        "playable_entry": true
+      },
+      {
+        "command": "b+4",
+        "names": [
+          "Heel Lance"
+        ],
+        "records": 1,
+        "first_name_offset": 12056,
+        "primary_name": "Heel Lance",
+        "playable_entry": true
+      },
+      {
+        "command": "u/b+4",
+        "names": [
+          "Family Jewels"
+        ],
+        "records": 1,
+        "first_name_offset": 12189,
+        "primary_name": "Family Jewels",
+        "playable_entry": true
+      },
+      {
+        "command": "u+4,3",
+        "names": [
+          "Destruction"
+        ],
+        "records": 1,
+        "first_name_offset": 12334,
+        "primary_name": "Destruction",
+        "playable_entry": false
+      },
+      {
+        "command": "u/f+2",
+        "names": [
+          "Bone Stinger"
+        ],
+        "records": 1,
+        "first_name_offset": 12513,
+        "primary_name": "Bone Stinger",
+        "playable_entry": true
+      },
+      {
+        "command": "u/f+3,4,3",
+        "names": [
+          "Hunting Hawk"
+        ],
+        "records": 1,
+        "first_name_offset": 12669,
+        "primary_name": "Hunting Hawk",
+        "playable_entry": true
+      },
+      {
+        "command": "u/f+4",
+        "names": [
+          "Leaping Snap Kick"
+        ],
+        "records": 1,
+        "first_name_offset": 12870,
+        "primary_name": "Leaping Snap Kick",
+        "playable_entry": true
+      },
+      {
+        "command": "3,4",
+        "names": [
+          "Hopping Double Kick"
+        ],
+        "records": 1,
+        "first_name_offset": 14219,
+        "primary_name": "Hopping Double Kick",
+        "playable_entry": true
+      },
+      {
+        "command": "3,d+4,3",
+        "names": [
+          "Rocket Lifter"
+        ],
+        "records": 1,
+        "first_name_offset": 14433,
+        "primary_name": "Rocket Lifter",
+        "playable_entry": false
+      },
+      {
+        "command": "f,F+3",
+        "names": [
+          "Left Heel Drop"
+        ],
+        "records": 1,
+        "first_name_offset": 14677,
+        "primary_name": "Left Heel Drop",
+        "playable_entry": true
+      },
+      {
+        "command": "f,F+4",
+        "names": [
+          "Hammer Heel"
+        ],
+        "records": 1,
+        "first_name_offset": 14853,
+        "primary_name": "Hammer Heel",
+        "playable_entry": true
+      },
+      {
+        "command": "b,B+2",
+        "names": [
+          "Spinning Backfist"
+        ],
+        "records": 1,
+        "first_name_offset": 15020,
+        "primary_name": "Spinning Backfist",
+        "playable_entry": false
+      },
+      {
+        "command": "b,B+3+4",
+        "names": [
+          "Last Resort"
+        ],
+        "records": 1,
+        "first_name_offset": 15193,
+        "primary_name": "Last Resort",
+        "playable_entry": false
+      },
+      {
+        "command": "f,f",
+        "names": [
+          "Cyclone Launcher"
+        ],
+        "records": 1,
+        "first_name_offset": 15354,
+        "primary_name": "Cyclone Launcher",
+        "playable_entry": false
+      },
+      {
+        "command": "d,d/f+3",
+        "names": [
+          "Rocket Shooter",
+          "Sample Combo 4"
+        ],
+        "records": 2,
+        "first_name_offset": 15547,
+        "primary_name": "Rocket Shooter",
+        "playable_entry": false
+      },
+      {
+        "command": "f,f,f+3",
+        "names": [
+          "Killing Blade"
+        ],
+        "records": 1,
+        "first_name_offset": 15771,
+        "primary_name": "Killing Blade",
+        "playable_entry": true
+      },
+      {
+        "command": "2,1",
+        "names": [
+          "Chonsan",
+          "While rising ",
+          "En se relevant ",
+          "Alzandosi ",
+          "Beim Aufstehen ",
+          "Al levantarse "
+        ],
+        "records": 6,
+        "first_name_offset": 15991,
+        "primary_name": "Chonsan",
+        "playable_entry": true
+      },
+      {
+        "command": "4,4,3",
+        "names": [
+          "Albatross",
+          "While rising ",
+          "En se relevant ",
+          "Alzandosi ",
+          "Beim Aufstehen ",
+          "Al levantarse "
+        ],
+        "records": 6,
+        "first_name_offset": 17192,
+        "primary_name": "Albatross",
+        "playable_entry": true
+      },
+      {
+        "command": "4,4,4",
+        "names": [
+          "Javelin",
+          "While rising ",
+          "En se relevant ",
+          "Alzandosi ",
+          "Beim Aufstehen ",
+          "Al levantarse "
+        ],
+        "records": 6,
+        "first_name_offset": 17459,
+        "primary_name": "Javelin",
+        "playable_entry": true
+      },
+      {
+        "command": "3",
+        "names": [
+          "Chipping Sweep",
+          "During sidestep ",
+          "Pendant pas de c",
+          "Durante il movimento laterale ",
+          "hrend Seitschritt ",
+          "Desplazamiento lateral "
+        ],
+        "records": 6,
+        "first_name_offset": 17733,
+        "primary_name": "Chipping Sweep",
+        "playable_entry": true
+      },
+      {
+        "command": "4",
+        "names": [
+          "Reverse Middle Kick",
+          "Back towards enemy ",
+          " l'adversaire ",
+          "Spalle all'avversario ",
+          "cken zum Gegner ",
+          "De espaldas al adversario "
+        ],
+        "records": 6,
+        "first_name_offset": 18367,
+        "primary_name": "Reverse Middle Kick",
+        "playable_entry": true
+      },
+      {
+        "command": "4,3,4,3,3,3,3,3,4,3",
+        "names": [
+          "10 Hit Combo 1"
+        ],
+        "records": 1,
+        "first_name_offset": 18718,
+        "primary_name": "10 Hit Combo 1",
+        "playable_entry": false
+      },
+      {
+        "command": "4,3,3,4,3,3,3,4,3,3",
+        "names": [
+          "10 Hit Combo 2"
+        ],
+        "records": 1,
+        "first_name_offset": 19063,
+        "primary_name": "10 Hit Combo 2",
+        "playable_entry": false
+      },
+      {
+        "command": "1+3",
+        "names": [
+          "Hammerhead Throw",
+          "Approach enemy ",
+          "Approcher adversaire ",
+          "Vicino all'avversario ",
+          "hern ",
+          "Acercarse al adversario ",
+          "Snake Revenge",
+          "Approach from left side ",
+          "Approcher par la gauche ",
+          "Vicino da sinistra ",
+          "hern ",
+          "Acercarse desde la izqda. ",
+          "Hunting Serpent",
+          "Approach from right side ",
+          "Approcher par la droite ",
+          "Vicino da destra ",
+          "hern ",
+          "Acercarse desde la dcha. ",
+          "Compound Fracture",
+          "Approach from behind ",
+          "Approcher par derri",
+          "Vicino da dietro ",
+          "hern ",
+          "Acercarse desde atr"
+        ],
+        "records": 24,
+        "first_name_offset": 19415,
+        "primary_name": "Hammerhead Throw",
+        "playable_entry": true
+      },
+      {
+        "command": "f+1+3",
+        "names": [
+          "Hammerhead Throw",
+          "Approach enemy ",
+          "Approcher adversaire ",
+          "Vicino all'avversario ",
+          "hern ",
+          "Acercarse al adversario "
+        ],
+        "records": 6,
+        "first_name_offset": 19748,
+        "primary_name": "Hammerhead Throw",
+        "playable_entry": true
+      },
+      {
+        "command": "2+4",
+        "names": [
+          "Blue Shark Claw",
+          "Approach enemy ",
+          "Approcher adversaire ",
+          "Vicino all'avversario ",
+          "hern ",
+          "Acercarse al adversario ",
+          " (oder ",
+          " (oder ",
+          " (oder "
+        ],
+        "records": 9,
+        "first_name_offset": 20105,
+        "primary_name": "Blue Shark Claw",
+        "playable_entry": true
+      },
+      {
+        "command": "f+2+4",
+        "names": [
+          "Blue Shark Claw",
+          "Approach enemy ",
+          "Approcher adversaire ",
+          "Vicino all'avversario ",
+          "hern ",
+          "Acercarse al adversario "
+        ],
+        "records": 6,
+        "first_name_offset": 20437,
+        "primary_name": "Blue Shark Claw",
+        "playable_entry": true
+      },
+      {
+        "command": "f+2+3",
+        "names": [
+          "Human Cannonball",
+          "Approach enemy ",
+          "Approcher adversaire ",
+          "Vicino all'avversario ",
+          "hern ",
+          "Acercarse al adversario "
+        ],
+        "records": 6,
+        "first_name_offset": 22051,
+        "primary_name": "Human Cannonball",
+        "playable_entry": true
+      },
+      {
+        "command": "d/b+1+3",
+        "names": [
+          "Swordfish Throw",
+          "Approach enemy ",
+          "Approcher adversaire ",
+          "Vicino all'avversario ",
+          "hern ",
+          "Acercarse al adversario "
+        ],
+        "records": 6,
+        "first_name_offset": 22405,
+        "primary_name": "Swordfish Throw",
+        "playable_entry": true
+      },
+      {
+        "command": "f,F+2",
+        "names": [
+          "Roll and Choke",
+          "Approach enemy ",
+          "Approcher adversaire ",
+          "Vicino all'avversario ",
+          "hern ",
+          "Acercarse al adversario "
+        ],
+        "records": 6,
+        "first_name_offset": 22761,
+        "primary_name": "Roll and Choke",
+        "playable_entry": false
+      },
+      {
+        "command": "b+1+2",
+        "names": [
+          "Parry",
+          "Time with enemy punch ",
+          "Synchro avec le coup de poing de l'adversaire ",
+          "Mentre l'avversario sferra un pugno ",
+          "Mit dem Schlag des Gegners abstimmen ",
+          "etazo adversario "
+        ],
+        "records": 6,
+        "first_name_offset": 23517,
+        "primary_name": "Parry",
+        "playable_entry": false
+      },
+      {
+        "command": "4,3,3,~F",
+        "names": [
+          "Sample Combo 5",
+          "Sample Combo 7"
+        ],
+        "records": 2,
+        "first_name_offset": 24594,
+        "primary_name": "Sample Combo 5",
+        "playable_entry": false
+      },
+      {
+        "command": "d/b+3,3,~F",
+        "names": [
+          "Sample Combo 6"
+        ],
+        "records": 1,
+        "first_name_offset": 24741,
+        "primary_name": "Sample Combo 6",
+        "playable_entry": false
+      }
+    ],
+    "undecoded_records": [
+      {
+        "name": "Dos ",
+        "name_offset": 18477
+      },
+      {
+        "name": "Mit dem R",
+        "name_offset": 18529
+      },
+      {
+        "name": "An den Gegner ann",
+        "name_offset": 19565
+      },
+      {
+        "name": "An den Gegner ann",
+        "name_offset": 19910
+      },
+      {
+        "name": "An den Gegner ann",
+        "name_offset": 20254
+      },
+      {
+        "name": "An den Gegner ann",
+        "name_offset": 20598
+      },
+      {
+        "name": "Von der linken Seite ann",
+        "name_offset": 20989
+      },
+      {
+        "name": "Von der rechten Seite ann",
+        "name_offset": 21433
+      },
+      {
+        "name": "Von hinten ann",
+        "name_offset": 21850
+      },
+      {
+        "name": "An den Gegner ann",
+        "name_offset": 22207
+      },
+      {
+        "name": "An den Gegner ann",
+        "name_offset": 22569
+      },
+      {
+        "name": "An den Gegner ann",
+        "name_offset": 22930
+      },
+      {
+        "name": "Dem Gegner in der Luft n",
+        "name_offset": 23310
+      },
+      {
+        "name": "Sincro. con pu",
+        "name_offset": 23759
+      }
+    ],
+    "note": "All 276 name records of Baek Doo San's Tekken 6 PSP COM decode, grouped to the 81 unique commands the v3 (round-15 notation) revision decoded from the in-record glyphs. The 276 records are multi-language name strings for the same moves, not 276 distinct moves. 14 records carry no glyph command in their string and are listed undecoded, not guessed."
+  },
+  "baek_rebuild": {
+    "date": "2026-11-20",
+    "by": "lane-p2 (wh-moveset-fix)",
+    "owner_instruction": "gave everyone's moves correct. All the moves and inputs need to be correct.",
+    "method": [
+      "Replaced the T3 Bryan proxy bank with real Baek Doo San data: the in-repo Tekken 6 PSP COM decode (teardown/tekken6/movesets/t6psp-baek-doo-san-moveset-v3.json, 276 records / 81 unique commands) as the baek_kit layer, plus the TTT2 Baek movelist (game/assets/ttt2/movesets/bae.json; 153 moves already carried in baek-master-white.json).",
+      "Every playable row carries a REAL Baek name+input. Frame/damage/anim come from the T3 Hwoarang bank (Taekwondo — the closest T3 bank, verified: t3-hwoarang.json, 723 moves, t3_source hwoarang, anim_bank hwoarang) on the same input, disclosed per row — the same proxy-bank pattern the 2026-11-06 wang_rebuild record sanctions for Byou (Jin bank). No Baek frame/anim bank exists in holdings, so no Baek frames or anims were invented.",
+      "Commands with no same-input Hwoarang row stay kit-only data (playable_entry false), never invented. WH-original signatures preserved verbatim. stance_after stays empty: no Baek stance table exists in sources (same gap the wang_rebuild records for Wang). hit_words dropped: keyed to the old Bryan inputs and unsourceable for the new rows.",
+      "The bare '1' and '2' jabs are the two playable rows whose name+input does not come from the T6 decode or the TTT2 movelist (both movelist-only extractions omit standalone jabs): they come from the commercial games' published frame data — '1': Tekken 6 (8 dmg, i10, +1/+8) and TTT2 (9 dmg, i10, +1/+8/+8); '2': Tekken 6 (8 dmg, i10, +0/+7) and TTT2 (9 dmg, i10, +0/+7/+7) — with frames/anim the declared T3 Hwoarang proxy (row 203 LP for '1', row 91 RP for '2') and Baek's real values recorded in each row. The '1' jab is required: without it the input-matrix test reports 7 dead inputs (every direction + 1, plus d/f+1+3) and game-unit-tests fails."
+    ],
+    "removed_bryan_layer": {
+      "moves_removed": 114,
+      "where_bryan_lives": "Bryan's own banks are untouched: game/assets/movesets/skull.json (688 moves) and retsu.json. Nothing was lost from the repo."
+    },
+    "counts": {
+      "moves_before": 291,
+      "moves_after": 207,
+      "t6_records": 276,
+      "t6_unique_commands": 81,
+      "t6_commands_playable": 28,
+      "ttt2_playable": 23,
+      "signatures_preserved": 24,
+      "frame_data_jabs": 2
+    },
+    "gaps": [
+      "No Baek frame data or damage exists in any source held (the T6 PSP COM decode yields names + glyph commands only; the TTT2 movelist yields names + inputs + throw escapes only).",
+      "The bare '1' and '2' jabs are the two exceptions to the no-frame-data gap: their frame data comes from the commercial games' published frame data ('1': Tekken 6: 8 dmg, i10, +1/+8; TTT2: 9 dmg, i10, +1/+8/+8; '2': Tekken 6: 8 dmg, i10, +0/+7; TTT2: 9 dmg, i10, +0/+7/+7), because the repo's movelist-only extractions omit standalone jabs. Their anims are the declared Hwoarang proxies (T3 row 203 for '1', row 91 for '2').",
+      "No Baek animation bank exists in holdings (T6 MOTA motion chunks are listed but not decoded; TTT2 motbin extraction pending per the baek-master-white row notes). Playable rows therefore run Hwoarang motion, disclosed per row.",
+      "38 of 81 T6 commands have no same-input Hwoarang row (mostly long Flamingo strings, e.g. 3,3,3,4 Butterfly Kicks) and are kit-only until a Baek motion/frame source lands.",
+      "TTT2 Baek rows upgraded with Hwoarang proxy anim/frames where a same-input row exists: 23 of 153; the remaining 130 stay no-anim kit data.",
+      "T6 commands skipped as playable rows (input already covered by a TTT2 row): ['1+3', '1,1', '2+4', '2,2', '2,3', 'b+1', 'd+2', 'd/b+1+3', 'd/b+2', 'd/f+1,3', 'd/f+3+4', 'f+1+3', 'f+2+3', 'f+2+4', 'u/f+2'].",
+      "Slots pruned: 23 of 36 slot entries pointed at deleted Bryan rows and were removed (['1+3', '2+4', '2,1,2', '2,4', '3+4', 'b', 'b+1+2', 'b+1+4', 'd,d/f,d,d/f+1+2', 'd/f+1', 'd/f+1+2', 'd/f+2', 'f', 'f+1+4', 'f+2', 'n,d/b,n,f+1+2', 'u/b+1', 'u/b+1+2', 'u/b+3', 'u/b+3+4', 'u/f+1', 'u/f+1+2', 'u/f+3+4']); the 13 surviving slots are the playable base list. Pruning changes no test counts — the test already skipped dangling slots.",
+      "Pre-existing merge artifact untouched: the 24 wh: rows include donor.baek duplicates of the two Baek signatures (merge_sources.py 2026-10-23); dedup is a separate lane's job."
+    ]
   }
 }
