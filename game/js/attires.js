@@ -34,22 +34,6 @@ export const ATTIRE_VARIANTS = {
     { model: 'thor', label: 'ATTIRE 1' },
     { model: 'thor-attire2', label: 'ATTIRE 2 · ONI MASK' },
   ],
-  /* NEGATIVO's ladder (owner 2026-10-22): per-attire EYE GLOW — each slot
-     carries its own emissive eye config (data-driven, never hardcoded in the
-     renderer). Attire 1 = glowing RED eyes, Attire 2 (before the trials) =
-     glowing WHITE eyes. `materials` names the eye meshes as identified from
-     the model (n3g4tiv0.glb's dedicated eye material ModelEyes_Material028).
-     Slot 2 is pending: its Tripo original is archived (immutable) at
-     roster/negativo/attires/attire2/source/ but the rigged playable model
-     hasn't landed — the white-eye config is wired and waiting; the picker
-     hides pending slots (selectableAttires) so nothing unplayable shows. */
-  'negativo': [
-    { model: 'n3g4tiv0', label: 'ATTIRE 1',
-      eyeGlow: { color: 0xff2222, intensity: 2.4, materials: ['ModelEyes_Material028'] } },
-    { model: 'negativo-attire2', label: 'ATTIRE 2 · BEFORE THE TRIALS (PARKED — AWAITING RIG)',
-      pending: true,
-      eyeGlow: { color: 0xffffff, intensity: 2.4, materials: ['ModelEyes_Material028'] } },
-  ],
   /* TORCH's ladder — keyed by fighter id ('torch'; attiresFor() falls back
      to the id when the model key misses), same pattern as Doc Frank's and
      Kevin's ladders. LADDER ORDER (owner rule 2026-10-21): her Tripo
@@ -348,6 +332,23 @@ export const ATTIRE_VARIANTS = {
     { model: 'koreshi', label: 'ATTIRE 1' },
     { model: 'koreshi-attire1', label: 'ATTIRE 1 · TRIPO SOURCE (UNRIGGED)' },
     { model: 'vega', label: 'ATTIRE 3 · CLASSIC', src: 'Street Fighter source model (vega)' },
+  ],
+  // LANE F (2026-11-21, roster-wide model audit): Chordz / Scimitar /
+  // Ryuji-Rock ladders. All three Tripo models were on main since 2026-10-22
+  // (roster/*/attires/) with MODEL_URLS keys, but no ATTIRE_VARIANTS entry,
+  // so the picker never offered them. First entry = the current default in
+  // every ladder — no default changes. Source-game originals sit at the back
+  // per the OBSOLETE-ORIGINALS rule.
+  'chordz': [
+    { model: 'chordz', label: 'ATTIRE 1 · EMO GUITARIST (TRIPO)' },
+  ],
+  'scimitar': [
+    { model: 'scimitar', label: 'ATTIRE 1 · SCIMITAR (TRIPO)' },
+    { model: 'scimitar-classic', label: 'ATTIRE 2 · CLASSIC', src: 'Shaheen source model (scimitar)' },
+  ],
+  'ryuji-rock': [
+    { model: 'ryuji-rock', label: 'ATTIRE 1 · CORNERSTONE (TRIPO)' },
+    { model: 'ryuji-rock-source', label: 'ATTIRE 2 · TRIPO SOURCE (UNRIGGED)' },
   ],
   // OWNER-MODEL-FIRST (t213u): owner Tripo models lead; the T8 Armor King port (yukihyo.glb) ladders back.
   'yukihyo': [
