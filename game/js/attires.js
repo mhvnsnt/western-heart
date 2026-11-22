@@ -338,6 +338,13 @@ export const ATTIRE_VARIANTS = {
     { model: 'zui_alt1', label: 'ALT 1 · CLASSIC', src: 'T7 base reskin (steve)' },
     { model: 'zui_alt2', label: 'ALT 2 · CLASSIC', src: 'T7 base reskin (steve)' },
   ],
+  /* RYUJI (2026-10-23 select-card audit): the owner's Cornerstone Tripo
+     'ryuji-rock' (20c1fd2e, rigged wave 2) is his default — removes him from
+     the steve-fox share. The Steve base ladders behind as a legacy alternate. */
+  'ryuji': [
+    { model: 'ryuji-rock', label: 'ATTIRE 1 · CORNERSTONE (TRIPO)' },
+    { model: 'steve-fox', label: 'BASE · STEVE FOX (CANON)' },
+  ],
   /* ——— LANDING WAVE 1 ladders (2026-10-23, docs/CATCHUP-AUDIT-2026-10-23.md):
      fighters whose on-main attire GLBs had keys (or get them in assets.js
      this wave) but no ATTIRE_VARIANTS entry, so the picker never offered
