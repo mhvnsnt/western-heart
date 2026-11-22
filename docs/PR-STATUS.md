@@ -4,7 +4,7 @@
 
 **46 open PRs — 🟢 ready to merge: 0 · 🔴 failing: 26 · ⏳ running: 0 · ⚔️ conflicted: 20** (also 🟠 blocked: 0 · 🔗 stacked: 0 · 📝 draft, green-or-idle: 0; 6 of 46 are drafts)
 
-_Generated 2026-11-22 17:11 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
+_Generated 2026-11-22 17:13 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
 
 Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not reported. Ready = not draft, targets `main`, GitHub says MERGEABLE, every check green. Status priority: conflicted > failing > running > draft > stacked > ready.
 
@@ -16,8 +16,8 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 🔴 failing | [#1836](https://github.com/mhvnsnt/western-heart/pull/1836) Kevin: default model baek → kevin-tripo (his own Tripo, A1) | ready | mhvnsnt / `lane-k-kevin-default-20261122` | `a00ecae` | `main` | ✅ | ✅ | ✅ | ❌ | 5✅ 5⏳ | mergeable (blocked) | 2026-11-22 17:11 UTC |
-| 🔴 failing | [#1835](https://github.com/mhvnsnt/western-heart/pull/1835) canon(chordz): Kutz Chordz — one fighter, two names; two halves are one personality; model | ready | mhvnsnt / `lane/kutz-chordz-canon-20261122` | `4cc7135` | `main` | ✅ | ✅ | ✅ | ❌ | 6✅ 4⏳ | mergeable (blocked) | 2026-11-22 17:10 UTC |
+| 🔴 failing | [#1836](https://github.com/mhvnsnt/western-heart/pull/1836) Kevin: default model baek → kevin-tripo (his own Tripo, A1) | ready | mhvnsnt / `lane-k-kevin-default-20261122` | `a00ecae` | `main` | ✅ | ✅ | ✅ | ❌ | 6✅ 4⏳ | mergeable (blocked) | 2026-11-22 17:11 UTC |
+| 🔴 failing | [#1835](https://github.com/mhvnsnt/western-heart/pull/1835) canon(chordz): Kutz Chordz — one fighter, two names; two halves are one personality; model | ready | mhvnsnt / `lane/kutz-chordz-canon-20261122` | `4cc7135` | `main` | ✅ | ✅ | ✅ | ❌ | 6✅ 4⏳ | mergeable (blocked) | 2026-11-22 17:13 UTC |
 | 🔴 failing | [#1834](https://github.com/mhvnsnt/western-heart/pull/1834) Ren: functional Truth-style mouth (3D teeth, tongue, uvula, jaw) | ready | mhvnsnt / `lane/ren-mouth-20261122` | `c2c6d17` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ 1⏳ | mergeable (clean) | 2026-11-22 16:59 UTC |
 | 🔴 failing | [#1820](https://github.com/mhvnsnt/western-heart/pull/1820) Lane F model audit: wire Chordz / Scimitar / Cornerstone ladders; correct stale 'missing m | ready | mhvnsnt / `lane-f-model-audit` | `8eb1a30` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (clean) | 2026-11-22 08:18 UTC |
 | 🔴 failing | [#1818](https://github.com/mhvnsnt/western-heart/pull/1818) VM sweep: TNA Impact PS2 (3.5GB rar, split) | ready | mhvnsnt / `muse/vm-sweep-tna-2026-11-21` | `56c358a` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-21 18:07 UTC |
