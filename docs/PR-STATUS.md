@@ -4,7 +4,7 @@
 
 **47 open PRs — 🟢 ready to merge: 0 · 🔴 failing: 27 · ⏳ running: 0 · ⚔️ conflicted: 20** (also 🟠 blocked: 0 · 🔗 stacked: 0 · 📝 draft, green-or-idle: 0; 6 of 47 are drafts)
 
-_Generated 2026-11-22 16:45 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
+_Generated 2026-11-22 16:55 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
 
 Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not reported. Ready = not draft, targets `main`, GitHub says MERGEABLE, every check green. Status priority: conflicted > failing > running > draft > stacked > ready.
 
@@ -16,12 +16,12 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 🔴 failing | [#1834](https://github.com/mhvnsnt/western-heart/pull/1834) Ren: functional Truth-style mouth (3D teeth, tongue, uvula, jaw) | ready | mhvnsnt / `lane/ren-mouth-20261122` | `c2c6d17` | `main` | ⏳ | ✅ | ✅ | ❌ | 4✅ 6⏳ | mergeable (blocked) | 2026-11-22 16:45 UTC |
+| 🔴 failing | [#1834](https://github.com/mhvnsnt/western-heart/pull/1834) Ren: functional Truth-style mouth (3D teeth, tongue, uvula, jaw) | ready | mhvnsnt / `lane/ren-mouth-20261122` | `c2c6d17` | `main` | ✅ | ✅ | ✅ | ❌ | 8✅ 2⏳ | mergeable (blocked) | 2026-11-22 16:45 UTC |
 | 🔴 failing | [#1820](https://github.com/mhvnsnt/western-heart/pull/1820) Lane F model audit: wire Chordz / Scimitar / Cornerstone ladders; correct stale 'missing m | ready | mhvnsnt / `lane-f-model-audit` | `8eb1a30` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (clean) | 2026-11-22 08:18 UTC |
 | 🔴 failing | [#1818](https://github.com/mhvnsnt/western-heart/pull/1818) VM sweep: TNA Impact PS2 (3.5GB rar, split) | ready | mhvnsnt / `muse/vm-sweep-tna-2026-11-21` | `56c358a` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-21 18:07 UTC |
 | 🔴 failing | [#1817](https://github.com/mhvnsnt/western-heart/pull/1817) VM sweep: WWE WrestleMania XIX (disc, extraction, w7, tools) | ready | mhvnsnt / `muse/vm-sweep-wmxix-2026-11-21` | `be0803c` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-21 18:06 UTC |
 | 🔴 failing | [#1814](https://github.com/mhvnsnt/western-heart/pull/1814) Land KoC2 raw files (ISOs, extracts, kactusken v0.2) | ready | mhvnsnt / `muse/koc2-raw` | `22bbad2` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-21 11:44 UTC |
-| 🔴 failing | [#1803](https://github.com/mhvnsnt/western-heart/pull/1803) Lane C Phase 2: Windows workflow to extract real King .tkmvst from tkdata.bin (TKMovesets2 | ready | mhvnsnt / `lane-c/t7-extract-king` | `32a5fd6` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-21 02:56 UTC |
+| 🔴 failing | [#1803](https://github.com/mhvnsnt/western-heart/pull/1803) Lane C Phase 2: Windows workflow to extract real King .tkmvst from tkdata.bin (TKMovesets2 | ready | mhvnsnt / `lane-c/t7-extract-king` | `32a5fd6` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-22 16:55 UTC |
 | 🔴 failing | [#1798](https://github.com/mhvnsnt/western-heart/pull/1798) Sweep: No Mercy re-extract leftovers (mat-kings DB, AKI bake, full-ROM pass) | ready | mhvnsnt / `muse/sweep-nomercy-uvpw` | `f7c2045` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-20 23:16 UTC |
 | 🔴 failing | [#1797](https://github.com/mhvnsnt/western-heart/pull/1797) Phase 2: Tong-Nou transmigration sequences (Sato → Western Heart) | ready | mhvnsnt / `sato/transmigration-sequences` | `67054ea` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-20 22:44 UTC |
 | 🔴 failing | [#1796](https://github.com/mhvnsnt/western-heart/pull/1796) Phase 2: Roly-Polys world hub + minigames (Sato → Western Heart) | ready | mhvnsnt / `p2/rolypolys-world-hub` | `6f94ead` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-20 22:43 UTC |
