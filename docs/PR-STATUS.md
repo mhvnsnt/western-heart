@@ -4,7 +4,7 @@
 
 **47 open PRs — 🟢 ready to merge: 0 · 🔴 failing: 27 · ⏳ running: 0 · ⚔️ conflicted: 20** (also 🟠 blocked: 0 · 🔗 stacked: 0 · 📝 draft, green-or-idle: 0; 6 of 47 are drafts)
 
-_Generated 2026-11-22 16:55 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
+_Generated 2026-11-22 16:58 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
 
 Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not reported. Ready = not draft, targets `main`, GitHub says MERGEABLE, every check green. Status priority: conflicted > failing > running > draft > stacked > ready.
 
@@ -21,11 +21,11 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 | 🔴 failing | [#1818](https://github.com/mhvnsnt/western-heart/pull/1818) VM sweep: TNA Impact PS2 (3.5GB rar, split) | ready | mhvnsnt / `muse/vm-sweep-tna-2026-11-21` | `56c358a` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-21 18:07 UTC |
 | 🔴 failing | [#1817](https://github.com/mhvnsnt/western-heart/pull/1817) VM sweep: WWE WrestleMania XIX (disc, extraction, w7, tools) | ready | mhvnsnt / `muse/vm-sweep-wmxix-2026-11-21` | `be0803c` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-21 18:06 UTC |
 | 🔴 failing | [#1814](https://github.com/mhvnsnt/western-heart/pull/1814) Land KoC2 raw files (ISOs, extracts, kactusken v0.2) | ready | mhvnsnt / `muse/koc2-raw` | `22bbad2` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-21 11:44 UTC |
-| 🔴 failing | [#1803](https://github.com/mhvnsnt/western-heart/pull/1803) Lane C Phase 2: Windows workflow to extract real King .tkmvst from tkdata.bin (TKMovesets2 | ready | mhvnsnt / `lane-c/t7-extract-king` | `32a5fd6` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-22 16:55 UTC |
+| 🔴 failing | [#1803](https://github.com/mhvnsnt/western-heart/pull/1803) Lane C Phase 2: Windows workflow to extract real King .tkmvst from tkdata.bin (TKMovesets2 | ready | mhvnsnt / `lane-c/t7-extract-king` | `32a5fd6` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (clean) | 2026-11-22 16:55 UTC |
 | 🔴 failing | [#1798](https://github.com/mhvnsnt/western-heart/pull/1798) Sweep: No Mercy re-extract leftovers (mat-kings DB, AKI bake, full-ROM pass) | ready | mhvnsnt / `muse/sweep-nomercy-uvpw` | `f7c2045` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-20 23:16 UTC |
 | 🔴 failing | [#1797](https://github.com/mhvnsnt/western-heart/pull/1797) Phase 2: Tong-Nou transmigration sequences (Sato → Western Heart) | ready | mhvnsnt / `sato/transmigration-sequences` | `67054ea` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-20 22:44 UTC |
 | 🔴 failing | [#1796](https://github.com/mhvnsnt/western-heart/pull/1796) Phase 2: Roly-Polys world hub + minigames (Sato → Western Heart) | ready | mhvnsnt / `p2/rolypolys-world-hub` | `6f94ead` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-20 22:43 UTC |
-| 🔴 failing | [#1795](https://github.com/mhvnsnt/western-heart/pull/1795) Phase 2: LSD dream system core (Sato → Western Heart) | ready | mhvnsnt / `phase2/lsd-dream-core` | `798e94b` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-20 22:41 UTC |
+| 🔴 failing | [#1795](https://github.com/mhvnsnt/western-heart/pull/1795) Phase 2: LSD dream system core (Sato → Western Heart) | ready | mhvnsnt / `phase2/lsd-dream-core` | `798e94b` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-22 16:58 UTC |
 | 🔴 failing | [#1785](https://github.com/mhvnsnt/western-heart/pull/1785) Sweep: VPW2 English-complete push receipts | ready | mhvnsnt / `muse/sweep-vpw2-handoff` | `ec59ab3` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-20 15:25 UTC |
 | 🔴 failing | [#1784](https://github.com/mhvnsnt/western-heart/pull/1784) VPW2 English completion: help screens + Royal Road Succession + credits (634 strings) | ready | mhvnsnt / `muse/vpw2-english-complete` | `1340454` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-21 18:11 UTC |
 | 🔴 failing | [#1783](https://github.com/mhvnsnt/western-heart/pull/1783) Toukon Retsuden English: partial patch tools + docs (lane 1) | ready | mhvnsnt / `muse/toukon-english` | `4fad2a8` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-21 17:41 UTC |
