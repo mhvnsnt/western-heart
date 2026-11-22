@@ -53,6 +53,31 @@ SMALL_EXT = (".js", ".mjs", ".json", ".css", ".html")
 SMALL_MAX, SMALL_TOTAL = 256 * 1024, 2_500_000
 CAP = 1_073_741_824
 CODE_EXT = (".js", ".mjs", ".html", ".json", ".css")
+# Editor-only data that may stay at its LIVE version when updating it would push the shell over the Pages cap
+# (2026-11-22). game/data/moveset-library/index.json went from 2,231 B to 60,249,618 B on main (f58ef35d,
+# 2026-11-21) and every deploy since refused with "new tree over the 1 GiB cap": the live site froze at main
+# c324efe9 while fixes kept merging. Only the in-game moveset editor reads that index, on demand, and it already
+# treats the older index as 'stale' (game/js/moveset-editor-ui.js), so fights and every other screen are unaffected.
+# Nothing outside these prefixes is ever skipped (code must stay consistent); a skip is printed, never silent.
+CAP_SKIPPABLE_PREFIXES = ("game/data/moveset-library/",)
+
+
+def skip_over_cap_updates(upd, live_sizes, main_sizes, projected, cap=CAP):
+    """Drop updates under CAP_SKIPPABLE_PREFIXES, biggest growth first, until `projected` (the new tree's byte total)
+    fits under `cap`. live_sizes / main_sizes map path -> size. Returns (kept_updates, skipped, projected_after).
+    Shared rule with tools/deploy/deploy_delta.py."""
+    if projected <= cap:
+        return list(upd), [], projected
+    cands = sorted((p for p in upd if p.startswith(CAP_SKIPPABLE_PREFIXES)
+                    and main_sizes[p] > live_sizes[p]),
+                   key=lambda p: live_sizes[p] - main_sizes[p])
+    skipped = []
+    for p in cands:
+        if projected <= cap:
+            break
+        projected -= main_sizes[p] - live_sizes[p]
+        skipped.append(p)
+    return [p for p in upd if p not in skipped], skipped, projected
 
 # Fetch resilience (2026-11-20): one transient GitHub API failure used to
 # kill the whole sync — run 44788247091 died on a single blob fetch out of
@@ -217,6 +242,13 @@ def compute_delta(live, main, t3anims, asset_config="", live_total=0):
             add.append(p)
             budget -= main[p][1]
     add = sorted(set(add))
+    # Over the cap with only these updates and adds? Editor-only data keeps its live version (see
+    # CAP_SKIPPABLE_PREFIXES); the freed headroom then funds the bundled-model step below as before.
+    projected = (live_total + sum(main[p][1] - live[p][1] for p in upd) + sum(main[p][1] for p in add))
+    upd, skipped, _ = skip_over_cap_updates(upd, {p: live[p][1] for p in upd}, {p: main[p][1] for p in upd}, projected)
+    for p in skipped:
+        print(f"  UPDATE SKIP (over cap; editor-only data stays at its live version): {p} "
+              f"({live[p][1]} B live, {main[p][1]} B on main)")
     # Bundled shell models (SHELL_BUNDLED_MODELS in main's
     # game/js/asset-config.js — the same list deploy_delta.py reads).
     # deploy_api.py never ported this step, so every deploy on the API

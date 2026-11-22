@@ -81,6 +81,14 @@ def main():
     for p in small:
         if M[p][1] <= budget and p not in add:
             add.append(p); budget -= M[p][1]
+    # Same rule as deploy_api.py (CAP_SKIPPABLE_PREFIXES, 2026-11-22): over the cap, editor-only library data keeps
+    # its live version instead of the whole deploy refusing.
+    from deploy_api import skip_over_cap_updates
+    live_total = sum(v[1] for v in L.values())  # tree() lists the whole live tree
+    projected = live_total + sum(M[p][1] - L[p][1] for p in upd) + sum(M[p][1] for p in add)
+    upd, skipped, _ = skip_over_cap_updates(upd, {p: L[p][1] for p in upd}, {p: M[p][1] for p in upd}, projected, CAP)
+    for p in skipped:
+        print('  UPDATE SKIP (over cap; editor-only data stays at its live version): %s (%d B live, %d B on main)' % (p, L[p][1], M[p][1]))
     env = dict(os.environ, GIT_INDEX_FILE=tempfile.mktemp(prefix='deploy.index.'))
     git('read-tree', tip, env=env)
     for p in upd + add:
