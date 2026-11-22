@@ -4,7 +4,7 @@
 
 **46 open PRs — 🟢 ready to merge: 2 · 🔴 failing: 24 · ⏳ running: 1 · ⚔️ conflicted: 19** (also 🟠 blocked: 0 · 🔗 stacked: 0 · 📝 draft, green-or-idle: 0; 6 of 46 are drafts)
 
-_Generated 2026-11-22 18:56 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
+_Generated 2026-11-22 19:02 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
 
 Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not reported. Ready = not draft, targets `main`, GitHub says MERGEABLE, every check green. Status priority: conflicted > failing > running > draft > stacked > ready.
 
@@ -18,7 +18,7 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 🟢 ready to merge | [#1840](https://github.com/mhvnsnt/western-heart/pull/1840) Replace Ren portrait with the real Rin bitmap (D_SUMIE b036) | ready | mhvnsnt / `lane/rin-portrait-20261122` | `65e5877` | `main` | ✅ | ✅ | ✅ | ✅ | 10✅ | mergeable (unstable) | 2026-11-22 18:19 UTC |
 | 🟢 ready to merge | [#1834](https://github.com/mhvnsnt/western-heart/pull/1834) Ren: functional Truth-style mouth (3D teeth, tongue, uvula, jaw) | ready | mhvnsnt / `lane/ren-mouth-20261122` | `eb76ce6` | `main` | ✅ | ✅ | ✅ | ✅ | 10✅ | mergeable (unstable) | 2026-11-22 18:32 UTC |
-| ⏳ running | [#1841](https://github.com/mhvnsnt/western-heart/pull/1841) fix(pr-status-board): retry transient contents read, never sha-less PUT on read failure | ready | mhvnsnt / `fix/pr-status-board-sha-retry` | `0b270e6` | `main` | ⏳ | ⏳ | ⏳ | ⏳ | 1✅ 8⏳ | mergeable (blocked) | 2026-11-22 18:56 UTC |
+| ⏳ running | [#1841](https://github.com/mhvnsnt/western-heart/pull/1841) fix(pr-status-board): retry transient contents read, never sha-less PUT on read failure | ready | mhvnsnt / `fix/pr-status-board-sha-retry` | `0b270e6` | `main` | ✅ | ✅ | ✅ | ⏳ | 7✅ 2⏳ | mergeable (blocked) | 2026-11-22 19:02 UTC |
 | 🔴 failing | [#1839](https://github.com/mhvnsnt/western-heart/pull/1839) finger-rig C3: hand-pose driver — fist/palm/point/per-finger as real game controls | ready | mhvnsnt / `finger-rig-game-wiring-20261122` | `aa424a7` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-22 18:18 UTC |
 | 🔴 failing | [#1838](https://github.com/mhvnsnt/western-heart/pull/1838) Lane B: wire Bannon to his own model bf-bannon | ready | mhvnsnt / `lane-b/bannon-bf-bannon-20261122` | `cacc94d` | `main` | ❌ | ✅ | ✅ | ❌ | 9✅ 1❌ | mergeable (blocked) | 2026-11-22 17:57 UTC |
 | 🔴 failing | [#1837](https://github.com/mhvnsnt/western-heart/pull/1837) Proof: owner asked to see Cornerstone / Scimitar / Chordz models as images | ready | mhvnsnt / `show-three-models-20261122` | `46b1279` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-22 17:56 UTC |
