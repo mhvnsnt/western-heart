@@ -1,4 +1,5 @@
 """Offline tests for pr_status_board.py (no network)."""
+import base64
 import os
 import sys
 import unittest
@@ -55,6 +56,98 @@ class T(unittest.TestCase):
 
     def test_time(self):
         self.assertEqual(b.fmt_time("2026-11-03T22:00:00Z"), "2026-11-03 22:00 UTC")
+
+    def run_publish(self, fake_req):
+        """publish_branch with b.req/b._sleep stubbed; returns (message, calls)."""
+        calls = []
+
+        def spy(method, path, body=None):
+            # Snapshot the body: publish_branch mutates it in place on retry.
+            calls.append((method, path, dict(body) if isinstance(body, dict) else body))
+            return fake_req(method, path, body)
+
+        old_req, old_sleep = b.req, b._sleep
+        b.req, b._sleep = spy, lambda s: None
+        try:
+            return b.publish_branch("new board"), calls
+        finally:
+            b.req, b._sleep = old_req, old_sleep
+
+    def branch_ok(self, method, path, body=None):
+        if method == "GET" and path.startswith("repos/" + b.REPO + "/branches/"):
+            return 200, {"name": b.BOARD_BRANCH}
+        return None
+
+    def test_publish_branch_get_failure_issues_no_put(self):
+        """A failed contents GET must never issue a sha-less PUT (422 when the file exists)."""
+        def fake(method, path, body=None):
+            if (r := self.branch_ok(method, path, body)) is not None:
+                return r
+            if method == "GET" and "/contents/" in path:
+                return 503, {"message": "Service Unavailable"}
+            return 404, {"message": "Not Found"}
+
+        msg, calls = self.run_publish(fake)
+        self.assertEqual(msg, "branch: read failed (503): {'message': 'Service Unavailable'}")
+        self.assertFalse([c for c in calls if c[0] == "PUT"], "no PUT may follow a failed read")
+        self.assertEqual(sum(1 for c in calls if c[0] == "GET" and "/contents/" in c[1]), 4)  # 1 + 3 retries
+
+    def test_publish_branch_retries_transient_get_then_puts_with_sha(self):
+        gets = {"n": 0}
+
+        def fake(method, path, body=None):
+            if (r := self.branch_ok(method, path, body)) is not None:
+                return r
+            if method == "GET" and "/contents/" in path:
+                gets["n"] += 1
+                if gets["n"] < 3:
+                    return 503, {"message": "Service Unavailable"}
+                return 200, {"sha": "331168c6", "content": base64.b64encode(b"old board").decode()}
+            if method == "PUT":
+                return 200, {}
+            return 404, {"message": "Not Found"}
+
+        msg, calls = self.run_publish(fake)
+        self.assertEqual(msg, "branch: committed (200)")
+        puts = [c for c in calls if c[0] == "PUT"]
+        self.assertEqual(len(puts), 1)
+        self.assertEqual(puts[0][2]["sha"], "331168c6")
+
+    def test_publish_branch_missing_file_creates_without_sha(self):
+        def fake(method, path, body=None):
+            if (r := self.branch_ok(method, path, body)) is not None:
+                return r
+            if method == "GET" and "/contents/" in path:
+                return 404, {"message": "Not Found"}
+            if method == "PUT":
+                return 201, {}
+            return 404, {"message": "Not Found"}
+
+        msg, calls = self.run_publish(fake)
+        self.assertEqual(msg, "branch: committed (201)")
+        puts = [c for c in calls if c[0] == "PUT"]
+        self.assertEqual(len(puts), 1)
+        self.assertNotIn("sha", puts[0][2])
+
+    def test_publish_branch_put_conflict_retries_with_fresh_sha(self):
+        gets, puts = {"n": 0}, {"n": 0}
+
+        def fake(method, path, body=None):
+            if (r := self.branch_ok(method, path, body)) is not None:
+                return r
+            if method == "GET" and "/contents/" in path:
+                gets["n"] += 1
+                sha = "oldsha" if gets["n"] == 1 else "newsha"
+                return 200, {"sha": sha, "content": base64.b64encode(b"old board").decode()}
+            if method == "PUT":
+                puts["n"] += 1
+                return (409, {"message": "Conflict"}) if puts["n"] == 1 else (200, {})
+            return 404, {"message": "Not Found"}
+
+        msg, calls = self.run_publish(fake)
+        self.assertEqual(msg, "branch: committed (200)")
+        put_bodies = [c[2] for c in calls if c[0] == "PUT"]
+        self.assertEqual([p["sha"] for p in put_bodies], ["oldsha", "newsha"])
 
 
 if __name__ == "__main__":
