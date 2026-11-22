@@ -4,7 +4,7 @@
 
 **49 open PRs — 🟢 ready to merge: 1 · 🔴 failing: 28 · ⏳ running: 0 · ⚔️ conflicted: 20** (also 🟠 blocked: 0 · 🔗 stacked: 0 · 📝 draft, green-or-idle: 0; 6 of 49 are drafts)
 
-_Generated 2026-11-22 01:43 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
+_Generated 2026-11-22 01:44 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
 
 Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not reported. Ready = not draft, targets `main`, GitHub says MERGEABLE, every check green. Status priority: conflicted > failing > running > draft > stacked > ready.
 
@@ -17,8 +17,8 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 🟢 ready to merge | [#1792](https://github.com/mhvnsnt/western-heart/pull/1792) Moveset fix P2: Goh/Brad VF kits, Baek rebuild (T6 PSP), Bannon wiring (Jeffry) | ready | mhvnsnt / `wh-moveset-fix/p2-rebuilds-20261120` | `7f7bf8b` | `main` | ✅ | ✅ | ✅ | ✅ | 10✅ | mergeable (clean) | 2026-11-21 06:43 UTC |
-| 🔴 failing | [#1822](https://github.com/mhvnsnt/western-heart/pull/1822) Kevin full canon moveset: wire Baek rebuild data to KEVIN (kevin.json + roster) | ready | mhvnsnt / `kevin/canon-moveset-20261121` | `d439ee0` | `main` | ✅ | ✅ | ✅ | ❌ | 7✅ 3⏳ | mergeable (blocked) | 2026-11-22 01:42 UTC |
-| 🔴 failing | [#1821](https://github.com/mhvnsnt/western-heart/pull/1821) Fight HUD: no hit data or pills over normal fights (practice panel from the reference game | ready | mhvnsnt / `claude/amazing-keller-p8644u` | `4a83438` | `main` | ✅ | ✅ | ✅ | ❌ | 8✅ 2⏳ | mergeable (blocked) | 2026-11-22 01:35 UTC |
+| 🔴 failing | [#1822](https://github.com/mhvnsnt/western-heart/pull/1822) Kevin full canon moveset: wire Baek rebuild data to KEVIN (kevin.json + roster) | ready | mhvnsnt / `kevin/canon-moveset-20261121` | `d439ee0` | `main` | ✅ | ✅ | ✅ | ❌ | 8✅ 2⏳ | mergeable (unstable) | 2026-11-22 01:42 UTC |
+| 🔴 failing | [#1821](https://github.com/mhvnsnt/western-heart/pull/1821) Fight HUD: no hit data or pills over normal fights (practice panel from the reference game | ready | mhvnsnt / `claude/amazing-keller-p8644u` | `4a83438` | `main` | ✅ | ✅ | ✅ | ❌ | 8✅ 2⏳ | mergeable (blocked) | 2026-11-22 01:44 UTC |
 | 🔴 failing | [#1820](https://github.com/mhvnsnt/western-heart/pull/1820) Lane F model audit: wire Chordz / Scimitar / Cornerstone ladders; correct stale 'missing m | ready | mhvnsnt / `lane-f-model-audit` | `8eb1a30` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-22 01:31 UTC |
 | 🔴 failing | [#1818](https://github.com/mhvnsnt/western-heart/pull/1818) VM sweep: TNA Impact PS2 (3.5GB rar, split) | ready | mhvnsnt / `muse/vm-sweep-tna-2026-11-21` | `56c358a` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-21 18:07 UTC |
 | 🔴 failing | [#1817](https://github.com/mhvnsnt/western-heart/pull/1817) VM sweep: WWE WrestleMania XIX (disc, extraction, w7, tools) | ready | mhvnsnt / `muse/vm-sweep-wmxix-2026-11-21` | `be0803c` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-21 18:06 UTC |
