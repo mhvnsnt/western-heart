@@ -1,0 +1,1264 @@
+import json
+import os
+from pathlib import Path
+import re
+import struct
+from tkinter import *
+from tkinter.ttk import *
+import tkinter.font as tkf
+from tkinter.filedialog import askopenfilename
+from tkinter.filedialog import asksaveasfilename
+import MovelistParser
+import ConfigReader
+import time
+from threading import Thread
+import GUI_Main
+import VersionChecker
+
+class GUI_MoveViewer:
+
+    DISTINCT_COLORS = [
+        '#e6194b',
+        '#3cb44b',
+        '#ffe119',
+        '#4363d8',
+        '#f58231',
+        '#911eb4',
+        '#46f0f0',
+        '#f032e6',
+        '#bcf60c',
+        '#fabebe',
+        '#008080',
+        '#e6beff',
+        '#9a6324',
+        '#fffac8',
+        '#800000',
+        '#aaffc3',
+        '#808000',
+        '#ffd8b1',
+        '#000075',
+        '#808080',
+        '#ffffff',
+        '#000000'
+    ]
+
+    def __init__(self, master,verbose=False):
+        if not os.path.exists(f'./Data/Custom'):
+                dir = f'./Data/Custom'
+                empty_json = '[\n\n]'
+                os.mkdir(f'{dir}')
+                os.mkdir(f'{dir}/Scripts/')
+                os.mkdir(f'{dir}/Scripts/A5/')
+                os.mkdir(f'{dir}/Scripts/25/')
+                os.mkdir(f'{dir}/Value_Types/')
+                dir = f'./Data/Custom/Scripts'
+
+                with open(f'{dir}/A5/01.json', 'w') as file:
+                    file.write(empty_json)
+                with open(f'{dir}/A5/0d.json', 'w') as file:
+                    file.write(empty_json)
+                with open(f'{dir}/25/03.json', 'w') as file:
+                    file.write(empty_json)
+                with open(f'{dir}/25/0d.json', 'w') as file:
+                    file.write(empty_json)
+                with open(f'{dir}/25/14.json', 'w') as file:
+                    file.write(empty_json)
+        
+        if not os.path.exists(f'./Backups'):
+            os.mkdir('./Backups')     
+        self.master = master
+        self.verbose = verbose
+        self.backward_history = []
+        self.forward_history = []
+        self.backward_enabled = StringVar(value=DISABLED)
+        self.forward_enabled = StringVar(value=DISABLED)
+
+        #self.master.geometry(str(1850) + 'x' + str(990))
+        master.title(f"SCUFFLE Move Editor - v{VersionChecker.CURRENT_VERSION.split('scuffle_VV_')[1]}")
+        master.iconbitmap(default='Data/icon.ico')
+        s = Style()
+        font_config = ConfigReader.ConfigReader('font_config')
+        self.overlay_config = ConfigReader.ConfigReader('frame_data_overlay')
+        self.defaultFont = tkf.nametofont("TkDefaultFont")
+        self.defaultFont.configure(family=font_config.get_property("General","default_font_family","Consolas"),size=font_config.get_property("General","default_font_size", 8),weight=font_config.get_property("General","default_font_weight","normal"))
+        bold_label_font = font_config.get_property("Side Panel","bold_font", "Consolas 8 bold")
+
+        self.do_inject_movelist = False
+        self.do_fix_goto = BooleanVar(value=True)
+        self.log_injected = BooleanVar(value=False)
+        self.reload_on_save_var = BooleanVar(value=False)
+
+        self.movelist_name_var = StringVar()
+        self.movelist_name_var.set('???')
+
+        self.auto_backup_save_var = BooleanVar(value=True)
+
+        self.character_id_var = StringVar()
+        self.character_id_var.set('000')
+
+        self.main_window = Frame(master)
+        self.main_window.pack(fill= BOTH, expand=True, anchor=S+W)
+        self.main_window.rowconfigure(0,weight=2)
+        self.main_window.columnconfigure(0, weight=0)
+        self.main_window.columnconfigure(1, weight=2)
+        
+
+        s.configure('Loader.TFrame', background='#D1D1D1')
+        s.configure('TNotebook.Tab', font=font_config.get_property("Tabs","notebook_tab_font", "Consolas 14"))
+    
+        loader_frame = Frame(self.main_window, style='Loader.TFrame')
+        loader_frame.grid(sticky=N+W+E+S, column=0)
+
+        loader_frame_char = Frame(loader_frame)
+        loader_frame_top = Frame(loader_frame)
+        loader_frame_bot = Frame(loader_frame)
+        loader_frame_hit = Frame(loader_frame)
+        loader_frame_clip = Frame(loader_frame)
+        loader_frame_tools = Frame(loader_frame)
+
+        loader_frame_char.grid(sticky=N + E + W, row=0, column=0, padx=5, pady=5)
+        loader_frame_top.grid(sticky=N + E + W, row=1, column=0, padx=5, pady=5)
+        loader_frame_bot.grid(sticky=N + E + W, row=2, column=0, padx=5, pady=5)
+        loader_frame_hit.grid(sticky=N + E + W, row=3, column=0, padx=5, pady=5)
+        loader_frame_clip.grid(sticky=N + E + W, row=4, column=0, padx=5, pady=5)
+        loader_frame_tools.grid(sticky=N + E + W + S, row=5, column=0, padx=5, pady=5)
+    
+
+        self.movelist_menu_label = Label(loader_frame_top, text="Movelist", font=bold_label_font)
+        self.movelist_menu_label.pack()
+
+
+        self.label = Label(loader_frame_top, textvariable=self.movelist_name_var)
+        self.label.pack()
+
+        self.load_movelist_button = Button(loader_frame_top, text="Load Movelist", command=lambda: self.load_movelist_dialog())
+        self.load_movelist_button.pack()
+        master.bind('<Control-Shift-L>', lambda x: self.load_movelist_dialog())
+
+        self.save_movelist_button = Button(loader_frame_top, text="Save Movelist", command=lambda: self.save_movelist_dialog())
+        self.save_movelist_button.pack()
+        master.bind('<Control-Shift-S>', lambda x: self.save_movelist_dialog())
+
+        self.save_movelist_button = Button(loader_frame_top, text="Inject Movelist", command=lambda: self.inject_movelist_dialog(True))
+        self.save_movelist_button.pack()
+        master.bind('<Control-i>', lambda x: self.inject_movelist_dialog(True))
+
+        self.character_id_menu_label = Label(loader_frame_char,text="Character ID", font=bold_label_font)
+        self.character_id_menu_label.pack()
+        self.character_id_label = Label(loader_frame_char,textvariable=self.character_id_var)
+        self.character_id_label.pack()
+        self.character_id_entry = Entry(loader_frame_char)
+        self.character_id_entry.pack()
+        self.character_id_button = Button(loader_frame_char,text="Set ID", command=lambda:self.set_character_id(self.character_id_entry.get() if self.character_id_entry.get() != "" else '000'))
+        self.character_id_button.pack()
+
+        #display_frame = Frame(self.main_window)
+        self.display_frame = Notebook(self.main_window)
+        self.display_frame.grid(sticky=N+W+E+S, row = 0, column = 1)
+
+        move_frame = Frame(self.display_frame)
+        hitbox_frame = Frame(self.display_frame)
+        cancel_frame = Frame(self.main_window)
+
+        self.display_frame.add(move_frame, text='Move', sticky=N+W+E+S)
+        self.display_frame.add(hitbox_frame, text='Hitbox', sticky=N+W+E+S)
+        self.display_frame.add(cancel_frame, text = 'Scripting', sticky=N+W+E+S)
+    
+        move_id_entry_container = Frame(loader_frame_bot)
+        move_id_entry_container.grid(row=0, column=0)
+
+        move_id_frame_label = Label(move_id_entry_container, text="Move Id", font=bold_label_font)
+        move_id_frame_label.grid(row=0,column=0,columnspan=2)
+
+        
+
+        self.move_id_textvar = StringVar()
+        self.move_id_textvar.set('-')
+        self.encoded_move_id_textvar = StringVar()
+        self.encoded_move_id_textvar.set('-')
+        self.move_id_label = Label(move_id_entry_container, textvariable=self.encoded_move_id_textvar, font = bold_label_font)
+        self.move_id_label.grid(row=1,column=0)
+
+        move_id_label_container = Frame(move_id_entry_container)
+        move_id_label_container.grid(row=2,column=0)
+
+        self.move_id_entry = Entry(move_id_label_container)
+        self.move_id_entry.bind('<Return>', lambda x: self.load_moveid(self.move_id_entry.get(),clear_history=True))
+        master.bind('<Control-F5>', lambda x: self.load_moveid(self.move_id_entry.get(),clear_history=True))
+        master.bind('<Control-m>', lambda x: self.move_id_entry.focus())
+        
+        move_id_load_button_container = Frame(move_id_entry_container)
+        move_id_load_button_container.grid(row=3, column=0)
+        self.load_button = Button(move_id_load_button_container, text="Load", command=lambda:self.load_moveid(self.move_id_entry.get(),clear_history=True))
+        self.prev_load_button = Button(move_id_load_button_container, text="<", width=1, state=DISABLED, command=lambda:self.load_moveid_from_history(mode=0))
+        self.next_load_button = Button(move_id_load_button_container, text=">", width=1, state=DISABLED, command=lambda:self.load_moveid_from_history(mode=1))
+        self.clear_history_button = Button(move_id_load_button_container, text="🗑️", width=2, state=DISABLED, command=lambda:self.clear_all_history())
+        self.prev_load_button.grid(row=0,column=0)
+        self.load_button.grid(row=0,column=1)
+        self.next_load_button.grid(row=0,column=2)
+        self.clear_history_button.grid(row=0,column=3)
+        master.bind('<F5>', lambda x: self.load_moveid(self.move_id_textvar.get()))
+        master.bind('<Control-{>', lambda x: self.load_moveid_from_history(x, 0))
+        master.bind('<Control-}>', lambda x: self.load_moveid_from_history(x, 1))
+        master.bind('<Alt-x>', lambda x: self.clear_all_history())
+
+        next_move_id_button = Button(move_id_label_container, text=">", width = 1, command=lambda: self.next_move_id_command())
+        prev_move_id_button = Button(move_id_label_container, text="<", width = 1, command=lambda: self.prev_move_id_command())
+        next_move_id_button.grid(row=0, column=2)
+        self.move_id_entry.grid(row=0, column=1)
+        prev_move_id_button.grid(row=0, column=0)
+        master.bind('<Control-[>', lambda x: self.prev_move_id_command())
+        master.bind('<Control-]>', lambda x: self.next_move_id_command())
+
+        s.configure('Save.TButton', font=font_config.get_property("Side Panel","save_changes_font", "Consolas 14 bold"))
+        s.configure('Bold.TButton', font=bold_label_font)
+        self.save_move = Button(move_id_entry_container, text="Save Changes", style='Save.TButton', command=lambda: Thread(target=self.save_move_bytes_command, args=(self.do_fix_goto.get(),)).start())
+        self.save_move.grid(row=4)
+        self.save_move['state'] = DISABLED
+        master.bind('<Control-s>', lambda x: Thread(target=self.save_move_bytes_command, args=(self.do_fix_goto.get(),)).start())
+        
+
+        update_pointers = Checkbutton(move_id_entry_container, variable=self.do_fix_goto, onvalue=True, offvalue=False,text="Update Goto pointers    ")
+        save_move_reload = Checkbutton(move_id_entry_container, variable=self.reload_on_save_var, onvalue=True, offvalue=False, text="Reload after save       ")
+        auto_backup = Checkbutton(move_id_entry_container, variable=self.auto_backup_save_var, onvalue=True, offvalue=False, text=f"Backup changes [max:{self.overlay_config.get_property('DisplaySettings','max_backup_count',20)}] ")
+
+        update_pointers.grid(row=6,padx=5)
+        save_move_reload.grid(row=7,padx=5)
+        auto_backup.grid(row=8,padx=5)
+        master.bind('<Control-r>', lambda x: self.reload_on_save_var.set(not self.reload_on_save_var.get()))
+        master.bind('<Control-p>', lambda x: self.do_fix_goto.set(not self.do_fix_goto.get()))
+        master.bind('<Control-b>', lambda x: self.auto_backup_save_var.set(not self.auto_backup_save_var.get()))
+        
+        move_frame.rowconfigure(0,weight=2)
+        hitbox_frame.rowconfigure(1,weight=1)
+        cancel_frame.rowconfigure(1,weight=2)
+        cancel_frame.columnconfigure(1, weight=1)
+        #cancel_frame.columnconfigure(1, weight=2)
+
+        self.move_pair= ScrolledTextPair(move_frame, (12, 64), 28, True)
+        self.move_pair.grid(sticky=N+W+E+S, row=0, column=1)
+        self.move_raw = self.move_pair.left
+        self.move_intr = self.move_pair.right
+
+        hitbox_frame_header = Frame(loader_frame_hit)
+        hitbox_frame_header.pack()
+
+       
+
+        self.hitbox_index = 0
+        self.hitboxes_data = []
+
+        self.hitbox_index_var = StringVar()
+        self.hitbox_index_var.set('0/0')
+
+        self.hitbox_id_var = StringVar()
+        self.hitbox_id_var.set('-')
+
+        self.modifier_index_var = StringVar()
+        self.modifier_index_var.set('0/0')
+
+
+        hitbox_iterator_frame = Frame(hitbox_frame)
+        hitbox_frame_label = Label(hitbox_iterator_frame, text="Attack: ", font=bold_label_font)
+        next_hitbox_button = Button(hitbox_iterator_frame, text=">", width=1, command=lambda: self.next_hitbox_command())
+        prev_hitbox_button = Button(hitbox_iterator_frame, text="<", width=1, command=lambda: self.prev_hitbox_command())
+        hitbox_label = Label(hitbox_iterator_frame, textvariable = self.hitbox_index_var)
+        hitbox_id_label = Label(hitbox_iterator_frame, textvariable=self.hitbox_id_var, font=bold_label_font, padding=[0,0,20,4])
+
+        hitbox_frame_label.grid(row=0, column=0, sticky=N+W)
+        prev_hitbox_button.grid(sticky=N+W, row=0, column=2)
+        hitbox_label.grid(sticky=N+E+W, row=0, column=3)
+        next_hitbox_button.grid(sticky=N, row = 0, column=4)
+        master.bind('<Alt-[>',lambda x: self.prev_hitbox_command())
+        master.bind('<Alt-]>',lambda x: self.next_hitbox_command())
+
+        modifier_iterator_frame = Frame(hitbox_frame, padding= [40,0,0,0])
+        modifier_frame_label = Label(modifier_iterator_frame, text="Hitbox Modifier: ", font=bold_label_font)
+        next_modifier_button = Button(modifier_iterator_frame, text=">", width=1, command=lambda: self.next_modifier_command())
+        prev_modifier_button = Button(modifier_iterator_frame, text="<", width=1, command=lambda: self.prev_modifier_command())
+        modifier_label = Label(modifier_iterator_frame, textvariable = self.modifier_index_var)
+        
+        modifier_frame_label.grid(row=0, column=0, sticky=N+W)
+        prev_modifier_button.grid(sticky=N, row=0, column=1)
+        modifier_label.grid(sticky=N+E+W, row=0, column=2)
+        next_modifier_button.grid(sticky=N, row = 0, column=3)
+        master.bind('<Alt-{>',lambda x: self.prev_modifier_command())
+        master.bind('<Alt-}>',lambda x: self.next_modifier_command())
+        
+        #hitbox_iterator_frame.grid_columnconfigure(1, weight=1)
+
+        hitbox_id_label.grid(row=0, column=1)
+        hitbox_iterator_frame.grid(row=0, column=1, pady=4)
+        modifier_iterator_frame.grid(row=0, column=2)
+
+        self.hitbox_pair = ScrolledTextPair(hitbox_frame, (18, 80), 40, True)
+        self.hitbox_pair.grid(sticky=N+W+E+S, row=1, column=1, rowspan=1)
+        self.hitbox_raw = self.hitbox_pair.left
+        self.hitbox_intr = self.hitbox_pair.right
+
+        self.modifier_pair = ScrolledTextPair(hitbox_frame, (12, 70), 40, True)
+        self.modifier_pair.grid(sticky=N+W+E+S, row=1, column=2, padx=6)
+        self.modifier_raw = self.modifier_pair.left
+        self.modifier_intr = self.modifier_pair.right
+
+        s.configure('Panel.TFrame', background= '#FFFFFF')
+        self.available_modifier_var = StringVar()
+        self.available_modifier_var.set('()')
+        self.move_btn_var = StringVar(value=f"+ modifier to {self.move_id_textvar.get()}, attack {self.hitbox_index + 1}")
+        available_modifier_lbl = Label(modifier_iterator_frame, textvariable= self.available_modifier_var, padding= [98,0,0,0])
+        modifier_add_new = Button(modifier_iterator_frame, textvariable=self.move_btn_var, command=lambda :self.assign_modifier(), width=30)
+        available_modifier_lbl.grid(row=0, column=4)
+        modifier_add_new.grid(row=0, column=5, sticky=N+E)
+        # m_label.grid()
+
+        self.font_group = Frame(cancel_frame)
+        self.font_group.grid(row=0,column=0)
+        self.font_label = Label(self.font_group,text='Font Scale:')
+        self.font_label.grid(row=0, column=1,sticky=E,pady=4)
+        Button(self.font_group, text="-", width=4, command=lambda: self.cancel_pair.change_font_size(-2)).grid(row=0, column=2,sticky=E)
+        Button(self.font_group, text="+", width=4, command=lambda: self.cancel_pair.change_font_size(2)).grid(row=0, column=3,sticky=E)
+        master.bind('<Control-+>',lambda x: self.cancel_pair.change_font_size(-2))
+        master.bind('<Control-=>',lambda x: self.cancel_pair.change_font_size(2))
+
+        self.script_descriptor = Label(self.font_group, text="")
+        self.script_descriptor.grid(row=0,column=4, padx=4)
+
+
+
+        self.find_label = Label(cancel_frame,text='Find:')
+        self.find_label.grid(row=0, column=4,sticky=E,pady=4)
+        self.find_var = StringVar()
+        self.find_entry = Entry(cancel_frame,width=60,textvariable=self.find_var)
+        self.find_entry.grid(row=0, column=5,sticky=E,pady=4)
+        self.prev_button = Button(cancel_frame, text="Find Prev.", width=10, command=lambda: self.find("prev")).grid(row=0, column=6,sticky=W)
+        self.next_button = Button(cancel_frame, text="Find Next", width=10, command=lambda: self.find("next")).grid(row=0, column=7,sticky=W)
+        master.bind('<Control-f>', lambda x: self.find_entry.focus())
+        self.find_entry.bind('<Return>', lambda x: self.find("next"))
+        master.bind('<F3>', lambda x: self.find("next"))
+        master.bind('<Shift-F3>', lambda x: self.find("prev"))
+        self.cancel_pair = ScrolledTextPair(cancel_frame, (70, 90), 40, add_canvas=True)
+        self.cancel_pair.grid(sticky=N+W+E+S, row = 1, column = 0, columnspan=8)
+
+        self.cancel_raw = self.cancel_pair.left
+
+        self.cancel_intr = self.cancel_pair.right
+        
+        master.bind('<Control-Key-1>', lambda x: self.change_tab(0))
+        master.bind('<Control-Key-2>', lambda x: self.change_tab(1))
+        master.bind('<Control-Key-3>', lambda x: self.change_tab(2))
+
+        master.bind('<Control-KP_1>', lambda x: self.change_tab(0))    
+        master.bind('<Control-KP_2>', lambda x: self.change_tab(1))
+        master.bind('<Control-KP_3>', lambda x: self.change_tab(2))
+
+        clipboard_label = Label(loader_frame_clip, text="Cheat Engine", font = bold_label_font)
+        clipboard_label.grid(sticky=N+W+E, row=0, column=0)
+
+        clipboard_move_button = Button(loader_frame_clip, text="Copy Move to Clipboard", command=lambda: GUI_MoveViewer.copy_to_clipboard_and_strip(self.move_raw.get('1.0', END)))
+        clipboard_move_button.grid(sticky=N + W + E, row=1, column=0)
+        master.bind('<Control-n>',lambda x: GUI_MoveViewer.copy_to_clipboard_and_strip(self.move_raw.get('1.0', END)))
+
+        clipboard_hitbox_button = Button(loader_frame_clip, text="Copy Hitbox to Clipboard", command=lambda: GUI_MoveViewer.copy_to_clipboard_and_strip(self.hitbox_raw.get('1.0', END)))
+        clipboard_hitbox_button.grid(sticky=N + W + E, row=2, column=0)
+        master.bind('<Control-,>',lambda x: GUI_MoveViewer.copy_to_clipboard_and_strip(self.hitbox_raw.get('1.0', END)))
+        
+        clipboard_modifier_button = Button(loader_frame_clip, text="Copy Modifier to Clipboard", command=lambda: GUI_MoveViewer.copy_to_clipboard_and_strip(self.modifier_raw.get('1.0', END)))
+        clipboard_modifier_button.grid(sticky=N + W + E, row=3, column=0)
+        master.bind('<Control-.>',lambda x: GUI_MoveViewer.copy_to_clipboard_and_strip(self.modifier_raw.get('1.0', END)))
+
+        clipboard_cancel_button = Button(loader_frame_clip, text="Copy Scripting to Clipboard", command=lambda: GUI_MoveViewer.copy_to_clipboard_and_strip(self.cancel_raw.get('1.0', END)))
+        clipboard_cancel_button.grid(sticky=N + W + E, row=4, column=0)
+        master.bind('<Control-/>',lambda x: GUI_MoveViewer.copy_to_clipboard_and_strip(self.cancel_raw.get('1.0', END)))
+
+        tool_label = Label(loader_frame_tools, text="Tools", font=bold_label_font)
+        tool_label.pack()
+
+        encode_to_decode = Frame(loader_frame_tools)
+        encode_to_decode.pack()
+        self.tool_decode_string = StringVar()
+        self.tool_encode_string= StringVar()
+        self.tool_decode_string.set('0')
+        self.tool_encode_string.set('0')
+        self.tool_decode_string.trace('w', self.encode)
+        self.tool_encode_string.trace('w', self.decode)
+        self.tool_decode = Entry(encode_to_decode, textvariable=self.tool_decode_string, width=10)
+        self.tool_encode = Entry(encode_to_decode, textvariable=self.tool_encode_string, width=10)
+        self.tool_encode.grid(row=0, column=0)
+        self.tool_decode.grid(row=0, column=1)
+        master.bind('<Control-e>', lambda x: self.tool_encode.focus())
+        master.bind('<Control-d>', lambda x: self.tool_decode.focus())
+
+        tool_encode_label = Label(encode_to_decode, text='Encoded')
+        tool_decode_label = Label(encode_to_decode, text='Decoded')
+        tool_encode_label.grid(row=1, column=0)
+        tool_decode_label.grid(row=1, column=1)
+
+        hex_separate = Label(loader_frame_tools,text='--------------------------')
+        hex_separate.pack()
+
+        hex_to_dec = Frame(loader_frame_tools)
+        hex_to_dec.pack()
+        self.tool_hex_string = StringVar()
+        self.tool_dec_string = StringVar()
+        self.tool_hex_string.set('0x00ff')
+        self.tool_dec_string.set('255')
+        self.tool_hex_string.trace('w', self.hex_to_dec)
+        self.tool_dec_string.trace('w', self.dec_to_hex)
+
+        self.tool_hex = Entry(hex_to_dec, textvariable=self.tool_hex_string, width=10)
+        self.tool_dec = Entry(hex_to_dec, textvariable=self.tool_dec_string, width=10)
+        self.tool_hex.grid(row=0, column=0)
+        self.tool_dec.grid(row=0, column=1)
+        master.bind('<Control-E>', lambda x: self.tool_hex.focus())
+        master.bind('<Control-D>', lambda x: self.tool_dec.focus())
+
+        tool_hex_label = Label(hex_to_dec, text='HEX')
+        tool_dec_label = Label(hex_to_dec, text='DEC')
+        tool_hex_label.grid(row=1, column=0)
+        tool_dec_label.grid(row=1, column=1)
+
+        hexf_to_float = Frame(loader_frame_tools)
+        hexf_to_float.pack()
+        self.tool_hexf_string = StringVar()
+        self.tool_float2_string = StringVar()
+        self.tool_hexf_string.set('0x3f800000')
+        self.tool_float2_string.set('1.0')
+        self.tool_hexf_string.trace('w', self.hex_to_float)
+        self.tool_float2_string.trace('w', self.float_to_hex)
+
+        self.tool_hexf = Entry(hexf_to_float, textvariable=self.tool_hexf_string, width=10)
+        self.tool_float2 = Entry(hexf_to_float, textvariable=self.tool_float2_string, width=10)
+        self.tool_hexf.grid(row=0, column=0)
+        self.tool_float2.grid(row=0, column=1)
+        master.bind('<Alt-h>', lambda x: self.tool_hexf.focus())
+        master.bind('<Alt-H>', lambda x: self.tool_float2.focus())
+
+        tool_hexf_label = Label(hexf_to_float, text='HEX')
+        tool_float2_label = Label(hexf_to_float, text='Float')
+        tool_hexf_label.grid(row=1, column=0)
+        tool_float2_label.grid(row=1, column=1)
+        
+        conv_separate = Label(loader_frame_tools,text='--------------------------')
+        conv_separate.pack()
+
+        FP16_to_float = Frame(loader_frame_tools)
+        FP16_to_float.pack()
+        self.tool_float_string = StringVar()
+        self.tool_fp16_string= StringVar()
+        self.tool_float_string.set('1.0')
+        self.tool_fp16_string.set('0x3c00')
+        self.tool_fp16_string.trace('w', self.fp16_to_float)
+        self.tool_float_string.trace('w', self.float_to_fp16)
+        self.tool_float = Entry(FP16_to_float, textvariable=self.tool_float_string, width=10)
+        self.tool_fp16 = Entry(FP16_to_float, textvariable=self.tool_fp16_string, width=10)
+        self.tool_fp16.grid(row=0, column=0)
+        self.tool_float.grid(row=0, column=1)
+        master.bind('<Control-h>', lambda x: self.tool_fp16.focus())
+        master.bind('<Control-H>', lambda x: self.tool_float.focus())
+
+        tool_fp16_label = Label(FP16_to_float, text='FP16')
+        tool_float_label = Label(FP16_to_float, text='Float')
+        tool_fp16_label.grid(row=1, column=0)
+        tool_float_label.grid(row=1, column=1)
+
+        mm_to_m = Frame(loader_frame_tools)
+        mm_to_m.pack()
+        self.tool_meter_string = StringVar()
+        self.tool_mm_string= StringVar()
+        self.tool_meter_string.set('1.0')
+        self.tool_mm_string.set('0x03e8')
+        self.tool_mm_string.trace('w', self.mm_to_meter)
+        self.tool_meter_string.trace('w', self.meter_to_mm)
+        self.tool_meter = Entry(mm_to_m, textvariable=self.tool_meter_string, width=10)
+        self.tool_mm = Entry(mm_to_m, textvariable=self.tool_mm_string, width=10)
+        self.tool_mm.grid(row=0, column=0)
+        self.tool_meter.grid(row=0, column=1)
+        master.bind('<Alt-m>', lambda x: self.tool_mm.focus())
+        master.bind('<Alt-M>', lambda x: self.tool_meter.focus())
+
+        tool_mm_label = Label(mm_to_m, text='Millimeter')
+        tool_meter_label = Label(mm_to_m, text='Meter')
+        tool_mm_label.grid(row=1, column=0)
+        tool_meter_label.grid(row=1, column=1)
+
+    def hex_to_dec(self, *args):
+        
+        try:
+            if self.master.focus_get() != self.tool_dec:
+                fmt_map = {
+                    1: 'b',  # signed char
+                    2: 'h',  # signed short
+                    4: 'i',  # signed int
+                }
+                i = bytes.fromhex(self.tool_hex_string.get().strip().lower().replace('0x', ''))
+                # i = int(self.tool_hex_string.get(), 16)
+                i = struct.unpack(f'>{fmt_map[len(i)]}', i)[0]
+                self.tool_dec_string.set(i)
+        except:
+            pass
+
+    def dec_to_hex(self, *args):
+        try:
+            if self.master.focus_get() != self.tool_hex:
+                i = int(self.tool_dec_string.get(), 10)
+                i = struct.pack('>h',i)
+                self.tool_hex_string.set(f'0x{i.hex()}')
+        except:
+            pass
+
+    def decode(self, *args):
+        try:
+            if self.master.focus_get() != self.tool_decode:
+                i = int(self.tool_encode_string.get(), 16)
+                i = MovelistParser.decode_move_id(i, self.movelist)
+                self.tool_decode_string.set(i)
+        except:
+            pass
+
+    def encode(self, *args):
+        try:
+            if self.master.focus_get() != self.tool_encode:
+                i = int(self.tool_decode_string.get(), 10)
+                i = MovelistParser.encode_move_id(i, self.movelist)
+                self.tool_encode_string.set(hex(i))
+        except:
+            pass
+
+    def fp16_to_float(self, *args):
+        try:
+            if self.master.focus_get() != self.tool_float:
+                int_val = int(self.tool_fp16_string.get(), 16)
+                val_fp32 = struct.unpack('>e', struct.pack('>H', int_val))[0]
+                
+                self.tool_float_string.set(f"{val_fp32}")
+        except:
+            pass 
+    
+    def float_to_fp16(self, *args):
+        try:
+            if self.master.focus_get() != self.tool_fp16:
+                val_float = float(self.tool_float_string.get())
+                int_val = struct.unpack('>H', struct.pack('>e', val_float))[0]
+                self.tool_fp16_string.set(hex(int_val))
+        except:
+            pass
+
+    def mm_to_meter(self, *args):
+        try:
+            if self.master.focus_get() != self.tool_meter:
+                i = int(self.tool_mm_string.get(), 16)
+                self.tool_meter_string.set(i / 1000)
+        except:
+            pass
+
+    def meter_to_mm(self, *args):
+        try:
+            if self.master.focus_get() != self.tool_mm:
+                i = float(self.tool_meter_string.get())
+                self.tool_mm_string.set(f'0x{int(i * 1000):04x}')
+        except:
+            pass
+
+    def hex_to_float(self, *args):
+        try:
+            if self.master.focus_get() != self.tool_float2:
+                int_val = int(self.tool_hexf_string.get(), 16)
+                val_fp32 = struct.unpack('<f', struct.pack('<i', int_val))[0]
+                
+                self.tool_float2_string.set(f"{val_fp32}")
+        except:
+            pass 
+    
+    def float_to_hex(self, *args):
+        try:
+            if self.master.focus_get() != self.tool_hexf:
+                val_float2 = float(self.tool_float2_string.get())
+                int_val = struct.pack('>f', val_float2)
+                self.tool_hexf_string.set(f'0x{int_val.hex()}')
+        except:
+            pass
+
+    def load_movelist(self, path):
+        try:
+            self.movelist = MovelistParser.Movelist.from_file(path)
+            self.movelist_name_var.set(self.movelist.name)
+            self.movelist.verbose = self.verbose
+        except Exception as e:
+            print(e)
+
+    def set_movelist(self, movelist):
+        self.movelist:MovelistParser.Movelist = movelist
+        self.movelist.verbose = self.verbose
+        try:
+            self.movelist_name_var.set(self.movelist.name)
+            self.movelist.load_json()
+        except:
+            pass
+
+    def change_tab(self, index):
+        self.display_frame.select(index)
+        if index == 0:
+            self.move_raw.focus()
+        elif index == 1:
+            self.hitbox_raw.focus()
+        elif index == 2:
+            self.cancel_raw.focus()
+
+
+    def save_move_bytes_command(self,update_goto=True):
+        if self.move_id_textvar.get() != "-":
+            self.save_move['state'] = DISABLED
+        move = self.movelist.all_moves[int(self.move_id_textvar.get())]
+        move_successful = self.text_entry_to_bytes(self.move_raw, move, MovelistParser.Move.LENGTH)
+
+        hitbox_successful = True
+        if self.hitbox_index >= 0:
+            if len(move.attacks) > 0:
+                attack = move.attacks[self.hitbox_index]
+                if isinstance(attack, MovelistParser.Throw):
+                    hitbox_successful = self.text_entry_to_bytes(self.hitbox_raw, attack, MovelistParser.Throw.LENGTH)
+                else:
+                    hitbox_successful = self.text_entry_to_bytes(self.hitbox_raw, attack, MovelistParser.Attack.LENGTH)
+
+                if hitbox_successful:
+                    self.hitbox_pair.highlight_blue()
+                else:
+                    self.hitbox_pair.highlight_red()
+
+        modifier_successful = True
+        if self.modifier_index >=0:
+            if len(self.loaded_modifiers) > 0:
+                modifier = self.loaded_modifiers[self.modifier_index]
+                modifier_successful = self.text_entry_to_bytes(self.modifier_raw, modifier[2], MovelistParser.AttackModifier.LENGTH)
+            if modifier_successful:
+                self.modifier_pair.highlight_blue()
+            else:
+                self.modifier_pair.highlight_red()
+
+        cancel = move.cancel
+        cancel_successful = self.text_entry_to_bytes(self.cancel_raw, cancel, 0)
+
+        if move_successful:
+            self.move_pair.highlight_blue()
+        else:
+            self.move_pair.highlight_red()
+
+        if cancel_successful:
+            self.cancel_pair.highlight_blue()
+        else:
+            self.cancel_pair.highlight_red()
+        time.sleep(1)
+
+        if move_successful and hitbox_successful and modifier_successful and cancel_successful:
+            self.inject_movelist_dialog(False)
+            time.sleep(3)
+            
+            print(f'{time.strftime("[%I:%M:%S %p]")} Saved changes to move {self.encoded_move_id_textvar.get()}')
+
+            if self.auto_backup_save_var.get() == True:
+                count=0
+                max_count = int(self.overlay_config.get_property('DisplaySettings','max_backup_count',20))
+                os.makedirs('./Backups', exist_ok=True)
+                for file in Path('./Backups').iterdir():
+                    count += 1
+
+                if count == max_count:
+                    i = 0
+                    while i < max_count - 1:
+                        os.remove(f'./backups/KHD_backup_{i}.khd')
+                        i += 1
+                    count = 1
+                
+                if count > 0:
+                    os.rename('./Backups/KHD_backup_latest.khd', f'./Backups/KHD_backup_{count-1}.khd')
+                
+                with open('./Backups/KHD_backup_latest.khd', 'wb') as fw:
+                    fw.write(self.movelist.generate_modified_movelist_bytes())
+                    print(f'{time.strftime("[%I:%M:%S %p]")} Saved backups: {count+1} | Max Count: {max_count}')
+
+
+            if self.do_fix_goto.get() == False:
+                self.do_fix_goto.set(True)
+            
+            if self.reload_on_save_var.get() == True:
+                self.load_moveid(self.move_id_textvar.get(),manual=True)
+                
+            elif self.reload_on_save_var.get() == False:
+                self.move_pair.highlight_orange()
+                self.hitbox_pair.highlight_orange()
+                self.modifier_pair.highlight_orange()
+                self.cancel_pair.highlight_orange()
+
+            self.save_move['state'] = NORMAL
+                
+                
+    def find(self, direction="next"):
+        raw_pattern = self.find_var.get()
+        if not raw_pattern:
+            return
+
+        regex_pattern = re.escape(raw_pattern)
+        regex_pattern = regex_pattern.replace(r"\?", r".")
+        count_var = IntVar()
+        is_backwards = (direction == "prev")
+        
+        if is_backwards:
+            start_pos = self.cancel_pair.left.index("sel.first" if self.cancel_pair.left.tag_ranges("sel") else "insert")
+            stop_pos = "1.0"
+        else:
+            start_pos = self.cancel_pair.left.index("sel.last" if self.cancel_pair.left.tag_ranges("sel") else "insert")
+            stop_pos = "end"
+
+        pos = self.cancel_pair.left.search(
+            regex_pattern, 
+            start_pos, 
+            stopindex=stop_pos, 
+            backwards=is_backwards, 
+            regexp=True,
+            count=count_var, 
+            nocase=True
+        )
+
+        # Wrap around logic
+        if not pos:
+            wrap_start = "end" if is_backwards else "1.0"
+            wrap_stop = "1.0" if is_backwards else "end"
+            pos = self.cancel_pair.left.search(
+                regex_pattern, wrap_start, stopindex=wrap_stop, 
+                backwards=is_backwards, regexp=True, count=count_var, nocase=True
+            )
+
+        if pos:
+            self._apply_selection(pos, count_var.get())
+
+    def _apply_selection(self, start_index, length):
+        end_index = f"{start_index}+{length}c"
+        self.cancel_pair.left.tag_remove("sel", "1.0", "end")
+        self.cancel_pair.left.tag_add("sel", start_index, end_index)
+        self.cancel_pair.left.mark_set("insert", end_index)
+        self.cancel_pair.left.see(start_index)
+        self.cancel_pair.left.focus_set()          
+                
+            
+        
+
+
+    def text_entry_to_bytes(self, text_widget, modified, bytes_length):
+        raw = text_widget.get(1.0, END)
+        raw = raw.replace('\n', '').replace(' ', '')
+        move_length = bytes_length * 2
+        try:
+            _ = int(raw, 16)
+            if move_length > 0:
+                if len(raw) != move_length:
+                    raise AssertionError()
+
+            b = []
+            
+            for i in range(0, len(raw), 2):
+                b.append(int(raw[i:i + 2], 16))
+            
+            modified_bytes = bytes(b)
+            modified.modified_bytes = modified_bytes
+            return True
+        except Exception as e:
+            print(e)
+            return False
+
+    def next_hitbox_command(self):
+        self.hitbox_index += 1
+        if self.hitbox_index >= len(self.hitboxes_data):
+            self.hitbox_index = 0
+        self.load_hitbox()
+
+    def prev_hitbox_command(self):
+        self.hitbox_index -= 1
+        if self.hitbox_index < 0:
+            self.hitbox_index = 0
+        self.load_hitbox()
+
+    def next_move_id_command(self):
+        self.load_moveid(str(int(self.move_id_textvar.get()) + 1), clear_history=True)
+
+    def prev_move_id_command(self):
+        self.load_moveid(str(int(self.move_id_textvar.get()) - 1), clear_history=True)
+
+    def set_character_id(self, id):
+        try:
+            self.movelist.character_id = id
+            self.character_id_var.set(id)
+            if not os.path.exists(f'./Data/Character/{self.movelist.character_id}') and self.character_id_var.get() != '000':
+                character_dir = f'./Data/Character/{self.movelist.character_id}'
+                empty_json = '[\n\n]'
+                os.mkdir(character_dir)
+                os.mkdir(f'{character_dir}/Scripts/')
+                os.mkdir(f'{character_dir}/Scripts/A5/')
+                os.mkdir(f'{character_dir}/Scripts/25/')
+                os.mkdir(f'{character_dir}/Value_Types/')
+
+                with open(f'{character_dir}/Scripts/A5/01.json', 'w') as file:
+                    file.write(empty_json)
+                with open(f'{character_dir}/Scripts/A5/0d.json', 'w') as file:
+                    file.write(empty_json)
+                with open(f'{character_dir}/Scripts/25/03.json', 'w') as file:
+                    file.write(empty_json)
+                with open(f'{character_dir}/Scripts/25/0d.json', 'w') as file:
+                    file.write(empty_json)
+                with open(f'{character_dir}/Scripts/25/14.json', 'w') as file:
+                    file.write(empty_json)
+                print(f'{time.strftime("[%I:%M:%S %p]")} Created Character JSON setup: ./Data/Character/{id}')
+
+            if self.movelist != None:
+                self.movelist.load_json()
+            
+            if id != '000':
+                print(f'{time.strftime("[%I:%M:%S %p]")} Set Character ID: {id}')
+
+                    
+        except:
+            print("ID isn't valid.")
+            self.movelist.character_id = '000'
+            self.character_id_var.set('000')
+            return
+    
+    def clear_all_history(self):
+        self.backward_history.clear()
+        self.forward_history.clear()
+        self.prev_load_button['state'] = DISABLED
+        self.next_load_button['state'] = DISABLED
+        self.clear_history_button['state'] = DISABLED
+
+    def load_moveid_from_history(self, command = None, mode=0):
+        if mode == 0:
+            if len(self.backward_history) > 0:
+                self.forward_history.append(str(hex(MovelistParser.encode_move_id(int(self.move_id_textvar.get()),self.movelist))))
+                self.next_load_button['state'] = NORMAL
+                self.load_moveid(self.backward_history.pop(),forward=False)
+                if len(self.backward_history) == 0:
+                    self.prev_load_button['state'] = DISABLED
+                else:
+                    self.prev_load_button['state'] = NORMAL
+        if mode == 1:
+            if len(self.forward_history) > 0:
+                self.prev_load_button['state'] = NORMAL
+                self.backward_history.append(str(hex(MovelistParser.encode_move_id(int(self.move_id_textvar.get()),self.movelist))))
+                self.load_moveid(self.forward_history.pop())
+                if len(self.forward_history) == 0:
+                    self.next_load_button['state'] = DISABLED
+                else:
+                    self.next_load_button['state'] = NORMAL
+        
+        
+
+    def load_moveid(self, move_id, track_history = True, clear_history = False, forward = True, manual = False):
+        try:
+            if move_id[0:2] == "0x":
+                id = int(move_id[2:],16)
+                encoded_id = id 
+                id = MovelistParser.decode_move_id(id,self.movelist)
+            else:
+                id = int(move_id)
+                encoded_id = MovelistParser.encode_move_id(id,self.movelist)
+            self.save_move['state'] = NORMAL
+        except:
+            print('unrecognized move_id: {}'.format(move_id))
+            return
+
+        if clear_history:
+            self.forward_history.clear()
+            self.next_load_button['state'] = DISABLED
+            if self.move_id_textvar.get() != "-" and self.move_id_textvar.get() != str(id):
+                self.backward_history.append(str(hex(MovelistParser.encode_move_id(int(self.move_id_textvar.get()),self.movelist))))
+
+        if id < len(self.movelist.all_moves) and id >= 0:
+            if self.move_id_textvar.get() != str(id) and self.move_id_textvar.get() != "-" and track_history and forward:
+                self.prev_load_button['state'] = NORMAL
+                if len(self.backward_history) > 0 or len(self.forward_history) > 0:
+                    self.clear_history_button['state'] = NORMAL
+                if len(self.backward_history) > 20:
+                    last = self.backward_history.pop()
+                    self.backward_history.clear()
+                    self.backward_history.append(last)
+
+            self.move_id_textvar.set('{}'.format(id))
+            self.encoded_move_id_textvar.set('{} ({})'.format(id,hex(MovelistParser.encode_move_id(id,self.movelist))))
+            move:MovelistParser.Move = self.movelist.all_moves[id]
+
+            bytes, guide = move.get_gui_guide()
+
+            raw, intr = self.apply_guide(bytes, guide)
+
+            self.move_raw.delete(1.0, END)
+            self.move_raw.insert(END, raw)
+
+            self.move_intr.delete(1.0, END)
+            self.move_intr.insert(END, intr)
+
+            self.hitbox_index = 0
+            self.modifier_index = 0
+            self.hitboxes_data = []
+            self.modifiers_data = []
+            self.loaded_modifiers = []
+
+            for i, attack in enumerate(move.attacks):
+                bytes, guide = attack.get_gui_guide()
+                raw, intr = self.apply_guide(bytes, guide)
+                self.hitboxes_data.append((raw, intr, move.attack_indexes[i]))
+
+            for i, modifier in enumerate(move.modifiers):
+                bytes, guide = modifier.get_gui_guide()
+                raw, intr = self.apply_guide(bytes, guide)
+                self.modifiers_data.append((raw, intr, move.modifiers[i]))
+            self.load_hitbox()
+
+            input_params = MovelistParser.find_script_info(self.movelist, encoded_id, self.movelist.x25_char_data, self.movelist.x25_custom_data, self.movelist.x25_data, "0d")
+            self.script_descriptor.config(text=f'{input_params[0]}: {input_params[1]}')
+            cancel_guide, goto_line_to_line = move.cancel.get_gui_guide(input_params[1])
+            #for bytes in cancel_guide:
+
+            raw = ''
+            intr = ''
+            for bytes, desc in cancel_guide:
+                raw = '{}{}\n'.format(raw, bytes)
+                intr = '{}{}\n'.format(intr, desc)
+
+
+            self.cancel_raw.delete(1.0, END)
+            self.cancel_raw.insert(END, raw)
+            self.cancel_intr.delete(1.0, END)
+            self.cancel_intr.insert(END, intr)
+
+            highlight_tag_and_remove(self.cancel_intr, '<sc>', 'soulcharge')
+            highlight_tag_and_remove(self.cancel_intr, '<b>', 'bold')
+
+            if manual:
+                self.move_pair.highlight_green()
+                self.hitbox_pair.highlight_green()
+                self.modifier_pair.highlight_green()
+                self.cancel_pair.highlight_green()
+                time.sleep(2)
+            self.move_pair.highlight_gray()
+            self.hitbox_pair.highlight_gray()
+            self.modifier_pair.highlight_gray()
+            self.cancel_pair.highlight_gray()
+            
+
+            if self.cancel_pair.canvas != None:
+                canvas = self.cancel_pair.canvas
+                canvas.delete(ALL)
+                h = self.cancel_pair.font_height
+                #canvas.config(width = (len(goto_line_to_line) + 2) * 4)
+                #canvas.config(width=60)
+                canvas.configure(scrollregion=(0, 0, 0, h * len(cancel_guide)))
+                i = 0
+                lanes = [-1] * len(GUI_MoveViewer.DISTINCT_COLORS)
+                for x, y in goto_line_to_line:
+                    my_lane = 0 #if we don't find a lane (unlikely) it all just kinda breaks
+                    for j, lane in enumerate(lanes):
+                        if x > lane:
+                            my_lane = j
+                            break
+                    lanes[my_lane] = y #reserving lane until we're done
+
+                    canvas.create_rectangle(2 + my_lane*4, (h * x) - (h/2), 2 + (my_lane*4) + 2, (h * (y + 1)) - (h/2), fill=GUI_MoveViewer.DISTINCT_COLORS[my_lane], outline='black')
+                    i += 1
+
+
+    def load_hitbox(self):
+        i = self.hitbox_index
+        if len(self.hitboxes_data) == 0:
+            self.hitbox_raw.delete(1.0, END)
+            self.hitbox_intr.delete(1.0, END)
+        elif i < len(self.hitboxes_data):
+            self.hitbox_raw.delete(1.0, END)
+            self.hitbox_raw.insert(END, self.hitboxes_data[i][0])
+
+            self.hitbox_intr.delete(1.0, END)
+            self.hitbox_intr.insert(END, self.hitboxes_data[i][1])
+        self.update_hitbox_var()
+        self.loaded_modifiers = []
+        self.load_modifier()
+        self.available_modifier_var.set(f'({len(self.movelist.unused_modifiers)} unused)')
+        self.move_btn_var.set(f"+ modifier to {self.move_id_textvar.get()}, attack {self.hitbox_index + 1}")
+        
+        self.hitbox_pair.highlight_gray()
+        self.modifier_pair.highlight_gray()
+        
+
+    def update_hitbox_var(self):
+        self.hitbox_index_var.set('{}/{}'.format(self.hitbox_index + 1 if len(self.hitboxes_data) > 0 else 0, len(self.hitboxes_data)))
+        if len(self.hitboxes_data) > 0:
+            self.hitbox_id_var.set('{}'.format(self.hitboxes_data[self.hitbox_index][2]))
+        else:
+            self.hitbox_id_var.set('-')
+
+    def load_modifier(self):
+        j = self.modifier_index
+        self.loaded_modifiers = []
+        for i, modifier in enumerate(self.modifiers_data):
+                hitbox_id = modifier[2].hitbox_id
+                if hitbox_id == self.hitbox_index + 1:
+                    self.loaded_modifiers.append(modifier)
+        if len(self.loaded_modifiers) == 0:
+            self.modifier_raw.delete(1.0, END)
+            self.modifier_intr.delete(1.0, END)
+        elif j < len(self.loaded_modifiers):
+            self.modifier_raw.delete(1.0, END)
+            self.modifier_raw.insert(END, self.loaded_modifiers[j][0])
+
+            self.modifier_intr.delete(1.0, END)
+            self.modifier_intr.insert(END, self.loaded_modifiers[j][1])
+        self.modifier_index_var.set('{}/{}'.format(self.modifier_index + 1 if len(self.loaded_modifiers) > 0 else 0, len(self.loaded_modifiers)))
+        self.modifier_pair.highlight_gray()
+        
+
+    def next_modifier_command(self):
+        self.modifier_index += 1
+        if self.modifier_index >= len(self.loaded_modifiers):
+            self.modifier_index = 0
+        self.load_modifier()
+
+    def prev_modifier_command(self):
+        self.modifier_index -= 1
+        if self.modifier_index < 0:
+            self.modifier_index = 0
+        self.load_modifier()
+
+    def assign_modifier(self):
+        move = self.movelist.all_moves[int(self.move_id_textvar.get())]
+        move_id_bytes = int(self.move_id_textvar.get()).to_bytes(4, 'little')
+        modifier_bytes = move_id_bytes + (self.hitbox_index + 1).to_bytes(4, 'little') + b'\x00' * (MovelistParser.AttackModifier.LENGTH - 8)
+        if len(self.movelist.unused_modifiers) > 0:
+            new_modifier:MovelistParser.AttackModifier = self.movelist.unused_modifiers.pop(0)
+            new_modifier.bytes = modifier_bytes
+            new_modifier.move_id = int(self.move_id_textvar.get())
+            new_modifier.hitbox_id = self.hitbox_index + 1
+        else:
+            new_modifier = MovelistParser.AttackModifier(modifier_bytes)
+            self.movelist.all_modifiers.append(new_modifier)
+            self.movelist.modifier_count += 1
+            for i, move in enumerate(self.movelist.all_moves):
+                move.cancel_address += MovelistParser.AttackModifier.LENGTH
+            for cancel in self.movelist.all_cancels.items():
+                cancel[1].address += MovelistParser.AttackModifier.LENGTH
+        move.modifiers.append(new_modifier)
+        
+        self.save_move_bytes_command(self.do_fix_goto.get())
+        self.load_moveid(self.move_id_textvar.get())
+            
+
+    def add_empty_modifier(self):
+        pass
+
+    def load_movelist_dialog(self):
+        #Tk().withdraw()  # we don't want a full GUI, so keep the root window from appearing
+
+        filename = askopenfilename(initialdir = '{}/{}'.format(os.getcwd(), '/movelists'),filetypes=[('Header File', '*.khd *.sc6_movelist'),('All Files','*.*')])  # show an "Open" dialog box and return the path to the selected file
+        self.load_movelist(filename)
+        print(f'{time.strftime("[%I:%M:%S %p]")} Loaded movelist: {filename}')
+        if self.move_id_textvar.get() != "-":
+            self.save_move['state'] = NORMAL
+
+
+
+    def save_movelist_dialog(self):
+        filename = asksaveasfilename(defaultextension=".khd")
+        if filename == '':
+            return
+        else:
+            with open(filename, 'wb') as fw:
+                fw.write(self.movelist.generate_modified_movelist_bytes())
+            print(f'{time.strftime("[%I:%M:%S %p]")} Saved movelist: {filename}')
+
+    def inject_movelist_dialog(self,log=False):
+        self.log_injected.set(log)
+        self.do_inject_movelist = True   
+                
+
+    def apply_guide(self, bytes, guide):
+        raw = ''
+        intr = ''
+        for start, stop, func, info in guide:
+            slice = bytes[start:stop]
+            raw += ('{}\n'.format(MovelistParser.Movelist.bytes_as_string(slice)))
+            try:
+                intr += ('{} : {}\n'.format(func(slice, 0), info))
+            except:
+                intr += 'ERROR\n'
+        return raw, intr
+
+
+
+    def copy_to_clipboard_and_strip(text):
+            clip = Tk()
+            clip.withdraw()
+            clip.clipboard_clear()
+            clip.clipboard_append(text.replace('\n', ''))
+            clip.destroy()
+
+
+#https://stackoverflow.com/questions/32038701/python-tkinter-making-two-text-widgets-scrolling-synchronize
+class ScrolledTextPair(Frame):
+    '''Two Text widgets and a Scrollbar in a Frame'''
+
+    def __init__(self, master, width_lr, h, hide_scrollbar=False, add_canvas=False):
+        Frame.__init__(self, master, width=800, height=640)
+
+
+        # Creating the widgets
+        self.font_config = ConfigReader.ConfigReader('font_config')
+        self.custom_font = tkf.Font(family=self.font_config.get_property('Tabs','guide_font','Consolas'),size=self.font_config.get_property('Tabs','guide_font_size',10))
+        self.cancel_bold = tkf.Font(family=self.font_config.get_property("Tabs","bold_guide_font", "Consolas"), size=self.font_config.get_property('Tabs','guide_font_size',10), weight='bold')
+
+        self.left = Text(self, width = width_lr[0], wrap='none', height=h,  undo=True, autoseparators=True, maxundo=-1, font= self.custom_font)
+        self.right = Text(self, width = width_lr[1], wrap='none', height=h,  undo=True, autoseparators=True, maxundo=-1, font=self.custom_font)
+
+        self.right.tag_configure("bold", font=self.cancel_bold)
+        self.right.tag_configure("soulcharge", font=self.cancel_bold, foreground='#2C75FF')
+        self.font_height = tkf.Font(font=self.left['font']).metrics('linespace')
+        self.scrollbar = Scrollbar(self)
+        if not hide_scrollbar:
+            self.scrollbar.pack(side=RIGHT, fill=Y)
+        if add_canvas:
+            #self.canvas_frame = Frame(self, width=40, height=640)
+            #self.canvas_frame.pack_propagate(0)
+            #self.canvas_frame.pack(side=LEFT, fill=BOTH, expand=True)
+            self.canvas = Canvas(self, width=60, height = 640)
+            self.canvas.configure(background='white')
+
+            self.canvas.yview('moveto', '1.0')
+            self.pack_propagate(0)
+            self.canvas.pack(side=LEFT, fill='y', anchor=N+W)
+            
+            self.pack_propagate(1)
+            #self.canvas.create_rectangle(0,0, 20, 300, fill='red')
+
+            #self.canvas.create_window((0, 0), window=self.canvas_frame, anchor='nw')
+
+            # self.canvas.configure(scrollregion=(0,0, 40, 2000))
+            self.canvas.configure(scrollregion=self.canvas.bbox('all'))
+        else:
+            self.canvas = None
+
+        self.left.pack(side=LEFT, fill=BOTH, expand=True)
+        self.right.pack(side=LEFT, fill=BOTH, expand=True)
+        
+
+        #Styling
+        self.left.tag_configure("odd", background="#f0f0f0")
+        self.left.tag_configure("even", background="#ffffff")
+        self.left.tag_configure("red", background="#ffdddd")
+        self.left.tag_configure("blue", background="#ddddff")
+        self.left.tag_configure("green", background="#ddffdd")
+        self.left.tag_configure("orange", background="#Fbd2a3")
+        self.left.tag_raise('sel')
+
+        self.right.tag_configure("odd", background="#f0f0f0")
+        self.right.tag_configure("even", background="#ffffff")
+        self.right.tag_configure("red", background="#ffdddd")
+        self.right.tag_configure("blue", background="#ddddff")
+        self.right.tag_configure("green", background="#ddffdd")
+        self.right.tag_configure("orange", background="#Fbd2a3")
+        self.right.tag_raise('sel')
+
+        # Changing the settings to make the scrolling work
+        self.scrollbar['command'] = self.on_scrollbar
+        self.left['yscrollcommand'] = self.on_textscroll
+        self.right['yscrollcommand'] = self.on_textscroll
+        if add_canvas:
+            self.canvas['yscrollcommand'] = self.on_textscroll
+
+    def on_scrollbar(self, *args):
+        '''Scrolls both text widgets when the scrollbar is moved'''
+        self.left.yview(*args)
+        self.right.yview(*args)
+        if self.canvas != None:
+            self.canvas.yview(*args)
+    
+    def change_font_size(self, delta):
+        # Get the current size and update it
+        current_size = self.custom_font.actual("size")
+        new_size = current_size + delta
+    
+        # Update the font object; the Text widget updates automatically
+        self.custom_font.configure(size=new_size)
+        self.cancel_bold.configure(size=new_size)
+
+
+    def on_textscroll(self, *args):
+        '''Moves the scrollbar and scrolls text widgets when the mousewheel
+        is moved on a text widget'''
+        self.scrollbar.set(*args)
+        self.on_scrollbar('moveto', args[0])
+
+    def highlight_gray(self):
+        ScrolledTextPair.alternating_tags(self.left, 'odd', 'even')
+        ScrolledTextPair.alternating_tags(self.right, 'odd', 'even')
+
+    def highlight_blue(self):
+        ScrolledTextPair.alternating_tags(self.left, 'blue', 'even')
+        ScrolledTextPair.alternating_tags(self.right, 'blue', 'even')
+    
+    def highlight_green(self):
+        ScrolledTextPair.alternating_tags(self.left, 'green', 'even')
+        ScrolledTextPair.alternating_tags(self.right, 'green', 'even')
+
+    def highlight_orange(self):
+        ScrolledTextPair.alternating_tags(self.left, 'orange', 'even')
+        ScrolledTextPair.alternating_tags(self.right, 'orange', 'even')
+
+    def highlight_red(self):
+        ScrolledTextPair.alternating_tags(self.left, 'red', 'even')
+        ScrolledTextPair.alternating_tags(self.right, 'red', 'even')
+
+    # https://stackoverflow.com/questions/26348989/changing-background-color-for-every-other-line-of-text-in-a-tkinter-text-box-wid
+    def alternating_tags(text, even, odd):
+        lastline = text.index("end-1c").split(".")[0]
+        tag = odd
+        for i in range(1, int(lastline)):
+            for t in ('red', 'blue', 'green', 'orange', 'odd', 'even'):
+                text.tag_remove(t, "%s.0" % i, "%s.0" % (i + 1))
+            text.tag_add(tag, "%s.0" % i, "%s.0" % (i + 1))
+            tag = even if tag == odd else odd
+
+
+def highlight_tag_and_remove(tw, marker, highlight):
+    regex = '{}.*?{}'.format(marker, marker).replace('>', '\>').replace('<', '\<')
+    highlight_pattern_in_text_widget(tw, regex, marker, highlight, regexp=True)
+
+
+def highlight_pattern_in_text_widget(tw, pattern, marker, tag, start="1.0", end="end",
+                      regexp=False):
+    '''Apply the given tag to all text that matches the given pattern
+
+    If 'regexp' is set to True, pattern will be treated as a regular
+    expression according to Tcl's regular expression syntax.
+    '''
+
+    start = tw.index(start)
+    end = tw.index(end)
+    tw.mark_set("matchStart", start)
+    tw.mark_set("matchEnd", start)
+    tw.mark_set("searchLimit", end)
+
+    count = IntVar()
+    while True:
+        index = tw.search(pattern, "matchEnd", "searchLimit",
+                            count=count, regexp=regexp)
+        if index == "": break
+        if count.get() == 0: break  # degenerate pattern which matches zero-length strings
+        tw.mark_set("matchStart", index)
+        tw.mark_set("matchEnd", "%s+%sc" % (index, count.get()))
+        tw.tag_add(tag, "matchStart", "matchEnd")
+
+        size = len(marker)
+
+        tw.delete('{}-{}c'.format('matchEnd', size), "matchEnd")
+        tw.delete("matchStart", '{}+{}c'.format('matchStart', size))
+
+
+if __name__ == '__main__':
+    root = Tk()
+    my_gui = GUI_MoveViewer(root)
+    root.mainloop()
+    

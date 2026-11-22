@@ -1,0 +1,59 @@
+[
+	{
+		"state": "0x0017",
+		"script_type": "14",
+		"name": "<b>SET STUN<b>:",
+		"args": [
+			{
+				"name": "type",
+				"value_type": "AirStunType"
+			}
+		]
+	},
+	{
+		"state": "0x0019",
+		"script_type": "14",
+		"name": "<b>SET TIRA PERSONA<b>:",
+		"args": [
+			{
+				"name": "persona",
+				"value_type": "TiraPersona"
+			}
+		]
+	},
+	{
+		"state": "0x0021",
+		"script_type": "14",
+		"name": "<b>STUN CANCEL OVERRIDE<b>:",
+		"args": [
+			{
+				"name": "type",
+				"value_type": "StunOverride"
+			}
+		]
+	},
+	{
+		"state": "0x0038",
+		"script_type": "14",
+		"name": "<b>STOP TIME<b>:",
+		"args": [
+			{
+
+			}
+		]
+	},
+	{
+		"state": "0x003e",
+		"script_type": "14",
+		"name": "<b>FREEZE OPPONENT<b>:",
+		"args": [
+			{
+				"name": "freeze",
+				"value_type": "BoolFlag",
+				"data": {
+					"replace_char": ""
+				}
+			}
+		]
+	}
+]
