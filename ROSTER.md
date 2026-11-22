@@ -1,11 +1,9 @@
 # WESTERN HEART — ROSTER
 ## The Nine Souls
 
-Nine fighters. Each is a lost soul of Tong-Nou. Each soul's **body** is a Tekken 3 TMD model extraction (geometry only — the donor, not the character). Each soul's **skin** is recombined Eastern Mind bitmap extractions. Each soul's **moveset** is a Tekken 3 fighting style, reinterpreted through the soul's nature.
+Nine fighters. Each is a lost soul of Tong-Nou. Each soul's **body** is its own model — a Tripo original or its own Eastern Mind soul body where one has been built (KAI, TOU) — with the Tekken donor model kept only as a legacy/ladder-back attire. Each soul's **skin** is recombined Eastern Mind bitmap extractions. Each soul's **moveset** is a Tekken fighting style, reinterpreted through the soul's nature. **Asset rule:** Tripo models are the MAIN / DEFAULT attires (owner 2026-10-18); teardown / foreign-skeleton / older in-game models become alternate attires behind the Tripo default. See `asset-manifest.md` for source tracing and `roster/TRIPO-REGISTRY.md` for the per-fighter model map.
 
-**Asset rule:** No new models. No new textures. Body + skin + moveset are all recombined extractions. See `asset-manifest.md` for source tracing.
-
-**Note on soul details:** Full visual/personality reference for each soul comes from the Eastern Mind extraction (in-game sprites, the Illustrated Book). Style assignments below are the design framework; the extraction refines them. (§8 ZEN and §9 GYOU are the exceptions: settled canon per owner decisions 2026-10-24 and 2026-11-10, not framework.)
+**Note on soul details:** Full visual/personality reference for each soul comes from the Eastern Mind extraction (in-game sprites, the Illustrated Book). Style assignments below are the design framework; the extraction refines them. (§8 ZEN and §9 GYOU record the owner's corrections of 2026-11-21, which supersede the 2026-10-24 and 2026-11-10 decisions on Zen's body and on Gyou's Paul condition — neither is settled canon.)
 
 ---
 
@@ -13,7 +11,7 @@ Nine fighters. Each is a lost soul of Tong-Nou. Each soul's **body** is a Tekken
 - **Nature:** 凛 — dignified, cold, self-possessed. The soul the player begins as. Remembers nothing but the trial.
 - **Fighting style:** Mishima-style karate (Tekken: Jin Kazama's moveset) — precise, fundamental, the "honest" style. Rin is the baseline every other soul deviates from.
 - **Body donor:** Jin Kazama TMD — young fighter's build, unadorned (legacy attire, last; extraction pending teardown).
-- **Default body:** `game/assets/models/rin-body.glb` — T7-style Jin (RigModels fan rip, via Demonio's T7 model).
+- **Default body:** Demonio's canonical body (`demonio-a1`, `roster/demonio/attires/attire1/model.glb`) — RIN fights in his vessel Demonio's body. `rin-body.glb` was the Steve Fox stand-in (wrong canon per owner 2026-10-15; the Steve body belongs to Zui) and is retired.
 - **Skin:** Eastern Mind protagonist-sprite extractions. Cold blue-white palette (kimono-dye winter tones).
 - **Archetype:** The shoto. Balanced. The soul learning itself.
 
@@ -28,7 +26,7 @@ Nine fighters. Each is a lost soul of Tong-Nou. Each soul's **body** is a Tekken
 ### 3. TOU — The Fighting Soul
 - **Nature:** 闘 — battle itself. The soul that exists only to fight. No philosophy, no fear. The purest expression of the trial.
 - **Fighting style:** Paul Phoenix's power karate/judo hybrid (Tekken) — devastating single strikes, the Death Fist. Maximum damage, minimum subtlety.
-- **Body donor:** Paul Phoenix TMD — heavy, powerful build. **PENDING better model** (no Paul Phoenix in T7-style set; awaiting T6/TTT2 extraction).
+- **Body:** TOU's own Eastern Mind body (`tou-soul-tex.glb`, 2026-11-10). Paul Phoenix is his fighting base / held kit, not his body. **Legacy:** the assembled Paul body (`tou-body.glb`, docs/TOU-BODY-BUILD-2026-11-09.md).
 - **Skin:** Eastern Mind warrior-sprite extractions. Blood reds, scorched oranges (Fire force).
 - **Archetype:** The grappler/brawler. High damage, honest.
 
@@ -36,21 +34,21 @@ Nine fighters. Each is a lost soul of Tong-Nou. Each soul's **body** is a Tekken
 - **Nature:** 沙 — sand, desert. From the Sha-mo Desert of the Land of Life. A soul that flows, erodes, surrounds. Never where you struck.
 - **SHA is the soul shared by three sisters — Saku Ra (the bloom), Kinpo (the thorn), Awa Pop (the bubble). One soul, three moods, three sisters. SHA is not a fighter and has no select card of its own: the `sha` roster card was retired 2026-11-20 (owner order: Saku Ra is ONE fighter), and the single fighter is SAKU RA below. (CANON.md §4, "On SHA's three-way split.")**
 - **Fighting style (of the soul's vessels):** Ling Xiaoyu's Baguazhang (Tekken) — flowing, circular, evasive. The art of not being hit.
-- **Body donor:** Saku Ra (T7-style Ling Xiaoyu GLB, `game/assets/models/sha-body.glb`). **Legacy:** Ling Xiaoyu TMD (last attire only).
+- **Body:** Saku Ra's own Tripo main (`saku-ra`, `roster/sakura/attires/attire1/model-rerig.glb`; `saku-ra-main.glb`). **Legacy:** the T7-style Xiaoyu GLB (`sha-body.glb`) and the Ling Xiaoyu TMD (last attire only).
 - **Skin:** Eastern Mind desert-sprite extractions. Sand ochres, bleached bone whites.
 - **Archetype:** The evasive. Movement as defense.
 
 ### 5. KAI — The Sea Soul
 - **Nature:** 海 — the sea. Fluid, rhythmic, unstoppable. Fights like water — finds every opening.
 - **Fighting style:** Eddy Gordo's Capoeira (Tekken) — rhythmic, ground-flowing, relentless pressure. The tide that doesn't stop.
-- **Body donor:** King Tyrant (T7-style Eddy Gordo GLB, `game/assets/models/kai-body.glb`). **Legacy:** Eddy Gordo TMD (last attire only).
+- **Body:** KAI's own Eastern Mind body (`kai-soul-tex.glb`, 2026-11-10). His vessel King Tyrant fights in his own Tripo. **Legacy:** the T7-style Eddy shell (`kai-body.glb`) and the Eddy Gordo TMD (last attire only).
 - **Skin:** Eastern Mind water-sprite extractions. Deep blues, foam whites, abyssal blacks (Water force).
 - **Archetype:** The rushdown. Relentless rhythm offense.
 
 ### 6. JIN — The Blade Soul
 - **Nature:** 刃 — the blade. A soul that cuts. Precise, ritual, terrifying. (Not to be confused with RIN, the protagonist.) The soul JIN (刃) is NOT Jin Kazama and NOT a soul form of Jin Kazama — the soul JIN, the Blade Soul, whose vessel is Phantom. (CANON.md Law 2, owner 2026-11-08.)
 - **Fighting style:** Yoshimitsu's advanced ninjutsu (Tekken) — sword techniques, teleportation stances, self-damaging power moves. The blade that cuts both ways.
-- **Body donor:** Yoshimitsu TMD — armored, masked, inhuman.
+- **Body:** Phantom's own Tripo — JIN's vessel body. **Body donor (legacy):** Yoshimitsu TMD — armored, masked, inhuman (last attire only).
 - **Skin:** Eastern Mind blade/spirit extractions. Polished steel grays, shrine-vermillion accents.
 - **Archetype:** The wildcard. High-risk tools, stance complexity.
 
@@ -64,20 +62,20 @@ Nine fighters. Each is a lost soul of Tong-Nou. Each soul's **body** is a Tekken
 ### 8. ZEN — The Still Soul
 - **Nature:** 禅 — meditation, stillness. A soul that barely moves — and doesn't need to. The calm center of the storm.
 - **Zen is NEITHER Julia NOR Heihachi.** (Owner decision 2026-10-24, `docs/decisions/2026-10-24-zen-base-decision.md`, resolving PR #1016.) Zen is the Still Soul, unvesseled — the soul that refused the trial: "Stillness does not compete." (CANON.md §4, "On ZEN and GYOU.")
-- **Fighting base (settled canon):** Eleven / Twelve (Street Fighter, 2D concept: shapeshifting mimicry) → Dural (Virtua Fighter 5, 3D implementation: chrome humanoid, the closest 3D thing to Eleven/Twelve — Dural is NOT a separate pick, it is the 3D stand-in for Eleven/Twelve) → Zen's OWN canon moves on top. X.COPY (Twelve's copy super) as ONE super, NOT the identity. Plus Tentacle Mode, Oversoul, transformation, spirit-form stand (canon).
-- **Default body:** T7 Julia model (`game/assets/models/zen-body.glb`) — a BODY, not a vessel, not the fighter's identity. (CANON.md §4, "Soul bodies," owner order 2026-10-15.) Legacy: Julia Chang TMD (last attire only).
+- **Fighting base:** Eleven / Twelve (Street Fighter, 2D concept: shapeshifting mimicry) → Dural (Virtua Fighter 5, 3D implementation: chrome humanoid, the closest 3D thing to Eleven/Twelve — Dural is NOT a separate pick, it is the 3D stand-in for Eleven/Twelve) → Zen's OWN canon moves on top. X.COPY (Twelve's copy super) as ONE super, NOT the identity. Plus Tentacle Mode, Oversoul, transformation, spirit-form stand (canon).
+- **Default body:** Zen's own Tripo spirit body — the yellow lemon-octopus spirit demon (Tripo 8c46e379, `roster/zen/attires/attire1/model.glb`, key `zen` / `zen-attire1`), wired as Attire 1 default. He has a spirit form of his own (Tripo 803f4cf1, `roster/zen/spirit/model.glb`, key `zen-spirit`) and two transformation modes inside Attire 1 — Tentacle Mode (Tripo 9460095d) and Oversoul (Tripo 2bbc8e88). The T7 Julia model (`game/assets/models/zen-body.glb`) is NOT his body — it is Attire 2, LEGACY BODY only. (Owner correction 2026-11-21; `roster/zen/CANON.md`, owner canon 2026-10-21.)
 - **Skin:** Eastern Mind meditation-sprite extractions. Temple-stone grays, incense-smoke whites (Earth force).
 - **Archetype:** The counter-fighter. Punish, don't chase.
-- **Open:** Zen is hidden from the select grid (`SELECT_HIDDEN` in `game/js/select-screen.js`) while the comment above that set says Zen stays selectable — contradiction reported, not fixed silently (owner call). Zen's pronoun is unsettled in the records ("she" in the owner order of 2026-11-20; "his" in the 2026-10-24 decision doc) — no pronoun is used in this entry until the owner settles it.
+- **Open:** Zen is hidden from the select grid (`SELECT_HIDDEN` in `game/js/select-screen.js`) while the comment above that set says Zen stays selectable — contradiction reported, not fixed silently (owner call). Zen is he/him (owner 2026-11-21).
 
 ### 9. GYOU — The Moving Soul
 - **Nature:** 行 — going, action, motion itself. A soul that cannot stop moving. Speed as identity.
 - **Gyou is NOT Hwoarang.** (Owner 2026-11-10; `game/js/fighter.js:211`.) Gyou is the Moving Soul, unvesseled as a whole — a splinter is trapped in CYBORG X ("a machine is a nowhere"). (CANON.md §4, "On the GYOU splinter.") Hwoarang's holder is Tobi.
-- **Fighting base (settled canon):** Paul Phoenix's power karate/judo, mixed with fire attacks — Gyou's spirit-body variant. Owner-sanctioned 2026-10-23 ("he can have Paul Phoenix moves mixed with like flame attacks") and 2026-11-10 ("Gyou was probably Paul Phoenix and fire attacks"). Gyou is a SECOND Paul holder alongside Tou — Tou holds Paul in canon (ROSTER.md §3; CANON.md Paul→TOU) — so Gyou's Paul standing rests on the owner's explicit words, not on "no one else has Paul."
+- **Fighting base:** Paul Phoenix's power karate/judo, mixed with fire attacks — Gyou's spirit-body variant, HELD ONLY IF GYOU NEEDS SOMEBODY. Owner-sanctioned 2026-10-23 ("he can have Paul Phoenix moves mixed with like flame attacks") and 2026-11-10 ("Gyou was probably Paul Phoenix and fire attacks") — re-conditioned by the owner 2026-11-21: Paul goes to Gyou only if Gyou needs somebody; if Gyou has somebody else, he is not Paul. He is definitely NOT Hwoarang — Hwoarang's holder is Tobi (she/her). Whether Gyou needs somebody is an open owner call, not settled in this doc.
 - **Body:** Gyou's own spirit body (`gyou-attire1`), rigged and wired 2026-11-09. Legacy: Hwoarang TMD (last attire only; framework-era donor, superseded).
 - **Skin:** Eastern Mind wind/motion extractions. Storm grays, lightning whites (Wood force — the growing, reaching element).
 - **Archetype:** The speedster. Frame-trap pressure.
-- **Open:** the owner said "probably Paul" / "whatever" — the Paul holding is NOT locked as permanent in this doc. Owner call still open.
+- **Open:** the owner said "probably Paul" / "whatever" — the Paul holding is NOT locked as permanent in this doc. Owner call still open: does Gyou need somebody, or does he have somebody else?
 
 ---
 

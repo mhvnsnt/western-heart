@@ -10,7 +10,7 @@
 
 export const FULL_ROSTER = [
   // ——— THE NINE SOULS ———
-  { id: 'rin', name: 'RIN', title: 'The Protagonist Soul', base: 'Jin Kazama', moveset: 'demonio', model: 'rin-body', tintStrength: 0.6,
+  { id: 'rin', name: 'RIN', title: 'The Protagonist Soul', base: 'Jin Kazama', moveset: 'demonio', model: 'demonio-a1', tintStrength: 0.6,
     colors: { suit: 0x1a3a6b, trim: 0x9fd8ff }, style: 'Karate', archetype: 'Balanced' },
   { id: 'byou', name: 'BYOU', title: 'The Sick Soul', base: 'Wang Jinrei', moveset: 'demonio', model: null, modelPending: true, tintStrength: 0.6,
     colors: { suit: 0x4a5a1a, trim: 0x8a9a3a }, style: 'Xingyiquan', archetype: 'Trickster' },
@@ -62,7 +62,7 @@ export const FULL_ROSTER = [
     colors: { suit: 0x1a5a3a, trim: 0x3acc6a }, style: 'Tae Kwon Do', archetype: 'Pressure' },
 
   // ——— MAIN ROSTER ———
-  { id: 'pantera', name: 'PANTERA', title: 'The Panther Soul', base: 'King', moveset: 'king', model: 'pantera', tintStrength: 0.25,
+  { id: 'pantera', name: 'PANTERA', title: 'The Panther Soul', base: 'King', moveset: 'king', model: 'pantera-leoman', tintStrength: 0.25,
     colors: { suit: 0x6b2d8f, trim: 0xcc0000 }, style: 'Grappler',
     surge: { name: "PANTHER'S WRATH", color: 0x8b2bd8, accent: 0xff2222 },
     stats: { speed: 4.0, jump: 6.8, power: 1.3, defense: 1.2 },
@@ -113,7 +113,7 @@ export const FULL_ROSTER = [
     colors: { suit: 0xd44d8a, trim: 0xffd700 }, style: 'Traditional Martial Arts', archetype: 'Counter' },
   { id: 'waterfall', name: 'WATERFALL', title: "Grief of Nine", base: 'Josie', moveset: 'demonio', model: 'waterfall', tintStrength: 0.6,
     colors: { suit: 0x3a6acc, trim: 0x9fd8ff }, style: 'Eskrima', archetype: 'Rushdown' },
-  { id: 'kingtyrant', name: 'KING TYRANT', title: 'Showman King', base: 'Eddy Gordo', moveset: 'xiaoyu', model: 'king-tyrant', tintStrength: 0.25,
+  { id: 'kingtyrant', name: 'KING TYRANT', title: 'Showman King', base: 'Eddy Gordo', moveset: 'xiaoyu', model: 'king-tyrant-attire1', tintStrength: 0.25,
     colors: { suit: 0x8a6a1a, trim: 0xffd700 }, style: 'Capoeira', archetype: 'Showman' },
   { id: 'burger', name: 'BURGER', title: 'Hunger is a Curse', base: 'Bob', moveset: 'bryan', model: 'burger', tintStrength: 0.25,
     colors: { suit: 0xcc8833, trim: 0xff4400 }, style: 'Sumo/Brawler', archetype: 'Power',
@@ -142,7 +142,7 @@ export const FULL_ROSTER = [
     colors: { suit: 0x2a2a3a, trim: 0xc2a36b }, style: 'Military', archetype: 'Balanced' },
   { id: 'purplerain', name: 'PURPLE RAIN', title: 'MJ x Prince x Pimp', base: 'Lee', moveset: 'demonio', model: 'purple-rain', tintStrength: 0.6,
     colors: { suit: 0x6b2d8f, trim: 0xff00ff }, style: 'Martial Arts', archetype: 'Stylish' },
-  { id: 'nightwolf', name: 'NIGHTWOLF', title: 'Storm Shadow', base: 'Julia', moveset: 'xiaoyu', model: 'nightwolf', tintStrength: 0.6,
+  { id: 'nightwolf', name: 'NIGHTWOLF', title: 'Storm Shadow', base: 'Julia', moveset: 'xiaoyu', model: 'nightwolf-attire1', tintStrength: 0.6,
     colors: { suit: 0x1a3a5a, trim: 0x6accff }, style: 'Xinyi Liuhe', archetype: 'Balanced' },
   { id: 'dio', name: 'DIO', title: 'Raging Demon', base: 'Akuma', moveset: 'heihachi', model: 'dio-attire1', tintStrength: 0.6,
     colors: { suit: 0x1a1a1a, trim: 0xff0000 }, style: 'Satsui no Hado', archetype: 'Shoto' },

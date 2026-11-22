@@ -333,7 +333,10 @@ export const MODEL_URLS = {
   // (flat colours) stays beside it.
   'kai-body': 'assets/models/kai-soul-tex.glb',
   'jin-body': 'assets/models/jin-body.glb',
-  'rin-body': 'assets/models/rin-body.glb',
+  // RETIRED 2026-11-21 (canon fix): the 'rin-body' key pointed at assets/models/rin-body.glb,
+  // which is the Steve Fox model, not Jin — wrong canon per owner 2026-10-15 (the Steve
+  // body belongs to Zui). RIN now loads 'demonio-a1' (roster-full.js). The file is NOT
+  // deleted — deletion is the owner's call.
   'jin-t7': 'assets/models/jin.glb',
   // JIN KAZAMA "Bloodline Ember" (owner 2026-10-18 — see
   // roster/jin/attires/bloodline-ember/README.md): devil-gene texture reskin of the
