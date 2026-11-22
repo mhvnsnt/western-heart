@@ -8,6 +8,7 @@ decode with before/after proof.
 |---|---|---|---|---|---|---|
 | Tekken 3 | King on Pantera — `game/assets/anim/t3/king_on_pantera_leoman/` | Bake defect (decode clean, bake used the wrong rig: pack hip 0.9805 m vs shipped rig 1.0613 m, 8% pair-geometry error) + old-tool Head-track deviation (50.90°) | **Fixed** (this PR) | Verified T3 divmot decode + shipped `game/assets/models/pantera.glb` + `lab/tools/t3_motion_bake.py` | 32 clips + `rows.pack.json` (256 rows) + `reactions.pack.json` (568 rows) + `skeleton.json` re-baked; `hit_frames.json` unchanged (rig-independent) | #1807 |
 | Tekken 7 | King throws (10 clips; common_709, rotsm_534, rotsm_574, rotsm_578, …) | Roles disputed — the throw hunt decides them, not this sweep. Do NOT re-label or re-wire until the hunt decides. The frozen Chest / toe channels are proven source-real (see below), not a bake error. | **Verified 4/10** — see verification row below | Real King `.tkmvst` + `tools/anim/tkmovesets2/tkmvst_to_wh.py` | 4 clips validate PASS; 6 pending; 0 fixed / 10 disputed | #1803 open |
+| Tekken 7 | King throw receivers (`_y`, 24 clips: 575/579 + 22 P1/P2) | Hips-sandwich degeneracy — the 574-only (U,V,W) fit has an exact 1-parameter α degeneracy, so every receiver built with it starts ~180° about Z (upside down). Permanent fix: the joint 574+578 sandwich + shared thrower-frame placement. Per-file doc: `docs/decode/T7-RECEIVER-FIX.md`. | **Fix formula solved** — rebuild owed: all 22 P1/P2 receivers + bank thrower 588 must be rebuilt with the joint sandwich before use. Audit: 18 of 22 need the flip, 4 unclear (ground face-down 692/696/700/704), 0 OK; all 24 `_n` throwers OK at f0. | Joint fit on bank 574 + bank 578 (cost 1.26e-11; hold-out 588 max 0.1278°) + game-sampler decode | 0 rebuilt in this PR (docs only); 23 clips owed the rebuild | (this PR) |
 | Virtua Fighter 5 | Motion (all) | Motion not decoded | **Unsolved** | — | 0 fixed | PR #713 open |
 | Tekken Tag 2 | motbin motion | MOTA offsets present, motion not decoded | **Unsolved** | — | 0 fixed | — |
 | WWF No Mercy | Cain Elias — `game/assets/movesets/cainelias.json` (5 throws only) | Frames were analogy estimates, not measured from the clips | **Fixed** | Measured clip values from `teardown/wwf-no-mercy/animations/` (manifest + moves-enriched DB) | 5 moves corrected (15 numbers, nothing else); rest of file unchanged | #1804 |
@@ -36,6 +37,15 @@ decode with before/after proof.
   said the clip roles were "swapped". That is not decided — roles are
   DISPUTED and the throw hunt decides them. Nothing in this sweep re-labels
   or re-wires the 10 clips.
+- T7 receiver fix (this PR): the throw hunt has since decided the roles —
+  574/578 (+588/590/592/594/716/718) are the thrower's throw motions and
+  575/579 (+ the P1/P2 receivers) are the victim's receivers — and the
+  two-stage mechanism (grab → hold move 554 → the `_y` selected by the
+  throw motion's standing slot) corrects the "Receiver found: move 554"
+  line in "What the real King `.tkmvst` proved" below: 554 is the hold,
+  not the final receiver. The permanent fix record is
+  `docs/decode/T7-RECEIVER-FIX.md`. The existing rows above are left
+  as written; this bullet + the new T7-receiver row carry the update.
 
 ## Pattern verdict (Phase 2 Lane A)
 
