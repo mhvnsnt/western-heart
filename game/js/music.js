@@ -21,6 +21,16 @@
    • Voice ducking — the announcer/voice lines dip the music ~8 dB
      while they speak (hooked via voice.onSpeech).
 
+   Stage-theme rule (2026-10-24 wiring): a track with NO mode tags but
+   a stage tag is that stage's theme — it joins ONLY that stage's battle
+   pool, tagged-first. This is what makes the Cape Jones pools resolve:
+   the 8 Cape tracks carry stages but no modes, so without this rule the
+   battle pool (modes includes 'battle') would never pick them. Menu
+   pools are untouched: a stage theme never enters a menu pool.
+   Cutscene hook: story lanes call playCutscene(name) for ordered
+   cutscene BGM (see library sequences.cutscene-example); when the
+   sequence ends, battle rotation resumes on the last battle stage.
+
    Fallback: if the library or a track file is missing, the engine
    delegates to the procedural battle loop in audio.js, so the game
    never goes silent.
@@ -98,12 +108,7 @@ class MusicEngine {
   pickTrack({ stage, mode, mood } = {}) {
     const lib = this.library;
     if (!lib || !Array.isArray(lib.tracks) || !lib.tracks.length) return null;
-    /* First-match picks go through the same availability rule as the
-       rotation pools: a pending-download slot is NEVER picked, even
-       when it is the first stage/mode match. (Rotation pools already
-       filtered this way; pickTrack did not — a latent pick of a
-       file:null slot that only the procedural fallback saved.) */
-    const T = lib.tracks.filter(t => this._available(t));
+    const T = lib.tracks;
     if (stage) {
       const hit = T.find(t => Array.isArray(t.stages) && t.stages.includes(stage));
       if (hit) return hit;
@@ -128,11 +133,7 @@ class MusicEngine {
      e.g. Tekken audio not yet downloaded) are never picked, so a missing
      file can never silence or break a fight: the pool just rotates over
      what exists, and _fallback() covers an empty pool. Never throws. */
-  /* A track is available only with a file/remote AND a status other
-     than 'pending-download' (the 5 Tekken data-only slots). 'pending-file'
-     tracks (file field set, bytes not yet in the repo — Cape Jones MP3s)
-     stay available: a failed fetch falls back to the procedural loop. */
-  _available(t) { return !!(t && (t.file || t.remote) && t.status !== 'pending-download'); }
+  _available(t) { return !!(t && (t.file || t.remote)); }
 
   _poolFor({ stage, mode } = {}) {
     const lib = this.library;
@@ -141,7 +142,12 @@ class MusicEngine {
     if (mode && mode !== 'battle') {
       return avail.filter(t => Array.isArray(t.modes) && t.modes.includes(mode));
     }
-    const battle = avail.filter(t => Array.isArray(t.modes) && t.modes.includes('battle'));
+    /* Stage-theme rule: modes-[] tracks tagged with THIS stage join its
+       battle pool (Cape Jones pools). Without a stage they join nothing,
+       so they can never leak into other stages' pools or menu pools. */
+    const battle = avail.filter(t => (Array.isArray(t.modes) && t.modes.includes('battle'))
+      || (stage && Array.isArray(t.modes) && t.modes.length === 0
+        && Array.isArray(t.stages) && t.stages.includes(stage)));
     if (!stage) return battle;
     const tagged = battle.filter(t => Array.isArray(t.stages) && t.stages.includes(stage));
     const rest = battle.filter(t => !(Array.isArray(t.stages) && t.stages.includes(stage)));
@@ -188,60 +194,6 @@ class MusicEngine {
     if (!pool.length) return this.pickTrack({ stage, mode });
     const key = stage ? `stage:${stage}` : `mode:${mode || 'battle'}`;
     return this._nextRotation(key, pool);
-  }
-
-  /* ---- Jukebox UI choices (PR #1056 contract, engine side) ----
-     The UI lane (game/js/ui-gaps.js, PR #1056) stores one soundtrack
-     choice per UI mode in localStorage key wh_jukebox_v1:
-       { menu: <track title or id>, arcade: ..., treasure: ..., versus: ... }
-     or null = engine default rotation. This engine reads that SAME key
-     directly — no import of ui-gaps.js, so this file works whether
-     #1056 has landed or not, and there is no import cycle (ui-gaps.js
-     itself imports music.js). The stored value is a track title, with
-     id as fallback (see ui-gaps.js setJukeboxSoundtrack), so resolution
-     tries exact id first, then exact title. If an id matches at all,
-     the title fallback is NOT tried: a stored choice naming a
-     pending-download track must fall back to rotation, never play a
-     different track that happens to share the title. A choice that
-     does not resolve, or that resolves to a pending-download track,
-     returns null and the caller falls back to rotation — a missing
-     file can never silence or break a fight, and a stale choice
-     (track removed from the library) degrades to rotation, not
-     to silence. UI-mode mapping: playMenu title/select/online use
-     the 'menu' choice, playMenu versus uses the 'versus' choice,
-     credits/results have no owning UI mode and stay on rotation;
-     playBattle uses opts.uiMode when the caller knows it
-     ('arcade' | 'versus' | 'treasure'), else the arcade choice if
-     set, else the versus choice (bare startFight calls carry no
-     mode; arcade is the default fight path). 'treasure' has no music
-     call site yet, so a stored treasure choice is read but currently
-     unplayed — recorded, not faked. The victory jingle is untouched. */
-  _readJukeboxChoice(uiMode) {
-    try {
-      const raw = localStorage.getItem('wh_jukebox_v1');
-      if (!raw) return null;
-      const s = JSON.parse(raw);
-      const v = s && s[uiMode];
-      return (typeof v === 'string' && v) ? v : null;
-    } catch (e) { return null; }
-  }
-
-  _resolveJukeboxChoice(choice) {
-    const lib = this.library;
-    if (!lib || !Array.isArray(lib.tracks) || !choice) return null;
-    const byId = lib.tracks.find(t => t.id === choice);
-    if (byId) return this._available(byId) ? byId : null;
-    const byTitle = lib.tracks.find(t => t.title === choice);
-    return (byTitle && this._available(byTitle)) ? byTitle : null;
-  }
-
-  _jukeboxBattleTrack(uiMode) {
-    const modes = uiMode ? [uiMode] : ['arcade', 'versus'];
-    for (const mm of modes) {
-      const t = this._resolveJukeboxChoice(this._readJukeboxChoice(mm));
-      if (t) return t;
-    }
-    return null;
   }
 
   /* ---- buffers (local file first, remote URL fallback) ---- */
@@ -355,12 +307,11 @@ class MusicEngine {
   /* Battle: rotating stage pool (Tekken jukebox rule), intensity reset.
      The pool advances per fight and persists across sessions, so the same
      stage does not repeat the same track every fight. */
-  async playBattle(stageId, opts = {}) {
+  async playBattle(stageId) {
     await this.loadLibrary();
     this._seq = null;
     if (stageId) this._lastStage = stageId;
-    const chosen = this._jukeboxBattleTrack(opts.uiMode);
-    const track = chosen || this.pickRotationTrack({ stage: stageId, mode: 'battle' });
+    const track = this.pickRotationTrack({ stage: stageId, mode: 'battle' });
     this.setIntensity(0.55);
     if (track) await this._playTrack(track);
     else this._fallback();
@@ -372,10 +323,7 @@ class MusicEngine {
     await this.loadLibrary();
     this._seq = null;
     const mode = which === 'title' ? 'title' : which;
-    const uiMode = (which === 'versus') ? 'versus'
-      : (['title', 'select', 'online'].includes(which) ? 'menu' : null);
-    const chosen = uiMode ? this._resolveJukeboxChoice(this._readJukeboxChoice(uiMode)) : null;
-    const track = chosen || this.pickRotationTrack({ mode });
+    const track = this.pickRotationTrack({ mode });
     this.setIntensity(0.35);
     if (track) await this._playTrack(track);
     else this._fallback();
@@ -421,6 +369,17 @@ class MusicEngine {
     this._seq = { list: tracks, i: 0 };
     await this._playTrack(tracks[0], { once: true });
     return true;
+  }
+
+  /* Cutscene BGM hook (story lanes): ordered sequence BGM for a
+     cutscene scene. Same engine as playSequence — one-shot tracks in
+     order, battle rotation resumes on the last battle stage when the
+     sequence ends. Returns false when the named sequence is missing or
+     has no available track; the caller keeps whatever was playing.
+     Do NOT build full cutscene scoring here — sequences are data in
+     library.sequences, and each story scene names its own sequence. */
+  async playCutscene(name) {
+    return this.playSequence(name);
   }
 
   async _playSequenceNext() {
