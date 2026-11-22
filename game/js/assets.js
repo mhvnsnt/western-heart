@@ -430,6 +430,7 @@ export const MODEL_URLS = {
   // SCIMITAR (2026-10-21, lane 4 rig batch 1): unrigged static -> auto-rigged via
   // tools/auto_rig knn backend (donor pantera.glb); owner's original stays untouched.
   scimitar: '../roster/scimitar/attires/attire1/source/scimitar-a1-rigged.glb', // 2026-11-06 owner: "that not the correct scimitar glb model from my tripo imports" -> his own Tripo pull (scimitar-a1.glb, Tripo a3e76dd5) rigged by tools/auto_rig/rig_tripo_static.py; was assets/models/scimitar-rigged.glb (Shaheen-based base mesh)
+  'scimitar-classic': 'assets/models/scimitar.glb', // Lane F 2026-11-21: Shaheen-based base mesh, ladders back behind the Tripo original (attires.js 'scimitar').
   // Created fighters use the Soldier.glb base from the CAW suite.
   // Relative path works on GitHub Pages (game/ -> customization/).
   custom: '../customization/create-fighter/assets/Soldier.glb',
@@ -507,6 +508,7 @@ export const MODEL_URLS = {
   // 73 joints); the key rides model-rigged.glb and the unrigged Tripo
   // stays beside it as source. See roster/ryuji-rock/attires/attire1/README.md.
   'ryuji-rock': '../roster/ryuji-rock/attires/attire1/model-rigged.glb',
+  'ryuji-rock-source': '../roster/ryuji-rock/attires/attire1/model.glb', // Lane F 2026-11-21: unrigged Tripo original beside the rigged build (attires.js 'ryuji-rock').
   // MEGAMI (2026-10-23, SmutBase 6 pipeline fighters 5-6): SmutBase Parvati
   // commission intake. In-repo build = meshopt-compressed (23.5 MB, validated);
   // intake original (191.6 MB) archived on release
