@@ -1,0 +1,575 @@
+{
+  "fighter": "bannon",
+  "display": "BANNON",
+  "tekken_base": "Jeffry McWild (Virtua Fighter 5)",
+  "vf_source": "VF5 PS3 (BLES00029) community movelists (GameFAQs/GameRevolution) + VF5 PS3 manual; see docs/research/VF5-MOVESET-CONVERSION-2026-10-22.md",
+  "vf_style": "Pancratium",
+  "proxy": false,
+  "proxy_note": null,
+  "schema_version": 2,
+  "bannon_wiring": {
+    "date": "2026-11-20",
+    "by": "lane-p2 (wh-moveset-fix)",
+    "owner_instruction": "gave everyone's moves correct. All the moves and inputs need to be correct.",
+    "method": [
+      "Wired vf-jeffry.json verbatim (25 moves) as the Bannon bank, per manifest game/data/movesets/bannon.json (user-locked 2026-10-22; base bank vf5/jeffry, status live).",
+      "Manifest extras: the two T3 Ogre strikes wired verbatim from t3-ogre.json rows 54/57, input remapped to the manifest slots (f+2, d/f+2), names as the manifest orders.",
+      "The bf-bannon King-proxy stub (11 moves) is retired from the roster; its file stays in place as Brutal Fist history. No bannon.glb model exists in holdings — model is an open gap."
+    ],
+    "counts": {
+      "moves": 27,
+      "jeffry_moves": 25,
+      "ogre_extras": 2
+    },
+    "gaps": [
+      "Manifest extra NOT wired — no source row in holdings: wrestling:mk-0739 (Oklahoma Slam, slot 2+4). Searched game/data/moveset-library/index.json and game/data/moveset-library/claimed-map.json (2026-11-20): the id appears in neither. The slot stays empty; no throw was invented.",
+      "No bannon.glb model in game/assets/models/ — roster entry carries modelPending: true.",
+      "index.json entry is owned by another lane; the exact entry payload is in the PR report."
+    ]
+  },
+  "moves": {
+    "1": {
+      "name": "Straight Knuckle",
+      "input": "1",
+      "vf_move": "Straight Knuckle",
+      "vf_input": "P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 8,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:jeffry/straight-knuckle",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1,2": {
+      "name": "Double Knuckle",
+      "input": "1,2",
+      "vf_move": "Double Knuckle",
+      "vf_input": "P,P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 14,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:jeffry/double-knuckle",
+      "input_slots": [
+        "1,2"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1,2,1": {
+      "name": "Double Knuckle Upper",
+      "input": "1,2,1",
+      "vf_move": "Double Knuckle Upper",
+      "vf_input": "P,P,P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 20,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:jeffry/double-knuckle-upper",
+      "input_slots": [
+        "1,2,1"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1,f+1": {
+      "name": "Body Blow",
+      "input": "1,f+1",
+      "vf_move": "Body Blow",
+      "vf_input": "P,6P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 16,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:jeffry/body-blow",
+      "input_slots": [
+        "1,f+1"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1,f+1,2": {
+      "name": "Head Cut Smash",
+      "input": "1,f+1,2",
+      "vf_move": "Head Cut Smash",
+      "vf_input": "P,6P,P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 22,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:jeffry/head-cut-smash",
+      "input_slots": [
+        "1,f+1,2"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1,4": {
+      "name": "Knuckle Kick",
+      "input": "1,4",
+      "vf_move": "Knuckle Kick",
+      "vf_input": "P,K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:jeffry/knuckle-kick",
+      "input_slots": [
+        "1,4"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f+1": {
+      "name": "Elbow Butt",
+      "input": "f+1",
+      "vf_move": "Elbow Butt",
+      "vf_input": "6P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 14,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:jeffry/elbow-butt",
+      "input_slots": [
+        "f+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f,f+1": {
+      "name": "Dash Elbow",
+      "input": "f,f+1",
+      "vf_move": "Dash Elbow",
+      "vf_input": "66P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 16,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:jeffry/dash-elbow",
+      "input_slots": [
+        "f,f+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f,f+1,1": {
+      "name": "Dash Elbow Upper",
+      "input": "f,f+1,1",
+      "vf_move": "Dash Elbow Upper",
+      "vf_input": "66P,P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 22,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:jeffry/dash-elbow-upper",
+      "input_slots": [
+        "f,f+1,1"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f+1,b+1": {
+      "name": "Elbow Hammer",
+      "input": "f+1,b+1",
+      "vf_move": "Elbow Hammer",
+      "vf_input": "6P,4P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 20,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:jeffry/elbow-hammer",
+      "input_slots": [
+        "f+1,b+1"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d+1": {
+      "name": "Low Knuckle",
+      "input": "d+1",
+      "vf_move": "Low Knuckle",
+      "vf_input": "2P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 7,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:jeffry/low-knuckle",
+      "input_slots": [
+        "d+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d/f+1": {
+      "name": "Smash Upper",
+      "input": "d/f+1",
+      "vf_move": "Smash Upper",
+      "vf_input": "3P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 15,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 3.0,
+      "soulGain": 8,
+      "anim_ref": "vf:jeffry/smash-upper",
+      "input_slots": [
+        "d/f+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d/f+1,1": {
+      "name": "Double Upper",
+      "input": "d/f+1,1",
+      "vf_move": "Double Upper",
+      "vf_input": "3P,P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 22,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:jeffry/double-upper",
+      "input_slots": [
+        "d/f+1,1"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "3": {
+      "name": "Upper Kick",
+      "input": "3",
+      "vf_move": "Upper Kick",
+      "vf_input": "K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 12,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:jeffry/upper-kick",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "3,4": {
+      "name": "Killing Knee Kick",
+      "input": "3,4",
+      "vf_move": "Killing Knee Kick",
+      "vf_input": "K,K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 20,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:jeffry/killing-knee-kick",
+      "input_slots": [
+        "3,4"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "3,4,1": {
+      "name": "Killing Knee Hammer",
+      "input": "3,4,1",
+      "vf_move": "Killing Knee Hammer",
+      "vf_input": "K,K,P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 26,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:jeffry/killing-knee-hammer",
+      "input_slots": [
+        "3,4,1"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f+3": {
+      "name": "Knee Attack",
+      "input": "f+3",
+      "vf_move": "Knee Attack",
+      "vf_input": "6K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 14,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:jeffry/knee-attack",
+      "input_slots": [
+        "f+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f,f+3": {
+      "name": "Kenka Kick",
+      "input": "f,f+3",
+      "vf_move": "Kenka Kick",
+      "vf_input": "66K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 18,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 3.0,
+      "soulGain": 8,
+      "anim_ref": "vf:jeffry/kenka-kick",
+      "input_slots": [
+        "f,f+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "b+3": {
+      "name": "Knee Push",
+      "input": "b+3",
+      "vf_move": "Knee Push",
+      "vf_input": "4K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 12,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:jeffry/knee-push",
+      "input_slots": [
+        "b+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d+3": {
+      "name": "Toe Kick",
+      "input": "d+3",
+      "vf_move": "Toe Kick",
+      "vf_input": "2K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 8,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:jeffry/toe-kick",
+      "input_slots": [
+        "d+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d/f+3": {
+      "name": "Side Kick",
+      "input": "d/f+3",
+      "vf_move": "Side Kick",
+      "vf_input": "3K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 16,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:jeffry/side-kick",
+      "input_slots": [
+        "d/f+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1+2": {
+      "name": "Body Stab",
+      "input": "1+2",
+      "vf_move": "Body Stab",
+      "vf_input": "P+K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 14,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:jeffry/body-stab",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f+1+2": {
+      "name": "Middle Hell Stab",
+      "input": "f+1+2",
+      "vf_move": "Middle Hell Stab",
+      "vf_input": "6P+K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 18,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:jeffry/middle-hell-stab",
+      "input_slots": [
+        "f+1+2"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1+3": {
+      "name": "Splash Mountain",
+      "input": "1+3",
+      "vf_move": "Splash Mountain",
+      "vf_input": "P+G",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 35,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.0,
+      "soulGain": 8,
+      "anim_ref": "vf:jeffry/splash-mountain",
+      "input_slots": [
+        "1+3"
+      ],
+      "move_class": "throw",
+      "note": "VF throw -> Tekken 1+3 per DOA-VF-CONVERSION mapping"
+    },
+    "f+1+3": {
+      "name": "Front Backbreaker",
+      "input": "f+1+3",
+      "vf_move": "Front Backbreaker",
+      "vf_input": "6P+G",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 40,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.5,
+      "soulGain": 8,
+      "anim_ref": "vf:jeffry/front-backbreaker",
+      "input_slots": [
+        "f+1+3"
+      ],
+      "move_class": "throw",
+      "note": "VF throw -> Tekken f+1+3"
+    },
+    "f+2": {
+      "name": "Bannon — Ogre Hammer (T3 ogre r54)",
+      "input": "f+2",
+      "t3_source": "ogre",
+      "t3_row": 54,
+      "t3_command": "8+LK",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:ogre:row:54",
+      "input_slots": [
+        "f+2"
+      ],
+      "move_class": "strike",
+      "note": "Bannon extra from manifest game/data/movesets/bannon.json (user-locked 2026-10-22): T3 Ogre row 54 verbatim, input remapped from native u+3 to the manifest slot f+2. Manifest note says 25 raw dmg; row damage is 15 (T3 170HP -> WH 100HP scale)."
+    },
+    "d/f+2": {
+      "name": "Bannon — Ogre Smash (T3 ogre r57)",
+      "input": "d/f+2",
+      "t3_source": "ogre",
+      "t3_row": 57,
+      "t3_command": "LK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:ogre:row:57",
+      "input_slots": [
+        "d/f+2"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36,
+      "note": "Bannon extra from manifest game/data/movesets/bannon.json (user-locked 2026-10-22): T3 Ogre row 57 verbatim, input remapped from native u+1,3_c36 to the manifest slot d/f+2. Manifest note says 25 raw dmg; row damage is 15 (T3 170HP -> WH 100HP scale)."
+    }
+  }
+}

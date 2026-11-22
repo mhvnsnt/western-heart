@@ -1,0 +1,512 @@
+{
+  "fighter": "vf-brad",
+  "display": "BRAD (VF)",
+  "tekken_base": "Brad Burns (Virtua Fighter 5)",
+  "vf_source": "VF5 PS3 (BLES00029) community movelists (GameFAQs — Sanctuary_Remix VF5 Brad Burns Guide, faqs/50113) + VF5 PS3 manual; see docs/movesets/DOA-VF-CONVERSION-2026-10-19.md",
+  "vf_style": "Muay Thai",
+  "proxy": false,
+  "proxy_note": null,
+  "schema_version": 2,
+  "moves": {
+    "1": {
+      "name": "Jab",
+      "input": "1",
+      "vf_move": "Jab",
+      "vf_input": "P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 8,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:brad/jab",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1,2": {
+      "name": "Jab Straight",
+      "input": "1,2",
+      "vf_move": "Jab Straight",
+      "vf_input": "P,P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 14,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:brad/jab-straight",
+      "input_slots": [
+        "1,2"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1,2,1": {
+      "name": "Combination Upper",
+      "input": "1,2,1",
+      "vf_move": "Combination Upper",
+      "vf_input": "P,P,P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 20,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:brad/combination-upper",
+      "input_slots": [
+        "1,2,1"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1,2,4": {
+      "name": "Combination Low",
+      "input": "1,2,4",
+      "vf_move": "Combination Low",
+      "vf_input": "P,P,K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:brad/combination-low",
+      "input_slots": [
+        "1,2,4"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1,f+1": {
+      "name": "Jab~Body Straight",
+      "input": "1,f+1",
+      "vf_move": "Jab~Body Straight",
+      "vf_input": "P,6P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 16,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:brad/jab-body-straight",
+      "input_slots": [
+        "1,f+1"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f+1": {
+      "name": "Elbow Hook",
+      "input": "f+1",
+      "vf_move": "Elbow Hook",
+      "vf_input": "6P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 14,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:brad/elbow-hook",
+      "input_slots": [
+        "f+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "b+1": {
+      "name": "Spine Whip",
+      "input": "b+1",
+      "vf_move": "Spine Whip",
+      "vf_input": "4P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 14,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:brad/spine-whip",
+      "input_slots": [
+        "b+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "b+1,4": {
+      "name": "Lumpini Combination",
+      "input": "b+1,4",
+      "vf_move": "Lumpini Combination",
+      "vf_input": "4P,K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 20,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:brad/lumpini-combination",
+      "input_slots": [
+        "b+1,4"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d+1": {
+      "name": "Sit Jab",
+      "input": "d+1",
+      "vf_move": "Sit Jab",
+      "vf_input": "2P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 7,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:brad/sit-jab",
+      "input_slots": [
+        "d+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d/f+1": {
+      "name": "Jolt Upper",
+      "input": "d/f+1",
+      "vf_move": "Jolt Upper",
+      "vf_input": "3P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 15,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:brad/jolt-upper",
+      "input_slots": [
+        "d/f+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d/f+1,2": {
+      "name": "Dtee Sawk Combination",
+      "input": "d/f+1,2",
+      "vf_move": "Dtee Sawk Combination",
+      "vf_input": "3P,P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 16,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:brad/dtee-sawk-combination",
+      "input_slots": [
+        "d/f+1,2"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d/b+1": {
+      "name": "Sharp Shoot",
+      "input": "d/b+1",
+      "vf_move": "Sharp Shoot",
+      "vf_input": "1P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 14,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:brad/sharp-shoot",
+      "input_slots": [
+        "d/b+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "3": {
+      "name": "Stopping",
+      "input": "3",
+      "vf_move": "Stopping",
+      "vf_input": "K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 12,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:brad/stopping",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "3,1,4": {
+      "name": "Teep Combination",
+      "input": "3,1,4",
+      "vf_move": "Teep Combination",
+      "vf_input": "K,P,K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 18,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:brad/teep-combination",
+      "input_slots": [
+        "3,1,4"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f+3": {
+      "name": "Knee Upper",
+      "input": "f+3",
+      "vf_move": "Knee Upper",
+      "vf_input": "6K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 14,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:brad/knee-upper",
+      "input_slots": [
+        "f+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f,f+3": {
+      "name": "Kao Loy",
+      "input": "f,f+3",
+      "vf_move": "Kao Loy",
+      "vf_input": "66K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 18,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:brad/kao-loy",
+      "input_slots": [
+        "f,f+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "b+3": {
+      "name": "Stop Kick",
+      "input": "b+3",
+      "vf_move": "Stop Kick",
+      "vf_input": "4K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 12,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:brad/stop-kick",
+      "input_slots": [
+        "b+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d+3": {
+      "name": "Cutting Low",
+      "input": "d+3",
+      "vf_move": "Cutting Low",
+      "vf_input": "2K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 8,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:brad/cutting-low",
+      "input_slots": [
+        "d+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d/f+3": {
+      "name": "Middle Kick",
+      "input": "d/f+3",
+      "vf_move": "Middle Kick",
+      "vf_input": "3K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 16,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:brad/middle-kick",
+      "input_slots": [
+        "d/f+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f,f+1+2": {
+      "name": "Short Upper",
+      "input": "f,f+1+2",
+      "vf_move": "Short Upper",
+      "vf_input": "66P+K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 18,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:brad/short-upper",
+      "input_slots": [
+        "f,f+1+2"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f+1+2": {
+      "name": "Sawk Klab",
+      "input": "f+1+2",
+      "vf_move": "Sawk Klab",
+      "vf_input": "6P+K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 16,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:brad/sawk-klab",
+      "input_slots": [
+        "f+1+2"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "3+4": {
+      "name": "High Spin Kick",
+      "input": "3+4",
+      "vf_move": "High Spin Kick",
+      "vf_input": "K+G",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 16,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:brad/high-spin-kick",
+      "input_slots": [
+        "3+4"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d+3+4": {
+      "name": "Jaguar Tail",
+      "input": "d+3+4",
+      "vf_move": "Jaguar Tail",
+      "vf_input": "2K+G",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 10,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:brad/jaguar-tail",
+      "input_slots": [
+        "d+3+4"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1+3": {
+      "name": "Elbow Slash",
+      "input": "1+3",
+      "vf_move": "Elbow Slash",
+      "vf_input": "P+G",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 35,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:brad/elbow-slash",
+      "input_slots": [
+        "1+3"
+      ],
+      "move_class": "throw",
+      "note": "VF throw -> Tekken 1+3 per DOA-VF-CONVERSION mapping"
+    },
+    "b+1+3": {
+      "name": "Neck Slash",
+      "input": "b+1+3",
+      "vf_move": "Neck Slash",
+      "vf_input": "4P+G",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 40,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:brad/neck-slash",
+      "input_slots": [
+        "b+1+3"
+      ],
+      "move_class": "throw",
+      "note": "VF throw -> Tekken b+1+3 per DOA-VF-CONVERSION mapping"
+    }
+  }
+}

@@ -55,7 +55,7 @@ export const MOVESET_IDS = [
   'cainelias',
   // Brutal Fist pull-in (2026-11-08): 26 fighters from Jay's Brutal Fist game.
   'bf-aaron-ruben',
-  'bf-bannon',
+  'bannon',
   'bf-brutus',
   'bf-cipher',
   'bf-cody',
