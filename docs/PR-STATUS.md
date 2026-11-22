@@ -4,7 +4,7 @@
 
 **51 open PRs — 🟢 ready to merge: 1 · 🔴 failing: 30 · ⏳ running: 0 · ⚔️ conflicted: 20** (also 🟠 blocked: 0 · 🔗 stacked: 0 · 📝 draft, green-or-idle: 0; 6 of 51 are drafts)
 
-_Generated 2026-11-22 01:48 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
+_Generated 2026-11-22 01:49 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
 
 Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not reported. Ready = not draft, targets `main`, GitHub says MERGEABLE, every check green. Status priority: conflicted > failing > running > draft > stacked > ready.
 
@@ -17,7 +17,7 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 🟢 ready to merge | [#1792](https://github.com/mhvnsnt/western-heart/pull/1792) Moveset fix P2: Goh/Brad VF kits, Baek rebuild (T6 PSP), Bannon wiring (Jeffry) | ready | mhvnsnt / `wh-moveset-fix/p2-rebuilds-20261120` | `7f7bf8b` | `main` | ✅ | ✅ | ✅ | ✅ | 10✅ | mergeable (clean) | 2026-11-21 06:43 UTC |
-| 🔴 failing | [#1824](https://github.com/mhvnsnt/western-heart/pull/1824) docs(decode): log T7 receiver fix as the permanent fix | ready | mhvnsnt / `docs/t7-receiver-fix` | `8bc5175` | `main` | ✅ | ✅ | ✅ | ❌ | 6✅ 3⏳ | mergeable (blocked) | 2026-11-22 01:46 UTC |
+| 🔴 failing | [#1824](https://github.com/mhvnsnt/western-heart/pull/1824) docs(decode): log T7 receiver fix as the permanent fix | ready | mhvnsnt / `docs/t7-receiver-fix` | `8bc5175` | `main` | ✅ | ✅ | ✅ | ❌ | 7✅ 2⏳ | mergeable (unstable) | 2026-11-22 01:48 UTC |
 | 🔴 failing | [#1823](https://github.com/mhvnsnt/western-heart/pull/1823) Lane 2B: canon-moveset character inventory (Kevin + canon movesets job) | ready | mhvnsnt / `lane-2b/canon-moveset-inventory` | `4789081` | `main` | ✅ | ✅ | ✅ | ❌ | 7✅ 2⏳ | mergeable (unstable) | 2026-11-22 01:48 UTC |
 | 🔴 failing | [#1822](https://github.com/mhvnsnt/western-heart/pull/1822) Kevin full canon moveset: wire Baek rebuild data to KEVIN (kevin.json + roster) | ready | mhvnsnt / `kevin/canon-moveset-20261121` | `d439ee0` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (clean) | 2026-11-22 01:42 UTC |
 | 🔴 failing | [#1821](https://github.com/mhvnsnt/western-heart/pull/1821) Fight HUD: no hit data or pills over normal fights (practice panel from the reference game | ready | mhvnsnt / `claude/amazing-keller-p8644u` | `4a83438` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (clean) | 2026-11-22 01:44 UTC |
