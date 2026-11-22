@@ -13,8 +13,9 @@
 //    twice via the __game hook (best of 3, 3s round lock), tap REMATCH, and check
 //    the replayed fight is the SAME pairing — the old bug replayed selectedChar
 //    vs a random enemy.
-//    Announcer checks ride on the same fight: 'Fight!' subtitle after the
-//    round opens, and the ko-01 engine log after each KO (the first head's
+//    Announcer checks ride on the same fight: the fight-01 engine log after the
+//    round opens with NO subtitle on screen (owner 2026-11-11: announcer calls
+//    and combat cries are not subtitled), and the ko-01 engine log after each KO (the first head's
 //    K.O.-subtitle assertion failed in CI on both KOs while Fight! passed —
 //    the engine log fires in the same _speak call that sets the subtitle,
 //    so it witnesses the call even if the text is later overwritten).
@@ -112,10 +113,16 @@ try {
   const koLogCount = () => announcerLogs.filter((t) => t.includes('announcer/ko-01')).length;
   await rp.goto(BASE + '/game/index.html?quick=pantera,phantom,shrine');
   await rp.waitForFunction(() => { const g = window.__game; return g && g.roundState === 'fight' && g.p1 && g.p2; }, null, { timeout: 300000, polling: 500 });
-  // ANNOUNCER: the FIGHT call fires on the intro -> fight transition; its
-  // subtitle arrives after the manifest fetch, so wait for the text, not a tick.
-  try { await rp.waitForFunction(() => { const l = document.querySelector('#wh-voice-sub .wh-voice-line'); return l && l.textContent === 'Fight!'; }, null, { timeout: 30000, polling: 500 }); console.log('announcer: Fight! subtitle OK'); }
-  catch { fails.push('announcer: Fight! subtitle never appeared after round start'); }
+  // ANNOUNCER: the FIGHT call fires on the intro -> fight transition. Owner 2026-11-11: no text over a fight that
+  // the fight itself does not show, so announcer calls are NOT subtitled (the FIGHT! banner already shows it):
+  // witness the call through the engine's placeholder log (same _speak call), and check no subtitle is up.
+  try {
+    for (let i = 0; i < 60 && !announcerLogs.some((t) => t.includes('announcer/fight-01')); i++) await rp.waitForTimeout(500);
+    if (announcerLogs.some((t) => t.includes('announcer/fight-01'))) console.log('announcer: fight-01 call OK');
+    else fails.push('announcer: fight-01 call never logged after round start');
+    const sub = await rp.evaluate(() => { const e = document.getElementById('wh-voice-sub'); return e && e.classList.contains('show') ? e.textContent : null; });
+    if (sub) fails.push('announcer: a subtitle is on screen during the fight: ' + sub);
+  } catch (e) { fails.push('announcer: fight-01 check failed: ' + e.message.split('\n')[0]); }
   const pair = () => rp.evaluate(() => ({ p1: window.__game.p1.char.id, p2: window.__game.p2.char.id }));
   const resultVisible = () => rp.evaluate(() => { const e = document.getElementById('screen-result'); return e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden'); });
   const first = await pair();

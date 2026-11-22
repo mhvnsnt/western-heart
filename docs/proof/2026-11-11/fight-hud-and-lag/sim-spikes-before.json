@@ -1,0 +1,504 @@
+{
+ "p1": "pantera",
+ "p2": "thor",
+ "stage": "shrine",
+ "frames": 1800,
+ "movesPressedFrom": 10,
+ "perFrameMs": {
+  "median": 0.3,
+  "p90": 1,
+  "p95": 2,
+  "p99": 6.8,
+  "max": 23.4
+ },
+ "byKind": {
+  "move-first-use": {
+   "n": 18,
+   "median": 4.2,
+   "max": 23.4,
+   "mean": 5.67
+  },
+  "quiet": {
+   "n": 1723,
+   "median": 0.3,
+   "max": 13.5,
+   "mean": 0.52
+  },
+  "hit": {
+   "n": 18,
+   "median": 1.4,
+   "max": 22.1,
+   "mean": 3.48
+  },
+  "move-repeat": {
+   "n": 23,
+   "median": 0.4,
+   "max": 8,
+   "mean": 0.8
+  },
+  "press-only": {
+   "n": 18,
+   "median": 0.3,
+   "max": 6.7,
+   "mean": 0.67
+  }
+ },
+ "worst": [
+  {
+   "i": 0,
+   "ms": 23.4,
+   "ev": [
+    "press 1",
+    "p1 move 1~t8.king (first)"
+   ]
+  },
+  {
+   "i": 128,
+   "ms": 22.1,
+   "ev": [
+    "p1 hit 45.4 hitstun knockdown"
+   ]
+  },
+  {
+   "i": 84,
+   "ms": 13.5,
+   "ev": []
+  },
+  {
+   "i": 338,
+   "ms": 11.3,
+   "ev": [
+    "p2 move UB.2+3 (first)"
+   ]
+  },
+  {
+   "i": 841,
+   "ms": 11,
+   "ev": []
+  },
+  {
+   "i": 58,
+   "ms": 9.9,
+   "ev": []
+  },
+  {
+   "i": 68,
+   "ms": 9.6,
+   "ev": [
+    "press 3",
+    "p1 move 3~t8.king (first)"
+   ]
+  },
+  {
+   "i": 64,
+   "ms": 9,
+   "ev": []
+  },
+  {
+   "i": 240,
+   "ms": 9,
+   "ev": []
+  },
+  {
+   "i": 71,
+   "ms": 8.9,
+   "ev": []
+  },
+  {
+   "i": 1352,
+   "ms": 8.9,
+   "ev": []
+  },
+  {
+   "i": 99,
+   "ms": 8.1,
+   "ev": [
+    "p2 move 1,2,1,2,1,2,1 (first)"
+   ]
+  },
+  {
+   "i": 253,
+   "ms": 8,
+   "ev": [
+    "p2 move 1,2,1,2,1,2,1"
+   ]
+  },
+  {
+   "i": 540,
+   "ms": 7.4,
+   "ev": []
+  },
+  {
+   "i": 347,
+   "ms": 7.3,
+   "ev": []
+  },
+  {
+   "i": 259,
+   "ms": 6.9,
+   "ev": [
+    "press b+2",
+    "p1 move b+2 (first)"
+   ]
+  },
+  {
+   "i": 596,
+   "ms": 6.9,
+   "ev": [
+    "press f+4",
+    "p1 move f+4 (first)"
+   ]
+  },
+  {
+   "i": 32,
+   "ms": 6.8,
+   "ev": []
+  },
+  {
+   "i": 243,
+   "ms": 6.8,
+   "ev": []
+  },
+  {
+   "i": 646,
+   "ms": 6.8,
+   "ev": []
+  },
+  {
+   "i": 280,
+   "ms": 6.7,
+   "ev": []
+  },
+  {
+   "i": 542,
+   "ms": 6.7,
+   "ev": [
+    "press-refused d/f+1"
+   ]
+  },
+  {
+   "i": 3,
+   "ms": 6.5,
+   "ev": []
+  },
+  {
+   "i": 514,
+   "ms": 6.3,
+   "ev": [
+    "p2 hit 27.5 knockdown knockdown"
+   ]
+  },
+  {
+   "i": 33,
+   "ms": 5.9,
+   "ev": [
+    "press 2",
+    "p1 move 1,2 (first)"
+   ]
+  }
+ ],
+ "topFunctions": [
+  {
+   "k": "applyMatrix4 vendor/three.module.js:4130",
+   "ms": 1130,
+   "pct": 16.9
+  },
+  {
+   "k": "multiplyMatrices vendor/three.module.js:6224",
+   "ms": 975,
+   "pct": 14.6
+  },
+  {
+   "k": "setX vendor/three.module.js:10094",
+   "ms": 414,
+   "pct": 6.2
+  },
+  {
+   "k": "getX vendor/three.module.js:10084",
+   "ms": 386,
+   "pct": 5.8
+  },
+  {
+   "k": "denormalize vendor/three.module.js:538",
+   "ms": 382,
+   "pct": 5.7
+  },
+  {
+   "k": "setXYZ vendor/three.module.js:10182",
+   "ms": 296,
+   "pct": 4.4
+  },
+  {
+   "k": "applyBoneTransform vendor/three.module.js:32257",
+   "ms": 294,
+   "pct": 4.4
+  },
+  {
+   "k": "getY vendor/three.module.js:10104",
+   "ms": 223,
+   "pct": 3.3
+  },
+  {
+   "k": "mergeBufferGeometries three-mesh-bvh/index.module.js:10588",
+   "ms": 197,
+   "pct": 2.9
+  },
+  {
+   "k": "addScaledVector vendor/three.module.js:4029",
+   "ms": 181,
+   "pct": 2.7
+  },
+  {
+   "k": "copy vendor/three.module.js:9939",
+   "ms": 159,
+   "pct": 2.4
+  },
+  {
+   "k": "_convertToStaticGeometry three-mesh-bvh/index.module.js:11059",
+   "ms": 147,
+   "pct": 2.2
+  },
+  {
+   "k": "getZ vendor/three.module.js:10124",
+   "ms": 138,
+   "pct": 2.1
+  },
+  {
+   "k": "_step js/softbody.js:607",
+   "ms": 102,
+   "pct": 1.5
+  },
+  {
+   "k": "fromBufferAttribute vendor/three.module.js:4568",
+   "ms": 88,
+   "pct": 1.3
+  },
+  {
+   "k": "fromBufferAttribute vendor/three.module.js:2878",
+   "ms": 83,
+   "pct": 1.2
+  },
+  {
+   "k": "wasm-function[1245] wasm/007b8c6a:1",
+   "ms": 72,
+   "pct": 1.1
+  },
+  {
+   "k": "copy vendor/three.module.js:3989",
+   "ms": 67,
+   "pct": 1
+  },
+  {
+   "k": "getW vendor/three.module.js:10144",
+   "ms": 66,
+   "pct": 1
+  },
+  {
+   "k": "copyAttributeContents three-mesh-bvh/index.module.js:10483",
+   "ms": 56,
+   "pct": 0.8
+  },
+  {
+   "k": "updateRegionNormals js/region-normals.js:43",
+   "ms": 51,
+   "pct": 0.8
+  },
+  {
+   "k": "(garbage collector) ((garbage collector)):0",
+   "ms": 49,
+   "pct": 0.7
+  },
+  {
+   "k": "getX vendor/three.module.js:31414",
+   "ms": 38,
+   "pct": 0.6
+  },
+  {
+   "k": "_update js/game.js:525",
+   "ms": 38,
+   "pct": 0.6
+  },
+  {
+   "k": "update js/fighter.js:3922",
+   "ms": 38,
+   "pct": 0.6
+  },
+  {
+   "k": "applyMatrix4 vendor/three.module.js:10007",
+   "ms": 37,
+   "pct": 0.6
+  },
+  {
+   "k": "getZ vendor/three.module.js:31434",
+   "ms": 35,
+   "pct": 0.5
+  },
+  {
+   "k": "updateWorldMatrix vendor/three.module.js:7760",
+   "ms": 35,
+   "pct": 0.5
+  },
+  {
+   "k": "slerpFlat vendor/three.module.js:3228",
+   "ms": 32,
+   "pct": 0.5
+  },
+  {
+   "k": "getY vendor/three.module.js:31424",
+   "ms": 30,
+   "pct": 0.5
+  },
+  {
+   "k": "setFromRotationMatrix vendor/three.module.js:6890",
+   "ms": 30,
+   "pct": 0.4
+  },
+  {
+   "k": "(anon) (native):0",
+   "ms": 27,
+   "pct": 0.4
+  },
+  {
+   "k": "getComponent vendor/three.module.js:2375",
+   "ms": 26,
+   "pct": 0.4
+  },
+  {
+   "k": "update js/softbody.js:597",
+   "ms": 24,
+   "pct": 0.4
+  },
+  {
+   "k": "generate three-mesh-bvh/index.module.js:10990",
+   "ms": 21,
+   "pct": 0.3
+  },
+  {
+   "k": "_animate js/fighter.js:4475",
+   "ms": 21,
+   "pct": 0.3
+  },
+  {
+   "k": "buildClip js/t3anims.js:2452",
+   "ms": 17,
+   "pct": 0.3
+  },
+  {
+   "k": "getElementById (getElementById):0",
+   "ms": 16,
+   "pct": 0.2
+  },
+  {
+   "k": "n jolt/jolt-physics.wasm-compat.js:923",
+   "ms": 15,
+   "pct": 0.2
+  },
+  {
+   "k": "_rootMotionApply js/fighter.js:1942",
+   "ms": 14,
+   "pct": 0.2
+  }
+ ],
+ "topFiles": [
+  {
+   "k": "vendor/three.module.js",
+   "ms": 5248,
+   "pct": 78.3
+  },
+  {
+   "k": "three-mesh-bvh/index.module.js",
+   "ms": 430,
+   "pct": 6.4
+  },
+  {
+   "k": "wasm/007b8c6a",
+   "ms": 174,
+   "pct": 2.6
+  },
+  {
+   "k": "js/softbody.js",
+   "ms": 145,
+   "pct": 2.2
+  },
+  {
+   "k": "js/fighter.js",
+   "ms": 137,
+   "pct": 2
+  },
+  {
+   "k": "jolt/jolt-physics.wasm-compat.js",
+   "ms": 59,
+   "pct": 0.9
+  },
+  {
+   "k": "js/t3anims.js",
+   "ms": 58,
+   "pct": 0.9
+  },
+  {
+   "k": "js/game.js",
+   "ms": 54,
+   "pct": 0.8
+  },
+  {
+   "k": "js/region-normals.js",
+   "ms": 51,
+   "pct": 0.8
+  },
+  {
+   "k": "((garbage collector))",
+   "ms": 49,
+   "pct": 0.7
+  },
+  {
+   "k": "js/main.js",
+   "ms": 37,
+   "pct": 0.6
+  },
+  {
+   "k": "(native)",
+   "ms": 35,
+   "pct": 0.5
+  },
+  {
+   "k": "js/handPoses.js",
+   "ms": 34,
+   "pct": 0.5
+  },
+  {
+   "k": "js/movesets.js",
+   "ms": 17,
+   "pct": 0.3
+  },
+  {
+   "k": "(getElementById)",
+   "ms": 16,
+   "pct": 0.2
+  },
+  {
+   "k": "js/ai.js",
+   "ms": 14,
+   "pct": 0.2
+  },
+  {
+   "k": "js/hitdetect.js",
+   "ms": 11,
+   "pct": 0.2
+  },
+  {
+   "k": "(innerSerialize)",
+   "ms": 11,
+   "pct": 0.2
+  },
+  {
+   "k": "js/voice.js",
+   "ms": 10,
+   "pct": 0.1
+  },
+  {
+   "k": "(fetch)",
+   "ms": 10,
+   "pct": 0.1
+  }
+ ]
+}

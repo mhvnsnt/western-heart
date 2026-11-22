@@ -948,6 +948,19 @@ export function resolveMove(fighterId, notation, opts) {
   return k && ms.moves[k] ? { move: ms.moves[k], key: k, ms, from: fighterId } : null;
 }
 
+/** Every notation this fighter can press (default slots + the player's loadout), in the order the clip prewarm
+    (Fighter.prewarmAttackClips, LAG FIX 2026-11-11) binds them: neutral-stance presses before stance-prefixed ones
+    ('JGR.1', 'BT.2'), then shortest first (buttons, chords, direction + button, two-press strings). */
+export function pressableNotations(fighterId) {
+  const ms = playedMoveset(fighterId);
+  if (!ms) return [];
+  _prepare(ms);
+  const set = new Set(Object.keys(ms._slots || {}));
+  for (const n of Object.keys(getLoadout(fighterId) || {})) if (n !== '__base') set.add(n);
+  const stance = (n) => (/^[A-Za-z_][A-Za-z0-9_]*[. ]/.test(n) && !/^[udfbn](\/[fb])?[+,]/.test(n) ? 1 : 0);
+  return [...set].sort((a, b) => stance(a) - stance(b) || a.length - b.length || (a < b ? -1 : a > b ? 1 : 0));
+}
+
 /** notation -> move key this fighter fires (null if none). */
 export function resolveMoveKey(fighterId, notation) {
   const r = resolveMove(fighterId, notation);
