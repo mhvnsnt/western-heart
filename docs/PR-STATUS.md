@@ -4,7 +4,7 @@
 
 **43 open PRs — 🟢 ready to merge: 0 · 🔴 failing: 23 · ⏳ running: 1 · ⚔️ conflicted: 19** (also 🟠 blocked: 0 · 🔗 stacked: 0 · 📝 draft, green-or-idle: 0; 6 of 43 are drafts)
 
-_Generated 2026-11-22 18:07 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
+_Generated 2026-11-22 18:09 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
 
 Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not reported. Ready = not draft, targets `main`, GitHub says MERGEABLE, every check green. Status priority: conflicted > failing > running > draft > stacked > ready.
 
@@ -16,7 +16,7 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| ⏳ running | [#1834](https://github.com/mhvnsnt/western-heart/pull/1834) Ren: functional Truth-style mouth (3D teeth, tongue, uvula, jaw) | ready | mhvnsnt / `lane/ren-mouth-20261122` | `2ea28f8` | `main` | ✅ | ⏳ | ⏳ | ✅ | 4✅ 6⏳ | mergeable (blocked) | 2026-11-22 18:07 UTC |
+| ⏳ running | [#1834](https://github.com/mhvnsnt/western-heart/pull/1834) Ren: functional Truth-style mouth (3D teeth, tongue, uvula, jaw) | ready | mhvnsnt / `lane/ren-mouth-20261122` | `c8165bb` | `main` | ⏳ | ⏳ | ⏳ | ⏳ | 6⏳ | mergeable (blocked) | 2026-11-22 18:09 UTC |
 | 🔴 failing | [#1838](https://github.com/mhvnsnt/western-heart/pull/1838) Lane B: wire Bannon to his own model bf-bannon | ready | mhvnsnt / `lane-b/bannon-bf-bannon-20261122` | `cacc94d` | `main` | ❌ | ✅ | ✅ | ❌ | 9✅ 1❌ | mergeable (blocked) | 2026-11-22 17:57 UTC |
 | 🔴 failing | [#1837](https://github.com/mhvnsnt/western-heart/pull/1837) Proof: owner asked to see Cornerstone / Scimitar / Chordz models as images | ready | mhvnsnt / `show-three-models-20261122` | `46b1279` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-22 17:56 UTC |
 | 🔴 failing | [#1836](https://github.com/mhvnsnt/western-heart/pull/1836) Kevin: default model baek → kevin-tripo (his own Tripo, A1) | ready | mhvnsnt / `lane-k-kevin-default-20261122` | `a00ecae` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-22 17:11 UTC |
