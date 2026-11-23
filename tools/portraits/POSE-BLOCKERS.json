@@ -1,6 +1,7 @@
 {
   "_doc": "Fighters whose select portrait is still bind-posed because their moveset-bank stance does not retarget cleanly onto their attire-1 rig (rig/anim lane). test/portraits.test.mjs fails if a fighter is bind-posed and NOT listed, or listed but fixed. Re-run tools/portraits/capture.mjs after rig fixes and remove entries. Since the CMU aim fallback (game/js/stance-aim.js), only unrigged or unloadable models remain here.",
   "blocked": {
-    "madelyn": "No moveset bank yet (bank: null) and non-Mixamo rig (no Hips/LeftArm/RightArm bone names) so no bank stance retargets; portrait is a real bind-pose capture from her attire-1 model (capture.mjs 2026-11-11, madelyn.png + manifest entry in PR #1708). Re-run capture after her bank lands and remove this entry."
+    "madelyn": "No moveset bank yet (bank: null) and non-Mixamo rig (no Hips/LeftArm/RightArm bone names) so no bank stance retargets; portrait is a real bind-pose capture from her attire-1 model (capture.mjs 2026-11-11, madelyn.png + manifest entry in PR #1708). Re-run capture after her bank lands and remove this entry.",
+    "bannon": "No moveset bank yet (bank: null) so no bank stance retargets; portrait is a Blender front render of the attire-1 model (bf-bannon-front.png from this PR's proof set), not a capture.mjs capture. Re-run capture after the bank lands and remove this entry."
   }
 }
