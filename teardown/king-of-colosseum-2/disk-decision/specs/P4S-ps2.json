@@ -1,0 +1,23 @@
+{
+ "name": "P4S-ps2",
+ "message": "KoC2 raw: PS2 BIOS zip + memcard files (scph39001)",
+ "max_bytes": 320000000,
+ "files": [
+  {
+   "src": "/home/hatch/workspace/koc2-disk-decision/vm-isos/ps2_bios_official.zip",
+   "dst": "raw/king-of-colosseum-2/ps2/ps2-bios-official.zip"
+  },
+  {
+   "src": "/home/hatch/workspace/koc2-disk-decision/vm-isos/scph39001.MEC",
+   "dst": "raw/king-of-colosseum-2/ps2/scph39001.MEC"
+  },
+  {
+   "src": "/home/hatch/workspace/koc2-disk-decision/vm-isos/scph39001.NVM",
+   "dst": "raw/king-of-colosseum-2/ps2/scph39001.NVM"
+  },
+  {
+   "src": "/home/hatch/workspace/koc2-disk-decision/vm-isos/scph39001.bin",
+   "dst": "raw/king-of-colosseum-2/ps2/scph39001.bin"
+  }
+ ]
+}
