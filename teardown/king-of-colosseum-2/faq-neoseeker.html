@@ -1,0 +1,1415 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta
+    http-equiv="X-UA-Compatible"
+    content="IE=Edge"
+>
+
+<meta
+    name="robots"
+    content="noindex,nofollow"
+>
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+>
+
+<title>Security check | Neoseeker</title>
+
+
+<style>
+
+:root {
+
+    --page-bg:
+        #f4f6f8;
+
+    --card-bg:
+        #ffffff;
+
+    --header-bg:
+        #ffffff;
+
+    --text:
+        #182130;
+
+    --muted:
+        #667181;
+
+    --border:
+        #dde3e9;
+
+    --ray:
+        #46515e;
+
+    --widget-bg:
+        #fafafa;
+
+    --widget-text:
+        #313944;
+
+    --neo-blue:
+        #336699;
+
+    --danger:
+        #e52b31;
+
+    --warning:
+        #e88700;
+
+    --info:
+        #3c82d4;
+
+}
+
+
+/*
+ * =========================================================
+ * RESET
+ * =========================================================
+ */
+
+html {
+
+    width:
+        100%;
+
+    min-width:
+        0;
+
+    min-height:
+        100%;
+
+}
+
+
+body {
+
+    width:
+        100%;
+
+    min-width:
+        0;
+
+    min-height:
+        100vh;
+
+    min-height:
+        100dvh;
+
+    margin:
+        0;
+
+    padding-left:
+        clamp(4px, 2.5vw, 24px);
+
+    padding-right:
+        clamp(4px, 2.5vw, 24px);
+
+    overflow-x:
+        hidden;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        minmax(0, 1fr);
+
+    grid-template-rows:
+        minmax(12px, 1fr)
+        auto
+        minmax(24px, 2fr);
+
+    justify-items:
+        center;
+
+    background:
+        var(--page-bg);
+
+    color:
+        var(--text);
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    line-height:
+        1.45;
+
+}
+
+
+*,
+*::before,
+*::after {
+
+    box-sizing:
+        border-box;
+
+    min-width:
+        0;
+
+}
+
+
+img,
+svg {
+
+    max-width:
+        100%;
+
+}
+
+
+/*
+ * =========================================================
+ * PAGE / CARD
+ * =========================================================
+ */
+
+.page {
+
+    grid-row:
+        2;
+
+    width:
+        min(100%, 650px);
+
+    max-width:
+        650px;
+
+    min-width:
+        0;
+
+    margin:
+        0 auto;
+
+}
+
+
+.card {
+
+    width:
+        100%;
+
+    max-width:
+        100%;
+
+    min-width:
+        0;
+
+    overflow:
+        hidden;
+
+    background:
+        var(--card-bg);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        14px;
+
+    box-shadow:
+        0 12px 34px
+        rgba(0, 0, 0, 0.14);
+
+}
+
+
+/*
+ * =========================================================
+ * BRAND HEADERS
+ * =========================================================
+ */
+
+.brand {
+
+    width:
+        100%;
+
+    max-width:
+        100%;
+
+    min-width:
+        0;
+
+}
+
+
+/*
+ * ---------------------------------------------------------
+ * NEOSEEKER
+ * ---------------------------------------------------------
+ */
+
+.brand-neo {
+
+    min-height:
+        88px;
+
+    padding:
+        17px 12px 13px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        #336699;
+
+    text-align:
+        center;
+
+}
+
+
+.sp_forum {
+
+    display:
+        inline-block;
+
+    vertical-align:
+        top;
+
+    background:
+        url('data:image/png;base64,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')
+        no-repeat;
+
+}
+
+
+.sp_forum.forumlogo {
+
+    background-position:
+        -2px 0px;
+
+    width:
+        212px;
+
+    height:
+        26px;
+
+    flex:
+        0 0 auto;
+
+}
+
+
+.neo-tagline {
+
+    max-width:
+        100%;
+
+    margin-top:
+        8px;
+
+    color:
+        #ffffff;
+
+    font-size:
+        13px;
+
+    font-weight:
+        500;
+
+    line-height:
+        1.25;
+
+    letter-spacing:
+        0.01em;
+
+    opacity:
+        0.96;
+
+}
+
+
+/*
+ * ---------------------------------------------------------
+ * AUDIOMART
+ * ---------------------------------------------------------
+ */
+
+.brand-audiomart {
+
+    padding:
+        clamp(7px, 2vw, 14px)
+        clamp(6px, 3vw, 22px);
+
+    background:
+        #ffffff;
+
+}
+
+
+.audiomart-logo {
+
+    width:
+        100%;
+
+    max-width:
+        100%;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        clamp(4px, 1.4vw, 9px);
+
+}
+
+
+.audiomart-speaker {
+
+    display:
+        block;
+
+    width:
+        auto;
+
+    height:
+        clamp(44px, 14vw, 82px);
+
+    max-width:
+        23%;
+
+    flex:
+        0 1 auto;
+
+    object-fit:
+        contain;
+
+}
+
+
+.audiomart-text {
+
+    display:
+        block;
+
+    width:
+        auto;
+
+    height:
+        auto;
+
+    max-width:
+        73%;
+
+    max-height:
+        clamp(42px, 11vw, 68px);
+
+    flex:
+        0 1 auto;
+
+    object-fit:
+        contain;
+
+}
+
+
+/*
+ * ---------------------------------------------------------
+ * MYFIGURECOLLECTION
+ * ---------------------------------------------------------
+ */
+
+.brand-mfc {
+
+    min-height:
+        96px;
+
+    padding:
+        clamp(14px, 3vw, 20px)
+        clamp(10px, 4vw, 26px);
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        var(--header-bg);
+
+    text-align:
+        center;
+
+}
+
+
+.mfc-brand-inner {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        clamp(10px, 2.5vw, 16px);
+
+    max-width:
+        100%;
+
+}
+
+
+.mfc-icon {
+
+    display:
+        block;
+
+    width:
+        clamp(48px, 11vw, 66px);
+
+    height:
+        clamp(48px, 11vw, 66px);
+
+    flex:
+        0 0 auto;
+
+    object-fit:
+        contain;
+
+}
+
+
+.mfc-wordmark {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        flex-start;
+
+    text-align:
+        left;
+
+}
+
+
+.mfc-title {
+
+    color:
+        #f1f1f1;
+
+    font-size:
+        clamp(18px, 4vw, 25px);
+
+    font-weight:
+        650;
+
+    line-height:
+        1.05;
+
+    letter-spacing:
+        -0.025em;
+
+}
+
+
+.mfc-domain {
+
+    margin-top:
+        5px;
+
+    color:
+        #9fa3a7;
+
+    font-size:
+        clamp(10px, 2.4vw, 12px);
+
+    line-height:
+        1.2;
+
+}
+
+
+/*
+ * =========================================================
+ * AUDIOMART ACCENT BAR
+ * =========================================================
+ */
+
+.accent {
+
+    width:
+        100%;
+
+    height:
+        4px;
+
+}
+
+
+/*
+ * =========================================================
+ * MAIN CONTENT
+ * =========================================================
+ */
+
+.content {
+
+    width:
+        100%;
+
+    max-width:
+        100%;
+
+    padding-top:
+        clamp(28px, 5.5vw, 42px);
+
+    padding-right:
+        clamp(9px, 6vw, 46px);
+
+    padding-bottom:
+        clamp(30px, 5vw, 42px);
+
+    padding-left:
+        clamp(9px, 6vw, 46px);
+
+    text-align:
+        center;
+
+}
+
+
+/*
+ * ---------------------------------------------------------
+ * STATUS ICON
+ * ---------------------------------------------------------
+ */
+
+.status-icon {
+
+    width:
+        clamp(38px, 8vw, 46px);
+
+    height:
+        clamp(38px, 8vw, 46px);
+
+    margin:
+        0
+        auto
+        clamp(18px, 3vw, 22px);
+
+}
+
+
+.status-icon svg {
+
+    display:
+        block;
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+}
+
+
+/*
+ * ---------------------------------------------------------
+ * HEADING
+ * ---------------------------------------------------------
+ */
+
+h1 {
+
+    margin:
+        0
+        0
+        clamp(14px, 2.5vw, 18px);
+
+    color:
+        var(--text);
+
+    font-size:
+        clamp(20px, 5vw, 25px);
+
+    line-height:
+        1.18;
+
+    font-weight:
+        720;
+
+    letter-spacing:
+        -0.02em;
+
+    overflow-wrap:
+        anywhere;
+
+}
+
+
+/*
+ * ---------------------------------------------------------
+ * BODY COPY
+ * ---------------------------------------------------------
+ */
+
+.message,
+.secondary {
+
+    width:
+        100%;
+
+    max-width:
+        520px;
+
+    margin-left:
+        auto;
+
+    margin-right:
+        auto;
+
+    color:
+        var(--muted);
+
+    overflow-wrap:
+        anywhere;
+
+}
+
+
+.message {
+
+    margin-top:
+        0;
+
+    margin-bottom:
+        0;
+
+    font-size:
+        clamp(13px, 3.3vw, 16px);
+
+    line-height:
+        1.55;
+
+}
+
+
+.secondary {
+
+    margin-top:
+        clamp(20px, 3.5vw, 26px);
+
+    margin-bottom:
+        0;
+
+    font-size:
+        clamp(12px, 3vw, 15px);
+
+    line-height:
+        1.55;
+
+}
+
+
+/*
+ * =========================================================
+ * CLOUDFLARE CHALLENGE
+ * =========================================================
+ */
+
+.challenge {
+
+    width:
+        100%;
+
+    max-width:
+        100%;
+
+    min-height:
+        70px;
+
+    margin:
+        clamp(26px, 4.5vw, 34px)
+        auto
+        0;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    overflow:
+        hidden;
+
+}
+
+
+.challenge > * {
+
+    max-width:
+        100%;
+
+}
+
+
+/*
+ * =========================================================
+ * CLOUDFLARE 5XX / 1XXX DIAGNOSTIC AREA
+ * =========================================================
+ */
+
+.diagnostic {
+
+    width:
+        100%;
+
+    max-width:
+        540px;
+
+    margin:
+        clamp(26px, 4.5vw, 34px)
+        auto
+        0;
+
+    text-align:
+        left;
+
+    overflow-wrap:
+        anywhere;
+
+}
+
+
+.diagnostic > * {
+
+    max-width:
+        100%;
+
+}
+
+
+.preview-diagnostic {
+
+    width:
+        100%;
+
+    padding:
+        clamp(14px, 3vw, 20px);
+
+    background:
+        var(--widget-bg);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        7px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        clamp(12px, 3vw, 14px);
+
+    line-height:
+        1.5;
+
+    text-align:
+        center;
+
+}
+
+
+/*
+ * ---------------------------------------------------------
+ * PREVIEW-ONLY CHALLENGE MOCK
+ * ---------------------------------------------------------
+ */
+
+.preview-widget {
+
+    width:
+        min(100%, 390px);
+
+    max-width:
+        100%;
+
+    min-height:
+        68px;
+
+    padding:
+        clamp(8px, 3vw, 14px);
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        clamp(6px, 2vw, 12px);
+
+    background:
+        var(--widget-bg);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        5px;
+
+    color:
+        var(--widget-text);
+
+    font-size:
+        clamp(11px, 3vw, 13px);
+
+    text-align:
+        left;
+
+}
+
+
+.preview-checkbox {
+
+    width:
+        21px;
+
+    height:
+        21px;
+
+    min-width:
+        21px;
+
+    flex:
+        0 0 21px;
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid
+        #9ba4ae;
+
+    border-radius:
+        2px;
+
+}
+
+
+.preview-cf {
+
+    margin-left:
+        auto;
+
+    color:
+        var(--muted);
+
+    font-size:
+        clamp(7px, 2vw, 9px);
+
+    line-height:
+        1.2;
+
+    text-align:
+        right;
+
+}
+
+
+/*
+ * =========================================================
+ * RAY ID FOOTER
+ * =========================================================
+ */
+
+.details {
+
+    width:
+        100%;
+
+    max-width:
+        100%;
+
+    margin-top:
+        clamp(30px, 5vw, 38px);
+
+    padding-top:
+        clamp(16px, 3vw, 20px);
+
+    border-top:
+        1px solid var(--border);
+
+    color:
+        var(--muted);
+
+    font-size:
+        clamp(10px, 2.7vw, 12px);
+
+    line-height:
+        1.4;
+
+    overflow-wrap:
+        anywhere;
+
+}
+
+
+.ray {
+
+    color:
+        var(--ray);
+
+    font-family:
+        ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        Monaco,
+        Consolas,
+        "Liberation Mono",
+        monospace;
+
+}
+
+
+/*
+ * =========================================================
+ * 320PX AND BELOW
+ * =========================================================
+ */
+
+@media (max-width: 320px) {
+
+    body {
+
+        padding-left:
+            2px;
+
+        padding-right:
+            2px;
+
+        grid-template-rows:
+            minmax(6px, 1fr)
+            auto
+            minmax(12px, 2fr);
+
+    }
+
+
+    .card {
+
+        border-radius:
+            7px;
+
+    }
+
+
+    .brand-neo {
+
+        min-height:
+            70px;
+
+        padding:
+            11px 4px 9px;
+
+    }
+
+
+    .neo-tagline {
+
+        margin-top:
+            5px;
+
+        font-size:
+            11px;
+
+    }
+
+
+    .brand-audiomart {
+
+        padding:
+            7px 4px;
+
+    }
+
+
+    .audiomart-logo {
+
+        gap:
+            3px;
+
+    }
+
+
+    .audiomart-speaker {
+
+        height:
+            clamp(40px, 17vw, 52px);
+
+        max-width:
+            22%;
+
+    }
+
+
+    .audiomart-text {
+
+        max-width:
+            75%;
+
+        max-height:
+            46px;
+
+    }
+
+
+    .brand-mfc {
+
+        min-height:
+            74px;
+
+        padding:
+            10px 7px;
+
+    }
+
+
+    .mfc-brand-inner {
+
+        gap:
+            8px;
+
+    }
+
+
+    .mfc-icon {
+
+        width:
+            44px;
+
+        height:
+            44px;
+
+    }
+
+
+    .mfc-title {
+
+        font-size:
+            17px;
+
+    }
+
+
+    .mfc-domain {
+
+        font-size:
+            10px;
+
+    }
+
+
+    .content {
+
+        padding:
+            24px 7px 26px;
+
+    }
+
+
+    .status-icon {
+
+        margin-bottom:
+            16px;
+
+    }
+
+
+    h1 {
+
+        margin-bottom:
+            12px;
+
+    }
+
+
+    .message {
+
+        line-height:
+            1.5;
+
+    }
+
+
+    .secondary {
+
+        margin-top:
+            18px;
+
+        line-height:
+            1.5;
+
+    }
+
+
+    .challenge,
+    .diagnostic {
+
+        margin-top:
+            24px;
+
+    }
+
+
+    .preview-widget {
+
+        min-height:
+            62px;
+
+        padding:
+            8px 7px;
+
+        gap:
+            6px;
+
+    }
+
+
+    .preview-checkbox {
+
+        width:
+            18px;
+
+        height:
+            18px;
+
+        min-width:
+            18px;
+
+        flex-basis:
+            18px;
+
+    }
+
+
+    .details {
+
+        margin-top:
+            26px;
+
+        padding-top:
+            15px;
+
+    }
+
+}
+
+
+/*
+ * =========================================================
+ * VERY NARROW VIEWPORTS
+ * =========================================================
+ */
+
+@media (max-width: 230px) {
+
+    .brand-neo {
+
+        overflow:
+            hidden;
+
+    }
+
+
+    .sp_forum.forumlogo {
+
+        transform:
+            scale(0.88);
+
+        transform-origin:
+            center center;
+
+        margin-left:
+            -13px;
+
+        margin-right:
+            -13px;
+
+    }
+
+
+    .neo-tagline {
+
+        font-size:
+            10px;
+
+    }
+
+
+    .mfc-brand-inner {
+
+        flex-direction:
+            column;
+
+        gap:
+            5px;
+
+    }
+
+
+    .mfc-wordmark {
+
+        align-items:
+            center;
+
+        text-align:
+            center;
+
+    }
+
+
+    .content {
+
+        padding-left:
+            5px;
+
+        padding-right:
+            5px;
+
+    }
+
+}
+
+</style>
+
+<meta http-equiv="refresh" content="360"></head>
+
+
+<body>
+
+
+<main class="page">
+
+<section class="card">
+
+
+
+
+    <header class="brand brand-neo">
+
+        <span
+            class="sp_forum forumlogo"
+            role="img"
+            aria-label="Neoseeker"
+        ></span>
+
+        <div class="neo-tagline">
+            Gaming Guides and Walkthroughs        </div>
+
+    </header>
+
+
+
+
+
+
+<div class="content">
+
+
+
+
+    <div
+        class="status-icon"
+        aria-hidden="true"
+    >
+
+        <svg
+            viewBox="0 0 48 48"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+
+            <path
+                d="
+                    M24 3
+                    L40 9
+                    V21
+                    C40 32 33.2 40.1 24 44
+                    C14.8 40.1 8 32 8 21
+                    V9
+                    L24 3
+                    Z
+                "
+                fill="#3c82d4"
+            />
+
+            <path
+                d="M17 24L22 29L32 18"
+                stroke="#ffffff"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+
+        </svg>
+
+    </div>
+
+
+
+
+<h1>
+    Security check</h1>
+
+
+<p class="message">
+    We&#039;re checking your connection before continuing to Neoseeker. If prompted, please complete the verification below.</p>
+
+
+
+
+    <div class="challenge">
+
+
+    
+
+        <div class="main-wrapper" role="main"><div class="main-content"><noscript><div class="h2"><span id="challenge-error-text">Enable JavaScript and cookies to continue</span></div></noscript></div></div><script>(function(){window._cf_chl_opt = {cFPWv: 'b',cH: 'WJV2wH6Dd.VbojXdgFRbQsGqxVDNho7Xk5tvDmgKK24-1795098759-1.2.1.1-1GwBO1fZRmhi50eNB7ULmOoeywJ1ePy3K6qL3Rd6KgY8hlRZsXMyWXwDVchTTVBq',cITimeS: '1795098759',cRay: 'a5cfeceedc65cfcc',cTplC:1,cTplO:0,cTplV:5,cType: 'managed',cUPMDTk:"/king-of-colosseum-ii/faqs/87809-a.html?__cf_chl_tk=2Oy_jHgh2OBs7pqLRRBS6QvbRsO.mSz38h9tzrV2LfE-1795098759-1.0.1.1-yFyZ2TzeUSYPTekeHkOlyh9JL6UvUgpKIgrRM2QPL7U",cvId: '3',cZone: 'www.neoseeker.com',fa:"/king-of-colosseum-ii/faqs/87809-a.html?__cf_chl_f_tk=2Oy_jHgh2OBs7pqLRRBS6QvbRsO.mSz38h9tzrV2LfE-1795098759-1.0.1.1-yFyZ2TzeUSYPTekeHkOlyh9JL6UvUgpKIgrRM2QPL7U",md: 'eB1K0wA5mSjyKKfaEJsLGtYqPW7okua6H.kdta141Bg-1795098759-1.2.1.1

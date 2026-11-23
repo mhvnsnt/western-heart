@@ -1078,8 +1078,13 @@ export class Fighter {
     }
     // Face rig: morph driver + blink timer
     this._face = FaceRig.attach(this.root);
-    // Hand poses: fist default, blended per state
-    this._hands = new HandPoseBlender();
+    // Hand poses: fist default, blended per state. Bound to this.bones
+    // HERE, in _build, while the fresh instance is still at rest and
+    // before the mixer first updates — the driver captures its rest
+    // pose + curl axes from the live bones (handPoses.js, finger-rig
+    // lane C3, Lane B math). update() rebinds automatically if a
+    // transform swaps the model (new bones dict).
+    this._hands = new HandPoseBlender(this.bones);
   }
 
   /* ---------------- combat intents ---------------- */
@@ -4225,10 +4230,15 @@ export class Fighter {
       this._face.update(dt, this.state);
     }
     if (this._hands) {
-      // Hand pose by state: fist for attacks, open for block/parry, point for victory taunt
+      // Hand pose by state (finger-rig lane C3 — real bone rotations,
+      // handPoses.js): fist default + attacks, palm open for block/parry,
+      // point for victory + taunt moves, grip for grab/throw attacks.
+      // Fighters without finger bones (or with dead/unweighted ones)
+      // degrade gracefully: the driver poses only what exists.
       let pose = 'fist';
       if (this.state === 'block') pose = 'open';
       else if (this.state === 'victory') pose = 'point';
+      else if (this.state === 'attack' && this.attack && this.attack.system === 'taunt') pose = 'point';
       else if (this.state === 'attack' && this.attackName && /grab|throw/i.test(this.attackName)) pose = 'grip';
       this._hands.setPose(pose);
       this._hands.update(this.bones, dt);

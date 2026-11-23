@@ -4,27 +4,36 @@
 Usage: python3 yobj_to_gltf.py <model.yobj> <out.glb> [--no-morphs]
 
 Emits one mesh per YOBJ sub-object (positions, normals, UVs, skin
-weights, triangle indices), a skin over the full bone table (joint
-bind positions measured as weighted vertex centroids -- the
-anatomically correct pivots), and morph targets for the facial
-emote heads where present. Units are metres (source is cm x0.01);
-the source frame (x lateral, y up-negative, z depth) maps to glTF
-(x, -y, -z).
+weights, triangle indices), a skin over the full bone table, and
+morph targets for the facial emote heads where present. Units are
+metres (source is cm x0.01); the source frame (x lateral, y
+up-negative, z depth) maps to glTF (x, -y, -z).
 
-Known v1 limits (see docs/YOBJ-YANM.md): joint rotations are
-identity (bind pose renders correctly; the rotation fields are not
-decoded yet), no textures are embedded (the name->DDS mapping lives
-in the ch PACs, not yet unpacked here).
+v2 skeleton (2026-11-19): joints use the true bind pose decoded
+from the bone records -- parent-relative offsets (+0x10) and rest
+orientations (+0x20, Euler XYZ) -- instead of the v1 centroid
+positions + identity rotations. The FK reproduces the true joint
+pivots (knee height 58.2 cm, wrist within 2 cm of its centroid);
+inverse bind matrices are the full inverse of each joint's world
+transform. Morph bones (m###_####, parentless leaves driving the
+face) keep centroid positions + identity rotations: their offsets
+are not mesh positions. Animation-ready: a YANM clip's per-joint
+rotation is R_rest @ R_anim (see yanm_to_gltf.py).
+
+Known v1 limits (see docs/YOBJ-YANM.md): no textures are embedded
+(the name->DDS mapping lives in the ch PACs, not yet unpacked here).
 """
 
 import argparse
 import json
 import math
+import re
 import struct
 
 from yobj import load
 
 SCALE = 0.01
+MORPH_RE = re.compile(r"^m\d")
 
 
 def to_gltf_pos(p):
@@ -39,6 +48,63 @@ def to_gltf_dir(v):
     if n == 0:
         return (0.0, 0.0, 0.0)
     return (x / n, y / n, z / n)
+
+
+def mat_to_gltf(m):
+    """File-frame 3x3 rotation -> glTF frame: C @ M @ C with
+    C = diag(1,-1,-1) (a 180-degree rotation about X, so this is a
+    proper conjugation, not a reflection)."""
+    c = (1.0, -1.0, -1.0)
+    return [[c[i] * m[i][j] * c[j] for j in range(3)] for i in range(3)]
+
+
+def mat_to_quat(m):
+    """3x3 rotation matrix -> (x, y, z, w) quaternion."""
+    tr = m[0][0] + m[1][1] + m[2][2]
+    if tr > 0:
+        s = math.sqrt(tr + 1.0) * 2
+        return ((m[2][1] - m[1][2]) / s, (m[0][2] - m[2][0]) / s,
+                (m[1][0] - m[0][1]) / s, 0.25 * s)
+    if m[0][0] > m[1][1] and m[0][0] > m[2][2]:
+        s = math.sqrt(1.0 + m[0][0] - m[1][1] - m[2][2]) * 2
+        return (0.25 * s, (m[0][1] + m[1][0]) / s,
+                (m[0][2] + m[2][0]) / s, (m[2][1] - m[1][2]) / s)
+    if m[1][1] > m[2][2]:
+        s = math.sqrt(1.0 + m[1][1] - m[0][0] - m[2][2]) * 2
+        return ((m[0][1] + m[1][0]) / s, 0.25 * s,
+                (m[1][2] + m[2][1]) / s, (m[0][2] - m[2][0]) / s)
+    s = math.sqrt(1.0 + m[2][2] - m[0][0] - m[1][1]) * 2
+    return ((m[0][2] + m[2][0]) / s, (m[1][2] + m[2][1]) / s,
+            0.25 * s, (m[1][0] - m[0][1]) / s)
+
+
+def euler_xyz_mat(rx, ry, rz):
+    """Euler XYZ (intrinsic X then Y then Z) -> 3x3 matrix."""
+    cx, sx = math.cos(rx), math.sin(rx)
+    cy, sy = math.cos(ry), math.sin(ry)
+    cz, sz = math.cos(rz), math.sin(rz)
+    rxm = [[1, 0, 0], [0, cx, -sx], [0, sx, cx]]
+    rym = [[cy, 0, sy], [0, 1, 0], [-sy, 0, cy]]
+    rzm = [[cz, -sz, 0], [sz, cz, 0], [0, 0, 1]]
+
+    def mm(a, b):
+        return [[sum(a[i][k] * b[k][j] for k in range(3))
+                 for j in range(3)] for i in range(3)]
+
+    return mm(rzm, mm(rym, rxm))
+
+
+def invert_rt(rot, pos):
+    """Inverse of a rigid transform (3x3 rot, 3-vector pos) as a
+    column-major 4x4 list for glTF inverseBindMatrices."""
+    # R^-1 = R^T; t' = -R^T @ t.
+    rt = [[rot[j][i] for j in range(3)] for i in range(3)]
+    tp = tuple(-sum(rt[i][k] * pos[k] for k in range(3))
+               for i in range(3))
+    return [rt[0][0], rt[1][0], rt[2][0], 0.0,
+            rt[0][1], rt[1][1], rt[2][1], 0.0,
+            rt[0][2], rt[1][2], rt[2][2], 0.0,
+            tp[0], tp[1], tp[2], 1.0]
 
 
 class GlbBuilder:
@@ -113,28 +179,96 @@ class GlbBuilder:
         return self.add_accessor(bv, 5126, len(mats), "MAT4")
 
 
-def convert(yobj_path, out_path, with_morphs=True):
-    y = load(yobj_path)
-    centroids = y.bone_centroids()
+def build_skeleton(y):
+    """Joint bind data for the glTF skin.
 
-    # Joint bind positions in glTF coords (metres). Centroids are
-    # measured; bones without influence fall back to the N/O floats
-    # (Y/Z exact, X unknown -> 0).
-    joint_pos = []
+    Returns (joint_local, joint_world, parent_override) where
+    joint_local[i] is the node's local (translation,
+    rotation-quat-or-None) in glTF coords (metres), joint_world[i]
+    is the joint's world (rot3, pos3) in glTF coords (metres) for
+    the inverse bind matrices, and parent_override maps morph bone
+    indices to their nearest skeleton bone (see below).
+
+    Skeleton bones use the decoded bind pose (local offset +
+    rest orientation). Morph bones (m###_####) are parentless
+    leaves in the file, but they carry heavy skin weights all over
+    the body (435 vertices are 100% morph-weighted) -- leaving
+    them parented to the root rips the mesh apart the moment the
+    skeleton animates, because the morph bones stay in world
+    space while the body moves. They are therefore parented to
+    their nearest skeleton bone (by bind-pose distance) with a
+    local transform that reproduces their exact world bind pose
+    (centroid position, identity rotation), so they rigidly follow
+    the body part they sit on. The bind pose is unchanged (IBMs
+    are the world-transform inverses); the deformation is an
+    approximation until the morph bones' true runtime parenting
+    is decoded.
+    """
+    centroids = y.bone_centroids()
+    fk = y.rest_fk()
+    skel_idx = [b["index"] for b in y.bones
+                if not MORPH_RE.match(b["name"]) and b["index"] != 0]
+    joint_local = []
+    joint_world = []
+    parent_override = {}
     for b in y.bones:
-        c = centroids.get(b["index"])
-        if c is not None:
-            joint_pos.append(to_gltf_pos(c))
+        i = b["index"]
+        if MORPH_RE.match(b["name"]):
+            c = centroids.get(i)
+            if c is not None:
+                pos = to_gltf_pos(c)
+            else:
+                pos = (0.0, -b["n"] * SCALE, -b["o"] * SCALE)
+                c = (0.0, b["n"], b["o"])
+            # Nearest skeleton bone by bind-pose distance.
+            best, best_d = None, None
+            for j in skel_idx:
+                wp, _ = fk[j]
+                d = ((c[0] - wp[0]) ** 2 + (c[1] - wp[1]) ** 2 +
+                     (c[2] - wp[2]) ** 2)
+                if best_d is None or d < best_d:
+                    best, best_d = j, d
+            parent_override[i] = best
+            # Local transform relative to that bone: world rotation
+            # is identity, world position is the centroid.
+            pw, pr = fk[best]
+            # rel = R_parent^-1 @ (centroid - parent_pos), file coords
+            rel = (c[0] - pw[0], c[1] - pw[1], c[2] - pw[2])
+            rt = [[pr[j][k] for j in range(3)] for k in range(3)]
+            loc = tuple(sum(rt[r][k] * rel[k] for k in range(3))
+                        for r in range(3))
+            joint_local.append((to_gltf_pos(loc),
+                                mat_to_quat(mat_to_gltf(rt))))
+            joint_world.append(([[1, 0, 0], [0, 1, 0], [0, 0, 1]], pos))
         else:
-            joint_pos.append((0.0, -b["n"] * SCALE, -b["o"] * SCALE))
+            # Local translation = parent-frame offset, converted.
+            t = to_gltf_pos(b["offset"])
+            rr = euler_xyz_mat(*b["rest_euler"])
+            q = mat_to_quat(mat_to_gltf(rr))
+            joint_local.append((t, q))
+            wpos, wrot = fk[i]
+            joint_world.append((mat_to_gltf(wrot), to_gltf_pos(wpos)))
+    return joint_local, joint_world, parent_override
+
+
+def build_gltf(yobj_path, with_morphs=True):
+    """Build the glTF dict + buffer builder for a YOBJ. Returns
+    (gltf, builder, yobj). Callers may add animations to the dict
+    before write_glb()."""
+    y = load(yobj_path)
+    joint_local, joint_world, parent_override = build_skeleton(y)
 
     # Parent map: file parents, with every root (except bone 0)
-    # parented under bone 0 ('vector') so the skin has one root.
+    # parented under bone 0 ('vector') so the skin has one root --
+    # except morph bones, which attach to their nearest skeleton
+    # bone (see build_skeleton).
     parent_of = {}
     for b in y.bones:
         p = b["parent"]
         if b["index"] == 0:
             parent_of[0] = None
+        elif b["index"] in parent_override:
+            parent_of[b["index"]] = parent_override[b["index"]]
         elif p is None:
             parent_of[b["index"]] = 0
         else:
@@ -217,12 +351,9 @@ def convert(yobj_path, out_path, with_morphs=True):
             mesh["extras"] = {"targetNames": target_names}
         meshes.append(mesh)
 
-    # Skin: inverse bind matrices are pure translations (rotations
-    # are identity in v1), so IBM = translate(-joint_pos).
-    ibms = []
-    for (x, yy, z) in joint_pos:
-        ibms.append([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0,
-                     -x, -yy, -z, 1])
+    # Skin: inverse bind matrices are the full inverse of each
+    # joint's world transform (rotation + translation).
+    ibms = [invert_rt(rot, pos) for rot, pos in joint_world]
     ibm_acc = b.mat4s(ibms)
 
     # Nodes: joints first (node index == bone index), then mesh nodes.
@@ -233,13 +364,11 @@ def convert(yobj_path, out_path, with_morphs=True):
             children[p].append(i)
     for bone in y.bones:
         i = bone["index"]
-        p = parent_of[i]
-        px, py, pz = joint_pos[i]
-        if p is not None:
-            qx, qy, qz = joint_pos[p]
-            px, py, pz = px - qx, py - qy, pz - qz
+        t, q = joint_local[i]
         node = {"name": bone["name"],
-                "translation": [px, py, pz]}
+                "translation": [t[0], t[1], t[2]]}
+        if q is not None:
+            node["rotation"] = [q[0], q[1], q[2], q[3]]
         if children[i]:
             node["children"] = children[i]
         nodes.append(node)
@@ -259,7 +388,11 @@ def convert(yobj_path, out_path, with_morphs=True):
             "meshes": meshes, "materials": materials, "skins": skins,
             "accessors": b.accessors, "bufferViews": b.buffer_views,
             "buffers": [{"byteLength": len(b.buf)}]}
+    return gltf, b, y
 
+
+def write_glb(gltf, b, out_path):
+    gltf["buffers"] = [{"byteLength": len(b.buf)}]
     js = json.dumps(gltf, separators=(",", ":")).encode("utf-8")
     while len(js) % 4:
         js += b" "
@@ -272,9 +405,14 @@ def convert(yobj_path, out_path, with_morphs=True):
         f.write(js)
         f.write(struct.pack("<II", len(b.buf), 0x004E4942))
         f.write(bytes(b.buf))
+
+
+def convert(yobj_path, out_path, with_morphs=True):
+    gltf, b, y = build_gltf(yobj_path, with_morphs)
+    write_glb(gltf, b, out_path)
     n_tris = sum(len(y.read_faces(s)) for s in y.subobjects)
     n_morphs = sum(max(0, s["heads"] - 1) for s in y.subobjects)
-    print(f"wrote {out_path}: {len(meshes)} meshes, "
+    print(f"wrote {out_path}: {len(gltf['meshes'])} meshes, "
           f"{sum(s['verts'] for s in y.subobjects)} verts, "
           f"{n_tris} tris, {y.bone_count} joints, "
           f"{n_morphs} morph targets")

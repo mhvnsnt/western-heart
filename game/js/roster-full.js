@@ -201,7 +201,7 @@ export const FULL_ROSTER = [
   // demonio-winged, demonio-human -> 'demonio' ladder; doc-frank-wowomomo,
   // doc-frank-hood, doc-frank-frankenstein, doc-frank-machine-shop ->
   // 'docfrank' ladder. Models preserved, just re-homed.
-  { id: 'baek-master-white', name: 'KEVIN', title: "The Master Soul", base: 'Kevin', moveset: 'kevin', model: 'baek', tintStrength: 0.25,
+  { id: 'baek-master-white', name: 'KEVIN', title: "The Master Soul", base: 'Kevin', moveset: 'kevin', model: 'kevin-tripo', tintStrength: 0.25,
     colors: { suit: 0xf0f0f0, trim: 0x8a1a1a }, style: 'Tae Kwon Do', archetype: 'Pressure' },
   { id: 'mariposa-monarch', name: 'MARIPOSA', title: 'Monarch', base: 'Zafina', moveset: 'xiaoyu', model: 'mariposa-butterfly-default', tintStrength: 0.25,
     colors: { suit: 0x2a1a3a, trim: 0xff8800 }, style: 'Azazel Arts', archetype: 'Tricky' },

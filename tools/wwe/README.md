@@ -13,9 +13,11 @@ container formats.
 | `pac_unpack.py` | Unpacks `.pac` files (HSPC/SHDC/EPK8/EPAC/PACH/YANMPack containers; ZLIB, Yukes BPE, and Oodle Kraken decompression). Writes a sha256 manifest. |
 | `yuke_bpe.py` | Pure-Python Yukes BPE decompressor (the `BPE ` wrapper). |
 | `oodle_krk.py` | ctypes wrapper for libooz (`Ooz_Decompress`) with an `ooz` CLI fallback. Needs the ooz build (see Install). |
-| `yobj.py` | YOBJ character-model parser (bones, skin weights, morph heads, tri-strip faces). |
-| `yobj_to_gltf.py` | Converts a `.yobj` model to glTF 2.0 (`.glb`): skinned mesh, 421-joint skeleton, facial morph targets. |
-| `yanm.py` | YANM animation-clip parser (bone table, part offsets). Keyframe values are not decoded yet — see `docs/YOBJ-YANM.md`. |
+| `yobj.py` | YOBJ character-model parser (bones, skin weights, morph heads, tri-strip faces; rest orientations + offsets + `rest_fk()`). |
+| `yobj_to_gltf.py` | Converts a `.yobj` model to glTF 2.0 (`.glb`): skinned mesh, 421-joint skeleton with the true bind pose (v2), facial morph targets. |
+| `yanm.py` | YANM animation-clip parser (bone table, part offsets). |
+| `yanm_decode.py` | YANM keyframe decoder: frame counts (dt-sum vote), Part A rotation tracks, bone hash mapping. |
+| `yanm_to_gltf.py` | Converts a YOBJ + YANM clip to an animated `.glb` (rotation keyframes per joint; see `docs/YOBJ-YANM.md` for the decode). |
 | `catalog_yanm.py` | Catalogs every `.yanm` under given roots into JSON. |
 | `install.sh` | Builds the ooz (Oodle) helper from source. |
 
@@ -50,6 +52,12 @@ python3 yobj_to_gltf.py 0000.yobj wrestler.glb --no-morphs
 # Inspect an animation clip
 python3 yanm.py 00800000.yanm
 
+# Decode a clip's keyframes (frame count, rotation tracks)
+python3 yanm_decode.py 00800000.yanm
+
+# Animate a model with a clip -> animated .glb
+python3 yanm_to_gltf.py 0000.yobj 00100000.yanm wrestler-kick.glb --no-morphs
+
 # Catalog all clips under a tree
 python3 catalog_yanm.py unpacked/moves yanm-catalog.json
 ```
@@ -75,28 +83,43 @@ python3 catalog_yanm.py unpacked/moves yanm-catalog.json
   is unverified against real Oodle-encoded data (no such chunk
   exists in either pack here; re-verify against real ch/edit PACs
   when the full game data lands).
-- **YOBJ -> glTF**: `ch10002` (19 MB model) converts to a 9.4 MB
-  GLB — 23 meshes, 25,026 verts, 45,099 tris, 421 joints, 660
-  morph targets — and renders in Blender as a complete upright
-  1.96 m wrestler. Every skeleton bone's weighted vertex centroid
-  lands on its anatomical position (hips (0,-106,2), head
-  (0,-181,-12), eyes (+/-3.3,-184.7,-13.9) in file cm). The
-  converter also handles prop models: the entrance pack's kendo
-  stick (818 verts, 2 joints) converts to a valid 53 KB GLB.
+- **YOBJ -> glTF (v2)**: `ch10002` converts with the true bind
+  pose (rest orientations + parent-relative offsets, full
+  inverse bind matrices) — the FK reproduces the true joint
+  pivots (knee height 58.2 cm, wrist within 2 cm of its
+  centroid) and the bind pose renders identically to v1 in
+  Blender. Morph bones (332 parentless leaves with heavy skin
+  weights) attach to their nearest skeleton bone so the mesh
+  holds together under animation. 42/47 entrance-prop YOBJs
+  convert (7.1 MB of GLBs: kendo stick, casket, pyro cannon,
+  Undertaker hat, Fiend lantern, Del Rio car, ...); 5 fail on
+  truncated files / out-of-range indices.
 - **YANM**: 18,862 clips parsed; 497/500 sampled clips fully
   validate (all part ranges in bounds). 18,528 clips carry the
   standard 23-bone table; 188 carry a 61-bone variant whose entry
   layout differs (see `docs/YOBJ-YANM.md`).
+- **YANM keyframe decode (2026-11-19)**: frame counts from the
+  per-part dt sums (197/200 clips fully agree; 293/300 trusted
+  by majority vote). Part A = Euler angles, 1 unit = 360/256
+  degrees, R_anim = Rx(v2) @ Ry(v0) @ Rz(v1), joint rotation =
+  R_rest @ R_anim — validated by FK stick figures over 96
+  composition/order/permutation/sign combinations (the winning
+  formula is the only one giving coherent human poses) and by
+  Blender mesh renders of an animated GLB (ch10002 + a
+  110-frame kick clip: coherent kicking figure, limbs attached,
+  no shredding). Elbow -128 flags and the leg-twist 180-degree
+  offset are handled (see `docs/YOBJ-YANM.md`).
 
 ## Known limits
 
-- YANM keyframe *values* (per-frame rotations/translations) are
-  not decoded yet — the parser reads the structure and exposes the
-  raw keyframe blobs. Build plan in `docs/YOBJ-YANM.md`.
-- YOBJ joint rotations are identity in v1 (bind pose renders
-  correctly; the rotation fields are not decoded yet), and no
-  textures are embedded (the texture-name -> DDS mapping lives in
-  the ch PACs).
+- YANM Part B values, J_Hips Part B root motion, and the knee
+  (StartingID 0x0001) blocks are not decoded yet — animation is
+  Part A rotations only, in place, with straight knees. See
+  `docs/YOBJ-YANM.md` § Still open.
+- No textures are embedded in the GLBs (the texture-name -> DDS
+  mapping lives in the ch PACs). The ch `.bin` files carry a
+  header + texture-name string at offset 16 (`all_color`,
+  `all_color_mr`, ...) — a lead for the texture work.
 - OODL decode above 12 MB uncompressed is unverified (see above).
 
 ## References

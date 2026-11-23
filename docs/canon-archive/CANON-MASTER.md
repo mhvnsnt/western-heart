@@ -97,6 +97,9 @@ in the credits at the end of some stories and in the settings credits
 - **Identity.** Vessel of TOU, battle itself. The standard the others are
   measured against: body, mind, and soul all want the hold — nothing to
   resolve. He fights because fighting is what he is.
+- **Model — Tou stays (owner, 2026-11-22).** Tou's in-game green model
+  stays as it is; Real rejected replacing him with the Alien Diplomat or
+  Tripo alien replacements — he is already good.
 - **Appearance / model.** Black panther (not leopard), yellow eyes, black
   tail that moves independently — the tail tip traces slow circles when he
   is still; fighters say the tail tells when the hold is coming. Purple
@@ -1404,8 +1407,12 @@ in the credits at the end of some stories and in the settings credits
 
 ### CHORDZ
 - **Identity.** Lars → **Chordz** (rename locked, owner, 2026-10-15).
-- **Open gaps.** At the rename, no Lars model existed (recorded BLOCKED
-  then). No further canon — story, appearance, moves — is recorded yet.
+- **Identity (owner, 2026-11-22).** Kutz Chordz is one guy — Kutz for
+  short; some call him Kutz, some Chordz, both are him. The 'two halves'
+  are his personality (guitarist side / moshpit side), not two people.
+  Emo guy based on Lars; he has a model and transformations.
+- **Open gaps.** Story and moves not yet recorded; model +
+  transformations exist (owner, 2026-11-22).
 
 ### ZEN — The Unvesseled
 - **Identity.** ZEN (禅), stillness — one of the nine souls, and
@@ -1533,8 +1540,16 @@ in the credits at the end of some stories and in the settings credits
   because the names are similar (his speech-to-text also renders Zen as
   ran/rain/Wren) — attribution follows the TRAITS (yellow + octopus =
   Zen), never the typed name alone.
-- **Open gaps.** Beyond the separation above, **no canon recorded yet** —
-  the owner has NOT started on Ren (2026-10-21).
+- **Appearance — functioning Truth mouth (owner, 2026-11-22).** Ren
+  gets a real, functioning mouth like Truth from Fullmetal Alchemist —
+  the white being in the Gate with the big creepy smile as his default;
+  it opens, teeth are 3D, inside of the mouth is black, with a tongue
+  and a uvula.
+- **Not Demonio (owner, 2026-11-22).** Ren is **NOT Demonio** and
+  **NOT Steve Fox**; the stretched-face picture shown was Demonio in a
+  transformed version, not Ren.
+- **Open gaps.** Beyond the separation above, the Truth mouth, and the
+  not-Demonio correction (2026-11-22), no further canon recorded yet.
 
 ### MARS
 - **Identity (owner, 2026-10-19).** Mars is like a **Stand (JoJo) for
@@ -1916,6 +1931,14 @@ Owner order 2026-11-08 ~20:37 CST — land in all necessary repos.
 ### 2026-11-10 owner ruling — Madelyn is low priority
 
 - MADELYN (owner 2026-11-10): may be wired into the western-heart game and repo, but explicitly LOW priority — the owner is not that invested in her. Her wiring work (open PR #1708) stays behind the roster, Megami, hair, and collision lanes; no lane pulls Madelyn work ahead of higher-priority work on this ruling.
+
+### 2026-11-20 owner ruling — Moveset library design
+
+- WESTERN HEART MOVESET LIBRARY DESIGN (owner 2026-11-20): organize the move library by position and input — back strike, turnaround, crouching, jumping, all Tekken positions, not just the named ones — so every strike is swappable by limb/side (right punch to any right punch, left kick to any left kick), plus combos/strings, for custom characters with custom movesets, WWE-style editing. Editor behaviors: a fighter must get a move and all moves need animations; hover preview like WWE 2K26; selecting the character is the edit button; VF/DOA move lists are starting points for custom fighters in the game's inputs; a saved move list can be renamed/copied, never overwriting the original.
+
+### 2026-11-22 owner ruling — Deadlift Alley-Oop
+
+- DEADLIFT ALLEY-OOP (owner 2026-11-22): Western Heart custom move saved from the incorrect Tekken 7 suplex — grounded leg-grapple setup, Blue pulls Orange up from the ground, picks him up from the waist going backwards and slams him face-first (wrestling powerbomb alley-oop from a deadlift position); in the setup Orange spins around Blue on the Y (up-down) axis, legs held like a Giant Swing, and the slam sends Orange over Blue's head and behind him.
 
 *End of CANON-MASTER. Compiled 2026-10-23. If it isn't recorded, it
 isn't here — and if it gets recorded, it gets pushed here.*
