@@ -1,0 +1,76 @@
+// Phase 5c — longer wait after dismissing the memcard prompt so the slow
+// (~30-45% speed) title fade-in/loading has time to render. Screenshots
+// every 20-30s for 2 minutes after the keypress, both games.
+const puppeteer = require('puppeteer');
+const fs = require('fs');
+const OUT = '/dev/shm/phase5/title2';
+fs.mkdirSync(OUT, { recursive: true });
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+async function titleShot(browser, gameId) {
+  const page = await browser.newPage();
+  await page.setViewport({ width: 800, height: 760 });
+  page.on('pageerror', (e) => console.log(`[${gameId} pageerror] ${e.message}`));
+  await page.goto(`http://localhost/play-ps2-repo.html?game=${gameId}&autotest=1`, { waitUntil: 'domcontentloaded', timeout: 60000 });
+  const t0 = Date.now();
+  let state = 'init';
+  while (Date.now() - t0 < 180000) {
+    const t = await page.evaluate(() => window.__ps2test).catch(() => null);
+    if (t) state = t.state;
+    if (state === 'running' || state === 'error' || state === 'no-sab') break;
+    await sleep(3000);
+  }
+  console.log(`[${gameId}] state=${state} after ${Math.round((Date.now() - t0) / 1000)}s`);
+  if (state !== 'running') {
+    await page.screenshot({ path: `${OUT}/${gameId}-notrunning.png` });
+    await page.close();
+    return { game: gameId, state };
+  }
+  await sleep(25000); // reach the memcard prompt
+  await page.screenshot({ path: `${OUT}/${gameId}-prompt.png` });
+  await page.evaluate(() => window.__ps2press('ArrowUp', 300));
+  await sleep(1500);
+  await page.evaluate(() => window.__ps2press('KeyX', 300));
+  console.log(`[${gameId}] prompt dismissed, waiting for title (2 min, shots every 20s)`);
+  const marks = [20, 40, 60, 80, 100, 120];
+  let prev = 0;
+  for (const m of marks) {
+    await sleep((m - prev) * 1000);
+    prev = m;
+    await page.screenshot({ path: `${OUT}/${gameId}-title-plus${m}s.png` });
+    const t = await page.evaluate(() => window.__ps2test).catch(() => null);
+    console.log(`[${gameId}] +${m}s fps-n=${t && t.fps.length} reads=${t && t.discReads} bytes=${t && t.discBytes}`);
+  }
+  const t = await page.evaluate(() => window.__ps2test).catch(() => null);
+  const log = await page.evaluate(() => { const el = document.getElementById('testlog'); return el ? el.textContent : ''; }).catch(() => '');
+  fs.writeFileSync(`${OUT}/${gameId}-title2.json`, JSON.stringify({ ps2test: t, debugLog: log }, null, 2));
+  console.log(`[${gameId}] final state=${t && t.state} errors=${JSON.stringify(t && t.errors)}`);
+  await page.close();
+  return { game: gameId, state: t && t.state };
+}
+
+(async () => {
+  const browser = await puppeteer.launch({
+    headless: 'new',
+    userDataDir: '/dev/shm/phase5/profile-title2',
+    args: [
+      '--no-sandbox',
+      '--disable-dev-shm-usage',
+      '--use-angle=swiftshader',
+      '--enable-unsafe-swiftshader',
+      '--autoplay-policy=no-user-gesture-required',
+      '--window-size=800,760',
+      '--no-first-run',
+      '--disable-default-apps',
+      '--crash-dumps-dir=/dev/shm/phase5',
+    ],
+  });
+  const results = [];
+  for (const g of ['koc2', 'koc2hybrid']) {
+    try { results.push(await titleShot(browser, g)); }
+    catch (e) { console.error(`[${g}] FATAL ${e.stack}`); results.push({ game: g, state: 'harness-error' }); }
+  }
+  fs.writeFileSync(OUT + '/title2-results.json', JSON.stringify(results, null, 2));
+  await browser.close();
+  console.log('DONE');
+})().catch((e) => { console.error('FATAL ' + e.stack); process.exit(1); });

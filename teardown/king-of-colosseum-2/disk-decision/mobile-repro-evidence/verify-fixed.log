@@ -1,0 +1,45 @@
+[diag pre-boot] visible=true text="Stage: ready (0s) · Frames: 0 · WASM: not-started\nSAB: yes · Isolated: yes · GL: not-requested · rAF: 1\nDisc: 0 reads · 0.0 MB · Retries: 0 · Pending read: none\nLast error: none"
+[boot] tapped Play
+[t=5s] state=running stage=running frames=3 fpsLast=0,0,3 gl=webgl2 ✓ retries=0 pending=false err= warn=false badge=3 fps · 5%
+[t=10s] state=running stage=running frames=94 fpsLast=6,32,31 gl=webgl2 ✓ retries=0 pending=false err= warn=false badge=31 fps · 52%
+[diag t=10s]
+Stage: running (8s) · Frames: 94 · WASM: loaded ✓
+SAB: yes · Isolated: yes · GL: webgl2 ✓ · rAF: 500
+Disc: 4 reads · 8.0 MB · Retries: 0 · Pending read: none
+Last error: none
+[t=15s] state=running stage=running frames=160 fpsLast=13,11,0 gl=webgl2 ✓ retries=0 pending=false err= warn=false badge=0 fps · 0%
+[t=20s] state=running stage=running frames=218 fpsLast=0,10,14 gl=webgl2 ✓ retries=0 pending=true err= warn=false badge=14 fps · 23%
+[t=25s] state=running stage=running frames=319 fpsLast=22,37,26 gl=webgl2 ✓ retries=0 pending=false err= warn=false badge=26 fps · 43%
+[t=30s] state=running stage=running frames=403 fpsLast=20,14,20 gl=webgl2 ✓ retries=0 pending=false err= warn=false badge=20 fps · 33%
+[input] pressed Up + Circle to dismiss memcard prompt
+[t=35s] state=running stage=running frames=562 fpsLast=26,24,29 gl=webgl2 ✓ retries=0 pending=false err= warn=false badge=29 fps · 48%
+[t=40s] state=running stage=running frames=700 fpsLast=20,25,38 gl=webgl2 ✓ retries=0 pending=false err= warn=false badge=38 fps · 63%
+[t=45s] state=running stage=running frames=869 fpsLast=33,34,36 gl=webgl2 ✓ retries=0 pending=false err= warn=false badge=36 fps · 60%
+[diag t=45s]
+Stage: running (45s) · Frames: 869 · WASM: loaded ✓
+SAB: yes · Isolated: yes · GL: webgl2 ✓ · rAF: 2260
+Disc: 21 reads · 42.0 MB · Retries: 0 · Pending read: none
+Last error: none
+[t=50s] state=running stage=running frames=1013 fpsLast=21,19,24 gl=webgl2 ✓ retries=0 pending=false err= warn=false badge=24 fps · 40%
+[t=55s] state=running stage=running frames=1142 fpsLast=28,22,18 gl=webgl2 ✓ retries=0 pending=false err= warn=false badge=18 fps · 30%
+[t=60s] state=running stage=running frames=1170 fpsLast=1,2,12 gl=webgl2 ✓ retries=0 pending=false err= warn=false badge=12 fps · 20%
+[t=65s] state=running stage=running frames=1262 fpsLast=17,20,22 gl=webgl2 ✓ retries=0 pending=false err= warn=false badge=22 fps · 37%
+[t=70s] state=running stage=running frames=1346 fpsLast=10,17,18 gl=webgl2 ✓ retries=0 pending=false err= warn=false badge=18 fps · 30%
+[t=75s] state=running stage=running frames=1445 fpsLast=20,24,22 gl=webgl2 ✓ retries=0 pending=false err= warn=false badge=22 fps · 37%
+[diag t=75s]
+Stage: running (76s) · Frames: 1445 · WASM: loaded ✓
+SAB: yes · Isolated: yes · GL: webgl2 ✓ · rAF: 3671
+Disc: 32 reads · 64.0 MB · Retries: 0 · Pending read: none
+Last error: none
+[t=80s] state=running stage=running frames=1526 fpsLast=12,18,11 gl=webgl2 ✓ retries=0 pending=false err= warn=false badge=11 fps · 18%
+CHECKS: {
+  "diagVisiblePreBoot": true,
+  "glOk": true,
+  "framesGrew": true,
+  "fpsPositive": true,
+  "warnHidden": true,
+  "inputWorked": true,
+  "lastErrorEmpty": true
+}
+pageErrors: [] failedReqs: []
+DONE

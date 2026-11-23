@@ -1,0 +1,25 @@
+{
+ "name": "B4c-movies",
+ "message": "KoC2 raw: HELLO.FOR + GOOD.BYE (SFD movies, split)",
+ "max_bytes": 3000000000,
+ "split_files": [
+  {
+   "src": "/home/hatch/workspace/grok-declined-items/lane-koc2/extract/iso/DATA/HELLO.FOR",
+   "dst_dir": "raw/king-of-colosseum-2/jp/iso/DATA",
+   "dst_name": "HELLO.FOR",
+   "pieces": "all",
+   "sha256": "49bc20df15e412a64472421e13fe86ff1c5165e18b2afccf160d4dc19fe68a14",
+   "original_name": "HELLO.FOR",
+   "manifest": true
+  },
+  {
+   "src": "/home/hatch/workspace/grok-declined-items/lane-koc2/extract/iso/DATA/GOOD.BYE",
+   "dst_dir": "raw/king-of-colosseum-2/jp/iso/DATA",
+   "dst_name": "GOOD.BYE",
+   "pieces": "all",
+   "sha256": "49bc20df15e412a64472421e13fe86ff1c5165e18b2afccf160d4dc19fe68a14",
+   "original_name": "GOOD.BYE",
+   "manifest": true
+  }
+ ]
+}

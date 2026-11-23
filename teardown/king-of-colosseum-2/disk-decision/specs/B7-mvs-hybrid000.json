@@ -1,0 +1,22 @@
+{
+ "name": "B7-mvs-hybrid000",
+ "message": "KoC2 raw: kc2firemvs/ + hybrid KC2FIRE.000 pack",
+ "max_bytes": 3000000000,
+ "dirs": [
+  {
+   "src": "/home/hatch/workspace/grok-declined-items/lane-koc2/extract/kc2firemvs",
+   "dst": "raw/king-of-colosseum-2/jp/kc2firemvs"
+  }
+ ],
+ "split_files": [
+  {
+   "src": "/home/hatch/workspace/koc2-english/work/m3/work/KC2FIRE-hybrid.000",
+   "dst_dir": "raw/king-of-colosseum-2/hybrid",
+   "dst_name": "KC2FIRE-hybrid.000",
+   "pieces": "all",
+   "sha256": "89e5f0d6feda57c3dea166e532079d7147c11224f6b12659b281f58207e52f44",
+   "original_name": "KC2FIRE-hybrid.000",
+   "manifest": true
+  }
+ ]
+}

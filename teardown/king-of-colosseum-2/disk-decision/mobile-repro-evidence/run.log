@@ -1,0 +1,48 @@
+
+===== ARM A-mobile-tap: mobile emulation + tap boot (Mars repro) =====
+[A-mobile-tap] goto https://powerseller-success-requesting-evanescence.trycloudflare.com/play-ps2.html?game=koc2
+[A-mobile-tap] env: {"sab":true,"isolated":true,"ua":"Mozilla/5.0 (Linux; Android 15; motorola edge 2025) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Mobile Safari/537.36","hw":4,"mem":{"jsHeap":"4192MB limit"},"hidden":false,"visibility":"visible","gl":{"webgl2":true,"renderer":"WebKit WebGL","vendor":"WebKit","webgl1":false},"raf":11}
+[A-mobile-tap console] [error] Failed to load resource: the server responded with a status of 404 ()
+[A-mobile-tap] tapped Play at t=0
+[A-mobile-tap] state=running at 2s reads=1 bytes=0 raf=103
+[A-mobile-tap] t=0s state=running fps=[0] reads=1 raf=103 badge=0 fps · 0%
+[A-mobile-tap] t=10s state=running fps=[34,35,31,7,0] reads=5 raf=693 badge=0 fps · 0%
+[A-mobile-tap] t=20s state=running fps=[10,14,10,5,22] reads=17 raf=1318 badge=22 fps · 37%
+[A-mobile-tap console] [error] Failed to load resource: the server responded with a status of 404 ()
+[A-mobile-tap] t=30s state=running fps=[29,23,26,28,24] reads=19 raf=1664 badge=24 fps · 40%
+[A-mobile-tap] t=40s state=running fps=[35,38,39,35,38] reads=19 raf=1909 badge=38 fps · 63%
+[A-mobile-tap] t=50s state=running fps=[21,26,23,23,27] reads=19 raf=2232 badge=27 fps · 45%
+[A-mobile-tap] t=60s state=running fps=[25,25,20,14,23] reads=19 raf=2504 badge=23 fps · 38%
+[A-mobile-tap] t=70s state=running fps=[32,37,33,23,28] reads=19 raf=2821 badge=28 fps · 47%
+[A-mobile-tap] t=80s state=running fps=[27,34,34,32,36] reads=19 raf=3069 badge=36 fps · 60%
+[A-mobile-tap] t=90s state=running fps=[34,36,35,40,37] reads=19 raf=3383 badge=37 fps · 62%
+[A-mobile-tap] t=100s state=running fps=[24,16,24,21,20] reads=19 raf=3534 badge=20 fps · 33%
+[A-mobile-tap] t=110s state=running fps=[34,34,29,35,37] reads=19 raf=3886 badge=37 fps · 62%
+[A-mobile-tap] t=120s state=running fps=[35,33,21,33,32] reads=19 raf=4203 badge=32 fps · 53%
+[A-mobile-tap] FINAL getFrames=26 canvasPixelsNonBlack=569/3072 canvas={"w":640,"h":480,"cw":386,"ch":289}
+[A-mobile-tap] debugLog tail:
+
+
+===== ARM B-desktop-tap: desktop viewport + click boot (control) =====
+[B-desktop-tap] goto https://powerseller-success-requesting-evanescence.trycloudflare.com/play-ps2.html?game=koc2
+[B-desktop-tap] env: {"sab":true,"isolated":true,"ua":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36","hw":4,"mem":{"jsHeap":"4192MB limit"},"hidden":false,"visibility":"visible","gl":{"webgl2":true,"renderer":"WebKit WebGL","vendor":"WebKit","webgl1":false},"raf":3}
+[B-desktop-tap] tapped Play at t=0
+[B-desktop-tap] state=running at 2s reads=2 bytes=4194304 raf=106
+[B-desktop-tap] t=0s state=running fps=[1] reads=2 raf=106 badge=1 fps · 2%
+[B-desktop-tap] t=10s state=running fps=[26,19,29,27,27] reads=15 raf=683 badge=27 fps · 45%
+[B-desktop-tap console] [error] Failed to load resource: the server responded with a status of 404 ()
+[B-desktop-tap] t=20s state=running fps=[13,16,27,11,16] reads=19 raf=1082 badge=16 fps · 27%
+[B-desktop-tap] t=30s state=running fps=[16,18,26,23,20] reads=19 raf=1204 badge=20 fps · 33%
+[B-desktop-tap] t=40s state=running fps=[23,18,17,22,29] reads=19 raf=1275 badge=29 fps · 48%
+[B-desktop-tap] t=50s state=running fps=[22,20,13,29,21] reads=19 raf=1483 badge=21 fps · 35%
+[B-desktop-tap] t=60s state=running fps=[20,25,19,24,26] reads=19 raf=1669 badge=26 fps · 43%
+[B-desktop-tap] t=70s state=running fps=[25,4,11,33,27] reads=19 raf=1922 badge=27 fps · 45%
+[B-desktop-tap] t=80s state=running fps=[34,35,35,38,38] reads=19 raf=2382 badge=38 fps · 63%
+[B-desktop-tap] t=90s state=running fps=[36,34,34,34,35] reads=19 raf=2856 badge=35 fps · 58%
+[B-desktop-tap] t=100s state=running fps=[36,34,31,34,35] reads=19 raf=3358 badge=35 fps · 58%
+[B-desktop-tap] t=110s state=running fps=[37,34,38,33,34] reads=19 raf=3848 badge=34 fps · 57%
+[B-desktop-tap] t=120s state=running fps=[34,34,35,35,36] reads=19 raf=4345 badge=36 fps · 60%
+[B-desktop-tap] FINAL getFrames=14 canvasPixelsNonBlack=0/3072 canvas={"w":640,"h":480,"cw":734,"ch":550}
+[B-desktop-tap] debugLog tail:
+
+DONE
