@@ -175,20 +175,24 @@ chained by each entry's own length field (u16 BE at +2).
 | +0x08 | u32 BE Part A index (data starts at index+8) |
 | +0x0C | u32 BE Part A length in **4-byte units** |
 | +0x10 | u32 BE Part B index (absent on 0x10-long entries) |
-| +0x14 | u32 BE Part B length in **4-byte units** |
+| +0x14 | u32 BE Part B length in **4-byte units** (J_Hips Part B: the field counts **8-byte records** — see Root motion below) |
 
 Entry lengths vary: 0x10, 0x18, 0x28, 0x30 all occur. Longer
 entries have trailing bytes after the pairs (0x28 entries: 16
-bytes; 0x30 entries: a possible third pair + 16 bytes of floats
-— e.g. J_Hips trailing floats ~= (0.0002, -160.6, 91.2, -6.9),
-meaning unknown).
+bytes; 0x30 entries: a possible third pair + 16 bytes of floats).
+On J_Hips the 16 trailing bytes are 4 floats: the first is the
+root-motion scale (cm per unit, ~0.0002–0.0006) and the next
+three are the absolute start position in cm — e.g. J_Hips
+trailing floats ~= (0.0002, -160.6, 91.2, -6.9). See Root motion.
 
 **Part lengths are x4 bytes, NOT x8 as WrestleMINUS assumes:**
 the gaps between consecutive part indices equal length*4 for
 every part checked (e.g. a Part B of length 39 fills exactly the
-156 bytes before the next part). One exception seen: J_Hips'
-Part B in one clip spans 352 bytes for length 44 (x8) — open
-question, possibly an 8-byte record type on that bone.
+156 bytes before the next part). One systematic exception:
+J_Hips' Part B length field counts 8-byte records, so its true
+span is length*8 — e.g. length 44 spans 352 bytes. The stored
+`part_b` length in `yanm.py` (length*4) is half the J_Hips
+track; `yanm_decode.py` `hips_b_track()` reads the full span.
 
 ### Special entries (StartingID 0x0001)
 
@@ -301,6 +305,68 @@ limbs attached and no shredding (the morph-bone proximity
 parenting in the v2 converter is what makes the mesh hold
 together — without it the static morph bones rip the mesh).
 
+### Root motion (decoded 2026-11-19)
+
+J_Hips Part B is the root-motion track. Decoder: `yanm_root.py`.
+
+**Format.** 8-byte big-endian records `(i16 dx, i16 dy, i16 dz,
+u16 dt)`. The length field counts 8-byte records: the true byte
+span is length × 8 (twice what `yanm.py`'s length×4 gives — the
+old `hips_b_track` read only half the track, which is why its
+u16 column did not sum to the frame count). `dt` = frames until
+the next keyframe; the dts sum exactly to the clip's frame count
+(274/279 primary clips; the rest are trimmed takes whose track
+runs past the clip end). Record 0 is always `(0,0,0,dt=0)`.
+Record *i* sits at frame `cumsum(dt[0..i-1])`.
+
+**Values.** Each record is the root **displacement** over
+`[frame_i, frame_i + dt_i)` (forward convention), so the
+position at keyframe *i* is the forward cumulative sum of the
+values before *i*, and `value/dt` is the per-frame velocity
+(~4.8× smoother than the raw values across 279 clips). The
+backward reading is ruled out: record 1 sits at frame 0 with a
+nonzero value. Scale: the first trailing float of the J_Hips
+entry is cm per unit (~0.0002–0.0006, per clip). Absolute start:
+the next three trailing floats (cm) in a shared pair frame —
+paired attacker/receiver clips share the frame (the receiver
+starts at x≈0, z≈0).
+
+**Coordinates (cm, 60 fps):** x = lateral, y = vertical (+down;
+standing ≈3–10, lying ≈90–95), z = forward. Hips height above
+the mat ≈ 96 − y cm (±10 cm, calibrated from 59 planted-upright
+clips).
+
+**Variants.** 0x4100 / header 0x28 (276/279 clips): root motion
+in Part B, floats at +0x18. 0x5100 / header 0x30 (3 clips — one
+clip shared by three moves): root motion in the third pair at
++0x18 (dt-sum exactly the frame count), floats at +0x20; Part B
+there is 4-byte records, a different track.
+
+**Validation.** Running big boot covers 2.6 m at 2.8–4.6 m/s;
+moonwalk glides 2.2 m at 0.6–0.9 m/s; an in-place dance stays
+within 32 cm. Lying receivers end at y +48..+92 cm; standing
+receivers at y −8..+9 cm. German suplex: min separation 30.9 cm
+at frame 83 = exactly the FK fall-onset frame. Spear: attacker
+starts 2.6 m out, runs through, ends standing 1.4 m past.
+Apron 450: attacker starts on the top rope (251 cm), lands on
+the receiver at f=42. P2's Part B is present in all 279 clips
+(the earlier "absent" report was the half-read artifact).
+
+**Open within the decode.** Every clip carries exactly one
+record with |value| == 32766 (0x7FFE) in one channel; its meaning
+is unknown (tested: not the speed peak, landing frame,
+max-inclination frame, acceleration peak, or a shared event
+frame). Max-speed metrics must use smoothed speeds — the raw
+1-frame speed at that record is a spike. If it is a clamp, the
+position error is bounded by ~one record's displacement (~5 cm).
+The pair-frame ↔ FK file-frame transform is also not yet
+established — do not combine FK joint positions with root
+trajectories yet.
+
+`yanm_to_gltf.py` does not apply root motion yet — it still
+animates in place. Wiring the decoded track into the GLB
+converter is the follow-up.
+
 ### Still open
 
 - **Part B values:** same 4-byte dt structure (sums to the frame
@@ -308,13 +374,6 @@ together — without it the static morph bones rip the mesh).
   spatial signal in the Part A unit. Cumsums wander (not
   delta-encoded). Ch_rotation B Z shows a low-frequency trend
   (+/-100) plus high-frequency noise (+/-30). Meaning unknown.
-- **J_Hips Part B (root motion):** 8-byte records (3x i16 BE +
-  u16 BE; byte 6 always 0, byte 7 in {0,1,2,4}). The u16 does NOT
-  sum to the frame count (ratio 0-0.83, mean 0.40 over 107
-  clips). Pure quaternions ruled out (BE |v|^2 > 1 in 47/1218
-  records, max 1.82). Values jump wildly (not smooth
-  translations). Until this decodes, `yanm_to_gltf.py` animates
-  in place (no root motion).
 - **Knee-gap format:** see Special entries above. Knees stay
   straight in v1 animation (no bend data applied).
 - **0DAECC2D:** unnamed bone hash (see above).
