@@ -18,7 +18,14 @@
 // customization/templates/meshes/*.glb URLs, is therefore expected, not
 // broken. Missing or placeholder verdicts are NEVER exempted, and no other
 // key or URL is exempted.
+// The `custom` key below is the same technician body as
+// custom-template-technician, wired as the created-fighter base
+// (MODEL_URLS custom, 2026-10-24: Mixamo Soldier removed by owner order,
+// "fully take him out of the game"). It is runtime-tinted by the same
+// createInstance path, so the same owner decision (2026-11-02, option A)
+// exempts its untextured-only failure at the same URL.
 const RUNTIME_TINTED_TEMPLATES = new Map([
+  ['custom', '../customization/templates/meshes/technician.glb'],
   ['custom-template-super-heavyweight', '../customization/templates/meshes/super-heavyweight.glb'],
   ['custom-template-powerhouse', '../customization/templates/meshes/powerhouse.glb'],
   ['custom-template-showman', '../customization/templates/meshes/showman.glb'],
