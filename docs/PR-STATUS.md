@@ -4,7 +4,7 @@
 
 **42 open PRs — 🟢 ready to merge: 0 · 🔴 failing: 26 · ⏳ running: 0 · ⚔️ conflicted: 16** (also 🟠 blocked: 0 · 🔗 stacked: 0 · 📝 draft, green-or-idle: 0; 6 of 42 are drafts)
 
-_Generated 2026-11-23 16:26 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
+_Generated 2026-11-23 16:27 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
 
 Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not reported. Ready = not draft, targets `main`, GitHub says MERGEABLE, every check green. Status priority: conflicted > failing > running > draft > stacked > ready.
 
@@ -16,7 +16,7 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 🔴 failing | [#1850](https://github.com/mhvnsnt/western-heart/pull/1850) Lane D handoff refresh 2026-11-23: WH: Nov 22-23 wave #1822-#1849, #911 merged | ready | mhvnsnt / `lane-d-handoff-refresh-20261123` | `7b6406b` | `main` | ✅ | ⏳ | ⏳ | ❌ | 1✅ 8⏳ | mergeable (blocked) | 2026-11-23 16:25 UTC |
+| 🔴 failing | [#1850](https://github.com/mhvnsnt/western-heart/pull/1850) Lane D handoff refresh 2026-11-23: WH: Nov 22-23 wave #1822-#1849, #911 merged | ready | mhvnsnt / `lane-d-handoff-refresh-20261123` | `7b6406b` | `main` | ✅ | ✅ | ✅ | ❌ | 5✅ 4⏳ | mergeable (blocked) | 2026-11-23 16:25 UTC |
 | 🔴 failing | [#1842](https://github.com/mhvnsnt/western-heart/pull/1842) Creation Suite (slice of #1057): clean parts — workflow path, suite CSS/HTML, assets.js, r | ready | mhvnsnt / `slice/1057-clean-parts-20261122` | `7a13d99` | `main` | ✅ | ✅ | ✅ | ✅ | 8✅ 2❌ | mergeable (unstable) | 2026-11-22 19:35 UTC |
 | 🔴 failing | [#1839](https://github.com/mhvnsnt/western-heart/pull/1839) finger-rig C3: hand-pose driver — fist/palm/point/per-finger as real game controls | ready | mhvnsnt / `finger-rig-game-wiring-20261122` | `aa424a7` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-22 18:18 UTC |
 | 🔴 failing | [#1838](https://github.com/mhvnsnt/western-heart/pull/1838) Lane B: wire Bannon to his own model bf-bannon | ready | mhvnsnt / `lane-b/bannon-bf-bannon-20261122` | `cacc94d` | `main` | ❌ | ✅ | ✅ | ❌ | 9✅ 1❌ | mergeable (blocked) | 2026-11-22 17:57 UTC |
@@ -30,7 +30,7 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 | 🔴 failing | [#1798](https://github.com/mhvnsnt/western-heart/pull/1798) Sweep: No Mercy re-extract leftovers (mat-kings DB, AKI bake, full-ROM pass) | ready | mhvnsnt / `muse/sweep-nomercy-uvpw` | `f7c2045` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-20 23:16 UTC |
 | 🔴 failing | [#1797](https://github.com/mhvnsnt/western-heart/pull/1797) Phase 2: Tong-Nou transmigration sequences (Sato → Western Heart) | ready | mhvnsnt / `sato/transmigration-sequences` | `67054ea` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-20 22:44 UTC |
 | 🔴 failing | [#1796](https://github.com/mhvnsnt/western-heart/pull/1796) Phase 2: Roly-Polys world hub + minigames (Sato → Western Heart) | ready | mhvnsnt / `p2/rolypolys-world-hub` | `6f94ead` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-20 22:43 UTC |
-| 🔴 failing | [#1778](https://github.com/mhvnsnt/western-heart/pull/1778) tools/wwe: J_Hips Part B root-motion decode (yanm_root.py) | ready | mhvnsnt / `muse/jhips-root-motion` | `796df7c` | `muse/w4-yanm-decode` | · | · | ✅ | ❌ | 3✅ | mergeable (unstable) | 2026-11-22 17:40 UTC |
+| 🔴 failing | [#1778](https://github.com/mhvnsnt/western-heart/pull/1778) tools/wwe: J_Hips Part B root-motion decode (yanm_root.py) | ready | mhvnsnt / `muse/jhips-root-motion` | `796df7c` | `main` | · | · | ✅ | ❌ | 3✅ | mergeable (blocked) | 2026-11-23 16:26 UTC |
 | 🔴 failing | [#1773](https://github.com/mhvnsnt/western-heart/pull/1773) W6: WMXIX textures (9,410 PNGs) + face contact sheets | ready | mhvnsnt / `w6/wmxix-textures` | `b480185` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-19 21:06 UTC |
 | 🔴 failing | [#1772](https://github.com/mhvnsnt/western-heart/pull/1772) W6: WMXIX CAW meshes (1,141 OBJs) + extraction tools + notes | ready | mhvnsnt / `w6/wmxix-caw-mesh` | `d100623` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-19 21:06 UTC |
 | 🔴 failing | [#1770](https://github.com/mhvnsnt/western-heart/pull/1770) Land KoC2 teardown: King of Colosseum 2 full extraction (49,214 files) | ready | mhvnsnt / `muse/koc2` | `083ea36` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-21 16:55 UTC |
