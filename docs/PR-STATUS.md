@@ -16,7 +16,7 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 🔴 failing | [#1850](https://github.com/mhvnsnt/western-heart/pull/1850) Lane D handoff refresh 2026-11-23: WH: Nov 22-23 wave #1822-#1849, #911 merged | ready | mhvnsnt / `lane-d-handoff-refresh-20261123` | `7b6406b` | `main` | ✅ | ✅ | ✅ | ❌ | 5✅ 4⏳ | mergeable (blocked) | 2026-11-23 16:25 UTC |
+| 🔴 failing | [#1850](https://github.com/mhvnsnt/western-heart/pull/1850) Lane D handoff refresh 2026-11-23: WH: Nov 22-23 wave #1822-#1849, #911 merged | ready | mhvnsnt / `lane-d-handoff-refresh-20261123` | `e6384f6` | `main` | ✅ | ✅ | ⏳ | ❌ | 3✅ 2⏳ | mergeable (blocked) | 2026-11-23 16:27 UTC |
 | 🔴 failing | [#1842](https://github.com/mhvnsnt/western-heart/pull/1842) Creation Suite (slice of #1057): clean parts — workflow path, suite CSS/HTML, assets.js, r | ready | mhvnsnt / `slice/1057-clean-parts-20261122` | `7a13d99` | `main` | ✅ | ✅ | ✅ | ✅ | 8✅ 2❌ | mergeable (unstable) | 2026-11-22 19:35 UTC |
 | 🔴 failing | [#1839](https://github.com/mhvnsnt/western-heart/pull/1839) finger-rig C3: hand-pose driver — fist/palm/point/per-finger as real game controls | ready | mhvnsnt / `finger-rig-game-wiring-20261122` | `aa424a7` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-22 18:18 UTC |
 | 🔴 failing | [#1838](https://github.com/mhvnsnt/western-heart/pull/1838) Lane B: wire Bannon to his own model bf-bannon | ready | mhvnsnt / `lane-b/bannon-bf-bannon-20261122` | `cacc94d` | `main` | ❌ | ✅ | ✅ | ❌ | 9✅ 1❌ | mergeable (blocked) | 2026-11-22 17:57 UTC |
