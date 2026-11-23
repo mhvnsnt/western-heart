@@ -275,7 +275,60 @@ export class Arena {
     finally { r.setRenderTarget(prev); }
   }
 
+  /* RENDER SCALE (LAG FIX, owner 2026-11-11: "whatever speeds the game in general for my phone"). The fight is drawn
+     into the composer's render targets, so the pixel ratio has to change on the renderer AND the composer: a
+     renderer-only change (what menus.js applyQuality used to do) only shrank the final copy to the canvas, while the
+     scene and the bloom kept rendering at the start-up resolution, so LOW quality saved a phone no fill at all. */
+  setRenderScale(pr) {
+    const v = Math.max(0.5, Math.min(3, +pr || 1));
+    if (Math.abs(v - this.renderer.getPixelRatio()) < 0.005 && Math.abs(v - (this.composer._pixelRatio ?? v)) < 0.005) return v;
+    this.renderer.setPixelRatio(v);
+    this.composer.setPixelRatio(v);
+    this.resize();
+    return v;
+  }
+  get renderScale() { return this.renderer.getPixelRatio(); }
+
+  /* DYNAMIC RESOLUTION between min and max (menus.js applyQuality sets the range; min === max = fixed), driven by
+     the measured time between drawn frames, the standard console / mobile approach: two slow seconds in a row (mean
+     frame over 19 ms, i.e. under ~52 fps) step the scale down 15 %; eight smooth seconds (mean under 17.6 ms, a
+     60 Hz panel's vsync) step it up 10 %, unless that level just proved too slow (then not for 20 s). Frames more
+     than 250 ms apart (pause, tab switch, a load) are ignored. */
+  setRenderScaleRange(min, max) {
+    const lo = Math.max(0.5, Math.min(min, max)), hi = Math.max(lo, max);
+    const d = this._drs || (this._drs = { acc: 0, n: 0, winStart: 0, slowWins: 0, fastWins: 0, last: 0, badAt: 0, badScale: 0 });
+    d.min = lo; d.max = hi; d.slowWins = 0; d.fastWins = 0;
+    return this.setRenderScale(Math.min(hi, Math.max(lo, this.renderScale)));
+  }
+  _drsFrame() {
+    const d = this._drs;
+    if (!d || d.max - d.min < 0.01) return;
+    const now = performance.now();
+    const dt = d.last ? now - d.last : 0;
+    d.last = now;
+    if (!(dt > 0) || dt > 250) return;
+    if (!d.winStart) d.winStart = now;
+    d.acc += dt; d.n++;
+    if (now - d.winStart < 1000) return;
+    const mean = d.acc / d.n;
+    d.acc = 0; d.n = 0; d.winStart = now;
+    const cur = this.renderScale;
+    if (mean > 19) { d.slowWins++; d.fastWins = 0; }
+    else if (mean < 17.6) { d.fastWins++; d.slowWins = 0; }
+    else { d.slowWins = 0; d.fastWins = 0; }
+    if (d.slowWins >= 2 && cur > d.min + 0.005) {
+      d.badAt = now; d.badScale = cur;
+      this.setRenderScale(Math.max(d.min, Math.round(cur * 0.85 * 100) / 100));
+      d.slowWins = 0;
+    } else if (d.fastWins >= 8 && cur < d.max - 0.005) {
+      const next = Math.min(d.max, Math.round(cur * 1.1 * 100) / 100);
+      if (!(d.badScale && next >= d.badScale - 0.005 && now - d.badAt < 20000)) this.setRenderScale(next);
+      d.fastWins = 0;
+    }
+  }
+
   render() {
+    this._drsFrame();
     if (this._nearClipOn) {
       const f = this._ncF || (this._ncF = new THREE.Vector3()), p = this._ncP || (this._ncP = new THREE.Vector3());
       this.camera.getWorldDirection(f); f.y = 0;

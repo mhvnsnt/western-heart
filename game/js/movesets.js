@@ -45,6 +45,7 @@ export const MOVESET_IDS = [
   'vf-akira', 'vf-sarah', 'vf-kage',
   // Reskin wave (2026-10-19): first custom attires as selectable fighters.
   'demonio-bloodline-ember', 'doc-frank-machine-shop', 'baek-master-white',
+  'kevin',
   'mariposa-monarch', 'dxmmii-patchwork',
   // T7 full-moveset wave (2026-10-19): base Mariposa (Zafina) file added.
   'mariposa',
@@ -54,7 +55,7 @@ export const MOVESET_IDS = [
   'cainelias',
   // Brutal Fist pull-in (2026-11-08): 26 fighters from Jay's Brutal Fist game.
   'bf-aaron-ruben',
-  'bf-bannon',
+  'bannon',
   'bf-brutus',
   'bf-cipher',
   'bf-cody',
@@ -948,6 +949,19 @@ export function resolveMove(fighterId, notation, opts) {
   return k && ms.moves[k] ? { move: ms.moves[k], key: k, ms, from: fighterId } : null;
 }
 
+/** Every notation this fighter can press (default slots + the player's loadout), in the order the clip prewarm
+    (Fighter.prewarmAttackClips, LAG FIX 2026-11-11) binds them: neutral-stance presses before stance-prefixed ones
+    ('JGR.1', 'BT.2'), then shortest first (buttons, chords, direction + button, two-press strings). */
+export function pressableNotations(fighterId) {
+  const ms = playedMoveset(fighterId);
+  if (!ms) return [];
+  _prepare(ms);
+  const set = new Set(Object.keys(ms._slots || {}));
+  for (const n of Object.keys(getLoadout(fighterId) || {})) if (n !== '__base') set.add(n);
+  const stance = (n) => (/^[A-Za-z_][A-Za-z0-9_]*[. ]/.test(n) && !/^[udfbn](\/[fb])?[+,]/.test(n) ? 1 : 0);
+  return [...set].sort((a, b) => stance(a) - stance(b) || a.length - b.length || (a < b ? -1 : a > b ? 1 : 0));
+}
+
 /** notation -> move key this fighter fires (null if none). */
 export function resolveMoveKey(fighterId, notation) {
   const r = resolveMove(fighterId, notation);
@@ -1277,6 +1291,14 @@ export class TekkenBuffer {
     // before the bare stance prefix, or the facing stance row would win from behind.
     if (ctx.backturned) { if (ctx.stance) prefixes.push('BT_' + ctx.stance + '.', ctx.stance + '.BT.'); prefixes.push('BT.'); }
     if (ctx.stance) prefixes.push(ctx.stance + '.');
+    // GROUNDED. (Lane C 2026-11-20): the attacker themself is down and presses a getup attack
+    // — the generic grounded fallback. The four orientation stances (FUFT./FUFA./FDFT./FDFA.)
+    // ride the stance line above and shadow it (most specific first); GROUNDED. only fires
+    // when no orientation row matches that input. TKMovesets mechanism: requirement 148/149
+    // "On ground (right/left side)" on the cancel's requirement list. ctx.grounded is fed by
+    // Fighter._inputCtx (PROPOSED fighter.js change — this line is inert until that lands,
+    // and the editor keeps GROUNDED. quarantined until the fighter half exists).
+    if (ctx.grounded) prefixes.push('GROUNDED.');
     if (ctx.rage) prefixes.push('R.');
     // T8 Heat moves ('H.2+3', 'f,f,F+2,H.1+2'): the WH heat state is Soul Urge (stance audit 2026-11-01: 99 rows, 33 fighters)
     if (ctx.urgeOn) prefixes.push('H.');
@@ -1428,6 +1450,11 @@ export class TekkenBuffer {
     // BT dominates the stance (see _pressV2): composed 'BT_RFF.' / 'NSS.BT.' spellings, then BT.
     if (ctx.backturned) { if (ctx.stance) prefixes.push('BT_' + ctx.stance + '.', ctx.stance + '.BT.'); prefixes.push('BT.'); }
     if (ctx.stance) prefixes.push(ctx.stance + '.');
+    // GROUNDED. (Lane C 2026-11-20, as in _pressV2): generic grounded fallback — the four
+    // orientation stances ride the stance line above and shadow it; GROUNDED. only fires when
+    // no orientation row matches. TKMovesets req 148/149. ctx.grounded is fed by Fighter._inputCtx
+    // (PROPOSED fighter.js change — inert until that lands; editor keeps GROUNDED. quarantined).
+    if (ctx.grounded) prefixes.push('GROUNDED.');
     if (ctx.rage) prefixes.push('R.');
     // T8 Heat moves ('H.2+3', 'f,f,F+2,H.1+2'): the WH heat state is Soul Urge (stance audit 2026-11-01: 99 rows, 33 fighters)
     if (ctx.urgeOn) prefixes.push('H.');

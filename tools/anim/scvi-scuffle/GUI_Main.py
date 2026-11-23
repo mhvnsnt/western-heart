@@ -1,0 +1,430 @@
+from tkinter import *
+from tkinter.ttk import *
+import GUI_FrameDataOverlay as fdo
+import GUI_Overlay as ovr
+#import GUI_TimelineOverlay as tlo
+#import GUI_CommandInputOverlay as cio
+#import GUI_MatchStatOverlay as mso
+#import GUI_DebugInfoOverlay as dio
+#import GUI_PunishCoachOverlay as pco
+import ConfigReader
+import MovelistParser
+from _GameStateManager import GameStateManager
+from ByteTools import *
+import time
+from enum import Enum
+import VersionChecker
+import webbrowser
+import GUI_MoveViewer
+import GUI_MoveIdMeter
+import sys
+import os
+import subprocess
+from threading import Thread
+
+class GUI_Main(Tk):
+    def __init__(self):
+
+        if not os.path.exists(f'./Data/Custom'):
+                dir = f'./Data/Custom'
+                empty_json = '[\n\n]'
+                os.mkdir(f'{dir}')
+                os.mkdir(f'{dir}/Scripts/')
+                os.mkdir(f'{dir}/Scripts/A5/')
+                os.mkdir(f'{dir}/Scripts/25/')
+                os.mkdir(f'{dir}/Value_Types/')
+                dir = f'./Data/Custom/Scripts'
+
+                with open(f'{dir}/A5/01.json', 'w') as file:
+                    file.write(empty_json)
+                with open(f'{dir}/A5/0d.json', 'w') as file:
+                    file.write(empty_json)
+                with open(f'{dir}/25/03.json', 'w') as file:
+                    file.write(empty_json)
+                with open(f'{dir}/25/0d.json', 'w') as file:
+                    file.write(empty_json)
+                with open(f'{dir}/25/14.json', 'w') as file:
+                    file.write(empty_json)
+        
+        if not os.path.exists(f'./Backups'):
+            os.mkdir('./Backups')
+        self.overlay = None
+        self.hitbox = None
+        self.stop_print = False
+
+        Tk.__init__(self)
+        self.iconbitmap(default='Data/icon.ico')
+        self.wm_title(f"SCUFFLE - v{VersionChecker.CURRENT_VERSION.split('scuffle_VV_')[1]}")
+
+        self.color_scheme_config = ConfigReader.ConfigReader("color_scheme")
+        self.color_scheme_config.add_comment("colors with names -> http://www.science.smith.edu/dftwiki/images/3/3d/TkInterColorCharts.png")
+        self.changed_color_scheme("Current", False)
+
+        self.menu = Menu(self)
+        self.configure(menu=self.menu)
+
+        self.text = Text(self, wrap="word")
+        self.stdout = sys.stdout
+        self.var_print_frame_data_to_file = BooleanVar(value=False)
+        sys.stdout = TextRedirector(self.text, sys.stdout, self.write_to_overlay, self.var_print_frame_data_to_file, "stdout")
+        self.stderr = sys.stderr
+        sys.stderr = TextRedirector(self.text, sys.stderr, self.write_to_error, "stderr")
+        self.text.tag_configure("stderr", foreground="#b22222")
+        self.text
+
+
+
+        try:
+            with open("Data/SCUFFLE_readme.txt") as fr:
+                lines = fr.readlines()
+            for line in lines: print(line)
+        except:
+            print("Error reading readme file.")
+
+        #Disables version checker
+        updates = VersionChecker.check_version()
+        if updates:
+            self.wm_title(f"SCUFFLE - v{VersionChecker.CURRENT_VERSION.split('scuffle_VV_')[1]} (Updates Available)")
+
+        print("SCUFFLE Starting...")
+        self.launcher = GameStateManager()
+        
+
+        self.overlay = fdo.GUI_FrameDataOverlay(self, self.launcher)
+        self.reboot_overlay()
+        #self.graph = tlo.GUI_TimelineOverlay(self, self.launcher)
+
+        self.tekken_bot_menu = Menu(self.menu)
+        self.tekken_bot_menu.add_command(label="Restart", command=self.restart)
+        self.bind('<Control-R>', lambda x: self.restart())
+
+        self.menu.add_cascade(label="SCUFFLE", menu=self.tekken_bot_menu)
+
+        self.frame_config = ConfigReader.ConfigReader('frame_data_overlay')
+        self.tools_menu = Menu(self.menu)
+        self.ext_tools_menu = Menu(self.menu)
+        self.move_viewer = None
+        self.tools_menu.add_command(label="Launch Move Editor", command=self.launch_move_viewer)
+        self.bind('<Control-e>', lambda x: self.launch_move_viewer())
+
+        self.move_id_ometer = None
+        self.tools_menu.add_command(label="Launch Move-Id-Ometer", command=self.launch_move_id_ometer)
+
+        self.do_show_all_hitbox_data = BooleanVar()
+        self.do_show_all_hitbox_data.set(self.frame_config.get_property('DisplaySettings', 'show_all_hitboxes', False))
+        self.tools_menu.add_checkbutton(label='Show frame data for all hitboxes (useful for moves with \'tip\' properties)', onvalue=True, offvalue=False, variable=self.do_show_all_hitbox_data, command=self.toggle_all_hitboxes)
+
+        self.verbose_logging = BooleanVar()
+        self.verbose_logging.set(self.frame_config.get_property('DisplaySettings', 'verbose_logging', True))
+
+        self.tools_menu.add_checkbutton(label='Verbose logging: Log info for all moves', onvalue=True, offvalue=False, variable=self.verbose_logging, command=self.toggle_verbose)
+        self.tools_menu.add_command(label="Dump all frame data to console", command=self.dump_frame_data)
+
+        self.ext_tools_menu.add_command(label="Launch Violent Vodka's Movelist Viewer", command=lambda : Thread(target=self.launch_VV_viewer).start())
+        self.ext_tools_menu.add_command(label="Launch Calculator", command=lambda : Thread(target=self.launch_calc).start())
+
+        self.do_print_debug_values = BooleanVar()
+        self.do_print_debug_values.set(False)
+        #self.tools_menu.add_checkbutton(label='DEBUG: Print Every Frame (WARNING: CPU USAGE HIGH)', onvalue=True, offvalue=False, variable=self.do_print_debug_values)
+
+        self.menu.add_cascade(label="Advanced Tools", menu=self.tools_menu)
+        self.menu.add_cascade(label='External Tools',menu=self.ext_tools_menu)
+
+
+
+
+
+        self.checkbox_dict = {}
+        self.column_menu = Menu(self.menu)
+        for i, enum in enumerate(fdo.DataColumns):
+            bool = self.overlay.redirector.columns_to_print[i]
+            self.add_checkbox(self.column_menu, enum, "{} ({})".format(enum.name.replace('X', ' ').strip(), fdo.DataColumnsToMenuNames[enum]), bool, self.changed_columns)
+        self.menu.add_cascade(label='Columns', menu=self.column_menu)
+
+        self.display_menu = Menu(self.menu)
+        for enum in ovr.DisplaySettings:
+            default = self.overlay.tekken_config.get_property(ovr.DisplaySettings.config_name(), enum.name, False)
+            self.add_checkbox(self.display_menu, enum, enum.name, default, self.changed_display)
+        self.menu.add_cascade(label="Display", menu=self.display_menu)
+
+        self.color_scheme_menu = Menu(self.menu)
+        self.scheme_var = StringVar()
+        for section in self.color_scheme_config.parser.sections():
+            if section not in ("Comments", "Current"):
+                self.color_scheme_menu.add_radiobutton(label=section, variable=self.scheme_var, value=section, command=lambda : self.changed_color_scheme(self.scheme_var.get()))
+        self.menu.add_cascade(label="Color Scheme", menu=self.color_scheme_menu)
+
+        self.tekken_bot_menu = Menu(self.menu)
+        self.tekken_bot_menu.add_command(label=VersionChecker.CURRENT_VERSION)
+        self.tekken_bot_menu.add_command(label="Check for new version", command=self.print_release_notes)
+        self.tekken_bot_menu.add_command(label="Download Latest Release", command=self.download_latest_release)
+        self.menu.add_cascade(label="Version", menu=self.tekken_bot_menu)
+
+
+        self.text.grid(row = 2, column = 0, columnspan=2, sticky=N+S+E+W)
+        #self.grid_rowconfigure(0, weight=1)
+        self.grid_rowconfigure(2, weight=1)
+        self.grid_columnconfigure(0, weight=1)
+        #self.grid_columnconfigure(1, weight=1)
+
+        self.geometry(str(920) + 'x' + str(720))
+
+
+        self.previous_working_pid = 0
+        self.update_launcher()
+        #self.overlay.hide()
+
+        self.protocol("WM_DELETE_WINDOW", self.on_closing)
+
+    def print_release_notes(self):
+        VersionChecker.check_version(force_print=True)
+
+
+    def download_latest_release(self):
+        webbrowser.open('https://github.com/FottenSC/Scuffle/releases/latest')
+
+    def restart(self):
+        self.launcher = GameStateManager()
+        self.stop_overlay()
+        self.start_overlay()
+
+    def toggle_verbose(self):
+        self.frame_config.set_property('DisplaySettings', 'verbose_logging', self.verbose_logging.get())
+        self.frame_config.write()
+
+    def toggle_all_hitboxes(self):
+        self.frame_config.set_property('DisplaySettings', 'show_all_hitboxes', self.do_show_all_hitbox_data.get())
+        self.frame_config.write()
+
+    def write_to_overlay(self, string):
+        if self.var_print_frame_data_to_file.get() and 'NOW:' in string:
+            with open("Data/out.txt", 'a') as fa:
+                fa.write(string +'\n')
+        if self.overlay != None:
+            self.overlay.redirector.write(string)
+        #if 'HIT' in string:
+            #self.graph.redirector.write(string)
+
+    def write_to_error(self, string):
+        self.stderr.write(string)
+
+    def launch_VV_viewer(self):
+        path = "./Data/Tools/VV_MovelistViewer/Movelist Viewer.exe"
+        if os.path.exists(path):
+            print('Launching VV Movelist Viewer')
+            process = subprocess.run([path],check=True, capture_output=True)
+            if process.returncode == 0:
+                print('Closed VV Movelist Viewer')
+        else:
+            print(f"'Movelist Viewer.exe' not found in ./Data/Tools/VV_MovelistViewer.")
+    
+    def launch_calc(self):
+        path = "calc.exe"
+        process = subprocess.run([path], check=True)
+    
+    def launch_move_viewer(self):
+        try:
+            self.old_move_id = 0
+            if self.move_viewer != None:
+                self.move_viewer.master.destroy()
+                self.move_viewer = None
+            self.move_viewer = GUI_MoveViewer.GUI_MoveViewer(Toplevel(self),verbose=self.verbose_logging.get())
+            self.move_viewer.set_movelist(self.launcher.game_reader.p1_movelist)
+            self.move_viewer.set_character_id(self.launcher.game_reader.p1_movelist.character_id)
+            self.launcher.game_reader.p1_movelist.load_json()
+        except Exception as e:
+            print(e)
+
+    def dump_frame_data(self):
+        try:
+            self.launcher.game_reader.p1_movelist.print_all_frame_data()
+        except Exception as e:
+            print(e)
+
+    def launch_move_id_ometer(self):
+        if self.move_id_ometer != None:
+            self.move_id_ometer.master.destroy()
+            self.move_id_ometer = None
+        self.move_id_ometer = GUI_MoveIdMeter.GUI_MoveIdMeter(Toplevel(self))
+
+    def add_checkbox(self, menu, lookup_key, display_string, default_value, button_command):
+        var = BooleanVar()
+        var.set(default_value)
+        self.checkbox_dict[lookup_key] = var
+        menu.add_checkbutton(label=display_string, onvalue=True, offvalue=False, variable=var, command = button_command)
+
+    def changed_color_scheme(self, section, do_reboot=True):
+        for enum in fdo.ColorSchemeEnum:
+            fdo.CurrentColorScheme.dict[enum] = self.color_scheme_config.get_property(section, enum.name, fdo.CurrentColorScheme.dict[enum])
+            self.color_scheme_config.set_property("Current", enum.name, fdo.CurrentColorScheme.dict[enum])
+        self.color_scheme_config.write()
+        if do_reboot:
+            self.reboot_overlay()
+
+    def changed_mode(self, mode):
+
+        self.stop_overlay()
+
+        self.mode = OverlayMode[mode]
+
+        if self.mode != OverlayMode.Off:
+            self.start_overlay()
+
+
+
+    def changed_columns(self):
+        generated_columns = []
+        for enum in fdo.DataColumns:
+            var = self.checkbox_dict[enum]
+            generated_columns.append(var.get())
+        self.overlay.set_columns_to_print(generated_columns)
+
+    def changed_display(self):
+        for enum in ovr.DisplaySettings:
+            var = self.checkbox_dict[enum]
+            if self.overlay != None:
+                self.overlay.tekken_config.set_property(ovr.DisplaySettings.config_name(), enum.name, var.get())
+        if self.overlay != None:
+            self.overlay.tekken_config.write()
+        self.reboot_overlay()
+
+    def stop_overlay(self):
+        if self.overlay != None:
+            self.overlay.toplevel.destroy()
+        self.overlay = None
+
+    def start_overlay(self, log=True):
+        self.overlay = fdo.GUI_FrameDataOverlay(self, self.launcher, log)
+        self.overlay.hide()
+
+    def reboot_overlay(self):
+        self.stop_overlay()
+        self.start_overlay(log=False)
+
+    def update_launcher(self):
+        time1 = time.time()
+        successful_update, self.hitbox, self.stop_print = self.launcher.Update(self.do_print_debug_values.get(),self.hitbox, self.stop_print, self.do_show_all_hitbox_data.get(), self.verbose_logging.get())
+
+        if self.move_viewer != None:
+            if self.launcher.p1_primary_move_id != self.old_move_id and self.launcher.p1_primary_move_id != 0x59: #0x59 is the hex for 'coming to a stop' move_id
+                self.old_move_id = self.launcher.p1_primary_move_id
+                try:
+                    if self.launcher.game_reader.p1_movelist != None:
+                        end = self.launcher.game_reader.p1_movelist.block_Q_length
+                        # if self.verbose_logging.get() == True:
+                        #     end = MovelistParser.decode_move_id(0x3300, self.launcher.game_reader.p1_movelist)
+                        if (self.launcher.p1_primary_move_id > 0x0100 and self.launcher.p1_primary_move_id < end) or (self.launcher.p1_primary_move_id >= MovelistParser.decode_move_id(0x3000, self.launcher.game_reader.p1_movelist) and self.launcher.p1_primary_move_id <= MovelistParser.decode_move_id(0x3000 + self.launcher.game_reader.p1_movelist.block_T_length, self.launcher.game_reader.p1_movelist)) or self.launcher.p1_primary_move_id in range(219,223):
+                            self.move_viewer.load_moveid(str(self.launcher.p1_primary_move_id),track_history=False)
+                
+                except:
+                    self.move_viewer = None
+
+            try:
+                if self.move_viewer.do_inject_movelist:
+                    if self.move_viewer.do_fix_goto.get() == False:
+                        self.launcher.game_reader.do_fix_goto = False
+                    else:
+                        self.launcher.game_reader.do_fix_goto = True
+                    if self.move_viewer.log_injected:
+                        print(f'{time.strftime("[%I:%M:%S %p]")} Injected movelist: {self.move_viewer.movelist_name_var.get()}')
+                        
+                    self.launcher.game_reader.do_write_movelist = True
+                    self.launcher.game_reader.p1_movelist = self.move_viewer.movelist
+                    self.move_viewer.set_character_id(self.launcher.game_reader.p1_movelist.character_id)
+                    self.move_viewer.do_inject_movelist = False
+                    self.move_viewer.log_injected.set(False)
+                    
+            except:
+                self.move_viewer = None
+
+
+        if self.overlay != None:
+            self.overlay.update_location()
+            if successful_update:
+                self.overlay.update_state()
+
+        if self.move_id_ometer != None:
+            try:
+                self.move_id_ometer.update_meter(self.launcher)
+            except Exception as e: #grabs window close errors (and everything else too oh god)
+                self.move_id_ometer = None
+                print('Move-Id-Ometer update loop : {}'.format(e))
+
+
+
+        #self.graph.update_state()
+        time2 = time.time()
+        elapsed_time = 1000 * (time2 - time1)
+
+        if self.launcher.game_reader.HasWorkingPID():
+            if self.launcher.game_reader.HasNewMovelist():
+                if self.move_viewer != None:
+                    self.launcher.game_reader.p1_movelist = self.launcher.game_reader.p1_movelist
+                    if self.launcher.game_reader.p1_movelist != None:
+                        try:
+                            character_id = self.move_viewer.character_id_var.get()
+                            self.move_viewer.set_movelist(self.launcher.game_reader.p1_movelist)
+                            self.move_viewer.set_character_id(character_id)
+                            self.launcher.game_reader.MarkMovelistAsOld()
+                            if self.move_viewer.tool_encode_string != "":
+                                self.move_viewer.decode()
+                      
+                        except:
+                            self.move_viewer = None
+                        self.previous_working_pid += 1
+            else:
+                self.previous_working_pid += 1
+            #print(self.launcher.game_reader.p1_frame_address)
+            self.after(max(2, 8 - int(round(elapsed_time))), self.update_launcher)
+        else:
+            self.previous_working_pid = 0
+            self.after(1000, self.update_launcher)
+
+    def on_closing(self):
+        sys.stdout = self.stdout
+        sys.stderr = self.stderr
+        self.destroy()
+
+
+
+class TextRedirector(object):
+    def __init__(self, widget, stdout, callback_function, var_print_frame_data_to_file,tag="stdout"):
+        self.widget = widget
+        self.stdout = stdout
+        self.tag = tag
+        self.callback_function = callback_function
+        self.var_print_frame_data_to_file = var_print_frame_data_to_file
+
+    def write(self, str):
+
+        self.widget.configure(state="normal")
+        self.widget.insert("end", str, (self.tag,))
+        self.widget.configure(state="disabled")
+        self.widget.see('end')
+        self.callback_function(str)
+
+    def flush(self):
+        pass
+
+class OverlayMode(Enum):
+    Off = 0
+    FrameData = 1
+    #Timeline = 2
+    CommandInput = 3
+    PunishCoach = 4
+    MatchupRecord = 5
+    DebugInfo = 6
+
+OverlayModeToDisplayName = {
+    OverlayMode.Off : 'Off',
+    OverlayMode.FrameData: 'Frame Data',
+    OverlayMode.CommandInput: 'Command Inputs (and cancel window)',
+    OverlayMode.PunishCoach: 'Punish Alarm (loud!)',
+    OverlayMode.MatchupRecord: 'Matchup Stats',
+    OverlayMode.DebugInfo: 'Debugging Variables',
+}
+
+if __name__ == '__main__':
+    app = GUI_Main()
+    #app.update_launcher()
+    app.mainloop()

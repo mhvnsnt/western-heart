@@ -125,13 +125,18 @@ export function selectThrow(R, attackerDir, attemptRow, opts = {}) {
   const code = situationCode(opts.posture || 'standing', opts.quadrant ?? 0, !!opts.attackerBackTurned);
   if (code == null) return { throw: null, reason: `unknown situation posture=${opts.posture} quadrant=${opts.quadrant}` };
   const k = opts.anchorScale || 0;
+  let advisory = null;
   for (const branch of attempts.branches) {
     if (!branchAccepts(branch.cond, code)) continue;
-    if (k > 0 && opts.distanceM != null && branch.param != null && opts.distanceM > branch.param * k) continue;
     const entry = (bank.throws || []).find((t) => t.slot === branch.throw_slot);
     if (!entry) continue;
+    if (k > 0 && opts.distanceM != null && branch.param != null && opts.distanceM > branch.param * k) {
+      if (!advisory) advisory = { throw: entry, branch, code, advisory: true };
+      continue;
+    }
     return { throw: entry, branch, code };
   }
+  if (advisory) return advisory;
   return { throw: null, reason: `no branch matches situation ${code} at this distance (UNMAPPED for this situation)` };
 }
 

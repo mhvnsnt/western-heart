@@ -1,0 +1,21 @@
+FILE "tr1-fullen-v6-track1.bin" BINARY
+  TRACK 1 MODE2/2352
+    INDEX 1 00:00:00
+FILE "dummy-audio/track2.bin" BINARY
+  TRACK 2 AUDIO
+    INDEX 1 00:00:00
+FILE "dummy-audio/track3.bin" BINARY
+  TRACK 3 AUDIO
+    INDEX 1 00:00:00
+FILE "dummy-audio/track4.bin" BINARY
+  TRACK 4 AUDIO
+    INDEX 1 00:00:00
+FILE "dummy-audio/track5.bin" BINARY
+  TRACK 5 AUDIO
+    INDEX 1 00:00:00
+FILE "dummy-audio/track6.bin" BINARY
+  TRACK 6 AUDIO
+    INDEX 1 00:00:00
+FILE "dummy-audio/track7.bin" BINARY
+  TRACK 7 AUDIO
+    INDEX 1 00:00:00

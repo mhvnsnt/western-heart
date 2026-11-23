@@ -37,8 +37,11 @@ import { resolveAssetCandidates, looksLikeModel } from './asset-config.js';
 export const MODEL_URLS = {
   pantera: 'assets/models/pantera.glb',
   'steve-fox': 'assets/models/steve-fox.glb',
-  // NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO — the old `jin:` key was removed;
-  // `demonio: 'assets/models/demonio.glb'` (below) is the canonical model.
+  // NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO — the old `jin:` key was removed.
+  // `demonio: 'assets/models/demonio.glb'` (below) is the old Steve Fox stand-in body
+  // (byte-identical to steve-fox.glb; wrong canon per owner 2026-10-15) — NOT the
+  // canonical model. The canonical default is `demonio-a1`
+  // (roster/demonio/attires/attire1/model.glb).
   // Per-fighter models wired from teardown extractions + Tripo rescans.
   // Keys match FULL_ROSTER `model` ids in roster-full.js (lane 2).
   demonio: 'assets/models/demonio.glb',
@@ -120,6 +123,10 @@ export const MODEL_URLS = {
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
   'saku-ra': '../roster/sakura/attires/attire1/model-rerig.glb',
   'awa-pop': 'assets/models/awa-pop.glb',
+  // AWA POP Attire 1 (2026-10-23 select-card audit): owner Tripo "muscular
+  // superhero" (e3d3b06f) — her default per the slot map; was unreachable
+  // (no MODEL_URLS key) until this wiring.
+  'awa-pop-attire1': '../roster/awa-pop/awa-pop-attire-1.glb',
   // AWA POP Attire 2 (fighter-completeness audit 2026-10-21): owner-confirmed
   // Tripo Attire 2 (roster/awa-pop/ATTIRE-SLOTS.md slot 2) — the GLB was in the
   // repo with no key, so it could never load.
@@ -330,7 +337,10 @@ export const MODEL_URLS = {
   // (flat colours) stays beside it.
   'kai-body': 'assets/models/kai-soul-tex.glb',
   'jin-body': 'assets/models/jin-body.glb',
-  'rin-body': 'assets/models/rin-body.glb',
+  // RETIRED 2026-11-21 (canon fix): the 'rin-body' key pointed at assets/models/rin-body.glb,
+  // which is the Steve Fox model, not Jin — wrong canon per owner 2026-10-15 (the Steve
+  // body belongs to Zui). RIN now loads 'demonio-a1' (roster-full.js). The file is NOT
+  // deleted — deletion is the owner's call.
   'jin-t7': 'assets/models/jin.glb',
   // JIN KAZAMA "Bloodline Ember" (owner 2026-10-18 — see
   // roster/jin/attires/bloodline-ember/README.md): devil-gene texture reskin of the

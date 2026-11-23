@@ -1,0 +1,154 @@
+name: deploy-ghpages-shell
+# LIVE-BUILD SYNC LAW (owner 2026-11-20): every push to main must update the
+# live build, the testable build and the deployable build — all of them,
+# automatically. The github.io shell froze at Nov 15 because its sync was
+# manual lane pushes that stopped. This workflow is the automatic half for
+# the shell: on every push to main it syncs the Pages shell branch
+# (gh-pages-m1-20261029, served at https://mhvnsnt.github.io/western-heart/)
+# to the pushed commit via the canonical tool.
+#
+# Canonical route: tools/deploy/deploy_api.py --push (Git Data API route,
+# REPUBLISH.md section 2). The script is add/update-only, never force-pushes
+# (PATCHes the ref with force: false), runs the module-graph check before
+# pushing, and sets deploy-manifest.json commit == the main commit shipped.
+# It refuses (non-zero exit, so this job fails loudly) if the new tree would
+# exceed the 1 GiB Pages cap — live shell 2026-11-20 is at 1,053,169,254 B,
+# ~20 MB headroom, so a push that adds more than the headroom fails here
+# instead of shipping a broken shell.
+#
+# Auth: deploy_api.py shells out to `gh api` and reads no token itself; the
+# `gh` CLI authenticates from GH_TOKEN. The default GITHUB_TOKEN with
+# `contents: write` is enough: it creates blobs/trees/commits and PATCHes the
+# shell branch ref, and the shell branch is NOT branch-protected (verified
+# 2026-11-20). No extra secret is needed.
+#
+# No full checkout: the script is fully API-driven (it fetches the
+# module-graph checker and every code blob through the Git Data API into a
+# scratch dir), so the job checks out only tools/deploy (sparse) to have the
+# script on disk. Do NOT "optimise" this into a full checkout: the repo is
+# multi-GB and the script never reads local files.
+#
+# Runtime: the module-graph check materialises the assembled tree's code
+# files one blob at a time (~1,944 .js/.mjs/.html/.json/.css files on the
+# live shell, 2026-11-20) — sequential `gh api` calls, estimated up to
+# ~30-90 min worst case. timeout-minutes: 120 covers it. A sparse-checkout
+# seed of the scratch dir could cut this later; not attempted here, so the
+# first version stays faithful to the canonical tool.
+#
+# Trigger scope: push to main only (+ manual dispatch). Pushes to the shell
+# branch itself never trigger this workflow, so there is no sync loop.
+# Concurrency mirrors deploy-cloudflare-pages: serialised, never cancelled
+# mid-run, so two pushes queue instead of racing the ref PATCH.
+#
+# NOT wired here (gaps to report, not to fake):
+# - itch.io zip: its only run (2026-11-08) FAILED the itch caps (1025 files
+#   > 1000; 690.2 MB > 524 MB); wiring it to on-push would fail every push
+#   until the closure is trimmed. See the Lane A target map.
+# - "testable": no distinct testable target exists in the repo; testing
+#   happens on the live builds (the Cloudflare Pages full build is the only
+#   complete playable surface). No staging/preview environment is invented.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: deploy-ghpages-shell
+  cancel-in-progress: false
+jobs:
+  deploy-shell:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Check out the deploy tool only
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            tools/deploy
+      - name: Skip if the live shell already serves this commit
+        id: skip
+        run: |
+          live_commit=$(gh api "repos/mhvnsnt/western-heart/contents/deploy-manifest.json?ref=gh-pages-m1-20261029" --jq '.content' | base64 -d | python3 -c 'import json,sys; print(json.load(sys.stdin)["commit"])')
+          echo "live manifest commit: $live_commit"
+          echo "pushed commit:        $GITHUB_SHA"
+          if [ "$live_commit" = "$GITHUB_SHA" ]; then
+            echo "go=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Live shell already serves $GITHUB_SHA; nothing to sync."
+          else
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Sync the shell to the pushed commit (REPUBLISH.md section 2)
+        if: steps.skip.outputs.go == 'true'
+        run: |
+          python3 tools/deploy/deploy_api.py --main "$GITHUB_SHA" --push --scratch "$RUNNER_TEMP/deploy-api"
+      - name: Verify the live shell
+        if: steps.skip.outputs.go == 'true'
+        run: |
+          set -euo pipefail
+          MAIN_SHA="$GITHUB_SHA"
+          SITE="https://mhvnsnt.github.io/western-heart"
+          # 1. Wait for Pages to finish building the new ref and for the live
+          #    manifest to name this commit (poll up to 15 min). Fail loudly
+          #    on any other outcome — never swallow a failed sync.
+          status=""; live=""
+          for i in $(seq 1 30); do
+            status=$(gh api repos/mhvnsnt/western-heart/pages --jq .status)
+            live=$(curl -s "$SITE/deploy-manifest.json" | python3 -c 'import json,sys; print(json.load(sys.stdin).get("commit",""))' 2>/dev/null || echo "")
+            echo "poll $i/30: pages=$status manifest=$live"
+            if [ "$status" = "built" ] && [ "$live" = "$MAIN_SHA" ]; then break; fi
+            sleep 30
+          done
+          if [ "$status" != "built" ]; then echo "::error::Pages status is '$status', not 'built'"; exit 1; fi
+          if [ "$live" != "$MAIN_SHA" ]; then echo "::error::live manifest commit '$live' != pushed commit '$MAIN_SHA'"; exit 1; fi
+          echo "Pages built; live manifest commit == $MAIN_SHA"
+          # 2. Spot-check one newly shipped file + one bundled model: each
+          #    must answer 200 with exactly the byte size from main's tree.
+          python3 - "$MAIN_SHA" "$RUNNER_TEMP/deploy-api/delta.json" <<'PY'
+          import json, subprocess, sys, urllib.request, urllib.error
+          main_sha, delta_path = sys.argv[1], sys.argv[2]
+          REPO = "mhvnsnt/western-heart"
+          SITE = "https://mhvnsnt.github.io/western-heart"
+
+          def gh(*args):
+              r = subprocess.run(["gh", "api"] + list(args), capture_output=True, text=True)
+              if r.returncode:
+                  raise SystemExit(f"gh api {' '.join(args)} failed: {r.stderr.strip()[:300]}")
+              return r.stdout
+
+          def size_on_main(path):
+              if "/" in path:
+                  parent, name = path.rsplit("/", 1)
+                  tree = json.loads(gh(f"repos/{REPO}/git/trees/{main_sha}:{parent}"))["tree"]
+              else:
+                  name = path
+                  tree = json.loads(gh(f"repos/{REPO}/git/trees/{main_sha}"))["tree"]
+              for e in tree:
+                  if e["path"] == name and e["type"] == "blob":
+                      return e["size"]
+              raise SystemExit(f"{path} not found in main tree {main_sha[:8]}")
+
+          def head_check(path, expect, label):
+              url = f"{SITE}/{path}"
+              req = urllib.request.Request(url, method="HEAD")
+              try:
+                  with urllib.request.urlopen(req, timeout=30) as resp:
+                      code, length = resp.status, resp.headers.get("Content-Length")
+              except urllib.error.HTTPError as e:
+                  raise SystemExit(f"{label}: {url} -> HTTP {e.code} (want 200)")
+              print(f"{label}: {path} -> {code}, Content-Length={length}, expected={expect}")
+              if code != 200:
+                  raise SystemExit(f"{label}: {url} -> HTTP {code} (want 200)")
+              if length is None or int(length) != expect:
+                  raise SystemExit(f"{label}: {url} Content-Length {length} != {expect} from main's tree")
+
+          delta = json.load(open(delta_path))
+          new_file = (delta.get("add") or [None])[0] or (delta.get("upd") or [None])[0] or "game/index.html"
+          head_check(new_file, size_on_main(new_file), "newly-shipped")
+          head_check("game/assets/models/pantera.glb", size_on_main("game/assets/models/pantera.glb"), "bundled-model")
+          print("spot checks pass")
+          PY

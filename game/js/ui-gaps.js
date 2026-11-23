@@ -496,7 +496,8 @@ export function refreshFrameOverlay() {
   const on = isFrameOverlayOn(readJson(ls(), 'wh_settings_v1', {}));
   const g = typeof window !== 'undefined' ? window.__game : null;
   const inFight = !!(g && g.running && !g.paused);
-  if (!on || !inFight || !g.p1) { el.classList.remove('show'); return; }
+  // Frame data is a practice-mode readout only (owner 2026-11-11): the option never draws over a normal fight.
+  if (!on || !inFight || !g.p1 || !g.training) { el.classList.remove('show'); return; }
   el.textContent = `P1 ${frameLine(g.p1.attackName, g.p1.attack)}  ‖  P2 ${frameLine(g.p2 ? g.p2.attackName : null, g.p2 ? g.p2.attack : null)}`;
   el.classList.add('show');
 }

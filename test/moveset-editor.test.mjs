@@ -1,15 +1,22 @@
-// Moveset template library + moveset editor (2026-11-08 lane).
+// Moveset template library + moveset editor (2026-11-08 lane; engine
+// rebuilt 2026-11-20 per EDITOR-SPEC §3).
 // Node, no browser. Run: node --test test/moveset-editor.test.mjs
 // What it proves, from real files (nothing stubbed):
 //  - game/data/moveset-templates/index.json is consistent with the
 //    banks it points at (per-template move counts, library prefixes)
-//  - the editor slot catalog matches the library schema's position
-//    enum and the measured T7 input set
+//  - the editor slot catalog is the resolver prefix list (A §3a/§3b):
+//    plain resolver notations are the slot keys, the old
+//    "position|situation|input" keys are migration-only, and the old
+//    position words (corner/apron/mounted/...) are refused, not mapped
 //  - per-slot swap works: eligible moves assign, ineligible and
 //    unknown moves are refused, claimed-bank moves are refused by
-//    the same source law the assembler enforces
-//  - a custom moveset built from a FREE template (t3-hwoarang)
-//    assembles through the real assembler with the source law green
+//    the same source law the assembler enforces (at validate time)
+//  - a custom moveset built on a fighter base (demonio default)
+//    round-trips through the named-document store and compiles into
+//    the live loadout via setLoadoutSlot + __base
+//  - toManifest() is RETIRED for the editor path but kept exported:
+//    the assembler integration tests still prove an editor-produced
+//    document projects into a kit the assembler accepts
 //  - Create Fighter carries the custom moveset instead of the jin
 //    fallback when one is saved
 import test from 'node:test';
@@ -19,11 +26,15 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import {
-  POSITIONS, SITUATIONS, SLOT_INPUTS, WWE_CATEGORIES,
-  slotKey, parseSlotKey, slotsForCategory,
-  canBeBaseTemplate, canUseTemplate, createCustomMoveset,
-  isEligible, listEligibleMoves, assignMove, removeMove, getMove,
+  RESOLVER_POSITIONS, SOUL_STATES, NO_RESOLVER_PATH, RETIRED_POSITION_WORDS,
+  DEMONIO_FORMS, SLOT_INPUTS,
+  prefixOf, positionOfNotation, validateNotation, slotKey, parseSlotKey,
+  layerOfKey, isGrabMove,
+  createCustomMoveset, isEligible, listEligibleMoves, assignMove, removeMove, getMove,
   toManifest, validateMoveset, serializeMoveset, deserializeMoveset,
+  migrateDocSlots, compileToLoadout,
+  saveNamedMoveset, loadNamedMoveset, listNamedMovesets, deleteNamedMoveset,
+  getAppliedName, setAppliedName,
 } from '../game/js/moveset-editor.js';
 import { assembleFighter, loadLibrary, loadClaimedMap } from '../game/js/moveset-library.js';
 import { customFighterToRoster, customMovesetFor } from '../game/js/custom-fighter.js';
@@ -75,103 +86,189 @@ test('template index: bank-backed counts match the banks, prefixes resolve', () 
   assert.equal(t8.reduce((n, x) => n + x.moves, 0), 6411, 'T8 frame moves should total 6411');
 });
 
-test('slot catalog: positions match the library schema, inputs are Tekken notation', () => {
-  const schema = readJson('game/data/moveset-library/schema.json');
-  assert.deepEqual(POSITIONS, schema.properties.position.enum);
-  assert.ok(SITUATIONS.length >= 8, 'too few situations');
+test('slot catalog: resolver positions in order, plain notations, fixed inputs', () => {
+  assert.deepEqual(RESOLVER_POSITIONS.map((p) => p.id),
+    ['WR', 'CD', 'SOUL', 'BT', 'STANCE', 'FUFT', 'FUFA', 'FDFT', 'FDFA', 'R', 'H', 'RD', 'SSL', 'SSR', 'SS', 'FC', 'OTG', 'WALL', 'WS', 'AIR', 'STAND'],
+    'resolver positions must be in _pressV2 order (A §3a/§3b); ground stances ride the generic stance slot, so they sit with STANCE (Lane C 2026-11-20)');
+  for (const p of RESOLVER_POSITIONS) {
+    if (p.prefix !== null) assert.ok(p.prefix === '' || p.prefix.endsWith('.'), `${p.id}: prefix ${p.prefix} must end with '.'`);
+  }
+  assert.ok(RESOLVER_POSITIONS.find((p) => p.id === 'RD').synthesized, 'Rage Drive is synthesized — no data keys');
+  assert.deepEqual(SOUL_STATES, ['SPIRIT', 'KESSHOU', 'SOUL9', 'REIHOU', 'SEAL']);
+  assert.equal(NO_RESOLVER_PATH.length, 7, 'seven no-resolver-path prefixes left (Lane C 2026-11-20 unquarantined FUFT/FUFA/FDFT/FDFA — knockdown-exit stance window)');
+  for (const pre of ['GROUNDED', 'FDFL', 'FDFR', 'FUFL', 'CH', 'TACKLE', 'REV']) assert.ok(NO_RESOLVER_PATH.includes(pre), `${pre} must be quarantined`);
+  for (const pre of ['FUFT', 'FUFA', 'FDFT', 'FDFA']) assert.ok(!NO_RESOLVER_PATH.includes(pre), `${pre} must NOT be quarantined (Lane C: stance-window path)`);
+  for (const w of ['corner', 'apron', 'mounted', 'jumping', 'sidestep-left', 'sidestep-right']) {
+    assert.ok(RETIRED_POSITION_WORDS.includes(w), `${w} must be listed as a retired word`);
+  }
+  assert.deepEqual(DEMONIO_FORMS, ['demonio', 'demonio-human', 'demonio-winged', 'demonio-bloodline-ember']);
+
+  // the slot key IS the notation now; the old '|' form is migration-only
+  assert.equal(slotKey('df+2'), 'df+2');
+  assert.equal(slotKey('WS.1'), 'WS.1');
+  // ground orientations are assignable now (Lane C): slot key builds, validates, buckets
+  assert.equal(slotKey('FUFT.3'), 'FUFT.3');
+  assert.equal(validateNotation('FUFT.3'), 'FUFT.3');
+  assert.equal(validateNotation('FDFA.4'), 'FDFA.4');
+  assert.equal(positionOfNotation('FUFT.3').id, 'FUFT');
+  assert.equal(positionOfNotation('FUFA.db+1+3_2+4').id, 'FUFA');
+  assert.equal(positionOfNotation('FDFT.db+1+3_2+4').id, 'FDFT');
+  assert.equal(positionOfNotation('FDFA.3').id, 'FDFA');
+  assert.throws(() => slotKey('standing|neutral|df+2'), /legacy/);
+  assert.throws(() => slotKey('GROUNDED.1'), /no resolver path/);
+  assert.throws(() => slotKey('corner.1'), /not a data prefix/);
+  assert.throws(() => slotKey('BT.3,&#58;1+2'), /corrupt/);
+  assert.deepEqual(parseSlotKey('df+2'), { position: 'STAND', situation: null, input: 'df+2', legacy: false });
+  assert.deepEqual(parseSlotKey('standing|neutral|d+1'), { position: 'standing', situation: 'neutral', input: 'd+1', legacy: true });
+  assert.equal(prefixOf('WS.1'), 'WS');
+  assert.equal(prefixOf('1'), '');
+  assert.equal(positionOfNotation('WS.1').id, 'WS');
+  assert.equal(positionOfNotation('BT.2').id, 'BT');
+  assert.equal(positionOfNotation('FC.d/f+1').id, 'FC');
+  assert.equal(positionOfNotation('SPIRIT.1').id, 'SOUL');
+  assert.equal(positionOfNotation('RD.1').id, 'RD');
+  assert.equal(positionOfNotation('1').id, 'STAND');
+  assert.deepEqual(positionOfNotation('GROUNDED.1'), { id: 'QUARANTINE', stance: null, quarantine: true });
+  assert.deepEqual(positionOfNotation('FOX.1', ['FOX']), { id: 'STANCE', stance: 'FOX', quarantine: false });
+  assert.equal(positionOfNotation('AB1.1').id, 'STAND', 'throw-chain stage tags bucket under Standing');
+  assert.equal(layerOfKey('x~t7.y').layer, 'T7');
+  assert.equal(layerOfKey('x~t3.y').layer, 'T3');
+  assert.equal(layerOfKey('x__main').layer, 'MAIN');
+  assert.equal(layerOfKey('x').layer, 'BASE');
+  assert.ok(isGrabMove({ isGrab: true }));
+  assert.ok(isGrabMove({ move_class: 'throw' }));
+  assert.ok(!isGrabMove({ move_class: 'strike' }));
+  assert.ok(!isGrabMove(null));
+
+  // SLOT_INPUTS kept verbatim from the old engine (EDITOR-SPEC §2f)
+  assert.equal(SLOT_INPUTS.length, 60, 'SLOT_INPUTS must stay the 60 measured inputs');
+  assert.equal(new Set(SLOT_INPUTS).size, SLOT_INPUTS.length, 'duplicate slot input');
   for (const input of SLOT_INPUTS) {
     assert.match(input, /^[dfbuqhc\/0-9+,]+$/, `input ${input} is not Tekken notation`);
     assert.ok(/[1234]/.test(input), `input ${input} names no limb button`);
   }
-  assert.equal(new Set(SLOT_INPUTS).size, SLOT_INPUTS.length, 'duplicate slot input');
-  for (const cat of WWE_CATEGORIES) {
-    for (const p of cat.positions) assert.ok(POSITIONS.includes(p), `${cat.id}: unknown position ${p}`);
-    for (const s of cat.situations) assert.ok(SITUATIONS.includes(s), `${cat.id}: unknown situation ${s}`);
-    assert.ok(slotsForCategory(cat.id).length > 0, `${cat.id}: no slots`);
-  }
-  assert.equal(slotKey('standing', 'neutral', 'df+2'), 'standing|neutral|df+2');
-  assert.deepEqual(parseSlotKey('grounded|neutral|d+1'), { position: 'grounded', situation: 'neutral', input: 'd+1' });
-  assert.throws(() => slotKey('standing', 'neutral', 'LP'), /unknown input/);
-  assert.throws(() => slotKey('ring', 'neutral', '1'), /unknown position/);
 });
 
-test('eligibility: position + input gate, input-less moves fit by position only', () => {
+test('eligibility: input gate + position-prefix gate, input-less moves fit by position only', () => {
   const moves = [
-    { id: 't3:hwoarang:row:31', position: 'standing', input: null },
-    { id: 'doa:bass:1', position: 'standing', input: '1' },
-    { id: 'doa:bass:3', position: 'crouching', input: 'd+1' },
+    { input: null }, // T3 row: no decoded input — position-only fit
+    { input: '1' },
+    { input: 'd+1' },
   ];
-  assert.ok(isEligible(moves[0], 'standing|neutral|df+2'), 'input-less standing move should fit any standing input slot');
-  assert.ok(!isEligible(moves[0], 'crouching|neutral|df+2'), 'standing move must not fit a crouching slot');
-  assert.ok(isEligible(moves[1], 'standing|neutral|1'), 'input 1 move fits input 1 slot');
-  assert.ok(!isEligible(moves[1], 'standing|neutral|2'), 'input 1 move must not fit input 2 slot');
-  assert.equal(listEligibleMoves(moves, 'standing|neutral|1').length, 2, 'standing|neutral|1 should admit the input-less move + the 1 move');
-  assert.equal(listEligibleMoves(moves, 'crouching|neutral|d+1').length, 1);
+  assert.ok(isEligible(moves[0], 'df+2'), 'input-less move should fit any assignable notation');
+  assert.ok(isEligible(moves[0], 'WS.1'), 'input-less move fits a prefixed notation too');
+  assert.ok(isEligible(moves[1], '1'), 'input 1 move fits input 1 slot');
+  assert.ok(!isEligible(moves[1], '2'), 'input 1 move must not fit input 2 slot');
+  assert.ok(isEligible(moves[2], 'd+1'), 'input d+1 move fits d+1 slot');
+  assert.ok(!isEligible(moves[2], '1'), 'input d+1 move must not fit input 1 slot');
+  assert.equal(listEligibleMoves(moves, '1').length, 2, 'input 1 should admit the input-less move + the 1 move');
+  assert.equal(listEligibleMoves(moves, 'd+1').length, 2, 'input d+1 should admit the input-less move + the d+1 move');
+  // position-prefix gate on the move KEY: WS key cannot fill a BT slot
+  assert.ok(!isEligible({ input: 'WS.1' }, 'BT.1', 'WS.1'), 'WS move key must not fill a BT slot');
+  assert.ok(isEligible({ input: 'WS.1' }, 'WS.1', 'WS.1'), 'WS move key fills its own WS slot');
+  assert.ok(!isEligible({ input: 'WS.1' }, 'WS.2', 'WS.1'), 'WS.1 input must not fill WS.2');
+  // quarantined notations are never eligible
+  assert.ok(!isEligible(moves[0], 'GROUNDED.1'), 'quarantined notation is never eligible');
+  assert.ok(!isEligible(moves[1], '1', 'GROUNDED.1'), 'quarantined move key is never eligible');
+  // ground-orientation move keys fill their own slot, not a sibling orientation (Lane C)
+  assert.ok(isEligible({ input: 'FUFT.3' }, 'FUFT.3', 'FUFT.3'), 'FUFT move key fills its own FUFT slot');
+  assert.ok(!isEligible({ input: 'FUFT.3' }, 'FDFA.3', 'FUFT.3'), 'FUFT move key must not fill an FDFA slot');
+  assert.ok(isEligible({ input: 'FDFA.4' }, 'FDFA.4', 'FDFA.4'), 'FDFA move key fills its own FDFA slot');
 });
 
-test('create + assign + validate: free template works, claimed template refused', () => {
-  // t3-hwoarang is FREE (claimed map free list) — any fighter may base on it
-  const use = canUseTemplate(byId.get('t3-hwoarang'), 'custom', claimed);
-  assert.ok(use.allowed, use.reason);
-  // t3-king is CLAIMED by Pantera — a custom fighter may not base on it
-  const no = canUseTemplate(byId.get('t3-king'), 'custom', claimed);
-  assert.ok(!no.allowed, 'claimed template must be refused for a custom fighter');
-  assert.match(no.reason, /CLAIMED/);
-  assert.ok(canUseTemplate(byId.get('t3-king'), 'pantera', claimed).allowed, 'the claimant may still use its own template');
-  // frame-data-only and pending rows cannot be a base (no playable moves)
-  assert.ok(!canBeBaseTemplate(byId.get('t7-frame-king')), 'frame-data-only must not be a base');
-  assert.ok(!canBeBaseTemplate(byId.get('urban-reign-pending')), 'pending-ingest must not be a base');
-  assert.throws(() => createCustomMoveset({ templateId: 't3-king', fighterId: 'custom', templates, claimed }), /CLAIMED/);
-
-  const ms = createCustomMoveset({ templateId: 't3-hwoarang', fighterId: 'custom', name: 'Test Custom', templates, claimed });
+test('create + assign + validate: named doc, source law at validate, store round-trip', () => {
+  // the base kit is a FIGHTER ID now, not a library template object;
+  // the custom fighter defaults to demonio (suite parity, B §3a)
+  const ms = createCustomMoveset({ name: 'Test Custom', fighterId: 'custom', baseTemplate: 'demonio', base: { bank: 't3', character: 'hwoarang' } });
+  assert.equal(ms.schema, 'wh.custom-moveset.v1');
+  assert.equal(ms.baseTemplate, 'demonio');
   assert.equal(ms.base.bank, 't3');
   assert.equal(ms.base.character, 'hwoarang');
+  assert.deepEqual(ms.slots, {});
+  assert.throws(() => createCustomMoveset({}), /needs a name/);
+  const def = createCustomMoveset({ name: 'Default Base' });
+  assert.equal(def.fighterId, 'custom');
+  assert.equal(def.baseTemplate, 'demonio', 'custom fighter without a base defaults to demonio');
+
   const lib = new Map([
     ['t3:hwoarang:row:31', { id: 't3:hwoarang:row:31', position: 'standing', input: null, anim_ref: 't3:hwoarang:row:31' }],
     ['t3:king:row:35', { id: 't3:king:row:35', position: 'standing', input: null, anim_ref: 't3:king:row:35' }],
   ]);
-  const assigned = assignMove(ms, 'standing|neutral|df+2', 't3:hwoarang:row:31', lib);
-  assert.equal(getMove(assigned, 'standing|neutral|df+2'), 't3:hwoarang:row:31');
-  assert.throws(() => assignMove(ms, 'crouching|neutral|df+2', 't3:hwoarang:row:31', lib), /cannot fill slot/);
-  assert.throws(() => assignMove(ms, 'standing|neutral|1', 't3:nope:row:1', lib), /unknown library move/);
-  const removed = removeMove(assigned, 'standing|neutral|df+2');
-  assert.equal(getMove(removed, 'standing|neutral|df+2'), null);
+  const hw = lib.get('t3:hwoarang:row:31');
+  const assigned = assignMove(ms, 'df+2', 't3:hwoarang:row:31', { move: hw });
+  assert.equal(getMove(assigned, 'df+2'), 't3:hwoarang:row:31');
+  // a move with a decoded input that does not match the slot is refused
+  assert.throws(() => assignMove(ms, 'df+2', 't3:hwoarang:row:31', { move: { input: '1' } }), /cannot fill slot/);
+  assert.throws(() => assignMove(ms, 'df+2', 'bad|key'), /bad move key/);
+  assert.throws(() => assignMove(ms, 'GROUNDED.1', 't3:hwoarang:row:31'), /no resolver path/);
+  const removed = removeMove(assigned, 'df+2');
+  assert.equal(getMove(removed, 'df+2'), null);
 
   // a claimed move smuggled into the slots fails validation (assembler law)
-  const bad = { ...assigned, slots: { 'standing|neutral|1': 't3:king:row:35' } };
+  const bad = { ...assigned, slots: { '1': 't3:king:row:35' } };
   const vBad = validateMoveset(bad, { libraryById: lib, claimed });
   assert.ok(!vBad.ok, 'claimed move in slots must fail validation');
   assert.ok(vBad.errors.some((e) => /CLAIMED/.test(e)), JSON.stringify(vBad.errors));
   const vGood = validateMoveset(assigned, { libraryById: lib, claimed });
   assert.ok(vGood.ok, JSON.stringify(vGood.errors));
   assert.ok(vGood.warnings.some((w) => /no decoded input/.test(w)), 'input-less T3 assignment must warn, not silently pass');
+  // an unknown library move fails validation instead of assigning
+  const vUnknown = validateMoveset({ ...assigned, slots: { '1': 't3:nope:row:1' } }, { libraryById: lib, claimed });
+  assert.ok(!vUnknown.ok);
+  assert.ok(vUnknown.errors.some((e) => /unknown library move/.test(e)), JSON.stringify(vUnknown.errors));
 
-  // serialize round-trip
-  assert.equal(deserializeMoveset(serializeMoveset(assigned)).baseTemplate, 't3-hwoarang');
+  // serialize round-trip + legacy migration on read
+  assert.equal(deserializeMoveset(serializeMoveset(assigned)).baseTemplate, 'demonio');
   assert.throws(() => deserializeMoveset('{"schema":"nope"}'), /wh\.custom-moveset/);
+  const migrated = migrateDocSlots({ ...assigned, slots: { 'standing|neutral|df+2': 't3:hwoarang:row:31' } });
+  assert.deepEqual(migrated.doc.slots, { 'df+2': 't3:hwoarang:row:31' });
+  assert.deepEqual(migrated.migrated, ['standing|neutral|df+2']);
+
+  // named-document store + compile into the live loadout
+  saveNamedMoveset(assigned);
+  const listed = listNamedMovesets().find((d) => d.name === 'Test Custom');
+  assert.ok(listed, 'saved doc must be listed');
+  assert.equal(listed.slots, 1);
+  assert.equal(loadNamedMoveset('Test Custom').baseTemplate, 'demonio');
+  setAppliedName('custom', 'Test Custom');
+  assert.equal(getAppliedName('custom'), 'Test Custom');
+  const seen = {};
+  const fakeSet = (fid, n, v) => { seen[n] = v; return true; };
+  const res = compileToLoadout(loadNamedMoveset('Test Custom'), { setLoadoutSlot: fakeSet, clearNotations: ['1'] });
+  assert.equal(res.cleared, 1);
+  assert.equal(res.applied, 1);
+  assert.equal(res.base, 'demonio');
+  assert.equal(seen['df+2'], 't3:hwoarang:row:31');
+  assert.equal(seen['1'], null, 'APPLY clears stale loadout entries first');
+  assert.equal(seen['__base'], 'demonio');
+  assert.ok(deleteNamedMoveset('Test Custom'));
+  assert.equal(loadNamedMoveset('Test Custom'), null);
+  assert.equal(getAppliedName('custom'), null, 'deleting the applied doc clears the pointer');
 });
 
 test('integration: custom moveset from t3-hwoarang assembles, source law green', async () => {
   const lib = await loadLibrary({ root: ROOT });
   const claimedMap = await loadClaimedMap({ root: ROOT });
   const hwMoves = lib.banks.t3.moves.filter((m) => m.id.startsWith('t3:hwoarang:'));
-  assert.ok(hwMoves.length === 221, `expected 221 Hwoarang moves, got ${hwMoves.length}`);
-  let ms = createCustomMoveset({ templateId: 't3-hwoarang', fighterId: 'custom', name: 'Test Custom', templates, claimed: claimedMap });
-  ms = assignMove(ms, 'standing|neutral|df+2', hwMoves[0].id, lib.byId);
+  // 376 entries (183 distinct T3 rows — the same row appears under
+  // several move keys/inputs); the old bank carried only 221.
+  assert.ok(hwMoves.length === 376, `expected 376 Hwoarang moves, got ${hwMoves.length}`);
+  let ms = createCustomMoveset({ name: 'Test Custom', fighterId: 'custom', baseTemplate: 'demonio', base: { bank: 't3', character: 'hwoarang' } });
+  ms = assignMove(ms, 'df+2', hwMoves[0].id, lib.byId);
   const manifest = toManifest(ms);
   assert.equal(manifest.base.bank, 't3');
   assert.equal(manifest.base.character, 'hwoarang');
-  assert.equal(manifest.moves[0].slot, 'standing|neutral|df+2');
+  assert.equal(manifest.moves[0].slot, 'df+2');
   const kit = await assembleFighter(manifest, { root: ROOT });
   assert.ok(kit.report.source_law.passed, JSON.stringify(kit.report.source_law));
-  assert.ok(kit.moves['standing|neutral|df+2'], 'the swapped-in move must be in the assembled kit');
-  /* HONEST LIMIT, measured: T3 rows carry input null (0/4,648 have
-     an input — the #615 fidelity engine owns that decode), so the
-     assembler's base-kit loop (`if (m.input ...)`) adds nothing
-     from a T3 base. A T3-based custom moveset today assembles to
-     exactly its explicitly-assigned overlay moves. That is the
-     #615 gap, asserted here so it cannot silently change. */
-  assert.equal(kit.report.assembled, 1, 'T3 base kit contributes nothing until inputs are decoded — only the overlay move assembles');
+  assert.ok(kit.moves['df+2'], 'the swapped-in move must be in the assembled kit');
+  /* The #615 gap is CLOSED for the library fill (2026-11-20): the new
+     index carries inputs decoded from the moveset files, so the T3
+     base kit now assembles like the vf5 one does — 188 distinct
+     inputs from 376 Hwoarang entries (183 distinct T3 rows). The
+     overlay at df+2 is a 189th slot (df+2 is not a base input).
+     Asserted here so it cannot silently change. */
+  assert.equal(kit.report.assembled, 189, 'T3 base kit assembles 188 distinct inputs + the df+2 overlay = 189');
 });
 
 test('integration: vf5-based custom moveset assembles its FULL base kit', async () => {
@@ -179,7 +276,7 @@ test('integration: vf5-based custom moveset assembles its FULL base kit', async 
   const claimedMap = await loadClaimedMap({ root: ROOT });
   // vf5/doa/vf moves all carry decoded inputs (96/96, 146/146, 48/48),
   // so unlike T3 the base kit fills every input slot by itself.
-  const ms = createCustomMoveset({ templateId: 'vf5-el-blaze-vf', fighterId: 'custom', name: 'Test VF5', templates, claimed: claimedMap });
+  const ms = createCustomMoveset({ name: 'Test VF5', fighterId: 'custom', baseTemplate: 'demonio', base: { bank: 'vf5', character: 'el-blaze' } });
   const kit = await assembleFighter(toManifest(ms), { root: ROOT });
   assert.ok(kit.report.source_law.passed, JSON.stringify(kit.report.source_law));
   assert.ok(kit.report.assembled >= 20, `vf5 base kit should assemble most of its 28 moves, got ${kit.report.assembled}`);

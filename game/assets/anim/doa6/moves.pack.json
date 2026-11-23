@@ -1,0 +1,244 @@
+{
+ "format": "wh-doa6-moves/1",
+ "note": "Only verified mappings are listed. Clip names are numbers (KAS00111_KAS), NOT DOA move names (P/6P/3P) \u2014 no source maps numbers to DOA moves, so no fight move is mapped to a clip here. Do not guess mappings. The 6 repo DOA kits keep their community-movelist anim_refs (doa:<fighter>/<move>); wiring kits to numbered clips needs a number->move mapping source that does not exist yet.",
+ "bank": "game/assets/anim/doa6/<Fighter>.json (release doa6-gtainside-ifp-20261122)",
+ "skeleton": "game/assets/anim/doa6/skeleton.json (GTA:SA ped; retarget to WH rigs is a separate job, not done here)",
+ "stance": {
+  "doa6-Ayane": {
+   "clip": "AYA/Custom/AYA00000_AYA (loop)",
+   "verified": {
+    "Normal_first_last_dot": 0.9999,
+    "Pelvis_first_last_dot": 0.9998,
+    "root_z_min": -0.3652,
+    "root_z_max": -0.2461,
+    "frames": 80,
+    "fps": 60.0
+   },
+   "note": "seamless loop idle (clip 00000 or named loop); first/last frame quat dot >= 0.9993 on Normal + Pelvis; root_z sway small. Mapped as the fighter's stance/idle."
+  },
+  "doa6-Common": {
+   "clip": "CMN/Custom/CMN01282_CMN (loop)",
+   "verified": {
+    "Normal_first_last_dot": 0.9995,
+    "Pelvis_first_last_dot": 0.9994,
+    "root_z_min": 0.0,
+    "root_z_max": 0.0,
+    "frames": 16,
+    "fps": 60.0
+   },
+   "note": "seamless loop idle (clip 00000 or named loop); first/last frame quat dot >= 0.9993 on Normal + Pelvis; root_z sway small. Mapped as the fighter's stance/idle."
+  },
+  "doa6-Diego": {
+   "clip": "DGO/Custom/DGO00000_DGO (loop)",
+   "verified": {
+    "Normal_first_last_dot": 0.9995,
+    "Pelvis_first_last_dot": 0.9996,
+    "root_z_min": -0.1953,
+    "root_z_max": -0.0723,
+    "frames": 600,
+    "fps": 60.0
+   },
+   "note": "seamless loop idle (clip 00000 or named loop); first/last frame quat dot >= 0.9993 on Normal + Pelvis; root_z sway small. Mapped as the fighter's stance/idle."
+  },
+  "doa6-Hayate": {
+   "clip": "HYT/Custom/HYT00000_HYT (loop)",
+   "verified": {
+    "Normal_first_last_dot": 0.9997,
+    "Pelvis_first_last_dot": 0.9998,
+    "root_z_min": -0.2812,
+    "root_z_max": -0.2012,
+    "frames": 464,
+    "fps": 60.0
+   },
+   "note": "seamless loop idle (clip 00000 or named loop); first/last frame quat dot >= 0.9993 on Normal + Pelvis; root_z sway small. Mapped as the fighter's stance/idle."
+  },
+  "doa6-Honoka": {
+   "clip": "HON/Custom/HON00002_HON (loop)",
+   "verified": {
+    "Normal_first_last_dot": 0.9996,
+    "Pelvis_first_last_dot": 0.9998,
+    "root_z_min": -0.1377,
+    "root_z_max": -0.0215,
+    "frames": 318,
+    "fps": 60.0
+   },
+   "note": "seamless loop idle (clip 00000 or named loop); first/last frame quat dot >= 0.9993 on Normal + Pelvis; root_z sway small. Mapped as the fighter's stance/idle."
+  },
+  "doa6-Kasumi": {
+   "clip": "KAS/Custom/KAS00000_KAS (loop)",
+   "verified": {
+    "Normal_first_last_dot": 0.9995,
+    "Pelvis_first_last_dot": 0.9993,
+    "root_z_min": -0.3154,
+    "root_z_max": -0.2539,
+    "frames": 80,
+    "fps": 60.0
+   },
+   "note": "seamless loop idle (clip 00000 or named loop); first/last frame quat dot >= 0.9993 on Normal + Pelvis; root_z sway small. Mapped as the fighter's stance/idle."
+  },
+  "doa6-Kula": {
+   "clip": "SNK/Custom/SNK00000_SNK (loop)",
+   "verified": {
+    "Normal_first_last_dot": 0.9996,
+    "Pelvis_first_last_dot": 0.9993,
+    "root_z_min": -0.0332,
+    "root_z_max": -0.0273,
+    "frames": 166,
+    "fps": 60.0
+   },
+   "note": "seamless loop idle (clip 00000 or named loop); first/last frame quat dot >= 0.9993 on Normal + Pelvis; root_z sway small. Mapped as the fighter's stance/idle."
+  },
+  "doa6-Leifang": {
+   "clip": "LEI/Custom/LEI00000_LEI (loop)",
+   "verified": {
+    "Normal_first_last_dot": 0.9999,
+    "Pelvis_first_last_dot": 0.9993,
+    "root_z_min": -0.3545,
+    "root_z_max": -0.1689,
+    "frames": 475,
+    "fps": 60.0
+   },
+   "note": "seamless loop idle (clip 00000 or named loop); first/last frame quat dot >= 0.9993 on Normal + Pelvis; root_z sway small. Mapped as the fighter's stance/idle."
+  },
+  "doa6-Mai": {
+   "clip": "MAI/Custom/MAI00000_MAI (loop)",
+   "verified": {
+    "Normal_first_last_dot": 0.9997,
+    "Pelvis_first_last_dot": 0.9993,
+    "root_z_min": -0.3477,
+    "root_z_max": -0.2549,
+    "frames": 62,
+    "fps": 60.0
+   },
+   "note": "seamless loop idle (clip 00000 or named loop); first/last frame quat dot >= 0.9993 on Normal + Pelvis; root_z sway small. Mapped as the fighter's stance/idle."
+  },
+  "doa6-MarieRose": {
+   "clip": "MAR/Custom/MAR00000_MAR (loop)",
+   "verified": {
+    "Normal_first_last_dot": 0.9995,
+    "Pelvis_first_last_dot": 0.9995,
+    "root_z_min": -0.0762,
+    "root_z_max": -0.0654,
+    "frames": 266,
+    "fps": 60.0
+   },
+   "note": "seamless loop idle (clip 00000 or named loop); first/last frame quat dot >= 0.9993 on Normal + Pelvis; root_z sway small. Mapped as the fighter's stance/idle."
+  },
+  "doa6-Mila": {
+   "clip": "MIL/Custom/MIL00000_MIL (loop)",
+   "verified": {
+    "Normal_first_last_dot": 0.9998,
+    "Pelvis_first_last_dot": 0.9998,
+    "root_z_min": -0.1582,
+    "root_z_max": -0.0176,
+    "frames": 635,
+    "fps": 60.0
+   },
+   "note": "seamless loop idle (clip 00000 or named loop); first/last frame quat dot >= 0.9993 on Normal + Pelvis; root_z sway small. Mapped as the fighter's stance/idle."
+  },
+  "doa6-Momiji": {
+   "clip": "MOM/Custom/MOM00000_MOM (loop)",
+   "verified": {
+    "Normal_first_last_dot": 0.9999,
+    "Pelvis_first_last_dot": 0.9995,
+    "root_z_min": -0.2061,
+    "root_z_max": -0.1465,
+    "frames": 533,
+    "fps": 60.0
+   },
+   "note": "seamless loop idle (clip 00000 or named loop); first/last frame quat dot >= 0.9993 on Normal + Pelvis; root_z sway small. Mapped as the fighter's stance/idle."
+  },
+  "doa6-NiCO": {
+   "clip": "NIC/Custom/NIC00000_NIC (loop)",
+   "verified": {
+    "Normal_first_last_dot": 0.9998,
+    "Pelvis_first_last_dot": 0.9997,
+    "root_z_min": -0.1113,
+    "root_z_max": -0.0732,
+    "frames": 509,
+    "fps": 60.0
+   },
+   "note": "seamless loop idle (clip 00000 or named loop); first/last frame quat dot >= 0.9993 on Normal + Pelvis; root_z sway small. Mapped as the fighter's stance/idle."
+  },
+  "doa6-Nyotengu": {
+   "clip": "NYO/Custom/NYO00000_NYO (loop)",
+   "verified": {
+    "Normal_first_last_dot": 0.9997,
+    "Pelvis_first_last_dot": 0.9996,
+    "root_z_min": -0.1592,
+    "root_z_max": -0.0762,
+    "frames": 511,
+    "fps": 60.0
+   },
+   "note": "seamless loop idle (clip 00000 or named loop); first/last frame quat dot >= 0.9993 on Normal + Pelvis; root_z sway small. Mapped as the fighter's stance/idle."
+  },
+  "doa6-Phase4": {
+   "clip": "PHF/Custom/PHF00000_PHF (loop)",
+   "verified": {
+    "Normal_first_last_dot": 0.9999,
+    "Pelvis_first_last_dot": 0.9996,
+    "root_z_min": -0.2822,
+    "root_z_max": -0.2197,
+    "frames": 108,
+    "fps": 60.0
+   },
+   "note": "seamless loop idle (clip 00000 or named loop); first/last frame quat dot >= 0.9993 on Normal + Pelvis; root_z sway small. Mapped as the fighter's stance/idle."
+  },
+  "doa6-Rachel": {
+   "clip": "RAC/Custom/RAC00000_RAC (loop)",
+   "verified": {
+    "Normal_first_last_dot": 0.9998,
+    "Pelvis_first_last_dot": 0.9995,
+    "root_z_min": -0.1191,
+    "root_z_max": 0.0127,
+    "frames": 102,
+    "fps": 60.0
+   },
+   "note": "seamless loop idle (clip 00000 or named loop); first/last frame quat dot >= 0.9993 on Normal + Pelvis; root_z sway small. Mapped as the fighter's stance/idle."
+  },
+  "doa6-Tamaki": {
+   "clip": "SKD/Custom/SKD00000_SKD (loop)",
+   "verified": {
+    "Normal_first_last_dot": 0.9998,
+    "Pelvis_first_last_dot": 0.9998,
+    "root_z_min": -0.0996,
+    "root_z_max": -0.0537,
+    "frames": 798,
+    "fps": 60.0
+   },
+   "note": "seamless loop idle (clip 00000 or named loop); first/last frame quat dot >= 0.9993 on Normal + Pelvis; root_z sway small. Mapped as the fighter's stance/idle."
+  },
+  "doa6-Tina": {
+   "clip": "TIN/Custom/TIN01200_TIN (loop)",
+   "verified": {
+    "Normal_first_last_dot": 0.9997,
+    "Pelvis_first_last_dot": 0.9996,
+    "root_z_min": -0.1133,
+    "root_z_max": -0.0283,
+    "frames": 177,
+    "fps": 60.0
+   },
+   "note": "seamless loop idle (clip 00000 or named loop); first/last frame quat dot >= 0.9993 on Normal + Pelvis; root_z sway small. Mapped as the fighter's stance/idle."
+  }
+ },
+ "unmapped": {
+  "fight_moves": "ALL kit moves (doa-kasumi, doa-bass, doa-hayabusa, doa-jannlee, doa-ayane, doa-tina + future DOA kits): numbered clips cannot be assigned to DOA moves without a mapping source.",
+  "fighters_without_verified_stance": [
+   "doa6-Bass",
+   "doa6-Bayman",
+   "doa6-BradWong",
+   "doa6-Christie",
+   "doa6-Eliot",
+   "doa6-Hayabusa",
+   "doa6-Helena",
+   "doa6-Hitomi",
+   "doa6-JannLee",
+   "doa6-Kokoro",
+   "doa6-Lisa",
+   "doa6-Raidou",
+   "doa6-Rig",
+   "doa6-Zack"
+  ],
+  "reason": "no (loop) idle clip present in the pack for these fighters; the idle may exist under a non-loop numbered name, but it cannot be identified from the data."
+ }
+}

@@ -23,6 +23,14 @@ deployed first — stop, recompute, never force.
 
 Deploys are add/update-only. Nothing is ever removed from the deploy
 branch, and it is never force-pushed.
+
+Reads (trees, blobs, refs) are retried: transient GitHub API failures
+(5xx, 429/rate-limit, timeouts, connection errors) are retried up to
+FETCH_ATTEMPTS times with exponential backoff — a single transient
+failure used to kill the whole sync (2026-11-20: workflow run
+44788247091 failed on one blob fetch out of 1,945). A 404 fails fast:
+the blob genuinely does not exist. Writes (blob/tree/commit creation,
+ref PATCH) are never retried.
 """
 import argparse
 import base64
@@ -33,6 +41,7 @@ import re
 import subprocess
 import sys
 import tempfile
+import time
 
 REPO = "mhvnsnt/western-heart"
 BRANCH = "gh-pages-m1-20261029"
@@ -44,18 +53,139 @@ SMALL_EXT = (".js", ".mjs", ".json", ".css", ".html")
 SMALL_MAX, SMALL_TOTAL = 256 * 1024, 2_500_000
 CAP = 1_073_741_824
 CODE_EXT = (".js", ".mjs", ".html", ".json", ".css")
+# Editor-only data that may stay at its LIVE version when updating it would push the shell over the Pages cap
+# (2026-11-22). game/data/moveset-library/index.json went from 2,231 B to 60,249,618 B on main (f58ef35d,
+# 2026-11-21) and every deploy since refused with "new tree over the 1 GiB cap": the live site froze at main
+# c324efe9 while fixes kept merging. Only the in-game moveset editor reads that index, on demand, and it already
+# treats the older index as 'stale' (game/js/moveset-editor-ui.js), so fights and every other screen are unaffected.
+# Nothing outside these prefixes is ever skipped (code must stay consistent); a skip is printed, never silent.
+CAP_SKIPPABLE_PREFIXES = ("game/data/moveset-library/",)
+
+
+def skip_over_cap_updates(upd, live_sizes, main_sizes, projected, cap=CAP):
+    """Drop updates under CAP_SKIPPABLE_PREFIXES, biggest growth first, until `projected` (the new tree's byte total)
+    fits under `cap`. live_sizes / main_sizes map path -> size. Returns (kept_updates, skipped, projected_after).
+    Shared rule with tools/deploy/deploy_delta.py."""
+    if projected <= cap:
+        return list(upd), [], projected
+    cands = sorted((p for p in upd if p.startswith(CAP_SKIPPABLE_PREFIXES)
+                    and main_sizes[p] > live_sizes[p]),
+                   key=lambda p: live_sizes[p] - main_sizes[p])
+    skipped = []
+    for p in cands:
+        if projected <= cap:
+            break
+        projected -= main_sizes[p] - live_sizes[p]
+        skipped.append(p)
+    return [p for p in upd if p not in skipped], skipped, projected
+
+# Fetch resilience (2026-11-20): one transient GitHub API failure used to
+# kill the whole sync — run 44788247091 died on a single blob fetch out of
+# 1,945 ("FAILED to fetch blobs: ['game/js/t3anims.js']") for a small file
+# (155,841 B) that fetched fine the run before. Reads are retried with
+# exponential backoff; writes are not (see _is_write_call).
+FETCH_ATTEMPTS = 5
+FETCH_BACKOFF_BASE = 2.0  # seconds; sleeps 2, 4, 8, 16 between attempts
+TRANSIENT_MARKERS = (
+    "HTTP 500", "HTTP 502", "HTTP 503", "HTTP 504", "HTTP 429",
+    "rate limit", "timed out", "timeout", "connection reset",
+    "connection refused", "failed to connect", "temporary failure",
+    "name resolution", "network is unreachable", "broken pipe",
+    "bad gateway", "gateway timeout", "service unavailable",
+    "internal server error", "eof",
+)
+
+
+def classify_gh_failure(stderr):
+    """Classify a failed `gh api` call from its stderr.
+
+    Returns 'not_found' (HTTP 404 — the blob genuinely does not exist,
+    fail fast, retrying cannot help), 'transient' (5xx, 429/rate-limit,
+    timeouts, connection errors — worth retrying), or 'other' (fail fast,
+    unchanged behaviour: 401/403 auth, 422 validation, ...)."""
+    err = stderr.lower()
+    if "http 404" in err:
+        return "not_found"
+    if any(m.lower() in err for m in TRANSIENT_MARKERS):
+        return "transient"
+    return "other"
+
+
+def _is_write_call(args):
+    """True when this `gh api` call mutates state (POST/PATCH/PUT/DELETE):
+    a retry after a success whose response was lost would duplicate the
+    write (dangling blob/tree/commit) or mask a ref race, so writes get
+    exactly one attempt."""
+    if "--method" in args:
+        i = args.index("--method")
+        return i + 1 < len(args) and args[i + 1].upper() != "GET"
+    return False
 
 
 def gh(*args, inp=None):
-    r = subprocess.run(["gh", "api"] + list(args),
-                       input=inp, capture_output=True, text=True)
-    if r.returncode:
-        raise SystemExit(f"gh api {' '.join(args)} failed:\n{r.stderr.strip()[:500]}")
-    return r.stdout
+    attempts = 1 if _is_write_call(args) else FETCH_ATTEMPTS
+    for attempt in range(1, attempts + 1):
+        r = subprocess.run(["gh", "api"] + list(args),
+                           input=inp, capture_output=True, text=True)
+        if r.returncode == 0:
+            return r.stdout
+        err = r.stderr.strip()
+        kind = classify_gh_failure(err)
+        if kind == "not_found":
+            raise SystemExit(f"gh api {' '.join(args)} failed "
+                             f"(404, not retried):\n{err[:500]}")
+        if kind != "transient" or attempt == attempts:
+            raise SystemExit(f"gh api {' '.join(args)} failed:\n{err[:500]}")
+        wait = min(FETCH_BACKOFF_BASE * (2 ** (attempt - 1)), 30.0)
+        print(f"  gh api transient failure (attempt {attempt}/{attempts}), "
+              f"retrying in {wait:g}s: {err[:200]}")
+        time.sleep(wait)
+    raise AssertionError("unreachable")
 
 
 def gh_json(*args, inp=None):
     return json.loads(gh(*args, inp=inp))
+
+
+class BlobFetchError(Exception):
+    """A blob fetch failed after all retries, or failed fast (404,
+    empty response, corrupt content). The path is recorded by the
+    caller; one bad blob still fails the run, but only after retries."""
+
+
+def fetch_blob_b64(sha):
+    """Fetch one blob's base64 content via `gh api`, retrying transient
+    failures (5xx, 429/rate-limit, timeouts, connection errors) up to
+    FETCH_ATTEMPTS times with exponential backoff. Returns the decoded
+    bytes. Raises BlobFetchError on a 404 (fail fast), an empty response
+    or undecodable content (the content arrived — retrying cannot help),
+    or transient failures exhausted after all attempts."""
+    last_err = ""
+    for attempt in range(1, FETCH_ATTEMPTS + 1):
+        r = subprocess.run(["gh", "api", f"repos/{REPO}/git/blobs/{sha}",
+                            "--jq", ".content"], capture_output=True, text=True)
+        if r.returncode == 0 and r.stdout.strip():
+            try:
+                return base64.b64decode("".join(r.stdout.split()))
+            except Exception as e:
+                raise BlobFetchError(f"b64 decode failed: {e}")
+        if r.returncode == 0:
+            raise BlobFetchError("empty response")
+        err = r.stderr.strip()
+        kind = classify_gh_failure(err)
+        if kind == "not_found":
+            raise BlobFetchError(f"404: blob {sha} not found (not retried)")
+        if kind != "transient":
+            raise BlobFetchError(f"gh api failed: {err[:200]}")
+        last_err = err
+        if attempt == FETCH_ATTEMPTS:
+            break
+        wait = min(FETCH_BACKOFF_BASE * (2 ** (attempt - 1)), 30.0)
+        print(f"  transient blob fetch failure (attempt {attempt}/{FETCH_ATTEMPTS}), "
+              f"retrying in {wait:g}s: {err[:200]}")
+        time.sleep(wait)
+    raise BlobFetchError(f"transient failures exhausted after {FETCH_ATTEMPTS} "
+                         f"attempts: {last_err[:200]}")
 
 
 def fetch_tree(ref, root):
@@ -95,6 +225,14 @@ def compute_delta(live, main, t3anims, asset_config="", live_total=0):
     # bank on Pages (2026-11-10: 13 banks, 256 files, 10.1 MB, shipped in deploy 0969a76e).
     bdirs = sorted(set(re.findall(r"'(assets/anim/t3/t7_[\w-]+/)'", t3anims)))
     add += sorted(p for p in main for d in bdirs if p.startswith("game/" + d) and p not in live)
+    # T7 throw clips (game/assets/anim/t7/king/throws/): the loader
+    # (game/js/t7-throw-clips.js loadT7ThrowClip) fetches them with a plain
+    # relative fetch and NO remote fallback, so the shell must carry them or
+    # the T7 default silently falls back to the T3 pair on Pages.
+    # Added 2026-11-20 (gh-pages sync); same rationale as the T7 banks rule.
+    add += sorted(p for p in main
+                  if p.startswith("game/assets/anim/t7/king/throws/")
+                  and p not in live)
     budget = SMALL_TOTAL
     for p in sorted(p for p in main if p not in live
                     and p.startswith(SMALL_ADD_PREFIXES)
@@ -104,6 +242,13 @@ def compute_delta(live, main, t3anims, asset_config="", live_total=0):
             add.append(p)
             budget -= main[p][1]
     add = sorted(set(add))
+    # Over the cap with only these updates and adds? Editor-only data keeps its live version (see
+    # CAP_SKIPPABLE_PREFIXES); the freed headroom then funds the bundled-model step below as before.
+    projected = (live_total + sum(main[p][1] - live[p][1] for p in upd) + sum(main[p][1] for p in add))
+    upd, skipped, _ = skip_over_cap_updates(upd, {p: live[p][1] for p in upd}, {p: main[p][1] for p in upd}, projected)
+    for p in skipped:
+        print(f"  UPDATE SKIP (over cap; editor-only data stays at its live version): {p} "
+              f"({live[p][1]} B live, {main[p][1]} B on main)")
     # Bundled shell models (SHELL_BUNDLED_MODELS in main's
     # game/js/asset-config.js — the same list deploy_delta.py reads).
     # deploy_api.py never ported this step, so every deploy on the API
@@ -153,6 +298,9 @@ def materialize(assembled, checker, scratch):
     """Fetch every CODE file of the assembled tree via the blobs API
     (skipping files already on disk at the right size), then run the
     module-graph check against the materialized dir.
+    Blob fetches go through fetch_blob_b64, which retries transient
+    failures (see FETCH_ATTEMPTS); a blob that still fails after all
+    retries is recorded with its reason and the run refuses as before.
     Returns the checker's CompletedProcess (caller reads its stdout)."""
     code = sorted(p for p, (_, sz, _) in assembled.items()
                   if p.endswith(CODE_EXT))
@@ -166,15 +314,10 @@ def materialize(assembled, checker, scratch):
             skipped += 1
             continue
         os.makedirs(os.path.dirname(dst), exist_ok=True)
-        r = subprocess.run(["gh", "api", f"repos/{REPO}/git/blobs/{sha}",
-                            "--jq", ".content"], capture_output=True, text=True)
-        if r.returncode or not r.stdout.strip():
-            fail.append(p)
-            continue
         try:
-            data = base64.b64decode("".join(r.stdout.split()))
-        except Exception as e:
-            fail.append(f"{p} (b64: {e})")
+            data = fetch_blob_b64(sha)
+        except BlobFetchError as e:
+            fail.append(f"{p} ({e})")
             continue
         with open(dst, "wb") as f:
             f.write(data)

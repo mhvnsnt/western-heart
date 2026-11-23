@@ -437,7 +437,7 @@ Each soul has a **nature** — a kanji, a meaning, a way of moving through the w
 | ZEN | 禅 | Stillness. Barely moves. Doesn't need to. | **Unvesseled** |
 | GYOU | 行 | Motion itself. Cannot stop moving. | **Unvesseled** (a splinter trapped in CYBORG X) |
 
-**Soul bodies (owner order 2026-10-15):** The souls' default bodies have been moved off Tekken 3 TMD extractions to T6/TTT2-or-better (preference T6 > TTT2 > T7-style). 6 of 9 now default to T7-style bodies (RigModels fan rips): RIN → T7 Jin (`rin-body.glb`), SHA → T7 Xiaoyu (`sha-body.glb`), KAI → T7 Eddy (`kai-body.glb`), JIN → T7 Yoshimitsu (`jin-body.glb`), RETSU → T7 Bryan (`retsu-body.glb`), ZEN → T7 Julia (`zen-body.glb`). The T3 TMDs remain as legacy (last attire; extraction pending). BYOU is blocked pending the owner's Lei naming decision; TOU and GYOU await T6/TTT2 extraction. Full map: `docs/souls/SOUL-BODY-REPLACEMENT.md`.
+**Soul bodies (owner order 2026-10-15, corrected 2026-11-21):** A soul's BODY is its own model — a Tripo original or its own Eastern Mind soul body — never another character's model. The 2026-10-15 T7-style donor bodies are superseded wherever a soul now has its own body: RIN fights in his vessel Demonio's canonical body (`demonio-a1`) — `rin-body.glb` was the Steve Fox stand-in, wrong canon per owner 2026-10-15; SHA's fighter Saku Ra fights in her own Tripo (`saku-ra`); KAI fights in his own Eastern Mind body (`kai-soul-tex.glb`, 2026-11-10); JIN fights in his vessel Phantom's Tripo (`phantom`); ZEN fights in his own Tripo spirit body (`zen`, Tripo 8c46e379) — the T7 Julia model (`zen-body.glb`) is Attire 2 legacy only; TOU fights in his own Eastern Mind body (`tou-soul-tex.glb`, 2026-11-10) — Paul is his fighting base, not his body. RETSU still defaults to the T7 Bryan body (`retsu-body.glb`) — no soul body of his own exists yet; whether he keeps it or gets an Eastern Mind soul body like KAI/TOU is an open owner question. BYOU: Lei resolved to Rave 2026-11-06; Byou's base is Wang Jinrei, vessel Zui. GYOU fights in his own spirit body (`gyou-attire1`); his Paul holding is conditional — Paul goes to Gyou only if Gyou needs somebody (owner 2026-11-21), and he is definitely not Hwoarang. The T3 TMDs and the superseded T7-style donor bodies remain as legacy/ladder-back attires. Full map: `docs/souls/SOUL-BODY-REPLACEMENT.md`.
 
 **On the vessels:** A soul does not choose its vessel the way a driver chooses a car. The vessel is the shape the soul's nature takes when the trial calls it. Demonio *is* what RIN looks like when RIN has to fight. This is why the fighters feel inevitable — they are.
 
@@ -999,6 +999,7 @@ The trial didn't call him. A student followed the pull — and Baek followed the
 ---
 
 ### JIN KAZAMA — The Bloodline Soul
+> FLAG — CANON CONFLICT (2026-11-20): this section presents Jin Kazama as a person in the trial, which contradicts Law 2 ('There is NO Jin Kazama in our game at all — the ONLY Jin is the soul JIN'). Flagged, not resolved — owner call: retire this section or amend Law 2.
 **Not one of the nine. The bloodline. (Not the SOUL JIN — the soul JIN (刃 — the blade) wears Phantom. This Jin wears a curse.)**
 
 **Backstory.** Jin Kazama — heir of the Mishima bloodline, the Devil Gene made flesh, the boy who threw his grandfather off a cliff and then spent his life trying to throw the devil off himself. He started a world war to draw the devil out. It worked. That's the problem with Jin's plans: they work.
@@ -1565,9 +1566,8 @@ bank on this disc image (BNS record 295 is size 0).
 The canon identities of the T3 sources are the ones already established in this bible and
 the roster: King→PANTERA, Jin→DEMONIO (soul RIN), Yoshimitsu→PHANTOM, Heihachi→DIABLO,
 Bryan→SKULL, Gun Jack→SAM-UR-A1, Xiaoyu→SAKU RA, Paul→TOU, Eddy→KING TYRANT (soul KAI),
-Hwoarang→GYOU, Julia→NIGHTWOLF / soul ZEN (a three-way doc conflict is flagged in the
-conversion record, unresolved), Lei→soul BYOU (vessel name pending the owner's Lei naming
-decision, as noted in §4 of this bible), Nina→AWA POP, Anna→TORCH, Dr. Bosconovitch→DOC
+Hwoarang→TOBI (the old Hwoarang→GYOU mapping is superseded — Gyou's Paul holding is conditional per owner 2026-11-21: Paul goes to Gyou only if Gyou needs somebody; if he has somebody else, he is not Paul, fighter.js:211),
+Julia→NIGHTWOLF (Zen's base is Eleven/Twelve→Dural per the owner decision 2026-10-24, docs/decisions/2026-10-24-zen-base-decision.md — the three-way conflict is resolved; Zen's BODY is his own Tripo spirit body, not Julia, per owner correction 2026-11-21), Lei→RAVE (owner-named 2026-11-06; Byou's base is Wang Jinrei, vessel Zui), Nina→AWA POP, Anna→TORCH, Dr. Bosconovitch→DOC
 FRANK. Law, Ogre, Gon, Panda, and Mokujin have **no** Western Heart mapping in canon —
 flagged for the owner's decision, never invented. The bear's name is now locked: GASHADOKURO (owner name lock 2026-10-22; internal ID remains `kuma` — plumbing only, never renamed; the game layer resolves the display name).
 

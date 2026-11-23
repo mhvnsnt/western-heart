@@ -1,0 +1,1936 @@
+{
+ "source": "W7 2026-11-19: survey names (menu.mpq Appendix B, 99 specials) matched against wprm display names extracted from live MEM1 (wprm-motion-names.json). Motion IDs are move.mpc clip IDs; durations from mpc-clips-manifest-calibrated.json (tick_total/60).",
+ "method_note": "Exact match = survey name appears verbatim as a wprm display name. Near match = display name differs by a suffix (01/02 variant), trailing space, or abbreviation (w/ = with). Multi-ID = the display name maps to several motion IDs (different slots/groups); the survey slot category disambiguates where noted. Variant-ambiguous pairs (01/02) need the descriptor variant field to resolve.",
+ "specials": [
+  {
+   "wrestler": "THE ROCK",
+   "slot": "Front Grapple",
+   "survey_name": "Rock Bottom",
+   "menu_mpq_offset": "0x5b6ef",
+   "match": "exact",
+   "display_name": "Rock Bottom",
+   "motion_ids": [
+    "2059"
+   ],
+   "clips": [
+    {
+     "clip": "2059_00A",
+     "duration_seconds": 11.017,
+     "tick_total": 661
+    }
+   ]
+  },
+  {
+   "wrestler": "THE ROCK",
+   "slot": "Upper Down Grapple Facing Up",
+   "survey_name": "People's Elbow",
+   "menu_mpq_offset": "0x5b70f",
+   "match": "exact",
+   "display_name": "People's Elbow",
+   "motion_ids": [
+    "6503"
+   ],
+   "clips": [
+    {
+     "clip": "6503_00A",
+     "duration_seconds": 13.733,
+     "tick_total": 824
+    }
+   ]
+  },
+  {
+   "wrestler": "THE ROCK",
+   "slot": "Irish Whip Grapple",
+   "survey_name": "People's Spine Buster",
+   "menu_mpq_offset": "0x5b741",
+   "match": "exact",
+   "display_name": "People's Spine Buster",
+   "motion_ids": [
+    "4306"
+   ],
+   "clips": [
+    {
+     "clip": "4306_00A",
+     "duration_seconds": 9.1,
+     "tick_total": 546
+    }
+   ]
+  },
+  {
+   "wrestler": "TRIPLE H",
+   "slot": "Front Grapple",
+   "survey_name": "Pedigree",
+   "menu_mpq_offset": "0x5b990",
+   "match": "exact",
+   "display_name": "Pedigree",
+   "motion_ids": [
+    "2061"
+   ],
+   "clips": [
+    {
+     "clip": "2061_00A",
+     "duration_seconds": 8.033,
+     "tick_total": 482
+    }
+   ]
+  },
+  {
+   "wrestler": "TRIPLE H",
+   "slot": "Rear Grapple",
+   "survey_name": "Reverse Suplex",
+   "menu_mpq_offset": "0x5b9ad",
+   "match": "exact",
+   "display_name": "Reverse Suplex",
+   "motion_ids": [
+    "3036"
+   ],
+   "clips": [
+    {
+     "clip": "3036_00A",
+     "duration_seconds": 9.05,
+     "tick_total": 543
+    }
+   ]
+  },
+  {
+   "wrestler": "HULK HOGAN",
+   "slot": "Front Grapple",
+   "survey_name": "Hulk Up Combination",
+   "menu_mpq_offset": "0x5bcc9",
+   "match": "exact",
+   "display_name": "Hulk Up Combination",
+   "motion_ids": [
+    "2165"
+   ],
+   "clips": [
+    {
+     "clip": "2165_00A",
+     "duration_seconds": 12.483,
+     "tick_total": 749
+    }
+   ]
+  },
+  {
+   "wrestler": "HULK HOGAN",
+   "slot": "Running Strike",
+   "survey_name": "Axe Bomber",
+   "menu_mpq_offset": "0x5bcf1",
+   "match": "exact",
+   "display_name": "Axe Bomber",
+   "motion_ids": [
+    "0730"
+   ],
+   "clips": [
+    {
+     "clip": "0730_00A",
+     "duration_seconds": 5.017,
+     "tick_total": 301
+    }
+   ]
+  },
+  {
+   "wrestler": "UNDERTAKER",
+   "slot": "Front Grapple",
+   "survey_name": "Last Ride",
+   "menu_mpq_offset": "0x5bf2c",
+   "match": "exact",
+   "display_name": "Last Ride",
+   "motion_ids": [
+    "2100"
+   ],
+   "clips": [
+    {
+     "clip": "2100_00A",
+     "duration_seconds": 14.15,
+     "tick_total": 849
+    }
+   ]
+  },
+  {
+   "wrestler": "UNDERTAKER",
+   "slot": "Rear Grapple",
+   "survey_name": "Dragon Sleeper",
+   "menu_mpq_offset": "0x5bf4a",
+   "match": "exact",
+   "display_name": "Dragon Sleeper",
+   "motion_ids": [
+    "3032"
+   ],
+   "clips": [
+    {
+     "clip": "3032_00A",
+     "duration_seconds": 6.467,
+     "tick_total": 388
+    }
+   ]
+  },
+  {
+   "wrestler": "UNDERTAKER",
+   "slot": "Front Grapple",
+   "survey_name": "Tombstone Pile Driver",
+   "menu_mpq_offset": "0x5bf6c",
+   "match": "exact",
+   "display_name": "Tombstone Pile Driver",
+   "motion_ids": [
+    "2046"
+   ],
+   "clips": [
+    {
+     "clip": "2046_00A",
+     "duration_seconds": 9.367,
+     "tick_total": 562
+    }
+   ]
+  },
+  {
+   "wrestler": "KURT ANGLE",
+   "slot": "Front Grapple",
+   "survey_name": "Angle Slam",
+   "menu_mpq_offset": "0x5c1f5",
+   "match": "exact",
+   "display_name": "Angle Slam",
+   "motion_ids": [
+    "2062"
+   ],
+   "clips": [
+    {
+     "clip": "2062_00A",
+     "duration_seconds": 7.45,
+     "tick_total": 447
+    }
+   ]
+  },
+  {
+   "wrestler": "KURT ANGLE",
+   "slot": "Lower Down Grapple Facing Down",
+   "survey_name": "Ankle Lock",
+   "menu_mpq_offset": "0x5c214",
+   "match": "near",
+   "candidates": [
+    {
+     "display_name": "Ankle Lock 01",
+     "motion_ids": [
+      "7219"
+     ]
+    },
+    {
+     "display_name": "Ankle Lock 02",
+     "motion_ids": [
+      "7205"
+     ]
+    }
+   ],
+   "motion_ids": [
+    "7219",
+    "7205"
+   ],
+   "clips": [
+    {
+     "clip": "7219_00A",
+     "duration_seconds": 8.15,
+     "tick_total": 489
+    },
+    {
+     "clip": "7205_00A",
+     "duration_seconds": 6.983,
+     "tick_total": 419
+    }
+   ]
+  },
+  {
+   "wrestler": "KURT ANGLE",
+   "slot": "Rear Grapple",
+   "survey_name": "Multiple German Suplex",
+   "menu_mpq_offset": "0x5c244",
+   "match": "exact",
+   "display_name": "Multiple German Suplex",
+   "motion_ids": [
+    "3038"
+   ],
+   "clips": [
+    {
+     "clip": "3038_00A",
+     "duration_seconds": 13.25,
+     "tick_total": 795
+    }
+   ]
+  },
+  {
+   "wrestler": "BOOKER T",
+   "slot": "Attack from Turnbuckle",
+   "survey_name": "Rolling Guillotine Leg Drop",
+   "menu_mpq_offset": "0x5c4e4",
+   "match": "exact",
+   "display_name": "Rolling Guillotine Leg Drop",
+   "motion_ids": [
+    "7631"
+   ],
+   "clips": [
+    {
+     "clip": "7631_00A",
+     "duration_seconds": 4.567,
+     "tick_total": 274
+    }
+   ]
+  },
+  {
+   "wrestler": "ROB VAN DAM",
+   "slot": "Attack from Turnbuckle",
+   "survey_name": "Five Star Frog Splash",
+   "menu_mpq_offset": "0x5c703",
+   "match": "exact",
+   "display_name": "Five Star Frog Splash",
+   "motion_ids": [
+    "7615"
+   ],
+   "clips": [
+    {
+     "clip": "7615_00A",
+     "duration_seconds": 6.933,
+     "tick_total": 416
+    }
+   ]
+  },
+  {
+   "wrestler": "ROB VAN DAM",
+   "slot": "Weapon Attack",
+   "survey_name": "Van Daminator",
+   "menu_mpq_offset": "0x5c736",
+   "match": "exact",
+   "display_name": "Van Daminator",
+   "motion_ids": [
+    "2076",
+    "1500"
+   ],
+   "clips": [
+    {
+     "clip": "2076_00A",
+     "duration_seconds": 5.25,
+     "tick_total": 315
+    },
+    {
+     "clip": "1500_00A",
+     "duration_seconds": 6.017,
+     "tick_total": 361
+    }
+   ]
+  },
+  {
+   "wrestler": "BROCK LESNAR",
+   "slot": "Front Grapple",
+   "survey_name": "F-5",
+   "menu_mpq_offset": "0x5c956",
+   "match": "exact",
+   "display_name": "F-5",
+   "motion_ids": [
+    "2177"
+   ],
+   "clips": [
+    {
+     "clip": "2177_00A",
+     "duration_seconds": 9.65,
+     "tick_total": 579
+    }
+   ]
+  },
+  {
+   "wrestler": "BROCK LESNAR",
+   "slot": "Attack from Turnbuckle",
+   "survey_name": "Shooting Star Splash",
+   "menu_mpq_offset": "0x5c96e",
+   "match": "exact",
+   "display_name": "Shooting Star Splash",
+   "motion_ids": [
+    "7610"
+   ],
+   "clips": [
+    {
+     "clip": "7610_00A",
+     "duration_seconds": 4.95,
+     "tick_total": 297
+    }
+   ]
+  },
+  {
+   "wrestler": "EDGE",
+   "slot": "Lower Down Grapple Facing Up",
+   "survey_name": "Edgecator",
+   "menu_mpq_offset": "0x5cbf0",
+   "match": "exact",
+   "display_name": "Edgecator",
+   "motion_ids": [
+    "6715"
+   ],
+   "clips": [
+    {
+     "clip": "6715_00A",
+     "duration_seconds": 9.383,
+     "tick_total": 563
+    }
+   ]
+  },
+  {
+   "wrestler": "EDGE",
+   "slot": "Rear Grapple",
+   "survey_name": "Edge O'matic",
+   "menu_mpq_offset": "0x5cc1d",
+   "match": "exact",
+   "display_name": "Edge O'matic",
+   "motion_ids": [
+    "3027"
+   ],
+   "clips": [
+    {
+     "clip": "3027_00A",
+     "duration_seconds": 7.233,
+     "tick_total": 434
+    }
+   ]
+  },
+  {
+   "wrestler": "STACY KEIBLER",
+   "slot": "Front Grapple",
+   "survey_name": "Lip Lock",
+   "menu_mpq_offset": "0x5ce35",
+   "match": "exact",
+   "display_name": "Lip Lock",
+   "motion_ids": [
+    "2162"
+   ],
+   "clips": [
+    {
+     "clip": "2162_00A",
+     "duration_seconds": 9.367,
+     "tick_total": 562
+    }
+   ]
+  },
+  {
+   "wrestler": "STACY KEIBLER",
+   "slot": "Rear Grapple",
+   "survey_name": "Golden Hip",
+   "menu_mpq_offset": "0x5ce52",
+   "match": "exact",
+   "display_name": "Golden Hip",
+   "motion_ids": [
+    "3075"
+   ],
+   "clips": [
+    {
+     "clip": "3075_00A",
+     "duration_seconds": 16.983,
+     "tick_total": 1019
+    }
+   ]
+  },
+  {
+   "wrestler": "REY MYSTERIO",
+   "slot": "Springboard Attack",
+   "survey_name": "619",
+   "menu_mpq_offset": "0x5d059",
+   "match": "exact",
+   "display_name": "619",
+   "motion_ids": [
+    "7905"
+   ],
+   "clips": [
+    {
+     "clip": "7905_00A",
+     "duration_seconds": 7.8,
+     "tick_total": 468
+    }
+   ]
+  },
+  {
+   "wrestler": "REY MYSTERIO",
+   "slot": "Attack from Top Rope",
+   "survey_name": "West Coast Pop",
+   "menu_mpq_offset": "0x5d076",
+   "match": "exact",
+   "display_name": "West Coast Pop",
+   "motion_ids": [
+    "8105"
+   ],
+   "clips": [
+    {
+     "clip": "8105_00A",
+     "duration_seconds": 7.133,
+     "tick_total": 428
+    }
+   ]
+  },
+  {
+   "wrestler": "REY MYSTERIO",
+   "slot": "Rear Grapple",
+   "survey_name": "Mysterio Rana",
+   "menu_mpq_offset": "0x5d0a0",
+   "match": "exact",
+   "display_name": "Mysterio Rana",
+   "motion_ids": [
+    "3078"
+   ],
+   "clips": [
+    {
+     "clip": "3078_00A",
+     "duration_seconds": 10.65,
+     "tick_total": 639
+    }
+   ]
+  },
+  {
+   "wrestler": "CHRIS JERICHO",
+   "slot": "Front Grapple",
+   "survey_name": "Walls of Jericho",
+   "menu_mpq_offset": "0x5d2f7",
+   "match": "near",
+   "candidates": [
+    {
+     "display_name": "Walls of Jericho ",
+     "motion_ids": [
+      "2056",
+      "4312",
+      "6710"
+     ]
+    }
+   ],
+   "motion_ids": [
+    "2056",
+    "4312",
+    "6710"
+   ],
+   "clips": [
+    {
+     "clip": "2056_00A",
+     "duration_seconds": 7.0,
+     "tick_total": 420
+    },
+    {
+     "clip": "4312_00A",
+     "duration_seconds": 10.983,
+     "tick_total": 659
+    },
+    {
+     "clip": "6710_00A",
+     "duration_seconds": 10.933,
+     "tick_total": 656
+    }
+   ]
+  },
+  {
+   "wrestler": "CHRIS JERICHO",
+   "slot": "Springboard Attack",
+   "survey_name": "Lionsault",
+   "menu_mpq_offset": "0x5d31c",
+   "match": "exact",
+   "display_name": "Lionsault",
+   "motion_ids": [
+    "7902"
+   ],
+   "clips": [
+    {
+     "clip": "7902_00A",
+     "duration_seconds": 8.617,
+     "tick_total": 517
+    }
+   ]
+  },
+  {
+   "wrestler": "CHRIS JERICHO",
+   "slot": "Rear Grapple",
+   "survey_name": "Flashback",
+   "menu_mpq_offset": "0x5d33f",
+   "match": "exact",
+   "display_name": "Flashback",
+   "motion_ids": [
+    "3042"
+   ],
+   "clips": [
+    {
+     "clip": "3042_00A",
+     "duration_seconds": 4.25,
+     "tick_total": 255
+    }
+   ]
+  },
+  {
+   "wrestler": "CHRIS BENOIT",
+   "slot": "Front Grapple",
+   "survey_name": "Crippler Crossface",
+   "menu_mpq_offset": "0x5d5f5",
+   "match": "exact",
+   "display_name": "Crippler Crossface",
+   "motion_ids": [
+    "2055",
+    "4311",
+    "7101"
+   ],
+   "clips": [
+    {
+     "clip": "2055_00A",
+     "duration_seconds": 6.733,
+     "tick_total": 404
+    },
+    {
+     "clip": "4311_00A",
+     "duration_seconds": 9.467,
+     "tick_total": 568
+    },
+    {
+     "clip": "7101_00A",
+     "duration_seconds": 5.617,
+     "tick_total": 337
+    }
+   ]
+  },
+  {
+   "wrestler": "CHRIS BENOIT",
+   "slot": "Attack from Turnbuckle",
+   "survey_name": "Diving Headbutt",
+   "menu_mpq_offset": "0x5d61c",
+   "match": "near",
+   "candidates": [
+    {
+     "display_name": "Diving Headbutt 01",
+     "motion_ids": [
+      "7601"
+     ]
+    },
+    {
+     "display_name": "Diving Headbutt 02",
+     "motion_ids": [
+      "7606"
+     ]
+    }
+   ],
+   "motion_ids": [
+    "7601",
+    "7606"
+   ],
+   "clips": [
+    {
+     "clip": "7601_00A",
+     "duration_seconds": 4.65,
+     "tick_total": 279
+    },
+    {
+     "clip": "7606_00A",
+     "duration_seconds": 4.75,
+     "tick_total": 285
+    }
+   ]
+  },
+  {
+   "wrestler": "CHRIS BENOIT",
+   "slot": "Rear Grapple",
+   "survey_name": "Multiple German Suplex",
+   "menu_mpq_offset": "0x5d649",
+   "match": "exact",
+   "display_name": "Multiple German Suplex",
+   "motion_ids": [
+    "3038"
+   ],
+   "clips": [
+    {
+     "clip": "3038_00A",
+     "duration_seconds": 13.25,
+     "tick_total": 795
+    }
+   ]
+  },
+  {
+   "wrestler": "TRISH STRATUS",
+   "slot": "Front Turnbuckle Grapple",
+   "survey_name": "Stratusphere",
+   "menu_mpq_offset": "0x5d8b5",
+   "match": "exact",
+   "display_name": "Stratusphere",
+   "motion_ids": [
+    "3851"
+   ],
+   "clips": [
+    {
+     "clip": "3851_00A",
+     "duration_seconds": 8.467,
+     "tick_total": 508
+    }
+   ]
+  },
+  {
+   "wrestler": "TRISH STRATUS",
+   "slot": "Rear Grapple",
+   "survey_name": "High Angle Rolling Clutch Pin",
+   "menu_mpq_offset": "0x5d8e1",
+   "match": "exact",
+   "display_name": "High Angle Rolling Clutch Pin",
+   "motion_ids": [
+    "3076"
+   ],
+   "clips": [
+    {
+     "clip": "3076_00A",
+     "duration_seconds": 7.283,
+     "tick_total": 437
+    }
+   ]
+  },
+  {
+   "wrestler": "KANE",
+   "slot": "Rear Grapple",
+   "survey_name": "Reverse Suplex",
+   "menu_mpq_offset": "0x5daf7",
+   "match": "exact",
+   "display_name": "Reverse Suplex",
+   "motion_ids": [
+    "3036"
+   ],
+   "clips": [
+    {
+     "clip": "3036_00A",
+     "duration_seconds": 9.05,
+     "tick_total": 543
+    }
+   ]
+  },
+  {
+   "wrestler": "BUBBA RAY DUDLEY",
+   "slot": "Rear Grapple",
+   "survey_name": "Bubba Bomb",
+   "menu_mpq_offset": "0x5dd42",
+   "match": "exact",
+   "display_name": "Bubba Bomb",
+   "motion_ids": [
+    "3029"
+   ],
+   "clips": [
+    {
+     "clip": "3029_00A",
+     "duration_seconds": 10.433,
+     "tick_total": 626
+    }
+   ]
+  },
+  {
+   "wrestler": "BUBBA RAY DUDLEY",
+   "slot": "Double Team Grapple",
+   "survey_name": "Dudley Death Drop",
+   "menu_mpq_offset": "0x5dd60",
+   "match": "exact",
+   "display_name": "Dudley Death Drop",
+   "motion_ids": [
+    "6102"
+   ],
+   "clips": [
+    {
+     "clip": "6102_00A",
+     "duration_seconds": 9.067,
+     "tick_total": 544
+    }
+   ]
+  },
+  {
+   "wrestler": "BUBBA RAY DUDLEY",
+   "slot": "Front Grapple",
+   "survey_name": "Diamond Cutter",
+   "menu_mpq_offset": "0x5dd8c",
+   "match": "exact",
+   "display_name": "Diamond Cutter",
+   "motion_ids": [
+    "2067"
+   ],
+   "clips": [
+    {
+     "clip": "2067_00A",
+     "duration_seconds": 7.567,
+     "tick_total": 454
+    }
+   ]
+  },
+  {
+   "wrestler": "SHAWN MICHAELS",
+   "slot": "Front Grapple",
+   "survey_name": "Sweet Chin Music",
+   "menu_mpq_offset": "0x5e00b",
+   "match": "exact",
+   "display_name": "Sweet Chin Music",
+   "motion_ids": [
+    "2077"
+   ],
+   "clips": [
+    {
+     "clip": "2077_00A",
+     "duration_seconds": 4.267,
+     "tick_total": 256
+    }
+   ]
+  },
+  {
+   "wrestler": "SHAWN MICHAELS",
+   "slot": "Attack from Turnbuckle",
+   "survey_name": "Diving Elbow Drop",
+   "menu_mpq_offset": "0x5e030",
+   "match": "near",
+   "candidates": [
+    {
+     "display_name": "Diving Elbow Drop 01",
+     "motion_ids": [
+      "7603"
+     ]
+    },
+    {
+     "display_name": "Diving Elbow Drop 02",
+     "motion_ids": [
+      "7611"
+     ]
+    }
+   ],
+   "motion_ids": [
+    "7603",
+    "7611"
+   ],
+   "clips": [
+    {
+     "clip": "7603_00A",
+     "duration_seconds": 5.0,
+     "tick_total": 300
+    },
+    {
+     "clip": "7611_00A",
+     "duration_seconds": 4.067,
+     "tick_total": 244
+    }
+   ]
+  },
+  {
+   "wrestler": "SHAWN MICHAELS",
+   "slot": "Rear Grapple",
+   "survey_name": "Japanese Rolling Clutch Pin",
+   "menu_mpq_offset": "0x5e05f",
+   "match": "exact",
+   "display_name": "Japanese Rolling Clutch Pin",
+   "motion_ids": [
+    "3050"
+   ],
+   "clips": [
+    {
+     "clip": "3050_00A",
+     "duration_seconds": 6.15,
+     "tick_total": 369
+    }
+   ]
+  },
+  {
+   "wrestler": "EDDIE GUERRERO",
+   "slot": "Attack from Turnbuckle",
+   "survey_name": "Frog Splash",
+   "menu_mpq_offset": "0x5e34e",
+   "match": "exact",
+   "display_name": "Frog Splash",
+   "motion_ids": [
+    "7605"
+   ],
+   "clips": [
+    {
+     "clip": "7605_00A",
+     "duration_seconds": 6.3,
+     "tick_total": 378
+    }
+   ]
+  },
+  {
+   "wrestler": "EDDIE GUERRERO",
+   "slot": "Lower Down Grapple Facing Down",
+   "survey_name": "Lasso from El Paso",
+   "menu_mpq_offset": "0x5e377",
+   "match": "exact",
+   "display_name": "Lasso from El Paso",
+   "motion_ids": [
+    "7218"
+   ],
+   "clips": [
+    {
+     "clip": "7218_00A",
+     "duration_seconds": 8.633,
+     "tick_total": 518
+    }
+   ]
+  },
+  {
+   "wrestler": "EDDIE GUERRERO",
+   "slot": "Front Grapple",
+   "survey_name": "Splash Mountain Bomb Pin",
+   "menu_mpq_offset": "0x5e3af",
+   "match": "exact",
+   "display_name": "Splash Mountain Bomb Pin",
+   "motion_ids": [
+    "2134"
+   ],
+   "clips": [
+    {
+     "clip": "2134_00A",
+     "duration_seconds": 6.767,
+     "tick_total": 406
+    }
+   ]
+  },
+  {
+   "wrestler": "BIG SHOW",
+   "slot": "Rear Grapple",
+   "survey_name": "Eye of the Hurricane",
+   "menu_mpq_offset": "0x5e5f3",
+   "match": "exact",
+   "display_name": "Eye of the Hurricane",
+   "motion_ids": [
+    "3030"
+   ],
+   "clips": [
+    {
+     "clip": "3030_00A",
+     "duration_seconds": 9.2,
+     "tick_total": 552
+    }
+   ]
+  },
+  {
+   "wrestler": "MATT HARDY",
+   "slot": "Attack from Turnbuckle",
+   "survey_name": "Mattitude Guillotine Leg Drop",
+   "menu_mpq_offset": "0x5e8ab",
+   "match": "exact",
+   "display_name": "Mattitude Guillotine Leg Drop",
+   "motion_ids": [
+    "7608"
+   ],
+   "clips": [
+    {
+     "clip": "7608_00A",
+     "duration_seconds": 7.4,
+     "tick_total": 444
+    }
+   ]
+  },
+  {
+   "wrestler": "MATT HARDY",
+   "slot": "Rear Grapple",
+   "survey_name": "Flashback",
+   "menu_mpq_offset": "0x5e8e6",
+   "match": "exact",
+   "display_name": "Flashback",
+   "motion_ids": [
+    "3042"
+   ],
+   "clips": [
+    {
+     "clip": "3042_00A",
+     "duration_seconds": 4.25,
+     "tick_total": 255
+    }
+   ]
+  },
+  {
+   "wrestler": "JEFF HARDY",
+   "slot": "Attack from Turnbuckle",
+   "survey_name": "Swanton Bomb",
+   "menu_mpq_offset": "0x5eb3b",
+   "match": "exact",
+   "display_name": "Swanton Bomb",
+   "motion_ids": [
+    "7614"
+   ],
+   "clips": [
+    {
+     "clip": "7614_00A",
+     "duration_seconds": 7.733,
+     "tick_total": 464
+    }
+   ]
+  },
+  {
+   "wrestler": "JEFF HARDY",
+   "slot": "Front Grapple",
+   "survey_name": "Twist of Fate",
+   "menu_mpq_offset": "0x5eb65",
+   "match": "exact",
+   "display_name": "Twist of Fate",
+   "motion_ids": [
+    "2065"
+   ],
+   "clips": [
+    {
+     "clip": "2065_00A",
+     "duration_seconds": 6.85,
+     "tick_total": 411
+    }
+   ]
+  },
+  {
+   "wrestler": "JEFF HARDY",
+   "slot": "Rear Grapple",
+   "survey_name": "High Angle Rolling Clutch Pin",
+   "menu_mpq_offset": "0x5eb87",
+   "match": "exact",
+   "display_name": "High Angle Rolling Clutch Pin",
+   "motion_ids": [
+    "3076"
+   ],
+   "clips": [
+    {
+     "clip": "3076_00A",
+     "duration_seconds": 7.283,
+     "tick_total": 437
+    }
+   ]
+  },
+  {
+   "wrestler": "LITA",
+   "slot": "Front Grapple",
+   "survey_name": "Twist of Fate",
+   "menu_mpq_offset": "0x5edf6",
+   "match": "exact",
+   "display_name": "Twist of Fate",
+   "motion_ids": [
+    "2065"
+   ],
+   "clips": [
+    {
+     "clip": "2065_00A",
+     "duration_seconds": 6.85,
+     "tick_total": 411
+    }
+   ]
+  },
+  {
+   "wrestler": "LITA",
+   "slot": "Rear Grapple",
+   "survey_name": "Spinout Power Bomb Pin",
+   "menu_mpq_offset": "0x5ee18",
+   "match": "near",
+   "candidates": [
+    {
+     "display_name": "Spinout Power Bomb Pin 01",
+     "motion_ids": [
+      "3059"
+     ]
+    },
+    {
+     "display_name": "Spinout Power Bomb Pin 02",
+     "motion_ids": [
+      "3077"
+     ]
+    }
+   ],
+   "motion_ids": [
+    "3059",
+    "3077"
+   ],
+   "clips": [
+    {
+     "clip": "3059_00A",
+     "duration_seconds": 10.283,
+     "tick_total": 617
+    },
+    {
+     "clip": "3077_00A",
+     "duration_seconds": 10.633,
+     "tick_total": 638
+    }
+   ]
+  },
+  {
+   "wrestler": "RIC FLAIR",
+   "slot": "Front Grapple",
+   "survey_name": "Nature Boy Special",
+   "menu_mpq_offset": "0x5f0ad",
+   "match": "exact",
+   "display_name": "Nature Boy Special",
+   "motion_ids": [
+    "2178"
+   ],
+   "clips": [
+    {
+     "clip": "2178_00A",
+     "duration_seconds": 9.833,
+     "tick_total": 590
+    }
+   ]
+  },
+  {
+   "wrestler": "RIC FLAIR",
+   "slot": "Rear Grapple",
+   "survey_name": "Reverse Suplex",
+   "menu_mpq_offset": "0x5f0d4",
+   "match": "exact",
+   "display_name": "Reverse Suplex",
+   "motion_ids": [
+    "3036"
+   ],
+   "clips": [
+    {
+     "clip": "3036_00A",
+     "duration_seconds": 9.05,
+     "tick_total": 543
+    }
+   ]
+  },
+  {
+   "wrestler": "SCOTT STEINER",
+   "slot": "Upper Down Grapple Facing Down",
+   "survey_name": "Steiner Recliner",
+   "menu_mpq_offset": "0x5f33d",
+   "match": "exact",
+   "display_name": "Steiner Recliner",
+   "motion_ids": [
+    "7006"
+   ],
+   "clips": [
+    {
+     "clip": "7006_00A",
+     "duration_seconds": 10.05,
+     "tick_total": 603
+    }
+   ]
+  },
+  {
+   "wrestler": "SCOTT STEINER",
+   "slot": "Front Grapple",
+   "survey_name": "Steiner Screw Driver",
+   "menu_mpq_offset": "0x5f373",
+   "match": "exact",
+   "display_name": "Steiner Screw Driver",
+   "motion_ids": [
+    "2167"
+   ],
+   "clips": [
+    {
+     "clip": "2167_00A",
+     "duration_seconds": 9.85,
+     "tick_total": 591
+    }
+   ]
+  },
+  {
+   "wrestler": "SCOTT STEINER",
+   "slot": "Rear Grapple",
+   "survey_name": "Tilt Slam",
+   "menu_mpq_offset": "0x5f39c",
+   "match": "exact",
+   "display_name": "Tilt Slam",
+   "motion_ids": [
+    "3089"
+   ],
+   "clips": [
+    {
+     "clip": "3089_00A",
+     "duration_seconds": 7.3,
+     "tick_total": 438
+    }
+   ]
+  },
+  {
+   "wrestler": "CHRISTIAN",
+   "slot": "Rear Grapple",
+   "survey_name": "Unprettier",
+   "menu_mpq_offset": "0x5f575",
+   "match": "near",
+   "candidates": [
+    {
+     "display_name": "Unprettier ",
+     "motion_ids": [
+      "3028"
+     ]
+    }
+   ],
+   "motion_ids": [
+    "3028"
+   ],
+   "clips": [
+    {
+     "clip": "3028_00A",
+     "duration_seconds": 7.15,
+     "tick_total": 429
+    }
+   ]
+  },
+  {
+   "wrestler": "CHRISTIAN",
+   "slot": "Front Grapple",
+   "survey_name": "Gordbuster",
+   "menu_mpq_offset": "0x5f593",
+   "match": "exact",
+   "display_name": "Gordbuster",
+   "motion_ids": [
+    "2228"
+   ],
+   "clips": [
+    {
+     "clip": "2228_00A",
+     "duration_seconds": 7.7,
+     "tick_total": 462
+    }
+   ]
+  },
+  {
+   "wrestler": "D-VON DUDLEY",
+   "slot": "Double Team Grapple",
+   "survey_name": "Dudley Death Drop",
+   "menu_mpq_offset": "0x5f7ee",
+   "match": "exact",
+   "display_name": "Dudley Death Drop",
+   "motion_ids": [
+    "6102"
+   ],
+   "clips": [
+    {
+     "clip": "6102_00A",
+     "duration_seconds": 9.067,
+     "tick_total": 544
+    }
+   ]
+  },
+  {
+   "wrestler": "D-VON DUDLEY",
+   "slot": "Front Grapple",
+   "survey_name": "Power Bomb",
+   "menu_mpq_offset": "0x5f81a",
+   "match": "near",
+   "candidates": [
+    {
+     "display_name": "Power Bomb Pin",
+     "motion_ids": [
+      "2032"
+     ]
+    }
+   ],
+   "motion_ids": [
+    "2032"
+   ],
+   "clips": [
+    {
+     "clip": "2032_00A",
+     "duration_seconds": 10.483,
+     "tick_total": 629
+    }
+   ]
+  },
+  {
+   "wrestler": "THE HURRICANE",
+   "slot": "Rear Grapple",
+   "survey_name": "Eye of the Hurricane",
+   "menu_mpq_offset": "0x5fa2a",
+   "match": "exact",
+   "display_name": "Eye of the Hurricane",
+   "motion_ids": [
+    "3030"
+   ],
+   "clips": [
+    {
+     "clip": "3030_00A",
+     "duration_seconds": 9.2,
+     "tick_total": 552
+    }
+   ]
+  },
+  {
+   "wrestler": "BATISTA",
+   "slot": "Front Grapple",
+   "survey_name": "Sit Down Power Bomb",
+   "menu_mpq_offset": "0x5fc2d",
+   "match": "exact",
+   "display_name": "Sit Down Power Bomb",
+   "motion_ids": [
+    "2242"
+   ],
+   "clips": [
+    {
+     "clip": "2242_00A",
+     "duration_seconds": 9.733,
+     "tick_total": 584
+    }
+   ]
+  },
+  {
+   "wrestler": "BATISTA",
+   "slot": "Rear Grapple",
+   "survey_name": "Tilt Slam",
+   "menu_mpq_offset": "0x5fc55",
+   "match": "exact",
+   "display_name": "Tilt Slam",
+   "motion_ids": [
+    "3089"
+   ],
+   "clips": [
+    {
+     "clip": "3089_00A",
+     "duration_seconds": 7.3,
+     "tick_total": 438
+    }
+   ]
+  },
+  {
+   "wrestler": "JOHN CENA",
+   "slot": "Front Grapple",
+   "survey_name": "Death Valley Driver",
+   "menu_mpq_offset": "0x5fe1f",
+   "match": "exact",
+   "display_name": "Death Valley Driver",
+   "motion_ids": [
+    "2110"
+   ],
+   "clips": [
+    {
+     "clip": "2110_00A",
+     "duration_seconds": 9.833,
+     "tick_total": 590
+    }
+   ]
+  },
+  {
+   "wrestler": "JOHN CENA",
+   "slot": "Rear Grapple",
+   "survey_name": "Protoplex",
+   "menu_mpq_offset": "0x5fe47",
+   "match": "exact",
+   "display_name": "Protoplex",
+   "motion_ids": [
+    "3094"
+   ],
+   "clips": [
+    {
+     "clip": "3094_00A",
+     "duration_seconds": 7.75,
+     "tick_total": 465
+    }
+   ]
+  },
+  {
+   "wrestler": "TORRIE WILSON",
+   "slot": "Rear Grapple",
+   "survey_name": "Japanese Rolling Clutch Pin",
+   "menu_mpq_offset": "0x6002e",
+   "match": "exact",
+   "display_name": "Japanese Rolling Clutch Pin",
+   "motion_ids": [
+    "3050"
+   ],
+   "clips": [
+    {
+     "clip": "3050_00A",
+     "duration_seconds": 6.15,
+     "tick_total": 369
+    }
+   ]
+  },
+  {
+   "wrestler": "VICTORIA",
+   "slot": "Front Grapple",
+   "survey_name": "Widow's Peak",
+   "menu_mpq_offset": "0x60210",
+   "match": "exact",
+   "display_name": "Widow's Peak",
+   "motion_ids": [
+    "2240"
+   ],
+   "clips": [
+    {
+     "clip": "2240_00A",
+     "duration_seconds": 8.0,
+     "tick_total": 480
+    }
+   ]
+  },
+  {
+   "wrestler": "VICTORIA",
+   "slot": "Rear Grapple",
+   "survey_name": "Reverse DDT",
+   "menu_mpq_offset": "0x60231",
+   "match": "exact",
+   "display_name": "Reverse DDT",
+   "motion_ids": [
+    "3017"
+   ],
+   "clips": [
+    {
+     "clip": "3017_00A",
+     "duration_seconds": 5.05,
+     "tick_total": 303
+    }
+   ]
+  },
+  {
+   "wrestler": "STEVE AUSTIN",
+   "slot": "Front Grapple",
+   "survey_name": "Stone Cold Stunner",
+   "menu_mpq_offset": "0x60425",
+   "match": "exact",
+   "display_name": "Stone Cold Stunner",
+   "motion_ids": [
+    "2060"
+   ],
+   "clips": [
+    {
+     "clip": "2060_00A",
+     "duration_seconds": 7.55,
+     "tick_total": 453
+    }
+   ]
+  },
+  {
+   "wrestler": "STEVE AUSTIN",
+   "slot": "Rear Grapple",
+   "survey_name": "Cobra Clutch",
+   "menu_mpq_offset": "0x6044c",
+   "match": "exact",
+   "display_name": "Cobra Clutch",
+   "motion_ids": [
+    "3026"
+   ],
+   "clips": [
+    {
+     "clip": "3026_00A",
+     "duration_seconds": 4.317,
+     "tick_total": 259
+    }
+   ]
+  },
+  {
+   "wrestler": "GOLDUST",
+   "slot": "Front Turnbuckle Grapple",
+   "survey_name": "Shattered Dreams",
+   "menu_mpq_offset": "0x6069c",
+   "match": "exact",
+   "display_name": "Shattered Dreams",
+   "motion_ids": [
+    "3848"
+   ],
+   "clips": [
+    {
+     "clip": "3848_00A",
+     "duration_seconds": 9.467,
+     "tick_total": 568
+    }
+   ]
+  },
+  {
+   "wrestler": "GOLDUST",
+   "slot": "Front Grapple",
+   "survey_name": "Curtain Call",
+   "menu_mpq_offset": "0x606cc",
+   "match": "exact",
+   "display_name": "Curtain Call",
+   "motion_ids": [
+    "2182"
+   ],
+   "clips": [
+    {
+     "clip": "2182_00A",
+     "duration_seconds": 15.517,
+     "tick_total": 931
+    }
+   ]
+  },
+  {
+   "wrestler": "VINCE McMAHON",
+   "slot": "Front Grapple",
+   "survey_name": "Stone Cold Stunner",
+   "menu_mpq_offset": "0x6093e",
+   "match": "exact",
+   "display_name": "Stone Cold Stunner",
+   "motion_ids": [
+    "2060"
+   ],
+   "clips": [
+    {
+     "clip": "2060_00A",
+     "duration_seconds": 7.55,
+     "tick_total": 453
+    }
+   ]
+  },
+  {
+   "wrestler": "VINCE McMAHON",
+   "slot": "Upper Down Grapple Facing Up",
+   "survey_name": "People's Elbow",
+   "menu_mpq_offset": "0x60965",
+   "match": "exact",
+   "display_name": "People's Elbow",
+   "motion_ids": [
+    "6503"
+   ],
+   "clips": [
+    {
+     "clip": "6503_00A",
+     "duration_seconds": 13.733,
+     "tick_total": 824
+    }
+   ]
+  },
+  {
+   "wrestler": "VINCE McMAHON",
+   "slot": "Side Down Grapple Facing Up",
+   "survey_name": "Running Leg Drop",
+   "menu_mpq_offset": "0x60997",
+   "match": "near",
+   "candidates": [
+    {
+     "display_name": "Running Leg Drop ",
+     "motion_ids": [
+      "6605"
+     ]
+    }
+   ],
+   "motion_ids": [
+    "6605"
+   ],
+   "clips": [
+    {
+     "clip": "6605_00A",
+     "duration_seconds": 6.683,
+     "tick_total": 401
+    }
+   ]
+  },
+  {
+   "wrestler": "STEPHANIE McMAHON",
+   "slot": "Front Grapple",
+   "survey_name": "Full Swinging Slap",
+   "menu_mpq_offset": "0x60ba8",
+   "match": "exact",
+   "display_name": "Full Swinging Slap",
+   "motion_ids": [
+    "2164"
+   ],
+   "clips": [
+    {
+     "clip": "2164_00A",
+     "duration_seconds": 8.3,
+     "tick_total": 498
+    }
+   ]
+  },
+  {
+   "wrestler": "STEPHANIE McMAHON",
+   "slot": "Rear Grapple",
+   "survey_name": "Grapevine Choke",
+   "menu_mpq_offset": "0x60bcf",
+   "match": "exact",
+   "display_name": "Grapevine Choke",
+   "motion_ids": [
+    "3057"
+   ],
+   "clips": [
+    {
+     "clip": "3057_00A",
+     "duration_seconds": 9.783,
+     "tick_total": 587
+    }
+   ]
+  },
+  {
+   "wrestler": "STEPHANIE McMAHON",
+   "slot": "<[ WILLIAM REGAL",
+   "survey_name": "Regal Stretch",
+   "menu_mpq_offset": "0x60c53",
+   "match": "exact",
+   "display_name": "Regal Stretch",
+   "motion_ids": [
+    "7204"
+   ],
+   "clips": [
+    {
+     "clip": "7204_00A",
+     "duration_seconds": 9.65,
+     "tick_total": 579
+    }
+   ]
+  },
+  {
+   "wrestler": "WILLIAM REGAL",
+   "slot": "Front Grapple",
+   "survey_name": "Power of the Punch",
+   "menu_mpq_offset": "0x60df8",
+   "match": "exact",
+   "display_name": "Power of the Punch",
+   "motion_ids": [
+    "2078"
+   ],
+   "clips": [
+    {
+     "clip": "2078_00A",
+     "duration_seconds": 4.717,
+     "tick_total": 283
+    }
+   ]
+  },
+  {
+   "wrestler": "DAWN MARIE",
+   "slot": "Rear Grapple",
+   "survey_name": "Reverse Momo Clutch Pin",
+   "menu_mpq_offset": "0x6102c",
+   "match": "exact",
+   "display_name": "Reverse Momo Clutch Pin",
+   "motion_ids": [
+    "3079"
+   ],
+   "clips": [
+    {
+     "clip": "3079_00A",
+     "duration_seconds": 10.933,
+     "tick_total": 656
+    }
+   ]
+  },
+  {
+   "wrestler": "TAJIRI",
+   "slot": "Front Grapple",
+   "survey_name": "Buzzsaw Kick with Poisonmist",
+   "menu_mpq_offset": "0x6120a",
+   "match": "near",
+   "candidates": [
+    {
+     "display_name": "Buzzsaw Kick w/ Poison Mist",
+     "motion_ids": [
+      "2057"
+     ]
+    }
+   ],
+   "motion_ids": [
+    "2057"
+   ],
+   "clips": [
+    {
+     "clip": "2057_00A",
+     "duration_seconds": 10.733,
+     "tick_total": 644
+    }
+   ]
+  },
+  {
+   "wrestler": "TAJIRI",
+   "slot": "Rear Turnbuckle Grapple",
+   "survey_name": "Tarantula",
+   "menu_mpq_offset": "0x6123b",
+   "match": "exact",
+   "display_name": "Tarantula",
+   "motion_ids": [
+    "4104"
+   ],
+   "clips": [
+    {
+     "clip": "4104_00A",
+     "duration_seconds": 7.617,
+     "tick_total": 457
+    }
+   ]
+  },
+  {
+   "wrestler": "AL SNOW",
+   "slot": "Front Grapple",
+   "survey_name": "Snow Plow",
+   "menu_mpq_offset": "0x61413",
+   "match": "exact",
+   "display_name": "Snow Plow",
+   "motion_ids": [
+    "2206"
+   ],
+   "clips": [
+    {
+     "clip": "2206_00A",
+     "duration_seconds": 7.117,
+     "tick_total": 427
+    }
+   ]
+  },
+  {
+   "wrestler": "AL SNOW",
+   "slot": "Rear Grapple",
+   "survey_name": "Full Nelson Face Drop",
+   "menu_mpq_offset": "0x61431",
+   "match": "exact",
+   "display_name": "Full Nelson Face Drop",
+   "motion_ids": [
+    "3024"
+   ],
+   "clips": [
+    {
+     "clip": "3024_00A",
+     "duration_seconds": 9.133,
+     "tick_total": 548
+    }
+   ]
+  },
+  {
+   "wrestler": "CHAVO GUERRERO",
+   "slot": "Front Grapple",
+   "survey_name": "Brainbuster",
+   "menu_mpq_offset": "0x61650",
+   "match": "exact",
+   "display_name": "Brainbuster",
+   "motion_ids": [
+    "2112"
+   ],
+   "clips": [
+    {
+     "clip": "2112_00A",
+     "duration_seconds": 8.467,
+     "tick_total": 508
+    }
+   ]
+  },
+  {
+   "wrestler": "CHAVO GUERRERO",
+   "slot": "Rear Grapple",
+   "survey_name": "High Angle Rolling Clutch Pin",
+   "menu_mpq_offset": "0x61670",
+   "match": "exact",
+   "display_name": "High Angle Rolling Clutch Pin",
+   "motion_ids": [
+    "3076"
+   ],
+   "clips": [
+    {
+     "clip": "3076_00A",
+     "duration_seconds": 7.283,
+     "tick_total": 437
+    }
+   ]
+  },
+  {
+   "wrestler": "RANDY ORTON",
+   "slot": "Front Grapple",
+   "survey_name": "Diamond Cutter",
+   "menu_mpq_offset": "0x61887",
+   "match": "exact",
+   "display_name": "Diamond Cutter",
+   "motion_ids": [
+    "2067"
+   ],
+   "clips": [
+    {
+     "clip": "2067_00A",
+     "duration_seconds": 7.567,
+     "tick_total": 454
+    }
+   ]
+  },
+  {
+   "wrestler": "RANDY ORTON",
+   "slot": "Rear Grapple",
+   "survey_name": "German Suplex Pin",
+   "menu_mpq_offset": "0x618aa",
+   "match": "exact",
+   "display_name": "German Suplex Pin",
+   "motion_ids": [
+    "3019"
+   ],
+   "clips": [
+    {
+     "clip": "3019_00A",
+     "duration_seconds": 9.433,
+     "tick_total": 566
+    }
+   ]
+  },
+  {
+   "wrestler": "CHRIS NOWINSKI",
+   "slot": "Front Grapple",
+   "survey_name": "Honor Roll",
+   "menu_mpq_offset": "0x61a7e",
+   "match": "exact",
+   "display_name": "Honor Roll",
+   "motion_ids": [
+    "2238"
+   ],
+   "clips": [
+    {
+     "clip": "2238_00A",
+     "duration_seconds": 10.0,
+     "tick_total": 600
+    }
+   ]
+  },
+  {
+   "wrestler": "CHRIS NOWINSKI",
+   "slot": "Rear Grapple",
+   "survey_name": "Reverse DDT",
+   "menu_mpq_offset": "0x61a9d",
+   "match": "exact",
+   "display_name": "Reverse DDT",
+   "motion_ids": [
+    "3017"
+   ],
+   "clips": [
+    {
+     "clip": "3017_00A",
+     "duration_seconds": 5.05,
+     "tick_total": 303
+    }
+   ]
+  },
+  {
+   "wrestler": "TEST",
+   "slot": "Front Grapple",
+   "survey_name": "Sideswipe Falling Power Bomb",
+   "menu_mpq_offset": "0x61cc9",
+   "match": "exact",
+   "display_name": "Sideswipe Falling Power Bomb",
+   "motion_ids": [
+    "2072"
+   ],
+   "clips": [
+    {
+     "clip": "2072_00A",
+     "duration_seconds": 7.467,
+     "tick_total": 448
+    }
+   ]
+  },
+  {
+   "wrestler": "TEST",
+   "slot": "Rear Grapple",
+   "survey_name": "Test Drive",
+   "menu_mpq_offset": "0x61cfa",
+   "match": "exact",
+   "display_name": "Test Drive",
+   "motion_ids": [
+    "3081"
+   ],
+   "clips": [
+    {
+     "clip": "3081_00A",
+     "duration_seconds": 8.8,
+     "tick_total": 528
+    }
+   ]
+  },
+  {
+   "wrestler": "LANCE STORM",
+   "slot": "Lower Down Grapple Facing Up",
+   "survey_name": "Sharpshooter",
+   "menu_mpq_offset": "0x61f47",
+   "match": "exact",
+   "display_name": "Sharpshooter",
+   "motion_ids": [
+    "6705"
+   ],
+   "clips": [
+    {
+     "clip": "6705_00A",
+     "duration_seconds": 9.733,
+     "tick_total": 584
+    }
+   ]
+  },
+  {
+   "wrestler": "LANCE STORM",
+   "slot": "Front Grapple",
+   "survey_name": "Super Kick",
+   "menu_mpq_offset": "0x61f77",
+   "match": "unmatched",
+   "motion_ids": [],
+   "clips": []
+  },
+  {
+   "wrestler": "RIKISHI",
+   "slot": "Rear Grapple",
+   "survey_name": "Full Nelson Slam",
+   "menu_mpq_offset": "0x621b5",
+   "match": "exact",
+   "display_name": "Full Nelson Slam",
+   "motion_ids": [
+    "3037"
+   ],
+   "clips": [
+    {
+     "clip": "3037_00A",
+     "duration_seconds": 5.933,
+     "tick_total": 356
+    }
+   ]
+  },
+  {
+   "wrestler": "RIKISHI",
+   "slot": "Turnbuckle Lower Grapple",
+   "survey_name": "Stink Face",
+   "menu_mpq_offset": "0x621d9",
+   "match": "exact",
+   "display_name": "Stink Face",
+   "motion_ids": [
+    "4005"
+   ],
+   "clips": [
+    {
+     "clip": "4005_00A",
+     "duration_seconds": 10.233,
+     "tick_total": 614
+    }
+   ]
+  },
+  {
+   "wrestler": "GOLDBERG",
+   "slot": "Front Grapple",
+   "survey_name": "Jack Hammer",
+   "menu_mpq_offset": "0x6240a",
+   "match": "exact",
+   "display_name": "Jack Hammer",
+   "motion_ids": [
+    "2074"
+   ],
+   "clips": [
+    {
+     "clip": "2074_00A",
+     "duration_seconds": 8.117,
+     "tick_total": 487
+    }
+   ]
+  },
+  {
+   "wrestler": "GOLDBERG",
+   "slot": "Running Strike",
+   "survey_name": "Spear",
+   "menu_mpq_offset": "0x6242a",
+   "match": "exact",
+   "display_name": "Spear",
+   "motion_ids": [
+    "0716",
+    "1704"
+   ],
+   "clips": [
+    {
+     "clip": "0716_00A",
+     "duration_seconds": 5.033,
+     "tick_total": 302
+    },
+    {
+     "clip": "1704_00A",
+     "duration_seconds": 9.167,
+     "tick_total": 550
+    }
+   ]
+  },
+  {
+   "wrestler": "GOLDBERG",
+   "slot": "Rear Grapple",
+   "survey_name": "Tilt Slam",
+   "menu_mpq_offset": "0x62445",
+   "match": "exact",
+   "display_name": "Tilt Slam",
+   "motion_ids": [
+    "3089"
+   ],
+   "clips": [
+    {
+     "clip": "3089_00A",
+     "duration_seconds": 7.3,
+     "tick_total": 438
+    }
+   ]
+  }
+ ],
+ "stats": {
+  "total": 99,
+  "exact": 89,
+  "near": 9,
+  "unmatched": 1,
+  "with_motion_id": 98,
+  "with_clip": 98
+ }
+}

@@ -21,6 +21,7 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.error
 import urllib.request
 
@@ -260,6 +261,41 @@ def strip_gen(text):
     return "\n".join(l for l in (text or "").splitlines() if not l.startswith(GEN_PREFIX)).strip()
 
 
+def strip_gen(text):
+    return "\n".join(l for l in (text or "").splitlines() if not l.startswith(GEN_PREFIX)).strip()
+
+
+# Transient HTTP codes worth retrying on the contents read (2026-11-22: the
+# contents GET intermittently returns non-200 in CI with identical code and
+# token perms — run 45055039713 — and the old code then issued a sha-less PUT
+# that 422s because the file exists on the branch). 404 is NOT retried: it
+# means genuinely absent, and creating without sha is correct there.
+RETRY_CODES = {403, 429, 500, 502, 503, 504}
+READ_BACKOFF = (2, 5, 10)  # seconds between contents-GET retries
+
+
+def _sleep(seconds):
+    time.sleep(seconds)
+
+
+def read_board_file():
+    """GET docs/PR-STATUS.md from the board branch, retrying transient failures.
+
+    Returns (code, payload). 200 -> payload is the file dict (has "sha");
+    404 -> genuinely absent. Any other code means the read FAILED and the
+    caller must NOT attempt a sha-less PUT: the file may exist on the branch
+    and GitHub answers such a PUT with 422 '"sha" wasn't supplied'.
+    """
+    code, f = None, None
+    for attempt in range(1 + len(READ_BACKOFF)):
+        code, f = req("GET", f"repos/{REPO}/contents/{BOARD_PATH}?ref={BOARD_BRANCH}")
+        if code in (200, 404) or code not in RETRY_CODES:
+            return code, f
+        if attempt < len(READ_BACKOFF):
+            _sleep(READ_BACKOFF[attempt])
+    return code, f
+
+
 def publish_branch(board):
     code, b = req("GET", f"repos/{REPO}/branches/{BOARD_BRANCH}")
     if code == 404:
@@ -269,10 +305,16 @@ def publish_branch(board):
         print(f"create branch {BOARD_BRANCH}: {c}")
         if c >= 300:
             return f"branch create failed ({c}): {r}"
-    code, f = req("GET", f"repos/{REPO}/contents/{BOARD_PATH}?ref={BOARD_BRANCH}")
+    code, f = read_board_file()
     sha, old = None, ""
     if code == 200:
         sha, old = f["sha"], base64.b64decode(f["content"]).decode()
+    elif code == 404:
+        pass  # genuinely absent: creating without sha is correct
+    else:
+        # Read failed even after retries: the file may exist on the branch,
+        # so a sha-less PUT would 422. Fail fast and let the next run retry.
+        return f"branch: read failed ({code}): {f}"
     if strip_gen(old) == strip_gen(board):
         return "branch: unchanged, no commit"
     body = {"message": "chore(pr-status-board): refresh docs/PR-STATUS.md [skip ci]",
@@ -280,7 +322,17 @@ def publish_branch(board):
     if sha:
         body["sha"] = sha
     c, r = req("PUT", f"repos/{REPO}/contents/{BOARD_PATH}", body)
-    return f"branch: committed ({c})" if c < 300 else f"branch: commit failed ({c}): {r}"
+    if c < 300:
+        return f"branch: committed ({c})"
+    if c == 409 or c >= 500:
+        # A concurrent board run may have committed first (sha moved): re-read
+        # the sha and retry the PUT once.
+        code2, f2 = read_board_file()
+        if code2 == 200:
+            body["sha"] = f2["sha"]
+            c, r = req("PUT", f"repos/{REPO}/contents/{BOARD_PATH}", body)
+            return f"branch: committed ({c})" if c < 300 else f"branch: commit failed ({c}): {r}"
+    return f"branch: commit failed ({c}): {r}"
 
 
 def find_issue():
