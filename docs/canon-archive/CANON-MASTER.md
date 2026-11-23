@@ -1936,5 +1936,9 @@ Owner order 2026-11-08 ~20:37 CST — land in all necessary repos.
 
 - WESTERN HEART MOVESET LIBRARY DESIGN (owner 2026-11-20): organize the move library by position and input — back strike, turnaround, crouching, jumping, all Tekken positions, not just the named ones — so every strike is swappable by limb/side (right punch to any right punch, left kick to any left kick), plus combos/strings, for custom characters with custom movesets, WWE-style editing. Editor behaviors: a fighter must get a move and all moves need animations; hover preview like WWE 2K26; selecting the character is the edit button; VF/DOA move lists are starting points for custom fighters in the game's inputs; a saved move list can be renamed/copied, never overwriting the original.
 
+### 2026-11-22 owner ruling — Deadlift Alley-Oop
+
+- DEADLIFT ALLEY-OOP (owner 2026-11-22): Western Heart custom move saved from the incorrect Tekken 7 suplex — grounded leg-grapple setup, Blue pulls Orange up from the ground, picks him up from the waist going backwards and slams him face-first (wrestling powerbomb alley-oop from a deadlift position); in the setup Orange spins around Blue on the Y (up-down) axis, legs held like a Giant Swing, and the slam sends Orange over Blue's head and behind him.
+
 *End of CANON-MASTER. Compiled 2026-10-23. If it isn't recorded, it
 isn't here — and if it gets recorded, it gets pushed here.*
