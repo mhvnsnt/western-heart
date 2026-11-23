@@ -30,8 +30,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from anim_extract import FileTable
 from lzss import asmik_decode  # shared decoder module
 
-ROM = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                   '..', 'WWF No Mercy (USA) (Rev-A).z64')
+ROM = os.environ.get('NOMERCY_ROM', '/home/hatch/workspace/no-mercy-rom/WWF No Mercy (USA) (Rev-A).z64')
 
 def s8(v):
     return v - 0x100 if v & 0x80 else v

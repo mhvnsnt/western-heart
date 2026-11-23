@@ -1,0 +1,37 @@
+{
+ "name": "P4S-ps2",
+ "entries": [
+  {
+   "dst": "raw/king-of-colosseum-2/ps2/ps2-bios-official.zip",
+   "sha": "7dc6cfef5aa38731e74c41fc51b8b30c3b2ff90c",
+   "size": 13380830
+  },
+  {
+   "dst": "raw/king-of-colosseum-2/ps2/scph39001.MEC",
+   "sha": "0242e5fd2843310552d739964888eb7d5feac50d",
+   "size": 4
+  },
+  {
+   "dst": "raw/king-of-colosseum-2/ps2/scph39001.NVM",
+   "sha": "56d988958916916d16d5737c63fe391df1946a2f",
+   "size": 1024
+  },
+  {
+   "dst": "raw/king-of-colosseum-2/ps2/scph39001.bin",
+   "sha": "868f4456148f65ac0cc6e29bce01e28093b255be",
+   "size": 4194304
+  }
+ ],
+ "started": 1795255624.1339498,
+ "input_bytes": 17576162,
+ "base": "f773fa68683d05cfd20c83c4cc2850f4ca8ea867",
+ "commit": "c624bf1a981525ebb81721a12802fa3f605dbce3",
+ "tree": "d48e8a55df5c08184858585c1fe7e00a1c2f3b37",
+ "verify": {
+  "checked": 4,
+  "missing": [],
+  "wrong_sha": []
+ },
+ "objects_deleted_bytes": 15966950,
+ "elapsed_s": 20.0
+}

@@ -1,0 +1,25 @@
+{
+ "name": "P2b-kactusken-small",
+ "message": "KoC2 raw: kactusken v0.2 patch zip + xdelta patches + review images + build outputs",
+ "max_bytes": 320000000,
+ "files": [
+  {
+   "src": "/home/hatch/workspace/koc2-english/work/m3/sources/kactusken/v0.2.zip",
+   "dst": "raw/king-of-colosseum-2/kactusken-v0.2/King-of-Colosseum-II-English-v0.2.zip"
+  }
+ ],
+ "dirs": [
+  {
+   "src": "/home/hatch/workspace/koc2-english/work/m3/sources/kactusken/v0.2",
+   "dst": "raw/king-of-colosseum-2/kactusken-v0.2/patches-v0.2"
+  },
+  {
+   "src": "/home/hatch/workspace/koc2-english/work/m3/sources/kactusken/repo/review",
+   "dst": "raw/king-of-colosseum-2/kactusken-v0.2/review"
+  },
+  {
+   "src": "/home/hatch/workspace/koc2-english/work/m3/sources/kactusken/repo/build",
+   "dst": "raw/king-of-colosseum-2/kactusken-v0.2/build"
+  }
+ ]
+}
