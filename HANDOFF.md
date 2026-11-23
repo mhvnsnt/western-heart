@@ -1,7 +1,7 @@
 # HANDOFF — Western Heart
 
-**Last updated: 2026-11-22 (America/New_York).**
-**Repo:** `mhvnsnt/western-heart` (PUBLIC), default branch `main`.
+**Last updated: 2026-11-23 (America/New_York).**
+**Repo:** `mhvnsnt/western-heart` (PUBLIC), default branch `main`, main tip 23414cb (#1777, 2026-11-23).
 **Purpose of this file:** any agent that picks up work here reads this FIRST, then the linked docs. It states what we've done, where we're at, and what we're working toward — so the owner can say "go to this repo, pick up the work" and you just know. Update this file in the same PR whenever the state changes (add, don't delete).
 
 ## 1. What this repo is
@@ -13,6 +13,7 @@ Settled canon (examples, full canon lives in the repo's canon docs): Byou takes 
 ## 2. Where we're at
 
 ### DONE
+- **Nov 22–23 landing wave (verified on main 2026-11-23, main tip 23414cb).** Canon syncs: #1829 move-editor + roster-clarification orders (eb6be66) · #1846 Kutz Chordz one-guy correction + Ren Truth mouth (fd055e8) · #1847 Ren is not Demonio; Tou green model stays (bad2b83) · #1848 moveset-library design (416e3e3) · #1849 Deadlift Alley-Oop owner ruling (72fead43) — the Deadlift section is in `docs/canon-archive/CANON-MASTER.md` line 1939. **After the tip moved mid-refresh, also landed and verified: #1834 Ren functional Truth-style mouth — 3D teeth, tongue, uvula, jaw (4cefd4a, 2026-11-23T16:23Z) · #1840 Replace Ren portrait with the real Rin bitmap, D_SUMIE b036 (648b3e4, 16:24Z) · #1775 YANM keyframe decode + YOBJ v2 bind pose, W4 lane (26e52c1, 16:24Z) · #1777 WMXIX dynamic follow-up — 99 specials (98/99), motion names, calibrated durations, HHH textures (23414cb, 16:25Z — main tip).** Note: #1834 and #1840 were listed as UNSTABLE-held in the 15:44Z queue run — they have since MERGED; the held list below is corrected. Moveset/teardown wave: #1822 Kevin full canon moveset (8d42064) · #1823 canon-moveset character inventory (02e047f) · #1824 T7 receiver fix logged as the permanent fix (d3f8642) · #1825 canon fix: Zen's own Tripo body, Gyou's conditional Paul, RIN Steve-body retire (75efc0d) · #1826 SCVI complete moveset teardown (4a39733) · #1827 VF5 complete teardown (f7eed39) · #1832 SFIV (25) + SFxT (55) movesets wired (6afccc4) · #1845 USFIV v6: AE parse 244/244 — 44 fighters, 3,853 moves (4011ca6). Fixes: #1828 github.io shell unblocked (925dd75) · #1841 pr-status-board retry fix (985cd6e) · #1843 Batch2 clean slice: Dragunov slice.json + 4 anim gap docs (5d26b8b) · #1844 Scimitar pose-safe re-encode (b2a52a7). #1833 was this HANDOFF.md landing (2df3867). **#911 select-card audit MERGED 2026-11-22 (6f1726a)** — no longer open. Queue: **42 open PRs** as of 2026-11-23 ~16:30Z (45 at the 15:44Z run; #1834/#1840/#1775/#1777 landed after it).
 - **Big fix P1B merged — 9 files, verified byte-for-byte, live build updated.**
 - **Canon sync #1830 merged (2026-11-22, b050892).** Bake folds into Kevin, who replaces him.
 - **DOA6 animation bank #1831 merged (2026-11-22, 9f65d26).** DOA6 GTAV06 .ifp animation bank (`tools/anim/doa6-ifp-multi.py`).
@@ -62,14 +63,14 @@ Settled canon (examples, full canon lives in the repo's canon docs): Byou takes 
 | Moveset / animation banks | `tools/anim/` (incl. `doa6-ifp-multi.py`) |
 | Live build | github.io shell + western-heart.pages.dev (auto-synced on push to main) |
 | Releases | `doa6-gtainside-ifp-20261122`, `vf5-dural-xps-v1` |
-| Open PRs (sample — full list in repo) | #182 RESEARCH rig auto-fix survey (do not merge) · #377 Keemap wire-in (DO NOT MERGE — tool fails rig, evidence inside) · #706 Ashlane→DOA claimed-map lock · #713 VF5 Dural stance for Zen · #714 CORNERSTONE moveset (Yamazaki / Rock / Toguro) · #826 T7 character select rebuild · #875 / #908 face-cone skin-weight audit + fixer · #911 select-card audit · #970 Batch2 moveset pull |
+| Open PRs (sample — full list in repo; 42 open as of 2026-11-23 ~16:30Z) | #182 RESEARCH rig auto-fix survey (do not merge) · #377 Keemap wire-in (DO NOT MERGE — tool fails rig, evidence inside) · #706 Ashlane→DOA claimed-map lock · #713 VF5 Dural stance for Zen · #714 CORNERSTONE moveset (Yamazaki / Rock / Toguro) · #826 T7 character select rebuild · #875 / #908 face-cone skin-weight audit + fixer · #970 Batch2 moveset pull · #1820 / #1835 CLEAN but owner-held · #1842 UNSTABLE, held · #1836–#1839 BLOCKED, held (states per MERGE-QUEUE.md 2026-11-23T15:44Z run, corrected for the #1834/#1840 merges at ~16:23–16:24Z). #911 select-card audit is MERGED (6f1726a), not open. |
 | Build-sync automation workdir | `~/workspace/_build-sync-automation-20261120/` |
 
 ## 6. Open decisions needing the owner
 
 - **Pantera throw-range fix:** the fix that trusts the grab changes throw selection for every fighter. Trade-off: paired throws play, but throw selection changes everywhere. His call — put plainly, not decided in a lane. (The T7 pair dispute — grab-only clips vs throw in throw data — rides with this.)
 - **Canon questions (his call):** Zen's pronoun; whether Gyou's Paul is permanent; the canon doc's contradictory Jin Kazama section — retire or fix; whether Demonio's human form plays its own moves or keeps the base kit; whether Bloodline Ember is an outfit or a fourth form.
-- **PR reviews:** #1817, #1818, #1820, #1814 (per his queue) and #1792 merge — put to him once, plainly, with the trade-off; do not decide in a lane.
+- **PR reviews:** #1817, #1818, #1820, #1814 (per his queue) and #1792 merge — put to him once, plainly, with the trade-off; do not decide in a lane. #1835 is also CLEAN but owner-held (per MERGE-QUEUE.md 2026-11-23).
 - **VF/DOA slashed inputs + the old move-list screen:** his call, per his queue.
 
 ## 7. How to pick up
