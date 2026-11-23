@@ -1,0 +1,21 @@
+{
+ "original": "GOOD.BYE",
+ "size": 1073741824,
+ "sha256": "49bc20df15e412a64472421e13fe86ff1c5165e18b2afccf160d4dc19fe68a14",
+ "piece_size": 99000000,
+ "piece_count": 11,
+ "pieces": [
+  "GOOD.BYE.part000",
+  "GOOD.BYE.part001",
+  "GOOD.BYE.part002",
+  "GOOD.BYE.part003",
+  "GOOD.BYE.part004",
+  "GOOD.BYE.part005",
+  "GOOD.BYE.part006",
+  "GOOD.BYE.part007",
+  "GOOD.BYE.part008",
+  "GOOD.BYE.part009",
+  "GOOD.BYE.part010"
+ ],
+ "reassemble": "cat GOOD.BYE.part* > GOOD.BYE"
+}
