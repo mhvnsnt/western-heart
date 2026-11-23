@@ -437,9 +437,11 @@ export const MODEL_URLS = {
   // SCIMITAR (2026-10-21, lane 4 rig batch 1): unrigged static -> auto-rigged via
   // tools/auto_rig knn backend (donor pantera.glb); owner's original stays untouched.
   scimitar: '../roster/scimitar/attires/attire1/source/scimitar-a1-rigged.glb', // 2026-11-06 owner: "that not the correct scimitar glb model from my tripo imports" -> his own Tripo pull (scimitar-a1.glb, Tripo a3e76dd5) rigged by tools/auto_rig/rig_tripo_static.py; was assets/models/scimitar-rigged.glb (Shaheen-based base mesh)
-  // Created fighters use the Soldier.glb base from the CAW suite.
+  // Created fighters use the blank CAW base from the suite (Technician
+  // MB-Lab bake, No Mercy Medium 1) — Mixamo Soldier removed 2026-10-24
+  // (owner: fully take him out of the game).
   // Relative path works on GitHub Pages (game/ -> customization/).
-  custom: '../customization/create-fighter/assets/Soldier.glb',
+  custom: '../customization/templates/meshes/technician.glb',
   // Phase 4b (2026-11-02): created fighters built on a Creation Suite
   // template body fight on THAT template's GLB, not on Soldier.
   // game/js/custom-fighter.js resolves a saved fighter's template to
