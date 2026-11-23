@@ -53,6 +53,11 @@ const OWNERSHIP = {
       "baek-master-white"
     ]
   }, // wire-up 2026-10-22: Kevin A1 Tripo wired + ladder Slot 1
+  "bannon": {
+    "own": [
+      "bf-bannon"
+    ]
+  }, // lane-b 2026-11-22: Bannon's own model wired (render-verified)
   "bruno": {
     "own": [
       "bruno",
