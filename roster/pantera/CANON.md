@@ -12,6 +12,8 @@ Owner-locked: **black panther — NOT leopard, NOT jaguar.** Melanistic rosettes
 
 No mouth/facial rig, ever — King's mouth is just open. His hands must be active, articulated, fully detailed like real Tekken models.
 
+**Tou model stays (owner, 2026-11-22).** Tou's in-game green model stays as it is; Real rejected replacing him with the Alien Diplomat or Tripo alien replacements — he is already good.
+
 Attires (owner ladder rule, 2026-10-21 — supersedes the earlier reskin-first ladder): his **Tripo originals take slots 1–5**, Tekken reskins go to the back. Recorded forms include Attire 2 "Leo man" (Leomon become King/Pantera — full lion head and mane, PANTERA in purple on the trunks, furry leg warmers, paw hands/feet, tail with golden tuft) and the snow-leopard **Leopard King** Tripo, which is Pantera's (owner clarified: not King Tyrant's). **PANTXRΛ-88** is his cyborg form/name: robot panther head from Heavy Leomon, robot left arm on his actual left arm, Heavy Leomon robot right shin and foot — a humanoid cat-like robot cyborg.
 
 ## Story

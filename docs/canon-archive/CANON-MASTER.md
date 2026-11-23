@@ -97,6 +97,9 @@ in the credits at the end of some stories and in the settings credits
 - **Identity.** Vessel of TOU, battle itself. The standard the others are
   measured against: body, mind, and soul all want the hold — nothing to
   resolve. He fights because fighting is what he is.
+- **Model — Tou stays (owner, 2026-11-22).** Tou's in-game green model
+  stays as it is; Real rejected replacing him with the Alien Diplomat or
+  Tripo alien replacements — he is already good.
 - **Appearance / model.** Black panther (not leopard), yellow eyes, black
   tail that moves independently — the tail tip traces slow circles when he
   is still; fighters say the tail tells when the hold is coming. Purple
@@ -1542,8 +1545,11 @@ in the credits at the end of some stories and in the settings credits
   the white being in the Gate with the big creepy smile as his default;
   it opens, teeth are 3D, inside of the mouth is black, with a tongue
   and a uvula.
-- **Open gaps.** Beyond the separation above and the Truth mouth
-  (2026-11-22), no further canon recorded yet.
+- **Not Demonio (owner, 2026-11-22).** Ren is **NOT Demonio** and
+  **NOT Steve Fox**; the stretched-face picture shown was Demonio in a
+  transformed version, not Ren.
+- **Open gaps.** Beyond the separation above, the Truth mouth, and the
+  not-Demonio correction (2026-11-22), no further canon recorded yet.
 
 ### MARS
 - **Identity (owner, 2026-10-19).** Mars is like a **Stand (JoJo) for
