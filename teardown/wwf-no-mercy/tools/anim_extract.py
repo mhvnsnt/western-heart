@@ -36,8 +36,7 @@ Usage:
 """
 import json, struct, sys, os
 
-ROM = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                   '..', 'WWF No Mercy (USA) (Rev-A).z64')
+ROM = os.environ.get('NOMERCY_ROM', '/home/hatch/workspace/no-mercy-rom/WWF No Mercy (USA) (Rev-A).z64')
 FT = 0x16C31D8
 FIRST = 0x1BD150
 FIRST_ANIM = 0x2DD9

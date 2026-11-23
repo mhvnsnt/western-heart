@@ -32,8 +32,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from anim_extract import FileTable
 from lzss import asmik_decode
 
-ROM = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                   '..', 'WWF No Mercy (USA) (Rev-A).z64')
+ROM = os.environ.get('NOMERCY_ROM', '/home/hatch/workspace/no-mercy-rom/WWF No Mercy (USA) (Rev-A).z64')
 TEX_TYPES = {'Ci4Texture', 'Ci8Texture', 'AkiTexture', 'I4Texture'}
 
 def rgba5551(v):
