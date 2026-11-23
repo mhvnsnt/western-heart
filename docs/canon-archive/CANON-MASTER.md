@@ -1932,5 +1932,9 @@ Owner order 2026-11-08 ~20:37 CST — land in all necessary repos.
 
 - MADELYN (owner 2026-11-10): may be wired into the western-heart game and repo, but explicitly LOW priority — the owner is not that invested in her. Her wiring work (open PR #1708) stays behind the roster, Megami, hair, and collision lanes; no lane pulls Madelyn work ahead of higher-priority work on this ruling.
 
+### 2026-11-20 owner ruling — Moveset library design
+
+- WESTERN HEART MOVESET LIBRARY DESIGN (owner 2026-11-20): organize the move library by position and input — back strike, turnaround, crouching, jumping, all Tekken positions, not just the named ones — so every strike is swappable by limb/side (right punch to any right punch, left kick to any left kick), plus combos/strings, for custom characters with custom movesets, WWE-style editing. Editor behaviors: a fighter must get a move and all moves need animations; hover preview like WWE 2K26; selecting the character is the edit button; VF/DOA move lists are starting points for custom fighters in the game's inputs; a saved move list can be renamed/copied, never overwriting the original.
+
 *End of CANON-MASTER. Compiled 2026-10-23. If it isn't recorded, it
 isn't here — and if it gets recorded, it gets pushed here.*
