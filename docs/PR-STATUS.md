@@ -4,7 +4,7 @@
 
 **42 open PRs — 🟢 ready to merge: 0 · 🔴 failing: 26 · ⏳ running: 0 · ⚔️ conflicted: 16** (also 🟠 blocked: 0 · 🔗 stacked: 0 · 📝 draft, green-or-idle: 0; 6 of 42 are drafts)
 
-_Generated 2026-11-23 16:27 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
+_Generated 2026-11-23 16:30 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
 
 Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not reported. Ready = not draft, targets `main`, GitHub says MERGEABLE, every check green. Status priority: conflicted > failing > running > draft > stacked > ready.
 
@@ -16,12 +16,12 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 🔴 failing | [#1850](https://github.com/mhvnsnt/western-heart/pull/1850) Lane D handoff refresh 2026-11-23: WH: Nov 22-23 wave #1822-#1849, #911 merged | ready | mhvnsnt / `lane-d-handoff-refresh-20261123` | `e6384f6` | `main` | ✅ | ✅ | ⏳ | ❌ | 3✅ 2⏳ | mergeable (blocked) | 2026-11-23 16:27 UTC |
+| 🔴 failing | [#1850](https://github.com/mhvnsnt/western-heart/pull/1850) Lane D handoff refresh 2026-11-23: WH: Nov 22-23 wave #1822-#1849, #911 merged | ready | mhvnsnt / `lane-d-handoff-refresh-20261123` | `e6384f6` | `main` | ✅ | ✅ | ✅ | ❌ | 6✅ 3⏳ | mergeable (blocked) | 2026-11-23 16:27 UTC |
 | 🔴 failing | [#1842](https://github.com/mhvnsnt/western-heart/pull/1842) Creation Suite (slice of #1057): clean parts — workflow path, suite CSS/HTML, assets.js, r | ready | mhvnsnt / `slice/1057-clean-parts-20261122` | `7a13d99` | `main` | ✅ | ✅ | ✅ | ✅ | 8✅ 2❌ | mergeable (unstable) | 2026-11-22 19:35 UTC |
 | 🔴 failing | [#1839](https://github.com/mhvnsnt/western-heart/pull/1839) finger-rig C3: hand-pose driver — fist/palm/point/per-finger as real game controls | ready | mhvnsnt / `finger-rig-game-wiring-20261122` | `aa424a7` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-22 18:18 UTC |
 | 🔴 failing | [#1838](https://github.com/mhvnsnt/western-heart/pull/1838) Lane B: wire Bannon to his own model bf-bannon | ready | mhvnsnt / `lane-b/bannon-bf-bannon-20261122` | `cacc94d` | `main` | ❌ | ✅ | ✅ | ❌ | 9✅ 1❌ | mergeable (blocked) | 2026-11-22 17:57 UTC |
 | 🔴 failing | [#1837](https://github.com/mhvnsnt/western-heart/pull/1837) Proof: owner asked to see Cornerstone / Scimitar / Chordz models as images | ready | mhvnsnt / `show-three-models-20261122` | `46b1279` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-22 17:56 UTC |
-| 🔴 failing | [#1836](https://github.com/mhvnsnt/western-heart/pull/1836) Kevin: default model baek → kevin-tripo (his own Tripo, A1) | ready | mhvnsnt / `lane-k-kevin-default-20261122` | `a00ecae` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-22 17:11 UTC |
+| 🔴 failing | [#1836](https://github.com/mhvnsnt/western-heart/pull/1836) Kevin: default model baek → kevin-tripo (his own Tripo, A1) | ready | mhvnsnt / `lane-k-kevin-default-20261122` | `a00ecae` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (blocked) | 2026-11-23 16:30 UTC |
 | 🔴 failing | [#1835](https://github.com/mhvnsnt/western-heart/pull/1835) canon(chordz): Kutz Chordz — one fighter, two names; two halves are one personality; model | ready | mhvnsnt / `lane/kutz-chordz-canon-20261122` | `4cc7135` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (clean) | 2026-11-22 17:13 UTC |
 | 🔴 failing | [#1820](https://github.com/mhvnsnt/western-heart/pull/1820) Lane F model audit: wire Chordz / Scimitar / Cornerstone ladders; correct stale 'missing m | ready | mhvnsnt / `lane-f-model-audit` | `8eb1a30` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (clean) | 2026-11-22 08:18 UTC |
 | 🔴 failing | [#1818](https://github.com/mhvnsnt/western-heart/pull/1818) VM sweep: TNA Impact PS2 (3.5GB rar, split) | ready | mhvnsnt / `muse/vm-sweep-tna-2026-11-21` | `56c358a` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-21 18:07 UTC |
