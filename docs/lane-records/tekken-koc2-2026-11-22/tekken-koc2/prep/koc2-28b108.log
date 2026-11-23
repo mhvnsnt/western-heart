@@ -1,0 +1,28 @@
+0x28b108: addiu    $sp, $sp, -0x10
+0x28b10c: move     $a3, $a2
+0x28b110: move     $v1, $a1
+0x28b114: sd       $ra, ($sp)
+0x28b118: subu     $a2, $a3, $v1
+0x28b11c: beq      $a3, $v1, 0x28b130
+0x28b120: move     $v0, $zero
+0x28b124: ld       $ra, ($sp)
+0x28b128: j        0x28b0b8
+0x28b12c: addiu    $sp, $sp, 0x10
+0x28b130: ld       $ra, ($sp)
+0x28b134: jr       $ra  <-- RETURN
+0x28b138: addiu    $sp, $sp, 0x10
+0x28b13c: nop      
+0x28b140: addiu    $sp, $sp, -0x10
+0x28b144: sd       $s0, ($sp)
+0x28b148: sd       $ra, 8($sp)
+0x28b14c: jal      0x28aea0  <-- CALL
+0x28b150: move     $s0, $a1
+0x28b154: lw       $v1, 0x1c($v0)
+0x28b158: sll      $s0, $s0, 4
+0x28b15c: ld       $ra, 8($sp)
+0x28b160: addu     $s0, $s0, $v1
+0x28b164: lhu      $v0, 0xc($s0)
+0x28b168: ld       $s0, ($sp)
+0x28b16c: jr       $ra  <-- RETURN
+0x28b170: addiu    $sp, $sp, 0x10
+0x28b174: nop      

@@ -1,0 +1,98 @@
+0x28b178: addiu    $sp, $sp, -0x40
+0x28b17c: sd       $s0, ($sp)
+0x28b180: move     $s0, $a2
+0x28b184: sd       $s1, 8($sp)
+0x28b188: sd       $s2, 0x10($sp)
+0x28b18c: sd       $s3, 0x18($sp)
+0x28b190: move     $s3, $a1
+0x28b194: sd       $s4, 0x20($sp)
+0x28b198: move     $s4, $a0
+0x28b19c: sd       $s5, 0x28($sp)
+0x28b1a0: sd       $ra, 0x30($sp)
+0x28b1a4: jal      0x28aea0  <-- CALL
+0x28b1a8: move     $s5, $a3
+0x28b1ac: move     $s1, $v0
+0x28b1b0: sll      $v0, $s0, 4
+0x28b1b4: lw       $v1, 0x1c($s1)
+0x28b1b8: move     $a0, $s4
+0x28b1bc: move     $a1, $s0
+0x28b1c0: move     $a2, $s5
+0x28b1c4: bnez     $s3, 0x28b1e8
+0x28b1c8: addu     $s2, $v1, $v0
+0x28b1cc: jal      0x28b0b8  <-- CALL
+0x28b1d0: nop      
+0x28b1d4: jal      0x289590  <-- CALL
+0x28b1d8: move     $a0, $v0
+0x28b1dc: move     $s3, $v0
+0x28b1e0: move     $a0, $s4
+0x28b1e4: move     $a1, $s0
+0x28b1e8: jal      0x28b0a0  <-- CALL
+0x28b1ec: move     $a2, $s5
+0x28b1f0: move     $a0, $s1
+0x28b1f4: move     $t2, $v0
+0x28b1f8: lhu      $v0, 0xe($s2)
+0x28b1fc: move     $a2, $t2
+0x28b200: move     $t0, $zero
+0x28b204: addiu    $t1, $zero, 1
+0x28b208: beqz     $v0, 0x28b248
+0x28b20c: move     $a1, $s3
+0x28b210: lw       $v0, 0x20($s1)
+0x28b214: lw       $a3, ($s2)
+0x28b218: jal      0x28a6e8  <-- CALL
+0x28b21c: addu     $a3, $v0, $a3
+0x28b220: sll      $v1, $v0, 1
+0x28b224: addu     $v1, $v1, $v0
+0x28b228: sll      $v1, $v1, 2
+0x28b22c: addu     $v1, $v1, $v0
+0x28b230: sll      $v1, $v1, 2
+0x28b234: lui      $at, 0x3f
+0x28b238: addu     $at, $at, $v1
+0x28b23c: sw       $s2, 0x5820($at)
+0x28b240: b        0x28b26c
+0x28b244: move     $v0, $s3
+0x28b248: lw       $v0, ($s2)
+0x28b24c: move     $a0, $s1
+0x28b250: lw       $a3, 0x20($s1)
+0x28b254: move     $a2, $t2
+0x28b258: move     $t0, $zero
+0x28b25c: move     $t1, $zero
+0x28b260: jal      0x28a6e8  <-- CALL
+0x28b264: addu     $a3, $a3, $v0
+0x28b268: move     $v0, $s3
+0x28b26c: ld       $s0, ($sp)
+0x28b270: ld       $s1, 8($sp)
+0x28b274: ld       $s2, 0x10($sp)
+0x28b278: ld       $s3, 0x18($sp)
+0x28b27c: ld       $s4, 0x20($sp)
+0x28b280: ld       $s5, 0x28($sp)
+0x28b284: ld       $ra, 0x30($sp)
+0x28b288: jr       $ra  <-- RETURN
+0x28b28c: addiu    $sp, $sp, 0x40
+0x28b290: addiu    $sp, $sp, -0x40
+0x28b294: sd       $s0, ($sp)
+0x28b298: sd       $s1, 8($sp)
+0x28b29c: move     $s1, $a2
+0x28b2a0: sd       $s2, 0x10($sp)
+0x28b2a4: move     $s2, $a0
+0x28b2a8: sd       $s3, 0x18($sp)
+0x28b2ac: sd       $s4, 0x20($sp)
+0x28b2b0: sd       $s5, 0x28($sp)
+0x28b2b4: sd       $ra, 0x30($sp)
+0x28b2b8: jal      0x28aea0  <-- CALL
+0x28b2bc: move     $s5, $a1
+0x28b2c0: move     $s0, $v0
+0x28b2c4: sll      $v0, $s1, 4
+0x28b2c8: lw       $v1, 0x1c($s0)
+0x28b2cc: move     $a0, $s2
+0x28b2d0: move     $a1, $s1
+0x28b2d4: move     $a2, $zero
+0x28b2d8: jal      0x28b0a0  <-- CALL
+0x28b2dc: addu     $s3, $v1, $v0
+0x28b2e0: lw       $v1, 0x20($s0)
+0x28b2e4: move     $a2, $v0
+0x28b2e8: lw       $a3, ($s3)
+0x28b2ec: move     $a0, $s0
+0x28b2f0: move     $t0, $zero
+0x28b2f4: move     $t1, $zero
+0x28b2f8: addu     $a3, $v1, $a3
+0x28b2fc: jal      0x28a6e8  <-- CALL
