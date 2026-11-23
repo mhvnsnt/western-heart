@@ -112,13 +112,17 @@ separate roster-lane decision. lili.glb / baek.glb stay UNASSIGNED —
 Lili and Baek have NO Western Heart names. Never invent names for them.
 cape-jones = Cyborg X Attire 1 per canon.
 
-## No model in repo (unchanged from audit)
+## No model in repo (corrected Lane F 2026-11-21 — see note below)
 
-BURGER, SCIMITAR, MICHIKO, STAR, TORCH, DIO, BRUNO, YUKIHYŌ, SLICE
-(no Bob/Shaheen/Katarina/Christie/Anna/Akuma/Miguel/Armor King/Dragunov
+BURGER, MICHIKO, STAR, TORCH, SLICE
+(no Bob/Katarina/Christie/Anna/Dragunov
 sources in any teardown dir — verified against the full 55k-file tree).
+CORRECTED Lane F 2026-11-21: SCIMITAR, DIO, BRUNO and YUKIHYŌ were listed
+here but all have owner Tripo models on main since 2026-10-22
+(roster/*/attires/, wired — see roster/TRIPO-REGISTRY.md). Their absence is
+teardown-source absence only, not model absence.
 REALIZZT/KUTZ (no Brad Burns/Goh in VF5 teardown — aki/akixx only).
-CHORDZ (no Lars source). SUN RĀ boss (no Pac-Man/sun source; needs
+CHORDZ (no Lars teardown source — but owner Tripo model fda3612c on main since 2026-10-22, wired; Lane F 2026-11-21). SUN RĀ boss (no Pac-Man/sun source; needs
 owner art direction — "the round, cute, evil sun" is an original build).
 VAIN ABEL ELIAS — BLOCKED: mesh not extracted anywhere in repo.
 `teardown/dead-or-alive-4/models/bass-armstrong/DOA5_Bass_Armstrong_Costume_1.zip`

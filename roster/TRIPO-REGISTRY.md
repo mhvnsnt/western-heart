@@ -17,6 +17,14 @@ attached. UPDATE IT every time a Tripo model is pulled and attached.
   no longer applies.
 - When a Tripo model is attached, record it HERE immediately: source link,
   local path, slot order, render status, AI-transform flag.
+- **STANDING RULE (owner correction 2026-11-21): never claim a fighter's model
+  is missing without checking Tripo pulls, URL-uploaded GLBs, and Ash Lane
+  first.** Check `roster/<fighter>/attires/` on main, the release assets, the
+  Tripo pull records (`tools/tripo-pull/`, manifests under
+  `roster/*/attires/*/source/`), and the Ash Lane asset pulls before writing
+  "missing" anywhere. (Lane F audit 2026-11-21: Dio, Bruno, Scimitar,
+  Negativo, Yukihyo and Chordz were all wrongly listed as model-less while
+  their Tripo models sat on main since 2026-10-22.)
 
 ## Resolved names (canon — do not invent new ones)
 
@@ -56,7 +64,7 @@ Legend: ✅ attached · ❌ no Tripo on record · ⚠️ needs owner link/pull �
 | DXMMII | ✅ YES (Attire 1) | tripo pull 2026-10-16 (tripo-recovery/dxmmii.glb, meshopt; project UUID ca068026-8e3a-4e29-9cba-bc76286cc656, signed data URL in tripo-recovery/dxmmii_url.txt) · Attire 2 "Block built blockhead crash dummy" (PR #323, 2026-10-19) | `roster/dxmmii/attires/attire1/model.glb` (60MB decoded, blob-identical to `tools/limb-system/dxmmii/viz/dxmmii_plain.glb`) | A1 = Tripo Default (replaced wooden dummy 2026-10-19) | base GLB as-is | check `docs/tpose-refs/` | — |
 | PHANTOM | ✅ YES (Attire 1) | tripo3d.ai/3d-model/3ed032a4-8a4d-4111-b852-373ebf0a06aa ("fantasy armored warrior 3d model" by marz6kdabest) | `roster/phantom/attires/attire1/model.glb` (21.96MB, 1,053,849 verts) | A1 = Tripo (default) · existing base GLB (`game/assets/models/phantom.glb`) ladders back | 👁️ `docs/tpose-refs/phantom/p1_front.png` (1024px Cycles, own-eyes verified 2026-10-18) | 🎨 yes — unrigged static (1 mesh/1 primitive/1 material/0 skins, auto-rig before wiring) |
 | NIGHTWOLF | ✅ YES (Attire 1) — WIRED 2026-10-22 | tripo3d.ai/3d-model/5b0835eb-6c87-4257-899e-0771698d02c6 ("tribal warrior 3d model" by marz6kdabest; tribute to Serena Misae Brown) | `roster/nightwolf/attires/attire1/model.glb` (21.87MB, 1,015,766 verts) | A1 = Tripo (default) · existing base GLB (`game/assets/models/nightwolf.glb`) ladders back — MODEL_URLS key `nightwolf-attire1` + `ATTIRE_VARIANTS['nightwolf']` ladder (wire-up 2026-10-22) | 👁️ `docs/tpose-refs/nightwolf/p1_front.png` (1024px Cycles, own-eyes verified 2026-10-18) | 🎨 yes — unrigged static (auto-rig before live-game swap) |
-| N3GΔTIV0 | ⚠️ owner queue — needs model (owner 2026-10-22; legacy `game/assets/models/n3g4tiv0.glb` exists but owner declared model still needed) | — | `game/assets/models/n3g4tiv0.glb` (legacy) | — | — | — |
+| N3GΔTIV0 | ✅ YES — Tripo 7853a4d6 (red eyes) + 2a13dd2b (white eyes), 2026-10-22; refits wired (`negativo-attire1/2`), ladder exists; legacy `game/assets/models/n3g4tiv0.glb` ladders back. CORRECTED Lane F 2026-11-21 (was wrongly queued). | tripo3d.ai/3d-model/7853a4d6-0a22-45e8-943b-a0afe3ec5c34 · tripo3d.ai/3d-model/2a13dd2b-7233-4d50-b02d-982bc9c60f16 | `roster/negativo/attires/attire1/source/negativo-a1-refit.glb` (18.7MB) · `attire2/source/negativo-a2-refit.glb` (19.4MB) | A1 = Red Eyes Tripo (default) · A2 = Before the Trials Tripo · A3 = Classic (`n3g4tiv0`) | 👁️ see `docs/proof/2026-11-01/refit-negativo/` | 🎨 yes — refit-rigged |
 | JIN (Eastern Mind — NOT Jin Kazama) | ⚠️ owner queue — needs model (owner 2026-10-22) | — | — | — | — | — |
 | JIN KAZAMA | ✅ YES — "Bloodline Ember" reskin wired 2026-10-22 | built from `game/assets/models/jin.glb` (untouched) — see `roster/jin/attires/bloodline-ember/README.md` | `roster/jin/attires/bloodline-ember/jin-bloodline-ember.glb` | ladders into Phantom's attires (`jin-bloodline-ember` key, back slot) — NOT the Eastern Mind Jin | 👁️ `roster/jin/jin-bloodline-ember-front.jpg` | — |
 | SAM-UR-A1 | ✅ YES (Attire 1) | tripo3d.ai/3d-model/7c94ba99-d5ed-4391-bb79-d6cd6eeb51ac ("sci-fi mecha 3d model" by dg88will) — owner dropped link in chat 2026-10-19 | `roster/sam-ur-a1/attires/attire1/model.glb` (22.8MB meshopt) | A1 = Tripo Default (replaces fan-rip placeholder) | 👁️ render verified 2026-10-19 | — |
@@ -77,21 +85,23 @@ Legend: ✅ attached · ❌ no Tripo on record · ⚠️ needs owner link/pull �
 Owner correction 2026-10-22 (verbatim): "Everyone else the registry listed as
 'missing Tripo' ALREADY HAS models — they're in the repo but not wired up."
 The wire-up pass of 2026-10-22 wired every unwired on-disk model (MODEL_URLS
-keys + attire ladders; see History below). The ONLY fighters that still need
-models are these 12 — do not invent models, roster entries, names, or bios
-for them; record them as the queue:
+keys + attire ladders; see History below). Six of these 12 were CORRECTED by the Lane F audit 2026-11-21 — Dio, Bruno,
+Scimitar, Negativo, Yukihyo and Chordz all HAVE Tripo models (pulled/archived
+2026-10-22, wired; see ✅ rows). The ONLY fighters that still need models are
+the six marked NEEDS MODEL below. Do not invent models, roster entries, names,
+or bios for them; record them as the queue:
 
 | # | Fighter | Queue status |
 |---|---|---|
-| 1 | **DIO** | Needs model — user-provided pending (the owner wants to make Dio's model themselves). Legacy `game/assets/models/dio.glb` key exists but owner declared model still needed. |
+| 1 | **DIO** | ✅ HAS MODEL — Tripo 14943921 (fantasy demon, 2026-10-22), Jade God rigged refit wired (`dio-attire1`), ladder exists. CORRECTED Lane F 2026-11-21 (was wrongly queued). Owner-made model may still replace it one day — owner's call. |
 | 2 | **PANDA** | Needs model. No key, no file. |
 | 3 | **KUMA** | Needs model. No key, no file. |
 | 4 | **JIN** (Eastern Mind version — NOT Jin Kazama) | Needs model. The wired `jin-bloodline-ember` is the Jin KAZAMA reskin (Phantom's ladder) — not the EM Jin. No key, no file for the EM version. |
-| 5 | **BRUNO** | Needs model. Legacy `game/assets/models/bruno.glb` key exists but owner declared model still needed. |
-| 6 | **SCIMITAR** | Needs model. Legacy `game/assets/models/scimitar-rigged.glb` key exists but owner declared model still needed. |
-| 7 | **NEGATIVO** | Needs model. Legacy `game/assets/models/n3g4tiv0.glb` key exists but owner declared model still needed. |
-| 8 | **YUKIHYO** | Needs model. Legacy `game/assets/models/yukihyo.glb` key exists but owner declared model still needed. |
-| 9 | **CHORDZ** | Needs model. No key, no file. |
+| 5 | **BRUNO** | ✅ HAS MODEL — two Tripo pulls (Jack Sparrow b3f9dfb0 + Sail the Sea 73bce9d1, 2026-10-22), wired ladder. CORRECTED Lane F 2026-11-21. |
+| 6 | **SCIMITAR** | ✅ HAS MODEL — Tripo a3e76dd5 (2026-10-22), rigged build wired as default; ladder added Lane F 2026-11-21. CORRECTED. |
+| 7 | **NEGATIVO** | ✅ HAS MODEL — two Tripo pulls (7853a4d6 red eyes + 2a13dd2b white eyes, 2026-10-22), refits wired, ladder exists. CORRECTED Lane F 2026-11-21. |
+| 8 | **YUKIHYO** | ✅ HAS MODEL — three Tripo pulls (f17a5a1c + fc662034 Bobcat Pride + 7086f634 Tiger King, 2026-10-22), wired ladder. CORRECTED Lane F 2026-11-21. |
+| 9 | **CHORDZ** | ✅ HAS MODEL — Tripo fda3612c (2026-10-22), `model-rigged.glb` on main, MODEL_URLS key exists; ladder added Lane F 2026-11-21. CORRECTED (the "No key, no file" claim was wrong on both counts). |
 | 10 | **OGRE** | Needs model. No key, no file. |
 | 11 | **LAW** | Needs model. No key, no file. |
 | 12 | **GON** | Needs model — user-approved DESIGN exists (owner 2026-10-22): Bulbasaur/alligator/Mudkip turtle creature; MAIN = amber/gold eyes, coral cheek fins, blue body, tan shell; two shiny variants (teal fins + green eyes / deep red eyes + crimson fins). Drafts in `workspace/gon-replacement/`. Ready for modeling. |
