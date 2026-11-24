@@ -16,7 +16,7 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| ⏳ running | [#1855](https://github.com/mhvnsnt/western-heart/pull/1855) Land Urban Reign preview-clips work product (round 3, PC-3) | ready | mhvnsnt / `muse/land-urban-reign-r3` | `290628b` | `main` | ⏳ | ✅ | ⏳ | ⏳ | 1✅ 8⏳ | mergeable (blocked) | 2026-11-24 06:01 UTC |
+| ⏳ running | [#1855](https://github.com/mhvnsnt/western-heart/pull/1855) Land Urban Reign preview-clips work product (round 3, PC-3) | ready | mhvnsnt / `muse/land-urban-reign-r3` | `290628b` | `main` | ✅ | ✅ | ✅ | ⏳ | 5✅ 4⏳ | mergeable (blocked) | 2026-11-24 06:01 UTC |
 | 🔴 failing | [#1851](https://github.com/mhvnsnt/western-heart/pull/1851) Lane E: T7 throw fix — receivers rebuilt, pair wired, shown | ready | mhvnsnt / `t7-throw-fix/lane-e-wireup-20261121` | `44e8f8a` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ 1❌ | mergeable (unstable) | 2026-11-23 16:38 UTC |
 | 🔴 failing | [#1837](https://github.com/mhvnsnt/western-heart/pull/1837) Proof: owner asked to see Cornerstone / Scimitar / Chordz models as images | ready | mhvnsnt / `show-three-models-20261122` | `46b1279` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-22 17:56 UTC |
 | 🔴 failing | [#1835](https://github.com/mhvnsnt/western-heart/pull/1835) canon(chordz): Kutz Chordz — one fighter, two names; two halves are one personality; model | ready | mhvnsnt / `lane/kutz-chordz-canon-20261122` | `4cc7135` | `main` | ✅ | ✅ | ✅ | ❌ | 10✅ | mergeable (clean) | 2026-11-22 17:13 UTC |
