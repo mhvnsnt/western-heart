@@ -1940,5 +1940,13 @@ Owner order 2026-11-08 ~20:37 CST — land in all necessary repos.
 
 - DEADLIFT ALLEY-OOP (owner 2026-11-22): Western Heart custom move saved from the incorrect Tekken 7 suplex — grounded leg-grapple setup, Blue pulls Orange up from the ground, picks him up from the waist going backwards and slams him face-first (wrestling powerbomb alley-oop from a deadlift position); in the setup Orange spins around Blue on the Y (up-down) axis, legs held like a Giant Swing, and the slam sends Orange over Blue's head and behind him.
 
+### 2026-11-22 owner ruling — No game dumps
+
+- NO-GAME-DUMPS BOUNDARY (owner 2026-11-22): Real will not do game dumps — files must be gotten from somewhere else, not from him; never ask him to do a dump again.
+
+### 2026-11-22 owner ruling — T7 mocap permanent fix
+
+- T7 MOCAP PERMANENT FIX (owner 2026-11-22): on Tekken 7 throws the orange (victim) fighter is upside down and backwards — flip him right-side-up, feet to the floor, facing the blue fighter; log as the permanent fix for all broken T7 mocaps and check whether all other T7 grapples need the same formula, hunting already-cracked/fixed animations that are already correctly oriented instead of rebuilding from scratch.
+
 *End of CANON-MASTER. Compiled 2026-10-23. If it isn't recorded, it
 isn't here — and if it gets recorded, it gets pushed here.*
