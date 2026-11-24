@@ -1,0 +1,808 @@
+{
+ "moves_no_p1_in_bank": [],
+ "p2_conflicts": [],
+ "p2_flags": {
+  "p2-label": 483,
+  "solo": 405,
+  "p2-unknown": 24,
+  "needs-p2": 220
+ },
+ "library_match": {
+  "label-unique": 1021,
+  "h3-numbered": 105,
+  "label-stripnum": 49,
+  "unmatched": 80
+ },
+ "unmatched_library_ids": [
+  {
+   "library_id": "nm_dx_2",
+   "name": "DX 2",
+   "cat": "Taunt",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "4404",
+    "4407",
+    "4437"
+   ]
+  },
+  {
+   "library_id": "nm_dx_3",
+   "name": "DX 3",
+   "cat": "Taunt",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "4404",
+    "4407",
+    "4437"
+   ]
+  },
+  {
+   "library_id": "nm_empty_2",
+   "name": "EMPTY 2",
+   "cat": "Front Weak Turnbuckle Grapple",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": []
+  },
+  {
+   "library_id": "nm_empty_3",
+   "name": "EMPTY 3",
+   "cat": "Ground Head Grapple (Facing Up)",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": []
+  },
+  {
+   "library_id": "nm_grapple_release_2",
+   "name": "Grapple Release 2",
+   "cat": "Front Weak Turnbuckle Grapple",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": []
+  },
+  {
+   "library_id": "nm_grapple_reverse_switch_2",
+   "name": "Grapple Reverse/Switch 2",
+   "cat": "Front Weak Turnbuckle Grapple",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": []
+  },
+  {
+   "library_id": "nm_guillotine_2",
+   "name": "Guillotine 2",
+   "cat": "Strong Striking",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": []
+  },
+  {
+   "library_id": "nm_jericho_2",
+   "name": "Jericho 2",
+   "cat": "Taunt",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "434B",
+    "4435"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_abdominal_stretch_2",
+   "name": "No Mercy Abdominal Stretch 2",
+   "cat": "Back Weak Grapple",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "383A"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_abdominal_stretch_3",
+   "name": "No Mercy Abdominal Stretch 3",
+   "cat": "Irish Whip Grapple",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "39F5"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_ankle_lock_2",
+   "name": "No Mercy Ankle Lock 2",
+   "cat": "Special Ground Leg Grapple (Facing Down)",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "4078"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_back_elbow_2",
+   "name": "No Mercy Back Elbow 2",
+   "cat": "Rebound Flying Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "41F1"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_big_splash_3",
+   "name": "No Mercy Big Splash 3",
+   "cat": "Running Ground Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "40B0"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_camel_clutch_2",
+   "name": "No Mercy Camel Clutch 2",
+   "cat": "Ground Head Grapple (Sitting Down)",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3F0F"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_chop_2",
+   "name": "No Mercy Chop 2",
+   "cat": "Weak Arm Striking",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3322",
+    "3323",
+    "332A"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_chop_3",
+   "name": "No Mercy Chop 3",
+   "cat": "Weak Arm Striking",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3322",
+    "3323",
+    "332A"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_chop_4",
+   "name": "No Mercy Chop 4",
+   "cat": "Weak Arm Striking",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3322",
+    "3323",
+    "332A"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_chop_5",
+   "name": "No Mercy Chop 5",
+   "cat": "Irish Whip Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3BE0"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_chop_6",
+   "name": "No Mercy Chop 6",
+   "cat": "Recovering Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3D78"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_chop_7",
+   "name": "No Mercy Chop 7",
+   "cat": "Turnbuckle Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3347"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_diving_elbow_2",
+   "name": "No Mercy Diving Elbow 2",
+   "cat": "Running Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3BB3"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_diving_elbow_4",
+   "name": "No Mercy Diving Elbow 4",
+   "cat": "Turnbuckle Inside Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "41B1"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_double_axe_handle_2",
+   "name": "No Mercy Double Axe Handle 2",
+   "cat": "Front Weak A Grapple",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3387"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_double_axe_handle_3",
+   "name": "No Mercy Double Axe Handle 3",
+   "cat": "Ground Attack Sitting Down",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3F56"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_double_axe_handle_4",
+   "name": "No Mercy Double Axe Handle 4",
+   "cat": "Ground Attack Sitting Up",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3F2C"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_dropkick_to_knee_2",
+   "name": "No Mercy Dropkick to Knee 2",
+   "cat": "Ground Attack Sitting Up",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3F29"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_dropkick_to_knee_3",
+   "name": "No Mercy Dropkick to Knee 3",
+   "cat": "Running Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3BD7"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_elbow_drop_10",
+   "name": "No Mercy Elbow Drop 10",
+   "cat": "Ground Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "4086",
+    "4087",
+    "4088",
+    "4089",
+    "4097",
+    "409D"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_elbow_drop_11",
+   "name": "No Mercy Elbow Drop 11",
+   "cat": "Ground Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "4086",
+    "4087",
+    "4088",
+    "4089",
+    "4097",
+    "409D"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_elbow_drop_12",
+   "name": "No Mercy Elbow Drop 12",
+   "cat": "Ground Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "4086",
+    "4087",
+    "4088",
+    "4089",
+    "4097",
+    "409D"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_elbow_drop_13",
+   "name": "No Mercy Elbow Drop 13",
+   "cat": "Running Ground Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "40A6",
+    "40A7"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_elbow_drop_14",
+   "name": "No Mercy Elbow Drop 14",
+   "cat": "Running Ground Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "40A6",
+    "40A7"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_elbow_drop_2",
+   "name": "No Mercy Elbow Drop 2",
+   "cat": "Ground Attack Sitting Up",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3F42",
+    "3F44",
+    "3F47",
+    "3F49",
+    "3F4D",
+    "3F51"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_elbow_drop_3",
+   "name": "No Mercy Elbow Drop 3",
+   "cat": "Ground Attack Sitting Up",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3F42",
+    "3F44",
+    "3F47",
+    "3F49",
+    "3F4D",
+    "3F51"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_elbow_drop_4",
+   "name": "No Mercy Elbow Drop 4",
+   "cat": "Ground Attack Sitting Up",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3F42",
+    "3F44",
+    "3F47",
+    "3F49",
+    "3F4D",
+    "3F51"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_elbow_drop_5",
+   "name": "No Mercy Elbow Drop 5",
+   "cat": "Ground Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "4086",
+    "4087",
+    "4088",
+    "4089",
+    "4097",
+    "409D"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_elbow_drop_6",
+   "name": "No Mercy Elbow Drop 6",
+   "cat": "Ground Attack Sitting Up",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3F42",
+    "3F44",
+    "3F47",
+    "3F49",
+    "3F4D",
+    "3F51"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_elbow_drop_7",
+   "name": "No Mercy Elbow Drop 7",
+   "cat": "Ground Attack Sitting Up",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3F42",
+    "3F44",
+    "3F47",
+    "3F49",
+    "3F4D",
+    "3F51"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_elbow_drop_8",
+   "name": "No Mercy Elbow Drop 8",
+   "cat": "Ground Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "4086",
+    "4087",
+    "4088",
+    "4089",
+    "4097",
+    "409D"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_elbow_drop_9",
+   "name": "No Mercy Elbow Drop 9",
+   "cat": "Ground Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "4086",
+    "4087",
+    "4088",
+    "4089",
+    "4097",
+    "409D"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_falling_headbutt_2",
+   "name": "No Mercy Falling Headbutt 2",
+   "cat": "Ground Attack Sitting Up",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3F43"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_falling_headbutt_3",
+   "name": "No Mercy Falling Headbutt 3",
+   "cat": "Ground Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "4092"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_forearm_smash_2",
+   "name": "No Mercy Forearm Smash 2",
+   "cat": "Back Weak Grapple",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3868"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_forearm_smash_3",
+   "name": "No Mercy Forearm Smash 3",
+   "cat": "Running Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3BAF"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_kick_2",
+   "name": "No Mercy Kick 2",
+   "cat": "Pin/Submission Breakup Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "41E3"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_knee_drop_2",
+   "name": "No Mercy Knee Drop 2",
+   "cat": "Ground Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "4094",
+    "4095"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_knee_drop_3",
+   "name": "No Mercy Knee Drop 3",
+   "cat": "Ground Attack Sitting Up",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3F48",
+    "3F4B"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_knee_drop_4",
+   "name": "No Mercy Knee Drop 4",
+   "cat": "Ground Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "4094",
+    "4095"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_knee_drop_5",
+   "name": "No Mercy Knee Drop 5",
+   "cat": "Running Ground Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "40A9"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_knee_smash_2",
+   "name": "No Mercy Knee Smash 2",
+   "cat": "Ground Leg Grapple (Facing Up)",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "402A"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_leg_drop_2",
+   "name": "No Mercy Leg Drop 2",
+   "cat": "Running Ground Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "40AC"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_manhattan_drop_2",
+   "name": "No Mercy Manhattan Drop 2",
+   "cat": "Irish Whip Grapple",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3A64"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_missile_dropkick_2",
+   "name": "No Mercy Missile Dropkick 2",
+   "cat": "Double Team Attack to Ring from Apron",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "41EC"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_mongolian_chop_2",
+   "name": "No Mercy Mongolian Chop 2",
+   "cat": "Ground Attack Sitting Down",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3F7B"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_mongolian_chop_3",
+   "name": "No Mercy Mongolian Chop 3",
+   "cat": "Ground Attack Sitting Up",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3F4C"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_mongolian_chop_4",
+   "name": "No Mercy Mongolian Chop 4",
+   "cat": "Ground Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "408E"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_rear_naked_choke_3",
+   "name": "No Mercy Rear Naked Choke 3",
+   "cat": "Ground Head Grapple (Sitting Down)",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3F19"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_road_dogg_3",
+   "name": "No Mercy Road Dogg 3",
+   "cat": "Taunt",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "443E"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_shoulder_thrusts_2",
+   "name": "No Mercy Shoulder Thrusts 2",
+   "cat": "Front Weak Turnbuckle Grapple",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3CD4"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_sleeper_hold_3",
+   "name": "No Mercy Sleeper Hold 3",
+   "cat": "Ground Head Grapple (Sitting Up)",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3EB5"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_sleeper_hold_4",
+   "name": "No Mercy Sleeper Hold 4",
+   "cat": "Irish Whip Grapple",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3A00"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_small_package_2",
+   "name": "No Mercy Small Package 2",
+   "cat": "Running Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": []
+  },
+  {
+   "library_id": "nm_no_mercy_soccer_kick_2",
+   "name": "No Mercy Soccer Kick 2",
+   "cat": "Ground Attack Sitting Up",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3F45",
+    "3F4F"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_soccer_kick_3",
+   "name": "No Mercy Soccer Kick 3",
+   "cat": "Ground Attack Sitting Up",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3F45",
+    "3F4F"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_soccer_kick_4",
+   "name": "No Mercy Soccer Kick 4",
+   "cat": "Ground Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "408C",
+    "409C"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_soccer_kick_5",
+   "name": "No Mercy Soccer Kick 5",
+   "cat": "Ground Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "408C",
+    "409C"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_somersault_kick_2",
+   "name": "No Mercy Somersault Kick 2",
+   "cat": "Strong Striking",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3B63"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_stomp_2",
+   "name": "No Mercy Stomp 2",
+   "cat": "Ground Attack Sitting Up",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3F3F",
+    "3F50"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_stomp_3",
+   "name": "No Mercy Stomp 3",
+   "cat": "Ground Attack Sitting Up",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3F3F",
+    "3F50"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_stomp_4",
+   "name": "No Mercy Stomp 4",
+   "cat": "Ground Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "408A",
+    "408B"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_stomp_5",
+   "name": "No Mercy Stomp 5",
+   "cat": "Ground Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "408A",
+    "408B"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_stomp_6",
+   "name": "No Mercy Stomp 6",
+   "cat": "Pin/Submission Running Breakup Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "41E4"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_stomp_7",
+   "name": "No Mercy Stomp 7",
+   "cat": "Running Ground Attack",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "40AA"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_surfboard_stretch_3",
+   "name": "No Mercy Surfboard Stretch 3",
+   "cat": "Ground Head Grapple (Sitting Up)",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3EF1"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_thump_2",
+   "name": "No Mercy Thump 2",
+   "cat": "Front Weak Turnbuckle Grapple",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3CB0"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_thump_3",
+   "name": "No Mercy Thump 3",
+   "cat": "Running Attack From Apron",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "41B7"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_undertaker_2",
+   "name": "No Mercy Undertaker 2",
+   "cat": "Taunt",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "43FB",
+    "4405"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_x_pac_2",
+   "name": "No Mercy X-Pac 2",
+   "cat": "Ducking Taunt",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "4458"
+   ]
+  },
+  {
+   "library_id": "nm_no_mercy_x_pac_4",
+   "name": "No Mercy X-Pac 4",
+   "cat": "In The Ring Taunt",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "43E3"
+   ]
+  },
+  {
+   "library_id": "nm_spinning_wheel_kick_2",
+   "name": "Spinning Wheel Kick 2",
+   "cat": "Strong Striking",
+   "how": "no-match",
+   "candidate_pools_same_name_cat": [
+    "3AEA",
+    "3B3C"
+   ]
+  }
+ ],
+ "ambiguous": []
+}
