@@ -148,3 +148,11 @@ owner's own music (Mars FMMG). No generic music-marketing advice.
 
 Also on the record: Kazzy liked the owner's style too — the respect went both ways.
 The song never happened because life got in the way, and the owner hates that he died.
+
+## Owner observation — Kazzy's recent posts (2026-11-26 ~16:08 CST)
+
+The owner has Manic Kazzy added on one of his Facebook pages (he doesn't know which
+one). Over the last few weeks and months, Kazzy had been posting what the owner
+describes as "unhinged" posts — he can't really describe them beyond that. The study
+lane is chasing this down: which page, what the posts actually said, and whether they
+say anything about his final weeks. Describe, don't diagnose.
