@@ -150,7 +150,7 @@ GW-7, GW-7b, GW-8, GW-19, GW-20.
 
 | File | What it is |
 |---|---|
-| `game/js/godwithin.js` | The mode module (pure, node-testable): chapters, anchors, rungs, combat tables, RNF, sky, economy, featured cast, run state machine, flow, gaps GW-1–GW-20 |
+| `game/js/godwithin.js` | The mode module (pure, node-testable): chapters, anchors, rungs, combat tables, RNF, sky, economy, featured cast, run state machine, flow, gaps GW-1–GW-21 |
 | `game/js/modes.js` | Wiring: import, `MODE_LIST` godwithin entry, `startMode` hint, `onConfirm` branch, `_godwithinStageIntro/_godwithinFight/_godwithinEnd/_godwithinBetweenLives/_godwithinComplete`, Trader routing, reincarnate full-pool picks + interactive RNF face strip + SAIL button |
 | `game/js/mainmenu.js` | GOD WITHIN card (story submenu) |
 | `game/js/main.js` | Delegated data-action router: `mode-godwithin` → `startMode('godwithin')` (without this branch the card would be dead — the same gap the pre-existing `mode-heartmind` card has) |
@@ -197,7 +197,20 @@ not re-verified · GW-14 5 shell minigames + 2 mazes (rules in .DXR)
 scans RAR tail + manual + art book + OST never landed · GW-17 Trader
 not a roster fighter · GW-18 KUTZ/REALIZZT not rostered · GW-19
 MEGAMI `-cdn` key suffix looks stale (file on R2 is non-cdn) ·
-GW-20 TOU/KAI soul-tex GLBs not in the R2 manifest.
+GW-20 TOU/KAI soul-tex GLBs not in the R2 manifest. ·
+**GW-21 STORY stage intro is a dead end on main (found by the
+godwithin-e2e, C9 run 45865036342 — OWNER CALL whether to fix)**:
+`_storyStageIntro` (modes.js:846) calls `show('stage')`, which shows
+CHOOSE YOUR ARENA (`#screen-stage`); its CONFIRM is a no-op without
+a versus `pendingFight`, and the intro text + ENTER button live on
+the hidden `#screen-stage-intro` panel that nothing ever shows
+(`show('stageIntro')` has zero callers on main). The Trial cannot
+reach its first fight through the UI. God Within had the identical
+line (`_godwithinStageIntro`, modes.js:936, inherited from the story
+pattern) — fixed on this branch to `show('stageIntro')` so the rung
+intro panel + ENTER button actually display. STORY itself is left
+untouched here for the owner's call; the one-word fix is the same
+(`_storyStageIntro`: `show('stage')` → `show('stageIntro')`).
 
 ## Sources / licences (honest log)
 

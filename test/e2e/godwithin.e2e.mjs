@@ -31,7 +31,7 @@ const ctx = await b.newContext({ ...devices['iPhone 13'], viewport: { width: 390
 const p = await ctx.newPage();
 p.on('pageerror', (e) => console.log('PAGEERROR:', String(e).slice(0, 300)));
 const visible = (id) => p.evaluate((i) => { const e = document.getElementById(i); return e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden'); }, id);
-const scr = () => p.evaluate(() => ['screen-menu', 'screen-select', 'screen-stage', 'screen-reincarnate', 'hud'].filter((id) => { const e = document.getElementById(id); return e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden'); }));
+const scr = () => p.evaluate(() => ['screen-menu', 'screen-select', 'screen-stage', 'screen-stage-intro', 'screen-reincarnate', 'hud'].filter((id) => { const e = document.getElementById(id); return e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden'); }));
 
 await p.goto(BASE + '/game/index.html?roster=all');
 await p.waitForSelector('#screen-menu [data-mm]', { state: 'visible', timeout: 30000 });
@@ -51,6 +51,18 @@ await p.evaluate(() => {
 try {
   await p.tap('[data-mm="story"]', { timeout: 90000 });
   await p.waitForFunction(() => { const s = document.getElementById('mm-submenu'); const c = document.querySelector('[data-action="mode-godwithin"]'); return s && !s.hidden && c && getComputedStyle(c).display !== 'none'; }, null, { timeout: 60000 });
+  // The submenu slides in — measure only once the card's rect has
+  // settled (C9 measured mid-transition: elementFromPoint returned
+  // null for a centre still outside the viewport).
+  await p.waitForFunction(() => {
+    const el = document.querySelector('[data-action="mode-godwithin"]');
+    if (!el) return false;
+    const r1 = el.getBoundingClientRect();
+    return new Promise((res) => setTimeout(() => {
+      const r2 = el.getBoundingClientRect();
+      res(r1.x === r2.x && r1.y === r2.y && r1.width === r2.width && r1.height === r2.height);
+    }, 300));
+  }, null, { timeout: 30000 });
   const card = await p.evaluate(() => {
     const el = document.querySelector('[data-action="mode-godwithin"]');
     if (!el) return null;
@@ -80,7 +92,11 @@ try {
   await p.screenshot({ path: `${SHOTS}/02-select.png` });
   await p.tap('.char-card[data-id="pantera"]', { timeout: 90000 });
   await p.tap('#confirm-fighter', { timeout: 90000 });
-  await p.waitForFunction(() => { const e = document.getElementById('screen-stage'); return e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden'); }, null, { timeout: 300000 });
+  // The rung intro is #screen-stage-intro (ENTER button #stage-fight),
+  // NOT #screen-stage — that id is the CHOOSE YOUR ARENA picker, whose
+  // CONFIRM is a no-op without a versus pendingFight (C9 waited on the
+  // picker while the intro text sat on the hidden panel).
+  await p.waitForFunction(() => { const e = document.getElementById('screen-stage-intro'); return e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden'); }, null, { timeout: 300000 });
   const intro = await p.evaluate(() => ({
     title: document.getElementById('stage-title')?.textContent || '',
     foe: document.getElementById('stage-foe')?.textContent || '',
@@ -158,12 +174,12 @@ try {
 // 7) Pick a vessel -> same rung, new vessel (stage kicker: DEATH 1).
 try {
   await p.evaluate(() => { [...document.querySelectorAll('#reinc-cards .reinc-card')].find((c) => !c.textContent.includes('SAIL BETWEEN LIVES'))?.click(); });
-  await p.waitForFunction(() => { const e = document.getElementById('screen-stage'); return e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden'); }, null, { timeout: 120000 });
+  await p.waitForFunction(() => { const e = document.getElementById('screen-stage-intro'); return e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden'); }, null, { timeout: 120000 });
   const kicker = await p.evaluate(() => document.getElementById('stage-kicker')?.textContent || '');
   console.log('reborn: stage kicker:', JSON.stringify(kicker));
   if (!kicker.includes('DEATH 1')) fails.push('reborn: stage kicker is not DEATH 1: ' + kicker);
+  else console.log('reborn: same rung, new vessel OK');
   await p.screenshot({ path: `${SHOTS}/07-reborn-stage-intro.png` });
-  console.log('reborn: same rung, new vessel OK');
 } catch (e) { fails.push('reborn vessel pick: ' + e.message.split('\n')[0] + ' on ' + JSON.stringify(await scr())); }
 
 try { console.log('CLICKS:', await p.evaluate(() => JSON.stringify(window.__clicks))); } catch {}

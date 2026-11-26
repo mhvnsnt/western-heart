@@ -933,7 +933,13 @@ export class ModeController {
     const fl = document.getElementById('stage-forces');
     if (fl) fl.textContent = 'FORCES HELD: ' + (this.story.forces.length ? this.story.forces.map((k) => FORCES[k].name).join(' · ') : 'none yet');
     this._badge(`${GODWITHIN_MODE.name} · ${rung.title}`);
-    this.show('stage');
+    // God Within shows the INTRO panel (screen-stage-intro, ENTER button),
+    // NOT the arena picker: show('stage') displays CHOOSE YOUR ARENA,
+    // whose CONFIRM is a no-op without a versus pendingFight — the
+    // rung would be a dead end (the same pre-existing bug sits in
+    // _storyStageIntro at line 846; STORY is left untouched here for
+    // the owner's call — see docs/GOD-WITHIN.md GW-21).
+    this.show('stageIntro');
     const btn = this._el('stage-fight');
     if (btn) btn.onclick = () => {
       this.audio && this.audio.uiClick && this.audio.uiClick();
