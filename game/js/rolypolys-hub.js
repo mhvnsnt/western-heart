@@ -311,9 +311,12 @@ export function mountRolyPolysHub(host) {
   const world = WORLD;
 
   host.appendChild(el(
-    '<p><b>Ship:</b> Banabana MK.1 — RIN leads the Nine Souls across the 7 areas, ' +
-    'area → region → scene, collecting one item per scene. Finish every scene in ' +
-    'an area to unlock its ending cinematic. Winnings pay out in Soul Shards.</p>' +
+    // Art header (2026-11-26 art pass): the Banabana crossing the
+    // violet sea at dawn. The old Ship paragraph was a text dump —
+    // one short line now; the full rules live in the selects below.
+    '<div class="gw-hub-head"><img src="assets/godwithin/banabana-sea.png" alt="Banabana MK.1 crossing the violet sea at dawn" />' +
+    '<h3>BANABANA MK.1</h3>' +
+    '<p>RIN sails the Nine Souls across 7 areas. One item per scene — winnings pay Soul Shards.</p></div>' +
     '<div class="wh-row"><label>Area <select id="rp-area"></select></label>' +
     '<label>Region <select id="rp-region"></select></label>' +
     '<label>Scene <select id="rp-scene"></select></label>' +
@@ -357,8 +360,8 @@ export function mountRolyPolysHub(host) {
   function refreshStatus() {
     const p = areaProgress(state, world, state.area);
     progressEl.textContent = 'Area ' + state.area + ': ' + p.visited + '/' + p.total +
-      ' scenes visited · ' + state.items.length + ' items · ' + state.endings.length +
-      ' endings unlocked · ' + state.shardsEarned + ' shards earned here.';
+      ' scenes · ' + state.items.length + ' items · ' + state.endings.length +
+      ' endings · ' + state.shardsEarned + ' shards';
     itemsEl.textContent = state.items.length
       ? 'Items: ' + state.items.slice(-12).join(', ') + (state.items.length > 12 ? ' …' : '')
       : 'Items: none yet — visit a scene to collect its item.';
