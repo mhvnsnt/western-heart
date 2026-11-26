@@ -30,6 +30,13 @@ import { getRules } from './rules.js';
 
 import { playCutscene, EM_CUTSCENES } from './cutscenes.js';
 
+/* God Within mode (branch godwithin/wiring-20261126, owner order
+   2026-11-26): the Devil Within / Urban Reign / Def Jam / Sato
+   transmigration stack, reskinned into WH canon, wired onto the
+   STORY Trial spine. Pure data + logic, no DOM — see
+   game/js/godwithin.js for provenance, the reskin map and the gaps. */
+import { GODWITHIN_MODE, GODWITHIN_RUNGS, GODWITHIN_ANCHORS, GODWITHIN_CHAPTERS, GODWITHIN_ECONOMY, GODWITHIN_RNF, chooseGodwithinVessels, godwithinVesselPool, createGodwithinRun, godwithinNextFoe, godwithinMarkWin, godwithinRungProgress, godwithinChapterForRung, godwithinRecordDream, godwithinRecordVoyage, godwithinRecordFace, rnfScoreFacePick, godwithinRnfFaceFor } from './godwithin.js';
+
 /* Eastern Mind face-assembly art for the reincarnation screen:
    the original game's own eyes / noses / mouths (D_FACE bitmaps),
    verified by viewing. The returning soul assembles its new face
@@ -289,6 +296,8 @@ export const MODE_LIST = [
     desc: 'Two players, best of 3. No reincarnation.' },
   { key: 'story',     name: 'STORY',               origin: 'wh', canon: 'CANON.md §5 The Trial',
     desc: 'Walk the Trial. Death is not the end — it is reincarnation.' },
+  { key: 'godwithin', name: 'GOD WITHIN',          origin: 'wh', canon: 'CANON.md §5 The Trial + §1 The Two Laws of Death',
+    desc: 'The Trial, descended. Five Devil Within chapters, twelve anchor guardians, dreams between lives, voyages between deaths, and a face to be assembled. Death is not failure — it is reincarnation.' },
   { key: 'training',  name: 'TRAINING',            origin: 'tekken', debut: 'Tekken (Practice)',
     desc: 'Endless rounds vs a passive dummy. H toggles hints.' },
   { key: 'survival',  name: 'SURVIVAL',            origin: 'tekken', debut: 'Tekken 2',
@@ -517,6 +526,8 @@ export class ModeController {
       hint.textContent = 'ARCADE — climb the 6-fight ladder. One life. Diablo waits at the top… almost.';
     } else if (mode === 'story') {
       hint.textContent = 'STORY — choose your soul. Death is not the end. It is reincarnation.';
+    } else if (mode === 'godwithin') {
+      hint.textContent = 'GOD WITHIN — choose your soul. Five chapters. Twelve guardians. Death is not the end — it is a dream, a voyage, and a new face.';
     } else if (mode === 'training') {
       hint.textContent = 'TRAINING — pick your fighter. The dummy will not fight back. H toggles hints.';
     } else if (mode === 'fightlab') {
@@ -583,6 +594,15 @@ export class ModeController {
       // the real Eastern Mind logo animation (skippable).
       playCutscene(EM_CUTSCENES['story.intro'], { label: 'THE TRIAL BEGINS' })
         .then(() => this._storyStageIntro());
+      return true;
+    }
+    if (this.mode === 'godwithin') {
+      // God Within runs the Trial ladder (this.story, reused verbatim)
+      // + the godwithin overlay: chapters, guardians, shards, faces.
+      this.story = { stage: 0, forces: [], deaths: 0, vesselId: selectedId, acc: this._newAcc(), startTime: Date.now() };
+      this.godwithin = createGodwithinRun(selectedId);
+      playCutscene(EM_CUTSCENES['story.intro'], { label: 'GOD WITHIN — THE DESCENT BEGINS' })
+        .then(() => this._godwithinStageIntro());
       return true;
     }
     if (this.mode === 'training') {
@@ -806,6 +826,8 @@ export class ModeController {
 
   /* ---------- STORY: the Trial + reincarnation ---------- */
   _storyStageIntro() {
+    // God Within runs its own rung intro (same ladder, chapter dressing).
+    if (this.mode === 'godwithin') return this._godwithinStageIntro();
     const st = STORY_STAGES[this.story.stage];
     if (!st) { this._storyComplete(); return; }
     this._el('stage-kicker').textContent = this.story.deaths > 0
@@ -875,6 +897,183 @@ export class ModeController {
       `Deaths: ${this.story.deaths}. Time: ${mins} min. The soul is nearly whole.`, [endingBtn]);
   }
 
+  /* ---------- GOD WITHIN: the descent (game/js/godwithin.js) ----------
+     The Trial ladder (this.story) + the godwithin overlay. A rung is
+     one Trial stage; a chapter rung fights its anchor guardians in
+     order, then the chapter boss (DW behaviour, WH body). Death does
+     NOT go straight to reincarnation: one dream night, then the
+     Banabana voyage, then the RNF face-pick, then the vessel cards
+     from the FULL 83-fighter pool. Cleared rooms persist across
+     deaths — death costs the vessel, never the rooms. */
+  _godwithinStageIntro() {
+    const rung = GODWITHIN_RUNGS[this.story.stage];
+    if (!rung) { this._godwithinComplete(); return; }
+    const run = this.godwithin;
+    const chapter = godwithinChapterForRung(this.story.stage);
+    const progress = godwithinRungProgress(run, this.story.stage);
+    const foeSpec = godwithinNextFoe(run, this.story.stage);
+    this._el('stage-kicker').textContent = this.story.deaths > 0
+      ? `DEATH ${this.story.deaths} BEHIND YOU · THE SOUL CONTINUES` : 'GOD WITHIN — THE DESCENT BEGINS';
+    this._el('stage-title').textContent = rung.title;
+    let sub = rung.sub;
+    if (chapter) {
+      sub += ` Guardians: ${progress.guardiansCleared}/${progress.guardiansTotal} rooms cleared` +
+        (progress.bossCleared ? ' · boss down.' : '.');
+    }
+    this._el('stage-sub').textContent = sub;
+    const reward = rung.trader ? 'THE TRADER — trade one force for another'
+      : rung.boss ? 'THE KATANA OF FIVE FORCES — become whole'
+      : `CLAIM ${FORCES[rung.forceKey].name} — ${FORCES[rung.forceKey].desc}`;
+    this._el('stage-reward').textContent = reward + ` · SOUL SHARDS: ${run.shards}`;
+    const foeName = !foeSpec ? '—'
+      : foeSpec.kind === 'final' ? 'ASSEMBLED SOUL'
+      : foeSpec.kind === 'toll' ? 'THE TRADER’S TOLL'
+      : foeSpec.name + (foeSpec.kind === 'boss' ? ' — ' + (foeSpec.dwBoss || 'CHAPTER BOSS') : ' — GUARDIAN');
+    this._el('stage-foe').textContent = 'Opponent: ' + foeName;
+    const fl = document.getElementById('stage-forces');
+    if (fl) fl.textContent = 'FORCES HELD: ' + (this.story.forces.length ? this.story.forces.map((k) => FORCES[k].name).join(' · ') : 'none yet');
+    this._badge(`${GODWITHIN_MODE.name} · ${rung.title}`);
+    this.show('stage');
+    const btn = this._el('stage-fight');
+    if (btn) btn.onclick = () => {
+      this.audio && this.audio.uiClick && this.audio.uiClick();
+      if (rung.trader) this._traderScreen();
+      else this._godwithinFight();
+    };
+  }
+
+  _godwithinFight() {
+    const rung = GODWITHIN_RUNGS[this.story.stage];
+    const run = this.godwithin;
+    const foeSpec = godwithinNextFoe(run, this.story.stage);
+    const vessel = this.getChar(this.story.vesselId);
+    const buffed = { ...vessel, stats: applyForces(vessel.stats, this.story.forces) };
+    let foeEntry;
+    if (foeSpec.kind === 'final') {
+      foeEntry = { ...buildAssembledSoul(vessel), ai: scaledAi(buildAssembledSoul(vessel), rung.diff) };
+    } else if (foeSpec.kind === 'toll') {
+      const foe = this._pickFoe(this.story.vesselId, rung.pool, rung.diff);
+      foeEntry = { ...foe, ai: scaledAi(foe, rung.diff) };
+    } else {
+      // Guardian or chapter boss: the foe IS the WH guardian (never a
+      // cloned DW / Def Jam / Urban Reign body). If the roster entry
+      // ever goes missing, fall back to a pool draw — never a fake.
+      const foe = this.getChar(foeSpec.id) || this._pickFoe(this.story.vesselId, rung.pool, rung.diff);
+      const chapter = godwithinChapterForRung(this.story.stage);
+      foeEntry = { ...foe, ai: scaledAi(foe, rung.diff) };
+      if (foeSpec.kind === 'boss' && chapter) foeEntry.godwithinBossKit = chapter.boss.behaviour;
+    }
+    this.game.onMatchEnd = (won) => this._godwithinEnd(won, foeSpec);
+    this._godwithinFoe = foeSpec;
+    const chapter = godwithinChapterForRung(this.story.stage);
+    this.startFight(this.story.vesselId, null, {
+      mode: 'godwithin',
+      godwithin: {
+        chapter: rung.chapter || null,
+        anchor: foeSpec.anchor || null,
+        foeKind: foeSpec.kind,
+        stageId: chapter ? chapter.whStageId : null,
+      },
+      playerChar: buffed, enemyChar: foeEntry,
+    });
+  }
+
+  _godwithinEnd(won, foeSpec) {
+    // fold this match's stats into the soul's accumulated actions
+    const ms = this.game.matchStats;
+    if (ms) this._foldStats(this.story.acc, ms);
+    const run = this.godwithin;
+    if (won) {
+      const res = godwithinMarkWin(run, this.story.stage, foeSpec);
+      if (res.shards) this._godwithinMirrorShards(res.shards, 'godwithin-' + foeSpec.kind);
+      if (res.complete) { setTimeout(() => this._godwithinComplete(), 1600); return; }
+      if (res.forceKey && !this.story.forces.includes(res.forceKey)) {
+        this.story.forces.push(res.forceKey);
+        this.ui.hudNote(`${FORCES[res.forceKey].name} CLAIMED — ${FORCES[res.forceKey].desc}`);
+      }
+      if (res.advanced) {
+        setTimeout(() => { this.story.stage++; this._godwithinStageIntro(); }, 1600);
+      } else {
+        // Guardian cleared — same rung, next guardian room.
+        setTimeout(() => this._godwithinStageIntro(), 1600);
+      }
+    } else {
+      this.story.deaths++;
+      run.deaths = this.story.deaths;
+      setTimeout(() => this._godwithinBetweenLives(), 1200);
+    }
+  }
+
+  /* Mirror a God Within shard payout into the SHARED wallet
+     (WHIdentity — the same wallet Dream, Banabana and the Trader
+     use). The run's own ledger (run.shards) is updated by the pure
+     godwithin.js functions; this only mirrors, never double-counts. */
+  _godwithinMirrorShards(n, source) {
+    if (!n) return;
+    try {
+      const I = (typeof window !== 'undefined' && window.WHIdentity) || null;
+      if (I && typeof I.addShards === 'function') I.addShards(n, source);
+    } catch (e) { /* wallet unavailable — the run ledger still holds it */ }
+  }
+
+  /* Between lives: DREAM → VOYAGE (offered) → FACE-PICK → reincarnate.
+     A failed layer degrades, never blocks the death: the dream is
+     skipped if its data/module fails, the voyage is offered as a
+     SAIL button on the reincarnation screen, the face-pick happens
+     on that screen itself. */
+  async _godwithinBetweenLives() {
+    const run = this.godwithin;
+    // 1. DREAM — one LSD night via the shipped dream system.
+    let dream = { day: null, stage: null, shards: 0, played: false };
+    try {
+      const dreamData = await fetch('data/dream-stages.json').then((r) => r.json());
+      const { DreamSys } = await import('./dream-system.js');
+      const dreamer = this.getChar(this.story.vesselId) || {};
+      const sys = new DreamSys(dreamData, {
+        seed: (Date.now() % 2147483647) || 1,
+        dreamer: { id: this.story.vesselId, name: dreamer.name || this.story.vesselId },
+      });
+      const res = sys.startDay();
+      const stageName = res.specialDay
+        ? ('SPECIAL DAY — ' + (res.specialDay.title || res.specialDay.id || ''))
+        : (sys.currentStage ? (sys.currentStage.name || sys.currentStage.id || 'DREAM STAGE') : null);
+      dream = {
+        day: sys.dayNumber, stage: stageName,
+        shards: GODWITHIN_ECONOMY.payouts.dreamNight, played: true,
+      };
+      this._godwithinMirrorShards(dream.shards, 'godwithin-dream');
+    } catch (e) { console.warn('[WH] godwithin dream skipped:', e?.message || e); }
+    godwithinRecordDream(run, dream);
+    // 2. VOYAGE — offered on the reincarnation screen (SAIL button
+    // mounts the Banabana hub overlay; the hub pays the shared
+    // wallet itself and keeps its own visited/items log).
+    run.voyageOffered = true;
+    // 3. FACE-PICK — the reincarnation screen's face strip is
+    // interactive in God Within mode (see _reincarnateScreenAfterCut):
+    // the player assembles eyes/nose/mouth and the assembly is scored
+    // against the chosen vessel's TRUE face (RNF Art rule).
+    run.facePick = { eyes: 0, nose: 0, mouth: 0 };
+    this._reincarnateScreen();
+  }
+
+  _godwithinComplete() {
+    const mins = Math.round((Date.now() - this.story.startTime) / 60000);
+    const endingBtn = {
+      label: 'WATCH ENDING', fn: () => this._playEnding(this.story.vesselId),
+    };
+    if (this.audio && this.audio.playEMTrack) this.audio.playEMTrack('transmigration-ending');
+    // The Sky stays gated until the Planetokio discs land in-repo
+    // (GODWITHIN_SKY.gated in game/js/godwithin.js) — stated here,
+    // never implied as open.
+    const sky = 'The Sky above the Sea stays gated until the Planetokio discs land in-repo.';
+    this._modeWin(true, 'GOD WITHIN — THE SOUL IS NEARLY WHOLE',
+      `Five chapters descended. Twelve guardians faced. The Assembled Soul faced — and it was you. ` +
+      `Deaths: ${this.story.deaths}. Dreams: ${this.godwithin.dreams.length}. Voyages: ${this.godwithin.voyages.length}. ` +
+      `Faces assembled: ${this.godwithin.faces.length}. Soul Shards: ${this.godwithin.shards}. Time: ${mins} min. ` +
+      sky + ` The Heart and Mind Within brawler waits on the main menu — descend again, free-roam, same soul.`,
+      [endingBtn]);
+  }
+
   /* Per-character story ending cinematic (game/js/story-endings.js).
      Plays AFTER the run completes — intros and win taunts are
      owner-protected and untouched; the ending is a separate beat. */
@@ -905,34 +1104,77 @@ export class ModeController {
   _reincarnateScreenAfterCut() {
     const profile = styleProfile(this.story.acc);
     const ids = this.roster.map((c) => c.id);
-    const picks = chooseReincarnation(profile, ids, this.story.vesselId, this.story.deaths);
+    // God Within offers vessels from the FULL 83-fighter pool
+    // (model-pending byou/ryuji filtered out, dead ids excluded) —
+    // STORY keeps the 36-vessel VESSEL_AFFINITY behaviour untouched.
+    const picks = this.mode === 'godwithin'
+      ? chooseGodwithinVessels(profile, VESSEL_AFFINITY,
+          godwithinVesselPool(ids, this.roster.filter((c) => c.modelPending || !c.model).map((c) => c.id)),
+          this.story.vesselId, this.story.deaths)
+      : chooseReincarnation(profile, ids, this.story.vesselId, this.story.deaths);
     this._el('reinc-deaths').textContent = `DEATH ${this.story.deaths} — THE SOUL CONTINUES`;
     this._el('reinc-flavor').textContent =
       'When a soul loses, it dies — and is reborn before the next fight. ' +
       'The Trial has watched how you fight. These are the vessels your actions have earned.';
+    if (this.mode === 'godwithin' && this.godwithin) {
+      const d = this.godwithin.dreams[this.godwithin.dreams.length - 1];
+      if (d && d.played) {
+        this._el('reinc-flavor').textContent +=
+          ` You dreamed — Day ${d.day}${d.stage ? ', ' + d.stage : ''} (+${d.shards} shards). ` +
+          `Sail the Banabana below, then assemble the next face.`;
+      }
+    }
     // The new face, assembled in pieces from the original game's own
     // face art (eyes / nose / mouth — CANON.md §1 "The Two Laws of Death").
+    // STORY shows one random piece per part (display art). GOD WITHIN
+    // turns the strip into the RNF face-pick: all three pieces per
+    // part on the table, tap to choose — the assembly is scored
+    // against the chosen vessel's TRUE face when a vessel is picked.
     const face = this._el('reinc-face');
     if (face) {
-      const pick = (arr) => arr[(Math.random() * arr.length) | 0];
       face.innerHTML = '';
+      const gw = this.mode === 'godwithin' && this.godwithin;
+      if (gw && !this.godwithin.facePick) this.godwithin.facePick = { eyes: 0, nose: 0, mouth: 0 };
       const strip = document.createElement('div');
       strip.setAttribute('style', 'display:flex;gap:18px;justify-content:center;align-items:flex-end;margin:6px 0 2px;');
       [['eyes', 'EYES'], ['nose', 'NOSE'], ['mouth', 'MOUTH']].forEach(([part, label]) => {
         const cell = document.createElement('div');
         cell.setAttribute('style', 'text-align:center;');
-        const img = document.createElement('img');
-        img.src = pick(EM_FACE[part]);
-        img.alt = label;
-        img.setAttribute('style', 'height:64px;image-rendering:auto;filter:drop-shadow(0 0 12px rgba(255,215,106,0.35));');
-        img.onerror = () => { cell.style.display = 'none'; };
+        if (gw) {
+          EM_FACE[part].forEach((src, idx) => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = label + ' ' + (idx + 1);
+            const sel = this.godwithin.facePick[part] === idx;
+            img.setAttribute('style', 'height:48px;margin:0 3px;cursor:pointer;opacity:' + (sel ? '1' : '0.45') + ';outline:' + (sel ? '2px solid #FFD76A' : 'none') + ';filter:drop-shadow(0 0 12px rgba(255,215,106,0.35));');
+            img.onerror = () => { img.style.display = 'none'; };
+            img.addEventListener('click', () => {
+              this.godwithin.facePick[part] = idx;
+              this.audio && this.audio.uiClick && this.audio.uiClick();
+              [...cell.querySelectorAll('img')].forEach((im, i) => {
+                const s2 = this.godwithin.facePick[part] === i;
+                im.style.opacity = s2 ? '1' : '0.45';
+                im.style.outline = s2 ? '2px solid #FFD76A' : 'none';
+              });
+            });
+            cell.appendChild(img);
+          });
+        } else {
+          const pick = (arr) => arr[(Math.random() * arr.length) | 0];
+          const img = document.createElement('img');
+          img.src = pick(EM_FACE[part]);
+          img.alt = label;
+          img.setAttribute('style', 'height:64px;image-rendering:auto;filter:drop-shadow(0 0 12px rgba(255,215,106,0.35));');
+          img.onerror = () => { cell.style.display = 'none'; };
+          cell.appendChild(img);
+        }
         const cap = document.createElement('div');
         cap.textContent = label;
         cap.setAttribute('style', 'color:#8a7a5a;font-size:10px;letter-spacing:0.3em;margin-top:4px;');
-        cell.appendChild(img); cell.appendChild(cap); strip.appendChild(cell);
+        cell.appendChild(cap); strip.appendChild(cell);
       });
       const title = document.createElement('div');
-      title.textContent = 'THE FACE REASSEMBLES';
+      title.textContent = gw ? 'THE FACE REASSEMBLES — PICK EACH PIECE (RNF)' : 'THE FACE REASSEMBLES';
       title.setAttribute('style', 'color:#FFD76A;font-size:11px;letter-spacing:0.4em;margin-bottom:4px;font-family:serif;');
       face.appendChild(title); face.appendChild(strip);
     }
@@ -954,12 +1196,63 @@ export class ModeController {
         this.audio && this.audio.uiClick && this.audio.uiClick();
         this.audio && this.audio.playEMSfx && this.audio.playEMSfx('reincarn.rebirth');
         this.audio && this.audio.stopEMTrack && this.audio.stopEMTrack();
+        if (this.mode === 'godwithin' && this.godwithin) {
+          // RNF face-pick scores here: the assembled face against
+          // this vessel's TRUE face. Art 50 = TRUE face (briefing +
+          // shard bonus); 40 = offered; 30 = wearable copy.
+          const run = this.godwithin;
+          const faceDef = godwithinRnfFaceFor(id);
+          const picked = run.facePick ? [run.facePick.eyes, run.facePick.nose, run.facePick.mouth] : [0, 0, 0];
+          if (faceDef) {
+            const scored = rnfScoreFacePick(picked, faceDef.trueFace);
+            godwithinRecordFace(run, { vessel: id, art: scored.art, status: scored.status });
+            if (scored.status === 'true') {
+              run.shards += GODWITHIN_ECONOMY.payouts.trueFace;
+              this._godwithinMirrorShards(GODWITHIN_ECONOMY.payouts.trueFace, 'godwithin-true-face');
+              this.ui.hudNote('TRUE FACE — ' + c.name + ' (Art 50). The face is yours. +' + GODWITHIN_ECONOMY.payouts.trueFace + ' shards.');
+            } else if (scored.status === 'offered') {
+              this.ui.hudNote('FACE OFFERED — ' + c.name + ' (Art 40).');
+            } else if (scored.status === 'copy') {
+              this.ui.hudNote('FACE COPY — ' + c.name + ' (Art 30, wearable, no briefing).');
+            } else {
+              this.ui.hudNote('FACE NOT OFFERED — ' + c.name + ' (Art below 30). The vessel is still yours; the face is not.');
+            }
+          }
+          run.vesselId = id;
+          run.facePick = null;
+        }
         this.story.vesselId = id;
         this.ui.hudNote('REBORN AS ' + c.name);
         setTimeout(() => this._storyStageIntro(), 900);
       });
       wrap.appendChild(card);
     });
+    // God Within: sail the Banabana between lives. The hub mounts as
+    // an overlay on this screen; it pays the shared wallet itself.
+    if (this.mode === 'godwithin' && this.godwithin && this.godwithin.voyageOffered) {
+      const sail = document.createElement('button');
+      sail.className = 'reinc-card';
+      sail.innerHTML = `<div class="cname">⛵ SAIL BETWEEN LIVES — BANABANA MK.1</div>` +
+        `<div class="rwhy">Voyage the Sea between lives. Area → region → scene, one item per scene. Winnings pay Soul Shards to the shared wallet.</div>`;
+      sail.addEventListener('click', async () => {
+        this.audio && this.audio.uiClick && this.audio.uiClick();
+        try {
+          const { mountRolyPolysHub } = await import('./rolypolys-hub.js');
+          const overlay = document.createElement('div');
+          overlay.setAttribute('style', 'position:fixed;inset:0;background:rgba(5,5,12,0.92);z-index:9999;overflow:auto;padding:24px;');
+          const host = document.createElement('div');
+          const close = document.createElement('button');
+          close.className = 'wh-btn';
+          close.textContent = '✕ RETURN TO THE REINCARNATION SCREEN';
+          close.addEventListener('click', () => { overlay.remove(); });
+          overlay.appendChild(close);
+          overlay.appendChild(host);
+          document.body.appendChild(overlay);
+          mountRolyPolysHub(host);
+        } catch (e) { console.warn('[WH] banabana hub failed:', e?.message || e); }
+      });
+      wrap.appendChild(sail);
+    }
     this.show('reincarnate');
   }
 
@@ -993,10 +1286,16 @@ export class ModeController {
       this.story.forces = this.story.forces.filter((k) => k !== give);
       this.story.forces.push(take);
       this.ui.hudNote(`TRADED ${FORCES[give].name} FOR ${FORCES[take].name}`);
-      setTimeout(() => this._storyFight(), 900);
+      // God Within's Trader rung pays the toll through its own fight path.
+      if (this.mode === 'godwithin') setTimeout(() => this._godwithinFight(), 900);
+      else setTimeout(() => this._storyFight(), 900);
     };
     const skip = this._el('trade-skip');
-    if (skip) skip.onclick = () => { this.audio && this.audio.uiClick && this.audio.uiClick(); this._storyFight(); };
+    if (skip) skip.onclick = () => {
+      this.audio && this.audio.uiClick && this.audio.uiClick();
+      if (this.mode === 'godwithin') this._godwithinFight();
+      else this._storyFight();
+    };
     this._badge('STORY · PHANTOM MARKETPLACE');
     this.show('trader');
   }
