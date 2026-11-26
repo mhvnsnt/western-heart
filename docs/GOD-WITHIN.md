@@ -212,6 +212,77 @@ intro panel + ENTER button actually display. STORY itself is left
 untouched here for the owner's call; the one-word fix is the same
 (`_storyStageIntro`: `show('stage')` → `show('stageIntro')`).
 
+## Screen art pass (2026-11-26 — owner direction)
+
+Owner, on the CI shots: the menus and screens were "too much like text
+dumps — they need art, UI art, menu art, stuff that makes them feel part
+of the game." The reincarnate screen is "one of the most important
+screens and mechanics and systems of our game." This pass: art first,
+text second, fighting-game layout (Tekken-style), phone-width clean.
+
+### Art map (all art is the game's own, except the sea — noted)
+
+| Screen | Art | Source |
+|---|---|---|
+| Reincarnate hero banner | Lantern shrine at dusk | `game/assets/stages/thumbs/shrine.png` (repo stage thumb) |
+| Stage intro ch. 1 Helix Palace | `helix-palace.png` | repo stage thumb |
+| Stage intro ch. 2–3 Mountain/Shrine | `octagonal-shrine.png` | repo stage thumb |
+| Stage intro ch. 4 Palace of Dreaming | `palace-of-dreaming.png` | repo stage thumb |
+| Stage intro ch. 5 Final Shrine | `shrine.png` | repo stage thumb (`tong-nou.png` is an unusable black void) |
+| Stage intro Trader rung | `phantom-marketplace.png` | repo stage thumb |
+| Banabana hub header | Banabana crossing the violet sea at dawn | NEW key art, `game/assets/godwithin/banabana-sea.png` (generated 2026-11-26 — no sea art exists in the repo) |
+| STORY rail GOD WITHIN card | `shrine.png` thumb strip | repo stage thumb |
+| Face strip / vessel portraits | Eastern Mind D_FACE bitmaps / `assets/portraits/*.png` | original game art / repo portraits (unchanged) |
+
+### What changed (files)
+
+- `game/godwithin-art.css` (new): art banners, chips, VS rows, VS
+  splash, hub shell, mode-card thumbs. The hub's `.wh-btn` /
+  `.wh-row` / `.wh-input` / `.wh-dice` had NO styles anywhere in the
+  game CSS — hub buttons rendered as native white buttons; defined
+  here, scoped to `.gw-hub`.
+- `game/index.html`: art banner slots on stage-intro + reincarnate,
+  subline + dream chip on reincarnate, `#stage-foe` is a `<div>` now
+  (it holds the VS row), `#gw-vs` VS-splash overlay.
+- `game/js/modes.js`: draft copy (below); stage art per chapter;
+  reward as two chips; opponent as a VS row (vessel vs guardian);
+  SAIL is a primary `.gw-sail` button; VS splash ~1.4s before
+  ROUND 1 (defensive — any failure starts the fight at once);
+  MODE_LIST desc trimmed to one line. STORY's `_storyStageIntro`
+  untouched (GW-21, owner's call) — the stage-art banner stays
+  hidden there.
+- `game/js/mainmenu.js`: GOD WITHIN card gets its shrine thumb +
+  one-line desc.
+- `game/js/rolypolys-hub.js`: sea-art header replaces the long Ship
+  paragraph; progress line tightened to one line. All hub ids kept.
+- `test/e2e/godwithin.e2e.mjs`: asserts the new copy + art anchors
+  (CHOOSE A FACE, dream chip, shrine banner, Helix art on reborn,
+  solid `#070714` hub overlay, sea-art header).
+
+### Ghost-text fix (hub)
+
+The Banabana hub overlay was `rgba(5,5,12,0.92)` — 8% transparent,
+so the reincarnate screen ("DEATH IS NOT THE END", flavor, face
+strip) bled through behind the hub. The overlay is solid `#070714`
+now (`gw-hub-overlay`), and the hub carries its own `#070714`
+background. Proven by the 06 shot in CI.
+
+### Draft copy (owner's rewrite pending — NOT final)
+
+- Reincarnate title: **DEATH IS NOT THE END** (kept). Subline:
+  *It's just a new beginning.*
+- Body: "You fell. The fight goes on. Dream tonight, wake in a new
+  body, and take the rung back."
+- Dream chip: "Dreamed — Day 1, Palace of Dreaming · +20 shards from
+  the dream" (day/stage/shards are live values).
+- Face-pick: "CHOOSE A FACE" / "The soul remembers, the body is
+  new." / "PICK EACH PIECE (RNF)".
+- Vessel: "YOUR NEXT VESSEL AWAITS — PICK ONE".
+- Stage intro: chapter title kept; sub kept (one line); reward as
+  chips (CLAIM … + ◆ N SOUL SHARDS); opponent as VS row.
+- MODE_LIST / STORY card: "Five chapters. Twelve guardians. Death
+  is not the end — it is a new beginning."
+
 ## Sources / licences (honest log)
 
 - Devil Within spec: `mhvnsnt/game-reverse-engineering`

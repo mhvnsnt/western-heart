@@ -150,24 +150,34 @@ try {
 } catch (e) { fails.push('death -> reincarnate: ' + e.message.split('\n')[0] + ' on ' + JSON.stringify(await scr())); }
 
 // 5) Reincarnate screen: RNF strip title, SAIL button, vessel cards.
+//    Art pass 2026-11-26: SAIL is now a .gw-sail primary button (was a
+//    .reinc-card); the dream line lives on the #reinc-dream chip, not
+//    in the flavor paragraph; the face strip keeps PICK EACH PIECE (RNF).
 try {
   const reinc = await p.evaluate(() => {
     const face = document.getElementById('reinc-face')?.textContent || '';
     const cards = [...document.querySelectorAll('#reinc-cards .reinc-card')];
+    const sailBtn = document.querySelector('#reinc-cards .gw-sail');
     return {
       faceTitle: face.includes('PICK EACH PIECE (RNF)'),
-      sail: cards.some((c) => c.textContent.includes('SAIL BETWEEN LIVES')),
-      vessels: cards.filter((c) => !c.textContent.includes('SAIL BETWEEN LIVES')).length,
+      faceHuman: face.includes('CHOOSE A FACE'),
+      sail: !!sailBtn && sailBtn.textContent.includes('SAIL BETWEEN LIVES'),
+      vessels: cards.length,
       deaths: document.getElementById('reinc-deaths')?.textContent || '',
       flavor: document.getElementById('reinc-flavor')?.textContent || '',
+      dream: document.getElementById('reinc-dream')?.textContent || '',
+      art: document.querySelector('#screen-reincarnate .gw-art img')?.getAttribute('src') || '',
     };
   });
   console.log('reincarnate:', JSON.stringify(reinc));
   if (!reinc.faceTitle) fails.push('reincarnate: RNF face-strip title missing (expected PICK EACH PIECE (RNF))');
+  if (!reinc.faceHuman) fails.push('reincarnate: face-strip title is not CHOOSE A FACE');
   if (!reinc.sail) fails.push('reincarnate: SAIL button missing');
   if (reinc.vessels < 1) fails.push('reincarnate: no vessel cards');
   if (!reinc.deaths.includes('DEATH 1')) fails.push('reincarnate: deaths line is not DEATH 1: ' + reinc.deaths);
-  if (!reinc.flavor.includes('dreamed')) fails.push('reincarnate: dream line missing from flavor (no dream night recorded?)');
+  if (!reinc.flavor.includes('The fight goes on')) fails.push('reincarnate: new body copy missing from flavor');
+  if (!reinc.dream.includes('Dreamed') || !reinc.dream.includes('shards')) fails.push('reincarnate: dream chip missing (no dream night recorded?): ' + reinc.dream);
+  if (!reinc.art.includes('shrine.png')) fails.push('reincarnate: shrine art banner missing: ' + reinc.art);
   await p.screenshot({ path: `${SHOTS}/05-reincarnate.png` });
 } catch (e) { fails.push('reincarnate checks: ' + e.message.split('\n')[0]); }
 
@@ -178,8 +188,18 @@ try {
 //    so that substring never matched — the hub HAD mounted (07 shot
 //    proves it) while the wait timed out blind.
 try {
-  await p.evaluate(() => { [...document.querySelectorAll('#reinc-cards .reinc-card')].find((c) => c.textContent.includes('SAIL BETWEEN LIVES'))?.click(); });
+  await p.evaluate(() => { document.querySelector('#reinc-cards .gw-sail')?.click(); });
   await p.waitForFunction(() => !!document.querySelector('#rp-sail'), null, { timeout: 60000 });
+  // Art pass 2026-11-26 — ghost-text fix: the hub overlay must be
+  // SOLID (was rgba(5,5,12,0.92), letting the reincarnate screen
+  // bleed through), and the hub carries its own sea-art header.
+  const hubArt = await p.evaluate(() => ({
+    overlayBg: getComputedStyle(document.querySelector('.gw-hub-overlay')).backgroundColor,
+    head: document.querySelector('.gw-hub-head img')?.getAttribute('src') || '',
+  }));
+  console.log('hub art:', JSON.stringify(hubArt));
+  if (hubArt.overlayBg !== 'rgb(7, 7, 20)') fails.push('hub: overlay is not solid #070714 (ghost text): ' + hubArt.overlayBg);
+  if (!hubArt.head.includes('banabana-sea')) fails.push('hub: sea-art header missing: ' + hubArt.head);
   await p.tap('#rp-sail', { timeout: 90000 });
   await p.waitForFunction(() => (document.getElementById('rp-status')?.textContent || '').includes('Sailed to'), null, { timeout: 60000 });
   console.log('voyage: sailed, hub status confirms');
@@ -197,6 +217,9 @@ try {
   console.log('reborn: stage kicker:', JSON.stringify(kicker));
   if (!kicker.includes('DEATH 1')) fails.push('reborn: stage kicker is not DEATH 1: ' + kicker);
   else console.log('reborn: same rung, new vessel OK');
+  const rebornArt = await p.evaluate(() => document.getElementById('stage-art')?.getAttribute('src') || '');
+  if (!rebornArt.includes('helix-palace')) fails.push('reborn: stage art is not the Helix Palace thumb: ' + rebornArt);
+  else console.log('reborn: stage art OK:', rebornArt);
   await p.screenshot({ path: `${SHOTS}/07-reborn-stage-intro.png` });
 } catch (e) { fails.push('reborn vessel pick: ' + e.message.split('\n')[0] + ' on ' + JSON.stringify(await scr())); }
 
