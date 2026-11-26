@@ -58,7 +58,7 @@
   border-radius: 12px; border: 2px solid rgba(178,141,255,.6); display: block; margin: 0 auto 6px;
   background: rgba(255,255,255,.05);
 }
-.gw-vs-side .gw-vs-name { font-weight: 900; letter-spacing: 1.5px; font-size: 14px; color: #fff; overflow-wrap: break-word; }
+.gw-vs-side .gw-vs-name { font-weight: 900; letter-spacing: 1px; font-size: 12px; color: #fff; word-break: keep-all; overflow-wrap: normal; }
 .gw-vs-side .gw-vs-role { font-size: 10px; letter-spacing: 3px; color: #b28dff; margin-top: 3px; }
 .gw-vs-side .gw-vs-you { font-size: 10px; letter-spacing: 3px; color: #9fd8ff; margin-top: 3px; }
 .gw-vs-mid {
@@ -114,6 +114,14 @@
 .gw-hub canvas { max-width: 100%; height: auto; border-radius: 12px; background: #12081f; }
 
 /* ---------- Mode cards with art (STORY rail) ---------- */
+/* STORY rail phone-width fix (2026-11-26): the submenu rendered 971px
+   wide on a 390px phone, so every card's desc clipped at the viewport
+   edge; the sub-head was 60% transparent, ghosting the topbar through
+   it. Pin the submenu to the viewport, solid head, wrap the descs. */
+.mm-submenu { max-width: 100vw; }
+.mm-sub-head { background: rgba(8,4,14,1); }
+.mm-card { min-width: 0; }
+.mm-card p { overflow-wrap: break-word; }
 .mm-card.has-art { padding-top: 0; overflow: hidden; }
 .mm-card .mm-thumb {
   display: block; width: calc(100% + 36px); margin: 0 -16px 12px -20px;

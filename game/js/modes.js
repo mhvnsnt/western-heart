@@ -1264,7 +1264,7 @@ export class ModeController {
     const vlabel = document.createElement('div');
     vlabel.id = 'reinc-vessel-label';
     vlabel.className = 'reinc-face-sub2';
-    vlabel.textContent = 'YOUR NEXT VESSEL AWAITS — PICK ONE';
+    vlabel.textContent = 'YOUR NEXT VESSEL AWAITS';
     if (wrap && wrap.parentNode) wrap.parentNode.insertBefore(vlabel, wrap);
     wrap.innerHTML = '';
     picks.forEach((id) => {

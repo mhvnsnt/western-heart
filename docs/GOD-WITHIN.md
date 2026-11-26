@@ -259,6 +259,19 @@ text second, fighting-game layout (Tekken-style), phone-width clean.
   (CHOOSE A FACE, dream chip, shrine banner, Helix art on reborn,
   solid `#070714` hub overlay, sea-art header).
 
+### Shot-review fixes (C5, after CI run 45903253144 own-eyes)
+
+- VS-row names no longer break mid-word (GASHADOKURO split as
+  "GASHADOKU / RO") — 12px, keep-all.
+- Vessel label shortened to "YOUR NEXT VESSEL AWAITS" (was wrapping
+  mid-phrase).
+- STORY submenu: pinned to 100vw (it rendered 971px wide on a 390px
+  phone, clipping every card's desc) and the sub-head made solid
+  (it ghosted the topbar through at 60% opacity).
+- 03-stage-intro.png in CI still catches the loading overlay at 5%
+  (pre-existing; the intro itself is DOM-proven in the log). The
+  stage-intro design is proven by 07, same panel and code path.
+
 ### Ghost-text fix (hub)
 
 The Banabana hub overlay was `rgba(5,5,12,0.92)` — 8% transparent,
