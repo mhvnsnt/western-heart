@@ -156,3 +156,18 @@ one). Over the last few weeks and months, Kazzy had been posting what the owner
 describes as "unhinged" posts — he can't really describe them beyond that. The study
 lane is chasing this down: which page, what the posts actually said, and whether they
 say anything about his final weeks. Describe, don't diagnose.
+
+## God Within screen art pass LANDED on the branch (2026-11-26 ~16:42 CST)
+
+The redesign lane finished: 5 commits on godwithin/wiring-20261126 (head 33d21c70),
+CI run 45905599585 all green, shots parent-verified own-eyes. Reincarnate screen got
+a shrine banner, gold title, short body, dream pill chip; stage intros got per-chapter
+banner art, reward chips, and a VS row (vessel vs guardian) plus a VS splash before
+ROUND 1; Banabana hub ghost-text bleed is FIXED (solid overlay) with a new sea key
+art header and real purple SAIL / VISIT SCENE buttons; STORY rail GOD WITHIN card
+carries the shrine thumb; the 971px-wide submenu clipping on a 390px phone is fixed.
+Draft copy throughout is still HIS to rewrite, line by line — nothing final. Still
+open: PR #1861 merge call, the STORY one-word fix (GW-21), and the main-menu art
+program (not started — his call). Known leftovers, not hidden: face-piece images
+hidden on reincarnate (GW-3), pause button still overlaps the meter text, 03-stage-intro
+still catches the loading overlay at 5%, reincarnate panel still scrolls to reach SAIL.
