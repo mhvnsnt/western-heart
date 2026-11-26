@@ -66,8 +66,8 @@ Owner's words, paraphrased faithfully from his voice message:
 - There is a pattern he keeps repeating and regrets: he hits up artists to make music
   with them, they either give him a price or say they really like his music and want to
   work with him — then life goes by and he never hits them up. A year or two goes by.
-- It happened with OG Macko: he was supposed to get a song with OG Macko, and OG Macko
-  died (owner believes he killed himself).
+- It happened with OG Maco: he was supposed to get a song with OG Maco, and OG Maco
+  died (owner believes he killed himself). (Owner said "Macko" in the voice message; the artist is OG Maco.)
 - Manic Kazzy (M A N I C space K A Z Z Y): owner does not know how his music blew up
   or how he got millions of plays, but suspects he might have been making money. His
   stuff was unique — BDSM-themed, master-and-owner / pet-play lifestyle music. The
@@ -79,7 +79,7 @@ Owner's words, paraphrased faithfully from his voice message:
   until sourced.**
 - Owner's ask: make a character for Manic Kazzy in homage to him.
 
-Status: research in progress (Manic Kazzy rise + death, OG Macko death confirmation).
+Status: research in progress (Manic Kazzy rise + death, OG Maco death confirmation).
 Character concept to follow once the research lands. Undecided: which game/roster the
 homage character lives in, and who the artist friend from two years ago is — owner to
 name him; Ashes offered to help actually reach out this time so the pattern doesn't
@@ -123,7 +123,7 @@ repeat.
 - CORRECTION to the owner's belief in the voice message: no source says he killed
   himself. Do not assert suicide.
 
-### OG Maco (OG Macko) — death CONFIRMED
+### OG Maco (OG Maco) — death CONFIRMED
 
 - Benedict Chiajulam Ihesiba Jr., born 23 Apr 1992, College Park, Georgia. Breakout:
   "U Guessed It" (25 Sep 2014, Quality Control) — viral Vine meme, 2 Chainz remix
