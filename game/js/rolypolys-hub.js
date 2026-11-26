@@ -258,10 +258,17 @@ export function bullShards(dodges) {
 }
 
 // ------------------------------------------------------------------ DOM shell
+// el() builds a wrapper div around ALL top-level nodes in the HTML string.
+// (The Sato slice this file was ported from used template.content.firstChild,
+// which silently dropped every sibling after the first — the header's Area /
+// Region / Scene selects and the SAIL / VISIT buttons never entered the DOM,
+// so mount threw on areaSel.addEventListener and the whole hub died. Found by
+// the C11 e2e console capture, run 45870176926. A wrapper div keeps every
+// child, and the append-then-querySelector call sites still work.)
 function el(html) {
-  const t = document.createElement('template');
-  t.innerHTML = html.trim();
-  return t.content.firstChild;
+  const d = document.createElement('div');
+  d.innerHTML = html.trim();
+  return d;
 }
 
 function identity() {
