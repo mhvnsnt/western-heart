@@ -93,3 +93,47 @@ repeat.
 3. Manic Kazzy research findings + homage character concept + which game it lives in.
 4. Name of the artist friend from two years ago; help him reach out.
 5. God Within PR #1861 merge call (standing, from the 2026-11-26 delivery).
+
+## Research findings — Manic Kazzy + OG Maco (2026-11-26, web research)
+
+### Manic Kazzy — real name Aiden Olson
+
+- Independent alternative-rap artist; songwriter credited as Aiden Olson on every
+  track. Own imprint: No Happy Ending. No mainstream press profile exists.
+- Music: explicit BDSM / dominance-submission / pet-play themed lyrics. Songs include
+  "Whos a good girl?", "Rope Bunny", "I Am Her God", "Sadistic", "Praise Kink",
+  "BRAT", "I'll Obey You", "Mark Your Territory".
+- Rise: TikTok/BookTok discovery + kink/"smut music" Spotify playlists; never
+  charted. First releases 2023 ("Sadistic" EP, 16 Jun 2023). Album "Swan Song",
+  27 May 2026. Latest single "Intoxicated", 16 Nov 2026.
+- Spotify (checked live 26 Nov 2026, 86,779 monthly listeners): "Whos a good girl?"
+  4,580,727 plays; "He'll Never Be Me" 1,292,683; "I Am Her God" 897,701;
+  "Rope Bunny" 716,297; "Praise Kink" 589,561; "Sadistic" 578,002; "BRAT" 517,568.
+  YouTube/TikTok totals could not be verified.
+
+### Manic Kazzy — death: UNCONFIRMED, cause UNKNOWN (do not report suicide)
+
+- Only evidence: three Facebook friend tributes, 24-25 Nov 2026 (Thomas Bishop,
+  Kenshi Riles, Roo Doss). None states a date of death or any cause. No obituary,
+  no family or collaborator statement, no press coverage as of 26 Nov 2026.
+- The death is probably real (three independent tributes in ~16 hours) but is
+  unauthoritatively confirmed. Treat as breaking, unverified news.
+- Context only, NOT evidence about his death: a 12 Jul 2026 post of his said he was
+  alive despite previous suicidal thoughts, and 7 months sober.
+- CORRECTION to the owner's belief in the voice message: no source says he killed
+  himself. Do not assert suicide.
+
+### OG Maco (OG Macko) — death CONFIRMED
+
+- Benedict Chiajulam Ihesiba Jr., born 23 Apr 1992, College Park, Georgia. Breakout:
+  "U Guessed It" (25 Sep 2014, Quality Control) — viral Vine meme, 2 Chainz remix
+  peaked No. 90 Billboard Hot 100; XXL 2015 Freshman Class.
+- Died 26 Dec 2024, aged 32, in a Los Angeles hospital surrounded by family, from a
+  self-inflicted gunshot wound to the head sustained 12 Dec 2024 (Cedars-Sinai, coma).
+  Manager confirmed to AllHipHop he shot himself; TMZ/NME/HipHopDX/Stereogum report
+  it as an apparent suicide attempt. Family confirmed the death 27 Dec 2024.
+- Spotify (checked live 26 Nov 2026): "U Guessed It" 34,672,720 plays.
+
+Sources: NME, AllHipHop, HipHopDX, Stereogum (OG Maco); Spotify artist pages,
+Shazam/Deezer/YouTube credits, Facebook tributes (Manic Kazzy). Full report kept in
+workspace research notes manic-kazzy-og-macko-research-20261126-2201/report.md.
