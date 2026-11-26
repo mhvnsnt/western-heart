@@ -157,6 +157,7 @@ GW-7, GW-7b, GW-8, GW-19, GW-20.
 | `game/js/stages.js` | `GODWITHIN_GUARDIAN_ROOMS` export |
 | `game/js/rolypolys-hub.js` + `game/data/rolypolys-world.js` + `test/rolypolys-hub.test.mjs` | Banabana hub, ported byte-identical from the Sato phase-2 slice (`_sato-wh-minigames-20261120/phase2-rolypolys-world-hub`) |
 | `test/godwithin.test.mjs` | 17 tests (pure node, CI pattern) |
+| `test/e2e/godwithin.e2e.mjs` + `.github/workflows/game-checks.yml` (`godwithin-e2e` job) | God Within tap-path e2e on ubuntu-latest + Playwright: menu → GOD WITHIN card → pantera → rung-1 guardian fight → lose → dream → reincarnate (RNF strip + SAIL) → Banabana sail → reborn same rung, new vessel; shots uploaded as `godwithin-shots` |
 | `docs/GOD-WITHIN.md` | This file |
 | `docs/DREAM-SYSTEM-LSD-CORE.md` | One-line fix: the LSD slice is merged on main (was "unmerged") |
 
@@ -172,11 +173,12 @@ GW-7, GW-7b, GW-8, GW-19, GW-20.
   code) and was NOT relied on.
 - Live playtest frames/video: NOT captured in this lane (Chromium
   SIGTRAP-broken box-wide; no live-browser step available to a
-  subagent). Exact next step: run the menu-touch e2e
-  (`.github/workflows/game-checks.yml`, ubuntu-latest + Playwright)
-  against this branch with a `mode-godwithin` tap path, or a
-  Kaggle/Colab free capture, and attach the frames. **No playtest
-  is claimed that was not viewed.**
+  subagent). The God Within tap-path e2e above (`godwithin-e2e` job)
+  is the capture route: it runs the full flow on a GitHub-hosted
+  runner and uploads `godwithin-shots` (menu card, stage intro,
+  fight, reincarnate, Banabana hub, reborn intro) as its artifact.
+  Until that job is green and its shots viewed, **no playtest is
+  claimed that was not viewed.**
 
 ## Exact gaps (full list in `game/js/godwithin.js` GODWITHIN_GAPS)
 
