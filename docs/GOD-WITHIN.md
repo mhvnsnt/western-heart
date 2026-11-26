@@ -153,6 +153,7 @@ GW-7, GW-7b, GW-8, GW-19, GW-20.
 | `game/js/godwithin.js` | The mode module (pure, node-testable): chapters, anchors, rungs, combat tables, RNF, sky, economy, featured cast, run state machine, flow, gaps GW-1–GW-20 |
 | `game/js/modes.js` | Wiring: import, `MODE_LIST` godwithin entry, `startMode` hint, `onConfirm` branch, `_godwithinStageIntro/_godwithinFight/_godwithinEnd/_godwithinBetweenLives/_godwithinComplete`, Trader routing, reincarnate full-pool picks + interactive RNF face strip + SAIL button |
 | `game/js/mainmenu.js` | GOD WITHIN card (story submenu) |
+| `game/js/main.js` | Delegated data-action router: `mode-godwithin` → `startMode('godwithin')` (without this branch the card would be dead — the same gap the pre-existing `mode-heartmind` card has) |
 | `game/js/stages.js` | `GODWITHIN_GUARDIAN_ROOMS` export |
 | `game/js/rolypolys-hub.js` + `game/data/rolypolys-world.js` + `test/rolypolys-hub.test.mjs` | Banabana hub, ported byte-identical from the Sato phase-2 slice (`_sato-wh-minigames-20261120/phase2-rolypolys-world-hub`) |
 | `test/godwithin.test.mjs` | 17 tests (pure node, CI pattern) |

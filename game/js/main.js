@@ -898,6 +898,13 @@ document.addEventListener('click', (e) => {
     else if (a === 'mode-story') {
       getModes().then(m => m.startMode('story')).catch(() => menuFail('Could not load STORY — tap again'));
     }
+    else if (a === 'mode-godwithin') {
+      // God Within (branch godwithin/wiring-20261126): the GOD WITHIN
+      // card routes here — without this branch the card would be dead
+      // (the same gap the pre-existing mode-heartmind card has: no
+      // branch in this router).
+      getModes().then(m => m.startMode('godwithin')).catch(() => menuFail('Could not load GOD WITHIN — tap again'));
+    }
     else if (a === 'mode-training') {
       getModes().then(m => m.startMode('training')).catch(() => menuFail('Could not load TRAINING — tap again'));
     }

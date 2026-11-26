@@ -20,6 +20,7 @@ const M = await import(join(ROOT, 'game', 'js', 'godwithin.js'));
 const MODES_SRC = readFileSync(join(ROOT, 'game', 'js', 'modes.js'), 'utf8');
 const MENU_SRC = readFileSync(join(ROOT, 'game', 'js', 'mainmenu.js'), 'utf8');
 const STAGES_SRC = readFileSync(join(ROOT, 'game', 'js', 'stages.js'), 'utf8');
+const MAIN_SRC = readFileSync(join(ROOT, 'game', 'js', 'main.js'), 'utf8');
 
 // The roster ids come from the shipped roster-full.js (read live,
 // not hand-typed) so the pool-size test tracks the real roster.
@@ -223,10 +224,14 @@ test('wiring: modes.js carries the God Within entry + startMode + confirm + betw
   assert.ok(MODES_SRC.includes('rolypolys-hub.js'), 'death hooks the Banabana hub');
 });
 
-test('wiring: main menu carries the GOD WITHIN card; stages carry guardian rooms', () => {
+test('wiring: main menu carries the GOD WITHIN card; stages carry guardian rooms; main.js routes the tap', () => {
   assert.ok(MENU_SRC.includes("t: 'GOD WITHIN'"), 'menu card exists');
   assert.ok(MENU_SRC.includes("action: 'mode-godwithin'"), 'menu card routes mode-godwithin');
   assert.ok(STAGES_SRC.includes('GODWITHIN_GUARDIAN_ROOMS'), 'stages.js exports guardian rooms');
   assert.ok(STAGES_SRC.includes("anchor: 'PYRAMSTP'"), 'guardian rooms list anchors');
   assert.ok(STAGES_SRC.includes("guardianId: 'demonio'"), 'DEVIL room guarded by DEMONIO');
+  // The tap itself: main.js's delegated data-action router must have
+  // a mode-godwithin branch, or the card is dead on arrival.
+  assert.ok(MAIN_SRC.includes("a === 'mode-godwithin'"), 'main.js router handles mode-godwithin');
+  assert.ok(MAIN_SRC.includes("m.startMode('godwithin')"), 'router starts God Within mode');
 });
