@@ -30,6 +30,7 @@ const b = await chromium.launch();
 const ctx = await b.newContext({ ...devices['iPhone 13'], viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
 const p = await ctx.newPage();
 p.on('pageerror', (e) => console.log('PAGEERROR:', String(e).slice(0, 300)));
+p.on('console', (m) => { if (m.type() === 'warning' || m.type() === 'error') console.log('CONSOLE ' + m.type() + ':', m.text().slice(0, 300)); });
 const visible = (id) => p.evaluate((i) => { const e = document.getElementById(i); return e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden'); }, id);
 const scr = () => p.evaluate(() => ['screen-menu', 'screen-select', 'screen-stage', 'screen-stage-intro', 'screen-reincarnate', 'hud'].filter((id) => { const e = document.getElementById(id); return e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden'); }));
 
@@ -66,10 +67,18 @@ try {
   const card = await p.evaluate(() => {
     const el = document.querySelector('[data-action="mode-godwithin"]');
     if (!el) return null;
-    el.scrollIntoView({ block: 'center' });
+    // The STORY submenu cards are WIDER than the 390px phone viewport
+    // (their text clips at the right edge — 01-menu shot) — the
+    // geometric centre is off-viewport, so elementFromPoint returns
+    // null there. A thumb taps the VISIBLE part: measure at the centre
+    // clamped into the viewport. behaviour:'instant' defeats any
+    // smooth-scroll animation on the panel.
+    el.scrollIntoView({ block: 'center', behavior: 'instant' });
     const r = el.getBoundingClientRect();
-    const t = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2);
-    return { h: Math.round(r.height), hit: !!t && (t === el || el.contains(t)), top: t ? (t.id || t.className || t.tagName) : null, text: el.textContent.slice(0, 40) };
+    const px = Math.min(Math.max(r.x + r.width / 2, 0), window.innerWidth - 1);
+    const py = Math.min(Math.max(r.y + r.height / 2, 0), window.innerHeight - 1);
+    const t = document.elementFromPoint(px, py);
+    return { h: Math.round(r.height), w: Math.round(r.width), hit: !!t && (t === el || el.contains(t)), top: t ? (t.id || t.className || t.tagName) : null, text: el.textContent.slice(0, 40) };
   });
   if (!card) fails.push('menu: no [data-action="mode-godwithin"] card');
   else {
@@ -105,6 +114,10 @@ try {
   console.log('stage intro:', JSON.stringify(intro));
   if (!intro.title) fails.push('stage intro: empty stage title');
   if (!intro.foe.includes('GUARDIAN')) fails.push('stage intro: rung-1 foe is not a guardian: ' + intro.foe);
+  // Best effort: let the fight-loading overlay clear so the shot shows
+  // the intro panel, not ENTERING THE ARENA (C10's 03 shot caught it
+  // at 4%). Never fails the test if it doesn't clear in time.
+  try { await p.waitForFunction(() => { const o = document.getElementById('wh-loading'); return !o || !o.classList.contains('show'); }, null, { timeout: 15000 }); } catch {}
   await p.screenshot({ path: `${SHOTS}/03-stage-intro.png` });
 } catch (e) { fails.push('mode entry: ' + e.message.split('\n')[0] + ' on ' + JSON.stringify(await scr())); }
 
@@ -159,15 +172,20 @@ try {
 } catch (e) { fails.push('reincarnate checks: ' + e.message.split('\n')[0]); }
 
 // 6) SAIL -> Banabana hub overlay -> sail once -> close.
+//    Selectors are the hub's own unique ids (#rp-sail / #rp-status):
+//    the C10 run used div[style*="z-index:9999"] for the overlay, but
+//    Chrome serializes the inline style with a space ("z-index: 9999"),
+//    so that substring never matched — the hub HAD mounted (07 shot
+//    proves it) while the wait timed out blind.
 try {
   await p.evaluate(() => { [...document.querySelectorAll('#reinc-cards .reinc-card')].find((c) => c.textContent.includes('SAIL BETWEEN LIVES'))?.click(); });
-  await p.waitForFunction(() => { const o = document.querySelector('div[style*="z-index:9999"]'); return o && o.querySelector('#rp-sail'); }, null, { timeout: 60000 });
+  await p.waitForFunction(() => !!document.querySelector('#rp-sail'), null, { timeout: 60000 });
   await p.tap('#rp-sail', { timeout: 90000 });
-  await p.waitForFunction(() => { const o = document.querySelector('div[style*="z-index:9999"]'); return o && o.textContent.includes('Sailed to'); }, null, { timeout: 60000 });
+  await p.waitForFunction(() => (document.getElementById('rp-status')?.textContent || '').includes('Sailed to'), null, { timeout: 60000 });
   console.log('voyage: sailed, hub status confirms');
   await p.screenshot({ path: `${SHOTS}/06-banabana-hub.png` });
   await p.evaluate(() => { [...document.querySelectorAll('button')].find((x) => x.textContent.includes('RETURN TO THE REINCARNATION SCREEN'))?.click(); });
-  await p.waitForFunction(() => !document.querySelector('div[style*="z-index:9999"]'), null, { timeout: 60000 });
+  await p.waitForFunction(() => !document.querySelector('#rp-sail'), null, { timeout: 60000 });
   if (!(await reincVisible())) fails.push('voyage: reincarnate screen not showing after hub close');
 } catch (e) { fails.push('voyage (SAIL -> hub -> close): ' + e.message.split('\n')[0]); }
 
