@@ -171,3 +171,17 @@ open: PR #1861 merge call, the STORY one-word fix (GW-21), and the main-menu art
 program (not started — his call). Known leftovers, not hidden: face-piece images
 hidden on reincarnate (GW-3), pause button still overlaps the meter text, 03-stage-intro
 still catches the loading overlay at 5%, reincarnate panel still scrolls to reach SAIL.
+
+## Megami twerk video DELIVERED (2026-11-26 ~16:57 CST)
+
+Owner order ("make megami twerk and save here") complete. Real Mixamo "Dancing Twerk"
+retargeted to the v2 model, 194 frames @30fps, 6.47s, 720x1280. Two root causes were
+proven by measurement and fixed: v3 kept the shape keys the v2 build had cleared
+(figure had collapsed ~25cm); v4 fixed the arm retarget (Mixamo T-pose rest vs Megami
+arms-down rest had stretched forearms to 0.604m vs 0.211m rest). Head-pose scan: zero
+head snaps; the 23 raw flags were own-eyes verified as mask artifacts on head-down
+beats (face under the fringe). Staged on release megami-twerk-20261126
+(mhvnsnt/western-heart, id 459977718): MP4 + 4 stills + contact sheet, MP4 pull-back
+hash-verified. Parent own-eyes: contact sheet + mid frame — afro on head, arms normal,
+wide deep squat, knees forward, feet planted. Minor: belt/pouch bunches in the deep
+squat. The 194 source frames live on disk only (proof/frames/) — not staged yet.
