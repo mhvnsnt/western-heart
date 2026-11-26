@@ -137,3 +137,14 @@ repeat.
 Sources: NME, AllHipHop, HipHopDX, Stereogum (OG Maco); Spotify artist pages,
 Shazam/Deezer/YouTube credits, Facebook tributes (Manic Kazzy). Full report kept in
 workspace research notes manic-kazzy-og-macko-research-20261126-2201/report.md.
+
+## Study purpose expanded (owner, 2026-11-26 ~16:07 CST)
+
+The Manic Kazzy study is not only for the homage character. The owner wants to BLOW UP
+LIKE KAZZY DID — he got so many plays and the owner doesn't know how. The study must
+end with a playbook built only from what Kazzy actually did (releases, playlists,
+TikTok/BookTok, aesthetic, independence), translated into concrete steps for the
+owner's own music (Mars FMMG). No generic music-marketing advice.
+
+Also on the record: Kazzy liked the owner's style too — the respect went both ways.
+The song never happened because life got in the way, and the owner hates that he died.
