@@ -2,8 +2,8 @@
 // iPhone-13 profile (hasTouch, 390x844). Serve the repo root on $WH_URL
 // (default http://127.0.0.1:8811). Run: node test/e2e/godwithin.e2e.mjs [shotsDir]
 // 1) the GOD WITHIN menu card is topmost at its centre (nothing eats the tap)
-// 2) menu -> GOD WITHIN -> select pantera -> confirm -> rung-1 stage intro
-//    (guardian foe named, shards shown)
+// 2) menu -> STORY rail -> GOD WITHIN card -> select pantera -> confirm
+//    -> rung-1 stage intro (guardian foe named, shards shown)
 // 3) tap FIGHT -> HUD up, fight live (pantera vs the rung-1 guardian)
 // 4) lose the match (p1 hp zeroed via the __game hook, mirror of the
 //    menu-touch REMATCH KO loop — best of 3, so up to 3 rounds) ->
@@ -45,8 +45,12 @@ await p.evaluate(() => {
   }, true);
 });
 
-// 1) GOD WITHIN card: scroll into view, then topmost at its centre, >= 44px.
+// 1) GOD WITHIN card: open the STORY submenu first (the card lives
+//    inside it, mainmenu.js SUBMENUS.story — not on the bare menu),
+//    then check the card is topmost at its centre, >= 44px.
 try {
+  await p.tap('[data-mm="story"]', { timeout: 90000 });
+  await p.waitForFunction(() => { const s = document.getElementById('mm-submenu'); const c = document.querySelector('[data-action="mode-godwithin"]'); return s && !s.hidden && c && getComputedStyle(c).display !== 'none'; }, null, { timeout: 60000 });
   const card = await p.evaluate(() => {
     const el = document.querySelector('[data-action="mode-godwithin"]');
     if (!el) return null;
@@ -64,7 +68,12 @@ try {
   await p.screenshot({ path: `${SHOTS}/01-menu-godwithin.png` });
 } catch (e) { fails.push('menu card check: ' + e.message.split('\n')[0]); }
 
-// 2) Menu -> GOD WITHIN -> select pantera -> rung-1 stage intro.
+// 2) menu -> GOD WITHIN -> select pantera -> rung-1 stage intro
+//    (guardian foe named, shards shown). GOD WITHIN is a card inside
+//    the STORY submenu (mainmenu.js SUBMENUS.story) — the submenu is
+//    closed on load, so the card is not in the DOM until the STORY
+//    rail item is tapped (C8 tapped the card on the bare menu and
+//    failed here; the fix is the rail tap first).
 try {
   await p.tap('[data-action="mode-godwithin"]', { timeout: 90000 });
   await p.waitForFunction(() => { const e = document.getElementById('screen-select'); return e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden'); }, null, { timeout: 120000 });
