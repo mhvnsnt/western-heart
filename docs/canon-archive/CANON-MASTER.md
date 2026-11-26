@@ -1952,5 +1952,9 @@ Owner order 2026-11-08 ~20:37 CST — land in all necessary repos.
 
 - T7 MOCAP PERMANENT FIX (owner 2026-11-22): on Tekken 7 throws the orange (victim) fighter is upside down and backwards — flip him right-side-up, feet to the floor, facing the blue fighter; log as the permanent fix for all broken T7 mocaps and check whether all other T7 grapples need the same formula, hunting already-cracked/fixed animations that are already correctly oriented instead of rebuilding from scratch.
 
+
+### 2026-11-22 owner ruling — Cuts / Realist correction
+
+- CUTS / REALIST — CORRECTION (owner 2026-11-22): Realist's model should come from Ash Lane, and he should also have a model in Western Heart. Cuts has no filed fighter — the Nov 22 audit found no folder, no roster entry, no bio; the Edward Scissorhands look lives in Chordz's folder; only Chordz is filed.
 *End of CANON-MASTER. Compiled 2026-10-23. If it isn't recorded, it
 isn't here — and if it gets recorded, it gets pushed here.*
