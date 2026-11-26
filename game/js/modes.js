@@ -297,7 +297,7 @@ export const MODE_LIST = [
   { key: 'story',     name: 'STORY',               origin: 'wh', canon: 'CANON.md §5 The Trial',
     desc: 'Walk the Trial. Death is not the end — it is reincarnation.' },
   { key: 'godwithin', name: 'GOD WITHIN',          origin: 'wh', canon: 'CANON.md §5 The Trial + §1 The Two Laws of Death',
-    desc: 'The Trial, descended. Five Devil Within chapters, twelve anchor guardians, dreams between lives, voyages between deaths, and a face to be assembled. Death is not failure — it is reincarnation.' },
+    desc: 'Five chapters. Twelve guardians. Death is not the end — it is a new beginning.' },
   { key: 'training',  name: 'TRAINING',            origin: 'tekken', debut: 'Tekken (Practice)',
     desc: 'Endless rounds vs a passive dummy. H toggles hints.' },
   { key: 'survival',  name: 'SURVIVAL',            origin: 'tekken', debut: 'Tekken 2',
@@ -915,21 +915,64 @@ export class ModeController {
     this._el('stage-kicker').textContent = this.story.deaths > 0
       ? `DEATH ${this.story.deaths} BEHIND YOU · THE SOUL CONTINUES` : 'GOD WITHIN — THE DESCENT BEGINS';
     this._el('stage-title').textContent = rung.title;
+    // Stage art (2026-11-26 art pass): the chapter's own stage thumb.
+    // tong-nou's thumb is an unusable black void — the Final Shrine
+    // uses the lantern-shrine art instead. Trader uses its marketplace.
+    const artMap = { 'helix-palace': 'helix-palace.png', 'octagonal-shrine': 'octagonal-shrine.png', 'palace-of-dreaming': 'palace-of-dreaming.png', 'tong-nou': 'shrine.png' };
+    const artFile = rung.trader ? 'phantom-marketplace.png'
+      : (chapter ? (artMap[chapter.whStageId] || 'shrine.png') : 'shrine.png');
+    const artWrap = document.getElementById('stage-art-wrap');
+    const artImg = this._el('stage-art');
+    if (artImg) { artImg.src = 'assets/stages/thumbs/' + artFile; artImg.alt = rung.title; }
+    if (artWrap) artWrap.classList.add('on');
+    // .gw on the panel scopes the GW-only styling (reward chips, VS
+    // row) so STORY's intro on the same panel is untouched (GW-21).
+    document.getElementById('screen-stage-intro')?.classList.add('gw');
     let sub = rung.sub;
     if (chapter) {
       sub += ` Guardians: ${progress.guardiansCleared}/${progress.guardiansTotal} rooms cleared` +
         (progress.bossCleared ? ' · boss down.' : '.');
     }
     this._el('stage-sub').textContent = sub;
+    // Reward as two chips, not a paragraph box (art pass 2026-11-26).
     const reward = rung.trader ? 'THE TRADER — trade one force for another'
       : rung.boss ? 'THE KATANA OF FIVE FORCES — become whole'
       : `CLAIM ${FORCES[rung.forceKey].name} — ${FORCES[rung.forceKey].desc}`;
-    this._el('stage-reward').textContent = reward + ` · SOUL SHARDS: ${run.shards}`;
-    const foeName = !foeSpec ? '—'
-      : foeSpec.kind === 'final' ? 'ASSEMBLED SOUL'
-      : foeSpec.kind === 'toll' ? 'THE TRADER’S TOLL'
-      : foeSpec.name + (foeSpec.kind === 'boss' ? ' — ' + (foeSpec.dwBoss || 'CHAPTER BOSS') : ' — GUARDIAN');
-    this._el('stage-foe').textContent = 'Opponent: ' + foeName;
+    const rewardEl = this._el('stage-reward');
+    if (rewardEl) {
+      rewardEl.innerHTML = '';
+      const claim = document.createElement('span');
+      claim.className = 'gw-chip'; claim.textContent = reward;
+      const shards = document.createElement('span');
+      shards.className = 'gw-chip gw-shards'; shards.textContent = `◆ ${run.shards} SOUL SHARDS`;
+      rewardEl.appendChild(claim); rewardEl.appendChild(shards);
+    }
+    // Opponent as a VS row: your vessel vs the guardian (art pass).
+    // Keeps the GUARDIAN / CHAPTER BOSS role words the e2e asserts.
+    const foeEl = this._el('stage-foe');
+    if (foeEl) {
+      const foeName = !foeSpec ? '—'
+        : foeSpec.kind === 'final' ? 'ASSEMBLED SOUL'
+        : foeSpec.kind === 'toll' ? 'THE TRADER’S TOLL'
+        : (foeSpec.name || '—');
+      const foeRole = !foeSpec ? '—'
+        : foeSpec.kind === 'final' ? 'IT IS YOU, ASSEMBLED'
+        : foeSpec.kind === 'toll' ? 'PAY THE TOLL'
+        : (foeSpec.kind === 'boss' ? (foeSpec.dwBoss || 'CHAPTER BOSS') : 'GUARDIAN');
+      const vessel = this.getChar ? this.getChar(this.story.vesselId) : null;
+      const side = (img, name, tag, tagCls) => {
+        const d = document.createElement('div'); d.className = 'gw-vs-side';
+        if (img) { const im = document.createElement('img'); im.src = img; im.alt = name; im.onerror = () => { im.style.visibility = 'hidden'; }; d.appendChild(im); }
+        const nm = document.createElement('div'); nm.className = 'gw-vs-name'; nm.textContent = name; d.appendChild(nm);
+        const tg = document.createElement('div'); tg.className = tagCls; tg.textContent = tag; d.appendChild(tg);
+        return d;
+      };
+      foeEl.innerHTML = '';
+      foeEl.appendChild(side(vessel ? `assets/portraits/${vessel.id}.png` : null, vessel ? vessel.name : '—', 'YOUR VESSEL', 'gw-vs-you'));
+      const mid = document.createElement('div'); mid.className = 'gw-vs-mid'; mid.textContent = 'VS'; foeEl.appendChild(mid);
+      foeEl.appendChild(side(foeSpec && foeSpec.id ? `assets/portraits/${foeSpec.id}.png` : null, foeName, foeRole, 'gw-vs-role'));
+      foeEl.classList.add('gw-vsrow');
+    }
     const fl = document.getElementById('stage-forces');
     if (fl) fl.textContent = 'FORCES HELD: ' + (this.story.forces.length ? this.story.forces.map((k) => FORCES[k].name).join(' · ') : 'none yet');
     this._badge(`${GODWITHIN_MODE.name} · ${rung.title}`);
@@ -972,7 +1015,10 @@ export class ModeController {
     this.game.onMatchEnd = (won) => this._godwithinEnd(won, foeSpec);
     this._godwithinFoe = foeSpec;
     const chapter = godwithinChapterForRung(this.story.stage);
-    this.startFight(this.story.vesselId, null, {
+    // Fight intro (art pass 2026-11-26): a VS splash — your vessel
+    // against the guardian — holds ~1.4s, then ROUND 1. Defensive:
+    // any failure skips the splash and starts the fight at once.
+    const begin = () => this.startFight(this.story.vesselId, null, {
       mode: 'godwithin',
       godwithin: {
         chapter: rung.chapter || null,
@@ -982,6 +1028,19 @@ export class ModeController {
       },
       playerChar: buffed, enemyChar: foeEntry,
     });
+    try {
+      const vs = document.getElementById('gw-vs');
+      if (!vs) { begin(); return; }
+      const setImg = (id, src) => { const im = document.getElementById(id); if (im) { im.src = src; im.onerror = () => { im.style.visibility = 'hidden'; }; im.style.visibility = ''; } };
+      setImg('gw-vs-p1img', `assets/portraits/${this.story.vesselId}.png`);
+      setImg('gw-vs-p2img', foeSpec && foeSpec.id ? `assets/portraits/${foeSpec.id}.png` : `assets/portraits/${this.story.vesselId}.png`);
+      const n1 = document.getElementById('gw-vs-p1name'); if (n1) n1.textContent = vessel ? vessel.name : '';
+      const n2 = document.getElementById('gw-vs-p2name'); if (n2) n2.textContent = foeSpec && foeSpec.kind === 'final' ? 'ASSEMBLED SOUL' : foeSpec && foeSpec.kind === 'toll' ? 'THE TRADER’S TOLL' : (foeEntry ? foeEntry.name : '');
+      const r2 = document.getElementById('gw-vs-p2role'); if (r2) r2.textContent = foeSpec && foeSpec.kind === 'boss' ? (chapter && chapter.boss ? chapter.boss.dwBoss || 'CHAPTER BOSS' : 'CHAPTER BOSS') : foeSpec && foeSpec.kind === 'guardian' ? 'GUARDIAN' : '';
+      const ch = document.getElementById('gw-vs-chapter'); if (ch) ch.textContent = rung.title;
+      vs.hidden = false;
+      setTimeout(() => { vs.hidden = true; begin(); }, 1400);
+    } catch (e) { begin(); }
   }
 
   _godwithinEnd(won, foeSpec) {
@@ -1119,17 +1178,19 @@ export class ModeController {
           this.story.vesselId, this.story.deaths)
       : chooseReincarnation(profile, ids, this.story.vesselId, this.story.deaths);
     this._el('reinc-deaths').textContent = `DEATH ${this.story.deaths} — THE SOUL CONTINUES`;
+    // Draft copy (2026-11-26 art pass — owner's rewrite pending):
+    // short, human, no wall of text. The subline in the markup
+    // ("It's just a new beginning.") carries the canon.
     this._el('reinc-flavor').textContent =
-      'When a soul loses, it dies — and is reborn before the next fight. ' +
-      'The Trial has watched how you fight. These are the vessels your actions have earned.';
+      'You fell. The fight goes on. Dream tonight, wake in a new body, and take the rung back.';
+    const dreamChip = this._el('reinc-dream');
     if (this.mode === 'godwithin' && this.godwithin) {
       const d = this.godwithin.dreams[this.godwithin.dreams.length - 1];
-      if (d && d.played) {
-        this._el('reinc-flavor').textContent +=
-          ` You dreamed — Day ${d.day}${d.stage ? ', ' + d.stage : ''} (+${d.shards} shards). ` +
-          `Sail the Banabana below, then assemble the next face.`;
-      }
-    }
+      if (d && d.played && dreamChip) {
+        dreamChip.textContent = `Dreamed — Day ${d.day}${d.stage ? ', ' + d.stage : ''} · +${d.shards} shards from the dream`;
+        dreamChip.hidden = false;
+      } else if (dreamChip) { dreamChip.hidden = true; }
+    } else if (dreamChip) { dreamChip.hidden = true; }
     // The new face, assembled in pieces from the original game's own
     // face art (eyes / nose / mouth — CANON.md §1 "The Two Laws of Death").
     // STORY shows one random piece per part (display art). GOD WITHIN
@@ -1180,13 +1241,31 @@ export class ModeController {
         cell.appendChild(cap); strip.appendChild(cell);
       });
       const title = document.createElement('div');
-      title.textContent = gw ? 'THE FACE REASSEMBLES — PICK EACH PIECE (RNF)' : 'THE FACE REASSEMBLES';
+      title.textContent = gw ? 'CHOOSE A FACE' : 'THE FACE REASSEMBLES';
       title.setAttribute('style', 'color:#FFD76A;font-size:11px;letter-spacing:0.4em;margin-bottom:4px;font-family:serif;');
-      face.appendChild(title); face.appendChild(strip);
+      face.appendChild(title);
+      if (gw) {
+        const sub = document.createElement('div');
+        sub.className = 'reinc-face-sub';
+        sub.textContent = 'The soul remembers, the body is new.';
+        face.appendChild(sub);
+        const sub2 = document.createElement('div');
+        sub2.className = 'reinc-face-sub2';
+        sub2.textContent = 'PICK EACH PIECE (RNF)';
+        face.appendChild(sub2);
+      }
+      face.appendChild(strip);
     }
     const fl = this._el('reinc-forces');
     if (fl) fl.textContent = 'FORCES CARRIED OVER: ' + (this.story.forces.length ? this.story.forces.map((k) => FORCES[k].name).join(' · ') : 'none');
     const wrap = this._el('reinc-cards');
+    // Draft copy (art pass): the vessel pick gets its own label line.
+    document.getElementById('reinc-vessel-label')?.remove();
+    const vlabel = document.createElement('div');
+    vlabel.id = 'reinc-vessel-label';
+    vlabel.className = 'reinc-face-sub2';
+    vlabel.textContent = 'YOUR NEXT VESSEL AWAITS — PICK ONE';
+    if (wrap && wrap.parentNode) wrap.parentNode.insertBefore(vlabel, wrap);
     wrap.innerHTML = '';
     picks.forEach((id) => {
       const c = this.getChar(id);
@@ -1235,18 +1314,22 @@ export class ModeController {
     });
     // God Within: sail the Banabana between lives. The hub mounts as
     // an overlay on this screen; it pays the shared wallet itself.
+    // GHOST-TEXT FIX (2026-11-26): the overlay was rgba(5,5,12,0.92)
+    // — the reincarnate screen bled through behind the hub. Solid now.
     if (this.mode === 'godwithin' && this.godwithin && this.godwithin.voyageOffered) {
       const sail = document.createElement('button');
-      sail.className = 'reinc-card';
-      sail.innerHTML = `<div class="cname">⛵ SAIL BETWEEN LIVES — BANABANA MK.1</div>` +
-        `<div class="rwhy">Voyage the Sea between lives. Area → region → scene, one item per scene. Winnings pay Soul Shards to the shared wallet.</div>`;
+      sail.className = 'gw-sail';
+      sail.innerHTML = `<div class="gw-sail-title">⛵ SAIL BETWEEN LIVES — BANABANA MK.1</div>` +
+        `<div class="gw-sail-sub">Voyage the Sea between lives. Winnings pay Soul Shards to the shared wallet.</div>`;
       sail.addEventListener('click', async () => {
         this.audio && this.audio.uiClick && this.audio.uiClick();
         try {
           const { mountRolyPolysHub } = await import('./rolypolys-hub.js');
           const overlay = document.createElement('div');
-          overlay.setAttribute('style', 'position:fixed;inset:0;background:rgba(5,5,12,0.92);z-index:9999;overflow:auto;padding:24px;');
+          overlay.className = 'gw-hub-overlay';
+          overlay.setAttribute('style', 'position:fixed;inset:0;background:#070714;z-index:9999;overflow:auto;padding:24px;');
           const host = document.createElement('div');
+          host.className = 'gw-hub';
           const close = document.createElement('button');
           close.className = 'wh-btn';
           close.textContent = '✕ RETURN TO THE REINCARNATION SCREEN';
