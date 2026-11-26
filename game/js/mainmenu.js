@@ -51,6 +51,7 @@ const TITLES = [
 const SUBMENUS = {
   story: { title: 'STORY', cards: [
     { t: 'THE TRIAL', d: 'Seven lands. Five forces. Death is not failure — it is reincarnation. Climb to the Shrine and face the Assembled Soul.', badge: 'live', action: 'mode-story' },
+    { t: 'GOD WITHIN', d: 'The Trial, descended. Five Devil Within chapters, twelve anchor guardians, dreams between lives, voyages between deaths, and a face to be assembled.', badge: 'hot', action: 'mode-godwithin' },
     { t: 'CHARACTER EPISODES', d: 'Every soul, their story. Short cinematic ladders for the whole roster.', badge: 'live', action: 'mode-episodes' },
     { t: 'HEART AND MIND WITHIN', d: 'Per-character 3D beat-em-up campaigns. Pick a soul and descend.', badge: 'hot', action: 'mode-heartmind' },
   ]},
