@@ -103,6 +103,21 @@
       <div id="sg-shrine"></div>
     </div>
 
+    <div style="height:12px"></div>
+
+    <div class="wh-game" id="rolypolys-hub">
+      <div class="home">BANABANA MK.1 · WORLD TOUR · OSAMU SATO</div>
+      <h3>⛵ Banabana MK.1 — Roly-Polys World Hub <span class="root">· playable now</span></h3>
+      <p><b>WH identity:</b> the Banabana MK.1 carries the Nine Souls across the
+      seven areas of the Roly-Polys world tour — area → region → scene — with
+      RIN at the helm. Every scene visited collects its item; finishing an area
+      unlocks its ending cinematic. The shooting gallery, the cooking school,
+      the slot and the bull run are the Roly-Polys minigames, rebuilt with WH
+      characters — never clones. <b>How it plays:</b> sail, visit scenes, play
+      the games below. Winnings pay out in Soul Shards.</p>
+      <div id="sg-rolypolys"></div>
+    </div>
+
   <div class="wh-card">
     <div class="wh-tag">🜁 THE FIVE LANDS</div>
     <h2>Games of the Lands</h2>
@@ -348,8 +363,11 @@
 </script>
 <script type="module">
 import { mountShrineOS } from './js/shrine-os.js';
+import { mountRolyPolysHub } from './js/rolypolys-hub.js';
 var host = document.getElementById('sg-shrine');
 if (host) mountShrineOS(host);
+var rpHost = document.getElementById('sg-rolypolys');
+if (rpHost) mountRolyPolysHub(rpHost);
 </script>
 </body>
 </html>
