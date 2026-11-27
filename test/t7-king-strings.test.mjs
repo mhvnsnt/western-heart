@@ -52,14 +52,17 @@ test('every string press plays its exact King T7 motbin move clip', () => {
   }
 });
 
-test('the 127 single-input King T7 moves are still in the pack unchanged in kind', () => {
+test('the 129 single-input King T7 moves are still in the pack unchanged in kind', () => {
   // 29 original single-input moves + 98 added by the Lane A fill (owner order
   // 2026-11-18: fill the partials from King's T7 actual code; PR #1751). All 29
   // originals are still present and every new one is a real T7 move verified by
   // walking the graph (motbin_move + verified on each). The count grows because
   // the pack legitimately holds more real T7 moves now — the KIND is unchanged.
+  // +2 on 2026-11-27 (tools/anim/t7_pack_graph_fill.py, from graph.commands.json stance rows): f+1 -> Kg_lp00F and
+  // u/b+3 -> Kg_jplk00B, each with motbin_move + verified.
   const singles = Object.keys(pack.moves).filter((k) => !pack.moves[k].input.includes(','));
-  assert.equal(singles.length, 127);
+  assert.equal(singles.length, 129);
+  for (const k of singles) assert.ok(pack.moves[k].motbin_move && pack.moves[k].verified, k);
 });
 
 test('string normalizer: motions, suffixed keys and single inputs never map', () => {

@@ -811,7 +811,7 @@ export function ensureT7Moves(fid, THREE) {
       const moves = {}, byInput = {}, byString = {}, dupString = new Set(), byMotion = {}, dupMotion = new Set();
       for (const [key, m] of Object.entries(pack.moves || {})) {
         if (!clips[m.clip]) continue;
-        moves[key] = { clip: m.clip, active: m.active_frames, motbin: m.motbin_move };
+        moves[key] = { clip: m.clip, active: m.active_frames, motbin: m.motbin_move, damage: Number.isFinite(m.damage) ? m.damage : null };
         const ni = t7NormInput(m.input);
         if (ni && !byInput[ni]) byInput[ni] = key;
         const ns = t7NormString(m.input);
@@ -980,7 +980,7 @@ export function t7MoveClip(fid, bankId, moveKey, model = null, input = null) {
   const m = key ? t.moves[key] : null;
   if (!m || !t.clips[m.clip]) return null;
   if (model) { const pm = _retargetCache.get(model); if (!pm || !pm.get(t.skelId)) return null; }
-  return { name: 't7:' + key, clip: t.clips[m.clip], skelId: t.skelId, active: m.active, motbin: m.motbin, anim: m.clip };
+  return { name: 't7:' + key, clip: t.clips[m.clip], skelId: t.skelId, active: m.active, motbin: m.motbin, anim: m.clip, damage: m.damage };
 }
 /** Retarget one real T7 move clip onto `model` as action `t7:<moveKey>`, reusing the rest pose the T7 stance
     captured at bind time (same skeleton id). Returns { [name]: clip } or null (then the move keeps its clip). */
