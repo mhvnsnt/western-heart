@@ -427,3 +427,13 @@ Built from §§2–3, for the owner's call on where he lives (game/roster undeci
   saw (full timeline not accessible — not a friend on the linked profile); current
   Spotify monthly listeners (re-check 26 Nov 2026 returned no extractable page —
   do not retry blindly; last verified figure is 86,779).
+
+## Addendum — 2026-11-27 morning (UNVERIFIED LEAD, not a confirmation)
+
+- Funeral notice found this morning: Arionna Nicole, Facebook, Monday Nov 23, 10:56, text only: "Aiden's funeral service will be held Saturday November 28 at 1 pm at Carnes Funeral Home in Texas City." Service: Saturday Nov 28, 1:00pm, Carnes Funeral Home, Texas City, TX.
+- GAPS: no last name in the post. No obituary for an Olson listed at Carnes. No source anywhere ties the musician to Texas City; his hometown was never documented in anything found. Timeline fits (notice Nov 23, tributes Nov 24-25, service Nov 28) and no competing Aiden Olson death in the same window turned up — fit is not proof. Do NOT present this funeral as Kazzy's. No cause of death stated anywhere; no death date stated anywhere.
+- Fourth tribute: Kenshi Riles, Nov 24, 20:52 — the second person to name him directly as "Kazzy," announcing the sudden death of his close friend. No cause, no funeral details in it.
+- Carnes Funeral Home public info (place to check, not confirmation): 3100 Gulf Freeway, Texas City, TX 77591, (409) 986-9900. Address and number verified independently 2026-11-27 morning.
+- Why surfaced before the Saturday 09:00 re-check: service is Nov 28 at 1pm; Nov 27 is the last realistic day to send flowers, reach the family, or decide about going. Waiting until Saturday morning would leave ~4 hours, too late to travel to Texas City. This breaks the "quiet re-check only speaks up if confirmed" line — the deadline is the reason.
+- Open question for the owner only: is this him? Does he recognise Arionna Nicole, or know Kazzy was from the Texas City area? If he says no or doesn't know, treat the lead as dead and do not chase the family.
+- Saturday 09:00 re-check cron (manic-kazzy-death-recheck-20261128) still stands; not cancelled.
