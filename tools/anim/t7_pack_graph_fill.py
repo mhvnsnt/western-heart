@@ -14,10 +14,10 @@ What it writes into moves.pack.json (in place, deterministic, idempotent):
   1. every pack move gets `damage` + `first_active` from graph.json for its motbin move (the T7 source value; the
      game uses it as the hit damage for fighters in fighter.js T7_EXACT_DAMAGE);
   2. SINGLE INPUTS: a moveset row input with no pack move, whose stance press row (status evaluable, damage > 0)
-     reaches a motbin move -> a pack move '<input>~t7.cmd' playing that move's own clip (copied from graph-clips
+     reaches a motbin move -> a pack move keyed by that moveset row, playing that move's own clip (copied from graph-clips
      when the pack does not hold it yet);
   3. STRING STEPS (2 steps): a moveset string 'A,B' with no pack string, where A is a stance press row to move X
-     and X's own evaluable follow-up row '*+B' / 'B' reaches move Y -> '<A,B>~t7.cmd' playing Y's clip.
+     and X's own evaluable follow-up row '*+B' / 'B' reaches move Y -> a pack move keyed by that string row, playing Y's clip.
 Rows whose source would be ambiguous (two different target moves for one input) and every CHORD input (e.g. 1+4,
 d/b+1+2: precedence between a chord row and its single-button rows is not proven by the evaluable list) are
 reported and never filled.
@@ -49,7 +49,14 @@ def main():
     if gidx.get('graph_sha256') != cmds.get('graph_sha256'): sys.exit('graph-clips and graph.commands were made from different graphs')
     moves = {m['name']: m for m in graph['moves']}
     ms = json.load(open(msf))
-    rows = [r for v in ms.values() if isinstance(v, dict) for r in v.values() if isinstance(r, dict) and r.get('input')]
+    rowmap = {k: r for v in ms.values() if isinstance(v, dict) for k, r in v.items() if isinstance(r, dict) and r.get('input')}
+    rows = list(rowmap.values())
+    def row_key(inp, string=False):
+        # pack moves are keyed by the moveset row the game plays (fighter.js t7MoveClip): the row whose key IS the
+        # input when there is one, else the first strike row with that input; never a grab / throw row
+        ks = [k for k, r in rowmap.items() if (norm_string(r['input']) if string else norm_input(r['input'])) == inp
+              and not r.get('isGrab') and not r.get('throw')]
+        return (inp if inp in ks else (ks[0] if ks else None))
     ms_inputs = {norm_input(r['input']) for r in rows} - {None}
     ms_strings = {norm_string(r['input']) for r in rows} - {None}
     report = {'damage_set': 0, 'single_added': [], 'string_added': [], 'ambiguous': [], 'clips_copied': []}
@@ -78,12 +85,15 @@ def main():
         if not data: return None
         pack['clips'][key] = data; report['clips_copied'].append(key); return key
     def add(key, inp, mv, why):
+        if not key or key in pack['moves']:
+            report['ambiguous'].append([inp, mv['name'], 'no free strike row key for this input']); return False
         ck = clip_for(mv)
-        if not ck: report['ambiguous'].append([inp, mv['name'], 'clip not in graph-clips']); return
+        if not ck: report['ambiguous'].append([inp, mv['name'], 'clip not in graph-clips']); return False
         pack['moves'][key] = {'clip': ck, 'input': inp, 't7_command': inp, 'motbin_move': mv['name'], 'motbin_id': mv['id'],
                               'active_frames': [mv['first_active'], mv.get('last_active') or mv['first_active']],
                               'damage': mv['damage'], 'first_active': mv['first_active'],
                               'verified': why, 'filled_by': 'tools/anim/t7_pack_graph_fill.py'}
+        return True
     # 2. single inputs from the stance
     stance = {}
     for r in cmds['stance_press_commands_evaluable']:
@@ -97,8 +107,8 @@ def main():
         if ni.count('+') > 1 or re.search(r'[1-4]\+[1-4]', ni):  # chords: stance-row precedence between a chord and
             # its single-button rows is not proven by this list, so chords are reported, never filled
             report['ambiguous'].append([ni, t, 'chord: stance-row precedence unverified, not filled']); continue
-        add(f'{ni}~t7.cmd', ni, moves[t], f'graph.commands.json: {ni} pressed from {cmds["stance"]} reaches {t} (evaluable row); damage {moves[t]["damage"]}, first active {moves[t]["first_active"]} from graph.json')
-        report['single_added'].append([ni, t])
+        if add(row_key(ni), ni, moves[t], f'walk from {cmds["stance"]} + graph.commands.json: {ni} pressed from the stance reaches {t} (evaluable row); damage {moves[t]["damage"]}, first active {moves[t]["first_active"]} from graph.json'):
+            report['single_added'].append([ni, t, row_key(ni)])
     # 3. two-step strings
     follow = {}
     for r in cmds['all']:
@@ -115,8 +125,8 @@ def main():
         if len(ys) > 1: report['ambiguous'].append([ns, sorted(ys), 'several follow-up rows']); continue
         if not ys: continue
         y = ys.pop()
-        add(f'{ns}~t7.cmd', ns, moves[y], f'graph.commands.json: {st[0]} from {cmds["stance"]} -> {sorted(xs)}, then its evaluable follow-up {st[1]} -> {y}; damage {moves[y]["damage"]}, first active {moves[y]["first_active"]} from graph.json')
-        report['string_added'].append([ns, y])
+        if add(row_key(ns, True), ns, moves[y], f'walk from {cmds["stance"]} + graph.commands.json: {st[0]} -> {sorted(xs)}, then its evaluable follow-up {st[1]} -> {y}; damage {moves[y]["damage"]}, first active {moves[y]["first_active"]} from graph.json'):
+            report['string_added'].append([ns, y, row_key(ns, True)])
     pack.setdefault('source', {})['graph_fill'] = {'tool': 'tools/anim/t7_pack_graph_fill.py', 'graph_sha256': cmds['graph_sha256']}
     print(json.dumps(report, indent=1))
     if not dry:
