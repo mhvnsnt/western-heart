@@ -4,7 +4,7 @@
 
 **35 open PRs — 🟢 ready to merge: 0 · 🔴 failing: 18 · ⏳ running: 0 · ⚔️ conflicted: 17** (also 🟠 blocked: 0 · 🔗 stacked: 0 · 📝 draft, green-or-idle: 0; 7 of 35 are drafts)
 
-_Generated 2026-11-27 17:51 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
+_Generated 2026-11-27 18:02 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
 
 Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not reported. Ready = not draft, targets `main`, GitHub says MERGEABLE, every check green. Status priority: conflicted > failing > running > draft > stacked > ready.
 
@@ -16,7 +16,7 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 🔴 failing | [#1866](https://github.com/mhvnsnt/western-heart/pull/1866) tools: promo-capture: HUD-off deterministic in-engine capture + Pantera hit test | ready | mhvnsnt / `tools/promo-capture-hudoff-20261127` | `7ac0cd9` | `main` | ✅ | ⏳ | ⏳ | ❌ | 4✅ 5⏳ | mergeable (blocked) | 2026-11-27 17:51 UTC |
+| 🔴 failing | [#1866](https://github.com/mhvnsnt/western-heart/pull/1866) tools: promo-capture: HUD-off deterministic in-engine capture + Pantera hit test | ready | mhvnsnt / `tools/promo-capture-hudoff-20261127` | `7ac0cd9` | `main` | ✅ | ✅ | ✅ | ❌ | 8✅ 1⏳ | mergeable (blocked) | 2026-11-27 18:02 UTC |
 | 🔴 failing | [#1861](https://github.com/mhvnsnt/western-heart/pull/1861) [DRAFT] God Within mode wiring — Devil Within / Urban Reign / Def Jam / Sato into WH canon | draft | mhvnsnt / `godwithin/wiring-20261126` | `58ddadf` | `main` | ✅ | ✅ | ✅ | ✅ | 10✅ 1❌ | mergeable (unstable) | 2026-11-27 16:29 UTC |
 | 🔴 failing | [#1851](https://github.com/mhvnsnt/western-heart/pull/1851) Lane E: T7 throw fix — receivers rebuilt, pair wired, shown | ready | mhvnsnt / `t7-throw-fix/lane-e-wireup-20261121` | `44e8f8a` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ 1❌ | mergeable (unstable) | 2026-11-23 16:38 UTC |
 | 🔴 failing | [#1837](https://github.com/mhvnsnt/western-heart/pull/1837) Proof: owner asked to see Cornerstone / Scimitar / Chordz models as images | ready | mhvnsnt / `show-three-models-20261122` | `46b1279` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-22 17:56 UTC |
