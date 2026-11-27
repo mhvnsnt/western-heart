@@ -1,7 +1,7 @@
 {
   "version": 1,
   "engine": "game/js/music.js (MusicEngine)",
-  "attribution": "Tracks by Kevin MacLeod are CC BY 4.0 \u2014 credit line in each track's `credit` field. Tong-Nou tracks are the owner's original music.",
+  "attribution": "Tracks by Kevin MacLeod are CC BY 4.0 \u2014 credit line in each track's `credit` field. Tong-Nou tracks are the owner's original music. Loyalty Freak Music tracks are CC0 1.0 Universal (per-track FMA verification; see docs/research/TEKKEN-ALL-GAMES-MUSIC-SYSTEMS-2026-10-24.md).",
   "howToSwap": "Drop a replacement file into game/assets/music/ with the SAME filename, or edit this JSON: change `file` / `remote`, retag `moods`/`stages`/`modes`. No code changes. See docs/MUSIC-PIPELINE.md.",
   "themes": {
     "cape-jones": "cape-jones-ghost-surf-rock",
@@ -19,7 +19,9 @@
       "moods": [
         "calm"
       ],
-      "modes": [],
+      "modes": [
+        "title"
+      ],
       "stages": [],
       "loop": true,
       "gain": 0.9
@@ -198,7 +200,9 @@
         "calm",
         "tense"
       ],
-      "modes": [],
+      "modes": [
+        "online"
+      ],
       "stages": [],
       "loop": true,
       "gain": 0.9
@@ -298,7 +302,9 @@
         "title",
         "credits"
       ],
-      "stages": [],
+      "stages": [
+        "tree-of-life"
+      ],
       "loop": true,
       "loopStart": 2.112426303854875,
       "loopEnd": 208.93514739229025,
@@ -328,7 +334,9 @@
       "modes": [
         "battle"
       ],
-      "stages": [],
+      "stages": [
+        "tong-nou"
+      ],
       "loop": true,
       "loopStart": 2.230612244897959,
       "loopEnd": 152.92761904761906,
@@ -359,7 +367,9 @@
       "modes": [
         "battle"
       ],
-      "stages": [],
+      "stages": [
+        "phantom-marketplace"
+      ],
       "loop": true,
       "loopStart": 2.2487528344671204,
       "loopEnd": 179.7682993197279,
@@ -391,7 +401,9 @@
         "battle",
         "select"
       ],
-      "stages": [],
+      "stages": [
+        "palace-of-dreaming"
+      ],
       "loop": true,
       "loopStart": 2.392199546485261,
       "loopEnd": 145.56485260770975,
@@ -422,7 +434,9 @@
       "modes": [
         "battle"
       ],
-      "stages": [],
+      "stages": [
+        "palace-of-dreaming"
+      ],
       "loop": true,
       "loopStart": 2.044489795918367,
       "loopEnd": 253.8861224489796,
@@ -453,7 +467,9 @@
       "modes": [
         "battle"
       ],
-      "stages": [],
+      "stages": [
+        "plains-of-chi-u"
+      ],
       "loop": true,
       "loopStart": 2.229795918367347,
       "loopEnd": 200.8277551020408,
@@ -484,7 +500,9 @@
       "modes": [
         "battle"
       ],
-      "stages": [],
+      "stages": [
+        "shrine"
+      ],
       "loop": true,
       "loopStart": 2.5992743764172337,
       "loopEnd": 140.20326530612246,
@@ -516,7 +534,9 @@
         "battle",
         "select"
       ],
-      "stages": [],
+      "stages": [
+        "palace-of-dreaming"
+      ],
       "loop": true,
       "loopStart": 2.4161451247165533,
       "loopEnd": 249.4724263038549,
@@ -547,7 +567,9 @@
         "battle",
         "versus"
       ],
-      "stages": [],
+      "stages": [
+        "octagonal-shrine"
+      ],
       "loop": true,
       "loopStart": 2.019047619047619,
       "loopEnd": 176.91278911564626,
@@ -578,7 +600,9 @@
       "modes": [
         "battle"
       ],
-      "stages": [],
+      "stages": [
+        "octagonal-shrine"
+      ],
       "loop": true,
       "loopStart": 2.0417233560090704,
       "loopEnd": 210.7685260770975,
@@ -610,7 +634,9 @@
         "battle",
         "versus"
       ],
-      "stages": [],
+      "stages": [
+        "phantom-marketplace"
+      ],
       "loop": true,
       "loopStart": 2.067437641723356,
       "loopEnd": 123.87736961451247,
@@ -641,7 +667,9 @@
       "modes": [
         "battle"
       ],
-      "stages": [],
+      "stages": [
+        "helix-palace"
+      ],
       "loop": true,
       "loopStart": 2.2309750566893425,
       "loopEnd": 249.54281179138323,
@@ -672,7 +700,9 @@
       "modes": [
         "battle"
       ],
-      "stages": [],
+      "stages": [
+        "helix-palace"
+      ],
       "loop": true,
       "loopStart": 2.02,
       "loopEnd": 110.89732426303856,
@@ -703,7 +733,9 @@
       "modes": [
         "battle"
       ],
-      "stages": [],
+      "stages": [
+        "sunra"
+      ],
       "loop": true,
       "loopStart": 2.203718820861678,
       "loopEnd": 118.97873015873016,
@@ -734,7 +766,9 @@
       "modes": [
         "battle"
       ],
-      "stages": [],
+      "stages": [
+        "sunra"
+      ],
       "loop": true,
       "loopStart": 2.4411791383219956,
       "loopEnd": 258.90199546485263,
@@ -765,7 +799,9 @@
       "modes": [
         "battle"
       ],
-      "stages": [],
+      "stages": [
+        "helix-palace"
+      ],
       "loop": true,
       "loopStart": 2.4814965986394557,
       "loopEnd": 259.8548299319728,
@@ -796,7 +832,9 @@
       "modes": [
         "battle"
       ],
-      "stages": [],
+      "stages": [
+        "octagonal-shrine"
+      ],
       "loop": true,
       "loopStart": 2.134784580498866,
       "loopEnd": 171.57369614512473,
@@ -827,7 +865,9 @@
       "modes": [
         "battle"
       ],
-      "stages": [],
+      "stages": [
+        "tong-nou"
+      ],
       "loop": true,
       "loopStart": 2.2778684807256235,
       "loopEnd": 269.9101133786848,
@@ -858,7 +898,9 @@
       "modes": [
         "battle"
       ],
-      "stages": [],
+      "stages": [
+        "tong-nou"
+      ],
       "loop": true,
       "loopStart": 2.022176870748299,
       "loopEnd": 215.3629931972789,
@@ -889,7 +931,9 @@
       "modes": [
         "battle"
       ],
-      "stages": [],
+      "stages": [
+        "tong-nou"
+      ],
       "loop": true,
       "loopStart": 2.202721088435374,
       "loopEnd": 105.90621315192743,
@@ -920,7 +964,9 @@
       "modes": [
         "battle"
       ],
-      "stages": [],
+      "stages": [
+        "phantom-marketplace"
+      ],
       "loop": true,
       "loopStart": 2.18281179138322,
       "loopEnd": 194.85918367346937,
@@ -951,7 +997,9 @@
       "modes": [
         "battle"
       ],
-      "stages": [],
+      "stages": [
+        "plains-of-chi-u"
+      ],
       "loop": true,
       "loopStart": 2.2490702947845804,
       "loopEnd": 158.5921088435374,
@@ -981,7 +1029,9 @@
       "modes": [
         "battle"
       ],
-      "stages": [],
+      "stages": [
+        "plains-of-chi-u"
+      ],
       "loop": true,
       "loopStart": 2.461950113378685,
       "loopEnd": 207.37555555555556,
@@ -1012,7 +1062,9 @@
       "modes": [
         "battle"
       ],
-      "stages": [],
+      "stages": [
+        "shrine"
+      ],
       "loop": true,
       "loopStart": 2.135374149659864,
       "loopEnd": 480.4890702947846,
@@ -1046,7 +1098,9 @@
         "results",
         "credits"
       ],
-      "stages": [],
+      "stages": [
+        "tree-of-life"
+      ],
       "loop": true,
       "loopStart": 2.1598639455782314,
       "loopEnd": 156.96698412698413,
@@ -1381,6 +1435,182 @@
       "status": "pending-download",
       "filePending": "assets/music/loyalty-freak-untitled.mp3",
       "source": "https://freemusicarchive.org/music/Loyalty_Freak_Music/MELODIES_WITH_A_BEAT/Loyalty_Freak_Music_-_MELODIES_WITH_A_BEAT_-_12_Untitled/"
+    },
+    {
+      "id": "cape-jones-monster-parade",
+      "file": "assets/music/cape-jones-monster-parade.mp3",
+      "source": "https://freemusicarchive.org/music/Loyalty_Freak_Music/WITCHY_BATTY_SPOOKY_HALLOWEEN_IN_SEPTEMBER_/Monster_Parade",
+      "title": "Monster Parade",
+      "artist": "Loyalty Freak Music",
+      "license": "CC0-1.0",
+      "credit": "Monster Parade \u2014 Loyalty Freak Music (WITCHY, BATTY, SPOOKY, HALLOWEEN IN SEPTEMBER !!) \u2014 CC0 1.0 Universal \u2014 Cape Jones arena interchanging track (surf/spooky vibe). File PENDING browser download; engine falls back to the procedural loop until it lands.",
+      "moods": [
+        "spooky",
+        "halloween",
+        "fun"
+      ],
+      "modes": [],
+      "stages": [
+        "cape-jones-arena",
+        "cape-jones-halloween-beach"
+      ],
+      "loop": true,
+      "gain": 1.0,
+      "status": "pending-file"
+    },
+    {
+      "id": "cape-jones-ghost-duet",
+      "file": "assets/music/cape-jones-ghost-duet.mp3",
+      "source": "https://freemusicarchive.org/music/Loyalty_Freak_Music/WITCHY_BATTY_SPOOKY_HALLOWEEN_IN_SEPTEMBER_/Love_song_by_a_ghost_duet/",
+      "title": "Love song by a ghost duet",
+      "artist": "Loyalty Freak Music",
+      "license": "CC0-1.0",
+      "credit": "Love song by a ghost duet \u2014 Loyalty Freak Music (WITCHY, BATTY, SPOOKY, HALLOWEEN IN SEPTEMBER !!) \u2014 CC0 1.0 Universal \u2014 Cape Jones arena interchanging track (surf/spooky vibe). File PENDING browser download; engine falls back to the procedural loop until it lands.",
+      "moods": [
+        "spooky",
+        "ghost",
+        "calm"
+      ],
+      "modes": [],
+      "stages": [
+        "cape-jones-arena",
+        "cape-jones-halloween-beach"
+      ],
+      "loop": true,
+      "gain": 1.0,
+      "status": "pending-file"
+    },
+    {
+      "id": "cape-jones-swamp",
+      "file": "assets/music/cape-jones-swamp.mp3",
+      "source": "https://freemusicarchive.org/music/Loyalty_Freak_Music/WITCHY_BATTY_SPOOKY_HALLOWEEN_IN_SEPTEMBER_/The_Swamp_1569",
+      "title": "The Swamp",
+      "artist": "Loyalty Freak Music",
+      "license": "CC0-1.0",
+      "credit": "The Swamp \u2014 Loyalty Freak Music (WITCHY, BATTY, SPOOKY, HALLOWEEN IN SEPTEMBER !!) \u2014 CC0 1.0 Universal \u2014 Cape Jones arena interchanging track (surf/spooky vibe). File PENDING browser download; engine falls back to the procedural loop until it lands.",
+      "moods": [
+        "dark",
+        "spooky"
+      ],
+      "modes": [],
+      "stages": [
+        "cape-jones-arena",
+        "cape-jones-halloween-beach"
+      ],
+      "loop": true,
+      "gain": 1.0,
+      "status": "pending-file"
+    },
+    {
+      "id": "cape-jones-hello-michael",
+      "file": "assets/music/cape-jones-hello-michael.mp3",
+      "source": "https://freemusicarchive.org/music/Loyalty_Freak_Music/WITCHY_BATTY_SPOOKY_HALLOWEEN_IN_SEPTEMBER_/Hello_Michael_",
+      "title": "Hello Michael !",
+      "artist": "Loyalty Freak Music",
+      "license": "CC0-1.0",
+      "credit": "Hello Michael ! \u2014 Loyalty Freak Music (WITCHY, BATTY, SPOOKY, HALLOWEEN IN SEPTEMBER !!) \u2014 CC0 1.0 Universal \u2014 Cape Jones arena interchanging track (surf/spooky vibe). File PENDING browser download; engine falls back to the procedural loop until it lands.",
+      "moods": [
+        "spooky",
+        "halloween",
+        "fun"
+      ],
+      "modes": [],
+      "stages": [
+        "cape-jones-arena",
+        "cape-jones-halloween-beach"
+      ],
+      "loop": true,
+      "gain": 1.0,
+      "status": "pending-file"
+    },
+    {
+      "id": "cape-jones-ghost-party",
+      "file": "assets/music/cape-jones-ghost-party.mp3",
+      "source": "https://freemusicarchive.org/index.php/music/Loyalty_Freak_Music/WITCHY_BATTY_SPOOKY_HALLOWEEN_IN_SEPTEMBER_/Halloween_Ghost_Party/",
+      "title": "Halloween Ghost Party",
+      "artist": "Loyalty Freak Music",
+      "license": "CC0-1.0",
+      "credit": "Halloween Ghost Party \u2014 Loyalty Freak Music (WITCHY, BATTY, SPOOKY, HALLOWEEN IN SEPTEMBER !!) \u2014 CC0 1.0 Universal \u2014 Cape Jones arena interchanging track (surf/spooky vibe). File PENDING browser download; engine falls back to the procedural loop until it lands.",
+      "moods": [
+        "spooky",
+        "halloween",
+        "fun"
+      ],
+      "modes": [],
+      "stages": [
+        "cape-jones-arena",
+        "cape-jones-halloween-beach"
+      ],
+      "loop": true,
+      "gain": 1.0,
+      "status": "pending-file"
+    },
+    {
+      "id": "cape-jones-im-on-fire",
+      "file": "assets/music/cape-jones-im-on-fire.mp3",
+      "source": "https://freemusicarchive.org/music/Loyalty_Freak_Music/ROLLER_DISCO_DANCE_DANCE/Loyalty_Freak_Music_-_ROLLER_DISCO_DANCE_DANCE_-_03_IM_ON_FIRE/",
+      "title": "I'M ON FIRE",
+      "artist": "Loyalty Freak Music",
+      "license": "CC0-1.0",
+      "credit": "I'M ON FIRE \u2014 Loyalty Freak Music (ROLLER DISCO DANCE DANCE) \u2014 CC0 1.0 Universal \u2014 Cape Jones arena interchanging track (surf/spooky vibe). File PENDING browser download; engine falls back to the procedural loop until it lands.",
+      "moods": [
+        "surf",
+        "disco",
+        "driving",
+        "fun"
+      ],
+      "modes": [],
+      "stages": [
+        "cape-jones-arena",
+        "cape-jones-halloween-beach"
+      ],
+      "loop": true,
+      "gain": 1.0,
+      "status": "pending-file"
+    },
+    {
+      "id": "cape-jones-grab-partner",
+      "file": "assets/music/cape-jones-grab-partner.mp3",
+      "source": "https://freemusicarchive.org/index.php/music/Loyalty_Freak_Music/ROLLER_DISCO_DANCE_DANCE/Loyalty_Freak_Music_-_ROLLER_DISCO_DANCE_DANCE_-_05_Grab_A_Partner/",
+      "title": "Grab A Partner",
+      "artist": "Loyalty Freak Music",
+      "license": "CC0-1.0",
+      "credit": "Grab A Partner \u2014 Loyalty Freak Music (ROLLER DISCO DANCE DANCE) \u2014 CC0 1.0 Universal \u2014 Cape Jones arena interchanging track (surf/spooky vibe). File PENDING browser download; engine falls back to the procedural loop until it lands.",
+      "moods": [
+        "surf",
+        "disco",
+        "fun"
+      ],
+      "modes": [],
+      "stages": [
+        "cape-jones-arena",
+        "cape-jones-halloween-beach"
+      ],
+      "loop": true,
+      "gain": 1.0,
+      "status": "pending-file"
+    },
+    {
+      "id": "cape-jones-take-break",
+      "file": "assets/music/cape-jones-take-break.mp3",
+      "source": "http://freemusicarchive.org/music/Loyalty_Freak_Music/ROLLER_DISCO_DANCE_DANCE/Loyalty_Freak_Music_-_ROLLER_DISCO_DANCE_DANCE_-_06_Take_A_Break",
+      "title": "Take A Break",
+      "artist": "Loyalty Freak Music",
+      "license": "CC0-1.0",
+      "credit": "Take A Break \u2014 Loyalty Freak Music (ROLLER DISCO DANCE DANCE) \u2014 CC0 1.0 Universal \u2014 Cape Jones arena interchanging track (surf/spooky vibe). File PENDING browser download; engine falls back to the procedural loop until it lands.",
+      "moods": [
+        "surf",
+        "disco",
+        "calm"
+      ],
+      "modes": [],
+      "stages": [
+        "cape-jones-arena",
+        "cape-jones-halloween-beach"
+      ],
+      "loop": true,
+      "gain": 1.0,
+      "status": "pending-file"
     }
   ],
   "rotation": {
@@ -1397,6 +1627,11 @@
       "nos-t12",
       "nos-t13",
       "nos-t25"
+    ],
+    "cutscene-example": [
+      "title-meditation",
+      "tong-nou-esoteric",
+      "transmigration-ending"
     ]
   }
 }
