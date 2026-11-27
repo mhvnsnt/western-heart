@@ -26,6 +26,10 @@ usage: python3 tools/anim/t7_pack_graph_fill.py game/assets/anim/t7/king game/as
 """
 import json, os, re, sys
 
+
+def load(path):  # keep JSON '-0' as -0.0 (int() would drop the sign; the shipped clips carry -0)
+    with open(path) as f: return json.load(f, parse_int=lambda t: -0.0 if t == '-0' else int(t))
+
 def norm_input(s):
     s = re.sub(r'\s+', '', str(s or '').lower())
     if not s or ',' in s: return None
@@ -40,7 +44,7 @@ def norm_string(s):
 def main():
     d, msf = sys.argv[1], sys.argv[2]; dry = '--dry' in sys.argv
     graph = json.load(open(f'{d}/graph.json')); cmds = json.load(open(f'{d}/graph.commands.json'))
-    pack_path = f'{d}/moves.pack.json'; pack = json.load(open(pack_path))
+    pack_path = f'{d}/moves.pack.json'; pack = load(pack_path)
     gidx = json.load(open(f'{d}/graph-clips/index.json'))
     if gidx.get('graph_sha256') != cmds.get('graph_sha256'): sys.exit('graph-clips and graph.commands were made from different graphs')
     moves = {m['name']: m for m in graph['moves']}
@@ -69,7 +73,7 @@ def main():
         ent = gidx['clips'].get(key)
         if not ent: return None
         sh = ent['shard']
-        if sh not in shards: shards[sh] = json.load(open(f"{d}/graph-clips/{gidx['shards'][sh]['file']}"))
+        if sh not in shards: shards[sh] = load(f"{d}/graph-clips/{gidx['shards'][sh]['file']}")
         data = shards[sh]['clips'].get(key)
         if not data: return None
         pack['clips'][key] = data; report['clips_copied'].append(key); return key
