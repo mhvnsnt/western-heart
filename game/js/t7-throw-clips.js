@@ -35,10 +35,70 @@
    docs/proof/2026-11-10/t7-requirements/README.md agrees:
    "Throw-side cases 2..16 compare the id with a computed throw
    direction".) The front damage 35 on both FL/FR nage moves is
-   the documented front-throw damage. The victim clips are the
-   reactions KING's graph carries for a victim of King's throw;
-   they are King's own rotsm-bank animations (the same bank the
-   thrower clips come from), applied to the victim's rig.
+   the documented front-throw damage.
+
+   ROLES, CORRECTED 2026-11-21 (Lane E, T7 throw fix — the old
+   table mislabelled the `_n` motions as the victim; they are the
+   THROWER's throw motions, and the victim's receivers are the
+   `_y` moves, fixed here):
+     grab       = the 40f attempt (1785/1787). Plays first; on
+                  connect the pair clock starts and the throw
+                  motion + receiver play together.
+     throwMotion = the `_n` throw motion (574/578/588/590/592/
+                  594/716/718) — the thrower's half of the pair.
+     victim     = the `_y` receiver (575/579/589/591/593/595/
+                  717/719) — the victim's half, rebuilt with the
+                  joint sandwich (see below) and stored as
+                  `rotsm_<n>-fixed.json`. The receiver's f0 is
+                  the thrower's f0: both are 130f/138f front, and
+                  the pair clock starts at connect, where
+                  `_n` f0 == `_y` f0.
+   The victim clips are the reactions King's graph carries for a
+   victim of King's throw; they are King's own rotsm-bank
+   animations (the same bank the thrower clips come from),
+   applied to the victim's rig.
+
+   JOINT SANDWICH (Lane B, 2026-11-21): the `_y` receivers as
+   decoded by the 574-only sandwich were flipped ~180 deg at f0
+   (victim upside down, feet 2.00 m up). The corrected sandwich
+   (tools/anim/tkmovesets2/joint-sandwich.json — U/V/W quats,
+   fit cost 1.26e-11; 574 max 0.1303 deg, 578 max 0.1264 deg,
+   hold-out 588 max 0.1278 deg) rebuilds all 24 receivers +
+   hold 554 + 15 escapes. Fixed receivers at f0: torso pitch
+   22.9–34.4 deg (591: 45.1 deg — the untouched approximate
+   Spine, spine-identity pitch 12.8 deg), feet Y 0.13 m, head
+   1.53–1.55 m. Only the Hips channel differs from the decoded
+   originals; the other 20 joints, root_t and root_motion_fwd_m
+   are byte-identical. Spine was NOT touched. Ground face-down
+   receivers (692/696/700/704) are unchanged by the rebuild
+   (their E_BASE stayed in-family) and still carry a heading
+   question — see OPEN below.
+
+   TWO-STAGE RECEIVER (real T7 moveset, T7_King.tkmvst,
+   verified 2026-11-21): the grab does NOT go straight to the
+   `_y` receiver. On connect the victim enters the grabbed hold,
+   move 554 (`___________`, anim nab6_guard(DVD), 30f) — a held,
+   lifted, bent-forward pose (f0: 25 deg forward lean, feet
+   0.33 m dangling) — and the thrower's `_n` HitCondition then
+   selects the specific `_y` in the STANDING slot, with 554 in
+   all 13 other slots. The hold is breakable (cancel reqs
+   (182, 4/2/8), detection [1, 2], start 1) to move 1423
+   (`Kg_sKAM00_`, 60f). Each `_y` is breakable in its window to
+   its escape (see the table): front [1, 15] start 15 ->
+   Esc_FLnage00_n / Esc_FRnage00_n; left/right [1, 10] start 1
+   -> SideEscL_n / SideEscR_n. BACK and AIR receivers are
+   UNBREAKABLE — the real file has zero cancel rows for
+   2140/2142/2144 and 2275/2277. The hold + escapes live in the
+   same throws/ dir (hold_554.json, esc_<move>.json), decoded
+   from the real .tkmvst (control-proven: the 2126 blob sampled
+   c8 == the arc-slice c8 exactly, max abs diff 0.0).
+
+   DAMAGE, CORRECTED (property 33307, real .tkmvst):
+     2125=35, 2129=35, 2135=40, 2137=42, 2139=60, 2141=60,
+     2274=30, 2276=30. The old table had 2135=0 and 2274=0.
+   The throw damage T7 books on the reaction is the `_n` move's
+   own damage (the WH move's own damage still rules — MOD
+   decision 2026-10-24, same as T3).
 
    UNPROVEN, flagged not guessed: which physical side "left" /
    "right" is (the names only say L/R; the engine's computed
@@ -57,13 +117,37 @@
 
    TIMING (documented limit, same as the DW Surge Kit swap in
    fighter.js _bindThrowPair): the pair clock, anchors, damage
-   time and break windows stay the T3 pair's. The T7 thrower
-   clips are 40f; the T7 front victim clips are 130f (1+3) /
+   time and break windows stay the T3 pair's. The grab is 40f;
+   the front throw motion and receiver are both 130f (1+3) /
    138f (2+4) — longer than the T3 pair — so frames past the
    pair duration are cut by the pair clock, and the thrower
    finishes before the victim. What the thrower does after its
    clip ends (hold last frame vs blend to idle) is the
    integration's call, not this module's.
+
+   OPEN, flagged not decided (see the PR body):
+     - Live side/air gate: left/right/air throwMotion +
+       receiver data is now complete in this table, but
+       t7SituationForQuadrant still returns null for them
+       (side mapping unproven, air has no quadrant signal) —
+       those throws keep T3 live.
+     - Live T7 break routing: the hold + escape data is in
+       this table, but the live game still uses the T3 pair's
+       break windows. Routing a live break to the escape needs
+       the thrower's escape-reaction move, which the shipped
+       data does not name — not invented here.
+     - Runtime yaw: the render proof places the pair in the
+       thrower's shared frame (one heading, one translation);
+       the live game squares the pair heading in
+       _startThrowPair/_driveThrowPair. Whether the authored
+       facing deltas need any further yaw work is a playtest
+       call, not a table change.
+     - Crouch/ground receivers (655/657/786, 663–704) and the
+       extra front/chain receivers (597/615/581) exist as fixed
+       files in throws/ but are NOT in this table: they are
+       reached via other throw moves (ThrmvLOW_*, ThrmvDWN_*,
+       2143/2163/2131), not via 1785/1787's cancel rows.
+       Posture-aware resolution is the follow-up.
    ============================================================ */
 
 /** Asset dir for the standalone throw clips (page-relative, like t3-throw.js loadThrowTables). */
@@ -78,49 +162,97 @@ export const T7_THROW_BONES = ['Hips', 'Spine', 'Chest', 'Neck', 'Head',
   'RightShoulder', 'RightArm', 'RightForeArm', 'RightHand', 'RightUpLeg', 'RightLeg', 'RightFoot', 'RightToeBase'];
 
 /*
- * Pair table. Thrower: graph move id + clip key + frames. Victim: per
- * situation, graph move id + clip key + frames + the nage move's own
- * damage (the throw damage T7 books on the reaction; the WH move's own
- * damage still rules — MOD decision 2026-10-24, same as T3).
+ * Pair table. grab: the 40f attempt (connects at first_active
+ * 12). throwMotion: per situation, the thrower's `_n` throw
+ * motion + its own damage (the throw damage T7 books on the
+ * reaction; the WH move's own damage still rules — MOD decision
+ * 2026-10-24, same as T3). hold: the grabbed hold (move 554),
+ * shared by both inputs. victim: per situation, the victim's
+ * `_y` receiver (fixed file) + its break window and escape —
+ * null window/escape means UNBREAKABLE in the real file.
  */
 export const T7_THROW_PAIRS = {
   '1+3': {
-    thrower: { key: 'common_709', move: 1785, name: 'ThrmvLB2_00', anim: 'naco_tukami2l(DVD)', bank: 'common', clip: 709, frames: 40, fps: 60, firstActive: 12 },
-    victim: {
+    grab: { key: 'common_709', move: 1785, name: 'ThrmvLB2_00', anim: 'naco_tukami2l(DVD)', bank: 'common', clip: 709, frames: 40, fps: 60, firstActive: 12 },
+    throwMotion: {
       front: { key: 'rotsm_574', move: 2125, name: 'Kg_FLnage00_n', anim: 'nakg_nagexx0a_f(DVD)', bank: 'rotsm', clip: 574, frames: 130, fps: 60, damage: 35 },
-      left: { key: 'rotsm_588', move: 2135, name: 'Kg_Lnage_n', anim: 'nagexx2d_n(DVD)', bank: 'rotsm', clip: 588, frames: 226, fps: 60, damage: 0 },
+      left: { key: 'rotsm_588', move: 2135, name: 'Kg_Lnage_n', anim: 'nagexx2d_n(DVD)', bank: 'rotsm', clip: 588, frames: 226, fps: 60, damage: 40 },
       right: { key: 'rotsm_590', move: 2137, name: 'Kg_Rnage_n', anim: 'V_kgnc_n(DVD)', bank: 'rotsm', clip: 590, frames: 160, fps: 60, damage: 42 },
       back: { key: 'rotsm_592', move: 2139, name: 'Kg_BLnage_n', anim: 'skkg_kebi_b(DVD)', bank: 'rotsm', clip: 592, frames: 203, fps: 60, damage: 60 },
       air: { key: 'rotsm_718', move: 2276, name: 'Kg_AirHizaj_n', anim: 'sukg_skyhizaj_n(DVD)', bank: 'rotsm', clip: 718, frames: 155, fps: 60, damage: 30 },
     },
+    hold: { key: 'hold_554', move: 554, name: '___________', anim: 'nab6_guard(DVD)', bank: 'rotsm', clip: 554, frames: 30, fps: 60, breaksTo: 1423, breakWindowFrames: [1, 2] },
+    victim: {
+      front: { key: 'rotsm_575-fixed', move: 2126, name: 'Kg_FLnage00_y', anim: 'nakg_nagexx0a_y(DVD)', bank: 'rotsm', clip: 575, frames: 130, fps: 60, breakWindowFrames: [1, 15], breakStartFrame: 15, escape: { key: 'esc_2127', move: 2127, name: 'Esc_FLnage00_n', anim: 'kjkg_swingcan_f(DVD)', clip: 2127, frames: 70 } },
+      left: { key: 'rotsm_589-fixed', move: 2136, name: 'Kg_Lnage_y', anim: 'nagexx2d_y(DVD)', bank: 'rotsm', clip: 589, frames: 241, fps: 60, breakWindowFrames: [1, 10], breakStartFrame: 1, escape: { key: 'esc_237', move: 237, name: 'SideEscL_n', anim: 'G_Lnuke_n(DVD)', clip: 237, frames: 30 } },
+      right: { key: 'rotsm_591-fixed', move: 2138, name: 'Kg_Rnage_y', anim: 'V_kgnc_y(DVD)', bank: 'rotsm', clip: 591, frames: 160, fps: 60, breakWindowFrames: [1, 10], breakStartFrame: 1, escape: { key: 'esc_239', move: 239, name: 'SideEscR_n', anim: 'G_Rnuke_n(DVD)', clip: 239, frames: 30 } },
+      back: { key: 'rotsm_593-fixed', move: 2140, name: 'Kg_BLnage_y', anim: 'ozkg_kebi_y(DVD)', bank: 'rotsm', clip: 593, frames: 202, fps: 60, breakWindowFrames: null, breakStartFrame: null, escape: null },
+      air: { key: 'rotsm_719-fixed', move: 2277, name: 'Kg_AirHizaj_y', anim: 'sukg_skyhizaj_y(DVD)', bank: 'rotsm', clip: 719, frames: 155, fps: 60, breakWindowFrames: null, breakStartFrame: null, escape: null },
+    },
   },
   '2+4': {
-    thrower: { key: 'rotsm_534', move: 1787, name: 'ThrmvRB2_00', anim: 'msco_rtukami(DVD)', bank: 'rotsm', clip: 534, frames: 40, fps: 60, firstActive: 12 },
-    victim: {
+    grab: { key: 'rotsm_534', move: 1787, name: 'ThrmvRB2_00', anim: 'msco_rtukami(DVD)', bank: 'rotsm', clip: 534, frames: 40, fps: 60, firstActive: 12 },
+    throwMotion: {
       front: { key: 'rotsm_578', move: 2129, name: 'Kg_FRnage00_n', anim: 'kjkg_brain_f(DVD)', bank: 'rotsm', clip: 578, frames: 138, fps: 60, damage: 35 },
-      left: { key: 'rotsm_588', move: 2135, name: 'Kg_Lnage_n', anim: 'nagexx2d_n(DVD)', bank: 'rotsm', clip: 588, frames: 226, fps: 60, damage: 0 },
+      left: { key: 'rotsm_588', move: 2135, name: 'Kg_Lnage_n', anim: 'nagexx2d_n(DVD)', bank: 'rotsm', clip: 588, frames: 226, fps: 60, damage: 40 },
       right: { key: 'rotsm_590', move: 2137, name: 'Kg_Rnage_n', anim: 'V_kgnc_n(DVD)', bank: 'rotsm', clip: 590, frames: 160, fps: 60, damage: 42 },
       back: { key: 'rotsm_594', move: 2141, name: 'Kg_BRnage_n', anim: 'bk_cob_n(DVD)', bank: 'rotsm', clip: 594, frames: 240, fps: 60, damage: 60 },
-      air: { key: 'rotsm_716', move: 2274, name: 'Kg_AirDragon_n', anim: 'sukg_skydora_n(DVD)', bank: 'rotsm', clip: 716, frames: 90, fps: 60, damage: 0 },
+      air: { key: 'rotsm_716', move: 2274, name: 'Kg_AirDragon_n', anim: 'sukg_skydora_n(DVD)', bank: 'rotsm', clip: 716, frames: 90, fps: 60, damage: 30 },
+    },
+    hold: { key: 'hold_554', move: 554, name: '___________', anim: 'nab6_guard(DVD)', bank: 'rotsm', clip: 554, frames: 30, fps: 60, breaksTo: 1423, breakWindowFrames: [1, 2] },
+    victim: {
+      front: { key: 'rotsm_579-fixed', move: 2130, name: 'Kg_FRnage00_y', anim: 'kjkg_brain_y(DVD)', bank: 'rotsm', clip: 579, frames: 138, fps: 60, breakWindowFrames: [1, 15], breakStartFrame: 15, escape: { key: 'esc_2133', move: 2133, name: 'Esc_FRnage00_n', anim: 'sukg_brainnuke_f(DVD)', clip: 2133, frames: 65 } },
+      left: { key: 'rotsm_589-fixed', move: 2136, name: 'Kg_Lnage_y', anim: 'nagexx2d_y(DVD)', bank: 'rotsm', clip: 589, frames: 241, fps: 60, breakWindowFrames: [1, 10], breakStartFrame: 1, escape: { key: 'esc_237', move: 237, name: 'SideEscL_n', anim: 'G_Lnuke_n(DVD)', clip: 237, frames: 30 } },
+      right: { key: 'rotsm_591-fixed', move: 2138, name: 'Kg_Rnage_y', anim: 'V_kgnc_y(DVD)', bank: 'rotsm', clip: 591, frames: 160, fps: 60, breakWindowFrames: [1, 10], breakStartFrame: 1, escape: { key: 'esc_239', move: 239, name: 'SideEscR_n', anim: 'G_Rnuke_n(DVD)', clip: 239, frames: 30 } },
+      back: { key: 'rotsm_595-fixed', move: 2142, name: 'Kg_BRnage_y', anim: 'Pkg_cob_y(DVD)', bank: 'rotsm', clip: 595, frames: 239, fps: 60, breakWindowFrames: null, breakStartFrame: null, escape: null },
+      air: { key: 'rotsm_717-fixed', move: 2275, name: 'Kg_AirDragon_y', anim: 'sukg_skydora_y(DVD)', bank: 'rotsm', clip: 717, frames: 90, fps: 60, breakWindowFrames: null, breakStartFrame: null, escape: null },
     },
   },
 };
 
 /**
  * Resolve the T7 pair for one throw input + situation.
- * Returns { input, situation, thrower, victim } (table entries,
- * never invented) or null — unknown input, unknown situation, or
- * a missing table entry. Null means "T7 unavailable": the caller
- * keeps the T3 pair. Default situation is 'front' (the live
- * game's front throw).
+ * Returns { input, situation, grab, thrower, hold, victim }
+ * (table entries, never invented) or null — unknown input,
+ * unknown situation, or a missing table entry. Null means
+ * "T7 unavailable": the caller keeps the T3 pair. Default
+ * situation is 'front' (the live game's front throw).
+ * `thrower` is the throw MOTION for this situation (the old
+ * table's `victim` field, re-roled) — fighter.js _t7ThrowActions
+ * reads t7.thrower.key / t7.victim.key, so the swap needs no
+ * caller change. `grab` is the 40f attempt; `hold` is the
+ * grabbed hold (move 554) the victim enters on connect.
  */
 export function resolveT7ThrowPair(input, situation = 'front') {
   const pair = T7_THROW_PAIRS[input];
   if (!pair) return null;
   if (!T7_THROW_SITUATIONS.includes(situation)) return null;
+  const thrower = pair.throwMotion[situation];
   const victim = pair.victim[situation];
-  if (!victim) return null;
-  return { input, situation, thrower: pair.thrower, victim };
+  if (!thrower || !victim) return null;
+  return { input, situation, grab: pair.grab, thrower, hold: pair.hold, victim };
+}
+
+/**
+ * Resolve the two-stage receiver for one throw input +
+ * situation: the grabbed hold (move 554) the victim enters on
+ * connect, then the `_y` receiver, with the break window and
+ * the escape move the real file gives that receiver.
+ * Returns { input, situation, hold, receiver, breakWindowFrames,
+ * breakStartFrame, escape } or null — unknown input, unknown
+ * situation, or a missing table entry. `escape` is null (and
+ * `breakWindowFrames` null) for the UNBREAKABLE back/air
+ * receivers. Live break routing still uses the T3 pair's
+ * windows (see the module header) — this resolver is the DATA
+ * the routing will read when it is wired.
+ */
+export function resolveT7ThrowReceiver(input, situation = 'front') {
+  const pair = T7_THROW_PAIRS[input];
+  if (!pair) return null;
+  if (!T7_THROW_SITUATIONS.includes(situation)) return null;
+  const receiver = pair.victim[situation];
+  if (!receiver) return null;
+  return { input, situation, hold: pair.hold, receiver, breakWindowFrames: receiver.breakWindowFrames, breakStartFrame: receiver.breakStartFrame, escape: receiver.escape };
 }
 
 /**
@@ -131,6 +263,8 @@ export function resolveT7ThrowPair(input, situation = 'front') {
  * which physical side "left"/"right" is is UNPROVEN (see the
  * module header), so side throws keep the T3 pair; air has no
  * quadrant signal on the throw path, so it also keeps T3.
+ * The left/right/air data is complete in the table — only the
+ * live gate is still closed.
  */
 export function t7SituationForQuadrant(quadrant) {
   if (quadrant === 0) return 'front';
@@ -187,7 +321,13 @@ export function validateT7ThrowClip(key, rec) {
     const t = rootT[f];
     if (!Array.isArray(t) || t.length !== 3 || t.some((v) => typeof v !== 'number' || !Number.isFinite(v))) { errors.push(`root_t[${f}] is not 3 finite numbers`); break; }
   }
-  const table = Object.values(T7_THROW_PAIRS).flatMap((p) => [p.thrower, ...Object.values(p.victim)]).find((c) => c.key === key);
+  const table = Object.values(T7_THROW_PAIRS).flatMap((p) => [
+    p.grab,
+    ...Object.values(p.throwMotion),
+    p.hold,
+    ...Object.values(p.victim),
+    ...Object.values(p.victim).map((v) => v.escape).filter(Boolean),
+  ]).find((c) => c.key === key);
   if (table && n !== table.frames) errors.push(`frames ${n} != table ${table.frames} for ${key}`);
   if (table && rec.t7_source && rec.t7_source.clip !== table.clip) errors.push(`t7_source.clip ${rec.t7_source.clip} != table ${table.clip}`);
   return errors.length ? { ok: false, errors } : { ok: true, errors: [] };

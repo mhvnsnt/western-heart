@@ -51,7 +51,7 @@
       "sha256": "7bd2071234a3758b46614f5ebfebc3fd123a04f9fcc15afab609af3916f4418a",
       "graph_move": 2125,
       "graph_name": "Kg_FLnage00_n",
-      "role": "victim",
+      "role": "thrower",
       "input": "1+3",
       "situation": "front",
       "anim": "nakg_nagexx0a_f(DVD)",
@@ -68,7 +68,7 @@
       "sha256": "6c152608ff1a5aaaac41c22d8374d4b56acc5e2c2900febaae0a060bc8ad4646",
       "graph_move": 2129,
       "graph_name": "Kg_FRnage00_n",
-      "role": "victim",
+      "role": "thrower",
       "input": "2+4",
       "situation": "front",
       "anim": "kjkg_brain_f(DVD)",
@@ -85,12 +85,16 @@
       "sha256": "4dac8d118f20db1272aa7f6b300df8f88a7ac457e952852d6cc2539931b3ef1e",
       "graph_move": 2135,
       "graph_name": "Kg_Lnage_n",
-      "role": "victim",
+      "role": "thrower",
       "input": "1+3",
       "situation": "left",
       "anim": "nagexx2d_n(DVD)",
       "bank": "kinrotsm.arc (private GRE repo)",
-      "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992"
+      "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992",
+      "shared_by": [
+        "1+3",
+        "2+4"
+      ]
     },
     "rotsm_590": {
       "shard": 3,
@@ -102,12 +106,16 @@
       "sha256": "9a5094a0c5ec3c5cf5e38c3cf07206668006f3c5c437c78fbae07001c7928f6e",
       "graph_move": 2137,
       "graph_name": "Kg_Rnage_n",
-      "role": "victim",
+      "role": "thrower",
       "input": "2+4",
       "situation": "right",
       "anim": "V_kgnc_n(DVD)",
       "bank": "kinrotsm.arc (private GRE repo)",
-      "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992"
+      "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992",
+      "shared_by": [
+        "1+3",
+        "2+4"
+      ]
     },
     "rotsm_592": {
       "shard": 3,
@@ -119,7 +127,7 @@
       "sha256": "e7a4a80e84c50571054f2f91c8830450cf082e3a00428bb3b45e3b46d6f7082c",
       "graph_move": 2139,
       "graph_name": "Kg_BLnage_n",
-      "role": "victim",
+      "role": "thrower",
       "input": "1+3",
       "situation": "back",
       "anim": "skkg_kebi_b(DVD)",
@@ -136,7 +144,7 @@
       "sha256": "38e76045afd8c48479a79f7a1132833c07906b2c733e33ec7257ec45e3336b67",
       "graph_move": 2141,
       "graph_name": "Kg_BRnage_n",
-      "role": "victim",
+      "role": "thrower",
       "input": "2+4",
       "situation": "back",
       "anim": "bk_cob_n(DVD)",
@@ -153,7 +161,7 @@
       "sha256": "06b2ab4b08b0ef574f122513c7b18f12ec8be558ffcbab3e7788eb61b2dfa89c",
       "graph_move": 2274,
       "graph_name": "Kg_AirDragon_n",
-      "role": "victim",
+      "role": "thrower",
       "input": "2+4",
       "situation": "air",
       "anim": "sukg_skydora_n(DVD)",
@@ -170,13 +178,837 @@
       "sha256": "b4a692275d7ac1ba9a541054e4d1ac06d7c194e0f34656e73b3bcee7e5be7a49",
       "graph_move": 2276,
       "graph_name": "Kg_AirHizaj_n",
-      "role": "victim",
+      "role": "thrower",
       "input": "1+3",
       "situation": "air",
       "anim": "sukg_skyhizaj_n(DVD)",
       "bank": "kinrotsm.arc (private GRE repo)",
       "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992"
+    },
+    "rotsm_575-fixed": {
+      "frames": 130,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 103125,
+      "sha256": "7f6a6dbf73c3eeeea5587a286d2f8902bfa3077e49723568389b5dfec95c9575",
+      "graph_move": 2126,
+      "graph_name": "Kg_FLnage00_y",
+      "role": "victim",
+      "input": "1+3",
+      "situation": "front",
+      "anim": "nakg_nagexx0a_y(DVD)",
+      "bank": "kinrotsm.arc (private GRE repo)",
+      "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992",
+      "fixed": {
+        "sandwich": "tools/anim/tkmovesets2/joint-sandwich.json",
+        "note": "rebuilt 2026-11-21 (Lane E) with the joint sandwich; only Hips differs from the decoded original"
+      }
+    },
+    "rotsm_579-fixed": {
+      "frames": 138,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 106779,
+      "sha256": "b987cbf901d90e1becd91592e335ea0d7dc9e1a1d45113104bfaa97f27d06cba",
+      "graph_move": 2130,
+      "graph_name": "Kg_FRnage00_y",
+      "role": "victim",
+      "input": "2+4",
+      "situation": "front",
+      "anim": "kjkg_brain_y(DVD)",
+      "bank": "kinrotsm.arc (private GRE repo)",
+      "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992",
+      "fixed": {
+        "sandwich": "tools/anim/tkmovesets2/joint-sandwich.json",
+        "note": "rebuilt 2026-11-21 (Lane E) with the joint sandwich; only Hips differs from the decoded original"
+      }
+    },
+    "rotsm_589-fixed": {
+      "frames": 241,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 178510,
+      "sha256": "84c581eeafeebedc65c5d49605324440aef695e197f26fd080fb8c27f40d9061",
+      "graph_move": 2136,
+      "graph_name": "Kg_Lnage_y",
+      "role": "victim",
+      "input": "1+3",
+      "situation": "left",
+      "anim": "nagexx2d_y(DVD)",
+      "bank": "kinrotsm.arc (private GRE repo)",
+      "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992",
+      "fixed": {
+        "sandwich": "tools/anim/tkmovesets2/joint-sandwich.json",
+        "note": "rebuilt 2026-11-21 (Lane E) with the joint sandwich; only Hips differs from the decoded original"
+      },
+      "shared_by": [
+        "1+3",
+        "2+4"
+      ]
+    },
+    "rotsm_591-fixed": {
+      "frames": 160,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 120608,
+      "sha256": "7c85dfa5b7296885fddf6d99a7530800be8cca962bbec7bb6e3c89b9f8faf0fc",
+      "graph_move": 2138,
+      "graph_name": "Kg_Rnage_y",
+      "role": "victim",
+      "input": "2+4",
+      "situation": "right",
+      "anim": "V_kgnc_y(DVD)",
+      "bank": "kinrotsm.arc (private GRE repo)",
+      "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992",
+      "fixed": {
+        "sandwich": "tools/anim/tkmovesets2/joint-sandwich.json",
+        "note": "rebuilt 2026-11-21 (Lane E) with the joint sandwich; only Hips differs from the decoded original"
+      },
+      "shared_by": [
+        "1+3",
+        "2+4"
+      ]
+    },
+    "rotsm_593-fixed": {
+      "frames": 202,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 156729,
+      "sha256": "256ef9ac6a08e7f32ee0503695fd441d97275bd3921fab89f1873abad328945d",
+      "graph_move": 2140,
+      "graph_name": "Kg_BLnage_y",
+      "role": "victim",
+      "input": "1+3",
+      "situation": "back",
+      "anim": "ozkg_kebi_y(DVD)",
+      "bank": "kinrotsm.arc (private GRE repo)",
+      "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992",
+      "fixed": {
+        "sandwich": "tools/anim/tkmovesets2/joint-sandwich.json",
+        "note": "rebuilt 2026-11-21 (Lane E) with the joint sandwich; only Hips differs from the decoded original"
+      }
+    },
+    "rotsm_595-fixed": {
+      "frames": 239,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 181610,
+      "sha256": "1d977abeb6cc1ab7211d0f32fc58703f9ee48d21a790870968c49ec1a0da5630",
+      "graph_move": 2142,
+      "graph_name": "Kg_BRnage_y",
+      "role": "victim",
+      "input": "2+4",
+      "situation": "back",
+      "anim": "Pkg_cob_y(DVD)",
+      "bank": "kinrotsm.arc (private GRE repo)",
+      "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992",
+      "fixed": {
+        "sandwich": "tools/anim/tkmovesets2/joint-sandwich.json",
+        "note": "rebuilt 2026-11-21 (Lane E) with the joint sandwich; only Hips differs from the decoded original"
+      }
+    },
+    "rotsm_717-fixed": {
+      "frames": 90,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 71802,
+      "sha256": "a7a08cb5e53f81375b6baf5b6e9b9b8dd6a615393b276638114a0ae37605cc12",
+      "graph_move": 2275,
+      "graph_name": "Kg_AirDragon_y",
+      "role": "victim",
+      "input": "2+4",
+      "situation": "air",
+      "anim": "sukg_skydora_y(DVD)",
+      "bank": "kinrotsm.arc (private GRE repo)",
+      "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992",
+      "fixed": {
+        "sandwich": "tools/anim/tkmovesets2/joint-sandwich.json",
+        "note": "rebuilt 2026-11-21 (Lane E) with the joint sandwich; only Hips differs from the decoded original"
+      }
+    },
+    "rotsm_719-fixed": {
+      "frames": 155,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 122519,
+      "sha256": "0dba7705eb1daa56d3415b8b9c1d57441bb333b0b385f598eb684aeb2b5c9d13",
+      "graph_move": 2277,
+      "graph_name": "Kg_AirHizaj_y",
+      "role": "victim",
+      "input": "1+3",
+      "situation": "air",
+      "anim": "sukg_skyhizaj_y(DVD)",
+      "bank": "kinrotsm.arc (private GRE repo)",
+      "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992",
+      "fixed": {
+        "sandwich": "tools/anim/tkmovesets2/joint-sandwich.json",
+        "note": "rebuilt 2026-11-21 (Lane E) with the joint sandwich; only Hips differs from the decoded original"
+      }
+    },
+    "rotsm_581-fixed": {
+      "frames": 230,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 175183,
+      "sha256": "81c0cc369e3515cdbbd91ecc2304e884273f9acd855e65a387b157ec5759f231",
+      "graph_move": 2132,
+      "graph_name": "Kg_brain1_y",
+      "role": "victim",
+      "input": null,
+      "situation": "chain",
+      "anim": "naak_taiku_y(DVD)",
+      "bank": "kinrotsm.arc (private GRE repo)",
+      "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992",
+      "fixed": {
+        "sandwich": "tools/anim/tkmovesets2/joint-sandwich.json",
+        "note": "rebuilt 2026-11-21 (Lane E) with the joint sandwich; only Hips differs from the decoded original"
+      },
+      "reached_via": {
+        "move_id": 2131,
+        "name": "Kg_brain1_n",
+        "anim": "naak_taiku_f(DVD)"
+      }
+    },
+    "rotsm_597-fixed": {
+      "frames": 165,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 122761,
+      "sha256": "6554ae10bdd8234facf925b676bf684c819ef932420021f949b30cfaace161f8",
+      "graph_move": 2144,
+      "graph_name": "Kg_BCnage_y",
+      "role": "victim",
+      "input": null,
+      "situation": "back-crouch",
+      "anim": "ozkg_nagexx00_y(DVD)",
+      "bank": "kinrotsm.arc (private GRE repo)",
+      "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992",
+      "fixed": {
+        "sandwich": "tools/anim/tkmovesets2/joint-sandwich.json",
+        "note": "rebuilt 2026-11-21 (Lane E) with the joint sandwich; only Hips differs from the decoded original"
+      },
+      "reached_via": {
+        "move_id": 2143,
+        "name": "Kg_BCnage_n",
+        "anim": "ozkg_nagexx00_b(DVD)"
+      }
+    },
+    "rotsm_615-fixed": {
+      "frames": 244,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 179287,
+      "sha256": "3ec4e366dd5ff24f7a79957b1cc65d423e9a81fc5054c41a288edeef0156e2a0",
+      "graph_move": 2164,
+      "graph_name": "nagexx1e_y",
+      "role": "victim",
+      "input": null,
+      "situation": "front-extra",
+      "anim": "kjkg_nagexxle_y(DVD)",
+      "bank": "kinrotsm.arc (private GRE repo)",
+      "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992",
+      "fixed": {
+        "sandwich": "tools/anim/tkmovesets2/joint-sandwich.json",
+        "note": "rebuilt 2026-11-21 (Lane E) with the joint sandwich; only Hips differs from the decoded original"
+      },
+      "reached_via": {
+        "move_id": 2163,
+        "name": "nagexx1e_n",
+        "anim": "kjkg_nagexxle_f(DVD)"
+      }
+    },
+    "rotsm_655-fixed": {
+      "frames": 165,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 128712,
+      "sha256": "4be27d1b403fdc3532b5bf4d3fca16975304e80226fc4126b4d96575d794eb38",
+      "graph_move": 2212,
+      "graph_name": "Kg_bd_y",
+      "role": "victim",
+      "input": null,
+      "situation": "crouch",
+      "anim": "nokg_bd_y(DVD)",
+      "bank": "kinrotsm.arc (private GRE repo)",
+      "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992",
+      "fixed": {
+        "sandwich": "tools/anim/tkmovesets2/joint-sandwich.json",
+        "note": "rebuilt 2026-11-21 (Lane E) with the joint sandwich; only Hips differs from the decoded original"
+      },
+      "reached_via": {
+        "move_id": 2211,
+        "name": "Kg_bd_n",
+        "anim": "nokg_bd_f(DVD)"
+      }
+    },
+    "rotsm_657-fixed": {
+      "frames": 77,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 63383,
+      "sha256": "367cf50b3fcdd1fb7f95cfb643e4ce8d68a51a63b6b1a3394d60a839ed7cb348",
+      "graph_move": 2214,
+      "graph_name": "Kg_Knuckle_y",
+      "role": "victim",
+      "input": null,
+      "situation": "crouch",
+      "anim": "mokg_knuckle_y(DVD)",
+      "bank": "kinrotsm.arc (private GRE repo)",
+      "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992",
+      "fixed": {
+        "sandwich": "tools/anim/tkmovesets2/joint-sandwich.json",
+        "note": "rebuilt 2026-11-21 (Lane E) with the joint sandwich; only Hips differs from the decoded original"
+      },
+      "reached_via": {
+        "move_id": 2213,
+        "name": "Kg_Knuckle_n",
+        "anim": "mokg_knuckle_f(DVD)"
+      }
+    },
+    "rotsm_786-fixed": {
+      "frames": 229,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 170467,
+      "sha256": "6b36a38acd59b971e8708c97a46e6700192287a0a90a2188e8ea0ca51bb2a424",
+      "graph_move": 2346,
+      "graph_name": "KgnewcoL_1By",
+      "role": "victim",
+      "input": null,
+      "situation": "crouch",
+      "anim": "V_kgrgsz_y(DVD)",
+      "bank": "kinrotsm.arc (private GRE repo)",
+      "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992",
+      "fixed": {
+        "sandwich": "tools/anim/tkmovesets2/joint-sandwich.json",
+        "note": "rebuilt 2026-11-21 (Lane E) with the joint sandwich; only Hips differs from the decoded original"
+      },
+      "reached_via": {
+        "move_id": 2345,
+        "name": "KgnewcoL_1Bn",
+        "anim": "V_kgrgsz_n(DVD)",
+        "note": "move 2348 (KgnewcoR_1By) shares this clip (same anim, same frames)"
+      }
+    },
+    "rotsm_663-fixed": {
+      "frames": 183,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 135802,
+      "sha256": "38130e7bb11e5437bfd7e6a9297604bc19a2d3d8ddc14127821fd539eeb17ec2",
+      "graph_move": 2222,
+      "graph_name": "Kg_DWstr_Ry",
+      "role": "victim",
+      "input": null,
+      "situation": "ground-face-up",
+      "anim": "mokg_Mkg_DWstr_y(DVD)",
+      "bank": "kinrotsm.arc (private GRE repo)",
+      "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992",
+      "fixed": {
+        "sandwich": "tools/anim/tkmovesets2/joint-sandwich.json",
+        "note": "rebuilt 2026-11-21 (Lane E) with the joint sandwich; only Hips differs from the decoded original"
+      },
+      "reached_via": {
+        "move_id": 2220,
+        "name": "Kg_DWstr_Ly",
+        "anim": "mokg_Mkg_DWstr_y(DVD)"
+      }
+    },
+    "rotsm_667-fixed": {
+      "frames": 185,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 143750,
+      "sha256": "38475467732334f9b9176e9eed5a0d7872a3859a9afeab61df2bdbbf0c272644",
+      "graph_move": 2226,
+      "graph_name": "Kg_DWgsw_Ry",
+      "role": "victim",
+      "input": null,
+      "situation": "ground-face-up",
+      "anim": "sukg_sgswing_y(DVD)",
+      "bank": "kinrotsm.arc (private GRE repo)",
+      "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992",
+      "fixed": {
+        "sandwich": "tools/anim/tkmovesets2/joint-sandwich.json",
+        "note": "rebuilt 2026-11-21 (Lane E) with the joint sandwich; only Hips differs from the decoded original"
+      },
+      "reached_via": {
+        "move_id": 2224,
+        "name": "Kg_DWgsw_Ly",
+        "anim": "sukg_sgswing_y(DVD)"
+      }
+    },
+    "rotsm_671-fixed": {
+      "frames": 127,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 97182,
+      "sha256": "c1f4935b712642659bcca64e177b4fe0601078179bc7afb23f3e7d6a571476fc",
+      "graph_move": 2229,
+      "graph_name": "Kg_DWgold_y",
+      "role": "victim",
+      "input": null,
+      "situation": "ground-face-up",
+      "anim": "kjkg_kgkhb_y(DVD)",
+      "bank": "kinrotsm.arc (private GRE repo)",
+      "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992",
+      "fixed": {
+        "sandwich": "tools/anim/tkmovesets2/joint-sandwich.json",
+        "note": "rebuilt 2026-11-21 (Lane E) with the joint sandwich; only Hips differs from the decoded original"
+      },
+      "reached_via": {
+        "move_id": 2228,
+        "name": "Kg_DWgold_n",
+        "anim": "kjkg_kgkhb_f(DVD)"
+      }
+    },
+    "rotsm_673-fixed": {
+      "frames": 221,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 167856,
+      "sha256": "d1a577103590efd6853a62c35d61acd50bc3d80ee4640fbd990c22d1af5ca26f",
+      "graph_move": 2231,
+      "graph_name": "Kg_DW4noj_y",
+      "role": "victim",
+      "input": null,
+      "situation": "ground-face-up",
+      "anim": "kgkb_kgff_y_cs(DVD)",
+      "bank": "kinrotsm.arc (private GRE repo)",
+      "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992",
+      "fixed": {
+        "sandwich": "tools/anim/tkmovesets2/joint-sandwich.json",
+        "note": "rebuilt 2026-11-21 (Lane E) with the joint sandwich; only Hips differs from the decoded original"
+      },
+      "reached_via": {
+        "move_id": 2230,
+        "name": "Kg_DW4noj_n",
+        "anim": "kgkb_kgff_n_cs(DVD)"
+      }
+    },
+    "rotsm_675-fixed": {
+      "frames": 34,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 28606,
+      "sha256": "833eaa0a131ab984fa3580fd8b2b25c8c214cb849b48f35a669c44bae0ccbdcd",
+      "graph_move": 2233,
+      "graph_name": "Kg_DWLsid_Ly",
+      "role": "victim",
+      "input": null,
+      "situation": "ground-face-up",
+      "anim": "mokg_V_klso_y(DVD)",
+      "bank": "kinrotsm.arc (private GRE repo)",
+      "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992",
+      "fixed": {
+        "sandwich": "tools/anim/tkmovesets2/joint-sandwich.json",
+        "note": "rebuilt 2026-11-21 (Lane E) with the joint sandwich; only Hips differs from the decoded original"
+      },
+      "reached_via": {
+        "move_id": 2232,
+        "name": "Kg_DWLsid_Ln",
+        "anim": "mokg_V_klso_n(DVD)"
+      }
+    },
+    "rotsm_679-fixed": {
+      "frames": 34,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 28518,
+      "sha256": "3ddf7013f4a2d2268f28bf45039dae62c172da5381646aa84dc72381708189d6",
+      "graph_move": 2237,
+      "graph_name": "Kg_DWRsid_Ly",
+      "role": "victim",
+      "input": null,
+      "situation": "ground-face-up",
+      "anim": "mokg_V_krso_y(DVD)",
+      "bank": "kinrotsm.arc (private GRE repo)",
+      "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992",
+      "fixed": {
+        "sandwich": "tools/anim/tkmovesets2/joint-sandwich.json",
+        "note": "rebuilt 2026-11-21 (Lane E) with the joint sandwich; only Hips differs from the decoded original"
+      },
+      "reached_via": {
+        "move_id": 2236,
+        "name": "Kg_DWRsid_Ln",
+        "anim": "mokg_V_krso_n(DVD)"
+      }
+    },
+    "rotsm_692-fixed": {
+      "frames": 109,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 82691,
+      "sha256": "c39d021b5948e00112e3db6ce6a004a6c08cadf05084d79c7a4bb3810c9be693",
+      "graph_move": 2252,
+      "graph_name": "Kg_DWUhea_Ry",
+      "role": "victim",
+      "input": null,
+      "situation": "ground-face-down",
+      "anim": "cbkg_sbs_y(DVD)",
+      "bank": "kinrotsm.arc (private GRE repo)",
+      "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992",
+      "fixed": {
+        "sandwich": "tools/anim/tkmovesets2/joint-sandwich.json",
+        "note": "rebuilt 2026-11-21 (Lane E) with the joint sandwich; only Hips differs from the decoded original"
+      },
+      "reached_via": {
+        "move_id": 2250,
+        "name": "Kg_DWUhea_Ly",
+        "anim": "cbkg_sbs_y(DVD)"
+      },
+      "heading_open": true
+    },
+    "rotsm_696-fixed": {
+      "frames": 155,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 114935,
+      "sha256": "2420377affe6478e7276390e29900b3c0e3db5b79ab039bba2590ea1d1ecddee",
+      "graph_move": 2256,
+      "graph_name": "Kg_DWULsi_Ry",
+      "role": "victim",
+      "input": null,
+      "situation": "ground-face-down",
+      "anim": "mokg_V_kgcc_y(DVD)",
+      "bank": "kinrotsm.arc (private GRE repo)",
+      "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992",
+      "fixed": {
+        "sandwich": "tools/anim/tkmovesets2/joint-sandwich.json",
+        "note": "rebuilt 2026-11-21 (Lane E) with the joint sandwich; only Hips differs from the decoded original"
+      },
+      "reached_via": {
+        "move_id": 2254,
+        "name": "Kg_DWULsi_Ly",
+        "anim": "mokg_V_kgcc_y(DVD)"
+      },
+      "heading_open": true
+    },
+    "rotsm_700-fixed": {
+      "frames": 180,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 133334,
+      "sha256": "bc703e98e5eaccdb90839a9ac2410ec95688328700959c08fdbc150c8513b3d1",
+      "graph_move": 2260,
+      "graph_name": "Kg_DWURsi_Ry",
+      "role": "victim",
+      "input": null,
+      "situation": "ground-face-down",
+      "anim": "yakg_ba_y(DVD)",
+      "bank": "kinrotsm.arc (private GRE repo)",
+      "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992",
+      "fixed": {
+        "sandwich": "tools/anim/tkmovesets2/joint-sandwich.json",
+        "note": "rebuilt 2026-11-21 (Lane E) with the joint sandwich; only Hips differs from the decoded original"
+      },
+      "reached_via": {
+        "move_id": 2258,
+        "name": "Kg_DWURsi_Ly",
+        "anim": "yakg_ba_y(DVD)"
+      },
+      "heading_open": true
+    },
+    "rotsm_704-fixed": {
+      "frames": 165,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 124476,
+      "sha256": "e33aa78dd47e4e0368480feea85ddf87e86dbaafe3062eefa63ab1dc4e809d2e",
+      "graph_move": 2264,
+      "graph_name": "Kg_DWUfoo_Ry",
+      "role": "victim",
+      "input": null,
+      "situation": "ground-face-down",
+      "anim": "ykkg_hbc_y(DVD)",
+      "bank": "kinrotsm.arc (private GRE repo)",
+      "t7_source_sha256": "67c6938dcb16575acc42423c3637cc7dd86b13bd980a2eeaa301566b3ec9c992",
+      "fixed": {
+        "sandwich": "tools/anim/tkmovesets2/joint-sandwich.json",
+        "note": "rebuilt 2026-11-21 (Lane E) with the joint sandwich; only Hips differs from the decoded original"
+      },
+      "reached_via": {
+        "move_id": 2262,
+        "name": "Kg_DWUfoo_Ly",
+        "anim": "ykkg_hbc_y(DVD)"
+      },
+      "heading_open": true
+    },
+    "hold_554": {
+      "frames": 30,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 25622,
+      "sha256": "e8a37288ea10ffb8b683d76221b9086cc1328419280eb05c29232b246c8f686e",
+      "graph_move": 554,
+      "graph_name": "___________",
+      "role": "hold",
+      "input": null,
+      "situation": "hold",
+      "anim": "nab6_guard(DVD)",
+      "bank": "T7_King.tkmvst",
+      "t7_source_sha256": "a44e309aa11f5bf0176c774a1631a5c40e74cc1068aa236ec8330be63af2b442",
+      "source_file": "T7_King.tkmvst (TKM21.0, 2787 moves), 0x64 anim blob, sampled via TekkenGame-Win64-Shipping.exe (Lane E, 2026-11-21)"
+    },
+    "esc_2127": {
+      "frames": 70,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 56115,
+      "sha256": "c9b9768f89710b14b977b861e10da1ef8bca00e51e8d53bcfc233dc46f4ce619",
+      "graph_move": 2127,
+      "graph_name": "Esc_FLnage00_n",
+      "role": "escape",
+      "input": null,
+      "situation": "escape",
+      "anim": "kjkg_swingcan_f(DVD)",
+      "bank": "T7_King.tkmvst",
+      "t7_source_sha256": "a44e309aa11f5bf0176c774a1631a5c40e74cc1068aa236ec8330be63af2b442",
+      "source_file": "T7_King.tkmvst (TKM21.0, 2787 moves), 0x64 anim blob, sampled via TekkenGame-Win64-Shipping.exe (Lane E, 2026-11-21)",
+      "break_from_move": 2126
+    },
+    "esc_2133": {
+      "frames": 65,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 52943,
+      "sha256": "792358c67c3c28aefffe93f6050f67a7fdf72443b8bae51896558a4645afd75b",
+      "graph_move": 2133,
+      "graph_name": "Esc_FRnage00_n",
+      "role": "escape",
+      "input": null,
+      "situation": "escape",
+      "anim": "sukg_brainnuke_f(DVD)",
+      "bank": "T7_King.tkmvst",
+      "t7_source_sha256": "a44e309aa11f5bf0176c774a1631a5c40e74cc1068aa236ec8330be63af2b442",
+      "source_file": "T7_King.tkmvst (TKM21.0, 2787 moves), 0x64 anim blob, sampled via TekkenGame-Win64-Shipping.exe (Lane E, 2026-11-21)",
+      "break_from_move": 2130
+    },
+    "esc_237": {
+      "frames": 30,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 24441,
+      "sha256": "2f229e49146735b815ace3fe399249cc2228bee066d617553559301c115aa975",
+      "graph_move": 237,
+      "graph_name": "SideEscL_n",
+      "role": "escape",
+      "input": null,
+      "situation": "escape",
+      "anim": "G_Lnuke_n(DVD)",
+      "bank": "T7_King.tkmvst",
+      "t7_source_sha256": "a44e309aa11f5bf0176c774a1631a5c40e74cc1068aa236ec8330be63af2b442",
+      "source_file": "T7_King.tkmvst (TKM21.0, 2787 moves), 0x64 anim blob, sampled via TekkenGame-Win64-Shipping.exe (Lane E, 2026-11-21)",
+      "break_from_move": 2136
+    },
+    "esc_239": {
+      "frames": 30,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 24393,
+      "sha256": "8d3d4585cdcc0d1da052e6716c1afaec2304cf7702c3f369d1c72eabd737bca6",
+      "graph_move": 239,
+      "graph_name": "SideEscR_n",
+      "role": "escape",
+      "input": null,
+      "situation": "escape",
+      "anim": "G_Rnuke_n(DVD)",
+      "bank": "T7_King.tkmvst",
+      "t7_source_sha256": "a44e309aa11f5bf0176c774a1631a5c40e74cc1068aa236ec8330be63af2b442",
+      "source_file": "T7_King.tkmvst (TKM21.0, 2787 moves), 0x64 anim blob, sampled via TekkenGame-Win64-Shipping.exe (Lane E, 2026-11-21)",
+      "break_from_move": 2138
+    },
+    "esc_235": {
+      "frames": 30,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 24848,
+      "sha256": "69f940a4c1696824f7cd13793a7a7c059c2f7313aa800713a081651f253e224f",
+      "graph_move": 235,
+      "graph_name": "nuke36_n",
+      "role": "escape",
+      "input": null,
+      "situation": "escape",
+      "anim": "Bco_nuke_n(DVD)",
+      "bank": "T7_King.tkmvst",
+      "t7_source_sha256": "a44e309aa11f5bf0176c774a1631a5c40e74cc1068aa236ec8330be63af2b442",
+      "source_file": "T7_King.tkmvst (TKM21.0, 2787 moves), 0x64 anim blob, sampled via TekkenGame-Win64-Shipping.exe (Lane E, 2026-11-21)",
+      "break_from_move": 2164
+    },
+    "esc_2217": {
+      "frames": 30,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 24749,
+      "sha256": "c9856f1c876f0f01514eccd355f4448c6559fe6400359a7e790680434e57b266",
+      "graph_move": 2217,
+      "graph_name": "Kg_CREsc_n",
+      "role": "escape",
+      "input": null,
+      "situation": "escape",
+      "anim": "Fco_snuke_n(DVD)",
+      "bank": "T7_King.tkmvst",
+      "t7_source_sha256": "a44e309aa11f5bf0176c774a1631a5c40e74cc1068aa236ec8330be63af2b442",
+      "source_file": "T7_King.tkmvst (TKM21.0, 2787 moves), 0x64 anim blob, sampled via TekkenGame-Win64-Shipping.exe (Lane E, 2026-11-21)",
+      "break_from_move": [
+        2212,
+        2214
+      ]
+    },
+    "esc_233": {
+      "frames": 30,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 24843,
+      "sha256": "dc133df07875108455230c5c98f1e1f1503c619fdf6a7bbb4d23e45ce8493224",
+      "graph_move": 233,
+      "graph_name": "nuke30_n",
+      "role": "escape",
+      "input": null,
+      "situation": "escape",
+      "anim": "Bco_nuke_n(DVD)",
+      "bank": "T7_King.tkmvst",
+      "t7_source_sha256": "a44e309aa11f5bf0176c774a1631a5c40e74cc1068aa236ec8330be63af2b442",
+      "source_file": "T7_King.tkmvst (TKM21.0, 2787 moves), 0x64 anim blob, sampled via TekkenGame-Win64-Shipping.exe (Lane E, 2026-11-21)",
+      "break_from_move": 2346
+    },
+    "esc_2241": {
+      "frames": 46,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 37518,
+      "sha256": "65997c92316d1945f2331a97c19bab38ead9997cfb7b1b964f7d6303b60df771",
+      "graph_move": 2241,
+      "graph_name": "Kg_DWEsc_n",
+      "role": "escape",
+      "input": null,
+      "situation": "escape",
+      "anim": "mokg_G_nenuke_n(DVD)",
+      "bank": "T7_King.tkmvst",
+      "t7_source_sha256": "a44e309aa11f5bf0176c774a1631a5c40e74cc1068aa236ec8330be63af2b442",
+      "source_file": "T7_King.tkmvst (TKM21.0, 2787 moves), 0x64 anim blob, sampled via TekkenGame-Win64-Shipping.exe (Lane E, 2026-11-21)",
+      "break_from_move": 2222
+    },
+    "esc_2243": {
+      "frames": 43,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 35379,
+      "sha256": "1cb0d5562fc2b9f7abf3d40fef2073db0903e5e2aa888a9780ee409a1613a9b7",
+      "graph_move": 2243,
+      "graph_name": "Kg_DWLsEsc_n",
+      "role": "escape",
+      "input": null,
+      "situation": "escape",
+      "anim": "mokg_V_dlsn_n(DVD)",
+      "bank": "T7_King.tkmvst",
+      "t7_source_sha256": "a44e309aa11f5bf0176c774a1631a5c40e74cc1068aa236ec8330be63af2b442",
+      "source_file": "T7_King.tkmvst (TKM21.0, 2787 moves), 0x64 anim blob, sampled via TekkenGame-Win64-Shipping.exe (Lane E, 2026-11-21)",
+      "break_from_move": 2226
+    },
+    "esc_2245": {
+      "frames": 43,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 35347,
+      "sha256": "f7453dd4f02b251656d557112977e0b3919b674f2f5d1eae444b842d2914a452",
+      "graph_move": 2245,
+      "graph_name": "Kg_DWRsEsc_n",
+      "role": "escape",
+      "input": null,
+      "situation": "escape",
+      "anim": "mokg_V_drsn_n(DVD)",
+      "bank": "T7_King.tkmvst",
+      "t7_source_sha256": "a44e309aa11f5bf0176c774a1631a5c40e74cc1068aa236ec8330be63af2b442",
+      "source_file": "T7_King.tkmvst (TKM21.0, 2787 moves), 0x64 anim blob, sampled via TekkenGame-Win64-Shipping.exe (Lane E, 2026-11-21)",
+      "break_from_move": 2229
+    },
+    "esc_2247": {
+      "frames": 46,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 37918,
+      "sha256": "83b1a938b6e0468bbe3da66e4ef0ce355ff855227812ee09f0cc68672cf5e345",
+      "graph_move": 2247,
+      "graph_name": "Kg_DWaEsc_n",
+      "role": "escape",
+      "input": null,
+      "situation": "escape",
+      "anim": "mokg_G_headnuke_n(DVD)",
+      "bank": "T7_King.tkmvst",
+      "t7_source_sha256": "a44e309aa11f5bf0176c774a1631a5c40e74cc1068aa236ec8330be63af2b442",
+      "source_file": "T7_King.tkmvst (TKM21.0, 2787 moves), 0x64 anim blob, sampled via TekkenGame-Win64-Shipping.exe (Lane E, 2026-11-21)",
+      "break_from_move": 2231
+    },
+    "esc_2266": {
+      "frames": 46,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 37774,
+      "sha256": "c6ab389aa5a65fe7a535ed41bcf809b251143baa58db5e80471198244e38292d",
+      "graph_move": 2266,
+      "graph_name": "Kg_DWUhEsc_n",
+      "role": "escape",
+      "input": null,
+      "situation": "escape",
+      "anim": "mokg_V_utdhn_n(DVD)",
+      "bank": "T7_King.tkmvst",
+      "t7_source_sha256": "a44e309aa11f5bf0176c774a1631a5c40e74cc1068aa236ec8330be63af2b442",
+      "source_file": "T7_King.tkmvst (TKM21.0, 2787 moves), 0x64 anim blob, sampled via TekkenGame-Win64-Shipping.exe (Lane E, 2026-11-21)",
+      "break_from_move": 2252
+    },
+    "esc_2268": {
+      "frames": 43,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 35570,
+      "sha256": "dab52fe8b8637f529aa79c051c6202c99192f2429c7c2bf0b6af4ba53dfa3023",
+      "graph_move": 2268,
+      "graph_name": "Kg_DWULsEsc_n",
+      "role": "escape",
+      "input": null,
+      "situation": "escape",
+      "anim": "mokg_V_utdln_n(DVD)",
+      "bank": "T7_King.tkmvst",
+      "t7_source_sha256": "a44e309aa11f5bf0176c774a1631a5c40e74cc1068aa236ec8330be63af2b442",
+      "source_file": "T7_King.tkmvst (TKM21.0, 2787 moves), 0x64 anim blob, sampled via TekkenGame-Win64-Shipping.exe (Lane E, 2026-11-21)",
+      "break_from_move": 2256
+    },
+    "esc_2270": {
+      "frames": 43,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 35571,
+      "sha256": "896e2d65098973f80fff0ab524257d7add5e9be6759196487a0038d38a89c10e",
+      "graph_move": 2270,
+      "graph_name": "Kg_DWURsEsc_n",
+      "role": "escape",
+      "input": null,
+      "situation": "escape",
+      "anim": "mokg_V_utdrn_n(DVD)",
+      "bank": "T7_King.tkmvst",
+      "t7_source_sha256": "a44e309aa11f5bf0176c774a1631a5c40e74cc1068aa236ec8330be63af2b442",
+      "source_file": "T7_King.tkmvst (TKM21.0, 2787 moves), 0x64 anim blob, sampled via TekkenGame-Win64-Shipping.exe (Lane E, 2026-11-21)",
+      "break_from_move": 2260
+    },
+    "esc_2272": {
+      "frames": 46,
+      "fps": 60,
+      "format": "wh-anim/1",
+      "bytes": 37622,
+      "sha256": "ccb712b3cbab87eb39e162c1cf5fb67726a190edf07d8705073f65bb7154d573",
+      "graph_move": 2272,
+      "graph_name": "Kg_DWUfEsc_n",
+      "role": "escape",
+      "input": null,
+      "situation": "escape",
+      "anim": "mokg_V_utdfn_n(DVD)",
+      "bank": "T7_King.tkmvst",
+      "t7_source_sha256": "a44e309aa11f5bf0176c774a1631a5c40e74cc1068aa236ec8330be63af2b442",
+      "source_file": "T7_King.tkmvst (TKM21.0, 2787 moves), 0x64 anim blob, sampled via TekkenGame-Win64-Shipping.exe (Lane E, 2026-11-21)",
+      "break_from_move": 2264
     }
   },
-  "total_bytes": 1099838
+  "total_bytes": 4589116,
+  "note": "2026-11-21 Lane E (T7 throw fix): the _n clips (574/578/588/590/592/594/716/718) are re-labelled role 'thrower' (they are the thrower's throw motions, not the victim); the _y receivers are added as rotsm_<n>-fixed.json, rebuilt with the joint sandwich (tools/anim/tkmovesets2/joint-sandwich.json). Hold 554 + 15 escapes decoded from the real King .tkmvst. 588 was NOT replaced (the joint sandwich reproduces it to 0.2 deg max). Ground face-down receivers 692/696/700/704 carry heading_open: true \u2014 the heading question (Lane C AUDIT-REPORT.md section 5) is still open."
 }
