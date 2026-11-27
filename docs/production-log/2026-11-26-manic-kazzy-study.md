@@ -437,3 +437,10 @@ Built from §§2–3, for the owner's call on where he lives (game/roster undeci
 - Why surfaced before the Saturday 09:00 re-check: service is Nov 28 at 1pm; Nov 27 is the last realistic day to send flowers, reach the family, or decide about going. Waiting until Saturday morning would leave ~4 hours, too late to travel to Texas City. This breaks the "quiet re-check only speaks up if confirmed" line — the deadline is the reason.
 - Open question for the owner only: is this him? Does he recognise Arionna Nicole, or know Kazzy was from the Texas City area? If he says no or doesn't know, treat the lead as dead and do not chase the family.
 - Saturday 09:00 re-check cron (manic-kazzy-death-recheck-20261128) still stands; not cancelled.
+
+## Update — 2026-11-27 ~15:48–15:49 CST: Real confirms the death; funeral lead now probable
+
+- Real replied to the funeral-lead question (15:48): "Kazzy, he's not alive anymore." The death itself is now confirmed by his word — no longer resting on the tributes alone.
+- Follow-up (15:49), on whether the Carnes service is his: "It's probably him." The funeral lead is now probable per Real, not proven: the notice still names only "Aiden" (no last name), no Olson obituary is listed at Carnes, and nothing independently ties the musician to Texas City. The service stays the working plan on that basis.
+- Service: Saturday Nov 28, 1:00pm, Carnes Funeral Home, 3100 Gulf Freeway, Texas City, TX 77591, (409) 986-9900.
+- Still open with Real: what he wants to do about it (flowers, reach the family, go, nothing). Saturday 09:00 re-check cron (manic-kazzy-death-recheck-20261128) still stands as a final check before the service.
