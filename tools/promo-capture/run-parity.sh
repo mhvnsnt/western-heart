@@ -9,6 +9,12 @@ if [ -n "$3" ]; then
   export WH_OVERRIDE_FILES=game/js/fighter.js,game/js/t3anims.js,game/js/stagebreaks.js,game/assets/anim/t7/king/moves.pack.json,game/assets/movesets/pantera.json
 fi
 cd "$HERE"
+# playwright is installed next to earlier capture tooling, or at the repo root
+if [ -z "$NODE_PATH" ]; then
+  for d in "$HERE/node_modules" "$HERE/../../../wh-capture/node_modules" "$HERE/../../node_modules"; do
+    if [ -d "$d/playwright" ]; then export NODE_PATH="$d"; break; fi
+  done
+fi
 for s in $(seq 0 $((N-1))); do
   ( for try in $(seq 1 25); do timeout 1800 node pantera-parity.mjs "$OUT" $s $N >> "$OUT/log-$s.txt" 2>&1 && break; echo "retry $try" >> "$OUT/log-$s.txt"; done; echo SHARDEXIT >> "$OUT/log-$s.txt" ) &
 done
