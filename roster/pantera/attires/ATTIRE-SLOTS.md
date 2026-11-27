@@ -55,3 +55,13 @@ slots in arrival order and the reskins shift back.
 - 2026-10-20: Slot 2 RESTORED — `attires/leomon/model.glb` pushed (MODEL_URLS `pantera-leoman`, ATTIRE_VARIANTS Pantera Attire 2), fresh front T-pose ref rendered from the restored model; provenance corrected to owner-provided via Google Drive (see above).
 - 2026-10-20: OWNER SLOT SWAP — Leopard King pushed up from Slot 6, swapped with Slot 4: Slot 4 = Leopard King (Tripo), Slot 6 = T7 P2. Leopard King rigged the same day (see `attires/leopard-king/WORKLOG.md`). Pure reorder — all six attires remain wired; nothing deleted.
 - 2026-10-21: OWNER REORDER — TRIPO-FRONT (verbatim order at the top of this file). New order: Slot 1 = Leo man (Tripo), Slot 2 = Leopard King (Tripo), Slot 3 = T7King P1 reskin, Slot 4 = Snow Leopard, Slot 5 = Crimson Rage, Slot 6 = T7 P2. Supersedes the 2026-10-17 Pantera exception. Audit first: exactly two Pantera Tripo originals exist on record (registry + 2026-10-21 census) — slots 1–2 are Tripo; the reskins keep their previous relative order behind them. Both Tripo models were already rigged and wired, so no rig work was needed. Pure reorder in `game/js/attires.js` (default attire = first entry = Leo man); all six attires remain wired; nothing deleted.
+
+## 2026-11-27 wiring note
+The textures are unchanged and so is the skeleton (same 49 joints). Only the skin data was added or changed, so that every slot animates in the fight:
+- A3 `pantera` -> `game/assets/models/pantera-weights-v2.glb` (weights re-smoothed on the T7 King poses).
+- A4 -> `snow-leopard/pantera-snow-leopard-reweighted.glb`.
+- A5 -> `crimson-rage/pantera-attire5-crimson-rigged.glb`.
+- A6 -> `p2-wired/pantera-attire4-p2-rigged.glb` (A5/A6 were static).
+- A2 -> `leopard-king/model-refit-cdn.glb` (packed under the 25 MiB Cloudflare file cap).
+
+Originals are kept. Proof: `docs/proof/2026-11-27/pantera-attires/README.md`.
