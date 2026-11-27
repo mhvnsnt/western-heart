@@ -4,7 +4,7 @@
 
 **36 open PRs — 🟢 ready to merge: 0 · 🔴 failing: 19 · ⏳ running: 0 · ⚔️ conflicted: 17** (also 🟠 blocked: 0 · 🔗 stacked: 0 · 📝 draft, green-or-idle: 0; 7 of 36 are drafts)
 
-_Generated 2026-11-27 16:02 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
+_Generated 2026-11-27 16:10 UTC · required checks on `main`: `clobber-guard`, `deletion-guard`, `guard`, `instruction-gate`_
 
 Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not reported. Ready = not draft, targets `main`, GitHub says MERGEABLE, every check green. Status priority: conflicted > failing > running > draft > stacked > ready.
 
@@ -16,8 +16,8 @@ Legend: ✅ pass · ❌ fail · ⏳ queued/running · ⊘ cancelled · `·` not 
 
 | Status | PR | Draft? | Author / lane branch | Head | Base | `clobber-guard` | `deletion-guard` | `guard` | `instruction-gate` | Other checks | Mergeable | Updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 🔴 failing | [#1863](https://github.com/mhvnsnt/western-heart/pull/1863) Pantera: all six attires rigged + wired (A5/A6 rig, A3/A4 reweight on game poses, A2 packe | ready | mhvnsnt / `grok/pantera-attires-wired-20261127` | `963a902` | `main` | ✅ | ✅ | ✅ | ❌ | 7✅ 3⏳ | mergeable (blocked) | 2026-11-27 16:02 UTC |
-| 🔴 failing | [#1862](https://github.com/mhvnsnt/western-heart/pull/1862) Add PULL-IN-FIRST LAW to agent docs (owner order, Nov 27 2026) | ready | mhvnsnt / `grok/pull-in-first-law-20261127` | `303355b` | `main` | ✅ | ✅ | ✅ | ❌ | 8✅ 1⏳ | mergeable (blocked) | 2026-11-27 15:55 UTC |
+| 🔴 failing | [#1863](https://github.com/mhvnsnt/western-heart/pull/1863) Pantera: all six attires rigged + wired (A5/A6 rig, A3/A4 reweight on game poses, A2 packe | ready | mhvnsnt / `grok/pantera-attires-wired-20261127` | `963a902` | `main` | ✅ | ✅ | ✅ | ❌ | 8✅ 2⏳ | mergeable (unstable) | 2026-11-27 16:02 UTC |
+| 🔴 failing | [#1862](https://github.com/mhvnsnt/western-heart/pull/1862) Add PULL-IN-FIRST LAW to agent docs (owner order, Nov 27 2026) | ready | mhvnsnt / `grok/pull-in-first-law-20261127` | `303355b` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-27 16:10 UTC |
 | 🔴 failing | [#1861](https://github.com/mhvnsnt/western-heart/pull/1861) [DRAFT] God Within mode wiring — Devil Within / Urban Reign / Def Jam / Sato into WH canon | draft | mhvnsnt / `godwithin/wiring-20261126` | `17d1188` | `main` | ✅ | ✅ | ✅ | ✅ | 10✅ 1❌ | mergeable (unstable) | 2026-11-26 22:57 UTC |
 | 🔴 failing | [#1851](https://github.com/mhvnsnt/western-heart/pull/1851) Lane E: T7 throw fix — receivers rebuilt, pair wired, shown | ready | mhvnsnt / `t7-throw-fix/lane-e-wireup-20261121` | `44e8f8a` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ 1❌ | mergeable (unstable) | 2026-11-23 16:38 UTC |
 | 🔴 failing | [#1837](https://github.com/mhvnsnt/western-heart/pull/1837) Proof: owner asked to see Cornerstone / Scimitar / Chordz models as images | ready | mhvnsnt / `show-three-models-20261122` | `46b1279` | `main` | ✅ | ✅ | ✅ | ❌ | 9✅ | mergeable (blocked) | 2026-11-22 17:56 UTC |
