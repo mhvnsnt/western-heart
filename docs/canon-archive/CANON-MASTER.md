@@ -1958,3 +1958,7 @@ Owner order 2026-11-08 ~20:37 CST — land in all necessary repos.
 - CUTS / REALIST — CORRECTION (owner 2026-11-22): Realist's model should come from Ash Lane, and he should also have a model in Western Heart. Cuts has no filed fighter — the Nov 22 audit found no folder, no roster entry, no bio; the Edward Scissorhands look lives in Chordz's folder; only Chordz is filed.
 *End of CANON-MASTER. Compiled 2026-10-23. If it isn't recorded, it
 isn't here — and if it gets recorded, it gets pushed here.*
+
+### 2026-11-20 owner order — God Within wiring
+
+- GOD WITHIN WIRING (owner order 2026-11-20): pull Urban Reign Redux + Urban Reign + all Def Jam games + Devil Within (Tekken 5) only as already decomped/recomped/fan-made/decrypted and cracked — nothing built from scratch — and wire it into God Within mode; anything with no complete working source is reported as an exact gap, not quietly rebuilt.
