@@ -1,0 +1,19 @@
+{
+ "gate": "MediaPipe FaceLandmarker landmark-error gate (gate.py, _pilot2-v2-20261108); mean/max err % vs Angel refs; front ref=identity, q34 ref=f003",
+ "final_build": {
+  "glb": "megami-angel-gnmface-v2.glb (release megami-pilot2-20261108)",
+  "front_clean_stage": {"file": "g_final_front_metrics.json", "frame": "final_front_corr3_a.png", "mean_err_pct": 1.39, "max_err_pct": 4.8},
+  "q34": {"file": "g_final_q34_metrics.json", "frame": "gate_on_q34_final.png (gate stage) == final_q34_nohair.png (clean stage, no fitted hair part); two renders of the same face state, gates identical", "mean_err_pct": 2.24, "max_err_pct": 6.69},
+  "q34_clean_stage_with_hair": {"frame": "final_q34_corr3_a.png", "result": "NO FACE — MediaPipe detector miss; the fitted straight hair sheet covers the far cheek. Detector miss, not a fit verdict (same class as corr2_b q34)."}
+ },
+ "winner_gate_stage": {
+  "corr3_a_front": {"file": "g_corr3_a_front_metrics.json", "mean_err_pct": 1.59, "max_err_pct": 5.8},
+  "corr3_a_q34": {"file": "g_corr3_a_q34_metrics.json", "mean_err_pct": 2.34, "max_err_pct": 7.23}
+ },
+ "baselines_same_stage": {
+  "v2_warp_rejected_front": {"mean_err_pct": 1.19, "max_err_pct": 4.31},
+  "v2_warp_rejected_q34": {"mean_err_pct": 2.79, "max_err_pct": 9.16},
+  "note": "Historical v2 numbers (0.95 / 2.91) were measured on a different stage and are superseded by these same-stage re-measurements."
+ },
+ "corr2_b": {"front_mean_err_pct": 1.31, "front_max_err_pct": 4.37, "q34": "no measurement exists — MediaPipe detector miss on its only q34 frame; cannot be certified on both views"}
+}
