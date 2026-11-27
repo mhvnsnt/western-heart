@@ -40155,7 +40155,7 @@
   "d/f+2+4": "df+2+4",
   "d/f+2,1": "df+2,1",
   "d/f+3": "df+3",
-  "d/f+3+4": "df+3+4",
+  "d/f+3+4": "d/f+3+4",
   "d/f+3+4,1": "d/f+3+4,1",
   "d/f+3,4": "df+3,4",
   "d/f+4": "df+4",
@@ -40254,7 +40254,7 @@
   "u/b+3+4": "u/b+3+4",
   "u/b+4": "ub+4",
   "u/f+1": "uf+1",
-  "u/f+1+2": "uf+1+2",
+  "u/f+1+2": "u/f+1+2~t7.king",
   "u/f+1+2*": "u/f+1+2*",
   "u/f+1,1": "u/f+1,1",
   "u/f+1,2": "u/f+1,2",
@@ -190190,5 +190190,30 @@
    "remaining_guess_grade": 175,
    "note": "Surgical text edit (file does not round-trip reserialization)."
   }
- ]
+ ],
+ "t7_throw_slot_fix": {
+  "date": "2026-11-27",
+  "tool": "tools/moveset-merge/t7_throw_slot_fix.py",
+  "why": "a T8 throw/hit-throw held this input but has no clip (the game showed a T3 throw stand-in); the fighter's own T7 strike on the same input has its real clip in the T7 move pack",
+  "reslotted": [
+   {
+    "slot": "d/f+3+4",
+    "from": "df+3+4",
+    "from_name": "Frankensteiner",
+    "from_hit_level": null,
+    "to": "d/f+3+4",
+    "to_motbin": "Kg_frank00",
+    "to_clip": "rotsm_424"
+   },
+   {
+    "slot": "u/f+1+2",
+    "from": "uf+1+2",
+    "from_name": "Executioner Drop",
+    "from_hit_level": null,
+    "to": "u/f+1+2~t7.king",
+    "to_motbin": "Kg_sjplrp",
+    "to_clip": "k_sjprl00_DVD"
+   }
+  ]
+ }
 }
