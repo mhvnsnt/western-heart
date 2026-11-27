@@ -1,0 +1,363 @@
+{
+ "ladder": {
+  "exports": {
+   "ATTIRE_VARIANTS": "object",
+   "attireEyeGlow": "function",
+   "attireLabel": "function",
+   "attiresFor": "function",
+   "resolveFighterAttire": "function",
+   "selectableAttires": "function",
+   "selectedAttireModel": "function",
+   "setAttire": "function"
+  },
+  "ladder": [
+   "pantera-leoman",
+   "pantera-leopard-king",
+   "pantera",
+   "pantera-snow-leopard",
+   "pantera-crimson-rage",
+   "pantera-p2"
+  ]
+ },
+ "rows": [
+  {
+   "model": "pantera-leoman",
+   "name": "idle",
+   "clip": "stance",
+   "bank": "t7_king",
+   "resolvedModel": "pantera-leoman",
+   "minY": 0.019,
+   "LeftKneeDeg": 127.9,
+   "RightKneeDeg": 110.6,
+   "stretchP999max": 4
+  },
+  {
+   "model": "pantera-leoman",
+   "name": "walk",
+   "clip": "walkFwd",
+   "bank": "t7_king",
+   "resolvedModel": "pantera-leoman",
+   "minY": 0.006,
+   "LeftKneeDeg": 138.6,
+   "RightKneeDeg": 118.6,
+   "stretchP999max": 6.36
+  },
+  {
+   "model": "pantera-leoman",
+   "name": "punch",
+   "clip": "light",
+   "bank": "t7_king",
+   "resolvedModel": "pantera-leoman",
+   "minY": -0.009,
+   "LeftKneeDeg": 120.2,
+   "RightKneeDeg": 147.7,
+   "stretchP999max": 6.83
+  },
+  {
+   "model": "pantera-leoman",
+   "name": "kick",
+   "clip": "medium",
+   "bank": "t7_king",
+   "resolvedModel": "pantera-leoman",
+   "minY": 0.008,
+   "LeftKneeDeg": 81.7,
+   "RightKneeDeg": 155.9,
+   "stretchP999max": 6.56
+  },
+  {
+   "model": "pantera-leoman",
+   "name": "hit",
+   "clip": "hit",
+   "bank": "t7_king",
+   "resolvedModel": "pantera-leoman",
+   "minY": 0.006,
+   "LeftKneeDeg": 154.9,
+   "RightKneeDeg": 132.9,
+   "stretchP999max": 4.96
+  },
+  {
+   "model": "pantera-leopard-king",
+   "name": "idle",
+   "clip": "stance",
+   "bank": "t7_king",
+   "resolvedModel": "pantera-leopard-king",
+   "minY": 0.022,
+   "LeftKneeDeg": 127.9,
+   "RightKneeDeg": 110.6,
+   "stretchP999max": 5.98
+  },
+  {
+   "model": "pantera-leopard-king",
+   "name": "walk",
+   "clip": "walkFwd",
+   "bank": "t7_king",
+   "resolvedModel": "pantera-leopard-king",
+   "minY": 0.006,
+   "LeftKneeDeg": 138.6,
+   "RightKneeDeg": 118.6,
+   "stretchP999max": 6.24
+  },
+  {
+   "model": "pantera-leopard-king",
+   "name": "punch",
+   "clip": "light",
+   "bank": "t7_king",
+   "resolvedModel": "pantera-leopard-king",
+   "minY": -0.035,
+   "LeftKneeDeg": 120.2,
+   "RightKneeDeg": 147.7,
+   "stretchP999max": 6.16
+  },
+  {
+   "model": "pantera-leopard-king",
+   "name": "kick",
+   "clip": "medium",
+   "bank": "t7_king",
+   "resolvedModel": "pantera-leopard-king",
+   "minY": 0,
+   "LeftKneeDeg": 81.7,
+   "RightKneeDeg": 155.9,
+   "stretchP999max": 8.82
+  },
+  {
+   "model": "pantera-leopard-king",
+   "name": "hit",
+   "clip": "hit",
+   "bank": "t7_king",
+   "resolvedModel": "pantera-leopard-king",
+   "minY": 0.01,
+   "LeftKneeDeg": 154.9,
+   "RightKneeDeg": 132.9,
+   "stretchP999max": 4.82
+  },
+  {
+   "model": "pantera",
+   "name": "idle",
+   "clip": "stance",
+   "bank": "t7_king",
+   "resolvedModel": "pantera",
+   "minY": 0.058,
+   "LeftKneeDeg": 110.6,
+   "RightKneeDeg": 127.9,
+   "stretchP999max": 40.63
+  },
+  {
+   "model": "pantera",
+   "name": "walk",
+   "clip": "walkFwd",
+   "bank": "t7_king",
+   "resolvedModel": "pantera",
+   "minY": 0.023,
+   "LeftKneeDeg": 118.6,
+   "RightKneeDeg": 138.6,
+   "stretchP999max": 37.31
+  },
+  {
+   "model": "pantera",
+   "name": "punch",
+   "clip": "light",
+   "bank": "t7_king",
+   "resolvedModel": "pantera",
+   "minY": -0.036,
+   "LeftKneeDeg": 147.7,
+   "RightKneeDeg": 120.2,
+   "stretchP999max": 37.48
+  },
+  {
+   "model": "pantera",
+   "name": "kick",
+   "clip": "medium",
+   "bank": "t7_king",
+   "resolvedModel": "pantera",
+   "minY": -0.032,
+   "LeftKneeDeg": 155.9,
+   "RightKneeDeg": 81.7,
+   "stretchP999max": 51.78
+  },
+  {
+   "model": "pantera",
+   "name": "hit",
+   "clip": "hit",
+   "bank": "t7_king",
+   "resolvedModel": "pantera",
+   "minY": -0.031,
+   "LeftKneeDeg": 132.9,
+   "RightKneeDeg": 154.9,
+   "stretchP999max": 24.01
+  },
+  {
+   "model": "pantera-snow-leopard",
+   "name": "idle",
+   "clip": "stance",
+   "bank": "t7_king",
+   "resolvedModel": "pantera-snow-leopard",
+   "minY": 0.01,
+   "LeftKneeDeg": 110.6,
+   "RightKneeDeg": 127.9,
+   "stretchP999max": 22.15
+  },
+  {
+   "model": "pantera-snow-leopard",
+   "name": "walk",
+   "clip": "walkFwd",
+   "bank": "t7_king",
+   "resolvedModel": "pantera-snow-leopard",
+   "minY": -0.076,
+   "LeftKneeDeg": 118.6,
+   "RightKneeDeg": 138.6,
+   "stretchP999max": 24.77
+  },
+  {
+   "model": "pantera-snow-leopard",
+   "name": "punch",
+   "clip": "light",
+   "bank": "t7_king",
+   "resolvedModel": "pantera-snow-leopard",
+   "minY": -0.203,
+   "LeftKneeDeg": 147.7,
+   "RightKneeDeg": 120.2,
+   "stretchP999max": 21.86
+  },
+  {
+   "model": "pantera-snow-leopard",
+   "name": "kick",
+   "clip": "medium",
+   "bank": "t7_king",
+   "resolvedModel": "pantera-snow-leopard",
+   "minY": -0.181,
+   "LeftKneeDeg": 155.9,
+   "RightKneeDeg": 81.7,
+   "stretchP999max": 41.31
+  },
+  {
+   "model": "pantera-snow-leopard",
+   "name": "hit",
+   "clip": "hit",
+   "bank": "t7_king",
+   "resolvedModel": "pantera-snow-leopard",
+   "minY": 0.009,
+   "LeftKneeDeg": 132.9,
+   "RightKneeDeg": 154.9,
+   "stretchP999max": 19.1
+  },
+  {
+   "model": "pantera-crimson-rage",
+   "name": "idle",
+   "clip": "stance",
+   "bank": "t7_king",
+   "resolvedModel": "pantera-crimson-rage",
+   "minY": 0.052,
+   "LeftKneeDeg": 110.6,
+   "RightKneeDeg": 127.9,
+   "stretchP999max": 40.63
+  },
+  {
+   "model": "pantera-crimson-rage",
+   "name": "walk",
+   "clip": "walkFwd",
+   "bank": "t7_king",
+   "resolvedModel": "pantera-crimson-rage",
+   "minY": 0.017,
+   "LeftKneeDeg": 118.6,
+   "RightKneeDeg": 138.6,
+   "stretchP999max": 37.31
+  },
+  {
+   "model": "pantera-crimson-rage",
+   "name": "punch",
+   "clip": "light",
+   "bank": "t7_king",
+   "resolvedModel": "pantera-crimson-rage",
+   "minY": -0.036,
+   "LeftKneeDeg": 147.7,
+   "RightKneeDeg": 120.2,
+   "stretchP999max": 37.48
+  },
+  {
+   "model": "pantera-crimson-rage",
+   "name": "kick",
+   "clip": "medium",
+   "bank": "t7_king",
+   "resolvedModel": "pantera-crimson-rage",
+   "minY": -0.04,
+   "LeftKneeDeg": 155.9,
+   "RightKneeDeg": 81.7,
+   "stretchP999max": 51.78
+  },
+  {
+   "model": "pantera-crimson-rage",
+   "name": "hit",
+   "clip": "hit",
+   "bank": "t7_king",
+   "resolvedModel": "pantera-crimson-rage",
+   "minY": -0.031,
+   "LeftKneeDeg": 132.9,
+   "RightKneeDeg": 154.9,
+   "stretchP999max": 24.01
+  },
+  {
+   "model": "pantera-p2",
+   "name": "idle",
+   "clip": "stance",
+   "bank": "t7_king",
+   "resolvedModel": "pantera-p2",
+   "minY": 0.052,
+   "LeftKneeDeg": 110.6,
+   "RightKneeDeg": 127.9,
+   "stretchP999max": 40.63
+  },
+  {
+   "model": "pantera-p2",
+   "name": "walk",
+   "clip": "walkFwd",
+   "bank": "t7_king",
+   "resolvedModel": "pantera-p2",
+   "minY": 0.017,
+   "LeftKneeDeg": 118.6,
+   "RightKneeDeg": 138.6,
+   "stretchP999max": 37.31
+  },
+  {
+   "model": "pantera-p2",
+   "name": "punch",
+   "clip": "light",
+   "bank": "t7_king",
+   "resolvedModel": "pantera-p2",
+   "minY": -0.036,
+   "LeftKneeDeg": 147.7,
+   "RightKneeDeg": 120.2,
+   "stretchP999max": 37.48
+  },
+  {
+   "model": "pantera-p2",
+   "name": "kick",
+   "clip": "medium",
+   "bank": "t7_king",
+   "resolvedModel": "pantera-p2",
+   "minY": -0.04,
+   "LeftKneeDeg": 155.9,
+   "RightKneeDeg": 81.7,
+   "stretchP999max": 51.78
+  },
+  {
+   "model": "pantera-p2",
+   "name": "hit",
+   "clip": "hit",
+   "bank": "t7_king",
+   "resolvedModel": "pantera-p2",
+   "minY": -0.031,
+   "LeftKneeDeg": 132.9,
+   "RightKneeDeg": 154.9,
+   "stretchP999max": 24.01
+  }
+ ],
+ "errors": [
+  "404 http://127.0.0.1:8799/game/assets/anim/t3/t7_king/t3_grab.json",
+  "404 http://127.0.0.1:8799/game/assets/anim/t3/t7_king/t3_stance.json",
+  "404 http://127.0.0.1:8799/game/assets/anim/t3/t7_king/t3_win_rp.json",
+  "404 http://127.0.0.1:8799/game/assets/anim/t3/t7_king/rows.pack.json",
+  "404 http://127.0.0.1:8799/game/assets/anim/t3/t7_king/hit_frames.json",
+  "404 https://western-heart-assets.mhvnsnt.workers.dev/roster/pantera/attires/crimson-rage/pantera-attire5-crimson-rigged.glb",
+  "404 https://western-heart-assets.mhvnsnt.workers.dev/roster/pantera/attires/p2-wired/pantera-attire4-p2-rigged.glb"
+ ]
+}
