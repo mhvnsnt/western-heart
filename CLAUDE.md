@@ -63,3 +63,5 @@ Read `docs/rules/COMPLETE-WIRING-LAW.md` and `docs/tech/SYSTEMS-COVERAGE.md`. Pu
 main is branch-protected with required checks (pr-safety-guard, clobber-guard, deletion-guard, no-deletion-guard, instruction-gate), admins included. Never merge with pending or red checks, never resolve merges in a sparse checkout, never self-apply `owner-approved-deletion` / `owner-approved-stale`. Full rules: `docs/rules/MAIN-PROTECTION.md`.
 ## Handoff playbook (2026-10-23)
 All agents (Claude Code, Muse, others): follow [docs/handoff/HOW-TO-WORK-LIKE-GROK.md](docs/handoff/HOW-TO-WORK-LIKE-GROK.md) and the lane table in [docs/handoff/HANDOFF-2026-10-23.md](docs/handoff/HANDOFF-2026-10-23.md).
+
+Pull-in-first law (owner, Nov 27 2026): see AGENTS.md — never hand-tool or build from scratch what already exists; pull in complete existing work first.
