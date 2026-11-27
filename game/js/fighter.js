@@ -666,6 +666,9 @@ export const FRESH_CROUCH_WINDOW_S = 6 / 60;
    the T3 attack-word layout (t3anims attackLevelOfWord; checked 49/49 against T7 frame data on independently
    resolved King moves) produce a hitbox; unblockable / throw-class / undecoded words do not (counted in
    _t7gStatus). */
+/* Fighters whose hits from a real T7 pack clip deal the T7 motbin damage exactly (receiveHit). Pantera only
+   (owner 2026-11-27: one system fully finished first); other T7_MOVES fighters keep row damage x power / defense. */
+export const T7_EXACT_DAMAGE = new Set(['pantera']);
 export function t7GraphDevEnabled() {
   if (globalThis.WH_T7GRAPH != null) return !!globalThis.WH_T7GRAPH;
   try {
@@ -1668,7 +1671,7 @@ export class Fighter {
           timingT = { S: ST, A: AT, R: RT, t0, t1, D, src: 't7-active' };
         }
         return { name: t7m.name, kind: 't7', why: `real T7 ${t7m.motbin} (${t7m.anim})`, limb: limbT, level: levelT,
-          grab: false, timing: timingT, rejected: [] };
+          grab: false, timing: timingT, rejected: [], t7damage: Number.isFinite(t7m.damage) ? t7m.damage : null };
       }
     }
     const sp = this._resolveStepPlan(move, attackName, ms);
@@ -1926,7 +1929,8 @@ export class Fighter {
       limb: plan && plan.limb, timing: plan && plan.timing, rejected: plan && plan.rejected,
       steps: plan && plan.steps, unmapped: plan && plan.unmapped,
       stepBank: plan && plan.stepBank, stepRow: plan && plan.stepRow,
-      layer2hit: l2used && l2used.hit ? l2used.hit : null };
+      layer2hit: l2used && l2used.hit ? l2used.hit : null,
+      t7damage: plan && plan.kind === 't7' && name === plan.name && Number.isFinite(plan.t7damage) ? plan.t7damage : null };
     return name;
   }
 
@@ -3665,7 +3669,14 @@ export class Fighter {
         crouch: _wasCrouch, airborne: false, down: false, forState: 'block' });
       return 'block';
     }
-    let dmg = move.damage * attacker.stats.power / this.stats.defense;
+    // T7 EXACT DAMAGE (2026-11-27, owner: Pantera's punches / kicks / strings match King T7 exactly): when the
+    // attacker is in T7_EXACT_DAMAGE and the hit comes from the real T7 clip its plan played, the hit deals that
+    // motbin move's own damage (moves.pack.json `damage`, filled from graph.json by tools/anim/t7_pack_graph_fill.py)
+    // instead of the WH row damage x power / defense. Every other fighter and every other hit is unchanged.
+    const t7p = attacker._atkPlan;
+    const t7Exact = T7_EXACT_DAMAGE.has(attacker.char && attacker.char.id) && t7p && t7p.id === attacker._attackId
+      && t7p.kind === 't7' && Number.isFinite(t7p.t7damage) && t7p.t7damage > 0 && !move.isGrab;
+    let dmg = t7Exact ? t7p.t7damage : move.damage * attacker.stats.power / this.stats.defense;
     if (attacker._maxT > 0) dmg *= KOF.MAX_DMG; // KOF XV MAX Mode
     // FIGHTER DEPTH (worker 34): soul kindle — the kindled fighter takes
     // +10% damage while kindled (Tekken 7 ki charge).
