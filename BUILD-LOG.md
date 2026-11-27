@@ -1,4 +1,7 @@
 
+## 2026-11-27 CST — Pantera: King T7 clip fills + exact T7 damage (fix/pantera-king-t7-parity-20261127)
+tools/anim/t7_pack_graph_fill.py fills King's moves.pack.json from the imported graph (graph.json + graph.commands.json + graph-clips), so nothing is set by hand per move. It puts `damage`/`first_active` on all 166 pack moves and adds pack moves for f+1 (Kg_lp00F, which drops the T3 stand-in), u/b+3 (Kg_jplk00B), d+1,2 (Kg_t_slp01) and u/f+1,2 (Kg_sjplrp). Chords are reported and never filled, because stance-row precedence isn't proven. fighter.js T7_EXACT_DAMAGE = {pantera}: a hit from a real T7 pack clip deals that motbin move's damage, not row damage × power/defense. No other fighter changes. The live hit test showed b+4/d+1/d+2/d+4/b+1,4/d/f+3,4 already played King's own clips (named rotsm_<clip> by bank index); the earlier report called them mismatches by mistake. Parity harness: tools/promo-capture/{parity_tests.py,pantera-parity.mjs,run-parity.sh,parity_report.py}.
+
 ## 2026-11-10 14:55 CST — T7 graph heading trace (PR #1737, no code change)
 Move-entry yaw rules decoded (flip on extradata bit15; turn -u_0x56 gated by u_0x98 bit27 and 0x3C00 != 0x1C00). Per-frame yaw = base + undecoded term T (writer untraced) → facing after first source move stays unknown (fail closed). Continuous neutral→jab→string→return→dash→run→return NOT achieved; not merged, not deployed; Pages not retried. Proof: `docs/proof/2026-11-10/t7-heading/README.md`.
 

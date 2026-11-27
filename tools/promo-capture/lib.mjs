@@ -12,6 +12,15 @@ export async function launch({ width = 1280, height = 720, base = process.env.WH
     args: ['--use-gl=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
   const page = await browser.newPage({ viewport: { width, height } });
   await page.addInitScript({ path: path.join(here, 'vclock.js') });
+  // Local override (proof of an unmerged branch on the live build): WH_OVERRIDE_ROOT=<repo checkout>,
+  // WH_OVERRIDE_FILES=game/js/fighter.js,... are served from the checkout; everything else from the live site.
+  if (process.env.WH_OVERRIDE_ROOT && process.env.WH_OVERRIDE_FILES) {
+    for (const rel of process.env.WH_OVERRIDE_FILES.split(',')) {
+      const file = path.join(process.env.WH_OVERRIDE_ROOT, rel);
+      await page.route('**/' + rel + '*', (route) => route.fulfill({ path: file, headers: { 'cache-control': 'no-store',
+        'content-type': rel.endsWith('.js') ? 'application/javascript' : 'application/json' } }));
+    }
+  }
   const errors = []; page.on('pageerror', e => errors.push(String(e).slice(0, 200)));
   await page.goto(base + '/game/index.html', { timeout: 180000 });
   await page.waitForFunction(() => typeof window.__startFight === 'function', null, { timeout: 120000 });
