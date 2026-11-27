@@ -4,6 +4,31 @@
 **Repo:** `mhvnsnt/western-heart` (PUBLIC), default branch `main`, main tip 32ec401 (#1773, 2026-11-23).
 **Purpose of this file:** any agent that picks up work here reads this FIRST, then the linked docs. It states what we've done, where we're at, and what we're working toward — so the owner can say "go to this repo, pick up the work" and you just know. Update this file in the same PR whenever the state changes (add, don't delete).
 
+## OWNER FOCUS (Nov 27 2026): models, animations, promo clips from extracted game data
+
+**Set by the owner (mhvnsnt), 2026-11-27 10:12 AM America/Chicago. This is the MAIN FOCUS until he changes it.**
+
+In his words (summary): even though Bannon and Western Heart are not being sold yet, the work that matters most now is **perfecting the character MODELS and ANIMATIONS** of those games using the **already extracted / decrypted / decoded commercial game files and code**, and then producing **in-game video clips, image stills, and marketing / advertising / promotional videos** that show them working correctly.
+
+- **Bannon:** WWE 2K26 actual game files first (models, rigs, anims, moves), plus every other wrestling game we have data for (2K19/2K22/2K23/2K25, Wrestling Empire, WMXIX, KoC2, ...).
+- **Western Heart:** Tekken 7 / Tekken 3, DOA, VF5, SF and every other game feeding the roster — each fighter matches his source character move-for-move (input → animation, side by side), plus his own canon extras.
+- **Private-project rule:** the commercial data is the BASE. These are private projects, not sold yet; build on top of the extracted data freely. Nothing from them is sold until it has been customized into the owner's own work.
+- **Pull-in-first:** never hand-build what the extracted data or an existing tool/kit already provides. Pull it in whole.
+- **Proof:** no "looks right" claim without rendered stills/clips that were actually looked at (media-proof-standard: bytes exist, content is real, before/after for edits).
+
+### Who owns what
+| Lane | Owner | Notes |
+|---|---|---|
+| Western Heart models / animations / promo clips | **MoneyManBusch (Grok Bot)** | Pantera first (King T7 parity), then 2-3 strongest fighters. The separate Pantera attire-wiring lane keeps running; do not collide with it. |
+| Bannon model / animation / promo push — **coordination** | **MoneyManBusch (Grok Bot)** | Picks the hero wrestlers, sets the 2K26-correctness bar, captures clips. |
+| Bannon engine lane | **Claude** (unchanged) | Do NOT overwrite Claude's engine work. Coordinate through this HANDOFF / the lane docs, small add-only PRs. |
+| Everything else (menus, story, arcade, sweeps, other repos) | **Muse and the other agents** | Keep going on your lanes; this focus does not pause you. |
+
+### Deliverable order
+1. Hero characters fully correct from extracted data (rig, weights, textures, real anims, signature moves, entrances).
+2. In-game stills + clips captured from the live build (headless capture / in-engine camera paths, existing promo/entrance kits — no hand-made lookalikes).
+3. First promo deliverable: a ~30 s in-game trailer per game, internal/private until the owner says otherwise. Nothing gets posted publicly without his explicit OK.
+
 ## 1. What this repo is
 
 WESTERN HEART — the chimera-built fighting game. Tekken 7 base + Tekken 3 legacy + Eastern Mind soul + wrestling systems. The main chat's home repo and the biggest build: a Roster-100 fighting game with real movesets decoded from real game files, custom characters, portrait-first screens (that is how he plays), and a live build he playtests from his phone.
