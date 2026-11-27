@@ -27,12 +27,12 @@ const upAll = async () => { for (const k of [...held]) await up(k); };
 for (const t of TESTS) {
   if (done.has(t.input)) continue;
   await upAll();
-  await page.evaluate(() => { const g = window.__game; g.p1.root.position.x = -0.75; g.p2.root.position.x = 0.75; g.p2.hp = g.p2.maxHp; g.p1.hp = g.p1.maxHp; g.p1.vx = g.p2.vx = 0; g.p1._bt = false; g.p1.stance = null; g.p1.stanceT = 0; g.p1._risingT = 0; });
+  await page.evaluate(() => { const g = window.__game; g.p1.root.position.x = -0.75; g.p2.root.position.x = 0.75; g.p2.hp = g.p2.maxHp; g.p1.hp = g.p1.maxHp; g.p1.vx = g.p2.vx = 0; g.p1._bt = false; g.p1.stance = null; g.p1.stanceT = 0; g.p1._risingT = 0; if (g.p1.tekken) { g.p1.tekken.lastMove = null; g.p1.tekken.lastMoveT = 0; g.p1.tekken._strPath = null; } });
   for (let i = 0; i < 90; i++) { // settle: both fighters back to neutral before the next input
     const r = await frame(page, S);
     if (i >= 8 && r.p1.state === 'idle' && r.p2.state === 'idle' && !r.p1.atk) break;
   }
-  await page.evaluate(() => { const g = window.__game; g.p1.root.position.x = -0.75; g.p2.root.position.x = 0.75; g.p2.hp = g.p2.maxHp; g.p1.vx = g.p2.vx = 0; g.p1._bt = false; g.p1.stance = null; g.p1.stanceT = 0; g.p1._risingT = 0; });
+  await page.evaluate(() => { const g = window.__game; g.p1.root.position.x = -0.75; g.p2.root.position.x = 0.75; g.p2.hp = g.p2.maxHp; g.p1.vx = g.p2.vx = 0; g.p1._bt = false; g.p1.stance = null; g.p1.stanceT = 0; g.p1._risingT = 0; if (g.p1.tekken) { g.p1.tekken.lastMove = null; g.p1.tekken.lastMoveT = 0; g.p1.tekken._strPath = null; } });
   for (let i = 0; i < 4; i++) await frame(page, S);
   let hp = (await frame(page, S)).p2.hp; const hits = []; const clips = new Set(), plans = new Set(), atks = new Set();
   const step = async () => { const r = await frame(page, S); if (r.p2.hp < hp - 1e-6) hits.push(+(hp - r.p2.hp).toFixed(2)); hp = r.p2.hp;
@@ -50,7 +50,7 @@ for (const t of TESTS) {
     await step();
     for (const k of btns) await up(k);
     for (const k of dirs) await up(k);
-    const hold = si < t.steps.length - 1 ? 4 : 30;
+    const hold = si < t.steps.length - 1 ? 4 : 48;
     for (let i = 0; i < hold; i++) await step();
   }
   await upAll();
