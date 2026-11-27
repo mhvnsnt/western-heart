@@ -444,3 +444,8 @@ Built from §§2–3, for the owner's call on where he lives (game/roster undeci
 - Follow-up (15:49), on whether the Carnes service is his: "It's probably him." The funeral lead is now probable per Real, not proven: the notice still names only "Aiden" (no last name), no Olson obituary is listed at Carnes, and nothing independently ties the musician to Texas City. The service stays the working plan on that basis.
 - Service: Saturday Nov 28, 1:00pm, Carnes Funeral Home, 3100 Gulf Freeway, Texas City, TX 77591, (409) 986-9900.
 - Still open with Real: what he wants to do about it (flowers, reach the family, go, nothing). Saturday 09:00 re-check cron (manic-kazzy-death-recheck-20261128) still stands as a final check before the service.
+
+## Update — 2026-11-27 ~15:51 CST: Real's decision — tributes only
+
+- Real on knowing him: "I didn't know him that well, just over the Internet." No flowers, no family contact, no travel to the service. The honoring is the tributes — in the games, the art, and the music.
+- He made a piece in Kazzy's name with "rip kazzy" at the bottom under his signature; he will send it later.
