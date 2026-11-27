@@ -42,7 +42,13 @@ def t7_moves_table():
 def is_t8_throw(m):
     lvl = str(m.get('hit_level') or '').split(',')[-1].strip().lower()
     grab = m.get('isGrab') or m.get('throw') or m.get('move_class') == 'throw' or lvl.startswith('t')
-    return bool(grab) and str(m.get('merge_source') or '').startswith('t8:')
+    # T8 provenance is merge_source 't8:...' on some rows, and t8_source / t8_id /
+    # t8_anim_removed_* on others (Pantera's df+3+4 Frankensteiner and uf+1+2
+    # Executioner Drop have the flags but no merge_source, so they used to be missed).
+    t8 = (str(m.get('merge_source') or '').startswith('t8:')
+          or bool(m.get('t8_source')) or bool(m.get('t8_id'))
+          or any(k.startswith('t8_anim_removed') for k in m))
+    return bool(grab) and bool(t8)
 
 
 def findings(fid, pack_path):
@@ -54,7 +60,12 @@ def findings(fid, pack_path):
     pack = json.load(open(pack_path, encoding='utf-8'))
     by_input = {}
     for k, v in pack['moves'].items():
-        by_input.setdefault(v.get('input'), k)
+        inp = v.get('input')
+        cur = by_input.get(inp)
+        # Prefer an explicit T7 pack row (~t7.) so the game plays the named source clip
+        # (k_sjprl00_DVD) rather than the same motion under a rotsm_<id> alias.
+        if not cur or ('~t7.' in k and '~t7.' not in (cur or '')):
+            by_input[inp] = k
     out = []
     for n, k in (ms.get('slots') or {}).items():
         m = ms['moves'].get(k) or {}
@@ -85,7 +96,7 @@ def rewrite(msf, raw, ms, changes, note):
     for c in changes:
         assert ms['slots'][c['slot']] == c['from']
         ms['slots'][c['slot']] = c['to']
-    ms['t7_throw_slot_fix'] = {'date': '2026-11-11', 'tool': 'tools/moveset-merge/t7_throw_slot_fix.py', 'why': note,
+    ms['t7_throw_slot_fix'] = {'date': '2026-11-27', 'tool': 'tools/moveset-merge/t7_throw_slot_fix.py', 'why': note,
                                'reslotted': changes}
     open(msf, 'w', encoding='utf-8').write(json.dumps(ms, indent=ind, ensure_ascii=ea) + nl)
 
