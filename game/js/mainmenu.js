@@ -51,6 +51,7 @@ const TITLES = [
 const SUBMENUS = {
   story: { title: 'STORY', cards: [
     { t: 'THE TRIAL', d: 'Seven lands. Five forces. Death is not failure — it is reincarnation. Climb to the Shrine and face the Assembled Soul.', badge: 'live', action: 'mode-story' },
+    { t: 'GOD WITHIN', d: 'Five chapters. Twelve guardians. Death is not the end — it is a new beginning.', badge: 'hot', action: 'mode-godwithin', img: 'assets/stages/thumbs/shrine.png' },
     { t: 'CHARACTER EPISODES', d: 'Every soul, their story. Short cinematic ladders for the whole roster.', badge: 'live', action: 'mode-episodes' },
     { t: 'HEART AND MIND WITHIN', d: 'Per-character 3D beat-em-up campaigns. Pick a soul and descend.', badge: 'hot', action: 'mode-heartmind' },
   ]},
@@ -206,10 +207,13 @@ function openSubmenu(key) {
   wrap.innerHTML = '';
   def.cards.forEach((c) => {
     const b = document.createElement('button');
-    b.className = 'mm-card' + (c.badge === 'hot' ? ' hot' : '');
+    b.className = 'mm-card' + (c.badge === 'hot' ? ' hot' : '') + (c.img ? ' has-art' : '');
     const badgeCls = c.badge === 'live' ? 'live' : c.badge === 'soon' ? 'soon' : '';
     const badgeTxt = c.badge === 'live' ? 'PLAY' : c.badge === 'hot' ? 'NEW' : 'SOON';
-    b.innerHTML = `<span class="mm-badge ${badgeCls}">${badgeTxt}</span><h3>${c.t}</h3><p>${c.d}</p>`;
+    // Card art (2026-11-26 art pass): a thumb strip when the card
+    // carries one; falls back to the plain card when the art 404s.
+    const thumb = c.img ? `<img class="mm-thumb" src="${c.img}" alt="" onerror="this.style.display='none'">` : '';
+    b.innerHTML = `${thumb}<span class="mm-badge ${badgeCls}">${badgeTxt}</span><h3>${c.t}</h3><p>${c.d}</p>`;
     if (c.action) b.dataset.action = c.action; // routed by the delegated document handlers
     // Data-action cards are owned by the document-level router (main.js),
     // which also re-dispatches them on touchend — no own listener here,

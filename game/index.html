@@ -19,6 +19,9 @@
   <link rel="stylesheet" href="t7-skin.css" />
   <link rel="stylesheet" href="menu-t7.css" />
   <link rel="stylesheet" href="ui-gaps.css" />
+  <!-- GOD WITHIN screen art pass (2026-11-26): art banners, chips,
+       VS rows, hub restyle — see godwithin-art.css + docs/GOD-WITHIN.md. -->
+  <link rel="stylesheet" href="godwithin-art.css" />
   <!-- Worker 35: colorblind-safe HUD palettes (worker-35 identity lane) -->
   <link rel="stylesheet" href="css/colorblind.css" />
   <!-- MENU FALLBACK CSS (2026-10-22, PR #676 rebase): if every stylesheet
@@ -550,11 +553,14 @@
   <!-- ====================== STORY: STAGE INTRO ====================== -->
   <section id="screen-stage-intro" class="screen">
     <div class="panel">
+      <!-- Stage art: the chapter's own stage thumb (set by
+           _godwithinStageIntro; hidden on STORY intros). -->
+      <div class="gw-art" id="stage-art-wrap"><img id="stage-art" src="assets/stages/thumbs/helix-palace.png" alt="" /></div>
       <p id="stage-kicker" class="stage-kicker"></p>
       <h2 id="stage-title"></h2>
       <p id="stage-sub" class="stage-sub"></p>
       <p id="stage-reward" class="stage-reward"></p>
-      <p id="stage-foe" class="stage-foe"></p>
+      <div id="stage-foe" class="stage-foe"></div>
       <p id="stage-forces" class="stage-forces"></p>
       <div class="menu-buttons">
         <button id="stage-fight" class="btn-primary">ENTER</button>
@@ -566,9 +572,14 @@
        Death is not failure. It is the mechanism. Pick your next vessel. -->
   <section id="screen-reincarnate" class="screen">
     <div class="panel reinc-panel">
+      <!-- Rebirth art: the lantern shrine at dusk (the game's own
+           shrine stage thumb) — the soul comes back at the shrine. -->
+      <div class="gw-art"><img src="assets/stages/thumbs/shrine.png" alt="Lantern shrine at dusk" /></div>
       <p id="reinc-deaths" class="stage-kicker"></p>
       <h2>DEATH IS NOT THE END</h2>
+      <p class="gw-subline">It&rsquo;s just a new beginning.</p>
       <p id="reinc-flavor" class="stage-sub"></p>
+      <p id="reinc-dream" class="gw-chip gw-dream" hidden></p>
       <!-- Eastern Mind face assembly: the returning soul's new face,
            built from the original game's own eyes / nose / mouth art. -->
       <div id="reinc-face" class="reinc-face"></div>
@@ -576,6 +587,16 @@
       <p id="reinc-forces" class="stage-forces"></p>
     </div>
   </section>
+
+  <!-- GOD WITHIN fight intro: VS splash shown for ~1.4s before ROUND 1. -->
+  <div id="gw-vs" class="gw-vs" hidden>
+    <div class="gw-vs-inner">
+      <div class="gw-vs-side"><img id="gw-vs-p1img" alt="" /><div id="gw-vs-p1name" class="gw-vs-name"></div><div class="gw-vs-you">YOUR VESSEL</div></div>
+      <div class="gw-vs-mid">VS</div>
+      <div class="gw-vs-side"><img id="gw-vs-p2img" alt="" /><div id="gw-vs-p2name" class="gw-vs-name"></div><div id="gw-vs-p2role" class="gw-vs-role"></div></div>
+    </div>
+    <div id="gw-vs-chapter" class="gw-vs-chapter"></div>
+  </div>
 
   <!-- ====================== STORY: THE TRADER ====================== -->
   <section id="screen-trader" class="screen">

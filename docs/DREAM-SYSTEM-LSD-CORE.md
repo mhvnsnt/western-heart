@@ -1,6 +1,6 @@
 # Western Heart — Dream System core (LSD dream system, Phase 2)
 
-Branch: `phase2/lsd-dream-core` (unmerged — merging is a separate decision).
+Branch: `phase2/lsd-dream-core` — MERGED to main (2026-11-20 slice; files live at `game/js/dream-system.js`, `game/data/dream-stages.json`, `game/dream.html`, `test/dream-system.test.mjs`). Wired into God Within mode 2026-11-26 (branch `godwithin/wiring-20261126`): one dream night plays between lives on every death — see `docs/GOD-WITHIN.md` and `game/js/godwithin.js`.
 Owner orders: "pull them in and wire into Western Heart with WH canon + WH
 characters (never clones)" and "make the game PLAY better" (2026-11-20).
 LSD is a CORE building block for Western Heart, not a side piece.

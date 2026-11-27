@@ -2171,3 +2171,30 @@ async function buildSunRa(g, def, api) {
   });
   return { updaters, skyTex, fog };
 }
+
+/* ---------------- God Within guardian rooms ----------------
+   Branch godwithin/wiring-20261126 (owner order 2026-11-26).
+   The 12 god-within anchors as guardian rooms, distributed
+   3+2+2+2+3 across the 5 Devil Within chapters (see
+   game/js/godwithin.js GODWITHIN_ANCHORS / GODWITHIN_CHAPTERS —
+   this export is the stages.js mirror of that map, so stage code
+   can look a room up by anchor or stage id). hostStageId is always
+   an existing STAGES id; whStage is the chapter's WH stage name
+   (DW2's is CENTRAL MOUNTAIN, whose host stage def is the
+   Octagonal Shrine — the lab is built on the mountain's root).
+   PRAYER's guardian is RAVE as BYOU's stand-in (BYOU has no GLB);
+   the room reverts to BYOU when a BYOU model lands. */
+export const GODWITHIN_GUARDIAN_ROOMS = [
+  { anchor: 'PYRAMSTP', dwChapter: 1, whStageId: 'helix-palace', whStage: 'HELIX PALACE', guardianId: 'tou', guardian: 'TOU', bossId: 'samura1', note: 'The climb through the machine halls.' },
+  { anchor: 'TAJI', dwChapter: 1, whStageId: 'helix-palace', whStage: 'HELIX PALACE', guardianId: 'sakura', guardian: 'SAKU RA', bossId: 'samura1', note: 'SHA’s vessel — the tomb-room, the lab’s dead heart.' },
+  { anchor: 'STPAUL', dwChapter: 1, whStageId: 'helix-palace', whStage: 'HELIX PALACE', guardianId: 'skull', guardian: 'SKULL', bossId: 'samura1', note: 'Judgement hall for the lab’s experiments.' },
+  { anchor: 'PYRAMID', dwChapter: 2, whStageId: 'octagonal-shrine', whStage: 'CENTRAL MOUNTAIN', guardianId: 'retsu', guardian: 'RETSU', bossId: 'gyou', note: 'The dead king entombed beneath the mountain.' },
+  { anchor: 'SHRINE', dwChapter: 2, whStageId: 'octagonal-shrine', whStage: 'CENTRAL MOUNTAIN', guardianId: 'zen', guardian: 'ZEN', bossId: 'gyou', note: 'Stillness at the mountain’s heart.' },
+  { anchor: 'GODDESS', dwChapter: 3, whStageId: 'octagonal-shrine', whStage: 'OCTAGONAL SHRINE', guardianId: 'sakura', guardian: 'SAKU RA', bossId: 'diablo', note: 'The idol over the ruins.' },
+  { anchor: 'PRAYER', dwChapter: 3, whStageId: 'octagonal-shrine', whStage: 'OCTAGONAL SHRINE', guardianId: 'rave', guardian: 'RAVE', bossId: 'diablo', standIn: 'byou', note: 'STAND-IN: BYOU has no GLB — RAVE guards as Byou’s replacement vessel.' },
+  { anchor: 'NASKA', dwChapter: 4, whStageId: 'palace-of-dreaming', whStage: 'PALACE OF DREAMING', guardianId: 'phantom', guardian: 'PHANTOM', bossId: 'phantom', note: 'The lines are only read from above — the dream-ship reads them.' },
+  { anchor: 'TENG', dwChapter: 4, whStageId: 'palace-of-dreaming', whStage: 'PALACE OF DREAMING', guardianId: 'gyou', guardian: 'GYOU', bossId: 'phantom', note: 'Tengu mountain — the sky heights.' },
+  { anchor: 'DEVIL', dwChapter: 5, whStageId: 'tong-nou', whStage: 'THE TRIAL / FINAL SHRINE', guardianId: 'demonio', guardian: 'DEMONIO', bossId: 'demonio', note: 'The Demon Soul — the devil is the final gate.' },
+  { anchor: 'BIGHEAD', dwChapter: 5, whStageId: 'tong-nou', whStage: 'THE TRIAL / FINAL SHRINE', guardianId: 'diablo', guardian: 'DIABLO', bossId: 'demonio', note: 'The stone head that watches the final arena.' },
+  { anchor: 'PYRAMSUN', dwChapter: 5, whStageId: 'tong-nou', whStage: 'THE TRIAL / FINAL SHRINE', guardianId: 'pantera', guardian: 'PANTERA', bossId: 'demonio', note: 'The panther in the sun — the final arena under the sun.' },
+];

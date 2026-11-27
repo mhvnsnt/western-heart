@@ -1,0 +1,129 @@
+/* ============================================================
+   GOD WITHIN — screen art pass (2026-11-26, owner direction:
+   "menus and screens are too much like text dumps — they need art,
+   UI art, menu art". Tekken-style: art first, text second.
+   Art sources: stage banners are the game's own stage thumbs
+   (game/assets/stages/thumbs/); the Banabana sea is new key art
+   (game/assets/godwithin/banabana-sea.png). Copy on these screens
+   is DRAFT for the owner's rewrite — see docs/GOD-WITHIN.md.
+   ============================================================ */
+
+/* ---------- Art banner (top of a panel) ---------- */
+.gw-art { display: none; margin: -30px -26px 16px; border-bottom: 1px solid rgba(255,215,106,.45); }
+.gw-art.on { display: block; }
+.gw-art img { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 20px 20px 0 0; }
+/* Reincarnate screen is God Within canon in both modes — banner always on there. */
+#screen-reincarnate .gw-art { display: block; }
+
+/* ---------- Reincarnate screen ---------- */
+#screen-reincarnate .panel h2 { margin-bottom: 4px; text-shadow: 0 2px 18px rgba(255,183,77,.35); }
+.gw-subline { font-family: serif; font-style: italic; font-size: 17px; color: #ffd76a; margin: 2px 0 10px; letter-spacing: .5px; }
+.gw-chip {
+  display: inline-block; font-size: 13px; font-weight: 800; letter-spacing: 1.5px;
+  color: #ffd76a; border: 1px solid rgba(255,215,106,.5); border-radius: 999px;
+  padding: 7px 14px; margin: 6px 4px; background: rgba(255,215,106,.08);
+}
+.gw-chip.gw-shards { color: #9fd8ff; border-color: rgba(159,216,255,.5); background: rgba(159,216,255,.07); }
+.gw-chip-row { margin: 10px 0 2px; }
+#reinc-flavor { font-size: 16px; line-height: 1.55; margin: 8px 0 4px; }
+.reinc-face-sub { font-size: 12px; letter-spacing: 2px; color: #c9b8e8; margin: 2px 0 0; }
+.reinc-face-sub2 { font-size: 10px; letter-spacing: .35em; color: #8a7a5a; margin: 6px 0 0; }
+
+/* SAIL is the primary action on the reincarnate screen — a real
+   button, not a vessel card. */
+.gw-sail {
+  display: block; width: 100%; min-height: 60px; margin: 14px 0 4px; padding: 12px 16px;
+  cursor: pointer; color: #fff; font: inherit; text-align: center;
+  background: linear-gradient(180deg, #7b2ff2, #4a1490);
+  border: 1px solid rgba(255,215,106,.55); border-radius: 14px;
+  box-shadow: 0 10px 28px rgba(0,0,0,.5);
+}
+.gw-sail:active { transform: scale(.98); }
+.gw-sail .gw-sail-title { font-weight: 900; letter-spacing: 2px; font-size: 16px; }
+.gw-sail .gw-sail-sub { font-size: 12px; opacity: .85; margin-top: 3px; line-height: 1.4; }
+
+/* ---------- Stage intro: chips + VS row ---------- */
+#screen-stage-intro .panel h2 { margin-bottom: 8px; text-shadow: 0 2px 18px rgba(255,183,77,.35); }
+#screen-stage-intro #stage-sub { font-size: 15px; line-height: 1.5; margin: 8px 0 4px; }
+/* The reward is two chips now, not a paragraph box. Scoped to .gw so
+   STORY's intro (same panel, GW-21 untouched) keeps its old box. */
+#screen-stage-intro.gw #stage-reward { border: 0; background: none; padding: 0; margin: 10px 0 4px; font-weight: 400; }
+.gw-vsrow {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  margin: 14px 0 4px;
+}
+.gw-vs-side { flex: 1 1 0; min-width: 0; text-align: center; }
+.gw-vs-side img {
+  width: 76px; height: 76px; object-fit: cover; object-position: top;
+  border-radius: 12px; border: 2px solid rgba(178,141,255,.6); display: block; margin: 0 auto 6px;
+  background: rgba(255,255,255,.05);
+}
+.gw-vs-side .gw-vs-name { font-weight: 900; letter-spacing: 1px; font-size: 12px; color: #fff; word-break: keep-all; overflow-wrap: normal; }
+.gw-vs-side .gw-vs-role { font-size: 10px; letter-spacing: 3px; color: #b28dff; margin-top: 3px; }
+.gw-vs-side .gw-vs-you { font-size: 10px; letter-spacing: 3px; color: #9fd8ff; margin-top: 3px; }
+.gw-vs-mid {
+  flex: 0 0 auto; font-weight: 900; font-style: italic; font-size: 22px; color: #ffd76a;
+  text-shadow: 0 0 16px rgba(255,215,106,.6); transform: skewX(-8deg);
+}
+
+/* ---------- VS splash (fight intro) ---------- */
+.gw-vs {
+  position: fixed; inset: 0; z-index: 9000; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 18px;
+  background: rgba(7,7,20,.96); padding: 24px;
+}
+.gw-vs[hidden] { display: none; }
+.gw-vs-inner { display: flex; align-items: center; justify-content: center; gap: 16px; width: 100%; max-width: 460px; }
+.gw-vs .gw-vs-side img { width: 120px; height: 120px; }
+.gw-vs .gw-vs-side .gw-vs-name { font-size: 17px; }
+.gw-vs .gw-vs-mid { font-size: 34px; }
+.gw-vs-chapter { font-size: 12px; letter-spacing: 3px; color: #b28dff; text-align: center; }
+
+/* ---------- Banabana hub overlay ----------
+   GHOST-TEXT FIX (2026-11-26): the overlay was rgba(5,5,12,0.92) —
+   8% transparent, so the reincarnate screen bled through behind the
+   hub. The overlay is SOLID now; the hub also carries its own bg. */
+.gw-hub-overlay { background: #070714 !important; }
+.gw-hub { background: #070714; color: #fff; max-width: 640px; margin: 0 auto; padding-bottom: 32px; }
+.gw-hub p { line-height: 1.5; margin: 8px 0; }
+.gw-hub-head { margin-bottom: 14px; }
+.gw-hub-head img { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 14px; border: 1px solid rgba(255,215,106,.45); }
+.gw-hub-head h3 { margin: 12px 0 2px; font-size: 22px; letter-spacing: 2px; color: #ffd76a; }
+.gw-hub-head p { margin: 0; font-size: 14px; opacity: .85; }
+.gw-hub h3 { margin-top: 20px; }
+.gw-hub .wh-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 10px 0; }
+/* .wh-btn / .wh-row / .wh-input / .wh-dice had NO styles anywhere in
+   the game CSS — hub buttons rendered as native white buttons.
+   Defined here, scoped to the hub, so the hub reads as game UI. */
+.gw-hub .wh-btn, .gw-hub-overlay .wh-btn {
+  min-height: 48px; padding: 12px 18px; cursor: pointer; font: inherit; font-weight: 800;
+  letter-spacing: 1px; color: #fff; background: linear-gradient(180deg, #7b2ff2, #4a1490);
+  border: 1px solid rgba(178,141,255,.55); border-radius: 12px;
+}
+.gw-hub .wh-btn:active, .gw-hub-overlay .wh-btn:active { transform: scale(.97); }
+.gw-hub select, .gw-hub .wh-input {
+  background: #1a0b2e; color: #fff; border: 1px solid rgba(178,141,255,.55);
+  border-radius: 10px; font: inherit; font-size: 15px; padding: 10px 12px; min-height: 48px;
+}
+.gw-hub select option { background: #1a0f2e; }
+.gw-hub .wh-dice {
+  display: inline-block; min-width: 44px; text-align: center; padding: 8px 6px;
+  background: rgba(255,215,106,.12); border: 1px solid rgba(255,215,106,.5);
+  border-radius: 8px; color: #ffd76a; font-weight: 800;
+}
+.gw-hub canvas { max-width: 100%; height: auto; border-radius: 12px; background: #12081f; }
+
+/* ---------- Mode cards with art (STORY rail) ---------- */
+/* STORY rail phone-width fix (2026-11-26): the submenu rendered 971px
+   wide on a 390px phone, so every card's desc clipped at the viewport
+   edge; the sub-head was 60% transparent, ghosting the topbar through
+   it. Pin the submenu to the viewport, solid head, wrap the descs. */
+.mm-submenu { max-width: 100vw; }
+.mm-sub-head { background: rgba(8,4,14,1); }
+.mm-card { min-width: 0; }
+.mm-card p { overflow-wrap: break-word; }
+.mm-card.has-art { padding-top: 0; overflow: hidden; }
+.mm-card .mm-thumb {
+  display: block; width: calc(100% + 36px); margin: 0 -16px 12px -20px;
+  aspect-ratio: 16/7; object-fit: cover; border-bottom: 1px solid rgba(255,215,106,.35);
+}
