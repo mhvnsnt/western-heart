@@ -35,7 +35,10 @@ import { getCachedBuffer, putCachedBuffer } from './asset-cache.js';
 import { resolveAssetCandidates, looksLikeModel } from './asset-config.js';
 
 export const MODEL_URLS = {
-  pantera: 'assets/models/pantera.glb',
+  // 2026-11-27: same file as pantera.glb (kept) with weights re-smoothed on the T7 King poses the fight plays
+  // (tools/auto_rig/game_pose_seam_smooth.py): no strap shards off the shin / trouser tears in kicks.
+  // Proof: docs/proof/2026-11-27/pantera-attires/.
+  pantera: 'assets/models/pantera-weights-v2.glb',
   'steve-fox': 'assets/models/steve-fox.glb',
   // NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO — the old `jin:` key was removed.
   // `demonio: 'assets/models/demonio.glb'` (below) is the old Steve Fox stand-in body
@@ -359,14 +362,21 @@ export const MODEL_URLS = {
   // key above, A2 LEOPARD KING below; Tekken reskins behind them — A3 is
   // the base 'pantera' key above (T7King P1 reskin), A4 snow leopard,
   // A5 Crimson Rage, A6 T7 P2). ../roster pattern per phantom/skull.
-  'pantera-snow-leopard': '../roster/pantera/attires/snow-leopard/pantera-snow-leopard.glb',
+  // 2026-11-27: the 2026-10-17 skin predated the Classic weight repairs (arms exploded into blades in-game);
+  // -reweighted copies pantera-weights-v2.glb's weights (identical parts). Original kept.
+  'pantera-snow-leopard': '../roster/pantera/attires/snow-leopard/pantera-snow-leopard-reweighted.glb',
   // LEOPARD KING re-rig (2026-10-22, owner: forearms/hands stretch, legs crumpled, hand weighted to the
   // tail): King's 49-joint skeleton refitted INSIDE the mesh (tools/auto_rig/refit_skeleton.py) + Blender
   // bone heat (backends/heat_rebind.py). The 2026-10-21 model-rigged.glb stays beside it, untouched.
   // Proof: docs/proof/claude-2026-10-22/pantera-rigs/.
-  'pantera-leopard-king': '../roster/pantera/attires/leopard-king/model-refit.glb',
-  'pantera-crimson-rage': '../roster/pantera/attires/crimson-rage/pantera-attire5-crimson.glb',
-  'pantera-p2': '../roster/pantera/attires/p2-wired/pantera-attire4-p2.glb',
+  // 2026-11-27: model-refit.glb (32.6 MB) is over Cloudflare Pages' 25 MiB file cap and jsDelivr's 20 MB limit, so
+  // the live build only reached a stale Worker copy (32,679,076 B). -cdn is the same rig packed by
+  // tools/deploy/fit_cdn_budget.py (normal PNG -> JPEG 4:4:4 q90, gltfpack -cc; 18.7 MB). Original kept beside it.
+  'pantera-leopard-king': '../roster/pantera/attires/leopard-king/model-refit-cdn.glb',
+  // 2026-11-27: A5/A6 were static (no skin) re-textures of the pantera.glb parts; rigged from pantera-weights-v2.glb
+  // by tools/auto_rig/rig_multipart_from_donor.py (originals kept beside them). Proof: docs/proof/2026-11-27/pantera-attires/.
+  'pantera-crimson-rage': '../roster/pantera/attires/crimson-rage/pantera-attire5-crimson-rigged.glb',
+  'pantera-p2': '../roster/pantera/attires/p2-wired/pantera-attire4-p2-rigged.glb',
   'retsu-body': 'assets/models/retsu-body.glb',
   'saku-ra_alt1': 'assets/models/saku-ra_alt1.glb',
   'saku-ra-main': 'assets/models/saku-ra-main.glb',
