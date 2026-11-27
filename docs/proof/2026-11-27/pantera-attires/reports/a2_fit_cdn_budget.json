@@ -1,0 +1,49 @@
+{
+ "input": "/tmp/rig/lk-plain.glb",
+ "tool": "tools/deploy/fit_cdn_budget.py",
+ "textures": [
+  {
+   "image": 0,
+   "size": [
+    4096,
+    4096
+   ],
+   "png_bytes": 7216725,
+   "jpeg_bytes": 1847648,
+   "normal_map": true,
+   "channel_err_mean": 0.666,
+   "normal_angle_err_deg": {
+    "mean": 0.598,
+    "p99": 3.842
+   }
+  },
+  {
+   "image": 1,
+   "size": [
+    4096,
+    4096
+   ],
+   "jpeg_in_bytes": 4398714,
+   "jpeg_bytes": 3542101,
+   "normal_map": false,
+   "reencoded": true,
+   "channel_err_mean": 1.039
+  },
+  {
+   "image": 2,
+   "size": [
+    4096,
+    4096
+   ],
+   "jpeg_in_bytes": 1952617,
+   "jpeg_bytes": 1705748,
+   "normal_map": false,
+   "reencoded": true,
+   "channel_err_mean": 0.406
+  }
+ ],
+ "output": "/tmp/rig/lk-cdn.glb",
+ "bytes": 18729904,
+ "budget": 19500000,
+ "pass": true
+}

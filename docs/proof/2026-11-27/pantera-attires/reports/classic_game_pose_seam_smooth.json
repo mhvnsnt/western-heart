@@ -1,0 +1,128 @@
+{
+ "gate": 2.5,
+ "threshold": 2.0,
+ "couple_radius": 0.02,
+ "sep_tol": 0.01,
+ "rings": 2,
+ "iters": 10,
+ "lam": 0.5,
+ "frames_per_clip": 5,
+ "welded_verts": 9094,
+ "layer_pairs": 41324,
+ "rounds": [
+  {
+   "round": 0,
+   "p999": 15.386,
+   "over_threshold": 2416,
+   "separated_pairs": 1155,
+   "max_separation_m": 0.3711
+  },
+  {
+   "round": 1,
+   "p999": 9.694,
+   "over_threshold": 1095,
+   "separated_pairs": 435,
+   "max_separation_m": 0.1327,
+   "smoothed_welded_verts": 4228
+  },
+  {
+   "round": 2,
+   "p999": 8.782,
+   "over_threshold": 926,
+   "separated_pairs": 343,
+   "max_separation_m": 0.1132,
+   "smoothed_welded_verts": 3517
+  },
+  {
+   "round": 3,
+   "p999": 8.009,
+   "over_threshold": 780,
+   "separated_pairs": 273,
+   "max_separation_m": 0.0966,
+   "smoothed_welded_verts": 3293
+  },
+  {
+   "round": 4,
+   "p999": 9.087,
+   "over_threshold": 701,
+   "separated_pairs": 252,
+   "max_separation_m": 0.0823,
+   "smoothed_welded_verts": 3155
+  },
+  {
+   "round": 5,
+   "p999": 9.147,
+   "over_threshold": 658,
+   "separated_pairs": 221,
+   "max_separation_m": 0.0703,
+   "smoothed_welded_verts": 3051
+  },
+  {
+   "round": 6,
+   "p999": 8.875,
+   "over_threshold": 616,
+   "separated_pairs": 205,
+   "max_separation_m": 0.0604,
+   "smoothed_welded_verts": 3038
+  },
+  {
+   "round": 7,
+   "p999": 8.132,
+   "over_threshold": 590,
+   "separated_pairs": 181,
+   "max_separation_m": 0.0537,
+   "smoothed_welded_verts": 3005
+  },
+  {
+   "round": 8,
+   "p999": 7.865,
+   "over_threshold": 562,
+   "separated_pairs": 170,
+   "max_separation_m": 0.0487,
+   "smoothed_welded_verts": 2942
+  },
+  {
+   "round": 9,
+   "p999": 7.286,
+   "over_threshold": 557,
+   "separated_pairs": 152,
+   "max_separation_m": 0.0443,
+   "smoothed_welded_verts": 2797
+  },
+  {
+   "round": 10,
+   "p999": 7.108,
+   "over_threshold": 547,
+   "separated_pairs": 140,
+   "max_separation_m": 0.0403,
+   "smoothed_welded_verts": 2813
+  },
+  {
+   "round": 11,
+   "p999": 6.946,
+   "over_threshold": 524,
+   "separated_pairs": 127,
+   "max_separation_m": 0.0368,
+   "smoothed_welded_verts": 2774
+  },
+  {
+   "round": 12,
+   "p999": 7.372,
+   "over_threshold": 506,
+   "separated_pairs": 117,
+   "max_separation_m": 0.0336,
+   "smoothed_welded_verts": 2620
+  }
+ ],
+ "pass": false,
+ "tool": "tools/auto_rig/game_pose_seam_smooth.py",
+ "input": "game/assets/models/pantera.glb",
+ "output": "/tmp/rig/classic_gpi.glb",
+ "poses": "/workspace/pantera-attires-work/poses_pantera.json",
+ "embedded": {
+  "clips": 20,
+  "frames": 100,
+  "joints_missing_in_capture": []
+ },
+ "primitives_written": 18
+}
