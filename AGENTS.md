@@ -295,3 +295,7 @@ Strengthens DIRECT-TO-REPO + CHECKPOINT-AND-SAVE: the repo is the save, temp is 
 Don't hand-build what already exists and works well. Before decoding/decrypting/reverse-engineering/building anything from scratch, go get the pre-made part from wherever it already exists and work FROM it.
 Mars's machine metaphor: "you don't build a battery for a machine or a cog for a machine from scratch you order it online and you just replace the cog."
 Spend the work on the innovative parts, not re-doing what's already well-built. Source categories: commercial games; open source; closed-source teardowns; fan translation / ROM hacking scene; modding community; fan-made tools and docs; decompilations (decomps) and recompilations (recomps); community knowledge (Xentax/ZenHAX, TCRF, wikis, FAQs, archive.org).
+
+## OWNER FOCUS (Nov 27 2026): models, animations, promo clips from extracted game data
+
+Main focus set by the owner 2026-11-27: perfect Bannon and Western Heart character models and animations from the already extracted commercial game data (WWE 2K26 and other wrestling games for Bannon; Tekken 7/3, DOA, VF5 and the rest for Western Heart), then capture in-game stills, clips and promo videos that show them working. MoneyManBusch (Grok Bot) owns the Western Heart model/anim/promo lane and coordinates the Bannon model/anim/promo push; Claude keeps the Bannon engine lane; Muse and the others continue their lanes. Private projects: commercial data is the base, nothing sold yet. Pull-in-first, never hand-build. Full section: `HANDOFF.md`.
