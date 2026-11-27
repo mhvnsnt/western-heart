@@ -1,0 +1,12 @@
+{
+ "stage": 3,
+ "script": "fit_correct2.py",
+ "base_key": "key_corr2_a.npz",
+ "alpha": 300,
+ "beta": 0.3,
+ "deltas": [
+  "g_corr2_a_front_deltas.json",
+  "g_corr2_a_q34_deltas.json"
+ ],
+ "note": "stage-3 projection-correction round on corr2_a; corr2-stage params unrecorded by dead lane"
+}
