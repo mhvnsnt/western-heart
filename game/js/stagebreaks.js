@@ -419,8 +419,13 @@ export class StageBreaks {
           return;
         }
       } else {
-        // floor / balcony: slam-class hit landing inside the weak zone
-        const slam = (move.knock >= 6) || !!move.launch || !!move.knockdown || result === 'ko';
+        // floor / balcony: slam-class hit landing inside the weak zone.
+        // Must match receiveHit's actual knockdown (knock >= 6 / launch / KO /
+        // counter+knockdown). A T8 `knockdown` flag on a standing kick (Pantera
+        // 4 → 4~t8.king, knock 5) is not a T7 floor-break slam; treating it as
+        // one added FLOOR_BREAK_BONUS (12 HP) outside receiveHit on a mid/high RK.
+        const slam = (move.knock >= 6) || !!move.launch || result === 'ko'
+          || (result === 'counter' && !!move.knockdown);
         if (!slam) continue;
         const dx = px - (def.x || 0), dz = pz - (def.z || 0);
         const r = def.r || 2.5;
